@@ -51,3 +51,4 @@ David: "with each agent holding as much as they can to widen search."
 - **Incident (wave 1, disclosed by reader RB020):** readers shared the session scratchpad; another reader's script overwrote RB020's helper script and RB020 briefly saw ~15 bundles of slab S-42da (read by RB048, which produced no claims). RB020 disregarded them and recorded this in its done line. From wave 2, readers write scratch files only under a per-reader prefix.
 - **Incident (wave 1, disclosed by reader RB002):** the same shared-scratchpad overwrite; RB002 saw one section of another slab, used none of it, and moved to a private folder.
 - **Incident (wave 1, disclosed by reader RB019):** the same overwrite; RB019 briefly saw part of slab S-42da (no claims came from S-42da) and disregarded it.
+- **Incident (wave 1, disclosed by reader RB001):** the same overwrite; RB001 briefly saw two bundles of slab S-42da. All four disclosed exposures concern S-42da, which produced no claims.
