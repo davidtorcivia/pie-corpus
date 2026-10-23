@@ -471,6 +471,14 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
         if e["root_type_source"] == "gloss-heuristic" and (e["root_type"] == "verbal") != has_verb:
             disagreements.append(e["id"])
 
+    # LIV² (committed facts file data/lexicon/liv2.jsonl, built from the book by scripts/build_liv.py)
+    liv_report = None
+    liv_path = outdir / "liv2.jsonl"
+    if liv_path.exists():
+        from .liv import apply as apply_liv
+        recs = [json.loads(x) for x in liv_path.read_text("utf-8").splitlines() if x.strip()]
+        liv_report = apply_liv(entries, recs, reg)
+
     # Paradigms (Wiktionary module output), hard-filtered.
     paradigms, para_skipped = [], collections.Counter()
     for e in entries.values():
@@ -534,6 +542,8 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
             "total": sum(1 for r in roots if r["root_type"] == "verbal"),
             "head_template": sum(1 for r in roots if r["root_type"] == "verbal" and r["root_type_source"] == "head-template"),
             "gloss_heuristic": sum(1 for r in roots if r["root_type"] == "verbal" and r["root_type_source"] == "gloss-heuristic"),
+            "liv2": sum(1 for r in roots if r["root_type"] == "verbal" and r["root_type_source"] == "liv2"),
+            "with_liv2_entry": sum(1 for r in roots if r.get("liv")),
             "with_verb_derivative": sum(1 for r in roots if r["has_verb_derivative"]),
         },
         "root_type_disagreements": disagreements,
@@ -546,6 +556,7 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
         "rejects_by_reason": dict(collections.Counter(r["reason"].split(":")[0] for r in rejects)),
         "normalization_rules_fired": dict(rule_counts),
         "w_escape_forms": sum(1 for e in entries.values() if "\\w" in e["form_ascii"]),
+        "liv2": liv_report,
         "ids_minted_this_build": reg.minted,
         "stale_registry_ids": reg.stale(),
     }

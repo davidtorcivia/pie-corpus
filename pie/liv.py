@@ -68,9 +68,10 @@ def headword(printed: str) -> tuple[str | None, int | None, bool]:
         return None, hom, unc
     # LIV's uncertain series: g⁽ᵘ̯⁾ = g or gʷ (optional labialization); ĝ⁽ʼ⁾ = uncertain
     # palatal (the palatal is kept as primary). Both mark the root uncertain.
-    if "⁽ᵘ̯⁾" in s or "⁽ʼ⁾" in s:
+    if "⁽ᵘ̯⁾" in s or "⁽ʼ⁾" in s or re.search("[ĝk̑g̑ḱǵ]\u0311?[ʼ']", s):
         unc = True
         s = s.replace("⁽ᵘ̯⁾", "⁽ʷ⁾").replace("⁽ʼ⁾", "")
+        s = re.sub("([ĝk̑g̑ḱǵ]\u0311?)[ʼ']", r"\1", s)   # bare ʼ after a palatal: the same uncertain series
     # optional elements (⁽ʰ⁾, (s)) expand to variants, as in the Wiktionary builder; the full form wins
     from .lexicon import _expand_optional
     for v in _expand_optional(normalize(s, "liv2").text)[0]:
@@ -94,12 +95,15 @@ def ocr_check(e: dict, root: Path = ROOT) -> dict:
             texts.append(f.read_text("utf-8"))
     t = " ".join(texts)
     gloss = (e.get("meaning_de") or "").strip("'‘’ ")
-    words = [w for w in re.findall(r"\w{4,}", gloss)]
-    gloss_ok = bool(words) and sum(w in t for w in words) >= max(1, len(words) // 2)
+    words = [w for w in re.findall(r"\w{3,}", gloss)]
+    gloss_ok = (not words) or sum(w in t for w in words) >= max(1, len(words) // 2)
     iew_ok = True
     if e.get("iew"):
         num = re.findall(r"\d+", e["iew"])
-        iew_ok = bool(num) and num[0] in re.sub(r"(\d)\s+(\d)", r"\1\2", t)
+        squeezed = t
+        while re.search(r"(\d) (\d)", squeezed):     # the OCR spaces digits out: "IEW 1 1 5"
+            squeezed = re.sub(r"(\d) (\d)", r"\1\2", squeezed)
+        iew_ok = bool(num) and num[0] in squeezed
     return {"gloss_in_ocr": gloss_ok, "iew_in_ocr": iew_ok}
 
 
@@ -183,3 +187,72 @@ def merge(lexicon: list[dict], entries: list[dict]) -> tuple[list[dict], dict]:
                         "meaning_de": e.get("meaning_de")})
             report["new"] += 1
     return new, report
+
+
+def apply(entries: dict[str, dict], liv_records: list[dict], reg, dump_label: str = "LIV² (Rix et al. 2001)") -> dict:
+    """Apply data/lexicon/liv2.jsonl to the lexicon being built (pie.lexicon.build).
+
+    Matched roots get `liv` (a list: homograph pages can match one root) and,
+    unless Wiktionary marked the aspect itself, the aspect of LIV's primary
+    stem. LIV-only roots become new root entries whose ids come from the
+    (frozen) registry, under the key "liv2|<headword>|<German gloss>".
+    """
+    from .lexicon import gloss_tag, slug
+    from .translit import to_ascii
+    from .validate import key as vkey
+    roots = [e for e in entries.values() if e["kind"] == "root"]
+    by_plain, by_generic = {}, {}
+    for r in roots:
+        for f in [r["form"], *r.get("variants", [])]:
+            by_plain.setdefault(_plain(f), []).append(r)
+            by_generic.setdefault(vkey(f, "generic-H"), []).append(r)
+    rep = {"matched_form": 0, "matched_generic": 0, "new": 0}
+    for x in liv_records:
+        en = (x.get("meaning_en") or "").strip("'‘’ ")
+        stems = [s for s in x.get("stems", []) if s.get("label")]
+        aspect = ASPECT.get(stems[0]["label"]) if stems else None
+        liv = {k: x[k] for k in ("headword_printed", "homograph", "uncertain", "meaning_de", "meaning_en", "iew",
+                                  "stems", "neubildungen", "page", "ocr_check")}
+        cands = by_plain.get(_plain(x["root"]), [])
+        how = "form"
+        if len(cands) > 1:
+            cands = sorted(cands, key=lambda r: -_gloss_sim(en.lower(), (r["meaning"][0] if r["meaning"] else "").lower()))[:1]
+        if not cands:
+            how = "generic-H+gloss"
+            cands = [r for r in by_generic.get(vkey(x["root"], "generic-H"), [])
+                     if r["meaning"] and _gloss_sim(en.lower(), r["meaning"][0].lower()) >= 0.35][:1]
+        if cands:
+            r = cands[0]
+            r.setdefault("liv", []).append({**liv, "match": how})
+            if aspect and r.get("root_type_source") != "head-template":
+                r["aspect"], r["root_type"], r["root_type_source"] = aspect, "verbal", "liv2"
+            rep["matched_form" if how == "form" else "matched_generic"] += 1
+            continue
+        rid = reg.get(f"liv2|{x['headword_printed']}|{x.get('meaning_de')}",
+                      f"pie-root-{slug(x['root'])}-{gloss_tag(en)}")
+        entries[rid] = {
+            "id": rid, "kind": "root", "form": x["root"], "form_ascii": to_ascii(x["root"]), "variants": [],
+            "stems": [], "pos": "root", "meaning": [en] if en else [], "meaning_de": x.get("meaning_de"),
+            "uncertain": ["liv2-uncertain"] if x.get("uncertain") else [], "source": "liv2",
+            "source_ref": {"dump": dump_label, "page": x["page"], "iew": x.get("iew")},
+            "confidence": "entry", "normalized": [], "root_type": "verbal", "root_type_source": "liv2",
+            "aspect": aspect, "etymon_parts": [], "reflexes": {}, "root_id": rid, "liv": [{**liv, "match": "new"}],
+            "has_verb_derivative": False}
+        rep["new"] += 1
+    # A LIV-only root may be a Wiktionary root reconstructed differently (dʰeHbʰ- ~ dʰh₂ebʰ-)
+    # or a root LIV deliberately keeps apart (drew- vs dreh₂-). Never merge automatically:
+    # link candidates with the same consonant skeleton and a similar gloss.
+    def skeleton(f):
+        return re.sub(r"[aeiouāēīōū]|H|y|w", "", vkey(f.rstrip("-"), "generic-H"))
+    by_skel = {}
+    for r in roots:
+        by_skel.setdefault(skeleton(r["form"]), []).append(r)
+    rep["possible_aliases"] = 0
+    for e in entries.values():
+        if e.get("source") == "liv2" and e["kind"] == "root":
+            al = [r["id"] for r in by_skel.get(skeleton(e["form"]), [])
+                  if r["meaning"] and e["meaning"] and _gloss_sim(e["meaning"][0].lower(), r["meaning"][0].lower()) >= 0.34]
+            if al:
+                e["possible_alias_of"] = al
+                rep["possible_aliases"] += 1
+    return rep

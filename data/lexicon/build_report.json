@@ -1,20 +1,22 @@
 {
  "dump": "kaikki.org ProtoIndoEuropean, extracted 2026-10-21 from enwiktionary 2026-10-01",
- "entries": 7401,
+ "entries": 7888,
  "by_kind": {
-  "root": 885,
+  "root": 1372,
   "alt": 22,
   "word": 893,
   "affix": 110,
   "form": 21,
   "derivative": 5470
  },
- "glossed_entries": 2249,
- "roots": 885,
+ "glossed_entries": 2736,
+ "roots": 1372,
  "verbal_roots": {
-  "total": 730,
+  "total": 1253,
   "head_template": 116,
-  "gloss_heuristic": 614,
+  "gloss_heuristic": 191,
+  "liv2": 946,
+  "with_liv2_entry": 1059,
   "with_verb_derivative": 687
  },
  "root_type_disagreements": [
@@ -482,7 +484,13 @@
   "G-LAR-RING": 6,
   "G-SYL-DOT": 5
  },
- "w_escape_forms": 17,
+ "w_escape_forms": 39,
+ "liv2": {
+  "matched_form": 642,
+  "matched_generic": 20,
+  "new": 487,
+  "possible_aliases": 52
+ },
  "ids_minted_this_build": 0,
  "stale_registry_ids": []
 }
