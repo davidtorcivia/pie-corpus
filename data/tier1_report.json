@@ -28,9 +28,10 @@
    "lines": 11,
    "documentary_lines": 10,
    "tokens": 5,
-   "match:exact": 3,
+   "match:exact": 2,
    "miss:pre-laryngeal": 2,
-   "coverage": 0.6
+   "miss:near-miss": 1,
+   "coverage": 0.4
   },
   "schleicher-fable-adams-1997": {
    "lines": 5,
