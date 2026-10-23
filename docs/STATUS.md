@@ -1,14 +1,14 @@
 # Status
 
-**Current phase:** Phase 0 complete (2026-10-23). Next up: Phase 1 (lexicon from the kaikki.org PIE dump).
+**Current phase:** Phase 1 lexicon is **built; acceptance is pending** (see the Phase 1 notes below). Starting Phase 2 (morphology engine), which doesn't depend on the open Phase 1 items.
 
 ## Phases
 
 | Phase | State | Acceptance |
 |---|---|---|
 | 0 Scaffolding & notation | **done** | NFC↔ASCII round-trip on ≥200 tricky forms: **pass** (382 listed forms: 157 hand-written with expected ASCII + 225 generated; plus 5,000 fuzzed; 1,807 tests) |
-| 1 Lexicon | next | ≥2,000 entries, ≥800 verbal roots, 50-entry spot check |
-| 2 Morphology engine | — | golden paradigms |
+| 1 Lexicon | **built, acceptance pending** | ≥2,000 entries: 2,226 glossed, 7,261 total ✅ · ≥800 verbal roots: **730** ❌ · 50-entry handbook spot check: pending books (provisional review in `docs/audits/`) |
+| 2 Morphology engine | next | golden paradigms |
 | 3 Validator | — | Tier 1 ≥90% token coverage |
 | 3b Sound-law checker | — | full lexicon run, mismatch report |
 | 4 Tier 1 scholarly | — | 200–500 cited lines + adversarial review |
@@ -20,7 +20,11 @@
 
 | Metric | Value |
 |---|---|
-| Lexicon entries / verbal roots | 0 / 0 |
+| Lexicon entries | 7,261 total: 885 roots · 893 words · 110 affixes · 5,330 tree derivatives · 22 alt · 21 form-of |
+| Glossed entries | 2,226 |
+| Verbal roots | 730 (116 marked by Wiktionary + 614 by the "to …" gloss heuristic; 104 disagree with the derivative signal) |
+| Wiktionary paradigms (clean) | 625 (90 dropped as module-corrupted, 1 with a non-canonical cell) |
+| Normalization rejects | 67 (alternative lists, queries, placeholders) |
 | Root coverage in corpus | — |
 | Records per tier (1 / 2 / 3 / 3b) | 0 / 0 / 0 / 0 |
 | Tokens per tier | — |
@@ -46,7 +50,18 @@ Nice to have (lower priority): Schmitt, *Dichtung und Dichtersprache in indogerm
 
 **I'll find these myself:** the kaikki.org PIE dump; Byrd's fable (2013) and *King and the God*; Kortlandt (2007; on his website); Schleicher (1868, public domain); other fable/King versions as transcribed in secondary sources (verified against originals where possible); and the public-domain daughter texts for Tier 2 (Rigveda van Nooten–Holland, Geldner's Avesta, Homer, Neckel's Edda, Whitney's AV).
 
+## Phase 1 notes
+
+- **The source is clean.** Only 4 of 1,931 headwords are outside the inventory. Normalization fired 14 times (3 homoglyphs, 6 laryngeal rings, 5 dot-below syllabics). The `\w` escape occurs in 17 forms.
+- **Wiktionary's declension module corrupts some tables.** Where a stem template has parentheses or Ø, the dual `-h₁` becomes `é₁`/`Ø₁`. Those 90 tables are excluded at the source.
+- **Wiktionary etymon ids can't disambiguate homographs.** kaikki copies them across sibling sections, so 8 homograph sets collided. Root ids therefore carry a gloss tag on every id (`pie-root-men-think`, `pie-root-men-stay`) and persist in a committed registry. Rebuilds are idempotent.
+- **Gaps:** 730 verbal roots (see the question below); 344 words/derivatives with no root link (mostly pronouns, particles, opaque nouns); 58 etymon parts that point at ambiguous homographs.
+
 ## Open questions for David
+
+0. **What counts toward the Phase 1 targets?**
+   - (a) ≥2,000 entries: is it OK that this is met by *glossed* entries (2,226)? The 5,330 unglossed tree derivatives are ingested as a separate kind with lower confidence.
+   - (b) Verbal roots are 730, short of 800. The options are LIV² (from you; the authoritative fix, which also supplies aspect for the 614 heuristic roots), or harvesting PIE etymologies from the kaikki Latin, Ancient Greek, Sanskrit and Proto-Germanic dumps (moderate download; adds roots that have no Wiktionary page of their own, but no aspect info). I'm proceeding to Phase 2 meanwhile, since the engine doesn't depend on this.
 
 1. **Eval contamination via formulas.** The fixed decision is "eval = all of Tier 1 + a held-out slice of Tier 2". But Tier 1 includes the Watkins/West formulas (*ḱléwos ń̥dʰgʷʰitom*, *gʷʰen- h₃egʷʰim*), and Tiers 2–3 are built *from* those same formulas. So the eval formulas would appear verbatim throughout training. **My recommendation:** eval = Tier 1 *texts* (the fable and King versions, held out whole) + held-out Tier 2. The formula records stay in training, because they are the core poetic vocabulary we want the model to learn. I haven't changed anything yet, since this is your fixed decision.
 2. **Remote repo.** The local git repo is initialized, with Phase 0 committed. Do you want a private GitHub repo as well? If so, under which account or org?
@@ -62,5 +77,7 @@ Everything in IDEAS.md is folded into PLAN.md, and nothing is rejected outright.
 - **Dashboard (7).** The metrics are in STATUS.md now. The HTML Artifact version is deferred until there is data to show (Phase 1+).
 
 ## Log
+
+- **2026-10-23. Phase 1 (built).** Found the dump via the kaikki.org index and logged it in `raw/MANIFEST.md`. Built `pie/lexicon.py` and `scripts/build_lexicon.py`, wrote the schema in `docs/lexicon.md`, and added two normalizer rules (G-HOMOGLYPH, G-LAR-RING). Lexicon tests cover form parsing, id/link integrity, parent/child symmetry and paradigm cleanliness (1,838 tests in total). A provisional reviewer subagent is auditing a stratified 50-entry sample.
 
 - **2026-10-23. Phase 0.** Set up git, the uv project (Python 3.14), and the directory layout. Built `pie/translit.py` (strict, closed-inventory, reversible), `pie/notation.py` (19 named normalization rules, 4 profiles, applied rules reported per call), and the `scripts/translit.py` CLI, and wrote `docs/notation.md`. The tests caught two real bugs, both fixed: a fixture typed with acute before macron (the strict check correctly rejected it), and `G-CASE` lowercasing a word-final generic `H` (`"" in "₁₂₃"` is True in Python, which is exactly the silent laryngeal corruption the rule log warns about).

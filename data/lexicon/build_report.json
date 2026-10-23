@@ -1,0 +1,488 @@
+{
+ "dump": "kaikki.org ProtoIndoEuropean, extracted 2026-10-21 from enwiktionary 2026-10-01",
+ "entries": 7261,
+ "by_kind": {
+  "root": 885,
+  "alt": 22,
+  "word": 893,
+  "affix": 110,
+  "form": 21,
+  "derivative": 5330
+ },
+ "glossed_entries": 2226,
+ "roots": 885,
+ "verbal_roots": {
+  "total": 730,
+  "head_template": 116,
+  "gloss_heuristic": 614,
+  "with_verb_derivative": 687
+ },
+ "root_type_disagreements": [
+  "pie-root-sh1es-harvest",
+  "pie-root-skel-bend",
+  "pie-root-skelh1-parch",
+  "pie-root-sker-turn",
+  "pie-root-snerk-loop",
+  "pie-root-spel-say_aloud",
+  "pie-root-stew-push",
+  "pie-root-Heh3l-bow",
+  "pie-root-Hrew-tear_out",
+  "pie-root-Hyewdh-moving_erect",
+  "pie-root-bhel-blaze",
+  "pie-root-bhers-top",
+  "pie-root-bhleh3-bloom",
+  "pie-root-bhrewh1-boil",
+  "pie-root-deh2y-share",
+  "pie-root-dewh2-fit",
+  "pie-root-deyh2-shine",
+  "pie-root-dweh2-long",
+  "pie-root-dyew-be_bright",
+  "pie-root-dhew-die",
+  "pie-root-dhewh2-smoke",
+  "pie-root-dhgwher-meaning_of_this",
+  "pie-root-dhh2ebh-fashion",
+  "pie-root-gew-bend",
+  "pie-root-glew-ball_up",
+  "pie-root-ghed-find",
+  "pie-root-gher-rub",
+  "pie-root-gheu-disappear",
+  "pie-root-ghres-threaten",
+  "pie-root-ghrey-smear",
+  "pie-root-h1eg-lack",
+  "pie-root-h1eh1t-breathe",
+  "pie-root-h1engw-burn",
+  "pie-root-h1lengh-revile",
+  "pie-root-h2eHs-be_dry",
+  "pie-root-h2eh3-be_hot",
+  "pie-root-h2endh-bloom",
+  "pie-root-h2enk-curve",
+  "pie-root-h2et-but",
+  "pie-root-h2ew-enjoy",
+  "pie-root-h2ew-perceive",
+  "pie-root-h2ekj-sharp",
+  "pie-root-h2leybh-pour",
+  "pie-root-h2yew-straight",
+  "pie-root-h3ed-bite",
+  "pie-root-h3ep-work",
+  "pie-root-h3erbh-turn",
+  "pie-root-h3meygh-fog",
+  "pie-root-keh3-fight",
+  "pie-root-kel-drive",
+  "pie-root-kh2em-bend",
+  "pie-root-kleh2w-hook",
+  "pie-root-krews-freeze",
+  "pie-root-kweh2s-cough",
+  "pie-root-leh1-soft",
+  "pie-root-leh2-be_concealed",
+  "pie-root-lewbh-cut_off",
+  "pie-root-lewk-bright",
+  "pie-root-lewgj-break",
+  "pie-root-meh2d-meet",
+  "pie-root-mey-small",
+  "pie-root-meyk-twinkle",
+  "pie-root-peh2kj-join",
+  "pie-root-pel-cover",
+  "pie-root-pel-fold",
+  "pie-root-perkj-open",
+  "pie-root-peyg-inactive",
+  "pie-root-plewd-fly",
+  "pie-root-pres-press",
+  "pie-root-pret-understand",
+  "pie-root-prews-freeze",
+  "pie-root-puH-rotten",
+  "pie-root-rebh-ferocity",
+  "pie-root-sel-jump",
+  "pie-root-sep-taste",
+  "pie-root-ser-flow",
+  "pie-root-ser-guard",
+  "pie-root-seyt-magic",
+  "pie-root-smel-burn",
+  "pie-root-smeyt-throw",
+  "pie-root-stegwh-enlace",
+  "pie-root-steyh2-stiffen",
+  "pie-root-swer-ache",
+  "pie-root-swergh-be_ill",
+  "pie-root-sweyd-sweat",
+  "pie-root-ters-dry",
+  "pie-root-tewk-become_swollen",
+  "pie-root-up-cry_out",
+  "pie-root-wegw-wet",
+  "pie-root-weh2dh-go",
+  "pie-root-welg-wet",
+  "pie-root-werbh-enclose",
+  "pie-root-weys-flow",
+  "pie-root-wleykw-moist",
+  "pie-root-wreh1-find",
+  "pie-root-gjem-marry",
+  "pie-root-gjyewh1-chew",
+  "pie-root-gjhelh3-green",
+  "pie-root-gjhers-stiff",
+  "pie-root-gjhewd-pour",
+  "pie-root-kjer-plait",
+  "pie-root-kjleh1-hot",
+  "pie-root-kjlewH-clean",
+  "pie-root-kjley-shelter"
+ ],
+ "non_root_without_root_link": 344,
+ "unresolved_etymon_parts": [
+  {
+   "entry": "pie-lex-skerdh",
+   "part": "(s)ker-",
+   "candidates": [
+    "pie-root-sker-cut_off",
+    "pie-root-sker-turn"
+   ]
+  },
+  {
+   "entry": "pie-lex-bhardheh2",
+   "part": "ine-pro:*bʰers-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-bhebhoyh2e",
+   "part": "bʰeyh₂-",
+   "candidates": [
+    "pie-root-bheyh2-shake",
+    "pie-root-bheyh2-strike"
+   ]
+  },
+  {
+   "entry": "pie-lex-bhuHyeti",
+   "part": "ine-pro:*bʰuH-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-bhergjhos",
+   "part": "ine-pro:*bʰerǵʰ-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-dlh1ghos",
+   "part": "ine-pro:*delh₁gʰ-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-dlh1ghos",
+   "part": "delh₁gʰ-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-dusmenexs",
+   "part": "dus-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-dwiplos",
+   "part": "dwi-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-dwoyos",
+   "part": "dwi-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-dhgwheytis",
+   "part": "ine-pro:*dʰgʷʰey-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-dhoHneh2",
+   "part": "dʰeh₁-",
+   "candidates": [
+    "pie-root-dheh1y-suckle",
+    "pie-root-dheh1-do"
+   ]
+  },
+  {
+   "entry": "pie-lex-dhegjhoxm",
+   "part": "dʰeǵʰ-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-doxm",
+   "part": "ine-pro:*dem-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-ghryeti",
+   "part": "gʰer-",
+   "candidates": [
+    "pie-root-gher-yearn_for",
+    "pie-root-gher-rub"
+   ]
+  },
+  {
+   "entry": "pie-lex-h1rudhros",
+   "part": "ine-pro:*h₁rewdʰ-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-h1reh1",
+   "part": "h₁er-",
+   "candidates": [
+    "pie-root-h1er-arrive",
+    "pie-root-h1er-earth"
+   ]
+  },
+  {
+   "entry": "pie-lex-h1sumenexs",
+   "part": "h₁su-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-h1wesus",
+   "part": "h₁wes-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-h1eyti",
+   "part": "ine-pro:*h₁ey-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-h2eh2oykje",
+   "part": "ine-pro:*h₂eyḱ-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-h2enh1mos",
+   "part": "ine-pro:*h₂enh₁-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-h2ewser",
+   "part": "h₂ews-",
+   "candidates": [
+    "pie-root-h2ews-become_light",
+    "pie-root-h2ews-draw_water"
+   ]
+  },
+  {
+   "entry": "pie-lex-h2stexr",
+   "part": "ine-pro:*h₂eHs-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-h2weydr",
+   "part": "h₂weyd-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-h2wlh1neh2",
+   "part": "h₂welh₁-",
+   "candidates": [
+    "pie-root-h2welh1-rule",
+    "pie-root-h2welh1-hair"
+   ]
+  },
+  {
+   "entry": "pie-lex-h2elyos",
+   "part": "ine-pro:*h₂el-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-h2ewis",
+   "part": "ine-pro:*h₂ew-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-h2ewsoxs",
+   "part": "ine-pro:*h₂ews-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-h2eymox",
+   "part": "h₂ey-",
+   "candidates": [
+    "pie-root-h2ey-vital_force",
+    "pie-root-h2ey-give",
+    "pie-root-h2ey-day"
+   ]
+  },
+  {
+   "entry": "pie-lex-h2oyu",
+   "part": "h₂ey-",
+   "candidates": [
+    "pie-root-h2ey-vital_force",
+    "pie-root-h2ey-give",
+    "pie-root-h2ey-day"
+   ]
+  },
+  {
+   "entry": "pie-lex-h2kjh2owsyeti",
+   "part": "ine-pro:*h₂eḱ-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-koh2mos",
+   "part": "ine-pro:*keh₂-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-ku",
+   "part": "ine-pro:*kʷ-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-kwetwrtos",
+   "part": "kʷetwr̥-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-kwis",
+   "part": "ine-pro:*kʷ-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-kwis-2",
+   "part": "ine-pro:*kʷ-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-misdhos",
+   "part": "dʰeh₁-",
+   "candidates": [
+    "pie-root-dheh1y-suckle",
+    "pie-root-dheh1-do"
+   ]
+  },
+  {
+   "entry": "pie-lex-ni",
+   "part": "h₁en-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-nmrtos",
+   "part": "n̥-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-pnewmn",
+   "part": "ine-pro:*pnew-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-prey",
+   "part": "ine-pro:*per-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-per",
+   "part": "per-",
+   "candidates": [
+    "pie-root-per-before",
+    "pie-root-per-go_through",
+    "pie-root-per-beat"
+   ]
+  },
+  {
+   "entry": "pie-lex-pekju",
+   "part": "ine-pro:*peḱ-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-porkjos",
+   "part": "perḱ-",
+   "candidates": [
+    "pie-root-perkj-colored",
+    "pie-root-perkj-open"
+   ]
+  },
+  {
+   "entry": "pie-lex-sm",
+   "part": "ine-pro:*sem-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-snoygwhos",
+   "part": "ine-pro:*sneygʷʰ-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-somHos",
+   "part": "ine-pro:*sem-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-steh2tis",
+   "part": "ine-pro:*steh₂-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-seh1mn",
+   "part": "seh₁-",
+   "candidates": [
+    "pie-root-seh1-impress",
+    "pie-root-seh1-long"
+   ]
+  },
+  {
+   "entry": "pie-lex-tridkjomth2",
+   "part": "tri-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-tritos",
+   "part": "tri-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-wergjom",
+   "part": "ine-pro:*werǵ-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-wegjheti",
+   "part": "ine-pro:*weǵʰ-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-widkjmti",
+   "part": "dwi-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-gjenh1os-2",
+   "part": "ine-pro:*ǵenh₁-",
+   "candidates": []
+  },
+  {
+   "entry": "pie-lex-kjleytreh2",
+   "part": "ḱley-",
+   "candidates": [
+    "pie-root-kjley-shelter",
+    "pie-root-kjley-lean"
+   ]
+  },
+  {
+   "entry": "pie-lex-kjlneyti",
+   "part": "ḱley-",
+   "candidates": [
+    "pie-root-kjley-shelter",
+    "pie-root-kjley-lean"
+   ]
+  }
+ ],
+ "paradigms": 625,
+ "paradigms_skipped": {
+  "parenthesized/zero-grade template args": 90,
+  "non-canonical cell": 1
+ },
+ "rejects": 67,
+ "rejects_by_reason": {
+  "alternatives list or query": 62,
+  "not canonical after normalization": 1,
+  "schwa notation": 2,
+  "vowel placeholder V": 1,
+  "consonant placeholder": 1
+ },
+ "normalization_rules_fired": {
+  "G-HOMOGLYPH": 3,
+  "G-LAR-RING": 6,
+  "G-SYL-DOT": 5
+ },
+ "w_escape_forms": 17,
+ "ids_minted_this_build": 0,
+ "stale_registry_ids": []
+}

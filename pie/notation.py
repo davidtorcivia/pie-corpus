@@ -60,6 +60,16 @@ def _lowercase_keep_H(s: str) -> str:
     return "".join(out)
 
 
+# Applied to NFD text, so accented Greek letters arrive as base + U+0301 and
+# only base letters need mapping. None of these letters is valid PIE notation.
+_HOMOGLYPHS = str.maketrans({
+    # Greek
+    "ο": "o", "α": "a", "ε": "e", "ι": "i", "υ": "u",
+    # Cyrillic
+    "а": "a", "е": "e", "о": "o", "р": "p", "с": "c",
+    "у": "y", "х": "x", "і": "i", "ј": "j",
+})
+
 _SUBSCRIPT_DIGIT = {"1": "₁", "2": "₂", "3": "₃"}
 _SUPERSCRIPT_DIGIT = {"¹": "₁", "²": "₂", "³": "₃"}
 
@@ -91,6 +101,10 @@ RULES: dict[str, Rule] = {
         Rule("G-QUOTES", "typographic double quotes “ ” „ « » → \"",
              _sub("[“”„«»]", '"')),
         Rule("G-ELLIPSIS", "… → ...", lambda s: s.replace("…", "...")),
+        Rule("G-HOMOGLYPH", "Greek/Cyrillic look-alike letters → Latin (ό → ó, Cyrillic е → e)",
+             _nfd(lambda s: s.translate(_HOMOGLYPHS))),
+        Rule("G-LAR-RING", "ring below on a laryngeal (h̥₁, vocalized) → plain (h₁); syllabicity is re-derived",
+             _nfd(_sub("([hH])̥", "\\1"))),
         Rule("G-NFC", "Unicode NFC", lambda s: unicodedata.normalize("NFC", s)),
         # --- profile -------------------------------------------------------
         Rule("P-ASP-PLAIN-H", "plain h after b d g ǵ gʷ (not a laryngeal) → ʰ (Mallory–Adams style *bher-)",
@@ -106,7 +120,8 @@ RULES: dict[str, Rule] = {
     ]
 }
 
-_GENERIC = ["G-NFC", "G-WS", "G-QUOTES", "G-ELLIPSIS", "G-LAR-DIGIT", "G-LAR-X", "G-CASE",
+_GENERIC = ["G-NFC", "G-WS", "G-HOMOGLYPH", "G-QUOTES", "G-ELLIPSIS", "G-LAR-DIGIT", "G-LAR-X",
+            "G-LAR-RING", "G-CASE",
             "G-PAL-CIRC", "G-LAB-U", "G-GLIDE", "G-RING-ABOVE", "G-SYL-DOT",
             "G-MARK-ORDER", "G-NFC"]
 

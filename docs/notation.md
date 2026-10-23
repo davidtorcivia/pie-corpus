@@ -80,6 +80,8 @@ CLI: `uv run python -I scripts/translit.py {to-ascii|to-unicode|normalize|check}
 | G-RING-ABOVE | ring above on r l m n → ring below | wr̊ → wr̥ | common typo | P0 |
 | G-SYL-DOT | dot below on r l m n → ring below | ṛ → r̥ | Indological convention in older IE works; PIE has no retroflexes | P0 |
 | G-MARK-ORDER | acute+macron → macron+acute | é̄ → ḗ | invisible difference, distinct strings | P0 |
+| G-HOMOGLYPH | Greek/Cyrillic look-alikes → Latin (Greek ο α ε ι υ; Cyrillic а е о р с у х і ј) | *mṛh₂-ό-* (Greek ό) → mr̥h₂-ó-; Cyrillic е in *ǵʰеydʰis* | found in the Wiktionary dump (3 forms); only PIE fields are normalized, so Greek cognate text is never touched | P1 |
+| G-LAR-RING | ring below on a laryngeal → plain | h̥₁ → h₁ | Wiktionary marks vocalized laryngeals this way (6 forms). Syllabicity is predictable from context, and the meter module re-derives it, so dropping the mark loses no information we keep | P1 |
 | P-ASP-PLAIN-H | plain h after b d g ǵ gʷ, not followed by a subscript → ʰ | bher- → bʰer-; *dhugh₂tḗr* → dʰugh₂tḗr (g+h₂ kept) | only for sources writing aspirates as `bh` and laryngeals with subscripts (Mallory–Adams style) | P0 |
 | P-LAB-W-AFTER-K | plain k g + w → kʷ gʷ | kwis → kʷis | only for sources writing labiovelars as `kw`; would corrupt real k+w | P0 (defined, no profile yet) |
 | P-SCHWA | ə → H | pəter → pHter | schwa indogermanicum ≈ vocalized laryngeal, color unknown; source-specific (Hirt) | P0 (defined, no profile yet) |
@@ -99,6 +101,6 @@ Profiles for Hirt (ə, labiovelars), Lehmann & Zgusta, and Kortlandt (glottalic 
 
 ## 4. Open notation questions
 
-- **How often the `\w` escape fires.** Measure it on the Wiktionary dump in Phase 1. If it is frequent, reconsider the labiovelar spelling.
+- ~~**How often the `\w` escape fires.**~~ Measured in Phase 1: on 17 of 7,261 lexicon forms. The spelling stays.
 - **Wiktionary internal variants.** Phase 1 will audit the dump for forms that fail `is_canonical`: hₓ, parenthesized s-mobile `(s)`, alternative accent placements, `ʰ` look-alikes. Any new repair becomes a G- or P- rule here.
 - **Dashes.** — and – are currently rejected. Decide when the first source that uses them as punctuation arrives.
