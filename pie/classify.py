@@ -145,6 +145,12 @@ def by_shape(e: dict) -> Classified:
         wk = zero_grade(st)
         return Classified(NounSpec(st, wk, "hysterokinetic", g if g in ("m", "f") else "m") if wk else None,
                           "shape:er-stem", "noun")
+    if f.endswith("tōr"):                       # amphikinetic agent noun: ǵʰéwtōr, ǵʰéwtorm̥
+        root = _strip(f, "tōr")
+        wk = zero_grade(root)
+        if wk:
+            return Classified(NounSpec(root + "tor", wk + "tr̥", "amphikinetic", g if g in ("m", "f") else "m",
+                                       nom_sg=f), "shape:tor-agent", "noun")
     if f.endswith(("ís", "ús")):
         st = _strip(f, "s")
         weak = _deaccent(st[:-1]) + ("éy" if f.endswith("ís") else "éw")

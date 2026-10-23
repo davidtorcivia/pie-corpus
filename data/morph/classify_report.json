@@ -2,13 +2,13 @@
  "entries": 6363,
  "coverage": {
   "table": 587,
-  "usable": 3453,
-  "unknown": 1798,
+  "usable": 3468,
+  "unknown": 1783,
   "indeclinable": 89,
-  "shape": 3889
+  "shape": 3904
  },
- "inflectable": 4476,
- "usable_for_tier3": 3453,
+ "inflectable": 4491,
+ "usable_for_tier3": 3468,
  "usable_threshold": 0.85,
  "backtest": {
   "indeclinable": {
@@ -17,10 +17,10 @@
   },
   "shape:athematic-root": {
    "tables": 41,
-   "cells_ok": 871,
-   "cells": 984,
+   "cells_ok": 2698,
+   "cells": 3034,
    "tables_exact": 34,
-   "cell_accuracy": 0.8852
+   "cell_accuracy": 0.8893
   },
   "shape:devi": {
    "tables": 4,
@@ -73,8 +73,8 @@
   },
   "shape:perfect": {
    "tables": 20,
-   "cells_ok": 260,
-   "cells": 260,
+   "cells_ok": 640,
+   "cells": 640,
    "tables_exact": 20,
    "cell_accuracy": 1.0
   },
@@ -87,10 +87,10 @@
   },
   "shape:root-aorist": {
    "tables": 22,
-   "cells_ok": 264,
-   "cells": 300,
+   "cells_ok": 997,
+   "cells": 1160,
    "tables_exact": 17,
-   "cell_accuracy": 0.88
+   "cell_accuracy": 0.8595
   },
   "shape:s-stem-neuter": {
    "tables": 27,
@@ -122,10 +122,17 @@
   },
   "shape:thematic-present": {
    "tables": 69,
-   "cells_ok": 1656,
-   "cells": 1656,
+   "cells_ok": 5106,
+   "cells": 5106,
    "tables_exact": 69,
    "cell_accuracy": 1.0
+  },
+  "shape:tor-agent": {
+   "tables": 4,
+   "cells_ok": 72,
+   "cells": 76,
+   "tables_exact": 0,
+   "cell_accuracy": 0.9474
   },
   "shape:u-adj": {
    "tables": 16,
@@ -151,14 +158,14 @@
    "cell_accuracy": null
   },
   "unknown:noun-shape": {
-   "tables": 110,
+   "tables": 106,
    "cell_accuracy": null
   }
  },
  "by_rule": {
   "shape:thematic": 1248,
   "shape:thematic-present": 1128,
-  "unknown:noun-shape": 904,
+  "unknown:noun-shape": 889,
   "unknown": 796,
   "table": 587,
   "shape:eh2": 369,
@@ -173,6 +180,7 @@
   "shape:devi": 45,
   "unknown:middle-only": 37,
   "shape:thematic-adj": 30,
+  "shape:tor-agent": 15,
   "shape:n-stem-hk": 9,
   "shape:er-stem": 8,
   "shape:root-aorist": 5,

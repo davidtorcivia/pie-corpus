@@ -69,6 +69,10 @@ def key(form: str, tier: str) -> str:
         f = re.sub("(?<=[aeo])i(?![aeiou])", "y", f)
         f = re.sub("(?<=[aeo])u(?![aeiou])", "w", f)
         f = re.sub("(?<=w)([kg])ʷ|([kg])ʷ(?=[wu])", lambda m: m[1] or m[2], f)
+        # voicing assimilation written out: h₃rḗḱs for underlying h₃rḗǵs
+        # (NFC: ǵ is precomposed U+01F5, so it is mapped on its own)
+        f = re.sub("ǵʰ?(?=[st])", "ḱ", f)
+        f = re.sub("([bdg])(ʷ?)ʰ?(?=[st])", lambda m: {"b": "p", "d": "t", "g": "k"}[m[1]] + m[2], f)
     if tier in ("decolored", "generic-H"):
         # laryngeal coloring written out (h₂a, ah₂) vs. underlying e
         f = re.sub("(h₂|H)a", r"\1e", re.sub("a(h₂|H)", r"e\1", f))

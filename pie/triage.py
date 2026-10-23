@@ -31,6 +31,11 @@ def _drop_laryngeals(s: str) -> str:
 # Forms whose nominative is lexical, not derivable from the stem args (*ḱérd- → ḱḗr).
 # Handled by a nom_sg override in the lexicon, not by a rule.
 _LEXICAL = {"ḱḗr"}
+# Single tables with an unusual arg shape, explained individually.
+_ODD_TABLES = {
+    "str̥néh₃ti": "weak stem given as str̥nh₃é- (accented final vowel); the module then builds o-grade "
+                 "middle endings (str̥nh₃óh₂er)",
+}
 _NUMERALS = {"tréyes", "kʷetwóres", "óynos", "dwóh₁", "pénkʷe", "swéḱs", "septḿ̥", "oḱtṓ", "h₁néwn̥", "déḱm̥"}
 
 
@@ -50,6 +55,16 @@ def classify(m: dict) -> str:
         return "numeral-hand-table"
     if m["form"] in _LEXICAL:
         return "lexical-exception"
+    if m["form"] in _ODD_TABLES:
+        return "wikt-odd-table"
+    # hiatus left unsyllabified: térh₂u-oh₂ where the engine writes térh₂w-oh₂
+    def _glide(y):
+        return re.sub("([iu])(?=[aeoāēō])", lambda x: {"i": "y", "u": "w"}[x[1]], y)
+    if w - e and all(_glide(y) != y for y in w - e) and all(_glide(y) in e for y in w):
+        return "wikt-hiatus-unsyllabified"
+    # participle cells holding finite middle forms: a tagging error in the extraction
+    if m["feature"] == "PTCP" and not any(x.endswith(("nts", "nos", "wṓs", "wōs")) for x in w):
+        return "wikt-mistagged-cell"
     # final deaspiration / delabialization in bare (endingless) forms
     if all(x in w or _strip_final_mods(x) in w for x in e) and any(_strip_final_mods(x) != x for x in e - w):
         return "wikt-final-deaspiration"

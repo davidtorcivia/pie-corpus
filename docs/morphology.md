@@ -120,6 +120,12 @@ The order is: a Wiktionary table if the entry has one; otherwise a shape rule on
 
 `data/morph/closed_class.json` holds hand tables: personal pronouns (with enclitics), the reflexive, *so/seh₂/tod*, *kʷi-/kʷo-*, numerals 2–4 declined and 5–10 indeclinable, and core particles. Also handbook-standard and UNVERIFIED. *óynos* declines through the engine as a thematic adjective.
 
-## Phase B (not built)
+## Phase B (verbal: built)
 
-Middle and mediopassive endings, subjunctive, optative, participles (*-ent-*, *-mh₁no-*, *-wos-*), sigmatic aorist stem formation, r/n heteroclite plurals and collectives, derivational suffixes (*-tér-, -tó-, -ti-, -mn̥, -yo-*), generative root ablaut.
+`conjugate(..., phase_b=True)` adds the middle (primary *-h₂er/-th₂er/-tor*, secondary *-h₂e/-th₂e/-to*, zero-grade alternatives *-ór/-ró*), subjunctive (thematic lengthened *-ēti*; athematic strong stem + short vowel; *e*-grade in the perfect), optative (*-oy-*; *-yéh₁-/-ih₁-*), participles (*-onts/-omnos*, *-ónts/-m̥h₁nós*, perfect *-wṓs*), and middle imperatives. An accented stem takes zero-grade *-n̥t* in OPT.3PL and PTCP (*bʰúHih₁n̥t*, *h₁édn̥ts*). Handbook alternatives attested in Tier 1: middle imperative *-eswo* and future imperative *-tōd* (Byrd 2013).
+
+Cross-check with these cells in scope: **14,023/14,197 cells (98.8%)**, 0 unexplained. New Wiktionary idiosyncrasy classes: `wikt-hiatus-unsyllabified` (*térh₂u-oh₂*), `wikt-mistagged-cell` (participle cells holding finite middle forms), `wikt-odd-table` (*str̥néh₃ti*).
+
+Layer 2 gains a *-tōr* agent-noun rule (backtest 94.7%).
+
+**Still not built (Phase B, nominal):** declension of participles, sigmatic aorist stem formation, r/n heteroclite plurals and collectives, derivational suffixes (*-tér-, -tó-, -ti-, -mn̥, -yo-*), generative root ablaut.

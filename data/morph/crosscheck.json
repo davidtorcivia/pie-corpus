@@ -1,23 +1,20 @@
 {
  "by_group": {
   "ine-conj-impf|-": {
-   "cells_ok": 2735,
-   "cells_out_of_scope": 2163,
-   "tables_ok": 113,
-   "cells_bad": 3,
-   "tables_bad": 3,
+   "cells_ok": 4845,
+   "tables_ok": 108,
+   "cells_bad": 56,
+   "tables_bad": 8,
    "out_of_scope_tables": 4
   },
   "ine-conj-pf|-": {
-   "cells_ok": 314,
-   "tables_ok": 18,
-   "cells_out_of_scope": 399,
-   "cells_bad": 4,
-   "tables_bad": 4
+   "cells_bad": 6,
+   "cells_ok": 711,
+   "tables_bad": 5,
+   "tables_ok": 17
   },
   "ine-conj-stat|-": {
-   "cells_ok": 254,
-   "cells_out_of_scope": 380,
+   "cells_ok": 634,
    "cells_bad": 6,
    "tables_bad": 6,
    "tables_ok": 14
@@ -108,12 +105,12 @@
   }
  },
  "total": {
-  "cells_ok": 11136,
-  "tables_ok": 582,
-  "cells_bad": 119,
-  "tables_bad": 33,
-  "cells_out_of_scope": 3379,
-  "out_of_scope_tables": 10
+  "cells_ok": 14023,
+  "tables_ok": 576,
+  "cells_bad": 174,
+  "tables_bad": 39,
+  "out_of_scope_tables": 10,
+  "cells_out_of_scope": 437
  },
  "mismatches": [
   {
@@ -363,6 +360,589 @@
    ]
   },
   {
+   "lex_id": "pie-lex-Hrunepti",
+   "form": "Hrunépti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hrunép",
+    "2": "Hrump"
+   },
+   "feature": "PRS.1SG",
+   "wiktionary": [
+    "Hrunépmi"
+   ],
+   "engine": [
+    "Hrunépmi",
+    "Hrumph₂ér"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hrunepti",
+   "form": "Hrunépti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hrunép",
+    "2": "Hrump"
+   },
+   "feature": "PRS.2SG",
+   "wiktionary": [
+    "Hrunépsi"
+   ],
+   "engine": [
+    "Hrunépsi",
+    "Hrumpth₂ér"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hrunepti",
+   "form": "Hrunépti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hrunép",
+    "2": "Hrump"
+   },
+   "feature": "SBJV.2SG",
+   "wiktionary": [
+    "Hrunépesi"
+   ],
+   "engine": [
+    "Hrunépesi",
+    "Hrunépeth₂er"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hrunepti",
+   "form": "Hrunépti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hrunép",
+    "2": "Hrump"
+   },
+   "feature": "PRS.3SG",
+   "wiktionary": [
+    "Hrunépti"
+   ],
+   "engine": [
+    "Hrunépti",
+    "Hrumptór",
+    "Hrumpór"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hrunepti",
+   "form": "Hrunépti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hrunép",
+    "2": "Hrump"
+   },
+   "feature": "PST.3SG",
+   "wiktionary": [
+    "Hrunépt"
+   ],
+   "engine": [
+    "Hrunépt",
+    "Hrumptó",
+    "Hrumpó"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hrunepti",
+   "form": "Hrunépti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hrunép",
+    "2": "Hrump"
+   },
+   "feature": "SBJV.3SG",
+   "wiktionary": [
+    "Hrunépeti"
+   ],
+   "engine": [
+    "Hrunépeti",
+    "Hrunépetor"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hrunepti",
+   "form": "Hrunépti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hrunép",
+    "2": "Hrump"
+   },
+   "feature": "SBJV.2PL",
+   "wiktionary": [
+    "Hrunépete"
+   ],
+   "engine": [
+    "Hrunépete",
+    "Hrunépedʰh₂we"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hrunepti",
+   "form": "Hrunépti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hrunép",
+    "2": "Hrump"
+   },
+   "feature": "SBJV.3PL",
+   "wiktionary": [
+    "Hrunéponti"
+   ],
+   "engine": [
+    "Hrunéponti",
+    "Hrunépontor"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-HrewdHti",
+   "form": "HréwdHti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "HréwdH",
+    "2": "HrudH"
+   },
+   "feature": "PRS.1SG",
+   "wiktionary": [
+    "HréwdHmi"
+   ],
+   "engine": [
+    "HréwdHmi",
+    "HrudHh₂ér"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-HrewdHti",
+   "form": "HréwdHti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "HréwdH",
+    "2": "HrudH"
+   },
+   "feature": "PRS.2SG",
+   "wiktionary": [
+    "HréwdHsi"
+   ],
+   "engine": [
+    "HréwdHsi",
+    "HrudHth₂ér"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-HrewdHti",
+   "form": "HréwdHti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "HréwdH",
+    "2": "HrudH"
+   },
+   "feature": "SBJV.2SG",
+   "wiktionary": [
+    "HréwdHesi"
+   ],
+   "engine": [
+    "HréwdHesi",
+    "HréwdHeth₂er"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-HrewdHti",
+   "form": "HréwdHti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "HréwdH",
+    "2": "HrudH"
+   },
+   "feature": "PRS.3SG",
+   "wiktionary": [
+    "HréwdHti"
+   ],
+   "engine": [
+    "HréwdHti",
+    "HrudHtór",
+    "HrudHór"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-HrewdHti",
+   "form": "HréwdHti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "HréwdH",
+    "2": "HrudH"
+   },
+   "feature": "PST.3SG",
+   "wiktionary": [
+    "HréwdHt"
+   ],
+   "engine": [
+    "HréwdHt",
+    "HrudHtó",
+    "HrudHó"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-HrewdHti",
+   "form": "HréwdHti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "HréwdH",
+    "2": "HrudH"
+   },
+   "feature": "SBJV.3SG",
+   "wiktionary": [
+    "HréwdHeti"
+   ],
+   "engine": [
+    "HréwdHeti",
+    "HréwdHetor"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-HrewdHti",
+   "form": "HréwdHti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "HréwdH",
+    "2": "HrudH"
+   },
+   "feature": "SBJV.2PL",
+   "wiktionary": [
+    "HréwdHete"
+   ],
+   "engine": [
+    "HréwdHete",
+    "HréwdHedʰh₂we"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-HrewdHti",
+   "form": "HréwdHti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "HréwdH",
+    "2": "HrudH"
+   },
+   "feature": "SBJV.3PL",
+   "wiktionary": [
+    "HréwdHonti"
+   ],
+   "engine": [
+    "HréwdHonti",
+    "HréwdHontor"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hrewpt",
+   "form": "Hréwpt",
+   "template": "ine-conj-pf",
+   "args": {
+    "1": "Hréwp",
+    "2": "Hrup"
+   },
+   "feature": "AOR.2SG",
+   "wiktionary": [
+    "Hréwps"
+   ],
+   "engine": [
+    "Hréwps",
+    "Hrupth₂é"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hrewpt",
+   "form": "Hréwpt",
+   "template": "ine-conj-pf",
+   "args": {
+    "1": "Hréwp",
+    "2": "Hrup"
+   },
+   "feature": "AOR.3SG",
+   "wiktionary": [
+    "Hréwpt"
+   ],
+   "engine": [
+    "Hréwpt",
+    "Hruptó",
+    "Hrupó"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "PRS.2SG",
+   "wiktionary": [
+    "Hyowdʰéyesi"
+   ],
+   "engine": [
+    "Hyowdʰéyesi",
+    "Hyowdʰéyeth₂er"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "PST.2SG",
+   "wiktionary": [
+    "Hyowdʰéyes"
+   ],
+   "engine": [
+    "Hyowdʰéyes",
+    "Hyowdʰéyeth₂e"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "IMP.2SG",
+   "wiktionary": [
+    "Hyowdʰéye"
+   ],
+   "engine": [
+    "Hyowdʰéye",
+    "Hyowdʰéyeso"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "SBJV.2SG",
+   "wiktionary": [
+    "Hyowdʰéyēsi"
+   ],
+   "engine": [
+    "Hyowdʰéyēsi",
+    "Hyowdʰéyēth₂er"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "PRS.3SG",
+   "wiktionary": [
+    "Hyowdʰéyeti"
+   ],
+   "engine": [
+    "Hyowdʰéyeti",
+    "Hyowdʰéyetor"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "PST.3SG",
+   "wiktionary": [
+    "Hyowdʰéyet"
+   ],
+   "engine": [
+    "Hyowdʰéyet",
+    "Hyowdʰéyeto"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "SBJV.3SG",
+   "wiktionary": [
+    "Hyowdʰéyēti"
+   ],
+   "engine": [
+    "Hyowdʰéyēti",
+    "Hyowdʰéyētor"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "PRS.2PL",
+   "wiktionary": [
+    "Hyowdʰéyete"
+   ],
+   "engine": [
+    "Hyowdʰéyete",
+    "Hyowdʰéyedʰh₂we"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "PST.2PL",
+   "wiktionary": [
+    "Hyowdʰéyete"
+   ],
+   "engine": [
+    "Hyowdʰéyete",
+    "Hyowdʰéyedʰh₂we"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "IMP.2PL",
+   "wiktionary": [
+    "Hyowdʰéyete"
+   ],
+   "engine": [
+    "Hyowdʰéyete",
+    "Hyowdʰéyedʰh₂we"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "SBJV.2PL",
+   "wiktionary": [
+    "Hyowdʰéyēte"
+   ],
+   "engine": [
+    "Hyowdʰéyēte",
+    "Hyowdʰéyēdʰh₂we"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "PRS.3PL",
+   "wiktionary": [
+    "Hyowdʰéyonti"
+   ],
+   "engine": [
+    "Hyowdʰéyonti",
+    "Hyowdʰéyontor"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "SBJV.3PL",
+   "wiktionary": [
+    "Hyowdʰéyōnti"
+   ],
+   "engine": [
+    "Hyowdʰéyōnti",
+    "Hyowdʰéyōntor"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "PTCP",
+   "wiktionary": [
+    "Hyowdʰéyeth₂e"
+   ],
+   "engine": [
+    "Hyowdʰéyonts",
+    "Hyowdʰéyomnos"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "PTCP",
+   "wiktionary": [
+    "Hyowdʰéyeso"
+   ],
+   "engine": [
+    "Hyowdʰéyonts",
+    "Hyowdʰéyomnos"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "PTCP",
+   "wiktionary": [
+    "Hyowdʰéyetor"
+   ],
+   "engine": [
+    "Hyowdʰéyonts",
+    "Hyowdʰéyomnos"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "Hyowdʰéye"
+   },
+   "feature": "PTCP",
+   "wiktionary": [
+    "Hyowdʰéyeto"
+   ],
+   "engine": [
+    "Hyowdʰéyonts",
+    "Hyowdʰéyomnos"
+   ]
+  },
+  {
    "lex_id": "pie-lex-HeHkjus",
    "form": "HéHḱus",
    "template": "ine-decl-adj",
@@ -513,7 +1093,8 @@
    ],
    "engine": [
     "bʰérǵʰ",
-    "bʰr̥ǵʰdʰí"
+    "bʰr̥ǵʰdʰí",
+    "bʰr̥ǵʰsó"
    ]
   },
   {
@@ -1242,7 +1823,8 @@
    ],
    "engine": [
     "linékʷ",
-    "linkʷdʰí"
+    "linkʷdʰí",
+    "linkʷsó"
    ]
   },
   {
@@ -1261,7 +1843,8 @@
    ],
    "engine": [
     "léykʷ",
-    "likʷdʰí"
+    "likʷdʰí",
+    "likʷsó"
    ]
   },
   {
@@ -1375,7 +1958,8 @@
    ],
    "engine": [
     "léyǵʰ",
-    "liǵʰdʰí"
+    "liǵʰdʰí",
+    "liǵʰsó"
    ]
   },
   {
@@ -2240,6 +2824,208 @@
    ]
   },
   {
+   "lex_id": "pie-lex-strneh3ti",
+   "form": "str̥néh₃ti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "str̥néh₃",
+    "2": "str̥nh₃é"
+   },
+   "feature": "PRS.1SG",
+   "wiktionary": [
+    "str̥néh₃mi",
+    "str̥nh₃óh₂er"
+   ],
+   "engine": [
+    "str̥néh₃mi",
+    "str̥nh₃éh₂er"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-strneh3ti",
+   "form": "str̥néh₃ti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "str̥néh₃",
+    "2": "str̥nh₃é"
+   },
+   "feature": "PST.1SG",
+   "wiktionary": [
+    "str̥néh₃m̥",
+    "str̥nh₃óh₂e"
+   ],
+   "engine": [
+    "str̥néh₃m̥",
+    "str̥nh₃éh₂e"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-strneh3ti",
+   "form": "str̥néh₃ti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "str̥néh₃",
+    "2": "str̥nh₃é"
+   },
+   "feature": "PRS.3SG",
+   "wiktionary": [
+    "str̥néh₃ti",
+    "str̥nh₃étor"
+   ],
+   "engine": [
+    "str̥néh₃ti",
+    "str̥nh₃étor",
+    "str̥nh₃éor"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-strneh3ti",
+   "form": "str̥néh₃ti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "str̥néh₃",
+    "2": "str̥nh₃é"
+   },
+   "feature": "PST.3SG",
+   "wiktionary": [
+    "str̥néh₃t",
+    "str̥nh₃éto"
+   ],
+   "engine": [
+    "str̥néh₃t",
+    "str̥nh₃éto",
+    "str̥nh₃éo"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-strneh3ti",
+   "form": "str̥néh₃ti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "str̥néh₃",
+    "2": "str̥nh₃é"
+   },
+   "feature": "PRS.1DU",
+   "wiktionary": [
+    "str̥nh₃éwos",
+    "str̥nh₃ówosdʰh₂"
+   ],
+   "engine": [
+    "str̥nh₃éwos",
+    "str̥nh₃éwosdʰh₂"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-strneh3ti",
+   "form": "str̥néh₃ti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "str̥néh₃",
+    "2": "str̥nh₃é"
+   },
+   "feature": "PST.1DU",
+   "wiktionary": [
+    "str̥nh₃éwe",
+    "str̥nh₃ówedʰh₂"
+   ],
+   "engine": [
+    "str̥nh₃éwe",
+    "str̥nh₃éwedʰh₂"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-strneh3ti",
+   "form": "str̥néh₃ti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "str̥néh₃",
+    "2": "str̥nh₃é"
+   },
+   "feature": "PRS.1PL",
+   "wiktionary": [
+    "str̥nh₃émos",
+    "str̥nh₃ómosdʰh₂"
+   ],
+   "engine": [
+    "str̥nh₃émos",
+    "str̥nh₃émosdʰh₂"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-strneh3ti",
+   "form": "str̥néh₃ti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "str̥néh₃",
+    "2": "str̥nh₃é"
+   },
+   "feature": "PST.1PL",
+   "wiktionary": [
+    "str̥nh₃éme",
+    "str̥nh₃ómedʰh₂"
+   ],
+   "engine": [
+    "str̥nh₃éme",
+    "str̥nh₃émedʰh₂"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-strneh3ti",
+   "form": "str̥néh₃ti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "str̥néh₃",
+    "2": "str̥nh₃é"
+   },
+   "feature": "PRS.3PL",
+   "wiktionary": [
+    "str̥nh₃énti",
+    "str̥nh₃óntor"
+   ],
+   "engine": [
+    "str̥nh₃énti",
+    "str̥nh₃éntor",
+    "str̥nh₃éror"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-strneh3ti",
+   "form": "str̥néh₃ti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "str̥néh₃",
+    "2": "str̥nh₃é"
+   },
+   "feature": "PST.3PL",
+   "wiktionary": [
+    "str̥nh₃ént",
+    "str̥nh₃ónto"
+   ],
+   "engine": [
+    "str̥nh₃ént",
+    "str̥nh₃énto",
+    "str̥nh₃éro"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-strneh3ti",
+   "form": "str̥néh₃ti",
+   "template": "ine-conj-impf",
+   "args": {
+    "1": "str̥néh₃",
+    "2": "str̥nh₃é"
+   },
+   "feature": "PTCP",
+   "wiktionary": [
+    "str̥nh₃ónts",
+    "str̥nh₃ómnos"
+   ],
+   "engine": [
+    "str̥nh₃énts",
+    "str̥nh₃émh₁nos"
+   ]
+  },
+  {
    "lex_id": "pie-lex-steyks",
    "form": "stéyks",
    "template": "ine-decl-noun-mf",
@@ -2383,7 +3169,8 @@
    ],
    "engine": [
     "télh₂",
-    "tl̥h₂dʰí"
+    "tl̥h₂dʰí",
+    "tl̥h₂só"
    ]
   },
   {
@@ -2403,6 +3190,159 @@
    "engine": [
     "térh₂",
     "tr̥h₂dʰí"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-terh2uti",
+   "form": "térh₂uti",
+   "template": "ine-conj-impf",
+   "args": {
+    "v": "actv",
+    "1": "térh₂u",
+    "2": "tr̥h₂u"
+   },
+   "feature": "SBJV.1SG",
+   "wiktionary": [
+    "térh₂uoh₂"
+   ],
+   "engine": [
+    "térh₂woh₂"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-terh2uti",
+   "form": "térh₂uti",
+   "template": "ine-conj-impf",
+   "args": {
+    "v": "actv",
+    "1": "térh₂u",
+    "2": "tr̥h₂u"
+   },
+   "feature": "SBJV.2SG",
+   "wiktionary": [
+    "térh₂uesi"
+   ],
+   "engine": [
+    "térh₂wesi"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-terh2uti",
+   "form": "térh₂uti",
+   "template": "ine-conj-impf",
+   "args": {
+    "v": "actv",
+    "1": "térh₂u",
+    "2": "tr̥h₂u"
+   },
+   "feature": "SBJV.3SG",
+   "wiktionary": [
+    "térh₂ueti"
+   ],
+   "engine": [
+    "térh₂weti"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-terh2uti",
+   "form": "térh₂uti",
+   "template": "ine-conj-impf",
+   "args": {
+    "v": "actv",
+    "1": "térh₂u",
+    "2": "tr̥h₂u"
+   },
+   "feature": "SBJV.1DU",
+   "wiktionary": [
+    "térh₂uowos"
+   ],
+   "engine": [
+    "térh₂wowos"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-terh2uti",
+   "form": "térh₂uti",
+   "template": "ine-conj-impf",
+   "args": {
+    "v": "actv",
+    "1": "térh₂u",
+    "2": "tr̥h₂u"
+   },
+   "feature": "SBJV.2DU",
+   "wiktionary": [
+    "térh₂uetes"
+   ],
+   "engine": [
+    "térh₂wetes"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-terh2uti",
+   "form": "térh₂uti",
+   "template": "ine-conj-impf",
+   "args": {
+    "v": "actv",
+    "1": "térh₂u",
+    "2": "tr̥h₂u"
+   },
+   "feature": "SBJV.3DU",
+   "wiktionary": [
+    "térh₂uetes"
+   ],
+   "engine": [
+    "térh₂wetes"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-terh2uti",
+   "form": "térh₂uti",
+   "template": "ine-conj-impf",
+   "args": {
+    "v": "actv",
+    "1": "térh₂u",
+    "2": "tr̥h₂u"
+   },
+   "feature": "SBJV.1PL",
+   "wiktionary": [
+    "térh₂uomos"
+   ],
+   "engine": [
+    "térh₂womos"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-terh2uti",
+   "form": "térh₂uti",
+   "template": "ine-conj-impf",
+   "args": {
+    "v": "actv",
+    "1": "térh₂u",
+    "2": "tr̥h₂u"
+   },
+   "feature": "SBJV.2PL",
+   "wiktionary": [
+    "térh₂uete"
+   ],
+   "engine": [
+    "térh₂wete"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-terh2uti",
+   "form": "térh₂uti",
+   "template": "ine-conj-impf",
+   "args": {
+    "v": "actv",
+    "1": "térh₂u",
+    "2": "tr̥h₂u"
+   },
+   "feature": "SBJV.3PL",
+   "wiktionary": [
+    "térh₂uonti"
+   ],
+   "engine": [
+    "térh₂wonti"
    ]
   },
   {

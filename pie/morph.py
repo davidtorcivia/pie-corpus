@@ -340,13 +340,111 @@ def _voiced_secondary(out: Cells, conv: str) -> Cells:
     return out
 
 
-def conjugate(spec: VerbSpec, convention: str = "handbook", alternatives: bool = True) -> Cells:
-    """Active indicative and imperative cells. Middle, subjunctive, optative
-    and participles are Phase B."""
+def conjugate(spec: VerbSpec, convention: str = "handbook", alternatives: bool = True,
+              phase_b: bool = True) -> Cells:
+    """Active indicative and imperative (Phase A), plus middle, subjunctive,
+    optative and participles (Phase B) unless phase_b=False.
+    Feature names: PRS.3SG, MID.PRS.3SG, SBJV.3SG, MID.OPT.1PL, PTCP.ACT, ..."""
     assert convention in CONVENTIONS
-    out = _conjugate(spec, convention)
+
+    def run(conv):
+        cells = _conjugate(spec, conv)
+        if phase_b:
+            cells.update(_phase_b(spec, conv))
+        return cells
+
+    out = run(convention)
     if alternatives:
-        out = _merge(out, _conjugate(spec, "handbook" if convention == "wiktionary" else "wiktionary"))
+        out = _merge(out, run("handbook" if convention == "wiktionary" else "wiktionary"))
+    return out
+
+
+# --- Phase B: middle, subjunctive, optative, participles --------------------
+# Endings follow Wiktionary's conjugation module; the cross-check measures it.
+# Each slot lists alternatives; None = no form.
+_P = PERSONS
+_TH_MID_PRS = ["oh₂er", "eth₂er", "etor", "owosdʰh₂", None, None, "omosdʰh₂", "edʰh₂we", "ontor"]
+_TH_MID_PST = ["oh₂e", "eth₂e", "eto", "owedʰh₂", None, None, "omedʰh₂", "edʰh₂we", "onto"]
+_TH_SBJV = ["ōh₂", "ēsi", "ēti", "ōwos", "ētes", "ētes", "ōmos", "ēte", "ōnti"]
+_TH_MID_SBJV = ["ōh₂er", "ēth₂er", "ētor", "ōwosdʰh₂", None, None, "ōmosdʰh₂", "ēdʰh₂we", "ōntor"]
+_TH_OPT = ["oyh₁m̥", "oys", "oyt", "oywe", "oytom", "oytām", "oyme", "oyte", "oyh₁n̥t"]
+_TH_MID_OPT = ["oyh₂e", "oyth₂e", ["oyto", "oyh₁o"], "oywedʰh₂", None, None, "oymedʰh₂", "oydʰh₂we", "oyro"]
+# short-vowel subjunctive of athematic stems (strong stem + thematic vowel)
+_SH_SBJV = ["oh₂", "esi", "eti", "owos", "etes", "etes", "omos", "ete", "onti"]
+_SH_MID_SBJV = ["oh₂er", "eth₂er", "etor", "owosdʰh₂", None, None, "omosdʰh₂", "edʰh₂we", "ontor"]
+_ATH_MID_PRS = ["h₂ér", "th₂ér", ["tór", "ór"], "wósdʰh₂", None, None, "mósdʰh₂", "dʰh₂wé", ["n̥tór", "rór"]]
+_ATH_MID_PST = ["h₂é", "th₂é", ["tó", "ó"], "wédʰh₂", None, None, "médʰh₂", "dʰh₂wé", ["n̥tó", "ró"]]
+_ATH_OPT_SG = ["yéh₁m̥", "yéh₁s", "yéh₁t"]
+_ATH_OPT_PL = ["ih₁wé", "ih₁tóm", "ih₁tā́m", "ih₁mé", "ih₁té", "ih₁ént"]
+_ATH_MID_OPT = ["ih₁h₂é", "ih₁th₂é", ["ih₁tó", "ih₁ó"], "ih₁wédʰh₂", None, None, "ih₁médʰh₂", "ih₁dʰh₂wé", "ih₁ró"]
+
+
+def _slots(prefix: str, table, make) -> Cells:
+    out: Cells = {}
+    for pn, e in zip(_P, table):
+        if e is None:
+            continue
+        out[f"{prefix}.{pn}"] = [make(x) for x in (e if isinstance(e, list) else [e])]
+    return out
+
+
+def _phase_b(spec: VerbSpec, conv: str) -> Cells:
+    wk = conv == "wiktionary"
+    fix = pinault if wk else (lambda x: x)
+    out: Cells = {}
+    tense = {"impf": "PRS", "pf": "AOR", "stat": "PRF"}[spec.kind]
+    if spec.thematic:
+        stem = fix(_p(_bare(spec.strong)))
+        base, tv_acc = stem[:-1], stem[-1].acc
+
+        def th(e: str) -> str:
+            es = _p(e)
+            if tv_acc:
+                es = [replace(es[0], acc=True)] + es[1:]
+            return render(fix(base + es))
+
+        if spec.kind == "impf":
+            out.update(_slots("MID.PRS", _TH_MID_PRS, th))
+        out.update(_slots("MID.PST" if spec.kind == "impf" else f"MID.{tense}", _TH_MID_PST, th))
+        out["MID.IMP.2SG"] = [th("eso")] + ([th("eswo")] if conv == "handbook" else [])   # -eswo: Byrd 2013
+        out["MID.IMP.2PL"] = [th("edʰh₂we")]
+        if conv == "handbook":
+            out["IMP.FUT.2SG"] = out["IMP.FUT.3SG"] = [th("etōd")]   # future imperative -tōd (Byrd ǵn̥h₁yetōd)
+        out.update(_slots("SBJV", _TH_SBJV, th))
+        out.update(_slots("MID.SBJV", _TH_MID_SBJV, th))
+        out.update(_slots("OPT", _TH_OPT, th))
+        out.update(_slots("MID.OPT", _TH_MID_OPT, th))
+        out["PTCP.ACT"] = [th("onts")]
+        out["PTCP.MID"] = [th("omnos")]
+        return out
+
+    strong = fix(_p(_bare(spec.strong)))
+    weak = fix(_p(_bare(spec.weak or spec.strong)))
+
+    def on(stem, e: str) -> str:
+        if has_accent(stem) and e in ("ih₁ént", "ónts"):
+            e = {"ih₁ént": "ih₁n̥t", "ónts": "n̥ts"}[e]   # accented stem: zero-grade -n̥t (bʰúHih₁n̥t, h₁édn̥ts)
+        return render(fix(join(stem, _p(e))))
+
+    # subjunctive stem: the strong stem, e-grade in the perfect (wóyd- → wéyd-)
+    sbjv = [replace(x, base="e") if (spec.kind == "stat" and x.kind == "V" and x.base == "o" and x.acc) else x
+            for x in strong]
+    out.update(_slots("SBJV", _SH_SBJV, lambda e: on(sbjv, e)))
+    out.update({k: v for k, v in _slots("OPT", [*_ATH_OPT_SG, *_ATH_OPT_PL], lambda e: on(weak, e)).items()})
+    if spec.kind == "stat":
+        out["PTCP.ACT"] = [on(weak, "wṓs")]
+        return out
+    if spec.kind == "impf":
+        out.update(_slots("MID.PRS", _ATH_MID_PRS, lambda e: on(weak, e)))
+    out.update(_slots("MID.PST" if spec.kind == "impf" else "MID.AOR", _ATH_MID_PST, lambda e: on(weak, e)))
+    if conv == "handbook":
+        out["IMP.FUT.2SG"] = out["IMP.FUT.3SG"] = [on(strong, "tōd")]
+    out["MID.IMP.2SG"] = [on(weak, "só")]
+    out["MID.IMP.2PL"] = [on(weak, "dʰh₂wé")]
+    out.update(_slots("MID.SBJV", _SH_MID_SBJV, lambda e: on(sbjv, e)))
+    out.update(_slots("MID.OPT", _ATH_MID_OPT, lambda e: on(weak, e)))
+    out["PTCP.ACT"] = [on(weak, "ónts")]
+    out["PTCP.MID"] = [on(weak, "m̥h₁nós")]
     return out
 
 

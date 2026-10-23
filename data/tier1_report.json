@@ -4,14 +4,14 @@
   "king-and-god-byrd-2013": {
    "lines": 12,
    "tokens": 55,
-   "miss:near-miss": 14,
-   "match:exact": 19,
-   "match:noaccent": 12,
-   "miss:engine-gap": 1,
-   "match:nolength": 4,
-   "miss:lexicon-gap": 4,
+   "match:nolength": 9,
+   "match:exact": 21,
+   "match:noaccent": 13,
+   "miss:near-miss": 7,
+   "match:generic-H": 1,
+   "miss:lexicon-gap": 3,
    "match:decolored": 1,
-   "coverage": 0.655
+   "coverage": 0.818
   },
   "king-and-god-hamp-sen-1997": {
    "lines": 11,
@@ -47,14 +47,15 @@
   "schleicher-fable-byrd-2013": {
    "lines": 6,
    "tokens": 61,
-   "match:exact": 30,
+   "match:exact": 31,
    "match:decolored": 7,
-   "miss:engine-gap": 3,
    "match:noaccent": 6,
    "match:generic-H": 1,
    "miss:lexicon-gap": 6,
-   "miss:near-miss": 8,
-   "coverage": 0.721
+   "miss:near-miss": 7,
+   "miss:engine-gap": 2,
+   "match:nolength": 1,
+   "coverage": 0.754
   },
   "schleicher-fable-danka-1986": {
    "lines": 5,
@@ -112,10 +113,10 @@
   "schleicher-fable-lehmann-zgusta-1979": {
    "lines": 5,
    "tokens": 63,
-   "miss:near-miss": 23,
+   "miss:near-miss": 22,
    "match:noaccent": 10,
    "match:exact": 4,
-   "miss:lexicon-gap": 13,
+   "miss:lexicon-gap": 14,
    "miss:engine-gap": 3,
    "miss:pre-laryngeal": 5,
    "match:nolength": 5,
@@ -125,10 +126,10 @@
    "lines": 5,
    "tokens": 54,
    "match:exact": 25,
-   "miss:near-miss": 9,
+   "miss:near-miss": 8,
    "match:noaccent": 3,
    "miss:engine-gap": 5,
-   "miss:lexicon-gap": 8,
+   "miss:lexicon-gap": 9,
    "match:nolength": 4,
    "coverage": 0.593
   },

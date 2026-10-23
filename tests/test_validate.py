@@ -54,3 +54,9 @@ def test_accent_tiers_keep_palatals():
     assert key("ḱléwos", "noaccent") == "ḱlewos"
     assert key("ǵʰéyōm", "nolength") == "ǵʰeyom"
     assert key("ḱ", "generic-H") != key("k", "generic-H")
+
+
+def test_written_assimilation_matches_underlying():
+    # Byrd writes h₃rḗḱs for underlying h₃rḗǵs (NFC ǵ is precomposed)
+    assert key("h₃rḗḱs", "nolength") == key("h₃rḗǵs", "nolength")
+    assert key("wóydt", "nolength") == key("wóytt", "nolength")

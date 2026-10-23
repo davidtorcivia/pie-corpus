@@ -20,7 +20,7 @@ _CASE = {"nominative": "NOM", "vocative": "VOC", "accusative": "ACC", "genitive"
          "ablative": "ABL", "dative": "DAT", "locative": "LOC", "instrumental": "INS"}
 _NUM = {"singular": "SG", "dual": "DU", "plural": "PL"}
 _PERSON = {"first-person": "1", "second-person": "2", "third-person": "3"}
-_SKIP_VERB = {"subjunctive", "optative", "participle"}
+_SKIP_VERB: set[str] = set()   # Phase B: subjunctive, optative and participles are in scope
 
 
 def noun_feature(tags: list[str]) -> str | None:
@@ -34,12 +34,18 @@ def noun_feature(tags: list[str]) -> str | None:
 def verb_feature(tags: list[str], kind: str) -> str | None:
     if _SKIP_VERB & set(tags):
         return None
+    if "participle" in tags:
+        return "PTCP"
     p = [_PERSON[t] for t in tags if t in _PERSON]
     n = [_NUM[t] for t in tags if t in _NUM]
     if len(p) != 1 or len(n) != 1:
         return None
     if "imperative" in tags:
         mood = "IMP"
+    elif "subjunctive" in tags:
+        mood = "SBJV"
+    elif "optative" in tags:
+        mood = "OPT"
     elif kind == "impf":
         mood = "PRS" if "present" in tags else "PST" if "past" in tags else None
     else:
@@ -61,14 +67,25 @@ def cells_for(family: str, spec, convention: str = "wiktionary") -> dict[str, li
     return conjugate(spec, convention, alternatives=False)
 
 
+def _wikt_verb_cells(spec, active_only: bool) -> dict[str, list[str]]:
+    """Engine verb cells keyed like Wiktionary's table, which puts the active
+    and middle forms of a person in one cell (PTCP.ACT/MID → PTCP)."""
+    out: dict[str, list[str]] = collections.defaultdict(list)
+    for k, v in conjugate(spec, "wiktionary", alternatives=False).items():
+        if active_only and (k.startswith("MID.") or k == "PTCP.MID"):
+            continue
+        base = "PTCP" if k.startswith("PTCP") else k.removeprefix("MID.")
+        out[base] += [x for x in v if x not in out[base]]
+    return dict(out)
+
+
 def _engine_one(t: dict) -> tuple[str, dict[str, list[str]], str] | None:
     got = spec_from_template(t)
     if got is None:
         return None
     family, spec = got
     if family == "verb":
-        mode = "exact" if t["args"].get("v") == "actv" else "active-subset"
-        return f"verb-{spec.kind}", cells_for(family, spec), mode
+        return f"verb-{spec.kind}", _wikt_verb_cells(spec, t["args"].get("v") == "actv"), "exact"
     return family, cells_for(family, spec), "exact"
 
 
