@@ -84,7 +84,9 @@ def _line_english(v: dict, i: int, line: dict, group: dict | None) -> tuple[str 
         return line["english"], "source line"
     if group and len(group.get("lines", [])) == len(v["lines"]):
         en = group["lines"][i]
-        return (en.get("text") if isinstance(en, dict) else en), f"group translation ({group.get('from')})"
+        if isinstance(en, dict):
+            en = en.get("text") or en.get("source_form")
+        return (_PARA.sub("", en) if en else None), f"group translation ({group.get('from')})"
     return None, None
 
 
