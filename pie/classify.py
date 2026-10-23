@@ -84,6 +84,8 @@ def _deaccent(s: str) -> str:
 
 def by_shape(e: dict) -> Classified:
     f, pos, g = e["form"], e.get("pos"), e.get("gender")
+    if pos == "num" and f.endswith(("os", "ós")):
+        return Classified(AdjSpec(f[:-1]), "shape:thematic-adj", "adj")   # óynos "one"
     if pos in INDECLINABLE_POS or f.startswith("-") or f.endswith("-") or " " in f:
         return Classified(None, "indeclinable" if pos in INDECLINABLE_POS else "unknown", None)
     is_verb = pos == "verb" or (pos is None and f.endswith(("ti", "tor", "toy")))

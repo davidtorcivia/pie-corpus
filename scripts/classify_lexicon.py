@@ -76,10 +76,16 @@ def main() -> int:
             continue
         p = paras.get(e["id"])
         c = None
+        extra = []
         if p:
             got = spec_from_template(p["templates"][0])
             if got:
                 c = Classified(got[1], "table", got[0])
+            # further templates on the same page (a second accent class, ...)
+            for t in p["templates"][1:]:
+                g2 = spec_from_template(t)
+                if g2:
+                    extra.append({"family": g2[0], "spec": dataclasses.asdict(g2[1])})
         if c is None:
             c = by_shape(e)
         cov[c.rule.split(":")[0] if c.spec is None else ("table" if c.rule == "table" else "shape")] += 1
@@ -88,7 +94,7 @@ def main() -> int:
         cov["usable"] += usable
         rows.append({"id": e["id"], "form": e["form"], "rule": c.rule, "family": c.family,
                      "spec": dataclasses.asdict(c.spec) if c.spec else None,
-                     "backtest_cell_accuracy": acc, "usable": usable})
+                     "backtest_cell_accuracy": acc, "usable": usable, "extra_specs": extra})
     with (OUT / "inflection_specs.jsonl").open("w", encoding="utf-8") as f:
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")

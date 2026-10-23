@@ -100,7 +100,9 @@ _THEMATIC = {
         "NOM.DU": ["oh₁"], "VOC.DU": ["oh₁"], "ACC.DU": ["oh₁"],
         # ACC.PL: -oms, with -ons (Fortson) and lengthened -ōns (Byrd) as written variants
         "NOM.PL": ["ōs"], "VOC.PL": ["ōs"], "ACC.PL": ["oms", "ons", "ōns"], "GEN.PL": ["ōm"],
-        "ABL.PL": ["oybʰos", "omos"], "DAT.PL": ["oybʰos", "omos"], "LOC.PL": ["oysu"], "INS.PL": ["ōys"],
+        # -oybʰyos: Indo-Iranian-style variant written by Byrd 2013 and Adams 1997
+        "ABL.PL": ["oybʰos", "omos", "oybʰyos"], "DAT.PL": ["oybʰos", "omos", "oybʰyos"], "LOC.PL": ["oysu"],
+        "INS.PL": ["ōys"],
     },
 }
 _THEMATIC_NEUTER = {
@@ -223,7 +225,8 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
         out["ACC.PL"] = [render(_add(strong, "ms"))]
     out["GEN.PL"] = ([w("ṓm", "ōm")] if hb else []) + [w("óHom", "oHom")]
     mos, bhos = w("mós", "mos", obl), w("bʰós", "bʰos", obl)
-    out["DAT.PL"] = out["ABL.PL"] = [bhos, mos] if hb else [mos, bhos]
+    # -bʰyos: variant written by Byrd 2013 and Adams 1997 (h₂áwibʰyos)
+    out["DAT.PL"] = out["ABL.PL"] = [bhos, mos, w("bʰyós", "bʰyos", obl)] if hb else [mos, bhos]
     out["LOC.PL"] = [w("sú", "su", obl)]
     mis, bhis = w("mís", "mis", obl), w("bʰís", "bʰis", obl)
     out["INS.PL"] = [bhis, mis] if hb else [mis, bhis]

@@ -12,7 +12,7 @@
  "usable_threshold": 0.85,
  "backtest": {
   "indeclinable": {
-   "tables": 5,
+   "tables": 4,
    "cell_accuracy": null
   },
   "shape:athematic-root": {
@@ -107,11 +107,11 @@
    "cell_accuracy": 0.8551
   },
   "shape:thematic-adj": {
-   "tables": 84,
-   "cells_ok": 1558,
-   "cells": 1596,
-   "tables_exact": 82,
-   "cell_accuracy": 0.9762
+   "tables": 85,
+   "cells_ok": 1577,
+   "cells": 1615,
+   "tables_exact": 83,
+   "cell_accuracy": 0.9765
   },
   "shape:thematic-neuter": {
    "tables": 16,

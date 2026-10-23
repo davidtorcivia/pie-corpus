@@ -25,6 +25,10 @@ Every cell is a **list** of forms, primary first. Forms are produced as segment 
 
 With `alternatives=True` (the default), each cell lists the other convention's forms after the primary ones.
 
+Further `handbook` alternatives written by the Tier 1 scholarly texts: the secondary 3sg/3pl *-ed/-ond* beside *-et/-ont* (Byrd 2013), dative/ablative plural *-bʰyos* and *-oybʰyos* (Byrd 2013, Adams 1997), and thematic acc. pl. *-ons/-ōns* (Fortson-style *-ons*; Byrd *h₁éḱwōns*).
+
+**Tiebreaker measured (2026-10-23):** validator coverage on the laryngealist Tier 1 texts is higher under `handbook` on every text (docs/audits/tier1-validation-2026-10-23.md).
+
 **The default is `handbook`. This is my interpretation of the fixed decision, not a reopening of it.** PLAN §1 makes Wiktionary/LIV canonical for **notation** (symbols). I read that as governing symbols, not paradigm reconstructions. The corpus argument for contracted thematics is that the Tier 1 scholarly texts (Byrd, Kortlandt, …) use them, so Tier 3 would otherwise differ from Tier 1 in a way the model would learn. **Empirical tiebreaker:** Phase 3 validator coverage on Tier 1 texts under each convention. Nothing is lost either way, because the alternatives stay in every cell.
 
 ## Phonological rules (all in `phon.py`)

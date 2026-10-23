@@ -1,6 +1,6 @@
 # Status
 
-**Current phase:** Phase 2 is built. Layer 1 (spec → paradigm) regenerates Wiktionary's tables at 98.9% cell agreement with every mismatch triaged. Layer 2 (lemma → spec) gives 3,453 lexemes a backtested, usable spec, covering 821/885 roots. Next: Phase 3 (validator). Phases 1 and 2 are both "built, acceptance pending books".
+**Current phase:** Phase 4 (Tier 1) is collected: 26 versions of the two texts, all verified. Phase 3 validation runs at 55–72% coverage on the laryngealist versions, every miss classified. **Phase B (middle, participles, pronominal declension) is now the critical path**: it is what most remaining misses need. Earlier: Phase 2 is built. Layer 1 (spec → paradigm) regenerates Wiktionary's tables at 98.9% cell agreement with every mismatch triaged. Layer 2 (lemma → spec) gives 3,453 lexemes a backtested, usable spec, covering 821/885 roots. Next: Phase 3 (validator). Phases 1 and 2 are both "built, acceptance pending books".
 
 ## Phases
 
@@ -9,9 +9,9 @@
 | 0 Scaffolding & notation | **done** | NFC↔ASCII round-trip on ≥200 tricky forms: **pass** (382 listed forms: 157 hand-written with expected ASCII + 225 generated; plus 5,000 fuzzed; 1,807 tests) |
 | 1 Lexicon | **built, acceptance pending** | ≥2,000 entries: 2,226 glossed, 7,401 total ✅ · ≥800 verbal roots: **730** ❌ · 50-entry handbook spot check: pending books (provisional review in `docs/audits/`) |
 | 2 Morphology engine | **built, acceptance pending books** | Wiktionary regeneration: 11,136/11,255 cells (98.9%), 582/615 tables, **0 unexplained** ✅ · PLAN golden paradigms: 11/11 pass, but the source is unverified (pending Fortson/Ringe) |
-| 3 Validator | **built**; acceptance waits on Tier 1 texts | Tier 1 laryngealist versions ≥90% token coverage, every miss classified |
+| 3 Validator | **built; not accepted**: 55–72% on the laryngealist versions (docs/audits/tier1-validation-2026-10-23.md); gated on Phase B | Tier 1 laryngealist versions ≥90% token coverage, every miss classified |
 | 3b Sound-law checker | — | full lexicon run, mismatch report |
-| 4 Tier 1 scholarly | — | 200–500 cited lines + adversarial review |
+| 4 Tier 1 scholarly | **texts collected** (26 versions: 2 texts, 1868–2013, 104 lines); formulas wait on Watkins/West | 200–500 cited lines + adversarial review |
 | 5 Tier 2 back-projection | — | ≥300 lines, ≥8 clusters + adversarial review |
 | 6 Tier 3 / 3b synthetic | — | 1–10M tokens, <10% reject, dedup, audit |
 | 7 Export + benchmark | — | splits, task views, bench |
@@ -29,7 +29,8 @@
 | Engine agreement with Wiktionary tables | 98.9% of cells (docs/morphology.md) |
 | Inflectable lexemes (Layer 2) | 4,476 with a spec; **3,453 usable** for Tier 3 (table or rule backtested ≥85%) |
 | Roots with ≥1 usable lexeme | 821/885 (93%); verbal 691/730 |
-| Records per tier (1 / 2 / 3 / 3b) | 0 / 0 / 0 / 0 |
+| Records per tier (1 / 2 / 3 / 3b) | 104 (73 with canonical `pie`; 31 documentary) / 0 / 0 / 0 |
+| Tier 1 validator coverage, laryngealist versions | Byrd fable 72.1%, Byrd King 65.5%, Adams 65.2%, Lühr 59.3%, Hamp/Sen 55.0% (fuzzy-tier precision about 19/21) |
 | Tokens per tier | — |
 | Neologism share of training tokens | — (cap 10–15%) |
 | Validator pass rate | — |
@@ -75,7 +76,7 @@ All in one place. None of these block work in progress; each one has a default t
 2. **Phase 1 targets.**
    - (a) May the "≥2,000 entries" target be met by *glossed* entries (2,226)? The 5,470 unglossed tree derivatives are a separate, lower-confidence kind.
    - (b) Verbal roots are 730, against a target of 800. The options are **LIV²** (authoritative; also supplies aspect for the 614 roots classified by gloss), or a harvest from the kaikki daughter-language dumps (more roots, no aspect). *Default:* waiting for LIV².
-3. **Paradigm convention for corpus text.** I read "Wiktionary/LIV conventions are canonical" (PLAN §1) as being about *notation*, not paradigm reconstructions, so corpus text defaults to the **handbook** forms (contracted thematic *-ōs/-ōy/-ōd*, as in the Tier 1 texts). Wiktionary-convention forms are kept as alternatives in every cell. The tiebreaker will be Phase 3 validator coverage on Tier 1 texts under each convention. Tell me if you meant the stricter reading.
+3. ~~**Paradigm convention for corpus text.**~~ **Settled by measurement:** with the index built under one convention alone, `handbook` beats `wiktionary` on every laryngealist Tier 1 text (Byrd 67.2 vs 60.7%; Lühr 53.7 vs 51.9; Adams 47.0 vs 43.9; Byrd King 63.6 vs 60.0; Hamp/Sen tie). The default stays `handbook`. Original note: I read "Wiktionary/LIV conventions are canonical" (PLAN §1) as being about *notation*, not paradigm reconstructions, so corpus text defaults to the **handbook** forms (contracted thematic *-ōs/-ōy/-ōd*, as in the Tier 1 texts). Wiktionary-convention forms are kept as alternatives in every cell. The tiebreaker will be Phase 3 validator coverage on Tier 1 texts under each convention. Tell me if you meant the stricter reading.
 4. **GitHub.** The repo is local only. Do you want a private remote, and under which account?
 
 ## IDEAS.md disposition
@@ -89,6 +90,8 @@ Everything in IDEAS.md is folded into PLAN.md, and nothing is rejected outright.
 - **Dashboard (7).** The metrics are in STATUS.md now. The HTML Artifact version is deferred until there is data to show (Phase 1+).
 
 ## Log
+
+- **2026-10-23. Tier 1 collected and validated.** 5 collection subagents; every source verified independently (re-fetch, sha256, page image), with primary and secondary copies agreeing letter for letter. 7 new notation rules plus per-source profiles. Validator additions: decolored and glide-spelling tiers, table-cell index, exact-only matching for short tokens (from a precision check: *tu* "then" ≠ *tú*). Engine: handbook variants *-ed/-ond* and *-bʰyos*, as attested by Byrd and Adams. Classifier bug fixed: numerals in *-os* now decline. The convention tiebreaker was measured, and handbook wins.
 
 - **2026-10-23. Phase 3 (built).** `pie/validate.py` builds a form index of ~90k forms (every cell of every spec, both conventions and alternatives, closed classes, lexicon lemmas; 3.5 s) and does tiered lookup (exact → no accent → no length → generic H). It splits off clitics and the augment, and gives every miss one class (notation / phase-b:<class> / engine-gap / pre-laryngeal / variant-of-known-lexeme / lexicon-gap). A test caught the accent-stripping tiers deleting the palatal acute of ḱ; fixed. Five collection subagents are gathering the Tier 1 texts in parallel.
 

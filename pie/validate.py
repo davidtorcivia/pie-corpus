@@ -63,6 +63,12 @@ def key(form: str, tier: str) -> str:
         f = _strip_marks(f, ACUTE)
     if tier in ("nolength", "decolored", "generic-H"):
         f = _strip_marks(f, MACRON)
+    if tier in ("nolength", "decolored", "generic-H"):
+        # diphthongs written with vowel letters (h₁oinom = h₁óynom, weukʷét = wéwkʷet),
+        # and the boukólos rule written or not (wéwkʷet ~ wéwket)
+        f = re.sub("(?<=[aeo])i(?![aeiou])", "y", f)
+        f = re.sub("(?<=[aeo])u(?![aeiou])", "w", f)
+        f = re.sub("(?<=w)([kg])ʷ|([kg])ʷ(?=[wu])", lambda m: m[1] or m[2], f)
     if tier in ("decolored", "generic-H"):
         # laryngeal coloring written out (h₂a, ah₂) vs. underlying e
         f = re.sub("(h₂|H)a", r"\1e", re.sub("a(h₂|H)", r"e\1", f))
@@ -97,13 +103,18 @@ class Token:
 
 
 class FormIndex:
-    def __init__(self, lexicon: list[dict], specs: list[dict], closed: dict):
+    def __init__(self, lexicon: list[dict], specs: list[dict], closed: dict, convention: str | None = None):
+        """convention=None indexes both conventions with alternatives (normal use);
+        "handbook" or "wiktionary" indexes that convention alone (for comparing them)."""
         self.lex = {e["id"]: e for e in lexicon}
+        self.convention = convention
         self.idx: dict[str, dict[str, list[Analysis]]] = {t: collections.defaultdict(list) for t in TIERS}
         self.lemma_forms: dict[str, list[str]] = collections.defaultdict(list)   # for miss classification
         for r in specs:
             if r["spec"]:
                 self._add_spec(r)
+            for x in r.get("extra_specs", []):
+                self._add_spec({**r, "family": x["family"], "spec": x["spec"]})
         self._add_closed(closed)
         for e in lexicon:
             if e["kind"] == "root":
@@ -125,15 +136,29 @@ class FormIndex:
         root = e.get("root_id")
         src = f"engine:{r['rule']}" + ("" if r.get("usable") else ":unusable")
         fam, sp = r["family"], r["spec"]
+        conv = self.convention or "handbook"
+        alt = self.convention is None
         if fam == "noun":
-            cells = {(None, k): v for k, v in decline(NounSpec(**sp)).items()}
+            cells = {(None, k): v for k, v in decline(NounSpec(**sp), conv, alt).items()}
         elif fam == "adj":
-            cells = {(g, k): v for g, cs in decline_adj(AdjSpec(**sp)).items() for k, v in cs.items()}
+            cells = {(g, k): v for g, cs in decline_adj(AdjSpec(**sp), conv, alt).items() for k, v in cs.items()}
         else:
-            cells = {(None, k): v for k, v in conjugate(VerbSpec(**sp)).items()}
+            cells = {(None, k): v for k, v in conjugate(VerbSpec(**sp), conv, alt).items()}
         for (g, feat), forms in cells.items():
             for f in forms:
                 self._add(f, Analysis(r["id"], root, feat, src, g or e.get("gender")))
+
+    def add_table_cells(self, paradigms: list[dict]) -> None:
+        """Every cell of every clean Wiktionary table, verbatim, including the
+        classes the engine does not build yet (middle, subjunctive, optative,
+        participles). These forms are attested in the lexicon source."""
+        for p in paradigms:
+            e = self.lex.get(p["lex_id"], {})
+            for c in p["cells"]:
+                feat = "+".join(c["tags"])
+                for f in c["forms"]:
+                    if not f.startswith("-"):
+                        self._add(f, Analysis(p["lex_id"], e.get("root_id"), feat, "wiktionary-cell"))
 
     def _add_closed(self, closed: dict) -> None:
         def walk(node, path):
@@ -158,11 +183,15 @@ class FormIndex:
         return None, []
 
 
-def load_index(root: Path = ROOT) -> FormIndex:
+def load_index(root: Path = ROOT, convention: str | None = None) -> FormIndex:
     lex = [json.loads(x) for x in (root / "data/lexicon/lexicon.jsonl").read_text("utf-8").splitlines()]
     specs = [json.loads(x) for x in (root / "data/morph/inflection_specs.jsonl").read_text("utf-8").splitlines()]
     closed = json.loads((root / "data/morph/closed_class.json").read_text("utf-8"))
-    return FormIndex(lex, specs, closed)
+    ix = FormIndex(lex, specs, closed, convention)
+    if convention is None:
+        paras = [json.loads(x) for x in (root / "data/lexicon/paradigms.jsonl").read_text("utf-8").splitlines()]
+        ix.add_table_cells(paras)
+    return ix
 
 
 # --- tokenization and analysis -----------------------------------------------
@@ -223,10 +252,18 @@ def _classify_miss(tok: Token, ix: FormIndex, laryngealist: bool = True) -> None
     near = difflib.get_close_matches(key(f, "generic-H"), list(ix.lemma_forms), n=3, cutoff=0.8)
     if near:
         # the lexeme is known, reconstructed differently (wl\u0325h₂néh₂ vs h₂wĺ\u0325h₂neh₂)
-        tok.miss = "variant-of-known-lexeme"
+        tok.miss = "near-miss"
         tok.miss_detail = "; ".join(f"{n} → {ix.lemma_forms[n][:2]}" for n in near)
         return
     tok.miss = "lexicon-gap"
+
+
+def _segments(form: str) -> list:
+    from .phon import parse
+    try:
+        return parse(form)
+    except ValueError:
+        return list(form)
 
 
 def analyze_token(surface: str, ix: FormIndex, laryngealist: bool = True) -> Token:
@@ -240,7 +277,9 @@ def analyze_token(surface: str, ix: FormIndex, laryngealist: bool = True) -> Tok
             tok.miss = "lexicon-gap"
         return tok
     tier, an = ix.lookup(surface)
-    if an:
+    if an and (tier == "exact" or len(_segments(surface)) > 2):
+        # Short tokens must match exactly: fuzzy tiers turn the particle tu
+        # "then" into the pronoun tú (precision check, Byrd 2013).
         tok.tier, tok.analyses = tier, an
         return tok
     for c in CLITICS:                           # unhyphenated host+clitic
