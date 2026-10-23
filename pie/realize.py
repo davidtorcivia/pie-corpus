@@ -284,6 +284,9 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                 h = s.get("head")
                 if h is None or not (0 <= h < len(slots)) or slots[h].get("role") in ("V", "MOD", "ADV"):
                     errs.append(f"{where}: MOD needs a nominal head slot")
+            if fam == "adj" and role not in ("MOD", "PRED") and not s.get("gender"):
+                errs.append(f"{where}: an adjective used as a noun ('the Swift One') needs a gender "
+                            f"(m, f or n) for whom it names")
             if role == "MOD" and fam not in ("adj",) and not lid.startswith("closed:") and ptcp is None:
                 errs.append(f"{where}: MOD needs an adjective, {lid} is a {fam}")
         if not errs:

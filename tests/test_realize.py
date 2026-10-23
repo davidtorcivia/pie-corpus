@@ -121,7 +121,7 @@ def test_nested_possessor_modifier_is_kept():
         {"lex_id": "pie-lex-megjh2s", "role": "MOD", "head": 1},
         V(SEE)]}]})
     # "great" agrees with "king's" (genitive, weak stem), and nothing is dropped
-    assert r["pie"] == "m̥ǵh₂és h₃réǵs dʰugh₂tḗr spéḱyeti."
+    assert r["pie"] == "m̥ǵh₂és h₃rēǵés dʰugh₂tḗr spéḱyeti."   # lengthened grade throughout (Lat. rēgis)
 
 
 def test_sentence_break_and_noun_coordination():
@@ -170,7 +170,7 @@ def _ptcp_plan(subj, voice, subj_role="SUBJ"):
     return {"english": "x", "clauses": [{"slots": [
         {"lex_id": subj, "role": subj_role, "num": "SG"},
         {"lex_id": "pie-lex-bhereti", "role": "MOD", "head": 0, "participle": {"voice": voice}},
-        {"lex_id": "pie-lex-bhoros", "role": "OBJ", "num": "SG", "dep": 1},
+        {"lex_id": "pie-lex-bhoros", "role": "OBJ", "num": "SG", "dep": 1, "gender": "m"},
         {"lex_id": "pie-lex-h1ekjwos", "role": "OBJ" if subj_role == "SUBJ" else "SUBJ", "num": "PL"},
         {"lex_id": "pie-lex-dedorkje", "role": "V", "verb": {"tense": "PRF"}}]}]}
 
