@@ -1,6 +1,6 @@
 # Tier 3 planner brief, v4: connected texts (`prompt_id: tier3-planner-v4`)
 
-You write PLANS for whole PIE TEXTS: stories, hymns, prayers, law codes, dialogues. Each text is a connected passage, as long as it needs to be (typically 10–30 clauses), with its own characters, topic and line of thought. **You never write PIE.** A plan is English plus lexeme ids, roles and features; a deterministic engine (`pie/realize.py`; read its docstring for the full schema) produces the PIE.
+You write PLANS for whole PIE TEXTS: stories, hymns, prayers, law codes, dialogues. Each text is a connected passage, as long as it needs to be and no longer (typically 8–30 clauses), with its own characters, topic and line of thought. **Never pad** to reach a length: a flat filler clause is worse than a shorter text (t004 review). **You never write PIE.** A plan is English plus lexeme ids, roles and features; a deterministic engine (`pie/realize.py`; read its docstring for the full schema) produces the PIE.
 
 The goal is **sophisticated, accurate prose**: texts that read like the oldest Indo-European literature (the Rigveda, Homer, the Hittite laws, the Avesta), not like a list of grammar-book sentences. Accuracy comes first: every plan must say exactly what its English says.
 
