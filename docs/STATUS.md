@@ -46,7 +46,7 @@
 
 ## Need from David
 
-**Books received 2026-10-23** (in `raw/books/`, gitignored; text extracted by `scripts/extract_books.py`): Fortson, Ringe, Watkins, West, Mallory & Adams (EPUB/PDF, usable text layers); LIV² (read from the DjVu page images by 11 transcription agents; merged 2026-10-23). In progress: Fortson paradigm verification, Watkins and West formulas and themes, the M&A 50-entry spot check.
+**Books received 2026-10-23** (in `raw/books/`, gitignored; text extracted by `scripts/extract_books.py`): Fortson, Ringe, Watkins, West, Mallory & Adams (EPUB/PDF, usable text layers); LIV² (read from the DjVu page images by 11 transcription agents; merged 2026-10-23). **Second delivery (2026-10-23, ~05:00):** NIL (Wodtko et al. 2008; OCR poor, so read from page images: pilot on 30 pages running), Beekes 2011 and the Klein–Joseph–Fritz *Handbook* (2018, incl. Lundquist & Yates on morphology: paradigm check running, same method as Fortson), Clackson 2007 (clean text; for the variants layer). In progress: Fortson paradigm verification, Watkins and West formulas and themes, the M&A 50-entry spot check.
 
 ## Phase 1 notes
 
