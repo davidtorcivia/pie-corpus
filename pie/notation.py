@@ -139,6 +139,8 @@ RULES: dict[str, Rule] = {
         Rule("P-KU-LABIO", "plain velar + u̯ (LIV's superscript ᵘ̯ transcribed on the line) → labiovelar: ku̯ gu̯ gʰu̯ → kʷ gʷ gʷʰ",
              _nfd(_sub("(?<![\u0301\u0302\u0311])([kg])(\u02b0?)u\u032f",
                        "\\1" + LAB + "\\2"))),
+        Rule("P-WEST-PAL", "West's palatals: ƙ (k with hook), and k/g + spacing circumflex ˆ → ḱ ǵ",
+             lambda s: re.sub("([kg])\u02c6", lambda m: m[1] + ACUTE, s.replace("\u0199", "k" + ACUTE))),
         Rule("P-STRIP-FOOTNOTE", "superscript footnote markers on forms (*bʰéh₁dʰ-e-² → *bʰéh₁dʰ-e-)",
              _sub("[\u00b9\u00b2\u00b3\u2070\u2074-\u2079]+", "")),
         Rule("P-DASH", "em/en dash used as punctuation → comma",
@@ -174,7 +176,7 @@ PROFILES: dict[str, list[str]] = {
     # Reference books (raw/books/); digits and hx are resolved before plain-h aspiration
     "fortson": _PRE + ["P-CARET-SUP", "G-LAR-DIGIT", "P-ASP-PLAIN-H"] + _GENERIC,
     "mallory-adams": _PRE + ["P-HX-ASCII", "G-LAR-DIGIT", "P-ASP-PLAIN-H", "P-SCHWA"] + _GENERIC,
-    "west": _PRE + ["P-SPACING-RING"] + _GENERIC,
+    "west": _PRE + ["P-SPACING-RING", "P-WEST-PAL"] + _GENERIC,
     "liv2": _PRE + ["P-STRIP-FOOTNOTE", "P-KU-LABIO"] + _GENERIC,
     "ringe": _PRE + ["P-SPACING-DIACRITICS", "P-SPACING-RING", "G-LAR-DIGIT", "P-ASP-PLAIN-H"] + _GENERIC,
 }

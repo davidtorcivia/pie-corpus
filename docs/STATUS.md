@@ -37,6 +37,7 @@
 | Neologism share of training tokens | — (cap 10–15%) |
 | Validator pass rate | — |
 | Sound-law mismatch rate | 5.2% of 5,315 initial-position checks (277 warnings) |
+| Themes | 456 motifs from West (2007) in 12 clusters (his chapters: Poet and Poesy … Arms and the Man), `data/themes/themes.jsonl` |
 | Genre × theme grid fill | — |
 
 ## Need from David
