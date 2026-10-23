@@ -106,6 +106,12 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0) -> dict
     ids = {r["id"] for r in tier1} & {r["id"] for r in train_recs}
     if leak or ids:
         raise ValueError(f"eval leakage: {len(leak)} shared PIE strings, {len(ids)} shared ids, e.g. {leak[:3]}")
+    # an eval line found verbatim inside a training text (Tier 3 reuses the formula menu on purpose):
+    # kept in eval but flagged, so a benchmark can report scores with and without them
+    big = "\n".join(r["pie"] for r in train_recs)
+    seen = {r["id"] for r in tier1 if len(r["pie"].rstrip(".").split()) >= 2 and r["pie"].rstrip(".").strip() in big}
+    tier1 = [{**r, "seen_in_train": r["id"] in seen} for r in tier1]
+    eval_tasks = [{**t, "seen_in_train": t.get("source_id") in seen} if "source_id" in t else t for t in eval_tasks]
     return {"train_records": train_recs, "eval_records": tier1, "train_tasks": train_tasks, "eval_tasks": eval_tasks}
 
 
