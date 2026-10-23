@@ -1,22 +1,25 @@
 {
- "_source": "docs/audits/tier2-review.md (round-1 adversarial review of the plans at commit 1fffadb)",
+ "_source": "round 1: docs/audits/tier2-review.md (plans at 1fffadb); round 2: docs/audits/tier2-review-r2.md (entries with review: r2)",
  "_rule": "a verdict applies only while the plan's sha matches (plan, cognate_refs, secure); a revised line is 'stale' until re-reviewed",
  "verdicts": {
   "cattle-raid-001": {
    "verdict": "sound",
-   "plan_sha": "ee1eace8ea69327a"
+   "plan_sha": "a2966a91be102cda",
+   "review": "r2"
   },
   "cattle-raid-002": {
    "verdict": "sound",
-   "plan_sha": "a9848d7b0ebf7f95"
+   "plan_sha": "518e8b073e51bc1a",
+   "review": "r2"
   },
   "cattle-raid-003": {
    "verdict": "sound",
    "plan_sha": "bec9ca370ab92d8e"
   },
   "cattle-raid-004": {
-   "verdict": "weak",
-   "plan_sha": "5e05f094fdc9937c"
+   "verdict": "reject",
+   "plan_sha": "529b79c19d5ee6f4",
+   "review": "r2"
   },
   "cattle-raid-005": {
    "verdict": "reject",
@@ -24,11 +27,13 @@
   },
   "cattle-raid-006": {
    "verdict": "weak",
-   "plan_sha": "5f860c0f3f1fd4dd"
+   "plan_sha": "b3998cf14aabdce5",
+   "review": "r2"
   },
   "cattle-raid-007": {
    "verdict": "weak",
-   "plan_sha": "79a04913320ac14a"
+   "plan_sha": "18d68ab4bef6b5ac",
+   "review": "r2"
   },
   "cattle-raid-008": {
    "verdict": "reject",
@@ -36,23 +41,28 @@
   },
   "dawn-sun-001": {
    "verdict": "sound",
-   "plan_sha": "4877125a8254e04d"
+   "plan_sha": "803ee47f856ebf63",
+   "review": "r2"
   },
   "dawn-sun-002": {
-   "verdict": "weak",
-   "plan_sha": "fd91c82850ac16a7"
+   "verdict": "reject",
+   "plan_sha": "b3de535c5fa4a082",
+   "review": "r2"
   },
   "dawn-sun-003": {
    "verdict": "weak",
-   "plan_sha": "8b611b8833521aec"
+   "plan_sha": "d4cfef9fbf89c67d",
+   "review": "r2"
   },
   "dawn-sun-004": {
    "verdict": "weak",
-   "plan_sha": "37255f9ccaa093c0"
+   "plan_sha": "e6e3246707184ae3",
+   "review": "r2"
   },
   "dawn-sun-005": {
    "verdict": "weak",
-   "plan_sha": "43360885320dc29b"
+   "plan_sha": "73237cb9c54bca7b",
+   "review": "r2"
   },
   "dawn-sun-006": {
    "verdict": "weak",
@@ -63,12 +73,14 @@
    "plan_sha": "fb74d006bb122cd6"
   },
   "dawn-sun-008": {
-   "verdict": "weak",
-   "plan_sha": "5752977490737b01"
+   "verdict": "reject",
+   "plan_sha": "af84b3edb17e3572",
+   "review": "r2"
   },
   "dawn-sun-009": {
    "verdict": "weak",
-   "plan_sha": "43a336a079d83790"
+   "plan_sha": "0840368cfa869435",
+   "review": "r2"
   },
   "dawn-sun-010": {
    "verdict": "sound",
@@ -76,15 +88,18 @@
   },
   "dawn-sun-011": {
    "verdict": "weak",
-   "plan_sha": "3e03273e90d1dc22"
+   "plan_sha": "d45005b004f321eb",
+   "review": "r2"
   },
   "dawn-sun-012": {
-   "verdict": "weak",
-   "plan_sha": "35bdb80bb5e39302"
+   "verdict": "reject",
+   "plan_sha": "bb26fc9e2fea9b65",
+   "review": "r2"
   },
   "dawn-sun-013": {
-   "verdict": "weak",
-   "plan_sha": "a8d01d269e2fafac"
+   "verdict": "reject",
+   "plan_sha": "3df3c1afbae5d43a",
+   "review": "r2"
   },
   "dawn-sun-014": {
    "verdict": "sound",
@@ -92,7 +107,8 @@
   },
   "dawn-sun-015": {
    "verdict": "weak",
-   "plan_sha": "45811d155004b8c3"
+   "plan_sha": "19ac47f180dad39a",
+   "review": "r2"
   },
   "dawn-sun-016": {
    "verdict": "sound",
@@ -100,7 +116,8 @@
   },
   "dawn-sun-017": {
    "verdict": "weak",
-   "plan_sha": "cc6cba07afad374b"
+   "plan_sha": "9901d6153b465e6e",
+   "review": "r2"
   },
   "dawn-sun-018": {
    "verdict": "sound",
@@ -112,15 +129,18 @@
   },
   "dawn-sun-020": {
    "verdict": "weak",
-   "plan_sha": "fcb059c40b1f58ac"
+   "plan_sha": "81e1422a1d683dec",
+   "review": "r2"
   },
   "dawn-sun-021": {
    "verdict": "weak",
-   "plan_sha": "2d0d93065abe4660"
+   "plan_sha": "ff29d91108470366",
+   "review": "r2"
   },
   "death-otherworld-001": {
-   "verdict": "weak",
-   "plan_sha": "a4b85ed57a966d77"
+   "verdict": "reject",
+   "plan_sha": "abca207fe8432195",
+   "review": "r2"
   },
   "death-otherworld-002": {
    "verdict": "weak",
@@ -131,12 +151,14 @@
    "plan_sha": "ce8684b7d210715d"
   },
   "death-otherworld-004": {
-   "verdict": "weak",
-   "plan_sha": "b9bb296e1e9a1cef"
+   "verdict": "sound",
+   "plan_sha": "40c8e95d3614f74a",
+   "review": "r2"
   },
   "death-otherworld-005": {
-   "verdict": "weak",
-   "plan_sha": "42d34ad901e6025b"
+   "verdict": "reject",
+   "plan_sha": "8bf9eb706c6e2aab",
+   "review": "r2"
   },
   "death-otherworld-006": {
    "verdict": "reject",
@@ -151,8 +173,9 @@
    "plan_sha": "8483a940a265e986"
   },
   "death-otherworld-009": {
-   "verdict": "weak",
-   "plan_sha": "851f2f7c7f6f5517"
+   "verdict": "reject",
+   "plan_sha": "b3b98261aa3b361a",
+   "review": "r2"
   },
   "death-otherworld-010": {
    "verdict": "weak",
@@ -168,7 +191,8 @@
   },
   "fame-002": {
    "verdict": "weak",
-   "plan_sha": "155bebc3766c5a6d"
+   "plan_sha": "14c8b6a9320176e5",
+   "review": "r2"
   },
   "fame-003": {
    "verdict": "sound",
@@ -176,27 +200,33 @@
   },
   "fame-004": {
    "verdict": "weak",
-   "plan_sha": "6ac75891bc9565eb"
+   "plan_sha": "6eae8eb726e1b90c",
+   "review": "r2"
   },
   "fame-005": {
    "verdict": "sound",
-   "plan_sha": "f72d9d96dc6f7cc3"
+   "plan_sha": "2f9a95b88da17de7",
+   "review": "r2"
   },
   "fame-006": {
    "verdict": "weak",
-   "plan_sha": "524c471dd269ee71"
+   "plan_sha": "d60ddfe6c84f0400",
+   "review": "r2"
   },
   "fame-007": {
    "verdict": "weak",
-   "plan_sha": "e7a19831b56c79ba"
+   "plan_sha": "ca2f86598f55bea8",
+   "review": "r2"
   },
   "fame-008": {
    "verdict": "weak",
-   "plan_sha": "e9f6f6942b0f3320"
+   "plan_sha": "c9fed0c1e2acd7a9",
+   "review": "r2"
   },
   "fame-009": {
    "verdict": "weak",
-   "plan_sha": "0f0ee09f07ecedf6"
+   "plan_sha": "174f4c0242660f00",
+   "review": "r2"
   },
   "fame-010": {
    "verdict": "weak",
@@ -204,11 +234,13 @@
   },
   "fame-011": {
    "verdict": "weak",
-   "plan_sha": "495b1400994f7a91"
+   "plan_sha": "603f04c0a142f159",
+   "review": "r2"
   },
   "fame-012": {
-   "verdict": "weak",
-   "plan_sha": "f5db7f789ac870b5"
+   "verdict": "reject",
+   "plan_sha": "ba2b266c75f5a710",
+   "review": "r2"
   },
   "fame-013": {
    "verdict": "sound",
@@ -220,19 +252,23 @@
   },
   "sky-father-001": {
    "verdict": "weak",
-   "plan_sha": "812218f1a6549956"
+   "plan_sha": "393737145340b025",
+   "review": "r2"
   },
   "sky-father-002": {
    "verdict": "weak",
-   "plan_sha": "f139129bdfd6d718"
+   "plan_sha": "c39e368148bc2124",
+   "review": "r2"
   },
   "sky-father-003": {
    "verdict": "sound",
-   "plan_sha": "88b76a3e482464b6"
+   "plan_sha": "f08bd5c5e4a62575",
+   "review": "r2"
   },
   "sky-father-004": {
-   "verdict": "weak",
-   "plan_sha": "2587a632cbe78b01"
+   "verdict": "reject",
+   "plan_sha": "a336b8b0f596d369",
+   "review": "r2"
   },
   "sky-father-005": {
    "verdict": "reject",
@@ -244,7 +280,8 @@
   },
   "sky-father-007": {
    "verdict": "weak",
-   "plan_sha": "7519307f79743295"
+   "plan_sha": "36113292048a2edd",
+   "review": "r2"
   },
   "sky-father-008": {
    "verdict": "sound",
@@ -255,8 +292,9 @@
    "plan_sha": "dbbda3018b2553a7"
   },
   "sky-father-010": {
-   "verdict": "weak",
-   "plan_sha": "f821dec38258b18f"
+   "verdict": "reject",
+   "plan_sha": "f48d977c6b65ed6a",
+   "review": "r2"
   },
   "sky-father-011": {
    "verdict": "sound",
@@ -267,20 +305,24 @@
    "plan_sha": "d48d76dfd4c0eddb"
   },
   "sky-father-013": {
-   "verdict": "weak",
-   "plan_sha": "58fcdba11a9ed326"
+   "verdict": "reject",
+   "plan_sha": "5a9e46819de22104",
+   "review": "r2"
   },
   "sky-father-014": {
    "verdict": "sound",
-   "plan_sha": "bce379910cf2b72d"
+   "plan_sha": "3849082b30ca6ae6",
+   "review": "r2"
   },
   "dragon-slaying-001": {
    "verdict": "sound",
-   "plan_sha": "7c18e0738a1607d5"
+   "plan_sha": "e11f55de1d695190",
+   "review": "r2"
   },
   "dragon-slaying-002": {
    "verdict": "weak",
-   "plan_sha": "7a4d19426cc29e95"
+   "plan_sha": "d9e59235a93bd4db",
+   "review": "r2"
   },
   "dragon-slaying-003": {
    "verdict": "reject",
@@ -296,7 +338,8 @@
   },
   "dragon-slaying-006": {
    "verdict": "sound",
-   "plan_sha": "167127c0098534fe"
+   "plan_sha": "8f34783844ee5018",
+   "review": "r2"
   },
   "dragon-slaying-007": {
    "verdict": "reject",
@@ -304,19 +347,23 @@
   },
   "dragon-slaying-008": {
    "verdict": "weak",
-   "plan_sha": "d6aa484f819e2ddb"
+   "plan_sha": "8eab7890f8389f16",
+   "review": "r2"
   },
   "dragon-slaying-009": {
-   "verdict": "weak",
-   "plan_sha": "ee0cf9244e27d208"
+   "verdict": "reject",
+   "plan_sha": "84abaca07dc58af4",
+   "review": "r2"
   },
   "dragon-slaying-010": {
    "verdict": "weak",
-   "plan_sha": "5ee699209acd7a1d"
+   "plan_sha": "589f3d71e6458756",
+   "review": "r2"
   },
   "dragon-slaying-011": {
-   "verdict": "weak",
-   "plan_sha": "f7bb43feefdf40f2"
+   "verdict": "sound",
+   "plan_sha": "6d010b1ac82e741d",
+   "review": "r2"
   },
   "dragon-slaying-012": {
    "verdict": "sound",
@@ -324,7 +371,8 @@
   },
   "dragon-slaying-013": {
    "verdict": "weak",
-   "plan_sha": "36edde94578d4973"
+   "plan_sha": "bb437f45725141f3",
+   "review": "r2"
   },
   "dragon-slaying-014": {
    "verdict": "reject",
@@ -336,31 +384,36 @@
   },
   "healing-charms-001": {
    "verdict": "sound",
-   "plan_sha": "8ebe7bbdadb9c944"
+   "plan_sha": "5bcaca111e8375a0",
+   "review": "r2"
   },
   "healing-charms-002": {
-   "verdict": "weak",
-   "plan_sha": "7a397c96eb7708b8"
+   "verdict": "reject",
+   "plan_sha": "55dae1efd4053568",
+   "review": "r2"
   },
   "healing-charms-003": {
    "verdict": "weak",
-   "plan_sha": "369a147bd51069b4"
+   "plan_sha": "ad6e90e6f78fdca5",
+   "review": "r2"
   },
   "healing-charms-004": {
    "verdict": "sound",
    "plan_sha": "69e104a1ff972d7f"
   },
   "healing-charms-005": {
-   "verdict": "weak",
-   "plan_sha": "3f4de50708dd33a2"
+   "verdict": "reject",
+   "plan_sha": "aa6ee1a0cee967a6",
+   "review": "r2"
   },
   "poetics-gifts-001": {
    "verdict": "sound",
    "plan_sha": "43d46ca6bc237a7f"
   },
   "poetics-gifts-002": {
-   "verdict": "weak",
-   "plan_sha": "bb27983649444ddc"
+   "verdict": "reject",
+   "plan_sha": "d9960f58767bec60",
+   "review": "r2"
   },
   "poetics-gifts-003": {
    "verdict": "sound",
@@ -383,20 +436,23 @@
    "plan_sha": "746ea75392680437"
   },
   "poetics-gifts-008": {
-   "verdict": "weak",
-   "plan_sha": "ab9838dc825bbcee"
+   "verdict": "sound",
+   "plan_sha": "8c0693b0dd51429a",
+   "review": "r2"
   },
   "poetics-gifts-009": {
    "verdict": "weak",
    "plan_sha": "e2de19af7ebc1ffb"
   },
   "poetics-gifts-010": {
-   "verdict": "weak",
-   "plan_sha": "c83ba3f477ecd789"
+   "verdict": "reject",
+   "plan_sha": "049b098225c7bd03",
+   "review": "r2"
   },
   "poetics-gifts-011": {
    "verdict": "weak",
-   "plan_sha": "ed086b8b30641ad6"
+   "plan_sha": "ca7795e89afaaf99",
+   "review": "r2"
   },
   "poetics-gifts-012": {
    "verdict": "sound",
@@ -408,43 +464,72 @@
   },
   "poetics-gifts-014": {
    "verdict": "weak",
-   "plan_sha": "041eb08698f8f7af"
+   "plan_sha": "6e1de463b3eb0491",
+   "review": "r2"
   },
   "poetics-gifts-015": {
-   "verdict": "weak",
-   "plan_sha": "a28b8800520eeada"
+   "verdict": "sound",
+   "plan_sha": "50bf0620d88651cc",
+   "review": "r2"
   },
   "divine-twins-001": {
    "verdict": "weak",
-   "plan_sha": "dd6bb8e8335a9c3a"
+   "plan_sha": "218c21ceafcbc610",
+   "review": "r2"
   },
   "divine-twins-002": {
    "verdict": "weak",
-   "plan_sha": "dbc3cbc6252009ff"
+   "plan_sha": "c2082002d79e15fc",
+   "review": "r2"
   },
   "divine-twins-003": {
-   "verdict": "weak",
-   "plan_sha": "b77004e4f177f618"
+   "verdict": "reject",
+   "plan_sha": "8e8e168efbb84fc9",
+   "review": "r2"
   },
   "divine-twins-004": {
-   "verdict": "sound",
-   "plan_sha": "18db8e8bf3fbbd95"
+   "verdict": "weak",
+   "plan_sha": "951559db9456bac8",
+   "review": "r2"
   },
   "divine-twins-005": {
-   "verdict": "weak",
-   "plan_sha": "42c8555dc9126705"
+   "verdict": "sound",
+   "plan_sha": "ad1f62985d12aa46",
+   "review": "r2"
   },
   "divine-twins-006": {
    "verdict": "weak",
-   "plan_sha": "3a1f3d4f2e100240"
+   "plan_sha": "e951147f7dd3f7bb",
+   "review": "r2"
   },
   "divine-twins-007": {
-   "verdict": "weak",
-   "plan_sha": "210fff1c1b63ef65"
+   "verdict": "reject",
+   "plan_sha": "5b8f6aec0720be63",
+   "review": "r2"
   },
   "divine-twins-008": {
    "verdict": "weak",
    "plan_sha": "a5afc06c00b41ae4"
+  },
+  "cattle-raid-009": {
+   "verdict": "weak",
+   "plan_sha": "42bb7ba8cd4ebab5",
+   "review": "r2"
+  },
+  "fame-015": {
+   "verdict": "sound",
+   "plan_sha": "cac842541b0446e4",
+   "review": "r2"
+  },
+  "healing-charms-006": {
+   "verdict": "sound",
+   "plan_sha": "9d44bd9e8e14d4de",
+   "review": "r2"
+  },
+  "sky-father-015": {
+   "verdict": "weak",
+   "plan_sha": "744d527af090223d",
+   "review": "r2"
   }
  }
 }
