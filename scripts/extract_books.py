@@ -24,6 +24,8 @@ BOOKS = ROOT / "raw" / "books"
 SLUGS = {"Proto-Germanic": "kroonen-pgmc", "Proto-Celtic": "matasovic-pcelt", "Textual Reconstruction": "matasovic-1996",
          "Baltic Inherited": "derksen-baltic", "Slavic Inherited": "derksen-slavic", "Italic Languages": "devaan-latin",
          "Armenian Inherited": "martirosyan-arm", "Altindoarischen": "ewaia", "Dichtersprache": "schmitt-1967",
+         "Etymological Dictionary of Greek": "beekes-edg", "Iranian Verb": "cheung-iranian",
+         "Tocharian B": "adams-tochb", "Earliest Religious Poetry": "jamison-brereton",
          "Latvju tautas": "dainas-endzelins", "chansons mythologiques": "jonval-1929",
          "Rix": "liv2", "Fortson": "fortson", "Ringe": "ringe", "Watkins": "watkins",
          "Mallory": "mallory-adams", "West": "west",
