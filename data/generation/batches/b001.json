@@ -1,39 +1,38 @@
 {
  "plans": 250,
- "realized": 239,
- "exact_pass": 239,
- "rejected": 11,
- "reject_rate": 0.044,
- "distinct_roots": 132,
- "roots_per_sentence": 0.552,
- "distinct_lexemes": 224,
+ "realized": 250,
+ "exact_pass": 250,
+ "reject_rate": 0.0,
+ "distinct_roots": 134,
+ "roots_per_sentence": 0.536,
+ "distinct_lexemes": 228,
  "max_lexeme_uses": 6,
  "most_used": [
   [
+   "pie-lex-wogjhos",
+   6
+  ],
+  [
+   "pie-lex-bhoros-2",
+   6
+  ],
+  [
+   "pie-lex-kwekwlos",
+   6
+  ],
+  [
+   "pie-lex-kjerh2wos",
+   6
+  ],
+  [
    "pie-lex-gwhenti",
-   6
-  ],
-  [
-   "pie-lex-dhenwr",
-   6
-  ],
-  [
-   "pie-lex-nisdos",
-   6
-  ],
-  [
-   "pie-lex-bhudhros",
-   6
-  ],
-  [
-   "pie-lex-gjhh2ens",
    6
   ]
  ],
  "dup_within": 0,
  "dup_across_batches": 0,
- "tokens": 1104,
- "words_per_sentence": 4.22,
+ "tokens": 1156,
+ "words_per_sentence": 4.23,
  "gates": {
   "reject_rate<=0.10": true,
   "max_lexeme_uses<=6": true,
