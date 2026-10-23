@@ -21,7 +21,7 @@ import pymupdf
 ROOT = Path(__file__).resolve().parent.parent
 BOOKS = ROOT / "raw" / "books"
 # title keys first: two books by one author (Matasović, Derksen, Mayrhofer's volumes) need distinct dirs
-SLUGS = {"Proto-Germanic": "kroonen-pgmc", "Proto-Celtic": "matasovic-pcelt", "Textual Reconstruction": "matasovic-1996",
+SLUGS = {"Dictionary of Proto-Germanic": "kroonen-pgmc", "Proto-Celtic": "matasovic-pcelt", "Textual Reconstruction": "matasovic-1996",
          "Baltic Inherited": "derksen-baltic", "Slavic Inherited": "derksen-slavic", "Italic Languages": "devaan-latin",
          "Armenian Inherited": "martirosyan-arm", "Altindoarischen": "ewaia", "Dichtersprache": "schmitt-1967",
          "Etymological Dictionary of Greek": "beekes-edg", "Iranian Verb": "cheung-iranian",
