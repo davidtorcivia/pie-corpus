@@ -134,7 +134,7 @@ LANGS = {
 
 _LINK = ("inh", "inh+", "der", "der+", "uder")
 _BOR = ("bor", "bor+", "lbor", "lbor+", "slbor", "obor", "ubor", "learned borrowing", "semi-learned borrowing",
-        "clq", "calque", "pcal", "sl", "psm", "translit")
+        "clq", "calque", "pcal", "translit")       # sl (semantic loan) keeps the inherited etymon
 _AFFIX = ("af", "affix", "suffix", "prefix", "confix", "suf", "pre")
 
 
@@ -144,14 +144,18 @@ def _strip_inline(s: str) -> str:
     return re.sub(r"[<>\[\]'\n]", "", s.split("<")[0]).strip()
 
 
-def _etymon_parts(a: dict) -> tuple[str | None, str | None, str | None]:
-    """{{etymon|non|:inh|gmq-pro:*ᚹᚢᛚᚠᚨᛉ}} → ('inh', 'gmq-pro', '*ᚹᚢᛚᚠᚨᛉ')."""
-    kind = (a.get("2") or "").lstrip(":").split("<")[0] or None
-    tgt = _strip_inline(a.get("3") or "")
-    if ":" in tgt and not tgt.startswith("*"):
-        code, term = tgt.split(":", 1)
-        return kind, code, term
-    return kind, None, None
+def _etymon_parts(a: dict) -> list[tuple[str, str, str]]:
+    """{{etymon|non|:inh|gmq-pro:*ᚹᚢᛚᚠᚨᛉ}} (alias {{ety}}) → [('inh', 'gmq-pro', '*ᚹᚢᛚᚠᚨᛉ')]:
+    numbered args from 2 on; ':kind' sets the relation for the targets after it."""
+    out, kind = [], None
+    for k in sorted((k for k in a if k.isdigit() and int(k) >= 2), key=int):
+        v = (a[k] or "").strip()
+        if v.startswith(":"):
+            kind = v[1:].split("<")[0] or None
+        elif ":" in v.split("<")[0] and not v.startswith("*"):
+            code, term = v.split(":", 1)
+            out.append((kind, code.strip(), _strip_inline(term)))
+    return out
 
 
 @dataclass
@@ -164,9 +168,11 @@ class Entry:
     links: list = field(default_factory=list)      # [(code, term, template)] from ancestor languages
     roots: list = field(default_factory=list)      # PIE {{root}} terms
     bases: list = field(default_factory=list)      # same-language base words
-    rejected: str | None = None                    # reason (borrowing, foreign source)
+    rejected: str | None = None                    # reason (borrowing; foreign source without an inherited link)
+    disputed: str | None = None                    # foreign source beside an inherited link (alternative etymologies)
     form_of: list = field(default_factory=list)    # lemma words this entry is an inflected form of
     forms: list = field(default_factory=list)      # inflected forms (for lemmatizers; memory only)
+    glosses: str = ""                              # first sense glosses (memory only; Hittite gloss check)
 
 
 def parse_entry(d: dict, lang: str, keep_forms: bool = False) -> Entry:
@@ -182,6 +188,7 @@ def parse_entry(d: dict, lang: str, keep_forms: bool = False) -> Entry:
         elif keep_forms and f.get("form") and not set(tags) & {"table-tags", "inflection-template", "class",
                                                                 "romanization"}:
             e.forms.append(f["form"])
+    e.glosses = " ; ".join(g for s in (d.get("senses") or [])[:4] for g in (s.get("glosses") or [])[:1])[:300]
     for s in d.get("senses") or []:
         for fo in (s.get("form_of") or []) + (s.get("alt_of") or []):
             if fo.get("word"):
@@ -192,15 +199,15 @@ def parse_entry(d: dict, lang: str, keep_forms: bool = False) -> Entry:
         if name in _BOR:
             e.rejected = e.rejected or f"{name}:{a.get('2')}"
             continue
-        if name == "etymon":
-            kind, code, term = _etymon_parts(a)
-            if kind in ("bor", "lbor", "slbor", "calque"):
-                e.rejected = e.rejected or f"etymon-{kind}:{code}"
-            elif kind in ("inh", "der") and code and term:
-                if code in anc:
-                    e.links.append((code, term, "etymon"))
-                elif code != lang:
-                    foreign.append(code)
+        if name in ("etymon", "ety"):
+            for kind, code, term in _etymon_parts(a):
+                if kind in ("bor", "lbor", "slbor", "calque", "obor"):
+                    e.rejected = e.rejected or f"etymon-{kind}:{code}"
+                elif kind in ("inh", "der") and code and term:
+                    if code in anc:
+                        e.links.append((code, term, "etymon"))
+                    elif code != lang:
+                        foreign.append(code)
             continue
         if a.get("1") != lang:
             continue
@@ -233,7 +240,11 @@ def parse_entry(d: dict, lang: str, keep_forms: bool = False) -> Entry:
             if len(content) == 1:
                 e.bases.append(content[0])
     if foreign and not e.rejected:
-        e.rejected = "foreign source: " + ",".join(sorted(set(foreign)))
+        why = "foreign source: " + ",".join(sorted(set(foreign)))
+        if e.links:
+            e.disputed = why
+        else:
+            e.rejected = why
     return e
 
 
@@ -291,8 +302,9 @@ class ProtoDB:
 class Hit:
     ids: frozenset
     path: tuple            # ("non:úlfr", "gem-pro:*wulfaz", "ine-pro:*wĺ̥kʷos")
-    how: str               # chain | chain-proto-lexicon | root | pseudo | desc | lexicon | base
+    how: str               # chain | root | pseudo | desc | lexicon | base
     steps: int
+    disputed: bool = False
 
     @property
     def specific(self) -> bool:
@@ -342,11 +354,11 @@ class Resolver:
                 if h and (sub is None or _better(h, sub)):
                     sub = h
             if sub:
-                sub = Hit(sub.ids, (f"{code}:{term}",) + sub.path, sub.how, sub.steps + 1)
+                sub = Hit(sub.ids, (f"{code}:{term}",) + sub.path, sub.how, sub.steps + 1, sub.disputed)
             # the lexicon's reflex list names the lexeme directly; prefer it over a root- or pseudo-level chain
             hit = lex_hit if lex_hit and (sub is None or not sub.specific or sub.how != "chain") else sub
             if lex_hit and sub and sub.how == "chain" and sub.ids & lex_hit.ids:
-                hit = Hit(sub.ids & lex_hit.ids, sub.path, "chain", sub.steps)
+                hit = Hit(sub.ids & lex_hit.ids, sub.path, "chain", sub.steps, sub.disputed)
         self.memo[key] = hit
         return hit
 
@@ -356,6 +368,8 @@ class Resolver:
             h = self.resolve(src, term, depth)
             if h and (best is None or _better(h, best)):
                 best = h
+        if best and e.disputed and not best.disputed:
+            best = Hit(best.ids, best.path, best.how, best.steps, True)
         if (best is None or not best.specific) and e.roots:
             for t in e.roots:
                 ids = self.idx.pie(t, roots_only=True)
@@ -376,7 +390,7 @@ def _better(a: Hit, b: Hit) -> bool:
 
 
 def confidence(h: Hit, agree: bool) -> str:
-    if h.how.startswith("pseudo") or h.how in ("base",):
+    if h.disputed or h.how.startswith("pseudo") or h.how in ("base",):
         return "low"
     if h.how == "root":
         return "low" if not agree else "medium"
@@ -452,12 +466,41 @@ def key_xcl(s: str, loose: bool = False) -> str:
 
 
 def key_hit(s: str, loose: bool = False) -> str:
-    """Hittite: lowercase, ḫ → h, no hyphens, subscripts or determinatives,
-    final citation -aš/-a- endings left in place (lemmas are stems in TLHdig)."""
+    """Hittite: lowercase, ḫ → h, š → s, length off, no hyphens or
+    subscripts, geminates single (spellings vary: ḫatteššar / ḫateššar)."""
     s = (s or "").lower().replace("ḫ", "h").replace("š", "s")
     s = _nfd_strip(s)
     s = re.sub(r"[₀-₉0-9]", "", s)
-    return re.sub(r"[^a-z]", "", s)
+    s = re.sub(r"[^a-z]", "", s)
+    return re.sub(r"(.)\1+", r"\1", s)
+
+
+_HIT_ROM_END = re.compile(r"(?:zi|tari|ari|tta|mi|ši|i|aš|iš|uš|an|a|ar)$")
+
+
+def hit_entry_stems(roman: str) -> list[str]:
+    """kaikki Hittite citation forms (3sg. pres. or nom. sg.) → stem keys:
+    pāi → pa, peššezzi → pese, attaš → at/ata, wātar → watar."""
+    k = key_hit(roman)
+    out = [k]
+    m = _HIT_ROM_END.search(k)
+    if m and len(k) - len(m[0]) >= 2:
+        out.append(k[: len(k) - len(m[0])])
+    if k.endswith(("as", "is", "us")) and len(k) > 3:
+        out.append(k[:-1])                       # attaš → atta
+    return [x for x in dict.fromkeys(out) if len(x) >= 2]
+
+
+def hit_tlh_keys(lemma: str) -> list[str]:
+    """TLHdig lemma (`ēd-/ad-`, `att=a-`, `ḫatt=eššar`) → keys: each stem as
+    written, then without its stem vowel."""
+    out = []
+    for st in hit_lemma_stems(lemma):
+        k = key_hit(st)
+        out.append(k)
+        if "=" in lemma and len(k) > 3 and k[-1] in "aiue":
+            out.append(k[:-1])
+    return [x for x in dict.fromkeys(out) if len(x) >= 2]
 
 
 def key_xum(s: str, loose: bool = False) -> str:
@@ -505,6 +548,9 @@ def entry_keys(e: Entry, lang: str) -> list[str]:
     k = KEYS[lang]
     if LANGS[lang].script in ("gothic",):
         return [x for x in {k(e.word)} if x]
+    if lang == "hit":
+        roms = [e.roman or ""] + [f for f in e.forms if re.search(r"[a-zāēīū]", f) and "-" not in f][:1]
+        return [x for r in roms if r for x in hit_entry_stems(r)]
     if LANGS[lang].script in ("armenian", "cuneiform"):
         return [x for x in {k(e.roman or "")} if x]
     if LANGS[lang].script == "cyrillic":
@@ -523,6 +569,10 @@ class MapRec:
     how: str
     confidence: str
     sources: tuple
+    gloss: str = ""
+
+
+CONTENT_POS = {"noun", "verb", "adj", "name", "root"}
 
 
 class LangMapping:
@@ -535,6 +585,16 @@ class LangMapping:
         self.rejected: dict[str, str] = {}
         self.forms: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
         self.lemma_words: set = set()
+        self.pos: dict[str, set] = collections.defaultdict(set)
+
+    def is_content(self, lemma: str) -> bool:
+        """A lemma string ('a|b') is content if any part is a noun, verb,
+        adjective or name in the dictionary (unknown forms count as content)."""
+        if lemma.startswith("?"):
+            return True
+        parts = lemma.split("|")
+        known = [p for p in parts if self.pos.get(p)]
+        return not known or all(self.pos[p] & CONTENT_POS for p in known)
 
     def lookup(self, key: str) -> MapRec | None:
         return self.recs.get(key)
@@ -542,7 +602,13 @@ class LangMapping:
 
 def build_lang_mapping(lang: str, lexicon: list[dict], protos: ProtoDB, root: Path = ROOT,
                        entries: list[Entry] | None = None, pseudo: bool = True,
-                       idx: PieIndex | None = None) -> LangMapping:
+                       idx: PieIndex | None = None, strict_homographs: bool | None = None) -> LangMapping:
+    """strict_homographs (default: Hittite only): a key whose candidate
+    words disagree on the etymon gets no mapping, instead of their union
+    (Hittite citation forms collide once endings are stripped: pāi 'gives' /
+    paizzi 'goes')."""
+    if strict_homographs is None:
+        strict_homographs = lang == "hit"
     spec = LANGS[lang]
     idx = idx or PieIndex(lexicon)
     kinds = {e["id"]: e.get("kind") for e in lexicon}
@@ -553,7 +619,7 @@ def build_lang_mapping(lang: str, lexicon: list[dict], protos: ProtoDB, root: Pa
         entries = read_dump([root / KD / d for d in dumps], lang, keep_forms=True,
                             codes=spec.desc_codes or (lang,)) if dumps else []
     lm = LangMapping(lang)
-    cands: dict[str, list[tuple[Hit, str, str]]] = collections.defaultdict(list)   # key → (hit, source, word)
+    cands: dict[str, list[tuple]] = collections.defaultdict(list)   # key → (hit, source, word, gloss)
     bad: dict[str, str] = {}
     # 1. the daughter's own entries (chain)
     by_key_entries: dict[str, list[Entry]] = collections.defaultdict(list)
@@ -568,6 +634,8 @@ def build_lang_mapping(lang: str, lexicon: list[dict], protos: ProtoDB, root: Pa
                         lm.forms[fk][K(lw)] += 1
             continue
         lm.lemma_words.update(keys)
+        for k in keys:
+            lm.pos[k].add(e.pos)
         for f in [e.word, e.canon or "", *e.forms]:
             for fk in {K(f), K(f, True)}:
                 if fk:
@@ -580,7 +648,8 @@ def build_lang_mapping(lang: str, lexicon: list[dict], protos: ProtoDB, root: Pa
         h = res.entry_hit(e, lang)
         if h:
             for k in keys:
-                cands[k].append((Hit(h.ids, (f"{lang}:{e.word}",) + h.path, h.how, h.steps), "chain", e.word))
+                cands[k].append((Hit(h.ids, (f"{lang}:{e.word}",) + h.path, h.how, h.steps, h.disputed),
+                                  "chain", e.word, e.glosses))
     # 2. descendants trees of proto-language pages
     for code in spec.desc_codes:
         for w, rom, pc, pt in protos.desc.get(code, []):
@@ -590,7 +659,8 @@ def build_lang_mapping(lang: str, lexicon: list[dict], protos: ProtoDB, root: Pa
             for k in {K(w), K(rom or "")} if spec.script in ("latin", "avestan") else \
                     ({K(rom or "")} if spec.script in ("armenian", "cuneiform") else {K(w)}):
                 if k:
-                    cands[k].append((Hit(h.ids, (f"{lang}:{w}",) + h.path, "desc", h.steps + 1), "desc", w))
+                    cands[k].append((Hit(h.ids, (f"{lang}:{w}",) + h.path, "desc", h.steps + 1, h.disputed),
+                                      "desc", w, ""))
     # 3. lexicon reflexes (PIE-page descendants)
     for le in lexicon:
         if le.get("kind") == "affix":
@@ -603,25 +673,46 @@ def build_lang_mapping(lang: str, lexicon: list[dict], protos: ProtoDB, root: Pa
                 if spec.script != "latin" or lang == "ae":
                     forms.append(r.get("roman") or "")
                 for f in forms:
-                    k = K(f.lstrip("*"))
-                    if k and len(k) >= 2:
-                        ids = {le["id"]} if le.get("kind") != "alt" else set(le.get("target_ids") or [le["id"]])
-                        cands[k].append((Hit(frozenset(ids), (f"{lang}:{f}", f"ine-pro:{le['form']}"),
-                                             "lexicon", 1), "lexicon", f))
+                    keys = hit_entry_stems(f) if lang == "hit" else [K(f.lstrip("*"))]
+                    for k in keys:
+                        if k and len(k) >= 2:
+                            ids = {le["id"]} if le.get("kind") != "alt" else set(le.get("target_ids") or [le["id"]])
+                            cands[k].append((Hit(frozenset(ids), (f"{lang}:{f}", f"ine-pro:*{le['form']}"),
+                                                 "lexicon", 1), "lexicon", f, "; ".join(le.get("meaning") or [])))
     # combine
     for k, lst in cands.items():
-        if k in bad and all(src != "lexicon" for _, src, _ in lst):
-            continue
+        if k in bad and all(x[1] == "desc" for x in lst):
+            continue                 # a borrowed homograph vetoes a descendants-tree-only link
         spec_hits = [x for x in lst if x[0].specific]
         pool = spec_hits or lst
         best = min(pool, key=lambda x: (_HOW_RANK.get(x[0].how.split("-")[0], 9), x[0].steps))
         same_how = [x for x in pool if x[0].how == best[0].how]
+        if strict_homographs and len({x[0].ids for x in pool}) > 1:
+            continue
         ids = frozenset().union(*(x[0].ids for x in same_how))
         srcs = tuple(sorted({x[1] for x in lst}))
         agree = len({x[1] for x in lst if x[0].ids & best[0].ids}) >= 2
-        lm.recs[k] = MapRec(k, best[2], ids, best[0].path, best[0].how, confidence(best[0], agree), srcs)
+        gl = " ; ".join(x[3] for x in lst if x[3])[:400]
+        lm.recs[k] = MapRec(k, best[2], ids, best[0].path, best[0].how, confidence(best[0], agree), srcs, gl)
     lm.rejected = {k: v for k, v in bad.items() if k not in lm.recs}
-    # 4. base-word chains (diminutives, one-base derivations), two passes
+    # 4. an entry that is a form or spelling of a mapped lemma (Arm. erkin → erkinkʿ)
+    word_keys: dict[str, list] = collections.defaultdict(list)
+    for e in entries:
+        if not e.form_of:
+            word_keys[e.word] += entry_keys(e, lang)
+    for e in entries:
+        if not e.form_of:
+            continue
+        for k in entry_keys(e, lang):
+            if k in lm.recs:
+                continue
+            for w in e.form_of:
+                hit = next((lm.recs[x] for x in word_keys.get(w, []) + [K(w)] if x in lm.recs), None)
+                if hit:
+                    lm.recs[k] = MapRec(k, e.word, hit.ids, (f"{lang}:{e.word}", f"form-of:{w}") + hit.path[1:],
+                                        hit.how, hit.confidence, hit.sources + ("form-of",), hit.gloss)
+                    break
+    # 5. base-word chains (diminutives, one-base derivations), two passes
     for _ in range(2):
         for e in entries:
             if e.rejected or e.form_of:
@@ -716,7 +807,7 @@ def load_dcs(texts=DCS_VEDIC, corpus: str = "av", root: Path = ROOT) -> list[Tok
                     pos = {"NOUN": "noun", "PROPN": "noun", "ADJ": "adj", "VERB": "verb"}.get(upos, "other")
                     if upos == "VERB" and feats.get("VerbForm") == "Part":
                         pos = "adj"
-                    toks.append(Token(corpus, c[2], "", f"{chapter}.s{nsent}",
+                    toks.append(Token(corpus, c[2], c[1], f"{chapter}.s{nsent}",
                                       {"sentence": f"{chapter}|{sent}", "chapter": chapter, "book": t},
                                       upos in DCS_CONTENT, pos, (feats.get("Case") or "").upper()[:3] or None,
                                       None, finite=feats.get("VerbForm") is None and upos == "VERB"))
@@ -767,7 +858,7 @@ def load_glaux(sel: list[dict] | None = None, corpus: str = "grp", root: Path = 
                     pos = "adj"
                 local[a.get("id")] = len(toks)
                 heads.append((len(toks), a.get("head")))
-                toks.append(Token(corpus, a["lemma"], "", f"{name} {line}",
+                toks.append(Token(corpus, a["lemma"], a.get("form", ""), f"{name} {line}",
                                   {"line": f"{r['TLG']}:{line}", "sentence": f"{r['TLG']}.{si}", "book": r["TLG"]},
                                   tag[0] in fs.HOM_CONTENT, pos, fs._HOM_CASE.get(tag[7]), fs._HOM_NUM.get(tag[2]),
                                   finite=tag[0] == "v" and tag[4] in "isom", rel=a.get("relation")))
@@ -800,11 +891,12 @@ def hit_lemma(a: dict) -> tuple[str, str] | None:
     lemmas = {c.split("@")[0].strip() for c in chosen}
     if len(lemmas) != 1:
         return None
-    lem = lemmas.pop()
-    if not re.search(r"[a-zḫšāēīū]", lem):
-        return None
+    lem = re.sub(r"^[①-⑳]\s*", "", lemmas.pop())
+    if re.search(r"[A-ZḪŠ]", lem.split("=")[0]) or not re.search(r"[a-zḫšāēīū]", lem):
+        return None                     # Sumerograms / Akkadograms (also as stems: LUGAL=u-)
     parts = chosen[0].split("@")
-    return lem, (parts[2] if len(parts) > 2 else "")
+    gloss = parts[1].strip() if len(parts) > 1 else ""
+    return (f"{lem}@{gloss}" if gloss else lem), (parts[2] if len(parts) > 2 else "")
 
 
 def load_hittite(root: Path = ROOT, corpus: str = "hit") -> list[Token]:
@@ -902,3 +994,698 @@ def corpus_mapping(tokens: list[Token], lm: LangMapping, lemma_keys=None, gmap: 
                                                              hits[0].how, "low", ("loose-key",))
             break
     return m, recs
+
+
+# ---------------------------------------------------------------- Hittite: Kloekhorst (EDHIL) headwords
+#
+# The extracted text layer drops the glyphs of a private-use font: ḫ, w and
+# some long or accented vowels vanish (ḫalki- → alki-, šiu- → šu-). Headwords
+# and TLHdig lemmas are therefore compared on a *damaged key* (both sides with
+# h/ḫ/w deleted and vowels unmarked), and a match is used only when the key is
+# unique on both sides. Only the headword and the PIE line are read; nothing
+# of the running text is stored.
+
+KLOEKHORST = "raw/books/text/kloekhorst-hitt"
+_KH_HEAD = re.compile(r"^\*?([^\s‘:]+(?: / [^\s‘:]+)*)\s+((?:\([^)]*\)\s*)*)‘")
+_KH_PIE = re.compile(r"^\s*PIE (\*.*)$")
+_HIT_VERB_END = re.compile(r"-(?:zi|i|ari|tta|tta\(ri\)|a\(ri\)|a|ttari)$")
+
+
+def _kh_variants(stem: str) -> list[str]:
+    """`antezzi(a)-` → ['antezzi', 'antezzia']."""
+    out = [re.sub(r"\([^)]*\)", "", stem), re.sub(r"[()]", "", stem)]
+    return [x for x in dict.fromkeys(out) if x]
+
+
+def hit_damaged_key(s: str) -> str:
+    s = _nfd_strip((s or "").lower()).replace("ḫ", "").replace("h", "").replace("w", "")
+    s = s.replace("š", "s")
+    s = re.sub(r"[₀-₉0-9]", "", s)
+    s = re.sub(r"[^a-z]", "", s)
+    return re.sub(r"(.)\1+", r"\1", s)          # geminates and plene writing collapse
+
+
+def hit_lemma_stems(lemma: str) -> list[str]:
+    """TLHdig lemma `ēd-/ad-`, `ḫatt=eššar`, `eku-/aku-` → stem strings."""
+    out = []
+    lemma = re.sub(r"^[①-⑳]\s*", "", lemma.split("@")[0])
+    for alt in lemma.split("/"):
+        alt = alt.replace("=", "").strip().strip("-")
+        out += _kh_variants(alt)
+    return [x for x in out if x]
+
+
+def kloekhorst_entries(root: Path = ROOT) -> list[dict]:
+    """Headword entries of EDHIL: {'head', 'stems', 'pie', 'page'}. An entry
+    starts on a line after a blank line with `headword (class) ‘gloss’`;
+    its PIE reconstruction is the first indented `PIE *…` line before the
+    next entry. Cross-references (`x: see y`) and cuneiform transliterations
+    (several syllable hyphens) are skipped."""
+    out = []
+    files = sorted((root / KLOEKHORST).glob("p*.txt"))
+    for fn in files:
+        lines = fn.read_text("utf-8", errors="replace").splitlines()
+        prev_blank = True
+        for line in lines:
+            m = _KH_HEAD.match(line) if prev_blank else None
+            prev_blank = not line.strip()
+            if m:
+                head = m[1]
+                parts = [p.strip() for p in head.split(" / ")]
+                if any(p.count("-") > 2 for p in parts) or not re.search(r"[a-zš]", head):
+                    continue
+                stems = []
+                for p in parts:
+                    p = _HIT_VERB_END.sub("", p) if re.search(r"-(zi|i|ari|tta|ttari)$", p) else p
+                    stems += _kh_variants(p.strip("-*"))
+                out.append({"head": head, "stems": stems, "pie": [], "page": fn.stem})
+                continue
+            pm = _KH_PIE.match(line)
+            if pm and out and not out[-1]["pie"] and out[-1]["page"] <= fn.stem:
+                forms = re.split(r"\s*(?:,|/|~| or )\s*", pm[1])
+                out[-1]["pie"] = [f.strip(" ?.;").split(" ")[0] for f in forms if f.strip().startswith("*")]
+    return [e for e in out if e["pie"]]
+
+
+def pie_fuzzy_key(s: str) -> str:
+    """Key on which Kloekhorst's plain-text PIE (u for w, i for y, h1 for h₁,
+    flattened superscripts and diacritics) meets the lexicon forms."""
+    s = unicodedata.normalize("NFD", (s or "").lower().lstrip("*"))
+    s = s.replace("ʷ", "w").replace("ʰ", "h").replace("₁", "1").replace("₂", "2").replace("₃", "3")
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    s = s.replace("w", "u").replace("y", "i").replace("ḱ", "k").replace("ǵ", "g")
+    s = re.sub(r"\([^)]*\)", "", s)
+    return re.sub(r"[^a-z0-9]", "", s)
+
+
+class FuzzyPie:
+    def __init__(self, lexicon: list[dict]):
+        self.idx: dict[str, set] = collections.defaultdict(set)
+        self.kind = {e["id"]: e.get("kind") for e in lexicon}
+        for e in lexicon:
+            if e.get("kind") == "affix":
+                continue
+            ids = set(e.get("target_ids") or [e["id"]]) if e.get("kind") == "alt" else {e["id"]}
+            for f in [e["form"], *(e.get("variants") or [])]:
+                self.idx[pie_fuzzy_key(f)].update(ids)
+
+    def lookup(self, form: str) -> tuple[set, str]:
+        """Whole form first, then its leading segments (*h1ed-ri- → *h1ed-)."""
+        segs = [x for x in form.lstrip("*").split("-")]
+        for n in range(len(segs), 0, -1):
+            k = pie_fuzzy_key("-".join(segs[:n]))
+            if len(k) >= 2 and k in self.idx:
+                return set(self.idx[k]), ("form" if n == len(segs) else "root-of-form")
+        return set(), ""
+
+
+def kloekhorst_hittite(lemmas, lexicon: list[dict], root: Path = ROOT, gmap: dict | None = None) -> dict:
+    """TLHdig lemma → MapRec via EDHIL headwords (unique damaged-key match on
+    both sides; the PIE line resolved by FuzzyPie)."""
+    ents = kloekhorst_entries(root)
+    fz = FuzzyPie(lexicon)
+    by_key: dict[str, list] = collections.defaultdict(list)
+    for e in ents:
+        for st in e["stems"]:
+            k = hit_damaged_key(st)
+            if len(k) >= 3:
+                by_key[k].append(e)
+    lem_by_key: dict[str, set] = collections.defaultdict(set)
+    for lem in lemmas:
+        for st in hit_lemma_stems(lem):
+            lem_by_key[hit_damaged_key(st)].add(lem)
+    out = {}
+    for lem in lemmas:
+        for st in hit_lemma_stems(lem):
+            k = hit_damaged_key(st)
+            es = {id(x): x for x in by_key.get(k, [])}
+            if len(k) < 3 or len(es) != 1 or len(lem_by_key[k]) != 1:
+                continue
+            e = next(iter(es.values()))
+            ids, how = set(), ""
+            for f in e["pie"]:
+                ids, how = fz.lookup(f)
+                if ids:
+                    break
+            if not ids:
+                continue
+            g = {(gmap or {}).get(i, i) for i in ids}
+            if len(g) > fs.MAX_GROUPS:
+                continue
+            out[lem] = MapRec(k, e["head"], frozenset(ids), (f"hit:{lem}", f"kloekhorst:{e['page']}:{e['head']}",
+                                                             f"ine-pro:{e['pie'][0]}"),
+                              "kloekhorst" if how == "form" else "kloekhorst-root", "medium", ("kloekhorst",))
+            break
+    return out
+
+
+# German glosses of TLHdig → English words that must occur in the matched
+# dictionary gloss (kaikki sense or lexicon meaning). Hand-written for the
+# frequent glosses; a Hittite match whose TLHdig gloss is not covered is kept
+# only if it is not verbal and its key is unambiguous.
+HIT_DE_EN = {
+    "gehen": "go walk", "setzen": "put place set sit", "geben": "give", "trinken": "drink", "nehmen": "take",
+    "zerbrechen": "break", "libieren": "libate pour offer", "fassen": "seize grab take", "kommen": "come",
+    "sprechen": "speak say", "haben": "have hold", "machen": "make do", "treten": "step tread",
+    "jeder": "every all whole", "ganz": "whole all", "ich": "i me", "du": "you thou", "bringen": "bring",
+    "rufen": "call cry shout", "herd": "hearth", "wasser": "water", "stehen": "stand", "essen": "eat",
+    "liegen": "lie", "werfen": "throw cast", "sitzen": "sit", "erde": "earth", "ordnen": "arrange order",
+    "platz": "place", "anderer": "other another", "füllen": "fill", "altar": "altar", "wenig": "little few",
+    "wenden": "turn", "werden": "become", "schale": "bowl", "gut": "good", "lassen": "let release leave",
+    "gießen": "pour", "böse": "evil bad", "schlachten": "slaughter", "ankommen": "arrive reach",
+    "sehen": "see look", "sterben": "die", "frevel": "sin offense", "verbrennen": "burn", "mensch": "man human person",
+    "waschen": "wash", "laufen": "run", "mitteilen": "inform tell", "viel": "much many", "suchen": "seek search",
+    "reinigen": "clean purify", "wirken": "work", "drehen": "turn", "wissen": "know", "mächtig": "powerful mighty",
+    "schneiden": "cut", "teilen": "divide share", "fleisch": "flesh meat", "sein": "be", "finden": "find",
+    "zerstören": "destroy", "zeit": "time", "vorderster": "first front foremost", "heben": "lift raise",
+    "treiben": "drive", "schlagen": "strike beat smite kill", "getreide": "grain", "verneigen": "bow",
+    "schütten": "pour", "fragen": "ask", "rein": "pure clean", "lösen": "loosen release untie", "blut": "blood",
+    "kochen": "cook boil", "wünschen": "wish want", "himmel": "sky heaven", "feuer": "fire", "festmachen": "fasten",
+    "stehlen": "steal", "groß": "great big large", "hand": "hand", "jener": "that", "erheben": "raise lift",
+    "schicken": "send", "schlafen": "sleep", "schauen": "look", "baden": "bathe wash", "mauer": "wall",
+    "früherer": "former earlier", "stechen": "stab pierce", "freund": "friend", "öffnen": "open", "binden": "bind tie",
+    "wort": "word", "feindschaft": "enmity hostility", "hof": "court yard", "beten": "pray", "tanzen": "dance",
+    "bitten": "ask request pray", "knie": "knee", "vertrag": "treaty", "ernte": "harvest", "lebendig": "alive living",
+    "gott": "god", "feld": "field", "großvater": "grandfather", "weg": "road way path", "beißen": "bite",
+    "abschneiden": "cut", "bedecken": "cover", "springen": "jump spring leap", "befehlen": "command order",
+    "angenehm": "pleasant", "mischen": "mix", "anstimmen": "sing chant", "beschützen": "protect", "abwischen": "wipe",
+    "welcher": "who which what", "irgendein": "any some", "er": "he that", "dieser": "this",
+    "vater": "father", "mutter": "mother", "sohn": "son", "tochter": "daughter", "bruder": "brother",
+    "schwester": "sister", "frau": "woman wife", "mann": "man", "pferd": "horse", "rind": "cattle ox cow",
+    "schaf": "sheep", "hund": "dog", "kuh": "cow", "berg": "mountain", "fluss": "river", "baum": "tree",
+    "holz": "wood", "stein": "stone", "nacht": "night", "tag": "day", "jahr": "year", "name": "name",
+    "herz": "heart", "auge": "eye", "ohr": "ear", "fuß": "foot", "kopf": "head", "mund": "mouth",
+    "zunge": "tongue", "zahn": "tooth", "knochen": "bone", "milch": "milk", "honig": "honey", "wein": "wine",
+    "brot": "bread", "salz": "salt", "öl": "oil", "fett": "fat", "wolle": "wool", "neu": "new", "alt": "old",
+    "jung": "young", "lang": "long", "breit": "wide broad", "schwer": "heavy", "weiß": "white", "schwarz": "black",
+    "rot": "red", "warm": "warm hot", "kalt": "cold", "töten": "kill", "leben": "live life", "hören": "hear",
+    "erkennen": "know recognize", "fürchten": "fear", "lieben": "love", "bauen": "build", "pflügen": "plough plow",
+    "mahlen": "grind", "weben": "weave", "nähen": "sew", "tragen": "carry bear", "ziehen": "pull draw",
+    "kämpfen": "fight", "siegen": "conquer win", "fliehen": "flee", "fallen": "fall", "wachsen": "grow",
+    "zählen": "count", "schreiben": "write", "lesen": "read", "eins": "one", "zwei": "two", "drei": "three",
+    "vier": "four", "unten": "below down", "oben": "above up", "hinein": "into in", "darin": "in inside",
+    "vor": "before front", "hinter": "behind after", "wieder": "again back", "nicht": "not",
+}
+
+
+def hittite_gloss_ok(tlh_lemma: str, rec: MapRec) -> bool:
+    gl = tlh_lemma.split("@", 1)[1].lower() if "@" in tlh_lemma else ""
+    words = re.findall(r"[a-zäöüß]+", gl)
+    en = set()
+    for w in words:
+        en |= set(HIT_DE_EN.get(w, "").split())
+    target = set(re.findall(r"[a-z]+", (rec.gloss or "").lower()))
+    if en:
+        return bool(en & target)
+    return False
+
+
+# ---------------------------------------------------------------- unlemmatized corpora (OCR / plain text)
+
+_WORDS = re.compile(r"[^\W\d_]+(?:['’][^\W\d_]+)?", re.U)
+
+
+class FormLemmatizer:
+    """Surface form → lemma keys through a LangMapping's kaikki forms table
+    (inflection tables and form-of pages). Exact key first, then the loose
+    key; a form with several lemmas keeps up to `max_lemmas` of them."""
+
+    def __init__(self, lm: LangMapping, normalize=None, max_lemmas: int = 3, fallbacks=()):
+        self.lm, self.K, self.norm, self.max = lm, KEYS[lm.lang], normalize or (lambda s: s), max_lemmas
+        self.fallbacks = fallbacks
+
+    def __call__(self, surface: str) -> str:
+        s = self.norm(surface)
+        r = self._one(s)
+        if r.startswith("?"):
+            for f in self.fallbacks:
+                for alt in f(s):
+                    r2 = self._one(alt)
+                    if not r2.startswith("?"):
+                        return r2
+        return r
+
+    def _one(self, s: str) -> str:
+        for k in (self.K(s), self.K(s, True)):
+            c = self.lm.forms.get(k)
+            if c and k in c:
+                return k                         # the form is itself a headword
+            if c:
+                lem = sorted(c, key=lambda x: (-c[x], x))[: self.max]
+                return "|".join(lem)
+            if k in self.lm.recs or k in self.lm.lemma_words:
+                return k
+        return "?" + self.K(s, True)
+
+
+def multi_lemma_mapping(tokens: list[Token], lm: LangMapping, gmap: dict | None = None,
+                        max_groups: int = fs.MAX_GROUPS) -> tuple[fs.Mapping, dict]:
+    """corpus_mapping for lemma strings 'a|b' (lemmatizer output): the union
+    of the parts' mappings; '?…' (unknown form) stays unmapped."""
+    gmap = gmap or {}
+    m, recs = fs.Mapping(), {}
+    for lem in {t.lemma for t in tokens}:
+        if lem.startswith("?"):
+            continue
+        hits = [lm.recs[p] for p in lem.split("|") if p in lm.recs]
+        if not hits:
+            continue
+        if len({frozenset(gmap.get(x, x) for x in h.ids) for h in hits}) > 1:
+            m.ambiguous.add(lem)               # candidate lemmas with different etyma
+            continue
+        ids = frozenset().union(*(h.ids for h in hits))
+        g = frozenset(gmap.get(x, x) for x in ids)
+        if len(g) > max_groups:
+            m.ambiguous.add(lem)
+            continue
+        m.lemma_groups[lem], m.lemma_lex[lem], m.lemma_tier[lem] = g, ids, hits[0].how
+        many = "|" in lem
+        recs[lem] = hits[0] if not many else MapRec(lem, "|".join(h.word for h in hits), ids, hits[0].path,
+                                                    hits[0].how, "low", hits[0].sources + ("form-ambiguous",))
+    return m, recs
+
+
+def text_tokens(corpus: str, units, lemmatize, is_content) -> list[Token]:
+    """(locus, units, line text or word list) → Tokens. These corpora have
+    no POS: content = the dictionary POS of the lemma (is_content)."""
+    toks = []
+    for locus, u, text in units:
+        for w in (_WORDS.findall(text) if isinstance(text, str) else text):
+            lem = lemmatize(w)
+            toks.append(Token(corpus, lem, "", locus, u, is_content(lem), "other"))
+    return toks
+
+
+EDDA = "raw/daughters/edda-fj1926/smundareddaeddu00jngoog_djvu.txt"
+
+
+def edda_lines(root: Path = ROOT) -> list[tuple[str, dict, str]]:
+    """Finnur Jónsson 1926 (PD), OCR. Verse lines between the first poem
+    header and the name index; the poem is the running header (capitals),
+    the stanza the 'N.' prefix. Lines with digits only, headers and lines
+    with OCR debris (no letters, ≥ 30% non-letters) are dropped."""
+    lines = (root / EDDA).read_text("utf-8", errors="replace").splitlines()
+    out, poem, stanza, started = [], None, "0", False
+    for i, raw in enumerate(lines):
+        s = raw.strip()
+        if not s:
+            continue
+        hdr = re.match(r"^([A-ZÁÉÍÓÚÝÞÆÖ][A-ZÁÉÍÓÚÝÞÆÖÐ\- ]{3,})\.\s*\S{0,8}\s*$", s)
+        if hdr:
+            name = hdr[1].strip()
+            if name.startswith(("NOFN", "NÖFN")):
+                if started:
+                    break
+                continue
+            if name in ("VOLUSPA", "VÖLUSPÁ"):
+                started = True
+            if started:
+                poem = name.title()
+            continue
+        if not started or re.fullmatch(r"[\d\W]+", s):
+            continue
+        m = re.match(r"^(?:[A-ZÁÉÍÓÚÞ][a-zþð]*\.\s*kv[.,]\s*)?(\d+)\.\s+(.*)$", s)
+        if m:
+            stanza, s = m[1], m[2]
+        letters = sum(c.isalpha() for c in s)
+        if letters < 3 or letters / max(1, len(s.replace(" ", ""))) < 0.7:
+            continue
+        out.append((f"{poem} {stanza}", {"line": f"edda:{i}", "stanza": f"{poem}.{stanza}", "book": poem or ""}, s))
+    return out
+
+
+BEOWULF = "raw/daughters/oe-beowulf-gutenberg/pg9701.txt"
+
+
+def beowulf_lines(root: Path = ROOT) -> list[tuple[str, dict, str]]:
+    """Harrison & Sharp's Beowulf (PD, Project Gutenberg), long lines
+    (both half-lines) from 'Hwæt!' to the end of the poem, numbered by
+    counting; the fitt headings are skipped."""
+    lines = (root / BEOWULF).read_text("utf-8", errors="replace").splitlines()
+    out, n, started = [], 0, False
+    for raw in lines:
+        if raw.strip().startswith("LIST OF NAMES"):
+            break
+        if not started:
+            if "Hwæt! wē Gār-Dena" in raw:
+                started = True
+            else:
+                continue
+        s = raw.strip()
+        if not s or re.match(r"^[IVXL]+\. ", s) or s.isupper():
+            continue
+        s = re.sub(r"^\d+\s+", "", s)
+        n += 1
+        out.append((f"Beo. {n}", {"line": f"beo:{n}", "book": "Beowulf"}, s))
+    return out
+
+
+AVESTA = "raw/daughters/avesta-cab/CABLinguisticCorpus.xml"
+
+
+def avesta_units(root: Path = ROOT) -> list[tuple[str, dict, list[str]]]:
+    """CAB Linguistic Corpus (NC; 'without repetitions'): `ab` segments
+    except the Pahlavi ones (xml:lang="pal") and headings; words end with
+    '.', compound members and preverbs joined by '.' inside a word are split.
+    Unit: the `ab` segment (a stanza part, usually a verse or sentence)."""
+    text = (root / AVESTA).read_text("utf-8")
+    out = []
+    for m in re.finditer(r'<ab ([^>]*)>(.*?)</ab>', text, re.S):
+        attrs = dict(re.findall(r'([\w:]+)="([^"]*)"', m[1]))
+        if attrs.get("xml:lang", "av") != "av" or not attrs.get("xml:id") or attrs["xml:id"].startswith("Head"):
+            continue
+        body = re.sub(r"<note.*?</note>", "", m[2], flags=re.S)
+        body = re.sub(r"<[^>]+>", "", body)
+        body = body.replace("+", "")
+        words = [w for w in re.split(r"[\s.]+", body) if re.search(r"[^\W\d_]", w)]
+        aid = attrs["xml:id"]
+        txt = (re.match(r"[A-Za-z]+", aid) or [aid])[0]
+        out.append((aid, {"ab": aid, "book": txt}, words))
+    return out
+
+
+def non_clitic_variants(s: str) -> list[str]:
+    """Old Norse enclitics in FJ's normalized text: hefk, munk, vilk (-k,
+    -ek 'I'), þanns, svat (-s, -t), mák (ák → á)."""
+    out = []
+    low = s.lower()
+    for suf in ("ek", "k", "s", "t", "sk", "a"):
+        if low.endswith(suf) and len(low) - len(suf) >= 2:
+            out.append(low[: -len(suf)])
+    return out
+
+
+# ---- Avestan: stem matching (no inflection tables exist)
+
+AE_ENDINGS = sorted({"", "ō", "ə", "əm", "a", "ā", "ąm", "ą", "å", "ā̊", "ąn", "e", "ē", "ahe", "ahiiā", "āi", "ai",
+                     "āt", "at", "aēibiiō", "aēibiš", "aēšu", "ånhō", "āiš", "i", "iš", "im", "ōiš", "u", "uš", "um",
+                     "aoš", "ąś", "aiti", "ənti", "ata", "aiiā", "āiiā", "hiiā", "biiō", "biš", "ibiiō", "ābiiō",
+                     "ābiš", "āhu", "ahu", "ōi", "əuuō", "aiiō", "š", "s", "ōm", "ąmca", "ca", "əmca", "aca",
+                     "ō.ca", "ti", "nti", "aiti", "eiti", "ōit", "ā̊ŋhō", "ånhe", "ō", "ąstu", "atu", "aṇtu",
+                     "ąm", "ō", "ē", "ąn", "aēca", "asca", "aēšąm", "anąm", "ānąm", "aēibīš", "ača"},
+                    key=len, reverse=True)
+
+
+class AvestanLemmatizer:
+    """CAB surface → dictionary word: the longest dictionary stem (≥ 4
+    letters, loose key) that the form starts with, followed by a known
+    ending; a stem shared by several words keeps them all (≤ 3)."""
+
+    def __init__(self, lm: LangMapping, entries_words: dict[str, str]):
+        self.lm = lm
+        ends = {key_ae(e, True) for e in AE_ENDINGS}
+        self.ends = sorted(ends, key=len, reverse=True)
+        self.stems: dict[str, set] = collections.defaultdict(set)
+        for k in list(lm.recs) + list(lm.lemma_words):
+            lk = key_ae(k, True)
+            if len(lk) < 4:
+                continue
+            self.stems[lk].add(k)
+            for e in self.ends:
+                if e and lk.endswith(e) and len(lk) - len(e) >= 4:
+                    self.stems[lk[: -len(e)]].add(k)
+
+    def __call__(self, surface: str) -> str:
+        t = key_ae(surface, True)
+        if len(t) < 4:
+            return "?" + t                   # short forms are mostly particles and pronouns
+        for i in range(len(t), 3, -1):
+            st, rest = t[:i], t[i:]
+            if st in self.stems and (rest in self.ends or not rest):
+                c = sorted(self.stems[st])[:3]
+                return "|".join(c)
+        return "?" + t
+
+
+# ---- Old English poetry: Grein's Bibliothek (PD, OCR)
+
+GREIN_DIR = "raw/daughters/oe-poetry-grein/download"
+GREIN_VOLS = {"I": "bibliothekderan07greigoog_djvu.txt", "II": "bibliothekderan06greigoog_djvu.txt"}
+_GREIN_THORN = ("|)", "J)", "{)", ")>", "I)", "!>", "|>", "}>", "l>")
+
+
+def grein_normalize(s: str) -> str:
+    """OCR repairs for Grein's typeface: þ read as |) J) {) …, ä for æ,
+    v for w (Grein prints v), acute = length (handled by key_ang)."""
+    for a in _GREIN_THORN:
+        s = s.replace(a, "þ")
+    return s.replace("ä", "æ").replace("Ä", "Æ").replace("v", "w").replace("V", "W")
+
+
+def grein_lines(lemmatize, root: Path = ROOT, min_share: float = 0.6) -> list[tuple[str, dict, str]]:
+    """Text volumes I (copy 07greigoog) and II (06greigoog). A line is kept
+    as verse if it has ≥ 3 words and ≥ min_share of them lemmatize as Old
+    English (this drops the German apparatus, page furniture and the worst
+    OCR); Grein's Beowulf is skipped (the Gutenberg text has it). Locus:
+    volume, OCR line, and the last poem header seen."""
+    out = []
+    for vol, fn in GREIN_VOLS.items():
+        lines = (root / GREIN_DIR / fn).read_text("utf-8", errors="replace").splitlines()
+        beo = [i for i, l in enumerate(lines) if re.search(r"\bBEO[VW]ULF\b", l)]
+        beo_span = (beo[0] - 5, beo[-1] + 120) if beo else (-1, -1)
+        poem = "?"
+        for i, raw in enumerate(lines):
+            if beo_span[0] <= i <= beo_span[1]:
+                continue
+            h = re.match(r"^\s*\d*\s*([A-ZÆ][A-ZÆ ,.]{3,}?)\.?\s*\d*\s*$", raw)
+            if h and not re.fullmatch(r"[IVXLCYU]+\.?", h[1].strip()):
+                poem = h[1].strip().title()
+                continue
+            s = grein_normalize(re.sub(r"^\s*\d+\.\s*", "", raw))
+            ws = _WORDS.findall(s)
+            if len(ws) < 3:
+                continue
+            lem = [lemmatize(w) for w in ws]
+            if sum(not x.startswith("?") for x in lem) / len(ws) < min_share:
+                continue
+            out.append((f"Grein {vol} {poem} l.{i}", {"line": f"grein{vol}:{i}", "book": f"{vol}:{poem}"}, s))
+    return out
+
+
+# ---- Umbrian: the Iguvine Tables in Buck 1904 (PD, OCR)
+
+BUCK = "raw/daughters/oscan-umbrian-buck1904/download/grammarofoscanum00buckuoft_djvu.txt"
+
+
+def umbrian_lines(lat_forms: set, root: Path = ROOT, span=(14300, 18440)) -> list[tuple[str, dict, str]]:
+    """The Iguvine Tables in Buck's text section (OCR lines 14300–18440):
+    each OCR line holds the Umbrian column, then Buck's Latin translation.
+    The split point is the one that leaves the most non-Latin words on the
+    left and the most Latin words (LASLA surface forms) on the right; a word
+    broken by a hyphen at the column end is joined to the first word of the
+    next Umbrian line. Locus: table heading (IA, Via, …) and line number."""
+    lines = (root / BUCK).read_text("utf-8", errors="replace").splitlines()
+    out, table, ln, carry = [], "?", "0", ""
+    for i in range(span[0], min(span[1], len(lines))):
+        raw = lines[i].strip()
+        t = re.fullmatch(r"([IV]+[AaBb]?|V[Ii]a|V[Ii]b)\.?", raw)
+        if t:
+            table, ln, carry = t[1].upper().replace("A", "a").replace("B", "b"), "0", ""
+            continue
+        if "Iguvinian" in raw or "Commentary" in raw:
+            continue
+        m = re.match(r"^(\d{1,2})\s+(.*)$", raw)
+        if m:
+            ln, raw = m[1], m[2]
+        ws = re.findall(r"[^\W\d_]+-?", raw.replace("|", " ").replace("\\", " "))
+        if len(ws) < 2:
+            continue
+        isl = [lat_key(w.rstrip("-")) in lat_forms for w in ws]
+        best = max(range(len(ws) + 1), key=lambda k: (sum(not x for x in isl[:k]) + sum(isl[k:]), -k))
+        left = ws[:best]
+        if not left:
+            continue
+        if carry:
+            left[0] = carry + left[0]
+            carry = ""
+        if left[-1].endswith("-"):
+            carry = left.pop().rstrip("-")
+        if left:
+            out.append((f"Ig. {table} {ln}", {"line": f"ig:{i}", "book": f"Ig.{table}"}, " ".join(left)))
+    return out
+
+
+def lat_key(s: str) -> str:
+    return fs.lat_key(s)
+
+
+# ---- Latvian folk songs: quotations in an Endzelīns-era book on the dainas (OCR)
+
+DAINAS = "raw/books/text/dainas-endzelins"
+
+
+def dainas_units(root: Path = ROOT, min_chars: int = 20) -> list[tuple[str, dict, str]]:
+    """The book is prose about the dainas; the songs are its «…»
+    quotations, usually followed by a Barons–Visendorfs number ('B. V. 5210').
+    Unit: one quotation (≥ min_chars). Hyphenated line breaks are joined.
+    Locus: the B. V. number when given, else the page."""
+    out = []
+    for fn in sorted((root / DAINAS).glob("p*.txt")):
+        text = fn.read_text("utf-8", errors="replace")
+        text = re.sub(r"-\s*\n\s*", "", text).replace("\n", " ")
+        for m in re.finditer(r"[«<]([^«»]{%d,400})»([^«]{0,30})" % min_chars, text):
+            bv = re.search(r"B\.\s*V\.\s*(\d+)", m[2])
+            loc = f"BV {bv[1]}" if bv else f"{fn.stem}"
+            out.append((loc, {"song": f"{fn.stem}:{m.start()}", "book": fn.stem}, m[1]))
+    return out
+
+
+_LV_DIM = re.compile(r"^(.{2,}?)(?:ēntiņ|ēnīt|uliņ|ītiņ|iņ|īt|ēn|tiņ|uļ)(?:š|a|am|ai|ā|u|i|as|us|os|iem|ēm|ām|ām|s|is|e|ei|ē|ūs)?$")
+
+
+def lv_diminutive_variants(s: str) -> list[str]:
+    """Latvian diminutives (kalniņā, ziediņiem, māmulīte) → base headword
+    candidates (kalns, zieds, māmula …)."""
+    m = _LV_DIM.match(s.lower())
+    if not m:
+        return []
+    b = m[1]
+    return [b + e for e in ("s", "is", "a", "e", "š", "us", "")]
+
+
+
+# ---------------------------------------------------------------- N-branch scoring
+
+@dataclass
+class CorpusSpec:
+    name: str
+    branch: str
+    lang: str
+    licence: str
+    unit: str
+    translation: bool = False      # translated from Greek (Bible, homilies): one witness together
+    description: str = ""
+
+
+BRANCHES = ("Indo-Iranian", "Greek", "Italic", "Germanic", "Celtic", "Balto-Slavic", "Armenian", "Anatolian")
+CORE = frozenset({"Indo-Iranian", "Greek"})
+
+
+@dataclass
+class Witness:
+    branch: str
+    n: int                     # co-occurring units (after calque removal) summed over the branch's corpora
+    logp: float
+    corpora: dict              # corpus → co-occurrence count
+    translation_only: bool = False
+
+
+def branch_logp(cs: list, p: tuple, removed: dict | None = None) -> tuple[float, int, dict]:
+    """A branch's one-sided log p for pair p over its testable corpora (both
+    lexemes occur): exact hypergeometric when one corpus is testable, else
+    Poisson on the summed co-occurrences with λ = Σ K·d/N (a stratified
+    test: each corpus keeps its own base rates). `removed`: corpus →
+    co-occurrences discarded as calques."""
+    x, y = p
+    o_tot, lam, test, per = 0, 0.0, [], {}
+    for name, c in cs:
+        K, d = c.single.get(x, 0), c.single.get(y, 0)
+        if not K or not d:
+            continue
+        o = c.pair.get(p, 0) - (removed or {}).get(name, 0)
+        o = max(o, 0)
+        test.append((c, o, K, d))
+        o_tot += o
+        lam += K * d / c.n
+        if o:
+            per[name] = o
+    if not test:
+        return 0.0, 0, per
+    if len(test) == 1:
+        c, o, K, d = test[0]
+        return fs.hypergeom_logsf(o, K, d, c.n), o, per
+    return fs.poisson_logsf(o_tot, lam), o_tot, per
+
+
+def score_branches(counts: dict, specs: dict, calques: dict | None = None, min_branches: int = 2,
+                   alpha: float = 0.05, pairs=None, require_sig: bool = True) -> list[dict]:
+    """counts: corpus → formula_search.Counts; specs: corpus → CorpusSpec.
+    A pair is a candidate if it co-occurs in ≥ min_branches witnesses and
+    p < alpha in at least one. Witnesses: branches; the branches whose
+    co-occurrences all come from translation corpora (Gothic, OCS, Armenian)
+    merge into one witness 'translation' (min p × their number). Score:
+    Fisher's method over the witnesses' p (branches without a co-occurrence
+    do not enter). calques: corpus → pair → co-occurrences to discard."""
+    by_branch: dict[str, list] = collections.defaultdict(list)
+    for name, c in counts.items():
+        by_branch[specs[name].branch].append((name, c))
+    if pairs is None:
+        seen: dict = collections.Counter()
+        for b, cs in by_branch.items():
+            keys = set()
+            for _, c in cs:
+                keys |= c.pair.keys()
+            seen.update(keys)
+        pairs = [p for p, k in seen.items() if k >= min_branches]
+    la = math.log(alpha)
+    out = []
+    for p in pairs:
+        ws = []
+        for b, cs in by_branch.items():
+            rem = {name: calques[name].get(p, 0) for name, _ in cs if calques and name in calques}
+            lp, o, per = branch_logp(cs, p, rem)
+            if o >= 1:
+                tr = all(specs[nm].translation for nm in per)
+                ws.append(Witness(b, o, lp, per, tr))
+        trs = [w for w in ws if w.translation_only]
+        wit = [w for w in ws if not w.translation_only]
+        if trs:
+            best = min(trs, key=lambda w: w.logp)
+            wit.append(Witness("translation:" + "+".join(sorted(w.branch for w in trs)), sum(w.n for w in trs),
+                               min(0.0, best.logp + math.log(len(trs))), {k: v for w in trs for k, v in w.corpora.items()},
+                               True))
+        if len(wit) < min_branches:
+            continue
+        if require_sig and min(w.logp for w in wit) >= la:
+            continue
+        comb = fs.fisher_logp([w.logp for w in wit])
+        out.append({"pair": p, "witnesses": wit, "combined_logp": comb, "score": -comb / fs.LOG10,
+                    "branches": frozenset(w.branch.split(":")[0] if not w.branch.startswith("translation")
+                                          else w.branch for w in wit),
+                    "real_branches": frozenset(b for w in ws for b in [w.branch]),
+                    "n_witnesses": len(wit)})
+    out.sort(key=lambda r: (-r["score"], r["pair"]))
+    return out
+
+
+def ranking_class(rec: dict) -> str:
+    """a: ≥ 3 witnesses; b: 2 witnesses, not Greek + Indo-Iranian; c: exactly Greek + Indo-Iranian."""
+    if rec["n_witnesses"] >= 3:
+        return "a"
+    return "c" if rec["branches"] == CORE else "b"
+
+
+def calque_counts(units_by_corpus: dict, greek_verse_pairs: dict) -> dict:
+    """corpus → pair → number of its co-occurrence units whose NT verse has
+    the same pair in the Greek NT (PROIEL greek-nt). units_by_corpus:
+    corpus → list of (verse, rootsets)."""
+    out = {}
+    for name, units in units_by_corpus.items():
+        c: dict = collections.Counter()
+        for verse, rs in units:
+            gp = greek_verse_pairs.get(verse)
+            if not gp:
+                continue
+            for p in fs._pairs_of(rs):
+                if p in gp:
+                    c[p] += 1
+        out[name] = c
+    return out
+
+
+def verse_pairs(tokens: list[Token]) -> dict:
+    """NT verse → set of lexeme pairs co-occurring in it (Greek NT)."""
+    by: dict = collections.defaultdict(list)
+    for t in tokens:
+        by[t.units["verse"]].append(t.roots)
+    return {v: fs._pairs_of(rs) for v, rs in by.items()}
+
+
+def units_with_verse(tokens: list[Token], unit: str) -> list[tuple[str, list]]:
+    by: dict = {}
+    for t in tokens:
+        u = t.units[unit]
+        if u not in by:
+            by[u] = (t.units.get("verse", ""), [])
+        by[u][1].append(t.roots)
+    return list(by.values())

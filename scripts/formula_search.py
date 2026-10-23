@@ -34,6 +34,7 @@ import time
 from pathlib import Path
 
 from pie import formula_search as fs
+from pie import formula_search_multi as fm
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = Path(os.environ.get("FORMULA_SEARCH_OUT") or ROOT / "data" / "research" / "formulas")
@@ -536,13 +537,421 @@ def write_candidates(env: Env, cfg: dict, ev: dict, top_n: int = 200) -> list[di
     return out
 
 
+# ================================================================ round 3: every branch
+
+R3_OUT = OUT
+MAPPING_DIR = OUT / "mapping"
+R3_SEEDS = (0, 1, 2)
+TOROT_OCS = ["proiel/marianus.xml", "torot/zogr.xml", "torot/supr.xml", "torot/psal-sin.xml", "torot/vit-const.xml",
+             "torot/vit-meth.xml", "torot/kiev-mis.xml", "torot/chrabr.xml", "torot/euch.xml"]
+
+SPECS3 = {
+    "rv": fm.CorpusSpec("rv", "Indo-Iranian", "sa", "CC BY 4.0 (VedaWeb Zurich annotation)", "pada",
+                        description="Rigveda, VedaWeb (round-2 corpus and mapping)"),
+    "av": fm.CorpusSpec("av", "Indo-Iranian", "sa", "CC BY 4.0 (DCS)", "sentence",
+                        description="DCS: Atharvaveda Śaunaka + Paippalāda, Ṛgvedakhilāni"),
+    "ae": fm.CorpusSpec("ae", "Indo-Iranian", "ae", "NC (CAB)", "ab", description="Avesta, CAB Linguistic Corpus"),
+    "hom": fm.CorpusSpec("hom", "Greek", "grc", "CC BY-SA 3.0 (Perseus AGDT)", "line",
+                         description="Iliad + Odyssey, AGDT (round-2 corpus and mapping)"),
+    "grp": fm.CorpusSpec("grp", "Greek", "grc", "GLAUx: CC BY / CC BY-SA, NC/NA texts research-only", "line",
+                         description="GLAUx archaic/classical poetry (Hesiod, Hymns, lyric, tragedy)"),
+    "lat": fm.CorpusSpec("lat", "Italic", "la", "NC (LASLA)", "line", description="Plautus, Lucretius, Catullus, Cato"),
+    "xum": fm.CorpusSpec("xum", "Italic", "xum", "PD (Buck 1904)", "line", description="Iguvine Tables (Buck OCR)"),
+    "non": fm.CorpusSpec("non", "Germanic", "non", "PD (FJ 1926)", "line", description="Poetic Edda, FJ 1926 OCR"),
+    "ang": fm.CorpusSpec("ang", "Germanic", "ang", "PD", "line", description="Beowulf (Gutenberg) + Grein's Bibliothek I–II (OCR)"),
+    "got": fm.CorpusSpec("got", "Germanic", "got", "NC (PROIEL)", "sentence", translation=True,
+                         description="Gothic Bible, PROIEL"),
+    "sga": fm.CorpusSpec("sga", "Celtic", "sga", "CC BY-SA / NC (UD)", "sentence", description="UD Old Irish glosses"),
+    "cu": fm.CorpusSpec("cu", "Balto-Slavic", "cu", "NC (PROIEL/TOROT)", "sentence", translation=True,
+                        description="Old Church Slavonic: Marianus, Zographensis, Suprasliensis, Psalterium Sinaiticum, …"),
+    "lv": fm.CorpusSpec("lv", "Balto-Slavic", "lv", "OCR of a book on the dainas (quotations only)", "song",
+                        description="Latvian dainas quoted in raw/books/text/dainas-endzelins"),
+    "xcl": fm.CorpusSpec("xcl", "Armenian", "xcl", "NC (PROIEL)", "sentence", translation=True,
+                         description="Classical Armenian NT, PROIEL"),
+    "hit": fm.CorpusSpec("hit", "Anatolian", "hit", "CC BY 4.0 (TLHdig)", "line", description="TLHdig Hittite, tablet lines"),
+}
+
+
+class R3:
+    """Round-3 corpora, mappings and counts (round-2 Env for RV, Homer, LASLA and the eval set)."""
+
+    def __init__(self, env: Env):
+        t = time.time()
+        self.env = env
+        lex = env.lex
+        self.gmap = env.gmap
+        self.tok: dict = {"rv": env.tok["rv"], "hom": env.tok["hom"], "lat": env.tok["lat"]}
+        self.maps: dict = {c: env.maps["pseudo"][c] for c in ("rv", "hom", "lat")}
+        self.recs: dict = {}
+        idx = fs.PieIndex(lex)
+        want = [c for L in fm.LANGS.values() for c in L.desc_codes]
+        protos = fm.ProtoDB(want_desc=want)
+        self.lm = {}
+        for L in ("non", "ang", "got", "sga", "cu", "lv", "xcl", "hit", "xum", "ae"):
+            self.lm[L] = fm.build_lang_mapping(L, lex, protos, idx=idx)
+            log(f"mapping {L}: {len(self.lm[L].recs)} keys")
+        # lemmatized corpora
+        self.tok["got"] = fm.load_proiel(["proiel/gothic-nt.xml"], "got")
+        self.tok["xcl"] = fm.load_proiel(["proiel/armenian-nt.xml"], "xcl")
+        self.tok["cu"] = fm.load_proiel(TOROT_OCS, "cu")
+        self.tok["sga"] = fm.load_oldirish_ud()
+        self.tok["hit"] = fm.load_hittite()
+        self.tok["av"] = fm.load_dcs()
+        self.glaux_sel = fm.glaux_selection()
+        self.tok["grp"] = fm.load_glaux(self.glaux_sel)
+        for c in ("got", "xcl", "cu", "sga"):
+            self.maps[c], self.recs[c] = fm.corpus_mapping(self.tok[c], self.lm[c], gmap=self.gmap)
+        self._hittite()
+        self._sanskrit()
+        self._greek()
+        # unlemmatized corpora
+        self._text("non", fm.edda_lines(), fm.FormLemmatizer(self.lm["non"], fallbacks=(fm.non_clitic_variants,)))
+        ang_lemz = fm.FormLemmatizer(self.lm["ang"])
+        self._text("ang", fm.beowulf_lines() + fm.grein_lines(lambda w: ang_lemz(fm.grein_normalize(w))), ang_lemz)
+        self._text("lv", fm.dainas_units(), fm.FormLemmatizer(self.lm["lv"], fallbacks=(fm.lv_diminutive_variants,)))
+        lat_forms = {fs.lat_key(t.surface) for t in self.tok["lat"]}
+        self._text("xum", fm.umbrian_lines(lat_forms), fm.FormLemmatizer(self.lm["xum"]))
+        self._text("ae", fm.avesta_units(), fm.AvestanLemmatizer(self.lm["ae"], {}))
+        # Greek NT for the calque check
+        gnt = fm.load_proiel(["proiel/greek-nt.xml"], "gnt")
+        gm = fs.build_kaikki_mapping("grc", lex, gnt, fs.build_homer_mapping(lex, gnt), pseudo=True)
+        fs.apply_mapping(gnt, gm, True, "lexeme")
+        self.gnt_pairs = fm.verse_pairs(gnt)
+        self.applied = None
+        log(f"round 3 corpora and mappings in {time.time() - t:.0f}s: " +
+            ", ".join(f"{c} {len(v)}" for c, v in self.tok.items()))
+
+    def _text(self, c, units, lemz):
+        lm = self.lm[SPECS3[c].lang]
+        self.tok[c] = fm.text_tokens(c, units, lemz, lm.is_content)
+        self.maps[c], self.recs[c] = fm.multi_lemma_mapping(self.tok[c], lm, self.gmap)
+
+    def _hittite(self):
+        """kaikki + lexicon (gloss-checked) first, EDHIL headwords as the second source."""
+        toks, lm = self.tok["hit"], self.lm["hit"]
+        m, recs = fm.corpus_mapping(toks, lm, lemma_keys=fm.hit_tlh_keys, gmap=self.gmap)
+        ok = {l: r for l, r in recs.items() if fm.hittite_gloss_ok(l, r)}
+        lemmas = sorted({t.lemma for t in toks if t.content})
+        kh = fm.kloekhorst_hittite(lemmas, self.env.lex, gmap=self.gmap)
+        cont = [t for t in toks if t.content]
+        share = lambda d: round(sum(t.lemma in d for t in cont) / len(cont), 4)
+        self.hit_cov = {"kaikki_lexicon_raw": share(recs), "kaikki_lexicon_gloss_checked": share(ok),
+                        "kloekhorst_only": share(kh), "kloekhorst_agree_with_kaikki":
+                            sum(1 for l in set(kh) & set(ok) if kh[l].ids & ok[l].ids),
+                        "kloekhorst_disagree_with_kaikki": sum(1 for l in set(kh) & set(ok) if not kh[l].ids & ok[l].ids)}
+        final = dict(ok)
+        for l, r in kh.items():
+            if l not in final:
+                final[l] = r
+            elif r.ids & final[l].ids:
+                fr = final[l]
+                final[l] = fm.MapRec(fr.key, fr.word, fr.ids & r.ids, fr.path, fr.how, "high", fr.sources + ("kloekhorst",), fr.gloss)
+        self.hit_cov["final"] = share(final)
+        mm = fs.Mapping()
+        for l, r in final.items():
+            mm.lemma_lex[l] = r.ids
+            mm.lemma_groups[l] = frozenset(self.gmap.get(x, x) for x in r.ids)
+            mm.lemma_tier[l] = r.how
+        self.maps["hit"], self.recs["hit"] = mm, final
+        log(f"hittite coverage {self.hit_cov}")
+
+    def _sanskrit(self):
+        """DCS lemmas: the RV mapping by accent-free lemma key, then the
+        round-2 kaikki Sanskrit links (with root candidates for verbs)."""
+        toks, lex = self.tok["av"], self.env.lex
+        rvm = self.maps["rv"]
+        bykey: dict = {}
+        for lem in rvm.lemma_lex:
+            for k in fs.skt_lemma_keys(lem):
+                bykey.setdefault(k, (lem, rvm.lemma_lex[lem], rvm.lemma_tier.get(lem)))
+        km = fs.build_kaikki_mapping("sa", lex, toks, None, pseudo=True)
+        m = fs.Mapping()
+        recs = {}
+        for lem in {t.lemma for t in toks}:
+            hit = next((bykey[k] for k in fs.skt_lemma_keys(lem) if k in bykey), None)
+            if hit:
+                m.lemma_lex[lem], m.lemma_tier[lem] = hit[1], "rv-lemma"
+                recs[lem] = fm.MapRec(lem, hit[0], hit[1], (f"sa:{lem}", f"rv-lemma:{hit[0]}", f"r2-tier:{hit[2]}"),
+                                      "rv-lemma", "high" if hit[2] in ("kaikki", "direct", "kaikki-proto") else "medium",
+                                      ("round2-rv",))
+            elif lem in km.lemma_lex:
+                m.lemma_lex[lem], m.lemma_tier[lem] = km.lemma_lex[lem], km.lemma_tier[lem]
+                recs[lem] = fm.MapRec(lem, lem, km.lemma_lex[lem], (f"sa:{lem}", f"kaikki-sa:{km.lemma_tier[lem]}"),
+                                      km.lemma_tier[lem], "low" if km.lemma_tier[lem] == "kaikki-pseudo" else "medium",
+                                      ("round2-kaikki-sa",))
+            if lem in m.lemma_lex:
+                m.lemma_groups[lem] = frozenset(self.gmap.get(x, x) for x in m.lemma_lex[lem])
+        self.maps["av"], self.recs["av"] = m, recs
+
+    def _greek(self):
+        """GLAUx lemmas: the round-2 kaikki Greek mapping with the round-1 rules as backoff."""
+        toks, lex = self.tok["grp"], self.env.lex
+        m = fs.build_kaikki_mapping("grc", lex, toks, fs.build_homer_mapping(lex, toks), pseudo=True)
+        self.maps["grp"] = m
+        self.recs["grp"] = {l: fm.MapRec(l, l, m.lemma_lex[l], (f"grc:{l}", f"r2-tier:{m.lemma_tier[l]}"),
+                                         m.lemma_tier[l], "low" if m.lemma_tier[l] == "kaikki-pseudo" else "medium",
+                                         ("round2-grc",)) for l in m.lemma_lex}
+
+    # ---- counting
+    def apply(self, level="lexeme"):
+        if self.applied == level:
+            return
+        for c, toks in self.tok.items():
+            fs.apply_mapping(toks, self.maps[c], True, level)
+        self.applied = level
+
+    def counts(self, corpora, level="lexeme", seed=None) -> dict:
+        self.apply(level)
+        out = {}
+        for c in corpora:
+            toks = self.tok[c] if seed is None else fs.shuffled(self.tok[c], seed + 7 * list(SPECS3).index(c))
+            out[c] = fs.count_units(fs.rootsets_by(toks, SPECS3[c].unit))
+        return out
+
+    def calques(self, level="lexeme", seed=None) -> dict:
+        self.apply(level)
+        ub = {}
+        for c in ("got", "xcl", "cu"):
+            toks = self.tok[c] if seed is None else fs.shuffled(self.tok[c], seed + 7 * list(SPECS3).index(c))
+            ub[c] = fm.units_with_verse(toks, SPECS3[c].unit)
+        return fm.calque_counts(ub, self.gnt_pairs if seed is None else {})
+
+    def project(self, p):
+        return self.env.project(p)
+
+
+def r3_rank(r3: R3, corpora, level="lexeme", seed=None, require_sig=True, core_only=False,
+            branch_filter=None) -> list[dict]:
+    cnt = r3.counts(corpora, level, seed)
+    cal = r3.calques(level, seed) if any(c in corpora for c in ("got", "xcl", "cu")) else None
+    rows = fm.score_branches(cnt, SPECS3, cal, require_sig=require_sig)
+    if branch_filter:
+        rows = [r for r in rows if branch_filter(r)]
+    if core_only:     # re-score Greek + Indo-Iranian pairs on those two witnesses only
+        out = []
+        for r in rows:
+            w = [x for x in r["witnesses"] if x.branch in fm.CORE]
+            if len(w) == 2:
+                comb = fs.fisher_logp([x.logp for x in w])
+                out.append({**r, "combined_logp": comb, "score": -comb / fs.LOG10})
+        out.sort(key=lambda r: (-r["score"], r["pair"]))
+        rows = out
+    return rows
+
+
+def _group_rank(r3: R3, rows: list[dict]) -> list:
+    out, seen = [], set()
+    for r in rows:
+        gp = r3.project(r["pair"])
+        if gp is None or gp in seen:
+            continue
+        seen.add(gp)
+        out.append(gp)
+    return out
+
+
+def has_core(r):
+    return fm.CORE <= {w.branch for w in r["witnesses"]}
+
+
+ALL_R3 = list(SPECS3)
+CORE_CORPORA = ["rv", "hom"]
+
+
+def r3_configs():
+    """Fixed (not tuned) configurations for the sanity measurement."""
+    return {
+        "r2_final": None,   # round-2 final setting, its own code path
+        "r3_rv_hom_only": dict(corpora=CORE_CORPORA, require_sig=True),
+        "r3_core_corpora_core_score": dict(corpora=["rv", "av", "ae", "hom", "grp"], require_sig=True, core_only=True),
+        "r3_all_core_pairs": dict(corpora=ALL_R3, require_sig=True, branch_filter=has_core),
+        "r3_all_core_score_only": dict(corpora=ALL_R3, require_sig=True, branch_filter=has_core, core_only=True),
+        "r3_all_pairs": dict(corpora=ALL_R3, require_sig=True),
+    }
+
+
+def run_round3(env: Env) -> int:
+    MAPPING_DIR.mkdir(parents=True, exist_ok=True)
+    r3 = R3(env)
+    write_mapping_tables(r3)
+    ev = build_eval(env, "pseudo")
+    items = ev["items"]
+    final_cfg = json.loads((OUT / "final_setting.json").read_text("utf-8"))["setting"]
+    res = {}
+    rankings = {}
+    for name, cfg in r3_configs().items():
+        t = time.time()
+        if cfg is None:
+            g = env.rank(final_cfg)
+            rows = None
+        else:
+            rows = r3_rank(r3, **cfg)
+            g = _group_rank(r3, rows)
+        rankings[name] = rows
+        ranks = _ranks(g, items)
+        res[name] = {"recall": fs.recall_at(ranks, KS), "ci95": fs.bootstrap_ci(ranks, KS), "ranks": ranks,
+                     "n_ranked": len(g)}
+        log(f"{name}: {res[name]['recall']} n={len(g)} {time.time() - t:.0f}s")
+    for name in res:
+        res[name]["minus_r2"] = {f"recall@{k}": fs.paired_bootstrap_diff(res[name]["ranks"], res["r2_final"]["ranks"], k)
+                                 for k in KS}
+    # regression: the N-branch code on rv + hom without the significance filter = round 2's ranking
+    reg = r3_rank(r3, CORE_CORPORA, require_sig=False)
+    g_reg, g_r2 = _group_rank(r3, reg)[:200], env.rank(final_cfg)[:200]
+    regression = {"top200_identical": g_reg == g_r2, "top200_overlap": len(set(g_reg) & set(g_r2))}
+    log(f"regression vs round 2: {regression}")
+    # third-branch witnesses of the evaluation items (all-corpora rows)
+    allrows = rankings["r3_all_pairs"]
+    by_gp: dict = {}
+    for r in allrows:
+        gp = r3.project(r["pair"])
+        if gp and gp not in by_gp:
+            by_gp[gp] = r
+    third = []
+    g_all = {gp: i for i, gp in enumerate(_group_rank(r3, allrows), 1)}
+    for it in items:
+        rs = [by_gp[tuple(p)] for p in it["pairs"] if tuple(p) in by_gp]
+        extra = sorted({w.branch for r in rs for w in r["witnesses"] if w.branch not in fm.CORE})
+        third.append({"item_id": it["item_id"], "pairs": [[describe(env, x)["pie"] or x for x in p] for p in it["pairs"]],
+                      "third_branch_witnesses": extra,
+                      "rank_all_pairs": min((g_all[tuple(p)] for p in it["pairs"] if tuple(p) in g_all), default=None)})
+    # shuffled baseline per ranking class
+    real = {cl: [r for r in allrows if fm.ranking_class(r) == cl] for cl in "abc"}
+    cut = {cl: (real[cl][99]["score"] if len(real[cl]) >= 100 else (real[cl][-1]["score"] if real[cl] else None))
+           for cl in "abc"}
+    shuf = {cl: [] for cl in "abc"}
+    shuf_items = []
+    for seed in R3_SEEDS:
+        rows = r3_rank(r3, ALL_R3, seed=seed)
+        for cl in "abc":
+            sc = [r for r in rows if fm.ranking_class(r) == cl]
+            shuf[cl].append({"n_pairs": len(sc), "n_above_real_top100_cutoff":
+                             sum(1 for r in sc if cut[cl] is not None and r["score"] >= cut[cl])})
+        core = [r for r in rows if has_core(r)]
+        shuf_items.append(fs.recall_at(_ranks(_group_rank(r3, core), items), KS))
+        log(f"shuffle seed {seed}: " + str({cl: shuf[cl][-1] for cl in "abc"}))
+    baseline = {"per_class": {cl: {"real_n_pairs": len(real[cl]), "real_top100_cutoff_neglog10p": cut[cl],
+                                   "shuffled": shuf[cl]} for cl in "abc"},
+                "items_recall_r3_all_core_pairs_shuffled": {
+                    f"recall@{k}": round(statistics.mean(x[f"recall@{k}"] for x in shuf_items), 3) for k in KS}}
+    cands = write_candidates_r3(r3, real)
+    write_round3_json(r3, res, regression, third, baseline, cands, items)
+    return 0
+
+
+def write_mapping_tables(r3: R3):
+    """data/research/formulas/mapping/<corpus>.jsonl: one row per mapped
+    corpus lemma (dictionary word, corpus lemma or lemma key, lexicon ids,
+    path, confidence, how, sources). No corpus text."""
+    for c, recs in r3.recs.items():
+        rows = []
+        for lem in sorted(recs):
+            r = recs[lem]
+            rows.append({"corpus": c, "lang": SPECS3[c].lang, "lemma": lem, "word": r.word, "lex_id": sorted(r.ids),
+                         "path": list(r.path), "how": r.how, "confidence": r.confidence, "sources": list(r.sources)})
+        (MAPPING_DIR / f"{c}.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in rows), "utf-8")
+
+
+def coverage_r3(r3: R3) -> dict:
+    out = {}
+    for c, toks in r3.tok.items():
+        cont = [t for t in toks if t.content]
+        m = r3.maps[c]
+        lem = collections.Counter(t.lemma for t in cont)
+        mapped = [l for l in lem if l in m.lemma_lex]
+        conf = collections.Counter()
+        recs = r3.recs.get(c, {})
+        for t in cont:
+            if t.lemma in m.lemma_lex:
+                conf[recs[t.lemma].confidence if t.lemma in recs else "round2"] += 1
+        lexeme = sum(1 for t in cont if t.lemma in m.lemma_lex and any(not x.startswith("pie-root-") for x in m.lemma_lex[t.lemma]))
+        units = len({t.units[SPECS3[c].unit] for t in toks})
+        out[c] = {"tokens": len(toks), "content_tokens": len(cont), "units": units,
+                  "content_tokens_mapped": sum(lem[l] for l in mapped),
+                  "content_token_share": round(sum(lem[l] for l in mapped) / max(1, len(cont)), 4),
+                  "content_types": len(lem), "content_types_mapped": len(mapped),
+                  "type_share": round(len(mapped) / max(1, len(lem)), 4),
+                  "mapped_tokens_by_confidence": dict(conf),
+                  "mapped_tokens_lexeme_level_share": round(lexeme / max(1, sum(lem[l] for l in mapped)), 4)}
+    return out
+
+
+def _loci(r3: R3, corpus: str, pairs: set, limit=3) -> dict:
+    ex = fs.instances(r3.tok[corpus], SPECS3[corpus].unit, pairs, limit=limit)
+    return {p: [e["locus"] for e in v["examples"]] for p, v in ex.items()}
+
+
+def write_candidates_r3(r3: R3, real: dict, top_n: int = 100) -> dict:
+    env = r3.env
+    r3.apply("lexeme")
+    known = fs.known_pairs(env.formulas, env.lemmatizer("pseudo"), env.pie_idx)
+    out = {}
+    for cl, rows in real.items():
+        seen, top = set(), []
+        for r in rows:
+            gp = r3.project(r["pair"])
+            if gp is None or gp in seen:
+                continue
+            seen.add(gp)
+            top.append((r, gp))
+            if len(top) >= top_n:
+                break
+        want = {r["pair"] for r, _ in top}
+        loci = {c: _loci(r3, c, want) for c in r3.tok}
+        recs = []
+        for i, (r, gp) in enumerate(top, 1):
+            p = r["pair"]
+            per = {}
+            for w in r["witnesses"]:
+                for c, n in w.corpora.items():
+                    per[c] = {"branch": SPECS3[c].branch, "n": n, "loci": loci[c].get(p, [])[:3]}
+            paths = {}
+            for c in per:
+                for x in p:
+                    for lem, rec in r3.recs.get(c, {}).items():
+                        if x in rec.ids:
+                            paths.setdefault(c, {}).setdefault(x, []).append(" > ".join(rec.path))
+                            if len(paths[c][x]) >= 2:
+                                break
+            recs.append({"rank": i, "class": cl, "pair": [describe(env, p[0]), describe(env, p[1])],
+                         "groups": [describe(env, g)["pie"] or g for g in gp],
+                         "score_neglog10p": round(r["score"], 2),
+                         "witnesses": [{"branch": w.branch, "n": w.n, "neglog10p": round(-w.logp / fs.LOG10, 2),
+                                        "translation_only": w.translation_only} for w in r["witnesses"]],
+                         "per_corpus": per, "mapping_paths": paths, "in_formulas_jsonl": gp in known,
+                         "status": "unreviewed"})
+        out[cl] = recs
+        (OUT / f"candidates-r3-{cl}.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in recs),
+                                                       "utf-8")
+    return out
+
+
+def write_round3_json(r3, res, regression, third, baseline, cands, items):
+    doc = {"round": 3, "date": time.strftime("%Y-%m-%d"),
+           "note": "Sanity measurement on the round-2 24-item set (not confirmatory; the set was used for tuning in "
+                   "round 2). Fixed settings, no CV, CIs from 2,000 bootstrap resamples of items.",
+           "corpora": {c: {**SPECS3[c].__dict__} for c in SPECS3},
+           "glaux_subset": [{"tlg": r["TLG"], "author": r["AUTHOR_STANDARD"], "title": r["TITLE_STANDARD"],
+                             "genre": r["GENRE_STANDARD"], "licence": r["SOURCE_LICENSE"], "tokens": r["TOKENS"]}
+                            for r in r3.glaux_sel],
+           "coverage": coverage_r3(r3), "hittite_coverage": r3.hit_cov,
+           "sanity": {k: {kk: vv for kk, vv in v.items()} for k, v in res.items()},
+           "configs": {k: (v if v is None else {kk: (vv.__name__ if callable(vv) else vv) for kk, vv in v.items()})
+                       for k, v in r3_configs().items()},
+           "regression_vs_round2": regression, "items_third_branch": third, "shuffled_baseline": baseline,
+           "candidates": {cl: len(v) for cl, v in cands.items()}}
+    (OUT / "evaluation-r3.json").write_text(json.dumps(doc, ensure_ascii=False, indent=1, default=str) + "\n", "utf-8")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("stage", choices=["ablation", "candidates", "all"])
+    ap.add_argument("stage", choices=["ablation", "candidates", "all", "round3"])
     args = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     load_spot_checks()
     env = Env()
+    if args.stage == "round3":
+        return run_round3(env)
     if args.stage in ("ablation", "all"):
         ab = run_ablation(env)
         write_evaluation(env, ab)

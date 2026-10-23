@@ -1,0 +1,2390 @@
+{
+ "round": 3,
+ "date": "2026-10-23",
+ "note": "Sanity measurement on the round-2 24-item set (not confirmatory; the set was used for tuning in round 2). Fixed settings, no CV, CIs from 2,000 bootstrap resamples of items.",
+ "corpora": {
+  "rv": {
+   "name": "rv",
+   "branch": "Indo-Iranian",
+   "lang": "sa",
+   "licence": "CC BY 4.0 (VedaWeb Zurich annotation)",
+   "unit": "pada",
+   "translation": false,
+   "description": "Rigveda, VedaWeb (round-2 corpus and mapping)"
+  },
+  "av": {
+   "name": "av",
+   "branch": "Indo-Iranian",
+   "lang": "sa",
+   "licence": "CC BY 4.0 (DCS)",
+   "unit": "sentence",
+   "translation": false,
+   "description": "DCS: Atharvaveda Śaunaka + Paippalāda, Ṛgvedakhilāni"
+  },
+  "ae": {
+   "name": "ae",
+   "branch": "Indo-Iranian",
+   "lang": "ae",
+   "licence": "NC (CAB)",
+   "unit": "ab",
+   "translation": false,
+   "description": "Avesta, CAB Linguistic Corpus"
+  },
+  "hom": {
+   "name": "hom",
+   "branch": "Greek",
+   "lang": "grc",
+   "licence": "CC BY-SA 3.0 (Perseus AGDT)",
+   "unit": "line",
+   "translation": false,
+   "description": "Iliad + Odyssey, AGDT (round-2 corpus and mapping)"
+  },
+  "grp": {
+   "name": "grp",
+   "branch": "Greek",
+   "lang": "grc",
+   "licence": "GLAUx: CC BY / CC BY-SA, NC/NA texts research-only",
+   "unit": "line",
+   "translation": false,
+   "description": "GLAUx archaic/classical poetry (Hesiod, Hymns, lyric, tragedy)"
+  },
+  "lat": {
+   "name": "lat",
+   "branch": "Italic",
+   "lang": "la",
+   "licence": "NC (LASLA)",
+   "unit": "line",
+   "translation": false,
+   "description": "Plautus, Lucretius, Catullus, Cato"
+  },
+  "xum": {
+   "name": "xum",
+   "branch": "Italic",
+   "lang": "xum",
+   "licence": "PD (Buck 1904)",
+   "unit": "line",
+   "translation": false,
+   "description": "Iguvine Tables (Buck OCR)"
+  },
+  "non": {
+   "name": "non",
+   "branch": "Germanic",
+   "lang": "non",
+   "licence": "PD (FJ 1926)",
+   "unit": "line",
+   "translation": false,
+   "description": "Poetic Edda, FJ 1926 OCR"
+  },
+  "ang": {
+   "name": "ang",
+   "branch": "Germanic",
+   "lang": "ang",
+   "licence": "PD",
+   "unit": "line",
+   "translation": false,
+   "description": "Beowulf (Gutenberg) + Grein's Bibliothek I–II (OCR)"
+  },
+  "got": {
+   "name": "got",
+   "branch": "Germanic",
+   "lang": "got",
+   "licence": "NC (PROIEL)",
+   "unit": "sentence",
+   "translation": true,
+   "description": "Gothic Bible, PROIEL"
+  },
+  "sga": {
+   "name": "sga",
+   "branch": "Celtic",
+   "lang": "sga",
+   "licence": "CC BY-SA / NC (UD)",
+   "unit": "sentence",
+   "translation": false,
+   "description": "UD Old Irish glosses"
+  },
+  "cu": {
+   "name": "cu",
+   "branch": "Balto-Slavic",
+   "lang": "cu",
+   "licence": "NC (PROIEL/TOROT)",
+   "unit": "sentence",
+   "translation": true,
+   "description": "Old Church Slavonic: Marianus, Zographensis, Suprasliensis, Psalterium Sinaiticum, …"
+  },
+  "lv": {
+   "name": "lv",
+   "branch": "Balto-Slavic",
+   "lang": "lv",
+   "licence": "OCR of a book on the dainas (quotations only)",
+   "unit": "song",
+   "translation": false,
+   "description": "Latvian dainas quoted in raw/books/text/dainas-endzelins"
+  },
+  "xcl": {
+   "name": "xcl",
+   "branch": "Armenian",
+   "lang": "xcl",
+   "licence": "NC (PROIEL)",
+   "unit": "sentence",
+   "translation": true,
+   "description": "Classical Armenian NT, PROIEL"
+  },
+  "hit": {
+   "name": "hit",
+   "branch": "Anatolian",
+   "lang": "hit",
+   "licence": "CC BY 4.0 (TLHdig)",
+   "unit": "line",
+   "translation": false,
+   "description": "TLHdig Hittite, tablet lines"
+  }
+ },
+ "glaux_subset": [
+  {
+   "tlg": "1351-001",
+   "author": "Epigoni",
+   "title": "Epigoni",
+   "genre": "Epic poetry",
+   "licence": "NA",
+   "tokens": "60"
+  },
+  {
+   "tlg": "1547-001",
+   "author": "Oedipodea",
+   "title": "Oedipodea",
+   "genre": "Epic poetry",
+   "licence": "NA",
+   "tokens": "15"
+  },
+  {
+   "tlg": "1712-001",
+   "author": "Thebaïs",
+   "title": "Thebaïs",
+   "genre": "Epic poetry",
+   "licence": "NA",
+   "tokens": "157"
+  },
+  {
+   "tlg": "0298-001",
+   "author": "Eumelus",
+   "title": "Fragmentum",
+   "genre": "Lyric poetry",
+   "licence": "NA",
+   "tokens": "14"
+  },
+  {
+   "tlg": "0020-001",
+   "author": "Hesiodus",
+   "title": "Theogonia",
+   "genre": "Epic poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "8101"
+  },
+  {
+   "tlg": "0020-002",
+   "author": "Hesiodus",
+   "title": "Opera et dies",
+   "genre": "Epic poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "6954"
+  },
+  {
+   "tlg": "0020-003",
+   "author": "Hesiodus",
+   "title": "Scutum",
+   "genre": "Epic poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "3834"
+  },
+  {
+   "tlg": "0020-004",
+   "author": "Hesiodus",
+   "title": "Fragmenta",
+   "genre": "Epic poetry",
+   "licence": "NA",
+   "tokens": "9107"
+  },
+  {
+   "tlg": "0020-007",
+   "author": "Hesiodus",
+   "title": "Fragmenta",
+   "genre": "Epic poetry",
+   "licence": "NA",
+   "tokens": "513"
+  },
+  {
+   "tlg": "0020-008",
+   "author": "Hesiodus",
+   "title": "Fragmentum",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "7"
+  },
+  {
+   "tlg": "0232-002",
+   "author": "Archilochus",
+   "title": "Fragmenta lyrica",
+   "genre": "Lyric poetry",
+   "licence": "NA",
+   "tokens": "319"
+  },
+  {
+   "tlg": "0232-003",
+   "author": "Archilochus",
+   "title": "Epigrammata",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "26"
+  },
+  {
+   "tlg": "1296-001",
+   "author": "Cypria",
+   "title": "Cypria",
+   "genre": "Epic poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "412"
+  },
+  {
+   "tlg": "1444-001",
+   "author": "Ilias Parva",
+   "title": "Ilias parva",
+   "genre": "Epic poetry",
+   "licence": "CC BY 4.0",
+   "tokens": "390"
+  },
+  {
+   "tlg": "1445-001",
+   "author": "Iliu Persis",
+   "title": "Iliu persis",
+   "genre": "Epic poetry",
+   "licence": "CC BY 4.0",
+   "tokens": "96"
+  },
+  {
+   "tlg": "0013-001",
+   "author": "Hymni Homerici",
+   "title": "Fragmenta hymni in Bacchum",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "180"
+  },
+  {
+   "tlg": "0013-005",
+   "author": "Hymni Homerici",
+   "title": "In Venerem",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "2393"
+  },
+  {
+   "tlg": "0013-009",
+   "author": "Hymni Homerici",
+   "title": "In Dianam",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "67"
+  },
+  {
+   "tlg": "0255-002",
+   "author": "Mimnermus",
+   "title": "Epigramma",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "17"
+  },
+  {
+   "tlg": "0299-001",
+   "author": "Terpander",
+   "title": "Fragmenta",
+   "genre": "Lyric poetry",
+   "licence": "NA",
+   "tokens": "70"
+  },
+  {
+   "tlg": "1737-001",
+   "author": "Titanomachia",
+   "title": "Titanomachia",
+   "genre": "Epic poetry",
+   "licence": "CC BY 4.0",
+   "tokens": "125"
+  },
+  {
+   "tlg": "0696-002",
+   "author": "Alcmaeonis",
+   "title": "Alcmaeonis",
+   "genre": "Epic poetry",
+   "licence": "NA",
+   "tokens": "51"
+  },
+  {
+   "tlg": "1182-004",
+   "author": "Aristeas",
+   "title": "Fragmenta epica",
+   "genre": "Epic poetry",
+   "licence": "NA",
+   "tokens": "91"
+  },
+  {
+   "tlg": "0242-003",
+   "author": "Asius",
+   "title": "Fragmenta epica",
+   "genre": "Lyric poetry",
+   "licence": "CC BY 4.0",
+   "tokens": "98"
+  },
+  {
+   "tlg": "1274-002",
+   "author": "Cleobulus",
+   "title": "Epigrammata",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "72"
+  },
+  {
+   "tlg": "0364-001",
+   "author": "Danaïs vel Danaïdes",
+   "title": "Danaïs vel Danaïdes",
+   "genre": "Epic poetry",
+   "licence": "NA",
+   "tokens": "13"
+  },
+  {
+   "tlg": "1541-001",
+   "author": "Nostoi",
+   "title": "Nostoi",
+   "genre": "Epic poetry",
+   "licence": "CC BY 4.0",
+   "tokens": "38"
+  },
+  {
+   "tlg": "0013-006",
+   "author": "Hymni Homerici",
+   "title": "In Venerem",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "153"
+  },
+  {
+   "tlg": "0013-007",
+   "author": "Hymni Homerici",
+   "title": "In Bacchum",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "508"
+  },
+  {
+   "tlg": "0013-010",
+   "author": "Hymni Homerici",
+   "title": "In Venerem",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "47"
+  },
+  {
+   "tlg": "0013-011",
+   "author": "Hymni Homerici",
+   "title": "In Minervam",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "42"
+  },
+  {
+   "tlg": "0013-012",
+   "author": "Hymni Homerici",
+   "title": "In Junonem",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "35"
+  },
+  {
+   "tlg": "0013-013",
+   "author": "Hymni Homerici",
+   "title": "In Cererem",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "29"
+  },
+  {
+   "tlg": "0013-014",
+   "author": "Hymni Homerici",
+   "title": "In matrem deorum",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "51"
+  },
+  {
+   "tlg": "0013-016",
+   "author": "Hymni Homerici",
+   "title": "In Aesculapium",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "42"
+  },
+  {
+   "tlg": "0013-017",
+   "author": "Hymni Homerici",
+   "title": "In Dioscuros",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "35"
+  },
+  {
+   "tlg": "0013-021",
+   "author": "Hymni Homerici",
+   "title": "In Apollinem",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "46"
+  },
+  {
+   "tlg": "0013-022",
+   "author": "Hymni Homerici",
+   "title": "In Neptunum",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "58"
+  },
+  {
+   "tlg": "0013-023",
+   "author": "Hymni Homerici",
+   "title": "In Jovem",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "30"
+  },
+  {
+   "tlg": "0013-024",
+   "author": "Hymni Homerici",
+   "title": "In Vestam",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "39"
+  },
+  {
+   "tlg": "0013-025",
+   "author": "Hymni Homerici",
+   "title": "In Musas et Apollinem",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "61"
+  },
+  {
+   "tlg": "0013-026",
+   "author": "Hymni Homerici",
+   "title": "In Bacchum",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "103"
+  },
+  {
+   "tlg": "0013-027",
+   "author": "Hymni Homerici",
+   "title": "In Dianam",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "156"
+  },
+  {
+   "tlg": "0013-028",
+   "author": "Hymni Homerici",
+   "title": "In Minervam",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "138"
+  },
+  {
+   "tlg": "0013-029",
+   "author": "Hymni Homerici",
+   "title": "In Vestam",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "116"
+  },
+  {
+   "tlg": "0013-030",
+   "author": "Hymni Homerici",
+   "title": "In Tellurem matrem omnium",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "158"
+  },
+  {
+   "tlg": "1607-002",
+   "author": "Phoronis",
+   "title": "Phoronis",
+   "genre": "Epic poetry",
+   "licence": "CC BY 4.0",
+   "tokens": "92"
+  },
+  {
+   "tlg": "0288-001",
+   "author": "Pisander",
+   "title": "Heraclea",
+   "genre": "Epic poetry",
+   "licence": "CC BY 4.0",
+   "tokens": "30"
+  },
+  {
+   "tlg": "0288-003",
+   "author": "Pisander",
+   "title": "Epigramma",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "37"
+  },
+  {
+   "tlg": "0631-001",
+   "author": "Pittacus",
+   "title": "Fragmentum",
+   "genre": "Lyric poetry",
+   "licence": "NA",
+   "tokens": "24"
+  },
+  {
+   "tlg": "0631-002",
+   "author": "Pittacus",
+   "title": "Epigramma",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "9"
+  },
+  {
+   "tlg": "0253-001",
+   "author": "Homerus",
+   "title": "Margites",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-NC-ND 4.0",
+   "tokens": "143"
+  },
+  {
+   "tlg": "0009-002",
+   "author": "Sappho",
+   "title": "Epigrammata",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "83"
+  },
+  {
+   "tlg": "1667-004",
+   "author": "Septem Sapientes",
+   "title": "Sententiae",
+   "genre": "Lyric poetry",
+   "licence": "NA",
+   "tokens": "673"
+  },
+  {
+   "tlg": "1667-005",
+   "author": "Septem Sapientes",
+   "title": "Praecepta",
+   "genre": "Lyric poetry",
+   "licence": "NA",
+   "tokens": "535"
+  },
+  {
+   "tlg": "0668-001",
+   "author": "Aegimius",
+   "title": "Aegimius",
+   "genre": "Epic poetry",
+   "licence": "NA",
+   "tokens": "92"
+  },
+  {
+   "tlg": "0237-003",
+   "author": "Anacreon",
+   "title": "Fragmenta",
+   "genre": "Lyric poetry",
+   "licence": "OpenEdition Books License",
+   "tokens": "11"
+  },
+  {
+   "tlg": "0237-004",
+   "author": "Anacreon",
+   "title": "Epigrammata",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "454"
+  },
+  {
+   "tlg": "0365-001",
+   "author": "Apollodorus",
+   "title": "Fragmentum",
+   "genre": "Lyric poetry",
+   "licence": "NA",
+   "tokens": "9"
+  },
+  {
+   "tlg": "1223-001",
+   "author": "Bias",
+   "title": "Fragmentum",
+   "genre": "Lyric poetry",
+   "licence": "NA",
+   "tokens": "23"
+  },
+  {
+   "tlg": "0244-001",
+   "author": "Cleobulina Scriptor Aenigmatum",
+   "title": "Fragmenta",
+   "genre": "Lyric poetry",
+   "licence": "NA",
+   "tokens": "35"
+  },
+  {
+   "tlg": "0245-001",
+   "author": "Demodocus",
+   "title": "Fragmenta",
+   "genre": "Lyric poetry",
+   "licence": "NA",
+   "tokens": "120"
+  },
+  {
+   "tlg": "0245-002",
+   "author": "Demodocus",
+   "title": "Epigrammata",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "105"
+  },
+  {
+   "tlg": "0249-001",
+   "author": "Echembrotus",
+   "title": "Fragmentum",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "19"
+  },
+  {
+   "tlg": "4163-001",
+   "author": "Telegonia",
+   "title": "Telegonia",
+   "genre": "Epic poetry",
+   "licence": "NA",
+   "tokens": "9"
+  },
+  {
+   "tlg": "1433-001",
+   "author": "Hipparchus",
+   "title": "Fragmenta",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "8"
+  },
+  {
+   "tlg": "0013-002",
+   "author": "Hymni Homerici",
+   "title": "In Cererem",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "3946"
+  },
+  {
+   "tlg": "0013-003",
+   "author": "Hymni Homerici",
+   "title": "In Apollinem",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "4488"
+  },
+  {
+   "tlg": "0013-004",
+   "author": "Hymni Homerici",
+   "title": "In Mercurium",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "4779"
+  },
+  {
+   "tlg": "0013-015",
+   "author": "Hymni Homerici",
+   "title": "In Herculem",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "72"
+  },
+  {
+   "tlg": "0013-018",
+   "author": "Hymni Homerici",
+   "title": "In Mercurium",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "95"
+  },
+  {
+   "tlg": "0366-001",
+   "author": "Lasus",
+   "title": "Fragmentum",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "15"
+  },
+  {
+   "tlg": "1241-002",
+   "author": "Carmen Naupactium",
+   "title": "Carmen Naupactium",
+   "genre": "Epic poetry",
+   "licence": "CC BY 4.0",
+   "tokens": "67"
+  },
+  {
+   "tlg": "1604-001",
+   "author": "Phocylides",
+   "title": "Sententiae",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "261"
+  },
+  {
+   "tlg": "1604-002",
+   "author": "Phocylides",
+   "title": "Epigramma",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "35"
+  },
+  {
+   "tlg": "0002-001",
+   "author": "Theognis",
+   "title": "Elegiae",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "11484"
+  },
+  {
+   "tlg": "0301-001",
+   "author": "Thespis",
+   "title": "Fragmenta",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "74"
+  },
+  {
+   "tlg": "0085-001",
+   "author": "Aeschylus",
+   "title": "Supplices",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "5955"
+  },
+  {
+   "tlg": "0085-002",
+   "author": "Aeschylus",
+   "title": "Persae",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "6256"
+  },
+  {
+   "tlg": "0085-003",
+   "author": "Aeschylus",
+   "title": "Prometheus vinctus",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "7084"
+  },
+  {
+   "tlg": "0085-004",
+   "author": "Aeschylus",
+   "title": "Septem contra Thebas",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "6215"
+  },
+  {
+   "tlg": "0085-005",
+   "author": "Aeschylus",
+   "title": "Agamemnon",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "9760"
+  },
+  {
+   "tlg": "0085-006",
+   "author": "Aeschylus",
+   "title": "Choephoroe",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "6589"
+  },
+  {
+   "tlg": "0085-007",
+   "author": "Aeschylus",
+   "title": "Eumenides",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "6389"
+  },
+  {
+   "tlg": "0085-010",
+   "author": "Aeschylus",
+   "title": "Epigrammata",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "49"
+  },
+  {
+   "tlg": "0368-001",
+   "author": "Cydias",
+   "title": "Fragmentum",
+   "genre": "Lyric poetry",
+   "licence": "NA",
+   "tokens": "11"
+  },
+  {
+   "tlg": "0258-001",
+   "author": "Pigres",
+   "title": "Fragmentum",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "15"
+  },
+  {
+   "tlg": "0033-001",
+   "author": "Pindarus",
+   "title": "Olympia",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "6867"
+  },
+  {
+   "tlg": "0033-002",
+   "author": "Pindarus",
+   "title": "Pythia",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "8852"
+  },
+  {
+   "tlg": "0033-003",
+   "author": "Pindarus",
+   "title": "Nemea",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "5736"
+  },
+  {
+   "tlg": "0033-004",
+   "author": "Pindarus",
+   "title": "Isthmia",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "3402"
+  },
+  {
+   "tlg": "1833-001",
+   "author": "Pratinas",
+   "title": "Fragmenta",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "154"
+  },
+  {
+   "tlg": "0632-005",
+   "author": "Pythagoras",
+   "title": "Epigramma",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "8"
+  },
+  {
+   "tlg": "0261-003",
+   "author": "Simonides",
+   "title": "Epigrammata",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "1882"
+  },
+  {
+   "tlg": "0367-001",
+   "author": "Tynnichus",
+   "title": "Fragmentum",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "4"
+  },
+  {
+   "tlg": "0267-002",
+   "author": "Xenophanes",
+   "title": "Fragmenta",
+   "genre": "Lyric poetry",
+   "licence": "CC BY 4.0",
+   "tokens": "426"
+  },
+  {
+   "tlg": "0267-003",
+   "author": "Xenophanes",
+   "title": "Epigramma",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "34"
+  },
+  {
+   "tlg": "0199-001",
+   "author": "Bacchylides",
+   "title": "Epinicia",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "4064"
+  },
+  {
+   "tlg": "0199-002",
+   "author": "Bacchylides",
+   "title": "Dithyrambi",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "1434"
+  },
+  {
+   "tlg": "0199-009",
+   "author": "Bacchylides",
+   "title": "Epigrammata",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "51"
+  },
+  {
+   "tlg": "2138-001",
+   "author": "Canticum Euripidis",
+   "title": "Ex Orestis stasimo i",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "33"
+  },
+  {
+   "tlg": "1342-002",
+   "author": "Empedocles",
+   "title": "Epigramma",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "65"
+  },
+  {
+   "tlg": "0006-002",
+   "author": "Euripides",
+   "title": "Alcestis",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "8106"
+  },
+  {
+   "tlg": "0006-003",
+   "author": "Euripides",
+   "title": "Medea",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "9728"
+  },
+  {
+   "tlg": "0006-004",
+   "author": "Euripides",
+   "title": "Heraclidae",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "7550"
+  },
+  {
+   "tlg": "0006-005",
+   "author": "Euripides",
+   "title": "Hippolytus",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "10040"
+  },
+  {
+   "tlg": "0006-006",
+   "author": "Euripides",
+   "title": "Andromacha",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "8882"
+  },
+  {
+   "tlg": "0006-007",
+   "author": "Euripides",
+   "title": "Hecuba",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "8917"
+  },
+  {
+   "tlg": "0006-008",
+   "author": "Euripides",
+   "title": "Supplices",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "8570"
+  },
+  {
+   "tlg": "0006-009",
+   "author": "Euripides",
+   "title": "Hercules",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "9632"
+  },
+  {
+   "tlg": "0006-010",
+   "author": "Euripides",
+   "title": "Ion",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "11371"
+  },
+  {
+   "tlg": "0006-011",
+   "author": "Euripides",
+   "title": "Troiades",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "8768"
+  },
+  {
+   "tlg": "0006-012",
+   "author": "Euripides",
+   "title": "Electra",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "9428"
+  },
+  {
+   "tlg": "0006-013",
+   "author": "Euripides",
+   "title": "Iphigenia Taurica",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "10250"
+  },
+  {
+   "tlg": "0006-014",
+   "author": "Euripides",
+   "title": "Helena",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "11997"
+  },
+  {
+   "tlg": "0006-015",
+   "author": "Euripides",
+   "title": "Phoenisae",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "12029"
+  },
+  {
+   "tlg": "0006-016",
+   "author": "Euripides",
+   "title": "Orestes",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "12354"
+  },
+  {
+   "tlg": "0006-017",
+   "author": "Euripides",
+   "title": "Bacchae",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "9244"
+  },
+  {
+   "tlg": "0006-018",
+   "author": "Euripides",
+   "title": "Iphigenia Aulidensis",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "11582"
+  },
+  {
+   "tlg": "0006-019",
+   "author": "Euripides",
+   "title": "Rhesus",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "6606"
+  },
+  {
+   "tlg": "0006-031",
+   "author": "Euripides",
+   "title": "Epigrammata",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "29"
+  },
+  {
+   "tlg": "0013-019",
+   "author": "Hymni Homerici",
+   "title": "In Pana",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "396"
+  },
+  {
+   "tlg": "0013-020",
+   "author": "Hymni Homerici",
+   "title": "In Volcanum",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "60"
+  },
+  {
+   "tlg": "0013-031",
+   "author": "Hymni Homerici",
+   "title": "In Solem",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "154"
+  },
+  {
+   "tlg": "0013-032",
+   "author": "Hymni Homerici",
+   "title": "In Lunam",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "153"
+  },
+  {
+   "tlg": "0013-033",
+   "author": "Hymni Homerici",
+   "title": "In Dioscuros",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "137"
+  },
+  {
+   "tlg": "1260-002",
+   "author": "Chersias",
+   "title": "Fragmentum epicum",
+   "genre": "Epic poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "13"
+  },
+  {
+   "tlg": "0011-001",
+   "author": "Sophocles",
+   "title": "Trachiniae",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "8940"
+  },
+  {
+   "tlg": "0011-002",
+   "author": "Sophocles",
+   "title": "Antigone",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "8866"
+  },
+  {
+   "tlg": "0011-003",
+   "author": "Sophocles",
+   "title": "Ajax",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "9601"
+  },
+  {
+   "tlg": "0011-004",
+   "author": "Sophocles",
+   "title": "Oedipus tyrannus",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "11374"
+  },
+  {
+   "tlg": "0011-005",
+   "author": "Sophocles",
+   "title": "Electra",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "10625"
+  },
+  {
+   "tlg": "0011-006",
+   "author": "Sophocles",
+   "title": "Philoctetes",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "10928"
+  },
+  {
+   "tlg": "0011-007",
+   "author": "Sophocles",
+   "title": "Oedipus Coloneus",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "12802"
+  },
+  {
+   "tlg": "0011-008",
+   "author": "Sophocles",
+   "title": "Fragmenta",
+   "genre": "Tragedy",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "2310"
+  },
+  {
+   "tlg": "0003-002",
+   "author": "Thucydides",
+   "title": "Epigramma",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "36"
+  },
+  {
+   "tlg": "0265-003",
+   "author": "Timocreon",
+   "title": "Epigramma",
+   "genre": "Lyric poetry",
+   "licence": "CC BY-SA 4.0",
+   "tokens": "14"
+  }
+ ],
+ "coverage": {
+  "rv": {
+   "tokens": 164758,
+   "content_tokens": 118887,
+   "units": 39832,
+   "content_tokens_mapped": 77771,
+   "content_token_share": 0.6542,
+   "content_types": 9599,
+   "content_types_mapped": 1829,
+   "type_share": 0.1905,
+   "mapped_tokens_by_confidence": {
+    "round2": 77771
+   },
+   "mapped_tokens_lexeme_level_share": 0.6946
+  },
+  "hom": {
+   "tokens": 200145,
+   "content_tokens": 116533,
+   "units": 27760,
+   "content_tokens_mapped": 81734,
+   "content_token_share": 0.7014,
+   "content_types": 8165,
+   "content_types_mapped": 2750,
+   "type_share": 0.3368,
+   "mapped_tokens_by_confidence": {
+    "round2": 81734
+   },
+   "mapped_tokens_lexeme_level_share": 0.7219
+  },
+  "lat": {
+   "tokens": 144786,
+   "content_tokens": 73932,
+   "units": 18420,
+   "content_tokens_mapped": 42302,
+   "content_token_share": 0.5722,
+   "content_types": 7865,
+   "content_types_mapped": 1863,
+   "type_share": 0.2369,
+   "mapped_tokens_by_confidence": {
+    "round2": 42302
+   },
+   "mapped_tokens_lexeme_level_share": 0.7053
+  },
+  "got": {
+   "tokens": 56315,
+   "content_tokens": 27583,
+   "units": 5457,
+   "content_tokens_mapped": 20317,
+   "content_token_share": 0.7366,
+   "content_types": 3018,
+   "content_types_mapped": 1646,
+   "type_share": 0.5454,
+   "mapped_tokens_by_confidence": {
+    "high": 15009,
+    "low": 4541,
+    "medium": 767
+   },
+   "mapped_tokens_lexeme_level_share": 0.7751
+  },
+  "xcl": {
+   "tokens": 21060,
+   "content_tokens": 9430,
+   "units": 1916,
+   "content_tokens_mapped": 4506,
+   "content_token_share": 0.4778,
+   "content_types": 1498,
+   "content_types_mapped": 260,
+   "type_share": 0.1736,
+   "mapped_tokens_by_confidence": {
+    "high": 3671,
+    "low": 835
+   },
+   "mapped_tokens_lexeme_level_share": 0.6955
+  },
+  "cu": {
+   "tokens": 213654,
+   "content_tokens": 112896,
+   "units": 23991,
+   "content_tokens_mapped": 53427,
+   "content_token_share": 0.4732,
+   "content_types": 7814,
+   "content_types_mapped": 1150,
+   "type_share": 0.1472,
+   "mapped_tokens_by_confidence": {
+    "high": 44796,
+    "medium": 2434,
+    "low": 6197
+   },
+   "mapped_tokens_lexeme_level_share": 0.8062
+  },
+  "sga": {
+   "tokens": 820,
+   "content_tokens": 329,
+   "units": 98,
+   "content_tokens_mapped": 178,
+   "content_token_share": 0.541,
+   "content_types": 246,
+   "content_types_mapped": 125,
+   "type_share": 0.5081,
+   "mapped_tokens_by_confidence": {
+    "medium": 30,
+    "low": 52,
+    "high": 96
+   },
+   "mapped_tokens_lexeme_level_share": 0.7191
+  },
+  "hit": {
+   "tokens": 255181,
+   "content_tokens": 185489,
+   "units": 145617,
+   "content_tokens_mapped": 29077,
+   "content_token_share": 0.1568,
+   "content_types": 9751,
+   "content_types_mapped": 174,
+   "type_share": 0.0178,
+   "mapped_tokens_by_confidence": {
+    "high": 25979,
+    "low": 2126,
+    "medium": 972
+   },
+   "mapped_tokens_lexeme_level_share": 0.8389
+  },
+  "av": {
+   "tokens": 114639,
+   "content_tokens": 75828,
+   "units": 14733,
+   "content_tokens_mapped": 46619,
+   "content_token_share": 0.6148,
+   "content_types": 7084,
+   "content_types_mapped": 1570,
+   "type_share": 0.2216,
+   "mapped_tokens_by_confidence": {
+    "medium": 12200,
+    "high": 34009,
+    "low": 410
+   },
+   "mapped_tokens_lexeme_level_share": 0.6788
+  },
+  "grp": {
+   "tokens": 340300,
+   "content_tokens": 190580,
+   "units": 57781,
+   "content_tokens_mapped": 132292,
+   "content_token_share": 0.6942,
+   "content_types": 16967,
+   "content_types_mapped": 4046,
+   "type_share": 0.2385,
+   "mapped_tokens_by_confidence": {
+    "medium": 125447,
+    "low": 6845
+   },
+   "mapped_tokens_lexeme_level_share": 0.6568
+  },
+  "non": {
+   "tokens": 48387,
+   "content_tokens": 36137,
+   "units": 13801,
+   "content_tokens_mapped": 21015,
+   "content_token_share": 0.5815,
+   "content_types": 8804,
+   "content_types_mapped": 1765,
+   "type_share": 0.2005,
+   "mapped_tokens_by_confidence": {
+    "low": 2243,
+    "high": 17272,
+    "medium": 1500
+   },
+   "mapped_tokens_lexeme_level_share": 0.8648
+  },
+  "ang": {
+   "tokens": 104566,
+   "content_tokens": 65329,
+   "units": 15606,
+   "content_tokens_mapped": 30850,
+   "content_token_share": 0.4722,
+   "content_types": 19531,
+   "content_types_mapped": 3338,
+   "type_share": 0.1709,
+   "mapped_tokens_by_confidence": {
+    "medium": 4616,
+    "high": 16709,
+    "low": 9525
+   },
+   "mapped_tokens_lexeme_level_share": 0.8609
+  },
+  "lv": {
+   "tokens": 7815,
+   "content_tokens": 6314,
+   "units": 727,
+   "content_tokens_mapped": 2230,
+   "content_token_share": 0.3532,
+   "content_types": 2456,
+   "content_types_mapped": 446,
+   "type_share": 0.1816,
+   "mapped_tokens_by_confidence": {
+    "high": 1226,
+    "low": 900,
+    "medium": 104
+   },
+   "mapped_tokens_lexeme_level_share": 0.8614
+  },
+  "xum": {
+   "tokens": 8775,
+   "content_tokens": 8723,
+   "units": 2218,
+   "content_tokens_mapped": 1157,
+   "content_token_share": 0.1326,
+   "content_types": 2879,
+   "content_types_mapped": 319,
+   "type_share": 0.1108,
+   "mapped_tokens_by_confidence": {
+    "medium": 932,
+    "high": 165,
+    "low": 60
+   },
+   "mapped_tokens_lexeme_level_share": 0.9188
+  },
+  "ae": {
+   "tokens": 103999,
+   "content_tokens": 103999,
+   "units": 15234,
+   "content_tokens_mapped": 22704,
+   "content_token_share": 0.2183,
+   "content_types": 11749,
+   "content_types_mapped": 753,
+   "type_share": 0.0641,
+   "mapped_tokens_by_confidence": {
+    "high": 3863,
+    "medium": 16582,
+    "low": 2259
+   },
+   "mapped_tokens_lexeme_level_share": 0.7197
+  }
+ },
+ "hittite_coverage": {
+  "kaikki_lexicon_raw": 0.3007,
+  "kaikki_lexicon_gloss_checked": 0.1515,
+  "kloekhorst_only": 0.0052,
+  "kloekhorst_agree_with_kaikki": 0,
+  "kloekhorst_disagree_with_kaikki": 1,
+  "final": 0.1568
+ },
+ "sanity": {
+  "r2_final": {
+   "recall": {
+    "recall@50": 0.2916666666666667,
+    "recall@100": 0.4583333333333333,
+    "recall@200": 0.5
+   },
+   "ci95": {
+    "recall@50": [
+     0.125,
+     0.458
+    ],
+    "recall@100": [
+     0.25,
+     0.667
+    ],
+    "recall@200": [
+     0.292,
+     0.708
+    ]
+   },
+   "ranks": [
+    3,
+    null,
+    27,
+    81,
+    55,
+    71,
+    null,
+    14,
+    16,
+    null,
+    null,
+    11,
+    null,
+    null,
+    6,
+    370,
+    184,
+    null,
+    null,
+    null,
+    36,
+    null,
+    73,
+    null
+   ],
+   "n_ranked": 1000,
+   "minus_r2": {
+    "recall@50": {
+     "diff": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "recall@100": {
+     "diff": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "recall@200": {
+     "diff": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   }
+  },
+  "r3_rv_hom_only": {
+   "recall": {
+    "recall@50": 0.2916666666666667,
+    "recall@100": 0.4583333333333333,
+    "recall@200": 0.5
+   },
+   "ci95": {
+    "recall@50": [
+     0.125,
+     0.458
+    ],
+    "recall@100": [
+     0.25,
+     0.667
+    ],
+    "recall@200": [
+     0.292,
+     0.708
+    ]
+   },
+   "ranks": [
+    3,
+    null,
+    27,
+    81,
+    55,
+    71,
+    null,
+    14,
+    16,
+    null,
+    null,
+    11,
+    null,
+    null,
+    6,
+    338,
+    184,
+    null,
+    null,
+    null,
+    36,
+    null,
+    73,
+    null
+   ],
+   "n_ranked": 369,
+   "minus_r2": {
+    "recall@50": {
+     "diff": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "recall@100": {
+     "diff": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    },
+    "recall@200": {
+     "diff": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ]
+    }
+   }
+  },
+  "r3_core_corpora_core_score": {
+   "recall": {
+    "recall@50": 0.16666666666666666,
+    "recall@100": 0.4166666666666667,
+    "recall@200": 0.4583333333333333
+   },
+   "ci95": {
+    "recall@50": [
+     0.042,
+     0.333
+    ],
+    "recall@100": [
+     0.208,
+     0.625
+    ],
+    "recall@200": [
+     0.25,
+     0.667
+    ]
+   },
+   "ranks": [
+    7,
+    null,
+    81,
+    412,
+    56,
+    158,
+    null,
+    38,
+    55,
+    501,
+    null,
+    43,
+    87,
+    null,
+    16,
+    null,
+    58,
+    null,
+    613,
+    null,
+    97,
+    null,
+    255,
+    null
+   ],
+   "n_ranked": 1058,
+   "minus_r2": {
+    "recall@50": {
+     "diff": -0.125,
+     "ci95": [
+      -0.25,
+      0.0
+     ]
+    },
+    "recall@100": {
+     "diff": -0.042,
+     "ci95": [
+      -0.208,
+      0.167
+     ]
+    },
+    "recall@200": {
+     "diff": -0.042,
+     "ci95": [
+      -0.167,
+      0.083
+     ]
+    }
+   }
+  },
+  "r3_all_core_pairs": {
+   "recall": {
+    "recall@50": 0.16666666666666666,
+    "recall@100": 0.375,
+    "recall@200": 0.4583333333333333
+   },
+   "ci95": {
+    "recall@50": [
+     0.042,
+     0.333
+    ],
+    "recall@100": [
+     0.208,
+     0.583
+    ],
+    "recall@200": [
+     0.25,
+     0.667
+    ]
+   },
+   "ranks": [
+    7,
+    null,
+    84,
+    461,
+    57,
+    170,
+    null,
+    33,
+    52,
+    613,
+    null,
+    44,
+    89,
+    null,
+    19,
+    null,
+    59,
+    null,
+    665,
+    null,
+    101,
+    null,
+    277,
+    null
+   ],
+   "n_ranked": 1165,
+   "minus_r2": {
+    "recall@50": {
+     "diff": -0.125,
+     "ci95": [
+      -0.25,
+      0.0
+     ]
+    },
+    "recall@100": {
+     "diff": -0.083,
+     "ci95": [
+      -0.292,
+      0.125
+     ]
+    },
+    "recall@200": {
+     "diff": -0.042,
+     "ci95": [
+      -0.167,
+      0.083
+     ]
+    }
+   }
+  },
+  "r3_all_core_score_only": {
+   "recall": {
+    "recall@50": 0.16666666666666666,
+    "recall@100": 0.4166666666666667,
+    "recall@200": 0.4583333333333333
+   },
+   "ci95": {
+    "recall@50": [
+     0.042,
+     0.333
+    ],
+    "recall@100": [
+     0.208,
+     0.625
+    ],
+    "recall@200": [
+     0.25,
+     0.667
+    ]
+   },
+   "ranks": [
+    7,
+    null,
+    81,
+    412,
+    56,
+    158,
+    null,
+    38,
+    55,
+    501,
+    null,
+    43,
+    87,
+    null,
+    16,
+    null,
+    58,
+    null,
+    613,
+    null,
+    97,
+    null,
+    255,
+    null
+   ],
+   "n_ranked": 1165,
+   "minus_r2": {
+    "recall@50": {
+     "diff": -0.125,
+     "ci95": [
+      -0.25,
+      0.0
+     ]
+    },
+    "recall@100": {
+     "diff": -0.042,
+     "ci95": [
+      -0.208,
+      0.167
+     ]
+    },
+    "recall@200": {
+     "diff": -0.042,
+     "ci95": [
+      -0.167,
+      0.083
+     ]
+    }
+   }
+  },
+  "r3_all_pairs": {
+   "recall": {
+    "recall@50": 0.08333333333333333,
+    "recall@100": 0.25,
+    "recall@200": 0.3333333333333333
+   },
+   "ci95": {
+    "recall@50": [
+     0.0,
+     0.208
+    ],
+    "recall@100": [
+     0.083,
+     0.417
+    ],
+    "recall@200": [
+     0.167,
+     0.542
+    ]
+   },
+   "ranks": [
+    17,
+    null,
+    186,
+    1524,
+    98,
+    436,
+    null,
+    52,
+    86,
+    2065,
+    null,
+    68,
+    216,
+    null,
+    33,
+    null,
+    105,
+    null,
+    2237,
+    2484,
+    247,
+    null,
+    869,
+    null
+   ],
+   "n_ranked": 3977,
+   "minus_r2": {
+    "recall@50": {
+     "diff": -0.208,
+     "ci95": [
+      -0.375,
+      -0.083
+     ]
+    },
+    "recall@100": {
+     "diff": -0.208,
+     "ci95": [
+      -0.375,
+      -0.042
+     ]
+    },
+    "recall@200": {
+     "diff": -0.167,
+     "ci95": [
+      -0.333,
+      -0.042
+     ]
+    }
+   }
+  }
+ },
+ "configs": {
+  "r2_final": null,
+  "r3_rv_hom_only": {
+   "corpora": [
+    "rv",
+    "hom"
+   ],
+   "require_sig": true
+  },
+  "r3_core_corpora_core_score": {
+   "corpora": [
+    "rv",
+    "av",
+    "ae",
+    "hom",
+    "grp"
+   ],
+   "require_sig": true,
+   "core_only": true
+  },
+  "r3_all_core_pairs": {
+   "corpora": [
+    "rv",
+    "av",
+    "ae",
+    "hom",
+    "grp",
+    "lat",
+    "xum",
+    "non",
+    "ang",
+    "got",
+    "sga",
+    "cu",
+    "lv",
+    "xcl",
+    "hit"
+   ],
+   "require_sig": true,
+   "branch_filter": "has_core"
+  },
+  "r3_all_core_score_only": {
+   "corpora": [
+    "rv",
+    "av",
+    "ae",
+    "hom",
+    "grp",
+    "lat",
+    "xum",
+    "non",
+    "ang",
+    "got",
+    "sga",
+    "cu",
+    "lv",
+    "xcl",
+    "hit"
+   ],
+   "require_sig": true,
+   "branch_filter": "has_core",
+   "core_only": true
+  },
+  "r3_all_pairs": {
+   "corpora": [
+    "rv",
+    "av",
+    "ae",
+    "hom",
+    "grp",
+    "lat",
+    "xum",
+    "non",
+    "ang",
+    "got",
+    "sga",
+    "cu",
+    "lv",
+    "xcl",
+    "hit"
+   ],
+   "require_sig": true
+  }
+ },
+ "regression_vs_round2": {
+  "top200_identical": true,
+  "top200_overlap": 200
+ },
+ "items_third_branch": [
+  {
+   "item_id": "pie-lex-HeHkjus|pie-lex-h1ekjwos",
+   "pairs": [
+    [
+     "HéHḱus",
+     "h₁éḱwos"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": 17
+  },
+  {
+   "item_id": "pie-lex-Hyos|pie-lex-kwe",
+   "pairs": [
+    [
+     "Hyós",
+     "-kʷe"
+    ],
+    [
+     "Hyós",
+     "-kʷe"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": null
+  },
+  {
+   "item_id": "pie-lex-dhedheh1ti|pie-lex-so",
+   "pairs": [
+    [
+     "dʰédʰeh₁ti",
+     "só"
+    ],
+    [
+     "dʰédʰeh₁ti",
+     "ḱlew-"
+    ],
+    [
+     "dʰédʰeh₁ti",
+     "per-"
+    ],
+    [
+     "só",
+     "ḱlew-"
+    ],
+    [
+     "ḱlew-",
+     "per-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": 186
+  },
+  {
+   "item_id": "pie-lex-egjh2|pie-root-kjlew-hear",
+   "pairs": [
+    [
+     "éǵh₂",
+     "ḱlew-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": 1524
+  },
+  {
+   "item_id": "pie-lex-h1wesus|pie-root-deh3-give",
+   "pairs": [
+    [
+     "h₁wésus",
+     "deh₃-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": 98
+  },
+  {
+   "item_id": "pie-lex-ish1ros|pie-root-men-think",
+   "pairs": [
+    [
+     "ish₁rós",
+     "men-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": 436
+  },
+  {
+   "item_id": "pie-lex-kwe|pie-lex-kwe-2",
+   "pairs": [
+    [
+     "-kʷe",
+     "-kʷe"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": null
+  },
+  {
+   "item_id": "pie-lex-medhu|pie-root-sweh2d-sweet",
+   "pairs": [
+    [
+     "médʰu",
+     "sweh₂d-"
+    ]
+   ],
+   "third_branch_witnesses": [
+    "Germanic"
+   ],
+   "rank_all_pairs": 52
+  },
+  {
+   "item_id": "pie-lex-megjh2s|pie-root-kjlew-hear",
+   "pairs": [
+    [
+     "méǵh₂s",
+     "ḱlew-"
+    ]
+   ],
+   "third_branch_witnesses": [
+    "translation:Balto-Slavic"
+   ],
+   "rank_all_pairs": 86
+  },
+  {
+   "item_id": "pie-lex-soh2wl|pie-root-deykj-point_out",
+   "pairs": [
+    [
+     "sóh₂wl̥",
+     "deyḱ-"
+    ]
+   ],
+   "third_branch_witnesses": [
+    "Italic"
+   ],
+   "rank_all_pairs": 2065
+  },
+  {
+   "item_id": "pie-lex-treyes|pie-root-peh2w-few",
+   "pairs": [
+    [
+     "tréyes",
+     "peh₂w-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": null
+  },
+  {
+   "item_id": "pie-root-bheh2-shine|pie-root-h2ews-become_light",
+   "pairs": [
+    [
+     "bʰeh₂-",
+     "h₂ews-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": 68
+  },
+  {
+   "item_id": "pie-root-dheh1-do|pie-root-kjlew-hear",
+   "pairs": [
+    [
+     "dʰeh₁-",
+     "ḱlew-"
+    ],
+    [
+     "dʰeh₁-",
+     "seǵʰ-"
+    ],
+    [
+     "ḱlew-",
+     "seǵʰ-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": 216
+  },
+  {
+   "item_id": "pie-root-dhgwhey-decline|pie-root-kjlew-hear",
+   "pairs": [
+    [
+     "dʰgʷʰey-",
+     "ḱlew-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": null
+  },
+  {
+   "item_id": "pie-root-dyew-be_bright|pie-root-peh2-protect",
+   "pairs": [
+    [
+     "dyew-",
+     "peh₂-"
+    ]
+   ],
+   "third_branch_witnesses": [
+    "Italic"
+   ],
+   "rank_all_pairs": 33
+  },
+  {
+   "item_id": "pie-root-dyew-be_bright|pie-root-per-before",
+   "pairs": [
+    [
+     "dyew-",
+     "per-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": null
+  },
+  {
+   "item_id": "pie-root-gjenh1-produce|pie-root-peh2-protect",
+   "pairs": [
+    [
+     "ǵenh₁-",
+     "peh₂-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": 105
+  },
+  {
+   "item_id": "pie-root-gwhen-strike|pie-root-kjey-be_lying_down",
+   "pairs": [
+    [
+     "gʷʰen-",
+     "ḱey-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": null
+  },
+  {
+   "item_id": "pie-root-gwhen-strike|pie-root-legh-lie",
+   "pairs": [
+    [
+     "gʷʰen-",
+     "legʰ-"
+    ],
+    [
+     "gʷʰen-",
+     "swep-"
+    ],
+    [
+     "gʷʰen-",
+     "tḱen-"
+    ],
+    [
+     "legʰ-",
+     "swep-"
+    ],
+    [
+     "legʰ-",
+     "tḱen-"
+    ],
+    [
+     "swep-",
+     "tḱen-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": 2237
+  },
+  {
+   "item_id": "pie-root-gwhen-strike|pie-root-serp-creep",
+   "pairs": [
+    [
+     "gʷʰen-",
+     "serp-"
+    ]
+   ],
+   "third_branch_witnesses": [
+    "Italic"
+   ],
+   "rank_all_pairs": 2484
+  },
+  {
+   "item_id": "pie-root-h1werH-broad|pie-root-kjlew-hear",
+   "pairs": [
+    [
+     "h₁werH-",
+     "ḱlew-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": 247
+  },
+  {
+   "item_id": "pie-root-h2ergj-white|pie-root-wes-dress",
+   "pairs": [
+    [
+     "h₂erǵ-",
+     "wes-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": null
+  },
+  {
+   "item_id": "pie-root-nebh-become_damp|pie-root-wes-dress",
+   "pairs": [
+    [
+     "nebʰ-",
+     "wes-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": 869
+  },
+  {
+   "item_id": "pie-root-tetkj-create|pie-root-wekw-speak",
+   "pairs": [
+    [
+     "tetḱ-",
+     "wekʷ-"
+    ]
+   ],
+   "third_branch_witnesses": [],
+   "rank_all_pairs": null
+  }
+ ],
+ "shuffled_baseline": {
+  "per_class": {
+   "a": {
+    "real_n_pairs": 509,
+    "real_top100_cutoff_neglog10p": 4.14295701533864,
+    "shuffled": [
+     {
+      "n_pairs": 447,
+      "n_above_real_top100_cutoff": 1
+     },
+     {
+      "n_pairs": 401,
+      "n_above_real_top100_cutoff": 2
+     },
+     {
+      "n_pairs": 480,
+      "n_above_real_top100_cutoff": 2
+     }
+    ]
+   },
+   "b": {
+    "real_n_pairs": 2847,
+    "real_top100_cutoff_neglog10p": 9.836408517752131,
+    "shuffled": [
+     {
+      "n_pairs": 2668,
+      "n_above_real_top100_cutoff": 1
+     },
+     {
+      "n_pairs": 2692,
+      "n_above_real_top100_cutoff": 1
+     },
+     {
+      "n_pairs": 2678,
+      "n_above_real_top100_cutoff": 1
+     }
+    ]
+   },
+   "c": {
+    "real_n_pairs": 936,
+    "real_top100_cutoff_neglog10p": 7.087673197956865,
+    "shuffled": [
+     {
+      "n_pairs": 691,
+      "n_above_real_top100_cutoff": 0
+     },
+     {
+      "n_pairs": 749,
+      "n_above_real_top100_cutoff": 0
+     },
+     {
+      "n_pairs": 747,
+      "n_above_real_top100_cutoff": 0
+     }
+    ]
+   }
+  },
+  "items_recall_r3_all_core_pairs_shuffled": {
+   "recall@50": 0.014,
+   "recall@100": 0.028,
+   "recall@200": 0.042
+  }
+ },
+ "candidates": {
+  "a": 100,
+  "b": 100,
+  "c": 100
+ }
+}
