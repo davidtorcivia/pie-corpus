@@ -191,54 +191,62 @@ _V = "aeiouāīūṛ"
 
 def pii_to_skt(form: str) -> list[str]:
     """Candidate Vedic keys for a Proto-Indo-Iranian / -Indo-Aryan form:
-    *Háćwas → aśvas, aśva;  *ǰʰan- → han;  *dʰar- → dhar, dhṛ.
+    *Háćwas → aśvas, aśva;  *ǰʰan- → han;  *dʰar- → dhar, dhṛ;  *pHtā́ → pitā, pitar.
     Laryngeals: VH → long vowel, CHC → CiC, otherwise lost."""
     s = unicodedata.normalize("NFD", form.strip().lstrip("*"))
     if " " in s or "~" in s or "," in s:
         return []
     for a, b in _PII_RULES:
         s = s.replace(a, b)
-    s = unicodedata.normalize("NFC", s.replace("(", "").replace(")", "").replace("-", ""))
-    s = "".join(c for c in unicodedata.normalize("NFD", s) if c not in _ACC)
-    s = unicodedata.normalize("NFC", s)
+    k = skt_key(s.replace("H", "ʔ"))
     longv = {"a": "ā", "i": "ī", "u": "ū"}
-    s = re.sub(r"([aiu])H", lambda m: longv[m[1]], s)
-    s = re.sub(rf"(?<=[^{_V}H])H(?=[^{_V}H])", "i", s)
-    s = s.replace("H", "")
-    k = skt_key(s)
-    if not k:
-        return []
+    k = re.sub(r"([aiu])ʔ", lambda m: longv[m[1]], k)
+    k = re.sub(rf"(?<=[^{_V}ʔ])ʔ(?=[^{_V}ʔ])", "i", k).replace("ʔ", "")
+    return _skt_stem_variants(k) if k else []
+
+
+def _skt_stem_variants(k: str, verbal: bool = True) -> list[str]:
+    """A Sanskrit key and its plausible citation stems, most literal first;
+    verbal=True adds root candidates."""
     out = [k]
-    for end, rep in (("as", "a"), ("am", "a"), ("is", "i"), ("iṣ", "i"), ("us", "u"), ("uṣ", "u"), ("ās", "ā"),
-                     ("ā", "ā"), ("ay", "i"), ("s", "")):
+    for end, reps in (("as", ["a"]), ("am", ["a"]), ("is", ["i"]), ("iṣ", ["i"]), ("us", ["u"]), ("uṣ", ["u"]),
+                      ("ās", ["ā"]), ("ā", ["ar", ""]), ("ṛ", ["ar"]), ("ay", ["i"]), ("s", [""])):
         if k.endswith(end) and len(k) > len(end) + 1:
-            out.append(k[: -len(end)] + rep)
+            out += [k[: -len(end)] + r for r in reps]
             break
-    out += skt_root_candidates(k) + _ungunate(k)[1:]
-    seen: set[str] = set()
-    return [c for c in out if not (c in seen or seen.add(c))]
+    if verbal:
+        out += skt_root_candidates(k) + _ungunate(k)[1:]
+    return list(dict.fromkeys(out))
 
 
 def ph_to_grc(form: str) -> list[str]:
     """Candidate romanized Homeric keys for a Proto-Hellenic form:
-    *kléwos → kleos;  *pʰérō → pherō;  *kʷetwores → tetwores → tetores."""
+    *kléwos → kleos;  *pʰérō → pherō;  *íkkʷos → ippos;  *Dzéus → zeus;
+    *mā́tēr → mētēr (Ionic ā → ē) or mātēr."""
     s = unicodedata.normalize("NFD", form.strip().lstrip("*").lower())
     if " " in s or "~" in s:
         return []
-    s = "".join(c for c in s if c not in "́̀͂̆͏̌")
-    s = unicodedata.normalize("NFC", s).replace("-", "").replace("ʰ", "h")
-    s = re.sub(r"kʷh(?=[ei])", "th", s)
-    s = re.sub(r"kʷ(?=[ei])", "t", s)
-    s = re.sub(r"gʷ(?=[ei])", "d", s)
+    out_chars, base = [], ""
+    for ch in s:
+        if unicodedata.combining(ch):
+            if ch in "\u0301\u0300\u0342\u0306\u034f\u030c" or (ch == "\u0304" and base in "iu"):
+                continue
+        else:
+            base = ch
+        out_chars.append(ch)
+    s = unicodedata.normalize("NFC", "".join(out_chars)).replace("-", "").replace("ʰ", "h")
+    s = s.replace("kkʷ", "pp").replace("dz", "z")
+    s = re.sub(r"kʷh(?=[eiēī])", "th", s)
+    s = re.sub(r"kʷ(?=[eiēī])", "t", s)
+    s = re.sub(r"gʷ(?=[eē])", "d", s)
     s = s.replace("kʷh", "ph").replace("kʷ", "p").replace("gʷ", "b")
     s = s.replace("w", "").replace("ə", "a")
     s = re.sub(r"^h", "", s)
-    s = re.sub(rf"(?<=[{_V}ēō])[hy](?=[{_V}ēō])", "", s)
-    s = re.sub(r"ky|ty", "ss", s).replace("dy", "z").replace("gy", "z")
+    s = re.sub(r"(?<=[aeiouāēō])[hy](?=[aeiouāēō])", "", s)
+    s = re.sub(r"ky|ty", "ss", s).replace("dy", "z").replace("gy", "z").replace("ly", "ll")
     out = [s]
     if "ā" in s:
-        out.append(s.replace("ā", "ē"))
-    out += [o.replace("ā", "a") for o in out if "ā" in o]
+        out += [s.replace("ā", "ē"), s.replace("ā", "a")]
     return [o for o in dict.fromkeys(out) if len(o) >= 3]
 
 
@@ -378,6 +386,64 @@ def _finish(cands: dict[str, dict[str, set]], lemmas: dict[str, list[str]]) -> M
     return m
 
 
+_SKT_CONS_START = re.compile(r"^[^aeiouāīūṛ]")
+
+
+def skt_privative(key: str) -> list[str]:
+    """Base candidates for a Vedic privative: akṣita → kṣita, kṣi;
+    amṛta → mṛta, mṛ;  anāgas → āgas."""
+    if key.startswith("an") and len(key) > 4 and not _SKT_CONS_START.match(key[2:]):
+        r = key[2:]
+    elif key.startswith("a") and len(key) > 3 and _SKT_CONS_START.match(key[1:]):
+        r = key[1:]
+    else:
+        return []
+    out = [r]
+    for end in ("ita", "ta", "na", "iti", "ti"):
+        if r.endswith(end) and len(r) > len(end) + 1:
+            out += _ungunate(r[: -len(end)])
+    return list(dict.fromkeys(out))
+
+
+_GRC_VOWEL_START = re.compile(r"^[αεηιουω]")
+
+
+def grc_privative(key: str) -> list[str]:
+    """Base candidates (unaccented keys) for a Greek privative:
+    αφθιτοσ → φθιτοσ, φθιω;  αμβροτοσ → βροτοσ;  ανωνυμοσ → ωνυμοσ."""
+    if key.startswith("αν") and len(key) > 4 and _GRC_VOWEL_START.match(key[2:]):
+        r = key[2:]
+    elif key.startswith("α") and len(key) > 4 and not _GRC_VOWEL_START.match(key[1:]):
+        r = key[1:]
+        if r.startswith("μβ"):
+            r = r[1:]
+    else:
+        return []
+    out = [r]
+    for end, new in (("ιτοσ", "ιω"), ("τοσ", "ω"), ("τοσ", "μι"), ("οσ", "ω")):
+        if r.endswith(end) and len(r) > len(end) + 1:
+            out.append(r[: -len(end)] + new)
+    return list(dict.fromkeys(out))
+
+
+def _add_privatives(m: Mapping, lemmas: dict[str, list[str]], bases) -> None:
+    """Tier 'privative': an unmapped lemma that is a- / an- + a mapped base
+    takes the base's groups (ákṣita- → √kṣi-, ἄφθιτος → φθίω)."""
+    by_key: dict[str, set] = collections.defaultdict(set)
+    for lem, g in m.lemma_groups.items():
+        for k in lemmas.get(lem, []):
+            by_key[k] |= g
+    for lem, keys in lemmas.items():
+        if lem in m.lemma_groups or lem in m.ambiguous:
+            continue
+        for k in keys:
+            hit = next((by_key[b] for b in bases(k) if b in by_key), None)
+            if hit:
+                m.lemma_groups[lem] = frozenset(hit)
+                m.lemma_tier[lem] = "privative"
+                break
+
+
 def _surface_index(tokens: list[Token], key) -> dict[str, collections.Counter]:
     idx: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
     for t in tokens:
@@ -405,6 +471,10 @@ def build_rv_mapping(lexicon: list[dict], tokens: list[Token]) -> Mapping:
         for f in _reflex_forms(e, SKT_LANGS, roman=True):
             k = skt_key(f)
             cands["direct"][k].add(g)
+            for c in _skt_stem_variants(k, verbal=False)[1:]:
+                if c in all_keys and len(c) >= 3:
+                    cands["roots"][c].add(g)      # nominal citation variant: pitṛ → pitar
+                    break
             for c in skt_root_candidates(k):
                 if c in root_keys:
                     cands["roots"][c].add(g)
@@ -417,7 +487,9 @@ def build_rv_mapping(lexicon: list[dict], tokens: list[Token]) -> Mapping:
                 if c in all_keys and len(c) >= 3:
                     cands["bridge"][c].add(g)
                     break
-    return _finish(cands, lemmas)
+    m = _finish(cands, lemmas)
+    _add_privatives(m, lemmas, skt_privative)
+    return m
 
 
 def build_homer_mapping(lexicon: list[dict], tokens: list[Token]) -> Mapping:
@@ -425,22 +497,25 @@ def build_homer_mapping(lexicon: list[dict], tokens: list[Token]) -> Mapping:
     roman = collections.defaultdict(set)
     for lem in lemmas:
         roman[grc_roman(lem)].add(lem)
-    surf = _surface_index(tokens, lambda s: grc_key(s, accents=False))
+    surf = _surface_index(tokens, grc_key)
     cands = {t: collections.defaultdict(set) for t in HOM_TIERS}
     for e in lexicon:
         g = group_of(e)
         for f in _reflex_forms(e, GRC_LANGS, roman=False):
             cands["direct"][grc_key(f)].add(g)
             cands["unaccented"]["~" + grc_key(f, accents=False)].add(g)
-            k = grc_key(f, accents=False)
+            k = grc_key(f)
             if (lem := _majority(surf.get(k, collections.Counter()), k)):
                 cands["surface"][grc_key(lem)].add(g)
         for f in _reflex_forms(e, GRC_BRIDGE, roman=False):
             for c in ph_to_grc(f):
-                if c in roman and len(roman[c]) == 1:
-                    cands["bridge"][grc_key(next(iter(roman[c])))].add(g)
+                if c in roman and len(roman[c]) <= 3:      # πατήρ / πάτηρ / πατηρ: one word
+                    for lem in roman[c]:
+                        cands["bridge"][grc_key(lem)].add(g)
                     break
-    return _finish(cands, lemmas)
+    m = _finish(cands, lemmas)
+    _add_privatives(m, {lem: [grc_key(lem, accents=False)] for lem in lemmas}, grc_privative)
+    return m
 
 
 def apply_mapping(tokens: list[Token], m: Mapping, content_only: bool = True) -> None:
@@ -615,6 +690,10 @@ def _skt_variants(w: str) -> list[str]:
         out.append(k[:-1] + "m")
     if k.endswith("o"):
         out.append(k[:-1] + "as")
+    if k.endswith(("s", "r")):
+        out.append(k[:-1] + "ḥ")
+    if k.endswith("m"):
+        out.append(k[:-1] + "ṃ")
     return out
 
 
@@ -663,10 +742,11 @@ class Lemmatizer:
         return frozenset(g) if g and len(g) <= MAX_GROUPS else frozenset()
 
 
-def pie_roots(text: str | None, lex_index: list[tuple[str, frozenset]]) -> set[str]:
-    """Root groups named in a formula's PIE wording: per word, the longest
-    lexicon form (≥ 4 chars, no accents/length) that is a prefix of it."""
-    out: set[str] = set()
+def pie_roots(text: str | None, lex_index: list[tuple[str, frozenset]]) -> list[frozenset]:
+    """Root groups named in a formula's PIE wording, one slot per word: the
+    groups of the longest lexicon form (≥ 4 chars, no accents/length) that
+    is a prefix of the word."""
+    out: list[frozenset] = []
     if not text:
         return out
     for w in re.split(r"[\s/…,;]+|\.\.\.", text):
@@ -675,7 +755,7 @@ def pie_roots(text: str | None, lex_index: list[tuple[str, frozenset]]) -> set[s
         k = pie_key(w)
         for form, groups in lex_index:
             if len(form) >= 4 and k.startswith(form):
-                out |= groups
+                out.append(groups)
                 break
     return out
 
@@ -689,16 +769,18 @@ def pie_index(lexicon: list[dict]) -> list[tuple[str, frozenset]]:
     return sorted(((k, frozenset(v)) for k, v in idx.items()), key=lambda kv: -len(kv[0]))
 
 
-def gold_set(formulas: list[dict], lem: Lemmatizer, lex_idx) -> list[dict]:
-    """Evaluation formulas: kind phrase/lexical, attested in Vedic and Greek,
-    with ≥ 2 identified root groups. A group is identified if the PIE
-    wording names it or it occurs in both a Vedic and a Greek attestation.
-    Gold pairs are the pairs of identified groups; `attested_pairs` are the
-    ones whose two groups also co-occur within one Vedic and within one
-    Greek attestation."""
+def gold_set(formulas: list[dict], lem: Lemmatizer, lex_idx, kinds=("phrase", "lexical")) -> list[dict]:
+    """Evaluation formulas: of the given kinds, attested in Vedic and Greek,
+    with ≥ 2 identified PIE lexemes. Gold pairs are
+      - `pie_pairs`: groups of two different words of the PIE wording
+        (never two readings of one word), and
+      - `attested_pairs`: groups found on two different words of one Vedic
+        attestation and on two different words of one Greek attestation.
+    A lone PIE word plus an attested group is not a pair: in West's
+    "lexical" entries that is usually one lexeme seen twice."""
     out = []
     for f in formulas:
-        if f["kind"] not in ("phrase", "lexical"):
+        if f["kind"] not in kinds:
             continue
         ved = [a for a in f["attestations"] if VEDIC_ATT.match(a["lang"])]
         grk = [a for a in f["attestations"] if GREEK_ATT.match(a["lang"])]
@@ -709,15 +791,34 @@ def gold_set(formulas: list[dict], lem: Lemmatizer, lex_idx) -> list[dict]:
         V = set().union(*(s for ws in vsets for s in ws))
         G = set().union(*(s for ws in gsets for s in ws))
         P = pie_roots(f.get("pie") or f.get("pie_printed"), lex_idx)
-        ident = P | (V & G)
-        if len(ident) < 2:
+        pp = set()
+        for a, b in itertools.combinations(P, 2):
+            for x in a:
+                for y in b:
+                    if x != y and not any(x in s and y in s for s in P):
+                        pp.add((x, y) if x < y else (y, x))
+        ap = set().union(*(_pairs_of(ws) for ws in vsets)) & set().union(*(_pairs_of(ws) for ws in gsets))
+        pairs = pp | ap
+        if not pairs:
             continue
-        pairs = {tuple(sorted(p)) for p in itertools.combinations(ident, 2)}
-        vp = set().union(*(_pairs_of(ws) for ws in vsets))
-        gp = set().union(*(_pairs_of(ws) for ws in gsets))
         out.append({"formula_id": f["formula_id"], "half": split_half(f["formula_id"]), "kind": f["kind"],
-                    "pairs": sorted(pairs), "attested_pairs": sorted(pairs & vp & gp),
-                    "pie_groups": sorted(P), "vedic_groups": sorted(V), "greek_groups": sorted(G)})
+                    "pairs": sorted(pairs), "pie_pairs": sorted(pp), "attested_pairs": sorted(ap),
+                    "pie_groups": sorted(set().union(*P)), "vedic_groups": sorted(V), "greek_groups": sorted(G)})
+    return out
+
+
+def known_pairs(formulas: list[dict], lem: Lemmatizer, lex_idx) -> set:
+    """Every pair any known formula names, for excluding them from new
+    candidates: cross-word pairs of each PIE wording (all kinds, whatever
+    the attestations) plus the gold pairs of every Vedic+Greek formula."""
+    out = set()
+    for f in formulas:
+        P = pie_roots(f.get("pie") or f.get("pie_printed"), lex_idx)
+        for a, b in itertools.combinations(P, 2):
+            out |= {(x, y) if x < y else (y, x) for x in a for y in b if x != y}
+    kinds = {f["kind"] for f in formulas}
+    for g in gold_set(formulas, lem, lex_idx, tuple(kinds)):
+        out |= set(g["pairs"])
     return out
 
 
@@ -770,7 +871,8 @@ def instances(tokens: list[Token], spec: str, pairs: set, limit: int = 6) -> dic
                 if len(o["examples"]) < limit:
                     loc = a.locus if a.locus == b.locus else f"{a.locus}–{b.locus.split(' ')[-1]}"
                     first, second = (a, b) if x < y else (b, a)
-                    ex = {"locus": loc, "lemmas": [first.lemma, second.lemma], "relation": rel}
+                    ex = {"locus": loc, "lemmas": [first.lemma, second.lemma], "pos": [first.pos, second.pos],
+                          "relation": rel}
                     if a.corpus == "hom":
                         ex["dep"] = (b.rel if b.head == i else a.rel if a.head == j else None)
                     o["examples"].append(ex)
