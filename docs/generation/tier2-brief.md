@@ -19,7 +19,7 @@ One record per parallel: the attested passages (2+ branches), and one PIE line (
 ## Format
 One JSON object per line in `data/tier2/plans/<cluster>.jsonl`:
 `{"proj_id": "<cluster>-001", "cluster": "<cluster>", "theme": ["<West cluster>"], "plan": {"english": "...", "clauses": [...]}, "cognate_refs": [{"lang": "Vedic", "locus": "RV 1.32.1", "words": ["áhann", "áhim"], "lemmas": ["han-", "áhi-"]}, {"lang": "Avestan", "locus": "Y. 9.8", "words": ["jaγna", "ažīm"], "lemmas": ["jan-", "aži-"]}], "secure": ["pie-lex-gwhenti", "pie-lex-h1ogwhis"], "notes": "..."}`
-Language names: Vedic, Avestan, Greek, Latin, Old Irish, Welsh, Old Norse, Old English, Gothic, Hittite, Lithuanian, Old Church Slavonic, Armenian, Tocharian.
+Language names (each maps to a branch in scripts/build_tier2.py; Vedic and Avestan are one branch, Indo-Iranian): Vedic, Avestan, Old Persian, Greek, Mycenaean Greek, Latin, Oscan, Umbrian, Old Irish, Middle Irish, Welsh, Gaulish, Old Norse, Old English, Gothic, Old High German, Old Saxon, Hittite, Luwian, Lithuanian, Latvian, Old Prussian, Old Church Slavonic, Armenian, Tocharian A/B, Albanian, Phrygian.
 
 ## Rules
 - Lexemes: any usable lexeme in data/lexicon/lexicon.jsonl (check `uv run python -c "from pie.realize import Lexicon; lx=Lexicon.load(); print(lx.specs['<id>']['usable'])"`), never blocked ones (data/generation/blocklist.jsonl). Find the PIE etymon of a daughter word through the lexicon's `reflexes`.

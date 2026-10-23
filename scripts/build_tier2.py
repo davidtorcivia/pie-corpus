@@ -34,7 +34,13 @@ def branches(refs: list[dict]) -> int:
     fam = {"Vedic": "II", "Sanskrit": "II", "Avestan": "II", "Old Persian": "II", "Greek": "Gk", "Homeric Greek": "Gk",
            "Latin": "It", "Umbrian": "It", "Old Irish": "Ce", "Welsh": "Ce", "Old Norse": "Gm", "Gothic": "Gm",
            "Old English": "Gm", "Old High German": "Gm", "Hittite": "An", "Luwian": "An", "Lithuanian": "BS",
-           "Old Church Slavonic": "BS", "Armenian": "Arm", "Tocharian": "To"}
+           "Old Church Slavonic": "BS", "Armenian": "Arm", "Tocharian": "To",
+           "Latvian": "BS", "Old Prussian": "BS", "Russian": "BS", "Old Russian": "BS", "Czech": "BS", "Polish": "BS",
+           "Middle Irish": "Ce", "Gaulish": "Ce", "Celtiberian": "Ce", "Old Welsh": "Ce", "Middle Welsh": "Ce",
+           "Old Saxon": "Gm", "Old Frisian": "Gm", "Middle High German": "Gm", "Old Icelandic": "Gm",
+           "Pali": "II", "Middle Persian": "II", "Old Avestan": "II", "Young Avestan": "II", "Sanskrit (Epic)": "II",
+           "Mycenaean Greek": "Gk", "Oscan": "It", "Faliscan": "It", "Palaic": "An", "Lycian": "An",
+           "Tocharian A": "To", "Tocharian B": "To", "Albanian": "Alb", "Phrygian": "Phr", "Messapic": "Mes"}
     return len({fam.get(r.get("lang", ""), r.get("lang", "")) for r in refs})
 
 
