@@ -86,7 +86,7 @@ All in one place. None of these block work in progress; each one has a default t
    - **(c)** lexeme substitution: reuse reviewed plans as skeletons and swap in lexemes of the same class and valency, checked by the plan checker. Nearly free, but semantically repetitive.
 
    **My recommendation:** a 150-plan pilot with (b) plus review. If its wrong-rate is ≤10%, run (b) for diversity with a capped share of (c), and audit a sample of every batch. I won't scale up until you choose a budget.
-6. **GitHub.** The repo is local only. Do you want a private remote, and under which account?
+6. ~~**GitHub.**~~ **Done:** public at https://github.com/davidtorcivia/pie-corpus (2026-10-23). Still open: a **code license** (none chosen; the data files are CC BY-SA 4.0 because they derive from Wiktionary; see NOTICE.md).
 
 ## IDEAS.md disposition
 
