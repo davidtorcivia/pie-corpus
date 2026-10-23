@@ -1,0 +1,902 @@
+{
+ "settings": {
+  "rv_spec": "pada",
+  "hom_spec": "line",
+  "measure": "llr",
+  "min_count": 3,
+  "content_only": false,
+  "llr_min": 3.84,
+  "max_share": 1.0
+ },
+ "coverage": {
+  "rigveda": {
+   "tokens": 164758,
+   "tokens_mapped": 82738,
+   "share": 0.5022,
+   "content_tokens": 118887,
+   "content_mapped": 52767,
+   "content_share": 0.4438,
+   "lemmas": 10031,
+   "lemmas_mapped": 1214,
+   "lemmas_ambiguous_dropped": 0,
+   "tokens_by_tier": {
+    "bridge": 16741,
+    "direct": 38178,
+    "unmapped": 82020,
+    "roots": 11261,
+    "surface": 15181,
+    "privative": 1377
+   },
+   "root_groups": 533
+  },
+  "homer": {
+   "tokens": 200145,
+   "tokens_mapped": 92878,
+   "share": 0.4641,
+   "content_tokens": 116533,
+   "content_mapped": 50788,
+   "content_share": 0.4358,
+   "lemmas": 8823,
+   "lemmas_mapped": 1261,
+   "lemmas_ambiguous_dropped": 0,
+   "tokens_by_tier": {
+    "unmapped": 107267,
+    "direct": 69156,
+    "bridge": 10540,
+    "surface": 11809,
+    "unaccented": 901,
+    "privative": 472
+   },
+   "root_groups": 597
+  }
+ },
+ "n_candidates_significant_in_both": 44,
+ "recall": {
+  "primary": {
+   "A": {
+    "n": 4,
+    "recall@50": 0.75,
+    "recall@100": 0.75,
+    "recall@200": 0.75
+   },
+   "B": {
+    "n": 7,
+    "recall@50": 0.286,
+    "recall@100": 0.286,
+    "recall@200": 0.286
+   }
+  },
+  "extended": {
+   "A": {
+    "n": 7,
+    "recall@50": 0.571,
+    "recall@100": 0.571,
+    "recall@200": 0.571
+   },
+   "B": {
+    "n": 14,
+    "recall@50": 0.286,
+    "recall@100": 0.286,
+    "recall@200": 0.286
+   }
+  }
+ },
+ "ranks": {
+  "primary": {
+   "A": {
+    "swift-horses": 6,
+    "west_ch10_f01": null,
+    "west_ch08_f01": 2,
+    "west_ch02_f48": 25
+   },
+   "B": {
+    "great-fame": 23,
+    "imperishable-fame": null,
+    "imperishable-fame-get-nominative": null,
+    "west_ch04_f01": null,
+    "west_ch10_f05": 23,
+    "west_ch10_f14": null,
+    "west_ch03_f20": null
+   }
+  },
+  "extended": {
+   "A": {
+    "swift-horses": 6,
+    "slay-lie-sleep-nexus": null,
+    "west_ch10_f01": null,
+    "west_ch08_f01": 2,
+    "west_ch02_f01": null,
+    "west_ch02_f21": 11,
+    "west_ch02_f48": 25
+   },
+   "B": {
+    "holy-strength-isira-manas": null,
+    "hero-slay-serpent": null,
+    "great-fame": 23,
+    "imperishable-fame": null,
+    "imperishable-fame-get-nominative": null,
+    "slay-gwhen-serpent-ogwhi": null,
+    "west_ch04_f01": null,
+    "west_ch10_f05": 23,
+    "west_ch10_f14": null,
+    "west_ch03_f20": null,
+    "west_ch12_f18": 6,
+    "west_ch02_f03": 23,
+    "west_ch02_f32": null,
+    "west_ch02_f38": null
+   }
+  }
+ },
+ "shuffled_baseline": {
+  "seeds": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "n_candidates": [
+   0,
+   1,
+   0,
+   1,
+   0
+  ],
+  "recall_mean": {
+   "primary": {
+    "A": {
+     "recall@50": 0,
+     "recall@100": 0,
+     "recall@200": 0
+    },
+    "B": {
+     "recall@50": 0,
+     "recall@100": 0,
+     "recall@200": 0
+    }
+   },
+   "extended": {
+    "A": {
+     "recall@50": 0,
+     "recall@100": 0,
+     "recall@200": 0
+    },
+    "B": {
+     "recall@50": 0,
+     "recall@100": 0,
+     "recall@200": 0
+    }
+   }
+  }
+ },
+ "eval_sets": {
+  "primary": {
+   "A": 4,
+   "B": 7
+  },
+  "extended": {
+   "A": 7,
+   "B": 14
+  }
+ },
+ "half_B_formulas_sharing_a_gold_pair_with_half_A": {
+  "primary": [
+   "imperishable-fame"
+  ],
+  "extended": [
+   "imperishable-fame",
+   "west_ch12_f18"
+  ]
+ },
+ "candidates_written": {
+  "significant": 39,
+  "below_threshold": 161
+ },
+ "decomposition": [
+  {
+   "formula_id": "swift-horses",
+   "half": "A",
+   "kind": "phrase",
+   "primary": true,
+   "pairs": [
+    {
+     "pair": [
+      "HéHḱus",
+      "h₁éḱwos"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 6,
+     "hom_n": 35,
+     "rv_llr": 19.46,
+     "hom_llr": 148.27,
+     "rank": 6
+    }
+   ]
+  },
+  {
+   "formula_id": "holy-strength-isira-manas",
+   "half": "B",
+   "kind": "schema",
+   "primary": false,
+   "pairs": [
+    {
+     "pair": [
+      "ish₁rós",
+      "men-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 1,
+     "hom_n": 7,
+     "rv_llr": 0.48,
+     "hom_llr": 19.58,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "formula_id": "hero-slay-serpent",
+   "half": "B",
+   "kind": "schema",
+   "primary": false,
+   "pairs": [
+    {
+     "pair": [
+      "gʷʰen-",
+      "serp-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 0,
+     "hom_n": 0,
+     "rv_llr": -0.32,
+     "hom_llr": -0.04,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "formula_id": "great-fame",
+   "half": "B",
+   "kind": "phrase",
+   "primary": true,
+   "pairs": [
+    {
+     "pair": [
+      "méǵh₂s",
+      "ḱlew-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 19,
+     "hom_n": 16,
+     "rv_llr": 15.97,
+     "hom_llr": 9.36,
+     "rank": 23
+    }
+   ]
+  },
+  {
+   "formula_id": "imperishable-fame",
+   "half": "B",
+   "kind": "phrase",
+   "primary": true,
+   "pairs": [
+    {
+     "pair": [
+      "dʰgʷʰey-",
+      "ḱlew-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 3,
+     "hom_n": 1,
+     "rv_llr": 0.98,
+     "hom_llr": 0.3,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "formula_id": "imperishable-fame-get-nominative",
+   "half": "B",
+   "kind": "phrase",
+   "primary": true,
+   "pairs": [
+    {
+     "pair": [
+      "dʰeh₁-",
+      "ḱlew-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 29,
+     "hom_n": 0,
+     "rv_llr": 8.27,
+     "hom_llr": -1.83,
+     "rank": null
+    },
+    {
+     "pair": [
+      "dʰeh₁-",
+      "seǵʰ-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 15,
+     "hom_n": 0,
+     "rv_llr": 2.27,
+     "hom_llr": -9.78,
+     "rank": null
+    },
+    {
+     "pair": [
+      "ḱlew-",
+      "seǵʰ-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 3,
+     "hom_n": 10,
+     "rv_llr": -0.31,
+     "hom_llr": -0.68,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "formula_id": "slay-gwhen-serpent-ogwhi",
+   "half": "B",
+   "kind": "schema",
+   "primary": false,
+   "pairs": [
+    {
+     "pair": [
+      "gʷʰen-",
+      "serp-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 0,
+     "hom_n": 0,
+     "rv_llr": -0.32,
+     "hom_llr": -0.04,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "formula_id": "slay-lie-sleep-nexus",
+   "half": "A",
+   "kind": "schema",
+   "primary": false,
+   "pairs": [
+    {
+     "pair": [
+      "gʷʰen-",
+      "legʰ-"
+     ],
+     "in_rv": [
+      true,
+      false
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 0,
+     "hom_n": 0,
+     "rv_llr": null,
+     "hom_llr": -1.94,
+     "rank": null
+    },
+    {
+     "pair": [
+      "gʷʰen-",
+      "swep-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 0,
+     "hom_n": 0,
+     "rv_llr": -0.66,
+     "hom_llr": -0.85,
+     "rank": null
+    },
+    {
+     "pair": [
+      "gʷʰen-",
+      "tḱen-"
+     ],
+     "in_rv": [
+      true,
+      false
+     ],
+     "in_hom": [
+      true,
+      false
+     ],
+     "rv_n": 0,
+     "hom_n": 0,
+     "rv_llr": null,
+     "hom_llr": null,
+     "rank": null
+    },
+    {
+     "pair": [
+      "legʰ-",
+      "swep-"
+     ],
+     "in_rv": [
+      false,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 0,
+     "hom_n": 4,
+     "rv_llr": null,
+     "hom_llr": 5.84,
+     "rank": null
+    },
+    {
+     "pair": [
+      "legʰ-",
+      "tḱen-"
+     ],
+     "in_rv": [
+      false,
+      false
+     ],
+     "in_hom": [
+      true,
+      false
+     ],
+     "rv_n": 0,
+     "hom_n": 0,
+     "rv_llr": null,
+     "hom_llr": null,
+     "rank": null
+    },
+    {
+     "pair": [
+      "swep-",
+      "tḱen-"
+     ],
+     "in_rv": [
+      true,
+      false
+     ],
+     "in_hom": [
+      true,
+      false
+     ],
+     "rv_n": 0,
+     "hom_n": 0,
+     "rv_llr": null,
+     "hom_llr": null,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "formula_id": "west_ch04_f01",
+   "half": "B",
+   "kind": "phrase",
+   "primary": true,
+   "pairs": [
+    {
+     "pair": [
+      "dyew-",
+      "peh₂-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 22,
+     "hom_n": 82,
+     "rv_llr": -0.59,
+     "hom_llr": 180.9,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "formula_id": "west_ch10_f01",
+   "half": "A",
+   "kind": "lexical",
+   "primary": true,
+   "pairs": [
+    {
+     "pair": [
+      "dʰgʷʰey-",
+      "ḱlew-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 3,
+     "hom_n": 1,
+     "rv_llr": 0.98,
+     "hom_llr": 0.3,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "formula_id": "west_ch10_f05",
+   "half": "B",
+   "kind": "lexical",
+   "primary": true,
+   "pairs": [
+    {
+     "pair": [
+      "méǵh₂s",
+      "ḱlew-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 19,
+     "hom_n": 16,
+     "rv_llr": 15.97,
+     "hom_llr": 9.36,
+     "rank": 23
+    }
+   ]
+  },
+  {
+   "formula_id": "west_ch10_f14",
+   "half": "B",
+   "kind": "lexical",
+   "primary": true,
+   "pairs": [
+    {
+     "pair": [
+      "ḱlew-",
+      "per-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 18,
+     "hom_n": 8,
+     "rv_llr": -1.34,
+     "hom_llr": -1.26,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "formula_id": "west_ch03_f20",
+   "half": "B",
+   "kind": "lexical",
+   "primary": true,
+   "pairs": [
+    {
+     "pair": [
+      "h₁wésus",
+      "deh₃-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 25,
+     "hom_n": 2,
+     "rv_llr": 28.44,
+     "hom_llr": 1.95,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "formula_id": "west_ch08_f01",
+   "half": "A",
+   "kind": "lexical",
+   "primary": true,
+   "pairs": [
+    {
+     "pair": [
+      "n̥smé",
+      "ḱlew-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 124,
+     "hom_n": 65,
+     "rv_llr": 81.3,
+     "hom_llr": 49.88,
+     "rank": 2
+    }
+   ]
+  },
+  {
+   "formula_id": "west_ch12_f18",
+   "half": "B",
+   "kind": "attested",
+   "primary": false,
+   "pairs": [
+    {
+     "pair": [
+      "HéHḱus",
+      "h₁éḱwos"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 6,
+     "hom_n": 35,
+     "rv_llr": 19.46,
+     "hom_llr": 148.27,
+     "rank": 6
+    }
+   ]
+  },
+  {
+   "formula_id": "west_ch02_f01",
+   "half": "A",
+   "kind": "attested",
+   "primary": false,
+   "pairs": [
+    {
+     "pair": [
+      "dʰgʷʰey-",
+      "ḱlew-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 3,
+     "hom_n": 1,
+     "rv_llr": 0.98,
+     "hom_llr": 0.3,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "formula_id": "west_ch02_f03",
+   "half": "B",
+   "kind": "attested",
+   "primary": false,
+   "pairs": [
+    {
+     "pair": [
+      "méǵh₂s",
+      "ḱlew-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 19,
+     "hom_n": 16,
+     "rv_llr": 15.97,
+     "hom_llr": 9.36,
+     "rank": 23
+    }
+   ]
+  },
+  {
+   "formula_id": "west_ch02_f21",
+   "half": "A",
+   "kind": "attested",
+   "primary": false,
+   "pairs": [
+    {
+     "pair": [
+      "médʰu",
+      "sweh₂d-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 5,
+     "hom_n": 9,
+     "rv_llr": 15.36,
+     "hom_llr": 83.11,
+     "rank": 11
+    }
+   ]
+  },
+  {
+   "formula_id": "west_ch02_f32",
+   "half": "B",
+   "kind": "attested",
+   "primary": false,
+   "pairs": [
+    {
+     "pair": [
+      "ǵenh₁-",
+      "peh₂-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 50,
+     "hom_n": 13,
+     "rv_llr": 31.79,
+     "hom_llr": 3.05,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "formula_id": "west_ch02_f38",
+   "half": "B",
+   "kind": "attested",
+   "primary": false,
+   "pairs": [
+    {
+     "pair": [
+      "ish₁rós",
+      "men-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 1,
+     "hom_n": 7,
+     "rv_llr": 0.48,
+     "hom_llr": 19.58,
+     "rank": null
+    }
+   ]
+  },
+  {
+   "formula_id": "west_ch02_f48",
+   "half": "A",
+   "kind": "lexical",
+   "primary": true,
+   "pairs": [
+    {
+     "pair": [
+      "nebʰ-",
+      "wes-"
+     ],
+     "in_rv": [
+      true,
+      true
+     ],
+     "in_hom": [
+      true,
+      true
+     ],
+     "rv_n": 4,
+     "hom_n": 3,
+     "rv_llr": 12.19,
+     "hom_llr": 7.87,
+     "rank": 25
+    }
+   ]
+  }
+ ],
+ "notes": [
+  "primary = kinds phrase+lexical (the acceptance set); extended adds West 'attested' and Watkins 'schema' records with Vedic and Greek attestations.",
+  "Half A was used for tuning; half B is reported once with the frozen settings.",
+  "A formula counts as recovered at k if any of its gold pairs ranks ≤ k."
+ ]
+}
