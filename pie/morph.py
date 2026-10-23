@@ -98,7 +98,8 @@ _THEMATIC = {
         "NOM.SG": ["os"], "VOC.SG": ["e"], "ACC.SG": ["om"], "GEN.SG": ["osyo"], "ABL.SG": ["ōd"],
         "DAT.SG": ["ōy"], "LOC.SG": ["oy", "ey"], "INS.SG": ["oh₁"],
         "NOM.DU": ["oh₁"], "VOC.DU": ["oh₁"], "ACC.DU": ["oh₁"],
-        "NOM.PL": ["ōs"], "VOC.PL": ["ōs"], "ACC.PL": ["oms"], "GEN.PL": ["ōm"],
+        # ACC.PL: -oms, with -ons (Fortson) and lengthened -ōns (Byrd) as written variants
+        "NOM.PL": ["ōs"], "VOC.PL": ["ōs"], "ACC.PL": ["oms", "ons", "ōns"], "GEN.PL": ["ōm"],
         "ABL.PL": ["oybʰos", "omos"], "DAT.PL": ["oybʰos", "omos"], "LOC.PL": ["oysu"], "INS.PL": ["ōys"],
     },
 }

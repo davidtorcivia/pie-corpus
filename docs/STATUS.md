@@ -9,7 +9,7 @@
 | 0 Scaffolding & notation | **done** | NFC↔ASCII round-trip on ≥200 tricky forms: **pass** (382 listed forms: 157 hand-written with expected ASCII + 225 generated; plus 5,000 fuzzed; 1,807 tests) |
 | 1 Lexicon | **built, acceptance pending** | ≥2,000 entries: 2,226 glossed, 7,401 total ✅ · ≥800 verbal roots: **730** ❌ · 50-entry handbook spot check: pending books (provisional review in `docs/audits/`) |
 | 2 Morphology engine | **built, acceptance pending books** | Wiktionary regeneration: 11,136/11,255 cells (98.9%), 582/615 tables, **0 unexplained** ✅ · PLAN golden paradigms: 11/11 pass, but the source is unverified (pending Fortson/Ringe) |
-| 3 Validator | — | Tier 1 ≥90% token coverage |
+| 3 Validator | **built**; acceptance waits on Tier 1 texts | Tier 1 laryngealist versions ≥90% token coverage, every miss classified |
 | 3b Sound-law checker | — | full lexicon run, mismatch report |
 | 4 Tier 1 scholarly | — | 200–500 cited lines + adversarial review |
 | 5 Tier 2 back-projection | — | ≥300 lines, ≥8 clusters + adversarial review |
@@ -61,6 +61,12 @@ Nice to have (lower priority): Schmitt, *Dichtung und Dichtersprache in indogerm
 - **Provisional review** (subagent, knowledge-only, 50 entries): 20 ok, 26 questionable, 4 wrong. The triage is in `docs/audits/phase1-lexicon-provisional-review.md`. It found **one real builder bug**: same-form derivatives under different homograph roots were merged, e.g. two *kretós*. Fixing it split 140 homonyms. Duplicate reflexes and unflagged loans are fixed as well. The other 3 "wrong" links are Wiktionary's own placements, logged as disputed. The id registry was reset once for this fix; safe because nothing references ids yet.
 - **Gaps:** 730 verbal roots (see the question below); 344 words/derivatives with no root link (mostly pronouns, particles, opaque nouns); 58 etymon parts that point at ambiguous homographs.
 
+## Decisions recorded before measurement
+
+- **Phase 3 acceptance scope** (written 2026-10-23, before any Tier 1 text was validated): the PLAN's "≥90% token coverage on Tier 1" applies to the **laryngealist versions**: Byrd, Kortlandt, Lühr, Adams/Mallory, and any later version with h₁ h₂ h₃. Schleicher 1868, Hirt 1939 and the other pre-laryngeal versions are documentary. They are kept for the parallel-reconstruction set, measured and reported, but not held to 90%: they score near zero by construction.
+- **The lexicon id registry is frozen.** Tier 1 records are the first data that reference lexicon ids, so no rebuild may reset `data/lexicon/id_registry.jsonl` from here on. A new dump mints new ids and reports stale ones; it never renames existing ones.
+- **No formulas, glosses or reconstructions from memory.** The Watkins/West formulas wait for the books. Interlinear glosses come from validator lemmatization plus the published translation, never from a subagent.
+
 ## Open questions for David
 
 All in one place. None of these block work in progress; each one has a default that I'm using until you decide.
@@ -83,6 +89,8 @@ Everything in IDEAS.md is folded into PLAN.md, and nothing is rejected outright.
 - **Dashboard (7).** The metrics are in STATUS.md now. The HTML Artifact version is deferred until there is data to show (Phase 1+).
 
 ## Log
+
+- **2026-10-23. Phase 3 (built).** `pie/validate.py` builds a form index of ~90k forms (every cell of every spec, both conventions and alternatives, closed classes, lexicon lemmas; 3.5 s) and does tiered lookup (exact → no accent → no length → generic H). It splits off clitics and the augment, and gives every miss one class (notation / phase-b:<class> / engine-gap / pre-laryngeal / variant-of-known-lexeme / lexicon-gap). A test caught the accent-stripping tiers deleting the palatal acute of ḱ; fixed. Five collection subagents are gathering the Tier 1 texts in parallel.
 
 - **2026-10-23. Phase 2 (Layer 2).** `pie/classify.py` derives a spec from Wiktionary tables or, failing that, from 17 lemma-shape rules with `zero_grade()`. Every rule is backtested against the hidden tables; the thematic present and the perfect reach 100%. A usability threshold of 85% gates Tier 3. Output: `data/morph/inflection_specs.jsonl`, `classify_report.json`.
 
