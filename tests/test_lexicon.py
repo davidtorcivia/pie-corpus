@@ -104,3 +104,23 @@ def test_registry_covers_lexicon():
     lex = _load("lexicon.jsonl")
     reg = {r["id"] for r in _load("id_registry.jsonl")}
     assert {e["id"] for e in lex} <= reg
+
+
+def test_homonym_derivatives_stay_apart():
+    # Regression (provisional review, 2026-10-23): two *kretós under the two
+    # *kret- homograph roots were merged into one entry with both meanings.
+    lex = _load("lexicon.jsonl")
+    kretos = [e for e in lex if e["form"] == "kretós"]
+    assert len(kretos) == 2
+    assert {e["root_id"] for e in kretos} == {"pie-root-kret-be_strong", "pie-root-kret-shake"}
+
+
+def test_reflexes_deduped_and_loans_flagged():
+    lex = _load("lexicon.jsonl")
+    n_borrowed = 0
+    for e in lex:
+        for lang, refl in e.get("reflexes", {}).items():
+            keys = [(r["form"], r.get("roman")) for r in refl]
+            assert len(keys) == len(set(keys)), (e["id"], lang)
+            n_borrowed += sum(1 for r in refl if r.get("borrowed"))
+    assert n_borrowed > 400

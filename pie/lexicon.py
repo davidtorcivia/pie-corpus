@@ -215,25 +215,37 @@ def _reflexes(nodes) -> dict[str, list[dict]]:
     or a grouping label like Balto-Slavic), for the sound-law checker.
     """
     out: dict[str, list[dict]] = collections.defaultdict(list)
+    seen: set[tuple] = set()
 
-    def walk(ds, via):
+    def walk(ds, via, borrowed):
         for d in ds:
             if d.get("lang_code") == "ine-pro":
                 continue
             label = d.get("lang") if d.get("lang") not in (None, "unknown") else None
-            if d.get("word") and label:
+            raw = d.get("raw_tags") or []
+            here_borrowed = borrowed or any(t in ("borrowed", "learned borrowing", "learned") for t in raw)
+            if d.get("word") and label and (label, d["word"], d.get("roman")) not in seen:
+                seen.add((label, d["word"], d.get("roman")))
                 rec = {"form": d["word"]}
                 if d.get("roman"):
                     rec["roman"] = d["roman"]
                 stages = [v for v in via if v != label]
                 if stages:
                     rec["via"] = stages
-                if d.get("raw_tags"):
-                    rec["notes"] = d["raw_tags"]
+                if here_borrowed:
+                    rec["borrowed"] = True  # a loan, or descended from one: not a sound-law witness
+                if "reshaped by analogy or addition of morphemes" in raw:
+                    rec["analogical"] = True
+                if "uncertain" in raw or "possibly" in (d.get("tags") or []):
+                    rec["uncertain"] = True
+                notes = [t for t in raw if t not in ("borrowed", "inherited", "uncertain",
+                                                     "reshaped by analogy or addition of morphemes")]
+                if notes:
+                    rec["notes"] = notes
                 out[label].append(rec)
-            walk(d.get("descendants", []), via + (label,) if label else via)
+            walk(d.get("descendants", []), via + (label,) if label else via, here_borrowed)
 
-    walk(nodes, ())
+    walk(nodes, (), False)
     return dict(out)
 
 
@@ -331,8 +343,36 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
         entries[eid] = e
         by_form[p.lemma].append(eid)
 
-    # Pass 2: derivatives from descendant trees (PIE nodes), deduped by form.
+    roots_by_form: dict[str, list[str]] = collections.defaultdict(list)
+    for e in entries.values():
+        if e["kind"] == "root":
+            for f in [e["form"], *e["variants"]]:
+                roots_by_form[f].append(e["id"])
+
+    def etymon_roots(e) -> tuple[list[str], list[dict]]:
+        found, unres = [], []
+        for part in e.get("etymon_parts", []):
+            pp = parse_form(part["form"])
+            if pp.reject or not pp.lemma or not pp.lemma.endswith("-") or pp.lemma.startswith("-"):
+                continue
+            ids = roots_by_form.get(pp.lemma, [])
+            if len(ids) > 1 and part["id_tag"]:
+                tag = gloss_tag(part["id_tag"])
+                ids = [i for i in ids if i.endswith("-" + tag)] or ids
+            if len(ids) == 1:
+                found.append(ids[0])
+            else:
+                unres.append({"entry": e["id"], "part": part["form"], "candidates": ids})
+        return found, unres
+
+    for e in entries.values():
+        e["_owner_root"] = e["id"] if e["kind"] == "root" else (etymon_roots(e)[0] or [None])[0]
+
+    # Pass 2: derivatives from descendant trees (PIE nodes). Same-form nodes
+    # merge only when their trees belong to the same root (or one is unknown):
+    # *kretós under *kret- "shake" and *kretós under *kret- "be strong" are two words.
     def add_derivatives(parent_id: str, nodes):
+        owner_root = entries[parent_id]["_owner_root"]
         for d in _pie_children(nodes):
             p = parse_form(d["word"])
             if p.reject:
@@ -341,7 +381,9 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
                 continue
             rule_counts.update(p.rules)
             uncertain = list(p.uncertain) + (["marked-uncertain"] if "uncertain" in (d.get("raw_tags") or []) else [])
-            existing = [i for i in by_form.get(p.lemma, []) if entries[i]["kind"] != "root" or p.lemma.endswith("-")]
+            existing = [i for i in by_form.get(p.lemma, [])
+                        if (entries[i]["kind"] != "root" or p.lemma.endswith("-"))
+                        and (owner_root is None or entries[i]["_owner_root"] in (None, owner_root))]
             if existing:
                 tgt = entries[existing[0]]
                 tgt.setdefault("parents", [])
@@ -357,7 +399,7 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
                         tgt["segmented"] = p.segmented
                 child = tgt["id"]
             else:
-                child = reg.get(f"deriv|{p.lemma}", f"pie-lex-{slug(p.lemma)}")
+                child = reg.get(f"deriv|{p.lemma}|{owner_root or ''}", f"pie-lex-{slug(p.lemma)}")
                 entries[child] = {
                     "id": child, "kind": "derivative", "form": p.lemma, "form_ascii": to_ascii(p.lemma),
                     "segmented": p.segmented, "variants": p.variants, "stems": p.stems, "pos": None,
@@ -368,6 +410,7 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
                     "confidence": "derivative" if "marked-uncertain" not in uncertain else "uncertain",
                     "normalized": p.rules, "parents": [parent_id],
                     "reflexes": _reflexes(d.get("descendants", [])),
+                    "_owner_root": owner_root,
                 }
                 by_form[p.lemma].append(child)
             entries[parent_id].setdefault("derivatives", [])
@@ -379,11 +422,6 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
         add_derivatives(eid, entries[eid]["_row"].get("descendants", []))
 
     # Pass 3: resolve morphemes and roots.
-    roots_by_form: dict[str, list[str]] = collections.defaultdict(list)
-    for e in entries.values():
-        if e["kind"] == "root":
-            for f in [e["form"], *e["variants"]]:
-                roots_by_form[f].append(e["id"])
     unresolved = []
     for e in entries.values():
         if e["kind"] == "root":
@@ -394,19 +432,8 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
             e["target_ids"] = tgt
             e["root_id"] = next((i for i in tgt if entries[i]["kind"] == "root"), None)
             continue
-        cands: list[str] = []
-        for part in e.get("etymon_parts", []):
-            pp = parse_form(part["form"])
-            if pp.reject or not pp.lemma or not pp.lemma.endswith("-") or pp.lemma.startswith("-"):
-                continue
-            ids = roots_by_form.get(pp.lemma, [])
-            if len(ids) > 1 and part["id_tag"]:
-                tag = gloss_tag(part["id_tag"])
-                ids = [i for i in ids if i.endswith("-" + tag)] or ids
-            if len(ids) == 1:
-                cands.append(ids[0])
-            else:
-                unresolved.append({"entry": e["id"], "part": part["form"], "candidates": ids})
+        cands, unres = etymon_roots(e)
+        unresolved += unres
         if not cands:
             # Fall back on the tree: nearest root ancestor through parents.
             seen, stack = set(), list(e.get("parents", []))
@@ -482,6 +509,7 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
 
     for e in entries.values():
         e.pop("_row", None)
+        e.pop("_owner_root", None)
         for k in ("segmented", "gender", "root_type_source", "root_link_source"):
             if e.get(k) is None:
                 e.pop(k, None)

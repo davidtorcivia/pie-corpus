@@ -7,7 +7,7 @@
 | Phase | State | Acceptance |
 |---|---|---|
 | 0 Scaffolding & notation | **done** | NFC↔ASCII round-trip on ≥200 tricky forms: **pass** (382 listed forms: 157 hand-written with expected ASCII + 225 generated; plus 5,000 fuzzed; 1,807 tests) |
-| 1 Lexicon | **built, acceptance pending** | ≥2,000 entries: 2,226 glossed, 7,261 total ✅ · ≥800 verbal roots: **730** ❌ · 50-entry handbook spot check: pending books (provisional review in `docs/audits/`) |
+| 1 Lexicon | **built, acceptance pending** | ≥2,000 entries: 2,226 glossed, 7,401 total ✅ · ≥800 verbal roots: **730** ❌ · 50-entry handbook spot check: pending books (provisional review in `docs/audits/`) |
 | 2 Morphology engine | next | golden paradigms |
 | 3 Validator | — | Tier 1 ≥90% token coverage |
 | 3b Sound-law checker | — | full lexicon run, mismatch report |
@@ -20,7 +20,7 @@
 
 | Metric | Value |
 |---|---|
-| Lexicon entries | 7,261 total: 885 roots · 893 words · 110 affixes · 5,330 tree derivatives · 22 alt · 21 form-of |
+| Lexicon entries | 7,401 total: 885 roots · 893 words · 110 affixes · 5,470 tree derivatives · 22 alt · 21 form-of |
 | Glossed entries | 2,226 |
 | Verbal roots | 730 (116 marked by Wiktionary + 614 by the "to …" gloss heuristic; 104 disagree with the derivative signal) |
 | Wiktionary paradigms (clean) | 625 (90 dropped as module-corrupted, 1 with a non-canonical cell) |
@@ -55,6 +55,7 @@ Nice to have (lower priority): Schmitt, *Dichtung und Dichtersprache in indogerm
 - **The source is clean.** Only 4 of 1,931 headwords are outside the inventory. Normalization fired 14 times (3 homoglyphs, 6 laryngeal rings, 5 dot-below syllabics). The `\w` escape occurs in 17 forms.
 - **Wiktionary's declension module corrupts some tables.** Where a stem template has parentheses or Ø, the dual `-h₁` becomes `é₁`/`Ø₁`. Those 90 tables are excluded at the source.
 - **Wiktionary etymon ids can't disambiguate homographs.** kaikki copies them across sibling sections, so 8 homograph sets collided. Root ids therefore carry a gloss tag on every id (`pie-root-men-think`, `pie-root-men-stay`) and persist in a committed registry. Rebuilds are idempotent.
+- **Provisional review** (subagent, knowledge-only, 50 entries): 20 ok, 26 questionable, 4 wrong. The triage is in `docs/audits/phase1-lexicon-provisional-review.md`. It found **one real builder bug**: same-form derivatives under different homograph roots were merged, e.g. two *kretós*. Fixing it split 140 homonyms. Duplicate reflexes and unflagged loans are fixed as well. The other 3 "wrong" links are Wiktionary's own placements, logged as disputed. The id registry was reset once for this fix; safe because nothing references ids yet.
 - **Gaps:** 730 verbal roots (see the question below); 344 words/derivatives with no root link (mostly pronouns, particles, opaque nouns); 58 etymon parts that point at ambiguous homographs.
 
 ## Open questions for David
