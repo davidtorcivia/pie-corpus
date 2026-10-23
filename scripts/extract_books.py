@@ -20,7 +20,12 @@ import pymupdf
 
 ROOT = Path(__file__).resolve().parent.parent
 BOOKS = ROOT / "raw" / "books"
-SLUGS = {"Rix": "liv2", "Fortson": "fortson", "Ringe": "ringe", "Watkins": "watkins",
+# title keys first: two books by one author (Matasović, Derksen, Mayrhofer's volumes) need distinct dirs
+SLUGS = {"Proto-Germanic": "kroonen-pgmc", "Proto-Celtic": "matasovic-pcelt", "Textual Reconstruction": "matasovic-1996",
+         "Baltic Inherited": "derksen-baltic", "Slavic Inherited": "derksen-slavic", "Italic Languages": "devaan-latin",
+         "Armenian Inherited": "martirosyan-arm", "Altindoarischen": "ewaia", "Dichtersprache": "schmitt-1967",
+         "Latvju tautas": "dainas-endzelins", "chansons mythologiques": "jonval-1929",
+         "Rix": "liv2", "Fortson": "fortson", "Ringe": "ringe", "Watkins": "watkins",
          "Mallory": "mallory-adams", "West": "west",
          "Clackson": "clackson", "Wodtko": "nil", "Klein": "handbook-klein", "Beekes": "beekes"}
 
@@ -80,9 +85,27 @@ def pdf(path: Path, out: Path) -> int:
     return len(doc)
 
 
+def page_zip(path: Path, out: Path) -> int:
+    """A zip of OCR page texts (HathiTrust-style NNNNNNNN.txt): only .txt members are read, by
+    basename (no member path is ever used on disk), each capped at 1 MB."""
+    n = 0
+    with zipfile.ZipFile(path) as z:
+        for i in z.infolist():
+            name = Path(i.filename).name
+            if i.is_dir() or not name.endswith(".txt") or i.file_size > 1_000_000:
+                continue
+            m = re.search(r"(\d+)\.txt$", name)
+            if not m:
+                continue
+            (out / f"p{int(m[1]):04d}.txt").write_text(z.read(i).decode("utf-8", "replace"), "utf-8")
+            n += 1
+    return n
+
+
 def main() -> int:
+    force = "--force" in sys.argv
     for f in sorted(BOOKS.iterdir()):
-        if f.suffix not in (".pdf", ".epub"):
+        if f.suffix not in (".pdf", ".epub", ".zip"):
             continue
         slug = next((v for k, v in SLUGS.items() if k in f.name), f.stem[:20])
         if slug == "west" and f.suffix == ".pdf":
@@ -92,9 +115,14 @@ def main() -> int:
         m = re.search(r"Volume (\d+)", f.name)
         if m:                          # multi-volume works: one text dir per volume
             slug += f"-v{m[1]}"
+        m = re.search(r"Band ([IVX]+)(?![IVX])", f.name)
+        if m:
+            slug += "-v" + str({"I": 1, "II": 2, "III": 3, "IV": 4}[m[1]])
         out = BOOKS / "text" / slug
+        if out.exists() and any(out.glob("*.txt")) and not force:
+            continue                   # already extracted (--force to redo)
         out.mkdir(parents=True, exist_ok=True)
-        n = epub(f, out) if f.suffix == ".epub" else pdf(f, out)
+        n = epub(f, out) if f.suffix == ".epub" else page_zip(f, out) if f.suffix == ".zip" else pdf(f, out)
         chars = sum(len(p.read_text("utf-8")) for p in out.glob("*.txt"))
         print(f"{slug:15} {f.suffix:5} {n:4} parts  {chars:9,} chars")
     return 0
