@@ -16,7 +16,7 @@
 | 6 Tier 3 / 3b synthetic | **scaling**: b001 and b002 (250 each, Sonnet) passed all gates; reviews 4% wrong each (docs/audits/tier3-b001-review.md, tier3-b002-review.md). Review fixes applied (s-stem routing from reflexes, i-stem LOC/GEN, slice gates for derived glosses and accents, valency check, 9 blocked lexemes, brief rules on voice and tense); 239 LIV² root aorists added. Wave 2 running: b003 (hymn/prayer/charm/myth), b004 (law/genealogy/dialogue/epic/proverb), repair of 42 b001/b002 plans rejected by the new rules. Pilot: 148 sentences |
 | 7 Export + benchmark | **scaffolded**: splits, views, task views, leakage guard | splits, task views, bench |
 | 8a Formula discovery | **first run below the bar** (docs/research/8a-formula-search.md): Rigveda + Homer, held-out recall 2/7 (one pair, "great fame"), shuffled baseline 0. Bottleneck is word→PIE mapping (~45% of tokens) and rare formulas; next: fuller lemma↔reflex tables, a third corpus, syntactic agreement |
-| 8b Laryngeal backtest | **planned**: pre-Hittite cognate sets, non-LLM model, shuffled baseline |
+| 8b Laryngeal backtest | **first run** (docs/research/8b-backtest.md): pre-registered held-out test null but underpowered (10 matched slots); exploratory 5-fold analysis (337 slots, 207 families) finds higher surprisal at laryngeal-loss and coloring positions beyond bigram and shuffled baselines (+0.27 nats [+0.08, +0.48]), none at length; the model errs there rather than growing uncertain. Exploratory, so it needs a pre-registered replication; the Hittite check has too few sets (3 in eval) |
 
 ## Dashboard
 
