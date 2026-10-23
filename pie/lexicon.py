@@ -479,6 +479,14 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
         recs = [json.loads(x) for x in liv_path.read_text("utf-8").splitlines() if x.strip()]
         liv_report = apply_liv(entries, recs, reg)
 
+    # NIL (committed facts file data/lexicon/nil.jsonl, built from the book by scripts/build_nil.py)
+    nil_report = None
+    nil_path = outdir / "nil.jsonl"
+    if nil_path.exists():
+        from .nil import apply as apply_nil
+        recs = [json.loads(x) for x in nil_path.read_text("utf-8").splitlines() if x.strip()]
+        nil_report = apply_nil(entries, recs, reg)
+
     # Paradigms (Wiktionary module output), hard-filtered.
     paradigms, para_skipped = [], collections.Counter()
     for e in entries.values():
@@ -557,6 +565,7 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
         "normalization_rules_fired": dict(rule_counts),
         "w_escape_forms": sum(1 for e in entries.values() if "\\w" in e["form_ascii"]),
         "liv2": liv_report,
+        "nil": nil_report,
         "ids_minted_this_build": reg.minted,
         "stale_registry_ids": reg.stale(),
     }

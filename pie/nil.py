@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import json
 import re
+import unicodedata
 from pathlib import Path
 
 from .liv import _gloss_sim, _plain, headword
@@ -47,6 +48,9 @@ def stem(printed: str | None) -> str | None:
         return None                                   # suffix-only, alternants or optional parts
     s = s.replace("-", "")
     t = normalize(s, "liv2").text
+    # NIL writes the a-colouring next to h₂ (h₂áu̯g-, -ah₂-); the lexicon writes h₂e / eh₂
+    t = unicodedata.normalize("NFC", re.sub("h₂a|ah₂", lambda m: m[0].replace("a", "e"),
+                                            re.sub("h₂á|áh₂", lambda m: m[0].replace("á", "é"), t)))
     return t if t and is_canonical(t) else None
 
 
@@ -88,12 +92,48 @@ def build_records(root: Path = ROOT) -> list[dict]:
     return out
 
 
+def citation(stem: str, gender: str | None) -> tuple[str, str, str | None] | None:
+    """NIL stem + gender → (citation form, pos, gender) for the classifier, or None.
+
+    NIL prints stems (*ĝnoh₃-tér-, *dʰiH-ti-); the lexicon cites nominatives.
+    Adjectives are the o-stems NIL prints without a gender.
+    """
+    from .phon import has_accent, parse
+    try:
+        if not has_accent(parse(stem)):
+            return None                       # the slice gate needs an accent; don't guess one
+    except ValueError:
+        return None
+    g = gender if gender in ("m", "f", "n") else None
+    if re.search(r"[oó]$", stem):
+        if g is None:
+            return stem + "s", "adj", None
+        return stem + ("m" if g == "n" else "s"), "noun", g
+    if stem.endswith(("eh₂", "éh₂")):                     # eh₂-stem (NIL -ah₂-, normalized in stem())
+        return stem, "noun", "f"
+    if stem.endswith(("ih₂", "íh₂")):
+        return stem, "noun", "f"
+    if re.search(r"[ií]$|[uú]$", stem) and g in ("m", "f"):
+        return stem + "s", "noun", g
+    if re.search(r"[eé]s$", stem) and g in (None, "n"):   # s-stem neuter: ǵénh₁es- → ǵénh₁os
+        return re.sub(r"([eé])s$", lambda m: {"e": "o", "é": "ó"}[m[1]] + "s", stem), "noun", "n"
+    if re.search(r"m[eé]n$", stem) and g == "n":
+        return re.sub(r"m[eé]n$", "mn̥", stem), "noun", "n"
+    if re.search(r"t[eé]r$", stem) and g in (None, "m", "f"):
+        return re.sub(r"t([eé])r$", lambda m: "t" + ("ḗ" if m[1] == "é" else "ē") + "r", stem), "noun", g or "m"
+    if re.search(r"t[oó]r$", stem) and g in (None, "m"):
+        return stem[:-2] + "ōr", "noun", "m"
+    if re.search(r"[^aeiouāēīōūáéíóúr̥l̥m̥n̥]$", stem) and g in ("m", "f"):
+        return stem + "s", "noun", g                      # root noun
+    return None
+
+
 def _key(form: str) -> str:
     from .validate import key
     return key(form.strip("-"), "nolength")
 
 
-def apply(entries: dict[str, dict], records: list[dict]) -> dict:
+def apply(entries: dict[str, dict], records: list[dict], reg=None) -> dict:
     from .validate import key as vkey
     roots = [e for e in entries.values() if e["kind"] == "root"]
     by_plain, by_generic = {}, {}
@@ -109,7 +149,8 @@ def apply(entries: dict[str, dict], records: list[dict]) -> dict:
     for e in entries.values():
         if e["kind"] in ("word", "derivative") and e.get("root_id"):
             children.setdefault(e["root_id"], []).append(e)
-    rep = {"roots": len(records), "roots_matched": 0, "formations": 0, "formations_matched": 0, "glossed": 0}
+    rep = {"roots": len(records), "roots_matched": 0, "formations": 0, "formations_matched": 0, "glossed": 0,
+           "new": 0}
     for x in records:
         en = (x.get("root_gloss_en") or "").lower()
         forms = x.get("root_alternatives") or ([x["root"]] if x["root"] else [])
@@ -140,6 +181,7 @@ def apply(entries: dict[str, dict], records: list[dict]) -> dict:
             k = _key(fm["stem"])
             hit = next((kids[k + _key(end)] for end in ENDINGS if (k + _key(end)) in kids), None) if k else None
             if not hit:
+                rep["new"] += _new_lexeme(entries, kids, root, x, fm, reg)
                 continue
             rep["formations_matched"] += 1
             hit.setdefault("nil", []).append({**fm, "root_printed": x["root_printed"], "page": x["page"]})
@@ -147,3 +189,32 @@ def apply(entries: dict[str, dict], records: list[dict]) -> dict:
                 hit["meaning"], hit["meaning_source"] = [fm["gloss_en"]], "nil"
                 rep["glossed"] += 1
     return rep
+
+
+def _new_lexeme(entries: dict, kids: dict, root: dict, x: dict, fm: dict, reg) -> int:
+    """A NIL formation the lexicon lacks → a new derivative lexeme (citation form built from
+    the stem; the classifier assigns the paradigm and decides usability as for any lexeme)."""
+    from .lexicon import slug
+    from .translit import to_ascii
+    if reg is None or not fm["stem"] or not fm["gloss_en"] or fm["marker"] in ("‡", "**", "ˣ"):
+        return 0
+    c = citation(fm["stem"], fm.get("gender"))
+    if not c:
+        return 0
+    form, pos, g = c
+    form = unicodedata.normalize("NFC", form)
+    if not is_canonical(form) or _key(form) in kids:
+        return 0
+    lid = reg.get(f"nil|{x['root_printed']}|{fm['printed']}", f"pie-lex-{slug(form)}")
+    entries[lid] = {
+        "id": lid, "kind": "derivative", "form": form, "form_ascii": to_ascii(form), "variants": [], "stems": [],
+        "pos": pos, "gender": g, "meaning": [fm["gloss_en"]], "meaning_source": "nil",
+        "uncertain": ["nil-uncertain"] if fm["uncertain"] else [], "source": "nil",
+        "source_ref": {"dump": "NIL (Wodtko, Irslinger & Schneider 2008)", "page": x["page"],
+                       "printed": fm["printed"]},
+        "confidence": "entry", "normalized": [], "etymon_parts": [], "reflexes": {},
+        "nil": [{**fm, "root_printed": x["root_printed"], "page": x["page"]}],
+        "parents": [root["id"]], "root_link_source": "nil", "root_id": root["id"] if root["kind"] == "root"
+        else root.get("root_id")}
+    kids[_key(form)] = entries[lid]
+    return 1

@@ -1,15 +1,15 @@
 {
  "dump": "kaikki.org ProtoIndoEuropean, extracted 2026-10-21 from enwiktionary 2026-10-01",
- "entries": 8133,
+ "entries": 8325,
  "by_kind": {
   "root": 1378,
   "alt": 22,
   "word": 1132,
   "affix": 110,
   "form": 21,
-  "derivative": 5470
+  "derivative": 5662
  },
- "glossed_entries": 2981,
+ "glossed_entries": 3332,
  "roots": 1378,
  "verbal_roots": {
   "total": 1261,
@@ -125,7 +125,7 @@
   "pie-root-kjlewH-clean",
   "pie-root-kjley-shelter"
  ],
- "non_root_without_root_link": 344,
+ "non_root_without_root_link": 357,
  "unresolved_etymon_parts": [
   {
    "entry": "pie-lex-skerdh",
@@ -492,7 +492,15 @@
   "aorists": 239,
   "possible_aliases": 51
  },
- "ids_minted_this_build": 0,
+ "nil": {
+  "roots": 207,
+  "roots_matched": 160,
+  "formations": 2618,
+  "formations_matched": 353,
+  "glossed": 159,
+  "new": 192
+ },
+ "ids_minted_this_build": 192,
  "stale_registry_ids": [
   "pie-lex-deh2t",
   "pie-lex-kjeh3t",
