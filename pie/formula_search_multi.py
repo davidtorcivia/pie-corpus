@@ -588,13 +588,14 @@ class LangMapping:
         self.pos: dict[str, set] = collections.defaultdict(set)
 
     def is_content(self, lemma: str) -> bool:
-        """A lemma string ('a|b') is content if any part is a noun, verb,
-        adjective or name in the dictionary (unknown forms count as content)."""
+        """A lemma string ('a|b') is content if every part's dictionary POS
+        are noun, verb, adjective or name only (unknown forms count as content)."""
         if lemma.startswith("?"):
             return True
         parts = lemma.split("|")
         known = [p for p in parts if self.pos.get(p)]
-        return not known or all(self.pos[p] & CONTENT_POS for p in known)
+        # a homograph of a function word (ON ok 'and' / 'yoke', á 'on' / 'river') is not content
+        return not known or all(self.pos[p] <= CONTENT_POS for p in known)
 
     def lookup(self, key: str) -> MapRec | None:
         return self.recs.get(key)
@@ -1127,8 +1128,8 @@ def kloekhorst_hittite(lemmas, lexicon: list[dict], root: Path = ROOT, gmap: dic
                 ids, how = fz.lookup(f)
                 if ids:
                     break
-            if not ids:
-                continue
+            if not ids or how != "form":
+                continue          # the leading-segment fallback was wrong in 2 of 3 checked cases
             g = {(gmap or {}).get(i, i) for i in ids}
             if len(g) > fs.MAX_GROUPS:
                 continue
@@ -1318,11 +1319,11 @@ BEOWULF = "raw/daughters/oe-beowulf-gutenberg/pg9701.txt"
 
 
 def beowulf_lines(root: Path = ROOT) -> list[tuple[str, dict, str]]:
-    """Harrison & Sharp's Beowulf (PD, Project Gutenberg), long lines
-    (both half-lines) from 'Hwæt!' to the end of the poem, numbered by
-    counting; the fitt headings are skipped."""
+    """Harrison & Sharp's Beowulf and the Finnsburh fragment (PD, Project
+    Gutenberg): long lines (both half-lines), numbered from the edition's
+    every-fifth-line numbers; fitt headings are skipped."""
     lines = (root / BEOWULF).read_text("utf-8", errors="replace").splitlines()
-    out, n, started = [], 0, False
+    out, n, started, poem = [], 0, False, "Beo."
     for raw in lines:
         if raw.strip().startswith("LIST OF NAMES"):
             break
@@ -1332,11 +1333,15 @@ def beowulf_lines(root: Path = ROOT) -> list[tuple[str, dict, str]]:
             else:
                 continue
         s = raw.strip()
+        if "FINNSBURG" in s and s.isupper():
+            poem, n = "Finn.", 0
+            continue
         if not s or re.match(r"^[IVXL]+\. ", s) or s.isupper():
             continue
-        s = re.sub(r"^\d+\s+", "", s)
-        n += 1
-        out.append((f"Beo. {n}", {"line": f"beo:{n}", "book": "Beowulf"}, s))
+        m = re.match(r"^(\d+)\s+", s)
+        n = int(m[1]) if m else n + 1          # the edition prints every fifth line number
+        s = s[m.end():] if m else s
+        out.append((f"{poem} {n}", {"line": f"{poem}{n}", "book": poem}, s))
     return out
 
 
@@ -1598,14 +1603,17 @@ def branch_logp(cs: list, p: tuple, removed: dict | None = None) -> tuple[float,
 
 
 def score_branches(counts: dict, specs: dict, calques: dict | None = None, min_branches: int = 2,
-                   alpha: float = 0.05, pairs=None, require_sig: bool = True) -> list[dict]:
+                   alpha: float = 0.05, pairs=None, require_sig: bool = True, same_form=None) -> list[dict]:
     """counts: corpus → formula_search.Counts; specs: corpus → CorpusSpec.
     A pair is a candidate if it co-occurs in ≥ min_branches witnesses and
     p < alpha in at least one. Witnesses: branches; the branches whose
     co-occurrences all come from translation corpora (Gothic, OCS, Armenian)
     merge into one witness 'translation' (min p × their number). Score:
     Fisher's method over the witnesses' p (branches without a co-occurrence
-    do not enter). calques: corpus → pair → co-occurrences to discard."""
+    do not enter). calques: corpus → pair → co-occurrences to discard.
+    same_form: optional predicate on pairs; True drops the pair (two
+    homograph entries of one written form, e.g. *bʰendʰ- 'bind' twice: the
+    'pair' is one word mapped to both)."""
     by_branch: dict[str, list] = collections.defaultdict(list)
     for name, c in counts.items():
         by_branch[specs[name].branch].append((name, c))
@@ -1620,6 +1628,8 @@ def score_branches(counts: dict, specs: dict, calques: dict | None = None, min_b
     la = math.log(alpha)
     out = []
     for p in pairs:
+        if same_form and same_form(p):
+            continue
         ws = []
         for b, cs in by_branch.items():
             rem = {name: calques[name].get(p, 0) for name, _ in cs if calques and name in calques}
@@ -1689,3 +1699,13 @@ def units_with_verse(tokens: list[Token], unit: str) -> list[tuple[str, list]]:
             by[u] = (t.units.get("verse", ""), [])
         by[u][1].append(t.roots)
     return list(by.values())
+
+
+def homograph_pair_test(lexicon: list[dict]):
+    """Predicate: the two ids are entries with the same accent-free form."""
+    form = {e["id"]: pie_key(e["form"]).strip("-") for e in lexicon}
+
+    def same(p):
+        a, b = form.get(p[0]), form.get(p[1])
+        return a is not None and a == b
+    return same

@@ -1347,17 +1347,17 @@
    "tokens": 255181,
    "content_tokens": 185489,
    "units": 145617,
-   "content_tokens_mapped": 29077,
-   "content_token_share": 0.1568,
+   "content_tokens_mapped": 28798,
+   "content_token_share": 0.1553,
    "content_types": 9751,
-   "content_types_mapped": 174,
-   "type_share": 0.0178,
+   "content_types_mapped": 165,
+   "type_share": 0.0169,
    "mapped_tokens_by_confidence": {
     "high": 25979,
     "low": 2126,
-    "medium": 972
+    "medium": 693
    },
-   "mapped_tokens_lexeme_level_share": 0.8389
+   "mapped_tokens_lexeme_level_share": 0.8504
   },
   "av": {
    "tokens": 114639,
@@ -1392,51 +1392,51 @@
   },
   "non": {
    "tokens": 48387,
-   "content_tokens": 36137,
+   "content_tokens": 31166,
    "units": 13801,
-   "content_tokens_mapped": 21015,
-   "content_token_share": 0.5815,
-   "content_types": 8804,
-   "content_types_mapped": 1765,
-   "type_share": 0.2005,
+   "content_tokens_mapped": 16278,
+   "content_token_share": 0.5223,
+   "content_types": 8739,
+   "content_types_mapped": 1724,
+   "type_share": 0.1973,
    "mapped_tokens_by_confidence": {
-    "low": 2243,
-    "high": 17272,
-    "medium": 1500
+    "low": 2186,
+    "high": 12600,
+    "medium": 1492
    },
-   "mapped_tokens_lexeme_level_share": 0.8648
+   "mapped_tokens_lexeme_level_share": 0.8328
   },
   "ang": {
    "tokens": 104566,
-   "content_tokens": 65329,
+   "content_tokens": 57798,
    "units": 15606,
-   "content_tokens_mapped": 30850,
-   "content_token_share": 0.4722,
-   "content_types": 19531,
-   "content_types_mapped": 3338,
-   "type_share": 0.1709,
+   "content_tokens_mapped": 25524,
+   "content_token_share": 0.4416,
+   "content_types": 19257,
+   "content_types_mapped": 3176,
+   "type_share": 0.1649,
    "mapped_tokens_by_confidence": {
-    "medium": 4616,
-    "high": 16709,
-    "low": 9525
+    "high": 13016,
+    "medium": 3623,
+    "low": 8885
    },
-   "mapped_tokens_lexeme_level_share": 0.8609
+   "mapped_tokens_lexeme_level_share": 0.8401
   },
   "lv": {
    "tokens": 7815,
-   "content_tokens": 6314,
+   "content_tokens": 5967,
    "units": 727,
-   "content_tokens_mapped": 2230,
-   "content_token_share": 0.3532,
-   "content_types": 2456,
-   "content_types_mapped": 446,
-   "type_share": 0.1816,
+   "content_tokens_mapped": 2037,
+   "content_token_share": 0.3414,
+   "content_types": 2433,
+   "content_types_mapped": 434,
+   "type_share": 0.1784,
    "mapped_tokens_by_confidence": {
-    "high": 1226,
-    "low": 900,
+    "high": 1054,
+    "low": 879,
     "medium": 104
    },
-   "mapped_tokens_lexeme_level_share": 0.8614
+   "mapped_tokens_lexeme_level_share": 0.8571
   },
   "xum": {
    "tokens": 8775,
@@ -1474,10 +1474,10 @@
  "hittite_coverage": {
   "kaikki_lexicon_raw": 0.3007,
   "kaikki_lexicon_gloss_checked": 0.1515,
-  "kloekhorst_only": 0.0052,
-  "kloekhorst_agree_with_kaikki": 0,
-  "kloekhorst_disagree_with_kaikki": 1,
-  "final": 0.1568
+  "kloekhorst_only": 0.0055,
+  "kloekhorst_agree_with_kaikki": 1,
+  "kloekhorst_disagree_with_kaikki": 2,
+  "final": 0.1553
  },
  "sanity": {
   "r2_final": {
@@ -1575,9 +1575,9 @@
     3,
     null,
     27,
-    81,
-    55,
-    71,
+    80,
+    54,
+    70,
     null,
     14,
     16,
@@ -1587,17 +1587,17 @@
     null,
     null,
     6,
-    338,
-    184,
+    334,
+    180,
     null,
     null,
     null,
-    36,
+    35,
     null,
-    73,
+    72,
     null
    ],
-   "n_ranked": 369,
+   "n_ranked": 365,
    "minus_r2": {
     "recall@50": {
      "diff": 0.0,
@@ -1617,6 +1617,219 @@
      "diff": 0.0,
      "ci95": [
       0.0,
+      0.0
+     ]
+    }
+   }
+  },
+  "diag_rv_hom_grp": {
+   "recall": {
+    "recall@50": 0.3333333333333333,
+    "recall@100": 0.4583333333333333,
+    "recall@200": 0.5
+   },
+   "ci95": {
+    "recall@50": [
+     0.167,
+     0.542
+    ],
+    "recall@100": [
+     0.25,
+     0.667
+    ],
+    "recall@200": [
+     0.292,
+     0.708
+    ]
+   },
+   "ranks": [
+    5,
+    null,
+    42,
+    230,
+    58,
+    89,
+    null,
+    26,
+    29,
+    228,
+    null,
+    23,
+    44,
+    null,
+    15,
+    null,
+    50,
+    null,
+    null,
+    null,
+    62,
+    null,
+    114,
+    null
+   ],
+   "n_ranked": 639,
+   "minus_r2": {
+    "recall@50": {
+     "diff": 0.042,
+     "ci95": [
+      -0.083,
+      0.208
+     ]
+    },
+    "recall@100": {
+     "diff": 0.0,
+     "ci95": [
+      -0.167,
+      0.167
+     ]
+    },
+    "recall@200": {
+     "diff": 0.0,
+     "ci95": [
+      -0.125,
+      0.125
+     ]
+    }
+   }
+  },
+  "diag_rv_av_hom": {
+   "recall": {
+    "recall@50": 0.25,
+    "recall@100": 0.3333333333333333,
+    "recall@200": 0.4583333333333333
+   },
+   "ci95": {
+    "recall@50": [
+     0.083,
+     0.417
+    ],
+    "recall@100": [
+     0.167,
+     0.5
+    ],
+    "recall@200": [
+     0.25,
+     0.667
+    ]
+   },
+   "ranks": [
+    5,
+    null,
+    47,
+    128,
+    98,
+    109,
+    null,
+    16,
+    32,
+    null,
+    null,
+    24,
+    null,
+    null,
+    7,
+    550,
+    null,
+    null,
+    461,
+    null,
+    57,
+    null,
+    143,
+    null
+   ],
+   "n_ranked": 572,
+   "minus_r2": {
+    "recall@50": {
+     "diff": -0.042,
+     "ci95": [
+      -0.125,
+      0.0
+     ]
+    },
+    "recall@100": {
+     "diff": -0.125,
+     "ci95": [
+      -0.292,
+      0.0
+     ]
+    },
+    "recall@200": {
+     "diff": -0.042,
+     "ci95": [
+      -0.125,
+      0.0
+     ]
+    }
+   }
+  },
+  "diag_rv_ae_hom": {
+   "recall": {
+    "recall@50": 0.3333333333333333,
+    "recall@100": 0.4166666666666667,
+    "recall@200": 0.4583333333333333
+   },
+   "ci95": {
+    "recall@50": [
+     0.167,
+     0.5
+    ],
+    "recall@100": [
+     0.208,
+     0.625
+    ],
+    "recall@200": [
+     0.25,
+     0.667
+    ]
+   },
+   "ranks": [
+    2,
+    null,
+    30,
+    101,
+    27,
+    81,
+    null,
+    16,
+    19,
+    null,
+    null,
+    15,
+    null,
+    null,
+    6,
+    376,
+    216,
+    null,
+    null,
+    null,
+    41,
+    null,
+    85,
+    null
+   ],
+   "n_ranked": 408,
+   "minus_r2": {
+    "recall@50": {
+     "diff": 0.042,
+     "ci95": [
+      0.0,
+      0.125
+     ]
+    },
+    "recall@100": {
+     "diff": -0.042,
+     "ci95": [
+      -0.125,
+      0.0
+     ]
+    },
+    "recall@200": {
+     "diff": -0.042,
+     "ci95": [
+      -0.125,
       0.0
      ]
     }
@@ -1645,30 +1858,30 @@
    "ranks": [
     7,
     null,
-    81,
-    412,
-    56,
-    158,
-    null,
-    38,
+    79,
+    403,
     55,
-    501,
+    152,
     null,
-    43,
-    87,
+    37,
+    54,
+    489,
+    null,
+    42,
+    85,
     null,
     16,
     null,
-    58,
+    57,
     null,
-    613,
+    600,
     null,
-    97,
+    95,
     null,
-    255,
+    246,
     null
    ],
-   "n_ranked": 1058,
+   "n_ranked": 1043,
    "minus_r2": {
     "recall@50": {
      "diff": -0.125,
@@ -1696,7 +1909,7 @@
   "r3_all_core_pairs": {
    "recall": {
     "recall@50": 0.16666666666666666,
-    "recall@100": 0.375,
+    "recall@100": 0.4166666666666667,
     "recall@200": 0.4583333333333333
    },
    "ci95": {
@@ -1706,7 +1919,7 @@
     ],
     "recall@100": [
      0.208,
-     0.583
+     0.625
     ],
     "recall@200": [
      0.25,
@@ -1716,30 +1929,30 @@
    "ranks": [
     7,
     null,
-    84,
-    461,
-    57,
-    170,
+    81,
+    447,
+    56,
+    163,
     null,
-    33,
-    52,
-    613,
+    32,
+    51,
+    601,
     null,
     44,
-    89,
+    86,
     null,
     19,
     null,
-    59,
+    58,
     null,
-    665,
+    652,
     null,
-    101,
+    98,
     null,
-    277,
+    262,
     null
    ],
-   "n_ranked": 1165,
+   "n_ranked": 1149,
    "minus_r2": {
     "recall@50": {
      "diff": -0.125,
@@ -1749,10 +1962,10 @@
      ]
     },
     "recall@100": {
-     "diff": -0.083,
+     "diff": -0.042,
      "ci95": [
-      -0.292,
-      0.125
+      -0.208,
+      0.167
      ]
     },
     "recall@200": {
@@ -1787,30 +2000,30 @@
    "ranks": [
     7,
     null,
-    81,
-    412,
-    56,
-    158,
-    null,
-    38,
+    79,
+    403,
     55,
-    501,
+    152,
     null,
-    43,
-    87,
+    37,
+    54,
+    489,
+    null,
+    42,
+    85,
     null,
     16,
     null,
-    58,
+    57,
     null,
-    613,
+    600,
     null,
-    97,
+    95,
     null,
-    255,
+    246,
     null
    ],
-   "n_ranked": 1165,
+   "n_ranked": 1149,
    "minus_r2": {
     "recall@50": {
      "diff": -0.125,
@@ -1837,14 +2050,14 @@
   },
   "r3_all_pairs": {
    "recall": {
-    "recall@50": 0.08333333333333333,
+    "recall@50": 0.125,
     "recall@100": 0.25,
     "recall@200": 0.3333333333333333
    },
    "ci95": {
     "recall@50": [
      0.0,
-     0.208
+     0.25
     ],
     "recall@100": [
      0.083,
@@ -1858,36 +2071,36 @@
    "ranks": [
     17,
     null,
-    186,
-    1524,
-    98,
-    436,
+    176,
+    1448,
+    95,
+    408,
     null,
-    52,
-    86,
-    2065,
+    50,
+    83,
+    1965,
     null,
-    68,
-    216,
+    66,
+    205,
     null,
     33,
     null,
-    105,
+    101,
     null,
-    2237,
-    2484,
-    247,
+    2118,
+    2352,
+    233,
     null,
-    869,
+    813,
     null
    ],
-   "n_ranked": 3977,
+   "n_ranked": 3786,
    "minus_r2": {
     "recall@50": {
-     "diff": -0.208,
+     "diff": -0.167,
      "ci95": [
-      -0.375,
-      -0.083
+      -0.333,
+      -0.042
      ]
     },
     "recall@100": {
@@ -1912,6 +2125,30 @@
   "r3_rv_hom_only": {
    "corpora": [
     "rv",
+    "hom"
+   ],
+   "require_sig": true
+  },
+  "diag_rv_hom_grp": {
+   "corpora": [
+    "rv",
+    "hom",
+    "grp"
+   ],
+   "require_sig": true
+  },
+  "diag_rv_av_hom": {
+   "corpora": [
+    "rv",
+    "av",
+    "hom"
+   ],
+   "require_sig": true
+  },
+  "diag_rv_ae_hom": {
+   "corpora": [
+    "rv",
+    "ae",
     "hom"
    ],
    "require_sig": true
@@ -2047,7 +2284,7 @@
     ]
    ],
    "third_branch_witnesses": [],
-   "rank_all_pairs": 186
+   "rank_all_pairs": 176
   },
   {
    "item_id": "pie-lex-egjh2|pie-root-kjlew-hear",
@@ -2058,7 +2295,7 @@
     ]
    ],
    "third_branch_witnesses": [],
-   "rank_all_pairs": 1524
+   "rank_all_pairs": 1448
   },
   {
    "item_id": "pie-lex-h1wesus|pie-root-deh3-give",
@@ -2069,7 +2306,7 @@
     ]
    ],
    "third_branch_witnesses": [],
-   "rank_all_pairs": 98
+   "rank_all_pairs": 95
   },
   {
    "item_id": "pie-lex-ish1ros|pie-root-men-think",
@@ -2080,7 +2317,7 @@
     ]
    ],
    "third_branch_witnesses": [],
-   "rank_all_pairs": 436
+   "rank_all_pairs": 408
   },
   {
    "item_id": "pie-lex-kwe|pie-lex-kwe-2",
@@ -2104,7 +2341,7 @@
    "third_branch_witnesses": [
     "Germanic"
    ],
-   "rank_all_pairs": 52
+   "rank_all_pairs": 50
   },
   {
    "item_id": "pie-lex-megjh2s|pie-root-kjlew-hear",
@@ -2117,7 +2354,7 @@
    "third_branch_witnesses": [
     "translation:Balto-Slavic"
    ],
-   "rank_all_pairs": 86
+   "rank_all_pairs": 83
   },
   {
    "item_id": "pie-lex-soh2wl|pie-root-deykj-point_out",
@@ -2130,7 +2367,7 @@
    "third_branch_witnesses": [
     "Italic"
    ],
-   "rank_all_pairs": 2065
+   "rank_all_pairs": 1965
   },
   {
    "item_id": "pie-lex-treyes|pie-root-peh2w-few",
@@ -2152,7 +2389,7 @@
     ]
    ],
    "third_branch_witnesses": [],
-   "rank_all_pairs": 68
+   "rank_all_pairs": 66
   },
   {
    "item_id": "pie-root-dheh1-do|pie-root-kjlew-hear",
@@ -2171,7 +2408,7 @@
     ]
    ],
    "third_branch_witnesses": [],
-   "rank_all_pairs": 216
+   "rank_all_pairs": 205
   },
   {
    "item_id": "pie-root-dhgwhey-decline|pie-root-kjlew-hear",
@@ -2217,7 +2454,7 @@
     ]
    ],
    "third_branch_witnesses": [],
-   "rank_all_pairs": 105
+   "rank_all_pairs": 101
   },
   {
    "item_id": "pie-root-gwhen-strike|pie-root-kjey-be_lying_down",
@@ -2259,7 +2496,7 @@
     ]
    ],
    "third_branch_witnesses": [],
-   "rank_all_pairs": 2237
+   "rank_all_pairs": 2118
   },
   {
    "item_id": "pie-root-gwhen-strike|pie-root-serp-creep",
@@ -2272,7 +2509,7 @@
    "third_branch_witnesses": [
     "Italic"
    ],
-   "rank_all_pairs": 2484
+   "rank_all_pairs": 2352
   },
   {
    "item_id": "pie-root-h1werH-broad|pie-root-kjlew-hear",
@@ -2283,7 +2520,7 @@
     ]
    ],
    "third_branch_witnesses": [],
-   "rank_all_pairs": 247
+   "rank_all_pairs": 233
   },
   {
    "item_id": "pie-root-h2ergj-white|pie-root-wes-dress",
@@ -2305,7 +2542,7 @@
     ]
    ],
    "third_branch_witnesses": [],
-   "rank_all_pairs": 869
+   "rank_all_pairs": 813
   },
   {
    "item_id": "pie-root-tetkj-create|pie-root-wekw-speak",
@@ -2320,39 +2557,59 @@
   }
  ],
  "shuffled_baseline": {
+  "top100_witness_stats": {
+   "a": {
+    "n": 100,
+    "with_2plus_witnesses_p05": 53,
+    "with_translation_witness": 53,
+    "weakest_witness_p_ge_0.5": 38
+   },
+   "b": {
+    "n": 100,
+    "with_2plus_witnesses_p05": 44,
+    "with_translation_witness": 42,
+    "weakest_witness_p_ge_0.5": 19
+   },
+   "c": {
+    "n": 100,
+    "with_2plus_witnesses_p05": 32,
+    "with_translation_witness": 0,
+    "weakest_witness_p_ge_0.5": 31
+   }
+  },
   "per_class": {
    "a": {
-    "real_n_pairs": 509,
-    "real_top100_cutoff_neglog10p": 4.14295701533864,
+    "real_n_pairs": 470,
+    "real_top100_cutoff_neglog10p": 3.773975481156506,
     "shuffled": [
      {
-      "n_pairs": 447,
+      "n_pairs": 411,
       "n_above_real_top100_cutoff": 1
      },
      {
-      "n_pairs": 401,
+      "n_pairs": 388,
       "n_above_real_top100_cutoff": 2
      },
      {
-      "n_pairs": 480,
-      "n_above_real_top100_cutoff": 2
+      "n_pairs": 477,
+      "n_above_real_top100_cutoff": 4
      }
     ]
    },
    "b": {
-    "real_n_pairs": 2847,
-    "real_top100_cutoff_neglog10p": 9.836408517752131,
+    "real_n_pairs": 2684,
+    "real_top100_cutoff_neglog10p": 9.64466632265801,
     "shuffled": [
      {
-      "n_pairs": 2668,
+      "n_pairs": 2554,
       "n_above_real_top100_cutoff": 1
      },
      {
-      "n_pairs": 2692,
+      "n_pairs": 2593,
       "n_above_real_top100_cutoff": 1
      },
      {
-      "n_pairs": 2678,
+      "n_pairs": 2618,
       "n_above_real_top100_cutoff": 1
      }
     ]
@@ -2362,15 +2619,15 @@
     "real_top100_cutoff_neglog10p": 7.087673197956865,
     "shuffled": [
      {
-      "n_pairs": 691,
+      "n_pairs": 697,
       "n_above_real_top100_cutoff": 0
      },
      {
-      "n_pairs": 749,
+      "n_pairs": 753,
       "n_above_real_top100_cutoff": 0
      },
      {
-      "n_pairs": 747,
+      "n_pairs": 752,
       "n_above_real_top100_cutoff": 0
      }
     ]

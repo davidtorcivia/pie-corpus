@@ -618,6 +618,13 @@ class R3:
         fs.apply_mapping(gnt, gm, True, "lexeme")
         self.gnt_pairs = fm.verse_pairs(gnt)
         self.applied = None
+        self.same_form = fm.homograph_pair_test(lex)
+        form = {e["id"]: fs.pie_key(e["form"]).strip("-") for e in lex}
+        # two pairs are homograph twins if each lexeme is the same entry or an entry of the same written form
+        # (with identical per-corpus counts) or the two pairs share a lexeme: one word mapped to two entries
+        self.homograph_twins = lambda p, q: bool(set(p) & set(q)) or all(
+            a == b or (form.get(a) and form.get(a) == form.get(b))
+            for a, b in zip(sorted(p, key=lambda x: form.get(x, x)), sorted(q, key=lambda x: form.get(x, x))))
         log(f"round 3 corpora and mappings in {time.time() - t:.0f}s: " +
             ", ".join(f"{c} {len(v)}" for c, v in self.tok.items()))
 
@@ -721,10 +728,11 @@ class R3:
 
 
 def r3_rank(r3: R3, corpora, level="lexeme", seed=None, require_sig=True, core_only=False,
-            branch_filter=None) -> list[dict]:
+            branch_filter=None, drop_homographs=True) -> list[dict]:
     cnt = r3.counts(corpora, level, seed)
     cal = r3.calques(level, seed) if any(c in corpora for c in ("got", "xcl", "cu")) else None
-    rows = fm.score_branches(cnt, SPECS3, cal, require_sig=require_sig)
+    rows = fm.score_branches(cnt, SPECS3, cal, require_sig=require_sig,
+                             same_form=r3.same_form if drop_homographs else None)
     if branch_filter:
         rows = [r for r in rows if branch_filter(r)]
     if core_only:     # re-score Greek + Indo-Iranian pairs on those two witnesses only
@@ -763,6 +771,10 @@ def r3_configs():
     return {
         "r2_final": None,   # round-2 final setting, its own code path
         "r3_rv_hom_only": dict(corpora=CORE_CORPORA, require_sig=True),
+        # diagnostics (descriptive, nothing is selected on them): which added core corpus moves the ranks
+        "diag_rv_hom_grp": dict(corpora=["rv", "hom", "grp"], require_sig=True),
+        "diag_rv_av_hom": dict(corpora=["rv", "av", "hom"], require_sig=True),
+        "diag_rv_ae_hom": dict(corpora=["rv", "ae", "hom"], require_sig=True),
         "r3_core_corpora_core_score": dict(corpora=["rv", "av", "ae", "hom", "grp"], require_sig=True, core_only=True),
         "r3_all_core_pairs": dict(corpora=ALL_R3, require_sig=True, branch_filter=has_core),
         "r3_all_core_score_only": dict(corpora=ALL_R3, require_sig=True, branch_filter=has_core, core_only=True),
@@ -796,7 +808,7 @@ def run_round3(env: Env) -> int:
         res[name]["minus_r2"] = {f"recall@{k}": fs.paired_bootstrap_diff(res[name]["ranks"], res["r2_final"]["ranks"], k)
                                  for k in KS}
     # regression: the N-branch code on rv + hom without the significance filter = round 2's ranking
-    reg = r3_rank(r3, CORE_CORPORA, require_sig=False)
+    reg = r3_rank(r3, CORE_CORPORA, require_sig=False, drop_homographs=False)
     g_reg, g_r2 = _group_rank(r3, reg)[:200], env.rank(final_cfg)[:200]
     regression = {"top200_identical": g_reg == g_r2, "top200_overlap": len(set(g_reg) & set(g_r2))}
     log(f"regression vs round 2: {regression}")
@@ -830,7 +842,14 @@ def run_round3(env: Env) -> int:
         core = [r for r in rows if has_core(r)]
         shuf_items.append(fs.recall_at(_ranks(_group_rank(r3, core), items), KS))
         log(f"shuffle seed {seed}: " + str({cl: shuf[cl][-1] for cl in "abc"}))
-    baseline = {"per_class": {cl: {"real_n_pairs": len(real[cl]), "real_top100_cutoff_neglog10p": cut[cl],
+    top_stats = {}
+    for cl in "abc":
+        t100 = real[cl][:100]
+        top_stats[cl] = {"n": len(t100),
+                         "with_2plus_witnesses_p05": sum(sum(w.logp < math.log(0.05) for w in r["witnesses"]) >= 2 for r in t100),
+                         "with_translation_witness": sum(any(w.translation_only for w in r["witnesses"]) for r in t100),
+                         "weakest_witness_p_ge_0.5": sum(max(w.logp for w in r["witnesses"]) >= math.log(0.5) for r in t100)}
+    baseline = {"top100_witness_stats": top_stats, "per_class": {cl: {"real_n_pairs": len(real[cl]), "real_top100_cutoff_neglog10p": cut[cl],
                                    "shuffled": shuf[cl]} for cl in "abc"},
                 "items_recall_r3_all_core_pairs_shuffled": {
                     f"recall@{k}": round(statistics.mean(x[f"recall@{k}"] for x in shuf_items), 3) for k in KS}}
@@ -887,12 +906,19 @@ def write_candidates_r3(r3: R3, real: dict, top_n: int = 100) -> dict:
     known = fs.known_pairs(env.formulas, env.lemmatizer("pseudo"), env.pie_idx)
     out = {}
     for cl, rows in real.items():
-        seen, top = set(), []
+        seen, sig, top, alts = set(), {}, [], collections.defaultdict(list)    # sig: counts → kept (pair, gp)
         for r in rows:
             gp = r3.project(r["pair"])
             if gp is None or gp in seen:
                 continue
             seen.add(gp)
+            # homograph duplicates: the same co-occurrences counted under another entry of one written form
+            key = tuple(sorted((c, n) for w in r["witnesses"] for c, n in w.corpora.items()))
+            twin = next((k for k in sig.get(key, []) if r3.homograph_twins(k[0], r["pair"])), None)
+            if twin:
+                alts[twin[1]].append(gp)
+                continue
+            sig.setdefault(key, []).append((r["pair"], gp))
             top.append((r, gp))
             if len(top) >= top_n:
                 break
@@ -916,9 +942,12 @@ def write_candidates_r3(r3: R3, real: dict, top_n: int = 100) -> dict:
             recs.append({"rank": i, "class": cl, "pair": [describe(env, p[0]), describe(env, p[1])],
                          "groups": [describe(env, g)["pie"] or g for g in gp],
                          "score_neglog10p": round(r["score"], 2),
+                         "weakest_witness_neglog10p": round(-max(w.logp for w in r["witnesses"]) / fs.LOG10, 2),
+                         "n_witnesses_p05": sum(w.logp < math.log(0.05) for w in r["witnesses"]),
                          "witnesses": [{"branch": w.branch, "n": w.n, "neglog10p": round(-w.logp / fs.LOG10, 2),
                                         "translation_only": w.translation_only} for w in r["witnesses"]],
                          "per_corpus": per, "mapping_paths": paths, "in_formulas_jsonl": gp in known,
+                         "homograph_alternatives": [[describe(env, g)["pie"] or g for g in a] for a in alts.get(gp, [])],
                          "status": "unreviewed"})
         out[cl] = recs
         (OUT / f"candidates-r3-{cl}.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in recs),

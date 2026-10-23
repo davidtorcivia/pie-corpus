@@ -1,0 +1,3813 @@
+{
+ "protocol": "30 mapped corpus-lemma types per corpus, drawn uniformly over types (random.Random(7).sample over the rows of mapping/<corpus>.jsonl in file order), judged by the round-3 agent: correct etymon included yes/no. Uniform over types is harsher than round 2 (token-weighted). Hittite: rows deduplicated by base lemma (homograph markers stripped) before sampling, because TLHdig lemmas carry gloss and homograph markers. Doubtful Wiktionary etymologies are counted as wrong.",
+ "mapping": {
+  "got": {
+   "n": 30,
+   "correct": 25,
+   "items": [
+    {
+     "lemma": "ga-sokjan",
+     "word": "𐌲𐌰𐍃𐍉𐌺𐌾𐌰𐌽",
+     "lex_id": [
+      "pie-root-seh2g-trace"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "bi-niman",
+     "word": "𐌱𐌹𐌽𐌹𐌼𐌰𐌽",
+     "lex_id": [
+      "pie-root-nem-bend",
+      "pie-root-nem-distribute"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "giutan",
+     "word": "𐌲𐌹𐌿𐍄𐌰𐌽",
+     "lex_id": [
+      "pie-root-gjhew-pour"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "slahan",
+     "word": "𐍃𐌻𐌰𐌷𐌰𐌽",
+     "lex_id": [
+      "kaikki:slek"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "aiƕatundi",
+     "word": "𐌰𐌹𐍈𐌰𐍄𐌿𐌽𐌳𐌹",
+     "lex_id": [
+      "pie-lex-h1ekjwos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "analageins",
+     "word": "𐌰𐌽𐌰𐌻𐌰𐌲𐌴𐌹𐌽𐍃",
+     "lex_id": [
+      "pie-root-legh-lie"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "waurstwa",
+     "word": "𐍅𐌰𐌿𐍂𐍃𐍄𐍅𐌰",
+     "lex_id": [
+      "pie-lex-wrgjyeti"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "manaseþs",
+     "word": "𐌼𐌰𐌽𐌰𐍃𐌴𐌸𐍃",
+     "lex_id": [
+      "pie-lex-seh1tis"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "arbaiþs",
+     "word": "𐌰𐍂𐌱𐌰𐌹𐌸𐍃",
+     "lex_id": [
+      "pie-lex-h3orbhos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "galaufs*",
+     "word": "𐌲𐌰𐌻𐌰𐌿𐍆𐍃",
+     "lex_id": [
+      "pie-root-lewbh-cut_off",
+      "pie-root-lewbh-desire"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "neƕ",
+     "word": "𐌽𐌴𐍈",
+     "lex_id": [
+      "pie-lex-nekwe"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": false,
+     "note": "nēƕ near ≠ *nékʷe"
+    },
+    {
+     "lemma": "allis",
+     "word": "𐌰𐌻𐌻𐌹𐍃",
+     "lex_id": [
+      "pie-lex-h2elnos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "laun",
+     "word": "𐌻𐌰𐌿𐌽",
+     "lex_id": [
+      "pie-lex-leh2unom",
+      "pie-lex-lh2ewnom",
+      "pie-lex-lowh2nom"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "fairzna",
+     "word": "𐍆𐌰𐌹𐍂𐌶𐌽𐌰",
+     "lex_id": [
+      "pie-lex-tpexrsneh2"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "aihts",
+     "word": "𐌰𐌹𐌷𐍄𐍃",
+     "lex_id": [
+      "pie-lex-h2eh2oykje"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "andanahti",
+     "word": "𐌰𐌽𐌳𐌰𐌽𐌰𐌷𐍄𐌹",
+     "lex_id": [
+      "pie-lex-nokwts"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "haurds",
+     "word": "𐌷𐌰𐌿𐍂𐌳𐍃",
+     "lex_id": [
+      "pie-root-kreh2-heap_up"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": false,
+     "note": "haurds door: *kert- (wickerwork), not *kreh₂-"
+    },
+    {
+     "lemma": "haiti",
+     "word": "𐌷𐌰𐌹𐍄𐌹",
+     "lex_id": [
+      "kaikki:koydtis"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "ana-wammjan",
+     "word": "𐌰𐌽𐌰𐍅𐌰𐌼𐌼𐌾𐌰𐌽",
+     "lex_id": [
+      "pie-lex-womh1nos"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "fitan",
+     "word": "𐍆𐌹𐍄𐌰𐌽",
+     "lex_id": [
+      "pie-lex-pedeti"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ans*",
+     "word": "-𐌰𐌽𐍃",
+     "lex_id": [
+      "kaikki:oms",
+      "kaikki:ones"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": false,
+     "note": "ans beam mapped to suffix *-oms"
+    },
+    {
+     "lemma": "miluks*",
+     "word": "𐌼𐌹𐌻𐌿𐌺𐍃",
+     "lex_id": [
+      "pie-root-h2melgj-milk"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "handugs",
+     "word": "𐌷𐌰𐌽𐌳𐌿𐌲𐍃",
+     "lex_id": [
+      "kaikki:ḱomt"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "alþeis",
+     "word": "𐌰𐌻𐌸𐌴𐌹𐍃",
+     "lex_id": [
+      "pie-lex-h2eltos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "weinabasi",
+     "word": "𐍅𐌴𐌹𐌽𐌰𐌱𐌰𐍃𐌹",
+     "lex_id": [
+      "pie-root-bheh2-shine",
+      "pie-root-bheh2-speak"
+     ],
+     "how": "desc",
+     "confidence": "low",
+     "correct": false,
+     "note": "basi berry ≠ *bʰeh₂-"
+    },
+    {
+     "lemma": "miþ-urreisan",
+     "word": "𐌼𐌹𐌸𐌿𐍂𐍂𐌴𐌹𐍃𐌰𐌽",
+     "lex_id": [
+      "pie-lex-h1reyh1seti"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "aþþan",
+     "word": "𐌰𐌸(𐌸𐌰𐌽)",
+     "lex_id": [
+      "pie-root-h2et-but"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "faura-galeikan",
+     "word": "𐍆𐌰𐌿𐍂𐌰𐌲𐌰𐌻𐌴𐌹𐌺𐌰𐌽",
+     "lex_id": [
+      "pie-root-leyg-illness",
+      "pie-root-leyg-jump_around",
+      "pie-root-leyg-similar"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "sidus",
+     "word": "𐍃𐌹𐌳𐌿𐍃",
+     "lex_id": [
+      "pie-lex-sh2eytus"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": false,
+     "note": "sidus: *sh₂eytus doubtful"
+    },
+    {
+     "lemma": "seiteins",
+     "word": "𐍃𐌴𐌹𐍄𐌴𐌹𐌽𐍃",
+     "lex_id": [
+      "pie-root-sem-one"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    }
+   ]
+  },
+  "xcl": {
+   "n": 30,
+   "correct": 20,
+   "items": [
+    {
+     "lemma": "jer",
+     "word": "jer",
+     "lex_id": [
+      "pie-lex-yuHs"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "cag",
+     "word": "ծագ",
+     "lex_id": [
+      "kaikki:ǵogʰ"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "mard",
+     "word": "մարդ",
+     "lex_id": [
+      "pie-lex-mrtos",
+      "pie-lex-smrtos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "arew",
+     "word": "արև",
+     "lex_id": [
+      "pie-lex-h2rewis"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "astł",
+     "word": "աստղ",
+     "lex_id": [
+      "pie-lex-h2stexr"
+     ],
+     "how": "chain",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "tʻałem",
+     "word": "թաղեմ",
+     "lex_id": [
+      "pie-root-telh2-bear",
+      "pie-root-telh2-ground"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": false,
+     "note": "tʻałem bury ≠ *telh₂-"
+    },
+    {
+     "lemma": "ayl",
+     "word": "այլ",
+     "lex_id": [
+      "pie-lex-h2elyos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "lezow",
+     "word": "լեզու",
+     "lex_id": [
+      "pie-lex-dngjhweh2s"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ǰnǰem",
+     "word": "ջնջեմ",
+     "lex_id": [
+      "pie-lex-gwhenyeti"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "artewan",
+     "word": "արտևան",
+     "lex_id": [
+      "kaikki:drepaneh₂"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": false,
+     "note": "artewan: speculative"
+    },
+    {
+     "lemma": "stanam",
+     "word": "ստանամ",
+     "lex_id": [
+      "pie-lex-stneh2ti"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ewtʻanasown",
+     "word": "ևթանասուն",
+     "lex_id": [
+      "pie-lex-septmdkjomth2"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "aracem",
+     "word": "արածեմ",
+     "lex_id": [
+      "kaikki:treh₂ǵ"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": false,
+     "note": "aracem graze ≠ *treh₂ǵ-"
+    },
+    {
+     "lemma": "awłi",
+     "word": "awłi",
+     "lex_id": [
+      "pie-lex-h2elut"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "neł",
+     "word": "նեղ",
+     "lex_id": [
+      "pie-lex-ner"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": false,
+     "note": "neł narrow: speculative"
+    },
+    {
+     "lemma": "minčʻ",
+     "word": "մինչ",
+     "lex_id": [
+      "kaikki:smĕ"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": false,
+     "note": "minčʻ ≠ *-smē"
+    },
+    {
+     "lemma": "asem",
+     "word": "asem",
+     "lex_id": [
+      "pie-root-h1egj-say"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "glowx",
+     "word": "գլուխ",
+     "lex_id": [
+      "pie-root-gelH-naked"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": false,
+     "note": "glowx head ≠ *gelH-"
+    },
+    {
+     "lemma": "ayg",
+     "word": "*ayg",
+     "lex_id": [
+      "pie-lex-h2ewsoxs",
+      "pie-root-h1eyHw-yew"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "xeł",
+     "word": "խեղ",
+     "lex_id": [
+      "kaikki:khel"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "mor̄anam",
+     "word": "moṙanam",
+     "lex_id": [
+      "pie-root-mers-forget"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ar̄agast",
+     "word": "aṙa-gast",
+     "lex_id": [
+      "pie-root-wes-dress"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": false,
+     "note": "aṙagast ≠ *wes-"
+    },
+    {
+     "lemma": "zgenowm",
+     "word": "զգենում",
+     "lex_id": [
+      "pie-lex-wesnewti"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ban",
+     "word": "ban",
+     "lex_id": [
+      "pie-lex-bheh2nis"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "gar̄n",
+     "word": "գառն",
+     "lex_id": [
+      "pie-lex-wrh1exn"
+     ],
+     "how": "chain",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "ar̄astał",
+     "word": "aṙastał",
+     "lex_id": [
+      "pie-root-stel-put"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": false,
+     "note": "aṙastał ≠ *stel-"
+    },
+    {
+     "lemma": "šiwł",
+     "word": "շիւղ",
+     "lex_id": [
+      "kaikki:ḱweh₁tlo"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": false,
+     "note": "šiwł: speculative"
+    },
+    {
+     "lemma": "ǰowr",
+     "word": "ջուր",
+     "lex_id": [
+      "kaikki:yuhr"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "marmin",
+     "word": "մարմին",
+     "lex_id": [
+      "kaikki:mr̥meno"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "argand",
+     "word": "արգանդ",
+     "lex_id": [
+      "kaikki:arkʷ"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": false,
+     "note": "argand ≠ *arkʷ-"
+    }
+   ]
+  },
+  "cu": {
+   "n": 30,
+   "correct": 25,
+   "items": [
+    {
+     "lemma": "осмъ",
+     "word": "осмъ",
+     "lex_id": [
+      "pie-lex-okjtoxwos"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "дѣва",
+     "word": "дѣва",
+     "lex_id": [
+      "pie-root-dheh1y-suckle"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "противъ",
+     "word": "противъ",
+     "lex_id": [
+      "pie-lex-proti"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "видѣти",
+     "word": "видѣти",
+     "lex_id": [
+      "pie-root-weyd-see"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "възварити",
+     "word": "възварити",
+     "lex_id": [
+      "pie-lex-woxr"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "тлѣщи",
+     "word": "тлѣщи",
+     "lex_id": [
+      "pie-lex-telketi"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "вꙑти",
+     "word": "вꙑти",
+     "lex_id": [
+      "pie-root-h2ewH-put_on"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": false,
+     "note": "вꙑти howl ≠ *h₂ewH- put on"
+    },
+    {
+     "lemma": "повѣдь",
+     "word": "повѣдь",
+     "lex_id": [
+      "pie-lex-woyde"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "чѧстъ",
+     "word": "чѧстъ",
+     "lex_id": [
+      "kaikki:kmḱto"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "водьнъ",
+     "word": "водьнъ",
+     "lex_id": [
+      "pie-lex-wodr"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "съниѥ",
+     "word": "съниѥ",
+     "lex_id": [
+      "pie-lex-supniyom"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "коли",
+     "word": "коли",
+     "lex_id": [
+      "pie-lex-kwos-2"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "бꙑти",
+     "word": "бꙑти",
+     "lex_id": [
+      "pie-lex-h1esti"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": false,
+     "note": "бꙑти mapped to *h₁es- (suppletive page), not *bʰuH-"
+    },
+    {
+     "lemma": "вѣиѥ",
+     "word": "вѣиѥ",
+     "lex_id": [
+      "pie-lex-woh1yeh2"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "рѧдъ",
+     "word": "рѧдъ",
+     "lex_id": [
+      "pie-root-h2rey-count"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": false,
+     "note": "рѧдъ: doubtful"
+    },
+    {
+     "lemma": "рамо",
+     "word": "рамо",
+     "lex_id": [
+      "pie-lex-h2erHmos",
+      "pie-lex-h2rHmos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "въвлѣщи",
+     "word": "въвлѣщи",
+     "lex_id": [
+      "pie-root-selk-drag"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": false,
+     "note": "въвлѣщи: *welk-, not *selk-"
+    },
+    {
+     "lemma": "ловъ",
+     "word": "ловъ",
+     "lex_id": [
+      "pie-lex-lh2ewos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "вѣтръ",
+     "word": "вѣтръ",
+     "lex_id": [
+      "pie-lex-h2weh1tro"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "тъщета",
+     "word": "тъщета",
+     "lex_id": [
+      "pie-lex-tusskjyos"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "ристати",
+     "word": "ристати",
+     "lex_id": [
+      "pie-root-h1rey-rise"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "воинъ",
+     "word": "воинъ",
+     "lex_id": [
+      "pie-lex-woyh1os"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "хрьбьтъ",
+     "word": "хрьбьтъ",
+     "lex_id": [
+      "pie-lex-skreybh"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "датель",
+     "word": "датель",
+     "lex_id": [
+      "pie-lex-de"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": false,
+     "note": "датель from дати, not *de"
+    },
+    {
+     "lemma": "краи",
+     "word": "краи",
+     "lex_id": [
+      "pie-root-krey-sift"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "вранъ",
+     "word": "вранъ",
+     "lex_id": [
+      "pie-lex-worno"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "чрьнило",
+     "word": "чрьнило",
+     "lex_id": [
+      "pie-lex-krsnos"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "шоуи",
+     "word": "шоуи",
+     "lex_id": [
+      "pie-lex-sewyos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "прьси",
+     "word": "прьси",
+     "lex_id": [
+      "pie-lex-perkjus"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "виноградъ",
+     "word": "виноградъ",
+     "lex_id": [
+      "pie-root-gherdh-enclose"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": true
+    }
+   ]
+  },
+  "hit": {
+   "n": 30,
+   "correct": 27,
+   "items": [
+    {
+     "lemma": "mili=t-@Honig",
+     "word": "militt- / malitt-",
+     "lex_id": [
+      "pie-lex-melit"
+     ],
+     "how": "kloekhorst",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "gen=u-@Knie",
+     "word": "𒄀𒉡",
+     "lex_id": [
+      "pie-lex-gjonu"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "paḫš=@beschützen",
+     "word": "𒉺𒄴𒊭𒊑",
+     "lex_id": [
+      "pie-lex-peh2sti"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "Ⓐ šupp=a-@schlafen",
+     "word": "𒋗𒌒𒉺𒊑",
+     "lex_id": [
+      "pie-lex-swept"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "appa@wieder",
+     "word": "𒀀𒀊𒉺",
+     "lex_id": [
+      "pie-lex-h2epo"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "att=a-@Vater",
+     "word": "𒀜𒋫𒀸",
+     "lex_id": [
+      "pie-lex-atta"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "utt=ar@Wort",
+     "word": "ut-tar",
+     "lex_id": [
+      "pie-lex-weth2r"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ašš=u-@Gut",
+     "word": "𒀀𒀸𒋗𒍑",
+     "lex_id": [
+      "kaikki:h₁su"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "padd=a-@graben",
+     "word": "padda-i / padd-",
+     "lex_id": [
+      "pie-lex-bhodhh2ey"
+     ],
+     "how": "kloekhorst",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "zaḫar=i-@Zaḫari",
+     "word": "z\u0002-a(ri) / z-",
+     "lex_id": [
+      "pie-lex-tyeh1o"
+     ],
+     "how": "kloekhorst",
+     "confidence": "medium",
+     "correct": false,
+     "note": "zaḫari- (name) → *tyeh₁- via damaged EDHIL match"
+    },
+    {
+     "lemma": "ar=@stehen",
+     "word": "𒅈𒋫𒊑",
+     "lex_id": [
+      "pie-lex-h3rto"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "tek=an-/tag=n-@Erde",
+     "word": "𒋼𒂊𒃷",
+     "lex_id": [
+      "pie-lex-dhegjhoxm"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ker-/kard-@Herz",
+     "word": "𒆠𒅕",
+     "lex_id": [
+      "pie-lex-kjexr"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "antuwaḫḫ=a/i-@Mensch",
+     "word": "𒀭𒌅𒉿𒄴𒄩𒀸",
+     "lex_id": [
+      "kaikki:h₁n̥dʰweh₂os"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "att=ai-@Vater",
+     "word": "𒀜𒋫𒀸",
+     "lex_id": [
+      "pie-lex-atta"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "pidd=a-@laufen",
+     "word": "𒁁𒁕𒀀𒄿",
+     "lex_id": [
+      "kaikki:pth₁oyey"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "peran@vor",
+     "word": "𒁉𒂊𒊏𒀭",
+     "lex_id": [
+      "pie-lex-pero"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "arku=@bitten",
+     "word": "\u0004rku-zi / arku-",
+     "lex_id": [
+      "pie-root-h1erkw-praise"
+     ],
+     "how": "kloekhorst",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "kuen-/kun-@schlagen",
+     "word": "𒆪𒂗𒍣",
+     "lex_id": [
+      "pie-lex-gwhenti"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ḫark=i-@weiß",
+     "word": "ḫarkiš",
+     "lex_id": [
+      "pie-lex-h2ergjis"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "wak=@(ab)beißen",
+     "word": "𒉿𒀀𒆠",
+     "lex_id": [
+      "kaikki:uh₂genti"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "peran@vor-",
+     "word": "𒁉𒂊𒊏𒀭",
+     "lex_id": [
+      "pie-lex-pero"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ḫašte=r-@Stern",
+     "word": "\u0002ašter(a)-",
+     "lex_id": [
+      "pie-lex-h2stexr"
+     ],
+     "how": "kloekhorst",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "walaḫḫ=@schlagen",
+     "word": "𒉿𒀠𒄴𒍣",
+     "lex_id": [
+      "pie-lex-welh3ti"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "dašš=u-@stark",
+     "word": "daššu- / dašša\u0006-",
+     "lex_id": [
+      "pie-lex-de"
+     ],
+     "how": "kloekhorst",
+     "confidence": "medium",
+     "correct": false,
+     "note": "daššu- strong → *de (damaged EDHIL PIE line)"
+    },
+    {
+     "lemma": "keššar@Hand",
+     "word": "𒆠𒌍𒊬",
+     "lex_id": [
+      "pie-lex-gjhesoxr"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ḫašter=a-@Ḫaštera",
+     "word": "\u0002ašter(a)-",
+     "lex_id": [
+      "pie-lex-h2stexr"
+     ],
+     "how": "kloekhorst",
+     "confidence": "medium",
+     "correct": false,
+     "note": "divine name Ḫaštera → *h₂stḗr"
+    },
+    {
+     "lemma": "šupp=@schlafen",
+     "word": "𒋗𒌒𒉺𒊑",
+     "lex_id": [
+      "pie-lex-swept"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "wātar@Wasser",
+     "word": "𒉿𒀀𒋻",
+     "lex_id": [
+      "pie-lex-wodr"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "šall=i-@groß",
+     "word": "šal-li-iš",
+     "lex_id": [
+      "pie-lex-solh2is"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    }
+   ]
+  },
+  "av": {
+   "n": 30,
+   "correct": 23,
+   "items": [
+    {
+     "lemma": "kṛttikā",
+     "word": "kṛttikā",
+     "lex_id": [
+      "pie-lex-skert",
+      "pie-root-skert-cut"
+     ],
+     "how": "kaikki-chain",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "dasyu",
+     "word": "dásyu-",
+     "lex_id": [
+      "pie-root-des-find"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": false,
+     "note": "dásyu-: no secure etymon"
+    },
+    {
+     "lemma": "nind",
+     "word": "nind",
+     "lex_id": [
+      "pie-lex-h3ninedti",
+      "pie-root-h3neyd-revile"
+     ],
+     "how": "kaikki",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "ukhā",
+     "word": "ukhā́-",
+     "lex_id": [
+      "kaikki:aukw"
+     ],
+     "how": "rv-lemma",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "api",
+     "word": "ápi",
+     "lex_id": [
+      "pie-lex-h1epi"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "avasa",
+     "word": "avasá-",
+     "lex_id": [
+      "pie-root-h2ew-enjoy",
+      "pie-root-h2ew-perceive"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "śṛ",
+     "word": "√śr̥-",
+     "lex_id": [
+      "pie-lex-kjlnewti"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": false,
+     "note": "śṛ crush mapped to *ḱlew- (round-2 RV mapping)"
+    },
+    {
+     "lemma": "saptati",
+     "word": "saptatí-",
+     "lex_id": [
+      "kaikki:septm̥dḱomt"
+     ],
+     "how": "rv-lemma",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "badhira",
+     "word": "badhirá-",
+     "lex_id": [
+      "kaikki:bʰodʰhros"
+     ],
+     "how": "rv-lemma",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "muc",
+     "word": "√muc-",
+     "lex_id": [
+      "pie-root-smewk-let_loose"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "svap",
+     "word": "√svap-",
+     "lex_id": [
+      "pie-lex-swopeyeti",
+      "pie-root-swep-sleep"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "aritra",
+     "word": "arítra-",
+     "lex_id": [
+      "pie-lex-h1erh1tlom"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ruc",
+     "word": "√ruc-",
+     "lex_id": [
+      "pie-lex-lewks",
+      "pie-lex-lowkeyeti",
+      "pie-root-lewk-bright"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ghātin",
+     "word": "ghātin",
+     "lex_id": [
+      "pie-lex-gwhntos"
+     ],
+     "how": "kaikki-chain",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "andha",
+     "word": "andhá-",
+     "lex_id": [
+      "pie-lex-h2endhos"
+     ],
+     "how": "rv-lemma",
+     "confidence": "medium",
+     "correct": false,
+     "note": "andhá- blind ≠ *h₂éndʰos bloom"
+    },
+    {
+     "lemma": "aśīti",
+     "word": "aśītí-",
+     "lex_id": [
+      "pie-root-kjey-be_lying_down"
+     ],
+     "how": "rv-lemma",
+     "confidence": "medium",
+     "correct": false,
+     "note": "aśīti eighty ≠ *ḱey- (privative rule)"
+    },
+    {
+     "lemma": "pitrya",
+     "word": "pítrya-",
+     "lex_id": [
+      "kaikki:ph₂trihos"
+     ],
+     "how": "rv-lemma",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "pariṇī",
+     "word": "pariṇī",
+     "lex_id": [
+      "pie-root-neyH-lead"
+     ],
+     "how": "kaikki-root",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "av",
+     "word": "√avⁱ-",
+     "lex_id": [
+      "pie-root-h1ewH-help",
+      "pie-root-h2ew-enjoy",
+      "pie-root-h2ew-perceive"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "haṃsa",
+     "word": "haṃsá-",
+     "lex_id": [
+      "pie-lex-gjhh2ens"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "aṇu",
+     "word": "aṇu",
+     "lex_id": [
+      "pie-root-h2elh1-grind"
+     ],
+     "how": "kaikki",
+     "confidence": "medium",
+     "correct": false,
+     "note": "aṇu: doubtful"
+    },
+    {
+     "lemma": "sidh",
+     "word": "√sādh- ~ sidh-",
+     "lex_id": [
+      "pie-root-seHdh-reach_the_goal"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "patnī",
+     "word": "pátnī-",
+     "lex_id": [
+      "pie-lex-potnih2"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "arma",
+     "word": "arma",
+     "lex_id": [
+      "pie-lex-h2elmos"
+     ],
+     "how": "kaikki",
+     "confidence": "medium",
+     "correct": false,
+     "note": "arma: doubtful"
+    },
+    {
+     "lemma": "ṛdh",
+     "word": "√r̥dh-",
+     "lex_id": [
+      "pie-lex-h2eldh",
+      "pie-root-h2eldh-attain_successfully"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "starī",
+     "word": "starī́-",
+     "lex_id": [
+      "pie-lex-sterih2s"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "brū",
+     "word": "√brū-",
+     "lex_id": [
+      "pie-root-mlewH-say"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "grāvan",
+     "word": "grā́van-",
+     "lex_id": [
+      "pie-lex-gwreh2wox"
+     ],
+     "how": "rv-lemma",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "tuś",
+     "word": "√tuś-",
+     "lex_id": [
+      "pie-root-teh2-melt"
+     ],
+     "how": "rv-lemma",
+     "confidence": "medium",
+     "correct": false,
+     "note": "tuś ≠ *teh₂- melt"
+    },
+    {
+     "lemma": "tsārin",
+     "word": "tsārín-",
+     "lex_id": [
+      "kaikki:tsel"
+     ],
+     "how": "rv-lemma",
+     "confidence": "medium",
+     "correct": true
+    }
+   ]
+  },
+  "grp": {
+   "n": 30,
+   "correct": 29,
+   "items": [
+    {
+     "lemma": "χρηστός",
+     "word": "χρηστός",
+     "lex_id": [
+      "pie-root-gher-rub",
+      "pie-root-gher-yearn_for"
+     ],
+     "how": "kaikki",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "λευκαίνω",
+     "word": "λευκαίνω",
+     "lex_id": [
+      "pie-root-lewk-bright"
+     ],
+     "how": "kaikki-chain",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "ἄνιπτος",
+     "word": "ἄνιπτος",
+     "lex_id": [
+      "pie-lex-nigwtos"
+     ],
+     "how": "direct",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "γεννάω",
+     "word": "γεννάω",
+     "lex_id": [
+      "pie-root-gjenh1-produce"
+     ],
+     "how": "kaikki-chain",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "δοκιμάζω",
+     "word": "δοκιμάζω",
+     "lex_id": [
+      "pie-root-dekj-take"
+     ],
+     "how": "kaikki-chain",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "ζεῦγμα",
+     "word": "ζεῦγμα",
+     "lex_id": [
+      "pie-root-yewg-join"
+     ],
+     "how": "kaikki-root",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "ἀποκτείνω",
+     "word": "ἀποκτείνω",
+     "lex_id": [
+      "pie-root-tkjen-deal_a_blow"
+     ],
+     "how": "kaikki-chain",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "δίεμαι",
+     "word": "δίεμαι",
+     "lex_id": [
+      "pie-lex-deyh1ti"
+     ],
+     "how": "direct",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "ὑμέναιος",
+     "word": "ὑμέναιος",
+     "lex_id": [
+      "pie-root-syewH-sew"
+     ],
+     "how": "kaikki-chain",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "περιφέρω",
+     "word": "περιφέρω",
+     "lex_id": [
+      "pie-lex-bhereti"
+     ],
+     "how": "kaikki-chain",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "βιβρώσκω",
+     "word": "βιβρώσκω",
+     "lex_id": [
+      "pie-root-gwerh3-swallow"
+     ],
+     "how": "kaikki-root",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "εὐθύς",
+     "word": "εὐθύς",
+     "lex_id": [
+      "pie-lex-Hyewdhus"
+     ],
+     "how": "direct",
+     "confidence": "medium",
+     "correct": false,
+     "note": "εὐθύς: no accepted etymon"
+    },
+    {
+     "lemma": "ἐξερέω",
+     "word": "ἐξερέω",
+     "lex_id": [
+      "pie-root-werh1-speak",
+      "pie-root-wreh1-find"
+     ],
+     "how": "kaikki-root",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "ἐγγράφω",
+     "word": "ἐγγράφω",
+     "lex_id": [
+      "pie-root-gerbh-carve"
+     ],
+     "how": "kaikki-root",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "διαφορά",
+     "word": "διαφορά",
+     "lex_id": [
+      "pie-lex-bhereti"
+     ],
+     "how": "kaikki-chain",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "πρᾶος",
+     "word": "πρᾶος",
+     "lex_id": [
+      "kaikki:preh₂iw"
+     ],
+     "how": "kaikki-pseudo",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "εὔσκιος",
+     "word": "εὔσκιος",
+     "lex_id": [
+      "pie-lex-skjeh3ih2"
+     ],
+     "how": "kaikki-chain",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "ἐκχέω",
+     "word": "ἐκχέω",
+     "lex_id": [
+      "pie-lex-gjheweti"
+     ],
+     "how": "kaikki-chain",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "δίω",
+     "word": "δίω",
+     "lex_id": [
+      "pie-root-deyh1-chase"
+     ],
+     "how": "kaikki",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "κεῖνος",
+     "word": "κεῖνος",
+     "lex_id": [
+      "pie-lex-kjis"
+     ],
+     "how": "direct",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "πλῆκτρον",
+     "word": "πλῆκτρον",
+     "lex_id": [
+      "pie-lex-pleh2kyeti"
+     ],
+     "how": "kaikki-chain",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "δεινός",
+     "word": "δεινός",
+     "lex_id": [
+      "pie-lex-dweynos"
+     ],
+     "how": "kaikki",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "ἄπειμι",
+     "word": "ἄπειμι",
+     "lex_id": [
+      "pie-lex-h1esmi",
+      "pie-lex-h1eyti"
+     ],
+     "how": "kaikki-chain",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "γλυκύς",
+     "word": "γλυκύς",
+     "lex_id": [
+      "pie-lex-dlewkus"
+     ],
+     "how": "kaikki-proto",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "πλεκτός",
+     "word": "πλεκτός",
+     "lex_id": [
+      "pie-root-plekj-fold"
+     ],
+     "how": "kaikki-root",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "γαμβρός",
+     "word": "γαμβρός",
+     "lex_id": [
+      "pie-root-gjem-marry"
+     ],
+     "how": "kaikki",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "κρήνη",
+     "word": "κρήνη",
+     "lex_id": [
+      "pie-lex-krsneh2"
+     ],
+     "how": "kaikki",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "τεσσαράκοντα",
+     "word": "τεσσαράκοντα",
+     "lex_id": [
+      "pie-lex-kwetwrdkjomth2"
+     ],
+     "how": "direct",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "ἐγκονέω",
+     "word": "ἐγκονέω",
+     "lex_id": [
+      "pie-root-ken-arise"
+     ],
+     "how": "direct",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "λάθρῃ",
+     "word": "λάθρῃ",
+     "lex_id": [
+      "pie-root-leh2-bark",
+      "pie-root-leh2-be_concealed",
+      "pie-root-leh2-hide_oneself"
+     ],
+     "how": "kaikki",
+     "confidence": "medium",
+     "correct": true
+    }
+   ]
+  },
+  "non": {
+   "n": 30,
+   "correct": 27,
+   "items": [
+    {
+     "lemma": "herjann",
+     "word": "Herjann",
+     "lex_id": [
+      "pie-lex-kjerh2"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": false,
+     "note": "Herjann (< herr) ≠ *ḱer-"
+    },
+    {
+     "lemma": "eir",
+     "word": "eir",
+     "lex_id": [
+      "pie-lex-h2eyos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "höll|hóll",
+     "word": "hǫll",
+     "lex_id": [
+      "pie-lex-kjelneh2",
+      "pie-root-kjel-cover"
+     ],
+     "how": "chain",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "skamt",
+     "word": "skamt",
+     "lex_id": [
+      "kaikki:sḱem"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "barr",
+     "word": "barr",
+     "lex_id": [
+      "pie-lex-bhars",
+      "pie-lex-bhors"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "bjóða",
+     "word": "bjóða",
+     "lex_id": [
+      "pie-lex-bhewdheti"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "villr",
+     "word": "villr",
+     "lex_id": [
+      "kaikki:weltyos"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "munu",
+     "word": "munu",
+     "lex_id": [
+      "pie-lex-memone"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "bráðr",
+     "word": "bráðr",
+     "lex_id": [
+      "pie-root-bhrewh1-boil"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "hróðr",
+     "word": "hróðr",
+     "lex_id": [
+      "kaikki:kreh",
+      "kaikki:krehtro"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "r",
+     "word": "-r",
+     "lex_id": [
+      "pie-lex-is-2"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": false,
+     "note": "ending -r mapped to *ís"
+    },
+    {
+     "lemma": "bera",
+     "word": "bera",
+     "lex_id": [
+      "pie-lex-bhereti"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "þekja",
+     "word": "þekja",
+     "lex_id": [
+      "pie-lex-stogo"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "mara",
+     "word": "mara",
+     "lex_id": [
+      "pie-lex-moro"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "frost",
+     "word": "frost",
+     "lex_id": [
+      "pie-lex-prustos"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "aðal",
+     "word": "aðal",
+     "lex_id": [
+      "kaikki:h₂etolo"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "brauð",
+     "word": "brauð",
+     "lex_id": [
+      "pie-lex-bhrowh1to"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "kundr",
+     "word": "-kundr",
+     "lex_id": [
+      "pie-lex-gjnh1tos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "keyra",
+     "word": "keyra",
+     "lex_id": [
+      "kaikki:ger"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "biðja",
+     "word": "biðja",
+     "lex_id": [
+      "pie-lex-gwhedhyeti"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "gamall",
+     "word": "gamall",
+     "lex_id": [
+      "pie-lex-h2eltos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": false,
+     "note": "gamall ≠ *h₂eltós"
+    },
+    {
+     "lemma": "brotinn",
+     "word": "brotinn",
+     "lex_id": [
+      "kaikki:bʰrewd"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "nagl",
+     "word": "nagl",
+     "lex_id": [
+      "pie-lex-h3noxghs"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "kné",
+     "word": "kné",
+     "lex_id": [
+      "pie-lex-gjonu"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "bergja",
+     "word": "bergja",
+     "lex_id": [
+      "kaikki:bʰergʷ"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "vissa|vita",
+     "word": "vissa|vita",
+     "lex_id": [
+      "pie-lex-widtos",
+      "pie-lex-woyde"
+     ],
+     "how": "chain",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "níundi",
+     "word": "níundi",
+     "lex_id": [
+      "kaikki:h₁newn̥nos"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "drasill",
+     "word": "drasill",
+     "lex_id": [
+      "pie-lex-dhers"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "fylgja",
+     "word": "fylgja",
+     "lex_id": [
+      "pie-lex-pelk"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "segl",
+     "word": "segl",
+     "lex_id": [
+      "kaikki:segʰ"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": true
+    }
+   ]
+  },
+  "ang": {
+   "n": 30,
+   "correct": 26,
+   "items": [
+    {
+     "lemma": "geriman|gerīman|riman",
+     "word": "geriman|geriman|riman",
+     "lex_id": [
+      "pie-lex-h2rey"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "dæd|dǣd",
+     "word": "dæd|dæd",
+     "lex_id": [
+      "pie-lex-dheh1tis"
+     ],
+     "how": "chain",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "heafod",
+     "word": "heafod",
+     "lex_id": [
+      "pie-lex-kaput"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "secg|gārsecg",
+     "word": "secg",
+     "lex_id": [
+      "pie-lex-sokwh2oxy"
+     ],
+     "how": "chain",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "beorn",
+     "word": "beorn",
+     "lex_id": [
+      "pie-root-bherH-brown",
+      "pie-root-bherH-pierce"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "bord|borda|borde",
+     "word": "bord",
+     "lex_id": [
+      "pie-root-bherdh-plunder"
+     ],
+     "how": "desc",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "wrīdan",
+     "word": "wridan",
+     "lex_id": [
+      "pie-root-wreyt-twist"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": false,
+     "note": "wrīdan grow: doubtful"
+    },
+    {
+     "lemma": "middangeard",
+     "word": "middangeard",
+     "lex_id": [
+      "pie-lex-medhyos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "bēam|beam",
+     "word": "bēam",
+     "lex_id": [
+      "pie-root-bhuH-be"
+     ],
+     "how": "desc",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "godcund",
+     "word": "godcund",
+     "lex_id": [
+      "pie-lex-gjhutos",
+      "pie-root-ghedh-join"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "on",
+     "word": "on-",
+     "lex_id": [
+      "pie-lex-h2en"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "biernan|byrnan",
+     "word": "biernan|byrnan",
+     "lex_id": [
+      "pie-lex-bhrenw",
+      "pie-lex-gwhrnewti"
+     ],
+     "how": "chain",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "lēanian|leanian",
+     "word": "leanian|leanian",
+     "lex_id": [
+      "kaikki:lok",
+      "pie-lex-leh2unom",
+      "pie-lex-lh2ewnom",
+      "pie-lex-lowh2nom"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "flōd|flod",
+     "word": "flod|flod",
+     "lex_id": [
+      "pie-lex-pleh3tus"
+     ],
+     "how": "chain",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "begyrdan",
+     "word": "begyrdan",
+     "lex_id": [
+      "pie-lex-ghrdhyeti"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "byge|bīegan",
+     "word": "byġe|bīeġan",
+     "lex_id": [
+      "pie-lex-bhowgheyeti",
+      "pie-root-bhewgh-bend"
+     ],
+     "how": "desc",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "hrōf",
+     "word": "hrōf",
+     "lex_id": [
+      "kaikki:krapo"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "hlēor",
+     "word": "hleor",
+     "lex_id": [
+      "pie-lex-kjlews"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "bodian",
+     "word": "bodian",
+     "lex_id": [
+      "pie-root-bhewdh-be_awake"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "frēcne|frecne|frēcn",
+     "word": "frēcne|frecne|frecn",
+     "lex_id": [
+      "pie-root-preg-yearn"
+     ],
+     "how": "desc",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "bæþ",
+     "word": "bæþ",
+     "lex_id": [
+      "pie-lex-bhh1tos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "mære|mǣre",
+     "word": "mære|mære",
+     "lex_id": [
+      "pie-lex-moyryom"
+     ],
+     "how": "chain",
+     "confidence": "low",
+     "correct": false,
+     "note": "mǣre famous got (ge)mǣre border"
+    },
+    {
+     "lemma": "horsc",
+     "word": "horsc",
+     "lex_id": [
+      "pie-lex-kjrskos",
+      "pie-lex-krets"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "bile",
+     "word": "bile-",
+     "lex_id": [
+      "pie-lex-bhilos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "wylfen",
+     "word": "wylfen",
+     "lex_id": [
+      "pie-lex-wlkwos"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "nian|nytan|nitan",
+     "word": "-nian",
+     "lex_id": [
+      "pie-root-neh2-become_afraid",
+      "pie-root-sneh2-swim"
+     ],
+     "how": "desc",
+     "confidence": "low",
+     "correct": false,
+     "note": "suffix -nian"
+    },
+    {
+     "lemma": "cynebearn",
+     "word": "cynebearn",
+     "lex_id": [
+      "pie-lex-bhornom"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "forgripan",
+     "word": "forgripan",
+     "lex_id": [
+      "kaikki:gʰreyb"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "scelfan",
+     "word": "scelfan",
+     "lex_id": [
+      "pie-root-skelH-cut"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": false,
+     "note": "scelfan: doubtful"
+    },
+    {
+     "lemma": "sceaf",
+     "word": "sceaf",
+     "lex_id": [
+      "pie-root-kewp-tremble"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": true
+    }
+   ]
+  },
+  "lv": {
+   "n": 30,
+   "correct": 21,
+   "items": [
+    {
+     "lemma": "pāriet",
+     "word": "pāriet",
+     "lex_id": [
+      "pie-lex-h1eyti"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "ilgs",
+     "word": "ilgs",
+     "lex_id": [
+      "pie-lex-dlh1ghos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "staigat|staigāt",
+     "word": "staigāt|staigāt",
+     "lex_id": [
+      "pie-lex-stoyghos"
+     ],
+     "how": "chain",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "bēda",
+     "word": "bēda",
+     "lex_id": [
+      "pie-lex-bhexdheh2"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "daugava",
+     "word": "Daugava",
+     "lex_id": [
+      "pie-lex-deh2nu"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": false,
+     "note": "Daugava: folk etymology"
+    },
+    {
+     "lemma": "dzeltens|dzeltāns",
+     "word": "dzeltens|dzeltāns",
+     "lex_id": [
+      "pie-lex-gjhlh3tos"
+     ],
+     "how": "chain",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "sauja",
+     "word": "saũja",
+     "lex_id": [
+      "pie-lex-sewh1yeh2"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "cepure",
+     "word": "cepure",
+     "lex_id": [
+      "pie-root-skep-chop",
+      "pie-root-skep-cover"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": false,
+     "note": "cepure hat: loanword"
+    },
+    {
+     "lemma": "ūdens",
+     "word": "ūdens",
+     "lex_id": [
+      "pie-lex-wodr"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "likt",
+     "word": "likt",
+     "lex_id": [
+      "pie-root-leykw-leave"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "biezums",
+     "word": "biezums",
+     "lex_id": [
+      "pie-root-bhengjh-thick"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "draugs",
+     "word": "draugs",
+     "lex_id": [
+      "pie-lex-dhrowghos-2"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "tīrs|tīrīt",
+     "word": "tīrs",
+     "lex_id": [
+      "pie-root-ter-tender"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": false,
+     "note": "tīrs ≠ *ter-"
+    },
+    {
+     "lemma": "tauta",
+     "word": "tàuta",
+     "lex_id": [
+      "pie-lex-tewteh2"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "daiļš",
+     "word": "daiļš",
+     "lex_id": [
+      "kaikki:dey"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": false,
+     "note": "daiļš: doubtful"
+    },
+    {
+     "lemma": "mazgāt",
+     "word": "mazgāt",
+     "lex_id": [
+      "pie-lex-mosgo"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "dvēsele",
+     "word": "dvēsele",
+     "lex_id": [
+      "pie-root-dhwes-breathe"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "traks",
+     "word": "traks",
+     "lex_id": [
+      "kaikki:terk"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": false,
+     "note": "traks: doubtful"
+    },
+    {
+     "lemma": "cepure|cepurīte",
+     "word": "cepure|cepurīte",
+     "lex_id": [
+      "pie-root-skep-chop",
+      "pie-root-skep-cover"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": false,
+     "note": "cepure (dup)"
+    },
+    {
+     "lemma": "galotne",
+     "word": "galotne",
+     "lex_id": [
+      "pie-lex-gwolHos"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "lēns",
+     "word": "lēns",
+     "lex_id": [
+      "pie-lex-leh1enos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ciems",
+     "word": "cìems",
+     "lex_id": [
+      "pie-lex-kjoymos"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "strazds",
+     "word": "strazds",
+     "lex_id": [
+      "kaikki:trosdos"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "bērns",
+     "word": "bērns",
+     "lex_id": [
+      "pie-lex-bherno"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "lācis|lacis",
+     "word": "lācis|lācis",
+     "lex_id": [
+      "pie-root-telk-thrust"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": false,
+     "note": "lācis ≠ *tel-k-"
+    },
+    {
+     "lemma": "bārenis",
+     "word": "bārenis",
+     "lex_id": [
+      "pie-lex-bhorHeti"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": false,
+     "note": "bārenis ≠ *bʰorH-"
+    },
+    {
+     "lemma": "garš",
+     "word": "garš",
+     "lex_id": [
+      "pie-root-gwerH-express_approval"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": false,
+     "note": "garš long ≠ *gʷerH- praise"
+    },
+    {
+     "lemma": "osis",
+     "word": "osis",
+     "lex_id": [
+      "pie-lex-Heh3syos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "tautietis|tautiete",
+     "word": "tautietis|tautiete",
+     "lex_id": [
+      "pie-lex-tewteh2"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "gulēt|gulet",
+     "word": "gulēt|gulēt",
+     "lex_id": [
+      "kaikki:gwel"
+     ],
+     "how": "pseudo",
+     "confidence": "low",
+     "correct": true
+    }
+   ]
+  },
+  "xum": {
+   "n": 30,
+   "correct": 28,
+   "items": [
+    {
+     "lemma": "osatu",
+     "word": "osatu",
+     "lex_id": [
+      "pie-lex-h3epos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "esome",
+     "word": "esome",
+     "lex_id": [
+      "pie-lex-so"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "pro",
+     "word": "pro-",
+     "lex_id": [
+      "pie-lex-pro-2"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "are",
+     "word": "-are",
+     "lex_id": [
+      "pie-lex-h2eli"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": false,
+     "note": "suffix -are ≠ *h₂eli-"
+    },
+    {
+     "lemma": "auirseto",
+     "word": "auirseto",
+     "lex_id": [
+      "pie-lex-wideh1yeti"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "tio",
+     "word": "tio",
+     "lex_id": [
+      "pie-lex-tuh2"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "dersua",
+     "word": "dersua",
+     "lex_id": [
+      "pie-lex-dekjsiwos"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "pirse",
+     "word": "pirse",
+     "lex_id": [
+      "pie-lex-kwis"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "tuves",
+     "word": "𐌕𐌖𐌅𐌄𐌔",
+     "lex_id": [
+      "pie-lex-dwoh1"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "arven",
+     "word": "𐌀𐌓𐌅𐌄𐌍",
+     "lex_id": [
+      "pie-lex-h2erh3wos"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "supes",
+     "word": "𐌔𐌖𐌐𐌄𐌔",
+     "lex_id": [
+      "kaikki:h₁ewp"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": false,
+     "note": "supes: doubtful"
+    },
+    {
+     "lemma": "furu",
+     "word": "𐌚𐌖𐌓𐌖",
+     "lex_id": [
+      "pie-lex-dhworo"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "anstiplatu",
+     "word": "anstiplatu",
+     "lex_id": [
+      "pie-root-steyp-make_stiff"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "comatir",
+     "word": "comatir",
+     "lex_id": [
+      "pie-lex-melh2ti"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "saluuom",
+     "word": "saluuom",
+     "lex_id": [
+      "pie-lex-slh2wos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "rufru",
+     "word": "𐌓𐌖𐌚𐌓𐌖",
+     "lex_id": [
+      "pie-lex-h1rudhros"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "aso",
+     "word": "aso",
+     "lex_id": [
+      "pie-lex-h2dtos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "hondu",
+     "word": "hondu",
+     "lex_id": [
+      "pie-lex-dhegjhoxm"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "dei",
+     "word": "dei",
+     "lex_id": [
+      "pie-lex-deywos"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "trebeit",
+     "word": "trebeit",
+     "lex_id": [
+      "pie-root-treb-settlement"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "sakre",
+     "word": "𐌔𐌀𐌊𐌓𐌄",
+     "lex_id": [
+      "pie-lex-seh2kris"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "asa",
+     "word": "𐌀𐌔𐌀",
+     "lex_id": [
+      "pie-lex-h2eHsh2"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "tuder",
+     "word": "tuder",
+     "lex_id": [
+      "pie-lex-stewd"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "em",
+     "word": "-𐌄𐌌",
+     "lex_id": [
+      "pie-lex-h1en"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "habitu",
+     "word": "habitu",
+     "lex_id": [
+      "pie-lex-ghh1bheh1yeti"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "vitlu",
+     "word": "vitlu",
+     "lex_id": [
+      "pie-lex-wetelos"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "via",
+     "word": "𐌅𐌉𐌀",
+     "lex_id": [
+      "pie-lex-wih1eh2"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "ase",
+     "word": "𐌀𐌔𐌄",
+     "lex_id": [
+      "pie-lex-h2eHsh2"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "turuf",
+     "word": "𐌕𐌖𐌓𐌖𐌚",
+     "lex_id": [
+      "pie-lex-tawros"
+     ],
+     "how": "desc",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "uasetom",
+     "word": "uaśetom",
+     "lex_id": [
+      "pie-lex-h1uh2kos"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    }
+   ]
+  },
+  "ae": {
+   "n": 30,
+   "correct": 25,
+   "items": [
+    {
+     "lemma": "mantā",
+     "word": "maṇtā",
+     "lex_id": [
+      "pie-lex-mnto"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "drujō|drujəm",
+     "word": "𐬛𐬭𐬎𐬘𐬋|𐬛𐬭𐬎𐬘𐬆𐬨",
+     "lex_id": [
+      "pie-lex-dhrewks"
+     ],
+     "how": "desc",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "paδa|pāδa",
+     "word": "paδa|𐬞𐬁𐬜𐬀",
+     "lex_id": [
+      "pie-lex-pedom",
+      "pie-lex-poxds"
+     ],
+     "how": "lexicon",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "yava",
+     "word": "𐬫𐬀𐬎𐬎𐬀",
+     "lex_id": [
+      "pie-lex-yewos"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "ayarə|ayārə",
+     "word": "aiiar^ə|𐬀𐬌𐬌𐬁𐬭𐬇",
+     "lex_id": [
+      "pie-lex-h2eyeri",
+      "pie-lex-h2oyr"
+     ],
+     "how": "lexicon",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "baoxšna",
+     "word": "baoxšna",
+     "lex_id": [
+      "pie-root-bhewg-enjoy"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ustānazasta",
+     "word": "ustānazasta",
+     "lex_id": [
+      "pie-lex-ud-2"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "bvāva",
+     "word": "buuāuua",
+     "lex_id": [
+      "pie-lex-bhebhuHe"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "našta",
+     "word": "našta",
+     "lex_id": [
+      "pie-lex-nekjtos"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "vašyetē",
+     "word": "𐬬𐬀𐬳𐬌𐬌𐬈𐬙𐬉",
+     "lex_id": [
+      "kaikki:wn̥kyetor"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": false,
+     "note": "vašyetē: doubtful"
+    },
+    {
+     "lemma": "aēxəm",
+     "word": "𐬀𐬉𐬑𐬆𐬨",
+     "lex_id": [
+      "pie-lex-h1oygs"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "taxše",
+     "word": "taxše",
+     "lex_id": [
+      "pie-lex-tekweti",
+      "pie-lex-tekwti"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "gaoša",
+     "word": "𐬔𐬀𐬊𐬱𐬀",
+     "lex_id": [
+      "pie-root-gwhew-honour"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "asnąm",
+     "word": "𐬀𐬯𐬥𐬄𐬨",
+     "lex_id": [
+      "pie-lex-h2eyeri"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": false,
+     "note": "asnąm days ≠ *h₂éyeri early"
+    },
+    {
+     "lemma": "bitya",
+     "word": "𐬠𐬌𐬙𐬌𐬌𐬀",
+     "lex_id": [
+      "kaikki:dwi"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "raθa",
+     "word": "𐬭𐬀𐬚𐬀",
+     "lex_id": [
+      "pie-lex-Hroth2os"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "raoxšna",
+     "word": "𐬭𐬀𐬊𐬑𐬱𐬥𐬀",
+     "lex_id": [
+      "pie-lex-lowksneh2"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "baga|bāga",
+     "word": "𐬠𐬀𐬔𐬀|𐬠𐬁𐬔𐬀",
+     "lex_id": [
+      "pie-lex-bheh2gos"
+     ],
+     "how": "desc",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "haca|hacā",
+     "word": "𐬵𐬀𐬗𐬀|𐬵𐬀𐬗𐬁",
+     "lex_id": [
+      "pie-lex-sekweh2"
+     ],
+     "how": "desc",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "brvat",
+     "word": "𐬠𐬭𐬎𐬎𐬀𐬙",
+     "lex_id": [
+      "pie-lex-h3bhruHs"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "vaocat|vaoce",
+     "word": "𐬬𐬀𐬊𐬗𐬀𐬝|𐬬𐬀𐬊𐬗𐬈",
+     "lex_id": [
+      "pie-lex-wewket",
+      "pie-lex-wewokwe"
+     ],
+     "how": "desc",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "raoδita",
+     "word": "𐬭𐬀𐬊𐬌𐬜𐬌𐬙𐬀",
+     "lex_id": [
+      "pie-lex-h1rewdhitos"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "aēzah",
+     "word": "aēzah",
+     "lex_id": [
+      "pie-lex-h1eygjhos"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "vaxšt",
+     "word": "vaxšt",
+     "lex_id": [
+      "pie-lex-h2wekst"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "cīšmahī",
+     "word": "cīšmahī",
+     "lex_id": [
+      "pie-lex-kwinesti"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "gaēθāhū",
+     "word": "𐬔𐬀𐬉𐬚𐬁𐬵𐬏",
+     "lex_id": [
+      "pie-root-gweyh3-live"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "xvarənaŋhō|xvarənā|xvarənō",
+     "word": "𐬓𐬀𐬭𐬆𐬥𐬀𐬢𐬵𐬋|𐬓𐬀𐬭𐬆𐬥𐬃|𐬓𐬀𐬭𐬆𐬥𐬋",
+     "lex_id": [
+      "pie-root-pleh1-fill"
+     ],
+     "how": "desc",
+     "confidence": "low",
+     "correct": false,
+     "note": "xvarənah ≠ *pleh₁-"
+    },
+    {
+     "lemma": "xvarənaŋha|xvarənaŋhe|xvarənaŋhō",
+     "word": "𐬓𐬀𐬭𐬆𐬥𐬀𐬢𐬵𐬀|𐬓𐬀𐬭𐬆𐬥𐬀𐬢𐬵𐬈|𐬓𐬀𐬭𐬆𐬥𐬀𐬢𐬵𐬋",
+     "lex_id": [
+      "pie-root-pleh1-fill"
+     ],
+     "how": "desc",
+     "confidence": "low",
+     "correct": false,
+     "note": "xvarənah (dup) ≠ *pleh₁-"
+    },
+    {
+     "lemma": "aŋhayū",
+     "word": "aŋhaiiū",
+     "lex_id": [
+      "pie-lex-sh2eyt"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": false,
+     "note": "aŋhayū: doubtful"
+    },
+    {
+     "lemma": "vaēti",
+     "word": "vaēti",
+     "lex_id": [
+      "pie-lex-weh1itis"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    }
+   ]
+  },
+  "sga": {
+   "n": 30,
+   "correct": 21,
+   "items": [
+    {
+     "lemma": "fer",
+     "word": "fer",
+     "lex_id": [
+      "pie-lex-wiHros"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "clíab",
+     "word": "clíab",
+     "lex_id": [
+      "pie-root-kjley-lean"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "i",
+     "word": "i/languages M to Z",
+     "lex_id": [
+      "pie-lex-h1en"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "sí",
+     "word": "sí",
+     "lex_id": [
+      "pie-lex-sih2"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "amal",
+     "word": "amal",
+     "lex_id": [
+      "pie-lex-semh2lo"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "asren",
+     "word": "asren",
+     "lex_id": [
+      "pie-root-h2rey-count"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": false,
+     "note": "as·ren: doubtful"
+    },
+    {
+     "lemma": "noíbaid",
+     "word": "noíbaid",
+     "lex_id": [
+      "pie-root-reybh-sing"
+     ],
+     "how": "base",
+     "confidence": "low",
+     "correct": false,
+     "note": "noíbaid mapped to *reybʰ- sing"
+    },
+    {
+     "lemma": "beirid",
+     "word": "beirid",
+     "lex_id": [
+      "pie-lex-bhereti"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "frecndairc",
+     "word": "frecndairc",
+     "lex_id": [
+      "pie-root-derkj-see"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "re",
+     "word": "re",
+     "lex_id": [
+      "pie-lex-priis"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ar",
+     "word": "ar",
+     "lex_id": [
+      "pie-lex-preh2"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "mé",
+     "word": "mé",
+     "lex_id": [
+      "pie-lex-egjh2"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "cía",
+     "word": "cía",
+     "lex_id": [
+      "pie-lex-kje",
+      "pie-lex-kwis",
+      "pie-lex-kwis-2"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "airle",
+     "word": "airle",
+     "lex_id": [
+      "pie-root-leh1-soft"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": false,
+     "note": "airle: doubtful"
+    },
+    {
+     "lemma": "attá",
+     "word": "at·tá",
+     "lex_id": [
+      "pie-lex-sth2eh1yeti"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "la",
+     "word": "lïa",
+     "lex_id": [
+      "pie-lex-pleh1yoxs"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "ingen",
+     "word": "ingen",
+     "lex_id": [
+      "pie-lex-h1en",
+      "pie-lex-h3noxghs"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": false,
+     "note": "ingen daughter got ingen nail"
+    },
+    {
+     "lemma": "asbeir",
+     "word": "asbeir",
+     "lex_id": [
+      "pie-root-bher-bear"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": true
+    },
+    {
+     "lemma": "dobeir",
+     "word": "dobeir",
+     "lex_id": [
+      "pie-lex-deh3t"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": false,
+     "note": "do·beir mapped to *deh₃-"
+    },
+    {
+     "lemma": "becc",
+     "word": "becc",
+     "lex_id": [
+      "pie-root-bheg-bend",
+      "pie-root-bheg-break"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": false,
+     "note": "becc: doubtful"
+    },
+    {
+     "lemma": "nád",
+     "word": "niad",
+     "lex_id": [
+      "pie-lex-nepoxts",
+      "pie-lex-neyH"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": false,
+     "note": "negative nád mapped to nía nephew"
+    },
+    {
+     "lemma": "inis",
+     "word": "inis",
+     "lex_id": [
+      "kaikki:h₁enisth₂ih₂"
+     ],
+     "how": "desc",
+     "confidence": "medium",
+     "correct": true
+    },
+    {
+     "lemma": "ara",
+     "word": "·ara",
+     "lex_id": [
+      "pie-lex-h2exrh3st"
+     ],
+     "how": "lexicon",
+     "confidence": "high",
+     "correct": false,
+     "note": "·ara: unclear"
+    },
+    {
+     "lemma": "nóib",
+     "word": "noib",
+     "lex_id": [
+      "pie-lex-neh2us"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": false,
+     "note": "nóib holy got nau ship (loose key)"
+    },
+    {
+     "lemma": "bés",
+     "word": "bés",
+     "lex_id": [
+      "pie-lex-bhendh"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "dead",
+     "word": "dead",
+     "lex_id": [
+      "pie-root-wedh-bind",
+      "pie-root-wedh-lead"
+     ],
+     "how": "desc",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "sin",
+     "word": "sin",
+     "lex_id": [
+      "pie-lex-sexm"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "side",
+     "word": "side",
+     "lex_id": [
+      "pie-lex-so"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "é_1",
+     "word": "é",
+     "lex_id": [
+      "pie-lex-is-2"
+     ],
+     "how": "chain",
+     "confidence": "high",
+     "correct": true
+    },
+    {
+     "lemma": "súaichnid",
+     "word": "súaichnid",
+     "lex_id": [
+      "pie-root-gjneh3-recognise"
+     ],
+     "how": "root",
+     "confidence": "low",
+     "correct": true
+    }
+   ]
+  }
+ },
+ "surface_to_lemma": {
+  "protocol": "20 mapped tokens per unlemmatized corpus (random.Random(11)), surface → lemma → etymon judged as a whole; surfaces are not stored.",
+  "ae": {
+   "n": 20,
+   "correct": 20
+  },
+  "non": {
+   "n": 20,
+   "correct": 12,
+   "errors": "function-word homographs: ok and/yoke (2), á on/river (2), er, í, bað bade/bath, þó; fixed afterwards by treating any lemma with a function-word POS as non-content"
+  },
+  "ang": {
+   "n": 20,
+   "correct": 19,
+   "errors": "is (verb) → īs ice"
+  },
+  "lv": {
+   "n": 20,
+   "correct": 16,
+   "errors": "garām, tīrs, Daugava, tur"
+  }
+ }
+}
