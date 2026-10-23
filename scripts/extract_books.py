@@ -21,7 +21,8 @@ import pymupdf
 ROOT = Path(__file__).resolve().parent.parent
 BOOKS = ROOT / "raw" / "books"
 SLUGS = {"Rix": "liv2", "Fortson": "fortson", "Ringe": "ringe", "Watkins": "watkins",
-         "Mallory": "mallory-adams", "West": "west"}
+         "Mallory": "mallory-adams", "West": "west",
+         "Clackson": "clackson", "Wodtko": "nil", "Klein": "handbook-klein", "Beekes": "beekes"}
 
 
 class _Text(HTMLParser):
@@ -86,6 +87,8 @@ def main() -> int:
         slug = next((v for k, v in SLUGS.items() if k in f.name), f.stem[:20])
         if slug == "west" and f.suffix == ".pdf":
             slug = "west-pdf"
+        if "Version_B" in f.name:      # a second LIV² copy: never write over the first one's text
+            slug += "-b"
         out = BOOKS / "text" / slug
         out.mkdir(parents=True, exist_ok=True)
         n = epub(f, out) if f.suffix == ".epub" else pdf(f, out)
