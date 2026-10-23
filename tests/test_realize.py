@@ -389,3 +389,13 @@ def test_compound_text_validates_exactly(ix):
                                                           if w["lex_id"].startswith("compound:")})
     v = validate_text(r["pie"], ix)
     assert v["status"] == "pass" and set(v["tiers"]) == {"exact"}, v["bad_forms"]
+
+
+def test_prodrop_predicate_adjective_takes_verb_number():
+    """t014 review: 'may they be many' with a dropped subject: polh₁éwes, not singular polh₁ús."""
+    from pie.realize import Lexicon, realize
+    lx = Lexicon.load()
+    p = {"english": "May they be many.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-polh1us", "role": "PRED"},
+        {"lex_id": "pie-lex-h1esti", "role": "V", "verb": {"mood": "OPT", "person": 3, "num": "PL"}}]}]}
+    assert realize(p, lx)["pie"].startswith("polh₁éwes")

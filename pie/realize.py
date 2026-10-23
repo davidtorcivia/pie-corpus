@@ -439,6 +439,9 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
                     and any(x["role"] == "VOC" for x in slots):
                 # "Sea, you are great": the dropped subject is the addressee (t011 review)
                 head = {**next(x for x in slots if x["role"] == "VOC"), "role": "PRED"}
+            elif role == "PRED" and not subj and not lid.startswith("closed:") and _family(s, lx) == "adj":
+                # pro-drop: the predicate adjective takes the verb's number ("may they be many": polh₁éwes)
+                head = {**s, "num": s.get("num") or v.get("num") or "SG"}
             else:
                 head = s
             case = ROLE_CASE["PRED" if role == "PRED" else head["role"]] if role != "MOD" else ROLE_CASE[head["role"]]
