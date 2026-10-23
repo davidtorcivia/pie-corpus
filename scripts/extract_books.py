@@ -89,6 +89,9 @@ def main() -> int:
             slug = "west-pdf"
         if "Version_B" in f.name:      # a second LIV² copy: never write over the first one's text
             slug += "-b"
+        m = re.search(r"Volume (\d+)", f.name)
+        if m:                          # multi-volume works: one text dir per volume
+            slug += f"-v{m[1]}"
         out = BOOKS / "text" / slug
         out.mkdir(parents=True, exist_ok=True)
         n = epub(f, out) if f.suffix == ".epub" else pdf(f, out)

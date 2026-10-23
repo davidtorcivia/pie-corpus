@@ -36,6 +36,7 @@
  "gates": {
   "reject_rate<=0.10": true,
   "max_lexeme_uses<=6": true,
+  "theme_core_uses<=15": true,
   "roots_per_sentence>=0.35": true,
   "duplicates<=2%": true,
   "all_exact": true

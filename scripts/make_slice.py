@@ -79,6 +79,8 @@ def main() -> int:
     ap.add_argument("--size", type=int, default=220)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--derived", action="store_true", help="include lexemes with approximate derived glosses")
+    ap.add_argument("--core", nargs="*", default=[],
+                    help="up to 8 theme-core lexeme ids, capped at 15 uses per batch instead of 6")
     args = ap.parse_args()
     lx = Lexicon.load()
     rng = random.Random(args.seed)
@@ -158,7 +160,9 @@ def main() -> int:
             item["features"] = feats
         items.append(item)
     out = ROOT / "data" / "generation" / "slices" / f"{args.name}.json"
-    out.write_text(json.dumps({"name": args.name, "keywords": args.keywords, "closed": CLOSED, "lexemes": items},
+    core = [i for i in args.core if i in {it["lex_id"] for it in items}][:8]
+    out.write_text(json.dumps({"name": args.name, "keywords": args.keywords, "closed": CLOSED, "theme_core": core,
+                               "lexemes": items},
                               ensure_ascii=False, indent=1) + "\n", "utf-8")
     fam = {}
     for it in items:

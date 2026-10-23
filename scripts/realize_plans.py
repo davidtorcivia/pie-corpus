@@ -28,6 +28,18 @@ def lexeme_cap(n_sentences: int) -> int:
     return max(6, round(0.02 * n_sentences))
 
 
+def theme_cap(n_sentences: int) -> int:
+    """Max uses of a slice's declared theme-core lexeme (a hymn to Dawn says "Dawn"): 15, or 6%."""
+    return max(15, round(0.06 * n_sentences))
+
+
+def theme_core(batch: str) -> set[str]:
+    """Up to 8 lexeme ids a slice declares as its theme core (`theme_core` in the slice file)."""
+    p = ROOT / "data" / "generation" / "slices" / f"{batch.removesuffix('-initial')}.json"
+    core = json.loads(p.read_text("utf-8")).get("theme_core", []) if p.exists() else []
+    return set(core[:8])
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("plans", type=Path)
@@ -79,6 +91,9 @@ def main() -> int:
     # the copula is exempt from the per-lexeme cap; everything else is capped
     uses = collections.Counter(t["lex_id"] for r in records for t in r["tokens"]
                                if not t["lex_id"].startswith("closed:") and t["lex_id"] not in CAP_EXEMPT)
+    core = theme_core(args.batch)
+    core_uses = {k: v for k, v in uses.items() if k in core}
+    uses = collections.Counter({k: v for k, v in uses.items() if k not in core})
     others = set()
     for f in (ROOT / "corpus" / "tier3").glob("*.jsonl"):
         # a batch's own initial run (<batch>-initial) is a draft of the same plans, not another batch
@@ -97,6 +112,7 @@ def main() -> int:
     # Gates (docs/STATUS.md question 5): the batch passes only on numbers
     gates = {"reject_rate<=0.10": summary["reject_rate"] <= 0.10,
              f"max_lexeme_uses<={lexeme_cap(n)}": summary["max_lexeme_uses"] <= lexeme_cap(n),
+             f"theme_core_uses<={theme_cap(n)}": max(core_uses.values(), default=0) <= theme_cap(n),
              "roots_per_sentence>=0.35": summary["roots_per_sentence"] >= 0.35,
              "duplicates<=2%": (dup_within + dup_across) <= 0.02 * n,
              "all_exact": stats["exact_pass"] == stats["realized"]}

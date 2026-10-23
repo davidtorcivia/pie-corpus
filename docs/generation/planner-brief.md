@@ -25,7 +25,7 @@ Verb slot: `{"lex_id": ..., "role": "V", "verb": {"tense": "PRS|PST|AOR|PRF", "m
 10. **Voice (reviews S1, R6):** a transitive verb whose English subject undergoes the action ("the wheel broke", "the door opened", "dress yourself!") takes voice "MID". Verbs tagged `valency: "tr"` need an OBJ in the active; the checker rejects them without one.
 11. **Tense (review S2/S3):** PRF only for an English present state or present perfect ("is afraid", "has seen", "knows"). For a single completed past event use AOR when the slice has an aorist of that root, otherwise PST. For a past state prefer PST of a stative present (e.g. "be trembling") over a perfect.
 12. **Questions and answers (review R4):** an answer repeats the question's verb lexeme unless the English changes the verb.
-13. **Diversity (gated):** any one lexeme at most 6 times per batch (the copula "to be" is exempt). Aim for many distinct lexemes and roots; vary subjects, verbs, moods (IMP, SBJV "let us", OPT wishes), negation, questions, and ~20% verb-initial clauses.
+13. **Diversity (gated):** any one lexeme at most 6 times per batch (the copula "to be" is exempt). Lexemes listed in the slice's `theme_core` (up to 8: the god or thing the batch is about) may be used up to 15 times, as real hymns repeat their subject. Aim for many distinct lexemes and roots; vary subjects, verbs, moods (IMP, SBJV "let us", OPT wishes), negation, questions, and ~20% verb-initial clauses.
 
 ## Check and repair (exactly once)
 1. Write all plans to `data/generation/plans/<batch>.jsonl` and copy it to `<batch>.initial.jsonl`.
