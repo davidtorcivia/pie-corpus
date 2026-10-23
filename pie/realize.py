@@ -188,6 +188,10 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
             fam = r["family"]
             if role == "V" and fam != "verb":
                 errs.append(f"{where}: V slot needs a verb, {lid} is a {fam}")
+            if role == "V" and fam == "verb" and cl.get("neg") and s.get("verb", {}).get("mood") == "IMP" \
+                    and not any(k.startswith(("PST.", "AOR.")) for k in lx.cells(lid)):
+                errs.append(f"{where}: a prohibitive (neg + IMP) needs a present or aorist stem for the "
+                            f"injunctive; {lid} is a perfect")
             if role != "V" and fam == "verb":
                 errs.append(f"{where}: role {role} needs a nominal, {lid} is a verb")
             if role == "MOD":

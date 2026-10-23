@@ -185,6 +185,9 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
             nom = szemerenyi(_add(strong, "s"))
         out["NOM.SG"] = [render(nom)]
         out["VOC.SG"] = [render(strong)]
+        if hb:
+            # vocative accent on the first syllable (Ved. pítar, Gk πάτερ): dʰugh₂tér → dʰúgh₂ter
+            out["VOC.SG"] = _uniq([render(_initial_accent(strong))] + out["VOC.SG"])
         acc = stang(_add(strong, "m"))
         out["ACC.SG"] = [render(contract_eh2m(acc) if not hb else acc)]
     # --- singular, weak
@@ -197,6 +200,8 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
     out["DAT.SG"] = [w("éy", "ey")]
     out["INS.SG"] = [w("éh₁", "h₁", obl)]
     out["LOC.SG"] = _locative(spec, strong, weak)
+    if hb:   # prefer the -i locative to the endingless one (which looks like the nominative)
+        out["LOC.SG"] = sorted(out["LOC.SG"], key=lambda f: not f.endswith(("i", "í")))
     # --- dual
     if neuter:
         # s-stem neuters take the e-grade (weak) suffix: déḱos → déḱesih₁; others the strong stem
@@ -232,6 +237,15 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
     out["LOC.PL"] = [w("sú", "su", obl)]
     mis, bhis = w("mís", "mis", obl), w("bʰís", "bʰis", obl)
     out["INS.PL"] = [bhis, mis] if hb else [mis, bhis]
+    return out
+
+
+def _initial_accent(segs: list[Seg]) -> list[Seg]:
+    out = [replace(x, acc=False) for x in segs]
+    for i, x in enumerate(out):
+        if x.kind == "V" or (x.kind == "R" and x.syl):
+            out[i] = replace(x, acc=True)
+            break
     return out
 
 
@@ -507,6 +521,8 @@ def _conjugate(spec: VerbSpec, conv: str) -> Cells:
         for i, (pn, e) in enumerate(zip(PERSONS, _ATH_PST)):
             out[f"{tense}.{pn}"] = [sg_or_pl(i, e)]
     out["IMP.2SG"] = [render(strong), render(_add(weak, "dʰí"))]
+    if conv == "handbook":   # zero grade + -dʰí is the usual athematic 2sg imperative (h₁sdʰí, ḱludʰí)
+        out["IMP.2SG"].reverse()
     for pn, e in _ATH_IMP.items():
         if weak_acc and e.startswith("én"):
             e = e[1:]

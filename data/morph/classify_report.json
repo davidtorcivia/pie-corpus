@@ -86,11 +86,11 @@
    "cell_accuracy": 0.8467
   },
   "shape:root-aorist": {
-   "tables": 22,
-   "cells_ok": 997,
-   "cells": 1160,
+   "tables": 19,
+   "cells_ok": 986,
+   "cells": 986,
    "tables_exact": 17,
-   "cell_accuracy": 0.8595
+   "cell_accuracy": 1.0
   },
   "shape:s-stem-neuter": {
    "tables": 27,
@@ -112,6 +112,13 @@
    "cells": 1615,
    "tables_exact": 83,
    "cell_accuracy": 0.9765
+  },
+  "shape:thematic-aorist": {
+   "tables": 3,
+   "cells_ok": 174,
+   "cells": 174,
+   "tables_exact": 3,
+   "cell_accuracy": 1.0
   },
   "shape:thematic-neuter": {
    "tables": 16,
@@ -163,7 +170,7 @@
   }
  },
  "by_rule": {
-  "shape:thematic": 1248,
+  "shape:thematic": 1202,
   "shape:thematic-present": 1128,
   "unknown:noun-shape": 889,
   "unknown": 796,
@@ -176,6 +183,7 @@
   "indeclinable": 89,
   "unknown:athematic-no-ablaut": 57,
   "shape:n-stem-ak": 50,
+  "shape:s-stem-neuter": 50,
   "shape:hk-iu-stem": 45,
   "shape:devi": 45,
   "unknown:middle-only": 37,
@@ -183,10 +191,10 @@
   "shape:tor-agent": 15,
   "shape:n-stem-hk": 9,
   "shape:er-stem": 8,
-  "shape:root-aorist": 5,
+  "shape:root-aorist": 4,
   "shape:perfect": 4,
-  "shape:s-stem-neuter": 4,
   "unknown:adj-shape": 3,
-  "unknown:verb-shape": 1
+  "unknown:verb-shape": 1,
+  "shape:thematic-aorist": 1
  }
 }

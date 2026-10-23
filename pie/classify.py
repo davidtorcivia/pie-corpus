@@ -108,6 +108,8 @@ def by_shape(e: dict) -> Classified:
             return Classified(VerbSpec(st, wk, kind), "shape:athematic-root", "verb")
         if f.endswith("t") and e.get("aspect") == "pf":
             st = f[:-1]
+            if st.endswith(("e", "é")):   # thematic aorist (widét): stem widé-, no ablaut
+                return Classified(VerbSpec(st, None, "pf"), "shape:thematic-aorist", "verb")
             wk = zero_grade(st)
             return Classified(VerbSpec(st, wk, "pf") if wk else None, "shape:root-aorist", "verb")
         return Classified(None, "unknown:verb-shape", "verb")
@@ -125,7 +127,9 @@ def by_shape(e: dict) -> Classified:
         return Classified(None, "unknown:adj-shape", "adj")
 
     # nouns, and derivatives with an unknown part of speech
-    if f.endswith(("os", "ós")) and g == "n":
+    s_stem_evidence = any(x.endswith(("esos", "és", "es")) for x in e.get("stems", []) + e.get("variants", []))
+    if f.endswith(("os", "ós")) and (g == "n" or s_stem_evidence):
+        # neuter s-stem (téwh₂os ~ téwh₂esos), not a thematic masculine
         st = f
         return Classified(NounSpec(st, _strip(f, "os") + "es", "acrostatic", "n"), "shape:s-stem-neuter", "noun")
     if f.endswith(("os", "ós")):
