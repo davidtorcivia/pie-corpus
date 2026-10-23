@@ -23,7 +23,7 @@
 | Lexicon entries | 7,401 total: 885 roots · 893 words · 110 affixes · 5,470 tree derivatives · 22 alt · 21 form-of |
 | Glossed entries | 2,226 |
 | Verbal roots | 1,253: 116 marked by Wiktionary, 946 backed by LIV² (aspect from LIV's primary stem), 191 still only by the "to …" gloss heuristic |
-| LIV² | 1,149 roots transcribed from page images (`data/lexicon/liv2.jsonl`, facts only): 642 matched by form, 20 by generic-H key + gloss, 487 new (52 linked `possible_alias_of` a Wiktionary root, not merged); 9 records disagree with the page OCR, under review |
+| LIV² | 1,149 roots transcribed from page images (`data/lexicon/liv2.jsonl`, facts only): 642 matched by form, 20 by generic-H key + gloss, 487 new (52 linked `possible_alias_of` a Wiktionary root, not merged); the 9 records that disagreed with the page OCR were triaged: all are OCR-side (garbled glosses such as 'errnatten', entries at page bottoms); d0238 checked against the image. A 22-page image audit is running |
 | Wiktionary paradigms (clean) | 625 (90 dropped as module-corrupted, 1 with a non-canonical cell) |
 | Normalization rejects | 67 (alternative lists, queries, placeholders) |
 | Root coverage in corpus | — |
