@@ -29,7 +29,7 @@ import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from .morph import AdjSpec, NounSpec, VerbSpec, conjugate, decline, decline_adj
+from .morph import AdjSpec, NounSpec, VerbSpec, conjugate, decline, decline_adj, decline_participle
 from .translit import ACUTE, MACRON, is_canonical
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -147,7 +147,19 @@ class FormIndex:
         elif fam == "adj":
             cells = {(g, k): v for g, cs in decline_adj(AdjSpec(**sp), conv, alt).items() for k, v in cs.items()}
         else:
-            cells = {(None, k): v for k, v in conjugate(VerbSpec(**sp), conv, alt).items()}
+            vc = conjugate(VerbSpec(**sp), conv, alt)
+            cells = {(None, k): v for k, v in vc.items()}
+            # declined participles (the realizer's participial MOD slots): PTCP.ACT.ACC.SG etc.
+            thematic = sp.get("strong", "").endswith(("e", "é"))
+            for voice in ("ACT", "MID"):
+                noms = vc.get(f"PTCP.{voice}") or []
+                for g in ("m", "f", "n"):
+                    try:
+                        pc = decline_participle(noms[0], voice, g, thematic) if noms else {}
+                    except (KeyError, ValueError):
+                        continue
+                    for k, v in pc.items():
+                        cells[(g, f"PTCP.{voice}.{k}")] = v
         for (g, feat), forms in cells.items():
             for f in forms:
                 self._add(f, Analysis(r["id"], root, feat, src, g or e.get("gender")))

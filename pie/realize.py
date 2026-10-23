@@ -36,7 +36,7 @@ from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
 
-from .morph import AdjSpec, NounSpec, VerbSpec, conjugate, decline, decline_adj
+from .morph import AdjSpec, NounSpec, VerbSpec, conjugate, decline, decline_adj, decline_participle
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -138,23 +138,10 @@ class Lexicon:
             return self._cache[k]
         vc = self.cells(lex_id)
         forms = vc.get("PTCP.MID" if voice == "MID" else "PTCP.ACT") or []
-        nom = forms[0] if forms else ""
-        if voice == "MID" and nom.endswith("nos"):
-            c = decline_adj(AdjSpec(nom[:-1]), "handbook")[gender]
-        elif voice != "MID" and nom.endswith("nts"):
-            from .classify import zero_grade
-            stem = nom[:-1]
-            thematic = bool((self.specs[lex_id].get("spec") or {}).get("strong", "").endswith(("e", "é")))
-            weak = None if thematic else zero_grade(stem)
-            if gender == "f":
-                fs = (weak or stem)
-                c = decline(NounSpec(fs + ("íh₂" if weak else "ih₂"), fs + ("yéh₂" if weak else "yeh₂"),
-                                     "proterokinetic", "f", devi=True), "handbook")
-            else:
-                c = decline(NounSpec(stem, weak, "proterokinetic" if weak else None, gender), "handbook")
-                if thematic:
-                    c = {**c, "GEN.SG": [stem + "os"], "ABL.SG": [stem + "os"]}
-        else:
+        thematic = bool((self.specs[lex_id].get("spec") or {}).get("strong", "").endswith(("e", "é")))
+        try:
+            c = decline_participle(forms[0] if forms else "", voice, gender, thematic)
+        except KeyError:
             raise KeyError(f"{lex_id}: no {voice} participle the engine can decline")
         self._cache[k] = c
         return c

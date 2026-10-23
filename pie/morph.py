@@ -596,3 +596,26 @@ def _conjugate(spec: VerbSpec, conv: str) -> Cells:
             st = junction_laryngeal_loss(st, _p(e))
         out[f"IMP.{pn}"] = [render(_add(st, e))]
     return _voiced_secondary(out, conv)
+
+
+def decline_participle(nom: str, voice: str, gender: str, thematic: bool) -> Cells:
+    """Case forms of a participle from its nominative (conjugate()'s PTCP.ACT / PTCP.MID).
+
+    Active: nt-stems. Thematic (bʰéront-) has no ablaut and gen. -os (bʰérontos,
+    Ved. bháratas); athematic ablauts (h₁sónt-/h₁sn̥t-, gen. h₁sn̥tés, Ved. satás).
+    Feminine in -ih₂ (bʰérontih₂, h₁sn̥tíh₂). Middle: the -mh₁no- / -mno- adjective.
+    The perfect participle (-wōs) is not supported: raises KeyError.
+    """
+    if voice == "MID" and nom.endswith("nos"):
+        return decline_adj(AdjSpec(nom[:-1]), "handbook")[gender]
+    if voice != "MID" and nom.endswith("nts"):
+        from .classify import zero_grade
+        stem = nom[:-1]
+        weak = None if thematic else zero_grade(stem)
+        if gender == "f":
+            fs = weak or stem
+            return decline(NounSpec(fs + ("íh₂" if weak else "ih₂"), fs + ("yéh₂" if weak else "yeh₂"),
+                                    "proterokinetic", "f", devi=True), "handbook")
+        c = decline(NounSpec(stem, weak, "proterokinetic" if weak else None, gender), "handbook")
+        return {**c, "GEN.SG": [stem + "os"], "ABL.SG": [stem + "os"]} if thematic else c
+    raise KeyError(f"no declinable {voice} participle for {nom!r}")
