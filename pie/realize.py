@@ -337,6 +337,10 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
             if role == "MOD" and head["role"] == "MOD":
                 raise KeyError("MOD cannot head a MOD")
             n = head.get("num", "SG")
+            if n == "DU" and case not in ("NOM", "ACC", "VOC") and not lid.startswith("closed:numerals"):
+                # dual obliques are not reconstructible (Fortson §6.13, §6.50; Lundquist & Yates
+                # §122.2.1.1; Ringe ???): the plural stands in, and the feature says so
+                n = "PL"
             g = _slot_gender(head, lx)
             feat = f"{case}.{n}" + (".ENCL" if s.get("enclitic") else "")
             if lid.startswith("closed:"):
