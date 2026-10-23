@@ -257,7 +257,8 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
                     and weak[-2].base == "e":
                 pl = weak                                                 # h₁n̥gʷní- → h₁n̥gʷnéyes
         out["NOM.PL"] = out["VOC.PL"] = [render(_add(pl, "es"))]
-        if hb and (spec.weak is None or spec.adjective) and strong[-1].syl and strong[-1].base in ("y", "w"):
+        # (not when the plural already took the e-grade weak stem or the unaccented -ey-/-ew- above)
+        if hb and pl is strong and strong[-1].syl and strong[-1].base in ("y", "w"):
             # i/u-stem nominative plural in the full-grade suffix (Ved. sūnávas, agnáyas): suHnéwes
             full = strong[:-1] + [Seg("e", "V", acc=strong[-1].acc), Seg(strong[-1].base, "R")]
             out["NOM.PL"] = out["VOC.PL"] = _uniq([render(_add(full, "es"))] + out["NOM.PL"])

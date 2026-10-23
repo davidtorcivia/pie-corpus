@@ -491,6 +491,18 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     if placed != list(range(len(slots))):
         missing = sorted(set(range(len(slots))) - set(placed))
         raise KeyError(f"slots {missing} not attached to the clause (a MOD/POSS head chain is broken)")
+    # -kʷe goes on the last conjunct (X Y-kʷe, Lat. senatus populusque): a mark only on an earlier
+    # member of a coordinated group (same role and head) moves to the last one (t014 review)
+    groups: dict = {}
+    for i, sl in enumerate(slots):
+        if sl["role"] not in ("V", "MOD", "ADV"):
+            groups.setdefault((sl["role"], sl.get("head")), []).append(i)
+    for ix in groups.values():
+        if len(ix) > 1 and any(slots[i].get("and") for i in ix) and not slots[ix[-1]].get("and"):
+            slots = [dict(x) for x in slots] if slots is cl["slots"] else slots
+            for i in ix[:-1]:
+                slots[i]["and"] = False
+            slots[ix[-1]]["and"] = True
     for i in seq:
         if slots[i]["lex_id"] == "closed:indefinite_kwi":
             words[i].clitic = True        # the indefinite is enclitic: ne kʷis gʷémt 'no one came'

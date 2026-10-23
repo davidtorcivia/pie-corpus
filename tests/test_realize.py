@@ -399,3 +399,19 @@ def test_prodrop_predicate_adjective_takes_verb_number():
         {"lex_id": "pie-lex-polh1us", "role": "PRED"},
         {"lex_id": "pie-lex-h1esti", "role": "V", "verb": {"mood": "OPT", "person": 3, "num": "PL"}}]}]}
     assert realize(p, lx)["pie"].startswith("polh₁éwes")
+
+
+def test_t014_review_fixes():
+    """-kʷe on the last conjunct; u-stem nom. pl. -éwes with a weak stem given; earth feminine;
+    *h₂erh₃- keeps its h₃."""
+    from pie.realize import Lexicon, realize
+    lx = Lexicon.load()
+    p = {"english": "He saw cows and sheep.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-gwoxws", "role": "OBJ", "num": "PL", "and": True},
+        {"lex_id": "pie-lex-h2owis", "role": "OBJ", "num": "PL"},
+        {"lex_id": "pie-lex-widet", "role": "V", "verb": {"tense": "AOR"}}]}]}
+    words = realize(p, lx)["pie"].split()
+    assert words[1].endswith("-kʷe") and not words[0].endswith("-kʷe")
+    assert lx.cells("pie-lex-suHnus")["NOM.PL"][0] == "suHnéwes"
+    assert lx.gender("pie-lex-dhegjhoxm") == "f"
+    assert lx.cells("pie-lex-h2eryeti")["PRS.3SG"][0].startswith("h₂érh₃")
