@@ -136,6 +136,9 @@ RULES: dict[str, Rule] = {
         Rule("P-SPACING-DIACRITICS", "spacing macron/acute after a vowel or resonant (e¯´ → ḗ, e´ → é)",
              lambda s: re.sub("([aeiourlmn\u0325]+?)([\u00af\u00b4]+)",
                               lambda m: m[1] + m[2].replace("\u00af", MACRON).replace("\u00b4", ACUTE), s)),
+        Rule("P-KU-LABIO", "plain velar + u̯ (LIV's superscript ᵘ̯ transcribed on the line) → labiovelar: ku̯ gu̯ gʰu̯ → kʷ gʷ gʷʰ",
+             _nfd(_sub("(?<![\u0301\u0302\u0311])([kg])(\u02b0?)u\u032f",
+                       "\\1" + LAB + "\\2"))),
         Rule("P-STRIP-FOOTNOTE", "superscript footnote markers on forms (*bʰéh₁dʰ-e-² → *bʰéh₁dʰ-e-)",
              _sub("[\u00b9\u00b2\u00b3\u2070\u2074-\u2079]+", "")),
         Rule("P-DASH", "em/en dash used as punctuation → comma",
@@ -172,7 +175,7 @@ PROFILES: dict[str, list[str]] = {
     "fortson": _PRE + ["P-CARET-SUP", "G-LAR-DIGIT", "P-ASP-PLAIN-H"] + _GENERIC,
     "mallory-adams": _PRE + ["P-HX-ASCII", "G-LAR-DIGIT", "P-ASP-PLAIN-H", "P-SCHWA"] + _GENERIC,
     "west": _PRE + ["P-SPACING-RING"] + _GENERIC,
-    "liv2": _PRE + ["P-STRIP-FOOTNOTE"] + _GENERIC,
+    "liv2": _PRE + ["P-STRIP-FOOTNOTE", "P-KU-LABIO"] + _GENERIC,
     "ringe": _PRE + ["P-SPACING-DIACRITICS", "P-SPACING-RING", "G-LAR-DIGIT", "P-ASP-PLAIN-H"] + _GENERIC,
 }
 

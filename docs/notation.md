@@ -86,6 +86,8 @@ CLI: `uv run python -I scripts/translit.py {to-ascii|to-unicode|normalize|check}
 | P-HX-ASCII | ASCII `hx` → H | bherhxĝos → bʰerHǵos | Mallory & Adams | books |
 | P-SPACING-RING | spacing ring ˚ after r l m n → ring below | pl˚th₂wī → pl̥th₂wī | West EPUB | books |
 | P-SPACING-DIACRITICS | spacing macron/acute after the nucleus → combining | ph2te¯´r → ph₂tḗr | Ringe PDF text | books |
+| P-STRIP-FOOTNOTE | superscript footnote digits on forms → removed | *bʰéh₁dʰ-e-²* | LIV² transcriptions | books |
+| P-KU-LABIO | plain velar + u̯ → labiovelar (ku̯ gu̯ gʰu̯ → kʷ gʷ gʷʰ) | *neku̯-* → *nekʷ-* | **LIV² only**: LIV writes labiovelars with a superscript ᵘ̯ that transcribers sometimes put on the line. A true plain velar + w sequence would be mis-mapped; LIV writes those rarely, and palatals (ḱu̯) are excluded | books |
 | P-ASP-PLAIN-H | plain h after b d g ǵ gʷ, not followed by a subscript → ʰ | bher- → bʰer-; *dhugh₂tḗr* → dʰugh₂tḗr (g+h₂ kept) | only for sources writing aspirates as `bh` and laryngeals with subscripts (Mallory–Adams style) | P0 |
 | P-LAB-W-AFTER-K | plain k g + w → kʷ gʷ | kwis → kʷis | only for sources writing labiovelars as `kw`; would corrupt real k+w | P0 (defined, no profile yet) |
 | P-SCHWA | ə → H | pəter → pHter | schwa indogermanicum ≈ vocalized laryngeal, color unknown; source-specific (Hirt) | P0 (defined, no profile yet) |

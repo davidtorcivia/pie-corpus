@@ -45,6 +45,8 @@ CASES = [
     ("gʷərēi", "lehmann-zgusta-1979", "gʷHrēi", "P-SCHWA"),
     ("g^wōm", "fortson", "gʷōm", "P-CARET-SUP"),
     ("bʰéh₁dʰ-e-²", "liv2", "bʰéh₁dʰ-e-", "P-STRIP-FOOTNOTE"),
+    ("neku̯-", "liv2", "nekʷ-", "P-KU-LABIO"),
+    ("gʰu̯en-", "liv2", "gʷʰen-", "P-KU-LABIO"),
     ("dhugh2tér-", "fortson", "dʰugh₂tér-", "P-ASP-PLAIN-H"),
     ("bherhxĝos", "mallory-adams", "bʰerHǵos", "P-HX-ASCII"),
     ("pl˚th₂wī", "west", "pl̥th₂wī", "P-SPACING-RING"),
