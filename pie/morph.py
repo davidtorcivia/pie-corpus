@@ -201,6 +201,10 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
         if hb:
             # vocative accent on the first syllable (Ved. pítar, Gk πάτερ): dʰugh₂tér → dʰúgh₂ter
             out["VOC.SG"] = _uniq([render(_initial_accent(strong))] + out["VOC.SG"])
+            if strong[-1].syl and strong[-1].base in ("y", "w"):
+                # i/u-stem vocative in full-grade *-ey/-ew (Ved. ágne, sū́no; Fortson): h₁ń̥gʷney, súHnew
+                full = strong[:-1] + [Seg("e", "V"), Seg(strong[-1].base, "R")]
+                out["VOC.SG"] = _uniq([render(_initial_accent(full))] + out["VOC.SG"])
         acc = stang(_add(strong, "m"))
         out["ACC.SG"] = [render(contract_eh2m(acc) if not hb else acc)]
     # --- singular, weak
@@ -439,6 +443,10 @@ def _handbook_verbal(spec: VerbSpec, out: Cells) -> Cells:
     # thematic middle participle *-omh₁nos (L&Y, Beekes; Fortson's *-mh₁no-)
     if spec.thematic and "PTCP.MID" in out:
         out["PTCP.MID"] = _uniq([f.replace("omnos", "omh₁nos") for f in out["PTCP.MID"]] + out["PTCP.MID"])
+    # primary 2du *-th₁es, distinct from 3du *-tes (Ved. -thas vs -tas; Ringe)
+    for k in ("PRS.2DU", "SBJV.2DU"):
+        if k in out:
+            out[k] = _uniq([re.sub("t([eé])s$", lambda m: "th₁" + m[1] + "s", f) for f in out[k]] + out[k])
     st = _p(_bare(spec.strong))
     if not spec.thematic and st and st[-1].base == "s" and st[-1].kind == "C" and "PRS.2SG" in out:
         out["PRS.2SG"] = _uniq(out["PRS.2SG"] + [render(st) + "si"])
