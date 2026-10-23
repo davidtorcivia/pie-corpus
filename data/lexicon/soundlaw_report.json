@@ -1,0 +1,183 @@
+{
+ "total": {
+  "checks": 5315,
+  "mismatch": 277
+ },
+ "by_law": {
+  "aspirate|grc": {
+   "ok": 175,
+   "mismatch": 4,
+   "rate": 0.022
+  },
+  "aspirate|lat": {
+   "ok": 110,
+   "mismatch": 9,
+   "rate": 0.076
+  },
+  "aspirate|skt": {
+   "ok": 96,
+   "mismatch": 4,
+   "rate": 0.04
+  },
+  "centum|grc": {
+   "ok": 106,
+   "mismatch": 6,
+   "rate": 0.054
+  },
+  "centum|lat": {
+   "ok": 54,
+   "mismatch": 2,
+   "rate": 0.036
+  },
+  "coloring|grc": {
+   "ok": 80,
+   "mismatch": 17,
+   "rate": 0.175
+  },
+  "coloring|lat": {
+   "ok": 68,
+   "mismatch": 10,
+   "rate": 0.128
+  },
+  "dental|grc": {
+   "ok": 195,
+   "mismatch": 16,
+   "rate": 0.076
+  },
+  "dental|lat": {
+   "ok": 114,
+   "mismatch": 4,
+   "rate": 0.034
+  },
+  "dental|skt": {
+   "ok": 169,
+   "rate": 0.0
+  },
+  "grassmann|grc": {
+   "ok": 50,
+   "mismatch": 1,
+   "rate": 0.02
+  },
+  "grassmann|skt": {
+   "ok": 63,
+   "rate": 0.0
+  },
+  "greek-s-h|grc": {
+   "ok": 68,
+   "rate": 0.0
+  },
+  "grimm|gem": {
+   "ok": 819,
+   "mismatch": 31,
+   "rate": 0.036
+  },
+  "labial|grc": {
+   "ok": 182,
+   "mismatch": 2,
+   "rate": 0.011
+  },
+  "labial|lat": {
+   "ok": 116,
+   "mismatch": 4,
+   "rate": 0.033
+  },
+  "labial|skt": {
+   "ok": 106,
+   "mismatch": 2,
+   "rate": 0.019
+  },
+  "labiovelar|grc": {
+   "ok": 81,
+   "mismatch": 2,
+   "rate": 0.024
+  },
+  "labiovelar|lat": {
+   "ok": 18,
+   "mismatch": 6,
+   "rate": 0.25
+  },
+  "labiovelar|skt": {
+   "ok": 98,
+   "rate": 0.0
+  },
+  "prothesis|grc": {
+   "mismatch": 29,
+   "ok": 95,
+   "rate": 0.234
+  },
+  "resonant|gem": {
+   "ok": 316,
+   "mismatch": 14,
+   "rate": 0.042
+  },
+  "resonant|grc": {
+   "ok": 257,
+   "mismatch": 29,
+   "rate": 0.101
+  },
+  "resonant|lat": {
+   "ok": 151,
+   "mismatch": 18,
+   "rate": 0.107
+  },
+  "resonant|skt": {
+   "ok": 249,
+   "mismatch": 7,
+   "rate": 0.027
+  },
+  "s-mobile|gem": {
+   "ok": 202,
+   "mismatch": 5,
+   "rate": 0.024
+  },
+  "s-mobile|grc": {
+   "ok": 192,
+   "mismatch": 6,
+   "rate": 0.03
+  },
+  "s-mobile|lat": {
+   "ok": 130,
+   "mismatch": 5,
+   "rate": 0.037
+  },
+  "s-mobile|skt": {
+   "ok": 131,
+   "rate": 0.0
+  },
+  "satem|skt": {
+   "ok": 132,
+   "mismatch": 3,
+   "rate": 0.022
+  },
+  "sibilant|gem": {
+   "ok": 84,
+   "mismatch": 7,
+   "rate": 0.077
+  },
+  "sibilant|lat": {
+   "ok": 60,
+   "mismatch": 12,
+   "rate": 0.167
+  },
+  "sibilant|skt": {
+   "ok": 94,
+   "mismatch": 4,
+   "rate": 0.041
+  },
+  "velar|grc": {
+   "ok": 75,
+   "mismatch": 13,
+   "rate": 0.148
+  },
+  "velar|lat": {
+   "ok": 54,
+   "mismatch": 4,
+   "rate": 0.069
+  },
+  "velar|skt": {
+   "ok": 48,
+   "mismatch": 1,
+   "rate": 0.02
+  }
+ }
+}
