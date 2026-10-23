@@ -7,7 +7,7 @@
 | Phase | State | Acceptance |
 |---|---|---|
 | 0 Scaffolding & notation | **done** | NFC↔ASCII round-trip on ≥200 tricky forms: **pass** (382 listed forms: 157 hand-written with expected ASCII + 225 generated; plus 5,000 fuzzed; 1,807 tests) |
-| 1 Lexicon | **built, acceptance pending** | ≥2,000 entries: 2,226 glossed, 7,401 total ✅ · ≥800 verbal roots: **730** ❌ · 50-entry handbook spot check: pending books (provisional review in `docs/audits/`) |
+| 1 Lexicon | **built, acceptance pending** | ≥2,000 entries: 2,226 glossed, 7,401 total ✅ · ≥800 verbal roots: **730** ❌ · 50-entry M&A spot check: **pass**, no systematic errors (docs/audits/phase1-ma-spotcheck.md) ✅ |
 | 2 Morphology engine | **built, acceptance pending books** | Wiktionary regeneration: 14,023/14,197 cells (98.8%) incl. verbal Phase B, 576/615 tables, **0 unexplained** ✅ · PLAN golden paradigms: 11/11 pass, but the source is unverified (pending Fortson/Ringe) |
 | 3 Validator | **built; not accepted**: 55–82% on the laryngealist versions after Phase B (docs/audits/tier1-validation.md). The remaining gap is mostly different reconstructions of known lexemes; see question 4 | Tier 1 laryngealist versions ≥90% token coverage, every miss classified |
 | 3b Sound-law checker | **built**: initial-position diagnostics for Skt/Gk/Lat/PGmc | full lexicon run: 5,315 checks, 94.8% pass, 277 warnings (docs/soundlaws.md) |
