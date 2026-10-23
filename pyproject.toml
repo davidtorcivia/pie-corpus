@@ -1,0 +1,19 @@
+[project]
+name = "pie-corpus"
+version = "0.0.1"
+description = "Reconstructed Proto-Indo-European training corpus: notation, lexicon, morphology engine, validator"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pie"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

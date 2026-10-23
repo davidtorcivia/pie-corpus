@@ -1,0 +1,161 @@
+# unicode	ascii	note
+# Hand-written cases with the expected ASCII spelled out. These are notation
+# test strings, not citations; corpus text lives in corpus/.
+# Combining marks must be in canonical order: ring below, macron, acute.
+pṓds	po:/ds	PLAN paradigm
+pedós	pedo/s	PLAN paradigm
+wĺ̥kʷos	wl_/kwos	accented syllabic l + labiovelar
+wĺ̥kʷosyo	wl_/kwosyo
+dʰugh₂tḗr	dhugh2te:/r	plain g + h₂ next to aspirate
+dʰugh₂trés	dhugh2tre/s
+ph₂tḗr	ph2te:/r
+ph₂trés	ph2tre/s
+h₂éwis	h2e/wis
+h₂ówis	h2o/wis
+gʷṓws	gwo:/ws
+gʷówm̥	gwo/wm_
+gʷéwes	gwe/wes
+dyḗws	dye:/ws
+diwós	diwo/s
+dyéwm̥	dye/wm_
+h₁ésti	h1e/sti
+h₁sénti	h1se/nti
+bʰéreti	bhe/reti
+bʰéronti	bhe/ronti
+ǵʰew-	g'hew-
+gʷʰénti	gwhe/nti
+gʷʰn̥énti	gwhn_e/nti
+wóyde	wo/yde
+widmé	widme/
+h₁éḱwos	h1e/k'wos	palatal + w needs no escape
+h₁éḱwōs	h1e/k'wo:s
+ḱwṓ	k'wo:/
+ḱunés	k'une/s
+ḱm̥tóm	k'm_to/m
+ḱléwos	k'le/wos
+ḱléwos ń̥dʰgʷʰitom	k'le/wos n_/dhgwhitom	imperishable fame
+n̥dʰgʷʰitom	n_dhgwhitom
+h₃égʷʰim	h3e/gwhim
+gʷʰén-	gwhe/n-
+dʰéh₁-	dhe/h1-
+dʰh₁-	dhh1-	aspirate then laryngeal
+dh₁	dh1	plain d then laryngeal
+gh₁	gh1
+gʰh₁	ghh1
+ǵh₁	g'h1	palatal then laryngeal, not palatal aspirate
+ǵʰh₁	g'hh1
+gʷh₁	gwh1	labiovelar then laryngeal, not gʷʰ
+gʷʰh₁	gwhh1
+kʷh₁	kwh1
+kh₂	kh2
+bH	bH
+gʰH	ghH
+kw	k\w	plain velar + w: escape path
+gw	g\w
+kwékʷlos	k\we/kwlos
+gʰw	ghw
+ǵʰwer-	g'hwer-
+kʷe	kwe
+-kʷe	-kwe
+nu	nu
+mē	me:
+mḗ	me:/
+h₁e-	h1e-
+ā́	a:/	no precomposed form
+ī́	i:/
+ū́	u:/
+ḗ	e:/	precomposed U+1E17
+ṓ	o:/	precomposed U+1E53
+ŕ̥	r_/
+r̥̄	r_:
+r̥̄́	r_:/	ring, macron, acute in canonical order
+ĺ̥	l_/
+ḿ̥	m_/
+ń̥	n_/
+r̥	r_
+l̥	l_
+m̥	m_
+n̥	n_
+h₂ŕ̥tḱos	h2r_/tk'os
+ǵénh₁tōr	g'e/nh1to:r
+ǵn̥h₁tós	g'n_h1to/s
+méǵh₂s	me/g'h2s
+séh₂	se/h2
+tód	to/d
+só	so/
+kʷís	kwi/s
+kʷód	kwo/d
+óynos	o/ynos
+dwóh₁	dwo/h1
+tréyes	tre/yes
+kʷetwóres	kwetwo/res
+pénkʷe	pe/nkwe
+swéḱs	swe/k's
+septḿ̥	septm_/
+oḱtṓ	ok'to:/
+h₁néwn̥	h1ne/wn_
+déḱm̥	de/k'm_
+h₂ster-	h2ster-
+h₂éwsōs	h2e/wso:s
+sóh₂wl̥	so/h2wl_
+méh₂tēr	me/h2te:r
+bʰréh₂tēr	bhre/h2te:r
+swésōr	swe/so:r
+nékʷts	ne/kwts
+wódr̥	wo/dr_
+udéns	ude/ns
+péh₂wr̥	pe/h2wr_
+ph₂wéns	ph2we/ns
+yugóm	yugo/m
+h₂éǵeti	h2e/g'eti
+wéǵʰeti	we/g'heti
+wóǵʰos	wo/g'hos
+wl̥h₂néh₂	wl_h2ne/h2
+gʷr̥h₂ús	gwr_h2u/s
+bʰórom	bho/rom
+ǵʰménm̥	g'hme/nm_
+h₂ṓḱu	h2o:/k'u
+spéḱet	spe/k'et
+h₁éḱwōns	h1e/k'wo:ns
+h₂ówis h₁éḱwōs-kʷe	h2o/wis h1e/k'wo:s-kwe
+nisdós	nisdo/s
+nizdós	nizdo/s	z is in the inventory
+H	H	generic laryngeal
+h₁	h1
+Hews-	Hews-
+*bʰer-	*bher-
+*h₂ŕ̥tḱos	*h2r_/tk'os
+ǵʰésr̥	g'he/sr_
+dn̥ǵʰwéh₂s	dn_g'hwe/h2s
+dʰǵʰém-	dhg'he/m-
+tḱéy-	tk'e/y-
+kʷékʷlos	kwe/kwlos
+kʷekʷlóm	kwekwlo/m
+sm̥-	sm_-
+bʰudʰ-	bhudh-
+dʰeh₁(y)-	dheh1(y)-
+[h₁]ésti	[h1]e/sti
+déywos	de/ywos
+h₂ówis, kʷésyo wl̥h₂néh₂ ne h₁ést, h₁éḱwōns spéḱet.	h2o/wis, kwe/syo wl_h2ne/h2 ne h1e/st, h1e/k'wo:ns spe/k'et.	fable-style line
+h₂ówis h₁éḱwoybʰyos wewkʷét: "ḱḗr h₂égʰnutor moy."	h2o/wis h1e/k'woybhyos wewkwe/t\: "k'e:/r h2e/ghnutor moy."	colon and quotes
+a:b	a\:b	literal colon
+a/b	a\/b	literal slash
+n_	n\_	literal underscore
+k'	k\'	literal apostrophe
+\	\\	literal backslash
+h₂éḱ-	h2e/k'-
+kréwh₂	kre/wh2
+ǵneh₃-	g'neh3-
+ǵn̥h₃tós	g'n_h3to/s
+h₃ésth₁	h3e/sth1
+dóh₃r̥	do/h3r_
+h₂ŕ̥ǵn̥tom	h2r_/g'n_tom
+gʷʰer-	gwher-
+gʷʰormós	gwhormo/s
+gʷih₃wós	gwih3wo/s
+bʰeh₂ǵós	bheh2g'o/s
+ḱerh₂-	k'erh2-
+ḱr̥h₂-	k'r_h2-
+h₁rudʰrós	h1rudhro/s
+h₁ngʷnis	h1ngwnis
+h₁n̥gʷnis	h1n_gwnis

@@ -1,0 +1,12 @@
+# Downloaded material is untrusted and often large; provenance (URL, sha256,
+# date) is recorded in raw/MANIFEST.md, which is tracked.
+raw/*
+!raw/.gitkeep
+!raw/MANIFEST.md
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+export/*.jsonl
+export/*.txt
+.DS_Store
