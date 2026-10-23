@@ -43,6 +43,7 @@
 | Validator pass rate | — |
 | Sound-law mismatch rate | 5.2% of 5,315 initial-position checks (277 warnings) |
 | Formulas | 389 from Watkins (1995: 27 phrases, 81 schemas) and West (2007: 21 phrases, 62 lexical, 198 attested-only), `data/formulas/formulas.jsonl` (no book quotes); 7 complete phrases are Tier 1 records (`provenance: formulaic`, `corpus/tier1/formulas.jsonl`), validator coverage 55%: both books often omit initial laryngeals (*ógʷʰim*, *wésu*) |
+| NIL | 207 roots, 3,044 formations transcribed from page images (all 737 pages; 96% agreement between overlapping transcriptions). Merge **failed review** (docs/audits/nil-merge-review.md: ~25% of usable new lexemes wrong; 13 glosses on the wrong word); held out of slices while the fixes (homograph linking, palatal-preserving keys, gender from evidence, comparatives, duplicates, attestation gate) are applied and re-reviewed |
 | Themes | 456 motifs from West (2007) in 12 clusters (his chapters: Poet and Poesy … Arms and the Man), `data/themes/themes.jsonl` |
 | Genre × theme grid fill | — |
 
