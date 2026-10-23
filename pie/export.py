@@ -1,0 +1,112 @@
+"""Phase 7 export: train/eval splits, plain-text views, task-format views.
+
+Policy (docs/STATUS.md, open question 1 until David decides):
+  eval  = every Tier 1 record with canonical `pie` (scholarly texts), plus the
+          held-out root families for the cognate task
+  train = Tier 2 and Tier 3 records; batches named pilot-* only with
+          include_pilot=True (unreviewed)
+Cognate→PIE examples hold out *whole root families* (a deterministic hash
+of root_id), so no derivative of an eval root appears in a training task.
+The leakage check fails the export if any PIE string or record id is in both
+splits.
+"""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import random
+from pathlib import Path
+
+from .realize import Lexicon
+
+ROOT = Path(__file__).resolve().parent.parent
+COGNATE_LANGS = ["Sanskrit", "Ancient Greek", "Latin", "Proto-Germanic", "Hittite", "Old Irish", "Gothic",
+                 "Avestan", "Old Church Slavonic", "Lithuanian", "Tocharian B", "Old Armenian"]
+
+
+def eval_root(root_id: str | None, share: float = 0.10) -> bool:
+    if not root_id:
+        return False
+    h = int(hashlib.sha256(root_id.encode()).hexdigest()[:8], 16)
+    return h / 0xFFFFFFFF < share
+
+
+def _load(globpat: str, root: Path) -> list[dict]:
+    recs = []
+    for f in sorted(root.glob(globpat)):
+        recs += [json.loads(x) for x in f.read_text("utf-8").splitlines() if x.strip()]
+    return recs
+
+
+def record_tasks(r: dict) -> list[dict]:
+    out = []
+    if r.get("english"):
+        out.append({"task": "translate_en_pie", "input": r["english"], "output": r["pie"]})
+        out.append({"task": "translate_pie_en", "input": r["pie"], "output": r["english"]})
+    if r.get("gloss"):
+        out.append({"task": "gloss", "input": r["pie"], "output": r["gloss"]})
+    for t in out:
+        t["source_id"] = r["id"]
+    return out
+
+
+def inflection_tasks(lx: Lexicon, rng: random.Random, per_lexeme: int = 3) -> list[dict]:
+    """lemma + features → form, from the engine, for usable lexemes (primary forms only)."""
+    out = []
+    for lid, r in lx.specs.items():
+        if not r.get("usable") or not lx.entries[lid]["meaning"]:
+            continue
+        cells = lx.cells(lid) if r["family"] != "adj" else lx.cells(lid, "m")
+        feats = sorted(cells)
+        for f in rng.sample(feats, min(per_lexeme, len(feats))):
+            out.append({"task": "inflect", "input": f"{lx.entries[lid]['form']} {f}", "output": cells[f][0],
+                        "source_id": lid, "root_id": lx.entries[lid].get("root_id")})
+    return out
+
+
+def cognate_tasks(lx: Lexicon) -> list[dict]:
+    """Cognate set (≥2 daughters, no loans or analogical forms) → PIE lemma."""
+    out = []
+    for e in lx.entries.values():
+        refl = e.get("reflexes", {})
+        parts = []
+        for lang in COGNATE_LANGS:
+            forms = [x for x in refl.get(lang, []) if not (x.get("borrowed") or x.get("analogical"))]
+            if forms:
+                parts.append(f"{lang} {forms[0].get('roman') or forms[0]['form']}")
+        if len(parts) >= 2:
+            out.append({"task": "cognates_to_pie", "input": "; ".join(parts), "output": e["form"],
+                        "source_id": e["id"], "root_id": e.get("root_id")})
+    return out
+
+
+def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0) -> dict:
+    rng = random.Random(seed)
+    tier1 = [r for r in _load("corpus/tier1/*.jsonl", root) if r.get("pie")]
+    train_recs = _load("corpus/tier2/*.jsonl", root)
+    for f in sorted((root / "corpus" / "tier3").glob("*.jsonl")):
+        if f.name.startswith("pilot") and not include_pilot:
+            continue
+        train_recs += [json.loads(x) for x in f.read_text("utf-8").splitlines() if x.strip()]
+    lx = Lexicon.load()
+    train_tasks = [t for r in train_recs for t in record_tasks(r)]
+    eval_tasks = [t for r in tier1 for t in record_tasks(r)]
+    for t in inflection_tasks(lx, rng) + cognate_tasks(lx):
+        (eval_tasks if eval_root(t.get("root_id")) else train_tasks).append(t)
+    # leakage check
+    train_pie = {r["pie"] for r in train_recs}
+    leak = sorted({r["pie"] for r in tier1} & train_pie)
+    ids = {r["id"] for r in tier1} & {r["id"] for r in train_recs}
+    if leak or ids:
+        raise ValueError(f"eval leakage: {len(leak)} shared PIE strings, {len(ids)} shared ids, e.g. {leak[:3]}")
+    return {"train_records": train_recs, "eval_records": tier1, "train_tasks": train_tasks, "eval_tasks": eval_tasks}
+
+
+def views(records: list[dict]) -> dict[str, str]:
+    """Plain-text views: PIE only, PIE + English, interlinear, ASCII."""
+    pie = "\n".join(r["pie"] for r in records)
+    par = "\n\n".join(f"{r['pie']}\n{r['english']}" for r in records if r.get("english"))
+    ilg = "\n\n".join(f"{r['pie']}\n{r['gloss']}\n'{r['english']}'" for r in records if r.get("gloss"))
+    asc = "\n".join(r["pie_ascii"] for r in records)
+    return {"pie.txt": pie + "\n", "parallel.txt": par + "\n", "interlinear.txt": ilg + "\n", "pie_ascii.txt": asc + "\n"}
