@@ -1,0 +1,60 @@
+{
+ "note": "Manual spot checks, 2026-10-23 (main session). Verdicts only: pairs, refs and lemmas, no book or corpus text.",
+ "silver": {
+  "method": "Read every phrase-level (strict) silver pair of eval set E2 in its West paragraph (17), plus all 16 pairs that only a paragraph-wide rule would add, to judge whether West presents a phrase-level Vedic-Greek parallel.",
+  "strict": {"checked": 17, "genuine": 14, "precision": 0.82},
+  "paragraph_wide_only": {"checked": 16, "genuine": 2, "borderline": 1, "precision": 0.13,
+                          "decision": "not used: the paragraph-wide rule mostly pairs two adjectives of one noun, or a word with an unrelated neighbour"},
+  "first_20": {"checked": 20, "genuine": 14, "composition": "17 strict + the first 3 paragraph-wide-only pairs in sort order"},
+  "verdicts": [
+   {"pair": ["HéHḱus", "h₁éḱwos"], "ref": "west 019_ch12 ¶175", "genuine": true, "what": "swift horses"},
+   {"pair": ["éǵh₂", "ḱlew-"], "ref": "west 015_ch08 ¶307", "genuine": true, "what": "'hear me' (imperative of *ḱlew- + 1sg pronoun)"},
+   {"pair": ["ish₁rós", "men-"], "ref": "west 009_ch02 ¶119", "genuine": true, "what": "vigorous spirit"},
+   {"pair": ["médʰu", "sweh₂d-"], "ref": "west 009_ch02 ¶91", "genuine": true, "what": "sweet mead"},
+   {"pair": ["méǵh₂s", "ḱlew-"], "ref": "west 009_ch02 ¶47; 017_ch10 ¶471", "genuine": true, "what": "great fame"},
+   {"pair": ["só", "ḱlew-"], "ref": "west 017_ch10 ¶329", "genuine": false, "what": "demonstrative pronoun beside 'fame'; West's parallel is *dʰeh₁- + fame"},
+   {"pair": ["sóh₂wl̥", "deyḱ-"], "ref": "west 012_ch05 ¶53", "genuine": false, "what": "the Greek is West's own root-for-root rendering, not an attested phrase"},
+   {"pair": ["bʰeh₂-", "h₂ews-"], "ref": "west 012_ch05 ¶281", "genuine": true, "what": "Dawn shines"},
+   {"pair": ["dʰgʷʰey-", "ḱlew-"], "ref": "west 009_ch02 ¶41, ¶45; 017_ch10 ¶465", "genuine": true, "what": "imperishable fame"},
+   {"pair": ["dyew-", "peh₂-"], "ref": "west 011_ch04 ¶63", "genuine": true, "what": "Father Sky (the group of *ph₂tḗr is *peh₂-)"},
+   {"pair": ["dyew-", "per-"], "ref": "west 015_ch08 ¶27", "genuine": false, "what": "'first' (prathamá / πρῶτον) with an incidental genitive of Zeus"},
+   {"pair": ["ǵenh₁-", "peh₂-"], "ref": "west 009_ch02 ¶109", "genuine": true, "what": "father begetter"},
+   {"pair": ["h₁werH-", "ḱlew-"], "ref": "west 009_ch02 ¶47; 017_ch10 ¶473, ¶475", "genuine": true, "what": "wide fame"},
+   {"pair": ["h₂erǵ-", "wes-"], "ref": "west 009_ch02 ¶85", "genuine": true, "what": "bright garments"},
+   {"pair": ["ḱlew-", "per-"], "ref": "west 017_ch10 ¶641", "genuine": true, "what": "fame placed around (preverb pári / περί)"},
+   {"pair": ["nebʰ-", "wes-"], "ref": "west 009_ch02 ¶139", "genuine": true, "what": "clothed in cloud"},
+   {"pair": ["tetḱ-", "wekʷ-"], "ref": "west 008_ch01 ¶173", "genuine": true, "what": "carpenters of words"},
+   {"pair": ["HéHḱus", "h₂erǵ-"], "ref": "west 019_ch12 ¶175", "genuine": false, "what": "paragraph-wide only: two alternative horse epithets", "rule": "wide"},
+   {"pair": ["dʰédʰeh₁ti", "ǵenh₁-"], "ref": "west 019_ch12 ¶409", "genuine": false, "what": "paragraph-wide only: 'make light' vs 'become a light'", "rule": "wide"},
+   {"pair": ["éǵh₂", "dyew-"], "ref": "west 015_ch08 ¶393", "genuine": false, "what": "paragraph-wide only: unrelated neighbours", "rule": "wide"},
+   {"pair": ["h₁wésus", "deh₃-"], "ref": "west 010_ch03 ¶119", "genuine": true, "what": "paragraph-wide only: giver of goods", "rule": "wide"},
+   {"pair": ["sweh₂d-", "wekʷ-"], "ref": "west 009_ch02 ¶125", "genuine": true, "what": "paragraph-wide only: sweet speech (Greek via ἡδυεπής)", "rule": "wide"},
+   {"pair": ["h₁éḱwos", "h₂erǵ-"], "ref": "west 019_ch12 ¶175", "genuine": null, "what": "paragraph-wide only: borderline (swift horses via names)", "rule": "wide"}
+  ]
+ },
+ "mapping": {
+  "method": "30 kaikki-tier lemmas (15 Rigveda, 15 Homer), drawn with probability proportional to content-token frequency (seed 7), checked against the linked PIE entries.",
+  "checked": 30, "correct_etymon_included": 30, "unambiguous_and_correct": 26, "wrong": 0,
+  "ambiguous": ["√dā- 1 (also *deh₂- 'share', *deh₁- 'bind')", "stóma- (*stew- 'push' and 'praise')",
+                "καλύπτω (*ḱel- 'incline' and 'cover')", "κλισία (*ḱley- 'lean' and 'shelter')"],
+  "cause_of_ambiguity": "homograph roots with one written form; the link names the page, and our lexicon keeps homographs apart",
+  "sample": [
+   ["rv", "víśva-", "kaikki-pseudo", "*h₁wiḱwos", true], ["rv", "r̥tá-", "kaikki", "h₂r̥tós", true],
+   ["rv", "bhága-", "kaikki-proto", "bʰeh₂gós / bʰoh₂gós", true], ["rv", "√aś-", "kaikki", "h₂neḱ- / h₂eḱh₃- (two Vedic roots aś-)", true],
+   ["rv", "√dā- 1", "kaikki", "deh₃- (+ deh₂-, deh₁-)", "ambiguous"], ["rv", "sákhi-", "kaikki", "sokʷh₂ṓy", true],
+   ["rv", "pū́rva-", "kaikki", "pr̥h₂wós", true], ["rv", "vŕ̥ṣan-", "kaikki", "wérsēn", true],
+   ["rv", "devá-", "kaikki", "deywós", true], ["rv", "√yuj-", "kaikki", "yewg-", true],
+   ["rv", "rayí- ~ rāy-", "kaikki", "Hreh₁ís", true], ["rv", "√gam-", "kaikki", "gʷem-", true],
+   ["rv", "stóma-", "kaikki-root", "stew- (two homographs)", "ambiguous"], ["rv", "śíras- ~ śīrṣán-", "kaikki", "ḱérh₂sō", true],
+   ["rv", "námas-", "kaikki", "némos", true],
+   ["hom", "εἰμί", "kaikki", "h₁ésmi", true], ["hom", "θυγάτηρ", "kaikki", "dʰugh₂tḗr", true],
+   ["hom", "καλύπτω", "kaikki", "ḱel- (two homographs)", "ambiguous"], ["hom", "ἀνήρ", "kaikki", "h₂nḗr", true],
+   ["hom", "ὄλλυμι", "kaikki", "h₃elh₁-", true], ["hom", "οἶδα", "kaikki", "wóyde", true],
+   ["hom", "Ζεύς", "kaikki", "dyḗws", true], ["hom", "κλισία", "kaikki-root", "ḱley- (two homographs)", "ambiguous"],
+   ["hom", "πᾶς", "kaikki-pseudo", "*ph₂ents", true], ["hom", "ἔργον", "kaikki", "wérǵom", true],
+   ["hom", "θεός", "kaikki", "dʰéh₁s", true], ["hom", "ἀγορεύω", "kaikki-chain", "h₂goréh₂ (via ἀγορά)", true],
+   ["hom", "στίξ", "kaikki", "steygʰ-", true], ["hom", "λαός", "kaikki-pseudo", "*leh₂wos", true],
+   ["hom", "γέρων", "kaikki", "ǵérh₂onts", true]
+  ]
+ }
+}

@@ -483,3 +483,18 @@ def test_item_ranks_project_and_recall_ci():
     ci = fs.bootstrap_ci([1, None, 1, None] * 10, ks=(1,), b=500)
     lo, hi = ci["recall@1"]
     assert lo < 0.5 < hi
+
+
+def test_paired_bootstrap_diff():
+    a = [1, 1, 1, None] * 10
+    b = [None, None, 1, None] * 10
+    r = fs.paired_bootstrap_diff(a, b, k=5, b=500)
+    assert r["diff"] == 0.5 and r["ci95"][0] > 0.2
+    assert fs.paired_bootstrap_diff(a, a, k=5)["ci95"] == [0.0, 0.0]
+
+
+def test_score_exact_alpha_each():
+    x = fs.count_units([[A, B]] * 8 + [[C]] * 92)
+    y = fs.count_units([[A, B]] * 1 + [[A]] * 40 + [[B]] * 40 + [[C]] * 19)    # chance level in y
+    assert fs.score_exact([x, y])                                            # Fisher alone keeps it
+    assert fs.score_exact([x, y], max_logp=math.log(0.05)) == []             # not significant in y

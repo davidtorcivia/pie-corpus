@@ -1696,6 +1696,18 @@ def bootstrap_ci(ranks: list[int | None], ks=(50, 100, 200), b: int = 2000, seed
     return out
 
 
+def paired_bootstrap_diff(ranks_a: list, ranks_b: list, k: int, b: int = 2000, seed: int = 0) -> dict:
+    """recall@k(a) − recall@k(b) on the same items, with a paired percentile
+    95% CI (items resampled together)."""
+    n = len(ranks_a)
+    if not n:
+        return {"diff": None, "ci95": None}
+    d = [(1 if ra and ra <= k else 0) - (1 if rb and rb <= k else 0) for ra, rb in zip(ranks_a, ranks_b)]
+    rng = random.Random(seed)
+    stats = sorted(sum(d[rng.randrange(n)] for _ in range(n)) / n for _ in range(b))
+    return {"diff": round(sum(d) / n, 3), "ci95": [round(stats[int(0.025 * b)], 3), round(stats[int(0.975 * b) - 1], 3)]}
+
+
 # ---------------------------------------------------------------- syntactic relation of a co-occurrence
 
 def relation(a: Token, b: Token) -> str:

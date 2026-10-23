@@ -24,6 +24,8 @@ Round 1's outputs are kept in evaluation_round1.json / tuning_round1.json.
 
 import argparse
 import collections
+import math
+import os
 import itertools
 import json
 import statistics
@@ -34,7 +36,7 @@ from pathlib import Path
 from pie import formula_search as fs
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "data" / "research" / "formulas"
+OUT = Path(os.environ.get("FORMULA_SEARCH_OUT") or ROOT / "data" / "research" / "formulas")
 KS = (50, 100, 200)
 GOLD_KINDS = ("phrase", "lexical", "attested", "schema")
 PRIMARY = ("phrase", "lexical")
@@ -160,7 +162,8 @@ class Env:
             if cfg.get("third_mode", "none") != "none":
                 third = self.counts("lat", m, lv, co, cfg["lat_spec"], seed)
             ranking = fs.score_exact([a, b], cfg["min_count"], cfg["rank_by"], cfg.get("midp", False),
-                                     third=third, third_mode=cfg.get("third_mode", "none"), bonus=bonus, keep=keep,
+                                     max_logp=cfg.get("max_logp", 0.0), third=third,
+                                     third_mode=cfg.get("third_mode", "none"), bonus=bonus, keep=keep,
                                      floor=cfg.get("floor"))
         out, seen = [], set()
         for r in ranking:
@@ -201,6 +204,7 @@ def grid(base: dict, **axes) -> list[dict]:
     return [{**base, **dict(zip(keys, vals))} for vals in itertools.product(*(axes[k] for k in keys))]
 
 
+ALPHA_EACH = round(math.log(0.05), 6)     # 'significant in each corpus' (p < 0.05) option
 SPECS = [("pada", "line"), ("stanza", "sentence"), ("pada", "sentence"), ("win3", "win3")]
 
 
@@ -218,7 +222,8 @@ def exact_grid(mapname, levels=("group",), **extra):
     out = []
     for (r, h) in SPECS:
         out += grid({**base, "rv_spec": r, "hom_spec": h, **extra}, level=list(levels), min_count=[1, 2],
-                    rank_by=["fisher", "max"], midp=[False, True], floor=[None, -10.0], content_only=[False, True])
+                    rank_by=["fisher", "max"], midp=[False, True], floor=[None, -10.0], content_only=[False, True],
+                    max_logp=[0.0, ALPHA_EACH])
     return out
 
 
@@ -240,7 +245,7 @@ def rows(best_exact: dict | None = None, best_syntax: dict | None = None) -> lis
 
 def exact_rows(mapname: str, levels) -> list[tuple]:
     d = {"scorer": "exact", "map": mapname, "level": levels[0], "rv_spec": "pada", "hom_spec": "line",
-         "min_count": 1, "rank_by": "fisher", "midp": False, "floor": None, "content_only": False}
+         "min_count": 1, "rank_by": "fisher", "midp": False, "floor": None, "content_only": False, "max_logp": 0.0}
     return [("exact", f"+ exact per-corpus tests (hypergeometric / Poisson) combined by Fisher; map={mapname}",
              exact_grid(mapname, levels), d)]
 
@@ -249,7 +254,8 @@ def syntax_rows(b: dict) -> list[tuple]:
     """Variants on top of a fixed exact setting family b (specs and levels
     from the exact row's choice; the other knobs re-tuned)."""
     base = {k: b[k] for k in ("scorer", "map", "level", "rv_spec", "hom_spec")}
-    knobs = dict(min_count=[1, 2], rank_by=["fisher", "max"], floor=[None, -10.0], content_only=[False, True])
+    knobs = dict(min_count=[1, 2], rank_by=["fisher", "max"], floor=[None, -10.0], content_only=[False, True],
+                 max_logp=[0.0, ALPHA_EACH])
     return [
         ("syn_filter_linked", "count only syntactically linked co-occurrences (Homer head–dependent; RV adjacency in the pāda)",
          grid({**base, "syn": "filter-linked", "midp": True}, rv_link=["adj1", "adj2"], **knobs), None),
@@ -263,8 +269,9 @@ def syntax_rows(b: dict) -> list[tuple]:
 
 
 def latin_rows(b: dict) -> list[tuple]:
-    base = {k: v for k, v in b.items() if k not in ("min_count", "rank_by", "floor", "content_only")}
-    knobs = dict(min_count=[1, 2], rank_by=["fisher", "max"], floor=[None, -10.0], content_only=[False, True])
+    base = {k: v for k, v in b.items() if k not in ("min_count", "rank_by", "floor", "content_only", "max_logp")}
+    knobs = dict(min_count=[1, 2], rank_by=["fisher", "max"], floor=[None, -10.0], content_only=[False, True],
+                 max_logp=[0.0, ALPHA_EACH])
     return [(f"latin_{m}", f"+ early Latin (LASLA) as {m}",
              grid({**base, "third_mode": m}, lat_spec=["line", "sentence"], **knobs), None)
             for m in ("tiebreak", "fisher3", "fisher3pos", "require")]
@@ -382,6 +389,14 @@ def run_ablation(env: Env) -> dict:
     final_row = max(chain,
                     key=lambda r: (objective(results[(r, "E2")]["pooled"]), -all_names.index(r)))
     final = results[(final_row, "E2")]
+    fcfg = final["settings"][final["full_best"]]
+    strict = {**fcfg, "max_logp": ALPHA_EACH}
+    do("final_each_p05", "diagnostic: the final setting, but each corpus must give p < 0.05 (fixed, not tuned)",
+       [strict], strict)
+    for row in table:
+        for k in evs:
+            fr, rr = results[(final_row, k)]["pooled"], results[(row["row"], k)]["pooled"]
+            row[k]["final_minus_row"] = {f"recall@{kk}": fs.paired_bootstrap_diff(fr, rr, kk) for kk in KS}
     return {"evs": evs, "table": table, "results": results, "final_row": final_row,
             "final_cfg": final["settings"][final["full_best"]], "best_map_row": best_map_row, "best_syn_row": best_syn}
 
@@ -411,7 +426,8 @@ def write_evaluation(env: Env, ab: dict) -> None:
                  for it, r in zip(ev["items"], final_res["pooled"])]
     table_compact = [{"row": r["row"], **{k: {"recall": r[k]["recall"], "ci95": r[k]["ci95"],
                                               "shuffled": {kk: r[k]["shuffled"][kk] for kk in ("recall@50", "recall@100", "recall@200")},
-                                              "gold_items": r[k]["gold_items"], "primary_items": r[k]["primary_items"]}
+                                              "gold_items": r[k]["gold_items"], "primary_items": r[k]["primary_items"],
+                                              "final_minus_row": r[k]["final_minus_row"]}
                                           for k in ("E2", "E1")}} for r in ab["table"]]
     doc = {
         "round": 2,
@@ -502,6 +518,7 @@ def write_candidates(env: Env, cfg: dict, ev: dict, top_n: int = 200) -> list[di
                "hom": {"n": r["n"][1], "neglog10p": round(-r["logp"][1] / fs.LOG10, 2)},
                "lat": ({"n": r["third"]["n"], "neglog10p": round(-r["third"]["logp"] / fs.LOG10, 2)}
                        if r.get("third") else None),
+               "significant_in_both": max(r["logp"]) < ALPHA_EACH,
                "relation": {"rv_linked": dict(rel_rv.get(p, {})), "hom_dependency": dict(rel_hom.get(p, {})),
                             "rv_dominant": dr, "hom_dominant": dh, "same_in_both": bool(dr and dr == dh)},
                "rv_examples": ex["rv"][p]["examples"], "hom_examples": ex["hom"][p]["examples"],

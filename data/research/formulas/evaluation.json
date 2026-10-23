@@ -384,7 +384,241 @@
     "in_gold": true
    }
   ],
-  "spot_check": {}
+  "spot_check": {
+   "method": "Read every phrase-level (strict) silver pair of eval set E2 in its West paragraph (17), plus all 16 pairs that only a paragraph-wide rule would add, to judge whether West presents a phrase-level Vedic-Greek parallel.",
+   "strict": {
+    "checked": 17,
+    "genuine": 14,
+    "precision": 0.82
+   },
+   "paragraph_wide_only": {
+    "checked": 16,
+    "genuine": 2,
+    "borderline": 1,
+    "precision": 0.13,
+    "decision": "not used: the paragraph-wide rule mostly pairs two adjectives of one noun, or a word with an unrelated neighbour"
+   },
+   "first_20": {
+    "checked": 20,
+    "genuine": 14,
+    "composition": "17 strict + the first 3 paragraph-wide-only pairs in sort order"
+   },
+   "verdicts": [
+    {
+     "pair": [
+      "HéHḱus",
+      "h₁éḱwos"
+     ],
+     "ref": "west 019_ch12 ¶175",
+     "genuine": true,
+     "what": "swift horses"
+    },
+    {
+     "pair": [
+      "éǵh₂",
+      "ḱlew-"
+     ],
+     "ref": "west 015_ch08 ¶307",
+     "genuine": true,
+     "what": "'hear me' (imperative of *ḱlew- + 1sg pronoun)"
+    },
+    {
+     "pair": [
+      "ish₁rós",
+      "men-"
+     ],
+     "ref": "west 009_ch02 ¶119",
+     "genuine": true,
+     "what": "vigorous spirit"
+    },
+    {
+     "pair": [
+      "médʰu",
+      "sweh₂d-"
+     ],
+     "ref": "west 009_ch02 ¶91",
+     "genuine": true,
+     "what": "sweet mead"
+    },
+    {
+     "pair": [
+      "méǵh₂s",
+      "ḱlew-"
+     ],
+     "ref": "west 009_ch02 ¶47; 017_ch10 ¶471",
+     "genuine": true,
+     "what": "great fame"
+    },
+    {
+     "pair": [
+      "só",
+      "ḱlew-"
+     ],
+     "ref": "west 017_ch10 ¶329",
+     "genuine": false,
+     "what": "demonstrative pronoun beside 'fame'; West's parallel is *dʰeh₁- + fame"
+    },
+    {
+     "pair": [
+      "sóh₂wl̥",
+      "deyḱ-"
+     ],
+     "ref": "west 012_ch05 ¶53",
+     "genuine": false,
+     "what": "the Greek is West's own root-for-root rendering, not an attested phrase"
+    },
+    {
+     "pair": [
+      "bʰeh₂-",
+      "h₂ews-"
+     ],
+     "ref": "west 012_ch05 ¶281",
+     "genuine": true,
+     "what": "Dawn shines"
+    },
+    {
+     "pair": [
+      "dʰgʷʰey-",
+      "ḱlew-"
+     ],
+     "ref": "west 009_ch02 ¶41, ¶45; 017_ch10 ¶465",
+     "genuine": true,
+     "what": "imperishable fame"
+    },
+    {
+     "pair": [
+      "dyew-",
+      "peh₂-"
+     ],
+     "ref": "west 011_ch04 ¶63",
+     "genuine": true,
+     "what": "Father Sky (the group of *ph₂tḗr is *peh₂-)"
+    },
+    {
+     "pair": [
+      "dyew-",
+      "per-"
+     ],
+     "ref": "west 015_ch08 ¶27",
+     "genuine": false,
+     "what": "'first' (prathamá / πρῶτον) with an incidental genitive of Zeus"
+    },
+    {
+     "pair": [
+      "ǵenh₁-",
+      "peh₂-"
+     ],
+     "ref": "west 009_ch02 ¶109",
+     "genuine": true,
+     "what": "father begetter"
+    },
+    {
+     "pair": [
+      "h₁werH-",
+      "ḱlew-"
+     ],
+     "ref": "west 009_ch02 ¶47; 017_ch10 ¶473, ¶475",
+     "genuine": true,
+     "what": "wide fame"
+    },
+    {
+     "pair": [
+      "h₂erǵ-",
+      "wes-"
+     ],
+     "ref": "west 009_ch02 ¶85",
+     "genuine": true,
+     "what": "bright garments"
+    },
+    {
+     "pair": [
+      "ḱlew-",
+      "per-"
+     ],
+     "ref": "west 017_ch10 ¶641",
+     "genuine": true,
+     "what": "fame placed around (preverb pári / περί)"
+    },
+    {
+     "pair": [
+      "nebʰ-",
+      "wes-"
+     ],
+     "ref": "west 009_ch02 ¶139",
+     "genuine": true,
+     "what": "clothed in cloud"
+    },
+    {
+     "pair": [
+      "tetḱ-",
+      "wekʷ-"
+     ],
+     "ref": "west 008_ch01 ¶173",
+     "genuine": true,
+     "what": "carpenters of words"
+    },
+    {
+     "pair": [
+      "HéHḱus",
+      "h₂erǵ-"
+     ],
+     "ref": "west 019_ch12 ¶175",
+     "genuine": false,
+     "what": "paragraph-wide only: two alternative horse epithets",
+     "rule": "wide"
+    },
+    {
+     "pair": [
+      "dʰédʰeh₁ti",
+      "ǵenh₁-"
+     ],
+     "ref": "west 019_ch12 ¶409",
+     "genuine": false,
+     "what": "paragraph-wide only: 'make light' vs 'become a light'",
+     "rule": "wide"
+    },
+    {
+     "pair": [
+      "éǵh₂",
+      "dyew-"
+     ],
+     "ref": "west 015_ch08 ¶393",
+     "genuine": false,
+     "what": "paragraph-wide only: unrelated neighbours",
+     "rule": "wide"
+    },
+    {
+     "pair": [
+      "h₁wésus",
+      "deh₃-"
+     ],
+     "ref": "west 010_ch03 ¶119",
+     "genuine": true,
+     "what": "paragraph-wide only: giver of goods",
+     "rule": "wide"
+    },
+    {
+     "pair": [
+      "sweh₂d-",
+      "wekʷ-"
+     ],
+     "ref": "west 009_ch02 ¶125",
+     "genuine": true,
+     "what": "paragraph-wide only: sweet speech (Greek via ἡδυεπής)",
+     "rule": "wide"
+    },
+    {
+     "pair": [
+      "h₁éḱwos",
+      "h₂erǵ-"
+     ],
+     "ref": "west 019_ch12 ¶175",
+     "genuine": null,
+     "what": "paragraph-wide only: borderline (swift horses via names)",
+     "rule": "wide"
+    }
+   ]
+  }
  },
  "coverage": {
   "r1": {
@@ -449,150 +683,375 @@
   "kaikki": {
    "rv": {
     "tokens": 164758,
-    "tokens_mapped": 108294,
-    "share": 0.6573,
+    "tokens_mapped": 108375,
+    "share": 0.6578,
     "content_tokens": 118887,
-    "content_mapped": 70614,
-    "content_share": 0.594,
+    "content_mapped": 70693,
+    "content_share": 0.5946,
     "lemmas": 10031,
-    "lemmas_mapped": 1770,
+    "lemmas_mapped": 1775,
     "lemmas_ambiguous_dropped": 0,
     "tokens_by_tier": {
-     "kaikki": 81368,
-     "unmapped": 56464,
-     "surface": 6052,
+     "kaikki": 80932,
+     "unmapped": 56383,
+     "surface": 6436,
      "kaikki-proto": 2556,
-     "direct": 6017,
-     "bridge": 4314,
-     "roots": 1055,
-     "kaikki-root": 1517,
-     "kaikki-chain": 4786,
+     "direct": 6166,
+     "bridge": 4324,
+     "roots": 1034,
+     "kaikki-root": 1509,
+     "kaikki-chain": 4789,
      "privative": 629
     },
-    "root_groups": 719
+    "root_groups": 744
    },
    "hom": {
     "tokens": 200145,
-    "tokens_mapped": 141173,
-    "share": 0.7054,
+    "tokens_mapped": 140953,
+    "share": 0.7043,
     "content_tokens": 116533,
-    "content_mapped": 74640,
-    "content_share": 0.6405,
+    "content_mapped": 74419,
+    "content_share": 0.6386,
     "lemmas": 8823,
-    "lemmas_mapped": 2668,
+    "lemmas_mapped": 2658,
     "lemmas_ambiguous_dropped": 0,
     "tokens_by_tier": {
-     "unmapped": 58972,
-     "kaikki": 109302,
-     "kaikki-chain": 13878,
-     "kaikki-root": 4053,
+     "unmapped": 59192,
+     "kaikki": 108832,
+     "kaikki-chain": 13778,
+     "kaikki-root": 3972,
      "kaikki-proto": 2826,
      "bridge": 2057,
-     "direct": 8492,
+     "direct": 8923,
      "surface": 435,
      "privative": 68,
      "unaccented": 62
     },
-    "root_groups": 789
+    "root_groups": 818
    },
    "lat": {
     "tokens": 144786,
-    "tokens_mapped": 87548,
-    "share": 0.6047,
+    "tokens_mapped": 87493,
+    "share": 0.6043,
     "content_tokens": 73932,
-    "content_mapped": 39634,
-    "content_share": 0.5361,
+    "content_mapped": 39580,
+    "content_share": 0.5354,
     "lemmas": 9468,
-    "lemmas_mapped": 1846,
+    "lemmas_mapped": 1837,
     "lemmas_ambiguous_dropped": 0,
     "tokens_by_tier": {
-     "kaikki": 71245,
-     "unmapped": 57238,
-     "kaikki-proto": 5097,
-     "direct": 4929,
-     "kaikki-root": 3117,
+     "kaikki": 70493,
+     "unmapped": 57293,
+     "kaikki-proto": 5093,
+     "direct": 5667,
+     "kaikki-root": 3085,
      "surface": 390,
-     "kaikki-chain": 2770
+     "kaikki-chain": 2765
     },
-    "root_groups": 776
+    "root_groups": 809
    }
   },
   "pseudo": {
    "rv": {
     "tokens": 164758,
-    "tokens_mapped": 120479,
-    "share": 0.7312,
+    "tokens_mapped": 120332,
+    "share": 0.7304,
     "content_tokens": 118887,
-    "content_mapped": 77918,
-    "content_share": 0.6554,
+    "content_mapped": 77771,
+    "content_share": 0.6542,
     "lemmas": 10031,
-    "lemmas_mapped": 1981,
+    "lemmas_mapped": 1978,
     "lemmas_ambiguous_dropped": 0,
     "tokens_by_tier": {
-     "kaikki": 81368,
-     "unmapped": 44279,
-     "kaikki-pseudo": 11839,
-     "surface": 6052,
+     "kaikki": 80932,
+     "unmapped": 44426,
+     "kaikki-pseudo": 11816,
+     "surface": 6436,
      "kaikki-proto": 2556,
-     "direct": 5999,
-     "bridge": 4271,
-     "roots": 1052,
-     "kaikki-root": 1517,
-     "kaikki-chain": 5196,
+     "direct": 6156,
+     "bridge": 4281,
+     "roots": 1034,
+     "kaikki-root": 1509,
+     "kaikki-chain": 4983,
      "privative": 629
     },
-    "root_groups": 911
+    "root_groups": 932
    },
    "hom": {
     "tokens": 200145,
-    "tokens_mapped": 155747,
-    "share": 0.7782,
+    "tokens_mapped": 155516,
+    "share": 0.777,
     "content_tokens": 116533,
-    "content_mapped": 81965,
-    "content_share": 0.7034,
+    "content_mapped": 81734,
+    "content_share": 0.7014,
     "lemmas": 8823,
-    "lemmas_mapped": 3009,
+    "lemmas_mapped": 2996,
     "lemmas_ambiguous_dropped": 0,
     "tokens_by_tier": {
-     "unmapped": 44398,
-     "kaikki": 109111,
-     "kaikki-pseudo": 13115,
-     "kaikki-chain": 15348,
-     "kaikki-root": 4053,
+     "unmapped": 44629,
+     "kaikki": 108641,
+     "kaikki-pseudo": 13104,
+     "kaikki-chain": 15248,
+     "kaikki-root": 3972,
      "kaikki-proto": 2826,
      "bridge": 2057,
-     "direct": 8482,
+     "direct": 8913,
      "surface": 435,
      "unaccented": 252,
      "privative": 68
     },
-    "root_groups": 1016
+    "root_groups": 1042
    },
    "lat": {
     "tokens": 144786,
-    "tokens_mapped": 91325,
-    "share": 0.6308,
+    "tokens_mapped": 91260,
+    "share": 0.6303,
     "content_tokens": 73932,
-    "content_mapped": 42366,
-    "content_share": 0.573,
+    "content_mapped": 42302,
+    "content_share": 0.5722,
     "lemmas": 9468,
-    "lemmas_mapped": 2099,
+    "lemmas_mapped": 2089,
     "lemmas_ambiguous_dropped": 0,
     "tokens_by_tier": {
-     "kaikki": 71245,
-     "unmapped": 53461,
-     "kaikki-proto": 5097,
-     "direct": 4927,
-     "kaikki-pseudo": 3643,
-     "kaikki-root": 3117,
+     "kaikki": 70493,
+     "unmapped": 53526,
+     "kaikki-proto": 5093,
+     "direct": 5665,
+     "kaikki-pseudo": 3633,
+     "kaikki-root": 3085,
      "surface": 390,
-     "kaikki-chain": 2906
+     "kaikki-chain": 2901
     },
-    "root_groups": 1000
+    "root_groups": 1032
    }
   }
  },
- "mapping_spot_check": {},
+ "mapping_spot_check": {
+  "method": "30 kaikki-tier lemmas (15 Rigveda, 15 Homer), drawn with probability proportional to content-token frequency (seed 7), checked against the linked PIE entries.",
+  "checked": 30,
+  "correct_etymon_included": 30,
+  "unambiguous_and_correct": 26,
+  "wrong": 0,
+  "ambiguous": [
+   "√dā- 1 (also *deh₂- 'share', *deh₁- 'bind')",
+   "stóma- (*stew- 'push' and 'praise')",
+   "καλύπτω (*ḱel- 'incline' and 'cover')",
+   "κλισία (*ḱley- 'lean' and 'shelter')"
+  ],
+  "cause_of_ambiguity": "homograph roots with one written form; the link names the page, and our lexicon keeps homographs apart",
+  "sample": [
+   [
+    "rv",
+    "víśva-",
+    "kaikki-pseudo",
+    "*h₁wiḱwos",
+    true
+   ],
+   [
+    "rv",
+    "r̥tá-",
+    "kaikki",
+    "h₂r̥tós",
+    true
+   ],
+   [
+    "rv",
+    "bhága-",
+    "kaikki-proto",
+    "bʰeh₂gós / bʰoh₂gós",
+    true
+   ],
+   [
+    "rv",
+    "√aś-",
+    "kaikki",
+    "h₂neḱ- / h₂eḱh₃- (two Vedic roots aś-)",
+    true
+   ],
+   [
+    "rv",
+    "√dā- 1",
+    "kaikki",
+    "deh₃- (+ deh₂-, deh₁-)",
+    "ambiguous"
+   ],
+   [
+    "rv",
+    "sákhi-",
+    "kaikki",
+    "sokʷh₂ṓy",
+    true
+   ],
+   [
+    "rv",
+    "pū́rva-",
+    "kaikki",
+    "pr̥h₂wós",
+    true
+   ],
+   [
+    "rv",
+    "vŕ̥ṣan-",
+    "kaikki",
+    "wérsēn",
+    true
+   ],
+   [
+    "rv",
+    "devá-",
+    "kaikki",
+    "deywós",
+    true
+   ],
+   [
+    "rv",
+    "√yuj-",
+    "kaikki",
+    "yewg-",
+    true
+   ],
+   [
+    "rv",
+    "rayí- ~ rāy-",
+    "kaikki",
+    "Hreh₁ís",
+    true
+   ],
+   [
+    "rv",
+    "√gam-",
+    "kaikki",
+    "gʷem-",
+    true
+   ],
+   [
+    "rv",
+    "stóma-",
+    "kaikki-root",
+    "stew- (two homographs)",
+    "ambiguous"
+   ],
+   [
+    "rv",
+    "śíras- ~ śīrṣán-",
+    "kaikki",
+    "ḱérh₂sō",
+    true
+   ],
+   [
+    "rv",
+    "námas-",
+    "kaikki",
+    "némos",
+    true
+   ],
+   [
+    "hom",
+    "εἰμί",
+    "kaikki",
+    "h₁ésmi",
+    true
+   ],
+   [
+    "hom",
+    "θυγάτηρ",
+    "kaikki",
+    "dʰugh₂tḗr",
+    true
+   ],
+   [
+    "hom",
+    "καλύπτω",
+    "kaikki",
+    "ḱel- (two homographs)",
+    "ambiguous"
+   ],
+   [
+    "hom",
+    "ἀνήρ",
+    "kaikki",
+    "h₂nḗr",
+    true
+   ],
+   [
+    "hom",
+    "ὄλλυμι",
+    "kaikki",
+    "h₃elh₁-",
+    true
+   ],
+   [
+    "hom",
+    "οἶδα",
+    "kaikki",
+    "wóyde",
+    true
+   ],
+   [
+    "hom",
+    "Ζεύς",
+    "kaikki",
+    "dyḗws",
+    true
+   ],
+   [
+    "hom",
+    "κλισία",
+    "kaikki-root",
+    "ḱley- (two homographs)",
+    "ambiguous"
+   ],
+   [
+    "hom",
+    "πᾶς",
+    "kaikki-pseudo",
+    "*ph₂ents",
+    true
+   ],
+   [
+    "hom",
+    "ἔργον",
+    "kaikki",
+    "wérǵom",
+    true
+   ],
+   [
+    "hom",
+    "θεός",
+    "kaikki",
+    "dʰéh₁s",
+    true
+   ],
+   [
+    "hom",
+    "ἀγορεύω",
+    "kaikki-chain",
+    "h₂goréh₂ (via ἀγορά)",
+    true
+   ],
+   [
+    "hom",
+    "στίξ",
+    "kaikki",
+    "steygʰ-",
+    true
+   ],
+   [
+    "hom",
+    "λαός",
+    "kaikki-pseudo",
+    "*leh₂wos",
+    true
+   ],
+   [
+    "hom",
+    "γέρων",
+    "kaikki",
+    "ǵérh₂onts",
+    true
+   ]
+  ]
+ },
  "ablation": [
   {
    "row": "r1_frozen",
@@ -632,6 +1091,29 @@
      "recall@50": 0.273,
      "recall@100": 0.273,
      "recall@200": 0.273
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.125,
+      "ci95": [
+       -0.042,
+       0.292
+      ]
+     },
+     "recall@100": {
+      "diff": 0.292,
+      "ci95": [
+       0.125,
+       0.458
+      ]
+     },
+     "recall@200": {
+      "diff": 0.333,
+      "ci95": [
+       0.167,
+       0.5
+      ]
+     }
     }
    },
    "E1": {
@@ -670,6 +1152,29 @@
      "recall@50": 0.444,
      "recall@100": 0.444,
      "recall@200": 0.444
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": -0.062,
+      "ci95": [
+       -0.25,
+       0.125
+      ]
+     },
+     "recall@100": {
+      "diff": 0.125,
+      "ci95": [
+       -0.125,
+       0.375
+      ]
+     },
+     "recall@200": {
+      "diff": 0.188,
+      "ci95": [
+       -0.062,
+       0.438
+      ]
+     }
     }
    }
   },
@@ -711,6 +1216,29 @@
      "recall@50": 0.182,
      "recall@100": 0.364,
      "recall@200": 0.364
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.125,
+      "ci95": [
+       -0.042,
+       0.292
+      ]
+     },
+     "recall@100": {
+      "diff": 0.208,
+      "ci95": [
+       0.0,
+       0.417
+      ]
+     },
+     "recall@200": {
+      "diff": 0.25,
+      "ci95": [
+       0.083,
+       0.417
+      ]
+     }
     }
    },
    "E1": {
@@ -749,6 +1277,29 @@
      "recall@50": 0.222,
      "recall@100": 0.444,
      "recall@200": 0.444
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       -0.188,
+       0.188
+      ]
+     },
+     "recall@100": {
+      "diff": 0.062,
+      "ci95": [
+       -0.125,
+       0.25
+      ]
+     },
+     "recall@200": {
+      "diff": 0.125,
+      "ci95": [
+       0.0,
+       0.312
+      ]
+     }
     }
    }
   },
@@ -790,6 +1341,29 @@
      "recall@50": 0.091,
      "recall@100": 0.091,
      "recall@200": 0.182
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.167,
+      "ci95": [
+       0.042,
+       0.333
+      ]
+     },
+     "recall@100": {
+      "diff": 0.292,
+      "ci95": [
+       0.083,
+       0.5
+      ]
+     },
+     "recall@200": {
+      "diff": 0.292,
+      "ci95": [
+       0.125,
+       0.5
+      ]
+     }
     }
    },
    "E1": {
@@ -828,6 +1402,29 @@
      "recall@50": 0.111,
      "recall@100": 0.111,
      "recall@200": 0.222
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.125,
+      "ci95": [
+       0.0,
+       0.312
+      ]
+     },
+     "recall@100": {
+      "diff": 0.25,
+      "ci95": [
+       0.0,
+       0.5
+      ]
+     },
+     "recall@200": {
+      "diff": 0.25,
+      "ci95": [
+       0.062,
+       0.438
+      ]
+     }
     }
    }
   },
@@ -869,6 +1466,29 @@
      "recall@50": 0.091,
      "recall@100": 0.091,
      "recall@200": 0.091
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.167,
+      "ci95": [
+       0.042,
+       0.333
+      ]
+     },
+     "recall@100": {
+      "diff": 0.333,
+      "ci95": [
+       0.167,
+       0.542
+      ]
+     },
+     "recall@200": {
+      "diff": 0.333,
+      "ci95": [
+       0.167,
+       0.542
+      ]
+     }
     }
    },
    "E1": {
@@ -907,6 +1527,29 @@
      "recall@50": 0.111,
      "recall@100": 0.111,
      "recall@200": 0.111
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.125,
+      "ci95": [
+       0.0,
+       0.312
+      ]
+     },
+     "recall@100": {
+      "diff": 0.25,
+      "ci95": [
+       0.0,
+       0.5
+      ]
+     },
+     "recall@200": {
+      "diff": 0.312,
+      "ci95": [
+       0.125,
+       0.562
+      ]
+     }
     }
    }
   },
@@ -948,6 +1591,29 @@
      "recall@50": 0.364,
      "recall@100": 0.455,
      "recall@200": 0.545
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.125,
+      "ci95": [
+       -0.083,
+       0.333
+      ]
+     },
+     "recall@100": {
+      "diff": 0.208,
+      "ci95": [
+       0.0,
+       0.417
+      ]
+     },
+     "recall@200": {
+      "diff": 0.208,
+      "ci95": [
+       0.0,
+       0.417
+      ]
+     }
     }
    },
    "E1": {
@@ -986,6 +1652,29 @@
      "recall@50": 0.333,
      "recall@100": 0.444,
      "recall@200": 0.556
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       -0.188,
+       0.188
+      ]
+     },
+     "recall@100": {
+      "diff": 0.062,
+      "ci95": [
+       -0.125,
+       0.25
+      ]
+     },
+     "recall@200": {
+      "diff": 0.062,
+      "ci95": [
+       -0.125,
+       0.25
+      ]
+     }
     }
    }
   },
@@ -993,14 +1682,14 @@
    "row": "exact",
    "E2": {
     "recall": {
-     "recall@50": 0.333,
+     "recall@50": 0.292,
      "recall@100": 0.458,
      "recall@200": 0.5
     },
     "ci95": {
      "recall@50": [
-      0.167,
-      0.5
+      0.125,
+      0.458
      ],
      "recall@100": [
       0.25,
@@ -1018,35 +1707,58 @@
     },
     "gold_items": {
      "n": 20,
-     "recall@50": 0.35,
+     "recall@50": 0.3,
      "recall@100": 0.5,
      "recall@200": 0.55
     },
     "primary_items": {
      "n": 11,
-     "recall@50": 0.455,
+     "recall@50": 0.364,
      "recall@100": 0.636,
      "recall@200": 0.636
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
     }
    },
    "E1": {
     "recall": {
-     "recall@50": 0.375,
-     "recall@100": 0.5,
-     "recall@200": 0.562
+     "recall@50": 0.25,
+     "recall@100": 0.438,
+     "recall@200": 0.5
     },
     "ci95": {
      "recall@50": [
-      0.188,
-      0.625
+      0.062,
+      0.5
      ],
      "recall@100": [
-      0.25,
-      0.75
+      0.188,
+      0.688
      ],
      "recall@200": [
-      0.312,
-      0.812
+      0.25,
+      0.75
      ]
     },
     "shuffled": {
@@ -1056,15 +1768,163 @@
     },
     "gold_items": {
      "n": 14,
-     "recall@50": 0.357,
+     "recall@50": 0.286,
      "recall@100": 0.5,
      "recall@200": 0.571
     },
     "primary_items": {
      "n": 9,
-     "recall@50": 0.444,
+     "recall@50": 0.333,
      "recall@100": 0.556,
      "recall@200": 0.556
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    }
+   }
+  },
+  {
+   "row": "control_exact_r1map",
+   "E2": {
+    "recall": {
+     "recall@50": 0.25,
+     "recall@100": 0.333,
+     "recall@200": 0.333
+    },
+    "ci95": {
+     "recall@50": [
+      0.083,
+      0.417
+     ],
+     "recall@100": [
+      0.167,
+      0.542
+     ],
+     "recall@200": [
+      0.167,
+      0.542
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.008,
+     "recall@100": 0.008,
+     "recall@200": 0.025
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.3,
+     "recall@100": 0.35,
+     "recall@200": 0.35
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.364,
+     "recall@100": 0.455,
+     "recall@200": 0.455
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.042,
+      "ci95": [
+       -0.167,
+       0.25
+      ]
+     },
+     "recall@100": {
+      "diff": 0.125,
+      "ci95": [
+       -0.042,
+       0.292
+      ]
+     },
+     "recall@200": {
+      "diff": 0.167,
+      "ci95": [
+       0.042,
+       0.333
+      ]
+     }
+    }
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.312,
+     "recall@100": 0.375,
+     "recall@200": 0.375
+    },
+    "ci95": {
+     "recall@50": [
+      0.125,
+      0.562
+     ],
+     "recall@100": [
+      0.125,
+      0.625
+     ],
+     "recall@200": [
+      0.125,
+      0.625
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.025,
+     "recall@100": 0.025,
+     "recall@200": 0.037
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.357,
+     "recall@100": 0.357,
+     "recall@200": 0.357
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.333,
+     "recall@100": 0.333,
+     "recall@200": 0.333
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": -0.062,
+      "ci95": [
+       -0.25,
+       0.125
+      ]
+     },
+     "recall@100": {
+      "diff": 0.062,
+      "ci95": [
+       -0.188,
+       0.312
+      ]
+     },
+     "recall@200": {
+      "diff": 0.125,
+      "ci95": [
+       -0.125,
+       0.375
+      ]
+     }
     }
    }
   },
@@ -1092,7 +1952,7 @@
     },
     "shuffled": {
      "recall@50": 0.0,
-     "recall@100": 0.008,
+     "recall@100": 0.0,
      "recall@200": 0.033
     },
     "gold_items": {
@@ -1106,6 +1966,29 @@
      "recall@50": 0.364,
      "recall@100": 0.545,
      "recall@200": 0.545
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       -0.167,
+       0.167
+      ]
+     },
+     "recall@100": {
+      "diff": 0.083,
+      "ci95": [
+       0.0,
+       0.208
+      ]
+     },
+     "recall@200": {
+      "diff": 0.125,
+      "ci95": [
+       0.0,
+       0.25
+      ]
+     }
     }
    },
    "E1": {
@@ -1144,6 +2027,29 @@
      "recall@50": 0.444,
      "recall@100": 0.556,
      "recall@200": 0.556
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": -0.188,
+      "ci95": [
+       -0.375,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.0,
+      "ci95": [
+       -0.188,
+       0.188
+      ]
+     }
     }
    }
   },
@@ -1152,7 +2058,7 @@
    "E2": {
     "recall": {
      "recall@50": 0.25,
-     "recall@100": 0.375,
+     "recall@100": 0.417,
      "recall@200": 0.417
     },
     "ci95": {
@@ -1162,7 +2068,7 @@
      ],
      "recall@100": [
       0.208,
-      0.583
+      0.625
      ],
      "recall@200": [
       0.25,
@@ -1171,20 +2077,43 @@
     },
     "shuffled": {
      "recall@50": 0.017,
-     "recall@100": 0.025,
+     "recall@100": 0.033,
      "recall@200": 0.067
     },
     "gold_items": {
      "n": 20,
      "recall@50": 0.3,
-     "recall@100": 0.45,
+     "recall@100": 0.5,
      "recall@200": 0.5
     },
     "primary_items": {
      "n": 11,
      "recall@50": 0.364,
-     "recall@100": 0.545,
+     "recall@100": 0.636,
      "recall@200": 0.636
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.042,
+      "ci95": [
+       -0.083,
+       0.167
+      ]
+     },
+     "recall@100": {
+      "diff": 0.042,
+      "ci95": [
+       0.0,
+       0.125
+      ]
+     },
+     "recall@200": {
+      "diff": 0.083,
+      "ci95": [
+       0.0,
+       0.208
+      ]
+     }
     }
    },
    "E1": {
@@ -1209,8 +2138,8 @@
     },
     "shuffled": {
      "recall@50": 0.0,
-     "recall@100": 0.013,
-     "recall@200": 0.075
+     "recall@100": 0.025,
+     "recall@200": 0.062
     },
     "gold_items": {
      "n": 14,
@@ -1223,6 +2152,29 @@
      "recall@50": 0.444,
      "recall@100": 0.556,
      "recall@200": 0.556
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.062,
+      "ci95": [
+       0.0,
+       0.188
+      ]
+     }
     }
    }
   },
@@ -1264,30 +2216,53 @@
      "recall@50": 0.364,
      "recall@100": 0.545,
      "recall@200": 0.636
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.042,
+      "ci95": [
+       0.0,
+       0.125
+      ]
+     },
+     "recall@200": {
+      "diff": 0.042,
+      "ci95": [
+       0.0,
+       0.125
+      ]
+     }
     }
    },
    "E1": {
     "recall": {
-     "recall@50": 0.312,
-     "recall@100": 0.5,
-     "recall@200": 0.5
+     "recall@50": 0.25,
+     "recall@100": 0.438,
+     "recall@200": 0.438
     },
     "ci95": {
      "recall@50": [
-      0.125,
-      0.562
+      0.062,
+      0.5
      ],
      "recall@100": [
-      0.25,
-      0.75
+      0.188,
+      0.688
      ],
      "recall@200": [
-      0.25,
-      0.75
+      0.188,
+      0.688
      ]
     },
     "shuffled": {
-     "recall@50": 0.025,
+     "recall@50": 0.013,
      "recall@100": 0.025,
      "recall@200": 0.037
     },
@@ -1302,6 +2277,29 @@
      "recall@50": 0.333,
      "recall@100": 0.556,
      "recall@200": 0.556
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.062,
+      "ci95": [
+       0.0,
+       0.188
+      ]
+     }
     }
    }
   },
@@ -1309,14 +2307,14 @@
    "row": "syn_filter_rel",
    "E2": {
     "recall": {
-     "recall@50": 0.167,
+     "recall@50": 0.125,
      "recall@100": 0.208,
      "recall@200": 0.25
     },
     "ci95": {
      "recall@50": [
-      0.042,
-      0.333
+      0.0,
+      0.25
      ],
      "recall@100": [
       0.042,
@@ -1334,15 +2332,38 @@
     },
     "gold_items": {
      "n": 20,
-     "recall@50": 0.2,
+     "recall@50": 0.15,
      "recall@100": 0.2,
      "recall@200": 0.25
     },
     "primary_items": {
      "n": 11,
-     "recall@50": 0.273,
+     "recall@50": 0.182,
      "recall@100": 0.273,
      "recall@200": 0.364
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.167,
+      "ci95": [
+       -0.042,
+       0.333
+      ]
+     },
+     "recall@100": {
+      "diff": 0.25,
+      "ci95": [
+       0.042,
+       0.458
+      ]
+     },
+     "recall@200": {
+      "diff": 0.25,
+      "ci95": [
+       0.042,
+       0.458
+      ]
+     }
     }
    },
    "E1": {
@@ -1381,6 +2402,29 @@
      "recall@50": 0.333,
      "recall@100": 0.333,
      "recall@200": 0.333
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       -0.188,
+       0.188
+      ]
+     },
+     "recall@100": {
+      "diff": 0.188,
+      "ci95": [
+       0.0,
+       0.375
+      ]
+     },
+     "recall@200": {
+      "diff": 0.25,
+      "ci95": [
+       0.062,
+       0.438
+      ]
+     }
     }
    }
   },
@@ -1388,14 +2432,14 @@
    "row": "latin_tiebreak",
    "E2": {
     "recall": {
-     "recall@50": 0.333,
+     "recall@50": 0.292,
      "recall@100": 0.458,
      "recall@200": 0.5
     },
     "ci95": {
      "recall@50": [
-      0.167,
-      0.5
+      0.125,
+      0.458
      ],
      "recall@100": [
       0.25,
@@ -1413,27 +2457,50 @@
     },
     "gold_items": {
      "n": 20,
-     "recall@50": 0.35,
+     "recall@50": 0.3,
      "recall@100": 0.5,
      "recall@200": 0.55
     },
     "primary_items": {
      "n": 11,
-     "recall@50": 0.455,
+     "recall@50": 0.364,
      "recall@100": 0.636,
      "recall@200": 0.636
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
     }
    },
    "E1": {
     "recall": {
-     "recall@50": 0.375,
+     "recall@50": 0.312,
      "recall@100": 0.5,
      "recall@200": 0.562
     },
     "ci95": {
      "recall@50": [
-      0.188,
-      0.625
+      0.125,
+      0.562
      ],
      "recall@100": [
       0.25,
@@ -1451,15 +2518,38 @@
     },
     "gold_items": {
      "n": 14,
-     "recall@50": 0.357,
+     "recall@50": 0.286,
      "recall@100": 0.5,
      "recall@200": 0.571
     },
     "primary_items": {
      "n": 9,
-     "recall@50": 0.444,
+     "recall@50": 0.333,
      "recall@100": 0.556,
      "recall@200": 0.556
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     }
     }
    }
   },
@@ -1467,97 +2557,18 @@
    "row": "latin_fisher3",
    "E2": {
     "recall": {
-     "recall@50": 0.333,
+     "recall@50": 0.292,
      "recall@100": 0.417,
-     "recall@200": 0.458
+     "recall@200": 0.5
     },
     "ci95": {
      "recall@50": [
-      0.167,
-      0.5
+      0.125,
+      0.458
      ],
      "recall@100": [
       0.208,
       0.625
-     ],
-     "recall@200": [
-      0.25,
-      0.667
-     ]
-    },
-    "shuffled": {
-     "recall@50": 0.0,
-     "recall@100": 0.008,
-     "recall@200": 0.017
-    },
-    "gold_items": {
-     "n": 20,
-     "recall@50": 0.35,
-     "recall@100": 0.45,
-     "recall@200": 0.5
-    },
-    "primary_items": {
-     "n": 11,
-     "recall@50": 0.455,
-     "recall@100": 0.545,
-     "recall@200": 0.636
-    }
-   },
-   "E1": {
-    "recall": {
-     "recall@50": 0.375,
-     "recall@100": 0.438,
-     "recall@200": 0.5
-    },
-    "ci95": {
-     "recall@50": [
-      0.188,
-      0.625
-     ],
-     "recall@100": [
-      0.188,
-      0.688
-     ],
-     "recall@200": [
-      0.25,
-      0.75
-     ]
-    },
-    "shuffled": {
-     "recall@50": 0.0,
-     "recall@100": 0.013,
-     "recall@200": 0.025
-    },
-    "gold_items": {
-     "n": 14,
-     "recall@50": 0.357,
-     "recall@100": 0.429,
-     "recall@200": 0.5
-    },
-    "primary_items": {
-     "n": 9,
-     "recall@50": 0.444,
-     "recall@100": 0.444,
-     "recall@200": 0.556
-    }
-   }
-  },
-  {
-   "row": "latin_fisher3pos",
-   "E2": {
-    "recall": {
-     "recall@50": 0.333,
-     "recall@100": 0.458,
-     "recall@200": 0.5
-    },
-    "ci95": {
-     "recall@50": [
-      0.167,
-      0.5
-     ],
-     "recall@100": [
-      0.25,
-      0.667
      ],
      "recall@200": [
       0.292,
@@ -1566,36 +2577,59 @@
     },
     "shuffled": {
      "recall@50": 0.0,
-     "recall@100": 0.008,
-     "recall@200": 0.008
+     "recall@100": 0.0,
+     "recall@200": 0.017
     },
     "gold_items": {
      "n": 20,
-     "recall@50": 0.35,
-     "recall@100": 0.5,
+     "recall@50": 0.3,
+     "recall@100": 0.45,
      "recall@200": 0.55
     },
     "primary_items": {
      "n": 11,
-     "recall@50": 0.455,
-     "recall@100": 0.636,
+     "recall@50": 0.364,
+     "recall@100": 0.545,
      "recall@200": 0.636
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.042,
+      "ci95": [
+       0.0,
+       0.125
+      ]
+     },
+     "recall@200": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
     }
    },
    "E1": {
     "recall": {
-     "recall@50": 0.375,
-     "recall@100": 0.5,
+     "recall@50": 0.312,
+     "recall@100": 0.438,
      "recall@200": 0.562
     },
     "ci95": {
      "recall@50": [
-      0.188,
-      0.625
+      0.125,
+      0.562
      ],
      "recall@100": [
-      0.25,
-      0.75
+      0.188,
+      0.688
      ],
      "recall@200": [
       0.312,
@@ -1604,20 +2638,168 @@
     },
     "shuffled": {
      "recall@50": 0.0,
-     "recall@100": 0.013,
-     "recall@200": 0.013
+     "recall@100": 0.0,
+     "recall@200": 0.025
     },
     "gold_items": {
      "n": 14,
-     "recall@50": 0.357,
-     "recall@100": 0.5,
+     "recall@50": 0.286,
+     "recall@100": 0.429,
      "recall@200": 0.571
     },
     "primary_items": {
      "n": 9,
-     "recall@50": 0.444,
+     "recall@50": 0.333,
+     "recall@100": 0.444,
+     "recall@200": 0.556
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.0,
+      "ci95": [
+       -0.188,
+       0.188
+      ]
+     },
+     "recall@200": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     }
+    }
+   }
+  },
+  {
+   "row": "latin_fisher3pos",
+   "E2": {
+    "recall": {
+     "recall@50": 0.292,
+     "recall@100": 0.458,
+     "recall@200": 0.458
+    },
+    "ci95": {
+     "recall@50": [
+      0.125,
+      0.458
+     ],
+     "recall@100": [
+      0.25,
+      0.667
+     ],
+     "recall@200": [
+      0.25,
+      0.667
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.008,
+     "recall@100": 0.008,
+     "recall@200": 0.017
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.3,
+     "recall@100": 0.5,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.364,
+     "recall@100": 0.636,
+     "recall@200": 0.636
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.042,
+      "ci95": [
+       0.0,
+       0.125
+      ]
+     }
+    }
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.312,
+     "recall@100": 0.5,
+     "recall@200": 0.5
+    },
+    "ci95": {
+     "recall@50": [
+      0.125,
+      0.562
+     ],
+     "recall@100": [
+      0.25,
+      0.75
+     ],
+     "recall@200": [
+      0.25,
+      0.75
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.013,
+     "recall@100": 0.013,
+     "recall@200": 0.025
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.286,
+     "recall@100": 0.5,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.333,
      "recall@100": 0.556,
      "recall@200": 0.556
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.0,
+      "ci95": [
+       -0.188,
+       0.188
+      ]
+     }
     }
    }
   },
@@ -1625,18 +2807,18 @@
    "row": "latin_require",
    "E2": {
     "recall": {
-     "recall@50": 0.042,
-     "recall@100": 0.083,
+     "recall@50": 0.083,
+     "recall@100": 0.125,
      "recall@200": 0.125
     },
     "ci95": {
      "recall@50": [
       0.0,
-      0.125
+      0.208
      ],
      "recall@100": [
       0.0,
-      0.208
+      0.25
      ],
      "recall@200": [
       0.0,
@@ -1645,8 +2827,8 @@
     },
     "shuffled": {
      "recall@50": 0.008,
-     "recall@100": 0.017,
-     "recall@200": 0.017
+     "recall@100": 0.025,
+     "recall@200": 0.025
     },
     "gold_items": {
      "n": 20,
@@ -1659,6 +2841,29 @@
      "recall@50": 0.091,
      "recall@100": 0.091,
      "recall@200": 0.091
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.208,
+      "ci95": [
+       0.042,
+       0.417
+      ]
+     },
+     "recall@100": {
+      "diff": 0.333,
+      "ci95": [
+       0.083,
+       0.583
+      ]
+     },
+     "recall@200": {
+      "diff": 0.375,
+      "ci95": [
+       0.167,
+       0.583
+      ]
+     }
     }
    },
    "E1": {
@@ -1697,6 +2902,154 @@
      "recall@50": 0.111,
      "recall@100": 0.111,
      "recall@200": 0.111
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.188,
+      "ci95": [
+       0.0,
+       0.375
+      ]
+     },
+     "recall@100": {
+      "diff": 0.312,
+      "ci95": [
+       0.0,
+       0.562
+      ]
+     },
+     "recall@200": {
+      "diff": 0.375,
+      "ci95": [
+       0.125,
+       0.625
+      ]
+     }
+    }
+   }
+  },
+  {
+   "row": "final_each_p05",
+   "E2": {
+    "recall": {
+     "recall@50": 0.208,
+     "recall@100": 0.208,
+     "recall@200": 0.208
+    },
+    "ci95": {
+     "recall@50": [
+      0.083,
+      0.375
+     ],
+     "recall@100": [
+      0.083,
+      0.375
+     ],
+     "recall@200": [
+      0.042,
+      0.375
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.25,
+     "recall@100": 0.25,
+     "recall@200": 0.25
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.455,
+     "recall@100": 0.455,
+     "recall@200": 0.455
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.083,
+      "ci95": [
+       -0.167,
+       0.292
+      ]
+     },
+     "recall@100": {
+      "diff": 0.25,
+      "ci95": [
+       0.083,
+       0.417
+      ]
+     },
+     "recall@200": {
+      "diff": 0.292,
+      "ci95": [
+       0.125,
+       0.458
+      ]
+     }
+    }
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.25,
+     "recall@100": 0.25,
+     "recall@200": 0.25
+    },
+    "ci95": {
+     "recall@50": [
+      0.062,
+      0.438
+     ],
+     "recall@100": [
+      0.062,
+      0.5
+     ],
+     "recall@200": [
+      0.062,
+      0.5
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.286,
+     "recall@100": 0.286,
+     "recall@200": 0.286
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.444,
+     "recall@200": 0.444
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       -0.25,
+       0.25
+      ]
+     },
+     "recall@100": {
+      "diff": 0.188,
+      "ci95": [
+       0.0,
+       0.375
+      ]
+     },
+     "recall@200": {
+      "diff": 0.25,
+      "ci95": [
+       0.062,
+       0.5
+      ]
+     }
     }
    }
   }
@@ -1818,6 +3171,29 @@
       "recall@100": 0.0,
       "recall@200": 0.0
      }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.125,
+      "ci95": [
+       -0.042,
+       0.292
+      ]
+     },
+     "recall@100": {
+      "diff": 0.292,
+      "ci95": [
+       0.125,
+       0.458
+      ]
+     },
+     "recall@200": {
+      "diff": 0.333,
+      "ci95": [
+       0.167,
+       0.5
+      ]
+     }
     }
    },
    "E1": {
@@ -1932,6 +3308,29 @@
       "recall@50": 0.0,
       "recall@100": 0.0,
       "recall@200": 0.0
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": -0.062,
+      "ci95": [
+       -0.25,
+       0.125
+      ]
+     },
+     "recall@100": {
+      "diff": 0.125,
+      "ci95": [
+       -0.125,
+       0.375
+      ]
+     },
+     "recall@200": {
+      "diff": 0.188,
+      "ci95": [
+       -0.062,
+       0.438
+      ]
      }
     }
    }
@@ -2052,6 +3451,29 @@
       "recall@100": 0.0,
       "recall@200": 0.0
      }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.125,
+      "ci95": [
+       -0.042,
+       0.292
+      ]
+     },
+     "recall@100": {
+      "diff": 0.208,
+      "ci95": [
+       0.0,
+       0.417
+      ]
+     },
+     "recall@200": {
+      "diff": 0.25,
+      "ci95": [
+       0.083,
+       0.417
+      ]
+     }
     }
    },
    "E1": {
@@ -2167,6 +3589,29 @@
       "recall@100": 0.0,
       "recall@200": 0.0
      }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       -0.188,
+       0.188
+      ]
+     },
+     "recall@100": {
+      "diff": 0.062,
+      "ci95": [
+       -0.125,
+       0.25
+      ]
+     },
+     "recall@200": {
+      "diff": 0.125,
+      "ci95": [
+       0.0,
+       0.312
+      ]
+     }
     }
    }
   },
@@ -2276,7 +3721,7 @@
      "content_only": true
     },
     "n_settings": 48,
-    "n_ranked_pairs_full_best": 180,
+    "n_ranked_pairs_full_best": 183,
     "shuffled": {
      "recall@50": 0.008,
      "recall@100": 0.008,
@@ -2285,6 +3730,29 @@
       "recall@50": 0.042,
       "recall@100": 0.042,
       "recall@200": 0.042
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.167,
+      "ci95": [
+       0.042,
+       0.333
+      ]
+     },
+     "recall@100": {
+      "diff": 0.292,
+      "ci95": [
+       0.083,
+       0.5
+      ]
+     },
+     "recall@200": {
+      "diff": 0.292,
+      "ci95": [
+       0.125,
+       0.5
+      ]
      }
     }
    },
@@ -2391,7 +3859,7 @@
      "content_only": true
     },
     "n_settings": 48,
-    "n_ranked_pairs_full_best": 180,
+    "n_ranked_pairs_full_best": 183,
     "shuffled": {
      "recall@50": 0.013,
      "recall@100": 0.013,
@@ -2400,6 +3868,29 @@
       "recall@50": 0.062,
       "recall@100": 0.062,
       "recall@200": 0.062
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.125,
+      "ci95": [
+       0.0,
+       0.312
+      ]
+     },
+     "recall@100": {
+      "diff": 0.25,
+      "ci95": [
+       0.0,
+       0.5
+      ]
+     },
+     "recall@200": {
+      "diff": 0.25,
+      "ci95": [
+       0.062,
+       0.438
+      ]
      }
     }
    }
@@ -2510,7 +4001,7 @@
      "content_only": true
     },
     "n_settings": 48,
-    "n_ranked_pairs_full_best": 181,
+    "n_ranked_pairs_full_best": 184,
     "shuffled": {
      "recall@50": 0.0,
      "recall@100": 0.0,
@@ -2519,6 +4010,29 @@
       "recall@50": 0.0,
       "recall@100": 0.0,
       "recall@200": 0.0
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.167,
+      "ci95": [
+       0.042,
+       0.333
+      ]
+     },
+     "recall@100": {
+      "diff": 0.333,
+      "ci95": [
+       0.167,
+       0.542
+      ]
+     },
+     "recall@200": {
+      "diff": 0.333,
+      "ci95": [
+       0.167,
+       0.542
+      ]
      }
     }
    },
@@ -2625,7 +4139,7 @@
      "content_only": true
     },
     "n_settings": 48,
-    "n_ranked_pairs_full_best": 110,
+    "n_ranked_pairs_full_best": 107,
     "shuffled": {
      "recall@50": 0.0,
      "recall@100": 0.0,
@@ -2634,6 +4148,29 @@
       "recall@50": 0.0,
       "recall@100": 0.0,
       "recall@200": 0.0
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.125,
+      "ci95": [
+       0.0,
+       0.312
+      ]
+     },
+     "recall@100": {
+      "diff": 0.25,
+      "ci95": [
+       0.0,
+       0.5
+      ]
+     },
+     "recall@200": {
+      "diff": 0.312,
+      "ci95": [
+       0.125,
+       0.562
+      ]
      }
     }
    }
@@ -2744,7 +4281,7 @@
      "content_only": true
     },
     "n_settings": 48,
-    "n_ranked_pairs_full_best": 176,
+    "n_ranked_pairs_full_best": 180,
     "shuffled": {
      "recall@50": 0.0,
      "recall@100": 0.008,
@@ -2753,6 +4290,29 @@
       "recall@50": 0.0,
       "recall@100": 0.042,
       "recall@200": 0.042
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.125,
+      "ci95": [
+       -0.083,
+       0.333
+      ]
+     },
+     "recall@100": {
+      "diff": 0.208,
+      "ci95": [
+       0.0,
+       0.417
+      ]
+     },
+     "recall@200": {
+      "diff": 0.208,
+      "ci95": [
+       0.0,
+       0.417
+      ]
      }
     }
    },
@@ -2859,7 +4419,7 @@
      "content_only": true
     },
     "n_settings": 48,
-    "n_ranked_pairs_full_best": 176,
+    "n_ranked_pairs_full_best": 180,
     "shuffled": {
      "recall@50": 0.0,
      "recall@100": 0.013,
@@ -2868,6 +4428,29 @@
       "recall@50": 0.0,
       "recall@100": 0.062,
       "recall@200": 0.062
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       -0.188,
+       0.188
+      ]
+     },
+     "recall@100": {
+      "diff": 0.062,
+      "ci95": [
+       -0.125,
+       0.25
+      ]
+     },
+     "recall@200": {
+      "diff": 0.062,
+      "ci95": [
+       -0.125,
+       0.25
+      ]
      }
     }
    }
@@ -2878,14 +4461,14 @@
    "E2": {
     "n_items": 24,
     "recall": {
-     "recall@50": 0.333,
+     "recall@50": 0.292,
      "recall@100": 0.458,
      "recall@200": 0.5
     },
     "ci95": {
      "recall@50": [
-      0.167,
-      0.5
+      0.125,
+      0.458
      ],
      "recall@100": [
       0.25,
@@ -2898,13 +4481,13 @@
     },
     "gold_items": {
      "n": 20,
-     "recall@50": 0.35,
+     "recall@50": 0.3,
      "recall@100": 0.5,
      "recall@200": 0.55
     },
     "primary_items": {
      "n": 11,
-     "recall@50": 0.455,
+     "recall@50": 0.364,
      "recall@100": 0.636,
      "recall@200": 0.636
     },
@@ -2919,7 +4502,8 @@
       "rank_by": "fisher",
       "midp": false,
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -2931,7 +4515,8 @@
       "rank_by": "fisher",
       "midp": false,
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -2943,7 +4528,8 @@
       "rank_by": "fisher",
       "midp": false,
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -2955,7 +4541,8 @@
       "rank_by": "fisher",
       "midp": false,
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -2967,7 +4554,8 @@
       "rank_by": "fisher",
       "midp": false,
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      }
     ],
     "folds_agree": true,
@@ -2981,10 +4569,11 @@
      "rank_by": "fisher",
      "midp": false,
      "floor": null,
-     "content_only": true
+     "content_only": true,
+     "max_logp": 0.0
     },
-    "n_settings": 256,
-    "n_ranked_pairs_full_best": 1158,
+    "n_settings": 512,
+    "n_ranked_pairs_full_best": 1094,
     "shuffled": {
      "recall@50": 0.0,
      "recall@100": 0.0,
@@ -2994,38 +4583,61 @@
       "recall@100": 0.0,
       "recall@200": 0.042
      }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
     }
    },
    "E1": {
     "n_items": 16,
     "recall": {
-     "recall@50": 0.375,
-     "recall@100": 0.5,
-     "recall@200": 0.562
+     "recall@50": 0.25,
+     "recall@100": 0.438,
+     "recall@200": 0.5
     },
     "ci95": {
      "recall@50": [
-      0.188,
-      0.625
+      0.062,
+      0.5
      ],
      "recall@100": [
-      0.25,
-      0.75
+      0.188,
+      0.688
      ],
      "recall@200": [
-      0.312,
-      0.812
+      0.25,
+      0.75
      ]
     },
     "gold_items": {
      "n": 14,
-     "recall@50": 0.357,
+     "recall@50": 0.286,
      "recall@100": 0.5,
      "recall@200": 0.571
     },
     "primary_items": {
      "n": 9,
-     "recall@50": 0.444,
+     "recall@50": 0.333,
      "recall@100": 0.556,
      "recall@200": 0.556
     },
@@ -3040,7 +4652,21 @@
       "rank_by": "fisher",
       "midp": false,
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "max",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3052,7 +4678,8 @@
       "rank_by": "fisher",
       "midp": false,
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3064,7 +4691,8 @@
       "rank_by": "fisher",
       "midp": false,
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3076,22 +4704,11 @@
       "rank_by": "fisher",
       "midp": false,
       "floor": null,
-      "content_only": true
-     },
-     {
-      "scorer": "exact",
-      "map": "pseudo",
-      "rv_spec": "pada",
-      "hom_spec": "line",
-      "level": "lexeme",
-      "min_count": 1,
-      "rank_by": "fisher",
-      "midp": false,
-      "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      }
     ],
-    "folds_agree": true,
+    "folds_agree": false,
     "full_data_best": {
      "scorer": "exact",
      "map": "pseudo",
@@ -3102,10 +4719,11 @@
      "rank_by": "fisher",
      "midp": false,
      "floor": null,
-     "content_only": true
+     "content_only": true,
+     "max_logp": 0.0
     },
-    "n_settings": 256,
-    "n_ranked_pairs_full_best": 1158,
+    "n_settings": 512,
+    "n_ranked_pairs_full_best": 1094,
     "shuffled": {
      "recall@50": 0.0,
      "recall@100": 0.0,
@@ -3114,6 +4732,333 @@
       "recall@50": 0.0,
       "recall@100": 0.0,
       "recall@200": 0.062
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
+    }
+   }
+  },
+  {
+   "row": "control_exact_r1map",
+   "description": "control: exact scoring on the round-1 mapping (not part of the cumulative chain)",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.25,
+     "recall@100": 0.333,
+     "recall@200": 0.333
+    },
+    "ci95": {
+     "recall@50": [
+      0.083,
+      0.417
+     ],
+     "recall@100": [
+      0.167,
+      0.542
+     ],
+     "recall@200": [
+      0.167,
+      0.542
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.3,
+     "recall@100": 0.35,
+     "recall@200": 0.35
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.364,
+     "recall@100": 0.455,
+     "recall@200": 0.455
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "r1",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "group",
+      "min_count": 2,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "r1",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "group",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "r1",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "group",
+      "min_count": 2,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "r1",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "group",
+      "min_count": 2,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "r1",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "group",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "r1",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "level": "group",
+     "min_count": 2,
+     "rank_by": "fisher",
+     "midp": false,
+     "floor": null,
+     "content_only": true,
+     "max_logp": 0.0
+    },
+    "n_settings": 512,
+    "n_ranked_pairs_full_best": 503,
+    "shuffled": {
+     "recall@50": 0.008,
+     "recall@100": 0.008,
+     "recall@200": 0.025,
+     "max_over_seeds": {
+      "recall@50": 0.042,
+      "recall@100": 0.042,
+      "recall@200": 0.042
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.042,
+      "ci95": [
+       -0.167,
+       0.25
+      ]
+     },
+     "recall@100": {
+      "diff": 0.125,
+      "ci95": [
+       -0.042,
+       0.292
+      ]
+     },
+     "recall@200": {
+      "diff": 0.167,
+      "ci95": [
+       0.042,
+       0.333
+      ]
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.312,
+     "recall@100": 0.375,
+     "recall@200": 0.375
+    },
+    "ci95": {
+     "recall@50": [
+      0.125,
+      0.562
+     ],
+     "recall@100": [
+      0.125,
+      0.625
+     ],
+     "recall@200": [
+      0.125,
+      0.625
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.357,
+     "recall@100": 0.357,
+     "recall@200": 0.357
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.333,
+     "recall@100": 0.333,
+     "recall@200": 0.333
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "r1",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "group",
+      "min_count": 2,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "r1",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "group",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "r1",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "group",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": true,
+      "floor": null,
+      "content_only": false,
+      "max_logp": -2.995732
+     },
+     {
+      "scorer": "exact",
+      "map": "r1",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "group",
+      "min_count": 2,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "r1",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "group",
+      "min_count": 2,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "r1",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "level": "group",
+     "min_count": 2,
+     "rank_by": "fisher",
+     "midp": false,
+     "floor": null,
+     "content_only": true,
+     "max_logp": 0.0
+    },
+    "n_settings": 512,
+    "n_ranked_pairs_full_best": 503,
+    "shuffled": {
+     "recall@50": 0.025,
+     "recall@100": 0.025,
+     "recall@200": 0.037,
+     "max_over_seeds": {
+      "recall@50": 0.062,
+      "recall@100": 0.062,
+      "recall@200": 0.062
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": -0.062,
+      "ci95": [
+       -0.25,
+       0.125
+      ]
+     },
+     "recall@100": {
+      "diff": 0.062,
+      "ci95": [
+       -0.188,
+       0.312
+      ]
+     },
+     "recall@200": {
+      "diff": 0.125,
+      "ci95": [
+       -0.125,
+       0.375
+      ]
      }
     }
    }
@@ -3167,7 +5112,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3181,7 +5127,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3195,7 +5142,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3209,7 +5157,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3223,7 +5172,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      }
     ],
     "folds_agree": false,
@@ -3239,18 +5189,42 @@
      "min_count": 1,
      "rank_by": "fisher",
      "floor": null,
-     "content_only": true
+     "content_only": true,
+     "max_logp": 0.0
     },
-    "n_settings": 32,
-    "n_ranked_pairs_full_best": 493,
+    "n_settings": 64,
+    "n_ranked_pairs_full_best": 448,
     "shuffled": {
      "recall@50": 0.0,
-     "recall@100": 0.008,
+     "recall@100": 0.0,
      "recall@200": 0.033,
      "max_over_seeds": {
       "recall@50": 0.0,
-      "recall@100": 0.042,
+      "recall@100": 0.0,
       "recall@200": 0.083
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       -0.167,
+       0.167
+      ]
+     },
+     "recall@100": {
+      "diff": 0.083,
+      "ci95": [
+       0.0,
+       0.208
+      ]
+     },
+     "recall@200": {
+      "diff": 0.125,
+      "ci95": [
+       0.0,
+       0.25
+      ]
      }
     }
    },
@@ -3300,7 +5274,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3314,7 +5289,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3328,7 +5304,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3342,7 +5319,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3356,7 +5334,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      }
     ],
     "folds_agree": true,
@@ -3372,10 +5351,11 @@
      "min_count": 1,
      "rank_by": "fisher",
      "floor": null,
-     "content_only": false
+     "content_only": false,
+     "max_logp": 0.0
     },
-    "n_settings": 32,
-    "n_ranked_pairs_full_best": 605,
+    "n_settings": 64,
+    "n_ranked_pairs_full_best": 552,
     "shuffled": {
      "recall@50": 0.0,
      "recall@100": 0.0,
@@ -3384,6 +5364,29 @@
       "recall@50": 0.0,
       "recall@100": 0.0,
       "recall@200": 0.0
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": -0.188,
+      "ci95": [
+       -0.375,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.0,
+      "ci95": [
+       -0.188,
+       0.188
+      ]
      }
     }
    }
@@ -3395,7 +5398,7 @@
     "n_items": 24,
     "recall": {
      "recall@50": 0.25,
-     "recall@100": 0.375,
+     "recall@100": 0.417,
      "recall@200": 0.417
     },
     "ci95": {
@@ -3405,7 +5408,7 @@
      ],
      "recall@100": [
       0.208,
-      0.583
+      0.625
      ],
      "recall@200": [
       0.25,
@@ -3415,13 +5418,13 @@
     "gold_items": {
      "n": 20,
      "recall@50": 0.3,
-     "recall@100": 0.45,
+     "recall@100": 0.5,
      "recall@200": 0.5
     },
     "primary_items": {
      "n": 11,
      "recall@50": 0.364,
-     "recall@100": 0.545,
+     "recall@100": 0.636,
      "recall@200": 0.636
     },
     "chosen_per_fold": [
@@ -3438,7 +5441,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3453,7 +5457,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3468,7 +5473,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3483,7 +5489,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3498,7 +5505,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      }
     ],
     "folds_agree": false,
@@ -3515,18 +5523,42 @@
      "min_count": 1,
      "rank_by": "fisher",
      "floor": null,
-     "content_only": true
+     "content_only": true,
+     "max_logp": 0.0
     },
-    "n_settings": 96,
-    "n_ranked_pairs_full_best": 1158,
+    "n_settings": 192,
+    "n_ranked_pairs_full_best": 1094,
     "shuffled": {
      "recall@50": 0.017,
-     "recall@100": 0.025,
+     "recall@100": 0.033,
      "recall@200": 0.067,
      "max_over_seeds": {
       "recall@50": 0.042,
       "recall@100": 0.042,
       "recall@200": 0.125
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.042,
+      "ci95": [
+       -0.083,
+       0.167
+      ]
+     },
+     "recall@100": {
+      "diff": 0.042,
+      "ci95": [
+       0.0,
+       0.125
+      ]
+     },
+     "recall@200": {
+      "diff": 0.083,
+      "ci95": [
+       0.0,
+       0.208
+      ]
      }
     }
    },
@@ -3577,7 +5609,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3592,7 +5625,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3607,7 +5641,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": -10.0,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3622,7 +5657,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": -10.0,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3637,7 +5673,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": -10.0,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      }
     ],
     "folds_agree": false,
@@ -3654,18 +5691,42 @@
      "min_count": 1,
      "rank_by": "fisher",
      "floor": -10.0,
-     "content_only": true
+     "content_only": true,
+     "max_logp": 0.0
     },
-    "n_settings": 96,
-    "n_ranked_pairs_full_best": 1158,
+    "n_settings": 192,
+    "n_ranked_pairs_full_best": 1094,
     "shuffled": {
      "recall@50": 0.0,
-     "recall@100": 0.013,
-     "recall@200": 0.075,
+     "recall@100": 0.025,
+     "recall@200": 0.062,
      "max_over_seeds": {
       "recall@50": 0.0,
       "recall@100": 0.062,
       "recall@200": 0.125
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.062,
+      "ci95": [
+       0.0,
+       0.188
+      ]
      }
     }
    }
@@ -3720,37 +5781,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
-     },
-     {
-      "scorer": "exact",
-      "map": "pseudo",
-      "level": "lexeme",
-      "rv_spec": "pada",
-      "hom_spec": "line",
-      "syn": "bonus-rel",
-      "midp": true,
-      "rv_link": "adj1",
-      "syn_b": 3.0,
-      "min_count": 1,
-      "rank_by": "fisher",
-      "floor": null,
-      "content_only": true
-     },
-     {
-      "scorer": "exact",
-      "map": "pseudo",
-      "level": "lexeme",
-      "rv_spec": "pada",
-      "hom_spec": "line",
-      "syn": "bonus-rel",
-      "midp": true,
-      "rv_link": "adj1",
-      "syn_b": 3.0,
-      "min_count": 1,
-      "rank_by": "fisher",
-      "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3765,7 +5797,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3780,7 +5813,40 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-rel",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 1.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-rel",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 1.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
      }
     ],
     "folds_agree": false,
@@ -3793,14 +5859,15 @@
      "syn": "bonus-rel",
      "midp": true,
      "rv_link": "adj1",
-     "syn_b": 3.0,
+     "syn_b": 1.0,
      "min_count": 1,
      "rank_by": "fisher",
      "floor": null,
-     "content_only": true
+     "content_only": true,
+     "max_logp": 0.0
     },
-    "n_settings": 96,
-    "n_ranked_pairs_full_best": 1158,
+    "n_settings": 192,
+    "n_ranked_pairs_full_best": 1094,
     "shuffled": {
      "recall@50": 0.017,
      "recall@100": 0.017,
@@ -3810,27 +5877,50 @@
       "recall@100": 0.042,
       "recall@200": 0.083
      }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.042,
+      "ci95": [
+       0.0,
+       0.125
+      ]
+     },
+     "recall@200": {
+      "diff": 0.042,
+      "ci95": [
+       0.0,
+       0.125
+      ]
+     }
     }
    },
    "E1": {
     "n_items": 16,
     "recall": {
-     "recall@50": 0.312,
-     "recall@100": 0.5,
-     "recall@200": 0.5
+     "recall@50": 0.25,
+     "recall@100": 0.438,
+     "recall@200": 0.438
     },
     "ci95": {
      "recall@50": [
-      0.125,
-      0.562
+      0.062,
+      0.5
      ],
      "recall@100": [
-      0.25,
-      0.75
+      0.188,
+      0.688
      ],
      "recall@200": [
-      0.25,
-      0.75
+      0.188,
+      0.688
      ]
     },
     "gold_items": {
@@ -3859,7 +5949,24 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-rel",
+      "midp": true,
+      "rv_link": "adj2",
+      "syn_b": 1.0,
+      "min_count": 1,
+      "rank_by": "max",
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3870,11 +5977,12 @@
       "syn": "bonus-rel",
       "midp": true,
       "rv_link": "adj1",
-      "syn_b": 3.0,
+      "syn_b": 1.0,
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3885,11 +5993,12 @@
       "syn": "bonus-rel",
       "midp": true,
       "rv_link": "adj1",
-      "syn_b": 3.0,
+      "syn_b": 1.0,
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -3900,26 +6009,12 @@
       "syn": "bonus-rel",
       "midp": true,
       "rv_link": "adj1",
-      "syn_b": 3.0,
+      "syn_b": 1.0,
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
-     },
-     {
-      "scorer": "exact",
-      "map": "pseudo",
-      "level": "lexeme",
-      "rv_spec": "pada",
-      "hom_spec": "line",
-      "syn": "bonus-rel",
-      "midp": true,
-      "rv_link": "adj1",
-      "syn_b": 3.0,
-      "min_count": 1,
-      "rank_by": "fisher",
-      "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      }
     ],
     "folds_agree": false,
@@ -3932,22 +6027,46 @@
      "syn": "bonus-rel",
      "midp": true,
      "rv_link": "adj1",
-     "syn_b": 3.0,
+     "syn_b": 1.0,
      "min_count": 1,
      "rank_by": "fisher",
      "floor": null,
-     "content_only": true
+     "content_only": true,
+     "max_logp": 0.0
     },
-    "n_settings": 96,
-    "n_ranked_pairs_full_best": 1158,
+    "n_settings": 192,
+    "n_ranked_pairs_full_best": 1094,
     "shuffled": {
-     "recall@50": 0.025,
+     "recall@50": 0.013,
      "recall@100": 0.025,
      "recall@200": 0.037,
      "max_over_seeds": {
       "recall@50": 0.062,
       "recall@100": 0.062,
       "recall@200": 0.125
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.062,
+      "ci95": [
+       0.0,
+       0.188
+      ]
      }
     }
    }
@@ -3958,14 +6077,14 @@
    "E2": {
     "n_items": 24,
     "recall": {
-     "recall@50": 0.167,
+     "recall@50": 0.125,
      "recall@100": 0.208,
      "recall@200": 0.25
     },
     "ci95": {
      "recall@50": [
-      0.042,
-      0.333
+      0.0,
+      0.25
      ],
      "recall@100": [
       0.042,
@@ -3978,13 +6097,13 @@
     },
     "gold_items": {
      "n": 20,
-     "recall@50": 0.2,
+     "recall@50": 0.15,
      "recall@100": 0.2,
      "recall@200": 0.25
     },
     "primary_items": {
      "n": 11,
-     "recall@50": 0.273,
+     "recall@50": 0.182,
      "recall@100": 0.273,
      "recall@200": 0.364
     },
@@ -4001,7 +6120,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4015,7 +6135,23 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-rel",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "max",
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4029,21 +6165,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
-     },
-     {
-      "scorer": "exact",
-      "map": "pseudo",
-      "level": "lexeme",
-      "rv_spec": "pada",
-      "hom_spec": "line",
-      "syn": "filter-rel",
-      "midp": true,
-      "rv_link": "adj2",
-      "min_count": 1,
-      "rank_by": "fisher",
-      "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4055,9 +6178,10 @@
       "midp": true,
       "rv_link": "adj1",
       "min_count": 1,
-      "rank_by": "fisher",
+      "rank_by": "max",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      }
     ],
     "folds_agree": false,
@@ -4073,10 +6197,11 @@
      "min_count": 1,
      "rank_by": "fisher",
      "floor": null,
-     "content_only": true
+     "content_only": true,
+     "max_logp": 0.0
     },
-    "n_settings": 32,
-    "n_ranked_pairs_full_best": 134,
+    "n_settings": 64,
+    "n_ranked_pairs_full_best": 120,
     "shuffled": {
      "recall@50": 0.025,
      "recall@100": 0.033,
@@ -4085,6 +6210,29 @@
       "recall@50": 0.042,
       "recall@100": 0.042,
       "recall@200": 0.083
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.167,
+      "ci95": [
+       -0.042,
+       0.333
+      ]
+     },
+     "recall@100": {
+      "diff": 0.25,
+      "ci95": [
+       0.042,
+       0.458
+      ]
+     },
+     "recall@200": {
+      "diff": 0.25,
+      "ci95": [
+       0.042,
+       0.458
+      ]
      }
     }
    },
@@ -4134,7 +6282,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4148,7 +6297,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4162,7 +6312,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4176,7 +6327,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4190,7 +6342,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      }
     ],
     "folds_agree": false,
@@ -4206,10 +6359,11 @@
      "min_count": 1,
      "rank_by": "fisher",
      "floor": null,
-     "content_only": false
+     "content_only": false,
+     "max_logp": 0.0
     },
-    "n_settings": 32,
-    "n_ranked_pairs_full_best": 146,
+    "n_settings": 64,
+    "n_ranked_pairs_full_best": 125,
     "shuffled": {
      "recall@50": 0.025,
      "recall@100": 0.025,
@@ -4218,6 +6372,29 @@
       "recall@50": 0.062,
       "recall@100": 0.062,
       "recall@200": 0.062
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       -0.188,
+       0.188
+      ]
+     },
+     "recall@100": {
+      "diff": 0.188,
+      "ci95": [
+       0.0,
+       0.375
+      ]
+     },
+     "recall@200": {
+      "diff": 0.25,
+      "ci95": [
+       0.062,
+       0.438
+      ]
      }
     }
    }
@@ -4228,14 +6405,14 @@
    "E2": {
     "n_items": 24,
     "recall": {
-     "recall@50": 0.333,
+     "recall@50": 0.292,
      "recall@100": 0.458,
      "recall@200": 0.5
     },
     "ci95": {
      "recall@50": [
-      0.167,
-      0.5
+      0.125,
+      0.458
      ],
      "recall@100": [
       0.25,
@@ -4248,13 +6425,13 @@
     },
     "gold_items": {
      "n": 20,
-     "recall@50": 0.35,
+     "recall@50": 0.3,
      "recall@100": 0.5,
      "recall@200": 0.55
     },
     "primary_items": {
      "n": 11,
-     "recall@50": 0.455,
+     "recall@50": 0.364,
      "recall@100": 0.636,
      "recall@200": 0.636
     },
@@ -4271,7 +6448,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4285,7 +6463,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4299,7 +6478,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4313,7 +6493,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4327,7 +6508,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      }
     ],
     "folds_agree": true,
@@ -4343,10 +6525,11 @@
      "min_count": 1,
      "rank_by": "fisher",
      "floor": null,
-     "content_only": true
+     "content_only": true,
+     "max_logp": 0.0
     },
-    "n_settings": 32,
-    "n_ranked_pairs_full_best": 1158,
+    "n_settings": 64,
+    "n_ranked_pairs_full_best": 1094,
     "shuffled": {
      "recall@50": 0.008,
      "recall@100": 0.008,
@@ -4356,19 +6539,42 @@
       "recall@100": 0.042,
       "recall@200": 0.083
      }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     }
     }
    },
    "E1": {
     "n_items": 16,
     "recall": {
-     "recall@50": 0.375,
+     "recall@50": 0.312,
      "recall@100": 0.5,
      "recall@200": 0.562
     },
     "ci95": {
      "recall@50": [
-      0.188,
-      0.625
+      0.125,
+      0.562
      ],
      "recall@100": [
       0.25,
@@ -4381,13 +6587,13 @@
     },
     "gold_items": {
      "n": 14,
-     "recall@50": 0.357,
+     "recall@50": 0.286,
      "recall@100": 0.5,
      "recall@200": 0.571
     },
     "primary_items": {
      "n": 9,
-     "recall@50": 0.444,
+     "recall@50": 0.333,
      "recall@100": 0.556,
      "recall@200": 0.556
     },
@@ -4404,7 +6610,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4418,7 +6625,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4432,7 +6640,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4446,7 +6655,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4460,7 +6670,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      }
     ],
     "folds_agree": true,
@@ -4476,10 +6687,11 @@
      "min_count": 1,
      "rank_by": "fisher",
      "floor": null,
-     "content_only": true
+     "content_only": true,
+     "max_logp": 0.0
     },
-    "n_settings": 32,
-    "n_ranked_pairs_full_best": 1158,
+    "n_settings": 64,
+    "n_ranked_pairs_full_best": 1094,
     "shuffled": {
      "recall@50": 0.013,
      "recall@100": 0.013,
@@ -4488,6 +6700,29 @@
       "recall@50": 0.062,
       "recall@100": 0.062,
       "recall@200": 0.125
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
      }
     }
    }
@@ -4498,33 +6733,33 @@
    "E2": {
     "n_items": 24,
     "recall": {
-     "recall@50": 0.333,
+     "recall@50": 0.292,
      "recall@100": 0.417,
-     "recall@200": 0.458
+     "recall@200": 0.5
     },
     "ci95": {
      "recall@50": [
-      0.167,
-      0.5
+      0.125,
+      0.458
      ],
      "recall@100": [
       0.208,
       0.625
      ],
      "recall@200": [
-      0.25,
-      0.667
+      0.292,
+      0.708
      ]
     },
     "gold_items": {
      "n": 20,
-     "recall@50": 0.35,
+     "recall@50": 0.3,
      "recall@100": 0.45,
-     "recall@200": 0.5
+     "recall@200": 0.55
     },
     "primary_items": {
      "n": 11,
-     "recall@50": 0.455,
+     "recall@50": 0.364,
      "recall@100": 0.545,
      "recall@200": 0.636
     },
@@ -4537,39 +6772,12 @@
       "level": "lexeme",
       "midp": false,
       "third_mode": "fisher3",
-      "lat_spec": "sentence",
+      "lat_spec": "line",
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
-     },
-     {
-      "scorer": "exact",
-      "map": "pseudo",
-      "rv_spec": "pada",
-      "hom_spec": "line",
-      "level": "lexeme",
-      "midp": false,
-      "third_mode": "fisher3",
-      "lat_spec": "sentence",
-      "min_count": 1,
-      "rank_by": "fisher",
-      "floor": null,
-      "content_only": true
-     },
-     {
-      "scorer": "exact",
-      "map": "pseudo",
-      "rv_spec": "pada",
-      "hom_spec": "line",
-      "level": "lexeme",
-      "midp": false,
-      "third_mode": "fisher3",
-      "lat_spec": "sentence",
-      "min_count": 1,
-      "rank_by": "fisher",
-      "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4583,7 +6791,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4593,14 +6802,45 @@
       "level": "lexeme",
       "midp": false,
       "third_mode": "fisher3",
-      "lat_spec": "sentence",
+      "lat_spec": "line",
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
      }
     ],
-    "folds_agree": false,
+    "folds_agree": true,
     "full_data_best": {
      "scorer": "exact",
      "map": "pseudo",
@@ -4609,55 +6849,79 @@
      "level": "lexeme",
      "midp": false,
      "third_mode": "fisher3",
-     "lat_spec": "sentence",
+     "lat_spec": "line",
      "min_count": 1,
      "rank_by": "fisher",
      "floor": null,
-     "content_only": true
+     "content_only": true,
+     "max_logp": 0.0
     },
-    "n_settings": 32,
-    "n_ranked_pairs_full_best": 1158,
+    "n_settings": 64,
+    "n_ranked_pairs_full_best": 1094,
     "shuffled": {
      "recall@50": 0.0,
-     "recall@100": 0.008,
+     "recall@100": 0.0,
      "recall@200": 0.017,
      "max_over_seeds": {
       "recall@50": 0.0,
-      "recall@100": 0.042,
-      "recall@200": 0.083
+      "recall@100": 0.0,
+      "recall@200": 0.042
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.042,
+      "ci95": [
+       0.0,
+       0.125
+      ]
+     },
+     "recall@200": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
      }
     }
    },
    "E1": {
     "n_items": 16,
     "recall": {
-     "recall@50": 0.375,
+     "recall@50": 0.312,
      "recall@100": 0.438,
-     "recall@200": 0.5
+     "recall@200": 0.562
     },
     "ci95": {
      "recall@50": [
-      0.188,
-      0.625
+      0.125,
+      0.562
      ],
      "recall@100": [
       0.188,
       0.688
      ],
      "recall@200": [
-      0.25,
-      0.75
+      0.312,
+      0.812
      ]
     },
     "gold_items": {
      "n": 14,
-     "recall@50": 0.357,
+     "recall@50": 0.286,
      "recall@100": 0.429,
-     "recall@200": 0.5
+     "recall@200": 0.571
     },
     "primary_items": {
      "n": 9,
-     "recall@50": 0.444,
+     "recall@50": 0.333,
      "recall@100": 0.444,
      "recall@200": 0.556
     },
@@ -4670,39 +6934,12 @@
       "level": "lexeme",
       "midp": false,
       "third_mode": "fisher3",
-      "lat_spec": "sentence",
+      "lat_spec": "line",
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
-     },
-     {
-      "scorer": "exact",
-      "map": "pseudo",
-      "rv_spec": "pada",
-      "hom_spec": "line",
-      "level": "lexeme",
-      "midp": false,
-      "third_mode": "fisher3",
-      "lat_spec": "sentence",
-      "min_count": 1,
-      "rank_by": "fisher",
-      "floor": null,
-      "content_only": true
-     },
-     {
-      "scorer": "exact",
-      "map": "pseudo",
-      "rv_spec": "pada",
-      "hom_spec": "line",
-      "level": "lexeme",
-      "midp": false,
-      "third_mode": "fisher3",
-      "lat_spec": "sentence",
-      "min_count": 1,
-      "rank_by": "fisher",
-      "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4716,7 +6953,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4726,14 +6964,45 @@
       "level": "lexeme",
       "midp": false,
       "third_mode": "fisher3",
-      "lat_spec": "sentence",
+      "lat_spec": "line",
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
      }
     ],
-    "folds_agree": false,
+    "folds_agree": true,
     "full_data_best": {
      "scorer": "exact",
      "map": "pseudo",
@@ -4742,22 +7011,46 @@
      "level": "lexeme",
      "midp": false,
      "third_mode": "fisher3",
-     "lat_spec": "sentence",
+     "lat_spec": "line",
      "min_count": 1,
      "rank_by": "fisher",
      "floor": null,
-     "content_only": true
+     "content_only": true,
+     "max_logp": 0.0
     },
-    "n_settings": 32,
-    "n_ranked_pairs_full_best": 1158,
+    "n_settings": 64,
+    "n_ranked_pairs_full_best": 1094,
     "shuffled": {
      "recall@50": 0.0,
-     "recall@100": 0.013,
+     "recall@100": 0.0,
      "recall@200": 0.025,
      "max_over_seeds": {
       "recall@50": 0.0,
-      "recall@100": 0.062,
-      "recall@200": 0.125
+      "recall@100": 0.0,
+      "recall@200": 0.062
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.0,
+      "ci95": [
+       -0.188,
+       0.188
+      ]
+     },
+     "recall@200": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
      }
     }
    }
@@ -4768,33 +7061,33 @@
    "E2": {
     "n_items": 24,
     "recall": {
-     "recall@50": 0.333,
+     "recall@50": 0.292,
      "recall@100": 0.458,
-     "recall@200": 0.5
+     "recall@200": 0.458
     },
     "ci95": {
      "recall@50": [
-      0.167,
-      0.5
+      0.125,
+      0.458
      ],
      "recall@100": [
       0.25,
       0.667
      ],
      "recall@200": [
-      0.292,
-      0.708
+      0.25,
+      0.667
      ]
     },
     "gold_items": {
      "n": 20,
-     "recall@50": 0.35,
+     "recall@50": 0.3,
      "recall@100": 0.5,
-     "recall@200": 0.55
+     "recall@200": 0.5
     },
     "primary_items": {
      "n": 11,
-     "recall@50": 0.455,
+     "recall@50": 0.364,
      "recall@100": 0.636,
      "recall@200": 0.636
     },
@@ -4811,7 +7104,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4825,7 +7119,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4839,7 +7134,23 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3pos",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4853,24 +7164,11 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
-     },
-     {
-      "scorer": "exact",
-      "map": "pseudo",
-      "rv_spec": "pada",
-      "hom_spec": "line",
-      "level": "lexeme",
-      "midp": false,
-      "third_mode": "fisher3pos",
-      "lat_spec": "sentence",
-      "min_count": 1,
-      "rank_by": "fisher",
-      "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      }
     ],
-    "folds_agree": true,
+    "folds_agree": false,
     "full_data_best": {
      "scorer": "exact",
      "map": "pseudo",
@@ -4883,51 +7181,75 @@
      "min_count": 1,
      "rank_by": "fisher",
      "floor": null,
-     "content_only": true
+     "content_only": true,
+     "max_logp": 0.0
     },
-    "n_settings": 32,
-    "n_ranked_pairs_full_best": 1158,
+    "n_settings": 64,
+    "n_ranked_pairs_full_best": 1094,
     "shuffled": {
-     "recall@50": 0.0,
+     "recall@50": 0.008,
      "recall@100": 0.008,
-     "recall@200": 0.008,
+     "recall@200": 0.017,
      "max_over_seeds": {
-      "recall@50": 0.0,
+      "recall@50": 0.042,
       "recall@100": 0.042,
-      "recall@200": 0.042
+      "recall@200": 0.083
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": 0.0,
+      "ci95": [
+       0.0,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.042,
+      "ci95": [
+       0.0,
+       0.125
+      ]
      }
     }
    },
    "E1": {
     "n_items": 16,
     "recall": {
-     "recall@50": 0.375,
+     "recall@50": 0.312,
      "recall@100": 0.5,
-     "recall@200": 0.562
+     "recall@200": 0.5
     },
     "ci95": {
      "recall@50": [
-      0.188,
-      0.625
+      0.125,
+      0.562
      ],
      "recall@100": [
       0.25,
       0.75
      ],
      "recall@200": [
-      0.312,
-      0.812
+      0.25,
+      0.75
      ]
     },
     "gold_items": {
      "n": 14,
-     "recall@50": 0.357,
+     "recall@50": 0.286,
      "recall@100": 0.5,
-     "recall@200": 0.571
+     "recall@200": 0.5
     },
     "primary_items": {
      "n": 9,
-     "recall@50": 0.444,
+     "recall@50": 0.333,
      "recall@100": 0.556,
      "recall@200": 0.556
     },
@@ -4944,7 +7266,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4958,7 +7281,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4972,7 +7296,23 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3pos",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -4986,24 +7326,11 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
-     },
-     {
-      "scorer": "exact",
-      "map": "pseudo",
-      "rv_spec": "pada",
-      "hom_spec": "line",
-      "level": "lexeme",
-      "midp": false,
-      "third_mode": "fisher3pos",
-      "lat_spec": "sentence",
-      "min_count": 1,
-      "rank_by": "fisher",
-      "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      }
     ],
-    "folds_agree": true,
+    "folds_agree": false,
     "full_data_best": {
      "scorer": "exact",
      "map": "pseudo",
@@ -5016,18 +7343,42 @@
      "min_count": 1,
      "rank_by": "fisher",
      "floor": null,
-     "content_only": true
+     "content_only": true,
+     "max_logp": 0.0
     },
-    "n_settings": 32,
-    "n_ranked_pairs_full_best": 1158,
+    "n_settings": 64,
+    "n_ranked_pairs_full_best": 1094,
     "shuffled": {
-     "recall@50": 0.0,
+     "recall@50": 0.013,
      "recall@100": 0.013,
-     "recall@200": 0.013,
+     "recall@200": 0.025,
      "max_over_seeds": {
-      "recall@50": 0.0,
+      "recall@50": 0.062,
       "recall@100": 0.062,
-      "recall@200": 0.062
+      "recall@200": 0.125
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     },
+     "recall@100": {
+      "diff": -0.062,
+      "ci95": [
+       -0.188,
+       0.0
+      ]
+     },
+     "recall@200": {
+      "diff": 0.0,
+      "ci95": [
+       -0.188,
+       0.188
+      ]
      }
     }
    }
@@ -5038,18 +7389,18 @@
    "E2": {
     "n_items": 24,
     "recall": {
-     "recall@50": 0.042,
-     "recall@100": 0.083,
+     "recall@50": 0.083,
+     "recall@100": 0.125,
      "recall@200": 0.125
     },
     "ci95": {
      "recall@50": [
       0.0,
-      0.125
+      0.208
      ],
      "recall@100": [
       0.0,
-      0.208
+      0.25
      ],
      "recall@200": [
       0.0,
@@ -5081,7 +7432,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -5095,7 +7447,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -5109,7 +7462,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -5123,7 +7477,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -5137,7 +7492,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      }
     ],
     "folds_agree": true,
@@ -5153,18 +7509,42 @@
      "min_count": 1,
      "rank_by": "fisher",
      "floor": null,
-     "content_only": false
+     "content_only": false,
+     "max_logp": 0.0
     },
-    "n_settings": 32,
-    "n_ranked_pairs_full_best": 693,
+    "n_settings": 64,
+    "n_ranked_pairs_full_best": 680,
     "shuffled": {
      "recall@50": 0.008,
-     "recall@100": 0.017,
-     "recall@200": 0.017,
+     "recall@100": 0.025,
+     "recall@200": 0.025,
      "max_over_seeds": {
       "recall@50": 0.042,
       "recall@100": 0.083,
       "recall@200": 0.083
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.208,
+      "ci95": [
+       0.042,
+       0.417
+      ]
+     },
+     "recall@100": {
+      "diff": 0.333,
+      "ci95": [
+       0.083,
+       0.583
+      ]
+     },
+     "recall@200": {
+      "diff": 0.375,
+      "ci95": [
+       0.167,
+       0.583
+      ]
      }
     }
    },
@@ -5214,7 +7594,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -5228,7 +7609,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -5242,7 +7624,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -5256,7 +7639,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": false
+      "content_only": false,
+      "max_logp": 0.0
      },
      {
       "scorer": "exact",
@@ -5270,7 +7654,8 @@
       "min_count": 1,
       "rank_by": "fisher",
       "floor": null,
-      "content_only": true
+      "content_only": true,
+      "max_logp": 0.0
      }
     ],
     "folds_agree": false,
@@ -5286,10 +7671,11 @@
      "min_count": 1,
      "rank_by": "fisher",
      "floor": null,
-     "content_only": true
+     "content_only": true,
+     "max_logp": 0.0
     },
-    "n_settings": 32,
-    "n_ranked_pairs_full_best": 140,
+    "n_settings": 64,
+    "n_ranked_pairs_full_best": 114,
     "shuffled": {
      "recall@50": 0.025,
      "recall@100": 0.025,
@@ -5298,6 +7684,333 @@
       "recall@50": 0.125,
       "recall@100": 0.125,
       "recall@200": 0.125
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.188,
+      "ci95": [
+       0.0,
+       0.375
+      ]
+     },
+     "recall@100": {
+      "diff": 0.312,
+      "ci95": [
+       0.0,
+       0.562
+      ]
+     },
+     "recall@200": {
+      "diff": 0.375,
+      "ci95": [
+       0.125,
+       0.625
+      ]
+     }
+    }
+   }
+  },
+  {
+   "row": "final_each_p05",
+   "description": "diagnostic: the final setting, but each corpus must give p < 0.05 (fixed, not tuned)",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.208,
+     "recall@100": 0.208,
+     "recall@200": 0.208
+    },
+    "ci95": {
+     "recall@50": [
+      0.083,
+      0.375
+     ],
+     "recall@100": [
+      0.083,
+      0.375
+     ],
+     "recall@200": [
+      0.042,
+      0.375
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.25,
+     "recall@100": 0.25,
+     "recall@200": 0.25
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.455,
+     "recall@100": 0.455,
+     "recall@200": 0.455
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": -2.995732
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": -2.995732
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": -2.995732
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": -2.995732
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": -2.995732
+     }
+    ],
+    "folds_agree": true,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "level": "lexeme",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "midp": false,
+     "floor": null,
+     "content_only": true,
+     "max_logp": -2.995732
+    },
+    "n_settings": 1,
+    "n_ranked_pairs_full_best": 44,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.0,
+      "recall@200": 0.0
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.083,
+      "ci95": [
+       -0.167,
+       0.292
+      ]
+     },
+     "recall@100": {
+      "diff": 0.25,
+      "ci95": [
+       0.083,
+       0.417
+      ]
+     },
+     "recall@200": {
+      "diff": 0.292,
+      "ci95": [
+       0.125,
+       0.458
+      ]
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.25,
+     "recall@100": 0.25,
+     "recall@200": 0.25
+    },
+    "ci95": {
+     "recall@50": [
+      0.062,
+      0.438
+     ],
+     "recall@100": [
+      0.062,
+      0.5
+     ],
+     "recall@200": [
+      0.062,
+      0.5
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.286,
+     "recall@100": 0.286,
+     "recall@200": 0.286
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.444,
+     "recall@200": 0.444
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": -2.995732
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": -2.995732
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": -2.995732
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": -2.995732
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true,
+      "max_logp": -2.995732
+     }
+    ],
+    "folds_agree": true,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "level": "lexeme",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "midp": false,
+     "floor": null,
+     "content_only": true,
+     "max_logp": -2.995732
+    },
+    "n_settings": 1,
+    "n_ranked_pairs_full_best": 44,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.0,
+      "recall@200": 0.0
+     }
+    },
+    "final_minus_row": {
+     "recall@50": {
+      "diff": 0.0,
+      "ci95": [
+       -0.25,
+       0.25
+      ]
+     },
+     "recall@100": {
+      "diff": 0.188,
+      "ci95": [
+       0.0,
+       0.375
+      ]
+     },
+     "recall@200": {
+      "diff": 0.25,
+      "ci95": [
+       0.062,
+       0.5
+      ]
      }
     }
    }
@@ -5317,7 +8030,8 @@
    "rank_by": "fisher",
    "midp": false,
    "floor": null,
-   "content_only": true
+   "content_only": true,
+   "max_logp": 0.0
   }
  },
  "items_E2": [
@@ -5388,7 +8102,7 @@
      "per-"
     ]
    ],
-   "rank_heldout_final": 26
+   "rank_heldout_final": 27
   },
   {
    "item_id": "pie-lex-egjh2|pie-root-kjlew-hear",
@@ -5405,7 +8119,7 @@
      "ḱlew-"
     ]
    ],
-   "rank_heldout_final": 85
+   "rank_heldout_final": 81
   },
   {
    "item_id": "pie-lex-h1wesus|pie-root-deh3-give",
@@ -5421,7 +8135,7 @@
      "deh₃-"
     ]
    ],
-   "rank_heldout_final": 48
+   "rank_heldout_final": 55
   },
   {
    "item_id": "pie-lex-ish1ros|pie-root-men-think",
@@ -5438,7 +8152,7 @@
      "men-"
     ]
    ],
-   "rank_heldout_final": 72
+   "rank_heldout_final": 71
   },
   {
    "item_id": "pie-lex-kwe|pie-lex-kwe-2",
@@ -5470,7 +8184,7 @@
      "sweh₂d-"
     ]
    ],
-   "rank_heldout_final": 13
+   "rank_heldout_final": 14
   },
   {
    "item_id": "pie-lex-megjh2s|pie-root-kjlew-hear",
@@ -5488,7 +8202,7 @@
      "ḱlew-"
     ]
    ],
-   "rank_heldout_final": 15
+   "rank_heldout_final": 16
   },
   {
    "item_id": "pie-lex-soh2wl|pie-root-deykj-point_out",
@@ -5534,7 +8248,7 @@
      "h₂ews-"
     ]
    ],
-   "rank_heldout_final": 10
+   "rank_heldout_final": 11
   },
   {
    "item_id": "pie-root-dheh1-do|pie-root-kjlew-hear",
@@ -5606,7 +8320,7 @@
      "per-"
     ]
    ],
-   "rank_heldout_final": 387
+   "rank_heldout_final": 370
   },
   {
    "item_id": "pie-root-gjenh1-produce|pie-root-peh2-protect",
@@ -5622,7 +8336,7 @@
      "peh₂-"
     ]
    ],
-   "rank_heldout_final": 188
+   "rank_heldout_final": 184
   },
   {
    "item_id": "pie-root-gwhen-strike|pie-root-kjey-be_lying_down",
@@ -5705,7 +8419,7 @@
      "ḱlew-"
     ]
    ],
-   "rank_heldout_final": 35
+   "rank_heldout_final": 36
   },
   {
    "item_id": "pie-root-h2ergj-white|pie-root-wes-dress",
@@ -5735,7 +8449,7 @@
      "wes-"
     ]
    ],
-   "rank_heldout_final": 75
+   "rank_heldout_final": 73
   },
   {
    "item_id": "pie-root-tetkj-create|pie-root-wekw-speak",

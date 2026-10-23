@@ -1,0 +1,16 @@
+{
+ "final_row": "exact",
+ "setting": {
+  "scorer": "exact",
+  "map": "pseudo",
+  "rv_spec": "pada",
+  "hom_spec": "line",
+  "level": "lexeme",
+  "min_count": 1,
+  "rank_by": "fisher",
+  "midp": false,
+  "floor": null,
+  "content_only": true,
+  "max_logp": 0.0
+ }
+}
