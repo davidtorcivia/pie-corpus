@@ -56,6 +56,27 @@ def _segs(s: str) -> list[Seg]:
     return parse(s)
 
 
+def _redup_weak(stem: str) -> str | None:
+    """Reduplicated presents keep the reduplication and zero-grade the root: dʰédʰeh₁ → dʰedʰh₁,
+    dédeh₃ → dedh₃, sísteh₂ → sisth₂ (Ved. dadhmás, dadmás; tier3-t010 review). zero_grade() alone
+    would delete the accented reduplication vowel (dʰdʰeh₁-)."""
+    segs = _segs(stem)
+    red = segs[1] if len(segs) > 1 else None   # the reduplication vowel: e, or i (parsed as syllabic y)
+    if len(segs) < 4 or not red.acc or not ((red.kind == "V" and red.base == "e") or (red.syl and red.base == "y")):
+        return None
+    if segs[0].kind == "V" or segs[0].base != segs[2].base:
+        return None
+    root = list(segs[2:])
+    j = next((i for i, x in enumerate(root) if x.kind == "V" and x.base in "eo"), None)
+    if j is None:
+        return None
+    root = [replace(x, acc=(i == j)) for i, x in enumerate(root)]
+    rest = zero_grade(render(root))
+    if rest is None:
+        return None
+    return render([replace(x, acc=False) for x in segs[:2]]) + rest
+
+
 def zero_grade(stem: str) -> str | None:
     """Delete the accented short e/o and re-syllabify its neighbours only,
     then de-accent: gʷʰén → gʷʰn̥, dyéw → dyu, wóyd → wid, linékʷ → linkʷ,
@@ -130,7 +151,7 @@ def by_shape(e: dict) -> Classified:
             return Classified(VerbSpec(_strip(f, "ti")), "shape:thematic-present", "verb")
         if f.endswith("ti"):
             st = _strip(f, "ti")
-            wk = zero_grade(st)
+            wk = _redup_weak(st) or zero_grade(st)
             if wk is None:
                 return Classified(None, "unknown:athematic-no-ablaut", "verb")
             kind = "pf" if e.get("aspect") == "pf" else "impf"
