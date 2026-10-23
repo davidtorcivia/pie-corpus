@@ -1,0 +1,1 @@
+| raw/tier1-wikipedia-schleicher | English Wikipedia, "Schleicher's fable" (raw wikitext, action=raw; identical to oldid=1379606023 fetch) | https://en.wikipedia.org/wiki/Schleicher%27s_fable (revision 1379606023, 2026-10-10T23:14:38Z) | 2026-10-23 | 213ab94d85c269ca2cb0dc0a5abfa0d277c595ea36db906ea006a3efaf8af0bd (download/wikitext.txt) | Wikipedia text CC BY-SA 4.0 |

@@ -32,6 +32,17 @@ CASES = [
     ("mṛh₂-ό-", "default", "mr̥h₂-ó-", "G-HOMOGLYPH"),
     ("ǵʰеydʰis", "default", "ǵʰeydʰis", "G-HOMOGLYPH"),
     ("gʰh̥₁bʰ-yé-ti", "default", "gʰh₁bʰ-yé-ti", "G-LAR-RING"),
+    ("h<sub>2</sub>ék<sup>w</sup>e", "default", "h₂ékʷe", "G-HTML-SUBSUP"),
+    ("gʷr̥h<sub>x</sub>úm", "default", "gʷr̥Húm", "G-HTML-SUBSUP"),
+    ("gʰʷermom", "default", "gʷʰermom", "G-MOD-ORDER"),
+    ("ĝhom", "adams-1997", "ǵʰom", "P-ASP-PLAIN-H"),
+    ("méĝhₐm", "adams-1997", "méǵHm", "P-H4"),   # ĝ + hₐ (laryngeal), cf. Byrd méǵh₂m̥
+    ("ĝʰom", "adams-1997", "ǵʰom", "G-PAL-CIRC"),
+    ("wl̥hnā", "lehmann-zgusta-1979", "wl̥Hnā", "P-H-BARE"),
+    ("g'hm̥onm̥", "danka-1986", "ǵʰm̥onm̥", "P-APOS-PAL"),
+    ("owis — ek'wons", "danka-1986", "owis, eḱwons", "P-DASH"),
+    ("gh'ьmon", "hirt-1939", "ǵʰьmon", "P-APOS-PAL"),
+    ("gʷərēi", "lehmann-zgusta-1979", "gʷHrēi", "P-SCHWA"),
     ("bhéreti", "plain-h-aspirates", "bʰéreti", "P-ASP-PLAIN-H"),
     ("dhugh₂tḗr", "plain-h-aspirates", "dʰugh₂tḗr", "P-ASP-PLAIN-H"),
     ("gʷhén-", "plain-h-aspirates", "gʷʰén-", "P-ASP-PLAIN-H"),
@@ -46,7 +57,7 @@ def test_rule(src, profile, want, rule):
     r = normalize(src, profile)
     assert r.text == want
     assert rule in r.applied
-    assert r.canonical
+    assert r.canonical or "ь" in want   # Hirt's ь has no canonical equivalent (documentary)
 
 
 def test_every_rule_in_a_profile_has_a_case():
@@ -82,3 +93,10 @@ def test_canonical_input_is_untouched(uni, _asc):
 def test_idempotent(src, profile, want, rule):
     once = normalize(src, profile).text
     assert normalize(once, profile).text == once
+
+
+def test_profile_rules_see_lowercased_capitals():
+    # Regression: sentence-initial "K'erd" (Danka) kept its apostrophe because
+    # P-APOS-PAL ran before lowercasing.
+    assert normalize('"K\'erd agʰnutai', "danka-1986").text == '"ḱerd agʰnutai'
+    assert normalize("Bhéreti", "plain-h-aspirates").text == "bʰéreti"

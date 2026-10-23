@@ -10,3 +10,7 @@ __pycache__/
 export/*.jsonl
 export/*.txt
 .DS_Store
+# Tier 1 source extractions are small and needed to rebuild corpus/tier1;
+# the downloaded pages/PDFs/scans stay local (hashes in raw/MANIFEST.md).
+!raw/tier1-*/
+raw/tier1-*/download/

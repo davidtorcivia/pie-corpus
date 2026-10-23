@@ -71,12 +71,17 @@ _HOMOGLYPHS = str.maketrans({
 })
 
 _SUBSCRIPT_DIGIT = {"1": "₁", "2": "₂", "3": "₃"}
+_SUBSUP = {"b": {"1": "₁", "2": "₂", "3": "₃", "4": "₄", "x": "ₓ", "a": "\u2090"},
+           "p": {"h": ASP, "w": LAB}}
 _SUPERSCRIPT_DIGIT = {"¹": "₁", "²": "₂", "³": "₃"}
 
 RULES: dict[str, Rule] = {
     r.id: r
     for r in [
         # --- generic -------------------------------------------------------
+        Rule("G-HTML-SUBSUP", "HTML <sub>/<sup> markup → Unicode (h<sub>1</sub> → h₁, k<sup>w</sup> → kʷ, <sub>x</sub> → ₓ)",
+             lambda s: re.sub(r"<su([bp])>([^<]*)</su[bp]>",
+                              lambda m: "".join(_SUBSUP[m[1]].get(c, c) for c in m[2]), s)),
         Rule("G-WS", "trim and collapse runs of whitespace to one space",
              lambda s: " ".join(s.split())),
         Rule("G-MARK-ORDER", "acute+macron on one base → macron+acute (ḗ, not é\u0304)",
@@ -105,35 +110,54 @@ RULES: dict[str, Rule] = {
              _nfd(lambda s: s.translate(_HOMOGLYPHS))),
         Rule("G-LAR-RING", "ring below on a laryngeal (h̥₁, vocalized) → plain (h₁); syllabicity is re-derived",
              _nfd(_sub("([hH])̥", "\\1"))),
+        Rule("G-MOD-ORDER", "aspiration before labialization (gʰʷ) → canonical order (gʷʰ)",
+             lambda s: s.replace(ASP + LAB, LAB + ASP)),
         Rule("G-NFC", "Unicode NFC", lambda s: unicodedata.normalize("NFC", s)),
         # --- profile -------------------------------------------------------
-        Rule("P-ASP-PLAIN-H", "plain h after b d g ǵ gʷ (not a laryngeal) → ʰ (Mallory–Adams style *bher-)",
-             _sub("([bdgǵ]|g" + LAB + ")h(?![₁₂₃ₓ])", "\\1" + ASP)),
+        Rule("P-ASP-PLAIN-H", "plain h after b d g (with any palatal mark or ʷ), not a laryngeal → ʰ (Mallory–Adams style *bher-)",
+             _nfd(_sub("([bdg][\u0300-\u036f]*" + LAB + "?)h(?![₁₂₃ₓ\u2090₄])", "\\1" + ASP))),
         Rule("P-LAB-W-AFTER-K", "plain k g followed by w is a labiovelar (Hirt/older *kw-) → kʷ gʷ",
              _sub("([kg])w", "\\1" + LAB)),
         Rule("P-SCHWA", "ə (schwa indogermanicum) → H (generic laryngeal)",
              lambda s: s.replace("ə", "H")),
         Rule("P-V-W", "v (older notation for the glide) → w", lambda s: s.replace("v", "w")),
         Rule("P-J-Y", "j (older/German notation for the glide) → y", lambda s: s.replace("j", "y")),
-        Rule("P-APOS-PAL", "palatal written k' g' (or k’) → ḱ ǵ",
-             _sub("([kg])['’]", "\\1" + ACUTE)),
+        Rule("P-APOS-PAL", "palatal written k' g' (or k’), and gh' → ḱ ǵ ǵʰ",
+             lambda s: re.sub("([kg])['’]", "\\1" + ACUTE, re.sub("([kg])h['’]", "\\1" + ACUTE + ASP, s))),
+        Rule("P-H-BARE", "bare h that is neither aspiration nor numbered (laryngeal of unknown color) → H",
+             _sub("(?<![bdgǵʷ\u0301])h(?![₁₂₃ₓʰ123])", "H")),
+        Rule("P-H4", "h₄ and hₐ (Adams's fourth / a-coloring laryngeal) → H",
+             _sub("[hH][₄\u2090]", "H")),
+        Rule("P-DASH", "em/en dash used as punctuation → comma",
+             lambda s: re.sub(r"\s*[—–]\s*", ", ", s)),
     ]
 }
 
-_GENERIC = ["G-NFC", "G-WS", "G-HOMOGLYPH", "G-QUOTES", "G-ELLIPSIS", "G-LAR-DIGIT", "G-LAR-X",
+_GENERIC = ["G-NFC", "G-HTML-SUBSUP", "G-WS", "G-HOMOGLYPH", "G-QUOTES", "G-ELLIPSIS", "G-LAR-DIGIT", "G-LAR-X",
             "G-LAR-RING", "G-CASE",
             "G-PAL-CIRC", "G-LAB-U", "G-GLIDE", "G-RING-ABOVE", "G-SYL-DOT",
-            "G-MARK-ORDER", "G-NFC"]
+            "G-MARK-ORDER", "G-MOD-ORDER", "G-NFC"]
 
 # Source profiles: generic rules plus source-specific ones, applied in order.
 # Profile rules run after G-NFC (so regexes see precomposed ḱ ǵ) and before
 # the rest of the generic cleanup. Add a profile
 # per source family as sources arrive, and log it in docs/notation.md.
+# Profile rules run after H-safe lowercasing, so a sentence-initial capital
+# (K'erd, Jégeswo, Bher-) gets the same treatment as lowercase.
+_PRE = ["G-NFC", "G-HTML-SUBSUP", "G-CASE"]
+
 PROFILES: dict[str, list[str]] = {
     "default": _GENERIC,
     "wiktionary": _GENERIC,
-    "plain-h-aspirates": ["G-NFC", "P-ASP-PLAIN-H"] + _GENERIC,
-    "schleicher-1868": ["G-NFC", "P-V-W", "P-J-Y"] + _GENERIC,
+    "plain-h-aspirates": _PRE + ["P-ASP-PLAIN-H"] + _GENERIC,
+    "schleicher-1868": _PRE + ["P-V-W", "P-J-Y", "P-ASP-PLAIN-H"] + _GENERIC,
+    # Tier 1 source profiles (docs/notation.md §Profiles). Profile rules run in order.
+    "hirt-1939": _PRE + ["P-J-Y", "P-APOS-PAL", "P-ASP-PLAIN-H", "P-SCHWA"] + _GENERIC,
+    "lehmann-zgusta-1979": _PRE + ["P-ASP-PLAIN-H", "P-H-BARE", "P-SCHWA"] + _GENERIC,
+    "danka-1986": _PRE + ["P-J-Y", "P-APOS-PAL", "P-ASP-PLAIN-H", "P-SCHWA", "P-DASH"] + _GENERIC,
+    "adams-1997": _PRE + ["P-H4", "P-ASP-PLAIN-H"] + _GENERIC,
+    "luhr-2008": _PRE + ["P-J-Y", "P-APOS-PAL"] + _GENERIC,
+    "voyles-barrack-2009": _PRE + ["P-J-Y"] + _GENERIC,
 }
 
 
@@ -149,7 +173,8 @@ def normalize(text: str, profile: str = "default") -> NormalizeResult:
     applied: list[str] = []
     s = text
     for rid in PROFILES[profile]:
-        t = RULES[rid].fn(s)
+        # NFC after every rule, so later regexes see precomposed ḱ ǵ
+        t = unicodedata.normalize("NFC", RULES[rid].fn(s))
         if t != s:
             if rid not in applied:
                 applied.append(rid)

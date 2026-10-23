@@ -326,6 +326,17 @@ _PRF = ["h₂e", "th₂e", "e", "wé", None, None, "mé", "é", "ḗr"]
 _ATH_IMP = {"3SG": "tu", "2DU": "tóm", "3DU": "tā́m", "2PL": "té", "3PL": "éntu"}
 
 
+def _voiced_secondary(out: Cells, conv: str) -> Cells:
+    """Handbook convention: the secondary 3sg/3pl endings are also written with
+    final -d (*-ed*, *-ond*: Byrd 2013; word-final voicing of *-t*)."""
+    if conv != "handbook":
+        return out
+    for k, forms in out.items():
+        if k.startswith(("PST.3", "AOR.3")):
+            out[k] = forms + [f[:-1] + "d" for f in forms if f.endswith("t")]
+    return out
+
+
 def conjugate(spec: VerbSpec, convention: str = "handbook", alternatives: bool = True) -> Cells:
     """Active indicative and imperative cells. Middle, subjunctive, optative
     and participles are Phase B."""
@@ -358,7 +369,7 @@ def _conjugate(spec: VerbSpec, conv: str) -> Cells:
             out[f"{'PST' if spec.kind == 'impf' else tense}.{pn}"] = [th(e)]
         for pn, e in _TH_IMP.items():
             out[f"IMP.{pn}"] = [th(e)]
-        return out
+        return _voiced_secondary(out, conv)
 
     strong = fix(_p(_bare(spec.strong)))
     weak = fix(_p(_bare(spec.weak or spec.strong)))
@@ -400,4 +411,4 @@ def _conjugate(spec: VerbSpec, conv: str) -> Cells:
         if wk and spec.kind == "stat":
             st = junction_laryngeal_loss(st, _p(e))
         out[f"IMP.{pn}"] = [render(_add(st, e))]
-    return out
+    return _voiced_secondary(out, conv)

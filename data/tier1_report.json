@@ -1,0 +1,181 @@
+{
+ "records": 99,
+ "versions": {
+  "king-and-god-byrd-2013": {
+   "lines": 12,
+   "tokens": 55,
+   "miss:variant-of-known-lexeme": 14,
+   "match:exact": 19,
+   "match:noaccent": 13,
+   "miss:engine-gap": 1,
+   "match:nolength": 3,
+   "miss:lexicon-gap": 4,
+   "match:decolored": 1,
+   "coverage": 0.655
+  },
+  "king-and-god-hamp-sen-1997": {
+   "lines": 11,
+   "tokens": 20,
+   "miss:variant-of-known-lexeme": 8,
+   "match:noaccent": 7,
+   "documentary_lines": 5,
+   "match:exact": 3,
+   "miss:lexicon-gap": 2,
+   "coverage": 0.5
+  },
+  "king-and-god-lehmann-1952": {
+   "lines": 11,
+   "documentary_lines": 10,
+   "tokens": 5,
+   "match:exact": 3,
+   "miss:pre-laryngeal": 2,
+   "coverage": 0.6
+  },
+  "schleicher-fable-adams-1997": {
+   "lines": 5,
+   "tokens": 66,
+   "match:exact": 26,
+   "miss:variant-of-known-lexeme": 11,
+   "miss:engine-gap": 7,
+   "miss:lexicon-gap": 15,
+   "match:noaccent": 4,
+   "match:generic-H": 3,
+   "coverage": 0.5
+  },
+  "schleicher-fable-byrd-2013": {
+   "lines": 6,
+   "tokens": 61,
+   "match:exact": 29,
+   "match:decolored": 6,
+   "miss:engine-gap": 3,
+   "match:noaccent": 8,
+   "miss:lexicon-gap": 9,
+   "miss:variant-of-known-lexeme": 5,
+   "match:nolength": 1,
+   "coverage": 0.721
+  },
+  "schleicher-fable-danka-1986": {
+   "lines": 5,
+   "tokens": 53,
+   "miss:variant-of-known-lexeme": 17,
+   "miss:lexicon-gap": 13,
+   "match:exact": 4,
+   "miss:pre-laryngeal": 7,
+   "match:noaccent": 8,
+   "miss:engine-gap": 4,
+   "coverage": 0.226
+  },
+  "schleicher-fable-hirt-1939": {
+   "lines": 5,
+   "tokens": 8,
+   "miss:variant-of-known-lexeme": 4,
+   "miss:lexicon-gap": 1,
+   "match:exact": 1,
+   "documentary_lines": 3,
+   "match:noaccent": 1,
+   "miss:pre-laryngeal": 1,
+   "coverage": 0.25
+  },
+  "schleicher-fable-kortlandt-2007": {
+   "lines": 4,
+   "documentary_lines": 4,
+   "coverage": null
+  },
+  "schleicher-fable-kortlandt-2010": {
+   "lines": 4,
+   "documentary_lines": 4,
+   "coverage": null
+  },
+  "schleicher-fable-kortlandt-2010-central-ie": {
+   "lines": 4,
+   "documentary_lines": 4,
+   "coverage": null
+  },
+  "schleicher-fable-kortlandt-2010-classic-ie": {
+   "lines": 4,
+   "documentary_lines": 4,
+   "coverage": null
+  },
+  "schleicher-fable-kortlandt-2010-non-anatolian-ie": {
+   "lines": 4,
+   "documentary_lines": 4,
+   "coverage": null
+  },
+  "schleicher-fable-kortlandt-2010-satem-ie": {
+   "lines": 4,
+   "documentary_lines": 4,
+   "coverage": null
+  },
+  "schleicher-fable-lehmann-zgusta-1979": {
+   "lines": 5,
+   "tokens": 63,
+   "miss:variant-of-known-lexeme": 20,
+   "miss:lexicon-gap": 19,
+   "match:noaccent": 10,
+   "match:exact": 4,
+   "miss:engine-gap": 4,
+   "miss:pre-laryngeal": 5,
+   "match:nolength": 1,
+   "coverage": 0.238
+  },
+  "schleicher-fable-luhr-2008": {
+   "lines": 5,
+   "tokens": 54,
+   "match:exact": 24,
+   "miss:variant-of-known-lexeme": 10,
+   "match:noaccent": 3,
+   "miss:engine-gap": 5,
+   "miss:lexicon-gap": 9,
+   "match:nolength": 3,
+   "coverage": 0.556
+  },
+  "schleicher-fable-schleicher-1868": {
+   "lines": 5,
+   "tokens": 61,
+   "miss:pre-laryngeal": 56,
+   "match:nolength": 3,
+   "miss:engine-gap": 1,
+   "miss:lexicon-gap": 1,
+   "coverage": 0.049
+  },
+  "schleicher-fable-voyles-barrack-2009": {
+   "lines": 5,
+   "tokens": 56,
+   "miss:variant-of-known-lexeme": 22,
+   "match:exact": 4,
+   "miss:pre-laryngeal": 8,
+   "miss:lexicon-gap": 8,
+   "match:noaccent": 11,
+   "miss:engine-gap": 3,
+   "coverage": 0.268
+  }
+ },
+ "cross_check_diffs": [
+  {
+   "work_id": "king-and-god-byrd-2013",
+   "secondary": "raw/tier1-wikipedia-king/versions.json",
+   "similarity": 0.9722,
+   "diffs": [
+    [
+     "h₃rḗḱsdeywóskʷe",
+     ""
+    ],
+    [
+     "i",
+     "y"
+    ]
+   ]
+  },
+  {
+   "work_id": "schleicher-fable-kortlandt-2010-classic-ie",
+   "secondary": "raw/tier1-wikipedia-schleicher/versions.json",
+   "similarity": 0.9965,
+   "diffs": [
+    [
+     "ʔe",
+     ""
+    ]
+   ]
+  }
+ ]
+}

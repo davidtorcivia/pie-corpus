@@ -12,7 +12,8 @@ laryngeal notation, and coverage without tiers would be meaningless:
   exact      the canonical string
   noaccent   acute removed
   nolength   acute and macron removed
-  generic-H  also h₁/h₂/h₃ → H
+  decolored  also a next to h₂ → e (Byrd writes h₂-coloring: h₂áwey = h₂éwey)
+  generic-H  also h₁/h₂/h₃ → H, and a next to H → e
 
 Clitics (-kʷe, -wē, -ge, -de, -r) and the augment (h₁e-/é-) are split off
 when the whole token fails.
@@ -29,10 +30,10 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from .morph import AdjSpec, NounSpec, VerbSpec, conjugate, decline, decline_adj
-from .translit import is_canonical
+from .translit import ACUTE, MACRON, is_canonical
 
 ROOT = Path(__file__).resolve().parent.parent
-TIERS = ("exact", "noaccent", "nolength", "generic-H")
+TIERS = ("exact", "noaccent", "nolength", "decolored", "generic-H")
 CLITICS = ["kʷe", "wē", "we", "ge", "de", "dʰe", "r"]
 AUGMENTS = ["h₁é", "h₁e", "é", "e"]
 _PUNCT = re.compile(r"[.,;:!?\"()\[\]…*=]+")
@@ -58,12 +59,16 @@ def _strip_marks(s: str, marks: str) -> str:
 
 def key(form: str, tier: str) -> str:
     f = form
-    if tier in ("noaccent", "nolength", "generic-H"):
-        f = _strip_marks(f, "́")
-    if tier in ("nolength", "generic-H"):
-        f = _strip_marks(f, "̄")
+    if tier != "exact":
+        f = _strip_marks(f, ACUTE)
+    if tier in ("nolength", "decolored", "generic-H"):
+        f = _strip_marks(f, MACRON)
+    if tier in ("decolored", "generic-H"):
+        # laryngeal coloring written out (h₂a, ah₂) vs. underlying e
+        f = re.sub("(h₂|H)a", r"\1e", re.sub("a(h₂|H)", r"e\1", f))
     if tier == "generic-H":
         f = re.sub("h[₁₂₃]", "H", f)
+        f = re.sub("Ha", "He", re.sub("aH", "eH", f))
     return f
 
 
@@ -180,9 +185,9 @@ def tokenize(text: str) -> list[str]:
 # put here only when a known lemma's stem also matches the token.
 _PHASE_B = [
     (re.compile(r"(?:tor|toy|ntor|ntoy|h₂er|h₂ey|soy|medʰh₂|dʰh₂we)$"), "phase-b:middle"),
-    (re.compile(r"(?:oyh₁m̥|oys|oyt|oyh₁n̥t|yéh₁m̥|yéh₁s|yéh₁t|ih₁mé|ih₁té|ih₁ént)$"), "phase-b:optative"),
+    (re.compile(r"(?:oyh₁m\u0325|oys|oyt|oyh₁n\u0325t|yéh₁m\u0325|yéh₁s|yéh₁t|ih₁mé|ih₁té|ih₁ént)$"), "phase-b:optative"),
     (re.compile(r"(?:ēti|ēsi|ōh₂|ōmos|ōnti|ēt)$"), "phase-b:subjunctive"),
-    (re.compile(r"(?:onts|ónts|n̥ts|mh₁nos|mh₁nóm|wōs|wṓs)$"), "phase-b:participle"),
+    (re.compile(r"(?:onts|ónts|n\u0325ts|mh₁nos|mh₁nóm|wōs|wṓs)$"), "phase-b:participle"),
 ]
 
 
@@ -197,7 +202,7 @@ def _stem_match(form: str, ix: FormIndex) -> tuple[str, list[str]] | None:
     return None
 
 
-def _classify_miss(tok: Token, ix: FormIndex) -> None:
+def _classify_miss(tok: Token, ix: FormIndex, laryngealist: bool = True) -> None:
     """Every miss gets exactly one class (Phase 3 acceptance: every miss explained)."""
     f = tok.surface
     if not is_canonical(f):
@@ -212,19 +217,19 @@ def _classify_miss(tok: Token, ix: FormIndex) -> None:
         if len(stem[0]) >= max(3, len(key(f, "generic-H")) - 4):
             tok.miss, tok.miss_detail = "engine-gap", f"lemma {stem[1][:3]} shares stem {stem[0]!r}"
             return
-    if not re.search("h[₁₂₃]|H", f) and re.search("[aā]", f):
+    if not laryngealist and not re.search("h[₁₂₃]|H", f) and re.search("[aā]", f):
         tok.miss, tok.miss_detail = "pre-laryngeal", "a-vocalism without laryngeals"
         return
     near = difflib.get_close_matches(key(f, "generic-H"), list(ix.lemma_forms), n=3, cutoff=0.8)
     if near:
-        # the lexeme is known, reconstructed differently (wl̥h₂néh₂ vs h₂wĺ̥h₂neh₂)
+        # the lexeme is known, reconstructed differently (wl\u0325h₂néh₂ vs h₂wĺ\u0325h₂neh₂)
         tok.miss = "variant-of-known-lexeme"
         tok.miss_detail = "; ".join(f"{n} → {ix.lemma_forms[n][:2]}" for n in near)
         return
     tok.miss = "lexicon-gap"
 
 
-def analyze_token(surface: str, ix: FormIndex) -> Token:
+def analyze_token(surface: str, ix: FormIndex, laryngealist: bool = True) -> Token:
     tok = Token(surface)
     if surface.startswith("-"):
         tier, an = ix.lookup(surface[1:])
@@ -251,7 +256,7 @@ def analyze_token(surface: str, ix: FormIndex) -> Token:
             if sec:
                 tok.tier, tok.analyses, tok.augment = tier, sec, aug
                 return tok
-    _classify_miss(tok, ix)
+    _classify_miss(tok, ix, laryngealist)
     return tok
 
 
@@ -260,8 +265,10 @@ def _cases(tok: Token) -> set[tuple[str, str]]:
             if re.match(r"^(NOM|VOC|ACC|GEN|ABL|DAT|LOC|INS)\.", a.features)}
 
 
-def validate_text(text: str, ix: FormIndex) -> dict:
-    toks = [analyze_token(t, ix) for t in tokenize(text)]
+def validate_text(text: str, ix: FormIndex, laryngealist: bool = True) -> dict:
+    """`laryngealist=False` for pre-laryngeal versions (Schleicher, Hirt, ...):
+    only then is "pre-laryngeal" a miss class."""
+    toks = [analyze_token(t, ix, laryngealist) for t in tokenize(text)]
     # Agreement heuristic: two adjacent nominal tokens that can only be
     # analyzed with disjoint case/number sets are flagged (warning only).
     agreement = []
