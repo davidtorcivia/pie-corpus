@@ -1,10 +1,12 @@
 {
-  "_source": "Hand tables, handbook-standard, UNVERIFIED: written from knowledge of the standard handbooks (Fortson, Beekes, Ringe style), not copied from them; verify against Fortson 2010 ch. 6-7 when supplied. Cells list alternatives, primary first. Enclitic forms are tagged ENCL. óynos declines as a thematic adjective through the engine and is not listed here.",
+  "_source": "Hand tables, checked 2026-10-23 against Fortson 2010 (ch. 7) and Ringe 2017 (ch. 2); per-form verdicts in raw/books/extract/fortson/diff.jsonl, summarized in docs/morphology.md. Cells list alternatives, primary first. Book spellings without initial laryngeals (eǵ, yós, en, e-, apo) are kept as alternatives. Our laryngeal forms follow Wiktionary/LIV notation.",
   "personal": {
     "1": {
       "NOM.SG": [
         "h₁eǵ",
-        "h₁eǵh₂óm"
+        "éǵh₂",
+        "eǵoh₂",
+        "eǵh₂óm"
       ],
       "ACC.SG": [
         "h₁mé",
@@ -20,7 +22,8 @@
         "moy"
       ],
       "DAT.SG": [
-        "méǵʰye"
+        "méǵʰye",
+        "méǵʰi"
       ],
       "DAT.SG.ENCL": [
         "moy"
@@ -120,12 +123,15 @@
         "tóm"
       ],
       "GEN.SG": [
-        "tósyo"
+        "tósyo",
+        "téso"
       ],
       "ABL.SG": [
+        "tósmead",
         "tósmōd"
       ],
       "DAT.SG": [
+        "tósmey",
         "tósmōy"
       ],
       "LOC.SG": [
@@ -133,12 +139,14 @@
         "tósmin"
       ],
       "INS.SG": [
+        "tónoh₁",
         "tóh₁"
       ],
       "NOM.PL": [
         "tóy"
       ],
       "ACC.PL": [
+        "tóns",
         "tóms"
       ],
       "GEN.PL": [
@@ -164,22 +172,27 @@
         "séh₂"
       ],
       "ACC.SG": [
-        "téh₂m",
-        "tā́m"
+        "tā́m",
+        "téh₂m"
       ],
       "GEN.SG": [
+        "tósyeh₂s",
         "tésyeh₂s"
       ],
       "DAT.SG": [
+        "tósyeh₂ey",
         "tésyeh₂ey"
       ],
       "LOC.SG": [
+        "tósyeh₂i",
         "tésyeh₂i"
       ],
       "NOM.PL": [
         "téh₂es"
       ],
       "ACC.PL": [
+        "tā́s",
+        "téh₂ns",
         "téh₂ms"
       ],
       "GEN.PL": [
@@ -219,6 +232,7 @@
         "kʷéyes"
       ],
       "ACC.PL": [
+        "kʷíns",
         "kʷíms"
       ]
     },
@@ -244,6 +258,7 @@
       ],
       "GEN.SG": [
         "kʷésyo",
+        "kʷéso",
         "kʷósyo"
       ],
       "DAT.SG": [
@@ -298,9 +313,11 @@
           "tréyes"
         ],
         "ACC.PL": [
+          "tríns",
           "tríms"
         ],
         "GEN.PL": [
+          "tr̥yóHom",
           "triHóm",
           "tróyHom"
         ],
@@ -316,6 +333,7 @@
           "tísres"
         ],
         "ACC.PL": [
+          "tisrn̥s",
           "tísr̥ms"
         ]
       },
@@ -328,12 +346,15 @@
     "4": {
       "m": {
         "NOM.PL": [
-          "kʷetwóres"
+          "kʷetwóres",
+          "kʷétwores"
         ],
         "ACC.PL": [
+          "kʷetwórn̥s",
           "kʷetwórm̥s"
         ],
         "GEN.PL": [
+          "kʷeturóHom",
           "kʷetwr̥óm"
         ],
         "DAT.PL": [
@@ -367,7 +388,8 @@
         "oḱtṓ"
       ],
       "9": [
-        "h₁néwn̥"
+        "h₁néwn̥",
+        "néwn̥"
       ],
       "10": [
         "déḱm̥t",
@@ -392,13 +414,18 @@
     "perí": "around",
     "h₁ésu": "well, good (adverb)",
     "-ge": "emphatic (enclitic)",
-    "dʰéh₁": "indeed (Wackernagel)"
+    "dʰéh₁": "indeed (Wackernagel)",
+    "e-": "augment (Fortson §5.44, without laryngeal)",
+    "en": "in (Fortson §7.26)",
+    "apo": "away, off (Fortson, Ringe)"
   },
   "relative_yo": {
     "_note": "Inflects like so/tod (pronominal -sm- forms). Handbook-standard, UNVERIFIED, except h₁yosméy (dat./loc. sg.), attested in Byrd 2013 (Tier 1).",
     "m": {
       "NOM.SG": [
-        "h₁yós"
+        "h₁yós",
+        "Hyós",
+        "yós"
       ],
       "ACC.SG": [
         "h₁yóm"
@@ -424,6 +451,7 @@
         "h₁yóy"
       ],
       "ACC.PL": [
+        "h₁yóns",
         "h₁yóms"
       ],
       "GEN.PL": [

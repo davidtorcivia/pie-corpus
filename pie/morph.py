@@ -95,11 +95,11 @@ _THEMATIC = {
         "ABL.PL": ["omos", "obʰos"], "DAT.PL": ["omos", "obʰos"], "LOC.PL": ["oysu"], "INS.PL": ["ōys"],
     },
     "handbook": {
-        "NOM.SG": ["os"], "VOC.SG": ["e"], "ACC.SG": ["om"], "GEN.SG": ["osyo"], "ABL.SG": ["ōd"],
+        "NOM.SG": ["os"], "VOC.SG": ["e"], "ACC.SG": ["om"], "GEN.SG": ["osyo"], "ABL.SG": ["ōd", "ōt"],
         "DAT.SG": ["ōy"], "LOC.SG": ["oy", "ey"], "INS.SG": ["oh₁"],
         "NOM.DU": ["oh₁"], "VOC.DU": ["oh₁"], "ACC.DU": ["oh₁"],
-        # ACC.PL: -oms, with -ons (Fortson) and lengthened -ōns (Byrd) as written variants
-        "NOM.PL": ["ōs"], "VOC.PL": ["ōs"], "ACC.PL": ["oms", "ons", "ōns"], "GEN.PL": ["ōm"],
+        # ACC.PL: -ons (Fortson §6.45, Ringe -o-ns), lengthened -ōns (Byrd), -oms (pre-form)
+        "NOM.PL": ["ōs"], "VOC.PL": ["ōs"], "ACC.PL": ["ons", "ōns", "oms"], "GEN.PL": ["ōm"],
         # -oybʰyos: Indo-Iranian-style variant written by Byrd 2013 and Adams 1997
         "ABL.PL": ["oybʰos", "omos", "oybʰyos"], "DAT.PL": ["oybʰos", "omos", "oybʰyos"], "LOC.PL": ["oysu"],
         "INS.PL": ["ōys"],
@@ -149,6 +149,10 @@ def _eh2(spec: NounSpec, conv: str) -> Cells:
         # *-eh₂m (> *-ām): the m is consonantal after the eh₂ nucleus, never *-eh₂m̥
         out["ACC.SG"] = [render(stem + [Seg("m", "R")])]
         out["GEN.PL"] = [render(_add(stem, "ōm"))]
+        # acc. pl. *-ās < *-eh₂ns (Fortson §6.70; Ringe -eh₂ns)
+        e = stem[-2]
+        out["ACC.PL"] = [render(stem[:-2] + [Seg("a", "V", long=True, acc=e.acc), Seg("s", "C")]),
+                         render(stem + [Seg("n", "R"), Seg("s", "C")])]
         for k in ("ABL.PL", "DAT.PL", "INS.PL"):
             out[k] = out[k][::-1]
     return out
@@ -192,7 +196,7 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
         out["ACC.SG"] = [render(contract_eh2m(acc) if not hb else acc)]
     # --- singular, weak
     if not weak_acc:
-        gen = [w("és", "")] + ([w("ós", "")] if hb else [])
+        gen = [w("és", "")]   # *-ós is a daughter-language spread, not PIE (Fortson §6.8)
     else:
         last = weak[-1]
         gen = [render(_add(weak, "os" if (last.base == "s" and last.kind == "C") else "s"))]
@@ -230,6 +234,12 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
                 pl = weak                                                 # h₁n̥gʷní- → h₁n̥gʷnéyes
         out["NOM.PL"] = out["VOC.PL"] = [render(_add(pl, "es"))]
         out["ACC.PL"] = [render(_add(strong, "ms"))]
+        if hb:
+            # *-ns/-n̥s (< *-ms; Fortson §6.14, Ringe): pódn̥s, ph₂térn̥s, h₂ówins
+            acc_pl = [render(_add(strong, "ns"))]
+            if len(strong) > 1 and strong[-1].base == "w" and not strong[-1].syl and strong[-2].kind == "V":
+                acc_pl.append(render(lengthen_last_vowel(strong[:-1]) + [Seg("s", "C")]))   # Ringe gʷṓs (Stang)
+            out["ACC.PL"] = acc_pl + out["ACC.PL"]
     out["GEN.PL"] = ([w("ṓm", "ōm")] if hb else []) + [w("óHom", "oHom")]
     mos, bhos = w("mós", "mos", obl), w("bʰós", "bʰos", obl)
     # -bʰyos: variant written by Byrd 2013 and Adams 1997 (h₂áwibʰyos)

@@ -112,9 +112,20 @@ The order is: a Wiktionary table if the entry has one; otherwise a shape rule on
 
 **Coverage:** 4,476 of 6,363 words and derivatives get a spec, and **3,453 are usable** (1,652 nouns, 1,649 verbs, 152 adjectives). These cover **821 of 885 roots** (691 of 730 verbal). The 1,798 unknowns are mostly bound stems (forms ending in a hyphen, which are not words) plus lemma shapes with no rule yet.
 
+## Verification against Fortson and Ringe (2026-10-23)
+
+A subagent compared every golden cell and every closed-class form with Fortson 2010 (ch. 6–7) and, where Fortson is silent, Ringe 2017 (ch. 2). Result: 236 rows, **144 match, 32 differ, 60 not printed** (`raw/books/extract/fortson/diff.jsonl`, local). The differences were applied to the `handbook` convention, with the Wiktionary-convention forms kept as alternatives (cross-check unchanged at 98.8%):
+
+- **Accusative plural *-ns/-n̥s*** (< *-ms; Fortson §6.14, Ringe): *pódn̥s*, *ph₂térn̥s*, *h₂ówins*, thematic *-ons* (Fortson §6.45), *eh₂*-stem *-ās* / *-eh₂ns* (§6.70). Ringe's *gʷṓs* (Stang) added for *w*-stems. This was the one systematic error.
+- **No gen. sg. *-ós*:** Fortson §6.8 treats *-os* as a daughter-language spread.
+- **Thematic ablative:** Fortson prints *-ōt*, added beside *-ōd* (final t/d indeterminate, §3.40).
+- **Closed classes:** demonstrative per Ringe (*tósmey*, *tósmead*, *tónoh₁*, fem. *tósyeh₂-*), Fortson's genitive *-eso* as an alternative; *kʷétwores* (Fortson) beside *kʷetwóres*; *tr̥yóHom*, *kʷeturóHom* (Ringe). Neither book writes the initial laryngeal in *eǵ*, *yós*, *en*, *e-*, *apo*, *néwn̥*; those spellings are added as alternatives, and our laryngeal forms follow Wiktionary/LIV.
+
+Ringe writes thematic endings uncontracted (*-oey*, *-ead*, *-oes*), i.e. our `wiktionary` convention; Fortson writes them contracted, i.e. `handbook`. Both remain supported.
+
 ## Golden paradigms (PLAN's list)
 
-`tests/data/golden_paradigms.json` holds 11 paradigms (*pṓds, wĺ̥kʷos, dʰugh₂tḗr, ph₂tḗr, h₂ówis, gʷṓws, dyḗws, h₁ésti, bʰéreti, gʷʰénti, wóyde*). All of them pass under the `handbook` convention. **Their source is "handbook-standard, UNVERIFIED".** They were written from knowledge of the handbooks, not copied from them, so passing them shows agreement with myself, not with Fortson. They must be checked against Fortson ch. 6–7 and Ringe ch. 2 when the books arrive. *ǵʰew-* is deferred, because which stems it forms (root aorist, nasal or thematic present) needs LIV².
+`tests/data/golden_paradigms.json` holds 11 paradigms (*pṓds, wĺ̥kʷos, dʰugh₂tḗr, ph₂tḗr, h₂ówis, gʷṓws, dyḗws, h₁ésti, bʰéreti, gʷʰénti, wóyde*). All of them pass under the `handbook` convention. **Verified 2026-10-23 against Fortson and Ringe**, with the corrections above applied (see the previous section). *ǵʰew-* is deferred, because which stems it forms (root aorist, nasal or thematic present) needs LIV².
 
 ## Closed classes
 

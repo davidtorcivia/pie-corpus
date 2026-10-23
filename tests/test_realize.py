@@ -21,7 +21,7 @@ SHEEP, HORSE, SEE = "pie-lex-h2owis", "pie-lex-h1ekjwos", "pie-lex-spekjyeti"
 def test_sov_with_case_and_number():
     r = R({"english": "The sheep sees the horses.", "clauses": [{"slots": [
         {"lex_id": SHEEP, "role": "SUBJ", "num": "SG"}, {"lex_id": HORSE, "role": "OBJ", "num": "PL"}, V(SEE)]}]})
-    assert r["pie"] == "h₂ówis h₁éḱwoms spéḱyeti."
+    assert r["pie"] == "h₂ówis h₁éḱwons spéḱyeti."   # acc. pl. -ns (Fortson §6.14)
     assert r["gloss"].split()[0] == "sheep-NOM.SG"
 
 

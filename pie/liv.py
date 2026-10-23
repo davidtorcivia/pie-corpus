@@ -33,13 +33,22 @@ DJVU_TO_PDF = 1          # DjVu page n = PDF page n + 1 (verified on *bʰeh₃g-
 ASPECT = {"Präsens": "impf", "Aorist": "pf", "Perfekt": "stat"}
 
 
+# DjVu page range each transcription chunk owns (one extra page may be read to
+# finish an entry). Entries outside a chunk's range are dropped: one agent's
+# append once landed in another chunk's file (chunk-05 lines in chunk-10).
+CHUNK_RANGES = {f"chunk-{i:02d}": (lo, hi) for i, (lo, hi) in enumerate(
+    [(69, 127), (128, 186), (187, 245), (246, 304), (305, 363), (364, 422), (423, 481), (482, 540),
+     (541, 599), (600, 658), (659, 712)], start=1)}
+
+
 def load_chunks(root: Path = ROOT) -> list[dict]:
     out = []
     for f in sorted((root / "raw/books/extract/liv2").glob("chunk-*.jsonl")):
+        lo, hi = CHUNK_RANGES.get(f.stem, (0, 10 ** 6))
         for line in f.read_text("utf-8").splitlines():
             if line.strip():
                 d = json.loads(line)
-                if "headword_printed" in d:
+                if "headword_printed" in d and lo <= int(d.get("djvu_page") or -1) <= hi:
                     d["_chunk"] = f.stem
                     out.append(d)
     return out
@@ -50,7 +59,7 @@ def headword(printed: str) -> tuple[str | None, int | None, bool]:
     s = printed.strip()
     unc = s.startswith("?")
     s = s.lstrip("?").strip()
-    m = re.match(r"^(\d+)\.\s*", s)
+    m = re.match(r"^\(?(\d+)\.\)?\s*", s)
     hom = int(m[1]) if m else None
     s = s[m.end():] if m else s
     s = s.lstrip("*").strip()
@@ -94,13 +103,24 @@ def ocr_check(e: dict, root: Path = ROOT) -> dict:
     return {"gloss_in_ocr": gloss_ok, "iew_in_ocr": iew_ok}
 
 
+def _gloss_sim(a: str, b: str) -> float:
+    """Word overlap of two English glosses (stopwords and 'to' ignored)."""
+    stop = {"to", "the", "a", "be", "of", "and", "or", "in", "up", "out", "make"}
+    wa = {w for w in re.findall(r"[a-z]+", a) if w not in stop}
+    wb = {w for w in re.findall(r"[a-z]+", b) if w not in stop}
+    return len(wa & wb) / max(1, min(len(wa), len(wb))) if wa and wb else 0.0
+
+
 def merge(lexicon: list[dict], entries: list[dict]) -> tuple[list[dict], dict]:
     """→ (new root entries to add, report). Matched roots are updated in place."""
+    from .validate import key as vkey
     roots = [e for e in lexicon if e["kind"] == "root"]
     by_plain: dict[str, list[dict]] = {}
+    by_generic: dict[str, list[dict]] = {}
     for r in roots:
         for f in [r["form"], *r.get("variants", [])]:
             by_plain.setdefault(_plain(f), []).append(r)
+            by_generic.setdefault(vkey(f, "generic-H"), []).append(r)
     new, report = [], {"entries": len(entries), "matched": 0, "new": 0, "unparsed": [], "ocr_flags": [],
                        "ambiguous": []}
     seen = set()
@@ -109,6 +129,10 @@ def merge(lexicon: list[dict], entries: list[dict]) -> tuple[list[dict], dict]:
         if key in seen:      # overlap pages: the same entry from two chunks
             continue
         seen.add(key)
+        if e.get("see") or (not e.get("stems") and ("entfällt" in json.dumps(e, ensure_ascii=False)
+                                                    or not e.get("meaning_de"))):
+            report.setdefault("cross_references", []).append(e.get("headword_printed"))
+            continue         # "entfällt, s. …": a redirect, not a root
         form, hom, unc = headword(e.get("headword_printed", ""))
         chk = ocr_check(e)
         if not (chk["gloss_in_ocr"] and chk["iew_in_ocr"]):
@@ -125,6 +149,19 @@ def merge(lexicon: list[dict], entries: list[dict]) -> tuple[list[dict], dict]:
                          for s in stems],
                "neubildungen": e.get("neubildungen", []), "ocr_check": chk}
         cands = by_plain.get(_plain(form), [])
+        if not cands:
+            # same root written with a different laryngeal index or coloring
+            # (LIV bʰeyH- ~ Wiktionary bʰeyh₂-): accept only if the glosses agree too
+            en = (e.get("meaning_en") or "").lower()
+            g = [r for r in by_generic.get(vkey(form, "generic-H"), [])
+                 if r["meaning"] and _gloss_sim(en, r["meaning"][0].lower()) >= 0.35]
+            if g:
+                cands = g
+                liv_match = "generic-H+gloss"
+            else:
+                liv_match = None
+        else:
+            liv_match = "form"
         if len(cands) > 1:   # homographs: pick by meaning similarity
             en = (e.get("meaning_en") or "").lower()
             scored = sorted(cands, key=lambda r: -difflib.SequenceMatcher(
@@ -136,6 +173,7 @@ def merge(lexicon: list[dict], entries: list[dict]) -> tuple[list[dict], dict]:
                 cands = cands[:1]
         if cands:
             r = cands[0]
+            liv["match"] = liv_match
             r.setdefault("liv", []).append(liv)
             if aspect and (r.get("root_type_source") != "head-template" or not r.get("aspect")):
                 r["aspect"], r["root_type"], r["root_type_source"] = aspect, "verbal", "liv2"
