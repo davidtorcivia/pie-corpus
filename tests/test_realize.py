@@ -138,3 +138,10 @@ def test_unattached_slot_is_an_error_not_a_silent_drop():
         {"lex_id": SHEEP, "role": "SUBJ"}, {"lex_id": "pie-lex-megjh2s", "role": "MOD", "head": 2},
         {"lex_id": "pie-lex-newos", "role": "MOD", "head": 1}, V(SEE)]}]})
     assert errs
+
+
+def test_pro_drop_person_and_number_on_the_verb():
+    r = R({"english": "Let us see the sheep!", "clauses": [{"slots": [
+        {"lex_id": SHEEP, "role": "OBJ"},
+        {"lex_id": SEE, "role": "V", "verb": {"mood": "SBJV", "voice": "ACT", "person": 1, "num": "PL"}}]}]})
+    assert r["pie"] == "h₂ówim spéḱyōmos."

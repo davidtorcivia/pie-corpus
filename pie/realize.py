@@ -23,7 +23,8 @@ Plan (one sentence):
        "gender": null | "m|f|n",                   # pronoun slots used on their own (tod "it", kʷíd "what")
        "and": false,                               # -kʷe "and" after this word (X Y-kʷe = X and Y)
        "verb": {"tense": "PRS|PST|AOR|PRF", "mood": "IND|IMP|SBJV|OPT", "voice": "ACT|MID",
-                "person": null | 1 | 2 | 3}}]}]}   # person defaults to the subject's (3 for nouns)
+                "person": null | 1 | 2 | 3,       # person and number default to the subject's (3SG without one);
+                "num": null | "SG|DU|PL"}}]}]}    # set them for pro-drop ("let us go": person 1, num PL, no SUBJ)
 
 `check_plan` lists every problem; `realize` assumes a checked plan.
 """
@@ -150,7 +151,7 @@ def _person_number(slot: dict, lx: Lexicon) -> tuple[int, str]:
 
 def _verb_feature(v: dict, person: int, num: str) -> str:
     mood, tense, voice = v.get("mood", "IND"), v.get("tense", "PRS"), v.get("voice", "ACT")
-    pn = f"{v.get('person') or person}{num}"
+    pn = f"{v.get('person') or person}{v.get('num') or num}"   # pro-drop: the verb may carry person and number
     base = {"IND": tense, "IMP": "IMP", "SBJV": "SBJV", "OPT": "OPT"}[mood]
     return ("MID." if voice == "MID" else "") + f"{base}.{pn}"
 
