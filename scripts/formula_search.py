@@ -365,6 +365,10 @@ def run_ablation(env: Env) -> dict:
     mapname = "kaikki" if best_map_row == "map_kaikki" else "pseudo"
     for name, desc, settings, default in exact_rows(mapname, ("group", "lexeme")):
         do(name, desc, settings, default)
+    # control: the same exact scoring on the round-1 mapping (separates mapping from scoring)
+    ctrl = exact_rows("r1", ("group", "lexeme"))[0]
+    do("control_exact_r1map", "control: exact scoring on the round-1 mapping (not part of the cumulative chain)",
+       ctrl[2], ctrl[3])
     b = results[("exact", "E2")]["settings"][results[("exact", "E2")]["full_best"]]
     for name, desc, settings, default in syntax_rows(b):
         do(name, desc, settings, default)
@@ -374,7 +378,8 @@ def run_ablation(env: Env) -> dict:
     for name, desc, settings, default in latin_rows(bs):
         do(name, desc, settings, default)
     all_names = [r["row"] for r in table]
-    final_row = max(all_names[all_names.index("exact"):],
+    chain = [r for r in all_names[all_names.index("exact"):] if not r.startswith("control")]
+    final_row = max(chain,
                     key=lambda r: (objective(results[(r, "E2")]["pooled"]), -all_names.index(r)))
     final = results[(final_row, "E2")]
     return {"evs": evs, "table": table, "results": results, "final_row": final_row,

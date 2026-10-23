@@ -169,6 +169,12 @@ Both get their own STATUS rows. Subagents do the corpus gathering, model runs an
 ### Gate for every tier: adversarial review
 Before Tier 1, 2, 3 or 3b is marked done, an independent "skeptical Indo-Europeanist" subagent reviews a random sample of ≥50 records. It checks ablaut, accent, case use, laryngeal coloring, agreement and, for Tier 2, whether each element is actually supported by the cited cognates. Its findings are logged in `docs/audits/<tier>-<date>.md`. Systematic errors get fixed in the engine, lexicon or normalizer and then regenerated, not patched record by record.
 
+**The core loop (David, 2026-10-23):** every batch is reviewed adversarially, fixed at the source, and the existing batches are re-checked and repaired. With no human expert available, reviews are **calibrated**:
+- the packet (`scripts/make_review_packet.py`) mixes real records with **planted errors** (another cell of the same paradigm: wrong case, agreement, person) and **scholarly Tier 1 lines**, and shows the reviewer only PIE, English and genre;
+- `scripts/score_review.py` reports plant recall, Tier 1 false alarms, and the real wrong rate with an upper bound corrected for missed plants;
+- a separate **blind back-translator** gets the PIE alone and translates it; disagreements with the intended English flag meaning errors without anyone grading their own plan.
+A batch scales only if plant recall is high (≥ 0.8) and the corrected wrong rate is ≤ 5%.
+
 ## 3. Things to ask David for early
 Ask in the first status message for any of these that can't be found online:
 - Fortson, *Indo-European Language and Culture* (2nd ed.): paradigm tables, the sample text.

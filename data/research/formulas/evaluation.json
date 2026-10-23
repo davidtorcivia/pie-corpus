@@ -1,902 +1,5759 @@
 {
- "settings": {
-  "rv_spec": "pada",
-  "hom_spec": "line",
-  "measure": "llr",
-  "min_count": 3,
-  "content_only": false,
-  "llr_min": 3.84,
-  "max_share": 1.0
+ "round": 2,
+ "date": "2026-10-23",
+ "protocol": [
+  "Items: gold formulas (formulas.jsonl, kinds phrase/lexical/attested/schema with Vedic and Greek attestations) and silver pairs (West, phrase-level co-citation), merged when they share a PIE pair; recall@k = share of items with any pair ranked ≤ k among distinct root-group pairs.",
+  "5-fold CV by item (sha1 of its smallest pair): each fold's setting is chosen on the other four folds; held-out ranks are pooled. CI: 2,000 bootstrap resamples of items (percentile).",
+  "E2 = evaluation set lemmatized with the round-2 mapping (frozen for all rows); E1 = the same construction with the round-1 mapping. Both are reported for every row.",
+  "shuffled = mean over 5 seeds of the same per-fold settings run on corpora whose PIE labels are permuted across token positions (unit structure kept)."
+ ],
+ "eval_sets": {
+  "E2": {
+   "n_items": 24,
+   "n_gold_formulas": 29,
+   "n_gold_primary_formulas": 13,
+   "n_gold_pairs": 32,
+   "n_silver_pairs": 17,
+   "n_silver_pairs_not_in_gold": 4,
+   "n_items_with_silver_only": 4,
+   "n_items_primary": 11,
+   "items_per_fold": {
+    "0": 5,
+    "1": 4,
+    "2": 5,
+    "3": 4,
+    "4": 6
+   }
+  },
+  "E1": {
+   "n_items": 16,
+   "n_gold_formulas": 21,
+   "n_gold_primary_formulas": 11,
+   "n_gold_pairs": 21,
+   "n_silver_pairs": 12,
+   "n_silver_pairs_not_in_gold": 2,
+   "n_items_with_silver_only": 2,
+   "n_items_primary": 9,
+   "items_per_fold": {
+    "0": 4,
+    "1": 3,
+    "2": 3,
+    "3": 3,
+    "4": 3
+   }
+  }
+ },
+ "silver": {
+  "definition": "a West paragraph cites two Vedic words for PIE groups x and y within 60 characters and two Greek words for x and y within 60 characters, the two phrases within 400 characters; words lemmatized through the corpus surface forms and the mapping",
+  "watkins": "0 pairs: the Watkins PDF text layer has no Greek script and Vedic without diacritics; Watkins pages are used only for the mention flag on candidates",
+  "pairs_E2": [
+   {
+    "pair": [
+     "HéHḱus",
+     "h₁éḱwos"
+    ],
+    "ids": [
+     "pie-lex-HeHkjus",
+     "pie-lex-h1ekjwos"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "019_ch12",
+      "para": 175
+     }
+    ],
+    "in_gold": true
+   },
+   {
+    "pair": [
+     "éǵh₂",
+     "ḱlew-"
+    ],
+    "ids": [
+     "pie-lex-egjh2",
+     "pie-root-kjlew-hear"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "015_ch08",
+      "para": 307
+     }
+    ],
+    "in_gold": true
+   },
+   {
+    "pair": [
+     "ish₁rós",
+     "men-"
+    ],
+    "ids": [
+     "pie-lex-ish1ros",
+     "pie-root-men-think"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "009_ch02",
+      "para": 119
+     }
+    ],
+    "in_gold": true
+   },
+   {
+    "pair": [
+     "médʰu",
+     "sweh₂d-"
+    ],
+    "ids": [
+     "pie-lex-medhu",
+     "pie-root-sweh2d-sweet"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "009_ch02",
+      "para": 91
+     }
+    ],
+    "in_gold": true
+   },
+   {
+    "pair": [
+     "méǵh₂s",
+     "ḱlew-"
+    ],
+    "ids": [
+     "pie-lex-megjh2s",
+     "pie-root-kjlew-hear"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "009_ch02",
+      "para": 47
+     },
+     {
+      "book": "west",
+      "file": "017_ch10",
+      "para": 471
+     }
+    ],
+    "in_gold": true
+   },
+   {
+    "pair": [
+     "só",
+     "ḱlew-"
+    ],
+    "ids": [
+     "pie-lex-so",
+     "pie-root-kjlew-hear"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "017_ch10",
+      "para": 329
+     }
+    ],
+    "in_gold": true
+   },
+   {
+    "pair": [
+     "sóh₂wl̥",
+     "deyḱ-"
+    ],
+    "ids": [
+     "pie-lex-soh2wl",
+     "pie-root-deykj-point_out"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "012_ch05",
+      "para": 53
+     }
+    ],
+    "in_gold": false
+   },
+   {
+    "pair": [
+     "bʰeh₂-",
+     "h₂ews-"
+    ],
+    "ids": [
+     "pie-root-bheh2-shine",
+     "pie-root-h2ews-become_light"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "012_ch05",
+      "para": 281
+     }
+    ],
+    "in_gold": true
+   },
+   {
+    "pair": [
+     "dʰgʷʰey-",
+     "ḱlew-"
+    ],
+    "ids": [
+     "pie-root-dhgwhey-decline",
+     "pie-root-kjlew-hear"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "009_ch02",
+      "para": 41
+     },
+     {
+      "book": "west",
+      "file": "009_ch02",
+      "para": 45
+     },
+     {
+      "book": "west",
+      "file": "017_ch10",
+      "para": 465
+     },
+     {
+      "book": "west",
+      "file": "017_ch10",
+      "para": 479
+     }
+    ],
+    "in_gold": true
+   },
+   {
+    "pair": [
+     "dyew-",
+     "peh₂-"
+    ],
+    "ids": [
+     "pie-root-dyew-be_bright",
+     "pie-root-peh2-protect"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "011_ch04",
+      "para": 63
+     }
+    ],
+    "in_gold": true
+   },
+   {
+    "pair": [
+     "dyew-",
+     "per-"
+    ],
+    "ids": [
+     "pie-root-dyew-be_bright",
+     "pie-root-per-before"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "015_ch08",
+      "para": 27
+     }
+    ],
+    "in_gold": false
+   },
+   {
+    "pair": [
+     "ǵenh₁-",
+     "peh₂-"
+    ],
+    "ids": [
+     "pie-root-gjenh1-produce",
+     "pie-root-peh2-protect"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "009_ch02",
+      "para": 109
+     }
+    ],
+    "in_gold": true
+   },
+   {
+    "pair": [
+     "h₁werH-",
+     "ḱlew-"
+    ],
+    "ids": [
+     "pie-root-h1werH-broad",
+     "pie-root-kjlew-hear"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "009_ch02",
+      "para": 47
+     },
+     {
+      "book": "west",
+      "file": "017_ch10",
+      "para": 473
+     },
+     {
+      "book": "west",
+      "file": "017_ch10",
+      "para": 475
+     }
+    ],
+    "in_gold": false
+   },
+   {
+    "pair": [
+     "h₂erǵ-",
+     "wes-"
+    ],
+    "ids": [
+     "pie-root-h2ergj-white",
+     "pie-root-wes-dress"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "009_ch02",
+      "para": 85
+     }
+    ],
+    "in_gold": false
+   },
+   {
+    "pair": [
+     "ḱlew-",
+     "per-"
+    ],
+    "ids": [
+     "pie-root-kjlew-hear",
+     "pie-root-per-before"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "017_ch10",
+      "para": 641
+     }
+    ],
+    "in_gold": true
+   },
+   {
+    "pair": [
+     "nebʰ-",
+     "wes-"
+    ],
+    "ids": [
+     "pie-root-nebh-become_damp",
+     "pie-root-wes-dress"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "009_ch02",
+      "para": 139
+     }
+    ],
+    "in_gold": true
+   },
+   {
+    "pair": [
+     "tetḱ-",
+     "wekʷ-"
+    ],
+    "ids": [
+     "pie-root-tetkj-create",
+     "pie-root-wekw-speak"
+    ],
+    "refs": [
+     {
+      "book": "west",
+      "file": "008_ch01",
+      "para": 173
+     }
+    ],
+    "in_gold": true
+   }
+  ],
+  "spot_check": {}
  },
  "coverage": {
-  "rigveda": {
-   "tokens": 164758,
-   "tokens_mapped": 82738,
-   "share": 0.5022,
-   "content_tokens": 118887,
-   "content_mapped": 52767,
-   "content_share": 0.4438,
-   "lemmas": 10031,
-   "lemmas_mapped": 1214,
-   "lemmas_ambiguous_dropped": 0,
-   "tokens_by_tier": {
-    "bridge": 16741,
-    "direct": 38178,
-    "unmapped": 82020,
-    "roots": 11261,
-    "surface": 15181,
-    "privative": 1377
+  "r1": {
+   "rv": {
+    "tokens": 164758,
+    "tokens_mapped": 82738,
+    "share": 0.5022,
+    "content_tokens": 118887,
+    "content_mapped": 52767,
+    "content_share": 0.4438,
+    "lemmas": 10031,
+    "lemmas_mapped": 1214,
+    "lemmas_ambiguous_dropped": 0,
+    "tokens_by_tier": {
+     "bridge": 16741,
+     "direct": 38178,
+     "unmapped": 82020,
+     "roots": 11261,
+     "surface": 15181,
+     "privative": 1377
+    },
+    "root_groups": 533
    },
-   "root_groups": 533
-  },
-  "homer": {
-   "tokens": 200145,
-   "tokens_mapped": 92878,
-   "share": 0.4641,
-   "content_tokens": 116533,
-   "content_mapped": 50788,
-   "content_share": 0.4358,
-   "lemmas": 8823,
-   "lemmas_mapped": 1261,
-   "lemmas_ambiguous_dropped": 0,
-   "tokens_by_tier": {
-    "unmapped": 107267,
-    "direct": 69156,
-    "bridge": 10540,
-    "surface": 11809,
-    "unaccented": 901,
-    "privative": 472
+   "hom": {
+    "tokens": 200145,
+    "tokens_mapped": 92878,
+    "share": 0.4641,
+    "content_tokens": 116533,
+    "content_mapped": 50788,
+    "content_share": 0.4358,
+    "lemmas": 8823,
+    "lemmas_mapped": 1261,
+    "lemmas_ambiguous_dropped": 0,
+    "tokens_by_tier": {
+     "unmapped": 107267,
+     "direct": 69156,
+     "bridge": 10540,
+     "surface": 11809,
+     "unaccented": 901,
+     "privative": 472
+    },
+    "root_groups": 597
    },
-   "root_groups": 597
-  }
- },
- "n_candidates_significant_in_both": 44,
- "recall": {
-  "primary": {
-   "A": {
-    "n": 4,
-    "recall@50": 0.75,
-    "recall@100": 0.75,
-    "recall@200": 0.75
-   },
-   "B": {
-    "n": 7,
-    "recall@50": 0.286,
-    "recall@100": 0.286,
-    "recall@200": 0.286
+   "lat": {
+    "tokens": 144786,
+    "tokens_mapped": 43825,
+    "share": 0.3027,
+    "content_tokens": 73932,
+    "content_mapped": 18582,
+    "content_share": 0.2513,
+    "lemmas": 9468,
+    "lemmas_mapped": 871,
+    "lemmas_ambiguous_dropped": 0,
+    "tokens_by_tier": {
+     "surface": 9324,
+     "unmapped": 100961,
+     "direct": 34501
+    },
+    "root_groups": 482
    }
   },
-  "extended": {
-   "A": {
-    "n": 7,
-    "recall@50": 0.571,
-    "recall@100": 0.571,
-    "recall@200": 0.571
+  "kaikki": {
+   "rv": {
+    "tokens": 164758,
+    "tokens_mapped": 108294,
+    "share": 0.6573,
+    "content_tokens": 118887,
+    "content_mapped": 70614,
+    "content_share": 0.594,
+    "lemmas": 10031,
+    "lemmas_mapped": 1770,
+    "lemmas_ambiguous_dropped": 0,
+    "tokens_by_tier": {
+     "kaikki": 81368,
+     "unmapped": 56464,
+     "surface": 6052,
+     "kaikki-proto": 2556,
+     "direct": 6017,
+     "bridge": 4314,
+     "roots": 1055,
+     "kaikki-root": 1517,
+     "kaikki-chain": 4786,
+     "privative": 629
+    },
+    "root_groups": 719
    },
-   "B": {
-    "n": 14,
-    "recall@50": 0.286,
-    "recall@100": 0.286,
-    "recall@200": 0.286
+   "hom": {
+    "tokens": 200145,
+    "tokens_mapped": 141173,
+    "share": 0.7054,
+    "content_tokens": 116533,
+    "content_mapped": 74640,
+    "content_share": 0.6405,
+    "lemmas": 8823,
+    "lemmas_mapped": 2668,
+    "lemmas_ambiguous_dropped": 0,
+    "tokens_by_tier": {
+     "unmapped": 58972,
+     "kaikki": 109302,
+     "kaikki-chain": 13878,
+     "kaikki-root": 4053,
+     "kaikki-proto": 2826,
+     "bridge": 2057,
+     "direct": 8492,
+     "surface": 435,
+     "privative": 68,
+     "unaccented": 62
+    },
+    "root_groups": 789
+   },
+   "lat": {
+    "tokens": 144786,
+    "tokens_mapped": 87548,
+    "share": 0.6047,
+    "content_tokens": 73932,
+    "content_mapped": 39634,
+    "content_share": 0.5361,
+    "lemmas": 9468,
+    "lemmas_mapped": 1846,
+    "lemmas_ambiguous_dropped": 0,
+    "tokens_by_tier": {
+     "kaikki": 71245,
+     "unmapped": 57238,
+     "kaikki-proto": 5097,
+     "direct": 4929,
+     "kaikki-root": 3117,
+     "surface": 390,
+     "kaikki-chain": 2770
+    },
+    "root_groups": 776
+   }
+  },
+  "pseudo": {
+   "rv": {
+    "tokens": 164758,
+    "tokens_mapped": 120479,
+    "share": 0.7312,
+    "content_tokens": 118887,
+    "content_mapped": 77918,
+    "content_share": 0.6554,
+    "lemmas": 10031,
+    "lemmas_mapped": 1981,
+    "lemmas_ambiguous_dropped": 0,
+    "tokens_by_tier": {
+     "kaikki": 81368,
+     "unmapped": 44279,
+     "kaikki-pseudo": 11839,
+     "surface": 6052,
+     "kaikki-proto": 2556,
+     "direct": 5999,
+     "bridge": 4271,
+     "roots": 1052,
+     "kaikki-root": 1517,
+     "kaikki-chain": 5196,
+     "privative": 629
+    },
+    "root_groups": 911
+   },
+   "hom": {
+    "tokens": 200145,
+    "tokens_mapped": 155747,
+    "share": 0.7782,
+    "content_tokens": 116533,
+    "content_mapped": 81965,
+    "content_share": 0.7034,
+    "lemmas": 8823,
+    "lemmas_mapped": 3009,
+    "lemmas_ambiguous_dropped": 0,
+    "tokens_by_tier": {
+     "unmapped": 44398,
+     "kaikki": 109111,
+     "kaikki-pseudo": 13115,
+     "kaikki-chain": 15348,
+     "kaikki-root": 4053,
+     "kaikki-proto": 2826,
+     "bridge": 2057,
+     "direct": 8482,
+     "surface": 435,
+     "unaccented": 252,
+     "privative": 68
+    },
+    "root_groups": 1016
+   },
+   "lat": {
+    "tokens": 144786,
+    "tokens_mapped": 91325,
+    "share": 0.6308,
+    "content_tokens": 73932,
+    "content_mapped": 42366,
+    "content_share": 0.573,
+    "lemmas": 9468,
+    "lemmas_mapped": 2099,
+    "lemmas_ambiguous_dropped": 0,
+    "tokens_by_tier": {
+     "kaikki": 71245,
+     "unmapped": 53461,
+     "kaikki-proto": 5097,
+     "direct": 4927,
+     "kaikki-pseudo": 3643,
+     "kaikki-root": 3117,
+     "surface": 390,
+     "kaikki-chain": 2906
+    },
+    "root_groups": 1000
    }
   }
  },
- "ranks": {
-  "primary": {
-   "A": {
-    "swift-horses": 6,
-    "west_ch10_f01": null,
-    "west_ch08_f01": 2,
-    "west_ch02_f48": 25
-   },
-   "B": {
-    "great-fame": 23,
-    "imperishable-fame": null,
-    "imperishable-fame-get-nominative": null,
-    "west_ch04_f01": null,
-    "west_ch10_f05": 23,
-    "west_ch10_f14": null,
-    "west_ch03_f20": null
-   }
-  },
-  "extended": {
-   "A": {
-    "swift-horses": 6,
-    "slay-lie-sleep-nexus": null,
-    "west_ch10_f01": null,
-    "west_ch08_f01": 2,
-    "west_ch02_f01": null,
-    "west_ch02_f21": 11,
-    "west_ch02_f48": 25
-   },
-   "B": {
-    "holy-strength-isira-manas": null,
-    "hero-slay-serpent": null,
-    "great-fame": 23,
-    "imperishable-fame": null,
-    "imperishable-fame-get-nominative": null,
-    "slay-gwhen-serpent-ogwhi": null,
-    "west_ch04_f01": null,
-    "west_ch10_f05": 23,
-    "west_ch10_f14": null,
-    "west_ch03_f20": null,
-    "west_ch12_f18": 6,
-    "west_ch02_f03": 23,
-    "west_ch02_f32": null,
-    "west_ch02_f38": null
-   }
-  }
- },
- "shuffled_baseline": {
-  "seeds": [
-   0,
-   1,
-   2,
-   3,
-   4
-  ],
-  "n_candidates": [
-   0,
-   1,
-   0,
-   1,
-   0
-  ],
-  "recall_mean": {
-   "primary": {
-    "A": {
-     "recall@50": 0,
-     "recall@100": 0,
-     "recall@200": 0
+ "mapping_spot_check": {},
+ "ablation": [
+  {
+   "row": "r1_frozen",
+   "E2": {
+    "recall": {
+     "recall@50": 0.167,
+     "recall@100": 0.167,
+     "recall@200": 0.167
     },
-    "B": {
-     "recall@50": 0,
-     "recall@100": 0,
-     "recall@200": 0
+    "ci95": {
+     "recall@50": [
+      0.042,
+      0.333
+     ],
+     "recall@100": [
+      0.042,
+      0.333
+     ],
+     "recall@200": [
+      0.042,
+      0.333
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.2,
+     "recall@100": 0.2,
+     "recall@200": 0.2
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.273,
+     "recall@100": 0.273,
+     "recall@200": 0.273
     }
    },
-   "extended": {
-    "A": {
-     "recall@50": 0,
-     "recall@100": 0,
-     "recall@200": 0
+   "E1": {
+    "recall": {
+     "recall@50": 0.312,
+     "recall@100": 0.312,
+     "recall@200": 0.312
     },
-    "B": {
-     "recall@50": 0,
-     "recall@100": 0,
-     "recall@200": 0
+    "ci95": {
+     "recall@50": [
+      0.125,
+      0.562
+     ],
+     "recall@100": [
+      0.125,
+      0.562
+     ],
+     "recall@200": [
+      0.125,
+      0.562
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.357,
+     "recall@100": 0.357,
+     "recall@200": 0.357
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.444,
+     "recall@200": 0.444
     }
    }
-  }
- },
- "eval_sets": {
-  "primary": {
-   "A": 4,
-   "B": 7
-  },
-  "extended": {
-   "A": 7,
-   "B": 14
-  }
- },
- "half_B_formulas_sharing_a_gold_pair_with_half_A": {
-  "primary": [
-   "imperishable-fame"
-  ],
-  "extended": [
-   "imperishable-fame",
-   "west_ch12_f18"
-  ]
- },
- "candidates_written": {
-  "significant": 39,
-  "below_threshold": 161
- },
- "decomposition": [
-  {
-   "formula_id": "swift-horses",
-   "half": "A",
-   "kind": "phrase",
-   "primary": true,
-   "pairs": [
-    {
-     "pair": [
-      "HéHḱus",
-      "h₁éḱwos"
-     ],
-     "in_rv": [
-      true,
-      true
-     ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 6,
-     "hom_n": 35,
-     "rv_llr": 19.46,
-     "hom_llr": 148.27,
-     "rank": 6
-    }
-   ]
   },
   {
-   "formula_id": "holy-strength-isira-manas",
-   "half": "B",
-   "kind": "schema",
-   "primary": false,
-   "pairs": [
-    {
-     "pair": [
-      "ish₁rós",
-      "men-"
-     ],
-     "in_rv": [
-      true,
-      true
-     ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 1,
-     "hom_n": 7,
-     "rv_llr": 0.48,
-     "hom_llr": 19.58,
-     "rank": null
-    }
-   ]
-  },
-  {
-   "formula_id": "hero-slay-serpent",
-   "half": "B",
-   "kind": "schema",
-   "primary": false,
-   "pairs": [
-    {
-     "pair": [
-      "gʷʰen-",
-      "serp-"
-     ],
-     "in_rv": [
-      true,
-      true
-     ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 0,
-     "hom_n": 0,
-     "rv_llr": -0.32,
-     "hom_llr": -0.04,
-     "rank": null
-    }
-   ]
-  },
-  {
-   "formula_id": "great-fame",
-   "half": "B",
-   "kind": "phrase",
-   "primary": true,
-   "pairs": [
-    {
-     "pair": [
-      "méǵh₂s",
-      "ḱlew-"
-     ],
-     "in_rv": [
-      true,
-      true
-     ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 19,
-     "hom_n": 16,
-     "rv_llr": 15.97,
-     "hom_llr": 9.36,
-     "rank": 23
-    }
-   ]
-  },
-  {
-   "formula_id": "imperishable-fame",
-   "half": "B",
-   "kind": "phrase",
-   "primary": true,
-   "pairs": [
-    {
-     "pair": [
-      "dʰgʷʰey-",
-      "ḱlew-"
-     ],
-     "in_rv": [
-      true,
-      true
-     ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 3,
-     "hom_n": 1,
-     "rv_llr": 0.98,
-     "hom_llr": 0.3,
-     "rank": null
-    }
-   ]
-  },
-  {
-   "formula_id": "imperishable-fame-get-nominative",
-   "half": "B",
-   "kind": "phrase",
-   "primary": true,
-   "pairs": [
-    {
-     "pair": [
-      "dʰeh₁-",
-      "ḱlew-"
-     ],
-     "in_rv": [
-      true,
-      true
-     ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 29,
-     "hom_n": 0,
-     "rv_llr": 8.27,
-     "hom_llr": -1.83,
-     "rank": null
+   "row": "r1_tuned",
+   "E2": {
+    "recall": {
+     "recall@50": 0.167,
+     "recall@100": 0.25,
+     "recall@200": 0.25
     },
-    {
-     "pair": [
-      "dʰeh₁-",
-      "seǵʰ-"
+    "ci95": {
+     "recall@50": [
+      0.042,
+      0.333
      ],
-     "in_rv": [
-      true,
-      true
+     "recall@100": [
+      0.083,
+      0.417
      ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 15,
-     "hom_n": 0,
-     "rv_llr": 2.27,
-     "hom_llr": -9.78,
-     "rank": null
+     "recall@200": [
+      0.083,
+      0.417
+     ]
     },
-    {
-     "pair": [
-      "ḱlew-",
-      "seǵʰ-"
-     ],
-     "in_rv": [
-      true,
-      true
-     ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 3,
-     "hom_n": 10,
-     "rv_llr": -0.31,
-     "hom_llr": -0.68,
-     "rank": null
-    }
-   ]
-  },
-  {
-   "formula_id": "slay-gwhen-serpent-ogwhi",
-   "half": "B",
-   "kind": "schema",
-   "primary": false,
-   "pairs": [
-    {
-     "pair": [
-      "gʷʰen-",
-      "serp-"
-     ],
-     "in_rv": [
-      true,
-      true
-     ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 0,
-     "hom_n": 0,
-     "rv_llr": -0.32,
-     "hom_llr": -0.04,
-     "rank": null
-    }
-   ]
-  },
-  {
-   "formula_id": "slay-lie-sleep-nexus",
-   "half": "A",
-   "kind": "schema",
-   "primary": false,
-   "pairs": [
-    {
-     "pair": [
-      "gʷʰen-",
-      "legʰ-"
-     ],
-     "in_rv": [
-      true,
-      false
-     ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 0,
-     "hom_n": 0,
-     "rv_llr": null,
-     "hom_llr": -1.94,
-     "rank": null
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0
     },
-    {
-     "pair": [
-      "gʷʰen-",
-      "swep-"
-     ],
-     "in_rv": [
-      true,
-      true
-     ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 0,
-     "hom_n": 0,
-     "rv_llr": -0.66,
-     "hom_llr": -0.85,
-     "rank": null
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.2,
+     "recall@100": 0.3,
+     "recall@200": 0.3
     },
-    {
-     "pair": [
-      "gʷʰen-",
-      "tḱen-"
-     ],
-     "in_rv": [
-      true,
-      false
-     ],
-     "in_hom": [
-      true,
-      false
-     ],
-     "rv_n": 0,
-     "hom_n": 0,
-     "rv_llr": null,
-     "hom_llr": null,
-     "rank": null
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.182,
+     "recall@100": 0.364,
+     "recall@200": 0.364
+    }
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.25,
+     "recall@100": 0.375,
+     "recall@200": 0.375
     },
-    {
-     "pair": [
-      "legʰ-",
-      "swep-"
+    "ci95": {
+     "recall@50": [
+      0.062,
+      0.5
      ],
-     "in_rv": [
-      false,
-      true
+     "recall@100": [
+      0.188,
+      0.625
      ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 0,
-     "hom_n": 4,
-     "rv_llr": null,
-     "hom_llr": 5.84,
-     "rank": null
+     "recall@200": [
+      0.125,
+      0.625
+     ]
     },
-    {
-     "pair": [
-      "legʰ-",
-      "tḱen-"
-     ],
-     "in_rv": [
-      false,
-      false
-     ],
-     "in_hom": [
-      true,
-      false
-     ],
-     "rv_n": 0,
-     "hom_n": 0,
-     "rv_llr": null,
-     "hom_llr": null,
-     "rank": null
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0
     },
-    {
-     "pair": [
-      "swep-",
-      "tḱen-"
-     ],
-     "in_rv": [
-      true,
-      false
-     ],
-     "in_hom": [
-      true,
-      false
-     ],
-     "rv_n": 0,
-     "hom_n": 0,
-     "rv_llr": null,
-     "hom_llr": null,
-     "rank": null
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.286,
+     "recall@100": 0.429,
+     "recall@200": 0.429
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.222,
+     "recall@100": 0.444,
+     "recall@200": 0.444
     }
-   ]
+   }
   },
   {
-   "formula_id": "west_ch04_f01",
-   "half": "B",
-   "kind": "phrase",
-   "primary": true,
-   "pairs": [
-    {
-     "pair": [
-      "dyew-",
-      "peh₂-"
+   "row": "map_kaikki",
+   "E2": {
+    "recall": {
+     "recall@50": 0.125,
+     "recall@100": 0.167,
+     "recall@200": 0.208
+    },
+    "ci95": {
+     "recall@50": [
+      0.0,
+      0.292
      ],
-     "in_rv": [
-      true,
-      true
+     "recall@100": [
+      0.042,
+      0.333
      ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 22,
-     "hom_n": 82,
-     "rv_llr": -0.59,
-     "hom_llr": 180.9,
-     "rank": null
+     "recall@200": [
+      0.042,
+      0.375
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.008,
+     "recall@100": 0.008,
+     "recall@200": 0.008
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.15,
+     "recall@100": 0.2,
+     "recall@200": 0.25
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.091,
+     "recall@100": 0.091,
+     "recall@200": 0.182
     }
-   ]
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.125,
+     "recall@100": 0.188,
+     "recall@200": 0.25
+    },
+    "ci95": {
+     "recall@50": [
+      0.0,
+      0.312
+     ],
+     "recall@100": [
+      0.0,
+      0.375
+     ],
+     "recall@200": [
+      0.062,
+      0.5
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.013,
+     "recall@100": 0.013,
+     "recall@200": 0.013
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.143,
+     "recall@100": 0.214,
+     "recall@200": 0.286
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.111,
+     "recall@100": 0.111,
+     "recall@200": 0.222
+    }
+   }
   },
   {
-   "formula_id": "west_ch10_f01",
-   "half": "A",
-   "kind": "lexical",
-   "primary": true,
-   "pairs": [
-    {
-     "pair": [
-      "dʰgʷʰey-",
-      "ḱlew-"
+   "row": "map_kaikki_pseudo",
+   "E2": {
+    "recall": {
+     "recall@50": 0.125,
+     "recall@100": 0.125,
+     "recall@200": 0.167
+    },
+    "ci95": {
+     "recall@50": [
+      0.0,
+      0.292
      ],
-     "in_rv": [
-      true,
-      true
+     "recall@100": [
+      0.0,
+      0.25
      ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 3,
-     "hom_n": 1,
-     "rv_llr": 0.98,
-     "hom_llr": 0.3,
-     "rank": null
+     "recall@200": [
+      0.042,
+      0.333
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.15,
+     "recall@100": 0.15,
+     "recall@200": 0.2
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.091,
+     "recall@100": 0.091,
+     "recall@200": 0.091
     }
-   ]
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.125,
+     "recall@100": 0.188,
+     "recall@200": 0.188
+    },
+    "ci95": {
+     "recall@50": [
+      0.0,
+      0.312
+     ],
+     "recall@100": [
+      0.0,
+      0.375
+     ],
+     "recall@200": [
+      0.0,
+      0.375
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.143,
+     "recall@100": 0.214,
+     "recall@200": 0.214
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.111,
+     "recall@100": 0.111,
+     "recall@200": 0.111
+    }
+   }
   },
   {
-   "formula_id": "west_ch10_f05",
-   "half": "B",
-   "kind": "lexical",
-   "primary": true,
-   "pairs": [
-    {
-     "pair": [
-      "méǵh₂s",
-      "ḱlew-"
+   "row": "map_lexeme",
+   "E2": {
+    "recall": {
+     "recall@50": 0.167,
+     "recall@100": 0.25,
+     "recall@200": 0.292
+    },
+    "ci95": {
+     "recall@50": [
+      0.042,
+      0.333
      ],
-     "in_rv": [
-      true,
-      true
+     "recall@100": [
+      0.083,
+      0.417
      ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 19,
-     "hom_n": 16,
-     "rv_llr": 15.97,
-     "hom_llr": 9.36,
-     "rank": 23
+     "recall@200": [
+      0.125,
+      0.5
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.008,
+     "recall@200": 0.008
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.2,
+     "recall@100": 0.3,
+     "recall@200": 0.35
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.364,
+     "recall@100": 0.455,
+     "recall@200": 0.545
     }
-   ]
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.25,
+     "recall@100": 0.375,
+     "recall@200": 0.438
+    },
+    "ci95": {
+     "recall@50": [
+      0.062,
+      0.5
+     ],
+     "recall@100": [
+      0.125,
+      0.625
+     ],
+     "recall@200": [
+      0.188,
+      0.688
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.013,
+     "recall@200": 0.013
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.286,
+     "recall@100": 0.429,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.333,
+     "recall@100": 0.444,
+     "recall@200": 0.556
+    }
+   }
   },
   {
-   "formula_id": "west_ch10_f14",
-   "half": "B",
-   "kind": "lexical",
-   "primary": true,
-   "pairs": [
-    {
-     "pair": [
-      "ḱlew-",
-      "per-"
+   "row": "exact",
+   "E2": {
+    "recall": {
+     "recall@50": 0.333,
+     "recall@100": 0.458,
+     "recall@200": 0.5
+    },
+    "ci95": {
+     "recall@50": [
+      0.167,
+      0.5
      ],
-     "in_rv": [
-      true,
-      true
+     "recall@100": [
+      0.25,
+      0.667
      ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 18,
-     "hom_n": 8,
-     "rv_llr": -1.34,
-     "hom_llr": -1.26,
-     "rank": null
+     "recall@200": [
+      0.292,
+      0.708
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.017
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.35,
+     "recall@100": 0.5,
+     "recall@200": 0.55
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.455,
+     "recall@100": 0.636,
+     "recall@200": 0.636
     }
-   ]
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.375,
+     "recall@100": 0.5,
+     "recall@200": 0.562
+    },
+    "ci95": {
+     "recall@50": [
+      0.188,
+      0.625
+     ],
+     "recall@100": [
+      0.25,
+      0.75
+     ],
+     "recall@200": [
+      0.312,
+      0.812
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.025
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.357,
+     "recall@100": 0.5,
+     "recall@200": 0.571
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.556,
+     "recall@200": 0.556
+    }
+   }
   },
   {
-   "formula_id": "west_ch03_f20",
-   "half": "B",
-   "kind": "lexical",
-   "primary": true,
-   "pairs": [
-    {
-     "pair": [
-      "h₁wésus",
-      "deh₃-"
+   "row": "syn_filter_linked",
+   "E2": {
+    "recall": {
+     "recall@50": 0.292,
+     "recall@100": 0.375,
+     "recall@200": 0.375
+    },
+    "ci95": {
+     "recall@50": [
+      0.125,
+      0.458
      ],
-     "in_rv": [
-      true,
-      true
+     "recall@100": [
+      0.208,
+      0.583
      ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 25,
-     "hom_n": 2,
-     "rv_llr": 28.44,
-     "hom_llr": 1.95,
-     "rank": null
+     "recall@200": [
+      0.167,
+      0.583
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.008,
+     "recall@200": 0.033
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.3,
+     "recall@100": 0.4,
+     "recall@200": 0.4
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.364,
+     "recall@100": 0.545,
+     "recall@200": 0.545
     }
-   ]
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.438,
+     "recall@100": 0.5,
+     "recall@200": 0.5
+    },
+    "ci95": {
+     "recall@50": [
+      0.25,
+      0.688
+     ],
+     "recall@100": [
+      0.25,
+      0.75
+     ],
+     "recall@200": [
+      0.25,
+      0.75
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.429,
+     "recall@100": 0.5,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.556,
+     "recall@200": 0.556
+    }
+   }
   },
   {
-   "formula_id": "west_ch08_f01",
-   "half": "A",
-   "kind": "lexical",
-   "primary": true,
-   "pairs": [
-    {
-     "pair": [
-      "n̥smé",
-      "ḱlew-"
+   "row": "syn_bonus_linked",
+   "E2": {
+    "recall": {
+     "recall@50": 0.25,
+     "recall@100": 0.375,
+     "recall@200": 0.417
+    },
+    "ci95": {
+     "recall@50": [
+      0.083,
+      0.417
      ],
-     "in_rv": [
-      true,
-      true
+     "recall@100": [
+      0.208,
+      0.583
      ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 124,
-     "hom_n": 65,
-     "rv_llr": 81.3,
-     "hom_llr": 49.88,
-     "rank": 2
+     "recall@200": [
+      0.25,
+      0.625
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.017,
+     "recall@100": 0.025,
+     "recall@200": 0.067
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.3,
+     "recall@100": 0.45,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.364,
+     "recall@100": 0.545,
+     "recall@200": 0.636
     }
-   ]
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.312,
+     "recall@100": 0.438,
+     "recall@200": 0.438
+    },
+    "ci95": {
+     "recall@50": [
+      0.125,
+      0.562
+     ],
+     "recall@100": [
+      0.188,
+      0.688
+     ],
+     "recall@200": [
+      0.188,
+      0.688
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.013,
+     "recall@200": 0.075
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.357,
+     "recall@100": 0.5,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.556,
+     "recall@200": 0.556
+    }
+   }
   },
   {
-   "formula_id": "west_ch12_f18",
-   "half": "B",
-   "kind": "attested",
-   "primary": false,
-   "pairs": [
-    {
-     "pair": [
-      "HéHḱus",
-      "h₁éḱwos"
+   "row": "syn_bonus_rel",
+   "E2": {
+    "recall": {
+     "recall@50": 0.292,
+     "recall@100": 0.417,
+     "recall@200": 0.458
+    },
+    "ci95": {
+     "recall@50": [
+      0.125,
+      0.458
      ],
-     "in_rv": [
-      true,
-      true
+     "recall@100": [
+      0.208,
+      0.625
      ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 6,
-     "hom_n": 35,
-     "rv_llr": 19.46,
-     "hom_llr": 148.27,
-     "rank": 6
+     "recall@200": [
+      0.25,
+      0.667
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.017,
+     "recall@100": 0.017,
+     "recall@200": 0.025
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.3,
+     "recall@100": 0.45,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.364,
+     "recall@100": 0.545,
+     "recall@200": 0.636
     }
-   ]
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.312,
+     "recall@100": 0.5,
+     "recall@200": 0.5
+    },
+    "ci95": {
+     "recall@50": [
+      0.125,
+      0.562
+     ],
+     "recall@100": [
+      0.25,
+      0.75
+     ],
+     "recall@200": [
+      0.25,
+      0.75
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.025,
+     "recall@100": 0.025,
+     "recall@200": 0.037
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.286,
+     "recall@100": 0.5,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.333,
+     "recall@100": 0.556,
+     "recall@200": 0.556
+    }
+   }
   },
   {
-   "formula_id": "west_ch02_f01",
-   "half": "A",
-   "kind": "attested",
-   "primary": false,
-   "pairs": [
-    {
-     "pair": [
-      "dʰgʷʰey-",
-      "ḱlew-"
+   "row": "syn_filter_rel",
+   "E2": {
+    "recall": {
+     "recall@50": 0.167,
+     "recall@100": 0.208,
+     "recall@200": 0.25
+    },
+    "ci95": {
+     "recall@50": [
+      0.042,
+      0.333
      ],
-     "in_rv": [
-      true,
-      true
+     "recall@100": [
+      0.042,
+      0.375
      ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 3,
-     "hom_n": 1,
-     "rv_llr": 0.98,
-     "hom_llr": 0.3,
-     "rank": null
+     "recall@200": [
+      0.083,
+      0.417
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.025,
+     "recall@100": 0.033,
+     "recall@200": 0.058
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.2,
+     "recall@100": 0.2,
+     "recall@200": 0.25
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.273,
+     "recall@100": 0.273,
+     "recall@200": 0.364
     }
-   ]
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.25,
+     "recall@100": 0.25,
+     "recall@200": 0.25
+    },
+    "ci95": {
+     "recall@50": [
+      0.062,
+      0.5
+     ],
+     "recall@100": [
+      0.062,
+      0.438
+     ],
+     "recall@200": [
+      0.062,
+      0.438
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.025,
+     "recall@100": 0.025,
+     "recall@200": 0.037
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.286,
+     "recall@100": 0.286,
+     "recall@200": 0.286
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.333,
+     "recall@100": 0.333,
+     "recall@200": 0.333
+    }
+   }
   },
   {
-   "formula_id": "west_ch02_f03",
-   "half": "B",
-   "kind": "attested",
-   "primary": false,
-   "pairs": [
-    {
-     "pair": [
-      "méǵh₂s",
-      "ḱlew-"
+   "row": "latin_tiebreak",
+   "E2": {
+    "recall": {
+     "recall@50": 0.333,
+     "recall@100": 0.458,
+     "recall@200": 0.5
+    },
+    "ci95": {
+     "recall@50": [
+      0.167,
+      0.5
      ],
-     "in_rv": [
-      true,
-      true
+     "recall@100": [
+      0.25,
+      0.667
      ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 19,
-     "hom_n": 16,
-     "rv_llr": 15.97,
-     "hom_llr": 9.36,
-     "rank": 23
+     "recall@200": [
+      0.292,
+      0.708
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.008,
+     "recall@100": 0.008,
+     "recall@200": 0.025
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.35,
+     "recall@100": 0.5,
+     "recall@200": 0.55
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.455,
+     "recall@100": 0.636,
+     "recall@200": 0.636
     }
-   ]
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.375,
+     "recall@100": 0.5,
+     "recall@200": 0.562
+    },
+    "ci95": {
+     "recall@50": [
+      0.188,
+      0.625
+     ],
+     "recall@100": [
+      0.25,
+      0.75
+     ],
+     "recall@200": [
+      0.312,
+      0.812
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.013,
+     "recall@100": 0.013,
+     "recall@200": 0.037
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.357,
+     "recall@100": 0.5,
+     "recall@200": 0.571
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.556,
+     "recall@200": 0.556
+    }
+   }
   },
   {
-   "formula_id": "west_ch02_f21",
-   "half": "A",
-   "kind": "attested",
-   "primary": false,
-   "pairs": [
-    {
-     "pair": [
-      "médʰu",
-      "sweh₂d-"
+   "row": "latin_fisher3",
+   "E2": {
+    "recall": {
+     "recall@50": 0.333,
+     "recall@100": 0.417,
+     "recall@200": 0.458
+    },
+    "ci95": {
+     "recall@50": [
+      0.167,
+      0.5
      ],
-     "in_rv": [
-      true,
-      true
+     "recall@100": [
+      0.208,
+      0.625
      ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 5,
-     "hom_n": 9,
-     "rv_llr": 15.36,
-     "hom_llr": 83.11,
-     "rank": 11
+     "recall@200": [
+      0.25,
+      0.667
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.008,
+     "recall@200": 0.017
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.35,
+     "recall@100": 0.45,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.455,
+     "recall@100": 0.545,
+     "recall@200": 0.636
     }
-   ]
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.375,
+     "recall@100": 0.438,
+     "recall@200": 0.5
+    },
+    "ci95": {
+     "recall@50": [
+      0.188,
+      0.625
+     ],
+     "recall@100": [
+      0.188,
+      0.688
+     ],
+     "recall@200": [
+      0.25,
+      0.75
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.013,
+     "recall@200": 0.025
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.357,
+     "recall@100": 0.429,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.444,
+     "recall@200": 0.556
+    }
+   }
   },
   {
-   "formula_id": "west_ch02_f32",
-   "half": "B",
-   "kind": "attested",
-   "primary": false,
-   "pairs": [
-    {
-     "pair": [
-      "ǵenh₁-",
-      "peh₂-"
+   "row": "latin_fisher3pos",
+   "E2": {
+    "recall": {
+     "recall@50": 0.333,
+     "recall@100": 0.458,
+     "recall@200": 0.5
+    },
+    "ci95": {
+     "recall@50": [
+      0.167,
+      0.5
      ],
-     "in_rv": [
-      true,
-      true
+     "recall@100": [
+      0.25,
+      0.667
      ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 50,
-     "hom_n": 13,
-     "rv_llr": 31.79,
-     "hom_llr": 3.05,
-     "rank": null
+     "recall@200": [
+      0.292,
+      0.708
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.008,
+     "recall@200": 0.008
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.35,
+     "recall@100": 0.5,
+     "recall@200": 0.55
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.455,
+     "recall@100": 0.636,
+     "recall@200": 0.636
     }
-   ]
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.375,
+     "recall@100": 0.5,
+     "recall@200": 0.562
+    },
+    "ci95": {
+     "recall@50": [
+      0.188,
+      0.625
+     ],
+     "recall@100": [
+      0.25,
+      0.75
+     ],
+     "recall@200": [
+      0.312,
+      0.812
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.013,
+     "recall@200": 0.013
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.357,
+     "recall@100": 0.5,
+     "recall@200": 0.571
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.556,
+     "recall@200": 0.556
+    }
+   }
   },
   {
-   "formula_id": "west_ch02_f38",
-   "half": "B",
-   "kind": "attested",
-   "primary": false,
-   "pairs": [
-    {
-     "pair": [
-      "ish₁rós",
-      "men-"
+   "row": "latin_require",
+   "E2": {
+    "recall": {
+     "recall@50": 0.042,
+     "recall@100": 0.083,
+     "recall@200": 0.125
+    },
+    "ci95": {
+     "recall@50": [
+      0.0,
+      0.125
      ],
-     "in_rv": [
-      true,
-      true
+     "recall@100": [
+      0.0,
+      0.208
      ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 1,
-     "hom_n": 7,
-     "rv_llr": 0.48,
-     "hom_llr": 19.58,
-     "rank": null
+     "recall@200": [
+      0.0,
+      0.25
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.008,
+     "recall@100": 0.017,
+     "recall@200": 0.017
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.05,
+     "recall@100": 0.1,
+     "recall@200": 0.1
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.091,
+     "recall@100": 0.091,
+     "recall@200": 0.091
     }
-   ]
-  },
-  {
-   "formula_id": "west_ch02_f48",
-   "half": "A",
-   "kind": "lexical",
-   "primary": true,
-   "pairs": [
-    {
-     "pair": [
-      "nebʰ-",
-      "wes-"
+   },
+   "E1": {
+    "recall": {
+     "recall@50": 0.062,
+     "recall@100": 0.125,
+     "recall@200": 0.125
+    },
+    "ci95": {
+     "recall@50": [
+      0.0,
+      0.188
      ],
-     "in_rv": [
-      true,
-      true
+     "recall@100": [
+      0.0,
+      0.312
      ],
-     "in_hom": [
-      true,
-      true
-     ],
-     "rv_n": 4,
-     "hom_n": 3,
-     "rv_llr": 12.19,
-     "hom_llr": 7.87,
-     "rank": 25
+     "recall@200": [
+      0.0,
+      0.312
+     ]
+    },
+    "shuffled": {
+     "recall@50": 0.025,
+     "recall@100": 0.025,
+     "recall@200": 0.062
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.071,
+     "recall@100": 0.143,
+     "recall@200": 0.143
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.111,
+     "recall@100": 0.111,
+     "recall@200": 0.111
     }
-   ]
+   }
   }
  ],
- "notes": [
-  "primary = kinds phrase+lexical (the acceptance set); extended adds West 'attested' and Watkins 'schema' records with Vedic and Greek attestations.",
-  "Half A was used for tuning; half B is reported once with the frozen settings.",
-  "A formula counts as recovered at k if any of its gold pairs ranks ≤ k."
- ]
+ "ablation_detail": [
+  {
+   "row": "r1_frozen",
+   "description": "round-1 method and frozen setting (old mapping; LLR ≥ 3.84 and ≥ 3 co-occurrences in each corpus)",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.167,
+     "recall@100": 0.167,
+     "recall@200": 0.167
+    },
+    "ci95": {
+     "recall@50": [
+      0.042,
+      0.333
+     ],
+     "recall@100": [
+      0.042,
+      0.333
+     ],
+     "recall@200": [
+      0.042,
+      0.333
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.2,
+     "recall@100": 0.2,
+     "recall@200": 0.2
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.273,
+     "recall@100": 0.273,
+     "recall@200": 0.273
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "content_only": false,
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "measure": "llr",
+      "min_count": 3,
+      "llr_min": 3.84
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "content_only": false,
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "measure": "llr",
+      "min_count": 3,
+      "llr_min": 3.84
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "content_only": false,
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "measure": "llr",
+      "min_count": 3,
+      "llr_min": 3.84
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "content_only": false,
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "measure": "llr",
+      "min_count": 3,
+      "llr_min": 3.84
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "content_only": false,
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "measure": "llr",
+      "min_count": 3,
+      "llr_min": 3.84
+     }
+    ],
+    "folds_agree": true,
+    "full_data_best": {
+     "scorer": "llr",
+     "map": "r1",
+     "level": "group",
+     "content_only": false,
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "measure": "llr",
+     "min_count": 3,
+     "llr_min": 3.84
+    },
+    "n_settings": 1,
+    "n_ranked_pairs_full_best": 44,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.0,
+      "recall@200": 0.0
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.312,
+     "recall@100": 0.312,
+     "recall@200": 0.312
+    },
+    "ci95": {
+     "recall@50": [
+      0.125,
+      0.562
+     ],
+     "recall@100": [
+      0.125,
+      0.562
+     ],
+     "recall@200": [
+      0.125,
+      0.562
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.357,
+     "recall@100": 0.357,
+     "recall@200": 0.357
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.444,
+     "recall@200": 0.444
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "content_only": false,
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "measure": "llr",
+      "min_count": 3,
+      "llr_min": 3.84
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "content_only": false,
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "measure": "llr",
+      "min_count": 3,
+      "llr_min": 3.84
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "content_only": false,
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "measure": "llr",
+      "min_count": 3,
+      "llr_min": 3.84
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "content_only": false,
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "measure": "llr",
+      "min_count": 3,
+      "llr_min": 3.84
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "content_only": false,
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "measure": "llr",
+      "min_count": 3,
+      "llr_min": 3.84
+     }
+    ],
+    "folds_agree": true,
+    "full_data_best": {
+     "scorer": "llr",
+     "map": "r1",
+     "level": "group",
+     "content_only": false,
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "measure": "llr",
+     "min_count": 3,
+     "llr_min": 3.84
+    },
+    "n_settings": 1,
+    "n_ranked_pairs_full_best": 44,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.0,
+      "recall@200": 0.0
+     }
+    }
+   }
+  },
+  {
+   "row": "r1_tuned",
+   "description": "round-1 method (old mapping, LLR), setting tuned by CV",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.167,
+     "recall@100": 0.25,
+     "recall@200": 0.25
+    },
+    "ci95": {
+     "recall@50": [
+      0.042,
+      0.333
+     ],
+     "recall@100": [
+      0.083,
+      0.417
+     ],
+     "recall@200": [
+      0.083,
+      0.417
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.2,
+     "recall@100": 0.3,
+     "recall@200": 0.3
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.182,
+     "recall@100": 0.364,
+     "recall@200": 0.364
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": false
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": false
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": false
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": false
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "llr",
+     "map": "r1",
+     "level": "group",
+     "measure": "llr",
+     "rv_spec": "pada",
+     "hom_spec": "sentence",
+     "min_count": 3,
+     "llr_min": 3.84,
+     "content_only": false
+    },
+    "n_settings": 48,
+    "n_ranked_pairs_full_best": 89,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.0,
+      "recall@200": 0.0
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.25,
+     "recall@100": 0.375,
+     "recall@200": 0.375
+    },
+    "ci95": {
+     "recall@50": [
+      0.062,
+      0.5
+     ],
+     "recall@100": [
+      0.188,
+      0.625
+     ],
+     "recall@200": [
+      0.125,
+      0.625
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.286,
+     "recall@100": 0.429,
+     "recall@200": 0.429
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.222,
+     "recall@100": 0.444,
+     "recall@200": 0.444
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": false
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": false
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": false
+     },
+     {
+      "scorer": "llr",
+      "map": "r1",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": false
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "llr",
+     "map": "r1",
+     "level": "group",
+     "measure": "llr",
+     "rv_spec": "pada",
+     "hom_spec": "sentence",
+     "min_count": 3,
+     "llr_min": 3.84,
+     "content_only": false
+    },
+    "n_settings": 48,
+    "n_ranked_pairs_full_best": 89,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.0,
+      "recall@200": 0.0
+     }
+    }
+   }
+  },
+  {
+   "row": "map_kaikki",
+   "description": "+ kaikki etymology links (lexicon etyma only), LLR",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.125,
+     "recall@100": 0.167,
+     "recall@200": 0.208
+    },
+    "ci95": {
+     "recall@50": [
+      0.0,
+      0.292
+     ],
+     "recall@100": [
+      0.042,
+      0.333
+     ],
+     "recall@200": [
+      0.042,
+      0.375
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.15,
+     "recall@100": 0.2,
+     "recall@200": 0.25
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.091,
+     "recall@100": 0.091,
+     "recall@200": 0.182
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "llr",
+      "map": "kaikki",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "kaikki",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "kaikki",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "kaikki",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "kaikki",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": false
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "llr",
+     "map": "kaikki",
+     "level": "group",
+     "measure": "llr",
+     "rv_spec": "stanza",
+     "hom_spec": "sentence",
+     "min_count": 3,
+     "llr_min": 3.84,
+     "content_only": true
+    },
+    "n_settings": 48,
+    "n_ranked_pairs_full_best": 180,
+    "shuffled": {
+     "recall@50": 0.008,
+     "recall@100": 0.008,
+     "recall@200": 0.008,
+     "max_over_seeds": {
+      "recall@50": 0.042,
+      "recall@100": 0.042,
+      "recall@200": 0.042
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.125,
+     "recall@100": 0.188,
+     "recall@200": 0.25
+    },
+    "ci95": {
+     "recall@50": [
+      0.0,
+      0.312
+     ],
+     "recall@100": [
+      0.0,
+      0.375
+     ],
+     "recall@200": [
+      0.062,
+      0.5
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.143,
+     "recall@100": 0.214,
+     "recall@200": 0.286
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.111,
+     "recall@100": 0.111,
+     "recall@200": 0.222
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "llr",
+      "map": "kaikki",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "kaikki",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "kaikki",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "kaikki",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "kaikki",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "llr",
+     "map": "kaikki",
+     "level": "group",
+     "measure": "llr",
+     "rv_spec": "stanza",
+     "hom_spec": "sentence",
+     "min_count": 3,
+     "llr_min": 3.84,
+     "content_only": true
+    },
+    "n_settings": 48,
+    "n_ranked_pairs_full_best": 180,
+    "shuffled": {
+     "recall@50": 0.013,
+     "recall@100": 0.013,
+     "recall@200": 0.013,
+     "max_over_seeds": {
+      "recall@50": 0.062,
+      "recall@100": 0.062,
+      "recall@200": 0.062
+     }
+    }
+   }
+  },
+  {
+   "row": "map_kaikki_pseudo",
+   "description": "+ kaikki links incl. etyma missing from the lexicon, LLR",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.125,
+     "recall@100": 0.125,
+     "recall@200": 0.167
+    },
+    "ci95": {
+     "recall@50": [
+      0.0,
+      0.292
+     ],
+     "recall@100": [
+      0.0,
+      0.25
+     ],
+     "recall@200": [
+      0.042,
+      0.333
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.15,
+     "recall@100": 0.15,
+     "recall@200": 0.2
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.091,
+     "recall@100": 0.091,
+     "recall@200": 0.091
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": false
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": false
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "llr",
+     "map": "pseudo",
+     "level": "group",
+     "measure": "llr",
+     "rv_spec": "stanza",
+     "hom_spec": "sentence",
+     "min_count": 3,
+     "llr_min": 3.84,
+     "content_only": true
+    },
+    "n_settings": 48,
+    "n_ranked_pairs_full_best": 181,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.0,
+      "recall@200": 0.0
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.125,
+     "recall@100": 0.188,
+     "recall@200": 0.188
+    },
+    "ci95": {
+     "recall@50": [
+      0.0,
+      0.312
+     ],
+     "recall@100": [
+      0.0,
+      0.375
+     ],
+     "recall@200": [
+      0.0,
+      0.375
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.143,
+     "recall@100": 0.214,
+     "recall@200": 0.214
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.111,
+     "recall@100": 0.111,
+     "recall@200": 0.111
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "group",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "llr",
+     "map": "pseudo",
+     "level": "group",
+     "measure": "llr",
+     "rv_spec": "pada",
+     "hom_spec": "sentence",
+     "min_count": 3,
+     "llr_min": 3.84,
+     "content_only": true
+    },
+    "n_settings": 48,
+    "n_ranked_pairs_full_best": 110,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.0,
+      "recall@200": 0.0
+     }
+    }
+   }
+  },
+  {
+   "row": "map_lexeme",
+   "description": "kaikki+pseudo, counted at lexeme level (evaluated on root groups), LLR",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.167,
+     "recall@100": 0.25,
+     "recall@200": 0.292
+    },
+    "ci95": {
+     "recall@50": [
+      0.042,
+      0.333
+     ],
+     "recall@100": [
+      0.083,
+      0.417
+     ],
+     "recall@200": [
+      0.125,
+      0.5
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.2,
+     "recall@100": 0.3,
+     "recall@200": 0.35
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.364,
+     "recall@100": 0.455,
+     "recall@200": 0.545
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "lexeme",
+      "measure": "llr",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "min_count": 1,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "lexeme",
+      "measure": "llr",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "min_count": 1,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "lexeme",
+      "measure": "llr",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "lexeme",
+      "measure": "llr",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "min_count": 1,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "lexeme",
+      "measure": "llr",
+      "rv_spec": "pada",
+      "hom_spec": "sentence",
+      "min_count": 1,
+      "llr_min": 3.84,
+      "content_only": true
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "llr",
+     "map": "pseudo",
+     "level": "lexeme",
+     "measure": "llr",
+     "rv_spec": "stanza",
+     "hom_spec": "sentence",
+     "min_count": 1,
+     "llr_min": 3.84,
+     "content_only": true
+    },
+    "n_settings": 48,
+    "n_ranked_pairs_full_best": 176,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.008,
+     "recall@200": 0.008,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.042,
+      "recall@200": 0.042
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.25,
+     "recall@100": 0.375,
+     "recall@200": 0.438
+    },
+    "ci95": {
+     "recall@50": [
+      0.062,
+      0.5
+     ],
+     "recall@100": [
+      0.125,
+      0.625
+     ],
+     "recall@200": [
+      0.188,
+      0.688
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.286,
+     "recall@100": 0.429,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.333,
+     "recall@100": 0.444,
+     "recall@200": 0.556
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "lexeme",
+      "measure": "llr",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "min_count": 1,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "lexeme",
+      "measure": "llr",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "min_count": 1,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "lexeme",
+      "measure": "llr",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "min_count": 3,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "lexeme",
+      "measure": "llr",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "min_count": 1,
+      "llr_min": 3.84,
+      "content_only": true
+     },
+     {
+      "scorer": "llr",
+      "map": "pseudo",
+      "level": "lexeme",
+      "measure": "llr",
+      "rv_spec": "stanza",
+      "hom_spec": "sentence",
+      "min_count": 1,
+      "llr_min": 3.84,
+      "content_only": true
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "llr",
+     "map": "pseudo",
+     "level": "lexeme",
+     "measure": "llr",
+     "rv_spec": "stanza",
+     "hom_spec": "sentence",
+     "min_count": 1,
+     "llr_min": 3.84,
+     "content_only": true
+    },
+    "n_settings": 48,
+    "n_ranked_pairs_full_best": 176,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.013,
+     "recall@200": 0.013,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.062,
+      "recall@200": 0.062
+     }
+    }
+   }
+  },
+  {
+   "row": "exact",
+   "description": "+ exact per-corpus tests (hypergeometric / Poisson) combined by Fisher; map=pseudo",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.333,
+     "recall@100": 0.458,
+     "recall@200": 0.5
+    },
+    "ci95": {
+     "recall@50": [
+      0.167,
+      0.5
+     ],
+     "recall@100": [
+      0.25,
+      0.667
+     ],
+     "recall@200": [
+      0.292,
+      0.708
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.35,
+     "recall@100": 0.5,
+     "recall@200": 0.55
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.455,
+     "recall@100": 0.636,
+     "recall@200": 0.636
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true
+     }
+    ],
+    "folds_agree": true,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "level": "lexeme",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "midp": false,
+     "floor": null,
+     "content_only": true
+    },
+    "n_settings": 256,
+    "n_ranked_pairs_full_best": 1158,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.017,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.0,
+      "recall@200": 0.042
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.375,
+     "recall@100": 0.5,
+     "recall@200": 0.562
+    },
+    "ci95": {
+     "recall@50": [
+      0.188,
+      0.625
+     ],
+     "recall@100": [
+      0.25,
+      0.75
+     ],
+     "recall@200": [
+      0.312,
+      0.812
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.357,
+     "recall@100": 0.5,
+     "recall@200": 0.571
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.556,
+     "recall@200": 0.556
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "midp": false,
+      "floor": null,
+      "content_only": true
+     }
+    ],
+    "folds_agree": true,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "level": "lexeme",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "midp": false,
+     "floor": null,
+     "content_only": true
+    },
+    "n_settings": 256,
+    "n_ranked_pairs_full_best": 1158,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.025,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.0,
+      "recall@200": 0.062
+     }
+    }
+   }
+  },
+  {
+   "row": "syn_filter_linked",
+   "description": "count only syntactically linked co-occurrences (Homer head–dependent; RV adjacency in the pāda)",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.292,
+     "recall@100": 0.375,
+     "recall@200": 0.375
+    },
+    "ci95": {
+     "recall@50": [
+      0.125,
+      0.458
+     ],
+     "recall@100": [
+      0.208,
+      0.583
+     ],
+     "recall@200": [
+      0.167,
+      0.583
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.3,
+     "recall@100": 0.4,
+     "recall@200": 0.4
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.364,
+     "recall@100": 0.545,
+     "recall@200": 0.545
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-linked",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-linked",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-linked",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-linked",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-linked",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "level": "lexeme",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "syn": "filter-linked",
+     "midp": true,
+     "rv_link": "adj2",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": null,
+     "content_only": true
+    },
+    "n_settings": 32,
+    "n_ranked_pairs_full_best": 493,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.008,
+     "recall@200": 0.033,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.042,
+      "recall@200": 0.083
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.438,
+     "recall@100": 0.5,
+     "recall@200": 0.5
+    },
+    "ci95": {
+     "recall@50": [
+      0.25,
+      0.688
+     ],
+     "recall@100": [
+      0.25,
+      0.75
+     ],
+     "recall@200": [
+      0.25,
+      0.75
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.429,
+     "recall@100": 0.5,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.556,
+     "recall@200": 0.556
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-linked",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-linked",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-linked",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-linked",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-linked",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     }
+    ],
+    "folds_agree": true,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "level": "lexeme",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "syn": "filter-linked",
+     "midp": true,
+     "rv_link": "adj2",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": null,
+     "content_only": false
+    },
+    "n_settings": 32,
+    "n_ranked_pairs_full_best": 605,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.0,
+     "recall@200": 0.0,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.0,
+      "recall@200": 0.0
+     }
+    }
+   }
+  },
+  {
+   "row": "syn_bonus_linked",
+   "description": "bonus (10^b) for pairs linked at least once in both corpora",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.25,
+     "recall@100": 0.375,
+     "recall@200": 0.417
+    },
+    "ci95": {
+     "recall@50": [
+      0.083,
+      0.417
+     ],
+     "recall@100": [
+      0.208,
+      0.583
+     ],
+     "recall@200": [
+      0.25,
+      0.625
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.3,
+     "recall@100": 0.45,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.364,
+     "recall@100": 0.545,
+     "recall@200": 0.636
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-linked",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 3.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-linked",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 10.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-linked",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 3.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-linked",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 1.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-linked",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 3.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "level": "lexeme",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "syn": "bonus-linked",
+     "midp": true,
+     "rv_link": "adj1",
+     "syn_b": 3.0,
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": null,
+     "content_only": true
+    },
+    "n_settings": 96,
+    "n_ranked_pairs_full_best": 1158,
+    "shuffled": {
+     "recall@50": 0.017,
+     "recall@100": 0.025,
+     "recall@200": 0.067,
+     "max_over_seeds": {
+      "recall@50": 0.042,
+      "recall@100": 0.042,
+      "recall@200": 0.125
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.312,
+     "recall@100": 0.438,
+     "recall@200": 0.438
+    },
+    "ci95": {
+     "recall@50": [
+      0.125,
+      0.562
+     ],
+     "recall@100": [
+      0.188,
+      0.688
+     ],
+     "recall@200": [
+      0.188,
+      0.688
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.357,
+     "recall@100": 0.5,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.556,
+     "recall@200": 0.556
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-linked",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 1.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-linked",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 10.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-linked",
+      "midp": true,
+      "rv_link": "adj2",
+      "syn_b": 10.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": -10.0,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-linked",
+      "midp": true,
+      "rv_link": "adj2",
+      "syn_b": 10.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": -10.0,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-linked",
+      "midp": true,
+      "rv_link": "adj2",
+      "syn_b": 10.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": -10.0,
+      "content_only": true
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "level": "lexeme",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "syn": "bonus-linked",
+     "midp": true,
+     "rv_link": "adj2",
+     "syn_b": 10.0,
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": -10.0,
+     "content_only": true
+    },
+    "n_settings": 96,
+    "n_ranked_pairs_full_best": 1158,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.013,
+     "recall@200": 0.075,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.062,
+      "recall@200": 0.125
+     }
+    }
+   }
+  },
+  {
+   "row": "syn_bonus_rel",
+   "description": "bonus (10^b) for the same dominant relation type in both (adj+noun, verb+obj, verb+subj, noun+gen)",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.292,
+     "recall@100": 0.417,
+     "recall@200": 0.458
+    },
+    "ci95": {
+     "recall@50": [
+      0.125,
+      0.458
+     ],
+     "recall@100": [
+      0.208,
+      0.625
+     ],
+     "recall@200": [
+      0.25,
+      0.667
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.3,
+     "recall@100": 0.45,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.364,
+     "recall@100": 0.545,
+     "recall@200": 0.636
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-rel",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 1.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-rel",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 3.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-rel",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 3.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-rel",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 1.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-rel",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 3.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "level": "lexeme",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "syn": "bonus-rel",
+     "midp": true,
+     "rv_link": "adj1",
+     "syn_b": 3.0,
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": null,
+     "content_only": true
+    },
+    "n_settings": 96,
+    "n_ranked_pairs_full_best": 1158,
+    "shuffled": {
+     "recall@50": 0.017,
+     "recall@100": 0.017,
+     "recall@200": 0.025,
+     "max_over_seeds": {
+      "recall@50": 0.042,
+      "recall@100": 0.042,
+      "recall@200": 0.083
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.312,
+     "recall@100": 0.5,
+     "recall@200": 0.5
+    },
+    "ci95": {
+     "recall@50": [
+      0.125,
+      0.562
+     ],
+     "recall@100": [
+      0.25,
+      0.75
+     ],
+     "recall@200": [
+      0.25,
+      0.75
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.286,
+     "recall@100": 0.5,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.333,
+     "recall@100": 0.556,
+     "recall@200": 0.556
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-rel",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 1.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-rel",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 3.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-rel",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 3.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-rel",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 3.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "bonus-rel",
+      "midp": true,
+      "rv_link": "adj1",
+      "syn_b": 3.0,
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "level": "lexeme",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "syn": "bonus-rel",
+     "midp": true,
+     "rv_link": "adj1",
+     "syn_b": 3.0,
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": null,
+     "content_only": true
+    },
+    "n_settings": 96,
+    "n_ranked_pairs_full_best": 1158,
+    "shuffled": {
+     "recall@50": 0.025,
+     "recall@100": 0.025,
+     "recall@200": 0.037,
+     "max_over_seeds": {
+      "recall@50": 0.062,
+      "recall@100": 0.062,
+      "recall@200": 0.125
+     }
+    }
+   }
+  },
+  {
+   "row": "syn_filter_rel",
+   "description": "keep only pairs with the same dominant relation type in both",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.167,
+     "recall@100": 0.208,
+     "recall@200": 0.25
+    },
+    "ci95": {
+     "recall@50": [
+      0.042,
+      0.333
+     ],
+     "recall@100": [
+      0.042,
+      0.375
+     ],
+     "recall@200": [
+      0.083,
+      0.417
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.2,
+     "recall@100": 0.2,
+     "recall@200": 0.25
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.273,
+     "recall@100": 0.273,
+     "recall@200": 0.364
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-rel",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-rel",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-rel",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-rel",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-rel",
+      "midp": true,
+      "rv_link": "adj1",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "level": "lexeme",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "syn": "filter-rel",
+     "midp": true,
+     "rv_link": "adj2",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": null,
+     "content_only": true
+    },
+    "n_settings": 32,
+    "n_ranked_pairs_full_best": 134,
+    "shuffled": {
+     "recall@50": 0.025,
+     "recall@100": 0.033,
+     "recall@200": 0.058,
+     "max_over_seeds": {
+      "recall@50": 0.042,
+      "recall@100": 0.042,
+      "recall@200": 0.083
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.25,
+     "recall@100": 0.25,
+     "recall@200": 0.25
+    },
+    "ci95": {
+     "recall@50": [
+      0.062,
+      0.5
+     ],
+     "recall@100": [
+      0.062,
+      0.438
+     ],
+     "recall@200": [
+      0.062,
+      0.438
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.286,
+     "recall@100": 0.286,
+     "recall@200": 0.286
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.333,
+     "recall@100": 0.333,
+     "recall@200": 0.333
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-rel",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-rel",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-rel",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-rel",
+      "midp": true,
+      "rv_link": "adj2",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "level": "lexeme",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "syn": "filter-rel",
+      "midp": true,
+      "rv_link": "adj1",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "level": "lexeme",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "syn": "filter-rel",
+     "midp": true,
+     "rv_link": "adj2",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": null,
+     "content_only": false
+    },
+    "n_settings": 32,
+    "n_ranked_pairs_full_best": 146,
+    "shuffled": {
+     "recall@50": 0.025,
+     "recall@100": 0.025,
+     "recall@200": 0.037,
+     "max_over_seeds": {
+      "recall@50": 0.062,
+      "recall@100": 0.062,
+      "recall@200": 0.062
+     }
+    }
+   }
+  },
+  {
+   "row": "latin_tiebreak",
+   "description": "+ early Latin (LASLA) as tiebreak",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.333,
+     "recall@100": 0.458,
+     "recall@200": 0.5
+    },
+    "ci95": {
+     "recall@50": [
+      0.167,
+      0.5
+     ],
+     "recall@100": [
+      0.25,
+      0.667
+     ],
+     "recall@200": [
+      0.292,
+      0.708
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.35,
+     "recall@100": 0.5,
+     "recall@200": 0.55
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.455,
+     "recall@100": 0.636,
+     "recall@200": 0.636
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "tiebreak",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "tiebreak",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "tiebreak",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "tiebreak",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "tiebreak",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     }
+    ],
+    "folds_agree": true,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "level": "lexeme",
+     "midp": false,
+     "third_mode": "tiebreak",
+     "lat_spec": "line",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": null,
+     "content_only": true
+    },
+    "n_settings": 32,
+    "n_ranked_pairs_full_best": 1158,
+    "shuffled": {
+     "recall@50": 0.008,
+     "recall@100": 0.008,
+     "recall@200": 0.025,
+     "max_over_seeds": {
+      "recall@50": 0.042,
+      "recall@100": 0.042,
+      "recall@200": 0.083
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.375,
+     "recall@100": 0.5,
+     "recall@200": 0.562
+    },
+    "ci95": {
+     "recall@50": [
+      0.188,
+      0.625
+     ],
+     "recall@100": [
+      0.25,
+      0.75
+     ],
+     "recall@200": [
+      0.312,
+      0.812
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.357,
+     "recall@100": 0.5,
+     "recall@200": 0.571
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.556,
+     "recall@200": 0.556
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "tiebreak",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "tiebreak",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "tiebreak",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "tiebreak",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "tiebreak",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     }
+    ],
+    "folds_agree": true,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "level": "lexeme",
+     "midp": false,
+     "third_mode": "tiebreak",
+     "lat_spec": "line",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": null,
+     "content_only": true
+    },
+    "n_settings": 32,
+    "n_ranked_pairs_full_best": 1158,
+    "shuffled": {
+     "recall@50": 0.013,
+     "recall@100": 0.013,
+     "recall@200": 0.037,
+     "max_over_seeds": {
+      "recall@50": 0.062,
+      "recall@100": 0.062,
+      "recall@200": 0.125
+     }
+    }
+   }
+  },
+  {
+   "row": "latin_fisher3",
+   "description": "+ early Latin (LASLA) as fisher3",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.333,
+     "recall@100": 0.417,
+     "recall@200": 0.458
+    },
+    "ci95": {
+     "recall@50": [
+      0.167,
+      0.5
+     ],
+     "recall@100": [
+      0.208,
+      0.625
+     ],
+     "recall@200": [
+      0.25,
+      0.667
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.35,
+     "recall@100": 0.45,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.455,
+     "recall@100": 0.545,
+     "recall@200": 0.636
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "level": "lexeme",
+     "midp": false,
+     "third_mode": "fisher3",
+     "lat_spec": "sentence",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": null,
+     "content_only": true
+    },
+    "n_settings": 32,
+    "n_ranked_pairs_full_best": 1158,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.008,
+     "recall@200": 0.017,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.042,
+      "recall@200": 0.083
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.375,
+     "recall@100": 0.438,
+     "recall@200": 0.5
+    },
+    "ci95": {
+     "recall@50": [
+      0.188,
+      0.625
+     ],
+     "recall@100": [
+      0.188,
+      0.688
+     ],
+     "recall@200": [
+      0.25,
+      0.75
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.357,
+     "recall@100": 0.429,
+     "recall@200": 0.5
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.444,
+     "recall@200": 0.556
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "level": "lexeme",
+     "midp": false,
+     "third_mode": "fisher3",
+     "lat_spec": "sentence",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": null,
+     "content_only": true
+    },
+    "n_settings": 32,
+    "n_ranked_pairs_full_best": 1158,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.013,
+     "recall@200": 0.025,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.062,
+      "recall@200": 0.125
+     }
+    }
+   }
+  },
+  {
+   "row": "latin_fisher3pos",
+   "description": "+ early Latin (LASLA) as fisher3pos",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.333,
+     "recall@100": 0.458,
+     "recall@200": 0.5
+    },
+    "ci95": {
+     "recall@50": [
+      0.167,
+      0.5
+     ],
+     "recall@100": [
+      0.25,
+      0.667
+     ],
+     "recall@200": [
+      0.292,
+      0.708
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.35,
+     "recall@100": 0.5,
+     "recall@200": 0.55
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.455,
+     "recall@100": 0.636,
+     "recall@200": 0.636
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3pos",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3pos",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3pos",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3pos",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3pos",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     }
+    ],
+    "folds_agree": true,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "level": "lexeme",
+     "midp": false,
+     "third_mode": "fisher3pos",
+     "lat_spec": "sentence",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": null,
+     "content_only": true
+    },
+    "n_settings": 32,
+    "n_ranked_pairs_full_best": 1158,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.008,
+     "recall@200": 0.008,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.042,
+      "recall@200": 0.042
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.375,
+     "recall@100": 0.5,
+     "recall@200": 0.562
+    },
+    "ci95": {
+     "recall@50": [
+      0.188,
+      0.625
+     ],
+     "recall@100": [
+      0.25,
+      0.75
+     ],
+     "recall@200": [
+      0.312,
+      0.812
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.357,
+     "recall@100": 0.5,
+     "recall@200": 0.571
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.444,
+     "recall@100": 0.556,
+     "recall@200": 0.556
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3pos",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3pos",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3pos",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3pos",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "fisher3pos",
+      "lat_spec": "sentence",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     }
+    ],
+    "folds_agree": true,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "level": "lexeme",
+     "midp": false,
+     "third_mode": "fisher3pos",
+     "lat_spec": "sentence",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": null,
+     "content_only": true
+    },
+    "n_settings": 32,
+    "n_ranked_pairs_full_best": 1158,
+    "shuffled": {
+     "recall@50": 0.0,
+     "recall@100": 0.013,
+     "recall@200": 0.013,
+     "max_over_seeds": {
+      "recall@50": 0.0,
+      "recall@100": 0.062,
+      "recall@200": 0.062
+     }
+    }
+   }
+  },
+  {
+   "row": "latin_require",
+   "description": "+ early Latin (LASLA) as require",
+   "E2": {
+    "n_items": 24,
+    "recall": {
+     "recall@50": 0.042,
+     "recall@100": 0.083,
+     "recall@200": 0.125
+    },
+    "ci95": {
+     "recall@50": [
+      0.0,
+      0.125
+     ],
+     "recall@100": [
+      0.0,
+      0.208
+     ],
+     "recall@200": [
+      0.0,
+      0.25
+     ]
+    },
+    "gold_items": {
+     "n": 20,
+     "recall@50": 0.05,
+     "recall@100": 0.1,
+     "recall@200": 0.1
+    },
+    "primary_items": {
+     "n": 11,
+     "recall@50": 0.091,
+     "recall@100": 0.091,
+     "recall@200": 0.091
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "require",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "require",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "require",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "require",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "require",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     }
+    ],
+    "folds_agree": true,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "level": "lexeme",
+     "midp": false,
+     "third_mode": "require",
+     "lat_spec": "line",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": null,
+     "content_only": false
+    },
+    "n_settings": 32,
+    "n_ranked_pairs_full_best": 693,
+    "shuffled": {
+     "recall@50": 0.008,
+     "recall@100": 0.017,
+     "recall@200": 0.017,
+     "max_over_seeds": {
+      "recall@50": 0.042,
+      "recall@100": 0.083,
+      "recall@200": 0.083
+     }
+    }
+   },
+   "E1": {
+    "n_items": 16,
+    "recall": {
+     "recall@50": 0.062,
+     "recall@100": 0.125,
+     "recall@200": 0.125
+    },
+    "ci95": {
+     "recall@50": [
+      0.0,
+      0.188
+     ],
+     "recall@100": [
+      0.0,
+      0.312
+     ],
+     "recall@200": [
+      0.0,
+      0.312
+     ]
+    },
+    "gold_items": {
+     "n": 14,
+     "recall@50": 0.071,
+     "recall@100": 0.143,
+     "recall@200": 0.143
+    },
+    "primary_items": {
+     "n": 9,
+     "recall@50": 0.111,
+     "recall@100": 0.111,
+     "recall@200": 0.111
+    },
+    "chosen_per_fold": [
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "require",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "require",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "require",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "require",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": false
+     },
+     {
+      "scorer": "exact",
+      "map": "pseudo",
+      "rv_spec": "pada",
+      "hom_spec": "line",
+      "level": "lexeme",
+      "midp": false,
+      "third_mode": "require",
+      "lat_spec": "line",
+      "min_count": 1,
+      "rank_by": "fisher",
+      "floor": null,
+      "content_only": true
+     }
+    ],
+    "folds_agree": false,
+    "full_data_best": {
+     "scorer": "exact",
+     "map": "pseudo",
+     "rv_spec": "pada",
+     "hom_spec": "line",
+     "level": "lexeme",
+     "midp": false,
+     "third_mode": "require",
+     "lat_spec": "line",
+     "min_count": 1,
+     "rank_by": "fisher",
+     "floor": null,
+     "content_only": true
+    },
+    "n_settings": 32,
+    "n_ranked_pairs_full_best": 140,
+    "shuffled": {
+     "recall@50": 0.025,
+     "recall@100": 0.025,
+     "recall@200": 0.062,
+     "max_over_seeds": {
+      "recall@50": 0.125,
+      "recall@100": 0.125,
+      "recall@200": 0.125
+     }
+    }
+   }
+  }
+ ],
+ "selection": {
+  "best_mapping_row": "map_lexeme",
+  "best_syntax_row": "exact",
+  "final_row": "exact",
+  "final_setting": {
+   "scorer": "exact",
+   "map": "pseudo",
+   "rv_spec": "pada",
+   "hom_spec": "line",
+   "level": "lexeme",
+   "min_count": 1,
+   "rank_by": "fisher",
+   "midp": false,
+   "floor": null,
+   "content_only": true
+  }
+ },
+ "items_E2": [
+  {
+   "item_id": "pie-lex-HeHkjus|pie-lex-h1ekjwos",
+   "fold": 2,
+   "gold": [
+    "swift-horses",
+    "west_ch12_f18"
+   ],
+   "silver": true,
+   "primary": true,
+   "pairs": [
+    [
+     "HéHḱus",
+     "h₁éḱwos"
+    ]
+   ],
+   "rank_heldout_final": 3
+  },
+  {
+   "item_id": "pie-lex-Hyos|pie-lex-kwe",
+   "fold": 1,
+   "gold": [
+    "west_ch02_f75"
+   ],
+   "silver": false,
+   "primary": false,
+   "pairs": [
+    [
+     "Hyós",
+     "-kʷe"
+    ],
+    [
+     "Hyós",
+     "-kʷe"
+    ]
+   ],
+   "rank_heldout_final": null
+  },
+  {
+   "item_id": "pie-lex-dhedheh1ti|pie-lex-so",
+   "fold": 1,
+   "gold": [
+    "west_ch10_f14"
+   ],
+   "silver": true,
+   "primary": true,
+   "pairs": [
+    [
+     "dʰédʰeh₁ti",
+     "só"
+    ],
+    [
+     "dʰédʰeh₁ti",
+     "ḱlew-"
+    ],
+    [
+     "dʰédʰeh₁ti",
+     "per-"
+    ],
+    [
+     "só",
+     "ḱlew-"
+    ],
+    [
+     "ḱlew-",
+     "per-"
+    ]
+   ],
+   "rank_heldout_final": 26
+  },
+  {
+   "item_id": "pie-lex-egjh2|pie-root-kjlew-hear",
+   "fold": 2,
+   "gold": [
+    "west_ch08_f01",
+    "west_ch08_f04"
+   ],
+   "silver": true,
+   "primary": true,
+   "pairs": [
+    [
+     "éǵh₂",
+     "ḱlew-"
+    ]
+   ],
+   "rank_heldout_final": 85
+  },
+  {
+   "item_id": "pie-lex-h1wesus|pie-root-deh3-give",
+   "fold": 2,
+   "gold": [
+    "west_ch03_f20"
+   ],
+   "silver": false,
+   "primary": true,
+   "pairs": [
+    [
+     "h₁wésus",
+     "deh₃-"
+    ]
+   ],
+   "rank_heldout_final": 48
+  },
+  {
+   "item_id": "pie-lex-ish1ros|pie-root-men-think",
+   "fold": 0,
+   "gold": [
+    "holy-strength-isira-manas",
+    "west_ch02_f38"
+   ],
+   "silver": true,
+   "primary": false,
+   "pairs": [
+    [
+     "ish₁rós",
+     "men-"
+    ]
+   ],
+   "rank_heldout_final": 72
+  },
+  {
+   "item_id": "pie-lex-kwe|pie-lex-kwe-2",
+   "fold": 1,
+   "gold": [
+    "west_ch02_f69"
+   ],
+   "silver": false,
+   "primary": true,
+   "pairs": [
+    [
+     "-kʷe",
+     "-kʷe"
+    ]
+   ],
+   "rank_heldout_final": null
+  },
+  {
+   "item_id": "pie-lex-medhu|pie-root-sweh2d-sweet",
+   "fold": 4,
+   "gold": [
+    "west_ch02_f21"
+   ],
+   "silver": true,
+   "primary": false,
+   "pairs": [
+    [
+     "médʰu",
+     "sweh₂d-"
+    ]
+   ],
+   "rank_heldout_final": 13
+  },
+  {
+   "item_id": "pie-lex-megjh2s|pie-root-kjlew-hear",
+   "fold": 4,
+   "gold": [
+    "great-fame",
+    "west_ch02_f03",
+    "west_ch10_f05"
+   ],
+   "silver": true,
+   "primary": true,
+   "pairs": [
+    [
+     "méǵh₂s",
+     "ḱlew-"
+    ]
+   ],
+   "rank_heldout_final": 15
+  },
+  {
+   "item_id": "pie-lex-soh2wl|pie-root-deykj-point_out",
+   "fold": 4,
+   "gold": [],
+   "silver": true,
+   "primary": false,
+   "pairs": [
+    [
+     "sóh₂wl̥",
+     "deyḱ-"
+    ]
+   ],
+   "rank_heldout_final": null
+  },
+  {
+   "item_id": "pie-lex-treyes|pie-root-peh2w-few",
+   "fold": 2,
+   "gold": [
+    "west_ch02_f104"
+   ],
+   "silver": false,
+   "primary": false,
+   "pairs": [
+    [
+     "tréyes",
+     "peh₂w-"
+    ]
+   ],
+   "rank_heldout_final": null
+  },
+  {
+   "item_id": "pie-root-bheh2-shine|pie-root-h2ews-become_light",
+   "fold": 0,
+   "gold": [
+    "west_ch05_f16"
+   ],
+   "silver": true,
+   "primary": false,
+   "pairs": [
+    [
+     "bʰeh₂-",
+     "h₂ews-"
+    ]
+   ],
+   "rank_heldout_final": 10
+  },
+  {
+   "item_id": "pie-root-dheh1-do|pie-root-kjlew-hear",
+   "fold": 0,
+   "gold": [
+    "imperishable-fame-get-nominative"
+   ],
+   "silver": false,
+   "primary": true,
+   "pairs": [
+    [
+     "dʰeh₁-",
+     "ḱlew-"
+    ],
+    [
+     "dʰeh₁-",
+     "seǵʰ-"
+    ],
+    [
+     "ḱlew-",
+     "seǵʰ-"
+    ]
+   ],
+   "rank_heldout_final": null
+  },
+  {
+   "item_id": "pie-root-dhgwhey-decline|pie-root-kjlew-hear",
+   "fold": 3,
+   "gold": [
+    "imperishable-fame",
+    "west_ch02_f01",
+    "west_ch10_f01"
+   ],
+   "silver": true,
+   "primary": true,
+   "pairs": [
+    [
+     "dʰgʷʰey-",
+     "ḱlew-"
+    ]
+   ],
+   "rank_heldout_final": null
+  },
+  {
+   "item_id": "pie-root-dyew-be_bright|pie-root-peh2-protect",
+   "fold": 2,
+   "gold": [
+    "west_ch04_f01"
+   ],
+   "silver": true,
+   "primary": true,
+   "pairs": [
+    [
+     "dyew-",
+     "peh₂-"
+    ]
+   ],
+   "rank_heldout_final": 6
+  },
+  {
+   "item_id": "pie-root-dyew-be_bright|pie-root-per-before",
+   "fold": 3,
+   "gold": [],
+   "silver": true,
+   "primary": false,
+   "pairs": [
+    [
+     "dyew-",
+     "per-"
+    ]
+   ],
+   "rank_heldout_final": 387
+  },
+  {
+   "item_id": "pie-root-gjenh1-produce|pie-root-peh2-protect",
+   "fold": 3,
+   "gold": [
+    "west_ch02_f32"
+   ],
+   "silver": true,
+   "primary": false,
+   "pairs": [
+    [
+     "ǵenh₁-",
+     "peh₂-"
+    ]
+   ],
+   "rank_heldout_final": 188
+  },
+  {
+   "item_id": "pie-root-gwhen-strike|pie-root-kjey-be_lying_down",
+   "fold": 4,
+   "gold": [
+    "slain-lies"
+   ],
+   "silver": false,
+   "primary": false,
+   "pairs": [
+    [
+     "gʷʰen-",
+     "ḱey-"
+    ]
+   ],
+   "rank_heldout_final": null
+  },
+  {
+   "item_id": "pie-root-gwhen-strike|pie-root-legh-lie",
+   "fold": 0,
+   "gold": [
+    "slay-lie-sleep-nexus"
+   ],
+   "silver": false,
+   "primary": false,
+   "pairs": [
+    [
+     "gʷʰen-",
+     "legʰ-"
+    ],
+    [
+     "gʷʰen-",
+     "swep-"
+    ],
+    [
+     "gʷʰen-",
+     "tḱen-"
+    ],
+    [
+     "legʰ-",
+     "swep-"
+    ],
+    [
+     "legʰ-",
+     "tḱen-"
+    ],
+    [
+     "swep-",
+     "tḱen-"
+    ]
+   ],
+   "rank_heldout_final": null
+  },
+  {
+   "item_id": "pie-root-gwhen-strike|pie-root-serp-creep",
+   "fold": 3,
+   "gold": [
+    "hero-slay-serpent",
+    "slay-gwhen-serpent-ogwhi"
+   ],
+   "silver": false,
+   "primary": false,
+   "pairs": [
+    [
+     "gʷʰen-",
+     "serp-"
+    ]
+   ],
+   "rank_heldout_final": null
+  },
+  {
+   "item_id": "pie-root-h1werH-broad|pie-root-kjlew-hear",
+   "fold": 1,
+   "gold": [],
+   "silver": true,
+   "primary": false,
+   "pairs": [
+    [
+     "h₁werH-",
+     "ḱlew-"
+    ]
+   ],
+   "rank_heldout_final": 35
+  },
+  {
+   "item_id": "pie-root-h2ergj-white|pie-root-wes-dress",
+   "fold": 4,
+   "gold": [],
+   "silver": true,
+   "primary": false,
+   "pairs": [
+    [
+     "h₂erǵ-",
+     "wes-"
+    ]
+   ],
+   "rank_heldout_final": null
+  },
+  {
+   "item_id": "pie-root-nebh-become_damp|pie-root-wes-dress",
+   "fold": 0,
+   "gold": [
+    "west_ch02_f48"
+   ],
+   "silver": true,
+   "primary": true,
+   "pairs": [
+    [
+     "nebʰ-",
+     "wes-"
+    ]
+   ],
+   "rank_heldout_final": 75
+  },
+  {
+   "item_id": "pie-root-tetkj-create|pie-root-wekw-speak",
+   "fold": 4,
+   "gold": [
+    "craft-words",
+    "west_ch01_f05"
+   ],
+   "silver": true,
+   "primary": true,
+   "pairs": [
+    [
+     "tetḱ-",
+     "wekʷ-"
+    ]
+   ],
+   "rank_heldout_final": null
+  }
+ ],
+ "round1": "evaluation_round1.json and tuning_round1.json hold the round-1 outputs"
 }
