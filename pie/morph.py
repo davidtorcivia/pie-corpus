@@ -272,6 +272,12 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
 
 def _initial_accent(segs: list[Seg]) -> list[Seg]:
     out = [replace(x, acc=False) for x in segs]
+    # a syllabic laryngeal as the first nucleus (ph₂ter: Ved. pítar, Gk πάτερ) carries the accent,
+    # which the notation cannot mark: leave the form unaccented rather than accent a later vowel
+    first_v = next((i for i, x in enumerate(out) if x.kind == "V" or (x.kind == "R" and x.syl)), None)
+    if first_v is not None and any(x.base in ("h1", "h2", "h3", "H") and 0 < i < first_v and out[i - 1].kind == "C"
+                                   for i, x in enumerate(out[:first_v])):
+        return out
     for i, x in enumerate(out):
         if x.kind == "V" or (x.kind == "R" and x.syl):
             out[i] = replace(x, acc=True)
