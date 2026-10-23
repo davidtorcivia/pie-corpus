@@ -113,6 +113,12 @@ def secure_check(lid: str, refs: list[dict], lx) -> dict:
             "level": "exact" if len(exact) >= 2 else "root" if len(exact | rootlvl) >= 2 else "none"}
 
 
+def plan_sha(p: dict) -> str:
+    import hashlib
+    key = {k: p.get(k) for k in ("plan", "cognate_refs", "secure")}
+    return hashlib.sha256(json.dumps(key, sort_keys=True, ensure_ascii=False).encode()).hexdigest()[:16]
+
+
 def main() -> int:
     path = Path(sys.argv[1])
     sha = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--short", "HEAD"], capture_output=True,
@@ -120,7 +126,16 @@ def main() -> int:
     lx, ix = Lexicon.load(), load_index()
     out, rejects = [], []
     vp = ROOT / "data" / "tier2" / "review_verdicts.json"
-    review = json.loads(vp.read_text("utf-8"))["verdicts"] if vp.exists() else {}
+    raw_review = json.loads(vp.read_text("utf-8"))["verdicts"] if vp.exists() else {}
+
+    def verdict(p):
+        """The review's verdict while the plan is the one reviewed; 'stale' once it was revised."""
+        v = raw_review.get(p.get("proj_id"))
+        if not v:
+            return None
+        if isinstance(v, str):
+            return v
+        return v["verdict"] if v.get("plan_sha") == plan_sha(p) else "stale"
     seen_parallels = {}
     for line in path.read_text("utf-8").splitlines():
         if not line.strip():
@@ -129,7 +144,8 @@ def main() -> int:
         errs = check_plan(p["plan"], lx)
         if branches(p.get("cognate_refs", [])) < 2:
             errs.append("cognate_refs must cite at least two branches")
-        if review.get(p.get("proj_id")) == "reject":
+        rv = raw_review.get(p.get("proj_id"))
+        if (rv.get("verdict") if isinstance(rv, dict) else rv) == "reject":   # a rejected parallel stays out
             errs.append("rejected by the adversarial review (docs/audits/tier2-review.md)")
         # one line per parallel: the same set of cited loci is the same parallel (review: duplication)
         par = tuple(sorted(x.get("locus", "") for x in p.get("cognate_refs", []) if x.get("role", "parallel") == "parallel"))
@@ -167,9 +183,9 @@ def main() -> int:
             "neologism": False, "secure_share": round(n_sec / max(1, len(toks)), 3),
             "branches": branches([x for x in p["cognate_refs"] if x.get("role", "parallel") == "parallel"]),
             "secure_checks": checks, "claimed_secure": sorted(p.get("secure", [])), "notes": p.get("notes", ""),
-            "review": review.get(p.get("proj_id")),
+            "review": verdict(p),
             # evaluation grade: judged sound by the review and with >= 1 lexeme exactly attested in 2 branches
-            "eval_grade": review.get(p.get("proj_id")) == "sound" and any(c["level"] == "exact" for c in checks.values()),
+            "eval_grade": verdict(p) == "sound" and any(c["level"] == "exact" for c in checks.values()),
         })
     d = ROOT / "corpus" / "tier2"
     d.mkdir(parents=True, exist_ok=True)

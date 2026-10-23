@@ -1,108 +1,450 @@
 {
- "_source": "docs/audits/tier2-review.md (adversarial review, 2026-10-23)",
+ "_source": "docs/audits/tier2-review.md (round-1 adversarial review of the plans at commit 1fffadb)",
+ "_rule": "a verdict applies only while the plan's sha matches (plan, cognate_refs, secure); a revised line is 'stale' until re-reviewed",
  "verdicts": {
-  "fame-001": "sound",
-  "fame-002": "weak",
-  "fame-003": "sound",
-  "fame-004": "weak",
-  "fame-005": "sound",
-  "fame-006": "weak",
-  "fame-007": "weak",
-  "fame-008": "weak",
-  "fame-009": "weak",
-  "fame-010": "weak",
-  "fame-011": "weak",
-  "fame-012": "weak",
-  "fame-013": "sound",
-  "fame-014": "sound",
-  "cattle-raid-001": "sound",
-  "cattle-raid-002": "sound",
-  "cattle-raid-003": "sound",
-  "cattle-raid-004": "weak",
-  "cattle-raid-005": "reject",
-  "cattle-raid-006": "weak",
-  "cattle-raid-007": "weak",
-  "cattle-raid-008": "reject",
-  "death-otherworld-001": "weak",
-  "death-otherworld-002": "weak",
-  "death-otherworld-003": "sound",
-  "death-otherworld-004": "weak",
-  "death-otherworld-005": "weak",
-  "death-otherworld-006": "reject",
-  "death-otherworld-007": "weak",
-  "death-otherworld-008": "reject",
-  "death-otherworld-009": "weak",
-  "death-otherworld-010": "weak",
-  "death-otherworld-011": "reject",
-  "dawn-sun-001": "sound",
-  "dawn-sun-002": "weak",
-  "dawn-sun-003": "weak",
-  "dawn-sun-004": "weak",
-  "dawn-sun-005": "weak",
-  "dawn-sun-006": "weak",
-  "dawn-sun-007": "weak",
-  "dawn-sun-008": "weak",
-  "dawn-sun-009": "weak",
-  "dawn-sun-010": "sound",
-  "dawn-sun-011": "weak",
-  "dawn-sun-012": "weak",
-  "dawn-sun-013": "weak",
-  "dawn-sun-014": "sound",
-  "dawn-sun-015": "weak",
-  "dawn-sun-016": "sound",
-  "dawn-sun-017": "weak",
-  "dawn-sun-018": "sound",
-  "dawn-sun-019": "weak",
-  "dawn-sun-020": "weak",
-  "dawn-sun-021": "weak",
-  "healing-charms-001": "sound",
-  "healing-charms-002": "weak",
-  "healing-charms-003": "weak",
-  "healing-charms-004": "sound",
-  "healing-charms-005": "weak",
-  "dragon-slaying-001": "sound",
-  "dragon-slaying-002": "weak",
-  "dragon-slaying-003": "reject",
-  "dragon-slaying-004": "weak",
-  "dragon-slaying-005": "sound",
-  "dragon-slaying-006": "sound",
-  "dragon-slaying-007": "reject",
-  "dragon-slaying-008": "weak",
-  "dragon-slaying-009": "weak",
-  "dragon-slaying-010": "weak",
-  "dragon-slaying-011": "weak",
-  "dragon-slaying-012": "sound",
-  "dragon-slaying-013": "weak",
-  "dragon-slaying-014": "reject",
-  "dragon-slaying-015": "reject",
-  "sky-father-001": "weak",
-  "sky-father-002": "weak",
-  "sky-father-003": "sound",
-  "sky-father-004": "weak",
-  "sky-father-005": "reject",
-  "sky-father-006": "sound",
-  "sky-father-007": "weak",
-  "sky-father-008": "sound",
-  "sky-father-009": "weak",
-  "sky-father-010": "weak",
-  "sky-father-011": "sound",
-  "sky-father-012": "weak",
-  "sky-father-013": "weak",
-  "sky-father-014": "sound",
-  "poetics-gifts-001": "sound",
-  "poetics-gifts-002": "weak",
-  "poetics-gifts-003": "sound",
-  "poetics-gifts-004": "sound",
-  "poetics-gifts-005": "weak",
-  "poetics-gifts-006": "weak",
-  "poetics-gifts-007": "weak",
-  "poetics-gifts-008": "weak",
-  "poetics-gifts-009": "weak",
-  "poetics-gifts-010": "weak",
-  "poetics-gifts-011": "weak",
-  "poetics-gifts-012": "sound",
-  "poetics-gifts-013": "sound",
-  "poetics-gifts-014": "weak",
-  "poetics-gifts-015": "weak"
+  "cattle-raid-001": {
+   "verdict": "sound",
+   "plan_sha": "ee1eace8ea69327a"
+  },
+  "cattle-raid-002": {
+   "verdict": "sound",
+   "plan_sha": "a9848d7b0ebf7f95"
+  },
+  "cattle-raid-003": {
+   "verdict": "sound",
+   "plan_sha": "bec9ca370ab92d8e"
+  },
+  "cattle-raid-004": {
+   "verdict": "weak",
+   "plan_sha": "5e05f094fdc9937c"
+  },
+  "cattle-raid-005": {
+   "verdict": "reject",
+   "plan_sha": "0e09164ca2331817"
+  },
+  "cattle-raid-006": {
+   "verdict": "weak",
+   "plan_sha": "5f860c0f3f1fd4dd"
+  },
+  "cattle-raid-007": {
+   "verdict": "weak",
+   "plan_sha": "79a04913320ac14a"
+  },
+  "cattle-raid-008": {
+   "verdict": "reject",
+   "plan_sha": "a6adead3d0f0b3e0"
+  },
+  "dawn-sun-001": {
+   "verdict": "sound",
+   "plan_sha": "4877125a8254e04d"
+  },
+  "dawn-sun-002": {
+   "verdict": "weak",
+   "plan_sha": "fd91c82850ac16a7"
+  },
+  "dawn-sun-003": {
+   "verdict": "weak",
+   "plan_sha": "8b611b8833521aec"
+  },
+  "dawn-sun-004": {
+   "verdict": "weak",
+   "plan_sha": "37255f9ccaa093c0"
+  },
+  "dawn-sun-005": {
+   "verdict": "weak",
+   "plan_sha": "43360885320dc29b"
+  },
+  "dawn-sun-006": {
+   "verdict": "weak",
+   "plan_sha": "1e1d39c68e57e126"
+  },
+  "dawn-sun-007": {
+   "verdict": "weak",
+   "plan_sha": "fb74d006bb122cd6"
+  },
+  "dawn-sun-008": {
+   "verdict": "weak",
+   "plan_sha": "5752977490737b01"
+  },
+  "dawn-sun-009": {
+   "verdict": "weak",
+   "plan_sha": "43a336a079d83790"
+  },
+  "dawn-sun-010": {
+   "verdict": "sound",
+   "plan_sha": "6550032c45d773f8"
+  },
+  "dawn-sun-011": {
+   "verdict": "weak",
+   "plan_sha": "3e03273e90d1dc22"
+  },
+  "dawn-sun-012": {
+   "verdict": "weak",
+   "plan_sha": "35bdb80bb5e39302"
+  },
+  "dawn-sun-013": {
+   "verdict": "weak",
+   "plan_sha": "a8d01d269e2fafac"
+  },
+  "dawn-sun-014": {
+   "verdict": "sound",
+   "plan_sha": "c0eeef203174c3e4"
+  },
+  "dawn-sun-015": {
+   "verdict": "weak",
+   "plan_sha": "45811d155004b8c3"
+  },
+  "dawn-sun-016": {
+   "verdict": "sound",
+   "plan_sha": "146e88bf9e932bda"
+  },
+  "dawn-sun-017": {
+   "verdict": "weak",
+   "plan_sha": "cc6cba07afad374b"
+  },
+  "dawn-sun-018": {
+   "verdict": "sound",
+   "plan_sha": "01867ee1144e94dc"
+  },
+  "dawn-sun-019": {
+   "verdict": "weak",
+   "plan_sha": "768df3047fd4c9af"
+  },
+  "dawn-sun-020": {
+   "verdict": "weak",
+   "plan_sha": "fcb059c40b1f58ac"
+  },
+  "dawn-sun-021": {
+   "verdict": "weak",
+   "plan_sha": "2d0d93065abe4660"
+  },
+  "death-otherworld-001": {
+   "verdict": "weak",
+   "plan_sha": "a4b85ed57a966d77"
+  },
+  "death-otherworld-002": {
+   "verdict": "weak",
+   "plan_sha": "9327bd3eff1e4fb5"
+  },
+  "death-otherworld-003": {
+   "verdict": "sound",
+   "plan_sha": "ce8684b7d210715d"
+  },
+  "death-otherworld-004": {
+   "verdict": "weak",
+   "plan_sha": "b9bb296e1e9a1cef"
+  },
+  "death-otherworld-005": {
+   "verdict": "weak",
+   "plan_sha": "42d34ad901e6025b"
+  },
+  "death-otherworld-006": {
+   "verdict": "reject",
+   "plan_sha": "b21a8a10520f9439"
+  },
+  "death-otherworld-007": {
+   "verdict": "weak",
+   "plan_sha": "f72860eac3217fdf"
+  },
+  "death-otherworld-008": {
+   "verdict": "reject",
+   "plan_sha": "8483a940a265e986"
+  },
+  "death-otherworld-009": {
+   "verdict": "weak",
+   "plan_sha": "851f2f7c7f6f5517"
+  },
+  "death-otherworld-010": {
+   "verdict": "weak",
+   "plan_sha": "73244e1f5749c861"
+  },
+  "death-otherworld-011": {
+   "verdict": "reject",
+   "plan_sha": "f8dea1c2edd05cd2"
+  },
+  "fame-001": {
+   "verdict": "sound",
+   "plan_sha": "062d5b79306fae3c"
+  },
+  "fame-002": {
+   "verdict": "weak",
+   "plan_sha": "155bebc3766c5a6d"
+  },
+  "fame-003": {
+   "verdict": "sound",
+   "plan_sha": "05fc0cd50f5554a9"
+  },
+  "fame-004": {
+   "verdict": "weak",
+   "plan_sha": "6ac75891bc9565eb"
+  },
+  "fame-005": {
+   "verdict": "sound",
+   "plan_sha": "f72d9d96dc6f7cc3"
+  },
+  "fame-006": {
+   "verdict": "weak",
+   "plan_sha": "524c471dd269ee71"
+  },
+  "fame-007": {
+   "verdict": "weak",
+   "plan_sha": "e7a19831b56c79ba"
+  },
+  "fame-008": {
+   "verdict": "weak",
+   "plan_sha": "e9f6f6942b0f3320"
+  },
+  "fame-009": {
+   "verdict": "weak",
+   "plan_sha": "0f0ee09f07ecedf6"
+  },
+  "fame-010": {
+   "verdict": "weak",
+   "plan_sha": "bb8c8581a75900cf"
+  },
+  "fame-011": {
+   "verdict": "weak",
+   "plan_sha": "495b1400994f7a91"
+  },
+  "fame-012": {
+   "verdict": "weak",
+   "plan_sha": "f5db7f789ac870b5"
+  },
+  "fame-013": {
+   "verdict": "sound",
+   "plan_sha": "6076a6e60eaf8d68"
+  },
+  "fame-014": {
+   "verdict": "sound",
+   "plan_sha": "bdc84d5f4734ae4b"
+  },
+  "sky-father-001": {
+   "verdict": "weak",
+   "plan_sha": "812218f1a6549956"
+  },
+  "sky-father-002": {
+   "verdict": "weak",
+   "plan_sha": "f139129bdfd6d718"
+  },
+  "sky-father-003": {
+   "verdict": "sound",
+   "plan_sha": "88b76a3e482464b6"
+  },
+  "sky-father-004": {
+   "verdict": "weak",
+   "plan_sha": "2587a632cbe78b01"
+  },
+  "sky-father-005": {
+   "verdict": "reject",
+   "plan_sha": "5c73a0781ec15fa3"
+  },
+  "sky-father-006": {
+   "verdict": "sound",
+   "plan_sha": "1f5f4bfd75c65c29"
+  },
+  "sky-father-007": {
+   "verdict": "weak",
+   "plan_sha": "7519307f79743295"
+  },
+  "sky-father-008": {
+   "verdict": "sound",
+   "plan_sha": "abf65a04a29beb2d"
+  },
+  "sky-father-009": {
+   "verdict": "weak",
+   "plan_sha": "dbbda3018b2553a7"
+  },
+  "sky-father-010": {
+   "verdict": "weak",
+   "plan_sha": "f821dec38258b18f"
+  },
+  "sky-father-011": {
+   "verdict": "sound",
+   "plan_sha": "96b675268d7a9568"
+  },
+  "sky-father-012": {
+   "verdict": "weak",
+   "plan_sha": "d48d76dfd4c0eddb"
+  },
+  "sky-father-013": {
+   "verdict": "weak",
+   "plan_sha": "58fcdba11a9ed326"
+  },
+  "sky-father-014": {
+   "verdict": "sound",
+   "plan_sha": "bce379910cf2b72d"
+  },
+  "dragon-slaying-001": {
+   "verdict": "sound",
+   "plan_sha": "7c18e0738a1607d5"
+  },
+  "dragon-slaying-002": {
+   "verdict": "weak",
+   "plan_sha": "7a4d19426cc29e95"
+  },
+  "dragon-slaying-003": {
+   "verdict": "reject",
+   "plan_sha": "521cc369e9d44370"
+  },
+  "dragon-slaying-004": {
+   "verdict": "weak",
+   "plan_sha": "c748531284ccb04d"
+  },
+  "dragon-slaying-005": {
+   "verdict": "sound",
+   "plan_sha": "1edcff6f6fdd7ba7"
+  },
+  "dragon-slaying-006": {
+   "verdict": "sound",
+   "plan_sha": "167127c0098534fe"
+  },
+  "dragon-slaying-007": {
+   "verdict": "reject",
+   "plan_sha": "567ada0cc341b5df"
+  },
+  "dragon-slaying-008": {
+   "verdict": "weak",
+   "plan_sha": "d6aa484f819e2ddb"
+  },
+  "dragon-slaying-009": {
+   "verdict": "weak",
+   "plan_sha": "ee0cf9244e27d208"
+  },
+  "dragon-slaying-010": {
+   "verdict": "weak",
+   "plan_sha": "5ee699209acd7a1d"
+  },
+  "dragon-slaying-011": {
+   "verdict": "weak",
+   "plan_sha": "f7bb43feefdf40f2"
+  },
+  "dragon-slaying-012": {
+   "verdict": "sound",
+   "plan_sha": "f57142af7c1fa890"
+  },
+  "dragon-slaying-013": {
+   "verdict": "weak",
+   "plan_sha": "36edde94578d4973"
+  },
+  "dragon-slaying-014": {
+   "verdict": "reject",
+   "plan_sha": "08821895cc7cbdeb"
+  },
+  "dragon-slaying-015": {
+   "verdict": "reject",
+   "plan_sha": "8deebc244167e57d"
+  },
+  "healing-charms-001": {
+   "verdict": "sound",
+   "plan_sha": "8ebe7bbdadb9c944"
+  },
+  "healing-charms-002": {
+   "verdict": "weak",
+   "plan_sha": "7a397c96eb7708b8"
+  },
+  "healing-charms-003": {
+   "verdict": "weak",
+   "plan_sha": "369a147bd51069b4"
+  },
+  "healing-charms-004": {
+   "verdict": "sound",
+   "plan_sha": "69e104a1ff972d7f"
+  },
+  "healing-charms-005": {
+   "verdict": "weak",
+   "plan_sha": "3f4de50708dd33a2"
+  },
+  "poetics-gifts-001": {
+   "verdict": "sound",
+   "plan_sha": "43d46ca6bc237a7f"
+  },
+  "poetics-gifts-002": {
+   "verdict": "weak",
+   "plan_sha": "bb27983649444ddc"
+  },
+  "poetics-gifts-003": {
+   "verdict": "sound",
+   "plan_sha": "c31f9f6702c6e759"
+  },
+  "poetics-gifts-004": {
+   "verdict": "sound",
+   "plan_sha": "10149f36c3c7831a"
+  },
+  "poetics-gifts-005": {
+   "verdict": "weak",
+   "plan_sha": "5ecd4ad6be458c7e"
+  },
+  "poetics-gifts-006": {
+   "verdict": "weak",
+   "plan_sha": "fda97be1d90c8162"
+  },
+  "poetics-gifts-007": {
+   "verdict": "weak",
+   "plan_sha": "746ea75392680437"
+  },
+  "poetics-gifts-008": {
+   "verdict": "weak",
+   "plan_sha": "ab9838dc825bbcee"
+  },
+  "poetics-gifts-009": {
+   "verdict": "weak",
+   "plan_sha": "e2de19af7ebc1ffb"
+  },
+  "poetics-gifts-010": {
+   "verdict": "weak",
+   "plan_sha": "c83ba3f477ecd789"
+  },
+  "poetics-gifts-011": {
+   "verdict": "weak",
+   "plan_sha": "ed086b8b30641ad6"
+  },
+  "poetics-gifts-012": {
+   "verdict": "sound",
+   "plan_sha": "740be2316d136dc6"
+  },
+  "poetics-gifts-013": {
+   "verdict": "sound",
+   "plan_sha": "fd91c8a86e834a3b"
+  },
+  "poetics-gifts-014": {
+   "verdict": "weak",
+   "plan_sha": "041eb08698f8f7af"
+  },
+  "poetics-gifts-015": {
+   "verdict": "weak",
+   "plan_sha": "a28b8800520eeada"
+  },
+  "divine-twins-001": {
+   "verdict": "weak",
+   "plan_sha": "dd6bb8e8335a9c3a"
+  },
+  "divine-twins-002": {
+   "verdict": "weak",
+   "plan_sha": "dbc3cbc6252009ff"
+  },
+  "divine-twins-003": {
+   "verdict": "weak",
+   "plan_sha": "b77004e4f177f618"
+  },
+  "divine-twins-004": {
+   "verdict": "sound",
+   "plan_sha": "18db8e8bf3fbbd95"
+  },
+  "divine-twins-005": {
+   "verdict": "weak",
+   "plan_sha": "42c8555dc9126705"
+  },
+  "divine-twins-006": {
+   "verdict": "weak",
+   "plan_sha": "3a1f3d4f2e100240"
+  },
+  "divine-twins-007": {
+   "verdict": "weak",
+   "plan_sha": "210fff1c1b63ef65"
+  },
+  "divine-twins-008": {
+   "verdict": "weak",
+   "plan_sha": "a5afc06c00b41ae4"
+  }
  }
 }
