@@ -66,6 +66,7 @@ class Lexicon:
     specs: dict
     closed: dict
     derived: dict = field(default_factory=dict)     # approximate glosses (pie/glosses.py)
+    blocked: dict = field(default_factory=dict)     # lex_id → reason (data/generation/blocklist.jsonl)
     _cache: dict = field(default_factory=dict)
 
     @classmethod
@@ -80,13 +81,19 @@ class Lexicon:
             r = json.loads(x)
             specs[r["id"]] = r
         closed = json.loads((ROOT / "data/morph/closed_class.json").read_text("utf-8"))
+        blocked = {}
+        bp = ROOT / "data/generation/blocklist.jsonl"
+        if bp.exists():
+            for x in bp.read_text("utf-8").splitlines():
+                d = json.loads(x)
+                blocked[d["lex_id"]] = d["reason"]
         derived = {}
         p = ROOT / "data/lexicon/derived_glosses.jsonl"
         if p.exists():
             for x in p.read_text("utf-8").splitlines():
                 d = json.loads(x)
                 derived[d["id"]] = d["gloss"]
-        return cls(lex, specs, closed, derived)
+        return cls(lex, specs, closed, derived, blocked)
 
     def gloss(self, lex_id: str) -> str:
         if lex_id.startswith("closed:"):
@@ -120,6 +127,10 @@ class Lexicon:
             sp, fam = r["spec"], r["family"]
             if fam == "noun":
                 c = decline(NounSpec(**sp), "handbook")
+                # the headword is the attested citation form (gʷḗn, not the table's gʷénh₂s)
+                lemma = self.entries[lex_id]["form"]
+                if not lemma.endswith("-") and lemma not in c.get("NOM.SG", []) and r.get("rule") == "table":
+                    c = {**c, "NOM.SG": [lemma] + c.get("NOM.SG", [])}
             elif fam == "adj":
                 c = decline_adj(AdjSpec(**sp), "handbook")[gender or "m"]
             else:
@@ -183,12 +194,18 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                 errs.append(f"{where}: unknown or non-inflectable lex_id {lid!r}")
                 continue
             r = lx.specs[lid]
+            if lid in lx.blocked:
+                errs.append(f"{where}: {lid} is blocked from generation: {lx.blocked[lid]}")
+                continue
             if not r.get("usable"):
                 errs.append(f"{where}: {lid} has no usable spec (rule {r['rule']})")
                 continue
             fam = r["family"]
             if role == "V" and fam != "verb":
                 errs.append(f"{where}: V slot needs a verb, {lid} is a {fam}")
+            if role == "V" and fam == "verb" and lx.entries[lid]["form"].endswith(("tor", "toy")) \
+                    and s.get("verb", {}).get("voice") != "MID":
+                errs.append(f"{where}: {lid} is middle-only (deponent): voice must be MID")
             if role == "V" and fam == "verb" and cl.get("neg") and s.get("verb", {}).get("mood") == "IMP" \
                     and not any(k.startswith(("PST.", "AOR.")) for k in lx.cells(lid)):
                 errs.append(f"{where}: a prohibitive (neg + IMP) needs a present or aorist stem for the "

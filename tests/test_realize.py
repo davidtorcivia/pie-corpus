@@ -145,3 +145,17 @@ def test_pro_drop_person_and_number_on_the_verb():
         {"lex_id": SHEEP, "role": "OBJ"},
         {"lex_id": SEE, "role": "V", "verb": {"mood": "SBJV", "voice": "ACT", "person": 1, "num": "PL"}}]}]})
     assert r["pie"] == "h₂ówim spéḱyōmos."
+
+
+def test_blocked_and_deponent_lexemes_are_rejected():
+    from pie.realize import Lexicon, check_plan
+    lx = Lexicon.load()
+    assert "pie-lex-kjekjlowe" in lx.blocked
+    errs = check_plan({"english": "x", "clauses": [{"slots": [{"lex_id": SHEEP, "role": "SUBJ"},
+                                                              V("pie-lex-kjekjlowe", tense="PRF")]}]}, lx)
+    assert any("blocked" in e for e in errs)
+    dep = next((i for i, r in lx.specs.items() if r.get("usable") and r["family"] == "verb"
+                and lx.entries[i]["form"].endswith("tor")), None)
+    if dep:
+        assert any("deponent" in e for e in check_plan(
+            {"english": "x", "clauses": [{"slots": [{"lex_id": SHEEP, "role": "SUBJ"}, V(dep)]}]}, lx))

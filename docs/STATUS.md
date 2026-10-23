@@ -80,12 +80,19 @@ All in one place. None of these block work in progress; each one has a default t
    - (b) Verbal roots are 730, against a target of 800. The options are **LIV²** (authoritative; also supplies aspect for the 614 roots classified by gloss), or a harvest from the kaikki daughter-language dumps (more roots, no aspect). *Default:* waiting for LIV².
 3. ~~**Paradigm convention for corpus text.**~~ **Settled by measurement:** with the index built under one convention alone, `handbook` beats `wiktionary` on every laryngealist Tier 1 text (Byrd 67.2 vs 60.7%; Lühr 53.7 vs 51.9; Adams 47.0 vs 43.9; Byrd King 63.6 vs 60.0; Hamp/Sen tie). The default stays `handbook`. Original note: I read "Wiktionary/LIV conventions are canonical" (PLAN §1) as being about *notation*, not paradigm reconstructions, so corpus text defaults to the **handbook** forms (contracted thematic *-ōs/-ōy/-ōd*, as in the Tier 1 texts). Wiktionary-convention forms are kept as alternatives in every cell. The tiebreaker will be Phase 3 validator coverage on Tier 1 texts under each convention. Tell me if you meant the stricter reading.
 4. **Phase 3's 90% target vs. how scholars differ.** After Phase B, what's left is mostly *different reconstructions of the same word* (Byrd's *pter* vs Wiktionary *ph₂tḗr*, Byrd *km̥tá* vs *ḱm̥tá*, Adams's and Lühr's "man" and "wool"), plus theonyms (*Wérunos*). These aren't engine errors. Closing them would mean either counting fuzzy near-misses (rejected: they pick wrong lexemes) or adding each scholar's variants to the lexicon from these very texts (circular, since they're the measurement). **My proposal:** add a `variants` layer filled from *other* sources (M&A, Fortson, LIV² when they arrive) and measure leave-one-text-out, and keep 90% as the target for that measurement. Until then, report the current numbers as the Phase A+B baseline.
-5. **Tier 3 scale-up: model and budget.** The pilot planner (this model) used about **134k tokens for 150 sentences, ~0.9M per 1,000**; the review used 125k for 50 records. Sentences average ~4.5 words, so 1M words of PIE is about 220k sentences, or **~200M planner tokens at pilot rates**. Options, which can be combined:
-   - **(a)** this model throughout: highest quality, highest cost;
-   - **(b)** a cheaper planner model (Sonnet/Haiku), with the same 50-record review to compare error rates;
-   - **(c)** lexeme substitution: reuse reviewed plans as skeletons and swap in lexemes of the same class and valency, checked by the plan checker. Nearly free, but semantically repetitive.
+5. **Tier 3 scale-up: model and budget.** Two 150-plan pilots with the same 50-record review:
 
-   **My recommendation:** a 150-plan pilot with (b) plus review. If its wrong-rate is ≤10%, run (b) for diversity with a capped share of (c), and audit a sample of every batch. I won't scale up until you choose a budget.
+   | | Pilot 1 (current model) | Pilot 2 (cheaper model, Sonnet) |
+   |---|---|---|
+   | Review ok / minor / wrong | 31 / 14 / 5 (*before* engine fixes) | 40 / 9 / 1 (after fixes) |
+   | Planner-caused meaning / syntax issues | 3 / 3 | 3 / 0 |
+   | Distinct lexemes / roots | 233 / 123 | 155 / 78 |
+   | Planner tokens for 150 plans | 134k | 149k |
+   | Plan reject rate (after the new checks) | 3.3% | 5.3% |
+
+   The cheaper planner is **no worse on the planner's own errors, but less diverse**, at about the same token count (so the saving is the per-token price). Sentences average ~4.5 words, so **1,000 sentences ≈ 1M planner tokens** either way.
+
+   **Recommendation:** scale with the cheaper model plus diversity controls (rotating slices, the new attestation ranking, a per-lexeme usage cap, and longer 2–3-clause plans to amortize overhead). Then a 50-record review by the stronger model per ~2,000 sentences (~130k tokens each) and automatic gates on every batch (reject rate, distinct roots, exact validation). A first scaled batch of **10,000 sentences ≈ 10M planner tokens + ~0.7M review tokens**, yielding ~45k PIE words. The PLAN's 1–10M-token target is a large multiple of that, so please pick a budget, or a first-batch size, before I go further.
 6. ~~**GitHub.**~~ **Done:** public at https://github.com/davidtorcivia/pie-corpus (2026-10-23). Still open: a **code license** (none chosen; the data files are CC BY-SA 4.0 because they derive from Wiktionary; see NOTICE.md).
 
 ## IDEAS.md disposition

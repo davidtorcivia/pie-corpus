@@ -54,14 +54,20 @@ def main() -> int:
     lx = Lexicon.load()
     rng = random.Random(args.seed)
     ap_derived = args.derived
-    pool = [i for i, r in lx.specs.items() if r.get("usable") and
+    pool = [i for i, r in lx.specs.items() if r.get("usable") and i not in lx.blocked and
             (lx.entries[i]["meaning"] or (ap_derived and i in lx.derived))]
+
+    def attested(i):
+        """Daughter languages with a reflex (of the lexeme, or else its root): prefer well-attested words."""
+        e = lx.entries[i]
+        n = len(e.get("reflexes", {}))
+        return n or len(lx.entries.get(e.get("root_id") or "", {}).get("reflexes", {}))
 
     def hits(i, words):
         g = " " + re.sub(r"[^a-z]+", " ", (lx.meaning(i)[0] or "").lower()) + " "
         return any(f" {w} " in g for w in words)
 
-    chosen = [i for i in pool if hits(i, args.keywords)]
+    chosen = sorted((i for i in pool if hits(i, args.keywords)), key=lambda i: -attested(i))
     chosen += [i for i in pool if lx.specs[i]["family"] == "verb" and hits(i, CORE_VERBS) and i not in chosen]
     rest = [i for i in pool if i not in chosen]
     rng.shuffle(rest)
@@ -75,8 +81,13 @@ def main() -> int:
             item["gloss_approximate"] = True   # root meaning + suffix function, not a dictionary gloss
         if r["family"] == "noun":
             item["gender"] = lx.gender(i)
+        item["attested_in"] = attested(i)
         if r["family"] == "verb":
-            item["features"] = verb_features(lx.cells(i))
+            feats = verb_features(lx.cells(i))
+            if e["form"].endswith(("tor", "toy")):     # deponent: middle only
+                feats = [f for f in feats if f.endswith("MID")]
+                item["deponent"] = True
+            item["features"] = feats
         items.append(item)
     out = ROOT / "data" / "generation" / "slices" / f"{args.name}.json"
     out.write_text(json.dumps({"name": args.name, "keywords": args.keywords, "closed": CLOSED, "lexemes": items},
