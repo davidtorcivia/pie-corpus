@@ -15,7 +15,7 @@
 | 5 Tier 2 back-projection | — | ≥300 lines, ≥8 clusters + adversarial review |
 | 6 Tier 3 / 3b synthetic | **scaling**: b001 and b002 (250 each, Sonnet) passed all gates; reviews 4% wrong each (docs/audits/tier3-b001-review.md, tier3-b002-review.md). Review fixes applied (s-stem routing from reflexes, i-stem LOC/GEN, slice gates for derived glosses and accents, valency check, 9 blocked lexemes, brief rules on voice and tense); 239 LIV² root aorists added. Wave 2 running: b003 (hymn/prayer/charm/myth), b004 (law/genealogy/dialogue/epic/proverb), repair of 42 b001/b002 plans rejected by the new rules. Pilot: 148 sentences |
 | 7 Export + benchmark | **scaffolded**: splits, views, task views, leakage guard | splits, task views, bench |
-| 8a Formula discovery | **planned**: daughter-corpus survey running; acceptance = recall of known Watkins/West formulas on a held-out half |
+| 8a Formula discovery | **first run below the bar** (docs/research/8a-formula-search.md): Rigveda + Homer, held-out recall 2/7 (one pair, "great fame"), shuffled baseline 0. Bottleneck is word→PIE mapping (~45% of tokens) and rare formulas; next: fuller lemma↔reflex tables, a third corpus, syntactic agreement |
 | 8b Laryngeal backtest | **planned**: pre-Hittite cognate sets, non-LLM model, shuffled baseline |
 
 ## Dashboard
