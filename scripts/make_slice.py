@@ -49,13 +49,16 @@ def main() -> int:
     ap.add_argument("--keywords", nargs="*", default=[])
     ap.add_argument("--size", type=int, default=220)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--derived", action="store_true", help="include lexemes with approximate derived glosses")
     args = ap.parse_args()
     lx = Lexicon.load()
     rng = random.Random(args.seed)
-    pool = [i for i, r in lx.specs.items() if r.get("usable") and lx.entries[i]["meaning"]]
+    ap_derived = args.derived
+    pool = [i for i, r in lx.specs.items() if r.get("usable") and
+            (lx.entries[i]["meaning"] or (ap_derived and i in lx.derived))]
 
     def hits(i, words):
-        g = " " + re.sub(r"[^a-z]+", " ", lx.entries[i]["meaning"][0].lower()) + " "
+        g = " " + re.sub(r"[^a-z]+", " ", (lx.meaning(i)[0] or "").lower()) + " "
         return any(f" {w} " in g for w in words)
 
     chosen = [i for i in pool if hits(i, args.keywords)]
@@ -66,7 +69,10 @@ def main() -> int:
     items = []
     for i in chosen[: max(args.size, len(chosen))]:
         e, r = lx.entries[i], lx.specs[i]
-        item = {"lex_id": i, "form": e["form"], "gloss": e["meaning"][0][:80], "family": r["family"]}
+        gl, src = lx.meaning(i)
+        item = {"lex_id": i, "form": e["form"], "gloss": gl[:90], "family": r["family"]}
+        if src == "derived":
+            item["gloss_approximate"] = True   # root meaning + suffix function, not a dictionary gloss
         if r["family"] == "noun":
             item["gender"] = lx.gender(i)
         if r["family"] == "verb":

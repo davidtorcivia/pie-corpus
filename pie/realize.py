@@ -64,6 +64,7 @@ class Lexicon:
     entries: dict
     specs: dict
     closed: dict
+    derived: dict = field(default_factory=dict)     # approximate glosses (pie/glosses.py)
     _cache: dict = field(default_factory=dict)
 
     @classmethod
@@ -78,14 +79,30 @@ class Lexicon:
             r = json.loads(x)
             specs[r["id"]] = r
         closed = json.loads((ROOT / "data/morph/closed_class.json").read_text("utf-8"))
-        return cls(lex, specs, closed)
+        derived = {}
+        p = ROOT / "data/lexicon/derived_glosses.jsonl"
+        if p.exists():
+            for x in p.read_text("utf-8").splitlines():
+                d = json.loads(x)
+                derived[d["id"]] = d["gloss"]
+        return cls(lex, specs, closed, derived)
 
     def gloss(self, lex_id: str) -> str:
         if lex_id.startswith("closed:"):
             return lex_id.split(":", 1)[1]
         m = self.entries[lex_id]["meaning"]
+        if not m and lex_id in self.derived:      # "to bend [-tus: action noun]" → bend.ACTN
+            g = self.derived[lex_id].split("[")[0].split(",")[0].strip()
+            return g.removeprefix("to ").replace(" ", ".") + "~"
         g = (m[0] if m else self.entries[lex_id]["form"]).split(",")[0].split(";")[0].strip()
         return g.removeprefix("to ").replace(" ", ".")
+
+    def meaning(self, lex_id: str) -> tuple[str | None, str]:
+        """(gloss, source): Wiktionary gloss, or the approximate derived one."""
+        m = self.entries[lex_id]["meaning"]
+        if m:
+            return m[0], "wiktionary"
+        return self.derived.get(lex_id), "derived"
 
     def gender(self, lex_id: str) -> str:
         """Lexicon gender first: spec gender defaults to m for athematic table
