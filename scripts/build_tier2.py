@@ -25,7 +25,7 @@ from pathlib import Path
 from pie.meter import measure
 from pie.realize import Lexicon, check_plan, realize
 from pie.translit import to_ascii
-from pie.validate import load_index, validate_text
+from pie.validate import index_plan_compounds, load_index, validate_text
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -140,6 +140,7 @@ def main() -> int:
             continue
         seen_parallels[par] = p.get("proj_id")
         r = realize(p["plan"], lx)
+        index_plan_compounds(ix, p["plan"])     # compounds are open-ended: indexed per plan
         v = validate_text(r["pie"], ix)
         # 'secure' is the planner's claim; keep only lexemes whose reflexes really stand in the cited
         # parallel passages of >= 2 branches (tier2 review: secure_share was unreliable)

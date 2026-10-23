@@ -13,6 +13,7 @@ import re
 import sys
 from pathlib import Path
 
+from pie.compound import CompoundError, resolve as resolve_compound
 from pie.phon import has_accent, parse
 from pie.realize import Lexicon
 
@@ -81,7 +82,20 @@ CLOSED = {
     "closed:interrogative_kwo": "who? which? (m/f/n by head)",
     "closed:interrogative_kwi": "who? what? (kʷís, kʷíd)",
     "closed:indefinite_kwi": "anyone, anything; with neg 'no one, nothing' (enclitic kʷis, kʷid)",
+    "compound": ("compound adjective (bahuvrihi) 'having (a) F S' or noun (determinative): {\"lex_id\": \"compound\", "
+                 "\"compound\": {\"first\": F, \"second\": S, \"type\": \"bahuvrihi\"|\"determinative\"}}; F = "
+                 "closed:prefix/h1su 'good', closed:prefix/dus 'bad', closed:prefix/n 'un-, -less', closed:prefix/sm "
+                 "'one, same', closed:numerals/2|3|4, or a thematic/u-stem adjective or a noun; S = a noun with "
+                 "compound_second: true (h1su + ḱléwos = h₁suḱléwēs 'of good fame')"),
 }
+
+
+def _compound_second(lex_id: str, lx) -> bool:
+    try:
+        resolve_compound({"first": "closed:prefix/dus", "second": lex_id, "type": "bahuvrihi"}, lx)
+        return True
+    except CompoundError:
+        return False
 
 
 def verb_features(cells: dict) -> list[str]:
@@ -198,6 +212,8 @@ def main() -> int:
             item["gloss_approximate"] = True   # root meaning + suffix function, not a dictionary gloss
         if r["family"] == "noun":
             item["gender"] = lx.gender(i)
+            if _compound_second(i, lx):
+                item["compound_second"] = True     # s-stem neuter or thematic: a bahuvrihi second member
         item["attested_in"] = attested(i)
         if r["family"] == "verb":
             feats = verb_features(lx.cells(i))

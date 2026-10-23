@@ -17,6 +17,11 @@ laryngeal notation, and coverage without tiers would be meaningless:
 
 Clitics (-kʷe, -wē, -ge, -de, -r) and the augment (h₁e-/é-) are split off
 when the whole token fails.
+
+Compounds (pie.compound) are open-ended, so they are not pre-indexed: a plan's
+compounds are added with index_plan_compounds(ix, plan) (or ix.add_compound(c))
+before its text is validated. The cells come from the same function the
+realizer uses, so a realized compound validates at the exact tier.
 """
 
 from __future__ import annotations
@@ -111,6 +116,10 @@ class FormIndex:
         """convention=None indexes both conventions with alternatives (normal use);
         "handbook" or "wiktionary" indexes that convention alone (for comparing them)."""
         self.lex = {e["id"]: e for e in lexicon}
+        self.specs = {r["id"]: r for r in specs}
+        self.closed = closed
+        self._lx = None                  # a pie.realize.Lexicon view, built for compounds on demand
+        self._compounds: set[str] = set()
         self.convention = convention
         self.idx: dict[str, dict[str, list[Analysis]]] = {t: collections.defaultdict(list) for t in TIERS}
         self.lemma_forms: dict[str, list[str]] = collections.defaultdict(list)   # for miss classification
@@ -164,6 +173,27 @@ class FormIndex:
             for f in forms:
                 self._add(f, Analysis(r["id"], root, feat, src, g or e.get("gender")))
 
+    def add_compound(self, c: dict) -> str | None:
+        """Index every cell of one compound ({first, second, type}); returns its lex_id, or None
+        if the engine cannot build it (check_plan reports why)."""
+        from .compound import CompoundError, resolve
+        from .realize import Lexicon
+        if self._lx is None:
+            self._lx = Lexicon(self.lex, self.specs, self.closed)
+        try:
+            cmp = resolve(c, self._lx)
+        except CompoundError:
+            return None
+        if cmp.lex_id in self._compounds:
+            return cmp.lex_id
+        self._compounds.add(cmp.lex_id)
+        root = self.lex.get(cmp.second, {}).get("root_id") or self.lex.get(cmp.first, {}).get("root_id")
+        for g in (("m", "f", "n") if cmp.ctype == "bahuvrihi" else (cmp.head_gender,)):
+            for feat, forms in cmp.cells(g if cmp.ctype == "bahuvrihi" else None).items():
+                for f in forms:
+                    self._add(f, Analysis(cmp.lex_id, root, feat, "engine:compound", g))
+        return cmp.lex_id
+
     def add_table_cells(self, paradigms: list[dict]) -> None:
         """Every cell of every clean Wiktionary table, verbatim, including the
         classes the engine does not build yet (middle, subjunctive, optative,
@@ -205,6 +235,18 @@ class FormIndex:
             if hit:
                 return t, hit
         return None, []
+
+
+def index_plan_compounds(ix: FormIndex, plan: dict) -> list[str]:
+    """Add the compounds of a realizer plan (slots with lex_id "compound") to the index."""
+    out = []
+    for cl in plan.get("clauses", []):
+        for s in cl.get("slots", []):
+            if s.get("lex_id") == "compound" and isinstance(s.get("compound"), dict):
+                lid = ix.add_compound(s["compound"])
+                if lid:
+                    out.append(lid)
+    return out
 
 
 def load_index(root: Path = ROOT, convention: str | None = None) -> FormIndex:

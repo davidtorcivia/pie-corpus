@@ -27,6 +27,49 @@ Plan (one sentence):
                 "num": null | "SG|DU|PL"}}]}]}    # set them for pro-drop ("let us go": person 1, num PL, no SUBJ)
 
 `check_plan` lists every problem; `realize` assumes a checked plan.
+
+Compounds (pie/compound.py). A slot may hold a compound built from two lexemes:
+  {"lex_id": "compound", "compound": {"first": F, "second": S, "type": "bahuvrihi" | "determinative"},
+   "role": ..., "head": k, "gender": ...}
+  bahuvrihi       a possessive adjective 'having (a) F S' (Fortson §6.82, Beekes 13.1.4, L&Y §122.2.6): MOD with a
+                  head, PRED, or (with a gender) a noun role, exactly like an adjective. Default type.
+  determinative   a noun 'F S' with S's gender and declension (Ved. rāja-putrá-, kr̥ṣṇa-śakuní-; L&Y §122.2.6,
+                  Beekes viś-páti-): any noun role, not MOD.
+F (first member):
+  closed:prefix/h1su  *h₁su- 'good'     (Fortson §6.86, Ringe 2.4.1; Ved. su-, Gk εὐ-)      unaccented
+  closed:prefix/dus   *dus- 'bad, ill'  (Ringe 2.4.1; Gk δυσ-, Ved. dus-)                   unaccented
+  closed:prefix/n     privative *ń̥- 'un-, -less' (Fortson §7.25)                            accented
+  closed:prefix/sm    *sm̥- 'one, same' (Fortson §7.18: Gk ἀ-δελφός)                         unaccented
+  closed:numerals/2|3|4  *dwi- *tri- *kʷetru- (Fortson §7.18; L&Y)                            unaccented
+  (pie-lex-h1su / pie-lex-dus / pie-lex-n are accepted for the prefixes; prefixes make bahuvrihis only)
+  an adjective lex_id: thematic stem in -o- (néwo-), keeps its accent; u-stem in -u- (h₁wesu-; HeHḱu-, the
+      lexicon's 'swift', i.e. *h₁ōḱu-), unaccented (L&Y's dominant Vedic pattern; West ch. 10 cites 1M-accented
+      vásu-śravas-). Caland -ro- adjectives are rejected: their compound form is -i- (Fortson §6.87, Ringe
+      2.4.2: h₂r̥ǵrós → h₂r̥ǵi-), which the engine does not build (Ved. ugrá-bāhu- keeps -ro-; the books differ).
+  a noun lex_id: thematic (-o-) or i-/u-stem noun, its stem as is (Gk khrūsó-thronos, Ved. bāhú-ojas-).
+S (second member, a noun lex_id):
+  bahuvrihi: an s-stem neuter → the -es- adjective, common gender (Beekes 13.1.2: Gk εὐμενής, Ved. sumánas-;
+      Gk εὐκλεής, Ved. suśrávas-, Illyr. Ves-cleves): m./f. nom. sg. *-ēs, acc. *-esm̥, gen. *-esos,
+      n. *-es (pl. *-ēs or *-esh₂); h₁suḱléwēs, dusménēs, h₁wesuḱléwēs.
+      A thematic noun → a thematic adjective -os/-eh₂/-om: h₁suh₁éḱwos (Ved. suáśva-, Gk εὔιππος; West ch. 4).
+      Other stems are rejected: the books give no general rule (Fortson §6.83 on the o-grade of eu-pátōr).
+  determinative: any usable noun; its paradigm is kept and the first member put in front.
+Accent (bahuvrihi): the Basic Accentuation Principle (Kiparsky & Halle; L&Y §122.3.1–3.2): the leftmost
+  inherently accented member wins and the other loses its accent; with no accent, the leftmost syllable.
+  Unaccented h₁su-/dus-/numerals/u-stems → the second member's accent (Ved. suśrávas-, sumánas-, suáśva-,
+  āśu-héṣas-): h₁suḱléwēs, dusménēs, HeHḱuh₁éḱwos. Accented privative or thematic stem → first-member
+  accent, as L&Y reconstruct *pró-ḱlewes- and *h₂ugró-bʰeh₂ǵʰu- (Gk recessive klutó-toksos; Ringe's
+  *ń̥gʷʰdʰsitos): ń̥h₁eḱwos, néwoh₁eḱwos. The suffix-accented s-stem (*-ḱlewḗs: Clackson *dus-m(e)n-és-, the
+  productive Gk -ḗs, which L&Y call an innovation) and, for the privative, the second-member accent
+  (lexical n̥mr̥tós, Ved. amṛ́ta-) are kept as alternative forms, so texts that write them validate.
+Accent (determinative): the head keeps its accent and the first member loses its own (newodʰéǵʰōm).
+The privative keeps its syllabic n̥ before a laryngeal (Beekes p. 84: Gk νήγρετος < *n̥-h₁gr-etos) and is n̥n- before a
+  true vowel or i/u (L&Y *n̥(n)udro-), rejected before a syllabic r̥ l̥ m̥ n̥; dus- takes any onset; h₁su-, sm̥- and
+  the numerals before a vocalic onset are rejected (no book gives the junction). Forms are written solid (h₁suḱléwēs).
+The word's lex_id is "compound:<type>:<first>+<second>"; its gloss "good+fame". The validator indexes a plan's
+  compounds with pie.validate.index_plan_compounds (same cells), called by realize_plans.py and build_tier2.py. Not supported: root-noun,
+  r/n/i/u/eh₂-stem second members in bahuvrihis (*-pod-, eu-pátōr), consonant-stem first members (wiḱ-,
+  déms-), verbal governing compounds (*ḱlewos-dʰeh₁-, vr̥tra-hán-), Caland -i-, nested compounds.
 """
 
 from __future__ import annotations
@@ -36,6 +79,7 @@ from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
 
+from .compound import CompoundError, resolve as resolve_compound
 from .morph import AdjSpec, NounSpec, VerbSpec, conjugate, decline, decline_adj, decline_participle
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -257,6 +301,9 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                 continue
             if lid.startswith("closed:"):
                 continue
+            if lid == "compound":
+                errs += _check_compound(s, slots, where, lx)
+                continue
             if role == "ADV":
                 if lx.entries.get(lid, {}).get("pos") not in ("adv", "particle", "conj", "prep", "postp"):
                     errs.append(f"{where}: ADV needs an indeclinable (adv/particle) lexeme, {lid} is not one")
@@ -314,9 +361,42 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
     return errs
 
 
+def _check_compound(s: dict, slots: list, where: str, lx: Lexicon) -> list[str]:
+    role = s.get("role")
+    try:
+        cmp = resolve_compound(s.get("compound"), lx)
+    except CompoundError as e:
+        return [f"{where}: {e}"]
+    if role in ("V", "ADV"):
+        return [f"{where}: a compound is a nominal; role {role} needs a verb or an indeclinable"]
+    if s.get("participle") is not None or s.get("dep") is not None:
+        return [f"{where}: a compound slot takes no participle or dep"]
+    if cmp.ctype == "determinative":
+        if role == "MOD":
+            return [f"{where}: a determinative compound is a noun (its head's gender and declension); "
+                    f"use type 'bahuvrihi' for an adjective ('having X')"]
+        return []
+    if role == "MOD":
+        h = s.get("head")
+        if h is None or not (isinstance(h, int) and 0 <= h < len(slots)) or slots[h].get("role") in ("V", "MOD", "ADV"):
+            return [f"{where}: MOD needs a nominal head slot"]
+    elif role != "PRED" and not s.get("gender"):
+        return [f"{where}: a bahuvrihi used as a noun ('the one of good fame') needs a gender (m, f or n)"]
+    return []
+
+
+def _family(s: dict, lx: Lexicon) -> str:
+    if s["lex_id"] == "compound":
+        return "adj" if (s.get("compound") or {}).get("type", "bahuvrihi") == "bahuvrihi" else "noun"
+    return lx.specs[s["lex_id"]]["family"]
+
+
 def _slot_gender(s: dict, lx: Lexicon) -> str:
     if s.get("gender") in ("m", "f", "n"):
         return s["gender"]
+    if s["lex_id"] == "compound":
+        c = s.get("compound") or {}
+        return lx.gender(c["second"]) if c.get("type") == "determinative" and c.get("second") else "m"
     return lx.gender(s["lex_id"]) if not s["lex_id"].startswith("closed:") else "m"
 
 
@@ -353,9 +433,9 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
             # agreement source: a MOD agrees with its head; a predicate adjective with the subject
             if role == "MOD":
                 head = slots[s["head"]]
-            elif role == "PRED" and subj and not lid.startswith("closed:") and lx.specs[lid]["family"] == "adj":
+            elif role == "PRED" and subj and not lid.startswith("closed:") and _family(s, lx) == "adj":
                 head = subj
-            elif role == "PRED" and not subj and not lid.startswith("closed:") and lx.specs[lid]["family"] == "adj" \
+            elif role == "PRED" and not subj and not lid.startswith("closed:") and _family(s, lx) == "adj" \
                     and any(x["role"] == "VOC" for x in slots):
                 # "Sea, you are great": the dropped subject is the addressee (t011 review)
                 head = {**next(x for x in slots if x["role"] == "VOC"), "role": "PRED"}
@@ -371,6 +451,11 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
                 n = "PL"
             g = _slot_gender(head, lx)
             feat = f"{case}.{n}" + (".ENCL" if s.get("enclitic") else "")
+            if lid == "compound":
+                cmp = resolve_compound(s["compound"], lx)
+                form = cmp.cells(g if cmp.ctype == "bahuvrihi" else None)[feat][0]
+                words[i] = Word(form, cmp.lex_id, cmp.gloss(), feat, i)
+                continue
             if lid.startswith("closed:"):
                 form = _closed_form(lx, lid, feat, g)
                 if form is None:

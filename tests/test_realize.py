@@ -289,3 +289,103 @@ def test_anaphoric_has_no_dual():
     errs = check_plan({"english": "x", "clauses": [{"slots": [
         {"lex_id": "closed:anaphoric_i", "role": "SUBJ", "gender": "m", "num": "DU"}, V(SEE)]}]})
     assert errs
+
+
+# --- compounds (pie/compound.py) ----------------------------------------------------------
+
+FAME, MIND, MAN = "pie-lex-kjlewos", "pie-lex-menos", "pie-lex-h2nexr"
+
+
+def _cmp(first, second, type_="bahuvrihi", **slot):
+    return {"lex_id": "compound", "compound": {"first": first, "second": second, "type": type_}, **slot}
+
+
+def _man_plan(compound, man_role="SUBJ"):
+    return {"english": "x", "clauses": [{"slots": [
+        {"lex_id": MAN, "role": man_role}, {**compound, "role": "MOD", "head": 0},
+        {"lex_id": "pie-lex-wiHros" if man_role == "OBJ" else "closed:anaphoric_i",
+         "role": "SUBJ" if man_role == "OBJ" else "OBJ", "gender": "m"}, V(SEE)]}]}
+
+
+def test_h1su_klewes_nominative_and_accusative():
+    # *h₁su-ḱléwes- 'having good fame' (Ved. suśrávas-, Gk εὐκλεής): s-stem adjective, 2M accent (BAP)
+    from pie.realize import check_plan
+    p = _man_plan(_cmp("closed:prefix/h1su", FAME))
+    assert check_plan(p, _lx()) == []
+    assert R(p)["pie"].startswith("h₁suḱléwēs h₂nḗr ")
+    r = R(_man_plan(_cmp("closed:prefix/h1su", FAME), man_role="OBJ"))
+    assert "h₁suḱléwesm̥ h₂nérm̥" in r["pie"]
+    w = next(w for w in r["words"] if w["lex_id"].startswith("compound:"))
+    assert w["lex_id"] == "compound:bahuvrihi:closed:prefix/h1su+pie-lex-kjlewos" and w["features"] == "ACC.SG"
+    # common gender: the feminine is the masculine (Gk εὐκλεής f.), the neuter in -es
+    from pie.compound import resolve
+    c = resolve({"first": "pie-lex-h1su", "second": FAME}, _lx())
+    assert c.cells("f")["NOM.SG"][0] == "h₁suḱléwēs" and c.cells("n")["NOM.SG"][0] == "h₁suḱléwes"
+    assert c.cells("m")["GEN.SG"][0] == "h₁suḱléwesos"
+    assert "h₁suḱlewḗs" in c.cells("m")["NOM.SG"]          # suffix-accented alternative (Gk -ḗs) is recognized
+
+
+def test_dus_compound_is_common_gender_and_matches_the_lexical_word():
+    r = R({"english": "The daughter is ill-minded.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-dhugh2texr", "role": "SUBJ"}, _cmp("closed:prefix/dus", MIND, role="PRED"),
+        V("pie-lex-h1esti")]}]})
+    assert r["pie"] == "dʰugh₂tḗr dusménēs h₁ésti."
+    # the lexicon's (unaccented) dusmenēs agrees cell for cell once accents are removed
+    from pie.compound import resolve
+    from pie.validate import key
+    lx = _lx()
+    c, lex = resolve({"first": "closed:prefix/dus", "second": MIND}, lx).cells("m"), lx.cells("pie-lex-dusmenexs")
+    for f in ("NOM.SG", "ACC.SG", "GEN.SG", "NOM.PL"):
+        assert key(c[f][0], "noaccent") in {key(x, "noaccent") for x in lex[f]}, f
+
+
+def test_privative_and_thematic_bahuvrihis():
+    from pie.compound import resolve
+    lx = _lx()
+    # privative: accented first member (Ringe *ń̥gʷʰdʰsitos), n̥ stays syllabic before the laryngeal
+    assert resolve({"first": "closed:prefix/n", "second": HORSE}, lx).cells("m")["NOM.SG"][0] == "ń̥h₁eḱwos"
+    assert resolve({"first": "closed:prefix/n", "second": FAME}, lx).cells("m")["NOM.SG"][0] == "ń̥ḱlewēs"
+    # *h₁su-h₁éḱwo- 'having good horses' (Ved. suáśva-, Gk εὔιππος): thematic -os/-eh₂/-om
+    c = resolve({"first": "closed:prefix/h1su", "second": HORSE}, lx)
+    assert [c.cells(g)["NOM.SG"][0] for g in "mfn"] == ["h₁suh₁éḱwos", "h₁suh₁éḱweh₂", "h₁suh₁éḱwom"]
+    # u-stem adjective first member yields the accent (Ved. āśu-héṣas-); thematic one keeps it (ugrá-bāhu-)
+    assert resolve({"first": "pie-lex-HeHkjus", "second": HORSE}, lx).cells("m")["ACC.PL"][0] == "HeHḱuh₁éḱwons"
+    assert resolve({"first": "pie-lex-newos", "second": HORSE}, lx).cells("m")["NOM.SG"][0] == "néwoh₁eḱwos"
+    # determinative: a noun with the head's gender and accent
+    d = resolve({"first": "pie-lex-newos", "second": EARTH, "type": "determinative"}, lx)
+    assert d.head_gender == "f" and d.cells()["ACC.SG"][0] == "newodʰéǵʰōm"
+
+
+def test_check_plan_rejects_unsupported_compounds():
+    from pie.realize import check_plan
+    lx = _lx()
+
+    def errs(compound, **slot):
+        return check_plan(_man_plan({**_cmp(**compound), **slot}), lx)
+
+    assert any("s-stem neuter" in e for e in errs(dict(first="closed:prefix/h1su", second="pie-lex-ph2texr")))
+    assert any("Caland" in e for e in errs(dict(first="pie-lex-h1rudhros", second=HORSE)))
+    assert any("prefix" in e for e in errs(dict(first="closed:prefix/dus", second=HORSE, type_="determinative")))
+    assert any("type" in e for e in errs(dict(first="closed:prefix/dus", second=HORSE, type_="dvandva")))
+    assert any("verb" in e for e in errs(dict(first="closed:prefix/dus", second=SEE)))
+    # a bahuvrihi used as a noun needs a gender; a determinative is not a MOD
+    p = {"english": "x", "clauses": [{"slots": [_cmp("closed:prefix/h1su", FAME, role="SUBJ"), V(SEE)]}]}
+    assert any("gender" in e for e in check_plan(p, lx))
+    assert any("determinative" in e for e in errs(dict(first="pie-lex-newos", second=HORSE, type_="determinative")))
+
+
+def test_compound_text_validates_exactly(ix):
+    from pie.validate import index_plan_compounds, validate_text
+    p = {"english": "The man of good fame sees the men with swift horses; the horseless one is ill-minded.",
+         "clauses": [
+             {"slots": [{"lex_id": MAN, "role": "SUBJ"}, {**_cmp("closed:prefix/h1su", FAME), "role": "MOD", "head": 0},
+                        {"lex_id": "pie-lex-wiHros", "role": "OBJ", "num": "PL"},
+                        {**_cmp("pie-lex-HeHkjus", HORSE), "role": "MOD", "head": 2}, V(SEE)]},
+             {"break": True, "slots": [_cmp("closed:prefix/n", HORSE, role="SUBJ", gender="m"),
+                                       _cmp("closed:prefix/dus", MIND, role="PRED"), V("pie-lex-h1esti")]}]}
+    r = R(p)
+    assert r["pie"] == "h₁suḱléwēs h₂nḗr HeHḱuh₁éḱwons wiHróns spéḱyeti. ń̥h₁eḱwos dusménēs h₁ésti."
+    assert sorted(index_plan_compounds(ix, p)) == sorted({w["lex_id"] for w in r["words"]
+                                                          if w["lex_id"].startswith("compound:")})
+    v = validate_text(r["pie"], ix)
+    assert v["status"] == "pass" and set(v["tiers"]) == {"exact"}, v["bad_forms"]
