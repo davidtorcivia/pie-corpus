@@ -139,7 +139,7 @@ def by_shape(e: dict) -> Classified:
             st = f[:-1]
             if st.endswith(("e", "é")):   # thematic aorist (widét): stem widé-, no ablaut
                 return Classified(VerbSpec(st, None, "pf"), "shape:thematic-aorist", "verb")
-            wk = zero_grade(st)
+            wk = e.get("aorist_weak") or zero_grade(st)      # LIV² prints the weak stem
             return Classified(VerbSpec(st, wk, "pf") if wk else None, "shape:root-aorist", "verb")
         return Classified(None, "unknown:verb-shape", "verb")
 

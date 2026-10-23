@@ -224,6 +224,42 @@ def merge(lexicon: list[dict], entries: list[dict]) -> tuple[list[dict], dict]:
     return new, report
 
 
+_ROOT_AORIST = re.compile(r"^\*([^/?]+?)-?/([^/]+?)-$")
+
+
+def _aorist_lexemes(entries: dict, targets: list, reg, dump_label: str) -> int:
+    """A root aorist lexeme (3sg *bʰéydt, weak stem from LIV) for every certain LIV root
+    aorist (*bʰéi̯d-/bʰid-) whose root has no aorist lexeme yet. Sigmatic and reduplicated
+    aorists are left out (the engine does not build them)."""
+    from .lexicon import slug
+    from .translit import to_ascii
+    has_aor = {e.get("root_id") for e in entries.values() if e["kind"] != "root" and e.get("aspect") == "pf"}
+    n = 0
+    for x, rid in targets:
+        if rid in has_aor:
+            continue
+        st = next((s for s in x.get("stems", []) if (s.get("label") or "").startswith("Aorist")
+                   and not s.get("uncertain")), None)
+        m = _ROOT_AORIST.match((st or {}).get("form") or "")
+        if not m:
+            continue
+        strong, weak = (normalize(h, "liv2").text for h in m.groups())
+        form = strong + "t"
+        if not (is_canonical(form) and is_canonical(weak)) or "-" in strong + weak:
+            continue
+        en = (x.get("meaning_en") or "").strip("'‘’ ")
+        lid = reg.get(f"liv2-aorist|{x['headword_printed']}|{x.get('meaning_de')}", f"pie-lex-{slug(form)}")
+        entries[lid] = {
+            "id": lid, "kind": "word", "form": form, "form_ascii": to_ascii(form), "variants": [], "stems": [],
+            "pos": "verb", "meaning": [en] if en else [], "uncertain": [], "source": "liv2",
+            "source_ref": {"dump": dump_label, "page": x["page"], "stem": st["form"]},
+            "confidence": "entry", "normalized": [], "aspect": "pf", "aorist_weak": weak, "etymon_parts": [],
+            "reflexes": {}, "parents": [rid], "root_link_source": "liv2", "root_id": rid}
+        has_aor.add(rid)
+        n += 1
+    return n
+
+
 def apply(entries: dict[str, dict], liv_records: list[dict], reg, dump_label: str = "LIV² (Rix et al. 2001)") -> dict:
     """Apply data/lexicon/liv2.jsonl to the lexicon being built (pie.lexicon.build).
 
@@ -242,6 +278,7 @@ def apply(entries: dict[str, dict], liv_records: list[dict], reg, dump_label: st
             by_plain.setdefault(_plain(f), []).append(r)
             by_generic.setdefault(vkey(f, "generic-H"), []).append(r)
     rep = {"matched_form": 0, "matched_generic": 0, "new": 0}
+    targets = []                      # (LIV record, root id) for the aorist lexemes below
     for x in liv_records:
         en = (x.get("meaning_en") or "").strip("'‘’ ")
         stems = [s for s in x.get("stems", []) if s.get("label")]
@@ -263,6 +300,7 @@ def apply(entries: dict[str, dict], liv_records: list[dict], reg, dump_label: st
             if aspect and r.get("root_type_source") != "head-template":
                 r["aspect"], r["root_type"], r["root_type_source"] = aspect, "verbal", "liv2"
             rep["matched_form" if how == "form" else "matched_generic"] += 1
+            targets.append((x, r["id"]))
             continue
         rid = reg.get(f"liv2|{x['headword_printed']}|{x.get('meaning_de')}",
                       f"pie-root-{slug(x['root'])}-{gloss_tag(en)}")
@@ -276,6 +314,8 @@ def apply(entries: dict[str, dict], liv_records: list[dict], reg, dump_label: st
             "aspect": aspect, "etymon_parts": [], "reflexes": {}, "root_id": rid, "liv": [{**liv, "match": "new"}],
             "has_verb_derivative": False}
         rep["new"] += 1
+        targets.append((x, rid))
+    rep["aorists"] = _aorist_lexemes(entries, targets, reg, dump_label)
     # A LIV-only root may be a Wiktionary root reconstructed differently (dʰeHbʰ- ~ dʰh₂ebʰ-)
     # or a root LIV deliberately keeps apart (drew- vs dreh₂-). Never merge automatically:
     # link candidates with the same consonant skeleton and a similar gloss.
