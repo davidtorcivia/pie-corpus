@@ -41,20 +41,7 @@
 
 ## Need from David
 
-Ordered by when they are needed. These are all in copyright with no legitimate full text online, so I won't go looking for pirated copies. Put PDFs or EPUBs in `raw/books/` (gitignored). A text layer is best, but plain scans are fine (I'll OCR them).
-
-| # | Book | Needed for | Which parts |
-|---|---|---|---|
-| 1 | **LIV²**: Rix et al., *Lexikon der indogermanischen Verben*, 2nd ed. (2001) | Phase 1 (verbal root class/aspect) | Whole book; the entries are the point. Wiktionary cites LIV for some roots, which is only a partial stopgap. |
-| 2 | **Fortson**, *Indo-European Language and Culture*, 2nd ed. (2010) | Phase 2 (paradigms), Phase 1 spot check | The PIE morphology chapters (the paradigm tables; PLAN cites ch. 6–7), plus its sample text. |
-| 3 | **Ringe**, *From Proto-Indo-European to Proto-Germanic*, 2nd ed. (2017) | Phase 2 paradigms, Phase 3b Germanic sound laws | Ch. 2 (PIE) and ch. 3 (PIE → PGmc). |
-| 4 | **Mallory & Adams**, *The Oxford Introduction to Proto-Indo-European and the Proto-Indo-European World* (2006) | Phase 1 spot check, vocabulary by semantic field | Whole book. |
-| 5 | **Watkins**, *How to Kill a Dragon* (1995) | Phases 4–5 (formulas, the dragon-slaying cluster) | Whole book, especially the formula chapters and the index of formulas. |
-| 6 | **West**, *Indo-European Poetry and Myth* (2007) | Phases 4–5, themes table | You have this one. I need it as a PDF or scan. |
-
-Nice to have (lower priority): Schmitt, *Dichtung und Dichtersprache in indogermanischer Zeit* (1967); Beekes, *Comparative Indo-European Linguistics* (2nd ed. 2011), as a second paradigm source; Byrd, *The Indo-European Syllable* (2015), for the meter syllabifier's rules; Lehmann & Zgusta (1979), "Schleicher's tale after a century" (Festschrift Szemerényi), if it isn't transcribed reliably online.
-
-**I'll find these myself:** the kaikki.org PIE dump; Byrd's fable (2013) and *King and the God*; Kortlandt (2007; on his website); Schleicher (1868, public domain); other fable/King versions as transcribed in secondary sources (verified against originals where possible); and the public-domain daughter texts for Tier 2 (Rigveda van Nooten–Holland, Geldner's Avesta, Homer, Neckel's Edda, Whitney's AV).
+**Books received 2026-10-23** (in `raw/books/`, gitignored; text extracted by `scripts/extract_books.py`): Fortson, Ringe, Watkins, West, Mallory & Adams (EPUB/PDF, usable text layers); LIV² (image-only quality: its OCR garbles roots, so it will be read from page images; **on hold while David looks for another copy**). In progress: Fortson paradigm verification, Watkins and West formulas and themes, the M&A 50-entry spot check.
 
 ## Phase 1 notes
 

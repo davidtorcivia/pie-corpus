@@ -115,7 +115,7 @@ RULES: dict[str, Rule] = {
         Rule("G-NFC", "Unicode NFC", lambda s: unicodedata.normalize("NFC", s)),
         # --- profile -------------------------------------------------------
         Rule("P-ASP-PLAIN-H", "plain h after b d g (with any palatal mark or ʷ), not a laryngeal → ʰ (Mallory–Adams style *bher-)",
-             _nfd(_sub("([bdg][\u0300-\u036f]*" + LAB + "?)h(?![₁₂₃ₓ\u2090₄])", "\\1" + ASP))),
+             _nfd(_sub("([bdg][\u0300-\u036f]*" + LAB + "?)h(?![₁₂₃ₓ\u2090₄123x])", "\\1" + ASP))),
         Rule("P-LAB-W-AFTER-K", "plain k g followed by w is a labiovelar (Hirt/older *kw-) → kʷ gʷ",
              _sub("([kg])w", "\\1" + LAB)),
         Rule("P-SCHWA", "ə (schwa indogermanicum) → H (generic laryngeal)",
@@ -128,6 +128,14 @@ RULES: dict[str, Rule] = {
              _sub("(?<![bdgǵʷ\u0301])h(?![₁₂₃ₓʰ123])", "H")),
         Rule("P-H4", "h₄ and hₐ (Adams's fourth / a-coloring laryngeal) → H",
              _sub("[hH][₄\u2090]", "H")),
+        Rule("P-CARET-SUP", "superscript written with a caret (EPUB <sup> flattened): g^w → gʷ, b^h → bʰ",
+             lambda s: s.replace("^w", LAB).replace("^h", ASP)),
+        Rule("P-HX-ASCII", "ASCII hx (laryngeal of unknown color) → H", _sub("[hH]x", "H")),
+        Rule("P-SPACING-RING", "spacing ring after a resonant (r˚ l˚ m˚ n˚) → syllabic (r̥ l̥ m̥ n̥)",
+             _sub("([rlmn])[\u02da\u00b0]", "\\1" + RING)),
+        Rule("P-SPACING-DIACRITICS", "spacing macron/acute after a vowel or resonant (e¯´ → ḗ, e´ → é)",
+             lambda s: re.sub("([aeiourlmn\u0325]+?)([\u00af\u00b4]+)",
+                              lambda m: m[1] + m[2].replace("\u00af", MACRON).replace("\u00b4", ACUTE), s)),
         Rule("P-DASH", "em/en dash used as punctuation → comma",
              lambda s: re.sub(r"\s*[—–]\s*", ", ", s)),
     ]
@@ -158,6 +166,11 @@ PROFILES: dict[str, list[str]] = {
     "adams-1997": _PRE + ["P-H4", "P-ASP-PLAIN-H"] + _GENERIC,
     "luhr-2008": _PRE + ["P-J-Y", "P-APOS-PAL"] + _GENERIC,
     "voyles-barrack-2009": _PRE + ["P-J-Y"] + _GENERIC,
+    # Reference books (raw/books/); digits and hx are resolved before plain-h aspiration
+    "fortson": _PRE + ["P-CARET-SUP", "G-LAR-DIGIT", "P-ASP-PLAIN-H"] + _GENERIC,
+    "mallory-adams": _PRE + ["P-HX-ASCII", "G-LAR-DIGIT", "P-ASP-PLAIN-H", "P-SCHWA"] + _GENERIC,
+    "west": _PRE + ["P-SPACING-RING"] + _GENERIC,
+    "ringe": _PRE + ["P-SPACING-DIACRITICS", "P-SPACING-RING", "G-LAR-DIGIT", "P-ASP-PLAIN-H"] + _GENERIC,
 }
 
 

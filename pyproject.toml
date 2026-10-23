@@ -6,7 +6,10 @@ requires-python = ">=3.12"
 dependencies = []
 
 [dependency-groups]
-dev = ["pytest>=8"]
+dev = [
+    "pymupdf>=2.0",
+    "pytest>=8",
+]
 
 [build-system]
 requires = ["hatchling"]

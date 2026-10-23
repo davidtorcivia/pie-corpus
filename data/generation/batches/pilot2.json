@@ -1,0 +1,45 @@
+{
+ "plans": 150,
+ "realized": 142,
+ "exact_pass": 142,
+ "rejected": 8,
+ "reject_rate": 0.053,
+ "distinct_roots": 75,
+ "roots_per_sentence": 0.528,
+ "distinct_lexemes": 150,
+ "max_lexeme_uses": 17,
+ "most_used": [
+  [
+   "pie-lex-h3rexgjs",
+   17
+  ],
+  [
+   "pie-lex-ghostis",
+   12
+  ],
+  [
+   "pie-lex-wlkwos",
+   11
+  ],
+  [
+   "pie-lex-h2owis",
+   10
+  ],
+  [
+   "pie-lex-ghostipotis",
+   10
+  ]
+ ],
+ "dup_within": 0,
+ "dup_across_batches": 0,
+ "tokens": 566,
+ "words_per_sentence": 3.93,
+ "gates": {
+  "reject_rate<=0.10": true,
+  "max_lexeme_uses<=6": false,
+  "roots_per_sentence>=0.35": true,
+  "duplicates<=2%": true,
+  "all_exact": true
+ },
+ "gate": "FAIL"
+}

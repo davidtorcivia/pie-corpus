@@ -82,6 +82,10 @@ CLI: `uv run python -I scripts/translit.py {to-ascii|to-unicode|normalize|check}
 | G-MARK-ORDER | acute+macron → macron+acute | é̄ → ḗ | invisible difference, distinct strings | P0 |
 | G-HOMOGLYPH | Greek/Cyrillic look-alikes → Latin (Greek ο α ε ι υ; Cyrillic а е о р с у х і ј) | *mṛh₂-ό-* (Greek ό) → mr̥h₂-ó-; Cyrillic е in *ǵʰеydʰis* | found in the Wiktionary dump (3 forms); only PIE fields are normalized, so Greek cognate text is never touched | P1 |
 | G-LAR-RING | ring below on a laryngeal → plain | h̥₁ → h₁ | Wiktionary marks vocalized laryngeals this way (6 forms). Syllabicity is predictable from context, and the meter module re-derives it, so dropping the mark loses no information we keep | P1 |
+| P-CARET-SUP | `^w` `^h` (EPUB superscript flattened by our extractor) → ʷ ʰ | g^wōm → gʷōm | Fortson EPUB | books |
+| P-HX-ASCII | ASCII `hx` → H | bherhxĝos → bʰerHǵos | Mallory & Adams | books |
+| P-SPACING-RING | spacing ring ˚ after r l m n → ring below | pl˚th₂wī → pl̥th₂wī | West EPUB | books |
+| P-SPACING-DIACRITICS | spacing macron/acute after the nucleus → combining | ph2te¯´r → ph₂tḗr | Ringe PDF text | books |
 | P-ASP-PLAIN-H | plain h after b d g ǵ gʷ, not followed by a subscript → ʰ | bher- → bʰer-; *dhugh₂tḗr* → dʰugh₂tḗr (g+h₂ kept) | only for sources writing aspirates as `bh` and laryngeals with subscripts (Mallory–Adams style) | P0 |
 | P-LAB-W-AFTER-K | plain k g + w → kʷ gʷ | kwis → kʷis | only for sources writing labiovelars as `kw`; would corrupt real k+w | P0 (defined, no profile yet) |
 | P-SCHWA | ə → H | pəter → pHter | schwa indogermanicum ≈ vocalized laryngeal, color unknown; source-specific (Hirt) | P0 (defined, no profile yet) |
@@ -96,6 +100,7 @@ CLI: `uv run python -I scripts/translit.py {to-ascii|to-unicode|normalize|check}
 | `default`, `wiktionary` | generic only | Wiktionary, modern sources in standard notation |
 | `plain-h-aspirates` | P-ASP-PLAIN-H + generic | Mallory & Adams, similar typography |
 | `schleicher-1868` | P-V-W, P-J-Y + generic | Schleicher's fable |
+| `fortson`, `mallory-adams`, `west`, `ringe` | per-book rules above, with laryngeal digits and *hx* resolved before plain-*h* aspiration (so *dhugh2* keeps g + h₂) | reference books (raw/books/) |
 
 Profiles for Hirt (ə, labiovelars), Lehmann & Zgusta, and Kortlandt (glottalic stops) will be added in Phase 4, when the actual texts are in hand. The glottalic mapping (Kortlandt's notation ↔ the traditional series) is a notational correspondence, so it qualifies as normalization. Its table will be logged here.
 

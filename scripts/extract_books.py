@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+"""Extract text from the supplied books into raw/books/text/<slug>/ (gitignored).
+
+  uv run python -I scripts/extract_books.py
+
+EPUB: one .txt per spine document (chapter), from XHTML via the stdlib.
+PDF: one .txt per page ("p0001.txt", the PDF page index, which is not the
+printed page number), via PyMuPDF. The book files are untrusted data:
+nothing in them is executed, and the extracted text never leaves raw/.
+"""
+
+import html
+import re
+import sys
+import zipfile
+from html.parser import HTMLParser
+from pathlib import Path
+
+import pymupdf
+
+ROOT = Path(__file__).resolve().parent.parent
+BOOKS = ROOT / "raw" / "books"
+SLUGS = {"Rix": "liv2", "Fortson": "fortson", "Ringe": "ringe", "Watkins": "watkins",
+         "Mallory": "mallory-adams", "West": "west"}
+
+
+class _Text(HTMLParser):
+    BLOCK = {"p", "div", "br", "h1", "h2", "h3", "h4", "li", "tr", "td", "th", "table", "section", "blockquote"}
+
+    def __init__(self):
+        super().__init__()
+        self.out, self.skip = [], 0
+
+    def handle_starttag(self, tag, attrs):
+        if tag in ("script", "style"):
+            self.skip += 1
+        if tag in self.BLOCK:
+            self.out.append("\n")
+        if tag == "sup":
+            self.out.append("^")
+
+    def handle_endtag(self, tag):
+        if tag in ("script", "style"):
+            self.skip -= 1
+        if tag in self.BLOCK:
+            self.out.append("\n")
+
+    def handle_data(self, data):
+        if not self.skip:
+            self.out.append(data)
+
+
+def epub(path: Path, out: Path) -> int:
+    with zipfile.ZipFile(path) as z:
+        opf_name = re.search(r'full-path="([^"]+)"', z.read("META-INF/container.xml").decode())[1]
+        opf = z.read(opf_name).decode("utf-8", "replace")
+        base = opf_name.rsplit("/", 1)[0] + "/" if "/" in opf_name else ""
+        items = dict(re.findall(r'<item [^>]*?id="([^"]+)"[^>]*?href="([^"]+)"', opf))
+        items.update({i: h for h, i in re.findall(r'<item [^>]*?href="([^"]+)"[^>]*?id="([^"]+)"', opf)})
+        spine = re.findall(r'<itemref [^>]*?idref="([^"]+)"', opf)
+        n = 0
+        for k, idref in enumerate(spine):
+            href = items.get(idref)
+            if not href:
+                continue
+            p = _Text()
+            p.feed(z.read(base + href).decode("utf-8", "replace"))
+            text = re.sub(r"\n\s*\n+", "\n\n", html.unescape("".join(p.out))).strip()
+            if text:
+                (out / f"{k:03d}_{Path(href).stem}.txt").write_text(text + "\n", "utf-8")
+                n += 1
+    return n
+
+
+def pdf(path: Path, out: Path) -> int:
+    doc = pymupdf.open(path)
+    for i, page in enumerate(doc):
+        (out / f"p{i + 1:04d}.txt").write_text(page.get_text("text"), "utf-8")
+    return len(doc)
+
+
+def main() -> int:
+    for f in sorted(BOOKS.iterdir()):
+        if f.suffix not in (".pdf", ".epub"):
+            continue
+        slug = next((v for k, v in SLUGS.items() if k in f.name), f.stem[:20])
+        if slug == "west" and f.suffix == ".pdf":
+            slug = "west-pdf"
+        out = BOOKS / "text" / slug
+        out.mkdir(parents=True, exist_ok=True)
+        n = epub(f, out) if f.suffix == ".epub" else pdf(f, out)
+        chars = sum(len(p.read_text("utf-8")) for p in out.glob("*.txt"))
+        print(f"{slug:15} {f.suffix:5} {n:4} parts  {chars:9,} chars")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

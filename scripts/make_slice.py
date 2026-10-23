@@ -67,8 +67,21 @@ def main() -> int:
         g = " " + re.sub(r"[^a-z]+", " ", (lx.meaning(i)[0] or "").lower()) + " "
         return any(f" {w} " in g for w in words)
 
-    chosen = sorted((i for i in pool if hits(i, args.keywords)), key=lambda i: -attested(i))
-    chosen += [i for i in pool if lx.specs[i]["family"] == "verb" and hits(i, CORE_VERBS) and i not in chosen]
+    # keyword hits: dictionary-glossed first, then well attested; a derived-gloss
+    # lexeme only if its (root, family) isn't represented yet (a root's many
+    # derived presents would otherwise flood the slice)
+    hits_all = sorted((i for i in pool if hits(i, args.keywords)),
+                      key=lambda i: (lx.meaning(i)[1] != "wiktionary", -attested(i)))
+    chosen, seen_rf = [], set()
+    for i in hits_all:
+        rf = (lx.entries[i].get("root_id"), lx.specs[i]["family"])
+        if lx.meaning(i)[1] == "derived" and rf in seen_rf:
+            continue
+        seen_rf.add(rf)
+        chosen.append(i)
+    chosen = chosen[: args.size]
+    chosen += [i for i in pool if lx.specs[i]["family"] == "verb" and hits(i, CORE_VERBS) and i not in chosen
+               and lx.meaning(i)[1] == "wiktionary"]
     rest = [i for i in pool if i not in chosen]
     rng.shuffle(rest)
     chosen += rest[: max(0, args.size - len(chosen))]
