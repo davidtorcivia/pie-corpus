@@ -55,7 +55,8 @@ GRC_LANGS = ("Ancient Greek", "Epic Greek", "Homeric Greek", "Ionic Greek", "Att
 GRC_BRIDGE = ("Proto-Hellenic",)
 RV_CONTENT = {"nominal stem", "root"}
 HOM_CONTENT = set("nva")          # AGDT postag[0]: noun, verb, adjective
-TIERS = ("direct", "roots", "surface", "bridge")
+RV_TIERS = ("direct", "roots", "surface", "bridge")
+HOM_TIERS = ("direct", "unaccented", "surface", "bridge")
 MAX_GROUPS = 3                    # a lemma mapping to more root groups than this is dropped as ambiguous
 
 
@@ -127,10 +128,20 @@ def grc_roman(s: str) -> str:
 
 
 def pie_key(s: str) -> str:
-    """PIE comparison key: no accents, vowel length, hyphens or asterisks."""
-    s = unicodedata.normalize("NFD", s.lower())
-    s = "".join(c for c in s if c not in "́̀̄")
-    return re.sub(r"[*\-\s()]", "", unicodedata.normalize("NFC", s))
+    """PIE comparison key: no accents (ḱ ǵ keep theirs), vowel length,
+    hyphens or asterisks."""
+    out: list[str] = []
+    base, syllabic = "", False
+    for ch in unicodedata.normalize("NFD", s.lower()):
+        if unicodedata.combining(ch):
+            if ch == "̄" or (ch in _ACC and (base in "aeiouy" or syllabic)):
+                continue
+            syllabic = syllabic or ch == "̥"
+            out.append(ch)
+            continue
+        base, syllabic = ch, False
+        out.append(ch)
+    return re.sub(r"[*\-\s()]", "", unicodedata.normalize("NFC", "".join(out)))
 
 
 # ---------------------------------------------------------------- Sanskrit verb root table
@@ -351,10 +362,11 @@ def _reflex_forms(e: dict, langs, roman: bool) -> list[str]:
 
 
 def _finish(cands: dict[str, dict[str, set]], lemmas: dict[str, list[str]]) -> Mapping:
-    """cands: tier → lemma-key → groups; lemmas: corpus lemma → its keys."""
+    """cands: tier → lemma-key → groups, in priority order; lemmas: corpus
+    lemma → its keys."""
     m = Mapping()
     for lemma, keys in lemmas.items():
-        for tier in TIERS:
+        for tier in cands:
             g = set().union(*(cands[tier].get(k, set()) for k in keys)) if keys else set()
             if g:
                 if len(g) > MAX_GROUPS:
@@ -387,7 +399,7 @@ def build_rv_mapping(lexicon: list[dict], tokens: list[Token]) -> Mapping:
     all_keys = {k for ks in lemmas.values() for k in ks}
     root_keys = {k for lem, ks in lemmas.items() if lem.startswith("√") for k in ks}
     surf = _surface_index(tokens, skt_key)
-    cands = {t: collections.defaultdict(set) for t in TIERS}
+    cands = {t: collections.defaultdict(set) for t in RV_TIERS}
     for e in lexicon:
         g = group_of(e)
         for f in _reflex_forms(e, SKT_LANGS, roman=True):
@@ -414,12 +426,12 @@ def build_homer_mapping(lexicon: list[dict], tokens: list[Token]) -> Mapping:
     for lem in lemmas:
         roman[grc_roman(lem)].add(lem)
     surf = _surface_index(tokens, lambda s: grc_key(s, accents=False))
-    cands = {t: collections.defaultdict(set) for t in TIERS}
+    cands = {t: collections.defaultdict(set) for t in HOM_TIERS}
     for e in lexicon:
         g = group_of(e)
         for f in _reflex_forms(e, GRC_LANGS, roman=False):
             cands["direct"][grc_key(f)].add(g)
-            cands["roots"]["~" + grc_key(f, accents=False)].add(g)   # unaccented match: second tier
+            cands["unaccented"]["~" + grc_key(f, accents=False)].add(g)
             k = grc_key(f, accents=False)
             if (lem := _majority(surf.get(k, collections.Counter()), k)):
                 cands["surface"][grc_key(lem)].add(g)

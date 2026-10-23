@@ -13,12 +13,14 @@
 | 3b Sound-law checker | **built**: initial-position diagnostics for Skt/Gk/Lat/PGmc | full lexicon run: 5,315 checks, 94.8% pass, 277 warnings (docs/soundlaws.md) |
 | 4 Tier 1 scholarly | **texts collected**: 17 works (14 fable incl. 5 Kortlandt stages, 3 King) from 22 collected copies; 99 lines, 57 canonical (the rest documentary), 71 with English. Formulas wait on Watkins/West | 200–500 cited lines + adversarial review |
 | 5 Tier 2 back-projection | — | ≥300 lines, ≥8 clusters + adversarial review |
-| 6 Tier 3 / 3b synthetic | **scaling**: b001 and b002 (250 plans each, Sonnet) pass all gates, reviews running; **pilot done**: 148 sentences realized; plan reject rate 1.3%; review 31 ok / 14 minor / 5 wrong, with every systematic issue fixed. Scale-up waits on David (question 5) | 1–10M tokens, <10% reject, dedup, audit |
+| 6 Tier 3 / 3b synthetic | **scaling**: b001 and b002 (250 each, Sonnet) passed all gates; reviews 4% wrong each (docs/audits/tier3-b001-review.md, tier3-b002-review.md). Review fixes applied (s-stem routing from reflexes, i-stem LOC/GEN, slice gates for derived glosses and accents, valency check, 9 blocked lexemes, brief rules on voice and tense); 239 LIV² root aorists added. Wave 2 running: b003 (hymn/prayer/charm/myth), b004 (law/genealogy/dialogue/epic/proverb), repair of 42 b001/b002 plans rejected by the new rules. Pilot: 148 sentences |
 | 7 Export + benchmark | **scaffolded**: splits, views, task views, leakage guard | splits, task views, bench |
 | 8a Formula discovery | **planned**: daughter-corpus survey running; acceptance = recall of known Watkins/West formulas on a held-out half |
 | 8b Laryngeal backtest | **planned**: pre-Hittite cognate sets, non-LLM model, shuffled baseline |
 
 ## Dashboard
+
+- **2026-10-23 (night). Wave 2.** Reviews of b001/b002: 4% wrong each, no engine-caused wrong records. Fixes in engine (i-stem *-ēy*/*-eys*, eh₂ LOC *-i*, thematic VOC accent), classifier (reflex evidence for neuter s-stems: Skt *-as*, Gk *-εα*), slices (accent and derived-gloss gates, balanced fill, core nouns, verb valency) and checker. LIV² chunk 11 redone after the image audit; LIV root aorists → 239 new aorist lexemes (usable lexemes 3,719). Pronoun gaps filled from Ringe (60 printed + 84 derived cells). Formulas (Watkins + West, 389) and themes (West, 456). Second book delivery: NIL transcription running (25 chunks of 30 pages, wave 1 of 6 chunks), Beekes/Lundquist–Yates check running. Phase 8: 8a formula search on Rigveda + Homer running; 8b transducer built, design reviewed.
 
 | Metric | Value |
 |---|---|
