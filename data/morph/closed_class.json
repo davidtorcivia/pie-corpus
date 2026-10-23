@@ -16,7 +16,8 @@
         "me"
       ],
       "GEN.SG": [
-        "méne"
+        "méne",
+        "méme"
       ],
       "GEN.SG.ENCL": [
         "moy"
@@ -51,6 +52,16 @@
       ],
       "ABL.PL": [
         "n̥sméd"
+      ],
+      "NOM.DU": [
+        "wé",
+        "weh₁"
+      ],
+      "ACC.DU": [
+        "n̥h₃mé"
+      ],
+      "ACC.DU.ENCL": [
+        "noh₃"
       ]
     },
     "2": {
@@ -84,7 +95,8 @@
         "yū́"
       ],
       "ACC.PL": [
-        "usmé"
+        "usmé",
+        "uswé"
       ],
       "ACC.PL.ENCL": [
         "wos"
@@ -100,6 +112,15 @@
       ],
       "ABL.PL": [
         "usméd"
+      ],
+      "NOM.DU": [
+        "yú"
+      ],
+      "ACC.DU": [
+        "uh₃wé"
+      ],
+      "ACC.DU.ENCL": [
+        "woh₃"
       ]
     },
     "refl": {
@@ -111,6 +132,15 @@
       ],
       "DAT.SG.ENCL": [
         "soy"
+      ],
+      "GEN.SG": [
+        "séwe"
+      ],
+      "GEN.SG.ENCL": [
+        "soy"
+      ],
+      "DAT.SG": [
+        "sébʰye"
       ]
     }
   },
@@ -150,7 +180,8 @@
         "tóms"
       ],
       "GEN.PL": [
-        "tóysōm"
+        "tóysōm",
+        "tóysoHom"
       ],
       "DAT.PL": [
         "tóybʰos",
@@ -165,6 +196,12 @@
       ],
       "INS.PL": [
         "tṓys"
+      ],
+      "NOM.DU": [
+        "tóh₁"
+      ],
+      "ACC.DU": [
+        "tóh₁"
       ]
     },
     "f": {
@@ -196,13 +233,28 @@
         "téh₂ms"
       ],
       "GEN.PL": [
-        "téh₂sōm"
+        "téh₂sōm",
+        "téh₂soHom"
       ],
       "DAT.PL": [
-        "téh₂bʰos"
+        "téh₂bʰos",
+        "téh₂mos"
       ],
       "LOC.PL": [
         "téh₂su"
+      ],
+      "INS.SG": [
+        "téh₂eh₁",
+        "téh₂h₁"
+      ],
+      "ABL.SG": [
+        "tósyeh₂s"
+      ],
+      "INS.PL": [
+        "téh₂bʰi"
+      ],
+      "ABL.PL": [
+        "téh₂mos"
       ]
     },
     "n": {
@@ -217,6 +269,42 @@
       ],
       "ACC.PL": [
         "téh₂"
+      ],
+      "INS.SG": [
+        "tónoh₁"
+      ],
+      "DAT.SG": [
+        "tósmey"
+      ],
+      "ABL.SG": [
+        "tósmead"
+      ],
+      "GEN.SG": [
+        "tósyo"
+      ],
+      "LOC.SG": [
+        "tósmi"
+      ],
+      "NOM.DU": [
+        "tóy"
+      ],
+      "ACC.DU": [
+        "tóy"
+      ],
+      "INS.PL": [
+        "tṓys"
+      ],
+      "DAT.PL": [
+        "tóymos"
+      ],
+      "ABL.PL": [
+        "tóymos"
+      ],
+      "GEN.PL": [
+        "tóysoHom"
+      ],
+      "LOC.PL": [
+        "tóysu"
       ]
     }
   },
@@ -234,6 +322,42 @@
       "ACC.PL": [
         "kʷíns",
         "kʷíms"
+      ],
+      "GEN.SG": [
+        "kʷésyo"
+      ],
+      "ABL.SG": [
+        "kʷósmead"
+      ],
+      "DAT.SG": [
+        "kʷésmōy"
+      ],
+      "LOC.SG": [
+        "kʷésmi"
+      ],
+      "INS.SG": [
+        "kʷónoh₁"
+      ],
+      "GEN.PL": [
+        "kʷóysōm"
+      ],
+      "DAT.PL": [
+        "kʷóybʰos"
+      ],
+      "ABL.PL": [
+        "kʷóybʰos"
+      ],
+      "LOC.PL": [
+        "kʷóysu"
+      ],
+      "INS.PL": [
+        "kʷṓys"
+      ],
+      "NOM.DU": [
+        "kʷóh₁"
+      ],
+      "ACC.DU": [
+        "kʷóh₁"
       ]
     },
     "n": {
@@ -245,6 +369,42 @@
       ],
       "NOM.PL": [
         "kʷíh₂"
+      ],
+      "GEN.SG": [
+        "kʷésyo"
+      ],
+      "INS.SG": [
+        "kʷíh₁"
+      ],
+      "DAT.SG": [
+        "kʷósmey"
+      ],
+      "ABL.SG": [
+        "kʷósmead"
+      ],
+      "LOC.SG": [
+        "kʷósmi"
+      ],
+      "NOM.DU": [
+        "kʷóy"
+      ],
+      "ACC.DU": [
+        "kʷóy"
+      ],
+      "INS.PL": [
+        "kʷṓys"
+      ],
+      "DAT.PL": [
+        "kʷóymos"
+      ],
+      "ABL.PL": [
+        "kʷóymos"
+      ],
+      "GEN.PL": [
+        "kʷóysoHom"
+      ],
+      "LOC.PL": [
+        "kʷóysu"
       ]
     }
   },
@@ -269,6 +429,36 @@
       ],
       "NOM.PL": [
         "kʷóy"
+      ],
+      "ABL.SG": [
+        "kʷósmead"
+      ],
+      "INS.SG": [
+        "kʷónoh₁"
+      ],
+      "ACC.PL": [
+        "kʷóns"
+      ],
+      "GEN.PL": [
+        "kʷóysōm"
+      ],
+      "DAT.PL": [
+        "kʷóybʰos"
+      ],
+      "ABL.PL": [
+        "kʷóybʰos"
+      ],
+      "LOC.PL": [
+        "kʷóysu"
+      ],
+      "INS.PL": [
+        "kʷṓys"
+      ],
+      "NOM.DU": [
+        "kʷóh₁"
+      ],
+      "ACC.DU": [
+        "kʷóh₁"
       ]
     },
     "f": {
@@ -277,6 +467,42 @@
       ],
       "ACC.SG": [
         "kʷéh₂m"
+      ],
+      "GEN.SG": [
+        "kʷósyeh₂s"
+      ],
+      "DAT.SG": [
+        "kʷósyeh₂ey"
+      ],
+      "LOC.SG": [
+        "kʷósyeh₂i"
+      ],
+      "NOM.PL": [
+        "kʷéh₂es"
+      ],
+      "ACC.PL": [
+        "kʷā́s"
+      ],
+      "GEN.PL": [
+        "kʷéh₂sōm"
+      ],
+      "DAT.PL": [
+        "kʷéh₂bʰos"
+      ],
+      "LOC.PL": [
+        "kʷéh₂su"
+      ],
+      "INS.SG": [
+        "kʷéh₂eh₁"
+      ],
+      "ABL.SG": [
+        "kʷósyeh₂s"
+      ],
+      "INS.PL": [
+        "kʷéh₂bʰi"
+      ],
+      "ABL.PL": [
+        "kʷéh₂mos"
       ]
     },
     "n": {
@@ -285,6 +511,48 @@
       ],
       "ACC.SG": [
         "kʷód"
+      ],
+      "NOM.PL": [
+        "kʷéh₂"
+      ],
+      "ACC.PL": [
+        "kʷéh₂"
+      ],
+      "INS.SG": [
+        "kʷónoh₁"
+      ],
+      "DAT.SG": [
+        "kʷósmey"
+      ],
+      "ABL.SG": [
+        "kʷósmead"
+      ],
+      "GEN.SG": [
+        "kʷósyo"
+      ],
+      "LOC.SG": [
+        "kʷósmi"
+      ],
+      "NOM.DU": [
+        "kʷóy"
+      ],
+      "ACC.DU": [
+        "kʷóy"
+      ],
+      "INS.PL": [
+        "kʷṓys"
+      ],
+      "DAT.PL": [
+        "kʷóymos"
+      ],
+      "ABL.PL": [
+        "kʷóymos"
+      ],
+      "GEN.PL": [
+        "kʷóysoHom"
+      ],
+      "LOC.PL": [
+        "kʷóysu"
       ]
     }
   },
@@ -299,10 +567,16 @@
         ],
         "INS.DU": [
           "dwóbʰih₁"
+        ],
+        "ACC.DU": [
+          "dwóh₁"
         ]
       },
       "fn": {
         "NOM.DU": [
+          "dwóyh₁"
+        ],
+        "ACC.DU": [
           "dwóyh₁"
         ]
       }
@@ -322,10 +596,17 @@
           "tróyHom"
         ],
         "DAT.PL": [
-          "tribʰós"
+          "tribʰós",
+          "trimós"
         ],
         "LOC.PL": [
           "trisú"
+        ],
+        "INS.PL": [
+          "tribʰí"
+        ],
+        "ABL.PL": [
+          "trimós"
         ]
       },
       "f": {
@@ -335,11 +616,44 @@
         "ACC.PL": [
           "tisrn̥s",
           "tísr̥ms"
+        ],
+        "INS.PL": [
+          "tisr̥bʰí"
+        ],
+        "DAT.PL": [
+          "tisr̥mós"
+        ],
+        "ABL.PL": [
+          "tisr̥mós"
+        ],
+        "GEN.PL": [
+          "tisróHom"
+        ],
+        "LOC.PL": [
+          "tisr̥sú"
         ]
       },
       "n": {
         "NOM.PL": [
           "tríh₂"
+        ],
+        "ACC.PL": [
+          "tríh₂"
+        ],
+        "INS.PL": [
+          "tribʰí"
+        ],
+        "DAT.PL": [
+          "trimós"
+        ],
+        "ABL.PL": [
+          "trimós"
+        ],
+        "GEN.PL": [
+          "tr̥yóHom"
+        ],
+        "LOC.PL": [
+          "trisú"
         ]
       }
     },
@@ -358,17 +672,63 @@
           "kʷetwr̥óm"
         ],
         "DAT.PL": [
-          "kʷetwr̥bʰós"
+          "kʷetwr̥bʰós",
+          "kʷetwr̥mós"
+        ],
+        "INS.PL": [
+          "kʷetwr̥bʰí"
+        ],
+        "ABL.PL": [
+          "kʷetwr̥mós"
+        ],
+        "LOC.PL": [
+          "kʷetwr̥sú"
         ]
       },
       "f": {
         "NOM.PL": [
           "kʷétesres"
+        ],
+        "ACC.PL": [
+          "kʷétesrn̥s"
+        ],
+        "INS.PL": [
+          "kʷetesr̥bʰí"
+        ],
+        "DAT.PL": [
+          "kʷetesr̥mós"
+        ],
+        "ABL.PL": [
+          "kʷetesr̥mós"
+        ],
+        "GEN.PL": [
+          "kʷetesróHom"
+        ],
+        "LOC.PL": [
+          "kʷetesr̥sú"
         ]
       },
       "n": {
         "NOM.PL": [
           "kʷetwṓr"
+        ],
+        "ACC.PL": [
+          "kʷetwṓr"
+        ],
+        "INS.PL": [
+          "kʷetwr̥bʰí"
+        ],
+        "DAT.PL": [
+          "kʷetwr̥mós"
+        ],
+        "ABL.PL": [
+          "kʷetwr̥mós"
+        ],
+        "GEN.PL": [
+          "kʷeturóHom"
+        ],
+        "LOC.PL": [
+          "kʷetwr̥sú"
         ]
       }
     },
@@ -462,6 +822,18 @@
       ],
       "LOC.PL": [
         "h₁yóysu"
+      ],
+      "ABL.PL": [
+        "h₁yóybʰos"
+      ],
+      "INS.PL": [
+        "h₁yṓys"
+      ],
+      "NOM.DU": [
+        "h₁yóh₁"
+      ],
+      "ACC.DU": [
+        "h₁yóh₁"
       ]
     },
     "f": {
@@ -476,6 +848,36 @@
       ],
       "NOM.PL": [
         "h₁yéh₂es"
+      ],
+      "DAT.SG": [
+        "h₁yósyeh₂ey"
+      ],
+      "LOC.SG": [
+        "h₁yósyeh₂i"
+      ],
+      "ACC.PL": [
+        "h₁yā́s"
+      ],
+      "GEN.PL": [
+        "h₁yéh₂sōm"
+      ],
+      "DAT.PL": [
+        "h₁yéh₂bʰos"
+      ],
+      "LOC.PL": [
+        "h₁yéh₂su"
+      ],
+      "INS.SG": [
+        "h₁yéh₂eh₁"
+      ],
+      "ABL.SG": [
+        "h₁yósyeh₂s"
+      ],
+      "INS.PL": [
+        "h₁yéh₂bʰi"
+      ],
+      "ABL.PL": [
+        "h₁yéh₂mos"
       ]
     },
     "n": {
@@ -487,7 +889,201 @@
       ],
       "NOM.PL": [
         "h₁yéh₂"
+      ],
+      "ACC.PL": [
+        "h₁yéh₂"
+      ],
+      "INS.SG": [
+        "h₁yónoh₁"
+      ],
+      "DAT.SG": [
+        "h₁yósmey"
+      ],
+      "ABL.SG": [
+        "h₁yósmead"
+      ],
+      "GEN.SG": [
+        "h₁yósyo"
+      ],
+      "LOC.SG": [
+        "h₁yósmi"
+      ],
+      "NOM.DU": [
+        "h₁yóy"
+      ],
+      "ACC.DU": [
+        "h₁yóy"
+      ],
+      "INS.PL": [
+        "h₁yṓys"
+      ],
+      "DAT.PL": [
+        "h₁yóymos"
+      ],
+      "ABL.PL": [
+        "h₁yóymos"
+      ],
+      "GEN.PL": [
+        "h₁yóysoHom"
+      ],
+      "LOC.PL": [
+        "h₁yóysu"
       ]
     }
+  },
+  "_refs": {
+    "demonstrative_so/n/INS.SG": "Ringe 2017 §2.3.6(ii) / p. 54 (Ringe marks it '?')",
+    "demonstrative_so/n/DAT.SG": "Ringe 2017 §2.3.6(ii) / p. 54",
+    "demonstrative_so/n/ABL.SG": "Ringe 2017 §2.3.6(ii) / p. 54 (Ringe marks it '?')",
+    "demonstrative_so/n/GEN.SG": "Ringe 2017 §2.3.6(ii) / p. 54; p. 117 ('of that', masc./neut.)",
+    "demonstrative_so/n/LOC.SG": "Ringe 2017 §2.3.6(ii) / p. 54",
+    "demonstrative_so/n/NOM.DU": "Ringe 2017 §2.3.6(ii) / p. 54 (nom.-acc. du.)",
+    "demonstrative_so/n/ACC.DU": "Ringe 2017 §2.3.6(ii) / p. 54 (nom.-acc. du.)",
+    "demonstrative_so/n/INS.PL": "Ringe 2017 §2.3.6(ii) / p. 55",
+    "demonstrative_so/n/DAT.PL": "Ringe 2017 §2.3.6(ii) / p. 55 (dat.-abl.)",
+    "demonstrative_so/n/ABL.PL": "Ringe 2017 §2.3.6(ii) / p. 55 (dat.-abl.)",
+    "demonstrative_so/n/GEN.PL": "Ringe 2017 §2.3.6(ii) / p. 55; Fortson §7.9 gives only the ending *-sōm",
+    "demonstrative_so/n/LOC.PL": "Ringe 2017 §2.3.6(ii) / p. 55",
+    "demonstrative_so/m/NOM.DU": "Ringe 2017 §2.3.6(ii) / p. 54 (nom.-acc. du.)",
+    "demonstrative_so/m/ACC.DU": "Ringe 2017 §2.3.6(ii) / p. 54 (nom.-acc. du.)",
+    "demonstrative_so/m/GEN.PL": "Ringe 2017 §2.3.6(ii) / p. 55 (uncontracted; appended as alternative)",
+    "demonstrative_so/f/INS.SG": "Ringe 2017 §2.3.6(ii) / p. 54 (printed téh₂(e)h₁)",
+    "demonstrative_so/f/ABL.SG": "Ringe 2017 §2.3.6(ii) / p. 54 (abl. = gen.)",
+    "demonstrative_so/f/INS.PL": "Ringe 2017 §2.3.6(ii) / p. 55",
+    "demonstrative_so/f/ABL.PL": "Ringe 2017 §2.3.6(ii) / p. 55 (dat.-abl.)",
+    "demonstrative_so/f/DAT.PL": "Ringe 2017 §2.3.6(ii) / p. 55 (dat.-abl. téh₂mos; appended as alternative)",
+    "demonstrative_so/f/GEN.PL": "Ringe 2017 §2.3.6(ii) / p. 55 (uncontracted; appended as alternative)",
+    "interrogative_kwi/mf/GEN.SG": "Ringe 2017 p. 117 (§3.2.5) and p. 201 (§3.4.4(ii)): gen. sg. of *kʷi- ~ *kʷe- ('whose?'); Fortson §7.9 ending *-eso (OCS česo)",
+    "interrogative_kwi/n/GEN.SG": "Ringe 2017 p. 117 (§3.2.5) and p. 201 (§3.4.4(ii)): gen. sg. of *kʷi- ~ *kʷe- ('whose?'); Fortson §7.9 ending *-eso (OCS česo)",
+    "interrogative_kwi/n/INS.SG": "Fortson 2010 §19.10 (*kʷih₁ instr., > Alb. si, Lat. quī 'how'; printed unaccented, gender not stated)",
+    "personal/1/NOM.DU": "Ringe 2017 §2.3.6(iii) / p. 57; Fortson §7.4 *u̯eh₁",
+    "personal/1/ACC.DU": "Ringe 2017 §2.3.6(iii) / p. 57",
+    "personal/1/ACC.DU.ENCL": "Ringe 2017 §2.3.6(iii) / p. 57",
+    "personal/1/GEN.SG": "Ringe 2017 §2.3.6(iii) / p. 57 (Ringe méme; Fortson §7.4 *mene, primary)",
+    "personal/2/NOM.DU": "Ringe 2017 §2.3.6(iii) / p. 57 (Ringe marks it '?')",
+    "personal/2/ACC.DU": "Ringe 2017 §2.3.6(iii) / p. 57",
+    "personal/2/ACC.DU.ENCL": "Ringe 2017 §2.3.6(iii) / p. 57",
+    "personal/2/ACC.PL": "Ringe 2017 §2.3.6(iii) / p. 57 (Ringe uswé, after Katz); Fortson §7.6 stem *us-me- (primary)",
+    "personal/refl/GEN.SG": "Ringe 2017 §2.3.6(iii) / p. 57; Mallory & Adams 2006 §24.1 *séwe",
+    "personal/refl/GEN.SG.ENCL": "Ringe 2017 §2.3.6(iii) / p. 57",
+    "personal/refl/DAT.SG": "Ringe 2017 §2.3.6(iii) / p. 57",
+    "numerals/2/m/ACC.DU": "Ringe 2017 §2.3.6(i) / p. 53 (direct case = nom.-acc.)",
+    "numerals/2/fn/ACC.DU": "Ringe 2017 §2.3.6(i) / p. 53 (direct case = nom.-acc., neut. dwóy(h₁))",
+    "numerals/3/m/INS.PL": "Ringe 2017 §2.3.6(i) / p. 53",
+    "numerals/3/m/ABL.PL": "Ringe 2017 §2.3.6(i) / p. 53 (dat.-abl.)",
+    "numerals/3/m/DAT.PL": "Ringe 2017 §2.3.6(i) / p. 53 (dat.-abl. trimós; appended as alternative)",
+    "numerals/3/f/INS.PL": "Ringe 2017 §2.3.6(i) / p. 53",
+    "numerals/3/f/DAT.PL": "Ringe 2017 §2.3.6(i) / p. 53 (dat.-abl.)",
+    "numerals/3/f/ABL.PL": "Ringe 2017 §2.3.6(i) / p. 53 (dat.-abl.)",
+    "numerals/3/f/GEN.PL": "Ringe 2017 §2.3.6(i) / p. 53",
+    "numerals/3/f/LOC.PL": "Ringe 2017 §2.3.6(i) / p. 53",
+    "numerals/3/n/ACC.PL": "Ringe 2017 §2.3.6(i) / p. 53",
+    "numerals/3/n/INS.PL": "Ringe 2017 §2.3.6(i) / p. 53",
+    "numerals/3/n/DAT.PL": "Ringe 2017 §2.3.6(i) / p. 53 (dat.-abl.)",
+    "numerals/3/n/ABL.PL": "Ringe 2017 §2.3.6(i) / p. 53 (dat.-abl.)",
+    "numerals/3/n/GEN.PL": "Ringe 2017 §2.3.6(i) / p. 53",
+    "numerals/3/n/LOC.PL": "Ringe 2017 §2.3.6(i) / p. 53",
+    "numerals/4/m/INS.PL": "Ringe 2017 §2.3.6(i) / p. 54",
+    "numerals/4/m/ABL.PL": "Ringe 2017 §2.3.6(i) / p. 54 (dat.-abl.)",
+    "numerals/4/m/DAT.PL": "Ringe 2017 §2.3.6(i) / p. 54 (dat.-abl. kʷetwr̥mós; appended as alternative)",
+    "numerals/4/m/LOC.PL": "Ringe 2017 §2.3.6(i) / p. 54",
+    "numerals/4/f/ACC.PL": "Ringe 2017 §2.3.6(i) / p. 54",
+    "numerals/4/f/INS.PL": "Ringe 2017 §2.3.6(i) / p. 54",
+    "numerals/4/f/DAT.PL": "Ringe 2017 §2.3.6(i) / p. 54 (dat.-abl.)",
+    "numerals/4/f/ABL.PL": "Ringe 2017 §2.3.6(i) / p. 54 (dat.-abl.)",
+    "numerals/4/f/GEN.PL": "Ringe 2017 §2.3.6(i) / p. 54",
+    "numerals/4/f/LOC.PL": "Ringe 2017 §2.3.6(i) / p. 54",
+    "numerals/4/n/ACC.PL": "Ringe 2017 §2.3.6(i) / p. 54",
+    "numerals/4/n/INS.PL": "Ringe 2017 §2.3.6(i) / p. 54",
+    "numerals/4/n/DAT.PL": "Ringe 2017 §2.3.6(i) / p. 54 (dat.-abl.)",
+    "numerals/4/n/ABL.PL": "Ringe 2017 §2.3.6(i) / p. 54 (dat.-abl.)",
+    "numerals/4/n/GEN.PL": "Ringe 2017 §2.3.6(i) / p. 54",
+    "numerals/4/n/LOC.PL": "Ringe 2017 §2.3.6(i) / p. 54"
+  },
+  "_derived": {
+    "interrogative_kwo/m/ABL.SG": "derived from demonstrative_so/m/ABL.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/m/INS.SG": "derived from demonstrative_so/m/INS.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/m/ACC.PL": "derived from demonstrative_so/m/ACC.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/m/GEN.PL": "derived from demonstrative_so/m/GEN.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/m/DAT.PL": "derived from demonstrative_so/m/DAT.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/m/ABL.PL": "derived from demonstrative_so/m/ABL.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/m/LOC.PL": "derived from demonstrative_so/m/LOC.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/m/INS.PL": "derived from demonstrative_so/m/INS.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/m/NOM.DU": "derived from demonstrative_so/m/NOM.DU (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/m/ACC.DU": "derived from demonstrative_so/m/ACC.DU (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/f/GEN.SG": "derived from demonstrative_so/f/GEN.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/f/DAT.SG": "derived from demonstrative_so/f/DAT.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/f/LOC.SG": "derived from demonstrative_so/f/LOC.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/f/NOM.PL": "derived from demonstrative_so/f/NOM.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/f/ACC.PL": "derived from demonstrative_so/f/ACC.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/f/GEN.PL": "derived from demonstrative_so/f/GEN.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/f/DAT.PL": "derived from demonstrative_so/f/DAT.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/f/LOC.PL": "derived from demonstrative_so/f/LOC.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/f/INS.SG": "derived from demonstrative_so/f/INS.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/f/ABL.SG": "derived from demonstrative_so/f/ABL.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/f/INS.PL": "derived from demonstrative_so/f/INS.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/f/ABL.PL": "derived from demonstrative_so/f/ABL.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/n/NOM.PL": "derived from demonstrative_so/n/NOM.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/n/ACC.PL": "derived from demonstrative_so/n/ACC.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/n/INS.SG": "derived from demonstrative_so/n/INS.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/n/DAT.SG": "derived from demonstrative_so/n/DAT.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/n/ABL.SG": "derived from demonstrative_so/n/ABL.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/n/GEN.SG": "derived from demonstrative_so/n/GEN.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/n/LOC.SG": "derived from demonstrative_so/n/LOC.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/n/NOM.DU": "derived from demonstrative_so/n/NOM.DU (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/n/ACC.DU": "derived from demonstrative_so/n/ACC.DU (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/n/INS.PL": "derived from demonstrative_so/n/INS.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/n/DAT.PL": "derived from demonstrative_so/n/DAT.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/n/ABL.PL": "derived from demonstrative_so/n/ABL.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/n/GEN.PL": "derived from demonstrative_so/n/GEN.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwo/n/LOC.PL": "derived from demonstrative_so/n/LOC.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/m/ABL.PL": "derived from demonstrative_so/m/ABL.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/m/INS.PL": "derived from demonstrative_so/m/INS.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/m/NOM.DU": "derived from demonstrative_so/m/NOM.DU (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/m/ACC.DU": "derived from demonstrative_so/m/ACC.DU (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/f/DAT.SG": "derived from demonstrative_so/f/DAT.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/f/LOC.SG": "derived from demonstrative_so/f/LOC.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/f/ACC.PL": "derived from demonstrative_so/f/ACC.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/f/GEN.PL": "derived from demonstrative_so/f/GEN.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/f/DAT.PL": "derived from demonstrative_so/f/DAT.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/f/LOC.PL": "derived from demonstrative_so/f/LOC.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/f/INS.SG": "derived from demonstrative_so/f/INS.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/f/ABL.SG": "derived from demonstrative_so/f/ABL.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/f/INS.PL": "derived from demonstrative_so/f/INS.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/f/ABL.PL": "derived from demonstrative_so/f/ABL.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/n/ACC.PL": "derived from demonstrative_so/n/ACC.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/n/INS.SG": "derived from demonstrative_so/n/INS.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/n/DAT.SG": "derived from demonstrative_so/n/DAT.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/n/ABL.SG": "derived from demonstrative_so/n/ABL.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/n/GEN.SG": "derived from demonstrative_so/n/GEN.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/n/LOC.SG": "derived from demonstrative_so/n/LOC.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/n/NOM.DU": "derived from demonstrative_so/n/NOM.DU (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/n/ACC.DU": "derived from demonstrative_so/n/ACC.DU (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/n/INS.PL": "derived from demonstrative_so/n/INS.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/n/DAT.PL": "derived from demonstrative_so/n/DAT.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/n/ABL.PL": "derived from demonstrative_so/n/ABL.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/n/GEN.PL": "derived from demonstrative_so/n/GEN.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "relative_yo/n/LOC.PL": "derived from demonstrative_so/n/LOC.PL (Ringe 2017 p. 56: these stems inflect like so/tod)",
+    "interrogative_kwi/mf/ABL.SG": "taken from interrogative_kwo/m/ABL.SG: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/mf/DAT.SG": "taken from interrogative_kwo/m/DAT.SG: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/mf/LOC.SG": "taken from interrogative_kwo/m/LOC.SG: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/mf/INS.SG": "taken from interrogative_kwo/m/INS.SG: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/mf/GEN.PL": "taken from interrogative_kwo/m/GEN.PL: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/mf/DAT.PL": "taken from interrogative_kwo/m/DAT.PL: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/mf/ABL.PL": "taken from interrogative_kwo/m/ABL.PL: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/mf/LOC.PL": "taken from interrogative_kwo/m/LOC.PL: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/mf/INS.PL": "taken from interrogative_kwo/m/INS.PL: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/mf/NOM.DU": "taken from interrogative_kwo/m/NOM.DU: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/mf/ACC.DU": "taken from interrogative_kwo/m/ACC.DU: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/n/DAT.SG": "taken from interrogative_kwo/n/DAT.SG: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/n/ABL.SG": "taken from interrogative_kwo/n/ABL.SG: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/n/LOC.SG": "taken from interrogative_kwo/n/LOC.SG: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/n/NOM.DU": "taken from interrogative_kwo/n/NOM.DU: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/n/ACC.DU": "taken from interrogative_kwo/n/ACC.DU: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/n/INS.PL": "taken from interrogative_kwo/n/INS.PL: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/n/DAT.PL": "taken from interrogative_kwo/n/DAT.PL: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/n/ABL.PL": "taken from interrogative_kwo/n/ABL.PL: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/n/GEN.PL": "taken from interrogative_kwo/n/GEN.PL: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "interrogative_kwi/n/LOC.PL": "taken from interrogative_kwo/n/LOC.PL: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)"
   }
 }

@@ -150,6 +150,8 @@ def _closed_form(lx: Lexicon, lex_id: str, feat: str, gender: str) -> str | None
     if path[0] == "interrogative_kwi":
         node = node.get("n" if gender == "n" else "mf", {})
     forms = node.get(feat) if isinstance(node, dict) else None
+    if not forms and path[0] == "personal" and isinstance(node, dict):
+        forms = node.get(feat + ".ENCL")      # no book prints a stressed 1st/2nd pl. genitive (Ringe: "???")
     return forms[0] if forms else None
 
 
