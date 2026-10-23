@@ -1,6 +1,24 @@
 {
- "records": 99,
+ "records": 106,
  "versions": {
+  "formulas-watkins": {
+   "lines": 5,
+   "tokens": 10,
+   "miss:near-miss": 2,
+   "match:exact": 4,
+   "match:noaccent": 2,
+   "miss:lexicon-gap": 2,
+   "coverage": 0.6
+  },
+  "formulas-west": {
+   "lines": 2,
+   "tokens": 6,
+   "miss:engine-gap": 1,
+   "match:exact": 1,
+   "miss:lexicon-gap": 2,
+   "match:noaccent": 2,
+   "coverage": 0.5
+  },
   "king-and-god-byrd-2013": {
    "lines": 12,
    "tokens": 55,

@@ -139,6 +139,8 @@ RULES: dict[str, Rule] = {
         Rule("P-KU-LABIO", "plain velar + u̯ (LIV's superscript ᵘ̯ transcribed on the line) → labiovelar: ku̯ gu̯ gʰu̯ → kʷ gʷ gʷʰ",
              _nfd(_sub("(?<![\u0301\u0302\u0311])([kg])(\u02b0?)u\u032f",
                        "\\1" + LAB + "\\2"))),
+        Rule("P-SUP-U-LABIO", "superscript ᵘ after a velar is the labiovelar mark (Watkins *gᵘhen-) → ʷ",
+             _nfd(_sub("([kg][\u0300-\u036f]*)\u1d58(?!\u032f)", "\\1" + LAB))),
         Rule("P-WEST-PAL", "West's palatals: ƙ (k with hook), and k/g + spacing circumflex ˆ → ḱ ǵ",
              lambda s: re.sub("([kg])\u02c6", lambda m: m[1] + ACUTE, s.replace("\u0199", "k" + ACUTE))),
         Rule("P-STRIP-FOOTNOTE", "superscript footnote markers on forms (*bʰéh₁dʰ-e-² → *bʰéh₁dʰ-e-)",
@@ -178,6 +180,7 @@ PROFILES: dict[str, list[str]] = {
     "mallory-adams": _PRE + ["P-HX-ASCII", "G-LAR-DIGIT", "P-ASP-PLAIN-H", "P-SCHWA"] + _GENERIC,
     "west": _PRE + ["P-SPACING-RING", "P-WEST-PAL"] + _GENERIC,
     "liv2": _PRE + ["P-STRIP-FOOTNOTE", "P-KU-LABIO"] + _GENERIC,
+    "watkins": _PRE + ["P-SUP-U-LABIO", "G-LAR-DIGIT", "P-HX-ASCII", "P-ASP-PLAIN-H"] + _GENERIC,
     "ringe": _PRE + ["P-SPACING-DIACRITICS", "P-SPACING-RING", "G-LAR-DIGIT", "P-ASP-PLAIN-H"] + _GENERIC,
 }
 

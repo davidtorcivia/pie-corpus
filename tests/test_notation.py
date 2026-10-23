@@ -47,6 +47,7 @@ CASES = [
     ("bʰéh₁dʰ-e-²", "liv2", "bʰéh₁dʰ-e-", "P-STRIP-FOOTNOTE"),
     ("neku̯-", "liv2", "nekʷ-", "P-KU-LABIO"),
     ("peiƙ-", "west", "peiḱ-", "P-WEST-PAL"),
+    ("égᵘhent ógᵘhim", "watkins", "égʷʰent ógʷʰim", "P-SUP-U-LABIO"),
     ("Hrēgˆō", "west", "Hrēǵō", "P-WEST-PAL"),
     ("gʰu̯en-", "liv2", "gʷʰen-", "P-KU-LABIO"),
     ("dhugh2tér-", "fortson", "dʰugh₂tér-", "P-ASP-PLAIN-H"),

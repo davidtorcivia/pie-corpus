@@ -172,7 +172,41 @@ def build_records(index=None, root: Path = ROOT) -> tuple[list[dict], list[dict]
                 diffs = [(prim[i1:i2], other[j1:j2]) for op, i1, i2, j1, j2 in sm.get_opcodes() if op != "equal"]
                 cross.append({"work_id": wid, "secondary": sec["_file"], "similarity": round(sm.ratio(), 4),
                               "diffs": diffs[:20]})
+    records += formula_records(ix, root)
     return records, cross
+
+
+def formula_records(ix, root: Path = ROOT) -> list[dict]:
+    """Tier 1 records (provenance `formulaic`) for complete phrases in data/formulas/formulas.jsonl."""
+    from .formulas import load, tier1_candidates
+    from .validate import validate_text
+    out = []
+    for f in tier1_candidates(load(root)):
+        val = validate_text(f["pie"], ix, laryngealist=True)
+        tokens = [{"form": t.surface, "lex_id": t.analyses[0].lex_id if t.found else None,
+                   "root_id": next((a.root_id for a in t.analyses if a.root_id), None),
+                   "features": sorted({a.features for a in t.analyses})[:6] if t.found else [],
+                   "match": t.tier, "clitic": t.clitic, "augment": t.augment,
+                   "miss": t.miss, "miss_detail": t.miss_detail, "verified": t.tier == "exact"}
+                  for t in val["tokens"]]
+        ref = f["ref"]
+        where = f"p. {ref['printed_page']}" if ref.get("printed_page") else \
+            ", ".join(x for x in (ref.get("chapter"), ref.get("section")) if x)
+        out.append({
+            "id": f"t1-formula-{f['formula_id']}", "tier": 1, "provenance": "formulaic",
+            "citation": f"{f['citation']} {where}", "work_id": f"formulas-{f['source']}",
+            "work_group_id": "formulas", "line_no": None,
+            "pie": f["pie"], "pie_ascii": to_ascii(f["pie"]), "source_form": f["pie_printed"],
+            "tokens": tokens, "gloss": None, "english": f["english"], "genre": "formula", "theme": [],
+            "syllables": measure(f["pie"])["syllables"], "meter": None, "formulas": [f["formula_id"]],
+            "cognate_refs": f["attestations"], "alt_reconstructions": [],
+            "validator": {k: val[k] for k in ("status", "coverage", "tiers", "misses", "unknown_roots",
+                                              "bad_forms", "agreement_warnings")},
+            "generator": None, "neologism": False,
+            "source": {"author": f["source"].title(), "file": "data/formulas/formulas.jsonl", "confidence": "book"},
+            "notes": "",
+        })
+    return out
 
 
 def _letters(s: str) -> str:
