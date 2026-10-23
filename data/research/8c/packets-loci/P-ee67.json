@@ -1,0 +1,3014 @@
+{
+"packet": "P-ee67",
+"branches": [
+"Indo-Iranian",
+"Greek",
+"Germanic",
+"Anatolian",
+"Italic"
+],
+"passage_ids": [
+"rv:RV 1.116.12b",
+"rv:RV 7.33.13b",
+"rv:RV 4.38.8a",
+"rv:RV 9.61.1b",
+"rv:RV 7.94.1c",
+"rv:RV 1.84.10d",
+"rv:RV 1.131.5b",
+"av:AVŚ, 5, 13.s8",
+"rv:RV 3.9.9c",
+"rv:RV 9.87.8c",
+"av:AVŚ, 11, 4.s29",
+"rv:RV 6.44.12a",
+"rv:RV 9.19.3b",
+"rv:RV 10.44.8d",
+"rv:RV 1.79.2d",
+"av:AVP, 12, 13.s5",
+"rv:RV 9.100.3b",
+"av:AVP, 19, 14.s24",
+"av:AVŚ, 4, 15.s17",
+"rv:RV 9.109.20b",
+"av:AVŚ, 5, 20.s5",
+"av:AVP, 10, 7.s7",
+"rv:RV 9.25.1c",
+"rv:RV 1.71.8b",
+"av:AVP, 1, 32.s3",
+"rv:RV 4.17.12d",
+"av:AVP, 19, 9.s5",
+"rv:RV 6.44.19d",
+"rv:RV 10.90.13d",
+"av:AVŚ, 4, 21.s14",
+"av:AVŚ, 1, 12.s1",
+"av:AVŚ, 6, 62.s1",
+"rv:RV 10.168.1b",
+"av:AVŚ, 11, 8.s60",
+"rv:RV 1.58.3a",
+"rv:RV 10.75.3c",
+"grp:Theognis Elegiae 1363",
+"grp:Theognis Elegiae 171",
+"grp:Euripides Andromacha 726",
+"grp:Hymni Homerici In Apollinem 330",
+"hom:Il. 2.82",
+"grp:Pindarus Olympia 1.31",
+"grp:Hesiodus Opera et dies 756",
+"grp:Euripides Bacchae 883",
+"hom:Od. 1.43",
+"grp:Euripides Bacchae 471",
+"grp:Euripides Troiades 889",
+"grp:Aeschylus Septem contra Thebas 266",
+"grp:Sophocles Antigone 448",
+"grp:Hesiodus Theogonia 396",
+"hom:Il. 17.278",
+"grp:Theognis Elegiae 1137",
+"grp:Bacchylides Epinicia 11.107",
+"grp:Sophocles Trachiniae 809",
+"grp:Sophocles Electra 316",
+"hom:Il. 21.518",
+"grp:Euripides Heraclidae 666",
+"grp:Theognis Elegiae 944",
+"grp:Hymni Homerici In Mercurium 378",
+"grp:Hymni Homerici In Cererem 150",
+"hom:Il. 11.364",
+"hom:Od. 21.335",
+"grp:Pindarus Pythia 4.63",
+"grp:Euripides Rhesus 331",
+"hom:Od. 13.141",
+"grp:Euripides Medea 802",
+"hom:Od. 2.320",
+"hom:Od. 13.189",
+"hom:Il. 20.466",
+"grp:Aeschylus Eumenides 543",
+"grp:Hymni Homerici In Cererem 263",
+"grp:Theognis Elegiae 660",
+"ang:Beo. 1431",
+"ang:Grein II Das Heiiige Kreuz l.10794",
+"ang:Grein I Cadmons Exodus l.8680",
+"non:Skýringar 7 [edda:19841]",
+"non:Lokasenna 45 [edda:5807]",
+"ang:Grein II Salomo Und Saturn l.25520",
+"ang:Beo. 314",
+"ang:Beo. 2903",
+"non:Völuspá 30 [edda:677]",
+"ang:Beo. 2113",
+"ang:Beo. 1699",
+"ang:Beo. 2630",
+"hit:KBo 34.169+  {€1+2} r. Kol. 7′/10′",
+"hit:KBo 19.161 Vs. I 22′",
+"hit:KBo 11.49 Vs. I 19′",
+"hit:KBo 33.35+  {€2+9+15+11} Vs. II 33/Vs.? 2′/Vs. II 33/3′",
+"hit:KBo 11.43 Vs. I 28",
+"hit:KBo 29.98 9′",
+"hit:KBo 17.7+  {€2+4+5+3} Rs. III 32/Rs. III 32/Rs. III 8′/ Rs. III 1′",
+"hit:KUB 12.63+  {€1} Vs. 26′",
+"hit:KBo 54.218 3′",
+"hit:KBo 29.204+ {€2} Rs. III 11",
+"hit:KUB 41.10(+) {€1} Rs. IV 12′",
+"hit:KBo 21.78+  {€1} Vs. I 17",
+"hit:KUB 32.58+  {€3+4+2} Vs. I 11′/Vs. (II) 21′",
+"hit:KBo 24.126 rev. 9′",
+"hit:KBo 35.168 Vs. I 10′",
+"hit:KBo 35.85+  {€2} r. Kol. 17′",
+"hit:CHDS 7.120 Vs. 4′",
+"hit:KUB 55.65 Rs.? III 9′",
+"hit:KUB 10.65 Rs. IV 3′",
+"hit:KBo 22.134 Rs. IV 2′",
+"hit:KUB 2.4+ {€1} Vs. II 22",
+"hit:KBo 54.219+  {€2} Vs. I 10",
+"hit:IBoT 3.51 6′",
+"hit:KBo 19.161 Vs. II 20′",
+"hit:KUB 11.35 Vs. III 17′",
+"hit:KBo 19.161 Vs. I 5′",
+"hit:KUB 44.8+  {€2} Vs. I 6′",
+"hit:KBo 21.78+  {€3} Rs. IV! 18′",
+"hit: {€1} 5′",
+"hit:KUB 32.135+  {€2} Rs. IV 13′",
+"hit:KUB 40.65+  {€2} Rs. III 56",
+"hit:KBo 40.179+ {€7} Vs. I 14",
+"hit:KBo 17.74+  {€1} Vs. II 25",
+"hit:KBo 19.161 Vs. I 19′",
+"hit:KBo 39.154+  {€2} Vs. II 24′",
+"hit:KBo 21.90 Rs. 47′",
+"lat:CatAgr 14.1",
+"lat:CatAgr 72.1",
+"lat:CatOrat Fragmentum_158.Linea_5",
+"lat:PlCasin 974",
+"lat:CatAgr 61.1",
+"lat:PlCurcu 610",
+"lat:LucrDRN1 1.728",
+"lat:LucrDRN4 4.324",
+"lat:PlAmphi 302",
+"lat:CatOrig 5.Fragmentum_8",
+"lat:PlCasin 210",
+"lat:LucrDRN5 5.964",
+"lat:CatAgr 145.3",
+"lat:LucrDRN5 5.1124",
+"lat:PlAmphi 210",
+"lat:CatAgr 141.2",
+"lat:CatAgr 155.1",
+"lat:PlAsina 296",
+"lat:PlCurcu 707",
+"lat:PlAmphi 599",
+"lat:LucrDRN3 3.170",
+"lat:Catul 32.9",
+"lat:LucrDRN2 2.326",
+"lat:CatOrat Fragmentum_32.Linea_1",
+"lat:CatAgr 149.2",
+"lat:PlAmphi 212",
+"lat:LucrDRN6 6.71"
+],
+"note": "locus-only copy: full packets (with daughter text, some research-only) are local and gitignored; rebuild with scripts/build_8c_packets.py",
+"blocks": [
+{
+"branch": "Indo-Iranian",
+"passages": [
+{
+"id": "rv:RV 1.116.12b",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 1.116.12b",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"pie-lex-h1werstis",
+"pie-lex-h2ugros",
+"pie-lex-kwrnewti",
+"pie-lex-medhu",
+"pie-lex-stenh2",
+"pie-root-kwer-do",
+"pie-root-stenh2-thunder"
+]
+},
+{
+"id": "rv:RV 7.33.13b",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 7.33.13b",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"pie-lex-gjenh1eti",
+"pie-lex-gjonh1eyeti",
+"pie-lex-h3reyH",
+"pie-lex-is-2",
+"pie-lex-medhyos",
+"pie-lex-nemos",
+"pie-root-gjenh1-produce",
+"pie-root-h1ey-go",
+"pie-root-h1eysh2-strengthen",
+"pie-root-h2eys-wish",
+"pie-root-h3reyH-move",
+"pie-root-seykw-moisten"
+]
+},
+{
+"id": "rv:RV 4.38.8a",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 4.38.8a",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"pie-lex-bheyh2s",
+"pie-lex-dyexws",
+"pie-lex-h3bhruHs",
+"pie-lex-stenh2",
+"pie-root-bheyh2-shake",
+"pie-root-bheyh2-strike",
+"pie-root-dyew-be_bright",
+"pie-root-h3regj-straighten",
+"pie-root-stenh2-thunder"
+]
+},
+{
+"id": "rv:RV 9.61.1b",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 9.61.1b",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"kaikki:h₁newn̥dḱomt",
+"pie-lex-gwhenti",
+"pie-lex-h1newn",
+"pie-lex-srew",
+"pie-lex-sreweti",
+"pie-root-gwhen-strike",
+"pie-root-meh2d-be_wet",
+"pie-root-meh2d-meet",
+"pie-root-srew-flow",
+"pie-root-wed-well"
+]
+},
+{
+"id": "rv:RV 7.94.1c",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 7.94.1c",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"pie-lex-gjenh1eti",
+"pie-lex-gjonh1eyeti",
+"pie-lex-gwerHtoxr",
+"pie-lex-h1werstis",
+"pie-lex-nbhros",
+"pie-root-gjenh1-produce",
+"pie-root-kjlew-hear"
+]
+},
+{
+"id": "rv:RV 1.84.10d",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 1.84.10d",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"kaikki:h₃eyd",
+"pie-lex-h1wesus",
+"pie-lex-wersexn",
+"pie-root-h2wes-become_bright",
+"pie-root-h2wes-dwell",
+"pie-root-kjewbh-be_or_become",
+"pie-root-meh2d-be_wet",
+"pie-root-meh2d-meet",
+"pie-root-yeh2-go",
+"pie-root-yeh2-request"
+]
+},
+{
+"id": "rv:RV 1.131.5b",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 1.131.5b",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"pie-lex-wersexn",
+"pie-root-h1ewH-help",
+"pie-root-h2ew-enjoy",
+"pie-root-h2ew-perceive",
+"pie-root-meh2d-be_wet",
+"pie-root-meh2d-meet"
+]
+},
+{
+"id": "av:AVŚ, 5, 13.s8",
+"corpus": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+"locus": "AVŚ, 5, 13.s8",
+"licence": "CC BY 4.0 (DCS)",
+"research_only": false,
+"etyma": [
+"pie-lex-bhexdht",
+"pie-lex-h2ugros",
+"pie-lex-nebhos",
+"pie-lex-nekjyeti",
+"pie-lex-stenh2",
+"pie-lex-wersexn",
+"pie-root-h2nekj-reach",
+"pie-root-h3rewH-roar",
+"pie-root-nekj-perish",
+"pie-root-stenh2-thunder",
+"pie-root-wekw-speak"
+]
+},
+{
+"id": "rv:RV 3.9.9c",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 3.9.9c",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"pie-lex-bhelgjh",
+"pie-lex-deywos",
+"pie-lex-h1newn",
+"pie-lex-h2weks",
+"pie-lex-sepelyeti",
+"pie-lex-sodeyeti",
+"pie-lex-tridkjomth2",
+"pie-lex-wegwsti",
+"pie-root-bhelgjh-swell",
+"pie-root-h2weks-increase",
+"pie-root-sed-sit",
+"pie-root-sterh3-spread",
+"pie-root-wegw-wet"
+]
+},
+{
+"id": "rv:RV 9.87.8c",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 9.87.8c",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"kaikki:h₃eyd",
+"pie-lex-dhorh3eh2",
+"pie-lex-dyexws",
+"pie-lex-gwoxws",
+"pie-lex-nbhros",
+"pie-lex-puHyeti",
+"pie-lex-sowmos",
+"pie-lex-stenh2",
+"pie-lex-stonh2eyeti",
+"pie-lex-woydeyeti",
+"pie-root-dyew-be_bright",
+"pie-root-pewH-be_clean",
+"pie-root-pewH-rot",
+"pie-root-stenh2-thunder",
+"pie-root-weyd-see"
+]
+},
+{
+"id": "av:AVŚ, 11, 4.s29",
+"corpus": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+"locus": "AVŚ, 11, 4.s29",
+"licence": "CC BY 4.0 (DCS)",
+"research_only": false,
+"etyma": [
+"pie-lex-gjenh1eti",
+"pie-lex-gjonh1eyeti",
+"pie-lex-gwegwoye",
+"pie-lex-gweyos",
+"pie-lex-gweyt",
+"pie-lex-h2weh1nts",
+"pie-root-bhuH-be",
+"pie-root-gjenh1-produce",
+"pie-root-h2enh1-breathe",
+"pie-root-steh2-stand",
+"pie-root-wekw-speak"
+]
+},
+{
+"id": "rv:RV 6.44.12a",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 6.44.12a",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"kaikki:h₃eyd",
+"pie-lex-gwhenti",
+"pie-lex-gwowyos",
+"pie-lex-nbhros",
+"pie-lex-stenh2",
+"pie-lex-stonh2eyeti",
+"pie-root-Hreh1dh-think",
+"pie-root-gwhen-strike",
+"pie-root-h3er-move",
+"pie-root-stenh2-thunder"
+]
+},
+{
+"id": "rv:RV 9.19.3b",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 9.19.3b",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"pie-lex-bhelgjh",
+"pie-lex-gjholh3is",
+"pie-lex-h2oyu",
+"pie-lex-puHyeti",
+"pie-lex-sodeyeti",
+"pie-lex-stenh2",
+"pie-lex-stonh2eyeti",
+"pie-lex-wersexn",
+"pie-root-bhelgjh-swell",
+"pie-root-pewH-be_clean",
+"pie-root-pewH-rot",
+"pie-root-sed-sit",
+"pie-root-stenh2-thunder"
+]
+},
+{
+"id": "rv:RV 10.44.8d",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 10.44.8d",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"kaikki:ang",
+"pie-lex-bhereti",
+"pie-lex-ukwtHom",
+"pie-lex-wersexn",
+"pie-root-bher-bear",
+"pie-root-kjens-announce",
+"pie-root-meh2d-be_wet",
+"pie-root-meh2d-meet",
+"pie-root-peh3-drink"
+]
+},
+{
+"id": "rv:RV 1.79.2d",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 1.79.2d",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"pie-lex-gweHyeti",
+"pie-lex-gwigweh2ti",
+"pie-lex-h2rtos",
+"pie-lex-h3meygjheti",
+"pie-lex-kjeywos",
+"pie-lex-nbhros",
+"pie-lex-peth2eti",
+"pie-lex-stenh2",
+"pie-lex-stonh2eyeti",
+"pie-root-gweh2-step",
+"pie-root-h3meygjh-urinate",
+"pie-root-peh1-hate",
+"pie-root-peth2-fly",
+"pie-root-peth2-spread_out",
+"pie-root-peyh2-swell",
+"pie-root-smey-laugh",
+"pie-root-stenh2-thunder"
+]
+},
+{
+"id": "av:AVP, 12, 13.s5",
+"corpus": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+"locus": "AVP, 12, 13.s5",
+"licence": "CC BY 4.0 (DCS)",
+"research_only": false,
+"etyma": [
+"kaikki:h₂eperos",
+"kaikki:h₃eyd",
+"pie-lex-Hyewdh",
+"pie-lex-gjhreh3d",
+"pie-lex-gwegwoye",
+"pie-lex-gweyos",
+"pie-lex-gweyt",
+"pie-lex-gwoxws",
+"pie-lex-h1ogwhis",
+"pie-lex-h3meygjheti",
+"pie-lex-kwrnewti",
+"pie-lex-sowmos",
+"pie-lex-stenh2",
+"pie-root-Hyewdh-moving_erect",
+"pie-root-h3meygjh-urinate",
+"pie-root-kjewh1-swell",
+"pie-root-kwer-do",
+"pie-root-megh-be_able",
+"pie-root-seHdh-reach_the_goal",
+"pie-root-sel-dwell",
+"pie-root-sel-jump",
+"pie-root-sel-sneak",
+"pie-root-selgj-let_go",
+"pie-root-stenh2-thunder"
+]
+},
+{
+"id": "rv:RV 9.100.3b",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 9.100.3b",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"pie-lex-h1werstis",
+"pie-lex-h1wesus",
+"pie-lex-stenh2",
+"pie-root-dheyh2-perceive",
+"pie-root-h2wes-become_bright",
+"pie-root-h2wes-dwell",
+"pie-root-selgj-let_go",
+"pie-root-stenh2-thunder"
+]
+},
+{
+"id": "av:AVP, 19, 14.s24",
+"corpus": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+"locus": "AVP, 19, 14.s24",
+"licence": "CC BY 4.0 (DCS)",
+"research_only": false,
+"etyma": [
+"kaikki:h₁wiḱwos",
+"pie-lex-HrewdH",
+"pie-lex-bheh2gos",
+"pie-lex-bhoh2gos",
+"pie-lex-dweh2ros",
+"pie-lex-gwoxws",
+"pie-lex-h2eghos-2",
+"pie-lex-neyH",
+"pie-lex-smoros",
+"pie-lex-yemHos",
+"pie-lex-yemos",
+"pie-root-HrewdH-weep",
+"pie-root-bhuH-be",
+"pie-root-gjhey-drive",
+"pie-root-gjhey-winter",
+"pie-root-h2wedH-sound",
+"pie-root-neyH-lead"
+]
+},
+{
+"id": "av:AVŚ, 4, 15.s17",
+"corpus": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+"locus": "AVŚ, 4, 15.s17",
+"licence": "CC BY 4.0 (DCS)",
+"research_only": false,
+"etyma": [
+"kaikki:udsos",
+"pie-lex-dikjeti",
+"pie-lex-h2weh1nts",
+"pie-lex-h2wexh1ti",
+"pie-lex-h3moyghos",
+"pie-lex-plth2ewih2",
+"pie-lex-we",
+"pie-root-deykj-point_out",
+"pie-root-deykj-throw",
+"pie-root-gwerh3-swallow",
+"pie-root-h1ewH-help",
+"pie-root-h1weh2-be_become_empty",
+"pie-root-h1wers-rain",
+"pie-root-h2ew-enjoy",
+"pie-root-h2ew-perceive",
+"pie-root-h2weh1-blow",
+"pie-root-kjens-announce"
+]
+},
+{
+"id": "rv:RV 9.109.20b",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 9.109.20b",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"kaikki:h₃eyd",
+"pie-lex-deywos",
+"pie-lex-h1roxs",
+"pie-lex-medhu",
+"pie-lex-wersexn",
+"pie-root-h3engw-smear",
+"pie-root-meh2d-be_wet",
+"pie-root-meh2d-meet",
+"pie-root-peh2gj-attach",
+"pie-root-wed-well"
+]
+},
+{
+"id": "av:AVŚ, 5, 20.s5",
+"corpus": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+"locus": "AVŚ, 5, 20.s5",
+"licence": "CC BY 4.0 (DCS)",
+"research_only": false,
+"etyma": [
+"kaikki:h₂wedʰh₁",
+"pie-lex-gjhegjheh1ti",
+"pie-lex-is-2",
+"pie-lex-kjewh1smn",
+"pie-lex-kjexr",
+"pie-lex-wersexn",
+"pie-lex-woydeyeti",
+"pie-root-gjheh1-leave",
+"pie-root-h1ey-go",
+"pie-root-h1weydhh1-separate",
+"pie-root-h2ger-gather",
+"pie-root-h3rewH-roar",
+"pie-root-keh3-fight",
+"pie-root-kjewk-call",
+"pie-root-kjewk-flare_up",
+"pie-root-weyd-see"
+]
+},
+{
+"id": "av:AVP, 10, 7.s7",
+"corpus": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+"locus": "AVP, 10, 7.s7",
+"licence": "CC BY 4.0 (DCS)",
+"research_only": false,
+"etyma": [
+"pie-lex-dyexws",
+"pie-lex-gwhenti",
+"pie-lex-h2oxps",
+"pie-lex-h2weh1nts",
+"pie-lex-mexh1ns",
+"pie-lex-plth2ewih2",
+"pie-lex-soh2wl",
+"pie-lex-wodr",
+"pie-root-dyew-be_bright",
+"pie-root-gwhen-strike",
+"pie-root-h2enh1-breathe",
+"pie-root-h2lek-protect",
+"pie-root-h2wer-lift",
+"pie-root-peh3-drink",
+"pie-root-skend-shine",
+"pie-root-stew-praise",
+"pie-root-stew-push",
+"pie-root-welh1-choose"
+]
+},
+{
+"id": "rv:RV 9.25.1c",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 9.25.1c",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"pie-lex-deywos",
+"pie-lex-gjhi",
+"pie-lex-gjhinewti",
+"pie-lex-gjholh3is",
+"pie-lex-h2weh1yus",
+"pie-lex-puHyeti",
+"pie-root-dheyh2-perceive",
+"pie-root-gjhey-drive",
+"pie-root-gjhey-winter",
+"pie-root-meh2d-be_wet",
+"pie-root-meh2d-meet",
+"pie-root-peh3-drink",
+"pie-root-pewH-be_clean",
+"pie-root-pewH-rot"
+]
+},
+{
+"id": "rv:RV 1.71.8b",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 1.71.8b",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"pie-lex-dyexws",
+"pie-lex-h1ngwnis",
+"pie-lex-h2yewHox",
+"pie-lex-h3reyH",
+"pie-lex-nekjyeti",
+"pie-lex-skerdh",
+"pie-root-dyew-be_bright",
+"pie-root-h1eysh2-strengthen",
+"pie-root-h2eys-wish",
+"pie-root-h2nekj-reach",
+"pie-root-h3reyH-move",
+"pie-root-kjewk-call",
+"pie-root-kjewk-flare_up",
+"pie-root-nekj-perish",
+"pie-root-seykw-moisten",
+"pie-root-skerdh-cut",
+"pie-root-steyg-be_sharp"
+]
+},
+{
+"id": "av:AVP, 1, 32.s3",
+"corpus": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+"locus": "AVP, 1, 32.s3",
+"licence": "CC BY 4.0 (DCS)",
+"research_only": false,
+"etyma": [
+"kaikki:tenk",
+"pie-lex-HrewdH",
+"pie-lex-deywos",
+"pie-root-HrewdH-weep",
+"pie-root-h2enh1-breathe",
+"pie-root-h2werg-turn",
+"pie-root-kjewk-call",
+"pie-root-kjewk-flare_up",
+"pie-root-wreg-track"
+]
+},
+{
+"id": "rv:RV 4.17.12d",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 4.17.12d",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"pie-lex-h2weh1nts",
+"pie-lex-kjewh1smn",
+"pie-lex-kwrnewti",
+"pie-lex-nbhros",
+"pie-lex-stenh2",
+"pie-lex-stonh2eyeti",
+"pie-root-dhgwhey-decline",
+"pie-root-h3er-move",
+"pie-root-kwer-do",
+"pie-root-stenh2-thunder"
+]
+},
+{
+"id": "av:AVP, 19, 9.s5",
+"corpus": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+"locus": "AVP, 19, 9.s5",
+"licence": "CC BY 4.0 (DCS)",
+"research_only": false,
+"etyma": [
+"kaikki:ḱelh₁",
+"pie-lex-bheh2geti",
+"pie-lex-bhoh2geyeti",
+"pie-lex-deh3t",
+"pie-lex-deywos",
+"pie-lex-dh3tos",
+"pie-lex-dhedheh1ti",
+"pie-lex-gjheymn",
+"pie-lex-gwoxws",
+"pie-lex-gwrh2smh2os",
+"pie-lex-semeh2",
+"pie-lex-wosr",
+"pie-root-bheh2g-divide",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-h1wers-rain",
+"pie-root-kjel-cover",
+"pie-root-kjelH-become_cold"
+]
+},
+{
+"id": "rv:RV 6.44.19d",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 6.44.19d",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"kaikki:drewnom",
+"pie-lex-wersexn",
+"pie-lex-wogjheyeti",
+"pie-root-meh2d-be_wet",
+"pie-root-meh2d-meet",
+"pie-root-steh2-stand",
+"pie-root-wegjh-bring"
+]
+},
+{
+"id": "rv:RV 10.90.13d",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 10.90.13d",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"kaikki:h₃eyd",
+"pie-lex-gjenh1eti",
+"pie-lex-gjonh1eyeti",
+"pie-lex-h1ngwnis",
+"pie-lex-h2weh1yus",
+"pie-lex-h3nobhis",
+"pie-root-gjenh1-produce",
+"pie-root-h2enh1-breathe"
+]
+},
+{
+"id": "av:AVŚ, 4, 21.s14",
+"corpus": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+"locus": "AVŚ, 4, 21.s14",
+"licence": "CC BY 4.0 (DCS)",
+"research_only": false,
+"etyma": [
+"pie-lex-HrewdH",
+"pie-lex-h2eghos-2",
+"pie-lex-h2oxps",
+"pie-root-HrewdH-weep",
+"pie-root-gjhey-drive",
+"pie-root-gjhey-winter",
+"pie-root-h2eykj-appropriate",
+"pie-root-h2werg-turn",
+"pie-root-kjewdh-become_pure",
+"pie-root-peh3-drink",
+"pie-root-wreg-track"
+]
+},
+{
+"id": "av:AVŚ, 1, 12.s1",
+"corpus": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+"locus": "AVŚ, 1, 12.s1",
+"licence": "CC BY 4.0 (DCS)",
+"research_only": false,
+"etyma": [
+"pie-lex-gjnneh3ti",
+"pie-lex-gweHyeti",
+"pie-lex-gweyeti",
+"pie-lex-h1werstis",
+"pie-lex-h2ewgos",
+"pie-lex-h2weh1nts",
+"pie-lex-h3regjus",
+"pie-lex-is-2",
+"pie-lex-lugjeti",
+"pie-lex-nbhros",
+"pie-lex-pro-2",
+"pie-lex-wersexn",
+"pie-root-gjenh1-produce",
+"pie-root-gjerh2-grow_old",
+"pie-root-h1ey-go",
+"pie-root-lewgj-break"
+]
+},
+{
+"id": "av:AVŚ, 6, 62.s1",
+"corpus": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+"locus": "AVŚ, 6, 62.s1",
+"licence": "CC BY 4.0 (DCS)",
+"research_only": false,
+"etyma": [
+"kaikki:h₂r̥teh₂wents",
+"pie-lex-h2weh1nts",
+"pie-lex-ish1ros",
+"pie-lex-nebhos",
+"pie-lex-puHyeti",
+"pie-root-h2enh1-breathe",
+"pie-root-pewH-be_clean",
+"pie-root-pewH-rot",
+"pie-root-peyh2-swell"
+]
+},
+{
+"id": "rv:RV 10.168.1b",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 10.168.1b",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"kaikki:meǵh₂mon",
+"pie-lex-Hroth2os",
+"pie-lex-h2weh1nts",
+"pie-lex-is-2",
+"pie-lex-kwrnewti",
+"pie-lex-lugjeti",
+"pie-lex-stenh2",
+"pie-lex-stonh2eyeti",
+"pie-root-gwhew-honour",
+"pie-root-h1ey-go",
+"pie-root-kwer-do",
+"pie-root-lewgj-break",
+"pie-root-stenh2-thunder",
+"pie-root-yeh2-go",
+"pie-root-yeh2-request"
+]
+},
+{
+"id": "av:AVŚ, 11, 8.s60",
+"corpus": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+"locus": "AVŚ, 11, 8.s60",
+"licence": "CC BY 4.0 (DCS)",
+"research_only": false,
+"etyma": [
+"pie-lex-deywos",
+"pie-lex-h1eh1tmox",
+"pie-lex-h1ngwnis",
+"pie-lex-h2weh1nts",
+"pie-lex-kwekwkjus",
+"pie-lex-soh2wl",
+"pie-root-bhergjh-rise_up",
+"pie-root-h2enh1-breathe",
+"pie-root-perh3-provide"
+]
+},
+{
+"id": "rv:RV 1.58.3a",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 1.58.3a",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"pie-lex-HrewdH",
+"pie-lex-dyexws",
+"pie-lex-h1wesus",
+"pie-lex-kwrnewti",
+"pie-lex-sodeyeti",
+"pie-lex-stenh2",
+"pie-lex-stonh2eyeti",
+"pie-root-HrewdH-weep",
+"pie-root-dyew-be_bright",
+"pie-root-gjhey-drive",
+"pie-root-gjhey-winter",
+"pie-root-h2wes-become_bright",
+"pie-root-h2wes-dwell",
+"pie-root-kelh1-call_out_to",
+"pie-root-kwer-do",
+"pie-root-sed-sit",
+"pie-root-skelh1-parch",
+"pie-root-stenh2-thunder"
+]
+},
+{
+"id": "rv:RV 10.75.3c",
+"corpus": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+"locus": "RV 10.75.3c",
+"licence": "CC BY 4.0 (VedaWeb Zurich annotation; the NC text layers are not used)",
+"research_only": false,
+"etyma": [
+"kaikki:wr̥sn̥bʰos",
+"pie-lex-bheh2nus",
+"pie-lex-h1werstis",
+"pie-lex-h2entos",
+"pie-lex-is-2",
+"pie-lex-kjewh1smn",
+"pie-lex-nbhros",
+"pie-lex-stenh2",
+"pie-lex-stonh2eyeti",
+"pie-root-h1ey-go",
+"pie-root-h3er-move",
+"pie-root-stenh2-thunder"
+]
+}
+]
+},
+{
+"branch": "Greek",
+"passages": [
+{
+"id": "grp:Theognis Elegiae 1363",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Theognis Elegiae 1363",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"kaikki:tweh₂p",
+"pie-lex-bhendh",
+"pie-lex-h1esmi",
+"pie-lex-h1eyti",
+"pie-lex-h3okws",
+"pie-lex-peh2wids",
+"pie-root-bhendh-bind",
+"pie-root-bheydh-trust",
+"pie-root-delh1-split"
+]
+},
+{
+"id": "grp:Theognis Elegiae 171",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Theognis Elegiae 171",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-dheh1s",
+"pie-lex-gjigjnh1eti",
+"pie-lex-h1eh1ughtor",
+"pie-lex-h1esmi",
+"pie-lex-h2nexr",
+"pie-lex-h3okws",
+"pie-lex-kretos",
+"pie-lex-kretos-2",
+"pie-root-kenk-feel_hunger",
+"pie-root-spewd-press"
+]
+},
+{
+"id": "grp:Euripides Andromacha 726",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Euripides Andromacha 726",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-dokjseh2",
+"pie-lex-gjenh1os-2",
+"pie-lex-h1esmi",
+"pie-lex-woyde",
+"pie-root-Hyeh1-throw",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-ghreh1-grow",
+"pie-root-h1egj-say",
+"pie-root-h2egj-drive",
+"pie-root-h2egj-goat"
+]
+},
+{
+"id": "grp:Hymni Homerici In Apollinem 330",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Hymni Homerici In Apollinem 330",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"kaikki:etos",
+"pie-lex-dheh1s",
+"pie-lex-h1esmi",
+"pie-lex-h1eyti",
+"pie-root-keyh2-move",
+"pie-root-legj-drip",
+"pie-root-legj-gather"
+]
+},
+{
+"id": "hom:Il. 2.82",
+"corpus": "Homer (Perseus AGDT)",
+"locus": "Il. 2.82",
+"licence": "CC BY-SA 3.0 (Perseus AGDT)",
+"research_only": false,
+"etyma": [
+"pie-lex-bheh2ti",
+"pie-lex-bheh2ti-2",
+"pie-lex-h1eh1ughtor",
+"pie-lex-h1esmi",
+"pie-lex-h2eristos",
+"pie-lex-megjh2s",
+"pie-lex-suHnus",
+"pie-lex-widet"
+]
+},
+{
+"id": "grp:Pindarus Olympia 1.31",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Pindarus Olympia 1.31",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-bhereti",
+"pie-lex-bhidhtos",
+"pie-lex-dhewghti",
+"pie-lex-h1esmi",
+"pie-lex-mexdeti",
+"pie-root-dhenh2-set_in_motion",
+"pie-root-gher-rub",
+"pie-root-gher-yearn_for",
+"pie-root-kwey-gather",
+"pie-root-kwey-pay",
+"pie-root-kwey-perceive"
+]
+},
+{
+"id": "grp:Hesiodus Opera et dies 756",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Hesiodus Opera et dies 756",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-dheh1s",
+"pie-lex-ish1ros",
+"pie-lex-kwoyneh2",
+"pie-root-h2eydh-ignite",
+"pie-root-nem-bend",
+"pie-root-nem-distribute",
+"pie-root-peth2-fly",
+"pie-root-peth2-spread_out",
+"pie-root-weyd-see"
+]
+},
+{
+"id": "grp:Euripides Bacchae 883",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Euripides Bacchae 883",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-bhidhtos",
+"pie-lex-mrtos",
+"pie-lex-smrtos",
+"pie-lex-sormeh2",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle"
+]
+},
+{
+"id": "hom:Od. 1.43",
+"corpus": "Homer (Perseus AGDT)",
+"locus": "Od. 1.43",
+"licence": "CC BY-SA 3.0 (Perseus AGDT)",
+"research_only": false,
+"etyma": [
+"kaikki:gʷʰren",
+"kaikki:ph₂ents",
+"pie-lex-bheh2ti",
+"pie-lex-bheh2ti-2",
+"pie-lex-h2meygw",
+"pie-root-bheydh-trust",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-dhrew-cry_out",
+"pie-root-dhrew-mislead",
+"pie-root-h2meygw-change",
+"pie-root-kwey-gather",
+"pie-root-kwey-pay",
+"pie-root-kwey-perceive"
+]
+},
+{
+"id": "grp:Euripides Bacchae 471",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Euripides Bacchae 471",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-dedeh3ti",
+"pie-lex-h1esmi",
+"pie-lex-mrtos",
+"pie-lex-segjheti",
+"pie-lex-smrtos",
+"pie-lex-woreh2yeti",
+"pie-lex-woyde",
+"pie-lex-wrh1tos",
+"pie-root-wergj-enclose",
+"pie-root-wergj-make",
+"pie-root-wergj-shear",
+"pie-root-weyd-see"
+]
+},
+{
+"id": "grp:Euripides Troiades 889",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Euripides Troiades 889",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-dheh1s",
+"pie-lex-dikjeh2",
+"pie-lex-doxm",
+"pie-lex-gwmyeti",
+"pie-lex-h1eh1ughtor",
+"pie-lex-h1esmi",
+"pie-lex-h2egjeti",
+"pie-lex-twos",
+"pie-root-dhenh2-set_in_motion",
+"pie-root-h2ey-day",
+"pie-root-h2ey-give",
+"pie-root-h2ey-vital_force",
+"pie-root-kel-drive",
+"pie-root-skel-bend",
+"pie-root-tkjen-deal_a_blow"
+]
+},
+{
+"id": "grp:Aeschylus Septem contra Thebas 266",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Aeschylus Septem contra Thebas 266",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-dheh1s",
+"pie-lex-egjh2",
+"pie-lex-h1eh1ughtor",
+"pie-lex-h1esmi",
+"pie-lex-h2kjh2owsyeti",
+"pie-root-kret-be_strong",
+"pie-root-kret-shake"
+]
+},
+{
+"id": "grp:Sophocles Antigone 448",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Sophocles Antigone 448",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-bhh2nyeti",
+"pie-lex-gwmyeti",
+"pie-lex-h1esmi",
+"pie-lex-prh2kyeti",
+"pie-lex-woyde",
+"pie-root-mel-limb",
+"pie-root-mel-worry",
+"pie-root-nem-bend",
+"pie-root-nem-distribute",
+"pie-root-smel-false",
+"pie-root-telh2-bear",
+"pie-root-telh2-ground"
+]
+},
+{
+"id": "grp:Hesiodus Theogonia 396",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Hesiodus Theogonia 396",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-bheh2ti",
+"pie-lex-bheh2ti-2",
+"pie-lex-gwmyeti",
+"pie-lex-h1esmi",
+"pie-lex-h1rskjeti",
+"pie-lex-ndhgwhitos",
+"pie-lex-pro-2",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-gjerh2-grow_old",
+"pie-root-kwey-gather",
+"pie-root-kwey-pay",
+"pie-root-kwey-perceive",
+"pie-root-stewg-push"
+]
+},
+{
+"id": "hom:Il. 17.278",
+"corpus": "Homer (Perseus AGDT)",
+"locus": "Il. 17.278",
+"licence": "CC BY-SA 3.0 (Perseus AGDT)",
+"research_only": false,
+"etyma": [
+"pie-lex-dhewghti",
+"pie-lex-h1esmi",
+"pie-lex-h1eyti",
+"pie-lex-wergjom",
+"pie-lex-weydos-2",
+"pie-root-leyg-illness",
+"pie-root-leyg-jump_around",
+"pie-root-leyg-similar",
+"pie-root-mel-limb",
+"pie-root-mel-worry",
+"pie-root-nekj-perish",
+"pie-root-smel-false",
+"pie-root-wers-wipe"
+]
+},
+{
+"id": "grp:Theognis Elegiae 1137",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Theognis Elegiae 1137",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-bhilos",
+"pie-lex-dheh1s",
+"pie-lex-gwmyeti",
+"pie-lex-h2nexr",
+"pie-lex-megjh2s",
+"pie-root-bheydh-trust",
+"pie-root-gher-rub",
+"pie-root-gher-yearn_for",
+"pie-root-h1ey-go",
+"pie-root-leykw-leave",
+"pie-root-tewh2-swell"
+]
+},
+{
+"id": "grp:Bacchylides Epinicia 11.107",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Bacchylides Epinicia 11.107",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-h1eh1ughtor",
+"pie-lex-kjlewt",
+"pie-root-bheydh-trust",
+"pie-root-peh2w-few",
+"pie-root-weh1-true"
+]
+},
+{
+"id": "grp:Sophocles Trachiniae 809",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Sophocles Trachiniae 809",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"kaikki:gʷl̥neh₁",
+"pie-lex-dikjeh2",
+"pie-lex-h1eh1ughtor",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-h1er-arrive",
+"pie-root-h1er-earth",
+"pie-root-kwey-gather",
+"pie-root-kwey-pay",
+"pie-root-kwey-perceive",
+"pie-root-sleh2gw-take"
+]
+},
+{
+"id": "grp:Sophocles Electra 316",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Sophocles Electra 316",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"kaikki:h₁rew",
+"pie-lex-bheh2ti",
+"pie-lex-bheh2ti-2",
+"pie-lex-bhilos",
+"pie-lex-h1esmi",
+"pie-lex-h1eyti",
+"pie-lex-segjheti",
+"pie-lex-siknewti",
+"pie-lex-twos",
+"pie-lex-weydtoxr",
+"pie-root-gjenh1-produce"
+]
+},
+{
+"id": "hom:Il. 21.518",
+"corpus": "Homer (Perseus AGDT)",
+"locus": "Il. 21.518",
+"licence": "CC BY-SA 3.0 (Perseus AGDT)",
+"research_only": false,
+"etyma": [
+"pie-lex-Heh2mr",
+"pie-lex-dheh1s",
+"pie-lex-h1e",
+"pie-lex-h1esmi",
+"pie-lex-h1eyti",
+"pie-lex-h2elyos",
+"pie-lex-megjh2s",
+"pie-root-bherH-brown",
+"pie-root-bherH-pierce",
+"pie-root-smer-assign",
+"pie-root-smer-fall_into_thinking"
+]
+},
+{
+"id": "grp:Euripides Heraclidae 666",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Euripides Heraclidae 666",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-h1esmi",
+"pie-lex-h1eyti",
+"pie-lex-prh2kyeti",
+"pie-lex-wergjom",
+"pie-lex-weydtoxr",
+"pie-root-gwelh3-wish",
+"pie-root-legj-drip",
+"pie-root-legj-gather",
+"pie-root-mensdhh1-vivacious"
+]
+},
+{
+"id": "grp:Theognis Elegiae 944",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Theognis Elegiae 944",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"kaikki:etos",
+"pie-lex-dheh1s",
+"pie-lex-h1eh1ughtor",
+"pie-lex-h1rskjeti",
+"pie-lex-h3rdhwos",
+"pie-lex-sodo",
+"pie-lex-stisteh2ti",
+"pie-root-dekjs-be_fit",
+"pie-root-steh2-stand"
+]
+},
+{
+"id": "grp:Hymni Homerici In Mercurium 378",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Hymni Homerici In Mercurium 378",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"kaikki:suh₂olgʷh₂o",
+"pie-lex-bhilos",
+"pie-lex-gwoxws",
+"pie-lex-h1eh1ughtor",
+"pie-lex-h1esmi",
+"pie-lex-ph2texr",
+"pie-lex-wewoyke",
+"pie-lex-wewoykje",
+"pie-root-bheh2-shine",
+"pie-root-bheh2-speak",
+"pie-root-bheydh-trust",
+"pie-root-h1elh2-drive",
+"pie-root-kret-be_strong",
+"pie-root-kret-shake"
+]
+},
+{
+"id": "grp:Hymni Homerici In Cererem 150",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Hymni Homerici In Cererem 150",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"kaikki:h₁nomn̥yeti",
+"pie-lex-deh2mos",
+"pie-lex-dhedheh1ti",
+"pie-lex-h1esmi",
+"pie-lex-h1eyti",
+"pie-lex-h2nexr",
+"pie-lex-kretos",
+"pie-lex-kretos-2",
+"pie-lex-megjh2s",
+"pie-lex-segjheti",
+"pie-lex-tpolHis",
+"pie-root-kwey-gather",
+"pie-root-kwey-pay",
+"pie-root-kwey-perceive"
+]
+},
+{
+"id": "hom:Il. 11.364",
+"corpus": "Homer (Perseus AGDT)",
+"locus": "Il. 11.364",
+"licence": "CC BY-SA 3.0 (Perseus AGDT)",
+"research_only": false,
+"etyma": [
+"kaikki:bʰoygʷo",
+"pie-lex-h1eh1ughtor",
+"pie-lex-h1eyti",
+"pie-lex-h1rskjeti",
+"pie-lex-stewp",
+"pie-lex-udteros",
+"pie-root-kenk-feel_hunger",
+"pie-root-mel-limb",
+"pie-root-mel-worry",
+"pie-root-smel-false",
+"pie-root-stewp-push",
+"pie-root-wekj-wish",
+"pie-root-wers-wipe"
+]
+},
+{
+"id": "hom:Od. 21.335",
+"corpus": "Homer (Perseus AGDT)",
+"locus": "Od. 21.335",
+"licence": "CC BY-SA 3.0 (Perseus AGDT)",
+"research_only": false,
+"etyma": [
+"pie-lex-dedeh3ti",
+"pie-lex-gjenh1os-2",
+"pie-lex-h1eh1ughtor",
+"pie-lex-h1esmi",
+"pie-lex-megjh2s",
+"pie-lex-ph2texr",
+"pie-lex-so",
+"pie-lex-suHnus",
+"pie-lex-widet",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-kes-scrape"
+]
+},
+{
+"id": "grp:Pindarus Pythia 4.63",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Pindarus Pythia 4.63",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-bhoh2neh2",
+"pie-lex-dheh1s",
+"pie-lex-h1esh2r",
+"pie-lex-h1esmi",
+"pie-lex-krinyeti",
+"pie-lex-kwoyneh2",
+"pie-root-h2ekj-sharp"
+]
+},
+{
+"id": "grp:Euripides Rhesus 331",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Euripides Rhesus 331",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-dheh1s",
+"pie-lex-h1esmi",
+"pie-lex-h1eyti",
+"pie-lex-polh1us",
+"pie-lex-sryeti-2",
+"pie-lex-woreh2yeti",
+"pie-root-bheydh-trust",
+"pie-root-deykj-point_out",
+"pie-root-deykj-throw",
+"pie-root-mel-limb",
+"pie-root-mel-worry",
+"pie-root-smel-false"
+]
+},
+{
+"id": "hom:Od. 13.141",
+"corpus": "Homer (Perseus AGDT)",
+"locus": "Od. 13.141",
+"licence": "CC BY-SA 3.0 (Perseus AGDT)",
+"research_only": false,
+"etyma": [
+"pie-lex-Hyos",
+"pie-lex-dheh1s",
+"pie-lex-h1esmi",
+"pie-lex-h2eristos",
+"pie-lex-pres",
+"pie-lex-swos",
+"pie-lex-wewket",
+"pie-root-kwey-gather",
+"pie-root-kwey-pay",
+"pie-root-kwey-perceive",
+"pie-root-sel-dwell",
+"pie-root-sel-jump",
+"pie-root-sel-sneak"
+]
+},
+{
+"id": "grp:Euripides Medea 802",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Euripides Medea 802",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-dheh1s",
+"pie-lex-dikjeh2",
+"pie-lex-doxm",
+"pie-lex-h2nexr",
+"pie-lex-peh2wids",
+"pie-lex-ph2texr",
+"pie-lex-woreh2yeti",
+"pie-root-bheydh-trust",
+"pie-root-kwey-gather",
+"pie-root-kwey-pay",
+"pie-root-kwey-perceive",
+"pie-root-legj-drip",
+"pie-root-legj-gather"
+]
+},
+{
+"id": "hom:Od. 2.320",
+"corpus": "Homer (Perseus AGDT)",
+"locus": "Od. 2.320",
+"licence": "CC BY-SA 3.0 (Perseus AGDT)",
+"research_only": false,
+"etyma": [
+"pie-lex-gjhesoxr",
+"pie-lex-gjigjnh1eti",
+"pie-lex-h1esmi",
+"pie-lex-h1reh1t",
+"pie-lex-neh2us",
+"pie-root-h1egj-say",
+"pie-root-speh2-draw",
+"pie-root-weyd-see"
+]
+},
+{
+"id": "hom:Od. 13.189",
+"corpus": "Homer (Perseus AGDT)",
+"locus": "Od. 13.189",
+"licence": "CC BY-SA 3.0 (Perseus AGDT)",
+"research_only": false,
+"etyma": [
+"kaikki:sewd",
+"pie-lex-dheh1s",
+"pie-lex-dyexws",
+"pie-lex-gjheweti",
+"pie-lex-gjnh3skjeti",
+"pie-lex-h1esmi",
+"pie-lex-h1eyti",
+"pie-lex-h2ew",
+"pie-lex-h2ewser",
+"pie-lex-h2ewseri",
+"pie-lex-kjorwa"
+]
+},
+{
+"id": "hom:Il. 20.466",
+"corpus": "Homer (Perseus AGDT)",
+"locus": "Il. 20.466",
+"licence": "CC BY-SA 3.0 (Perseus AGDT)",
+"research_only": false,
+"etyma": [
+"pie-lex-h1esmi",
+"pie-lex-h2nexr",
+"pie-lex-wekwos",
+"pie-lex-woyde",
+"pie-root-bheydh-trust",
+"pie-root-mel-limb",
+"pie-root-mel-worry",
+"pie-root-smel-false",
+"pie-root-tkjen-deal_a_blow"
+]
+},
+{
+"id": "grp:Aeschylus Eumenides 543",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Aeschylus Eumenides 543",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-h1esmi",
+"pie-lex-h1eyti",
+"pie-lex-kwelh1os",
+"pie-lex-kwoyneh2",
+"pie-lex-meneti",
+"pie-lex-poxds",
+"pie-root-kjewh1-swell"
+]
+},
+{
+"id": "grp:Hymni Homerici In Cererem 263",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Hymni Homerici In Cererem 263",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"kaikki:etos",
+"pie-lex-gjonu",
+"pie-lex-gwmyeti",
+"pie-lex-h1esmi",
+"pie-lex-h1eyti",
+"pie-lex-kjexr",
+"pie-lex-ndhgwhitos",
+"pie-root-h2wes-become_bright",
+"pie-root-h2wes-dwell",
+"pie-root-kwey-gather",
+"pie-root-kwey-pay",
+"pie-root-kwey-perceive"
+]
+},
+{
+"id": "grp:Theognis Elegiae 660",
+"corpus": "Greek poetry to 400 BC (GLAUx)",
+"locus": "Theognis Elegiae 660",
+"licence": "GLAUx; source text licence: CC BY-SA 4.0",
+"research_only": false,
+"etyma": [
+"pie-lex-dheh1s",
+"pie-lex-gjigjnh1eti",
+"pie-lex-h1esmi",
+"pie-lex-h1eyti",
+"pie-lex-h1sdhlo",
+"pie-lex-kwelh1os",
+"pie-lex-prh2kyeti",
+"pie-root-ghreh1-grow",
+"pie-root-h3emh3-grab",
+"pie-root-kenk-feel_hunger",
+"pie-root-nem-bend",
+"pie-root-nem-distribute"
+]
+}
+]
+},
+{
+"branch": "Germanic",
+"passages": [
+{
+"id": "ang:Beo. 1431",
+"corpus": "Old English poetry (Beowulf, Gutenberg; Grein 1857-58, OCR)",
+"locus": "Beo. 1431",
+"licence": "Public domain",
+"research_only": false,
+"etyma": [
+"kaikki:segʰ",
+"pie-lex-bhidros",
+"pie-lex-dhewsom",
+"pie-lex-h3reyHdheti-2",
+"pie-lex-h3royHdheh2",
+"pie-lex-soh2wl",
+"pie-lex-wegjhos",
+"pie-lex-wey",
+"pie-lex-wrmis",
+"pie-root-ghed-find",
+"pie-root-krews-push",
+"pie-root-swergh-be_ill"
+]
+},
+{
+"id": "ang:Grein II Das Heiiige Kreuz l.10794",
+"corpus": "Old English poetry (Beowulf, Gutenberg; Grein 1857-58, OCR)",
+"locus": "Grein II Das Heiiige Kreuz l.10794",
+"licence": "Public domain",
+"research_only": false,
+"etyma": [
+"kaikki:bʰerhǵtos",
+"pie-lex-gerbhti",
+"pie-lex-gwhonox",
+"pie-lex-h1esmi",
+"pie-lex-sken",
+"pie-lex-wrtis",
+"pie-root-bherH-brown",
+"pie-root-bherH-pierce"
+]
+},
+{
+"id": "ang:Grein I Cadmons Exodus l.8680",
+"corpus": "Old English poetry (Beowulf, Gutenberg; Grein 1857-58, OCR)",
+"locus": "Grein I Cadmons Exodus l.8680",
+"licence": "Public domain",
+"research_only": false,
+"etyma": [
+"pie-lex-bheydheti",
+"pie-lex-londhom",
+"pie-lex-pekju",
+"pie-lex-pertus",
+"pie-lex-plh1gom",
+"pie-lex-wiHros",
+"pie-root-bherH-brown",
+"pie-root-bherH-pierce",
+"pie-root-bheydh-trust"
+]
+},
+{
+"id": "non:Skýringar 7 [edda:19841]",
+"corpus": "Poetic Edda (Finnur Jónsson 1926, OCR)",
+"locus": "Skýringar 7",
+"licence": "Public domain",
+"research_only": false,
+"etyma": [
+"pie-lex-bholtos",
+"pie-lex-dhowHtos",
+"pie-lex-dhowtus",
+"pie-lex-gwhonox",
+"pie-lex-h2enh1gjheh2yeti",
+"pie-lex-h2enteros",
+"pie-lex-h2poh3lh1",
+"pie-lex-kjom",
+"pie-lex-preh2",
+"pie-lex-wegjheti",
+"pie-lex-wiketi",
+"pie-lex-wodr",
+"pie-root-weh2t-excited"
+]
+},
+{
+"id": "non:Lokasenna 45 [edda:5807]",
+"corpus": "Poetic Edda (Finnur Jónsson 1926, OCR)",
+"locus": "Lokasenna 45",
+"licence": "Public domain",
+"research_only": false,
+"etyma": [
+"pie-lex-h2elis",
+"pie-lex-lugos",
+"pie-lex-memoghe",
+"pie-lex-penteti",
+"pie-lex-sh1es",
+"pie-lex-wegjheti",
+"pie-lex-wiHros",
+"pie-lex-wiketi"
+]
+},
+{
+"id": "ang:Grein II Salomo Und Saturn l.25520",
+"corpus": "Old English poetry (Beowulf, Gutenberg; Grein 1857-58, OCR)",
+"locus": "Grein II Salomo Und Saturn l.25520",
+"licence": "Public domain",
+"research_only": false,
+"etyma": [
+"pie-lex-ghostis",
+"pie-lex-h2ermos",
+"pie-lex-kolh2d",
+"pie-lex-peysks",
+"pie-lex-smoldeyeti",
+"pie-lex-wrmis",
+"pie-lex-yestus",
+"pie-root-dheh1y-suckle",
+"pie-root-gjhengh-walk",
+"pie-root-smeld-soften",
+"pie-root-welH-be_strong",
+"pie-root-welH-roll"
+]
+},
+{
+"id": "ang:Beo. 314",
+"corpus": "Old English poetry (Beowulf, Gutenberg; Grein 1857-58, OCR)",
+"locus": "Beo. 314",
+"licence": "Public domain",
+"research_only": false,
+"etyma": [
+"pie-lex-drkjtos",
+"pie-lex-gjhongh",
+"pie-lex-gweteti",
+"pie-lex-gwhentis",
+"pie-lex-h1eh1oye",
+"pie-lex-memoghe",
+"pie-lex-wegjhyom",
+"pie-lex-werdhom",
+"pie-lex-wondheyeti",
+"pie-root-bherH-brown",
+"pie-root-bherH-pierce"
+]
+},
+{
+"id": "ang:Beo. 2903",
+"corpus": "Old English poetry (Beowulf, Gutenberg; Grein 1857-58, OCR)",
+"locus": "Beo. 2903",
+"licence": "Public domain",
+"research_only": false,
+"etyma": [
+"pie-lex-bhodhyom-2",
+"pie-lex-dheh1tis",
+"pie-lex-dhowtus",
+"pie-lex-dhrewghtis",
+"pie-lex-ghodom",
+"pie-lex-h2eldhrom",
+"pie-lex-leghyeti",
+"pie-lex-wnh1eh1yeti",
+"pie-lex-wolh3os",
+"pie-lex-wrmis"
+]
+},
+{
+"id": "non:Völuspá 30 [edda:677]",
+"corpus": "Poetic Edda (Finnur Jónsson 1926, OCR)",
+"locus": "Völuspá 30",
+"licence": "Public domain",
+"research_only": false,
+"etyma": [
+"pie-lex-gwhentis",
+"pie-lex-h2enteros",
+"pie-root-kelh2-beat"
+]
+},
+{
+"id": "ang:Beo. 2113",
+"corpus": "Old English poetry (Beowulf, Gutenberg; Grein 1857-58, OCR)",
+"locus": "Beo. 2113",
+"licence": "Public domain",
+"research_only": false,
+"etyma": [
+"kaikki:ḱomh₂elos",
+"pie-lex-bhendh",
+"pie-lex-gwhentis",
+"pie-lex-sker",
+"pie-lex-wewolHti",
+"pie-root-gwey-win",
+"pie-root-h2el-all",
+"pie-root-h2el-beyond",
+"pie-root-h2el-grow",
+"pie-root-kelh2-beat"
+]
+},
+{
+"id": "ang:Beo. 1699",
+"corpus": "Old English poetry (Beowulf, Gutenberg; Grein 1857-58, OCR)",
+"locus": "Beo. 1699",
+"licence": "Public domain",
+"research_only": false,
+"etyma": [
+"pie-lex-gjewstus",
+"pie-lex-poykjos-2",
+"pie-lex-suHnus",
+"pie-lex-wrmis",
+"pie-root-kelh2-beat",
+"pie-root-weyd-see"
+]
+},
+{
+"id": "ang:Beo. 2630",
+"corpus": "Old English poetry (Beowulf, Gutenberg; Grein 1857-58, OCR)",
+"locus": "Beo. 2630",
+"licence": "Public domain",
+"research_only": false,
+"etyma": [
+"pie-lex-gjhh1yeti",
+"pie-lex-h1eh1oye",
+"pie-lex-kapyeti",
+"pie-lex-loypeh2",
+"pie-lex-memoghe",
+"pie-lex-nh2wis",
+"pie-lex-penteti",
+"pie-lex-wiketi",
+"pie-lex-wrmis",
+"pie-root-sep-taste"
+]
+}
+]
+},
+{
+"branch": "Anatolian",
+"passages": [
+{
+"id": "hit:KBo 34.169+  {€1+2} r. Kol. 7′/10′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 34.169+  {€1+2} r. Kol. 7′/10′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-gjhesoxr",
+"pie-lex-h1epti",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KBo 19.161 Vs. I 22′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 19.161 Vs. I 22′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-gjhesoxr",
+"pie-lex-h1epti",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KBo 11.49 Vs. I 19′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 11.49 Vs. I 19′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-deh2s",
+"pie-lex-doh3ey"
+]
+},
+{
+"id": "hit:KBo 33.35+  {€2+9+15+11} Vs. II 33/Vs.? 2′/Vs. II 33/3′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 33.35+  {€2+9+15+11} Vs. II 33/Vs.? 2′/Vs. II 33/3′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-gjhesoxr",
+"pie-lex-h1epti",
+"pie-lex-h2erkti",
+"pie-lex-kwert",
+"pie-lex-kwis",
+"pie-lex-kwis-2",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KBo 11.43 Vs. I 28",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 11.43 Vs. I 28",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-h1epti"
+]
+},
+{
+"id": "hit:KBo 29.98 9′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 29.98 9′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-deh2s",
+"pie-lex-h1epti",
+"pie-lex-h2erkti",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KBo 17.7+  {€2+4+5+3} Rs. III 32/Rs. III 32/Rs. III 8′/ Rs. III 1′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 17.7+  {€2+4+5+3} Rs. III 32/Rs. III 32/Rs. III 8′/ Rs. III 1′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KUB 12.63+  {€1} Vs. 26′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KUB 12.63+  {€1} Vs. 26′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-enu",
+"pie-lex-gjhesoxr",
+"pie-lex-h1epti"
+]
+},
+{
+"id": "hit:KBo 54.218 3′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 54.218 3′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-gjhesoxr",
+"pie-lex-h2erkti",
+"pie-lex-kwis",
+"pie-lex-kwis-2",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KBo 29.204+ {€2} Rs. III 11",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 29.204+ {€2} Rs. III 11",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-gjhesoxr",
+"pie-lex-h1epti"
+]
+},
+{
+"id": "hit:KUB 41.10(+) {€1} Rs. IV 12′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KUB 41.10(+) {€1} Rs. IV 12′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-h1epti"
+]
+},
+{
+"id": "hit:KBo 21.78+  {€1} Vs. I 17",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 21.78+  {€1} Vs. I 17",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-deh2s",
+"pie-lex-doh3ey",
+"pie-lex-h1epti"
+]
+},
+{
+"id": "hit:KUB 32.58+  {€3+4+2} Vs. I 11′/Vs. (II) 21′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KUB 32.58+  {€3+4+2} Vs. I 11′/Vs. (II) 21′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-gjhesoxr",
+"pie-lex-h1epti",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KBo 24.126 rev. 9′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 24.126 rev. 9′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KBo 35.168 Vs. I 10′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 35.168 Vs. I 10′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-gjhesoxr"
+]
+},
+{
+"id": "hit:KBo 35.85+  {€2} r. Kol. 17′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 35.85+  {€2} r. Kol. 17′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:CHDS 7.120 Vs. 4′",
+"corpus": "Hittite (TLHdig)",
+"locus": "CHDS 7.120 Vs. 4′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-h1epti",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KUB 55.65 Rs.? III 9′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KUB 55.65 Rs.? III 9′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-gjhesoxr",
+"pie-lex-h1epti",
+"pie-lex-kwis",
+"pie-lex-kwis-2"
+]
+},
+{
+"id": "hit:KUB 10.65 Rs. IV 3′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KUB 10.65 Rs. IV 3′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-deh2s",
+"pie-lex-h1epti"
+]
+},
+{
+"id": "hit:KBo 22.134 Rs. IV 2′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 22.134 Rs. IV 2′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-gjhesoxr"
+]
+},
+{
+"id": "hit:KUB 2.4+ {€1} Vs. II 22",
+"corpus": "Hittite (TLHdig)",
+"locus": "KUB 2.4+ {€1} Vs. II 22",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-h1epti",
+"pie-root-steh2-stand"
+]
+},
+{
+"id": "hit:KBo 54.219+  {€2} Vs. I 10",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 54.219+  {€2} Vs. I 10",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-gjhesoxr",
+"pie-lex-h1epti",
+"pie-lex-h3esth1"
+]
+},
+{
+"id": "hit:IBoT 3.51 6′",
+"corpus": "Hittite (TLHdig)",
+"locus": "IBoT 3.51 6′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-deh2s",
+"pie-lex-doh3ey",
+"pie-lex-kwis",
+"pie-lex-kwis-2"
+]
+},
+{
+"id": "hit:KBo 19.161 Vs. II 20′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 19.161 Vs. II 20′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-h1epti",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KUB 11.35 Vs. III 17′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KUB 11.35 Vs. III 17′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-deh2s",
+"pie-lex-doh3ey"
+]
+},
+{
+"id": "hit:KBo 19.161 Vs. I 5′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 19.161 Vs. I 5′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-gjhesoxr",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KUB 44.8+  {€2} Vs. I 6′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KUB 44.8+  {€2} Vs. I 6′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-gjhesoxr",
+"pie-lex-h2erkti",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KBo 21.78+  {€3} Rs. IV! 18′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 21.78+  {€3} Rs. IV! 18′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-h1epti"
+]
+},
+{
+"id": "hit: {€1} 5′",
+"corpus": "Hittite (TLHdig)",
+"locus": " {€1} 5′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-deh2s",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KUB 32.135+  {€2} Rs. IV 13′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KUB 32.135+  {€2} Rs. IV 13′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KUB 40.65+  {€2} Rs. III 56",
+"corpus": "Hittite (TLHdig)",
+"locus": "KUB 40.65+  {€2} Rs. III 56",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KBo 40.179+ {€7} Vs. I 14",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 40.179+ {€7} Vs. I 14",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-h1epti"
+]
+},
+{
+"id": "hit:KBo 17.74+  {€1} Vs. II 25",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 17.74+  {€1} Vs. II 25",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-h1epti",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KBo 19.161 Vs. I 19′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 19.161 Vs. I 19′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-lex-gjhesoxr",
+"pie-lex-h1epti",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KBo 39.154+  {€2} Vs. II 24′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 39.154+  {€2} Vs. II 24′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-doh3ey",
+"pie-root-h1ep-grab"
+]
+},
+{
+"id": "hit:KBo 21.90 Rs. 47′",
+"corpus": "Hittite (TLHdig)",
+"locus": "KBo 21.90 Rs. 47′",
+"licence": "CC BY 4.0 (TLHdig)",
+"research_only": false,
+"etyma": [
+"pie-lex-deh2s",
+"pie-lex-doh3ey"
+]
+}
+]
+},
+{
+"branch": "Italic",
+"passages": [
+{
+"id": "lat:CatAgr 14.1",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "CatAgr 14.1",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"kaikki:klhkᵂn",
+"kaikki:m̥ǵh₂nos",
+"kaikki:pr̥sth₂is",
+"kaikki:skabʰnom",
+"kaikki:solom",
+"kaikki:ǵʰeymrinos",
+"pie-lex-Hyowdheyeti",
+"pie-lex-dhh2bhros",
+"pie-lex-gwelyeti",
+"pie-lex-gwoxws",
+"pie-lex-h2ekjs",
+"pie-lex-h3epos",
+"pie-lex-h3orbhis",
+"pie-lex-lewksmn",
+"pie-lex-newos",
+"pie-lex-peh2uros",
+"pie-lex-pinesti",
+"pie-lex-pistlom",
+"pie-lex-sedlo",
+"pie-lex-spendos",
+"pie-lex-tegnom",
+"pie-lex-tetkjdhlo",
+"pie-lex-worteyeti",
+"pie-root-bheh2-shine",
+"pie-root-bheh2-speak",
+"pie-root-delh1-split",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-kjel-cover",
+"pie-root-kjel-incline",
+"pie-root-kleh2w-hook",
+"pie-root-leb-hang_down_loosely",
+"pie-root-lep-peel_off",
+"pie-root-welh1-choose",
+"pie-root-weykj-enter_in",
+"pie-root-yeh2-go",
+"pie-root-yeh2-request"
+]
+},
+{
+"id": "lat:CatAgr 72.1",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "CatAgr 72.1",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"kaikki:hn̥dʰeros",
+"kaikki:pik",
+"pie-lex-dedeh3ti",
+"pie-lex-gwoxws",
+"pie-lex-h1yagjyus",
+"pie-lex-h2egjeti",
+"pie-lex-h2ekweh2",
+"pie-lex-h2eydhteh2ts",
+"pie-lex-h2oxwyom",
+"pie-lex-h2wlh1eh1yeti",
+"pie-lex-h3epos",
+"pie-lex-kaput",
+"pie-lex-kjrh2nos",
+"pie-lex-kwoyseh2",
+"pie-lex-nth2gros",
+"pie-lex-pelnis",
+"pie-lex-piph3eti",
+"pie-lex-poxds",
+"pie-lex-sexh2l",
+"pie-lex-sth2eh1yeti",
+"pie-lex-weyh1ox",
+"pie-lex-wideh1yeti",
+"pie-lex-wih1eh2",
+"pie-root-bhers-top",
+"pie-root-bhuH-be",
+"pie-root-dewh2-fit",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-h1ep-grab",
+"pie-root-h1eyHw-yew",
+"pie-root-h2wer-lift",
+"pie-root-h3engw-smear",
+"pie-root-krewh2-blood_outside_the",
+"pie-root-kweh2-dig",
+"pie-root-steh2y-steal",
+"pie-root-terh1-rub",
+"pie-root-wers-rise",
+"pie-root-wers-wipe"
+]
+},
+{
+"id": "lat:CatOrat Fragmentum_158.Linea_5",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "CatOrat Fragmentum_158.Linea_5",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"kaikki:bʰleh₂",
+"pie-lex-Hyowdheyeti",
+"pie-lex-h1eysh2eh2",
+"pie-lex-h2egjros",
+"pie-lex-ox-2",
+"pie-lex-serwos",
+"pie-lex-serwos-2",
+"pie-lex-wiHros",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-gheh1bh-grab"
+]
+},
+{
+"id": "lat:PlCasin 974",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "PlCasin 974",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"kaikki:skap",
+"kaikki:skeh₂iwos",
+"kaikki:sḱeypo",
+"pie-lex-h1eyti",
+"pie-lex-h2egjeti",
+"pie-lex-wiHros",
+"pie-root-dewh2-fit",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-gheh1bh-grab"
+]
+},
+{
+"id": "lat:CatAgr 61.1",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "CatAgr 61.1",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"pie-lex-bhereti",
+"pie-lex-dheh1nom",
+"pie-lex-gwlh2ndhis",
+"pie-lex-gwoxws",
+"pie-lex-h1epi",
+"pie-lex-h2egjros",
+"pie-lex-h2ekweh2",
+"pie-lex-h2eryeti",
+"pie-lex-mikjskjeti",
+"pie-lex-nokjeyeti",
+"pie-lex-peh2dhlom",
+"pie-lex-seh1mn",
+"pie-lex-sereti",
+"pie-lex-sish1eti",
+"pie-lex-siskus",
+"pie-lex-skert",
+"pie-lex-tempos",
+"pie-lex-tenh2us",
+"pie-lex-weyHs",
+"pie-lex-wideh1yeti",
+"pie-lex-wosr",
+"pie-lex-yugom",
+"pie-root-bhuH-be",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-h2wer-lift",
+"pie-root-kert-turn",
+"pie-root-kweh2-dig",
+"pie-root-kwelh1-turn",
+"pie-root-selk-drag",
+"pie-root-sem-one",
+"pie-root-skert-cut",
+"pie-root-wers-rise",
+"pie-root-wers-wipe"
+]
+},
+{
+"id": "lat:PlCurcu 610",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "PlCurcu 610",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"pie-lex-deykjeti",
+"pie-lex-gwelyeti",
+"pie-lex-h1ensekweti",
+"pie-lex-h1eyti",
+"pie-lex-h2egjeti",
+"pie-lex-h2ewis",
+"pie-lex-h2ewis-2",
+"pie-lex-sker",
+"pie-lex-smolos",
+"pie-lex-wiHros",
+"pie-root-dewh2-fit",
+"pie-root-kweh2-dig",
+"pie-root-sker-cut_off",
+"pie-root-sker-turn",
+"pie-root-smal-small",
+"pie-root-solh2-whole",
+"pie-root-welh1-choose"
+]
+},
+{
+"id": "lat:LucrDRN1 1.728",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "LucrDRN1 1.728",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"pie-lex-Hreh1is",
+"pie-lex-bhereti",
+"pie-lex-gjenh1tis",
+"pie-lex-gjhmox",
+"pie-lex-weyHs",
+"pie-lex-weydseti",
+"pie-lex-wiHros",
+"pie-root-dewh2-fit",
+"pie-root-gheh1bh-grab",
+"pie-root-peyH-sing"
+]
+},
+{
+"id": "lat:LucrDRN4 4.324",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "LucrDRN4 4.324",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"pie-lex-Hreh1is",
+"pie-lex-soh2wl",
+"pie-lex-tendeti",
+"pie-lex-tendeti-2",
+"pie-root-bhewg-enjoy",
+"pie-root-bhewg-flee",
+"pie-root-deh3-give",
+"pie-root-tewh2-swell",
+"pie-root-weyh1-chase"
+]
+},
+{
+"id": "lat:PlAmphi 302",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "PlAmphi 302",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"kaikki:m̥ǵh₂nos",
+"kaikki:wendtri",
+"pie-lex-dedeh3ti",
+"pie-lex-gjhmox",
+"pie-lex-h2egjeti",
+"pie-lex-modos",
+"pie-lex-pugjnos",
+"pie-lex-wideh1yeti",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle"
+]
+},
+{
+"id": "lat:CatOrig 5.Fragmentum_8",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "CatOrig 5.Fragmentum_8",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"kaikki:bʰrewd",
+"pie-lex-ghostis",
+"pie-lex-h2ekjs",
+"pie-lex-h3regjtos",
+"pie-lex-prh3o",
+"pie-root-h2erk-protect",
+"pie-root-sek-cut",
+"pie-root-sek-dry_out"
+]
+},
+{
+"id": "lat:PlCasin 210",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "PlCasin 210",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"pie-lex-Hreh1is",
+"pie-lex-tlokw",
+"pie-lex-werdhom",
+"pie-lex-wiHros",
+"pie-root-weyh1-chase"
+]
+},
+{
+"id": "lat:LucrDRN5 5.964",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "LucrDRN5 5.964",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"pie-lex-gwlh2ndhis",
+"pie-lex-moyth2os",
+"pie-lex-proti",
+"pie-lex-weyHs",
+"pie-lex-wiHros",
+"pie-root-legh-lie",
+"pie-root-lewbh-cut_off",
+"pie-root-lewbh-desire",
+"pie-root-peys-grind",
+"pie-root-speys-breathe"
+]
+},
+{
+"id": "lat:CatAgr 145.3",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "CatAgr 145.3",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"kaikki:bʰudʰmnos",
+"kaikki:sokʷh₂yos",
+"pie-lex-Hyowdheyeti",
+"pie-lex-dedeh3ti",
+"pie-lex-dh2pnom",
+"pie-lex-dolh1os",
+"pie-lex-h1esti",
+"pie-lex-h3edeti",
+"pie-lex-h3engwn",
+"pie-lex-h3epos",
+"pie-lex-kjmtom",
+"pie-lex-lexgjs",
+"pie-lex-prey",
+"pie-lex-seh2tis",
+"pie-lex-sexh2l",
+"pie-lex-smolos",
+"pie-lex-spendos",
+"pie-lex-spndeh1yeti",
+"pie-lex-spndeh1yeti-2",
+"pie-lex-wiHros",
+"pie-lex-worteyeti",
+"pie-root-dewh2-fit",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-gheh1bh-grab",
+"pie-root-h1em-take",
+"pie-root-h2yew-straight",
+"pie-root-h3eyt-take",
+"pie-root-meh1-measure",
+"pie-root-perh2-sell",
+"pie-root-sem-one",
+"pie-root-skewH-cover",
+"pie-root-smal-small",
+"pie-root-teh2g-order",
+"pie-root-teh2g-touch"
+]
+},
+{
+"id": "lat:LucrDRN5 5.1124",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "LucrDRN5 5.1124",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"pie-lex-bhlgeh1yeti",
+"pie-lex-dhers",
+"pie-lex-h1eytr",
+"pie-lex-uper",
+"pie-lex-wih1eh2",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-dhers-be_bold",
+"pie-root-h2eykj-appropriate"
+]
+},
+{
+"id": "lat:PlAmphi 210",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "PlAmphi 210",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"pie-lex-dedeh3ti",
+"pie-lex-h2ord",
+"pie-lex-peth2eti",
+"pie-lex-uper",
+"pie-lex-weyHs",
+"pie-lex-wiHros",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle"
+]
+},
+{
+"id": "lat:CatAgr 141.2",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "CatAgr 141.2",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"kaikki:bʰudʰmnos",
+"kaikki:h₁seti",
+"kaikki:wrsonkos",
+"pie-lex-Hreh1is",
+"pie-lex-Hyowdheyeti",
+"pie-lex-bhrewHgs",
+"pie-lex-bhruHgyeti",
+"pie-lex-dedeh3ti",
+"pie-lex-deykjeti",
+"pie-lex-deywos",
+"pie-lex-doxm",
+"pie-lex-h2egjros",
+"pie-lex-kjnseh1yeti",
+"pie-lex-kwoyseh2",
+"pie-lex-lHustro",
+"pie-lex-mh2kjtos",
+"pie-lex-molh2eh2",
+"pie-lex-morbhh2o",
+"pie-lex-pekju",
+"pie-lex-ph2texr",
+"pie-lex-prekjs",
+"pie-lex-tkjineti",
+"pie-lex-weyh1ox",
+"pie-lex-wideh1yeti",
+"pie-lex-worteyeti",
+"pie-root-dewh2-fit",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-gwhen-strike",
+"pie-root-kelh2-beat",
+"pie-root-menth2-stir",
+"pie-root-perh2-sell",
+"pie-root-solh2-whole"
+]
+},
+{
+"id": "lat:CatAgr 155.1",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "CatAgr 155.1",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"kaikki:hn̥dʰeros",
+"kaikki:h₂emseh₂",
+"kaikki:kerh₃",
+"pie-lex-Hreh1is",
+"pie-lex-bhlewH",
+"pie-lex-bhruHgyeti",
+"pie-lex-gjheyoxm",
+"pie-lex-h2egjros",
+"pie-lex-h2ekweh2",
+"pie-lex-h2epo",
+"pie-lex-kapyeti",
+"pie-lex-kwoyseh2",
+"pie-lex-montis",
+"pie-lex-pelh1w",
+"pie-lex-pleweti",
+"pie-lex-polh1w",
+"pie-lex-prey",
+"pie-lex-slyetor",
+"pie-lex-tkjineti",
+"pie-lex-weyh1ox",
+"pie-lex-wih1eh2",
+"pie-lex-worteyeti",
+"pie-root-bhlewH-overflow",
+"pie-root-bhlewH-strike",
+"pie-root-delh1-split",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-dheygw-stick_into",
+"pie-root-gheh1bh-grab",
+"pie-root-h1es-be",
+"pie-root-h1es-throw",
+"pie-root-kh2eyd-cut",
+"pie-root-kjel-cover",
+"pie-root-kjel-incline",
+"pie-root-leb-hang_down_loosely",
+"pie-root-mewH-cross_reference_only",
+"pie-root-pel-flour",
+"pie-root-perh3-provide",
+"pie-root-pewH-be_clean",
+"pie-root-pewH-rot",
+"pie-root-seg-fasten",
+"pie-root-sh1es-harvest",
+"pie-root-steg-cover",
+"pie-root-steg-pole",
+"pie-root-tewh2-swell",
+"pie-root-weykj-enter_in"
+]
+},
+{
+"id": "lat:PlAsina 296",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "PlAsina 296",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"pie-lex-Hyowdheyeti",
+"pie-lex-bhlgros",
+"pie-lex-h1eyti",
+"pie-lex-h2egjeti",
+"pie-lex-h2wlh1eh1yeti",
+"pie-lex-skrkr",
+"pie-lex-uper",
+"pie-lex-weyHs",
+"pie-lex-woxkws",
+"pie-root-ghed-find",
+"pie-root-skewH-cover",
+"pie-root-solh2-whole"
+]
+},
+{
+"id": "lat:PlCurcu 707",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "PlCurcu 707",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"kaikki:kʷolso",
+"pie-lex-Hreh1is",
+"pie-lex-Hyowdheyeti",
+"pie-lex-deykjeti",
+"pie-lex-gjhmox",
+"pie-lex-h2egjeti",
+"pie-lex-h3rogjos",
+"pie-lex-wiHros",
+"pie-root-dewh2-fit",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-gjenh1-produce",
+"pie-root-lewbh-cut_off",
+"pie-root-lewbh-desire"
+]
+},
+{
+"id": "lat:PlAmphi 599",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "PlAmphi 599",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"pie-lex-ghostis",
+"pie-lex-h1nomn",
+"pie-lex-h2egjeti",
+"pie-lex-h2ord",
+"pie-lex-kjreddheh1ti",
+"pie-lex-sedeh1yeti",
+"pie-root-bher-bear",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle"
+]
+},
+{
+"id": "lat:LucrDRN3 3.170",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "LucrDRN3 3.170",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"pie-lex-gwih3teh2",
+"pie-lex-h2enh1mos",
+"pie-lex-h3esth1",
+"pie-lex-krepos",
+"pie-lex-sneh1wr",
+"pie-lex-weyHs",
+"pie-root-gwhen-strike",
+"pie-root-krey-sift",
+"pie-root-steg-cover",
+"pie-root-steg-pole"
+]
+},
+{
+"id": "lat:Catul 32.9",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "Catul 32.9",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"pie-lex-Hyowdheyeti",
+"pie-lex-h2egjeti",
+"pie-lex-upo",
+"pie-root-seh2-satiate"
+]
+},
+{
+"id": "lat:LucrDRN2 2.326",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "LucrDRN2 2.326",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"pie-lex-h2eyos",
+"pie-lex-keh2ilos",
+"pie-lex-montis",
+"pie-lex-poxds",
+"pie-lex-weyHs",
+"pie-lex-wiHros",
+"pie-root-kelh1-call_out_to",
+"pie-root-kh2eyd-cut",
+"pie-root-skelh1-parch",
+"pie-root-telh2-bear",
+"pie-root-telh2-ground"
+]
+},
+{
+"id": "lat:CatOrat Fragmentum_32.Linea_1",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "CatOrat Fragmentum_32.Linea_1",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"kaikki:m̥ǵh₂nos",
+"pie-lex-ghostis",
+"pie-lex-h3epis",
+"pie-lex-h3opis",
+"pie-lex-klh1dtis",
+"pie-lex-plh1nos",
+"pie-lex-sedeh1yeti",
+"pie-root-bhuH-be",
+"pie-root-tewh2-swell"
+]
+},
+{
+"id": "lat:CatAgr 149.2",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "CatAgr 149.2",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"kaikki:dʰeh₁syos",
+"kaikki:glakt",
+"kaikki:hn̥dʰeros",
+"kaikki:ǵʰeymrinos",
+"pie-lex-Hreh1is",
+"pie-lex-bhruHgtus",
+"pie-lex-bhruHgyeti",
+"pie-lex-dedeh3ti",
+"pie-lex-deykjeti",
+"pie-lex-dh2pnom",
+"pie-lex-domh2eyeti",
+"pie-lex-dyexws",
+"pie-lex-gwih3weti",
+"pie-lex-gwoxws",
+"pie-lex-h1eytr",
+"pie-lex-h2egwnos",
+"pie-lex-h2ekweh2",
+"pie-lex-h2gjtos",
+"pie-lex-h2molgjeyeti",
+"pie-lex-h2owis",
+"pie-lex-kapyeti",
+"pie-lex-kje",
+"pie-lex-kritos",
+"pie-lex-legjnom",
+"pie-lex-lexgjs",
+"pie-lex-megjh2s",
+"pie-lex-nokwts",
+"pie-lex-peh2dhlom",
+"pie-lex-peh2y",
+"pie-lex-pekju",
+"pie-lex-pekju-2",
+"pie-lex-siskus",
+"pie-lex-uper",
+"pie-lex-wiHros",
+"pie-lex-worteyeti",
+"pie-root-bhuH-be",
+"pie-root-dewh2-fit",
+"pie-root-dheh1-do",
+"pie-root-dheh1y-suckle",
+"pie-root-dheygw-stick_into",
+"pie-root-h1ep-grab",
+"pie-root-kelh1-call_out_to",
+"pie-root-peh2-protect",
+"pie-root-peygj-vex",
+"pie-root-sem-one",
+"pie-root-skelh1-parch",
+"pie-root-speh2-draw",
+"pie-root-wes-dress",
+"pie-root-wes-graze",
+"pie-root-wes-sell"
+]
+},
+{
+"id": "lat:PlAmphi 212",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "PlAmphi 212",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"pie-lex-h2ord",
+"pie-lex-weyHs",
+"pie-lex-wiHros",
+"pie-root-dher-support"
+]
+},
+{
+"id": "lat:LucrDRN6 6.71",
+"corpus": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+"locus": "LucrDRN6 6.71",
+"licence": "LASLA: non-commercial",
+"research_only": true,
+"etyma": [
+"pie-lex-deywos",
+"pie-lex-h1eysh2eh2",
+"pie-lex-h2ekjros",
+"pie-lex-peth2eti",
+"pie-lex-uper",
+"pie-lex-weyHs",
+"pie-root-h1es-be",
+"pie-root-h1es-throw",
+"pie-root-sh1es-harvest",
+"pie-root-weyh1-chase"
+]
+}
+]
+}
+]
+}

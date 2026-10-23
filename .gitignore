@@ -19,3 +19,6 @@ raw/tier1-*/download/
 nil[0-9]*/
 data/audits/keys/
 data/research/backtest/*.npz
+
+# 8c packets with daughter text (some NC, research-only): local only; packets-loci/ is the committed copy
+data/research/8c/packets/

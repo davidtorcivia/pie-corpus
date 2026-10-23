@@ -1,0 +1,94 @@
+{
+ "order": [
+  "P-88ab",
+  "P-ac0e",
+  "P-d9f9",
+  "P-c6fd",
+  "P-1ef5",
+  "P-f333",
+  "P-782d",
+  "P-43c1",
+  "P-017e",
+  "P-4c5b",
+  "P-ee67",
+  "P-ce79",
+  "P-585f",
+  "P-40cf",
+  "P-cef0",
+  "P-d7d8",
+  "P-3ba7",
+  "P-16e4",
+  "P-8e3d",
+  "P-d0b2",
+  "P-c7b5",
+  "P-d588",
+  "P-bcdd",
+  "P-c66a"
+ ],
+ "readers": [
+  {
+   "reader": "R1",
+   "packets": [
+    "P-88ab",
+    "P-ac0e",
+    "P-d9f9"
+   ]
+  },
+  {
+   "reader": "R2",
+   "packets": [
+    "P-c6fd",
+    "P-1ef5",
+    "P-f333"
+   ]
+  },
+  {
+   "reader": "R3",
+   "packets": [
+    "P-782d",
+    "P-43c1",
+    "P-017e"
+   ]
+  },
+  {
+   "reader": "R4",
+   "packets": [
+    "P-4c5b",
+    "P-ee67",
+    "P-ce79"
+   ]
+  },
+  {
+   "reader": "R5",
+   "packets": [
+    "P-585f",
+    "P-40cf",
+    "P-cef0"
+   ]
+  },
+  {
+   "reader": "R6",
+   "packets": [
+    "P-d7d8",
+    "P-3ba7",
+    "P-16e4"
+   ]
+  },
+  {
+   "reader": "R7",
+   "packets": [
+    "P-8e3d",
+    "P-d0b2",
+    "P-c7b5"
+   ]
+  },
+  {
+   "reader": "R8",
+   "packets": [
+    "P-d588",
+    "P-bcdd",
+    "P-c66a"
+   ]
+  }
+ ]
+}

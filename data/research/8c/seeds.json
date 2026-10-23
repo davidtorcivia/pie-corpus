@@ -1,0 +1,7257 @@
+{
+ "note": "Phase 8c seed lexemes per theme (frozen with the packets; see docs/research/8c-preregistration.md). Matched gloss sense and concept per seed.",
+ "themes": {
+  "1": {
+   "name": "slaying a serpent or monster",
+   "concepts": [
+    "serpent",
+    "snake",
+    "dragon",
+    "worm",
+    "monster",
+    "slay",
+    "slew",
+    "slain",
+    "kill",
+    "smite",
+    "smote",
+    "strike",
+    "struck",
+    "overcome",
+    "conquer",
+    "hero",
+    "club",
+    "mace",
+    "cudgel",
+    "poison",
+    "venom",
+    "coil"
+   ],
+   "exclusions": [],
+   "seeds": [
+    {
+     "id": "pie-lex-dhembh",
+     "form": "dʰembʰ-",
+     "root": "pie-root-dhebh-make_small",
+     "gloss": "to strike, stun; to be stunned",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-lex-gwhegwhone",
+     "form": "gʷʰegʷʰóne",
+     "root": "pie-root-gwhen-strike",
+     "gloss": "to have slain",
+     "concept": "slain"
+    },
+    {
+     "id": "pie-lex-gwhenti",
+     "form": "gʷʰénti",
+     "root": "pie-root-gwhen-strike",
+     "gloss": "to be striking down, killing, slaying",
+     "concept": "slay"
+    },
+    {
+     "id": "pie-lex-gwhentis",
+     "form": "gʷʰéntis",
+     "root": "pie-root-gwhen-strike",
+     "gloss": "striking, killing",
+     "concept": "kill"
+    },
+    {
+     "id": "pie-lex-gwhentoxr",
+     "form": "gʷʰéntōr",
+     "root": "pie-root-gwhen-strike",
+     "gloss": "one who strikes, kills",
+     "concept": "kill"
+    },
+    {
+     "id": "pie-lex-gwhnskjeti",
+     "form": "gʷʰn̥sḱéti",
+     "root": "pie-root-gwhen-strike",
+     "gloss": "to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-lex-gwhnteys",
+     "form": "gʷʰn̥téys",
+     "root": "pie-root-gwhen-strike",
+     "gloss": "striking, beating",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-lex-gwhntos",
+     "form": "gʷʰn̥tós",
+     "root": "pie-root-gwhen-strike",
+     "gloss": "slain, killed",
+     "concept": "slain"
+    },
+    {
+     "id": "pie-lex-gwhonos-2",
+     "form": "gʷʰónos",
+     "root": "pie-root-gwhen-strike",
+     "gloss": "killing, slaughter",
+     "concept": "kill"
+    },
+    {
+     "id": "pie-lex-h1ogwhis",
+     "form": "h₁ógʷʰis",
+     "root": "pie-lex-h1ogwhis",
+     "gloss": "snake",
+     "concept": "snake"
+    },
+    {
+     "id": "pie-lex-h2engwhis",
+     "form": "h₂éngʷʰis",
+     "root": "pie-lex-h2engwhis",
+     "gloss": "snake",
+     "concept": "snake"
+    },
+    {
+     "id": "pie-lex-kelh2t",
+     "form": "kélh₂t",
+     "root": "pie-root-kelh2-beat",
+     "gloss": "to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-lex-kwrmis",
+     "form": "kʷŕ̥mis",
+     "root": "pie-lex-kwrmis",
+     "gloss": "worm, maggot, grub (crawling vermin)",
+     "concept": "worm"
+    },
+    {
+     "id": "pie-lex-moreyeti",
+     "form": "moréyeti",
+     "root": "pie-root-mer-die",
+     "gloss": "to kill",
+     "concept": "kill"
+    },
+    {
+     "id": "pie-lex-pert-4",
+     "form": "pért",
+     "root": "pie-root-per-strike",
+     "gloss": "to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-lex-pyeh2t",
+     "form": "pyéh₂t",
+     "root": "pie-root-pyeh2-strike",
+     "gloss": "to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-lex-sneHtr",
+     "form": "snéHtr̥",
+     "root": "pie-root-sneh1-spin",
+     "gloss": "adder (type of snake)",
+     "concept": "snake"
+    },
+    {
+     "id": "pie-lex-terh2uti",
+     "form": "térh₂uti",
+     "root": "pie-root-terh2-cross_over",
+     "gloss": "to overcome, be able",
+     "concept": "overcome"
+    },
+    {
+     "id": "pie-lex-tewkt",
+     "form": "téwkt",
+     "root": "pie-root-stewk-push",
+     "gloss": "to push, strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-lex-weykt",
+     "form": "wéykt",
+     "root": "pie-root-weyk-overcome",
+     "gloss": "to overcome, to defeat",
+     "concept": "overcome"
+    },
+    {
+     "id": "pie-lex-wiHros",
+     "form": "wiHrós",
+     "root": "pie-lex-wiHros",
+     "gloss": "warrior, hero",
+     "concept": "hero"
+    },
+    {
+     "id": "pie-lex-wisos",
+     "form": "wisós",
+     "root": "pie-root-weys-flow",
+     "gloss": "poison",
+     "concept": "poison"
+    },
+    {
+     "id": "pie-lex-wormis",
+     "form": "wórmis",
+     "root": "pie-root-werm-insect_larva",
+     "gloss": "worm, larva",
+     "concept": "worm"
+    },
+    {
+     "id": "pie-lex-wrmis",
+     "form": "wr̥mis",
+     "root": "pie-lex-wrmis",
+     "gloss": "worm",
+     "concept": "worm"
+    },
+    {
+     "id": "pie-root-bak-peg",
+     "form": "bak-",
+     "root": "pie-root-bak-peg",
+     "gloss": "peg, club",
+     "concept": "club"
+    },
+    {
+     "id": "pie-root-bherH-pierce",
+     "form": "bʰerH-",
+     "root": "pie-root-bherH-pierce",
+     "gloss": "to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-bhewd-strike",
+     "form": "bʰewd-",
+     "root": "pie-root-bhewd-strike",
+     "gloss": "to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-bheyh2-strike",
+     "form": "bʰeyh₂-",
+     "root": "pie-root-bheyh2-strike",
+     "gloss": "to strike, hit",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-bhleh2g-strike",
+     "form": "bʰleh₂g-",
+     "root": "pie-root-bhleh2g-strike",
+     "gloss": "to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-bhlewH-strike",
+     "form": "bʰlewH-",
+     "root": "pie-root-bhlewH-strike",
+     "gloss": "to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-bhleygj-strike",
+     "form": "bʰleyǵ-",
+     "root": "pie-root-bhleygj-strike",
+     "gloss": "to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-dhebh-make_small",
+     "form": "dʰebʰ-",
+     "root": "pie-root-dhebh-make_small",
+     "gloss": "to strike, harm, injure",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-dhembh-be_stunned",
+     "form": "dʰembʰ-",
+     "root": "pie-root-dhembh-be_stunned",
+     "gloss": "to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-dhreb-strike",
+     "form": "dʰreb-",
+     "root": "pie-root-dhreb-strike",
+     "gloss": "to strike, hit",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-gwey-win",
+     "form": "gʷey-",
+     "root": "pie-root-gwey-win",
+     "gloss": "to win, to conquer",
+     "concept": "conquer"
+    },
+    {
+     "id": "pie-root-gwhen-strike",
+     "form": "gʷʰen-",
+     "root": "pie-root-gwhen-strike",
+     "gloss": "to strike, slay, kill",
+     "concept": "slay"
+    },
+    {
+     "id": "pie-root-h2wyedh-wound",
+     "form": "h₂wyedʰ-",
+     "root": "pie-root-h2wyedh-wound",
+     "gloss": "to wound, strike fatally",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-keh2w-strike",
+     "form": "keh₂w-",
+     "root": "pie-root-keh2w-strike",
+     "gloss": "to strike, split",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-kewh2-hit",
+     "form": "kewh₂-",
+     "root": "pie-root-kewh2-hit",
+     "gloss": "to hit, to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-krekj-strike",
+     "form": "kreḱ-",
+     "root": "pie-root-krekj-strike",
+     "gloss": "to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-krews-push",
+     "form": "krews-",
+     "root": "pie-root-krews-push",
+     "gloss": "to push, bump, strike, break",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-per-strike",
+     "form": "per-",
+     "root": "pie-root-per-strike",
+     "gloss": "to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-pleh2g-strike",
+     "form": "pleh₂g-",
+     "root": "pie-root-pleh2g-strike",
+     "gloss": "to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-pleh2k-strike",
+     "form": "pleh₂k-",
+     "root": "pie-root-pleh2k-strike",
+     "gloss": "to strike (also as a gesture)",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-pyeh2-strike",
+     "form": "pyeh₂-",
+     "root": "pie-root-pyeh2-strike",
+     "gloss": "to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-slak-strike",
+     "form": "slak-",
+     "root": "pie-root-slak-strike",
+     "gloss": "to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-stewk-push",
+     "form": "stewk-",
+     "root": "pie-root-stewk-push",
+     "gloss": "to strike, beat",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-streyg-stroke",
+     "form": "streyg-",
+     "root": "pie-root-streyg-stroke",
+     "gloss": "to stroke, rub, strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-telk-thrust",
+     "form": "telk-",
+     "root": "pie-root-telk-thrust",
+     "gloss": "to thrust, strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-terh2-cross_over",
+     "form": "terh₂-",
+     "root": "pie-root-terh2-cross_over",
+     "gloss": "to cross over, pass through, overcome",
+     "concept": "overcome"
+    },
+    {
+     "id": "pie-root-welh3-hit",
+     "form": "welh₃-",
+     "root": "pie-root-welh3-hit",
+     "gloss": "to hit, to strike",
+     "concept": "strike"
+    },
+    {
+     "id": "pie-root-werm-insect_larva",
+     "form": "werm-",
+     "root": "pie-root-werm-insect_larva",
+     "gloss": "worm",
+     "concept": "worm"
+    },
+    {
+     "id": "pie-root-weyk-overcome",
+     "form": "weyk-",
+     "root": "pie-root-weyk-overcome",
+     "gloss": "to overcome",
+     "concept": "overcome"
+    }
+   ],
+   "roots": [
+    "pie-lex-h1ogwhis",
+    "pie-lex-h2engwhis",
+    "pie-lex-kwrmis",
+    "pie-lex-wiHros",
+    "pie-lex-wrmis",
+    "pie-root-bak-peg",
+    "pie-root-bherH-pierce",
+    "pie-root-bhewd-strike",
+    "pie-root-bheyh2-strike",
+    "pie-root-bhleh2g-strike",
+    "pie-root-bhlewH-strike",
+    "pie-root-bhleygj-strike",
+    "pie-root-dhebh-make_small",
+    "pie-root-dhembh-be_stunned",
+    "pie-root-dhreb-strike",
+    "pie-root-gwey-win",
+    "pie-root-gwhen-strike",
+    "pie-root-h2wyedh-wound",
+    "pie-root-keh2w-strike",
+    "pie-root-kelh2-beat",
+    "pie-root-kewh2-hit",
+    "pie-root-krekj-strike",
+    "pie-root-krews-push",
+    "pie-root-mer-die",
+    "pie-root-per-strike",
+    "pie-root-pleh2g-strike",
+    "pie-root-pleh2k-strike",
+    "pie-root-pyeh2-strike",
+    "pie-root-slak-strike",
+    "pie-root-sneh1-spin",
+    "pie-root-stewk-push",
+    "pie-root-streyg-stroke",
+    "pie-root-telk-thrust",
+    "pie-root-terh2-cross_over",
+    "pie-root-welh3-hit",
+    "pie-root-werm-insect_larva",
+    "pie-root-weyk-overcome",
+    "pie-root-weys-flow"
+   ]
+  },
+  "2": {
+   "name": "cattle raid and recovery",
+   "concepts": [
+    "cattle",
+    "cow",
+    "kine",
+    "ox",
+    "oxen",
+    "bull",
+    "steer",
+    "heifer",
+    "calf",
+    "herd",
+    "livestock",
+    "steal",
+    "stole",
+    "stolen",
+    "thief",
+    "theft",
+    "rob",
+    "robber",
+    "booty",
+    "plunder",
+    "spoil",
+    "raid",
+    "rustle",
+    "enclosure",
+    "stall",
+    "pen",
+    "rescue",
+    "recover",
+    "drive away"
+   ],
+   "exclusions": [
+    "drive away evil"
+   ],
+   "seeds": [
+    {
+     "id": "pie-lex-Hrowpos",
+     "form": "Hrowpós",
+     "root": "pie-root-Hrewp-break",
+     "gloss": "plundering, pillage, loot",
+     "concept": "plunder"
+    },
+    {
+     "id": "pie-lex-bherdht",
+     "form": "bʰérdʰt",
+     "root": "pie-root-bherdh-plunder",
+     "gloss": "to plunder, to capture",
+     "concept": "plunder"
+    },
+    {
+     "id": "pie-lex-bhoxr",
+     "form": "bʰṓr",
+     "root": "pie-root-bher-bear",
+     "gloss": "thief",
+     "concept": "thief"
+    },
+    {
+     "id": "pie-lex-ghortos",
+     "form": "gʰórtos",
+     "root": "pie-root-gherdh-enclose",
+     "gloss": "enclosure",
+     "concept": "enclosure"
+    },
+    {
+     "id": "pie-lex-gjhortos",
+     "form": "ǵʰórtos",
+     "root": "pie-root-gjher-take",
+     "gloss": "enclosure",
+     "concept": "enclosure"
+    },
+    {
+     "id": "pie-lex-gwowsth2os",
+     "form": "gʷowsth₂ós",
+     "root": "pie-root-steh2-stand",
+     "gloss": "cow-stall",
+     "concept": "cow"
+    },
+    {
+     "id": "pie-lex-gwowyos",
+     "form": "gʷówyos",
+     "root": "pie-lex-gwowyos",
+     "gloss": "bovine, pertaining to cows",
+     "concept": "cow"
+    },
+    {
+     "id": "pie-lex-gwoxws",
+     "form": "gʷṓws",
+     "root": "pie-lex-gwoxws",
+     "gloss": "cattle",
+     "concept": "cattle"
+    },
+    {
+     "id": "pie-lex-h2egjh",
+     "form": "h₂eǵʰ-",
+     "root": "pie-lex-h2egjh",
+     "gloss": "cow",
+     "concept": "cow"
+    },
+    {
+     "id": "pie-lex-h2uksexn",
+     "form": "h₂uksḗn",
+     "root": "pie-root-h2weks-increase",
+     "gloss": "bull",
+     "concept": "bull"
+    },
+    {
+     "id": "pie-lex-kaghr",
+     "form": "kágʰr̥",
+     "root": "pie-root-kagh-hold",
+     "gloss": "enclosure",
+     "concept": "enclosure"
+    },
+    {
+     "id": "pie-lex-kaghyom",
+     "form": "kagʰyóm",
+     "root": "pie-root-kagh-hold",
+     "gloss": "enclosure, hedge",
+     "concept": "enclosure"
+    },
+    {
+     "id": "pie-lex-kjmtogwus",
+     "form": "ḱm̥tógʷus",
+     "root": "pie-lex-kjmtogwus",
+     "gloss": "possessing 100 cows",
+     "concept": "cow"
+    },
+    {
+     "id": "pie-lex-pekju",
+     "form": "péḱu",
+     "root": "pie-lex-pekju",
+     "gloss": "livestock, cattle (collective)",
+     "concept": "cattle"
+    },
+    {
+     "id": "pie-lex-skerdh",
+     "form": "skerdʰ-",
+     "root": "pie-root-sker-cut_off",
+     "gloss": "herd",
+     "concept": "herd"
+    },
+    {
+     "id": "pie-lex-spert",
+     "form": "spért",
+     "root": "pie-root-sper-free",
+     "gloss": "to free, rescue",
+     "concept": "rescue"
+    },
+    {
+     "id": "pie-lex-steh2dhh1om",
+     "form": "stéh₂dʰh₁om",
+     "root": "pie-root-steh2-stand",
+     "gloss": "herd",
+     "concept": "herd"
+    },
+    {
+     "id": "pie-lex-steh2nom",
+     "form": "stéh₂nom",
+     "root": "pie-root-steh2-stand",
+     "gloss": "standing-place, place; stall",
+     "concept": "stall"
+    },
+    {
+     "id": "pie-lex-steh2yeti",
+     "form": "stéh₂yeti",
+     "root": "pie-root-steh2-stand",
+     "gloss": "to steal",
+     "concept": "steal"
+    },
+    {
+     "id": "pie-lex-sterih2s",
+     "form": "steríh₂s",
+     "root": "pie-root-ster-barren",
+     "gloss": "sterile cow, heifer",
+     "concept": "cow"
+    },
+    {
+     "id": "pie-lex-sth2dhlom",
+     "form": "sth₂dʰlóm",
+     "root": "pie-root-steh2-stand",
+     "gloss": "stable, stall",
+     "concept": "stall"
+    },
+    {
+     "id": "pie-lex-tawros",
+     "form": "táwros",
+     "root": "pie-lex-tawros",
+     "gloss": "wild bull, aurochs",
+     "concept": "bull"
+    },
+    {
+     "id": "pie-lex-ugwsexn",
+     "form": "ugʷsḗn",
+     "root": "pie-root-wegw-wet",
+     "gloss": "bull, ox",
+     "concept": "ox"
+    },
+    {
+     "id": "pie-lex-uksexn",
+     "form": "uksḗn",
+     "root": "pie-lex-uksexn",
+     "gloss": "bull",
+     "concept": "bull"
+    },
+    {
+     "id": "pie-lex-worbhis",
+     "form": "wórbʰis",
+     "root": "pie-root-werbh-enclose",
+     "gloss": "enclosure",
+     "concept": "enclosure"
+    },
+    {
+     "id": "pie-root-bherdh-plunder",
+     "form": "bʰerdʰ-",
+     "root": "pie-root-bherdh-plunder",
+     "gloss": "to plunder, to capture",
+     "concept": "plunder"
+    },
+    {
+     "id": "pie-root-gherdh-enclose",
+     "form": "gʰerdʰ-",
+     "root": "pie-root-gherdh-enclose",
+     "gloss": "enclosure, fence, belt",
+     "concept": "enclosure"
+    },
+    {
+     "id": "pie-root-gjyeH-rob",
+     "form": "ǵyeH-",
+     "root": "pie-root-gjyeH-rob",
+     "gloss": "to rob, deprive",
+     "concept": "rob"
+    },
+    {
+     "id": "pie-root-h2ger-gather",
+     "form": "h₂ger-",
+     "root": "pie-root-h2ger-gather",
+     "gloss": "flock, herd",
+     "concept": "herd"
+    },
+    {
+     "id": "pie-root-klep-steal",
+     "form": "klep-",
+     "root": "pie-root-klep-steal",
+     "gloss": "to steal",
+     "concept": "steal"
+    },
+    {
+     "id": "pie-root-pekj-wealth",
+     "form": "peḱ-",
+     "root": "pie-root-pekj-wealth",
+     "gloss": "livestock",
+     "concept": "livestock"
+    },
+    {
+     "id": "pie-root-ser-take",
+     "form": "ser-",
+     "root": "pie-root-ser-take",
+     "gloss": "to steal, plunder; booty",
+     "concept": "steal"
+    },
+    {
+     "id": "pie-root-seydh-drive_away",
+     "form": "seydʰ-",
+     "root": "pie-root-seydh-drive_away",
+     "gloss": "to drive away",
+     "concept": "drive away"
+    },
+    {
+     "id": "pie-root-sper-free",
+     "form": "sper-",
+     "root": "pie-root-sper-free",
+     "gloss": "to free, rescue",
+     "concept": "rescue"
+    },
+    {
+     "id": "pie-root-steh2y-steal",
+     "form": "steh₂y-",
+     "root": "pie-root-steh2y-steal",
+     "gloss": "to steal",
+     "concept": "steal"
+    },
+    {
+     "id": "pie-root-teh2-steal",
+     "form": "teh₂-",
+     "root": "pie-root-teh2-steal",
+     "gloss": "to steal",
+     "concept": "steal"
+    }
+   ],
+   "roots": [
+    "pie-lex-gwowyos",
+    "pie-lex-gwoxws",
+    "pie-lex-h2egjh",
+    "pie-lex-kjmtogwus",
+    "pie-lex-pekju",
+    "pie-lex-tawros",
+    "pie-lex-uksexn",
+    "pie-root-Hrewp-break",
+    "pie-root-bher-bear",
+    "pie-root-bherdh-plunder",
+    "pie-root-gherdh-enclose",
+    "pie-root-gjher-take",
+    "pie-root-gjyeH-rob",
+    "pie-root-h2ger-gather",
+    "pie-root-h2weks-increase",
+    "pie-root-kagh-hold",
+    "pie-root-klep-steal",
+    "pie-root-pekj-wealth",
+    "pie-root-ser-take",
+    "pie-root-seydh-drive_away",
+    "pie-root-sker-cut_off",
+    "pie-root-sper-free",
+    "pie-root-steh2-stand",
+    "pie-root-steh2y-steal",
+    "pie-root-ster-barren",
+    "pie-root-teh2-steal",
+    "pie-root-wegw-wet",
+    "pie-root-werbh-enclose"
+   ]
+  },
+  "3": {
+   "name": "funeral and the road of the dead",
+   "concepts": [
+    "die",
+    "dying",
+    "dead",
+    "death",
+    "corpse",
+    "grave",
+    "bury",
+    "burial",
+    "tomb",
+    "funeral",
+    "pyre",
+    "mourn",
+    "lament",
+    "weep",
+    "wept",
+    "wail",
+    "soul",
+    "ghost",
+    "shade",
+    "underworld",
+    "ancestor",
+    "forefather",
+    "bone",
+    "ashes",
+    "road",
+    "path",
+    "ferry",
+    "perish",
+    "decease"
+   ],
+   "exclusions": [],
+   "seeds": [
+    {
+     "id": "pie-lex-HrewdH",
+     "form": "HrewdH-",
+     "root": "pie-root-h3rewH-roar",
+     "gloss": "to weep",
+     "concept": "weep"
+    },
+    {
+     "id": "pie-lex-dhgwhey",
+     "form": "dʰgʷʰey-",
+     "root": "pie-root-dhegwh-burn",
+     "gloss": "to decline, perish",
+     "concept": "perish"
+    },
+    {
+     "id": "pie-lex-dhgwheyt-2",
+     "form": "dʰgʷʰéyt",
+     "root": "pie-root-dhgwhey-decline",
+     "gloss": "to waste away (from heat), perish",
+     "concept": "perish"
+    },
+    {
+     "id": "pie-lex-dhwexs",
+     "form": "dʰwḗs",
+     "root": "pie-root-dhwes-breathe",
+     "gloss": "breath; soul",
+     "concept": "soul"
+    },
+    {
+     "id": "pie-lex-gjenh1texr",
+     "form": "ǵenh₁tḗr",
+     "root": "pie-root-gjenh1-produce",
+     "gloss": "begetter, ancestor",
+     "concept": "ancestor"
+    },
+    {
+     "id": "pie-lex-gwh2tos",
+     "form": "gʷh₂tós",
+     "root": "pie-root-gweh2-step",
+     "gloss": "death",
+     "concept": "death"
+    },
+    {
+     "id": "pie-lex-h2enh1mn",
+     "form": "h₂énh₁mn̥",
+     "root": "pie-root-h2enh1-breathe",
+     "gloss": "breath, soul",
+     "concept": "soul"
+    },
+    {
+     "id": "pie-lex-h2ogjmos",
+     "form": "h₂óǵmos",
+     "root": "pie-root-h2egj-drive",
+     "gloss": "path, way, trajectory",
+     "concept": "path"
+    },
+    {
+     "id": "pie-lex-h3elh1t",
+     "form": "h₃élh₁t",
+     "root": "pie-root-h3elh1-fall",
+     "gloss": "to perish",
+     "concept": "perish"
+    },
+    {
+     "id": "pie-lex-h3ergt",
+     "form": "h₃érgt",
+     "root": "pie-root-h3erg-perish",
+     "gloss": "to perish",
+     "concept": "perish"
+    },
+    {
+     "id": "pie-lex-h3esth1",
+     "form": "h₃ésth₁",
+     "root": "pie-lex-h3esth1",
+     "gloss": "bone",
+     "concept": "bone"
+    },
+    {
+     "id": "pie-lex-mert",
+     "form": "mért",
+     "root": "pie-root-mer-die",
+     "gloss": "to die",
+     "concept": "die"
+    },
+    {
+     "id": "pie-lex-mertis",
+     "form": "mértis",
+     "root": "pie-root-mer-die",
+     "gloss": "death",
+     "concept": "death"
+    },
+    {
+     "id": "pie-lex-morbhh2o",
+     "form": "morbʰh₂o-",
+     "root": "pie-root-mer-die",
+     "gloss": "looking like death?",
+     "concept": "death"
+    },
+    {
+     "id": "pie-lex-moro",
+     "form": "móro-",
+     "root": "pie-root-mer-die",
+     "gloss": "death, pestilence",
+     "concept": "death"
+    },
+    {
+     "id": "pie-lex-mrtos",
+     "form": "mr̥tós",
+     "root": "pie-root-mer-die",
+     "gloss": "dead",
+     "concept": "dead"
+    },
+    {
+     "id": "pie-lex-mrtwos",
+     "form": "mr̥twós",
+     "root": "pie-root-mer-die",
+     "gloss": "dead",
+     "concept": "dead"
+    },
+    {
+     "id": "pie-lex-mrwos",
+     "form": "mr̥wós",
+     "root": "pie-root-mer-die",
+     "gloss": "dead",
+     "concept": "dead"
+    },
+    {
+     "id": "pie-lex-mryetor",
+     "form": "mr̥yétor",
+     "root": "pie-root-mer-die",
+     "gloss": "to die",
+     "concept": "die"
+    },
+    {
+     "id": "pie-lex-nekjs",
+     "form": "néḱs",
+     "root": "pie-root-nekj-perish",
+     "gloss": "death",
+     "concept": "death"
+    },
+    {
+     "id": "pie-lex-nekjus",
+     "form": "néḱus",
+     "root": "pie-root-nekj-perish",
+     "gloss": "dead",
+     "concept": "dead"
+    },
+    {
+     "id": "pie-lex-nokjeyeti",
+     "form": "noḱéyeti",
+     "root": "pie-root-nekj-perish",
+     "gloss": "to make disappear, to cause death",
+     "concept": "death"
+    },
+    {
+     "id": "pie-lex-pontoh1s",
+     "form": "póntoh₁s",
+     "root": "pie-root-pent-pass",
+     "gloss": "path",
+     "concept": "path"
+    },
+    {
+     "id": "pie-lex-skjeh3ih2",
+     "form": "sḱeh₃ih₂",
+     "root": "pie-root-skjeh3-darkness",
+     "gloss": "shadow, shade",
+     "concept": "shade"
+    },
+    {
+     "id": "pie-lex-steyghs",
+     "form": "stéygʰs",
+     "root": "pie-root-steygh-go",
+     "gloss": "path",
+     "concept": "path"
+    },
+    {
+     "id": "pie-lex-steyks",
+     "form": "stéyks",
+     "root": "pie-lex-steyks",
+     "gloss": "path",
+     "concept": "path"
+    },
+    {
+     "id": "pie-lex-stoyghos",
+     "form": "stóygʰos",
+     "root": "pie-root-steygh-go",
+     "gloss": "path, way",
+     "concept": "path"
+    },
+    {
+     "id": "pie-lex-supnos",
+     "form": "supnós",
+     "root": "pie-root-swep-sleep",
+     "gloss": "death",
+     "concept": "death"
+    },
+    {
+     "id": "pie-root-HrewdH-weep",
+     "form": "HrewdH-",
+     "root": "pie-root-HrewdH-weep",
+     "gloss": "to weep",
+     "concept": "weep"
+    },
+    {
+     "id": "pie-root-dhembh-bury",
+     "form": "dʰembʰ-",
+     "root": "pie-root-dhembh-bury",
+     "gloss": "to bury (cremate)",
+     "concept": "bury"
+    },
+    {
+     "id": "pie-root-dhew-die",
+     "form": "dʰew-",
+     "root": "pie-root-dhew-die",
+     "gloss": "to die, pass away",
+     "concept": "die"
+    },
+    {
+     "id": "pie-root-dhgwher-meaning_of_this",
+     "form": "dʰgʷʰer-",
+     "root": "pie-root-dhgwher-meaning_of_this",
+     "gloss": "to wane (diminish, decline), vanish; to perish; (causative) to lessen, ruin, destroy",
+     "concept": "perish"
+    },
+    {
+     "id": "pie-root-dhgwhey-decline",
+     "form": "dʰgʷʰey-",
+     "root": "pie-root-dhgwhey-decline",
+     "gloss": "to perish",
+     "concept": "perish"
+    },
+    {
+     "id": "pie-root-gheu-disappear",
+     "form": "gʰeu-",
+     "root": "pie-root-gheu-disappear",
+     "gloss": "to perish, die off",
+     "concept": "die"
+    },
+    {
+     "id": "pie-root-gwergjh-lament",
+     "form": "gʷerǵʰ-",
+     "root": "pie-root-gwergjh-lament",
+     "gloss": "to lament",
+     "concept": "lament"
+    },
+    {
+     "id": "pie-root-h1ekj-die",
+     "form": "h₁eḱ-",
+     "root": "pie-root-h1ekj-die",
+     "gloss": "to die",
+     "concept": "die"
+    },
+    {
+     "id": "pie-root-h2eHs-be_dry",
+     "form": "h₂eHs-",
+     "root": "pie-root-h2eHs-be_dry",
+     "gloss": "ashes",
+     "concept": "ashes"
+    },
+    {
+     "id": "pie-root-h2erH-disappear",
+     "form": "h₂erH-",
+     "root": "pie-root-h2erH-disappear",
+     "gloss": "to disappear, perish",
+     "concept": "perish"
+    },
+    {
+     "id": "pie-root-h3erg-perish",
+     "form": "h₃erg-",
+     "root": "pie-root-h3erg-perish",
+     "gloss": "to perish",
+     "concept": "perish"
+    },
+    {
+     "id": "pie-root-kewH-cry_out",
+     "form": "kewH-",
+     "root": "pie-root-kewH-cry_out",
+     "gloss": "to wail (in lament)",
+     "concept": "lament"
+    },
+    {
+     "id": "pie-root-kjleh2w-weep",
+     "form": "ḱleh₂w-",
+     "root": "pie-root-kjleh2w-weep",
+     "gloss": "to weep",
+     "concept": "weep"
+    },
+    {
+     "id": "pie-root-kwrepH-lament",
+     "form": "kʷrepH-",
+     "root": "pie-root-kwrepH-lament",
+     "gloss": "to lament",
+     "concept": "lament"
+    },
+    {
+     "id": "pie-root-mer-die",
+     "form": "mer-",
+     "root": "pie-root-mer-die",
+     "gloss": "to die",
+     "concept": "die"
+    },
+    {
+     "id": "pie-root-neh2w-die",
+     "form": "neh₂w-",
+     "root": "pie-root-neh2w-die",
+     "gloss": "to die, perish",
+     "concept": "die"
+    },
+    {
+     "id": "pie-root-nekj-perish",
+     "form": "neḱ-",
+     "root": "pie-root-nekj-perish",
+     "gloss": "to perish, disappear",
+     "concept": "perish"
+    },
+    {
+     "id": "pie-root-pent-pass",
+     "form": "pent-",
+     "root": "pie-root-pent-pass",
+     "gloss": "path",
+     "concept": "path"
+    },
+    {
+     "id": "pie-root-rewdH-cry_out",
+     "form": "rewdH-",
+     "root": "pie-root-rewdH-cry_out",
+     "gloss": "to cry out, weep",
+     "concept": "weep"
+    },
+    {
+     "id": "pie-root-sweld-starve",
+     "form": "sweld-",
+     "root": "pie-root-sweld-starve",
+     "gloss": "to starve, die",
+     "concept": "die"
+    }
+   ],
+   "roots": [
+    "pie-lex-h3esth1",
+    "pie-lex-steyks",
+    "pie-root-HrewdH-weep",
+    "pie-root-dhegwh-burn",
+    "pie-root-dhembh-bury",
+    "pie-root-dhew-die",
+    "pie-root-dhgwher-meaning_of_this",
+    "pie-root-dhgwhey-decline",
+    "pie-root-dhwes-breathe",
+    "pie-root-gheu-disappear",
+    "pie-root-gjenh1-produce",
+    "pie-root-gweh2-step",
+    "pie-root-gwergjh-lament",
+    "pie-root-h1ekj-die",
+    "pie-root-h2eHs-be_dry",
+    "pie-root-h2egj-drive",
+    "pie-root-h2enh1-breathe",
+    "pie-root-h2erH-disappear",
+    "pie-root-h3elh1-fall",
+    "pie-root-h3erg-perish",
+    "pie-root-h3rewH-roar",
+    "pie-root-kewH-cry_out",
+    "pie-root-kjleh2w-weep",
+    "pie-root-kwrepH-lament",
+    "pie-root-mer-die",
+    "pie-root-neh2w-die",
+    "pie-root-nekj-perish",
+    "pie-root-pent-pass",
+    "pie-root-rewdH-cry_out",
+    "pie-root-skjeh3-darkness",
+    "pie-root-steygh-go",
+    "pie-root-sweld-starve",
+    "pie-root-swep-sleep"
+   ]
+  },
+  "4": {
+   "name": "oath and its breaking",
+   "concepts": [
+    "oath",
+    "swear",
+    "swore",
+    "sworn",
+    "perjury",
+    "pledge",
+    "promise",
+    "vow",
+    "faith",
+    "trust",
+    "truth",
+    "true",
+    "deceive",
+    "deceit",
+    "deception",
+    "betray",
+    "treachery",
+    "false",
+    "falsehood",
+    "treaty",
+    "covenant",
+    "witness",
+    "guarantee",
+    "curse",
+    "guilt",
+    "guilty",
+    "punish",
+    "punishment",
+    "avenge",
+    "vengeance"
+   ],
+   "exclusions": [
+    "true to life"
+   ],
+   "seeds": [
+    {
+     "id": "pie-lex-bhebhoydhe",
+     "form": "bʰebʰóydʰe",
+     "root": "pie-root-bheydh-trust",
+     "gloss": "to be trusting, confident",
+     "concept": "trust"
+    },
+    {
+     "id": "pie-lex-bheydheti",
+     "form": "bʰéydʰeti",
+     "root": "pie-root-bheydh-trust",
+     "gloss": "to trust",
+     "concept": "trust"
+    },
+    {
+     "id": "pie-lex-bheydhos-2",
+     "form": "bʰéydʰos",
+     "root": "pie-root-bheydh-trust",
+     "gloss": "trust, compact",
+     "concept": "trust"
+    },
+    {
+     "id": "pie-lex-bhidhtos",
+     "form": "bʰidʰtós",
+     "root": "pie-root-bheydh-trust",
+     "gloss": "trusted, trustworthy",
+     "concept": "trust"
+    },
+    {
+     "id": "pie-lex-bhoydheh2",
+     "form": "bʰoydʰéh₂",
+     "root": "pie-root-bheydh-trust",
+     "gloss": "pledge, oath, swear",
+     "concept": "oath"
+    },
+    {
+     "id": "pie-lex-bhoydheyeti",
+     "form": "bʰoydʰéyeti",
+     "root": "pie-root-bheydh-trust",
+     "gloss": "to make trust, cause to trust",
+     "concept": "trust"
+    },
+    {
+     "id": "pie-lex-dhebhtus",
+     "form": "dʰébʰtus",
+     "root": "pie-root-dhebh-make_small",
+     "gloss": "deceiving",
+     "concept": "deceive"
+    },
+    {
+     "id": "pie-lex-dhobhos",
+     "form": "dʰóbʰos",
+     "root": "pie-root-dhebh-make_small",
+     "gloss": "deception; deceiver",
+     "concept": "deception"
+    },
+    {
+     "id": "pie-lex-dhrewght",
+     "form": "dʰréwgʰt",
+     "root": "pie-root-dhrewgh-deceive",
+     "gloss": "to deceive, lie to",
+     "concept": "deceive"
+    },
+    {
+     "id": "pie-lex-dhrowghos",
+     "form": "dʰrówgʰos",
+     "root": "pie-root-dhrewgh-deceive",
+     "gloss": "lie, deceit, falsehood",
+     "concept": "deceit"
+    },
+    {
+     "id": "pie-lex-dhrughyeti",
+     "form": "dʰrugʰyéti",
+     "root": "pie-root-dhrewgh-deceive",
+     "gloss": "to deceive, lie to; do harm by deceit",
+     "concept": "deceive"
+    },
+    {
+     "id": "pie-lex-h1oytos",
+     "form": "h₁óytos",
+     "root": "pie-root-h1ey-go",
+     "gloss": "oath",
+     "concept": "oath"
+    },
+    {
+     "id": "pie-lex-h1sntyos",
+     "form": "h₁sn̥tyós",
+     "root": "pie-root-h1es-be",
+     "gloss": "true, real",
+     "concept": "true"
+    },
+    {
+     "id": "pie-lex-h1sonts",
+     "form": "h₁sónts",
+     "root": "pie-root-h1es-be",
+     "gloss": "real, true; n. as noun: the truth, what is real",
+     "concept": "truth"
+    },
+    {
+     "id": "pie-lex-kjreddheh1ti",
+     "form": "ḱréddʰeh₁ti",
+     "root": "pie-root-dheh1-do",
+     "gloss": "to believe, trust",
+     "concept": "trust"
+    },
+    {
+     "id": "pie-lex-kwoyneh2",
+     "form": "kʷoynéh₂",
+     "root": "pie-root-kwey-pay",
+     "gloss": "punishment, vengeance",
+     "concept": "punishment"
+    },
+    {
+     "id": "pie-lex-kwyeh1tis",
+     "form": "kʷyéh₁tis",
+     "root": "pie-root-kwyeh1-rest",
+     "gloss": "rest, quiet, peace (calm repose, not a treaty)",
+     "concept": "treaty"
+    },
+    {
+     "id": "pie-lex-weh1ros",
+     "form": "weh₁ros",
+     "root": "pie-root-weh1-true",
+     "gloss": "true",
+     "concept": "true"
+    },
+    {
+     "id": "pie-lex-widtres",
+     "form": "widtrés",
+     "root": "pie-root-weyd-see",
+     "gloss": "viewer, witness",
+     "concept": "witness"
+    },
+    {
+     "id": "pie-root-bheydh-trust",
+     "form": "bʰeydʰ-",
+     "root": "pie-root-bheydh-trust",
+     "gloss": "to trust",
+     "concept": "trust"
+    },
+    {
+     "id": "pie-root-dhrewgh-deceive",
+     "form": "dʰrewgʰ-",
+     "root": "pie-root-dhrewgh-deceive",
+     "gloss": "to deceive",
+     "concept": "deceive"
+    },
+    {
+     "id": "pie-root-h1lengjh-assert_on_oath",
+     "form": "h₁lenǵʰ-",
+     "root": "pie-root-h1lengjh-assert_on_oath",
+     "gloss": "to assert on oath",
+     "concept": "oath"
+    },
+    {
+     "id": "pie-root-h1wegwh-promise",
+     "form": "h₁wegʷʰ-",
+     "root": "pie-root-h1wegwh-promise",
+     "gloss": "to promise, to vow",
+     "concept": "promise"
+    },
+    {
+     "id": "pie-root-h2wert-swear",
+     "form": "h₂wert-",
+     "root": "pie-root-h2wert-swear",
+     "gloss": "to swear",
+     "concept": "swear"
+    },
+    {
+     "id": "pie-root-h3emh3-grab",
+     "form": "h₃emh₃-",
+     "root": "pie-root-h3emh3-grab",
+     "gloss": "to swear (an oath)",
+     "concept": "oath"
+    },
+    {
+     "id": "pie-root-kjep-curse",
+     "form": "ḱep-",
+     "root": "pie-root-kjep-curse",
+     "gloss": "to curse",
+     "concept": "curse"
+    },
+    {
+     "id": "pie-root-kwey-pay",
+     "form": "kʷey-",
+     "root": "pie-root-kwey-pay",
+     "gloss": "to avenge",
+     "concept": "avenge"
+    },
+    {
+     "id": "pie-root-pekw-trust",
+     "form": "pekʷ-",
+     "root": "pie-root-pekw-trust",
+     "gloss": "to trust",
+     "concept": "trust"
+    },
+    {
+     "id": "pie-root-seh2k-make_a_pact",
+     "form": "seh₂k-",
+     "root": "pie-root-seh2k-make_a_pact",
+     "gloss": "to make a pact, treaty",
+     "concept": "treaty"
+    },
+    {
+     "id": "pie-root-skel-be_obligated",
+     "form": "skel-",
+     "root": "pie-root-skel-be_obligated",
+     "gloss": "to be guilty",
+     "concept": "guilty"
+    },
+    {
+     "id": "pie-root-smel-false",
+     "form": "smel-",
+     "root": "pie-root-smel-false",
+     "gloss": "false, erroneous",
+     "concept": "false"
+    },
+    {
+     "id": "pie-root-teg-swear",
+     "form": "teg-",
+     "root": "pie-root-teg-swear",
+     "gloss": "to swear",
+     "concept": "swear"
+    },
+    {
+     "id": "pie-root-weh1-true",
+     "form": "weh₁-",
+     "root": "pie-root-weh1-true",
+     "gloss": "true",
+     "concept": "true"
+    }
+   ],
+   "roots": [
+    "pie-root-bheydh-trust",
+    "pie-root-dhebh-make_small",
+    "pie-root-dheh1-do",
+    "pie-root-dhrewgh-deceive",
+    "pie-root-h1es-be",
+    "pie-root-h1ey-go",
+    "pie-root-h1lengjh-assert_on_oath",
+    "pie-root-h1wegwh-promise",
+    "pie-root-h2wert-swear",
+    "pie-root-h3emh3-grab",
+    "pie-root-kjep-curse",
+    "pie-root-kwey-pay",
+    "pie-root-kwyeh1-rest",
+    "pie-root-pekw-trust",
+    "pie-root-seh2k-make_a_pact",
+    "pie-root-skel-be_obligated",
+    "pie-root-smel-false",
+    "pie-root-teg-swear",
+    "pie-root-weh1-true",
+    "pie-root-weyd-see"
+   ]
+  },
+  "5": {
+   "name": "kindling and praising fire",
+   "concepts": [
+    "fire",
+    "flame",
+    "burn",
+    "burnt",
+    "kindle",
+    "blaze",
+    "glow",
+    "smoke",
+    "ember",
+    "coal",
+    "spark",
+    "hearth",
+    "altar",
+    "firewood",
+    "fuel",
+    "sacrifice",
+    "offering",
+    "oblation",
+    "worship",
+    "praise",
+    "invoke",
+    "priest",
+    "ghee",
+    "melted butter",
+    "butter"
+   ],
+   "exclusions": [],
+   "seeds": [
+    {
+     "id": "pie-lex-bhlgmeh2",
+     "form": "bʰl̥gmeh₂",
+     "root": "pie-root-bhel-blaze",
+     "gloss": "flame",
+     "concept": "flame"
+    },
+    {
+     "id": "pie-lex-deh2p",
+     "form": "deh₂p-",
+     "root": "pie-root-deh2-share",
+     "gloss": "to sacrifice; to lose",
+     "concept": "sacrifice"
+    },
+    {
+     "id": "pie-lex-dhegwheti",
+     "form": "dʰégʷʰeti",
+     "root": "pie-root-dhegwh-burn",
+     "gloss": "to burn, to be burning",
+     "concept": "burn"
+    },
+    {
+     "id": "pie-lex-dhegwhros",
+     "form": "dʰegʷʰrós",
+     "root": "pie-root-dhegwh-burn",
+     "gloss": "burning",
+     "concept": "burn"
+    },
+    {
+     "id": "pie-lex-dhuh2mos",
+     "form": "dʰuh₂mós",
+     "root": "pie-root-dhewh2-smoke",
+     "gloss": "smoke",
+     "concept": "smoke"
+    },
+    {
+     "id": "pie-lex-gjhutos",
+     "form": "ǵʰutós",
+     "root": "pie-root-gjhew-pour",
+     "gloss": "libated, poured as part of a liquid offering",
+     "concept": "offering"
+    },
+    {
+     "id": "pie-lex-gwoh2mos",
+     "form": "gʷoh₂mós",
+     "root": "pie-root-gweh2-step",
+     "gloss": "step, altar",
+     "concept": "altar"
+    },
+    {
+     "id": "pie-lex-gwrHtos",
+     "form": "gʷr̥Htós",
+     "root": "pie-root-gwerH-express_approval",
+     "gloss": "praised",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-lex-gwrneHti",
+     "form": "gʷr̥néHti",
+     "root": "pie-root-gwerH-express_approval",
+     "gloss": "to praise, extol (in song)",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-lex-h1erkwos",
+     "form": "h₁erkʷós",
+     "root": "pie-root-h1erkw-praise",
+     "gloss": "song of praise, hymn",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-lex-h1ewseti",
+     "form": "h₁éwseti",
+     "root": "pie-root-h1ews-burn",
+     "gloss": "to burn",
+     "concept": "burn"
+    },
+    {
+     "id": "pie-lex-h1ngwnis",
+     "form": "h₁n̥gʷnís",
+     "root": "pie-root-h1engw-burn",
+     "gloss": "fire (animate, deified: Agni; use in address and praise)",
+     "concept": "fire"
+    },
+    {
+     "id": "pie-lex-h1ongwl",
+     "form": "h₁óngʷl̥",
+     "root": "pie-root-h1engw-burn",
+     "gloss": "hot embers",
+     "concept": "ember"
+    },
+    {
+     "id": "pie-lex-h1yagjtoxr",
+     "form": "h₁yaǵtōr",
+     "root": "pie-root-h1yagj-sacrifice",
+     "gloss": "one who worships, worshipper",
+     "concept": "worship"
+    },
+    {
+     "id": "pie-lex-h2eHsh2",
+     "form": "h₂éHsh₂",
+     "root": "pie-root-h2eHs-be_dry",
+     "gloss": "hearth, fireplace; fire-altar",
+     "concept": "fire"
+    },
+    {
+     "id": "pie-lex-h2eHsh2-2",
+     "form": "h₂eHsh₂-",
+     "root": "pie-root-h2eHs-be_dry",
+     "gloss": "hearth, fireplace",
+     "concept": "hearth"
+    },
+    {
+     "id": "pie-lex-h2eh1ter",
+     "form": "h₂eh₁ter-",
+     "root": "pie-root-h2eh1-burn",
+     "gloss": "fire",
+     "concept": "fire"
+    },
+    {
+     "id": "pie-lex-h2eydht",
+     "form": "h₂éydʰt",
+     "root": "pie-root-h2eydh-ignite",
+     "gloss": "to kindle",
+     "concept": "kindle"
+    },
+    {
+     "id": "pie-lex-h2weksih2",
+     "form": "h₂weksíh₂",
+     "root": "pie-root-h2weks-increase",
+     "gloss": "flame",
+     "concept": "flame"
+    },
+    {
+     "id": "pie-lex-h3engwn",
+     "form": "h₃éngʷn̥",
+     "root": "pie-root-h3engw-smear",
+     "gloss": "fat, butter",
+     "concept": "butter"
+    },
+    {
+     "id": "pie-lex-kjewkt",
+     "form": "ḱéwkt",
+     "root": "pie-root-kjewk-flare_up",
+     "gloss": "to flare up, glow",
+     "concept": "glow"
+    },
+    {
+     "id": "pie-lex-nemos",
+     "form": "némos",
+     "root": "pie-root-nem-bend",
+     "gloss": "sacrifice, worship",
+     "concept": "sacrifice"
+    },
+    {
+     "id": "pie-lex-peh2wr",
+     "form": "péh₂wr̥",
+     "root": "pie-lex-peh2wr",
+     "gloss": "fire (the element; inanimate, neuter)",
+     "concept": "fire"
+    },
+    {
+     "id": "pie-lex-selpos",
+     "form": "sélpos",
+     "root": "pie-root-selp-fat",
+     "gloss": "fat, oil, butter",
+     "concept": "butter"
+    },
+    {
+     "id": "pie-root-bheh2-shine",
+     "form": "bʰeh₂-",
+     "root": "pie-root-bheh2-shine",
+     "gloss": "to shine, glow light",
+     "concept": "glow"
+    },
+    {
+     "id": "pie-root-bheh3g-ignite",
+     "form": "bʰeh₃g-",
+     "root": "pie-root-bheh3g-ignite",
+     "gloss": "to ignite, set fire to (for cooking?)",
+     "concept": "fire"
+    },
+    {
+     "id": "pie-root-bhel-blaze",
+     "form": "bʰel-",
+     "root": "pie-root-bhel-blaze",
+     "gloss": "to blaze, burn; to glow, shine, be bright or brightly colored",
+     "concept": "burn"
+    },
+    {
+     "id": "pie-root-bhlendh-blend",
+     "form": "bʰlendʰ-",
+     "root": "pie-root-bhlendh-blend",
+     "gloss": "blond, red-haired, ruddy (alternative/contested) suggests derivation from *bʰel- (“to blaze, be shiny”).",
+     "concept": "blaze"
+    },
+    {
+     "id": "pie-root-deh2p-sacrifice",
+     "form": "deh₂p-",
+     "root": "pie-root-deh2p-sacrifice",
+     "gloss": "to sacrifice",
+     "concept": "sacrifice"
+    },
+    {
+     "id": "pie-root-deh2w-catch_fire",
+     "form": "deh₂w-",
+     "root": "pie-root-deh2w-catch_fire",
+     "gloss": "to catch fire",
+     "concept": "fire"
+    },
+    {
+     "id": "pie-root-dhegwh-burn",
+     "form": "dʰegʷʰ-",
+     "root": "pie-root-dhegwh-burn",
+     "gloss": "to burn",
+     "concept": "burn"
+    },
+    {
+     "id": "pie-root-dhewh2-smoke",
+     "form": "dʰewh₂-",
+     "root": "pie-root-dhewh2-smoke",
+     "gloss": "smoke",
+     "concept": "smoke"
+    },
+    {
+     "id": "pie-root-dhweh2-make_smoke",
+     "form": "dʰweh₂-",
+     "root": "pie-root-dhweh2-make_smoke",
+     "gloss": "to make smoke",
+     "concept": "smoke"
+    },
+    {
+     "id": "pie-root-dhwenH-smoke",
+     "form": "dʰwenH-",
+     "root": "pie-root-dhwenH-smoke",
+     "gloss": "to smoke, smolder",
+     "concept": "smoke"
+    },
+    {
+     "id": "pie-root-dhwes-breathe",
+     "form": "dʰwes-",
+     "root": "pie-root-dhwes-breathe",
+     "gloss": "to smoke, fume",
+     "concept": "smoke"
+    },
+    {
+     "id": "pie-root-gewH-call",
+     "form": "gewH-",
+     "root": "pie-root-gewH-call",
+     "gloss": "to invoke, call on",
+     "concept": "invoke"
+    },
+    {
+     "id": "pie-root-gjhewH-call_on",
+     "form": "ǵʰewH-",
+     "root": "pie-root-gjhewH-call_on",
+     "gloss": "to call on, invoke",
+     "concept": "invoke"
+    },
+    {
+     "id": "pie-root-gjhleh1-shine",
+     "form": "ǵʰleh₁-",
+     "root": "pie-root-gjhleh1-shine",
+     "gloss": "to shine, glow",
+     "concept": "glow"
+    },
+    {
+     "id": "pie-root-gjwelH-burn",
+     "form": "ǵwelH-",
+     "root": "pie-root-gjwelH-burn",
+     "gloss": "to burn",
+     "concept": "burn"
+    },
+    {
+     "id": "pie-root-gwerH-express_approval",
+     "form": "gʷerH-",
+     "root": "pie-root-gwerH-express_approval",
+     "gloss": "to express approval; praise",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-root-gwhew-honour",
+     "form": "gʷʰew-",
+     "root": "pie-root-gwhew-honour",
+     "gloss": "to honour, venerate, revere, worship",
+     "concept": "worship"
+    },
+    {
+     "id": "pie-root-h1engw-burn",
+     "form": "h₁engʷ-",
+     "root": "pie-root-h1engw-burn",
+     "gloss": "to burn",
+     "concept": "burn"
+    },
+    {
+     "id": "pie-root-h1erkw-praise",
+     "form": "h₁erkʷ-",
+     "root": "pie-root-h1erkw-praise",
+     "gloss": "to praise, to shine",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-root-h1ews-burn",
+     "form": "h₁ews-",
+     "root": "pie-root-h1ews-burn",
+     "gloss": "to burn",
+     "concept": "burn"
+    },
+    {
+     "id": "pie-root-h1wegwh-promise",
+     "form": "h₁wegʷʰ-",
+     "root": "pie-root-h1wegwh-promise",
+     "gloss": "to praise",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-root-h1yagj-sacrifice",
+     "form": "h₁yaǵ-",
+     "root": "pie-root-h1yagj-sacrifice",
+     "gloss": "to sacrifice",
+     "concept": "sacrifice"
+    },
+    {
+     "id": "pie-root-h2eHs-be_dry",
+     "form": "h₂eHs-",
+     "root": "pie-root-h2eHs-be_dry",
+     "gloss": "to burn, to glow",
+     "concept": "burn"
+    },
+    {
+     "id": "pie-root-h2eh1-burn",
+     "form": "h₂eh₁-",
+     "root": "pie-root-h2eh1-burn",
+     "gloss": "to burn, be hot",
+     "concept": "burn"
+    },
+    {
+     "id": "pie-root-h2eh3-be_hot",
+     "form": "h₂eh₃-",
+     "root": "pie-root-h2eh3-be_hot",
+     "gloss": "to burn",
+     "concept": "burn"
+    },
+    {
+     "id": "pie-root-h2eydh-ignite",
+     "form": "h₂eydʰ-",
+     "root": "pie-root-h2eydh-ignite",
+     "gloss": "fire",
+     "concept": "fire"
+    },
+    {
+     "id": "pie-root-h2rew-shine",
+     "form": "h₂rew-",
+     "root": "pie-root-h2rew-shine",
+     "gloss": "to shine, glow",
+     "concept": "glow"
+    },
+    {
+     "id": "pie-root-keh2w-kindle",
+     "form": "keh₂w-",
+     "root": "pie-root-keh2w-kindle",
+     "gloss": "to kindle, burn",
+     "concept": "burn"
+    },
+    {
+     "id": "pie-root-kerH-remember_with_praise",
+     "form": "kerH-",
+     "root": "pie-root-kerH-remember_with_praise",
+     "gloss": "to remember with praise",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-root-keyt-shine",
+     "form": "keyt-",
+     "root": "pie-root-keyt-shine",
+     "gloss": "to shine, glow",
+     "concept": "glow"
+    },
+    {
+     "id": "pie-root-kjewk-flare_up",
+     "form": "ḱewk-",
+     "root": "pie-root-kjewk-flare_up",
+     "gloss": "to flare up, glow",
+     "concept": "glow"
+    },
+    {
+     "id": "pie-root-kjremH-burn",
+     "form": "ḱremH-",
+     "root": "pie-root-kjremH-burn",
+     "gloss": "to burn",
+     "concept": "burn"
+    },
+    {
+     "id": "pie-root-kwep-smoke",
+     "form": "kwep-",
+     "root": "pie-root-kwep-smoke",
+     "gloss": "to smoke, to steam",
+     "concept": "smoke"
+    },
+    {
+     "id": "pie-root-lewbh-desire",
+     "form": "lewbʰ-",
+     "root": "pie-root-lewbh-desire",
+     "gloss": "to admire, praise",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-root-smel-burn",
+     "form": "smel-",
+     "root": "pie-root-smel-burn",
+     "gloss": "to burn, smoulder, smoke",
+     "concept": "burn"
+    },
+    {
+     "id": "pie-root-stew-praise",
+     "form": "stew-",
+     "root": "pie-root-stew-praise",
+     "gloss": "to praise, laud",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-root-swel-smolder",
+     "form": "swel-",
+     "root": "pie-root-swel-smolder",
+     "gloss": "to smolder, burn",
+     "concept": "burn"
+    },
+    {
+     "id": "pie-root-wend-praise-2",
+     "form": "wend-",
+     "root": "pie-root-wend-praise-2",
+     "gloss": "to praise, to extol",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-root-wer-burn",
+     "form": "wer-",
+     "root": "pie-root-wer-burn",
+     "gloss": "to burn",
+     "concept": "burn"
+    }
+   ],
+   "roots": [
+    "pie-lex-peh2wr",
+    "pie-root-bheh2-shine",
+    "pie-root-bheh3g-ignite",
+    "pie-root-bhel-blaze",
+    "pie-root-bhlendh-blend",
+    "pie-root-deh2-share",
+    "pie-root-deh2p-sacrifice",
+    "pie-root-deh2w-catch_fire",
+    "pie-root-dhegwh-burn",
+    "pie-root-dhewh2-smoke",
+    "pie-root-dhweh2-make_smoke",
+    "pie-root-dhwenH-smoke",
+    "pie-root-dhwes-breathe",
+    "pie-root-gewH-call",
+    "pie-root-gjhew-pour",
+    "pie-root-gjhewH-call_on",
+    "pie-root-gjhleh1-shine",
+    "pie-root-gjwelH-burn",
+    "pie-root-gweh2-step",
+    "pie-root-gwerH-express_approval",
+    "pie-root-gwhew-honour",
+    "pie-root-h1engw-burn",
+    "pie-root-h1erkw-praise",
+    "pie-root-h1ews-burn",
+    "pie-root-h1wegwh-promise",
+    "pie-root-h1yagj-sacrifice",
+    "pie-root-h2eHs-be_dry",
+    "pie-root-h2eh1-burn",
+    "pie-root-h2eh3-be_hot",
+    "pie-root-h2eydh-ignite",
+    "pie-root-h2rew-shine",
+    "pie-root-h2weks-increase",
+    "pie-root-h3engw-smear",
+    "pie-root-keh2w-kindle",
+    "pie-root-kerH-remember_with_praise",
+    "pie-root-keyt-shine",
+    "pie-root-kjewk-flare_up",
+    "pie-root-kjremH-burn",
+    "pie-root-kwep-smoke",
+    "pie-root-lewbh-desire",
+    "pie-root-nem-bend",
+    "pie-root-selp-fat",
+    "pie-root-smel-burn",
+    "pie-root-stew-praise",
+    "pie-root-swel-smolder",
+    "pie-root-wend-praise-2",
+    "pie-root-wer-burn"
+   ]
+  },
+  "6": {
+   "name": "the horse and the chariot",
+   "concepts": [
+    "horse",
+    "mare",
+    "stallion",
+    "foal",
+    "steed",
+    "colt",
+    "chariot",
+    "charioteer",
+    "wagon",
+    "cart",
+    "wheel",
+    "axle",
+    "nave",
+    "yoke",
+    "harness",
+    "rein",
+    "bridle",
+    "whip",
+    "hoof",
+    "ride",
+    "rode",
+    "rider",
+    "drive",
+    "drove",
+    "driven",
+    "driver",
+    "team",
+    "race",
+    "gallop"
+   ],
+   "exclusions": [
+    "drive away"
+   ],
+   "seeds": [
+    {
+     "id": "pie-lex-Hroth2os",
+     "form": "Hroth₂ós",
+     "root": "pie-root-Hreth2-run",
+     "gloss": "chariot, wheeled vehicle (lit. 'runner')",
+     "concept": "chariot"
+    },
+    {
+     "id": "pie-lex-gjenh1os-2",
+     "form": "ǵénh₁os",
+     "root": "pie-root-gjenh1-produce",
+     "gloss": "race, lineage",
+     "concept": "race"
+    },
+    {
+     "id": "pie-lex-gjheyos",
+     "form": "ǵʰéyos",
+     "root": "pie-root-gjhey-drive",
+     "gloss": "horse",
+     "concept": "horse"
+    },
+    {
+     "id": "pie-lex-gjheyt-2",
+     "form": "ǵʰéyt",
+     "root": "pie-root-gjhey-drive",
+     "gloss": "to drive on",
+     "concept": "drive"
+    },
+    {
+     "id": "pie-lex-h1ekjweh2",
+     "form": "h₁éḱweh₂",
+     "root": "pie-lex-h1ekjweh2",
+     "gloss": "mare",
+     "concept": "mare"
+    },
+    {
+     "id": "pie-lex-h1ekjwos",
+     "form": "h₁éḱwos",
+     "root": "pie-lex-h1ekjwos",
+     "gloss": "stallion, horse",
+     "concept": "horse"
+    },
+    {
+     "id": "pie-lex-h1elh2t",
+     "form": "h₁élh₂t",
+     "root": "pie-root-h1elh2-drive",
+     "gloss": "to drive (somewhere)",
+     "concept": "drive"
+    },
+    {
+     "id": "pie-lex-h2egjeti",
+     "form": "h₂éǵeti",
+     "root": "pie-root-h2egj-drive",
+     "gloss": "to be driving",
+     "concept": "drive"
+    },
+    {
+     "id": "pie-lex-h2egjos",
+     "form": "h₂eǵós",
+     "root": "pie-root-h2egj-drive",
+     "gloss": "driver, leader",
+     "concept": "driver"
+    },
+    {
+     "id": "pie-lex-h2egjtoxr",
+     "form": "h₂éǵtōr",
+     "root": "pie-root-h2egj-drive",
+     "gloss": "leader, driver",
+     "concept": "driver"
+    },
+    {
+     "id": "pie-lex-h2egjtreh2",
+     "form": "h₂éǵtreh₂",
+     "root": "pie-root-h2egj-drive",
+     "gloss": "whip, goad",
+     "concept": "whip"
+    },
+    {
+     "id": "pie-lex-h2ekjs",
+     "form": "h₂eḱs-",
+     "root": "pie-root-h2egj-drive",
+     "gloss": "axle, axis",
+     "concept": "axle"
+    },
+    {
+     "id": "pie-lex-h2gjtos",
+     "form": "h₂ǵtós",
+     "root": "pie-root-h2egj-drive",
+     "gloss": "driven, led",
+     "concept": "driven"
+    },
+    {
+     "id": "pie-lex-h2ogjnyo",
+     "form": "h₂oǵn̥yo-",
+     "root": "pie-root-h2egj-drive",
+     "gloss": "what is driven",
+     "concept": "driven"
+    },
+    {
+     "id": "pie-lex-h2oxgjis",
+     "form": "h₂ōǵís",
+     "root": "pie-root-h2egj-drive",
+     "gloss": "race, contest",
+     "concept": "race"
+    },
+    {
+     "id": "pie-lex-h3nexbho",
+     "form": "h₃nēbʰo-",
+     "root": "pie-root-h3nebh-hub",
+     "gloss": "wheel",
+     "concept": "wheel"
+    },
+    {
+     "id": "pie-lex-kjoph2os",
+     "form": "ḱoph₂ós",
+     "root": "pie-lex-kjoph2os",
+     "gloss": "hoof",
+     "concept": "hoof"
+    },
+    {
+     "id": "pie-lex-kwekwlos",
+     "form": "kʷékʷlos",
+     "root": "pie-root-kwelh1-turn",
+     "gloss": "wheel",
+     "concept": "wheel"
+    },
+    {
+     "id": "pie-lex-markos",
+     "form": "márkos",
+     "root": "pie-lex-markos",
+     "gloss": "horse (Equus ferus caballus)",
+     "concept": "horse"
+    },
+    {
+     "id": "pie-lex-roth2os",
+     "form": "roth₂ós",
+     "root": "pie-root-ret-run",
+     "gloss": "chariot, wagon",
+     "concept": "chariot"
+    },
+    {
+     "id": "pie-lex-rotos",
+     "form": "rótos",
+     "root": "pie-root-ret-run",
+     "gloss": "wheel",
+     "concept": "wheel"
+    },
+    {
+     "id": "pie-lex-towdos",
+     "form": "towdós",
+     "root": "pie-root-stewd-push",
+     "gloss": "driver",
+     "concept": "driver"
+    },
+    {
+     "id": "pie-lex-wogjhos",
+     "form": "wóǵʰos",
+     "root": "pie-root-wegjh-bring",
+     "gloss": "wagon",
+     "concept": "wagon"
+    },
+    {
+     "id": "pie-lex-yewgos",
+     "form": "yéwgos",
+     "root": "pie-root-yewg-join",
+     "gloss": "team, pair of yoked animals",
+     "concept": "yoke"
+    },
+    {
+     "id": "pie-lex-yewgt-2",
+     "form": "yéwgt",
+     "root": "pie-root-yewg-join",
+     "gloss": "to harness, yoke",
+     "concept": "yoke"
+    },
+    {
+     "id": "pie-lex-yewgtrom",
+     "form": "yéwgtrom",
+     "root": "pie-root-yewg-join",
+     "gloss": "harness rope",
+     "concept": "harness"
+    },
+    {
+     "id": "pie-lex-yowgos",
+     "form": "yówgos",
+     "root": "pie-root-yewg-join",
+     "gloss": "yoking, harnessing",
+     "concept": "yoke"
+    },
+    {
+     "id": "pie-lex-yugom",
+     "form": "yugóm",
+     "root": "pie-root-yewg-join",
+     "gloss": "yoke",
+     "concept": "yoke"
+    },
+    {
+     "id": "pie-lex-yugtos",
+     "form": "yugtós",
+     "root": "pie-root-yewg-join",
+     "gloss": "yoked, joined",
+     "concept": "yoke"
+    },
+    {
+     "id": "pie-root-dhreybh-drive",
+     "form": "dʰreybʰ-",
+     "root": "pie-root-dhreybh-drive",
+     "gloss": "to drive",
+     "concept": "drive"
+    },
+    {
+     "id": "pie-root-gjhey-drive",
+     "form": "ǵʰey-",
+     "root": "pie-root-gjhey-drive",
+     "gloss": "to drive, propel",
+     "concept": "drive"
+    },
+    {
+     "id": "pie-root-h1elh2-drive",
+     "form": "h₁elh₂-",
+     "root": "pie-root-h1elh2-drive",
+     "gloss": "to drive (somewhere)",
+     "concept": "drive"
+    },
+    {
+     "id": "pie-root-h2egj-drive",
+     "form": "h₂eǵ-",
+     "root": "pie-root-h2egj-drive",
+     "gloss": "to drive",
+     "concept": "drive"
+    },
+    {
+     "id": "pie-root-kel-drive",
+     "form": "kel-",
+     "root": "pie-root-kel-drive",
+     "gloss": "to drive, particularly of animals",
+     "concept": "drive"
+    },
+    {
+     "id": "pie-root-ksweybh-move_swiftly",
+     "form": "ksweybʰ-",
+     "root": "pie-root-ksweybh-move_swiftly",
+     "gloss": "to whip, cast, throw",
+     "concept": "whip"
+    },
+    {
+     "id": "pie-root-mend-foal",
+     "form": "mend-",
+     "root": "pie-root-mend-foal",
+     "gloss": "foal, small horse",
+     "concept": "horse"
+    },
+    {
+     "id": "pie-root-pel-beat",
+     "form": "pel-",
+     "root": "pie-root-pel-beat",
+     "gloss": "to beat, push, drive",
+     "concept": "drive"
+    },
+    {
+     "id": "pie-root-skewd-advance",
+     "form": "skewd-",
+     "root": "pie-root-skewd-advance",
+     "gloss": "to drive, propel",
+     "concept": "drive"
+    },
+    {
+     "id": "pie-root-twer-stir_up-2",
+     "form": "twer-",
+     "root": "pie-root-twer-stir_up-2",
+     "gloss": "to stir up, to excite, to drive on",
+     "concept": "drive"
+    },
+    {
+     "id": "pie-root-yeh2-go",
+     "form": "yeh₂-",
+     "root": "pie-root-yeh2-go",
+     "gloss": "to ride, to travel",
+     "concept": "ride"
+    },
+    {
+     "id": "pie-root-yewg-join",
+     "form": "yewg-",
+     "root": "pie-root-yewg-join",
+     "gloss": "to join, to yoke, to tie together",
+     "concept": "yoke"
+    }
+   ],
+   "roots": [
+    "pie-lex-h1ekjweh2",
+    "pie-lex-h1ekjwos",
+    "pie-lex-kjoph2os",
+    "pie-lex-markos",
+    "pie-root-Hreth2-run",
+    "pie-root-dhreybh-drive",
+    "pie-root-gjenh1-produce",
+    "pie-root-gjhey-drive",
+    "pie-root-h1elh2-drive",
+    "pie-root-h2egj-drive",
+    "pie-root-h3nebh-hub",
+    "pie-root-kel-drive",
+    "pie-root-ksweybh-move_swiftly",
+    "pie-root-kwelh1-turn",
+    "pie-root-mend-foal",
+    "pie-root-pel-beat",
+    "pie-root-ret-run",
+    "pie-root-skewd-advance",
+    "pie-root-stewd-push",
+    "pie-root-twer-stir_up-2",
+    "pie-root-wegjh-bring",
+    "pie-root-yeh2-go",
+    "pie-root-yewg-join"
+   ]
+  },
+  "7": {
+   "name": "Sky and Earth as parents",
+   "concepts": [
+    "sky",
+    "heaven",
+    "heavens",
+    "firmament",
+    "earth",
+    "ground",
+    "soil",
+    "land",
+    "world",
+    "father",
+    "mother",
+    "parent",
+    "parents",
+    "beget",
+    "begot",
+    "begotten",
+    "give birth",
+    "bear children",
+    "offspring",
+    "progeny",
+    "broad",
+    "wide",
+    "vast"
+   ],
+   "exclusions": [],
+   "seeds": [
+    {
+     "id": "pie-lex-atta",
+     "form": "átta",
+     "root": "pie-lex-atta",
+     "gloss": "father",
+     "concept": "father"
+    },
+    {
+     "id": "pie-lex-dhegjhoxm",
+     "form": "dʰéǵʰōm",
+     "root": "pie-lex-dhegjhoxm",
+     "gloss": "earth",
+     "concept": "earth"
+    },
+    {
+     "id": "pie-lex-dyexws",
+     "form": "dyḗws",
+     "root": "pie-root-dyew-be_bright",
+     "gloss": "sky, heaven",
+     "concept": "sky"
+    },
+    {
+     "id": "pie-lex-genh1etos",
+     "form": "genh₁etós",
+     "root": "pie-root-gjenh1-produce",
+     "gloss": "begotten",
+     "concept": "begotten"
+    },
+    {
+     "id": "pie-lex-gjegjonh1e",
+     "form": "ǵeǵónh₁e",
+     "root": "pie-root-gjenh1-produce",
+     "gloss": "to be begotten, born",
+     "concept": "begotten"
+    },
+    {
+     "id": "pie-lex-gjenh1eseh2",
+     "form": "ǵenh₁eseh₂",
+     "root": "pie-root-gjenh1-produce",
+     "gloss": "lineage, offspring",
+     "concept": "offspring"
+    },
+    {
+     "id": "pie-lex-gjenh1mn",
+     "form": "ǵénh₁mn̥",
+     "root": "pie-root-gjenh1-produce",
+     "gloss": "offspring, seed",
+     "concept": "offspring"
+    },
+    {
+     "id": "pie-lex-gjenh1t-2",
+     "form": "ǵénh₁t",
+     "root": "pie-root-gjenh1-produce",
+     "gloss": "to beget, generate",
+     "concept": "beget"
+    },
+    {
+     "id": "pie-lex-gjenh1toxr",
+     "form": "ǵénh₁tōr",
+     "root": "pie-root-gjenh1-produce",
+     "gloss": "one who begets, produces",
+     "concept": "beget"
+    },
+    {
+     "id": "pie-lex-gjenh1trih2",
+     "form": "ǵénh₁trih₂",
+     "root": "pie-root-gjenh1-produce",
+     "gloss": "mother",
+     "concept": "mother"
+    },
+    {
+     "id": "pie-lex-gjnh1tos",
+     "form": "ǵn̥h₁tós",
+     "root": "pie-root-gjenh1-produce",
+     "gloss": "begotten, produced",
+     "concept": "begotten"
+    },
+    {
+     "id": "pie-lex-gjnh1yetor",
+     "form": "ǵn̥h₁yétor",
+     "root": "pie-root-gjenh1-produce",
+     "gloss": "to be born, begotten",
+     "concept": "begotten"
+    },
+    {
+     "id": "pie-lex-gjonh1eh2",
+     "form": "ǵonh₁éh₂",
+     "root": "pie-root-gjenh1-produce",
+     "gloss": "begetting, offspring",
+     "concept": "offspring"
+    },
+    {
+     "id": "pie-lex-gjonh1os",
+     "form": "ǵónh₁os",
+     "root": "pie-root-gjenh1-produce",
+     "gloss": "offspring",
+     "concept": "offspring"
+    },
+    {
+     "id": "pie-lex-h1werHus",
+     "form": "h₁wérHus",
+     "root": "pie-root-h1werH-broad",
+     "gloss": "broad",
+     "concept": "broad"
+    },
+    {
+     "id": "pie-lex-h2ekjmox",
+     "form": "h₂éḱmō",
+     "root": "pie-root-h2ekj-sharp",
+     "gloss": "heaven, the heavenly vault?",
+     "concept": "heaven"
+    },
+    {
+     "id": "pie-lex-h2erh3wr",
+     "form": "h₂érh₃wr̥",
+     "root": "pie-root-h2erh3-plough",
+     "gloss": "ploughed land",
+     "concept": "land"
+    },
+    {
+     "id": "pie-lex-h2rh3eh2",
+     "form": "h₂r̥h₃eh₂",
+     "root": "pie-root-h2erh3-plough",
+     "gloss": "fertile soil",
+     "concept": "soil"
+    },
+    {
+     "id": "pie-lex-loykwn",
+     "form": "lóykʷn-",
+     "root": "pie-root-leykw-leave",
+     "gloss": "inheritance, property left; lent land",
+     "concept": "land"
+    },
+    {
+     "id": "pie-lex-meh2texr",
+     "form": "méh₂tēr",
+     "root": "pie-lex-meh2texr",
+     "gloss": "mother",
+     "concept": "mother"
+    },
+    {
+     "id": "pie-lex-ph2texr",
+     "form": "ph₂tḗr",
+     "root": "pie-root-peh2-protect",
+     "gloss": "father",
+     "concept": "father"
+    },
+    {
+     "id": "pie-lex-pleth2us",
+     "form": "pléth₂us",
+     "root": "pie-root-pleth2-spread",
+     "gloss": "flat, broad",
+     "concept": "broad"
+    },
+    {
+     "id": "pie-lex-plth2enos",
+     "form": "pl̥th₂enós",
+     "root": "pie-root-pleth2-spread",
+     "gloss": "wide, broad",
+     "concept": "broad"
+    },
+    {
+     "id": "pie-lex-sewHmn",
+     "form": "séwHmn̥",
+     "root": "pie-root-sewH-bear",
+     "gloss": "begetting, birth, offspring",
+     "concept": "offspring"
+    },
+    {
+     "id": "pie-lex-somHoph2toxr",
+     "form": "somHoph₂tōr",
+     "root": "pie-lex-somHoph2toxr",
+     "gloss": "of the same father",
+     "concept": "father"
+    },
+    {
+     "id": "pie-lex-steleh2",
+     "form": "stéleh₂",
+     "root": "pie-root-stel-put",
+     "gloss": "earth mound",
+     "concept": "earth"
+    },
+    {
+     "id": "pie-lex-stelom",
+     "form": "stélom",
+     "root": "pie-root-stel-put",
+     "gloss": "elevation, firm ground",
+     "concept": "ground"
+    },
+    {
+     "id": "pie-lex-swekjruh2",
+     "form": "sweḱrúh₂",
+     "root": "pie-lex-swekjruh2",
+     "gloss": "mother-in-law",
+     "concept": "mother"
+    },
+    {
+     "id": "pie-lex-swekjuros",
+     "form": "swéḱuros",
+     "root": "pie-lex-swekjuros",
+     "gloss": "father-in-law",
+     "concept": "father"
+    },
+    {
+     "id": "pie-lex-tata",
+     "form": "tata-",
+     "root": "pie-lex-tata",
+     "gloss": "dad, father",
+     "concept": "father"
+    },
+    {
+     "id": "pie-lex-terseh2",
+     "form": "terseh₂",
+     "root": "pie-root-ters-dry",
+     "gloss": "earth, land",
+     "concept": "earth"
+    },
+    {
+     "id": "pie-root-dyew-be_bright",
+     "form": "dyew-",
+     "root": "pie-root-dyew-be_bright",
+     "gloss": "sky, heaven",
+     "concept": "sky"
+    },
+    {
+     "id": "pie-root-gjenh1-produce",
+     "form": "ǵenh₁-",
+     "root": "pie-root-gjenh1-produce",
+     "gloss": "to produce; to beget; to give birth",
+     "concept": "beget"
+    },
+    {
+     "id": "pie-root-gjheh1y-open_the_mouth",
+     "form": "ǵʰeh₁y-",
+     "root": "pie-root-gjheh1y-open_the_mouth",
+     "gloss": "to open the mouth wide, yawn",
+     "concept": "wide"
+    },
+    {
+     "id": "pie-root-h1er-earth",
+     "form": "h₁er-",
+     "root": "pie-root-h1er-earth",
+     "gloss": "earth",
+     "concept": "earth"
+    },
+    {
+     "id": "pie-root-h1werH-broad",
+     "form": "h₁werH-",
+     "root": "pie-root-h1werH-broad",
+     "gloss": "broad",
+     "concept": "broad"
+    },
+    {
+     "id": "pie-root-h2ems-give_birth",
+     "form": "h₂ems-",
+     "root": "pie-root-h2ems-give_birth",
+     "gloss": "to give birth, beget",
+     "concept": "beget"
+    },
+    {
+     "id": "pie-root-h2ens-beget",
+     "form": "h₂ens-",
+     "root": "pie-root-h2ens-beget",
+     "gloss": "to beget, give birth",
+     "concept": "beget"
+    },
+    {
+     "id": "pie-root-h3rewk-dig",
+     "form": "h₃rewk-",
+     "root": "pie-root-h3rewk-dig",
+     "gloss": "to till (soil)",
+     "concept": "soil"
+    },
+    {
+     "id": "pie-root-lendh-land",
+     "form": "lendʰ-",
+     "root": "pie-root-lendh-land",
+     "gloss": "land, heath",
+     "concept": "land"
+    },
+    {
+     "id": "pie-root-perh3-provide",
+     "form": "perh₃-",
+     "root": "pie-root-perh3-provide",
+     "gloss": "to provide, produce, beget",
+     "concept": "beget"
+    },
+    {
+     "id": "pie-root-rewdh-clear",
+     "form": "rewdʰ-",
+     "root": "pie-root-rewdh-clear",
+     "gloss": "to clear (land)",
+     "concept": "land"
+    },
+    {
+     "id": "pie-root-sewH-bear",
+     "form": "sewH-",
+     "root": "pie-root-sewH-bear",
+     "gloss": "to give birth",
+     "concept": "give birth"
+    },
+    {
+     "id": "pie-root-tekj-sire",
+     "form": "teḱ-",
+     "root": "pie-root-tekj-sire",
+     "gloss": "to sire, beget",
+     "concept": "beget"
+    },
+    {
+     "id": "pie-root-telh2-ground",
+     "form": "telh₂-",
+     "root": "pie-root-telh2-ground",
+     "gloss": "ground, bottom. Possibly a derivative of *telh₂- \"to bear\" in the sense of that which bears, carries, supports.",
+     "concept": "ground"
+    },
+    {
+     "id": "pie-root-wers-wipe",
+     "form": "wers-",
+     "root": "pie-root-wers-wipe",
+     "gloss": "to drag (on the ground), sweep ~ thresh",
+     "concept": "ground"
+    },
+    {
+     "id": "pie-root-yeh1-meaning_of_this",
+     "form": "yeh₁-",
+     "root": "pie-root-yeh1-meaning_of_this",
+     "gloss": "to be empty, clear, vacant, idle; empty land, clearing; barren, infertile",
+     "concept": "land"
+    }
+   ],
+   "roots": [
+    "pie-lex-atta",
+    "pie-lex-dhegjhoxm",
+    "pie-lex-meh2texr",
+    "pie-lex-somHoph2toxr",
+    "pie-lex-swekjruh2",
+    "pie-lex-swekjuros",
+    "pie-lex-tata",
+    "pie-root-dyew-be_bright",
+    "pie-root-gjenh1-produce",
+    "pie-root-gjheh1y-open_the_mouth",
+    "pie-root-h1er-earth",
+    "pie-root-h1werH-broad",
+    "pie-root-h2ekj-sharp",
+    "pie-root-h2ems-give_birth",
+    "pie-root-h2ens-beget",
+    "pie-root-h2erh3-plough",
+    "pie-root-h3rewk-dig",
+    "pie-root-lendh-land",
+    "pie-root-leykw-leave",
+    "pie-root-peh2-protect",
+    "pie-root-perh3-provide",
+    "pie-root-pleth2-spread",
+    "pie-root-rewdh-clear",
+    "pie-root-sewH-bear",
+    "pie-root-stel-put",
+    "pie-root-tekj-sire",
+    "pie-root-telh2-ground",
+    "pie-root-ters-dry",
+    "pie-root-wers-wipe",
+    "pie-root-yeh1-meaning_of_this"
+   ]
+  },
+  "8": {
+   "name": "the dawn",
+   "concepts": [
+    "dawn",
+    "morning",
+    "daybreak",
+    "day",
+    "daylight",
+    "light",
+    "shine",
+    "shone",
+    "bright",
+    "brightness",
+    "gleam",
+    "glitter",
+    "glimmer",
+    "red",
+    "reddish",
+    "ruddy",
+    "awake",
+    "wake",
+    "awaken",
+    "early",
+    "east",
+    "sunrise"
+   ],
+   "exclusions": [
+    "not heavy",
+    "in weight",
+    "light weight"
+   ],
+   "seeds": [
+    {
+     "id": "pie-lex-Heh2mr",
+     "form": "Héh₂mr̥",
+     "root": "pie-lex-Heh2mr",
+     "gloss": "daylight, day",
+     "concept": "day"
+    },
+    {
+     "id": "pie-lex-bheh2nus",
+     "form": "bʰeh₂nús",
+     "root": "pie-root-bheh2-shine",
+     "gloss": "ray of light",
+     "concept": "light"
+    },
+    {
+     "id": "pie-lex-bheh2os",
+     "form": "bʰéh₂os",
+     "root": "pie-root-bheh2-shine",
+     "gloss": "light, radiance",
+     "concept": "light"
+    },
+    {
+     "id": "pie-lex-bheh2tis",
+     "form": "bʰéh₂tis",
+     "root": "pie-root-bheh2-shine",
+     "gloss": "light, splendour",
+     "concept": "light"
+    },
+    {
+     "id": "pie-lex-bhewdheti",
+     "form": "bʰéwdʰeti",
+     "root": "pie-root-bhewdh-be_awake",
+     "gloss": "to be awake, aware",
+     "concept": "awake"
+    },
+    {
+     "id": "pie-lex-bhewdht",
+     "form": "bʰéwdʰt",
+     "root": "pie-root-bhewdh-be_awake",
+     "gloss": "to wake up, to become attentive",
+     "concept": "wake"
+    },
+    {
+     "id": "pie-lex-bhowdheyeti",
+     "form": "bʰowdʰéyeti",
+     "root": "pie-root-bhewdh-be_awake",
+     "gloss": "to awaken, arouse",
+     "concept": "awaken"
+    },
+    {
+     "id": "pie-lex-deynos",
+     "form": "deynos",
+     "root": "pie-root-dyew-be_bright",
+     "gloss": "day",
+     "concept": "day"
+    },
+    {
+     "id": "pie-lex-dinos",
+     "form": "dinos",
+     "root": "pie-root-dyew-be_bright",
+     "gloss": "day",
+     "concept": "day"
+    },
+    {
+     "id": "pie-lex-dyewmn",
+     "form": "dyéwmn̥",
+     "root": "pie-root-dyew-be_bright",
+     "gloss": "shine, splendor",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-lex-ghlindeti",
+     "form": "gʰlindeti",
+     "root": "pie-root-gjhley-shine",
+     "gloss": "to shine, glint",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-lex-gjhleymos",
+     "form": "ǵʰleymós",
+     "root": "pie-root-gjhley-shine",
+     "gloss": "shine, brightness",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-lex-gjhleynos",
+     "form": "ǵʰleynós",
+     "root": "pie-root-gjhley-shine",
+     "gloss": "bright, clear",
+     "concept": "bright"
+    },
+    {
+     "id": "pie-lex-gjhleystos",
+     "form": "ǵʰleystos",
+     "root": "pie-root-gjhley-shine",
+     "gloss": "shine, brightness",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-lex-gjhleywos",
+     "form": "ǵʰleywós",
+     "root": "pie-root-gjhley-shine",
+     "gloss": "shining, sparkling",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-lex-gjhlidmn",
+     "form": "ǵʰlidmn̥",
+     "root": "pie-root-gjhley-shine",
+     "gloss": "shine",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-lex-gjhlidmnyeti",
+     "form": "ǵʰlidmn̥yeti",
+     "root": "pie-root-gjhley-shine",
+     "gloss": "to shine, sparkle",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-lex-h1gert",
+     "form": "h₁gért",
+     "root": "pie-root-h1ger-wake_up",
+     "gloss": "to wake up",
+     "concept": "wake"
+    },
+    {
+     "id": "pie-lex-h1rowdhos",
+     "form": "h₁rowdʰós",
+     "root": "pie-root-h1rewdh-red",
+     "gloss": "red",
+     "concept": "red"
+    },
+    {
+     "id": "pie-lex-h1rudheh1ti",
+     "form": "h₁rudʰéh₁ti",
+     "root": "pie-root-h1rewdh-red",
+     "gloss": "to be red",
+     "concept": "red"
+    },
+    {
+     "id": "pie-lex-h1rudhros",
+     "form": "h₁rudʰrós",
+     "root": "pie-root-h1rewdh-red",
+     "gloss": "red",
+     "concept": "red"
+    },
+    {
+     "id": "pie-lex-h2ergjos",
+     "form": "h₂érǵos",
+     "root": "pie-root-h2ergj-white",
+     "gloss": "brightness",
+     "concept": "brightness"
+    },
+    {
+     "id": "pie-lex-h2ewser",
+     "form": "h₂ewsér",
+     "root": "pie-lex-h2ewser",
+     "gloss": "in the direction of dawn, east",
+     "concept": "dawn"
+    },
+    {
+     "id": "pie-lex-h2ewsoxs",
+     "form": "h₂éwsōs",
+     "root": "pie-root-h2ews-become_light",
+     "gloss": "dawn",
+     "concept": "dawn"
+    },
+    {
+     "id": "pie-lex-h2ewsteros",
+     "form": "h₂éwsteros",
+     "root": "pie-root-h2ews-become_light",
+     "gloss": "in the direction of dawn, east",
+     "concept": "dawn"
+    },
+    {
+     "id": "pie-lex-h2eyeri",
+     "form": "h₂éyeri",
+     "root": "pie-root-h2ey-day",
+     "gloss": "early, in the morning",
+     "concept": "morning"
+    },
+    {
+     "id": "pie-lex-h2rgjros",
+     "form": "h₂r̥ǵrós",
+     "root": "pie-root-h2ergj-white",
+     "gloss": "shining",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-lex-h2west-2",
+     "form": "h₂wést",
+     "root": "pie-root-h2wes-become_bright",
+     "gloss": "to become bright (at dawn)",
+     "concept": "dawn"
+    },
+    {
+     "id": "pie-lex-kjubhros",
+     "form": "ḱubʰrós",
+     "root": "pie-root-kjewbh-be_or_become",
+     "gloss": "shining, pure",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-lex-kjwitros",
+     "form": "ḱwitrós",
+     "root": "pie-root-kjweyt-shine",
+     "gloss": "white, shining",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-lex-kjwoytos",
+     "form": "ḱwoytós",
+     "root": "pie-root-kjweyt-shine",
+     "gloss": "light",
+     "concept": "light"
+    },
+    {
+     "id": "pie-lex-koyts",
+     "form": "kóyts",
+     "root": "pie-root-keyt-shine",
+     "gloss": "brightness",
+     "concept": "brightness"
+    },
+    {
+     "id": "pie-lex-kweytt",
+     "form": "kʷéytt",
+     "root": "pie-root-kweyt-begin_to_shine",
+     "gloss": "to begin to shine (?)",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-lex-leh2pt",
+     "form": "léh₂pt",
+     "root": "pie-root-leh2p-flash_up",
+     "gloss": "to flash up, shine",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-lex-lewkos",
+     "form": "lewkós",
+     "root": "pie-root-lewk-bright",
+     "gloss": "bright; shining",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-lex-lewkos-2",
+     "form": "léwkos",
+     "root": "pie-root-lewk-bright",
+     "gloss": "light",
+     "concept": "light"
+    },
+    {
+     "id": "pie-lex-lewks",
+     "form": "léwks",
+     "root": "pie-root-lewk-bright",
+     "gloss": "something bright, white",
+     "concept": "bright"
+    },
+    {
+     "id": "pie-lex-lewkt",
+     "form": "léwkt",
+     "root": "pie-root-lewk-bright",
+     "gloss": "to become bright",
+     "concept": "bright"
+    },
+    {
+     "id": "pie-lex-lowkeyeti",
+     "form": "lowkéyeti",
+     "root": "pie-root-lewk-bright",
+     "gloss": "to light up",
+     "concept": "light"
+    },
+    {
+     "id": "pie-lex-lowkos",
+     "form": "lowkós",
+     "root": "pie-root-lewk-bright",
+     "gloss": "light space",
+     "concept": "light"
+    },
+    {
+     "id": "pie-lex-mokjs",
+     "form": "moḱs",
+     "root": "pie-lex-mokjs",
+     "gloss": "early",
+     "concept": "early"
+    },
+    {
+     "id": "pie-lex-wogjeyeti",
+     "form": "woǵéyeti",
+     "root": "pie-root-wegj-be_lively",
+     "gloss": "to make lively, awaken",
+     "concept": "awaken"
+    },
+    {
+     "id": "pie-root-bheh2-shine",
+     "form": "bʰeh₂-",
+     "root": "pie-root-bheh2-shine",
+     "gloss": "to shine, glow light",
+     "concept": "light"
+    },
+    {
+     "id": "pie-root-bhel-blaze",
+     "form": "bʰel-",
+     "root": "pie-root-bhel-blaze",
+     "gloss": "to blaze, burn; to glow, shine, be bright or brightly colored",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-bhewdh-be_awake",
+     "form": "bʰewdʰ-",
+     "root": "pie-root-bhewdh-be_awake",
+     "gloss": "to be awake, be aware",
+     "concept": "awake"
+    },
+    {
+     "id": "pie-root-bhlegj-shine",
+     "form": "bʰleǵ-",
+     "root": "pie-root-bhlegj-shine",
+     "gloss": "to shine",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-bhlendh-blend",
+     "form": "bʰlendʰ-",
+     "root": "pie-root-bhlendh-blend",
+     "gloss": "blond, red-haired, ruddy (alternative/contested) suggests derivation from *bʰel- (“to blaze, be shiny”).",
+     "concept": "red"
+    },
+    {
+     "id": "pie-root-bhleygj-shine",
+     "form": "bʰleyǵ-",
+     "root": "pie-root-bhleygj-shine",
+     "gloss": "to shine",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-bhreh1gj-shine_forth",
+     "form": "bʰreh₁ǵ-",
+     "root": "pie-root-bhreh1gj-shine_forth",
+     "gloss": "to shine forth, to gleam",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-deyh2-shine",
+     "form": "deyh₂-",
+     "root": "pie-root-deyh2-shine",
+     "gloss": "to shine",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-dyew-be_bright",
+     "form": "dyew-",
+     "root": "pie-root-dyew-be_bright",
+     "gloss": "to be bright, to shine",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-dyewt-flash_up",
+     "form": "dyewt-",
+     "root": "pie-root-dyewt-flash_up",
+     "gloss": "to flash up, light up",
+     "concept": "light"
+    },
+    {
+     "id": "pie-root-geh2w-rejoice",
+     "form": "geh₂w-",
+     "root": "pie-root-geh2w-rejoice",
+     "gloss": "to rejoice, be glad, be bright",
+     "concept": "bright"
+    },
+    {
+     "id": "pie-root-ghleh2dh-bright",
+     "form": "gʰleh₂dʰ-",
+     "root": "pie-root-ghleh2dh-bright",
+     "gloss": "bright, shining",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-ghlendh-look",
+     "form": "gʰlendʰ-",
+     "root": "pie-root-ghlendh-look",
+     "gloss": "to look, gaze; shine",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-gjher-shine",
+     "form": "ǵʰer-",
+     "root": "pie-root-gjher-shine",
+     "gloss": "to shine, gleam; see",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-gjhleh1-shine",
+     "form": "ǵʰleh₁-",
+     "root": "pie-root-gjhleh1-shine",
+     "gloss": "to shine, glow",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-gjhley-shine",
+     "form": "ǵʰley-",
+     "root": "pie-root-gjhley-shine",
+     "gloss": "to shine",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-gjwelH-burn",
+     "form": "ǵwelH-",
+     "root": "pie-root-gjwelH-burn",
+     "gloss": "to shine",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-h1el-greyish_or_brownish",
+     "form": "h₁el-",
+     "root": "pie-root-h1el-greyish_or_brownish",
+     "gloss": "various tree species with bright bark, e.g. alder, elm, fir",
+     "concept": "bright"
+    },
+    {
+     "id": "pie-root-h1erkw-praise",
+     "form": "h₁erkʷ-",
+     "root": "pie-root-h1erkw-praise",
+     "gloss": "to praise, to shine",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-h1ger-wake_up",
+     "form": "h₁ger-",
+     "root": "pie-root-h1ger-wake_up",
+     "gloss": "to wake up, awaken",
+     "concept": "wake"
+    },
+    {
+     "id": "pie-root-h1rewdh-red",
+     "form": "h₁rewdʰ-",
+     "root": "pie-root-h1rewdh-red",
+     "gloss": "red",
+     "concept": "red"
+    },
+    {
+     "id": "pie-root-h2ergj-white",
+     "form": "h₂erǵ-",
+     "root": "pie-root-h2ergj-white",
+     "gloss": "white, shining",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-h2ews-become_light",
+     "form": "h₂ews-",
+     "root": "pie-root-h2ews-become_light",
+     "gloss": "to become light",
+     "concept": "light"
+    },
+    {
+     "id": "pie-root-h2ey-day",
+     "form": "h₂ey-",
+     "root": "pie-root-h2ey-day",
+     "gloss": "day, morning",
+     "concept": "morning"
+    },
+    {
+     "id": "pie-root-h2rew-shine",
+     "form": "h₂rew-",
+     "root": "pie-root-h2rew-shine",
+     "gloss": "to shine, glow",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-h2wes-become_bright",
+     "form": "h₂wes-",
+     "root": "pie-root-h2wes-become_bright",
+     "gloss": "to become bright (at dawn)",
+     "concept": "dawn"
+    },
+    {
+     "id": "pie-root-keyt-shine",
+     "form": "keyt-",
+     "root": "pie-root-keyt-shine",
+     "gloss": "to shine, glow",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-kjweyt-shine",
+     "form": "ḱweyt-",
+     "root": "pie-root-kjweyt-shine",
+     "gloss": "to shine",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-kweyt-begin_to_shine",
+     "form": "kʷeyt-",
+     "root": "pie-root-kweyt-begin_to_shine",
+     "gloss": "to begin to shine (?)",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-leh2p-flash_up",
+     "form": "leh₂p-",
+     "root": "pie-root-leh2p-flash_up",
+     "gloss": "to flash up, shine",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-lewk-bright",
+     "form": "lewk-",
+     "root": "pie-root-lewk-bright",
+     "gloss": "bright",
+     "concept": "bright"
+    },
+    {
+     "id": "pie-root-sbheng-shine",
+     "form": "sbʰeng-",
+     "root": "pie-root-sbheng-shine",
+     "gloss": "to shine, gleam",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-skend-shine",
+     "form": "skend-",
+     "root": "pie-root-skend-shine",
+     "gloss": "to shine, appear",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-skjeh1y-shine",
+     "form": "sḱeh₁y-",
+     "root": "pie-root-skjeh1y-shine",
+     "gloss": "to shine, shimmer",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-skjend-appear",
+     "form": "sḱend-",
+     "root": "pie-root-skjend-appear",
+     "gloss": "to appear, shine",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-splend-shine",
+     "form": "splend-",
+     "root": "pie-root-splend-shine",
+     "gloss": "to shine, be/become bright",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-sweyd-shine",
+     "form": "sweyd-",
+     "root": "pie-root-sweyd-shine",
+     "gloss": "to shine",
+     "concept": "shine"
+    },
+    {
+     "id": "pie-root-wegj-be_lively",
+     "form": "weǵ-",
+     "root": "pie-root-wegj-be_lively",
+     "gloss": "to be lively, awake",
+     "concept": "awake"
+    },
+    {
+     "id": "pie-root-yewt-perceive",
+     "form": "yewt-",
+     "root": "pie-root-yewt-perceive",
+     "gloss": "to perceive, awaken",
+     "concept": "awaken"
+    }
+   ],
+   "roots": [
+    "pie-lex-Heh2mr",
+    "pie-lex-h2ewser",
+    "pie-lex-mokjs",
+    "pie-root-bheh2-shine",
+    "pie-root-bhel-blaze",
+    "pie-root-bhewdh-be_awake",
+    "pie-root-bhlegj-shine",
+    "pie-root-bhlendh-blend",
+    "pie-root-bhleygj-shine",
+    "pie-root-bhreh1gj-shine_forth",
+    "pie-root-deyh2-shine",
+    "pie-root-dyew-be_bright",
+    "pie-root-dyewt-flash_up",
+    "pie-root-geh2w-rejoice",
+    "pie-root-ghleh2dh-bright",
+    "pie-root-ghlendh-look",
+    "pie-root-gjher-shine",
+    "pie-root-gjhleh1-shine",
+    "pie-root-gjhley-shine",
+    "pie-root-gjwelH-burn",
+    "pie-root-h1el-greyish_or_brownish",
+    "pie-root-h1erkw-praise",
+    "pie-root-h1ger-wake_up",
+    "pie-root-h1rewdh-red",
+    "pie-root-h2ergj-white",
+    "pie-root-h2ews-become_light",
+    "pie-root-h2ey-day",
+    "pie-root-h2rew-shine",
+    "pie-root-h2wes-become_bright",
+    "pie-root-keyt-shine",
+    "pie-root-kjewbh-be_or_become",
+    "pie-root-kjweyt-shine",
+    "pie-root-kweyt-begin_to_shine",
+    "pie-root-leh2p-flash_up",
+    "pie-root-lewk-bright",
+    "pie-root-sbheng-shine",
+    "pie-root-skend-shine",
+    "pie-root-skjeh1y-shine",
+    "pie-root-skjend-appear",
+    "pie-root-splend-shine",
+    "pie-root-sweyd-shine",
+    "pie-root-wegj-be_lively",
+    "pie-root-yewt-perceive"
+   ]
+  },
+  "9": {
+   "name": "the sun's course",
+   "concepts": [
+    "sun",
+    "sunlight",
+    "sunshine",
+    "sunset",
+    "eye",
+    "wheel",
+    "course",
+    "path",
+    "road",
+    "travel",
+    "traverse",
+    "journey",
+    "wander",
+    "cross",
+    "rise",
+    "rose",
+    "risen",
+    "ascend",
+    "descend",
+    "revolve",
+    "circle",
+    "west",
+    "east",
+    "heat"
+   ],
+   "exclusions": [
+    "of course",
+    "cross-reference"
+   ],
+   "seeds": [
+    {
+     "id": "pie-lex-Hroth2os",
+     "form": "Hroth₂ós",
+     "root": "pie-root-Hreth2-run",
+     "gloss": "chariot, wheeled vehicle (lit. 'runner')",
+     "concept": "wheel"
+    },
+    {
+     "id": "pie-lex-bhergjht",
+     "form": "bʰérǵʰt",
+     "root": "pie-root-bhergjh-rise_up",
+     "gloss": "to rise up, ascend",
+     "concept": "rise"
+    },
+    {
+     "id": "pie-lex-bhorgjheyeti",
+     "form": "bʰorǵʰéyeti",
+     "root": "pie-root-bhergjh-rise_up",
+     "gloss": "to raise, uplift; cause to rise, ascend",
+     "concept": "rise"
+    },
+    {
+     "id": "pie-lex-dakjru",
+     "form": "dáḱru",
+     "root": "pie-lex-dakjru",
+     "gloss": "tear (in the eyes)",
+     "concept": "eye"
+    },
+    {
+     "id": "pie-lex-derkjs",
+     "form": "dérḱs",
+     "root": "pie-root-derkj-see",
+     "gloss": "eye",
+     "concept": "eye"
+    },
+    {
+     "id": "pie-lex-dhgwheyt-2",
+     "form": "dʰgʷʰéyt",
+     "root": "pie-root-dhgwhey-decline",
+     "gloss": "to waste away (from heat), perish",
+     "concept": "heat"
+    },
+    {
+     "id": "pie-lex-drkjh2ekjru",
+     "form": "dr̥ḱh₂eḱru",
+     "root": "pie-root-derkj-see",
+     "gloss": "eye-sharp/bitter",
+     "concept": "eye"
+    },
+    {
+     "id": "pie-lex-gwhermn",
+     "form": "gʷʰérmn̥",
+     "root": "pie-root-gwher-be_warm",
+     "gloss": "warmth, heat",
+     "concept": "heat"
+    },
+    {
+     "id": "pie-lex-gwheros",
+     "form": "gʷʰéros",
+     "root": "pie-root-gwher-be_warm",
+     "gloss": "heat",
+     "concept": "heat"
+    },
+    {
+     "id": "pie-lex-gwhoreyeti",
+     "form": "gʷʰoréyeti",
+     "root": "pie-root-gwher-be_warm",
+     "gloss": "to heat",
+     "concept": "heat"
+    },
+    {
+     "id": "pie-lex-gwhrensos",
+     "form": "gʷʰrensós",
+     "root": "pie-root-gwher-be_warm",
+     "gloss": "heat",
+     "concept": "heat"
+    },
+    {
+     "id": "pie-lex-gwhrnewti",
+     "form": "gʷʰr̥néwti",
+     "root": "pie-root-gwher-be_warm",
+     "gloss": "to be heating",
+     "concept": "heat"
+    },
+    {
+     "id": "pie-lex-gwmtos",
+     "form": "gʷm̥tós",
+     "root": "pie-root-gwem-come",
+     "gloss": "able to be traversed: passable",
+     "concept": "traverse"
+    },
+    {
+     "id": "pie-lex-h1eymn",
+     "form": "h₁éymn̥",
+     "root": "pie-root-h1ey-go",
+     "gloss": "course, way",
+     "concept": "course"
+    },
+    {
+     "id": "pie-lex-h1eytr",
+     "form": "h₁éytr̥",
+     "root": "pie-root-h1ey-go",
+     "gloss": "way, course",
+     "concept": "course"
+    },
+    {
+     "id": "pie-lex-h2ekjru",
+     "form": "h₂éḱru",
+     "root": "pie-lex-h2ekjru",
+     "gloss": "tear (in the eyes)",
+     "concept": "eye"
+    },
+    {
+     "id": "pie-lex-h2ekjru-2",
+     "form": "h₂eḱru",
+     "root": "pie-root-h2ekj-sharp",
+     "gloss": "tear (of the eyes)",
+     "concept": "eye"
+    },
+    {
+     "id": "pie-lex-h2ewser",
+     "form": "h₂ewsér",
+     "root": "pie-lex-h2ewser",
+     "gloss": "in the direction of dawn, east",
+     "concept": "east"
+    },
+    {
+     "id": "pie-lex-h2ewsteros",
+     "form": "h₂éwsteros",
+     "root": "pie-root-h2ews-become_light",
+     "gloss": "in the direction of dawn, east",
+     "concept": "east"
+    },
+    {
+     "id": "pie-lex-h2ogjmos",
+     "form": "h₂óǵmos",
+     "root": "pie-root-h2egj-drive",
+     "gloss": "path, way, trajectory",
+     "concept": "path"
+    },
+    {
+     "id": "pie-lex-h3nexbho",
+     "form": "h₃nēbʰo-",
+     "root": "pie-root-h3nebh-hub",
+     "gloss": "wheel",
+     "concept": "wheel"
+    },
+    {
+     "id": "pie-lex-h3okws",
+     "form": "h₃ókʷs",
+     "root": "pie-root-h3ekw-see",
+     "gloss": "eye",
+     "concept": "eye"
+    },
+    {
+     "id": "pie-lex-h3rto",
+     "form": "h₃r̥tó",
+     "root": "pie-root-h3er-move",
+     "gloss": "to rise",
+     "concept": "rise"
+    },
+    {
+     "id": "pie-lex-keh2ikos",
+     "form": "kéh₂ikos",
+     "root": "pie-lex-keh2ikos",
+     "gloss": "one-eyed, blind",
+     "concept": "eye"
+    },
+    {
+     "id": "pie-lex-kjent",
+     "form": "ḱént",
+     "root": "pie-root-kjen-climb",
+     "gloss": "to climb, rise",
+     "concept": "rise"
+    },
+    {
+     "id": "pie-lex-kwekwlos",
+     "form": "kʷékʷlos",
+     "root": "pie-root-kwelh1-turn",
+     "gloss": "wheel",
+     "concept": "wheel"
+    },
+    {
+     "id": "pie-lex-pert-3",
+     "form": "pért",
+     "root": "pie-root-per-go_through",
+     "gloss": "to get through, cross",
+     "concept": "cross"
+    },
+    {
+     "id": "pie-lex-pertus",
+     "form": "pértus",
+     "root": "pie-root-per-go_through",
+     "gloss": "crossing",
+     "concept": "cross"
+    },
+    {
+     "id": "pie-lex-perwr",
+     "form": "pérwr̥",
+     "root": "pie-root-per-go_through",
+     "gloss": "ford, crossing",
+     "concept": "cross"
+    },
+    {
+     "id": "pie-lex-pontoh1s",
+     "form": "póntoh₁s",
+     "root": "pie-root-pent-pass",
+     "gloss": "path",
+     "concept": "path"
+    },
+    {
+     "id": "pie-lex-prtos",
+     "form": "pr̥tós",
+     "root": "pie-root-per-go_through",
+     "gloss": "crossed, passed",
+     "concept": "cross"
+    },
+    {
+     "id": "pie-lex-rotos",
+     "form": "rótos",
+     "root": "pie-root-ret-run",
+     "gloss": "wheel",
+     "concept": "wheel"
+    },
+    {
+     "id": "pie-lex-soh2wl",
+     "form": "sóh₂wl̥",
+     "root": "pie-lex-soh2wl",
+     "gloss": "sun",
+     "concept": "sun"
+    },
+    {
+     "id": "pie-lex-steyghs",
+     "form": "stéygʰs",
+     "root": "pie-root-steygh-go",
+     "gloss": "path",
+     "concept": "path"
+    },
+    {
+     "id": "pie-lex-steyks",
+     "form": "stéyks",
+     "root": "pie-lex-steyks",
+     "gloss": "path",
+     "concept": "path"
+    },
+    {
+     "id": "pie-lex-stoyghos",
+     "form": "stóygʰos",
+     "root": "pie-root-steygh-go",
+     "gloss": "path, way",
+     "concept": "path"
+    },
+    {
+     "id": "pie-lex-tepos",
+     "form": "tépos",
+     "root": "pie-root-tep-be_warm",
+     "gloss": "heat, warmth",
+     "concept": "heat"
+    },
+    {
+     "id": "pie-lex-terh2t",
+     "form": "térh₂t",
+     "root": "pie-root-terh2-cross_over",
+     "gloss": "to get through, cross over",
+     "concept": "cross"
+    },
+    {
+     "id": "pie-root-bhergjh-rise_up",
+     "form": "bʰerǵʰ-",
+     "root": "pie-root-bhergjh-rise_up",
+     "gloss": "to rise up, ascend",
+     "concept": "rise"
+    },
+    {
+     "id": "pie-root-dheyH-fix_one_s",
+     "form": "dʰeyH-",
+     "root": "pie-root-dheyH-fix_one_s",
+     "gloss": "to fix one's eye on, regard",
+     "concept": "eye"
+    },
+    {
+     "id": "pie-root-h1rey-rise",
+     "form": "h₁rey-",
+     "root": "pie-root-h1rey-rise",
+     "gloss": "to rise, arise",
+     "concept": "rise"
+    },
+    {
+     "id": "pie-root-h2elh2-wander",
+     "form": "h₂elh₂-",
+     "root": "pie-root-h2elh2-wander",
+     "gloss": "to wander, roam",
+     "concept": "wander"
+    },
+    {
+     "id": "pie-root-h2meygw-change",
+     "form": "h₂meygʷ-",
+     "root": "pie-root-h2meygw-change",
+     "gloss": "to change places → to wander",
+     "concept": "wander"
+    },
+    {
+     "id": "pie-root-h3ekw-see",
+     "form": "h₃ekʷ-",
+     "root": "pie-root-h3ekw-see",
+     "gloss": "eye",
+     "concept": "eye"
+    },
+    {
+     "id": "pie-root-h3er-move",
+     "form": "h₃er-",
+     "root": "pie-root-h3er-move",
+     "gloss": "to rise, to spring",
+     "concept": "rise"
+    },
+    {
+     "id": "pie-root-keHy-heat",
+     "form": "keHy-",
+     "root": "pie-root-keHy-heat",
+     "gloss": "to heat",
+     "concept": "heat"
+    },
+    {
+     "id": "pie-root-kelH-rise",
+     "form": "kelH-",
+     "root": "pie-root-kelH-rise",
+     "gloss": "to rise",
+     "concept": "rise"
+    },
+    {
+     "id": "pie-root-kjen-climb",
+     "form": "ḱen-",
+     "root": "pie-root-kjen-climb",
+     "gloss": "to climb, rise",
+     "concept": "rise"
+    },
+    {
+     "id": "pie-root-kwelh1-turn",
+     "form": "kʷelh₁-",
+     "root": "pie-root-kwelh1-turn",
+     "gloss": "to revolve around, and therefore to sojourn, to dwell",
+     "concept": "revolve"
+    },
+    {
+     "id": "pie-root-meys-open_the_eyes",
+     "form": "meys-",
+     "root": "pie-root-meys-open_the_eyes",
+     "gloss": "to open the eyes",
+     "concept": "eye"
+    },
+    {
+     "id": "pie-root-pent-pass",
+     "form": "pent-",
+     "root": "pie-root-pent-pass",
+     "gloss": "path",
+     "concept": "path"
+    },
+    {
+     "id": "pie-root-regh-straighten_up",
+     "form": "regʰ-",
+     "root": "pie-root-regh-straighten_up",
+     "gloss": "to straighten up, rise",
+     "concept": "rise"
+    },
+    {
+     "id": "pie-root-skend-jump_up",
+     "form": "skend-",
+     "root": "pie-root-skend-jump_up",
+     "gloss": "to jump up, ascend",
+     "concept": "ascend"
+    },
+    {
+     "id": "pie-root-skreyt-go_in_a",
+     "form": "skreyt-",
+     "root": "pie-root-skreyt-go_in_a",
+     "gloss": "to go in a circle (?)",
+     "concept": "circle"
+    },
+    {
+     "id": "pie-root-skwrey-describe_a_circle",
+     "form": "skʷrey-",
+     "root": "pie-root-skwrey-describe_a_circle",
+     "gloss": "to describe a circle",
+     "concept": "circle"
+    },
+    {
+     "id": "pie-root-terh2-cross_over",
+     "form": "terh₂-",
+     "root": "pie-root-terh2-cross_over",
+     "gloss": "to cross over, pass through, overcome",
+     "concept": "cross"
+    },
+    {
+     "id": "pie-root-weh2dh-go",
+     "form": "weh₂dʰ-",
+     "root": "pie-root-weh2dh-go",
+     "gloss": "to pass, to traverse",
+     "concept": "traverse"
+    },
+    {
+     "id": "pie-root-wers-rise",
+     "form": "wers-",
+     "root": "pie-root-wers-rise",
+     "gloss": "to rise; to raise, lift",
+     "concept": "rise"
+    },
+    {
+     "id": "pie-root-yeh2-go",
+     "form": "yeh₂-",
+     "root": "pie-root-yeh2-go",
+     "gloss": "to ride, to travel",
+     "concept": "travel"
+    }
+   ],
+   "roots": [
+    "pie-lex-dakjru",
+    "pie-lex-h2ekjru",
+    "pie-lex-h2ewser",
+    "pie-lex-keh2ikos",
+    "pie-lex-soh2wl",
+    "pie-lex-steyks",
+    "pie-root-Hreth2-run",
+    "pie-root-bhergjh-rise_up",
+    "pie-root-derkj-see",
+    "pie-root-dheyH-fix_one_s",
+    "pie-root-dhgwhey-decline",
+    "pie-root-gwem-come",
+    "pie-root-gwher-be_warm",
+    "pie-root-h1ey-go",
+    "pie-root-h1rey-rise",
+    "pie-root-h2egj-drive",
+    "pie-root-h2ekj-sharp",
+    "pie-root-h2elh2-wander",
+    "pie-root-h2ews-become_light",
+    "pie-root-h2meygw-change",
+    "pie-root-h3ekw-see",
+    "pie-root-h3er-move",
+    "pie-root-h3nebh-hub",
+    "pie-root-keHy-heat",
+    "pie-root-kelH-rise",
+    "pie-root-kjen-climb",
+    "pie-root-kwelh1-turn",
+    "pie-root-meys-open_the_eyes",
+    "pie-root-pent-pass",
+    "pie-root-per-go_through",
+    "pie-root-regh-straighten_up",
+    "pie-root-ret-run",
+    "pie-root-skend-jump_up",
+    "pie-root-skreyt-go_in_a",
+    "pie-root-skwrey-describe_a_circle",
+    "pie-root-steygh-go",
+    "pie-root-tep-be_warm",
+    "pie-root-terh2-cross_over",
+    "pie-root-weh2dh-go",
+    "pie-root-wers-rise",
+    "pie-root-yeh2-go"
+   ]
+  },
+  "10": {
+   "name": "healing and binding charms",
+   "concepts": [
+    "heal",
+    "healer",
+    "healing",
+    "cure",
+    "physician",
+    "medicine",
+    "remedy",
+    "herb",
+    "plant",
+    "illness",
+    "sickness",
+    "disease",
+    "sick",
+    "ill",
+    "wound",
+    "injury",
+    "pain",
+    "fever",
+    "blood",
+    "joint",
+    "limb",
+    "sinew",
+    "marrow",
+    "bind",
+    "bound",
+    "tie",
+    "fetter",
+    "charm",
+    "spell",
+    "magic",
+    "sorcery",
+    "whole",
+    "healthy"
+   ],
+   "exclusions": [],
+   "seeds": [
+    {
+     "id": "pie-lex-Heh3ley",
+     "form": "Heh₃ley-",
+     "root": "pie-root-Heh3l-bow",
+     "gloss": "bend, joint; limb, member, arm",
+     "concept": "joint"
+    },
+    {
+     "id": "pie-lex-Hrupyeti",
+     "form": "Hrupyéti",
+     "root": "pie-root-Hrewp-break",
+     "gloss": "to suffer pain",
+     "concept": "pain"
+    },
+    {
+     "id": "pie-lex-bhendh",
+     "form": "bʰendʰ-",
+     "root": "pie-root-bhedh-bend",
+     "gloss": "to bind, tie",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-lex-bhndhtos",
+     "form": "bʰn̥dʰtós",
+     "root": "pie-root-bhendh-bind",
+     "gloss": "bound, tied",
+     "concept": "bound"
+    },
+    {
+     "id": "pie-lex-deh1t",
+     "form": "déh₁t",
+     "root": "pie-root-deh1-bind",
+     "gloss": "to bind",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-lex-dh1yeti",
+     "form": "dh₁yéti",
+     "root": "pie-root-deh1-bind",
+     "gloss": "to bind",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-lex-dolh1os",
+     "form": "dolh₁os",
+     "root": "pie-root-delh1-split",
+     "gloss": "pain?",
+     "concept": "pain"
+    },
+    {
+     "id": "pie-lex-dusmenexs",
+     "form": "dusmenēs",
+     "root": "pie-lex-dusmenexs",
+     "gloss": "ill-disposed",
+     "concept": "ill"
+    },
+    {
+     "id": "pie-lex-h1esh2r",
+     "form": "h₁ésh₂r̥",
+     "root": "pie-lex-h1esh2r",
+     "gloss": "blood",
+     "concept": "blood"
+    },
+    {
+     "id": "pie-lex-h2epos",
+     "form": "h₂épos",
+     "root": "pie-root-h2ep-join",
+     "gloss": "joint; limb, member",
+     "concept": "joint"
+    },
+    {
+     "id": "pie-lex-h3wath2t",
+     "form": "h₃wáth₂t",
+     "root": "pie-root-h3wath2-wound",
+     "gloss": "to wound",
+     "concept": "wound"
+    },
+    {
+     "id": "pie-lex-keh2ilos",
+     "form": "kéh₂ilos",
+     "root": "pie-lex-keh2ilos",
+     "gloss": "healthy",
+     "concept": "healthy"
+    },
+    {
+     "id": "pie-lex-kokjs",
+     "form": "koḱs-",
+     "root": "pie-lex-kokjs",
+     "gloss": "joint",
+     "concept": "joint"
+    },
+    {
+     "id": "pie-lex-krewh2s",
+     "form": "kréwh₂s",
+     "root": "pie-root-krewh2-blood_outside_the",
+     "gloss": "blood",
+     "concept": "blood"
+    },
+    {
+     "id": "pie-lex-krewh2s-2",
+     "form": "kréwh₂s",
+     "root": "pie-root-krewh2-blood_outside_the",
+     "gloss": "blood",
+     "concept": "blood"
+    },
+    {
+     "id": "pie-lex-mexdeti",
+     "form": "mḗdeti",
+     "root": "pie-root-med-measure",
+     "gloss": "to heal, treat (the sick); take measures for, attend to",
+     "concept": "heal"
+    },
+    {
+     "id": "pie-lex-mosghos",
+     "form": "mosgʰós",
+     "root": "pie-lex-mosghos",
+     "gloss": "marrow",
+     "concept": "marrow"
+    },
+    {
+     "id": "pie-lex-sh2imox",
+     "form": "sh₂imṓ",
+     "root": "pie-root-sh2ey-bind",
+     "gloss": "something that binds",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-lex-sh2itos",
+     "form": "sh₂itós",
+     "root": "pie-root-sh2ey-bind",
+     "gloss": "bound, fettered",
+     "concept": "bound"
+    },
+    {
+     "id": "pie-lex-sneh1wr",
+     "form": "snéh₁wr̥",
+     "root": "pie-root-sneh1-spin",
+     "gloss": "sinew, tendon",
+     "concept": "sinew"
+    },
+    {
+     "id": "pie-lex-sokwos",
+     "form": "sokʷós",
+     "root": "pie-root-sekw-say",
+     "gloss": "juice of plants",
+     "concept": "plant"
+    },
+    {
+     "id": "pie-lex-solh2oh3kws",
+     "form": "solh₂oh₃kʷs",
+     "root": "pie-root-solh2-whole",
+     "gloss": "appearing whole",
+     "concept": "whole"
+    },
+    {
+     "id": "pie-lex-soxdus",
+     "form": "sōdus",
+     "root": "pie-root-sed-sit",
+     "gloss": "plant, garden",
+     "concept": "plant"
+    },
+    {
+     "id": "pie-lex-soytos",
+     "form": "soytós",
+     "root": "pie-root-seyt-magic",
+     "gloss": "magic",
+     "concept": "magic"
+    },
+    {
+     "id": "pie-lex-terh3t",
+     "form": "térh₃t",
+     "root": "pie-root-terh3-wound",
+     "gloss": "to wound",
+     "concept": "wound"
+    },
+    {
+     "id": "pie-lex-wedheti-2",
+     "form": "wédʰeti",
+     "root": "pie-lex-wedheti-2",
+     "gloss": "to bind, join",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-Hnedh-bind",
+     "form": "Hnedʰ-",
+     "root": "pie-root-Hnedh-bind",
+     "gloss": "to bind",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-Hreygj-bind",
+     "form": "Hreyǵ-",
+     "root": "pie-root-Hreygj-bind",
+     "gloss": "to bind",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-bhedh-bend",
+     "form": "bʰedʰ-",
+     "root": "pie-root-bhedh-bend",
+     "gloss": "to press (together), bind; to press down on, oppress",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-bhen-become_sick",
+     "form": "bʰen-",
+     "root": "pie-root-bhen-become_sick",
+     "gloss": "to become sick",
+     "concept": "sick"
+    },
+    {
+     "id": "pie-root-bhendh-bind",
+     "form": "bʰendʰ-",
+     "root": "pie-root-bhendh-bind",
+     "gloss": "to bind",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-deh1-bind",
+     "form": "deh₁-",
+     "root": "pie-root-deh1-bind",
+     "gloss": "to bind",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-dhergjh-bind_fast",
+     "form": "dʰerǵʰ-",
+     "root": "pie-root-dhergjh-bind_fast",
+     "gloss": "to bind fast",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-dheygw-stick_into",
+     "form": "dʰeygʷ-",
+     "root": "pie-root-dheygw-stick_into",
+     "gloss": "to plant; to set up, fasten",
+     "concept": "plant"
+    },
+    {
+     "id": "pie-root-gheu-disappear",
+     "form": "gʰeu-",
+     "root": "pie-root-gheu-disappear",
+     "gloss": "to wither (especially of plants)",
+     "concept": "plant"
+    },
+    {
+     "id": "pie-root-ghreh1-grow",
+     "form": "gʰreh₁-",
+     "root": "pie-root-ghreh1-grow",
+     "gloss": "to grow (of plants?)",
+     "concept": "plant"
+    },
+    {
+     "id": "pie-root-gwrenth2-knot",
+     "form": "gʷrenth₂-",
+     "root": "pie-root-gwrenth2-knot",
+     "gloss": "to knot, tie",
+     "concept": "tie"
+    },
+    {
+     "id": "pie-root-h2el-all",
+     "form": "h₂el-",
+     "root": "pie-root-h2el-all",
+     "gloss": "all; each, every; entire, whole",
+     "concept": "whole"
+    },
+    {
+     "id": "pie-root-h2emgjh-lace_up",
+     "form": "h₂emǵʰ-",
+     "root": "pie-root-h2emgjh-lace_up",
+     "gloss": "to lace up, tie → to constrict",
+     "concept": "tie"
+    },
+    {
+     "id": "pie-root-h2wer-lift",
+     "form": "h₂wer-",
+     "root": "pie-root-h2wer-lift",
+     "gloss": "to cover, to enclose, to bind",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-h2wyedh-wound",
+     "form": "h₂wyedʰ-",
+     "root": "pie-root-h2wyedh-wound",
+     "gloss": "to wound, strike fatally",
+     "concept": "wound"
+    },
+    {
+     "id": "pie-root-h3wath2-wound",
+     "form": "h₃wath₂-",
+     "root": "pie-root-h3wath2-wound",
+     "gloss": "to wound",
+     "concept": "wound"
+    },
+    {
+     "id": "pie-root-krewh2-blood_outside_the",
+     "form": "krewh₂-",
+     "root": "pie-root-krewh2-blood_outside_the",
+     "gloss": "blood outside the body (as of a wound)",
+     "concept": "wound"
+    },
+    {
+     "id": "pie-root-kwert-bind",
+     "form": "kʷert-",
+     "root": "pie-root-kwert-bind",
+     "gloss": "to bind",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-leyg-illness",
+     "form": "leyg-",
+     "root": "pie-root-leyg-illness",
+     "gloss": "illness",
+     "concept": "illness"
+    },
+    {
+     "id": "pie-root-leygj-bind",
+     "form": "leyǵ-",
+     "root": "pie-root-leygj-bind",
+     "gloss": "to bind, tie",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-med-measure",
+     "form": "med-",
+     "root": "pie-root-med-measure",
+     "gloss": "healing",
+     "concept": "heal"
+    },
+    {
+     "id": "pie-root-mel-limb",
+     "form": "mel-",
+     "root": "pie-root-mel-limb",
+     "gloss": "limb; to join",
+     "concept": "limb"
+    },
+    {
+     "id": "pie-root-mesg-knot",
+     "form": "mesg-",
+     "root": "pie-root-mesg-knot",
+     "gloss": "to knot, tie",
+     "concept": "tie"
+    },
+    {
+     "id": "pie-root-mey-attach",
+     "form": "mey-",
+     "root": "pie-root-mey-attach",
+     "gloss": "to attach, bind, strengthen",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-reygj-bind",
+     "form": "reyǵ-",
+     "root": "pie-root-reygj-bind",
+     "gloss": "to bind",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-seh1-impress",
+     "form": "seh₁-",
+     "root": "pie-root-seh1-impress",
+     "gloss": "to sow, to plant",
+     "concept": "plant"
+    },
+    {
+     "id": "pie-root-sem-one",
+     "form": "sem-",
+     "root": "pie-root-sem-one",
+     "gloss": "one, whole; same",
+     "concept": "whole"
+    },
+    {
+     "id": "pie-root-ser-bind",
+     "form": "ser-",
+     "root": "pie-root-ser-bind",
+     "gloss": "to bind, tie together",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-seyt-magic",
+     "form": "seyt-",
+     "root": "pie-root-seyt-magic",
+     "gloss": "magic",
+     "concept": "magic"
+    },
+    {
+     "id": "pie-root-sh2ey-bind",
+     "form": "sh₂ey-",
+     "root": "pie-root-sh2ey-bind",
+     "gloss": "to bind, fetter",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-skwey-thorn",
+     "form": "skwey-",
+     "root": "pie-root-skwey-thorn",
+     "gloss": "thorny, prickly plant",
+     "concept": "plant"
+    },
+    {
+     "id": "pie-root-solh2-whole",
+     "form": "solh₂-",
+     "root": "pie-root-solh2-whole",
+     "gloss": "whole",
+     "concept": "whole"
+    },
+    {
+     "id": "pie-root-swer-ache",
+     "form": "swer-",
+     "root": "pie-root-swer-ache",
+     "gloss": "wound; injury",
+     "concept": "wound"
+    },
+    {
+     "id": "pie-root-swergh-be_ill",
+     "form": "swergʰ-",
+     "root": "pie-root-swergh-be_ill",
+     "gloss": "to be ill",
+     "concept": "ill"
+    },
+    {
+     "id": "pie-root-terh3-wound",
+     "form": "terh₃-",
+     "root": "pie-root-terh3-wound",
+     "gloss": "to wound",
+     "concept": "wound"
+    },
+    {
+     "id": "pie-root-wedh-bind",
+     "form": "wedʰ-",
+     "root": "pie-root-wedh-bind",
+     "gloss": "to bind, join",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-wergjh-bind",
+     "form": "werǵʰ-",
+     "root": "pie-root-wergjh-bind",
+     "gloss": "to bind, tie up",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-yew-hold_fast",
+     "form": "yew-",
+     "root": "pie-root-yew-hold_fast",
+     "gloss": "to hold fast, draw to oneself, bind",
+     "concept": "bind"
+    },
+    {
+     "id": "pie-root-yewg-join",
+     "form": "yewg-",
+     "root": "pie-root-yewg-join",
+     "gloss": "to join, to yoke, to tie together",
+     "concept": "tie"
+    }
+   ],
+   "roots": [
+    "pie-lex-dusmenexs",
+    "pie-lex-h1esh2r",
+    "pie-lex-keh2ilos",
+    "pie-lex-kokjs",
+    "pie-lex-mosghos",
+    "pie-lex-wedheti-2",
+    "pie-root-Heh3l-bow",
+    "pie-root-Hnedh-bind",
+    "pie-root-Hrewp-break",
+    "pie-root-Hreygj-bind",
+    "pie-root-bhedh-bend",
+    "pie-root-bhen-become_sick",
+    "pie-root-bhendh-bind",
+    "pie-root-deh1-bind",
+    "pie-root-delh1-split",
+    "pie-root-dhergjh-bind_fast",
+    "pie-root-dheygw-stick_into",
+    "pie-root-gheu-disappear",
+    "pie-root-ghreh1-grow",
+    "pie-root-gwrenth2-knot",
+    "pie-root-h2el-all",
+    "pie-root-h2emgjh-lace_up",
+    "pie-root-h2ep-join",
+    "pie-root-h2wer-lift",
+    "pie-root-h2wyedh-wound",
+    "pie-root-h3wath2-wound",
+    "pie-root-krewh2-blood_outside_the",
+    "pie-root-kwert-bind",
+    "pie-root-leyg-illness",
+    "pie-root-leygj-bind",
+    "pie-root-med-measure",
+    "pie-root-mel-limb",
+    "pie-root-mesg-knot",
+    "pie-root-mey-attach",
+    "pie-root-reygj-bind",
+    "pie-root-sed-sit",
+    "pie-root-seh1-impress",
+    "pie-root-sekw-say",
+    "pie-root-sem-one",
+    "pie-root-ser-bind",
+    "pie-root-seyt-magic",
+    "pie-root-sh2ey-bind",
+    "pie-root-skwey-thorn",
+    "pie-root-sneh1-spin",
+    "pie-root-solh2-whole",
+    "pie-root-swer-ache",
+    "pie-root-swergh-be_ill",
+    "pie-root-terh3-wound",
+    "pie-root-wedh-bind",
+    "pie-root-wergjh-bind",
+    "pie-root-yew-hold_fast",
+    "pie-root-yewg-join"
+   ]
+  },
+  "11": {
+   "name": "the poet and his craft",
+   "concepts": [
+    "poet",
+    "poem",
+    "poetry",
+    "song",
+    "sing",
+    "sang",
+    "sung",
+    "singer",
+    "hymn",
+    "chant",
+    "praise",
+    "word",
+    "speech",
+    "speak",
+    "voice",
+    "verse",
+    "craft",
+    "weave",
+    "wove",
+    "woven",
+    "fashion",
+    "carpenter",
+    "thought",
+    "think",
+    "mind",
+    "inspiration",
+    "seer",
+    "wise",
+    "wisdom",
+    "fame",
+    "famous",
+    "glory",
+    "renown",
+    "hear",
+    "heard"
+   ],
+   "exclusions": [],
+   "seeds": [
+    {
+     "id": "pie-lex-Hresgtis",
+     "form": "Hrésgtis",
+     "root": "pie-root-Hresg-weave",
+     "gloss": "something woven together",
+     "concept": "woven"
+    },
+    {
+     "id": "pie-lex-bheh2ti",
+     "form": "bʰéh₂ti",
+     "root": "pie-root-bheh2-speak",
+     "gloss": "to speak, to be talking",
+     "concept": "speak"
+    },
+    {
+     "id": "pie-lex-dhiHtos",
+     "form": "dʰiHtós",
+     "root": "pie-root-dheyH-fix_one_s",
+     "gloss": "perceived, thought",
+     "concept": "thought"
+    },
+    {
+     "id": "pie-lex-gjneh3meh2",
+     "form": "ǵneh₃meh₂",
+     "root": "pie-root-gjneh3-recognise",
+     "gloss": "mark; mind, judgement, opinion",
+     "concept": "mind"
+    },
+    {
+     "id": "pie-lex-gwrHtos",
+     "form": "gʷr̥Htós",
+     "root": "pie-root-gwerH-express_approval",
+     "gloss": "praised",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-lex-gwrneHti",
+     "form": "gʷr̥néHti",
+     "root": "pie-root-gwerH-express_approval",
+     "gloss": "to praise, extol (in song)",
+     "concept": "song"
+    },
+    {
+     "id": "pie-lex-h1erkwos",
+     "form": "h₁erkʷós",
+     "root": "pie-root-h1erkw-praise",
+     "gloss": "song of praise, hymn",
+     "concept": "song"
+    },
+    {
+     "id": "pie-lex-h1ngwnis",
+     "form": "h₁n̥gʷnís",
+     "root": "pie-root-h1engw-burn",
+     "gloss": "fire (animate, deified: Agni; use in address and praise)",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-lex-h2kjh2owsyeti",
+     "form": "h₂ḱh₂owsyéti",
+     "root": "pie-root-h2ew-perceive",
+     "gloss": "to be sharp-eared, to hear well",
+     "concept": "hear"
+    },
+    {
+     "id": "pie-lex-h2reh1dh",
+     "form": "h₂reh₁dʰ-",
+     "root": "pie-root-h2reh1-think",
+     "gloss": "to think; to arrange",
+     "concept": "think"
+    },
+    {
+     "id": "pie-lex-h2weyst",
+     "form": "h₂wéyst",
+     "root": "pie-root-h2weys-hear",
+     "gloss": "to hear",
+     "concept": "hear"
+    },
+    {
+     "id": "pie-lex-keh2nmn",
+     "form": "kéh₂nmn̥",
+     "root": "pie-root-keh2n-sing",
+     "gloss": "song",
+     "concept": "song"
+    },
+    {
+     "id": "pie-lex-kh2neti",
+     "form": "kh₂néti",
+     "root": "pie-root-keh2n-sing",
+     "gloss": "to sing, chant",
+     "concept": "sing"
+    },
+    {
+     "id": "pie-lex-kjekjlowe",
+     "form": "ḱeḱlówe",
+     "root": "pie-root-kjlew-hear",
+     "gloss": "to be heard, audible",
+     "concept": "heard"
+    },
+    {
+     "id": "pie-lex-kjlewmn",
+     "form": "ḱléwmn̥",
+     "root": "pie-root-kjlew-hear",
+     "gloss": "hearing",
+     "concept": "hear"
+    },
+    {
+     "id": "pie-lex-kjlewmnto",
+     "form": "ḱléwmn̥to-",
+     "root": "pie-root-kjlew-hear",
+     "gloss": "fame",
+     "concept": "fame"
+    },
+    {
+     "id": "pie-lex-kjlewos",
+     "form": "ḱléwos",
+     "root": "pie-root-kjlew-hear",
+     "gloss": "that which is heard",
+     "concept": "heard"
+    },
+    {
+     "id": "pie-lex-kjlewt",
+     "form": "ḱléwt",
+     "root": "pie-root-kjlew-hear",
+     "gloss": "to hear",
+     "concept": "hear"
+    },
+    {
+     "id": "pie-lex-kjlewtoxr",
+     "form": "ḱléwtōr",
+     "root": "pie-root-kjlew-hear",
+     "gloss": "hearer, one who hears",
+     "concept": "hear"
+    },
+    {
+     "id": "pie-lex-kjlewtrom",
+     "form": "ḱléwtrom",
+     "root": "pie-root-kjlew-hear",
+     "gloss": "ear, hearing",
+     "concept": "hear"
+    },
+    {
+     "id": "pie-lex-kjlowsos",
+     "form": "ḱlowsos",
+     "root": "pie-root-kjlews-hear",
+     "gloss": "hearing",
+     "concept": "hear"
+    },
+    {
+     "id": "pie-lex-kjlustis",
+     "form": "ḱlustís",
+     "root": "pie-root-kjlews-hear",
+     "gloss": "obedience; hearing",
+     "concept": "hear"
+    },
+    {
+     "id": "pie-lex-kjlutis",
+     "form": "ḱlutis",
+     "root": "pie-root-kjlew-hear",
+     "gloss": "hearing",
+     "concept": "hear"
+    },
+    {
+     "id": "pie-lex-kjlutos",
+     "form": "ḱlutós",
+     "root": "pie-root-kjlew-hear",
+     "gloss": "heard, listened",
+     "concept": "heard"
+    },
+    {
+     "id": "pie-lex-memone",
+     "form": "memóne",
+     "root": "pie-root-men-think",
+     "gloss": "to think, to be mindful",
+     "concept": "think"
+    },
+    {
+     "id": "pie-lex-menos",
+     "form": "ménos",
+     "root": "pie-root-men-think",
+     "gloss": "mind",
+     "concept": "mind"
+    },
+    {
+     "id": "pie-lex-ment",
+     "form": "mént",
+     "root": "pie-root-men-think",
+     "gloss": "to form a thought",
+     "concept": "thought"
+    },
+    {
+     "id": "pie-lex-mentis",
+     "form": "méntis",
+     "root": "pie-root-men-think",
+     "gloss": "thought",
+     "concept": "thought"
+    },
+    {
+     "id": "pie-lex-mntos",
+     "form": "mn̥tós",
+     "root": "pie-root-men-think",
+     "gloss": "thought",
+     "concept": "thought"
+    },
+    {
+     "id": "pie-lex-mnyetor",
+     "form": "mn̥yétor",
+     "root": "pie-root-men-think",
+     "gloss": "to think",
+     "concept": "think"
+    },
+    {
+     "id": "pie-lex-moneyeti",
+     "form": "monéyeti",
+     "root": "pie-root-men-think",
+     "gloss": "to cause to think, make think",
+     "concept": "think"
+    },
+    {
+     "id": "pie-lex-tetkjox",
+     "form": "tétḱō",
+     "root": "pie-root-tetkj-create",
+     "gloss": "carpenter",
+     "concept": "carpenter"
+    },
+    {
+     "id": "pie-lex-wekwos",
+     "form": "wékʷos",
+     "root": "pie-root-wekw-speak",
+     "gloss": "word, speech",
+     "concept": "word"
+    },
+    {
+     "id": "pie-lex-werdhom",
+     "form": "werdʰom",
+     "root": "pie-root-werh1-speak",
+     "gloss": "word",
+     "concept": "word"
+    },
+    {
+     "id": "pie-lex-werh1t-2",
+     "form": "wérh₁t",
+     "root": "pie-root-werh1-speak",
+     "gloss": "to say, to speak",
+     "concept": "speak"
+    },
+    {
+     "id": "pie-lex-widris",
+     "form": "widris",
+     "root": "pie-root-weyd-see",
+     "gloss": "knowing, wise",
+     "concept": "wise"
+    },
+    {
+     "id": "pie-lex-woxkws",
+     "form": "wṓkʷs",
+     "root": "pie-root-wekw-speak",
+     "gloss": "voice, speech",
+     "concept": "speech"
+    },
+    {
+     "id": "pie-lex-wrgjtos",
+     "form": "wr̥ǵtós",
+     "root": "pie-root-wergj-make",
+     "gloss": "worked, fashioned",
+     "concept": "fashion"
+    },
+    {
+     "id": "pie-root-Hew-weave",
+     "form": "Hew-",
+     "root": "pie-root-Hew-weave",
+     "gloss": "to weave",
+     "concept": "weave"
+    },
+    {
+     "id": "pie-root-Hreh1dh-think",
+     "form": "Hreh₁dʰ-",
+     "root": "pie-root-Hreh1dh-think",
+     "gloss": "to think",
+     "concept": "think"
+    },
+    {
+     "id": "pie-root-Hresg-weave",
+     "form": "Hresg-",
+     "root": "pie-root-Hresg-weave",
+     "gloss": "to weave, knit",
+     "concept": "weave"
+    },
+    {
+     "id": "pie-root-Hyewdh-moving_erect",
+     "form": "Hyewdʰ-",
+     "root": "pie-root-Hyewdh-moving_erect",
+     "gloss": "moving erect, to be agitated or push forward in such a fashion that one is straight or upright (for example as walking into battle)",
+     "concept": "fashion"
+    },
+    {
+     "id": "pie-root-bheh2-speak",
+     "form": "bʰeh₂-",
+     "root": "pie-root-bheh2-speak",
+     "gloss": "to speak",
+     "concept": "speak"
+    },
+    {
+     "id": "pie-root-bhel-sound",
+     "form": "bʰel-",
+     "root": "pie-root-bhel-sound",
+     "gloss": "to sound; to speak, roar, bark",
+     "concept": "speak"
+    },
+    {
+     "id": "pie-root-dhh2ebh-fashion",
+     "form": "dʰh₂ebʰ-",
+     "root": "pie-root-dhh2ebh-fashion",
+     "gloss": "to fashion, fit",
+     "concept": "fashion"
+    },
+    {
+     "id": "pie-root-geH-sing",
+     "form": "geH-",
+     "root": "pie-root-geH-sing",
+     "gloss": "to sing",
+     "concept": "sing"
+    },
+    {
+     "id": "pie-root-ghel-call",
+     "form": "gʰel-",
+     "root": "pie-root-ghel-call",
+     "gloss": "to chant",
+     "concept": "chant"
+    },
+    {
+     "id": "pie-root-gweHy-sing",
+     "form": "gʷeHy-",
+     "root": "pie-root-gweHy-sing",
+     "gloss": "to sing",
+     "concept": "sing"
+    },
+    {
+     "id": "pie-root-gwerH-express_approval",
+     "form": "gʷerH-",
+     "root": "pie-root-gwerH-express_approval",
+     "gloss": "to express approval; praise",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-root-gwerdh-hear",
+     "form": "gʷerdʰ-",
+     "root": "pie-root-gwerdh-hear",
+     "gloss": "to hear; sound",
+     "concept": "hear"
+    },
+    {
+     "id": "pie-root-gwet-say",
+     "form": "gʷet-",
+     "root": "pie-root-gwet-say",
+     "gloss": "to say, speak",
+     "concept": "speak"
+    },
+    {
+     "id": "pie-root-gwhews-hear",
+     "form": "gʷʰews-",
+     "root": "pie-root-gwhews-hear",
+     "gloss": "to hear (sounds)",
+     "concept": "hear"
+    },
+    {
+     "id": "pie-root-h1erkw-praise",
+     "form": "h₁erkʷ-",
+     "root": "pie-root-h1erkw-praise",
+     "gloss": "to praise, to shine",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-root-h1wegwh-promise",
+     "form": "h₁wegʷʰ-",
+     "root": "pie-root-h1wegwh-promise",
+     "gloss": "to praise",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-root-h2er-speak_weightily_loudly",
+     "form": "h₂er-",
+     "root": "pie-root-h2er-speak_weightily_loudly",
+     "gloss": "to speak weightily/loudly",
+     "concept": "speak"
+    },
+    {
+     "id": "pie-root-h2reh1-think",
+     "form": "h₂reh₁-",
+     "root": "pie-root-h2reh1-think",
+     "gloss": "to think, reason",
+     "concept": "think"
+    },
+    {
+     "id": "pie-root-h2wedH-sound",
+     "form": "h₂wedH-",
+     "root": "pie-root-h2wedH-sound",
+     "gloss": "to sound, speak",
+     "concept": "speak"
+    },
+    {
+     "id": "pie-root-h2wegjh-speak_meaningfully",
+     "form": "h₂weǵʰ-",
+     "root": "pie-root-h2wegjh-speak_meaningfully",
+     "gloss": "to speak meaningfully",
+     "concept": "speak"
+    },
+    {
+     "id": "pie-root-h2weyd-sing",
+     "form": "h₂weyd-",
+     "root": "pie-root-h2weyd-sing",
+     "gloss": "to sing",
+     "concept": "sing"
+    },
+    {
+     "id": "pie-root-h2weys-hear",
+     "form": "h₂weys-",
+     "root": "pie-root-h2weys-hear",
+     "gloss": "to hear",
+     "concept": "hear"
+    },
+    {
+     "id": "pie-root-kan-sing",
+     "form": "kan-",
+     "root": "pie-root-kan-sing",
+     "gloss": "to sing, sound",
+     "concept": "sing"
+    },
+    {
+     "id": "pie-root-keh2n-sing",
+     "form": "keh₂n-",
+     "root": "pie-root-keh2n-sing",
+     "gloss": "to sing",
+     "concept": "sing"
+    },
+    {
+     "id": "pie-root-kerH-remember_with_praise",
+     "form": "kerH-",
+     "root": "pie-root-kerH-remember_with_praise",
+     "gloss": "to remember with praise",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-root-kjer-plait",
+     "form": "ḱer-",
+     "root": "pie-root-kjer-plait",
+     "gloss": "to plait, weave",
+     "concept": "weave"
+    },
+    {
+     "id": "pie-root-kjlew-hear",
+     "form": "ḱlew-",
+     "root": "pie-root-kjlew-hear",
+     "gloss": "to hear",
+     "concept": "hear"
+    },
+    {
+     "id": "pie-root-kjlews-hear",
+     "form": "ḱlews-",
+     "root": "pie-root-kjlews-hear",
+     "gloss": "to hear",
+     "concept": "hear"
+    },
+    {
+     "id": "pie-root-kwerd-hear",
+     "form": "kʷerd-",
+     "root": "pie-root-kwerd-hear",
+     "gloss": "to hear",
+     "concept": "hear"
+    },
+    {
+     "id": "pie-root-legj-gather",
+     "form": "leǵ-",
+     "root": "pie-root-legj-gather",
+     "gloss": "to gather, collect, with derivatives meaning to speak by carefully selecting one's words.",
+     "concept": "word"
+    },
+    {
+     "id": "pie-root-lewbh-desire",
+     "form": "lewbʰ-",
+     "root": "pie-root-lewbh-desire",
+     "gloss": "to admire, praise",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-root-meldh-pray",
+     "form": "meldʰ-",
+     "root": "pie-root-meldh-pray",
+     "gloss": "to pray, speak words to a deity",
+     "concept": "word"
+    },
+    {
+     "id": "pie-root-men-think",
+     "form": "men-",
+     "root": "pie-root-men-think",
+     "gloss": "to think, mind",
+     "concept": "think"
+    },
+    {
+     "id": "pie-root-mensdhh1-vivacious",
+     "form": "mensdʰh₁-",
+     "root": "pie-root-mensdhh1-vivacious",
+     "gloss": "wisdom",
+     "concept": "wisdom"
+    },
+    {
+     "id": "pie-root-mlewh2-speak",
+     "form": "mlewh₂-",
+     "root": "pie-root-mlewh2-speak",
+     "gloss": "to speak",
+     "concept": "speak"
+    },
+    {
+     "id": "pie-root-peyH-sing",
+     "form": "peyH-",
+     "root": "pie-root-peyH-sing",
+     "gloss": "to sing",
+     "concept": "sing"
+    },
+    {
+     "id": "pie-root-plekj-fold",
+     "form": "pleḱ-",
+     "root": "pie-root-plekj-fold",
+     "gloss": "to fold, plait, weave",
+     "concept": "weave"
+    },
+    {
+     "id": "pie-root-reybh-sing",
+     "form": "reybʰ-",
+     "root": "pie-root-reybh-sing",
+     "gloss": "to sing",
+     "concept": "sing"
+    },
+    {
+     "id": "pie-root-sengwh-recite",
+     "form": "sengʷʰ-",
+     "root": "pie-root-sengwh-recite",
+     "gloss": "to sing",
+     "concept": "sing"
+    },
+    {
+     "id": "pie-root-sent-perceive",
+     "form": "sent-",
+     "root": "pie-root-sent-perceive",
+     "gloss": "to think",
+     "concept": "think"
+    },
+    {
+     "id": "pie-root-smer-fall_into_thinking",
+     "form": "smer-",
+     "root": "pie-root-smer-fall_into_thinking",
+     "gloss": "to fall into thinking, remember, care for",
+     "concept": "think"
+    },
+    {
+     "id": "pie-root-spel-say_aloud",
+     "form": "spel-",
+     "root": "pie-root-spel-say_aloud",
+     "gloss": "to publicly speak",
+     "concept": "speak"
+    },
+    {
+     "id": "pie-root-spelH-speak_publicly",
+     "form": "spelH-",
+     "root": "pie-root-spelH-speak_publicly",
+     "gloss": "to speak publicly",
+     "concept": "speak"
+    },
+    {
+     "id": "pie-root-spenh1-twist",
+     "form": "spenh₁-",
+     "root": "pie-root-spenh1-twist",
+     "gloss": "to weave",
+     "concept": "weave"
+    },
+    {
+     "id": "pie-root-stew-praise",
+     "form": "stew-",
+     "root": "pie-root-stew-praise",
+     "gloss": "to praise, laud",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-root-swer-resound",
+     "form": "swer-",
+     "root": "pie-root-swer-resound",
+     "gloss": "to speak loudly, to proclaim",
+     "concept": "speak"
+    },
+    {
+     "id": "pie-root-tek-weave",
+     "form": "tek-",
+     "root": "pie-root-tek-weave",
+     "gloss": "to weave",
+     "concept": "weave"
+    },
+    {
+     "id": "pie-root-teng-think",
+     "form": "teng-",
+     "root": "pie-root-teng-think",
+     "gloss": "to think",
+     "concept": "think"
+    },
+    {
+     "id": "pie-root-webh-weave",
+     "form": "webʰ-",
+     "root": "pie-root-webh-weave",
+     "gloss": "to weave, braid",
+     "concept": "weave"
+    },
+    {
+     "id": "pie-root-weg-weave",
+     "form": "weg-",
+     "root": "pie-root-weg-weave",
+     "gloss": "to weave, to knot",
+     "concept": "weave"
+    },
+    {
+     "id": "pie-root-weh1y-twist",
+     "form": "weh₁y-",
+     "root": "pie-root-weh1y-twist",
+     "gloss": "to twist, wind, weave, plait",
+     "concept": "weave"
+    },
+    {
+     "id": "pie-root-wekw-speak",
+     "form": "wekʷ-",
+     "root": "pie-root-wekw-speak",
+     "gloss": "to speak, to sound out",
+     "concept": "speak"
+    },
+    {
+     "id": "pie-root-wend-praise-2",
+     "form": "wend-",
+     "root": "pie-root-wend-praise-2",
+     "gloss": "to praise, to extol",
+     "concept": "praise"
+    },
+    {
+     "id": "pie-root-werh1-speak",
+     "form": "werh₁-",
+     "root": "pie-root-werh1-speak",
+     "gloss": "to speak, say",
+     "concept": "speak"
+    }
+   ],
+   "roots": [
+    "pie-root-Hew-weave",
+    "pie-root-Hreh1dh-think",
+    "pie-root-Hresg-weave",
+    "pie-root-Hyewdh-moving_erect",
+    "pie-root-bheh2-speak",
+    "pie-root-bhel-sound",
+    "pie-root-dheyH-fix_one_s",
+    "pie-root-dhh2ebh-fashion",
+    "pie-root-geH-sing",
+    "pie-root-ghel-call",
+    "pie-root-gjneh3-recognise",
+    "pie-root-gweHy-sing",
+    "pie-root-gwerH-express_approval",
+    "pie-root-gwerdh-hear",
+    "pie-root-gwet-say",
+    "pie-root-gwhews-hear",
+    "pie-root-h1engw-burn",
+    "pie-root-h1erkw-praise",
+    "pie-root-h1wegwh-promise",
+    "pie-root-h2er-speak_weightily_loudly",
+    "pie-root-h2ew-perceive",
+    "pie-root-h2reh1-think",
+    "pie-root-h2wedH-sound",
+    "pie-root-h2wegjh-speak_meaningfully",
+    "pie-root-h2weyd-sing",
+    "pie-root-h2weys-hear",
+    "pie-root-kan-sing",
+    "pie-root-keh2n-sing",
+    "pie-root-kerH-remember_with_praise",
+    "pie-root-kjer-plait",
+    "pie-root-kjlew-hear",
+    "pie-root-kjlews-hear",
+    "pie-root-kwerd-hear",
+    "pie-root-legj-gather",
+    "pie-root-lewbh-desire",
+    "pie-root-meldh-pray",
+    "pie-root-men-think",
+    "pie-root-mensdhh1-vivacious",
+    "pie-root-mlewh2-speak",
+    "pie-root-peyH-sing",
+    "pie-root-plekj-fold",
+    "pie-root-reybh-sing",
+    "pie-root-sengwh-recite",
+    "pie-root-sent-perceive",
+    "pie-root-smer-fall_into_thinking",
+    "pie-root-spel-say_aloud",
+    "pie-root-spelH-speak_publicly",
+    "pie-root-spenh1-twist",
+    "pie-root-stew-praise",
+    "pie-root-swer-resound",
+    "pie-root-tek-weave",
+    "pie-root-teng-think",
+    "pie-root-tetkj-create",
+    "pie-root-webh-weave",
+    "pie-root-weg-weave",
+    "pie-root-weh1y-twist",
+    "pie-root-wekw-speak",
+    "pie-root-wend-praise-2",
+    "pie-root-wergj-make",
+    "pie-root-werh1-speak",
+    "pie-root-weyd-see"
+   ]
+  },
+  "12": {
+   "name": "gift and counter-gift",
+   "concepts": [
+    "give",
+    "gave",
+    "given",
+    "gift",
+    "bestow",
+    "grant",
+    "receive",
+    "share",
+    "portion",
+    "lot",
+    "wealth",
+    "riches",
+    "goods",
+    "treasure",
+    "reward",
+    "pay",
+    "payment",
+    "price",
+    "exchange",
+    "return",
+    "repay",
+    "generous",
+    "bounty",
+    "distribute",
+    "allot"
+   ],
+   "exclusions": [
+    "give birth",
+    "given birth",
+    "give up",
+    "give advice",
+    "give a sign",
+    "pay attention",
+    "return home"
+   ],
+   "seeds": [
+    {
+     "id": "pie-lex-Hreh1is",
+     "form": "Hreh₁ís",
+     "root": "pie-root-Hreh1-give",
+     "gloss": "wealth, goods",
+     "concept": "wealth"
+    },
+    {
+     "id": "pie-lex-bhagt",
+     "form": "bʰágt",
+     "root": "pie-root-bhag-receive_as_a",
+     "gloss": "to receive as a share",
+     "concept": "receive"
+    },
+    {
+     "id": "pie-lex-bhoh2gos",
+     "form": "bʰoh₂gós",
+     "root": "pie-root-bheh2g-divide",
+     "gloss": "portion; share",
+     "concept": "share"
+    },
+    {
+     "id": "pie-lex-dedeh3ti",
+     "form": "dédeh₃ti",
+     "root": "pie-root-deh3-give",
+     "gloss": "to be giving",
+     "concept": "give"
+    },
+    {
+     "id": "pie-lex-deh2i",
+     "form": "deh₂i-",
+     "root": "pie-root-deh2-share",
+     "gloss": "to share, divide",
+     "concept": "share"
+    },
+    {
+     "id": "pie-lex-deh3nom",
+     "form": "déh₃nom",
+     "root": "pie-lex-deh3nom",
+     "gloss": "gift",
+     "concept": "gift"
+    },
+    {
+     "id": "pie-lex-deh3rom",
+     "form": "déh₃rom",
+     "root": "pie-lex-deh3rom",
+     "gloss": "gift",
+     "concept": "gift"
+    },
+    {
+     "id": "pie-lex-deh3t",
+     "form": "déh₃t",
+     "root": "pie-root-deh3-give",
+     "gloss": "to give",
+     "concept": "give"
+    },
+    {
+     "id": "pie-lex-deh3tis",
+     "form": "déh₃tis",
+     "root": "pie-root-deh3-give",
+     "gloss": "giving",
+     "concept": "give"
+    },
+    {
+     "id": "pie-lex-deh3ut",
+     "form": "déh₃ut",
+     "root": "pie-root-deh3w-give",
+     "gloss": "to give",
+     "concept": "give"
+    },
+    {
+     "id": "pie-lex-dh3tos",
+     "form": "dh₃tós",
+     "root": "pie-root-deh3-give",
+     "gloss": "given",
+     "concept": "given"
+    },
+    {
+     "id": "pie-lex-doh3r",
+     "form": "dóh₃r̥",
+     "root": "pie-root-deh3-give",
+     "gloss": "gift",
+     "concept": "gift"
+    },
+    {
+     "id": "pie-lex-h1ayt",
+     "form": "h₁áyt",
+     "root": "pie-root-h2ey-give",
+     "gloss": "to give (active); MID: to take, receive",
+     "concept": "give"
+    },
+    {
+     "id": "pie-lex-h1opeyeti",
+     "form": "h₁opéyeti",
+     "root": "pie-root-h1ep-grab",
+     "gloss": "to make reach; to give",
+     "concept": "give"
+    },
+    {
+     "id": "pie-lex-h1wedmn",
+     "form": "h₁wédmn̥",
+     "root": "pie-lex-h1wedmn",
+     "gloss": "bride price, dowry",
+     "concept": "price"
+    },
+    {
+     "id": "pie-lex-h2mbhi",
+     "form": "h₂m̥bʰí",
+     "root": "pie-lex-h2mbhi",
+     "gloss": "in exchange for",
+     "concept": "exchange"
+    },
+    {
+     "id": "pie-lex-h2oytos",
+     "form": "h₂óytos",
+     "root": "pie-root-h2ey-give",
+     "gloss": "that which is given",
+     "concept": "given"
+    },
+    {
+     "id": "pie-lex-h3okwteriyom",
+     "form": "h₃okʷtériyom",
+     "root": "pie-root-h3ekw-see",
+     "gloss": "gifts on first sight",
+     "concept": "gift"
+    },
+    {
+     "id": "pie-lex-kwendht",
+     "form": "kʷéndʰt",
+     "root": "pie-root-kwendh-receive_an_impression",
+     "gloss": "to receive an impression, experience, suffer",
+     "concept": "receive"
+    },
+    {
+     "id": "pie-lex-kwoyneh2",
+     "form": "kʷoynéh₂",
+     "root": "pie-root-kwey-pay",
+     "gloss": "payment",
+     "concept": "payment"
+    },
+    {
+     "id": "pie-lex-kwreyh2t-2",
+     "form": "kʷréyh₂t",
+     "root": "pie-root-kwreyh2-buy",
+     "gloss": "to exchange, acquire by trade",
+     "concept": "exchange"
+    },
+    {
+     "id": "pie-lex-meyth2t",
+     "form": "méyth₂t",
+     "root": "pie-root-meyth2-change",
+     "gloss": "to change, exchange, remove",
+     "concept": "exchange"
+    },
+    {
+     "id": "pie-lex-misdhh1eh2",
+     "form": "misdʰh₁éh₂",
+     "root": "pie-root-mey-change",
+     "gloss": "wage, reward",
+     "concept": "reward"
+    },
+    {
+     "id": "pie-lex-misdhh1os",
+     "form": "misdʰh₁ós",
+     "root": "pie-root-mey-change",
+     "gloss": "wage, reward, prize",
+     "concept": "reward"
+    },
+    {
+     "id": "pie-lex-misdhos",
+     "form": "misdʰós",
+     "root": "pie-root-mey-change",
+     "gloss": "reward, prize",
+     "concept": "reward"
+    },
+    {
+     "id": "pie-lex-skertsneh2",
+     "form": "skertsneh₂",
+     "root": "pie-root-skert-cut",
+     "gloss": "portion",
+     "concept": "portion"
+    },
+    {
+     "id": "pie-lex-wedhmn",
+     "form": "wédʰmn̥",
+     "root": "pie-root-wedh-bind",
+     "gloss": "bride price, dowry",
+     "concept": "price"
+    },
+    {
+     "id": "pie-lex-wosn",
+     "form": "wósn̥",
+     "root": "pie-root-wes-sell",
+     "gloss": "price",
+     "concept": "price"
+    },
+    {
+     "id": "pie-root-Hreh1-give",
+     "form": "Hreh₁-",
+     "root": "pie-root-Hreh1-give",
+     "gloss": "to give",
+     "concept": "give"
+    },
+    {
+     "id": "pie-root-bhag-receive_as_a",
+     "form": "bʰag-",
+     "root": "pie-root-bhag-receive_as_a",
+     "gloss": "to receive as a share",
+     "concept": "receive"
+    },
+    {
+     "id": "pie-root-bheh2g-divide",
+     "form": "bʰeh₂g-",
+     "root": "pie-root-bheh2g-divide",
+     "gloss": "to divide, distribute, allot",
+     "concept": "distribute"
+    },
+    {
+     "id": "pie-root-deh2-share",
+     "form": "deh₂-",
+     "root": "pie-root-deh2-share",
+     "gloss": "to share, divide",
+     "concept": "share"
+    },
+    {
+     "id": "pie-root-deh2y-share",
+     "form": "deh₂y-",
+     "root": "pie-root-deh2y-share",
+     "gloss": "to share, divide",
+     "concept": "share"
+    },
+    {
+     "id": "pie-root-deh3-give",
+     "form": "deh₃-",
+     "root": "pie-root-deh3-give",
+     "gloss": "to give",
+     "concept": "give"
+    },
+    {
+     "id": "pie-root-deh3w-give",
+     "form": "deh₃w-",
+     "root": "pie-root-deh3w-give",
+     "gloss": "to give",
+     "concept": "give"
+    },
+    {
+     "id": "pie-root-ghebh-give",
+     "form": "gʰebʰ-",
+     "root": "pie-root-ghebh-give",
+     "gloss": "to give",
+     "concept": "give"
+    },
+    {
+     "id": "pie-root-gheldh-repay",
+     "form": "gʰeldʰ-",
+     "root": "pie-root-gheldh-repay",
+     "gloss": "to repay, pay",
+     "concept": "pay"
+    },
+    {
+     "id": "pie-root-gjhes-hand",
+     "form": "ǵʰes-",
+     "root": "pie-root-gjhes-hand",
+     "gloss": "to take, give in exchange",
+     "concept": "give"
+    },
+    {
+     "id": "pie-root-h1em-take",
+     "form": "h₁em-",
+     "root": "pie-root-h1em-take",
+     "gloss": "to distribute",
+     "concept": "distribute"
+    },
+    {
+     "id": "pie-root-h1nekj-receive",
+     "form": "h₁neḱ-",
+     "root": "pie-root-h1nekj-receive",
+     "gloss": "to receive, take away",
+     "concept": "receive"
+    },
+    {
+     "id": "pie-root-h2enkj-allot",
+     "form": "h₂enḱ-",
+     "root": "pie-root-h2enkj-allot",
+     "gloss": "to allot",
+     "concept": "allot"
+    },
+    {
+     "id": "pie-root-h2ey-give",
+     "form": "h₂ey-",
+     "root": "pie-root-h2ey-give",
+     "gloss": "to give",
+     "concept": "give"
+    },
+    {
+     "id": "pie-root-h2meygw-change",
+     "form": "h₂meygʷ-",
+     "root": "pie-root-h2meygw-change",
+     "gloss": "to change, exchange",
+     "concept": "exchange"
+    },
+    {
+     "id": "pie-root-kwendh-receive_an_impression",
+     "form": "kʷendʰ-",
+     "root": "pie-root-kwendh-receive_an_impression",
+     "gloss": "to receive an impression, experience, suffer",
+     "concept": "receive"
+    },
+    {
+     "id": "pie-root-kwey-pay",
+     "form": "kʷey-",
+     "root": "pie-root-kwey-pay",
+     "gloss": "to pay",
+     "concept": "pay"
+    },
+    {
+     "id": "pie-root-mey-change",
+     "form": "mey-",
+     "root": "pie-root-mey-change",
+     "gloss": "to exchange",
+     "concept": "exchange"
+    },
+    {
+     "id": "pie-root-meyth2-change",
+     "form": "meyth₂-",
+     "root": "pie-root-meyth2-change",
+     "gloss": "to exchange",
+     "concept": "exchange"
+    },
+    {
+     "id": "pie-root-nem-distribute",
+     "form": "nem-",
+     "root": "pie-root-nem-distribute",
+     "gloss": "to distribute",
+     "concept": "distribute"
+    },
+    {
+     "id": "pie-root-pekj-wealth",
+     "form": "peḱ-",
+     "root": "pie-root-pekj-wealth",
+     "gloss": "wealth",
+     "concept": "wealth"
+    },
+    {
+     "id": "pie-root-smer-assign",
+     "form": "smer-",
+     "root": "pie-root-smer-assign",
+     "gloss": "to assign, allot",
+     "concept": "allot"
+    },
+    {
+     "id": "pie-root-tek-take_by_the",
+     "form": "tek-",
+     "root": "pie-root-tek-take_by_the",
+     "gloss": "to receive, obtain",
+     "concept": "receive"
+    },
+    {
+     "id": "pie-root-weyk-curve",
+     "form": "weyk-",
+     "root": "pie-root-weyk-curve",
+     "gloss": "to exchange",
+     "concept": "exchange"
+    }
+   ],
+   "roots": [
+    "pie-lex-deh3nom",
+    "pie-lex-deh3rom",
+    "pie-lex-h1wedmn",
+    "pie-lex-h2mbhi",
+    "pie-root-Hreh1-give",
+    "pie-root-bhag-receive_as_a",
+    "pie-root-bheh2g-divide",
+    "pie-root-deh2-share",
+    "pie-root-deh2y-share",
+    "pie-root-deh3-give",
+    "pie-root-deh3w-give",
+    "pie-root-ghebh-give",
+    "pie-root-gheldh-repay",
+    "pie-root-gjhes-hand",
+    "pie-root-h1em-take",
+    "pie-root-h1ep-grab",
+    "pie-root-h1nekj-receive",
+    "pie-root-h2enkj-allot",
+    "pie-root-h2ey-give",
+    "pie-root-h2meygw-change",
+    "pie-root-h3ekw-see",
+    "pie-root-kwendh-receive_an_impression",
+    "pie-root-kwey-pay",
+    "pie-root-kwreyh2-buy",
+    "pie-root-mey-change",
+    "pie-root-meyth2-change",
+    "pie-root-nem-distribute",
+    "pie-root-pekj-wealth",
+    "pie-root-skert-cut",
+    "pie-root-smer-assign",
+    "pie-root-tek-take_by_the",
+    "pie-root-wedh-bind",
+    "pie-root-wes-sell",
+    "pie-root-weyk-curve"
+   ]
+  },
+  "13": {
+   "name": "guest and host",
+   "concepts": [
+    "guest",
+    "host",
+    "stranger",
+    "foreigner",
+    "friend",
+    "friendship",
+    "house",
+    "home",
+    "household",
+    "dwelling",
+    "hall",
+    "door",
+    "welcome",
+    "hospitality",
+    "lodge",
+    "entertain",
+    "shelter",
+    "master of the house",
+    "hearth"
+   ],
+   "exclusions": [],
+   "seeds": [
+    {
+     "id": "pie-lex-dems_potis",
+     "form": "déms pótis",
+     "root": "pie-lex-dems_potis",
+     "gloss": "master of the house",
+     "concept": "house"
+    },
+    {
+     "id": "pie-lex-dheh1mn",
+     "form": "dʰéh₁mn̥",
+     "root": "pie-root-dheh1-do",
+     "gloss": "building, house, home",
+     "concept": "house"
+    },
+    {
+     "id": "pie-lex-dhureh2",
+     "form": "dʰuréh₂",
+     "root": "pie-root-dhwer-door",
+     "gloss": "door",
+     "concept": "door"
+    },
+    {
+     "id": "pie-lex-dhurom",
+     "form": "dʰurom",
+     "root": "pie-root-dhwer-door",
+     "gloss": "gate, door",
+     "concept": "door"
+    },
+    {
+     "id": "pie-lex-dhworo",
+     "form": "dʰworo-",
+     "root": "pie-root-dhwer-door",
+     "gloss": "door, gate; courtyard",
+     "concept": "door"
+    },
+    {
+     "id": "pie-lex-dhwoxr",
+     "form": "dʰwṓr",
+     "root": "pie-root-dhwer-door",
+     "gloss": "door",
+     "concept": "door"
+    },
+    {
+     "id": "pie-lex-doxm",
+     "form": "dṓm",
+     "root": "pie-root-dem-build",
+     "gloss": "home",
+     "concept": "home"
+    },
+    {
+     "id": "pie-lex-ghostipotis",
+     "form": "gʰóstipotis",
+     "root": "pie-lex-ghostipotis",
+     "gloss": "guest",
+     "concept": "guest"
+    },
+    {
+     "id": "pie-lex-ghostis",
+     "form": "gʰóstis",
+     "root": "pie-lex-ghostis",
+     "gloss": "guest",
+     "concept": "guest"
+    },
+    {
+     "id": "pie-lex-h2eHsh2",
+     "form": "h₂éHsh₂",
+     "root": "pie-root-h2eHs-be_dry",
+     "gloss": "hearth, fireplace; fire-altar",
+     "concept": "hearth"
+    },
+    {
+     "id": "pie-lex-h2eHsh2-2",
+     "form": "h₂eHsh₂-",
+     "root": "pie-root-h2eHs-be_dry",
+     "gloss": "hearth, fireplace",
+     "concept": "hearth"
+    },
+    {
+     "id": "pie-lex-h2wostu",
+     "form": "h₂wóstu",
+     "root": "pie-root-h2wes-dwell",
+     "gloss": "home, dwelling",
+     "concept": "home"
+    },
+    {
+     "id": "pie-lex-kjleytreh2",
+     "form": "ḱléytreh₂",
+     "root": "pie-root-kjley-shelter",
+     "gloss": "shelter, covering",
+     "concept": "shelter"
+    },
+    {
+     "id": "pie-lex-kjlitos",
+     "form": "ḱlitós",
+     "root": "pie-root-kjley-shelter",
+     "gloss": "covered, sheltered",
+     "concept": "shelter"
+    },
+    {
+     "id": "pie-lex-kjoymos-2",
+     "form": "ḱóymos",
+     "root": "pie-lex-kjoymos-2",
+     "gloss": "village, home, household",
+     "concept": "home"
+    },
+    {
+     "id": "pie-lex-nesetor",
+     "form": "nésetor",
+     "root": "pie-root-nes-return_home",
+     "gloss": "to return home",
+     "concept": "home"
+    },
+    {
+     "id": "pie-lex-nest",
+     "form": "nést",
+     "root": "pie-root-nes-return_home",
+     "gloss": "to escape, return home unharmed",
+     "concept": "home"
+    },
+    {
+     "id": "pie-lex-priHos",
+     "form": "priHós",
+     "root": "pie-root-preyH-please",
+     "gloss": "dear, beloved, one's own; as noun (m.): friend",
+     "concept": "friend"
+    },
+    {
+     "id": "pie-lex-priHtexr",
+     "form": "priHtḗr",
+     "root": "pie-root-preyH-please",
+     "gloss": "friend; one who pleases",
+     "concept": "friend"
+    },
+    {
+     "id": "pie-lex-sedos",
+     "form": "sédos",
+     "root": "pie-root-sed-sit",
+     "gloss": "seat, dwelling",
+     "concept": "dwelling"
+    },
+    {
+     "id": "pie-lex-trebeh2",
+     "form": "trebeh₂",
+     "root": "pie-root-treb-settlement",
+     "gloss": "homestead, dwelling",
+     "concept": "dwelling"
+    },
+    {
+     "id": "pie-lex-trebnos",
+     "form": "trebnos",
+     "root": "pie-root-treb-settlement",
+     "gloss": "dwelling, arrangement",
+     "concept": "dwelling"
+    },
+    {
+     "id": "pie-lex-wikjpotis",
+     "form": "wiḱpótis",
+     "root": "pie-root-weykj-enter_in",
+     "gloss": "master of a household",
+     "concept": "household"
+    },
+    {
+     "id": "pie-root-dhwer-door",
+     "form": "dʰwer-",
+     "root": "pie-root-dhwer-door",
+     "gloss": "door",
+     "concept": "door"
+    },
+    {
+     "id": "pie-root-h2eHs-be_dry",
+     "form": "h₂eHs-",
+     "root": "pie-root-h2eHs-be_dry",
+     "gloss": "hearth",
+     "concept": "hearth"
+    },
+    {
+     "id": "pie-root-kjley-shelter",
+     "form": "ḱley-",
+     "root": "pie-root-kjley-shelter",
+     "gloss": "to shelter, cover",
+     "concept": "shelter"
+    },
+    {
+     "id": "pie-root-nes-return_home",
+     "form": "nes-",
+     "root": "pie-root-nes-return_home",
+     "gloss": "to return home (safely)",
+     "concept": "home"
+    },
+    {
+     "id": "pie-root-treb-settlement",
+     "form": "treb-",
+     "root": "pie-root-treb-settlement",
+     "gloss": "settlement, dwelling",
+     "concept": "dwelling"
+    }
+   ],
+   "roots": [
+    "pie-lex-dems_potis",
+    "pie-lex-ghostipotis",
+    "pie-lex-ghostis",
+    "pie-lex-kjoymos-2",
+    "pie-root-dem-build",
+    "pie-root-dheh1-do",
+    "pie-root-dhwer-door",
+    "pie-root-h2eHs-be_dry",
+    "pie-root-h2wes-dwell",
+    "pie-root-kjley-shelter",
+    "pie-root-nes-return_home",
+    "pie-root-preyH-please",
+    "pie-root-sed-sit",
+    "pie-root-treb-settlement",
+    "pie-root-weykj-enter_in"
+   ]
+  },
+  "14": {
+   "name": "battle and the warrior's fury",
+   "concepts": [
+    "battle",
+    "war",
+    "fight",
+    "fought",
+    "warrior",
+    "army",
+    "troop",
+    "enemy",
+    "foe",
+    "spear",
+    "sword",
+    "shield",
+    "bow",
+    "arrow",
+    "helmet",
+    "weapon",
+    "fury",
+    "furious",
+    "rage",
+    "anger",
+    "angry",
+    "wrath",
+    "frenzy",
+    "courage",
+    "brave",
+    "might",
+    "mighty",
+    "strength",
+    "valour",
+    "victory",
+    "attack",
+    "slaughter"
+   ],
+   "exclusions": [
+    "bow down",
+    "to bow",
+    "bow the head"
+   ],
+   "seeds": [
+    {
+     "id": "pie-lex-Hisus",
+     "form": "Hísus",
+     "root": "pie-lex-Hisus",
+     "gloss": "arrow",
+     "concept": "arrow"
+    },
+    {
+     "id": "pie-lex-Hyudhsmos",
+     "form": "Hyudʰsmós",
+     "root": "pie-root-Hyewdh-moving_erect",
+     "gloss": "warrior",
+     "concept": "warrior"
+    },
+    {
+     "id": "pie-lex-boli",
+     "form": "boli-",
+     "root": "pie-root-bel-strong",
+     "gloss": "strength",
+     "concept": "strength"
+    },
+    {
+     "id": "pie-lex-dhenwr",
+     "form": "dʰénwr̥",
+     "root": "pie-lex-dhenwr",
+     "gloss": "arc, bow",
+     "concept": "bow"
+    },
+    {
+     "id": "pie-lex-dherst",
+     "form": "dʰérst",
+     "root": "pie-root-dhers-be_bold",
+     "gloss": "to take courage, dare",
+     "concept": "courage"
+    },
+    {
+     "id": "pie-lex-dhrsus",
+     "form": "dʰr̥sús",
+     "root": "pie-root-dhers-be_bold",
+     "gloss": "bold, courageous, daring, brave",
+     "concept": "brave"
+    },
+    {
+     "id": "pie-lex-ghostis",
+     "form": "gʰóstis",
+     "root": "pie-lex-ghostis",
+     "gloss": "stranger, enemy",
+     "concept": "enemy"
+    },
+    {
+     "id": "pie-lex-gjhoysos",
+     "form": "ǵʰoysós",
+     "root": "pie-lex-gjhoysos",
+     "gloss": "spear, missile, javelin",
+     "concept": "spear"
+    },
+    {
+     "id": "pie-lex-gweru",
+     "form": "gʷéru",
+     "root": "pie-lex-gweru",
+     "gloss": "spear, throwing spear",
+     "concept": "spear"
+    },
+    {
+     "id": "pie-lex-gwhonos-2",
+     "form": "gʷʰónos",
+     "root": "pie-root-gwhen-strike",
+     "gloss": "killing, slaughter",
+     "concept": "slaughter"
+    },
+    {
+     "id": "pie-lex-h2egjmn",
+     "form": "h₂éǵmn̥",
+     "root": "pie-root-h2egj-drive",
+     "gloss": "army, flock, crowd, multitude",
+     "concept": "army"
+    },
+    {
+     "id": "pie-lex-h2egjro",
+     "form": "h₂eǵro-",
+     "root": "pie-root-h2egj-drive",
+     "gloss": "hunt, slaughter",
+     "concept": "slaughter"
+    },
+    {
+     "id": "pie-lex-h2ewgmn",
+     "form": "h₂éwgmn̥",
+     "root": "pie-root-h2ewg-increase",
+     "gloss": "enlargement, increase, strength",
+     "concept": "strength"
+    },
+    {
+     "id": "pie-lex-h2ewgrnos",
+     "form": "h₂ewgr̥nós",
+     "root": "pie-root-h2ewg-increase",
+     "gloss": "mighty",
+     "concept": "mighty"
+    },
+    {
+     "id": "pie-lex-keh3tus",
+     "form": "kéh₃tus",
+     "root": "pie-root-keh3-fight",
+     "gloss": "fight",
+     "concept": "fight"
+    },
+    {
+     "id": "pie-lex-koros",
+     "form": "koros",
+     "root": "pie-root-ker-army",
+     "gloss": "war; army",
+     "concept": "war"
+    },
+    {
+     "id": "pie-lex-koryos",
+     "form": "kóryos",
+     "root": "pie-lex-koryos",
+     "gloss": "war, troops",
+     "concept": "war"
+    },
+    {
+     "id": "pie-lex-koryos-2",
+     "form": "koryos",
+     "root": "pie-root-ker-army",
+     "gloss": "army, war band",
+     "concept": "war"
+    },
+    {
+     "id": "pie-lex-krets",
+     "form": "kréts",
+     "root": "pie-root-kret-be_strong",
+     "gloss": "strength",
+     "concept": "strength"
+    },
+    {
+     "id": "pie-lex-kretus",
+     "form": "krétus",
+     "root": "pie-root-kret-be_strong",
+     "gloss": "having strength, strong",
+     "concept": "strength"
+    },
+    {
+     "id": "pie-lex-nemos",
+     "form": "némos",
+     "root": "pie-root-nem-bend",
+     "gloss": "bowing, bending",
+     "concept": "bow"
+    },
+    {
+     "id": "pie-lex-sogjhos",
+     "form": "sóǵʰos",
+     "root": "pie-root-segjh-overpower",
+     "gloss": "holding; mighty",
+     "concept": "mighty"
+    },
+    {
+     "id": "pie-lex-tewh2os",
+     "form": "téwh₂os",
+     "root": "pie-root-tewh2-swell",
+     "gloss": "might, power",
+     "concept": "might"
+    },
+    {
+     "id": "pie-lex-weyHs",
+     "form": "wéyHs",
+     "root": "pie-lex-weyHs",
+     "gloss": "force, strength",
+     "concept": "strength"
+    },
+    {
+     "id": "pie-lex-weyh1s",
+     "form": "wéyh₁s",
+     "root": "pie-root-weyh1-chase",
+     "gloss": "force, strength",
+     "concept": "strength"
+    },
+    {
+     "id": "pie-lex-wiHros",
+     "form": "wiHrós",
+     "root": "pie-lex-wiHros",
+     "gloss": "warrior, hero",
+     "concept": "warrior"
+    },
+    {
+     "id": "pie-root-Hyewdh-moving_erect",
+     "form": "Hyewdʰ-",
+     "root": "pie-root-Hyewdh-moving_erect",
+     "gloss": "moving erect, to be agitated or push forward in such a fashion that one is straight or upright (for example as walking into battle)",
+     "concept": "battle"
+    },
+    {
+     "id": "pie-root-bheh1gjh-become_angry",
+     "form": "bʰeh₁ǵʰ-",
+     "root": "pie-root-bheh1gjh-become_angry",
+     "gloss": "to become angry, to get into a quarrel",
+     "concept": "angry"
+    },
+    {
+     "id": "pie-root-ghrem-roar",
+     "form": "gʰrem-",
+     "root": "pie-root-ghrem-roar",
+     "gloss": "to be angry",
+     "concept": "angry"
+    },
+    {
+     "id": "pie-root-keh3-fight",
+     "form": "keh₃-",
+     "root": "pie-root-keh3-fight",
+     "gloss": "to fight",
+     "concept": "fight"
+    },
+    {
+     "id": "pie-root-ker-army",
+     "form": "ker-",
+     "root": "pie-root-ker-army",
+     "gloss": "army",
+     "concept": "army"
+    },
+    {
+     "id": "pie-root-kjend-develop_self_confidence",
+     "form": "ḱend-",
+     "root": "pie-root-kjend-develop_self_confidence",
+     "gloss": "to develop self-confidence, strength",
+     "concept": "strength"
+    },
+    {
+     "id": "pie-root-kjeyp-ridicule",
+     "form": "ḱeyp-",
+     "root": "pie-root-kjeyp-ridicule",
+     "gloss": "to ridicule, mock, anger",
+     "concept": "anger"
+    },
+    {
+     "id": "pie-root-pert-come_into_conflict",
+     "form": "pert-",
+     "root": "pie-root-pert-come_into_conflict",
+     "gloss": "to come into conflict, fight",
+     "concept": "fight"
+    },
+    {
+     "id": "pie-root-pewgj-punch",
+     "form": "pewǵ-",
+     "root": "pie-root-pewgj-punch",
+     "gloss": "to punch, fist-fight",
+     "concept": "fight"
+    },
+    {
+     "id": "pie-root-peykj-hostile",
+     "form": "peyḱ-",
+     "root": "pie-root-peykj-hostile",
+     "gloss": "hostile, angry",
+     "concept": "angry"
+    },
+    {
+     "id": "pie-root-seh2y-rage",
+     "form": "seh₂y-",
+     "root": "pie-root-seh2y-rage",
+     "gloss": "to rage, be furious",
+     "concept": "furious"
+    },
+    {
+     "id": "pie-root-weh2t-excited",
+     "form": "weh₂t-",
+     "root": "pie-root-weh2t-excited",
+     "gloss": "possessed, raging",
+     "concept": "rage"
+    }
+   ],
+   "roots": [
+    "pie-lex-Hisus",
+    "pie-lex-dhenwr",
+    "pie-lex-ghostis",
+    "pie-lex-gjhoysos",
+    "pie-lex-gweru",
+    "pie-lex-koryos",
+    "pie-lex-weyHs",
+    "pie-lex-wiHros",
+    "pie-root-Hyewdh-moving_erect",
+    "pie-root-bel-strong",
+    "pie-root-bheh1gjh-become_angry",
+    "pie-root-dhers-be_bold",
+    "pie-root-ghrem-roar",
+    "pie-root-gwhen-strike",
+    "pie-root-h2egj-drive",
+    "pie-root-h2ewg-increase",
+    "pie-root-keh3-fight",
+    "pie-root-ker-army",
+    "pie-root-kjend-develop_self_confidence",
+    "pie-root-kjeyp-ridicule",
+    "pie-root-kret-be_strong",
+    "pie-root-nem-bend",
+    "pie-root-pert-come_into_conflict",
+    "pie-root-pewgj-punch",
+    "pie-root-peykj-hostile",
+    "pie-root-segjh-overpower",
+    "pie-root-seh2y-rage",
+    "pie-root-tewh2-swell",
+    "pie-root-weh2t-excited",
+    "pie-root-weyh1-chase"
+   ]
+  },
+  "15": {
+   "name": "drinking and feasting",
+   "concepts": [
+    "drink",
+    "drank",
+    "drunk",
+    "intoxicate",
+    "intoxicated",
+    "intoxicating",
+    "mead",
+    "wine",
+    "beer",
+    "ale",
+    "milk",
+    "honey",
+    "cup",
+    "bowl",
+    "vessel",
+    "pour",
+    "poured",
+    "feast",
+    "banquet",
+    "eat",
+    "ate",
+    "eaten",
+    "food",
+    "meal",
+    "meat",
+    "sate",
+    "satiate",
+    "satiated",
+    "thirst",
+    "hunger",
+    "sweet"
+   ],
+   "exclusions": [],
+   "seeds": [
+    {
+     "id": "pie-lex-dhedhh1i",
+     "form": "dʰédʰh₁i",
+     "root": "pie-root-dheh1y-suckle",
+     "gloss": "milk curd",
+     "concept": "milk"
+    },
+    {
+     "id": "pie-lex-dhraxks",
+     "form": "dʰrā́ks",
+     "root": "pie-lex-dhraxks",
+     "gloss": "dregs, sediment (of wine, oil, fat)",
+     "concept": "wine"
+    },
+    {
+     "id": "pie-lex-dlewkus",
+     "form": "dléwkus",
+     "root": "pie-lex-dlewkus",
+     "gloss": "sweet",
+     "concept": "sweet"
+    },
+    {
+     "id": "pie-lex-gewl",
+     "form": "gewl-",
+     "root": "pie-root-gew-bend",
+     "gloss": "vessel, cub",
+     "concept": "vessel"
+    },
+    {
+     "id": "pie-lex-gewlos",
+     "form": "gewlos",
+     "root": "pie-root-gew-bend",
+     "gloss": "vessel, bowl",
+     "concept": "bowl"
+    },
+    {
+     "id": "pie-lex-gjhewd",
+     "form": "ǵʰewd-",
+     "root": "pie-root-gjhew-pour",
+     "gloss": "to pour",
+     "concept": "pour"
+    },
+    {
+     "id": "pie-lex-gjhewdt",
+     "form": "ǵʰéwdt",
+     "root": "pie-root-gjhewd-pour",
+     "gloss": "to pour",
+     "concept": "pour"
+    },
+    {
+     "id": "pie-lex-gjhewt-2",
+     "form": "ǵʰéwt",
+     "root": "pie-root-gjhew-pour",
+     "gloss": "to pour",
+     "concept": "pour"
+    },
+    {
+     "id": "pie-lex-gjhutos",
+     "form": "ǵʰutós",
+     "root": "pie-root-gjhew-pour",
+     "gloss": "libated, poured as part of a liquid offering",
+     "concept": "pour"
+    },
+    {
+     "id": "pie-lex-gwrh3eti",
+     "form": "gʷr̥h₃éti",
+     "root": "pie-root-gwerh3-swallow",
+     "gloss": "to swallow, devour, eat",
+     "concept": "eat"
+    },
+    {
+     "id": "pie-lex-h1ednom",
+     "form": "h₁édnom",
+     "root": "pie-root-h1ed-eat",
+     "gloss": "eaten",
+     "concept": "eaten"
+    },
+    {
+     "id": "pie-lex-h1edt",
+     "form": "*h₁édt",
+     "root": "pie-root-h1ed-eat",
+     "gloss": "to (bite →) eat",
+     "concept": "eat"
+    },
+    {
+     "id": "pie-lex-h1edti",
+     "form": "h₁édti",
+     "root": "pie-root-h1ed-eat",
+     "gloss": "to eat",
+     "concept": "eat"
+    },
+    {
+     "id": "pie-lex-h2ekjh3t",
+     "form": "h₂éḱh₃t",
+     "root": "pie-root-h2ekjh3-eat",
+     "gloss": "to eat (up)",
+     "concept": "eat"
+    },
+    {
+     "id": "pie-lex-h2elut",
+     "form": "h₂elut-",
+     "root": "pie-lex-h2elut",
+     "gloss": "beer",
+     "concept": "beer"
+    },
+    {
+     "id": "pie-lex-h2melgjti",
+     "form": "h₂mélǵti",
+     "root": "pie-root-h2melgj-milk",
+     "gloss": "to milk; draw milk from an animal",
+     "concept": "milk"
+    },
+    {
+     "id": "pie-lex-kjerh3t",
+     "form": "ḱérh₃t",
+     "root": "pie-root-kjerh3-satiate",
+     "gloss": "to satiate, feed",
+     "concept": "satiate"
+    },
+    {
+     "id": "pie-lex-knh2onks",
+     "form": "kn̥h₂ónks",
+     "root": "pie-lex-knh2onks",
+     "gloss": "honey",
+     "concept": "honey"
+    },
+    {
+     "id": "pie-lex-leyHt",
+     "form": "léyHt",
+     "root": "pie-root-leyH-pour",
+     "gloss": "to pour",
+     "concept": "pour"
+    },
+    {
+     "id": "pie-lex-maxdsos",
+     "form": "mā́dsos",
+     "root": "pie-root-mad-be_become_wet",
+     "gloss": "food, mush",
+     "concept": "food"
+    },
+    {
+     "id": "pie-lex-medhu",
+     "form": "médʰu",
+     "root": "pie-lex-medhu",
+     "gloss": "honey",
+     "concept": "honey"
+    },
+    {
+     "id": "pie-lex-medtos",
+     "form": "medtós",
+     "root": "pie-root-med-become_full",
+     "gloss": "full, sated; drunk",
+     "concept": "drunk"
+    },
+    {
+     "id": "pie-lex-melit",
+     "form": "mélit",
+     "root": "pie-lex-melit",
+     "gloss": "honey",
+     "concept": "honey"
+    },
+    {
+     "id": "pie-lex-mexms",
+     "form": "mḗms",
+     "root": "pie-root-mems-flesh",
+     "gloss": "flesh, meat",
+     "concept": "meat"
+    },
+    {
+     "id": "pie-lex-modos",
+     "form": "módos",
+     "root": "pie-root-med-become_full",
+     "gloss": "intoxication, intoxicating drink",
+     "concept": "drink"
+    },
+    {
+     "id": "pie-lex-nh1dti",
+     "form": "n̥h₁dti-",
+     "root": "pie-root-h1ed-eat",
+     "gloss": "having no eating",
+     "concept": "eat"
+    },
+    {
+     "id": "pie-lex-nigwtexr",
+     "form": "nigʷtḗr",
+     "root": "pie-root-neygw-wash",
+     "gloss": "washer, washing vessel",
+     "concept": "vessel"
+    },
+    {
+     "id": "pie-lex-peh3t",
+     "form": "péh₃t",
+     "root": "pie-root-peh3-drink",
+     "gloss": "to drink",
+     "concept": "drink"
+    },
+    {
+     "id": "pie-lex-ph3tos",
+     "form": "ph₃tós",
+     "root": "pie-root-peh3-drink",
+     "gloss": "drunk",
+     "concept": "drunk"
+    },
+    {
+     "id": "pie-lex-piph3eti",
+     "form": "píph₃eti",
+     "root": "pie-root-peh3-drink",
+     "gloss": "to drink, to be drinking",
+     "concept": "drink"
+    },
+    {
+     "id": "pie-lex-seh2t",
+     "form": "séh₂t",
+     "root": "pie-root-seh2y-become_sated",
+     "gloss": "to become sated",
+     "concept": "sate"
+    },
+    {
+     "id": "pie-lex-seykwenih2",
+     "form": "seykʷénih₂",
+     "root": "pie-root-seykw-moisten",
+     "gloss": "she who pours",
+     "concept": "pour"
+    },
+    {
+     "id": "pie-lex-seykwt-2",
+     "form": "séykʷt",
+     "root": "pie-root-seykw-moisten",
+     "gloss": "to pour out",
+     "concept": "pour"
+    },
+    {
+     "id": "pie-lex-sweh2dus",
+     "form": "swéh₂dus",
+     "root": "pie-root-sweh2d-sweet",
+     "gloss": "sweet",
+     "concept": "sweet"
+    },
+    {
+     "id": "pie-lex-sweh2dyoxs",
+     "form": "swéh₂dyōs",
+     "root": "pie-root-sweh2d-sweet",
+     "gloss": "very sweet, rather sweet",
+     "concept": "sweet"
+    },
+    {
+     "id": "pie-lex-terpt-2",
+     "form": "térpt",
+     "root": "pie-root-terp-satisfy",
+     "gloss": "to satisfy oneself, be sated",
+     "concept": "sate"
+    },
+    {
+     "id": "pie-lex-torseh2",
+     "form": "torséh₂",
+     "root": "pie-root-ters-dry",
+     "gloss": "thirst; drying kiln",
+     "concept": "thirst"
+    },
+    {
+     "id": "pie-lex-torsos",
+     "form": "tórsos",
+     "root": "pie-root-ters-dry",
+     "gloss": "thirst",
+     "concept": "thirst"
+    },
+    {
+     "id": "pie-lex-trsos",
+     "form": "tr̥sós",
+     "root": "pie-root-ters-dry",
+     "gloss": "flat surface for drying food",
+     "concept": "food"
+    },
+    {
+     "id": "pie-lex-weyh1ox",
+     "form": "wéyh₁ō",
+     "root": "pie-root-weh1y-twist",
+     "gloss": "wine",
+     "concept": "wine"
+    },
+    {
+     "id": "pie-root-gjebh-eat",
+     "form": "ǵebʰ-",
+     "root": "pie-root-gjebh-eat",
+     "gloss": "to eat, chew",
+     "concept": "eat"
+    },
+    {
+     "id": "pie-root-gjhew-pour",
+     "form": "ǵʰew-",
+     "root": "pie-root-gjhew-pour",
+     "gloss": "to pour",
+     "concept": "pour"
+    },
+    {
+     "id": "pie-root-gjhewd-pour",
+     "form": "ǵʰewd-",
+     "root": "pie-root-gjhewd-pour",
+     "gloss": "to pour",
+     "concept": "pour"
+    },
+    {
+     "id": "pie-root-gwerh3-swallow",
+     "form": "gʷerh₃-",
+     "root": "pie-root-gwerh3-swallow",
+     "gloss": "to swallow, devour, eat",
+     "concept": "eat"
+    },
+    {
+     "id": "pie-root-gwhes-eat",
+     "form": "gʷʰes-",
+     "root": "pie-root-gwhes-eat",
+     "gloss": "to eat, devour, consume",
+     "concept": "eat"
+    },
+    {
+     "id": "pie-root-h1ed-eat",
+     "form": "h₁ed-",
+     "root": "pie-root-h1ed-eat",
+     "gloss": "to eat",
+     "concept": "eat"
+    },
+    {
+     "id": "pie-root-h1egwh-drink",
+     "form": "h₁egʷʰ-",
+     "root": "pie-root-h1egwh-drink",
+     "gloss": "to drink",
+     "concept": "drink"
+    },
+    {
+     "id": "pie-root-h2ekjh3-eat",
+     "form": "h₂eḱh₃-",
+     "root": "pie-root-h2ekjh3-eat",
+     "gloss": "to eat (up)",
+     "concept": "eat"
+    },
+    {
+     "id": "pie-root-h2emH-pour",
+     "form": "h₂emH-",
+     "root": "pie-root-h2emH-pour",
+     "gloss": "to pour, pour over",
+     "concept": "pour"
+    },
+    {
+     "id": "pie-root-h2es-become_sated",
+     "form": "h₂es-",
+     "root": "pie-root-h2es-become_sated",
+     "gloss": "to become sated",
+     "concept": "sate"
+    },
+    {
+     "id": "pie-root-h2leybh-pour",
+     "form": "h₂leybʰ-",
+     "root": "pie-root-h2leybh-pour",
+     "gloss": "to pour, anoint",
+     "concept": "pour"
+    },
+    {
+     "id": "pie-root-h2melgj-milk",
+     "form": "h₂melǵ-",
+     "root": "pie-root-h2melgj-milk",
+     "gloss": "to milk",
+     "concept": "milk"
+    },
+    {
+     "id": "pie-root-h3reyH-move",
+     "form": "h₃reyH-",
+     "root": "pie-root-h3reyH-move",
+     "gloss": "to flow, stream (of water); to pour, rain",
+     "concept": "pour"
+    },
+    {
+     "id": "pie-root-kap-head",
+     "form": "kap-",
+     "root": "pie-root-kap-head",
+     "gloss": "bowl, cup",
+     "concept": "cup"
+    },
+    {
+     "id": "pie-root-kenk-feel_hunger",
+     "form": "kenk-",
+     "root": "pie-root-kenk-feel_hunger",
+     "gloss": "to feel hunger",
+     "concept": "hunger"
+    },
+    {
+     "id": "pie-root-kerH-scatter",
+     "form": "kerH-",
+     "root": "pie-root-kerH-scatter",
+     "gloss": "to scatter, pour",
+     "concept": "pour"
+    },
+    {
+     "id": "pie-root-kjerh3-satiate",
+     "form": "ḱerh₃-",
+     "root": "pie-root-kjerh3-satiate",
+     "gloss": "to satiate, feed",
+     "concept": "satiate"
+    },
+    {
+     "id": "pie-root-kjsed-cut_up_to",
+     "form": "ḱsed-",
+     "root": "pie-root-kjsed-cut_up_to",
+     "gloss": "to cut up → to serve up (food)",
+     "concept": "food"
+    },
+    {
+     "id": "pie-root-krewh2-blood_outside_the",
+     "form": "krewh₂-",
+     "root": "pie-root-krewh2-blood_outside_the",
+     "gloss": "bloody or raw flesh, raw meat; (in adjectives) bloody, raw",
+     "concept": "meat"
+    },
+    {
+     "id": "pie-root-kwer-do",
+     "form": "kʷer-",
+     "root": "pie-root-kwer-do",
+     "gloss": "bowl, vessel",
+     "concept": "bowl"
+    },
+    {
+     "id": "pie-root-leyH-pour",
+     "form": "leyH-",
+     "root": "pie-root-leyH-pour",
+     "gloss": "to pour",
+     "concept": "pour"
+    },
+    {
+     "id": "pie-root-med-become_full",
+     "form": "med-",
+     "root": "pie-root-med-become_full",
+     "gloss": "to become full, become sated",
+     "concept": "sate"
+    },
+    {
+     "id": "pie-root-mems-flesh",
+     "form": "mems-",
+     "root": "pie-root-mems-flesh",
+     "gloss": "flesh, meat",
+     "concept": "meat"
+    },
+    {
+     "id": "pie-root-peh3-drink",
+     "form": "peh₃-",
+     "root": "pie-root-peh3-drink",
+     "gloss": "to drink",
+     "concept": "drink"
+    },
+    {
+     "id": "pie-root-peh3y-drink",
+     "form": "peh₃y-",
+     "root": "pie-root-peh3y-drink",
+     "gloss": "to drink",
+     "concept": "drink"
+    },
+    {
+     "id": "pie-root-peyh2-swell",
+     "form": "peyh₂-",
+     "root": "pie-root-peyh2-swell",
+     "gloss": "to swell (with milk)",
+     "concept": "milk"
+    },
+    {
+     "id": "pie-root-seh2-satiate",
+     "form": "seh₂-",
+     "root": "pie-root-seh2-satiate",
+     "gloss": "to satiate; to satisfy",
+     "concept": "satiate"
+    },
+    {
+     "id": "pie-root-seh2y-become_sated",
+     "form": "seh₂y-",
+     "root": "pie-root-seh2y-become_sated",
+     "gloss": "to become sated",
+     "concept": "sate"
+    },
+    {
+     "id": "pie-root-sh2ew-pour",
+     "form": "sh₂ew-",
+     "root": "pie-root-sh2ew-pour",
+     "gloss": "to pour",
+     "concept": "pour"
+    },
+    {
+     "id": "pie-root-sweh2d-sweet",
+     "form": "sweh₂d-",
+     "root": "pie-root-sweh2d-sweet",
+     "gloss": "sweet",
+     "concept": "sweet"
+    },
+    {
+     "id": "pie-root-wes-graze",
+     "form": "wes-",
+     "root": "pie-root-wes-graze",
+     "gloss": "to graze, consume, eat",
+     "concept": "eat"
+    }
+   ],
+   "roots": [
+    "pie-lex-dhraxks",
+    "pie-lex-dlewkus",
+    "pie-lex-h2elut",
+    "pie-lex-knh2onks",
+    "pie-lex-medhu",
+    "pie-lex-melit",
+    "pie-root-dheh1y-suckle",
+    "pie-root-gew-bend",
+    "pie-root-gjebh-eat",
+    "pie-root-gjhew-pour",
+    "pie-root-gjhewd-pour",
+    "pie-root-gwerh3-swallow",
+    "pie-root-gwhes-eat",
+    "pie-root-h1ed-eat",
+    "pie-root-h1egwh-drink",
+    "pie-root-h2ekjh3-eat",
+    "pie-root-h2emH-pour",
+    "pie-root-h2es-become_sated",
+    "pie-root-h2leybh-pour",
+    "pie-root-h2melgj-milk",
+    "pie-root-h3reyH-move",
+    "pie-root-kap-head",
+    "pie-root-kenk-feel_hunger",
+    "pie-root-kerH-scatter",
+    "pie-root-kjerh3-satiate",
+    "pie-root-kjsed-cut_up_to",
+    "pie-root-krewh2-blood_outside_the",
+    "pie-root-kwer-do",
+    "pie-root-leyH-pour",
+    "pie-root-mad-be_become_wet",
+    "pie-root-med-become_full",
+    "pie-root-mems-flesh",
+    "pie-root-neygw-wash",
+    "pie-root-peh3-drink",
+    "pie-root-peh3y-drink",
+    "pie-root-peyh2-swell",
+    "pie-root-seh2-satiate",
+    "pie-root-seh2y-become_sated",
+    "pie-root-seykw-moisten",
+    "pie-root-sh2ew-pour",
+    "pie-root-sweh2d-sweet",
+    "pie-root-terp-satisfy",
+    "pie-root-ters-dry",
+    "pie-root-weh1y-twist",
+    "pie-root-wes-graze"
+   ]
+  },
+  "16": {
+   "name": "rain, storm and thunder",
+   "concepts": [
+    "rain",
+    "storm",
+    "thunder",
+    "lightning",
+    "thunderbolt",
+    "cloud",
+    "wind",
+    "hail",
+    "snow",
+    "flood",
+    "shower",
+    "drizzle",
+    "roar",
+    "roaring",
+    "blow",
+    "blew",
+    "gust",
+    "tempest",
+    "wet",
+    "moisten"
+   ],
+   "exclusions": [
+    "blow of",
+    "a blow",
+    "wind around",
+    "to wind",
+    "bend"
+   ],
+   "seeds": [
+    {
+     "id": "pie-lex-ghromos",
+     "form": "gʰrómos",
+     "root": "pie-root-ghrem-roar",
+     "gloss": "a roar, rumble",
+     "concept": "roar"
+    },
+    {
+     "id": "pie-lex-gjheyoxm",
+     "form": "ǵʰéyōm",
+     "root": "pie-root-gjhey-winter",
+     "gloss": "frost, snow",
+     "concept": "snow"
+    },
+    {
+     "id": "pie-lex-gjhreh3d",
+     "form": "ǵʰreh₃d-",
+     "root": "pie-lex-gjhreh3d",
+     "gloss": "hail",
+     "concept": "hail"
+    },
+    {
+     "id": "pie-lex-h1wersos",
+     "form": "h₁wersós",
+     "root": "pie-root-h1wers-rain",
+     "gloss": "wet",
+     "concept": "wet"
+    },
+    {
+     "id": "pie-lex-h2ekjenis",
+     "form": "h₂eḱénis",
+     "root": "pie-root-h2ekj-sharp",
+     "gloss": "arrowhead, thunderbolt",
+     "concept": "thunderbolt"
+    },
+    {
+     "id": "pie-lex-h2enh1mos-2",
+     "form": "h₂énh₁mos",
+     "root": "pie-root-h2enh1-breathe",
+     "gloss": "wind; spirit",
+     "concept": "wind"
+    },
+    {
+     "id": "pie-lex-h2weh1nts",
+     "form": "h₂wéh₁n̥ts",
+     "root": "pie-root-h2weh1-blow",
+     "gloss": "blowing",
+     "concept": "blow"
+    },
+    {
+     "id": "pie-lex-h2weh1yus",
+     "form": "h₂weh₁yús",
+     "root": "pie-root-h2weh1-blow",
+     "gloss": "wind",
+     "concept": "wind"
+    },
+    {
+     "id": "pie-lex-h2werst",
+     "form": "h₂wérst",
+     "root": "pie-root-h1wers-rain",
+     "gloss": "to rain",
+     "concept": "rain"
+    },
+    {
+     "id": "pie-lex-h2werstoxr",
+     "form": "h₂wérstōr",
+     "root": "pie-root-h1wers-rain",
+     "gloss": "rainer, one who rains",
+     "concept": "rain"
+    },
+    {
+     "id": "pie-lex-h2worsos",
+     "form": "h₂worsós",
+     "root": "pie-root-h1wers-rain",
+     "gloss": "rain, downpour",
+     "concept": "rain"
+    },
+    {
+     "id": "pie-lex-h2wrstexr",
+     "form": "h₂wr̥stḗr",
+     "root": "pie-root-h1wers-rain",
+     "gloss": "rainer, one who rains",
+     "concept": "rain"
+    },
+    {
+     "id": "pie-lex-h3mighleh2",
+     "form": "h₃mígʰleh₂",
+     "root": "pie-lex-h3mighleh2",
+     "gloss": "mist, cloud",
+     "concept": "cloud"
+    },
+    {
+     "id": "pie-lex-meldhn",
+     "form": "meldʰn-",
+     "root": "pie-root-melh2-grind",
+     "gloss": "lightning",
+     "concept": "lightning"
+    },
+    {
+     "id": "pie-lex-nbhros",
+     "form": "n̥bʰrós",
+     "root": "pie-root-nebh-become_damp",
+     "gloss": "rain-cloud, with semantic narrowing to rain, cloud",
+     "concept": "rain"
+    },
+    {
+     "id": "pie-lex-nebhos",
+     "form": "nébʰos",
+     "root": "pie-root-nebh-become_damp",
+     "gloss": "cloud",
+     "concept": "cloud"
+    },
+    {
+     "id": "pie-lex-perkwunos",
+     "form": "pérkʷunos",
+     "root": "pie-root-perkw-oak",
+     "gloss": "Perkʷunos, the storm god (god of thunder and the oak)",
+     "concept": "storm"
+    },
+    {
+     "id": "pie-lex-sneygwheti",
+     "form": "snéygʷʰeti",
+     "root": "pie-root-sneygwh-snow",
+     "gloss": "to snow",
+     "concept": "snow"
+    },
+    {
+     "id": "pie-lex-snigwhs",
+     "form": "snígʷʰs",
+     "root": "pie-root-sneygwh-snow",
+     "gloss": "snow",
+     "concept": "snow"
+    },
+    {
+     "id": "pie-lex-snoygwhos",
+     "form": "snóygʷʰos",
+     "root": "pie-root-sneygwh-snow",
+     "gloss": "snow",
+     "concept": "snow"
+    },
+    {
+     "id": "pie-lex-stenh2",
+     "form": "stenh₂-",
+     "root": "pie-root-sten-groan",
+     "gloss": "to thunder",
+     "concept": "thunder"
+    },
+    {
+     "id": "pie-lex-stonh2eyeti",
+     "form": "stonh₂éyeti",
+     "root": "pie-root-stenh2-thunder",
+     "gloss": "to thunder",
+     "concept": "thunder"
+    },
+    {
+     "id": "pie-lex-wexdos",
+     "form": "wēdos",
+     "root": "pie-root-wed-well",
+     "gloss": "wet",
+     "concept": "wet"
+    },
+    {
+     "id": "pie-root-bhel-blow",
+     "form": "bʰel-",
+     "root": "pie-root-bhel-blow",
+     "gloss": "to blow, to swell up",
+     "concept": "blow"
+    },
+    {
+     "id": "pie-root-bhel-sound",
+     "form": "bʰel-",
+     "root": "pie-root-bhel-sound",
+     "gloss": "to sound; to speak, roar, bark",
+     "concept": "roar"
+    },
+    {
+     "id": "pie-root-bhelH-sound",
+     "form": "bʰelH-",
+     "root": "pie-root-bhelH-sound",
+     "gloss": "to sound, to roar",
+     "concept": "roar"
+    },
+    {
+     "id": "pie-root-bhleh1-blow",
+     "form": "bʰleh₁-",
+     "root": "pie-root-bhleh1-blow",
+     "gloss": "to blow",
+     "concept": "blow"
+    },
+    {
+     "id": "pie-root-dhmeH-blow",
+     "form": "dʰmeH-",
+     "root": "pie-root-dhmeH-blow",
+     "gloss": "to blow",
+     "concept": "blow"
+    },
+    {
+     "id": "pie-root-ghrem-roar",
+     "form": "gʰrem-",
+     "root": "pie-root-ghrem-roar",
+     "gloss": "to roar, rumble",
+     "concept": "roar"
+    },
+    {
+     "id": "pie-root-gwrem-roar",
+     "form": "gʷrem-",
+     "root": "pie-root-gwrem-roar",
+     "gloss": "to roar, rush",
+     "concept": "roar"
+    },
+    {
+     "id": "pie-root-h1rewg-belch",
+     "form": "h₁rewg-",
+     "root": "pie-root-h1rewg-belch",
+     "gloss": "to roar",
+     "concept": "roar"
+    },
+    {
+     "id": "pie-root-h1wers-rain",
+     "form": "h₁wers-",
+     "root": "pie-root-h1wers-rain",
+     "gloss": "to rain",
+     "concept": "rain"
+    },
+    {
+     "id": "pie-root-h3meygh-fog",
+     "form": "h₃meygʰ-",
+     "root": "pie-root-h3meygh-fog",
+     "gloss": "fog, mist, cloud",
+     "concept": "cloud"
+    },
+    {
+     "id": "pie-root-h3rewH-roar",
+     "form": "h₃rewH-",
+     "root": "pie-root-h3rewH-roar",
+     "gloss": "to roar, to howl, to shout",
+     "concept": "roar"
+    },
+    {
+     "id": "pie-root-h3reyH-move",
+     "form": "h₃reyH-",
+     "root": "pie-root-h3reyH-move",
+     "gloss": "to flow, stream (of water); to pour, rain",
+     "concept": "rain"
+    },
+    {
+     "id": "pie-root-mad-be_become_wet",
+     "form": "mad-",
+     "root": "pie-root-mad-be_become_wet",
+     "gloss": "to be/become wet",
+     "concept": "wet"
+    },
+    {
+     "id": "pie-root-meh2-wet",
+     "form": "meh₂-",
+     "root": "pie-root-meh2-wet",
+     "gloss": "wet, damp",
+     "concept": "wet"
+    },
+    {
+     "id": "pie-root-meh2d-be_wet",
+     "form": "meh₂d-",
+     "root": "pie-root-meh2d-be_wet",
+     "gloss": "to be wet, to become wet",
+     "concept": "wet"
+    },
+    {
+     "id": "pie-root-perd-fart_loudly",
+     "form": "perd-",
+     "root": "pie-root-perd-fart_loudly",
+     "gloss": "to fart loudly, pass gas, break wind",
+     "concept": "wind"
+    },
+    {
+     "id": "pie-root-pesd-fart_softly",
+     "form": "pesd-",
+     "root": "pie-root-pesd-fart_softly",
+     "gloss": "to fart softly, pass gas, break wind",
+     "concept": "wind"
+    },
+    {
+     "id": "pie-root-pewt-blow_up",
+     "form": "pewt-",
+     "root": "pie-root-pewt-blow_up",
+     "gloss": "to blow up, inflate",
+     "concept": "blow"
+    },
+    {
+     "id": "pie-root-preh1-blow_on",
+     "form": "preh₁-",
+     "root": "pie-root-preh1-blow_on",
+     "gloss": "to blow on, stoke",
+     "concept": "blow"
+    },
+    {
+     "id": "pie-root-reh2y-shout",
+     "form": "reh₂y-",
+     "root": "pie-root-reh2y-shout",
+     "gloss": "to shout, roar",
+     "concept": "roar"
+    },
+    {
+     "id": "pie-root-sewk-turn",
+     "form": "sewk-",
+     "root": "pie-root-sewk-turn",
+     "gloss": "to turn, wind",
+     "concept": "wind"
+    },
+    {
+     "id": "pie-root-seykw-moisten",
+     "form": "seykʷ-",
+     "root": "pie-root-seykw-moisten",
+     "gloss": "to moisten",
+     "concept": "moisten"
+    },
+    {
+     "id": "pie-root-sh2ew-pour",
+     "form": "sh₂ew-",
+     "root": "pie-root-sh2ew-pour",
+     "gloss": "to rain",
+     "concept": "rain"
+    },
+    {
+     "id": "pie-root-snerk-loop",
+     "form": "snerk-",
+     "root": "pie-root-snerk-loop",
+     "gloss": "to loop, wind",
+     "concept": "wind"
+    },
+    {
+     "id": "pie-root-snewH-turn",
+     "form": "snewH-",
+     "root": "pie-root-snewH-turn",
+     "gloss": "to turn, wind",
+     "concept": "wind"
+    },
+    {
+     "id": "pie-root-sneygwh-snow",
+     "form": "sneygʷʰ-",
+     "root": "pie-root-sneygwh-snow",
+     "gloss": "to snow",
+     "concept": "snow"
+    },
+    {
+     "id": "pie-root-speys-breathe",
+     "form": "speys-",
+     "root": "pie-root-speys-breathe",
+     "gloss": "to blow",
+     "concept": "blow"
+    },
+    {
+     "id": "pie-root-stenh2-thunder",
+     "form": "stenh₂-",
+     "root": "pie-root-stenh2-thunder",
+     "gloss": "to thunder",
+     "concept": "thunder"
+    },
+    {
+     "id": "pie-root-teng-make_wet",
+     "form": "teng-",
+     "root": "pie-root-teng-make_wet",
+     "gloss": "to make wet",
+     "concept": "wet"
+    },
+    {
+     "id": "pie-root-wegw-wet",
+     "form": "wegʷ-",
+     "root": "pie-root-wegw-wet",
+     "gloss": "wet, moist",
+     "concept": "wet"
+    },
+    {
+     "id": "pie-root-weh1y-twist",
+     "form": "weh₁y-",
+     "root": "pie-root-weh1y-twist",
+     "gloss": "to twist, wind, weave, plait",
+     "concept": "wind"
+    },
+    {
+     "id": "pie-root-welg-wet",
+     "form": "welg-",
+     "root": "pie-root-welg-wet",
+     "gloss": "wet, damp",
+     "concept": "wet"
+    },
+    {
+     "id": "pie-root-welk-be_become_wet",
+     "form": "welk-",
+     "root": "pie-root-welk-be_become_wet",
+     "gloss": "to be/become wet",
+     "concept": "wet"
+    },
+    {
+     "id": "pie-root-wleykw-moist",
+     "form": "wleykʷ-",
+     "root": "pie-root-wleykw-moist",
+     "gloss": "moist, to wet",
+     "concept": "wet"
+    }
+   ],
+   "roots": [
+    "pie-lex-gjhreh3d",
+    "pie-lex-h3mighleh2",
+    "pie-root-bhel-blow",
+    "pie-root-bhel-sound",
+    "pie-root-bhelH-sound",
+    "pie-root-bhleh1-blow",
+    "pie-root-dhmeH-blow",
+    "pie-root-ghrem-roar",
+    "pie-root-gjhey-winter",
+    "pie-root-gwrem-roar",
+    "pie-root-h1rewg-belch",
+    "pie-root-h1wers-rain",
+    "pie-root-h2ekj-sharp",
+    "pie-root-h2enh1-breathe",
+    "pie-root-h2weh1-blow",
+    "pie-root-h3meygh-fog",
+    "pie-root-h3rewH-roar",
+    "pie-root-h3reyH-move",
+    "pie-root-mad-be_become_wet",
+    "pie-root-meh2-wet",
+    "pie-root-meh2d-be_wet",
+    "pie-root-melh2-grind",
+    "pie-root-nebh-become_damp",
+    "pie-root-perd-fart_loudly",
+    "pie-root-perkw-oak",
+    "pie-root-pesd-fart_softly",
+    "pie-root-pewt-blow_up",
+    "pie-root-preh1-blow_on",
+    "pie-root-reh2y-shout",
+    "pie-root-sewk-turn",
+    "pie-root-seykw-moisten",
+    "pie-root-sh2ew-pour",
+    "pie-root-snerk-loop",
+    "pie-root-snewH-turn",
+    "pie-root-sneygwh-snow",
+    "pie-root-speys-breathe",
+    "pie-root-sten-groan",
+    "pie-root-stenh2-thunder",
+    "pie-root-teng-make_wet",
+    "pie-root-wed-well",
+    "pie-root-wegw-wet",
+    "pie-root-weh1y-twist",
+    "pie-root-welg-wet",
+    "pie-root-welk-be_become_wet",
+    "pie-root-wleykw-moist"
+   ]
+  }
+ }
+}
