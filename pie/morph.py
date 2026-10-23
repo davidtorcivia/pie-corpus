@@ -128,12 +128,15 @@ def _thematic(spec: NounSpec, conv: str) -> Cells:
                 es = [replace(es[0], acc=True)] + es[1:]
             forms.append(render(base + es))
         out[feat] = forms
+    if conv == "handbook" and spec.gender != "n" and has_accent(stem):
+        # vocative accent on the first syllable (Ved. vŕ̥ka, Gk ἄδελφε): wĺ̥kʷe, moysé → móyse
+        out["VOC.SG"] = _uniq([render(_initial_accent(base + _p("e")))] + out["VOC.SG"])
     return out
 
 
 _EH2 = {
     "NOM.SG": [""], "VOC.SG": [""], "ACC.SG": ["m"], "GEN.SG": ["s"], "ABL.SG": ["s"],
-    "DAT.SG": ["ey"], "LOC.SG": ["", "i"], "INS.SG": ["h₁"],
+    "DAT.SG": ["ey"], "LOC.SG": ["i", ""], "INS.SG": ["h₁"],   # -eh₂i first: the endingless form = NOM
     "NOM.DU": ["h₁", "h₁e"], "VOC.DU": ["h₁", "h₁e"], "ACC.DU": ["h₁", "h₁e"],
     "NOM.PL": ["es"], "VOC.PL": ["es"], "ACC.PL": ["ms"], "GEN.PL": ["oHom"],
     "ABL.PL": ["mos", "bʰos"], "DAT.PL": ["mos", "bʰos"], "LOC.PL": ["su"], "INS.PL": ["mis", "bʰis"],
@@ -202,10 +205,16 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
         gen = [render(_add(weak, "os" if (last.base == "s" and last.kind == "C") else "s"))]
     out["GEN.SG"] = out["ABL.SG"] = gen
     out["DAT.SG"] = [w("éy", "ey")]
+    if hb and spec.weak is None and strong[-1].syl and strong[-1].base in ("y", "w"):
+        # i/u-stem with no weak stem given: full-grade suffix -ey-/-ew- (gʰóstipoteys, Ved. -es, Goth. -ais),
+        # not strong + s, which would equal the nominative
+        full = strong[:-1] + [Seg("e", "V", acc=strong[-1].acc), Seg(strong[-1].base, "R")]   # suHnú- → suHnéws
+        out["GEN.SG"] = out["ABL.SG"] = _uniq([render(_add(full, "s"))] + gen)
+        out["DAT.SG"] = _uniq([render(_add(full, "ey"))] + out["DAT.SG"])
     out["INS.SG"] = [w("éh₁", "h₁", obl)]
-    out["LOC.SG"] = _locative(spec, strong, weak)
-    if hb:   # prefer the -i locative to the endingless one (which looks like the nominative)
-        out["LOC.SG"] = sorted(out["LOC.SG"], key=lambda f: not f.endswith(("i", "í")))
+    out["LOC.SG"] = _locative(spec, strong, weak, hb)
+    if hb:   # prefer the -i (or i-stem -ēy) locative to the endingless one (which looks like the nominative)
+        out["LOC.SG"] = sorted(out["LOC.SG"], key=lambda f: not f.endswith(("i", "í", "y")))
     # --- dual
     if neuter:
         # s-stem neuters take the e-grade (weak) suffix: déḱos → déḱesih₁; others the strong stem
@@ -259,7 +268,7 @@ def _initial_accent(segs: list[Seg]) -> list[Seg]:
     return out
 
 
-def _locative(spec: NounSpec, strong: list[Seg], weak: list[Seg]) -> list[str]:
+def _locative(spec: NounSpec, strong: list[Seg], weak: list[Seg], hb: bool = True) -> list[str]:
     if len(spec.loc_sg) > 1:
         return [render(_p(_bare(x))) for x in spec.loc_sg]
     if spec.loc_sg:
@@ -278,7 +287,13 @@ def _locative(spec: NounSpec, strong: list[Seg], weak: list[Seg]) -> list[str]:
     for s in stems:
         out.append(render(s))
         if s[-1].kind == "R" and s[-1].syl and s[-1].base == "y":
-            continue                                   # i-stem: bare only (h₂éwi)
+            if not hb:
+                continue                               # Wiktionary: bare -i (h₂éwi)
+            # i-stem: *-ēy (Fortson, Ringe; Ved. agnā́, Gk πόληι), then -ey; bare -i stays as an alternative
+            full = s[:-1] + [Seg("e", "V"), Seg("y", "R")]
+            out[-1:] = [render(lengthen_last_vowel(s[:-1] + [Seg("e", "V")]) + [Seg("y", "R")]), render(full),
+                        render(s)]
+            continue
         if len(s) >= 2 and s[-1].base == "y" and not s[-1].syl and s[-2].base == "e" and s[-2].acc:
             out.append(render(lengthen_last_vowel(s)))  # -éy → -ḗy (bʰr̥tḗy)
         else:
