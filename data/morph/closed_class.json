@@ -1,5 +1,5 @@
 {
-  "_source": "Hand tables, checked 2026-10-23 against Fortson 2010 (ch. 7) and Ringe 2017 (ch. 2); per-form verdicts in raw/books/extract/fortson/diff.jsonl, summarized in docs/morphology.md. Cells list alternatives, primary first. Book spellings without initial laryngeals (eǵ, yós, en, e-, apo) are kept as alternatives. Our laryngeal forms follow Wiktionary/LIV notation. Demonstrative ABL/INS: handbook contracted tósmōd, tóh₁ first (Fortson), Ringe's tósmead, tónoh₁ as alternatives (tier3-t001 review).",
+  "_source": "Hand tables, checked 2026-10-23 against Fortson 2010 (ch. 7) and Ringe 2017 (ch. 2); per-form verdicts in raw/books/extract/fortson/diff.jsonl, summarized in docs/morphology.md. Cells list alternatives, primary first. Book spellings without initial laryngeals (eǵ, yós, en, e-, apo) are kept as alternatives. Our laryngeal forms follow Wiktionary/LIV notation. Demonstrative ABL/INS: handbook contracted tósmōd, tóh₁ first (Fortson), Ringe's tósmead, tónoh₁ as alternatives (tier3-t001 review). Anaphoric *h₁e-/*h₁i- (anaphoric_i) from Ringe 2017 p. 56 with Beekes 2011 p. 229; near deictic *ḱo- (deictic_ki) and far *h₁eno- (deictic_eno) have their Hittite-attested cells cited and the rest derived from demonstrative_so like interrogative_kwo (_derived).",
   "personal": {
     "1": {
       "NOM.SG": [
@@ -1009,7 +1009,55 @@
     "numerals/4/n/LOC.PL": "Ringe 2017 §2.3.6(i) / p. 54",
     "interrogative_kwi/mf/INS.SG": "Fortson 2010 §19.10 (*kʷih₁); Beekes 2011 p. 230 has *kʷei",
     "numerals/indeclinable/100": "Ved. śatám, Gk ἑκατόν, Lat. centum, Goth. hund (Fortson §7.17)",
-    "numerals/indeclinable/1000": "Ved. sahásram, Gk χίλιοι (Indo-Iranian and Greek only: weaker)"
+    "numerals/indeclinable/1000": "Ved. sahásram, Gk χίλιοι (Indo-Iranian and Greek only: weaker)",
+    "anaphoric_i/m/NOM.SG": "Ringe 2017 §2.3.6(ii) / p. 56 (éy); Mallory & Adams 2006 §24.2 *h₁éi; Beekes 2011 §15.2.1 / p. 229 (table B) *h₁e (Beekes p. 227 rejects older *is)",
+    "anaphoric_i/m/ACC.SG": "Ringe 2017 §2.3.6(ii) / p. 56 (ím); Beekes 2011 §15.2.1 / p. 229 (table B) *im",
+    "anaphoric_i/m/DAT.SG": "Ringe 2017 §2.3.6(ii) / p. 56 (ésmey); Beekes 2011 §15.2.1 / p. 229 (table B) *h₁esmōi (appended)",
+    "anaphoric_i/m/ABL.SG": "Beekes 2011 §15.2.1 / p. 229 (table B) *h₁esmōd first; Ringe 2017 §2.3.6(ii) / p. 56 ésmead (Ringe marks it '?')",
+    "anaphoric_i/m/GEN.SG": "Ringe 2017 §2.3.6(ii) / p. 56 (ésyo); Beekes 2011 §15.2.1 / p. 229 (table B) *h₁éso (Goth. is; appended)",
+    "anaphoric_i/m/LOC.SG": "Ringe 2017 §2.3.6(ii) / p. 56; Beekes 2011 §15.2.1 / p. 229 (table B) *h₁esmi",
+    "anaphoric_i/m/INS.SG": "Ringe 2017 §2.3.6(ii) / p. 56 (íh₁); Beekes p. 229 has only '*h₁ei?'",
+    "anaphoric_i/m/INS.PL": "Ringe 2017 §2.3.6(ii) / p. 56; Beekes 2011 §15.2.1 / p. 229 (table B) *h₁eibʰi",
+    "anaphoric_i/m/DAT.PL": "Ringe 2017 §2.3.6(ii) / p. 56 (dat.-abl.)",
+    "anaphoric_i/m/ABL.PL": "Ringe 2017 §2.3.6(ii) / p. 56 (dat.-abl.)",
+    "anaphoric_i/m/GEN.PL": "Ringe 2017 §2.3.6(ii) / p. 56 éysoHom; contracted -sōm first as in demonstrative_so (Fortson §7.9 ending)",
+    "anaphoric_i/m/LOC.PL": "Ringe 2017 §2.3.6(ii) / p. 56; Beekes 2011 §15.2.1 / p. 229 (table B) *h₁eisu",
+    "anaphoric_i/m/NOM.PL": "Ringe 2017 §2.3.6(ii) / p. 56 (éyes); Beekes 2011 §15.2.1 / p. 229 (table B) *h₁ei (appended)",
+    "anaphoric_i/m/ACC.PL": "Ringe 2017 §2.3.6(ii) / p. 56 (íns); Beekes 2011 §15.2.1 / p. 229 (table B) *ins",
+    "anaphoric_i/f/NOM.SG": "Ringe 2017 §2.3.6(ii) / p. 56 (íh₂); Beekes 2011 §15.2.1 / p. 229 (table B) *ih₂; Mallory & Adams 2006 §24.2 (h₁-initial)",
+    "anaphoric_i/f/ACC.SG": "Ringe 2017 §2.3.6(ii) / p. 56 (íh₂m̥); Beekes 2011 §15.2.1 / p. 229 (table B) *ih₂m (appended)",
+    "anaphoric_i/f/DAT.SG": "Ringe 2017 §2.3.6(ii) / p. 56",
+    "anaphoric_i/f/ABL.SG": "Ringe 2017 §2.3.6(ii) / p. 56",
+    "anaphoric_i/f/GEN.SG": "Ringe 2017 §2.3.6(ii) / p. 56; Beekes 2011 §15.2.1 / p. 229 (table B) *h₁eseh₂s? (appended)",
+    "anaphoric_i/f/LOC.SG": "Ringe 2017 §2.3.6(ii) / p. 56 (printed ésyeh₂(i)); Beekes 2011 §15.2.1 / p. 229 (table B) *h₁esieh₂i",
+    "anaphoric_i/f/NOM.PL": "Ringe 2017 §2.3.6(ii) / p. 56 (Ringe marks it '?'); Beekes 2011 §15.2.1 / p. 229 (table B) *ih₂es",
+    "anaphoric_i/f/ACC.PL": "Ringe 2017 §2.3.6(ii) / p. 56 (Ringe marks it '?'); Beekes 2011 §15.2.1 / p. 229 (table B) *ih₂ns (appended)",
+    "anaphoric_i/f/INS.PL": "Ringe 2017 §2.3.6(ii) / p. 56",
+    "anaphoric_i/f/DAT.PL": "Ringe 2017 §2.3.6(ii) / p. 56 (dat.-abl.)",
+    "anaphoric_i/f/ABL.PL": "Ringe 2017 §2.3.6(ii) / p. 56 (dat.-abl.)",
+    "anaphoric_i/f/GEN.PL": "Ringe 2017 §2.3.6(ii) / p. 56 íh₂soHom; contracted -sōm first as in demonstrative_so (Fortson §7.9 ending)",
+    "anaphoric_i/f/LOC.PL": "Ringe 2017 §2.3.6(ii) / p. 56",
+    "anaphoric_i/n/NOM.SG": "Ringe 2017 §2.3.6(ii) / p. 56 (íd); Beekes 2011 §15.2.1 / p. 229 (table B) *id; Mallory & Adams 2006 §24.2 *h₁id",
+    "anaphoric_i/n/ACC.SG": "Ringe 2017 §2.3.6(ii) / p. 56 (íd); Beekes 2011 §15.2.1 / p. 229 (table B) *id",
+    "anaphoric_i/n/DAT.SG": "Ringe 2017 §2.3.6(ii) / p. 56 (ésmey); Beekes 2011 §15.2.1 / p. 229 (table B) *h₁esmōi (appended)",
+    "anaphoric_i/n/ABL.SG": "Beekes 2011 §15.2.1 / p. 229 (table B) *h₁esmōd first; Ringe 2017 §2.3.6(ii) / p. 56 ésmead (Ringe marks it '?')",
+    "anaphoric_i/n/GEN.SG": "Ringe 2017 §2.3.6(ii) / p. 56 (ésyo); Beekes 2011 §15.2.1 / p. 229 (table B) *h₁éso (Goth. is; appended)",
+    "anaphoric_i/n/LOC.SG": "Ringe 2017 §2.3.6(ii) / p. 56; Beekes 2011 §15.2.1 / p. 229 (table B) *h₁esmi",
+    "anaphoric_i/n/INS.SG": "Ringe 2017 §2.3.6(ii) / p. 56 (íh₁); Beekes p. 229 has only '*h₁ei?'",
+    "anaphoric_i/n/INS.PL": "Ringe 2017 §2.3.6(ii) / p. 56; Beekes 2011 §15.2.1 / p. 229 (table B) *h₁eibʰi",
+    "anaphoric_i/n/DAT.PL": "Ringe 2017 §2.3.6(ii) / p. 56 (dat.-abl.)",
+    "anaphoric_i/n/ABL.PL": "Ringe 2017 §2.3.6(ii) / p. 56 (dat.-abl.)",
+    "anaphoric_i/n/GEN.PL": "Ringe 2017 §2.3.6(ii) / p. 56 éysoHom; contracted -sōm first as in demonstrative_so (Fortson §7.9 ending)",
+    "anaphoric_i/n/LOC.PL": "Ringe 2017 §2.3.6(ii) / p. 56; Beekes 2011 §15.2.1 / p. 229 (table B) *h₁eisu",
+    "anaphoric_i/n/NOM.PL": "Ringe 2017 §2.3.6(ii) / p. 56 (íh₂); Beekes 2011 §15.2.1 / p. 229 (table B) *ih₂",
+    "anaphoric_i/n/ACC.PL": "Ringe 2017 §2.3.6(ii) / p. 56 (íh₂); Beekes 2011 §15.2.1 / p. 229 (table B) *ih₂",
+    "deictic_ki/m/NOM.SG": "Beekes 2011 §15.2.1 / p. 227 (Hitt. kās < *ḱos); Fortson §9.25 (Hitt. kāš < *ḱos); alt. *ḱís: Handbook ch. 116 (Balto-Slavic morphology) §5.1, OCS sĭ < *ḱis; Mallory & Adams 2006 §24.2",
+    "deictic_ki/m/ACC.SG": "Beekes 2011 §15.2.1 / p. 227 (Hitt. kūn < *ḱom)",
+    "deictic_ki/m/NOM.PL": "Beekes 2011 §15.2.1 / p. 227 (Hitt. kē < *ḱoi)",
+    "deictic_ki/m/ACC.PL": "Handbook (Klein et al.) ch. 21 (Anatolian morphology) §5 (Hitt. kūs < *ḱo-ns < *ḱo-ms)",
+    "deictic_ki/n/NOM.PL": "Handbook (Klein et al.) ch. 21 (Anatolian morphology) §5 (Hitt. n. kē < collective *ḱói, older than Late PIE *ḱé-h₂, after Jasanoff)",
+    "deictic_ki/n/ACC.PL": "Handbook (Klein et al.) ch. 21 (Anatolian morphology) §5 (Hitt. n. kē < collective *ḱói, older than Late PIE *ḱé-h₂, after Jasanoff)",
+    "deictic_eno/m/NOM.SG": "Fortson §7.10 *eno-/*ono- (Hitt. ēni-, OCS onŭ); Handbook ch. 21 §5.1 *éno-; *h₂en-o-: Handbook ch. 82 §5.1, Beekes §15.2.1 p. 226, Mallory & Adams 2006 §24.2; nom. -os by Ringe 2017 p. 56"
   },
   "_derived": {
     "interrogative_kwo/m/ABL.SG": "derived from demonstrative_so/m/ABL.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",
@@ -1094,6 +1142,584 @@
     "interrogative_kwi/n/DAT.PL": "taken from interrogative_kwo/n/DAT.PL: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
     "interrogative_kwi/n/ABL.PL": "taken from interrogative_kwo/n/ABL.PL: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
     "interrogative_kwi/n/GEN.PL": "taken from interrogative_kwo/n/GEN.PL: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
-    "interrogative_kwi/n/LOC.PL": "taken from interrogative_kwo/n/LOC.PL: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)"
+    "interrogative_kwi/n/LOC.PL": "taken from interrogative_kwo/n/LOC.PL: the kʷi- and kʷo- obliques are not kept apart in the books (Ringe 2017 p. 56)",
+    "deictic_ki/m/GEN.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/m/ABL.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/m/DAT.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/m/LOC.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/m/INS.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/m/GEN.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/m/DAT.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/m/ABL.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/m/LOC.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/m/INS.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/m/NOM.DU": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/m/ACC.DU": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/f/NOM.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/f/ACC.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/f/GEN.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/f/DAT.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/f/LOC.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/f/NOM.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/f/ACC.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/f/GEN.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/f/DAT.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/f/LOC.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/f/INS.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/f/ABL.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/f/INS.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/f/ABL.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/n/NOM.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/n/ACC.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/n/INS.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/n/DAT.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/n/ABL.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/n/GEN.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/n/LOC.SG": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/n/NOM.DU": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/n/ACC.DU": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/n/INS.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/n/DAT.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/n/ABL.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/n/GEN.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_ki/n/LOC.PL": "derived from demonstrative_so (Ringe 2017 p. 56: adnominal *ḱo- inflects like the relative, i.e. like so/tod with nom. sg. m. -os)",
+    "deictic_eno/m/ACC.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/m/GEN.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/m/ABL.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/m/DAT.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/m/LOC.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/m/INS.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/m/NOM.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/m/ACC.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/m/GEN.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/m/DAT.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/m/ABL.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/m/LOC.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/m/INS.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/m/NOM.DU": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/m/ACC.DU": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/f/NOM.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/f/ACC.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/f/GEN.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/f/DAT.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/f/LOC.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/f/NOM.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/f/ACC.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/f/GEN.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/f/DAT.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/f/LOC.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/f/INS.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/f/ABL.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/f/INS.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/f/ABL.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/NOM.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/ACC.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/NOM.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/ACC.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/INS.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/DAT.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/ABL.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/GEN.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/LOC.SG": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/NOM.DU": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/ACC.DU": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/INS.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/DAT.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/ABL.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/GEN.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)",
+    "deictic_eno/n/LOC.PL": "derived from demonstrative_so (pronominal o-stem inflection, Ringe 2017 p. 55-56; Handbook ch. 82 §5.1: onъ keeps the inherited o-inflection); stem accent on h₁én- assumed (books print it unaccented)"
+  },
+  "anaphoric_i": {
+    "_note": "Anaphoric 'he, she, it (just mentioned)' (Lat. is ea id, Ved. ayám iyám idám, Goth. is). Ringe 2017 p. 56 prints the whole sg./pl. paradigm (i-grade in nom./acc./ins., e-grade elsewhere); initial h₁ after Beekes 2011 p. 229 and Mallory & Adams 2006 §24.2. Dual and fem. ins. sg. not reconstructed (Ringe '???'), left out. Ringe also gives an unaccented clitic use (pure anaphora), not modelled here.",
+    "m": {
+      "NOM.SG": [
+        "h₁éy",
+        "éy",
+        "h₁é"
+      ],
+      "ACC.SG": [
+        "h₁ím",
+        "ím"
+      ],
+      "DAT.SG": [
+        "h₁ésmey",
+        "h₁ésmōy"
+      ],
+      "ABL.SG": [
+        "h₁ésmōd",
+        "h₁ésmead"
+      ],
+      "GEN.SG": [
+        "h₁ésyo",
+        "h₁éso"
+      ],
+      "LOC.SG": [
+        "h₁ésmi"
+      ],
+      "INS.SG": [
+        "h₁íh₁"
+      ],
+      "INS.PL": [
+        "h₁éybʰi"
+      ],
+      "DAT.PL": [
+        "h₁éymos"
+      ],
+      "ABL.PL": [
+        "h₁éymos"
+      ],
+      "GEN.PL": [
+        "h₁éysōm",
+        "h₁éysoHom"
+      ],
+      "LOC.PL": [
+        "h₁éysu"
+      ],
+      "NOM.PL": [
+        "h₁éyes",
+        "h₁éy"
+      ],
+      "ACC.PL": [
+        "h₁íns"
+      ]
+    },
+    "f": {
+      "NOM.SG": [
+        "h₁íh₂",
+        "íh₂"
+      ],
+      "ACC.SG": [
+        "h₁íh₂m̥",
+        "h₁íh₂m"
+      ],
+      "DAT.SG": [
+        "h₁ésyeh₂ey"
+      ],
+      "ABL.SG": [
+        "h₁ésyeh₂s"
+      ],
+      "GEN.SG": [
+        "h₁ésyeh₂s",
+        "h₁éseh₂s"
+      ],
+      "LOC.SG": [
+        "h₁ésyeh₂i",
+        "h₁ésyeh₂"
+      ],
+      "NOM.PL": [
+        "h₁íh₂es"
+      ],
+      "ACC.PL": [
+        "h₁íh₂n̥s",
+        "h₁íh₂ns"
+      ],
+      "INS.PL": [
+        "h₁íh₂bʰi"
+      ],
+      "DAT.PL": [
+        "h₁íh₂mos"
+      ],
+      "ABL.PL": [
+        "h₁íh₂mos"
+      ],
+      "GEN.PL": [
+        "h₁íh₂sōm",
+        "h₁íh₂soHom"
+      ],
+      "LOC.PL": [
+        "h₁íh₂su"
+      ]
+    },
+    "n": {
+      "NOM.SG": [
+        "h₁íd",
+        "íd"
+      ],
+      "ACC.SG": [
+        "h₁íd",
+        "íd"
+      ],
+      "DAT.SG": [
+        "h₁ésmey",
+        "h₁ésmōy"
+      ],
+      "ABL.SG": [
+        "h₁ésmōd",
+        "h₁ésmead"
+      ],
+      "GEN.SG": [
+        "h₁ésyo",
+        "h₁éso"
+      ],
+      "LOC.SG": [
+        "h₁ésmi"
+      ],
+      "INS.SG": [
+        "h₁íh₁"
+      ],
+      "INS.PL": [
+        "h₁éybʰi"
+      ],
+      "DAT.PL": [
+        "h₁éymos"
+      ],
+      "ABL.PL": [
+        "h₁éymos"
+      ],
+      "GEN.PL": [
+        "h₁éysōm",
+        "h₁éysoHom"
+      ],
+      "LOC.PL": [
+        "h₁éysu"
+      ],
+      "NOM.PL": [
+        "h₁íh₂"
+      ],
+      "ACC.PL": [
+        "h₁íh₂"
+      ]
+    }
+  },
+  "deictic_ki": {
+    "_note": "Near deictic 'this (here)': Hitt. kā- < *ḱo- (Fortson §9.25; Beekes p. 227; Handbook ch. 21 §5.1), i-stem *ḱi- in OCS sь, Lith. šìs, Goth. himma, Lat. cis (Fortson §7.10; Handbook ch. 116 §5.1 *ḱis). Ringe 2017 p. 56 pairs adnominal *ḱo- with full-NP *ḱi/e- and says the o-stems inflect like the relative. Hittite-attested cells are cited; the rest follow demonstrative_so (see _derived). The i-stem is kept only as an alternative nom. sg. m. *ḱís.",
+    "m": {
+      "NOM.SG": [
+        "ḱós",
+        "ḱís"
+      ],
+      "ACC.SG": [
+        "ḱóm"
+      ],
+      "GEN.SG": [
+        "ḱósyo",
+        "ḱéso"
+      ],
+      "ABL.SG": [
+        "ḱósmōd",
+        "ḱósmead"
+      ],
+      "DAT.SG": [
+        "ḱósmey",
+        "ḱósmōy"
+      ],
+      "LOC.SG": [
+        "ḱósmi",
+        "ḱósmin"
+      ],
+      "INS.SG": [
+        "ḱóh₁",
+        "ḱónoh₁"
+      ],
+      "NOM.PL": [
+        "ḱóy"
+      ],
+      "ACC.PL": [
+        "ḱóns",
+        "ḱóms"
+      ],
+      "GEN.PL": [
+        "ḱóysōm",
+        "ḱóysoHom"
+      ],
+      "DAT.PL": [
+        "ḱóybʰos",
+        "ḱóymos"
+      ],
+      "ABL.PL": [
+        "ḱóybʰos",
+        "ḱóymos"
+      ],
+      "LOC.PL": [
+        "ḱóysu"
+      ],
+      "INS.PL": [
+        "ḱṓys"
+      ],
+      "NOM.DU": [
+        "ḱóh₁"
+      ],
+      "ACC.DU": [
+        "ḱóh₁"
+      ]
+    },
+    "f": {
+      "NOM.SG": [
+        "ḱéh₂"
+      ],
+      "ACC.SG": [
+        "ḱā́m",
+        "ḱéh₂m"
+      ],
+      "GEN.SG": [
+        "ḱósyeh₂s",
+        "ḱésyeh₂s"
+      ],
+      "DAT.SG": [
+        "ḱósyeh₂ey",
+        "ḱésyeh₂ey"
+      ],
+      "LOC.SG": [
+        "ḱósyeh₂i",
+        "ḱésyeh₂i"
+      ],
+      "NOM.PL": [
+        "ḱéh₂es"
+      ],
+      "ACC.PL": [
+        "ḱā́s",
+        "ḱéh₂ns",
+        "ḱéh₂ms"
+      ],
+      "GEN.PL": [
+        "ḱéh₂sōm",
+        "ḱéh₂soHom"
+      ],
+      "DAT.PL": [
+        "ḱéh₂bʰos",
+        "ḱéh₂mos"
+      ],
+      "LOC.PL": [
+        "ḱéh₂su"
+      ],
+      "INS.SG": [
+        "ḱéh₂eh₁",
+        "ḱéh₂h₁"
+      ],
+      "ABL.SG": [
+        "ḱósyeh₂s"
+      ],
+      "INS.PL": [
+        "ḱéh₂bʰi"
+      ],
+      "ABL.PL": [
+        "ḱéh₂mos"
+      ]
+    },
+    "n": {
+      "NOM.SG": [
+        "ḱód"
+      ],
+      "ACC.SG": [
+        "ḱód"
+      ],
+      "NOM.PL": [
+        "ḱéh₂",
+        "ḱóy"
+      ],
+      "ACC.PL": [
+        "ḱéh₂",
+        "ḱóy"
+      ],
+      "INS.SG": [
+        "ḱóh₁",
+        "ḱónoh₁"
+      ],
+      "DAT.SG": [
+        "ḱósmey"
+      ],
+      "ABL.SG": [
+        "ḱósmōd",
+        "ḱósmead"
+      ],
+      "GEN.SG": [
+        "ḱósyo"
+      ],
+      "LOC.SG": [
+        "ḱósmi"
+      ],
+      "NOM.DU": [
+        "ḱóy"
+      ],
+      "ACC.DU": [
+        "ḱóy"
+      ],
+      "INS.PL": [
+        "ḱṓys"
+      ],
+      "DAT.PL": [
+        "ḱóymos"
+      ],
+      "ABL.PL": [
+        "ḱóymos"
+      ],
+      "GEN.PL": [
+        "ḱóysoHom"
+      ],
+      "LOC.PL": [
+        "ḱóysu"
+      ]
+    }
+  },
+  "deictic_eno": {
+    "_note": "Far deictic 'that (yonder)', stem *h₁eno-/*h₁ono-: Fortson §7.10 *eno- or *ono- (Hitt. ēni-, OCS onŭ; §16.33 Arm. -n, the 'over there' member of the three-way system; §7.29 Gk ekeĩnos < *e-ḱe-eno-); Handbook ch. 21 §5.1 Hitt. anna/i- < *éno-; Handbook ch. 82 (Slavic) §5.1 OCS distal onъ < *h₂en-o-; Beekes §15.2.1 and Mallory & Adams §24.2 *h₂en- (OCS onъ, Lith. anàs). Chosen over *h₂ew- (Beekes only, as a particle 'away'; Handbook ch. 111 §4.3 treats Iranian *au̯a- as a secondary PII formation). h₁ rather than h₂ because Hittite, which keeps h₂ as ḫ-, has none (anna/i-, ēni-); Fortson's vowel-initial *eno- gets h₁ by this table's convention. No book declines it: every cell follows demonstrative_so (see _derived).",
+    "m": {
+      "NOM.SG": [
+        "h₁énos",
+        "h₁ónos",
+        "h₂énos",
+        "énos",
+        "ónos"
+      ],
+      "ACC.SG": [
+        "h₁énom"
+      ],
+      "GEN.SG": [
+        "h₁énosyo",
+        "h₁éneso"
+      ],
+      "ABL.SG": [
+        "h₁énosmōd",
+        "h₁énosmead"
+      ],
+      "DAT.SG": [
+        "h₁énosmey",
+        "h₁énosmōy"
+      ],
+      "LOC.SG": [
+        "h₁énosmi",
+        "h₁énosmin"
+      ],
+      "INS.SG": [
+        "h₁énoh₁",
+        "h₁énonoh₁"
+      ],
+      "NOM.PL": [
+        "h₁énoy"
+      ],
+      "ACC.PL": [
+        "h₁énons",
+        "h₁énoms"
+      ],
+      "GEN.PL": [
+        "h₁énoysōm",
+        "h₁énoysoHom"
+      ],
+      "DAT.PL": [
+        "h₁énoybʰos",
+        "h₁énoymos"
+      ],
+      "ABL.PL": [
+        "h₁énoybʰos",
+        "h₁énoymos"
+      ],
+      "LOC.PL": [
+        "h₁énoysu"
+      ],
+      "INS.PL": [
+        "h₁énōys"
+      ],
+      "NOM.DU": [
+        "h₁énoh₁"
+      ],
+      "ACC.DU": [
+        "h₁énoh₁"
+      ]
+    },
+    "f": {
+      "NOM.SG": [
+        "h₁éneh₂"
+      ],
+      "ACC.SG": [
+        "h₁énām",
+        "h₁éneh₂m"
+      ],
+      "GEN.SG": [
+        "h₁énosyeh₂s",
+        "h₁énesyeh₂s"
+      ],
+      "DAT.SG": [
+        "h₁énosyeh₂ey",
+        "h₁énesyeh₂ey"
+      ],
+      "LOC.SG": [
+        "h₁énosyeh₂i",
+        "h₁énesyeh₂i"
+      ],
+      "NOM.PL": [
+        "h₁éneh₂es"
+      ],
+      "ACC.PL": [
+        "h₁énās",
+        "h₁éneh₂ns",
+        "h₁éneh₂ms"
+      ],
+      "GEN.PL": [
+        "h₁éneh₂sōm",
+        "h₁éneh₂soHom"
+      ],
+      "DAT.PL": [
+        "h₁éneh₂bʰos",
+        "h₁éneh₂mos"
+      ],
+      "LOC.PL": [
+        "h₁éneh₂su"
+      ],
+      "INS.SG": [
+        "h₁éneh₂eh₁",
+        "h₁éneh₂h₁"
+      ],
+      "ABL.SG": [
+        "h₁énosyeh₂s"
+      ],
+      "INS.PL": [
+        "h₁éneh₂bʰi"
+      ],
+      "ABL.PL": [
+        "h₁éneh₂mos"
+      ]
+    },
+    "n": {
+      "NOM.SG": [
+        "h₁énod"
+      ],
+      "ACC.SG": [
+        "h₁énod"
+      ],
+      "NOM.PL": [
+        "h₁éneh₂"
+      ],
+      "ACC.PL": [
+        "h₁éneh₂"
+      ],
+      "INS.SG": [
+        "h₁énoh₁",
+        "h₁énonoh₁"
+      ],
+      "DAT.SG": [
+        "h₁énosmey"
+      ],
+      "ABL.SG": [
+        "h₁énosmōd",
+        "h₁énosmead"
+      ],
+      "GEN.SG": [
+        "h₁énosyo"
+      ],
+      "LOC.SG": [
+        "h₁énosmi"
+      ],
+      "NOM.DU": [
+        "h₁énoy"
+      ],
+      "ACC.DU": [
+        "h₁énoy"
+      ],
+      "INS.PL": [
+        "h₁énōys"
+      ],
+      "DAT.PL": [
+        "h₁énoymos"
+      ],
+      "ABL.PL": [
+        "h₁énoymos"
+      ],
+      "GEN.PL": [
+        "h₁énoysoHom"
+      ],
+      "LOC.PL": [
+        "h₁énoysu"
+      ]
+    }
   }
 }

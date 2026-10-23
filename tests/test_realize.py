@@ -242,3 +242,50 @@ def test_indefinite_and_hortative_negation():
         {"neg": True, "slots": [{"lex_id": "pie-lex-gwemt", "role": "V",
                                  "verb": {"mood": "SBJV", "person": 1, "num": "PL"}}]}]}
     assert realize(p, lx)["pie"].startswith("ne kʷis gʷémt mē ")
+
+
+EARTH, SKY = "pie-lex-dhegjhoxm", "pie-lex-dyexws"
+
+
+@pytest.fixture(scope="module")
+def ix():
+    from pie.validate import load_index
+    return load_index()
+
+
+def _passes(text, ix):
+    from pie.validate import validate_text
+    return validate_text(text, ix)["status"] == "pass"
+
+
+def test_near_and_far_deictics_as_modifiers(ix):
+    # "this earth, that heaven": *ḱo- (Hitt. kā-) and *h₁eno- (OCS onъ) agree with their heads
+    r = R({"english": "This earth sees that heaven.", "clauses": [{"slots": [
+        {"lex_id": EARTH, "role": "SUBJ"}, {"lex_id": "closed:deictic_ki", "role": "MOD", "head": 0},
+        {"lex_id": SKY, "role": "OBJ"}, {"lex_id": "closed:deictic_eno", "role": "MOD", "head": 2}, V(SEE)]}]})
+    assert r["pie"] == "ḱéh₂ dʰéǵʰōm h₁énom dyḗm spéḱyeti."
+    assert _passes(r["pie"], ix)
+
+
+def test_anaphoric_and_deictics_as_pronouns(ix):
+    r = R({"english": "He sees this.", "clauses": [{"slots": [
+        {"lex_id": "closed:anaphoric_i", "role": "SUBJ", "gender": "m"},
+        {"lex_id": "closed:deictic_ki", "role": "OBJ", "gender": "n"}, V(SEE)]}]})
+    assert r["pie"] == "h₁éy ḱód spéḱyeti."            # Ringe 2017 p. 56 éy; Hitt. kā- < *ḱo-
+    assert _passes(r["pie"], ix)
+    r = R({"english": "That one yonder sees it. These sheep see her.", "clauses": [
+        {"slots": [{"lex_id": "closed:deictic_eno", "role": "SUBJ", "gender": "f"},
+                   {"lex_id": "closed:anaphoric_i", "role": "OBJ", "gender": "n"}, V(SEE)]},
+        {"break": True, "slots": [{"lex_id": SHEEP, "role": "SUBJ", "num": "PL"},
+                                  {"lex_id": "closed:deictic_ki", "role": "MOD", "head": 0},
+                                  {"lex_id": "closed:anaphoric_i", "role": "OBJ", "gender": "f"}, V(SEE)]}]})
+    assert r["pie"].startswith("h₁éneh₂ h₁íd spéḱyeti.") and "h₁íh₂m̥" in r["pie"]
+    assert _passes(r["pie"], ix)
+
+
+def test_anaphoric_has_no_dual():
+    # Ringe 2017 p. 56 prints '???' for the dual: the cell is left out, so the plan is rejected
+    from pie.realize import check_plan
+    errs = check_plan({"english": "x", "clauses": [{"slots": [
+        {"lex_id": "closed:anaphoric_i", "role": "SUBJ", "gender": "m", "num": "DU"}, V(SEE)]}]})
+    assert errs

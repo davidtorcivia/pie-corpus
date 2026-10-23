@@ -175,12 +175,13 @@ def _unaccent(form: str) -> str:
 
 
 def _closed_form(lx: Lexicon, lex_id: str, feat: str, gender: str) -> str | None:
-    """closed:personal/1, closed:demonstrative_so, closed:relative_yo, closed:interrogative_kwo, ..."""
+    """closed:personal/1, closed:demonstrative_so, closed:anaphoric_i, closed:deictic_ki, closed:deictic_eno,
+    closed:relative_yo, closed:interrogative_kwo, ..."""
     path = lex_id.split(":", 1)[1].split("/")
     node = lx.closed
     for p in path:
         node = node.get(p, {})
-    if path[0] in ("demonstrative_so", "relative_yo", "interrogative_kwo"):
+    if path[0] in ("demonstrative_so", "anaphoric_i", "deictic_ki", "deictic_eno", "relative_yo", "interrogative_kwo"):
         node = node.get(gender if gender in node else "m", {})
     if path[0] in ("interrogative_kwi", "indefinite_kwi"):
         if path[0] == "indefinite_kwi":

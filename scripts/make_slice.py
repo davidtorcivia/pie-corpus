@@ -71,7 +71,10 @@ CLOSED_NUMERALS = {
 CLOSED = {
     "closed:personal/1": "I / we (num SG|PL); enclitic forms with \"enclitic\": true",
     "closed:personal/2": "you (num SG|PL); enclitic forms with \"enclitic\": true",
-    "closed:demonstrative_so": "this/that, the (MOD with head, or as a pronoun: he/she/it)",
+    "closed:demonstrative_so": "that (one), the (MOD with head, or as a pronoun: he/she/it)",
+    "closed:anaphoric_i": "he/she/it, the one just mentioned (anaphoric h₁éy, h₁íh₂, h₁íd; pronoun or MOD)",
+    "closed:deictic_ki": "this (here), near the speaker (ḱós; MOD with head, or as a pronoun: this one)",
+    "closed:deictic_eno": "that (yonder), far from the speaker (h₁énos; MOD with head, or as a pronoun)",
     "closed:relative_yo": "who/which (relative)",
     "closed:interrogative_kwo": "who? which? (m/f/n by head)",
     "closed:interrogative_kwi": "who? what? (kʷís, kʷíd)",
