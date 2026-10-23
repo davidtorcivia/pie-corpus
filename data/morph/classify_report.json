@@ -1,14 +1,14 @@
 {
- "entries": 6746,
+ "entries": 6748,
  "coverage": {
   "table": 588,
-  "usable": 3807,
-  "shape": 4294,
-  "unknown": 1775,
+  "usable": 3814,
+  "shape": 4295,
+  "unknown": 1776,
   "indeclinable": 89
  },
- "inflectable": 4882,
- "usable_for_tier3": 3807,
+ "inflectable": 4883,
+ "usable_for_tier3": 3814,
  "usable_threshold": 0.85,
  "backtest": {
   "indeclinable": {
@@ -170,7 +170,7 @@
   }
  },
  "by_rule": {
-  "shape:thematic": 1162,
+  "shape:thematic": 1163,
   "shape:thematic-present": 1128,
   "unknown:noun-shape": 892,
   "unknown": 796,
@@ -192,7 +192,7 @@
   "shape:tor-agent": 24,
   "shape:er-stem": 24,
   "shape:n-stem-hk": 9,
-  "unknown:adj-shape": 4,
+  "unknown:adj-shape": 5,
   "shape:perfect": 4,
   "shape:thematic-neuter-reflex": 2,
   "unknown:verb-shape": 1,

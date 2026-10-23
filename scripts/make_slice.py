@@ -37,6 +37,8 @@ NIL_ADMIT = {"pie-lex-bhagos", "pie-lex-bhngjhulos", "pie-lex-bhrtos", "pie-lex-
              "pie-lex-medtos", "pie-lex-priHtos", "pie-lex-h2rgjipyos", "pie-lex-kjolHtos", "pie-lex-rotos"}
 NIL_GLOSS_HELD = {"pie-lex-h2gjtos", "pie-lex-priHnos", "pie-lex-h2ewgos", "pie-lex-wersos", "pie-lex-kjltos",
                   "pie-lex-h2egjtoxr", "pie-lex-segjhtoxr"}
+# dictionary glosses and the hand-checked ones (overrides, supplement: docs/audits/lexicon-gaps-*.md)
+TRUSTED_GLOSS = {"wiktionary", "override", "supplement"}
 # derived glosses are kept only for transparent, productive suffixes (b002 review R1);
 # other derived-gloss lexemes need reflexes in at least two branches
 TRANSPARENT_SUFFIXES = {"-tōr", "-tḗr", "-éyeti", "-trom", "-tlom", "-tis", "-tus", "-néh₂ti", "-néwti", "-eti"}
@@ -151,7 +153,7 @@ def main() -> int:
     # lexeme only if its (root, family) isn't represented yet (a root's many
     # derived presents would otherwise flood the slice)
     hits_all = sorted((i for i in pool if hits(i, args.keywords)),
-                      key=lambda i: (lx.meaning(i)[1] != "wiktionary", -attested(i)))
+                      key=lambda i: (lx.meaning(i)[1] not in TRUSTED_GLOSS, -attested(i)))
     chosen, seen_rf = [], set()
     for i in hits_all:
         rf = (lx.entries[i].get("root_id"), lx.specs[i]["family"])
@@ -166,14 +168,14 @@ def main() -> int:
     chosen = [i for i in chosen if not (lx.entries[i]["kind"] == "derivative" and
                                         (lx.entries[i].get("root_id"), lx.meaning(i)[0]) in words_rg)]
     chosen += [i for i in pool if lx.specs[i]["family"] == "verb" and hits(i, CORE_VERBS) and i not in chosen
-               and lx.meaning(i)[1] == "wiktionary"]
+               and lx.meaning(i)[1] in TRUSTED_GLOSS]
     chosen += [i for i in CORE_NOUNS if i in pool and i not in chosen]
     # the formula menu's words, so planners can use the inherited phrases
     menu_path = ROOT / "data" / "generation" / "formula_menu.json"
     menu = json.loads(menu_path.read_text("utf-8")) if menu_path.exists() else []
     chosen += [x["lex_id"] for m in menu for x in m["lexemes"] if x["lex_id"] in pool and x["lex_id"] not in chosen]
     # random fill: dictionary-glossed or well-attested words only (b002 review R3)
-    rest = [i for i in pool if i not in chosen and (lx.meaning(i)[1] == "wiktionary" or attested(i) >= 3)]
+    rest = [i for i in pool if i not in chosen and (lx.meaning(i)[1] in TRUSTED_GLOSS or attested(i) >= 3)]
     rng.shuffle(rest)
     # balance the fill by family so verbs (now plentiful, with the LIV² aorists) don't crowd out
     # nouns and adjectives: about 40% nouns and 8% adjectives in the whole slice
