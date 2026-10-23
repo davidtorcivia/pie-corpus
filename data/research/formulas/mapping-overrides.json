@@ -1,0 +1,27 @@
+{
+ "note": "Corrections to the automatic lemma -> PIE mapping (data/research/formulas/mapping-errata.md), applied by pie/formula_search_multi.py (apply_lemma_overrides, apply_rec_overrides, FormLemmatizer) wherever a mapping is built: round-3 tables (scripts/formula_search.py) and the 8c loaders. 'lemma' rows replace a corpus lemma's lexicon ids (an empty list unmaps it); 'form' rows send a surface form to another lemma before mapping.",
+ "lemma": [
+  {"corpus": "rv", "lemma": "pád-", "lex_id": ["pie-lex-poxds"], "erratum": "pád- 'foot' mapped to *ped-ye- (verb)",
+   "reason": "the noun continues *pṓds"},
+  {"corpus": "av", "lemma": "pad", "lex_id": ["pie-lex-poxds", "pie-lex-pedyeti"], "erratum": "pád- 'foot' mapped to *ped-ye- (verb)",
+   "reason": "DCS lemma 'pad' covers the noun pád- (*pṓds) and the verb √pad (*ped-ye-); the table is lemma-keyed, so both"},
+  {"corpus": "rv", "lemma": "ásita-", "lex_id": [], "erratum": "asita- 'black' mapped to *sinéh₂ti / *sēmi",
+   "reason": "a privative a-sita- 'unbound' analysis; asita- 'black' is unrelated to both: left unmapped"},
+  {"corpus": "av", "lemma": "asita", "lex_id": [], "erratum": "asita- 'black' mapped to *sinéh₂ti / *sēmi",
+   "reason": "as for the Rigveda: left unmapped"},
+  {"corpus": "rv", "lemma": "√vadhⁱ-", "lex_id": ["pie-lex-wedhh1t"], "erratum": "vadh- 'strike' mapped to *wedʰ- 'lead'",
+   "reason": "vadh- continues *wedʰh₁- 'push, thrust' (LIV²), a different root"},
+  {"corpus": "av", "lemma": "vadh", "lex_id": ["pie-lex-wedhh1t"], "erratum": "vadh- 'strike' mapped to *wedʰ- 'lead'",
+   "reason": "as for the Rigveda"},
+  {"corpus": "rv", "lemma": "kṣáya-", "lex_id": ["pie-root-tkjey-cultivate"], "erratum": "kṣáya- 'dwelling' mapped to *dʰgʷʰey- 'perish'",
+   "reason": "kṣáya- 'dwelling' belongs to √kṣi 'dwell' < *tḱey- (root id as for kṣema-, kṣetra-; pie-lex-tkjeyti carries a wrong root_id in the lexicon)"},
+  {"corpus": "av", "lemma": "kṣaya", "lex_id": ["pie-root-tkjey-cultivate"], "erratum": "kṣáya- 'dwelling' mapped to *dʰgʷʰey- 'perish'",
+   "reason": "as for the Rigveda"},
+  {"corpus": "lat", "lemma": "situs", "lex_id": ["pie-lex-tkjineti"], "erratum": "situs 'placed' mapped to *dʰgʷʰey- 'perish'",
+   "reason": "participle of sinō, which the mapping already sends to *tḱinéti (*tḱey-); the etymology of sinō is disputed (*tḱey- / *sey-), but it is not *dʰgʷʰey-"}
+ ],
+ "form": [
+  {"lang": "ang", "form": "bid", "lemma": "biþ", "erratum": "bið 'is' mapped to *bʰeydʰ- 'trust'",
+   "reason": "Grein's OCR prints ð as d: 'bid' is bið 'is' (3rd sg. of bēon), not bīdan; the rare imperative bid (biddan) is not separated"}
+ ]
+}

@@ -23,3 +23,6 @@ data/research/backtest/*.npz
 # 8c packets with daughter text (some NC, research-only): local only; packets-loci/ is the committed copy
 data/research/8c/packets/
 data/research/8c/review/claims-*.jsonl
+# 8c Stage B slabs with daughter text (research-only); slabs-loci/ is the committed copy
+data/research/8c/stageB/slabs/
+8c-stageB-key.json

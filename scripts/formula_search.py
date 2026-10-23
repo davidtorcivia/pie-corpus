@@ -6,6 +6,7 @@ fixed evaluation set.
   uv run python -I scripts/formula_search.py ablation     # evaluation.json
   uv run python -I scripts/formula_search.py candidates   # candidates.jsonl (final method)
   uv run python -I scripts/formula_search.py all
+  uv run python -I scripts/formula_search.py mapping      # round-3 mapping tables only (after new errata)
 
 Evaluation set (built once per mapping version, then frozen for every row):
   gold    data/formulas/formulas.jsonl records attested in Vedic and Greek
@@ -581,7 +582,8 @@ class R3:
         lex = env.lex
         self.gmap = env.gmap
         self.tok: dict = {"rv": env.tok["rv"], "hom": env.tok["hom"], "lat": env.tok["lat"]}
-        self.maps: dict = {c: env.maps["pseudo"][c] for c in ("rv", "hom", "lat")}
+        # mapping errata (data/research/formulas/mapping-overrides.json) on copies: round 2's Env is unchanged
+        self.maps: dict = {c: fm.apply_lemma_overrides(c, env.maps["pseudo"][c], env.gmap) for c in ("rv", "hom", "lat")}
         self.recs: dict = {}
         idx = fs.PieIndex(lex)
         want = [c for L in fm.LANGS.values() for c in L.desc_codes]
@@ -612,6 +614,9 @@ class R3:
         lat_forms = {fs.lat_key(t.surface) for t in self.tok["lat"]}
         self._text("xum", fm.umbrian_lines(lat_forms), fm.FormLemmatizer(self.lm["xum"]))
         self._text("ae", fm.avesta_units(), fm.AvestanLemmatizer(self.lm["ae"], {}))
+        for c in self.recs:
+            self.recs[c] = fm.apply_rec_overrides(c, self.recs[c])
+            self.maps[c] = fm.apply_lemma_overrides(c, self.maps[c], self.gmap)
         # Greek NT for the calque check
         gnt = fm.load_proiel(["proiel/greek-nt.xml"], "gnt")
         gm = fs.build_kaikki_mapping("grc", lex, gnt, fs.build_homer_mapping(lex, gnt), pseudo=True)
@@ -974,13 +979,17 @@ def write_round3_json(r3, res, regression, third, baseline, cands, items):
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("stage", choices=["ablation", "candidates", "all", "round3"])
+    ap.add_argument("stage", choices=["ablation", "candidates", "all", "round3", "mapping"])
     args = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     load_spot_checks()
     env = Env()
     if args.stage == "round3":
         return run_round3(env)
+    if args.stage == "mapping":       # rewrite the round-3 mapping tables only (e.g. after new errata)
+        MAPPING_DIR.mkdir(parents=True, exist_ok=True)
+        write_mapping_tables(R3(env))
+        return 0
     if args.stage in ("ablation", "all"):
         ab = run_ablation(env)
         write_evaluation(env, ab)

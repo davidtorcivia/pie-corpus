@@ -1,0 +1,799 @@
+{
+ "corpora": {
+  "rv": {
+   "label": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+   "branch": "Indo-Iranian",
+   "units": 39832,
+   "units_with_mapped_roots": 36533,
+   "tokens": 166865,
+   "content_words": 118887
+  },
+  "av": {
+   "label": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+   "branch": "Indo-Iranian",
+   "units": 13800,
+   "units_with_mapped_roots": 13159,
+   "tokens": 107134,
+   "content_words": 70660
+  },
+  "ae": {
+   "label": "Avesta (CAB Linguistic Corpus)",
+   "branch": "Indo-Iranian",
+   "units": 16466,
+   "units_with_mapped_roots": 10596,
+   "tokens": 102447,
+   "content_words": 103999
+  },
+  "hom": {
+   "label": "Homer (Perseus AGDT)",
+   "branch": "Greek",
+   "units": 27760,
+   "units_with_mapped_roots": 27238,
+   "tokens": 200145,
+   "content_words": 116533
+  },
+  "grc": {
+   "label": "Greek poetry and prose to 300 BC (GLAUx)",
+   "branch": "Greek",
+   "units": 282885,
+   "units_with_mapped_roots": 266675,
+   "tokens": 3809801,
+   "content_words": 1644522
+  },
+  "non": {
+   "label": "Poetic Edda (Finnur Jónsson 1926, OCR)",
+   "branch": "Germanic",
+   "units": 12789,
+   "units_with_mapped_roots": 9482,
+   "tokens": 42404,
+   "content_words": 26489
+  },
+  "ang": {
+   "label": "Old English poetry (Beowulf, Gutenberg; Grein 1857-58, OCR)",
+   "branch": "Germanic",
+   "units": 15606,
+   "units_with_mapped_roots": 13159,
+   "tokens": 96648,
+   "content_words": 57798
+  },
+  "hit": {
+   "label": "Hittite (TLHdig)",
+   "branch": "Anatolian",
+   "units": 318800,
+   "units_with_mapped_roots": 26216,
+   "tokens": 876848,
+   "content_words": 185489
+  },
+  "lat": {
+   "label": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+   "branch": "Italic",
+   "units": 18841,
+   "units_with_mapped_roots": 17089,
+   "tokens": 144788,
+   "content_words": 73932
+  },
+  "xum": {
+   "label": "Umbrian, Iguvine Tables (Buck 1904, OCR)",
+   "branch": "Italic",
+   "units": 2221,
+   "units_with_mapped_roots": 755,
+   "tokens": 8775,
+   "content_words": 8723
+  },
+  "lv": {
+   "label": "Latvian dainas (quotations in a book on the dainas, OCR)",
+   "branch": "Baltic",
+   "units": 753,
+   "units_with_mapped_roots": 670,
+   "tokens": 7865,
+   "content_words": 5967
+  },
+  "sga": {
+   "label": "Old Irish glosses (UD)",
+   "branch": "Celtic",
+   "units": 99,
+   "units_with_mapped_roots": 72,
+   "tokens": 594,
+   "content_words": 329
+  },
+  "orv": {
+   "label": "Early Old Russian (TOROT)",
+   "branch": "Slavic",
+   "units": 14662,
+   "units_with_mapped_roots": 11424,
+   "tokens": 123312,
+   "content_words": 66927
+  }
+ },
+ "index": {
+  "units_with_roots": 384787,
+  "root_groups": 2585
+ },
+ "pivots_with_any_partner": 195213,
+ "pivots_above_floor": 19527,
+ "bundles": 10236,
+ "bundles_merged_into": 3589,
+ "bundle_size": {
+  "2": 5686,
+  "3": 1650,
+  "4": 887,
+  "5": 412,
+  "6": 321,
+  "7": 483,
+  "8": 162,
+  "9": 131,
+  "10": 75,
+  "11": 61,
+  "12": 368
+ },
+ "decoy_bundles": 2048,
+ "decoy_share": 0.2001,
+ "slabs": 50,
+ "slab_tokens": {
+  "S-60d7": {
+   "bundles": 195,
+   "decoy_share": 0.2,
+   "tokens": 692986,
+   "sections": [
+    "rv: RV 1"
+   ]
+  },
+  "S-07c3": {
+   "bundles": 188,
+   "decoy_share": 0.202,
+   "tokens": 644954,
+   "sections": [
+    "rv: RV 1",
+    "rv: RV 2"
+   ]
+  },
+  "S-cbb3": {
+   "bundles": 240,
+   "decoy_share": 0.2,
+   "tokens": 694141,
+   "sections": [
+    "rv: RV 3",
+    "rv: RV 4",
+    "rv: RV 5"
+   ]
+  },
+  "S-50ea": {
+   "bundles": 202,
+   "decoy_share": 0.198,
+   "tokens": 607158,
+   "sections": [
+    "rv: RV 5",
+    "rv: RV 6"
+   ]
+  },
+  "S-f7bf": {
+   "bundles": 212,
+   "decoy_share": 0.198,
+   "tokens": 641487,
+   "sections": [
+    "rv: RV 7",
+    "rv: RV 8"
+   ]
+  },
+  "S-6a6d": {
+   "bundles": 251,
+   "decoy_share": 0.199,
+   "tokens": 696581,
+   "sections": [
+    "rv: RV 9",
+    "rv: RV 10"
+   ]
+  },
+  "S-f885": {
+   "bundles": 147,
+   "decoy_share": 0.204,
+   "tokens": 483559,
+   "sections": [
+    "rv: RV 10"
+   ]
+  },
+  "S-674f": {
+   "bundles": 172,
+   "decoy_share": 0.198,
+   "tokens": 692993,
+   "sections": [
+    "av: AVŚ 1",
+    "av: AVŚ 2",
+    "av: AVŚ 3",
+    "...",
+    "av: AVŚ 4"
+   ]
+  },
+  "S-0863": {
+   "bundles": 174,
+   "decoy_share": 0.201,
+   "tokens": 697198,
+   "sections": [
+    "av: AVŚ 4",
+    "av: AVŚ 5",
+    "av: AVŚ 6"
+   ]
+  },
+  "S-dbfc": {
+   "bundles": 150,
+   "decoy_share": 0.2,
+   "tokens": 691312,
+   "sections": [
+    "av: AVŚ 6",
+    "av: AVŚ 7"
+   ]
+  },
+  "S-2b67": {
+   "bundles": 161,
+   "decoy_share": 0.205,
+   "tokens": 684847,
+   "sections": [
+    "av: AVŚ 7",
+    "av: AVŚ 8",
+    "av: AVŚ 9"
+   ]
+  },
+  "S-5af2": {
+   "bundles": 156,
+   "decoy_share": 0.192,
+   "tokens": 651472,
+   "sections": [
+    "av: AVŚ 9",
+    "av: AVŚ 10",
+    "av: AVŚ 11"
+   ]
+  },
+  "S-d5a1": {
+   "bundles": 155,
+   "decoy_share": 0.206,
+   "tokens": 641225,
+   "sections": [
+    "av: AVŚ 12",
+    "av: AVŚ 13",
+    "av: AVŚ 14"
+   ]
+  },
+  "S-7c00": {
+   "bundles": 155,
+   "decoy_share": 0.2,
+   "tokens": 687738,
+   "sections": [
+    "av: AVŚ 15",
+    "av: AVŚ 16",
+    "av: AVŚ 17",
+    "...",
+    "av: AVŚ 18"
+   ]
+  },
+  "S-ee1b": {
+   "bundles": 162,
+   "decoy_share": 0.198,
+   "tokens": 688899,
+   "sections": [
+    "av: AVŚ 18",
+    "av: AVŚ 19",
+    "av: AVP 1",
+    "...",
+    "av: AVP 4"
+   ]
+  },
+  "S-80a2": {
+   "bundles": 157,
+   "decoy_share": 0.204,
+   "tokens": 662359,
+   "sections": [
+    "av: AVP 5",
+    "av: AVP 10",
+    "av: AVP 12"
+   ]
+  },
+  "S-65fb": {
+   "bundles": 190,
+   "decoy_share": 0.2,
+   "tokens": 693365,
+   "sections": [
+    "av: AVP 19"
+   ]
+  },
+  "S-a79c": {
+   "bundles": 221,
+   "decoy_share": 0.199,
+   "tokens": 597383,
+   "sections": [
+    "av: AVP 19",
+    "ae: N",
+    "ae: VaethaNask",
+    "...",
+    "ae: NyXwar"
+   ]
+  },
+  "S-af31": {
+   "bundles": 277,
+   "decoy_share": 0.199,
+   "tokens": 604012,
+   "sections": [
+    "ae: YtOhr",
+    "ae: YtArW",
+    "ae: GUz",
+    "...",
+    "hom: Od.10"
+   ]
+  },
+  "S-1b86": {
+   "bundles": 166,
+   "decoy_share": 0.199,
+   "tokens": 396946,
+   "sections": [
+    "hom: Od.11",
+    "hom: Od.12",
+    "hom: Od.13",
+    "...",
+    "hom: Od.9"
+   ]
+  },
+  "S-8714": {
+   "bundles": 268,
+   "decoy_share": 0.201,
+   "tokens": 605432,
+   "sections": [
+    "grc: 0020-001",
+    "grc: 0020-002",
+    "grc: 0020-003",
+    "...",
+    "grc: 0006-009"
+   ]
+  },
+  "S-406b": {
+   "bundles": 216,
+   "decoy_share": 0.199,
+   "tokens": 689920,
+   "sections": [
+    "grc: 0006-010",
+    "grc: 0006-011",
+    "grc: 0006-012",
+    "...",
+    "grc: 0016-001"
+   ]
+  },
+  "S-8304": {
+   "bundles": 204,
+   "decoy_share": 0.196,
+   "tokens": 695916,
+   "sections": [
+    "grc: 0016-001",
+    "grc: 0013-031",
+    "grc: 0013-032",
+    "...",
+    "grc: 0003-001"
+   ]
+  },
+  "S-cea7": {
+   "bundles": 188,
+   "decoy_share": 0.202,
+   "tokens": 603529,
+   "sections": [
+    "grc: 0003-001",
+    "grc: 0027-001",
+    "grc: 0027-002",
+    "...",
+    "grc: 0019-004"
+   ]
+  },
+  "S-9026": {
+   "bundles": 226,
+   "decoy_share": 0.204,
+   "tokens": 638068,
+   "sections": [
+    "grc: 0019-005",
+    "grc: 0019-006",
+    "grc: 0019-007",
+    "...",
+    "grc: 0627-009"
+   ]
+  },
+  "S-26f8": {
+   "bundles": 249,
+   "decoy_share": 0.201,
+   "tokens": 697677,
+   "sections": [
+    "grc: 0627-010",
+    "grc: 0627-011",
+    "grc: 0627-012",
+    "...",
+    "grc: 0627-023"
+   ]
+  },
+  "S-2f31": {
+   "bundles": 231,
+   "decoy_share": 0.199,
+   "tokens": 698410,
+   "sections": [
+    "grc: 0627-023",
+    "grc: 0627-024a",
+    "grc: 0627-024b",
+    "...",
+    "grc: 0627-032"
+   ]
+  },
+  "S-d6ec": {
+   "bundles": 237,
+   "decoy_share": 0.198,
+   "tokens": 697914,
+   "sections": [
+    "grc: 0627-032",
+    "grc: 0627-033",
+    "grc: 0627-034",
+    "...",
+    "grc: 0627-036"
+   ]
+  },
+  "S-4b1f": {
+   "bundles": 212,
+   "decoy_share": 0.198,
+   "tokens": 655785,
+   "sections": [
+    "grc: 0627-036",
+    "grc: 0627-037",
+    "grc: 0627-038"
+   ]
+  },
+  "S-653b": {
+   "bundles": 168,
+   "decoy_share": 0.202,
+   "tokens": 604104,
+   "sections": [
+    "grc: 0627-039",
+    "grc: 0627-040",
+    "grc: 0627-041",
+    "...",
+    "grc: 0010-015"
+   ]
+  },
+  "S-b9f7": {
+   "bundles": 187,
+   "decoy_share": 0.198,
+   "tokens": 621654,
+   "sections": [
+    "grc: 0010-016",
+    "grc: 0010-017",
+    "grc: 0010-018",
+    "...",
+    "grc: 0059-005"
+   ]
+  },
+  "S-660f": {
+   "bundles": 199,
+   "decoy_share": 0.206,
+   "tokens": 636264,
+   "sections": [
+    "grc: 0059-006",
+    "grc: 0059-007",
+    "grc: 0059-008",
+    "...",
+    "grc: 0059-022"
+   ]
+  },
+  "S-b256": {
+   "bundles": 173,
+   "decoy_share": 0.197,
+   "tokens": 638297,
+   "sections": [
+    "grc: 0059-023",
+    "grc: 0059-024",
+    "grc: 0059-025",
+    "...",
+    "grc: 0059-030"
+   ]
+  },
+  "S-27bb": {
+   "bundles": 214,
+   "decoy_share": 0.201,
+   "tokens": 696767,
+   "sections": [
+    "grc: 0059-031",
+    "grc: 0059-032",
+    "grc: 0059-033",
+    "...",
+    "grc: 0059-034"
+   ]
+  },
+  "S-e552": {
+   "bundles": 173,
+   "decoy_share": 0.197,
+   "tokens": 631331,
+   "sections": [
+    "grc: 0059-034",
+    "grc: 0059-035",
+    "grc: 0059-036",
+    "...",
+    "grc: 0032-001"
+   ]
+  },
+  "S-96b7": {
+   "bundles": 217,
+   "decoy_share": 0.203,
+   "tokens": 693899,
+   "sections": [
+    "grc: 0032-002",
+    "grc: 0032-003",
+    "grc: 0032-004",
+    "...",
+    "grc: 0032-007"
+   ]
+  },
+  "S-8534": {
+   "bundles": 226,
+   "decoy_share": 0.195,
+   "tokens": 697855,
+   "sections": [
+    "grc: 0032-007",
+    "grc: 0032-008",
+    "grc: 0032-009",
+    "...",
+    "grc: 0086-001"
+   ]
+  },
+  "S-eb11": {
+   "bundles": 255,
+   "decoy_share": 0.204,
+   "tokens": 699685,
+   "sections": [
+    "grc: 0086-001",
+    "grc: 0086-002",
+    "grc: 0086-003",
+    "...",
+    "grc: 0086-012"
+   ]
+  },
+  "S-11ba": {
+   "bundles": 273,
+   "decoy_share": 0.201,
+   "tokens": 684321,
+   "sections": [
+    "grc: 0086-012",
+    "grc: 0086-013",
+    "grc: 0086-014"
+   ]
+  },
+  "S-b6e5": {
+   "bundles": 234,
+   "decoy_share": 0.197,
+   "tokens": 699653,
+   "sections": [
+    "grc: 0086-015",
+    "grc: 0086-016",
+    "grc: 0086-017",
+    "...",
+    "grc: 0086-026"
+   ]
+  },
+  "S-d83d": {
+   "bundles": 212,
+   "decoy_share": 0.203,
+   "tokens": 634774,
+   "sections": [
+    "grc: 0086-026",
+    "grc: 0086-027",
+    "grc: 0086-028",
+    "...",
+    "grc: 0086-033"
+   ]
+  },
+  "S-e31e": {
+   "bundles": 237,
+   "decoy_share": 0.198,
+   "tokens": 691279,
+   "sections": [
+    "grc: 0086-034",
+    "grc: 0086-035",
+    "grc: 0086-036"
+   ]
+  },
+  "S-73d4": {
+   "bundles": 246,
+   "decoy_share": 0.199,
+   "tokens": 696231,
+   "sections": [
+    "grc: 0086-037",
+    "grc: 0086-038",
+    "grc: 0086-039",
+    "...",
+    "grc: 1210-002"
+   ]
+  },
+  "S-6f0b": {
+   "bundles": 200,
+   "decoy_share": 0.2,
+   "tokens": 605375,
+   "sections": [
+    "grc: 1210-002",
+    "grc: 0535-001",
+    "grc: 0014-002",
+    "...",
+    "grc: 0014-030"
+   ]
+  },
+  "S-43be": {
+   "bundles": 210,
+   "decoy_share": 0.2,
+   "tokens": 611031,
+   "sections": [
+    "grc: 0014-032",
+    "grc: 0014-033",
+    "grc: 0014-034",
+    "...",
+    "grc: 0030-001"
+   ]
+  },
+  "S-b555": {
+   "bundles": 174,
+   "decoy_share": 0.201,
+   "tokens": 442257,
+   "sections": [
+    "grc: 0030-002",
+    "grc: 0030-003",
+    "grc: 0030-004",
+    "...",
+    "non: Sólarljób"
+   ]
+  },
+  "S-0e1c": {
+   "bundles": 272,
+   "decoy_share": 0.199,
+   "tokens": 609881,
+   "sections": [
+    "ang: Beo.",
+    "ang: Finn.",
+    "ang: I:Genesis",
+    "...",
+    "ang: I:Cynevulfs Crist"
+   ]
+  },
+  "S-42da": {
+   "bundles": 195,
+   "decoy_share": 0.2,
+   "tokens": 695409,
+   "sections": [
+    "ang: I:Reden Dee Seelen An Den Leichnam",
+    "ang: I:Bi Manna Vyrdiim",
+    "ang: I:Bt Manna Mode",
+    "...",
+    "lat: CatAgr"
+   ]
+  },
+  "S-2bd6": {
+   "bundles": 249,
+   "decoy_share": 0.201,
+   "tokens": 611962,
+   "sections": [
+    "lat: CatAgr",
+    "lat: CatOrat",
+    "lat: CatOrig",
+    "...",
+    "lat: PlEpidic"
+   ]
+  },
+  "S-8334": {
+   "bundles": 160,
+   "decoy_share": 0.206,
+   "tokens": 296211,
+   "sections": [
+    "lv: p0095",
+    "lv: p0098",
+    "lv: p0100",
+    "...",
+    "orv: riga-goth"
+   ]
+  }
+ },
+ "decoy_share_per_slab_min_max": [
+  0.192,
+  0.206
+ ],
+ "slab_tokens_min_max": [
+  296211,
+  699685
+ ],
+ "total_slab_tokens": 32031506,
+ "read_tokens_est": 41640958,
+ "coverage": {
+  "rv": {
+   "pivot_bundles": 1435,
+   "partner_slots": 1686,
+   "unit_slots": 3121
+  },
+  "av": {
+   "pivot_bundles": 1655,
+   "partner_slots": 3983,
+   "unit_slots": 5638
+  },
+  "ae": {
+   "pivot_bundles": 257,
+   "partner_slots": 196,
+   "unit_slots": 453
+  },
+  "hom": {
+   "pivot_bundles": 384,
+   "partner_slots": 916,
+   "unit_slots": 1300
+  },
+  "grc": {
+   "pivot_bundles": 5511,
+   "partner_slots": 7593,
+   "unit_slots": 13104
+  },
+  "non": {
+   "pivot_bundles": 118,
+   "partner_slots": 392,
+   "unit_slots": 510
+  },
+  "ang": {
+   "pivot_bundles": 386,
+   "partner_slots": 1280,
+   "unit_slots": 1666
+  },
+  "hit": {
+   "pivot_bundles": 7,
+   "partner_slots": 39,
+   "unit_slots": 46
+  },
+  "lat": {
+   "pivot_bundles": 323,
+   "partner_slots": 7618,
+   "unit_slots": 7941
+  },
+  "xum": {
+   "pivot_bundles": 0,
+   "partner_slots": 14,
+   "unit_slots": 14
+  },
+  "lv": {
+   "pivot_bundles": 24,
+   "partner_slots": 314,
+   "unit_slots": 338
+  },
+  "sga": {
+   "pivot_bundles": 3,
+   "partner_slots": 24,
+   "unit_slots": 27
+  },
+  "orv": {
+   "pivot_bundles": 133,
+   "partner_slots": 1258,
+   "unit_slots": 1391
+  }
+ },
+ "floor_alternatives": {
+  "0.9": {
+   "floor": 12.3461,
+   "bundles": 10236,
+   "slab_tokens_est_no_dedupe": 37794872,
+   "read_tokens_est_no_dedupe": 49133334
+  },
+  "0.95": {
+   "floor": 13.2059,
+   "bundles": 4927,
+   "slab_tokens_est_no_dedupe": 17539244,
+   "read_tokens_est_no_dedupe": 22801017
+  },
+  "0.97": {
+   "floor": 13.8043,
+   "bundles": 2939,
+   "slab_tokens_est_no_dedupe": 9896302,
+   "read_tokens_est_no_dedupe": 12865192
+  },
+  "0.98": {
+   "floor": 14.3018,
+   "bundles": 1971,
+   "slab_tokens_est_no_dedupe": 6584129,
+   "read_tokens_est_no_dedupe": 8559368
+  },
+  "0.99": {
+   "floor": 15.1355,
+   "bundles": 996,
+   "slab_tokens_est_no_dedupe": 3271973,
+   "read_tokens_est_no_dedupe": 4253565
+  }
+ },
+ "decoy_target": 2048
+}

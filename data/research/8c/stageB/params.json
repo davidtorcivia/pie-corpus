@@ -1,0 +1,712 @@
+{
+ "frozen": true,
+ "note": "Phase 8c Stage B retrieval and bundle parameters, fixed from the score distribution before any bundle was built or read (docs/research/8c-preregistration.md, Stage B). Rebuilds read the floor from this file.",
+ "seed": 0,
+ "units": {
+  "max_content_words": 16,
+  "window_rule": "a unit with more than max_content_words content words is cut into ceil(n/max) consecutive windows of near-equal size"
+ },
+ "root_weight": "idf = ln(N / df); df = number of units (all Stage B corpora) containing the root group; N = units with >= 1 mapped root group",
+ "N_units": 384787,
+ "partner_rule": "other branch; >= 2 shared root groups, >= 1 of them outside the 50 most frequent root groups; score = sum of idf over shared groups",
+ "top_k": 6,
+ "n_common": 50,
+ "min_shared": 2,
+ "floor_rule": "floor = the 0.9 quantile of the best-partner score over all pivots that have a partner (a pivot keeps its top-k partners scoring >= floor). This is a size rule chosen for the pre-registered budget (30-60M tokens, 'generous by design; readers judge'), not a significance threshold: against the null model below, real best-partner scores do not exceed chance except in the far tail (null_comparison).",
+ "floor_quantile": 0.9,
+ "floor": 12.3461,
+ "score_distribution": {
+  "pivots_with_partner": 195213,
+  "pairs_top_k": 887835,
+  "best_score_quantiles": {
+   "0.5": 9.5558,
+   "0.75": 10.9442,
+   "0.9": 12.3461,
+   "0.95": 13.2059,
+   "0.98": 14.3018,
+   "0.99": 15.1355,
+   "0.995": 15.9304,
+   "0.999": 17.9311
+  },
+  "pair_score_quantiles": {
+   "0.5": 8.9714,
+   "0.75": 10.177,
+   "0.9": 11.4138,
+   "0.95": 12.2191,
+   "0.98": 13.1771,
+   "0.99": 13.86,
+   "0.995": 14.5904,
+   "0.999": 16.5186
+  }
+ },
+ "null_model": "null model: the same deduplicated units, each content word's root-group set permuted among the content words of its corpus (seed 0); the same retrieval",
+ "null_comparison": {
+  "10.9442": {
+   "real": 48801,
+   "null": 59571,
+   "per_corpus_real_null": {
+    "rv": [
+     5797,
+     6655
+    ],
+    "av": [
+     4302,
+     5023
+    ],
+    "ae": [
+     702,
+     1185
+    ],
+    "hom": [
+     2747,
+     2996
+    ],
+    "grc": [
+     25786,
+     31904
+    ],
+    "non": [
+     872,
+     1102
+    ],
+    "ang": [
+     2387,
+     2806
+    ],
+    "hit": [
+     103,
+     408
+    ],
+    "lat": [
+     4329,
+     5141
+    ],
+    "xum": [
+     52,
+     87
+    ],
+    "lv": [
+     227,
+     261
+    ],
+    "sga": [
+     24,
+     27
+    ],
+    "orv": [
+     1473,
+     1976
+    ]
+   }
+  },
+  "12.3461": {
+   "real": 19527,
+   "null": 23983,
+   "per_corpus_real_null": {
+    "rv": [
+     1905,
+     2225
+    ],
+    "av": [
+     2191,
+     2656
+    ],
+    "ae": [
+     304,
+     504
+    ],
+    "hom": [
+     874,
+     848
+    ],
+    "grc": [
+     9805,
+     12096
+    ],
+    "non": [
+     346,
+     465
+    ],
+    "ang": [
+     986,
+     1264
+    ],
+    "hit": [
+     27,
+     118
+    ],
+    "lat": [
+     2197,
+     2616
+    ],
+    "xum": [
+     9,
+     45
+    ],
+    "lv": [
+     126,
+     154
+    ],
+    "sga": [
+     18,
+     17
+    ],
+    "orv": [
+     739,
+     975
+    ]
+   }
+  },
+  "13.2059": {
+   "real": 9760,
+   "null": 12103,
+   "per_corpus_real_null": {
+    "rv": [
+     932,
+     932
+    ],
+    "av": [
+     1302,
+     1595
+    ],
+    "ae": [
+     148,
+     264
+    ],
+    "hom": [
+     351,
+     348
+    ],
+    "grc": [
+     4665,
+     5932
+    ],
+    "non": [
+     155,
+     217
+    ],
+    "ang": [
+     455,
+     601
+    ],
+    "hit": [
+     19,
+     54
+    ],
+    "lat": [
+     1248,
+     1516
+    ],
+    "xum": [
+     5,
+     26
+    ],
+    "lv": [
+     85,
+     104
+    ],
+    "sga": [
+     13,
+     15
+    ],
+    "orv": [
+     382,
+     499
+    ]
+   }
+  },
+  "14.3018": {
+   "real": 3904,
+   "null": 4498,
+   "per_corpus_real_null": {
+    "rv": [
+     312,
+     289
+    ],
+    "av": [
+     541,
+     678
+    ],
+    "ae": [
+     50,
+     87
+    ],
+    "hom": [
+     111,
+     92
+    ],
+    "grc": [
+     1880,
+     2148
+    ],
+    "non": [
+     54,
+     54
+    ],
+    "ang": [
+     137,
+     165
+    ],
+    "hit": [
+     9,
+     8
+    ],
+    "lat": [
+     596,
+     708
+    ],
+    "xum": [
+     1,
+     15
+    ],
+    "lv": [
+     54,
+     50
+    ],
+    "sga": [
+     9,
+     7
+    ],
+    "orv": [
+     150,
+     197
+    ]
+   }
+  },
+  "15.1355": {
+   "real": 1952,
+   "null": 2172,
+   "per_corpus_real_null": {
+    "rv": [
+     156,
+     104
+    ],
+    "av": [
+     290,
+     344
+    ],
+    "ae": [
+     23,
+     31
+    ],
+    "hom": [
+     51,
+     39
+    ],
+    "grc": [
+     916,
+     1041
+    ],
+    "non": [
+     19,
+     19
+    ],
+    "ang": [
+     60,
+     77
+    ],
+    "hit": [
+     6,
+     5
+    ],
+    "lat": [
+     332,
+     396
+    ],
+    "xum": [
+     0,
+     4
+    ],
+    "lv": [
+     27,
+     21
+    ],
+    "sga": [
+     4,
+     4
+    ],
+    "orv": [
+     68,
+     87
+    ]
+   }
+  },
+  "15.9304": {
+   "real": 978,
+   "null": 1075,
+   "per_corpus_real_null": {
+    "rv": [
+     79,
+     51
+    ],
+    "av": [
+     148,
+     159
+    ],
+    "ae": [
+     7,
+     12
+    ],
+    "hom": [
+     26,
+     13
+    ],
+    "grc": [
+     462,
+     506
+    ],
+    "non": [
+     5,
+     8
+    ],
+    "ang": [
+     25,
+     38
+    ],
+    "hit": [
+     0,
+     0
+    ],
+    "lat": [
+     171,
+     243
+    ],
+    "xum": [
+     0,
+     2
+    ],
+    "lv": [
+     18,
+     10
+    ],
+    "sga": [
+     3,
+     3
+    ],
+    "orv": [
+     34,
+     30
+    ]
+   }
+  },
+  "17.9311": {
+   "real": 195,
+   "null": 137,
+   "per_corpus_real_null": {
+    "rv": [
+     5,
+     3
+    ],
+    "av": [
+     28,
+     16
+    ],
+    "ae": [
+     1,
+     2
+    ],
+    "hom": [
+     4,
+     0
+    ],
+    "grc": [
+     104,
+     55
+    ],
+    "non": [
+     2,
+     1
+    ],
+    "ang": [
+     1,
+     4
+    ],
+    "hit": [
+     0,
+     0
+    ],
+    "lat": [
+     40,
+     50
+    ],
+    "xum": [
+     0,
+     0
+    ],
+    "lv": [
+     3,
+     3
+    ],
+    "sga": [
+     1,
+     0
+    ],
+    "orv": [
+     6,
+     3
+    ]
+   }
+  }
+ },
+ "common_roots": [
+  {
+   "group": "pie-root-h1es-be",
+   "df": 77206
+  },
+  {
+   "group": "pie-root-legj-gather",
+   "df": 35283
+  },
+  {
+   "group": "pie-root-legj-drip",
+   "df": 35009
+  },
+  {
+   "group": "pie-root-gjenh1-produce",
+   "df": 32001
+  },
+  {
+   "group": "pie-root-segjh-overpower",
+   "df": 30882
+  },
+  {
+   "group": "pie-root-pleh1-fill",
+   "df": 23980
+  },
+  {
+   "group": "pie-root-dheh1-do",
+   "df": 21809
+  },
+  {
+   "group": "pie-root-bheh2-shine",
+   "df": 19289
+  },
+  {
+   "group": "pie-root-kwey-gather",
+   "df": 18426
+  },
+  {
+   "group": "pie-root-dheh1y-suckle",
+   "df": 16003
+  },
+  {
+   "group": "pie-root-bheh2-speak",
+   "df": 14446
+  },
+  {
+   "group": "pie-root-deykj-point_out",
+   "df": 14001
+  },
+  {
+   "group": "pie-root-per-go_through",
+   "df": 13521
+  },
+  {
+   "group": "pie-root-bher-bear",
+   "df": 13393
+  },
+  {
+   "group": "pie-root-deh3-give",
+   "df": 12178
+  },
+  {
+   "group": "pie-root-h2ew-perceive",
+   "df": 12162
+  },
+  {
+   "group": "pie-root-dekj-take",
+   "df": 12078
+  },
+  {
+   "group": "pie-root-h1er-arrive",
+   "df": 11987
+  },
+  {
+   "group": "pie-root-tpelH-fortification",
+   "df": 11809
+  },
+  {
+   "group": "pie-root-weyd-see",
+   "df": 11685
+  },
+  {
+   "group": "kaikki:h₂r̥sḱeti",
+   "df": 11070
+  },
+  {
+   "group": "pie-root-h2egj-drive",
+   "df": 10998
+  },
+  {
+   "group": "pie-root-deh1-bind",
+   "df": 10854
+  },
+  {
+   "group": "pie-root-steh2-stand",
+   "df": 10704
+  },
+  {
+   "group": "pie-root-sleh2gw-take",
+   "df": 10390
+  },
+  {
+   "group": "pie-root-bhuH-be",
+   "df": 10150
+  },
+  {
+   "group": "pie-lex-h2nexr",
+   "df": 10143
+  },
+  {
+   "group": "pie-root-h3ekw-see",
+   "df": 10027
+  },
+  {
+   "group": "pie-root-dewh2-fit",
+   "df": 9608
+  },
+  {
+   "group": "pie-root-dyew-be_bright",
+   "df": 9396
+  },
+  {
+   "group": "pie-root-per-before",
+   "df": 9324
+  },
+  {
+   "group": "pie-lex-megjh2s",
+   "df": 9155
+  },
+  {
+   "group": "pie-root-weykj-enter_in",
+   "df": 8751
+  },
+  {
+   "group": "pie-root-gher-rub",
+   "df": 8636
+  },
+  {
+   "group": "pie-root-peh2w-few",
+   "df": 8606
+  },
+  {
+   "group": "pie-lex-dhedheh1ti",
+   "df": 8522
+  },
+  {
+   "group": "pie-root-gwem-come",
+   "df": 8340
+  },
+  {
+   "group": "pie-root-gwelh3-wish",
+   "df": 8275
+  },
+  {
+   "group": "pie-root-nem-bend",
+   "df": 8143
+  },
+  {
+   "group": "pie-root-tewh2-swell",
+   "df": 8116
+  },
+  {
+   "group": "pie-root-nem-distribute",
+   "df": 7848
+  },
+  {
+   "group": "pie-root-wergj-make",
+   "df": 7532
+  },
+  {
+   "group": "pie-root-dhewgh-hit",
+   "df": 7231
+  },
+  {
+   "group": "pie-root-gweyh3-live",
+   "df": 6845
+  },
+  {
+   "group": "pie-root-wer-sense",
+   "df": 6695
+  },
+  {
+   "group": "pie-root-peh2-protect",
+   "df": 6676
+  },
+  {
+   "group": "pie-root-h2nekj-reach",
+   "df": 6550
+  },
+  {
+   "group": "kaikki:gʷl̥neh₁",
+   "df": 6494
+  },
+  {
+   "group": "pie-root-gjneh3-recognise",
+   "df": 6413
+  },
+  {
+   "group": "pie-root-smer-assign",
+   "df": 6413
+  }
+ ],
+ "merge_rule": "bundles in order of best partner score; a bundle whose pivot and >= 1 partner already sit in a kept bundle is merged into it (its other units added best first, cap 12 passages); else kept",
+ "merge_cap": 12,
+ "decoys": {
+  "share": 0.2,
+  "rule": "bundles in document order of their pivots; one in every consecutive block of 1/share drawn (seeded random), before slabs are packed; every non-pivot passage replaced by a unit of the same corpus, not in the bundle, sharing no root group outside the 50 most frequent with the pivot and at most one in all; matched on content-word count (within 25%, at least +-1) and mean root idf (within 10%, widened to 20%, 40%, any)"
+ },
+ "slabs": {
+  "target_tokens": 600000,
+  "max_tokens": 700000,
+  "flush_at_corpus_change": 350000,
+  "chars_per_token": 3.5,
+  "reader_overhead": 1.3
+ },
+ "corpora": {
+  "rv": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+  "av": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+  "ae": "Avesta (CAB Linguistic Corpus)",
+  "hom": "Homer (Perseus AGDT)",
+  "grc": "Greek poetry and prose to 300 BC (GLAUx)",
+  "non": "Poetic Edda (Finnur Jónsson 1926, OCR)",
+  "ang": "Old English poetry (Beowulf, Gutenberg; Grein 1857-58, OCR)",
+  "hit": "Hittite (TLHdig)",
+  "lat": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+  "xum": "Umbrian, Iguvine Tables (Buck 1904, OCR)",
+  "lv": "Latvian dainas (quotations in a book on the dainas, OCR)",
+  "sga": "Old Irish glosses (UD)",
+  "orv": "Early Old Russian (TOROT)"
+ },
+ "glaux_rule": "all GLAUx texts with ENDDATE <= -300, every genre, Homer (TLG 0012) excluded",
+ "orv_texts": [
+  "spi",
+  "lav",
+  "pvl-hyp",
+  "kiev-hyp",
+  "suz-lav",
+  "nov-sin",
+  "rusprav",
+  "ust-vlad",
+  "birchbark",
+  "mst",
+  "mstislav-col",
+  "ostromir-col",
+  "nov-marg",
+  "novgorod-jaroslav",
+  "nevsky-treaty",
+  "riga-goth",
+  "rig-smol1281",
+  "varlaam",
+  "nov-list"
+ ],
+ "orv_rule": "TOROT texts in Old Russian (language 'orv') composed before c. 1300 and original East Slavic writing: the Igor Tale, the chronicles (Primary, Kiev, Suzdal, First Novgorod), Russkaja pravda, the Statute of Vladimir, birchbark letters, colophons, charters and treaties to 1281. Left out: Church Slavonic ('chu') texts, the Uspenskij sbornik (largely translated hagiography), and everything later (Zadonshchina, Smolensk charter 1386, Pskov, Afanasij Nikitin, Domostroj, Avvakum, letters).",
+ "old_irish": "UD Old Irish glosses only; Thesaurus Palaeohibernicus (OCR, unlemmatized, Irish interleaved with Latin and English) is not usable without a separate extraction",
+ "mapping_notes": {
+  "glaux_texts": 499,
+  "non_notes_units_dropped": 1012,
+  "orv_content_token_share_mapped": 0.322,
+  "orv_mapped_by_orv_dictionary": 574,
+  "orv_mapped_by_ocs_backoff": 247
+ }
+}

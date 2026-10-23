@@ -91,6 +91,7 @@ ANCESTORS = {
     "non": ["gmq-pro", "gem-pro"], "ang": ["gmw-pro", "gem-pro"], "got": ["gem-pro"],
     "sga": ["pgl", "cel-pro"], "cu": ["sla-pro", "ine-bsl-pro"], "lv": ["bat-pro", "ine-bsl-pro"],
     "xcl": ["hyx-pro"], "hit": ["ine-ana-pro"], "xum": ["itc-pro"], "ae": ["ira-pro", "iir-pro"],
+    "orv": ["sla-pro", "ine-bsl-pro"],
     "sa": ["inc-pro", "iir-pro"], "la": ["itc-pro"], "grc": ["grk-pro"],
 }
 
@@ -117,6 +118,9 @@ LANGS = {
     "cu": LangSpec("cu", "Old Church Slavonic",
                    "kaikki-oldchurchslavonic/kaikki.org-dictionary-OldChurchSlavonic.jsonl",
                    ("Old Church Slavonic",), script="cyrillic", desc_codes=("cu",)),
+    "orv": LangSpec("orv", "Old East Slavic",
+                    "kaikki-oldeastslavic/kaikki.org-dictionary-OldEastSlavic.jsonl",
+                    ("Old East Slavic",), script="cyrillic", desc_codes=("orv",)),
     "lv": LangSpec("lv", "Latvian", "kaikki-latvian/kaikki.org-dictionary-Latvian.jsonl", ("Latvian",),
                    desc_codes=("lv",)),
     "xcl": LangSpec("xcl", "Old Armenian", "kaikki-oldarmenian/kaikki.org-dictionary-OldArmenian.jsonl",
@@ -538,7 +542,7 @@ def key_ae(s: str, loose: bool = False) -> str:
     return re.sub(r"[^a-zəąåāēīōūθδγšžčǰŋβšṣ]", "", s)
 
 
-KEYS = {"non": key_non, "ang": key_ang, "got": key_got, "cu": key_cu, "xcl": key_xcl, "hit": key_hit,
+KEYS = {"non": key_non, "ang": key_ang, "got": key_got, "cu": key_cu, "orv": key_cu, "xcl": key_xcl, "hit": key_hit,
         "xum": key_xum, "lv": key_lv, "sga": key_sga, "ae": key_ae}
 
 
@@ -1205,18 +1209,92 @@ def hittite_gloss_ok(tlh_lemma: str, rec: MapRec) -> bool:
 
 _WORDS = re.compile(r"[^\W\d_]+(?:['’][^\W\d_]+)?", re.U)
 
+# ---------------------------------------------------------------- mapping errata (overrides)
+
+OVERRIDES = "data/research/formulas/mapping-overrides.json"
+_OVR_CACHE: dict = {}
+
+
+def load_overrides(root: Path = ROOT) -> dict:
+    """{"lemma": {corpus: {lemma: (ids frozenset, row)}}, "form": {lang: {form key: lemma}}} from
+    data/research/formulas/mapping-overrides.json (corrections reported in mapping-errata.md)."""
+    p = Path(root) / OVERRIDES
+    if p not in _OVR_CACHE:
+        d = json.loads(p.read_text("utf-8")) if p.exists() else {}
+        lem: dict = collections.defaultdict(dict)
+        for r in d.get("lemma", []):
+            lem[r["corpus"]][r["lemma"]] = (frozenset(r["lex_id"]), r)
+        form: dict = collections.defaultdict(dict)
+        for r in d.get("form", []):
+            form[r["lang"]][KEYS[r["lang"]](r["form"])] = r["lemma"]
+        _OVR_CACHE[p] = {"lemma": dict(lem), "form": dict(form)}
+    return _OVR_CACHE[p]
+
+
+def apply_lemma_overrides(corpus: str, m: "fs.Mapping", gmap: dict | None = None, root: Path = ROOT,
+                          overrides: dict | None = None) -> "fs.Mapping":
+    """A copy of a lemma → ids Mapping with the corpus's errata applied (ids replaced, or the lemma
+    unmapped when the override lists none). Tier of a corrected lemma: 'erratum'."""
+    gmap = gmap or {}
+    ov = (overrides or load_overrides(root))["lemma"].get(corpus, {})
+    out = fs.Mapping(dict(m.lemma_groups), dict(m.lemma_tier), set(m.ambiguous), dict(m.lemma_lex))
+    for lem, (ids, _) in ov.items():
+        out.ambiguous.discard(lem)
+        if not ids:
+            for d in (out.lemma_groups, out.lemma_tier, out.lemma_lex):
+                d.pop(lem, None)
+            continue
+        out.lemma_lex[lem] = ids
+        out.lemma_groups[lem] = frozenset(gmap.get(x, x) for x in ids)
+        out.lemma_tier[lem] = "erratum"
+    return out
+
+
+def apply_rec_overrides(corpus: str, recs: dict, root: Path = ROOT, overrides: dict | None = None) -> dict:
+    """The same for a lemma → MapRec table (what write_mapping_tables writes)."""
+    ov = (overrides or load_overrides(root))["lemma"].get(corpus, {})
+    out = dict(recs)
+    for lem, (ids, row) in ov.items():
+        if not ids:
+            out.pop(lem, None)
+            continue
+        old = out.get(lem)
+        out[lem] = MapRec(lem, old.word if old else lem, ids, (f"{corpus}:{lem}", "erratum:" + row["erratum"]),
+                          "erratum", "high", ("mapping-overrides",))
+    return out
+
+
+def apply_table_overrides(corpus: str, table: dict, root: Path = ROOT, overrides: dict | None = None) -> dict:
+    """The same for a lemma → ids tuple dict (a mapping table as read by the 8c loaders)."""
+    ov = (overrides or load_overrides(root))["lemma"].get(corpus, {})
+    out = dict(table)
+    for lem, (ids, _) in ov.items():
+        if ids:
+            out[lem] = tuple(sorted(ids))
+        else:
+            out.pop(lem, None)
+    return out
+
 
 class FormLemmatizer:
     """Surface form → lemma keys through a LangMapping's kaikki forms table
     (inflection tables and form-of pages). Exact key first, then the loose
-    key; a form with several lemmas keeps up to `max_lemmas` of them."""
+    key; a form with several lemmas keeps up to `max_lemmas` of them.
+    Surface forms listed in the mapping overrides ('form' rows) go to their
+    corrected lemma first."""
 
-    def __init__(self, lm: LangMapping, normalize=None, max_lemmas: int = 3, fallbacks=()):
+    def __init__(self, lm: LangMapping, normalize=None, max_lemmas: int = 3, fallbacks=(), form_overrides=None):
         self.lm, self.K, self.norm, self.max = lm, KEYS[lm.lang], normalize or (lambda s: s), max_lemmas
         self.fallbacks = fallbacks
+        self.form_overrides = (form_overrides if form_overrides is not None
+                               else load_overrides()["form"].get(lm.lang, {}))
 
     def __call__(self, surface: str) -> str:
         s = self.norm(surface)
+        if self.form_overrides:
+            o = self.form_overrides.get(self.K(s))
+            if o:
+                return o
         r = self._one(s)
         if r.startswith("?"):
             for f in self.fallbacks:
