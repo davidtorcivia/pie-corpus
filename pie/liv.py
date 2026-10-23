@@ -116,8 +116,18 @@ def headword(printed: str) -> tuple[str | None, int | None, bool]:
 
 
 def _plain(f: str) -> str:
+    """The form without accents. U+0301 is also the palatal mark of ḱ/ǵ (k/g + U+0301 in NFD),
+    which is kept: ḱel- and kel- are different roots."""
     d = unicodedata.normalize("NFD", f)
-    return unicodedata.normalize("NFC", "".join(c for c in d if c not in ("́",)))
+    return unicodedata.normalize("NFC", re.sub("(?<![kg])́", "", d))
+
+
+def _depal(f: str) -> str:
+    """The form without accents and palatal marks (ḱel- = kel-): the sources disagree on the
+    series of some roots (LIV *teh₂ĝ⁽ʼ⁾- = Wiktionary teh₂g- 'touch'), so a match on this key is
+    accepted only when the glosses agree too."""
+    d = unicodedata.normalize("NFD", f)
+    return unicodedata.normalize("NFC", d.replace("́", ""))
 
 
 def ocr_check(e: dict, root: Path = ROOT) -> dict:
@@ -282,11 +292,12 @@ def apply(entries: dict[str, dict], liv_records: list[dict], reg, dump_label: st
     from .translit import to_ascii
     from .validate import key as vkey
     roots = [e for e in entries.values() if e["kind"] == "root"]
-    by_plain, by_generic = {}, {}
+    by_plain, by_generic, by_depal = {}, {}, {}
     for r in roots:
         for f in [r["form"], *r.get("variants", [])]:
             by_plain.setdefault(_plain(f), []).append(r)
             by_generic.setdefault(vkey(f, "generic-H"), []).append(r)
+            by_depal.setdefault(_depal(f), []).append(r)
     rep = {"matched_form": 0, "matched_generic": 0, "new": 0}
     targets = []                      # (LIV record, root id) for the aorist lexemes below
 
@@ -301,18 +312,25 @@ def apply(entries: dict[str, dict], liv_records: list[dict], reg, dump_label: st
     for n, x in enumerate(liv_records):
         en = (x.get("meaning_en") or "").strip("'‘’ ")
         forms = [x["root"], *x.get("root_alternatives", [])]
-        seen = set()
+        best = {}
         for f in forms:
-            group = by_plain.get(_plain(f), [])
-            verbal = [r for r in group if not r["meaning"] or any(m.startswith("to ") for m in r["meaning"])]
-            for r in group:
-                # LIV is a dictionary of verbs: a root glossed only as a thing (h₂eǵ- 'goat') is no candidate
-                # when a verbal root of the same form exists (bʰenǵʰ- 'thick', the only one, still is)
-                if r["id"] in seen or (verbal and r not in verbal):
-                    continue
-                seen.add(r["id"])
-                exact = 1.0 if _plain(r["form"]) == _plain(x["root"]) else 0.5
-                pairs.append((exact + sim(en, r), n, r["id"]))
+            exact_group = by_plain.get(_plain(f), [])
+            # the same root with the other tectal series (palatal vs plain velar): a candidate only
+            # when the glosses agree (LIV *teh₂ĝ⁽ʼ⁾- = teh₂g- 'touch', but *kleh₁- 'call' ≠ ḱleh₁- 'hot')
+            depal = [r for r in by_depal.get(_depal(f), []) if r not in exact_group and sim(en, r) > 0]
+            for group, tier in ((exact_group, "exact"), (depal, "depal")):
+                verbal = [r for r in group if not r["meaning"] or any(m.startswith("to ") for m in r["meaning"])]
+                for r in group:
+                    # LIV is a dictionary of verbs: a root glossed only as a thing (h₂eǵ- 'goat') is no candidate
+                    # when a verbal root of the same form exists (bʰenǵʰ- 'thick', the only one, still is)
+                    if verbal and r not in verbal:
+                        continue
+                    if tier == "exact":
+                        score = (1.0 if _plain(r["form"]) == _plain(x["root"]) else 0.5) + sim(en, r)
+                    else:
+                        score = 0.25 + sim(en, r)
+                    best[r["id"]] = max(best.get(r["id"], 0.0), score)
+        pairs.extend((score, n, rid_) for rid_, score in best.items())
     assigned, used = {}, set()
     for score, n, rid_ in sorted(pairs, key=lambda t: -t[0]):
         if n not in assigned and rid_ not in used:

@@ -100,9 +100,12 @@ def main() -> int:
     # only for a transparent suffix or a word attested in two branches (R1)
     # NIL-sourced lexemes and glosses are held back until the merge fixes pass a re-review
     # (docs/audits/nil-merge-review.md: about a quarter of the usable new lexemes were wrong)
+    # (P9) once that hold is lifted, NIL lexemes flagged nil-single-branch / nil-uncertain /
+    # nil-notation stay out: a NIL transponate alone is no evidence for a PIE word
     def nil_held(i):
         e = lx.entries[i]
-        return e.get("source") == "nil" or e.get("meaning_source") == "nil"
+        return e.get("source") == "nil" or e.get("meaning_source") == "nil" or \
+            any(u.startswith("nil-") for u in e.get("uncertain", []))
 
     pool = [i for i, r in lx.specs.items() if r.get("usable") and i not in lx.blocked and accented(i) and
             not nil_held(i) and
