@@ -14,6 +14,8 @@ Clause fields: `order` ("SOV" default, or "VSO" verb-initial), `conj` ("kʷe" = 
 Slot fields: `lex_id`, `role` (SUBJ OBJ IO INS LOC ABL POSS VOC PRED GOAL MOD ADV V), `num` (SG DU PL), `head` (MOD and POSS: index of the noun slot it modifies), `enclitic` (pronoun slots), `gender` (pronoun slots used on their own), `and` (-kʷe after this word: "X Y-and" = "X and Y"), `participle` and `dep` (below).
 Verb slot: `{"lex_id": ..., "role": "V", "verb": {"tense": "PRS|PST|AOR|PRF", "mood": "IND|IMP|SBJV|OPT", "voice": "ACT|MID", "person": 1|2|3, "num": "SG|PL"}}`.
 
+**Numerals and adverbs (new).** Numerals are closed ids in the slice's `closed` list (`closed:numerals/2` … `closed:numerals/indeclinable/10`), used as a MOD with a `head`; the head noun takes the dual with "two" and the plural with three and more. Adverbs and adpositions are in the slice's `adverbs` list, used as role ADV.
+
 **Participles (new).** A MOD slot may hold a verb with `"participle": {"voice": "ACT"}` (or "MID"): it agrees with its head noun. A slot with `"dep": <index of the participle slot>` is the participle's own argument (its object, instrument, …) and takes the case of its own role. Example, "the man carrying the load saw the horses":
 `[{"lex_id": "<man>", "role": "SUBJ"}, {"lex_id": "<carry>", "role": "MOD", "head": 0, "participle": {"voice": "ACT"}}, {"lex_id": "<load>", "role": "OBJ", "dep": 1}, {"lex_id": "<horse>", "role": "OBJ", "num": "PL"}, {"lex_id": "<see>", "role": "V", ...}]`. Use participles for background action, the way Vedic and Homeric narrative does ("having seized the cattle, he drove them home" → a participle + a main verb). The perfect participle is not available.
 

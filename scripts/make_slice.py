@@ -24,7 +24,10 @@ CORE_VERBS = ["be", "see", "carry", "give", "speak", "say", "go", "come", "know"
 CORE_NOUNS = ["pie-lex-h2owis", "pie-lex-h1ngwnis", "pie-lex-peh2wr", "pie-lex-h1ekjwos", "pie-lex-gwoxws",
               "pie-lex-kjwox", "pie-lex-wlkwos", "pie-lex-dyexws", "pie-lex-ph2texr", "pie-lex-meh2texr",
               "pie-lex-dhugh2texr", "pie-lex-bhreh2texr", "pie-lex-swesoxr", "pie-lex-h2egjros", "pie-lex-wodr",
-              "pie-lex-nokwts", "pie-lex-gjhwexr", "pie-lex-soh2wl", "pie-lex-swos", "pie-lex-wekwos"]
+              "pie-lex-nokwts", "pie-lex-gjhwexr", "pie-lex-soh2wl", "pie-lex-swos", "pie-lex-wekwos",
+              "pie-lex-deywos", "pie-lex-mert", "pie-lex-spert", "pie-lex-kjexr", "pie-lex-h2wlh1neh2",
+              "pie-lex-h1lewdheros"]
+ADVERB_POS = ("adv", "prep", "postp")
 # derived glosses are kept only for transparent, productive suffixes (b002 review R1);
 # other derived-gloss lexemes need reflexes in at least two branches
 TRANSPARENT_SUFFIXES = {"-tōr", "-tḗr", "-éyeti", "-trom", "-tlom", "-tis", "-tus", "-néh₂ti", "-néwti", "-eti"}
@@ -48,6 +51,13 @@ def branches(reflexes: dict) -> set[str]:
     return out
 
 
+CLOSED_NUMERALS = {
+    "closed:numerals/2": "two (MOD with a head; the noun takes the dual)",
+    "closed:numerals/3": "three (MOD with a head; the noun takes the plural)",
+    "closed:numerals/4": "four (MOD with a head; plural)",
+    **{f"closed:numerals/indeclinable/{n}": w + " (MOD with a head; indeclinable)"
+       for n, w in (("5", "five"), ("6", "six"), ("7", "seven"), ("8", "eight"), ("9", "nine"), ("10", "ten"))},
+}
 CLOSED = {
     "closed:personal/1": "I / we (num SG|PL); enclitic forms with \"enclitic\": true",
     "closed:personal/2": "you (num SG|PL); enclitic forms with \"enclitic\": true",
@@ -185,7 +195,12 @@ def main() -> int:
     core = [i for i in (args.core or auto) if i in {it["lex_id"] for it in items}][:8]
     ids = {it["lex_id"] for it in items}
     formulas = [m for m in menu if all(x["lex_id"] in ids for x in m["lexemes"])]
-    out.write_text(json.dumps({"name": args.name, "keywords": args.keywords, "closed": CLOSED, "theme_core": core,
+    # adverbs and adpositions (role ADV): indeclinables have no paradigm spec, so the pool never has them
+    advs = sorted((i for i, e in lx.entries.items() if e.get("pos") in ADVERB_POS and e["meaning"]
+                   and i not in lx.blocked and not e["form"].startswith("-")), key=lambda i: -attested(i))[:40]
+    adverbs = [{"lex_id": i, "form": lx.entries[i]["form"], "gloss": lx.meaning(i)[0][:60]} for i in advs]
+    out.write_text(json.dumps({"name": args.name, "keywords": args.keywords,
+                               "closed": {**CLOSED, **CLOSED_NUMERALS}, "adverbs": adverbs, "theme_core": core,
                                "formulas": formulas, "lexemes": items},
                               ensure_ascii=False, indent=1) + "\n", "utf-8")
     fam = {}

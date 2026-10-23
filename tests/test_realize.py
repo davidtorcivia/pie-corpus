@@ -206,3 +206,15 @@ def test_or_and_emphatic_enclitics():
         {"conj": "wē", "particle": "ge", "slots": [{"lex_id": "pie-lex-gwoxws", "role": "SUBJ", "num": "SG"},
                                                   {"lex_id": "pie-lex-h1esti", "role": "V", "verb": {"tense": "PRS"}}]}]}
     assert realize(p, lx)["pie"] == "h₁éḱwos h₁ésti gʷṓws-wē-ge h₁ésti."
+
+
+def test_numerals_govern_number():
+    from pie.realize import realize
+    lx = _lx()
+    p = {"english": "x", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-h1ekjwos", "role": "SUBJ", "num": "PL"},
+        {"lex_id": "closed:numerals/3", "role": "MOD", "head": 0},
+        {"lex_id": "pie-lex-bhewgt-3", "role": "V", "verb": {"tense": "AOR"}}]}]}
+    assert realize(p, lx)["pie"] == "tréyes h₁éḱwōs bʰugént."
+    p["clauses"][0]["slots"][1]["lex_id"] = "closed:numerals/indeclinable/7"
+    assert realize(p, lx)["pie"].startswith("septḿ̥ ")

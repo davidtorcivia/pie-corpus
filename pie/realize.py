@@ -175,6 +175,12 @@ def _closed_form(lx: Lexicon, lex_id: str, feat: str, gender: str) -> str | None
         node = node.get(gender if gender in node else "m", {})
     if path[0] == "interrogative_kwi":
         node = node.get("n" if gender == "n" else "mf", {})
+    if path[0] == "numerals":
+        if isinstance(node, list):                      # indeclinable 5-10: closed:numerals/indeclinable/7
+            return node[0]
+        node = node.get(gender) or node.get("fn" if gender in ("f", "n") else "m") or node.get("m", {})
+        if feat.endswith(".SG") or feat.endswith(".DU"):  # 2 is dual, 3 and 4 plural: number follows the numeral
+            feat = feat.rsplit(".", 1)[0] + (".DU" if path[1] == "2" else ".PL")
     forms = node.get(feat) if isinstance(node, dict) else None
     if not forms and path[0] == "personal" and isinstance(node, dict):
         forms = node.get(feat + ".ENCL")      # no book prints a stressed 1st/2nd pl. genitive (Ringe: "???")
