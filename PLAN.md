@@ -144,6 +144,24 @@ Rules: downloads go into their own empty dir under `raw/`. Scripts live in `scri
   - measured-meter success rate on continuation
 - Training setup is format-agnostic. The trainer and base model are chosen later with David.
 
+### Phase 8: Research extensions (approved by David 2026-10-23)
+Two uses of the machinery that could add knowledge, not only training data. Both are judged against the daughter languages, never against our own synthetic text.
+
+**8a. Formula discovery.** Watkins found *gʷʰen- h₁ógʷʰim* by noticing cognate words that co-occur across branches. Automate the search:
+- Daughter corpora in `raw/daughters/` (licensed or public domain, recorded in `raw/MANIFEST.md`): Rigveda, Homer, plus as available the Avesta, Old Irish, the Poetic Edda and Old English poetry, and Hittite.
+- Map daughter word forms to PIE lexemes through the lexicon's reflexes (lemmatized texts where they exist, otherwise reflex matching with a stem table).
+- Score each pair of PIE lexemes by co-occurrence within a short window, separately per branch. Candidates are pairs significant in ≥2 branches, ranked by the weakest branch's score.
+- **Acceptance:** recall of the known formulas in `data/formulas/formulas.jsonl` (phrase and lexical kinds) at the top 200 candidates, measured before any new candidate is looked at. Known formulas are the test set, so the method is tuned on a held-out half and reported on the other half.
+- New candidates go to a review file with their daughter attestations. A candidate is reported as a finding only after an independent reviewer confirms that the attestations are real and not a calque or chance co-occurrence.
+
+**8b. Historical backtest: can a model rediscover the laryngeals?** Saussure inferred missing "coefficients" in 1879 from vowel patterns; Hittite confirmed them in 1915–27. Test whether a model can make that inference from pre-Hittite evidence:
+- Data: lexicon cognate sets with Anatolian (and Tocharian, published 1908 onward) removed, and PIE targets with every laryngeal written as nothing, as pre-laryngeal handbooks did.
+- Model: a small sequence or probabilistic sound-change model trained only on that data. **Not an LLM:** any modern LLM already knows laryngeal theory, so its success would prove nothing.
+- Test: does the model posit a latent segment, or systematic irregularity, at the positions where today's reconstructions have a laryngeal (vowel coloring, compensatory length, Greek prothesis, Indic long-vowel/*i* alternation)? Measure precision and recall of predicted latent positions against the laryngeal positions in held-out root families, then check whether Hittite *ḫ* falls on the predicted positions, the original confirmation.
+- **Acceptance:** a baseline (the same model on shuffled correspondences) must score clearly below. A positive result is reported with its failure cases; a negative result is reported too.
+
+Both get their own STATUS rows. Subagents do the corpus gathering, model runs and independent reviews.
+
 ---
 
 ### Gate for every tier: adversarial review

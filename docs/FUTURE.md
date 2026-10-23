@@ -8,6 +8,7 @@ Captured 2026-10-23 at David's request. Each idea is grounded in parts the proje
 - **Teaching materials:** inflection drills, cognates → PIE exercises, flashcards (Anki). The answers are checkable through the engine and the lexicon reflexes.
 
 ## Research
+- **Promoted to PLAN.md Phase 8 (2026-10-23):** formula discovery across daughter corpora, and the laryngeal-rediscovery backtest.
 - **LLM historical-linguistics benchmark:** cognate set → PIE, inflection, and "spot the Claude-PIE error" on corrupted forms. The eval split and root-family holdout already exist (`pie/export.py`).
 - **Wiktionary corrections:** the cross-check found module inconsistencies (*poh₂imnés* vs *h₂ym̥nés*, the dropped *h₂* in *méǵyōs*, final deaspiration). The 277 sound-law warnings are a ready-made review list for Wiktionary editors (`data/morph/crosscheck.json`, `data/lexicon/soundlaw_warnings.jsonl`).
 - **Scholarly disagreement map:** per root, where LIV², Mallory & Adams, Fortson and Wiktionary differ (laryngeals, ablaut, palatal vs velar). This falls out of the variants layer (STATUS question 4).

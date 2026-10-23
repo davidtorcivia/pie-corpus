@@ -13,8 +13,10 @@
 | 3b Sound-law checker | **built**: initial-position diagnostics for Skt/Gk/Lat/PGmc | full lexicon run: 5,315 checks, 94.8% pass, 277 warnings (docs/soundlaws.md) |
 | 4 Tier 1 scholarly | **texts collected**: 17 works (14 fable incl. 5 Kortlandt stages, 3 King) from 22 collected copies; 99 lines, 57 canonical (the rest documentary), 71 with English. Formulas wait on Watkins/West | 200–500 cited lines + adversarial review |
 | 5 Tier 2 back-projection | — | ≥300 lines, ≥8 clusters + adversarial review |
-| 6 Tier 3 / 3b synthetic | **pilot done**: 148 sentences realized; plan reject rate 1.3%; review 31 ok / 14 minor / 5 wrong, with every systematic issue fixed. Scale-up waits on David (question 5) | 1–10M tokens, <10% reject, dedup, audit |
+| 6 Tier 3 / 3b synthetic | **scaling**: b001 and b002 (250 plans each, Sonnet) pass all gates, reviews running; **pilot done**: 148 sentences realized; plan reject rate 1.3%; review 31 ok / 14 minor / 5 wrong, with every systematic issue fixed. Scale-up waits on David (question 5) | 1–10M tokens, <10% reject, dedup, audit |
 | 7 Export + benchmark | **scaffolded**: splits, views, task views, leakage guard | splits, task views, bench |
+| 8a Formula discovery | **planned**: daughter-corpus survey running; acceptance = recall of known Watkins/West formulas on a held-out half |
+| 8b Laryngeal backtest | **planned**: pre-Hittite cognate sets, non-LLM model, shuffled baseline |
 
 ## Dashboard
 
