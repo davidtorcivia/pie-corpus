@@ -81,7 +81,8 @@ def main() -> int:
                                if not t["lex_id"].startswith("closed:") and t["lex_id"] not in CAP_EXEMPT)
     others = set()
     for f in (ROOT / "corpus" / "tier3").glob("*.jsonl"):
-        if f.name != out.name:
+        # a batch's own initial run (<batch>-initial) is a draft of the same plans, not another batch
+        if f.name != out.name and not f.stem.endswith("-initial"):
             others |= {json.loads(x)["pie"] for x in f.read_text("utf-8").splitlines() if x.strip()}
     pies = [r["pie"] for r in records]
     dup_within = len(pies) - len(set(pies))

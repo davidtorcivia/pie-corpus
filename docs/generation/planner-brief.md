@@ -27,7 +27,8 @@ Verb slot: `{"lex_id": ..., "role": "V", "verb": {"tense": "PRS|PST|AOR|PRF", "m
 ## Check and repair (exactly once)
 1. Write all plans to `data/generation/plans/<batch>.jsonl` and copy it to `<batch>.initial.jsonl`.
 2. Run `uv run python -I scripts/realize_plans.py data/generation/plans/<batch>.initial.jsonl --batch <batch>-initial --model <model> --prompt-id tier3-planner-v3` and note the numbers, including the gate result.
-3. Fix the rejected plans, and any lexeme used more than 6 times, in `<batch>.jsonl` (one repair pass). Run the same command on it with `--batch <batch>`.
-4. Delete `corpus/tier3/<batch>-initial.jsonl` (keep the plan files and `data/generation/batches/<batch>-initial.json`). Modify nothing else.
+3. Delete `corpus/tier3/<batch>-initial.jsonl` (keep the plan files and `data/generation/batches/<batch>-initial.json`).
+4. Fix the rejected plans, and any lexeme used more than 6 times, in `<batch>.jsonl` (one repair pass). Run the same command on it with `--batch <batch>`.
+5. Modify nothing else. Never run `realize_plans.py` on another batch's plans (pilots included): it rewrites that batch's corpus file.
 
 Final message ≤150 words: the initial and final reject counts, the gate results, distinct lexemes and roots, and anything awkward to express.
