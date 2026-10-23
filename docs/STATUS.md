@@ -7,7 +7,7 @@
 | Phase | State | Acceptance |
 |---|---|---|
 | 0 Scaffolding & notation | **done** | NFC↔ASCII round-trip on ≥200 tricky forms: **pass** (382 listed forms: 157 hand-written with expected ASCII + 225 generated; plus 5,000 fuzzed; 1,807 tests) |
-| 1 Lexicon | **built, acceptance pending** | ≥2,000 entries: 2,226 glossed, 7,401 total ✅ · ≥800 verbal roots: **730** ❌ · 50-entry M&A spot check: **pass**, no systematic errors (docs/audits/phase1-ma-spotcheck.md) ✅ |
+| 1 Lexicon | **built, acceptance pending** | ≥2,000 entries: 2,226 glossed, 7,401 total ✅ · ≥800 verbal roots: **1,253** (LIV² merged) ✅ · 50-entry M&A spot check: **pass**, no systematic errors (docs/audits/phase1-ma-spotcheck.md) ✅ |
 | 2 Morphology engine | **built, acceptance pending books** | Wiktionary regeneration: 14,023/14,197 cells (98.8%) incl. verbal Phase B, 576/615 tables, **0 unexplained** ✅ · PLAN golden paradigms: 11/11 pass, **verified against Fortson/Ringe**; corrections applied (acc. pl. *-ns*, no gen. *-ós*) ✅ |
 | 3 Validator | **built; not accepted**: 55–82% on the laryngealist versions after Phase B (docs/audits/tier1-validation.md). The remaining gap is mostly different reconstructions of known lexemes; see question 4 | Tier 1 laryngealist versions ≥90% token coverage, every miss classified |
 | 3b Sound-law checker | **built**: initial-position diagnostics for Skt/Gk/Lat/PGmc | full lexicon run: 5,315 checks, 94.8% pass, 277 warnings (docs/soundlaws.md) |
@@ -22,7 +22,8 @@
 |---|---|
 | Lexicon entries | 7,401 total: 885 roots · 893 words · 110 affixes · 5,470 tree derivatives · 22 alt · 21 form-of |
 | Glossed entries | 2,226 |
-| Verbal roots | 730 (116 marked by Wiktionary + 614 by the "to …" gloss heuristic; 104 disagree with the derivative signal) |
+| Verbal roots | 1,253: 116 marked by Wiktionary, 946 backed by LIV² (aspect from LIV's primary stem), 191 still only by the "to …" gloss heuristic |
+| LIV² | 1,149 roots transcribed from page images (`data/lexicon/liv2.jsonl`, facts only): 642 matched by form, 20 by generic-H key + gloss, 487 new (52 linked `possible_alias_of` a Wiktionary root, not merged); 9 records disagree with the page OCR, under review |
 | Wiktionary paradigms (clean) | 625 (90 dropped as module-corrupted, 1 with a non-canonical cell) |
 | Normalization rejects | 67 (alternative lists, queries, placeholders) |
 | Root coverage in corpus | — |
@@ -42,7 +43,7 @@
 
 ## Need from David
 
-**Books received 2026-10-23** (in `raw/books/`, gitignored; text extracted by `scripts/extract_books.py`): Fortson, Ringe, Watkins, West, Mallory & Adams (EPUB/PDF, usable text layers); LIV² (image-only quality: its OCR garbles roots, so it will be read from page images; **on hold while David looks for another copy**). In progress: Fortson paradigm verification, Watkins and West formulas and themes, the M&A 50-entry spot check.
+**Books received 2026-10-23** (in `raw/books/`, gitignored; text extracted by `scripts/extract_books.py`): Fortson, Ringe, Watkins, West, Mallory & Adams (EPUB/PDF, usable text layers); LIV² (read from the DjVu page images by 11 transcription agents; merged 2026-10-23). In progress: Fortson paradigm verification, Watkins and West formulas and themes, the M&A 50-entry spot check.
 
 ## Phase 1 notes
 
@@ -50,7 +51,7 @@
 - **Wiktionary's declension module corrupts some tables.** Where a stem template has parentheses or Ø, the dual `-h₁` becomes `é₁`/`Ø₁`. Those 90 tables are excluded at the source.
 - **Wiktionary etymon ids can't disambiguate homographs.** kaikki copies them across sibling sections, so 8 homograph sets collided. Root ids therefore carry a gloss tag on every id (`pie-root-men-think`, `pie-root-men-stay`) and persist in a committed registry. Rebuilds are idempotent.
 - **Provisional review** (subagent, knowledge-only, 50 entries): 20 ok, 26 questionable, 4 wrong. The triage is in `docs/audits/phase1-lexicon-provisional-review.md`. It found **one real builder bug**: same-form derivatives under different homograph roots were merged, e.g. two *kretós*. Fixing it split 140 homonyms. Duplicate reflexes and unflagged loans are fixed as well. The other 3 "wrong" links are Wiktionary's own placements, logged as disputed. The id registry was reset once for this fix; safe because nothing references ids yet.
-- **Gaps:** 730 verbal roots (see the question below); 344 words/derivatives with no root link (mostly pronouns, particles, opaque nouns); 58 etymon parts that point at ambiguous homographs.
+- **Gaps:** 344 words/derivatives with no root link (mostly pronouns, particles, opaque nouns); 58 etymon parts that point at ambiguous homographs.
 
 ## Decisions recorded before measurement
 
@@ -65,7 +66,7 @@ All in one place. None of these block work in progress; each one has a default t
 1. **Eval contamination via formulas.** The fixed decision is "eval = all of Tier 1 + a held-out slice of Tier 2". But Tier 1 includes the Watkins/West formulas, and Tiers 2–3 are built *from* them, so eval would leak into training. **Recommendation:** eval = Tier 1 *texts* (fable and King versions, held out whole) + held-out Tier 2, with the formula records kept in training. *Default until you decide:* records are tagged so either split can be cut later.
 2. **Phase 1 targets.**
    - (a) May the "≥2,000 entries" target be met by *glossed* entries (2,226)? The 5,470 unglossed tree derivatives are a separate, lower-confidence kind.
-   - (b) Verbal roots are 730, against a target of 800. The options are **LIV²** (authoritative; also supplies aspect for the 614 roots classified by gloss), or a harvest from the kaikki daughter-language dumps (more roots, no aspect). *Default:* waiting for LIV².
+   - (b) ~~Verbal roots are 730, against a target of 800.~~ **Resolved:** LIV² merged, 1,253 verbal roots. The options are **LIV²** (authoritative; also supplies aspect for the 614 roots classified by gloss), or a harvest from the kaikki daughter-language dumps (more roots, no aspect). *Default:* waiting for LIV².
 3. ~~**Paradigm convention for corpus text.**~~ **Settled by measurement:** with the index built under one convention alone, `handbook` beats `wiktionary` on every laryngealist Tier 1 text (Byrd 67.2 vs 60.7%; Lühr 53.7 vs 51.9; Adams 47.0 vs 43.9; Byrd King 63.6 vs 60.0; Hamp/Sen tie). The default stays `handbook`. Original note: I read "Wiktionary/LIV conventions are canonical" (PLAN §1) as being about *notation*, not paradigm reconstructions, so corpus text defaults to the **handbook** forms (contracted thematic *-ōs/-ōy/-ōd*, as in the Tier 1 texts). Wiktionary-convention forms are kept as alternatives in every cell. The tiebreaker will be Phase 3 validator coverage on Tier 1 texts under each convention. Tell me if you meant the stricter reading.
 4. **Phase 3's 90% target vs. how scholars differ.** After Phase B, what's left is mostly *different reconstructions of the same word* (Byrd's *pter* vs Wiktionary *ph₂tḗr*, Byrd *km̥tá* vs *ḱm̥tá*, Adams's and Lühr's "man" and "wool"), plus theonyms (*Wérunos*). These aren't engine errors. Closing them would mean either counting fuzzy near-misses (rejected: they pick wrong lexemes) or adding each scholar's variants to the lexicon from these very texts (circular, since they're the measurement). **My proposal:** add a `variants` layer filled from *other* sources (M&A, Fortson, LIV² when they arrive) and measure leave-one-text-out, and keep 90% as the target for that measurement. Until then, report the current numbers as the Phase A+B baseline.
 5. **Tier 3 scale-up: model and budget.** Two 150-plan pilots with the same 50-record review:
