@@ -55,7 +55,9 @@ def main() -> int:
     contaminated += [l for l in ("Proto-Balto-Slavic",) if l not in contaminated]   # its acute encodes the theory
     out = {"primary": [], "secondary": []}
     for e in lex:
-        if e["kind"] == "affix":
+        # words and derivatives only: a root entry collects the reflexes of all its derivatives,
+        # which is not a cognate set for one form
+        if e["kind"] not in ("word", "derivative"):
             continue
         refl = e.get("reflexes", {})
         try:

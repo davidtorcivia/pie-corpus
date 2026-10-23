@@ -11,25 +11,25 @@
  "excluded_branches": "Anatolian, Tocharian",
  "contamination_rate_threshold": 0.02,
  "primary": {
-  "sets": 2133,
-  "with_laryngeal_effect": 1081,
+  "sets": 1785,
+  "with_laryngeal_effect": 924,
   "by_split": {
-   "dev": 233,
-   "train": 1695,
-   "eval": 205
+   "train": 1422,
+   "eval": 174,
+   "dev": 189
   },
-  "with_hittite": 287,
-  "languages": 285
+  "with_hittite": 211,
+  "languages": 262
  },
  "secondary": {
-  "sets": 3600,
-  "with_laryngeal_effect": 1882,
+  "sets": 3188,
+  "with_laryngeal_effect": 1692,
   "by_split": {
-   "dev": 420,
-   "train": 2859,
-   "eval": 321
+   "train": 2539,
+   "dev": 366,
+   "eval": 283
   },
-  "with_hittite": 368,
-  "languages": 309
+  "with_hittite": 284,
+  "languages": 286
  }
 }
