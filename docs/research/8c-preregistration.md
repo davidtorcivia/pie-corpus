@@ -52,3 +52,4 @@ David: "with each agent holding as much as they can to widen search."
 - **Incident (wave 1, disclosed by reader RB002):** the same shared-scratchpad overwrite; RB002 saw one section of another slab, used none of it, and moved to a private folder.
 - **Incident (wave 1, disclosed by reader RB019):** the same overwrite; RB019 briefly saw part of slab S-42da (no claims came from S-42da) and disregarded it.
 - **Incident (wave 1, disclosed by reader RB001):** the same overwrite; RB001 briefly saw two bundles of slab S-42da. All four disclosed exposures concern S-42da, which produced no claims.
+- **Incident (wave 1, disclosed by reader RB007):** a shared scratch file held another reader's slab text; RB007 discarded it unused.
