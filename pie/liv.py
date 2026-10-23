@@ -133,7 +133,7 @@ def ocr_check(e: dict, root: Path = ROOT) -> dict:
     words = [w for w in re.findall(r"\w{3,}", gloss)]
     gloss_ok = (not words) or sum(w in t for w in words) >= max(1, len(words) // 2)
     iew_ok = True
-    if e.get("iew"):
+    if e.get("iew") and re.search(r"\d", e["iew"]):     # "IEW –": no IEW entry, nothing to check
         num = re.findall(r"\d+", e["iew"])
         squeezed = t
         while re.search(r"(\d) (\d)", squeezed):     # the OCR spaces digits out: "IEW 1 1 5"
