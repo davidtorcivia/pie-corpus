@@ -98,7 +98,14 @@ def main() -> int:
 
     # gates (tier3-b001/b002 reviews): an accented headword (P10), and a derived gloss
     # only for a transparent suffix or a word attested in two branches (R1)
+    # NIL-sourced lexemes and glosses are held back until the merge fixes pass a re-review
+    # (docs/audits/nil-merge-review.md: about a quarter of the usable new lexemes were wrong)
+    def nil_held(i):
+        e = lx.entries[i]
+        return e.get("source") == "nil" or e.get("meaning_source") == "nil"
+
     pool = [i for i, r in lx.specs.items() if r.get("usable") and i not in lx.blocked and accented(i) and
+            not nil_held(i) and
             (lx.entries[i]["meaning"] or (ap_derived and i in lx.derived and derived_ok(i)))]
 
     def attested(i):
