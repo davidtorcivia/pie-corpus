@@ -157,6 +157,9 @@ class Lexicon:
                 lemma = self.entries[lex_id]["form"]
                 if not lemma.endswith("-") and lemma not in c.get("NOM.SG", []) and r.get("rule") == "table":
                     c = {**c, "NOM.SG": [lemma] + c.get("NOM.SG", [])}
+                    if self.gender(lex_id) == "n":     # neuter: accusative and vocative = nominative (ḱḗr, not ḱérd)
+                        c["ACC.SG"] = [lemma] + c.get("ACC.SG", [])
+                        c["VOC.SG"] = [lemma] + c.get("VOC.SG", [])
             elif fam == "adj":
                 c = decline_adj(AdjSpec(**sp), "handbook")[gender or "m"]
             else:
@@ -309,6 +312,7 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     subj_i = next((i for i, s in enumerate(slots) if s["role"] == "SUBJ"), None)
     subj = slots[subj_i] if subj_i is not None else None
     person, num = _person_number(subj, lx) if subj else (3, "SG")
+    neuter_pl = subj is not None and person == 3 and subj.get("num") == "PL" and _slot_gender(subj, lx) == "n"
     vi = next(i for i, s in enumerate(slots) if s["role"] == "V")
     v = slots[vi].get("verb", {})
     prohibitive = cl.get("neg") and v.get("mood") == "IMP"
@@ -317,7 +321,8 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     for i, s in enumerate(slots):
         lid, role = s["lex_id"], s["role"]
         if role == "V":
-            feat = _verb_feature(v, person, num)
+            # a neuter plural subject takes a singular verb even if the plan set num (t011 review)
+            feat = _verb_feature({**v, "num": "SG"} if neuter_pl else v, person, num)
             if prohibitive:
                 # mē + injunctive (augmentless secondary form), not the imperative
                 pn = feat.split(".")[-1]
@@ -335,6 +340,10 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
                 head = slots[s["head"]]
             elif role == "PRED" and subj and not lid.startswith("closed:") and lx.specs[lid]["family"] == "adj":
                 head = subj
+            elif role == "PRED" and not subj and not lid.startswith("closed:") and lx.specs[lid]["family"] == "adj" \
+                    and any(x["role"] == "VOC" for x in slots):
+                # "Sea, you are great": the dropped subject is the addressee (t011 review)
+                head = {**next(x for x in slots if x["role"] == "VOC"), "role": "PRED"}
             else:
                 head = s
             case = ROLE_CASE["PRED" if role == "PRED" else head["role"]] if role != "MOD" else ROLE_CASE[head["role"]]
