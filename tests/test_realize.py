@@ -415,3 +415,13 @@ def test_t014_review_fixes():
     assert lx.cells("pie-lex-suHnus")["NOM.PL"][0] == "suHnéwes"
     assert lx.gender("pie-lex-dhegjhoxm") == "f"
     assert lx.cells("pie-lex-h2eryeti")["PRS.3SG"][0].startswith("h₂érh₃")
+
+
+def test_t017_review_stems():
+    """Weak stems keep their material: swesrés, h₂ḱmnés, tetḱnés (pérkus 'oak' is the boukólos
+    rule, *kʷ > k next to u, as Lat. quercus: not an error)."""
+    from pie.realize import Lexicon
+    lx = Lexicon.load()
+    assert lx.cells("pie-lex-swesoxr")["GEN.SG"][0] == "swesrés"
+    assert lx.cells("pie-lex-h2ekjmox")["GEN.SG"][0] == "h₂ḱmnés"
+    assert lx.cells("pie-lex-tetkjox")["GEN.SG"][0] == "tetḱnés"
