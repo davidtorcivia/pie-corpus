@@ -15,3 +15,4 @@ export/*
 # the downloaded pages/PDFs/scans stay local (hashes in raw/MANIFEST.md).
 !raw/tier1-*/
 raw/tier1-*/download/
+.claude/
