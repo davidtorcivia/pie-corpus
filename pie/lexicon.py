@@ -518,6 +518,8 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
                     e["pos"] = x["pos"]
                 if "kind" in x:
                     e["kind"] = x["kind"]
+                if x.get("spec_checked"):
+                    e["spec_checked"] = True
                 e["override_note"] = x.get("note")
 
     # Paradigms (Wiktionary module output), hard-filtered.

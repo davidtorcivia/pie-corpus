@@ -93,10 +93,14 @@ def main() -> int:
         # a rule that only changes the routing evidence inherits the backtest of the paradigm it produces
         acc = 1.0 if c.rule == "table" else accuracy.get(c.rule, accuracy.get(BACKTEST_AS.get(c.rule, "")))
         usable = c.spec is not None and acc is not None and acc >= USABLE_THRESHOLD
+        if e.get("spec_checked") and (c.spec is not None or e.get("spec_override")):
+            usable = True          # a spec checked by hand from the reviews (data/lexicon/overrides.jsonl)
         cov["usable"] += usable
         spec = dataclasses.asdict(c.spec) if c.spec else None
         if spec and e.get("spec_override"):            # hand fixes from reviews (data/lexicon/overrides.jsonl)
             spec = {**spec, **e["spec_override"]}
+        if e.get("spec_checked") and spec is None and e.get("spec_override"):
+            spec = e["spec_override"]
         rows.append({"id": e["id"], "form": e["form"], "rule": c.rule, "family": c.family,
                      "spec": spec,
                      "backtest_cell_accuracy": acc, "usable": usable, "extra_specs": extra})
