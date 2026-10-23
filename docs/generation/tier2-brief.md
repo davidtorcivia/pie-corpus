@@ -13,6 +13,10 @@ One record per parallel: the attested passages (2+ branches), and one PIE line (
 - Homer: raw/daughters/homer-perseus-agdt/ (treebank; cite "Il. 9.413").
 - Avesta: raw/daughters/avesta-cab/ (cite "Y. 9.8", "Yt. 19.40").
 - Poetic Edda: raw/daughters/edda-fj1926/; Old English: raw/daughters/oe-beowulf-gutenberg/; Old Irish: raw/daughters/oldirish-ud/; Hittite: raw/daughters/hittite-tlhdig/; early Latin: raw/daughters/latin-lasla/.
+- Archaic and classical Greek beyond Homer: raw/daughters/glaux/ (GLAUx treebank: Hesiod, the Homeric Hymns, Pindar, Bacchylides, the tragedians, the lyric and epic fragments). `src/glaux-main/metadata.txt` maps each text id (`0020-001` = Hesiod, Theogony) to its TLG number, author, title, genre and licence; the text is `src/glaux-main/xml/<id>.xml`, one `<word form= lemma= line=>` per token. The Greek is NFD: normalize (`unicodedata.normalize("NFC", …)`) before matching. Cite "Hes. Th. 117", "Hymn. Hom. 33.1", "Pind. Pyth. 3.112".
+- Atharvaveda: raw/daughters/dcs-hellwig/ (Digital Corpus of Sanskrit, CoNLL-U with lemmas; Śaunaka and Paippalāda). Cite "AVŚ 4.12.1", "AVP 4.15.1".
+- Umbrian: raw/daughters/oscan-umbrian-buck1904/ (Buck 1904, OCR; cite "Tab. Ig. VIa 30").
+- **Cite only loci you confirmed in a local corpus when one exists for that text.** A locus taken from West or Watkins for a text that is in a local corpus (all of the above) must be checked there, words and construal, before it goes into `cognate_refs`; "not in local corpora" is only true for texts none of these holds (Livy, Vergil, the Irish sagas, the dainos …).
 - The scholarship: West 2007 (raw/books/text/west/) and Watkins 1995 (raw/books/text/watkins/) name the parallels and loci; use them to find passages, then confirm the words in the corpora where a corpus exists. data/formulas/formulas.jsonl lists the known formulas with attestations.
 - **Never quote daughter text at length.** In `cognate_refs` give the locus, the parallel words only, and their lemmas.
 
@@ -28,7 +32,7 @@ Language names (each maps to a branch in scripts/build_tier2.py; Vedic and Avest
 - Honesty over coverage: if a parallel is only semantic (no shared cognate words), it is not a back-projection; skip it.
 
 ## Lessons from the adversarial review (docs/audits/tier2-review.md)
-- **`secure` is checked by the builder**, not taken on trust: a lexeme counts only if one of its recorded reflexes (data/lexicon/lexicon.jsonl `reflexes`) matches a cited word or lemma in the parallel refs of at least two branches (`secure_checks` in the output; `exact` vs `root`). Cite the daughter word as attested *and* its lemma, so the match can be found.
+- **`secure` is checked by the builder**, not taken on trust (pie/tier2_secure.py): a lexeme counts only if a cited word or lemma in the parallel refs of at least two branches reaches it through the Phase 8a mapping tables (data/research/formulas/mapping/, the kaikki links) or equals one of its recorded reflexes as a whole word (`secure_checks` in the output: `exact` vs `root`, with the evidence path per branch). A derivative or a sibling formation of the same root is root level. A compound counts only if one cited word carries both members. Cite the daughter word as attested *and* its dictionary lemma, so the match can be found.
 - **Mark each ref's role**: `"role": "parallel"` (the passage that carries the shared wording; default) or `"role": "support"` (a passage cited for meaning or usage only). Only parallel refs count as branches.
 - **The head of the formula must be secure** (the noun of a noun phrase, the verb of a clause): a line whose only secure words are its periphery is not a back-projection.
 - **One line per parallel.** The builder drops a second line with the same set of parallel loci; vary the passages, not the phrasing.

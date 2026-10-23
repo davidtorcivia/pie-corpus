@@ -24,6 +24,7 @@ from pathlib import Path
 
 from pie.meter import measure
 from pie.realize import Lexicon, check_plan, realize
+from pie.tier2_secure import SecureChecker, plan_compound_ids
 from pie.translit import to_ascii
 from pie.validate import index_plan_compounds, load_index, validate_text
 
@@ -44,73 +45,21 @@ def branches(refs: list[dict]) -> int:
     return len({fam.get(r.get("lang", ""), r.get("lang", "")) for r in refs})
 
 
-def _norm(w: str) -> str:
-    """Daughter word or lemma → comparison key: lowercase, no accents/breathings/length, no hyphens or asterisks."""
-    import unicodedata
-    d = unicodedata.normalize("NFD", (w or "").lower().strip("*-√ "))
-    return "".join(c for c in d if not unicodedata.combining(c)).replace("-", "")
+def secure_check(lid: str, refs: list[dict], checker) -> dict:
+    """Which branches of the cited *parallel* refs contain a reflex of the lexeme: exact (the lexeme
+    itself), root (only its root or a sibling formation), with the evidence path per branch. The rules
+    (mapping tables, whole-word reflex equality, compounds member by member) are in pie/tier2_secure.py."""
+    return checker.check(lid, refs)
 
 
-LEX_LANG = {"II": ("Sanskrit", "Vedic", "Avestan", "Persian", "Indo-Aryan", "Iranian", "Pali"),
-            "Gk": ("Greek", "Hellenic", "Mycenaean"), "It": ("Latin", "Italic", "Oscan", "Umbrian"),
-            "Ce": ("Irish", "Welsh", "Celtic", "Gaulish", "Breton"),
-            "Gm": ("Germanic", "Gothic", "Norse", "English", "German", "Saxon", "Icelandic"),
-            "BS": ("Slavic", "Slavonic", "Lithuanian", "Latvian", "Prussian", "Russian", "Baltic"),
-            "An": ("Hittite", "Luwian", "Anatolian", "Palaic", "Lycian"), "Arm": ("Armenian",),
-            "To": ("Tocharian",), "Alb": ("Albanian",)}
-
-
-def _branch_of(lang: str) -> str:
-    return next((b for b, keys in LEX_LANG.items() if any(k in lang for k in keys)), lang)
-
-
-def secure_check(lid: str, refs: list[dict], lx) -> dict:
-    """Which branches of the cited *parallel* refs actually contain a reflex of the lexeme
-    (exact: the lexeme's own reflexes; root: only its root's reflexes). A word matches a reflex
-    when one normalized key is a prefix of the other (stems vs inflected words), length >= 3."""
-    from pie.formula_search import grc_key, grc_roman, ph_to_grc, pii_to_skt, skt_key
-
-    def keys(entry):
-        out = {}
-        for lang, xs in (entry or {}).get("reflexes", {}).items():
-            for x in xs:
-                fs = [x.get("form"), x.get("roman")]
-                # the PIE pages often stop at the intermediate proto-language: bridge to the daughter
-                if lang in ("Proto-Indo-Iranian", "Proto-Indo-Aryan"):
-                    fs += pii_to_skt(x.get("form") or "")
-                if lang == "Proto-Hellenic":
-                    fs += ph_to_grc(x.get("form") or "")
-                for f in fs:
-                    k = _norm(f)
-                    if len(k) >= 3:
-                        out.setdefault(_branch_of(lang), set()).add(k)
-        return out
-
-    def ref_keys(r):
-        ws = r.get("words", []) + r.get("lemmas", [])
-        out = {_norm(w) for w in ws}
-        b = _branch_of(r.get("lang", ""))
-        if b == "Gk":
-            out |= {_norm(grc_roman(grc_key(w, accents=False))) for w in ws}
-        if b == "II":
-            out |= {_norm(skt_key(w)) for w in ws}
-        return {k for k in out if len(k) >= 3}
-    e = lx.entries.get(lid, {})
-    own, root = keys(e), keys(lx.entries.get(e.get("root_id") or "", {}))
-    exact, rootlvl = set(), set()
-    for r in refs:
-        if r.get("role", "parallel") != "parallel":
-            continue
-        b = _branch_of(r.get("lang", ""))
-        cands = ref_keys(r)
-        hit = lambda ks: any(c.startswith(k[:max(3, len(k) - 2)]) or k.startswith(c[:max(3, len(c) - 2)])
-                             for c in cands for k in ks)
-        if hit(own.get(b, set())):
-            exact.add(b)
-        elif hit(root.get(b, set())):
-            rootlvl.add(b)
-    return {"exact_branches": sorted(exact), "root_branches": sorted(rootlvl),
-            "level": "exact" if len(exact) >= 2 else "root" if len(exact | rootlvl) >= 2 else "none"}
+def checks_for(p: dict, checker) -> dict:
+    """secure_checks of a plan: every claimed lexeme, plus every compound slot whose compound or one of
+    whose members is claimed (a compound is exact only if both members are exact in the same word)."""
+    claimed = list(p.get("secure", []))
+    for cid, first, second in plan_compound_ids(p["plan"]):
+        if cid not in claimed and ({first, second} & set(claimed)):
+            claimed.append(cid)
+    return {lid: secure_check(lid, p.get("cognate_refs", []), checker) for lid in claimed}
 
 
 def plan_sha(p: dict) -> str:
@@ -124,6 +73,7 @@ def main() -> int:
     sha = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--short", "HEAD"], capture_output=True,
                          text=True).stdout.strip()
     lx, ix = Lexicon.load(), load_index()
+    checker = SecureChecker.from_disk(lx.entries)
     out, rejects = [], []
     vp = ROOT / "data" / "tier2" / "review_verdicts.json"
     raw_review = json.loads(vp.read_text("utf-8"))["verdicts"] if vp.exists() else {}
@@ -160,7 +110,7 @@ def main() -> int:
         v = validate_text(r["pie"], ix)
         # 'secure' is the planner's claim; keep only lexemes whose reflexes really stand in the cited
         # parallel passages of >= 2 branches (tier2 review: secure_share was unreliable)
-        checks = {lid: secure_check(lid, p.get("cognate_refs", []), lx) for lid in p.get("secure", [])}
+        checks = checks_for(p, checker)
         secure = {lid for lid, c in checks.items() if c["level"] == "exact"}
         root_level = {lid for lid, c in checks.items() if c["level"] == "root"}
         toks = []

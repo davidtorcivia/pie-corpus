@@ -176,7 +176,20 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
     # Wiktionary: proterokinetic INS.SG and oblique plural take the zero-grade
     # suffix, accented (bʰeh₂ǵʰéw- → bʰeh₂ǵʰú-mos). Handbook: plain weak stem.
     root_accented = any(x.acc and x.kind == "V" for x in strong)
+    if hb:
+        # men-/mon-stems whose given weak stem has lost the m (Wiktionary's sh₂in̥ for sh₂imṓ): *-mn- is kept
+        # after a short vowel (Byrd, Handbook ch. 8 §2, the Asno law deletes the m only after a heavy
+        # syllable: *h₂éḱmn-es → áśnas; Ringe 2006 §2.3.4: limn̥bʰí, sh₁m̥néh₁; Hitt. išḫimanta, OE sīmon).
+        # The m-less Wiktionary forms follow as alternatives.
+        weak = _restore_mn(strong, weak)
     obl = zero_grade_suffix(weak) if (spec.accent_class == "proterokinetic" and root_accented and not hb) else weak
+    # Handbook: i/u-stems with an accented full-grade suffix in the weak stem (-éw-/-éy-/-ów-) take the
+    # zero-grade suffix, accented, before the consonant-initial oblique plural endings: Ringe 2006 §2.3.4–5
+    # (mn̥tíbʰi, ǵustúbʰi, ǵustúmos, ǵustúsu; tn̥h₂úbʰi, tn̥h₂úsu), Beekes §13.2.6a (*-u-bʰi, *-u-su);
+    # Ved. sūnúbhis, agníbhis, pṛthúbhis, urúbhis. The acrostatic type keeps its root accent (h₂éwibʰi).
+    # Only true i/u-stems (strong stem in syllabic -i/-u), not diphthongal root nouns (gʷṓws: Ved. góbhis).
+    iu_stem = bool(strong) and strong[-1].kind == "R" and strong[-1].syl and strong[-1].base in ("y", "w")
+    obl_pl = _zero_grade_iu(weak) if (hb and iu_stem) else obl
 
     def w(acc_ending: str, plain_ending: str, stem: list[Seg] | None = None) -> str:
         st = weak if stem is None else stem
@@ -205,6 +218,13 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
                 # i/u-stem vocative in full-grade *-ey/-ew (Ved. ágne, sū́no; Fortson): h₁ń̥gʷney, súHnew
                 full = strong[:-1] + [Seg("e", "V"), Seg(strong[-1].base, "R")]
                 out["VOC.SG"] = _uniq([render(_initial_accent(full))] + out["VOC.SG"])
+            if nom is strong and len(strong) > 2 and strong[-1].base == "h2" and strong[-2].base == "y" \
+                    and strong[-2].syl:
+                # ih₂-feminine vocative in short *-i: Ringe 2006 §2.3.5 (tn̥h₂éwih₂, voc. tn̥h₂éwi; h₁sóntih₂,
+                # voc. h₁sónti; sémih₂, voc. sémi); with the vocative's initial accent (Fortson §6.7) as in
+                # Ved. pŕ̥thivi, dévi. Ringe's unretracted form and the -ih₂ forms follow as alternatives.
+                short = strong[:-1]
+                out["VOC.SG"] = _uniq([render(_initial_accent(short)), render(short)] + out["VOC.SG"])
         acc = stang(_add(strong, "m"))
         out["ACC.SG"] = [render(contract_eh2m(acc) if not hb else acc)]
     # --- singular, weak
@@ -271,13 +291,36 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
                 acc_pl.insert(0, render(lengthen_last_vowel(strong[:-1]) + [Seg("s", "C")]))
             out["ACC.PL"] = acc_pl + out["ACC.PL"]
     out["GEN.PL"] = ([w("ṓm", "ōm")] if hb else []) + [w("óHom", "oHom")]
-    mos, bhos = w("mós", "mos", obl), w("bʰós", "bʰos", obl)
+    mos, bhos = w("mós", "mos", obl_pl), w("bʰós", "bʰos", obl_pl)
     # -bʰyos: variant written by Byrd 2013 and Adams 1997 (h₂áwibʰyos)
-    out["DAT.PL"] = out["ABL.PL"] = [bhos, mos, w("bʰyós", "bʰyos", obl)] if hb else [mos, bhos]
-    out["LOC.PL"] = [w("sú", "su", obl)]
-    mis, bhis = w("mís", "mis", obl), w("bʰís", "bʰis", obl)
+    out["DAT.PL"] = out["ABL.PL"] = [bhos, mos, w("bʰyós", "bʰyos", obl_pl)] if hb else [mos, bhos]
+    out["LOC.PL"] = [w("sú", "su", obl_pl)]
+    mis, bhis = w("mís", "mis", obl_pl), w("bʰís", "bʰis", obl_pl)
     out["INS.PL"] = [bhis, mis] if hb else [mis, bhis]
+    if hb and obl_pl is not weak:     # the full-grade weak stem stays as an alternative (HHḱéwbʰis)
+        for k, e in (("DAT.PL", ("bʰós", "bʰos")), ("ABL.PL", ("bʰós", "bʰos")), ("LOC.PL", ("sú", "su")),
+                     ("INS.PL", ("bʰís", "bʰis"))):
+            out[k] = _uniq(out[k] + [w(*e)])
     return out
+
+
+def _restore_mn(strong: list[Seg], weak: list[Seg]) -> list[Seg]:
+    """sh₂imón / sh₂in̥ → sh₂imn̥: a -mon-/-men- stem whose weak stem ends in a short vowel (or syllabic
+    i/u) + n̥ with the m missing gets the m back (see _athematic). Anything else is returned unchanged."""
+    if (len(strong) >= 3 and strong[-1].base == "n" and not strong[-1].syl and strong[-2].kind == "V"
+            and strong[-3].base == "m" and len(weak) >= 2 and weak[-1].base == "n" and weak[-1].syl
+            and not weak[-2].long and (weak[-2].kind == "V" or (weak[-2].syl and weak[-2].base in ("y", "w")))):
+        return weak[:-1] + [Seg("m", "R"), weak[-1]]
+    return weak
+
+
+def _zero_grade_iu(weak: list[Seg]) -> list[Seg]:
+    """Weak stem -éw-/-éy-/-ów-/-óy- → accented syllabic -ú-/-í- (suHnów- → suHnú-, HHḱéw- → HHḱú-);
+    unchanged otherwise (acrostatic h₂éwi-)."""
+    if len(weak) >= 2 and weak[-1].kind == "R" and weak[-1].base in ("y", "w") and not weak[-1].syl \
+            and weak[-2].base in ("e", "o") and weak[-2].acc:
+        return weak[:-2] + [Seg(weak[-1].base, "R", syl=True, acc=True)]
+    return weak
 
 
 def _initial_accent(segs: list[Seg]) -> list[Seg]:
