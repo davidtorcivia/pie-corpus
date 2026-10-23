@@ -1,0 +1,35 @@
+{
+ "contaminated_excluded": [
+  "(from dual",
+  "Arabic",
+  "Proto-Anatolian",
+  "Proto-Indo-Aryan",
+  "Proto-Indo-Iranian",
+  "Proto-Iranian",
+  "Proto-Balto-Slavic"
+ ],
+ "excluded_branches": "Anatolian, Tocharian",
+ "contamination_rate_threshold": 0.02,
+ "primary": {
+  "sets": 2133,
+  "with_laryngeal_effect": 1081,
+  "by_split": {
+   "dev": 233,
+   "train": 1695,
+   "eval": 205
+  },
+  "with_hittite": 287,
+  "languages": 285
+ },
+ "secondary": {
+  "sets": 3600,
+  "with_laryngeal_effect": 1882,
+  "by_split": {
+   "dev": 420,
+   "train": 2859,
+   "eval": 321
+  },
+  "with_hittite": 368,
+  "languages": 309
+ }
+}
