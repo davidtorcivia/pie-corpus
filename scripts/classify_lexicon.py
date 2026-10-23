@@ -20,6 +20,7 @@ from pie.crosscheck import cells_for
 ROOT = Path(__file__).resolve().parent.parent
 # Tier 3 may only use a spec from a table, or from a shape rule whose
 # backtest cell agreement reaches this threshold (docs/morphology.md).
+BACKTEST_AS = {"shape:thematic-neuter-reflex": "shape:thematic-neuter"}
 USABLE_THRESHOLD = 0.85
 LEX = ROOT / "data" / "lexicon"
 OUT = ROOT / "data" / "morph"
@@ -89,7 +90,8 @@ def main() -> int:
         if c is None:
             c = by_shape(e)
         cov[c.rule.split(":")[0] if c.spec is None else ("table" if c.rule == "table" else "shape")] += 1
-        acc = 1.0 if c.rule == "table" else accuracy.get(c.rule)
+        # a rule that only changes the routing evidence inherits the backtest of the paradigm it produces
+        acc = 1.0 if c.rule == "table" else accuracy.get(c.rule, accuracy.get(BACKTEST_AS.get(c.rule, "")))
         usable = c.spec is not None and acc is not None and acc >= USABLE_THRESHOLD
         cov["usable"] += usable
         rows.append({"id": e["id"], "form": e["form"], "rule": c.rule, "family": c.family,

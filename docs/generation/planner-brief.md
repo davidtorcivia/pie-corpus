@@ -21,8 +21,11 @@ Verb slot: `{"lex_id": ..., "role": "V", "verb": {"tense": "PRS|PST|AOR|PRF", "m
 6. Prohibitions ("do not X!") are `neg: true` with mood IMP, and only with verbs that have PRS or AOR forms (never PRF).
 7. MOD = an adjective or `closed:demonstrative_so` with a `head`. POSS = a genitive noun with a `head`.
 8. The English says what the plan says, no more and no less; every content word needs a slot.
-9. **Word choice:** among synonyms, prefer the lexeme with the higher `attested_in` (well-attested words are better reconstructed). Glosses marked `gloss_approximate` are composed from root + suffix: use them only when the meaning fits plainly.
-10. **Diversity (gated):** any one lexeme at most 6 times per batch (the copula "to be" is exempt). Aim for many distinct lexemes and roots; vary subjects, verbs, moods (IMP, SBJV "let us", OPT wishes), negation, questions, and ~20% verb-initial clauses.
+9. **Word choice:** among synonyms, prefer the lexeme with the higher `attested_in` (well-attested words are better reconstructed). Glosses marked `gloss_approximate` are composed from root + suffix: use them only when the meaning fits plainly, and never when a plainly glossed lexeme with the same meaning is in the slice.
+10. **Voice (reviews S1, R6):** a transitive verb whose English subject undergoes the action ("the wheel broke", "the door opened", "dress yourself!") takes voice "MID". Verbs tagged `valency: "tr"` need an OBJ in the active; the checker rejects them without one.
+11. **Tense (review S2/S3):** PRF only for an English present state or present perfect ("is afraid", "has seen", "knows"). For a single completed past event use AOR when the slice has an aorist of that root, otherwise PST. For a past state prefer PST of a stative present (e.g. "be trembling") over a perfect.
+12. **Questions and answers (review R4):** an answer repeats the question's verb lexeme unless the English changes the verb.
+13. **Diversity (gated):** any one lexeme at most 6 times per batch (the copula "to be" is exempt). Aim for many distinct lexemes and roots; vary subjects, verbs, moods (IMP, SBJV "let us", OPT wishes), negation, questions, and ~20% verb-initial clauses.
 
 ## Check and repair (exactly once)
 1. Write all plans to `data/generation/plans/<batch>.jsonl` and copy it to `<batch>.initial.jsonl`.

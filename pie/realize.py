@@ -115,7 +115,10 @@ class Lexicon:
     def gender(self, lex_id: str) -> str:
         """Lexicon gender first: spec gender defaults to m for athematic table
         stems, which would make dʰugh₂tḗr "daughter" take masculine adjectives."""
-        g = self.entries.get(lex_id, {}).get("gender")
+        e = self.entries.get(lex_id, {})
+        g = e.get("gender")
+        if g not in ("m", "f", "n") and e.get("form", "").endswith(("ih₂", "íh₂", "eh₂", "éh₂")):
+            g = "f"                          # devī and eh₂ nouns: h₃rḗǵnih₂, néptih₂
         if g not in ("m", "f", "n"):
             g = ((self.specs.get(lex_id) or {}).get("spec") or {}).get("gender")
         return g if g in ("m", "f", "n") else "m"
@@ -169,6 +172,19 @@ def _verb_feature(v: dict, person: int, num: str) -> str:
     return ("MID." if voice == "MID" else "") + f"{base}.{pn}"
 
 
+_VALENCY: dict | None = None
+
+
+def _valency(lex_id: str) -> str | None:
+    """'tr' / 'intr' from data/generation/verb_valency.json (verbs whose gloss misleads planners)."""
+    global _VALENCY
+    if _VALENCY is None:
+        p = ROOT / "data" / "generation" / "verb_valency.json"
+        _VALENCY = json.loads(p.read_text("utf-8")) if p.exists() else {}
+    v = _VALENCY.get(lex_id)
+    return v.get("valency") if isinstance(v, dict) else None
+
+
 def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
     """Every problem with a plan, or [] if it can be realized."""
     lx = lx or Lexicon.load()
@@ -212,6 +228,10 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                     and not any(k.startswith(("PST.", "AOR.")) for k in lx.cells(lid)):
                 errs.append(f"{where}: a prohibitive (neg + IMP) needs a present or aorist stem for the "
                             f"injunctive; {lid} is a perfect")
+            if role == "V" and fam == "verb" and _valency(lid) == "tr" and s.get("verb", {}).get("voice") != "MID" \
+                    and not any(x.get("role") == "OBJ" for x in slots):
+                errs.append(f"{where}: {lid} is transitive: active needs an OBJ; a patient subject "
+                            f"('the wheel broke', 'dress yourself') takes voice MID")
             if role != "V" and fam == "verb":
                 errs.append(f"{where}: role {role} needs a nominal, {lid} is a verb")
             if role == "MOD":

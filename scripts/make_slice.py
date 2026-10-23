@@ -13,12 +13,41 @@ import re
 import sys
 from pathlib import Path
 
+from pie.phon import has_accent, parse
 from pie.realize import Lexicon
 
 ROOT = Path(__file__).resolve().parent.parent
 CORE_VERBS = ["be", "see", "carry", "give", "speak", "say", "go", "come", "know", "eat", "drink", "hear",
               "sit", "stand", "lead", "drive", "kill", "slay", "live", "fear", "seek", "protect", "milk",
               "plough", "walk", "arrive", "seize", "burn", "lie", "put", "become", "split", "cover"]
+# always offered when usable, so a concept is never carried by a thin synonym (b001 review Q2)
+CORE_NOUNS = ["pie-lex-h2owis", "pie-lex-h1ngwnis", "pie-lex-peh2wr", "pie-lex-h1ekjwos", "pie-lex-gwoxws",
+              "pie-lex-kjwox", "pie-lex-wlkwos", "pie-lex-dyexws", "pie-lex-ph2texr", "pie-lex-meh2texr",
+              "pie-lex-dhugh2texr", "pie-lex-bhreh2texr", "pie-lex-swesoxr", "pie-lex-h2egjros", "pie-lex-wodr",
+              "pie-lex-nokwts", "pie-lex-gjhwexr", "pie-lex-soh2wl"]
+# derived glosses are kept only for transparent, productive suffixes (b002 review R1);
+# other derived-gloss lexemes need reflexes in at least two branches
+TRANSPARENT_SUFFIXES = {"-tōr", "-tḗr", "-éyeti", "-trom", "-tlom", "-tis", "-tus", "-néh₂ti", "-néwti", "-eti"}
+BRANCHES = [("Indo-Iranian", r"Sanskrit|Vedic|Avestan|Persian|Pali|Prakrit|Indo-Aryan|Iranian|Hindi|Ossetian|"
+             r"Pashto|Khotanese|Sogdian|Bactrian|Kurdish|Parthian|Bengali|Marathi|Punjabi|Nuristani"),
+            ("Greek", r"Greek|Hellenic|Mycenaean"), ("Italic", r"Latin|Italic|Oscan|Umbrian|Faliscan"),
+            ("Celtic", r"Irish|Welsh|Celtic|Gaulish|Breton|Cornish|Celtiberian|Gaelic|Manx"),
+            ("Germanic", r"Germanic|Gothic|Norse|English|German|Saxon|Frisian|Dutch|Icelandic|Swedish|Danish"),
+            ("Balto-Slavic", r"Slavic|Slavonic|Lithuanian|Latvian|Prussian|Russian|Polish|Czech|Baltic|Serbo"),
+            ("Armenian", r"Armenian"), ("Albanian", r"Albanian"),
+            ("Anatolian", r"Hittite|Luwian|Lycian|Palaic|Lydian|Anatolian"), ("Tocharian", r"Tocharian")]
+VALENCY = json.loads((Path(__file__).resolve().parent.parent / "data/generation/verb_valency.json").read_text("utf-8"))
+
+
+def branches(reflexes: dict) -> set[str]:
+    out = set()
+    for lang, xs in reflexes.items():
+        if not any(not (x.get("borrowed") or x.get("analogical")) for x in xs):
+            continue
+        out.add(next((b for b, pat in BRANCHES if re.search(pat, lang)), lang))
+    return out
+
+
 CLOSED = {
     "closed:personal/1": "I / we (num SG|PL); enclitic forms with \"enclitic\": true",
     "closed:personal/2": "you (num SG|PL); enclitic forms with \"enclitic\": true",
@@ -54,8 +83,21 @@ def main() -> int:
     lx = Lexicon.load()
     rng = random.Random(args.seed)
     ap_derived = args.derived
-    pool = [i for i, r in lx.specs.items() if r.get("usable") and i not in lx.blocked and
-            (lx.entries[i]["meaning"] or (ap_derived and i in lx.derived))]
+
+    def derived_ok(i):
+        suffix = lx.derived[i].split("[", 1)[-1].split(":", 1)[0].strip()
+        return suffix in TRANSPARENT_SUFFIXES or len(branches(lx.entries[i].get("reflexes", {}))) >= 2
+
+    def accented(i):
+        try:
+            return has_accent(parse(lx.entries[i]["form"].strip("-")))
+        except ValueError:
+            return False
+
+    # gates (tier3-b001/b002 reviews): an accented headword (P10), and a derived gloss
+    # only for a transparent suffix or a word attested in two branches (R1)
+    pool = [i for i, r in lx.specs.items() if r.get("usable") and i not in lx.blocked and accented(i) and
+            (lx.entries[i]["meaning"] or (ap_derived and i in lx.derived and derived_ok(i)))]
 
     def attested(i):
         """Daughter languages with a reflex (of the lexeme, or else its root): prefer well-attested words."""
@@ -82,14 +124,19 @@ def main() -> int:
     chosen = chosen[: args.size]
     chosen += [i for i in pool if lx.specs[i]["family"] == "verb" and hits(i, CORE_VERBS) and i not in chosen
                and lx.meaning(i)[1] == "wiktionary"]
-    rest = [i for i in pool if i not in chosen]
+    chosen += [i for i in CORE_NOUNS if i in pool and i not in chosen]
+    # random fill: dictionary-glossed or well-attested words only (b002 review R3)
+    rest = [i for i in pool if i not in chosen and (lx.meaning(i)[1] == "wiktionary" or attested(i) >= 3)]
     rng.shuffle(rest)
     chosen += rest[: max(0, args.size - len(chosen))]
     items = []
     for i in chosen[: max(args.size, len(chosen))]:
         e, r = lx.entries[i], lx.specs[i]
         gl, src = lx.meaning(i)
-        item = {"lex_id": i, "form": e["form"], "gloss": gl[:90], "family": r["family"]}
+        item = {"lex_id": i, "form": e["form"], "gloss": (VALENCY.get(i, {}).get("gloss") or gl)[:90],
+                "family": r["family"]}
+        if i in VALENCY:
+            item["valency"] = VALENCY[i]["valency"]
         if src == "derived":
             item["gloss_approximate"] = True   # root meaning + suffix function, not a dictionary gloss
         if r["family"] == "noun":

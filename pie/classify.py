@@ -13,6 +13,8 @@ how plausible the rule looks.
 
 from __future__ import annotations
 
+import unicodedata
+
 from dataclasses import dataclass, replace
 
 from .morph import AdjSpec, NounSpec, VerbSpec
@@ -82,6 +84,33 @@ def _deaccent(s: str) -> str:
     return render([replace(x, acc=False) for x in _segs(s)])
 
 
+def _plain_roman(x: dict) -> str:
+    s = unicodedata.normalize("NFD", (x.get("roman") or x.get("form") or "").lower())
+    return "".join(c for c in s if not unicodedata.combining(c))
+
+
+def _reflex_evidence(e: dict) -> str | None:
+    """What the daughters say about an -os noun's stem class, from citation forms.
+
+    s-stem: a Sanskrit citation form in -as (thematic nouns are cited as -a
+    stems: vŕ̥ka-, but s-stems as -as: óhas, mánas), a Greek plural in -εα
+    (μήδεα), or ḗ/é ablaut in the stems (mḗdos ~ médos, Narten).
+    neuter: a Greek reflex in -ον or a Latin one in -um, with no s-stem sign.
+    """
+    r = e.get("reflexes", {})
+    usable = lambda xs: [x for x in xs if not (x.get("borrowed") or x.get("analogical"))]
+    skt = [_plain_roman(x) for k in ("Sanskrit", "Vedic Sanskrit") for x in usable(r.get(k, []))]
+    grc = [x.get("form", "") for x in usable(r.get("Ancient Greek", []))]
+    lat = [_plain_roman(x) for x in usable(r.get("Latin", []))]
+    stems = e.get("stems", [])
+    if any(x.endswith("as") for x in skt) or any(x.endswith("εα") for x in grc) or \
+            (any("ḗ" in x for x in stems) and any("é" in x for x in stems)):
+        return "s-stem"
+    if any(x.endswith(("ον", "όν")) for x in grc) or any(x.endswith("um") for x in lat):
+        return "neuter"
+    return None
+
+
 def by_shape(e: dict) -> Classified:
     f, pos, g = e["form"], e.get("pos"), e.get("gender")
     if pos == "num" and f.endswith(("os", "ós")):
@@ -128,10 +157,15 @@ def by_shape(e: dict) -> Classified:
 
     # nouns, and derivatives with an unknown part of speech
     s_stem_evidence = any(x.endswith(("esos", "és", "es")) for x in e.get("stems", []) + e.get("variants", []))
-    if f.endswith(("os", "ós")) and (g == "n" or s_stem_evidence):
+    refl = _reflex_evidence(e)
+    # neuter s-stems are barytone, so reflex evidence only counts for -os, never oxytone -ós
+    if f.endswith(("os", "ós")) and (g == "n" or s_stem_evidence or (refl == "s-stem" and not f.endswith("ós"))):
         # neuter s-stem (téwh₂os ~ téwh₂esos), not a thematic masculine
         st = f
         return Classified(NounSpec(st, _strip(f, "os") + "es", "acrostatic", "n"), "shape:s-stem-neuter", "noun")
+    if f.endswith("os") and not f.endswith("ós") and g not in ("m", "f") and refl == "neuter":
+        # the daughters agree on a neuter (Gk -ον, Lat. -um): plówyos → plówyom
+        return Classified(NounSpec(_strip(f, "s"), gender="n"), "shape:thematic-neuter-reflex", "noun")
     if f.endswith(("os", "ós")):
         return Classified(NounSpec(_strip(f, "s"), gender=g if g in ("m", "f") else "m"), "shape:thematic", "noun")
     if f.endswith(("om", "óm")):
