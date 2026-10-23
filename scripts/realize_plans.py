@@ -10,6 +10,7 @@ their errors. Realized records go to corpus/tier3/<batch>.jsonl.
 import argparse
 import collections
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -23,14 +24,44 @@ ROOT = Path(__file__).resolve().parent.parent
 CAP_EXEMPT = {"pie-lex-h1esti"}          # "to be"
 
 
-def lexeme_cap(n_sentences: int) -> int:
-    """Max uses of one lexeme per batch: 6, or 2% of the batch if larger."""
-    return max(6, round(0.02 * n_sentences))
+def _meter_summary(records: list[dict]) -> dict | None:
+    m = [r["meter"] for r in records if r.get("meter")]
+    if not m:
+        return None
+    lines = sum(len(x["line_syllables"]) for x in m)
+    return {"lines": lines, "fit": sum(x["fit"] for x in m), "share": round(sum(x["fit"] for x in m) / max(1, lines), 3)}
 
 
-def theme_cap(n_sentences: int) -> int:
-    """Max uses of a slice's declared theme-core lexeme (a hymn to Dawn says "Dawn"): 15, or 6%."""
-    return max(15, round(0.06 * n_sentences))
+def _formula_uses(records: list[dict]) -> int:
+    """Records that use every lexeme of some formula-menu entry."""
+    p = ROOT / "data" / "generation" / "formula_menu.json"
+    menu = [set(x["lex_id"] for x in m["lexemes"]) for m in json.loads(p.read_text("utf-8"))] if p.exists() else []
+    return sum(1 for r in records if any(f <= {t["lex_id"] for t in r["tokens"]} for f in menu))
+
+
+def lexeme_cap(n_sentences: int, n_tokens: int = 0) -> int:
+    """Max uses of one lexeme per batch: 6, or 2% of the records, or 0.5% of the tokens
+    (long connected texts have many tokens per record), whichever is largest."""
+    return max(6, round(0.02 * n_sentences), round(0.005 * n_tokens))
+
+
+METER_TARGETS = (8, 11)          # Vedic gāyatrī and triṣṭubh line lengths (±1)
+
+
+def _meter(pie: str, genre: str | None) -> dict | None:
+    """Hymns: syllables per line (a line = a sentence) and how many fit 8 or 11 (±1)."""
+    if genre not in ("hymn", "prayer", "charm"):
+        return None
+    lines = [x.strip() for x in re.split(r"[.?!]", pie) if x.strip()]
+    syl = [measure(x)["syllables"] for x in lines]
+    return {"line_syllables": syl, "fit": sum(any(abs(n - t) <= 1 for t in METER_TARGETS) for n in syl),
+            "targets": list(METER_TARGETS)}
+
+
+def theme_cap(n_sentences: int, n_tokens: int = 0) -> int:
+    """Max uses of a slice's declared theme-core lexeme (a hymn to Dawn says "Dawn"): 15, 6% of the
+    records, or 1.5% of the tokens."""
+    return max(15, round(0.06 * n_sentences), round(0.015 * n_tokens))
 
 
 def theme_core(batch: str) -> set[str]:
@@ -75,7 +106,7 @@ def main() -> int:
                         "features": w["features"], "verified": True} for w in r["words"]],
             "gloss": r["gloss"], "english": r["english"],
             "genre": p.get("genre"), "theme": p.get("theme", []),
-            "syllables": measure(r["pie"])["syllables"], "meter": None,
+            "syllables": measure(r["pie"])["syllables"], "meter": _meter(r["pie"], p.get("genre")),
             "formulas": [], "cognate_refs": [], "alt_reconstructions": [],
             "validator": {k: v[k] for k in ("status", "coverage", "tiers", "misses")},
             "generator": {"model": args.model, "engine_version": sha, "prompt_id": args.prompt_id,
@@ -108,11 +139,16 @@ def main() -> int:
                "distinct_lexemes": len(uses), "max_lexeme_uses": max(uses.values(), default=0),
                "most_used": uses.most_common(5), "dup_within": dup_within, "dup_across_batches": dup_across,
                "tokens": sum(len(r["tokens"]) for r in records),
-               "words_per_sentence": round(sum(len(r["pie"].split()) for r in records) / n, 2)}
+               "words_per_sentence": round(sum(len(r["pie"].split()) for r in records) / n, 2),
+               "words_per_record": round(sum(len(r["pie"].split()) for r in records) / n, 2),
+               "meter_fit": _meter_summary(records),
+               "formula_uses": _formula_uses(records)}
     # Gates (docs/STATUS.md question 5): the batch passes only on numbers
     gates = {"reject_rate<=0.10": summary["reject_rate"] <= 0.10,
-             f"max_lexeme_uses<={lexeme_cap(n)}": summary["max_lexeme_uses"] <= lexeme_cap(n),
-             f"theme_core_uses<={theme_cap(n)}": max(core_uses.values(), default=0) <= theme_cap(n),
+             f"max_lexeme_uses<={lexeme_cap(n, summary['tokens'])}":
+                 summary["max_lexeme_uses"] <= lexeme_cap(n, summary["tokens"]),
+             f"theme_core_uses<={theme_cap(n, summary['tokens'])}":
+                 max(core_uses.values(), default=0) <= theme_cap(n, summary["tokens"]),
              "roots_per_sentence>=0.35": summary["roots_per_sentence"] >= 0.35,
              "duplicates<=2%": (dup_within + dup_across) <= 0.02 * n,
              "all_exact": stats["exact_pass"] == stats["realized"]}

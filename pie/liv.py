@@ -234,6 +234,10 @@ def _aorist_lexemes(entries: dict, targets: list, reg, dump_label: str) -> int:
     from .lexicon import slug
     from .translit import to_ascii
     has_aor = {e.get("root_id") for e in entries.values() if e["kind"] != "root" and e.get("aspect") == "pf"}
+    aor_forms = {}
+    for e in entries.values():
+        if e["kind"] != "root" and e.get("aspect") == "pf":
+            aor_forms.setdefault(_plain(e["form"]), []).append(e)
     n = 0
     for x, rid in targets:
         if rid in has_aor:
@@ -244,7 +248,13 @@ def _aorist_lexemes(entries: dict, targets: list, reg, dump_label: str) -> int:
         if not m:
             continue
         strong, weak = (normalize(h, "liv2").text for h in m.groups())
+        if re.match("h[₁₂₃]|H", strong) and not re.match("h[₁₂₃]|H", weak):
+            weak = re.match("h[₁₂₃]|H", strong)[0] + weak        # LIV *h₃péu̯s-/pus-: the weak stem keeps h₃
         form = strong + "t"
+        en0 = (x.get("meaning_en") or "").strip("'‘’ ").lower()
+        if any(max((_gloss_sim(en0, mm.lower()) for mm in d["meaning"]), default=0) > 0
+               for d in aor_forms.get(_plain(form), [])):
+            continue                                              # Wiktionary already has this aorist (péh₃t 'drink')
         if not (is_canonical(form) and is_canonical(weak)) or re.search(r"[-()⁽⁾]", strong + weak):
             continue
         en = (x.get("meaning_en") or "").strip("'‘’ ")
@@ -279,21 +289,49 @@ def apply(entries: dict[str, dict], liv_records: list[dict], reg, dump_label: st
             by_generic.setdefault(vkey(f, "generic-H"), []).append(r)
     rep = {"matched_form": 0, "matched_generic": 0, "new": 0}
     targets = []                      # (LIV record, root id) for the aorist lexemes below
-    for x in liv_records:
+
+    def sim(en, r):                   # gloss overlap against all of a root's senses
+        return max((_gloss_sim(en.lower(), m.lower()) for m in r["meaning"]), default=0.0)
+
+    # 1. score every (LIV record, form-matched root) pair: an exact main-form match outranks a
+    #    variant match, then gloss overlap; 2. assign one-to-one, best pairs first, so two LIV
+    #    homographs never share one Wiktionary root (1./2.*h₂eĝ- 'drive'/'say'; *dʰeh₁- 'put'
+    #    must not land on dʰeh₁y- 'suckle' through a variant spelling)
+    pairs = []
+    for n, x in enumerate(liv_records):
+        en = (x.get("meaning_en") or "").strip("'‘’ ")
+        forms = [x["root"], *x.get("root_alternatives", [])]
+        seen = set()
+        for f in forms:
+            group = by_plain.get(_plain(f), [])
+            verbal = [r for r in group if not r["meaning"] or any(m.startswith("to ") for m in r["meaning"])]
+            for r in group:
+                # LIV is a dictionary of verbs: a root glossed only as a thing (h₂eǵ- 'goat') is no candidate
+                # when a verbal root of the same form exists (bʰenǵʰ- 'thick', the only one, still is)
+                if r["id"] in seen or (verbal and r not in verbal):
+                    continue
+                seen.add(r["id"])
+                exact = 1.0 if _plain(r["form"]) == _plain(x["root"]) else 0.5
+                pairs.append((exact + sim(en, r), n, r["id"]))
+    assigned, used = {}, set()
+    for score, n, rid_ in sorted(pairs, key=lambda t: -t[0]):
+        if n not in assigned and rid_ not in used:
+            assigned[n], used_ = rid_, used.add(rid_)
+    for n, x in enumerate(liv_records):
         en = (x.get("meaning_en") or "").strip("'‘’ ")
         stems = [s for s in x.get("stems", []) if s.get("label")]
         aspect = ASPECT.get(stems[0]["label"]) if stems else None
         liv = {k: x[k] for k in ("headword_printed", "homograph", "uncertain", "meaning_de", "meaning_en", "iew",
                                   "stems", "neubildungen", "page", "ocr_check")}
         forms = [x["root"], *x.get("root_alternatives", [])]
-        cands = [r for f in forms for r in by_plain.get(_plain(f), [])]
+        cands = [entries[assigned[n]]] if n in assigned else []
         how = "form"
-        if len(cands) > 1:
-            cands = sorted(cands, key=lambda r: -_gloss_sim(en.lower(), (r["meaning"][0] if r["meaning"] else "").lower()))[:1]
         if not cands:
             how = "generic-H+gloss"
             cands = [r for f in forms for r in by_generic.get(vkey(f, "generic-H"), [])
-                     if r["meaning"] and _gloss_sim(en.lower(), r["meaning"][0].lower()) >= 0.35][:1]
+                     if r["id"] not in used and r["meaning"] and sim(en, r) >= 0.35][:1]
+            if cands:
+                used.add(cands[0]["id"])
         if cands:
             r = cands[0]
             r.setdefault("liv", []).append({**liv, "match": how})

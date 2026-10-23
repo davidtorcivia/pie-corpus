@@ -487,6 +487,33 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
         recs = [json.loads(x) for x in nil_path.read_text("utf-8").splitlines() if x.strip()]
         nil_report = apply_nil(entries, recs, reg)
 
+    # Supplement: a few book-cited words the sources lack (data/lexicon/supplement.jsonl), e.g.
+    # ń̥dʰgʷʰitos 'imperishable' of the formula *ḱléwos ń̥dʰgʷʰitom.
+    sup_path = outdir / "supplement.jsonl"
+    if sup_path.exists():
+        root_by_form = {e["form"]: e["id"] for e in entries.values() if e["kind"] == "root"}
+        for x in (json.loads(l) for l in sup_path.read_text("utf-8").splitlines() if l.strip()):
+            lid = reg.get(f"supplement|{x['form']}", f"pie-lex-{slug(x['form'])}")
+            rid = root_by_form.get(x.get("root"))
+            entries[lid] = {"id": lid, "kind": "derivative", "form": x["form"], "form_ascii": to_ascii(x["form"]),
+                            "variants": [], "stems": [], "pos": x["pos"], "gender": x.get("gender"),
+                            "meaning": x["meaning"], "meaning_source": "supplement", "uncertain": [],
+                            "source": "supplement", "source_ref": {"cite": x["cite"], "note": x.get("note")},
+                            "confidence": "entry", "normalized": [], "etymon_parts": [], "reflexes": {},
+                            "parents": [rid] if rid else [], "root_link_source": "supplement", "root_id": rid}
+
+    # Hand overrides from reviews (data/lexicon/overrides.jsonl): glosses that misled planners, genders
+    ov_path = outdir / "overrides.jsonl"
+    if ov_path.exists():
+        for x in (json.loads(l) for l in ov_path.read_text("utf-8").splitlines() if l.strip()):
+            if x["id"] in entries:
+                e = entries[x["id"]]
+                if "meaning" in x:
+                    e["meaning"], e["meaning_source"] = x["meaning"], "override"
+                if "gender" in x:
+                    e["gender"] = x["gender"]
+                e["override_note"] = x.get("note")
+
     # Paradigms (Wiktionary module output), hard-filtered.
     paradigms, para_skipped = [], collections.Counter()
     for e in entries.values():

@@ -24,7 +24,7 @@ CORE_VERBS = ["be", "see", "carry", "give", "speak", "say", "go", "come", "know"
 CORE_NOUNS = ["pie-lex-h2owis", "pie-lex-h1ngwnis", "pie-lex-peh2wr", "pie-lex-h1ekjwos", "pie-lex-gwoxws",
               "pie-lex-kjwox", "pie-lex-wlkwos", "pie-lex-dyexws", "pie-lex-ph2texr", "pie-lex-meh2texr",
               "pie-lex-dhugh2texr", "pie-lex-bhreh2texr", "pie-lex-swesoxr", "pie-lex-h2egjros", "pie-lex-wodr",
-              "pie-lex-nokwts", "pie-lex-gjhwexr", "pie-lex-soh2wl"]
+              "pie-lex-nokwts", "pie-lex-gjhwexr", "pie-lex-soh2wl", "pie-lex-swos", "pie-lex-wekwos"]
 # derived glosses are kept only for transparent, productive suffixes (b002 review R1);
 # other derived-gloss lexemes need reflexes in at least two branches
 TRANSPARENT_SUFFIXES = {"-tōr", "-tḗr", "-éyeti", "-trom", "-tlom", "-tis", "-tus", "-néh₂ti", "-néwti", "-eti"}
@@ -124,9 +124,18 @@ def main() -> int:
         seen_rf.add(rf)
         chosen.append(i)
     chosen = chosen[: args.size]
+    # a tree-path derivative is left out when a dictionary word of the same root and gloss is in
+    # the slice (mr̥tós beside the word; b003 review): planners otherwise split one concept in two
+    words_rg = {(lx.entries[i].get("root_id"), lx.meaning(i)[0]) for i in chosen if lx.entries[i]["kind"] == "word"}
+    chosen = [i for i in chosen if not (lx.entries[i]["kind"] == "derivative" and
+                                        (lx.entries[i].get("root_id"), lx.meaning(i)[0]) in words_rg)]
     chosen += [i for i in pool if lx.specs[i]["family"] == "verb" and hits(i, CORE_VERBS) and i not in chosen
                and lx.meaning(i)[1] == "wiktionary"]
     chosen += [i for i in CORE_NOUNS if i in pool and i not in chosen]
+    # the formula menu's words, so planners can use the inherited phrases
+    menu_path = ROOT / "data" / "generation" / "formula_menu.json"
+    menu = json.loads(menu_path.read_text("utf-8")) if menu_path.exists() else []
+    chosen += [x["lex_id"] for m in menu for x in m["lexemes"] if x["lex_id"] in pool and x["lex_id"] not in chosen]
     # random fill: dictionary-glossed or well-attested words only (b002 review R3)
     rest = [i for i in pool if i not in chosen and (lx.meaning(i)[1] == "wiktionary" or attested(i) >= 3)]
     rng.shuffle(rest)
@@ -160,9 +169,14 @@ def main() -> int:
             item["features"] = feats
         items.append(item)
     out = ROOT / "data" / "generation" / "slices" / f"{args.name}.json"
-    core = [i for i in args.core if i in {it["lex_id"] for it in items}][:8]
+    # theme core: given with --core, else the 8 best keyword hits that are nouns (the thing or god the
+    # batch is about), so its cap is 15 instead of 6 (b004 review)
+    auto = [i for i in hits_all if lx.specs[i]["family"] == "noun" and lx.meaning(i)[1] != "derived"]
+    core = [i for i in (args.core or auto) if i in {it["lex_id"] for it in items}][:8]
+    ids = {it["lex_id"] for it in items}
+    formulas = [m for m in menu if all(x["lex_id"] in ids for x in m["lexemes"])]
     out.write_text(json.dumps({"name": args.name, "keywords": args.keywords, "closed": CLOSED, "theme_core": core,
-                               "lexemes": items},
+                               "formulas": formulas, "lexemes": items},
                               ensure_ascii=False, indent=1) + "\n", "utf-8")
     fam = {}
     for it in items:

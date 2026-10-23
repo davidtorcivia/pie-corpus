@@ -1,14 +1,14 @@
 {
- "entries": 6794,
+ "entries": 6802,
  "coverage": {
   "table": 587,
-  "usable": 3826,
-  "shape": 4330,
+  "usable": 3834,
+  "shape": 4338,
   "unknown": 1788,
   "indeclinable": 89
  },
- "inflectable": 4917,
- "usable_for_tier3": 3826,
+ "inflectable": 4925,
+ "usable_for_tier3": 3834,
  "usable_threshold": 0.85,
  "backtest": {
   "indeclinable": {
@@ -170,7 +170,7 @@
   }
  },
  "by_rule": {
-  "shape:thematic": 1209,
+  "shape:thematic": 1193,
   "shape:thematic-present": 1128,
   "unknown:noun-shape": 894,
   "unknown": 796,
@@ -178,12 +178,12 @@
   "shape:eh2": 395,
   "shape:athematic-root": 357,
   "shape:thematic-neuter": 285,
-  "shape:root-aorist": 243,
+  "shape:root-aorist": 249,
   "shape:pk-iu-stem": 229,
   "shape:men-neuter": 103,
-  "shape:thematic-adj": 94,
+  "shape:thematic-adj": 96,
+  "shape:s-stem-neuter": 92,
   "indeclinable": 89,
-  "shape:s-stem-neuter": 76,
   "unknown:athematic-no-ablaut": 57,
   "shape:n-stem-ak": 50,
   "shape:hk-iu-stem": 48,

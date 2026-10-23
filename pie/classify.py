@@ -156,7 +156,8 @@ def by_shape(e: dict) -> Classified:
         return Classified(None, "unknown:adj-shape", "adj")
 
     # nouns, and derivatives with an unknown part of speech
-    s_stem_evidence = any(x.endswith(("esos", "és", "es")) for x in e.get("stems", []) + e.get("variants", []))
+    s_stem_evidence = any(x.rstrip("-").endswith(("esos", "és", "es"))     # tree stems end in "-" (sélpes-)
+                          for x in e.get("stems", []) + e.get("variants", []))
     refl = _reflex_evidence(e)
     # neuter s-stems are barytone, so reflex evidence only counts for -os, never oxytone -ós
     if f.endswith(("os", "ós")) and (g == "n" or s_stem_evidence or (refl == "s-stem" and not f.endswith("ós"))):

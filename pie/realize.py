@@ -11,7 +11,7 @@ Plan (one sentence):
    "clauses": [{"order": "SOV" | "VSO",           # VSO = verb-initial (narrative/emphasis)
                 "conj": null | "kʷe" | "wē",       # "and" / "or" joining this clause to the previous one
                 "neg": false,                      # ne before the verb (mē with imperative)
-                "particle": null | "nu" | "ge",    # nu "now, then" (clause-initial); -ge emphatic (enclitic)
+                "particle": null | "nu" | "ge" | "yod",  # nu "now, then"; -ge emphatic (enclitic); h₁yód "if, when"
                 "break": false,                    # this clause starts a new sentence
                 "question": false,                 # this clause's sentence ends in "?"
                 "slots": [
@@ -308,6 +308,7 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     vi = next(i for i, s in enumerate(slots) if s["role"] == "V")
     v = slots[vi].get("verb", {})
     prohibitive = cl.get("neg") and v.get("mood") == "IMP"
+    neg_wish = cl.get("neg") and v.get("mood") == "OPT"        # mē + optative: "may it not …" (Gk μή + opt.)
     words: dict[int, Word] = {}
     for i, s in enumerate(slots):
         lid, role = s["lex_id"], s["role"]
@@ -370,7 +371,8 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     if placed != list(range(len(slots))):
         missing = sorted(set(range(len(slots))) - set(placed))
         raise KeyError(f"slots {missing} not attached to the clause (a MOD/POSS head chain is broken)")
-    neg = Word("mē" if prohibitive else "ne", "closed:particle:ne", "NEG", "PARTICLE") if cl.get("neg") else None
+    neg = Word("mē" if (prohibitive or neg_wish) else "ne", "closed:particle:ne", "NEG", "PARTICLE") \
+        if cl.get("neg") else None
     vseq = ([neg] if neg else []) + [words[vi]]
     def render_phrase(ph: list[int]) -> list[Word]:
         ws = []
@@ -387,6 +389,8 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     out = front + vseq + rest if cl.get("order") == "VSO" else front + rest + vseq
     if cl.get("particle") == "nu":
         out.insert(0, Word("nu", "closed:particle:nu", "NU", "PARTICLE"))
+    if cl.get("particle") == "yod":       # h₁yód 'if, when' (Ved. yád): a subordinate clause, verb-final
+        out.insert(0, Word("h₁yód", "closed:relative_yo/n", "if/when", "CONJ"))
     # Wackernagel: enclitics after the first word, "and" (-kʷe) / "or" (-wē) on the first word
     clitics = [words[i] for i in seq if words[i].clitic]
     if cl.get("particle") == "ge":

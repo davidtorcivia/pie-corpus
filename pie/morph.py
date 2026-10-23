@@ -160,6 +160,8 @@ def _eh2(spec: NounSpec, conv: str) -> Cells:
                          render(stem + [Seg("n", "R"), Seg("s", "C")])]
         for k in ("ABL.PL", "DAT.PL", "INS.PL"):
             out[k] = out[k][::-1]
+        # vocative with initial accent (Ved. ámba, Gk νύμφα), as in the other declensions
+        out["VOC.SG"] = _uniq([render(_initial_accent(stem))] + out["VOC.SG"])
         # gen. sg. *-eh₂es beside -eh₂s (Beekes, Lundquist & Yates)
         out["GEN.SG"] = _uniq(out["GEN.SG"] + [render(_add(stem, "es"))])
     return out
