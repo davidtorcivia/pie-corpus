@@ -25,7 +25,7 @@ SLUGS = {"Proto-Germanic": "kroonen-pgmc", "Proto-Celtic": "matasovic-pcelt", "T
          "Baltic Inherited": "derksen-baltic", "Slavic Inherited": "derksen-slavic", "Italic Languages": "devaan-latin",
          "Armenian Inherited": "martirosyan-arm", "Altindoarischen": "ewaia", "Dichtersprache": "schmitt-1967",
          "Etymological Dictionary of Greek": "beekes-edg", "Iranian Verb": "cheung-iranian",
-         "Tocharian B": "adams-tochb", "Earliest Religious Poetry": "jamison-brereton",
+         "Tocharian B": "adams-tochb", "Hittite Inherited": "kloekhorst-hitt", "Earliest Religious Poetry": "jamison-brereton",
          "Latvju tautas": "dainas-endzelins", "chansons mythologiques": "jonval-1929",
          "Rix": "liv2", "Fortson": "fortson", "Ringe": "ringe", "Watkins": "watkins",
          "Mallory": "mallory-adams", "West": "west",
@@ -113,6 +113,8 @@ def main() -> int:
         if slug == "west" and f.suffix == ".pdf":
             slug = "west-pdf"
         if "Version_B" in f.name:      # a second LIV² copy: never write over the first one's text
+            if slug == "ewaia":        # the second EWAia I copy is a scan like the first: one OCR is enough
+                continue
             slug += "-b"
         m = re.search(r"Volume (\d+)", f.name)
         if m:                          # multi-volume works: one text dir per volume
