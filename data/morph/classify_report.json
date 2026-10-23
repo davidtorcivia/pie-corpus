@@ -1,14 +1,14 @@
 {
- "entries": 6744,
+ "entries": 6745,
  "coverage": {
-  "table": 587,
-  "usable": 3788,
+  "table": 588,
+  "usable": 3789,
   "shape": 4282,
   "unknown": 1786,
   "indeclinable": 89
  },
- "inflectable": 4869,
- "usable_for_tier3": 3788,
+ "inflectable": 4870,
+ "usable_for_tier3": 3789,
  "usable_threshold": 0.85,
  "backtest": {
   "indeclinable": {
@@ -100,18 +100,18 @@
    "cell_accuracy": 0.963
   },
   "shape:thematic": {
-   "tables": 69,
+   "tables": 68,
    "cells_ok": 1121,
-   "cells": 1311,
+   "cells": 1292,
    "tables_exact": 59,
-   "cell_accuracy": 0.8551
+   "cell_accuracy": 0.8676
   },
   "shape:thematic-adj": {
-   "tables": 85,
-   "cells_ok": 1577,
-   "cells": 1615,
-   "tables_exact": 83,
-   "cell_accuracy": 0.9765
+   "tables": 86,
+   "cells_ok": 1596,
+   "cells": 1634,
+   "tables_exact": 84,
+   "cell_accuracy": 0.9767
   },
   "shape:thematic-aorist": {
    "tables": 3,
@@ -174,7 +174,7 @@
   "shape:thematic-present": 1128,
   "unknown:noun-shape": 892,
   "unknown": 796,
-  "table": 587,
+  "table": 588,
   "shape:eh2": 391,
   "shape:athematic-root": 357,
   "shape:thematic-neuter": 280,
