@@ -14,6 +14,9 @@ Not shared vocabulary (common roots co-occur everywhere, and that is how the par
 - the same figure (merism, polyptoton, epithet + noun, verb + object) carried by cognate material.
 Say why the contexts are congruent and why the match is unlikely to be chance or generic language.
 
+## Scratch files
+Put any helper scripts or temporary files you write in the session scratchpad only under a name starting with your reader id (e.g. `RB021-search.py`); never open or overwrite another reader's files.
+
 ## Searching wider (allowed and encouraged)
 Search every local corpus to test or widen a lead: other occurrences, further branches, wider context. Use the loaders in pie/formula_search.py and pie/formula_search_multi.py, the mappings in data/research/formulas/mapping/, data/lexicon/lexicon.jsonl, or read raw/daughters/ with `python3 -I` (never execute or import anything that lives under raw/).
 
