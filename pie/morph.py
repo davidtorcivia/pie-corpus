@@ -395,8 +395,25 @@ def conjugate(spec: VerbSpec, convention: str = "handbook", alternatives: bool =
         return cells
 
     out = run(convention)
+    if convention == "handbook":
+        out = _handbook_verbal(spec, out)
     if alternatives:
         out = _merge(out, run("handbook" if convention == "wiktionary" else "wiktionary"))
+    return out
+
+
+def _handbook_verbal(spec: VerbSpec, out: Cells) -> Cells:
+    """Handbook forms where Fortson and Beekes agree against the Wiktionary module
+    (raw/books/extract/beekes-ly/diff.jsonl): middle 2pl *-dʰwe (no h₂; Fortson §5.16,
+    Beekes p. 268), with -dʰh₂we kept as an alternative; and 2sg *h₁és-si beside the
+    degeminated h₁ési (Fortson, Beekes p. 16)."""
+    out = dict(out)
+    for k, forms in out.items():
+        if k.startswith("MID.") and any("dʰh₂w" in f for f in forms):
+            out[k] = _uniq([f.replace("dʰh₂w", "dʰw") for f in forms] + forms)
+    st = _p(_bare(spec.strong))
+    if not spec.thematic and st and st[-1].base == "s" and st[-1].kind == "C" and "PRS.2SG" in out:
+        out["PRS.2SG"] = _uniq(out["PRS.2SG"] + [render(st) + "si"])
     return out
 
 
@@ -409,6 +426,8 @@ _TH_MID_PST = ["oh₂e", "eth₂e", "eto", "owedʰh₂", None, None, "omedʰh₂
 _TH_SBJV = ["ōh₂", "ēsi", "ēti", "ōwos", "ētes", "ētes", "ōmos", "ēte", "ōnti"]
 _TH_MID_SBJV = ["ōh₂er", "ēth₂er", "ētor", "ōwosdʰh₂", None, None, "ōmosdʰh₂", "ēdʰh₂we", "ōntor"]
 _TH_OPT = ["oyh₁m̥", "oys", "oyt", "oywe", "oytom", "oytām", "oyme", "oyte", "oyh₁n̥t"]
+# handbook: *-oyh₁- in every person and 3pl *-oyh₁ent (Fortson §5.57, Beekes p. 275)
+_TH_OPT_HB = ["oyh₁m̥", "oyh₁s", "oyh₁t", "oyh₁we", "oyh₁tom", "oyh₁tām", "oyh₁me", "oyh₁te", "oyh₁ent"]
 _TH_MID_OPT = ["oyh₂e", "oyth₂e", ["oyto", "oyh₁o"], "oywedʰh₂", None, None, "oymedʰh₂", "oydʰh₂we", "oyro"]
 # short-vowel subjunctive of athematic stems (strong stem + thematic vowel)
 _SH_SBJV = ["oh₂", "esi", "eti", "owos", "etes", "etes", "omos", "ete", "onti"]
@@ -453,7 +472,7 @@ def _phase_b(spec: VerbSpec, conv: str) -> Cells:
             out["IMP.FUT.2SG"] = out["IMP.FUT.3SG"] = [th("etōd")]   # future imperative -tōd (Byrd ǵn̥h₁yetōd)
         out.update(_slots("SBJV", _TH_SBJV, th))
         out.update(_slots("MID.SBJV", _TH_MID_SBJV, th))
-        out.update(_slots("OPT", _TH_OPT, th))
+        out.update(_slots("OPT", _TH_OPT if wk else _TH_OPT_HB, th))
         out.update(_slots("MID.OPT", _TH_MID_OPT, th))
         out["PTCP.ACT"] = [th("onts")]
         out["PTCP.MID"] = [th("omnos")]

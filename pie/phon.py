@@ -106,6 +106,8 @@ def join(stem: list[Seg], ending: list[Seg]) -> list[Seg]:
     3. Ending-initial resonants are syllabic iff not adjacent to a vocalic
        segment (ph₂tér+ms → ph₂térm̥s; h₂ówi+m → h₂ówim).
     4. s+s → s across the junction (h₁és+si → h₁ési).
+    5. A stem-final consonantal resonant between non-vocalic segments becomes
+       syllabic (gʷʰn+h₂ér → gʷʰn̥h₂ér).
     """
     if has_accent(stem):
         ending = deaccent(ending)
@@ -141,6 +143,14 @@ def join(stem: list[Seg], ending: list[Seg]) -> list[Seg]:
         right_v = i + 1 < len(out) and out[i + 1].vocalic
         out[i] = replace(out[i], syl=not (left_v or right_v))
         i += 1
+
+    # 5. a stem-final consonantal resonant between non-vocalic segments becomes syllabic,
+    #    after the ending's own resonants are settled (right to left): gʷʰn+h₂ér → gʷʰn̥h₂ér,
+    #    gʷʰn+tór → gʷʰn̥tór, but gʷʰn+n̥tór stays gʷʰnn̥tór
+    j = n - 1
+    if j > 0 and out[j].kind == "R" and not out[j].syl and not _fixed(out[j]) and not out[n].vocalic \
+            and not out[j - 1].vocalic:          # (a bare infix -n- has no left neighbour: left alone)
+        out[j] = replace(out[j], syl=True)
     return out
 
 

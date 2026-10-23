@@ -32,10 +32,10 @@
    "tables_ok": 2
   },
   "ine-decl-adj|amphikinetic": {
-   "cells_ok": 122,
-   "tables_ok": 6,
-   "cells_bad": 16,
-   "tables_bad": 3
+   "cells_ok": 118,
+   "tables_ok": 5,
+   "cells_bad": 20,
+   "tables_bad": 4
   },
   "ine-decl-adj|hysterokinetic": {
    "cells_ok": 19,
@@ -66,8 +66,10 @@
    "tables_ok": 40
   },
   "ine-decl-noun-mf|hysterokinetic": {
-   "cells_ok": 399,
-   "tables_ok": 21
+   "cells_ok": 395,
+   "tables_ok": 20,
+   "cells_bad": 4,
+   "tables_bad": 1
   },
   "ine-decl-noun-mf|proterokinetic": {
    "cells_ok": 665,
@@ -105,10 +107,10 @@
   }
  },
  "total": {
-  "cells_ok": 14023,
-  "tables_ok": 576,
-  "cells_bad": 174,
-  "tables_bad": 39,
+  "cells_ok": 14015,
+  "tables_ok": 574,
+  "cells_bad": 182,
+  "tables_bad": 41,
   "out_of_scope_tables": 10,
   "cells_out_of_scope": 437
  },
@@ -1515,6 +1517,102 @@
    "engine": [
     "h₂eh₂ógʰ",
     "h₂eh₂gʰdʰí"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2yewHox",
+   "form": "h₂yéwHō",
+   "template": "ine-decl-adj",
+   "args": {
+    "1": "h₂yéwHon",
+    "2": "h₂yuHn",
+    "3": "h₂yuHénih₂",
+    "4": "h₂yuHn̥yéh₂",
+    "ac": "amphikinetic"
+   },
+   "feature": "ABL.PL",
+   "wiktionary": [
+    "h₂yuHnmós",
+    "h₂yuHnbʰós",
+    "h₂yuHn̥yéh₂mos",
+    "h₂yuHn̥yéh₂bʰos"
+   ],
+   "engine": [
+    "h₂yuHn̥mós",
+    "h₂yuHn̥bʰós",
+    "h₂yuHn̥yéh₂mos",
+    "h₂yuHn̥yéh₂bʰos"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2yewHox",
+   "form": "h₂yéwHō",
+   "template": "ine-decl-adj",
+   "args": {
+    "1": "h₂yéwHon",
+    "2": "h₂yuHn",
+    "3": "h₂yuHénih₂",
+    "4": "h₂yuHn̥yéh₂",
+    "ac": "amphikinetic"
+   },
+   "feature": "DAT.PL",
+   "wiktionary": [
+    "h₂yuHnmós",
+    "h₂yuHnbʰós",
+    "h₂yuHn̥yéh₂mos",
+    "h₂yuHn̥yéh₂bʰos"
+   ],
+   "engine": [
+    "h₂yuHn̥mós",
+    "h₂yuHn̥bʰós",
+    "h₂yuHn̥yéh₂mos",
+    "h₂yuHn̥yéh₂bʰos"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2yewHox",
+   "form": "h₂yéwHō",
+   "template": "ine-decl-adj",
+   "args": {
+    "1": "h₂yéwHon",
+    "2": "h₂yuHn",
+    "3": "h₂yuHénih₂",
+    "4": "h₂yuHn̥yéh₂",
+    "ac": "amphikinetic"
+   },
+   "feature": "LOC.PL",
+   "wiktionary": [
+    "h₂yuHnsú",
+    "h₂yuHn̥yéh₂su"
+   ],
+   "engine": [
+    "h₂yuHn̥sú",
+    "h₂yuHn̥yéh₂su"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2yewHox",
+   "form": "h₂yéwHō",
+   "template": "ine-decl-adj",
+   "args": {
+    "1": "h₂yéwHon",
+    "2": "h₂yuHn",
+    "3": "h₂yuHénih₂",
+    "4": "h₂yuHn̥yéh₂",
+    "ac": "amphikinetic"
+   },
+   "feature": "INS.PL",
+   "wiktionary": [
+    "h₂yuHnmís",
+    "h₂yuHnbʰís",
+    "h₂yuHn̥yéh₂mis",
+    "h₂yuHn̥yéh₂bʰis"
+   ],
+   "engine": [
+    "h₂yuHn̥mís",
+    "h₂yuHn̥bʰís",
+    "h₂yuHn̥yéh₂mis",
+    "h₂yuHn̥yéh₂bʰis"
    ]
   },
   {
@@ -3343,6 +3441,80 @@
    ],
    "engine": [
     "térh₂wonti"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-wrh1exn",
+   "form": "wr̥h₁ḗn",
+   "template": "ine-decl-noun-mf",
+   "args": {
+    "ac": "hysterokinetic",
+    "1": "wr̥h₁én",
+    "2": "wr̥h₁n"
+   },
+   "feature": "ABL.PL",
+   "wiktionary": [
+    "wr̥h₁nmós",
+    "wr̥h₁nbʰós"
+   ],
+   "engine": [
+    "wr̥h₁n̥mós",
+    "wr̥h₁n̥bʰós"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-wrh1exn",
+   "form": "wr̥h₁ḗn",
+   "template": "ine-decl-noun-mf",
+   "args": {
+    "ac": "hysterokinetic",
+    "1": "wr̥h₁én",
+    "2": "wr̥h₁n"
+   },
+   "feature": "DAT.PL",
+   "wiktionary": [
+    "wr̥h₁nmós",
+    "wr̥h₁nbʰós"
+   ],
+   "engine": [
+    "wr̥h₁n̥mós",
+    "wr̥h₁n̥bʰós"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-wrh1exn",
+   "form": "wr̥h₁ḗn",
+   "template": "ine-decl-noun-mf",
+   "args": {
+    "ac": "hysterokinetic",
+    "1": "wr̥h₁én",
+    "2": "wr̥h₁n"
+   },
+   "feature": "LOC.PL",
+   "wiktionary": [
+    "wr̥h₁nsú"
+   ],
+   "engine": [
+    "wr̥h₁n̥sú"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-wrh1exn",
+   "form": "wr̥h₁ḗn",
+   "template": "ine-decl-noun-mf",
+   "args": {
+    "ac": "hysterokinetic",
+    "1": "wr̥h₁én",
+    "2": "wr̥h₁n"
+   },
+   "feature": "INS.PL",
+   "wiktionary": [
+    "wr̥h₁nmís",
+    "wr̥h₁nbʰís"
+   ],
+   "engine": [
+    "wr̥h₁n̥mís",
+    "wr̥h₁n̥bʰís"
    ]
   },
   {

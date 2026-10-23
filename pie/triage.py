@@ -62,6 +62,14 @@ def classify(m: dict) -> str:
         return re.sub("([iu])(?=[aeoāēō])", lambda x: {"i": "y", "u": "w"}[x[1]], y)
     if w - e and all(_glide(y) != y for y in w - e) and all(_glide(y) in e for y in w):
         return "wikt-hiatus-unsyllabified"
+    # a resonant between consonants left consonantal (noun module: wr̥h₁nbʰós, where the engine
+    # and the verb module write wr̥h₁n̥bʰós)
+    def _desyl(y):
+        return unicodedata.normalize("NFC", _nfd(y).replace("\u0325", ""))
+    def _rings(y):
+        return _nfd(y).count("\u0325")
+    if w - e and all(any(_desyl(x) == _desyl(y) and _rings(x) > _rings(y) for x in e) for y in w - e):
+        return "wikt-resonant-unsyllabified"
     # participle cells holding finite middle forms: a tagging error in the extraction
     if m["feature"] == "PTCP" and not any(x.endswith(("nts", "nos", "wṓs", "wōs")) for x in w):
         return "wikt-mistagged-cell"
