@@ -1,4 +1,4 @@
-from pie.liv import headword
+from pie.liv import headword_alternatives, headword
 
 
 def test_headword_parsing():
@@ -10,4 +10,7 @@ def test_headword_parsing():
 def test_uncertain_series_and_placeholders():
     assert headword("*g⁽ᵘ̯⁾eĝʰ-") == ("gʷeǵʰ-", None, True)       # g or gʷ: labialized form first
     assert headword("*ĝ⁽ʼ⁾el-") == ("ǵel-", None, True)
-    assert headword("?*g⁽ᵘ̯⁾eRĝʰ-")[0] is None                    # R = any resonant: not a form
+    # placeholders expand: R = a resonant, K = a tectal of unknown series; the root is uncertain
+    assert headword("?*g⁽ᵘ̯⁾eRĝʰ-") == ("gʷerǵʰ-", None, True)
+    assert headword_alternatives("*preK-") == ["preḱ-", "prek-", "prekʷ-"]
+    assert headword("*k(u̯)lei̯k̑-")[0] == "kʷleyḱ-"               # (u̯) written on the line

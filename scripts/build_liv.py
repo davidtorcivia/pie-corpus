@@ -12,7 +12,7 @@ import json
 import sys
 from pathlib import Path
 
-from pie.liv import headword, load_chunks, ocr_check
+from pie.liv import headword, headword_alternatives, load_chunks, ocr_check
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -32,7 +32,7 @@ def main() -> int:
         if not form:
             skipped["unparsed"].append(e["headword_printed"])
             continue
-        out.append({"root": form, "homograph": hom, "uncertain": unc or bool(e.get("uncertain_chars")),
+        out.append({"root": form, "root_alternatives": headword_alternatives(e["headword_printed"]), "homograph": hom, "uncertain": unc or bool(e.get("uncertain_chars")),
                     "headword_printed": e["headword_printed"], "meaning_de": e.get("meaning_de"),
                     "meaning_en": e.get("meaning_en"), "iew": e.get("iew"),
                     "stems": [{"label": s.get("label"), "form": s.get("form_printed"),

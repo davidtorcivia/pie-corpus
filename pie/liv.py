@@ -54,6 +54,35 @@ def load_chunks(root: Path = ROOT) -> list[dict]:
     return out
 
 
+PLACEHOLDERS = {"R": ["r", "l", "m", "n"], "K": ["ḱ", "k", "kʷ"], "T": ["t", "d"], "N": ["n", "m"]}
+
+
+def expand_placeholders(s: str, cap: int = 24) -> list[str]:
+    """'bʰRek̂-' → ['bʰrek̂-', 'bʰlek̂-', …]; [] if a capital is not a known placeholder."""
+    out = [""]
+    for ch in s:
+        if ch in PLACEHOLDERS:
+            out = [o + x for o in out for x in PLACEHOLDERS[ch]][:cap]
+        elif re.match(r"[A-GI-Z]", ch):
+            return []
+        else:
+            out = [o + ch for o in out]
+    return out
+
+
+def headword_alternatives(printed: str) -> list[str]:
+    """All canonical forms a placeholder headword stands for (for matching)."""
+    s = re.sub(r"^\??\(?\d*\.?\)?\s*\*?", "", printed.strip().lstrip("?")).strip()
+    if not re.search(r"[A-GI-Z]", s):
+        return []
+    out = []
+    for a in expand_placeholders(s.replace("(u̯)", "⁽ᵘ̯⁾").replace("(ʼ)", "⁽ʼ⁾")):
+        f, _, _ = headword(a)
+        if f and f not in out:
+            out.append(f)
+    return out
+
+
 def headword(printed: str) -> tuple[str | None, int | None, bool]:
     """'1.*bʰeh₂-' → (canonical 'bʰeh₂-', homograph 1, uncertain)."""
     s = printed.strip()
@@ -63,9 +92,15 @@ def headword(printed: str) -> tuple[str | None, int | None, bool]:
     hom = int(m[1]) if m else None
     s = s[m.end():] if m else s
     s = s.lstrip("*").strip()
-    # capital placeholders (R = any resonant, T, K, …) are not forms; H (laryngeal) is
+    # transcribers sometimes wrote the raised optional elements on the line: k(u̯) = k⁽ᵘ̯⁾, ĝ(ʼ) = ĝ⁽ʼ⁾
+    s = re.sub(r"([kgĝk̑ḱǵ]\u0311?ʰ?)\(u\u032f\)", r"\1⁽ᵘ̯⁾", s).replace("(ʼ)", "⁽ʼ⁾")
+    # LIV's capital placeholders (R a resonant, K a tectal of unknown series, T a dental,
+    # N a nasal) are expanded: the first expansion is the form, and the root is uncertain
     if re.search(r"[A-GI-Z]", s):
-        return None, hom, unc
+        alts = expand_placeholders(s)
+        if not alts:
+            return None, hom, unc
+        s, unc = alts[0], True
     # LIV's uncertain series: g⁽ᵘ̯⁾ = g or gʷ (optional labialization); ĝ⁽ʼ⁾ = uncertain
     # palatal (the palatal is kept as primary). Both mark the root uncertain.
     if "⁽ᵘ̯⁾" in s or "⁽ʼ⁾" in s or re.search("[ĝk̑g̑ḱǵ]\u0311?[ʼ']", s):
@@ -213,13 +248,14 @@ def apply(entries: dict[str, dict], liv_records: list[dict], reg, dump_label: st
         aspect = ASPECT.get(stems[0]["label"]) if stems else None
         liv = {k: x[k] for k in ("headword_printed", "homograph", "uncertain", "meaning_de", "meaning_en", "iew",
                                   "stems", "neubildungen", "page", "ocr_check")}
-        cands = by_plain.get(_plain(x["root"]), [])
+        forms = [x["root"], *x.get("root_alternatives", [])]
+        cands = [r for f in forms for r in by_plain.get(_plain(f), [])]
         how = "form"
         if len(cands) > 1:
             cands = sorted(cands, key=lambda r: -_gloss_sim(en.lower(), (r["meaning"][0] if r["meaning"] else "").lower()))[:1]
         if not cands:
             how = "generic-H+gloss"
-            cands = [r for r in by_generic.get(vkey(x["root"], "generic-H"), [])
+            cands = [r for f in forms for r in by_generic.get(vkey(f, "generic-H"), [])
                      if r["meaning"] and _gloss_sim(en.lower(), r["meaning"][0].lower()) >= 0.35][:1]
         if cands:
             r = cands[0]
@@ -231,7 +267,8 @@ def apply(entries: dict[str, dict], liv_records: list[dict], reg, dump_label: st
         rid = reg.get(f"liv2|{x['headword_printed']}|{x.get('meaning_de')}",
                       f"pie-root-{slug(x['root'])}-{gloss_tag(en)}")
         entries[rid] = {
-            "id": rid, "kind": "root", "form": x["root"], "form_ascii": to_ascii(x["root"]), "variants": [],
+            "id": rid, "kind": "root", "form": x["root"], "form_ascii": to_ascii(x["root"]),
+            "variants": x.get("root_alternatives", [])[1:],
             "stems": [], "pos": "root", "meaning": [en] if en else [], "meaning_de": x.get("meaning_de"),
             "uncertain": ["liv2-uncertain"] if x.get("uncertain") else [], "source": "liv2",
             "source_ref": {"dump": dump_label, "page": x["page"], "iew": x.get("iew")},
