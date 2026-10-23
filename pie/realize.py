@@ -9,9 +9,9 @@ engine's primary handbook form.
 Plan (one sentence):
   {"english": "...",
    "clauses": [{"order": "SOV" | "VSO",           # VSO = verb-initial (narrative/emphasis)
-                "conj": null | "kʷe",              # "and" joining this clause to the previous one
+                "conj": null | "kʷe" | "wē",       # "and" / "or" joining this clause to the previous one
                 "neg": false,                      # ne before the verb (mē with imperative)
-                "particle": null | "nu",           # sentence particle, clause-initial
+                "particle": null | "nu" | "ge",    # nu "now, then" (clause-initial); -ge emphatic (enclitic)
                 "break": false,                    # this clause starts a new sentence
                 "question": false,                 # this clause's sentence ends in "?"
                 "slots": [
@@ -125,6 +125,40 @@ class Lexicon:
             g = ((self.specs.get(lex_id) or {}).get("spec") or {}).get("gender")
         return g if g in ("m", "f", "n") else "m"
 
+    def participle_cells(self, lex_id: str, voice: str, gender: str) -> dict:
+        """Case forms of a verb's participle, agreeing in gender.
+
+        Active: nt-stems. Thematic (bʰéront-) has no ablaut and gen. -os
+        (bʰérontos, Ved. bháratas); athematic ablauts (h₁sónt-/h₁sn̥t-, gen.
+        h₁sn̥tés, Ved. satás). Feminine in -ih₂ (bʰérontih₂, h₁sn̥tíh₂).
+        Middle: the -mh₁no- adjective. The perfect participle is not supported.
+        """
+        k = ("PTCP", lex_id, voice, gender)
+        if k in self._cache:
+            return self._cache[k]
+        vc = self.cells(lex_id)
+        forms = vc.get("PTCP.MID" if voice == "MID" else "PTCP.ACT") or []
+        nom = forms[0] if forms else ""
+        if voice == "MID" and nom.endswith("nos"):
+            c = decline_adj(AdjSpec(nom[:-1]), "handbook")[gender]
+        elif voice != "MID" and nom.endswith("nts"):
+            from .classify import zero_grade
+            stem = nom[:-1]
+            thematic = bool((self.specs[lex_id].get("spec") or {}).get("strong", "").endswith(("e", "é")))
+            weak = None if thematic else zero_grade(stem)
+            if gender == "f":
+                fs = (weak or stem)
+                c = decline(NounSpec(fs + ("íh₂" if weak else "ih₂"), fs + ("yéh₂" if weak else "yeh₂"),
+                                     "proterokinetic", "f", devi=True), "handbook")
+            else:
+                c = decline(NounSpec(stem, weak, "proterokinetic" if weak else None, gender), "handbook")
+                if thematic:
+                    c = {**c, "GEN.SG": [stem + "os"], "ABL.SG": [stem + "os"]}
+        else:
+            raise KeyError(f"{lex_id}: no {voice} participle the engine can decline")
+        self._cache[k] = c
+        return c
+
     def cells(self, lex_id: str, gender: str | None = None) -> dict:
         k = (lex_id, gender)
         if k not in self._cache:
@@ -221,6 +255,16 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                 errs.append(f"{where}: {lid} has no usable spec (rule {r['rule']})")
                 continue
             fam = r["family"]
+            ptcp = s.get("participle")
+            if ptcp is not None:
+                if role != "MOD" or fam != "verb":
+                    errs.append(f"{where}: a participle is a MOD slot holding a verb")
+                elif ptcp.get("voice", "ACT") not in ("ACT", "MID"):
+                    errs.append(f"{where}: participle voice must be ACT or MID")
+            if s.get("dep") is not None:
+                d = s["dep"]
+                if not (isinstance(d, int) and 0 <= d < len(slots) and slots[d].get("participle")):
+                    errs.append(f"{where}: dep must point at a participle slot")
             if role == "V" and fam != "verb":
                 errs.append(f"{where}: V slot needs a verb, {lid} is a {fam}")
             if role == "V" and fam == "verb" and lx.entries[lid]["form"].endswith(("tor", "toy")) \
@@ -234,13 +278,13 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                     and not any(x.get("role") == "OBJ" for x in slots):
                 errs.append(f"{where}: {lid} is transitive: active needs an OBJ; a patient subject "
                             f"('the wheel broke', 'dress yourself') takes voice MID")
-            if role != "V" and fam == "verb":
+            if role != "V" and fam == "verb" and ptcp is None:
                 errs.append(f"{where}: role {role} needs a nominal, {lid} is a verb")
             if role == "MOD":
                 h = s.get("head")
                 if h is None or not (0 <= h < len(slots)) or slots[h].get("role") in ("V", "MOD", "ADV"):
                     errs.append(f"{where}: MOD needs a nominal head slot")
-            if role == "MOD" and fam not in ("adj",) and not lid.startswith("closed:"):
+            if role == "MOD" and fam not in ("adj",) and not lid.startswith("closed:") and ptcp is None:
                 errs.append(f"{where}: MOD needs an adjective, {lid} is a {fam}")
         if not errs:
             try:
@@ -298,6 +342,9 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
                 form = _closed_form(lx, lid, feat, g)
                 if form is None:
                     raise KeyError(f"{lid} {feat} {g}")
+            elif s.get("participle"):
+                form = lx.participle_cells(lid, s["participle"].get("voice", "ACT"), g)[feat][0]
+                feat = f"PTCP.{s['participle'].get('voice', 'ACT')}.{feat}"
             elif lx.specs[lid]["family"] == "adj":
                 form = lx.cells(lid, g)[feat][0]
             else:
@@ -307,10 +354,11 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     # phrases: every MOD/POSS goes directly before its head, recursively
     def phrase(i: int) -> list[int]:
         mods = [j for j, x in enumerate(slots) if x["role"] in ("MOD", "POSS") and x.get("head") == i and j != i]
-        return [k for j in mods for k in phrase(j)] + [i]
+        deps = [j for j, x in enumerate(slots) if x.get("dep") == i and j != i]   # a participle's own object etc.
+        return [k for j in deps + mods for k in phrase(j)] + [i]
 
     order_roles = ["VOC", "SUBJ", "IO", "OBJ", "GOAL", "INS", "LOC", "ABL", "PRED", "ADV"]
-    tops = [i for i, x in enumerate(slots) if x["role"] not in ("V", "MOD") and not
+    tops = [i for i, x in enumerate(slots) if x["role"] not in ("V", "MOD") and x.get("dep") is None and not
             (x["role"] == "POSS" and x.get("head") is not None)]
     tops.sort(key=lambda i: order_roles.index(slots[i]["role"]) if slots[i]["role"] in order_roles else 99)
     phrases = [phrase(t) for t in tops]
@@ -337,13 +385,16 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     front = [w for ph in q for w in render_phrase(ph)]           # fronted interrogative phrase(s)
     rest = [w for ph in phrases if ph not in q for w in render_phrase(ph)]
     out = front + vseq + rest if cl.get("order") == "VSO" else front + rest + vseq
-    if cl.get("particle"):
-        out.insert(0, Word(cl["particle"], f"closed:particle:{cl['particle']}", cl["particle"].upper(), "PARTICLE"))
-    # Wackernagel: enclitics after the first word, "and" (-kʷe) on the first word
+    if cl.get("particle") == "nu":
+        out.insert(0, Word("nu", "closed:particle:nu", "NU", "PARTICLE"))
+    # Wackernagel: enclitics after the first word, "and" (-kʷe) / "or" (-wē) on the first word
     clitics = [words[i] for i in seq if words[i].clitic]
+    if cl.get("particle") == "ge":
+        clitics.insert(0, Word("-ge", "closed:particle:-ge", "EMPH", "PARTICLE", clitic=True))
     out[1:1] = clitics
-    if cl.get("conj") == "kʷe":
-        out.insert(1, Word("-kʷe", "closed:particle:-kʷe", "and", "PARTICLE", clitic=True))
+    if cl.get("conj") in ("kʷe", "wē"):
+        f = "-" + cl["conj"]
+        out.insert(1, Word(f, f"closed:particle:{f}", "and" if f == "-kʷe" else "or", "PARTICLE", clitic=True))
     return out
 
 

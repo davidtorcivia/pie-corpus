@@ -159,3 +159,50 @@ def test_blocked_and_deponent_lexemes_are_rejected():
     if dep:
         assert any("deponent" in e for e in check_plan(
             {"english": "x", "clauses": [{"slots": [{"lex_id": SHEEP, "role": "SUBJ"}, V(dep)]}]}, lx))
+
+
+def _lx():
+    from pie.realize import Lexicon
+    return Lexicon.load()
+
+
+def _ptcp_plan(subj, voice, subj_role="SUBJ"):
+    return {"english": "x", "clauses": [{"slots": [
+        {"lex_id": subj, "role": subj_role, "num": "SG"},
+        {"lex_id": "pie-lex-bhereti", "role": "MOD", "head": 0, "participle": {"voice": voice}},
+        {"lex_id": "pie-lex-bhoros", "role": "OBJ", "num": "SG", "dep": 1},
+        {"lex_id": "pie-lex-h1ekjwos", "role": "OBJ" if subj_role == "SUBJ" else "SUBJ", "num": "PL"},
+        {"lex_id": "pie-lex-dedorkje", "role": "V", "verb": {"tense": "PRF"}}]}]}
+
+
+def test_participle_phrase_agrees_and_takes_its_own_object():
+    from pie.realize import check_plan, realize
+    lx = _lx()
+    p = _ptcp_plan("pie-lex-h2nexr", "ACT")
+    assert check_plan(p, lx) == []
+    assert realize(p, lx)["pie"] == "bʰoróm bʰéronts h₂nḗr h₁éḱwons dedórḱe."
+    assert "bʰérontih₂" in realize(_ptcp_plan("pie-lex-meh2texr", "ACT"), lx)["pie"]      # feminine -ih₂
+    assert "bʰéromnos" in realize(_ptcp_plan("pie-lex-h2nexr", "MID"), lx)["pie"]          # middle -mno-
+
+
+def test_thematic_participle_genitive_has_no_ablaut():
+    lx = _lx()
+    assert lx.participle_cells("pie-lex-bhereti", "ACT", "m")["GEN.SG"] == ["bʰérontos"]   # Ved. bháratas
+
+
+def test_dep_must_point_at_a_participle():
+    from pie.realize import check_plan
+    p = _ptcp_plan("pie-lex-h2nexr", "ACT")
+    del p["clauses"][0]["slots"][1]["participle"]
+    assert any("dep must point" in e for e in check_plan(p, _lx()))
+
+
+def test_or_and_emphatic_enclitics():
+    from pie.realize import realize
+    lx = _lx()
+    p = {"english": "x", "clauses": [
+        {"slots": [{"lex_id": "pie-lex-h1ekjwos", "role": "SUBJ", "num": "SG"},
+                   {"lex_id": "pie-lex-h1esti", "role": "V", "verb": {"tense": "PRS"}}]},
+        {"conj": "wē", "particle": "ge", "slots": [{"lex_id": "pie-lex-gwoxws", "role": "SUBJ", "num": "SG"},
+                                                  {"lex_id": "pie-lex-h1esti", "role": "V", "verb": {"tense": "PRS"}}]}]}
+    assert realize(p, lx)["pie"] == "h₁éḱwos h₁ésti gʷṓws-wē-ge h₁ésti."
