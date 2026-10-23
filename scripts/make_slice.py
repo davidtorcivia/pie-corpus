@@ -65,7 +65,8 @@ CLOSED_NUMERALS = {
     "closed:numerals/3": "three (MOD with a head; the noun takes the plural)",
     "closed:numerals/4": "four (MOD with a head; plural)",
     **{f"closed:numerals/indeclinable/{n}": w + " (MOD with a head; indeclinable)"
-       for n, w in (("5", "five"), ("6", "six"), ("7", "seven"), ("8", "eight"), ("9", "nine"), ("10", "ten"))},
+       for n, w in (("5", "five"), ("6", "six"), ("7", "seven"), ("8", "eight"), ("9", "nine"), ("10", "ten"),
+                    ("100", "a hundred"), ("1000", "a thousand"))},
 }
 CLOSED = {
     "closed:personal/1": "I / we (num SG|PL); enclitic forms with \"enclitic\": true",
