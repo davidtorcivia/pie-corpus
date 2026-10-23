@@ -1,14 +1,14 @@
 {
- "entries": 6745,
+ "entries": 6746,
  "coverage": {
   "table": 588,
-  "usable": 3789,
-  "shape": 4282,
+  "usable": 3790,
+  "shape": 4283,
   "unknown": 1786,
   "indeclinable": 89
  },
- "inflectable": 4870,
- "usable_for_tier3": 3789,
+ "inflectable": 4871,
+ "usable_for_tier3": 3790,
  "usable_threshold": 0.85,
  "backtest": {
   "indeclinable": {
@@ -170,7 +170,7 @@
   }
  },
  "by_rule": {
-  "shape:thematic": 1161,
+  "shape:thematic": 1162,
   "shape:thematic-present": 1128,
   "unknown:noun-shape": 892,
   "unknown": 796,

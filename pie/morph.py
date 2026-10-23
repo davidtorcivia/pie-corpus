@@ -225,6 +225,7 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
         full = strong[:-1] + [Seg("e", "V", acc=strong[-1].acc), Seg(strong[-1].base, "R")]   # suHnú- → suHnéws
         out["GEN.SG"] = out["ABL.SG"] = _uniq([render(_add(full, "s"))] + gen)
         out["DAT.SG"] = _uniq([render(_add(full, "ey"))] + out["DAT.SG"])
+
     out["INS.SG"] = [w("éh₁", "h₁", obl)]
     out["LOC.SG"] = _locative(spec, strong, weak, hb)
     if hb:   # prefer the -i (or i-stem -ēy) locative to the endingless one (which looks like the nominative)
@@ -256,6 +257,10 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
                     and weak[-2].base == "e":
                 pl = weak                                                 # h₁n̥gʷní- → h₁n̥gʷnéyes
         out["NOM.PL"] = out["VOC.PL"] = [render(_add(pl, "es"))]
+        if hb and spec.weak is None and strong[-1].syl and strong[-1].base in ("y", "w"):
+            # i/u-stem nominative plural in the full-grade suffix (Ved. sūnávas, agnáyas): suHnéwes
+            full = strong[:-1] + [Seg("e", "V", acc=strong[-1].acc), Seg(strong[-1].base, "R")]
+            out["NOM.PL"] = out["VOC.PL"] = _uniq([render(_add(full, "es"))] + out["NOM.PL"])
         out["ACC.PL"] = [render(_add(strong, "ms"))]
         if hb:
             # *-ns/-n̥s (< *-ms; Fortson §6.14, Ringe): pódn̥s, ph₂térn̥s, h₂ówins
@@ -465,6 +470,8 @@ _TH_OPT = ["oyh₁m̥", "oys", "oyt", "oywe", "oytom", "oytām", "oyme", "oyte",
 # handbook: *-oyh₁- in every person and 3pl *-oyh₁ent (Fortson §5.57, Beekes p. 275)
 _TH_OPT_HB = ["oyh₁m̥", "oyh₁s", "oyh₁t", "oyh₁we", "oyh₁tom", "oyh₁tām", "oyh₁me", "oyh₁te", "oyh₁ent"]
 _TH_MID_OPT = ["oyh₂e", "oyth₂e", ["oyto", "oyh₁o"], "oywedʰh₂", None, None, "oymedʰh₂", "oydʰh₂we", "oyro"]
+# handbook: the optative suffix keeps *h₁ in the middle as in the active (*-oyh₁-; Fortson §5.57)
+_TH_MID_OPT_HB = ["oyh₁h₂e", "oyh₁th₂e", "oyh₁to", "oyh₁wedʰh₂", None, None, "oyh₁medʰh₂", "oyh₁dʰwe", "oyh₁ro"]
 # short-vowel subjunctive of athematic stems (strong stem + thematic vowel)
 _SH_SBJV = ["oh₂", "esi", "eti", "owos", "etes", "etes", "omos", "ete", "onti"]
 _SH_MID_SBJV = ["oh₂er", "eth₂er", "etor", "owosdʰh₂", None, None, "omosdʰh₂", "edʰh₂we", "ontor"]
@@ -509,7 +516,7 @@ def _phase_b(spec: VerbSpec, conv: str) -> Cells:
         out.update(_slots("SBJV", _TH_SBJV, th))
         out.update(_slots("MID.SBJV", _TH_MID_SBJV, th))
         out.update(_slots("OPT", _TH_OPT if wk else _TH_OPT_HB, th))
-        out.update(_slots("MID.OPT", _TH_MID_OPT, th))
+        out.update(_slots("MID.OPT", _TH_MID_OPT if wk else _TH_MID_OPT_HB, th))
         out["PTCP.ACT"] = [th("onts")]
         out["PTCP.MID"] = [th("omnos")]
         return out

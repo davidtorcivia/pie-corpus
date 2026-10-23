@@ -34,7 +34,11 @@
  "tokens": 1289,
  "words_per_sentence": 4.65,
  "words_per_record": 4.65,
- "meter_fit": null,
+ "meter_fit": {
+  "lines": 32,
+  "fit": 24,
+  "share": 0.75
+ },
  "formula_uses": 0,
  "gates": {
   "reject_rate<=0.10": true,

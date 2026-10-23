@@ -1,0 +1,28 @@
+{"item": "652925e0", "verdict": "minor", "issue": "Imported scholarly line (Lühr-style 'King and God' notation), faithful to that source: 'pter' lacks the laryngeal of *ph₂ter and the vocative's initial accent; the theonym Werunos (Varuṇa ~ Ouranos) is a disputed equation. Needs a convention tag."}
+{"item": "72054765", "verdict": "minor", "issue": "Faithful Schleicher 1868 (pre-laryngeal, a-vocalism): tat, kukruwants, awis, agram, ā, bʰugat are not modern reconstructions (cf. *tód, *h₂ówis, *h₂éǵrom, *bʰugét). Fine only if tagged as historical Schleicher."}
+{"item": "d8ce7b39", "verdict": "wrong", "issue": "gʰrómos me gʷʰn̥yéh₁s: this is a 2sg optative, but the subject 'thunder' is 3sg, so it should be gʷʰn̥yéh₁t (04ee203f gets this right)."}
+{"item": "04ee203f", "verdict": "ok", "issue": ""}
+{"item": "9661df37", "verdict": "wrong", "issue": "h₂éh₂usoh₁ nos ... dédeh₃s: the instrumental (*-oh₁) is used as the direct object of 'give', coordinated with the accusative h₂wĺ̥h₁neh₂m. It should be h₂éh₂usom."}
+{"item": "8708918f", "verdict": "wrong", "issue": "h₁égʷʰis-kʷe ne bʰéyh₂s: the thing feared is in the nominative; it needs the ablative/genitive h₁égʷʰeys (cf. mr̥téys in 1a41578a). swóm gʷowsth₂ṓs h₁élh₂s: gʷowsth₂ṓs is nom. pl. and does not agree with swóm; the goal needs acc. sg. gʷowsth₂óm. Also h₁égʷʰis/h₁ógʷʰim, two different stems for the one serpent, sit side by side."}
+{"item": "9df6c88a", "verdict": "minor", "issue": "déh₃tōr governing a genitive (h₁uséwōm): Vedic distinguishes dā́tā vásu (root accent, takes acc.) from dātā́ vásūnām (suffix accent, takes gen.), so this should be *deh₃tṓr. The gen. pl. h₁uséwōm, with a full-grade suffix, follows the engine's paradigm but the handbook form is *-u-om."}
+{"item": "32b48ee0", "verdict": "minor", "issue": "deduyḗr: the zero grade of *dwey- before a vowel should be *dwi- (Gk dedíasi, dédimen), so *dedwiyḗr. The engine's own optative dedwiyéh₁s in 0fa882aa is inconsistent with it."}
+{"item": "2ad5f294", "verdict": "minor", "issue": "kéh₂nmn̥ toy h₂m̥bʰí dédeh₃mi: h₂m̥bʰí means 'around, on both sides', not 'in exchange'. That sense belongs to *h₂énti (Gk antí)."}
+{"item": "a7bb21d5", "verdict": "ok", "issue": ""}
+{"item": "0fa882aa", "verdict": "minor", "issue": "dayh₂urbʰós is mis-syllabified (expected *dayh₂wr̥bʰós, cf. Ved. -ṛbhyas). The vocative h₂yúHenih₂ keeps the nominative *-ih₂; a devī-stem vocative is *-i (Ved. devi). h₂én 'in' used adverbially for 'there' is marginal."}
+{"item": "0a3000b8", "verdict": "ok", "issue": ""}
+{"item": "649e27bc", "verdict": "ok", "issue": ""}
+{"item": "47667062", "verdict": "ok", "issue": ""}
+{"item": "88062bc6", "verdict": "wrong", "issue": "tríns kʷékʷlons h₁opéyom: this is a 1sg imperfect (or 3pl-like); the English 'He gave' needs 3sg h₁opéyet (as in b790309b)."}
+{"item": "5fd49392", "verdict": "ok", "issue": ""}
+{"item": "a7b35261", "verdict": "minor", "issue": "suHnúes (nom. pl.): the handbook u-stem form is *suHnéwes (Ved. sūnávaḥ, Goth. sunjus, OCS synove); the engine's own HéHḱewes and h₁wésewes are formed correctly. séngʷs 'sank' for a man falling in a fight is a sense stretch."}
+{"item": "86a009be", "verdict": "wrong", "issue": "Imported Lehmann–Zgusta-type text, garbled. 'ewewkʷ' has no ending (the reduplicated aorist is *(h₁é)wewkʷet) and is singular with plural h₁éḱwōs 'the horses'. 'kʷnewti' has lost the root *r̥ (*kʷr̥néwti, Ved. kṛṇóti). Notation is inconsistent: h₂wlnéh₂m vs h₂wlh₂néh₂ (h₁ in the lexicon), widntbʰós without syllabic n̥, and (h₁), (n) left in parentheses."}
+{"item": "65dcd7b7", "verdict": "wrong", "issue": "tóybʰos gʷowsth₂óm démont: this is 3pl, but the subject is 'he'; it should be démet."}
+{"item": "8e11f536", "verdict": "ok", "issue": ""}
+{"item": "b790309b", "verdict": "ok", "issue": ""}
+{"item": "e255db89", "verdict": "ok", "issue": ""}
+{"item": "58b61453", "verdict": "minor", "issue": "h₁éwsoyto drops the optative laryngeal; the engine's own convention gives *h₁éwsoyh₁to (cf. yésoyh₁t in the same text). The engine's MID.OPT cell is inconsistent with the active."}
+{"item": "f6c2a07e", "verdict": "ok", "issue": ""}
+{"item": "45fadbe6", "verdict": "minor", "issue": "stutréy: an agent noun keeps a full-grade root (Ved. stotré, dātré), so expect *stewtréy (an engine paradigm flaw). márkons is a Celto-Germanic word only, and in a text that also uses h₁éḱwōm."}
+{"item": "1a41578a", "verdict": "ok", "issue": ""}
+{"item": "793aadb5", "verdict": "ok", "issue": ""}
+{"item": "ecf6f28b", "verdict": "minor", "issue": "suHnúes for *suHnéwes (see a7b35261). h₁n̥gʷnéy is an endingless-locative variant where the stated convention is i-stem loc. *-ēy (h₁n̥gʷnḗy). The subject of 'gʷréh₂wonm̥ stéygʰet' switches from the husband to the bride without a pronoun (séh₂)."}
