@@ -1,0 +1,4765 @@
+{
+ "name": "b003",
+ "keywords": [
+  "god",
+  "sky",
+  "sun",
+  "dawn",
+  "earth",
+  "heaven",
+  "fire",
+  "water",
+  "pray",
+  "sacrifice",
+  "praise",
+  "song",
+  "sing",
+  "night",
+  "star",
+  "moon",
+  "rain",
+  "thunder",
+  "shine",
+  "light",
+  "bright",
+  "holy",
+  "wind",
+  "river"
+ ],
+ "closed": {
+  "closed:personal/1": "I / we (num SG|PL); enclitic forms with \"enclitic\": true",
+  "closed:personal/2": "you (num SG|PL); enclitic forms with \"enclitic\": true",
+  "closed:demonstrative_so": "this/that, the (MOD with head, or as a pronoun: he/she/it)",
+  "closed:relative_yo": "who/which (relative)",
+  "closed:interrogative_kwo": "who? which? (m/f/n by head)",
+  "closed:interrogative_kwi": "who? what? (kʷís, kʷíd)"
+ },
+ "lexemes": [
+  {
+   "lex_id": "pie-lex-lewkt",
+   "form": "léwkt",
+   "gloss": "to become bright",
+   "family": "verb",
+   "attested_in": 19,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-peh2wr",
+   "form": "péh₂wr̥",
+   "gloss": "fire",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 16
+  },
+  {
+   "lex_id": "pie-lex-h2stexr",
+   "form": "h₂stḗr",
+   "gloss": "star",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 14
+  },
+  {
+   "lex_id": "pie-lex-dyewmn",
+   "form": "dyéwmn̥",
+   "gloss": "shine, splendor",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 14
+  },
+  {
+   "lex_id": "pie-lex-wodr",
+   "form": "wódr̥",
+   "gloss": "water",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 13
+  },
+  {
+   "lex_id": "pie-lex-dyexws",
+   "form": "dyḗws",
+   "gloss": "sky, heaven",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 12
+  },
+  {
+   "lex_id": "pie-lex-lewks",
+   "form": "léwks",
+   "gloss": "something bright, white",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 12
+  },
+  {
+   "lex_id": "pie-lex-lewkos",
+   "form": "lewkós",
+   "gloss": "bright; shining",
+   "family": "adj",
+   "attested_in": 11
+  },
+  {
+   "lex_id": "pie-lex-deywos",
+   "form": "deywós",
+   "gloss": "god",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 10
+  },
+  {
+   "lex_id": "pie-lex-nbhros",
+   "form": "n̥bʰrós",
+   "gloss": "rain-cloud, with semantic narrowing to rain, cloud",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 10
+  },
+  {
+   "lex_id": "pie-lex-dhegjhoxm",
+   "form": "dʰéǵʰōm",
+   "gloss": "earth",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 9
+  },
+  {
+   "lex_id": "pie-lex-lowkeyeti",
+   "form": "lowkéyeti",
+   "gloss": "to light up",
+   "family": "verb",
+   "attested_in": 9,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2wexh1ti",
+   "form": "h₂wḗh₁ti",
+   "gloss": "to blow (of wind)",
+   "family": "verb",
+   "attested_in": 8,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-lowkos",
+   "form": "lowkós",
+   "gloss": "light space",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 8
+  },
+  {
+   "lex_id": "pie-lex-h1ngwnis",
+   "form": "h₁n̥gʷnís",
+   "gloss": "fire",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-h2ewsoxs",
+   "form": "h₂éwsōs",
+   "gloss": "dawn",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-h2ewsteros",
+   "form": "h₂éwsteros",
+   "gloss": "in the direction of dawn, east",
+   "family": "adj",
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-h2west-2",
+   "form": "h₂wést",
+   "gloss": "to become bright (at dawn)",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-soh2wl",
+   "form": "sóh₂wl̥",
+   "gloss": "sun",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-udros",
+   "form": "udrós",
+   "gloss": "of water, aquatic",
+   "family": "adj",
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-lowksneh2",
+   "form": "lówksneh₂",
+   "gloss": "moon",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 6
+  },
+  {
+   "lex_id": "pie-lex-deh2nu",
+   "form": "déh₂nu",
+   "gloss": "river",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-h2ekweh2",
+   "form": "h₂ékʷeh₂",
+   "gloss": "water",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-gjhleynos",
+   "form": "ǵʰleynós",
+   "gloss": "bright, clear",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-dheh1s",
+   "form": "dʰéh₁s",
+   "gloss": "god, godhead, deity",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 3
+  },
+  {
+   "lex_id": "pie-lex-lewkos-2",
+   "form": "léwkos",
+   "gloss": "light",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 2
+  },
+  {
+   "lex_id": "pie-lex-wedos",
+   "form": "wédos",
+   "gloss": "water",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 2
+  },
+  {
+   "lex_id": "pie-lex-gjhleymos",
+   "form": "ǵʰleymós",
+   "gloss": "shine, brightness",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 2
+  },
+  {
+   "lex_id": "pie-lex-keh2nmn",
+   "form": "kéh₂nmn̥",
+   "gloss": "song",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 2
+  },
+  {
+   "lex_id": "pie-lex-h2werst",
+   "form": "h₂wérst",
+   "gloss": "to rain",
+   "family": "verb",
+   "attested_in": 1,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-kweytt",
+   "form": "kʷéytt",
+   "gloss": "to begin to shine (?)",
+   "family": "verb",
+   "attested_in": 1,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-kwseps",
+   "form": "kʷséps",
+   "gloss": "night",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 1
+  },
+  {
+   "lex_id": "pie-lex-leh2pt",
+   "form": "léh₂pt",
+   "gloss": "to flash up, shine",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gweHyeti",
+   "form": "gʷéHyeti",
+   "gloss": "to sing [-yeti: transitive present verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 15,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-uh1ineHti",
+   "form": "uh₁inéHti",
+   "gloss": "to twist, wind, weave, plait [-ti: present verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 10,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1wrstos",
+   "form": "h₁wr̥stós",
+   "gloss": "to rain [-tos: Creates adverbs with ablative meaning: \"from ]",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-h1yagjyos",
+   "form": "h₁yáǵyos",
+   "gloss": "to sacrifice [-yós: adjective of relation]",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-stonh2eyeti",
+   "form": "stonh₂éyeti",
+   "gloss": "to thunder [-éyeti: causative/iterative verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1yagjyeti",
+   "form": "h₁yáǵyeti",
+   "gloss": "to sacrifice [-yeti: transitive present verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2reweti",
+   "form": "h₂réweti",
+   "gloss": "to shine, glow [-eti: thematic present verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-kjwinetti",
+   "form": "ḱwinétti",
+   "gloss": "to shine [-ti: present verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-skondeyeti",
+   "form": "skondéyeti",
+   "gloss": "to shine, appear [-éyeti: causative/iterative verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bheh2os",
+   "form": "bʰéh₂os",
+   "gloss": "to shine, glow light [-os: action/result noun, 'act of X']",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "n",
+   "attested_in": 3
+  },
+  {
+   "lex_id": "pie-lex-bheh3gti",
+   "form": "bʰéh₃gti",
+   "gloss": "to ignite, set fire to (for cooking?) [-ti: present verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bhh2nyeti",
+   "form": "bʰh₂nyéti",
+   "gloss": "to shine, glow light [-yeti: transitive present verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1erkweti",
+   "form": "h₁érkʷeti",
+   "gloss": "to praise, to shine [-eti: thematic present verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2woseyeti",
+   "form": "h₂woséyeti",
+   "gloss": "to become light [-éyeti: causative/iterative verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-keyteti",
+   "form": "kéyteti",
+   "gloss": "to shine, glow [-eti: thematic present verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-psdeh1yeti",
+   "form": "psdéh₁yeti",
+   "gloss": "to fart softly, pass gas, break wind [-éh₁yeti: stative verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-wendheti",
+   "form": "wéndʰeti",
+   "gloss": "to wind, to turn [-eti: thematic present verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gjhlieti",
+   "form": "ǵʰlíeti",
+   "gloss": "to shine [-eti: thematic present verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 2,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gjhloh1eti",
+   "form": "ǵʰlóh₁eti",
+   "gloss": "to shine, glow [-eti: thematic present verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 2,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-kh2neti",
+   "form": "kh₂néti",
+   "gloss": "to sing [-eti: thematic present verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 2,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bhleygjeti",
+   "form": "bʰléyǵeti",
+   "gloss": "to shine [-eti: thematic present verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 1,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gwhodheyeti",
+   "form": "gʷʰodʰéyeti",
+   "gloss": "to request, pray, ask for [-éyeti: causative/iterative verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 1,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-moldheyeti",
+   "form": "moldʰéyeti",
+   "gloss": "to pray, speak words to a deity [-éyeti: causative/iterative verb]",
+   "family": "verb",
+   "gloss_approximate": true,
+   "attested_in": 1,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-stewtoxr",
+   "form": "stéwtōr",
+   "gloss": "to praise, laud [-tōr: agent noun, 'one who X-es']",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 1
+  },
+  {
+   "lex_id": "pie-lex-Hrunepti",
+   "form": "Hrunépti",
+   "gloss": "to break (something); MID: to break, get broken",
+   "family": "verb",
+   "valency": "tr",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hwerdht",
+   "form": "Hwérdʰt",
+   "gloss": "to become big/strong",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hwert",
+   "form": "Hwért",
+   "gloss": "to enclose, put, insert",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-Hyowdheyeti",
+   "form": "Hyowdʰéyeti",
+   "gloss": "to cause to move, become agitated",
+   "family": "verb",
+   "attested_in": 9,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bhebhowdhe",
+   "form": "bʰebʰówdʰe",
+   "gloss": "to have awareness, be alert",
+   "family": "verb",
+   "attested_in": 8,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bhebhoydhe",
+   "form": "bʰebʰóydʰe",
+   "gloss": "to be trusting, confident",
+   "family": "verb",
+   "attested_in": 2,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bheh2ti",
+   "form": "bʰéh₂ti",
+   "gloss": "to speak, to be talking",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bhereti",
+   "form": "bʰéreti",
+   "gloss": "to be carrying",
+   "family": "verb",
+   "attested_in": 16,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bhewdheti",
+   "form": "bʰéwdʰeti",
+   "gloss": "to be awake, aware",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bhewdht",
+   "form": "bʰéwdʰt",
+   "gloss": "to wake up, to become attentive",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bheydt",
+   "form": "bʰéydt",
+   "gloss": "to split",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bheyh2t-2",
+   "form": "bʰéyh₂t",
+   "gloss": "to become afraid",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bhinedti",
+   "form": "bʰinédti",
+   "gloss": "to split (something); MID: to split, burst",
+   "family": "verb",
+   "valency": "tr",
+   "attested_in": 2,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bhoreyeti",
+   "form": "bʰoréyeti",
+   "gloss": "to be carrying around",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bhuHt",
+   "form": "bʰúHt",
+   "gloss": "to become",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bhuHyeti",
+   "form": "bʰuHyéti",
+   "gloss": "to be becoming, to be growing, to be appearing",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-bhweh2t",
+   "form": "bʰwéh₂t",
+   "gloss": "to grow, to arise, to become",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-dedeh3ti",
+   "form": "dédeh₃ti",
+   "gloss": "to be giving",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-dedorkje",
+   "form": "dedórḱe",
+   "gloss": "to see",
+   "family": "verb",
+   "attested_in": 12,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-dedwoye",
+   "form": "dedwóye",
+   "gloss": "to be afraid",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-deh3t",
+   "form": "déh₃t",
+   "gloss": "to give",
+   "family": "verb",
+   "attested_in": 10,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-deh3ut",
+   "form": "déh₃ut",
+   "gloss": "to give",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-dereti",
+   "form": "déreti",
+   "gloss": "to be splitting, separating",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-deykjeti",
+   "form": "déyḱeti",
+   "gloss": "to be pointing out",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-dhedheh1ti",
+   "form": "dʰédʰeh₁ti",
+   "gloss": "to be putting, placing",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-dhedhowghe",
+   "form": "dʰedʰówgʰe",
+   "gloss": "to be productive",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-dhegwheti",
+   "form": "dʰégʷʰeti",
+   "gloss": "to burn, to be burning",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-dhegwhh2t",
+   "form": "dʰégʷʰh₂t",
+   "gloss": "to come near: almost reach, pass by",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-dheh1t",
+   "form": "dʰéh₁t",
+   "gloss": "to have put, to have placed",
+   "family": "verb",
+   "attested_in": 10,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-dheh1t-2",
+   "form": "dʰéh₁t",
+   "gloss": "to place, put, set; produce, make",
+   "family": "verb",
+   "attested_in": 16,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-dhembht-2",
+   "form": "dʰémbʰt",
+   "gloss": "to be astonished (intr.)",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-dhewghti",
+   "form": "dʰéwgʰti",
+   "gloss": "to be productive",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-ghrebh2t-2",
+   "form": "gʰrébh₂t",
+   "gloss": "to seize",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gjegjonh1e",
+   "form": "ǵeǵónh₁e",
+   "gloss": "to be begotten, born",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gjheyt-2",
+   "form": "ǵʰéyt",
+   "gloss": "to drive on",
+   "family": "verb",
+   "attested_in": 1,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gjneh3t",
+   "form": "ǵnéh₃t",
+   "gloss": "to know",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gjnneh3ti",
+   "form": "ǵn̥néh₃ti",
+   "gloss": "to know, recognize",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-glewbheti",
+   "form": "gléwbʰeti",
+   "gloss": "to split",
+   "family": "verb",
+   "attested_in": 2,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gwegwome",
+   "form": "gʷegʷóme",
+   "gloss": "to have the feet planted, to stand steady",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gweh2t",
+   "form": "gʷéh₂t",
+   "gloss": "to go",
+   "family": "verb",
+   "attested_in": 8,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gwhenti",
+   "form": "gʷʰénti",
+   "gloss": "to be striking down, killing, slaying",
+   "family": "verb",
+   "attested_in": 8,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gwhert",
+   "form": "gʷʰért",
+   "gloss": "to become warm",
+   "family": "verb",
+   "attested_in": 1,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gwhrnewti",
+   "form": "gʷʰr̥néwti",
+   "gloss": "to be heating",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gwih3weti",
+   "form": "gʷíh₃weti",
+   "gloss": "to live, to be alive",
+   "family": "verb",
+   "attested_in": 14,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gwmskjeti",
+   "form": "gʷm̥sḱéti",
+   "gloss": "to be walking",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gwmyeti",
+   "form": "gʷm̥yéti",
+   "gloss": "to come",
+   "family": "verb",
+   "attested_in": 2,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-gwrh3eti",
+   "form": "gʷr̥h₃éti",
+   "gloss": "to swallow, devour, eat",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1ayt",
+   "form": "h₁áyt",
+   "gloss": "to give; take",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1edti",
+   "form": "h₁édti",
+   "gloss": "to eat",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1eh1lowdhe",
+   "form": "h₁eh₁lówdʰe",
+   "gloss": "to be grown",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1elh2t",
+   "form": "h₁élh₂t",
+   "gloss": "to drive (somewhere)",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1ept",
+   "form": "h₁épt",
+   "gloss": "to grasp, seize",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1ert-2",
+   "form": "h₁ért",
+   "gloss": "to arrive, get (somewhere)",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1esti",
+   "form": "h₁ésti",
+   "gloss": "to be",
+   "family": "verb",
+   "attested_in": 10,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1ewkt-2",
+   "form": "h₁éwkt",
+   "gloss": "to become accustomed (to), learn",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1ewseti",
+   "form": "h₁éwseti",
+   "gloss": "to burn (something), singe; MID: to burn, be burning",
+   "family": "verb",
+   "valency": "tr",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1eyti",
+   "form": "h₁éyti",
+   "gloss": "to go, to be going",
+   "family": "verb",
+   "attested_in": 9,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1ludhet",
+   "form": "h₁ludʰét",
+   "gloss": "to arrive",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1nedht",
+   "form": "h₁nédʰt",
+   "gloss": "to come forth",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1regwesyeti",
+   "form": "h₁regʷesyéti",
+   "gloss": "to be getting dark",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1rskjeti",
+   "form": "h₁r̥sḱéti",
+   "gloss": "to go to, to arrive",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1rudheh1ti",
+   "form": "h₁rudʰéh₁ti",
+   "gloss": "to be red",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1skjeti",
+   "form": "h₁sḱéti",
+   "gloss": "to be",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2egjeti",
+   "form": "h₂éǵeti",
+   "gloss": "to be driving",
+   "family": "verb",
+   "attested_in": 9,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2egjt",
+   "form": "h₂éǵt",
+   "gloss": "to say",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2eh2nokje",
+   "form": "h₂eh₂nóḱe",
+   "gloss": "to have reached, to be at",
+   "family": "verb",
+   "attested_in": 8,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2eh2oghe",
+   "form": "h₂eh₂ógʰe",
+   "gloss": "to be upset, afraid",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2ekjh3t",
+   "form": "h₂éḱh₃t",
+   "gloss": "to eat (up)",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2eleti",
+   "form": "h₂életi",
+   "gloss": "to be nourishing",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2eryeti",
+   "form": "h₂éryeti",
+   "gloss": "to be ploughing",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2ewHt",
+   "form": "h₂éwHt",
+   "gloss": "to put on (footwear)",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2iskjeti",
+   "form": "h₂isḱéti",
+   "gloss": "to be seeking, searching",
+   "family": "verb",
+   "attested_in": 11,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2kjh2owsyeti",
+   "form": "h₂ḱh₂owsyéti",
+   "gloss": "to be sharp-eared, to hear well",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2lekseti",
+   "form": "h₂lékseti",
+   "gloss": "to be protecting",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2lineHti",
+   "form": "h₂linéHti",
+   "gloss": "to be smearing",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2melgjti",
+   "form": "h₂mélǵti",
+   "gloss": "to be milking",
+   "family": "verb",
+   "attested_in": 8,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2reydheti",
+   "form": "h₂réydʰeti",
+   "gloss": "to put in order, arrange, organize",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2sowseyeti",
+   "form": "h₂sowséyeti",
+   "gloss": "to be drying (transitive), be making dry",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2wekst-2",
+   "form": "h₂wékst",
+   "gloss": "to grow (up), become large",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2weyst",
+   "form": "h₂wéyst",
+   "gloss": "to hear",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h3meygjheti",
+   "form": "h₃méyǵʰeti",
+   "gloss": "to be urinating",
+   "family": "verb",
+   "attested_in": 16,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h3pewst",
+   "form": "h₃péwst",
+   "gloss": "to increase, become rich in",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h3regjeti",
+   "form": "h₃réǵeti",
+   "gloss": "to be straightening, to be setting upright",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h3rogjeyeti",
+   "form": "h₃roǵéyeti",
+   "gloss": "to straighten, to make straight, to cause to be straight",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h3sleydht-2",
+   "form": "h₃sléydʰt",
+   "gloss": "to slip, go astray",
+   "family": "verb",
+   "attested_in": 1,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-kapyeti",
+   "form": "kapyéti",
+   "gloss": "to be grasping",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-kjeleti",
+   "form": "ḱéleti",
+   "gloss": "to be covering, hiding",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-kjemh2t-2",
+   "form": "ḱémh₂t",
+   "gloss": "to become tired; toil",
+   "family": "verb",
+   "attested_in": 1,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-kjeytor",
+   "form": "ḱéytor",
+   "gloss": "to be lying flat",
+   "family": "verb",
+   "attested_in": 13,
+   "deponent": true,
+   "features": [
+    "IMP MID",
+    "IND PRS MID",
+    "IND PST MID",
+    "OPT MID",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-kjlewseti",
+   "form": "ḱléwseti",
+   "gloss": "to be listening",
+   "family": "verb",
+   "attested_in": 11,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-kjlewt",
+   "form": "ḱléwt",
+   "gloss": "to hear",
+   "family": "verb",
+   "attested_in": 9,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-kjlnewti",
+   "form": "ḱl̥néwti",
+   "gloss": "to be listening",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-kjlneyti",
+   "form": "ḱl̥néyti",
+   "gloss": "to lean (something) against; MID: to lean",
+   "family": "verb",
+   "valency": "tr",
+   "attested_in": 8,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-kjremh2t",
+   "form": "ḱrémh₂t",
+   "gloss": "to become slack",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-kwekjt-2",
+   "form": "kʷéḱt",
+   "gloss": "to see, catch sight of",
+   "family": "verb",
+   "attested_in": 1,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-leght-2",
+   "form": "légʰt",
+   "gloss": "to lie down",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-leghyeti",
+   "form": "légʰyeti",
+   "gloss": "to be lying down",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-leh1t",
+   "form": "léh₁t",
+   "gloss": "to let go, allow",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-leloykwe",
+   "form": "lelóykʷe",
+   "gloss": "to be missing, to be gone",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-lembht",
+   "form": "lémbʰt",
+   "gloss": "to seize, grasp",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-leygjhti",
+   "form": "léyǵʰti",
+   "gloss": "to be licking",
+   "family": "verb",
+   "attested_in": 8,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-leytt",
+   "form": "léytt",
+   "gloss": "to go (away)",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-linekwti",
+   "form": "linékʷti",
+   "gloss": "to be leaving",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-logheyeti",
+   "form": "logʰéyeti",
+   "gloss": "to lay, make lie",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-melh3t-2",
+   "form": "mélh₃t",
+   "gloss": "to come forth",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-memoghe",
+   "form": "memógʰe",
+   "gloss": "to have power, to be able to",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-memone",
+   "form": "memóne",
+   "gloss": "to think, to be mindful",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-mewdt",
+   "form": "méwdt",
+   "gloss": "to become joyful",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-mlewHti",
+   "form": "mléwHti",
+   "gloss": "to say",
+   "family": "verb",
+   "attested_in": 2,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-moreyeti",
+   "form": "moréyeti",
+   "gloss": "to kill",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-nekjt-2",
+   "form": "néḱt",
+   "gloss": "to vanish, be lost",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-peh2sti",
+   "form": "péh₂sti",
+   "gloss": "to guard, to protect",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-peh3t",
+   "form": "péh₃t",
+   "gloss": "to drink",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-peh3t-2",
+   "form": "péh₃t",
+   "gloss": "to drink",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-pekweti",
+   "form": "pékʷeti",
+   "gloss": "to be cooking",
+   "family": "verb",
+   "attested_in": 11,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-perdetor",
+   "form": "pérdetor",
+   "gloss": "to be farting",
+   "family": "verb",
+   "attested_in": 8,
+   "deponent": true,
+   "features": [
+    "IMP MID",
+    "IND PRS MID",
+    "IND PST MID",
+    "OPT MID",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-piph3eti",
+   "form": "píph₃eti",
+   "gloss": "to drink, to be drinking",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-pleh1dheti",
+   "form": "pléh₁dʰeti",
+   "gloss": "to become full, swell",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-pleh1t-2",
+   "form": "pléh₁t",
+   "gloss": "to fill oneself, become full",
+   "family": "verb",
+   "attested_in": 2,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-reh1dht",
+   "form": "réh₁dʰt",
+   "gloss": "to carry out successfully",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-sedt",
+   "form": "sédt",
+   "gloss": "to sit down",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-sedyeti",
+   "form": "sédyeti",
+   "gloss": "to be sitting",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-seh1t",
+   "form": "séh₁t",
+   "gloss": "to let go",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-seh2gyeti",
+   "form": "séh₂gyeti",
+   "gloss": "to seek out, give a sign, track",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-seh2t",
+   "form": "séh₂t",
+   "gloss": "to become sated",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-sekwetor",
+   "form": "sékʷetor",
+   "gloss": "to be following",
+   "family": "verb",
+   "attested_in": 8,
+   "deponent": true,
+   "features": [
+    "IMP MID",
+    "IND PRS MID",
+    "IND PST MID",
+    "OPT MID",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-sekwt-3",
+   "form": "sékʷt",
+   "gloss": "to say",
+   "family": "verb",
+   "attested_in": 2,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-sengwt-2",
+   "form": "séngʷt",
+   "gloss": "to fall down, go under, sink",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-serpeti",
+   "form": "sérpeti",
+   "gloss": "to be creeping, to be crawling",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-sisdeti",
+   "form": "sísdeti",
+   "gloss": "to be sitting down",
+   "family": "verb",
+   "attested_in": 11,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-skelHt",
+   "form": "skélHt",
+   "gloss": "to slit open, split",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-skerdheti",
+   "form": "skérdʰeti",
+   "gloss": "to become cut, pierced",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-skinedti",
+   "form": "skinédti",
+   "gloss": "to be cutting off",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-sleh2gwt-2",
+   "form": "sléh₂gʷt",
+   "gloss": "to take, seize",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-sneh2ti",
+   "form": "snéh₂ti",
+   "gloss": "to swim, to be swimming",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-sodeyeti",
+   "form": "sodéyeti",
+   "gloss": "to set, to seat, to cause to sit",
+   "family": "verb",
+   "attested_in": 9,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-spekjyeti",
+   "form": "spéḱyeti",
+   "gloss": "to be looking at, to keep looking at",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-srobheyeti",
+   "form": "srobʰéyeti",
+   "gloss": "to be sipping, sucking",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-steh2t",
+   "form": "stéh₂t",
+   "gloss": "to stand up",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-stestoh2e",
+   "form": "stestóh₂e",
+   "gloss": "to be standing",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-stewdt",
+   "form": "stéwdt",
+   "gloss": "to become cold",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-steygheti",
+   "form": "stéygʰeti",
+   "gloss": "to be walking",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-sth2eh1yeti",
+   "form": "sth₂éh₁yeti",
+   "gloss": "to stand",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-stneh2ti",
+   "form": "stnéh₂ti",
+   "gloss": "to place, to stand",
+   "family": "verb",
+   "attested_in": 8,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-stoh2eyeti",
+   "form": "stoh₂éyeti",
+   "gloss": "to cause to stand",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-stunedti",
+   "form": "stunédti",
+   "gloss": "to be pushing, hitting",
+   "family": "verb",
+   "attested_in": 13,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-sweh2dt-2",
+   "form": "swéh₂dt",
+   "gloss": "to become tasty",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-swidyeti",
+   "form": "swidyéti",
+   "gloss": "to be sweating; sweat, perspire",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-terdt",
+   "form": "térdt",
+   "gloss": "to bore through, split",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-terh2uti",
+   "form": "térh₂uti",
+   "gloss": "to overcome, be able",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-terpt-2",
+   "form": "térpt",
+   "gloss": "to satisfy oneself, be sated",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-terst",
+   "form": "térst",
+   "gloss": "to dry up; to become thirsty",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-tetolh2e",
+   "form": "tetólh₂e",
+   "gloss": "to be holding up",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-tetone",
+   "form": "tetóne",
+   "gloss": "to be stretched, extended",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-tetorpe",
+   "form": "tetórpe",
+   "gloss": "to be satisfied",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-textkjti",
+   "form": "tḗtḱti",
+   "gloss": "to be creating",
+   "family": "verb",
+   "attested_in": 14,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-tlneh2ti",
+   "form": "tl̥néh₂ti",
+   "gloss": "to be lifting",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-tnnewti",
+   "form": "tn̥néwti",
+   "gloss": "to be stretching",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-tremti",
+   "form": "trémti",
+   "gloss": "to be trembling",
+   "family": "verb",
+   "attested_in": 11,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-treseti",
+   "form": "tréseti",
+   "gloss": "to tremble in fear",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-trsyeti",
+   "form": "tr̥syéti",
+   "gloss": "to be thirsty",
+   "family": "verb",
+   "attested_in": 5,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-wedheti",
+   "form": "wédʰeti",
+   "gloss": "to lead, conduct",
+   "family": "verb",
+   "attested_in": 8,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-wegjheti",
+   "form": "wéǵʰeti",
+   "gloss": "to be transporting",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-wenHt",
+   "form": "wénHt",
+   "gloss": "to grow fond of, to come to love",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-werh1t-2",
+   "form": "wérh₁t",
+   "gloss": "to say, to speak",
+   "family": "verb",
+   "attested_in": 9,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-weryeti",
+   "form": "wéryeti",
+   "gloss": "to be saying",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-westor",
+   "form": "wéstor",
+   "gloss": "to be wearing",
+   "family": "verb",
+   "attested_in": 9,
+   "deponent": true,
+   "features": [
+    "IMP MID",
+    "IND PRS MID",
+    "IND PST MID",
+    "OPT MID",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-wewket",
+   "form": "wéwket",
+   "gloss": "to say",
+   "family": "verb",
+   "attested_in": 3,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-weworte",
+   "form": "wewórte",
+   "gloss": "to be turned towards",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-weydseti",
+   "form": "wéydseti",
+   "gloss": "to want to see",
+   "family": "verb",
+   "attested_in": 2,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-weykjt-2",
+   "form": "wéyḱt",
+   "gloss": "to go into, to enter",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-widet",
+   "form": "widét",
+   "gloss": "to see, find, notice",
+   "family": "verb",
+   "attested_in": 8,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-woseyeti",
+   "form": "woséyeti",
+   "gloss": "to clothe, to put clothes onto",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-woyde",
+   "form": "wóyde",
+   "gloss": "to have seen, to know",
+   "family": "verb",
+   "attested_in": 13,
+   "features": [
+    "IMP ACT",
+    "IND PRF ACT",
+    "OPT ACT",
+    "SBJV ACT"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-woydeyeti",
+   "form": "woydéyeti",
+   "gloss": "to cause to see",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-wrgjyeti",
+   "form": "wr̥ǵyéti",
+   "gloss": "to be working, to be at work",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-yeh2ti",
+   "form": "yéh₂ti",
+   "gloss": "to be going",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-yeseti",
+   "form": "yéseti",
+   "gloss": "to be boiling",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-yewgjHt",
+   "form": "yéwǵHt",
+   "gloss": "to become restless",
+   "family": "verb",
+   "attested_in": 0,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-yunegti",
+   "form": "yunégti",
+   "gloss": "to be joining",
+   "family": "verb",
+   "attested_in": 8,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h1opeyeti",
+   "form": "h₁opéyeti",
+   "gloss": "to make reach; to give",
+   "family": "verb",
+   "attested_in": 7,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-wideh1yeti",
+   "form": "widéh₁yeti",
+   "gloss": "to see",
+   "family": "verb",
+   "attested_in": 1,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-h2owis",
+   "form": "h₂ówis",
+   "gloss": "sheep",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 8
+  },
+  {
+   "lex_id": "pie-lex-h1ekjwos",
+   "form": "h₁éḱwos",
+   "gloss": "stallion, horse",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 12
+  },
+  {
+   "lex_id": "pie-lex-gwoxws",
+   "form": "gʷṓws",
+   "gloss": "cattle",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 18
+  },
+  {
+   "lex_id": "pie-lex-kjwox",
+   "form": "ḱwṓ",
+   "gloss": "dog",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 14
+  },
+  {
+   "lex_id": "pie-lex-wlkwos",
+   "form": "wĺ̥kʷos",
+   "gloss": "wolf",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 14
+  },
+  {
+   "lex_id": "pie-lex-ph2texr",
+   "form": "ph₂tḗr",
+   "gloss": "father",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 13
+  },
+  {
+   "lex_id": "pie-lex-meh2texr",
+   "form": "méh₂tēr",
+   "gloss": "mother",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 10
+  },
+  {
+   "lex_id": "pie-lex-dhugh2texr",
+   "form": "dʰugh₂tḗr",
+   "gloss": "daughter",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 14
+  },
+  {
+   "lex_id": "pie-lex-bhreh2texr",
+   "form": "bʰréh₂tēr",
+   "gloss": "brother",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 12
+  },
+  {
+   "lex_id": "pie-lex-swesoxr",
+   "form": "swésōr",
+   "gloss": "sister",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 12
+  },
+  {
+   "lex_id": "pie-lex-h2egjros",
+   "form": "h₂éǵros",
+   "gloss": "field, pasturage",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-h2edos",
+   "form": "h₂édos",
+   "gloss": "to dry [-os: action/result noun, 'act of X']",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "n",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-smteros",
+   "form": "sḿ̥teros",
+   "gloss": "one of the two",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 6
+  },
+  {
+   "lex_id": "pie-lex-yewgos",
+   "form": "yéwgos",
+   "gloss": "team, pair of yoked animals",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 8
+  },
+  {
+   "lex_id": "pie-lex-bhudhmexn",
+   "form": "bʰudʰmḗn",
+   "gloss": "bottom",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-dhwexsos",
+   "form": "dʰwḗsos",
+   "gloss": "animated, possessed",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-moysos",
+   "form": "moysós",
+   "gloss": "ram, sheep (= *h₂ówis)",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 10
+  },
+  {
+   "lex_id": "pie-lex-h2epsos",
+   "form": "h₂épsos",
+   "gloss": "to join [-os: action/result noun, 'act of X']",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "n",
+   "attested_in": 12
+  },
+  {
+   "lex_id": "pie-lex-tonos",
+   "form": "tónos",
+   "gloss": "something stretched",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 9
+  },
+  {
+   "lex_id": "pie-lex-dhigjhtos",
+   "form": "dʰiǵʰtós",
+   "gloss": "to knead [-tos: Creates adverbs with ablative meaning: \"from ]",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 6
+  },
+  {
+   "lex_id": "pie-lex-selpos",
+   "form": "sélpos",
+   "gloss": "fat, oil [-os: action/result noun, 'act of X']",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 11
+  },
+  {
+   "lex_id": "pie-lex-h3rdhwos",
+   "form": "h₃r̥dʰwós",
+   "gloss": "upright, high [-wós: Creates adjectives from verb stems]",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-mrwos",
+   "form": "mr̥wós",
+   "gloss": "dead",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 1
+  },
+  {
+   "lex_id": "pie-lex-gloyHwos",
+   "form": "gloyHwós",
+   "gloss": "sticky; sticky substance",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 3
+  },
+  {
+   "lex_id": "pie-lex-bhengjhistHos",
+   "form": "bʰénǵʰistHos",
+   "gloss": "thickest",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-swexkjuros",
+   "form": "swēḱurós",
+   "gloss": "brother-in-law",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-peh2uros",
+   "form": "péh₂uros",
+   "gloss": "few, little [-rós: adjective]",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-h1werHos",
+   "form": "h₁wérHos",
+   "gloss": "broad [-os: action/result noun, 'act of X']",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "n",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-h2ewgmn",
+   "form": "h₂éwgmn̥",
+   "gloss": "enlargement, increase, strength",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 3
+  },
+  {
+   "lex_id": "pie-lex-poksos",
+   "form": "poksós",
+   "gloss": "The meaning of this term is uncertain. Possibilities include: [-os: action/result noun, 'a",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 10
+  },
+  {
+   "lex_id": "pie-lex-steh2mn",
+   "form": "stéh₂mn̥",
+   "gloss": "that which stands, stature",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 13
+  },
+  {
+   "lex_id": "pie-lex-dhenwr",
+   "form": "dʰénwr̥",
+   "gloss": "arc, bow",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 9
+  },
+  {
+   "lex_id": "pie-lex-duh2ros",
+   "form": "duh₂rós",
+   "gloss": "far, long",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 0
+  },
+  {
+   "lex_id": "pie-lex-yewHs",
+   "form": "yéwHs",
+   "gloss": "soup, broth",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 8
+  },
+  {
+   "lex_id": "pie-lex-kjleyteh2",
+   "form": "ḱleytéh₂",
+   "gloss": "something leaning, sloped, inclined",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 6
+  },
+  {
+   "lex_id": "pie-lex-spekjs",
+   "form": "spéḱs",
+   "gloss": "watcher",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 3
+  },
+  {
+   "lex_id": "pie-lex-pertus",
+   "form": "pértus",
+   "gloss": "crossing",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-kritos",
+   "form": "kritós",
+   "gloss": "to sift, separate, divide [-tos: Creates adverbs with ablative meaning: \"from ]",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-stegos",
+   "form": "stégos",
+   "gloss": "to cover [-os: action/result noun, 'act of X']",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-wrttos",
+   "form": "wr̥ttós",
+   "gloss": "to turn, to rotate, spin [-tos: Creates adverbs with ablative meaning: \"from ]",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-h2ogr",
+   "form": "h₂ógr̥",
+   "gloss": "berry",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 0
+  },
+  {
+   "lex_id": "pie-lex-h2oxws",
+   "form": "h₂ṓws",
+   "gloss": "ear",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 11
+  },
+  {
+   "lex_id": "pie-lex-wenh1os",
+   "form": "wénh₁os",
+   "gloss": "to love [-os: action/result noun, 'act of X']",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "n",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-snh1tos",
+   "form": "sn̥h₁tós",
+   "gloss": "to spin (thread), to sew [-tos: Creates adverbs with ablative meaning: \"from ]",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 10
+  },
+  {
+   "lex_id": "pie-lex-bhlHos",
+   "form": "bʰl̥Hós",
+   "gloss": "white",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-h3rexgjs",
+   "form": "h₃rḗǵs",
+   "gloss": "king, ruler",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 3
+  },
+  {
+   "lex_id": "pie-lex-h2epos",
+   "form": "h₂épos",
+   "gloss": "joint; limb, member",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 12
+  },
+  {
+   "lex_id": "pie-lex-spexr",
+   "form": "spḗr",
+   "gloss": "sparrow",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 2
+  },
+  {
+   "lex_id": "pie-lex-bhoh2gos",
+   "form": "bʰoh₂gós",
+   "gloss": "portion; share",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 1
+  },
+  {
+   "lex_id": "pie-lex-Hh3eskos",
+   "form": "Hh₃eskós",
+   "gloss": "ash tree [-kos: Creates deadjectival and desubstantival adjectives denoting ]",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 3
+  },
+  {
+   "lex_id": "pie-lex-h1yagjnos",
+   "form": "h₁yaǵnós",
+   "gloss": "to sacrifice [-nós: verbal adjective, 'X-ed']",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 3
+  },
+  {
+   "lex_id": "pie-lex-yokwr",
+   "form": "yókʷr̥",
+   "gloss": "liver",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 12
+  },
+  {
+   "lex_id": "pie-lex-sokwos",
+   "form": "sokʷós",
+   "gloss": "juice of plants",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 12
+  },
+  {
+   "lex_id": "pie-lex-tkjoymos",
+   "form": "tḱóymos",
+   "gloss": "to cultivate [-mos: action/result noun]",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 6
+  },
+  {
+   "lex_id": "pie-lex-gjhorneh2",
+   "form": "ǵʰórneh₂",
+   "gloss": "gut, intestine",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 9
+  },
+  {
+   "lex_id": "pie-lex-gwreh2wox",
+   "form": "gʷréh₂wō",
+   "gloss": "quern, mill-stone",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-steh2uros",
+   "form": "steh₂urós",
+   "gloss": "to stand (up) [-rós: adjective]",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-deh3toxr",
+   "form": "déh₃tōr",
+   "gloss": "giver",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-gjheyos",
+   "form": "ǵʰéyos",
+   "gloss": "horse",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 2
+  },
+  {
+   "lex_id": "pie-lex-melit",
+   "form": "mélit",
+   "gloss": "honey",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 10
+  },
+  {
+   "lex_id": "pie-lex-bhreh1wr",
+   "form": "bʰréh₁wr̥",
+   "gloss": "well, spring, source",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 8
+  },
+  {
+   "lex_id": "pie-lex-h2erh3wos",
+   "form": "h₂erh₃wós",
+   "gloss": "arable",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 2
+  },
+  {
+   "lex_id": "pie-lex-bhergjhs",
+   "form": "bʰérǵʰs",
+   "gloss": "something high up and fortified",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 10
+  },
+  {
+   "lex_id": "pie-lex-weh1itis",
+   "form": "wéh₁itis",
+   "gloss": "that which twines or bends",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 28
+  },
+  {
+   "lex_id": "pie-lex-sh2eytlom",
+   "form": "sh₂éytlom",
+   "gloss": "lifetime, lifespan",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 3
+  },
+  {
+   "lex_id": "pie-lex-h1olos",
+   "form": "h₁ólos",
+   "gloss": "awl",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 9
+  },
+  {
+   "lex_id": "pie-lex-morgjs",
+   "form": "mórǵs",
+   "gloss": "boundary, border",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 0
+  },
+  {
+   "lex_id": "pie-lex-h2oxwyom",
+   "form": "h₂ōwyóm",
+   "gloss": "egg",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 11
+  },
+  {
+   "lex_id": "pie-lex-gwhentis",
+   "form": "gʷʰéntis",
+   "gloss": "striking, killing",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 9
+  },
+  {
+   "lex_id": "pie-lex-gworh3os-2",
+   "form": "gʷorh₃ós",
+   "gloss": "to swallow, devour, eat [-os: action/result noun, 'act of X']",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-weydtoxr",
+   "form": "wéydtōr",
+   "gloss": "one who has seen, one who knows",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 8
+  },
+  {
+   "lex_id": "pie-lex-bhardheh2",
+   "form": "bʰardʰéh₂",
+   "gloss": "beard",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 3
+  },
+  {
+   "lex_id": "pie-lex-gjerh2ros",
+   "form": "ǵerh₂rós",
+   "gloss": "to grow old, to mature [-rós: adjective]",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 3
+  },
+  {
+   "lex_id": "pie-lex-medhu",
+   "form": "médʰu",
+   "gloss": "honey",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 20
+  },
+  {
+   "lex_id": "pie-lex-perkjos",
+   "form": "perḱós",
+   "gloss": "colored [-os: action/result noun, 'act of X']",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-bhoxr",
+   "form": "bʰṓr",
+   "gloss": "thief",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-bhengjhos",
+   "form": "bʰénǵʰos",
+   "gloss": "thickness",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-dwoyos",
+   "form": "dwoyós",
+   "gloss": "double, twofold",
+   "family": "adj",
+   "attested_in": 8
+  },
+  {
+   "lex_id": "pie-lex-swekjstos",
+   "form": "swéḱstos",
+   "gloss": "sixth",
+   "family": "adj",
+   "attested_in": 10
+  },
+  {
+   "lex_id": "pie-lex-mregjhus",
+   "form": "mréǵʰus",
+   "gloss": "short",
+   "family": "adj",
+   "attested_in": 6
+  },
+  {
+   "lex_id": "pie-lex-bhosos",
+   "form": "bʰosós",
+   "gloss": "bare, barefoot",
+   "family": "adj",
+   "attested_in": 3
+  },
+  {
+   "lex_id": "pie-lex-dekjsiwos",
+   "form": "deḱsiwós",
+   "gloss": "what is proper, right",
+   "family": "adj",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-albhos",
+   "form": "albʰós",
+   "gloss": "white",
+   "family": "adj",
+   "attested_in": 6
+  },
+  {
+   "lex_id": "pie-lex-dhubhnos",
+   "form": "dʰubʰnós",
+   "gloss": "deep",
+   "family": "adj",
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-kwetwores",
+   "form": "kʷetwóres",
+   "gloss": "four",
+   "family": "adj",
+   "attested_in": 15
+  },
+  {
+   "lex_id": "pie-lex-h1wersos",
+   "form": "h₁wersós",
+   "gloss": "wet",
+   "family": "adj",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-nekjus",
+   "form": "néḱus",
+   "gloss": "dead",
+   "family": "adj",
+   "attested_in": 8
+  },
+  {
+   "lex_id": "pie-lex-nigwtos",
+   "form": "nigʷtós",
+   "gloss": "washed",
+   "family": "adj",
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-h1rudhros",
+   "form": "h₁rudʰrós",
+   "gloss": "red",
+   "family": "adj",
+   "attested_in": 9
+  },
+  {
+   "lex_id": "pie-lex-h1enteros",
+   "form": "h₁énteros",
+   "gloss": "inside, within",
+   "family": "adj",
+   "attested_in": 13
+  },
+  {
+   "lex_id": "pie-lex-bheh2nos",
+   "form": "bʰeh₂nós",
+   "gloss": "shiny",
+   "family": "adj",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-krsnos",
+   "form": "kr̥snós",
+   "gloss": "black",
+   "family": "adj",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-dh3tos",
+   "form": "dh₃tós",
+   "gloss": "given",
+   "family": "adj",
+   "attested_in": 11
+  },
+  {
+   "lex_id": "pie-lex-mntos",
+   "form": "mn̥tós",
+   "gloss": "thought",
+   "family": "adj",
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-somHos",
+   "form": "somHós",
+   "gloss": "same, alike",
+   "family": "adj",
+   "attested_in": 11
+  }
+ ]
+}

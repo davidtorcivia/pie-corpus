@@ -128,6 +128,14 @@ def main() -> int:
     # random fill: dictionary-glossed or well-attested words only (b002 review R3)
     rest = [i for i in pool if i not in chosen and (lx.meaning(i)[1] == "wiktionary" or attested(i) >= 3)]
     rng.shuffle(rest)
+    # balance the fill by family so verbs (now plentiful, with the LIV² aorists) don't crowd out
+    # nouns and adjectives: about 40% nouns and 8% adjectives in the whole slice
+    target = {"noun": round(0.40 * args.size), "adj": round(0.08 * args.size)}
+    for fam in ("noun", "adj"):
+        have = sum(1 for i in chosen if lx.specs[i]["family"] == fam)
+        add = [i for i in rest if lx.specs[i]["family"] == fam][: max(0, target[fam] - have)]
+        chosen += add
+    rest = [i for i in rest if i not in set(chosen)]
     chosen += rest[: max(0, args.size - len(chosen))]
     items = []
     for i in chosen[: max(args.size, len(chosen))]:
