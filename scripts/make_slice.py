@@ -26,7 +26,7 @@ CORE_NOUNS = ["pie-lex-h2owis", "pie-lex-h1ngwnis", "pie-lex-peh2wr", "pie-lex-h
               "pie-lex-dhugh2texr", "pie-lex-bhreh2texr", "pie-lex-swesoxr", "pie-lex-h2egjros", "pie-lex-wodr",
               "pie-lex-nokwts", "pie-lex-gjhwexr", "pie-lex-soh2wl", "pie-lex-swos", "pie-lex-wekwos",
               "pie-lex-deywos", "pie-lex-mert", "pie-lex-spert", "pie-lex-kjexr", "pie-lex-h2wlh1neh2",
-              "pie-lex-h1lewdheros", "pie-lex-Hroth2os"]
+              "pie-lex-h1lewdheros", "pie-lex-Hroth2os", "pie-lex-suHnus", "pie-lex-h2werst", "pie-lex-gjhutos"]
 ADVERB_POS = ("adv", "prep", "postp")
 NIL_ADMIT = {"pie-lex-bhagos", "pie-lex-bhngjhulos", "pie-lex-bhrtos", "pie-lex-gwowsth2os", "pie-lex-kjh3tos",
              "pie-lex-medtos", "pie-lex-priHtos", "pie-lex-h2rgjipyos", "pie-lex-kjolHtos", "pie-lex-rotos"}

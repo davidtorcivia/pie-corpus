@@ -228,8 +228,9 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
         verbs = [s for s in slots if s.get("role") == "V"]
         if len(verbs) != 1:
             errs.append(f"clause {ci}: needs exactly one V slot, has {len(verbs)}")
+        # (a relative pronoun may be the subject: "you who split the vault" is fine)
         if len(verbs) == 1 and (verbs[0].get("verb") or {}).get("person") == 2 and any(
-                s.get("role") == "SUBJ" and not s.get("lex_id", "").startswith("closed:personal/") for s in slots):
+                s.get("role") == "SUBJ" and not s.get("lex_id", "").startswith("closed:") for s in slots):
             errs.append(f"clause {ci}: a 2nd-person verb takes no noun subject: address the god or person "
                         f"with a VOC slot (h₂éwsos 'Dawn!', not SUBJ h₂éwsōs)")
         for si, s in enumerate(slots):
