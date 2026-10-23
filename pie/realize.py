@@ -109,7 +109,9 @@ class Lexicon:
         """(gloss, source): Wiktionary gloss, or the approximate derived one."""
         m = self.entries[lex_id]["meaning"]
         if m:
-            return m[0], "wiktionary"
+            # first senses joined: ḱléwos is "that which is heard; fame", and "fame" is what a planner needs
+            return "; ".join(dict.fromkeys(x.strip() for x in m[:3] if x.strip())), \
+                self.entries[lex_id].get("meaning_source", "wiktionary")
         return self.derived.get(lex_id), "derived"
 
     def gender(self, lex_id: str) -> str:
