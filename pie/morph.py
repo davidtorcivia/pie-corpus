@@ -22,6 +22,8 @@ Features: nouns "NOM.SG", "GEN.PL", …; verbs "PRS.3SG", "PST.1PL",
 
 from __future__ import annotations
 
+import re
+
 from dataclasses import dataclass, field, replace
 
 from .phon import (Seg, contract_eh2m, delabialize, has_accent, join, junction_laryngeal_loss,
@@ -158,6 +160,8 @@ def _eh2(spec: NounSpec, conv: str) -> Cells:
                          render(stem + [Seg("n", "R"), Seg("s", "C")])]
         for k in ("ABL.PL", "DAT.PL", "INS.PL"):
             out[k] = out[k][::-1]
+        # gen. sg. *-eh₂es beside -eh₂s (Beekes, Lundquist & Yates)
+        out["GEN.SG"] = _uniq(out["GEN.SG"] + [render(_add(stem, "es"))])
     return out
 
 
@@ -199,10 +203,14 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
         out["ACC.SG"] = [render(contract_eh2m(acc) if not hb else acc)]
     # --- singular, weak
     if not weak_acc:
-        gen = [w("és", "")]   # *-ós is a daughter-language spread, not PIE (Fortson §6.8)
+        # primary -és; -ós as an alternative (Beekes, Lundquist & Yates; Fortson §6.8 calls it a spread)
+        gen = [w("és", "")] + ([w("ós", "")] if hb else [])
     else:
         last = weak[-1]
         gen = [render(_add(weak, "os" if (last.base == "s" and last.kind == "C") else "s"))]
+    if hb and spec.weak and weak[-1].syl and weak[-1].base == "y":
+        # i-stem gen. *-eys beside -is (h₂éweys; Beekes, Lundquist & Yates)
+        gen = _uniq(gen + [render(_add(weak[:-1] + [Seg("e", "V"), Seg("y", "R")], "s"))])
     out["GEN.SG"] = out["ABL.SG"] = gen
     out["DAT.SG"] = [w("éy", "ey")]
     if hb and spec.weak is None and strong[-1].syl and strong[-1].base in ("y", "w"):
@@ -406,11 +414,22 @@ def _handbook_verbal(spec: VerbSpec, out: Cells) -> Cells:
     """Handbook forms where Fortson and Beekes agree against the Wiktionary module
     (raw/books/extract/beekes-ly/diff.jsonl): middle 2pl *-dʰwe (no h₂; Fortson §5.16,
     Beekes p. 268), with -dʰh₂we kept as an alternative; and 2sg *h₁és-si beside the
-    degeminated h₁ési (Fortson, Beekes p. 16)."""
+    degeminated h₁ési (Fortson, Beekes p. 16). Lundquist & Yates (Handbook ch. 122) add:
+    1pl -mes, middle 1pl -mesdʰh₂, thematic middle participle -omh₁nos."""
     out = dict(out)
     for k, forms in out.items():
         if k.startswith("MID.") and any("dʰh₂w" in f for f in forms):
             out[k] = _uniq([f.replace("dʰh₂w", "dʰw") for f in forms] + forms)
+    # 1pl *-mes (o-grade -mos is Italic/Slavic; Lundquist & Yates §122, Beekes, Fortson), and
+    # middle 1pl *-mesdʰh₂ (L&Y, Beekes): bʰéromes, h₁smés, bʰéromesdʰh₂
+    for k, forms in out.items():
+        if k.endswith(".1PL") and any(re.search("m[oó]s(dʰh₂)?$", f) for f in forms):
+            new = [re.sub("m([oó])s(dʰh₂)?$", lambda m: "m" + ("é" if m[1] == "ó" else "e") + "s" + (m[2] or ""), f)
+                   for f in forms]
+            out[k] = _uniq(new + forms)
+    # thematic middle participle *-omh₁nos (L&Y, Beekes; Fortson's *-mh₁no-)
+    if spec.thematic and "PTCP.MID" in out:
+        out["PTCP.MID"] = _uniq([f.replace("omnos", "omh₁nos") for f in out["PTCP.MID"]] + out["PTCP.MID"])
     st = _p(_bare(spec.strong))
     if not spec.thematic and st and st[-1].base == "s" and st[-1].kind == "C" and "PRS.2SG" in out:
         out["PRS.2SG"] = _uniq(out["PRS.2SG"] + [render(st) + "si"])

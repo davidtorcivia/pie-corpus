@@ -144,7 +144,7 @@ def test_pro_drop_person_and_number_on_the_verb():
     r = R({"english": "Let us see the sheep!", "clauses": [{"slots": [
         {"lex_id": SHEEP, "role": "OBJ"},
         {"lex_id": SEE, "role": "V", "verb": {"mood": "SBJV", "voice": "ACT", "person": 1, "num": "PL"}}]}]})
-    assert r["pie"] == "h₂ówim spéḱyōmos."
+    assert r["pie"] == "h₂ówim spéḱyōmes."   # 1pl -mes (Lundquist & Yates, Beekes, Fortson)
 
 
 def test_blocked_and_deponent_lexemes_are_rejected():
@@ -182,7 +182,7 @@ def test_participle_phrase_agrees_and_takes_its_own_object():
     assert check_plan(p, lx) == []
     assert realize(p, lx)["pie"] == "bʰoróm bʰéronts h₂nḗr h₁éḱwons dedórḱe."
     assert "bʰérontih₂" in realize(_ptcp_plan("pie-lex-meh2texr", "ACT"), lx)["pie"]      # feminine -ih₂
-    assert "bʰéromnos" in realize(_ptcp_plan("pie-lex-h2nexr", "MID"), lx)["pie"]          # middle -mno-
+    assert "bʰéromh₁nos" in realize(_ptcp_plan("pie-lex-h2nexr", "MID"), lx)["pie"]        # middle -omh₁no- (L&Y, Beekes)
 
 
 def test_thematic_participle_genitive_has_no_ablaut():
