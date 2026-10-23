@@ -18,3 +18,8 @@ The first run (docs/research/8b-backtest.md) found, in an exploratory out-of-fol
 
 ## Reporting
 Whatever the outcome, the numbers above are reported as they come out, with the slot counts, in docs/research/8b-backtest.md under "Replication". No other statistic is substituted for H1/H2 after the data is seen.
+
+## Outcome of this pre-registration (2026-10-23)
+Underpowered, as the minimum-power rule defines it: the kaikki Sanskrit/Greek/Latin etymologies gave 23 fresh sets with 1 exact-matched effect slot (minimum 150), because they derive from the same Wiktionary pages as the first run's lexicon. No model was trained and no statistic computed. H1 and H2 remain open.
+
+**Next replication (to be pre-registered separately before any data is built):** NIL's formations carry daughter words transcribed from the book (data/lexicon/nil.jsonl, up to four per formation, with ‡ marking single-language formations). They are independent of Wiktionary's descendant lists, but share root families with the first run, so independence must be defined per formation (a formation, i.e. root + suffix, absent from the first run's data) rather than per root family.

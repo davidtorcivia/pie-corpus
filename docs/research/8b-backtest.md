@@ -229,3 +229,64 @@ design can only test the surface-normal residue.
   reason the OOF analysis is labeled secondary.
 - **Schedule shortened.** The grid ran a 120-epoch schedule and dev NLL was best at epoch 25, so the
   final runs use a 40-epoch schedule; this is recorded in `tune.json`.
+
+## Replication (pre-registered)
+
+Plan: `docs/research/8b-preregistration.md`, written before the data existed. Run 2026-10-23.
+
+**Verdict: underpowered, not run.** The fresh data has **1** effect slot with an exact-matched control,
+against the pre-registered minimum of 150. As the pre-registration requires, no model was trained, no
+surprisal was computed, and H1 (loss) and H2 (colouring) were not tested. The first run's out-of-fold lead
+(+0.27 nats beyond the shuffled model) is still a hypothesis: it is neither confirmed nor refuted.
+
+**Data.** Code: `scripts/build_replication.py`. Output: `data/research/backtest/replication.jsonl`; all
+counts are in `replication_meta.json`. Sources: the kaikki.org Sanskrit, Ancient Greek and Latin dumps
+(`raw/daughters/kaikki-*/`), parsed only with `python -I`.
+
+- **Links.** `{{inh}}`, `{{inh+}}`, `{{der}}` and `{{der+}}` from `ine-pro`, plus `{{etymon}}` `:inh`/`:der`.
+  Excluded:
+  - borrowings and uncertain links;
+  - entries with an affix or compound template, or linked to two word-level PIE etyma;
+  - root-only links (terms ending in `-`);
+  - roots, affixes and inflected-form pages.
+- **Forms.** Sanskrit and Greek romanizations, Latin canonical (macron) forms. The Greek breve was stripped;
+  macrons and accents were kept.
+- **Same rules as the first run.**
+  - Attested languages only. The laryngeal-notation scan found 0% for all three languages.
+  - No Anatolian or Tocharian.
+  - Targets come from the unchanged `pie/prelaryngeal.py`.
+  - At least 2 languages per set.
+- **Freshness, at root-family level.** A set was dropped if its etymon or any linked root resolves to a
+  lexicon family found in `primary.jsonl` or `secondary.jsonl`. It was also dropped if its target matches
+  a first-run target, or if it shares a (language, form) pair with a first-run input.
+
+| step | count |
+|---|---|
+| PIE-linked entries (sa / grc / la) | 3,707 / 3,225 / 3,190 |
+| distinct word-level etyma | 2,065 |
+| attested in only one language | −1,675 |
+| root family already in the first run | −358 |
+| shares an input form with the first run / same etymon | −8 / −1 |
+| **fresh cognate sets** | **23** (23 families: 8 resolved through the lexicon, 15 pseudo-families) |
+| sets with a laryngeal effect | 9 |
+| effect slots (colour 6, length 5, loss 4; schwa 0; one slot can carry two kinds) | 9 |
+| **effect slots with exact-matched controls (≥ 3 control families)** | **1** (loss 1, colour 0) |
+
+**Why so few.** Wiktionary's PIE pages already list most of their Sanskrit, Greek and Latin descendants,
+and the lexicon was built from those pages. Of the 390 etyma attested in two or more of these languages,
+358 belong to a root family the first run already used. What is left is small and has only two languages
+per set. With this few target words, almost no stratum has controls from 3 families.
+
+**Sensitivity bound (exploratory, not a substitute test).** To check that the shortfall does not come
+from a strict rule, the build was repeated with the loosest reasonable rules:
+
+- affix, compound and multi-etymon entries kept;
+- every word-level link counted;
+- etyma merged by accent-free key.
+
+(`scripts/replication_sensitivity.py`.) That gives 75 sets, 27 effect slots and 5 exact-matched slots (12 even with a 1-family control rule).
+No reading of the pre-registered data source comes near 150.
+
+**What a confirmatory replication would need.** A data source outside Wiktionary's PIE pages: for
+example LIV² or handbook cognate tables, or other branches' dictionaries. That needs a new
+pre-registration. The present one is closed: underpowered.

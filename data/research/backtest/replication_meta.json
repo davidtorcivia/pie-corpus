@@ -1,0 +1,86 @@
+{
+ "built_from": [
+  "kaikki.org-dictionary-Sanskrit.jsonl",
+  "kaikki.org-dictionary-AncientGreek.jsonl",
+  "kaikki.org-dictionary-Latin.jsonl"
+ ],
+ "rules": "- links: {{inh}}, {{inh+}}, {{der}}, {{der+}} with source ine-pro, and {{etymon}}\n  terms `ine-pro:...` under :inh / :der. Not borrowings, not uncertain links\n  (uder, <unc>), not cognate mentions. Entries with an affix or compound\n  template, or linked to two different word-level PIE terms, are not reflexes of\n  one word and are dropped. Terms ending in `-` (roots, stems) or starting with\n  `-` (suffixes) are not word-level etyma; they only help find the root family.\n- forms: Sanskrit and Greek romanizations, Latin canonical (macron) forms. Greek\n  romanizations lose the breve (U+0306), which kaikki headwords write on every\n  short dichronon and the first run's inputs almost never do. Macrons and\n  accents stay: they are the signal.\n- contamination, as in scripts/build_backtest.py: attested languages only;\n  forms writing laryngeal notation are dropped and a language over 2% would be\n  dropped whole; no Anatolian or Tocharian (none in these dumps).\n- target: pie/prelaryngeal.py on the lexicon's canonical form of the etymon.\n- fresh at root-family level: a set is dropped if its etymon, or any root its\n  entries link to, resolves to a lexicon entry whose family (root_id, else id)\n  occurs in data/research/backtest/primary.jsonl or secondary.jsonl, if its\n  target or etymon key equals a first-run one, or if it shares a (language,\n  form) pair with a first-run input. Etyma the lexicon does not know get a\n  `kaikki:` pseudo family (their own key) as root_id.",
+ "extraction": {
+  "grc:drop_affix_or_compound": 634,
+  "grc:drop_etymon_unparsable": 6,
+  "grc:drop_no_romanization": 3,
+  "grc:drop_root_only": 1404,
+  "grc:drop_two_word_etyma": 31,
+  "grc:entries_with_pie_link": 3225,
+  "grc:skip_pos_or_form_page": 231,
+  "la:drop_affix_or_compound": 520,
+  "la:drop_etymon_unparsable": 9,
+  "la:drop_root_only": 1369,
+  "la:drop_two_word_etyma": 40,
+  "la:entries_with_pie_link": 3190,
+  "la:skip_pos_or_form_page": 315,
+  "sa:drop_affix_or_compound": 571,
+  "sa:drop_etymon_unparsable": 16,
+  "sa:drop_no_romanization": 2,
+  "sa:drop_root_only": 891,
+  "sa:drop_two_word_etyma": 10,
+  "sa:entries_with_pie_link": 3707,
+  "sa:skip_pos_or_form_page": 817
+ },
+ "groups_before_filters": 2065,
+ "dropped": {
+  "fewer_than_2_languages": 1675,
+  "root_family_in_first_run": 358,
+  "shares_input_form_with_first_run": 8,
+  "etymon_in_first_run": 1
+ },
+ "contaminated_languages": [],
+ "laryngeal_notation_rate": {
+  "Sanskrit": 0.0,
+  "Latin": 0.0,
+  "Ancient Greek": 0.0
+ },
+ "sets": 23,
+ "sets_with_effect": 9,
+ "families": 23,
+ "family_source": {
+  "pseudo": 15,
+  "lexicon_entry": 8
+ },
+ "by_language": {
+  "Latin": 15,
+  "Sanskrit": 19,
+  "Ancient Greek": 12
+ },
+ "languages_per_set": {
+  "2": 23
+ },
+ "effect_slots": 9,
+ "effect_slots_exact_matched": 1,
+ "matched_families": 1,
+ "per_kind": {
+  "color": {
+   "effect_slots": 6,
+   "matched": 0,
+   "matched_families": 0
+  },
+  "length": {
+   "effect_slots": 5,
+   "matched": 0,
+   "matched_families": 0
+  },
+  "schwa": {
+   "effect_slots": 0,
+   "matched": 0,
+   "matched_families": 0
+  },
+  "loss": {
+   "effect_slots": 4,
+   "matched": 1,
+   "matched_families": 1
+  }
+ },
+ "min_slots_rule": 150,
+ "powered": false,
+ "target_units_outside_training_vocab": {}
+}
