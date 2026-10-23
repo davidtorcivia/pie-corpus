@@ -50,7 +50,7 @@ METER_TARGETS = (8, 11)          # Vedic gāyatrī and triṣṭubh line lengths
 
 def _meter(pie: str, genre: str | None) -> dict | None:
     """Hymns: syllables per line (a line = a sentence) and how many fit 8 or 11 (±1)."""
-    if genre not in ("hymn", "prayer", "charm"):
+    if genre not in ("hymn", "prayer", "charm", "praise", "lament", "wedding"):
         return None
     lines = [x.strip() for x in re.split(r"[.?!]", pie) if x.strip()]
     syl = [measure(x)["syllables"] for x in lines]
