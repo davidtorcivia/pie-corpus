@@ -1,8 +1,9 @@
 """Phase 7 export: train/eval splits, plain-text views, task-format views.
 
 Policy (docs/STATUS.md, open question 1 until David decides):
-  eval  = every Tier 1 record with canonical `pie` (scholarly texts), plus the
-          held-out root families for the cognate task
+  eval  = every Tier 1 record with canonical `pie` (scholarly texts and formulas),
+          the evaluation-grade Tier 2 lines (eval_grade), plus the held-out
+          root families for the cognate task
   train = Tier 2 and Tier 3 records; batches named pilot-* only with
           include_pilot=True (unreviewed)
 Cognate→PIE examples hold out *whole root families* (a deterministic hash
@@ -84,7 +85,12 @@ def cognate_tasks(lx: Lexicon) -> list[dict]:
 def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0) -> dict:
     rng = random.Random(seed)
     tier1 = [r for r in _load("corpus/tier1/*.jsonl", root) if r.get("pie")]
-    train_recs = _load("corpus/tier2/*.jsonl", root)
+    tier2 = _load("corpus/tier2/*.jsonl", root)
+    # eval = Tier 1 + the evaluation-grade Tier 2 lines (judged sound by the adversarial review and
+    # with a lexeme exactly attested in two branches); the other Tier 2 lines are training data
+    t2_eval = [r for r in tier2 if r.get("eval_grade")]
+    train_recs = [r for r in tier2 if not r.get("eval_grade")]
+    tier1 = tier1 + t2_eval
     for f in sorted((root / "corpus" / "tier3").glob("*.jsonl")):
         if f.name.startswith("pilot") and not include_pilot:
             continue
