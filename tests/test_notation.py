@@ -44,6 +44,7 @@ CASES = [
     ("gh'ьmon", "hirt-1939", "ǵʰьmon", "P-APOS-PAL"),
     ("gʷərēi", "lehmann-zgusta-1979", "gʷHrēi", "P-SCHWA"),
     ("g^wōm", "fortson", "gʷōm", "P-CARET-SUP"),
+    ("bʰéh₁dʰ-e-²", "liv2", "bʰéh₁dʰ-e-", "P-STRIP-FOOTNOTE"),
     ("dhugh2tér-", "fortson", "dʰugh₂tér-", "P-ASP-PLAIN-H"),
     ("bherhxĝos", "mallory-adams", "bʰerHǵos", "P-HX-ASCII"),
     ("pl˚th₂wī", "west", "pl̥th₂wī", "P-SPACING-RING"),
@@ -105,3 +106,8 @@ def test_profile_rules_see_lowercased_capitals():
     # P-APOS-PAL ran before lowercasing.
     assert normalize('"K\'erd agʰnutai', "danka-1986").text == '"ḱerd agʰnutai'
     assert normalize("Bhéreti", "plain-h-aspirates").text == "bʰéreti"
+
+
+def test_liv2_profile():
+    assert normalize("bʰéh₁dʰ-e-²", "liv2").text == "bʰéh₁dʰ-e-"
+    assert normalize("bʰeh₁ĝʰ-", "liv2").text == "bʰeh₁ǵʰ-"

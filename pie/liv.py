@@ -54,8 +54,20 @@ def headword(printed: str) -> tuple[str | None, int | None, bool]:
     hom = int(m[1]) if m else None
     s = s[m.end():] if m else s
     s = s.lstrip("*").strip()
-    r = normalize(s, "liv2")
-    return (r.text if r.canonical else None), hom, unc
+    # capital placeholders (R = any resonant, T, K, …) are not forms; H (laryngeal) is
+    if re.search(r"[A-GI-Z]", s):
+        return None, hom, unc
+    # LIV's uncertain series: g⁽ᵘ̯⁾ = g or gʷ (optional labialization); ĝ⁽ʼ⁾ = uncertain
+    # palatal (the palatal is kept as primary). Both mark the root uncertain.
+    if "⁽ᵘ̯⁾" in s or "⁽ʼ⁾" in s:
+        unc = True
+        s = s.replace("⁽ᵘ̯⁾", "⁽ʷ⁾").replace("⁽ʼ⁾", "")
+    # optional elements (⁽ʰ⁾, (s)) expand to variants, as in the Wiktionary builder; the full form wins
+    from .lexicon import _expand_optional
+    for v in _expand_optional(normalize(s, "liv2").text)[0]:
+        if is_canonical(v):
+            return v, hom, unc
+    return None, hom, unc
 
 
 def _plain(f: str) -> str:
