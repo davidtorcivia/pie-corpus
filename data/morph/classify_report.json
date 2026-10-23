@@ -1,0 +1,184 @@
+{
+ "entries": 6363,
+ "coverage": {
+  "table": 587,
+  "usable": 3453,
+  "unknown": 1798,
+  "indeclinable": 89,
+  "shape": 3889
+ },
+ "inflectable": 4476,
+ "usable_for_tier3": 3453,
+ "usable_threshold": 0.85,
+ "backtest": {
+  "indeclinable": {
+   "tables": 5,
+   "cell_accuracy": null
+  },
+  "shape:athematic-root": {
+   "tables": 41,
+   "cells_ok": 871,
+   "cells": 984,
+   "tables_exact": 34,
+   "cell_accuracy": 0.8852
+  },
+  "shape:devi": {
+   "tables": 4,
+   "cells_ok": 46,
+   "cells": 76,
+   "tables_exact": 1,
+   "cell_accuracy": 0.6053
+  },
+  "shape:eh2": {
+   "tables": 19,
+   "cells_ok": 285,
+   "cells": 361,
+   "tables_exact": 15,
+   "cell_accuracy": 0.7895
+  },
+  "shape:er-stem": {
+   "tables": 8,
+   "cells_ok": 120,
+   "cells": 152,
+   "tables_exact": 5,
+   "cell_accuracy": 0.7895
+  },
+  "shape:hk-iu-stem": {
+   "tables": 5,
+   "cells_ok": 43,
+   "cells": 95,
+   "tables_exact": 1,
+   "cell_accuracy": 0.4526
+  },
+  "shape:men-neuter": {
+   "tables": 14,
+   "cells_ok": 246,
+   "cells": 266,
+   "tables_exact": 12,
+   "cell_accuracy": 0.9248
+  },
+  "shape:n-stem-ak": {
+   "tables": 10,
+   "cells_ok": 157,
+   "cells": 190,
+   "tables_exact": 6,
+   "cell_accuracy": 0.8263
+  },
+  "shape:n-stem-hk": {
+   "tables": 2,
+   "cells_ok": 27,
+   "cells": 38,
+   "tables_exact": 0,
+   "cell_accuracy": 0.7105
+  },
+  "shape:perfect": {
+   "tables": 20,
+   "cells_ok": 260,
+   "cells": 260,
+   "tables_exact": 20,
+   "cell_accuracy": 1.0
+  },
+  "shape:pk-iu-stem": {
+   "tables": 34,
+   "cells_ok": 547,
+   "cells": 646,
+   "tables_exact": 24,
+   "cell_accuracy": 0.8467
+  },
+  "shape:root-aorist": {
+   "tables": 22,
+   "cells_ok": 264,
+   "cells": 300,
+   "tables_exact": 17,
+   "cell_accuracy": 0.88
+  },
+  "shape:s-stem-neuter": {
+   "tables": 27,
+   "cells_ok": 494,
+   "cells": 513,
+   "tables_exact": 26,
+   "cell_accuracy": 0.963
+  },
+  "shape:thematic": {
+   "tables": 69,
+   "cells_ok": 1121,
+   "cells": 1311,
+   "tables_exact": 59,
+   "cell_accuracy": 0.8551
+  },
+  "shape:thematic-adj": {
+   "tables": 84,
+   "cells_ok": 1558,
+   "cells": 1596,
+   "tables_exact": 82,
+   "cell_accuracy": 0.9762
+  },
+  "shape:thematic-neuter": {
+   "tables": 16,
+   "cells_ok": 247,
+   "cells": 304,
+   "tables_exact": 13,
+   "cell_accuracy": 0.8125
+  },
+  "shape:thematic-present": {
+   "tables": 69,
+   "cells_ok": 1656,
+   "cells": 1656,
+   "tables_exact": 69,
+   "cell_accuracy": 1.0
+  },
+  "shape:u-adj": {
+   "tables": 16,
+   "cells_ok": 275,
+   "cells": 304,
+   "tables_exact": 14,
+   "cell_accuracy": 0.9046
+  },
+  "unknown": {
+   "tables": 26,
+   "cell_accuracy": null
+  },
+  "unknown:adj-shape": {
+   "tables": 12,
+   "cell_accuracy": null
+  },
+  "unknown:athematic-no-ablaut": {
+   "tables": 3,
+   "cell_accuracy": null
+  },
+  "unknown:middle-only": {
+   "tables": 4,
+   "cell_accuracy": null
+  },
+  "unknown:noun-shape": {
+   "tables": 110,
+   "cell_accuracy": null
+  }
+ },
+ "by_rule": {
+  "shape:thematic": 1248,
+  "shape:thematic-present": 1128,
+  "unknown:noun-shape": 904,
+  "unknown": 796,
+  "table": 587,
+  "shape:eh2": 369,
+  "shape:athematic-root": 357,
+  "shape:thematic-neuter": 273,
+  "shape:pk-iu-stem": 222,
+  "shape:men-neuter": 92,
+  "indeclinable": 89,
+  "unknown:athematic-no-ablaut": 57,
+  "shape:n-stem-ak": 50,
+  "shape:hk-iu-stem": 45,
+  "shape:devi": 45,
+  "unknown:middle-only": 37,
+  "shape:thematic-adj": 30,
+  "shape:n-stem-hk": 9,
+  "shape:er-stem": 8,
+  "shape:root-aorist": 5,
+  "shape:perfect": 4,
+  "shape:s-stem-neuter": 4,
+  "unknown:adj-shape": 3,
+  "unknown:verb-shape": 1
+ }
+}

@@ -13,17 +13,14 @@ import collections
 import json
 from pathlib import Path
 
-from .morph import AdjSpec, NounSpec, VerbSpec, conjugate, decline, decline_adj
+from .classify import spec_from_template
+from .morph import conjugate, decline, decline_adj
 
 _CASE = {"nominative": "NOM", "vocative": "VOC", "accusative": "ACC", "genitive": "GEN",
          "ablative": "ABL", "dative": "DAT", "locative": "LOC", "instrumental": "INS"}
 _NUM = {"singular": "SG", "dual": "DU", "plural": "PL"}
 _PERSON = {"first-person": "1", "second-person": "2", "third-person": "3"}
 _SKIP_VERB = {"subjunctive", "optative", "participle"}
-
-
-def _split(v: str | None) -> list[str]:
-    return [x.strip().lstrip("*") for x in v.split(",")] if v else []
 
 
 def noun_feature(tags: list[str]) -> str | None:
@@ -50,31 +47,29 @@ def verb_feature(tags: list[str], kind: str) -> str | None:
     return f"{mood}.{p[0]}{n[0]}" if mood else None
 
 
-def _engine_one(t: dict) -> tuple[str, dict[str, list[str]], str] | None:
-    name, a = t["name"], t["args"]
-    if any(" " in v for k, v in a.items() if k.isdigit()):
-        return None  # phrases are out of scope
-    if name in ("ine-decl-noun-mf", "ine-decl-noun-n"):
-        strong = a["1"]
-        gender = "n" if name.endswith("-n") else ("f" if strong.endswith(("eh₂", "éh₂")) else "m")
-        spec = NounSpec(strong, a.get("2"), a.get("ac"), gender,
-                        nom_sg=_split(a.get("nom_sg"))[0] if a.get("nom_sg") else None,
-                        loc_sg=_split(a.get("loc_sg")))
-        return "noun", decline(spec, "wiktionary", alternatives=False), "exact"
-    if name == "ine-decl-adj":
-        spec = AdjSpec(a["1"], a.get("2"), a.get("3"), a.get("4"), a.get("ac"), _split(a.get("loc_sg")))
-        by_g = decline_adj(spec, "wiktionary", alternatives=False)
+def cells_for(family: str, spec, convention: str = "wiktionary") -> dict[str, list[str]]:
+    """Flat cells for a spec; adjectives union their three genders."""
+    if family == "noun":
+        return decline(spec, convention, alternatives=False)
+    if family == "adj":
+        by_g = decline_adj(spec, convention, alternatives=False)
         cells: dict[str, list[str]] = collections.defaultdict(list)
         for g in ("m", "f", "n"):
             for k, v in by_g[g].items():
                 cells[k] += [x for x in v if x not in cells[k]]
-        return "adj", dict(cells), "exact"
-    if name.startswith("ine-conj-"):
-        kind = name.removeprefix("ine-conj-")
-        spec = VerbSpec(a["1"], a.get("2"), kind)
-        return f"verb-{kind}", conjugate(spec, "wiktionary", alternatives=False), \
-            "exact" if a.get("v") == "actv" else "active-subset"
-    return None
+        return dict(cells)
+    return conjugate(spec, convention, alternatives=False)
+
+
+def _engine_one(t: dict) -> tuple[str, dict[str, list[str]], str] | None:
+    got = spec_from_template(t)
+    if got is None:
+        return None
+    family, spec = got
+    if family == "verb":
+        mode = "exact" if t["args"].get("v") == "actv" else "active-subset"
+        return f"verb-{spec.kind}", cells_for(family, spec), mode
+    return family, cells_for(family, spec), "exact"
 
 
 def engine_cells(para: dict) -> tuple[str, dict[str, list[str]], str] | None:

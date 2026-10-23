@@ -5,7 +5,7 @@ Code: `pie/phon.py` (segments and phonology), `pie/morph.py` (inflection), `pie/
 ## Architecture
 
 - **Layer 1 (built):** `(strong stem, weak stem, accent class) → cells`. The spec mirrors Wiktionary's inflection-template args on purpose (`NounSpec`, `AdjSpec`, `VerbSpec`), so every Wiktionary table can be regenerated and compared.
-- **Layer 2 (next):** `lemma → spec` by shape, for the lexemes without a Wiktionary table. Its coverage ("inflectable entries / words") is what actually gates Tier 3.
+- **Layer 2 (built):** `lemma → spec` by shape, for the lexemes without a Wiktionary table. Each rule is backtested; see below.
 - **Not built:** generative root + suffix + ending ablaut. That is derivational morphology, which is Phase B.
 
 Every cell is a **list** of forms, primary first. Forms are produced as segment lists (`phon.Seg`: vowel / resonant ± syllabic / consonant, ± long, ± accent) and rendered to canonical NFC.
@@ -83,6 +83,30 @@ Out of scope: subjunctive, optative, middle-only verbs, participles, collective 
 - *n*-loss was applied after *ē*.
 - Szemerényi's law ran on stems that already end in *-s*.
 - Several gaps: the proterokinetic zero-grade oblique, neuter collectives, the *-éy* locative, i-stem plurals, the 1sg secondary *-m̥*, the zero-grade 3pl after accented stems, boukólos.
+
+## Layer 2: lemma → spec (`pie/classify.py`, `scripts/classify_lexicon.py`)
+
+The order is: a Wiktionary table if the entry has one; otherwise a shape rule on the lemma (*-eti* → thematic present, *-ti* → athematic with a zero-grade weak stem, *-os* → thematic, and so on); otherwise indeclinable or unknown. `zero_grade()` deletes the accented short *e/o* and re-syllabifies only its neighbours (*gʷʰén → gʷʰn̥*, *dyéw → dyu*, *wóyd → wid*, *linékʷ → linkʷ*).
+
+**Backtest.** Every shape rule is run on the entries that *do* have tables, with the table hidden. The cells of the guessed spec are compared with the cells of the table's spec, both from the engine, which isolates rule error from engine error. Results (2026-10-23):
+
+| Rule | Tables | Exact | Cell agreement |
+|---|---|---|---|
+| thematic-present | 69 | 69 | 100% |
+| perfect | 20 | 20 | 100% |
+| thematic-adj | 84 | 82 | 97.6% |
+| s-stem-neuter | 27 | 26 | 96.3% |
+| men-neuter | 14 | 12 | 92.5% |
+| u-adj | 16 | 14 | 90.5% |
+| athematic-root | 41 | 34 | 88.5% |
+| root-aorist | 22 | 17 | 88.0% |
+| thematic (noun) | 69 | 59 | 85.5% (the misses are adjectives whose lemma lacks a POS) |
+| pk-iu-stem / n-stem-ak / thematic-neuter / eh2 / er-stem | | | 79–85% |
+| n-stem-hk / devi / hk-iu-stem | | | 45–71% (not usable) |
+
+**Usability policy:** Tier 3 may use only a table spec, or a shape rule with ≥ 85% backtest agreement (`usable` in `data/morph/inflection_specs.jsonl`).
+
+**Coverage:** 4,476 of 6,363 words and derivatives get a spec, and **3,453 are usable** (1,652 nouns, 1,649 verbs, 152 adjectives). These cover **821 of 885 roots** (691 of 730 verbal). The 1,798 unknowns are mostly bound stems (forms ending in a hyphen, which are not words) plus lemma shapes with no rule yet.
 
 ## Golden paradigms (PLAN's list)
 

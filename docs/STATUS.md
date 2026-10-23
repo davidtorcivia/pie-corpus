@@ -1,6 +1,6 @@
 # Status
 
-**Current phase:** Phase 2, the morphology engine. Layer 1 (stem spec → paradigm) is built and regenerates Wiktionary's tables at 98.9% cell agreement, with every mismatch triaged. Next: Layer 2 (lemma → spec, the real Tier 3 gate), then Phase 3 (validator). Phases 1 and 2 are both "built, acceptance pending books".
+**Current phase:** Phase 2 is built. Layer 1 (spec → paradigm) regenerates Wiktionary's tables at 98.9% cell agreement with every mismatch triaged. Layer 2 (lemma → spec) gives 3,453 lexemes a backtested, usable spec, covering 821/885 roots. Next: Phase 3 (validator). Phases 1 and 2 are both "built, acceptance pending books".
 
 ## Phases
 
@@ -8,7 +8,7 @@
 |---|---|---|
 | 0 Scaffolding & notation | **done** | NFC↔ASCII round-trip on ≥200 tricky forms: **pass** (382 listed forms: 157 hand-written with expected ASCII + 225 generated; plus 5,000 fuzzed; 1,807 tests) |
 | 1 Lexicon | **built, acceptance pending** | ≥2,000 entries: 2,226 glossed, 7,401 total ✅ · ≥800 verbal roots: **730** ❌ · 50-entry handbook spot check: pending books (provisional review in `docs/audits/`) |
-| 2 Morphology engine | **Layer 1 built**; Layer 2 next | Wiktionary regeneration: 11,136/11,255 cells (98.9%), 582/615 tables, **0 unexplained** ✅ · PLAN golden paradigms: 11/11 pass, but the source is unverified (pending Fortson/Ringe) |
+| 2 Morphology engine | **built, acceptance pending books** | Wiktionary regeneration: 11,136/11,255 cells (98.9%), 582/615 tables, **0 unexplained** ✅ · PLAN golden paradigms: 11/11 pass, but the source is unverified (pending Fortson/Ringe) |
 | 3 Validator | — | Tier 1 ≥90% token coverage |
 | 3b Sound-law checker | — | full lexicon run, mismatch report |
 | 4 Tier 1 scholarly | — | 200–500 cited lines + adversarial review |
@@ -27,7 +27,8 @@
 | Normalization rejects | 67 (alternative lists, queries, placeholders) |
 | Root coverage in corpus | — |
 | Engine agreement with Wiktionary tables | 98.9% of cells (docs/morphology.md) |
-| Inflectable lexicon entries (Layer 2 coverage) | — (next) |
+| Inflectable lexemes (Layer 2) | 4,476 with a spec; **3,453 usable** for Tier 3 (table or rule backtested ≥85%) |
+| Roots with ≥1 usable lexeme | 821/885 (93%); verbal 691/730 |
 | Records per tier (1 / 2 / 3 / 3b) | 0 / 0 / 0 / 0 |
 | Tokens per tier | — |
 | Neologism share of training tokens | — (cap 10–15%) |
@@ -82,6 +83,8 @@ Everything in IDEAS.md is folded into PLAN.md, and nothing is rejected outright.
 - **Dashboard (7).** The metrics are in STATUS.md now. The HTML Artifact version is deferred until there is data to show (Phase 1+).
 
 ## Log
+
+- **2026-10-23. Phase 2 (Layer 2).** `pie/classify.py` derives a spec from Wiktionary tables or, failing that, from 17 lemma-shape rules with `zero_grade()`. Every rule is backtested against the hidden tables; the thematic present and the perfect reach 100%. A usability threshold of 85% gates Tier 3. Output: `data/morph/inflection_specs.jsonl`, `classify_report.json`.
 
 - **2026-10-23. Phase 2 (Layer 1).** Built `pie/phon.py` (segments; junction syllabification; Szemerényi, Stang, boukólos; Wiktionary-only Pinault and perfect laryngeal loss), `pie/morph.py` (thematic, eh₂, athematic in 4 accent classes, devi feminines, adjectives, thematic/athematic presents, aorists, perfects; `handbook` and `wiktionary` conventions with alternatives), the cross-check harness, and the mismatch classifier. Agreement went 89.6% → 98.9% as each mismatch class was triaged. Bugs found that way include Stang's law never firing after syllabification. Also wrote 11 golden paradigms (flagged unverified) and closed-class hand tables. 1,896 tests. Details in `docs/morphology.md`.
 
