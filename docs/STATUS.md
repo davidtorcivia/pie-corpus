@@ -1,6 +1,6 @@
 # Status
 
-**Current phase:** Phase 4 (Tier 1) is collected: 26 versions of the two texts, all verified. Phase 3 validation runs at 55–72% coverage on the laryngealist versions, every miss classified. **Phase B (middle, participles, pronominal declension) is now the critical path**: it is what most remaining misses need. Earlier: Phase 2 is built. Layer 1 (spec → paradigm) regenerates Wiktionary's tables at 98.9% cell agreement with every mismatch triaged. Layer 2 (lemma → spec) gives 3,453 lexemes a backtested, usable spec, covering 821/885 roots. Next: Phase 3 (validator). Phases 1 and 2 are both "built, acceptance pending books".
+**Current state (2026-10-23):** The pipeline runs end to end. Lexicon → engine (98.8% agreement with Wiktionary's tables, Phase A + verbal Phase B) → validator → Tier 1 (17 scholarly works, 99 lines) → Tier 3 realizer. **The Tier 3 pilot is done** (148 sentences; review fixes applied), and **scale-up waits on David's budget choice (question 5)**; a cheaper-model comparison pilot is running. Phases 1–3 are built but not accepted: acceptance waits on the books (LIV², Fortson, M&A), and Tier 1 coverage is 55–82% against a 90% target (question 4).
 
 ## Phases
 
@@ -8,13 +8,13 @@
 |---|---|---|
 | 0 Scaffolding & notation | **done** | NFC↔ASCII round-trip on ≥200 tricky forms: **pass** (382 listed forms: 157 hand-written with expected ASCII + 225 generated; plus 5,000 fuzzed; 1,807 tests) |
 | 1 Lexicon | **built, acceptance pending** | ≥2,000 entries: 2,226 glossed, 7,401 total ✅ · ≥800 verbal roots: **730** ❌ · 50-entry handbook spot check: pending books (provisional review in `docs/audits/`) |
-| 2 Morphology engine | **built, acceptance pending books** | Wiktionary regeneration: 11,136/11,255 cells (98.9%), 582/615 tables, **0 unexplained** ✅ · PLAN golden paradigms: 11/11 pass, but the source is unverified (pending Fortson/Ringe) |
-| 3 Validator | **built; not accepted**: 55–82% on the laryngealist versions after Phase B (docs/audits/tier1-validation.md). The remaining gap is mostly different reconstructions of known lexemes; see question 5 | Tier 1 laryngealist versions ≥90% token coverage, every miss classified |
+| 2 Morphology engine | **built, acceptance pending books** | Wiktionary regeneration: 14,023/14,197 cells (98.8%) incl. verbal Phase B, 576/615 tables, **0 unexplained** ✅ · PLAN golden paradigms: 11/11 pass, but the source is unverified (pending Fortson/Ringe) |
+| 3 Validator | **built; not accepted**: 55–82% on the laryngealist versions after Phase B (docs/audits/tier1-validation.md). The remaining gap is mostly different reconstructions of known lexemes; see question 4 | Tier 1 laryngealist versions ≥90% token coverage, every miss classified |
 | 3b Sound-law checker | **built**: initial-position diagnostics for Skt/Gk/Lat/PGmc | full lexicon run: 5,315 checks, 94.8% pass, 277 warnings (docs/soundlaws.md) |
-| 4 Tier 1 scholarly | **texts collected** (26 versions: 2 texts, 1868–2013, 104 lines); formulas wait on Watkins/West | 200–500 cited lines + adversarial review |
+| 4 Tier 1 scholarly | **texts collected**: 17 works (14 fable incl. 5 Kortlandt stages, 3 King) from 22 collected copies; 99 lines, 57 canonical (the rest documentary), 71 with English. Formulas wait on Watkins/West | 200–500 cited lines + adversarial review |
 | 5 Tier 2 back-projection | — | ≥300 lines, ≥8 clusters + adversarial review |
-| 6 Tier 3 / 3b synthetic | **pilot done**: 148 sentences realized; plan reject rate 1.3%; review 31 ok / 14 minor / 5 wrong, with every systematic issue fixed. Scale-up waits on David (question 6) | 1–10M tokens, <10% reject, dedup, audit |
-| 7 Export + benchmark | — | splits, task views, bench |
+| 6 Tier 3 / 3b synthetic | **pilot done**: 148 sentences realized; plan reject rate 1.3%; review 31 ok / 14 minor / 5 wrong, with every systematic issue fixed. Scale-up waits on David (question 5) | 1–10M tokens, <10% reject, dedup, audit |
+| 7 Export + benchmark | **scaffolded**: splits, views, task views, leakage guard | splits, task views, bench |
 
 ## Dashboard
 
@@ -26,10 +26,10 @@
 | Wiktionary paradigms (clean) | 625 (90 dropped as module-corrupted, 1 with a non-canonical cell) |
 | Normalization rejects | 67 (alternative lists, queries, placeholders) |
 | Root coverage in corpus | — |
-| Engine agreement with Wiktionary tables | 98.9% of cells (docs/morphology.md) |
-| Inflectable lexemes (Layer 2) | 4,476 with a spec; **3,453 usable** for Tier 3 (table or rule backtested ≥85%) |
+| Engine agreement with Wiktionary tables | see the cross-check row below |
+| Inflectable lexemes (Layer 2) | 4,476 with a spec; **3,468 usable** for Tier 3 (table or rule backtested ≥85%) |
 | Roots with ≥1 usable lexeme | 821/885 (93%); verbal 691/730 |
-| Records per tier (1 / 2 / 3 / 3b) | 99 (68 with canonical `pie`; 71 with English) / 0 / 148 (pilot, not in train) / 0 |
+| Records per tier (1 / 2 / 3 / 3b) | 99 (57 with canonical `pie`; 71 with English) / 0 / 148 (pilot, not in train) / 0 |
 | Plannable vocabulary for Tier 3 | 3,371 lexemes (853 Wiktionary-glossed + 2,518 with derived glosses), 816/885 roots |
 | Tier 1 validator coverage, laryngealist versions | Byrd King 81.8%, Byrd fable 75.4%, Adams 65.2%, Lühr 59.3%, Hamp/Sen 55.0%. Precision: the fuzzy hits checked are right except for 2 listed lexemes |
 | Engine cross-check (Phase A + verbal Phase B) | 14,023/14,197 cells (98.8%), 0 unexplained |
@@ -79,14 +79,14 @@ All in one place. None of these block work in progress; each one has a default t
    - (a) May the "≥2,000 entries" target be met by *glossed* entries (2,226)? The 5,470 unglossed tree derivatives are a separate, lower-confidence kind.
    - (b) Verbal roots are 730, against a target of 800. The options are **LIV²** (authoritative; also supplies aspect for the 614 roots classified by gloss), or a harvest from the kaikki daughter-language dumps (more roots, no aspect). *Default:* waiting for LIV².
 3. ~~**Paradigm convention for corpus text.**~~ **Settled by measurement:** with the index built under one convention alone, `handbook` beats `wiktionary` on every laryngealist Tier 1 text (Byrd 67.2 vs 60.7%; Lühr 53.7 vs 51.9; Adams 47.0 vs 43.9; Byrd King 63.6 vs 60.0; Hamp/Sen tie). The default stays `handbook`. Original note: I read "Wiktionary/LIV conventions are canonical" (PLAN §1) as being about *notation*, not paradigm reconstructions, so corpus text defaults to the **handbook** forms (contracted thematic *-ōs/-ōy/-ōd*, as in the Tier 1 texts). Wiktionary-convention forms are kept as alternatives in every cell. The tiebreaker will be Phase 3 validator coverage on Tier 1 texts under each convention. Tell me if you meant the stricter reading.
-5. **Phase 3's 90% target vs. how scholars differ.** After Phase B, what's left is mostly *different reconstructions of the same word* (Byrd's *pter* vs Wiktionary *ph₂tḗr*, Byrd *km̥tá* vs *ḱm̥tá*, Adams's and Lühr's "man" and "wool"), plus theonyms (*Wérunos*). These aren't engine errors. Closing them would mean either counting fuzzy near-misses (rejected: they pick wrong lexemes) or adding each scholar's variants to the lexicon from these very texts (circular, since they're the measurement). **My proposal:** add a `variants` layer filled from *other* sources (M&A, Fortson, LIV² when they arrive) and measure leave-one-text-out, and keep 90% as the target for that measurement. Until then, report the current numbers as the Phase A+B baseline.
-6. **Tier 3 scale-up: model and budget.** The pilot planner (this model) used about **134k tokens for 150 sentences, ~0.9M per 1,000**; the review used 125k for 50 records. Sentences average ~4.5 words, so 1M words of PIE is about 220k sentences, or **~200M planner tokens at pilot rates**. Options, which can be combined:
+4. **Phase 3's 90% target vs. how scholars differ.** After Phase B, what's left is mostly *different reconstructions of the same word* (Byrd's *pter* vs Wiktionary *ph₂tḗr*, Byrd *km̥tá* vs *ḱm̥tá*, Adams's and Lühr's "man" and "wool"), plus theonyms (*Wérunos*). These aren't engine errors. Closing them would mean either counting fuzzy near-misses (rejected: they pick wrong lexemes) or adding each scholar's variants to the lexicon from these very texts (circular, since they're the measurement). **My proposal:** add a `variants` layer filled from *other* sources (M&A, Fortson, LIV² when they arrive) and measure leave-one-text-out, and keep 90% as the target for that measurement. Until then, report the current numbers as the Phase A+B baseline.
+5. **Tier 3 scale-up: model and budget.** The pilot planner (this model) used about **134k tokens for 150 sentences, ~0.9M per 1,000**; the review used 125k for 50 records. Sentences average ~4.5 words, so 1M words of PIE is about 220k sentences, or **~200M planner tokens at pilot rates**. Options, which can be combined:
    - **(a)** this model throughout: highest quality, highest cost;
    - **(b)** a cheaper planner model (Sonnet/Haiku), with the same 50-record review to compare error rates;
    - **(c)** lexeme substitution: reuse reviewed plans as skeletons and swap in lexemes of the same class and valency, checked by the plan checker. Nearly free, but semantically repetitive.
 
    **My recommendation:** a 150-plan pilot with (b) plus review. If its wrong-rate is ≤10%, run (b) for diversity with a capped share of (c), and audit a sample of every batch. I won't scale up until you choose a budget.
-4. **GitHub.** The repo is local only. Do you want a private remote, and under which account?
+6. **GitHub.** The repo is local only. Do you want a private remote, and under which account?
 
 ## IDEAS.md disposition
 
