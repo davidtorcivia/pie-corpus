@@ -34,3 +34,10 @@ David: the design above is the validation; "for the real run we want to use as l
 - **Reading, review, novelty:** as in Stage A (sections 5–7), readers ~20 bundles each.
 - **Measures:** as in Stage A, per bundle instead of per packet: accepted claims per real bundle vs per decoy bundle (permutation test, one-sided, 10,000 permutations, seed 0); every accepted claim listed; candidate-new list with novelty status. Claims in Stage B are reported with the false-discovery estimate from both Stage A and Stage B's decoys.
 - **Cost estimate, stated in advance:** about 2,000–4,000 bundles, 100–200 reader runs plus review, on the order of 30–60M tokens.
+
+## Reader capacity and search (added 2026-10-23, before any packet was read)
+David: "with each agent holding as much as they can to widen search."
+- **Stage B slabs.** Readers use the largest-context model available and each receives a slab of as much passage data as fits (target ~500–700k tokens): a whole pivot section (e.g. one Rigveda maṇḍala, a block of Homer, a Hittite text group) with its partner pools from all other branches, instead of ~20 small bundles. Embedded decoys (20% of pivots' partner pools) are mixed into every slab.
+- **Free corpus search, both stages.** Readers may search every local corpus (via the loaders and mappings, or python3 -I on raw/; never executing anything there) to widen a lead: other occurrences of the roots, other branches, wider context. Books and 8a formula files stay off limits.
+- **Anchoring rule, both stages.** A claim must include at least two passages from the reader's packet or slab, from different branches; witnesses found by search are added as support and listed separately. (Otherwise a decoy reader could report a real parallel found elsewhere, and the decoy rate would stop measuring false discovery.)
+- **Known limitation.** Stage A packets are smaller than Stage B slabs, so Stage A's false-discovery estimate transfers only approximately; Stage B's embedded decoys measure it under the real conditions and are the primary control for Stage B.
