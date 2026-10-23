@@ -26,8 +26,12 @@ CORE_NOUNS = ["pie-lex-h2owis", "pie-lex-h1ngwnis", "pie-lex-peh2wr", "pie-lex-h
               "pie-lex-dhugh2texr", "pie-lex-bhreh2texr", "pie-lex-swesoxr", "pie-lex-h2egjros", "pie-lex-wodr",
               "pie-lex-nokwts", "pie-lex-gjhwexr", "pie-lex-soh2wl", "pie-lex-swos", "pie-lex-wekwos",
               "pie-lex-deywos", "pie-lex-mert", "pie-lex-spert", "pie-lex-kjexr", "pie-lex-h2wlh1neh2",
-              "pie-lex-h1lewdheros", "pie-lex-roth2os"]
+              "pie-lex-h1lewdheros", "pie-lex-Hroth2os"]
 ADVERB_POS = ("adv", "prep", "postp")
+NIL_ADMIT = {"pie-lex-bhagos", "pie-lex-bhngjhulos", "pie-lex-bhrtos", "pie-lex-gwowsth2os", "pie-lex-kjh3tos",
+             "pie-lex-medtos", "pie-lex-priHtos", "pie-lex-h2rgjipyos", "pie-lex-kjolHtos", "pie-lex-rotos"}
+NIL_GLOSS_HELD = {"pie-lex-h2gjtos", "pie-lex-priHnos", "pie-lex-h2ewgos", "pie-lex-wersos", "pie-lex-kjltos",
+                  "pie-lex-h2egjtoxr", "pie-lex-segjhtoxr"}
 # derived glosses are kept only for transparent, productive suffixes (b002 review R1);
 # other derived-gloss lexemes need reflexes in at least two branches
 TRANSPARENT_SUFFIXES = {"-tōr", "-tḗr", "-éyeti", "-trom", "-tlom", "-tis", "-tus", "-néh₂ti", "-néwti", "-eti"}
@@ -108,14 +112,16 @@ def main() -> int:
 
     # gates (tier3-b001/b002 reviews): an accented headword (P10), and a derived gloss
     # only for a transparent suffix or a word attested in two branches (R1)
-    # NIL-sourced lexemes and glosses are held back until the merge fixes pass a re-review
-    # (docs/audits/nil-merge-review.md: about a quarter of the usable new lexemes were wrong)
-    # (P9) once that hold is lifted, NIL lexemes flagged nil-single-branch / nil-uncertain /
-    # nil-notation stay out: a NIL transponate alone is no evidence for a PIE word
+    # NIL after the re-review (docs/audits/nil-merge-rereview.md): NIL glosses on existing words are
+    # admitted except NIL_GLOSS_HELD; of the new NIL lexemes only the NIL_ADMIT subset judged ok.
+    # Lexemes flagged nil-single-branch / nil-uncertain / nil-notation always stay out (P9).
     def nil_held(i):
         e = lx.entries[i]
-        return e.get("source") == "nil" or e.get("meaning_source") == "nil" or \
-            any(u.startswith("nil-") for u in e.get("uncertain", []))
+        if any(u.startswith("nil-") for u in e.get("uncertain", [])):
+            return True
+        if e.get("source") == "nil":
+            return i not in NIL_ADMIT
+        return e.get("meaning_source") == "nil" and i in NIL_GLOSS_HELD
 
     pool = [i for i, r in lx.specs.items() if r.get("usable") and i not in lx.blocked and accented(i) and
             not nil_held(i) and

@@ -512,6 +512,8 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
                     e["meaning"], e["meaning_source"] = x["meaning"], "override"
                 if "gender" in x:
                     e["gender"] = x["gender"]
+                if "spec" in x:
+                    e["spec_override"] = x["spec"]
                 e["override_note"] = x.get("note")
 
     # Paradigms (Wiktionary module output), hard-filtered.

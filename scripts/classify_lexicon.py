@@ -94,8 +94,11 @@ def main() -> int:
         acc = 1.0 if c.rule == "table" else accuracy.get(c.rule, accuracy.get(BACKTEST_AS.get(c.rule, "")))
         usable = c.spec is not None and acc is not None and acc >= USABLE_THRESHOLD
         cov["usable"] += usable
+        spec = dataclasses.asdict(c.spec) if c.spec else None
+        if spec and e.get("spec_override"):            # hand fixes from reviews (data/lexicon/overrides.jsonl)
+            spec = {**spec, **e["spec_override"]}
         rows.append({"id": e["id"], "form": e["form"], "rule": c.rule, "family": c.family,
-                     "spec": dataclasses.asdict(c.spec) if c.spec else None,
+                     "spec": spec,
                      "backtest_cell_accuracy": acc, "usable": usable, "extra_specs": extra})
     with (OUT / "inflection_specs.jsonl").open("w", encoding="utf-8") as f:
         for r in rows:

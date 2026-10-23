@@ -257,7 +257,8 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
             # *-ns/-n̥s (< *-ms; Fortson §6.14, Ringe): pódn̥s, ph₂térn̥s, h₂ówins
             acc_pl = [render(_add(strong, "ns"))]
             if len(strong) > 1 and strong[-1].base == "w" and not strong[-1].syl and strong[-2].kind == "V":
-                acc_pl.append(render(lengthen_last_vowel(strong[:-1]) + [Seg("s", "C")]))   # Ringe gʷṓs (Stang)
+                # Stang's law first: gʷṓs (Ringe; Ved. gā́s, Gk dial. βῶς), not the pre-form gʷówn̥s
+                acc_pl.insert(0, render(lengthen_last_vowel(strong[:-1]) + [Seg("s", "C")]))
             out["ACC.PL"] = acc_pl + out["ACC.PL"]
     out["GEN.PL"] = ([w("ṓm", "ōm")] if hb else []) + [w("óHom", "oHom")]
     mos, bhos = w("mós", "mos", obl), w("bʰós", "bʰos", obl)
