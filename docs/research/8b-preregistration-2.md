@@ -18,3 +18,6 @@ NIL's daughter words are cited forms (often stems, sometimes with morpheme bound
 
 ## Reporting
 Numbers reported as they come out, with slot counts, under "Replication 2" in docs/research/8b-backtest.md. No other statistic is substituted for H1/H2 after the data is seen.
+
+## Outcome of this pre-registration (2026-10-23)
+Underpowered, as the power rule defines it: the NIL formations gave 274 independent cognate sets with 46 exact-matched effect slots (minimum 150); 12.9% of daughter words could not be normalized (under the 20% caveat). No model was trained and no statistic computed; H1 and H2 remain open. Details under "Replication 2" in docs/research/8b-backtest.md.

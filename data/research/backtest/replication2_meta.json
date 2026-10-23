@@ -1,0 +1,703 @@
+{
+ "rules": "- formations: dropped if marked ‡, ** or ˣ, if `uncertain` (NIL's leading ?), or if\n  pie.nil.stem() gives no stem (schematic or partial form). Two formations with the\n  same stem are one set (inputs merged).\n- evidence parsing: German glosses ('...') and parentheticals are removed; a string\n  is split into language segments at each NIL language abbreviation (\"aav., jav.\n  garəma-\" gives both languages the word; \"air. dét n., mkymr. dant m.\" gives two\n  segments). Per segment the first word after the abbreviation and any labels\n  (Inf., Adv., Kompar., dial., usw., ...) is taken; later variants are ignored.\n- daughter words dropped (the first run's usable() rule: no uncertain, no analogical\n  reflexes): words in a string with a leading `?` (uncertain); words after NIL's\n  remodelling bracket `[` (as pie.nil.branches() does: the daughter does not continue\n  the transponate unchanged); oblique case forms (GSg., ASg., NPl., ...; nominatives\n  NSg./NASg. are kept); names (PN, ON, GN, a capitalized word); words cited inside a\n  compound (\"lat. in acu-pedius\", \"komp.\"); reconstructed forms (any `*` word:\n  germ., kelt., slav., iran., ital., urgerm., urslav. proto-forms; their attested\n  daughters after \"in\" are kept as their own segments).\n- languages: NIL abbreviations mapped to the language labels of the first run's\n  inputs (ABBR below); attested languages only; Anatolian (incl. Palaic `pal.`) and\n  Tocharian removed; Mitanni (names in cuneiform) removed. A form writing laryngeal\n  notation is dropped, and a language over 2% would be dropped whole.\n- normalization to the Wiktionary romanizations the model was trained on: Greek\n  script transliterated (Wiktionary scheme: η ē, ω ō, υ u, χ kh, rough breathing h,\n  circumflex as ^, iota subscript as i, γγ ng); Sanskrit r̥ l̥ (ring below) → ṛ ḷ\n  (dot below), ṁ → ṃ; Avestan ϑ → θ; Church Slavonic ь ъ → ĭ ŭ; Armenian ʿ ‘ ' → ʻ;\n  Mycenaean ₂ ₃ → 2 3. Stem hyphens and morpheme boundaries (- and . inside the word)\n  are removed (kept in Mycenaean and Old Persian, whose training forms write them);\n  ⟨ ⟩ and + are removed; a trailing · or , is removed.\n- a word could not be normalized if it is a fragment (leading -), has optional\n  letters in parentheses, or has, after normalization, an NFD character that is not\n  in the model's input vocabulary (characters seen ≥ 2 times in the first run's\n  primary inputs) or not seen in that language's first-run inputs. Such words are\n  dropped and counted (the pre-registered >20% caveat).\n- sets: at least 2 languages.\n- independence, per formation: dropped if the formation's stem, its pre-laryngeal\n  target or its expected nominatives (pie.nil.expected) match, up to accent and\n  length, a first-run (primary or secondary) target or modern form, with or without\n  its nominal ending (-os -om -s -m); or if a first-run row's lexicon entry carries a\n  NIL block naming this formation (pie.nil.apply() linked them). Both are\n  tightenings of \"stem matches a target\": they can only remove sets.\n- family (bootstrap cluster): the lexicon root linked to the NIL root (its `nil`\n  block), else `nil:<root as printed>`.",
+ "formation_filter": {
+  "formations": 3044,
+  "formations_kept_by_marker": 1264,
+  "drop_marker_‡": 571,
+  "drop_uncertain": 488,
+  "drop_no_stem": 657,
+  "merged_same_stem": 14,
+  "drop_marker_ˣ": 46,
+  "drop_marker_**": 18
+ },
+ "daughter_words_dropped_before_normalization": {
+  "remodelled": 335,
+  "uncertain": 247,
+  "lang_proto": 235,
+  "name": 56,
+  "lang_anatolian": 58,
+  "lang_tocharian": 38,
+  "compound": 16,
+  "reconstructed": 21,
+  "oblique_case": 34,
+  "lang_mitanni": 4,
+  "lang_non-ie": 3,
+  "no_word": 2
+ },
+ "words_to_normalize": 2259,
+ "words_not_normalized": 291,
+ "not_normalized_share": 0.12881806108897742,
+ "not_normalized_by_reason": {
+  "unseen_character": 158,
+  "capitalized": 18,
+  "fragment": 99,
+  "optional_letters": 16
+ },
+ "not_normalized_by_language": {
+  "Sanskrit": [
+   28,
+   461
+  ],
+  "Ancient Greek": [
+   31,
+   312
+  ],
+  "Avestan": [
+   27,
+   242
+  ],
+  "Latin": [
+   15,
+   174
+  ],
+  "Lithuanian": [
+   0,
+   152
+  ],
+  "Old High German": [
+   5,
+   87
+  ],
+  "Old Norse": [
+   3,
+   85
+  ],
+  "Old English": [
+   11,
+   81
+  ],
+  "Old Church Slavonic": [
+   23,
+   77
+  ],
+  "Old Irish": [
+   3,
+   69
+  ],
+  "Latvian": [
+   2,
+   67
+  ],
+  "Middle Welsh": [
+   8,
+   43
+  ],
+  "Gothic": [
+   5,
+   35
+  ],
+  "Russian": [
+   15,
+   31
+  ],
+  "Old Saxon": [
+   9,
+   27
+  ],
+  "Old Armenian": [
+   2,
+   26
+  ],
+  "Old Prussian": [
+   1,
+   25
+  ],
+  "Doric Greek": [
+   6,
+   19
+  ],
+  "Old Frisian": [
+   9,
+   15
+  ],
+  "Old East Slavic": [
+   13,
+   14
+  ],
+  "Ionic Greek": [
+   7,
+   12
+  ],
+  "Middle Irish": [
+   0,
+   11
+  ],
+  "Old Persian": [
+   1,
+   11
+  ],
+  "Oscan": [
+   3,
+   10
+  ],
+  "Umbrian": [
+   6,
+   10
+  ],
+  "Middle Persian": [
+   0,
+   10
+  ],
+  "Church Slavonic": [
+   1,
+   9
+  ],
+  "Old Lithuanian": [
+   4,
+   9
+  ],
+  "Persian": [
+   1,
+   8
+  ],
+  "Attic Greek": [
+   0,
+   8
+  ],
+  "Mycenaean Greek": [
+   0,
+   8
+  ],
+  "Serbo-Croatian": [
+   3,
+   7
+  ],
+  "Middle Breton": [
+   3,
+   7
+  ],
+  "Pashto": [
+   1,
+   6
+  ],
+  "Welsh": [
+   0,
+   6
+  ],
+  "Breton": [
+   2,
+   6
+  ],
+  "Epic Greek": [
+   1,
+   6
+  ],
+  "Old Czech": [
+   3,
+   5
+  ],
+  "Czech": [
+   5,
+   5
+  ],
+  "Polish": [
+   4,
+   5
+  ],
+  "Middle Low German": [
+   1,
+   5
+  ],
+  "Bulgarian": [
+   4,
+   4
+  ],
+  "Aeolic Greek": [
+   0,
+   4
+  ],
+  "Slovene": [
+   4,
+   4
+  ],
+  "Old Latin": [
+   1,
+   3
+  ],
+  "Arcadocypriot Greek": [
+   3,
+   3
+  ],
+  "Old Welsh": [
+   2,
+   3
+  ],
+  "Khotanese": [
+   0,
+   3
+  ],
+  "Gaulish": [
+   1,
+   3
+  ],
+  "Albanian": [
+   0,
+   2
+  ],
+  "Old Cornish": [
+   1,
+   2
+  ],
+  "Old Breton": [
+   0,
+   2
+  ],
+  "Cretan Greek": [
+   2,
+   2
+  ],
+  "Cornish": [
+   1,
+   2
+  ],
+  "Middle Cornish": [
+   2,
+   2
+  ],
+  "Old Polish": [
+   2,
+   2
+  ],
+  "Middle English": [
+   1,
+   2
+  ],
+  "Curonian": [
+   1,
+   1
+  ],
+  "Norwegian": [
+   0,
+   1
+  ],
+  "Irish": [
+   1,
+   1
+  ],
+  "Middle High German": [
+   0,
+   1
+  ],
+  "Upper Sorbian": [
+   1,
+   1
+  ],
+  "Lepontic": [
+   0,
+   1
+  ],
+  "Lombardic": [
+   1,
+   1
+  ],
+  "Dutch": [
+   0,
+   1
+  ],
+  "Icelandic": [
+   0,
+   1
+  ],
+  "German": [
+   1,
+   1
+  ]
+ },
+ "not_normalized_examples": {
+  "Serbo-Croatian": [
+   "ságor",
+   "gôj",
+   "slâd"
+  ],
+  "Middle Welsh": [
+   "of",
+   "oddf",
+   "llys(i)au",
+   "poeth",
+   "ffon",
+   "frut",
+   "freu",
+   "tref"
+  ],
+  "Persian": [
+   "Isfahan"
+  ],
+  "Curonian": [
+   "jentere"
+  ],
+  "Russian": [
+   "emeny",
+   "jědá",
+   "borodá",
+   "berémja",
+   "byt",
+   "danь",
+   "zjátь",
+   "známja"
+  ],
+  "Latvian": [
+   "ẹ̄sma",
+   "ẹ̄da"
+  ],
+  "Old Frisian": [
+   "tōth",
+   "burg",
+   "bas(a)-",
+   "bold",
+   "wōst",
+   "hund",
+   "here",
+   "reth"
+  ],
+  "Old English": [
+   "tōð",
+   "beorðor",
+   "tang(e)",
+   "sōð",
+   "or-oð",
+   "hlēoðor",
+   "-sæte",
+   "stēal(l)"
+  ],
+  "Old Church Slavonic": [
+   "obědъ",
+   "bogъ",
+   "brada",
+   "brěmę",
+   "sъborъ",
+   "bosъ",
+   "bljustelь",
+   "bljusti"
+  ],
+  "Bulgarian": [
+   "jadá",
+   "jablo",
+   "jábol",
+   "slâd"
+  ],
+  "Sanskrit": [
+   "-ítya-",
+   "⁺étar-",
+   "-itá-",
+   "-bhará-",
+   "-tti-",
+   "-dā́s-",
+   "-dabhná-",
+   "-dābhya-"
+  ],
+  "Latin": [
+   "-itium",
+   "-fertor",
+   "-fer",
+   "-ditus",
+   "(g)nātus",
+   "(g)nāta",
+   "-ventor",
+   "-ventus"
+  ],
+  "Avestan": [
+   "-aiia-",
+   "-ita-",
+   "-bāma-",
+   "-bərət-",
+   "-bərəiti-",
+   "-bərəta-",
+   "-δaoiia-",
+   "-dāta-"
+  ],
+  "Ancient Greek": [
+   "-ιτός",
+   "HG",
+   "-πευθής",
+   "-δοτος",
+   "-θυρον",
+   "-γνήτη",
+   "-χιμος",
+   "-βήτωρ"
+  ],
+  "Old Norse": [
+   "-beitr",
+   "snjór/snær",
+   "sœtr"
+  ],
+  "Ionic Greek": [
+   "-ή",
+   "-ή",
+   "γέννᾰ",
+   "ἐοῦσα",
+   "-ίη",
+   "μέζων",
+   "-ή"
+  ],
+  "Old Czech": [
+   "břiemě",
+   "jablo",
+   "jablan"
+  ],
+  "Umbrian": [
+   "ařfertur",
+   "dunum",
+   "naratu",
+   "naraklum",
+   "ocar",
+   "peřum"
+  ],
+  "Irish": [
+   "-ber"
+  ],
+  "Middle Breton": [
+   "bern",
+   "lousou",
+   "seuzl"
+  ],
+  "Old Saxon": [
+   "burg",
+   "berg",
+   "bū",
+   "tanga",
+   "gidān",
+   "gidōn",
+   "lud",
+   "hund"
+  ],
+  "Old Irish": [
+   "-buith",
+   "senmáth(a)ir",
+   "-macht"
+  ],
+  "Breton": [
+   "⟨gubdut⟩",
+   "steud"
+  ],
+  "Doric Greek": [
+   "φυά",
+   "γέννᾱ",
+   "-ά",
+   "-ά",
+   "-στανος",
+   "ἁδύς"
+  ],
+  "Old High German": [
+   "bûr",
+   "biquāmi",
+   "ōst(a)ra",
+   "a(c)ki-",
+   "(h)liumunt"
+  ],
+  "Old Lithuanian": [
+   "būklas",
+   "daũbas",
+   "ešva",
+   "šlova"
+  ],
+  "Czech": [
+   "bydlo",
+   "hoj",
+   "planý",
+   "sídlo",
+   "sádra"
+  ],
+  "Polish": [
+   "bydło",
+   "węzeł",
+   "radło",
+   "strumień"
+  ],
+  "Old Armenian": [
+   "Adj.-Suffix",
+   "aɫi"
+  ],
+  "Arcadocypriot Greek": [
+   "ἀπυδοσμος",
+   "ἀέλιος",
+   "ῥόϝος"
+  ],
+  "Oscan": [
+   "dunúm",
+   "fíísnú",
+   "anams"
+  ],
+  "Old Welsh": [
+   "datl",
+   "g(w)orsedd"
+  ],
+  "Gothic": [
+   "-kunds",
+   "hvelauþs",
+   "freis",
+   "þaurp",
+   "waír"
+  ],
+  "Slovene": [
+   "znâtelj",
+   "jábel",
+   "krî",
+   "plân"
+  ],
+  "Old East Slavic": [
+   "jabolonь",
+   "okъno",
+   "usta",
+   "ustьje",
+   "sluti",
+   "slava",
+   "mudrъ",
+   "solodъ"
+  ],
+  "Gaulish": [
+   "-actus"
+  ],
+  "Cretan Greek": [
+   "ἄναρ·",
+   "ἄναιρον·"
+  ],
+  "Cornish": [
+   "enef"
+  ],
+  "Middle Cornish": [
+   "aras",
+   "tre"
+  ],
+  "Old Polish": [
+   "uściec",
+   "kry"
+  ],
+  "Church Slavonic": [
+   "-jasnь"
+  ],
+  "Old Latin": [
+   "iouxmenta"
+  ],
+  "Epic Greek": [
+   "νηῦς"
+  ],
+  "Old Persian": [
+   "-pišta-"
+  ],
+  "Pashto": [
+   "pōx"
+  ],
+  "Upper Sorbian": [
+   "płony"
+  ],
+  "Lombardic": [
+   "scarnafol"
+  ],
+  "Old Cornish": [
+   "frot"
+  ],
+  "Middle Low German": [
+   "ungestūme"
+  ],
+  "Middle English": [
+   "stulpe"
+  ],
+  "German": [
+   "Schwager"
+  ],
+  "Old Prussian": [
+   "-tinklo"
+  ]
+ },
+ "caveat_over_20pct": false,
+ "set_filter": {
+  "fewer_than_2_languages": 770,
+  "formation_linked_to_first_run_entry": 148,
+  "stem_matches_first_run": 54,
+  "transducer_failed": 4
+ },
+ "contaminated_languages": [],
+ "sets": 274,
+ "sets_with_effect": 183,
+ "families": 122,
+ "families_lexicon_root": 76,
+ "by_language": {
+  "Sanskrit": 111,
+  "Avestan": 81,
+  "Lithuanian": 62,
+  "Ancient Greek": 59,
+  "Old High German": 44,
+  "Latin": 38,
+  "Latvian": 37,
+  "Old Norse": 37,
+  "Old English": 36,
+  "Old Irish": 24,
+  "Old Church Slavonic": 20,
+  "Middle Welsh": 15,
+  "Old Prussian": 13,
+  "Old Saxon": 13,
+  "Gothic": 13,
+  "Russian": 8,
+  "Middle Irish": 7,
+  "Doric Greek": 7,
+  "Middle Persian": 7,
+  "Old Persian": 7,
+  "Old Armenian": 4,
+  "Pashto": 4,
+  "Ionic Greek": 4,
+  "Mycenaean Greek": 4,
+  "Serbo-Croatian": 4,
+  "Old Frisian": 4,
+  "Attic Greek": 3,
+  "Khotanese": 3,
+  "Persian": 3,
+  "Epic Greek": 3,
+  "Welsh": 3,
+  "Old Lithuanian": 2,
+  "Breton": 2,
+  "Middle Low German": 2,
+  "Church Slavonic": 2,
+  "Norwegian": 1,
+  "Umbrian": 1,
+  "Gaulish": 1,
+  "Cornish": 1,
+  "Old Breton": 1,
+  "Polish": 1,
+  "Middle Breton": 1,
+  "Aeolic Greek": 1,
+  "Dutch": 1,
+  "Icelandic": 1,
+  "Oscan": 1,
+  "Old Latin": 1
+ },
+ "languages_not_in_training": [
+  "Church Slavonic"
+ ],
+ "languages_per_set": {
+  "2": 172,
+  "3": 65,
+  "4": 31,
+  "5": 4,
+  "6": 1,
+  "9": 1
+ },
+ "sets_sharing_an_input_form_with_first_run": 38,
+ "effect_slots": 235,
+ "effect_slots_exact_matched": 46,
+ "matched_families": 31,
+ "per_kind": {
+  "color": {
+   "effect_slots": 96,
+   "matched": 2,
+   "matched_families": 2
+  },
+  "length": {
+   "effect_slots": 111,
+   "matched": 3,
+   "matched_families": 1
+  },
+  "schwa": {
+   "effect_slots": 34,
+   "matched": 0,
+   "matched_families": 0
+  },
+  "loss": {
+   "effect_slots": 93,
+   "matched": 42,
+   "matched_families": 31
+  }
+ },
+ "min_slots_rule": 150,
+ "powered": false,
+ "target_units_outside_training_vocab": {}
+}

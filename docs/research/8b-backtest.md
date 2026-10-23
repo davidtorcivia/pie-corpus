@@ -290,3 +290,123 @@ No reading of the pre-registered data source comes near 150.
 **What a confirmatory replication would need.** A data source outside Wiktionary's PIE pages: for
 example LIV² or handbook cognate tables, or other branches' dictionaries. That needs a new
 pre-registration. The present one is closed: underpowered.
+
+## Replication 2 (pre-registered, NIL daughters)
+
+Plan: `docs/research/8b-preregistration-2.md`, written before the data was built. Run 2026-10-23.
+
+**Verdict: underpowered, not run.** The NIL data has **46** effect slots with an exact-matched control,
+against the pre-registered minimum of 150. As the plan requires, no model was trained, no surprisal was
+computed, and H1 (loss) and H2 (colouring) were not tested. No Holm decision exists because no test was
+run. The first run's out-of-fold lead (+0.27 nats beyond the shuffled model) is still a hypothesis,
+neither confirmed nor refuted. Colouring is the weaker side: only **2** colour slots have a matched control.
+
+**Normalization.** 291 of the 2,259 daughter words that reached normalization could not be normalized:
+**12.9%**, under the 20% caveat threshold. The reasons:
+
+- 158 have a character the first run's inputs never show for that language;
+- 99 are fragments (a leading `-`, e.g. ved. *-reká-*);
+- 18 are capitalized (names);
+- 16 have optional letters (*an(n)udon*).
+
+Slavic is the worst: OCS 23/77, Russian 15/31, Old East Slavic 13/14. NIL's scholarly transliteration
+differs from Wiktionary's there. Greek, Sanskrit and Avestan fail at 6–11%. Code:
+`scripts/build_replication2.py`. Output: `data/research/backtest/replication2.jsonl`, with all counts in
+`replication2_meta.json`. Input: `data/lexicon/nil.jsonl` only (the whole transcribed book, 207 roots,
+3,044 formations). Nothing in `raw/` was read.
+
+**Rules fixed before the build.** These are the plan's rules, plus readings the plan left open. All of
+them are in the builder's docstring.
+
+- **Formations.**
+  - Dropped: ‡ (571), ˣ (46), ** (18), uncertain (488), and those for which `pie.nil.stem()` gives no stem
+    (657).
+  - Formations with the same stem were merged into one set (14).
+- **Daughter words.**
+  - Parsing: per language segment of an evidence string, the first word after the abbreviation and its
+    labels. A string can cover several languages: "air. dét n., mkymr. dant m." gives two segments, and
+    "aav., jav. garəma-" gives one word to both languages.
+  - Dropped by the first run's `usable()` rule (no uncertain, no analogical reflexes): `?`-marked words
+    (247) and words in NIL's remodelling bracket `[` (335).
+  - Also dropped:
+    - proto-forms (germ. \*, kelt. \* …: 235); their attested daughters after "in" are kept;
+    - starred words (21);
+    - Anatolian, including Palaic `pal.` (58), and Tocharian (38);
+    - names (56), oblique case forms (34), words cited inside compounds (16), Mitanni and non-IE (7).
+- **Normalization** to the Wiktionary romanizations of the training inputs:
+  - Greek script → Wiktionary transliteration. Checked on the lexicon's 2,373 Greek reflexes that have both
+    a script form and a romanization: 99.8% identical (`build_replication2.py --check-greek`).
+  - Sanskrit r̥ → ṛ; Avestan ϑ → θ; Slavonic ь ъ → ĭ ŭ; Armenian ʿ → ʻ.
+  - Stem and morpheme hyphens are removed.
+  - A word fails if, after this, it has a character outside the model's input vocabulary or outside that
+    language's first-run inputs. Failed words are dropped, not fed as `<unk>`.
+- **Languages.** NIL's abbreviations are mapped to the first-run labels: ved./ai. → Sanskrit, jav./aav.
+  → Avestan, arm. → Old Armenian, and so on. A set needs at least 2 languages.
+- **Independence (per formation).** The plan's "stem matches a target up to accent and length" barely
+  bites: NIL cites bare stems (*h₂ówi-*), the first run cites nominatives (*h₂ówis*). It was tightened in
+  two ways, both of which can only remove sets:
+  - the stem, its pre-laryngeal target and its expected nominatives (`pie.nil.expected`) are also
+    matched against first-run targets and modern forms, with and without -os/-om/-s/-m;
+  - a formation is dropped if `pie.nil.apply()` linked it to a first-run row's lexicon entry.
+- **Target and family.**
+  - Target: `convert(stem)`, the bare stem, as pre-registered.
+  - Family: the lexicon root linked to the NIL root, else the NIL root itself.
+
+| step | count |
+|---|---|
+| NIL formations | 3,044 |
+| after marker, uncertainty and stem filters (14 merged) | 1,250 |
+| fewer than 2 languages after word filters | −770 |
+| transducer failed | −4 |
+| linked to a first-run lexicon entry / stem or nominative matches a first-run form | −148 / −54 |
+| **cognate sets** | **274** (122 families, 76 of them lexicon roots) |
+| sets with a laryngeal effect | 183 |
+| effect slots (colour 96, length 111, schwa 34, loss 93; one slot can carry two kinds) | 235 |
+| **effect slots with exact-matched controls (≥ 3 control families)** | **46** (loss 42, colour 2, length 3; 31 families) |
+
+**Why so few.** There are three reasons:
+
+- Most NIL formations have one usable language. NIL cites at most four daughters, often from one
+  branch, and once ‡, `?`, `[`, proto-forms and Anatolian/Tocharian are removed, 770 of 1,250
+  formations are left with fewer than two languages.
+- The independence rule removes 202 of the remaining 476. They are the common, well-attested formations
+  the first run already trained on.
+- In the 274 surviving targets, the colour and length slots fall in strata with no non-laryngeal
+  controls from 3 families. The largest is stem-final ā (the eh₂-stems, 46 colour slots); then come
+  initial a and medial ā/ō. What does get matched is mostly loss:
+  - stem-final o after a lost laryngeal: 23 of the 46 slots. This is a position that bare-stem targets
+    create and the nominative-trained model never saw;
+  - initial w-, s-, y-: 11 slots.
+
+### Exploratory (not a substitute test)
+
+**Sensitivity bound.** `scripts/replication2_sensitivity.py` reran the build without writing data. Output:
+`replication2_sensitivity.json`. Exact-matched slots under looser readings:
+
+| reading | sets | exact-matched slots |
+|---|---|---|
+| pre-registered | 274 | 46 |
+| keep `?` and `[` daughter words | 372 | 70 |
+| literal independence only (bare stem vs first-run target) | 457 | 74 |
+| both of the above | 594 | 105 |
+| also keep ‡/**/ˣ/uncertain formations (the plan excludes them) | 774 | 154 |
+| no independence rule (first-run formations included) | 800 | 188 |
+
+No reading consistent with the plan reaches 150. The two readings that do reach it either admit
+formations the plan explicitly excludes, or drop the independence rule, which admits sets whose targets
+the model was trained on and would make the test circular.
+
+Other observations:
+
+- 38 of the 274 sets share at least one (language, form) pair with a first-run input. The plan does not
+  exclude these; this is a descriptive count only.
+- 146 of the 274 sets, holding 25 of the 46 matched slots, have their languages from a single branch
+  (Sanskrit + Avestan, Lithuanian + Latvian, Greek dialects). The ≥ 2-language rule counts them, as it
+  did in the first run. As independent evidence, the 46 is if anything an overcount.
+- No target unit falls outside the training vocabulary.
+
+**What a confirmatory replication would need.** More independent cognate sets with at least two
+attested languages each: roughly three times this yield (150/46). Somewhat less might do, because
+a larger set also lets more strata pass the 3-family rule. Alternatively, a design whose controls do not have to come from the evaluation words
+themselves, e.g. controls matched from the training targets. That would be a new pre-registration. This
+one is closed: underpowered.

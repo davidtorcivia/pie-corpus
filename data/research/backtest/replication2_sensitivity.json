@@ -1,0 +1,86 @@
+{
+ "pre-registered": {
+  "sets": 274,
+  "families": 122,
+  "effect_slots": 235,
+  "exact_matched": 46,
+  "matched_by_kind": {
+   "color": 2,
+   "length": 3,
+   "schwa": 0,
+   "loss": 42
+  }
+ },
+ "keep ?/[ daughter words": {
+  "sets": 372,
+  "families": 145,
+  "effect_slots": 321,
+  "exact_matched": 70,
+  "matched_by_kind": {
+   "color": 2,
+   "length": 4,
+   "schwa": 0,
+   "loss": 65
+  }
+ },
+ "literal independence (bare stem vs first-run target)": {
+  "sets": 457,
+  "families": 156,
+  "effect_slots": 343,
+  "exact_matched": 74,
+  "matched_by_kind": {
+   "color": 4,
+   "length": 8,
+   "schwa": 0,
+   "loss": 64
+  }
+ },
+ "keep ?/[ daughters + literal independence": {
+  "sets": 594,
+  "families": 170,
+  "effect_slots": 451,
+  "exact_matched": 105,
+  "matched_by_kind": {
+   "color": 5,
+   "length": 9,
+   "schwa": 0,
+   "loss": 94
+  }
+ },
+ "also keep ‡/**/ˣ/uncertain formations (excluded by the plan)": {
+  "sets": 774,
+  "families": 180,
+  "effect_slots": 596,
+  "exact_matched": 154,
+  "matched_by_kind": {
+   "color": 26,
+   "length": 35,
+   "schwa": 0,
+   "loss": 117
+  }
+ },
+ "no independence rule at all (first-run formations included)": {
+  "sets": 800,
+  "families": 180,
+  "effect_slots": 596,
+  "exact_matched": 188,
+  "matched_by_kind": {
+   "color": 60,
+   "length": 69,
+   "schwa": 0,
+   "loss": 118
+  }
+ },
+ "same, with a 1-family control rule": {
+  "sets": 800,
+  "families": 180,
+  "effect_slots": 596,
+  "exact_matched": 209,
+  "matched_by_kind": {
+   "color": 67,
+   "length": 76,
+   "schwa": 0,
+   "loss": 132
+  }
+ }
+}
