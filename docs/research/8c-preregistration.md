@@ -23,3 +23,14 @@ Counting co-occurrences (8a, rounds 1–3) finds known Graeco-Aryan formulas abo
 
 ## Reporting
 docs/research/8c-results.md: the numbers above with packet-level tables, the permutation p, every accepted claim (real or decoy, labelled after unblinding), and the candidate-new list. Packets, claims and reviews are committed (no daughter text beyond the cited words; NC corpora are quoted only by locus).
+
+## Stage B: the discovery run (added 2026-10-23, before any Stage A packet was read)
+David: the design above is the validation; "for the real run we want to use as large of a corpus as possible." Stage A (above) measures readers' false-discovery rate on a controlled sample; Stage B is the exhaustive run, interpreted with Stage A's numbers and with its own embedded decoys.
+
+- **Gate:** Stage B starts only after Stage A is scored. If Stage A fails its success criterion, Stage B still runs only if David decides so, and its claims are then reported with the Stage A result as the headline caveat.
+- **Corpora: everything local and readable.** Indo-Iranian: Rigveda, Atharvaveda Śaunaka and Paippalāda, Avesta. Greek: Homer and all GLAUx poetry and prose to 300 BC. Germanic: Poetic Edda, Old English poetry. Anatolian: all of Hittite (TLHdig). Italic: Latin (LASLA), Umbrian. Baltic: Latvian dainas. Celtic: Old Irish (what is usable). Slavic: the Igor Tale and early Old Russian from TOROT (research-only licence: read, never copied out). Bible translations excluded as parallel sources.
+- **Retrieval (generous by design; readers judge).** Every unit (stanza, line window, sentence) of every corpus is a pivot. Candidate partners: units in *other branches* sharing ≥ 2 PIE roots at root-group level (so drifted cognates connect), scored by summed inverse root frequency; top partners per pivot above a fixed score threshold, merged into comparison bundles (one pivot + up to 6 partners from ≥ 1 other branch, overlapping bundles merged). The threshold and caps are frozen by the bundle builder before any bundle is read, and the full bundle list is committed.
+- **Embedded decoys.** 20% of bundles, chosen at random, have their partners replaced by frequency- and length-matched units from other branches sharing no seed-root overlap with the pivot beyond chance level; readers and reviewers are blind to this. The key is gitignored as in Stage A.
+- **Reading, review, novelty:** as in Stage A (sections 5–7), readers ~20 bundles each.
+- **Measures:** as in Stage A, per bundle instead of per packet: accepted claims per real bundle vs per decoy bundle (permutation test, one-sided, 10,000 permutations, seed 0); every accepted claim listed; candidate-new list with novelty status. Claims in Stage B are reported with the false-discovery estimate from both Stage A and Stage B's decoys.
+- **Cost estimate, stated in advance:** about 2,000–4,000 bundles, 100–200 reader runs plus review, on the order of 30–60M tokens.
