@@ -27,5 +27,14 @@ Language names (each maps to a branch in scripts/build_tier2.py; Vedic and Avest
 - Each line must cite at least two branches (the builder rejects otherwise). Three or more branches is better.
 - Honesty over coverage: if a parallel is only semantic (no shared cognate words), it is not a back-projection; skip it.
 
+## Lessons from the adversarial review (docs/audits/tier2-review.md)
+- **`secure` is checked by the builder**, not taken on trust: a lexeme counts only if one of its recorded reflexes (data/lexicon/lexicon.jsonl `reflexes`) matches a cited word or lemma in the parallel refs of at least two branches (`secure_checks` in the output; `exact` vs `root`). Cite the daughter word as attested *and* its lemma, so the match can be found.
+- **Mark each ref's role**: `"role": "parallel"` (the passage that carries the shared wording; default) or `"role": "support"` (a passage cited for meaning or usage only). Only parallel refs count as branches.
+- **The head of the formula must be secure** (the noun of a noun phrase, the verb of a clause): a line whose only secure words are its periphery is not a back-projection.
+- **One line per parallel.** The builder drops a second line with the same set of parallel loci; vary the passages, not the phrasing.
+- **Follow the daughters' morphology exactly**: Ved. dhehi is the reduplicated *present* imperative (dʰedʰh₁dʰí), not the aorist; if both branches have the middle (Ved. yukṣvá, Gk ζεύγνυσθε), so does the line.
+- Shared root with different formations in the two branches is root-level evidence, not exact: say so in `notes`.
+- Lines the review rejected are listed in data/tier2/review_verdicts.json and never reach the corpus.
+
 ## Check
 Run `uv run python -I scripts/build_tier2.py data/tier2/plans/<cluster>.jsonl`; fix rejects; rerun until 0 rejects. Report lines, rejects, mean secure share, mean branches.
