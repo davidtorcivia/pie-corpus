@@ -1,5 +1,5 @@
 {
-  "_source": "Hand tables, checked 2026-10-23 against Fortson 2010 (ch. 7) and Ringe 2017 (ch. 2); per-form verdicts in raw/books/extract/fortson/diff.jsonl, summarized in docs/morphology.md. Cells list alternatives, primary first. Book spellings without initial laryngeals (eǵ, yós, en, e-, apo) are kept as alternatives. Our laryngeal forms follow Wiktionary/LIV notation.",
+  "_source": "Hand tables, checked 2026-10-23 against Fortson 2010 (ch. 7) and Ringe 2017 (ch. 2); per-form verdicts in raw/books/extract/fortson/diff.jsonl, summarized in docs/morphology.md. Cells list alternatives, primary first. Book spellings without initial laryngeals (eǵ, yós, en, e-, apo) are kept as alternatives. Our laryngeal forms follow Wiktionary/LIV notation. Demonstrative ABL/INS: handbook contracted tósmōd, tóh₁ first (Fortson), Ringe's tósmead, tónoh₁ as alternatives (tier3-t001 review).",
   "personal": {
     "1": {
       "NOM.SG": [
@@ -157,8 +157,8 @@
         "téso"
       ],
       "ABL.SG": [
-        "tósmead",
-        "tósmōd"
+        "tósmōd",
+        "tósmead"
       ],
       "DAT.SG": [
         "tósmey",
@@ -169,8 +169,8 @@
         "tósmin"
       ],
       "INS.SG": [
-        "tónoh₁",
-        "tóh₁"
+        "tóh₁",
+        "tónoh₁"
       ],
       "NOM.PL": [
         "tóy"
@@ -271,12 +271,14 @@
         "téh₂"
       ],
       "INS.SG": [
+        "tóh₁",
         "tónoh₁"
       ],
       "DAT.SG": [
         "tósmey"
       ],
       "ABL.SG": [
+        "tósmōd",
         "tósmead"
       ],
       "GEN.SG": [

@@ -191,6 +191,9 @@ def _person_number(slot: dict, lx: Lexicon) -> tuple[int, str]:
     lid = slot["lex_id"]
     if lid.startswith("closed:personal/") and lid.split("/")[1] in ("1", "2"):
         return int(lid.split("/")[1]), slot.get("num", "SG")
+    # a neuter plural subject takes a singular verb (Gk τὰ ζῷα τρέχει, Av., Hitt.): the old collective
+    if slot.get("num") == "PL" and _slot_gender(slot, lx) == "n":
+        return 3, "SG"
     return 3, slot.get("num", "SG")
 
 
