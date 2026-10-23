@@ -108,3 +108,9 @@ The kaikki.org licence statement for all rows below is on https://kaikki.org/dic
 - Dainu skapis: `dainuskapis.lt` does not resolve on public DNS either. The Latvian `dainuskapis.lv` returned a Cloudflare block page (403), so its terms could not be read. Nothing downloaded; needs a licence check.
 - CEToM (https://cetom.univie.ac.at/): the server redirected every request to `?error_504` (three tries), so its terms could not be read. Needs a licence check.
 - Menotec (Old Norwegian treebank, in the Syntacticus release): its README states no licence, so it was not kept.
+
+## GLAUx (Greek beyond Homer; replaces Diorisis, whose figshare host is unreachable here)
+
+| Dir | Source | URL / origin | Retrieved | sha256 | License / basis |
+|---|---|---|---|---|---|
+| `daughters/glaux/` | GLAUx corpus (A. Keersmaekers), 1,421 XML texts, ~20M tokens of Ancient Greek (8th c. BC to ~4th c. AD), automatically lemmatized (README: lemmas 98.8%) with treebank layers; `src/glaux-main/metadata.txt` gives each text's source licence. Tarball of branch main, extracted with Python's tarfile 'data' filter; never executed. | https://codeload.github.com/alekkeersmaekers/glaux/tar.gz/refs/heads/main (repo https://github.com/alekkeersmaekers/glaux) | 2026-10-23 | `5aebae9cf12b80c9f0755675471223ec3344b753d2de77450566d63abf4d59c6` (glaux-main.tar.gz) | Per text (metadata SOURCE_LICENSE): 999 CC BY-SA 4.0, 227 CC BY-SA 3.0, 10 CC BY 4.0, 6 NC/ND variants, 1 OpenEdition, 174 NA. Use only CC BY / CC BY-SA texts outside research; NC/ND/NA texts are research-only. Verified in the repo README and metadata.txt. |
