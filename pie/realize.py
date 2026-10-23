@@ -402,6 +402,15 @@ def _slot_gender(s: dict, lx: Lexicon) -> str:
 
 def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     slots = cl["slots"]
+    # a noun counted by 2 is dual, by 3 or 4 plural (the numeral MOD fixes its head's number; t016 review:
+    # "two dogs" came out singular when the plan left num unset)
+    for sl in slots:
+        if sl["role"] == "MOD" and sl["lex_id"].startswith("closed:numerals/") and sl.get("head") is not None:
+            n = sl["lex_id"].split("/")[1]
+            want = {"2": "DU", "3": "PL", "4": "PL"}.get(n)
+            if want and slots[sl["head"]].get("num") != want:
+                slots = [dict(x) for x in slots] if slots is cl["slots"] else slots
+                slots[sl["head"]]["num"] = want
     subj_i = next((i for i, s in enumerate(slots) if s["role"] == "SUBJ"), None)
     subj = slots[subj_i] if subj_i is not None else None
     person, num = _person_number(subj, lx) if subj else (3, "SG")

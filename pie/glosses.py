@@ -42,10 +42,11 @@ def _plain(s: str) -> str:
 
 def build(lexicon: list[dict]) -> dict[str, dict]:
     by_id = {e["id"]: e for e in lexicon}
-    affixes = {}
+    affixes, exact = {}, {}
     for e in lexicon:
         if e["kind"] == "affix" and e["meaning"]:
             affixes.setdefault(_plain(e["form"]), e)
+            exact.setdefault(e["form"], e)
     out = {}
     for e in lexicon:
         if e["meaning"] or e["kind"] not in ("derivative", "word"):
@@ -58,6 +59,13 @@ def build(lexicon: list[dict]) -> dict[str, dict]:
         found = None
         for k in range(1, len(parts)):            # longest suffix first; accents ignored
             suf = "-" + "".join(parts[k:])
+            # an exact (accented) match wins: oxytone -tós is the verbal adjective, -tos the ablatival
+            # adverb suffix (t016 review: 'X-ed' adjectives were glossed as adverbs)
+            if suf in exact:
+                if suf in ("-s", "-t") and len(parts) != 2:
+                    break
+                found = exact[suf]
+                break
             if _plain(suf) in affixes:
                 # -s / -t are root-noun / root-aorist suffixes only on root + suffix;
                 # elsewhere they are the nominative or 3sg ending (Hh₃es-eno-s)

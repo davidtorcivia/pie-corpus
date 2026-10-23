@@ -425,3 +425,15 @@ def test_t017_review_stems():
     assert lx.cells("pie-lex-swesoxr")["GEN.SG"][0] == "swesrés"
     assert lx.cells("pie-lex-h2ekjmox")["GEN.SG"][0] == "h₂ḱmnés"
     assert lx.cells("pie-lex-tetkjox")["GEN.SG"][0] == "tetḱnés"
+
+
+def test_numeral_fixes_head_number():
+    """t016 review: 'two dogs' with num unset came out singular; the numeral 2 makes its head dual."""
+    from pie.realize import Lexicon, realize
+    lx = Lexicon.load()
+    p = {"english": "Two dogs saw.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-kjwox", "role": "SUBJ"},
+        {"lex_id": "closed:numerals/2", "role": "MOD", "head": 0},
+        {"lex_id": "pie-lex-widet", "role": "V", "verb": {"tense": "AOR"}}]}]}
+    w = realize(p, lx)["words"]
+    assert all("DU" in x["features"] for x in w if x["lex_id"] in ("pie-lex-kjwox", "pie-lex-widet"))
