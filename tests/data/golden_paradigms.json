@@ -1,0 +1,30 @@
+{
+  "_source": "handbook-standard, UNVERIFIED: written from knowledge of the standard handbooks, not copied from them. verify_against: Fortson 2010 ch. 6-7; Ringe 2017 ch. 2. Each cell lists acceptable forms; the engine (handbook convention, with alternatives) must produce at least one.",
+  "paradigms": [
+    {"lemma": "pṓds", "spec": {"type": "noun", "strong": "pód", "weak": "ped", "accent_class": "acrostatic", "gender": "m", "nom_sg": "pṓds", "loc_sg": ["péd"]},
+     "cells": {"NOM.SG": ["pṓds"], "ACC.SG": ["pódm̥"], "GEN.SG": ["pedés", "pedós"], "DAT.SG": ["pedéy"], "LOC.SG": ["pédi", "péd"], "NOM.PL": ["pódes"], "ACC.PL": ["pódm̥s"]}},
+    {"lemma": "wĺ̥kʷos", "spec": {"type": "noun", "strong": "wĺ̥kʷo", "gender": "m"},
+     "cells": {"NOM.SG": ["wĺ̥kʷos"], "VOC.SG": ["wĺ̥kʷe"], "ACC.SG": ["wĺ̥kʷom"], "GEN.SG": ["wĺ̥kʷosyo"], "ABL.SG": ["wĺ̥kʷōd"], "DAT.SG": ["wĺ̥kʷōy"], "LOC.SG": ["wĺ̥kʷoy", "wĺ̥kʷey"], "INS.SG": ["wĺ̥kʷoh₁"], "NOM.PL": ["wĺ̥kʷōs"], "ACC.PL": ["wĺ̥kʷoms"], "GEN.PL": ["wĺ̥kʷōm"], "LOC.PL": ["wĺ̥kʷoysu"], "INS.PL": ["wĺ̥kʷōys"]}},
+    {"lemma": "dʰugh₂tḗr", "spec": {"type": "noun", "strong": "dʰugh₂tér", "weak": "dʰugh₂tr̥", "accent_class": "hysterokinetic", "gender": "f"},
+     "cells": {"NOM.SG": ["dʰugh₂tḗr"], "ACC.SG": ["dʰugh₂térm̥"], "GEN.SG": ["dʰugh₂trés", "dʰugh₂trós"], "DAT.SG": ["dʰugh₂tréy"], "NOM.PL": ["dʰugh₂téres"], "DAT.PL": ["dʰugh₂tr̥bʰós", "dʰugh₂tr̥mós"]}},
+    {"lemma": "ph₂tḗr", "spec": {"type": "noun", "strong": "ph₂tér", "weak": "ph₂tr̥", "accent_class": "hysterokinetic", "gender": "m"},
+     "cells": {"NOM.SG": ["ph₂tḗr"], "ACC.SG": ["ph₂térm̥"], "GEN.SG": ["ph₂trés", "ph₂trós"], "DAT.SG": ["ph₂tréy"], "LOC.SG": ["ph₂téri", "ph₂tér"], "NOM.PL": ["ph₂téres"], "ACC.PL": ["ph₂térm̥s"], "DAT.PL": ["ph₂tr̥bʰós", "ph₂tr̥mós"], "LOC.PL": ["ph₂tr̥sú"]}},
+    {"lemma": "h₂ówis", "spec": {"type": "noun", "strong": "h₂ówi", "weak": "h₂éwi", "accent_class": "acrostatic", "gender": "f"},
+     "cells": {"NOM.SG": ["h₂ówis"], "ACC.SG": ["h₂ówim"], "GEN.SG": ["h₂éwis"], "NOM.PL": ["h₂óweyes"], "ACC.PL": ["h₂ówims"]}},
+    {"lemma": "gʷṓws", "spec": {"type": "noun", "strong": "gʷów", "weak": "gʷéw", "accent_class": "acrostatic", "gender": "m", "nom_sg": "gʷṓws"},
+     "cells": {"NOM.SG": ["gʷṓws"], "ACC.SG": ["gʷṓm"], "GEN.SG": ["gʷéws"], "NOM.PL": ["gʷówes"], "ACC.PL": ["gʷówm̥s"]}},
+    {"lemma": "dyḗws", "spec": {"type": "noun", "strong": "dyéw", "weak": "dyu", "accent_class": "hysterokinetic", "gender": "m", "nom_sg": "dyḗws"},
+     "cells": {"NOM.SG": ["dyḗws"], "VOC.SG": ["dyéw"], "ACC.SG": ["dyḗm"], "GEN.SG": ["diwés", "diwós"], "DAT.SG": ["diwéy"], "LOC.SG": ["dyéwi", "dyéw"]}},
+    {"lemma": "h₁ésti", "spec": {"type": "verb", "strong": "h₁és", "weak": "h₁s", "kind": "impf"},
+     "cells": {"PRS.1SG": ["h₁ésmi"], "PRS.2SG": ["h₁ési", "h₁éssi"], "PRS.3SG": ["h₁ésti"], "PRS.1PL": ["h₁smós", "h₁smés"], "PRS.2PL": ["h₁sté"], "PRS.3PL": ["h₁sénti"], "IMP.2SG": ["h₁sdʰí"]}},
+    {"lemma": "bʰéreti", "spec": {"type": "verb", "strong": "bʰére", "kind": "impf"},
+     "cells": {"PRS.1SG": ["bʰéroh₂"], "PRS.2SG": ["bʰéresi"], "PRS.3SG": ["bʰéreti"], "PRS.1PL": ["bʰéromos"], "PRS.2PL": ["bʰérete"], "PRS.3PL": ["bʰéronti"], "PST.3SG": ["bʰéret"], "IMP.2SG": ["bʰére"], "IMP.3SG": ["bʰéretu"]}},
+    {"lemma": "gʷʰénti", "spec": {"type": "verb", "strong": "gʷʰén", "weak": "gʷʰn̥", "kind": "impf"},
+     "cells": {"PRS.1SG": ["gʷʰénmi"], "PRS.3SG": ["gʷʰénti"], "PRS.1PL": ["gʷʰn̥mós"], "PRS.3PL": ["gʷʰnénti"]}},
+    {"lemma": "wóyde", "spec": {"type": "verb", "strong": "wóyd", "weak": "wid", "kind": "stat"},
+     "cells": {"PRF.1SG": ["wóydh₂e"], "PRF.2SG": ["wóydth₂e"], "PRF.3SG": ["wóyde"], "PRF.1PL": ["widmé"], "PRF.2PL": ["widé"], "PRF.3PL": ["widḗr"]}}
+  ],
+  "deferred": [
+    {"lemma": "ǵʰew-", "reason": "Which stems (root aorist, nasal or thematic present) need LIV²/Fortson; not guessing."}
+  ]
+}

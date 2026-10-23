@@ -1,0 +1,40 @@
+{
+  "_source": "Hand tables, handbook-standard, UNVERIFIED: written from knowledge of the standard handbooks (Fortson, Beekes, Ringe style), not copied from them; verify against Fortson 2010 ch. 6-7 when supplied. Cells list alternatives, primary first. Enclitic forms are tagged ENCL. óynos declines as a thematic adjective through the engine and is not listed here.",
+  "personal": {
+    "1": {"NOM.SG": ["h₁eǵ", "h₁eǵh₂óm"], "ACC.SG": ["h₁mé", "mé"], "ACC.SG.ENCL": ["me"], "GEN.SG": ["méne"], "GEN.SG.ENCL": ["moy"], "DAT.SG": ["méǵʰye"], "DAT.SG.ENCL": ["moy"], "ABL.SG": ["méd"],
+          "NOM.PL": ["wéy"], "ACC.PL": ["n̥smé"], "ACC.PL.ENCL": ["nos"], "GEN.PL.ENCL": ["nos"], "DAT.PL": ["n̥sméy"], "DAT.PL.ENCL": ["nos"], "ABL.PL": ["n̥sméd"]},
+    "2": {"NOM.SG": ["túH", "tú"], "ACC.SG": ["twé"], "ACC.SG.ENCL": ["te"], "GEN.SG": ["téwe"], "GEN.SG.ENCL": ["toy"], "DAT.SG": ["tébʰye"], "DAT.SG.ENCL": ["toy"], "ABL.SG": ["twéd"],
+          "NOM.PL": ["yúH", "yū́"], "ACC.PL": ["usmé"], "ACC.PL.ENCL": ["wos"], "GEN.PL.ENCL": ["wos"], "DAT.PL": ["usméy"], "DAT.PL.ENCL": ["wos"], "ABL.PL": ["usméd"]},
+    "refl": {"ACC.SG": ["swé"], "ACC.SG.ENCL": ["se"], "DAT.SG.ENCL": ["soy"]}
+  },
+  "demonstrative_so": {
+    "m": {"NOM.SG": ["só"], "ACC.SG": ["tóm"], "GEN.SG": ["tósyo"], "ABL.SG": ["tósmōd"], "DAT.SG": ["tósmōy"], "LOC.SG": ["tósmi", "tósmin"], "INS.SG": ["tóh₁"],
+          "NOM.PL": ["tóy"], "ACC.PL": ["tóms"], "GEN.PL": ["tóysōm"], "DAT.PL": ["tóybʰos", "tóymos"], "ABL.PL": ["tóybʰos", "tóymos"], "LOC.PL": ["tóysu"], "INS.PL": ["tṓys"]},
+    "f": {"NOM.SG": ["séh₂"], "ACC.SG": ["téh₂m", "tā́m"], "GEN.SG": ["tésyeh₂s"], "DAT.SG": ["tésyeh₂ey"], "LOC.SG": ["tésyeh₂i"],
+          "NOM.PL": ["téh₂es"], "ACC.PL": ["téh₂ms"], "GEN.PL": ["téh₂sōm"], "DAT.PL": ["téh₂bʰos"], "LOC.PL": ["téh₂su"]},
+    "n": {"NOM.SG": ["tód"], "ACC.SG": ["tód"], "NOM.PL": ["téh₂"], "ACC.PL": ["téh₂"]}
+  },
+  "interrogative_kwi": {
+    "mf": {"NOM.SG": ["kʷís"], "ACC.SG": ["kʷím"], "NOM.PL": ["kʷéyes"], "ACC.PL": ["kʷíms"]},
+    "n": {"NOM.SG": ["kʷíd"], "ACC.SG": ["kʷíd"], "NOM.PL": ["kʷíh₂"]}
+  },
+  "interrogative_kwo": {
+    "m": {"NOM.SG": ["kʷós"], "ACC.SG": ["kʷóm"], "GEN.SG": ["kʷésyo", "kʷósyo"], "DAT.SG": ["kʷésmōy"], "LOC.SG": ["kʷésmi"], "NOM.PL": ["kʷóy"]},
+    "f": {"NOM.SG": ["kʷéh₂"], "ACC.SG": ["kʷéh₂m"]},
+    "n": {"NOM.SG": ["kʷód"], "ACC.SG": ["kʷód"]}
+  },
+  "numerals": {
+    "2": {"m": {"NOM.DU": ["dwóh₁"], "GEN.DU": ["dwóyh₁s"], "INS.DU": ["dwóbʰih₁"]}, "fn": {"NOM.DU": ["dwóyh₁"]}},
+    "3": {"m": {"NOM.PL": ["tréyes"], "ACC.PL": ["tríms"], "GEN.PL": ["triHóm", "tróyHom"], "DAT.PL": ["tribʰós"], "LOC.PL": ["trisú"]},
+          "f": {"NOM.PL": ["tísres"], "ACC.PL": ["tísr̥ms"]}, "n": {"NOM.PL": ["tríh₂"]}},
+    "4": {"m": {"NOM.PL": ["kʷetwóres"], "ACC.PL": ["kʷetwórm̥s"], "GEN.PL": ["kʷetwr̥óm"], "DAT.PL": ["kʷetwr̥bʰós"]},
+          "f": {"NOM.PL": ["kʷétesres"]}, "n": {"NOM.PL": ["kʷetwṓr"]}},
+    "indeclinable": {"5": ["pénkʷe"], "6": ["swéḱs", "wéḱs"], "7": ["septḿ̥"], "8": ["oḱtṓw", "oḱtṓ"], "9": ["h₁néwn̥"], "10": ["déḱm̥t", "déḱm̥"]}
+  },
+  "particles": {
+    "-kʷe": "and (enclitic)", "-wē": "or (enclitic)", "nu": "now", "ne": "not", "mē": "do not (prohibitive)",
+    "h₁e-": "augment (past)", "éti": "beyond, also", "h₂énti": "facing, before", "h₁en": "in", "upo": "under", "upér": "over",
+    "pró": "forward, before", "h₂epo": "away, off", "perí": "around", "h₁ésu": "well, good (adverb)", "-ge": "emphatic (enclitic)",
+    "dʰéh₁": "indeed (Wackernagel)"
+  }
+}

@@ -1,6 +1,6 @@
 # Status
 
-**Current phase:** Phase 1 lexicon is **built; acceptance is pending** (see the Phase 1 notes below). Starting Phase 2 (morphology engine), which doesn't depend on the open Phase 1 items.
+**Current phase:** Phase 2, the morphology engine. Layer 1 (stem spec → paradigm) is built and regenerates Wiktionary's tables at 98.9% cell agreement, with every mismatch triaged. Next: Layer 2 (lemma → spec, the real Tier 3 gate), then Phase 3 (validator). Phases 1 and 2 are both "built, acceptance pending books".
 
 ## Phases
 
@@ -8,7 +8,7 @@
 |---|---|---|
 | 0 Scaffolding & notation | **done** | NFC↔ASCII round-trip on ≥200 tricky forms: **pass** (382 listed forms: 157 hand-written with expected ASCII + 225 generated; plus 5,000 fuzzed; 1,807 tests) |
 | 1 Lexicon | **built, acceptance pending** | ≥2,000 entries: 2,226 glossed, 7,401 total ✅ · ≥800 verbal roots: **730** ❌ · 50-entry handbook spot check: pending books (provisional review in `docs/audits/`) |
-| 2 Morphology engine | next | golden paradigms |
+| 2 Morphology engine | **Layer 1 built**; Layer 2 next | Wiktionary regeneration: 11,136/11,255 cells (98.9%), 582/615 tables, **0 unexplained** ✅ · PLAN golden paradigms: 11/11 pass, but the source is unverified (pending Fortson/Ringe) |
 | 3 Validator | — | Tier 1 ≥90% token coverage |
 | 3b Sound-law checker | — | full lexicon run, mismatch report |
 | 4 Tier 1 scholarly | — | 200–500 cited lines + adversarial review |
@@ -26,6 +26,8 @@
 | Wiktionary paradigms (clean) | 625 (90 dropped as module-corrupted, 1 with a non-canonical cell) |
 | Normalization rejects | 67 (alternative lists, queries, placeholders) |
 | Root coverage in corpus | — |
+| Engine agreement with Wiktionary tables | 98.9% of cells (docs/morphology.md) |
+| Inflectable lexicon entries (Layer 2 coverage) | — (next) |
 | Records per tier (1 / 2 / 3 / 3b) | 0 / 0 / 0 / 0 |
 | Tokens per tier | — |
 | Neologism share of training tokens | — (cap 10–15%) |
@@ -60,12 +62,14 @@ Nice to have (lower priority): Schmitt, *Dichtung und Dichtersprache in indogerm
 
 ## Open questions for David
 
-0. **What counts toward the Phase 1 targets?**
-   - (a) ≥2,000 entries: is it OK that this is met by *glossed* entries (2,226)? The 5,330 unglossed tree derivatives are ingested as a separate kind with lower confidence.
-   - (b) Verbal roots are 730, short of 800. The options are LIV² (from you; the authoritative fix, which also supplies aspect for the 614 heuristic roots), or harvesting PIE etymologies from the kaikki Latin, Ancient Greek, Sanskrit and Proto-Germanic dumps (moderate download; adds roots that have no Wiktionary page of their own, but no aspect info). I'm proceeding to Phase 2 meanwhile, since the engine doesn't depend on this.
+All in one place. None of these block work in progress; each one has a default that I'm using until you decide.
 
-1. **Eval contamination via formulas.** The fixed decision is "eval = all of Tier 1 + a held-out slice of Tier 2". But Tier 1 includes the Watkins/West formulas (*ḱléwos ń̥dʰgʷʰitom*, *gʷʰen- h₃egʷʰim*), and Tiers 2–3 are built *from* those same formulas. So the eval formulas would appear verbatim throughout training. **My recommendation:** eval = Tier 1 *texts* (the fable and King versions, held out whole) + held-out Tier 2. The formula records stay in training, because they are the core poetic vocabulary we want the model to learn. I haven't changed anything yet, since this is your fixed decision.
-2. **Remote repo.** The local git repo is initialized, with Phase 0 committed. Do you want a private GitHub repo as well? If so, under which account or org?
+1. **Eval contamination via formulas.** The fixed decision is "eval = all of Tier 1 + a held-out slice of Tier 2". But Tier 1 includes the Watkins/West formulas, and Tiers 2–3 are built *from* them, so eval would leak into training. **Recommendation:** eval = Tier 1 *texts* (fable and King versions, held out whole) + held-out Tier 2, with the formula records kept in training. *Default until you decide:* records are tagged so either split can be cut later.
+2. **Phase 1 targets.**
+   - (a) May the "≥2,000 entries" target be met by *glossed* entries (2,226)? The 5,470 unglossed tree derivatives are a separate, lower-confidence kind.
+   - (b) Verbal roots are 730, against a target of 800. The options are **LIV²** (authoritative; also supplies aspect for the 614 roots classified by gloss), or a harvest from the kaikki daughter-language dumps (more roots, no aspect). *Default:* waiting for LIV².
+3. **Paradigm convention for corpus text.** I read "Wiktionary/LIV conventions are canonical" (PLAN §1) as being about *notation*, not paradigm reconstructions, so corpus text defaults to the **handbook** forms (contracted thematic *-ōs/-ōy/-ōd*, as in the Tier 1 texts). Wiktionary-convention forms are kept as alternatives in every cell. The tiebreaker will be Phase 3 validator coverage on Tier 1 texts under each convention. Tell me if you meant the stricter reading.
+4. **GitHub.** The repo is local only. Do you want a private remote, and under which account?
 
 ## IDEAS.md disposition
 
@@ -78,6 +82,8 @@ Everything in IDEAS.md is folded into PLAN.md, and nothing is rejected outright.
 - **Dashboard (7).** The metrics are in STATUS.md now. The HTML Artifact version is deferred until there is data to show (Phase 1+).
 
 ## Log
+
+- **2026-10-23. Phase 2 (Layer 1).** Built `pie/phon.py` (segments; junction syllabification; Szemerényi, Stang, boukólos; Wiktionary-only Pinault and perfect laryngeal loss), `pie/morph.py` (thematic, eh₂, athematic in 4 accent classes, devi feminines, adjectives, thematic/athematic presents, aorists, perfects; `handbook` and `wiktionary` conventions with alternatives), the cross-check harness, and the mismatch classifier. Agreement went 89.6% → 98.9% as each mismatch class was triaged. Bugs found that way include Stang's law never firing after syllabification. Also wrote 11 golden paradigms (flagged unverified) and closed-class hand tables. 1,896 tests. Details in `docs/morphology.md`.
 
 - **2026-10-23. Phase 1 (built).** Found the dump via the kaikki.org index and logged it in `raw/MANIFEST.md`. Built `pie/lexicon.py` and `scripts/build_lexicon.py`, wrote the schema in `docs/lexicon.md`, and added two normalizer rules (G-HOMOGLYPH, G-LAR-RING). Lexicon tests cover form parsing, id/link integrity, parent/child symmetry and paradigm cleanliness (1,838 tests in total). A provisional reviewer subagent is auditing a stratified 50-entry sample.
 

@@ -25,6 +25,8 @@ _TOKEN = re.compile(
     r"|[rlmn]_|[rlmnwy]|[aeiou])(:)?(/)?|(\\w)|(-)"
 )
 RESONANTS = set("rlmnwy")
+LARYNGEALS = {"h1", "h2", "h3", "H"}
+_LABIOVELAR = {"kw": "k", "gw": "g", "gwh": "gh"}
 
 
 @dataclass(frozen=True)
@@ -107,6 +109,8 @@ def join(stem: list[Seg], ending: list[Seg]) -> list[Seg]:
     """
     if has_accent(stem):
         ending = deaccent(ending)
+    if stem and ending and stem[-1].base in _LABIOVELAR and ending[0].base == "w" and not ending[0].syl:
+        stem = stem[:-1] + [Seg(_LABIOVELAR[stem[-1].base], "C")]   # kʷ-w → kw (linkʷ-wós → linkwós)
     if stem and ending and stem[-1].base == "s" and ending[0].base == "s" and stem[-1].kind == "C":
         ending = ending[1:]
     out = list(stem)
@@ -115,7 +119,9 @@ def join(stem: list[Seg], ending: list[Seg]) -> list[Seg]:
     if not stem or not ending:
         return out
 
-    # 2. stem-final syllabic before a vowel-initial ending
+    # 2. stem-final syllabic before a vowel-initial ending. (A full rightmost-first
+    #    re-syllabification of the run was tried and rejected: Wiktionary keeps
+    #    poh₂imn̥+és → poh₂imnés; see docs/morphology.md.)
     if n < len(out) and out[n - 1].kind == "R" and out[n - 1].syl and not _fixed(out[n - 1]) \
             and out[n].vocalic:
         out[n - 1] = replace(out[n - 1], syl=False)
@@ -146,19 +152,76 @@ def lengthen_last_vowel(segs: list[Seg]) -> list[Seg]:
 
 
 def szemerenyi(segs: list[Seg]) -> list[Seg]:
-    """-V(r|n|s)s# → -V̄(r|n|s)#, then -ōn#/-ēn# → -ō#/-ē# (n-stem nominative)."""
-    if len(segs) >= 3 and segs[-1].base == "s" and segs[-2].base in ("r", "n", "s") \
+    """-V(r|n|m|l|s)s# → -V̄R# (ph₂tḗr, dʰéǵʰōm, gʰébʰōl); then -ōn# → -ō# (ḱwṓ, but bʰudʰmḗn)."""
+    if len(segs) >= 3 and segs[-1].base == "s" and segs[-2].base in ("r", "n", "m", "l", "s") \
             and not segs[-2].syl and segs[-3].kind == "V" and not segs[-3].long:
         out = segs[:-3] + [replace(segs[-3], long=True), segs[-2]]
-        if out[-1].base == "n":
+        if out[-1].base == "n" and out[-2].base == "o":
             out = out[:-1]
         return out
     return segs
 
 
-def stang(segs: list[Seg]) -> list[Seg]:
-    """-V w m# → -V̄ m# (dyéw-m → dyḗm, gʷów-m → gʷṓm)."""
-    if len(segs) >= 3 and segs[-1].base == "m" and not segs[-1].syl and segs[-2].base == "w" \
-            and not segs[-2].syl and segs[-3].kind == "V":
-        return segs[:-3] + [replace(segs[-3], long=True), segs[-1]]
+def contract_eh2m(segs: list[Seg]) -> list[Seg]:
+    """-eh₂m# → -ām# (Wiktionary convention: *bʰéh₂-m → bʰā́m*, eh₂-stem acc. *-ām*)."""
+    if len(segs) >= 3 and segs[-1].base == "m" and segs[-2].base == "h2" and segs[-3].base == "e" \
+            and segs[-3].kind == "V":
+        return segs[:-3] + [Seg("a", "V", long=True, acc=segs[-3].acc), Seg("m", "R")]
     return segs
+
+
+def zero_grade_suffix(segs: list[Seg]) -> list[Seg]:
+    """Weak stem -éy/-éw → accented syllabic -í/-ú (proterokinetic oblique plural:
+    bʰeh₂ǵʰéw- → bʰeh₂ǵʰú-). Returns segs unchanged if the stem has no such suffix."""
+    if len(segs) >= 2 and segs[-1].kind == "R" and segs[-1].base in ("y", "w") and not segs[-1].syl \
+            and segs[-2].base == "e" and segs[-2].acc:
+        return segs[:-2] + [Seg(segs[-1].base, "R", syl=True, acc=True)]
+    return segs
+
+
+def stang(segs: list[Seg]) -> list[Seg]:
+    """-V(w|y|m)m# → -V̄m# (dyéw-m → dyḗm, gʷów-m → gʷṓm, h₁éy-m → h₁ḗm, dʰéǵʰom-m → dʰéǵʰōm)."""
+    # The final m may already be syllabic from junction syllabification (dyéw+m → dyéwm̥).
+    if len(segs) >= 3 and segs[-1].base == "m" and segs[-2].base in ("w", "y", "m") \
+            and not segs[-2].syl and segs[-3].kind == "V":
+        return segs[:-3] + [replace(segs[-3], long=True), Seg("m", "R")]
+    return segs
+
+
+def pinault(segs: list[Seg]) -> list[Seg]:
+    """Pinault's law, C H y → C y (wérh₁ye- → wérye-). Debated; Wiktionary convention only."""
+    out = list(segs)
+    i = 1
+    while i < len(out) - 1:
+        if out[i].base in LARYNGEALS and out[i + 1].base == "y" and not out[i + 1].syl \
+                and not out[i - 1].vocalic:
+            del out[i]
+        else:
+            i += 1
+    return out
+
+
+def junction_laryngeal_loss(stem: list[Seg], ending: list[Seg]) -> list[Seg]:
+    """Perfect stem-final R H before a consonant-initial ending loses H
+    (tetólh₂-th₂e → tetólth₂e, bʰebʰóyh₂-h₂e → bʰebʰóyh₂e). Wiktionary's module
+    does this in the perfect only (bʰh₂-wós, HréwdH-mi keep H). Wiktionary convention only."""
+    if len(stem) >= 2 and stem[-1].base in LARYNGEALS and stem[-2].kind == "R" and not stem[-2].syl \
+            and ending and not ending[0].vocalic:
+        return stem[:-1]
+    return stem
+
+
+def delabialize(segs: list[Seg]) -> list[Seg]:
+    """Boukólos rule as Wiktionary's module applies it: a labiovelar loses
+    labialization after consonantal w (wéwkʷe- → wéwke-), before consonantal w
+    (linkʷ-wós → linkwós), or before unaccented u (ḱm̥tógʷu- → ḱm̥tógu-). It is
+    kept after u (lúkʷos) and before accented ú (pr̥kʷúmos). Applied to whole forms."""
+    out = list(segs)
+    for i, x in enumerate(out):
+        if x.base in _LABIOVELAR:
+            prev_w = i > 0 and out[i - 1].base == "w" and not out[i - 1].syl
+            nxt = out[i + 1] if i + 1 < len(out) else None
+            next_w = nxt is not None and nxt.base == "w" and (not nxt.syl or not nxt.acc)
+            if prev_w or next_w:
+                out[i] = Seg(_LABIOVELAR[x.base], "C")
+    return out
