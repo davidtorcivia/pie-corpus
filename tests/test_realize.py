@@ -218,3 +218,27 @@ def test_numerals_govern_number():
     assert realize(p, lx)["pie"] == "tréyes h₁éḱwōs bʰugént."
     p["clauses"][0]["slots"][1]["lex_id"] = "closed:numerals/indeclinable/7"
     assert realize(p, lx)["pie"].startswith("septḿ̥ ")
+
+
+def test_t012_review_forms():
+    """t012 review: earth keeps dʰ- in the weak stem, u-stem adjective nom. pl. -éwes,
+    CCu- before a vowel keeps the vowel with a glide."""
+    from pie.realize import Lexicon
+    lx = Lexicon.load()
+    earth = lx.cells("pie-lex-dhegjhoxm")
+    assert "dʰǵʰém" in earth["LOC.SG"] and earth["GEN.SG"][0] == "dʰǵʰmés"
+    assert lx.cells("pie-lex-mldus", "m")["NOM.PL"][0] == "ml̥déwes"
+    assert lx.cells("pie-lex-kjlewt")["PTCP.ACT"][0] == "ḱluwónts"
+
+
+def test_indefinite_and_hortative_negation():
+    """t013 review: 'no one' is the enclitic indefinite (ne kʷis), not the question word;
+    'let us not' takes mē (Gk μή + hortatory subjunctive)."""
+    from pie.realize import Lexicon, realize
+    lx = Lexicon.load()
+    p = {"english": "No one came. Let us not go.", "clauses": [
+        {"neg": True, "slots": [{"lex_id": "closed:indefinite_kwi", "role": "SUBJ"},
+                                {"lex_id": "pie-lex-gwemt", "role": "V", "verb": {"tense": "AOR"}}]},
+        {"neg": True, "slots": [{"lex_id": "pie-lex-gwemt", "role": "V",
+                                 "verb": {"mood": "SBJV", "person": 1, "num": "PL"}}]}]}
+    assert realize(p, lx)["pie"].startswith("ne kʷis gʷémt mē ")

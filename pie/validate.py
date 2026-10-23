@@ -190,6 +190,14 @@ class FormIndex:
                     else:
                         walk(v, path + [k])
         walk(closed, [])
+        # the indefinite is the unaccented interrogative (ne kʷis 'no one'; pie.realize)
+        import unicodedata
+        for g, cells in closed.get("interrogative_kwi", {}).items():
+            if isinstance(cells, dict):
+                for feat, forms in cells.items():
+                    for f in forms:
+                        u = unicodedata.normalize("NFC", unicodedata.normalize("NFD", f).replace("\u0301", ""))
+                        self._add(u, Analysis(f"closed:indefinite_kwi/{g}", None, feat, "closed"))
 
     def lookup(self, form: str) -> tuple[str | None, list[Analysis]]:
         for t in TIERS:

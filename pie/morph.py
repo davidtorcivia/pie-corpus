@@ -257,7 +257,7 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
                     and weak[-2].base == "e":
                 pl = weak                                                 # h₁n̥gʷní- → h₁n̥gʷnéyes
         out["NOM.PL"] = out["VOC.PL"] = [render(_add(pl, "es"))]
-        if hb and spec.weak is None and strong[-1].syl and strong[-1].base in ("y", "w"):
+        if hb and (spec.weak is None or spec.adjective) and strong[-1].syl and strong[-1].base in ("y", "w"):
             # i/u-stem nominative plural in the full-grade suffix (Ved. sūnávas, agnáyas): suHnéwes
             full = strong[:-1] + [Seg("e", "V", acc=strong[-1].acc), Seg(strong[-1].base, "R")]
             out["NOM.PL"] = out["VOC.PL"] = _uniq([render(_add(full, "es"))] + out["NOM.PL"])
@@ -452,6 +452,18 @@ def _handbook_verbal(spec: VerbSpec, out: Cells) -> Cells:
     for k in ("PRS.2DU", "SBJV.2DU"):
         if k in out:
             out[k] = _uniq([re.sub("t([eé])s$", lambda m: "th₁" + m[1] + "s", f) for f in out[k]] + out[k])
+    # *CCu-/CCi- before a vowel keeps the vowel with a glide (Sievers/Lindeman; LIV ḱluwónt-, not ḱl̥wónt-):
+    # the junction rule would vocalize the liquid instead (ḱlu+ént → ḱl̥wént)
+    wk = _p(_bare(spec.weak or ""))
+    if (not spec.thematic and len(wk) > 2 and wk[-1].base in ("w", "y") and wk[-1].syl
+            and wk[-2].kind != "V" and wk[-3].kind != "V" and wk[-2].base not in ("w", "y")):
+        bad = render(join(wk, _p("e")))[:-1]
+        good = render(wk) + wk[-1].base
+        if bad != good:
+            for k, forms in out.items():
+                new = [good + f[len(bad):] for f in forms if f.startswith(bad)]
+                if new:
+                    out[k] = _uniq(new + forms)
     st = _p(_bare(spec.strong))
     if not spec.thematic and st and st[-1].base == "s" and st[-1].kind == "C" and "PRS.2SG" in out:
         out["PRS.2SG"] = _uniq(out["PRS.2SG"] + [render(st) + "si"])

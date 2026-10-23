@@ -168,6 +168,12 @@ class Lexicon:
         return self._cache[k]
 
 
+def _unaccent(form: str) -> str:
+    import unicodedata
+    d = unicodedata.normalize("NFD", form)
+    return unicodedata.normalize("NFC", d.replace("\u0301", ""))
+
+
 def _closed_form(lx: Lexicon, lex_id: str, feat: str, gender: str) -> str | None:
     """closed:personal/1, closed:demonstrative_so, closed:relative_yo, closed:interrogative_kwo, ..."""
     path = lex_id.split(":", 1)[1].split("/")
@@ -176,7 +182,13 @@ def _closed_form(lx: Lexicon, lex_id: str, feat: str, gender: str) -> str | None
         node = node.get(p, {})
     if path[0] in ("demonstrative_so", "relative_yo", "interrogative_kwo"):
         node = node.get(gender if gender in node else "m", {})
-    if path[0] == "interrogative_kwi":
+    if path[0] in ("interrogative_kwi", "indefinite_kwi"):
+        if path[0] == "indefinite_kwi":
+            # the indefinite is the unaccented (enclitic) interrogative: ne kʷis 'no one', h₁yód kʷis 'if anyone'
+            node = lx.closed.get("interrogative_kwi", {})
+            sub = node.get("n" if gender == "n" else "mf", {})
+            f = sub.get(feat)
+            return _unaccent(f[0]) if f else None
         node = node.get("n" if gender == "n" else "mf", {})
     if path[0] == "numerals":
         if isinstance(node, list):                      # indeclinable 5-10: closed:numerals/indeclinable/7
@@ -317,6 +329,8 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     v = slots[vi].get("verb", {})
     prohibitive = cl.get("neg") and v.get("mood") == "IMP"
     neg_wish = cl.get("neg") and v.get("mood") == "OPT"        # mē + optative: "may it not …" (Gk μή + opt.)
+    # hortative subjunctive 'let us not …' takes mē as well (Gk μή + hortatory subj.)
+    neg_wish = neg_wish or (cl.get("neg") and v.get("mood") == "SBJV" and int(v.get("person") or person) == 1)
     words: dict[int, Word] = {}
     for i, s in enumerate(slots):
         lid, role = s["lex_id"], s["role"]
@@ -388,6 +402,9 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     if placed != list(range(len(slots))):
         missing = sorted(set(range(len(slots))) - set(placed))
         raise KeyError(f"slots {missing} not attached to the clause (a MOD/POSS head chain is broken)")
+    for i in seq:
+        if slots[i]["lex_id"] == "closed:indefinite_kwi":
+            words[i].clitic = True        # the indefinite is enclitic: ne kʷis gʷémt 'no one came'
     neg = Word("mē" if (prohibitive or neg_wish) else "ne", "closed:particle:ne", "NEG", "PARTICLE") \
         if cl.get("neg") else None
     vseq = ([neg] if neg else []) + [words[vi]]

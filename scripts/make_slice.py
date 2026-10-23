@@ -75,6 +75,7 @@ CLOSED = {
     "closed:relative_yo": "who/which (relative)",
     "closed:interrogative_kwo": "who? which? (m/f/n by head)",
     "closed:interrogative_kwi": "who? what? (kʷís, kʷíd)",
+    "closed:indefinite_kwi": "anyone, anything; with neg 'no one, nothing' (enclitic kʷis, kʷid)",
 }
 
 
