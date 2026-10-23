@@ -146,6 +146,8 @@ def _eh2(spec: NounSpec, conv: str) -> Cells:
     if conv == "wiktionary":
         out["ACC.SG"] = [render(contract_eh2m(_add(stem, "m")))]
     else:
+        # *-eh₂m (> *-ām): the m is consonantal after the eh₂ nucleus, never *-eh₂m̥
+        out["ACC.SG"] = [render(stem + [Seg("m", "R")])]
         out["GEN.PL"] = [render(_add(stem, "ōm"))]
         for k in ("ABL.PL", "DAT.PL", "INS.PL"):
             out[k] = out[k][::-1]

@@ -92,3 +92,49 @@ def test_feminine_noun_takes_feminine_adjective():
         {"lex_id": "pie-lex-dhugh2texr", "role": "SUBJ"}, {"lex_id": "pie-lex-newos", "role": "MOD", "head": 0},
         V(SEE)]}]})
     assert r["pie"].startswith("néweh₂ dʰugh₂tḗr")
+
+
+def test_pronoun_gender_and_kwid():
+    r = R({"english": "What does the sheep see?", "clauses": [{"question": True, "slots": [
+        {"lex_id": SHEEP, "role": "SUBJ"}, {"lex_id": "closed:interrogative_kwi", "role": "OBJ", "gender": "n"},
+        V(SEE)]}]})
+    assert r["pie"] == "kʷíd h₂ówis spéḱyeti?"          # fronted, neuter, question mark
+
+
+def test_predicate_adjective_agrees_with_subject():
+    r = R({"english": "The daughter is new.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-dhugh2texr", "role": "SUBJ"}, {"lex_id": "pie-lex-newos", "role": "PRED"},
+        V("pie-lex-h1esti")]}]})
+    assert "néweh₂" in r["pie"]
+
+
+def test_prohibitive_is_injunctive():
+    r = R({"english": "Do not see!", "clauses": [{"neg": True, "slots": [V(SEE, mood="IMP", person=2)]}]})
+    assert r["pie"] == "mē spéḱyes."
+    assert "INJ.2SG" in r["gloss"]
+
+
+def test_nested_possessor_modifier_is_kept():
+    r = R({"english": "The great king's daughter sees.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-dhugh2texr", "role": "SUBJ"},
+        {"lex_id": "pie-lex-h3rexgjs", "role": "POSS", "head": 0},
+        {"lex_id": "pie-lex-megjh2s", "role": "MOD", "head": 1},
+        V(SEE)]}]})
+    # "great" agrees with "king's" (genitive, weak stem), and nothing is dropped
+    assert r["pie"] == "m̥ǵh₂és h₃réǵs dʰugh₂tḗr spéḱyeti."
+
+
+def test_sentence_break_and_noun_coordination():
+    r = R({"english": "Sheep and horses see. They see.", "clauses": [
+        {"slots": [{"lex_id": SHEEP, "role": "SUBJ", "num": "PL"}, {"lex_id": HORSE, "role": "SUBJ", "num": "PL",
+                                                                     "and": True}, V(SEE)]},
+        {"break": True, "slots": [{"lex_id": "closed:demonstrative_so", "role": "SUBJ", "num": "PL"}, V(SEE)]}]})
+    assert r["pie"].count(".") == 2 and "-kʷe" in r["pie"]
+
+
+def test_unattached_slot_is_an_error_not_a_silent_drop():
+    from pie.realize import check_plan
+    errs = check_plan({"english": "x", "clauses": [{"slots": [
+        {"lex_id": SHEEP, "role": "SUBJ"}, {"lex_id": "pie-lex-megjh2s", "role": "MOD", "head": 2},
+        {"lex_id": "pie-lex-newos", "role": "MOD", "head": 1}, V(SEE)]}]})
+    assert errs

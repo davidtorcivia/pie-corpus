@@ -12,12 +12,16 @@ Plan (one sentence):
                 "conj": null | "kʷe",              # "and" joining this clause to the previous one
                 "neg": false,                      # ne before the verb (mē with imperative)
                 "particle": null | "nu",           # sentence particle, clause-initial
+                "break": false,                    # this clause starts a new sentence
+                "question": false,                 # this clause's sentence ends in "?"
                 "slots": [
       {"lex_id": "pie-lex-…" | "closed:personal/1" | …,
        "role": "SUBJ|OBJ|IO|INS|LOC|ABL|POSS|VOC|PRED|GOAL|MOD|ADV|V",
        "num": "SG|DU|PL",                          # nominals; MOD and V take it from their head/subject
        "head": null | <slot index>,                # MOD (adjective, demonstrative, POSS) → its noun
        "enclitic": false,                          # pronoun slots: the enclitic form (moy, toy, …)
+       "gender": null | "m|f|n",                   # pronoun slots used on their own (tod "it", kʷíd "what")
+       "and": false,                               # -kʷe "and" after this word (X Y-kʷe = X and Y)
        "verb": {"tense": "PRS|PST|AOR|PRF", "mood": "IND|IMP|SBJV|OPT", "voice": "ACT|MID",
                 "person": null | 1 | 2 | 3}}]}]}   # person defaults to the subject's (3 for nouns)
 
@@ -35,6 +39,8 @@ from .morph import AdjSpec, NounSpec, VerbSpec, conjugate, decline, decline_adj
 
 ROOT = Path(__file__).resolve().parent.parent
 
+# PRED: predicate nominal or adjective (nominative; an adjective agrees with the subject).
+# Interrogative phrases are fronted. A prohibitive (neg + IMP) is mē + injunctive.
 ROLE_CASE = {"SUBJ": "NOM", "PRED": "NOM", "OBJ": "ACC", "GOAL": "ACC", "IO": "DAT", "INS": "INS",
              "LOC": "LOC", "ABL": "ABL", "POSS": "GEN", "VOC": "VOC"}
 NOMINAL_ROLES = set(ROLE_CASE) | {"MOD"}
@@ -151,6 +157,10 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                 continue
             if lid.startswith("closed:"):
                 continue
+            if role == "ADV":
+                if lx.entries.get(lid, {}).get("pos") not in ("adv", "particle", "conj", "prep", "postp"):
+                    errs.append(f"{where}: ADV needs an indeclinable (adv/particle) lexeme, {lid} is not one")
+                continue
             if lid not in lx.specs:
                 errs.append(f"{where}: unknown or non-inflectable lex_id {lid!r}")
                 continue
@@ -177,51 +187,93 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
     return errs
 
 
+def _slot_gender(s: dict, lx: Lexicon) -> str:
+    if s.get("gender") in ("m", "f", "n"):
+        return s["gender"]
+    return lx.gender(s["lex_id"]) if not s["lex_id"].startswith("closed:") else "m"
+
+
 def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     slots = cl["slots"]
-    subj = next((s for s in slots if s["role"] == "SUBJ"), None)
+    subj_i = next((i for i, s in enumerate(slots) if s["role"] == "SUBJ"), None)
+    subj = slots[subj_i] if subj_i is not None else None
     person, num = _person_number(subj, lx) if subj else (3, "SG")
+    vi = next(i for i, s in enumerate(slots) if s["role"] == "V")
+    v = slots[vi].get("verb", {})
+    prohibitive = cl.get("neg") and v.get("mood") == "IMP"
     words: dict[int, Word] = {}
     for i, s in enumerate(slots):
         lid, role = s["lex_id"], s["role"]
         if role == "V":
-            v = s.get("verb", {})
             feat = _verb_feature(v, person, num)
+            if prohibitive:
+                # mē + injunctive (augmentless secondary form), not the imperative
+                pn = feat.split(".")[-1]
+                cells = lx.cells(lid)
+                mid = "MID." if v.get("voice") == "MID" else ""
+                feat = next((f"{mid}{t}.{pn}" for t in ("PST", "AOR") if f"{mid}{t}.{pn}" in cells), feat)
             form = lx.cells(lid)[feat][0]
+            if prohibitive:
+                feat = feat.replace("PST", "INJ").replace("AOR", "INJ")
         elif role == "ADV":
             feat, form = "ADV", (lx.entries[lid]["form"] if not lid.startswith("closed:") else lid.split(":")[-1])
         else:
-            head = slots[s["head"]] if role == "MOD" else s
-            case = ROLE_CASE[head["role"]]
+            # agreement source: a MOD agrees with its head; a predicate adjective with the subject
+            if role == "MOD":
+                head = slots[s["head"]]
+            elif role == "PRED" and subj and not lid.startswith("closed:") and lx.specs[lid]["family"] == "adj":
+                head = subj
+            else:
+                head = s
+            case = ROLE_CASE["PRED" if role == "PRED" else head["role"]] if role != "MOD" else ROLE_CASE[head["role"]]
+            if role == "MOD" and head["role"] == "MOD":
+                raise KeyError("MOD cannot head a MOD")
             n = head.get("num", "SG")
-            g = lx.gender(head["lex_id"]) if not head["lex_id"].startswith("closed:") else "m"
+            g = _slot_gender(head, lx)
             feat = f"{case}.{n}" + (".ENCL" if s.get("enclitic") else "")
             if lid.startswith("closed:"):
                 form = _closed_form(lx, lid, feat, g)
                 if form is None:
-                    raise KeyError(f"{lid} {feat}")
+                    raise KeyError(f"{lid} {feat} {g}")
             elif lx.specs[lid]["family"] == "adj":
                 form = lx.cells(lid, g)[feat][0]
             else:
                 form = lx.cells(lid)[feat][0]
         words[i] = Word(form, lid, lx.gloss(lid), feat, i, clitic=form in ENCLITIC_PRONOUNS)
 
-    # order: each MOD/POSS directly before its head; then SOV or verb-initial
+    # phrases: every MOD/POSS goes directly before its head, recursively
     def phrase(i: int) -> list[int]:
-        mods = [j for j, s in enumerate(slots) if s["role"] in ("MOD", "POSS") and s.get("head") == i]
-        return mods + [i]
+        mods = [j for j, x in enumerate(slots) if x["role"] in ("MOD", "POSS") and x.get("head") == i and j != i]
+        return [k for j in mods for k in phrase(j)] + [i]
 
     order_roles = ["VOC", "SUBJ", "IO", "OBJ", "GOAL", "INS", "LOC", "ABL", "PRED", "ADV"]
-    heads = [i for i, s in enumerate(slots) if s["role"] not in ("V", "MOD") and not
-             (s["role"] == "POSS" and s.get("head") is not None)]
-    heads.sort(key=lambda i: order_roles.index(slots[i]["role"]) if slots[i]["role"] in order_roles else 99)
-    seq = [j for h in heads for j in phrase(h)]
-    vi = next(i for i, s in enumerate(slots) if s["role"] == "V")
-    neg = Word("mē" if slots[vi].get("verb", {}).get("mood") == "IMP" else "ne", "closed:particle:ne",
-               "NEG", "PARTICLE") if cl.get("neg") else None
+    tops = [i for i, x in enumerate(slots) if x["role"] not in ("V", "MOD") and not
+            (x["role"] == "POSS" and x.get("head") is not None)]
+    tops.sort(key=lambda i: order_roles.index(slots[i]["role"]) if slots[i]["role"] in order_roles else 99)
+    phrases = [phrase(t) for t in tops]
+    # interrogatives move to the front of the clause (with their phrase)
+    q = [ph for ph in phrases if any(slots[j]["lex_id"].startswith("closed:interrogative") for j in ph)]
+    phrases = q + [ph for ph in phrases if ph not in q]
+    seq = [j for ph in phrases for j in ph]
+    placed = sorted(seq + [vi])
+    if placed != list(range(len(slots))):
+        missing = sorted(set(range(len(slots))) - set(placed))
+        raise KeyError(f"slots {missing} not attached to the clause (a MOD/POSS head chain is broken)")
+    neg = Word("mē" if prohibitive else "ne", "closed:particle:ne", "NEG", "PARTICLE") if cl.get("neg") else None
     vseq = ([neg] if neg else []) + [words[vi]]
-    out = [words[i] for i in seq if not words[i].clitic]
-    out = vseq + out if cl.get("order") == "VSO" else out + vseq
+    def render_phrase(ph: list[int]) -> list[Word]:
+        ws = []
+        for i in ph:
+            if words[i].clitic:
+                continue
+            ws.append(words[i])
+            if slots[i].get("and"):
+                ws.append(Word("-kʷe", "closed:particle:-kʷe", "and", "PARTICLE", clitic=True))
+        return ws
+
+    front = [w for ph in q for w in render_phrase(ph)]           # fronted interrogative phrase(s)
+    rest = [w for ph in phrases if ph not in q for w in render_phrase(ph)]
+    out = front + vseq + rest if cl.get("order") == "VSO" else front + rest + vseq
     if cl.get("particle"):
         out.insert(0, Word(cl["particle"], f"closed:particle:{cl['particle']}", cl["particle"].upper(), "PARTICLE"))
     # Wackernagel: enclitics after the first word, "and" (-kʷe) on the first word
@@ -234,16 +286,19 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
 
 def realize(plan: dict, lx: Lexicon | None = None) -> dict:
     lx = lx or Lexicon.load()
-    words: list[Word] = []
-    for cl in plan["clauses"]:
-        words += realize_clause(cl, lx)
-    text, gloss = [], []
-    for w in words:
-        if w.form.startswith("-") and text:
-            text[-1] += w.form
-            gloss[-1] += "=" + w.gloss
-        else:
-            text.append(w.form)
-            gloss.append(f"{w.gloss}-{w.features}" if w.features not in ("PARTICLE", "ADV") else w.gloss)
-    return {"pie": " ".join(text) + ".", "gloss": " ".join(gloss), "english": plan["english"],
+    text, gloss, words = [], [], []
+    for ci, cl in enumerate(plan["clauses"]):
+        if ci and cl.get("break"):
+            text[-1] += "?" if plan["clauses"][ci - 1].get("question") else "."
+        ws = realize_clause(cl, lx)
+        words += ws
+        for w in ws:
+            if w.form.startswith("-") and text:
+                text[-1] += w.form
+                gloss[-1] += "=" + w.gloss
+            else:
+                text.append(w.form)
+                gloss.append(f"{w.gloss}-{w.features}" if w.features not in ("PARTICLE", "ADV") else w.gloss)
+    end = "?" if plan["clauses"][-1].get("question") else "."
+    return {"pie": " ".join(text) + end, "gloss": " ".join(gloss), "english": plan["english"],
             "words": [w.__dict__ for w in words]}
