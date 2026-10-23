@@ -245,7 +245,7 @@ def _aorist_lexemes(entries: dict, targets: list, reg, dump_label: str) -> int:
             continue
         strong, weak = (normalize(h, "liv2").text for h in m.groups())
         form = strong + "t"
-        if not (is_canonical(form) and is_canonical(weak)) or "-" in strong + weak:
+        if not (is_canonical(form) and is_canonical(weak)) or re.search(r"[-()⁽⁾]", strong + weak):
             continue
         en = (x.get("meaning_en") or "").strip("'‘’ ")
         lid = reg.get(f"liv2-aorist|{x['headword_printed']}|{x.get('meaning_de')}", f"pie-lex-{slug(form)}")
