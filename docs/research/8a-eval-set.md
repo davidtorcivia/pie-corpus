@@ -134,6 +134,7 @@ Counted over the primary items' phrase attestations (538):
   - Watkins's Avestan, Luvian and Armenian forms had to be decoded; 11 W2 items carry `ocr_uncertain`.
   - The Edda and OE corpora are OCR without verse numbers. Their header labels are wrong in places, and some poems are missing: the Metrical Charms, and the Exeter Gnomes, Elene and Andreas. A few `not_found` results there are coverage gaps.
 - **Avestan numbering:** CAB numbering differs from the standard one. Loci are given as CAB id plus Geldner number.
+- **Atharvaveda numbering (erratum, 2026-10-23):** the DCS loci in `how` and `locus` fields ('AVŚ, 4, 12 s5', 'AVŚ 13,1 s47', 'AVP 5.21 s1') are DCS *sentence* indices (≈ half-verses), not verses. The set stays frozen at the sha256 above; `data/research/8c/av-loci-erratum.json` gives the verse for each (e.g. AVŚ 13,1 s47 = AVŚ 13.1.24ab, AVŚ 10,10 s72 = 10.10.34). Where an item also gives the handbook verse, the two agree.
 - **Scholarly disagreement:** 15 primary items are `contested`, meaning one source doubts or rejects them. Examples are swift horses (Matasović: uninformative), great sun (Schmitt: chance), slay the serpent (the Greek is Watkins's restoration) and μένος ἠΰ (Schmitt doubts *h₁su- = *h₁wesu-). `verdict_by_source` lets these be dropped.
 - **Cognacy judgements:**
   - About 22 West items rest on cognations that West sets out but does not state, e.g. τρεῖς νύκτας ~ tri noći. They are noted in `notes`.

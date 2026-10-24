@@ -28,11 +28,16 @@ WRONG = {"pie-lex-pedyeti", "pie-lex-sexmi", "pie-lex-sineh2ti", "pie-lex-wedhet
 def test_override_table_covers_the_errata():
     ov = fm.load_overrides(ROOT)
     got = {(c, lem): set(ids) for c, rows in ov["lemma"].items() for lem, (ids, _) in rows.items()}
-    assert got == EXPECTED
-    assert ov["form"]["ang"] == {"bid": "biþ"}
+    # every erratum stays covered; per-language files (data/research/formulas/mapping-overrides/) may add
+    # rows or refine an erratum's target, but never drop an erratum or restore a WRONG mapping
+    for key in EXPECTED:
+        assert key in got, key
+        assert not (got[key] & WRONG), (key, got[key])
+    assert ov["form"]["ang"].get("bid") == "biþ"
     errata = (ROOT / "data/research/formulas/mapping-errata.md").read_text("utf-8")
     for _, row in [r for rows in ov["lemma"].values() for r in rows.values()]:
-        assert row["erratum"].split()[0].strip("'") in errata
+        if "erratum" in row:
+            assert row["erratum"].split()[0].strip("'") in errata
 
 
 def test_apply_lemma_overrides_replaces_and_unmaps():

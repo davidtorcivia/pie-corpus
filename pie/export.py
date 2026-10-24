@@ -3,7 +3,9 @@
 Policy (docs/STATUS.md, open question 1 until David decides):
   eval  = every Tier 1 record with canonical `pie` (scholarly texts and formulas),
           the evaluation-grade Tier 2 lines (eval_grade), plus the held-out
-          root families for the cognate task
+          root families for the cognate and inflection tasks: hash-selected
+          families that occur in NO training record (so the test is unseen
+          root families across all training material; checked)
   train = Tier 2 and Tier 3 records; batches named pilot-* only with
           include_pilot=True (unreviewed)
 Cognate→PIE examples hold out *whole root families* (a deterministic hash
@@ -31,6 +33,21 @@ def eval_root(root_id: str | None, share: float = 0.10) -> bool:
         return False
     h = int(hashlib.sha256(root_id.encode()).hexdigest()[:8], 16)
     return h / 0xFFFFFFFF < share
+
+
+def train_root_ids(records: list[dict], lx) -> set[str]:
+    """Root families that occur anywhere in the given records' tokens (lexeme → root_id; a root
+    lexeme counts as its own family)."""
+    out = set()
+    for r in records:
+        for t in r.get("tokens", []):
+            lid = t.get("lex_id") or ""
+            rid = t.get("root_id") or lx.entries.get(lid, {}).get("root_id")
+            if rid:
+                out.add(rid)
+            elif lid.startswith("pie-root-"):
+                out.add(lid)
+    return out
 
 
 def _load(globpat: str, root: Path) -> list[dict]:
@@ -98,8 +115,16 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0) -> dict
     lx = Lexicon.load()
     train_tasks = [t for r in train_recs for t in record_tasks(r)]
     eval_tasks = [t for r in tier1 for t in record_tasks(r)]
+    # held-out root families must be unseen in ALL training material, not only in the cognate and
+    # inflection tasks: a family the hash selects but that occurs in a training sentence goes to train
+    # (David's review: deyḱ- was held out of the cognate task while training sentences inflected it)
+    seen_roots = train_root_ids(train_recs, lx)
+    held = lambda rid: eval_root(rid) and rid not in seen_roots
     for t in inflection_tasks(lx, rng) + cognate_tasks(lx):
-        (eval_tasks if eval_root(t.get("root_id")) else train_tasks).append(t)
+        (eval_tasks if held(t.get("root_id")) else train_tasks).append(t)
+    bad = [t for t in train_tasks if held(t.get("root_id"))]
+    if bad:
+        raise ValueError(f"held-out root family in training tasks: {bad[0].get('root_id')}")
     # leakage check
     train_pie = {r["pie"] for r in train_recs}
     leak = sorted({r["pie"] for r in tier1} & train_pie)

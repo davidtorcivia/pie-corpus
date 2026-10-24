@@ -293,6 +293,41 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                 s.get("role") == "SUBJ" and not s.get("lex_id", "").startswith("closed:") for s in slots):
             errs.append(f"clause {ci}: a 2nd-person verb takes no noun subject: address the god or person "
                         f"with a VOC slot (h₂éwsos 'Dawn!', not SUBJ h₂éwsōs)")
+        # an explicit person/number on the verb is for pro-drop; with an explicit subject it must
+        # agree with it (David's review: SUBJ gʷówes PL + verb num SG gave 'gʷówes trémt')
+        subjs = [s for s in slots if s.get("role") == "SUBJ"]
+        # a relative or interrogative subject takes its person from the antecedent or addressee
+        # ("you who split the vault": h₁yós … 2SG), so only other subjects are checked
+        if len(verbs) == 1 and len(subjs) == 1 and not subjs[0].get("lex_id", "").startswith(
+                ("closed:relative_yo", "closed:interrogative_")):
+            v = verbs[0].get("verb") or {}
+            sj = dict(subjs[0])
+            sj_i = slots.index(subjs[0])
+            for m in slots:
+                if m.get("role") == "MOD" and m.get("head") == sj_i and m.get("lex_id", "").startswith("closed:numerals/"):
+                    n = m["lex_id"].split("/")[1]
+                    sj["num"] = {"2": "DU", "3": "PL", "4": "PL"}.get(n, sj.get("num"))
+            try:
+                ep, en = _person_number(sj, lx)
+            except Exception:
+                ep, en = None, None
+            if ep is not None:
+                if v.get("person") and int(v["person"]) != ep:
+                    errs.append(f"clause {ci}: the verb's person {v['person']} contradicts its subject (person {ep}); "
+                                f"drop the verb's person or the subject")
+                # a dual subject may take a plural verb where the dual cell is not reconstructible
+                # (middle and perfect duals: the plural stands in, as for dual obliques)
+                if v.get("num") and v["num"] != en and not (en == "DU" and v["num"] == "PL"):
+                    errs.append(f"clause {ci}: the verb's number {v['num']} contradicts its subject ({en}"
+                                f"{', a neuter plural takes a singular verb' if en == 'SG' and sj.get('num') == 'PL' else ''}); "
+                                f"drop the verb's num, or fix the subject's num")
+        # a 2nd-person verb addressed to a vocative agrees with it in number ("waters, flow!" is PL)
+        vocs = [s for s in slots if s.get("role") == "VOC" and not s.get("and")]
+        if len(verbs) == 1 and len(vocs) == 1 and not subjs:
+            v = verbs[0].get("verb") or {}
+            if str(v.get("person")) == "2" and v.get("num") and vocs[0].get("num", "SG") != v["num"]:
+                errs.append(f"clause {ci}: the 2nd-person verb's number {v['num']} contradicts the addressee "
+                            f"(VOC {vocs[0].get('num', 'SG')})")
         for si, s in enumerate(slots):
             where = f"clause {ci} slot {si}"
             lid, role = s.get("lex_id", ""), s.get("role")

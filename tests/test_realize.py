@@ -445,3 +445,23 @@ def test_s_stem_neuter_plural():
     lx = Lexicon.load()
     pl = lx.cells("pie-lex-nebhos")["NOM.PL"]
     assert pl[0] == "nébʰesh₂" and "nébʰōs" in pl
+
+
+def test_agreement_contradictions_rejected():
+    """David's review: an explicit verb num/person may not contradict an explicit subject
+    (gʷówes … trémt), and a 2nd-person verb agrees in number with its vocative addressee;
+    relative-pronoun subjects ('you who …') are exempt."""
+    from pie.realize import Lexicon, check_plan
+    lx = Lexicon.load()
+    bad = {"english": "The cattle were trembling.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-gwoxws", "role": "SUBJ", "num": "PL"},
+        {"lex_id": "pie-lex-tremti", "role": "V", "verb": {"tense": "PST", "person": 3, "num": "SG"}}]}]}
+    assert any("contradicts its subject" in e for e in check_plan(bad, lx))
+    voc = {"english": "Waters, flow!", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-wodr", "role": "VOC", "num": "PL"},
+        {"lex_id": "pie-lex-tremti", "role": "V", "verb": {"mood": "IMP", "person": 2, "num": "SG"}}]}]}
+    assert any("addressee" in e for e in check_plan(voc, lx))
+    rel = {"english": "you who tremble", "clauses": [{"slots": [
+        {"lex_id": "closed:relative_yo", "role": "SUBJ", "gender": "m"},
+        {"lex_id": "pie-lex-tremti", "role": "V", "verb": {"tense": "PRS", "person": 2, "num": "SG"}}]}]}
+    assert not [e for e in check_plan(rel, lx) if "contradicts" in e]

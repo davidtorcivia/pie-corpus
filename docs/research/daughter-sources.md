@@ -210,3 +210,107 @@ Goal: un-skew the cross-branch search (Celtic was ~820 tokens) and, at David's r
 - Sieg & Siegling gives a PD (non-NC) copy of Tocharian A, but with noisy OCR. Use it to back up or check `titus2-tocharian`. Kalinka is kept only as the PD page-image reference for Lycian (the scans could be re-OCRed with a Lycian model). As text it adds nothing until then.
 - hy.wikisource: clean, human-transcribed Grabar. It is an independent witness for Agat'angełos, Ełišē and Koriwn against the DMHP OCR, and it adds **Narekac'i** (10th-c. high-register religious poetry), which DMHP lacks. Text is clean, not OCR.
 - Sebēos is new 7th-c. historiography with a few embedded epic passages. The other two are backups to DMHP (Xorenac'i, Koriwn) with variant apparatus. All are OCR and need cleaning.
+
+
+### Early Germanic
+
+| Source | Dir | Language(s) | Size (word tokens) | Lemmatized | Format | Licence |
+|---|---|---|---|---|---|---|
+| IcePaHC 2024.03 | `oldnorse-icepahc` | Icelandic 1150–2008 (Old Icelandic ≤1350 part flagged by filename year) | 903,211 total; 234,290 pre-1400 (+22,491 dated 1400) (`.tagged` lines, punctuation tags excluded) | yes (lemma + POS/morph + parse trees) | Penn-style .psd, .tagged TSV, .txt | CC BY |
+| Menota main archive | `oldnorse-menota` | Old Icelandic, Old Norwegian (+ small Old Swedish, Old Danish) | 2,113,070 `<w>` elements (catalogue says 2,124,041); 1,250,109 lemmatized; ≈1.79M West Norse by catalogue counts (isl+nor+non), the rest Old Swedish/Danish | yes for 66 of 91 texts (4 partly) | Menota TEI-P5 XML (facs/dipl/norm levels) | CC BY-SA |
+| Referenzkorpus Altdeutsch 1.2 | `ohg-oldsaxon-rea` | Old High German, Old Saxon (+ Latin parallels) | OHG 346,065; OS 59,800; Latin 199,058 (token-level `lang` annotation count) | yes (manual) | relANNIS 3.3 TSV | NC |
+| Project Wulfila | `gothic-wulfila` | Gothic | 67,406 (`<token>` elements; 66,405 lemmatized) | yes (partly automatic) | TEI P5 + custom XML; plain text | PD text / NC annotations |
+| Bosworth-Toller online (LINDAT dump 0.1) | `oe-bosworth-toller-lindat` | Old English (dictionary, English definitions with OE citations) | 62,815 entries; ≈4.17M words of entry text (XML tags stripped, whitespace split) | n/a (it is a lemma list) | CSV with XML-tagged bodies | CC BY |
+| English Wikisource OE texts | `oe-wikisource-en` | Old English (+ facing Modern English translations on some pages) | 658,228 tokens incl. translations; OE ≈ 350–400k (estimate; see MANIFEST row) | no | MediaWiki parse HTML in JSON | CC BY-SA |
+| German Wikisource OHG minor texts | `ohg-wikisource-de` | Old High German | ≈1,000 (wikitext, markup stripped; incl. NHG translation of Hildebrandslied) | no | wikitext JSON | CC BY-SA |
+| Sievers *Heliand* 1878 | `osx-heliand-sievers1878` | Old Saxon | 211,321 ws-tokens of OCR (≈2×45k primary in C/M columns + apparatus) | no | OCR text | PD |
+| Piper *Altsächs. Bibeldichtung* 1897 | `osx-heliand-genesis-piper1897` | Old Saxon (Heliand + Genesis) | 334,438 ws-tokens of OCR (heavy apparatus) | no | OCR text | PD |
+| Sievers *Tatian* 1892 | `ohg-tatian-sievers1892` | OHG + Latin | 314,703 ws-tokens of OCR (≈45k OHG) | no (glossary) | OCR text | PD |
+| Erdmann *Otfrid* 1882 | `ohg-otfrid-erdmann1882` | OHG | 123,014 ws-tokens of OCR (≈66k Otfrid) | no | OCR text | PD |
+| Braune *Ahd. Lesebuch* 1921 | `ohg-braune-lesebuch1921` | OHG, Old Saxon | 157,359 ws-tokens of OCR | no (glossary) | OCR text | PD |
+| Müllenhoff–Scherer *Denkmäler* 1873 | `ohg-muellenhoff-scherer1873` | OHG, Old Saxon (minor texts) + German commentary | 308,472 ws-tokens of OCR (primary ≈15–20%) | no | OCR text | PD |
+| Piper *Schriften Notkers* 1882–83 | `ohg-notker-piper1882` | OHG + Latin | 597,864 ws-tokens of OCR (3 vols) | no | OCR text | PD |
+| FJ *Heimskringla* 1911 | `oldnorse-heimskringla-fj1911` | Old Norse (Old Icelandic) | 277,873 ws-tokens of OCR (nearly all primary) | no | OCR text | PD |
+| Unger *Heimskringla* 1868 | `oldnorse-heimskringla-unger1868` | Old Norse | 292,671 ws-tokens of OCR | no | OCR text | PD |
+| FJ *Snorra Edda* 1907 | `oldnorse-snorraedda-fj1907` | Old Norse | 70,917 ws-tokens of OCR | no | OCR text | PD |
+| AM *Edda Snorra Sturlusonar* 1848–52 (2 vols) | `oldnorse-snorraedda-am1848` | Old Norse + Latin translation/apparatus | 338,458 ws-tokens of OCR | no | OCR text | PD |
+| Ásmundarson *Íslendinga sögur* 1891–1910 (10 vols) | `oldnorse-islendingasogur-va1891` | Old Norse (normalized) | 1,406,656 ws-tokens of OCR (≈1.2M unique after removing overlapping bindings) | no | OCR text | PD |
+| Sweet *A-S Reader* 1894 + *Second A-S Reader* 1887 | `oe-sweet-readers` | Old English (incl. archaic/dialectal) | 174,007 ws-tokens of OCR (≈half primary) | no (glossary) | OCR text | PD |
+| Bright *A-S Reader* 1891/94 | `oe-bright-reader1891` | Old English | 159,696 ws-tokens of OCR (<half primary) | no (glossary) | OCR text | PD |
+| Liebermann *Gesetze der Angelsachsen* I, 1903 | `oe-liebermann-gesetze1903` | Old English + Latin + German | 538,093 ws-tokens of OCR (OE ≈25–30%) | no | OCR text | PD |
+| Thorpe *Homilies of Ælfric* 1844–46 (2 vols) | `oe-thorpe-aelfric-homilies1844` | Old English + English | 432,754 ws-tokens of OCR (≈half OE) | no | OCR text | PD |
+| Grein–Wülker *Bibliothek der ags. Prosa* Bd. 3–5 (Assmann 1889, Schipper 1897–99, Hecht 1900) | `oe-bibliothek-ags-prosa` | Old English prose (homilies, OE Bede, OE Gregory's Dialogues) + German apparatus | 683,453 ws-tokens of OCR (mostly OE) | no | OCR text | PD |
+
+**What this adds.**
+
+- **IcePaHC**: a clean, lemmatized and parsed Old Icelandic prose core (sagas, homilies, law, the First Grammatical Treatise) with lemma frequencies, under an open licence. It is releasable, but the spelling is modernized; skaldic and eddic verse is mostly absent.
+- **Menota**: the largest open, manuscript-faithful Old Norse corpus (2.1M words). It includes **Codex Regius Vǫluspá**, Codex Wormianus (Snorra Edda with skaldic verse), the Möðruvallabók sagas and the homily books, and two-thirds of it is lemmatized. It is CC BY-SA, so it is releasable, and it is the best Norse source here for archaic diction.
+- **ReA**: the whole OHG/Old Saxon record, lemmatized and morphologically annotated. It includes the alliterative and charm texts (Hildebrandslied, Merseburg charms, Muspilli, Wessobrunn, Heliand). This is the key Continental West Germanic corpus for poetic formulas, but it is NC.
+- **Wulfila**: adds the only non-biblical Gothic prose (Skeireins) plus the Calendar, the signatures and Nehemiah, which PROIEL lacks. The text is PD, so a Gothic text layer can be released; the lemmas are NC.
+- **Bosworth-Toller**: an open OE lemma list with citations and Proto-Germanic/cognate notes. It is the lemmatization backbone for all OE OCR here and complements Grein's Sprachschatz for prose.
+- **en.wikisource OE**: clean proofread OE prose and poetry (Ælfric's Lives of Saints, Catholic Homilies, the West Saxon Gospels, Alfred's Soliloquies, Physiologus, Judith, the Dream of the Rood, the metrical charms). It is releasable and much cleaner than the OCR. NB: the Thorpe *Homilies* pages duplicate `oe-thorpe-aelfric-homilies1844` (the same text, clean vs OCR), so deduplicate before counting.
+- **de.wikisource**: tiny, but clean releasable text of three key OHG formulaic texts (Hildebrandslied, Merseburg charms, Wessobrunn).
+- **PD OHG/OS editions** (Sievers Heliand, Piper Heliand+Genesis, Sievers Tatian, Erdmann Otfrid, Braune, Müllenhoff–Scherer, Piper Notker): the *releasable* counterpart of ReA. They are OCR with apparatus and need cleanup; Piper 1897's OCR is poor.
+- **PD Old Norse editions** (FJ and Unger Heimskringla, FJ and AM Snorra Edda, Ásmundarson Íslendinga sögur): saga and skaldic prose and verse with good OCR. Snorra Edda (Skáldskaparmál's kennings and Háttatal) is directly formula-rich, and the family sagas add about 1.2M words of narrative prose.
+- **PD OE readers/laws/homilies** (Sweet ×2, Bright, Liebermann, Thorpe): OE prose (laws with archaic legal formulas, homilies) and archaic/dialectal verse (Sweet's Second Reader). The OCR has systematic þ/ð/æ errors that a character-mapping pass can fix.
+- **Bibliothek der ags. Prosa Bd. 3–5**: a large block of Alfredian and Ælfrician OE prose (the OE Bede, Gregory's Dialogues, homilies and saints' lives). It extends the prose control corpus, and the Bede includes Cædmon's Hymn.
+
+
+### Italic (Latin and Sabellic)
+
+| Source | Dir | Language(s) | Size | Lemmatized | Format | Licence |
+|---|---|---|---|---|---|---|
+| Perseus canonical-latinLit (TEI) | `latin-perseus-latinlit` | Latin (Old Latin comedy to Late Latin; + English translations) | 7.17M Latin tokens (all editions), 5.94M deduplicated per work; + 8.66M English (whitespace tokens of `<body>` text, notes excluded) | no | TEI/EpiDoc XML (P5, some P4) | CC BY-SA |
+| OGL *Latin* (Varro RR, Mela, Apicius, Fracco) | `latin-ogl-latin` | Latin (Republican to Renaissance) | 139k tokens (whitespace tokens of `<body>`, notes excluded) | no | EpiDoc XML | CC BY-SA |
+| Peter, *HRR* 1906/1914 (OGL EpiDoc) | `latin-ogl-fragmentary-hrr` | Latin (early annalists to imperial historians; Latin apparatus) | 308k tokens (body text excluding footnotes; fragments + Peter's Latin prose) | no | EpiDoc XML (corrected OCR) | CC BY-SA |
+| CSEL (OGL machine-corrected EpiDoc) | `latin-ogl-csel` | Late Latin (patristic, 2nd-6th c.) | 6.06M tokens (whitespace tokens of `<body>`, notes excluded) | no | EpiDoc XML | CC BY-SA |
+| Patrologia Latina (OGL machine-corrected EpiDoc) | `latin-ogl-patrologia` | Late and Medieval Latin (to 1216) | 21.8M tokens (whitespace tokens of `<body>`, notes excluded) | no | EpiDoc XML (machine-corrected OCR) | CC BY-SA |
+| Perseus LDT 2.1 (Latin) | `latin-perseus-ldt` | Classical Latin | 68k words | yes (manual) | treebank XML | CC BY-SA 3.0 |
+| la.wikisource archaic Latin fragments | `latin-wikisource-archaic` | Old Latin (Livius Andronicus, Naevius, Ennius, Pacuvius, Accius, Caecilius, Laberius; Carmen Arvale, Carmen Saliare) | 40k tokens (markup stripped; includes editors' apparatus) | no | MediaWiki wikitext + rendered HTML | CC BY-SA (text PD; Morel parts PD-US only) |
+| Vahlen, *Ennianae poesis reliquiae* 1903 | `latin-ennius-vahlen1903` | Old Latin (Ennius) + Latin apparatus | 236k tokens OCR (whole book) | no | archive.org OCR text | PD |
+| Baehrens, *Fragmenta poetarum Romanorum* 1886 | `latin-baehrens-fpr1886` | Old Latin + later poetic fragments | 130k tokens OCR | no | archive.org OCR text | PD |
+| Ribbeck, *Scaenicae Romanorum poesis fragmenta* 1897-98 | `latin-ribbeck-srpf1897` | Old Latin drama (tragedy, comedy, Atellana, mime) | 178k tokens OCR | no | archive.org OCR text | PD |
+| Bruns, *Fontes iuris Romani antiqui* 1909 | `latin-bruns-fontes1909` | Old and Classical Latin legal texts (XII Tables, laws, SCs, formulae) | 238k tokens OCR | no | archive.org OCR text | PD |
+| Ernout, *Recueil de textes latins archaïques* 1916 | `latin-ernout-recueil1916` | Old Latin inscriptions and texts, French notes | 69k tokens OCR | no | archive.org OCR text | PD (US only) |
+| Wordsworth, *Fragments and Specimens of Early Latin* 1874 | `latin-wordsworth-earlylatin1874` | Old Latin, English notes | 301k tokens OCR (English majority) | no | archive.org OCR text | PD |
+| Diehl, *Altlateinische Inschriften* 1909 | `latin-diehl-altlatinschriften1909` | Old Latin inscriptions | 29k tokens OCR (poor) | no | archive.org OCR text | PD |
+| Marx, *Lucilius* 1904-05 | `latin-lucilius-marx1904` | Old Latin satire (Lucilius) + Latin commentary | 310k tokens OCR (text vol. 110k) | no | archive.org OCR text | PD |
+| CIL I (1863) | `latin-cil-i-1863` | Republican Latin inscriptions | 504k tokens OCR (poor) | no | archive.org OCR text | PD |
+| Conway, *The Italic Dialects* I, 1897 | `italic-conway-dialects1897` | Oscan, Umbrian minor, Volscian, South Picene, Paelignian, Marsian, Faliscan etc., English notes | 147k tokens OCR (mostly English) | no | archive.org OCR text | PD |
+| Pauli, *Die Veneter* (Altital. Forsch. 3), 1891 | `venetic-pauli-altital1891` | Venetic inscriptions, German commentary | 134k tokens OCR (mostly German) | no | archive.org OCR text | PD |
+
+**What this adds.**
+
+- the full clean classical Latin canon (the big Latin corpus), including all of Plautus and Terence (archaic comedy, prayers, oaths, curses) and Cato's *De agri cultura* (ritual prayers ch. 132-141); clean edited text, not OCR. No archaic fragmentary poets.
+Note on edition dates: 49 of the 363 Latin files (1.58M tokens) are transcribed from source editions dated 1929 or later (mostly Loeb texts of the 1930s-50s: Ovid, Prudentius, Historia Augusta, Celsus 1971, Pseudo-Caesar 1955, etc.). Perseus licenses them CC BY-SA 4.0 like the rest, so the licence is verified, but they fall outside the brief's "published before 1929" PD rule. The file list (path, latest year in `<sourceDesc>`) is in `/private/tmp/claude-501/-Users-david-AI-PIE/7bdc6640-3091-456e-a081-2c28d7d03867/scratchpad/acq2/italic/latin-perseus-latinlit-post1929-sources.tsv` (63 rows incl. English); David to decide whether to drop them from release data.
+- Varro *Res rusticae* (not in canonical-latinLit; agrarian/religious vocabulary, quotes old formulae); the rest is marginal (Fracco is 16th-century).
+- the only clean digital text of the early Roman historians' fragments, incl. Cato's *Origines* (archaic Latin prose; prayer/law-like formulae quoted by later authors). Fragment text is mixed with editor's Latin prose, needs separating.
+- bulk Late Latin (late, Christian; low value for archaic formulae but large; quotes Vetus Latina and some pagan ritual language in polemic).
+- volume only (medieval ecclesiastical Latin). Not useful for archaic formulae; useful as a large Latin LM/background corpus. Overlaps CSEL for some Fathers.
+- a small CC BY-SA (not NC) lemmatized Latin set, a release-safe alternative to the NC LASLA/PROIEL lemma data for training a Latin lemmatizer.
+- clean, tokenized, syntactically annotated Iguvine ritual text (the main Italic ritual corpus: prayers, lustration formulae), a clean complement to Buck 1904's OCR.
+- clean proofread text of the oldest Latin poetry and hymns (the Arval and Salian hymns, Livius' Odyssey, Ennius' Annals, early tragedy), the highest-value Latin material for formula search, though small.
+- Vahlen: complete Ennius (the Annales are the key Old Latin epic for formula search: divine epithets, heroic phraseology); OCR, needs fragment/apparatus separation.
+- Baehrens: Carmen Saliare, Livius' *Odusia*, Naevius' *Bellum Punicum* in one PD edition (fills the gap left by the 1961 Bellum Poenicum on Wikisource); OCR.
+- Ribbeck: all Republican drama fragments (Livius, Naevius, Ennius, Pacuvius, Accius tragedy; palliata/togata comedy); OCR (the Pacuvius/Accius/Livius parts also exist clean in `latin-wikisource-archaic`).
+- Bruns: the Twelve Tables and old legal/ritual formulae (sacral sanctions, oath and curse formulae, leges regiae); OCR.
+- Ernout: compact archaic-Latin reader (Duenos, Forum cippus, elogia, SC Bacch.); OCR, French notes; US-PD only.
+- Wordsworth: broad Early Latin anthology (inscriptions, laws, carmina, early poets and prose); OCR, English apparatus dominates.
+- Diehl: Old Latin inscriptions; poor OCR, small.
+- Marx: Lucilius (the archaic satirist, absent from Perseus); OCR.
+- CIL I 1863: all Republican inscriptions (dedications, epitaphs, laws); OCR poor but large.
+- Conway: the minor Sabellic dialects and South Picene/Faliscan beyond Buck; OCR, English notes.
+- Pauli: Venetic corpus (only PD Venetic source found); OCR, German commentary.
+
+### Round 4 summary and open decisions (needs David)
+
+**Biggest gains, by branch.** Celtic: ~49k glossed Old Irish tokens (28k lemmatized: St Gall 18k NC, Würzburg 10k CC BY) instead of 835, plus ≈2.8M Irish and ≈1.4M Welsh tokens of PD OCR (estimates) and small Cornish, Breton, Lepontic, Gaulish sets. Germanic: Menota Old Norse 2.11M words (1.25M lemmatized, CC BY-SA, incl. Codex Regius), IcePaHC 903k (CC BY), ReA OHG/Old Saxon 406k lemmatized (NC), plus PD OCR of the OHG/OS, Old Norse and OE editions. Italic: Perseus canonical-latinLit 7.17M Latin tokens (CC BY-SA), OGL CSEL 6.06M and Patrologia 21.8M (late), the archaic fragments (Ennius, Livius, Naevius, Twelve Tables, Carmen Arvale/Saliare, Lucilius, CIL I) in clean Wikisource and PD OCR. Balto-Slavic: Vuk's songs 839k clean (CC BY-SA), byliny ≈1.6M OCR, Lithuanian dainos ≈0.9M OCR, CCMH OCS 304k (CC BY), Old Prussian (Trautmann). Eastern: Classical Armenian DMHP 570k lemmatized (CC BY), CAVaL 100k (NC), Tocharian A 106k (TITUS 2.0, NC), Old Albanian Buzuku/Bogdani 244k (NC), Lydian, Phrygian, small Middle Iranian sets.
+
+**Duplicates to dedupe before counting.** Würzburg/St Gall appear both in `oldirish-ud-full-20261023` and `oldirish-sga-wordnet-doyle` (bundled copy); Suprasliensis in TOROT, CCMH and `titus2-slavonic`; Homer in AGDT, GLAUx and `titus2-greek`; Osco-Umbrian in Buck, Conway and `titus2-italic`; the Edda in FJ 1926, Menota and `titus2-germanic` (Neckel); Mabinogion in Rhŷs & Evans, the White Book and `titus2-celtic` (Ifor Williams). `umbrian-ud-ikuvina` was fetched by two agents from the same commit (identical files; one directory). Overlapping archive.org volumes (Íslendinga sögur, Kireevsky, Ancient Laws) are noted in their rows.
+
+**Decisions for David.**
+- *Consent / permission requests*: CELT (b.faerber@ucc.ie; ≈1.47M words of early Irish), CEToM (Tocharian B; "Alle Rechte vorbehalten"), Arak29 12 Armenian Historians, seniejirastai.lki.lt (Old Lithuanian), Melchert's Lycian corpus, Descot21/Lycian (no LICENSE), St Gall Priscian DB content, Milan glosses dictionary, Rhyddiaith Gymraeg 1300–1425, YCOE/DOE (OE), heimskringla.no, CorPH/ChronHib, Diorisis (as before).
+- *Sites unreachable, retry*: eDIL, RIIG, Hesperia, eDiAna (PHP maintenance), MPCD (bot wall), dainuskapis.lv/lt and garamantas.lv (Cloudflare), sq.wikisource (HTTP 429), ZCP vol. 15 (HTTP 500).
+- *Edition-date and EU-copyright cases* (CC or US-PD, but outside the strict pre-1929 / author-dead-70-years rule): 49 Perseus Latin files and OGL Varro/Mela from 1929+ editions; Ériu, ZCP, Revue celtique and Thurneysen/Pedersen (US-PD, later authors not 70 years dead); TITUS 2.0 texts based on in-copyright editions (Buzuku, Bogdani, Neckel Edda, Gusmani Lydian, Ifor Williams PKM); DMHP (CC BY data over the in-copyright Antelias edition); the Middle Irish UD treebank (text from CELT); sr.wikisource Erlangen MS and Vuk's SANU manuscript volumes, ru.wikisource Kireevsky records (first published after 1929; not fetched).
+- *NC archive.org scans*: three National Library of Scotland scans (Saltair na Rann, Fianaigecht, Aislinge Meic Conglinne) carry CC BY-NC-SA 2.5 Scotland on the scan; PD Google copies of Saltair exist.
+- *In copyright, only David's own copies would help*: Vendryes LEIA; Thurneysen, *A Grammar of Old Irish* (1946); O'Rahilly's Táin editions; Binchy, *Corpus Iuris Hibernici*; Ifor Williams, *Canu Aneirin*/*Canu Taliesin*; Lambert/RIG; Wodtko *MLH* V.1; Adams, *Dictionary of Tocharian B*; Çabej's Buzuku; Warmington's *Remains of Old Latin*; Mažiulis, *Prūsų kalbos paminklai*.

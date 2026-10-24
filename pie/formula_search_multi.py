@@ -38,6 +38,7 @@ headwords, corpus lemmas and ids; candidates hold loci.
 
 from __future__ import annotations
 
+import bisect
 import collections
 import json
 import math
@@ -789,15 +790,301 @@ DCS_VEDIC = ("Atharvaveda (Śaunaka)", "Atharvaveda (Paippalāda)", "Ṛgvedakhi
 DCS_CONTENT = {"NOUN", "VERB", "ADJ", "PROPN"}
 
 
+# ---- DCS sentence locus → verse citation
+#
+# The DCS locus 'AVŚ, 8, 6.s48' is the 48th *sentence* of the chapter (hymn)
+# AVŚ 8.6, not its verse: a DCS sentence is one text line, usually a
+# half-verse. The CoNLL-U comment headers carry the verse where DCS has it:
+#   `# sent_counter = 23` / `# sent_subcounter = 1`  → verse 23, its 1st line.
+# About a quarter of the Atharvaveda chapters (and a few sentences in others)
+# lack the counters; their sent_id is '<line id>_<k>' (k-th sentence of DCS
+# text line <line id>). Line ids are consecutive within a chapter, so such a
+# line is placed exactly when the numbered lines around it leave one choice
+# ('bracketed'). Otherwise the verse is *inferred* by a segmentation of the
+# chapter's lines into verses (line-count prior, syllable length, the hymn's
+# stanza count from Whitney's translation where available): a heuristic,
+# flagged as such, never to be cited as a verse number without checking.
+# Statuses: counter | bracketed | inferred | unmapped.
+
+DCS_ABBR = {"Atharvaveda (Śaunaka)": "AVŚ", "Atharvaveda (Paippalāda)": "AVP", "Ṛgvedakhilāni": "ṚVKh"}
+DCS_LOCUS = re.compile(r"(AVŚ|AVP|ṚVKh),? (\d+), (\d+)\.s(\d+)")
+DCS_WHITNEY = "raw/daughters/dcs-hellwig/extract/sanskrit-8aeed5a1343d0e48b64eb32af8c00e8c6eb29359/dcs/data/atharvaveda-shaunaka/translations/whitney.txt"
+_DCS_SYL = re.compile(r"ai|au|[aāiīuūṛṝḷeoAĀIĪUŪṚṜḶEO]")
+# −log prior of a verse of k DCS lines (counted over the numbered AVŚ/AVP chapters)
+_DCS_K_COST = {1: 1.8, 2: 0.0, 3: 2.7, 4: 5.0, 5: 5.5, 6: 6.0, 7: 6.0}
+# (accuracy with the counters hidden: scripts/build_av_erratum.py, '_validation' in its output)
+_DCS_LAMBDA = 3.0
+
+
+def _dcs_int(v: str) -> int | None:
+    v = v.split("=", 1)[1].strip() if "=" in v else v.strip()
+    return int(v) if v.isdigit() else None
+
+
+def dcs_sentence_heads(text: str) -> tuple[str | None, list[dict]]:
+    """One DCS CoNLL-U chapter file → (chapter name, its sentences in file
+    order: sent_id, line id, counter, subcounter, text). Headers only."""
+    chapter, out, cur_text = None, [], ""
+    for line in text.splitlines():
+        if line.startswith("## chapter:"):
+            chapter = line.split(":", 1)[1].strip()
+        elif line.startswith("# text ="):
+            cur_text = line.split("=", 1)[1].strip()
+        elif line.startswith("# sent_id"):
+            sid = line.split("=", 1)[1].strip()
+            head = sid.split("_")[0]
+            out.append({"sent_id": sid, "line_id": int(head) if head.isdigit() else None,
+                        "counter": None, "sub": None, "text": cur_text})
+            cur_text = ""
+        elif line.startswith("# sent_counter") and out:
+            out[-1]["counter"] = _dcs_int(line)
+        elif line.startswith("# sent_subcounter") and out:
+            out[-1]["sub"] = _dcs_int(line)
+    return chapter, out
+
+
+def _dcs_syl(s: str) -> int:
+    return len(_DCS_SYL.findall(s))
+
+
+def _dcs_segment(n: int, syl: list[float], anchors: dict, n_verses: int | None,
+                 present: list[bool] | None = None) -> list[tuple[int, int, int]] | None:
+    """Split lines 0..n-1 into consecutive verses (each 1–7 lines), honouring
+    anchors {line index: (verse, line-in-verse)}; cost = prior on the number
+    of lines present in the DCS + λ·|log(verse syllables / target)|. Line ids
+    absent from the chapter (`present` False) weigh nothing. Returns (verse,
+    line-in-verse, lines in verse) per line, or None if no segmentation fits."""
+    if n == 0:
+        return []
+    present = present or [True] * n
+    known = sorted(s for s, p in zip(syl, present) if p and s > 0)
+    fill = known[len(known) // 2] if known else 16.0
+    syl = [0.0 if not p else (s if s > 0 else fill) for s, p in zip(syl, present)]
+    total = sum(syl) or 1.0
+    maxv = max([v for v, _ in anchors.values()] + [0])
+
+    def run(W):
+        target = total / W if W else 2 * fill
+        INF = float("inf")
+        V = W or n + maxv + 3
+        dp = [[INF] * (n + 1) for _ in range(V + 1)]
+        back = [[(0, 0)] * (n + 1) for _ in range(V + 1)]
+        first = min(anchors.items())[1] if anchors else (1, 1)
+        for v0 in range(min(first[0], V + 1)):      # a chapter may start mid-hymn (DCS lacks its first verses)
+            dp[v0][0] = 0.0 if v0 == 0 else 40.0
+        pref, npres = [0.0], [0]
+        for s, p in zip(syl, present):
+            pref.append(pref[-1] + s)
+            npres.append(npres[-1] + p)
+        for v in range(V):
+            for i in range(n):
+                if dp[v][i] == INF:
+                    continue
+                for d in range(3):                 # d verses absent from DCS before this one
+                    u = v + 1 + d
+                    if u > V or (d and not (i in anchors and anchors[i] == (u, 1))):
+                        continue
+                    for k in range(1, 8):
+                        j = i + k
+                        if j > n:
+                            break
+                        x = j - 1                  # lines i..j-2 were checked at smaller k
+                        if x in anchors and anchors[x] != (u, k):
+                            break
+                        kp = npres[j] - npres[i]
+                        c = dp[v][i] + 60.0 * d + (
+                            _DCS_K_COST[kp] + _DCS_LAMBDA * abs(math.log((pref[j] - pref[i]) / target))
+                            if kp else 6.0)
+                        if c < dp[u][j]:
+                            dp[u][j], back[u][j] = c, (i, v)
+        if W:
+            ends = [(dp[W][n], W)]
+        else:
+            ends = [(dp[v][n], v) for v in range(max(1, maxv), V + 1)]
+        cost, v = min(ends)
+        if cost == INF:
+            return None
+        out, j = [None] * n, n
+        while j > 0:
+            i, pv = back[v][j]
+            for x in range(i, j):
+                out[x] = (v, x - i + 1, j - i)
+            j, v = i, pv
+        return out
+    res = run(n_verses) if n_verses and maxv <= n_verses <= n else None
+    return res if res is not None else run(None)
+
+
+def dcs_assign_verses(sents: list[dict], n_verses: int | None = None) -> list[dict]:
+    """Per sentence (as from dcs_sentence_heads, same order): verse, line
+    (its DCS line within the verse), lines (lines in that verse, when fixed),
+    status. `n_verses`: the hymn's stanza count, if known (inference only)."""
+    ids = [s["line_id"] for s in sents]
+    res = [{"verse": None, "line": None, "lines": None, "status": "unmapped"} for _ in sents]
+    if not sents or None in ids:
+        for r, s in zip(res, sents):
+            if s["counter"]:
+                r.update(verse=s["counter"], line=s["sub"], status="counter")
+        return res
+    lo, hi = min(ids), max(ids)
+    n = hi - lo + 1
+    if n > 4000 or ids != sorted(ids):        # not a single run of consecutive lines: counters only
+        return dcs_assign_verses([dict(s, line_id=None) for s in sents])
+    anchor: dict[int, tuple[int, int]] = {}    # line index → (verse, line in verse)
+    seen: dict[int, set] = collections.defaultdict(set)
+    for s in sents:
+        x = s["line_id"] - lo
+        if s["counter"] and x not in anchor:
+            seen[s["counter"]].add(x)                  # no subcounter: rank among the verse's lines
+            anchor[x] = (s["counter"], s["sub"] or len(seen[s["counter"]]))
+    line_of: dict[int, tuple[int, int | None, str]] = {i: (v, l, "counter") for i, (v, l) in anchor.items()}
+    keys = sorted(anchor)
+    for x in sorted({i - lo for i in ids} - set(anchor)):
+        p = bisect.bisect_left(keys, x)
+        lw = keys[p - 1] if p > 0 else None
+        up = keys[p] if p < len(keys) else None
+        if up is not None and up - x < anchor[up][1]:
+            line_of[x] = (anchor[up][0], anchor[up][1] - (up - x), "bracketed")
+        elif lw is not None and up is not None and anchor[up][0] - anchor[lw][0] <= 1:
+            line_of[x] = (anchor[lw][0], anchor[lw][1] + (x - lw), "bracketed")
+        elif lw is None and up is not None and anchor[up][0] == 2:
+            line_of[x] = (1, None, "bracketed")
+    syl = [0.0] * n
+    for s in sents:
+        syl[s["line_id"] - lo] += _dcs_syl(s["text"])
+    seg = None
+    if len(line_of) < len({i - lo for i in ids}):
+        pres = [False] * n
+        for i in ids:
+            pres[i - lo] = True
+        seg = _dcs_segment(n, syl, {i: (v, l) for i, (v, l, st) in line_of.items() if l is not None},
+                           n_verses, pres)
+    # verse sizes, where every line of the verse is fixed (counter/bracketed)
+    fixed = {i: (v, l) for i, (v, l, st) in line_of.items() if l is not None}
+    size: dict[int, int] = {}
+    for i, (v, l) in fixed.items():
+        if l == 1:
+            k = 1
+            while fixed.get(i + k, (None,))[0] == v and fixed[i + k][1] == k + 1:
+                k += 1
+            nxt = fixed.get(i + k)
+            if (nxt and nxt[0] == v + 1 and nxt[1] == 1) or i + k == n:
+                size[v] = k
+    for r, s in zip(res, sents):
+        x = s["line_id"] - lo
+        if x in line_of:
+            v, l, st = line_of[x]
+            r.update(verse=v, line=l, lines=size.get(v), status=st)
+        elif seg and seg[x]:
+            v, l, k = seg[x]
+            r.update(verse=v, line=l, lines=k, status="inferred")
+    return res
+
+
+def dcs_pada(sents: list[dict], res: list[dict], i: int) -> str:
+    """Pāda letters for sentence i: only for a 2-line verse whose lines are
+    fixed and of similar verse-line length (13–27 syllables each), line 1 →
+    'ab', line 2 → 'cd'. Otherwise ''."""
+    r = res[i]
+    if r["status"] not in ("counter", "bracketed") or r["lines"] != 2 or r["line"] not in (1, 2):
+        return ""
+    by_line: dict = collections.defaultdict(int)
+    for s, q in zip(sents, res):
+        if q["verse"] == r["verse"] and q["status"] in ("counter", "bracketed"):
+            by_line[q["line"]] += _dcs_syl(s["text"])
+    a, b = by_line.get(1, 0), by_line.get(2, 0)
+    if not (13 <= a <= 27 and 13 <= b <= 27 and max(a, b) / min(a, b) <= 1.4):
+        return ""
+    return "ab" if r["line"] == 1 else "cd"
+
+
+def whitney_stanzas(root: Path = ROOT) -> dict[tuple[int, int], int]:
+    """AVŚ (book, hymn) → stanza count, from the Whitney–Lanman translation
+    shipped with the DCS (lines 'b.h.s text'). {} if absent."""
+    fn = root / DCS_WHITNEY
+    if not fn.exists():
+        return {}
+    out: dict = {}
+    for line in fn.read_text("utf-8").splitlines():
+        m = re.match(r"(\d+)\.(\d+)\.(\d+)\s", line)
+        if m:
+            b, h, s = map(int, m.groups())
+            out[(b, h)] = max(out.get((b, h), 0), s)
+    return out
+
+
+def _dcs_chapter_key(chapter: str) -> tuple[str, int, int] | None:
+    m = re.match(r"(AVŚ|AVP|ṚVKh), (\d+), (\d+)$", chapter or "")
+    return (m[1], int(m[2]), int(m[3])) if m else None
+
+
+def dcs_chapter_citations(chapter: str, sents: list[dict], stanzas: dict | None = None) -> list[dict]:
+    """Per sentence of one DCS chapter: {dcs, sent_id, verse, pada, cite,
+    status, line, lines}. `verse`/`cite` are '' when unmapped."""
+    key = _dcs_chapter_key(chapter)
+    nv = (stanzas or {}).get(key[1:]) if key and key[0] == "AVŚ" else None
+    res = dcs_assign_verses(sents, nv)
+    out = []
+    for i, (s, r) in enumerate(zip(sents, res)):
+        verse = cite = pada = ""
+        if key and r["verse"]:
+            verse = f"{key[0]} {key[1]}.{key[2]}.{r['verse']}"
+            pada = dcs_pada(sents, res, i)
+            cite = verse + pada
+        out.append({"dcs": f"{chapter}.s{i + 1}", "sent_id": s["sent_id"], "verse": verse, "pada": pada,
+                    "cite": cite, "status": r["status"], "line": r["line"], "lines": r["lines"]})
+    return out
+
+
+_DCS_CITE_CACHE: dict = {}
+
+
+def dcs_citation_index(texts=DCS_VEDIC, root: Path = ROOT) -> dict[str, dict]:
+    """DCS locus ('AVŚ, 8, 6.s48') → its citation record (dcs_chapter_citations)."""
+    ck = (tuple(texts), str(root))
+    if ck not in _DCS_CITE_CACHE:
+        stanzas, idx = whitney_stanzas(root), {}
+        for t in texts:
+            for fn in sorted((root / DCS_DIR / t).glob("*.conllu")):
+                chapter, sents = dcs_sentence_heads(fn.read_text("utf-8"))
+                for rec in dcs_chapter_citations(chapter or fn.stem, sents, stanzas):
+                    idx[rec["dcs"]] = rec
+        _DCS_CITE_CACHE[ck] = idx
+    return _DCS_CITE_CACHE[ck]
+
+
+def dcs_verse_citation(locus: str, root: Path = ROOT, inferred: bool = False) -> str | None:
+    """'AVŚ, 8, 6.s48' (also 'AVŚ 8, 6.s48', a trailing ' (w1/3)' window tag)
+    → 'AVŚ 8.6.23' (+ pāda letters when derivable, e.g. 'AVŚ 9.1.1cd').
+    None if the locus is unknown or unmapped; an inferred verse only with
+    `inferred=True`."""
+    m = DCS_LOCUS.search(locus)
+    if not m:
+        return None
+    rec = dcs_citation_index(root=root).get(f"{m[1]}, {m[2]}, {m[3]}.s{m[4]}")
+    if not rec or not rec["cite"] or (rec["status"] == "inferred" and not inferred):
+        return None
+    return rec["cite"]
+
+
 def load_dcs(texts=DCS_VEDIC, corpus: str = "av", root: Path = ROOT) -> list[Token]:
     """DCS CoNLL-U (CC BY 4.0), the Vedic texts listed. Unit: DCS sentence
     (in the Atharvaveda usually a half-verse or verse); locus: chapter +
-    sentence number in the chapter. The `.conllu_parsed` duplicates are skipped."""
+    sentence number in the chapter ('AVŚ, 8, 6.s48' — a sentence index, NOT a
+    verse). units: 'sentence' (chapter|DCS sent_id), 'sent_id', 'verse' (the
+    standard citation, e.g. 'AVŚ 8.6.23', '' if unmapped), 'cite' (verse +
+    pāda letters when derivable), 'verse_status' (counter | bracketed |
+    inferred | unmapped; see dcs_assign_verses). The `.conllu_parsed`
+    duplicates are skipped."""
     toks: list[Token] = []
+    stanzas = whitney_stanzas(root)
     for t in texts:
         for fn in sorted((root / DCS_DIR / t).glob("*.conllu")):
+            text = fn.read_text("utf-8")
+            ch0, sents = dcs_sentence_heads(text)
+            cites = dcs_chapter_citations(ch0 or fn.stem, sents, stanzas)
             chapter, sent, nsent = fn.stem, None, 0
-            for line in fn.read_text("utf-8").splitlines():
+            for line in text.splitlines():
                 if line.startswith("## chapter:"):
                     chapter = line.split(":", 1)[1].strip()
                 elif line.startswith("# sent_id"):
@@ -812,8 +1099,11 @@ def load_dcs(texts=DCS_VEDIC, corpus: str = "av", root: Path = ROOT) -> list[Tok
                     pos = {"NOUN": "noun", "PROPN": "noun", "ADJ": "adj", "VERB": "verb"}.get(upos, "other")
                     if upos == "VERB" and feats.get("VerbForm") == "Part":
                         pos = "adj"
+                    ci = cites[nsent - 1] if 0 < nsent <= len(cites) else {}
                     toks.append(Token(corpus, c[2], c[1], f"{chapter}.s{nsent}",
-                                      {"sentence": f"{chapter}|{sent}", "chapter": chapter, "book": t},
+                                      {"sentence": f"{chapter}|{sent}", "chapter": chapter, "book": t,
+                                       "sent_id": sent, "verse": ci.get("verse", ""), "cite": ci.get("cite", ""),
+                                       "verse_status": ci.get("status", "unmapped")},
                                       upos in DCS_CONTENT, pos, (feats.get("Case") or "").upper()[:3] or None,
                                       None, finite=feats.get("VerbForm") is None and upos == "VERB"))
     return toks

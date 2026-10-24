@@ -54,14 +54,16 @@ Checked against the DCS `sent_counter` and Whitney-Lanman:
 | AVŚ 13.1.47 (immortal horses) | **AV 13.1.24a** (p. 714) |
 | AVŚ 11.10.18 (vultures tearing the corpse) | **AV 11.10.8** (Whitney numbering, pp. 656-657) |
 | AVŚ 9.1.2 (amṛ́taṃ vásānām) | **AV 9.1.1cd** |
-| AVŚ 8.3.29 as the parallel of RV 10.87.16 | **AV 8.3.15**; s29 is 8.3.16a |
-| AVŚ 8.3.14 | AV 8.3.8b |
+| AVŚ 8.3.29 as the parallel of RV 10.87.16 | **AV 8.3.15**; s29 is 8.3.15ab (corrected: earlier '8.3.16a') |
+| AVŚ 8.3.14 | AV 8.3.7cd (corrected: earlier '8.3.8b') |
 | AVŚ 12.2.29 | AV 12.2.15a |
-| AVŚ 4.21.14 | AV 4.21.7b |
-| AVŚ 8.4.4 | AV 8.4.2b |
+| AVŚ 4.21.14 | AV 4.21.7cd (corrected: earlier '7b') |
+| AVŚ 8.4.4 | AV 8.4.2cd (corrected: earlier '2b') |
 | AVŚ 7.118.1 | unaffected |
 
 The same conversion may affect AV loci in the eval set and in Tier 2 `cognate_refs`. They should be re-derived from `sent_counter`/`sent_subcounter`, not from the s-index.
+
+Done 2026-10-23: `data/research/8c/av-loci-erratum.json` maps every AV/AVP sentence locus in the 8c files, the eval set and Tier 2 to its verse (`pie.formula_search_multi.dcs_verse_citation`). Four rows above were corrected against `sent_counter` and Whitney: s29 of 8.3 is the first half of 8.3.15, not 8.3.16a; the s-indices 8.3.14, 4.21.14 and 8.4.4 are second half-verses (cd), not pāda b. The Tier 2 `cognate_refs` AV loci already give verse numbers and agree with the DCS (checked); the eval-set loci are corrected by the erratum file only (the set is frozen).
 
 ## 3. Actionable findings for other work
 **8c write-up**

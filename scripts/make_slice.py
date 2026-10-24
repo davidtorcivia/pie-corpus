@@ -149,7 +149,11 @@ def main() -> int:
             return i not in NIL_ADMIT
         return e.get("meaning_source") == "nil" and i in NIL_GLOSS_HELD
 
+    # root families the export holds out for the cognate/inflection benchmark are never offered to
+    # planners, so they stay unseen in training sentences (pie.export.eval_root)
+    from pie.export import eval_root
     pool = [i for i, r in lx.specs.items() if r.get("usable") and i not in lx.blocked and accented(i) and
+            not eval_root(lx.entries[i].get("root_id")) and
             not nil_held(i) and
             (lx.entries[i]["meaning"] or (ap_derived and i in lx.derived and derived_ok(i)))]
 
