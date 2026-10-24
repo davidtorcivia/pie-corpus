@@ -44,6 +44,16 @@ def run(sel):
 res = {}
 print('(i) Celtic-pivot bundles'); res['celtic_pivot'] = run(lambda b: group[b] == 'celtic')
 print('all bundles read (28 slabs; not measure ii)'); res['all_read'] = run(lambda b: True)
+def date_bin(b):
+    m = meta[b][1] or {}
+    if m.get('date_from') is None: return 'unknown'
+    mid = (m['date_from'] + (m.get('date_to') or m['date_from'])) / 2
+    return '<=900' if mid <= 900 else '901-1200' if mid <= 1200 else '1201-1250' if mid <= 1250 else '>1250'
+# pre-registered secondary: Celtic-pivot bundles by witness date and genre
+res['by_date'], res['by_genre'] = {}, {}
+for name, fn in (('by_date', date_bin), ('by_genre', lambda b: (meta[b][1] or {}).get('genre', 'unknown'))):
+    for val in sorted({fn(b) for b in kind if group[b] == 'celtic'}):
+        print(f'{name} = {val}'); res[name][val] = run(lambda b, val=val, fn=fn: group[b] == 'celtic' and fn(b) == val)
 cl = collections.Counter(); per = {}
 for c, g in V.items():
     ks = {kind.get((ck[c]['slab'], b)) for b in ck[c]['bundles']}
