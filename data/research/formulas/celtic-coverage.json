@@ -1,0 +1,435 @@
+{
+ "celt": {
+  "all": {
+   "content": 1911512,
+   "content_mapped": 649568,
+   "content_no_names": 1456497,
+   "content_no_names_mapped": 537544,
+   "share": 0.3398,
+   "share_no_names": 0.3691
+  },
+  "genre:adaptation": {
+   "content": 169563,
+   "content_mapped": 47824,
+   "content_no_names": 150756,
+   "content_no_names_mapped": 45786,
+   "share": 0.282,
+   "share_no_names": 0.3037
+  },
+  "genre:annals": {
+   "content": 551109,
+   "content_mapped": 194051,
+   "content_no_names": 326642,
+   "content_no_names_mapped": 140986,
+   "share": 0.3521,
+   "share_no_names": 0.4316
+  },
+  "genre:dindshenchas": {
+   "content": 35173,
+   "content_mapped": 13821,
+   "content_no_names": 28721,
+   "content_no_names_mapped": 11775,
+   "share": 0.3929,
+   "share_no_names": 0.41
+  },
+  "genre:genealogy": {
+   "content": 175392,
+   "content_mapped": 59997,
+   "content_no_names": 108045,
+   "content_no_names_mapped": 43137,
+   "share": 0.3421,
+   "share_no_names": 0.3993
+  },
+  "genre:history": {
+   "content": 136014,
+   "content_mapped": 47815,
+   "content_no_names": 104192,
+   "content_no_names_mapped": 39977,
+   "share": 0.3515,
+   "share_no_names": 0.3837
+  },
+  "genre:law": {
+   "content": 9308,
+   "content_mapped": 3372,
+   "content_no_names": 7543,
+   "content_no_names_mapped": 2954,
+   "share": 0.3623,
+   "share_no_names": 0.3916
+  },
+  "genre:medical-scientific": {
+   "content": 136608,
+   "content_mapped": 38522,
+   "content_no_names": 133961,
+   "content_no_names_mapped": 38387,
+   "share": 0.282,
+   "share_no_names": 0.2866
+  },
+  "genre:other": {
+   "content": 554,
+   "content_mapped": 184,
+   "content_no_names": 530,
+   "content_no_names_mapped": 177,
+   "share": 0.3321,
+   "share_no_names": 0.334
+  },
+  "genre:religious": {
+   "content": 296732,
+   "content_mapped": 97163,
+   "content_no_names": 261428,
+   "content_no_names_mapped": 89624,
+   "share": 0.3274,
+   "share_no_names": 0.3428
+  },
+  "genre:saga": {
+   "content": 320161,
+   "content_mapped": 119286,
+   "content_no_names": 263492,
+   "content_no_names_mapped": 99996,
+   "share": 0.3726,
+   "share_no_names": 0.3795
+  },
+  "genre:scholarship": {
+   "content": 33878,
+   "content_mapped": 10691,
+   "content_no_names": 29206,
+   "content_no_names_mapped": 9562,
+   "share": 0.3156,
+   "share_no_names": 0.3274
+  },
+  "genre:verse": {
+   "content": 42995,
+   "content_mapped": 15378,
+   "content_no_names": 38363,
+   "content_no_names_mapped": 13889,
+   "share": 0.3577,
+   "share_no_names": 0.362
+  },
+  "genre:wisdom": {
+   "content": 4025,
+   "content_mapped": 1464,
+   "content_no_names": 3618,
+   "content_no_names_mapped": 1294,
+   "share": 0.3637,
+   "share_no_names": 0.3577
+  },
+  "licence:consent-train": {
+   "content": 1905742,
+   "content_mapped": 647240,
+   "content_no_names": 1451289,
+   "content_no_names_mapped": 535413,
+   "share": 0.3396,
+   "share_no_names": 0.3689
+  },
+  "licence:research": {
+   "content": 5770,
+   "content_mapped": 2328,
+   "content_no_names": 5208,
+   "content_no_names_mapped": 2131,
+   "share": 0.4035,
+   "share_no_names": 0.4092
+  },
+  "period:ga": {
+   "content": 51220,
+   "content_mapped": 18243,
+   "content_no_names": 44230,
+   "content_no_names_mapped": 16676,
+   "share": 0.3562,
+   "share_no_names": 0.377
+  },
+  "period:ga-early": {
+   "content": 990396,
+   "content_mapped": 334716,
+   "content_no_names": 754836,
+   "content_no_names_mapped": 279318,
+   "share": 0.338,
+   "share_no_names": 0.37
+  },
+  "period:mga": {
+   "content": 650814,
+   "content_mapped": 220902,
+   "content_no_names": 502550,
+   "content_no_names_mapped": 182694,
+   "share": 0.3394,
+   "share_no_names": 0.3635
+  },
+  "period:sga": {
+   "content": 199079,
+   "content_mapped": 69110,
+   "content_no_names": 139651,
+   "content_no_names_mapped": 53163,
+   "share": 0.3471,
+   "share_no_names": 0.3807
+  },
+  "period:undated": {
+   "content": 20003,
+   "content_mapped": 6597,
+   "content_no_names": 15230,
+   "content_no_names_mapped": 5693,
+   "share": 0.3298,
+   "share_no_names": 0.3738
+  }
+ },
+ "celt-lemmatizer-levels-by-type": {
+  "demutated": 15264,
+  "demutated-loose": 1192,
+  "form": 55876,
+  "form-loose": 8765,
+  "override": 397,
+  "skeleton": 53132,
+  "unknown": 272052
+ },
+ "cy": {
+  "all": {
+   "content": 556971,
+   "content_mapped": 102794,
+   "content_no_names": 505720,
+   "content_no_names_mapped": 95393,
+   "share": 0.1846,
+   "share_no_names": 0.1886
+  },
+  "ancient-laws-owen-1841": {
+   "content": 101904,
+   "content_mapped": 13166,
+   "content_no_names": 96177,
+   "content_no_names_mapped": 12715,
+   "share": 0.1292,
+   "share_no_names": 0.1322
+  },
+  "black-book-1906": {
+   "content": 4992,
+   "content_mapped": 707,
+   "content_no_names": 4284,
+   "content_no_names_mapped": 632,
+   "share": 0.1416,
+   "share_no_names": 0.1475
+  },
+  "book-of-aneirin-1908": {
+   "content": 9193,
+   "content_mapped": 1798,
+   "content_no_names": 8577,
+   "content_no_names_mapped": 1678,
+   "share": 0.1956,
+   "share_no_names": 0.1956
+  },
+  "book-of-taliesin-1910": {
+   "content": 12028,
+   "content_mapped": 2115,
+   "content_no_names": 10399,
+   "content_no_names_mapped": 1874,
+   "share": 0.1758,
+   "share_no_names": 0.1802
+  },
+  "diplomatic": {
+   "content": 169539,
+   "content_mapped": 25957,
+   "content_no_names": 155642,
+   "content_no_names_mapped": 24855,
+   "share": 0.1531,
+   "share_no_names": 0.1597
+  },
+  "gododin-gutenberg": {
+   "content": 2966,
+   "content_mapped": 699,
+   "content_no_names": 2667,
+   "content_no_names_mapped": 636,
+   "share": 0.2357,
+   "share_no_names": 0.2385
+  },
+  "myvyrian-1870": {
+   "content": 264768,
+   "content_mapped": 59724,
+   "content_no_names": 234585,
+   "content_no_names_mapped": 54081,
+   "share": 0.2256,
+   "share_no_names": 0.2305
+  },
+  "print-normalised": {
+   "content": 387432,
+   "content_mapped": 76837,
+   "content_no_names": 350078,
+   "content_no_names_mapped": 70538,
+   "share": 0.1983,
+   "share_no_names": 0.2015
+  },
+  "redbook-bruts-1890": {
+   "content": 50288,
+   "content_mapped": 6074,
+   "content_no_names": 45944,
+   "content_no_names_mapped": 5986,
+   "share": 0.1208,
+   "share_no_names": 0.1303
+  },
+  "redbook-mabinogion-1887": {
+   "content": 31696,
+   "content_mapped": 4903,
+   "content_no_names": 29387,
+   "content_no_names_mapped": 4776,
+   "share": 0.1547,
+   "share_no_names": 0.1625
+  },
+  "redbook-poetry-1911": {
+   "content": 26975,
+   "content_mapped": 5283,
+   "content_no_names": 24928,
+   "content_no_names_mapped": 5001,
+   "share": 0.1958,
+   "share_no_names": 0.2006
+  },
+  "skene-four-ancient-books-v2": {
+   "content": 17794,
+   "content_mapped": 3248,
+   "content_no_names": 16649,
+   "content_no_names_mapped": 3106,
+   "share": 0.1825,
+   "share_no_names": 0.1866
+  },
+  "white-book-1907": {
+   "content": 34367,
+   "content_mapped": 5077,
+   "content_no_names": 32123,
+   "content_no_names_mapped": 4908,
+   "share": 0.1477,
+   "share_no_names": 0.1528
+  }
+ },
+ "irish-ocr": {
+  "ancient-laws": {
+   "content": 86937,
+   "content_mapped": 10376,
+   "content_no_names": 79687,
+   "content_no_names_mapped": 9414,
+   "share": 0.1194,
+   "share_no_names": 0.1181
+  },
+  "archiv-celt-lex": {
+   "content": 56196,
+   "content_mapped": 9695,
+   "content_no_names": 48328,
+   "content_no_names_mapped": 8880,
+   "share": 0.1725,
+   "share_no_names": 0.1837
+  },
+  "eriu-1904-1928": {
+   "content": 55108,
+   "content_mapped": 15000,
+   "content_no_names": 45808,
+   "content_no_names_mapped": 12978,
+   "share": 0.2722,
+   "share_no_names": 0.2833
+  },
+  "felire-stokes-1905": {
+   "content": 15591,
+   "content_mapped": 3564,
+   "content_no_names": 11105,
+   "content_no_names_mapped": 2738,
+   "share": 0.2286,
+   "share_no_names": 0.2466
+  },
+  "irische-texte": {
+   "content": 128503,
+   "content_mapped": 37114,
+   "content_no_names": 106455,
+   "content_no_names_mapped": 32111,
+   "share": 0.2888,
+   "share_no_names": 0.3016
+  },
+  "lismore-stokes-1890": {
+   "content": 19934,
+   "content_mapped": 4929,
+   "content_no_names": 16236,
+   "content_no_names_mapped": 4014,
+   "share": 0.2473,
+   "share_no_names": 0.2472
+  },
+  "meyer-editions": {
+   "content": 39640,
+   "content_mapped": 7584,
+   "content_no_names": 30631,
+   "content_no_names_mapped": 6379,
+   "share": 0.1913,
+   "share_no_names": 0.2083
+  },
+  "saltair-stokes-1883": {
+   "content": 4266,
+   "content_mapped": 902,
+   "content_no_names": 3827,
+   "content_no_names_mapped": 822,
+   "share": 0.2114,
+   "share_no_names": 0.2148
+  },
+  "tbc-windisch-1905": {
+   "content": 39076,
+   "content_mapped": 11550,
+   "content_no_names": 30678,
+   "content_no_names_mapped": 8461,
+   "share": 0.2956,
+   "share_no_names": 0.2758
+  },
+  "tripartite-stokes-1887": {
+   "content": 22315,
+   "content_mapped": 3038,
+   "content_no_names": 17392,
+   "content_no_names_mapped": 2472,
+   "share": 0.1361,
+   "share_no_names": 0.1421
+  },
+  "zcp-1897-1926": {
+   "content": 155823,
+   "content_mapped": 32439,
+   "content_no_names": 128120,
+   "content_no_names_mapped": 28008,
+   "share": 0.2082,
+   "share_no_names": 0.2186
+  }
+ },
+ "sga-glosses": {
+  "all": {
+   "content": 19794,
+   "content_mapped": 6500,
+   "content_no_names": 19610,
+   "content_no_names_mapped": 6451,
+   "share": 0.3284,
+   "share_no_names": 0.329
+  },
+  "sg-tagged": {
+   "content": 7225,
+   "content_mapped": 3477,
+   "content_no_names": 7173,
+   "content_no_names_mapped": 3475,
+   "share": 0.4812,
+   "share_no_names": 0.4845
+  },
+  "sg-untagged": {
+   "content": 16,
+   "content_mapped": 1,
+   "content_no_names": 16,
+   "content_no_names_mapped": 1,
+   "share": 0.0625,
+   "share_no_names": 0.0625
+  },
+  "tagged": {
+   "content": 9757,
+   "content_mapped": 4853,
+   "content_no_names": 9592,
+   "content_no_names_mapped": 4805,
+   "share": 0.4974,
+   "share_no_names": 0.5009
+  },
+  "wb-tagged": {
+   "content": 2532,
+   "content_mapped": 1376,
+   "content_no_names": 2419,
+   "content_no_names_mapped": 1330,
+   "share": 0.5434,
+   "share_no_names": 0.5498
+  },
+  "wb-untagged": {
+   "content": 10021,
+   "content_mapped": 1646,
+   "content_no_names": 10002,
+   "content_no_names_mapped": 1645,
+   "share": 0.1643,
+   "share_no_names": 0.1645
+  }
+ }
+}
