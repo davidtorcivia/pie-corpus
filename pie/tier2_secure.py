@@ -20,10 +20,11 @@ Two kinds of evidence, best level wins:
       for the languages it covers, because the corpus tables only hold words that
       occur in their corpora (Hitt. ēšḫar, OIr. gonaid are missing from them).
     A word the table reaches only through a derivation (base chain, privative,
-    kaikki-chain) is a different formation: root level. The mapping errata
-    (data/research/formulas/mapping-overrides*, by corpus and lemma) are applied
-    on load and win over the automatic links; an erratum row marked
-    "formation": "derivative" (Ved. sū́rya-, mahā́nt-) is root level too.
+    kaikki-chain) is a different formation: root level. The corpus tables are
+    read as pie.mapping resolves them (pie.mapping.iter_resolved: the same
+    population the mapping-precision measurement samples), so override rows
+    add, remove and remap lemmas; a row marked "formation": "derivative"
+    (Ved. sū́rya-, mahā́nt-) is root level, one marked "uncertain" no evidence.
     Wiktionary/kaikki etymologies link a derivative to its base's page (mahát
     "from *méǵh₂s") and alternative-form pages to their target (*suHyús →
     *suHnús), so a kaikki link alone does not show the same formation.
@@ -35,6 +36,15 @@ Two kinds of evidence, best level wins:
     its language (ENDINGS) on both sides. Never a prefix match. Reflexes marked
     uncertain or borrowed are skipped. Forms the tables map to the lexeme count as
     reflexes too ("table form").
+Reviewed decisions win over every route. The override rows of all corpora of a language (rv and av for
+Vedic, hom and grp for Greek, ...) decide a cited lemma with the same key, and an inflected word through its
+stem when its ref cites that lemma: no route (table, kaikki link, dictionary chain, lexicon reflex, table
+form, preverb or compound remainder, sibling reflex) may then give a lexeme more than the decision allows
+(Gov): nothing for one the decision removed or that lies outside the family it lists (Latv. pūrs 'dowry
+chest' is not *péh₂wr̥; Ved. gír- 'praise' is not *gʷerh₃- 'swallow' through giráti), at most its own level
+for one it removed in favour of a root (υἱός: *suHnús only root level). A ref may give senses
+({"senses": {word: gloss}}): a decision whose sense does not overlap does not apply. Reviewed 'form' rows
+send a cited surface form to its lemma first.
 Either way 'exact' means the same formation: an agent / kin noun in *-tor-/*-tér-
 whose cited daughter word shows the other type (Vedic accent, Greek / Latin suffix
 grade: dātā́ and δωτῆρες against *déh₃tōr) is root level (formation_clash).
@@ -49,10 +59,11 @@ are recorded under "members".
 from __future__ import annotations
 
 import collections
-import json
 import re
 import unicodedata
 from pathlib import Path
+
+from . import mapping as mp
 
 ROOT = Path(__file__).resolve().parent.parent
 MAPPING_DIR = ROOT / "data" / "research" / "formulas" / "mapping"
@@ -301,18 +312,33 @@ def _rec(ids, path, source, derived=False):
     return (frozenset(ids), tuple(path), source, bool(derived))
 
 
+# corpora whose mapping is built live (no table in mapping/): their override rows still decide
+LIVE_CORPUS_CODE = {"rv": "sa", "hom": "grc", "lat": "la", "orv": "cu"}
+# table row languages that the checker reads under another code (Middle Irish rows of a CELT table: sga)
+LANG_ALIAS = {"mga": "sga", "orv": "cu"}
+CHECK_CODES = frozenset(c for c in LANG_CODE.values() if c)
+
+
+def code_of(corpus: str, lang: str | None = None) -> str | None:
+    """The checker's language code for a corpus (or a row of it in language `lang`); None: not read."""
+    c = CORPUS_CODE.get(corpus) or LIVE_CORPUS_CODE.get(corpus)
+    if c:
+        return c
+    c = LANG_ALIAS.get(lang, lang)
+    return c if c in CHECK_CODES else None
+
+
 def load_lemma_overrides() -> dict:
     """The mapping errata, {corpus: {lemma: (ids, row)}}: data/research/formulas/mapping-overrides.json and
-    the per-language files in mapping-overrides/ (pie.formula_search_multi.load_overrides). The tables in
-    mapping/ were written before most per-language rows existed, so they are applied here, on load."""
-    from .formula_search_multi import load_overrides
-    return load_overrides(ROOT)["lemma"]
+    the per-language files in mapping-overrides/ (pie.mapping.load_overrides)."""
+    return mp.load_overrides(ROOT)["lemma"]
 
 
 def override_row(r: dict, overrides: dict) -> tuple[dict | None, bool]:
     """A mapping-table row with its corpus's lemma erratum applied → (row or None if unmapped, overridden?).
     An override row with "formation": "derivative" says the lemma continues a derivative of the listed
-    lexeme (Ved. mahā́nt- for *méǵh₂s): the row then counts as a derivation, root level."""
+    lexeme (Ved. mahā́nt- for *méǵh₂s): the row then counts as a derivation, root level.
+    (Kept for callers; the checker itself resolves through pie.mapping.)"""
     hit = overrides.get(r.get("corpus"), {}).get(r.get("lemma"))
     if not hit:
         return r, False
@@ -323,6 +349,20 @@ def override_row(r: dict, overrides: dict) -> tuple[dict | None, bool]:
     path = [p for p in r.get("path", [])[:1]] + ["erratum:" + note]
     return {**r, "lex_id": sorted(ids), "path": path, "how": "erratum",
             "formation": orow.get("formation")}, True
+
+
+def _parts(code: str, lemma: str) -> list[str]:
+    """A decided lemma's citation parts: '~' variants ('gír- ~ gīr-'); Hittite: before '@'. A lemmatizer
+    group 'a|b' (an ambiguous corpus form) has none: its decision is about that table row only, not about
+    the lemmas a and b wherever else they are cited."""
+    if "|" in str(lemma or ""):
+        return []
+    out = []
+    for part in re.split(r"\s*~\s*", str(lemma or "")):
+        part = part.split("@")[0] if code == "hit" else part
+        if part.strip():
+            out.append(part)
+    return out
 
 
 def row_keys(code: str, r: dict) -> set[str]:
@@ -338,40 +378,129 @@ def row_keys(code: str, r: dict) -> set[str]:
     return {k for k in keys if k}
 
 
-def table_from_rows(rows, overrides: dict | None = None) -> tuple[dict, dict]:
-    """(corpus, row) pairs of the mapping tables → ({code: {key: [rec]}}, {code: keys of overridden rows}).
-    The overridden keys are dropped from the round-2 kaikki and dictionary tables when they are merged,
-    so a corrected lemma is not re-admitted through another source (υἱός, mahát)."""
-    out: dict = collections.defaultdict(lambda: collections.defaultdict(list))
-    corrected: dict = collections.defaultdict(set)
-    for corpus, r in rows:
-        code = CORPUS_CODE[corpus]
-        keys = row_keys(code, r)
-        r, was = override_row(r, overrides or {})
-        if was:
-            corrected[code] |= keys
-        if r is None:
+def decision_keys(code: str, lemma: str, word: str | None = None) -> set[str]:
+    """Table-space keys of a decided lemma (and of its table row's word): '~' variants split, a group
+    'a|b' none (see _parts)."""
+    from .formula_search_multi import hit_tlh_keys
+    keys = set()
+    for part in _parts(code, lemma) + (_parts(code, word) if word and _parts(code, lemma) else []):
+        if code == "hit":
+            keys |= set(hit_tlh_keys(part))
+        keys.add(table_key(code, part))
+    return {k for k in keys if k}
+
+
+_TONES = {"\u0300", "\u0301", "\u0302", "\u0342", "\u0313", "\u0314", "\u0344"}
+
+
+def _tone_form(s: str) -> str:
+    return "".join(c for c in unicodedata.normalize("NFD", (s or "").lower().replace("ς", "σ"))
+                   if c.isalpha() or c in _TONES)
+
+
+def tone_clash(a: str, b: str) -> bool:
+    """Both written with accents or breathings, and these differ: two words, whatever their keys."""
+    fa, fb = _tone_form(a), _tone_form(b)
+    return bool(_TONES & set(fa)) and bool(_TONES & set(fb)) and fa != fb
+
+
+class Population:
+    """What the checker reads from the mapping tables: pie.mapping.iter_resolved (the same population the
+    mapping-precision measurement samples), its table recs, and the reviewed decisions per language."""
+
+    def __init__(self):
+        self.resolved: list = []                                  # pie.mapping.Resolved, in load order
+        self.tables: dict = collections.defaultdict(lambda: collections.defaultdict(list))
+        self.corrected: dict = collections.defaultdict(set)       # code → table keys of decided lemmas
+        self.decided: dict = collections.defaultdict(list)        # code → [(corpus, lemma, word, decisions)]
+        self.auto: dict = collections.defaultdict(lambda: collections.defaultdict(set))  # code → key → auto ids
+        self.forms: dict = {}                                     # code → {form key: lemma}
+        self.overrides: dict | None = None                        # pie.mapping.load_overrides() shape
+
+
+def build_population(rows_by_corpus: dict, overrides: dict | None, codes=None, added: bool = True) -> Population:
+    """rows_by_corpus: {corpus: [raw table rows]}; corpora with override rows but no table are added
+    (their decided lemmas only) when `added`."""
+    ov = mp.as_overrides(overrides or {})
+    pop = Population()
+    corpora = list(rows_by_corpus) + ([c for c in ov["decisions"] if c not in rows_by_corpus] if added else [])
+    for corpus in corpora:
+        rows = rows_by_corpus.get(corpus, [])
+        lang = mp.corpus_lang(corpus, rows)
+        row_of = {r["lemma"]: r for r in rows}
+        for x in mp.resolve_rows(corpus, rows, ov).values():
+            code = code_of(corpus, x.lang)
+            if code is None or (codes is not None and code not in codes):
+                continue
+            pop.resolved.append(x)
+            if x.uncertain:
+                continue                      # an uncertain equation is never secure evidence
+            r = row_of.get(x.lemma, {})
+            derived = x.how in ("base", "root") or x.derivative or any(
+                str(p).startswith(DERIVED_MARKS) for p in x.path)
+            rec = _rec(x.ids, [f"table:{corpus}"] + list(x.path), f"table:{corpus}", derived)
+            for k in row_keys(code, {"lemma": x.lemma, "word": r.get("word", x.word)}):
+                pop.tables[code][k].append(rec)
+        # proto-page and headword decisions decide the table words mapped through them, like lemma rows
+        # (ON fara through gem-pro *faraną: no route may then restore the link the page decision dropped)
+        path_decided = {}
+        if ov.get("proto") or ov.get("key"):
+            for r in rows:
+                if r["lemma"] in ov["decisions"].get(corpus, {}):
+                    continue
+                rl = r.get("lang") or lang
+                pd = mp.path_decision([f"{rl}:{r['lemma']}", *r.get("path", ())], rl, ov)
+                if pd:
+                    path_decided[r["lemma"]] = [pd]
+        for lem, ds in [*ov["decisions"].get(corpus, {}).items(), *path_decided.items()]:
+            r = row_of.get(lem, {})
+            code = code_of(corpus, r.get("lang") or lang)
+            if code is None or (codes is not None and code not in codes):
+                continue
+            keys = decision_keys(code, lem, r.get("word"))
+            pop.corrected[code] |= keys
+            pop.decided[code].append((corpus, lem, r.get("word"), tuple(ds)))
+            for k in keys:
+                pop.auto[code][k] |= set(mp.strip_blocked(r.get("lex_id", ())))
+    # headword decisions ('key' rows: a daughter headword and the words mapped through it)
+    for lang, rows in ov.get("key", {}).items():
+        code = code_of("", lang)
+        if code is None or (codes is not None and code not in codes):
             continue
-        derived = r.get("how") in ("base", "root") or r.get("formation") == "derivative" or any(
-            str(x).startswith(DERIVED_MARKS) for x in r.get("path", []))
-        rec = _rec(r["lex_id"], [f"table:{corpus}"] + list(r.get("path", [])), f"table:{corpus}", derived)
-        for k in keys:
-            out[code][k].append(rec)
-    return out, corrected
+        for k, d in rows.items():
+            keys = decision_keys(code, k)
+            pop.corrected[code] |= keys
+            pop.decided[code].append((f"key:{lang}", k, None, (d,)))
+    for lang, fo in ov.get("form", {}).items():
+        code = LANG_ALIAS.get(lang, lang)
+        pop.forms.setdefault(code, {}).update(fo)
+    pop.overrides = ov
+    return pop
+
+
+def table_from_rows(rows, overrides: dict | None = None) -> tuple[dict, dict]:
+    """(corpus, row) pairs of the mapping tables → ({code: {key: [rec]}}, {code: keys of decided lemmas}),
+    resolved by pie.mapping (override rows whose lemma the rows lack are added). The decided keys are
+    dropped from the round-2 kaikki and dictionary tables when they are merged, so a corrected lemma is
+    not re-admitted through another source (υἱός, mahát)."""
+    by: dict = collections.defaultdict(list)
+    for corpus, r in rows:
+        by[corpus].append(r)
+    pop = build_population(dict(by), overrides or {})
+    return pop.tables, pop.corrected
+
+
+def load_population(codes=None, overrides: dict | None = None, root: Path = ROOT) -> Population:
+    """data/research/formulas/mapping/*.jsonl with every override applied (pie.mapping.iter_resolved)."""
+    ov = mp.as_overrides(overrides, root)
+    rows = {c: mp.read_table(c, root) for c in mp.table_corpora(root)}
+    return build_population(rows, ov, codes)
 
 
 def load_corpus_tables(codes=None, overrides: dict | None = None) -> tuple[dict, dict]:
     """data/research/formulas/mapping/*.jsonl, errata applied → ({code: {key: [rec]}}, corrected keys)."""
-    def rows():
-        for corpus, code in CORPUS_CODE.items():
-            if codes is not None and code not in codes:
-                continue
-            p = MAPPING_DIR / f"{corpus}.jsonl"
-            if not p.exists():
-                continue
-            for line in p.read_text("utf-8").splitlines():
-                yield corpus, json.loads(line)
-    return table_from_rows(rows(), load_lemma_overrides() if overrides is None else overrides)
+    pop = load_population(codes, overrides)
+    return pop.tables, pop.corrected
 
 
 def load_kaikki_tables(entries: dict, codes=("sa", "grc", "la")) -> dict:
@@ -430,46 +559,135 @@ def load_dict_tables(entries: dict, codes=DICT_CODES) -> dict:
     return out
 
 
-def merge_tables(code: str, corpus: dict, others, corrected: dict) -> dict:
-    """One language's table: the corpus rows, then the automatic links of the other sources, except for
-    keys whose corpus row an erratum corrected (a reviewed erratum wins over the automatic links)."""
+def _path_decided(code: str, rec, overrides: dict | None):
+    """An automatic rec with the proto-page or headword decision its path runs through applied (None:
+    removed)."""
+    ids, p, s, d = rec
+    pd = mp.path_decision(p[1:], code, overrides) if overrides else None
+    if pd is None:
+        return rec
+    if not pd.ids or pd.uncertain:
+        return None
+    return (pd.ids, tuple(p) + ("erratum:" + pd.note,), s, d or pd.derivative)
+
+
+def merge_tables(code: str, corpus: dict, others, corrected: dict, dropped: dict | None = None,
+                 overrides: dict | None = None) -> dict:
+    """One language's table: the corpus rows, then the automatic links of the other sources (BLOCKED_IDS
+    removed, proto-page and headword decisions of `overrides` applied: pie.mapping.path_decision),
+    except for keys of a decided lemma (a reviewed decision wins over the automatic links). `dropped`
+    collects the ids so dropped, per key."""
     merged = collections.defaultdict(list)
     for src in (corpus, *others):
         for k, recs in src.get(code, {}).items():
-            if src is not corpus and k in corrected.get(code, ()):
-                continue
+            if src is not corpus:
+                recs = [(frozenset(mp.strip_blocked(ids)), p, s, d) for ids, p, s, d in recs]
+                recs = [x for x in (_path_decided(code, r, overrides) for r in recs if r[0]) if x]
+                if k in corrected.get(code, ()):
+                    if dropped is not None:
+                        for x in recs:
+                            dropped[k] |= x[0]
+                    continue
             merged[k] += recs
     return merged
+
+
+LEVEL_RANK = {None: 0, "root": 1, "exact": 2}
+
+
+class Gov:
+    """The reviewed decisions (pie.mapping.Decision) that apply to one cited word of a language, and what
+    they leave to the other routes. Every route's level for a lexeme is capped by `cap`:
+      - lexemes marked uncertain: no route may give more than the decision itself does (nothing);
+      - a lexeme the decision lists: exact (root for a "derivative" decision);
+      - a lexeme under a root the decision lists: exact (the decision picked the root, e.g. between
+        homograph roots: Ved. bhā 'shine', not 'speak'; a lexicon reflex list may show the lexeme itself),
+        unless the decision only demoted it, i.e. every automatic id it removed lies in the family it kept
+        (υἱός: *suHnús → the root *sewH-, because υἱός is *suH-iu-): then root;
+      - a sibling of a listed lexeme: root; anything else: none (no route restores an equation the
+        review contradicts)."""
+
+    def __init__(self, checker: "SecureChecker", decided: list, auto: set):
+        self.ch = checker
+        self.decided = decided                       # [(corpus, lemma, Decision)]
+        certain = [d for _, _, d in decided if not d.uncertain]
+        self.allowed = frozenset().union(*(d.ids for d in certain)) if certain else frozenset()
+        self.derivative = frozenset().union(*(d.ids for d in certain if d.derivative)) if certain else frozenset()
+        unc = [d.ids for _, _, d in decided if d.uncertain]
+        self.uncertain = (frozenset().union(*unc) if unc else frozenset()) - self.allowed
+        self.removed = frozenset(auto) - self.allowed
+        self.demoted = bool(self.removed) and all(checker.level_of(i, self.allowed) for i in self.removed)
+        self.path = [f"override:{c}:{lem}" for c, lem, _ in decided[:3]]
+
+    def own(self, lid: str) -> str | None:
+        """The level the decisions themselves give lid."""
+        best = None
+        for _, _, d in self.decided:
+            if d.uncertain or not d.ids:
+                continue
+            lv = self.ch.level_of(lid, d.ids)
+            if lv and d.derivative:
+                lv = "root"
+            if LEVEL_RANK[lv] > LEVEL_RANK[best]:
+                best = lv
+        return best
+
+    def cap(self, lid: str) -> str | None:
+        own = self.own(lid)
+        if lid in self.uncertain or lid in self.allowed or (lid in self.removed and self.demoted):
+            return own
+        rid = (self.ch.entries.get(lid) or {}).get("root_id")
+        if own == "root" and rid in self.allowed and rid not in self.derivative:
+            return "exact"
+        return own
+
+    def limit(self, lid: str, level: str | None) -> str | None:
+        c = self.cap(lid)
+        return level if LEVEL_RANK[level] <= LEVEL_RANK[c] else c
 
 
 # ---------------------------------------------------------------- the checker
 
 class SecureChecker:
     """entries: lexicon id → entry; tables: {code: {key: [rec]}} (rec = (ids, path, source, derived)).
-    `loader(code) → {key: [rec]}` fills a language's table on first use."""
+    `loader(code) → {key: [rec]}` fills a language's table on first use. `population` (a Population)
+    carries the reviewed decisions: with it, every route is capped by them (Gov); without it (fixtures),
+    the tables alone decide."""
 
-    def __init__(self, entries: dict, tables: dict | None = None, loader=None):
+    def __init__(self, entries: dict, tables: dict | None = None, loader=None, population: Population | None = None):
         self.entries = entries
         self.tables = {c: dict(t) for c, t in (tables or {}).items()}
         self.loader = loader
+        self.population = population
+        self.dropped: dict = collections.defaultdict(lambda: collections.defaultdict(set))
         self._rev: dict = {}
         self._memo: dict = {}
+        self._gov_idx: dict = {}
         self._siblings: dict = collections.defaultdict(set)
         for i, e in entries.items():
             if e.get("root_id"):
                 self._siblings[e["root_id"]].add(i)
 
     @classmethod
-    def from_disk(cls, entries: dict, dictionaries: bool = True) -> "SecureChecker":
-        corpus, corrected = load_corpus_tables()
+    def from_population(cls, entries: dict, pop: Population, others_loader=None) -> "SecureChecker":
+        """A checker over a Population; others_loader() → (kaikki tables, dictionary tables) on first use."""
         cache: dict = {}
+        ch = cls(entries, {}, None, pop)
 
         def loader(code):
             if not cache:
-                cache.update({"kaikki": load_kaikki_tables(entries)})
-                cache["dict"] = load_dict_tables(entries) if dictionaries else {}
-            return merge_tables(code, corpus, (cache["kaikki"], cache["dict"]), corrected)
-        return cls(entries, {}, loader)
+                cache["others"] = tuple(others_loader()) if others_loader else ()
+            # no key-level drop of the other sources: the decisions cap them word by word (Gov), where a
+            # drop by key would also hit an accent homograph (ὠμός under ὦμος)
+            return merge_tables(code, pop.tables, cache["others"], {}, ch.dropped[code], pop.overrides)
+        ch.loader = loader
+        return ch
+
+    @classmethod
+    def from_disk(cls, entries: dict, dictionaries: bool = True, overrides: dict | None = None) -> "SecureChecker":
+        pop = load_population(overrides=overrides)
+        return cls.from_population(entries, pop, lambda: (load_kaikki_tables(entries),
+                                                          load_dict_tables(entries) if dictionaries else {}))
 
     def table(self, code: str | None) -> dict:
         if code is None:
@@ -477,6 +695,92 @@ class SecureChecker:
         if code not in self.tables:
             self.tables[code] = self.loader(code) if self.loader else {}
         return self.tables[code]
+
+    # -- reviewed decisions
+    def _gov_index(self, code: str) -> dict:
+        """{"eq": {table key: [entry]}, "full": {comparison key: [entry]}, "stem": {comparison stem: [entry]}},
+        entry = (corpus, lemma, decisions, table keys, citation parts)."""
+        if code not in self._gov_idx:
+            eq, full, st = (collections.defaultdict(list) for _ in range(3))
+            for corpus, lem, word, ds in (self.population.decided.get(code, []) if self.population else []):
+                parts = tuple(_parts(code, lem) + (_parts(code, word) if word and _parts(code, lem) else []))
+                e = (corpus, lem, ds, frozenset(decision_keys(code, lem, word)), parts)
+                for k in e[3]:
+                    eq[k].append(e)
+                # comparison space: the table keys themselves, except Greek (tables in Greek script)
+                cks = {key(code, p) for p in parts} if code == "grc" else e[3]
+                for ck in cks:
+                    if ck and len(ck) >= 2:
+                        full[ck].append(e)
+                        for x in stems(code, ck):
+                            st[x].append(e)
+            self._gov_idx[code] = {"eq": eq, "full": full, "stem": st}
+        return self._gov_idx[code]
+
+    def _eq_entries(self, code: str, s: str, keys=()) -> dict:
+        """Decided lemmas that cited lemma s is: same table key, and no clash of accent or breathing when
+        both are written with them (Gk ὦμος 'shoulder' is not ὠμός 'raw', though both key ωμοσ)."""
+        idx = self._gov_index(code)
+        out = {}
+        for x in {y for y in self._hit_keys(code, s) if y} | set(keys):
+            for e in idx["eq"].get(x, ()):
+                if not e[4] or any(not tone_clash(s, p) for p in e[4]):
+                    out[(e[0], e[1])] = e
+        return out
+
+    def governing(self, code: str | None, s: str | None = None, lemma: bool = True, sense: str | None = None,
+                  k: str | None = None, context: set | None = None, eq: set | None = None) -> Gov | None:
+        """The decisions that apply to cited s. A lemma: the decided lemmas it is (_eq_entries; `eq`: table
+        keys of a word with no citation string). An inflected word, or with k a remainder already in
+        comparison-key space: when its ref cites lemmas (`context`, see SecureChecker.context), a decided
+        lemma among them that it shares a stem with (the relation the reflex route uses); otherwise a
+        decided lemma whose whole key it is plus one declared ending. A homograph stem elsewhere in the
+        language does not decide it (πρόσ-φατος is not φάτις, giráti cited for √gṝ- is not gír-).
+        None when no decision applies."""
+        if code is None or not self.population or not self.population.decided.get(code):
+            return None
+        idx = self._gov_index(code)
+        hit = {}
+        if s is not None:
+            hit.update(self._eq_entries(code, s))
+        for x in eq or ():
+            for e in idx["eq"].get(x, ()):
+                hit[(e[0], e[1])] = e
+        ck = k if k is not None else (key(code, s) if (s is not None and not lemma) else None)
+        if ck:
+            for x in stems(code, ck):
+                for e in (idx["full"].get(x, ()) if context is None else ()):
+                    hit[(e[0], e[1])] = e
+                for e in (idx["stem"].get(x, ()) if context else ()):
+                    if (e[0], e[1]) in context:
+                        hit[(e[0], e[1])] = e
+        if not hit:
+            return None
+        decided = [(c, lem, d) for (c, lem), e in sorted(hit.items()) for d in e[2]
+                   if sense is None or mp.senses_overlap(d.sense, sense)]
+        if not decided:
+            return None
+        auto: set = set()
+        keys = set()
+        for e in hit.values():
+            keys |= e[3]
+        tab = self.table(code)
+        for x in keys:
+            auto |= self.population.auto.get(code, {}).get(x, set())
+            auto |= self.dropped.get(code, {}).get(x, set())
+            for ids, path, src, derived in tab.get(x, ()):
+                if not any(str(p).startswith("erratum:") for p in path):
+                    auto |= ids
+        return Gov(self, decided, auto)
+
+    def form_lemma(self, code: str | None, s: str) -> str | None:
+        """The lemma a reviewed 'form' row sends a cited surface form to ('?…': an unknown fragment)."""
+        fo = (self.population.forms.get(code) if self.population and code else None)
+        if not fo:
+            return None
+        from .formula_search_multi import KEYS
+        kf = KEYS.get(code)
+        return fo.get(kf(s)) if kf else fo.get(s.lower())
 
     # -- levels
     def level_of(self, lid: str, ids) -> str | None:
@@ -524,29 +828,33 @@ class SecureChecker:
         return [(k, lab) for k, lab in out if k and len(k) >= 2]
 
     def _table_forms(self, lid: str, code: str | None) -> set[str]:
-        """Keys (comparison space) of words the tables map to lid without a derivation."""
+        """Keys (comparison space) of words the tables map to lid without a derivation (and, for a word a
+        reviewed decision governs, only where the decision leaves lid exact)."""
         if code is None:
             return set()
         if code not in self._rev:
             rev = collections.defaultdict(set)
             for k, recs in self.table(code).items():
+                gov = None
                 for ids, path, src, derived in recs:
                     if derived:
                         continue
                     w = next((p.split(":", 1)[1] for p in path if p.startswith(f"{code}:")
                               or p.startswith(f"kaikki-{code}:")), None)
                     ck = key(code, w) if (w and code == "grc") else (k if code != "grc" else None)
+                    if not ck:
+                        continue
+                    if gov is None:
+                        tw = next((p.split(":", 1)[1] for p in path if p.startswith(f"{code}:")), None)
+                        gov = (self.governing(code, tw) if tw else self.governing(code, eq={k})) or False
                     for i in ids:
-                        if ck:
+                        if not gov or gov.cap(i) == "exact":
                             rev[i].add(ck)
             self._rev[code] = rev
         return self._rev[code].get(lid, set())
 
-    def _table_hits(self, code: str | None, s: str, lemma: bool) -> list:
+    def _hit_keys(self, code: str | None, s: str) -> set[str]:
         from .formula_search_multi import hit_entry_stems
-        t = self.table(code)
-        if not t:
-            return []
         ks = {table_key(code, s)}
         if code == "sa":
             from .formula_search import skt_lemma_keys
@@ -554,7 +862,13 @@ class SecureChecker:
             ks |= {k[:-2] + "ṛ" for k in ks if k.endswith("ar") and len(k) > 4}   # duhitár- = duhitṛ
         if code == "hit":
             ks |= set(hit_entry_stems(s.strip("-")))
-        return [r for k in ks if k for r in t.get(k, [])]
+        return ks
+
+    def _table_hits(self, code: str | None, s: str, lemma: bool) -> list:
+        t = self.table(code)
+        if not t:
+            return []
+        return [r for k in self._hit_keys(code, s) if k for r in t.get(k, [])]
 
     def formation_clash(self, lid: str, code: str | None, s: str) -> str | None:
         """Why cited s, though it reaches lid, is another formation of it (None: no evidence of that).
@@ -565,19 +879,39 @@ class SecureChecker:
             return f"formation:agent-noun:{got}-accented≠{want}-accented"
         return None
 
-    def match(self, lid: str, code: str | None, lang: str, s: str, lemma: bool) -> dict | None:
+    def match(self, lid: str, code: str | None, lang: str, s: str, lemma: bool, sense: str | None = None,
+              context: set | None = None) -> dict | None:
         """Best evidence that cited string s continues lid, or None. 'exact' needs the same formation:
-        a word that reaches lid but shows another formation of it is root level."""
+        a word that reaches lid but shows another formation of it is root level. A reviewed decision
+        (pie.mapping) that applies to s caps every route (Gov); a reviewed 'form' row first sends an
+        inflected word to its lemma. context: table keys of the lemmas cited with an inflected word
+        (None: any decided lemma whose stem it shares)."""
+        cited = s
+        if not lemma:
+            fl = self.form_lemma(code, s)
+            if fl:
+                if fl.startswith("?"):
+                    return None
+                s, lemma = fl, True
         best = None
-        clash = self.formation_clash(lid, code, s)
+        clash = self.formation_clash(lid, code, cited)
+        gov = self.governing(code, s, lemma, sense, context=context)
 
-        def put(level, via, path):
+        def put(level, via, path, g=None):
             nonlocal best
+            path = list(path)
+            for gv in (gov, g):
+                if gv is not None:
+                    lv = gv.limit(lid, level)
+                    if lv != level:
+                        path += gv.path + [f"override-cap:{lv}"]
+                    level = lv
+            if level is None:
+                return
             if level == "exact" and clash:
-                level, path = "root", list(path) + [clash]
-            rank = {"exact": 2, "root": 1}
-            if best is None or rank[level] > rank[best["level"]]:
-                best = {"level": level, "cited": s, "via": via, "path": list(path)}
+                level, path = "root", path + [clash]
+            if best is None or LEVEL_RANK[level] > LEVEL_RANK[best["level"]]:
+                best = {"level": level, "cited": cited, "via": via, "path": path}
         # (a) mapping tables
         for ids, path, src, derived in self._table_hits(code, s, lemma):
             lv = self.level_of(lid, ids)
@@ -597,7 +931,8 @@ class SecureChecker:
                         rest = stems(code, k[len(pv):])
                         hit = next((lab for rk, lab, rst in self._reflex_keys(lid, code, lang) if rest & rst), None)
                         if hit:
-                            put("exact", "reflex", [f"preverb:{pv}", hit])
+                            put("exact", "reflex", [f"preverb:{pv}", hit],
+                                self.governing(code, k=k[len(pv):]))
                             break
             if best is None or best["level"] != "exact":
                 rid = (self.entries.get(lid) or {}).get("root_id")
@@ -607,15 +942,26 @@ class SecureChecker:
                     if hit:
                         put("root", "reflex", [f"{other}", hit])
                         break
+        # (c) the decision itself (an inflected word it governs through its stem, an override-only lemma)
+        if gov is not None and (lv := gov.own(lid)):
+            put(lv, "override", gov.path + [f"erratum:{d.note}" for _, _, d in gov.decided[:1]])
         return best
 
+    def context(self, code: str | None, r: dict) -> set | None:
+        """The decided lemmas, (corpus, lemma), that a ref's cited lemmas are (None when it cites none)."""
+        lem = [p for w in r.get("lemmas", []) or [] for p in re.split(r"\s*~\s*", w)]
+        if not (lem and code and self.population and self.population.decided.get(code)):
+            return None
+        return {x for p in lem for x in self._eq_entries(code, p)}
+
     def _cited(self, r: dict):
+        senses = r.get("senses") or {}
         for w in r.get("lemmas", []) or []:
             for part in re.split(r"\s*~\s*", w):
-                yield part, True
+                yield part, True, senses.get(w) or senses.get(part)
         for w in r.get("words", []) or []:
             for part in str(w).split():
-                yield part, False
+                yield part, False, senses.get(w) or senses.get(part)
 
     def check(self, lid: str, refs: list[dict]) -> dict:
         if lid.startswith("compound:"):
@@ -628,8 +974,9 @@ class SecureChecker:
                 continue
             lang = r.get("lang", "")
             b, code = branch_of(lang), LANG_CODE.get(lang)
-            for s, is_lemma in self._cited(r):
-                m = self.match(lid, code, lang, s, is_lemma)
+            ctx = self.context(code, r)
+            for s, is_lemma, sense in self._cited(r):
+                m = self.match(lid, code, lang, s, is_lemma, sense, ctx)
                 if not m:
                     continue
                 if want and (t := agent_type_cited(code, s)) and (m["level"] == "exact" or any(
@@ -682,8 +1029,10 @@ class SecureChecker:
                 continue
             lang = r.get("lang", "")
             b, code = branch_of(lang), LANG_CODE.get(lang)
-            for s, is_lemma in self._cited(r):
+            ctx = self.context(code, r)
+            for s, is_lemma, sense in self._cited(r):
                 k = key(code, s)
+                whole = self.governing(code, s, is_lemma, sense, context=ctx)
                 for pref, plab in sorted(self._first_prefixes(first, code, lang), key=lambda x: -len(x[0])):
                     if not (k.startswith(pref) and len(k) - len(pref) >= 2):
                         continue
@@ -693,6 +1042,8 @@ class SecureChecker:
                     # the whole word mapped to the second member through its base (εὔιππος → ἵππος)
                     for ids, path, src, derived in self._table_hits(code, s, is_lemma):
                         lvl = self.level_of(second, ids)
+                        if lvl and whole is not None:
+                            lvl = whole.limit(second, lvl)
                         if lvl and (m2 is None or lv[lvl] > lv[m2["level"]]):
                             m2 = {"level": lvl, "cited": s, "via": src, "path": list(path)}
                     if not m2:
@@ -717,8 +1068,17 @@ class SecureChecker:
                 "evidence": {b: ev[b] for b in sorted(ev)},
                 "members": {first: side(per["first"]), second: side(per["second"])}}
 
-    def _match_key(self, lid: str, code: str | None, lang: str, rest: str, cited: str) -> dict | None:
-        """A compound's remainder (already in key space) against the second member."""
+    def _match_key(self, lid: str, code: str | None, lang: str, rest: str, cited: str,
+                   context: set | None = None) -> dict | None:
+        """A compound's remainder (already in key space) against the second member, capped by the
+        decisions that govern the remainder."""
+        gov = self.governing(code, k=rest, context=context)
+
+        def capped(m):
+            if m is None or gov is None:
+                return m
+            lv = gov.limit(lid, m["level"])
+            return None if lv is None else {**m, "level": lv}
         t = self.table(code)
         best = None
         for st in stems(code, rest):
@@ -730,12 +1090,16 @@ class SecureChecker:
                 if lvl and not derived:
                     if best is None or lvl == "exact":
                         best = {"level": lvl, "cited": cited, "via": src, "path": list(path)}
+        best = capped(best)
         if best and best["level"] == "exact":
             return best
         mine = stems(code, rest)
         for rk, lab, rst in self._reflex_keys(lid, code, lang):
             if mine & rst:
-                return {"level": "exact", "cited": cited, "via": "reflex", "path": [lab]}
+                m = capped({"level": "exact", "cited": cited, "via": "reflex", "path": [lab]})
+                if m and (best is None or LEVEL_RANK[m["level"]] > LEVEL_RANK[best["level"]]):
+                    return m
+                break
         return best
 
 

@@ -49,6 +49,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from . import formula_search as fs
+from . import mapping as _mp
 from .formula_search import PieIndex, Token, pie_key
 
 ROOT = fs.ROOT
@@ -558,9 +559,9 @@ def entry_keys(e: Entry, lang: str) -> list[str]:
         return [x for r in roms if r for x in hit_entry_stems(r)]
     if LANGS[lang].script in ("armenian", "cuneiform"):
         return [x for x in {k(e.roman or "")} if x]
-    if LANGS[lang].script == "cyrillic":
-        return [x for x in {k(e.word), k(e.canon or "")} if x]
-    return [x for x in {k(e.word), k(e.canon or "")} if x]
+    # headword key first, then the canonical form's (a list, not a set: callers take the first hit, and set
+    # order changes with the hash seed, so the dictionary tables differed from run to run)
+    return [x for x in dict.fromkeys((k(e.word), k(e.canon or ""))) if x]
 
 
 # ---------------------------------------------------------------- building a language's mapping table
@@ -1501,97 +1502,84 @@ _WORDS = re.compile(r"[^\W\d_]+(?:['’][^\W\d_]+)?", re.U)
 
 # ---------------------------------------------------------------- mapping errata (overrides)
 
+# The resolution itself (override semantics, precedence, the resolved population) is pie/mapping.py; the
+# functions below are its views for the formula-search Mapping, MapRec and lemma → ids tables.
 OVERRIDES = "data/research/formulas/mapping-overrides.json"
-_OVR_CACHE: dict = {}
 
 
 def load_overrides(root: Path = ROOT) -> dict:
     """{"lemma": {corpus: {lemma: (ids frozenset, row)}}, "form": {lang: {form key: lemma}}} from
-    data/research/formulas/mapping-overrides.json (corrections reported in mapping-errata.md)."""
-    p = Path(root) / OVERRIDES
-    if p not in _OVR_CACHE:
-        d = json.loads(p.read_text("utf-8")) if p.exists() else {}
-        # per-language override files (one agent per language edits its own file):
-        # data/research/formulas/mapping-overrides/<name>.json with the same {"lemma": [...], "form": [...]}
-        d = {"lemma": list(d.get("lemma", [])), "form": list(d.get("form", []))}
-        for f in sorted((Path(root) / OVERRIDES.replace(".json", "")).glob("*.json")):
-            x = json.loads(f.read_text("utf-8"))
-            d["lemma"] += x.get("lemma", [])
-            d["form"] += x.get("form", [])
-        lem: dict = collections.defaultdict(dict)
-        for r in d.get("lemma", []):
-            lem[r["corpus"]][r["lemma"]] = (frozenset(r["lex_id"]), r)
-        form: dict = collections.defaultdict(dict)
-        for r in d.get("form", []):
-            form[r["lang"]][KEYS[r["lang"]](r["form"])] = r["lemma"]
-        _OVR_CACHE[p] = {"lemma": dict(lem), "form": dict(form)}
-    return _OVR_CACHE[p]
+    data/research/formulas/mapping-overrides.json and mapping-overrides/*.json (corrections reported in
+    mapping-errata.md and the mapping-precision reports); "decisions" holds the rows per sense
+    (pie.mapping.load_overrides)."""
+    mp = _mp
+    return mp.load_overrides(root)
 
 
 def apply_lemma_overrides(corpus: str, m: "fs.Mapping", gmap: dict | None = None, root: Path = ROOT,
                           overrides: dict | None = None) -> "fs.Mapping":
     """A copy of a lemma → ids Mapping with the corpus's errata applied (ids replaced, or the lemma
-    unmapped when the override lists none). Tier of a corrected lemma: 'erratum'."""
+    unmapped when the override lists none; lemmas only an override maps are added; BLOCKED_IDS dropped
+    from the automatic ids). Tier of a corrected lemma: 'erratum' ('erratum-uncertain' for a row marked
+    uncertain)."""
+    mp = _mp
     gmap = gmap or {}
-    ov = (overrides or load_overrides(root))["lemma"].get(corpus, {})
+    ov = mp.as_overrides(overrides, root)
     out = fs.Mapping(dict(m.lemma_groups), dict(m.lemma_tier), set(m.ambiguous), dict(m.lemma_lex))
-    for lem in [k for k, v in out.lemma_lex.items() if set(v) & BLOCKED_IDS]:
-        keep = frozenset(_strip_blocked(out.lemma_lex[lem]))
-        if keep:
-            out.lemma_lex[lem] = keep
-            out.lemma_groups[lem] = frozenset(gmap.get(x, x) for x in keep)
-        else:
-            for d in (out.lemma_groups, out.lemma_tier, out.lemma_lex):
-                d.pop(lem, None)
-    for lem, (ids, _) in ov.items():
-        out.ambiguous.discard(lem)
+    paths = mp.table_paths(corpus, root)
+    for lem in list(dict.fromkeys([*m.lemma_lex, *ov["decisions"].get(corpus, {})])):
+        lang, path = paths.get(lem, (None, ()))
+        ids, ds = mp.decide_row(corpus, lem, out.lemma_lex.get(lem, ()), path, lang, ov)
+        if ds:
+            out.ambiguous.discard(lem)
+        elif ids == out.lemma_lex.get(lem):
+            continue
         if not ids:
             for d in (out.lemma_groups, out.lemma_tier, out.lemma_lex):
                 d.pop(lem, None)
             continue
         out.lemma_lex[lem] = ids
         out.lemma_groups[lem] = frozenset(gmap.get(x, x) for x in ids)
-        out.lemma_tier[lem] = "erratum"
+        if ds:
+            out.lemma_tier[lem] = "erratum" if any(not d.uncertain for d in ds) else "erratum-uncertain"
     return out
 
 
 def apply_rec_overrides(corpus: str, recs: dict, root: Path = ROOT, overrides: dict | None = None) -> dict:
     """The same for a lemma → MapRec table (what write_mapping_tables writes)."""
-    ov = (overrides or load_overrides(root))["lemma"].get(corpus, {})
-    out = dict(recs)
-    for lem, (ids, row) in ov.items():
-        if not ids:
-            out.pop(lem, None)
-            continue
-        old = out.get(lem)
-        note = row.get("erratum") or row.get("note") or "override"      # per-language rows cite a dictionary in 'note'
-        out[lem] = MapRec(lem, old.word if old else lem, ids, (f"{corpus}:{lem}", "erratum:" + note),
-                          "erratum", "high", ("mapping-overrides",))
+    mp = _mp
+    ov = mp.as_overrides(overrides, root)
+    out = {}
+    lang = mp.corpus_lang(corpus, mp.read_table(corpus, root))
+    for lem, r in recs.items():
+        ids, ds = mp.decide_row(corpus, lem, r.ids, r.path[1:], lang, ov)
+        if ids and not ds:
+            out[lem] = r if ids == r.ids else MapRec(r.key, r.word, ids, r.path, r.how, r.confidence, r.sources,
+                                                     r.gloss)
+    rows = [{"lemma": lem, "word": r.word, "lex_id": sorted(r.ids), "path": list(r.path[1:]), "lang": lang}
+            for lem, r in recs.items()]
+    for lem, x in mp.resolve_rows(corpus, rows, ov, root).items():
+        if x.decisions:
+            out[lem] = MapRec(lem, x.word, x.ids, (f"{corpus}:{lem}", x.path[-1]), "erratum", x.confidence,
+                              ("mapping-overrides",))
     return out
 
 
 # ids that the etymology resolver attaches wrongly by key collision and that no automatic mapping may
-# use (an explicit override row still can): pie-lex-sh1es (a derivative of *seh₁- 'sow, impress')
-# collects 'be' words (OE wesan, sindon; Goth. wisan; Latv. būt) and *h₁sónt- words (Goth. sunja,
-# OE synn): mapping-errata.md, Germanic precision report
-BLOCKED_IDS = {"pie-lex-sh1es"}
-
-
-def _strip_blocked(ids):
-    return tuple(i for i in ids if i not in BLOCKED_IDS)
+# use (an explicit override row still can): pie.mapping.BLOCKED_IDS
+BLOCKED_IDS = _mp.BLOCKED_IDS
+_strip_blocked = _mp.strip_blocked
 
 
 def apply_table_overrides(corpus: str, table: dict, root: Path = ROOT, overrides: dict | None = None) -> dict:
-    """The same for a lemma → ids tuple dict (a mapping table as read by the 8c loaders)."""
-    ov = (overrides or load_overrides(root))["lemma"].get(corpus, {})
-    out = {k: _strip_blocked(v) for k, v in table.items()}
-    out = {k: v for k, v in out.items() if v}
-    for lem, (ids, _) in ov.items():
-        if ids:
-            out[lem] = tuple(sorted(ids))
-        else:
-            out.pop(lem, None)
-    return out
+    """The same for a lemma → ids tuple dict (a mapping table as read by the 8c loaders): the resolved
+    population of pie.mapping.resolve_rows (automatic ids keep their order, decided ones are sorted)."""
+    mp = _mp
+    paths = mp.table_paths(corpus, root)
+    rows = [{"lemma": lem, "lex_id": list(ids), "lang": paths.get(lem, (None,))[0], "path": paths.get(lem, (None, ()))[1]}
+            for lem, ids in table.items()]
+    return {lem: (tuple(sorted(x.ids)) if x.decisions else mp.strip_blocked(table[lem]))
+            for lem, x in mp.resolve_rows(corpus, rows, overrides, root).items()}
 
 
 class FormLemmatizer:
