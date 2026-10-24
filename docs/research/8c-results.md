@@ -45,3 +45,6 @@ Pre-registration: docs/research/8c-preregistration.md (Stage B, reader capacity,
 
 ## Overall (Stage A + B)
 Readers recover the known inherited phraseology reliably and discriminate real from decoy material (Stage B primary criterion met, p = 0.018; Stage A underpowered). Across both stages the candidates beyond the literature we hold are three additions to known formulas, two of them found independently in both stages: 'eat raw flesh' as a free phrase, 'clothe in the immortal' with its Vedic witness, and *ḱlew- + *wékʷos. They are **candidates**: no expert has confirmed them, and the literature we hold is a subset of the field (Durante 1971/1976, the Vedic and Homeric commentaries and much journal literature are not checked). No wholly new formula was found.
+
+## Erratum (2026-10-23)
+Stage A's 'partly known' sweet-mead claim (an Old English witness, *swētne medo*, Finnsburh 39) rests on Ettmüller's emendation: the manuscript reads *hwitne* 'white' (Tier 2 review r3). The claim is therefore **known** (Vedic and Greek, West p. 84, Schmitt §529) with no new witness. Stage A's partly-known count becomes 3; the overall candidate list (three additions to known formulas) is unchanged, since sweet mead was not among them.

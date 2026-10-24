@@ -297,3 +297,6 @@ Below are my preliminary judgements, from the loci and mapping paths only. **K**
 1. Fix the systematic mapping errors at source: the round-2 RV homographs (vṛtrá-, √śr̥, √kṣi), suffix entries in kaikki, and the OIr loose key. Then rerun.
 2. Add a second-witness requirement as a pre-declared variant (p < 0.05 in ≥ 2 witnesses). Report it beside the Fisher ranking on the confirmatory set.
 3. Send the top of each ranking to an independent reviewer, as round 2's review was done. First in line: 'sweet mead' (OE), Hittite 'heaven and earth', and any pair with ≥ 2 significant non-translation witnesses.
+
+## Erratum (2026-10-23)
+The Old English witness for 'sweet mead' reported above (*swētne medo*, Finnsburh 39) is Ettmüller's emendation; the manuscript reads *hwitne* 'white' (Grein's apparatus; Tier 2 review r3, docs/audits/tier2-review-r3.md). 'Sweet mead' therefore has no Germanic witness in our corpora; the count of known formulas gaining a third-branch witness falls from 5 to 4.
