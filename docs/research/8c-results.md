@@ -25,3 +25,16 @@ Caveat on the novelty check: the directory raw/books/text/kroonen-pgmc/ held Rin
 
 ## Decision on Stage B
 The pre-registration gates Stage B on Stage A's primary criterion, or on David's decision if it fails. Asked on 2026-10-23 with the result above, David chose to run Stage B. Stage B is reported with Stage A's failed primary criterion as the headline caveat; its own embedded decoys (20% of bundles) are its primary control.
+
+## Stage B (the full-corpus discovery run), unblinded 2026-10-23
+Pre-registration: docs/research/8c-preregistration.md (Stage B, reader capacity, build parameters and deviations, five disclosed scratch-file exposures, none touching a slab that produced a claim). 50 slabs, 10,236 bundles (8,188 real, 2,048 embedded decoys whose partners were replaced; the pivot stays real), 50 readers, 148 claims, four blind reviewers (37 each; claims stripped of slab, bundle kind, reader, confidence and recalled flag). A claim is credited to the bundles it cites, split equally. One-sided permutation over the 10,236 bundle labels, 10,000 permutations, seed 0 (data/research/8c/stageB/results.json).
+
+| measure | real (per 1,000 bundles) | decoy (per 1,000) | ratio | p |
+|---|---|---|---|---|
+| **accepted claims (primary)** | 3.83 | 1.79 | **2.14** | **0.018** |
+| accepted + weak | 10.19 | 5.16 | 1.97 | 0.0018 |
+| all claims | 16.48 | 6.39 | 2.58 | 0.0001 |
+
+**The primary criterion is met** (ratio ≥ 2, p < 0.05). Of the 148 claims, 35 were accepted, 59 weak, 54 rejected. No claim rests on decoy material alone: the decoy-bundle credit comes entirely from 31 claims (9 accepted) that cite both real and decoy bundles. Because a decoy keeps its real pivot passage, such a claim can legitimately anchor on a decoy bundle's pivot, so the decoy rate likely overstates false discovery (a post-hoc observation, not used to adjust the score). Reader confidence is calibrated: high 23/28 accepted, medium 10/48, low 2/72. Reviewer strictness varied (accepted 7, 4, 14, 10 of 37 per reviewer); claims were assigned at random, so this adds noise, not bias.
+
+Novelty of the accepted claims: pending.

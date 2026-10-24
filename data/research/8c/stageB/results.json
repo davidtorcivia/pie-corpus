@@ -1,0 +1,49 @@
+{
+ "scores": {
+  "accepted": {
+   "real_per_bundle": 0.0038267383162351406,
+   "decoy_per_bundle": 0.0017903645833333333,
+   "ratio": 2.137407292268064,
+   "p": 0.0183981601839816,
+   "unattributed": 0
+  },
+  "accepted+weak": {
+   "real_per_bundle": 0.010189708516528253,
+   "decoy_per_bundle": 0.005159505208333333,
+   "ratio": 1.9749390891340564,
+   "p": 0.0017998200179982,
+   "unattributed": 0
+  },
+  "all claims": {
+   "real_per_bundle": 0.016476856375183195,
+   "decoy_per_bundle": 0.006390380859375,
+   "ratio": 2.578384095998104,
+   "p": 9.999000099990002e-05,
+   "unattributed": 0
+  }
+ },
+ "claim_level": {
+  "mixed|accepted": 9,
+  "real-only|reject": 48,
+  "real-only|accepted": 26,
+  "real-only|weak": 43,
+  "mixed|reject": 6,
+  "mixed|weak": 16
+ },
+ "calibration": {
+  "medium": {
+   "accepted": 10,
+   "reject": 9,
+   "weak": 29
+  },
+  "low": {
+   "reject": 45,
+   "weak": 25,
+   "accepted": 2
+  },
+  "high": {
+   "accepted": 23,
+   "weak": 5
+  }
+ }
+}
