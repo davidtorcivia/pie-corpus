@@ -1,0 +1,182 @@
+{
+ "menota": {
+  "tokens": 1651610,
+  "content_tokens": 965752,
+  "content_tokens_mapped": 495743,
+  "content_token_share": 0.5133,
+  "content_types": 64464,
+  "content_types_mapped": 4306,
+  "type_share": 0.0668,
+  "mapped_tokens_by_confidence": {
+   "high": 402173,
+   "medium": 75808,
+   "low": 17762
+  },
+  "mapped_tokens_lexeme_level_share": 0.9028,
+  "by_lemma_source": {
+   "corpus": {
+    "tokens": 1015479,
+    "content_tokens": 500086,
+    "content_tokens_mapped": 339327,
+    "content_token_share": 0.6785,
+    "content_types": 22547,
+    "content_types_mapped": 4306,
+    "type_share": 0.191,
+    "mapped_tokens_by_confidence": {
+     "high": 270810,
+     "medium": 56028,
+     "low": 12489
+    },
+    "mapped_tokens_lexeme_level_share": 0.8925
+   },
+   "form-table": {
+    "tokens": 636131,
+    "content_tokens": 465666,
+    "content_tokens_mapped": 156416,
+    "content_token_share": 0.3359,
+    "content_types": 44830,
+    "content_types_mapped": 1298,
+    "type_share": 0.029,
+    "mapped_tokens_by_confidence": {
+     "medium": 19780,
+     "high": 131363,
+     "low": 5273
+    },
+    "mapped_tokens_lexeme_level_share": 0.9251
+   }
+  },
+  "steps_by_mapped_tokens": {
+   "exact": 397782,
+   "erratum": 58868,
+   "loose": 27173,
+   "accent": 4082,
+   "name": 3493,
+   "prefix:ú-": 751,
+   "prefix:ó-": 523,
+   "prefix:for-": 397,
+   "prefix:út-": 251,
+   "prefix:upp-": 238,
+   "kroonen": 231,
+   "prefix:fyrir-": 210,
+   "prefix:mis-": 169,
+   "prefix:sam-": 168,
+   "hyphen:maðr": 123
+  },
+  "licence": "CC BY-SA 4.0 (Menota); mapping sources kaikki/Wiktionary CC BY-SA 4.0"
+ },
+ "icepahc": {
+  "tokens": 255971,
+  "content_tokens": 119313,
+  "content_tokens_mapped": 77378,
+  "content_token_share": 0.6485,
+  "content_types": 10056,
+  "content_types_mapped": 2170,
+  "type_share": 0.2158,
+  "mapped_tokens_by_confidence": {
+   "high": 65637,
+   "medium": 9009,
+   "low": 2732
+  },
+  "mapped_tokens_lexeme_level_share": 0.8822,
+  "note": "files dated <= 1400 (the Old Icelandic part); 'all_years' covers 1150-2008",
+  "all_years": {
+   "tokens": 900941,
+   "content_tokens": 403809,
+   "content_tokens_mapped": 250474,
+   "content_token_share": 0.6203,
+   "content_types": 31379,
+   "content_types_mapped": 3608,
+   "type_share": 0.115,
+   "mapped_tokens_by_confidence": {
+    "high": 210172,
+    "medium": 31126,
+    "low": 9176
+   },
+   "mapped_tokens_lexeme_level_share": 0.8856
+  },
+  "steps_by_mapped_tokens": {
+   "is-bridge": 61575,
+   "erratum": 11056,
+   "same-exact": 2052,
+   "name": 1153,
+   "variant": 666,
+   "prefix:ó-": 246,
+   "is-own": 201,
+   "same-accent": 115,
+   "prefix:upp-": 86,
+   "prefix:for-": 44,
+   "prefix:sam-": 33,
+   "prefix:van-": 29,
+   "prefix:út-": 27,
+   "prefix:yfir-": 21,
+   "prefix:mis-": 20
+  },
+  "licence": "CC BY 4.0 (IcePaHC); mapping sources kaikki/Wiktionary CC BY-SA 4.0"
+ },
+ "rea-goh": {
+  "tokens": 344503,
+  "content_tokens": 147812,
+  "content_tokens_mapped": 108666,
+  "content_token_share": 0.7352,
+  "content_types": 10966,
+  "content_types_mapped": 3785,
+  "type_share": 0.3452,
+  "mapped_tokens_by_confidence": {
+   "medium": 28270,
+   "high": 64576,
+   "low": 15820
+  },
+  "mapped_tokens_lexeme_level_share": 0.9023,
+  "steps_by_mapped_tokens": {
+   "exact": 74470,
+   "erratum": 13208,
+   "accent": 6104,
+   "prefix:gi-": 4457,
+   "prefix:ir-": 1742,
+   "loose": 1555,
+   "prefix:fir-": 1194,
+   "prefix:bi-": 1158,
+   "prefix:aba-": 949,
+   "prefix:int-": 552,
+   "kroonen": 516,
+   "prefix:ana-": 402,
+   "prefix:un-": 362,
+   "prefix:fora-": 246,
+   "prefix:zi-": 228
+  },
+  "licence": "CC BY-NC-SA 3.0 (ReA): NC, research only; mapping sources kaikki/Wiktionary CC BY-SA 4.0"
+ },
+ "rea-osx": {
+  "tokens": 59706,
+  "content_tokens": 30445,
+  "content_tokens_mapped": 21362,
+  "content_token_share": 0.7017,
+  "content_types": 3636,
+  "content_types_mapped": 1495,
+  "type_share": 0.4112,
+  "mapped_tokens_by_confidence": {
+   "high": 14302,
+   "medium": 4628,
+   "low": 2432
+  },
+  "mapped_tokens_lexeme_level_share": 0.9067,
+  "steps_by_mapped_tokens": {
+   "exact": 17709,
+   "erratum": 1264,
+   "accent": 1175,
+   "loose": 403,
+   "prefix:gi-": 317,
+   "kroonen": 124,
+   "prefix:far-": 83,
+   "prefix:a-": 61,
+   "prefix:bi-": 59,
+   "prefix:an-": 50,
+   "prefix:ant-": 45,
+   "prefix:un-": 17,
+   "prefix:obar-": 10,
+   "prefix:af-": 9,
+   "prefix:be-": 7
+  },
+  "licence": "CC BY-NC-SA 3.0 (ReA): NC, research only; mapping sources kaikki/Wiktionary CC BY-SA 4.0"
+ }
+}
