@@ -31,6 +31,13 @@ Plan (one sentence):
 
 `check_plan` lists every problem; `realize` assumes a checked plan. `plan_warnings` lists likely problems that
 do not block realization (a 3rd-person pronoun with no referent of its gender and number nearby).
+All three compute each grammatical fact once (David's review: they used to disagree): agreement through
+`clause_controller` / `group_agreement` (subjects, vocative addressees, predicate adjectives, pro-drop,
+numerals, coordination), cells through `Lexicon.admissible_cells` (also used by pie.export). Coordinated
+singulars: two take the dual, more the plural; a dual controller takes a plural verb only where the dual
+cell does not exist. Several same-role slots without "and" are one referent named twice (dyḗws ph₂tḗr) unless
+the verb's explicit number reads them as several ('Father, Mother, give!' 2DU); APPOS says it unambiguously.
+Tests run plans through tests/helpers.produce (check_plan, then realize).
 
 Clause types. A clause has "type": "verbal" (the default, above: exactly one V slot), "nominal" or "np".
 The realizer never inserts a copula: a clause without a V slot is realized without one.
@@ -140,6 +147,8 @@ class Word:
     features: str
     slot: int | None = None
     clitic: bool = False
+    gender: str | None = None       # the resolved gender of a nominal (an adjective's is its head's)
+    voice: str | None = None        # ACT | MID for verbs and participles
 
 
 @dataclass
@@ -252,6 +261,73 @@ class Lexicon:
             self._cache[k] = c
         return self._cache[k]
 
+    # --- admissible cells: the one place that says which cells of a lexeme a text may use ------------------
+    # check_plan (through realize_clause), pie.export.inflection_tasks and pie.export.token_variants all read
+    # these, so a cell the planner may not ask for is never offered as an exercise or an alternative.
+    # Restrictions in the data today: blocked lexemes (data/generation/blocklist.jsonl) and unusable specs
+    # have no cells; middle-only (deponent) verbs, lemma in -tor/-toy (Fortson §5.6, L&Y §4.3.1), have only
+    # middle cells; an adjective's cells are those of one gender; a noun has its own gender only; a cell the
+    # engine does not build (the 2du/3du middle and perfect, dual obliques) is absent. The lexicon has no
+    # active-only, singulare/plurale tantum or per-cell defectivity markers yet; such a marker belongs here.
+
+    def inadmissible(self, lex_id: str) -> str | None:
+        """Why no cell of the lexeme may be used (blocked, unknown, unusable), or None."""
+        if lex_id in self.blocked:
+            return f"{lex_id} is blocked from generation: {self.blocked[lex_id]}"
+        r = self.specs.get(lex_id)
+        if r is None:
+            return f"unknown or non-inflectable lex_id {lex_id!r}"
+        if not r.get("usable"):
+            return f"{lex_id} has no usable spec (rule {r['rule']})"
+        return None
+
+    def middle_only(self, lex_id: str) -> bool:
+        """A deponent (media tantum): the lemma is a middle form (mn̥yétor, ḱéytor; engine sweep defect 10)."""
+        return (self.specs.get(lex_id) or {}).get("family") == "verb" and \
+            self.entries.get(lex_id, {}).get("form", "").endswith(("tor", "toy"))
+
+    def voices(self, lex_id: str) -> tuple[str, ...]:
+        """The voices a verb may take: ('MID',) for a deponent; otherwise those the engine builds cells for."""
+        if self.inadmissible(lex_id) or self.specs[lex_id]["family"] != "verb":
+            return ()
+        if self.middle_only(lex_id):
+            return ("MID",)
+        c = self.cells(lex_id)
+        return tuple(v for v in ("ACT", "MID") if any(cell_voice(k) == v for k in c))
+
+    def admissible_cells(self, lex_id: str, gender: str | None = None) -> dict:
+        """feature → forms for the cells a plan may use. An adjective needs its gender (masculine was a silent
+        default: neuter sweh₂dú got masculine sweh₂dús as an 'acceptable' alternative); a noun asked for a
+        gender other than its own has none."""
+        k = ("ADM", lex_id, gender)
+        if k in self._cache:
+            return self._cache[k]
+        out: dict = {}
+        if not self.inadmissible(lex_id):
+            fam = self.specs[lex_id]["family"]
+            if fam == "adj":
+                if gender not in ("m", "f", "n"):
+                    raise ValueError(f"{lex_id}: an adjective's cells need a gender (m, f or n)")
+                out = self.cells(lex_id, gender)
+            elif fam == "noun":
+                out = self.cells(lex_id) if gender in (None, self.gender(lex_id)) else {}
+            else:
+                voices = self.voices(lex_id)
+                out = {f: v for f, v in self.cells(lex_id).items() if cell_voice(f) in voices}
+        self._cache[k] = out
+        return out
+
+    def admissible_participle_cells(self, lex_id: str, voice: str, gender: str) -> dict:
+        """A participle's case forms, or {} for a voice the verb may not take (a deponent's is middle)."""
+        if voice not in self.voices(lex_id):
+            return {}
+        return self.participle_cells(lex_id, voice, gender)
+
+
+def cell_voice(feat: str) -> str:
+    """ACT or MID: the voice of a verb cell ('MID.PRS.3SG', 'PTCP.MID'; anything else is active)."""
+    return "MID" if feat.startswith(("MID.", "PTCP.MID")) else "ACT"
+
 
 def _unaccent(form: str) -> str:
     import unicodedata
@@ -298,21 +374,205 @@ def _closed_feat(lx: Lexicon, lex_id: str, feat: str) -> str:
     return feat
 
 
-def _person_number(slot: dict, lx: Lexicon) -> tuple[int, str]:
-    lid = slot["lex_id"]
-    if lid.startswith("closed:personal/") and lid.split("/")[1] in ("1", "2"):
-        return int(lid.split("/")[1]), slot.get("num", "SG")
+# --- agreement: computed once, used by check_plan, realize_clause and plan_warnings --------------------------
+# (David's review: the checker, the realizer and the warnings each had their own rules, so they disagreed:
+# check_plan dropped the vocative conjunct marked "and" and knew only the numerals 2-4.)
+
+@dataclass(frozen=True)
+class Agreement:
+    """What a verb, a predicate adjective or an anaphor agrees with: a noun phrase or a group of them."""
+    person: int
+    num: str            # the phrase's number (a predicate adjective takes it)
+    gender: str | None  # None for a pro-drop subject (the verb names no gender)
+    verb_num: str       # what a finite verb takes: neuter plurals are collectives and take SG
+    alt: tuple = ()     # other numbers the slots allow when their referents cannot be counted from the plan
+    alt_gender: str | None = None   # the group's gender under an alternative reading
+
+    def verb_nums(self) -> set[str]:
+        return {self.verb_num, *self.alt}
+
+    def resolve(self, num: str | None) -> "Agreement":
+        """The reading an explicit verb number picks (one of alt); otherwise the default reading."""
+        if num and num in self.alt and num != self.verb_num:
+            return Agreement(self.person, num, self.alt_gender or self.gender, num)
+        return self
+
+
+def numeral_number(lex_id: str) -> str | None:
+    """The number a numeral gives the noun it counts: 1 SG, 2 DU, 3 and up PL (closed:numerals/2,
+    closed:numerals/indeclinable/7); None for anything else."""
+    if not lex_id.startswith("closed:numerals/"):
+        return None
+    try:
+        n = int(lex_id.rsplit("/", 1)[1])
+    except ValueError:
+        return None
+    return "SG" if n == 1 else "DU" if n == 2 else "PL"
+
+
+def slot_number(slots: list, i: int) -> str:
+    """A nominal slot's number: a numeral MOD on it decides (t016 review: 'two dogs' with num unset came out
+    singular), else its num, else SG."""
+    for m in slots:
+        if m.get("role") == "MOD" and m.get("head") == i:
+            n = numeral_number(m.get("lex_id", ""))
+            if n:
+                return n
+    return slots[i].get("num") or "SG"
+
+
+def coordination_groups(slots: list) -> dict:
+    """(role, head) → slot indices; a group with more than one member and an "and" on any of them is a
+    coordination (X Y-kʷe). realize_clause moves the -kʷe to the last member; the group is the same."""
+    groups: dict = {}
+    for i, s in enumerate(slots):
+        if s.get("role") not in ("V", "MOD", "ADV"):
+            groups.setdefault((s.get("role"), s.get("head")), []).append(i)
+    return groups
+
+
+def role_group(slots: list, role: str) -> tuple[list[int], bool]:
+    """The clause-level slots of a role (head None) and whether they are coordinated (more than one, with an
+    "and" on any member)."""
+    ix = coordination_groups(slots).get((role, None), [])
+    return ix, len(ix) > 1 and any(slots[i].get("and") for i in ix)
+
+
+def phrase_agreement(slots: list, i: int, lx: Lexicon) -> Agreement:
+    s = slots[i]
+    lid = s.get("lex_id", "")
+    num = slot_number(slots, i)
+    person = int(lid.split("/")[1]) if lid.startswith("closed:personal/") and lid.split("/")[1] in ("1", "2") else 3
+    g = _slot_gender(s, lx)
     # a neuter plural subject takes a singular verb (Gk τὰ ζῷα τρέχει, Av., Hitt.): the old collective
-    if slot.get("num") == "PL" and _slot_gender(slot, lx) == "n":
-        return 3, "SG"
-    return 3, slot.get("num", "SG")
+    return Agreement(person, num, g, "SG" if person == 3 and num == "PL" and g == "n" else num)
 
 
-def _verb_feature(v: dict, person: int, num: str) -> str:
+def group_agreement(slots: list, idxs: list[int], lx: Lexicon, coordinated: bool = True) -> Agreement:
+    """A noun phrase (one index) or a group of same-role slots.
+
+    Coordinated (X Y-kʷe; Fortson §8.16): two singulars dual, else plural; 1st person over 2nd over 3rd;
+    masculine if any member is or the genders differ; neuter plurals together stay collective (Il. 2.468
+    phúlla kaì ánthea gígnetai). Each slot counts as a referent; with three or more singular slots two of
+    them may be one referent named twice (dyḗws ph₂tḗr dʰéǵʰōm méh₂tēr-kʷe: two addressees), so the dual is
+    an alternative reading an explicit verb number may pick.
+    Not coordinated (several slots, no "and"): one referent named twice by default (dyḗws ph₂tḗr 'Father
+    Sky'); an asyndetic pair or list (ph₂ter, méh₂ter 'Father, Mother') is the alternative reading."""
+    parts = [phrase_agreement(slots, i, lx) for i in idxs]
+    if len(parts) == 1:
+        return parts[0]
+    gs = {p.gender for p in parts}
+    g = gs.pop() if len(gs) == 1 else "m"
+    person = min(p.person for p in parts)
+    all_sg = all(p.num == "SG" for p in parts)
+    if not coordinated:
+        alt = (("DU",) + (("PL",) if len(parts) > 2 else ())) if all_sg else ("PL",)
+        first = parts[0]
+        return Agreement(first.person, first.num, first.gender, first.verb_num,
+                         tuple(n for n in alt if n != first.verb_num), g)
+    if all(p.person == 3 and p.num == "PL" and p.gender == "n" for p in parts):
+        return Agreement(3, "PL", "n", "SG")
+    num = "DU" if len(parts) == 2 and all_sg else "PL"
+    return Agreement(person, num, g, num, ("DU",) if len(parts) > 2 and all_sg else (), g)
+
+
+EXEMPT_SUBJECTS = ("closed:relative_yo", "closed:interrogative_")
+
+
+def clause_controller(cl: dict, lx: Lexicon) -> tuple[Agreement, str]:
+    """What the clause's finite verb and predicate adjective agree with, and its source:
+      'SUBJ'  the subject, or the subjects as a group (group_agreement);
+      'VOC'   no subject and a 2nd-person verb: the addressee(s) ("waters, flow!" 2PL; "Sky and Earth, hear!" 2DU);
+      'verb'  pro-drop: the verb's own person and number (3SG by default; "let us go": 1PL).
+    An explicit verb number picks one of the group's alternative readings (Agreement.resolve). A relative or
+    interrogative subject takes its person from the antecedent or addressee ("you who split the vault":
+    h₁yós … 2SG): see EXEMPT_SUBJECTS."""
+    slots = cl.get("slots", [])
+    v = next((s.get("verb") or {} for s in slots if s.get("role") == "V"), {})
+    subj, co = role_group(slots, "SUBJ")
+    if subj:
+        return group_agreement(slots, subj, lx, co).resolve(v.get("num")), "SUBJ"
+    voc, co = role_group(slots, "VOC")
+    if voc and str(v.get("person")) == "2":
+        a = group_agreement(slots, voc, lx, co)
+        # an addressed neuter plural is not a collective: "waters, flow!" is 2PL
+        return Agreement(2, a.num, a.gender, a.num, tuple(n for n in a.alt if n != a.num), a.alt_gender
+                         ).resolve(v.get("num")), "VOC"
+    num = v.get("num") or "SG"
+    return Agreement(int(v.get("person") or 3), num, None, num), "verb"
+
+
+def _exempt(cl: dict, kind: str) -> bool:
+    """A relative or interrogative subject: the verb's own person and number stand."""
+    return kind == "SUBJ" and any(cl["slots"][i].get("lex_id", "").startswith(EXEMPT_SUBJECTS)
+                                  for i in role_group(cl["slots"], "SUBJ")[0])
+
+
+def verb_person_number(cl: dict, v: dict, lx: Lexicon) -> tuple[int, str]:
+    """The finite verb's person and number (before the dual-to-plural fallback of finite_cell). An overt
+    controller decides (check_plan rejects a verb person/num that contradicts it); with pro-drop or an exempt
+    subject the verb's own person and num stand."""
+    a, kind = clause_controller(cl, lx)
+    if kind == "verb" or _exempt(cl, kind):
+        return int(v.get("person") or a.person), v.get("num") or a.verb_num
+    return int(v.get("person") or a.person), a.verb_num
+
+
+def finite_cell(lx: Lexicon, lid: str, v: dict, person: int, num: str, prohibitive: bool) -> str:
+    """The verb cell realized for person and number: mē + injunctive (augmentless secondary form) for a
+    prohibitive; where no dual cell exists (the 2du/3du middle and perfect, Ringe 2006 pp. 31-32) the plural
+    stands in. Raises KeyError if the cell is not admissible."""
     mood, tense, voice = v.get("mood", "IND"), v.get("tense", "PRS"), v.get("voice", "ACT")
-    pn = f"{v.get('person') or person}{v.get('num') or num}"   # pro-drop: the verb may carry person and number
     base = {"IND": tense, "IMP": "IMP", "SBJV": "SBJV", "OPT": "OPT"}[mood]
-    return ("MID." if voice == "MID" else "") + f"{base}.{pn}"
+    mid = "MID." if voice == "MID" else ""
+    feat = f"{mid}{base}.{person}{num}"
+    cells = lx.admissible_cells(lid)
+    if prohibitive:
+        feat = next((f"{mid}{t}.{person}{num}" for t in ("PST", "AOR") if f"{mid}{t}.{person}{num}" in cells), feat)
+    if feat not in cells and feat.endswith("DU") and feat[:-2] + "PL" in cells:
+        feat = feat[:-2] + "PL"
+    if feat not in cells:
+        raise KeyError(f"{lid} {feat}")
+    return feat
+
+
+def _check_agreement(ci: int, cl: dict, slots: list, verbs: list, lx: Lexicon) -> list[str]:
+    """An explicit person/number on the verb is for pro-drop; with an overt subject or addressee it must
+    agree with it (David's review: SUBJ gʷówes PL + verb num SG gave 'gʷówes trémt'; 'waters, flow!' is PL;
+    'Sky and Earth, hear!' is DU). A dual controller may take a plural verb only where the dual cell does not
+    exist."""
+    if len(verbs) != 1:
+        return []
+    v = verbs[0].get("verb") or {}
+    try:
+        a, kind = clause_controller(cl, lx)
+    except Exception:
+        return []
+    if kind == "verb" or _exempt(cl, kind):
+        return []
+    errs = []
+    if kind == "SUBJ" and v.get("person") and int(v["person"]) != a.person:
+        errs.append(f"clause {ci}: the verb's person {v['person']} contradicts its subject (person {a.person}); "
+                    f"drop the verb's person or the subject")
+    if v.get("num") and v["num"] not in a.verb_nums():
+        ok = False
+        if "DU" in a.verb_nums() and v["num"] == "PL":
+            try:
+                prohibitive = bool(cl.get("neg")) and v.get("mood") == "IMP"
+                ok = finite_cell(lx, verbs[0]["lex_id"], v, int(v.get("person") or a.person), "DU",
+                                 prohibitive).endswith("PL")
+            except Exception:
+                ok = True       # no such verb cell at all: reported by the realization check
+        if not ok and kind == "SUBJ":
+            collective = a.verb_num == "SG" and a.num == "PL"
+            errs.append(f"clause {ci}: the verb's number {v['num']} contradicts its subject ({a.verb_num}"
+                        f"{', a neuter plural takes a singular verb' if collective else ''}"
+                        f"{', and the dual cell exists' if a.verb_num == 'DU' and v['num'] == 'PL' else ''}); "
+                        f"drop the verb's num, or fix the subject's num")
+        elif not ok:
+            errs.append(f"clause {ci}: the 2nd-person verb's number {v['num']} contradicts the addressee "
+                        f"(VOC {a.num}{', two addressees take the dual' if a.num == 'DU' else ''})")
+    return errs
 
 
 _VALENCY: dict | None = None
@@ -350,41 +610,7 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                 s.get("role") == "SUBJ" and not s.get("lex_id", "").startswith("closed:") for s in slots):
             errs.append(f"clause {ci}: a 2nd-person verb takes no noun subject: address the god or person "
                         f"with a VOC slot (h₂éwsos 'Dawn!', not SUBJ h₂éwsōs)")
-        # an explicit person/number on the verb is for pro-drop; with an explicit subject it must
-        # agree with it (David's review: SUBJ gʷówes PL + verb num SG gave 'gʷówes trémt')
-        subjs = [s for s in slots if s.get("role") == "SUBJ"]
-        # a relative or interrogative subject takes its person from the antecedent or addressee
-        # ("you who split the vault": h₁yós … 2SG), so only other subjects are checked
-        if len(verbs) == 1 and len(subjs) == 1 and not subjs[0].get("lex_id", "").startswith(
-                ("closed:relative_yo", "closed:interrogative_")):
-            v = verbs[0].get("verb") or {}
-            sj = dict(subjs[0])
-            sj_i = slots.index(subjs[0])
-            for m in slots:
-                if m.get("role") == "MOD" and m.get("head") == sj_i and m.get("lex_id", "").startswith("closed:numerals/"):
-                    n = m["lex_id"].split("/")[1]
-                    sj["num"] = {"2": "DU", "3": "PL", "4": "PL"}.get(n, sj.get("num"))
-            try:
-                ep, en = _person_number(sj, lx)
-            except Exception:
-                ep, en = None, None
-            if ep is not None:
-                if v.get("person") and int(v["person"]) != ep:
-                    errs.append(f"clause {ci}: the verb's person {v['person']} contradicts its subject (person {ep}); "
-                                f"drop the verb's person or the subject")
-                # a dual subject may take a plural verb where the dual cell is not reconstructible
-                # (middle and perfect duals: the plural stands in, as for dual obliques)
-                if v.get("num") and v["num"] != en and not (en == "DU" and v["num"] == "PL"):
-                    errs.append(f"clause {ci}: the verb's number {v['num']} contradicts its subject ({en}"
-                                f"{', a neuter plural takes a singular verb' if en == 'SG' and sj.get('num') == 'PL' else ''}); "
-                                f"drop the verb's num, or fix the subject's num")
-        # a 2nd-person verb addressed to a vocative agrees with it in number ("waters, flow!" is PL)
-        vocs = [s for s in slots if s.get("role") == "VOC" and not s.get("and")]
-        if len(verbs) == 1 and len(vocs) == 1 and not subjs:
-            v = verbs[0].get("verb") or {}
-            if str(v.get("person")) == "2" and v.get("num") and vocs[0].get("num", "SG") != v["num"]:
-                errs.append(f"clause {ci}: the 2nd-person verb's number {v['num']} contradicts the addressee "
-                            f"(VOC {vocs[0].get('num', 'SG')})")
+        errs += _check_agreement(ci, cl, slots, verbs, lx)
         for si, s in enumerate(slots):
             where = f"clause {ci} slot {si}"
             lid, role = s.get("lex_id", ""), s.get("role")
@@ -405,35 +631,30 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                 if lx.entries.get(lid, {}).get("pos") not in ("adv", "particle", "conj", "prep", "postp"):
                     errs.append(f"{where}: ADV needs an indeclinable (adv/particle) lexeme, {lid} is not one")
                 continue
-            if lid not in lx.specs:
-                errs.append(f"{where}: unknown or non-inflectable lex_id {lid!r}")
+            bad = lx.inadmissible(lid)
+            if bad:
+                errs.append(f"{where}: {bad}")
                 continue
-            r = lx.specs[lid]
-            if lid in lx.blocked:
-                errs.append(f"{where}: {lid} is blocked from generation: {lx.blocked[lid]}")
-                continue
-            if not r.get("usable"):
-                errs.append(f"{where}: {lid} has no usable spec (rule {r['rule']})")
-                continue
-            fam = r["family"]
+            fam = lx.specs[lid]["family"]
             ptcp = s.get("participle")
             if ptcp is not None:
                 if role != "MOD" or fam != "verb":
                     errs.append(f"{where}: a participle is a MOD slot holding a verb")
                 elif ptcp.get("voice", "ACT") not in ("ACT", "MID"):
                     errs.append(f"{where}: participle voice must be ACT or MID")
-                elif lx.entries[lid]["form"].endswith(("tor", "toy")) and ptcp.get("voice", "ACT") != "MID":
+                elif ptcp.get("voice", "ACT") not in lx.voices(lid):
                     # engine sweep, thematic-verbs.md defect 10
-                    errs.append(f"{where}: {lid} is middle-only (deponent): its participle is middle (voice MID)")
+                    errs.append(f"{where}: {lid} is middle-only (deponent): its participle is middle (voice MID)"
+                                if lx.middle_only(lid) else f"{where}: {lid} has no {ptcp.get('voice', 'ACT')} participle")
             if s.get("dep") is not None:
                 d = s["dep"]
                 if not (isinstance(d, int) and 0 <= d < len(slots) and slots[d].get("participle")):
                     errs.append(f"{where}: dep must point at a participle slot")
             if role == "V" and fam != "verb":
                 errs.append(f"{where}: V slot needs a verb, {lid} is a {fam}")
-            if role == "V" and fam == "verb" and lx.entries[lid]["form"].endswith(("tor", "toy")) \
-                    and s.get("verb", {}).get("voice") != "MID":
-                errs.append(f"{where}: {lid} is middle-only (deponent): voice must be MID")
+            if role == "V" and fam == "verb" and (s.get("verb") or {}).get("voice", "ACT") not in lx.voices(lid):
+                errs.append(f"{where}: {lid} is middle-only (deponent): voice must be MID" if lx.middle_only(lid)
+                            else f"{where}: {lid} has no {(s.get('verb') or {}).get('voice', 'ACT')} cells")
             if role == "V" and fam == "verb" and cl.get("neg") and s.get("verb", {}).get("mood") == "IMP" \
                     and not any(k.startswith(("PST.", "AOR.")) for k in lx.cells(lid)):
                 errs.append(f"{where}: a prohibitive (neg + IMP) needs a present or aorist stem for the "
@@ -487,16 +708,15 @@ def _doubled_enclitics(ci: int, words: list[Word]) -> list[str]:
 ANAPHORS = ("closed:demonstrative_so", "closed:anaphoric_i", "closed:deictic_ki", "closed:deictic_eno")
 # pronouns that introduce a referent an anaphor can take up ('whoever …, to him'; 'who …? he …')
 REFERENT_PRONOUNS = ("closed:relative_yo", "closed:indefinite_kwi", "closed:interrogative_kwi", "closed:interrogative_kwo")
-_NUMERAL_NUM = {"2": "DU", "3": "PL", "4": "PL", "indeclinable": "PL"}
 
 
 def _referents(cl: dict, lx: Lexicon, anaphors: bool = True) -> set[tuple[str, str]]:
     """(gender, number) of every referent a clause names: a noun, an adjective or bahuvrihi used as a noun with
     a gender, a relative, indefinite or interrogative pronoun ('whoever gives …, his name'), an anaphor on
-    its own (it carries its referent on to the next clauses: 'he … he'; not counted with anaphors=False), and a group of conjoined nouns (two singulars dual, else
-    plural; masculine if any member is). A numeral MOD fixes its head's number, as in realize_clause."""
+    its own (it carries its referent on to the next clauses: 'he … he'; not counted with anaphors=False), and a
+    group of conjoined nouns (group_agreement, as for a verb). A numeral MOD fixes its head's number (slot_number)."""
     slots = cl.get("slots", [])
-    out, group = set(), {}
+    out, members = set(), set()
     for i, s in enumerate(slots):
         lid, role = s.get("lex_id", ""), s.get("role")
         if role in ("V", "ADV", "MOD") or s.get("participle") is not None:
@@ -513,18 +733,14 @@ def _referents(cl: dict, lx: Lexicon, anaphors: bool = True) -> set[tuple[str, s
             if fam == "verb" or (fam == "adj" and not s.get("gender")):
                 continue
             g = _slot_gender(s, lx)
-        num = s.get("num", "SG")
-        for m in slots:
-            if m.get("role") == "MOD" and m.get("head") == i and m.get("lex_id", "").startswith("closed:numerals/"):
-                num = _NUMERAL_NUM.get(m["lex_id"].split("/")[1], num)
-        out.add((g, num))
+        out.add((g, slot_number(slots, i)))
         if role != "APPOS":
-            group.setdefault((role, s.get("head")), []).append((g, num, bool(s.get("and"))))
-    for ms in group.values():
-        if len(ms) > 1 and any(a for _, _, a in ms):
-            gs = {g for g, _, _ in ms}
-            g = "m" if "m" in gs else gs.pop() if len(gs) == 1 else "m"
-            out.add((g, "DU" if len(ms) == 2 and all(n == "SG" for _, n, _ in ms) else "PL"))
+            members.add(i)
+    for ix in coordination_groups(slots).values():
+        ix = [i for i in ix if i in members]
+        if len(ix) > 1 and any(slots[i].get("and") for i in ix):
+            a = group_agreement(slots, ix, lx)
+            out.add((a.gender, a.num))
     return out
 
 
@@ -671,15 +887,14 @@ def _slot_gender(s: dict, lx: Lexicon) -> str:
 
 def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     slots = cl["slots"]
-    # a noun counted by 2 is dual, by 3 or 4 plural (the numeral MOD fixes its head's number; t016 review:
-    # "two dogs" came out singular when the plan left num unset)
-    for sl in slots:
-        if sl["role"] == "MOD" and sl["lex_id"].startswith("closed:numerals/") and sl.get("head") is not None:
-            n = sl["lex_id"].split("/")[1]
-            want = {"2": "DU", "3": "PL", "4": "PL", "indeclinable": "PL"}.get(n)   # 5-1000 too (closed-class R7)
-            if want and slots[sl["head"]].get("num") != want:
-                slots = [dict(x) for x in slots] if slots is cl["slots"] else slots
-                slots[sl["head"]]["num"] = want
+    # a counted noun takes the numeral's number (slot_number: 1 SG, 2 DU, 3 and up PL; t016 review: "two dogs"
+    # came out singular when the plan left num unset; closed-class R7: 5-1000 too)
+    for i in range(len(slots)):
+        want = slot_number(slots, i)
+        if want != (slots[i].get("num") or "SG") and any(
+                m.get("role") == "MOD" and m.get("head") == i and numeral_number(m.get("lex_id", "")) for m in slots):
+            slots = [dict(x) for x in slots] if slots is cl["slots"] else slots
+            slots[i]["num"] = want
     # an apposition takes its head's number; an adjective (or pronoun) in apposition also its gender
     if any(sl["role"] == "APPOS" for sl in slots):
         slots = [dict(x) for x in slots] if slots is cl["slots"] else slots
@@ -702,33 +917,17 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     ctype = cl.get("type", "verbal")
     # -kʷe goes on the last conjunct (X Y-kʷe, Lat. senatus populusque): a mark only on an earlier
     # member of a coordinated group (same role and head) moves to the last one (t014 review)
-    groups: dict = {}
-    for i, sl in enumerate(slots):
-        if sl["role"] not in ("V", "MOD", "ADV"):
-            groups.setdefault((sl["role"], sl.get("head")), []).append(i)
+    groups = coordination_groups(slots)
     for ix in groups.values():
         if len(ix) > 1 and any(slots[i].get("and") for i in ix) and not slots[ix[-1]].get("and"):
             slots = [dict(x) for x in slots] if slots is cl["slots"] else slots
             for i in ix[:-1]:
                 slots[i]["and"] = False
             slots[ix[-1]]["and"] = True
-    coord = {i for ix in groups.values() if len(ix) > 1 and any(slots[i].get("and") for i in ix) for i in ix}
     pairs = {i for ix in groups.values() if len(ix) == 2 and slots[ix[-1]].get("and") for i in ix}
-    subj_i = next((i for i, s in enumerate(slots) if s["role"] == "SUBJ"), None)
-    subj = slots[subj_i] if subj_i is not None else None
-    person, num = _person_number(subj, lx) if subj else (3, "SG")
-    neuter_pl = subj is not None and person == 3 and subj.get("num") == "PL" and _slot_gender(subj, lx) == "n"
-    subjs = sorted(i for i in coord if slots[i]["role"] == "SUBJ" and slots[i].get("head") is None)
-    if len(subjs) > 1:
-        # conjoined subjects (X Y-kʷe) agree as a group (Fortson §8.16): two singulars dual, else plural;
-        # 1st person over 2nd over 3rd (engine sweep, closed-class-compounds.md R4)
-        pn = [_person_number(slots[i], lx) for i in subjs]
-        person = min(p for p, _ in pn)
-        if all(slots[i].get("num") == "PL" and _slot_gender(slots[i], lx) == "n" for i in subjs):
-            num = "SG"      # Il. 2.468 phúlla kaì ánthea gígnetai (Fortson §8.16): neuter plurals stay collective
-        else:
-            num = "DU" if len(subjs) == 2 and all(slots[i].get("num", "SG") == "SG" for i in subjs) else "PL"
-            neuter_pl = False
+    # the verb's and the predicate adjective's controller: subject(s), addressee(s) or the verb itself (pro-drop);
+    # the same computation check_plan makes (clause_controller)
+    ctrl, ctrl_kind = clause_controller({**cl, "slots": slots}, lx)
     vi = next((i for i, s in enumerate(slots) if s["role"] == "V"), None)
     if (vi is None) != (ctype != "verbal"):
         raise KeyError(f"a {ctype} clause {'needs a' if ctype == 'verbal' else 'takes no'} V slot")
@@ -748,40 +947,33 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     prohibitive = cl.get("neg") and v.get("mood") == "IMP"
     neg_wish = cl.get("neg") and v.get("mood") == "OPT"        # mē + optative: "may it not …" (Gk μή + opt.)
     # hortative subjunctive 'let us not …' takes mē as well (Gk μή + hortatory subj.)
-    neg_wish = neg_wish or (cl.get("neg") and v.get("mood") == "SBJV" and int(v.get("person") or person) == 1)
+    person, num = verb_person_number({**cl, "slots": slots}, v, lx) if vi is not None else (ctrl.person, ctrl.verb_num)
+    neg_wish = neg_wish or (cl.get("neg") and v.get("mood") == "SBJV" and person == 1)
     words: dict[int, Word] = {}
     for i, s in enumerate(slots):
         lid, role = s["lex_id"], s["role"]
         if role == "V":
-            # a neuter plural subject takes a singular verb even if the plan set num (t011 review)
-            feat = _verb_feature({**v, "num": "SG"} if neuter_pl else v, person, num)
-            if prohibitive:
-                # mē + injunctive (augmentless secondary form), not the imperative
-                pn = feat.split(".")[-1]
-                cells = lx.cells(lid)
-                mid = "MID." if v.get("voice") == "MID" else ""
-                feat = next((f"{mid}{t}.{pn}" for t in ("PST", "AOR") if f"{mid}{t}.{pn}" in cells), feat)
-            cells = lx.cells(lid)
-            if feat not in cells and feat.endswith("DU") and feat[:-2] + "PL" in cells:
-                feat = feat[:-2] + "PL"       # no dual cell (e.g. the perfect): the plural stands in
-            form = cells[feat][0]
+            # a neuter plural subject takes a singular verb even if the plan set num (t011 review): verb_person_number
+            feat = finite_cell(lx, lid, v, person, num, bool(prohibitive))
+            form = lx.admissible_cells(lid)[feat][0]
             if prohibitive:
                 feat = feat.replace("PST", "INJ").replace("AOR", "INJ")
+            words[i] = Word(form, lid, lx.gloss(lid), feat, i, voice=v.get("voice", "ACT"))
+            continue
         elif role == "ADV":
             feat, form = "ADV", (lx.entries[lid]["form"] if not lid.startswith("closed:") else lid.split(":")[-1])
         else:
             # agreement source: a MOD agrees with its head; a predicate adjective with the subject
             if role == "MOD":
                 head = slots[s["head"]]
-            elif role == "PRED" and subj and not lid.startswith("closed:") and _family(s, lx) == "adj":
-                head = subj
-            elif role == "PRED" and not subj and not lid.startswith("closed:") and _family(s, lx) == "adj" \
-                    and any(x["role"] == "VOC" for x in slots):
-                # "Sea, you are great": the dropped subject is the addressee (t011 review)
-                head = {**next(x for x in slots if x["role"] == "VOC"), "role": "PRED"}
-            elif role == "PRED" and not subj and not lid.startswith("closed:") and _family(s, lx) == "adj":
-                # pro-drop: the predicate adjective takes the verb's number ("may they be many": polh₁éwes)
-                head = {**s, "num": s.get("num") or v.get("num") or "SG"}
+            elif role == "PRED" and not lid.startswith("closed:") and _family(s, lx) == "adj":
+                # a predicate adjective agrees with the controller: the subject or conjoined subjects; with a
+                # 2nd-person verb and no subject the addressee(s) ("Sea, you are great", t011 review); with
+                # pro-drop the verb's number ("may they be many": polh₁éwes) and its own gender
+                if ctrl_kind == "verb":
+                    head = {**s, "num": s.get("num") or ctrl.num}
+                else:
+                    head = {"lex_id": "closed:controller", "role": "PRED", "num": ctrl.num, "gender": ctrl.gender}
             else:
                 head = s
             case = "NOM" if role == "PRED" else case_of(i)
@@ -802,7 +994,7 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
             if lid == "compound":
                 cmp = resolve_compound(s["compound"], lx)
                 form = cmp.cells(g if cmp.ctype == "bahuvrihi" else None)[feat][0]
-                words[i] = Word(form, cmp.lex_id, cmp.gloss(), feat, i)
+                words[i] = Word(form, cmp.lex_id, cmp.gloss(), feat, i, gender=g)
                 continue
             if lid.startswith("closed:"):
                 form = _closed_form(lx, lid, feat, g)
@@ -810,14 +1002,17 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
                     raise KeyError(f"{lid} {feat} {g}")
                 feat = _closed_feat(lx, lid, feat)
             elif s.get("participle"):
-                form = lx.participle_cells(lid, s["participle"].get("voice", "ACT"), g)[feat][0]
-                feat = f"PTCP.{s['participle'].get('voice', 'ACT')}.{feat}"
+                pv = s["participle"].get("voice", "ACT")
+                form = lx.admissible_participle_cells(lid, pv, g)[feat][0]
+                feat = f"PTCP.{pv}.{feat}"
             elif lx.specs[lid]["family"] == "adj":
-                form = lx.cells(lid, g)[feat][0]
+                form = lx.admissible_cells(lid, g)[feat][0]
             else:
-                form = lx.cells(lid)[feat][0]
+                form = lx.admissible_cells(lid)[feat][0]
         words[i] = Word(form, lid, lx.gloss(lid), feat, i,
-                        clitic=feat.endswith(".ENCL") or form in ENCLITIC_PRONOUNS)
+                        clitic=feat.endswith(".ENCL") or form in ENCLITIC_PRONOUNS,
+                        gender=g if role != "ADV" else None,
+                        voice=s["participle"].get("voice", "ACT") if s.get("participle") else None)
 
     # phrases: every MOD/POSS goes directly before its head, recursively; an APPOS phrase follows
     # its head's phrase ('the horses, immortal ones'), or precedes it with "before"
@@ -904,6 +1099,12 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
         f = "-" + cl["conj"]
         out.insert(1, Word(f, f"closed:particle:{f}", "and" if f == "-kʷe" else "or", "PARTICLE", clitic=True))
     return out
+
+
+def token_cell(w: dict) -> dict:
+    """The resolved gender and voice of a realized word (realize()["words"] entry) for a corpus token: only
+    the keys that apply (a particle has neither)."""
+    return {k: w[k] for k in ("gender", "voice") if w.get(k)}
 
 
 def realize(plan: dict, lx: Lexicon | None = None) -> dict:
