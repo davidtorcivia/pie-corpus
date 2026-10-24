@@ -4,11 +4,11 @@ Family: athematic presents (root, Narten, reduplicated, nasal-infix, *-néw-*, *
 
 Method. I took the inventory from `Lexicon.load()` and compared cells with the handbook convention (first form in each cell) against Fortson ch. 5, Ringe 2006 ch. 2, Beekes ch. 18, Lundquist & Yates (Handbook ch. 122, §4.3–4.4) and Mallory & Adams ch. 4. The M&A tables are missing from the text extract, but its prose agrees on *-e/ont-*, *-mh₁no-* and *stí-steh₂-ti*. Then I ran well-formedness checks over all 677 specs: adjacent nuclei, resonants left unsyllabified, weak stems with no nucleus or a geminate, a glide after a vocalic segment in the 3pl, and *-éh₁/-éh₂* suffix stems. Corpus impact counts tokens in `corpus/tier3/*.jsonl` whose (lex_id, features) cell has a different first form under the proposed fix. `INJ.*` is mapped to the PST/AOR cell that `realize.py` picks, and `PTCP.*` to the PTCP cell. I checked staleness first: 12 of the 7,874 tokens in this family differ from the current engine (all of them `-omos` vs `-omes` and glide variants), so the counts measure the current engine.
 
-All engine changes below were applied to a scratch copy of the repo. The full test suite passes (2,252 tests, plus the 6 new ones below). The single failure, `test_mapping_overrides.py::test_override_table_covers_the_errata`, already fails on the unmodified tree and has nothing to do with this family. The Wiktionary-convention output (`alternatives=False`) is unchanged for every verb, so `pie.crosscheck` is unaffected.
+All engine changes below were applied to a scratch copy of the repo. The full test suite passes: 2,246 existing tests plus the 8 new ones below. The single failure, `test_mapping_overrides.py::test_override_table_covers_the_errata`, already fails on the unmodified tree and has nothing to do with this family. The Wiktionary-convention output (`alternatives=False`) is unchanged for every verb, so `pie.crosscheck` is unaffected.
 
 ## Inventory
 
-701 usable verb specs have a weak stem; 24 of them are perfects. That leaves **677 lexemes** in this family, with **7,874 corpus tokens** (18.7% of the 42,017 tier-3 tokens).
+701 usable verb specs have a weak stem; 24 of them are perfects. That leaves 677 lexemes. Four non-ablauting athematic presents are specified with `weak: None` and a non-thematic stem, so the family has **681 lexemes** with **8,041 corpus tokens** (19.1% of the 42,017 tier-3 tokens).
 
 | sub-type | lexemes | of which Wiktionary tables | tokens | examples |
 |---|---:|---:|---:|---|
@@ -16,9 +16,10 @@ All engine changes below were applied to a scratch copy of the repo. The full te
 | Narten / fixed root accent | 3 | 2 | 50 | h₂wḗh₁ti, tḗtḱti, smḗyti (override) |
 | reduplicated present | 23 | 1 (dédeh₃ti) | 209 | dédeh₃ti, dʰédʰeh₁ti, gʷígʷeh₂ti, mímenti |
 | nasal infix *-né-/-n-* | 88 | 5 | 292 | linékʷti, yunégti, bʰinédti, stunédti |
-| *-néH-/-n̥H-* ("ninth class") | 92 | 8 | 232 | pl̥néh₁ti, kʷrinéh₂ti, ǵn̥néh₃ti, tl̥néh₂ti |
+| *-néH-/-n̥H-* (Sanskrit ninth class) | 92 | 8 | 232 | pl̥néh₁ti, kʷrinéh₂ti, ǵn̥néh₃ti, tl̥néh₂ti |
 | *-néw-/-nu-* | 47 | 6 | 134 | ḱl̥néwti, tn̥néwti, minéwti, ksnéwti |
-| derived *-éh₁-/-(e)h₂-* stative/factitive | 10 | 0 | 0 | wr̥téh₁ti, dewkéh₂ti, spéḱeh₂ti |
+| derived *-éh₁-/-(e)h₂-* stative/factitive (shape rule, ablauting) | 10 | 0 | 0 | wr̥téh₁ti, dewkéh₂ti, spéḱeh₂ti |
+| non-ablauting athematic present (`weak: None`) | 4 | 4 | 167 | ḱéytor, wéstor, h₁rudʰéh₁ti, néweh₂ti |
 | root aorist (e-grade ~ zero) | ~263 | 15 | 4,115 | déh₃t, gʷéh₂t, gʷémt, ḱléwt, stéh₂t, dʰéh₁t |
 | non-ablauting aorist | 3 | 2 | 202 | bʰúHt, h₁áyt (override), wḗǵʰst |
 
@@ -34,10 +35,11 @@ These cells match the handbooks and need no change.
 - **Root aorists.** Secondary endings, full grade in the singular active, zero grade elsewhere: stéh₂t / sth₂ént, dʰéh₁t / dʰh₁ént, gʷémt / gʷmént, ḱléwt / ḱluwént. Sources: Fortson §5.46; Beekes §18.3.3 (*sth₂-ént*); L&Y §4.3.2; Ringe p. 29 (*gʷém- ~ gʷm̥-*). Root aorists without a present get IMP and SBJV from the aorist stem, which is correct.
 - **Imperative.** 2sg is the zero grade + *-dʰí*, with the bare strong stem as an alternative (Fortson §5.54 Ved. *śru-dhí*; Ringe p. 31 ∅ / *-dʰí*). 3sg is strong + *-tu*; 3pl is *-éntu*, or *-n̥tu* after an accented stem; 2pl is *-té* (Fortson §5.54, Ringe p. 31, Beekes §18.8.5). Clusters such as h₁ddʰí, sddʰí and bʰudʰdʰí are unassimilated underlying forms, written that way on purpose (`phon.py` header; Ringe p. 20 also writes unassimilated clusters).
 - **Injunctive with mē.** `realize.py` replaces the imperative with the augmentless PST/AOR form of the same person: mē h₁és, mē déh₃s. This fits Beekes §18.8.2 (the prohibitive takes the injunctive) and Fortson §5.44.
-- **Subjunctive.** Strong stem + thematic vowel + primary endings, 1sg *-oh₂*: h₁éseti, h₁ésonti, h₁ésoh₂, yunégeti, gʷémeti. Sources: Fortson §5.55; Ringe pp. 29–30 (*h₁és-e/o-*, *li-né-kʷ-e/o-*, *gʷém-e/o-*); Beekes §18.8.3 (full grade always). The exception is the Narten type (defect E5).
-- **Optative, ordinary stems.** Weak stem + *-yéh₁-* in the singular and *-ih₁-* elsewhere, 3pl *-ih₁ént*: h₁syéh₁m̥, h₁sih₁mé, h₁sih₁ént, gʷm̥yéh₁m̥, gʷmih₁mé (Ringe p. 30 *gʷm̥-yéh₁- ~ gʷm-ih₁-*). Beekes §18.8.4 has 3pl *h₁és-ih₁-n̥t*; Fortson §5.57 has *-ent* "never *-n̥t*". The engine follows Fortson, which is a reasonable handbook choice.
+- **Subjunctive.** Strong stem + thematic vowel + primary endings, 1sg *-oh₂*: h₁éseti, h₁ésonti, h₁ésoh₂, yunégeti, gʷémeti. Sources: Fortson §5.55; Ringe pp. 29–30 (*h₁és-e/o-*, *li-né-kʷ-e/o-*, *gʷém-e/o-*); Beekes §18.8.3 (full grade always). The exception is the Narten type (defect E3).
+- **Optative, ordinary stems.** Weak stem + *-yéh₁-* in the singular and *-ih₁-* elsewhere, 3pl *-ih₁ént*: h₁syéh₁m̥, h₁sih₁mé, h₁sih₁ént, gʷm̥yéh₁m̥, gʷmih₁mé (Ringe p. 30 *gʷm̥-yéh₁- ~ gʷm-ih₁-*). Beekes §18.8.4 has 3pl *h₁és-ih₁-n̥t*. Fortson §5.57 gives *-ent* for the 3pl in every case and excludes *-n̥t*, even after an unaccented suffix. The engine follows Fortson, which is a reasonable handbook choice.
 - **Middle.** Zero grade with accented endings throughout (Fortson §5.21). Endings: *-h₂ér*, *-th₂ér*, *-tór/-ór*, *-mésdʰh₂*, *-dʰwé*, *-n̥tór/-rór*; secondary *-h₂é*, *-th₂é*, *-tó/-ó*, *-médʰh₂*, *-n̥tó/-ró*. Sources: Fortson §5.16; Ringe p. 31; L&Y §4.2 (*-ror/-ntor*, *-ro/-nto*).
 - **Participles.** Active: weak stem + *-ónt-*, giving h₁sónts, gʷmónts and linkʷónts (Ringe p. 33 hysterokinetic *-ónt-/-nt-*; L&Y §4.4.1 *h₁s-ónt-*). Fortson §5.60 writes *-(e)nt-*. After an accented stem the engine gives *-n̥ts* (h₂wéh₁n̥ts). Middle: *-m̥h₁nós* (Ringe p. 33; L&Y §4.4.1; Fortson §5.60).
+- **Boukólos.** linkwós and linkwé (kʷ before consonantal w), and gunuwénti for gʷunéwti (gʷ before unaccented u), follow the engine's stated boukólos convention (`phon.delabialize`, the Wiktionary module's rule). This family has no case against it.
 - **CCu/CCi glide on true clusters.** ḱlu → ḱluwént / ḱluwónts (LIV), tḱi → tḱiyénti (Ved. *kṣiyánti*), ksnu → ksnuwénti, and the CCi stems skri-, wli-, ḱli-.
 
 ## Defects, ranked by corpus impact
@@ -47,22 +49,23 @@ These cells match the handbooks and need no change.
 | # | defect | type | lexemes | tokens |
 |---|---|---|---:|---:|
 | D1 | h₁édti 'eat' inflected as an ordinary root present; Fortson and Ringe have Narten | decision / spec | 1 | 105 |
+| D5 | ḱéytor 'lies': middle 3sg/3pl ranked *-tor/-n̥tor* before the t-less *-or/-ror* that Fortson, L&Y and Beekes reconstruct for this verb | decision / engine + spec | 1 | 79 |
 | D2 | dédeh₃ti (Wiktionary table) has the reduplication accent in every weak form (Ringe), not mobile (Beekes, Vedic) | decision / spec | 1 | 36 |
-| D3 | 1sg secondary contracted by Stang's law (ḱlḗm, gʷḗm, h₁ḗm, stā́m); no handbook gives the uncontracted form, and it is missing even as an alternative | decision / engine | 13 in corpus | 0 primary (24 tokens if the primary were switched) |
+| D3 | 1sg secondary contracted by Stang's law (ḱlḗm, gʷḗm, h₁ḗm, stā́m); the uncontracted form that Beekes and Vedic support (stéh₂m̥, ḱléwm̥) is missing even as an alternative | decision / engine | 13 in corpus | 0 primary (24 tokens if the primary were switched) |
 | D4 | bʰúHt: accented weak stem gives bʰúHn̥t, bʰúHyeh₁t; Ringe and Vedic have the suffix and ending accented | spec | 1 | 18 |
 | E1 | CCu/CCi glide rule fires after a syllabic resonant (ḱl̥nuwénti for ḱl̥nwénti); glided forms also outrank the *-t-* middle | engine | 27 (+ ordering for all true-CCu stems) | 13 |
 | S1 | LIV weak stems with a dropped breve or labial: h₂ur̥s, gul̥, h₂ur̥g, ul̥h₁, plus LIV-style ul, un, Hur | spec | 7 | 13 |
-| E2 | optative of an accented weak stem has *-yeh₁-* in the singular and *-ih₁n̥t* in the 3pl | engine | 7 | 8 |
+| E2 | optative of an accented weak stem has *-yeh₁-* in the singular and *-ih₁n̥t* in the 3pl | engine | 11 | 10 |
 | E3 | Narten / s-aorist subjunctive built on the ḗ grade | engine | 3 | 3 |
 | E4 | shape-rule reduplicated presents: 3pl *-énti*, which no handbook gives; full-grade optative suffix | engine | 22 | 1 |
 | S2 | tétḱti (shape rule) weak stem ttḱ- | spec | 1 | 1 |
-| E5 | future imperative *-tōd* on the accented strong stem | engine | all 677 | 0 |
+| E5 | future imperative *-tōd* on the accented strong stem | engine | all 681 | 0 |
 | S3 | `_redup_weak` leaves hiatus: weuḱ, wiukʷ, yeis | classify | 3 | 0 |
 | S4 | derived *-éh₁-/-(e)h₂-* statives/factitives given root ablaut (wr̥th₁-, spḱeh₂-) | spec / classify | 10 | 0 |
 | S5 | junk lemmas: 3pl forms and gloss-less derived terms parsed as 3sg presents | blocklist | 8 | 0 |
 | N1 | code comment cites Ringe for 2du *-th₁es*, but Ringe's table has 2du = 3du *-tés* | comment | – | 0 |
 
-The engine changes (E1–E5, plus the D3 alternative) total **25** changed tokens. The spec items S1, S2 and D4 add 32. The two decisions D1 and D2 would change another 141.
+The engine changes (E1–E5, plus the D3 alternative) total **27** changed tokens. The spec items S1, S2 and D4 add 32. The decisions D1, D5 and D2 would change another 220.
 
 ---
 
@@ -79,6 +82,17 @@ The engine changes (E1–E5, plus the D3 alternative) total **25** changed token
 ```
 
 Changes: PRS.3SG h₁édti → h₁ḗdti (25 tokens); IMP.2SG h₁ddʰí → h₁éddʰi (22); PST.3PL h₁dént → h₁édn̥t (13); PRS.3PL h₁dénti → h₁édn̥ti (8); and so on, 105 in all. This assumes E2 and E3 are applied: then the optative is h₁édih₁t and the subjunctive stays h₁édeti.
+
+### D5. ḱéytor 'lies': t-less middle (decision; 79 tokens)
+
+- Engine (Wiktionary table ḱéy-, lemma ḱéytor): MID.PRS.3SG ḱéytor, MID.PST.3SG ḱéyto, MID.PRS.3PL ḱéyn̥tor, MID.PST.3PL ḱéyn̥to. The t-less forms are alternatives only.
+- Handbooks: **Fortson §5.16** reconstructs 'lies' as *ḱei̯-o(-)* (CLuw. *ziyari*, Ved. *śáye*), and **§5.18** uses it as the standard example of the t-less endings. **L&Y §4.3.1** gives *ḱéy-or* 'lies'. **L&Y §4.2** (start of ch. 8 part 7) puts this verb among those that select 3pl *-ror* (Ved. *śé-re*; impf. *á-śe-ran* < *-ro*). **Beekes §18.7** (p. 273) gives *ḱéi-o*. **Ringe p. 32** says the t-less 3rd-person endings survive in a restricted set of verbs. All four books agree that this verb is t-less; only the Wiktionary lemma has *-tor*.
+- The engine has no per-lexeme switch for this, so the morph.py diff adds a `VerbSpec.mid_t_less` flag (default False). With the flag set, the handbook convention moves *-o(r)* and *-ro(r)* to the front of the four 3rd-person middle cells, and *-t-* stays as the alternative. wéstor (Hitt. *wešta*, Ved. *váste*, Gk *héstai*: L&Y §4.3.1) keeps *-tor*.
+- Recommendation: set the flag for ḱéytor. Changes: MID.PST.3SG ḱéyto → ḱéyo (40), MID.PRS.3SG ḱéytor → ḱéyor (26), MID.PRS.3PL ḱéyn̥tor → ḱéyror (7), MID.PST.3PL ḱéyn̥to → ḱéyro (6).
+
+```json
+{"id": "pie-lex-kjeytor", "spec": {"mid_t_less": true}, "note": "*ḱéy-or 'lies' with t-less middle 3sg *-o(r), 3pl *-ro(r): Fortson §5.16, §5.18; L&Y §4.2, §4.3.1 (Ved. śáye, śére, áśeran; CLuw. ziyari); Beekes §18.7 *ḱéi-o. The -t- forms stay as alternatives (engine sweep, athematic verbs)"}
+```
 
 ### D2. dédeh₃ti: weak-stem accent (decision; 36 tokens)
 
@@ -145,12 +159,13 @@ The last three are genuine LIV notation for the prevocalic shape, as LIV's redup
 {"id": "pie-lex-Hwert", "spec": {"weak": "Hwr̥"}, "note": "LIV² p. 227 *Hu̯ér-/Hur-: prevocalic shape; Hwr̥- syllabifies for both environments (engine sweep, athematic verbs)"}
 ```
 
-### E2. Optative of an accented weak stem (engine; 7 lexemes, 8 tokens)
+### E2. Optative of an accented weak stem (engine; 11 lexemes, 10 tokens)
 
-- Engine: when the weak stem is accented, as in Narten h₂wéh₁-, smḗy- and tétḱ-, fixed-accent dédh₃-, s-aorist wéǵʰs- and non-ablauting bʰúH- and h₁áy-, the singular still takes *-yeh₁-* (h₂wéh₁yeh₁m̥, dédh₃yeh₁t). The 3pl is changed to *-ih₁n̥t* (dédh₃ih₁n̥t).
-- **Fortson §5.57**: Narten presents have the zero-grade suffix *-ih₁-* throughout, and the 3pl is always *-ent*, never *-n̥t*, even when unaccented. **Ringe p. 30**: *h₁éd-ih₁-*, *dʰé-dʰh₁-ih₁-*, *stí-sth₂-ih₁-* and *déyḱ-s-ih₁-*, i.e. only the zero-grade suffix when the accent is fixed to the left. **Beekes §18.8.4**: reduplicated optatives have the zero-grade suffix everywhere (Av. *daidīt* < *dʰe-dʰh₁-ih₁-t*). Beekes writes 3pl *-ih₁-n̥t*, so there is a disagreement over the 3pl ending. The handbook convention already follows Fortson's *-ent* for ordinary stems, and this fix extends that to accented stems.
+- Engine: when the weak stem is accented, as in Narten h₂wéh₁-, smḗy- and tétḱ-, fixed-accent dédh₃-, s-aorist wéǵʰs-, non-ablauting bʰúH- and h₁áy-, and the `weak: None` presents h₁rudʰéh₁-, néweh₂-, ḱéy- and wés-, the singular still takes *-yeh₁-* (h₂wéh₁yeh₁m̥, dédh₃yeh₁t). The 3pl is changed to *-ih₁n̥t* (dédh₃ih₁n̥t).
+- **Fortson §5.57**: Narten presents have the zero-grade suffix *-ih₁-* throughout, and the 3pl is always *-ent*, never *-n̥t*, even when unaccented. **Ringe p. 30**: *h₁éd-ih₁-*, *dʰé-dʰh₁-ih₁-*, *stí-sth₂-ih₁-*, *déyḱ-s-ih₁-*, and with a question mark *h₁rudʰ-éh₁-ih₁-* and *néwe-h₂-ih₁-*, i.e. only the zero-grade suffix when the accent is fixed to the left. **Beekes §18.8.4**: reduplicated optatives have the zero-grade suffix everywhere (Av. *daidīt* < *dʰe-dʰh₁-ih₁-t*). Beekes writes 3pl *-ih₁-n̥t*, so there is a disagreement over the 3pl ending. The handbook convention already follows Fortson's *-ent* for ordinary stems, and this fix extends that to accented stems.
 - Fix: the optative hunk of the morph.py diff, which also covers reduplicated stems with an unaccented weak stem, so that dʰedʰh₁ih₁t follows Beekes. The full-grade *-yeh₁-* forms stay as alternatives, and the Wiktionary module keeps *-ih₁n̥t*.
-- Changes: bʰúHt OPT.3SG/3PL (6; superseded by D4 if that is applied), dédeh₃ti OPT.3SG/3PL (2).
+- Perfects are excluded (`spec.kind != "stat"`), so the patch does not touch the perfect family.
+- Changes: bʰúHt OPT.3SG/3PL (6; superseded by D4 if that is applied), dédeh₃ti OPT.3SG/3PL (2), h₁rudʰéh₁ti OPT.3SG/3PL (2).
 
 ### E3. Narten / s-aorist subjunctive (engine; 3 lexemes, 3 tokens)
 
@@ -177,7 +192,7 @@ The last three are genuine LIV notation for the prevocalic shape, as LIV's redup
 ### E5. Future imperative *-tōd* (engine; 0 tokens)
 
 - Engine: strong stem + *-tōd*, unaccented, giving h₁éstōd, gʷʰéntōd and déh₃tōd.
-- Handbooks: **Ringe p. 31** has *-tṓd*, accented. **Fortson §5.54** cites Ved. *dhattā́t*, which is zero-grade *dʰ(e)dʰh₁-tṓd*. **Beekes §18.8.5** gives Ved. *i-tā́t*, Gk *í-tō*, Lat. *itō*. So the ending takes the zero-grade stem, accented: h₁stṓd, h₁itṓd. Fix: the IMP.FUT hunk, with the strong-stem form kept as an alternative. No corpus tokens.
+- Handbooks: for the zero grade, **Fortson §5.54** cites Ved. *dhattāt* (the zero-grade reduplicated stem *dhat-*), and **Beekes §18.8.5** gives Ved. *i-tā́t*, Gk *í-tō*, Lat. *itō*. For the accent, **Ringe p. 31** has *-tṓd*, and Beekes's *i-tā́t* is accented on the ending. So the ending takes the zero-grade stem, accented: h₁stṓd, h₁itṓd. Fix: the IMP.FUT hunk, with the strong-stem form kept as an alternative. No corpus tokens.
 
 ### S3. `_redup_weak` hiatus (classify; 3 lexemes, 0 tokens)
 
@@ -194,7 +209,7 @@ The last three are genuine LIV notation for the prevocalic shape, as LIV's redup
 
 - The shape rule zero-grades the first accented e/o, which here is the suffix vowel or the root vowel of a non-ablauting derived stem. That gives wr̥téh₁- / wr̥th₁-, skn̥déh₁- / skn̥dh₁-, kewkéh₁- / kewkh₁-, kswibʰéh₁- / kswibʰh₁-, ḱl̥wéh₁- / ḱl̥wh₁-, dewkéh₂- / dewkh₂-, seykʷéh₂- / seykʷh₂-, woyh₁éh₂- / woyh₁h₂-, spéḱeh₂- / spḱeh₂- and stéh₂weh₂- / sth₂weh₂-.
 - **Ringe pp. 28 and 30**: statives in *-éh₁-* (*h₁rudʰ-éh₁-*) and factitives in *-h₂-* (*néwe-h₂-*) are athematic but non-ablauting; their subjunctive is built on the invariant stem.
-- Disagreement: **L&Y §4.3.1** treats the productive stative as thematic *-eh₁-ye/o-* and reports LIV's *-éh₁-* "fientive" as disputed.
+- Disagreement: **L&Y §4.3.1** treats the productive stative as thematic *-eh₁-ye/o-* and reports that LIV's athematic *-éh₁-* fientive is disputed.
 - Recommendation: set weak = strong, i.e. non-ablauting, which yields 3pl wr̥téh₁n̥ti. Better still, block these lexemes. All are gloss-less Wiktionary derived terms (`meaning: []`, apart from 'eh₁-stative' and '*eh₂-stative') with no corpus use. Override lines for weak = strong:
 
 ```json
@@ -237,12 +252,20 @@ None are used. Suggested lines for `data/generation/blocklist.jsonl` (field name
 
 ## Proposed code changes
 
-### pie/morph.py (E1–E5, D3 alternative)
+### pie/morph.py (E1–E5, D3 alternative, D5 field)
 
 ```diff
 --- a/pie/morph.py
 +++ b/pie/morph.py
-@@ -502,16 +502,23 @@
+@@ -428,6 +428,7 @@
+     strong: str
+     weak: str | None = None
+     kind: str = "impf"
++    mid_t_less: bool = False   # middle 3sg *-o(r), 3pl *-ro(r) first (*ḱéy-or 'lies': Fortson §5.16, L&Y §4.3.1)
+ 
+     @property
+     def thematic(self) -> bool:
+@@ -502,16 +503,23 @@
              out[k] = _uniq([re.sub("t([eé])s$", lambda m: "th₁" + m[1] + "s", f) for f in out[k]] + out[k])
      # *CCu-/CCi- before a vowel keeps the vowel with a glide (Sievers/Lindeman; LIV ḱluwónt-, not ḱl̥wónt-):
      # the junction rule would vocalize the liquid instead (ḱlu+ént → ḱl̥wént)
@@ -270,7 +293,7 @@ None are used. Suggested lines for `data/generation/blocklist.jsonl` (field name
      st = _p(_bare(spec.strong))
      if not spec.thematic and st and st[-1].base == "s" and st[-1].kind == "C" and "PRS.2SG" in out:
          out["PRS.2SG"] = _uniq(out["PRS.2SG"] + [render(st) + "si"])
-@@ -583,34 +590,78 @@
+@@ -583,34 +591,83 @@
  
      strong = fix(_p(_bare(spec.strong)))
      weak = fix(_p(_bare(spec.weak or spec.strong)))
@@ -282,7 +305,7 @@ None are used. Suggested lines for `data/generation/blocklist.jsonl` (field name
 -            e = {"ih₁ént": "ih₁n̥t", "ónts": "n̥ts"}[e]   # accented stem: zero-grade -n̥t (bʰúHih₁n̥t, h₁édn̥ts)
 +        if has_accent(stem) and e == "ónts":
 +            e = "n̥ts"   # accented stem: zero-grade -n̥t (h₂wéh₁n̥ts)
-+        if has_accent(stem) and e == "ih₁ént" and not hb:
++        if has_accent(stem) and e == "ih₁ént" and (not hb or spec.kind == "stat"):
 +            e = "ih₁n̥t"   # Wiktionary module; the handbook keeps -ent (Fortson §5.57)
          return render(fix(join(stem, _p(e))))
  
@@ -299,12 +322,13 @@ None are used. Suggested lines for `data/generation/blocklist.jsonl` (field name
 +    # optative: *-yéh₁-/-ih₁- on the weak stem; when the weak stem is accented (Narten, fixed-accent
 +    # reduplication, s-aorist) or the stem is reduplicated, the suffix is zero-grade throughout
 +    # (Fortson §5.57; Ringe 2006 p. 30 *h₁éd-ih₁-, *dʰé-dʰh₁-ih₁-; Beekes §18.8.4 *dʰe-dʰh₁-ih₁-t)
-+    if hb and (has_accent(weak) or red is not None):
++    zero_opt = hb and spec.kind != "stat" and (has_accent(weak) or red is not None)
++    if zero_opt:
 +        opt_sg = ["ih₁m̥", "ih₁s", "ih₁t"]
 +    else:
 +        opt_sg = _ATH_OPT_SG
 +    out.update({k: v for k, v in _slots("OPT", [*opt_sg, *_ATH_OPT_PL], lambda e: on(weak, e)).items()})
-+    if hb and (has_accent(weak) or red is not None):   # the full-grade-suffix form stays as an alternative
++    if zero_opt:   # the full-grade-suffix form stays as an alternative
 +        for pn, e in zip(_P[:3], _ATH_OPT_SG):
 +            out[f"OPT.{pn}"] = _uniq(out[f"OPT.{pn}"] + [on(weak, e)])
      if spec.kind == "stat":
@@ -318,10 +342,14 @@ None are used. Suggested lines for `data/generation/blocklist.jsonl` (field name
 +        for k, e in (("MID.PRS.3PL", "n̥tór"), ("MID.PST.3PL", "n̥tó")):
 +            if k in out:
 +                out[k] = _uniq([on(red, e)] + out[k])
++    if hb and spec.mid_t_less:
++        for k in ("MID.PRS.3SG", "MID.PST.3SG", "MID.AOR.3SG", "MID.PRS.3PL", "MID.PST.3PL", "MID.AOR.3PL"):
++            if k in out and len(out[k]) > 1:
++                out[k] = out[k][1:] + out[k][:1]   # [-tór, -ór] → [-ór, -tór]; [-n̥tór, -rór] → [-rór, -n̥tór]
      if conv == "handbook":
 -        out["IMP.FUT.2SG"] = out["IMP.FUT.3SG"] = [on(strong, "tōd")]
-+        # *-tṓd on the zero-grade stem, accented (Ringe 2006 p. 31 *-tṓd; Fortson §5.54 Ved. dhattā́t;
-+        # Beekes §18.8.5 Ved. itā́t); the strong-stem form stays as an alternative
++        # *-tṓd on the zero-grade stem, accented (zero grade: Fortson §5.54 Ved. dhattāt; accent: Ringe 2006 p. 31
++        # *-tṓd, Beekes §18.8.5 Ved. itā́t); the strong-stem form stays as an alternative
 +        out["IMP.FUT.2SG"] = out["IMP.FUT.3SG"] = _uniq([on(weak, "tṓd"), on(strong, "tōd")])
      out["MID.IMP.2SG"] = [on(weak, "só")]
      out["MID.IMP.2PL"] = [on(weak, "dʰh₂wé")]
@@ -355,7 +383,7 @@ None are used. Suggested lines for `data/generation/blocklist.jsonl` (field name
  def _conjugate(spec: VerbSpec, conv: str) -> Cells:
      wk = conv == "wiktionary"
      fix = pinault if wk else (lambda x: x)
-@@ -638,6 +689,8 @@
+@@ -638,6 +695,8 @@
      strong = fix(_p(_bare(spec.strong)))
      weak = fix(_p(_bare(spec.weak or spec.strong)))
      weak_acc = has_accent(weak)
@@ -364,7 +392,7 @@ None are used. Suggested lines for `data/generation/blocklist.jsonl` (field name
  
      def sg_or_pl(i: int, e: str) -> str:
          st = strong if i < 3 else weak
-@@ -645,6 +698,8 @@
+@@ -645,6 +704,8 @@
              st = junction_laryngeal_loss(st, _p(e))
          if weak_acc and e.startswith("én"):
              e = e[1:]   # accented stem: zero-grade 3pl -n̥t(i) (bʰúHn̥t)
@@ -373,7 +401,7 @@ None are used. Suggested lines for `data/generation/blocklist.jsonl` (field name
          if e == "m":
              # 1sg secondary is -m̥, syllabic even after a vowel (ném̥, h₁ésm̥, térh₂wm̥),
              # with contractions: -em-m̥ → -ḗm, -ey/-ew-m̥ → -ḗm (Stang), -eh₂-m̥ → -ām
-@@ -667,13 +722,24 @@
+@@ -667,13 +728,24 @@
          tense = "PST" if spec.kind == "impf" else "AOR"
          for i, (pn, e) in enumerate(zip(PERSONS, _ATH_PST)):
              out[f"{tense}.{pn}"] = [sg_or_pl(i, e)]
@@ -425,7 +453,7 @@ None are used. Suggested lines for `data/generation/blocklist.jsonl` (field name
 
 After the classify change, regenerate the specs with `scripts/classify_lexicon.py`. The only specs that change are wéwoḱti, wíwekʷti and yéyesti.
 
-### Tests to add (tests/test_morph.py)
+### Tests to add (new file tests/test_morph_athematic.py, or append to tests/test_morph.py)
 
 All of these pass on the patched copy:
 
@@ -480,13 +508,27 @@ def test_narten_subjunctive_on_the_e_grade():
 
 def test_future_imperative_on_the_zero_grade():
     assert c("h₁és", "h₁s")["IMP.FUT.2SG"][0] == "h₁stṓd"         # Ved. dhattā́t, itā́t
+
+
+def test_non_ablauting_athematic_optative():
+    # Ringe 2006 p. 30: *h₁rudʰ-éh₁-ih₁-, *néwe-h₂-ih₁- (zero-grade suffix after a fixed accent)
+    assert conjugate(VerbSpec("h₁rudʰéh₁", None), "handbook")["OPT.3SG"][0] == "h₁rudʰéh₁ih₁t"
+
+
+def test_t_less_middle():
+    # *ḱéy-or 'lies' (Fortson §5.16; L&Y §4.3.1; Beekes §18.7; Ved. śáye, 3pl śére)
+    m = conjugate(VerbSpec("ḱéy", None, mid_t_less=True), "handbook")
+    assert m["MID.PRS.3SG"][0] == "ḱéyor" and "ḱéytor" in m["MID.PRS.3SG"]
+    assert m["MID.PST.3SG"][0] == "ḱéyo"
+    assert m["MID.PRS.3PL"][0] == "ḱéyror"
+    assert conjugate(VerbSpec("wés", None), "handbook")["MID.PRS.3SG"][0] == "wéstor"
 ```
 
 ## Order of integration
 
 1. morph.py diff. It is self-contained: it touches only athematic verbal paths, and the Wiktionary convention is unchanged.
 2. S1, S2 and D4 override lines. These are uncontroversial data fixes.
-3. D1 and D2 overrides, once the convention calls are confirmed. D2 depends on (1) for its 3pl.
+3. D1, D5 and D2 overrides, once the convention calls are confirmed. D5 needs the `mid_t_less` field from (1), and D2 depends on (1) for its 3pl.
 4. classify.py change (S3) and spec regeneration; S4 and S5 at the integrator's discretion.
 
 Scratch work for this audit (inventory, impact script, patched copies): /private/tmp/claude-501/-Users-david-AI-PIE/7bdc6640-3091-456e-a081-2c28d7d03867/scratchpad/athv_*.
