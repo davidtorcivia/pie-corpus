@@ -130,7 +130,7 @@ Everything in IDEAS.md is folded into PLAN.md, and nothing is rejected outright.
 
 ## Conventions (engine sweep)
 
-Recorded 2026-10-24 by the lead after the engine audit sweep (docs/audits/engine-sweep/, integration in INTEGRATION.md). Principle: follow the majority of the handbooks together with the Vedic/Greek evidence; the other form stays an alternative cell (for a lexeme override, the displaced spec stays in `extra_specs`, which the validator indexes), never deleted. Code notes: the header of `pie/morph.py`.
+Recorded 2026-10-24 by the lead after the engine audit sweep (docs/audits/engine-sweep/, integration in INTEGRATION.md). Principle: follow the majority of the handbooks together with the Vedic/Greek evidence; the other form stays an alternative cell (for a lexeme override, the displaced spec stays in `extra_specs`, which the validator indexes with a status: supported, legacy or rejected, docs/audits/alt-form-status.md), never deleted. Code notes: the header of `pie/morph.py`.
 
 | Point | Primary (handbook convention) | Alternative | Basis |
 |---|---|---|---|
