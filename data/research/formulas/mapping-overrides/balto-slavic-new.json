@@ -1,0 +1,511 @@
+{
+ "_doc": "Balto-Slavic round-4 corpora (vuk, byliny, dainos, ccmh): lemma rows (fm.load_overrides format), plus 'proto' and 'key' rows applied by pie/bsl_mapping.py at build time (a proto-form or a daughter headword whose correction reaches every word built on it). Every row cites its dictionary. See docs/research/mapping-precision-bsl-new.md.",
+ "lemma": [
+  {
+   "corpus": "byliny",
+   "lemma": "град",
+   "lex_id": [],
+   "note": "homograph: град 'hail' (*gradъ, *ǵʰreh₃d-) and град 'city' (Church Slavonicism, *gordъ); unlemmatized text cannot tell them apart",
+   "erratum": "homograph: град 'hail' (*gradъ, *ǵʰreh₃d-) and град 'city' (Church Slavonicism, *gordъ); unlemmatized text cannot tell them apart"
+  },
+  {
+   "corpus": "ccmh",
+   "lemma": "богъ",
+   "lex_id": [],
+   "note": "Derksen EDSIL p. 50 s.v. *bogъ: 'usually considered a borrowing from Iranian … supported by the fact that the etymon does not show the effects of Winter's law'",
+   "erratum": "Derksen EDSIL p. 50 s.v. *bogъ: 'usually considered a borrowing from Iranian … supported by the fact that the etymon does not show the effects of Winter's law'"
+  },
+  {
+   "corpus": "ccmh",
+   "lemma": "божии",
+   "lex_id": [],
+   "note": "derivative of богъ, an Iranian loan (Derksen EDSIL p. 50)",
+   "erratum": "derivative of богъ, an Iranian loan (Derksen EDSIL p. 50)"
+  },
+  {
+   "corpus": "ccmh",
+   "lemma": "божьство",
+   "lex_id": [],
+   "note": "derivative of богъ, an Iranian loan (Derksen EDSIL p. 50)",
+   "erratum": "derivative of богъ, an Iranian loan (Derksen EDSIL p. 50)"
+  },
+  {
+   "corpus": "ccmh",
+   "lemma": "богатъ",
+   "lex_id": [],
+   "note": "Derksen EDSIL p. 50 s.v. *bogatъ, from *bogъ (an Iranian loan)",
+   "erratum": "Derksen EDSIL p. 50 s.v. *bogatъ, from *bogъ (an Iranian loan)"
+  }
+ ],
+ "form": [],
+ "proto": [
+  {
+   "code": "sla-pro",
+   "term": "*byti",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "note": "Derksen EDSIL p. 71 s.v. *byti: PIE *bʰuH-; the kaikki chain gave *h₁es-, the suppletive present"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*byvati",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "note": "Derksen EDSIL p. 72 s.v. *byvati, iterative of *byti (*bʰuH-)"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*bъrzъ",
+   "lex_id": [],
+   "note": "Derksen EDSIL p. 70 s.v. *bъrzъ: the connection with Gk βραχύς, Skt múhur (*mréǵʰus) 'is dubious'; no etymon given"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*dorgъ",
+   "lex_id": [],
+   "note": "Derksen EDSIL p. 113 s.v. *dorgъ: 'Etymology unclear' (the kaikki link to *der- 'split' is not Derksen's)"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*bystrъ",
+   "lex_id": [],
+   "note": "Derksen EDSIL p. 71 s.v. *bystrъ: no secure etymology (perhaps an s-enlargement of *bʰHu-); the kaikki *bʰos- is not supported"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*krotъkъ",
+   "lex_id": [],
+   "note": "Derksen EDSIL p. 250 s.v. *krotъkъ: no convincing etymology (Berneker's 'castrate' and *(s)kert- rejected)"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*golsъ",
+   "lex_id": [],
+   "note": "Derksen EDSIL p. 176 s.v. *golsъ: *gal-so- (Lat. gallus, W galw 'call'); the lexicon has no *gal-, and *gelH- 'naked' is a homograph"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*topnǫti",
+   "lex_id": [],
+   "note": "Derksen EDSIL p. 496 s.v. *topiti II 'drown': 'Etymology unclear' (the kaikki chain ended in *ne 'not')"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*ľutъ",
+   "lex_id": [],
+   "note": "Derksen EDSIL p. 283 s.v. *ľutъ 'fierce': no PIE etymon given (kaikki *lewh₁- 'cut off' speculative)"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*pьsati",
+   "lex_id": [
+    "pie-root-peykj-hew"
+   ],
+   "note": "Derksen EDSIL p. 430 s.v. *pьsati: PIE *peiḱ- (Lith. piešti 'draw, paint'); not the homograph *peyḱ- 'hostile'"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*sokolъ",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain via *sočiti 'look for' is speculative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*svěžь",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain to *weǵ- 'be lively' is speculative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*guja",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain to *gʷówyos / *gew- is speculative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*dvignǫti",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain to *dwóh₁ 'two' is speculative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*dvigati",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain to *dwóh₁ 'two' is speculative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*slěpъ",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain to *ḱley- 'lean' is speculative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*vina",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain to *weyh₁- 'twist' is speculative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*rǫgati",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain to *wreng- 'twist' is speculative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*xvatiti",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain ending in *swé 'self' is speculative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*raziti",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain to *wreh₁ǵ- 'break' is speculative (also blocks *obrazъ, built on it)"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*obrazъ",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain via *razъ / *raziti to *wreh₁ǵ- 'break' is speculative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*razъ",
+   "lex_id": [],
+   "note": "the Wiktionary chain of the prefix *orz-/*razъ ended in *wroh₁ǵs; a prefix is no etymon (cf. east report on разоумъ)"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*straxъ",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain to *streg- is speculative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*platъ",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain to *pleḱ- 'plait' is speculative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*strojiti",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain to *sterh₃- 'spread' is speculative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*červo",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain to *(s)ker- 'cut' is speculative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*golěmъ",
+   "lex_id": [],
+   "note": "Derksen EDSIL p. 173 s.v. *golěmъ gives no PIE etymon (kaikki *gelH- 'naked' is a homograph root)"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*čelověkъ",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain to *weyḱ- 'clan' is speculative; the word's etymology is disputed"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*běda",
+   "lex_id": [],
+   "note": "Derksen EDSIL p. 38 s.v. *běda: origin disputed (Baltic forms possibly borrowed; cf. Go. baidjan 'force'); kaikki chain via *bojati speculative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*kloniti",
+   "lex_id": [
+    "pie-root-kjley-lean"
+   ],
+   "note": "Derksen EDSIL s.v. *kloniti (o-grade *ḱlon- of *ḱlei- 'lean', cf. Lith. šlýti); kaikki gave the homograph *(s)kel-"
+  }
+ ],
+ "key": [
+  {
+   "lang": "sh",
+   "key": "pasti",
+   "lex_id": [],
+   "note": "homograph: pasti 'graze' (*peh₂-) and pasti 'fall' (Derksen EDSIL p. 392 *pàsti II < *pod-) share every key; compounds (dopasti, prepasti) follow"
+  },
+  {
+   "lang": "sh",
+   "key": "vesti",
+   "lex_id": [],
+   "note": "homograph: vesti 'embroider/convey' (*vezti, Derksen EDSIL p. 518) and 'lead' (*vesti, p. 517)"
+  },
+  {
+   "lang": "sh",
+   "key": "dovesti",
+   "lex_id": [
+    "pie-root-wedh-lead"
+   ],
+   "note": "Derksen EDSIL p. 517 s.v. *vestì 'lead' (*wedʰ-); Vuk's forms are -ved- (доведе, поведе), not -vez- (*vezti p. 518)"
+  },
+  {
+   "lang": "sh",
+   "key": "odvesti",
+   "lex_id": [
+    "pie-root-wedh-lead"
+   ],
+   "note": "Derksen EDSIL p. 517 s.v. *vestì 'lead' (*wedʰ-); Vuk's forms are -ved- (доведе, поведе), not -vez- (*vezti p. 518)"
+  },
+  {
+   "lang": "sh",
+   "key": "povesti",
+   "lex_id": [
+    "pie-root-wedh-lead"
+   ],
+   "note": "Derksen EDSIL p. 517 s.v. *vestì 'lead' (*wedʰ-); Vuk's forms are -ved- (доведе, поведе), not -vez- (*vezti p. 518)"
+  },
+  {
+   "lang": "sh",
+   "key": "izvesti",
+   "lex_id": [
+    "pie-root-wedh-lead"
+   ],
+   "note": "Derksen EDSIL p. 517 s.v. *vestì 'lead' (*wedʰ-); Vuk's forms are -ved- (доведе, поведе), not -vez- (*vezti p. 518)"
+  },
+  {
+   "lang": "sh",
+   "key": "uvesti",
+   "lex_id": [
+    "pie-root-wedh-lead"
+   ],
+   "note": "Derksen EDSIL p. 517 s.v. *vestì 'lead' (*wedʰ-); Vuk's forms are -ved- (доведе, поведе), not -vez- (*vezti p. 518)"
+  },
+  {
+   "lang": "sh",
+   "key": "provesti",
+   "lex_id": [
+    "pie-root-wedh-lead"
+   ],
+   "note": "Derksen EDSIL p. 517 s.v. *vestì 'lead' (*wedʰ-); Vuk's forms are -ved- (доведе, поведе), not -vez- (*vezti p. 518)"
+  },
+  {
+   "lang": "sh",
+   "key": "navesti",
+   "lex_id": [
+    "pie-root-wedh-lead"
+   ],
+   "note": "Derksen EDSIL p. 517 s.v. *vestì 'lead' (*wedʰ-); Vuk's forms are -ved- (доведе, поведе), not -vez- (*vezti p. 518)"
+  },
+  {
+   "lang": "sh",
+   "key": "zavesti",
+   "lex_id": [
+    "pie-root-wedh-lead"
+   ],
+   "note": "Derksen EDSIL p. 517 s.v. *vestì 'lead' (*wedʰ-); Vuk's forms are -ved- (доведе, поведе), not -vez- (*vezti p. 518)"
+  },
+  {
+   "lang": "sh",
+   "key": "privesti",
+   "lex_id": [
+    "pie-root-wedh-lead"
+   ],
+   "note": "Derksen EDSIL p. 517 s.v. *vestì 'lead' (*wedʰ-); Vuk's forms are -ved- (доведе, поведе), not -vez- (*vezti p. 518)"
+  },
+  {
+   "lang": "sh",
+   "key": "razvesti",
+   "lex_id": [
+    "pie-root-wedh-lead"
+   ],
+   "note": "Derksen EDSIL p. 517 s.v. *vestì 'lead' (*wedʰ-); Vuk's forms are -ved- (доведе, поведе), not -vez- (*vezti p. 518)"
+  },
+  {
+   "lang": "sh",
+   "key": "dijete",
+   "lex_id": [
+    "pie-root-dheh1y-suckle"
+   ],
+   "note": "Derksen EDSIL p. 103 s.v. *dětę 'child' (*dʰeh₁(i)- 'suck'); the kaikki pseudo-id kaikki:tis came from a suffix"
+  },
+  {
+   "lang": "sh",
+   "key": "primiti",
+   "lex_id": [
+    "pie-root-h1em-take"
+   ],
+   "note": "pri- + *jęti 'take' (Derksen EDSIL p. 158 s.v. *jęti: PIE *h₁m-), not miti 'wash' (preverb split)"
+  },
+  {
+   "lang": "sh",
+   "key": "primati",
+   "lex_id": [
+    "pie-root-h1em-take"
+   ],
+   "note": "pri- + *jьmati (Derksen EDSIL p. 158 *jęti / *jьmati: *h₁em-)"
+  },
+  {
+   "lang": "sh",
+   "key": "jak",
+   "lex_id": [],
+   "note": "the kaikki chain for jak 'strong' ended in *is 'this' (spurious); no etymon in Derksen EDSIL"
+  },
+  {
+   "lang": "sh",
+   "key": "tjerati",
+   "lex_id": [],
+   "note": "the kaikki chain ended in the agent suffix *-tḗr (spurious); Derksen EDSIL s.v. *terti gives no reflex"
+  },
+  {
+   "lang": "sh",
+   "key": "desni",
+   "lex_id": [],
+   "note": "homograph: desni 'gums' (*h₃dónts) and desni 'right' (def. of desan); Vuk's desni is 'right'"
+  },
+  {
+   "lang": "sh",
+   "key": "pitati",
+   "lex_id": [],
+   "note": "homograph: pitati 'ask' (*pytati, Derksen EDSIL p. 425, cogn. Lat. putare) and pitati 'feed' (*pitati, p. 401)"
+  },
+  {
+   "lang": "sh",
+   "key": "danak",
+   "lex_id": [],
+   "note": "homograph: danak 'day' (dim. of dan) and danak 'tribute' (*danь < *dati)"
+  },
+  {
+   "lang": "sh",
+   "key": "nit",
+   "lex_id": [],
+   "note": "homograph: nit 'thread' (*(s)nh₁-) and nit(') 'nor' (Vuk's elided niti)"
+  },
+  {
+   "lang": "sh",
+   "key": "kaka",
+   "lex_id": [],
+   "note": "kaka 'faeces' is not Vuk's kaka (= kakva 'what kind'); unlemmatized text cannot tell them apart"
+  },
+  {
+   "lang": "sh",
+   "key": "selo",
+   "lex_id": [],
+   "note": "the kaikki chain via *sědlo/*sěděti is not Derksen's: EDSIL p. 444 s.v. *selò (Lith. salà) gives no PIE etymon"
+  },
+  {
+   "lang": "sh",
+   "key": "pobjeći",
+   "lex_id": [
+    "pie-lex-bhegwyeh2ti"
+   ],
+   "note": "po- + bjeći/bježati (Derksen EDSIL p. 40 s.v. *běžati: *bʰegʷ-); the kaikki base was the preverb po"
+  },
+  {
+   "lang": "ru",
+   "key": "быть",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "note": "Derksen EDSIL p. 71 s.v. *byti: PIE *bʰuH- (the Russian entry's own link to *h₁ésti is the suppletive present есть)"
+  },
+  {
+   "lang": "ru",
+   "key": "бывать",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "note": "Derksen EDSIL p. 72 s.v. *byvati, iterative of *byti (*bʰuH-)"
+  },
+  {
+   "lang": "ru",
+   "key": "удаль",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL; the kaikki link of удаль/удалой to *deh₃- 'give' is speculative"
+  },
+  {
+   "lang": "ru",
+   "key": "ударить",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL; the kaikki root template *der- is speculative"
+  },
+  {
+   "lang": "ru",
+   "key": "посол",
+   "lex_id": [],
+   "note": "homograph: посол 'ambassador' (*posъlъ, сълати) and посол 'salting' (солить)"
+  },
+  {
+   "lang": "ru",
+   "key": "пасть",
+   "lex_id": [
+    "pie-root-ped-walk"
+   ],
+   "note": "Derksen EDSIL p. 392 s.v. *pàsti II 'fall': PIE *pod- (Ru. past', padú); not *pasti I 'graze'"
+  },
+  {
+   "lang": "ru",
+   "key": "железо",
+   "lex_id": [],
+   "note": "no PIE etymon for *želězo (kaikki *gʰel- speculative; the word is often taken as a loan)"
+  },
+  {
+   "lang": "ru",
+   "key": "разум",
+   "lex_id": [
+    "pie-lex-h2ewm"
+   ],
+   "note": "раз- + умъ (Derksen EDSIL p. 508 s.v. *umъ); the kaikki chain took the prefix *razъ as the etymon"
+  },
+  {
+   "lang": "ru",
+   "key": "человек",
+   "lex_id": [],
+   "note": "no entry in Derksen EDSIL (searched by the Ru./SCr./OCS forms); the Wiktionary chain to *weyḱ- is speculative"
+  },
+  {
+   "lang": "lt",
+   "key": "mesti",
+   "lex_id": [],
+   "note": "Derksen EDBIL s.v. mesti 'throw': not *meh₁- 'measure' (kaikki root template; homograph of metas 'time')"
+  },
+  {
+   "lang": "lt",
+   "key": "kepurė",
+   "lex_id": [],
+   "note": "no entry in Derksen EDBIL; the kaikki root template *(s)kep- is speculative"
+  },
+  {
+   "lang": "lt",
+   "key": "žvirblis",
+   "lex_id": [],
+   "note": "no entry in Derksen EDBIL; onomatopoeic, the kaikki root template *(s)werbʰ- is speculative"
+  },
+  {
+   "lang": "lt",
+   "key": "šaltas",
+   "lex_id": [],
+   "note": "the kaikki chain gave *kelH- 'rise' / *skelH- 'cut' (homograph roots, neither 'cold'); no secure etymon"
+  },
+  {
+   "lang": "lt",
+   "key": "bėda",
+   "lex_id": [],
+   "note": "Derksen EDBIL s.v. bėda and EDSIL p. 38 *běda: borrowing from Slavic or a loan from Gothic disputed"
+  },
+  {
+   "lang": "lt",
+   "key": "aukštas",
+   "lex_id": [
+    "pie-root-h2ewg-increase"
+   ],
+   "note": "Derksen EDBIL p. 70 s.v. aukštas: PIE *h₂eug- (not the s-extended *h₂weks-)"
+  },
+  {
+   "lang": "lt",
+   "key": "kristi",
+   "lex_id": [],
+   "note": "Derksen EDBIL p. 259: kristi 'fall' has no secure etymon (the kaikki *kr̥nét- is the 'shake' root of krėsti)"
+  }
+ ]
+}

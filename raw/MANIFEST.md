@@ -457,3 +457,5 @@ Fetched under the consent recorded above. One request at a time, ≥ 1.5 s apart
 **OUP-copyright CELT files (2026-10-24, David):** the 58 files G4000xx that carry an Oxford University Press copyright notice are **research only**: usable for searches, the 8c reading runs and as cited Tier 2 evidence, never in released training data. All other CELT texts: research + training, per the CELT permission above.
 
 **kaikki all-languages split, Celtic (2026-10-24):** Irish, Welsh and Scottish Gaelic per-language JSONL extracted from the kaikki all-languages dump (2026-10-21) into raw/daughters/kaikki-all-20261021/split/ by the Celtic-mapping agent (CC BY-SA, as the dump).
+
+**kaikki all-languages split, Balto-Slavic (2026-10-24):** two trimmed per-language JSONL files written into raw/daughters/kaikki-all-20261021/split/ by the Balto-Slavic mapping agent for the Vuk/byliny/dainos/CCMH lemmatizers (CC BY-SA, as the dump).

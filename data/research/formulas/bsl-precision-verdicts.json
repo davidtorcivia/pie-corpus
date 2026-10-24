@@ -1,0 +1,8097 @@
+{
+"_doc": "Precision samples for the Balto-Slavic round-4 tables (docs/research/mapping-precision-bsl-new.md): 100 token-weighted mapped (surface, lemma) types per corpus; verdict C correct / P partial / W wrong. before = seed 7 on the first build; after = seed 8 on the shipped tables. Single word forms only.",
+"before_seed7": {
+"vuk": [
+{
+"n": 1,
+"surface": "другу",
+"lemma": "drug|drugi",
+"tokens": 299,
+"lex_id": [
+"pie-lex-dhrowghos-2"
+],
+"verdict": "C"
+},
+{
+"n": 2,
+"surface": "вјере",
+"lemma": "vjera",
+"tokens": 77,
+"lex_id": [
+"pie-lex-weh1ros"
+],
+"verdict": "C"
+},
+{
+"n": 3,
+"surface": "подигоше",
+"lemma": "podići",
+"tokens": 77,
+"lex_id": [
+"pie-lex-dwoh1"
+],
+"verdict": "W"
+},
+{
+"n": 4,
+"surface": "брже",
+"lemma": "brz",
+"tokens": 323,
+"lex_id": [
+"pie-lex-mregjhus"
+],
+"verdict": "W"
+},
+{
+"n": 5,
+"surface": "невоља",
+"lemma": "nevolja",
+"tokens": 96,
+"lex_id": [
+"pie-root-welh1-choose"
+],
+"verdict": "C"
+},
+{
+"n": 6,
+"surface": "земље",
+"lemma": "zemlja",
+"tokens": 284,
+"lex_id": [
+"pie-lex-dhegjhoxm"
+],
+"verdict": "C"
+},
+{
+"n": 7,
+"surface": "брата",
+"lemma": "brat",
+"tokens": 723,
+"lex_id": [
+"pie-lex-bhreh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 8,
+"surface": "може",
+"lemma": "moći",
+"tokens": 367,
+"lex_id": [
+"pie-lex-memoghe"
+],
+"verdict": "C"
+},
+{
+"n": 9,
+"surface": "бијеломе",
+"lemma": "bijel",
+"tokens": 418,
+"lex_id": [
+"pie-lex-bhexlHo",
+"pie-lex-bhlHos"
+],
+"verdict": "C"
+},
+{
+"n": 10,
+"surface": "коло",
+"lemma": "kolo",
+"tokens": 137,
+"lex_id": [
+"pie-lex-kwekwlos",
+"pie-lex-kwolh1os"
+],
+"verdict": "C"
+},
+{
+"n": 11,
+"surface": "браћо",
+"lemma": "braća",
+"tokens": 680,
+"lex_id": [
+"kaikki:bʰreh₂tr̥yeh₂"
+],
+"verdict": "C"
+},
+{
+"n": 12,
+"surface": "велик",
+"lemma": "velik",
+"tokens": 12,
+"lex_id": [
+"pie-root-welh1-choose"
+],
+"verdict": "C"
+},
+{
+"n": 13,
+"surface": "кажи",
+"lemma": "kazati",
+"tokens": 91,
+"lex_id": [
+"pie-lex-kwoxgjyeti",
+"pie-lex-kwoxkjyeti"
+],
+"verdict": "C"
+},
+{
+"n": 14,
+"surface": "стаде",
+"lemma": "stati",
+"tokens": 405,
+"lex_id": [
+"pie-lex-stneh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 15,
+"surface": "војска",
+"lemma": "vojska",
+"tokens": 481,
+"lex_id": [
+"pie-lex-woyh1os"
+],
+"verdict": "C"
+},
+{
+"n": 16,
+"surface": "граду",
+"lemma": "grad",
+"tokens": 580,
+"lex_id": [
+"pie-lex-ghordhos",
+"pie-lex-gjhreh3d"
+],
+"verdict": "P"
+},
+{
+"n": 17,
+"surface": "планине",
+"lemma": "planina",
+"tokens": 267,
+"lex_id": [
+"pie-lex-ploh2nos",
+"pie-lex-polh2nos"
+],
+"verdict": "C"
+},
+{
+"n": 18,
+"surface": "јавну",
+"lemma": "javni",
+"tokens": 2,
+"lex_id": [
+"pie-root-h2ew-enjoy",
+"pie-root-h2ew-perceive"
+],
+"verdict": "P"
+},
+{
+"n": 19,
+"surface": "одведоше",
+"lemma": "odvesti",
+"tokens": 44,
+"lex_id": [
+"pie-lex-wegjheti"
+],
+"verdict": "W"
+},
+{
+"n": 20,
+"surface": "идем",
+"lemma": "ići",
+"tokens": 100,
+"lex_id": [
+"pie-lex-h1eyti"
+],
+"verdict": "C"
+},
+{
+"n": 21,
+"surface": "јутру",
+"lemma": "jutro",
+"tokens": 97,
+"lex_id": [
+"pie-lex-h2ewser",
+"pie-lex-h2ewseri"
+],
+"verdict": "C"
+},
+{
+"n": 22,
+"surface": "бију",
+"lemma": "biti",
+"tokens": 100,
+"lex_id": [
+"pie-lex-bhih2yeti",
+"pie-lex-h1esti"
+],
+"verdict": "P"
+},
+{
+"n": 23,
+"surface": "сједе",
+"lemma": "sjesti|sjediti",
+"tokens": 174,
+"lex_id": [
+"pie-lex-sedeh1yeti",
+"pie-lex-sisdeti"
+],
+"verdict": "C"
+},
+{
+"n": 24,
+"surface": "допаде",
+"lemma": "dopasti",
+"tokens": 92,
+"lex_id": [
+"pie-lex-peh2sti",
+"pie-lex-peh2y"
+],
+"verdict": "W"
+},
+{
+"n": 25,
+"surface": "вратима",
+"lemma": "vrata",
+"tokens": 65,
+"lex_id": [
+"pie-root-wert-turn"
+],
+"verdict": "C"
+},
+{
+"n": 26,
+"surface": "вију",
+"lemma": "viti",
+"tokens": 31,
+"lex_id": [
+"pie-lex-uh1it",
+"pie-lex-weyh1ti"
+],
+"verdict": "C"
+},
+{
+"n": 27,
+"surface": "драги",
+"lemma": "drag",
+"tokens": 416,
+"lex_id": [
+"pie-root-der-split"
+],
+"verdict": "W"
+},
+{
+"n": 28,
+"surface": "сокола",
+"lemma": "sokol|soko",
+"tokens": 298,
+"lex_id": [
+"pie-lex-sokweyeti"
+],
+"verdict": "W"
+},
+{
+"n": 29,
+"surface": "говораше",
+"lemma": "govoriti",
+"tokens": 227,
+"lex_id": [
+"pie-lex-gowHoros"
+],
+"verdict": "C"
+},
+{
+"n": 30,
+"surface": "одсијече",
+"lemma": "odsjeći",
+"tokens": 56,
+"lex_id": [
+"pie-lex-sexkti"
+],
+"verdict": "C"
+},
+{
+"n": 31,
+"surface": "поведе",
+"lemma": "povesti",
+"tokens": 91,
+"lex_id": [
+"pie-lex-wegjheti"
+],
+"verdict": "W"
+},
+{
+"n": 32,
+"surface": "злата",
+"lemma": "zlato|zlata",
+"tokens": 451,
+"lex_id": [
+"pie-lex-gjholh3tos"
+],
+"verdict": "C"
+},
+{
+"n": 33,
+"surface": "нове",
+"lemma": "nov|nova",
+"tokens": 42,
+"lex_id": [
+"pie-lex-newos"
+],
+"verdict": "C"
+},
+{
+"n": 34,
+"surface": "братом",
+"lemma": "brat",
+"tokens": 36,
+"lex_id": [
+"pie-lex-bhreh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 35,
+"surface": "брате",
+"lemma": "brat",
+"tokens": 618,
+"lex_id": [
+"pie-lex-bhreh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 36,
+"surface": "господаре",
+"lemma": "gospodar|gospodariti",
+"tokens": 220,
+"lex_id": [
+"pie-lex-ghostipotis"
+],
+"verdict": "C"
+},
+{
+"n": 37,
+"surface": "поље",
+"lemma": "polje",
+"tokens": 439,
+"lex_id": [
+"pie-root-pleh2-flat"
+],
+"verdict": "C"
+},
+{
+"n": 38,
+"surface": "кака",
+"lemma": "kaka",
+"tokens": 30,
+"lex_id": [
+"pie-lex-kakkeh2"
+],
+"verdict": "W"
+},
+{
+"n": 39,
+"surface": "друга",
+"lemma": "drug|drugi",
+"tokens": 509,
+"lex_id": [
+"pie-lex-dhrowghos-2"
+],
+"verdict": "C"
+},
+{
+"n": 40,
+"surface": "окретале",
+"lemma": "okretati",
+"tokens": 1,
+"lex_id": [
+"pie-lex-krnetti"
+],
+"verdict": "C"
+},
+{
+"n": 41,
+"surface": "кључе",
+"lemma": "ključ",
+"tokens": 78,
+"lex_id": [
+"pie-lex-kleh2uti"
+],
+"verdict": "C"
+},
+{
+"n": 42,
+"surface": "дође",
+"lemma": "doći",
+"tokens": 1441,
+"lex_id": [
+"pie-lex-h1eyti"
+],
+"verdict": "C"
+},
+{
+"n": 43,
+"surface": "скаче",
+"lemma": "skakati",
+"tokens": 47,
+"lex_id": [
+"pie-lex-skokos"
+],
+"verdict": "C"
+},
+{
+"n": 44,
+"surface": "приправила",
+"lemma": "pripraviti",
+"tokens": 2,
+"lex_id": [
+"kaikki:preh₃wos"
+],
+"verdict": "C"
+},
+{
+"n": 45,
+"surface": "данци",
+"lemma": "danak|danac",
+"tokens": 16,
+"lex_id": [
+"pie-lex-dedeh3ti"
+],
+"verdict": "C"
+},
+{
+"n": 46,
+"surface": "огрејало",
+"lemma": "ogrejati",
+"tokens": 3,
+"lex_id": [
+"pie-lex-gwhreh1yeti"
+],
+"verdict": "C"
+},
+{
+"n": 47,
+"surface": "направити",
+"lemma": "napraviti",
+"tokens": 10,
+"lex_id": [
+"kaikki:preh₃wos"
+],
+"verdict": "C"
+},
+{
+"n": 48,
+"surface": "тужбе",
+"lemma": "tužba",
+"tokens": 5,
+"lex_id": [
+"pie-lex-tongheyeti"
+],
+"verdict": "C"
+},
+{
+"n": 49,
+"surface": "рони",
+"lemma": "roniti",
+"tokens": 107,
+"lex_id": [
+"pie-lex-h3reyH"
+],
+"verdict": "C"
+},
+{
+"n": 50,
+"surface": "долазио",
+"lemma": "dolaziti",
+"tokens": 71,
+"lex_id": [
+"kaikki:loh₁ǵey"
+],
+"verdict": "C"
+},
+{
+"n": 51,
+"surface": "љуби",
+"lemma": "ljubiti",
+"tokens": 467,
+"lex_id": [
+"pie-lex-lowbheyeti"
+],
+"verdict": "C"
+},
+{
+"n": 52,
+"surface": "владало",
+"lemma": "vladati",
+"tokens": 1,
+"lex_id": [
+"kaikki:h₂welh₁dʰh₁",
+"pie-lex-h2woldheh1ti"
+],
+"verdict": "C"
+},
+{
+"n": 53,
+"surface": "имену",
+"lemma": "ime",
+"tokens": 249,
+"lex_id": [
+"pie-lex-h1nomn"
+],
+"verdict": "C"
+},
+{
+"n": 54,
+"surface": "сам",
+"lemma": "sam",
+"tokens": 1674,
+"lex_id": [
+"pie-lex-somHos"
+],
+"verdict": "W"
+},
+{
+"n": 55,
+"surface": "вјеру",
+"lemma": "vjera",
+"tokens": 310,
+"lex_id": [
+"pie-lex-weh1ros"
+],
+"verdict": "C"
+},
+{
+"n": 56,
+"surface": "млад",
+"lemma": "mlad",
+"tokens": 83,
+"lex_id": [
+"pie-lex-moldos"
+],
+"verdict": "C"
+},
+{
+"n": 57,
+"surface": "посјекли",
+"lemma": "posjeći",
+"tokens": 6,
+"lex_id": [
+"pie-lex-sexkti"
+],
+"verdict": "C"
+},
+{
+"n": 58,
+"surface": "сами",
+"lemma": "sam",
+"tokens": 20,
+"lex_id": [
+"pie-lex-somHos"
+],
+"verdict": "C"
+},
+{
+"n": 59,
+"surface": "огањ",
+"lemma": "oganj",
+"tokens": 166,
+"lex_id": [
+"pie-lex-h1ngwnis"
+],
+"verdict": "C"
+},
+{
+"n": 60,
+"surface": "туђа",
+"lemma": "tuđ",
+"tokens": 22,
+"lex_id": [
+"pie-lex-tewteh2"
+],
+"verdict": "C"
+},
+{
+"n": 61,
+"surface": "престаје",
+"lemma": "prestati",
+"tokens": 13,
+"lex_id": [
+"pie-lex-stneh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 62,
+"surface": "остављала",
+"lemma": "ostavljati",
+"tokens": 2,
+"lex_id": [
+"pie-lex-steh2weyeti"
+],
+"verdict": "C"
+},
+{
+"n": 63,
+"surface": "одоше",
+"lemma": "otići",
+"tokens": 251,
+"lex_id": [
+"pie-lex-h1eyti"
+],
+"verdict": "C"
+},
+{
+"n": 64,
+"surface": "лакта",
+"lemma": "lakat",
+"tokens": 7,
+"lex_id": [
+"pie-root-Heh3l-bow"
+],
+"verdict": "C"
+},
+{
+"n": 65,
+"surface": "сташе",
+"lemma": "stati",
+"tokens": 71,
+"lex_id": [
+"pie-lex-stneh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 66,
+"surface": "ђеверу",
+"lemma": "đever",
+"tokens": 37,
+"lex_id": [
+"pie-lex-dayh2wexr"
+],
+"verdict": "C"
+},
+{
+"n": 67,
+"surface": "меса",
+"lemma": "meso",
+"tokens": 68,
+"lex_id": [
+"pie-lex-mexms"
+],
+"verdict": "C"
+},
+{
+"n": 68,
+"surface": "послужити",
+"lemma": "poslužiti",
+"tokens": 9,
+"lex_id": [
+"pie-lex-kjlew"
+],
+"verdict": "C"
+},
+{
+"n": 69,
+"surface": "пријатељи",
+"lemma": "prijatelj",
+"tokens": 45,
+"lex_id": [
+"kaikki:priheh₂ti"
+],
+"verdict": "C"
+},
+{
+"n": 70,
+"surface": "погледати",
+"lemma": "pogledati",
+"tokens": 101,
+"lex_id": [
+"kaikki:gʰlend"
+],
+"verdict": "C"
+},
+{
+"n": 71,
+"surface": "ћу",
+"lemma": "čuti",
+"tokens": 1643,
+"lex_id": [
+"pie-lex-skexwh1st"
+],
+"verdict": "W"
+},
+{
+"n": 72,
+"surface": "срце",
+"lemma": "srce",
+"tokens": 344,
+"lex_id": [
+"pie-lex-kjexr"
+],
+"verdict": "C"
+},
+{
+"n": 73,
+"surface": "доведени",
+"lemma": "dovesti",
+"tokens": 1,
+"lex_id": [
+"pie-lex-wegjheti"
+],
+"verdict": "W"
+},
+{
+"n": 74,
+"surface": "знали",
+"lemma": "znati",
+"tokens": 16,
+"lex_id": [
+"pie-root-gjneh3-recognise"
+],
+"verdict": "C"
+},
+{
+"n": 75,
+"surface": "посјекоше",
+"lemma": "posjeći",
+"tokens": 145,
+"lex_id": [
+"pie-lex-sexkti"
+],
+"verdict": "C"
+},
+{
+"n": 76,
+"surface": "бистра",
+"lemma": "bistar",
+"tokens": 37,
+"lex_id": [
+"kaikki:bʰos"
+],
+"verdict": "W"
+},
+{
+"n": 77,
+"surface": "лице",
+"lemma": "lice",
+"tokens": 420,
+"lex_id": [
+"kaikki:leykom"
+],
+"verdict": "C"
+},
+{
+"n": 78,
+"surface": "главу",
+"lemma": "glava",
+"tokens": 964,
+"lex_id": [
+"pie-lex-golHweh2"
+],
+"verdict": "C"
+},
+{
+"n": 79,
+"surface": "виђу",
+"lemma": "vidjeti|videti",
+"tokens": 38,
+"lex_id": [
+"pie-root-weyd-see"
+],
+"verdict": "C"
+},
+{
+"n": 80,
+"surface": "свежи",
+"lemma": "svež",
+"tokens": 5,
+"lex_id": [
+"pie-root-wegj-be_lively"
+],
+"verdict": "W"
+},
+{
+"n": 81,
+"surface": "војском",
+"lemma": "vojska",
+"tokens": 338,
+"lex_id": [
+"pie-lex-woyh1os"
+],
+"verdict": "C"
+},
+{
+"n": 82,
+"surface": "дарове",
+"lemma": "dar",
+"tokens": 100,
+"lex_id": [
+"pie-lex-deh3rom"
+],
+"verdict": "C"
+},
+{
+"n": 83,
+"surface": "иве",
+"lemma": "iva",
+"tokens": 29,
+"lex_id": [
+"pie-lex-h1eyHweh2"
+],
+"verdict": "W"
+},
+{
+"n": 84,
+"surface": "трагове",
+"lemma": "trag",
+"tokens": 35,
+"lex_id": [
+"kaikki:tregʰ"
+],
+"verdict": "C"
+},
+{
+"n": 85,
+"surface": "бјеше",
+"lemma": "biti",
+"tokens": 667,
+"lex_id": [
+"pie-lex-bhih2yeti",
+"pie-lex-h1esti"
+],
+"verdict": "P"
+},
+{
+"n": 86,
+"surface": "креће",
+"lemma": "kretati",
+"tokens": 21,
+"lex_id": [
+"pie-lex-krnetti"
+],
+"verdict": "C"
+},
+{
+"n": 87,
+"surface": "нову",
+"lemma": "nov",
+"tokens": 39,
+"lex_id": [
+"pie-lex-newos"
+],
+"verdict": "C"
+},
+{
+"n": 88,
+"surface": "узе",
+"lemma": "uzeti",
+"tokens": 427,
+"lex_id": [
+"kaikki:h₁m̥eti"
+],
+"verdict": "C"
+},
+{
+"n": 89,
+"surface": "солило",
+"lemma": "soliti",
+"tokens": 3,
+"lex_id": [
+"pie-lex-sexh2l"
+],
+"verdict": "C"
+},
+{
+"n": 90,
+"surface": "тврде",
+"lemma": "tvrd",
+"tokens": 83,
+"lex_id": [
+"pie-root-stwerH-stir_up",
+"pie-root-twerH-enclose"
+],
+"verdict": "P"
+},
+{
+"n": 91,
+"surface": "добар",
+"lemma": "dobar",
+"tokens": 225,
+"lex_id": [
+"pie-lex-dhh2obhros"
+],
+"verdict": "C"
+},
+{
+"n": 92,
+"surface": "имају",
+"lemma": "imati",
+"tokens": 18,
+"lex_id": [
+"pie-root-h1em-take"
+],
+"verdict": "C"
+},
+{
+"n": 93,
+"surface": "зелено",
+"lemma": "zelen",
+"tokens": 40,
+"lex_id": [
+"pie-lex-gjhelyeti"
+],
+"verdict": "C"
+},
+{
+"n": 94,
+"surface": "јеси",
+"lemma": "jesi",
+"tokens": 181,
+"lex_id": [
+"pie-lex-h1esti"
+],
+"verdict": "C"
+},
+{
+"n": 95,
+"surface": "гледа",
+"lemma": "gledati",
+"tokens": 359,
+"lex_id": [
+"kaikki:gʰlend"
+],
+"verdict": "C"
+},
+{
+"n": 96,
+"surface": "гују",
+"lemma": "guja",
+"tokens": 33,
+"lex_id": [
+"pie-lex-gwowyos",
+"pie-root-gew-bend"
+],
+"verdict": "W"
+},
+{
+"n": 97,
+"surface": "даде",
+"lemma": "dati",
+"tokens": 795,
+"lex_id": [
+"pie-lex-dedeh3ti"
+],
+"verdict": "C"
+},
+{
+"n": 98,
+"surface": "мирко",
+"lemma": "mirko",
+"tokens": 229,
+"lex_id": [
+"kaikki:meyhros"
+],
+"verdict": "W"
+},
+{
+"n": 99,
+"surface": "освануло",
+"lemma": "osvanuti",
+"tokens": 96,
+"lex_id": [
+"pie-lex-kjwinetti"
+],
+"verdict": "C"
+},
+{
+"n": 100,
+"surface": "двору",
+"lemma": "dvor",
+"tokens": 618,
+"lex_id": [
+"pie-root-dhwer-door"
+],
+"verdict": "C"
+}
+],
+"byliny": [
+{
+"n": 1,
+"surface": "зелено",
+"lemma": "зеленый",
+"tokens": 48,
+"lex_id": [
+"pie-lex-gjhelyeti"
+],
+"verdict": "C"
+},
+{
+"n": 2,
+"surface": "говорить",
+"lemma": "говорить",
+"tokens": 1015,
+"lex_id": [
+"pie-lex-gowHoros"
+],
+"verdict": "C"
+},
+{
+"n": 3,
+"surface": "правую",
+"lemma": "правый",
+"tokens": 112,
+"lex_id": [
+"kaikki:preh₃wos"
+],
+"verdict": "C"
+},
+{
+"n": 4,
+"surface": "взял",
+"lemma": "взять",
+"tokens": 30,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+},
+{
+"n": 5,
+"surface": "орлы",
+"lemma": "орел",
+"tokens": 13,
+"lex_id": [
+"pie-lex-h3erox"
+],
+"verdict": "C"
+},
+{
+"n": 6,
+"surface": "камешку",
+"lemma": "камень|камешек",
+"tokens": 44,
+"lex_id": [
+"pie-lex-h2ekjmox"
+],
+"verdict": "C"
+},
+{
+"n": 7,
+"surface": "великая",
+"lemma": "великий",
+"tokens": 143,
+"lex_id": [
+"pie-root-welh1-choose"
+],
+"verdict": "C"
+},
+{
+"n": 8,
+"surface": "новое",
+"lemma": "новый|новое",
+"tokens": 15,
+"lex_id": [
+"pie-lex-newos"
+],
+"verdict": "C"
+},
+{
+"n": 9,
+"surface": "бъжала",
+"lemma": "бежать",
+"tokens": 11,
+"lex_id": [
+"pie-lex-bhegwyeh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 10,
+"surface": "матушки",
+"lemma": "матушка",
+"tokens": 294,
+"lex_id": [
+"pie-lex-meh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 11,
+"surface": "вечеру",
+"lemma": "вечер",
+"tokens": 50,
+"lex_id": [
+"pie-lex-wekwsperos"
+],
+"verdict": "C"
+},
+{
+"n": 12,
+"surface": "воли",
+"lemma": "воля",
+"tokens": 16,
+"lex_id": [
+"pie-root-welh1-choose"
+],
+"verdict": "C"
+},
+{
+"n": 13,
+"surface": "малых",
+"lemma": "малый",
+"tokens": 14,
+"lex_id": [
+"pie-lex-smoh1los"
+],
+"verdict": "C"
+},
+{
+"n": 14,
+"surface": "спохватится",
+"lemma": "спохватиться",
+"tokens": 2,
+"lex_id": [
+"pie-lex-swe-2"
+],
+"verdict": "W"
+},
+{
+"n": 15,
+"surface": "выходили",
+"lemma": "выходить",
+"tokens": 63,
+"lex_id": [
+"kaikki:sod"
+],
+"verdict": "C"
+},
+{
+"n": 16,
+"surface": "деревце",
+"lemma": "дерево",
+"tokens": 9,
+"lex_id": [
+"pie-lex-doru"
+],
+"verdict": "C"
+},
+{
+"n": 17,
+"surface": "поразсказать",
+"lemma": "рассказать",
+"tokens": 1,
+"lex_id": [
+"pie-lex-kwoxgjyeti",
+"pie-lex-kwoxkjyeti"
+],
+"verdict": "C"
+},
+{
+"n": 18,
+"surface": "ученье",
+"lemma": "учение",
+"tokens": 14,
+"lex_id": [
+"pie-lex-h1owkeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 19,
+"surface": "пиръ",
+"lemma": "пир",
+"tokens": 449,
+"lex_id": [
+"pie-root-peh3-drink"
+],
+"verdict": "C"
+},
+{
+"n": 20,
+"surface": "лебедя",
+"lemma": "лебедь",
+"tokens": 38,
+"lex_id": [
+"pie-lex-albhos"
+],
+"verdict": "C"
+},
+{
+"n": 21,
+"surface": "честна",
+"lemma": "честный",
+"tokens": 201,
+"lex_id": [
+"pie-lex-kweyt"
+],
+"verdict": "C"
+},
+{
+"n": 22,
+"surface": "быть",
+"lemma": "быть",
+"tokens": 495,
+"lex_id": [
+"pie-lex-h1esti"
+],
+"verdict": "W"
+},
+{
+"n": 23,
+"surface": "стольному",
+"lemma": "стольный",
+"tokens": 53,
+"lex_id": [
+"pie-lex-sth2olom"
+],
+"verdict": "C"
+},
+{
+"n": 24,
+"surface": "жена",
+"lemma": "жена",
+"tokens": 476,
+"lex_id": [
+"pie-lex-gwexn"
+],
+"verdict": "C"
+},
+{
+"n": 25,
+"surface": "говоритъ",
+"lemma": "говорить",
+"tokens": 712,
+"lex_id": [
+"pie-lex-gowHoros"
+],
+"verdict": "C"
+},
+{
+"n": 26,
+"surface": "выражены",
+"lemma": "выраженный|выразить",
+"tokens": 2,
+"lex_id": [
+"pie-root-wreh1gj-break"
+],
+"verdict": "W"
+},
+{
+"n": 27,
+"surface": "заметало",
+"lemma": "заметать",
+"tokens": 3,
+"lex_id": [
+"pie-root-smeyt-throw"
+],
+"verdict": "W"
+},
+{
+"n": 28,
+"surface": "соловей",
+"lemma": "соловей",
+"tokens": 362,
+"lex_id": [
+"kaikki:solhwos"
+],
+"verdict": "C"
+},
+{
+"n": 29,
+"surface": "городу",
+"lemma": "город",
+"tokens": 515,
+"lex_id": [
+"pie-lex-ghordhos"
+],
+"verdict": "C"
+},
+{
+"n": 30,
+"surface": "пить",
+"lemma": "пить",
+"tokens": 109,
+"lex_id": [
+"pie-lex-peh3y",
+"pie-lex-pih3"
+],
+"verdict": "C"
+},
+{
+"n": 31,
+"surface": "поученая",
+"lemma": "ученый",
+"tokens": 1,
+"lex_id": [
+"pie-lex-h1owkeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 32,
+"surface": "колечку",
+"lemma": "колечко|кольцо",
+"tokens": 8,
+"lex_id": [
+"pie-root-kwelh1-turn"
+],
+"verdict": "C"
+},
+{
+"n": 33,
+"surface": "отобраны",
+"lemma": "отобрать",
+"tokens": 3,
+"lex_id": [
+"pie-lex-bhereti"
+],
+"verdict": "C"
+},
+{
+"n": 34,
+"surface": "великъ",
+"lemma": "велик|великий",
+"tokens": 103,
+"lex_id": [
+"pie-root-welh1-choose"
+],
+"verdict": "C"
+},
+{
+"n": 35,
+"surface": "великое",
+"lemma": "великий",
+"tokens": 95,
+"lex_id": [
+"pie-root-welh1-choose"
+],
+"verdict": "C"
+},
+{
+"n": 36,
+"surface": "губи",
+"lemma": "губить",
+"tokens": 14,
+"lex_id": [
+"pie-lex-ghowbheye"
+],
+"verdict": "C"
+},
+{
+"n": 37,
+"surface": "прощене",
+"lemma": "прощение",
+"tokens": 1,
+"lex_id": [
+"pie-lex-pro-2"
+],
+"verdict": "P"
+},
+{
+"n": 38,
+"surface": "матушка",
+"lemma": "матушка",
+"tokens": 942,
+"lex_id": [
+"pie-lex-meh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 39,
+"surface": "застрахованы",
+"lemma": "застраховать",
+"tokens": 1,
+"lex_id": [
+"kaikki:streg"
+],
+"verdict": "W"
+},
+{
+"n": 40,
+"surface": "платье",
+"lemma": "платье",
+"tokens": 256,
+"lex_id": [
+"pie-lex-plekj"
+],
+"verdict": "W"
+},
+{
+"n": 41,
+"surface": "могуче",
+"lemma": "могучий",
+"tokens": 60,
+"lex_id": [
+"pie-lex-memoghe"
+],
+"verdict": "C"
+},
+{
+"n": 42,
+"surface": "жизни",
+"lemma": "жизнь",
+"tokens": 88,
+"lex_id": [
+"pie-lex-gwih3weti"
+],
+"verdict": "C"
+},
+{
+"n": 43,
+"surface": "слуги",
+"lemma": "слуга",
+"tokens": 225,
+"lex_id": [
+"pie-lex-kjlew"
+],
+"verdict": "C"
+},
+{
+"n": 44,
+"surface": "раскрыль",
+"lemma": "раскрыть",
+"tokens": 1,
+"lex_id": [
+"pie-lex-kruHyeti"
+],
+"verdict": "C"
+},
+{
+"n": 45,
+"surface": "довольна",
+"lemma": "довольный",
+"tokens": 1,
+"lex_id": [
+"pie-root-welh1-choose"
+],
+"verdict": "C"
+},
+{
+"n": 46,
+"surface": "пирожные",
+"lemma": "пирожное|пирожный",
+"tokens": 1,
+"lex_id": [
+"pie-root-peh3-drink"
+],
+"verdict": "C"
+},
+{
+"n": 47,
+"surface": "образцовъ",
+"lemma": "образец|образцовый",
+"tokens": 13,
+"lex_id": [
+"pie-root-wreh1gj-break"
+],
+"verdict": "W"
+},
+{
+"n": 48,
+"surface": "сукна",
+"lemma": "сукно",
+"tokens": 63,
+"lex_id": [
+"pie-root-sewk-turn"
+],
+"verdict": "C"
+},
+{
+"n": 49,
+"surface": "садили",
+"lemma": "садить",
+"tokens": 11,
+"lex_id": [
+"pie-lex-sodeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 50,
+"surface": "желтые",
+"lemma": "желтый",
+"tokens": 10,
+"lex_id": [
+"pie-lex-gjhlh3tos"
+],
+"verdict": "C"
+},
+{
+"n": 51,
+"surface": "чист",
+"lemma": "чистый|чистить",
+"tokens": 7,
+"lex_id": [
+"pie-lex-skidtos"
+],
+"verdict": "C"
+},
+{
+"n": 52,
+"surface": "выросъ",
+"lemma": "вырасти",
+"tokens": 2,
+"lex_id": [
+"pie-root-h3er-move"
+],
+"verdict": "C"
+},
+{
+"n": 53,
+"surface": "люди",
+"lemma": "люди",
+"tokens": 254,
+"lex_id": [
+"pie-lex-h1lewdhis"
+],
+"verdict": "C"
+},
+{
+"n": 54,
+"surface": "сидятъ",
+"lemma": "сидеть",
+"tokens": 77,
+"lex_id": [
+"pie-lex-sedeh1yeti"
+],
+"verdict": "C"
+},
+{
+"n": 55,
+"surface": "мхи",
+"lemma": "мох",
+"tokens": 22,
+"lex_id": [
+"pie-lex-musos"
+],
+"verdict": "C"
+},
+{
+"n": 56,
+"surface": "бывать",
+"lemma": "бывать",
+"tokens": 49,
+"lex_id": [
+"pie-lex-h1esti"
+],
+"verdict": "W"
+},
+{
+"n": 57,
+"surface": "приходящим",
+"lemma": "приходить",
+"tokens": 1,
+"lex_id": [
+"kaikki:sod"
+],
+"verdict": "C"
+},
+{
+"n": 58,
+"surface": "скажите",
+"lemma": "сказать",
+"tokens": 43,
+"lex_id": [
+"pie-lex-kwoxgjyeti",
+"pie-lex-kwoxkjyeti"
+],
+"verdict": "C"
+},
+{
+"n": 59,
+"surface": "пива",
+"lemma": "пиво",
+"tokens": 104,
+"lex_id": [
+"pie-lex-pih3wom"
+],
+"verdict": "C"
+},
+{
+"n": 60,
+"surface": "сукрой",
+"lemma": "укрыть",
+"tokens": 3,
+"lex_id": [
+"pie-lex-kruHyeti"
+],
+"verdict": "W"
+},
+{
+"n": 61,
+"surface": "заставимъ",
+"lemma": "заставить",
+"tokens": 4,
+"lex_id": [
+"pie-lex-steh2weyeti"
+],
+"verdict": "C"
+},
+{
+"n": 62,
+"surface": "разложенное",
+"lemma": "разложить",
+"tokens": 1,
+"lex_id": [
+"pie-lex-logheyeti"
+],
+"verdict": "C"
+},
+{
+"n": 63,
+"surface": "повыдернутъ",
+"lemma": "выдернуть",
+"tokens": 3,
+"lex_id": [
+"pie-lex-drHgheh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 64,
+"surface": "писаному",
+"lemma": "писаный",
+"tokens": 119,
+"lex_id": [
+"pie-root-peykj-hew",
+"pie-root-peykj-hostile"
+],
+"verdict": "P"
+},
+{
+"n": 65,
+"surface": "могъ",
+"lemma": "мочь",
+"tokens": 98,
+"lex_id": [
+"pie-lex-memoghe"
+],
+"verdict": "C"
+},
+{
+"n": 66,
+"surface": "старицы",
+"lemma": "старица|старец",
+"tokens": 11,
+"lex_id": [
+"pie-lex-sth2ros"
+],
+"verdict": "C"
+},
+{
+"n": 67,
+"surface": "утонуль",
+"lemma": "утонуть",
+"tokens": 1,
+"lex_id": [
+"pie-lex-ne-2"
+],
+"verdict": "W"
+},
+{
+"n": 68,
+"surface": "морозы",
+"lemma": "мороз",
+"tokens": 17,
+"lex_id": [
+"kaikki:morǵos"
+],
+"verdict": "C"
+},
+{
+"n": 69,
+"surface": "приразостланы",
+"lemma": "разостлать",
+"tokens": 4,
+"lex_id": [
+"pie-lex-stelyeti"
+],
+"verdict": "C"
+},
+{
+"n": 70,
+"surface": "великою",
+"lemma": "великий",
+"tokens": 38,
+"lex_id": [
+"pie-root-welh1-choose"
+],
+"verdict": "C"
+},
+{
+"n": 71,
+"surface": "ребята",
+"lemma": "ребята|ребенок",
+"tokens": 102,
+"lex_id": [
+"pie-root-h3erbh-turn"
+],
+"verdict": "C"
+},
+{
+"n": 72,
+"surface": "поъхаль",
+"lemma": "поехать",
+"tokens": 11,
+"lex_id": [
+"pie-lex-yeh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 73,
+"surface": "шуриномъ",
+"lemma": "шурин",
+"tokens": 7,
+"lex_id": [
+"kaikki:syowros"
+],
+"verdict": "C"
+},
+{
+"n": 74,
+"surface": "сохатые",
+"lemma": "сохатый",
+"tokens": 2,
+"lex_id": [
+"kaikki:ḱokh₂"
+],
+"verdict": "C"
+},
+{
+"n": 75,
+"surface": "ехать",
+"lemma": "ехать",
+"tokens": 8,
+"lex_id": [
+"pie-lex-yeh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 76,
+"surface": "кровью’",
+"lemma": "кровь",
+"tokens": 2,
+"lex_id": [
+"pie-lex-krewh2s",
+"pie-lex-krewh2s-2"
+],
+"verdict": "C"
+},
+{
+"n": 77,
+"surface": "пробивать",
+"lemma": "пробивать",
+"tokens": 2,
+"lex_id": [
+"pie-lex-bhih2yeti"
+],
+"verdict": "C"
+},
+{
+"n": 78,
+"surface": "брату",
+"lemma": "брат",
+"tokens": 26,
+"lex_id": [
+"pie-lex-bhreh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 79,
+"surface": "молодая",
+"lemma": "молодая|молодой",
+"tokens": 136,
+"lex_id": [
+"pie-lex-mldus"
+],
+"verdict": "C"
+},
+{
+"n": 80,
+"surface": "голосомъ",
+"lemma": "голос",
+"tokens": 336,
+"lex_id": [
+"pie-root-gelH-naked"
+],
+"verdict": "W"
+},
+{
+"n": 81,
+"surface": "выпиль",
+"lemma": "выпить",
+"tokens": 25,
+"lex_id": [
+"pie-lex-peh3y",
+"pie-lex-pih3"
+],
+"verdict": "C"
+},
+{
+"n": 82,
+"surface": "великихъ",
+"lemma": "великий",
+"tokens": 17,
+"lex_id": [
+"pie-root-welh1-choose"
+],
+"verdict": "C"
+},
+{
+"n": 83,
+"surface": "скакалъ",
+"lemma": "скакать",
+"tokens": 30,
+"lex_id": [
+"pie-lex-skokos"
+],
+"verdict": "C"
+},
+{
+"n": 84,
+"surface": "главами",
+"lemma": "глава",
+"tokens": 2,
+"lex_id": [
+"pie-lex-golHweh2"
+],
+"verdict": "C"
+},
+{
+"n": 85,
+"surface": "домовъ",
+"lemma": "дом",
+"tokens": 7,
+"lex_id": [
+"pie-lex-doxm"
+],
+"verdict": "C"
+},
+{
+"n": 86,
+"surface": "кушаетъ",
+"lemma": "кушать",
+"tokens": 27,
+"lex_id": [
+"pie-root-gjews-taste"
+],
+"verdict": "C"
+},
+{
+"n": 87,
+"surface": "стрфлялъ",
+"lemma": "стрелять",
+"tokens": 13,
+"lex_id": [
+"kaikki:strel"
+],
+"verdict": "C"
+},
+{
+"n": 88,
+"surface": "висить",
+"lemma": "висеть",
+"tokens": 13,
+"lex_id": [
+"pie-lex-weypseh1yeti"
+],
+"verdict": "C"
+},
+{
+"n": 89,
+"surface": "младъ",
+"lemma": "младой",
+"tokens": 254,
+"lex_id": [
+"pie-lex-mldus"
+],
+"verdict": "C"
+},
+{
+"n": 90,
+"surface": "отстроенная",
+"lemma": "отстроить",
+"tokens": 1,
+"lex_id": [
+"pie-root-sterh3-spread"
+],
+"verdict": "W"
+},
+{
+"n": 91,
+"surface": "сына",
+"lemma": "сын",
+"tokens": 391,
+"lex_id": [
+"pie-lex-suHnus"
+],
+"verdict": "C"
+},
+{
+"n": 92,
+"surface": "соловья",
+"lemma": "соловей",
+"tokens": 166,
+"lex_id": [
+"kaikki:solhwos"
+],
+"verdict": "C"
+},
+{
+"n": 93,
+"surface": "стояла",
+"lemma": "стоять",
+"tokens": 53,
+"lex_id": [
+"pie-lex-sth2eh1yeti"
+],
+"verdict": "C"
+},
+{
+"n": 94,
+"surface": "дъло",
+"lemma": "дело|деть",
+"tokens": 72,
+"lex_id": [
+"pie-lex-dheh1lom",
+"pie-lex-dheh1t"
+],
+"verdict": "C"
+},
+{
+"n": 95,
+"surface": "любимых",
+"lemma": "любимый",
+"tokens": 2,
+"lex_id": [
+"pie-lex-lowbheyeti"
+],
+"verdict": "C"
+},
+{
+"n": 96,
+"surface": "истори",
+"lemma": "торить",
+"tokens": 45,
+"lex_id": [
+"pie-root-terh1-rub"
+],
+"verdict": "W"
+},
+{
+"n": 97,
+"surface": "сынокъ",
+"lemma": "сын",
+"tokens": 13,
+"lex_id": [
+"pie-lex-suHnus"
+],
+"verdict": "C"
+},
+{
+"n": 98,
+"surface": "храбраго",
+"lemma": "храбрый",
+"tokens": 5,
+"lex_id": [
+"pie-lex-skerb"
+],
+"verdict": "C"
+},
+{
+"n": 99,
+"surface": "городовую",
+"lemma": "городской",
+"tokens": 43,
+"lex_id": [
+"pie-lex-ghordhos"
+],
+"verdict": "C"
+},
+{
+"n": 100,
+"surface": "доброй",
+"lemma": "добрый",
+"tokens": 254,
+"lex_id": [
+"pie-lex-dhh2obhros"
+],
+"verdict": "C"
+}
+],
+"dainos": [
+{
+"n": 1,
+"surface": "imk",
+"lemma": "imti",
+"tokens": 28,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+},
+{
+"n": 2,
+"surface": "brėlu",
+"lemma": "bristi",
+"tokens": 35,
+"lex_id": [
+"pie-lex-bhredhti"
+],
+"verdict": "W"
+},
+{
+"n": 3,
+"surface": "pirmos",
+"lemma": "pirmas",
+"tokens": 7,
+"lex_id": [
+"pie-lex-preh2"
+],
+"verdict": "C"
+},
+{
+"n": 4,
+"surface": "avėlu",
+"lemma": "avėti",
+"tokens": 6,
+"lex_id": [
+"pie-root-h3ew-put_clothes_or"
+],
+"verdict": "W"
+},
+{
+"n": 5,
+"surface": "neiszvarysit",
+"lemma": "varyti",
+"tokens": 1,
+"lex_id": [
+"kaikki:woreyeti"
+],
+"verdict": "C"
+},
+{
+"n": 6,
+"surface": "jaunoji",
+"lemma": "jaunas",
+"tokens": 246,
+"lex_id": [
+"kaikki:h₂yewh₁nos"
+],
+"verdict": "C"
+},
+{
+"n": 7,
+"surface": "aukso",
+"lemma": "auksas",
+"tokens": 145,
+"lex_id": [
+"pie-lex-h2eh2usom"
+],
+"verdict": "C"
+},
+{
+"n": 8,
+"surface": "minę",
+"lemma": "minti",
+"tokens": 19,
+"lex_id": [
+"pie-root-menH-tread"
+],
+"verdict": "P"
+},
+{
+"n": 9,
+"surface": "atplaukė",
+"lemma": "plaukti",
+"tokens": 5,
+"lex_id": [
+"pie-lex-plewk"
+],
+"verdict": "C"
+},
+{
+"n": 10,
+"surface": "kėpė",
+"lemma": "kepti",
+"tokens": 7,
+"lex_id": [
+"pie-lex-pekweti"
+],
+"verdict": "C"
+},
+{
+"n": 11,
+"surface": "auszrele",
+"lemma": "aušra",
+"tokens": 16,
+"lex_id": [
+"pie-root-h2ews-become_light",
+"pie-root-h2ews-draw_water"
+],
+"verdict": "P"
+},
+{
+"n": 12,
+"surface": "baltū",
+"lemma": "baltas|balta",
+"tokens": 59,
+"lex_id": [
+"pie-lex-bholHtos"
+],
+"verdict": "C"
+},
+{
+"n": 13,
+"surface": "krasztė",
+"lemma": "kraštas",
+"tokens": 7,
+"lex_id": [
+"pie-lex-sker"
+],
+"verdict": "C"
+},
+{
+"n": 14,
+"surface": "sųnkiū",
+"lemma": "sunkus",
+"tokens": 11,
+"lex_id": [
+"kaikki:sʷenk"
+],
+"verdict": "C"
+},
+{
+"n": 15,
+"surface": "bernėli",
+"lemma": "bernas",
+"tokens": 128,
+"lex_id": [
+"pie-lex-bherno"
+],
+"verdict": "C"
+},
+{
+"n": 16,
+"surface": "dukrėlė",
+"lemma": "dukra",
+"tokens": 196,
+"lex_id": [
+"pie-lex-dhugh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 17,
+"surface": "pastatyti",
+"lemma": "pastatyti",
+"tokens": 11,
+"lex_id": [
+"pie-root-steh2-stand"
+],
+"verdict": "C"
+},
+{
+"n": 18,
+"surface": "ėmė",
+"lemma": "imti",
+"tokens": 108,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+},
+{
+"n": 19,
+"surface": "padėsi",
+"lemma": "padėti",
+"tokens": 3,
+"lex_id": [
+"pie-lex-dheh1t"
+],
+"verdict": "C"
+},
+{
+"n": 20,
+"surface": "kalbėti",
+"lemma": "kalbėti",
+"tokens": 40,
+"lex_id": [
+"pie-root-kelh1-call_out_to",
+"pie-root-skelh1-parch"
+],
+"verdict": "P"
+},
+{
+"n": 21,
+"surface": "žalia",
+"lemma": "žalias",
+"tokens": 63,
+"lex_id": [
+"pie-root-gjhelh3-green"
+],
+"verdict": "C"
+},
+{
+"n": 22,
+"surface": "atvėsi",
+"lemma": "vėsus",
+"tokens": 1,
+"lex_id": [
+"pie-lex-h2wexh1ti"
+],
+"verdict": "C"
+},
+{
+"n": 23,
+"surface": "tėku",
+"lemma": "tekėti",
+"tokens": 50,
+"lex_id": [
+"pie-lex-tekweti",
+"pie-lex-tekwti"
+],
+"verdict": "C"
+},
+{
+"n": 24,
+"surface": "geltonūju",
+"lemma": "geltonas",
+"tokens": 3,
+"lex_id": [
+"pie-lex-gjhlh3tos"
+],
+"verdict": "C"
+},
+{
+"n": 25,
+"surface": "brolytį",
+"lemma": "brolis",
+"tokens": 7,
+"lex_id": [
+"pie-lex-bhreh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 26,
+"surface": "bernyti",
+"lemma": "bernas",
+"tokens": 185,
+"lex_id": [
+"pie-lex-bherno"
+],
+"verdict": "C"
+},
+{
+"n": 27,
+"surface": "giėda",
+"lemma": "giedoti",
+"tokens": 40,
+"lex_id": [
+"pie-lex-gweHyeti"
+],
+"verdict": "C"
+},
+{
+"n": 28,
+"surface": "sėjau",
+"lemma": "sėti",
+"tokens": 85,
+"lex_id": [
+"pie-lex-seh1yeti"
+],
+"verdict": "C"
+},
+{
+"n": 29,
+"surface": "darbėlu",
+"lemma": "darbas",
+"tokens": 61,
+"lex_id": [
+"pie-lex-dorbhos"
+],
+"verdict": "C"
+},
+{
+"n": 30,
+"surface": "pakėlsi",
+"lemma": "kelti",
+"tokens": 3,
+"lex_id": [
+"pie-root-kel-drive",
+"pie-root-kelH-rise"
+],
+"verdict": "P"
+},
+{
+"n": 31,
+"surface": "paėmė",
+"lemma": "imti",
+"tokens": 56,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+},
+{
+"n": 32,
+"surface": "jauną",
+"lemma": "jaunas",
+"tokens": 204,
+"lex_id": [
+"kaikki:h₂yewh₁nos"
+],
+"verdict": "C"
+},
+{
+"n": 33,
+"surface": "nukris",
+"lemma": "kristi",
+"tokens": 12,
+"lex_id": [
+"pie-lex-krnetti"
+],
+"verdict": "W"
+},
+{
+"n": 34,
+"surface": "aukszta",
+"lemma": "aukštas",
+"tokens": 14,
+"lex_id": [
+"pie-root-h2weks-increase"
+],
+"verdict": "P"
+},
+{
+"n": 35,
+"surface": "diėnas",
+"lemma": "diena",
+"tokens": 56,
+"lex_id": [
+"pie-lex-deynos"
+],
+"verdict": "C"
+},
+{
+"n": 36,
+"surface": "pynė",
+"lemma": "pinti",
+"tokens": 10,
+"lex_id": [
+"pie-lex-spnh1ti"
+],
+"verdict": "C"
+},
+{
+"n": 37,
+"surface": "krutu",
+"lemma": "kristi",
+"tokens": 3,
+"lex_id": [
+"pie-lex-krnetti"
+],
+"verdict": "W"
+},
+{
+"n": 38,
+"surface": "gyvenimo",
+"lemma": "gyvenimas",
+"tokens": 3,
+"lex_id": [
+"pie-lex-gwih3weti"
+],
+"verdict": "C"
+},
+{
+"n": 39,
+"surface": "paliksit",
+"lemma": "palikti",
+"tokens": 2,
+"lex_id": [
+"pie-root-leykw-leave"
+],
+"verdict": "C"
+},
+{
+"n": 40,
+"surface": "liksi",
+"lemma": "likti",
+"tokens": 5,
+"lex_id": [
+"pie-root-leykw-leave"
+],
+"verdict": "C"
+},
+{
+"n": 41,
+"surface": "gire",
+"lemma": "girė",
+"tokens": 51,
+"lex_id": [
+"pie-lex-gworHeh2"
+],
+"verdict": "C"
+},
+{
+"n": 42,
+"surface": "svėčia",
+"lemma": "svečias",
+"tokens": 64,
+"lex_id": [
+"kaikki:swetios"
+],
+"verdict": "C"
+},
+{
+"n": 43,
+"surface": "raut",
+"lemma": "rauti",
+"tokens": 16,
+"lex_id": [
+"pie-lex-HrewH"
+],
+"verdict": "C"
+},
+{
+"n": 44,
+"surface": "dvarėlį",
+"lemma": "dvaras",
+"tokens": 160,
+"lex_id": [
+"pie-lex-dhworo"
+],
+"verdict": "C"
+},
+{
+"n": 45,
+"surface": "padarė",
+"lemma": "padaryti",
+"tokens": 45,
+"lex_id": [
+"pie-lex-dhoreyeti"
+],
+"verdict": "C"
+},
+{
+"n": 46,
+"surface": "naktį",
+"lemma": "naktis",
+"tokens": 95,
+"lex_id": [
+"pie-lex-nokwts"
+],
+"verdict": "C"
+},
+{
+"n": 47,
+"surface": "užteka",
+"lemma": "užtekti",
+"tokens": 10,
+"lex_id": [
+"pie-lex-teketi",
+"pie-lex-tekweti",
+"pie-lex-tekwti"
+],
+"verdict": "P"
+},
+{
+"n": 48,
+"surface": "sako",
+"lemma": "sakyti",
+"tokens": 684,
+"lex_id": [
+"pie-lex-sokweyeti"
+],
+"verdict": "C"
+},
+{
+"n": 49,
+"surface": "gegėlę",
+"lemma": "gegė",
+"tokens": 12,
+"lex_id": [
+"pie-lex-gheghugjheh2"
+],
+"verdict": "C"
+},
+{
+"n": 50,
+"surface": "žalią",
+"lemma": "žalias",
+"tokens": 40,
+"lex_id": [
+"pie-root-gjhelh3-green"
+],
+"verdict": "C"
+},
+{
+"n": 51,
+"surface": "klausyti",
+"lemma": "klausyti",
+"tokens": 29,
+"lex_id": [
+"pie-lex-kjlew"
+],
+"verdict": "C"
+},
+{
+"n": 52,
+"surface": "skiėtėlį",
+"lemma": "skietas",
+"tokens": 2,
+"lex_id": [
+"pie-lex-skeytos"
+],
+"verdict": "C"
+},
+{
+"n": 53,
+"surface": "burna",
+"lemma": "burna",
+"tokens": 12,
+"lex_id": [
+"pie-root-bherH-pierce"
+],
+"verdict": "C"
+},
+{
+"n": 54,
+"surface": "martėlė",
+"lemma": "marti",
+"tokens": 58,
+"lex_id": [
+"kaikki:morti"
+],
+"verdict": "C"
+},
+{
+"n": 55,
+"surface": "atsakė",
+"lemma": "atsakyti",
+"tokens": 101,
+"lex_id": [
+"pie-lex-sokweyeti"
+],
+"verdict": "C"
+},
+{
+"n": 56,
+"surface": "pribėgsi",
+"lemma": "bėgti",
+"tokens": 9,
+"lex_id": [
+"pie-lex-bhegweti"
+],
+"verdict": "C"
+},
+{
+"n": 57,
+"surface": "stalu",
+"lemma": "stalas",
+"tokens": 76,
+"lex_id": [
+"pie-lex-sth2olom"
+],
+"verdict": "C"
+},
+{
+"n": 58,
+"surface": "padariau",
+"lemma": "padaryti",
+"tokens": 20,
+"lex_id": [
+"pie-lex-dhoreyeti"
+],
+"verdict": "C"
+},
+{
+"n": 59,
+"surface": "užtekės",
+"lemma": "tekėti",
+"tokens": 8,
+"lex_id": [
+"pie-lex-tekweti",
+"pie-lex-tekwti"
+],
+"verdict": "C"
+},
+{
+"n": 60,
+"surface": "gyvas",
+"lemma": "gyvas",
+"tokens": 18,
+"lex_id": [
+"pie-lex-gwih3wos"
+],
+"verdict": "C"
+},
+{
+"n": 61,
+"surface": "ratai",
+"lemma": "ratas|ratai",
+"tokens": 1,
+"lex_id": [
+"pie-lex-Hroth2os"
+],
+"verdict": "C"
+},
+{
+"n": 62,
+"surface": "par",
+"lemma": "par",
+"tokens": 1023,
+"lex_id": [
+"pie-lex-per"
+],
+"verdict": "C"
+},
+{
+"n": 63,
+"surface": "pakelė",
+"lemma": "kelti",
+"tokens": 10,
+"lex_id": [
+"pie-root-kel-drive",
+"pie-root-kelH-rise"
+],
+"verdict": "P"
+},
+{
+"n": 64,
+"surface": "lipk",
+"lemma": "lipti",
+"tokens": 10,
+"lex_id": [
+"pie-root-leyp-stick"
+],
+"verdict": "C"
+},
+{
+"n": 65,
+"surface": "ti",
+"lemma": "ti",
+"tokens": 332,
+"lex_id": [
+"pie-lex-toy"
+],
+"verdict": "W"
+},
+{
+"n": 66,
+"surface": "ąntėlę",
+"lemma": "antis",
+"tokens": 5,
+"lex_id": [
+"pie-lex-h2enh2ts"
+],
+"verdict": "C"
+},
+{
+"n": 67,
+"surface": "manę",
+"lemma": "manyti",
+"tokens": 846,
+"lex_id": [
+"pie-lex-moneyeti"
+],
+"verdict": "W"
+},
+{
+"n": 68,
+"surface": "praszyk",
+"lemma": "prašyti",
+"tokens": 12,
+"lex_id": [
+"pie-lex-prokjeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 69,
+"surface": "auksu",
+"lemma": "auksas",
+"tokens": 149,
+"lex_id": [
+"pie-lex-h2eh2usom"
+],
+"verdict": "C"
+},
+{
+"n": 70,
+"surface": "reiks",
+"lemma": "reikšti",
+"tokens": 88,
+"lex_id": [
+"pie-root-wreh1gj-break"
+],
+"verdict": "W"
+},
+{
+"n": 71,
+"surface": "pindama",
+"lemma": "pinti",
+"tokens": 17,
+"lex_id": [
+"pie-lex-spnh1ti"
+],
+"verdict": "C"
+},
+{
+"n": 72,
+"surface": "žvirblis",
+"lemma": "žvirblis",
+"tokens": 15,
+"lex_id": [
+"pie-root-swerbh-wipe_off"
+],
+"verdict": "W"
+},
+{
+"n": 73,
+"surface": "sėski",
+"lemma": "sėsti",
+"tokens": 12,
+"lex_id": [
+"pie-lex-sisdeti"
+],
+"verdict": "C"
+},
+{
+"n": 74,
+"surface": "gegelei",
+"lemma": "gegė",
+"tokens": 1,
+"lex_id": [
+"pie-lex-gheghugjheh2"
+],
+"verdict": "C"
+},
+{
+"n": 75,
+"surface": "joti",
+"lemma": "joti",
+"tokens": 61,
+"lex_id": [
+"pie-lex-yeh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 76,
+"surface": "pridėta",
+"lemma": "dėti",
+"tokens": 2,
+"lex_id": [
+"pie-lex-dheh1t"
+],
+"verdict": "C"
+},
+{
+"n": 77,
+"surface": "artojėlei",
+"lemma": "artojas",
+"tokens": 2,
+"lex_id": [
+"pie-root-h2erh3-plough"
+],
+"verdict": "C"
+},
+{
+"n": 78,
+"surface": "lėk",
+"lemma": "lėkti",
+"tokens": 19,
+"lex_id": [
+"pie-lex-lekto"
+],
+"verdict": "C"
+},
+{
+"n": 79,
+"surface": "da",
+"lemma": "da",
+"tokens": 405,
+"lex_id": [
+"pie-lex-de"
+],
+"verdict": "W"
+},
+{
+"n": 80,
+"surface": "statydamas",
+"lemma": "statyti",
+"tokens": 3,
+"lex_id": [
+"pie-root-steh2-stand"
+],
+"verdict": "C"
+},
+{
+"n": 81,
+"surface": "bernėlį",
+"lemma": "bernas",
+"tokens": 64,
+"lex_id": [
+"pie-lex-bherno"
+],
+"verdict": "C"
+},
+{
+"n": 82,
+"surface": "dąngaūs",
+"lemma": "dangus",
+"tokens": 5,
+"lex_id": [
+"pie-root-dhengh-cover"
+],
+"verdict": "C"
+},
+{
+"n": 83,
+"surface": "kaklas",
+"lemma": "kaklas",
+"tokens": 2,
+"lex_id": [
+"pie-lex-kwekwlos"
+],
+"verdict": "C"
+},
+{
+"n": 84,
+"surface": "užkėlė",
+"lemma": "kelti",
+"tokens": 4,
+"lex_id": [
+"pie-root-kel-drive",
+"pie-root-kelH-rise"
+],
+"verdict": "P"
+},
+{
+"n": 85,
+"surface": "balta",
+"lemma": "baltas|balta",
+"tokens": 161,
+"lex_id": [
+"pie-lex-bholHtos"
+],
+"verdict": "C"
+},
+{
+"n": 86,
+"surface": "lejsk",
+"lemma": "leisti",
+"tokens": 43,
+"lex_id": [
+"pie-lex-leydti"
+],
+"verdict": "C"
+},
+{
+"n": 87,
+"surface": "numirs",
+"lemma": "mirti|miršti",
+"tokens": 4,
+"lex_id": [
+"pie-lex-mers",
+"pie-lex-mryetor"
+],
+"verdict": "P"
+},
+{
+"n": 88,
+"surface": "vajniką",
+"lemma": "vainikas",
+"tokens": 43,
+"lex_id": [
+"pie-lex-woyh1n"
+],
+"verdict": "C"
+},
+{
+"n": 89,
+"surface": "sėną",
+"lemma": "senas",
+"tokens": 58,
+"lex_id": [
+"pie-lex-senos"
+],
+"verdict": "C"
+},
+{
+"n": 90,
+"surface": "ugnėlę",
+"lemma": "ugnis",
+"tokens": 17,
+"lex_id": [
+"pie-lex-h1ngwnis"
+],
+"verdict": "C"
+},
+{
+"n": 91,
+"surface": "galwuže",
+"lemma": "galva",
+"tokens": 3,
+"lex_id": [
+"pie-lex-golHweh2"
+],
+"verdict": "C"
+},
+{
+"n": 92,
+"surface": "kirtau",
+"lemma": "kirsti",
+"tokens": 7,
+"lex_id": [
+"pie-lex-sker"
+],
+"verdict": "C"
+},
+{
+"n": 93,
+"surface": "jauni",
+"lemma": "jaunas",
+"tokens": 135,
+"lex_id": [
+"kaikki:h₂yewh₁nos"
+],
+"verdict": "C"
+},
+{
+"n": 94,
+"surface": "vajnikėlis",
+"lemma": "vainikas",
+"tokens": 70,
+"lex_id": [
+"pie-lex-woyh1n"
+],
+"verdict": "C"
+},
+{
+"n": 95,
+"surface": "šaltiniu",
+"lemma": "šaltinis",
+"tokens": 9,
+"lex_id": [
+"pie-root-kelH-rise",
+"pie-root-skelH-cut"
+],
+"verdict": "W"
+},
+{
+"n": 96,
+"surface": "dalėlės",
+"lemma": "dalis",
+"tokens": 9,
+"lex_id": [
+"pie-root-delh1-split"
+],
+"verdict": "C"
+},
+{
+"n": 97,
+"surface": "dukterį",
+"lemma": "duktė|duktėfstresspattern",
+"tokens": 85,
+"lex_id": [
+"pie-lex-dhugh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 98,
+"surface": "duktė",
+"lemma": "duktė|duktėfstresspattern",
+"tokens": 92,
+"lex_id": [
+"pie-lex-dhugh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 99,
+"surface": "papratęs",
+"lemma": "prasti",
+"tokens": 10,
+"lex_id": [
+"pie-root-pret-understand"
+],
+"verdict": "C"
+},
+{
+"n": 100,
+"surface": "emė",
+"lemma": "imti",
+"tokens": 95,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+}
+],
+"ccmh": [
+{
+"n": 1,
+"surface": "естъ",
+"lemma": "бꙑти",
+"tokens": 1545,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "W"
+},
+{
+"n": 2,
+"surface": "възъмѫтъ",
+"lemma": "възѧти",
+"tokens": 8,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+},
+{
+"n": 3,
+"surface": "послоушаетъ",
+"lemma": "послооушати",
+"tokens": 17,
+"lex_id": [
+"pie-lex-kjlewseti"
+],
+"verdict": "C"
+},
+{
+"n": 4,
+"surface": "бꙑвъшиі",
+"lemma": "бꙑти",
+"tokens": 3,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "C"
+},
+{
+"n": 5,
+"surface": "огнемъ",
+"lemma": "огнь",
+"tokens": 23,
+"lex_id": [
+"pie-lex-h1ngwnis"
+],
+"verdict": "C"
+},
+{
+"n": 6,
+"surface": "земьѭ",
+"lemma": "землѧ",
+"tokens": 55,
+"lex_id": [
+"pie-lex-dhegjhoxm"
+],
+"verdict": "C"
+},
+{
+"n": 7,
+"surface": "бѫдетъ",
+"lemma": "бꙑти",
+"tokens": 577,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "C"
+},
+{
+"n": 8,
+"surface": "начѧтъ",
+"lemma": "начѧти",
+"tokens": 91,
+"lex_id": [
+"pie-root-ken-arise"
+],
+"verdict": "C"
+},
+{
+"n": 9,
+"surface": "бѣ",
+"lemma": "бꙑти",
+"tokens": 837,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "C"
+},
+{
+"n": 10,
+"surface": "любими",
+"lemma": "любити",
+"tokens": 2,
+"lex_id": [
+"pie-lex-lowbheyeti"
+],
+"verdict": "C"
+},
+{
+"n": 11,
+"surface": "бꙑвъ",
+"lemma": "бꙑти",
+"tokens": 79,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "C"
+},
+{
+"n": 12,
+"surface": "бꙑшѧ",
+"lemma": "бꙑти",
+"tokens": 132,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "C"
+},
+{
+"n": 13,
+"surface": "кротъкъ",
+"lemma": "кротъкъ",
+"tokens": 11,
+"lex_id": [
+"kaikki:ḱroth"
+],
+"verdict": "W"
+},
+{
+"n": 14,
+"surface": "слѣпъ",
+"lemma": "слѣпъ",
+"tokens": 28,
+"lex_id": [
+"pie-lex-kjley",
+"pie-lex-kjley-2"
+],
+"verdict": "W"
+},
+{
+"n": 15,
+"surface": "водънꙑи",
+"lemma": "водьнъ",
+"tokens": 1,
+"lex_id": [
+"pie-lex-wodr"
+],
+"verdict": "C"
+},
+{
+"n": 16,
+"surface": "грабити",
+"lemma": "грабити",
+"tokens": 1,
+"lex_id": [
+"pie-lex-ghrobh2eyeti"
+],
+"verdict": "C"
+},
+{
+"n": 17,
+"surface": "повѣда",
+"lemma": "повѣдати",
+"tokens": 16,
+"lex_id": [
+"pie-lex-woyde"
+],
+"verdict": "C"
+},
+{
+"n": 18,
+"surface": "ходитъ",
+"lemma": "ходити",
+"tokens": 22,
+"lex_id": [
+"kaikki:sod"
+],
+"verdict": "C"
+},
+{
+"n": 19,
+"surface": "оумрѣти",
+"lemma": "ооумрѣти",
+"tokens": 22,
+"lex_id": [
+"pie-lex-mryetor"
+],
+"verdict": "C"
+},
+{
+"n": 20,
+"surface": "имѣаше",
+"lemma": "имѣти",
+"tokens": 41,
+"lex_id": [
+"pie-root-h1em-take"
+],
+"verdict": "C"
+},
+{
+"n": 21,
+"surface": "іштѫ",
+"lemma": "искати",
+"tokens": 2,
+"lex_id": [
+"pie-lex-h2iskjeti"
+],
+"verdict": "C"
+},
+{
+"n": 22,
+"surface": "бѣсъ",
+"lemma": "бѣсъ",
+"tokens": 86,
+"lex_id": [
+"pie-lex-bheyh2dheti"
+],
+"verdict": "C"
+},
+{
+"n": 23,
+"surface": "съберѣте",
+"lemma": "събьрати",
+"tokens": 8,
+"lex_id": [
+"pie-lex-bhereti"
+],
+"verdict": "C"
+},
+{
+"n": 24,
+"surface": "дьние",
+"lemma": "дьнь",
+"tokens": 6,
+"lex_id": [
+"pie-lex-dinos"
+],
+"verdict": "C"
+},
+{
+"n": 25,
+"surface": "въздамь",
+"lemma": "въздати",
+"tokens": 4,
+"lex_id": [
+"pie-lex-dedeh3ti"
+],
+"verdict": "C"
+},
+{
+"n": 26,
+"surface": "влагꙑ",
+"lemma": "влага",
+"tokens": 5,
+"lex_id": [
+"pie-lex-wolgeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 27,
+"surface": "есмъ",
+"lemma": "бꙑти",
+"tokens": 158,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "W"
+},
+{
+"n": 28,
+"surface": "слово",
+"lemma": "слово",
+"tokens": 320,
+"lex_id": [
+"pie-lex-kjlewos"
+],
+"verdict": "C"
+},
+{
+"n": 29,
+"surface": "вьпьѭшти",
+"lemma": "въпити",
+"tokens": 2,
+"lex_id": [
+"pie-root-up-cry_out"
+],
+"verdict": "C"
+},
+{
+"n": 30,
+"surface": "оуста",
+"lemma": "ооуста",
+"tokens": 56,
+"lex_id": [
+"pie-lex-h1oh3s"
+],
+"verdict": "C"
+},
+{
+"n": 31,
+"surface": "поимѣте",
+"lemma": "поѧти",
+"tokens": 7,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+},
+{
+"n": 32,
+"surface": "зълоба",
+"lemma": "зълоба",
+"tokens": 3,
+"lex_id": [
+"kaikki:ǵʰwel"
+],
+"verdict": "C"
+},
+{
+"n": 33,
+"surface": "осѫждени",
+"lemma": "осѫдити",
+"tokens": 3,
+"lex_id": [
+"kaikki:somdʰh₁ih₂"
+],
+"verdict": "C"
+},
+{
+"n": 34,
+"surface": "бѫдѫ",
+"lemma": "бꙑти",
+"tokens": 52,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "C"
+},
+{
+"n": 35,
+"surface": "вѣстъ",
+"lemma": "вѣдѣти",
+"tokens": 68,
+"lex_id": [
+"pie-lex-woyde"
+],
+"verdict": "C"
+},
+{
+"n": 36,
+"surface": "прикоснѫтъ",
+"lemma": "прикоснѫти",
+"tokens": 4,
+"lex_id": [
+"pie-root-kes-scrape"
+],
+"verdict": "C"
+},
+{
+"n": 37,
+"surface": "лежѧштоуоумоу",
+"lemma": "лежати",
+"tokens": 2,
+"lex_id": [
+"pie-lex-leghyeti"
+],
+"verdict": "C"
+},
+{
+"n": 38,
+"surface": "оученика",
+"lemma": "ооученикъ",
+"tokens": 50,
+"lex_id": [
+"pie-lex-h1owkeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 39,
+"surface": "миръ",
+"lemma": "миръ",
+"tokens": 191,
+"lex_id": [
+"kaikki:meyhros"
+],
+"verdict": "C"
+},
+{
+"n": 40,
+"surface": "дѣло",
+"lemma": "дѣло",
+"tokens": 78,
+"lex_id": [
+"pie-lex-dheh1lom"
+],
+"verdict": "C"
+},
+{
+"n": 41,
+"surface": "рѫгати",
+"lemma": "рѫгати",
+"tokens": 3,
+"lex_id": [
+"pie-root-wreng-twist-2"
+],
+"verdict": "W"
+},
+{
+"n": 42,
+"surface": "пропьні",
+"lemma": "пропѧти",
+"tokens": 2,
+"lex_id": [
+"pie-lex-spnh1ti"
+],
+"verdict": "C"
+},
+{
+"n": 43,
+"surface": "даждь",
+"lemma": "дати",
+"tokens": 25,
+"lex_id": [
+"pie-lex-dedeh3ti"
+],
+"verdict": "C"
+},
+{
+"n": 44,
+"surface": "оузьрѣховѣ",
+"lemma": "ооузьрѣти",
+"tokens": 1,
+"lex_id": [
+"pie-root-gjher-shine"
+],
+"verdict": "C"
+},
+{
+"n": 45,
+"surface": "нѣсмъ",
+"lemma": "небꙑти",
+"tokens": 47,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "W"
+},
+{
+"n": 46,
+"surface": "сънъ",
+"lemma": "сънъ",
+"tokens": 9,
+"lex_id": [
+"pie-lex-supnos"
+],
+"verdict": "C"
+},
+{
+"n": 47,
+"surface": "пꙑтати",
+"lemma": "пꙑтати",
+"tokens": 2,
+"lex_id": [
+"kaikki:pew"
+],
+"verdict": "C"
+},
+{
+"n": 48,
+"surface": "дьни",
+"lemma": "дьнь",
+"tokens": 133,
+"lex_id": [
+"pie-lex-dinos"
+],
+"verdict": "C"
+},
+{
+"n": 49,
+"surface": "ѣждь",
+"lemma": "ѧсти",
+"tokens": 3,
+"lex_id": [
+"pie-lex-h1edti"
+],
+"verdict": "C"
+},
+{
+"n": 50,
+"surface": "владꙑка",
+"lemma": "владꙑка",
+"tokens": 31,
+"lex_id": [
+"pie-lex-h2woldheh1ti"
+],
+"verdict": "C"
+},
+{
+"n": 51,
+"surface": "колѣнома",
+"lemma": "колѣно",
+"tokens": 11,
+"lex_id": [
+"pie-root-kwelh1-turn"
+],
+"verdict": "C"
+},
+{
+"n": 52,
+"surface": "рече",
+"lemma": "рещи",
+"tokens": 2333,
+"lex_id": [
+"pie-root-rek-arrange"
+],
+"verdict": "C"
+},
+{
+"n": 53,
+"surface": "възьрѣ",
+"lemma": "възьрѣти",
+"tokens": 2,
+"lex_id": [
+"pie-root-gjher-shine"
+],
+"verdict": "C"
+},
+{
+"n": 54,
+"surface": "мѫжа",
+"lemma": "мѫжь",
+"tokens": 76,
+"lex_id": [
+"pie-lex-mon"
+],
+"verdict": "C"
+},
+{
+"n": 55,
+"surface": "бѣахѫ",
+"lemma": "бꙑти",
+"tokens": 159,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "C"
+},
+{
+"n": 56,
+"surface": "правьдьнъ",
+"lemma": "правьдьнъ",
+"tokens": 5,
+"lex_id": [
+"kaikki:preh₃wos"
+],
+"verdict": "C"
+},
+{
+"n": 57,
+"surface": "оузьрите",
+"lemma": "ооузьрѣти",
+"tokens": 54,
+"lex_id": [
+"pie-root-gjher-shine"
+],
+"verdict": "C"
+},
+{
+"n": 58,
+"surface": "сънъмиштихъ",
+"lemma": "съньмище",
+"tokens": 14,
+"lex_id": [
+"pie-root-h1em-take"
+],
+"verdict": "C"
+},
+{
+"n": 59,
+"surface": "продаѭштѧѩ",
+"lemma": "продаѧти",
+"tokens": 7,
+"lex_id": [
+"pie-root-deh3-give"
+],
+"verdict": "C"
+},
+{
+"n": 60,
+"surface": "оученици",
+"lemma": "ооученикъ",
+"tokens": 260,
+"lex_id": [
+"pie-lex-h1owkeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 61,
+"surface": "оумьрѣтъ",
+"lemma": "ооумрѣти",
+"tokens": 24,
+"lex_id": [
+"pie-lex-mryetor"
+],
+"verdict": "C"
+},
+{
+"n": 62,
+"surface": "млъвиши",
+"lemma": "млъвити",
+"tokens": 2,
+"lex_id": [
+"pie-lex-mlwHeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 63,
+"surface": "ста",
+"lemma": "стати",
+"tokens": 41,
+"lex_id": [
+"pie-lex-stneh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 64,
+"surface": "тьмницѫ",
+"lemma": "тьмьница",
+"tokens": 16,
+"lex_id": [
+"pie-lex-tmHeh2"
+],
+"verdict": "C"
+},
+{
+"n": 65,
+"surface": "морѣ",
+"lemma": "море",
+"tokens": 24,
+"lex_id": [
+"pie-lex-mori"
+],
+"verdict": "C"
+},
+{
+"n": 66,
+"surface": "поімѫ",
+"lemma": "поѧти",
+"tokens": 2,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+},
+{
+"n": 67,
+"surface": "бѫдеши",
+"lemma": "бꙑти",
+"tokens": 44,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "C"
+},
+{
+"n": 68,
+"surface": "просишѧ",
+"lemma": "просити",
+"tokens": 6,
+"lex_id": [
+"pie-lex-prokjeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 69,
+"surface": "помолитъ",
+"lemma": "помолити",
+"tokens": 15,
+"lex_id": [
+"pie-lex-moldheyeti"
+],
+"verdict": "C"
+},
+{
+"n": 70,
+"surface": "ѧзꙑкомъ",
+"lemma": "ѧзꙑкъ",
+"tokens": 6,
+"lex_id": [
+"pie-lex-dngjhweh2s"
+],
+"verdict": "C"
+},
+{
+"n": 71,
+"surface": "слоужѧі",
+"lemma": "слооужити",
+"tokens": 2,
+"lex_id": [
+"pie-lex-kjlew"
+],
+"verdict": "C"
+},
+{
+"n": 72,
+"surface": "дрѣво",
+"lemma": "дрѣво",
+"tokens": 67,
+"lex_id": [
+"pie-lex-doru"
+],
+"verdict": "C"
+},
+{
+"n": 73,
+"surface": "изѧті",
+"lemma": "изѧти",
+"tokens": 1,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+},
+{
+"n": 74,
+"surface": "правьдꙑ",
+"lemma": "правьда",
+"tokens": 6,
+"lex_id": [
+"kaikki:preh₃wos"
+],
+"verdict": "C"
+},
+{
+"n": 75,
+"surface": "брашьна",
+"lemma": "брашьно",
+"tokens": 9,
+"lex_id": [
+"pie-lex-bhorsinom"
+],
+"verdict": "C"
+},
+{
+"n": 76,
+"surface": "можетъ",
+"lemma": "мощи",
+"tokens": 176,
+"lex_id": [
+"pie-lex-memoghe"
+],
+"verdict": "C"
+},
+{
+"n": 77,
+"surface": "вьвѣсте",
+"lemma": "въвести",
+"tokens": 3,
+"lex_id": [
+"pie-lex-wedheti"
+],
+"verdict": "C"
+},
+{
+"n": 78,
+"surface": "винꙑ",
+"lemma": "вина",
+"tokens": 36,
+"lex_id": [
+"pie-lex-uh1it",
+"pie-lex-weyh1ti"
+],
+"verdict": "W"
+},
+{
+"n": 79,
+"surface": "воі",
+"lemma": "вои",
+"tokens": 3,
+"lex_id": [
+"pie-lex-woyh1os"
+],
+"verdict": "C"
+},
+{
+"n": 80,
+"surface": "даръ",
+"lemma": "даръ",
+"tokens": 57,
+"lex_id": [
+"pie-lex-deh3rom"
+],
+"verdict": "C"
+},
+{
+"n": 81,
+"surface": "иматъ",
+"lemma": "имѣти",
+"tokens": 206,
+"lex_id": [
+"pie-root-h1em-take"
+],
+"verdict": "C"
+},
+{
+"n": 82,
+"surface": "съмръти",
+"lemma": "съмрьть",
+"tokens": 35,
+"lex_id": [
+"pie-lex-mertis"
+],
+"verdict": "C"
+},
+{
+"n": 83,
+"surface": "бꙑстъ",
+"lemma": "бꙑти",
+"tokens": 561,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "C"
+},
+{
+"n": 84,
+"surface": "минѫвъшоу",
+"lemma": "минѫти",
+"tokens": 6,
+"lex_id": [
+"pie-root-mey-change"
+],
+"verdict": "C"
+},
+{
+"n": 85,
+"surface": "отиде",
+"lemma": "отити",
+"tokens": 83,
+"lex_id": [
+"pie-lex-h1eyti"
+],
+"verdict": "C"
+},
+{
+"n": 86,
+"surface": "сътворивъ",
+"lemma": "сътворити",
+"tokens": 38,
+"lex_id": [
+"pie-lex-tworHeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 87,
+"surface": "слоуга",
+"lemma": "слооуга",
+"tokens": 27,
+"lex_id": [
+"pie-lex-kjlew"
+],
+"verdict": "C"
+},
+{
+"n": 88,
+"surface": "съвѧза",
+"lemma": "съвѧзати",
+"tokens": 13,
+"lex_id": [
+"pie-root-h2engjh-constrict"
+],
+"verdict": "C"
+},
+{
+"n": 89,
+"surface": "доухъ",
+"lemma": "дооухъ",
+"tokens": 15,
+"lex_id": [
+"pie-root-dhwes-breathe"
+],
+"verdict": "C"
+},
+{
+"n": 90,
+"surface": "камень",
+"lemma": "камꙑ",
+"tokens": 69,
+"lex_id": [
+"pie-lex-h2ekjmox"
+],
+"verdict": "C"
+},
+{
+"n": 91,
+"surface": "звѣздꙑ",
+"lemma": "звѣзда",
+"tokens": 7,
+"lex_id": [
+"kaikki:ǵʰwoysdʰeh₂"
+],
+"verdict": "C"
+},
+{
+"n": 92,
+"surface": "сътворилъ",
+"lemma": "сътворити",
+"tokens": 28,
+"lex_id": [
+"pie-lex-tworHeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 93,
+"surface": "чрѣвиемъ",
+"lemma": "чрѣвии",
+"tokens": 1,
+"lex_id": [
+"pie-lex-sker"
+],
+"verdict": "W"
+},
+{
+"n": 94,
+"surface": "възърѣвъ",
+"lemma": "възьрѣти",
+"tokens": 9,
+"lex_id": [
+"pie-root-gjher-shine"
+],
+"verdict": "C"
+},
+{
+"n": 95,
+"surface": "вьзѧшѧ",
+"lemma": "възѧти",
+"tokens": 26,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+},
+{
+"n": 96,
+"surface": "гробѣ",
+"lemma": "гробъ",
+"tokens": 25,
+"lex_id": [
+"pie-lex-ghrobh2os"
+],
+"verdict": "C"
+},
+{
+"n": 97,
+"surface": "грѣсѣ",
+"lemma": "грѣхъ",
+"tokens": 14,
+"lex_id": [
+"pie-lex-gwhreh1yeti"
+],
+"verdict": "C"
+},
+{
+"n": 98,
+"surface": "мѣсто",
+"lemma": "мѣсто",
+"tokens": 166,
+"lex_id": [
+"pie-lex-meyth2"
+],
+"verdict": "C"
+},
+{
+"n": 99,
+"surface": "оученикъ",
+"lemma": "ооученикъ",
+"tokens": 114,
+"lex_id": [
+"pie-lex-h1owkeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 100,
+"surface": "дивлѣахѫ",
+"lemma": "дивити",
+"tokens": 25,
+"lex_id": [
+"pie-root-dyew-be_bright"
+],
+"verdict": "C"
+}
+]
+},
+"after_seed8": {
+"vuk": [
+{
+"n": 1,
+"surface": "дати",
+"lemma": "dati",
+"tokens": 189,
+"lex_id": [
+"pie-lex-dedeh3ti"
+],
+"verdict": "C"
+},
+{
+"n": 2,
+"surface": "јадна",
+"lemma": "jadan",
+"tokens": 143,
+"lex_id": [
+"pie-root-h2eyd-swell"
+],
+"verdict": "W"
+},
+{
+"n": 3,
+"surface": "врата",
+"lemma": "vrata",
+"tokens": 614,
+"lex_id": [
+"pie-root-wert-turn"
+],
+"verdict": "C"
+},
+{
+"n": 4,
+"surface": "престаје",
+"lemma": "prestati",
+"tokens": 13,
+"lex_id": [
+"pie-lex-stneh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 5,
+"surface": "видиш",
+"lemma": "vidjeti|videti",
+"tokens": 403,
+"lex_id": [
+"pie-root-weyd-see"
+],
+"verdict": "C"
+},
+{
+"n": 6,
+"surface": "дере",
+"lemma": "derati",
+"tokens": 14,
+"lex_id": [
+"pie-root-der-split"
+],
+"verdict": "C"
+},
+{
+"n": 7,
+"surface": "људи",
+"lemma": "ljudi",
+"tokens": 177,
+"lex_id": [
+"pie-lex-h1lewdhis"
+],
+"verdict": "C"
+},
+{
+"n": 8,
+"surface": "даде",
+"lemma": "dati",
+"tokens": 794,
+"lex_id": [
+"pie-lex-dedeh3ti"
+],
+"verdict": "C"
+},
+{
+"n": 9,
+"surface": "побјеже",
+"lemma": "pobjeći",
+"tokens": 167,
+"lex_id": [
+"pie-lex-bhegwyeh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 10,
+"surface": "магла",
+"lemma": "magla",
+"tokens": 38,
+"lex_id": [
+"pie-lex-h3mighleh2"
+],
+"verdict": "C"
+},
+{
+"n": 11,
+"surface": "лице",
+"lemma": "lice",
+"tokens": 420,
+"lex_id": [
+"kaikki:leykom"
+],
+"verdict": "C"
+},
+{
+"n": 12,
+"surface": "младу",
+"lemma": "mlad",
+"tokens": 142,
+"lex_id": [
+"pie-lex-moldos"
+],
+"verdict": "C"
+},
+{
+"n": 13,
+"surface": "господара",
+"lemma": "gospodar",
+"tokens": 254,
+"lex_id": [
+"pie-lex-ghostipotis"
+],
+"verdict": "C"
+},
+{
+"n": 14,
+"surface": "стар",
+"lemma": "star",
+"tokens": 41,
+"lex_id": [
+"pie-lex-sth2ros"
+],
+"verdict": "C"
+},
+{
+"n": 15,
+"surface": "вишега",
+"lemma": "visok",
+"tokens": 10,
+"lex_id": [
+"kaikki:h₃ewps"
+],
+"verdict": "C"
+},
+{
+"n": 16,
+"surface": "двора",
+"lemma": "dvor",
+"tokens": 251,
+"lex_id": [
+"pie-root-dhwer-door"
+],
+"verdict": "C"
+},
+{
+"n": 17,
+"surface": "бијеломе",
+"lemma": "bijel",
+"tokens": 418,
+"lex_id": [
+"pie-lex-bhexlHo",
+"pie-lex-bhlHos"
+],
+"verdict": "C"
+},
+{
+"n": 18,
+"surface": "долазиће",
+"lemma": "dolaziti",
+"tokens": 1,
+"lex_id": [
+"kaikki:loh₁ǵey"
+],
+"verdict": "C"
+},
+{
+"n": 19,
+"surface": "искићене",
+"lemma": "iskititi",
+"tokens": 5,
+"lex_id": [
+"pie-root-kewh2-hit"
+],
+"verdict": "W"
+},
+{
+"n": 20,
+"surface": "уставе",
+"lemma": "ustav",
+"tokens": 4,
+"lex_id": [
+"pie-root-steh2-stand"
+],
+"verdict": "C"
+},
+{
+"n": 21,
+"surface": "иде",
+"lemma": "ići",
+"tokens": 567,
+"lex_id": [
+"pie-lex-h1eyti"
+],
+"verdict": "C"
+},
+{
+"n": 22,
+"surface": "војску",
+"lemma": "vojska",
+"tokens": 980,
+"lex_id": [
+"pie-lex-woyh1os"
+],
+"verdict": "C"
+},
+{
+"n": 23,
+"surface": "добра",
+"lemma": "dobar",
+"tokens": 398,
+"lex_id": [
+"pie-lex-dhh2obhros"
+],
+"verdict": "C"
+},
+{
+"n": 24,
+"surface": "љубе",
+"lemma": "ljubiti",
+"tokens": 164,
+"lex_id": [
+"pie-lex-lowbheyeti"
+],
+"verdict": "C"
+},
+{
+"n": 25,
+"surface": "вели",
+"lemma": "velim",
+"tokens": 663,
+"lex_id": [
+"pie-root-welh1-choose"
+],
+"verdict": "C"
+},
+{
+"n": 26,
+"surface": "пише",
+"lemma": "pisati",
+"tokens": 558,
+"lex_id": [
+"pie-root-peykj-hew"
+],
+"verdict": "C"
+},
+{
+"n": 27,
+"surface": "играјући",
+"lemma": "igrati",
+"tokens": 27,
+"lex_id": [
+"kaikki:h₂igreh₂"
+],
+"verdict": "C"
+},
+{
+"n": 28,
+"surface": "поклонио",
+"lemma": "pokloniti",
+"tokens": 82,
+"lex_id": [
+"pie-root-kjley-lean"
+],
+"verdict": "C"
+},
+{
+"n": 29,
+"surface": "зелене",
+"lemma": "zelen",
+"tokens": 141,
+"lex_id": [
+"pie-lex-gjhelyeti"
+],
+"verdict": "C"
+},
+{
+"n": 30,
+"surface": "поље",
+"lemma": "polje",
+"tokens": 437,
+"lex_id": [
+"pie-root-pleh2-flat"
+],
+"verdict": "C"
+},
+{
+"n": 31,
+"surface": "могао",
+"lemma": "moći",
+"tokens": 9,
+"lex_id": [
+"pie-lex-memoghe"
+],
+"verdict": "C"
+},
+{
+"n": 32,
+"surface": "погледа",
+"lemma": "pogledati|pogled",
+"tokens": 174,
+"lex_id": [
+"kaikki:gʰlend"
+],
+"verdict": "C"
+},
+{
+"n": 33,
+"surface": "уста",
+"lemma": "usta",
+"tokens": 104,
+"lex_id": [
+"pie-lex-h1oh3s"
+],
+"verdict": "C"
+},
+{
+"n": 34,
+"surface": "одморити",
+"lemma": "odmoriti",
+"tokens": 3,
+"lex_id": [
+"pie-lex-mryetor"
+],
+"verdict": "C"
+},
+{
+"n": 35,
+"surface": "глава",
+"lemma": "glava",
+"tokens": 435,
+"lex_id": [
+"pie-lex-golHweh2"
+],
+"verdict": "C"
+},
+{
+"n": 36,
+"surface": "чуо",
+"lemma": "čuti",
+"tokens": 336,
+"lex_id": [
+"pie-lex-skexwh1st"
+],
+"verdict": "C"
+},
+{
+"n": 37,
+"surface": "младе",
+"lemma": "mlad",
+"tokens": 219,
+"lex_id": [
+"pie-lex-moldos"
+],
+"verdict": "C"
+},
+{
+"n": 38,
+"surface": "господаре",
+"lemma": "gospodar|gospodariti",
+"tokens": 217,
+"lex_id": [
+"pie-lex-ghostipotis"
+],
+"verdict": "C"
+},
+{
+"n": 39,
+"surface": "одведе",
+"lemma": "odvesti",
+"tokens": 130,
+"lex_id": [
+"pie-root-wedh-lead"
+],
+"verdict": "C"
+},
+{
+"n": 40,
+"surface": "равна",
+"lemma": "ravan",
+"tokens": 166,
+"lex_id": [
+"pie-root-rewh1-open"
+],
+"verdict": "C"
+},
+{
+"n": 41,
+"surface": "туговаше",
+"lemma": "tugovati",
+"tokens": 1,
+"lex_id": [
+"pie-lex-tengh"
+],
+"verdict": "C"
+},
+{
+"n": 42,
+"surface": "доћи",
+"lemma": "doći",
+"tokens": 272,
+"lex_id": [
+"pie-lex-h1eyti"
+],
+"verdict": "C"
+},
+{
+"n": 43,
+"surface": "злата",
+"lemma": "zlato|zlata",
+"tokens": 447,
+"lex_id": [
+"pie-lex-gjholh3tos"
+],
+"verdict": "C"
+},
+{
+"n": 44,
+"surface": "трећи",
+"lemma": "treći",
+"tokens": 123,
+"lex_id": [
+"pie-lex-tritos"
+],
+"verdict": "C"
+},
+{
+"n": 45,
+"surface": "вјеровати",
+"lemma": "vjerovati",
+"tokens": 17,
+"lex_id": [
+"pie-lex-weh1reh2"
+],
+"verdict": "C"
+},
+{
+"n": 46,
+"surface": "рујно",
+"lemma": "rujan",
+"tokens": 73,
+"lex_id": [
+"pie-lex-h3rew"
+],
+"verdict": "W"
+},
+{
+"n": 47,
+"surface": "виђеше",
+"lemma": "vidjeti",
+"tokens": 73,
+"lex_id": [
+"pie-root-weyd-see"
+],
+"verdict": "C"
+},
+{
+"n": 48,
+"surface": "предаше",
+"lemma": "presti",
+"tokens": 4,
+"lex_id": [
+"pie-root-sprend-jump_up",
+"pie-root-sprend-stretch"
+],
+"verdict": "W"
+},
+{
+"n": 49,
+"surface": "чујете",
+"lemma": "čuti",
+"tokens": 83,
+"lex_id": [
+"pie-lex-skexwh1st"
+],
+"verdict": "C"
+},
+{
+"n": 50,
+"surface": "стигоше",
+"lemma": "stignuti",
+"tokens": 25,
+"lex_id": [
+"pie-lex-steygheti"
+],
+"verdict": "C"
+},
+{
+"n": 51,
+"surface": "може",
+"lemma": "moći",
+"tokens": 367,
+"lex_id": [
+"pie-lex-memoghe"
+],
+"verdict": "C"
+},
+{
+"n": 52,
+"surface": "господине",
+"lemma": "gospodin",
+"tokens": 95,
+"lex_id": [
+"pie-lex-ghostipotis"
+],
+"verdict": "C"
+},
+{
+"n": 53,
+"surface": "главни",
+"lemma": "glavni",
+"tokens": 22,
+"lex_id": [
+"pie-lex-golHweh2"
+],
+"verdict": "C"
+},
+{
+"n": 54,
+"surface": "нађе",
+"lemma": "naći",
+"tokens": 251,
+"lex_id": [
+"pie-lex-h1eyti"
+],
+"verdict": "C"
+},
+{
+"n": 55,
+"surface": "мосту",
+"lemma": "most",
+"tokens": 13,
+"lex_id": [
+"kaikki:mosdtos"
+],
+"verdict": "C"
+},
+{
+"n": 56,
+"surface": "великога",
+"lemma": "velik",
+"tokens": 194,
+"lex_id": [
+"pie-root-welh1-choose"
+],
+"verdict": "C"
+},
+{
+"n": 57,
+"surface": "устан'",
+"lemma": "ustati",
+"tokens": 12,
+"lex_id": [
+"pie-lex-stneh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 58,
+"surface": "моли",
+"lemma": "moliti",
+"tokens": 220,
+"lex_id": [
+"pie-lex-moldheyeti"
+],
+"verdict": "C"
+},
+{
+"n": 59,
+"surface": "пребродили",
+"lemma": "prebroditi",
+"tokens": 4,
+"lex_id": [
+"pie-lex-bhrodheyeti"
+],
+"verdict": "C"
+},
+{
+"n": 60,
+"surface": "дан",
+"lemma": "dan",
+"tokens": 135,
+"lex_id": [
+"pie-lex-dinos"
+],
+"verdict": "C"
+},
+{
+"n": 61,
+"surface": "двору",
+"lemma": "dvor",
+"tokens": 618,
+"lex_id": [
+"pie-root-dhwer-door"
+],
+"verdict": "C"
+},
+{
+"n": 62,
+"surface": "бијеле",
+"lemma": "bijel",
+"tokens": 504,
+"lex_id": [
+"pie-lex-bhexlHo",
+"pie-lex-bhlHos"
+],
+"verdict": "C"
+},
+{
+"n": 63,
+"surface": "зелену",
+"lemma": "zelen",
+"tokens": 414,
+"lex_id": [
+"pie-lex-gjhelyeti"
+],
+"verdict": "C"
+},
+{
+"n": 64,
+"surface": "домислио",
+"lemma": "domisliti",
+"tokens": 11,
+"lex_id": [
+"pie-lex-mewHdh"
+],
+"verdict": "C"
+},
+{
+"n": 65,
+"surface": "кована",
+"lemma": "kovati",
+"tokens": 9,
+"lex_id": [
+"pie-lex-kowh2eti"
+],
+"verdict": "C"
+},
+{
+"n": 66,
+"surface": "играју",
+"lemma": "igrati",
+"tokens": 22,
+"lex_id": [
+"kaikki:h₂igreh₂"
+],
+"verdict": "C"
+},
+{
+"n": 67,
+"surface": "старе",
+"lemma": "star",
+"tokens": 83,
+"lex_id": [
+"pie-lex-sth2ros"
+],
+"verdict": "C"
+},
+{
+"n": 68,
+"surface": "узет’",
+"lemma": "uzet|uzeti",
+"tokens": 34,
+"lex_id": [
+"kaikki:h₁m̥eti"
+],
+"verdict": "C"
+},
+{
+"n": 69,
+"surface": "говорила",
+"lemma": "govoriti",
+"tokens": 229,
+"lex_id": [
+"pie-lex-gowHoros"
+],
+"verdict": "C"
+},
+{
+"n": 70,
+"surface": "изгубити",
+"lemma": "izgubiti",
+"tokens": 143,
+"lex_id": [
+"pie-lex-ghowbheye"
+],
+"verdict": "C"
+},
+{
+"n": 71,
+"surface": "говораше",
+"lemma": "govoriti",
+"tokens": 227,
+"lex_id": [
+"pie-lex-gowHoros"
+],
+"verdict": "C"
+},
+{
+"n": 72,
+"surface": "полази",
+"lemma": "polaziti",
+"tokens": 14,
+"lex_id": [
+"kaikki:loh₁ǵey"
+],
+"verdict": "C"
+},
+{
+"n": 73,
+"surface": "јунак",
+"lemma": "junak",
+"tokens": 781,
+"lex_id": [
+"kaikki:h₂yewh₁nos"
+],
+"verdict": "C"
+},
+{
+"n": 74,
+"surface": "градит",
+"lemma": "graditi",
+"tokens": 2,
+"lex_id": [
+"pie-lex-ghordhos"
+],
+"verdict": "C"
+},
+{
+"n": 75,
+"surface": "саградити",
+"lemma": "sagraditi",
+"tokens": 12,
+"lex_id": [
+"pie-lex-ghordhos"
+],
+"verdict": "C"
+},
+{
+"n": 76,
+"surface": "другога",
+"lemma": "drugi",
+"tokens": 198,
+"lex_id": [
+"pie-lex-dhrowghos-2"
+],
+"verdict": "C"
+},
+{
+"n": 77,
+"surface": "зеленој",
+"lemma": "zelen",
+"tokens": 120,
+"lex_id": [
+"pie-lex-gjhelyeti"
+],
+"verdict": "C"
+},
+{
+"n": 78,
+"surface": "говори",
+"lemma": "govor|govoriti",
+"tokens": 816,
+"lex_id": [
+"pie-lex-gowHoros"
+],
+"verdict": "C"
+},
+{
+"n": 79,
+"surface": "крајину",
+"lemma": "krajina",
+"tokens": 133,
+"lex_id": [
+"pie-root-krey-sift"
+],
+"verdict": "C"
+},
+{
+"n": 80,
+"surface": "дајем",
+"lemma": "dati",
+"tokens": 58,
+"lex_id": [
+"pie-lex-dedeh3ti"
+],
+"verdict": "C"
+},
+{
+"n": 81,
+"surface": "ићи",
+"lemma": "ići",
+"tokens": 92,
+"lex_id": [
+"pie-lex-h1eyti"
+],
+"verdict": "C"
+},
+{
+"n": 82,
+"surface": "лабудови",
+"lemma": "labud",
+"tokens": 9,
+"lex_id": [
+"pie-lex-albhos"
+],
+"verdict": "C"
+},
+{
+"n": 83,
+"surface": "камен",
+"lemma": "kamen",
+"tokens": 104,
+"lex_id": [
+"pie-lex-h2ekjmox"
+],
+"verdict": "C"
+},
+{
+"n": 84,
+"surface": "окренути",
+"lemma": "okrenuti",
+"tokens": 24,
+"lex_id": [
+"pie-lex-skert"
+],
+"verdict": "W"
+},
+{
+"n": 85,
+"surface": "држе",
+"lemma": "držati",
+"tokens": 43,
+"lex_id": [
+"pie-lex-dhergjh"
+],
+"verdict": "C"
+},
+{
+"n": 86,
+"surface": "виђе",
+"lemma": "vidjeti",
+"tokens": 754,
+"lex_id": [
+"pie-root-weyd-see"
+],
+"verdict": "C"
+},
+{
+"n": 87,
+"surface": "војске",
+"lemma": "vojska",
+"tokens": 488,
+"lex_id": [
+"pie-lex-woyh1os"
+],
+"verdict": "C"
+},
+{
+"n": 88,
+"surface": "напијао",
+"lemma": "napiti",
+"tokens": 3,
+"lex_id": [
+"pie-lex-peh3y",
+"pie-lex-pih3"
+],
+"verdict": "C"
+},
+{
+"n": 89,
+"surface": "златне",
+"lemma": "zlatan",
+"tokens": 109,
+"lex_id": [
+"kaikki:ǵʰolh₃tinos"
+],
+"verdict": "C"
+},
+{
+"n": 90,
+"surface": "слуга",
+"lemma": "sluga",
+"tokens": 95,
+"lex_id": [
+"pie-lex-kjlew"
+],
+"verdict": "C"
+},
+{
+"n": 91,
+"surface": "можемо",
+"lemma": "moći",
+"tokens": 68,
+"lex_id": [
+"pie-lex-memoghe"
+],
+"verdict": "C"
+},
+{
+"n": 92,
+"surface": "примио",
+"lemma": "primiti",
+"tokens": 15,
+"lex_id": [
+"pie-root-h1em-take"
+],
+"verdict": "C"
+},
+{
+"n": 93,
+"surface": "јунака",
+"lemma": "junak",
+"tokens": 782,
+"lex_id": [
+"kaikki:h₂yewh₁nos"
+],
+"verdict": "C"
+},
+{
+"n": 94,
+"surface": "бијело",
+"lemma": "bijel",
+"tokens": 122,
+"lex_id": [
+"pie-lex-bhexlHo",
+"pie-lex-bhlHos"
+],
+"verdict": "C"
+},
+{
+"n": 95,
+"surface": "гине",
+"lemma": "ginuti",
+"tokens": 23,
+"lex_id": [
+"kaikki:gʰubʰ"
+],
+"verdict": "C"
+},
+{
+"n": 96,
+"surface": "иду",
+"lemma": "ići",
+"tokens": 159,
+"lex_id": [
+"pie-lex-h1eyti"
+],
+"verdict": "C"
+},
+{
+"n": 97,
+"surface": "овце",
+"lemma": "ovca",
+"tokens": 360,
+"lex_id": [
+"pie-lex-h2owis"
+],
+"verdict": "C"
+},
+{
+"n": 98,
+"surface": "рони",
+"lemma": "roniti",
+"tokens": 107,
+"lex_id": [
+"pie-lex-h3reyH"
+],
+"verdict": "C"
+},
+{
+"n": 99,
+"surface": "земљу",
+"lemma": "zemlja",
+"tokens": 284,
+"lex_id": [
+"pie-lex-dhegjhoxm"
+],
+"verdict": "C"
+},
+{
+"n": 100,
+"surface": "јарко",
+"lemma": "jarki",
+"tokens": 41,
+"lex_id": [
+"kaikki:yohro"
+],
+"verdict": "C"
+}
+],
+"byliny": [
+{
+"n": 1,
+"surface": "добраго",
+"lemma": "добрый",
+"tokens": 114,
+"lex_id": [
+"pie-lex-dhh2obhros"
+],
+"verdict": "C"
+},
+{
+"n": 2,
+"surface": "цвътъ",
+"lemma": "цвет",
+"tokens": 8,
+"lex_id": [
+"pie-lex-kjwoytos"
+],
+"verdict": "W"
+},
+{
+"n": 3,
+"surface": "гаркнули",
+"lemma": "гаркнуть",
+"tokens": 1,
+"lex_id": [
+"pie-root-gerh2-cry_hoarsely"
+],
+"verdict": "W"
+},
+{
+"n": 4,
+"surface": "ребятушки",
+"lemma": "ребята",
+"tokens": 52,
+"lex_id": [
+"pie-root-h3erbh-turn"
+],
+"verdict": "C"
+},
+{
+"n": 5,
+"surface": "возьмите",
+"lemma": "взять",
+"tokens": 41,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+},
+{
+"n": 6,
+"surface": "дороги",
+"lemma": "дорога",
+"tokens": 115,
+"lex_id": [
+"pie-lex-dorHgheh2"
+],
+"verdict": "C"
+},
+{
+"n": 7,
+"surface": "ясныя",
+"lemma": "ясный",
+"tokens": 63,
+"lex_id": [
+"pie-root-h2ey-day",
+"pie-root-h2ey-give",
+"pie-root-h2ey-vital_force"
+],
+"verdict": "P"
+},
+{
+"n": 8,
+"surface": "двора",
+"lemma": "двор",
+"tokens": 262,
+"lex_id": [
+"pie-root-dhwer-door"
+],
+"verdict": "C"
+},
+{
+"n": 9,
+"surface": "пофхаль",
+"lemma": "поехать",
+"tokens": 179,
+"lex_id": [
+"pie-lex-yeh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 10,
+"surface": "могучимъ",
+"lemma": "могучий",
+"tokens": 17,
+"lex_id": [
+"pie-lex-memoghe"
+],
+"verdict": "C"
+},
+{
+"n": 11,
+"surface": "младъ",
+"lemma": "младой",
+"tokens": 251,
+"lex_id": [
+"pie-lex-mldus"
+],
+"verdict": "C"
+},
+{
+"n": 12,
+"surface": "надфвалъь",
+"lemma": "надевать",
+"tokens": 3,
+"lex_id": [
+"pie-root-dheh1-do"
+],
+"verdict": "C"
+},
+{
+"n": 13,
+"surface": "гостя",
+"lemma": "гость",
+"tokens": 97,
+"lex_id": [
+"pie-lex-ghostis"
+],
+"verdict": "C"
+},
+{
+"n": 14,
+"surface": "спроговоритъ",
+"lemma": "проговорить",
+"tokens": 19,
+"lex_id": [
+"pie-lex-gowHoros"
+],
+"verdict": "C"
+},
+{
+"n": 15,
+"surface": "вонь",
+"lemma": "вонь",
+"tokens": 12,
+"lex_id": [
+"pie-root-h2enh1-breathe"
+],
+"verdict": "C"
+},
+{
+"n": 16,
+"surface": "добрый",
+"lemma": "добрый",
+"tokens": 830,
+"lex_id": [
+"pie-lex-dhh2obhros"
+],
+"verdict": "C"
+},
+{
+"n": 17,
+"surface": "бросали",
+"lemma": "бросать",
+"tokens": 32,
+"lex_id": [
+"pie-root-bhrewkj-scrape_off"
+],
+"verdict": "W"
+},
+{
+"n": 18,
+"surface": "дуба",
+"lemma": "дуб",
+"tokens": 65,
+"lex_id": [
+"kaikki:dʰumbʰos"
+],
+"verdict": "C"
+},
+{
+"n": 19,
+"surface": "лобъ",
+"lemma": "лоб",
+"tokens": 4,
+"lex_id": [
+"pie-root-lewbh-cut_off"
+],
+"verdict": "W"
+},
+{
+"n": 20,
+"surface": "сырбмъ",
+"lemma": "сыр|сырой",
+"tokens": 4,
+"lex_id": [
+"pie-lex-suHros"
+],
+"verdict": "C"
+},
+{
+"n": 21,
+"surface": "копьемъ",
+"lemma": "копье",
+"tokens": 36,
+"lex_id": [
+"pie-root-skep-chop",
+"pie-root-skep-cover"
+],
+"verdict": "P"
+},
+{
+"n": 22,
+"surface": "выпала",
+"lemma": "выпасть",
+"tokens": 11,
+"lex_id": [
+"pie-root-ped-walk"
+],
+"verdict": "C"
+},
+{
+"n": 23,
+"surface": "драку",
+"lemma": "драка",
+"tokens": 19,
+"lex_id": [
+"pie-root-der-split"
+],
+"verdict": "C"
+},
+{
+"n": 24,
+"surface": "чёствуетъь",
+"lemma": "чествовать",
+"tokens": 1,
+"lex_id": [
+"pie-lex-kweyt"
+],
+"verdict": "C"
+},
+{
+"n": 25,
+"surface": "веселые",
+"lemma": "веселый",
+"tokens": 7,
+"lex_id": [
+"pie-lex-h1wesus"
+],
+"verdict": "C"
+},
+{
+"n": 26,
+"surface": "полото",
+"lemma": "полоть",
+"tokens": 1,
+"lex_id": [
+"pie-root-pelh1-swing"
+],
+"verdict": "W"
+},
+{
+"n": 27,
+"surface": "концу",
+"lemma": "конец",
+"tokens": 3,
+"lex_id": [
+"pie-lex-konos"
+],
+"verdict": "C"
+},
+{
+"n": 28,
+"surface": "прикажи",
+"lemma": "приказать",
+"tokens": 81,
+"lex_id": [
+"pie-lex-kwoxgjyeti",
+"pie-lex-kwoxkjyeti"
+],
+"verdict": "C"
+},
+{
+"n": 29,
+"surface": "злы",
+"lemma": "злой",
+"tokens": 38,
+"lex_id": [
+"kaikki:ǵʰwel"
+],
+"verdict": "C"
+},
+{
+"n": 30,
+"surface": "пью",
+"lemma": "пить",
+"tokens": 13,
+"lex_id": [
+"pie-lex-peh3y",
+"pie-lex-pih3"
+],
+"verdict": "C"
+},
+{
+"n": 31,
+"surface": "налетел",
+"lemma": "налететь",
+"tokens": 2,
+"lex_id": [
+"pie-lex-lekto"
+],
+"verdict": "C"
+},
+{
+"n": 32,
+"surface": "правой",
+"lemma": "правый",
+"tokens": 109,
+"lex_id": [
+"kaikki:preh₃wos"
+],
+"verdict": "C"
+},
+{
+"n": 33,
+"surface": "сыра",
+"lemma": "сыр|сырой",
+"tokens": 116,
+"lex_id": [
+"pie-lex-suHros"
+],
+"verdict": "C"
+},
+{
+"n": 34,
+"surface": "пиръ",
+"lemma": "пир",
+"tokens": 449,
+"lex_id": [
+"pie-root-peh3-drink"
+],
+"verdict": "C"
+},
+{
+"n": 35,
+"surface": "говоритъ",
+"lemma": "говорить",
+"tokens": 704,
+"lex_id": [
+"pie-lex-gowHoros"
+],
+"verdict": "C"
+},
+{
+"n": 36,
+"surface": "вечера",
+"lemma": "вечер",
+"tokens": 149,
+"lex_id": [
+"pie-lex-wekwsperos"
+],
+"verdict": "C"
+},
+{
+"n": 37,
+"surface": "услыхаль",
+"lemma": "услыхать",
+"tokens": 14,
+"lex_id": [
+"pie-lex-kjlewseti"
+],
+"verdict": "C"
+},
+{
+"n": 38,
+"surface": "мужчина",
+"lemma": "мужчина",
+"tokens": 7,
+"lex_id": [
+"pie-lex-mon"
+],
+"verdict": "C"
+},
+{
+"n": 39,
+"surface": "гривамъ",
+"lemma": "грива",
+"tokens": 1,
+"lex_id": [
+"pie-lex-gwriHweh2"
+],
+"verdict": "C"
+},
+{
+"n": 40,
+"surface": "пиру",
+"lemma": "пир",
+"tokens": 444,
+"lex_id": [
+"pie-root-peh3-drink"
+],
+"verdict": "C"
+},
+{
+"n": 41,
+"surface": "ръзвыхъ",
+"lemma": "резвый",
+"tokens": 1,
+"lex_id": [
+"pie-lex-wreh1gjyeti"
+],
+"verdict": "C"
+},
+{
+"n": 42,
+"surface": "стънки",
+"lemma": "стена|стенка",
+"tokens": 1,
+"lex_id": [
+"pie-lex-steyh2"
+],
+"verdict": "C"
+},
+{
+"n": 43,
+"surface": "жена",
+"lemma": "жена",
+"tokens": 463,
+"lex_id": [
+"pie-lex-gwexn"
+],
+"verdict": "C"
+},
+{
+"n": 44,
+"surface": "искали",
+"lemma": "искать",
+"tokens": 3,
+"lex_id": [
+"pie-lex-h2iskjeti"
+],
+"verdict": "C"
+},
+{
+"n": 45,
+"surface": "стрфлу",
+"lemma": "стрела",
+"tokens": 36,
+"lex_id": [
+"kaikki:strel"
+],
+"verdict": "C"
+},
+{
+"n": 46,
+"surface": "говорилъ",
+"lemma": "говорить",
+"tokens": 605,
+"lex_id": [
+"pie-lex-gowHoros"
+],
+"verdict": "C"
+},
+{
+"n": 47,
+"surface": "синем",
+"lemma": "синий",
+"tokens": 8,
+"lex_id": [
+"pie-root-skjeh1y-shine"
+],
+"verdict": "C"
+},
+{
+"n": 48,
+"surface": "времени",
+"lemma": "время",
+"tokens": 182,
+"lex_id": [
+"pie-lex-wertmn"
+],
+"verdict": "C"
+},
+{
+"n": 49,
+"surface": "пьем",
+"lemma": "пить",
+"tokens": 2,
+"lex_id": [
+"pie-lex-peh3y",
+"pie-lex-pih3"
+],
+"verdict": "C"
+},
+{
+"n": 50,
+"surface": "растворить",
+"lemma": "растворить|растворять",
+"tokens": 2,
+"lex_id": [
+"pie-lex-tworHeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 51,
+"surface": "утробъ",
+"lemma": "утроба",
+"tokens": 5,
+"lex_id": [
+"kaikki:h₁ontrom"
+],
+"verdict": "C"
+},
+{
+"n": 52,
+"surface": "старинокъ",
+"lemma": "старина|старинка",
+"tokens": 1,
+"lex_id": [
+"pie-lex-sth2ros"
+],
+"verdict": "C"
+},
+{
+"n": 53,
+"surface": "начинить",
+"lemma": "начинить",
+"tokens": 1,
+"lex_id": [
+"pie-lex-kweynos"
+],
+"verdict": "C"
+},
+{
+"n": 54,
+"surface": "груди",
+"lemma": "грудь",
+"tokens": 273,
+"lex_id": [
+"pie-root-gwhrendh-crush"
+],
+"verdict": "C"
+},
+{
+"n": 55,
+"surface": "говорить",
+"lemma": "говорить",
+"tokens": 1000,
+"lex_id": [
+"pie-lex-gowHoros"
+],
+"verdict": "C"
+},
+{
+"n": 56,
+"surface": "овець",
+"lemma": "овца",
+"tokens": 1,
+"lex_id": [
+"pie-lex-h2owis"
+],
+"verdict": "C"
+},
+{
+"n": 57,
+"surface": "нова",
+"lemma": "новый",
+"tokens": 28,
+"lex_id": [
+"pie-lex-newos"
+],
+"verdict": "C"
+},
+{
+"n": 58,
+"surface": "взятъ",
+"lemma": "взять",
+"tokens": 5,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+},
+{
+"n": 59,
+"surface": "сырой",
+"lemma": "сырой",
+"tokens": 205,
+"lex_id": [
+"pie-lex-suHros"
+],
+"verdict": "C"
+},
+{
+"n": 60,
+"surface": "нельзя",
+"lemma": "нельзя",
+"tokens": 76,
+"lex_id": [
+"pie-lex-ne-2"
+],
+"verdict": "P"
+},
+{
+"n": 61,
+"surface": "расклевали",
+"lemma": "клевать",
+"tokens": 1,
+"lex_id": [
+"pie-lex-kleh2uti"
+],
+"verdict": "C"
+},
+{
+"n": 62,
+"surface": "держатъ",
+"lemma": "держать",
+"tokens": 13,
+"lex_id": [
+"pie-lex-dhergjh"
+],
+"verdict": "C"
+},
+{
+"n": 63,
+"surface": "доля",
+"lemma": "доля",
+"tokens": 10,
+"lex_id": [
+"pie-lex-dolh1yeh2"
+],
+"verdict": "C"
+},
+{
+"n": 64,
+"surface": "борются",
+"lemma": "бороться",
+"tokens": 2,
+"lex_id": [
+"pie-lex-bhorHeti"
+],
+"verdict": "C"
+},
+{
+"n": 65,
+"surface": "золота",
+"lemma": "золото",
+"tokens": 230,
+"lex_id": [
+"pie-lex-gjholh3tos"
+],
+"verdict": "C"
+},
+{
+"n": 66,
+"surface": "маленькаго",
+"lemma": "маленький",
+"tokens": 8,
+"lex_id": [
+"pie-lex-smoh1los"
+],
+"verdict": "C"
+},
+{
+"n": 67,
+"surface": "конца",
+"lemma": "конец",
+"tokens": 37,
+"lex_id": [
+"pie-lex-konos"
+],
+"verdict": "C"
+},
+{
+"n": 68,
+"surface": "стала",
+"lemma": "стать",
+"tokens": 144,
+"lex_id": [
+"pie-lex-steh2tis",
+"pie-lex-stneh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 69,
+"surface": "сыновей",
+"lemma": "сын",
+"tokens": 25,
+"lex_id": [
+"pie-lex-suHnus"
+],
+"verdict": "C"
+},
+{
+"n": 70,
+"surface": "городе",
+"lemma": "город",
+"tokens": 38,
+"lex_id": [
+"pie-lex-ghordhos"
+],
+"verdict": "C"
+},
+{
+"n": 71,
+"surface": "ласкову",
+"lemma": "ласковый",
+"tokens": 102,
+"lex_id": [
+"kaikki:leh₂sk"
+],
+"verdict": "C"
+},
+{
+"n": 72,
+"surface": "головушки",
+"lemma": "голова|головушка",
+"tokens": 81,
+"lex_id": [
+"pie-lex-golHweh2"
+],
+"verdict": "C"
+},
+{
+"n": 73,
+"surface": "принадлежать",
+"lemma": "принадлежать",
+"tokens": 10,
+"lex_id": [
+"pie-lex-leghyeti"
+],
+"verdict": "C"
+},
+{
+"n": 74,
+"surface": "чернымъ",
+"lemma": "черный",
+"tokens": 70,
+"lex_id": [
+"pie-lex-krsnos"
+],
+"verdict": "C"
+},
+{
+"n": 75,
+"surface": "дает",
+"lemma": "давать|дает",
+"tokens": 15,
+"lex_id": [
+"pie-lex-dedeh3ti"
+],
+"verdict": "C"
+},
+{
+"n": 76,
+"surface": "синя’",
+"lemma": "синий",
+"tokens": 2,
+"lex_id": [
+"pie-root-skjeh1y-shine"
+],
+"verdict": "C"
+},
+{
+"n": 77,
+"surface": "жить",
+"lemma": "жить",
+"tokens": 197,
+"lex_id": [
+"pie-lex-gwih3weti"
+],
+"verdict": "C"
+},
+{
+"n": 78,
+"surface": "брала",
+"lemma": "брать",
+"tokens": 129,
+"lex_id": [
+"pie-lex-bhereti"
+],
+"verdict": "C"
+},
+{
+"n": 79,
+"surface": "зовутъь",
+"lemma": "звать",
+"tokens": 2,
+"lex_id": [
+"pie-lex-gjhuHeti"
+],
+"verdict": "C"
+},
+{
+"n": 80,
+"surface": "горамъ",
+"lemma": "гора",
+"tokens": 51,
+"lex_id": [
+"pie-lex-gworHeh2"
+],
+"verdict": "C"
+},
+{
+"n": 81,
+"surface": "матушки",
+"lemma": "матушка",
+"tokens": 294,
+"lex_id": [
+"pie-lex-meh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 82,
+"surface": "луга",
+"lemma": "луг|луга",
+"tokens": 48,
+"lex_id": [
+"kaikki:lengʷʰ"
+],
+"verdict": "W"
+},
+{
+"n": 83,
+"surface": "мерзлаго",
+"lemma": "мерзлый",
+"tokens": 8,
+"lex_id": [
+"kaikki:merǵ"
+],
+"verdict": "C"
+},
+{
+"n": 84,
+"surface": "любитель",
+"lemma": "любитель",
+"tokens": 2,
+"lex_id": [
+"pie-lex-lowbheyeti"
+],
+"verdict": "C"
+},
+{
+"n": 85,
+"surface": "пнул",
+"lemma": "пнуть",
+"tokens": 3,
+"lex_id": [
+"pie-lex-spnh1ti"
+],
+"verdict": "C"
+},
+{
+"n": 86,
+"surface": "женой",
+"lemma": "жена",
+"tokens": 136,
+"lex_id": [
+"pie-lex-gwexn"
+],
+"verdict": "C"
+},
+{
+"n": 87,
+"surface": "востёръ",
+"lemma": "острый",
+"tokens": 4,
+"lex_id": [
+"pie-lex-h2ekjros"
+],
+"verdict": "C"
+},
+{
+"n": 88,
+"surface": "возьму",
+"lemma": "взять",
+"tokens": 113,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+},
+{
+"n": 89,
+"surface": "въка",
+"lemma": "век",
+"tokens": 19,
+"lex_id": [
+"pie-lex-woykos"
+],
+"verdict": "C"
+},
+{
+"n": 90,
+"surface": "носили",
+"lemma": "носить",
+"tokens": 25,
+"lex_id": [
+"pie-lex-h1nekjeti"
+],
+"verdict": "C"
+},
+{
+"n": 91,
+"surface": "итти",
+"lemma": "идти",
+"tokens": 150,
+"lex_id": [
+"pie-lex-h1eyti"
+],
+"verdict": "C"
+},
+{
+"n": 92,
+"surface": "слфдують",
+"lemma": "следовать",
+"tokens": 3,
+"lex_id": [
+"pie-lex-h3sloydhus"
+],
+"verdict": "C"
+},
+{
+"n": 93,
+"surface": "небу",
+"lemma": "небо",
+"tokens": 8,
+"lex_id": [
+"pie-lex-nebhos"
+],
+"verdict": "C"
+},
+{
+"n": 94,
+"surface": "род",
+"lemma": "род",
+"tokens": 20,
+"lex_id": [
+"pie-lex-wreh2ds"
+],
+"verdict": "W"
+},
+{
+"n": 95,
+"surface": "четвертый",
+"lemma": "четвертый",
+"tokens": 35,
+"lex_id": [
+"pie-lex-kwetwrtos"
+],
+"verdict": "C"
+},
+{
+"n": 96,
+"surface": "веселы",
+"lemma": "веселый",
+"tokens": 34,
+"lex_id": [
+"pie-lex-h1wesus"
+],
+"verdict": "C"
+},
+{
+"n": 97,
+"surface": "брата",
+"lemma": "брат",
+"tokens": 88,
+"lex_id": [
+"pie-lex-bhreh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 98,
+"surface": "говориль",
+"lemma": "говорить",
+"tokens": 345,
+"lex_id": [
+"pie-lex-gowHoros"
+],
+"verdict": "C"
+},
+{
+"n": 99,
+"surface": "кровавыя",
+"lemma": "кровавый",
+"tokens": 18,
+"lex_id": [
+"pie-lex-krewh2s",
+"pie-lex-krewh2s-2"
+],
+"verdict": "C"
+},
+{
+"n": 100,
+"surface": "печки",
+"lemma": "печка",
+"tokens": 55,
+"lex_id": [
+"pie-lex-pekweti",
+"pie-lex-pekwtis"
+],
+"verdict": "C"
+}
+],
+"dainos": [
+{
+"n": 1,
+"surface": "dukrelę",
+"lemma": "dukra",
+"tokens": 23,
+"lex_id": [
+"pie-lex-dhugh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 2,
+"surface": "šarka",
+"lemma": "šarka",
+"tokens": 7,
+"lex_id": [
+"pie-lex-kjexr"
+],
+"verdict": "W"
+},
+{
+"n": 3,
+"surface": "bernytis",
+"lemma": "bernas",
+"tokens": 125,
+"lex_id": [
+"pie-lex-bherno"
+],
+"verdict": "C"
+},
+{
+"n": 4,
+"surface": "rąnkas",
+"lemma": "ranka",
+"tokens": 12,
+"lex_id": [
+"kaikki:wrenk"
+],
+"verdict": "C"
+},
+{
+"n": 5,
+"surface": "baltas",
+"lemma": "baltas",
+"tokens": 89,
+"lex_id": [
+"pie-lex-bholHtos"
+],
+"verdict": "C"
+},
+{
+"n": 6,
+"surface": "dvarai",
+"lemma": "dvaras",
+"tokens": 2,
+"lex_id": [
+"pie-lex-dhworo"
+],
+"verdict": "C"
+},
+{
+"n": 7,
+"surface": "žėntaj",
+"lemma": "žentas",
+"tokens": 10,
+"lex_id": [
+"pie-lex-gjenh1tis",
+"pie-root-gjem-marry"
+],
+"verdict": "P"
+},
+{
+"n": 8,
+"surface": "didis",
+"lemma": "didis",
+"tokens": 34,
+"lex_id": [
+"pie-root-deyh2-shine"
+],
+"verdict": "W"
+},
+{
+"n": 9,
+"surface": "plaukė",
+"lemma": "plaukti",
+"tokens": 3,
+"lex_id": [
+"pie-lex-plewk"
+],
+"verdict": "C"
+},
+{
+"n": 10,
+"surface": "lanka",
+"lemma": "lankas",
+"tokens": 7,
+"lex_id": [
+"pie-root-lenk-bend"
+],
+"verdict": "C"
+},
+{
+"n": 11,
+"surface": "kėlkit",
+"lemma": "kelti",
+"tokens": 26,
+"lex_id": [
+"pie-root-kelH-rise"
+],
+"verdict": "C"
+},
+{
+"n": 12,
+"surface": "mariu",
+"lemma": "marios",
+"tokens": 48,
+"lex_id": [
+"pie-lex-mori"
+],
+"verdict": "C"
+},
+{
+"n": 13,
+"surface": "darže",
+"lemma": "daržas",
+"tokens": 63,
+"lex_id": [
+"kaikki:derǵʰ"
+],
+"verdict": "C"
+},
+{
+"n": 14,
+"surface": "sėsdamas",
+"lemma": "sėsti",
+"tokens": 6,
+"lex_id": [
+"pie-lex-sisdeti"
+],
+"verdict": "C"
+},
+{
+"n": 15,
+"surface": "baltoji",
+"lemma": "baltas",
+"tokens": 24,
+"lex_id": [
+"pie-lex-bholHtos"
+],
+"verdict": "C"
+},
+{
+"n": 16,
+"surface": "dukrėlė",
+"lemma": "dukra",
+"tokens": 188,
+"lex_id": [
+"pie-lex-dhugh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 17,
+"surface": "arklį",
+"lemma": "arklys",
+"tokens": 46,
+"lex_id": [
+"pie-root-h2erh3-plough"
+],
+"verdict": "C"
+},
+{
+"n": 18,
+"surface": "džiaugės",
+"lemma": "džiaugtis",
+"tokens": 6,
+"lex_id": [
+"pie-root-dhewgh-hit"
+],
+"verdict": "W"
+},
+{
+"n": 19,
+"surface": "jojo",
+"lemma": "joti",
+"tokens": 78,
+"lex_id": [
+"pie-lex-yeh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 20,
+"surface": "veždavo",
+"lemma": "vežti",
+"tokens": 1,
+"lex_id": [
+"pie-lex-wegjheti"
+],
+"verdict": "C"
+},
+{
+"n": 21,
+"surface": "jaunasis",
+"lemma": "jaunas",
+"tokens": 183,
+"lex_id": [
+"kaikki:h₂yewh₁nos"
+],
+"verdict": "C"
+},
+{
+"n": 22,
+"surface": "bernužėli",
+"lemma": "bernas",
+"tokens": 190,
+"lex_id": [
+"pie-lex-bherno"
+],
+"verdict": "C"
+},
+{
+"n": 23,
+"surface": "dvarėlį",
+"lemma": "dvaras",
+"tokens": 158,
+"lex_id": [
+"pie-lex-dhworo"
+],
+"verdict": "C"
+},
+{
+"n": 24,
+"surface": "žuvužėlę",
+"lemma": "žuvis",
+"tokens": 2,
+"lex_id": [
+"pie-lex-dhgjhuHs"
+],
+"verdict": "C"
+},
+{
+"n": 25,
+"surface": "aukszta",
+"lemma": "aukštas",
+"tokens": 14,
+"lex_id": [
+"pie-root-h2ewg-increase"
+],
+"verdict": "C"
+},
+{
+"n": 26,
+"surface": "paukštėlės",
+"lemma": "paukštis",
+"tokens": 3,
+"lex_id": [
+"pie-root-pewt-blow_up"
+],
+"verdict": "W"
+},
+{
+"n": 27,
+"surface": "prilaikai",
+"lemma": "laikas",
+"tokens": 2,
+"lex_id": [
+"pie-lex-loykwos"
+],
+"verdict": "C"
+},
+{
+"n": 28,
+"surface": "gėrė",
+"lemma": "gerti",
+"tokens": 50,
+"lex_id": [
+"pie-lex-gwrh3eti"
+],
+"verdict": "C"
+},
+{
+"n": 29,
+"surface": "raudonųjų",
+"lemma": "raudonas",
+"tokens": 22,
+"lex_id": [
+"pie-lex-h1rowdhos"
+],
+"verdict": "C"
+},
+{
+"n": 30,
+"surface": "martėlę",
+"lemma": "marti",
+"tokens": 13,
+"lex_id": [
+"kaikki:morti"
+],
+"verdict": "C"
+},
+{
+"n": 31,
+"surface": "pramanė",
+"lemma": "manyti",
+"tokens": 4,
+"lex_id": [
+"pie-lex-moneyeti"
+],
+"verdict": "C"
+},
+{
+"n": 32,
+"surface": "ves",
+"lemma": "vesti",
+"tokens": 9,
+"lex_id": [
+"pie-lex-wedheti",
+"pie-lex-wedheti-2"
+],
+"verdict": "P"
+},
+{
+"n": 33,
+"surface": "pakase",
+"lemma": "kasti",
+"tokens": 4,
+"lex_id": [
+"pie-root-kes-scrape"
+],
+"verdict": "C"
+},
+{
+"n": 34,
+"surface": "brajdžiau",
+"lemma": "braidyti",
+"tokens": 1,
+"lex_id": [
+"pie-lex-bhrodheyeti"
+],
+"verdict": "C"
+},
+{
+"n": 35,
+"surface": "aukszto",
+"lemma": "aukštas",
+"tokens": 34,
+"lex_id": [
+"pie-root-h2ewg-increase"
+],
+"verdict": "C"
+},
+{
+"n": 36,
+"surface": "ėjo",
+"lemma": "eiti",
+"tokens": 60,
+"lex_id": [
+"pie-lex-h1eyti"
+],
+"verdict": "C"
+},
+{
+"n": 37,
+"surface": "mamelei",
+"lemma": "mama",
+"tokens": 2,
+"lex_id": [
+"kaikki:meh₂meh₂"
+],
+"verdict": "C"
+},
+{
+"n": 38,
+"surface": "darželu",
+"lemma": "daržas",
+"tokens": 1,
+"lex_id": [
+"kaikki:derǵʰ"
+],
+"verdict": "C"
+},
+{
+"n": 39,
+"surface": "padės",
+"lemma": "padėti",
+"tokens": 6,
+"lex_id": [
+"pie-lex-dheh1t"
+],
+"verdict": "C"
+},
+{
+"n": 40,
+"surface": "saldaus",
+"lemma": "saldus|saldusmstresspatternor",
+"tokens": 23,
+"lex_id": [
+"pie-lex-sexh2l"
+],
+"verdict": "C"
+},
+{
+"n": 41,
+"surface": "vainelė",
+"lemma": "vaina",
+"tokens": 6,
+"lex_id": [
+"pie-lex-weyh1neh2"
+],
+"verdict": "W"
+},
+{
+"n": 42,
+"surface": "galvelė",
+"lemma": "galva",
+"tokens": 6,
+"lex_id": [
+"pie-lex-golHweh2"
+],
+"verdict": "C"
+},
+{
+"n": 43,
+"surface": "išbėgsiu",
+"lemma": "bėgti",
+"tokens": 2,
+"lex_id": [
+"pie-lex-bhegweti"
+],
+"verdict": "C"
+},
+{
+"n": 44,
+"surface": "užsės",
+"lemma": "sėti",
+"tokens": 1,
+"lex_id": [
+"pie-lex-seh1yeti"
+],
+"verdict": "C"
+},
+{
+"n": 45,
+"surface": "bernėlu",
+"lemma": "bernas",
+"tokens": 141,
+"lex_id": [
+"pie-lex-bherno"
+],
+"verdict": "C"
+},
+{
+"n": 46,
+"surface": "skyniau",
+"lemma": "skinti",
+"tokens": 25,
+"lex_id": [
+"kaikki:skn̥h"
+],
+"verdict": "C"
+},
+{
+"n": 47,
+"surface": "barti",
+"lemma": "barti",
+"tokens": 7,
+"lex_id": [
+"pie-lex-bhorHeti"
+],
+"verdict": "C"
+},
+{
+"n": 48,
+"surface": "raudoni",
+"lemma": "raudonas",
+"tokens": 14,
+"lex_id": [
+"pie-lex-h1rowdhos"
+],
+"verdict": "C"
+},
+{
+"n": 49,
+"surface": "rytą",
+"lemma": "rytas",
+"tokens": 97,
+"lex_id": [
+"pie-lex-h3reyH"
+],
+"verdict": "C"
+},
+{
+"n": 50,
+"surface": "ės",
+"lemma": "ėsti",
+"tokens": 48,
+"lex_id": [
+"pie-lex-h1edti"
+],
+"verdict": "W"
+},
+{
+"n": 51,
+"surface": "teka",
+"lemma": "tekėti",
+"tokens": 32,
+"lex_id": [
+"pie-lex-tekweti",
+"pie-lex-tekwti"
+],
+"verdict": "C"
+},
+{
+"n": 52,
+"surface": "medinis",
+"lemma": "medinis",
+"tokens": 8,
+"lex_id": [
+"pie-lex-medhyos"
+],
+"verdict": "C"
+},
+{
+"n": 53,
+"surface": "daržė",
+"lemma": "daržas",
+"tokens": 56,
+"lex_id": [
+"kaikki:derǵʰ"
+],
+"verdict": "C"
+},
+{
+"n": 54,
+"surface": "brolius",
+"lemma": "brolis",
+"tokens": 21,
+"lex_id": [
+"pie-lex-bhreh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 55,
+"surface": "naktėlės",
+"lemma": "naktis",
+"tokens": 9,
+"lex_id": [
+"pie-lex-nokwts"
+],
+"verdict": "C"
+},
+{
+"n": 56,
+"surface": "miglužėlė",
+"lemma": "migla",
+"tokens": 1,
+"lex_id": [
+"pie-lex-h3mighleh2"
+],
+"verdict": "C"
+},
+{
+"n": 57,
+"surface": "ausį",
+"lemma": "ausis",
+"tokens": 12,
+"lex_id": [
+"pie-lex-h2oxws"
+],
+"verdict": "C"
+},
+{
+"n": 58,
+"surface": "vežimėlį",
+"lemma": "vežimas",
+"tokens": 13,
+"lex_id": [
+"pie-lex-wegjheti"
+],
+"verdict": "C"
+},
+{
+"n": 59,
+"surface": "metą",
+"lemma": "metas",
+"tokens": 5,
+"lex_id": [
+"pie-root-meh1-measure"
+],
+"verdict": "C"
+},
+{
+"n": 60,
+"surface": "diėvas",
+"lemma": "dievas",
+"tokens": 5,
+"lex_id": [
+"pie-lex-deywos"
+],
+"verdict": "C"
+},
+{
+"n": 61,
+"surface": "duktė",
+"lemma": "duktė|duktėfstresspattern",
+"tokens": 84,
+"lex_id": [
+"pie-lex-dhugh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 62,
+"surface": "anytą",
+"lemma": "anyta",
+"tokens": 21,
+"lex_id": [
+"pie-lex-h2en"
+],
+"verdict": "C"
+},
+{
+"n": 63,
+"surface": "imsit",
+"lemma": "imti",
+"tokens": 1,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+},
+{
+"n": 64,
+"surface": "džiaugėsi",
+"lemma": "džiaugtis",
+"tokens": 6,
+"lex_id": [
+"pie-root-dhewgh-hit"
+],
+"verdict": "W"
+},
+{
+"n": 65,
+"surface": "kalbėti",
+"lemma": "kalbėti",
+"tokens": 40,
+"lex_id": [
+"pie-root-kelh1-call_out_to",
+"pie-root-skelh1-parch"
+],
+"verdict": "P"
+},
+{
+"n": 66,
+"surface": "sūneli",
+"lemma": "sūnus",
+"tokens": 6,
+"lex_id": [
+"pie-lex-suHnus"
+],
+"verdict": "C"
+},
+{
+"n": 67,
+"surface": "valgysim",
+"lemma": "valgyti",
+"tokens": 4,
+"lex_id": [
+"pie-lex-wolgeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 68,
+"surface": "bėrą",
+"lemma": "bėras",
+"tokens": 125,
+"lex_id": [
+"pie-lex-bherHos"
+],
+"verdict": "C"
+},
+{
+"n": 69,
+"surface": "jauną",
+"lemma": "jaunas",
+"tokens": 200,
+"lex_id": [
+"kaikki:h₂yewh₁nos"
+],
+"verdict": "C"
+},
+{
+"n": 70,
+"surface": "bėdės",
+"lemma": "besti",
+"tokens": 11,
+"lex_id": [
+"pie-lex-bhedhh2eti"
+],
+"verdict": "W"
+},
+{
+"n": 71,
+"surface": "pristatė",
+"lemma": "statyti",
+"tokens": 12,
+"lex_id": [
+"pie-root-steh2-stand"
+],
+"verdict": "C"
+},
+{
+"n": 72,
+"surface": "žali",
+"lemma": "žalias",
+"tokens": 87,
+"lex_id": [
+"pie-root-gjhelh3-green"
+],
+"verdict": "C"
+},
+{
+"n": 73,
+"surface": "daviau",
+"lemma": "duoti",
+"tokens": 18,
+"lex_id": [
+"pie-lex-dedeh3ti"
+],
+"verdict": "C"
+},
+{
+"n": 74,
+"surface": "sniėgu",
+"lemma": "sniegas",
+"tokens": 6,
+"lex_id": [
+"pie-lex-snoygwhos"
+],
+"verdict": "C"
+},
+{
+"n": 75,
+"surface": "geg",
+"lemma": "gegužė|gegužėfstresspattern",
+"tokens": 9,
+"lex_id": [
+"pie-lex-gheghugjheh2"
+],
+"verdict": "W"
+},
+{
+"n": 76,
+"surface": "anytėlę",
+"lemma": "anyta",
+"tokens": 47,
+"lex_id": [
+"pie-lex-h2en"
+],
+"verdict": "C"
+},
+{
+"n": 77,
+"surface": "ima",
+"lemma": "imti",
+"tokens": 6,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+},
+{
+"n": 78,
+"surface": "bėras",
+"lemma": "bėras",
+"tokens": 43,
+"lex_id": [
+"pie-lex-bherHos"
+],
+"verdict": "C"
+},
+{
+"n": 79,
+"surface": "kilnu",
+"lemma": "kilnus",
+"tokens": 4,
+"lex_id": [
+"pie-root-kelH-rise",
+"pie-root-skelH-cut"
+],
+"verdict": "P"
+},
+{
+"n": 80,
+"surface": "dukrėles",
+"lemma": "dukra",
+"tokens": 7,
+"lex_id": [
+"pie-lex-dhugh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 81,
+"surface": "josiu",
+"lemma": "joti",
+"tokens": 72,
+"lex_id": [
+"pie-lex-yeh2ti"
+],
+"verdict": "C"
+},
+{
+"n": 82,
+"surface": "kojėlų",
+"lemma": "koja",
+"tokens": 2,
+"lex_id": [
+"pie-root-kenh1-exert_oneself"
+],
+"verdict": "W"
+},
+{
+"n": 83,
+"surface": "kalbi",
+"lemma": "kalbus|kalbėti",
+"tokens": 19,
+"lex_id": [
+"pie-root-kelh1-call_out_to",
+"pie-root-skelh1-parch"
+],
+"verdict": "P"
+},
+{
+"n": 84,
+"surface": "paliksiu",
+"lemma": "palikti",
+"tokens": 20,
+"lex_id": [
+"pie-root-leykw-leave"
+],
+"verdict": "C"
+},
+{
+"n": 85,
+"surface": "galvėlė",
+"lemma": "galva",
+"tokens": 21,
+"lex_id": [
+"pie-lex-golHweh2"
+],
+"verdict": "C"
+},
+{
+"n": 86,
+"surface": "baltūju",
+"lemma": "baltas",
+"tokens": 35,
+"lex_id": [
+"pie-lex-bholHtos"
+],
+"verdict": "C"
+},
+{
+"n": 87,
+"surface": "bernelis",
+"lemma": "bernas",
+"tokens": 147,
+"lex_id": [
+"pie-lex-bherno"
+],
+"verdict": "C"
+},
+{
+"n": 88,
+"surface": "mynė",
+"lemma": "minti",
+"tokens": 4,
+"lex_id": [
+"pie-root-menH-tread"
+],
+"verdict": "C"
+},
+{
+"n": 89,
+"surface": "išsineša",
+"lemma": "nešti",
+"tokens": 5,
+"lex_id": [
+"pie-lex-h1nekjeti"
+],
+"verdict": "C"
+},
+{
+"n": 90,
+"surface": "szalnelės",
+"lemma": "šalna",
+"tokens": 1,
+"lex_id": [
+"pie-root-kelH-rise",
+"pie-root-skelH-cut"
+],
+"verdict": "W"
+},
+{
+"n": 91,
+"surface": "medžio",
+"lemma": "medis",
+"tokens": 4,
+"lex_id": [
+"pie-lex-medhyos"
+],
+"verdict": "C"
+},
+{
+"n": 92,
+"surface": "rąnkėlu",
+"lemma": "ranka",
+"tokens": 86,
+"lex_id": [
+"kaikki:wrenk"
+],
+"verdict": "C"
+},
+{
+"n": 93,
+"surface": "žaliu",
+"lemma": "žalias",
+"tokens": 41,
+"lex_id": [
+"pie-root-gjhelh3-green"
+],
+"verdict": "C"
+},
+{
+"n": 94,
+"surface": "arklio",
+"lemma": "arklys",
+"tokens": 23,
+"lex_id": [
+"pie-root-h2erh3-plough"
+],
+"verdict": "C"
+},
+{
+"n": 95,
+"surface": "beržynėlį",
+"lemma": "beržynas",
+"tokens": 5,
+"lex_id": [
+"pie-lex-bherHgjos"
+],
+"verdict": "C"
+},
+{
+"n": 96,
+"surface": "jaunoji",
+"lemma": "jaunas",
+"tokens": 236,
+"lex_id": [
+"kaikki:h₂yewh₁nos"
+],
+"verdict": "C"
+},
+{
+"n": 97,
+"surface": "pabudo",
+"lemma": "busti|būdas",
+"tokens": 3,
+"lex_id": [
+"pie-lex-bhewdhtis",
+"pie-root-bhewdh-be_awake"
+],
+"verdict": "C"
+},
+{
+"n": 98,
+"surface": "seselės",
+"lemma": "sesė",
+"tokens": 26,
+"lex_id": [
+"pie-lex-swesoxr"
+],
+"verdict": "C"
+},
+{
+"n": 99,
+"surface": "iszlėido",
+"lemma": "leisti",
+"tokens": 17,
+"lex_id": [
+"pie-lex-leydti"
+],
+"verdict": "C"
+},
+{
+"n": 100,
+"surface": "širdis",
+"lemma": "širdis",
+"tokens": 35,
+"lex_id": [
+"pie-lex-kjexr"
+],
+"verdict": "C"
+}
+],
+"ccmh": [
+{
+"n": 1,
+"surface": "градѣ",
+"lemma": "градъ",
+"tokens": 54,
+"lex_id": [
+"pie-lex-ghordhos"
+],
+"verdict": "C"
+},
+{
+"n": 2,
+"surface": "чѧдо",
+"lemma": "чѧдо",
+"tokens": 33,
+"lex_id": [
+"kaikki:kendo"
+],
+"verdict": "C"
+},
+{
+"n": 3,
+"surface": "воинꙑ",
+"lemma": "воинъ",
+"tokens": 11,
+"lex_id": [
+"pie-lex-woyh1os"
+],
+"verdict": "C"
+},
+{
+"n": 4,
+"surface": "проіти",
+"lemma": "проити",
+"tokens": 4,
+"lex_id": [
+"pie-lex-h1eyti"
+],
+"verdict": "C"
+},
+{
+"n": 5,
+"surface": "бꙑти",
+"lemma": "бꙑти",
+"tokens": 283,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "C"
+},
+{
+"n": 6,
+"surface": "дастъ",
+"lemma": "дати",
+"tokens": 319,
+"lex_id": [
+"pie-lex-dedeh3ti"
+],
+"verdict": "C"
+},
+{
+"n": 7,
+"surface": "ꙗзвꙑ",
+"lemma": "ѧзва",
+"tokens": 7,
+"lex_id": [
+"kaikki:heyǵʰ"
+],
+"verdict": "C"
+},
+{
+"n": 8,
+"surface": "главѣ",
+"lemma": "глава",
+"tokens": 13,
+"lex_id": [
+"pie-lex-golHweh2"
+],
+"verdict": "C"
+},
+{
+"n": 9,
+"surface": "покоѣ",
+"lemma": "покои",
+"tokens": 4,
+"lex_id": [
+"pie-lex-kwoyh1o"
+],
+"verdict": "C"
+},
+{
+"n": 10,
+"surface": "можете",
+"lemma": "мощи",
+"tokens": 49,
+"lex_id": [
+"pie-lex-memoghe"
+],
+"verdict": "C"
+},
+{
+"n": 11,
+"surface": "миръ",
+"lemma": "миръ",
+"tokens": 191,
+"lex_id": [
+"kaikki:meyhros"
+],
+"verdict": "C"
+},
+{
+"n": 12,
+"surface": "мѫчителѣ",
+"lemma": "мѫчитель",
+"tokens": 2,
+"lex_id": [
+"kaikki:menhk"
+],
+"verdict": "C"
+},
+{
+"n": 13,
+"surface": "вѣрова",
+"lemma": "вѣровати",
+"tokens": 27,
+"lex_id": [
+"pie-lex-weh1reh2"
+],
+"verdict": "C"
+},
+{
+"n": 14,
+"surface": "слꙑшасте",
+"lemma": "слꙑшати",
+"tokens": 33,
+"lex_id": [
+"pie-lex-kjlew"
+],
+"verdict": "C"
+},
+{
+"n": 15,
+"surface": "бꙑшѧ",
+"lemma": "бꙑти",
+"tokens": 132,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "C"
+},
+{
+"n": 16,
+"surface": "грѣшьникомъ",
+"lemma": "грѣшьникъ",
+"tokens": 6,
+"lex_id": [
+"pie-lex-gwhreh1yeti"
+],
+"verdict": "C"
+},
+{
+"n": 17,
+"surface": "братъ",
+"lemma": "братръ",
+"tokens": 55,
+"lex_id": [
+"pie-lex-bhreh2texr"
+],
+"verdict": "C"
+},
+{
+"n": 18,
+"surface": "добрꙑ",
+"lemma": "добръ",
+"tokens": 24,
+"lex_id": [
+"pie-lex-dhh2obhros"
+],
+"verdict": "C"
+},
+{
+"n": 19,
+"surface": "исѣцѣте",
+"lemma": "исѣщи",
+"tokens": 2,
+"lex_id": [
+"pie-lex-sexkti"
+],
+"verdict": "C"
+},
+{
+"n": 20,
+"surface": "сѣмене",
+"lemma": "сѣмѧ",
+"tokens": 21,
+"lex_id": [
+"pie-lex-seh1mn"
+],
+"verdict": "C"
+},
+{
+"n": 21,
+"surface": "издъше",
+"lemma": "издъхнѫти",
+"tokens": 3,
+"lex_id": [
+"pie-lex-dhusos"
+],
+"verdict": "C"
+},
+{
+"n": 22,
+"surface": "виждѫ",
+"lemma": "видѣти",
+"tokens": 42,
+"lex_id": [
+"pie-root-weyd-see"
+],
+"verdict": "C"
+},
+{
+"n": 23,
+"surface": "деснѫѭ",
+"lemma": "деснъ",
+"tokens": 71,
+"lex_id": [
+"kaikki:deḱsinos"
+],
+"verdict": "C"
+},
+{
+"n": 24,
+"surface": "ѥстъ",
+"lemma": "есмь",
+"tokens": 482,
+"lex_id": [
+"pie-root-h1es-be"
+],
+"verdict": "C"
+},
+{
+"n": 25,
+"surface": "бѫдѫтъ",
+"lemma": "бꙑти",
+"tokens": 132,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "C"
+},
+{
+"n": 26,
+"surface": "побѣди",
+"lemma": "побѣдити",
+"tokens": 3,
+"lex_id": [
+"pie-lex-bhoydheyeti"
+],
+"verdict": "C"
+},
+{
+"n": 27,
+"surface": "извръжена",
+"lemma": "изврѣщи",
+"tokens": 1,
+"lex_id": [
+"pie-lex-wregeti"
+],
+"verdict": "C"
+},
+{
+"n": 28,
+"surface": "потъкнетъ",
+"lemma": "потъкнѫти",
+"tokens": 8,
+"lex_id": [
+"pie-lex-stewk"
+],
+"verdict": "C"
+},
+{
+"n": 29,
+"surface": "женѫ",
+"lemma": "жена",
+"tokens": 87,
+"lex_id": [
+"pie-lex-gwexn"
+],
+"verdict": "C"
+},
+{
+"n": 30,
+"surface": "приѩтъ",
+"lemma": "приѧти",
+"tokens": 42,
+"lex_id": [
+"kaikki:priheh₂ti"
+],
+"verdict": "C"
+},
+{
+"n": 31,
+"surface": "наготѫ",
+"lemma": "нагота",
+"tokens": 2,
+"lex_id": [
+"pie-lex-nogwos"
+],
+"verdict": "C"
+},
+{
+"n": 32,
+"surface": "послоушаи",
+"lemma": "послооушати",
+"tokens": 27,
+"lex_id": [
+"pie-lex-kjlewseti"
+],
+"verdict": "C"
+},
+{
+"n": 33,
+"surface": "сѣдѧштоу",
+"lemma": "сѣдѣти",
+"tokens": 3,
+"lex_id": [
+"pie-lex-sedeh1yeti"
+],
+"verdict": "C"
+},
+{
+"n": 34,
+"surface": "оустꙑ",
+"lemma": "ооуста",
+"tokens": 14,
+"lex_id": [
+"pie-lex-h1oh3s"
+],
+"verdict": "C"
+},
+{
+"n": 35,
+"surface": "въздамь",
+"lemma": "въздати",
+"tokens": 4,
+"lex_id": [
+"pie-lex-dedeh3ti"
+],
+"verdict": "C"
+},
+{
+"n": 36,
+"surface": "бꙑ",
+"lemma": "бꙑти",
+"tokens": 123,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "C"
+},
+{
+"n": 37,
+"surface": "тѫга",
+"lemma": "тѫга",
+"tokens": 4,
+"lex_id": [
+"pie-lex-tengh"
+],
+"verdict": "C"
+},
+{
+"n": 38,
+"surface": "мѫжемь",
+"lemma": "мѫжь",
+"tokens": 3,
+"lex_id": [
+"pie-lex-mon"
+],
+"verdict": "C"
+},
+{
+"n": 39,
+"surface": "вѣровашѧ",
+"lemma": "вѣровати",
+"tokens": 32,
+"lex_id": [
+"pie-lex-weh1reh2"
+],
+"verdict": "C"
+},
+{
+"n": 40,
+"surface": "оумꙑ",
+"lemma": "ооумꙑти|ооумъ",
+"tokens": 21,
+"lex_id": [
+"pie-lex-h2ewm"
+],
+"verdict": "C"
+},
+{
+"n": 41,
+"surface": "раба",
+"lemma": "рабъ",
+"tokens": 79,
+"lex_id": [
+"pie-lex-h3orbhos"
+],
+"verdict": "C"
+},
+{
+"n": 42,
+"surface": "сътвори",
+"lemma": "сътворити",
+"tokens": 251,
+"lex_id": [
+"pie-lex-tworHeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 43,
+"surface": "дьни",
+"lemma": "дьнь",
+"tokens": 133,
+"lex_id": [
+"pie-lex-dinos"
+],
+"verdict": "C"
+},
+{
+"n": 44,
+"surface": "звѣздꙑ",
+"lemma": "звѣзда",
+"tokens": 7,
+"lex_id": [
+"kaikki:ǵʰwoysdʰeh₂"
+],
+"verdict": "C"
+},
+{
+"n": 45,
+"surface": "съставьѥна",
+"lemma": "съставити",
+"tokens": 1,
+"lex_id": [
+"pie-lex-steh2weyeti"
+],
+"verdict": "C"
+},
+{
+"n": 46,
+"surface": "врѣмѧ",
+"lemma": "врѣмѧ",
+"tokens": 147,
+"lex_id": [
+"pie-lex-wertmn"
+],
+"verdict": "C"
+},
+{
+"n": 47,
+"surface": "рече",
+"lemma": "рещи",
+"tokens": 2333,
+"lex_id": [
+"pie-root-rek-arrange"
+],
+"verdict": "C"
+},
+{
+"n": 48,
+"surface": "видими",
+"lemma": "видѣти|видимъ",
+"tokens": 5,
+"lex_id": [
+"pie-root-weyd-see"
+],
+"verdict": "C"
+},
+{
+"n": 49,
+"surface": "приѩсѧ",
+"lemma": "приѧти",
+"tokens": 14,
+"lex_id": [
+"kaikki:priheh₂ti"
+],
+"verdict": "C"
+},
+{
+"n": 50,
+"surface": "прострѣтъ",
+"lemma": "прострѣти",
+"tokens": 2,
+"lex_id": [
+"pie-root-sterh3-spread"
+],
+"verdict": "C"
+},
+{
+"n": 51,
+"surface": "хоулѣахѫ",
+"lemma": "хооулити",
+"tokens": 6,
+"lex_id": [
+"pie-lex-ksew"
+],
+"verdict": "C"
+},
+{
+"n": 52,
+"surface": "старьци",
+"lemma": "старьць",
+"tokens": 27,
+"lex_id": [
+"pie-lex-sth2ros"
+],
+"verdict": "C"
+},
+{
+"n": 53,
+"surface": "нарещи",
+"lemma": "нарещи",
+"tokens": 4,
+"lex_id": [
+"pie-root-rek-arrange"
+],
+"verdict": "C"
+},
+{
+"n": 54,
+"surface": "вѣрьне",
+"lemma": "вѣрьнъ",
+"tokens": 4,
+"lex_id": [
+"pie-lex-weh1reh2"
+],
+"verdict": "C"
+},
+{
+"n": 55,
+"surface": "възьрѣвъшѧ",
+"lemma": "възьрѣти",
+"tokens": 3,
+"lex_id": [
+"pie-root-gjher-shine"
+],
+"verdict": "C"
+},
+{
+"n": 56,
+"surface": "обиска",
+"lemma": "обискати",
+"tokens": 3,
+"lex_id": [
+"pie-lex-h2iskjeti"
+],
+"verdict": "C"
+},
+{
+"n": 57,
+"surface": "небеснꙑѩ",
+"lemma": "небесьнъ",
+"tokens": 1,
+"lex_id": [
+"pie-lex-nebhos"
+],
+"verdict": "C"
+},
+{
+"n": 58,
+"surface": "бꙑвъшоу",
+"lemma": "бꙑти",
+"tokens": 50,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "C"
+},
+{
+"n": 59,
+"surface": "сѣсти",
+"lemma": "сѣсти",
+"tokens": 7,
+"lex_id": [
+"pie-lex-sisdeti"
+],
+"verdict": "C"
+},
+{
+"n": 60,
+"surface": "начѧтъ",
+"lemma": "начѧти",
+"tokens": 91,
+"lex_id": [
+"pie-root-ken-arise"
+],
+"verdict": "C"
+},
+{
+"n": 61,
+"surface": "прославьшааго",
+"lemma": "прославити",
+"tokens": 1,
+"lex_id": [
+"pie-lex-kjlew"
+],
+"verdict": "C"
+},
+{
+"n": 62,
+"surface": "господь",
+"lemma": "господь",
+"tokens": 55,
+"lex_id": [
+"pie-lex-ghostipotis"
+],
+"verdict": "C"
+},
+{
+"n": 63,
+"surface": "дано",
+"lemma": "дати",
+"tokens": 39,
+"lex_id": [
+"pie-lex-dedeh3ti"
+],
+"verdict": "C"
+},
+{
+"n": 64,
+"surface": "больша",
+"lemma": "болии",
+"tokens": 16,
+"lex_id": [
+"pie-lex-bolyisyo"
+],
+"verdict": "C"
+},
+{
+"n": 65,
+"surface": "живъ",
+"lemma": "живъ",
+"tokens": 49,
+"lex_id": [
+"pie-lex-gwih3wos"
+],
+"verdict": "C"
+},
+{
+"n": 66,
+"surface": "крѣпъкааго",
+"lemma": "крѣпъкъ",
+"tokens": 6,
+"lex_id": [
+"kaikki:kreh₁p"
+],
+"verdict": "C"
+},
+{
+"n": 67,
+"surface": "изволи",
+"lemma": "изволити",
+"tokens": 9,
+"lex_id": [
+"pie-lex-wolh1eyeti"
+],
+"verdict": "C"
+},
+{
+"n": 68,
+"surface": "слꙑшѧі",
+"lemma": "слꙑшати",
+"tokens": 4,
+"lex_id": [
+"pie-lex-kjlew"
+],
+"verdict": "C"
+},
+{
+"n": 69,
+"surface": "сътръшѧ",
+"lemma": "сътрьти",
+"tokens": 1,
+"lex_id": [
+"pie-root-terh1-rub"
+],
+"verdict": "C"
+},
+{
+"n": 70,
+"surface": "вьниде",
+"lemma": "вънити",
+"tokens": 84,
+"lex_id": [
+"pie-lex-h1eyti"
+],
+"verdict": "C"
+},
+{
+"n": 71,
+"surface": "имѣѩ",
+"lemma": "имѣти",
+"tokens": 22,
+"lex_id": [
+"pie-root-h1em-take"
+],
+"verdict": "C"
+},
+{
+"n": 72,
+"surface": "вьзведоста",
+"lemma": "възвести",
+"tokens": 1,
+"lex_id": [
+"pie-lex-wedheti"
+],
+"verdict": "C"
+},
+{
+"n": 73,
+"surface": "поѩтъ",
+"lemma": "поѧти",
+"tokens": 25,
+"lex_id": [
+"pie-lex-h1emeti",
+"pie-lex-h1emt"
+],
+"verdict": "C"
+},
+{
+"n": 74,
+"surface": "іспльнено",
+"lemma": "испльнити",
+"tokens": 1,
+"lex_id": [
+"pie-root-pleh1-fill"
+],
+"verdict": "C"
+},
+{
+"n": 75,
+"surface": "вѣрꙑ",
+"lemma": "вѣра",
+"tokens": 99,
+"lex_id": [
+"pie-lex-weh1reh2"
+],
+"verdict": "C"
+},
+{
+"n": 76,
+"surface": "езеро",
+"lemma": "езеро",
+"tokens": 6,
+"lex_id": [
+"kaikki:h₁eǵʰerom"
+],
+"verdict": "C"
+},
+{
+"n": 77,
+"surface": "боурѫ",
+"lemma": "бооурѧ",
+"tokens": 3,
+"lex_id": [
+"pie-root-bher-bear"
+],
+"verdict": "W"
+},
+{
+"n": 78,
+"surface": "животъ",
+"lemma": "животъ",
+"tokens": 89,
+"lex_id": [
+"pie-lex-gwih3wos"
+],
+"verdict": "C"
+},
+{
+"n": 79,
+"surface": "вьзмѫти",
+"lemma": "възмѫтити",
+"tokens": 1,
+"lex_id": [
+"pie-lex-month2eyeti"
+],
+"verdict": "C"
+},
+{
+"n": 80,
+"surface": "любѧі",
+"lemma": "любити",
+"tokens": 13,
+"lex_id": [
+"pie-lex-lowbheyeti"
+],
+"verdict": "C"
+},
+{
+"n": 81,
+"surface": "грѣхомъ",
+"lemma": "грѣхъ",
+"tokens": 21,
+"lex_id": [
+"pie-lex-gwhreh1yeti"
+],
+"verdict": "C"
+},
+{
+"n": 82,
+"surface": "ищете",
+"lemma": "искати",
+"tokens": 15,
+"lex_id": [
+"pie-lex-h2iskjeti"
+],
+"verdict": "C"
+},
+{
+"n": 83,
+"surface": "милости",
+"lemma": "милость",
+"tokens": 27,
+"lex_id": [
+"kaikki:meihlos"
+],
+"verdict": "C"
+},
+{
+"n": 84,
+"surface": "коньчавъшоу",
+"lemma": "коньчати",
+"tokens": 4,
+"lex_id": [
+"pie-lex-konos"
+],
+"verdict": "C"
+},
+{
+"n": 85,
+"surface": "оученикь",
+"lemma": "ооученикъ",
+"tokens": 11,
+"lex_id": [
+"pie-lex-h1owkeyeti"
+],
+"verdict": "C"
+},
+{
+"n": 86,
+"surface": "дьнь",
+"lemma": "дьнь",
+"tokens": 144,
+"lex_id": [
+"pie-lex-dinos"
+],
+"verdict": "C"
+},
+{
+"n": 87,
+"surface": "велитъ",
+"lemma": "велѣти",
+"tokens": 18,
+"lex_id": [
+"pie-root-welh1-choose"
+],
+"verdict": "C"
+},
+{
+"n": 88,
+"surface": "видѣвъші",
+"lemma": "видѣти",
+"tokens": 3,
+"lex_id": [
+"pie-root-weyd-see"
+],
+"verdict": "C"
+},
+{
+"n": 89,
+"surface": "ношти",
+"lemma": "нощь",
+"tokens": 24,
+"lex_id": [
+"pie-lex-nokwts"
+],
+"verdict": "C"
+},
+{
+"n": 90,
+"surface": "земле",
+"lemma": "землѧ",
+"tokens": 4,
+"lex_id": [
+"pie-lex-dhegjhoxm"
+],
+"verdict": "C"
+},
+{
+"n": 91,
+"surface": "славѫ",
+"lemma": "слава",
+"tokens": 76,
+"lex_id": [
+"pie-lex-kjlew"
+],
+"verdict": "C"
+},
+{
+"n": 92,
+"surface": "начьнете",
+"lemma": "начѧти|начинати",
+"tokens": 5,
+"lex_id": [
+"pie-lex-sken",
+"pie-root-ken-arise"
+],
+"verdict": "P"
+},
+{
+"n": 93,
+"surface": "прѣбꙑ",
+"lemma": "прѣбꙑти",
+"tokens": 18,
+"lex_id": [
+"pie-root-bhuH-be"
+],
+"verdict": "C"
+},
+{
+"n": 94,
+"surface": "ѣзвъі",
+"lemma": "ѧзва",
+"tokens": 2,
+"lex_id": [
+"kaikki:heyǵʰ"
+],
+"verdict": "C"
+},
+{
+"n": 95,
+"surface": "братиѭ",
+"lemma": "братриѧ",
+"tokens": 17,
+"lex_id": [
+"kaikki:bʰreh₂tr̥yeh₂"
+],
+"verdict": "C"
+},
+{
+"n": 96,
+"surface": "възвратишѧ",
+"lemma": "възвратити",
+"tokens": 16,
+"lex_id": [
+"pie-lex-worteyeti"
+],
+"verdict": "C"
+},
+{
+"n": 97,
+"surface": "имате",
+"lemma": "имѣти",
+"tokens": 93,
+"lex_id": [
+"pie-root-h1em-take"
+],
+"verdict": "C"
+},
+{
+"n": 98,
+"surface": "оума",
+"lemma": "ооумъ",
+"tokens": 30,
+"lex_id": [
+"pie-lex-h2ewm"
+],
+"verdict": "C"
+},
+{
+"n": 99,
+"surface": "рекѫ",
+"lemma": "рещи",
+"tokens": 52,
+"lex_id": [
+"pie-root-rek-arrange"
+],
+"verdict": "C"
+},
+{
+"n": 100,
+"surface": "жівоу",
+"lemma": "живъ",
+"tokens": 1,
+"lex_id": [
+"pie-lex-gwih3wos"
+],
+"verdict": "C"
+}
+]
+}
+}
