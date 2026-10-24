@@ -1,0 +1,1157 @@
+{
+ "frozen": true,
+ "note": "Phase 8c Stage C-S retrieval and bundle parameters, fixed from the score distribution before any bundle was built or read (docs/research/8c-preregistration.md, Stage C-S).",
+ "seed": 0,
+ "units": {
+  "max_content_words": 16,
+  "window_rule": "a unit with more than max_content_words content words is cut into ceil(n/max) consecutive windows of near-equal size"
+ },
+ "root_weight": "idf = ln(N / df); df = number of indexed units (all corpora, pivots and partners) containing the root group; N = indexed units with >= 1 mapped root group",
+ "N_units": 729843,
+ "partner_rule": "other branch; >= 2 shared root groups, >= 1 of them outside the 50 most frequent root groups; score = sum of idf over shared groups",
+ "top_k": 6,
+ "n_common": 50,
+ "min_shared": 2,
+ "floor_rule": "floor = the 0.9 quantile of the best-partner score over all Stage C-S pivots that have a partner (Stage B's size rule); a pivot keeps its top-k partners scoring >= floor",
+ "floor_quantile": 0.9,
+ "floor": 13.3857,
+ "score_distribution": {
+  "pivots_with_partner": 114946,
+  "pairs_top_k": 460392,
+  "best_score_quantiles": {
+   "0.5": 10.709,
+   "0.75": 12.0083,
+   "0.9": 13.3857,
+   "0.95": 14.3556,
+   "0.98": 15.6,
+   "0.99": 16.4902,
+   "0.995": 17.2583,
+   "0.999": 18.8759
+  },
+  "pair_score_quantiles": {
+   "0.5": 10.146,
+   "0.75": 11.1669,
+   "0.9": 12.3621,
+   "0.95": 13.1832,
+   "0.98": 14.2803,
+   "0.99": 15.1023,
+   "0.995": 15.9336,
+   "0.999": 17.6683
+  }
+ },
+ "null_model": "null model: the same deduplicated units of every corpus, each content word's root-group set permuted among the content words of its corpus (seed 0); the same retrieval from the Stage C pivots",
+ "null_comparison": {
+  "10.709": {
+   "real": 57480,
+   "null": 66647,
+   "per_corpus_real_null": {
+    "sga-gl": [
+     0,
+     0
+    ],
+    "sga": [
+     2284,
+     2909
+    ],
+    "mga": [
+     6533,
+     8388
+    ],
+    "cy": [
+     713,
+     1264
+    ],
+    "ga-early": [
+     209,
+     255
+    ],
+    "menota": [
+     22754,
+     22823
+    ],
+    "icepahc": [
+     3511,
+     3682
+    ],
+    "rea-goh": [
+     71,
+     93
+    ],
+    "rea-osx": [
+     4,
+     2
+    ],
+    "vuk": [
+     5729,
+     7254
+    ],
+    "byliny": [
+     6861,
+     9627
+    ],
+    "dainos": [
+     1457,
+     2473
+    ],
+    "ccmh": [
+     0,
+     0
+    ],
+    "xcl": [
+     7354,
+     7877
+    ],
+    "xto": [
+     0,
+     0
+    ],
+    "sqo": [
+     0,
+     0
+    ],
+    "rv": [
+     0,
+     0
+    ],
+    "av": [
+     0,
+     0
+    ],
+    "ae": [
+     0,
+     0
+    ],
+    "hom": [
+     0,
+     0
+    ],
+    "grc": [
+     0,
+     0
+    ],
+    "non": [
+     0,
+     0
+    ],
+    "ang": [
+     0,
+     0
+    ],
+    "hit": [
+     0,
+     0
+    ],
+    "lat": [
+     0,
+     0
+    ],
+    "xum": [
+     0,
+     0
+    ],
+    "lv": [
+     0,
+     0
+    ],
+    "orv": [
+     0,
+     0
+    ],
+    "sa-ep": [
+     0,
+     0
+    ],
+    "grc-late": [
+     0,
+     0
+    ]
+   }
+  },
+  "12.0083": {
+   "real": 28735,
+   "null": 33376,
+   "per_corpus_real_null": {
+    "sga-gl": [
+     0,
+     0
+    ],
+    "sga": [
+     1003,
+     1538
+    ],
+    "mga": [
+     3108,
+     4460
+    ],
+    "cy": [
+     325,
+     696
+    ],
+    "ga-early": [
+     109,
+     149
+    ],
+    "menota": [
+     13002,
+     13190
+    ],
+    "icepahc": [
+     1862,
+     1949
+    ],
+    "rea-goh": [
+     52,
+     62
+    ],
+    "rea-osx": [
+     0,
+     2
+    ],
+    "vuk": [
+     1782,
+     2076
+    ],
+    "byliny": [
+     2395,
+     3343
+    ],
+    "dainos": [
+     425,
+     800
+    ],
+    "ccmh": [
+     0,
+     0
+    ],
+    "xcl": [
+     4672,
+     5111
+    ],
+    "xto": [
+     0,
+     0
+    ],
+    "sqo": [
+     0,
+     0
+    ],
+    "rv": [
+     0,
+     0
+    ],
+    "av": [
+     0,
+     0
+    ],
+    "ae": [
+     0,
+     0
+    ],
+    "hom": [
+     0,
+     0
+    ],
+    "grc": [
+     0,
+     0
+    ],
+    "non": [
+     0,
+     0
+    ],
+    "ang": [
+     0,
+     0
+    ],
+    "hit": [
+     0,
+     0
+    ],
+    "lat": [
+     0,
+     0
+    ],
+    "xum": [
+     0,
+     0
+    ],
+    "lv": [
+     0,
+     0
+    ],
+    "orv": [
+     0,
+     0
+    ],
+    "sa-ep": [
+     0,
+     0
+    ],
+    "grc-late": [
+     0,
+     0
+    ]
+   }
+  },
+  "13.3857": {
+   "real": 11494,
+   "null": 13475,
+   "per_corpus_real_null": {
+    "sga-gl": [
+     0,
+     0
+    ],
+    "sga": [
+     386,
+     631
+    ],
+    "mga": [
+     1161,
+     1732
+    ],
+    "cy": [
+     109,
+     263
+    ],
+    "ga-early": [
+     40,
+     63
+    ],
+    "menota": [
+     5745,
+     5988
+    ],
+    "icepahc": [
+     765,
+     824
+    ],
+    "rea-goh": [
+     35,
+     39
+    ],
+    "rea-osx": [
+     0,
+     0
+    ],
+    "vuk": [
+     300,
+     432
+    ],
+    "byliny": [
+     535,
+     802
+    ],
+    "dainos": [
+     72,
+     149
+    ],
+    "ccmh": [
+     0,
+     0
+    ],
+    "xcl": [
+     2346,
+     2552
+    ],
+    "xto": [
+     0,
+     0
+    ],
+    "sqo": [
+     0,
+     0
+    ],
+    "rv": [
+     0,
+     0
+    ],
+    "av": [
+     0,
+     0
+    ],
+    "ae": [
+     0,
+     0
+    ],
+    "hom": [
+     0,
+     0
+    ],
+    "grc": [
+     0,
+     0
+    ],
+    "non": [
+     0,
+     0
+    ],
+    "ang": [
+     0,
+     0
+    ],
+    "hit": [
+     0,
+     0
+    ],
+    "lat": [
+     0,
+     0
+    ],
+    "xum": [
+     0,
+     0
+    ],
+    "lv": [
+     0,
+     0
+    ],
+    "orv": [
+     0,
+     0
+    ],
+    "sa-ep": [
+     0,
+     0
+    ],
+    "grc-late": [
+     0,
+     0
+    ]
+   }
+  },
+  "14.3556": {
+   "real": 5747,
+   "null": 6656,
+   "per_corpus_real_null": {
+    "sga-gl": [
+     0,
+     0
+    ],
+    "sga": [
+     175,
+     280
+    ],
+    "mga": [
+     501,
+     807
+    ],
+    "cy": [
+     38,
+     108
+    ],
+    "ga-early": [
+     16,
+     41
+    ],
+    "menota": [
+     2981,
+     3132
+    ],
+    "icepahc": [
+     376,
+     398
+    ],
+    "rea-goh": [
+     20,
+     27
+    ],
+    "rea-osx": [
+     0,
+     0
+    ],
+    "vuk": [
+     123,
+     127
+    ],
+    "byliny": [
+     156,
+     289
+    ],
+    "dainos": [
+     32,
+     57
+    ],
+    "ccmh": [
+     0,
+     0
+    ],
+    "xcl": [
+     1329,
+     1390
+    ],
+    "xto": [
+     0,
+     0
+    ],
+    "sqo": [
+     0,
+     0
+    ],
+    "rv": [
+     0,
+     0
+    ],
+    "av": [
+     0,
+     0
+    ],
+    "ae": [
+     0,
+     0
+    ],
+    "hom": [
+     0,
+     0
+    ],
+    "grc": [
+     0,
+     0
+    ],
+    "non": [
+     0,
+     0
+    ],
+    "ang": [
+     0,
+     0
+    ],
+    "hit": [
+     0,
+     0
+    ],
+    "lat": [
+     0,
+     0
+    ],
+    "xum": [
+     0,
+     0
+    ],
+    "lv": [
+     0,
+     0
+    ],
+    "orv": [
+     0,
+     0
+    ],
+    "sa-ep": [
+     0,
+     0
+    ],
+    "grc-late": [
+     0,
+     0
+    ]
+   }
+  },
+  "15.6": {
+   "real": 2299,
+   "null": 2402,
+   "per_corpus_real_null": {
+    "sga-gl": [
+     0,
+     0
+    ],
+    "sga": [
+     49,
+     96
+    ],
+    "mga": [
+     173,
+     263
+    ],
+    "cy": [
+     14,
+     34
+    ],
+    "ga-early": [
+     4,
+     15
+    ],
+    "menota": [
+     1206,
+     1163
+    ],
+    "icepahc": [
+     155,
+     152
+    ],
+    "rea-goh": [
+     11,
+     13
+    ],
+    "rea-osx": [
+     0,
+     0
+    ],
+    "vuk": [
+     48,
+     29
+    ],
+    "byliny": [
+     53,
+     69
+    ],
+    "dainos": [
+     15,
+     12
+    ],
+    "ccmh": [
+     0,
+     0
+    ],
+    "xcl": [
+     571,
+     556
+    ],
+    "xto": [
+     0,
+     0
+    ],
+    "sqo": [
+     0,
+     0
+    ],
+    "rv": [
+     0,
+     0
+    ],
+    "av": [
+     0,
+     0
+    ],
+    "ae": [
+     0,
+     0
+    ],
+    "hom": [
+     0,
+     0
+    ],
+    "grc": [
+     0,
+     0
+    ],
+    "non": [
+     0,
+     0
+    ],
+    "ang": [
+     0,
+     0
+    ],
+    "hit": [
+     0,
+     0
+    ],
+    "lat": [
+     0,
+     0
+    ],
+    "xum": [
+     0,
+     0
+    ],
+    "lv": [
+     0,
+     0
+    ],
+    "orv": [
+     0,
+     0
+    ],
+    "sa-ep": [
+     0,
+     0
+    ],
+    "grc-late": [
+     0,
+     0
+    ]
+   }
+  },
+  "16.4902": {
+   "real": 1150,
+   "null": 1090,
+   "per_corpus_real_null": {
+    "sga-gl": [
+     0,
+     0
+    ],
+    "sga": [
+     17,
+     47
+    ],
+    "mga": [
+     71,
+     103
+    ],
+    "cy": [
+     8,
+     11
+    ],
+    "ga-early": [
+     1,
+     6
+    ],
+    "menota": [
+     623,
+     535
+    ],
+    "icepahc": [
+     69,
+     72
+    ],
+    "rea-goh": [
+     8,
+     9
+    ],
+    "rea-osx": [
+     0,
+     0
+    ],
+    "vuk": [
+     29,
+     9
+    ],
+    "byliny": [
+     28,
+     26
+    ],
+    "dainos": [
+     8,
+     3
+    ],
+    "ccmh": [
+     0,
+     0
+    ],
+    "xcl": [
+     288,
+     269
+    ],
+    "xto": [
+     0,
+     0
+    ],
+    "sqo": [
+     0,
+     0
+    ],
+    "rv": [
+     0,
+     0
+    ],
+    "av": [
+     0,
+     0
+    ],
+    "ae": [
+     0,
+     0
+    ],
+    "hom": [
+     0,
+     0
+    ],
+    "grc": [
+     0,
+     0
+    ],
+    "non": [
+     0,
+     0
+    ],
+    "ang": [
+     0,
+     0
+    ],
+    "hit": [
+     0,
+     0
+    ],
+    "lat": [
+     0,
+     0
+    ],
+    "xum": [
+     0,
+     0
+    ],
+    "lv": [
+     0,
+     0
+    ],
+    "orv": [
+     0,
+     0
+    ],
+    "sa-ep": [
+     0,
+     0
+    ],
+    "grc-late": [
+     0,
+     0
+    ]
+   }
+  }
+ },
+ "common_roots": [
+  {
+   "group": "pie-root-h1es-be",
+   "df": 66652
+  },
+  {
+   "group": "pie-root-h2wes-dwell",
+   "df": 33382
+  },
+  {
+   "group": "pie-root-gjenh1-produce",
+   "df": 30424
+  },
+  {
+   "group": "pie-root-steh2-stand",
+   "df": 25508
+  },
+  {
+   "group": "pie-lex-megjh2s",
+   "df": 25119
+  },
+  {
+   "group": "pie-root-bhuH-be",
+   "df": 25081
+  },
+  {
+   "group": "pie-lex-mon",
+   "df": 19629
+  },
+  {
+   "group": "pie-root-kwer-do",
+   "df": 19259
+  },
+  {
+   "group": "pie-root-gwem-come",
+   "df": 19153
+  },
+  {
+   "group": "pie-root-weyd-see",
+   "df": 19063
+  },
+  {
+   "group": "pie-root-bher-bear",
+   "df": 18256
+  },
+  {
+   "group": "pie-root-dyew-be_bright",
+   "df": 15516
+  },
+  {
+   "group": "pie-root-men-think",
+   "df": 15396
+  },
+  {
+   "group": "pie-root-dheh1-do",
+   "df": 14948
+  },
+  {
+   "group": "pie-root-wekw-speak",
+   "df": 14908
+  },
+  {
+   "group": "pie-root-h3regj-straighten",
+   "df": 14860
+  },
+  {
+   "group": "pie-root-kap-seize",
+   "df": 14489
+  },
+  {
+   "group": "pie-root-per-go_through",
+   "df": 13144
+  },
+  {
+   "group": "pie-root-deh3-give",
+   "df": 12645
+  },
+  {
+   "group": "pie-root-skel-be_obligated",
+   "df": 11839
+  },
+  {
+   "group": "pie-root-h1ey-go",
+   "df": 11793
+  },
+  {
+   "group": "pie-root-welh1-choose",
+   "df": 11689
+  },
+  {
+   "group": "pie-root-sed-sit",
+   "df": 10475
+  },
+  {
+   "group": "pie-root-wert-turn",
+   "df": 10330
+  },
+  {
+   "group": "pie-root-sekw-say",
+   "df": 9932
+  },
+  {
+   "group": "pie-root-peh2-protect",
+   "df": 9911
+  },
+  {
+   "group": "pie-root-peh2w-few",
+   "df": 9472
+  },
+  {
+   "group": "pie-root-derkj-see",
+   "df": 9462
+  },
+  {
+   "group": "pie-lex-h2nexr",
+   "df": 9351
+  },
+  {
+   "group": "pie-root-dher-support",
+   "df": 9296
+  },
+  {
+   "group": "pie-root-gjneh3-recognise",
+   "df": 9131
+  },
+  {
+   "group": "pie-root-kjlew-hear",
+   "df": 8908
+  },
+  {
+   "group": "pie-root-segjh-overpower",
+   "df": 8145
+  },
+  {
+   "group": "pie-root-h1er-arrive",
+   "df": 7916
+  },
+  {
+   "group": "pie-root-gwhen-strike",
+   "df": 7885
+  },
+  {
+   "group": "pie-root-sewH-bear",
+   "df": 7819
+  },
+  {
+   "group": "pie-root-pleh1-fill",
+   "df": 7809
+  },
+  {
+   "group": "pie-lex-wiHros",
+   "df": 7800
+  },
+  {
+   "group": "pie-root-meh2kj-raise",
+   "df": 7799
+  },
+  {
+   "group": "pie-root-lewk-bright",
+   "df": 7361
+  },
+  {
+   "group": "pie-root-teh2g-touch",
+   "df": 7132
+  },
+  {
+   "group": "pie-root-legh-lie",
+   "df": 6653
+  },
+  {
+   "group": "pie-root-h2er-fit",
+   "df": 6511
+  },
+  {
+   "group": "pie-root-meh2d-meet",
+   "df": 6508
+  },
+  {
+   "group": "pie-root-mer-die",
+   "df": 6424
+  },
+  {
+   "group": "pie-lex-bhreh2texr",
+   "df": 6370
+  },
+  {
+   "group": "pie-root-gjhelh3-green",
+   "df": 6365
+  },
+  {
+   "group": "pie-root-megh-be_able",
+   "df": 6111
+  },
+  {
+   "group": "pie-root-h2el-all",
+   "df": 6088
+  },
+  {
+   "group": "pie-root-h2nekj-reach",
+   "df": 5841
+  }
+ ],
+ "merge_rule": "bundles in order of best partner score; a bundle whose pivot and >= 1 partner already sit in a kept bundle is merged into it (its other units added best first, cap 12 passages); else kept",
+ "merge_cap": 12,
+ "decoys": {
+  "share": 0.2,
+  "rule": "bundles in document order of their pivots; one in every consecutive block of 1/share drawn (seeded random), before slabs are packed; every non-pivot passage replaced by a unit of the same corpus, not in the bundle, sharing no root group outside the 50 most frequent with the pivot and at most one in all; matched on content-word count (within 25%, at least +-1) and mean root idf (within 10%, widened to 20%, 40%, any)"
+ },
+ "slabs": {
+  "target_tokens": 600000,
+  "max_tokens": 700000,
+  "flush_at_corpus_change": 350000,
+  "chars_per_token": 3.5,
+  "reader_overhead": 1.3
+ },
+ "corpora": {
+  "sga": "Old Irish (CELT; Irish editions and journals, OCR)",
+  "mga": "Middle Irish (CELT; Irish editions and journals, OCR)",
+  "cy": "Middle Welsh (Skene; Evans and Rhŷs & Evans editions; journals, OCR)",
+  "ga-early": "Early Modern Irish (CELT; Irish editions and journals, OCR)",
+  "menota": "Old Norse, West Norse documents (Menota)",
+  "icepahc": "Old Icelandic, IcePaHC texts to 1400",
+  "rea-goh": "Old High German (Referenzkorpus Altdeutsch)",
+  "rea-osx": "Old Saxon (Referenzkorpus Altdeutsch)",
+  "vuk": "Serbian epic and lyric songs (Vuk Karadžić, sr.wikisource)",
+  "byliny": "Russian byliny (Kirsha Danilov, Rybnikov, Hilferding, Kireevsky)",
+  "dainos": "Lithuanian dainos (Rhesa, Nesselmann, Schleicher, Leskien-Brugmann, Bartsch, Juškevič; OCR)",
+  "xcl": "Classical Armenian, 5th-century authors (DMHP)",
+  "rv": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+  "av": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+  "ae": "Avesta (CAB Linguistic Corpus)",
+  "hom": "Homer (Perseus AGDT)",
+  "grc": "Greek poetry and prose to 300 BC (GLAUx)",
+  "non": "Poetic Edda (Finnur Jónsson 1926, OCR)",
+  "ang": "Old English poetry (Beowulf, Gutenberg; Grein 1857-58, OCR)",
+  "hit": "Hittite (TLHdig)",
+  "lat": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+  "xum": "Umbrian, Iguvine Tables (Buck 1904, OCR)",
+  "lv": "Latvian dainas (quotations in a book on the dainas, OCR)",
+  "orv": "Early Old Russian (TOROT)",
+  "sa-ep": "Epic Sanskrit, Mahābhārata and Rāmāyaṇa (DCS)"
+ },
+ "pivot_corpora": [
+  "sga-gl",
+  "sga",
+  "mga",
+  "cy",
+  "ga-early",
+  "menota",
+  "icepahc",
+  "rea-goh",
+  "rea-osx",
+  "vuk",
+  "byliny",
+  "dainos",
+  "xcl",
+  "xto",
+  "sqo"
+ ],
+ "partner_corpora": [
+  "sga",
+  "mga",
+  "cy",
+  "ga-early",
+  "menota",
+  "icepahc",
+  "rea-goh",
+  "rea-osx",
+  "vuk",
+  "byliny",
+  "dainos",
+  "xcl",
+  "rv",
+  "av",
+  "ae",
+  "hom",
+  "grc",
+  "non",
+  "ang",
+  "hit",
+  "lat",
+  "xum",
+  "lv",
+  "orv",
+  "sa-ep"
+ ],
+ "glaux_rule": "Stage B: all GLAUx texts with ENDDATE <= -300; Stage C adds: GLAUx texts with ENDDATE > -300 and a stated open licence (SOURCE_LICENSE not 'NA' / 'OpenEdition Books License'), every genre; Homer and the Septuagint (TLG 0527, translation literature) excluded; NC/ND texts carried with research_only",
+ "dcs_epic_rule": "DCS Mahābhārata and Rāmāyaṇa (CC BY 4.0), DCS sentence; lemma mapping: the round-3 'av' table (same DCS lemma convention), else the live kaikki Sanskrit mapping, with the 'av' lemma errata",
+ "orv_texts": [
+  "spi",
+  "lav",
+  "pvl-hyp",
+  "kiev-hyp",
+  "suz-lav",
+  "nov-sin",
+  "rusprav",
+  "ust-vlad",
+  "birchbark",
+  "mst",
+  "mstislav-col",
+  "ostromir-col",
+  "nov-marg",
+  "novgorod-jaroslav",
+  "nevsky-treaty",
+  "riga-goth",
+  "rig-smol1281",
+  "varlaam",
+  "nov-list"
+ ],
+ "orv_rule": "TOROT texts in Old Russian (language 'orv') composed before c. 1300 and original East Slavic writing: the Igor Tale, the chronicles (Primary, Kiev, Suzdal, First Novgorod), Russkaja pravda, the Statute of Vladimir, birchbark letters, colophons, charters and treaties to 1281. Left out: Church Slavonic ('chu') texts, the Uspenskij sbornik (largely translated hagiography), and everything later (Zadonshchina, Smolensk charter 1386, Pskov, Afanasij Nikitin, Domostroj, Avvakum, letters).",
+ "celtic_rule": "raw/daughters/celtic-stageC/units.jsonl, units with dup_of null; Celtic lemmatizers with use_skeleton=False; tagged gloss tokens by their lemma (sga-glosses table)",
+ "low_mapped_rule": "units with < 30% of content words mapped are pivots like the others (partners only through their mapped words)",
+ "seed_strings": {
+  "decoys": "8c-stageCS:0:decoys",
+  "ids": "8c-stageCS:0:ids"
+ },
+ "mapping_notes": {
+  "stageB": {
+   "glaux_texts": 499,
+   "non_notes_units_dropped": 1012,
+   "orv_content_token_share_mapped": 0.322,
+   "orv_mapped_by_orv_dictionary": 574,
+   "orv_mapped_by_ocs_backoff": 247
+  },
+  "stageB_sga_units_dropped": 99,
+  "celtic": {
+   "celtic_dup_units_skipped": 49536,
+   "celt_research_tag_mismatch": 1429,
+   "gloss_units_joined_to_tagged_tokens": 6915,
+   "irish_lemmatizer_levels_by_type": {
+    "unknown": 419581,
+    "form": 64791,
+    "demutated": 16293,
+    "override": 461,
+    "form-loose": 10013,
+    "demutated-loose": 1210
+   }
+  },
+  "germanic": {
+   "menota_tokens_without_surface": 17,
+   "icepahc_tokens_without_surface": 0,
+   "rea-goh_tokens_without_surface": 6740,
+   "rea-osx_tokens_without_surface": 838
+  },
+  "bsl": {},
+  "east": {
+   "sqo_bardhi_dictionary_entries_left_out": 4870
+  },
+  "extra": {
+   "glaux_late_texts": 727
+  }
+ },
+ "layer_rule": "indexed units: each tradition's earliest, least derivative layer per genre (docs/research/8c-preregistration.md, Stage C-S table; scripts/build_8c_stageCS.py Classifier); idf over the indexed units only",
+ "class_rule": "a partner shares at least one genre class (NARR, CULT, LAW, WISDOM, LYR) with its pivot",
+ "corpus_cap": 2,
+ "decoy_rule": "Stage B's decoy rule within the real partner's corpus, from indexed units sharing a class with the pivot"
+}

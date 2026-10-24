@@ -91,6 +91,7 @@ def test_build_bundles_decoys_and_key(small):
     for b in bundles:
         assert idx.ref[b["pivot"]][0] in S.PIVOTS
         assert all(idx.cls[v] & idx.cls[b["pivot"]] for v in b["units"][1:])
+    assert any(b["merged"] for b in bundles)         # the class rule holds in merged bundles too
     for bi, rep in decoy.items():
         p = bundles[bi]["pivot"]
         for real, d in rep.items():

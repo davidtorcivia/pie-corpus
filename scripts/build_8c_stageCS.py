@@ -311,6 +311,39 @@ def decoy_partner(idx: SIndex, pivot: int, real: int, exclude: set, rng: random.
     return SB.decoy_partner(idx, pivot, real, exclude, rng, {c: pool})
 
 
+def build_bundles(idx: SIndex, kept: dict, cap: int | None = None) -> list[dict]:
+    """Stage B's merge rule (SB.build_bundles), except that a merged-in partner joins only if it shares a class
+    with the bundle's pivot (the class rule holds for every partner of a bundle)."""
+    cap = cap or SB.MERGE_CAP
+    order = sorted(kept, key=lambda u: (-kept[u][0][0], u))
+    bundles: list[dict] = []
+    where: dict = collections.defaultdict(set)
+    for u in order:
+        ps = kept[u]
+        hit = None
+        for bi in sorted(where.get(u, ())):
+            if any(bi in where.get(v, ()) for _, v, _ in ps):
+                hit = bi
+                break
+        if hit is None:
+            b = {"pivot": u, "units": [u] + [v for _, v, _ in ps], "scores": {v: s for s, v, _ in ps}, "merged": 0}
+            bundles.append(b)
+            bi = len(bundles) - 1
+            for x in b["units"]:
+                where[x].add(bi)
+            continue
+        b = bundles[hit]
+        b["merged"] += 1
+        for s, v, _ in ps:
+            if len(b["units"]) >= cap:
+                break
+            if v not in b["units"] and idx.cls[v] & idx.cls[b["pivot"]]:
+                b["units"].append(v)
+                b["scores"][v] = s
+                where[v].add(hit)
+    return bundles
+
+
 # ---------------------------------------------------------------- build
 
 FLOOR_RULE = (f"floor = the {SB.FLOOR_Q} quantile of the best-partner score over all Stage C-S pivots that have a "
@@ -350,7 +383,7 @@ def build(units, by_id, cls, params: dict, procs=None, log=print, parts=None, me
     parts = parts if parts is not None else C.pivot_partners(idx, pivots, procs)
     floor = params["floor"]
     kept = SB.kept_partners(parts, floor)
-    bundles = SB.build_bundles(idx, kept)
+    bundles = build_bundles(idx, kept)
     for b in bundles:
         assert idx.ref[b["pivot"]][0] in PIVOTS
         assert all(idx.cls[v] & idx.cls[b["pivot"]] for v in b["units"][1:])
