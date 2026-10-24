@@ -362,7 +362,11 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
         # i/u-stem with no weak stem given: full-grade suffix -ey-/-ew- (gʰóstipoteys, Ved. -es, Goth. -ais),
         # not strong + s, which would equal the nominative
         full = strong[:-1] + [Seg("e", "V", acc=strong[-1].acc), Seg(strong[-1].base, "R")]   # suHnú- → suHnéws
-        out["GEN.SG"] = out["ABL.SG"] = _uniq([render(_add(full, "s"))] + gen)
+        # acrostatic neuter u-stem (the dóru type): gen. *déru-s with the zero-grade suffix first (Fortson §6.27,
+        # beside the newer proterokinetic *dr-éu-s), the full-grade *-ew-s second (déh₂nus, déh₂news: POSTCHECK 6.1)
+        doru = spec.accent_class == "acrostatic" and neuter and strong[-1].base == "w"
+        fg = [render(_add(full, "s"))]
+        out["GEN.SG"] = out["ABL.SG"] = _uniq(gen + fg if doru else fg + gen)
         out["DAT.SG"] = _uniq([render(_add(full, "ey"))] + out["DAT.SG"])
 
     out["INS.SG"] = [w("éh₁", "h₁", obl)]

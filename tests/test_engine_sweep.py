@@ -108,7 +108,7 @@ def test_iu_neuter_dual():
 
 def test_iu_spec_overrides(lx):
     """i-u-stems.md #4, #6, #8–#13."""
-    assert lx.cells("pie-lex-deh2nu")["GEN.SG"][0] == "déh₂news"
+    assert lx.cells("pie-lex-deh2nu")["GEN.SG"][0] == "déh₂nus"   # Fortson §6.27 *déru-s (POSTCHECK 6.1)
     assert lx.cells("pie-lex-neh2us")["GEN.SG"][0] == "neh₂wés"
     assert lx.cells("pie-lex-HeHkjus", "f")["NOM.SG"][0] == "HeHḱéwih₂"
     assert lx.cells("pie-lex-pekju")["INS.SG"][0] == "pḱúh₁"
@@ -414,3 +414,10 @@ def test_regressions_found_by_the_dry_rerealization(lx):
     c = resolve({"first": "pie-lex-neh2us", "second": "pie-lex-wiHros", "type": "determinative"}, lx)
     assert c.first_form == "néh₂u"
     assert lx.cells("pie-lex-neh2us")["VOC.SG"][0] == "néh₂u"
+
+
+def test_acrostatic_neuter_u_stem_genitive(lx):
+    """POSTCHECK 6.1: the dóru type has gen. *déru-s (Fortson §6.27); the full-grade *-ew-s stays second."""
+    c = lx.cells("pie-lex-deh2nu")
+    assert c["GEN.SG"] == ["déh₂nus", "déh₂news"] and c["ABL.SG"][0] == "déh₂nus"
+    assert c["DAT.SG"][0] == "déh₂newey"
