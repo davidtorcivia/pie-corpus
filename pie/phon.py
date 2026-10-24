@@ -234,7 +234,7 @@ def delabialize(segs: list[Seg], before_u: bool = True) -> list[Seg]:
     labialization after consonantal w (wéwkʷe- → wéwke-), before consonantal w
     (linkʷ-wós → linkwós), or before unaccented u (ḱm̥tógʷu- → ḱm̥tógu-). It is
     kept after u (lúkʷos) and before accented ú (pr̥kʷúmos). Applied to whole forms.
-    before_u=False drops the before-syllabic-u clause (handbook thematic/eh₂ declension: M&A *pérkʷunos)."""
+    before_u=False drops the before-syllabic-u clause (the handbook convention: see boukolos())."""
     out = list(segs)
     for i, x in enumerate(out):
         if x.base in _LABIOVELAR:
@@ -244,3 +244,19 @@ def delabialize(segs: list[Seg], before_u: bool = True) -> list[Seg]:
             if prev_w or next_w:
                 out[i] = Seg(_LABIOVELAR[x.base], "C")
     return out
+
+
+
+# Boukólos scope, the one place it is decided (engine sweep; POSTCHECK 6.2). Handbook convention: a labiovelar loses
+# its labialization only next to consonantal w (*gʷow-kʷolos → gʷowkolos, linkʷ-wós → linkwós, wéwkʷe- → wéwke-) and
+# is kept before syllabic u in every declension and conjugation: Mallory & Adams print *pérkʷus 'oak' (p. 160),
+# *perkʷunos, *kʷu 'where', *kʷturyós; Handbook vol. 3 ch. 84 *perkʷus, *perkʷu-hₓn-, ch. 119 *perkʷu- (Lat.
+# quercus); Handbook ch. 121 (phonology of PIE) states the rule only after u (*/kʷ/ → [−round] / u__). Fortson §3.39
+# states it for a labiovelar adjacent to u (his examples are all after u). The Wiktionary module's wider scope (also
+# before unaccented u: ḱm̥tógʷu- → ḱm̥tógu-) is the "wiktionary" convention and the handbook alternative.
+BOUKOLOS_BEFORE_U = {"handbook": False, "wiktionary": True}
+
+
+def boukolos(segs: list[Seg], convention: str = "handbook") -> list[Seg]:
+    """delabialize() with the scope of the given convention (BOUKOLOS_BEFORE_U)."""
+    return delabialize(segs, before_u=BOUKOLOS_BEFORE_U[convention])

@@ -421,3 +421,17 @@ def test_acrostatic_neuter_u_stem_genitive(lx):
     c = lx.cells("pie-lex-deh2nu")
     assert c["GEN.SG"] == ["déh₂nus", "déh₂news"] and c["ABL.SG"][0] == "déh₂nus"
     assert c["DAT.SG"][0] == "déh₂newey"
+
+
+def test_boukolos_scope_is_one_rule_in_every_paradigm(lx):
+    """POSTCHECK 6.2; phon.boukolos: the handbook keeps kʷ before syllabic u in every declension and conjugation
+    (M&A *pérkʷus p. 160, *perkʷunos; Handbook ch. 121 rule only after u); the Wiktionary scope is the alternative."""
+    assert lx.cells("pie-lex-perkus")["NOM.SG"] == ["pérkʷus", "pérkus"]          # u-stem, like the thematic
+    assert lx.cells("pie-lex-perkwunos")["NOM.SG"] == ["pérkʷunos", "pérkunos"]   # pérkʷunos
+    assert lx.cells("pie-lex-kjmtogwus")["NOM.SG"][:2] == ["ḱm̥tógʷus", "ḱm̥tógus"]
+    assert lx.cells("pie-lex-gwunewti")["PRS.3SG"][:2] == ["gʷunéwti", "gunéwti"]   # verbs too
+    assert lx.cells("pie-lex-gwuHeti")["PRS.3SG"][0] == "gʷuHéti"
+    # next to consonantal w the rule applies in the handbook convention as well (*gʷow-kʷolos → boukólos)
+    assert conjugate(VerbSpec("linékʷ", "linkʷ"), "handbook")["MID.PRS.1DU"][0].startswith("linkw")
+    # the Wiktionary convention keeps the module's full scope
+    assert decline(NounSpec("pérkʷu", None, "proterokinetic"), "wiktionary", alternatives=False)["NOM.SG"] == ["pérkus"]

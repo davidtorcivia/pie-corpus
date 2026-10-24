@@ -40,9 +40,13 @@ alternative cell (or, for a lexeme spec, in extra_specs), never deleted.
     (Fortson §6.52: Ved. voc. pl. dévās); non-neuter, every declension.
   - consonant-stem nom.-acc. dual *-h₁e* (Ringe; Beekes §13.2.11; L&Y §2.1.1;
     Fortson §6.13 either), *-h₁* second; i/u-stems keep *-h₁* first.
-  - boukólos: the handbook thematic and eh₂ declensions keep the labiovelar
-    before syllabic u (Mallory & Adams *perkʷunos*); Wiktionary's full scope is
-    the alternative and the Wiktionary convention (phon.delabialize).
+  - boukólos: the handbook convention keeps the labiovelar before syllabic u
+    in every declension and conjugation (pérkʷunos, pérkʷus, ḱm̥tógʷus,
+    gʷunéwti; M&A *pérkʷus p. 160, *perkʷunos; Handbook vol. 3 chs. 84, 119
+    *perkʷu-; Handbook ch. 121 gives the rule only after u; Fortson §3.39,
+    a labiovelar next to u on either side, is the minority); Wiktionary's full
+    scope is the alternative and the Wiktionary convention. One place:
+    phon.boukolos, used by render() and _boukolos_cells() (POSTCHECK 6.2).
   - 2du primary *-tes* = 3du (Ringe 2006 p. 31); Beekes's tentative *-tHe/os*
     as the alternative *-th₁es*.
   - athematic optative, grade and accent by cell type (fix/accent; every cell
@@ -81,7 +85,7 @@ import re
 
 from dataclasses import dataclass, field, replace
 
-from .phon import (Seg, contract_eh2m, delabialize, has_accent, join, junction_laryngeal_loss,
+from .phon import (Seg, boukolos, contract_eh2m, has_accent, join, junction_laryngeal_loss,
                    lengthen_last_vowel, parse, pinault, stang, szemerenyi, zero_grade_suffix)
 from .phon import render as _render
 
@@ -98,18 +102,18 @@ def _p(s: str) -> list[Seg]:
 
 
 def render(segs: list[Seg]) -> str:
-    return _render(delabialize(segs))
+    """Render with the handbook boukólos scope (kʷ kept before syllabic u: phon.boukolos); the Wiktionary scope is
+    applied to finished cells by _boukolos_cells, once per convention run."""
+    return _render(boukolos(segs, "handbook"))
 
 
-def _render_kw(segs: list[Seg]) -> str:
-    """Handbook rendering for the thematic and eh₂ declensions: the labiovelar is kept before syllabic u
-    (Mallory & Adams *perkʷunos, 7 times), i.e. boukólos only next to consonantal w. The fully
-    delabialized Wiktionary-module form follows as an alternative (_with_delabialized)."""
-    return _render(delabialize(segs, before_u=False))
-
-
-def _with_delabialized(out: Cells) -> Cells:
-    return {k: _uniq(v + [render(_p(f)) for f in v]) for k, v in out.items()}
+def _boukolos_cells(out: Cells, conv: str) -> Cells:
+    """The Wiktionary convention takes the module's full boukólos scope; the handbook convention keeps its forms
+    first and the fully delabialized ones as alternatives (pérkʷus, pérkus)."""
+    full = {k: [_render(boukolos(_p(f), "wiktionary")) for f in v] for k, v in out.items()}
+    if conv == "wiktionary":
+        return {k: _uniq(v) for k, v in full.items()}
+    return {k: _uniq(v + full[k]) for k, v in out.items()}
 
 
 def _add(stem: list[Seg], ending: str) -> list[Seg]:
@@ -193,7 +197,7 @@ def _thematic(spec: NounSpec, conv: str) -> Cells:
             for k in ("NOM.DU", "VOC.DU", "ACC.DU"):
                 table[k] = ["oyh₁", "oy"]
     hb = conv == "handbook"
-    rd = _render_kw if hb else render
+    rd = render
     out = {}
     for feat, ends in table.items():
         forms = []
@@ -206,7 +210,7 @@ def _thematic(spec: NounSpec, conv: str) -> Cells:
     if conv == "handbook" and spec.gender != "n" and has_accent(stem):
         # vocative accent on the first syllable (Ved. vŕ̥ka, Gk ἄδελφε): wĺ̥kʷe, moysé → móyse
         out["VOC.SG"] = _uniq([rd(_initial_accent(base + _p("e")))] + out["VOC.SG"])
-    return _with_delabialized(out) if hb else out
+    return out
 
 
 _EH2 = {
@@ -221,7 +225,6 @@ _EH2 = {
 def _eh2(spec: NounSpec, conv: str) -> Cells:
     stem = _p(_bare(spec.strong))
     hb = conv == "handbook"
-    render = _render_kw if hb else globals()["render"]   # noqa: the handbook keeps kʷ before u (see _render_kw)
     out = {feat: [render(_add(stem, e)) for e in ends] for feat, ends in _EH2.items()}
     if conv == "wiktionary":
         out["ACC.SG"] = [render(contract_eh2m(_add(stem, "m")))]
@@ -249,7 +252,6 @@ def _eh2(spec: NounSpec, conv: str) -> Cells:
         # nom.-acc. du. *-eh₂ih₁ (Beekes §13.2.11: Ved. -e, OCS -ě) beside the generic *-h₁/-h₁e
         for k in ("NOM.DU", "VOC.DU", "ACC.DU"):
             out[k] = _uniq(out[k] + [render(_add(stem, "ih₁"))])
-        out = _with_delabialized(out)
     return out
 
 
@@ -562,10 +564,9 @@ def decline(spec: NounSpec, convention: str = "handbook", alternatives: bool = T
             # nominative form stays as the alternative (engine sweep convention, thematic.md defect 2)
             for feat in ("VOC.PL", "VOC.DU"):
                 if c.get(feat) and has_accent(_p(c[feat][0])):
-                    rd = _render_kw if k in ("thematic", "eh2") else render     # keep the boukólos choice
                     ret = _initial_accent(_p(c[feat][0]))
-                    c[feat] = _uniq([rd(ret)] + c[feat] + [render(ret)])
-        return c
+                    c[feat] = _uniq([render(ret)] + c[feat])
+        return _boukolos_cells(c, conv)
 
     out = run(convention)
     if alternatives:
@@ -651,7 +652,7 @@ def conjugate(spec: VerbSpec, convention: str = "handbook", alternatives: bool =
         cells = _conjugate(spec, conv)
         if phase_b:
             cells.update(_phase_b(spec, conv))
-        return cells
+        return _boukolos_cells(cells, conv)
 
     out = run(convention)
     if convention == "handbook":
