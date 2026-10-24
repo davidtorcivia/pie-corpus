@@ -45,6 +45,28 @@ alternative cell (or, for a lexeme spec, in extra_specs), never deleted.
     the alternative and the Wiktionary convention (phon.delabialize).
   - 2du primary *-tes* = 3du (Ringe 2006 p. 31); Beekes's tentative *-tHe/os*
     as the alternative *-th₁es*.
+  - athematic optative, grade and accent by cell type (fix/accent; every cell
+    carries one accent). (a) Unaccented weak stem (root and nasal presents,
+    root aorists, perfects): singular *-yéh₁-* (h₁syéh₁t), dual/plural and
+    middle *-ih₁-* with the ending accented (h₁sih₁mé, h₁sih₁tó), 3pl *-ih₁ént*
+    (Fortson §5.57; Ringe 2006 p. 30; Beekes §18.8.4 p. 275 *h₁s-iéh₁-m,
+    *h₁s-ih₁-mé; L&Y §4.2.4.3, Tab. 122.11; Handbook ch. 41 §6.7.2
+    *h₁s-ih₁-ént; Ved. syā́m, Handbook ch. 27 §5.3.2). Beekes's static 3pl
+    *h₁és-ih₁-n̥t is not generated. (b) Accented weak stem (Narten, s-aorist,
+    fixed accent): *-ih₁-* throughout, stem accent, the ending unaccented
+    (h₁édih₁t, h₂wéh₁ih₁me, 3pl -ih₁ent; Fortson §5.57, Ringe p. 30); the
+    *-yeh₁-* singular follows. (c) Reduplicated present (accented
+    reduplication in the strong stem): *-ih₁-* throughout on the weak stem with
+    the accent on the reduplication, active and middle (dʰédʰh₁ih₁t,
+    dʰédʰh₁ih₁me, dʰédʰh₁ih₁ent, dʰédʰh₁ih₁to): Ringe p. 30 *dʰé-dʰh₁-ih₁-,
+    *stí-sth₂-ih₁- with his rules p. 30 (zero grade when the accent is fixed to
+    the left) and p. 33 (leftmost accent surfaces); LIV² p. 16 type 1g
+    (reduplication always accented); Beekes p. 275 the zero grade everywhere
+    (Av. daidīt̰), whose unaccented *dʰe-dʰh₁-ih₁-t is no evidence for an
+    accentless form; Ved. mid. dádhīta (Handbook ch. 27 §5.4.1.2). The mobile
+    type follows as alternatives: dʰedʰh₁yéh₁t, dʰedʰh₁ih₁mé, dʰedʰh₁ih₁tó
+    (Fortson's general rule; Ved. act. bibhr̥yā́t, yuyuyā́tām; LIV² type 1h).
+    Thematic *-oyh₁-* on the accented stem is unchanged (bʰéroyh₁t).
   - lexeme decisions (overrides.jsonl): h₁ed- Narten (h₁ḗdti, h₁édn̥ti);
     ḱéytor t-less middle (VerbSpec.mid_t_less); dédeh₃ti mobile weak stem
     (dedh₃més). Closed class: 'I' h₁eǵóh₂, 'ten' déḱm̥ (closed_class.json _refs).
@@ -768,15 +790,23 @@ def _phase_b(spec: VerbSpec, conv: str) -> Cells:
     if hb and has_accent(weak) and any(x.long and x.acc and x.kind == "V" for x in strong):
         sbjv = weak
     out.update(_slots("SBJV", _SH_SBJV, lambda e: on(sbjv, e)))
-    # optative: *-yéh₁-/-ih₁- on the weak stem; when the weak stem is accented (Narten, fixed-accent stems,
-    # s-aorist) or the stem is reduplicated, the suffix is zero-grade throughout (Fortson §5.57; Ringe 2006
-    # p. 30 *h₁éd-ih₁-, *dʰé-dʰh₁-ih₁-; Beekes §18.8.4 *dʰe-dʰh₁-ih₁-t); the full-grade forms stay as
-    # alternatives (engine sweep, athematic-verbs.md E2, thematic-verbs.md defect 6)
+    # optative (decision: module docstring, "optative"): *-yéh₁-/-ih₁- on the weak stem; when the weak stem is
+    # accented (Narten, fixed-accent stems, s-aorist) the suffix is zero-grade throughout and the stem keeps the
+    # accent (Fortson §5.57; Ringe 2006 p. 30 *h₁éd-ih₁-). A reduplicated present takes the zero grade too, with
+    # the accent on the reduplication in every person and in the middle (Ringe 2006 p. 30 *dʰé-dʰh₁-ih₁-,
+    # *stí-sth₂-ih₁-, p. 33 the leftmost accent surfaces; LIV² p. 16 type 1g; Beekes §18.8.4 zero grade, Av.
+    # daidīt̰; Ved. mid. dádhīta). The mobile forms (full-grade suffix-accented singular, ending-accented plural
+    # and middle; Ved. act. bibhr̥yā́t, yuyuyā́tām) stay as alternatives (engine sweep, athematic-verbs.md E2,
+    # thematic-verbs.md defect 6; fix/accent)
     zero_opt = hb and spec.kind != "stat" and (has_accent(weak) or red is not None)
+    opt_stem = red if red is not None else weak
     opt_sg = ["ih₁m̥", "ih₁s", "ih₁t"] if zero_opt else _ATH_OPT_SG
-    out.update(_slots("OPT", [*opt_sg, *_ATH_OPT_PL], lambda e: on(weak, e)))
+    out.update(_slots("OPT", [*opt_sg, *_ATH_OPT_PL], lambda e: on(opt_stem, e)))
     if zero_opt:
         for pn, e in zip(_P[:3], _ATH_OPT_SG):
+            out[f"OPT.{pn}"] = _uniq(out[f"OPT.{pn}"] + [on(weak, e)])
+    if red is not None:
+        for pn, e in zip(_P[3:], _ATH_OPT_PL):
             out[f"OPT.{pn}"] = _uniq(out[f"OPT.{pn}"] + [on(weak, e)])
     if spec.kind == "stat":
         out["PTCP.ACT"] = [on(weak, "wṓs")]
@@ -802,7 +832,10 @@ def _phase_b(spec: VerbSpec, conv: str) -> Cells:
     out["MID.IMP.2SG"] = [on(weak, "só")]
     out["MID.IMP.2PL"] = [on(weak, "dʰh₂wé")]
     out.update(_slots("MID.SBJV", _SH_MID_SBJV, lambda e: on(sbjv, e)))
-    out.update(_slots("MID.OPT", _ATH_MID_OPT, lambda e: on(weak, e)))
+    out.update(_slots("MID.OPT", _ATH_MID_OPT, lambda e: on(opt_stem, e)))
+    if red is not None:   # the ending-accented middle (dʰedʰh₁ih₁tó) as the alternative
+        for k, forms in _slots("MID.OPT", _ATH_MID_OPT, lambda e: on(weak, e)).items():
+            out[k] = _uniq(out[k] + forms)
     out["PTCP.ACT"] = [on(weak, "ónts")] + ([on(red, "n̥ts")] if red is not None else [])   # Ved. dádhat-
     out["PTCP.MID"] = [on(weak, "m̥h₁nós")]
     return out

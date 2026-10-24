@@ -223,7 +223,65 @@ def test_reduplicated_present_3pl():
     r = cj("dʰédʰeh₁", "dʰedʰh₁")
     assert r["PRS.3PL"][0] == "dʰédʰh₁n̥ti" and r["PST.3PL"][0] == "dʰédʰh₁n̥t" and r["IMP.3PL"][0] == "dʰédʰh₁n̥tu"
     assert r["MID.PRS.3PL"][0] == "dʰédʰh₁n̥tor" and r["PRS.1PL"][0] == "dʰedʰh₁més"
-    assert r["OPT.3SG"][0] == "dʰedʰh₁ih₁t" and "dʰedʰh₁énti" in r["PRS.3PL"]
+    assert "dʰedʰh₁énti" in r["PRS.3PL"]
+
+
+# --- optative accent (fix/accent; decision in pie/morph.py's docstring and STATUS.md) -------------------------
+# One test per cell type: the primary form, and the minority form still present as an alternative.
+
+def test_optative_unaccented_weak_stem_root_present():
+    """(a) Fortson §5.57; Ringe 2006 p. 30; Beekes p. 275 *h₁s-iéh₁-m, *h₁s-ih₁-mé; Handbook ch. 41 §6.7.2."""
+    c = cj("h₁és", "h₁s")
+    assert c["OPT.3SG"][0] == "h₁syéh₁t" and c["OPT.1PL"][0] == "h₁sih₁mé" and c["OPT.3PL"][0] == "h₁sih₁ént"
+    assert c["MID.OPT.3SG"][0] == "h₁sih₁tó" and c["MID.OPT.3PL"][0] == "h₁sih₁ró"
+
+
+def test_optative_unaccented_weak_stem_root_aorist_and_perfect():
+    """(a) Ringe 2006 p. 30 *gʷm̥-yéh₁- ~ *gʷm-ih₁-, *wid-yéh₁- ~ *wid-ih₁-; Ved. vidyā́t."""
+    a = cj("gʷém", "gʷm̥", "pf")
+    assert a["OPT.3SG"][0] == "gʷm̥yéh₁t" and a["OPT.1PL"][0] == "gʷmih₁mé" and a["MID.OPT.3SG"][0] == "gʷmih₁tó"
+    p = cj("wóyd", "wid", "stat")
+    assert p["OPT.3SG"][0] == "widyéh₁t" and p["OPT.3PL"][0] == "widih₁ént"
+
+
+def test_optative_accented_weak_stem():
+    """(b) Fortson §5.57 (Narten); Ringe 2006 p. 30 *h₁éd-ih₁-; the -yeh₁- singular stays an alternative."""
+    n = cj("h₂wḗh₁", "h₂wéh₁")
+    assert n["OPT.3SG"][:2] == ["h₂wéh₁ih₁t", "h₂wéh₁yeh₁t"]
+    assert n["OPT.1PL"][0] == "h₂wéh₁ih₁me" and n["OPT.3PL"][0] == "h₂wéh₁ih₁ent" and n["MID.OPT.3SG"][0] == "h₂wéh₁ih₁to"
+    assert cj("wḗǵʰs", "wéǵʰs", "pf")["OPT.1PL"][0] == "wéǵʰsih₁me"
+
+
+def test_optative_reduplicated_singular():
+    """(c) Ringe 2006 p. 30 *dʰé-dʰh₁-ih₁-; LIV² p. 16 type 1g; Beekes p. 275 (zero grade). Alternative: the mobile
+    *dʰedʰh₁yéh₁t (Ved. act. bibhr̥yā́t)."""
+    r = cj("dʰédʰeh₁", "dʰedʰh₁")
+    assert r["OPT.3SG"][0] == "dʰédʰh₁ih₁t" and "dʰedʰh₁yéh₁t" in r["OPT.3SG"]
+    assert r["OPT.1SG"][0] == "dʰédʰh₁ih₁m̥"
+    # the mobile dédeh₃ti (weak dedh₃-, D2) and i-reduplication take the same optative
+    assert cj("dédeh₃", "dedh₃")["OPT.3SG"][0] == "dédh₃ih₁t"
+    assert cj("stístéh₂", "stisth₂")["OPT.3SG"][0] == "stísth₂ih₁t"
+
+
+def test_optative_reduplicated_plural_and_dual():
+    """(c) accent on the reduplication, ending unaccented (Ringe p. 33: the leftmost accent surfaces);
+    3pl *-ent* (Fortson §5.57). Alternative: the ending-accented dʰedʰh₁ih₁mé."""
+    r = cj("dʰédʰeh₁", "dʰedʰh₁")
+    assert r["OPT.1PL"][:2] == ["dʰédʰh₁ih₁me", "dʰedʰh₁ih₁mé"]
+    assert r["OPT.3PL"][:2] == ["dʰédʰh₁ih₁ent", "dʰedʰh₁ih₁ént"]
+    assert r["OPT.2DU"][0] == "dʰédʰh₁ih₁tom"
+
+
+def test_optative_reduplicated_middle():
+    """(c) Ved. mid. dádhīta (Handbook ch. 27 §5.4.1.2). Alternative: the ending-accented dʰedʰh₁ih₁tó."""
+    r = cj("dʰédʰeh₁", "dʰedʰh₁")
+    assert r["MID.OPT.3SG"][0] == "dʰédʰh₁ih₁to" and "dʰedʰh₁ih₁tó" in r["MID.OPT.3SG"]
+    assert r["MID.OPT.3PL"][:2] == ["dʰédʰh₁ih₁ro", "dʰedʰh₁ih₁ró"]
+
+
+def test_optative_thematic_unchanged():
+    """Fortson §5.57; L&Y §4.2.4.3: *-o-ih₁- on the accented thematic stem."""
+    assert cj("bʰére")["OPT.3SG"][0] == "bʰéroyh₁t"
 
 
 def test_narten_and_s_aorist_subjunctive_on_the_e_grade():
