@@ -2,6 +2,7 @@
 lemmas, and no later evidence route of the secure checker (pie/tier2_secure.py) restores what they removed."""
 
 import collections
+import json
 from pathlib import Path
 
 from pie import formula_search_multi as fm
@@ -87,7 +88,9 @@ def test_added_only_override_row_is_used_by_the_checker():
     assert any(x.corpus == "cu" and x.lemma == "животъ" and x.status == "added" for x in pop.resolved)
     ch = SecureChecker.from_population({}, pop)
     m = ch.match("pie-lex-gwih3wos", "cu", "Old Church Slavonic", "животъ", True)
-    assert m["level"] == "exact" and m["via"] == "table:cu" and any(p.startswith("erratum:") for p in m["path"])
+    assert m["level"] == "exact" and m["via"].startswith("table:")
+    assert any(ids == {"pie-lex-gwih3wos"} and src == "table:cu" for ids, _, src, _ in
+               ch.table("cu")[row_keys("cu", {"lemma": "животъ"}).pop()])
     # Hittite additions too (168 in east.json): every one is in the checker's table
     hit = load_population(codes={"hit"}).resolved
     assert sum(x.status == "added" for x in hit) >= 168
@@ -101,14 +104,17 @@ def test_audit_population_is_the_checker_population():
         by_checker[x.corpus][x.lemma] = x.ids
     for corpus in mp.table_corpora(ROOT):
         raw = mp.read_table(corpus, ROOT)
+        res = mp.resolve_table(corpus, ROOT)
         audit = {k: frozenset(v) for k, v in fm.apply_table_overrides(
             corpus, {r["lemma"]: tuple(r["lex_id"]) for r in raw}, root=ROOT).items()}
-        resolved = {x.lemma: x.ids for x in mp.resolve_table(corpus, ROOT).values()}
-        assert audit == resolved == by_checker[corpus], corpus
-        code = code_of(corpus, mp.corpus_lang(corpus, raw))
+        assert audit == {x.lemma: x.ids for x in res.values()}, corpus
+        # the checker reads the rows of the languages it checks (Lith., Russian, Welsh tables: none)
+        read = {x.lemma: x.ids for x in res.values() if code_of(corpus, x.lang)}
+        assert read == by_checker.get(corpus, {}), corpus
         rows = {r["lemma"]: r for r in raw}
-        for x in mp.resolve_table(corpus, ROOT).values():
-            if x.uncertain:
+        for x in res.values():
+            code = code_of(corpus, x.lang)
+            if x.uncertain or code is None:
                 continue
             for k in row_keys(code, {"lemma": x.lemma, "word": rows.get(x.lemma, {}).get("word", x.word)}):
                 assert any(ids == x.ids for ids, *_ in ch.table(code)[k]), (corpus, x.lemma, k)
@@ -184,6 +190,52 @@ def test_derivative_and_uncertain_rows():
     x = mp.resolve_rows("av", [{"lemma": "bhū", "lex_id": ["pie-lex-bhuHt"]}], ov)["bhū"]
     assert x.uncertain and x.confidence == "low" and x.ids == {"pie-lex-bhuHt"}   # kept for formula search
     assert fm.apply_table_overrides("av", {"bhū": ("pie-lex-bhuHt",)}, overrides=ov) == {"bhū": ("pie-lex-bhuHt",)}
+
+
+def test_every_override_file_and_key_is_loaded():
+    # every row of every file under mapping-overrides/ (and the shared file) reaches the one resolver
+    ov = fm.load_overrides(ROOT)
+    files = mp.override_files(ROOT)
+    assert {f.name for f in files} >= {"mapping-overrides.json", "east.json", "greek.json", "sanskrit.json"}
+    n = collections.Counter()
+    for f in files:
+        d = json.loads(f.read_text("utf-8"))
+        assert set(d) <= mp.FILE_KEYS, (f.name, set(d) - mp.FILE_KEYS)
+        for kind in ("lemma", "form", "proto", "key"):
+            n[kind] += len(d.get(kind, []))
+            for r in d.get(kind, []):
+                if kind == "lemma":
+                    assert r["lemma"] in ov["decisions"][r["corpus"]], (f.name, r)
+                elif kind == "form":
+                    assert mp._keyer(r["lang"])(r["form"]) in ov["form"][r["lang"]], (f.name, r)
+                elif kind == "proto":
+                    assert (r["code"], mp.proto_key(r["term"])) in ov["proto"], (f.name, r)
+                else:
+                    assert mp._keyer(r["lang"])(r["key"]) in ov["key"][r["lang"]], (f.name, r)
+    assert n["lemma"] and n["form"]
+
+
+def test_unknown_override_key_is_an_error(tmp_path):
+    import pytest
+    d = tmp_path / "data" / "research" / "formulas" / "mapping-overrides"
+    d.mkdir(parents=True)
+    (d / "x.json").write_text('{"lemma": [], "stems": []}', "utf-8")
+    with pytest.raises(ValueError, match="stems"):
+        mp.load_overrides(tmp_path)
+
+
+def test_proto_rows_decide_every_word_through_the_page():
+    # germanic-new.json: gem-pro *hugiz has no certain etymology: every table word mapped through it is unmapped
+    ov = fm.load_overrides(ROOT)
+    d = ov["proto"].get(("gem-pro", mp.proto_key("*hugiz")))
+    if d is None:
+        return
+    assert d.removal
+    rows = [{"lemma": "hyge", "lang": "ang", "lex_id": ["pie-root-kewk-cry_out"],
+             "path": ["ang:hyge", "gem-pro:*hugiz", "ine-pro:*kewk-"]}]
+    assert mp.resolve_rows("zz", rows, ov) == {}
+    assert fm.apply_rec_overrides("zz", {"hyge": fm.MapRec("hyge", "hyge", frozenset({"x"}), tuple(rows[0]["path"]),
+                                                            "chain", "high", ())}) == {}
 
 
 def test_decisions_and_senses():

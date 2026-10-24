@@ -415,6 +415,7 @@ class Population:
         self.decided: dict = collections.defaultdict(list)        # code → [(corpus, lemma, word, decisions)]
         self.auto: dict = collections.defaultdict(lambda: collections.defaultdict(set))  # code → key → auto ids
         self.forms: dict = {}                                     # code → {form key: lemma}
+        self.overrides: dict | None = None                        # pie.mapping.load_overrides() shape
 
 
 def build_population(rows_by_corpus: dict, overrides: dict | None, codes=None, added: bool = True) -> Population:
@@ -450,9 +451,19 @@ def build_population(rows_by_corpus: dict, overrides: dict | None, codes=None, a
             pop.decided[code].append((corpus, lem, r.get("word"), tuple(ds)))
             for k in keys:
                 pop.auto[code][k] |= set(mp.strip_blocked(r.get("lex_id", ())))
+    # headword decisions ('key' rows: a daughter headword and the words mapped through it)
+    for lang, rows in ov.get("key", {}).items():
+        code = code_of("", lang)
+        if code is None or (codes is not None and code not in codes):
+            continue
+        for k, d in rows.items():
+            keys = decision_keys(code, k)
+            pop.corrected[code] |= keys
+            pop.decided[code].append((f"key:{lang}", k, None, (d,)))
     for lang, fo in ov.get("form", {}).items():
         code = LANG_ALIAS.get(lang, lang)
         pop.forms.setdefault(code, {}).update(fo)
+    pop.overrides = ov
     return pop
 
 
@@ -537,16 +548,30 @@ def load_dict_tables(entries: dict, codes=DICT_CODES) -> dict:
     return out
 
 
-def merge_tables(code: str, corpus: dict, others, corrected: dict, dropped: dict | None = None) -> dict:
+def _path_decided(code: str, rec, overrides: dict | None):
+    """An automatic rec with the proto-page or headword decision its path runs through applied (None:
+    removed)."""
+    ids, p, s, d = rec
+    pd = mp.path_decision(p[1:], code, overrides) if overrides else None
+    if pd is None:
+        return rec
+    if not pd.ids or pd.uncertain:
+        return None
+    return (pd.ids, tuple(p) + ("erratum:" + pd.note,), s, d or pd.derivative)
+
+
+def merge_tables(code: str, corpus: dict, others, corrected: dict, dropped: dict | None = None,
+                 overrides: dict | None = None) -> dict:
     """One language's table: the corpus rows, then the automatic links of the other sources (BLOCKED_IDS
-    removed), except for keys of a decided lemma (a reviewed decision wins over the automatic links).
-    `dropped` collects the ids so dropped, per key."""
+    removed, proto-page and headword decisions of `overrides` applied: pie.mapping.path_decision),
+    except for keys of a decided lemma (a reviewed decision wins over the automatic links). `dropped`
+    collects the ids so dropped, per key."""
     merged = collections.defaultdict(list)
     for src in (corpus, *others):
         for k, recs in src.get(code, {}).items():
             if src is not corpus:
                 recs = [(frozenset(mp.strip_blocked(ids)), p, s, d) for ids, p, s, d in recs]
-                recs = [x for x in recs if x[0]]
+                recs = [x for x in (_path_decided(code, r, overrides) for r in recs if r[0]) if x]
                 if k in corrected.get(code, ()):
                     if dropped is not None:
                         for x in recs:
@@ -643,7 +668,7 @@ class SecureChecker:
                 cache["others"] = tuple(others_loader()) if others_loader else ()
             # no key-level drop of the other sources: the decisions cap them word by word (Gov), where a
             # drop by key would also hit an accent homograph (ὠμός under ὦμος)
-            return merge_tables(code, pop.tables, cache["others"], {}, ch.dropped[code])
+            return merge_tables(code, pop.tables, cache["others"], {}, ch.dropped[code], pop.overrides)
         ch.loader = loader
         return ch
 

@@ -1526,8 +1526,10 @@ def apply_lemma_overrides(corpus: str, m: "fs.Mapping", gmap: dict | None = None
     gmap = gmap or {}
     ov = mp.as_overrides(overrides, root)
     out = fs.Mapping(dict(m.lemma_groups), dict(m.lemma_tier), set(m.ambiguous), dict(m.lemma_lex))
+    paths = mp.table_paths(corpus, root)
     for lem in list(dict.fromkeys([*m.lemma_lex, *ov["decisions"].get(corpus, {})])):
-        ids, ds = mp.decide(corpus, lem, out.lemma_lex.get(lem, ()), ov)
+        lang, path = paths.get(lem, (None, ()))
+        ids, ds = mp.decide_row(corpus, lem, out.lemma_lex.get(lem, ()), path, lang, ov)
         if ds:
             out.ambiguous.discard(lem)
         elif ids == out.lemma_lex.get(lem):
@@ -1548,12 +1550,14 @@ def apply_rec_overrides(corpus: str, recs: dict, root: Path = ROOT, overrides: d
     mp = _mp
     ov = mp.as_overrides(overrides, root)
     out = {}
+    lang = mp.corpus_lang(corpus, mp.read_table(corpus, root))
     for lem, r in recs.items():
-        ids, ds = mp.decide(corpus, lem, r.ids, ov)
+        ids, ds = mp.decide_row(corpus, lem, r.ids, r.path[1:], lang, ov)
         if ids and not ds:
             out[lem] = r if ids == r.ids else MapRec(r.key, r.word, ids, r.path, r.how, r.confidence, r.sources,
                                                      r.gloss)
-    rows = [{"lemma": lem, "word": r.word, "lex_id": sorted(r.ids)} for lem, r in recs.items()]
+    rows = [{"lemma": lem, "word": r.word, "lex_id": sorted(r.ids), "path": list(r.path[1:]), "lang": lang}
+            for lem, r in recs.items()]
     for lem, x in mp.resolve_rows(corpus, rows, ov, root).items():
         if x.decisions:
             out[lem] = MapRec(lem, x.word, x.ids, (f"{corpus}:{lem}", x.path[-1]), "erratum", x.confidence,
@@ -1571,7 +1575,9 @@ def apply_table_overrides(corpus: str, table: dict, root: Path = ROOT, overrides
     """The same for a lemma → ids tuple dict (a mapping table as read by the 8c loaders): the resolved
     population of pie.mapping.resolve_rows (automatic ids keep their order, decided ones are sorted)."""
     mp = _mp
-    rows = [{"lemma": lem, "lex_id": list(ids)} for lem, ids in table.items()]
+    paths = mp.table_paths(corpus, root)
+    rows = [{"lemma": lem, "lex_id": list(ids), "lang": paths.get(lem, (None,))[0], "path": paths.get(lem, (None, ()))[1]}
+            for lem, ids in table.items()]
     return {lem: (tuple(sorted(x.ids)) if x.decisions else mp.strip_blocked(table[lem]))
             for lem, x in mp.resolve_rows(corpus, rows, overrides, root).items()}
 

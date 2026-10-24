@@ -15,7 +15,11 @@ Inputs (formats unchanged):
                   optional "formation": "derivative" | "same",
                   optional "uncertain": true (or "confidence": "uncertain" / "low"),
                   optional "sense": "<gloss>"}],
-       "form":  [{"lang", "form", "lemma"}]}
+       "form":  [{"lang", "form", "lemma"}],
+       "proto": [{"code", "term", "lex_id", "note"}],    a proto-language page (gem-pro *hugiz, sla-pro
+                                                        *byti) whose PIE link is corrected / rejected
+       "key":   [{"lang", "key", "lex_id", "note"}]}     a daughter headword (sh pasti) corrected / rejected
+    Any other top-level key than these, "note" and "_doc" is an error (load_overrides raises).
 
 Semantics of a lemma row (a *decision* for its corpus, lemma and sense):
   - remap: lex_id replaces the automatic ids; removal: an empty lex_id unmaps the lemma;
@@ -30,6 +34,8 @@ Semantics of a lemma row (a *decision* for its corpus, lemma and sense):
     pūrs 'dowry chest'); a query without a sense (a lemma-keyed table, a citation) is decided by all
     rows of the lemma, their ids united. Several rows with the same (corpus, lemma, sense): the last one
     read wins (per-language files refine the shared errata file).
+A proto or key row decides every automatic mapping whose path runs through that page or headword
+(path_decision: "sla-pro:*byti", "form-of:x", "base:x" elements), unless a lemma row decides the lemma.
 Precedence: a decision is final for its (corpus, lemma, sense). The automatic routes (tables, kaikki
 links, dictionary chains, lexicon reflex lists, form lemmatizers) apply only where no decision applies;
 pie/tier2_secure.py applies the decisions of every corpus of a language to every route there, so no
@@ -44,6 +50,7 @@ from __future__ import annotations
 import collections
 import json
 import re
+import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -114,41 +121,108 @@ def decision(row: dict, corpus: str | None = None, lemma: str | None = None, ids
                     row.get("erratum") or row.get("note") or "override", row)
 
 
-def _form_key(lang: str):
+# modules that register daughter key functions in formula_search_multi.KEYS when imported
+KEY_MODULES = ("celtic_mapping", "germanic_new_mapping", "bsl_mapping", "arm_toch_alb_mapping")
+# top-level keys of an override file; anything else is an error, never silently ignored
+FILE_KEYS = {"lemma", "form", "proto", "key", "note", "_doc"}
+
+
+def _keyer(lang: str):
+    """formula_search_multi.KEYS[lang], importing the mapping modules that register further languages."""
+    import importlib
     from .formula_search_multi import KEYS
-    return KEYS.get(lang) or (lambda s, loose=False: s.lower())
+    if lang not in KEYS:
+        for m in KEY_MODULES:
+            try:
+                importlib.import_module(f"{__package__}.{m}")
+            except ImportError:
+                pass
+    return KEYS.get(lang) or (lambda s, loose=False: unicodedata.normalize("NFC", (s or "").strip().lower()))
+
+
+_form_key = _keyer
+
+
+def proto_key(term: str) -> str:
+    from .formula_search import PieIndex
+    return PieIndex.proto_key(term)
+
+
+def override_files(root: Path = ROOT) -> list[Path]:
+    """The shared errata file, then mapping-overrides/*.json sorted by name (later rows win)."""
+    p = Path(root) / OVERRIDES
+    return ([p] if p.exists() else []) + sorted((Path(root) / OVERRIDES.replace(".json", "")).glob("*.json"))
 
 
 def load_overrides(root: Path = ROOT) -> dict:
-    """{"lemma": {corpus: {lemma: (ids frozenset, row)}}, "form": {lang: {form key: lemma}},
-        "decisions": {corpus: {lemma: [Decision, ...]}}} (one Decision per sense).
-    "lemma" is the sense-free view: the ids of all senses of the lemma united, the last row read."""
+    """Every override file, every kind of row:
+      "lemma": {corpus: {lemma: (ids frozenset, row)}}  the sense-free view (ids of all senses united);
+      "decisions": {corpus: {lemma: [Decision, ...]}}  one Decision per sense;
+      "form": {lang: {form key: lemma}}                a surface form sent to another lemma;
+      "proto": {(code, proto key): Decision}           a proto-language page (gem-pro *hugiz, sla-pro
+                                                       *byti) whose PIE link is corrected or rejected: it
+                                                       decides every word mapped through that page;
+      "key": {lang: {key: Decision}}                   a daughter headword (sh pasti) whose mapping is
+                                                       corrected or rejected, with the words mapped
+                                                       through it (base, form-of chains).
+    A top-level key outside FILE_KEYS raises ValueError."""
     p = Path(root) / OVERRIDES
     if p not in _OVR_CACHE:
-        d = json.loads(p.read_text("utf-8")) if p.exists() else {}
-        d = {"lemma": list(d.get("lemma", [])), "form": list(d.get("form", []))}
-        # per-language override files (one agent per language edits its own file):
-        # data/research/formulas/mapping-overrides/<name>.json with the same {"lemma": [...], "form": [...]}
-        for f in sorted((Path(root) / OVERRIDES.replace(".json", "")).glob("*.json")):
+        d = {"lemma": [], "form": [], "proto": [], "key": []}
+        for f in override_files(root):
             x = json.loads(f.read_text("utf-8"))
-            d["lemma"] += x.get("lemma", [])
-            d["form"] += x.get("form", [])
+            bad = set(x) - FILE_KEYS
+            if bad:
+                raise ValueError(f"{f.name}: unknown override keys {sorted(bad)} (known: {sorted(FILE_KEYS)})")
+            for k in d:
+                d[k] += x.get(k, [])
         per: dict = collections.defaultdict(lambda: collections.defaultdict(dict))
         for r in d["lemma"]:
             dc = decision(r)
             per[dc.corpus][dc.lemma][(dc.sense or "").strip().lower() if r.get("sense") else None] = dc
         form: dict = collections.defaultdict(dict)
         for r in d["form"]:
-            form[r["lang"]][_form_key(r["lang"])(r["form"])] = r["lemma"]
-        _OVR_CACHE[p] = _pack({c: {lem: list(v.values()) for lem, v in rows.items()} for c, rows in per.items()},
-                              dict(form))
+            form[r["lang"]][_keyer(r["lang"])(r["form"])] = r["lemma"]
+        out = _pack({c: {lem: list(v.values()) for lem, v in rows.items()} for c, rows in per.items()}, dict(form))
+        out["proto"] = {(r["code"], proto_key(r["term"])): decision(r, r["code"], r["term"]) for r in d["proto"]}
+        key: dict = collections.defaultdict(dict)
+        for r in d["key"]:
+            key[r["lang"]][_keyer(r["lang"])(r["key"])] = decision(r, r["lang"], r["key"])
+        out["key"] = dict(key)
+        _OVR_CACHE[p] = out
     return _OVR_CACHE[p]
 
 
 def _pack(decisions: dict, form: dict) -> dict:
     lem = {c: {l: (frozenset().union(*(x.ids for x in ds)), ds[-1].row) for l, ds in rows.items()}
            for c, rows in decisions.items()}
-    return {"lemma": lem, "form": form, "decisions": decisions}
+    return {"lemma": lem, "form": form, "decisions": decisions, "proto": {}, "key": {}}
+
+
+_DAUGHTER = ("base:", "form-of:")
+
+
+def path_decision(path, lang: str | None, overrides: dict | None = None, root: Path = ROOT) -> Decision | None:
+    """The proto-page or headword decision that an automatic mapping's path runs through, nearest the word
+    first (None: none). path: ("<lang>:<word>", "form-of:x", "sla-pro:*byti", "ine-pro:*bʰuH-", ...)."""
+    ov = as_overrides(overrides, root)
+    if not (ov.get("proto") or ov.get("key")):
+        return None
+    keyed = ov.get("key", {}).get(lang) if lang else None
+    K = _keyer(lang) if keyed else None
+    for el in path or ():
+        if ":" not in str(el):
+            continue
+        code, term = str(el).split(":", 1)
+        if keyed and (code == lang or el.startswith(_DAUGHTER)):
+            d = keyed.get(K(term.split("§")[0]))
+            if d:
+                return d
+        if ov.get("proto"):
+            d = ov["proto"].get((code, proto_key(term.split("§")[0])))
+            if d:
+                return d
+    return None
 
 
 def as_overrides(ov: dict | None, root: Path = ROOT) -> dict:
@@ -156,7 +230,7 @@ def as_overrides(ov: dict | None, root: Path = ROOT) -> dict:
     if ov is None:
         return load_overrides(root)
     if "decisions" in ov:
-        return ov
+        return ov if "proto" in ov else {**ov, "proto": {}, "key": {}}
     if "lemma" in ov and isinstance(ov.get("lemma"), dict) and "form" in ov:
         lemma, form = ov["lemma"], ov["form"]
     else:
@@ -182,6 +256,24 @@ def decide(corpus: str, lemma: str, auto_ids=(), overrides: dict | None = None, 
     if ds:
         return frozenset().union(*(d.ids for d in ds)), ds
     return frozenset(strip_blocked(auto_ids)), []
+
+
+def decide_row(corpus: str, lemma: str, auto_ids=(), path=(), lang: str | None = None,
+               overrides: dict | None = None, sense: str | None = None, root: Path = ROOT):
+    """decide, then, for an automatic mapping, the proto-page or headword decision its path runs through."""
+    ids, ds = decide(corpus, lemma, auto_ids, overrides, sense, root)
+    if not ds:
+        pd = path_decision([f"{lang}:{lemma}", *(path or ())] if lang else list(path or ()), lang, overrides, root)
+        if pd:
+            ids, ds = pd.ids, [pd]
+    return ids, ds
+
+
+def table_paths(corpus: str, root: Path = ROOT) -> dict:
+    """{lemma: (lang, path)} of the on-disk table, for callers that hold only lemma → ids."""
+    rows = read_table(corpus, root)
+    lang = corpus_lang(corpus, rows)
+    return {r["lemma"]: (r.get("lang") or lang, tuple(r.get("path", ()))) for r in rows}
 
 
 # ---------------------------------------------------------------- resolved tables
@@ -238,7 +330,8 @@ def resolve_rows(corpus: str, rows: list[dict], overrides: dict | None = None, r
     for r in rows:
         lem = r["lemma"]
         auto = frozenset(strip_blocked(r.get("lex_id", ())))
-        ids, ds = decide(corpus, lem, r.get("lex_id", ()), ov, sense, root)
+        ids, ds = decide_row(corpus, lem, r.get("lex_id", ()), r.get("path", ()), r.get("lang") or lang, ov,
+                             sense, root)
         if not ids:
             continue
         if ds:
