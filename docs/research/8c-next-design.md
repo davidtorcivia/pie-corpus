@@ -9,6 +9,9 @@ The readers were careful. The pairing gave them little to work with.
 - **The cause is retrieval.** Partners were retrieved by shared PIE roots, scored by inverse frequency and capped per pivot, with no stratification by corpus, age or genre. The largest corpus, Galen, Plutarch and Josephus, then supplies most partners, and the commonest roots (*steh₂-*, *dʰeh₁-*, *bʰer-*) supply most of the links. Against a word-shuffle null, retrieval was no better than chance except in the far tail (build report).
 - **The anchoring rule blocked one real lead.** Fínán's horse healing (docs/research/8c-addendum-finan.md) was seen and correctly not claimed: its only partners were Greek anatomy. Merseburg II, AV 4.12 and Míach's spell are all in our corpora, but no rule brought them into the same bundle.
 
+## Principle (David, 2026-10-24): pairing is targeted, decoys are the only random part
+"It's not a random blind system but we're trying to uncover parallels and not randomly sample language." Every bundle in every slab should be built by targeted pairing: comparable layers, comparable genres and the best candidates, never what the largest corpus happens to supply. Randomness and blinding remain only where they do a job: the embedded decoys measure how often readers "find" parallels that are not there, and the blind review keeps the grading honest. For that control to stay meaningful, decoys must come from the same strata and genres as the real partners, so that a decoy differs from a real bundle only in lacking the shared roots or motifs.
+
 ## Proposal 1: pair comparable texts (age and genre strata)
 Absolute dates cannot be matched across branches: the Rigveda is about 1,800 years older than the earliest Old Irish saga. What can be matched is each tradition's **earliest and least derivative layer**, and **genre**.
 
@@ -74,4 +77,4 @@ Before either full design, a pilot on two or three themes. It sets the review ru
 1. Stratified pairing (Proposal 1): yes or no; and whether hagiography and the late oral traditions get their own strata or are left out.
 2. Thematic search (Proposal 2): yes or no; and whether to add a non-Indo-European control corpus (ORACC, Kalevala), which is a new acquisition.
 3. Pilot first (Proposal 3): recommended.
-4. The 159 unread Stage C slabs: drop them, or rebuild them under Proposal 1 (recommended: rebuild; do not read them as built).
+4. Apply the stratified pairing to every slab: rebuild all of Stage C under Proposal 1, the 159 unread slabs and the Celtic pivots alike. The new build reads the Celtic pivots against new, comparable partners. It is a new pre-registered run, not a re-reading of the Celtic wave, which stays reported as it is. The 159 slabs as built are not read.
