@@ -264,6 +264,10 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
             # collective: -os-h₂ → -ōs, -or-h₂ → -ōr, -on-h₂ → -ō
             coll = lengthen_last_vowel(strong if strong[-1].base == "s" else strong[:-1])
             npl = [render(coll)]
+            if hb and strong[-1].base == "s" and e_grade_s and spec.weak:
+                # s-stem neuters: handbook *-es-h₂ (Fortson; Gk γένεα, Ved. -āṃsi, Lat. genera), the
+                # collective -ōs kept as the alternative (t019 review: nébʰōs read as a plural)
+                npl = [render(_add(weak, "h₂"))] + npl
         else:
             npl = [render(_add(strong, "h₂"))]
         out["NOM.PL"] = out["VOC.PL"] = out["ACC.PL"] = npl

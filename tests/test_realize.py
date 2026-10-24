@@ -437,3 +437,11 @@ def test_numeral_fixes_head_number():
         {"lex_id": "pie-lex-widet", "role": "V", "verb": {"tense": "AOR"}}]}]}
     w = realize(p, lx)["words"]
     assert all("DU" in x["features"] for x in w if x["lex_id"] in ("pie-lex-kjwox", "pie-lex-widet"))
+
+
+def test_s_stem_neuter_plural():
+    """t019 review: s-stem neuter nom. pl. in *-es-h₂ (Gk γένεα, Ved. -āṃsi), collective -ōs as alternative."""
+    from pie.realize import Lexicon
+    lx = Lexicon.load()
+    pl = lx.cells("pie-lex-nebhos")["NOM.PL"]
+    assert pl[0] == "nébʰesh₂" and "nébʰōs" in pl
