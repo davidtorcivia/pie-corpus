@@ -794,3 +794,84 @@ def test_pronoun_warning_window_and_carriers():
     assert not plan_warnings({"english": "x", "clauses": [{"slots": [
         sister, {"lex_id": "closed:demonstrative_so", "role": "MOD", "head": 0}, went]}]}, lx)
     assert not plan_warnings({"english": "He went.", "clauses": [{"slots": [so("m"), went]}]}, lx)
+
+
+# --- lexicon gaps reported by planners and Tier 2 (2026-10-24) ---------------------------------------------
+# Most reported gaps already had a usable lexeme; these pin that they realize, so a regression shows up here.
+
+def _gap_lx():
+    from pie.realize import Lexicon
+    return Lexicon.load()
+
+
+def test_lexgap_reported_lexemes_realize_and_gloss_cleanly():
+    from pie.realize import check_plan, realize
+    lx = _gap_lx()
+    see = V(SEE)
+    # night: usable since the engine-sweep override (Ringe p. 44); the gloss tag is 'night', not night.(or.possibly…
+    p = {"english": "The son sees the night.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-suHnus", "role": "SUBJ"}, {"lex_id": "pie-lex-nokwts", "role": "OBJ"}, see]}]}
+    assert not check_plan(p, lx)
+    r = realize(p, lx)
+    assert r["pie"] == "suHnús nókʷtm̥ spéḱyeti." and r["gloss"].split()[1] == "night-ACC.SG"
+    # old, mortal, immortal (nominal clauses); house (root noun dṓm, loc. démi)
+    r = realize({"english": "The old man is mortal.", "clauses": [{"type": "nominal", "slots": [
+        {"lex_id": "pie-lex-wiHros", "role": "SUBJ"}, {"lex_id": "pie-lex-senos", "role": "MOD", "head": 0},
+        {"lex_id": "pie-lex-mrtos", "role": "PRED"}]}]}, lx)
+    assert r["pie"] == "sénos wiHrós mr̥tós."
+    r = realize({"english": "The gods are immortal.", "clauses": [{"type": "nominal", "slots": [
+        {"lex_id": "pie-lex-deywos", "role": "SUBJ", "num": "PL"}, {"lex_id": "pie-lex-nmrtos", "role": "PRED"}]}]}, lx)
+    assert r["pie"] == "deywṓs n̥mr̥tṓs."
+    r = realize({"english": "x", "clauses": [{"slots": [{"lex_id": "pie-lex-suHnus", "role": "SUBJ"},
+                                                        {"lex_id": "pie-lex-doxm", "role": "LOC"}, see]}]}, lx)
+    assert "démi" in r["pie"].split()
+
+
+def test_lexgap_ordinals_agree_as_modifiers():
+    """first pr̥h₂wós (Fortson §7.19 *pr̥h₂-u̯o-), other/second h₂énteros (Fortson §7.19: no 'second' reconstructible),
+    third tritós (Fortson §7.20 *tri-t-), fourth kʷetwr̥tós: thematic adjectives agreeing with their head."""
+    from pie.realize import check_plan, realize
+    lx = _gap_lx()
+    want = {"pie-lex-prh2wos": ("pr̥h₂wóm", "pr̥h₂wéh₂m"), "pie-lex-h2enteros": ("h₂énterom", "h₂éntereh₂m"),
+            "pie-lex-tritos": ("tritóm", "tritéh₂m"), "pie-lex-kwetwrtos": ("kʷetwr̥tóm", "kʷetwr̥téh₂m")}
+    for lid, (m, f) in want.items():
+        for head, form in (("pie-lex-suHnus", m), ("pie-lex-dhugh2texr", f)):
+            p = {"english": "x", "clauses": [{"slots": [{"lex_id": "pie-lex-wiHros", "role": "SUBJ"},
+                                                        {"lex_id": head, "role": "OBJ"},
+                                                        {"lex_id": lid, "role": "MOD", "head": 1}, V(SEE)]}]}
+            assert not check_plan(p, lx), lid
+            assert form in realize(p, lx)["pie"].split(), (lid, head)
+
+
+def test_lexgap_nine_and_multiplicatives():
+    """nine is closed:numerals/indeclinable/9 (Fortson §7.17 *néu̯n̥); thrice/twice are the ADV lexemes trís, dwís
+    (Fortson §7.24), glossed without the parenthesis."""
+    from pie.realize import realize
+    lx = _gap_lx()
+    r = realize({"english": "Nine horses carry.", "clauses": [{"slots": [
+        {"lex_id": HORSE, "role": "SUBJ"}, {"lex_id": "closed:numerals/indeclinable/9", "role": "MOD", "head": 0},
+        V("pie-lex-bhereti")]}]}, lx)
+    assert r["pie"] == "h₁néwn̥ h₁éḱwōs bʰéronti."
+    for lid, form, gloss in (("pie-lex-tris", "trís", "thrice"), ("pie-lex-dwis", "dwís", "twice")):
+        r = realize({"english": "x", "clauses": [{"slots": [{"lex_id": lid, "role": "ADV"}, V(SEE)]}]}, lx)
+        assert r["pie"] == f"{form} spéḱyeti." and r["gloss"].split()[0] == gloss
+
+
+def test_lexgap_dual_middle_and_perfect_have_no_2nd_3rd_person_cells():
+    """The handbooks print no 2du/3du for the middle or the perfect: Ringe 2006 pp. 31-32 '???' for both ('the dual
+    endings are not reconstructable because Greek and Indo-Iranian disagree'); Fortson §5.16 'no detailed
+    reconstructions for the rest of the dual are possible'; Beekes §18.6 only *-(e)Hth₁-? and *-(e)Hteh₂?? and
+    no perfect dual. So the cells stay absent (only 1du: middle *-wosdʰh₂/*-wedʰh₂, perfect *-wé) and the
+    realizer's plural stands in."""
+    from pie.realize import realize
+    lx = _gap_lx()
+    for lid in ("pie-lex-bhereti", "pie-lex-h1esti"):
+        c = lx.cells(lid)
+        assert "MID.PRS.1DU" in c and "MID.PST.1DU" in c
+        for t in ("PRS", "PST", "SBJV", "OPT"):
+            assert f"MID.{t}.2DU" not in c and f"MID.{t}.3DU" not in c, (lid, t)
+    c = lx.cells("pie-lex-woyde")
+    assert "PRF.1DU" in c and "PRF.2DU" not in c and "PRF.3DU" not in c
+    r = realize({"english": "The two horses carry for themselves.", "clauses": [{"slots": [
+        {"lex_id": HORSE, "role": "SUBJ", "num": "DU"}, V("pie-lex-bhereti", voice="MID")]}]}, lx)
+    assert r["pie"] == "h₁éḱwoh₁ bʰérontor." and r["gloss"].split()[1].endswith("MID.PRS.3PL")
