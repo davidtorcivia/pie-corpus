@@ -20,7 +20,13 @@ Two kinds of evidence, best level wins:
       for the languages it covers, because the corpus tables only hold words that
       occur in their corpora (Hitt. ēšḫar, OIr. gonaid are missing from them).
     A word the table reaches only through a derivation (base chain, privative,
-    kaikki-chain) is a different formation: root level.
+    kaikki-chain) is a different formation: root level. The mapping errata
+    (data/research/formulas/mapping-overrides*, by corpus and lemma) are applied
+    on load and win over the automatic links; an erratum row marked
+    "formation": "derivative" (Ved. sū́rya-, mahā́nt-) is root level too.
+    Wiktionary/kaikki etymologies link a derivative to its base's page (mahát
+    "from *méǵh₂s") and alternative-form pages to their target (*suHyús →
+    *suHnús), so a kaikki link alone does not show the same formation.
 (b) The lexicon's reflex lists (and the Indo-Iranian / Hellenic proto-forms bridged
     to Vedic / Greek keys): whole-word equality of the normalized forms. A cited
     lemma must equal a reflex (the reflex's declared ending may be stripped, since
@@ -29,6 +35,9 @@ Two kinds of evidence, best level wins:
     its language (ENDINGS) on both sides. Never a prefix match. Reflexes marked
     uncertain or borrowed are skipped. Forms the tables map to the lexeme count as
     reflexes too ("table form").
+Either way 'exact' means the same formation: an agent / kin noun in *-tor-/*-tér-
+whose cited daughter word shows the other type (Vedic accent, Greek / Latin suffix
+grade: dātā́ and δωτῆρες against *déh₃tōr) is root level (formation_clash).
 
 Compounds ("compound:<type>:<first>+<second>"): a cited word counts for a branch
 when it begins with a reflex of the first member (closed prefixes: PREFIX_REFLEXES)
@@ -227,39 +236,142 @@ PREFIX_ALIASES = {"pie-lex-h1su": "closed:prefix/h1su", "pie-lex-dus": "closed:p
 DERIVED_MARKS = ("base:", "r2-tier:kaikki-chain", "r2-tier:privative", "kaikki-chain", "privative")
 
 
+# ---------------------------------------------------------------- formation: agent nouns
+
+# The two PIE agent-noun types are different formations (Tichy 1995; Lindeman): root-accented *-tor-
+# (o-grade suffix: *déh₃tōr, *ǵénh₁tōr) and suffix-accented *-tér- (e-grade: *ǵenh₁tḗr, *ph₂tḗr).
+# Vedic keeps the accent (dā́tā vásu 'giving goods' ~ dātā́ vásūnām 'giver of goods'), Greek and Latin
+# the suffix grade (δώτωρ, -τορ- ~ δωτήρ, -τῆρ-; Lat. -tor). Avestan, Germanic etc. show neither:
+# a word there is not checked. Keys drop accents, so the cited string is read as written.
+_ACUTE, _SYLLABIC = "́", ("̥", "̣")
+
+
+def _units(s: str) -> list[tuple[str, str]]:
+    """NFD string → [(base letter, its combining marks)]."""
+    out: list = []
+    for ch in unicodedata.normalize("NFD", s):
+        if unicodedata.combining(ch) and out:
+            out[-1] = (out[-1][0], out[-1][1] + ch)
+        else:
+            out.append((ch, ""))
+    return out
+
+
+def _accented(b: str, m: str) -> bool:
+    """An acute on a vowel or a syllabic resonant (not ś, ǵ, ḱ)."""
+    return _ACUTE in m and (b in "aeiou" or (b in "rlmn" and any(x in m for x in _SYLLABIC)))
+
+
+def agent_type_pie(form: str) -> str | None:
+    """'root' (*-tor-, root accent) or 'suffix' (*-tér-, suffix accent) for an agent / kin noun in
+    *-tor/-ter; None for anything else and for the mixed type (*méh₂tēr: root accent, e-grade)."""
+    u = _units((form or "").strip("*- ").lower())
+    if len(u) < 4 or u[-1][0] != "r" or u[-2][0] not in "oe" or u[-3][0] != "t":
+        return None
+    suffix_acc = _ACUTE in u[-2][1]
+    root_acc = any(_accented(b, m) for b, m in u[:-3])
+    if suffix_acc and u[-2][0] == "e":
+        return "suffix"
+    if root_acc and not suffix_acc and u[-2][0] == "o":
+        return "root"
+    return None
+
+
+def agent_type_cited(code: str | None, s: str) -> str | None:
+    """The agent-noun type a cited daughter word shows, or None when it shows none."""
+    s = (s or "").strip().strip("*-√").strip().lower()
+    if code == "sa":
+        u = _units(s)
+        ts = [i for i in range(len(u) - 1) if u[i][0] == "t" and u[i + 1][0] in "aru"]
+        acc = [i for i, (b, m) in enumerate(u) if _accented(b, m)]
+        if not ts or not acc:
+            return None                 # unaccented (DCS, epic): no evidence either way
+        return "suffix" if acc[0] > ts[-1] else "root"
+    if code in ("grc", "la"):
+        k = _strip(s).replace("ς", "σ") if code == "grc" else _strip(s)
+        m = list(re.finditer(r"τ([ηεωο])ρ" if code == "grc" else r"t([eo])r", k))
+        if m:
+            return "suffix" if m[-1].group(1) in "ηεe" else "root"
+    return None
+
+
 # ---------------------------------------------------------------- tables
 
 def _rec(ids, path, source, derived=False):
     return (frozenset(ids), tuple(path), source, bool(derived))
 
 
-def load_corpus_tables(codes=None) -> dict:
-    """data/research/formulas/mapping/*.jsonl → {code: {key: [rec]}}."""
+def load_lemma_overrides() -> dict:
+    """The mapping errata, {corpus: {lemma: (ids, row)}}: data/research/formulas/mapping-overrides.json and
+    the per-language files in mapping-overrides/ (pie.formula_search_multi.load_overrides). The tables in
+    mapping/ were written before most per-language rows existed, so they are applied here, on load."""
+    from .formula_search_multi import load_overrides
+    return load_overrides(ROOT)["lemma"]
+
+
+def override_row(r: dict, overrides: dict) -> tuple[dict | None, bool]:
+    """A mapping-table row with its corpus's lemma erratum applied → (row or None if unmapped, overridden?).
+    An override row with "formation": "derivative" says the lemma continues a derivative of the listed
+    lexeme (Ved. mahā́nt- for *méǵh₂s): the row then counts as a derivation, root level."""
+    hit = overrides.get(r.get("corpus"), {}).get(r.get("lemma"))
+    if not hit:
+        return r, False
+    ids, orow = hit
+    if not ids:
+        return None, True
+    note = orow.get("erratum") or orow.get("note") or "override"
+    path = [p for p in r.get("path", [])[:1]] + ["erratum:" + note]
+    return {**r, "lex_id": sorted(ids), "path": path, "how": "erratum",
+            "formation": orow.get("formation")}, True
+
+
+def row_keys(code: str, r: dict) -> set[str]:
     from .formula_search_multi import hit_tlh_keys
+    keys = set()
+    for part in str(r.get("lemma", "")).split("|"):
+        if code == "hit":
+            keys |= set(hit_tlh_keys(part.split("@")[0]))
+        else:
+            keys.add(table_key(code, part))
+    for part in re.split(r"\s*[|~]\s*", str(r.get("word", ""))):    # RV lemmas: "gáv- ~ gó-"
+        keys.add(table_key(code, part))
+    return {k for k in keys if k}
+
+
+def table_from_rows(rows, overrides: dict | None = None) -> tuple[dict, dict]:
+    """(corpus, row) pairs of the mapping tables → ({code: {key: [rec]}}, {code: keys of overridden rows}).
+    The overridden keys are dropped from the round-2 kaikki and dictionary tables when they are merged,
+    so a corrected lemma is not re-admitted through another source (υἱός, mahát)."""
     out: dict = collections.defaultdict(lambda: collections.defaultdict(list))
-    for corpus, code in CORPUS_CODE.items():
-        if codes is not None and code not in codes:
+    corrected: dict = collections.defaultdict(set)
+    for corpus, r in rows:
+        code = CORPUS_CODE[corpus]
+        keys = row_keys(code, r)
+        r, was = override_row(r, overrides or {})
+        if was:
+            corrected[code] |= keys
+        if r is None:
             continue
-        p = MAPPING_DIR / f"{corpus}.jsonl"
-        if not p.exists():
-            continue
-        for line in p.read_text("utf-8").splitlines():
-            r = json.loads(line)
-            derived = r.get("how") in ("base", "root") or any(
-                str(x).startswith(DERIVED_MARKS) for x in r.get("path", []))
-            rec = _rec(r["lex_id"], [f"table:{corpus}"] + list(r.get("path", [])), f"table:{corpus}", derived)
-            keys = set()
-            for part in str(r.get("lemma", "")).split("|"):
-                if code == "hit":
-                    keys |= set(hit_tlh_keys(part.split("@")[0]))
-                else:
-                    keys.add(table_key(code, part))
-            for part in re.split(r"\s*[|~]\s*", str(r.get("word", ""))):    # RV lemmas: "gáv- ~ gó-"
-                keys.add(table_key(code, part))
-            for k in keys:
-                if k:
-                    out[code][k].append(rec)
-    return out
+        derived = r.get("how") in ("base", "root") or r.get("formation") == "derivative" or any(
+            str(x).startswith(DERIVED_MARKS) for x in r.get("path", []))
+        rec = _rec(r["lex_id"], [f"table:{corpus}"] + list(r.get("path", [])), f"table:{corpus}", derived)
+        for k in keys:
+            out[code][k].append(rec)
+    return out, corrected
+
+
+def load_corpus_tables(codes=None, overrides: dict | None = None) -> tuple[dict, dict]:
+    """data/research/formulas/mapping/*.jsonl, errata applied → ({code: {key: [rec]}}, corrected keys)."""
+    def rows():
+        for corpus, code in CORPUS_CODE.items():
+            if codes is not None and code not in codes:
+                continue
+            p = MAPPING_DIR / f"{corpus}.jsonl"
+            if not p.exists():
+                continue
+            for line in p.read_text("utf-8").splitlines():
+                yield corpus, json.loads(line)
+    return table_from_rows(rows(), load_lemma_overrides() if overrides is None else overrides)
 
 
 def load_kaikki_tables(entries: dict, codes=("sa", "grc", "la")) -> dict:
@@ -318,6 +430,18 @@ def load_dict_tables(entries: dict, codes=DICT_CODES) -> dict:
     return out
 
 
+def merge_tables(code: str, corpus: dict, others, corrected: dict) -> dict:
+    """One language's table: the corpus rows, then the automatic links of the other sources, except for
+    keys whose corpus row an erratum corrected (a reviewed erratum wins over the automatic links)."""
+    merged = collections.defaultdict(list)
+    for src in (corpus, *others):
+        for k, recs in src.get(code, {}).items():
+            if src is not corpus and k in corrected.get(code, ()):
+                continue
+            merged[k] += recs
+    return merged
+
+
 # ---------------------------------------------------------------- the checker
 
 class SecureChecker:
@@ -337,18 +461,14 @@ class SecureChecker:
 
     @classmethod
     def from_disk(cls, entries: dict, dictionaries: bool = True) -> "SecureChecker":
-        corpus = load_corpus_tables()
+        corpus, corrected = load_corpus_tables()
         cache: dict = {}
 
         def loader(code):
             if not cache:
                 cache.update({"kaikki": load_kaikki_tables(entries)})
                 cache["dict"] = load_dict_tables(entries) if dictionaries else {}
-            merged = collections.defaultdict(list)
-            for src in (corpus, cache["kaikki"], cache["dict"]):
-                for k, recs in src.get(code, {}).items():
-                    merged[k] += recs
-            return merged
+            return merge_tables(code, corpus, (cache["kaikki"], cache["dict"]), corrected)
         return cls(entries, {}, loader)
 
     def table(self, code: str | None) -> dict:
@@ -436,12 +556,25 @@ class SecureChecker:
             ks |= set(hit_entry_stems(s.strip("-")))
         return [r for k in ks if k for r in t.get(k, [])]
 
+    def formation_clash(self, lid: str, code: str | None, s: str) -> str | None:
+        """Why cited s, though it reaches lid, is another formation of it (None: no evidence of that).
+        Only the agent-noun type is read off the word itself; derivatives come marked from the tables."""
+        want = agent_type_pie((self.entries.get(lid) or {}).get("form", ""))
+        got = agent_type_cited(code, s) if want else None
+        if want and got and got != want:
+            return f"formation:agent-noun:{got}-accented≠{want}-accented"
+        return None
+
     def match(self, lid: str, code: str | None, lang: str, s: str, lemma: bool) -> dict | None:
-        """Best evidence that cited string s continues lid, or None."""
+        """Best evidence that cited string s continues lid, or None. 'exact' needs the same formation:
+        a word that reaches lid but shows another formation of it is root level."""
         best = None
+        clash = self.formation_clash(lid, code, s)
 
         def put(level, via, path):
             nonlocal best
+            if level == "exact" and clash:
+                level, path = "root", list(path) + [clash]
             rank = {"exact": 2, "root": 1}
             if best is None or rank[level] > rank[best["level"]]:
                 best = {"level": level, "cited": s, "via": via, "path": list(path)}
@@ -488,6 +621,8 @@ class SecureChecker:
         if lid.startswith("compound:"):
             return self.check_compound(lid, refs)
         exact, rootlvl, ev = set(), set(), {}
+        want = agent_type_pie((self.entries.get(lid) or {}).get("form", ""))
+        shown = collections.defaultdict(set)        # branch → agent-noun types its matched words show
         for r in refs:
             if r.get("role", "parallel") != "parallel":
                 continue
@@ -497,6 +632,9 @@ class SecureChecker:
                 m = self.match(lid, code, lang, s, is_lemma)
                 if not m:
                     continue
+                if want and (t := agent_type_cited(code, s)) and (m["level"] == "exact" or any(
+                        str(p).startswith("formation:agent-noun") for p in m["path"])):
+                    shown[b].add(t)         # words that reach lid itself (not a sibling such as jánitrī-)
                 if m["level"] == "exact":
                     exact.add(b)
                     if ev.get(b, {}).get("level") != "exact":
@@ -504,6 +642,14 @@ class SecureChecker:
                 elif b not in ev:
                     rootlvl.add(b)
                     ev[b] = {**m, "locus": r.get("locus"), "lang": lang}
+        # a branch whose accent- or grade-marking words all show the other agent-noun type is that type:
+        # Av. dātārō (no accent) beside Ved. dātā́ in the same cited cell is not evidence for *déh₃tōr
+        for b in sorted(exact):
+            if shown.get(b) and want not in shown[b]:
+                exact.discard(b)
+                rootlvl.add(b)
+                ev[b] = {**ev[b], "level": "root", "path": list(ev[b]["path"]) + [
+                    f"formation:agent-noun:branch shows {'/'.join(sorted(shown[b]))}-accented only"]}
         rootlvl -= exact
         return {"exact_branches": sorted(exact), "root_branches": sorted(rootlvl),
                 "level": "exact" if len(exact) >= 2 else "root" if len(exact | rootlvl) >= 2 else "none",

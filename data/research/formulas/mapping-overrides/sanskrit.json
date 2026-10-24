@@ -1,5 +1,5 @@
 {
- "note": "Sanskrit (rv: VedaWeb/Grassmann lemmas; av: DCS lemmas) mapping corrections, mapping-precision pass (docs/research/mapping-precision-sanskrit.md). Evidence: Mayrhofer EWAia (raw/books/text/ewaia-v*), VedaWeb surface forms, DCS lemma ids. Empty lex_id = unmapped.",
+ "note": "Sanskrit (rv: VedaWeb/Grassmann lemmas; av: DCS lemmas) mapping corrections, mapping-precision pass (docs/research/mapping-precision-sanskrit.md). Evidence: Mayrhofer EWAia (raw/books/text/ewaia-v*), VedaWeb surface forms, DCS lemma ids. Empty lex_id = unmapped. \"formation\": \"derivative\" marks a lemma that continues a derivative of the listed lexeme (mahā́nt-, sū́rya-): pie/tier2_secure.py counts it at root level, not as the lexeme itself.",
  "lemma": [
   {
    "corpus": "rv",
@@ -1741,7 +1741,8 @@
     "pie-lex-megjh2s"
    ],
    "erratum": "mahā́nt- 'great' unmapped",
-   "note": "EWAia s.v. MAH / mahā́nt- < *meǵh₂- (gr. μέγας)"
+   "note": "EWAia s.v. MAH / mahā́nt- < *meǵh₂- (gr. μέγας); an nt-stem, Iir. *maȷ́ʰ-ánt- 'Erweiterung' of the archaic adjective *maȷ́ʰaH- (EWAia II 337f.): a derivative of *méǵh₂s, whose own Vedic reflexes are máh-, máhi n. (= μέγα)",
+   "formation": "derivative"
   },
   {
    "corpus": "rv",
@@ -2966,6 +2967,36 @@
    "lex_id": [],
    "erratum": "kulyā 'channel' mapped to a pseudo-etymon *keh₂ul-",
    "note": "EWAia s.v. kulyā́-: not securely explained; unmapped [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "mahat",
+   "lex_id": [
+    "pie-lex-megjh2s"
+   ],
+   "formation": "derivative",
+   "erratum": "mahát (nt-stem mahā́nt-) mapped as *méǵh₂s itself",
+   "note": "EWAia II 337f. s.v. mahā́nt-: Iir. *maȷ́ʰ-ánt- is an 'Erweiterung nach *bʰr̥ǵʰ-ánt-' of the archaic ablauting adjective *maȷ́ʰaH- (máh-, máhi n. = gr. μέγα < *még-h₂): a derivative of *méǵh₂s, root level"
+  },
+  {
+   "corpus": "av",
+   "lemma": "sūrya",
+   "lex_id": [
+    "pie-lex-soh2wl"
+   ],
+   "formation": "derivative",
+   "erratum": "sū́rya- 'sun' mapped as the heteroclite *sóh₂wl̥ itself",
+   "note": "EWAia II 742 s.v. sū́rya-: Idg. *suh₂l-ii̯o- (or *-iHo-), a -ya- derivative of *suh₂el/n- : *sh₂uel/n- (s. svàr-, the heteroclite's own reflex); cf. the related formation gr. ἠέλιος < *sāwelios: root level"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "sū́rya-",
+   "lex_id": [
+    "pie-lex-soh2wl"
+   ],
+   "formation": "derivative",
+   "erratum": "sū́rya- 'sun' mapped as the heteroclite *sóh₂wl̥ itself",
+   "note": "EWAia II 742 s.v. sū́rya-: Idg. *suh₂l-ii̯o- (or *-iHo-), a -ya- derivative of *suh₂el/n- : *sh₂uel/n- (s. svàr-, the heteroclite's own reflex); cf. the related formation gr. ἠέλιος < *sāwelios: root level"
   }
  ],
  "form": []

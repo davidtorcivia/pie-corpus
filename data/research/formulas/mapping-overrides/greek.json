@@ -1787,10 +1787,10 @@
    "corpus": "hom",
    "lemma": "ἄμβροτος",
    "lex_id": [
-    "pie-lex-mrtos"
+    "pie-lex-nmrtos"
    ],
-   "erratum": "also mapped to *smr̥tós (*smerd- 'bite')",
-   "note": "Beekes EDG p. 242 s.v. βροτός: IE *mr̥-to- 'dead, mortal'"
+   "erratum": "also mapped to *smr̥tós (*smerd- 'bite'); the privative compound, not the simplex *mr̥tós",
+   "note": "Beekes EDG p. 242f. s.v. βροτός: ἄ-μβροτος 'immortal'; 'the privative Skt. a-mṛ́ta-, Av. a-məṣ̌a- \"immortal\" is comparable to ἄμβροτος': *n̥-mr̥tós"
   },
   {
    "corpus": "grp",
@@ -1805,10 +1805,10 @@
    "corpus": "grp",
    "lemma": "ἄμβροτος",
    "lex_id": [
-    "pie-lex-mrtos"
+    "pie-lex-nmrtos"
    ],
-   "erratum": "also mapped to *smr̥tós (*smerd- 'bite')",
-   "note": "Beekes EDG p. 242 s.v. βροτός: IE *mr̥-to- 'dead, mortal'"
+   "erratum": "also mapped to *smr̥tós (*smerd- 'bite'); the privative compound, not the simplex *mr̥tós",
+   "note": "Beekes EDG p. 242f. s.v. βροτός: ἄ-μβροτος 'immortal'; 'the privative Skt. a-mṛ́ta-, Av. a-məṣ̌a- \"immortal\" is comparable to ἄμβροτος': *n̥-mr̥tós"
   },
   {
    "corpus": "grp",
@@ -7361,6 +7361,24 @@
    ],
    "erratum": "unmapped prefixed compound",
    "note": "Beekes EDG s.v. πέτομαι: ἀναπέτομαι = ἀνα- + πέτομαι; mapped as the simplex in this table (coverage)"
+  },
+  {
+   "corpus": "grp",
+   "lemma": "υἱός",
+   "lex_id": [
+    "pie-root-sewH-bear"
+   ],
+   "erratum": "υἱός mapped to *suHnús through the alternative-form page *suHyús",
+   "note": "Beekes EDG p. 1528 s.v. υἱός: PIE *suH-iu- (also ToB soy, ToA se); 'most other languages have a different suffix in *suH-nu-' (Skt. sūnú-, Go. sunus). Same root *suH- 'bring forth', another formation: root level only"
+  },
+  {
+   "corpus": "hom",
+   "lemma": "υἱός",
+   "lex_id": [
+    "pie-root-sewH-bear"
+   ],
+   "erratum": "υἱός mapped to *suHnús through the alternative-form page *suHyús",
+   "note": "Beekes EDG p. 1528 s.v. υἱός: PIE *suH-iu- (also ToB soy, ToA se); 'most other languages have a different suffix in *suH-nu-' (Skt. sūnú-, Go. sunus). Same root *suH- 'bring forth', another formation: root level only"
   }
  ],
  "form": []

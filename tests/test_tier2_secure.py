@@ -123,3 +123,126 @@ def test_compound_without_first_member_is_none():
     cid = "compound:bahuvrihi:closed:prefix/h1su+pie-lex-kjlewos"
     c = checker().check(cid, [ref("Vedic", ["śrávas-"]), ref("Greek", ["κλέος"])])
     assert c["level"] == "none" and c["members"]["pie-lex-kjlewos"]["exact_branches"] == []
+
+
+# ---------------------------------------------------------------- formation (tier2-review-r4 §3)
+
+from pie.tier2_secure import agent_type_cited, agent_type_pie, merge_tables, table_from_rows  # noqa: E402
+
+FORM = {
+    "pie-root-sewH-bear": {"id": "pie-root-sewH-bear", "kind": "root", "form": "sewH-"},
+    "pie-lex-suHnus": {"id": "pie-lex-suHnus", "form": "suHnús", "root_id": "pie-root-sewH-bear",
+                       "reflexes": {"Proto-Indo-Iranian": [{"form": "*suHnúš"}]}},
+    "pie-lex-megjh2s": {"id": "pie-lex-megjh2s", "form": "méǵh₂s", "pos": "adj",
+                        "reflexes": {"Ancient Greek": [{"form": "μέγᾰς"}],
+                                     "Proto-Indo-Iranian": [{"form": "*maȷ́ʰā́"}]}},
+    "pie-lex-soh2wl": {"id": "pie-lex-soh2wl", "form": "sóh₂wl̥", "reflexes": {"Latin": [{"form": "sōl"}]}},
+    "pie-root-deh3-give": {"id": "pie-root-deh3-give", "kind": "root", "form": "deh₃-"},
+    "pie-lex-deh3toxr": {"id": "pie-lex-deh3toxr", "form": "déh₃tōr", "root_id": "pie-root-deh3-give",
+                         "reflexes": {"Ancient Greek": [{"form": "δώτωρ"}],
+                                      "Proto-Indo-Iranian": [{"form": "*dáHtā"}]}},
+    "pie-root-gjenh1-produce": {"id": "pie-root-gjenh1-produce", "kind": "root", "form": "ǵenh₁-"},
+    "pie-lex-gjenh1toxr": {"id": "pie-lex-gjenh1toxr", "form": "ǵénh₁tōr", "root_id": "pie-root-gjenh1-produce",
+                           "reflexes": {"Latin": [{"form": "genitor"}]}},
+    "pie-lex-gjenh1texr": {"id": "pie-lex-gjenh1texr", "form": "ǵenh₁tḗr", "root_id": "pie-root-gjenh1-produce"},
+}
+
+
+def row(corpus, lang, lemma, ids, word=None, path=None):
+    return corpus, {"corpus": corpus, "lang": lang, "lemma": lemma, "word": word or lemma, "lex_id": list(ids),
+                    "path": path or [f"{lang}:{lemma}", "r2-tier:kaikki"], "how": "kaikki"}
+
+
+# errata as pie.formula_search_multi.load_overrides()["lemma"] gives them: {corpus: {lemma: (ids, row)}}
+OVERRIDES = {
+    "grp": {"υἱός": (frozenset({"pie-root-sewH-bear"}), {"note": "Beekes EDG p. 1528 s.v. υἱός: *suH-iu-"})},
+    "av": {"sūrya": (frozenset({"pie-lex-soh2wl"}), {"note": "EWAia II 742", "formation": "derivative"}),
+           "mahat": (frozenset({"pie-lex-megjh2s"}), {"note": "EWAia II 337f.", "formation": "derivative"}),
+           "svar": (frozenset({"pie-lex-soh2wl"}), {"note": "EWAia II 794"})},
+}
+ROWS = [row("grp", "grc", "υἱός", {"pie-lex-suHnus"}), row("grp", "grc", "μέγας", {"pie-lex-megjh2s"}),
+        row("av", "sa", "sūnu", {"pie-lex-suHnus"}, "sūnú-"), row("av", "sa", "sūrya", {"pie-lex-soh2wl"}, "sū́rya-"),
+        row("av", "sa", "svar", {"pie-lex-soh2wl", "pie-root-swer-resound"}, "√svar-"),
+        row("av", "sa", "mahat", {"pie-lex-megjh2s"}),
+        row("av", "sa", "dātṛ", {"pie-lex-deh3toxr"}), row("av", "sa", "janitṛ", {"pie-lex-gjenh1toxr"}),
+        row("ae", "ae", "dātar", {"pie-lex-deh3toxr"}, "𐬛𐬁𐬙𐬀𐬭"),
+        row("grp", "grc", "δώτωρ", {"pie-lex-deh3toxr"})]
+
+
+def form_checker(overrides=OVERRIDES):
+    tables, corrected = table_from_rows(ROWS, overrides)
+    # the round-2 kaikki links still join mahát and sū́rya- to the base lexemes (Wiktionary "from *méǵh₂s")
+    kaikki = {"sa": {"mahat": [rec({"pie-lex-megjh2s"}, "mahát", "sa", "kaikki-sa")],
+                     "sūrya": [rec({"pie-lex-soh2wl"}, "sū́rya", "sa", "kaikki-sa")]}}
+    return SecureChecker(FORM, {c: merge_tables(c, tables, (kaikki,), corrected) for c in ("sa", "grc", "ae")})
+
+
+def test_huios_is_root_level_for_suHnus():
+    # υἱός < *suH-iu- (Beekes): the table reached *suHnús through the alternative-form page *suHyús
+    refs = [ref("Greek", ["υἱός"], ["υἱός"]), ref("Vedic", ["sūnú-"], ["sūnúḥ"])]
+    assert form_checker({}).check("pie-lex-suHnus", refs)["exact_branches"] == ["Gk", "II"]   # the old behaviour
+    c = form_checker().check("pie-lex-suHnus", refs)
+    assert c["exact_branches"] == ["II"] and c["root_branches"] == ["Gk"] and c["level"] == "root"
+    assert any(p.startswith("erratum:") for p in c["evidence"]["Gk"]["path"])
+    # the inflected word is not re-admitted as a 'table form' of *suHnús either
+    assert form_checker().check("pie-lex-suHnus", [ref("Greek", [], ["υἱὸν"])])["exact_branches"] == []
+
+
+def test_surya_is_a_derivative_svar_the_heteroclite():
+    c = form_checker().check("pie-lex-soh2wl", [ref("Vedic", ["sū́rya-"], ["sū́ryaḥ"]), ref("Latin", ["sōl"])])
+    assert c["exact_branches"] == ["It"] and c["root_branches"] == ["II"] and c["level"] == "root"
+    c = form_checker().check("pie-lex-soh2wl", [ref("Vedic", ["svàr-"], ["svàr"]), ref("Latin", ["sōl"])])
+    assert c["exact_branches"] == ["II", "It"]
+
+
+def test_mahat_is_the_nt_stem_megas_exact():
+    refs = [ref("Vedic", ["mahā́nt-"], ["mahát"]), ref("Greek", ["μέγας"], ["μέγαν"])]
+    c = form_checker().check("pie-lex-megjh2s", refs)
+    assert c["exact_branches"] == ["Gk"] and c["root_branches"] == ["II"] and c["level"] == "root"
+    # the kaikki link for the same key is dropped once an erratum corrected the corpus row
+    assert c["evidence"]["II"]["via"] == "table:av"
+
+
+def test_agent_noun_types():
+    assert agent_type_pie("déh₃tōr") == agent_type_pie("ǵénh₁tōr") == "root"
+    assert agent_type_pie("ǵenh₁tḗr") == agent_type_pie("ph₂tḗr") == "suffix"
+    assert agent_type_pie("méh₂tēr") is None and agent_type_pie("h₂nḗr") is None
+    assert [agent_type_cited("sa", w) for w in ("dātā́", "dātár-", "janitā́", "janitṛ́")] == ["suffix"] * 4
+    assert [agent_type_cited("sa", w) for w in ("dā́tā", "jánitā", "dā́tāraḥ")] == ["root"] * 3
+    assert agent_type_cited("grc", "δωτῆρες") == agent_type_cited("grc", "δωτήρ") == "suffix"
+    assert agent_type_cited("grc", "δῶτορ") == agent_type_cited("la", "genitor") == "root"
+    # no accent, no grade: no evidence (DCS dātṛ, Av. dātārō, Ved. śrávas-)
+    assert {agent_type_cited("sa", "dātṛ"), agent_type_cited("ae", "dātārō"), agent_type_cited("sa", "śrávas-")} == {None}
+
+
+def test_suffix_accented_data_is_not_exact_for_root_accented_deh3tor():
+    ch = form_checker()
+    # dātā́ (vásūnām) is the suffix-accented type: root level, through the table and the PIIr. *dáHtā bridge
+    m = ch.match("pie-lex-deh3toxr", "sa", "Vedic", "dātā́", False)
+    assert m["level"] == "root" and any(p.startswith("formation:agent-noun") for p in m["path"])
+    assert ch.match("pie-lex-deh3toxr", "sa", "Vedic", "dātár-", True)["level"] == "root"
+    assert ch.match("pie-lex-deh3toxr", "sa", "Vedic", "dā́tā", False)["level"] == "exact"
+    assert ch.match("pie-lex-deh3toxr", "sa", "Vedic", "dātṛ", True)["level"] == "exact"    # unaccented
+    assert ch.match("pie-lex-deh3toxr", "grc", "Greek", "δώτωρ", True)["level"] == "exact"
+    m = ch.match("pie-lex-deh3toxr", "grc", "Greek", "δωτῆρες", False)
+    assert m is None or m["level"] != "exact"
+    # poetics-gifts-007: Gk δωτῆρες, Av. dātārō, Ved. dātā́. Avestan shows no accent; its branch's Vedic word
+    # shows the suffix-accented type, so Indo-Iranian is root level
+    refs = [ref("Greek", ["δωτήρ"], ["δωτῆρες"]), ref("Avestan", ["dātar-"], ["dātārō"]),
+            ref("Vedic", ["dātár-"], ["dātā́"])]
+    c = ch.check("pie-lex-deh3toxr", refs)
+    assert c["exact_branches"] == [] and c["root_branches"] == ["II"]
+    # Avestan alone is no evidence against the lexeme
+    assert ch.check("pie-lex-deh3toxr", [ref("Avestan", ["dātar-"], ["dātārō"])])["exact_branches"] == ["II"]
+    # poetics-gifts-008: δῶτορ is exact, dātā́ root level
+    c = ch.check("pie-lex-deh3toxr", [ref("Greek", ["δώτωρ"], ["δῶτορ"]), ref("Vedic", ["dātár-"], ["dātā́"])])
+    assert c["exact_branches"] == ["Gk"] and c["root_branches"] == ["II"] and c["level"] == "root"
+
+
+def test_janitar_is_not_exact_for_gjenh1tor():
+    # sky-father-011: Ved. janitā́ is the suffix-accented *ǵenh₁tér-; Lat. genitor shows the o-grade *-tor-
+    refs = [ref("Vedic", ["janitár-"], ["janitā́"]), ref("Latin", ["genitor"], ["genitor"])]
+    c = form_checker().check("pie-lex-gjenh1toxr", refs)
+    assert c["exact_branches"] == ["It"] and c["root_branches"] == ["II"] and c["level"] == "root"
+    # the same words are root level for the suffix-accented sibling, which no table maps
+    assert form_checker().check("pie-lex-gjenh1texr", refs)["exact_branches"] == []
