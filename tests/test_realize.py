@@ -703,3 +703,94 @@ def test_sweep_stressed_plural_genitive_fallback_is_labelled_enclitic():
         {"lex_id": "pie-lex-bhewgt-3", "role": "V", "verb": {"tense": "AOR"}}]}]}
     w = realize(p, _sweep_lx())["words"]
     assert [x["features"] for x in w if x["lex_id"] == "closed:personal/1"] == ["GEN.PL.ENCL"]
+
+
+# --- check_plan: doubled enclitics; plan_warnings: pronoun antecedents -----------------------------------------
+
+def test_two_enclitics_of_one_person_and_number_are_rejected():
+    """'nos nos', POSS moy + IO moy (t019, t020 reviews): one enclitic, or a stressed form."""
+    from pie.realize import check_plan
+    lx = _sweep_lx()
+
+    def plan(io_enclitic):
+        return {"english": "My brother gave me a horse.", "clauses": [{"slots": [
+            {"lex_id": "pie-lex-bhreh2texr", "role": "SUBJ"},
+            {"lex_id": "closed:personal/1", "role": "POSS", "head": 0, "enclitic": True},
+            {"lex_id": "closed:personal/1", "role": "IO", "enclitic": io_enclitic},
+            {"lex_id": HORSE, "role": "OBJ"},
+            {"lex_id": "pie-lex-deh3t", "role": "V", "verb": {"tense": "AOR"}}]}]}
+    errs = check_plan(plan(True), lx)
+    assert any("two enclitic 1SG pronouns" in e for e in errs)
+    assert not check_plan(plan(False), lx)               # stressed dative méǵʰye: fine
+
+
+def test_plural_genitive_fallback_counts_as_an_enclitic():
+    """POSS 1PL without "enclitic" falls back to nos (GEN.PL.ENCL); with an enclitic IO nos that is 'nos nos'."""
+    from pie.realize import check_plan
+    p = {"english": "Our brother gave us a horse.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-bhreh2texr", "role": "SUBJ"},
+        {"lex_id": "closed:personal/1", "role": "POSS", "head": 0, "num": "PL"},
+        {"lex_id": "closed:personal/1", "role": "IO", "num": "PL", "enclitic": True},
+        {"lex_id": HORSE, "role": "OBJ"},
+        {"lex_id": "pie-lex-deh3t", "role": "V", "verb": {"tense": "AOR"}}]}]}
+    assert any("two enclitic 1PL pronouns" in e for e in check_plan(p, _sweep_lx()))
+
+
+def test_one_possessive_enclitic_for_two_conjuncts_is_not_doubled():
+    """closed-class R8: the same cell twice is merged by the realizer (mélit nos h₃éngʷn̥-kʷe), not an error."""
+    from pie.realize import check_plan, realize
+    p = {"english": "You eat our honey and our butter.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-melit", "role": "OBJ"},
+        {"lex_id": "closed:personal/1", "role": "POSS", "num": "PL", "head": 0},
+        {"lex_id": "pie-lex-h3engwn", "role": "OBJ", "and": True},
+        {"lex_id": "closed:personal/1", "role": "POSS", "num": "PL", "head": 2},
+        {"lex_id": "pie-lex-h1edti", "role": "V", "verb": {"person": 2, "num": "SG"}}]}]}
+    lx = _sweep_lx()
+    assert not check_plan(p, lx)
+    assert realize(p, lx)["pie"].count("nos") == 1
+
+
+def _anaphor_plan(gender, num="SG"):
+    return {"english": "The sister came. Her brother saw her.", "clauses": [
+        {"slots": [{"lex_id": "pie-lex-swesoxr", "role": "SUBJ"}, {"lex_id": "pie-lex-gwemt", "role": "V",
+                                                                    "verb": {"tense": "AOR"}}]},
+        {"break": True, "slots": [{"lex_id": "pie-lex-bhreh2texr", "role": "SUBJ"},
+                                  {"lex_id": "closed:anaphoric_i", "role": "OBJ", "gender": gender, "num": num},
+                                  {"lex_id": "pie-lex-widet", "role": "V", "verb": {"tense": "AOR"}}]}]}
+
+
+def test_pronoun_with_no_referent_of_its_gender_warns():
+    """t016-t021 reviews: an anaphor's gender must follow its antecedent; a warning, not an error."""
+    from pie.realize import check_plan, plan_warnings
+    lx = _sweep_lx()
+    assert not plan_warnings(_anaphor_plan("f"), lx)       # sister (f) in the clause before
+    assert not plan_warnings(_anaphor_plan("m"), lx)       # brother (m) in the same clause
+    w = plan_warnings(_anaphor_plan("n"), lx)
+    assert len(w) == 1 and "clause 1 slot 1" in w[0] and "anaphoric_i OBJ n SG" in w[0]
+    assert plan_warnings(_anaphor_plan("f", "PL"), lx)     # no plural referent
+    assert not check_plan(_anaphor_plan("n"), lx)          # never a reject
+
+
+def test_pronoun_warning_window_and_carriers():
+    """Two clauses back; an earlier anaphor carries its referent on; conjoined singulars make a dual; a pronoun
+    MOD agrees with its head and is not checked; with nothing named in the window there is nothing to compare."""
+    from pie.realize import plan_warnings
+    lx = _sweep_lx()
+    went = {"lex_id": "pie-lex-h1eyti", "role": "V", "verb": {"tense": "PST"}}
+    so = lambda g, n="SG": {"lex_id": "closed:demonstrative_so", "role": "SUBJ", "gender": g, "num": n}
+    sister = {"lex_id": "pie-lex-swesoxr", "role": "SUBJ"}
+    # three clauses back: out of the window (the house, m., is in it)
+    home = {"lex_id": "pie-lex-doxm", "role": "LOC"}
+    assert plan_warnings({"english": "x", "clauses": [{"slots": [sister, went]}, {"slots": [went]},
+                                                      {"slots": [home, went]}, {"slots": [so("f"), went]}]}, lx)
+    # 'she … she': the first carries the sister on
+    assert not plan_warnings({"english": "x", "clauses": [{"slots": [sister, went]}, {"slots": [went]},
+                                                          {"slots": [so("f"), went]}, {"slots": [so("f"), went]}]}, lx)
+    # brother and sister → the two (m DU)
+    pair = {"english": "x", "clauses": [{"slots": [{"lex_id": "pie-lex-bhreh2texr", "role": "SUBJ"},
+                                                   {**sister, "and": True}, went]}, {"slots": [so("m", "DU"), went]}]}
+    assert not plan_warnings(pair, lx)
+    # 'that sister' (MOD) is not an anaphor; a lone 'he' in a one-clause plan has nothing to compare
+    assert not plan_warnings({"english": "x", "clauses": [{"slots": [
+        sister, {"lex_id": "closed:demonstrative_so", "role": "MOD", "head": 0}, went]}]}, lx)
+    assert not plan_warnings({"english": "He went.", "clauses": [{"slots": [so("m"), went]}]}, lx)

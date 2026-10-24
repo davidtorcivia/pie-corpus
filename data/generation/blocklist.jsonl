@@ -16,3 +16,18 @@
 {"lex_id": "pie-lex-ghrebh2t-2", "reason": "LIV² transcription lost the aspiration of *gʰrebʰh₂- 'seize' (gʰrébh₂t for gʰrébʰh₂t); tier3-t003 review"}
 {"lex_id": "pie-lex-treyes", "reason": "the adjective lexeme inflects wrongly (tríes); use closed:numerals/3 (Tier 2 report)"}
 {"lex_id": "pie-lex-knh2onks", "reason": "stem keeps the nominative -s in every case (gen. kn̥h₂ónksos); weakly attested (Gmc, Toch. 'bee'); mélit and médʰu cover 'honey' (t015 review)"}
+{"lex_id": "pie-lex-h2eh2ikjexr", "reason": "a perfect 3pl *h₂e-h₂iḱ-ḗr 'they own' (Goth. aigan) glossed 'to possess, own', not an -ḗr agent noun; the er-stem rule would make it a usable noun (engine sweep, r-n-stems.md defect 8)"}
+{"lex_id": "pie-lex-Hyos", "reason": "relative pronoun declined as a thematic noun (nominal NOM.PL -ōs, DAT.SG -ōy); use closed:relative_yo (engine sweep, thematic.md defect 11)"}
+{"lex_id": "pie-lex-kwos", "reason": "interrogative pronoun declined as a thematic noun; use closed:interrogative_kwo (engine sweep, thematic.md defect 11)"}
+{"lex_id": "pie-lex-h1enos", "reason": "distal pronoun declined as a thematic noun; use closed:deictic_eno (engine sweep, thematic.md defect 11)"}
+{"lex_id": "pie-lex-dwoh1", "reason": "duplicate of closed:numerals/2: the adjective table declines it as a thematic adjective (sg. dwós, pl. dwṓs) with f. dual dwéh₂h₁ for *dweh₂ih₁ (L&Y ch. 122; Ringe 2017 p. 53); 'two' is a dual (engine sweep, thematic.md defect 12, closed-class-compounds.md L1)"}
+{"lex_id": "pie-lex-ih1enti", "reason": "lemma is a 3pl form (-énti); the shape rule parses it as a 3sg stem ih₁én- (engine sweep, athematic-verbs.md S5)"}
+{"lex_id": "pie-lex-minwenti", "reason": "lemma is a 3pl form of minéwti (engine sweep, athematic-verbs.md S5)"}
+{"lex_id": "pie-lex-stringenti", "reason": "lemma is a 3pl form; stem stringén- is spurious (engine sweep, athematic-verbs.md S5)"}
+{"lex_id": "pie-lex-plenh1onti", "reason": "lemma is a participle/3pl form; stem plénh₁ón- is spurious (engine sweep, athematic-verbs.md S5)"}
+{"lex_id": "pie-lex-gowh2dhyonti", "reason": "lemma is a 3pl form; stem gowh₂dʰyón- is spurious (engine sweep, athematic-verbs.md S5)"}
+{"lex_id": "pie-lex-meyh1wti", "reason": "gloss-less Wiktionary page; the shape rule yields the odd weak stem mih₁w- (engine sweep, athematic-verbs.md S5)"}
+{"lex_id": "pie-lex-weh1yti", "reason": "gloss-less Wiktionary page; the shape rule yields the odd weak stem uh₁y- (engine sweep, athematic-verbs.md S5)"}
+{"lex_id": "pie-lex-h1eh1sti", "reason": "gloss-less Wiktionary page; the shape rule yields weak h₁h₁s- where the stem is non-ablauting *h₁ḗs- (L&Y §4.3.1 after Melchert, h₁ḗs-ti / h₁és-n̥ti; engine sweep, athematic-verbs.md S5)"}
+{"lex_id": "pie-lex-kwetwores", "reason": "the adjective lexeme makes sg. kʷetwṓr and neut. pl. kʷetwṓ (Ringe 2017 p. 54 kʷetwṓr) and bypasses the numeral head-number rule; use closed:numerals/4 (engine sweep, closed-class-compounds.md L1)"}
+{"lex_id": "pie-lex-sexm", "reason": "fem. sih₂ drops the m (Ringe 2017 p. 52 sémih₂, Fortson §7.16 *sm-ih₂) and the adjective module builds a plural of 'one'; blocked until hand-tabled (engine sweep, closed-class-compounds.md L2)"}

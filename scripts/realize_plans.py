@@ -4,7 +4,8 @@
   uv run python -I scripts/realize_plans.py data/generation/plans/pilot-fable.jsonl --batch pilot-fable
 
 Plans that fail the checker go to data/generation/rejects/<batch>.jsonl with
-their errors. Realized records go to corpus/tier3/<batch>.jsonl.
+their errors. Realized records go to corpus/tier3/<batch>.jsonl. Warnings (pie.realize.plan_warnings)
+are printed as WARN lines and counted in the summary; they never reject a plan.
 """
 
 import argparse
@@ -16,7 +17,7 @@ import sys
 from pathlib import Path
 
 from pie.meter import measure
-from pie.realize import Lexicon, check_plan, realize
+from pie.realize import Lexicon, check_plan, plan_warnings, realize
 from pie.translit import to_ascii
 from pie.compound import member_ids
 from pie.validate import index_plan_compounds, load_index, validate_text
@@ -83,7 +84,7 @@ def main() -> int:
                          text=True).stdout.strip()
     lx, ix = Lexicon.load(), load_index()
     plans = [json.loads(x) for x in args.plans.read_text("utf-8").splitlines() if x.strip()]
-    records, rejects, stats = [], [], collections.Counter()
+    records, rejects, stats, warnings = [], [], collections.Counter(), []
     for n, p in enumerate(plans):
         plan = p.get("plan", p)
         errs = check_plan(plan, lx)
@@ -91,6 +92,7 @@ def main() -> int:
             rejects.append({"plan_id": p.get("plan_id", n), "errors": errs, "plan": plan})
             stats["rejected"] += 1
             continue
+        warnings += [(p.get("plan_id", n), w) for w in plan_warnings(plan, lx)]   # printed, never a reject
         r = realize(plan, lx)
         index_plan_compounds(ix, plan)          # compounds are open-ended: indexed per plan
         v = validate_text(r["pie"], ix)
@@ -144,7 +146,7 @@ def main() -> int:
                "words_per_sentence": round(sum(len(r["pie"].split()) for r in records) / n, 2),
                "words_per_record": round(sum(len(r["pie"].split()) for r in records) / n, 2),
                "meter_fit": _meter_summary(records),
-               "formula_uses": _formula_uses(records)}
+               "formula_uses": _formula_uses(records), "warnings": len(warnings)}
     # Gates (docs/STATUS.md question 5): the batch passes only on numbers
     gates = {"reject_rate<=0.10": summary["reject_rate"] <= 0.10,
              f"max_lexeme_uses<={lexeme_cap(n, summary['tokens'])}":
@@ -162,6 +164,8 @@ def main() -> int:
     print(json.dumps(summary, ensure_ascii=False))
     for r in rejects[:10]:
         print("  REJECT", r["plan_id"], r["errors"][:3])
+    for pid, w in warnings:
+        print("  WARN", pid, w)
     return 0
 
 

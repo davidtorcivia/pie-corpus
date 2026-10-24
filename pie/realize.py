@@ -29,7 +29,8 @@ Plan (one sentence):
                 "person": null | 1 | 2 | 3,       # person and number default to the subject's (3SG without one);
                 "num": null | "SG|DU|PL"}}]}]}    # set them for pro-drop ("let us go": person 1, num PL, no SUBJ)
 
-`check_plan` lists every problem; `realize` assumes a checked plan.
+`check_plan` lists every problem; `realize` assumes a checked plan. `plan_warnings` lists likely problems that
+do not block realization (a 3rd-person pronoun with no referent of its gender and number nearby).
 
 Clause types. A clause has "type": "verbal" (the default, above: exactly one V slot), "nominal" or "np".
 The realizer never inserts a copula: a clause without a V slot is realized without one.
@@ -454,10 +455,104 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                 errs.append(f"{where}: MOD needs an adjective, {lid} is a {fam}")
         if not errs:
             try:
-                realize_clause(cl, lx)
+                ws = realize_clause(cl, lx)
             except KeyError as e:
                 errs.append(f"clause {ci}: form not generated: {e}")
+            else:
+                errs += _doubled_enclitics(ci, ws)
     return errs
+
+
+def _doubled_enclitics(ci: int, words: list[Word]) -> list[str]:
+    """Two enclitic personal pronouns of the same person and number in different cases ('nos nos', POSS moy +
+    IO moy) stand side by side in the Wackernagel slot (t019, t020 reviews). Counts what the realizer
+    produces, including the GEN.PL fallback to the enclitic. The same cell twice (one possessive enclitic
+    for two conjuncts) is merged by realize_clause and is fine."""
+    groups: dict = {}
+    for w in words:
+        if w.lex_id.startswith("closed:personal/") and w.features.endswith(".ENCL"):
+            groups.setdefault((w.lex_id, w.features.split(".")[1]), []).append(w)
+    errs = []
+    for (lid, num), ws in groups.items():
+        feats = list(dict.fromkeys(w.features for w in ws))
+        if len(feats) > 1:
+            who = lid.split("/")[1]
+            errs.append(f"clause {ci}: two enclitic {who}{num} pronouns in one clause "
+                        f"({', '.join(f'{w.form} {w.features}' for w in ws)}): use one (an IO 'to me' already "
+                        f"says whose; drop the POSS), or a stressed form (\"enclitic\": false)")
+    return errs
+
+
+# 3rd-person pronouns whose gender and number come from an antecedent, not from a head
+ANAPHORS = ("closed:demonstrative_so", "closed:anaphoric_i", "closed:deictic_ki", "closed:deictic_eno")
+# pronouns that introduce a referent an anaphor can take up ('whoever …, to him'; 'who …? he …')
+REFERENT_PRONOUNS = ("closed:relative_yo", "closed:indefinite_kwi", "closed:interrogative_kwi", "closed:interrogative_kwo")
+_NUMERAL_NUM = {"2": "DU", "3": "PL", "4": "PL", "indeclinable": "PL"}
+
+
+def _referents(cl: dict, lx: Lexicon, anaphors: bool = True) -> set[tuple[str, str]]:
+    """(gender, number) of every referent a clause names: a noun, an adjective or bahuvrihi used as a noun with
+    a gender, a relative, indefinite or interrogative pronoun ('whoever gives …, his name'), an anaphor on
+    its own (it carries its referent on to the next clauses: 'he … he'; not counted with anaphors=False), and a group of conjoined nouns (two singulars dual, else
+    plural; masculine if any member is). A numeral MOD fixes its head's number, as in realize_clause."""
+    slots = cl.get("slots", [])
+    out, group = set(), {}
+    for i, s in enumerate(slots):
+        lid, role = s.get("lex_id", ""), s.get("role")
+        if role in ("V", "ADV", "MOD") or s.get("participle") is not None:
+            continue
+        if lid.startswith("closed:"):
+            if not lid.startswith(ANAPHORS + REFERENT_PRONOUNS) or (lid.startswith(ANAPHORS) and not anaphors):
+                continue
+            g = s.get("gender") if s.get("gender") in ("m", "f", "n") else "m"
+        else:
+            try:
+                fam = _family(s, lx)
+            except KeyError:
+                continue
+            if fam == "verb" or (fam == "adj" and not s.get("gender")):
+                continue
+            g = _slot_gender(s, lx)
+        num = s.get("num", "SG")
+        for m in slots:
+            if m.get("role") == "MOD" and m.get("head") == i and m.get("lex_id", "").startswith("closed:numerals/"):
+                num = _NUMERAL_NUM.get(m["lex_id"].split("/")[1], num)
+        out.add((g, num))
+        if role != "APPOS":
+            group.setdefault((role, s.get("head")), []).append((g, num, bool(s.get("and"))))
+    for ms in group.values():
+        if len(ms) > 1 and any(a for _, _, a in ms):
+            gs = {g for g, _, _ in ms}
+            g = "m" if "m" in gs else gs.pop() if len(gs) == 1 else "m"
+            out.add((g, "DU" if len(ms) == 2 and all(n == "SG" for _, n, _ in ms) else "PL"))
+    return out
+
+
+def plan_warnings(plan: dict, lx: Lexicon | None = None) -> list[str]:
+    """Likely problems that do not stop realization (printed by realize_plans.py, never a reject).
+
+    A 3rd-person pronoun (so/séh₂/tód, h₁ís/h₁íh₂/h₁íd, the deictics) used on its own, i.e. not a MOD or
+    APPOS of a noun, whose gender and number match no referent (_referents: a noun, a noun-used adjective with a
+    gender, a relative or indefinite pronoun, a conjoined group, an anaphor of an earlier clause) in its own
+    clause or the two before it: a likely wrong antecedent gender (t016-t021 reviews: fem. h₁íh₂ for masc.
+    dyḗws, fem. h₁íh₂m̥ for the neuter silver). A neuter 'that' for a whole event, a referent named further
+    back, and a sense agreement ('the flock … they') also warn: check the English. With no referent at all in
+    the window (a one-sentence plan's 'he') there is nothing to compare, so no warning."""
+    lx = lx or Lexicon.load()
+    clauses = plan.get("clauses", [])
+    refs = [_referents(cl, lx) for cl in clauses]
+    out = []
+    for ci, cl in enumerate(clauses):
+        # an anaphor in an earlier clause carries its referent on; one in the same clause does not ('he saw him')
+        near = set().union(*refs[max(0, ci - 2):ci], _referents(cl, lx, anaphors=False))
+        for si, s in enumerate(cl.get("slots", [])):
+            if not s.get("lex_id", "").startswith(ANAPHORS) or s.get("role") in ("MOD", "APPOS"):
+                continue
+            g, n = s.get("gender") if s.get("gender") in ("m", "f", "n") else "m", s.get("num", "SG")
+            if near and (g, n) not in near:     # nothing named nearby: the referent is outside the plan
+                out.append(f"clause {ci} slot {si}: {s['lex_id'].split(':')[1]} {s.get('role')} {g} {n} matches no "
+                           f"referent of that gender and number in this clause or the two before: check its antecedent")
+    return out
 
 
 def _check_clause_type(ci: int, cl: dict, ctype: str, slots: list, verbs: list) -> list[str]:
