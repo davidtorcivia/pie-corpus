@@ -255,12 +255,14 @@ def _default_licence(corpus):
 
 
 def _table(corpus: str) -> dict:
+    """A round-3 mapping table, with the mapping errata applied (idempotent on regenerated tables)."""
+    from pie import formula_search_multi as fm
     out = {}
     for line in (MAPPING_DIR / f"{corpus}.jsonl").read_text("utf-8").splitlines():
         if line.strip():
             r = json.loads(line)
             out[r["lemma"]] = tuple(r["lex_id"])
-    return out
+    return fm.apply_table_overrides(corpus, out)
 
 
 def _sga_surfaces(files) -> tuple[list[str], dict]:
@@ -335,6 +337,7 @@ def load_units(root: Path = ROOT, log=print) -> dict[str, list[Unit]]:
     for c, toks, lang, r1 in (("rv", rv, "sa", fs.build_rv_mapping), ("hom", hom, "grc", fs.build_homer_mapping),
                               ("lat", lat, "la", fs.build_latin_mapping)):
         m = fs.build_kaikki_mapping(lang, lex, toks, r1(lex, toks), root=root, pseudo=True)
+        m = fm.apply_lemma_overrides(c, m, gmap, root=root)      # mapping errata
         maps[c] = {k: tuple(v) for k, v in m.lemma_lex.items()}
     out["rv"] = _units_from_tokens("rv", rv, "pada", lambda t: t.units["hymn"], [t.surface for t in rv], maps["rv"],
                                    _default_licence("rv"))
@@ -398,6 +401,7 @@ def load_units(root: Path = ROOT, log=print) -> dict[str, list[Unit]]:
         assert len(surf) == len(toks)
         table = _table(c)
         _, recs = fm.multi_lemma_mapping(toks, lm[c], gmap)
+        recs = fm.apply_rec_overrides(c, recs)
         same = {k: tuple(sorted(v.ids)) for k, v in recs.items()} == {k: tuple(sorted(v)) for k, v in table.items()}
         log(f"{c}: lemmatizer mapping {'matches' if same else 'DIFFERS FROM'} the round-3 table")
         out[c] = _units_from_tokens(c, toks, unit, lambda t: t.units["book"], surf, table, _default_licence(c))
