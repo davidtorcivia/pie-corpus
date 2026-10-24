@@ -435,3 +435,8 @@ def test_boukolos_scope_is_one_rule_in_every_paradigm(lx):
     assert conjugate(VerbSpec("linékʷ", "linkʷ"), "handbook")["MID.PRS.1DU"][0].startswith("linkw")
     # the Wiktionary convention keeps the module's full scope
     assert decline(NounSpec("pérkʷu", None, "proterokinetic"), "wiktionary", alternatives=False)["NOM.SG"] == ["pérkus"]
+
+
+def test_i_stem_locative_keeps_a_suffix_accent():
+    """Accent invariant (fix/accent): the accent of a suffix-accented i-stem moves to the full-grade -ēy/-ey."""
+    assert decline(NounSpec("trí", "tri", "amphikinetic"), "handbook")["LOC.SG"][:2] == ["trḗy", "tréy"]

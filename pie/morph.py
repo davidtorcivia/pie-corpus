@@ -535,8 +535,10 @@ def _locative(spec: NounSpec, strong: list[Seg], weak: list[Seg], hb: bool = Tru
             if not hb:
                 continue                               # Wiktionary: bare -i (h₂éwi)
             # i-stem: *-ēy (Fortson, Ringe; Ved. agnā́, Gk πόληι), then -ey; bare -i stays as an alternative
-            full = s[:-1] + [Seg("e", "V"), Seg("y", "R")]
-            out[-1:] = [render(lengthen_last_vowel(s[:-1] + [Seg("e", "V")]) + [Seg("y", "R")]), render(full),
+            # (an accent on the syllabic i moves to the full-grade vowel: trí- → trḗy, not accentless trēy)
+            e = Seg("e", "V", acc=s[-1].acc)
+            full = s[:-1] + [e, Seg("y", "R")]
+            out[-1:] = [render(lengthen_last_vowel(s[:-1] + [e]) + [Seg("y", "R")]), render(full),
                         render(s)]
             continue
         if len(s) >= 2 and s[-1].base == "y" and not s[-1].syl and s[-2].base == "e" and s[-2].acc:
