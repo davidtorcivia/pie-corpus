@@ -1221,6 +1221,13 @@ def load_overrides(root: Path = ROOT) -> dict:
     p = Path(root) / OVERRIDES
     if p not in _OVR_CACHE:
         d = json.loads(p.read_text("utf-8")) if p.exists() else {}
+        # per-language override files (one agent per language edits its own file):
+        # data/research/formulas/mapping-overrides/<name>.json with the same {"lemma": [...], "form": [...]}
+        d = {"lemma": list(d.get("lemma", [])), "form": list(d.get("form", []))}
+        for f in sorted((Path(root) / OVERRIDES.replace(".json", "")).glob("*.json")):
+            x = json.loads(f.read_text("utf-8"))
+            d["lemma"] += x.get("lemma", [])
+            d["form"] += x.get("form", [])
         lem: dict = collections.defaultdict(dict)
         for r in d.get("lemma", []):
             lem[r["corpus"]][r["lemma"]] = (frozenset(r["lex_id"]), r)
