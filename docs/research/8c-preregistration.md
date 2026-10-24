@@ -90,3 +90,42 @@ Builder: scripts/build_8c_stageC.py (Stage B's retrieval, bundles, decoys and sl
 - **Review and novelty:** as in Stage B (blind reviewer over shuffled claims without slab, bundle-label or confidence; then the novelty check of accepted claims).
 - **Celtic wave read (2026-10-24):** 28 readers, 4,765 bundles read, 16 claims (4 medium, 12 low, 0 high). Reader usage: 201M input tokens processed (192M from cache, 9.4M cache writes), 0.49M output.
 - **Anchoring check (recorded before review and before unblinding):** the rule needs ≥ 2 anchor passages from different branches. One claim (RC028, medium, AVP 4.38 ~ Avestan VS 18.36) has anchors from Indo-Iranian only (Vedic and Avestan are one branch in the 8c branch list). It is reviewed like every other claim but does not count in measure (i) or (ii), and is reported separately. Its pivot (Old Norse) plays no part in it, so it would not count in (i) in any case.
+
+## Stage C-S: stratified rebuild (recorded 2026-10-24, before anything is built or read)
+- **Decision (David, 2026-10-24):** "Go ahead and rebuild c". Principle: "we're trying to uncover parallels and not randomly sample language". Every bundle is built by targeted pairing of comparable texts; randomness stays only in the embedded decoys (the false-discovery control). Design note: docs/research/8c-next-design.md.
+- **Why:** in the Celtic wave, 60% of partner slots were Greek prose after 300 BC (Galen, Plutarch, Josephus) and 53% of Celtic pivots were witnesses after 1250; verse was 3% of Celtic pivots (docs/research/8c-results.md).
+- **What stays as in Stage C:** the loaders, mappings and unit definitions; retrieval by shared root groups (≥ 2 matched, one outside the 50 most frequent; inverse-frequency score; top 6; merge cap 12); 20% embedded decoys; one reader per slab; anchoring rule; blind review; measures (i) Celtic-pivot bundles and (ii) all bundles; permutation test as before.
+- **What changes:**
+  1. **Layer filter (each tradition's earliest, least derivative layer, per genre).** Only units in the layers below are indexed, as pivots and as partners; inverse frequency is computed over the indexed units. Everything else (translations, Christian instruction and liturgy, learned and scientific prose, annals, registers, letters, late Greek prose) is left out.
+  2. **Genre classes.** Every kept unit gets one or more of NARR (myth, epic, saga, heroic and legendary history), CULT (hymn, prayer, praise, charm, incantation, ritual), LAW (law, treaty, oath, instruction), WISDOM (gnomic, didactic) and LYR (lyric, lament, folk song). A partner must share at least one class with its pivot.
+  3. **Per-corpus cap.** At most 2 of a pivot's 6 partners come from any one corpus.
+  4. **Decoys** are drawn as before (same corpus as the real partner, matched on content-word count and mean inverse frequency, no beyond-chance root overlap with the pivot) and also from the same layer and with a class shared with the pivot.
+  5. **Floor:** Stage B's size rule (0.90 quantile of the best-partner score) over the Stage C-S pivots, frozen before any bundle is built.
+- **Layers and classes:**
+
+  | Corpus | Kept (classes) | Left out |
+  |---|---|---|
+  | Celtic (pivots) | units with witness date midpoint ≤ 1250: saga, history, Welsh prose (Mabinogi), dindshenchas (NARR); verse (CULT, LYR, NARR); law (LAW); wisdom (WISDOM, LAW) | religious, glosses, annals, genealogy, adaptations, medical and scientific, scholarship, other; everything after 1250 |
+  | Old Norse, Menota (pivot) | Íslendinga sögur, Íslendingabók, kings' sagas (Heimskringla, Fagrskinna, Óláfs saga incl. the legendary, Sverris, Hákonar, Haralds), Þorgils saga skarða, Þiðriks saga, Codex Wormianus (Snorra Edda), Vǫluspá (NARR); Landslǫg, Grágás, Frostathing law, Bǿjarlǫg, Kristinréttir (LAW) | homilies, Gregory, saints' and bishops' sagas, translated romances and Alexanders saga, Strengleikar, Stjórn, Konungs skuggsjá, Rimbegla, medical, Benedikts regla, Swedish and Danish religious texts |
+  | IcePaHC (pivot) | nar-sag and nar-his texts (NARR) except Alexanders saga; Grágás (LAW) | religious, scientific |
+  | Old High German, ReA (pivot) | Hildebrandslied, Ludwigslied, De Heinrico, Muspilli, Wessobrunner Gebet (NARR); charms and blessings (Merseburg, Segen, Contra …, Ad equum …) (CULT); Sprichwörter (WISDOM); Lex Salica fragments, Hammelburger Markbeschreibung, Priestereid (LAW); Hirsch und Hinde (LYR) | Otfrid, Notker, Tatian, Isidor, Benediktinerregel, Williram, confessions, creeds, Paternoster, prayers, baptismal vows, sermons, other minor texts |
+  | Old Saxon, ReA (pivot) | charms (Contra vermes, Trierer Blutsegen, Spurihalz) (CULT); Abecedarium Nordmannicum (WISDOM) | Heliand, Genesis, registers, confessions, vows, homilies |
+  | Vuk, byliny, dainos (pivots; late oral) | Vuk (NARR, LYR); byliny (NARR); dainos (LYR) | (none) |
+  | Classical Armenian, DMHP (pivot) | Movsēs Xorenacʿi, Pʿawstos Buzand, Agatʿangełos, Ełišē, Łazar Pʿarpecʿi (NARR) | Eznik, Koriwn, homilies, canons, letters, other theological works |
+  | Tocharian A, Old Albanian (pivots) | none | all (Buddhist translation literature; Buzuku's missal, Bogdani's theology) |
+  | Rigveda | all (CULT, NARR) | |
+  | Atharvaveda | all (CULT) | |
+  | Avesta | Yašts (CULT, NARR); Vīdēvdād (LAW, CULT); the rest (CULT) | |
+  | Homer | all (NARR) | |
+  | Greek, GLAUx | texts with ENDDATE ≤ −400 and genre Epic poetry (NARR; Hesiod's Works and Days also WISDOM; the Homeric Hymns also CULT), Lyric poetry (LYR, CULT), Tragedy (NARR, LYR), History (NARR), Scientific poetry (WISDOM) | everything else, incl. all texts after 400 BC, medicine, philosophy, oratory, comedy |
+  | Sanskrit epic (DCS) | Mahābhārata (NARR; books 12-13 WISDOM, LAW), Rāmāyaṇa (NARR) | |
+  | Hittite, TLHdig | CTH 1-40 historical (NARR); 41-147 treaties (LAW); 251-275 instructions (LAW, WISDOM); 291-299 laws (LAW); 300-339 Anatolian myths (NARR, CULT); 370-389 prayers (CULT); 390-500 rituals (CULT) | letters and land grants; Hurrian and Mesopotamian literature (CTH 340-369: adaptations from non-IE); cult inventories, omens, oracles, vows, festival descriptions (CTH 501-720); fragments and other languages (CTH ≥ 721) |
+  | Edda | all poems (NARR, WISDOM) except Sólarljóð (Christian) | Sólarljóð |
+  | Old English poetry | Beowulf, Finnsburh, Maldon, Brunanburh and the Chronicle poems (NARR); Wanderer, Seafarer, Ruin, Wife's Lament, Husband's Message (LYR); Maxims, Fortunes and Gifts of Men, the Rune Poem, Precepts (WISDOM) | biblical and religious poems, Psalms, Solomon and Saturn, riddles, Menologium |
+  | Latin, LASLA | Cato De agri cultura (CULT); Lucretius (WISDOM); Catullus (LYR); Cato Origines (NARR) | Plautus (adapted Greek New Comedy), Cato's speeches and fragments |
+  | Umbrian | all (CULT) | |
+  | Latvian dainas | all (LYR, CULT) | |
+  | Old Russian, TOROT | Igor Tale and the chronicles (NARR); Russkaja Pravda, treaties and statutes (LAW) | birchbark letters, colophons, other charters |
+- **Outputs:** data/research/8c/stageCS/ (params, assignment, loci-only slabs, stats; slabs with text gitignored), key data/audits/keys/8c-stageCS-key.json; slab ids SS-, bundle ids BS-, readers RS001…. Builder scripts/build_8c_stageCS.py.
+- **The Celtic wave (RC001-RC028)** stays reported as it is. Stage C-S reads Celtic pivots again against new partners, as a new pre-registered run; the 159 unread Stage C slabs are not read.
+- **Reading** starts only after David approves the build (size and cost).
