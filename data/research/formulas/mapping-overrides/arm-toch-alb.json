@@ -1,0 +1,119 @@
+{
+ "lemma": [
+  {
+   "corpus": "xcl",
+   "lemma": "ownim",
+   "lex_id": [
+    "pie-root-h1ep-grab"
+   ],
+   "erratum": "ownim 'have, hold' mapped to *sesónh₂e (*senh₂- 'obtain') by a lexicon reflex",
+   "note": "Martirosyan EDAIL s.v. unim, p. 636 (file p0650): connected with Skt. āpnóti, Hitt. ēpzi, Lat. apīscor; *h₁ep- (*h₁op-ne-)"
+  },
+  {
+   "corpus": "xcl",
+   "lemma": "Tēr",
+   "lex_id": [
+    "pie-lex-doxm",
+    "pie-lex-h2nexr"
+   ],
+   "erratum": "tēr 'lord' mapped to *dṓm only (lexicon reflex)",
+   "note": "Martirosyan EDAIL s.v. ayr, p. 61 (file p0075): tēr (GDSg teaṙn) < *ti-ayr 'master'; ayr 'man' < *h₂nḗr; ti- 'of the house' < *dém-s (kaikki տէր): both members"
+  },
+  {
+   "corpus": "xcl",
+   "lemma": "tikin",
+   "lex_id": [
+    "pie-lex-doxm",
+    "pie-lex-gwexn"
+   ],
+   "erratum": "tikin 'lady' mapped to *dṓm only",
+   "note": "compound ti- 'of the house' (*dém-s, as in tēr) + kin 'woman' (*gʷḗn; Martirosyan EDAIL s.v. kin, p. 362, file p0376); kaikki տիկին"
+  },
+  {
+   "corpus": "xcl",
+   "lemma": "bowr̄n",
+   "lex_id": [],
+   "erratum": "buṙn 'fist' mapped to *bʰṓr 'thief'",
+   "note": "Martirosyan EDAIL s.v. buṙn, p. 194 (file p0208): Ačaṙyan equates it with buṙn 'hand, fist' and accepts none of the etymologies; the Skt. bhū́rṇi- comparison is not *bʰṓr"
+  },
+  {
+   "corpus": "xcl",
+   "lemma": "mard",
+   "lex_id": [
+    "pie-lex-mrtos"
+   ],
+   "erratum": "mard 'man' mapped to *mr̥tós + *smr̥tós (lemma union)",
+   "note": "Martirosyan EDAIL s.v. mard, p. 452 (file p0466): from *mr̥-tó- 'mortal' (Gr. βροτός); *smr̥tós is a different etymon"
+  },
+  {
+   "corpus": "xcl",
+   "lemma": "ayg",
+   "lex_id": [
+    "pie-lex-h2ewsoxs"
+   ],
+   "erratum": "ayg 'morning' mapped to *h₂éwsōs + *h₁eyHw- 'yew' (the latter belongs to aygi 'vine')",
+   "note": "Martirosyan EDAIL s.v. ayg, p. 54 (file p0068): ayg 'morning, dawn' < *h₂(e)us-; aygi 'vine' (p. 55-56, file p0069-0070) is *h₁eiH-u̯eh₂-"
+  },
+  {
+   "corpus": "xcl",
+   "lemma": "gam",
+   "lex_id": [
+    "pie-root-weh2dh-go"
+   ],
+   "erratum": "gam 'come' mapped to *gʷem- 'come' (root template)",
+   "note": "Martirosyan EDAIL s.v. gam, p. 196 (file p0210): usually interpreted as athematic *u̯eh₂(-dʰ)-mi, cf. Lat. vādere, OHG watan; not *gʷem-"
+  },
+  {
+   "corpus": "xcl",
+   "lemma": "mardik",
+   "lex_id": [
+    "pie-lex-mrtos"
+   ],
+   "erratum": "DMHP mardik 'men' (plural of mard) mapped to *mr̥tós + *smr̥tós",
+   "note": "Martirosyan EDAIL s.v. mard, p. 452 (file p0466): pl. mardik; from *mr̥-tó- 'mortal'"
+  },
+  {
+   "corpus": "xcl",
+   "lemma": "haw",
+   "lex_id": [
+    "pie-lex-h2ewis"
+   ],
+   "erratum": "haw mapped to *h₂éwis 'bird' + *h₂éwh₂os 'grandfather' (two homographs, one lemma)",
+   "note": "Martirosyan EDAIL s.v. haw1 'bird', p. 398 (file p0412): Lat. avis; haw2 'grandfather' (p. 399, file p0413) is the rarer word in the 5th-c. corpus"
+  },
+  {
+   "corpus": "xcl",
+   "lemma": "aregakn",
+   "lex_id": [
+    "pie-root-h2rew-shine",
+    "pie-lex-h3okws"
+   ],
+   "erratum": "aregakn 'sun' mapped to *h₂rew- only",
+   "note": "compound areg- 'sun' + akn 'eye': Martirosyan EDAIL s.v. areg, p. 136 (file p0150), *h₂reu-i-; s.v. akn, p. 22 (file p0036), *h₃(o)kʷ-"
+  },
+  {
+   "corpus": "xcl",
+   "lemma": "hawt",
+   "lex_id": [],
+   "erratum": "hawt (hōt) 'flock' mapped to *peh₂tew- (*peh₂- 'protect')",
+   "note": "Martirosyan EDAIL s.v. hawt, p. 400 (file p0414): the usual *peh₂- derivation has obvious formal problems; he prefers Xačʻatryan's derivation from hatanem 'to cut'"
+  },
+  {
+   "corpus": "xcl",
+   "lemma": "ełanim",
+   "lex_id": [],
+   "erratum": "ełanim 'become' mapped to *kʷelh₁- by a lexicon reflex",
+   "note": "kaikki եղանիմ: aorist stem eł- of linim + -an-, the origin of eł- uncertain; no Martirosyan entry"
+  },
+  {
+   "corpus": "sqo",
+   "lemma": "kam",
+   "lex_id": [
+    "pie-root-kap-seize"
+   ],
+   "erratum": "kam 'have' mapped to *pótis (the suppletive past stem)",
+   "note": "kaikki kam: present, imperfect and subjunctive from Proto-Albanian *kapmi < PIE *kap- 'seize' (the forms in the texts are mostly present/imperfect: ka, kanë, kish); no Albanian dictionary local"
+  }
+ ],
+ "form": []
+}
