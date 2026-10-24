@@ -322,10 +322,10 @@
    "units": 12789,
    "tokens": 42404,
    "content_words": 26349,
-   "content_words_mapped": 14378,
-   "indexed_units": 7964,
-   "indexed_units_below_30pct_mapped": 144,
-   "mapped_share": 0.5457,
+   "content_words_mapped": 14292,
+   "indexed_units": 7947,
+   "indexed_units_below_30pct_mapped": 148,
+   "mapped_share": 0.5424,
    "licence_tags": {
     "pd": 12789
    }
@@ -337,10 +337,10 @@
    "units": 15627,
    "tokens": 96710,
    "content_words": 57108,
-   "content_words_mapped": 24169,
-   "indexed_units": 12724,
-   "indexed_units_below_30pct_mapped": 2321,
-   "mapped_share": 0.4232,
+   "content_words_mapped": 23867,
+   "indexed_units": 12651,
+   "indexed_units_below_30pct_mapped": 2369,
+   "mapped_share": 0.4179,
    "licence_tags": {
     "pd": 15627
    }
@@ -807,41 +807,41 @@
   }
  },
  "index": {
-  "units_with_roots": 1770356,
-  "root_groups": 3372,
+  "units_with_roots": 1770266,
+  "root_groups": 3370,
   "stageC_pivots": 614988
  },
  "pivots_below_30pct_mapped": 191995,
- "pivots_below_30pct_mapped_with_partner": 59391,
- "pivots_below_30pct_mapped_in_bundles": 962,
- "pivots_with_any_partner": 279685,
- "pivots_above_floor": 27975,
- "bundles": 24754,
- "bundles_merged_into": 1695,
+ "pivots_below_30pct_mapped_with_partner": 59389,
+ "pivots_below_30pct_mapped_in_bundles": 961,
+ "pivots_with_any_partner": 279671,
+ "pivots_above_floor": 27959,
+ "bundles": 24730,
+ "bundles_merged_into": 1697,
  "bundle_size": {
   "2": 11104,
-  "3": 4444,
-  "4": 2345,
-  "5": 1534,
-  "6": 1004,
-  "7": 3863,
-  "8": 111,
+  "3": 4448,
+  "4": 2343,
+  "5": 1531,
+  "6": 999,
+  "7": 3845,
+  "8": 110,
   "9": 68,
-  "10": 56,
-  "11": 38,
-  "12": 187
+  "10": 57,
+  "11": 37,
+  "12": 188
  },
- "decoy_bundles": 4951,
- "real_bundles": 19803,
+ "decoy_bundles": 4946,
+ "real_bundles": 19784,
  "decoy_share": 0.2,
  "pivot_groups": {
   "celtic": {
-   "bundles": 4686,
+   "bundles": 4687,
    "decoys": 938
   },
   "other": {
-   "bundles": 20068,
-   "decoys": 4013
+   "bundles": 20043,
+   "decoys": 4008
   }
  },
  "bundles_by_pivot_corpus": {
@@ -854,39 +854,39 @@
    "decoys": 59
   },
   "mga": {
-   "bundles": 1467,
-   "decoys": 293
+   "bundles": 1468,
+   "decoys": 294
   },
   "cy": {
    "bundles": 146,
-   "decoys": 30
+   "decoys": 29
   },
   "ga-early": {
    "bundles": 2736,
    "decoys": 548
   },
   "menota": {
-   "bundles": 11296,
-   "decoys": 2258
+   "bundles": 11269,
+   "decoys": 2253
   },
   "icepahc": {
    "bundles": 1501,
-   "decoys": 300
+   "decoys": 301
   },
   "rea-goh": {
    "bundles": 4426,
-   "decoys": 886
+   "decoys": 884
   },
   "rea-osx": {
    "bundles": 238,
-   "decoys": 47
+   "decoys": 48
   },
   "vuk": {
    "bundles": 179,
    "decoys": 36
   },
   "byliny": {
-   "bundles": 273,
+   "bundles": 275,
    "decoys": 55
   },
   "dainos": {
@@ -899,23 +899,23 @@
   },
   "xto": {
    "bundles": 11,
-   "decoys": 2
+   "decoys": 3
   },
   "sqo": {
    "bundles": 23,
-   "decoys": 5
+   "decoys": 4
   }
  },
- "slabs": 188,
+ "slabs": 187,
  "slab_tokens": {
   "SC-e13a": {
-   "bundles": 167,
-   "decoy_share": 0.198,
-   "tokens": 700124,
+   "bundles": 166,
+   "decoy_share": 0.199,
+   "tokens": 688930,
    "licence_tags": {
     "cc-by": 49,
-    "cc-by-sa": 282,
-    "consent-train": 148,
+    "cc-by-sa": 279,
+    "consent-train": 144,
     "nc": 52,
     "pd": 8,
     "research": 1,
@@ -930,56 +930,56 @@
    ]
   },
   "SC-39f6": {
-   "bundles": 157,
+   "bundles": 152,
    "decoy_share": 0.204,
-   "tokens": 620468,
+   "tokens": 604711,
    "licence_tags": {
-    "cc-by": 35,
-    "cc-by-sa": 232,
-    "consent-train": 141,
+    "cc-by": 34,
+    "cc-by-sa": 224,
+    "consent-train": 146,
     "nc": 43,
     "pd": 9,
-    "research": 38
+    "research": 31
    },
    "sections": [
     "sga: G301012",
     "sga: G301013",
     "sga: G301015",
     "...",
-    "sga: celtic-journal-zcp-1897-1926/zeitschriftfurcelti14|Aus dem irischen Recht I: Das Unfrei-Lehen (Cáin Aigillne)"
+    "sga: celtic-journal-zcp-1897-1926/zeitschriftfrc11meyeuoft|Audacht Morainn (Redaktionen A, L, B)"
    ]
   },
   "SC-101e": {
-   "bundles": 200,
-   "decoy_share": 0.2,
-   "tokens": 684629,
+   "bundles": 203,
+   "decoy_share": 0.197,
+   "tokens": 698098,
    "licence_tags": {
     "cc-by": 74,
-    "cc-by-sa": 244,
-    "consent-train": 191,
-    "nc": 41,
+    "cc-by-sa": 254,
+    "consent-train": 188,
+    "nc": 42,
     "pd": 18,
-    "research": 2
+    "research": 8
    },
    "sections": [
+    "sga: celtic-journal-zcp-1897-1926/zeitschriftfrc11meyeuoft|Maelduins Meerfahrt, ein altirisches Gedicht",
+    "sga: celtic-journal-zcp-1897-1926/zeitschriftfurcelti14|Aus dem irischen Recht I: Das Unfrei-Lehen (Cáin Aigillne)",
     "sga: oldirish-irische-texte-1880-1909/irischetextemitw01winduoft|Hymn 2: Fiacc's Hymnus (Génair Pátraicc)",
-    "sga: oldirish-irische-texte-1880-1909/irischetextemitw01winduoft|Hymn 5: Broccan's Hymnus (Ní car Brigit)",
-    "sga: oldirish-irische-texte-1880-1909/irischetextemitw01winduoft|X Codex St. Pauli poems (Pangur Bán, Aed oll etc.)",
     "...",
     "mga: G201000"
    ]
   },
   "SC-243e": {
-   "bundles": 166,
-   "decoy_share": 0.199,
-   "tokens": 613860,
+   "bundles": 169,
+   "decoy_share": 0.201,
+   "tokens": 621777,
    "licence_tags": {
-    "cc-by": 40,
-    "cc-by-sa": 224,
-    "consent-train": 178,
-    "nc": 35,
-    "pd": 6,
-    "research": 3,
+    "cc-by": 41,
+    "cc-by-sa": 227,
+    "consent-train": 182,
+    "nc": 33,
+    "pd": 5,
+    "research": 5,
     "unchecked": 1
    },
    "sections": [
@@ -993,13 +993,13 @@
   "SC-1ad5": {
    "bundles": 164,
    "decoy_share": 0.195,
-   "tokens": 699240,
+   "tokens": 699527,
    "licence_tags": {
     "cc-by": 21,
     "cc-by-sa": 271,
-    "consent-train": 178,
-    "nc": 24,
-    "pd": 4,
+    "consent-train": 176,
+    "nc": 25,
+    "pd": 5,
     "research": 1
    },
    "sections": [
@@ -1011,17 +1011,16 @@
    ]
   },
   "SC-b669": {
-   "bundles": 174,
-   "decoy_share": 0.207,
-   "tokens": 699147,
+   "bundles": 172,
+   "decoy_share": 0.203,
+   "tokens": 699582,
    "licence_tags": {
     "cc-by": 41,
     "cc-by-sa": 252,
-    "consent-train": 187,
+    "consent-train": 184,
     "nc": 37,
-    "pd": 12,
-    "research": 1,
-    "unchecked": 1
+    "pd": 13,
+    "research": 1
    },
    "sections": [
     "mga: G206000",
@@ -1034,13 +1033,15 @@
   "SC-5d19": {
    "bundles": 174,
    "decoy_share": 0.201,
-   "tokens": 698837,
+   "tokens": 697200,
    "licence_tags": {
     "cc-by": 40,
-    "cc-by-sa": 259,
-    "consent-train": 195,
-    "nc": 38,
-    "pd": 10
+    "cc-by-sa": 256,
+    "consent-train": 196,
+    "nc": 39,
+    "pd": 10,
+    "research": 1,
+    "unchecked": 1
    },
    "sections": [
     "mga: G301035",
@@ -1051,15 +1052,15 @@
    ]
   },
   "SC-af99": {
-   "bundles": 164,
-   "decoy_share": 0.195,
-   "tokens": 657347,
+   "bundles": 165,
+   "decoy_share": 0.2,
+   "tokens": 660228,
    "licence_tags": {
     "cc-by": 38,
-    "cc-by-sa": 233,
-    "consent-train": 173,
-    "nc": 38,
-    "pd": 7,
+    "cc-by-sa": 237,
+    "consent-train": 174,
+    "nc": 37,
+    "pd": 4,
     "research": 2,
     "unchecked": 1
    },
@@ -1072,16 +1073,16 @@
    ]
   },
   "SC-cfed": {
-   "bundles": 195,
-   "decoy_share": 0.2,
-   "tokens": 611185,
+   "bundles": 197,
+   "decoy_share": 0.203,
+   "tokens": 614532,
    "licence_tags": {
     "cc-by": 29,
-    "cc-by-sa": 209,
-    "consent-train": 170,
-    "nc": 42,
-    "pd": 9,
-    "research": 49,
+    "cc-by-sa": 214,
+    "consent-train": 175,
+    "nc": 40,
+    "pd": 11,
+    "research": 48,
     "unchecked": 1
    },
    "sections": [
@@ -1093,43 +1094,43 @@
    ]
   },
   "SC-bc62": {
-   "bundles": 159,
-   "decoy_share": 0.201,
-   "tokens": 610859,
+   "bundles": 157,
+   "decoy_share": 0.191,
+   "tokens": 604522,
    "licence_tags": {
-    "cc-by": 27,
-    "cc-by-sa": 217,
-    "consent-train": 15,
-    "nc": 49,
-    "pd": 24,
-    "research": 145,
-    "unchecked": 2
+    "cc-by": 29,
+    "cc-by-sa": 209,
+    "consent-train": 16,
+    "nc": 47,
+    "pd": 22,
+    "research": 144,
+    "unchecked": 3
    },
    "sections": [
     "mga: celtic-journal-revue-celtique-1870-1928/revueceltique10pari|Immram curaig Maele Duin (The Voyage of Mael Duin) II",
     "mga: celtic-journal-revue-celtique-1870-1928/revueceltique10pari|Echtra Nerai (The Adventures of Nera)",
     "mga: celtic-journal-revue-celtique-1870-1928/revueceltique11pari|A note about Fiacha Muillethan (Book of Lecan text)",
     "...",
-    "mga: oldirish-felire-oengusso-stokes-1905/martyrologyofoen29oenguoft|Félire scholia: Notationes for September"
+    "mga: oldirish-felire-oengusso-stokes-1905/martyrologyofoen29oenguoft|Félire scholia: Notationes for June"
    ]
   },
   "SC-ca6f": {
-   "bundles": 183,
-   "decoy_share": 0.197,
-   "tokens": 651798,
+   "bundles": 185,
+   "decoy_share": 0.2,
+   "tokens": 658080,
    "licence_tags": {
     "cc-by": 45,
-    "cc-by-sa": 217,
-    "consent-train": 8,
-    "nc": 56,
-    "pd": 170,
-    "research": 44,
+    "cc-by-sa": 219,
+    "consent-train": 7,
+    "nc": 54,
+    "pd": 172,
+    "research": 42,
     "unchecked": 1
    },
    "sections": [
+    "mga: oldirish-felire-oengusso-stokes-1905/martyrologyofoen29oenguoft|Félire scholia: Notationes for August",
+    "mga: oldirish-felire-oengusso-stokes-1905/martyrologyofoen29oenguoft|Félire scholia: Notationes for September",
     "mga: oldirish-felire-oengusso-stokes-1905/martyrologyofoen29oenguoft|Félire scholia: Notationes for November",
-    "mga: oldirish-irische-texte-1880-1909/irischetextemit00stokgoog|Mittelirische Verslehren, Texte I-IV (metrical tracts)",
-    "mga: oldirish-irische-texte-1880-1909/irischetextemit00stokgoog|De Chophur in dá muccida (Eg. 1782 and LL versions)",
     "...",
     "cy: welsh-redbook-poetry-evans-1911/poetryinredbooko00evanuoft|14th-c. poets (Gruffudd ap Maredudd, Trahaearn, Gwilym Ddu, Casnodyn, Bleddyn Ddu, Madog Dwygraig, Iolo Goch, Gruffudd Fychan, Llywelyn Goch, Dafydd y Coed, Hywel Ystorm ...)"
    ]
@@ -1137,14 +1138,15 @@
   "SC-8992": {
    "bundles": 227,
    "decoy_share": 0.203,
-   "tokens": 698269,
+   "tokens": 690549,
    "licence_tags": {
-    "cc-by": 67,
-    "cc-by-sa": 213,
+    "cc-by": 66,
+    "cc-by-sa": 211,
     "consent-train": 199,
     "nc": 46,
     "pd": 56,
-    "research": 3
+    "research": 1,
+    "unchecked": 1
    },
    "sections": [
     "cy: welsh-redbook-poetry-evans-1911/poetryinredbooko00evanuoft|Gogynfeirdd (Dafydd Benfras, Llywelyn Fardd, Cynddelw, elegies for Owain Gwynedd's teulu, Madog ap Gruffudd ...)",
@@ -1157,16 +1159,15 @@
   "SC-127e": {
    "bundles": 205,
    "decoy_share": 0.2,
-   "tokens": 672094,
+   "tokens": 663517,
    "licence_tags": {
-    "cc-by": 41,
-    "cc-by-sa": 210,
-    "consent-train": 215,
+    "cc-by": 39,
+    "cc-by-sa": 209,
+    "consent-train": 218,
     "gpl": 1,
-    "nc": 35,
+    "nc": 33,
     "pd": 6,
-    "research": 1,
-    "unchecked": 1
+    "research": 3
    },
    "sections": [
     "ga-early: G100005D",
@@ -1177,13 +1178,13 @@
    ]
   },
   "SC-86db": {
-   "bundles": 171,
-   "decoy_share": 0.199,
-   "tokens": 700589,
+   "bundles": 168,
+   "decoy_share": 0.196,
+   "tokens": 698921,
    "licence_tags": {
-    "cc-by": 35,
-    "cc-by-sa": 248,
-    "consent-train": 182,
+    "cc-by": 34,
+    "cc-by-sa": 247,
+    "consent-train": 179,
     "nc": 43,
     "pd": 2,
     "research": 1
@@ -1197,13 +1198,13 @@
    ]
   },
   "SC-2d98": {
-   "bundles": 163,
-   "decoy_share": 0.202,
-   "tokens": 699882,
+   "bundles": 164,
+   "decoy_share": 0.201,
+   "tokens": 699344,
    "licence_tags": {
     "cc-by": 31,
-    "cc-by-sa": 258,
-    "consent-train": 167,
+    "cc-by-sa": 257,
+    "consent-train": 168,
     "nc": 38,
     "unchecked": 1
    },
@@ -1212,32 +1213,32 @@
    ]
   },
   "SC-10fe": {
-   "bundles": 147,
-   "decoy_share": 0.197,
-   "tokens": 696218,
+   "bundles": 148,
+   "decoy_share": 0.203,
+   "tokens": 690125,
    "licence_tags": {
-    "cc-by": 30,
+    "cc-by": 36,
     "cc-by-sa": 258,
-    "consent-train": 169,
-    "nc": 33,
+    "consent-train": 163,
+    "nc": 34,
     "pd": 3,
-    "research": 1
+    "research": 2
    },
    "sections": [
     "ga-early: G100054"
    ]
   },
   "SC-d19d": {
-   "bundles": 168,
-   "decoy_share": 0.202,
-   "tokens": 696424,
+   "bundles": 164,
+   "decoy_share": 0.201,
+   "tokens": 693231,
    "licence_tags": {
-    "cc-by": 30,
-    "cc-by-sa": 255,
-    "consent-train": 19,
-    "nc": 191,
-    "pd": 10,
-    "research": 1
+    "cc-by": 25,
+    "cc-by-sa": 252,
+    "consent-train": 18,
+    "nc": 184,
+    "pd": 9,
+    "research": 3
    },
    "sections": [
     "ga-early: G100054",
@@ -1247,32 +1248,32 @@
   "SC-dcd1": {
    "bundles": 153,
    "decoy_share": 0.196,
-   "tokens": 700029,
+   "tokens": 699085,
    "licence_tags": {
-    "cc-by": 36,
-    "cc-by-sa": 267,
-    "consent-train": 26,
+    "cc-by": 39,
+    "cc-by-sa": 258,
+    "consent-train": 27,
     "nc": 186,
     "pd": 1,
-    "research": 1,
-    "unchecked": 3
+    "research": 3,
+    "unchecked": 1
    },
    "sections": [
     "ga-early: G100055"
    ]
   },
   "SC-de1c": {
-   "bundles": 164,
-   "decoy_share": 0.201,
-   "tokens": 700452,
+   "bundles": 165,
+   "decoy_share": 0.206,
+   "tokens": 700737,
    "licence_tags": {
-    "cc-by": 41,
-    "cc-by-sa": 260,
-    "consent-train": 9,
-    "nc": 187,
+    "cc-by": 40,
+    "cc-by-sa": 264,
+    "consent-train": 7,
+    "nc": 185,
     "pd": 3,
-    "research": 2,
-    "unchecked": 1
+    "research": 3,
+    "unchecked": 2
    },
    "sections": [
     "ga-early: G100055",
@@ -1280,17 +1281,18 @@
    ]
   },
   "SC-9a94": {
-   "bundles": 161,
-   "decoy_share": 0.199,
-   "tokens": 678798,
+   "bundles": 162,
+   "decoy_share": 0.198,
+   "tokens": 699453,
    "licence_tags": {
-    "cc-by": 31,
-    "cc-by-sa": 253,
-    "consent-train": 129,
+    "cc-by": 36,
+    "cc-by-sa": 251,
+    "consent-train": 126,
     "gpl": 1,
-    "nc": 75,
+    "nc": 84,
     "pd": 1,
-    "unchecked": 1
+    "research": 1,
+    "unchecked": 2
    },
    "sections": [
     "ga-early: G100056",
@@ -1301,22 +1303,21 @@
    ]
   },
   "SC-6157": {
-   "bundles": 150,
-   "decoy_share": 0.207,
-   "tokens": 699121,
+   "bundles": 153,
+   "decoy_share": 0.203,
+   "tokens": 695615,
    "licence_tags": {
-    "cc-by": 21,
+    "cc-by": 20,
     "cc-by-sa": 281,
-    "consent-train": 164,
-    "nc": 21,
-    "pd": 2,
-    "research": 1,
-    "unchecked": 1
+    "consent-train": 167,
+    "nc": 23,
+    "pd": 1,
+    "research": 1
    },
    "sections": [
+    "ga-early: G100080",
     "ga-early: G102004",
     "ga-early: G105012",
-    "ga-early: G201005",
     "...",
     "ga-early: G208020"
    ]
@@ -1324,15 +1325,14 @@
   "SC-cd26": {
    "bundles": 150,
    "decoy_share": 0.193,
-   "tokens": 611361,
+   "tokens": 607199,
    "licence_tags": {
-    "cc-by": 34,
-    "cc-by-sa": 225,
+    "cc-by": 33,
+    "cc-by-sa": 226,
     "consent-train": 159,
-    "nc": 32,
+    "nc": 30,
     "pd": 4,
-    "research": 2,
-    "unchecked": 1
+    "research": 2
    },
    "sections": [
     "ga-early: G208020",
@@ -1343,16 +1343,15 @@
    ]
   },
   "SC-cc25": {
-   "bundles": 176,
-   "decoy_share": 0.205,
-   "tokens": 700477,
+   "bundles": 174,
+   "decoy_share": 0.207,
+   "tokens": 688542,
    "licence_tags": {
-    "cc-by": 41,
-    "cc-by-sa": 265,
-    "consent-train": 185,
-    "nc": 25,
-    "pd": 3,
-    "research": 1
+    "cc-by": 43,
+    "cc-by-sa": 261,
+    "consent-train": 181,
+    "nc": 21,
+    "pd": 3
    },
    "sections": [
     "ga-early: G302026",
@@ -1363,16 +1362,16 @@
    ]
   },
   "SC-4464": {
-   "bundles": 169,
-   "decoy_share": 0.195,
-   "tokens": 700039,
+   "bundles": 168,
+   "decoy_share": 0.196,
+   "tokens": 697125,
    "licence_tags": {
-    "cc-by": 28,
-    "cc-by-sa": 237,
-    "consent-train": 188,
+    "cc-by": 27,
+    "cc-by-sa": 241,
+    "consent-train": 187,
     "nc": 48,
-    "pd": 9,
-    "research": 2,
+    "pd": 8,
+    "research": 3,
     "unchecked": 2
    },
    "sections": [
@@ -1384,17 +1383,16 @@
    ]
   },
   "SC-bc50": {
-   "bundles": 184,
-   "decoy_share": 0.201,
-   "tokens": 669381,
+   "bundles": 188,
+   "decoy_share": 0.202,
+   "tokens": 686502,
    "licence_tags": {
-    "cc-by": 25,
-    "cc-by-sa": 187,
-    "consent-train": 198,
-    "nc": 64,
+    "cc-by": 28,
+    "cc-by-sa": 193,
+    "consent-train": 205,
+    "nc": 62,
     "pd": 5,
-    "research": 1,
-    "unchecked": 7
+    "unchecked": 3
    },
    "sections": [
     "ga-early: G600005",
@@ -1402,17 +1400,16 @@
    ]
   },
   "SC-16f7": {
-   "bundles": 176,
-   "decoy_share": 0.205,
-   "tokens": 635857,
+   "bundles": 175,
+   "decoy_share": 0.2,
+   "tokens": 621039,
    "licence_tags": {
-    "cc-by": 26,
-    "cc-by-sa": 223,
-    "consent-train": 177,
-    "nc": 54,
-    "pd": 5,
-    "research": 1,
-    "unchecked": 1
+    "cc-by": 25,
+    "cc-by-sa": 215,
+    "consent-train": 174,
+    "nc": 57,
+    "pd": 6,
+    "research": 1
    },
    "sections": [
     "ga-early: G600009A",
@@ -1424,15 +1421,15 @@
   },
   "SC-97bc": {
    "bundles": 160,
-   "decoy_share": 0.194,
-   "tokens": 603251,
+   "decoy_share": 0.2,
+   "tokens": 602951,
    "licence_tags": {
     "cc-by": 25,
     "cc-by-sa": 219,
-    "consent-train": 82,
-    "nc": 37,
+    "consent-train": 84,
+    "nc": 35,
     "pd": 4,
-    "research": 83,
+    "research": 81,
     "unchecked": 1
    },
    "sections": [
@@ -1445,15 +1442,16 @@
   },
   "SC-1b06": {
    "bundles": 137,
-   "decoy_share": 0.204,
-   "tokens": 637850,
+   "decoy_share": 0.197,
+   "tokens": 633037,
    "licence_tags": {
-    "cc-by": 32,
-    "cc-by-sa": 317,
-    "consent-train": 15,
+    "cc-by": 31,
+    "cc-by-sa": 314,
+    "consent-train": 13,
+    "gpl": 1,
     "nc": 28,
     "pd": 5,
-    "research": 56,
+    "research": 57,
     "unchecked": 2
    },
    "sections": [
@@ -1465,16 +1463,17 @@
    ]
   },
   "SC-f58f": {
-   "bundles": 177,
-   "decoy_share": 0.203,
-   "tokens": 699769,
+   "bundles": 176,
+   "decoy_share": 0.205,
+   "tokens": 701258,
    "licence_tags": {
     "cc-by": 34,
-    "cc-by-sa": 485,
-    "consent-train": 5,
+    "cc-by-sa": 486,
+    "consent-train": 7,
     "nc": 14,
     "pd": 6,
-    "research": 2
+    "research": 1,
+    "unchecked": 1
    },
    "sections": [
     "menota: AM-132-fol-Droplaugarsona-saga",
@@ -1482,16 +1481,16 @@
    ]
   },
   "SC-3cc7": {
-   "bundles": 170,
-   "decoy_share": 0.2,
-   "tokens": 676542,
+   "bundles": 168,
+   "decoy_share": 0.196,
+   "tokens": 662744,
    "licence_tags": {
-    "cc-by": 27,
-    "cc-by-sa": 463,
-    "consent-train": 10,
-    "nc": 17,
+    "cc-by": 26,
+    "cc-by-sa": 455,
+    "consent-train": 9,
+    "nc": 15,
     "pd": 12,
-    "unchecked": 3
+    "unchecked": 2
    },
    "sections": [
     "menota: AM-132-fol-Egils-saga",
@@ -1500,15 +1499,15 @@
   },
   "SC-629c": {
    "bundles": 197,
-   "decoy_share": 0.198,
-   "tokens": 657543,
+   "decoy_share": 0.203,
+   "tokens": 657307,
    "licence_tags": {
-    "cc-by": 37,
-    "cc-by-sa": 453,
-    "consent-train": 7,
+    "cc-by": 36,
+    "cc-by-sa": 456,
+    "consent-train": 6,
     "nc": 49,
     "pd": 3,
-    "research": 1,
+    "research": 2,
     "unchecked": 1
    },
    "sections": [
@@ -1522,32 +1521,31 @@
   "SC-890a": {
    "bundles": 192,
    "decoy_share": 0.198,
-   "tokens": 696869,
+   "tokens": 701375,
    "licence_tags": {
-    "cc-by": 31,
-    "cc-by-sa": 494,
-    "consent-train": 3,
-    "nc": 35,
+    "cc-by": 29,
+    "cc-by-sa": 492,
+    "consent-train": 4,
+    "nc": 39,
     "pd": 6,
-    "research": 1,
-    "unchecked": 3
+    "unchecked": 5
    },
    "sections": [
     "menota: AM-132-fol-Njals-saga"
    ]
   },
   "SC-66ed": {
-   "bundles": 188,
-   "decoy_share": 0.202,
-   "tokens": 698715,
+   "bundles": 189,
+   "decoy_share": 0.201,
+   "tokens": 701040,
    "licence_tags": {
-    "cc-by": 26,
-    "cc-by-sa": 491,
-    "consent-train": 6,
-    "nc": 27,
+    "cc-by": 24,
+    "cc-by-sa": 499,
+    "consent-train": 7,
+    "nc": 24,
     "pd": 6,
-    "research": 3,
-    "unchecked": 1
+    "research": 1,
+    "unchecked": 2
    },
    "sections": [
     "menota: AM-132-fol-Njals-saga",
@@ -1556,16 +1554,16 @@
    ]
   },
   "SC-4232": {
-   "bundles": 139,
-   "decoy_share": 0.194,
-   "tokens": 699854,
+   "bundles": 142,
+   "decoy_share": 0.197,
+   "tokens": 698909,
    "licence_tags": {
-    "cc-by": 36,
-    "cc-by-sa": 431,
-    "consent-train": 7,
+    "cc-by": 39,
+    "cc-by-sa": 429,
+    "consent-train": 6,
     "nc": 19,
-    "pd": 8,
-    "unchecked": 1
+    "pd": 7,
+    "research": 2
    },
    "sections": [
     "menota: AM-132-fol-Viga-Glums-saga",
@@ -1576,34 +1574,33 @@
    ]
   },
   "SC-edad": {
-   "bundles": 154,
-   "decoy_share": 0.201,
-   "tokens": 695608,
+   "bundles": 155,
+   "decoy_share": 0.2,
+   "tokens": 700889,
    "licence_tags": {
     "cc-by": 32,
-    "cc-by-sa": 432,
+    "cc-by-sa": 439,
     "consent-train": 9,
     "gpl": 1,
-    "nc": 16,
+    "nc": 14,
     "pd": 2,
-    "research": 2,
-    "unchecked": 1
+    "research": 1
    },
    "sections": [
     "menota: AM-178-fol"
    ]
   },
   "SC-9ac5": {
-   "bundles": 167,
-   "decoy_share": 0.204,
-   "tokens": 700520,
+   "bundles": 163,
+   "decoy_share": 0.202,
+   "tokens": 695148,
    "licence_tags": {
     "cc-by": 20,
-    "cc-by-sa": 429,
+    "cc-by-sa": 420,
     "consent-train": 7,
-    "nc": 20,
+    "nc": 19,
     "pd": 7,
-    "research": 1
+    "research": 2
    },
    "sections": [
     "menota: AM-178-fol",
@@ -1611,31 +1608,33 @@
    ]
   },
   "SC-9bfb": {
-   "bundles": 152,
-   "decoy_share": 0.197,
-   "tokens": 614711,
+   "bundles": 174,
+   "decoy_share": 0.195,
+   "tokens": 690632,
    "licence_tags": {
-    "cc-by": 18,
-    "cc-by-sa": 390,
-    "consent-train": 4,
-    "nc": 20,
-    "pd": 6
+    "cc-by": 22,
+    "cc-by-sa": 434,
+    "consent-train": 8,
+    "nc": 23,
+    "pd": 7,
+    "unchecked": 1
    },
    "sections": [
-    "menota: AM-242-fol"
+    "menota: AM-242-fol",
+    "menota: AM-243-b-alfa-fol"
    ]
   },
   "SC-d886": {
-   "bundles": 136,
-   "decoy_share": 0.199,
-   "tokens": 695620,
+   "bundles": 131,
+   "decoy_share": 0.198,
+   "tokens": 698174,
    "licence_tags": {
-    "cc-by": 25,
-    "cc-by-sa": 409,
-    "consent-train": 13,
-    "nc": 32,
-    "pd": 3,
-    "research": 1,
+    "cc-by": 24,
+    "cc-by-sa": 412,
+    "consent-train": 9,
+    "nc": 27,
+    "pd": 4,
+    "research": 2,
     "unchecked": 1
    },
    "sections": [
@@ -1643,49 +1642,49 @@
    ]
   },
   "SC-a66f": {
-   "bundles": 123,
-   "decoy_share": 0.203,
-   "tokens": 696913,
+   "bundles": 125,
+   "decoy_share": 0.2,
+   "tokens": 700058,
    "licence_tags": {
-    "cc-by": 17,
-    "cc-by-sa": 423,
-    "consent-train": 4,
-    "gpl": 2,
-    "nc": 21,
-    "pd": 6,
-    "unchecked": 3
+    "cc-by": 20,
+    "cc-by-sa": 427,
+    "consent-train": 5,
+    "gpl": 1,
+    "nc": 14,
+    "pd": 3,
+    "unchecked": 4
    },
    "sections": [
     "menota: AM-243-b-alfa-fol"
    ]
   },
   "SC-41a3": {
-   "bundles": 119,
-   "decoy_share": 0.193,
-   "tokens": 698709,
+   "bundles": 117,
+   "decoy_share": 0.205,
+   "tokens": 690827,
    "licence_tags": {
-    "cc-by": 13,
+    "cc-by": 12,
     "cc-by-sa": 422,
-    "consent-train": 4,
-    "gpl": 3,
-    "nc": 12,
+    "consent-train": 2,
+    "gpl": 1,
+    "nc": 9,
     "pd": 2,
-    "unchecked": 1
+    "unchecked": 2
    },
    "sections": [
     "menota: AM-243-b-alfa-fol"
    ]
   },
   "SC-7970": {
-   "bundles": 115,
-   "decoy_share": 0.209,
-   "tokens": 699689,
+   "bundles": 121,
+   "decoy_share": 0.198,
+   "tokens": 701158,
    "licence_tags": {
     "cc-by": 10,
-    "cc-by-sa": 435,
-    "consent-train": 5,
+    "cc-by-sa": 444,
+    "consent-train": 6,
     "gpl": 1,
-    "nc": 11,
+    "nc": 12,
     "pd": 1,
     "research": 2,
     "unchecked": 3
@@ -1695,16 +1694,15 @@
    ]
   },
   "SC-9acf": {
-   "bundles": 117,
-   "decoy_share": 0.197,
-   "tokens": 700707,
+   "bundles": 113,
+   "decoy_share": 0.195,
+   "tokens": 695255,
    "licence_tags": {
-    "cc-by": 18,
-    "cc-by-sa": 430,
+    "cc-by": 20,
+    "cc-by-sa": 420,
     "consent-train": 4,
-    "nc": 7,
+    "nc": 8,
     "pd": 4,
-    "research": 1,
     "unchecked": 1
    },
    "sections": [
@@ -1712,15 +1710,15 @@
    ]
   },
   "SC-8b5e": {
-   "bundles": 141,
-   "decoy_share": 0.206,
-   "tokens": 699616,
+   "bundles": 143,
+   "decoy_share": 0.203,
+   "tokens": 695790,
    "licence_tags": {
-    "cc-by": 38,
-    "cc-by-sa": 427,
-    "consent-train": 7,
+    "cc-by": 47,
+    "cc-by-sa": 417,
+    "consent-train": 10,
     "nc": 9,
-    "pd": 1
+    "pd": 2
    },
    "sections": [
     "menota: AM-243-b-alfa-fol",
@@ -1729,31 +1727,32 @@
    ]
   },
   "SC-5985": {
-   "bundles": 163,
-   "decoy_share": 0.196,
-   "tokens": 673955,
+   "bundles": 168,
+   "decoy_share": 0.202,
+   "tokens": 700053,
    "licence_tags": {
-    "cc-by": 38,
-    "cc-by-sa": 391,
+    "cc-by": 50,
+    "cc-by-sa": 404,
     "consent-train": 10,
-    "nc": 22,
-    "pd": 1,
+    "nc": 18,
     "research": 1,
     "unchecked": 1
    },
    "sections": [
-    "menota: AM-302-fol"
+    "menota: AM-302-fol",
+    "menota: AM-305-fol"
    ]
   },
   "SC-77ab": {
-   "bundles": 166,
-   "decoy_share": 0.199,
-   "tokens": 698578,
+   "bundles": 144,
+   "decoy_share": 0.201,
+   "tokens": 631612,
    "licence_tags": {
-    "cc-by": 60,
-    "cc-by-sa": 404,
-    "consent-train": 12,
-    "nc": 21,
+    "cc-by": 56,
+    "cc-by-sa": 364,
+    "consent-train": 8,
+    "gpl": 1,
+    "nc": 17,
     "pd": 2,
     "research": 1,
     "unchecked": 1
@@ -1763,68 +1762,67 @@
    ]
   },
   "SC-9a6b": {
-   "bundles": 144,
-   "decoy_share": 0.201,
-   "tokens": 700303,
+   "bundles": 141,
+   "decoy_share": 0.199,
+   "tokens": 700286,
    "licence_tags": {
     "cc-by": 11,
-    "cc-by-sa": 427,
-    "consent-train": 10,
-    "nc": 10,
-    "pd": 2,
-    "unchecked": 2
+    "cc-by-sa": 424,
+    "consent-train": 12,
+    "nc": 11,
+    "pd": 1,
+    "unchecked": 1
    },
    "sections": [
-    "menota: AM-305-fol",
     "menota: AM-35-fol"
    ]
   },
   "SC-192e": {
    "bundles": 148,
    "decoy_share": 0.196,
-   "tokens": 700004,
+   "tokens": 692547,
    "licence_tags": {
-    "cc-by": 17,
-    "cc-by-sa": 415,
+    "cc-by": 15,
+    "cc-by-sa": 414,
     "consent-train": 12,
-    "nc": 14,
+    "nc": 13,
     "pd": 1,
     "research": 2,
-    "unchecked": 5
+    "unchecked": 4
    },
    "sections": [
     "menota: AM-35-fol"
    ]
   },
   "SC-6cc5": {
-   "bundles": 155,
-   "decoy_share": 0.2,
-   "tokens": 698392,
+   "bundles": 151,
+   "decoy_share": 0.205,
+   "tokens": 696543,
    "licence_tags": {
-    "cc-by": 12,
-    "cc-by-sa": 419,
+    "cc-by": 11,
+    "cc-by-sa": 423,
     "consent-train": 13,
-    "nc": 6,
+    "nc": 4,
     "pd": 2,
-    "research": 1,
-    "unchecked": 3
+    "research": 2,
+    "unchecked": 2
    },
    "sections": [
     "menota: AM-35-fol"
    ]
   },
   "SC-3723": {
-   "bundles": 141,
-   "decoy_share": 0.199,
-   "tokens": 700543,
+   "bundles": 142,
+   "decoy_share": 0.197,
+   "tokens": 698380,
    "licence_tags": {
-    "cc-by": 16,
-    "cc-by-sa": 425,
-    "consent-train": 4,
+    "cc-by": 17,
+    "cc-by-sa": 418,
+    "consent-train": 7,
+    "gpl": 1,
     "nc": 6,
-    "pd": 4,
-    "research": 1,
-    "unchecked": 2
+    "pd": 3,
+    "unchecked": 1
    },
    "sections": [
     "menota: AM-35-fol",
@@ -1832,30 +1830,30 @@
    ]
   },
   "SC-a46c": {
-   "bundles": 141,
-   "decoy_share": 0.206,
-   "tokens": 698785,
+   "bundles": 144,
+   "decoy_share": 0.201,
+   "tokens": 699767,
    "licence_tags": {
-    "cc-by": 18,
-    "cc-by-sa": 408,
-    "consent-train": 16,
-    "nc": 13,
-    "research": 1,
-    "unchecked": 3
+    "cc-by": 21,
+    "cc-by-sa": 410,
+    "consent-train": 13,
+    "nc": 12,
+    "research": 2,
+    "unchecked": 4
    },
    "sections": [
     "menota: AM-36-fol"
    ]
   },
   "SC-a355": {
-   "bundles": 137,
+   "bundles": 132,
    "decoy_share": 0.197,
-   "tokens": 699329,
+   "tokens": 698997,
    "licence_tags": {
-    "cc-by": 20,
-    "cc-by-sa": 419,
-    "consent-train": 9,
-    "nc": 9,
+    "cc-by": 18,
+    "cc-by-sa": 417,
+    "consent-train": 10,
+    "nc": 6,
     "pd": 3,
     "unchecked": 3
    },
@@ -1864,15 +1862,14 @@
    ]
   },
   "SC-7bc5": {
-   "bundles": 144,
-   "decoy_share": 0.201,
-   "tokens": 696139,
+   "bundles": 145,
+   "decoy_share": 0.2,
+   "tokens": 699790,
    "licence_tags": {
-    "cc-by": 17,
-    "cc-by-sa": 418,
+    "cc-by": 20,
+    "cc-by-sa": 419,
     "consent-train": 10,
-    "gpl": 1,
-    "nc": 10,
+    "nc": 9,
     "research": 2
    },
    "sections": [
@@ -1881,15 +1878,16 @@
   },
   "SC-7010": {
    "bundles": 153,
-   "decoy_share": 0.196,
-   "tokens": 701307,
+   "decoy_share": 0.203,
+   "tokens": 700617,
    "licence_tags": {
-    "cc-by": 22,
-    "cc-by-sa": 459,
+    "cc-by": 21,
+    "cc-by-sa": 462,
     "consent-train": 6,
     "gpl": 1,
-    "nc": 10,
+    "nc": 11,
     "pd": 5,
+    "research": 1,
     "unchecked": 1
    },
    "sections": [
@@ -1899,31 +1897,31 @@
    ]
   },
   "SC-c576": {
-   "bundles": 157,
-   "decoy_share": 0.204,
-   "tokens": 696020,
+   "bundles": 155,
+   "decoy_share": 0.194,
+   "tokens": 694110,
    "licence_tags": {
-    "cc-by": 24,
-    "cc-by-sa": 479,
-    "consent-train": 10,
-    "nc": 22,
+    "cc-by": 22,
+    "cc-by-sa": 473,
+    "consent-train": 9,
+    "nc": 19,
     "pd": 4,
-    "research": 1,
-    "unchecked": 2
+    "research": 2,
+    "unchecked": 1
    },
    "sections": [
     "menota: AM-519a-4to"
    ]
   },
   "SC-e322": {
-   "bundles": 175,
-   "decoy_share": 0.2,
-   "tokens": 700900,
+   "bundles": 177,
+   "decoy_share": 0.209,
+   "tokens": 699377,
    "licence_tags": {
-    "cc-by": 48,
-    "cc-by-sa": 426,
-    "consent-train": 17,
-    "nc": 18,
+    "cc-by": 46,
+    "cc-by-sa": 421,
+    "consent-train": 14,
+    "nc": 20,
     "pd": 2,
     "research": 1,
     "unchecked": 1
@@ -1935,15 +1933,16 @@
    ]
   },
   "SC-bfa7": {
-   "bundles": 181,
-   "decoy_share": 0.199,
-   "tokens": 691418,
+   "bundles": 182,
+   "decoy_share": 0.192,
+   "tokens": 693196,
    "licence_tags": {
-    "cc-by": 48,
-    "cc-by-sa": 425,
-    "consent-train": 10,
-    "nc": 22,
-    "pd": 9
+    "cc-by": 41,
+    "cc-by-sa": 438,
+    "consent-train": 8,
+    "nc": 20,
+    "pd": 9,
+    "unchecked": 1
    },
    "sections": [
     "menota: AM-56-4to",
@@ -1951,34 +1950,34 @@
    ]
   },
   "SC-ad52": {
-   "bundles": 170,
-   "decoy_share": 0.206,
-   "tokens": 697685,
+   "bundles": 166,
+   "decoy_share": 0.205,
+   "tokens": 696605,
    "licence_tags": {
     "cc-by": 19,
-    "cc-by-sa": 489,
-    "consent-train": 8,
-    "nc": 20,
+    "cc-by-sa": 484,
+    "consent-train": 9,
+    "gpl": 1,
+    "nc": 17,
     "pd": 4,
-    "research": 1,
-    "unchecked": 3
+    "unchecked": 4
    },
    "sections": [
     "menota: AM-619-4to"
    ]
   },
   "SC-cc9a": {
-   "bundles": 147,
-   "decoy_share": 0.19,
-   "tokens": 701247,
+   "bundles": 152,
+   "decoy_share": 0.197,
+   "tokens": 698394,
    "licence_tags": {
     "cc-by": 24,
-    "cc-by-sa": 463,
+    "cc-by-sa": 466,
     "consent-train": 3,
-    "gpl": 2,
-    "nc": 13,
+    "gpl": 1,
+    "nc": 17,
     "pd": 3,
-    "unchecked": 1
+    "unchecked": 2
    },
    "sections": [
     "menota: AM-619-4to",
@@ -1986,45 +1985,30 @@
    ]
   },
   "SC-732a": {
-   "bundles": 140,
-   "decoy_share": 0.207,
-   "tokens": 698871,
+   "bundles": 141,
+   "decoy_share": 0.199,
+   "tokens": 699696,
    "licence_tags": {
-    "cc-by": 13,
-    "cc-by-sa": 427,
-    "consent-train": 11,
-    "nc": 15,
+    "cc-by": 17,
+    "cc-by-sa": 419,
+    "consent-train": 9,
+    "gpl": 1,
+    "nc": 14,
     "pd": 8,
     "research": 1,
-    "unchecked": 2
+    "unchecked": 1
    },
    "sections": [
     "menota: AM-63-fol"
    ]
   },
   "SC-4c88": {
-   "bundles": 161,
-   "decoy_share": 0.199,
-   "tokens": 699861,
+   "bundles": 159,
+   "decoy_share": 0.201,
+   "tokens": 699528,
    "licence_tags": {
     "cc-by": 15,
-    "cc-by-sa": 435,
-    "consent-train": 6,
-    "nc": 6,
-    "pd": 2,
-    "research": 2
-   },
-   "sections": [
-    "menota: AM-63-fol"
-   ]
-  },
-  "SC-53f5": {
-   "bundles": 123,
-   "decoy_share": 0.195,
-   "tokens": 623662,
-   "licence_tags": {
-    "cc-by": 11,
-    "cc-by-sa": 383,
+    "cc-by-sa": 434,
     "consent-train": 5,
     "nc": 5,
     "pd": 2,
@@ -2034,35 +2018,53 @@
     "menota: AM-63-fol"
    ]
   },
-  "SC-9f09": {
-   "bundles": 177,
-   "decoy_share": 0.198,
-   "tokens": 700418,
+  "SC-53f5": {
+   "bundles": 130,
+   "decoy_share": 0.2,
+   "tokens": 636724,
    "licence_tags": {
-    "cc-by": 40,
-    "cc-by-sa": 470,
-    "consent-train": 6,
-    "nc": 20,
-    "pd": 8,
+    "cc-by": 15,
+    "cc-by-sa": 390,
+    "consent-train": 5,
+    "gpl": 5,
+    "nc": 6,
+    "pd": 3,
     "research": 1,
     "unchecked": 1
    },
    "sections": [
-    "menota: AM-655-XXX-4to",
+    "menota: AM-63-fol",
+    "menota: AM-655-XXX-4to"
+   ]
+  },
+  "SC-9f09": {
+   "bundles": 184,
+   "decoy_share": 0.201,
+   "tokens": 700489,
+   "licence_tags": {
+    "cc-by": 39,
+    "cc-by-sa": 476,
+    "consent-train": 7,
+    "nc": 19,
+    "pd": 6,
+    "research": 2
+   },
+   "sections": [
     "menota: AM-677-4to"
    ]
   },
   "SC-13db": {
-   "bundles": 177,
-   "decoy_share": 0.203,
-   "tokens": 696654,
+   "bundles": 174,
+   "decoy_share": 0.195,
+   "tokens": 697281,
    "licence_tags": {
-    "cc-by": 43,
-    "cc-by-sa": 464,
-    "consent-train": 5,
+    "cc-by": 36,
+    "cc-by-sa": 451,
+    "consent-train": 4,
     "nc": 24,
     "pd": 5,
-    "research": 2
+    "research": 1,
+    "unchecked": 2
    },
    "sections": [
     "menota: AM-677-4to",
@@ -2070,63 +2072,65 @@
    ]
   },
   "SC-bd5f": {
-   "bundles": 140,
-   "decoy_share": 0.2,
-   "tokens": 636648,
+   "bundles": 137,
+   "decoy_share": 0.212,
+   "tokens": 696900,
    "licence_tags": {
-    "cc-by": 35,
-    "cc-by-sa": 364,
-    "consent-train": 8,
-    "nc": 19,
-    "research": 3,
+    "cc-by": 39,
+    "cc-by-sa": 397,
+    "consent-train": 7,
+    "nc": 14,
+    "pd": 3,
+    "research": 4,
     "unchecked": 3
    },
    "sections": [
-    "menota: AM-78-4to"
+    "menota: AM-78-4to",
+    "menota: DG-4at7-Streng"
    ]
   },
   "SC-8e41": {
-   "bundles": 104,
-   "decoy_share": 0.202,
-   "tokens": 699791,
+   "bundles": 107,
+   "decoy_share": 0.196,
+   "tokens": 699408,
    "licence_tags": {
     "cc-by": 38,
-    "cc-by-sa": 370,
+    "cc-by-sa": 372,
     "consent-train": 9,
-    "nc": 6,
-    "pd": 4,
-    "research": 3,
-    "unchecked": 1
+    "nc": 8,
+    "pd": 2,
+    "research": 3
    },
    "sections": [
     "menota: DG-4at7-Streng"
    ]
   },
   "SC-b0bd": {
-   "bundles": 104,
-   "decoy_share": 0.202,
-   "tokens": 695043,
+   "bundles": 103,
+   "decoy_share": 0.194,
+   "tokens": 697503,
    "licence_tags": {
-    "cc-by": 32,
+    "cc-by": 27,
     "cc-by-sa": 379,
-    "consent-train": 7,
-    "nc": 11,
-    "pd": 1
+    "consent-train": 5,
+    "nc": 10,
+    "pd": 1,
+    "research": 1
    },
    "sections": [
     "menota: DG-4at7-Streng"
    ]
   },
   "SC-cbc0": {
-   "bundles": 97,
-   "decoy_share": 0.196,
-   "tokens": 696090,
+   "bundles": 99,
+   "decoy_share": 0.202,
+   "tokens": 700689,
    "licence_tags": {
-    "cc-by": 27,
-    "cc-by-sa": 367,
-    "consent-train": 9,
+    "cc-by": 28,
+    "cc-by-sa": 368,
+    "consent-train": 12,
     "gpl": 1,
-    "nc": 19,
+    "nc": 18,
     "pd": 1,
     "unchecked": 1
    },
@@ -2135,64 +2139,65 @@
    ]
   },
   "SC-ec79": {
-   "bundles": 94,
-   "decoy_share": 0.202,
-   "tokens": 697933,
+   "bundles": 92,
+   "decoy_share": 0.196,
+   "tokens": 699781,
    "licence_tags": {
-    "cc-by": 39,
-    "cc-by-sa": 373,
-    "consent-train": 10,
-    "nc": 10,
-    "pd": 4,
-    "unchecked": 1
+    "cc-by": 40,
+    "cc-by-sa": 380,
+    "consent-train": 4,
+    "nc": 13,
+    "pd": 7,
+    "unchecked": 2
    },
    "sections": [
     "menota: DG-4at7-Streng"
    ]
   },
   "SC-1e12": {
-   "bundles": 86,
-   "decoy_share": 0.198,
-   "tokens": 694366,
+   "bundles": 90,
+   "decoy_share": 0.2,
+   "tokens": 698208,
    "licence_tags": {
-    "cc-by": 17,
-    "cc-by-sa": 386,
+    "cc-by": 19,
+    "cc-by-sa": 389,
+    "consent-train": 4,
     "gpl": 1,
-    "nc": 15,
-    "pd": 3,
-    "unchecked": 1
+    "nc": 13,
+    "pd": 1,
+    "unchecked": 2
    },
    "sections": [
     "menota: DG-4at7-Streng"
    ]
   },
   "SC-d178": {
-   "bundles": 100,
-   "decoy_share": 0.2,
-   "tokens": 696349,
+   "bundles": 98,
+   "decoy_share": 0.204,
+   "tokens": 696241,
    "licence_tags": {
-    "cc-by": 18,
-    "cc-by-sa": 376,
+    "cc-by": 13,
+    "cc-by-sa": 388,
     "consent-train": 13,
-    "nc": 11,
-    "pd": 3,
-    "unchecked": 3
+    "nc": 9,
+    "pd": 1,
+    "research": 1,
+    "unchecked": 2
    },
    "sections": [
     "menota: DG-4at7-Streng"
    ]
   },
   "SC-13ee": {
-   "bundles": 132,
-   "decoy_share": 0.205,
-   "tokens": 698822,
+   "bundles": 158,
+   "decoy_share": 0.196,
+   "tokens": 699531,
    "licence_tags": {
-    "cc-by": 27,
-    "cc-by-sa": 407,
-    "consent-train": 8,
-    "nc": 17,
-    "research": 2,
-    "unchecked": 1
+    "cc-by": 26,
+    "cc-by-sa": 412,
+    "consent-train": 11,
+    "nc": 18,
+    "research": 1
    },
    "sections": [
     "menota: DG-4at7-Streng",
@@ -2200,31 +2205,31 @@
    ]
   },
   "SC-7c3f": {
-   "bundles": 123,
-   "decoy_share": 0.195,
-   "tokens": 697022,
+   "bundles": 101,
+   "decoy_share": 0.208,
+   "tokens": 700198,
    "licence_tags": {
-    "cc-by": 14,
-    "cc-by-sa": 399,
-    "consent-train": 18,
+    "cc-by": 17,
+    "cc-by-sa": 388,
+    "consent-train": 15,
     "gpl": 1,
-    "nc": 11,
-    "pd": 1
+    "nc": 9,
+    "pd": 2,
+    "research": 1
    },
    "sections": [
-    "menota: DG-8-MLL",
     "menota: DG-8-OHleg"
    ]
   },
   "SC-e2e3": {
-   "bundles": 105,
-   "decoy_share": 0.2,
-   "tokens": 700871,
+   "bundles": 104,
+   "decoy_share": 0.202,
+   "tokens": 699410,
    "licence_tags": {
-    "cc-by": 28,
-    "cc-by-sa": 379,
-    "consent-train": 8,
-    "nc": 12,
+    "cc-by": 27,
+    "cc-by-sa": 376,
+    "consent-train": 14,
+    "nc": 14,
     "pd": 4,
     "research": 1,
     "unchecked": 5
@@ -2234,15 +2239,15 @@
    ]
   },
   "SC-ec2f": {
-   "bundles": 98,
-   "decoy_share": 0.194,
-   "tokens": 698228,
+   "bundles": 100,
+   "decoy_share": 0.19,
+   "tokens": 697679,
    "licence_tags": {
-    "cc-by": 22,
-    "cc-by-sa": 377,
+    "cc-by": 20,
+    "cc-by-sa": 375,
     "consent-train": 12,
     "nc": 14,
-    "pd": 3,
+    "pd": 2,
     "research": 1,
     "unchecked": 1
    },
@@ -2251,84 +2256,85 @@
    ]
   },
   "SC-e3c3": {
-   "bundles": 95,
-   "decoy_share": 0.211,
-   "tokens": 697713,
+   "bundles": 96,
+   "decoy_share": 0.208,
+   "tokens": 700749,
    "licence_tags": {
     "cc-by": 8,
-    "cc-by-sa": 371,
-    "consent-train": 18,
-    "nc": 15,
-    "pd": 5,
-    "research": 1,
-    "unchecked": 1
+    "cc-by-sa": 385,
+    "consent-train": 13,
+    "nc": 10,
+    "pd": 4,
+    "research": 1
    },
    "sections": [
     "menota: DG-8-OHleg"
    ]
   },
   "SC-852a": {
-   "bundles": 90,
-   "decoy_share": 0.2,
-   "tokens": 700564,
+   "bundles": 89,
+   "decoy_share": 0.191,
+   "tokens": 700814,
    "licence_tags": {
-    "cc-by": 10,
-    "cc-by-sa": 406,
-    "consent-train": 5,
-    "nc": 4,
-    "research": 3
+    "cc-by": 8,
+    "cc-by-sa": 402,
+    "consent-train": 9,
+    "nc": 2,
+    "research": 1,
+    "unchecked": 1
    },
    "sections": [
     "menota: DG-8-OHleg"
    ]
   },
   "SC-2bfb": {
-   "bundles": 97,
-   "decoy_share": 0.196,
-   "tokens": 695778,
+   "bundles": 99,
+   "decoy_share": 0.202,
+   "tokens": 700009,
    "licence_tags": {
-    "cc-by": 17,
+    "cc-by": 19,
     "cc-by-sa": 383,
     "consent-train": 12,
-    "nc": 8,
-    "pd": 3,
+    "gpl": 1,
+    "nc": 11,
+    "pd": 2,
     "research": 1,
-    "unchecked": 1
+    "unchecked": 2
    },
    "sections": [
     "menota: DG-8-OHleg"
    ]
   },
   "SC-664e": {
-   "bundles": 97,
-   "decoy_share": 0.206,
-   "tokens": 695609,
+   "bundles": 104,
+   "decoy_share": 0.202,
+   "tokens": 695813,
    "licence_tags": {
-    "cc-by": 11,
-    "cc-by-sa": 393,
-    "consent-train": 8,
+    "cc-by": 15,
+    "cc-by-sa": 391,
+    "consent-train": 5,
     "gpl": 1,
-    "nc": 15,
-    "pd": 4,
+    "nc": 12,
+    "pd": 5,
     "research": 1,
-    "unchecked": 1
+    "unchecked": 2
    },
    "sections": [
     "menota: DG-8-OHleg"
    ]
   },
   "SC-1b71": {
-   "bundles": 108,
-   "decoy_share": 0.204,
-   "tokens": 696011,
+   "bundles": 100,
+   "decoy_share": 0.2,
+   "tokens": 691278,
    "licence_tags": {
-    "cc-by": 20,
-    "cc-by-sa": 390,
-    "consent-train": 8,
-    "nc": 22,
-    "pd": 2,
+    "cc-by": 21,
+    "cc-by-sa": 384,
+    "consent-train": 11,
+    "nc": 19,
+    "pd": 4,
     "research": 2,
-    "unchecked": 2
+    "unchecked": 3
    },
    "sections": [
     "menota: DG-8-OHleg",
@@ -2338,30 +2344,30 @@
   },
   "SC-0caf": {
    "bundles": 96,
-   "decoy_share": 0.188,
-   "tokens": 695253,
+   "decoy_share": 0.198,
+   "tokens": 696061,
    "licence_tags": {
-    "cc-by": 25,
-    "cc-by-sa": 380,
-    "consent-train": 13,
-    "nc": 13,
-    "pd": 2
+    "cc-by": 22,
+    "cc-by-sa": 387,
+    "consent-train": 11,
+    "nc": 18,
+    "research": 1
    },
    "sections": [
     "menota: HolmPerg-17-4to"
    ]
   },
   "SC-f6f4": {
-   "bundles": 101,
-   "decoy_share": 0.198,
-   "tokens": 699229,
+   "bundles": 102,
+   "decoy_share": 0.206,
+   "tokens": 693859,
    "licence_tags": {
-    "cc-by": 13,
-    "cc-by-sa": 400,
-    "consent-train": 2,
-    "nc": 13,
-    "pd": 3,
-    "research": 2,
+    "cc-by": 10,
+    "cc-by-sa": 397,
+    "consent-train": 3,
+    "gpl": 1,
+    "nc": 6,
+    "pd": 2,
     "unchecked": 1
    },
    "sections": [
@@ -2371,12 +2377,13 @@
   "SC-48e5": {
    "bundles": 98,
    "decoy_share": 0.204,
-   "tokens": 698734,
+   "tokens": 692523,
    "licence_tags": {
-    "cc-by": 12,
-    "cc-by-sa": 397,
-    "consent-train": 3,
-    "nc": 11,
+    "cc-by": 18,
+    "cc-by-sa": 390,
+    "consent-train": 6,
+    "nc": 12,
+    "pd": 1,
     "research": 1,
     "unchecked": 1
    },
@@ -2385,16 +2392,15 @@
    ]
   },
   "SC-7995": {
-   "bundles": 93,
-   "decoy_share": 0.204,
-   "tokens": 692271,
+   "bundles": 97,
+   "decoy_share": 0.196,
+   "tokens": 692792,
    "licence_tags": {
-    "cc-by": 25,
-    "cc-by-sa": 370,
-    "consent-train": 11,
-    "nc": 15,
+    "cc-by": 26,
+    "cc-by-sa": 381,
+    "consent-train": 7,
+    "nc": 19,
     "pd": 2,
-    "research": 3,
     "unchecked": 1
    },
    "sections": [
@@ -2402,13 +2408,30 @@
    ]
   },
   "SC-ab8e": {
-   "bundles": 103,
-   "decoy_share": 0.204,
-   "tokens": 697701,
+   "bundles": 102,
+   "decoy_share": 0.196,
+   "tokens": 700832,
    "licence_tags": {
     "cc-by": 23,
     "cc-by-sa": 394,
-    "consent-train": 2,
+    "consent-train": 3,
+    "nc": 7,
+    "pd": 3,
+    "research": 1,
+    "unchecked": 4
+   },
+   "sections": [
+    "menota: HolmPerg-17-4to"
+   ]
+  },
+  "SC-bfd5": {
+   "bundles": 107,
+   "decoy_share": 0.206,
+   "tokens": 698179,
+   "licence_tags": {
+    "cc-by": 20,
+    "cc-by-sa": 373,
+    "consent-train": 10,
     "nc": 13,
     "pd": 2,
     "unchecked": 3
@@ -2417,102 +2440,85 @@
     "menota: HolmPerg-17-4to"
    ]
   },
-  "SC-bfd5": {
-   "bundles": 104,
-   "decoy_share": 0.192,
-   "tokens": 698327,
-   "licence_tags": {
-    "cc-by": 26,
-    "cc-by-sa": 376,
-    "consent-train": 10,
-    "nc": 10,
-    "pd": 1,
-    "research": 1,
-    "unchecked": 3
-   },
-   "sections": [
-    "menota: HolmPerg-17-4to"
-   ]
-  },
   "SC-a8e3": {
-   "bundles": 97,
-   "decoy_share": 0.196,
-   "tokens": 695087,
+   "bundles": 98,
+   "decoy_share": 0.194,
+   "tokens": 701181,
    "licence_tags": {
-    "cc-by": 5,
+    "cc-by": 14,
     "cc-by-sa": 382,
-    "consent-train": 11,
-    "nc": 11,
-    "pd": 5,
-    "research": 1,
-    "unchecked": 1
+    "consent-train": 16,
+    "nc": 12,
+    "pd": 3,
+    "research": 1
    },
    "sections": [
     "menota: HolmPerg-17-4to"
    ]
   },
   "SC-09f3": {
-   "bundles": 100,
-   "decoy_share": 0.21,
-   "tokens": 700091,
+   "bundles": 96,
+   "decoy_share": 0.208,
+   "tokens": 698997,
    "licence_tags": {
-    "cc-by": 18,
-    "cc-by-sa": 389,
-    "consent-train": 13,
+    "cc-by": 20,
+    "cc-by-sa": 385,
+    "consent-train": 8,
     "gpl": 1,
     "nc": 10,
     "pd": 1,
-    "research": 2,
-    "unchecked": 1
-   },
-   "sections": [
-    "menota: HolmPerg-17-4to"
-   ]
-  },
-  "SC-8c5e": {
-   "bundles": 97,
-   "decoy_share": 0.196,
-   "tokens": 700676,
-   "licence_tags": {
-    "cc-by": 20,
-    "cc-by-sa": 402,
-    "consent-train": 1,
-    "nc": 14,
+    "research": 3,
     "unchecked": 4
    },
    "sections": [
     "menota: HolmPerg-17-4to"
    ]
   },
-  "SC-89ff": {
-   "bundles": 153,
-   "decoy_share": 0.203,
-   "tokens": 693417,
+  "SC-8c5e": {
+   "bundles": 109,
+   "decoy_share": 0.193,
+   "tokens": 697599,
    "licence_tags": {
-    "cc-by": 51,
-    "cc-by-sa": 391,
-    "consent-train": 14,
+    "cc-by": 28,
+    "cc-by-sa": 400,
+    "consent-train": 8,
     "nc": 13,
-    "pd": 1,
-    "research": 3
+    "unchecked": 3
    },
    "sections": [
     "menota: HolmPerg-17-4to",
     "menota: HolmPerg-30-4to"
    ]
   },
-  "SC-941c": {
-   "bundles": 149,
-   "decoy_share": 0.195,
-   "tokens": 699837,
+  "SC-89ff": {
+   "bundles": 159,
+   "decoy_share": 0.201,
+   "tokens": 696609,
    "licence_tags": {
-    "cc-by": 41,
-    "cc-by-sa": 418,
-    "consent-train": 16,
-    "nc": 29,
-    "pd": 5,
-    "research": 2,
-    "unchecked": 2
+    "cc-by": 44,
+    "cc-by-sa": 393,
+    "consent-train": 17,
+    "gpl": 4,
+    "nc": 30,
+    "pd": 2,
+    "research": 4
+   },
+   "sections": [
+    "menota: HolmPerg-30-4to",
+    "menota: HolmPerg-34-4to-MLB"
+   ]
+  },
+  "SC-941c": {
+   "bundles": 154,
+   "decoy_share": 0.201,
+   "tokens": 695338,
+   "licence_tags": {
+    "cc-by": 45,
+    "cc-by-sa": 426,
+    "consent-train": 12,
+    "nc": 15,
+    "pd": 7,
+    "research": 3
    },
    "sections": [
     "menota: HolmPerg-34-4to-MLB",
@@ -2520,98 +2526,102 @@
    ]
   },
   "SC-73b7": {
-   "bundles": 147,
-   "decoy_share": 0.204,
-   "tokens": 700217,
+   "bundles": 148,
+   "decoy_share": 0.196,
+   "tokens": 700288,
    "licence_tags": {
-    "cc-by": 45,
-    "cc-by-sa": 422,
-    "consent-train": 19,
-    "nc": 25,
-    "pd": 3,
-    "research": 4
+    "cc-by": 36,
+    "cc-by-sa": 432,
+    "consent-train": 11,
+    "nc": 27,
+    "pd": 1,
+    "research": 4,
+    "unchecked": 1
    },
    "sections": [
     "menota: HolmPerg-34-4to-MLL"
    ]
   },
   "SC-8759": {
-   "bundles": 155,
-   "decoy_share": 0.2,
-   "tokens": 697564,
+   "bundles": 147,
+   "decoy_share": 0.197,
+   "tokens": 665727,
    "licence_tags": {
-    "cc-by": 39,
-    "cc-by-sa": 449,
-    "consent-train": 11,
-    "nc": 25,
-    "pd": 3,
-    "research": 1
+    "cc-by": 43,
+    "cc-by-sa": 423,
+    "consent-train": 15,
+    "nc": 23,
+    "pd": 5,
+    "research": 2,
+    "unchecked": 1
    },
    "sections": [
     "menota: HolmPerg-34-4to-MLL"
    ]
   },
   "SC-d621": {
-   "bundles": 154,
-   "decoy_share": 0.201,
-   "tokens": 696006,
-   "licence_tags": {
-    "cc-by": 29,
-    "cc-by-sa": 459,
-    "consent-train": 17,
-    "nc": 17,
-    "pd": 4,
-    "research": 6,
-    "unchecked": 1
-   },
-   "sections": [
-    "menota: HolmPerg-34-4to-MLL",
-    "menota: HolmPerg-4-fol"
-   ]
-  },
-  "SC-4a99": {
    "bundles": 146,
-   "decoy_share": 0.199,
-   "tokens": 698043,
+   "decoy_share": 0.205,
+   "tokens": 698531,
    "licence_tags": {
-    "cc-by": 13,
-    "cc-by-sa": 452,
-    "consent-train": 14,
-    "nc": 17,
-    "pd": 5,
-    "research": 2,
+    "cc-by": 24,
+    "cc-by-sa": 460,
+    "consent-train": 10,
+    "nc": 12,
+    "pd": 10,
+    "research": 8,
     "unchecked": 3
    },
    "sections": [
     "menota: HolmPerg-4-fol"
    ]
   },
+  "SC-4a99": {
+   "bundles": 153,
+   "decoy_share": 0.203,
+   "tokens": 698323,
+   "licence_tags": {
+    "cc-by": 17,
+    "cc-by-sa": 455,
+    "consent-train": 17,
+    "nc": 17,
+    "pd": 1,
+    "research": 1,
+    "unchecked": 1
+   },
+   "sections": [
+    "menota: HolmPerg-4-fol"
+   ]
+  },
   "SC-542f": {
-   "bundles": 156,
-   "decoy_share": 0.199,
-   "tokens": 695586,
+   "bundles": 169,
+   "decoy_share": 0.195,
+   "tokens": 696235,
    "licence_tags": {
     "cc-by": 16,
-    "cc-by-sa": 469,
-    "consent-train": 12,
-    "nc": 18,
-    "pd": 2
+    "cc-by-sa": 474,
+    "consent-train": 9,
+    "nc": 15,
+    "pd": 6,
+    "research": 4,
+    "unchecked": 1
    },
    "sections": [
     "menota: HolmPerg-4-fol"
    ]
   },
   "SC-47ac": {
-   "bundles": 185,
-   "decoy_share": 0.2,
-   "tokens": 699330,
+   "bundles": 173,
+   "decoy_share": 0.202,
+   "tokens": 700556,
    "licence_tags": {
-    "cc-by": 26,
-    "cc-by-sa": 452,
-    "consent-train": 19,
-    "nc": 21,
-    "pd": 9,
-    "research": 5
+    "cc-by": 30,
+    "cc-by-sa": 451,
+    "consent-train": 14,
+    "nc": 17,
+    "pd": 4,
+    "research": 1,
+    "unchecked": 2
    },
    "sections": [
     "menota: HolmPerg-4-fol"
@@ -2620,46 +2630,50 @@
   "SC-b552": {
    "bundles": 144,
    "decoy_share": 0.201,
-   "tokens": 698398,
+   "tokens": 697874,
    "licence_tags": {
-    "cc-by": 24,
-    "cc-by-sa": 434,
-    "consent-train": 10,
-    "nc": 9,
-    "pd": 3,
-    "unchecked": 2
+    "cc-by": 17,
+    "cc-by-sa": 439,
+    "consent-train": 9,
+    "gpl": 1,
+    "nc": 12,
+    "pd": 2,
+    "research": 2,
+    "unchecked": 4
    },
    "sections": [
     "menota: HolmPerg-4-fol"
    ]
   },
   "SC-5e80": {
-   "bundles": 127,
-   "decoy_share": 0.197,
-   "tokens": 620369,
+   "bundles": 118,
+   "decoy_share": 0.195,
+   "tokens": 693975,
    "licence_tags": {
-    "cc-by": 16,
-    "cc-by-sa": 403,
-    "consent-train": 4,
-    "nc": 11,
-    "pd": 3,
-    "research": 3,
+    "cc-by": 21,
+    "cc-by-sa": 418,
+    "consent-train": 9,
+    "nc": 8,
+    "pd": 4,
+    "research": 1,
     "unchecked": 1
    },
    "sections": [
-    "menota: HolmPerg-4-fol"
+    "menota: HolmPerg-4-fol",
+    "menota: HolmPerg-6-fol"
    ]
   },
   "SC-be36": {
-   "bundles": 94,
-   "decoy_share": 0.202,
-   "tokens": 699995,
+   "bundles": 97,
+   "decoy_share": 0.206,
+   "tokens": 698078,
    "licence_tags": {
-    "cc-by": 15,
-    "cc-by-sa": 385,
-    "consent-train": 9,
-    "nc": 14,
-    "pd": 5,
+    "cc-by": 21,
+    "cc-by-sa": 383,
+    "consent-train": 8,
+    "nc": 17,
+    "pd": 7,
+    "research": 5,
     "unchecked": 1
    },
    "sections": [
@@ -2667,48 +2681,15 @@
    ]
   },
   "SC-5ec9": {
-   "bundles": 101,
-   "decoy_share": 0.198,
-   "tokens": 701099,
+   "bundles": 105,
+   "decoy_share": 0.2,
+   "tokens": 699415,
    "licence_tags": {
-    "cc-by": 17,
-    "cc-by-sa": 393,
+    "cc-by": 20,
+    "cc-by-sa": 387,
     "consent-train": 9,
-    "gpl": 1,
-    "nc": 13,
-    "pd": 5,
-    "research": 4
-   },
-   "sections": [
-    "menota: HolmPerg-6-fol"
-   ]
-  },
-  "SC-2e0c": {
-   "bundles": 99,
-   "decoy_share": 0.202,
-   "tokens": 697158,
-   "licence_tags": {
-    "cc-by": 25,
-    "cc-by-sa": 386,
-    "consent-train": 4,
-    "nc": 21,
-    "pd": 6,
-    "unchecked": 1
-   },
-   "sections": [
-    "menota: HolmPerg-6-fol"
-   ]
-  },
-  "SC-4e79": {
-   "bundles": 114,
-   "decoy_share": 0.202,
-   "tokens": 693755,
-   "licence_tags": {
-    "cc-by": 31,
-    "cc-by-sa": 388,
-    "consent-train": 8,
-    "nc": 11,
-    "pd": 2,
+    "nc": 22,
+    "pd": 7,
     "research": 1,
     "unchecked": 2
    },
@@ -2716,35 +2697,66 @@
     "menota: HolmPerg-6-fol"
    ]
   },
-  "SC-ee4d": {
-   "bundles": 101,
-   "decoy_share": 0.198,
-   "tokens": 699994,
+  "SC-2e0c": {
+   "bundles": 105,
+   "decoy_share": 0.2,
+   "tokens": 700013,
    "licence_tags": {
-    "cc-by": 20,
-    "cc-by-sa": 401,
-    "consent-train": 6,
+    "cc-by": 17,
+    "cc-by-sa": 407,
+    "consent-train": 5,
+    "nc": 13,
+    "pd": 2,
+    "unchecked": 2
+   },
+   "sections": [
+    "menota: HolmPerg-6-fol"
+   ]
+  },
+  "SC-4e79": {
+   "bundles": 109,
+   "decoy_share": 0.202,
+   "tokens": 699083,
+   "licence_tags": {
+    "cc-by": 34,
+    "cc-by-sa": 381,
+    "consent-train": 7,
+    "nc": 9,
+    "pd": 6,
+    "research": 2,
+    "unchecked": 3
+   },
+   "sections": [
+    "menota: HolmPerg-6-fol"
+   ]
+  },
+  "SC-ee4d": {
+   "bundles": 108,
+   "decoy_share": 0.194,
+   "tokens": 697133,
+   "licence_tags": {
+    "cc-by": 15,
+    "cc-by-sa": 404,
+    "consent-train": 7,
     "gpl": 1,
     "nc": 8,
-    "pd": 10
+    "pd": 8,
+    "unchecked": 1
    },
    "sections": [
     "menota: HolmPerg-6-fol"
    ]
   },
   "SC-80bd": {
-   "bundles": 116,
-   "decoy_share": 0.198,
-   "tokens": 700856,
+   "bundles": 113,
+   "decoy_share": 0.204,
+   "tokens": 693165,
    "licence_tags": {
-    "cc-by": 14,
-    "cc-by-sa": 402,
-    "consent-train": 9,
-    "gpl": 1,
-    "nc": 15,
-    "pd": 2,
-    "research": 1,
-    "unchecked": 1
+    "cc-by": 22,
+    "cc-by-sa": 397,
+    "consent-train": 10,
+    "nc": 10,
+    "research": 1
    },
    "sections": [
     "menota: HolmPerg-6-fol"
@@ -2753,28 +2765,29 @@
   "SC-78d2": {
    "bundles": 110,
    "decoy_share": 0.2,
-   "tokens": 697788,
+   "tokens": 696379,
    "licence_tags": {
-    "cc-by": 32,
-    "cc-by-sa": 384,
-    "consent-train": 18,
-    "nc": 16,
-    "pd": 1
+    "cc-by": 23,
+    "cc-by-sa": 380,
+    "consent-train": 16,
+    "nc": 21,
+    "unchecked": 1
    },
    "sections": [
     "menota: HolmPerg-6-fol"
    ]
   },
   "SC-8cbf": {
-   "bundles": 116,
-   "decoy_share": 0.207,
-   "tokens": 692711,
+   "bundles": 108,
+   "decoy_share": 0.194,
+   "tokens": 696188,
    "licence_tags": {
-    "cc-by": 24,
-    "cc-by-sa": 385,
-    "consent-train": 6,
-    "nc": 28,
-    "research": 1,
+    "cc-by": 22,
+    "cc-by-sa": 401,
+    "consent-train": 5,
+    "gpl": 1,
+    "nc": 17,
+    "research": 2,
     "unchecked": 1
    },
    "sections": [
@@ -2782,17 +2795,15 @@
    ]
   },
   "SC-0ca3": {
-   "bundles": 106,
-   "decoy_share": 0.189,
-   "tokens": 698845,
+   "bundles": 115,
+   "decoy_share": 0.209,
+   "tokens": 699515,
    "licence_tags": {
-    "cc-by": 22,
-    "cc-by-sa": 394,
+    "cc-by": 24,
+    "cc-by-sa": 402,
     "consent-train": 8,
-    "gpl": 1,
-    "nc": 7,
-    "pd": 2,
-    "research": 2,
+    "nc": 11,
+    "pd": 3,
     "unchecked": 2
    },
    "sections": [
@@ -2800,253 +2811,233 @@
    ]
   },
   "SC-4b28": {
-   "bundles": 114,
-   "decoy_share": 0.211,
-   "tokens": 696451,
+   "bundles": 109,
+   "decoy_share": 0.193,
+   "tokens": 694922,
    "licence_tags": {
-    "cc-by": 17,
-    "cc-by-sa": 410,
+    "cc-by": 15,
+    "cc-by-sa": 395,
     "consent-train": 5,
-    "nc": 10,
-    "pd": 2,
-    "unchecked": 1
+    "nc": 15,
+    "research": 1
    },
    "sections": [
     "menota: HolmPerg-6-fol"
    ]
   },
   "SC-6085": {
-   "bundles": 106,
-   "decoy_share": 0.189,
-   "tokens": 701530,
+   "bundles": 100,
+   "decoy_share": 0.21,
+   "tokens": 670581,
    "licence_tags": {
-    "cc-by": 12,
-    "cc-by-sa": 391,
-    "consent-train": 8,
-    "nc": 13,
-    "pd": 1,
-    "research": 1,
-    "unchecked": 2
+    "cc-by": 11,
+    "cc-by-sa": 382,
+    "consent-train": 16,
+    "nc": 9,
+    "pd": 1
    },
    "sections": [
     "menota: HolmPerg-6-fol"
    ]
   },
   "SC-6743": {
-   "bundles": 104,
-   "decoy_share": 0.212,
-   "tokens": 616763,
+   "bundles": 128,
+   "decoy_share": 0.195,
+   "tokens": 617740,
    "licence_tags": {
-    "cc-by": 9,
-    "cc-by-sa": 360,
-    "consent-train": 17,
+    "cc-by": 18,
+    "cc-by-sa": 380,
+    "consent-train": 11,
     "gpl": 1,
-    "nc": 14,
-    "pd": 3,
-    "research": 2
+    "nc": 26,
+    "pd": 4,
+    "research": 2,
+    "unchecked": 2
    },
    "sections": [
-    "menota: HolmPerg-6-fol",
     "menota: Lbs-fragm-82",
     "menota: NKS-235-g-4to",
+    "menota: NRA-norrfragm-51",
     "...",
-    "menota: NRA-norrfragm-53"
+    "menota: NRA-norrfragm-58-C"
    ]
   },
   "SC-ebee": {
-   "bundles": 146,
-   "decoy_share": 0.199,
-   "tokens": 604370,
+   "bundles": 164,
+   "decoy_share": 0.201,
+   "tokens": 669496,
    "licence_tags": {
-    "cc-by": 33,
-    "cc-by-sa": 389,
-    "consent-train": 10,
-    "nc": 24,
-    "pd": 3,
-    "research": 1,
-    "unchecked": 4
+    "cc-by": 37,
+    "cc-by-sa": 436,
+    "consent-train": 9,
+    "nc": 19,
+    "pd": 6,
+    "unchecked": 1
    },
    "sections": [
-    "menota: NRA-norrfragm-54",
-    "menota: NRA-norrfragm-55-A",
-    "menota: NRA-norrfragm-55-B",
+    "menota: NRA-norrfragm-59",
+    "menota: NRA-norrfragm-60-A",
+    "menota: NRA-norrfragm-60-C",
     "...",
-    "menota: NRA-norrfragm-67"
+    "menota: NRA-norrfragm-80"
    ]
   },
   "SC-e44f": {
-   "bundles": 158,
-   "decoy_share": 0.196,
-   "tokens": 700738,
+   "bundles": 169,
+   "decoy_share": 0.201,
+   "tokens": 700169,
    "licence_tags": {
-    "cc-by": 33,
-    "cc-by-sa": 457,
+    "cc-by": 36,
+    "cc-by-sa": 463,
     "consent-train": 9,
-    "nc": 17,
-    "pd": 5
+    "nc": 23,
+    "pd": 5,
+    "research": 2
    },
    "sections": [
-    "menota: NRA-norrfragm-68",
-    "menota: NRA-norrfragm-69",
-    "menota: NRA-norrfragm-7",
-    "...",
+    "menota: NRA-norrfragm-81-B",
+    "menota: TuebUB-Me-II-2",
     "menota: Wolf-Aug-9-10-4to"
    ]
   },
   "SC-d9b3": {
-   "bundles": 171,
-   "decoy_share": 0.199,
-   "tokens": 679236,
+   "bundles": 149,
+   "decoy_share": 0.195,
+   "tokens": 700273,
    "licence_tags": {
-    "cc-by": 31,
-    "cc-by-sa": 452,
-    "consent-train": 8,
-    "nc": 33,
-    "pd": 8,
+    "cc-by": 122,
+    "cc-by-sa": 343,
+    "consent-train": 9,
+    "nc": 26,
+    "pd": 16,
     "research": 1,
     "unchecked": 1
    },
    "sections": [
-    "menota: Wolf-Aug-9-10-4to"
-   ]
-  },
-  "SC-c59a": {
-   "bundles": 147,
-   "decoy_share": 0.197,
-   "tokens": 699257,
-   "licence_tags": {
-    "cc-by": 183,
-    "cc-by-sa": 278,
-    "consent-train": 5,
-    "nc": 28,
-    "pd": 8
-   },
-   "sections": [
+    "menota: Wolf-Aug-9-10-4to",
     "icepahc: 1150.firstgrammar.sci-lin",
     "icepahc: 1150.homiliubok.rel-ser"
    ]
   },
-  "SC-85a2": {
-   "bundles": 139,
-   "decoy_share": 0.209,
-   "tokens": 699833,
+  "SC-c59a": {
+   "bundles": 143,
+   "decoy_share": 0.203,
+   "tokens": 696797,
    "licence_tags": {
-    "cc-by": 167,
-    "cc-by-sa": 314,
-    "consent-train": 3,
+    "cc-by": 168,
+    "cc-by-sa": 304,
+    "consent-train": 2,
     "gpl": 1,
-    "nc": 13,
-    "pd": 4,
-    "research": 1,
-    "unchecked": 1
+    "nc": 18,
+    "pd": 2
+   },
+   "sections": [
+    "icepahc: 1150.homiliubok.rel-ser"
+   ]
+  },
+  "SC-85a2": {
+   "bundles": 134,
+   "decoy_share": 0.201,
+   "tokens": 696098,
+   "licence_tags": {
+    "cc-by": 154,
+    "cc-by-sa": 303,
+    "consent-train": 9,
+    "nc": 18,
+    "pd": 6,
+    "unchecked": 3
    },
    "sections": [
     "icepahc: 1150.homiliubok.rel-ser"
    ]
   },
   "SC-1ef2": {
-   "bundles": 140,
-   "decoy_share": 0.2,
-   "tokens": 692974,
+   "bundles": 149,
+   "decoy_share": 0.201,
+   "tokens": 688104,
    "licence_tags": {
-    "cc-by": 157,
-    "cc-by-sa": 305,
-    "consent-train": 9,
-    "nc": 16,
-    "pd": 4,
-    "unchecked": 3
-   },
-   "sections": [
-    "icepahc: 1150.homiliubok.rel-ser",
-    "icepahc: 1210.jartein.rel-sag"
-   ]
-  },
-  "SC-5cbf": {
-   "bundles": 146,
-   "decoy_share": 0.192,
-   "tokens": 653013,
-   "licence_tags": {
-    "cc-by": 180,
-    "cc-by-sa": 272,
+    "cc-by": 179,
+    "cc-by-sa": 292,
     "consent-train": 5,
-    "nc": 15,
-    "pd": 4,
+    "nc": 13,
+    "pd": 3,
     "research": 2,
     "unchecked": 1
    },
    "sections": [
+    "icepahc: 1150.homiliubok.rel-ser",
     "icepahc: 1210.jartein.rel-sag",
-    "icepahc: 1210.thorlakur.rel-sag",
-    "icepahc: 1250.sturlunga.nar-sag",
-    "...",
-    "icepahc: 1250.thetubrot.nar-sag"
+    "icepahc: 1210.thorlakur.rel-sag"
    ]
   },
-  "SC-5c23": {
-   "bundles": 142,
-   "decoy_share": 0.204,
-   "tokens": 647403,
+  "SC-5cbf": {
+   "bundles": 160,
+   "decoy_share": 0.2,
+   "tokens": 698317,
    "licence_tags": {
-    "cc-by": 163,
-    "cc-by-sa": 283,
-    "consent-train": 14,
-    "nc": 9,
-    "pd": 2,
+    "cc-by": 189,
+    "cc-by-sa": 299,
+    "consent-train": 11,
+    "nc": 16,
+    "pd": 3,
     "research": 2,
     "unchecked": 4
    },
    "sections": [
+    "icepahc: 1250.sturlunga.nar-sag",
+    "icepahc: 1250.thetubrot.nar-sag",
     "icepahc: 1260.jomsvikingar.nar-sag"
    ]
   },
-  "SC-d5e7": {
-   "bundles": 165,
-   "decoy_share": 0.2,
-   "tokens": 680906,
+  "SC-5c23": {
+   "bundles": 160,
+   "decoy_share": 0.194,
+   "tokens": 695689,
    "licence_tags": {
-    "cc-by": 208,
-    "cc-by-sa": 269,
-    "consent-train": 16,
+    "cc-by": 204,
+    "cc-by-sa": 277,
+    "consent-train": 14,
     "gpl": 4,
-    "nc": 21,
+    "nc": 18,
     "pd": 7,
-    "research": 2,
+    "research": 1,
     "unchecked": 1
    },
    "sections": [
+    "icepahc: 1260.jomsvikingar.nar-sag",
     "icepahc: 1270.gragas.law-law",
     "icepahc: 1275.morkin.nar-his"
    ]
   },
-  "SC-1f5a": {
-   "bundles": 150,
-   "decoy_share": 0.207,
-   "tokens": 695168,
+  "SC-d5e7": {
+   "bundles": 159,
+   "decoy_share": 0.201,
+   "tokens": 699773,
    "licence_tags": {
-    "cc-by": 174,
-    "cc-by-sa": 298,
-    "consent-train": 7,
-    "nc": 12,
+    "cc-by": 181,
+    "cc-by-sa": 300,
+    "consent-train": 14,
+    "nc": 14,
     "pd": 3,
-    "research": 1,
-    "unchecked": 1
+    "unchecked": 2
    },
    "sections": [
+    "icepahc: 1275.morkin.nar-his",
     "icepahc: 1300.alexander.nar-sag"
    ]
   },
-  "SC-bea4": {
+  "SC-1f5a": {
    "bundles": 166,
-   "decoy_share": 0.193,
-   "tokens": 700332,
+   "decoy_share": 0.199,
+   "tokens": 700613,
    "licence_tags": {
-    "cc-by": 189,
-    "cc-by-sa": 289,
-    "consent-train": 7,
+    "cc-by": 190,
+    "cc-by-sa": 283,
+    "consent-train": 11,
     "nc": 25,
     "pd": 5,
     "research": 1,
-    "unchecked": 1
+    "unchecked": 2
    },
    "sections": [
     "icepahc: 1300.alexander.nar-sag",
@@ -3054,1071 +3045,1076 @@
     "icepahc: 1325.arni.nar-sag"
    ]
   },
-  "SC-948b": {
-   "bundles": 170,
-   "decoy_share": 0.206,
-   "tokens": 697485,
+  "SC-bea4": {
+   "bundles": 159,
+   "decoy_share": 0.201,
+   "tokens": 654505,
    "licence_tags": {
-    "cc-by": 203,
-    "cc-by-sa": 295,
-    "consent-train": 8,
-    "nc": 26,
+    "cc-by": 184,
+    "cc-by-sa": 284,
+    "consent-train": 7,
+    "nc": 13,
     "pd": 1,
-    "research": 1,
-    "unchecked": 4
+    "research": 3,
+    "unchecked": 1
    },
    "sections": [
     "icepahc: 1325.arni.nar-sag",
     "icepahc: 1350.bandamennM.nar-sag",
-    "icepahc: 1350.finnbogi.nar-sag",
-    "...",
-    "icepahc: 1350.marta.rel-sag"
+    "icepahc: 1350.finnbogi.nar-sag"
    ]
   },
-  "SC-c7cf": {
+  "SC-948b": {
    "bundles": 136,
-   "decoy_share": 0.191,
-   "tokens": 547847,
+   "decoy_share": 0.199,
+   "tokens": 614075,
    "licence_tags": {
-    "cc-by": 156,
-    "cc-by-sa": 229,
-    "consent-train": 12,
-    "nc": 16,
-    "pd": 2,
-    "research": 1,
-    "unchecked": 1
-   },
-   "sections": [
-    "icepahc: 1350.marta.rel-sag",
-    "icepahc: 1400.gunnar.nar-sag",
-    "icepahc: 1400.gunnar2.nar-sag",
-    "...",
-    "icepahc: 1400.viglundur.nar-sag"
-   ]
-  },
-  "SC-e154": {
-   "bundles": 89,
-   "decoy_share": 0.213,
-   "tokens": 649163,
-   "licence_tags": {
-    "cc-by": 30,
-    "cc-by-sa": 280,
-    "consent-train": 7,
-    "nc": 100,
-    "pd": 3
-   },
-   "sections": [
-    "rea-goh: Benediktiner_Regel/B_32",
-    "rea-goh: Benediktiner_Regel/B_16",
-    "rea-goh: Benediktiner_Regel/B_42",
-    "...",
-    "rea-goh: Benediktiner_Regel/B_0"
-   ]
-  },
-  "SC-99c4": {
-   "bundles": 95,
-   "decoy_share": 0.189,
-   "tokens": 692250,
-   "licence_tags": {
-    "cc-by": 32,
-    "cc-by-sa": 290,
-    "consent-train": 9,
-    "nc": 109,
-    "pd": 5,
+    "cc-by": 161,
+    "cc-by-sa": 254,
+    "consent-train": 10,
+    "nc": 26,
+    "pd": 1,
     "research": 1
    },
    "sections": [
-    "rea-goh: Benediktiner_Regel/B_49",
-    "rea-goh: Benediktiner_Regel/B_35",
-    "rea-goh: Benediktiner_Regel/B_31",
+    "icepahc: 1350.marta.rel-sag",
+    "icepahc: 1400.gunnar.nar-sag"
+   ]
+  },
+  "SC-c7cf": {
+   "bundles": 113,
+   "decoy_share": 0.204,
+   "tokens": 605101,
+   "licence_tags": {
+    "cc-by": 79,
+    "cc-by-sa": 264,
+    "consent-train": 7,
+    "nc": 68,
+    "pd": 2,
+    "unchecked": 1
+   },
+   "sections": [
+    "icepahc: 1400.gunnar2.nar-sag",
+    "icepahc: 1400.viglundur.nar-sag",
+    "rea-goh: Benediktiner_Regel/B_32",
     "...",
-    "rea-goh: Benediktiner_Regel/B_7"
+    "rea-goh: Benediktiner_Regel/B_6"
+   ]
+  },
+  "SC-e154": {
+   "bundles": 91,
+   "decoy_share": 0.198,
+   "tokens": 631474,
+   "licence_tags": {
+    "cc-by": 16,
+    "cc-by-sa": 263,
+    "consent-train": 8,
+    "nc": 108,
+    "pd": 7,
+    "research": 1
+   },
+   "sections": [
+    "rea-goh: Benediktiner_Regel/B_11",
+    "rea-goh: Benediktiner_Regel/B_21",
+    "rea-goh: Benediktiner_Regel/B_17",
+    "...",
+    "rea-goh: Benediktiner_Regel/B_58"
+   ]
+  },
+  "SC-99c4": {
+   "bundles": 71,
+   "decoy_share": 0.211,
+   "tokens": 617808,
+   "licence_tags": {
+    "cc-by": 32,
+    "cc-by-sa": 266,
+    "consent-train": 8,
+    "nc": 91,
+    "research": 1
+   },
+   "sections": [
+    "rea-goh: Benediktiner_Regel/B_39",
+    "rea-goh: Benediktiner_Regel/B_65",
+    "rea-goh: Benediktiner_Regel/B_7",
+    "...",
+    "rea-goh: Isidor/I_DeFide_6"
    ]
   },
   "SC-26b1": {
-   "bundles": 78,
-   "decoy_share": 0.205,
-   "tokens": 620411,
+   "bundles": 75,
+   "decoy_share": 0.2,
+   "tokens": 604060,
    "licence_tags": {
-    "cc-by": 10,
-    "cc-by-sa": 273,
-    "consent-train": 5,
-    "nc": 103,
-    "pd": 1,
+    "cc-by": 14,
+    "cc-by-sa": 250,
+    "consent-train": 2,
+    "nc": 97,
+    "pd": 3,
+    "research": 1
+   },
+   "sections": [
+    "rea-goh: Isidor/I_DeFide_9",
+    "rea-goh: Isidor/I_DeFide_4",
+    "rea-goh: Isidor/I_DeFide_3",
+    "...",
+    "rea-goh: Isidor/I_DeFide_5"
+   ]
+  },
+  "SC-c3e1": {
+   "bundles": 90,
+   "decoy_share": 0.2,
+   "tokens": 616536,
+   "licence_tags": {
+    "cc-by": 30,
+    "cc-by-sa": 230,
+    "consent-train": 8,
+    "nc": 123,
+    "research": 1
+   },
+   "sections": [
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/CM_ContraMalumMalannum",
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/BGb_St.Emmerander_Gebet_B",
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/BB_BruchstueckeinerBeichte",
+    "...",
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/WB_Wzb.Beichte"
+   ]
+  },
+  "SC-6e7d": {
+   "bundles": 93,
+   "decoy_share": 0.194,
+   "tokens": 612429,
+   "licence_tags": {
+    "cc-by": 36,
+    "cc-by-sa": 236,
+    "consent-train": 9,
+    "nc": 117,
+    "pd": 3
+   },
+   "sections": [
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/LS_Bienensegen",
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/GC_SangalerCredo",
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/C_CarmenAdDeum",
+    "...",
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/RhC_Rheinfränkische_Cantica"
+   ]
+  },
+  "SC-53c2": {
+   "bundles": 101,
+   "decoy_share": 0.208,
+   "tokens": 694538,
+   "licence_tags": {
+    "cc-by": 42,
+    "cc-by-sa": 259,
+    "consent-train": 9,
+    "nc": 128,
+    "pd": 7,
     "research": 1,
     "unchecked": 1
    },
    "sections": [
-    "rea-goh: Benediktiner_Regel/B_7",
-    "rea-goh: Benediktiner_Regel/B_18",
-    "rea-goh: Benediktiner_Regel/B_57",
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/H_Hildebrandlied",
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/GGB2_SangallerGlaubenBeichteII",
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/WS_Wiener_Hundesegen",
     "...",
-    "rea-goh: Isidor/I_DeFide_4"
-   ]
-  },
-  "SC-c3e1": {
-   "bundles": 80,
-   "decoy_share": 0.2,
-   "tokens": 615961,
-   "licence_tags": {
-    "cc-by": 29,
-    "cc-by-sa": 242,
-    "consent-train": 4,
-    "nc": 110,
-    "pd": 2,
-    "research": 2,
-    "unchecked": 1
-   },
-   "sections": [
-    "rea-goh: Isidor/I_DeFide_3",
-    "rea-goh: Isidor/I_DeFide_5",
-    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/CM_ContraMalumMalannum",
-    "...",
-    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/CH_ChristusundSamariterin"
-   ]
-  },
-  "SC-6e7d": {
-   "bundles": 90,
-   "decoy_share": 0.2,
-   "tokens": 615309,
-   "licence_tags": {
-    "cc-by": 35,
-    "cc-by-sa": 233,
-    "consent-train": 7,
-    "nc": 120,
-    "unchecked": 1
-   },
-   "sections": [
-    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/AGB_AlemGlaubenundBeichte",
-    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/FP1_FreisingerPaternoster1",
-    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/BGa_St.Emmeraner_Gebet_A",
-    "...",
-    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/GGB3_SangallerGlaubenBeichteIII"
-   ]
-  },
-  "SC-53c2": {
-   "bundles": 104,
-   "decoy_share": 0.192,
-   "tokens": 687941,
-   "licence_tags": {
-    "cc-by": 39,
-    "cc-by-sa": 258,
-    "consent-train": 13,
-    "nc": 130,
-    "pd": 10
-   },
-   "sections": [
-    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/LB_LorscherBeichte",
-    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/FB_Fuldaer_Beichte",
-    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/L_Ludwigslied",
-    "...",
-    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/WK_Weissenburger_Katechismus"
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/APB_PredigtsammlungB"
    ]
   },
   "SC-d2e0": {
    "bundles": 90,
-   "decoy_share": 0.211,
-   "tokens": 617837,
+   "decoy_share": 0.2,
+   "tokens": 664264,
    "licence_tags": {
-    "cc-by": 26,
-    "cc-by-sa": 247,
-    "consent-train": 4,
-    "nc": 116,
-    "research": 2,
+    "cc-by": 25,
+    "cc-by-sa": 287,
+    "consent-train": 5,
+    "nc": 114,
+    "pd": 2,
     "unchecked": 1
    },
    "sections": [
-    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/WM2_Wuerzburger_Markbeschreibung_2",
-    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/FT_Fraenkisches_Taufgeloebnis",
-    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/GGB1_SangallerBeichte_I",
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/APB_PredigtsammlungB",
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/G_Georgslied_Tschirch",
+    "rea-goh: Monsee/MF_1_M.XXV",
     "...",
-    "rea-goh: Monsee/MF_3_FC.XXXIII"
+    "rea-goh: Monsee/MF_1_M.X"
    ]
   },
   "SC-c83d": {
-   "bundles": 83,
-   "decoy_share": 0.193,
-   "tokens": 613035,
+   "bundles": 96,
+   "decoy_share": 0.198,
+   "tokens": 610899,
    "licence_tags": {
-    "cc-by": 25,
-    "cc-by-sa": 256,
-    "consent-train": 10,
-    "nc": 106,
+    "cc-by": 36,
+    "cc-by-sa": 244,
+    "consent-train": 19,
+    "nc": 119,
+    "pd": 7,
+    "research": 1,
+    "unchecked": 1
+   },
+   "sections": [
+    "rea-goh: Monsee/MF_1_M.XX",
+    "rea-goh: Monsee/MF_4_AS.XXXVII",
+    "rea-goh: Monsee/MF_2_VG.XXX",
+    "...",
+    "rea-goh: Murbacher_Hymnen/MH_Murb.H.XXV"
+   ]
+  },
+  "SC-dcaf": {
+   "bundles": 169,
+   "decoy_share": 0.195,
+   "tokens": 603537,
+   "licence_tags": {
+    "cc-by": 53,
+    "cc-by-sa": 246,
+    "consent-train": 9,
+    "nc": 194,
+    "pd": 7
+   },
+   "sections": [
+    "rea-goh: Otfrid/O_Otfr.Ev.3.15",
+    "rea-goh: Otfrid/O_Otfr.Ev.1.14",
+    "rea-goh: Otfrid/O_Otfr.Ev.1.3",
+    "...",
+    "rea-goh: Physiologus/APh_8_Elefant"
+   ]
+  },
+  "SC-186d": {
+   "bundles": 79,
+   "decoy_share": 0.203,
+   "tokens": 612228,
+   "licence_tags": {
+    "cc-by": 18,
+    "cc-by-sa": 258,
+    "consent-train": 5,
+    "nc": 100,
+    "pd": 1,
+    "research": 1,
+    "unchecked": 2
+   },
+   "sections": [
+    "rea-goh: Physiologus/APh_12_Eidechse",
+    "rea-goh: Physiologus/APh_4_Wasserschlange",
+    "rea-goh: Physiologus/APh_3_Einhorn",
+    "...",
+    "rea-goh: Tatian/T_Tat132"
+   ]
+  },
+  "SC-dfd3": {
+   "bundles": 88,
+   "decoy_share": 0.193,
+   "tokens": 607682,
+   "licence_tags": {
+    "cc-by": 18,
+    "cc-by-sa": 258,
+    "consent-train": 6,
+    "nc": 101,
     "pd": 3,
     "research": 1,
     "unchecked": 1
    },
    "sections": [
-    "rea-goh: Monsee/MF_1_M.VII",
-    "rea-goh: Monsee/MF_1_M.VIII",
-    "rea-goh: Monsee/MF_1_M.XI",
+    "rea-goh: Tatian/T_Tat120",
+    "rea-goh: Tatian/T_Tat53",
+    "rea-goh: Tatian/T_Tat75",
     "...",
-    "rea-goh: Murbacher_Hymnen/MH_Murb.H.XXII"
-   ]
-  },
-  "SC-dcaf": {
-   "bundles": 127,
-   "decoy_share": 0.197,
-   "tokens": 601586,
-   "licence_tags": {
-    "cc-by": 48,
-    "cc-by-sa": 229,
-    "consent-train": 16,
-    "nc": 154,
-    "pd": 13,
-    "unchecked": 2
-   },
-   "sections": [
-    "rea-goh: Murbacher_Hymnen/MH_Murb.H.VI",
-    "rea-goh: Murbacher_Hymnen/MH_Murb.H.XX",
-    "rea-goh: Murbacher_Hymnen/MH_Murb.H.VII",
-    "...",
-    "rea-goh: Otfrid/O_Otfr.Ev.5.17"
-   ]
-  },
-  "SC-186d": {
-   "bundles": 133,
-   "decoy_share": 0.203,
-   "tokens": 602296,
-   "licence_tags": {
-    "cc-by": 44,
-    "cc-by-sa": 264,
-    "consent-train": 4,
-    "nc": 153,
-    "pd": 1,
-    "unchecked": 2
-   },
-   "sections": [
-    "rea-goh: Otfrid/O_Otfr.Ev.4.15",
-    "rea-goh: Otfrid/O_Otfr.Ev.2.22",
-    "rea-goh: Otfrid/O_Otfr.Ev.4.6",
-    "...",
-    "rea-goh: Tatian/T_Tat11"
-   ]
-  },
-  "SC-dfd3": {
-   "bundles": 79,
-   "decoy_share": 0.203,
-   "tokens": 607710,
-   "licence_tags": {
-    "cc-by": 19,
-    "cc-by-sa": 247,
-    "consent-train": 10,
-    "nc": 103,
-    "pd": 4,
-    "research": 1
-   },
-   "sections": [
-    "rea-goh: Tatian/T_Tat38",
-    "rea-goh: Tatian/T_Tat178",
-    "rea-goh: Tatian/T_Tat244",
-    "...",
-    "rea-goh: Tatian/T_Tat180"
+    "rea-goh: Tatian/T_Tat88"
    ]
   },
   "SC-c3d6": {
-   "bundles": 87,
-   "decoy_share": 0.195,
-   "tokens": 613330,
+   "bundles": 79,
+   "decoy_share": 0.203,
+   "tokens": 615012,
    "licence_tags": {
-    "cc-by": 18,
-    "cc-by-sa": 260,
-    "consent-train": 7,
-    "nc": 101,
-    "unchecked": 1
+    "cc-by": 31,
+    "cc-by-sa": 247,
+    "consent-train": 8,
+    "nc": 103,
+    "pd": 1,
+    "research": 1,
+    "unchecked": 2
    },
    "sections": [
-    "rea-goh: Tatian/T_Tat42",
-    "rea-goh: Tatian/T_Tat187",
-    "rea-goh: Tatian/T_Tat13",
+    "rea-goh: Tatian/T_Tat101",
+    "rea-goh: Tatian/T_Tat224",
+    "rea-goh: Tatian/T_Tat107",
     "...",
-    "rea-goh: Tatian/T_Tat104"
+    "rea-goh: Tatian/T_Tat161"
    ]
   },
   "SC-5bc2": {
-   "bundles": 72,
-   "decoy_share": 0.208,
-   "tokens": 609850,
+   "bundles": 84,
+   "decoy_share": 0.202,
+   "tokens": 615269,
    "licence_tags": {
-    "cc-by": 26,
-    "cc-by-sa": 247,
-    "consent-train": 9,
-    "nc": 96,
-    "research": 1,
-    "unchecked": 5
+    "cc-by": 20,
+    "cc-by-sa": 255,
+    "consent-train": 12,
+    "nc": 109,
+    "pd": 2,
+    "unchecked": 1
    },
    "sections": [
-    "rea-goh: Tatian/T_Tat95",
-    "rea-goh: Tatian/T_Tat12",
-    "rea-goh: Tatian/T_Tat72",
+    "rea-goh: Tatian/T_Tat233",
+    "rea-goh: Tatian/T_Tat117",
+    "rea-goh: Tatian/T_Tat64",
     "...",
-    "rea-goh: Tatian/T_Tat152"
+    "rea-goh: Tatian/T_Tat17"
    ]
   },
   "SC-e421": {
-   "bundles": 91,
+   "bundles": 86,
    "decoy_share": 0.198,
-   "tokens": 654415,
+   "tokens": 646093,
    "licence_tags": {
-    "cc-by": 20,
-    "cc-by-sa": 284,
-    "consent-train": 11,
-    "nc": 112,
+    "cc-by": 22,
+    "cc-by-sa": 283,
+    "consent-train": 9,
+    "nc": 101,
     "pd": 2,
-    "unchecked": 1
+    "unchecked": 2
    },
    "sections": [
-    "rea-goh: Tatian/T_Tat137",
-    "rea-goh: Tatian/T_Tat150",
-    "rea-goh: Tatian/T_Tat93",
+    "rea-goh: Tatian/T_Tat139",
+    "rea-goh: Tatian/T_Tat25",
+    "rea-goh: Tatian/T_Tat14",
     "...",
-    "rea-goh: Tatian/T_Tat2"
+    "rea-goh: Tatian/T_Tat40"
    ]
   },
   "SC-bd25": {
-   "bundles": 97,
-   "decoy_share": 0.196,
-   "tokens": 687479,
+   "bundles": 86,
+   "decoy_share": 0.198,
+   "tokens": 648866,
    "licence_tags": {
-    "cc-by": 33,
-    "cc-by-sa": 282,
-    "consent-train": 12,
-    "nc": 115,
+    "cc-by": 39,
+    "cc-by-sa": 258,
+    "consent-train": 8,
+    "nc": 109,
     "pd": 2,
     "unchecked": 1
    },
    "sections": [
-    "rea-goh: Tatian/T_Tat56",
-    "rea-goh: Tatian/T_Tat122",
-    "rea-goh: Tatian/T_Tat222",
+    "rea-goh: Tatian/T_Tat174",
+    "rea-goh: Tatian/T_Tat162",
+    "rea-goh: Tatian/T_Tat28",
     "...",
-    "rea-goh: Tatian/T_Tat82"
+    "rea-goh: Tatian/T_Tat112"
    ]
   },
   "SC-66d8": {
-   "bundles": 91,
-   "decoy_share": 0.209,
-   "tokens": 695451,
+   "bundles": 79,
+   "decoy_share": 0.203,
+   "tokens": 617142,
    "licence_tags": {
-    "cc-by": 31,
-    "cc-by-sa": 293,
-    "consent-train": 3,
-    "nc": 116,
-    "pd": 4,
-    "unchecked": 1
+    "cc-by": 22,
+    "cc-by-sa": 270,
+    "consent-train": 2,
+    "nc": 100,
+    "pd": 3
    },
    "sections": [
-    "rea-goh: Tatian/T_Tat126",
-    "rea-goh: Tatian/T_Tat154",
-    "rea-goh: Tatian/T_Tat90",
+    "rea-goh: Tatian/T_Tat146",
+    "rea-goh: Tatian/T_Tat131",
+    "rea-goh: Tatian/T_Tat27",
     "...",
-    "rea-goh: Tatian/T_Tat135"
+    "rea-goh: Tatian/T_Tat31"
    ]
   },
   "SC-a643": {
-   "bundles": 80,
-   "decoy_share": 0.188,
-   "tokens": 619006,
+   "bundles": 90,
+   "decoy_share": 0.211,
+   "tokens": 678309,
    "licence_tags": {
-    "cc-by": 27,
-    "cc-by-sa": 270,
-    "consent-train": 3,
-    "nc": 104,
-    "pd": 4,
-    "unchecked": 1
+    "cc-by": 26,
+    "cc-by-sa": 296,
+    "consent-train": 9,
+    "nc": 111,
+    "pd": 2,
+    "unchecked": 2
    },
    "sections": [
-    "rea-goh: Tatian/T_Tat135",
-    "rea-goh: Tatian/T_Tat44",
-    "rea-goh: Tatian/T_Tat5",
+    "rea-goh: Tatian/T_Tat30",
+    "rea-goh: Tatian/T_Tat81",
+    "rea-goh: Tatian/T_Tat20",
     "...",
-    "rea-goh: Tatian/T_Tat147"
+    "rea-goh: Tatian/T_Tat145"
    ]
   },
   "SC-097c": {
-   "bundles": 75,
-   "decoy_share": 0.213,
-   "tokens": 620925,
+   "bundles": 77,
+   "decoy_share": 0.195,
+   "tokens": 606384,
    "licence_tags": {
-    "cc-by": 17,
-    "cc-by-sa": 277,
-    "consent-train": 8,
-    "nc": 91,
-    "pd": 1
-   },
-   "sections": [
-    "rea-goh: Tatian/T_Tat4",
-    "rea-goh: Tatian/T_Tat231",
-    "rea-goh: Tatian/T_Tat108",
-    "...",
-    "rea-goh: Tatian/T_Tat125"
-   ]
-  },
-  "SC-6140": {
-   "bundles": 84,
-   "decoy_share": 0.202,
-   "tokens": 616840,
-   "licence_tags": {
-    "cc-by": 28,
-    "cc-by-sa": 253,
+    "cc-by": 21,
+    "cc-by-sa": 270,
     "consent-train": 3,
-    "nc": 111,
+    "nc": 94,
     "pd": 2,
-    "research": 2
-   },
-   "sections": [
-    "rea-goh: Tatian/T_Tat140",
-    "rea-goh: Tatian/T_Tat43",
-    "rea-goh: Tatian/T_Tat3",
-    "...",
-    "rea-goh: Tatian/T_Tat217"
-   ]
-  },
-  "SC-bce0": {
-   "bundles": 84,
-   "decoy_share": 0.19,
-   "tokens": 631080,
-   "licence_tags": {
-    "cc-by": 22,
-    "cc-by-sa": 257,
-    "consent-train": 15,
-    "nc": 104,
     "research": 1,
     "unchecked": 1
    },
    "sections": [
-    "rea-goh: Tatian/T_Tat153",
-    "rea-goh: Tatian/T_Tat76",
-    "rea-goh: Tatian/T_Tat210",
+    "rea-goh: Tatian/T_Tat91",
+    "rea-goh: Tatian/T_Tat49",
+    "rea-goh: Tatian/T_Tat29",
     "...",
-    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.38-46"
+    "rea-goh: Tatian/T_Tat213"
    ]
   },
-  "SC-bcaf": {
+  "SC-6140": {
+   "bundles": 96,
+   "decoy_share": 0.198,
+   "tokens": 692490,
+   "licence_tags": {
+    "cc-by": 22,
+    "cc-by-sa": 281,
+    "consent-train": 11,
+    "nc": 121,
+    "research": 3,
+    "unchecked": 1
+   },
+   "sections": [
+    "rea-goh: Tatian/T_Tat26",
+    "rea-goh: Tatian/T_Tat10",
+    "rea-goh: Tatian/T_Tat35",
+    "...",
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.60-63"
+   ]
+  },
+  "SC-bce0": {
    "bundles": 83,
    "decoy_share": 0.205,
-   "tokens": 610567,
+   "tokens": 626187,
    "licence_tags": {
-    "cc-by": 17,
-    "cc-by-sa": 262,
-    "consent-train": 6,
-    "nc": 93,
+    "cc-by": 23,
+    "cc-by-sa": 267,
+    "consent-train": 10,
+    "nc": 95,
     "pd": 2,
     "research": 4,
     "unchecked": 1
    },
    "sections": [
-    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.80-84_J",
-    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.73-74",
-    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.85-89_J",
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.60-63",
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.142-143_J",
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.38-46",
     "...",
-    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.55-59"
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.2-9"
    ]
   },
-  "SC-e2f4": {
-   "bundles": 75,
-   "decoy_share": 0.2,
-   "tokens": 653539,
+  "SC-bcaf": {
+   "bundles": 83,
+   "decoy_share": 0.205,
+   "tokens": 679351,
    "licence_tags": {
-    "cc-by": 12,
-    "cc-by-sa": 285,
-    "consent-train": 11,
-    "nc": 84,
-    "pd": 9,
+    "cc-by": 14,
+    "cc-by-sa": 305,
+    "consent-train": 6,
+    "nc": 88,
+    "pd": 5,
     "unchecked": 1
    },
    "sections": [
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.47-54",
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.55-59",
     "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.153-154_J",
-    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.12-13",
-    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.128-132_J",
     "...",
-    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.155-161_J"
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.64-72"
    ]
   },
-  "SC-817b": {
-   "bundles": 86,
-   "decoy_share": 0.209,
-   "tokens": 666817,
+  "SC-e2f4": {
+   "bundles": 89,
+   "decoy_share": 0.191,
+   "tokens": 695635,
    "licence_tags": {
-    "cc-by": 20,
-    "cc-by-sa": 280,
-    "consent-train": 8,
-    "nc": 102,
-    "pd": 3,
+    "cc-by": 19,
+    "cc-by-sa": 291,
+    "consent-train": 11,
+    "nc": 108,
+    "pd": 6,
     "research": 1,
     "unchecked": 1
    },
    "sections": [
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.155-161_J",
     "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.124-127_J",
     "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.133-134_J",
-    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.10-11",
     "...",
     "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.14-37"
    ]
   },
-  "SC-d34c": {
-   "bundles": 84,
-   "decoy_share": 0.19,
-   "tokens": 673601,
+  "SC-817b": {
+   "bundles": 89,
+   "decoy_share": 0.202,
+   "tokens": 702071,
    "licence_tags": {
-    "cc-by": 19,
-    "cc-by-sa": 271,
-    "consent-train": 12,
-    "nc": 107,
-    "pd": 3,
-    "research": 1
-   },
-   "sections": [
-    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.99-103_J",
-    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.162-168_J",
-    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.106-110_J",
-    "...",
-    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.138-141_J"
-   ]
-  },
-  "SC-6668": {
-   "bundles": 120,
-   "decoy_share": 0.2,
-   "tokens": 698739,
-   "licence_tags": {
-    "cc-by": 40,
-    "cc-by-sa": 289,
-    "consent-train": 6,
-    "nc": 134,
+    "cc-by": 22,
+    "cc-by-sa": 281,
+    "consent-train": 11,
+    "nc": 114,
     "pd": 4,
-    "unchecked": 5
-   },
-   "sections": [
-    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.104-105_J",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_099",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_144",
-    "...",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_080"
-   ]
-  },
-  "SC-21a2": {
-   "bundles": 101,
-   "decoy_share": 0.198,
-   "tokens": 646716,
-   "licence_tags": {
-    "cc-by": 21,
-    "cc-by-sa": 271,
-    "consent-train": 8,
-    "gpl": 1,
-    "nc": 125,
-    "pd": 2,
-    "research": 3,
     "unchecked": 1
    },
    "sections": [
-    "rea-goh: Z-Notker-Psalmen/N_Ps_080",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_125",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_025",
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.I.14-37",
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.99-103_J",
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.162-168_J",
     "...",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_039"
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.111-121_J"
+   ]
+  },
+  "SC-d34c": {
+   "bundles": 105,
+   "decoy_share": 0.2,
+   "tokens": 643103,
+   "licence_tags": {
+    "cc-by": 29,
+    "cc-by-sa": 267,
+    "consent-train": 9,
+    "nc": 121,
+    "pd": 3,
+    "research": 1,
+    "unchecked": 2
+   },
+   "sections": [
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.111-121_J",
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.138-141_J",
+    "rea-goh: Z-Notker-Martianus_Capella/N_Mart_Cap.II.104-105_J",
+    "...",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_018"
+   ]
+  },
+  "SC-6668": {
+   "bundles": 106,
+   "decoy_share": 0.198,
+   "tokens": 669108,
+   "licence_tags": {
+    "cc-by": 27,
+    "cc-by-sa": 286,
+    "consent-train": 9,
+    "nc": 128,
+    "pd": 2,
+    "research": 1,
+    "unchecked": 1
+   },
+   "sections": [
+    "rea-goh: Z-Notker-Psalmen/N_Ps_005",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_141",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_080",
+    "...",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_043"
+   ]
+  },
+  "SC-21a2": {
+   "bundles": 123,
+   "decoy_share": 0.203,
+   "tokens": 700060,
+   "licence_tags": {
+    "cc-by": 28,
+    "cc-by-sa": 284,
+    "consent-train": 6,
+    "nc": 147,
+    "research": 2,
+    "unchecked": 1
+   },
+   "sections": [
+    "rea-goh: Z-Notker-Psalmen/N_Ps_119",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_039",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_084",
+    "...",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_036"
    ]
   },
   "SC-8b8e": {
-   "bundles": 109,
-   "decoy_share": 0.202,
-   "tokens": 603726,
+   "bundles": 108,
+   "decoy_share": 0.194,
+   "tokens": 697882,
    "licence_tags": {
     "cc-by": 24,
-    "cc-by-sa": 246,
-    "consent-train": 7,
-    "nc": 134,
-    "research": 1
-   },
-   "sections": [
-    "rea-goh: Z-Notker-Psalmen/N_Ps_084",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_137",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_062",
-    "...",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_140"
-   ]
-  },
-  "SC-08a5": {
-   "bundles": 106,
-   "decoy_share": 0.198,
-   "tokens": 694485,
-   "licence_tags": {
-    "cc-by": 24,
-    "cc-by-sa": 294,
-    "consent-train": 5,
+    "cc-by-sa": 293,
+    "consent-train": 6,
     "gpl": 1,
-    "nc": 127,
-    "pd": 1
+    "nc": 131,
+    "pd": 1,
+    "research": 2
    },
    "sections": [
+    "rea-goh: Z-Notker-Psalmen/N_Ps_036",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_140",
     "rea-goh: Z-Notker-Psalmen/N_Ps_040",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_106",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_102",
     "...",
     "rea-goh: Z-Notker-Psalmen/N_Ps_118"
    ]
   },
-  "SC-035e": {
-   "bundles": 82,
-   "decoy_share": 0.207,
-   "tokens": 652697,
+  "SC-08a5": {
+   "bundles": 77,
+   "decoy_share": 0.208,
+   "tokens": 604225,
    "licence_tags": {
-    "cc-by": 32,
-    "cc-by-sa": 269,
+    "cc-by": 29,
+    "cc-by-sa": 243,
     "consent-train": 10,
-    "nc": 93,
+    "nc": 87,
     "unchecked": 1
    },
    "sections": [
-    "rea-goh: Z-Notker-Psalmen/N_Ps_118",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_113"
+    "rea-goh: Z-Notker-Psalmen/N_Ps_118"
    ]
   },
-  "SC-9c9e": {
-   "bundles": 105,
-   "decoy_share": 0.19,
-   "tokens": 611527,
+  "SC-035e": {
+   "bundles": 106,
+   "decoy_share": 0.198,
+   "tokens": 639773,
    "licence_tags": {
     "cc-by": 35,
-    "cc-by-sa": 250,
-    "consent-train": 7,
+    "cc-by-sa": 269,
+    "consent-train": 8,
     "nc": 121,
-    "pd": 2,
-    "research": 2
-   },
-   "sections": [
-    "rea-goh: Z-Notker-Psalmen/N_Ps_104",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_135",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_091",
-    "...",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_029"
-   ]
-  },
-  "SC-d75d": {
-   "bundles": 104,
-   "decoy_share": 0.212,
-   "tokens": 658633,
-   "licence_tags": {
-    "cc-by": 56,
-    "cc-by-sa": 241,
-    "consent-train": 13,
-    "nc": 129,
     "pd": 2,
     "research": 2,
     "unchecked": 1
    },
    "sections": [
-    "rea-goh: Z-Notker-Psalmen/N_Ps_030",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_068",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_054",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_113",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_104",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_135",
     "...",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_138"
+    "rea-goh: Z-Notker-Psalmen/N_Ps_059"
    ]
   },
-  "SC-9b2e": {
-   "bundles": 140,
-   "decoy_share": 0.193,
-   "tokens": 700872,
+  "SC-9c9e": {
+   "bundles": 99,
+   "decoy_share": 0.192,
+   "tokens": 629917,
    "licence_tags": {
-    "cc-by": 40,
-    "cc-by-sa": 275,
-    "consent-train": 8,
-    "nc": 159,
-    "pd": 4,
-    "research": 1,
+    "cc-by": 46,
+    "cc-by-sa": 232,
+    "consent-train": 9,
+    "nc": 123,
+    "pd": 2,
+    "research": 3,
+    "unchecked": 2
+   },
+   "sections": [
+    "rea-goh: Z-Notker-Psalmen/N_Ps_096",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_029",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_030",
+    "...",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_009"
+   ]
+  },
+  "SC-d75d": {
+   "bundles": 137,
+   "decoy_share": 0.204,
+   "tokens": 643825,
+   "licence_tags": {
+    "cc-by": 47,
+    "cc-by-sa": 243,
+    "consent-train": 10,
+    "nc": 153,
+    "pd": 3,
+    "research": 2,
     "unchecked": 1
    },
    "sections": [
+    "rea-goh: Z-Notker-Psalmen/N_Ps_069",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_138",
     "rea-goh: Z-Notker-Psalmen/N_Ps_136",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_139",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_053",
     "...",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_103"
+    "rea-goh: Z-Notker-Psalmen/N_Ps_028"
+   ]
+  },
+  "SC-9b2e": {
+   "bundles": 105,
+   "decoy_share": 0.2,
+   "tokens": 612641,
+   "licence_tags": {
+    "cc-by": 20,
+    "cc-by-sa": 267,
+    "consent-train": 6,
+    "nc": 114,
+    "pd": 2
+   },
+   "sections": [
+    "rea-goh: Z-Notker-Psalmen/N_Ps_020",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_103",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_013",
+    "...",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_134"
    ]
   },
   "SC-80fb": {
-   "bundles": 112,
-   "decoy_share": 0.196,
-   "tokens": 622631,
+   "bundles": 117,
+   "decoy_share": 0.197,
+   "tokens": 696260,
    "licence_tags": {
-    "cc-by": 20,
-    "cc-by-sa": 266,
-    "consent-train": 6,
-    "nc": 123,
-    "pd": 1
+    "cc-by": 38,
+    "cc-by-sa": 273,
+    "consent-train": 9,
+    "nc": 140,
+    "research": 2
    },
    "sections": [
-    "rea-goh: Z-Notker-Psalmen/N_Ps_103",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_013",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_046",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_067",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_047",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_055",
     "...",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_047"
+    "rea-goh: Z-Notker-Psalmen/N_Ps_077"
    ]
   },
   "SC-ac23": {
    "bundles": 107,
    "decoy_share": 0.206,
-   "tokens": 659878,
+   "tokens": 683132,
    "licence_tags": {
-    "cc-by": 40,
-    "cc-by-sa": 264,
-    "consent-train": 8,
-    "nc": 127,
-    "research": 2
+    "cc-by": 27,
+    "cc-by-sa": 292,
+    "consent-train": 2,
+    "nc": 125,
+    "pd": 1,
+    "research": 2,
+    "unchecked": 1
    },
    "sections": [
-    "rea-goh: Z-Notker-Psalmen/N_Ps_055",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_071",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_074",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_077",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_045",
+    "rea-goh: Z-Notker-Psalmen/N_Ps_100",
     "...",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_045"
+    "rea-goh: Z-Notker-Psalmen/N_Ps_024"
    ]
   },
   "SC-992b": {
-   "bundles": 111,
-   "decoy_share": 0.207,
-   "tokens": 696129,
-   "licence_tags": {
-    "cc-by": 20,
-    "cc-by-sa": 305,
-    "consent-train": 4,
-    "nc": 127,
-    "pd": 1
-   },
-   "sections": [
-    "rea-goh: Z-Notker-Psalmen/N_Ps_100",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_050",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_094",
-    "...",
-    "rea-goh: Z-Notker-Psalmen/N_Ps_085"
-   ]
-  },
-  "SC-8b80": {
    "bundles": 101,
-   "decoy_share": 0.188,
-   "tokens": 604937,
+   "decoy_share": 0.198,
+   "tokens": 610015,
    "licence_tags": {
-    "cc-by": 25,
-    "cc-by-sa": 254,
-    "consent-train": 8,
-    "nc": 121,
+    "cc-by": 21,
+    "cc-by-sa": 260,
+    "consent-train": 7,
+    "nc": 123,
     "pd": 1,
-    "unchecked": 3
+    "research": 1,
+    "unchecked": 1
    },
    "sections": [
     "rea-goh: Z-Notker-Psalmen/N_Ps_085",
     "rea-goh: Z-Notker-Psalmen/N_Ps_022",
     "rea-goh: Z-Notker-Psalmen/N_Ps_034",
     "...",
-    "rea-goh: Z-Notker-Psalmen-Glossen/N_Ps_Glossen_19_59-61"
+    "rea-goh: Z-Notker-Psalmen-Glossen/N_Ps_Glossen_32_102"
+   ]
+  },
+  "SC-8b80": {
+   "bundles": 102,
+   "decoy_share": 0.196,
+   "tokens": 607796,
+   "licence_tags": {
+    "cc-by": 20,
+    "cc-by-sa": 265,
+    "consent-train": 4,
+    "nc": 113,
+    "unchecked": 4
+   },
+   "sections": [
+    "rea-goh: Z-Notker-Psalmen-Glossen/N_Ps_Glossen_36_123",
+    "rea-goh: Z-Notker-Psalmen-Glossen/N_Ps_Glossen_5_16-18",
+    "rea-goh: Z-Notker-Psalmen-Glossen/N_Ps_Glossen_33_106",
+    "...",
+    "rea-goh: Z-Notker_Boethius-Categoriae/N_Cat_notkbcat-Boeth.Cat.Boeth.Cat.104"
    ]
   },
   "SC-2ae2": {
-   "bundles": 101,
-   "decoy_share": 0.198,
-   "tokens": 612370,
+   "bundles": 93,
+   "decoy_share": 0.204,
+   "tokens": 638209,
    "licence_tags": {
-    "cc-by": 21,
-    "cc-by-sa": 268,
-    "consent-train": 2,
-    "nc": 112,
-    "research": 1,
-    "unchecked": 3
+    "cc-by": 37,
+    "cc-by-sa": 255,
+    "consent-train": 5,
+    "nc": 110,
+    "pd": 2,
+    "unchecked": 2
    },
    "sections": [
-    "rea-goh: Z-Notker_Boethius-Categoriae/N_Cat_notkbcat-Boeth.Cat.Boeth.Cat.106",
-    "rea-goh: Z-Notker_Boethius-Categoriae/N_Cat_notkbcat-Boeth.Cat.Boeth.Cat.98",
-    "rea-goh: Z-Notker_Boethius-Categoriae/N_Cat_notkbcat-Boeth.Cat.Boeth.Cat.7",
+    "rea-goh: Z-Notker_Boethius-Categoriae/N_Cat_notkbcat-Boeth.Cat.Boeth.Cat.15",
+    "rea-goh: Z-Notker_Boethius-Categoriae/N_Cat_notkbcat-Boeth.Cat.Boeth.Cat.46",
+    "rea-goh: Z-Notker_Boethius-Categoriae/N_Cat_notkbcat-Boeth.Cat.Boeth.Cat.50",
     "...",
-    "rea-goh: Z-Notker_Boethius-Categoriae/N_Cat_notkbcat-Boeth.Cat.Boeth.Cat.133"
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_001"
    ]
   },
   "SC-1507": {
-   "bundles": 88,
-   "decoy_share": 0.216,
-   "tokens": 609818,
-   "licence_tags": {
-    "cc-by": 34,
-    "cc-by-sa": 238,
-    "consent-train": 4,
-    "nc": 105,
-    "pd": 4
-   },
-   "sections": [
-    "rea-goh: Z-Notker_Boethius-Categoriae/N_Cat_notkbcat-Boeth.Cat.Boeth.Cat.59",
-    "rea-goh: Z-Notker_Boethius-Categoriae/N_Cat_notkbcat-Boeth.Cat.Boeth.Cat.140",
-    "rea-goh: Z-Notker_Boethius-Categoriae/N_Cat_notkbcat-Boeth.Cat.Boeth.Cat.116",
-    "...",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon5_029"
-   ]
-  },
-  "SC-f2f9": {
-   "bundles": 105,
-   "decoy_share": 0.2,
-   "tokens": 615210,
+   "bundles": 106,
+   "decoy_share": 0.198,
+   "tokens": 643476,
    "licence_tags": {
     "cc-by": 33,
-    "cc-by-sa": 221,
-    "consent-train": 6,
+    "cc-by-sa": 234,
+    "consent-train": 7,
     "nc": 139,
-    "pd": 2,
     "research": 1
    },
    "sections": [
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon4_045",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon5_002",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon2_005",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_100",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon5_024",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon5_029",
     "...",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_104"
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon4_041"
    ]
   },
-  "SC-f679": {
-   "bundles": 80,
-   "decoy_share": 0.188,
-   "tokens": 613066,
+  "SC-f2f9": {
+   "bundles": 84,
+   "decoy_share": 0.202,
+   "tokens": 606174,
    "licence_tags": {
-    "cc-by": 34,
-    "cc-by-sa": 233,
-    "consent-train": 10,
-    "nc": 113,
+    "cc-by": 36,
+    "cc-by-sa": 226,
+    "consent-train": 9,
+    "nc": 121,
     "pd": 2
    },
    "sections": [
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon2_014",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon5_031",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_112",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon1_010",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon1_002",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_104",
     "...",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon5_016"
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon5_037"
+   ]
+  },
+  "SC-f679": {
+   "bundles": 96,
+   "decoy_share": 0.208,
+   "tokens": 603861,
+   "licence_tags": {
+    "cc-by": 38,
+    "cc-by-sa": 234,
+    "consent-train": 5,
+    "nc": 113,
+    "pd": 1,
+    "research": 1
+   },
+   "sections": [
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon5_016",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_061",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon4_040",
+    "...",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon4_028"
    ]
   },
   "SC-789c": {
-   "bundles": 100,
-   "decoy_share": 0.2,
-   "tokens": 628484,
+   "bundles": 92,
+   "decoy_share": 0.196,
+   "tokens": 617711,
    "licence_tags": {
-    "cc-by": 40,
-    "cc-by-sa": 243,
-    "consent-train": 7,
-    "nc": 116,
-    "pd": 4,
+    "cc-by": 37,
+    "cc-by-sa": 224,
+    "consent-train": 13,
+    "nc": 118,
+    "pd": 6,
+    "research": 1,
     "unchecked": 1
    },
    "sections": [
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_061",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon4_040",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon5_023",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon2_049",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_060",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon5_025",
     "...",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_060"
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon4_023"
    ]
   },
   "SC-2ec8": {
-   "bundles": 93,
-   "decoy_share": 0.204,
-   "tokens": 611904,
+   "bundles": 91,
+   "decoy_share": 0.187,
+   "tokens": 623785,
    "licence_tags": {
-    "cc-by": 38,
-    "cc-by-sa": 224,
-    "consent-train": 12,
-    "nc": 123,
-    "pd": 3,
-    "research": 2
-   },
-   "sections": [
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon5_025",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_109",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon4_029",
-    "...",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon1_012"
-   ]
-  },
-  "SC-6132": {
-   "bundles": 94,
-   "decoy_share": 0.202,
-   "tokens": 609871,
-   "licence_tags": {
-    "cc-by": 34,
-    "cc-by-sa": 245,
+    "cc-by": 28,
+    "cc-by-sa": 260,
     "consent-train": 7,
-    "nc": 116,
+    "gpl": 1,
+    "nc": 114,
     "research": 2,
     "unchecked": 2
    },
    "sections": [
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon2_026",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon5_021",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon2_006",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_101",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_015",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon1_012",
     "...",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon5_015"
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_002"
+   ]
+  },
+  "SC-6132": {
+   "bundles": 104,
+   "decoy_share": 0.212,
+   "tokens": 607049,
+   "licence_tags": {
+    "cc-by": 48,
+    "cc-by-sa": 210,
+    "consent-train": 4,
+    "nc": 138,
+    "pd": 1,
+    "research": 1,
+    "unchecked": 1
+   },
+   "sections": [
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_010",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon5_045",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon5_032",
+    "...",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon2_041"
    ]
   },
   "SC-4f37": {
-   "bundles": 102,
-   "decoy_share": 0.206,
-   "tokens": 607093,
+   "bundles": 112,
+   "decoy_share": 0.196,
+   "tokens": 655687,
    "licence_tags": {
-    "cc-by": 47,
-    "cc-by-sa": 211,
-    "consent-train": 6,
-    "nc": 136,
-    "pd": 1,
-    "research": 1,
-    "unchecked": 2
+    "cc-by": 25,
+    "cc-by-sa": 256,
+    "consent-train": 7,
+    "nc": 138,
+    "pd": 6,
+    "research": 2,
+    "unchecked": 3
    },
    "sections": [
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon1_003",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon4_006",
-    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon1_026",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_119",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon3_030",
+    "rea-goh: Z-Notker_Boethius-De_Consolatione_philosophiae/N_Decon2_052",
     "...",
-    "rea-goh: Z-Notker_Boethius-De_Interpretatione/notkbint-Boeth.Int.Boeth.Int.I.5"
+    "rea-goh: Z-Notker_Cantica/N_Cant_06_Deuteronomii"
    ]
   },
   "SC-e707": {
-   "bundles": 103,
-   "decoy_share": 0.194,
-   "tokens": 623657,
+   "bundles": 82,
+   "decoy_share": 0.195,
+   "tokens": 637360,
    "licence_tags": {
-    "cc-by": 15,
-    "cc-by-sa": 256,
-    "consent-train": 5,
-    "nc": 124,
-    "pd": 5,
-    "research": 1,
-    "unchecked": 3
+    "cc-by": 22,
+    "cc-by-sa": 282,
+    "consent-train": 1,
+    "nc": 94,
+    "pd": 2,
+    "unchecked": 1
    },
    "sections": [
-    "rea-goh: Z-Notker_Boethius-De_Interpretatione/notkbint-Boeth.Int.Boeth.Int.I.39",
-    "rea-goh: Z-Notker_Boethius-De_Interpretatione/notkbint-Boeth.Int.Boeth.Int.I.43",
-    "rea-goh: Z-Notker_Boethius-De_Interpretatione/notkbint-Boeth.Int.Boeth.Int.I.63",
+    "rea-goh: Z-Notker_Cantica/N_Cant_08_Symbolum",
+    "rea-goh: Z-Notker_Cantica/N_Cant_02_Ezechiae",
+    "rea-goh: Z-Notker_Cantica/N_Cant_10_Mariae",
     "...",
-    "rea-goh: Z-Notker_Cantica/N_Cant_08_Symbolum"
+    "rea-goh: Z-Notker_Kleinere-De_Musica/N_DeM_4"
    ]
   },
   "SC-07f8": {
-   "bundles": 82,
-   "decoy_share": 0.195,
-   "tokens": 606698,
+   "bundles": 160,
+   "decoy_share": 0.2,
+   "tokens": 605765,
    "licence_tags": {
-    "cc-by": 20,
-    "cc-by-sa": 264,
-    "nc": 92,
-    "pd": 5,
+    "cc-by": 26,
+    "cc-by-sa": 253,
+    "consent-train": 9,
+    "nc": 181,
+    "pd": 1,
     "unchecked": 1
    },
    "sections": [
-    "rea-goh: Z-Notker_Cantica/N_Cant_02_Ezechiae",
-    "rea-goh: Z-Notker_Cantica/N_Cant_10_Mariae",
-    "rea-goh: Z-Notker_Cantica/N_Cant_04_Moysi",
+    "rea-goh: Z-Notker_Kleinere-De_Partibus_logice/N_Part_Log",
+    "rea-goh: Z-Notker_Kleinere-Syllogismus/N_Syl_15",
+    "rea-goh: Z-Notker_Kleinere-Syllogismus/N_Syl_1",
     "...",
-    "rea-goh: Z-Notker_Kleinere-De_Partibus_logice/N_Part_Log"
+    "rea-osx: Heliand/Hel_30"
    ]
   },
   "SC-818f": {
-   "bundles": 159,
-   "decoy_share": 0.201,
-   "tokens": 602005,
+   "bundles": 124,
+   "decoy_share": 0.202,
+   "tokens": 540243,
    "licence_tags": {
-    "cc-by": 26,
-    "cc-by-sa": 250,
-    "consent-train": 8,
-    "nc": 184,
-    "unchecked": 1
-   },
-   "sections": [
-    "rea-goh: Z-Notker_Kleinere-Syllogismus/N_Syl_15",
-    "rea-goh: Z-Notker_Kleinere-Syllogismus/N_Syl_1",
-    "rea-goh: Z-Notker_Kleinere-Syllogismus/N_Syl_19",
-    "...",
-    "rea-osx: Heliand/Hel_22"
-   ]
-  },
-  "SC-394b": {
-   "bundles": 122,
-   "decoy_share": 0.197,
-   "tokens": 530357,
-   "licence_tags": {
-    "cc-by": 39,
-    "cc-by-sa": 208,
+    "cc-by": 44,
+    "cc-by-sa": 215,
     "consent-train": 5,
-    "nc": 137,
-    "pd": 7,
+    "nc": 140,
+    "pd": 8,
     "unchecked": 3
    },
    "sections": [
+    "rea-osx: Heliand/Hel_22",
     "rea-osx: Heliand/Hel_19",
     "rea-osx: Heliand/Hel_26",
-    "rea-osx: Heliand/Hel_66",
     "...",
     "rea-osx: Kleinere_Altsächsische_Denkmäler/ASB_Altsaechsische_Beichte"
    ]
   },
-  "SC-0865": {
-   "bundles": 291,
-   "decoy_share": 0.199,
-   "tokens": 610648,
+  "SC-394b": {
+   "bundles": 179,
+   "decoy_share": 0.201,
+   "tokens": 352097,
    "licence_tags": {
-    "cc-by": 60,
-    "cc-by-sa": 421,
+    "cc-by": 34,
+    "cc-by-sa": 291,
     "consent-train": 3,
-    "nc": 46,
-    "pd": 149,
-    "unchecked": 9
+    "nc": 27,
+    "pd": 64,
+    "unchecked": 8
    },
    "sections": [
     "vuk: vuk:1602",
     "vuk: vuk:12345",
     "vuk: vuk:1541",
     "...",
-    "byliny: russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimch2pes74"
+    "vuk: vuk:23771"
+   ]
+  },
+  "SC-0865": {
+   "bundles": 258,
+   "decoy_share": 0.202,
+   "tokens": 614125,
+   "licence_tags": {
+    "cc-by": 56,
+    "cc-by-sa": 269,
+    "consent-train": 1,
+    "nc": 42,
+    "pd": 266,
+    "unchecked": 4
+   },
+   "sections": [
+    "byliny: ruws:425719",
+    "byliny: ruws:425721",
+    "byliny: ruws:426062",
+    "...",
+    "byliny: russian-rybnikov-1861-1867-archiveorg/pesnisobrannyepnrybnikovymch3narod26"
    ]
   },
   "SC-9e9d": {
-   "bundles": 161,
-   "decoy_share": 0.205,
-   "tokens": 387247,
-   "licence_tags": {
-    "cc-by": 29,
-    "cc-by-sa": 150,
-    "consent-train": 1,
-    "nc": 37,
-    "pd": 180,
-    "unchecked": 2
-   },
-   "sections": [
-    "byliny: russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimch2pesni36",
-    "byliny: russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimch2vyp57",
-    "byliny: russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimch3vyp36",
-    "...",
-    "byliny: russian-rybnikov-1861-1867-archiveorg/pesnisobrannyepnrybnikovymch4narod9"
-   ]
-  },
-  "SC-2fc7": {
-   "bundles": 197,
+   "bundles": 202,
    "decoy_share": 0.198,
-   "tokens": 700891,
+   "tokens": 701124,
    "licence_tags": {
-    "cc-by": 166,
-    "cc-by-sa": 286,
-    "consent-train": 6,
-    "nc": 34,
-    "pd": 98,
+    "cc-by": 157,
+    "cc-by-sa": 271,
+    "consent-train": 7,
+    "nc": 49,
+    "pd": 118,
     "unchecked": 2
    },
    "sections": [
+    "byliny: russian-rybnikov-1861-1867-archiveorg/pesnisobrannyepnrybnikovymch4narod9",
     "dainos: lithuanian-rhesa-dainos-1825-1843/dainos00reza",
     "dainos: lithuanian-nesselmann-1853/littauischevolk00nessgoog",
-    "dainos: lithuanian-leskien-brugmann-1882/litauischevolksl00leskuoft",
     "...",
     "xcl: MH_1_1_01_Gregor_Lus"
    ]
   },
-  "SC-fd46": {
-   "bundles": 134,
-   "decoy_share": 0.201,
-   "tokens": 612504,
+  "SC-2fc7": {
+   "bundles": 146,
+   "decoy_share": 0.199,
+   "tokens": 661797,
    "licence_tags": {
-    "cc-by": 168,
-    "cc-by-sa": 264,
+    "cc-by": 181,
+    "cc-by-sa": 290,
     "consent-train": 3,
-    "nc": 14,
+    "nc": 15,
     "unchecked": 1
    },
    "sections": [
@@ -4126,33 +4122,33 @@
     "xcl: MH_1_1_02_Sahak"
    ]
   },
-  "SC-47d6": {
-   "bundles": 166,
-   "decoy_share": 0.205,
-   "tokens": 695620,
+  "SC-fd46": {
+   "bundles": 167,
+   "decoy_share": 0.204,
+   "tokens": 701359,
    "licence_tags": {
     "cc-by": 207,
-    "cc-by-sa": 283,
-    "consent-train": 5,
-    "nc": 15,
+    "cc-by-sa": 286,
+    "consent-train": 6,
+    "nc": 16,
     "pd": 1,
     "research": 2,
-    "unchecked": 2
+    "unchecked": 1
    },
    "sections": [
     "xcl: MH_1_1_03_Koriun",
     "xcl: MH_1_1_04_Faustos"
    ]
   },
-  "SC-66a8": {
-   "bundles": 143,
-   "decoy_share": 0.196,
-   "tokens": 697939,
+  "SC-47d6": {
+   "bundles": 140,
+   "decoy_share": 0.193,
+   "tokens": 700715,
    "licence_tags": {
-    "cc-by": 176,
-    "cc-by-sa": 299,
-    "consent-train": 9,
-    "nc": 21,
+    "cc-by": 174,
+    "cc-by-sa": 295,
+    "consent-train": 7,
+    "nc": 30,
     "research": 2
    },
    "sections": [
@@ -4160,63 +4156,60 @@
     "xcl: MH_1_1_05_Eznik"
    ]
   },
-  "SC-fbbc": {
-   "bundles": 148,
-   "decoy_share": 0.196,
-   "tokens": 699933,
+  "SC-66a8": {
+   "bundles": 150,
+   "decoy_share": 0.207,
+   "tokens": 697903,
    "licence_tags": {
-    "cc-by": 184,
-    "cc-by-sa": 310,
+    "cc-by": 187,
+    "cc-by-sa": 306,
     "consent-train": 9,
-    "nc": 8,
-    "unchecked": 1
+    "nc": 7
    },
    "sections": [
     "xcl: MH_1_1_05_Eznik",
     "xcl: MH_1_1_06_Yeghishe"
    ]
   },
-  "SC-ba3f": {
-   "bundles": 156,
-   "decoy_share": 0.199,
-   "tokens": 702515,
+  "SC-fbbc": {
+   "bundles": 158,
+   "decoy_share": 0.196,
+   "tokens": 702172,
    "licence_tags": {
-    "cc-by": 197,
-    "cc-by-sa": 298,
-    "consent-train": 15,
-    "nc": 13,
-    "research": 1,
-    "unchecked": 1
+    "cc-by": 199,
+    "cc-by-sa": 296,
+    "consent-train": 14,
+    "nc": 14,
+    "research": 1
+   },
+   "sections": [
+    "xcl: MH_1_1_06_Yeghishe"
+   ]
+  },
+  "SC-ba3f": {
+   "bundles": 138,
+   "decoy_share": 0.203,
+   "tokens": 701435,
+   "licence_tags": {
+    "cc-by": 172,
+    "cc-by-sa": 316,
+    "consent-train": 5,
+    "nc": 5,
+    "unchecked": 2
    },
    "sections": [
     "xcl: MH_1_1_06_Yeghishe"
    ]
   },
   "SC-b189": {
-   "bundles": 137,
-   "decoy_share": 0.204,
-   "tokens": 702813,
+   "bundles": 157,
+   "decoy_share": 0.197,
+   "tokens": 700505,
    "licence_tags": {
-    "cc-by": 165,
-    "cc-by-sa": 322,
-    "consent-train": 3,
-    "nc": 7,
-    "research": 1,
-    "unchecked": 1
-   },
-   "sections": [
-    "xcl: MH_1_1_06_Yeghishe"
-   ]
-  },
-  "SC-136a": {
-   "bundles": 156,
-   "decoy_share": 0.199,
-   "tokens": 696221,
-   "licence_tags": {
-    "cc-by": 188,
-    "cc-by-sa": 293,
-    "consent-train": 4,
-    "nc": 15,
+    "cc-by": 190,
+    "cc-by-sa": 292,
+    "consent-train": 5,
+    "nc": 16,
     "unchecked": 1
    },
    "sections": [
@@ -4227,91 +4220,91 @@
     "xcl: MH_1_1_10_Mandakuni"
    ]
   },
-  "SC-5198": {
-   "bundles": 161,
-   "decoy_share": 0.205,
-   "tokens": 695798,
+  "SC-136a": {
+   "bundles": 157,
+   "decoy_share": 0.197,
+   "tokens": 700517,
    "licence_tags": {
-    "cc-by": 188,
+    "cc-by": 185,
     "cc-by-sa": 291,
     "consent-train": 9,
-    "nc": 15,
-    "research": 2,
-    "unchecked": 3
+    "nc": 16,
+    "research": 1,
+    "unchecked": 2
    },
    "sections": [
     "xcl: MH_1_1_10_Mandakuni",
     "xcl: MH_1_2_11_Agathangelos"
    ]
   },
-  "SC-67f0": {
-   "bundles": 151,
-   "decoy_share": 0.192,
-   "tokens": 699409,
+  "SC-5198": {
+   "bundles": 145,
+   "decoy_share": 0.2,
+   "tokens": 700277,
    "licence_tags": {
-    "cc-by": 185,
-    "cc-by-sa": 307,
+    "cc-by": 176,
+    "cc-by-sa": 296,
     "consent-train": 2,
-    "nc": 21,
+    "gpl": 1,
+    "nc": 28,
     "unchecked": 2
    },
    "sections": [
     "xcl: MH_1_2_11_Agathangelos"
    ]
   },
-  "SC-9da9": {
-   "bundles": 162,
+  "SC-67f0": {
+   "bundles": 167,
    "decoy_share": 0.204,
-   "tokens": 698895,
+   "tokens": 701101,
    "licence_tags": {
-    "cc-by": 198,
-    "cc-by-sa": 307,
-    "consent-train": 4,
-    "nc": 16,
-    "research": 1,
-    "unchecked": 1
+    "cc-by": 206,
+    "cc-by-sa": 301,
+    "consent-train": 5,
+    "nc": 19,
+    "research": 1
    },
    "sections": [
     "xcl: MH_1_2_11_Agathangelos",
     "xcl: MH_1_2_12_Movses_Khor"
    ]
   },
-  "SC-ab47": {
-   "bundles": 171,
-   "decoy_share": 0.199,
-   "tokens": 700784,
+  "SC-9da9": {
+   "bundles": 172,
+   "decoy_share": 0.203,
+   "tokens": 700660,
    "licence_tags": {
-    "cc-by": 217,
-    "cc-by-sa": 280,
-    "consent-train": 8,
-    "nc": 28,
-    "research": 2,
-    "unchecked": 1
+    "cc-by": 214,
+    "cc-by-sa": 268,
+    "consent-train": 10,
+    "nc": 35,
+    "unchecked": 2
    },
    "sections": [
     "xcl: MH_1_2_12_Movses_Khor",
     "xcl: MH_1_2_13_Lazar_Parp"
    ]
   },
-  "SC-cf09": {
+  "SC-ab47": {
    "bundles": 149,
-   "decoy_share": 0.201,
-   "tokens": 699340,
+   "decoy_share": 0.195,
+   "tokens": 700620,
    "licence_tags": {
-    "cc-by": 190,
-    "cc-by-sa": 300,
-    "consent-train": 8,
-    "nc": 12,
+    "cc-by": 188,
+    "cc-by-sa": 299,
+    "consent-train": 7,
+    "nc": 13,
+    "research": 1,
     "unchecked": 2
    },
    "sections": [
     "xcl: MH_1_2_13_Lazar_Parp"
    ]
   },
-  "SC-ac3f": {
+  "SC-cf09": {
    "bundles": 90,
    "decoy_share": 0.2,
-   "tokens": 416646,
+   "tokens": 411317,
    "licence_tags": {
     "cc-by": 99,
     "cc-by-sa": 172,
@@ -4324,16 +4317,15 @@
     "xcl: MH_1_2_13_Lazar_Parp"
    ]
   },
-  "SC-4ad7": {
+  "SC-ac3f": {
    "bundles": 34,
    "decoy_share": 0.206,
-   "tokens": 118197,
+   "tokens": 116613,
    "licence_tags": {
     "cc-by": 3,
-    "cc-by-sa": 50,
+    "cc-by-sa": 51,
     "nc": 42,
-    "pd": 1,
-    "unchecked": 1
+    "pd": 1
    },
    "sections": [
     "xto: 645.12b",
@@ -4345,33 +4337,33 @@
   }
  },
  "decoy_share_per_slab_min_max": [
-  0.188,
-  0.216
+  0.187,
+  0.212
  ],
  "slab_tokens_min_max": [
-  118197,
-  702813
+  116613,
+  702172
  ],
- "total_slab_tokens": 125154825,
- "read_tokens_est": 162701272,
- "readers_at_stageB_capacity": 188,
+ "total_slab_tokens": 124889285,
+ "read_tokens_est": 162356070,
+ "readers_at_stageB_capacity": 187,
  "reader_capacity": {
   "target_tokens": 600000,
   "max_tokens": 700000
  },
  "partner_slots_by_corpus": {
-  "grc-late": 39636,
-  "grc": 11099,
-  "sa-ep": 3743,
-  "menota": 1775,
-  "lat": 1656,
-  "ga-early": 1229,
-  "rea-goh": 1057,
-  "mga": 795,
-  "av": 790,
-  "xcl": 674,
-  "orv": 636,
-  "byliny": 383,
+  "grc-late": 39552,
+  "grc": 11054,
+  "sa-ep": 3745,
+  "menota": 1778,
+  "lat": 1657,
+  "ga-early": 1233,
+  "rea-goh": 1055,
+  "mga": 797,
+  "av": 792,
+  "xcl": 675,
+  "orv": 608,
+  "byliny": 389,
   "hom": 359,
   "rv": 283,
   "dainos": 223,
@@ -4382,7 +4374,7 @@
   "ae": 104,
   "cy": 96,
   "rea-osx": 72,
-  "ang": 63,
+  "ang": 61,
   "lv": 54,
   "sga-gl": 53,
   "hit": 39,
@@ -4392,42 +4384,42 @@
  },
  "floor_alternatives": {
   "0.9": {
-   "floor": 14.7906,
-   "bundles": 24754,
-   "celtic_pivot_bundles": 4686,
-   "slab_tokens_est_no_dedupe": 130694250,
-   "read_tokens_est_no_dedupe": 169902525
+   "floor": 14.7905,
+   "bundles": 24730,
+   "celtic_pivot_bundles": 4687,
+   "slab_tokens_est_no_dedupe": 130427872,
+   "read_tokens_est_no_dedupe": 169556233
   },
   "0.95": {
-   "floor": 15.8984,
-   "bundles": 12410,
-   "celtic_pivot_bundles": 1907,
-   "slab_tokens_est_no_dedupe": 59243783,
-   "read_tokens_est_no_dedupe": 77016918
+   "floor": 15.8963,
+   "bundles": 12408,
+   "celtic_pivot_bundles": 1910,
+   "slab_tokens_est_no_dedupe": 59121848,
+   "read_tokens_est_no_dedupe": 76858403
   },
   "0.97": {
-   "floor": 16.5983,
-   "bundles": 7537,
-   "celtic_pivot_bundles": 1045,
-   "slab_tokens_est_no_dedupe": 33760046,
-   "read_tokens_est_no_dedupe": 43888059
+   "floor": 16.5976,
+   "bundles": 7533,
+   "celtic_pivot_bundles": 1048,
+   "slab_tokens_est_no_dedupe": 33681329,
+   "read_tokens_est_no_dedupe": 43785728
   },
   "0.98": {
-   "floor": 17.1533,
-   "bundles": 5066,
-   "celtic_pivot_bundles": 658,
-   "slab_tokens_est_no_dedupe": 21538198,
-   "read_tokens_est_no_dedupe": 27999657
+   "floor": 17.151,
+   "bundles": 5062,
+   "celtic_pivot_bundles": 661,
+   "slab_tokens_est_no_dedupe": 21482177,
+   "read_tokens_est_no_dedupe": 27926831
   },
   "0.99": {
-   "floor": 18.0101,
-   "bundles": 2561,
-   "celtic_pivot_bundles": 296,
-   "slab_tokens_est_no_dedupe": 10259303,
-   "read_tokens_est_no_dedupe": 13337094
+   "floor": 18.0056,
+   "bundles": 2562,
+   "celtic_pivot_bundles": 298,
+   "slab_tokens_est_no_dedupe": 10245432,
+   "read_tokens_est_no_dedupe": 13319062
   }
  },
- "decoy_target": 4951,
+ "decoy_target": 4946,
  "mapping_notes": {
   "stageB": {
    "glaux_texts": 499,
