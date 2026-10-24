@@ -2,6 +2,8 @@
  "plans": 40,
  "realized": 40,
  "exact_pass": 40,
+ "accent_representation_tokens": 5,
+ "accent_defect_tokens": 0,
  "reject_rate": 0.0,
  "distinct_roots": 111,
  "roots_per_sentence": 2.775,
@@ -41,6 +43,11 @@
  },
  "formula_uses": 26,
  "warnings": 6,
+ "accent_unresolved": {
+  "tokens": 0,
+  "lexemes": 0,
+  "records": 0
+ },
  "gates": {
   "reject_rate<=0.10": true,
   "max_lexeme_uses<=8": true,
