@@ -113,6 +113,8 @@ Whole stored corpus (corpus/tier1, tier2, tier3: 42,874 tokens) revalidated befo
 
 ## Accent lint
 
+Since the accent policy (2026-10-24; docs/STATUS.md "Known limitations") the lint has three lists, read from data/morph/accent_unresolved.json: `accentless` (an accent defect), `accent_unresolved` (a token of a lexeme whose headword has no accent: unresolved accent, missing information, not a defect) and `accent_representation` (a frozen representation exception, the vocative *ph₂ter*). The exempt forms below are the genuinely unaccented ones. The counts below predate the split.
+
 `validate_text(...)["accentless"]` lists every found token written without an accent mark. The palatal acute of *ḱ, ǵ* does not count as an accent. Enclitic tokens are exempt (`-kʷe`), as are the closed-class forms closed_class.json writes unaccented (particles such as *ne*, enclitic pronouns, the indefinite *kʷis*) and the enclitic or postpositive lexicon particles in `ACCENTLESS_LEXEMES` (*gʰe, bʰo, ḱe, -kʷe, u, -we, ō*). The lint is a warning: it does not change `status` or the tier.
 
 Stored corpus hits: Tier 3, 235 tokens; Tier 1, 84; Tier 2, 1. Morphology is not fixed here: accentless optatives are being fixed in pie/morph.py in a separate branch.

@@ -124,6 +124,27 @@ from .compound import CompoundError, resolve as resolve_compound
 from .morph import AdjSpec, NounSpec, VerbSpec, conjugate, decline, decline_adj, decline_participle
 
 ROOT = Path(__file__).resolve().parent.parent
+ACCENT_MANIFEST = ROOT / "data/morph/accent_unresolved.json"
+
+
+@lru_cache(maxsize=1)
+def accent_manifest() -> dict:
+    """data/morph/accent_unresolved.json, the one source of accent status (docs/STATUS.md "Known limitations").
+    Three categories stay apart: unresolved_lexical_accent (missing information: the headword has no accent),
+    representation_exceptions (forms the notation and the initial vocative accent leave unmarked, ph₂ter) and
+    the genuinely unaccented clitics (not listed there). Adds two derived sets: "unresolved_ids" and
+    "exception_cells" ((lex_id, gender, cell, form) tuples)."""
+    m = json.loads(ACCENT_MANIFEST.read_text("utf-8"))
+    m["unresolved_ids"] = frozenset(i for f in m["unresolved_lexical_accent"]["by_family"].values() for i in f["ids"])
+    m["exception_cells"] = frozenset((c["lex_id"], c["gender"], c["cell"], c["form"])
+                                     for c in m["representation_exceptions"]["cells"])
+    return m
+
+
+def accent_status(lex_id: str | None) -> str:
+    """"unresolved" for a lexeme whose accent the sources leave open (missing information, not an unaccented
+    word); "resolved" otherwise (closed-class ids and unknown ids included)."""
+    return "unresolved" if lex_id in accent_manifest()["unresolved_ids"] else "resolved"
 
 # PRED: predicate nominal or adjective (nominative; an adjective agrees with the subject).
 # Interrogative phrases are fronted. A prohibitive (neg + IMP) is mē + injunctive.
@@ -185,6 +206,10 @@ class Lexicon:
                 d = json.loads(x)
                 derived[d["id"]] = d["gloss"]
         return cls(lex, specs, closed, derived, blocked)
+
+    def accent_status(self, lex_id: str) -> str:
+        """"resolved" | "unresolved" (module accent_status: data/morph/accent_unresolved.json)."""
+        return accent_status(lex_id)
 
     def gloss(self, lex_id: str) -> str:
         if lex_id.startswith("closed:"):

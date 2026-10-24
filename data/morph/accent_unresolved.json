@@ -1,7 +1,7 @@
 {
- "_note": "Known accent defects found by tests/test_accent_invariant.py, listed (not excepted): each is a defect to fix, and the test fails if a listed lexeme no longer has the defect (remove it then) or if a new one appears. Built 2026-10-24 (fix/accent).",
- "lemma_unaccented": {
-  "reason": "the headword (Wiktionary lemma) has no accent and nothing in the spec supplies one, so every cell of the paradigm is accentless; the accent has to be decided per lexeme (Vedic/Greek evidence) in data/lexicon/overrides.jsonl, or the lexeme gated out of usable_for_tier3",
+ "_note": "The accent manifest: the one place the code reads accent status from (pie.realize.accent_manifest, Lexicon.accent_status; the validator's accent lint, scripts/realize_plans.py, pie/export.py; the invariant tests/test_accent_invariant.py). Three categories are kept apart: (1) unresolved_lexical_accent, missing information (the source gives no accent), not evidence that a word was unaccented; (2) representation_exceptions, forms the project's notation and conventions leave without a visible accent; (3) genuinely unaccented clitics, which are not listed here (tests/test_accent_invariant.py INHERENTLY_ACCENTLESS, pie.validate ACCENTLESS_LEXEMES and closed_class.json). double_accent_source and closed_pending are defects to fix. Every group may only shrink: the invariant fails on a new unexplained case and on a listed case that is no longer one (remove it then). Built 2026-10-24 (fix/accent), accent policy 2026-10-24.",
+ "unresolved_lexical_accent": {
+  "reason": "accent: unresolved (missing information). The Wiktionary headword has no accent and nothing in the spec supplies one, so every cell of the paradigm is accentless. This records missing information, not a claim that the word was inherently unaccented. The lexemes stay usable (inflection capability is unchanged); records, tokens and exported tasks built on them carry accent: unresolved. A sourced accent goes into data/lexicon/overrides.jsonl as a checked spec (and the id leaves this list).",
   "cells": 18866,
   "by_family": {
    "noun/shape:thematic": {
@@ -679,11 +679,25 @@
      "pie-lex-wetelos"
     ]
    }
-  }
+  },
+  "reasons": {
+   "pie-lex-kjerh2wos": "Gk κεραός (oxytone; Beekes EDG s.v., < *kerh₂u̯-o-) is the adjective 'horned'; the substantive 'the horned one, deer' may retract the accent (Fortson §6.72, cf. the Hróth₂os override), and Beekes posits an ablauting *kerh₂-u-o-/*kr̥h₂-eu-o-: undecided",
+   "pie-lex-gjhleystos": "no accented source; Celtic reflexes only (Wiktionary ǵʰley-), no Vedic or Greek",
+   "pie-lex-werdhom": "every source prints it unaccented (de Vaan s.v. verbum, Kroonen p. 600, Derksen, NIL, Handbook vol. 3 ch. 8); no Vedic or Greek reflex",
+   "pie-lex-h1eh2nos": "no accented source (de Vaan s.v. ānus, M&A *ānos, Matasović); Latin, Celtic, Armenian reflexes only",
+   "pie-lex-h2eysos": "formation in doubt, not only the accent: de Vaan s.v. aeruscō has an s-stem neuter *h₂eis-os- (aeruscō < *aisos-ko-), Wiktionary's only reflex; Ved. eṣá- m. (EWAia I 270) would give h₂eysós only if the thematic masculine is kept",
+   "pie-lex-srowmos": "no accented source (Kroonen, Beekes EDG *srou-mo-); Germanic reflex only; Gk ῥεῦμα, ῥόος are other formations",
+   "pie-lex-gurnos": "no accented source (M&A *gu-r-nos); Baltic and Armenian reflexes only (Lith. gurnas AP 4 decides nothing by itself)",
+   "pie-lex-wexdos": "no accented source (Kroonen *u̯ēd-o-, NIL); Germanic reflex only",
+   "pie-lex-h1rudhyos": "no accented source for the -yo- formation (Balto-Slavic reflex only); Ved. rudhirá-, Gk ἐρυθρός are the -ró- formation (Fortson *h₁rudʰ-ró-)",
+   "pie-lex-teh2yeti": "only a synonym list on Wiktionary's tinéh₁ti page prints téh₂yeti; LIV² p. 616 has a *teh₂-i̯e- present but its accent is not legible here; no Vedic or Greek ye-present: too weak for a checked spec",
+   "pie-lex-h2emseti": "no accented source; Anatolian only (LIV² p. 269 ?perfect, Hitt. ḫāši; Kloekhorst), a ḫi-verb rather than a thematic present"
+  },
+  "reasons_note": "Searched 2026-10-24 for the 11 lexemes of the stored non-pilot Tier 3 corpus (Fortson, Ringe, Beekes, M&A, LIV², EDG, EWAia, de Vaan, Kroonen, Derksen, Matasović, NIL, Wiktionary's other pages); none has a sourced accent that decides it, so none got an override. LIV²'s OCR copy here loses accent marks."
  },
- "vocalized_laryngeal_vocative": {
-  "reason": "the retracted vocative accent (Fortson §6.52) falls on an initial syllable whose nucleus is a vocalized laryngeal (ph₂tér → voc. ph₂ter; Ved. pítar, Gk πάτερ; dʰh₁tó- → Ved. híta), which the notation cannot mark; no handbook prints these vocatives accentless. Needs a notation decision",
-  "cells": 111,
+ "representation_exceptions": {
+  "reason": "notation and prosody, not missing information: the project's isolated-address (initial) vocative accent (Fortson §6.52) meets a stem whose first syllable has a laryngeal-containing nucleus in the segmental spelling (ph₂ter beside Ved. pítar, Gk πάτερ; dʰh₁tó- beside Ved. híta). pie.morph._initial_accent leaves these forms without a visible accent rather than move it to a later vowel; the notation has no accent on a syllabic laryngeal (Hackstein's ph₂́ter is deferred) and the engine has no phrase-level vocative intonation. Kept for this release; the exact (lex_id, gender, cell, primary form) combinations are frozen below",
+  "lexemes": 30,
   "ids": [
    "pie-lex-bhh1tos",
    "pie-lex-bhh2tos",
@@ -715,6 +729,674 @@
    "pie-lex-sth2ros",
    "pie-lex-sth2texr",
    "pie-lex-sth2tos"
+  ],
+  "cells": [
+   {
+    "lex_id": "pie-lex-bhh1tos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "bʰh₁te"
+   },
+   {
+    "lex_id": "pie-lex-bhh1tos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "bʰh₁toh₁"
+   },
+   {
+    "lex_id": "pie-lex-bhh1tos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "bʰh₁tōs"
+   },
+   {
+    "lex_id": "pie-lex-bhh2tos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "bʰh₂te"
+   },
+   {
+    "lex_id": "pie-lex-bhh2tos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "bʰh₂toh₁"
+   },
+   {
+    "lex_id": "pie-lex-bhh2tos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "bʰh₂tōs"
+   },
+   {
+    "lex_id": "pie-lex-dh1tos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "dh₁te"
+   },
+   {
+    "lex_id": "pie-lex-dh1tos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "dh₁toh₁"
+   },
+   {
+    "lex_id": "pie-lex-dh1tos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "dh₁tōs"
+   },
+   {
+    "lex_id": "pie-lex-dh3texr",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "dh₃ter"
+   },
+   {
+    "lex_id": "pie-lex-dh3texr",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "dh₃terh₁e"
+   },
+   {
+    "lex_id": "pie-lex-dh3texr",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "dh₃teres"
+   },
+   {
+    "lex_id": "pie-lex-dh3tos",
+    "gender": "m",
+    "cell": "VOC.SG",
+    "form": "dh₃te"
+   },
+   {
+    "lex_id": "pie-lex-dh3tos",
+    "gender": "m",
+    "cell": "VOC.DU",
+    "form": "dh₃toh₁"
+   },
+   {
+    "lex_id": "pie-lex-dh3tos",
+    "gender": "m",
+    "cell": "VOC.PL",
+    "form": "dh₃tōs"
+   },
+   {
+    "lex_id": "pie-lex-dh3tos",
+    "gender": "f",
+    "cell": "VOC.SG",
+    "form": "dh₃ta"
+   },
+   {
+    "lex_id": "pie-lex-dh3tos",
+    "gender": "f",
+    "cell": "VOC.DU",
+    "form": "dh₃teh₂h₁"
+   },
+   {
+    "lex_id": "pie-lex-dh3tos",
+    "gender": "f",
+    "cell": "VOC.PL",
+    "form": "dh₃teh₂es"
+   },
+   {
+    "lex_id": "pie-lex-dhh1dhmos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "dʰh₁dʰme"
+   },
+   {
+    "lex_id": "pie-lex-dhh1dhmos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "dʰh₁dʰmoh₁"
+   },
+   {
+    "lex_id": "pie-lex-dhh1dhmos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "dʰh₁dʰmōs"
+   },
+   {
+    "lex_id": "pie-lex-dhh1tos",
+    "gender": "m",
+    "cell": "VOC.SG",
+    "form": "dʰh₁te"
+   },
+   {
+    "lex_id": "pie-lex-dhh1tos",
+    "gender": "m",
+    "cell": "VOC.DU",
+    "form": "dʰh₁toh₁"
+   },
+   {
+    "lex_id": "pie-lex-dhh1tos",
+    "gender": "m",
+    "cell": "VOC.PL",
+    "form": "dʰh₁tōs"
+   },
+   {
+    "lex_id": "pie-lex-dhh1tos",
+    "gender": "f",
+    "cell": "VOC.SG",
+    "form": "dʰh₁ta"
+   },
+   {
+    "lex_id": "pie-lex-dhh1tos",
+    "gender": "f",
+    "cell": "VOC.DU",
+    "form": "dʰh₁teh₂h₁"
+   },
+   {
+    "lex_id": "pie-lex-dhh1tos",
+    "gender": "f",
+    "cell": "VOC.PL",
+    "form": "dʰh₁teh₂es"
+   },
+   {
+    "lex_id": "pie-lex-dhh2bhros",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "dʰh₂bʰre"
+   },
+   {
+    "lex_id": "pie-lex-dhh2bhros",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "dʰh₂bʰroh₁"
+   },
+   {
+    "lex_id": "pie-lex-dhh2bhros",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "dʰh₂bʰrōs"
+   },
+   {
+    "lex_id": "pie-lex-gjhh1nos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "ǵʰh₁ne"
+   },
+   {
+    "lex_id": "pie-lex-gjhh1nos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "ǵʰh₁noh₁"
+   },
+   {
+    "lex_id": "pie-lex-gjhh1nos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "ǵʰh₁nōs"
+   },
+   {
+    "lex_id": "pie-lex-gwh2tos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "gʷh₂te"
+   },
+   {
+    "lex_id": "pie-lex-gwh2tos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "gʷh₂toh₁"
+   },
+   {
+    "lex_id": "pie-lex-gwh2tos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "gʷh₂tōs"
+   },
+   {
+    "lex_id": "pie-lex-kh2mdhos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "kh₂mdʰe"
+   },
+   {
+    "lex_id": "pie-lex-kh2mdhos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "kh₂mdʰoh₁"
+   },
+   {
+    "lex_id": "pie-lex-kh2mdhos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "kh₂mdʰōs"
+   },
+   {
+    "lex_id": "pie-lex-kh3tos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "kh₃te"
+   },
+   {
+    "lex_id": "pie-lex-kh3tos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "kh₃toh₁"
+   },
+   {
+    "lex_id": "pie-lex-kh3tos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "kh₃tōs"
+   },
+   {
+    "lex_id": "pie-lex-kjh3tos",
+    "gender": "m",
+    "cell": "VOC.SG",
+    "form": "ḱh₃te"
+   },
+   {
+    "lex_id": "pie-lex-kjh3tos",
+    "gender": "m",
+    "cell": "VOC.DU",
+    "form": "ḱh₃toh₁"
+   },
+   {
+    "lex_id": "pie-lex-kjh3tos",
+    "gender": "m",
+    "cell": "VOC.PL",
+    "form": "ḱh₃tōs"
+   },
+   {
+    "lex_id": "pie-lex-kjh3tos",
+    "gender": "f",
+    "cell": "VOC.SG",
+    "form": "ḱh₃ta"
+   },
+   {
+    "lex_id": "pie-lex-kjh3tos",
+    "gender": "f",
+    "cell": "VOC.DU",
+    "form": "ḱh₃teh₂h₁"
+   },
+   {
+    "lex_id": "pie-lex-kjh3tos",
+    "gender": "f",
+    "cell": "VOC.PL",
+    "form": "ḱh₃teh₂es"
+   },
+   {
+    "lex_id": "pie-lex-ph1tos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "ph₁te"
+   },
+   {
+    "lex_id": "pie-lex-ph1tos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "ph₁toh₁"
+   },
+   {
+    "lex_id": "pie-lex-ph1tos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "ph₁tōs"
+   },
+   {
+    "lex_id": "pie-lex-ph2gjtos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "ph₂ǵte"
+   },
+   {
+    "lex_id": "pie-lex-ph2gjtos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "ph₂ǵtoh₁"
+   },
+   {
+    "lex_id": "pie-lex-ph2gjtos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "ph₂ǵtōs"
+   },
+   {
+    "lex_id": "pie-lex-ph2kjros",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "ph₂ḱre"
+   },
+   {
+    "lex_id": "pie-lex-ph2kjros",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "ph₂ḱroh₁"
+   },
+   {
+    "lex_id": "pie-lex-ph2kjros",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "ph₂ḱrōs"
+   },
+   {
+    "lex_id": "pie-lex-ph2texr",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "ph₂ter"
+   },
+   {
+    "lex_id": "pie-lex-ph2texr",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "ph₂terh₁e"
+   },
+   {
+    "lex_id": "pie-lex-ph2texr",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "ph₂teres"
+   },
+   {
+    "lex_id": "pie-lex-ph3tos",
+    "gender": "m",
+    "cell": "VOC.SG",
+    "form": "ph₃te"
+   },
+   {
+    "lex_id": "pie-lex-ph3tos",
+    "gender": "m",
+    "cell": "VOC.DU",
+    "form": "ph₃toh₁"
+   },
+   {
+    "lex_id": "pie-lex-ph3tos",
+    "gender": "m",
+    "cell": "VOC.PL",
+    "form": "ph₃tōs"
+   },
+   {
+    "lex_id": "pie-lex-ph3tos",
+    "gender": "f",
+    "cell": "VOC.SG",
+    "form": "ph₃ta"
+   },
+   {
+    "lex_id": "pie-lex-ph3tos",
+    "gender": "f",
+    "cell": "VOC.DU",
+    "form": "ph₃teh₂h₁"
+   },
+   {
+    "lex_id": "pie-lex-ph3tos",
+    "gender": "f",
+    "cell": "VOC.PL",
+    "form": "ph₃teh₂es"
+   },
+   {
+    "lex_id": "pie-lex-sh1syos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "sh₁sye"
+   },
+   {
+    "lex_id": "pie-lex-sh1syos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "sh₁syoh₁"
+   },
+   {
+    "lex_id": "pie-lex-sh1syos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "sh₁syōs"
+   },
+   {
+    "lex_id": "pie-lex-sh1tos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "sh₁te"
+   },
+   {
+    "lex_id": "pie-lex-sh1tos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "sh₁toh₁"
+   },
+   {
+    "lex_id": "pie-lex-sh1tos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "sh₁tōs"
+   },
+   {
+    "lex_id": "pie-lex-sh2kros",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "sh₂kre"
+   },
+   {
+    "lex_id": "pie-lex-sh2kros",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "sh₂kroh₁"
+   },
+   {
+    "lex_id": "pie-lex-sh2kros",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "sh₂krōs"
+   },
+   {
+    "lex_id": "pie-lex-sh2tos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "sh₂te"
+   },
+   {
+    "lex_id": "pie-lex-sh2tos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "sh₂toh₁"
+   },
+   {
+    "lex_id": "pie-lex-sh2tos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "sh₂tōs"
+   },
+   {
+    "lex_id": "pie-lex-skjh1wotos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "sḱh₁wote"
+   },
+   {
+    "lex_id": "pie-lex-skjh1wotos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "sḱh₁wotoh₁"
+   },
+   {
+    "lex_id": "pie-lex-skjh1wotos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "sḱh₁wotōs"
+   },
+   {
+    "lex_id": "pie-lex-sph1ros",
+    "gender": "m",
+    "cell": "VOC.SG",
+    "form": "sph₁re"
+   },
+   {
+    "lex_id": "pie-lex-sph1ros",
+    "gender": "m",
+    "cell": "VOC.DU",
+    "form": "sph₁roh₁"
+   },
+   {
+    "lex_id": "pie-lex-sph1ros",
+    "gender": "m",
+    "cell": "VOC.PL",
+    "form": "sph₁rōs"
+   },
+   {
+    "lex_id": "pie-lex-sph1ros",
+    "gender": "f",
+    "cell": "VOC.SG",
+    "form": "sph₁ra"
+   },
+   {
+    "lex_id": "pie-lex-sph1ros",
+    "gender": "f",
+    "cell": "VOC.DU",
+    "form": "sph₁reh₂h₁"
+   },
+   {
+    "lex_id": "pie-lex-sph1ros",
+    "gender": "f",
+    "cell": "VOC.PL",
+    "form": "sph₁reh₂es"
+   },
+   {
+    "lex_id": "pie-lex-sph2yos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "sph₂ye"
+   },
+   {
+    "lex_id": "pie-lex-sph2yos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "sph₂yoh₁"
+   },
+   {
+    "lex_id": "pie-lex-sph2yos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "sph₂yōs"
+   },
+   {
+    "lex_id": "pie-lex-sth2dhmos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "sth₂dʰme"
+   },
+   {
+    "lex_id": "pie-lex-sth2dhmos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "sth₂dʰmoh₁"
+   },
+   {
+    "lex_id": "pie-lex-sth2dhmos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "sth₂dʰmōs"
+   },
+   {
+    "lex_id": "pie-lex-sth2nos",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "sth₂ne"
+   },
+   {
+    "lex_id": "pie-lex-sth2nos",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "sth₂noh₁"
+   },
+   {
+    "lex_id": "pie-lex-sth2nos",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "sth₂nōs"
+   },
+   {
+    "lex_id": "pie-lex-sth2ros",
+    "gender": "m",
+    "cell": "VOC.SG",
+    "form": "sth₂re"
+   },
+   {
+    "lex_id": "pie-lex-sth2ros",
+    "gender": "m",
+    "cell": "VOC.DU",
+    "form": "sth₂roh₁"
+   },
+   {
+    "lex_id": "pie-lex-sth2ros",
+    "gender": "m",
+    "cell": "VOC.PL",
+    "form": "sth₂rōs"
+   },
+   {
+    "lex_id": "pie-lex-sth2ros",
+    "gender": "f",
+    "cell": "VOC.SG",
+    "form": "sth₂ra"
+   },
+   {
+    "lex_id": "pie-lex-sth2ros",
+    "gender": "f",
+    "cell": "VOC.DU",
+    "form": "sth₂reh₂h₁"
+   },
+   {
+    "lex_id": "pie-lex-sth2ros",
+    "gender": "f",
+    "cell": "VOC.PL",
+    "form": "sth₂reh₂es"
+   },
+   {
+    "lex_id": "pie-lex-sth2texr",
+    "gender": null,
+    "cell": "VOC.SG",
+    "form": "sth₂ter"
+   },
+   {
+    "lex_id": "pie-lex-sth2texr",
+    "gender": null,
+    "cell": "VOC.DU",
+    "form": "sth₂terh₁e"
+   },
+   {
+    "lex_id": "pie-lex-sth2texr",
+    "gender": null,
+    "cell": "VOC.PL",
+    "form": "sth₂teres"
+   },
+   {
+    "lex_id": "pie-lex-sth2tos",
+    "gender": "m",
+    "cell": "VOC.SG",
+    "form": "sth₂te"
+   },
+   {
+    "lex_id": "pie-lex-sth2tos",
+    "gender": "m",
+    "cell": "VOC.DU",
+    "form": "sth₂toh₁"
+   },
+   {
+    "lex_id": "pie-lex-sth2tos",
+    "gender": "m",
+    "cell": "VOC.PL",
+    "form": "sth₂tōs"
+   },
+   {
+    "lex_id": "pie-lex-sth2tos",
+    "gender": "f",
+    "cell": "VOC.SG",
+    "form": "sth₂ta"
+   },
+   {
+    "lex_id": "pie-lex-sth2tos",
+    "gender": "f",
+    "cell": "VOC.DU",
+    "form": "sth₂teh₂h₁"
+   },
+   {
+    "lex_id": "pie-lex-sth2tos",
+    "gender": "f",
+    "cell": "VOC.PL",
+    "form": "sth₂teh₂es"
+   }
   ]
  },
  "double_accent_source": {

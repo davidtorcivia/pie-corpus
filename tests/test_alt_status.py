@@ -99,5 +99,11 @@ def test_every_displacement_is_classified_and_listed():
 def test_accent_lint(ix):
     assert has_accent("ḱléwos") and not has_accent("ḱerd")      # the palatal acute is not an accent
     v = validate_text("ph₂tḗr ph₂ter h₁éḱwōs-kʷe ne kʷis gʰe", ix)
-    assert v["accentless"] == ["ph₂ter"]       # not the enclitic, the particle ne, the indefinite, gʰe
+    # the vocative ph₂ter is a representation exception, not a defect; the enclitic, the particle ne, the
+    # indefinite and gʰe are genuinely unaccented (exempt)
+    assert v["accentless"] == [] and v["accent_representation"] == ["ph₂ter"] and v["accent_unresolved"] == []
     assert v["status"] == "pass"                # a lint, not a status change
+    # an unresolved-accent lexeme (kreydʰrom: the headword has no accent) is missing information, not a defect;
+    # a resolved word written without its accent is a defect
+    v = validate_text("kreydʰrom bʰereti", ix)
+    assert v["accent_unresolved"] == ["kreydʰrom"] and v["accentless"] == ["bʰereti"]

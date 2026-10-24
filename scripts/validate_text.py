@@ -17,7 +17,11 @@ def main() -> int:
         r = validate_text(line, ix)
         print(f"{r['status'].upper():5} cov={r['coverage']:.2f} tiers={r['tiers']} misses={r['misses']}  {line}")
         if r["accentless"]:
-            print(f"   accentless: {' '.join(r['accentless'])}")
+            print(f"   accentless (accent defect): {' '.join(r['accentless'])}")
+        if r["accent_unresolved"]:
+            print(f"   unresolved accent (missing information): {' '.join(r['accent_unresolved'])}")
+        if r["accent_representation"]:
+            print(f"   accent not representable (notation exception): {' '.join(r['accent_representation'])}")
         for t in r["tokens"]:
             if t.found:
                 a = t.analyses[0]
