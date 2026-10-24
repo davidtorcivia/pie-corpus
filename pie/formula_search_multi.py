@@ -1535,6 +1535,14 @@ def apply_lemma_overrides(corpus: str, m: "fs.Mapping", gmap: dict | None = None
     gmap = gmap or {}
     ov = (overrides or load_overrides(root))["lemma"].get(corpus, {})
     out = fs.Mapping(dict(m.lemma_groups), dict(m.lemma_tier), set(m.ambiguous), dict(m.lemma_lex))
+    for lem in [k for k, v in out.lemma_lex.items() if set(v) & BLOCKED_IDS]:
+        keep = frozenset(_strip_blocked(out.lemma_lex[lem]))
+        if keep:
+            out.lemma_lex[lem] = keep
+            out.lemma_groups[lem] = frozenset(gmap.get(x, x) for x in keep)
+        else:
+            for d in (out.lemma_groups, out.lemma_tier, out.lemma_lex):
+                d.pop(lem, None)
     for lem, (ids, _) in ov.items():
         out.ambiguous.discard(lem)
         if not ids:
@@ -1556,15 +1564,28 @@ def apply_rec_overrides(corpus: str, recs: dict, root: Path = ROOT, overrides: d
             out.pop(lem, None)
             continue
         old = out.get(lem)
-        out[lem] = MapRec(lem, old.word if old else lem, ids, (f"{corpus}:{lem}", "erratum:" + row["erratum"]),
+        note = row.get("erratum") or row.get("note") or "override"      # per-language rows cite a dictionary in 'note'
+        out[lem] = MapRec(lem, old.word if old else lem, ids, (f"{corpus}:{lem}", "erratum:" + note),
                           "erratum", "high", ("mapping-overrides",))
     return out
+
+
+# ids that the etymology resolver attaches wrongly by key collision and that no automatic mapping may
+# use (an explicit override row still can): pie-lex-sh1es (a derivative of *seh₁- 'sow, impress')
+# collects 'be' words (OE wesan, sindon; Goth. wisan; Latv. būt) and *h₁sónt- words (Goth. sunja,
+# OE synn): mapping-errata.md, Germanic precision report
+BLOCKED_IDS = {"pie-lex-sh1es"}
+
+
+def _strip_blocked(ids):
+    return tuple(i for i in ids if i not in BLOCKED_IDS)
 
 
 def apply_table_overrides(corpus: str, table: dict, root: Path = ROOT, overrides: dict | None = None) -> dict:
     """The same for a lemma → ids tuple dict (a mapping table as read by the 8c loaders)."""
     ov = (overrides or load_overrides(root))["lemma"].get(corpus, {})
-    out = dict(table)
+    out = {k: _strip_blocked(v) for k, v in table.items()}
+    out = {k: v for k, v in out.items() if v}
     for lem, (ids, _) in ov.items():
         if ids:
             out[lem] = tuple(sorted(ids))

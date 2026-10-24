@@ -57,15 +57,50 @@ def _load(globpat: str, root: Path) -> list[dict]:
     return recs
 
 
+def record_style(r: dict) -> str:
+    """The reconstruction style a record's PIE follows: a named scholarly reconstruction (Tier 1,
+    normalized to the project's notation but keeping its linguistic choices) or the project's own
+    handbook convention (Tier 2, Tier 3). A translation benchmark must not score one as the other
+    (David's review)."""
+    if r.get("tier") == 1:
+        return "scholarly: " + (r.get("work_id") or r.get("work_group_id") or "unnamed") + " (normalized notation)"
+    return "project handbook convention"
+
+
 def record_tasks(r: dict) -> list[dict]:
     out = []
+    style = record_style(r)
     if r.get("english"):
-        out.append({"task": "translate_en_pie", "input": r["english"], "output": r["pie"]})
-        out.append({"task": "translate_pie_en", "input": r["pie"], "output": r["english"]})
+        out.append({"task": "translate_en_pie", "input": f"[style: {style}] {r['english']}", "output": r["pie"],
+                    "style": style,
+                    # other defensible realizations: the work's own alternative reconstructions
+                    "acceptable": [r["pie"]] + [a.get("pie", a) if isinstance(a, dict) else a
+                                                for a in (r.get("alt_reconstructions") or [])]})
+        out.append({"task": "translate_pie_en", "input": r["pie"], "output": r["english"], "style": style})
     if r.get("gloss"):
-        out.append({"task": "gloss", "input": r["pie"], "output": r["gloss"]})
+        out.append({"task": "gloss", "input": r["pie"], "output": r["gloss"], "style": style})
     for t in out:
         t["source_id"] = r["id"]
+    return out
+
+
+def token_variants(r: dict, lx) -> list[list[str]] | None:
+    """Per word, the engine's alternative forms for the same cell (e.g. -éy/-ḗy locatives, -mes/-mos):
+    a scorer may accept any of them. Only for engine-built records (Tier 2/3) whose tokens carry one
+    feature string; None otherwise."""
+    if r.get("tier") == 1:
+        return None
+    out = []
+    for t in r.get("tokens", []):
+        feat, lid = t.get("features"), t.get("lex_id") or ""
+        alts = [t["form"]]
+        if isinstance(feat, str) and lid in lx.specs and lx.specs[lid].get("usable"):
+            try:
+                cells = lx.cells(lid) if lx.specs[lid]["family"] != "adj" else lx.cells(lid, "m")
+                alts = list(dict.fromkeys([t["form"]] + list(cells.get(feat.split("|")[0], []))))
+            except Exception:
+                pass
+        out.append(alts)
     return out
 
 
@@ -114,7 +149,14 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0) -> dict
         train_recs += [json.loads(x) for x in f.read_text("utf-8").splitlines() if x.strip()]
     lx = Lexicon.load()
     train_tasks = [t for r in train_recs for t in record_tasks(r)]
-    eval_tasks = [t for r in tier1 for t in record_tasks(r)]
+    eval_tasks = []
+    for r in tier1:
+        for t in record_tasks(r):
+            if t["task"] == "translate_en_pie":
+                tv = token_variants(r, lx)
+                if tv:
+                    t["token_variants"] = tv
+            eval_tasks.append(t)
     # held-out root families must be unseen in ALL training material, not only in the cognate and
     # inflection tasks: a family the hash selects but that occurs in a training sentence goes to train
     # (David's review: deyḱ- was held out of the cognate task while training sentences inflected it)

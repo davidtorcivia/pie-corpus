@@ -4,13 +4,13 @@ Auditor family: i- and u-stem nouns (acrostatic, proterokinetic, suffix-accented
 
 ## 0. Summary
 
-**16 defects** (9 spec, 6 code, 1 lexicon routing), plus 6 places where the handbooks disagree with each other, each needing a convention decision. Corpus impact is counted over tier-3 tokens with the lexeme + feature whose primary form would change. The family has 2,351 tokens over 59 lexemes in `corpus/tier3/` (of 42,017).
+**16 defects** (11 spec, 4 code, 1 lexicon routing), plus 6 places where the handbooks disagree with each other, each needing a convention decision. Corpus impact is counted over tier-3 tokens with the lexeme + feature whose primary form would change. The family has 2,351 tokens over 59 lexemes in `corpus/tier3/` (of 42,017).
 
 | # | Defect | Kind | Tokens | Certainty |
 |---|---|---|---|---|
 | 1 | u-adjectives barytone (*pléth₂us, gʷréh₂us, swéh₂dus…*) where Vedic+Greek and L&Y have suffix accent + zero-grade root | spec (8 lexemes) | ~65 | handbooks disagree, see §6 |
 | 2 | u-stem LOC.SG has no lengthened-grade *-ḗw* at all | code | 43 (+6 néh₂us) | Beekes vs Ringe, see §2 |
-| 3 | i-stem (PK/HK) LOC.SG primary *-éy*, not *-ḗy* (the acrostatic type already gets *-ēy* first) | code | 34 | Ringe p. 21 + Beekes agree |
+| 3 | i-stem (PK/HK) LOC.SG primary *-éy*, not *-ḗy* (the acrostatic type already gets *-ēy* first) | code | 34 | Ringe p. 20 + Beekes agree |
 | 4 | *déh₂nu*: weak stem = strong minus accent (*deh₂n̥wés*, unaccented full-grade root) | spec | 26 | clear |
 | 5 | i/u INS.SG built on the full-grade suffix (*mn̥téyh₁, dréwh₁, gʷréwh₁*) | code | 25 (+2 péḱu) | all handbooks agree |
 | 6 | *néh₂us* 'ship' given a zero-grade root (*nh₂éws*) and u-stem *-um* | spec (hand override) | 23 | clear |
@@ -53,20 +53,20 @@ Mechanical scans over every cell of all 72 (`iu_check.py`, `iu_scan.py`) checked
 
 ## 2. Proterokinetic i-stems (*méntis* type) and u-stems (*ǵéwstus* type)
 
-Reference paradigms: Ringe 2006 §2.3.4(iii), pp. 47–49 (thought f., taste m., sea n., tree n.), and Beekes 2011 §13.2.6a, p. 203 (PD u-stem, with "the PD i-stems are completely parallel"). Fortson 2010 §§6.10, 6.22 and 6.42.
+Reference paradigms: Ringe 2006 §2.3.4(iii), p. 47 (thought f., taste m., sea n., tree n.), and Beekes 2011 §13.2.6a, p. 203 (PD u-stem, with "the PD i-stems are completely parallel"). Fortson 2010 §§6.10, 6.22 and 6.42.
 
 **Right:** NOM *méntis*, ACC *méntim*, GEN *mn̥téys*, DAT *mn̥téyey*, NOM.DU *méntih₁*, NOM.PL *ménteyes*, ACC.PL *méntins*, GEN.PL *mn̥téyōm* (Ringe *-oHom*; handbook *-ōm* is the project convention, Fortson §6.16), obliques *mn̥tíbʰos/mn̥tímos/mn̥tísu* on the accented zero-grade suffix (Ringe; the existing `_zero_grade_iu`). The same holds for the u-stem *ǵéwstus, ǵustéws, ǵustéwey, ǵéwstewes, ǵéwstuns, ǵustúsu*. Gender, Szemerényi and the ACC.PL *-ns* are fine.
 
 **Wrong:**
 
-- **#5 INS.SG.** The engine gives *mn̥téyh₁, ǵustéwh₁, kh₃téwh₁, gʷréwh₁* as primary. All three handbooks have the zero-grade suffix with bare *-h₁*: Ringe pp. 47–50 *mn̥tíh₁, ǵustúh₁, mríh₁, drúh₁, tn̥h₂úh₁*; Fortson §6.10 (Ved. *matī́* < *-i-h₁*, *-u-h₁*); Beekes §13.2.2, p. 187 (ins. *-h₁* "as found in the i- and u-stems") and §13.2.6a *-u-h₁*. Wiktionary's own tables agree (*h₁ln̥gʷʰúh₁*); only the engine's handbook branch differs, because it builds INS.SG from `obl` (the plain weak stem) while the oblique plural uses `obl_pl`. Fix: patch A (§7).
-- **#3 LOC.SG, i-stems.** The engine gives *mn̥téy / mn̥tḗy*. Ringe p. 21 (§2.2.4, Stang's law) says the i-stem locative */-ey-i/* surfaced as *-ēy*; his table prints *mn̥téy (-ēy)*. Beekes §13.2.2 p. 187 and §13.2.6a reconstruct the endingless lengthened grade (Ved. *agnā́*, Gk *πόληι*). The engine already puts *-ēy* first for the acrostatic type (*h₂éwēy*), so the PK and HK order is also internally inconsistent. Fix: patch B, which makes *-ḗy* primary with *-éy* kept as an alternative.
-- **#2 LOC.SG, u-stems.** The engine gives *ǵustéwi / ǵustéw*, with no *-ēw* form at all. Beekes §13.2.6a gives *-ēu* (Ved. *sūnáu*, Goth. *sunau*), and Beekes p. 187 notes the endingless locative has "full or lengthened grade" (*-ēn, -ēu*). Ringe p. 48 prints *ǵustéw(i), dréw(i)*. **Disagreement:** I propose *-ḗw* primary, for symmetry with *-ḗy* and because the brief lists it as a form of this family, with Ringe's *-éwi, -éw* kept as alternatives. The minimum fix is to add *-ḗw* as an alternative (patch B without the reordering).
+- **#5 INS.SG.** The engine gives *mn̥téyh₁, ǵustéwh₁, kh₃téwh₁, gʷréwh₁* as primary. All three handbooks have the zero-grade suffix with bare *-h₁*: Ringe pp. 47 and 49 *mn̥tíh₁, ǵustúh₁, mríh₁, drúh₁, tn̥h₂úh₁*; Fortson §6.10 (Ved. *matī́* < *-i-h₁*, *-u-h₁*); Beekes §13.2.2, p. 187 (ins. *-h₁* "as found in the i- and u-stems") and §13.2.6a *-u-h₁*. Wiktionary's own tables agree (*h₁ln̥gʷʰúh₁*); only the engine's handbook branch differs, because it builds INS.SG from `obl` (the plain weak stem) while the oblique plural uses `obl_pl`. Fix: patch A (§7).
+- **#3 LOC.SG, i-stems.** The engine gives *mn̥téy / mn̥tḗy*. Ringe p. 20 (§2.2.4, Stang's law) says the i-stem locative */-ey-i/* surfaced as *-ēy*; his table prints *mn̥téy (-ēy)*. Beekes §13.2.2 p. 187 and §13.2.6a reconstruct the endingless lengthened grade (Ved. *agnā́*, Gk *πόληι*). The engine already puts *-ēy* first for the acrostatic type (*h₂éwēy*), so the PK and HK order is also internally inconsistent. Fix: patch B, which makes *-ḗy* primary with *-éy* kept as an alternative.
+- **#2 LOC.SG, u-stems.** The engine gives *ǵustéwi / ǵustéw*, with no *-ēw* form at all. Beekes §13.2.6a gives *-ēu* (Ved. *sūnáu*, Goth. *sunau*), and Beekes p. 187 notes the endingless locative has "full or lengthened grade" (*-ēn, -ēu*). Ringe p. 47 prints *ǵustéw(i), dréw(i)*. **Disagreement:** I propose *-ḗw* primary, for symmetry with *-ḗy* and because the brief lists it as a form of this family, with Ringe's *-éwi, -éw* kept as alternatives. The minimum fix is to add *-ḗw* as an alternative (patch B without the reordering).
 - Vocative: see §8 (a disagreement, not a defect).
 
 ## 3. Acrostatic i-stems (*h₂ówis*, *pótis*)
 
-Ringe pp. 47–48 (sheep, f.): *h₂ówis, voc. h₂ówi, acc. h₂ówim, ins. h₂éwih₁, dat. h₂éwyey, gen. h₂éwis* (later *-yos*), du. *h₂ówih₁e*, pl. *h₂óweyes, h₂ówins, h₂éwibʰi, h₂éwimos, h₂éwyoHom, h₂éwisu*. Fortson §6.21.
+Ringe pp. 46–47 (sheep, f.): *h₂ówis, voc. h₂ówi, acc. h₂ówim, ins. h₂éwih₁, dat. h₂éwyey, gen. h₂éwis* (later *-yos*), du. *h₂ówih₁e*, pl. *h₂óweyes, h₂ówins, h₂éwibʰi, h₂éwimos, h₂éwyoHom, h₂éwisu*. Fortson §6.21.
 
 **Right:** every cell except the vocative order matches Ringe (with the *-ōm, -bʰos, -bʰis* conventions). GEN.SG adds *h₂éweys* (Beekes, L&Y §2.1.1). *pótis, wiḱpótis, gʰóstipotis* have no weak stem and get the full-grade *-ey-* forms first (*póteys, póteyey*: Ved. *-pates, -pataye*). That is a sound choice. The patches leave this type unchanged (tested: *h₂éwih₁*, *h₂éwēy*).
 
@@ -81,14 +81,14 @@ Ringe pp. 47–48 (sheep, f.): *h₂ówis, voc. h₂ówi, acc. h₂ówim, ins. h
 
 ## 5. Neuters
 
-**Right:** *móri, dóru, médʰu, ǵónu*: NOM/ACC = bare stem; GEN *mréys, dréws*; DAT *mréyey, dréwey*; NOM.PL *mórih₂, dóruh₂*; obliques *mríbʰos, drúsu*; NOM.DU *dórwih₁* (Ringe p. 49). The PK analysis with o-grade direct cases follows Ringe p. 46 (*mó­ri, mréy-; dóru, dréw-; ǵónu, ǵnéw-*) and Fortson §6.27 (*dr-éu-s*), and is right.
+**Right:** *móri, dóru, médʰu, ǵónu*: NOM/ACC = bare stem; GEN *mréys, dréws*; DAT *mréyey, dréwey*; NOM.PL *mórih₂, dóruh₂*; obliques *mríbʰos, drúsu*; NOM.DU *dórwih₁* (Ringe p. 47). The PK analysis with o-grade direct cases follows Ringe p. 45 (*móri, mréy-; dóru, dréw-; ǵónu, ǵnéw-*) and Fortson §6.27 (*dr-éu-s*), and is right.
 
 **Wrong:**
 
 - INS.SG and LOC.SG as in §2 (*mréyh₁ → mríh₁*, *dréwi → drḗw*).
-- **#15 dual.** The engine gives *móryih₁*. Ringe p. 49 has *mórīh₁ (?)*, and Fortson §6.13 *h₃ekʷih₁* 'both eyes' (OCS *oči*), i.e. *i + ih₁ → ih₁*. Oxytone u-neuters come out as *ml̥dúyh₁, polh₁úyh₁, HeHḱúyh₁*: the junction keeps the accented *ú* syllabic and turns the ending's *i* into a glide. The correct form is *-wíh₁*, as in Fortson §6.13's own example, Ved. *urv-ī́*. Fix: patch C. Corpus impact is 0, but the error spreads to every oxytone u-adjective if #1 is adopted.
-- **#4 déh₂nu** (98 tokens, 26 affected). The spec is "amphikinetic" with weak *deh₂nu*, which is just the strong stem with the accent removed (Wiktionary's argument 2). It yields *deh₂n̥wés, deh₂n̥wéy, deh₂n̥wṓm*: a full-grade root without accent, which no ablaut class allows. It does not match any u-stem paradigm in Fortson §§6.21–6.22 or Ringe pp. 45–46. Ved. *dā́nu-* has fixed root accent, so the acrostatic type fits, like Fortson §6.21 *dóru* (gen. *déru-s*). The *-h₂n̥w-* syllabification itself is regular under right-to-left syllabification; it disappears once the oblique suffix is in the full grade. Proposed override: §9.
-- **#10 péḱu** (hand override, weak *péḱew*). It yields INS *péḱewh₁* and obliques *péḱewbʰos*: a full-grade suffix before consonant endings, under root accent. That matches no type: acrostatic keeps the zero-grade suffix (Ringe *h₂éwibʰi*), and proterokinetic moves the accent. Wiktionary's table is proterokinetic *pḱéw-*, and Fortson's *pk̑u-i̯ent-* (OAv. *fšuiiant-*, §11 Avestan) attests the zero-grade root. Recommend reverting to Wiktionary (*pḱéws, pḱúh₁, pḱúbʰos*). The alternative is weak null, acrostatic (*péḱews/péḱus, péḱuh₁, péḱubʰos*).
+- **#15 dual.** The engine gives *móryih₁*. Ringe p. 47 has *mórīh₁ (?)*, and Fortson §6.13 *h₃ekʷih₁* 'both eyes' (OCS *oči*), i.e. *i + ih₁ → ih₁*. Oxytone u-neuters come out as *ml̥dúyh₁, polh₁úyh₁, HeHḱúyh₁*: the junction keeps the accented *ú* syllabic and turns the ending's *i* into a glide. The correct form is *-wíh₁*, as in Fortson §6.13's own example, Ved. *urv-ī́*. Fix: patch C. Corpus impact is 0, but the error spreads to every oxytone u-adjective if #1 is adopted.
+- **#4 déh₂nu** (98 tokens, 26 affected). The spec is "amphikinetic" with weak *deh₂nu*, which is just the strong stem with the accent removed (Wiktionary's argument 2). It yields *deh₂n̥wés, deh₂n̥wéy, deh₂n̥wṓm*: a full-grade root without accent, which no ablaut class allows. It does not match any u-stem paradigm in Fortson §§6.21–6.22 or Ringe pp. 44–45. Ved. *dā́nu-* has fixed root accent, so the acrostatic type fits, like Fortson §6.21 *dóru* (gen. *déru-s*). The *-h₂n̥w-* syllabification itself is regular under right-to-left syllabification; it disappears once the oblique suffix is in the full grade. Proposed override: §9.
+- **#10 péḱu** (hand override, weak *péḱew*). It yields INS *péḱewh₁* and obliques *péḱewbʰos*: a full-grade suffix before consonant endings, under root accent. That matches no type: acrostatic keeps the zero-grade suffix (Ringe *h₂éwibʰi*), and proterokinetic moves the accent. Wiktionary's table is proterokinetic *pḱéw-*, and Fortson's *pk̑u-i̯ent-* (OAv. *fšuiiąs*, Fortson §11.19) attests the zero-grade root. Recommend reverting to Wiktionary (*pḱéws, pḱúh₁, pḱúbʰos*). The alternative is weak null, acrostatic (*péḱews/péḱus, péḱuh₁, péḱubʰos*).
 
 ## 6. u-adjectives (masc./neut.) and the -wih₂ feminine
 
@@ -119,7 +119,7 @@ The three hunks are independent; each changes only `conv == "handbook"`. They we
      out["INS.SG"] = [w("éh₁", "h₁", obl)]
 +    if hb and obl_pl is not weak:
 +        # i/u-stem instrumental *-i-h₁/*-u-h₁ on the accented zero-grade suffix: Fortson §6.10 (Ved. matī́),
-+        # Ringe 2006 pp. 47-50 (mn̥tíh₁, ǵustúh₁, mríh₁, drúh₁, tn̥h₂úh₁), Beekes §13.2.6a (*-u-h₁).
++        # Ringe 2006 pp. 47, 49 (mn̥tíh₁, ǵustúh₁, mríh₁, drúh₁, tn̥h₂úh₁), Beekes §13.2.6a (*-u-h₁).
 +        # The full-grade form (mn̥téyh₁) follows as an alternative.
 +        out["INS.SG"] = _uniq([render(_add(obl_pl, "h₁"))] + out["INS.SG"])
      out["LOC.SG"] = _locative(spec, strong, weak, hb)
@@ -138,7 +138,7 @@ The three hunks are independent; each changes only `conv == "handbook"`. They we
          if len(s) >= 2 and s[-1].base == "y" and not s[-1].syl and s[-2].base == "e" and s[-2].acc:
              out.append(render(lengthen_last_vowel(s)))  # -éy → -ḗy (bʰr̥tḗy)
 +            if hb and strong[-1].syl and strong[-1].base == "y":
-+                # *-ey-i > *-ēy (Ringe 2006 p. 21, Stang's law; Beekes §13.2.6a; Ved. agnā́): -ḗy first
++                # *-ey-i > *-ēy (Ringe 2006 p. 20, Stang's law; Beekes §13.2.6a; Ved. agnā́): -ḗy first
 +                out[-2:] = out[-2:][::-1]
          else:
              out.append(render(_add(s, "i")))
@@ -150,7 +150,7 @@ The three hunks are independent; each changes only `conv == "handbook"`. They we
      return _uniq(out)
 ```
 
-The guard on `strong[-1].syl` restricts the change to true i/u-stems. Diphthongal root nouns (*gʷṓws*, *dyḗws*) and other *-éy/-éw* weak stems keep their current locatives. If the convention call goes Ringe's way for u-stems, drop the `"ḗw", "ṓw"` from the sort key: *-éwi* then stays primary and *-ḗw* becomes an alternative.
+The guard on `strong[-1].syl` restricts the change to true i/u-stems. Diphthongal root nouns (*gʷṓws*, *dyḗws*) and other *-éy/-éw* weak stems keep their current locatives. If the convention call goes Ringe's way for u-stems, drop the `"ḗw", "ṓw"` from the sort key: *-éwi* then stays primary and *-ḗw* becomes an alternative. **Dependency:** on its own, patch B turns *suHnów-* into a primary LOC *suHnṓw* (2 tokens), a form no handbook prints. It becomes *suHnḗw* only together with the suHnús override (#7, §9), so take both or neither for that lexeme.
 
 **Patch C — neuter dual of i/u-stems (#15).**
 
@@ -160,7 +160,7 @@ The guard on `strong[-1].syl` restricts the change to true i/u-stems. Diphthonga
          du = [render(_add(weak if (e_grade_s and spec.weak) else strong, "ih₁"))]
 +        if hb and strong[-1].syl and strong[-1].base in ("y", "w"):
 +            if strong[-1].base == "y":
-+                # i-stem: -i-ih₁ → -ih₁ (Fortson §6.13 *h₃ekʷih₁ 'both eyes'; Ringe p. 49 mórīh₁ (?))
++                # i-stem: -i-ih₁ → -ih₁ (Fortson §6.13 *h₃ekʷih₁ 'both eyes'; Ringe p. 47 mórīh₁ (?))
 +                du = [render(_add(strong[:-1], "ih₁" if not strong[-1].acc else "íh₁"))]
 +            elif strong[-1].acc:
 +                # accented -ú + ih₁ → -wíh₁ (Ved. urvī́, Fortson §6.13), not -úyh₁
@@ -168,7 +168,7 @@ The guard on `strong[-1].syl` restricts the change to true i/u-stems. Diphthonga
      else:
 ```
 
-A clean unified diff of all three hunks is in `scratchpad/iu_morph.diff`.
+The hunk headers above are abbreviated; the exact unified diff of all three hunks (checked with `patch --dry-run -p1`) is in Appendix A.
 
 **Tests to add** (e.g. `tests/test_morph_iu_stems.py`). All three fail on the current engine and pass with the patches:
 
@@ -178,7 +178,7 @@ from pie.morph import AdjSpec, NounSpec, decline, decline_adj
 def cell(spec, feat):
     return decline(spec, "handbook")[feat]
 
-def test_iu_instrumental_on_zero_grade_suffix():      # Ringe pp. 47-50; Fortson §6.10; Beekes §13.2.6a
+def test_iu_instrumental_on_zero_grade_suffix():      # Ringe pp. 47, 49; Fortson §6.10; Beekes §13.2.6a
     assert cell(NounSpec("ménti", "mn̥téy", "proterokinetic", "f"), "INS.SG")[0] == "mn̥tíh₁"
     assert cell(NounSpec("ǵéwstu", "ǵustéw", "proterokinetic", "m"), "INS.SG")[0] == "ǵustúh₁"
     assert cell(NounSpec("dóru", "dréw", "proterokinetic", "n"), "INS.SG")[0] == "drúh₁"
@@ -190,7 +190,7 @@ def test_iu_instrumental_on_zero_grade_suffix():      # Ringe pp. 47-50; Fortson
     assert adj["m"]["INS.SG"][0] == adj["n"]["INS.SG"][0] == "tn̥h₂úh₁"
     assert adj["f"]["INS.SG"][0] == "tn̥h₂uyéh₂h₁"
 
-def test_iu_locative_lengthened_grade():              # Ringe p. 21; Beekes §13.2.6a
+def test_iu_locative_lengthened_grade():              # Ringe p. 20; Beekes §13.2.6a
     assert cell(NounSpec("ménti", "mn̥téy", "proterokinetic", "f"), "LOC.SG") == ["mn̥tḗy", "mn̥téy"]
     assert cell(NounSpec("ǵéwstu", "ǵustéw", "proterokinetic", "m"), "LOC.SG") == ["ǵustḗw", "ǵustéwi", "ǵustéw"]
     assert cell(NounSpec("h₂ówi", "h₂éwi", "acrostatic", "f"), "LOC.SG")[0] == "h₂éwēy"
@@ -207,16 +207,18 @@ def test_iu_neuter_dual():
 
 ## 8. Handbook disagreements (convention notes, no change proposed)
 
-- **Vocative of i/u-stems.** The engine's primary is the full-grade suffix (*h₂ówey, méntey, súHnew, h₁ń̥gʷney*; 160+ tokens). That follows Beekes §13.2.2 p. 186 ("characterized by the e-grade of the suffix"; Ved. *ágne, sū́no*, Goth. *sunau*). Ringe pp. 47–49 (*h₂ówi, ménti, ǵéwstu, ténh₂u*) and Fortson §6.7 (Gk *póli*) give the bare stem, which the engine keeps as the alternative. This is defensible; keep it.
+- **Vocative of i/u-stems.** The engine's primary is the full-grade suffix (*h₂ówey, méntey, súHnew, h₁ń̥gʷney*; 160+ tokens). That follows Beekes §13.2.2 p. 186 ("characterized by the e-grade of the suffix"; Ved. *ágne, sū́no*, Goth. *sunau*). Ringe pp. 46–47, 49 (*h₂ówi, ménti, ǵéwstu, ténh₂u*) and Fortson §6.7 (Gk *póli*) give the bare stem, which the engine keeps as the alternative. This is defensible; keep it.
 - **GEN.PL** *-ōm* (Fortson §6.16) vs Ringe *-oHom* and Beekes *-om*: project convention.
 - **INS/DAT/ABL.PL** *-bʰis/-bʰos* vs Ringe *-bʰi, -mos*: project convention (not specific to this family).
 - **u-stem LOC.SG** *-ḗw* (Beekes) vs *-éw(i)* (Ringe), and **suHnús** *-ów-* (Beekes gen., Wiktionary) vs *-éw-* (Ringe, Fortson, L&Y): §§2, 4.
 - **u-adjective accent** (Ringe/Fortson root accent vs L&Y/M&A suffix accent) and **feminine** *-éwih₂* vs *-w-íh₂*: §6.
-- L&Y §3.2 doubt that the *-ti-* abstracts were ever proterokinetic (Ved. *jūtí-* has fixed suffix accent). Ringe p. 46 and Fortson §6.22 are explicit that they were, so keep the current analysis.
+- L&Y §3.2 doubt that the *-ti-* abstracts were ever proterokinetic (Ved. *jūtí-* has fixed suffix accent). Ringe p. 45 and Fortson §6.22 are explicit that they were, so keep the current analysis.
 
 ## 9. Proposed overrides (data/lexicon/overrides.jsonl)
 
 Specs merge into the derived spec (`{**spec, **override}`; `null` clears a field). An id that already has a line must be **edited, not duplicated**: a later line replaces the earlier `spec_override` entirely. This applies to pekju (line 15), neh2us (line 12) and HeHkjus (line 70). The token counts are the cells whose primary form changes once the code patches are applied.
+
+**Validator index.** An override replaces the derived spec, so the forms it displaces (*pléth₂us…*, *suHnóws*, *HHḱéw-*, *nh₂éw-*) leave the primary spec. `pie/validate.py` (line 129) also indexes `extra_specs`, so the integrator can keep any displaced spec there. For the nine oxytone adjectives, Wiktionary's root-accented table and its oxytone table simply swap places. Tier 1 risk is nil: the only family forms in corpus/tier1 are *súHnus/súHnum* (Byrd, King and God; direct cases, untouched by #7), and none of the affected stems occur in raw/tier1-*.
 
 Defects (no convention call needed):
 
@@ -250,10 +252,59 @@ Convention-dependent: these follow L&Y for u-adjectives (§6, #1, #9) and the ma
 
 ## 10. Lexicon routing
 
-**#16 pie-lex-treyes** is marked usable as an open adjective. Its singular cells are meaningless for '3', and several are unaccented (*trēy, treys, tisri*). The corpus uses `closed:numerals/3`, which matches Ringe p. 53 (*tréyes, tríns, tribʰí, trimós, tr̥yóHom, trisú; tríh₂*). Proposed: add the id to data/generation/blocklist.jsonl (reason "numeral 3 is closed-class: closed:numerals/3"), so a planner cannot pick the open lexeme.
+**#16 pie-lex-treyes** is marked usable as an open adjective. Its singular cells are meaningless for '3', and several are unaccented (*trēy, treys, tisri*). The corpus uses `closed:numerals/3`, which matches Ringe p. 52 (*tréyes, tríns, tribʰí, trimós, tr̥yóHom, trisú; tríh₂*). Proposed: add the id to data/generation/blocklist.jsonl (reason "numeral 3 is closed-class: closed:numerals/3"), so a planner cannot pick the open lexeme.
 
 ## 11. Minor, no fix proposed
 
 - NOM.PL alternatives *suHnúes, HeHḱúes, ml̥dúes, tríes* (accented *ú/í* before a vowel) come from the Wiktionary convention merged as alternatives. They are never primary, and the validator index tolerates them.
 - `_initial_accent` returns an accentless form for *HHC-* onsets (VOC.SG f. *HHḱewi*). The #8 override removes the only case in this family.
 - After right-to-left syllabification, *déh₂n̥wih₁* (NOM.DU) and similar *-h₂n̥w-* forms are regular. They remain after #4, in the dual and GEN.PL (*déh₂n̥wōm*).
+
+## Appendix A. Exact diff (patches A+B+C)
+
+```diff
+--- a/pie/morph.py
++++ b/pie/morph.py
+@@ -247,14 +247,26 @@
+         out["DAT.SG"] = _uniq([render(_add(full, "ey"))] + out["DAT.SG"])
+ 
+     out["INS.SG"] = [w("éh₁", "h₁", obl)]
++    if hb and obl_pl is not weak:
++        # i/u-stem instrumental *-i-h₁/*-u-h₁ on the accented zero-grade suffix: Fortson §6.10 (Ved. matī́),
++        # Ringe 2006 pp. 47, 49 (mn̥tíh₁, ǵustúh₁, mríh₁, drúh₁, tn̥h₂úh₁), Beekes §13.2.6a (*-u-h₁).
++        # The full-grade form (mn̥téyh₁) follows as an alternative.
++        out["INS.SG"] = _uniq([render(_add(obl_pl, "h₁"))] + out["INS.SG"])
+     out["LOC.SG"] = _locative(spec, strong, weak, hb)
+     if hb:   # prefer the -i (or i-stem -ēy) locative to the endingless one (which looks like the nominative)
+-        out["LOC.SG"] = sorted(out["LOC.SG"], key=lambda f: not f.endswith(("i", "í", "y")))
++        out["LOC.SG"] = sorted(out["LOC.SG"], key=lambda f: not f.endswith(("i", "í", "y", "ḗw", "ṓw")))
+     # --- dual
+     if neuter:
+         # s-stem neuters take the e-grade (weak) suffix: déḱos → déḱesih₁; others the strong stem
+         e_grade_s = len(weak) > 1 and weak[-1].base == "s" and weak[-2].base == "e"
+         du = [render(_add(weak if (e_grade_s and spec.weak) else strong, "ih₁"))]
++        if hb and strong[-1].syl and strong[-1].base in ("y", "w"):
++            if strong[-1].base == "y":
++                # i-stem: -i-ih₁ → -ih₁ (Fortson §6.13 *h₃ekʷih₁ 'both eyes'; Ringe p. 47 mórīh₁ (?))
++                du = [render(_add(strong[:-1], "ih₁" if not strong[-1].acc else "íh₁"))]
++            elif strong[-1].acc:
++                # accented -ú + ih₁ → -wíh₁ (Ved. urvī́, Fortson §6.13), not -úyh₁
++                du = [render(_add(strong[:-1] + [Seg("w", "R")], "íh₁"))]
+     else:
+         du = [render(_add(strong, "h₁")), render(_add(strong, "h₁e"))]
+     out["NOM.DU"] = out["VOC.DU"] = out["ACC.DU"] = du
+@@ -370,8 +382,15 @@
+             continue
+         if len(s) >= 2 and s[-1].base == "y" and not s[-1].syl and s[-2].base == "e" and s[-2].acc:
+             out.append(render(lengthen_last_vowel(s)))  # -éy → -ḗy (bʰr̥tḗy)
++            if hb and strong[-1].syl and strong[-1].base == "y":   # *-ey-i > *-ēy (Ringe 2006 p. 20, Stang's law; Beekes §13.2.6a; Ved. agnā́): -ḗy first
++                out[-2:] = out[-2:][::-1]
+         else:
+             out.append(render(_add(s, "i")))
++            if hb and strong[-1].syl and strong[-1].base == "w" and len(s) >= 2 and s[-1].base == "w" \
++                    and not s[-1].syl and s[-2].base in ("e", "o") and s[-2].acc:
++                # u-stem endingless locative in the lengthened grade *-ēw (Beekes §13.2.6a; Ved. sūnáu,
++                # Goth. sunau), parallel to i-stem *-ēy; Ringe's -éw(i) follow as alternatives
++                out.insert(len(out) - 2, render(lengthen_last_vowel(s)))
+     return _uniq(out)
+```

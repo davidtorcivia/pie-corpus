@@ -4,41 +4,51 @@ Brief: docs/research/mapping-precision-brief.md. Corpora: **hom** (Homer, AGDT; 
 
 ## Result
 
-Precision = correct / mapped types in a 100-type sample, with types drawn by token frequency (content words, AGDT/GLAUx postag n/v/a).
+Precision = correct / mapped types in a 100-type sample, with types drawn by token frequency (content words, AGDT/GLAUx postag n/v/a). Each figure is given with its binomial standard error.
 
 | corpus | sample | state | mapped (n) | strict | root-level |
 |---|---|---|---|---|---|
-| hom | seed 0 | before | 66 | **75.8%** (50) | 86.4% (57) |
-| hom | seed 1 | after round 1 | 71 | **78.9%** (56) | 91.5% (65) |
-| grp | seed 0 | before | 62 | **80.6%** (50) | 90.3% (56) |
-| grp | seed 1 | after round 1 | 68 | **91.2%** (62) | 97.1% (66) |
+| hom | seed 0 | before | 66 | **75.8%** (50) ±5.3 | 86.4% (57) |
+| hom | seed 1 | round 1 | 71 | 78.9% (56) ±4.8 | 91.5% (65) |
+| hom | seed 2 | final (rounds 1+2) | 64 | **85.9%** (55) ±4.3 | 95.3% (61) |
+| grp | seed 0 | before | 62 | **80.6%** (50) ±5.0 | 90.3% (56) |
+| grp | seed 1 | round 1 | 68 | 91.2% (62) ±3.4 | 97.1% (66) |
+| grp | seed 2 | final (rounds 1+2) | 57 | **87.7%** (50) ±4.3 | 93.0% (53) |
 
 Two definitions are used:
 - **Strict** counts a type as correct only if every id it carries names the etymon Beekes gives.
 - **Root-level** also counts **partial** types: the root is right, but a homonymous wrong root is also attached, a better lexeme exists, or one member of a compound is missing.
 
-Seed 0 re-judged under the same overrides scores hom 56/60 (93.3%) and grp 62/62 (100%). That figure is in-sample, because the fixes were partly found in that sample, so it is an upper bound. The seed-1 figures are the out-of-sample measurement.
+How the rounds relate to the samples:
+- Round 1 was built from the top-300 review. Seed 1 measures it out of sample.
+- Round 2 fixed most errors found in seed 1, plus the systematic fan-out tail. Seed 2 measures rounds 1 and 2 together.
+- Round 3 has 10 rows, written after seed 2 and not measured.
 
-Round 2 then fixed most of the errors that the seed-1 sample turned up (see below). The seed-1 numbers do not include round 2.
+How to read the numbers:
+- Before → final, hom strict gains 10 points (about 1.5 combined standard errors) and root-level gains 9.
+- For grp the gain is about 7 points strict and 3 points root-level. That is roughly one combined standard error, so the gain is suggestive, not established. The seed-1 and seed-2 grp figures differ only within noise.
+- The large in-sample gains (seed 0 re-judged, below) come from the most frequent lemmas. The samples are too small to measure gains below about 10 points.
+- Seed 2 counts three types as wrong although Beekes could not be located for them: ἀπαυράω, στέφανος, τέρας.
+- Seed 0 re-judged under round 1 gives hom 93.3% (56/60) and grp 100% (62/62). That figure is in-sample, so it is only an upper bound.
 
 Token coverage of content words falls slightly, because unmapping false etymologies outweighs the compounds that were added:
-- hom: 70.1% before, 65.4% after round 1, 64.5% after round 2.
-- grp: 69.4% before, 65.9% after round 1, 64.9% after round 2.
+- hom: 70.1% before, 65.4% after round 1, 64.5% final.
+- grp: 69.4% before, 65.9% after round 1, 64.9% final.
 
-Unmapped-but-mappable types in the samples: hom 7 → 7, grp 11 → 12. These are mostly compounds whose members are mapped (μεγάθυμος, ἐπώνυμος, εὐνομία) and derivatives (πυρή, νευρά).
+Unmapped-but-mappable types in the samples (seeds 0 / 1 / 2): hom 7 / 7 / 4, grp 11 / 12 / 3. These are mostly compounds whose members are mapped (μεγάθυμος, ἐπώνυμος, εὐνομία) and derivatives (πυρή, νευρά, ἠέλιος).
 
-**Overrides: 860 lemma rows.**
-- By corpus: hom 345, grp 515.
-- By kind: 625 remaps or additions, 235 unmaps.
-- Round 1 has 608 rows and is the measured state. It includes 149 coverage rows for prefixed verbs whose simplex is mapped, such as πάρειμι (grp 470 tokens), εἰσοράω, ἀφικνέομαι, μεθίημι and ἐξέρχομαι.
-- Round 2 has 252 rows, written after the seed-1 measurement and not measured.
+**Overrides: 870 lemma rows.**
+- By corpus: hom 350, grp 520.
+- By kind: 631 remaps or additions, 239 unmaps.
+- By round: 608, 252 and 10 rows.
+- Round 1 includes 149 coverage rows for prefixed verbs whose simplex is mapped, such as πάρειμι (grp 470 tokens), εἰσοράω, ἀφικνέομαι, μεθίημι and ἐξέρχομαι.
 
-Every row has a `note` that cites Beekes EDG by page (or s.v. where the OCR page could not be located), plus an `erratum` line. `apply_rec_overrides` needs the `erratum` key.
+Every row has a `note` that cites Beekes EDG by page (or s.v. where the OCR page could not be located), plus an `erratum` line. `apply_rec_overrides` needs the `erratum` key. `load_overrides`, `apply_lemma_overrides`, `apply_rec_overrides` and `apply_table_overrides` load the file cleanly together with the other groups' files.
 
 ## Method
 
 1. **Dump.** I rebuilt the hom mapping the way scripts/formula_search.py does: `build_kaikki_mapping(pseudo=True)` over `build_homer_mapping`, with overrides applied. For grp I read the table and applied `apply_table_overrides`. Token frequencies come from the loaded corpora. The scratch scripts, all prefixed `greek_`, stay in the session scratchpad.
-2. **Sampling.** Lemmas are sorted, then drawn with weighted sampling without replacement: key = u^(1/n), u from `random.Random(seed)`, top 100. Sampling does not depend on the mapping, so seed 0 and seed 1 are independent draws of the same population.
+2. **Sampling.** Lemmas are sorted, then drawn with weighted sampling without replacement: key = u^(1/n), u from `random.Random(seed)`, top 100. Sampling does not depend on the mapping, so seeds 0, 1 and 2 are independent draws of the same population. Before-judgments were frozen before any override was written.
 3. **Judging.** Each type is checked against the EDG entry, whose verdict tag (IE / IE? / PG / LW / ?) survives the OCR.
    - Correct: the mapped etymon is Beekes's own (IE), or the one his IE? tag names.
    - Wrong: Beekes says PG, LW, unknown or "no convincing etymology", or names a different root.
@@ -55,7 +65,7 @@ Every row has a `note` that cites Beekes EDG by page (or s.v. where the OCR page
    - τιμή → three *kʷey-; κράτος → *kret- 'strong' / 'shake'; φημί, φάος → *bʰeh₂- 'speak' / 'shine'
    - εὐώδης → three *h₁es- roots
 
-   After round 2, fan-out lemmas still carry 1.0% (hom) and 1.1% (grp) of content tokens. They were 2.1% and 2.2% after round 1.
+   In the final state, fan-out lemmas still carry 1.0% (hom) and 1.1% (grp) of content tokens. They were 2.1% and 2.2% after round 1.
 2. **Wiktionary etymologies that Beekes rejects or calls Pre-Greek or unknown.** Examples: αἷμα, ἀγαθός, ἄνθρωπος, ἄναξ, μάχομαι, φίλος (*bʰílos, explicitly "must be abandoned"), καλός, κακός, χρόνος, καιρός, νῆσος ('swimmer', "should be abandoned"), αἱρέω, νόος, ποταμός, καλύπτω (PG), ὕβρις, σῶμα, φώς 'man'. Also κῦδος and χρή: Beekes gives *keud- and *ǵʰreh₁- for these, but the lexicon lacks those roots, so the lemmas are unmapped rather than left on the wrong *skewh₁- / *gʰreh₁- 'grow'.
 3. **Homograph and accent confusion.**
    - AGDT δύω 'enter, sink' was mapped to *dwóh₁ 'two' (the numeral is δύο); 172 tokens with καταδύω.
@@ -69,7 +79,7 @@ Every row has a `note` that cites Beekes EDG by page (or s.v. where the OCR page
 ## What remains
 
 - **Fan-out tail.** These have no Beekes verdict located yet: οἴομαι, ἐπιτέλλω/τέλλω, ἐφέπω/ἀμφιέπω (*sekʷ- vs *sep-), βλάπτω/βλάβη, ζητέω, τάσσω, τόπος, ἀθρόος, ὀδύνη/ὠδίς, ἵμερος, φᾶρος, φάρμακον, ἀρά/ἀριστερός, μέλος, ὥρα, κυλίνδω, κύκνος, Ἐρινύς, θέμις, ἐθίζω.
-- **Kept but unverified or doubtful.**
+- **Kept but unverified or doubtful.** Seed 2 adds πύργος → *bʰerǵʰ- (Beekes: technical term, possibly Pre-Greek), ἀπαυράω, στέφανος and τέρας. Round 3 fixes ἱρός (it had been sent by the bridge tier to *wiHrós 'man'), Λυδός, πλευρά, ἐξερέω and πτέρυξ. Also:
   - παρθένος → *pstḗn 'breast' (direct reflex in the lexicon; Beekes not located)
   - ἕκαστος → *kʷ- (Beekes: inner-Greek ἑκὰς τις)
   - ἐρίγδουπος → *stewp-; λακίς → *leh₂-
@@ -88,7 +98,7 @@ Every row has a `note` that cites Beekes EDG by page (or s.v. where the OCR page
 - **Caveats.**
   - One judge (this agent) did all the judging.
   - EDG pages are taken from the OCR page markers, or estimated as 2·file−48 where a marker is missing, so they may be off by one.
-  - A few notes cite s.v. without a page.
+  - 196 of the 870 notes cite s.v. without a page. Most of them (about 140) are the prefixed-compound coverage rows, which point to the simplex entry.
 
 ## Sample judgments (wrong and partial)
 
@@ -103,3 +113,8 @@ Every row has a `note` that cites Beekes EDG by page (or s.v. where the OCR page
   - grp wrong: λακίς, νεβρός.
   - grp partial: ἐθίζω, εἰλύω, εὐδαίμων, ὄψ.
   - Round 2 fixed φίλος, νίκη, ῥίπτω, ὀχθέω, πίων, νεβρός, ἰαύω, κραταιός, ἱδρόω, κλισμός, Τελαμών and εἰλύω.
+- **Seed 2, final.**
+  - hom wrong: ἱρός, ἀπαυράω, πύργος.
+  - hom partial: αὐτός, ἠριγένεια, κασίγνητος, οἷος, θεοειδής, ἀγχίμολος.
+  - grp wrong: Λυδός, στέφανος, πλευρά, τέρας.
+  - grp partial: εὔφημος, πτέρυξ, ἐξερέω.

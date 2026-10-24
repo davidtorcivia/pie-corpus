@@ -1,0 +1,2102 @@
+{
+ "note": "Germanic group (ang, non, got) lemma -> PIE mapping corrections; method and numbers in docs/research/mapping-precision-germanic.md. 'lemma' rows replace a corpus lemma's lexicon ids (empty list = unmap); 'form' rows send a surface form to another lemma (a lemma starting with '?' marks an OCR fragment as unknown). Kroonen 2013 = Etymological Dictionary of Proto-Germanic, cited by headword and scan page of raw/books/text/kroonen-pgmc/.",
+ "lemma": [
+  {
+   "corpus": "got",
+   "lemma": "wisan",
+   "lex_id": [
+    "pie-lex-h1esti",
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h1esti, pie-lex-h2weseti",
+   "note": "Kroonen 2013 s.v. *wesan- 1 (scan p0622): wisan < *h2wes-e- 'stay', suppletive with *h1es- (im, ist); PROIEL lemma covers both stems. Old id pie-lex-sh1es is *sh1-es- 'seed' (< *seh1- 'sow'), wrong"
+  },
+  {
+   "corpus": "got",
+   "lemma": "sunja",
+   "lex_id": [
+    "pie-root-h1es-be"
+   ],
+   "erratum": "remapped to pie-root-h1es-be",
+   "note": "Kroonen 2013 s.v. *sunja- (scan p0532): sunja 'truth' < *h1s-n̥t-io-, participle *h1s-ont- of *h1es- 'be'; pie-lex-sh1es (*seh1- 'sow') wrong"
+  },
+  {
+   "corpus": "got",
+   "lemma": "sunjeins",
+   "lex_id": [
+    "pie-root-h1es-be"
+   ],
+   "erratum": "remapped to pie-root-h1es-be",
+   "note": "Kroonen 2013 s.v. *sanþa- (scan p0467): sunja/sunjeins from *h1s-ont-/*h1s-n̥t- 'being, true'; pie-lex-sh1es (*seh1- 'sow') wrong"
+  },
+  {
+   "corpus": "got",
+   "lemma": "manags",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *managa- (scan p0392): < NWIE *monogh-o- (OCS mъnogъ), not *meǵh2- 'great'; no lexicon entry"
+  },
+  {
+   "corpus": "got",
+   "lemma": "leik",
+   "lex_id": [
+    "pie-root-leyg-similar"
+   ],
+   "erratum": "remapped to pie-root-leyg-similar",
+   "note": "Kroonen 2013 s.v. *līka- 1 (scan p0376): < *leig-o- 'likeness, shape', derived from *līka- 2 'similar'; not *leyǵ- 'bind'"
+  },
+  {
+   "corpus": "got",
+   "lemma": "ga-saiƕan",
+   "lex_id": [
+    "pie-lex-sekweti"
+   ],
+   "erratum": "remapped to pie-lex-sekweti",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471) 'to see': only *sekw- 'see' (as saiƕan); the 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "ga-laubjan",
+   "lex_id": [
+    "pie-root-lewbh-desire"
+   ],
+   "erratum": "remapped to pie-root-lewbh-desire",
+   "note": "Kroonen 2013 s.v. *leuba- (scan p0372): *lewbh- 'desire, love'; homonym 'cut off' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "galaubeins",
+   "lex_id": [
+    "pie-root-lewbh-desire"
+   ],
+   "erratum": "remapped to pie-root-lewbh-desire",
+   "note": "Kroonen 2013 s.v. *leuba- (scan p0372): *lewbh- 'desire, love'; homonym 'cut off' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "ga-leiþan",
+   "lex_id": [
+    "pie-root-leyt-go"
+   ],
+   "erratum": "remapped to pie-root-leyt-go",
+   "note": "Kroonen 2013 s.v. *līþan- (scan p0380) 'to go': *leyt- 'go away'; homonym 'touch' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "bi-leiþan",
+   "lex_id": [
+    "pie-root-leyt-go"
+   ],
+   "erratum": "remapped to pie-root-leyt-go",
+   "note": "Kroonen 2013 s.v. *līþan- (scan p0380) 'to go': *leyt- 'go away'; homonym 'touch' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "af-leiþan",
+   "lex_id": [
+    "pie-root-leyt-go"
+   ],
+   "erratum": "remapped to pie-root-leyt-go",
+   "note": "Kroonen 2013 s.v. *līþan- (scan p0380) 'to go': *leyt- 'go away'; homonym 'touch' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "us-leiþan",
+   "lex_id": [
+    "pie-root-leyt-go"
+   ],
+   "erratum": "remapped to pie-root-leyt-go",
+   "note": "Kroonen 2013 s.v. *līþan- (scan p0380) 'to go': *leyt- 'go away'; homonym 'touch' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "and-niman",
+   "lex_id": [
+    "pie-lex-nemeti"
+   ],
+   "erratum": "remapped to pie-lex-nemeti",
+   "note": "Kroonen 2013 s.v. *neman- (scan p0028) 'to take' < *nem- 'distribute, take' (as niman); homonym 'bend' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "af-niman",
+   "lex_id": [
+    "pie-lex-nemeti"
+   ],
+   "erratum": "remapped to pie-lex-nemeti",
+   "note": "Kroonen 2013 s.v. *neman- (scan p0028) 'to take' < *nem- 'distribute, take' (as niman); homonym 'bend' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "hairto",
+   "lex_id": [
+    "pie-lex-kjexr"
+   ],
+   "erratum": "remapped to pie-lex-kjexr",
+   "note": "Kroonen 2013 s.v. *herton- (scan p0262): PIE 'heart' *ḱērd/*ḱr̥d-; old id *ḱerh2- 'grow' wrong"
+  },
+  {
+   "corpus": "got",
+   "lemma": "aiweins",
+   "lex_id": [
+    "pie-root-h2ey-vital_force"
+   ],
+   "erratum": "remapped to pie-root-h2ey-vital_force",
+   "note": "Kroonen 2013 s.v. *aiwa/o- 1 (scan p0054) 'eternity, age' < *h2oy-w-; homonyms 'day', 'give' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "bida",
+   "lex_id": [
+    "pie-lex-gwhedheh2"
+   ],
+   "erratum": "remapped to pie-lex-gwhedheh2",
+   "note": "Kroonen 2013 s.v. *bedjan- (scan p0095) 'to ask': bida 'prayer' < *gwhedh-; *bhedh- 'bend' wrong"
+  },
+  {
+   "corpus": "got",
+   "lemma": "aba",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *aban- (scan p0039): no certain IE etymology, likely a nursery word; *h3ep- rejected"
+  },
+  {
+   "corpus": "got",
+   "lemma": "wairþs",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *werþa- (scan p0621): adjective of unknown origin"
+  },
+  {
+   "corpus": "got",
+   "lemma": "skalks",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *skalka- (scan p0479): no certain etymology"
+  },
+  {
+   "corpus": "got",
+   "lemma": "skalkinon",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *skalka- (scan p0479): base skalks has no certain etymology"
+  },
+  {
+   "corpus": "got",
+   "lemma": "fraiw",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *fraiwa- (scan p0192): debated; links with *sper- explicitly rejected"
+  },
+  {
+   "corpus": "got",
+   "lemma": "triggws",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *trewwu- (scan p0563): < *dreuH-u- (OPru. druwit), not *drew- 'run'; no lexicon entry"
+  },
+  {
+   "corpus": "got",
+   "lemma": "lustus",
+   "lex_id": [
+    "pie-root-las-be_unbridled"
+   ],
+   "erratum": "remapped to pie-root-las-be_unbridled",
+   "note": "Kroonen 2013 s.v. *lustu- (scan p0385): root *lh2s- (Lat. lascivus, Gr. lilaiomai); *lewH- 'louse' wrong"
+  },
+  {
+   "corpus": "got",
+   "lemma": "mats",
+   "lex_id": [
+    "pie-root-meh2d-be_wet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-be_wet",
+   "note": "Kroonen 2013 s.v. *mati- (scan p0398) 'food' (cf. matjan *m̥h2d-): homonym *meh2d- 'meet' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "motareis",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "base mota 'toll' (*mōtō) is not a Kroonen entry and has no accepted PIE etymology; the three homonymous *med-/*red- roots are spurious"
+  },
+  {
+   "corpus": "got",
+   "lemma": "hlaifs",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *hlaiba- (scan p0268): 'No further etymology'; *kwel- spurious"
+  },
+  {
+   "corpus": "got",
+   "lemma": "briggan",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *bringan- (scan p0115): verb of obscure origin; *ḱóm (the Welsh prefix) wrong"
+  },
+  {
+   "corpus": "got",
+   "lemma": "rūna",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "runa 'secret': no PIE etymology (not in Kroonen); *h3reyH- comes from the homograph *runiz 'course'"
+  },
+  {
+   "corpus": "got",
+   "lemma": "munþs",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *munþa- (scan p0416-7): < *mn̥t-o- 'chin, jaw' (Lat. mentum); *mént 'thought' wrong, no lexicon entry"
+  },
+  {
+   "corpus": "got",
+   "lemma": "ga-wasjan",
+   "lex_id": [
+    "pie-root-wes-dress"
+   ],
+   "erratum": "remapped to pie-root-wes-dress",
+   "note": "Kroonen 2013 s.v. *wazjan- (scan p0614) 'to clothe' < *wes- 'dress'; homonyms 'graze', 'sell' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "mel",
+   "lex_id": [
+    "pie-lex-meh1lo"
+   ],
+   "erratum": "remapped to pie-lex-meh1lo",
+   "note": "Kroonen 2013 s.v. *mēla- (scan p0402) 'time, mark' < *meh1- 'measure'; *mēlh2o- 'black' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "waldufni",
+   "lex_id": [
+    "pie-root-h2welh1-rule"
+   ],
+   "erratum": "remapped to pie-root-h2welh1-rule",
+   "note": "Kroonen 2013 s.v. *waldan- (scan p0609) 'to rule' < *h2welh1- 'rule'; homonym 'hair, wool' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "weihs",
+   "lex_id": [
+    "pie-lex-weykos"
+   ],
+   "erratum": "remapped to pie-lex-weykos",
+   "note": "Kroonen 2013 s.v. *wīha- (scan p0625) 'holy' < *weik- 'separate'; the NT lemma is the adjective, *weiḱ- 'settlement' (village homograph) dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "gredags",
+   "lex_id": [
+    "pie-root-gher-yearn_for"
+   ],
+   "erratum": "remapped to pie-root-gher-yearn_for",
+   "note": "Kroonen 2013 s.v. *grēdu- (scan p0227): *gʰreh1- 'enjoy, desire' (Skt. háryati, Gr. khaírō); not *gʰreh1- 'grow'"
+  },
+  {
+   "corpus": "got",
+   "lemma": "domjan",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "remapped to pie-root-dheh1-do",
+   "note": "domjan from doms (Kroonen 2013 s.v. *dōma- (scan p0138) < *dʰeh1- 'put'); *dʰeh1y- 'suckle' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "siuns",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "siuns 'sight' < *sehwni- (Kroonen 2013 s.v. *sehwan- (scan p0471)): only *sekw- 'see'"
+  },
+  {
+   "corpus": "got",
+   "lemma": "us-taiknjan",
+   "lex_id": [
+    "pie-root-deykj-point_out"
+   ],
+   "erratum": "remapped to pie-root-deykj-point_out",
+   "note": "from taikns (Kroonen 2013 s.v. *taikna- (scan p0545) < *deyǵ-/*deyḱ- 'show'); homonym 'throw' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "us-laubjan",
+   "lex_id": [
+    "pie-root-lewbh-desire"
+   ],
+   "erratum": "remapped to pie-root-lewbh-desire",
+   "note": "Kroonen 2013 s.v. *leuba- (scan p0372): *lewbh- 'desire'; homonym 'cut off' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "asans",
+   "lex_id": [
+    "pie-root-sh1es-harvest"
+   ],
+   "erratum": "remapped to pie-root-sh1es-harvest",
+   "note": "Kroonen 2013 s.v. *azani- (scan p0084) 'harvest' < *h1es-en-; pie-lex-sh1es (*seh1- 'sow') replaced by the 'harvest' root"
+  },
+  {
+   "corpus": "got",
+   "lemma": "triggwa",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *trewwu- (scan p0563): < *dreuH-u-, not *drew- 'run'"
+  },
+  {
+   "corpus": "got",
+   "lemma": "andanems",
+   "lex_id": [
+    "pie-root-nem-distribute"
+   ],
+   "erratum": "remapped to pie-root-nem-distribute",
+   "note": "from niman (Kroonen 2013 s.v. *neman- (scan p0028) < *nem- 'take'); homonym 'bend' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "þahan",
+   "lex_id": [
+    "pie-lex-th2keh1yeti"
+   ],
+   "erratum": "remapped to pie-lex-th2keh1yeti",
+   "note": "Kroonen 2013 s.v. *þagēn- (scan p0571): *tHk-eh1- = Lat. tacēre; homonymous *tek- roots wrong"
+  },
+  {
+   "corpus": "got",
+   "lemma": "ga-leikan",
+   "lex_id": [
+    "pie-root-leyg-similar"
+   ],
+   "erratum": "remapped to pie-root-leyg-similar",
+   "note": "from *līka- 'like' (Kroonen 2013 s.v. *līka- 2, scan p0376); 'illness', 'jump' homonyms dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "ga-hausjan",
+   "lex_id": [
+    "pie-lex-h2kjh2owsyeti"
+   ],
+   "erratum": "remapped to pie-lex-h2kjh2owsyeti",
+   "note": "ga- + hausjan 'hear' (Kroonen 2013 s.v. *hauzjan- (scan p0257) < *h2ḱh2ows-); was unmapped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "frawaurhts",
+   "lex_id": [
+    "pie-lex-wrgjyeti"
+   ],
+   "erratum": "remapped to pie-lex-wrgjyeti",
+   "note": "fra- + waurhts 'deed' from waurkjan (Kroonen 2013 s.v. *wurkjan- (scan p0640) < *wr̥ǵ-); was unmapped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "þiudangardi",
+   "lex_id": [
+    "pie-lex-tewteh2",
+    "pie-lex-ghordhos"
+   ],
+   "erratum": "remapped to pie-lex-tewteh2, pie-lex-ghordhos",
+   "note": "compound of þiudans (*teutā-) and gards (*gʰórdʰos), Kroonen 2013 s.v. *þeudō- (scan p0580), *garda-; was unmapped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "gudja",
+   "lex_id": [
+    "pie-lex-gjhutos"
+   ],
+   "erratum": "remapped to pie-lex-gjhutos",
+   "note": "gudja 'priest' derived from guþ 'god' (Kroonen 2013 s.v. *guda- (scan p0233)); was unmapped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "laistjan",
+   "lex_id": [
+    "pie-root-leys-trace"
+   ],
+   "erratum": "remapped to pie-root-leys-trace",
+   "note": "from *laisti- 'track' (Kroonen 2013 s.v. *laist- (scan p0364), *leys-), as laisjan; was unmapped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "garaihtei",
+   "lex_id": [
+    "pie-lex-h3regjtos"
+   ],
+   "erratum": "remapped to pie-lex-h3regjtos",
+   "note": "from garaihts 'righteous' (*h3reǵ-tó-, Kroonen 2013 s.v. *rehta- (scan p0448)); was unmapped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "ga-dauþnan",
+   "lex_id": [
+    "pie-lex-dhowHtos"
+   ],
+   "erratum": "remapped to pie-lex-dhowHtos",
+   "note": "from dauþs 'dead' (Kroonen 2013 s.v. *dauda- (scan p0128) < *dʰewH-); was unmapped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "dails",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "remapped to pie-root-dheh1-do",
+   "note": "Kroonen 2013 s.v. *daila- (scan p0125): perhaps *dʰh1-oi-lo- from *dʰeh1- 'put' (Germanic/Balto-Slavic isogloss); *dʰeh1y- 'suckle' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "gadaila",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "remapped to pie-root-dheh1-do",
+   "note": "from dails; Kroonen 2013 s.v. *daila- (scan p0125): perhaps *dʰeh1- 'put'; *dʰeh1y- 'suckle' dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "qainon",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *kwainōjan- (scan p0354): denominative to *kwainō-, from *kwinan- 'to dwindle'; *gwey- 'win' wrong"
+  },
+  {
+   "corpus": "got",
+   "lemma": "þwahan",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *þwahan- (scan p0595): *tuok-e (GM), no IE cognate; the lexicon's *twek- 'physical appearance' is a different root"
+  },
+  {
+   "corpus": "got",
+   "lemma": "swers",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *swera- (scan p0539): 'heavy' < *suer- 'weigh' (Lith. svérti); the 'ache'/'resound' *swer- roots wrong, no lexicon id"
+  },
+  {
+   "corpus": "got",
+   "lemma": "sweran",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "from swers; Kroonen 2013 s.v. *swera- (scan p0539): *suer- 'weigh', not 'ache'/'resound'"
+  },
+  {
+   "corpus": "got",
+   "lemma": "sweriþa",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "from swers; Kroonen 2013 s.v. *swera- (scan p0539): *suer- 'weigh', not 'ache'/'resound'"
+  },
+  {
+   "corpus": "got",
+   "lemma": "gaurjan",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "from gaurs; Kroonen 2013 s.v. *gaura- (scan p0212): < *gʰou-r-o- (Skt. ghorá-), not *ǵʰewH- 'call on'; no lexicon id"
+  },
+  {
+   "corpus": "got",
+   "lemma": "lisan",
+   "lex_id": [
+    "pie-lex-leseti",
+    "pie-lex-lesti"
+   ],
+   "erratum": "remapped to pie-lex-leseti, pie-lex-lesti",
+   "note": "Kroonen 2013 s.v. *lesan- (scan p0371) 'to pick, gather' < *les-; *leys- 'trace' id dropped"
+  },
+  {
+   "corpus": "got",
+   "lemma": "driugan",
+   "lex_id": [
+    "pie-lex-dhrewgheti-2"
+   ],
+   "erratum": "remapped to pie-lex-dhrewgheti-2",
+   "note": "Kroonen 2013 s.v. *dreugan- (scan p0142) 'to serve (in war)' < *dʰrewgʰ- 'accompany'; homonym 'deceive' dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "vera",
+   "lex_id": [
+    "pie-lex-h1esti",
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h1esti, pie-lex-h2weseti",
+   "note": "Kroonen 2013 s.v. *wesan- 1 (scan p0622): vesa/vera < *h2wes-e- 'stay', suppletive with *h1es- (em, est, eru); old id pie-lex-sh1es is *sh1-es- 'seed' (< *seh1- 'sow'), wrong"
+  },
+  {
+   "corpus": "non",
+   "lemma": "vera|vesa",
+   "lex_id": [
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h2weseti",
+   "note": "Kroonen 2013 s.v. *wesan- 1 (scan p0622): the forms (vas, vasa) are the preterite < *h2wes-; pie-lex-sh1es (*seh1- 'sow') wrong"
+  },
+  {
+   "corpus": "non",
+   "lemma": "var",
+   "lex_id": [
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h2weseti",
+   "note": "Corpus forms are 'var' = 3sg pret. of vera 'was' (prose and notes), not var 'slime'; Kroonen 2013 s.v. *wesan- 1 (scan p0622) < *h2wes-"
+  },
+  {
+   "corpus": "non",
+   "lemma": "margr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *managa- (scan p0392): ON margr < *managa- < NWIE *monogh-o-, not *meǵh2- 'great'; no lexicon entry"
+  },
+  {
+   "corpus": "non",
+   "lemma": "ganga",
+   "lex_id": [
+    "pie-lex-gjhongh"
+   ],
+   "erratum": "remapped to pie-lex-gjhongh",
+   "note": "Kroonen 2013 s.v. *gangan- (scan p0206): < *ǵhengh-; ON has no suppletive *h1ey- preterite (gekk), so *h1eh1oye dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "mær",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *mawi- (scan p0399) and *magu- (scan p0387): West European word of obscure origin (*magh-u-); *megh- 'be able' unsupported"
+  },
+  {
+   "corpus": "non",
+   "lemma": "mær|mærf",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *mawi- (scan p0399), *magu- (scan p0387): obscure origin; *megh- 'be able' unsupported"
+  },
+  {
+   "corpus": "non",
+   "lemma": "hugr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *hugi- (scan p0292): 'No certain etymology'; *kewk- 'cry out' unsupported"
+  },
+  {
+   "corpus": "non",
+   "lemma": "hugr|hugi",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *hugi- (scan p0292): 'No certain etymology'"
+  },
+  {
+   "corpus": "non",
+   "lemma": "salr",
+   "lex_id": [
+    "pie-root-sel-dwell"
+   ],
+   "erratum": "remapped to pie-root-sel-dwell",
+   "note": "Kroonen 2013 s.v. *salaz- (scan p0464): < *sol(H)-es-, = OCS selo 'abode'; homonyms 'jump', 'sneak' dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "mál",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus mál is mostly 'speech, saying' < *maþla- (Kroonen 2013 s.v. *maþla-, scan p0398, from *mōtan-), a homograph of mál 'time' (*mēla-); no secure PIE id for the dominant sense"
+  },
+  {
+   "corpus": "non",
+   "lemma": "g",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Not a word: abbreviation 'g.' in Finnur Jónsson's notes, mapped through the prefix *ga-"
+  },
+  {
+   "corpus": "non",
+   "lemma": "v",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Not a word: abbreviation 'v.' (verse) in the edition's notes"
+  },
+  {
+   "corpus": "non",
+   "lemma": "loki",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Theonym Loki: no accepted PIE etymology; link to *lewg- 'bend' (via *luką) speculative"
+  },
+  {
+   "corpus": "non",
+   "lemma": "átti",
+   "lex_id": [
+    "pie-lex-h2eh2oykje"
+   ],
+   "erratum": "remapped to pie-lex-h2eh2oykje",
+   "note": "Corpus forms are átti = pret. of eiga 'owned' (Kroonen 2013 s.v. *aigan- (scan p0046) < *h2eh2óyḱe), not átti 'eighth'"
+  },
+  {
+   "corpus": "non",
+   "lemma": "þegja",
+   "lex_id": [
+    "pie-lex-th2keh1yeti"
+   ],
+   "erratum": "remapped to pie-lex-th2keh1yeti",
+   "note": "Kroonen 2013 s.v. *þagēn- (scan p0571): stative *tHk-eh1- = Lat. tacēre (de Vaan s.v. taceo, scan p0618); homonymous *tek- roots wrong"
+  },
+  {
+   "corpus": "non",
+   "lemma": "hjarta",
+   "lex_id": [
+    "pie-lex-kjexr"
+   ],
+   "erratum": "remapped to pie-lex-kjexr",
+   "note": "Kroonen 2013 s.v. *herton- (scan p0262): PIE 'heart' *ḱērd/*ḱr̥d-; old id *ḱerh2- 'grow' wrong"
+  },
+  {
+   "corpus": "non",
+   "lemma": "verðr",
+   "lex_id": [
+    "pie-lex-wertetor"
+   ],
+   "erratum": "remapped to pie-lex-wertetor",
+   "note": "Corpus forms are verðr = 3sg pres. of verða 'becomes' (Kroonen 2013 s.v. *werþan- (scan p0501)), not the adjective verðr 'worth' (unknown origin)"
+  },
+  {
+   "corpus": "non",
+   "lemma": "hár",
+   "lex_id": [
+    "pie-lex-kowkos-2"
+   ],
+   "erratum": "remapped to pie-lex-kowkos-2",
+   "note": "Corpus forms (Háva, hæri, hæstr) are hár 'high' (Kroonen 2013 s.v. *hauha- (scan p0255) < *kowk-); 'hair' and *kewh2- ids dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "njóta",
+   "lex_id": [
+    "pie-root-newd-use"
+   ],
+   "erratum": "remapped to pie-root-newd-use",
+   "note": "Kroonen 2013 s.v. *neutan- (scan p0429) 'to use, enjoy' < *newd- 'use'; homonym 'push' dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "brenna",
+   "lex_id": [
+    "pie-lex-bhrenw"
+   ],
+   "erratum": "remapped to pie-lex-bhrenw",
+   "note": "Kroonen 2013 s.v. *brinnan- (scan p0115-6): n-present to *bhrewh1- 'boil' (*bhre-n-u-h1-); *gwhr̥néwti dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "rún",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "rún 'secret, rune': not a Kroonen entry, no accepted PIE etymology; *HrewH- 'dig out' unsupported"
+  },
+  {
+   "corpus": "non",
+   "lemma": "fár",
+   "lex_id": [
+    "pie-lex-ph2wos"
+   ],
+   "erratum": "remapped to pie-lex-ph2wos",
+   "note": "Corpus forms (fár, fátt) are 'few' (Kroonen 2013 s.v. *fawa- (scan p0172) < *ph2u-o-); *per- id from the homograph fár 'harm' dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "líta",
+   "lex_id": [
+    "pie-lex-wleydeti"
+   ],
+   "erratum": "remapped to pie-lex-wleydeti",
+   "note": "Kroonen 2013 s.v. *wlītan- (scan p0631) 'to look': not *weyd- 'see'; *weydeti dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "sverð",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *swerda- (scan p0539): 'No certain etymology'; the two *swer- roots are guesses"
+  },
+  {
+   "corpus": "non",
+   "lemma": "bað",
+   "lex_id": [
+    "pie-lex-gwhedhyeti"
+   ],
+   "erratum": "remapped to pie-lex-gwhedhyeti",
+   "note": "Corpus forms are bað = pret. of biðja 'bade' (Kroonen 2013 s.v. *bedjan- (scan p0095) < *gwhedh-), not bað 'bath'"
+  },
+  {
+   "corpus": "non",
+   "lemma": "vanr",
+   "lex_id": [
+    "pie-lex-h1uh2nos",
+    "pie-lex-h1weh2nos"
+   ],
+   "erratum": "remapped to pie-lex-h1uh2nos, pie-lex-h1weh2nos",
+   "note": "Corpus forms (vant, vanr) are 'lacking' (Kroonen 2013 s.v. *wana- (scan p0612) 'lacking' < *h1uh2-no-); *wonh1ós 'wont' dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "húnn",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus forms are hún 'she' (pronoun, in the Icelandic notes) and Húna 'Huns' (ethnonym), not húnn 'cub'"
+  },
+  {
+   "corpus": "non",
+   "lemma": "man",
+   "lex_id": [
+    "pie-lex-memone"
+   ],
+   "erratum": "remapped to pie-lex-memone",
+   "note": "Corpus forms (man, mank 'I shall') are 1/3sg of munu (Kroonen 2013 s.v. *munan- (scan p0415) < *memóne), not man 'household'"
+  },
+  {
+   "corpus": "non",
+   "lemma": "sé",
+   "lex_id": [
+    "pie-lex-sekweti"
+   ],
+   "erratum": "remapped to pie-lex-sekweti",
+   "note": "Corpus forms are sék 'I see' (sjá, Kroonen 2013 s.v. *sehwan- (scan p0471)), not the numeral 'one'"
+  },
+  {
+   "corpus": "non",
+   "lemma": "viti",
+   "lex_id": [
+    "pie-lex-woyde"
+   ],
+   "erratum": "remapped to pie-lex-woyde",
+   "note": "Corpus forms viti = subj. of vita 'know' (Kroonen 2013 s.v. *witan- (scan p0629) < *wóyde); the pronoun 'we' id wrong"
+  },
+  {
+   "corpus": "non",
+   "lemma": "eiða",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus forms are eiða = gen./acc.pl. of eiðr 'oath'; Kroonen 2013 s.v. *aiþa- (scan p0053): Germanic-Celtic isogloss, unlikely PIE; *h1ey- 'go' (via eið 'isthmus') wrong"
+  },
+  {
+   "corpus": "non",
+   "lemma": "eiðr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *aiþa- (scan p0053): Germanic-Celtic isogloss, unlikely to go back to PIE"
+  },
+  {
+   "corpus": "non",
+   "lemma": "gamall",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *gamala- (scan p0206): 'Uncertain etymology'; *h2eltós unsupported"
+  },
+  {
+   "corpus": "non",
+   "lemma": "il",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus forms are ilt = neut. of illr 'evil', not il 'sole'; *jehwla-/*yek- wrong"
+  },
+  {
+   "corpus": "non",
+   "lemma": "gerði",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus forms are gerði = pret. of gera 'made', not gerði 'field'; gera (< *garwjan-) has no PIE id here"
+  },
+  {
+   "corpus": "non",
+   "lemma": "gera|gerða",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus forms are gerðu = pret.pl. of gera 'made', mapped through garðr 'fence'; wrong"
+  },
+  {
+   "corpus": "non",
+   "lemma": "okr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus forms are okr = okkr 'us two' (dual pronoun), not okr 'usury'"
+  },
+  {
+   "corpus": "non",
+   "lemma": "auðr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus forms are auðr 'wealth' (Kroonen 2013 s.v. *auda-, scan p0078: *Heu-dhh1-o-, no lexicon id), not auðr 'desolate' (*h2ew)"
+  },
+  {
+   "corpus": "non",
+   "lemma": "brjóst",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *breusta- (scan p0114): < *bhreus- 'swell' (Ru. brjuxo 'belly'), not *bhrews- 'break'; no lexicon id"
+  },
+  {
+   "corpus": "non",
+   "lemma": "glaðr",
+   "lex_id": [
+    "pie-lex-gjhloh1eti",
+    "pie-lex-gjhegjhloh1e"
+   ],
+   "erratum": "remapped to pie-lex-gjhloh1eti, pie-lex-gjhegjhloh1e",
+   "note": "Kroonen 2013 s.v. *glada- (scan p0219): quasi-PIE *ǵhlh1-tó- to *ǵhlóh1-e- 'glow'; *ǵhlh2dhós dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "harðr",
+   "lex_id": [
+    "pie-root-kret-be_strong"
+   ],
+   "erratum": "remapped to pie-root-kret-be_strong",
+   "note": "Kroonen 2013 s.v. *hardu- (scan p0251): < *kort-u-, Gr. kratús 'strong'; not *(s)ker- 'cut'"
+  },
+  {
+   "corpus": "non",
+   "lemma": "hjón",
+   "lex_id": [
+    "pie-root-kjey-be_lying_down"
+   ],
+   "erratum": "remapped to pie-root-kjey-be_lying_down",
+   "note": "hjón 'household' < *hīwa- (cf. Kroonen 2013 scan p0267, Go. heiwa-frauja) < *ḱey- 'lie, settle'; homonym 'fall' dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "hrafn",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *hrabn- (scan p0280): *krobh-on-(?) (GM); *ḱerh2- 'horn' wrong"
+  },
+  {
+   "corpus": "non",
+   "lemma": "laun",
+   "lex_id": [
+    "pie-lex-lowh2nom",
+    "pie-lex-leh2unom",
+    "pie-lex-lh2ewnom"
+   ],
+   "erratum": "remapped to pie-lex-lowh2nom, pie-lex-leh2unom, pie-lex-lh2ewnom",
+   "note": "laun 'reward' < *launa- (Go. laun) < *leh2w- 'gain'; *h2lewgh- id from laun 'secrecy' dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "lítill",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *lītila- (scan p0379): derivation problematic (GM); *minuyōs 'smaller' wrong"
+  },
+  {
+   "corpus": "non",
+   "lemma": "lá",
+   "lex_id": [
+    "pie-lex-leghyeti"
+   ],
+   "erratum": "remapped to pie-lex-leghyeti",
+   "note": "Corpus forms are lá = pret. of liggja 'lay' (Kroonen 2013 s.v. *leg(j)an- (scan p0370) < *legh-), not lá 'shore water'"
+  },
+  {
+   "corpus": "non",
+   "lemma": "norn",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "norn: no accepted PIE etymology; *nér 'below' unsupported"
+  },
+  {
+   "corpus": "non",
+   "lemma": "vél",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "vél 'artifice': no secure etymology; *wéy 'we' wrong"
+  },
+  {
+   "corpus": "non",
+   "lemma": "þeim",
+   "lex_id": [
+    "pie-lex-so"
+   ],
+   "erratum": "remapped to pie-lex-so",
+   "note": "Demonstrative þeim(s) < *só/*tó-; *toy (2sg enclitic) wrong"
+  },
+  {
+   "corpus": "non",
+   "lemma": "sár",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus forms are sár 'wound' (*saira-, no secure PIE etymology), not sár 'cask'; *seyk- 'reach' wrong"
+  },
+  {
+   "corpus": "non",
+   "lemma": "hugi|hugr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *hugi- (scan p0292): 'No certain etymology'"
+  },
+  {
+   "corpus": "non",
+   "lemma": "matr",
+   "lex_id": [
+    "pie-root-meh2d-be_wet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-be_wet",
+   "note": "Kroonen 2013 s.v. *mati- (scan p0398) 'food': homonym *meh2d- 'meet' dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "sýna",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "sýna 'show' from sjón (Kroonen 2013 s.v. *sehwan- (scan p0471)): only *sekw- 'see'"
+  },
+  {
+   "corpus": "non",
+   "lemma": "sjón",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "sjón 'sight' < *sehwnō (Kroonen 2013 s.v. *sehwan- (scan p0471)): only *sekw- 'see'"
+  },
+  {
+   "corpus": "non",
+   "lemma": "höldr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *haleþ- (scan p0244): ON hǫldr < *kHl-et- (NIE?), not *ḱel-"
+  },
+  {
+   "corpus": "non",
+   "lemma": "halr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *haleþ- (scan p0244): ON halr < *kHl-et- (NIE?), not *ḱel-"
+  },
+  {
+   "corpus": "non",
+   "lemma": "nýtr|njóta",
+   "lex_id": [
+    "pie-root-newd-use"
+   ],
+   "erratum": "remapped to pie-root-newd-use",
+   "note": "Kroonen 2013 s.v. *neutan- (scan p0429) < *newd- 'use'; 'push' dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "björn",
+   "lex_id": [
+    "pie-root-bherH-brown"
+   ],
+   "erratum": "remapped to pie-root-bherH-brown",
+   "note": "björn 'bear' < *bherH- 'brown'; homonym 'pierce' dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "afi",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "afi 'grandfather' = Go. aba; Kroonen 2013 s.v. *aban- (scan p0039): nursery word, no certain IE etymology"
+  },
+  {
+   "corpus": "non",
+   "lemma": "munu|munr|muna",
+   "lex_id": [
+    "pie-lex-memone"
+   ],
+   "erratum": "remapped to pie-lex-memone",
+   "note": "Corpus forms are mun/munt/munk 'will, shall' (munu < *munan-, Kroonen 2013 s.v. *munan- (scan p0415) < *memóne); was ambiguous"
+  },
+  {
+   "corpus": "non",
+   "lemma": "skulu|skál",
+   "lex_id": [
+    "pie-lex-skeskole"
+   ],
+   "erratum": "remapped to pie-lex-skeskole",
+   "note": "Corpus forms are skal/skalk 'shall' (skulu, Kroonen 2013 s.v. *skulan- (scan p0490)); was ambiguous"
+  },
+  {
+   "corpus": "non",
+   "lemma": "vera|verja",
+   "lex_id": [
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h2weseti",
+   "note": "Corpus forms are væri 'were' (pret. subj. of vera < *h2wes-, Kroonen 2013 s.v. *wesan- 1, scan p0622); was ambiguous"
+  },
+  {
+   "corpus": "non",
+   "lemma": "sonr|sýn|sýna",
+   "lex_id": [
+    "pie-lex-suHnus"
+   ],
+   "erratum": "remapped to pie-lex-suHnus",
+   "note": "Corpus forms are synir 'sons' (sonr < *suHnús); was ambiguous"
+  },
+  {
+   "corpus": "non",
+   "lemma": "verða|verja",
+   "lex_id": [
+    "pie-lex-wertetor"
+   ],
+   "erratum": "remapped to pie-lex-wertetor",
+   "note": "Corpus forms are varð 'became' (verða, Kroonen 2013 s.v. *werþan- (scan p0501)); was ambiguous"
+  },
+  {
+   "corpus": "non",
+   "lemma": "vita|vé",
+   "lex_id": [
+    "pie-lex-woyde"
+   ],
+   "erratum": "remapped to pie-lex-woyde",
+   "note": "Corpus forms are veit/veitk 'knows' (vita < *wóyde, Kroonen 2013 s.v. *witan- (scan p0629)); was ambiguous"
+  },
+  {
+   "corpus": "non",
+   "lemma": "villr|vilja",
+   "lex_id": [
+    "pie-lex-welh1ti",
+    "pie-lex-wexlh1ti"
+   ],
+   "erratum": "remapped to pie-lex-welh1ti, pie-lex-wexlh1ti",
+   "note": "Corpus forms are vill 'wants' (vilja, Kroonen 2013 s.v. *weljan- 1 (scan p0618)); was ambiguous"
+  },
+  {
+   "corpus": "non",
+   "lemma": "goð|góðr|goði",
+   "lex_id": [
+    "pie-lex-gjhutos"
+   ],
+   "erratum": "remapped to pie-lex-gjhutos",
+   "note": "Corpus form goðum 'gods' (goð < *ǵʰutó-, Kroonen 2013 s.v. *guda- (scan p0233)); was ambiguous"
+  },
+  {
+   "corpus": "non",
+   "lemma": "dagr|dögg|döggva",
+   "lex_id": [
+    "pie-lex-dhogwhos"
+   ],
+   "erratum": "remapped to pie-lex-dhogwhos",
+   "note": "Corpus forms are dag 'day' (acc. of dagr, Kroonen 2013 s.v. *daga- (scan p0124)); was ambiguous"
+  },
+  {
+   "corpus": "non",
+   "lemma": "vega|vas",
+   "lex_id": [
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h2weseti",
+   "note": "Corpus forms are vask 'I was' (vas, pret. of vesa < *h2wes-, Kroonen 2013 s.v. *wesan- (scan p0622) 1); was ambiguous"
+  },
+  {
+   "corpus": "non",
+   "lemma": "ganga|gengr",
+   "lex_id": [
+    "pie-lex-gjhongh"
+   ],
+   "erratum": "remapped to pie-lex-gjhongh",
+   "note": "Corpus forms are gengu 'went' (ganga, Kroonen 2013 s.v. *gangan- (scan p0206)); was ambiguous"
+  },
+  {
+   "corpus": "non",
+   "lemma": "bera|bör|börr",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "remapped to pie-root-bher-bear",
+   "note": "Corpus forms are borinn 'born' (bera < *bher-); was ambiguous"
+  },
+  {
+   "corpus": "non",
+   "lemma": "þvá",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *þwahan- (scan p0595): *tuok-e (GM); the lexicon's *twek- 'physical appearance' is a different root"
+  },
+  {
+   "corpus": "non",
+   "lemma": "smiðr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "smiðr 'smith' (*smiþa-): *smey- 'laugh' wrong; no lexicon root"
+  },
+  {
+   "corpus": "non",
+   "lemma": "blása",
+   "lex_id": [
+    "pie-lex-bhleh1-3"
+   ],
+   "erratum": "remapped to pie-lex-bhleh1-3",
+   "note": "blása 'blow' < *bhleh1- 'blow' (< *bhel- 'swell'); the 'bleat' and 'shine' homonyms dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "leyfa",
+   "lex_id": [
+    "pie-root-lewbh-desire"
+   ],
+   "erratum": "remapped to pie-root-lewbh-desire",
+   "note": "leyfa 'praise, permit' < *laubjan- (Kroonen 2013 s.v. *leuba- (scan p0372)): *lewbh- 'desire'; 'cut off' dropped"
+  },
+  {
+   "corpus": "non",
+   "lemma": "bein",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *baina- (scan p0086): 'No further etymology'; link with *bʰeyh2- 'hew' rejected"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "is",
+   "lex_id": [
+    "pie-lex-h1esti"
+   ],
+   "erratum": "remapped to pie-lex-h1esti",
+   "note": "Corpus forms are the copula is 'is' (< *h1és-ti), not īs 'ice' (Grein marks length, Beowulf has macrons)"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "god",
+   "lex_id": [
+    "pie-lex-gjhutos"
+   ],
+   "erratum": "remapped to pie-lex-gjhutos",
+   "note": "Unmarked god in both texts is 'God' (gōd 'good' carries length marks and is a separate key); Kroonen 2013 s.v. *guda- (scan p0233); *gʰedʰ- (good) dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "wesan",
+   "lex_id": [
+    "pie-lex-h1esti",
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h1esti, pie-lex-h2weseti",
+   "note": "Kroonen 2013 s.v. *wesan- 1 (scan p0622): wesan < *h2wes-e-, suppletive with *h1es- (eart, synt); old id pie-lex-sh1es is *sh1-es- 'seed' (< *seh1- 'sow'), wrong"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "sindon",
+   "lex_id": [
+    "pie-lex-h1esti"
+   ],
+   "erratum": "remapped to pie-lex-h1esti",
+   "note": "sindon 'are' < *h1s-énti (Kroonen 2013 s.v. *wesan- 1, scan p0622); pie-lex-sh1es (*seh1- 'sow') wrong"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "sīe|wesan",
+   "lex_id": [
+    "pie-lex-h1esti"
+   ],
+   "erratum": "remapped to pie-lex-h1esti",
+   "note": "sīe/sī subj. 'be' < *h1s-yeh1- (Kroonen 2013 s.v. *wesan- 1, scan p0622); pie-lex-sh1es (*seh1- 'sow') wrong"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "synn",
+   "lex_id": [
+    "pie-root-h1es-be"
+   ],
+   "erratum": "remapped to pie-root-h1es-be",
+   "note": "Kroonen 2013 s.v. *sundjō- (scan p0532): < *h1s-n̥t-ieh2-, from the participle of *h1es- 'be'; pie-lex-sh1es (*seh1- 'sow') wrong"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "wesan|bēon",
+   "lex_id": [
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h2weseti",
+   "note": "Corpus forms are wæs 'was' (Beowulf), pret. of wesan < *h2wes- (Kroonen 2013 s.v. *wesan- 1, scan p0622); was ambiguous, now mapped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "bēon|wesan",
+   "lex_id": [
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h2weseti",
+   "note": "Corpus forms are was/weron 'was, were' (Grein OCR), pret. of wesan < *h2wes- (Kroonen 2013 s.v. *wesan- 1, scan p0622); was ambiguous, now mapped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "am",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: German 'am' of Grein's preface and apparatus (144 of 148 tokens), mapped to *h1ésmi"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "der",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: German article 'der' of the apparatus, mapped to the suffix *-tre"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "ran",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: fragment of words split at OCR accent marks (h^ran = hýran), mapped to the comparative suffix"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "ta",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: fragment of words split at OCR '&' (= æ), e.g. h&ta, not tā 'toe'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "tan",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: fragment of split words (hd,tan, sweai*tan), not a verb"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "fitt",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: 'fit' is a fragment of split words (þfit = þæt) and apparatus, not fitt 'song'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "dǣd|dæd",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: 'ded' tokens are fragments (f§ded, þurhgl€ded) or dēð 'does', not dǣd 'deed'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "gēac|geac",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: 'gec' tokens are fragments of split words, not gēac 'cuckoo'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "gēar|gear",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: 'ger' tokens are fragments (ger&d = gerǣd, ger§node), not gēar 'year'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "fdan|fēdan",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: 'fde' is the tail of H&fde = hæfde 'had', not fēdan 'feed'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "teran",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: 'ter' is the tail of w&ter = wæter, not teran 'tear'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "tōh|toh",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: 'ton' tokens are fragments (h€ton, m&ton), not tōh 'tough'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "toh|tōh",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: 'tonne'/'tone' are OCR for þonne/þone, not tōh 'tough'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "dēman",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: 'dm'/'dme' tokens are fragments of split words and apparatus; the old ids also included *dʰeh1y- 'suckle'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "hēlan",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: 'hl' is the head of hl&ford = hlāford, not hēlan 'slander'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "fah|fāh|fann",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: 'fan' tokens are OCR for þan, not fāh"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "cot",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: 'Cot.' is the manuscript siglum (Cotton) in the apparatus, not cot 'cottage'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "o",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "o/O is the vocative interjection 'O' or a stray letter, not ā 'ever' / *úd"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "nēo|neo",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus forms are nē 'not, nor' (negative particle), not nēo 'corpse'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "migan|mīgan",
+   "lex_id": [
+    "pie-lex-memoghe"
+   ],
+   "erratum": "remapped to pie-lex-memoghe",
+   "note": "Corpus forms are mag = mæg 'can' (pret.-pres. of magan, Kroonen 2013 s.v. *mugan- (scan p0413)), not mīgan 'urinate'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "dene",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus forms are Dena/Deniga 'Danes' (ethnonym), not denu 'valley'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "geatas|gēatas|geat",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus forms are Gēata 'of the Geats' (ethnonym), not geat 'gate'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "hyrd|hierdan|hierde",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "hyrde is mostly hȳrde 'heard' (pret. of hȳran) beside hierde 'shepherd' (Kroonen 2013 s.v. *herdō- (scan p0261) < *kerdh-); *kreh2- 'heap up' wrong for both"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "engel|engle",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "engel 'angel' is a borrowing of Latin angelus; *angulaz 'hook' wrong"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "weall|weallan",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus form wealle = dat. of weall 'wall', a borrowing of Latin vallum; mapped through weallan 'boil'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "menigu",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *managa- (scan p0392): manig/menigu < *monogh-o-, not *meǵh2- 'great'; no lexicon id"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "sweord",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *swerda- (scan p0539): 'No certain etymology'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "hyge",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *hugi- (scan p0292): 'No certain etymology'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "bringan|brengan",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *bringan- (scan p0115): verb of obscure origin; *ḱóm wrong"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "lust",
+   "lex_id": [
+    "pie-root-las-be_unbridled"
+   ],
+   "erratum": "remapped to pie-root-las-be_unbridled",
+   "note": "Kroonen 2013 s.v. *lustu- (scan p0385): root *lh2s- (Lat. lascivus); *lewH- 'louse' wrong"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "nearu",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *narwa- (scan p0423): < *neh2r-u- (Latv. nars); *nér 'below' wrong, no lexicon id"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "bord",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *burzda- (scan p0124): < *bhrzdh-o-, not *bherdh- 'plunder'; no lexicon id"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "hæle|hæleþ",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *haleþ- (scan p0244): *kHl-et- (NIE?), not *ḱel- 'cover/incline'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "hold",
+   "lex_id": [
+    "pie-root-kjel-incline"
+   ],
+   "erratum": "remapped to pie-root-kjel-incline",
+   "note": "Kroonen 2013 s.v. *hulþa- (scan p0294): zero grade *kl̥-to- to *halþa- 'inclined'; *ḱl̥tós 'warm', *kelH-, *skelH- wrong"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "hyldu",
+   "lex_id": [
+    "pie-root-kjel-incline"
+   ],
+   "erratum": "remapped to pie-root-kjel-incline",
+   "note": "hyldo from hold; Kroonen 2013 s.v. *hulþa- (scan p0294): *kl̥-to- 'inclined'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "earn",
+   "lex_id": [
+    "pie-lex-h3erox"
+   ],
+   "erratum": "remapped to pie-lex-h3erox",
+   "note": "Kroonen 2013 s.v. *aran- 1 (scan p0070): earn 'eagle' < *h3er-n-; *razną 'house' wrong"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "dag",
+   "lex_id": [
+    "pie-lex-dhogwhos"
+   ],
+   "erratum": "remapped to pie-lex-dhogwhos",
+   "note": "Grein OCR: dag = dæg 'day' (æ lost), not dāg 'dough'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "bær",
+   "lex_id": [
+    "pie-lex-bhereti"
+   ],
+   "erratum": "remapped to pie-lex-bhereti",
+   "note": "Corpus forms are bær = bǣr, pret. of beran 'bore', not bær 'bare'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "cyme",
+   "lex_id": [
+    "pie-root-gwem-come"
+   ],
+   "erratum": "remapped to pie-root-gwem-come",
+   "note": "cyme 'coming' < *kumi- (Kroonen 2013 s.v. *kweman- (scan p0028)), not *guHmós 'call'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "gefyllan|fiellan|fyllan",
+   "lex_id": [
+    "pie-root-pleh1-fill"
+   ],
+   "erratum": "remapped to pie-root-pleh1-fill",
+   "note": "Corpus form gefylled 'filled' (fyllan 'fill' < *fulljan-, factitive to *fulla- 'full'), not fyllan 'fell'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "giest",
+   "lex_id": [
+    "pie-lex-ghostis"
+   ],
+   "erratum": "remapped to pie-lex-ghostis",
+   "note": "Kroonen 2013 s.v. *gasti- (scan p0210) 'guest' < *gʰosti-; *yéstus 'yeast' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "andswarian",
+   "lex_id": [
+    "pie-root-swer-resound"
+   ],
+   "erratum": "remapped to pie-root-swer-resound",
+   "note": "Kroonen 2013 s.v. *swar(j)an- (scan p0536) 'to swear' < *suer- 'speak'; homonym 'ache' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "wielm",
+   "lex_id": [
+    "pie-root-welH-roll"
+   ],
+   "erratum": "remapped to pie-root-welH-roll",
+   "note": "wielm 'surge' < *walmi- from *wallan- 'boil, well' < *welH- 'roll'; 'be strong' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "gesēon|geseon",
+   "lex_id": [
+    "pie-lex-sekweti"
+   ],
+   "erratum": "remapped to pie-lex-sekweti",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471) 'to see': only *sekw- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "weorold",
+   "lex_id": [
+    "pie-lex-wiHros",
+    "pie-lex-h2eltis"
+   ],
+   "erratum": "remapped to pie-lex-wiHros, pie-lex-h2eltis",
+   "note": "*weraldi- 'world' = *wera- 'man' (Kroonen 2013 scan p0619) + *aldi- 'age'; the three homonymous *h2el- roots replaced"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "weorold|woruld",
+   "lex_id": [
+    "pie-lex-wiHros",
+    "pie-lex-h2eltis"
+   ],
+   "erratum": "remapped to pie-lex-wiHros, pie-lex-h2eltis",
+   "note": "*weraldi- 'world' = *wera- 'man' (Kroonen 2013 scan p0619) + *aldi- 'age'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "geweald",
+   "lex_id": [
+    "pie-root-h2welh1-rule"
+   ],
+   "erratum": "remapped to pie-root-h2welh1-rule",
+   "note": "Kroonen 2013 s.v. *waldan- (scan p0609) < *h2welh1- 'rule'; homonym 'hair, wool' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "sele",
+   "lex_id": [
+    "pie-root-sel-dwell"
+   ],
+   "erratum": "remapped to pie-root-sel-dwell",
+   "note": "Kroonen 2013 s.v. *salaz- (scan p0464): < *sol(H)-es- 'abode'; homonyms 'jump', 'sneak' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "gangan",
+   "lex_id": [
+    "pie-lex-gjhongh"
+   ],
+   "erratum": "remapped to pie-lex-gjhongh",
+   "note": "Kroonen 2013 s.v. *gangan- (scan p0206): < *ǵhengh-; ēode (*h1ey-) is a separate lemma, so *h1eh1oye dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "scylding",
+   "lex_id": [
+    "pie-lex-skelHtus",
+    "pie-lex-skelHtus-2"
+   ],
+   "erratum": "remapped to pie-lex-skelHtus, pie-lex-skelHtus-2",
+   "note": "Scyldingas from Scyld (= scield 'shield' < *skelH-); *skel- 'owe' (scyld 'guilt') dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "beorn",
+   "lex_id": [
+    "pie-root-bherH-brown"
+   ],
+   "erratum": "remapped to pie-root-bherH-brown",
+   "note": "beorn 'warrior' < 'bear' (cf. ON björn) < *bherH- 'brown'; homonym 'pierce' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "wealdend",
+   "lex_id": [
+    "pie-root-h2welh1-rule"
+   ],
+   "erratum": "remapped to pie-root-h2welh1-rule",
+   "note": "wealdend/waldend 'ruler' = pres. ptc. of wealdan (Kroonen 2013 s.v. *waldan- (scan p0609) < *h2welh1-); was unmapped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "willan|wil|wīl",
+   "lex_id": [
+    "pie-lex-welh1ti",
+    "pie-lex-wexlh1ti"
+   ],
+   "erratum": "remapped to pie-lex-welh1ti, pie-lex-wexlh1ti",
+   "note": "Corpus forms are wile 'wants' (willan, Kroonen 2013 s.v. *weljan- 1 (scan p0618)); was ambiguous"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "wer|werian",
+   "lex_id": [
+    "pie-lex-wiHros"
+   ],
+   "erratum": "remapped to pie-lex-wiHros",
+   "note": "Corpus forms are wera/were = gen.pl./dat. of wer 'man' (Kroonen 2013 s.v. *wera- (scan p0614) < *wiHro-); was ambiguous"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "dōn|don|dīedan",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "remapped to pie-root-dheh1-do",
+   "note": "Corpus forms are dyde 'did' (dōn, Kroonen 2013 s.v. *dōn- (scan p0138) < *dheh1-); was ambiguous"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "worold",
+   "lex_id": [
+    "pie-lex-wiHros",
+    "pie-lex-h2eltis"
+   ],
+   "erratum": "remapped to pie-lex-wiHros, pie-lex-h2eltis",
+   "note": "*weraldi- 'world' = *wera- 'man' (Kroonen 2013 scan p0619) + *aldi- 'age'; the three homonymous *h2el- roots replaced"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "ieldu",
+   "lex_id": [
+    "pie-root-h2el-grow"
+   ],
+   "erratum": "remapped to pie-root-h2el-grow",
+   "note": "ieldu 'age, men' < *alþī- from *alda- 'old' < *h2el- 'grow'; homonyms 'all', 'beyond' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "gemet",
+   "lex_id": [
+    "pie-root-med-measure"
+   ],
+   "erratum": "remapped to pie-root-med-measure",
+   "note": "gemet 'measure' from metan (Kroonen 2013 s.v. *metan- (scan p0407) < *med- 'measure'), not *meh2d-"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "deman|dēman",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "remapped to pie-root-dheh1-do",
+   "note": "dēman from dōm (Kroonen 2013 s.v. *dōma- (scan p0138) < *dʰoh1-mo-, *dʰeh1- 'put'); *dʰeh1y- 'suckle' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "dēman|deman",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "remapped to pie-root-dheh1-do",
+   "note": "dēman from dōm (Kroonen 2013 s.v. *dōma- (scan p0138) < *dʰeh1- 'put'); *dʰeh1y- 'suckle' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "mete",
+   "lex_id": [
+    "pie-root-meh2d-be_wet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-be_wet",
+   "note": "Kroonen 2013 s.v. *mati- (scan p0398) 'food' (cf. *matjan-): homonym *meh2d- 'meet' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "swelgan",
+   "lex_id": [
+    "pie-root-swel-swallow"
+   ],
+   "erratum": "remapped to pie-root-swel-swallow",
+   "note": "swelgan 'swallow' < *swelgan- < *swelh-; homonym 'smolder' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "forswelgan",
+   "lex_id": [
+    "pie-root-swel-swallow"
+   ],
+   "erratum": "remapped to pie-root-swel-swallow",
+   "note": "from swelgan (*swelgan-); homonym 'smolder' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "sēo",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus forms are sēo, the feminine article/demonstrative 'the, that', not sēo 'pupil (of the eye)'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "geseon|gesēon",
+   "lex_id": [
+    "pie-lex-sekweti"
+   ],
+   "erratum": "remapped to pie-lex-sekweti",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471) 'to see': only *sekw- 'see'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "gesīene|gesēon",
+   "lex_id": [
+    "pie-lex-sekweti"
+   ],
+   "erratum": "remapped to pie-lex-sekweti",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471) 'to see': only *sekw- 'see'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "gesēon",
+   "lex_id": [
+    "pie-lex-sekweti"
+   ],
+   "erratum": "remapped to pie-lex-sekweti",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471) 'to see': only *sekw- 'see'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "andswaru",
+   "lex_id": [
+    "pie-root-swer-resound"
+   ],
+   "erratum": "remapped to pie-root-swer-resound",
+   "note": "Kroonen 2013 s.v. *swar(j)an- (scan p0536) 'swear' < *suer- 'speak'; homonym 'ache' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "scealc",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *skalka- (scan p0479): no certain etymology"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "geoguþ",
+   "lex_id": [
+    "pie-root-h2ey-vital_force"
+   ],
+   "erratum": "remapped to pie-root-h2ey-vital_force",
+   "note": "geoguþ 'youth' < *jugunþi- (*h2yu-, Kroonen 2013 s.v. *junga- (scan p0314)), from *h2ey- 'vital force'; 'day', 'give' homonyms dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "esne",
+   "lex_id": [
+    "pie-root-sh1es-harvest"
+   ],
+   "erratum": "remapped to pie-root-sh1es-harvest",
+   "note": "esne 'labourer' < *asnja- from *azani- 'harvest' (Kroonen 2013 s.v. *azani-, scan p0084, < *h1es-en-); pie-lex-sh1es (*seh1- 'sow') replaced by the 'harvest' root"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "wræc",
+   "lex_id": [
+    "pie-lex-wregeti"
+   ],
+   "erratum": "remapped to pie-lex-wregeti",
+   "note": "wræc 'exile' from wrecan (Kroonen 2013 s.v. *wrekan- (scan p0635) < *ureg-), not *werǵ- 'make/enclose/shear'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "wielm|wylm",
+   "lex_id": [
+    "pie-root-welH-roll"
+   ],
+   "erratum": "remapped to pie-root-welH-roll",
+   "note": "as wielm: < *walmi- from *wallan- 'boil' < *welH- 'roll'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "manegum",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *managa- (scan p0392): < *monogh-o-, not *meǵh2-"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "hæleþ",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *haleþ- (scan p0244): *kHl-et- (NIE?), not *ḱel-"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "wad",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "wād 'woad': *waizda- has no PIE etymology; *wéy 'we' wrong"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "wil",
+   "lex_id": [
+    "pie-lex-welh1ti",
+    "pie-lex-wexlh1ti"
+   ],
+   "erratum": "remapped to pie-lex-welh1ti, pie-lex-wexlh1ti",
+   "note": "Corpus forms wil = wile 'wants' (willan, Kroonen 2013 s.v. *weljan- 1 (scan p0618)); *wéy 'we' wrong"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "wese",
+   "lex_id": [
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h2weseti",
+   "note": "wese = subj. of wesan 'be' (Kroonen 2013 s.v. *wesan- (scan p0622) 1 < *h2wes-); the three *wes- 'dress/graze/sell' roots wrong"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "beorna",
+   "lex_id": [
+    "pie-root-bherH-brown"
+   ],
+   "erratum": "remapped to pie-root-bherH-brown",
+   "note": "as beorn: 'bear' < *bherH- 'brown'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "geneat|genēat",
+   "lex_id": [
+    "pie-root-newd-use"
+   ],
+   "erratum": "remapped to pie-root-newd-use",
+   "note": "genēat 'companion' from *naut- 'use' (Kroonen 2013 s.v. *neutan- (scan p0429) < *newd- 'use'); 'push' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "gefrǣge",
+   "lex_id": [
+    "pie-root-prekj-ask"
+   ],
+   "erratum": "remapped to pie-root-prekj-ask",
+   "note": "Kroonen 2013 s.v. *frehnan- (scan p0194) / *fragēn- < *preḱ- 'ask'; homonym 'be afraid' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "fricgan",
+   "lex_id": [
+    "pie-root-prekj-ask"
+   ],
+   "erratum": "remapped to pie-root-prekj-ask",
+   "note": "Kroonen 2013 s.v. *frehnan- (scan p0194) / *fragēn- < *preḱ- 'ask'; homonym 'be afraid' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "bringan",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *bringan- (scan p0115): verb of obscure origin; *ḱóm wrong"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "hyldu|hyld",
+   "lex_id": [
+    "pie-root-kjel-incline"
+   ],
+   "erratum": "remapped to pie-root-kjel-incline",
+   "note": "hyldo from hold; Kroonen 2013 s.v. *hulþa- (scan p0294): *kl̥-to- 'inclined'; 'warm', *kelH-, *skelH- wrong"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "calend",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "calend 'month' is a borrowing of Latin calendae; *kelh1-/*skelh1- wrong"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "gemunan",
+   "lex_id": [
+    "pie-lex-memone"
+   ],
+   "erratum": "remapped to pie-lex-memone",
+   "note": "gemunan 'remember' < *munan- (Kroonen 2013 s.v. *munan- (scan p0415) < *memóne); was unmapped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "wealdend|waldend",
+   "lex_id": [
+    "pie-root-h2welh1-rule"
+   ],
+   "erratum": "remapped to pie-root-h2welh1-rule",
+   "note": "waldende = wealdend 'ruler' (wealdan, Kroonen 2013 s.v. *waldan- (scan p0609) < *h2welh1-); was unmapped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "geong|gang",
+   "lex_id": [
+    "pie-lex-h2yuHnkjos"
+   ],
+   "erratum": "remapped to pie-lex-h2yuHnkjos",
+   "note": "Corpus forms are geonge 'young' (Kroonen 2013 s.v. *junga- (scan p0314) < *h2yuh1n̥ḱó-); was ambiguous"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "gan",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR: 'gan' tokens are mostly fragments of words split at accent marks (^gan = ágan, e^gan = ēagan); the old ids also mixed *ǵʰeh1- and *h1ey-"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "da|dā",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Grein OCR prints ð as d: dan/dam are ðan(ne) 'then' and ðām 'the (dat.)', not dā 'doe'"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "dǣl",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "remapped to pie-root-dheh1-do",
+   "note": "Kroonen 2013 s.v. *daila- (scan p0125): perhaps *dʰeh1- 'put'; *dʰeh1y- 'suckle' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "ban",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *baina- (scan p0086): 'No further etymology'; link with *bʰeyh2- 'hew' rejected"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "þancian",
+   "lex_id": [
+    "pie-root-teng-think"
+   ],
+   "erratum": "remapped to pie-root-teng-think",
+   "note": "from þanc (Kroonen 2013 s.v. *þanka-, scan p0573, < *tong-); homonym 'make wet' dropped"
+  }
+ ],
+ "form": [
+  {
+   "lang": "non",
+   "form": "og",
+   "lemma": "ok",
+   "note": "Modern Icelandic og 'and' in the edition's notes; send to the conjunction ok (not ögja 'frighten')"
+  },
+  {
+   "lang": "non",
+   "form": "þótt",
+   "lemma": "þó",
+   "note": "þótt 'although' (þó at) is a conjunction, not the supine of þvá 'wash'"
+  },
+  {
+   "lang": "non",
+   "form": "et",
+   "lemma": "it",
+   "note": "et = the neuter article (et sama), not eta 'eat'"
+  },
+  {
+   "lang": "ang",
+   "form": "wid",
+   "lemma": "wiþ",
+   "note": "Grein OCR prints ð as d: unmarked wid is wið 'with, against' (wīd 'wide' carries a length mark)"
+  },
+  {
+   "lang": "ang",
+   "form": "ford",
+   "lemma": "forþ",
+   "note": "Grein OCR prints ð as d: ford is forð 'forth' (or the tail of hl&ford)"
+  },
+  {
+   "lang": "ang",
+   "form": "da",
+   "lemma": "þā",
+   "note": "Grein OCR prints ð as d: da is ðā 'then, when' (or German 'da' in the apparatus)"
+  },
+  {
+   "lang": "ang",
+   "form": "dan",
+   "lemma": "þonne",
+   "note": "Grein OCR prints ð as d: dan is ðan(ne) 'then, than'"
+  },
+  {
+   "lang": "ang",
+   "form": "tonne",
+   "lemma": "þonne",
+   "note": "Grein OCR: {tonne / tonne is OCR for þonne"
+  },
+  {
+   "lang": "ang",
+   "form": "fa",
+   "lemma": "þā",
+   "note": "Grein OCR: fa is OCR for þa ('Flugon fa fe lyfdon')"
+  },
+  {
+   "lang": "ang",
+   "form": "bis",
+   "lemma": "hē",
+   "note": "Grein OCR: bis is OCR for his"
+  },
+  {
+   "lang": "ang",
+   "form": "mag",
+   "lemma": "magan",
+   "note": "Grein OCR: mag = mæg 'can' (ic mag mid handum)"
+  },
+  {
+   "lang": "ang",
+   "form": "eordan",
+   "lemma": "eorþe",
+   "note": "Grein OCR prints ð as d: eordan = eorðan 'earth' (was unlemmatized)"
+  },
+  {
+   "lang": "ang",
+   "form": "fe",
+   "lemma": "?fe",
+   "note": "Grein OCR: fe is a fragment of words split at OCR accent marks (fe^nd = féond) or OCR for þe; not feoh"
+  },
+  {
+   "lang": "ang",
+   "form": "sce",
+   "lemma": "?sce",
+   "note": "Grein OCR: fragment of split words (sce^wode), not sēcan"
+  },
+  {
+   "lang": "ang",
+   "form": "sc",
+   "lemma": "?sc",
+   "note": "Grein OCR: fragment of split words, not sēcan"
+  },
+  {
+   "lang": "ang",
+   "form": "hafde",
+   "lemma": "habban",
+   "note": "Grein OCR: hafde = hæfde 'had' (æ read as a)"
+  },
+  {
+   "lang": "ang",
+   "form": "it",
+   "lemma": "hit",
+   "note": "Grein OCR: 'it' is the English of the Google Books notice (and OE hit), not etan 'eat'"
+  },
+  {
+   "lang": "ang",
+   "form": "bit",
+   "lemma": "?bit",
+   "note": "Grein OCR: 'bit' is the head of words split at OCR ')' (bit)encan = biþencan), not bītan"
+  },
+  {
+   "lang": "ang",
+   "form": "led",
+   "lemma": "?led",
+   "note": "Grein OCR: fragment of split words (n%led, on&led), not lecgan"
+  }
+ ]
+}
