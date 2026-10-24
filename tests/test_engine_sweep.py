@@ -260,7 +260,7 @@ def test_optative_reduplicated_singular():
     assert r["OPT.1SG"][0] == "dʰédʰh₁ih₁m̥"
     # the mobile dédeh₃ti (weak dedh₃-, D2) and i-reduplication take the same optative
     assert cj("dédeh₃", "dedh₃")["OPT.3SG"][0] == "dédh₃ih₁t"
-    assert cj("stístéh₂", "stisth₂")["OPT.3SG"][0] == "stísth₂ih₁t"
+    assert cj("stísteh₂", "stisth₂")["OPT.3SG"][0] == "stísth₂ih₁t"
 
 
 def test_optative_reduplicated_plural_and_dual():
