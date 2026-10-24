@@ -21,12 +21,12 @@ Stage C of the 8c formula-reading experiment needs Celtic pivots. Its preregistr
     - `[]` when the string occurs only as a dictionary headword or in the OCR editions.
 
     The coverage file reports `licence:research` separately.
-  - Size: celt 15,434 rows, sga-glosses 12,174, cy 6,996.
+  - Size (round 1): celt 15,434 rows, sga-glosses 12,174, cy 6,996. Round 2 figures are in the round-2 section.
   - Each table holds two kinds of row:
     - every mapped headword key of the language, so that any Irish or Welsh text can use it through the same lemmatizer;
     - every lemma string the lemmatizer produced on the corpora, including `a|b` unions.
   - There are no rows for function words.
-- **Overrides.** `data/research/formulas/mapping-overrides/celtic.json` holds 182 lemma rows (127 of them unmaps) and 49 form rows. Each row has a note citing kaikki or eDIL via kaikki, Matasović's EDPC (file page), or the gloss corpus. Form rows use `lang: "sga"` only, because `load_overrides` keys form rows with `KEYS[lang]`. Six rows marked `after_measurement` (uair, gnúis and cían, each for celt and sga-glosses) and the *maith* entry of `SUPPLETIVE` (*ferr*) were added after the final sample was drawn. All of them only remove links. The tables were rebuilt with them, so they are not covered by the measurement.
+- **Overrides.** `data/research/formulas/mapping-overrides/celtic.json` held 182 lemma rows (127 of them unmaps) and 49 form rows after round 1 (round 2: see below). Each row has a note citing kaikki or eDIL via kaikki, Matasović's EDPC (file page), or the gloss corpus. Form rows use `lang: "sga"` only, because `load_overrides` keys form rows with `KEYS[lang]`. Six rows marked `after_measurement` (uair, gnúis and cían, each for celt and sga-glosses) and the *maith* entry of `SUPPLETIVE` (*ferr*) were added after the final sample was drawn. All of them only remove links. The tables were rebuilt with them, so they are not covered by the measurement.
 - **Coverage file.** `data/research/formulas/celtic-coverage.json`.
 - **Added data.** `raw/daughters/kaikki-all-20261021/split/{irish,welsh,scottish-gaelic}.jsonl` are lines copied verbatim from the all-languages dump, filtered on top-level `lang_code` ga / cy / gd. There are 38,988, 28,601 and 18,271 lines. They are not in MANIFEST.md yet.
 - **Use from the Stage C builder.**
@@ -34,8 +34,8 @@ Stage C of the 8c formula-reading experiment needs Celtic pivots. Its preregistr
   maps = cm.build_mappings()
   lz = cm.irish_lemmatizer(maps)        # or cm.welsh_lemmatizer(maps, diplomatic=True/False)
   words = cm.irish_words(text)          # keeps h-/n-/t- hyphens, d'
-  lem = lz(word)
-  ids = cm.read_table("celt").get(lem)
+  lems = cm.lemmatize_words(lz, words)  # round 2: context rules (tig after isin / i / ina … → tech)
+  ids = cm.read_table("celt").get(lems[i])
   ```
   Content words follow `cm.content_of(lm, lemma, surface, lz)`: no function words (`cm.is_function_word`), no 1-letter tokens, and no 2-letter tokens matched only after mutation stripping or by skeleton.
 
@@ -191,3 +191,131 @@ Unit-level figures:
   - G301012, G402570–5 and G6000xx do contain it.
 
   The set is `cm.CELT_RESEARCH_ONLY` and can be changed in one place.
+
+## Round 2: fixes after the independent blind check
+
+The independent check (`docs/research/mapping-precision-celtic-independent.md`, verdicts in
+`data/research/formulas/celtic-precision/independent/`) put token-level precision at 0.61 (celt), 0.80 (glosses)
+and 0.81 (Welsh). Round 2 fixes the causes it found, at the source where a rule exists and by override rows
+otherwise, then re-measures on a new sample.
+
+### Fixes
+
+1. **The *tig* form row.** *tig* is the dat. sg. of *tech* 'house' after a preposition or article (415 of 925 CELT
+   tokens) and ·*tic* of *do·icc* 'comes' elsewhere. The lemmatizer has no context, so:
+   - the form row now gives the union `tech|doicc`, which the tables leave unmapped;
+   - `cm.CONTEXT_FORMS` + `cm.lemmatize_words(lz, words)` resolve *tig* / *thig* from the preceding word
+     (*isin, i, hi, ina, dia, da, don, din, ón, ic, oc, is* … → *tech*; *ní, má, mar thig* → *do·icc*).
+     The build script uses it for CELT and the Irish OCR lines; Stage C must call it instead of `lz(w)`.
+   - Cost: *tig* without a deciding word before it (about 550 of the 925 tokens: 134 sentence-initial, *a*, *agus*,
+     *sin* …; mostly 'comes') is now unmapped. About 370 resolve to *tech*.
+   - Same cause checked: *tic* (779 tokens) has no preposition peak before it (190 sentence-initial, then *sin,
+     tan, noch*), so its row stays. *thig* (304) had inherited the *tig* row through mutation stripping; it is now
+     context-resolved too.
+2. ***tuc / tucus / tuctar* → *h₁unékti*.** The cause is one kaikki table that mixes two verbs: *do·ucai*
+   'understands' (*h₁ewk-*, EDPC p0417 *u-n-k-o-*) and *do·uccai* 'brings' (·*tuc*, ·*tucus*, ·*tuctar*, the
+   perfective stem of *do·beir*; kaikki sga *do·uic*: causative of *do·icc*, *h₂neḱ-*; EDPC p0042 *ank-o-*).
+   `cm.STEM_SPLITS` moves the non-palatal ·*tuc(c)-* forms (18 table forms: *tuc, tucus, tuctar, tucsat, tucatar,
+   tuctais, tucthar, tucfa* …) to a lemma `douccai` that takes *do·icc*'s mapping (*h₂neḱ-*). The palatal
+   *tuicci*, *tucci* and the deuterotonic *do·ucci* forms keep 'understand'. In CELT the moved table forms carry
+   about 2,250 tokens (*tuc* 1,564, *tucsat* 440, *tucatar* 77, *tucus* 75, *tucthar* 44, *tuctar* 31 …);
+   *tucad*, *tucc* and the other Middle Irish spellings are not table forms and stay unknown. The forms kaikki
+   lists for the present of 'understand' (·*tucai*, ·*tuccai*, ·*tucu*, ·*tucat*) move too; none is among the
+   frequent CELT surfaces.
+3. **Matasović over Wiktionary, as a builder rule** (`cm.matasovic_precedence`, run after `add_matasovic`).
+   An EDPC entry speaks to a mapped headword when its first Goidelic / Welsh form has the headword's accent-free
+   key (one headword only) and its head gloss shares a word with the kaikki senses. Then:
+   - no PIE line, and the ETYM calls the word's etymology unknown, non-IE, onomatopoeic, 'not convincing',
+     'improbable' or 'will not do' → unmapped (loan remarks are not used: EDPC often says a *neighbour* borrowed
+     the word);
+   - a PIE line (or a '< PIE \*x' derivation in ETYM) that resolves, whole form, to lexicon ids whose gloss fits,
+     and shares no root group with the kaikki ids → EDPC's ids replace them; if it shares one, ids that are mere
+     homographs of it are dropped;
+   - EDPC doubting its own line ('this etymology is quite uncertain', *nesso-*, *lugri*) → no change;
+   - the decision is carried to keys that inherit the changed word along a chain (*aimsir* ← *aimser*,
+     *atal* ← *daly*, *trachwant* ← *chwant*).
+   It changed 37 Irish and 27 Welsh headwords directly (17 / 15 unmapped) and 20 / 15 more by propagation; the
+   full list is `data/research/formulas/celtic-precision/systematic-rules-log.json` (written by every build).
+   Examples: unmapped *lucht, caill, bran, aimser, mess, mucc, sel, gairr, ler*, W *amser, brân, celli, chwant,
+   daly, meth, pridd*; replaced *toísech* → *weyd-*, *berbaid* → *bʰerw-*, *canaid* → *kan-*, *fillid* → *wel-*.
+   Two parser bugs had hidden EDPC's verdicts and were fixed with it: an OCR line starting with a starred form
+   inside ETYM (p0265 '\*lewg- 'break'') opened a bogus entry and cut the real ETYM short, and the loan test
+   fired on remarks about Germanic loans *from* Celtic. The parser fix costs one older EDPC row (*rún*, whose full
+   ETYM now shows a loan remark) and adds 20 entries to the loan-free pool.
+   Where EDPC's etymon is not in the lexicon the rule cannot replace ids; those went to override rows instead:
+   *bres / bris / brisid* (*bʰres-t-*), *fo·ceird* (*kerd-* 'swing'), *búaid* (*bʰewd-*), *lóeg* (*leh₂p-*
+   'cattle'), *cuil* (*ḱuH-ló-*). It also misses keys whose own kaikki chain bypasses the Old Irish word
+   (*taoiseach*, *coill*: rows added) and keys the EDPC join does not reach (W *gof*, *caer*, *da*, *teg*: rows).
+4. **Preverb-only mappings** (`cm.drop_preverb_only`): a noun, verb or adjective whose only ids are PIE adverbs
+   (*de, ḱóm, h₁épi, péri, upó* …) reached through a bare prefix (*kom-*, *exs-*) or without any Proto-Celtic word
+   is unmapped: 66 Irish and 67 Welsh keys (*íadaid*, *Cymru*, *cof*, *gwely*, *cyfyng*, *abair*, *iarr* …).
+   Words derived from the adverb itself keep it (*úasal*, MW *uchel* < *ouxselos*).
+5. **Stoplist.** *íad / iad / íat* 'they' (235 CELT tokens had gone to *íadaid*); Welsh *tano / tanaw* and *wc*
+   (OCR of English 'we' in Owen's facing translation).
+6. **Override rows** (`celtic.json`, rows marked `"round2": true`): 85 lemma rows and 12 form rows, each with a
+   dictionary note. Fixed: the homographs *caín|cáin, clúain, rígaid|téit, ailid|ailt|alt, féil|fial|fíal,
+   saer, cuil, lóeg*; EDPC etyma *rann* → *perh₃-*, *commar* → *bʰer-*, *iress* → *péri* + *dʰeh₁-*, *bás* → root
+   *gʷeh₂-*, W *cael|gael* → *kagʰ-*, *diwedd* → *wedʰ-*, *Cymru* → *ḱóm* + *mórǵs*; extra ids dropped (*cuir,
+   cocar, tonn, anim, incoisig, domeil, anudon*); compounds completed (*Domnall, Dónall* + *h₂welh₁-*); unmapped
+   *cruind, meth, lasta, urchóideach, croch, labraithir, dag, deg*, W *galanas, da, gof, teg, caer*; form rows
+   *mág* → *mac*, *luidh* → ?*luid*, *béos* → ?*beos*, *béin* → *benaid*, *caích* → *cách*, *isairi*, *ascoir*,
+   *tuillti*.
+   Left as they were: the Welsh lemmatizer homographs *cly*, *hof* (→ *gof*), *nud* (→ *tud*), *dygoyd*, *goant*,
+   because Welsh form rows are not supported (`load_overrides` keys form rows with `KEYS['sga']`); the P items
+   for compounds with an unknown element (*Lugaid*, *Fergus*, *macaomh*) and *sál*, *legaid*.
+
+Tables after round 2: celt 15,195 rows, sga-glosses 12,059, cy 6,864. Overrides: 265 lemma rows (180 unmaps),
+60 form rows. Content-token coverage: CELT 32.8% (was 34.0%), tagged glosses 48.8% (49.7%), Welsh
+print-normalised 18.8% (19.8%), diplomatic 14.7% (15.3%).
+
+### Re-measurement on a new sample (self-judged)
+
+Sample: seed 31, 100 mapped types per table, token-weighted, without replacement, skeleton off, mapping as
+applied (`cm.read_table`, context rules on), drawn after all fixes with a copy of the independent sampler.
+Files: `round2-sample-{table}-seed31.jsonl`, `round2-verdicts-{table}-seed31.jsonl`.
+
+**These are my verdicts on my own mapping**, made under the independent check's rules (joint verdict: the
+lemmatization must be right and the etymology strictly right; EDPC wins where it rejects or calls the etymology
+unknown). 9 / 18 / 10 items were identical (type, lemma, ids) to items of the independent sample and carry its
+verdicts. N (not verified in the time available) is left out of the denominator; there are many N, so the
+conservative C/100 is given too.
+
+| table | C | P | W | N | strict C/(C+P+W) [95% CI] | lenient | conservative C/100 |
+|---|---|---|---|---|---|---|---|
+| celt | 71 | 7 | 14 | 8 | **0.77** [0.68–0.85] | 0.85 | 0.71 |
+| sga-glosses | 73 | 4 | 6 | 17 | **0.88** [0.79–0.93] | 0.93 | 0.73 |
+| cy | 68 | 7 | 9 | 16 | **0.81** [0.71–0.88] | 0.89 | 0.68 |
+
+Against the independent check's 0.61 / 0.80 / 0.81 this is +16 points for celt, +8 for the glosses and none for
+Welsh; the intervals overlap for the glosses and Welsh, and a self-judge is lenient, so read celt as the only
+clear gain. What the W are:
+
+- **Same causes, rows the fixes did not reach** (found by this sample, not fixed after the draw, to keep the
+  measurement honest): Irish *bua* (Modern key of *búaid*, 2 items, 366 tokens), *úair* lemmatized to *úar*
+  'cold' (the existing *úair* row does not cover the lemma *úar*); Welsh *dal* (×2; *daly*'s EDPC verdict did not
+  propagate), *budd* (= *búaid*), *crwn* (= *cruind*), OW *coret* (*cored* was unmapped), *daioni* (derived from
+  *da*: an override row does not reach keys that inherit through `base`).
+- **EDPC hedges** counted W: *bliadain* (3 items, about 1,100 tokens: *bʰleyd-* 'possible formally … semantic
+  connection weak'), *glan*, *léir*. Counting EDPC-hedged / disputed items as correct raises strict celt to 0.83.
+- **Lemmatizer homographs**: *bíu* → *benaid*, Latin *ego* → *aig*, *comain* → *tiomáin*, *nós* → *os*, tagged
+  *bith* 'world' through *bíth*, *dos* 'bush' through *gus*, Welsh *ytir*, *ga*, *creir*.
+- Wrong ids: *frithaire* (*aire* 'noble' for 'watch'), *cuan* 'harbour' → 'dog', *ecal*, *do·indnaig*, *étig*.
+
+### The independent sample re-scored under the fixed mapping (biased toward the fixes)
+
+Each of the 300 independent items was looked up again under the round-2 mapping
+(`round2-independent-rescore.jsonl`). Unchanged (lemma, ids) keep the independent verdict; changed and still
+mapped items got my re-verdict (28 items, all C); items now unmapped leave the denominator.
+
+| table | before (independent) | after | items / tokens now unmapped |
+|---|---|---|---|
+| celt | 0.61 [0.51–0.70] | 0.97 [0.91–0.99] (n = 76) | 24 / 6,825 |
+| sga-glosses | 0.80 [0.71–0.87] | 0.97 [0.91–0.99] (n = 89) | 8 / 50 |
+| cy | 0.81 [0.72–0.87] | 0.92 [0.85–0.96] (n = 90) | 8 / 913 |
+
+This is not a precision estimate: the fixes were made on exactly these items, and most of the gain is items
+leaving the denominator by being unmapped. The 6,825 celt tokens include the 925 of the old (*tig*, *do·icc*) type,
+of which about 370 now map to *tech* under the context rule. Welsh *wc* and *tano*, now stoplisted, are still counted W here, and
+six Welsh diplomatic items (*amoc, dygoyd, golat, llano, dzoc, goant*) could only be looked up approximately
+(the sample stores lowercased types, which loses the O/6 → w repair). The seed-31 table above is the estimate to
+use.
