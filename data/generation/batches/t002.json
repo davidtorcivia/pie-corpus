@@ -31,15 +31,16 @@
  ],
  "dup_within": 0,
  "dup_across_batches": 0,
- "tokens": 1513,
- "words_per_sentence": 35.65,
- "words_per_record": 35.65,
+ "tokens": 1511,
+ "words_per_sentence": 35.6,
+ "words_per_record": 35.6,
  "meter_fit": {
   "lines": 338,
-  "fit": 275,
-  "share": 0.814
+  "fit": 274,
+  "share": 0.811
  },
  "formula_uses": 26,
+ "warnings": 6,
  "gates": {
   "reject_rate<=0.10": true,
   "max_lexeme_uses<=8": true,

@@ -4,8 +4,8 @@
  "exact_pass": 140,
  "rejected": 10,
  "reject_rate": 0.067,
- "distinct_roots": 74,
- "roots_per_sentence": 0.529,
+ "distinct_roots": 73,
+ "roots_per_sentence": 0.521,
  "distinct_lexemes": 147,
  "max_lexeme_uses": 17,
  "most_used": [
@@ -34,9 +34,18 @@
  "dup_across_batches": 0,
  "tokens": 560,
  "words_per_sentence": 3.94,
+ "words_per_record": 3.94,
+ "meter_fit": {
+  "lines": 23,
+  "fit": 16,
+  "share": 0.696
+ },
+ "formula_uses": 0,
+ "warnings": 0,
  "gates": {
   "reject_rate<=0.10": true,
   "max_lexeme_uses<=6": false,
+  "theme_core_uses<=15": true,
   "roots_per_sentence>=0.35": true,
   "duplicates<=2%": true,
   "all_exact": true

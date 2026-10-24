@@ -36,10 +36,11 @@
  "words_per_record": 35.95,
  "meter_fit": {
   "lines": 96,
-  "fit": 96,
-  "share": 1.0
+  "fit": 95,
+  "share": 0.99
  },
  "formula_uses": 19,
+ "warnings": 27,
  "gates": {
   "reject_rate<=0.10": true,
   "max_lexeme_uses<=8": true,

@@ -40,6 +40,7 @@
   "share": 1.0
  },
  "formula_uses": 16,
+ "warnings": 23,
  "gates": {
   "reject_rate<=0.10": true,
   "max_lexeme_uses<=10": true,

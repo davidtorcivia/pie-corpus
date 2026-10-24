@@ -5,7 +5,7 @@
  "reject_rate": 0.0,
  "distinct_roots": 147,
  "roots_per_sentence": 0.588,
- "distinct_lexemes": 239,
+ "distinct_lexemes": 238,
  "max_lexeme_uses": 6,
  "most_used": [
   [
@@ -40,6 +40,7 @@
   "share": 0.628
  },
  "formula_uses": 4,
+ "warnings": 16,
  "gates": {
   "reject_rate<=0.10": true,
   "max_lexeme_uses<=7": true,

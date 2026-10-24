@@ -36,6 +36,7 @@
  "words_per_record": 31.45,
  "meter_fit": null,
  "formula_uses": 10,
+ "warnings": 8,
  "gates": {
   "reject_rate<=0.10": true,
   "max_lexeme_uses<=7": true,
