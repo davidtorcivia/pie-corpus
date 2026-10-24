@@ -2,6 +2,8 @@ from pathlib import Path
 
 import pytest
 
+from .helpers import produce
+
 ROOT = Path(__file__).resolve().parent.parent
 pytestmark = pytest.mark.skipif(not (ROOT / "data/morph/inflection_specs.jsonl").exists(), reason="specs not built")
 
@@ -26,7 +28,7 @@ def test_sov_with_case_and_number():
 
 
 def test_adjective_agrees_with_its_head():
-    r = R({"english": "The great horse carries.", "clauses": [{"slots": [
+    r = produce({"english": "The great horse carries.", "clauses": [{"slots": [
         {"lex_id": HORSE, "role": "SUBJ", "num": "PL"}, {"lex_id": "pie-lex-megjh2s", "role": "MOD", "head": 0},
         V("pie-lex-bhereti")]}]})
     words = r["words"]
@@ -58,7 +60,7 @@ def test_verb_initial():
 
 
 def test_first_person_subject_drives_the_verb():
-    r = R({"english": "I see the sheep.", "clauses": [{"slots": [
+    r = produce({"english": "I see the sheep.", "clauses": [{"slots": [
         {"lex_id": "closed:personal/1", "role": "SUBJ", "num": "SG"}, {"lex_id": SHEEP, "role": "OBJ"}, V(SEE)]}]})
     assert r["pie"].endswith("spéḱyoh₂.")
 
@@ -88,7 +90,7 @@ def test_feminine_noun_takes_feminine_adjective():
     from pie.realize import Lexicon
     lx = Lexicon.load()
     assert lx.gender("pie-lex-dhugh2texr") == "f"
-    r = R({"english": "The new daughter sees.", "clauses": [{"slots": [
+    r = produce({"english": "The new daughter sees.", "clauses": [{"slots": [
         {"lex_id": "pie-lex-dhugh2texr", "role": "SUBJ"}, {"lex_id": "pie-lex-newos", "role": "MOD", "head": 0},
         V(SEE)]}]})
     assert r["pie"].startswith("néweh₂ dʰugh₂tḗr")
@@ -102,7 +104,7 @@ def test_pronoun_gender_and_kwid():
 
 
 def test_predicate_adjective_agrees_with_subject():
-    r = R({"english": "The daughter is new.", "clauses": [{"slots": [
+    r = produce({"english": "The daughter is new.", "clauses": [{"slots": [
         {"lex_id": "pie-lex-dhugh2texr", "role": "SUBJ"}, {"lex_id": "pie-lex-newos", "role": "PRED"},
         V("pie-lex-h1esti")]}]})
     assert "néweh₂" in r["pie"]
@@ -125,7 +127,7 @@ def test_nested_possessor_modifier_is_kept():
 
 
 def test_sentence_break_and_noun_coordination():
-    r = R({"english": "Sheep and horses see. They see.", "clauses": [
+    r = produce({"english": "Sheep and horses see. They see.", "clauses": [
         {"slots": [{"lex_id": SHEEP, "role": "SUBJ", "num": "PL"}, {"lex_id": HORSE, "role": "SUBJ", "num": "PL",
                                                                      "and": True}, V(SEE)]},
         {"break": True, "slots": [{"lex_id": "closed:demonstrative_so", "role": "SUBJ", "num": "PL"}, V(SEE)]}]})
@@ -141,7 +143,7 @@ def test_unattached_slot_is_an_error_not_a_silent_drop():
 
 
 def test_pro_drop_person_and_number_on_the_verb():
-    r = R({"english": "Let us see the sheep!", "clauses": [{"slots": [
+    r = produce({"english": "Let us see the sheep!", "clauses": [{"slots": [
         {"lex_id": SHEEP, "role": "OBJ"},
         {"lex_id": SEE, "role": "V", "verb": {"mood": "SBJV", "voice": "ACT", "person": 1, "num": "PL"}}]}]})
     assert r["pie"] == "h₂ówim spéḱyōmes."   # 1pl -mes (Lundquist & Yates, Beekes, Fortson)
@@ -209,15 +211,14 @@ def test_or_and_emphatic_enclitics():
 
 
 def test_numerals_govern_number():
-    from pie.realize import realize
     lx = _lx()
     p = {"english": "x", "clauses": [{"slots": [
         {"lex_id": "pie-lex-h1ekjwos", "role": "SUBJ", "num": "PL"},
         {"lex_id": "closed:numerals/3", "role": "MOD", "head": 0},
         {"lex_id": "pie-lex-bhewgt-3", "role": "V", "verb": {"tense": "AOR"}}]}]}
-    assert realize(p, lx)["pie"] == "tréyes h₁éḱwōs bʰugént."
+    assert produce(p, lx)["pie"] == "tréyes h₁éḱwōs bʰugént."
     p["clauses"][0]["slots"][1]["lex_id"] = "closed:numerals/indeclinable/7"
-    assert realize(p, lx)["pie"].startswith("septḿ̥ ")
+    assert produce(p, lx)["pie"].startswith("septḿ̥ ")
 
 
 def test_t012_review_forms():
@@ -393,12 +394,12 @@ def test_compound_text_validates_exactly(ix):
 
 def test_prodrop_predicate_adjective_takes_verb_number():
     """t014 review: 'may they be many' with a dropped subject: polh₁éwes, not singular polh₁ús."""
-    from pie.realize import Lexicon, realize
+    from pie.realize import Lexicon
     lx = Lexicon.load()
     p = {"english": "May they be many.", "clauses": [{"slots": [
         {"lex_id": "pie-lex-polh1us", "role": "PRED"},
         {"lex_id": "pie-lex-h1esti", "role": "V", "verb": {"mood": "OPT", "person": 3, "num": "PL"}}]}]}
-    assert realize(p, lx)["pie"].startswith("polh₁éwes")
+    assert produce(p, lx)["pie"].startswith("polh₁éwes")
 
 
 def test_t014_review_fixes():
@@ -430,13 +431,13 @@ def test_t017_review_stems():
 
 def test_numeral_fixes_head_number():
     """t016 review: 'two dogs' with num unset came out singular; the numeral 2 makes its head dual."""
-    from pie.realize import Lexicon, realize
+    from pie.realize import Lexicon
     lx = Lexicon.load()
     p = {"english": "Two dogs saw.", "clauses": [{"slots": [
         {"lex_id": "pie-lex-kjwox", "role": "SUBJ"},
         {"lex_id": "closed:numerals/2", "role": "MOD", "head": 0},
         {"lex_id": "pie-lex-widet", "role": "V", "verb": {"tense": "AOR"}}]}]}
-    w = realize(p, lx)["words"]
+    w = produce(p, lx)["words"]
     assert all("DU" in x["features"] for x in w if x["lex_id"] in ("pie-lex-kjwox", "pie-lex-widet"))
 
 
@@ -634,12 +635,11 @@ def test_sweep_kwe_follows_first_word_of_a_phrasal_conjunct():
 
 def test_sweep_conjoined_subjects_agree_as_a_group():
     """closed-class R4: Fortson §8.16."""
-    from pie.realize import realize
     p = {"english": "The wolf and the snake fled.", "clauses": [{"slots": [
         {"lex_id": "pie-lex-wlkwos", "role": "SUBJ"},
         {"lex_id": "pie-lex-h1ogwhis", "role": "SUBJ", "and": True},
         {"lex_id": "pie-lex-bhewgt-3", "role": "V", "verb": {"tense": "AOR"}}]}]}
-    w = realize(p, _sweep_lx())["words"]
+    w = produce(p, _sweep_lx())["words"]
     assert [x["features"] for x in w if x["lex_id"] == "pie-lex-bhewgt-3"] == ["AOR.3DU"]
 
 
@@ -666,32 +666,29 @@ def test_sweep_dual_enclitics_are_wackernagel():
 
 def test_sweep_conjoined_vocative_pair_puts_the_second_in_the_nominative():
     """closed-class R5: Fortson §8.11, Ved. vā́yav índraś ca."""
-    from pie.realize import realize
     p = {"english": "Father and Mother, hear!", "clauses": [{"slots": [
         {"lex_id": "pie-lex-ph2texr", "role": "VOC"},
         {"lex_id": "pie-lex-meh2texr", "role": "VOC", "and": True},
         {"lex_id": "pie-lex-kjlewt", "role": "V", "verb": {"tense": "AOR", "mood": "IMP", "person": 2, "num": "DU"}}]}]}
-    assert realize(p, _sweep_lx())["pie"].startswith("ph₂ter méh₂tēr-kʷe ")
+    assert produce(p, _sweep_lx())["pie"].startswith("ph₂ter méh₂tēr-kʷe ")
 
 
 def test_sweep_indeclinable_numeral_makes_its_head_plural():
     """closed-class R7."""
-    from pie.realize import realize
     p = {"english": "Seven horses ran.", "clauses": [{"slots": [
         {"lex_id": "pie-lex-h1ekjwos", "role": "SUBJ"},
         {"lex_id": "closed:numerals/indeclinable/7", "role": "MOD", "head": 0},
         {"lex_id": "pie-lex-bhewgt-3", "role": "V", "verb": {"tense": "AOR"}}]}]}
-    assert realize(p, _sweep_lx())["pie"] == "septḿ̥ h₁éḱwōs bʰugént."
+    assert produce(p, _sweep_lx())["pie"] == "septḿ̥ h₁éḱwōs bʰugént."
 
 
 def test_sweep_numeral_vocative():
     """closed-class C5 (realized)."""
-    from pie.realize import realize
     p = {"english": "Three brothers, come!", "clauses": [{"slots": [
         {"lex_id": "pie-lex-bhreh2texr", "role": "VOC", "num": "PL"},
         {"lex_id": "closed:numerals/3", "role": "MOD", "head": 0},
         {"lex_id": "pie-lex-gwemt", "role": "V", "verb": {"tense": "AOR", "mood": "IMP", "person": 2, "num": "PL"}}]}]}
-    assert realize(p, _sweep_lx())["pie"].startswith("tréyes ")
+    assert produce(p, _sweep_lx())["pie"].startswith("tréyes ")
 
 
 def test_sweep_stressed_plural_genitive_fallback_is_labelled_enclitic():
@@ -863,7 +860,6 @@ def test_lexgap_dual_middle_and_perfect_have_no_2nd_3rd_person_cells():
     reconstructions for the rest of the dual are possible'; Beekes §18.6 only *-(e)Hth₁-? and *-(e)Hteh₂?? and
     no perfect dual. So the cells stay absent (only 1du: middle *-wosdʰh₂/*-wedʰh₂, perfect *-wé) and the
     realizer's plural stands in."""
-    from pie.realize import realize
     lx = _gap_lx()
     for lid in ("pie-lex-bhereti", "pie-lex-h1esti"):
         c = lx.cells(lid)
@@ -872,6 +868,123 @@ def test_lexgap_dual_middle_and_perfect_have_no_2nd_3rd_person_cells():
             assert f"MID.{t}.2DU" not in c and f"MID.{t}.3DU" not in c, (lid, t)
     c = lx.cells("pie-lex-woyde")
     assert "PRF.1DU" in c and "PRF.2DU" not in c and "PRF.3DU" not in c
-    r = realize({"english": "The two horses carry for themselves.", "clauses": [{"slots": [
+    r = produce({"english": "The two horses carry for themselves.", "clauses": [{"slots": [
         {"lex_id": HORSE, "role": "SUBJ", "num": "DU"}, V("pie-lex-bhereti", voice="MID")]}]}, lx)
     assert r["pie"] == "h₁éḱwoh₁ bʰérontor." and r["gloss"].split()[1].endswith("MID.PRS.3PL")
+
+
+# --- shared agreement: check_plan and realize compute it once (David's review) -----------------------------
+
+SKY, EARTH, HEAR = "pie-lex-dyexws", "pie-lex-dhegjhoxm", "pie-lex-kjlewt"
+
+
+def _imp2(lex, num=None, tense="AOR"):
+    return {"lex_id": lex, "role": "V", "verb": {"tense": tense, "mood": "IMP", "voice": "ACT", "person": 2, "num": num}}
+
+
+def _sky_and_earth(num):
+    return {"english": "Sky and Earth, hear me!", "clauses": [{"slots": [
+        {"lex_id": SKY, "role": "VOC"}, {"lex_id": EARTH, "role": "VOC", "and": True},
+        {"lex_id": "closed:personal/1", "role": "OBJ", "enclitic": True}, _imp2(HEAR, num)]}]}
+
+
+def test_coordinated_vocatives_take_a_dual_verb():
+    """t3-t008-00020: two singular addressees take IMP.2DU ḱlutóm; the 2SG ḱludʰí is an agreement error.
+    check_plan used to drop the conjunct marked "and" and compare the verb with Sky alone."""
+    from pie.realize import check_plan
+    r = produce(_sky_and_earth("DU"))
+    assert [w["features"] for w in r["words"] if w["lex_id"] == HEAR] == ["IMP.2DU"]
+    assert "ḱlutóm" in r["pie"]
+    assert any("addressee" in e for e in check_plan(_sky_and_earth("SG")))
+    assert any("addressee" in e for e in check_plan(_sky_and_earth("PL")))   # the dual cell exists
+    # with the verb's number unset the addressees decide it, in check_plan and realize alike
+    assert "ḱlutóm" in produce(_sky_and_earth(None))["pie"]
+
+
+def test_coordinated_vocatives_with_the_and_on_the_first_member():
+    """t013-0033 marks the first conjunct; the group is the same (realize moves -kʷe to the last)."""
+    from pie.realize import check_plan
+    p = {"english": "Father and Mother, hear me!", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-ph2texr", "role": "VOC", "and": True}, {"lex_id": "pie-lex-meh2texr", "role": "VOC"},
+        {"lex_id": "closed:personal/1", "role": "OBJ"}, _imp2(HEAR, "SG", tense="PRS")]}]}
+    assert any("addressee" in e for e in check_plan(p))
+
+
+def test_seven_horses_take_a_plural_verb():
+    """Any numeral fixes number: 1 SG, 2 DU, 3 and up PL (check_plan knew only 2, 3 and 4)."""
+    from pie.realize import check_plan
+    def plan(num):
+        return {"english": "Seven horses ran.", "clauses": [{"slots": [
+            {"lex_id": HORSE, "role": "SUBJ"}, {"lex_id": "closed:numerals/indeclinable/7", "role": "MOD", "head": 0},
+            {"lex_id": "pie-lex-bhewgt-3", "role": "V", "verb": {"tense": "AOR", "person": 3, "num": num}}]}]}
+    assert produce(plan("PL"))["pie"] == "septḿ̥ h₁éḱwōs bʰugént."
+    assert any("contradicts its subject" in e for e in check_plan(plan("SG")))
+
+
+def test_dual_subject_takes_a_plural_verb_only_where_the_dual_cell_is_missing():
+    from pie.realize import check_plan
+    def plan(lex, num, voice="ACT", tense="AOR"):
+        return {"english": "The wolf and the snake fled.", "clauses": [{"slots": [
+            {"lex_id": "pie-lex-wlkwos", "role": "SUBJ"}, {"lex_id": "pie-lex-h1ogwhis", "role": "SUBJ", "and": True},
+            {"lex_id": lex, "role": "V", "verb": {"tense": tense, "voice": voice, "num": num}}]}]}
+    assert any("contradicts its subject" in e for e in check_plan(plan("pie-lex-bhewgt-3", "PL")))
+    # the middle has no 3du (Ringe 2006 pp. 31-32): the plural stands in, and an explicit PL is accepted
+    r = produce(plan("pie-lex-bhereti", "PL", "MID", "PRS"))
+    assert [w["features"] for w in r["words"] if w["lex_id"] == "pie-lex-bhereti"] == ["MID.PRS.3PL"]
+
+
+def test_conjoined_subjects_govern_a_predicate_adjective():
+    """The predicate adjective agrees with the whole conjoined subject (it took the first conjunct's number)."""
+    p = {"english": "The father and the mother are dear.", "clauses": [{"type": "nominal", "slots": [
+        {"lex_id": "pie-lex-ph2texr", "role": "SUBJ"}, {"lex_id": "pie-lex-meh2texr", "role": "SUBJ", "and": True},
+        {"lex_id": "pie-lex-priHos", "role": "PRED"}]}]}
+    w = produce(p)["words"]
+    assert [x["features"] for x in w if x["lex_id"] == "pie-lex-priHos"] == ["NOM.DU"]
+
+
+def test_prodrop_first_person_predicate_does_not_agree_with_the_vocative():
+    """'Snake, I am dear': the dropped subject is the speaker, not the addressee (only a 2nd-person verb
+    makes the addressee its subject)."""
+    p = {"english": "Gods, we are dear.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-deywos", "role": "VOC", "num": "PL"}, {"lex_id": "pie-lex-priHos", "role": "PRED"},
+        {"lex_id": "pie-lex-h1esti", "role": "V", "verb": {"person": 1, "num": "DU"}}]}]}
+    w = produce(p)["words"]
+    assert [x["features"] for x in w if x["lex_id"] == "pie-lex-priHos"] == ["NOM.DU"]
+
+
+def test_tokens_carry_gender_and_voice():
+    r = produce({"english": "Sweet mead.", "clauses": [{"type": "np", "slots": [
+        {"lex_id": MEAD, "role": "NP"}, {"lex_id": SWEET, "role": "MOD", "head": 0}]}]})
+    assert [(w["form"], w["gender"]) for w in r["words"]] == [("sweh₂dú", "n"), ("médʰu", "n")]
+    r = produce(_sky_and_earth("DU"))
+    assert [w["voice"] for w in r["words"] if w["lex_id"] == HEAR] == ["ACT"]
+
+
+def test_admissible_cells_respect_voice_restrictions():
+    from pie.realize import Lexicon
+    lx = Lexicon.load()
+    c = lx.admissible_cells("pie-lex-mnyetor")
+    assert c and all(k.startswith(("MID.", "PTCP.MID")) for k in c)
+    assert "PRS.1PL" not in c and "MID.PRS.1PL" in c
+    assert lx.voices("pie-lex-mnyetor") == ("MID",)
+    assert lx.admissible_cells("pie-lex-kjekjlowe") == {}          # blocked
+    assert lx.admissible_cells(SWEET, "n")["NOM.SG"] == ["sweh₂dú"]
+
+
+def test_epithet_pairs_leave_the_number_to_the_verb():
+    """t004-0005 'Father Sky, Mother Earth, hear us!' (four VOC slots, two addressees) and t008-0019 (the same
+    with -kʷe): the plan cannot count the referents, so an explicit DU or the default reading is accepted and
+    realized; a singular for a coordinated group is still an error. 'Father Sky' alone (two slots, no "and")
+    stays singular by default."""
+    from pie.realize import check_plan
+    voc = [{"lex_id": SKY, "role": "VOC"}, {"lex_id": "pie-lex-ph2texr", "role": "VOC"},
+           {"lex_id": EARTH, "role": "VOC"}, {"lex_id": "pie-lex-meh2texr", "role": "VOC"}]
+    def plan(slots, num):
+        return {"english": "Father Sky, Mother Earth, hear us!", "clauses": [{"slots": [
+            *slots, {"lex_id": "closed:personal/1", "role": "OBJ", "num": "PL", "enclitic": True}, _imp2(HEAR, num)]}]}
+    assert "ḱlutóm" in produce(plan(voc, "DU"))["pie"]
+    kwe = [dict(x) for x in voc]
+    kwe[3]["and"] = True
+    assert "ḱlutóm" in produce(plan(kwe, "DU"))["pie"]
+    assert any("addressee" in e for e in check_plan(plan(kwe, "SG")))
+    assert "ḱludʰí" in produce(plan(voc[:2], None))["pie"]
