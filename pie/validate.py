@@ -32,11 +32,17 @@ matches can be "exact"; a legacy match is reported with tier "legacy" (a
 warning); a token that matches only rejected forms is not found: miss
 "known-error", detail "known error: <note>", and the text fails.
 
-Accent lint: a content word written without an accent mark is listed in
-"accentless" (a warning; status unchanged). Enclitic tokens and the
-closed-class forms that closed_class.json itself writes unaccented
-(particles, enclitic pronouns, the indefinite) and the enclitic lexicon
-particles in ACCENTLESS_LEXEMES are exempt.
+Accent lint (a warning; status unchanged), three categories kept apart
+(data/morph/accent_unresolved.json, docs/STATUS.md "Known limitations"): a
+found content word written without an accent mark is listed in
+"accent_unresolved" when it analyzes as a lexeme whose accent the sources
+leave open (unresolved accent: missing information, not an accent defect),
+in "accent_representation" when it is one of the frozen representation
+exceptions (the vocative ph₂ter: the initial vocative accent the notation
+cannot show), and in "accentless" otherwise (an accent defect). Enclitic
+tokens, the closed-class forms that closed_class.json itself writes
+unaccented (particles, enclitic pronouns, the indefinite) and the enclitic
+lexicon particles in ACCENTLESS_LEXEMES are genuinely unaccented: exempt.
 
 Compounds (pie.compound) are open-ended, so they are not pre-indexed: a plan's
 compounds are added with index_plan_compounds(ix, plan) (or ix.add_compound(c))
@@ -55,6 +61,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from .morph import AdjSpec, NounSpec, VerbSpec, conjugate, decline, decline_adj, decline_participle
+from .realize import accent_manifest
 from .translit import ACUTE, MACRON, is_canonical
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -469,19 +476,35 @@ def has_accent(form: str) -> bool:
     return _strip_marks(form, ACUTE) != form
 
 
-def accentless(tok: Token, ix: FormIndex) -> bool:
-    """Accent lint: a found content word written without an accent mark. Enclitic tokens and the
-    closed-class forms closed_class.json writes unaccented, and ACCENTLESS_LEXEMES, are exempt."""
+def accent_lint(tok: Token, ix: FormIndex) -> str | None:
+    """None when the token needs no accent mark or has one; else "unresolved" (a lexeme of
+    unresolved_lexical_accent: missing information), "representation" (a frozen representation exception,
+    voc. ph₂ter) or "defect" (an accent defect). Enclitic tokens, the closed-class forms closed_class.json
+    writes unaccented and ACCENTLESS_LEXEMES are exempt (genuinely unaccented)."""
     if not tok.found or tok.surface.startswith("-") or has_accent(tok.surface):
-        return False
+        return None
     host = tok.surface
     if tok.clitic and host.endswith(tok.clitic[1:]):
         host = host[: -len(tok.clitic) + 1]
     if tok.augment and host.startswith(tok.augment):
         host = host[len(tok.augment):]
     if host in ix.accentless_closed or tok.surface in ix.accentless_closed:
-        return False
-    return not any(a.lex_id in ACCENTLESS_LEXEMES for a in tok.analyses)
+        return None
+    if any(a.lex_id in ACCENTLESS_LEXEMES for a in tok.analyses):
+        return None
+    m = accent_manifest()
+    if any(a.lex_id in m["unresolved_ids"] for a in tok.analyses):
+        return "unresolved"
+    exc = {(lid, cell, form) for lid, _g, cell, form in m["exception_cells"]}
+    if any((a.lex_id, a.features, host) in exc for a in tok.analyses):
+        return "representation"
+    return "defect"
+
+
+def accentless(tok: Token, ix: FormIndex) -> bool:
+    """Accent defect: a found content word written without an accent mark that is neither exempt nor an
+    unresolved-accent lexeme nor a representation exception (accent_lint)."""
+    return accent_lint(tok, ix) == "defect"
 
 
 def all_exact(v: dict) -> bool:
@@ -523,5 +546,8 @@ def validate_text(text: str, ix: FormIndex, laryngealist: bool = True) -> dict:
         "bad_forms": [t.surface for t in toks if not t.found],
         "legacy": [t.surface for t in toks if t.tier == "legacy"],
         "known_errors": [f"{t.surface}: {t.miss_detail}" for t in toks if t.miss == "known-error"],
-        "accentless": [t.surface for t in toks if accentless(t, ix)],
+        "accentless": [t.surface for t in toks if accent_lint(t, ix) == "defect"],
+        # unresolved accent (missing information), not a defect: the lexeme's headword has no accent
+        "accent_unresolved": [t.surface for t in toks if accent_lint(t, ix) == "unresolved"],
+        "accent_representation": [t.surface for t in toks if accent_lint(t, ix) == "representation"],
     }

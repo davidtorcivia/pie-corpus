@@ -1,5 +1,5 @@
 {
- "_source": "round 1: docs/audits/tier2-review.md (plans at 1fffadb); round 2: docs/audits/tier2-review-r2.md (entries with review: r2); round 4: docs/audits/tier2-review-r4.md (review: r4)",
+ "_source": "round 1: docs/audits/tier2-review.md (plans at 1fffadb); round 2: docs/audits/tier2-review-r2.md (entries with review: r2); round 4: docs/audits/tier2-review-r4.md (review: r4); round 5: docs/audits/tier2-review-r5.md (review: r5)",
  "_rule": "a verdict applies only while the plan's sha matches (plan, cognate_refs, secure); a revised line is 'stale' until re-reviewed",
  "verdicts": {
   "cattle-raid-001": {
@@ -79,8 +79,8 @@
   },
   "dawn-sun-009": {
    "verdict": "weak",
-   "plan_sha": "ed0296396fbe95e4",
-   "review": "r4"
+   "plan_sha": "f59f7b24007f3f7b",
+   "review": "r5"
   },
   "dawn-sun-010": {
    "verdict": "sound",
@@ -88,8 +88,8 @@
   },
   "dawn-sun-011": {
    "verdict": "weak",
-   "plan_sha": "7d0fa01976ec837a",
-   "review": "r4"
+   "plan_sha": "181a3aaf074131c0",
+   "review": "r5"
   },
   "dawn-sun-012": {
    "verdict": "reject",
@@ -258,8 +258,8 @@
   },
   "sky-father-002": {
    "verdict": "weak",
-   "plan_sha": "67dc8b9470be7d13",
-   "review": "r4"
+   "plan_sha": "5b2b6cb4db131f0a",
+   "review": "r5"
   },
   "sky-father-003": {
    "verdict": "sound",
@@ -300,8 +300,8 @@
   },
   "sky-father-011": {
    "verdict": "weak",
-   "plan_sha": "47c15ffe6d98e0d5",
-   "review": "r4"
+   "plan_sha": "a3ff513f0b254ce0",
+   "review": "r5"
   },
   "sky-father-012": {
    "verdict": "weak",
@@ -435,9 +435,9 @@
    "plan_sha": "fda97be1d90c8162"
   },
   "poetics-gifts-007": {
-   "verdict": "weak",
-   "plan_sha": "df7a5134d10d8ba3",
-   "review": "r4"
+   "verdict": "sound",
+   "plan_sha": "9d2f40dc5e71e506",
+   "review": "r5"
   },
   "poetics-gifts-008": {
    "verdict": "sound",
@@ -586,14 +586,14 @@
    "review": "r4"
   },
   "bp-gk-ita-001": {
-   "verdict": "weak",
-   "plan_sha": "3771e2bf06bda28e",
-   "review": "r4"
+   "verdict": "sound",
+   "plan_sha": "a05d371112f3374c",
+   "review": "r5"
   },
   "bp-ii-gmc-001": {
-   "verdict": "weak",
-   "plan_sha": "d37fbc6f631106e5",
-   "review": "r4"
+   "verdict": "sound",
+   "plan_sha": "6214527438fce4f8",
+   "review": "r5"
   },
   "bp-ii-gmc-002": {
    "verdict": "reject",
@@ -612,8 +612,8 @@
   },
   "bp-ii-ita-003": {
    "verdict": "weak",
-   "plan_sha": "0a669fbcf47963b6",
-   "review": "r4"
+   "plan_sha": "37b811816481cadd",
+   "review": "r5"
   }
  }
 }

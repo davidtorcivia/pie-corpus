@@ -212,7 +212,9 @@ sinn siat sib sibh se sé si sí sidhe side so sodain son sond sund sunn sunna t
 tarsin tra trá tre tría tria triana uad uadh uaid uaidh uadha uaithi uaidhib uas úas uile uili uli ule
 ura úadaib úaib dan dhó dhi dhíbh dhóibh ainn uainn uaim uaimh liom liomsa leisin chuca chuige chuice cuca cuci
 cuice uime uimpe uimpi impe impi uimme
-""".split())
+íad iad íat
+""".split())    # íad / iad 'they, them' (3pl pronoun; independent check: 235 CELT tokens lemmatized to íadaid 'closes')
+# tano / tanaw: preposition tan + 3sg; wc: OCR of English "we" in the facing translation (Owen laws)
 CY_FUNCTION = set("""
 uc me tra anno rwyf wyf oeddwn ydwyf
 a ac ach ae af ai am amdanaw ar arnaw arnei arnunt atat attaw attei attunt y yr yn ym
@@ -224,7 +226,8 @@ ti ni chwi wy wynt wyntwy ynteu hi hwy hwyntwy efe ual val mal megys mor mwy pei
 cyn kyt cyt tra tros dros rac rhag wedy gwedy wedi gwedi heb hep is uch uwch yngkylch dan adan
 namyn onyt onid oni yny ynny ynn ryw rw ry yd yt ydd bu bo bot bod bydd bei byddai
 bydei bit bwyf oll holl pob pawb pa pwy py pyt beth yo ydau a6 yssit ysit ydys oedit oedyt
-""".split())
+
+tano tanaw wc""".split())
 
 
 def is_function_word(surface: str, lang: str = "sga") -> bool:
@@ -430,33 +433,69 @@ _MAT_HEAD = re.compile(r"^\*([^\s'‘]+)")
 _MAT_LOAN = re.compile(r"loan|borrow|Lehn|non-IE|substrat", re.I)
 
 
+def _mat_is_loan(etym: str) -> bool:
+    """A loan / substrate remark about the Celtic word itself, not about a neighbour borrowing it
+    (*rūnā: 'the Germanic words … could be early loanwords from Celtic')."""
+    return any(not re.match(r"[a-z]*\s+(?:from|in(?:to)?)\s+(?:Celtic|Gaul|Goidelic|Irish|Brit|Welsh|PCelt)",
+                            etym[m.end():m.end() + 40], re.I)
+               for m in _MAT_LOAN.finditer(etym))
+
+
+_MAT_LABEL = re.compile(r"^([A-Za-z0-9 ]{1,7}):\s*(.*)$")
+_MAT_FIELDS = {"GOID", "GOIDE", "W", "PIE", "ETYM", "BRET", "CO", "GAUL", "COGN", "REF", "SEE", "CELTIB", "LEP",
+               "PICT", "OIR", "MIR"}
+_MAT_OPENERS = {"GOID", "GOIDE", "W", "PIE", "BRET", "CO", "GAUL", "CELTIB", "LEP"}
+
+
+def _mat_is_head(lines: list[str], i: int) -> bool:
+    """A '*' line opens an entry only when it carries a category tag ('[Noun]', '[Vb]') or one of the
+    next three lines is one or a form/PIE field label (*bowd-ro- / 'dirty' / [Adj]): in the ETYM text OCR often breaks a line before a starred
+    form (p0265 *luxtu-: '... deriving these Celtic words from PIE / *lewg- 'break' / is not convincing'),
+    which used to start a bogus entry and cut the real one's ETYM short."""
+    if "[" in lines[i]:
+        return True
+    for nxt in lines[i + 1:i + 4]:
+        if nxt.startswith("*"):
+            return False
+        if nxt.startswith("["):
+            return True
+        lab = _MAT_LABEL.match(nxt)
+        if lab and lab.group(1).replace("0", "O").replace("l", "I").upper().replace(" ", "") in _MAT_OPENERS:
+            return True
+    return False
+
+
 def matasovic_entries(root: Path = ROOT) -> list[dict]:
     out, cur, field = [], None, None
     files = sorted((Path(root) / MATASOVIC).glob("p*.txt"))
+    lines: list[tuple[str, str]] = []
     for fn in files:
-        page = fn.stem
         for line in fn.read_text("utf-8", errors="replace").splitlines():
             line = line.strip()
-            if not line:
-                continue
-            m = _MAT_HEAD.match(line)
-            if m and not re.match(r"^\*[A-Z]", line):
-                cur = {"head": "*" + m.group(1).strip(",.;"), "page": page, "goid": "", "w": "", "pie": "",
-                       "etym": ""}
-                out.append(cur)
-                field = None
-                continue
-            if cur is None:
-                continue
-            lab = re.match(r"^([A-Za-z0-9 ]{1,7}):\s*(.*)$", line)
-            if lab:
-                L = lab.group(1).replace("0", "O").replace("l", "I").upper().replace(" ", "")
+            if line:
+                lines.append((fn.stem, line))
+    text = [x for _, x in lines]
+    for i, (page, line) in enumerate(lines):
+        m = _MAT_HEAD.match(line)
+        if m and not re.match(r"^\*[A-Z]", line) and _mat_is_head(text, i):
+            g = re.search(r"['‘]([^'’]{2,60})['’]", " ".join(text[i:i + 3]))
+            cur = {"head": "*" + m.group(1).strip(",.;"), "page": page, "goid": "", "w": "", "pie": "",
+                   "etym": "", "gloss": g.group(1) if g else ""}
+            out.append(cur)
+            field = None
+            continue
+        if cur is None:
+            continue
+        lab = _MAT_LABEL.match(line)
+        if lab:
+            L = lab.group(1).replace("0", "O").replace("l", "I").upper().replace(" ", "")
+            if L in _MAT_FIELDS:
                 field = {"GOID": "goid", "GOIDE": "goid", "W": "w", "PIE": "pie", "ETYM": "etym"}.get(L)
                 if field:
                     cur[field] += " " + lab.group(2)
                 continue
-            if field:
-                cur[field] += " " + line
+        if field:
+            cur[field] += " " + line
     return out
 
 
@@ -562,6 +601,37 @@ SUPPLETIVE = {
         "dyfod": r"^daw|^deu|^doe|^deuth|^doeth|^del|^dau",
     },
 }
+
+
+# Two verbs in one kaikki table: the inflection table of sga do·ucai 'understands' (*h₁ewk-, EDPC p0417
+# *u-n-k-o-) also lists the forms of do·uccai 'brings' (·tuc, ·tucus, ·tuctar, ·tucsat …), the
+# preterite / subjunctive stem of do·beir, causative of do·icc (kaikki sga do·uic; EDPC p0042 *ank-o-,
+# *h₂neḱ-). Non-palatal ·tuc(c)- forms go to the lemma 'douccai', which takes do·icc's mapping; the
+# palatal ·tuic(c)i / ·tucci forms stay with 'understand'. (lemma, form pattern on the accent-free key,
+# new lemma, lemma whose mapping it takes, path note)
+STEM_SPLITS = {
+    "sga": [("doucai", r"^th?uc{1,2}(?=$|[aousftm])", "douccai", "doicc", "sga:douic (do·uccai 'brings')")],
+}
+
+
+def _stem_splits(lm: fm.LangMapping, splits: list) -> dict:
+    """Move the matching forms of a lemma to a new lemma (STEM_SPLITS); returns {new lemma: [forms]}."""
+    K = fm.KEYS[lm.lang]
+    moved: dict[str, list] = {}
+    for lem, pat, new, src, note in splits:
+        rx = re.compile(pat)
+        lk, nk = K(lem), K(new)
+        for f in list(lm.forms):
+            c = lm.forms[f]
+            if lk in c and rx.search(K(f, True)):
+                c[nk] += c.pop(lk)
+                moved.setdefault(nk, []).append(f)
+        r = lm.recs.get(K(src))
+        if r and moved.get(nk):
+            lm.recs[nk] = fm.MapRec(nk, new, r.ids, (f"{lm.lang}:{new}", note) + r.path, "stem-split",
+                                    "medium", r.sources + ("stem-split",), r.gloss)
+            lm.lemma_words.add(nk)
+    return moved
 
 
 def _formof_word(r: fm.MapRec) -> str | None:
@@ -735,6 +805,7 @@ class CelticMappings:
     welsh: fm.LangMapping       # key_cy keys; owl > wlm > cy
     parts: dict                 # per-stage LangMappings
     lexicon: list
+    precedence: dict = None     # matasovic_precedence log: {lang: {key: (old ids, new ids | None, EDPC page:head)}}
 
 
 def build_mappings(root: Path = ROOT, lexicon: list[dict] | None = None, matasovic: bool = True) -> CelticMappings:
@@ -777,6 +848,7 @@ def build_mappings(root: Path = ROOT, lexicon: list[dict] | None = None, matasov
             irish.pos[lk] |= ps
     _suppletive(irish, SUPPLETIVE["sga"])
     _suppletive(welsh, SUPPLETIVE["cy"])
+    split_log = _stem_splits(irish, STEM_SPLITS["sga"])
     glosses: dict[str, str] = collections.defaultdict(str)
     for c in IRISH + WELSH:
         for e in ents[c]:
@@ -790,9 +862,13 @@ def build_mappings(root: Path = ROOT, lexicon: list[dict] | None = None, matasov
         p.split(":", 1)[0] + ":*" + p.split(":", 1)[-1], "")
     for lm in (irish, welsh):
         _disambiguate_roots(lm, lex, gloss_of)
+    precedence: dict = {}
     if matasovic:
         add_matasovic(irish, welsh, lex, root)
-    return CelticMappings(irish, welsh, parts, lex)
+        precedence = matasovic_precedence(irish, welsh, lex, gmap, gloss_of, root)
+    precedence["preverb-only"] = {lm.lang: drop_preverb_only(lm, lex) for lm in (irish, welsh)}
+    precedence["stem-split"] = split_log
+    return CelticMappings(irish, welsh, parts, lex, precedence)
 
 
 def add_matasovic(irish: fm.LangMapping, welsh: fm.LangMapping, lex: list[dict], root: Path = ROOT):
@@ -809,7 +885,7 @@ def add_matasovic(irish: fm.LangMapping, welsh: fm.LangMapping, lex: list[dict],
             loose[K(k, True)].add(k)
         by_key: dict[str, list] = collections.defaultdict(list)
         for e in ents:
-            if not e["pie"] or _MAT_LOAN.search(e["etym"]):
+            if not e["pie"] or _mat_is_loan(e["etym"]):
                 continue
             for w in _mat_forms(e[fields], prefixes):
                 k = K(w, True)
@@ -848,6 +924,171 @@ def add_matasovic(irish: fm.LangMapping, welsh: fm.LangMapping, lex: list[dict],
             lm.recs[w] = fm.MapRec(w, w, frozenset(ids), (f"{lm.lang}:{w}", f"matasovic:{e['page']}:{e['head']}",
                                                          f"ine-pro:{pies[0] if pies else ''}"),
                                    "matasovic", "low", ("matasovic",))
+
+
+# Matasović's EDPC takes precedence over the kaikki/Wiktionary chain where both speak to a headword
+# (independent check, docs/research/mapping-precision-celtic-independent.md: lucht, caill, bran, aimser, cruind,
+# meth, toísech, Welsh caer, daly, gof, da were Wiktionary/IEW etymologies that EDPC rejects or calls unknown).
+# statements about the word's own etymology only; loan remarks are left out, since EDPC often says a
+# cognate or a neighbour's word was borrowed (*drungo-: Lat. drungus 'is a loanword from' Celtic)
+_MAT_REJECT = re.compile(
+    r"(?:IE|PIE) etymology (?:is|remains) (?:unknown|lacking|uncertain|obscure|unclear)"
+    r"|(?:its|the) etymology is (?:unknown|uncertain|obscure|unclear)|convincing (?:IE |PIE )?etymology is lacking"
+    r"|no (?:convincing |plausible |certain |good |generally accepted )?(?:IE |PIE )?etymology"
+    r"|is not convincing|unconvincing|appears improbable|non-IE|onomatopo|will not do|of unknown origin"
+    r"|origin is unknown", re.I)
+_MAT_ARROW = re.compile(r"<\s*PIE\s+(\*[^\s,;)'‘]+)")
+
+
+def _mat_verdict(e: dict, fz, mean: dict):
+    """One EDPC entry → ('ids', frozenset) when its PIE line (or a '< PIE *x' derivation in ETYM) resolves
+    to lexicon ids (whole form or its leading segments; the PIE gloss must fit), ('reject', reason) when it
+    gives no PIE etymon and its ETYM calls the etymology unknown, non-IE, onomatopoeic or a loan, else None."""
+    pie = e["pie"].strip()
+    if re.search(r"this (?:etymology|derivation|connection) is (?:quite |rather |very )?(?:uncertain|doubtful|dubious)"
+                 r"|semantics of this derivation are (?:somewhat )?stretched", e["etym"], re.I):
+        return None                            # EDPC doubts its own PIE line (*nesso-, *lugri): not decisive
+    if not pie:
+        m = _MAT_ARROW.search(e["etym"])
+        if m:
+            pie = m.group(1)
+        else:
+            m = _MAT_REJECT.search(e["etym"])
+            return ("reject", m.group(0)) if m else None
+    pies = [x.strip(" ?.;,") for x in re.split(r"[,;]| or |\+", pie) if x.strip().startswith("*")]
+    for x in pies:
+        ids, how = fz.lookup(mat_pie_key(x.split(" ")[0].split("'")[0].split("‘")[0]))
+        if not ids or how != "form" or len(ids) > 4:
+            continue                           # whole form only: *h1en-h3kw- must not resolve to *h₁én
+        gm = re.search(r"['‘]([^'’]{2,40})['’]", pie)
+        if gm:
+            gw = _gloss_words(gm.group(1))
+            score = {i: len(gw & _gloss_words(mean.get(i, ""))) for i in ids}
+            if gw and max(score.values()) == 0:
+                return None                    # the gloss fits no id (OCR-flattened homograph): not decisive
+            if gw:
+                ids = {i for i in ids if score[i] == max(score.values())}
+        return ("ids", frozenset(ids))
+    return None
+
+
+def matasovic_precedence(irish: fm.LangMapping, welsh: fm.LangMapping, lex: list[dict], gmap: dict,
+                         gloss_of=lambda p: "", root: Path = ROOT) -> dict:
+    """Where an EDPC entry speaks to a mapped headword (its Goidelic / Welsh form, accent-free key naming
+    exactly one mapped headword; the same join as `add_matasovic`), EDPC wins:
+
+      * EDPC gives no PIE etymon and calls the etymology unknown, non-IE or a loan → the key is unmapped
+        (lucht, caill, bran, aimser, cruind, meth; W caer, daly);
+      * EDPC's PIE etymon shares no root group with the kaikki ids → EDPC's ids replace them
+        (brisid/bres *bʰreyH- → *bʰres-; rann *h₂rey- → *perh₃-; toísech *wedʰ- → *weyd-);
+      * EDPC's etymon is among the ids → ids that are homographs of it (same lexicon form, other root)
+        are dropped (*h₂ews- 'draw water' / 'become light').
+
+    A key with several EDPC entries is changed only when all of them agree (all reject, or all name the
+    same root group). Returns {lang: {key: (old ids, new ids or None, page:head)}} for the report."""
+    fz = fm.FuzzyPie(lex)
+    mean = {e["id"]: " ".join(e.get("meaning") or []) for e in lex}
+    form = {e["id"]: e.get("form") for e in lex}
+    grp = lambda ids: frozenset(gmap.get(x, x) for x in ids)
+    ents = matasovic_entries(root)
+    log: dict = {}
+    for lm, field, prefixes, K in ((irish, "goid", GOID_PREFIX, fm.key_sga), (welsh, "w", W_PREFIX, key_cy)):
+        loose: dict[str, set] = collections.defaultdict(set)
+        for k in lm.recs:
+            loose[K(k, True)].add(k)
+        by_key: dict[str, dict] = collections.defaultdict(dict)
+        for e in ents:
+            # the entry's first Goidelic / Welsh form only: later ones are often derivatives or OCR run-ons
+            # from other fields (*luxsman- 'loimm, lucht'; *yalo- … 'act')
+            for w in _mat_forms(e[field], prefixes)[:1]:
+                k = K(w, True)
+                if len(k) >= 3:
+                    by_key[k][id(e)] = e
+        out = log.setdefault(lm.lang, {})
+        for k, es in by_key.items():
+            words = loose.get(k, set())
+            if len(words) != 1:
+                continue
+            w = next(iter(words))
+            r = lm.recs[w]
+            if r.how == "matasovic":
+                continue
+            # the EDPC headword must be the same word: its gloss shares a word with the kaikki senses
+            # (OIr. athar 'of a father' is not *futro-; Welsh bod 'to be' is not *butā 'dwelling')
+            kg = _gloss_words(" ".join([r.gloss or ""] + [gloss_of(p) for p in r.path]))
+            if not any(kg & _gloss_words(e["gloss"]) for e in es.values()):
+                continue
+            vs = [(_mat_verdict(e, fz, mean), e) for e in es.values()]
+            vs = [(v, e) for v, e in vs if v]
+            if not vs or len(vs) != len(es):
+                continue                                   # an entry without a verdict: EDPC is not decisive
+            where = ";".join(f"{e['page']}:{e['head']}" for _, e in vs)
+            if all(v[0] == "reject" for v, _ in vs):
+                del lm.recs[w]
+                lm.rejected[w] = "matasovic: " + vs[0][0][1] + f" ({where})"
+                out[w] = (sorted(r.ids), None, where + " «" + vs[0][0][1] + "»")
+                continue
+            if any(v[0] != "ids" for v, _ in vs) or len({grp(v[1]) for v, _ in vs}) != 1:
+                continue
+            new = frozenset().union(*(v[1] for v, _ in vs))
+            if not grp(new) & grp(r.ids):
+                ids = new
+            else:
+                keepforms = {form.get(i) for i in r.ids if gmap.get(i, i) in grp(new)}
+                ids = frozenset(i for i in r.ids if gmap.get(i, i) in grp(new) or form.get(i) not in keepforms)
+            if ids != r.ids:
+                lm.recs[w] = fm.MapRec(r.key, r.word, ids, r.path + (f"matasovic:{where}",), "matasovic-precedence",
+                                       "low" if r.confidence == "low" else "medium", r.sources + ("matasovic",),
+                                       r.gloss)
+                out[w] = (sorted(r.ids), sorted(ids), where)
+        # the same decision for keys that inherit the changed word's mapping along a chain
+        # (Irish taoiseach ← toísech, coill ← caill; Welsh trachwant ← chwant)
+        src = {}
+        for w, (old, new, where) in list(out.items()):
+            for p0 in {f"{c}:{w}" for c in (IRISH if lm.lang == "sga" else WELSH)}:
+                src[p0] = (w, old, new, where)
+        for k, r in list(lm.recs.items()):
+            if k in out:
+                continue
+            hit = next((src[p] for p in r.path[1:] if p in src), None)
+            if not hit or sorted(r.ids) != hit[1]:
+                continue
+            w, old, new, where = hit
+            if new is None:
+                del lm.recs[k]
+                lm.rejected[k] = f"matasovic via {w} ({where})"
+            else:
+                lm.recs[k] = fm.MapRec(r.key, r.word, frozenset(new), r.path + (f"matasovic:{where}",),
+                                       "matasovic-precedence", r.confidence, r.sources + ("matasovic",), r.gloss)
+            out[k] = (old, new, f"via {w}")
+    return log
+
+
+def drop_preverb_only(lm: fm.LangMapping, lex: list[dict]) -> list[str]:
+    """A content headword (noun, verb, adjective, name) whose only ids are PIE adverbs / preverbs (*de, *ḱóm,
+    *h₁épi, *péri) through a prefix keeps nothing of its lexical root (Cymru → *kom- → *ḱóm, Irish íadaid →
+    *h₁épi): unmapped. Returns the keys dropped."""
+    adv = {e["id"] for e in lex if e.get("kind") == "word" and e.get("pos") == "adv"}
+    K = fm.KEYS[lm.lang]
+    proto_of = lambda r: [x for x in r.path if x.startswith(("cel-pro:", "cel-bry-pro:"))]
+    # spellings of a headword that keeps its adverb etymon through a Proto-Celtic word (uasal ~ úasal)
+    kept = {K(k, True) for k, r in lm.recs.items() if r.ids and r.ids <= adv and proto_of(r)
+            and not proto_of(r)[0].rstrip().endswith("-")}
+    dropped = []
+    for k, r in list(lm.recs.items()):
+        if not (r.ids and r.ids <= adv and lm.pos.get(k, set()) & {"noun", "verb", "adj", "name"}):
+            continue
+        if K(k, True) in kept:
+            continue
+        # a word derived from the adverb itself keeps it (úasal, MW uchel < *ouxselos < *upo): only a chain
+        # that reaches the adverb through a bare prefix (*kom-, *exs-) or with no Proto-Celtic word at all has
+        # lost the lexical root
+        proto = [x for x in r.path if x.startswith(("cel-pro:", "cel-bry-pro:"))]
+        if not proto or proto[0].rstrip().endswith("-"):
+            del lm.recs[k]
+            lm.rejected[k] = "preverb-only mapping"
+            dropped.append(k)
+    return dropped
 
 
 # ---------------------------------------------------------------- lemmatizer
@@ -930,6 +1171,35 @@ class CelticLemmatizer:
             if got and len(got) <= self.max:
                 return "|".join(sorted(got, key=lambda x: (-got[x], x))), "skeleton"
         return "?" + self.K(s, True), "unknown"
+
+
+# Forms whose reading depends on the word before them (independent check: tig is the dat. of tech
+# 'house' after a preposition or article in 415 of its 925 CELT tokens, and 'comes' (·tic of do·icc)
+# mostly elsewhere). Without such a word the form keeps its ambiguous union (form override 'tech|doicc'),
+# which the tables leave unmapped. key → [(preceding words, lemma)]; first match wins.
+_IR_HOUSE_PREV = frozenset("""isin issin isind asin asind i hi h-i ina dia día da dá don dond din ón on ic oc is""".split())
+CONTEXT_FORMS = {
+    "sga": {
+        "tig": [(_IR_HOUSE_PREV, "tech")],
+        "thig": [(_IR_HOUSE_PREV, "tech"), (frozenset("ní ni má ma mar".split()), "doicc")],
+    },
+}
+
+
+def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
+    """Lemmas for a word sequence: `lemz(w)` for each word, except that a form in CONTEXT_FORMS takes the
+    lemma its preceding word selects (tig after isin / i / ina / dia … → tech 'house'). Stage C should use
+    this rather than calling the lemmatizer word by word."""
+    rules = CONTEXT_FORMS.get(lemz.lm.lang, {})
+    out = []
+    for i, w in enumerate(words):
+        lem = lemz(w)
+        for prev, target in rules.get(w.lower(), ()):
+            if i and words[i - 1].lower() in prev:
+                lem = target
+                break
+        out.append(lem)
+    return out
 
 
 def irish_lemmatizer(maps: CelticMappings, **kw) -> CelticLemmatizer:

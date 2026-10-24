@@ -35,6 +35,7 @@ from pie import formula_search_multi as fm  # noqa: E402
 
 MAPPING_DIR = ROOT / "data/research/formulas/mapping"
 COVERAGE = ROOT / "data/research/formulas/celtic-coverage.json"
+PRECEDENCE_LOG = ROOT / "data/research/formulas/celtic-precision/systematic-rules-log.json"
 KD = ROOT / "raw/daughters"
 
 # Irish OCR editions (round 4): path globs under raw/daughters
@@ -171,8 +172,10 @@ def celt_tokens(lemz, path=KD / "celt-ucc/units.jsonl"):
     with open(path, encoding="utf-8") as fh:
         for line in fh:
             d = json.loads(line)
-            for i, w in enumerate(cm.irish_words(d["text"])):
-                yield d["id"], d["lang"], d["genre"], d["source"], w, lemz(w), i
+            ws = cm.irish_words(d["text"])
+            # context rules (cm.CONTEXT_FORMS: tig after a preposition / article → tech 'house')
+            for i, (w, lem) in enumerate(zip(ws, cm.lemmatize_words(lemz, ws))):
+                yield d["id"], d["lang"], d["genre"], d["source"], w, lem, i
 
 
 def is_name(surface: str, pos: int) -> bool:
@@ -267,8 +270,7 @@ def main(argv=None):
         for ed, pat in IRISH_OCR.items():
             paths = sorted(KD.glob(pat))
             for loc, ws in ocr_lines(paths, IR_FUNC):
-                for i, w in enumerate(ws):
-                    lem = ilz(w)
+                for i, (w, lem) in enumerate(zip(ws, cm.lemmatize_words(ilz, ws))):
                     lemma_strings["celt"].add(lem)
                     if not content_of(maps.irish, lem, w, ilz):
                         continue
@@ -332,6 +334,10 @@ def main(argv=None):
             out[c][k]["share"] = round(x["content_mapped"] / max(1, x["content"]), 4)
             out[c][k]["share_no_names"] = round(x["content_no_names_mapped"] / max(1, x["content_no_names"]), 4)
     COVERAGE.write_text(json.dumps(out, ensure_ascii=False, indent=1, sort_keys=True) + "\n", "utf-8")
+    # rows changed by the systematic rules (Matasović precedence, its chain propagation, preverb-only drops,
+    # the do·ucai / do·uccai stem split): headword keys and ids only
+    PRECEDENCE_LOG.parent.mkdir(parents=True, exist_ok=True)
+    PRECEDENCE_LOG.write_text(json.dumps(maps.precedence, ensure_ascii=False, indent=1, sort_keys=True) + "\n", "utf-8")
     if a.sample_dir:
         a.sample_dir.mkdir(parents=True, exist_ok=True)
         for c in counts:

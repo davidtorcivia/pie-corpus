@@ -219,3 +219,106 @@ def test_override_file_rows_cite_a_source():
     assert ov["form"]["sga"]["fir"] == "fer"
     counts = collections.Counter((r["corpus"], r["lemma"]) for r in d["lemma"])
     assert max(counts.values()) == 1
+
+
+# ---------------------------------------------------------------- round 2 (independent blind check)
+
+def test_tig_is_resolved_by_the_preceding_word():
+    """tig is the dat. of tech 'house' after a preposition / article and ·tic of do·icc elsewhere: the
+    lemmatizer alone gives the ambiguous union (unmapped), lemmatize_words resolves it from context."""
+    lm = _lm()
+    lz = cm.CelticLemmatizer(lm, cm.irish_demutate, cm.irish_skeleton,
+                             form_overrides={"tig": "tech|doicc", "tic": "doicc"})
+    words = ["Luid", "isin", "tig", "ocus", "tig", "i", "tig", "ní", "thig"]
+    got = cm.lemmatize_words(lz, words)
+    assert got[2] == "tech" and got[6] == "tech"                   # isin tig, i tig
+    assert got[4] == "tech|doicc"                                  # no deciding word: ambiguous
+    assert got[8] == "doicc"                                       # ní thig 'does not come'
+    assert lz("tig") == "tech|doicc"
+    ov = fm.load_overrides(ROOT)["form"]["sga"]
+    assert ov["tig"] == "tech|doicc" and ov["tic"] == "doicc"
+    celt = cm.read_table("celt", ROOT)
+    assert "tech|doicc" not in celt                                # the union stays unmapped
+    assert celt["tech"] == ("pie-lex-stegos",)
+
+
+def test_tuc_forms_are_do_uccai_brings():
+    """The kaikki table of do·ucai 'understands' (*h₁ewk-) also lists ·tuc-, ·tucus, ·tuctar of do·uccai
+    'brings' (do·uic, causative of do·icc, *h₂neḱ-): STEM_SPLITS moves the non-palatal forms."""
+    lm = _lm()
+    for f in ("tuc", "tucus", "tuctar", "tucsat", "tuicci", "doucci"):
+        lm.forms[f]["doucai"] += 1
+    lm.recs["doicc"] = fm.MapRec("doicc", "do·icc", frozenset({"pie-root-h2nekj-reach"}), ("sga:doicc",), "root", "low", ())
+    lm.recs["doucai"] = fm.MapRec("doucai", "do·ucai", frozenset({"pie-lex-h1unekti"}), ("sga:doucai",), "chain", "high", ())
+    moved = cm._stem_splits(lm, cm.STEM_SPLITS["sga"])
+    assert sorted(moved["douccai"]) == ["tuc", "tucsat", "tuctar", "tucus"]
+    assert dict(lm.forms["tuicci"]) == {"doucai": 1} and dict(lm.forms["doucci"]) == {"doucai": 1}
+    assert lm.recs["douccai"].ids == frozenset({"pie-root-h2nekj-reach"})
+    celt = cm.read_table("celt", ROOT)
+    assert celt["douccai"] == ("pie-root-h2nekj-reach",)
+    assert celt["doucai"] == ("pie-lex-h1unekti",)                 # 'understand' keeps its own etymon
+
+
+def test_matasovic_entry_parser_skips_starred_forms_inside_etym():
+    lines = ["*luxtu- 'contents; crowd, people'", "[Noun]", "GOlD: Olr. lucht [u m]",
+             "ETYM: The etymology in IEW (686) deriving these Celtic words from PIE", "*lewg- 'break'",
+             "is not convincing", "because of the difference", "*bowd-ro-", "'dirty'", "[Adj]"]
+    assert cm._mat_is_head(lines, 0)
+    assert not cm._mat_is_head(lines, 4)                           # a form quoted in ETYM
+    assert cm._mat_is_head(lines, 7)                               # head, gloss and tag on three lines
+
+
+def test_matasovic_verdicts():
+    lex = [{"id": "pie-root-perh3-provide", "form": "perh₃-", "kind": "root", "meaning": ["to provide, bestow"]},
+           {"id": "pie-root-kjerd-heart", "form": "ḱerd-", "kind": "root", "meaning": ["heart"]}]
+    fz = fm.FuzzyPie(lex)
+    mean = {e["id"]: " ".join(e["meaning"]) for e in lex}
+    e = lambda pie, etym="": {"pie": pie, "etym": etym}
+    assert cm._mat_verdict(e("", "The IE etymology is unknown."), fz, mean)[0] == "reject"
+    assert cm._mat_verdict(e("", "deriving it from *lewg- 'break' is not convincing"), fz, mean)[0] == "reject"
+    assert cm._mat_verdict(e("", "Germanic words are loanwords from Celtic."), fz, mean) is None   # no stance
+    assert cm._mat_verdict(e(" *perh3- 'bestow' (IEW: 817)"), fz, mean) == ("ids", frozenset({"pie-root-perh3-provide"}))
+    assert cm._mat_verdict(e(" *kerd- 'swing'"), fz, mean) is None             # OCR homograph: gloss fits no id
+    assert cm._mat_verdict(e(" *perh3- 'bestow'", "this etymology is quite uncertain"), fz, mean) is None
+    assert not cm._mat_is_loan("could be early loanwords from Celtic")
+    assert cm._mat_is_loan("probably a loanword from some non-IE language")
+
+
+def test_matasovic_takes_precedence_over_wiktionary():
+    """Where EDPC speaks to a headword it wins (docs/research/mapping-precision-celtic.md, round 2)."""
+    log = json.loads((ROOT / "data/research/formulas/celtic-precision/systematic-rules-log.json").read_text("utf-8"))
+    assert log["sga"]["lucht"][1] is None                          # EDPC p0265: IEW's *lewǵ- 'is not convincing'
+    assert log["sga"]["caill"][1] is None and log["cy"]["daly"][1] is None
+    assert log["sga"]["toísech"][1] == ["pie-root-weyd-see"]       # EDPC p0402: *weyd-, not *wedʰ-
+    assert log["cy"]["atal"][2] == "via daly"                      # propagated along the chain
+    assert "cymru" in log["preverb-only"]["cy"] and "íadaid" in log["preverb-only"]["sga"]
+    celt, gl, cy = cm.read_table("celt", ROOT), cm.read_table("sga-glosses", ROOT), cm.read_table("cy", ROOT)
+    for t, lem in ((celt, "lucht"), (celt, "caill"), (celt, "aimser"), (celt, "bran"), (cy, "caer"), (cy, "daly"),
+                   (cy, "atal"), (celt, "brisid"), (celt, "coill")):
+        assert not t.get(lem), lem
+    assert celt["toísech"] == ("pie-root-weyd-see",) and celt["taoiseach"] == ("pie-root-weyd-see",)
+    assert gl["rann"] == ("pie-root-perh3-provide",)
+    assert "íad" not in celt and cm.is_function_word("íad")
+
+
+def test_matasovic_precedence_on_a_small_mapping():
+    lex = [{"id": "pie-root-weyd-see", "form": "weyd-", "kind": "root", "meaning": ["to see, know"]},
+           {"id": "pie-root-wedh-lead", "form": "wedʰ-", "kind": "root", "meaning": ["to lead"]}]
+    gmap = {e["id"]: e["id"] for e in lex}
+    ir, cy = _lm(), _lm("cy")
+    ir.recs["toísech"] = fm.MapRec("toísech", "toísech", frozenset({"pie-root-wedh-lead"}),
+                                   ("sga:toísech", "ine-pro:*wedʰ-"), "chain", "high", (), "leader, chief; first")
+    ir.recs["taoiseach"] = fm.MapRec("taoiseach", "taoiseach", frozenset({"pie-root-wedh-lead"}),
+                                     ("ga:taoiseach", "sga:toísech", "ine-pro:*wedʰ-"), "chain-sga", "medium", ())
+    import pie.celtic_mapping as mod
+    ents = [{"head": "*to-wissako-", "page": "p0402", "goid": " OIr. toísech [o m] 'leader'", "w": "",
+             "pie": "", "gloss": "leader, chief, first",
+             "etym": "PCelt. *to-wissako- < *-wid-t-ako- < PIE *weyd- 'see, know'."}]
+    orig = mod.matasovic_entries
+    mod.matasovic_entries = lambda root=None: ents
+    try:
+        log = mod.matasovic_precedence(ir, cy, lex, gmap)
+    finally:
+        mod.matasovic_entries = orig
+    assert ir.recs["toísech"].ids == frozenset({"pie-root-weyd-see"})
+    assert ir.recs["taoiseach"].ids == frozenset({"pie-root-weyd-see"}) and log["sga"]["taoiseach"][2] == "via toísech"

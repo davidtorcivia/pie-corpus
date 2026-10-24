@@ -12,6 +12,15 @@ Cognate→PIE examples hold out *whole root families* (a deterministic hash
 of root_id), so no derivative of an eval root appears in a training task.
 The leakage check fails the export if any PIE string or record id is in both
 splits.
+
+Accent (docs/STATUS.md "Known limitations", data/morph/accent_unresolved.json):
+every task whose target or one of whose tokens comes from a lexeme with an
+unresolved accent (missing information: the headword has no accent) carries
+"accent": "unresolved"; a target that is a representation exception (voc.
+ph₂ter) carries "accent": "representation". Such tasks stay in the full eval
+and in training. The accent-sensitive eval view (eval_tasks_accent_specified)
+omits the unresolved ones; a score presented as testing fully specified accent
+uses that view.
 """
 
 from __future__ import annotations
@@ -21,7 +30,7 @@ import json
 import random
 from pathlib import Path
 
-from .realize import Lexicon
+from .realize import Lexicon, accent_manifest, accent_status
 
 ROOT = Path(__file__).resolve().parent.parent
 COGNATE_LANGS = ["Sanskrit", "Ancient Greek", "Latin", "Proto-Germanic", "Hittite", "Old Irish", "Gothic",
@@ -67,6 +76,35 @@ def record_style(r: dict) -> str:
     return "project handbook convention"
 
 
+def _record_accent(r: dict) -> str | None:
+    """"unresolved" when a token of the record comes from an unresolved-accent lexeme; "representation" when a
+    token is a frozen representation exception (voc. ph₂ter); None otherwise. Engine-built records (Tier 2/3)
+    only: a Tier 1 text's accents are its author's, and its token lex_ids are the validator's lookups."""
+    if r.get("tier") == 1:
+        return None
+    toks = r.get("tokens") or []
+    if any(accent_status(t.get("lex_id")) == "unresolved" for t in toks):
+        return "unresolved"
+    exc = {(lid, cell, form) for lid, _g, cell, form in accent_manifest()["exception_cells"]}
+    if any((t.get("lex_id"), str(t.get("features") or "").split("|")[0], t.get("form")) in exc for t in toks):
+        return "representation"
+    return None
+
+
+def _target_accent(lid: str, gender: str | None, cell: str, form: str) -> str | None:
+    """The accent flag of an engine-built target (inflection task)."""
+    if accent_status(lid) == "unresolved":
+        return "unresolved"
+    if (lid, gender, cell, form) in accent_manifest()["exception_cells"]:
+        return "representation"
+    return None
+
+
+def accent_specified(tasks: list[dict]) -> list[dict]:
+    """The accent-sensitive evaluation view: the tasks without an unresolved accent (missing information)."""
+    return [t for t in tasks if t.get("accent") != "unresolved"]
+
+
 def record_tasks(r: dict) -> list[dict]:
     out = []
     style = record_style(r)
@@ -79,8 +117,11 @@ def record_tasks(r: dict) -> list[dict]:
         out.append({"task": "translate_pie_en", "input": r["pie"], "output": r["english"], "style": style})
     if r.get("gloss"):
         out.append({"task": "gloss", "input": r["pie"], "output": r["gloss"], "style": style})
+    acc = _record_accent(r)
     for t in out:
         t["source_id"] = r["id"]
+        if acc:
+            t["accent"] = acc
     return out
 
 
@@ -132,9 +173,15 @@ def inflection_tasks(lx: Lexicon, rng: random.Random, per_lexeme: int = 3) -> li
         else:
             cells = lx.admissible_cells(lid)
         feats = sorted(cells)
+        tag_gender = {v: k for k, v in GENDER_TAG.items()}
         for f in rng.sample(feats, min(per_lexeme, len(feats))):
-            out.append({"task": "inflect", "input": f"{lx.entries[lid]['form']} {f}", "output": cells[f][0],
-                        "source_id": lid, "root_id": lx.entries[lid].get("root_id")})
+            t = {"task": "inflect", "input": f"{lx.entries[lid]['form']} {f}", "output": cells[f][0],
+                 "source_id": lid, "root_id": lx.entries[lid].get("root_id")}
+            g, cell = (tag_gender[f.split(".", 1)[0]], f.split(".", 1)[1]) if r["family"] == "adj" else (None, f)
+            acc = _target_accent(lid, g, cell, cells[f][0])
+            if acc:
+                t["accent"] = acc
+            out.append(t)
     return out
 
 
@@ -149,8 +196,11 @@ def cognate_tasks(lx: Lexicon) -> list[dict]:
             if forms:
                 parts.append(f"{lang} {forms[0].get('roman') or forms[0]['form']}")
         if len(parts) >= 2:
-            out.append({"task": "cognates_to_pie", "input": "; ".join(parts), "output": e["form"],
-                        "source_id": e["id"], "root_id": e.get("root_id")})
+            t = {"task": "cognates_to_pie", "input": "; ".join(parts), "output": e["form"],
+                 "source_id": e["id"], "root_id": e.get("root_id")}
+            if accent_status(e["id"]) == "unresolved":
+                t["accent"] = "unresolved"
+            out.append(t)
     return out
 
 
@@ -199,7 +249,8 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0) -> dict
     seen = {r["id"] for r in tier1 if len(r["pie"].rstrip(".").split()) >= 2 and r["pie"].rstrip(".").strip() in big}
     tier1 = [{**r, "seen_in_train": r["id"] in seen} for r in tier1]
     eval_tasks = [{**t, "seen_in_train": t.get("source_id") in seen} if "source_id" in t else t for t in eval_tasks]
-    return {"train_records": train_recs, "eval_records": tier1, "train_tasks": train_tasks, "eval_tasks": eval_tasks}
+    return {"train_records": train_recs, "eval_records": tier1, "train_tasks": train_tasks, "eval_tasks": eval_tasks,
+            "eval_tasks_accent_specified": accent_specified(eval_tasks)}
 
 
 def views(records: list[dict]) -> dict[str, str]:

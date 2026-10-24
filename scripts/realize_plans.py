@@ -99,6 +99,10 @@ def main() -> int:
         stats["realized"] += 1
         # primary and supported forms only: a legacy match or a known error fails the all_exact gate
         stats["exact_pass"] += all_exact(v)
+        # the accent lint's categories (a report, never a gate): unaccented forms of the frozen representation
+        # exceptions (voc. ph₂ter) and accent defects; unresolved-accent tokens are counted below by lexeme
+        stats["accent_representation_tokens"] += len(v["accent_representation"])
+        stats["accent_defect_tokens"] += len(v["accentless"])
         roots = sorted({lx.entries[i].get("root_id") for w in r["words"]
                         for i in [w["lex_id"], *member_ids(w["lex_id"])] if i in lx.entries} - {None})
         records.append({
@@ -149,6 +153,10 @@ def main() -> int:
                "words_per_record": round(sum(len(r["pie"].split()) for r in records) / n, 2),
                "meter_fit": _meter_summary(records),
                "formula_uses": _formula_uses(records), "warnings": len(warnings)}
+    # accent: unresolved (missing information: the lexeme's headword has no accent; data/morph/accent_unresolved.json)
+    unres = [(r["id"], t["lex_id"]) for r in records for t in r["tokens"] if lx.accent_status(t["lex_id"]) == "unresolved"]
+    summary["accent_unresolved"] = {"tokens": len(unres), "lexemes": len({x for _, x in unres}),
+                                    "records": len({x for x, _ in unres})}
     # Gates (docs/STATUS.md question 5): the batch passes only on numbers
     gates = {"reject_rate<=0.10": summary["reject_rate"] <= 0.10,
              f"max_lexeme_uses<={lexeme_cap(n, summary['tokens'])}":

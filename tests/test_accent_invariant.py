@@ -1,11 +1,16 @@
 """Global accent invariant (fix/accent): the primary form of every cell of every usable lexeme, and of every
 closed-class table, carries exactly one accent mark.
 
-Two lists keep the test honest:
-  INHERENTLY_ACCENTLESS (below): forms a handbook makes accentless (enclitics), each with its reason. Nothing goes
-      here only because a handbook prints it without an accent.
-  tests/data/accent_unresolved.json: known defects, listed by family, not excepted. The test fails when a new
-      defect appears and when a listed one is fixed (remove it from the list then), so the list only shrinks.
+The accent manifest data/morph/accent_unresolved.json (read by the code too: pie.realize.accent_manifest) keeps
+three categories apart, and nothing moves between them to satisfy this test:
+  unresolved_lexical_accent: missing information (the headword has no accent); the lexemes stay usable and are
+      flagged accent: unresolved downstream. A cell passes only with no accent at all on an accentless headword.
+  representation_exceptions: the vocatives the initial vocative accent leaves unmarked (ph₂ter). Frozen as exact
+      (lex_id, gender, cell, primary form) combinations, so an unrelated accent loss cannot hide in one.
+  INHERENTLY_ACCENTLESS (below): supported unaccented clitics only, each with its reason. Nothing goes here only
+      because a handbook prints it without an accent, and no vocative goes here.
+The defect groups (double_accent_source, closed_pending) are listed, not excepted. The test fails when a new case
+appears and when a listed one is fixed (remove it from the manifest then), so the lists only shrink.
 """
 
 import json
@@ -14,9 +19,10 @@ from pathlib import Path
 import pytest
 
 from pie.phon import parse
+from pie.realize import ACCENT_MANIFEST, accent_manifest
 
 ROOT = Path(__file__).resolve().parent.parent
-KNOWN = json.loads((ROOT / "tests/data/accent_unresolved.json").read_text("utf-8"))
+KNOWN = json.loads(ACCENT_MANIFEST.read_text("utf-8"))
 
 # closed_class.json paths (cell or particle) that are accentless by nature
 _ENCL_PRON = ("unstressed (enclitic) personal pronoun paradigm beside the stressed one: Fortson §7.2; the unstressed "
@@ -56,28 +62,44 @@ def hits(lx) -> dict[str, list[tuple[str, str, int]]]:
 
 
 def test_every_primary_lexeme_cell_has_one_accent(lx, hits):
-    lemma = {i for f in KNOWN["lemma_unaccented"]["by_family"].values() for i in f["ids"]}
-    voc = set(KNOWN["vocalized_laryngeal_vocative"]["ids"])
+    lemma = {i for f in KNOWN["unresolved_lexical_accent"]["by_family"].values() for i in f["ids"]}
+    exc = {(c["lex_id"], c["gender"] or "", c["cell"], c["form"]) for c in KNOWN["representation_exceptions"]["cells"]}
     multi = set(KNOWN["double_accent_source"]["ids"])
-    new = []
+    new, seen_exc = [], set()
     for lid, hs in hits.items():
         for cell, form, n in hs:
+            g, c = cell.split(":", 1)
+            if (lid, g, c, form) in exc and n == 0:
+                seen_exc.add((lid, g, c, form))
+                continue
             ok = (lid in lemma and n == 0 and n_acc(lx.entries[lid]["form"].strip("*-")) == 0) \
-                or (lid in voc and n == 0 and cell.split(":")[1].startswith("VOC")) \
                 or (lid in multi and n > 1)
             if not ok:
                 new.append((lid, cell, form, n))
     assert not new, f"{len(new)} new cells without exactly one accent: {new[:20]}"
-    fixed = sorted((lemma | voc | multi) - set(hits))
-    assert not fixed, f"listed in tests/data/accent_unresolved.json but now clean (remove them): {fixed}"
+    fixed = sorted((lemma | multi) - set(hits))
+    assert not fixed, f"listed in data/morph/accent_unresolved.json but now clean (remove them): {fixed}"
+    gone = sorted(exc - seen_exc)
+    assert not gone, f"representation exceptions no longer generated as listed (update the manifest): {gone[:10]}"
+
+
+def test_representation_exceptions_are_frozen_vocatives():
+    rec = KNOWN["representation_exceptions"]
+    assert len(rec["cells"]) == 111 and rec["lexemes"] == len(rec["ids"]) == 30
+    assert {c["lex_id"] for c in rec["cells"]} == set(rec["ids"])
+    assert all(c["cell"].startswith("VOC.") and n_acc(c["form"]) == 0 for c in rec["cells"])
+    # the three categories do not overlap
+    lemma = accent_manifest()["unresolved_ids"]
+    assert not lemma & set(rec["ids"]) and not lemma & set(KNOWN["double_accent_source"]["ids"])
 
 
 def test_known_defect_counts_do_not_grow(hits):
-    """The family counts in accent_unresolved.json are the ones the report gives; they may only go down."""
-    for fam, rec in KNOWN["lemma_unaccented"]["by_family"].items():
+    """The family counts in the manifest are the ones the report gives; they may only go down."""
+    for fam, rec in KNOWN["unresolved_lexical_accent"]["by_family"].items():
         assert sum(len(hits.get(i, [])) for i in rec["ids"]) <= rec["cells"], fam
-    assert sum(len(hits.get(i, [])) for i in KNOWN["vocalized_laryngeal_vocative"]["ids"]) \
-        <= KNOWN["vocalized_laryngeal_vocative"]["cells"]
+        assert rec["lexemes"] == len(rec["ids"]), fam
+    assert sum(r["cells"] for r in KNOWN["unresolved_lexical_accent"]["by_family"].values()) \
+        == KNOWN["unresolved_lexical_accent"]["cells"]
 
 
 def _closed_primaries():

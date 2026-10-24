@@ -75,6 +75,25 @@ alternative cell (or, for a lexeme spec, in extra_specs), never deleted.
     ḱéytor t-less middle (VerbSpec.mid_t_less); dédeh₃ti mobile weak stem
     (dedh₃més). Closed class: 'I' h₁eǵóh₂, 'ten' déḱm̥ (closed_class.json _refs).
 
+Accent limitations (docs/STATUS.md "Known limitations"; data/morph/accent_unresolved.json),
+two of them, kept apart from each other and from the genuinely unaccented clitics:
+  (1) missing accent information: a lexeme whose Wiktionary headword has no accent
+    and whose spec supplies none gets an accentless paradigm (accent: unresolved,
+    unresolved_lexical_accent). The engine does not guess an accent; the lexeme
+    stays usable, and pie.realize.accent_status, the validator's lint and the
+    export flag it. A sourced accent is a spec override in overrides.jsonl.
+  (2) notation and prosodic model: the vocative keeps the isolated-address
+    (initial) accent where it can be represented. When the first syllable's
+    nucleus is laryngeal-containing in the segmental spelling, _initial_accent
+    leaves the form unmarked (ph₂ter, kept for this release; never ph₂tér, and
+    no ph₂́ter: an accent on a syllabic laryngeal is not in the notation). This is
+    how the convention meets the segmental representation, not a claim that the
+    accent fell on a laryngeal (representation_exceptions: 30 lexemes, 111 cells,
+    frozen). Phrase-conditioned vocative intonation (phrase- or clause-initial
+    vocatives prominent, phrase-internal ones not) is not modelled: the engine
+    builds words, not phrases. The analysis is unsettled (Gunkel: lexically
+    unaccented vocatives; Keydana: intonation over the nominative's accent).
+
 Features: nouns "NOM.SG", "GEN.PL", …; verbs "PRS.3SG", "PST.1PL",
 "IMP.2SG", "PRF.3PL", "AOR.3SG" (active; indicative unless IMP).
 """
@@ -494,8 +513,10 @@ def _zero_grade_iu(weak: list[Seg]) -> list[Seg]:
 
 def _initial_accent(segs: list[Seg]) -> list[Seg]:
     out = [replace(x, acc=False) for x in segs]
-    # a syllabic laryngeal as the first nucleus (ph₂ter: Ved. pítar, Gk πάτερ) carries the accent,
-    # which the notation cannot mark: leave the form unaccented rather than accent a later vowel
+    # the first syllable's nucleus is laryngeal-containing in the segmental spelling (ph₂ter beside Ved. pítar,
+    # Gk πάτερ): the initial accent cannot be shown there, so the form is left unmarked rather than accented on a
+    # later vowel. A representation exception (accent_unresolved.json; module notes, accent limitation (2)), not
+    # a claim that the accent fell on a laryngeal
     first_v = next((i for i, x in enumerate(out) if x.kind == "V" or (x.kind == "R" and x.syl)), None)
     # (a laryngeal right before the first vowel is consonantal: ǵʰh₂éns → voc. ǵʰh₂éns; s-root-heteroclite.md F9)
     if first_v is not None and any(x.base in ("h1", "h2", "h3", "H") and 0 < i < first_v - 1 and out[i - 1].kind == "C"
