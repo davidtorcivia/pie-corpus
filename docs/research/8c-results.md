@@ -58,6 +58,8 @@ Scope as recorded in the pre-registration before reading ("Stage C reading scope
 - **Model check:** all 30 reader and reviewer transcripts record claude-opus-5-5; peak reader context 445k tokens (so the large-context window was in use).
 - **Cost:** readers 201M input tokens processed (192M from cache, 9.4M cache writes), 0.49M output; reviewers ~0.25M context.
 
+- **Lead's addendum (not blind, outside the measures):** Fínán heals a horse's leg (Life of St Fínán, CELT G201017), a hagiographic witness of the Merseburg II / AV 4.12 / Cath Maige Tuired healing type; seen but correctly not claimed by RC021 (no second-branch partner in its slab). Not found in the held literature (West 2007 ch. 8, Watkins 1995 chs. 56-57, Matasović 1996, Schmitt 1967); thematic, not verbal, and possibly from the medieval Christian charm tradition: docs/research/8c-addendum-finan.md. Next design (proposal): docs/research/8c-next-design.md.
+
 ## Overall (Stage A + B)
 Readers recover the known inherited phraseology reliably and discriminate real from decoy material (Stage B primary criterion met, p = 0.018; Stage A underpowered). Across both stages the candidates beyond the literature we hold are three additions to known formulas, two of them found independently in both stages: 'eat raw flesh' as a free phrase, 'clothe in the immortal' with its Vedic witness, and *ḱlew- + *wékʷos. They are **candidates**: no expert has confirmed them, and the literature we hold is a subset of the field (Durante 1971/1976, the Vedic and Homeric commentaries and much journal literature are not checked). No wholly new formula was found.
 
