@@ -291,3 +291,56 @@ def test_accent_homographs_and_remainders_are_not_decided_by_another_lemma():
     assert ch.match("pie-lex-raw", "grc", "Greek", "ὠμός", True)["level"] == "exact"     # same key ωμοσ
     m = ch.match("pie-lex-slain", "grc", "Greek", "πρόσφατος", False)                     # -φατος, not φάτις
     assert m["level"] == "exact" and m["path"][0] == "preverb:pros"
+
+
+# ---------------------------------------------------------------- independent Germanic / Balto-Slavic check (seed 41)
+
+def test_kannijana_proto_row_reaches_old_saxon_kennian():
+    # germanic-new.json: gem-pro *kannijaną < *ǵneh₃- only; OS kennian kept the *ǵenh₁- id from the lexicon
+    # reflex list, past the proto row
+    raw = next(r for r in mp.read_table("rea-osx", ROOT) if r["lemma"] == "kennian")
+    assert "pie-lex-gjonh1eyeti" in raw["lex_id"]
+    res = mp.resolve_table("rea-osx", ROOT)
+    for lem in ("kennian", "ankennian", "antkennian"):
+        assert res[lem].ids == {"pie-lex-gjnneh3ti"}, lem
+    table = {r["lemma"]: tuple(r["lex_id"]) for r in mp.read_table("rea-osx", ROOT)}
+    assert fm.apply_table_overrides("rea-osx", table, root=ROOT)["kennian"] == ("pie-lex-gjnneh3ti",)
+
+
+FARA = {"pie-root-per-go_through": {"id": "pie-root-per-go_through", "kind": "root"},
+        "pie-lex-piporti": {"id": "pie-lex-piporti", "root_id": "pie-root-per-go_through",
+                            "reflexes": {"Old Norse": [{"form": "fara"}]}}}
+
+
+def test_a_proto_row_decides_every_route_through_the_page():
+    # ON fara / OHG faran reach *píporti through the lexicon reflex link of gem-pro *faraną (Kroonen p0168:
+    # *por-e-, píparti only a cognate). A proto row for the page decides the tables and blocks the
+    # checker's reflex route for the words mapped through it. (The row itself is for germanic-new.json.)
+    rows = {"menota": [{"lemma": "fara", "lang": "non", "lex_id": ["pie-lex-piporti"],
+                        "path": ["non:fara", "gem-pro:*faraną", "lexicon-reflex"]},
+                       {"lemma": "misfara", "lang": "non", "lex_id": ["pie-lex-piporti"],
+                        "path": ["non:misfara", "prefix:mis-", "non:fara", "gem-pro:*faraną", "lexicon-reflex"]}]}
+    ov = mp.as_overrides({})
+    ov = {**ov, "proto": {("gem-pro", mp.proto_key("*faraną")):
+                          mp.decision({"lex_id": ["pie-root-per-go_through"], "note": "Kroonen p0168: *por-e-"},
+                                      "gem-pro", "*faraną")}}
+    res = mp.resolve_rows("menota", rows["menota"], ov)
+    assert res["fara"].ids == res["misfara"].ids == {"pie-root-per-go_through"}
+    free = SecureChecker.from_population(FARA, build_population(rows, {}, codes={"non"}))
+    assert free.match("pie-lex-piporti", "non", "Old Norse", "fara", True)["level"] == "exact"
+    ch = SecureChecker.from_population(FARA, build_population(rows, ov, codes={"non"}))
+    # *píporti was removed in favour of its root: only root level, the reflex list cannot restore exact
+    assert ch.match("pie-lex-piporti", "non", "Old Norse", "fara", True)["level"] == "root"
+    assert ch.match("pie-root-per-go_through", "non", "Old Norse", "fara", True)["level"] == "exact"
+
+
+def test_dvignoti_unmap_reaches_podici():
+    # balto-slavic-new.json unmaps sla-pro *dvignǫti; vuk podići 'raise' then fell through to pod- + ići
+    # (*h₁ey- 'go'), a path that no longer names the page. Tables record only the chosen path, so the
+    # resolver cannot see that podići descends from *(po)dvignǫti; this needs a 'key' row (sh podići) or the
+    # builder to keep the rejected page in the path.
+    import pytest
+    x = mp.resolve_table("vuk", ROOT).get("podići")
+    if x is None or "pie-lex-h1eyti" not in x.ids:
+        return
+    pytest.xfail("podići still maps to *h₁éyti through pod- + ići: needs a key row or the rejected page in the path")

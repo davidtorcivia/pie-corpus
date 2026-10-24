@@ -441,7 +441,18 @@ def build_population(rows_by_corpus: dict, overrides: dict | None, codes=None, a
             rec = _rec(x.ids, [f"table:{corpus}"] + list(x.path), f"table:{corpus}", derived)
             for k in row_keys(code, {"lemma": x.lemma, "word": r.get("word", x.word)}):
                 pop.tables[code][k].append(rec)
-        for lem, ds in ov["decisions"].get(corpus, {}).items():
+        # proto-page and headword decisions decide the table words mapped through them, like lemma rows
+        # (ON fara through gem-pro *faraną: no route may then restore the link the page decision dropped)
+        path_decided = {}
+        if ov.get("proto") or ov.get("key"):
+            for r in rows:
+                if r["lemma"] in ov["decisions"].get(corpus, {}):
+                    continue
+                rl = r.get("lang") or lang
+                pd = mp.path_decision([f"{rl}:{r['lemma']}", *r.get("path", ())], rl, ov)
+                if pd:
+                    path_decided[r["lemma"]] = [pd]
+        for lem, ds in [*ov["decisions"].get(corpus, {}).items(), *path_decided.items()]:
             r = row_of.get(lem, {})
             code = code_of(corpus, r.get("lang") or lang)
             if code is None or (codes is not None and code not in codes):
