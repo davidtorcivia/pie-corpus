@@ -79,6 +79,7 @@ Notes on particular cases:
 | `pie-lex-h2wergt-2` | h₂wérgt | rejected | weak h₂ur̥g | LIV's h₂ur̥g- with a lost breve: two adjacent nuclei (athematic-verbs S1) |
 | `pie-lex-h2werst` | h₂wérst | rejected | weak h₂ur̥s | LIV's h₂ur̥s- with a lost breve: two adjacent nuclei (athematic-verbs S1) |
 | `pie-lex-h3mighleh2` | h₃mígʰleh₂ | rejected | strong h₃migʰleh₂ | the table stem lacks the accent: 17/18 cells accentless (feminine.md D3) |
+| `pie-lex-h3mighleh2-2` | h₃migʰleh₂ (duplicate page) | rejected | strong h₃migʰleh₂ | duplicate Wiktionary page of pie-lex-h3mighleh2: the same accentless table; same correction |
 | `pie-lex-h3rexgjnih2` | h₃rḗǵnih₂ | rejected | gender m | spec gender m for an ih₂ noun (feminine.md housekeeping) |
 | `pie-lex-keh2nmn` | kéh₂nmn̥ | rejected | weak kh₂nmén | weak kh₂nmén- lacks the syllabic n̥ (r-n-stems defect 3) |
 | `pie-lex-kjmtogwus` | ḱm̥tógʷus | rejected | m_weak ḱm̥tógʷów, f_strong ḱm̥tógʷówih₂, f_weak ḱm̥tógʷuyéh₂ | Wiktionary's args carry two accents per form (feminine.md D12, i-u-stems #14) |
