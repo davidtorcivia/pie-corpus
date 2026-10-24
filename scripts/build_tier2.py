@@ -41,7 +41,8 @@ def branches(refs: list[dict]) -> int:
            "Old Saxon": "Gm", "Old Frisian": "Gm", "Middle High German": "Gm", "Old Icelandic": "Gm",
            "Pali": "II", "Middle Persian": "II", "Old Avestan": "II", "Young Avestan": "II", "Sanskrit (Epic)": "II",
            "Mycenaean Greek": "Gk", "Oscan": "It", "Faliscan": "It", "Palaic": "An", "Lycian": "An",
-           "Tocharian A": "To", "Tocharian B": "To", "Albanian": "Alb", "Phrygian": "Phr", "Messapic": "Mes"}
+           "Tocharian A": "To", "Tocharian B": "To", "Albanian": "Alb", "Phrygian": "Phr", "Messapic": "Mes",
+           "Serbo-Croatian": "BS", "Serbian": "BS", "Croatian": "BS", "Bulgarian": "BS", "Old Czech": "BS", "Lepontic": "Ce", "Cornish": "Ce", "Breton": "Ce", "Old Irish (glosses)": "Ce"}
     return len({fam.get(r.get("lang", ""), r.get("lang", "")) for r in refs})
 
 
