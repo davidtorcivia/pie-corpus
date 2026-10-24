@@ -14,11 +14,14 @@ Plan (one sentence):
                 "particle": null | "nu" | "ge" | "yod",  # nu "now, then"; -ge emphatic (enclitic); h₁yód "if, when"
                 "break": false,                    # this clause starts a new sentence
                 "question": false,                 # this clause's sentence ends in "?"
+                "type": "verbal" | "nominal" | "np",  # see Clause types below; default verbal
+                "case": "NOM",                     # np utterances only: the case of the NP (VOC for addresses)
                 "slots": [
       {"lex_id": "pie-lex-…" | "closed:personal/1" | …,
-       "role": "SUBJ|OBJ|IO|INS|LOC|ABL|POSS|VOC|PRED|GOAL|MOD|ADV|V",
-       "num": "SG|DU|PL",                          # nominals; MOD and V take it from their head/subject
-       "head": null | <slot index>,                # MOD (adjective, demonstrative, POSS) → its noun
+       "role": "SUBJ|OBJ|IO|INS|LOC|ABL|POSS|VOC|PRED|GOAL|MOD|APPOS|NP|ADV|V",
+       "num": "SG|DU|PL",                          # nominals; MOD, APPOS and V take it from their head/subject
+       "head": null | <slot index>,                # MOD (adjective, demonstrative, POSS), APPOS → its noun
+       "before": false,                            # APPOS: stand before the head instead of after it
        "enclitic": false,                          # pronoun slots: the enclitic form (moy, toy, …)
        "gender": null | "m|f|n",                   # pronoun slots used on their own (tod "it", kʷíd "what")
        "and": false,                               # -kʷe "and" after this word (X Y-kʷe = X and Y)
@@ -27,6 +30,36 @@ Plan (one sentence):
                 "num": null | "SG|DU|PL"}}]}]}    # set them for pro-drop ("let us go": person 1, num PL, no SUBJ)
 
 `check_plan` lists every problem; `realize` assumes a checked plan.
+
+Clause types. A clause has "type": "verbal" (the default, above: exactly one V slot), "nominal" or "np".
+The realizer never inserts a copula: a clause without a V slot is realized without one.
+  nominal  a verbless (nominal) sentence: SUBJ + PRED, no V slot. PRED is a noun or adjective in the
+           nominative; an adjective agrees with the subject in gender and number (as with h₁ésti); a noun
+           keeps its own gender and number. The subject must be overt (Fortson §8.17: in nominal sentences an
+           overt pronoun subject is generally required, OPers. adam navama 'I (am) the ninth'). Other roles
+           (VOC, IO, INS, LOC, ABL, ADV, POSS, MOD, APPOS) are allowed; OBJ and GOAL are not (no verb governs
+           them). Order: topic first, predicate last (Lehmann 1974 §2.1.4, §4.3.1.a: Hitt. attaš aššuš 'the
+           father (is) good', Ved. tváṃ váruṇa 'you (are) Varuṇa', OPers. adam Dārayavauš 'I (am) Darius'),
+           i.e. SUBJ … PRED; "order": "VSO" puts the predicate first. "neg" puts ne directly before the
+           predicate (Hitt. lē idāluš, Lehmann §4.3.1.a ex. 43). nu, ge, yod, conj, break, question as usual.
+           Use it for generic, timeless statements, identifications and descriptions in the present (Vedic,
+           Avestan, Old Persian, Hittite nominal sentences; Keydana 2018 §8: the copula is optional, omitted
+           especially in the present). Use a verbal clause with h₁ésti for tense or mood (a past or a wish:
+           Hittite cannot drop the copula in the past, Lehmann §2.1.4 after Friedrich), for emphasis
+           (Lehmann §4.3.1.a: the verb may be added for emphasis, RV 4.30.1 … asti), and for existence
+           ('there is a king').
+  np       a bare noun phrase as a whole utterance: a title, an exclamation, an address, an epithet line
+           in a catalogue ('sweet mead' = swéh₂du médʰu). One or more slots with role "NP" (coordinated with
+           "and") plus their MOD, POSS, APPOS (and participle deps); no V, SUBJ, OBJ or other clause roles,
+           no neg. "case": "NOM" (default) | "VOC" (addresses) | any other case name; the NP slots and
+           everything that agrees with them take it.
+Apposition. A slot with role "APPOS" and "head": k is a noun phrase in apposition to slot k ('the horses,
+  immortal ones', 'Dyēus, the father'; West 2007 p. 307: a god's name with honorific epithets in apposition).
+  It takes its head's case and number; a noun keeps its own gender, an adjective (used as a noun) takes the
+  head's gender unless the slot gives one. It may carry its own MOD/POSS/APPOS. It stands after its head's
+  phrase; "before": true puts it before. Any nominal slot (SUBJ, OBJ, VOC, PRED, POSS, NP, APPOS …) can head
+  an APPOS; a MOD cannot. Unlike MOD it is a separate phrase (Ringe 2017 §3.3.2: nouns in apposition are
+  separate NPs), so an adjective there reads 'the immortal ones', not 'immortal'.
 
 Compounds (pie/compound.py). A slot may hold a compound built from two lexemes:
   {"lex_id": "compound", "compound": {"first": F, "second": S, "type": "bahuvrihi" | "determinative"},
@@ -88,8 +121,12 @@ ROOT = Path(__file__).resolve().parent.parent
 # Interrogative phrases are fronted. A prohibitive (neg + IMP) is mē + injunctive.
 ROLE_CASE = {"SUBJ": "NOM", "PRED": "NOM", "OBJ": "ACC", "GOAL": "ACC", "IO": "DAT", "INS": "INS",
              "LOC": "LOC", "ABL": "ABL", "POSS": "GEN", "VOC": "VOC"}
-NOMINAL_ROLES = set(ROLE_CASE) | {"MOD"}
+NOMINAL_ROLES = set(ROLE_CASE) | {"MOD", "APPOS", "NP"}
 ROLES = NOMINAL_ROLES | {"ADV", "V"}
+CLAUSE_TYPES = ("verbal", "nominal", "np")
+CASES = ("NOM", "VOC", "ACC", "GEN", "DAT", "INS", "LOC", "ABL")
+# an np utterance holds only its NP slots and what attaches to them
+NP_ROLES = {"NP", "MOD", "POSS", "APPOS"}
 # Wackernagel enclitics: placed after the first word of the clause
 ENCLITIC_PRONOUNS = {"moy", "toy", "me", "te", "nos", "wos", "soy", "se"}
 
@@ -286,8 +323,14 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
     for ci, cl in enumerate(plan.get("clauses", [])):
         slots = cl.get("slots", [])
         verbs = [s for s in slots if s.get("role") == "V"]
-        if len(verbs) != 1:
-            errs.append(f"clause {ci}: needs exactly one V slot, has {len(verbs)}")
+        ctype = cl.get("type", "verbal")
+        if ctype not in CLAUSE_TYPES:
+            errs.append(f"clause {ci}: unknown clause type {ctype!r} (verbal, nominal or np)")
+            continue
+        if ctype == "verbal" and len(verbs) != 1:
+            errs.append(f"clause {ci}: needs exactly one V slot, has {len(verbs)} (a verbless sentence is "
+                        f"\"type\": \"nominal\"; a bare noun phrase is \"type\": \"np\")")
+        errs += _check_clause_type(ci, cl, ctype, slots, verbs)
         # (a relative pronoun may be the subject: "you who split the vault" is fine)
         if len(verbs) == 1 and (verbs[0].get("verb") or {}).get("person") == 2 and any(
                 s.get("role") == "SUBJ" and not s.get("lex_id", "").startswith("closed:") for s in slots):
@@ -334,6 +377,11 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
             if role not in ROLES:
                 errs.append(f"{where}: unknown role {role!r}")
                 continue
+            if role == "APPOS":
+                e = _check_appos(s, si, slots, where)
+                if e:
+                    errs.append(e)
+                    continue
             if lid.startswith("closed:"):
                 continue
             if lid == "compound":
@@ -383,7 +431,7 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                 h = s.get("head")
                 if h is None or not (0 <= h < len(slots)) or slots[h].get("role") in ("V", "MOD", "ADV"):
                     errs.append(f"{where}: MOD needs a nominal head slot")
-            if fam == "adj" and role not in ("MOD", "PRED") and not s.get("gender"):
+            if fam == "adj" and role not in ("MOD", "PRED", "APPOS") and not s.get("gender"):
                 errs.append(f"{where}: an adjective used as a noun ('the Swift One') needs a gender "
                             f"(m, f or n) for whom it names")
             if role == "MOD" and fam not in ("adj",) and not lid.startswith("closed:") and ptcp is None:
@@ -394,6 +442,81 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
             except KeyError as e:
                 errs.append(f"clause {ci}: form not generated: {e}")
     return errs
+
+
+def _check_clause_type(ci: int, cl: dict, ctype: str, slots: list, verbs: list) -> list[str]:
+    """Clause-level rules of nominal clauses and np utterances (and NP slots elsewhere)."""
+    errs = []
+    if ctype != "np" and any(s.get("role") == "NP" for s in slots):
+        errs.append(f"clause {ci}: role NP belongs to an np utterance (\"type\": \"np\")")
+    if ctype != "np" and cl.get("case") is not None:
+        errs.append(f"clause {ci}: \"case\" is for np utterances only; a {ctype} clause takes case from roles")
+    if ctype == "verbal":
+        return errs
+    if verbs:
+        errs.append(f"clause {ci}: a {ctype} clause has no V slot (the realizer never adds a copula; for "
+                    f"tense, mood, emphasis or existence use a verbal clause with h₁ésti)")
+    top = [s for s in slots if s.get("dep") is None]
+    if ctype == "nominal":
+        if not any(s.get("role") == "SUBJ" for s in top):
+            errs.append(f"clause {ci}: a nominal clause needs an overt SUBJ (no verb ending marks the person: "
+                        f"OPers. adam navama 'I (am) the ninth')")
+        if not any(s.get("role") == "PRED" for s in top):
+            errs.append(f"clause {ci}: a nominal clause needs a PRED (a noun or adjective)")
+        for si, s in enumerate(slots):
+            if s.get("role") in ("OBJ", "GOAL") and s.get("dep") is None:
+                errs.append(f"clause {ci} slot {si}: role {s['role']} needs a verb; a nominal clause has none")
+        if cl.get("order") not in (None, "SOV", "VSO"):
+            errs.append(f"clause {ci}: order must be SOV (predicate last) or VSO (predicate first)")
+    if ctype == "np":
+        if cl.get("case", "NOM") not in CASES:
+            errs.append(f"clause {ci}: unknown case {cl.get('case')!r} (one of {', '.join(CASES)})")
+        if not any(s.get("role") == "NP" for s in slots):
+            errs.append(f"clause {ci}: an np utterance needs a slot with role NP (the head noun)")
+        for si, s in enumerate(slots):
+            if s.get("role") not in NP_ROLES and s.get("dep") is None:
+                errs.append(f"clause {ci} slot {si}: an np utterance holds only NP, MOD, POSS and APPOS slots "
+                            f"(and participle deps), not {s.get('role')}; a sentence with a predicate is "
+                            f"\"type\": \"nominal\"")
+            if s.get("role") == "POSS" and s.get("head") is None:
+                errs.append(f"clause {ci} slot {si}: in an np utterance a POSS needs a head")
+        if cl.get("neg"):
+            errs.append(f"clause {ci}: an np utterance cannot be negated (ne negates a predicate: use a "
+                        f"nominal clause)")
+    return errs
+
+
+def _check_appos(s: dict, si: int, slots: list, where: str) -> str | None:
+    h = s.get("head")
+    if not (isinstance(h, int) and 0 <= h < len(slots)) or h == si:
+        return f"{where}: APPOS needs a head slot (the noun phrase it stands in apposition to)"
+    if slots[h].get("role") in ("V", "ADV", "MOD"):
+        return f"{where}: APPOS needs a nominal head, slot {h} is a {slots[h].get('role')}"
+    seen, k = {si}, h
+    while slots[k].get("role") == "APPOS":         # a chain of appositions must end in a nominal
+        if k in seen or not isinstance(slots[k].get("head"), int) or not 0 <= slots[k]["head"] < len(slots):
+            return f"{where}: APPOS head chain is circular or broken"
+        seen.add(k)
+        k = slots[k]["head"]
+    if s.get("participle") is not None:
+        return f"{where}: a participle is a MOD, not an APPOS"
+    n, hn = s.get("num"), _chain_num(slots, h)
+    if n and hn and n != hn:
+        return f"{where}: an APPOS takes its head's number ({hn}), not {n}"
+    return None
+
+
+def _chain_num(slots: list, i: int) -> str | None:
+    """The explicit number of slot i, following APPOS heads (None if unset)."""
+    seen = set()
+    while i not in seen and 0 <= i < len(slots):
+        seen.add(i)
+        s = slots[i]
+        if s.get("role") == "APPOS" and not s.get("num") and isinstance(s.get("head"), int):
+            i = s["head"]
+            continue
+        return s.get("num")
+    return None
 
 
 def _check_compound(s: dict, slots: list, where: str, lx: Lexicon) -> list[str]:
@@ -415,7 +538,7 @@ def _check_compound(s: dict, slots: list, where: str, lx: Lexicon) -> list[str]:
         h = s.get("head")
         if h is None or not (isinstance(h, int) and 0 <= h < len(slots)) or slots[h].get("role") in ("V", "MOD", "ADV"):
             return [f"{where}: MOD needs a nominal head slot"]
-    elif role != "PRED" and not s.get("gender"):
+    elif role not in ("PRED", "APPOS") and not s.get("gender"):
         return [f"{where}: a bahuvrihi used as a noun ('the one of good fame') needs a gender (m, f or n)"]
     return []
 
@@ -446,12 +569,46 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
             if want and slots[sl["head"]].get("num") != want:
                 slots = [dict(x) for x in slots] if slots is cl["slots"] else slots
                 slots[sl["head"]]["num"] = want
+    # an apposition takes its head's number; an adjective (or pronoun) in apposition also its gender
+    if any(sl["role"] == "APPOS" for sl in slots):
+        slots = [dict(x) for x in slots] if slots is cl["slots"] else slots
+        done: set[int] = set()
+
+        def settle(i: int, chain: tuple = ()) -> None:
+            s = slots[i]
+            if s["role"] != "APPOS" or i in done:
+                return
+            h = s.get("head")
+            if h is None or h in chain or not 0 <= h < len(slots):
+                raise KeyError(f"APPOS slot {i}: broken head chain")
+            settle(h, chain + (i,))
+            s["num"] = slots[h].get("num", "SG")
+            if not s.get("gender") and (s["lex_id"].startswith("closed:") or _family(s, lx) == "adj"):
+                s["gender"] = _slot_gender(slots[h], lx)
+            done.add(i)
+        for i in range(len(slots)):
+            settle(i)
+    ctype = cl.get("type", "verbal")
     subj_i = next((i for i, s in enumerate(slots) if s["role"] == "SUBJ"), None)
     subj = slots[subj_i] if subj_i is not None else None
     person, num = _person_number(subj, lx) if subj else (3, "SG")
     neuter_pl = subj is not None and person == 3 and subj.get("num") == "PL" and _slot_gender(subj, lx) == "n"
-    vi = next(i for i, s in enumerate(slots) if s["role"] == "V")
-    v = slots[vi].get("verb", {})
+    vi = next((i for i, s in enumerate(slots) if s["role"] == "V"), None)
+    if (vi is None) != (ctype != "verbal"):
+        raise KeyError(f"a {ctype} clause {'needs a' if ctype == 'verbal' else 'takes no'} V slot")
+    v = slots[vi].get("verb", {}) if vi is not None else {}
+
+    def case_of(i: int, chain: tuple = ()) -> str:
+        """Case from role: MOD and APPOS take their head's, NP the utterance's (np clauses)."""
+        r = slots[i]["role"]
+        if r in ("MOD", "APPOS"):
+            h = slots[i].get("head")
+            if h is None or h in chain or not 0 <= h < len(slots):
+                raise KeyError(f"slot {i}: broken head chain")
+            return case_of(h, chain + (i,))
+        if r == "NP":
+            return cl.get("case", "NOM")
+        return ROLE_CASE[r]
     prohibitive = cl.get("neg") and v.get("mood") == "IMP"
     neg_wish = cl.get("neg") and v.get("mood") == "OPT"        # mē + optative: "may it not …" (Gk μή + opt.)
     # hortative subjunctive 'let us not …' takes mē as well (Gk μή + hortatory subj.)
@@ -488,7 +645,7 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
                 head = {**s, "num": s.get("num") or v.get("num") or "SG"}
             else:
                 head = s
-            case = ROLE_CASE["PRED" if role == "PRED" else head["role"]] if role != "MOD" else ROLE_CASE[head["role"]]
+            case = "NOM" if role == "PRED" else case_of(i)
             if role == "MOD" and head["role"] == "MOD":
                 raise KeyError("MOD cannot head a MOD")
             n = head.get("num", "SG")
@@ -516,22 +673,30 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
                 form = lx.cells(lid)[feat][0]
         words[i] = Word(form, lid, lx.gloss(lid), feat, i, clitic=form in ENCLITIC_PRONOUNS)
 
-    # phrases: every MOD/POSS goes directly before its head, recursively
+    # phrases: every MOD/POSS goes directly before its head, recursively; an APPOS phrase follows
+    # its head's phrase ('the horses, immortal ones'), or precedes it with "before"
     def phrase(i: int) -> list[int]:
         mods = [j for j, x in enumerate(slots) if x["role"] in ("MOD", "POSS") and x.get("head") == i and j != i]
         deps = [j for j, x in enumerate(slots) if x.get("dep") == i and j != i]   # a participle's own object etc.
-        return [k for j in deps + mods for k in phrase(j)] + [i]
+        app = [j for j, x in enumerate(slots) if x["role"] == "APPOS" and x.get("head") == i and j != i]
+        pre = [k for j in app if slots[j].get("before") for k in phrase(j)]
+        post = [k for j in app if not slots[j].get("before") for k in phrase(j)]
+        return pre + [k for j in deps + mods for k in phrase(j)] + [i] + post
 
-    order_roles = ["VOC", "SUBJ", "IO", "OBJ", "GOAL", "INS", "LOC", "ABL", "PRED", "ADV"]
-    tops = [i for i, x in enumerate(slots) if x["role"] not in ("V", "MOD") and x.get("dep") is None and not
-            (x["role"] == "POSS" and x.get("head") is not None)]
+    # a nominal sentence is topic first, predicate last (Lehmann 1974 §2.1.4, §4.3.1.a)
+    order_roles = ["VOC", "SUBJ", "IO", "OBJ", "GOAL", "INS", "LOC", "ABL", "PRED", "ADV"] if ctype == "verbal" \
+        else ["VOC", "SUBJ", "IO", "INS", "LOC", "ABL", "ADV", "PRED"] if ctype == "nominal" else ["NP"]
+    tops = [i for i, x in enumerate(slots) if x["role"] not in ("V", "MOD", "APPOS") and x.get("dep") is None
+            and not (x["role"] == "POSS" and x.get("head") is not None)]
     tops.sort(key=lambda i: order_roles.index(slots[i]["role"]) if slots[i]["role"] in order_roles else 99)
     phrases = [phrase(t) for t in tops]
+    is_pred = [slots[t]["role"] == "PRED" for t in tops]
     # interrogatives move to the front of the clause (with their phrase)
     q = [ph for ph in phrases if any(slots[j]["lex_id"].startswith("closed:interrogative") for j in ph)]
+    pred_phrases = [ph for ph, p in zip(phrases, is_pred) if p and ph not in q]
     phrases = q + [ph for ph in phrases if ph not in q]
     seq = [j for ph in phrases for j in ph]
-    placed = sorted(seq + [vi])
+    placed = sorted(seq + ([vi] if vi is not None else []))
     if placed != list(range(len(slots))):
         missing = sorted(set(range(len(slots))) - set(placed))
         raise KeyError(f"slots {missing} not attached to the clause (a MOD/POSS head chain is broken)")
@@ -552,7 +717,7 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
             words[i].clitic = True        # the indefinite is enclitic: ne kʷis gʷémt 'no one came'
     neg = Word("mē" if (prohibitive or neg_wish) else "ne", "closed:particle:ne", "NEG", "PARTICLE") \
         if cl.get("neg") else None
-    vseq = ([neg] if neg else []) + [words[vi]]
+    vseq = ([neg] if neg else []) + [words[vi]] if vi is not None else []
     def render_phrase(ph: list[int]) -> list[Word]:
         ws = []
         for i in ph:
@@ -564,8 +729,18 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
         return ws
 
     front = [w for ph in q for w in render_phrase(ph)]           # fronted interrogative phrase(s)
-    rest = [w for ph in phrases if ph not in q for w in render_phrase(ph)]
-    out = front + vseq + rest if cl.get("order") == "VSO" else front + rest + vseq
+    if ctype == "verbal":
+        rest = [w for ph in phrases if ph not in q for w in render_phrase(ph)]
+        out = front + vseq + rest if cl.get("order") == "VSO" else front + rest + vseq
+    else:
+        # no verb and no copula: the predicate (with ne before it) stands last, or first with VSO
+        rest = [w for ph in phrases if ph not in q and ph not in pred_phrases for w in render_phrase(ph)]
+        pseq = [w for ph in pred_phrases for w in render_phrase(ph)]
+        if neg:
+            pseq = [neg] + pseq if pseq else pseq
+            if not pseq:                  # the predicate is a fronted interrogative: ne after it
+                front = front[:1] + [neg] + front[1:]
+        out = front + pseq + rest if cl.get("order") == "VSO" else front + rest + pseq
     if cl.get("particle") == "nu":
         out.insert(0, Word("nu", "closed:particle:nu", "NU", "PARTICLE"))
     if cl.get("particle") == "yod":       # h₁yód 'if, when' (Ved. yád): a subordinate clause, verb-final

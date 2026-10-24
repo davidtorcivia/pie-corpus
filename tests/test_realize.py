@@ -465,3 +465,128 @@ def test_agreement_contradictions_rejected():
         {"lex_id": "closed:relative_yo", "role": "SUBJ", "gender": "m"},
         {"lex_id": "pie-lex-tremti", "role": "V", "verb": {"tense": "PRS", "person": 2, "num": "SG"}}]}]}
     assert not [e for e in check_plan(rel, lx) if "contradicts" in e]
+
+
+# --- verbless clauses, noun-phrase utterances, apposition -------------------------------------
+
+MEAD, SWEET, IMMORTAL, FATHER, DAUGHTER = ("pie-lex-medhu", "pie-lex-sweh2dus", "pie-lex-nmrtos",
+                                           "pie-lex-ph2texr", "pie-lex-dhugh2texr")
+
+
+def test_np_utterance_has_no_copula(ix):
+    """David's review: 'sweet mead' is a noun phrase, not 'there is sweet mead' (Ved. svādór … mádhvaḥ,
+    Gk μέθυ ἡδύ): no V slot, no copula, the adjective agrees with the neuter noun."""
+    from pie.realize import check_plan
+    p = {"english": "Sweet mead.", "clauses": [{"type": "np", "slots": [
+        {"lex_id": MEAD, "role": "NP"}, {"lex_id": SWEET, "role": "MOD", "head": 0}]}]}
+    assert check_plan(p, _lx()) == []
+    r = R(p)
+    assert r["pie"] == "swéh₂du médʰu."
+    assert not any(w["lex_id"] == "pie-lex-h1esti" for w in r["words"])
+    assert _passes(r["pie"], ix)
+
+
+def test_np_utterance_in_the_vocative_with_apposition(ix):
+    # 'Dyēus, father!' (Ved. dyaùṣ pitar, Gk Ζεῦ πάτερ): both in the vocative
+    r = R({"english": "Dyēus, father!", "clauses": [{"type": "np", "case": "VOC", "slots": [
+        {"lex_id": SKY, "role": "NP"}, {"lex_id": FATHER, "role": "APPOS", "head": 0}]}]})
+    assert r["pie"] == "dyéw ph₂ter."
+    assert [w["features"] for w in r["words"]] == ["VOC.SG", "VOC.SG"]
+    assert _passes(r["pie"], ix)
+
+
+def test_apposition_takes_case_and_number_of_its_head(ix):
+    # 'the horses, immortal ones' (AVŚ 13.1.24 áśvā … amṛ́tāḥ, Il. 16.380-1 ἵπποι | ἄμβροτοι): an adjective
+    # in apposition is its own phrase after the head, with the head's case, number and gender
+    p = {"english": "The horses, immortal ones.", "clauses": [{"type": "np", "slots": [
+        {"lex_id": HORSE, "role": "NP", "num": "PL"}, {"lex_id": IMMORTAL, "role": "APPOS", "head": 0}]}]}
+    r = R(p)
+    assert r["pie"] == "h₁éḱwōs n̥mr̥tṓs."
+    assert _passes(r["pie"], ix)
+    # inside a verbal clause, in the accusative, and before the head with "before"
+    p = {"english": "The daughter sees father Dyēus.", "clauses": [{"slots": [
+        {"lex_id": DAUGHTER, "role": "SUBJ"}, {"lex_id": SKY, "role": "OBJ"},
+        {"lex_id": FATHER, "role": "APPOS", "head": 1, "before": True}, V(SEE)]}]}
+    r = R(p)
+    assert r["pie"] == "dʰugh₂tḗr ph₂térm̥ dyḗm spéḱyeti."
+    assert _passes(r["pie"], ix)
+    # an apposition keeps its own gender (noun) and may carry its own modifiers and possessor
+    p = {"english": "Dyēus, the great father of the daughter, sees.", "clauses": [{"slots": [
+        {"lex_id": SKY, "role": "SUBJ"}, {"lex_id": FATHER, "role": "APPOS", "head": 0},
+        {"lex_id": "pie-lex-megjh2s", "role": "MOD", "head": 1}, {"lex_id": DAUGHTER, "role": "POSS", "head": 1},
+        V(SEE)]}]}
+    r = R(p)
+    assert r["pie"].startswith("dyḗws ") and r["pie"].endswith(" spéḱyeti.")
+    assert [w["features"] for w in r["words"][:4]] == ["NOM.SG", "NOM.SG", "GEN.SG", "NOM.SG"]
+    assert _passes(r["pie"], ix)
+
+
+def test_nominal_clause_predicate_agrees_and_has_no_copula(ix):
+    """Nominal sentence (Hitt. attaš aššuš 'the father (is) good', Lehmann 1974 §4.3.1.a): SUBJ PRED,
+    predicate last, adjective agreeing with the subject, ne before the predicate."""
+    r = R({"english": "The daughter is new.", "clauses": [{"type": "nominal", "slots": [
+        {"lex_id": DAUGHTER, "role": "SUBJ"}, {"lex_id": "pie-lex-newos", "role": "PRED"}]}]})
+    assert r["pie"] == "dʰugh₂tḗr néweh₂."
+    r = R({"english": "The horses are not immortal.", "clauses": [{"type": "nominal", "neg": True, "slots": [
+        {"lex_id": HORSE, "role": "SUBJ", "num": "PL"}, {"lex_id": IMMORTAL, "role": "PRED"}]}]})
+    assert r["pie"] == "h₁éḱwōs ne n̥mr̥tṓs."
+    assert _passes(r["pie"], ix)
+    # a predicate noun keeps its own number and gender; VSO puts the predicate first
+    r = R({"english": "I am king.", "clauses": [{"type": "nominal", "order": "VSO", "slots": [
+        {"lex_id": "closed:personal/1", "role": "SUBJ"}, {"lex_id": "pie-lex-h3rexgjs", "role": "PRED"}]}]})
+    assert r["pie"].startswith("h₃rḗǵs ")
+    # a predicate after other roles; joined to a verbal clause with -kʷe
+    r = R({"english": "The sheep sees, and the horse is new to the daughter.", "clauses": [
+        {"slots": [{"lex_id": SHEEP, "role": "SUBJ"}, V(SEE)]},
+        {"type": "nominal", "conj": "kʷe", "slots": [
+            {"lex_id": HORSE, "role": "SUBJ"}, {"lex_id": "pie-lex-newos", "role": "PRED"},
+            {"lex_id": DAUGHTER, "role": "IO"}]}]})
+    assert r["pie"].endswith("h₁éḱwos-kʷe dʰugh₂tréy néwos.")
+    assert _passes(r["pie"], ix)
+
+
+def test_nominal_question():
+    # 'who (is) this?' (*kʷós só, Alb. kush: Matzinger & Schumacher, Handbook ch. 96): the interrogative fronts
+    r = R({"english": "Who is this?", "clauses": [{"type": "nominal", "question": True, "slots": [
+        {"lex_id": "closed:demonstrative_so", "role": "SUBJ", "gender": "m"},
+        {"lex_id": "closed:interrogative_kwi", "role": "PRED", "gender": "m"}]}]})
+    assert r["pie"] == "kʷís só?"
+
+
+def test_check_plan_rules_for_verbless_clauses():
+    from pie.realize import check_plan
+    lx = _lx()
+
+    def errs(cl):
+        return check_plan({"english": "x", "clauses": [cl]}, lx)
+    subj, pred = {"lex_id": DAUGHTER, "role": "SUBJ"}, {"lex_id": "pie-lex-newos", "role": "PRED"}
+    # a verbal clause still needs its verb, and the message points at the new types
+    assert any("nominal" in e for e in errs({"slots": [subj, pred]}))
+    # a nominal clause takes no V (no copula is added), needs an overt SUBJ and a PRED, no OBJ
+    assert any("no V slot" in e for e in errs({"type": "nominal", "slots": [subj, pred, V("pie-lex-h1esti")]}))
+    assert any("overt SUBJ" in e for e in errs({"type": "nominal", "slots": [pred]}))
+    assert any("needs a PRED" in e for e in errs({"type": "nominal", "slots": [subj]}))
+    assert any("needs a verb" in e for e in errs({"type": "nominal", "slots": [
+        subj, pred, {"lex_id": SHEEP, "role": "OBJ"}]}))
+    # an np utterance: only NP and what attaches to it; a known case; no negation
+    np = {"type": "np", "slots": [{"lex_id": MEAD, "role": "NP"}, {"lex_id": SWEET, "role": "MOD", "head": 0}]}
+    assert errs(np) == []
+    assert any("not SUBJ" in e for e in errs({**np, "slots": np["slots"] + [subj]}))
+    assert any("unknown case" in e for e in errs({**np, "case": "ERG"}))
+    assert any("negated" in e for e in errs({**np, "neg": True}))
+    assert any("role NP" in e for e in errs({"slots": [{"lex_id": MEAD, "role": "NP"}, V(SEE)]}))
+    assert any("unknown clause type" in e for e in errs({"type": "verbless", "slots": [subj, pred]}))
+    # APPOS: a nominal head, the head's number
+    assert any("APPOS needs a head" in e for e in errs({**np, "slots": [
+        {"lex_id": MEAD, "role": "NP"}, {"lex_id": IMMORTAL, "role": "APPOS"}]}))
+    assert any("nominal head" in e for e in errs({**np, "slots": [
+        {"lex_id": MEAD, "role": "NP"}, {"lex_id": SWEET, "role": "MOD", "head": 0},
+        {"lex_id": IMMORTAL, "role": "APPOS", "head": 1}]}))
+    assert any("head's number" in e for e in errs({**np, "slots": [
+        {"lex_id": HORSE, "role": "NP", "num": "PL"}, {"lex_id": FATHER, "role": "APPOS", "head": 0, "num": "SG"}]}))
+    assert any("circular" in e for e in errs({**np, "slots": [
+        {"lex_id": MEAD, "role": "NP"}, {"lex_id": FATHER, "role": "APPOS", "head": 2},
+        {"lex_id": SKY, "role": "APPOS", "head": 1}]}))
+    # an adjective in apposition needs no gender of its own (it takes the head's)
+    assert errs({"slots": [{"lex_id": HORSE, "role": "SUBJ", "num": "PL"},
+                           {"lex_id": IMMORTAL, "role": "APPOS", "head": 0}, V(SEE)]}) == []
