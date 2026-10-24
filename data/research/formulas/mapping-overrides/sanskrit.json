@@ -1,0 +1,2972 @@
+{
+ "note": "Sanskrit (rv: VedaWeb/Grassmann lemmas; av: DCS lemmas) mapping corrections, mapping-precision pass (docs/research/mapping-precision-sanskrit.md). Evidence: Mayrhofer EWAia (raw/books/text/ewaia-v*), VedaWeb surface forms, DCS lemma ids. Empty lex_id = unmapped.",
+ "lemma": [
+  {
+   "corpus": "rv",
+   "lemma": "√dhā- 1",
+   "lex_id": [
+    "pie-lex-dhedheh1ti",
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "dhā 'put' also mapped to *dʰeh₁(y)- 'suck'",
+   "note": "EWAia I 783 s.v. DHĀ 'setzen' < *dʰeh₁-; 'saugen' is DHAY (EWAia I 776 = √dhā- 2). DCS 'dhā' in AV: dhehi, dadhātu (put)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "dhā",
+   "lex_id": [
+    "pie-lex-dhedheh1ti",
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "dhā 'put' also mapped to *dʰeh₁(y)- 'suck'",
+   "note": "EWAia I 783 s.v. DHĀ 'setzen' < *dʰeh₁-; 'saugen' is DHAY (EWAia I 776 = √dhā- 2). DCS 'dhā' in AV: dhehi, dadhātu (put)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√dhā- 2",
+   "lex_id": [
+    "pie-root-dheh1y-suckle"
+   ],
+   "erratum": "dhā 'suck' mapped to *dʰeh₁- 'put'",
+   "note": "EWAia I 776 s.v. DHAY 'saugen' < *dʰeh₁(i̯)-; VedaWeb surface forms: dhayati, dhā́tave"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√i- 1",
+   "lex_id": [
+    "pie-lex-h1eyti",
+    "pie-root-h1ey-go"
+   ],
+   "erratum": "i 'go' also mapped to the pronoun *is",
+   "note": "EWAia I 102 s.v. AY¹ 'gehen' < *h₁ei̯-; pie-lex-is-2 is the pronoun 'this, he'"
+  },
+  {
+   "corpus": "av",
+   "lemma": "i",
+   "lex_id": [
+    "pie-lex-h1eyti",
+    "pie-root-h1ey-go"
+   ],
+   "erratum": "i 'go' also mapped to the pronoun *is",
+   "note": "EWAia I 102 s.v. AY¹ 'gehen' < *h₁ei̯-; pie-lex-is-2 is the pronoun 'this, he'"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√i- 2",
+   "lex_id": [],
+   "erratum": "i/inv 'drive, invigorate' mapped to *h₁ey- 'go' and the pronoun *is",
+   "note": "VedaWeb surface forms: invati, ínvati, inóti = EWAia s.v. INV 'antreiben', not AY 'gehen'; no secure PIE root in the lexicon: unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√pū-",
+   "lex_id": [
+    "pie-root-pewH-be_clean"
+   ],
+   "erratum": "pū 'purify' also mapped to *pewH- 'rot'",
+   "note": "EWAia II 106 s.v. PAV 'reinigen, läutern' < *peu̯H- 'rein'; *pewH- 'rot, stink' (pūti-) is a different root"
+  },
+  {
+   "corpus": "av",
+   "lemma": "pū",
+   "lex_id": [
+    "pie-root-pewH-be_clean"
+   ],
+   "erratum": "pū 'purify' also mapped to *pewH- 'rot'",
+   "note": "EWAia II 106 s.v. PAV 'reinigen, läutern' < *peu̯H- 'rein'; *pewH- 'rot, stink' (pūti-) is a different root"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√yā- 1",
+   "lex_id": [
+    "pie-root-yeh2-go"
+   ],
+   "erratum": "yā 'go' also mapped to *yeh₂- 'request'",
+   "note": "EWAia II 407 s.v. YĀ¹ 'fahren'; 'bitten' is YĀ² (EWAia II 408 = √yā- 2)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "yā",
+   "lex_id": [
+    "pie-root-yeh2-go"
+   ],
+   "erratum": "yā 'go' also mapped to *yeh₂- 'request'",
+   "note": "EWAia II 407 s.v. YĀ¹ 'fahren'; 'bitten' is YĀ² (EWAia II 408 = √yā- 2)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√yā- 2",
+   "lex_id": [
+    "pie-root-yeh2-request"
+   ],
+   "erratum": "yā 'request' also mapped to *yeh₂- 'go'",
+   "note": "EWAia II 408 s.v. YĀ² 'bitten'; VedaWeb surface forms: īmahe, iyānáḥ"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "máh-",
+   "lex_id": [
+    "pie-lex-megjh2s"
+   ],
+   "erratum": "máh- 'great' also mapped to *megʰ- 'be able'",
+   "note": "EWAia s.v. MAH / máh- < *meǵh₂- (gr. μέγας); *megʰ- (got. magan) is the source of maghá- (EWAia II 289), not of máh-"
+  },
+  {
+   "corpus": "av",
+   "lemma": "mah",
+   "lex_id": [
+    "pie-lex-megjh2s"
+   ],
+   "erratum": "máh- 'great' also mapped to *megʰ- 'be able'",
+   "note": "EWAia s.v. MAH / máh- < *meǵh₂- (gr. μέγας); *megʰ- (got. magan) is the source of maghá- (EWAia II 289), not of máh-"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "vásu-",
+   "lex_id": [
+    "pie-lex-h1wesus"
+   ],
+   "erratum": "vásu- 'good' also mapped to *h₂wes- 'shine' and 'dwell'",
+   "note": "EWAia II 533 s.v. vásu- < *h₁u̯esu- 'gut' (gr. ἐΰς, heth. aššu-); the two *h₂wes- roots are unrelated"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vasu",
+   "lex_id": [
+    "pie-lex-h1wesus"
+   ],
+   "erratum": "vásu- 'good' also mapped to *h₂wes- 'shine' and 'dwell'",
+   "note": "EWAia II 533 s.v. vásu- < *h₁u̯esu- 'gut' (gr. ἐΰς, heth. aššu-); the two *h₂wes- roots are unrelated"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√vr̥dh-",
+   "lex_id": [
+    "pie-root-Hwerdh-become_big_strong",
+    "pie-lex-Hwerdht"
+   ],
+   "erratum": "vṛdh 'grow' mapped to *h₁lewdʰ- (the root of ruh)",
+   "note": "EWAia II 520 s.v. VARDH 'wachsen' < *h₂u̯erdʰ- (Av. varəd-); *h₁leu̯dʰ- belongs to ROH (√ruh-)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vṛdh",
+   "lex_id": [
+    "pie-root-Hwerdh-become_big_strong",
+    "pie-lex-Hwerdht"
+   ],
+   "erratum": "vṛdh 'grow' mapped to *h₁lewdʰ- (the root of ruh)",
+   "note": "EWAia II 520 s.v. VARDH 'wachsen' < *h₂u̯erdʰ- (Av. varəd-); *h₁leu̯dʰ- belongs to ROH (√ruh-)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "uṣás-",
+   "lex_id": [
+    "pie-lex-h2ewsoxs"
+   ],
+   "erratum": "uṣás- 'dawn' also mapped to *h₂ṓws 'ear'",
+   "note": "EWAia I 236 s.v. uṣás- < *h₂áu̯sos- 'Morgenröte'; 'ear' is a homograph confusion"
+  },
+  {
+   "corpus": "av",
+   "lemma": "uṣas",
+   "lex_id": [
+    "pie-lex-h2ewsoxs"
+   ],
+   "erratum": "uṣás- 'dawn' also mapped to *h₂ṓws 'ear'",
+   "note": "EWAia I 236 s.v. uṣás- < *h₂áu̯sos- 'Morgenröte'; 'ear' is a homograph confusion"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ūtí-",
+   "lex_id": [
+    "pie-root-h1ewH-help"
+   ],
+   "erratum": "ūtí- 'help' also mapped to *h₂ew- 'enjoy', 'perceive'",
+   "note": "EWAia I 134 s.v. AV¹ 'fördern, helfen' (ūtí- 'Hilfe' belongs here)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "ūti",
+   "lex_id": [
+    "pie-root-h1ewH-help"
+   ],
+   "erratum": "ūtí- 'help' also mapped to *h₂ew- 'enjoy', 'perceive'",
+   "note": "EWAia I 134 s.v. AV¹ 'fördern, helfen' (ūtí- 'Hilfe' belongs here)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√avⁱ-",
+   "lex_id": [
+    "pie-root-h1ewH-help",
+    "pie-lex-h1ewHeti"
+   ],
+   "erratum": "av 'help' also mapped to *h₂ew- 'enjoy', 'perceive'",
+   "note": "EWAia I 134 s.v. AV¹ 'fördern, helfen, schützen' (ávati)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "av",
+   "lex_id": [
+    "pie-root-h1ewH-help",
+    "pie-lex-h1ewHeti"
+   ],
+   "erratum": "av 'help' also mapped to *h₂ew- 'enjoy', 'perceive'",
+   "note": "EWAia I 134 s.v. AV¹ 'fördern, helfen, schützen' (ávati)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "gír- ~ gīr-",
+   "lex_id": [
+    "pie-root-gwerH-express_approval"
+   ],
+   "erratum": "gír- 'song of praise' mapped to *gʷerh₃- 'swallow'",
+   "note": "EWAia s.v. GAR¹ 'preisen' (gṛṇā́ti, gír- 'Preislied') < *gʷerH- (lit. girti 'loben'); 'verschlingen' is GAR² (EWAia I 469)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "gir",
+   "lex_id": [
+    "pie-root-gwerH-express_approval"
+   ],
+   "erratum": "gír- 'song of praise' mapped to *gʷerh₃- 'swallow'",
+   "note": "EWAia s.v. GAR¹ 'preisen' (gṛṇā́ti, gír- 'Preislied') < *gʷerH- (lit. girti 'loben'); 'verschlingen' is GAR² (EWAia I 469)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√gr̥̄- 1",
+   "lex_id": [
+    "pie-root-gwerH-express_approval",
+    "pie-lex-gwerHeti"
+   ],
+   "erratum": "gṝ 'praise' also mapped to *gʷerh₃- 'swallow'",
+   "note": "EWAia s.v. GAR¹ 'preisen'; VedaWeb surface forms: gṛṇānáḥ, gṛṇaté, gṛṇīmasi; 'swallow' is √gṝ- 2 (EWAia I 469 GAR²)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√gr̥̄- 2",
+   "lex_id": [
+    "pie-root-gwerh3-swallow"
+   ],
+   "erratum": "gṝ 'swallow' also mapped to *gʷerH- 'praise'",
+   "note": "EWAia I 469 s.v. GAR² 'verschlingen' < *gʷerh₃-; VedaWeb surface forms: jagāra, jalgulaḥ, gīrṇám"
+  },
+  {
+   "corpus": "av",
+   "lemma": "gṛ",
+   "lex_id": [
+    "pie-root-gwerH-express_approval",
+    "pie-root-gwerh3-swallow"
+   ],
+   "erratum": "DCS gṛ (praise + swallow) mapped to *h₁ger- 'wake' and *gʷr̥néHti",
+   "note": "DCS 'gṛ' merges GAR¹ 'preisen' (gṛṇanti, 24 tokens) and GAR² 'verschlingen' (girati, 7; EWAia I 469); the VedaWeb join picked √gr̥- 'wake' (EWAia I 468)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "índra-",
+   "lex_id": [],
+   "erratum": "Indra mapped to a pseudo-etymon *h₃eyd- 'swell'",
+   "note": "EWAia I 192f: 'Das Etymon von iir. *indra- ist nicht völlig sicher'; *h₃eid- is one proposal among several: unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "indra",
+   "lex_id": [],
+   "erratum": "Indra mapped to a pseudo-etymon *h₃eyd- 'swell'",
+   "note": "EWAia I 192f: 'Das Etymon von iir. *indra- ist nicht völlig sicher'; *h₃eid- is one proposal among several: unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "máda-",
+   "lex_id": [
+    "pie-root-meh2d-be_wet",
+    "pie-lex-meh2deti"
+   ],
+   "erratum": "mad 'be exhilarated' also mapped to *meh₂d- 'meet'",
+   "note": "EWAia II 299 s.v. MAD 'sich berauschen' (< 'triefen, voll werden', lat. madeō); *meh₂d- 'meet' is a homograph"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√mad-",
+   "lex_id": [
+    "pie-root-meh2d-be_wet",
+    "pie-lex-meh2deti"
+   ],
+   "erratum": "mad 'be exhilarated' also mapped to *meh₂d- 'meet'",
+   "note": "EWAia II 299 s.v. MAD 'sich berauschen' (< 'triefen, voll werden', lat. madeō); *meh₂d- 'meet' is a homograph"
+  },
+  {
+   "corpus": "av",
+   "lemma": "mad",
+   "lex_id": [
+    "pie-root-meh2d-be_wet",
+    "pie-lex-meh2deti"
+   ],
+   "erratum": "mad 'be exhilarated' also mapped to *meh₂d- 'meet'",
+   "note": "EWAia II 299 s.v. MAD 'sich berauschen' (< 'triefen, voll werden', lat. madeō); *meh₂d- 'meet' is a homograph"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√stu-",
+   "lex_id": [
+    "pie-root-stew-praise"
+   ],
+   "erratum": "stu 'praise' also mapped to *stew- 'push'",
+   "note": "EWAia II 757 s.v. STAV 'preisen, loben' (av. stu-); the homograph *stew- 'push' is unrelated"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "stóma-",
+   "lex_id": [
+    "pie-root-stew-praise"
+   ],
+   "erratum": "stu 'praise' also mapped to *stew- 'push'",
+   "note": "EWAia II 757 s.v. STAV 'preisen, loben' (av. stu-); the homograph *stew- 'push' is unrelated"
+  },
+  {
+   "corpus": "av",
+   "lemma": "stu",
+   "lex_id": [
+    "pie-root-stew-praise"
+   ],
+   "erratum": "stu 'praise' also mapped to *stew- 'push'",
+   "note": "EWAia II 757 s.v. STAV 'preisen, loben' (av. stu-); the homograph *stew- 'push' is unrelated"
+  },
+  {
+   "corpus": "av",
+   "lemma": "stoma",
+   "lex_id": [
+    "pie-root-stew-praise"
+   ],
+   "erratum": "stu 'praise' also mapped to *stew- 'push'",
+   "note": "EWAia II 757 s.v. STAV 'preisen, loben' (av. stu-); the homograph *stew- 'push' is unrelated"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "bráhman-",
+   "lex_id": [],
+   "erratum": "bráhman- mapped to *bʰerǵʰ- 'rise'",
+   "note": "EWAia II 236f: 'Glaubhaft *bʰreǵʰ-' (an. bragr); 'Nicht vorzuziehen *bʰreǵʰ- als Schwebeablautform zu *bʰerǵʰ-' — the lexicon has no *bʰreǵʰ- entry: unmapped (bṛ́haspáti- shares the first member)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "brā́hmaṇa-",
+   "lex_id": [],
+   "erratum": "bráhman- mapped to *bʰerǵʰ- 'rise'",
+   "note": "EWAia II 236f: 'Glaubhaft *bʰreǵʰ-' (an. bragr); 'Nicht vorzuziehen *bʰreǵʰ- als Schwebeablautform zu *bʰerǵʰ-' — the lexicon has no *bʰreǵʰ- entry: unmapped (bṛ́haspáti- shares the first member)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "bŕ̥haspáti-",
+   "lex_id": [],
+   "erratum": "bráhman- mapped to *bʰerǵʰ- 'rise'",
+   "note": "EWAia II 236f: 'Glaubhaft *bʰreǵʰ-' (an. bragr); 'Nicht vorzuziehen *bʰreǵʰ- als Schwebeablautform zu *bʰerǵʰ-' — the lexicon has no *bʰreǵʰ- entry: unmapped (bṛ́haspáti- shares the first member)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "brahman",
+   "lex_id": [],
+   "erratum": "bráhman- mapped to *bʰerǵʰ- 'rise'",
+   "note": "EWAia II 236f: 'Glaubhaft *bʰreǵʰ-' (an. bragr); 'Nicht vorzuziehen *bʰreǵʰ- als Schwebeablautform zu *bʰerǵʰ-' — the lexicon has no *bʰreǵʰ- entry: unmapped (bṛ́haspáti- shares the first member)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "brāhmaṇa",
+   "lex_id": [],
+   "erratum": "bráhman- mapped to *bʰerǵʰ- 'rise'",
+   "note": "EWAia II 236f: 'Glaubhaft *bʰreǵʰ-' (an. bragr); 'Nicht vorzuziehen *bʰreǵʰ- als Schwebeablautform zu *bʰerǵʰ-' — the lexicon has no *bʰreǵʰ- entry: unmapped (bṛ́haspáti- shares the first member)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "bṛhaspati",
+   "lex_id": [],
+   "erratum": "bráhman- mapped to *bʰerǵʰ- 'rise'",
+   "note": "EWAia II 236f: 'Glaubhaft *bʰreǵʰ-' (an. bragr); 'Nicht vorzuziehen *bʰreǵʰ- als Schwebeablautform zu *bʰerǵʰ-' — the lexicon has no *bʰreǵʰ- entry: unmapped (bṛ́haspáti- shares the first member)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "íṣ-",
+   "lex_id": [
+    "pie-root-h1eysh2-strengthen"
+   ],
+   "erratum": "íṣ- 'refreshment, vigour' also mapped to *h₂eys- 'wish'",
+   "note": "EWAia I 271 s.v. EṢ² / íṣ- 'Labung, Kraft' < *h₁ei̯sh₂-; 'wünschen' is EṢ¹ (EWAia I 270)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√iṣ- 1",
+   "lex_id": [
+    "pie-root-h1eysh2-strengthen"
+   ],
+   "erratum": "iṣ 'send' also mapped to *h₂eys- 'wish'",
+   "note": "EWAia I 271 s.v. EṢ² 'in Bewegung setzen, antreiben'; VedaWeb surface forms: iṣitáḥ, iṣyati"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√iṣ- 2",
+   "lex_id": [
+    "pie-root-h2eys-wish"
+   ],
+   "erratum": "iṣ 'wish' also mapped to *h₁eysh₂- 'propel'",
+   "note": "EWAia I 270 s.v. EṢ¹ 'wünschen, suchen' (icchati); VedaWeb surface forms: ichán, ichati"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√cit-",
+   "lex_id": [
+    "pie-root-kweyt-notice",
+    "pie-lex-kweyteti"
+   ],
+   "erratum": "cit 'perceive' also mapped to *kʷeyt- 'begin to shine'",
+   "note": "EWAia I 547 s.v. CET 'erkennen, achthaben' < *kʷei̯t-; pie-lex-kweyt has root *kʷey- 'perceive' and the second *kʷeyt- is a different root"
+  },
+  {
+   "corpus": "av",
+   "lemma": "cit",
+   "lex_id": [
+    "pie-root-kweyt-notice",
+    "pie-lex-kweyteti"
+   ],
+   "erratum": "cit 'perceive' also mapped to *kʷeyt- 'begin to shine'",
+   "note": "EWAia I 547 s.v. CET 'erkennen, achthaben' < *kʷei̯t-; pie-lex-kweyt has root *kʷey- 'perceive' and the second *kʷeyt- is a different root"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√vr̥- 1",
+   "lex_id": [],
+   "erratum": "vṛ 'cover' / vṛtrá- mapped to *h₂wer- 'lift' and *welh₁- 'choose'",
+   "note": "EWAia II 512 s.v. VAR¹ 'umschließen, zurückhalten' (vṛtrá- 'Widerstand' II 573); VedaWeb surface forms: āvar, ūrṇoti; the lexicon has no entry for this root (*h₂wer- 'lift' is gr. ἀείρω), welh₁ is VAR² 'wählen': unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "vr̥trá-",
+   "lex_id": [],
+   "erratum": "vṛ 'cover' / vṛtrá- mapped to *h₂wer- 'lift' and *welh₁- 'choose'",
+   "note": "EWAia II 512 s.v. VAR¹ 'umschließen, zurückhalten' (vṛtrá- 'Widerstand' II 573); VedaWeb surface forms: āvar, ūrṇoti; the lexicon has no entry for this root (*h₂wer- 'lift' is gr. ἀείρω), welh₁ is VAR² 'wählen': unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vṛtra",
+   "lex_id": [],
+   "erratum": "vṛ 'cover' / vṛtrá- mapped to *h₂wer- 'lift' and *welh₁- 'choose'",
+   "note": "EWAia II 512 s.v. VAR¹ 'umschließen, zurückhalten' (vṛtrá- 'Widerstand' II 573); VedaWeb surface forms: āvar, ūrṇoti; the lexicon has no entry for this root (*h₂wer- 'lift' is gr. ἀείρω), welh₁ is VAR² 'wählen': unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√vr̥- 2",
+   "lex_id": [
+    "pie-root-welh1-choose",
+    "pie-lex-wlnh1toy"
+   ],
+   "erratum": "vṛ 'choose' also mapped to *h₂wer- 'lift'",
+   "note": "EWAia II 511 s.v. VAR² 'wählen' < *u̯elh₁-; VedaWeb surface forms: vṛṇīmahe, vṛṇe"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vṛ",
+   "lex_id": [
+    "pie-root-welh1-choose",
+    "pie-lex-wlnh1toy"
+   ],
+   "erratum": "DCS vṛ (cover + choose) also mapped to *h₂wer- 'lift'",
+   "note": "DCS 'vṛ' merges VAR¹ 'umschließen' (ūrṇuhi, 32 tokens; no lexicon entry) and VAR² 'wählen' (vṛṇīta, 33; EWAia II 511 < *u̯elh₁-): only the latter kept"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√naś- 1",
+   "lex_id": [
+    "pie-root-h2nekj-reach"
+   ],
+   "erratum": "naś 'reach' also mapped to *neḱ- 'perish'",
+   "note": "EWAia II 27 s.v. NAŚ¹ 'erreichen' < *h₂neḱ-; VedaWeb surface forms: ānaṭ, ānaśuḥ, naśat; 'umkommen' is NAŚ² (EWAia II 28 = √naś- 2)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√naś- 2",
+   "lex_id": [
+    "pie-root-nekj-perish",
+    "pie-lex-nekjyeti"
+   ],
+   "erratum": "naś 'perish' also mapped to *h₂neḱ- 'reach'",
+   "note": "EWAia II 28 s.v. NAŚ² 'umkommen' < *neḱ-; VedaWeb surface forms: naṣṭám, naśyati, nāśayāmasi"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "áditi-",
+   "lex_id": [
+    "pie-root-deh1-bind"
+   ],
+   "erratum": "áditi- mapped to *deh₂- 'share' and *h₁ed- 'eat'",
+   "note": "EWAia I 63: á-di-ti- 'Ungebundenheit', negated -ti- noun to DĀ³ 'binden' (*deh₁-)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "aditi",
+   "lex_id": [
+    "pie-root-deh1-bind"
+   ],
+   "erratum": "áditi- mapped to *deh₂- 'share' and *h₁ed- 'eat'",
+   "note": "EWAia I 63: á-di-ti- 'Ungebundenheit', negated -ti- noun to DĀ³ 'binden' (*deh₁-)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√hi-",
+   "lex_id": [
+    "pie-lex-gjhinewti",
+    "pie-root-gjhey-drive"
+   ],
+   "erratum": "hi 'impel' also mapped to the particle *ǵʰi and *ǵʰey- 'winter'",
+   "note": "EWAia II 802 s.v. HAY 'antreiben' (hinóti); DCS 'hi' in AV is the verb (hiṇomi, hinoti)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "hi",
+   "lex_id": [
+    "pie-lex-gjhinewti",
+    "pie-root-gjhey-drive"
+   ],
+   "erratum": "hi 'impel' also mapped to the particle *ǵʰi and *ǵʰey- 'winter'",
+   "note": "EWAia II 802 s.v. HAY 'antreiben' (hinóti); DCS 'hi' in AV is the verb (hiṇomi, hinoti)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√sac-",
+   "lex_id": [
+    "pie-lex-sekwetor",
+    "pie-root-sekw-follow"
+   ],
+   "erratum": "sac 'follow' also mapped to *sekʷ- 'say', 'see'",
+   "note": "EWAia II 686 s.v. SAC 'folgen, begleiten' < *sekʷ- (lat. sequor)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "sac",
+   "lex_id": [
+    "pie-lex-sekwetor",
+    "pie-root-sekw-follow"
+   ],
+   "erratum": "sac 'follow' also mapped to *sekʷ- 'say', 'see'",
+   "note": "EWAia II 686 s.v. SAC 'folgen, begleiten' < *sekʷ- (lat. sequor)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√spaś-",
+   "lex_id": [
+    "pie-lex-spekjs",
+    "pie-root-spekj-see"
+   ],
+   "erratum": "spaś 'see' also mapped to *peh₂ḱ- 'join'",
+   "note": "EWAia II 775 s.v. SPAŚ → PAŚ (II 107f) < *speḱ- 'spähen'; *peh₂ḱ- is pā́śa- 'fetter'"
+  },
+  {
+   "corpus": "av",
+   "lemma": "paś",
+   "lex_id": [
+    "pie-lex-spekjyeti",
+    "pie-root-spekj-see"
+   ],
+   "erratum": "paś 'see' also mapped to *peh₂ḱ- 'join'",
+   "note": "EWAia II 107f s.v. PAŚ 'sehen' < *speḱ-; *peh₂ḱ- is pā́śa- 'fetter'"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "rájas-",
+   "lex_id": [
+    "pie-lex-h1regwos"
+   ],
+   "erratum": "rájas- 'airspace, haze' also mapped to *h₃reǵ- 'straighten'",
+   "note": "EWAia II 426 s.v. rájas-¹: < *h₁régʷos (gr. ἔρεβος); *h₃reǵ- (rā́jan-) is unrelated"
+  },
+  {
+   "corpus": "av",
+   "lemma": "rajas",
+   "lex_id": [
+    "pie-lex-h1regwos"
+   ],
+   "erratum": "rájas- 'airspace, haze' also mapped to *h₃reǵ- 'straighten'",
+   "note": "EWAia II 426 s.v. rájas-¹: < *h₁régʷos (gr. ἔρεβος); *h₃reǵ- (rā́jan-) is unrelated"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "áhar ~ áhan-",
+   "lex_id": [],
+   "erratum": "áhan- 'day' mapped to *gʷʰen- 'strike'",
+   "note": "EWAia I 154: idg. vielleicht *(h₂)egʷʰ-r/n- (connected with Gmc. 'day'), not *gʷʰen-; no lexicon entry: unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "ahar",
+   "lex_id": [],
+   "erratum": "áhan- 'day' mapped to *gʷʰen- 'strike'",
+   "note": "EWAia I 154: idg. vielleicht *(h₂)egʷʰ-r/n- (connected with Gmc. 'day'), not *gʷʰen-; no lexicon entry: unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "rudrá-",
+   "lex_id": [],
+   "erratum": "Rudra mapped to *HrewdH- 'weep'",
+   "note": "EWAia II 452f: proposals for the god's name 'sind vor der Gefahr semantischer Willkür nicht sicher': unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "rudra",
+   "lex_id": [],
+   "erratum": "Rudra mapped to *HrewdH- 'weep'",
+   "note": "EWAia II 452f: proposals for the god's name 'sind vor der Gefahr semantischer Willkür nicht sicher': unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "vratá-",
+   "lex_id": [],
+   "erratum": "vratá- mapped to *werh₁- 'speak' and *wreh₁- 'find'",
+   "note": "EWAia II 594f: 'Jede Zuordnung von iir. *u̯rata- an eine der denkmöglichen idg. *(H)u̯er(H)-Wurzeln muß willkürlich bleiben': unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vrata",
+   "lex_id": [],
+   "erratum": "vratá- mapped to *werh₁- 'speak' and *wreh₁- 'find'",
+   "note": "EWAia II 594f: 'Jede Zuordnung von iir. *u̯rata- an eine der denkmöglichen idg. *(H)u̯er(H)-Wurzeln muß willkürlich bleiben': unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ádri-",
+   "lex_id": [],
+   "erratum": "ádri- 'stone' mapped to a pseudo-etymon",
+   "note": "EWAia I 65: 'Der Ursprung von iir. *adri- ist ungeklärt': unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "adri",
+   "lex_id": [],
+   "erratum": "ádri- 'stone' mapped to a pseudo-etymon",
+   "note": "EWAia I 65: 'Der Ursprung von iir. *adri- ist ungeklärt': unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "havyá-",
+   "lex_id": [
+    "pie-root-gjhew-pour"
+   ],
+   "erratum": "hu 'pour, offer' also mapped to *ǵʰewH- 'call'",
+   "note": "EWAia II 808 s.v. HAV 'opfern, gießen' < *ǵʰeu̯- (gr. χέω); 'call' is HAVⁱ/HVĀ (√hū-)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√hu-",
+   "lex_id": [
+    "pie-root-gjhew-pour"
+   ],
+   "erratum": "hu 'pour, offer' also mapped to *ǵʰewH- 'call'",
+   "note": "EWAia II 808 s.v. HAV 'opfern, gießen' < *ǵʰeu̯- (gr. χέω); 'call' is HAVⁱ/HVĀ (√hū-)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "havís-",
+   "lex_id": [
+    "pie-root-gjhew-pour"
+   ],
+   "erratum": "hu 'pour, offer' also mapped to *ǵʰewH- 'call'",
+   "note": "EWAia II 808 s.v. HAV 'opfern, gießen' < *ǵʰeu̯- (gr. χέω); 'call' is HAVⁱ/HVĀ (√hū-)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "havya",
+   "lex_id": [
+    "pie-root-gjhew-pour"
+   ],
+   "erratum": "hu 'pour, offer' also mapped to *ǵʰewH- 'call'",
+   "note": "EWAia II 808 s.v. HAV 'opfern, gießen' < *ǵʰeu̯- (gr. χέω); 'call' is HAVⁱ/HVĀ (√hū-)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "hu",
+   "lex_id": [
+    "pie-root-gjhew-pour"
+   ],
+   "erratum": "hu 'pour, offer' also mapped to *ǵʰewH- 'call'",
+   "note": "EWAia II 808 s.v. HAV 'opfern, gießen' < *ǵʰeu̯- (gr. χέω); 'call' is HAVⁱ/HVĀ (√hū-)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "svàr-",
+   "lex_id": [
+    "pie-lex-soh2wl"
+   ],
+   "erratum": "svàr 'sun' also mapped to *swer- 'ache', 'resound'",
+   "note": "EWAia II 794 s.v. svàr- 'Sonne, Licht' < *sh₂u̯el-/*suh₂ōl; *swer- 'resound' is the verb √svar-"
+  },
+  {
+   "corpus": "av",
+   "lemma": "svar",
+   "lex_id": [
+    "pie-lex-soh2wl"
+   ],
+   "erratum": "DCS svar 'sun' joined to the verb √svar- 'sound'",
+   "note": "DCS 'svar' in AV is the noun (svar, svaḥ; 99 of 100 tokens): EWAia II 794 s.v. svàr- 'Sonne' < *sh₂u̯el-"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√svar-",
+   "lex_id": [
+    "pie-root-swer-resound"
+   ],
+   "erratum": "svar 'sound' also mapped to *sóh₂wl̥ 'sun' and *swer- 'ache'",
+   "note": "EWAia II 792 s.v. SVAR 'tönen' (lat. susurrus) < *su̯er-; VedaWeb forms are verbal"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "śúci-",
+   "lex_id": [
+    "pie-root-kjewk-flare_up"
+   ],
+   "erratum": "śuc 'glow' also mapped to *ḱewk- 'call'",
+   "note": "EWAia s.v. ŚOC 'leuchten, glühen' < *ḱeu̯k-; the homograph 'cry out' is unrelated"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√śuc-",
+   "lex_id": [
+    "pie-root-kjewk-flare_up"
+   ],
+   "erratum": "śuc 'glow' also mapped to *ḱewk- 'call'",
+   "note": "EWAia s.v. ŚOC 'leuchten, glühen' < *ḱeu̯k-; the homograph 'cry out' is unrelated"
+  },
+  {
+   "corpus": "av",
+   "lemma": "śuci",
+   "lex_id": [
+    "pie-root-kjewk-flare_up"
+   ],
+   "erratum": "śuc 'glow' also mapped to *ḱewk- 'call'",
+   "note": "EWAia s.v. ŚOC 'leuchten, glühen' < *ḱeu̯k-; the homograph 'cry out' is unrelated"
+  },
+  {
+   "corpus": "av",
+   "lemma": "śuc",
+   "lex_id": [
+    "pie-root-kjewk-flare_up"
+   ],
+   "erratum": "śuc 'glow' also mapped to *ḱewk- 'call'",
+   "note": "EWAia s.v. ŚOC 'leuchten, glühen' < *ḱeu̯k-; the homograph 'cry out' is unrelated"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√aś-",
+   "lex_id": [
+    "pie-root-h2nekj-reach"
+   ],
+   "erratum": "aś 'reach' also mapped to *h₂eḱh₃- 'eat'",
+   "note": "EWAia I 136: 'AŚ erreichen, s. NAŚ¹' (II 27, *h₂neḱ-); VedaWeb surface forms: aśnoti, aśyāma (aś 'eat' = aśnāti is a separate DCS lemma sense; AV 'aś' merges both and is left as is)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "dhána-",
+   "lex_id": [],
+   "erratum": "dhána- 'prize' mapped to *dʰenh₂- 'run'",
+   "note": "EWAia I 771f: 'Umstritten' (DHAN 'run' vs. DHĀ 'put'): unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "dhana",
+   "lex_id": [],
+   "erratum": "dhána- 'prize' mapped to *dʰenh₂- 'run'",
+   "note": "EWAia I 771f: 'Umstritten' (DHAN 'run' vs. DHĀ 'put'): unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "vána-",
+   "lex_id": [],
+   "erratum": "vána- 'tree, wood' mapped to *wénh₁os 'desire'",
+   "note": "EWAia II 500: ván-/vána- 'Baum, Holz' — 'Weiteres ist unsicher'; vánas- 'Verlangen' is a separate word: unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vana",
+   "lex_id": [],
+   "erratum": "vána- 'tree, wood' mapped to *wénh₁os 'desire'",
+   "note": "EWAia II 500: ván-/vána- 'Baum, Holz' — 'Weiteres ist unsicher'; vánas- 'Verlangen' is a separate word: unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√pr̥-",
+   "lex_id": [
+    "pie-lex-piporti",
+    "pie-root-per-go_through"
+   ],
+   "erratum": "pṛ 'carry across' also mapped to *pelh₁- 'fill' and *perh₃- 'provide'",
+   "note": "EWAia II 85 s.v. PAR¹ 'übersetzen, hinüberbringen' < *per-; VedaWeb surface forms: parṣi, piparti, pāraya; 'füllen' is PAR² (II 89)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "pṛ",
+   "lex_id": [
+    "pie-root-pleh1-fill",
+    "pie-lex-pipleh1ti",
+    "pie-root-per-go_through",
+    "pie-lex-piporti"
+   ],
+   "erratum": "DCS pṛ also mapped to *perh₃- 'provide'",
+   "note": "DCS 'pṛ' merges PAR² 'füllen' (pṛṇīhi, pūrṇa; 63 tokens; EWAia II 89 < *pelh₁-) and PAR¹ 'hinüberbringen' (parṣat, piparti; 32; II 85 < *per-); *perh₃- dropped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√pr̥̄-",
+   "lex_id": [
+    "pie-root-pleh1-fill",
+    "pie-lex-pipleh1ti"
+   ],
+   "erratum": "pṝ 'fill' also mapped to *perh₃- 'provide'",
+   "note": "EWAia II 89 s.v. PAR² (~ PRĀ) 'füllen' < *pelh₁- (lat. plēnus)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "sávana- 1",
+   "lex_id": [
+    "pie-root-sewh1-press"
+   ],
+   "erratum": "sávana- 'pressing (of soma)' also mapped to *suHs 'pig' and *sewH- 'bear'",
+   "note": "EWAia II 713 s.v. SAV¹ 'pressen' (sunóti) < *seu̯h₁-; the pig and 'give birth' are homographs"
+  },
+  {
+   "corpus": "av",
+   "lemma": "savana",
+   "lex_id": [
+    "pie-root-sewh1-press"
+   ],
+   "erratum": "sávana- 'pressing (of soma)' also mapped to *suHs 'pig' and *sewH- 'bear'",
+   "note": "EWAia II 713 s.v. SAV¹ 'pressen' (sunóti) < *seu̯h₁-; the pig and 'give birth' are homographs"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "pavítra-",
+   "lex_id": [
+    "pie-root-pewH-be_clean"
+   ],
+   "erratum": "PAV derivative also mapped to *pewH- 'rot'",
+   "note": "EWAia II 106 s.v. PAV 'reinigen'; *pewH- 'rot' is a different root"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "pāvaká-",
+   "lex_id": [
+    "pie-root-pewH-be_clean"
+   ],
+   "erratum": "PAV derivative also mapped to *pewH- 'rot'",
+   "note": "EWAia II 106 s.v. PAV 'reinigen'; *pewH- 'rot' is a different root"
+  },
+  {
+   "corpus": "av",
+   "lemma": "pavitra",
+   "lex_id": [
+    "pie-root-pewH-be_clean"
+   ],
+   "erratum": "PAV derivative also mapped to *pewH- 'rot'",
+   "note": "EWAia II 106 s.v. PAV 'reinigen'; *pewH- 'rot' is a different root"
+  },
+  {
+   "corpus": "av",
+   "lemma": "pāvaka",
+   "lex_id": [
+    "pie-root-pewH-be_clean"
+   ],
+   "erratum": "PAV derivative also mapped to *pewH- 'rot'",
+   "note": "EWAia II 106 s.v. PAV 'reinigen'; *pewH- 'rot' is a different root"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "víṣṇu-",
+   "lex_id": [],
+   "erratum": "Viṣṇu mapped to three *weys- roots",
+   "note": "EWAia II 566: 'Nicht klar': unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "viṣṇu",
+   "lex_id": [],
+   "erratum": "Viṣṇu mapped to three *weys- roots",
+   "note": "EWAia II 566: 'Nicht klar': unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√nu- ~ nū-",
+   "lex_id": [],
+   "erratum": "nu 'praise, shout' mapped to the particle *nu 'now'",
+   "note": "VedaWeb surface forms are verbal (návante, nonuvuḥ); the particle nú is a different word; no lexicon root: unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√dī- 1",
+   "lex_id": [
+    "pie-root-deyh2-shine"
+   ],
+   "erratum": "dī 'shine' also mapped to *deyh₁- 'chase'",
+   "note": "EWAia I 701 s.v. DAY³ 'leuchten, strahlen' (dīdeti); VedaWeb surface forms: dīdihi, dīdivā́ṃsam"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√krand-",
+   "lex_id": [],
+   "erratum": "krand 'roar' mapped to *kelh₁- 'call' and *skelh₁- 'parch'",
+   "note": "EWAia I 408f: 'Nicht sicher gedeutet' (an extension *kl-en-d- of *kel- is asked, not asserted): unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "krand",
+   "lex_id": [],
+   "erratum": "krand 'roar' mapped to *kelh₁- 'call' and *skelh₁- 'parch'",
+   "note": "EWAia I 408f: 'Nicht sicher gedeutet' (an extension *kl-en-d- of *kel- is asked, not asserted): unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√pat- 1",
+   "lex_id": [
+    "pie-lex-peth2eti",
+    "pie-root-peth2-fly"
+   ],
+   "erratum": "pat 'fly' also mapped to *peth₂- 'spread out'",
+   "note": "EWAia II 71 s.v. PAT¹ 'fliegen, fallen' < *peth₂- (gr. πέτομαι); 'spread out' is a different root"
+  },
+  {
+   "corpus": "av",
+   "lemma": "pat",
+   "lex_id": [
+    "pie-lex-peth2eti",
+    "pie-root-peth2-fly"
+   ],
+   "erratum": "pat 'fly' also mapped to *peth₂- 'spread out'",
+   "note": "EWAia II 71 s.v. PAT¹ 'fliegen, fallen' < *peth₂- (gr. πέτομαι); 'spread out' is a different root"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√mā- 1",
+   "lex_id": [
+    "pie-root-meh1-measure"
+   ],
+   "erratum": "mā 'measure' also mapped to *eǵh₂ 'I' and the prohibitive *meh₁",
+   "note": "EWAia II 341 s.v. MĀ¹ 'messen' < *meh₁-; DCS 'mā' in AV is the verb (mimīte, mimāti)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "mā",
+   "lex_id": [
+    "pie-root-meh1-measure"
+   ],
+   "erratum": "mā 'measure' also mapped to *eǵh₂ 'I' and the prohibitive *meh₁",
+   "note": "EWAia II 341 s.v. MĀ¹ 'messen' < *meh₁-; DCS 'mā' in AV is the verb (mimīte, mimāti)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√vas- 1",
+   "lex_id": [
+    "pie-root-h2wes-become_bright"
+   ],
+   "erratum": "vas 'shine' (uchati) mapped to *h₂wes- 'dwell' and *wes- 'dress'",
+   "note": "EWAia II 530 s.v. VAS¹ 'aufleuchten' (ucchati) < *h₂u̯es-; VedaWeb surface forms: ucha, uchántī, vyuchántī"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√vas- 2",
+   "lex_id": [
+    "pie-root-wes-dress"
+   ],
+   "erratum": "vas 'wear' also mapped to *h₂wes- 'dwell'",
+   "note": "EWAia II 529 s.v. VAS² 'bekleidet sein' < *u̯es-; VedaWeb surface forms: vásānaḥ, vaste"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√vas- 3",
+   "lex_id": [
+    "pie-root-h2wes-dwell",
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "vas 'dwell' also mapped to *wes- 'dress'",
+   "note": "EWAia II 531 s.v. VAS³ 'wohnen, weilen'; VedaWeb surface forms: vasati, ávasat"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vas",
+   "lex_id": [
+    "pie-root-h2wes-become_bright",
+    "pie-root-wes-dress",
+    "pie-root-h2wes-dwell"
+   ],
+   "erratum": "DCS vas (shine/wear/dwell) mapped to 'dwell' + 'dress' only",
+   "note": "DCS 'vas' merges VAS¹ 'aufleuchten' (ucchatu, 19 tokens), VAS² 'bekleidet sein' (vasānā, 23) and VAS³ 'wohnen' (vasati, 31): EWAia II 529–531"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√pī- 1",
+   "lex_id": [
+    "pie-root-peyh2-swell"
+   ],
+   "erratum": "pī 'swell' also mapped to *peh₁- 'hate'",
+   "note": "EWAia II 83 s.v. PAY 'schwellen, strotzen' < *pei̯h₂-"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "śátru-",
+   "lex_id": [],
+   "erratum": "śátru- 'enemy' mapped to *keh₃- 'fight'",
+   "note": "EWAia II 607: 'Nicht sicher erklärt': unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "śatru",
+   "lex_id": [],
+   "erratum": "śátru- 'enemy' mapped to *keh₃- 'fight'",
+   "note": "EWAia II 607: 'Nicht sicher erklärt': unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ví-",
+   "lex_id": [
+    "pie-lex-h2ewis"
+   ],
+   "erratum": "ví- 'bird' also mapped to the preverb *wi and *weyh₁-",
+   "note": "EWAia s.v. ví- 'Vogel' < *h₂éu̯is (lat. avis); the preverb ví is a separate lemma"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√vidh- 1",
+   "lex_id": [],
+   "erratum": "vidh 'worship' mapped to *h₁weydʰh₁- 'separate'",
+   "note": "VedaWeb surface forms: vidhema, vidhaté = EWAia s.v. VIDH 'verehren, huldigen' (no secure etymon; I 786 lists it beside DHĀ); the 'separate' root (vidhávā-) is unrelated: unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vidh",
+   "lex_id": [],
+   "erratum": "DCS vidh 'worship' joined to RV √vidh- 2 'pierce' and mapped to *h₁weydʰh₁-",
+   "note": "AV forms are vidhema, vidheyam (worship): see the RV note; unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√bhā-",
+   "lex_id": [
+    "pie-root-bheh2-shine"
+   ],
+   "erratum": "bhā 'shine' also mapped to *bʰeh₂- 'speak'",
+   "note": "EWAia II 259 s.v. BHĀ 'leuchten, strahlen' < *bʰeh₂- (gr. φάος); 'speak' (gr. φημί) is a homograph"
+  },
+  {
+   "corpus": "av",
+   "lemma": "bhā",
+   "lex_id": [
+    "pie-root-bheh2-shine"
+   ],
+   "erratum": "bhā 'shine' also mapped to *bʰeh₂- 'speak'",
+   "note": "EWAia II 259 s.v. BHĀ 'leuchten, strahlen' < *bʰeh₂- (gr. φάος); 'speak' (gr. φημί) is a homograph"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√sr̥-",
+   "lex_id": [
+    "pie-root-ser-flow"
+   ],
+   "erratum": "sṛ 'flow, run' mapped to three *sel- roots",
+   "note": "EWAia II 705 s.v. SAR 'laufen, eilen, fließen' < *ser- (gr. ὁρμή?); *sel- roots are unrelated"
+  },
+  {
+   "corpus": "av",
+   "lemma": "sṛ",
+   "lex_id": [
+    "pie-root-ser-flow"
+   ],
+   "erratum": "sṛ 'flow, run' mapped to three *sel- roots",
+   "note": "EWAia II 705 s.v. SAR 'laufen, eilen, fließen' < *ser- (gr. ὁρμή?); *sel- roots are unrelated"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "svadhā́-",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "svadhā́- also mapped to *dʰeh₁y- 'suck'",
+   "note": "EWAia II 789 s.v. svadhā́- 'Eigenart': svá- + DHĀ 'setzen' (I 783)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "svadhā",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "svadhā́- also mapped to *dʰeh₁y- 'suck'",
+   "note": "EWAia II 789 s.v. svadhā́- 'Eigenart': svá- + DHĀ 'setzen' (I 783)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√vr̥j-",
+   "lex_id": [
+    "pie-root-h2werg-turn"
+   ],
+   "erratum": "vṛj 'twist' also mapped to *wreg- 'track'",
+   "note": "EWAia II 516 s.v. VARJ 'drehen, wenden' < *h₂u̯erǵ-; *u̯reg- is VRAJ 'wandern' (II 594)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vṛj",
+   "lex_id": [
+    "pie-root-h2werg-turn"
+   ],
+   "erratum": "vṛj 'twist' also mapped to *wreg- 'track'",
+   "note": "EWAia II 516 s.v. VARJ 'drehen, wenden' < *h₂u̯erǵ-; *u̯reg- is VRAJ 'wandern' (II 594)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "dásyu-",
+   "lex_id": [],
+   "erratum": "dásyu- mapped to *des- 'find'",
+   "note": "EWAia I 711f: an Indo-Iranian word (Av. daxiiu- 'land'), no PIE etymon given: unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "dasyu",
+   "lex_id": [],
+   "erratum": "dásyu- mapped to *des- 'find'",
+   "note": "EWAia I 711f: an Indo-Iranian word (Av. daxiiu- 'land'), no PIE etymon given: unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "kṣám-",
+   "lex_id": [
+    "pie-lex-dhegjhoxm"
+   ],
+   "erratum": "kṣám- 'earth' mapped to a pseudo-entry instead of *dʰéǵʰōm",
+   "note": "EWAia I 424 s.v. kṣám- < *dʰéǵʰōm (gr. χθών, heth. tēkan)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "kṣam",
+   "lex_id": [
+    "pie-lex-dhegjhoxm"
+   ],
+   "erratum": "kṣám- 'earth' mapped to a pseudo-entry instead of *dʰéǵʰōm",
+   "note": "EWAia I 424 s.v. kṣám- < *dʰéǵʰōm (gr. χθών, heth. tēkan)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√śā- ~ śī-",
+   "lex_id": [
+    "pie-root-kjeh3y-sharpen"
+   ],
+   "erratum": "śā 'sharpen' mapped to *ḱey- 'lie', 'fall' and *sḱeh₃- 'darkness'",
+   "note": "EWAia II 627 s.v. ŚĀ 'schärfen, wetzen' < *ḱeh₃(i̯)- (lat. cōs); VedaWeb surface forms: śíśānaḥ, śiśīte"
+  },
+  {
+   "corpus": "av",
+   "lemma": "śā",
+   "lex_id": [
+    "pie-root-kjeh3y-sharpen"
+   ],
+   "erratum": "śā 'sharpen' mapped to *ḱey- 'lie', 'fall' and *sḱeh₃- 'darkness'",
+   "note": "EWAia II 627 s.v. ŚĀ 'schärfen, wetzen' < *ḱeh₃(i̯)- (lat. cōs); VedaWeb surface forms: śíśānaḥ, śiśīte"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√gr̥-",
+   "lex_id": [
+    "pie-root-h1ger-wake_up"
+   ],
+   "erratum": "gṛ 'wake' also mapped to *gʷr̥néHti 'praise'",
+   "note": "EWAia I 468 s.v. GAR 'wachen' < *h₁ger- (gr. ἐγείρω); VedaWeb surface forms: jāgāra, jāgṛhi, ajīgar"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√ās-",
+   "lex_id": [
+    "pie-root-h1eh1s-sit"
+   ],
+   "erratum": "ās 'sit' also mapped to *h₁óh₃s 'mouth'",
+   "note": "EWAia I 181 s.v. ĀS 'sitzen' < *h₁eh₁s- (gr. ἧσται); 'mouth' (ā́s-) is a homograph"
+  },
+  {
+   "corpus": "av",
+   "lemma": "ās",
+   "lex_id": [
+    "pie-root-h1eh1s-sit"
+   ],
+   "erratum": "ās 'sit' also mapped to *h₁óh₃s 'mouth'",
+   "note": "EWAia I 181 s.v. ĀS 'sitzen' < *h₁eh₁s- (gr. ἧσται); 'mouth' (ā́s-) is a homograph"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "aruṣá-",
+   "lex_id": [],
+   "erratum": "aruṣá- 'reddish' mapped to *h₂elut- 'beer'",
+   "note": "EWAia I 113: to be judged together with aruṇá-; *h₂elut- 'beer' is a false Wiktionary link: unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "aruṣa",
+   "lex_id": [],
+   "erratum": "aruṣá- 'reddish' mapped to *h₂elut- 'beer'",
+   "note": "EWAia I 113: to be judged together with aruṇá-; *h₂elut- 'beer' is a false Wiktionary link: unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√kṣi-",
+   "lex_id": [
+    "pie-root-tkjey-cultivate"
+   ],
+   "erratum": "kṣi 'dwell' mapped to *dʰgʷʰey- 'perish'",
+   "note": "EWAia I 427 s.v. KṢAY¹ 'wohnen' < *tḱei̯-; VedaWeb surface forms: kṣeti, kṣiyántam, kṣiyanti (all 'dwell'); root id as for kṣáya- (pie-lex-tkjeyti has a wrong root_id)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "kṣi",
+   "lex_id": [
+    "pie-root-tkjey-cultivate",
+    "pie-root-dhgwhey-decline"
+   ],
+   "erratum": "DCS kṣi (dwell + destroy) mapped to 'perish' only",
+   "note": "DCS 'kṣi' merges KṢAY¹ 'wohnen' (kṣiyanti, kṣayati; EWAia I 427, *tḱei̯-) and KṢAY² 'vernichten' (kṣiṇāti, kṣita; *dʰgʷʰei̯-)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√pā- 1",
+   "lex_id": [
+    "pie-root-peh2-protect"
+   ],
+   "erratum": "pā 'protect' mapped to *peh₃- 'drink'",
+   "note": "EWAia II 112 s.v. PĀ¹ 'schützen' < *peh₂- (lat. pāscō); VedaWeb surface forms: pāhi, pātu, pānti; 'drink' is √pā- 2 (II 113)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "pā",
+   "lex_id": [
+    "pie-root-peh3-drink",
+    "pie-root-peh2-protect"
+   ],
+   "erratum": "DCS pā (drink + protect) mapped to 'drink' only",
+   "note": "DCS 'pā' merges PĀ¹ 'schützen' (pātu, pāhi; EWAia II 112, *peh₂-) and PĀ² 'trinken' (piba, apibat; II 113, *peh₃-)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "pūṣán-",
+   "lex_id": [],
+   "erratum": "Pūṣan mapped to Gk Πάν (*peh₂usōn)",
+   "note": "EWAia II 158f: 'Nicht einmütig erklärt'; the equation with Πάν 'findet oft auch Zweifel oder Ablehnung': unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "pūṣan",
+   "lex_id": [],
+   "erratum": "Pūṣan mapped to Gk Πάν (*peh₂usōn)",
+   "note": "EWAia II 158f: 'Nicht einmütig erklärt'; the equation with Πάν 'findet oft auch Zweifel oder Ablehnung': unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√tap-",
+   "lex_id": [
+    "pie-lex-tepeti",
+    "pie-lex-topeyeti",
+    "pie-root-tep-be_warm"
+   ],
+   "erratum": "tap 'heat' also mapped to *tep- 'smear'",
+   "note": "EWAia I 623 s.v. TAP 'brennen, heiß sein' < *tep- (lat. tepeō); 'smear' is a homograph"
+  },
+  {
+   "corpus": "av",
+   "lemma": "tap",
+   "lex_id": [
+    "pie-lex-tepeti",
+    "pie-lex-topeyeti",
+    "pie-root-tep-be_warm"
+   ],
+   "erratum": "tap 'heat' also mapped to *tep- 'smear'",
+   "note": "EWAia I 623 s.v. TAP 'brennen, heiß sein' < *tep- (lat. tepeō); 'smear' is a homograph"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√vyadh-",
+   "lex_id": [
+    "pie-root-h2wyedh-wound"
+   ],
+   "erratum": "vyadh 'pierce' mapped to *h₁weydʰh₁- 'separate'",
+   "note": "EWAia s.v. VYADH 'durchbohren' < *h₂u̯i̯edʰ- (LIV² 'verwunden'); the 'separate' root is that of vidhávā-"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vyadh",
+   "lex_id": [
+    "pie-root-h2wyedh-wound"
+   ],
+   "erratum": "vyadh 'pierce' mapped to *h₁weydʰh₁- 'separate'",
+   "note": "EWAia s.v. VYADH 'durchbohren' < *h₂u̯i̯edʰ- (LIV² 'verwunden'); the 'separate' root is that of vidhávā-"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√bhī-",
+   "lex_id": [
+    "pie-lex-bheyh2s",
+    "pie-root-bheyh2-shake"
+   ],
+   "erratum": "bhī 'fear' also mapped to *bʰeyh₂- 'strike'",
+   "note": "EWAia II 245 s.v. BHAY 'sich fürchten' < *bʰei̯h₂- (aksl. bojati sę)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "bhī",
+   "lex_id": [
+    "pie-lex-bheyh2s",
+    "pie-root-bheyh2-shake"
+   ],
+   "erratum": "bhī 'fear' also mapped to *bʰeyh₂- 'strike'",
+   "note": "EWAia II 245 s.v. BHAY 'sich fürchten' < *bʰei̯h₂- (aksl. bojati sę)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√pac-",
+   "lex_id": [
+    "pie-lex-pekweti",
+    "pie-root-pekw-crack"
+   ],
+   "erratum": "pac 'cook' also mapped to *pekʷ- 'trust'",
+   "note": "EWAia II 64 s.v. PAC 'kochen' < *pekʷ- (lat. coquō); the lexicon's cooking root is pie-root-pekw-crack"
+  },
+  {
+   "corpus": "av",
+   "lemma": "pac",
+   "lex_id": [
+    "pie-lex-pekweti",
+    "pie-root-pekw-crack"
+   ],
+   "erratum": "pac 'cook' also mapped to *pekʷ- 'trust'",
+   "note": "EWAia II 64 s.v. PAC 'kochen' < *pekʷ- (lat. coquō); the lexicon's cooking root is pie-root-pekw-crack"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√nud-",
+   "lex_id": [
+    "pie-root-newd-push"
+   ],
+   "erratum": "nud 'push' also mapped to *newd- 'use'",
+   "note": "EWAia II 58 s.v. NOD 'stoßen' < *(s)neu̯d-; 'use, benefit' (got. niutan) is a homograph"
+  },
+  {
+   "corpus": "av",
+   "lemma": "nud",
+   "lex_id": [
+    "pie-root-newd-push"
+   ],
+   "erratum": "nud 'push' also mapped to *newd- 'use'",
+   "note": "EWAia II 58 s.v. NOD 'stoßen' < *(s)neu̯d-; 'use, benefit' (got. niutan) is a homograph"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√śī-",
+   "lex_id": [
+    "pie-root-kjey-be_lying_down"
+   ],
+   "erratum": "śī 'lie' also mapped to *ḱey- 'fall'",
+   "note": "EWAia II 614 s.v. ŚAY 'liegen' < *ḱei̯- (gr. κεῖμαι)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "śī",
+   "lex_id": [
+    "pie-root-kjey-be_lying_down"
+   ],
+   "erratum": "śī 'lie' also mapped to *ḱey- 'fall'",
+   "note": "EWAia II 614 s.v. ŚAY 'liegen' < *ḱei̯- (gr. κεῖμαι)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "jā́-",
+   "lex_id": [
+    "pie-root-gjenh1-produce"
+   ],
+   "erratum": "jā́- 'offspring' mapped to *ǵn̥néh₃ti 'know'",
+   "note": "EWAia I 567 s.v. JAN¹ / -jā́- 'geboren' < *ǵenh₁-; 'know' is JÑĀ"
+  },
+  {
+   "corpus": "av",
+   "lemma": "jā",
+   "lex_id": [
+    "pie-root-gjenh1-produce"
+   ],
+   "erratum": "jā́- 'offspring' mapped to *ǵn̥néh₃ti 'know'",
+   "note": "EWAia I 567 s.v. JAN¹ / -jā́- 'geboren' < *ǵenh₁-; 'know' is JÑĀ"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ajá- 2",
+   "lex_id": [
+    "pie-root-h2egj-goat"
+   ],
+   "erratum": "ajá- 'goat' also mapped to *h₂eǵ- 'drive' and *h₁eǵ- 'say'",
+   "note": "EWAia s.v. ajá- 'Bock' < *h₂eǵ-o- (lit. ožỹs); VedaWeb ajá- 2 / DCS aja are the noun"
+  },
+  {
+   "corpus": "av",
+   "lemma": "aja",
+   "lex_id": [
+    "pie-root-h2egj-goat"
+   ],
+   "erratum": "ajá- 'goat' also mapped to *h₂eǵ- 'drive' and *h₁eǵ- 'say'",
+   "note": "EWAia s.v. ajá- 'Bock' < *h₂eǵ-o- (lit. ožỹs); VedaWeb ajá- 2 / DCS aja are the noun"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "vára- 2",
+   "lex_id": [
+    "pie-lex-wolh1os"
+   ],
+   "erratum": "vára- 'choice' also mapped to *wer- 'perceive'",
+   "note": "EWAia II 511 s.v. VAR² 'wählen' (vára- 'Wahl') < *u̯elh₁-"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vara",
+   "lex_id": [
+    "pie-lex-wolh1os"
+   ],
+   "erratum": "vára- 'choice' also mapped to *wer- 'perceive'",
+   "note": "EWAia II 511 s.v. VAR² 'wählen' (vára- 'Wahl') < *u̯elh₁-"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√śr̥-",
+   "lex_id": [
+    "pie-root-kjerh2-mix"
+   ],
+   "erratum": "śṛtá- 'cooked' mapped to *ḱlew- 'hear'",
+   "note": "VedaWeb forms are only śṛtám, śṛtā́saḥ 'cooked' = EWAia s.v. ŚRĀ/ŚRĪ 'kochen' < *ḱerh₂- 'mischen'; *ḱlew- was a known round-2 error (8a-round3.md)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "śṛ",
+   "lex_id": [
+    "pie-root-kjerh2-break",
+    "pie-lex-kjrh2yeti"
+   ],
+   "erratum": "śṛ 'crush' mapped to *ḱlew- 'hear'",
+   "note": "EWAia II 617f s.v. ŚAR¹ 'zerbrechen' (śṛṇā́ti) 'Idg. wohl *ḱerh₂-' (gr. κεραΐζω); AV forms śṛṇīhi, śṛṇātu"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ásu-",
+   "lex_id": [
+    "pie-lex-h1esus"
+   ],
+   "erratum": "ásu- 'life' also mapped to *h₂émsus 'lord'",
+   "note": "EWAia I 147: ásu- 'Leben' 'Zu AS¹' (*h₁es-); 'Von ásu- sind ásura- ... wohl zu trennen'"
+  },
+  {
+   "corpus": "av",
+   "lemma": "asu",
+   "lex_id": [
+    "pie-lex-h1esus"
+   ],
+   "erratum": "ásu- 'life' also mapped to *h₂émsus 'lord'",
+   "note": "EWAia I 147: ásu- 'Leben' 'Zu AS¹' (*h₁es-); 'Von ásu- sind ásura- ... wohl zu trennen'"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "púruṣa-",
+   "lex_id": [],
+   "erratum": "púruṣa- 'man' mapped to *perh₃- 'provide'",
+   "note": "EWAia II 147f s.v. púruṣa-: not securely explained; *perh₃- is not proposed: unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "pū́ruṣa-",
+   "lex_id": [],
+   "erratum": "púruṣa- 'man' mapped to *perh₃- 'provide'",
+   "note": "EWAia II 147f s.v. púruṣa-: not securely explained; *perh₃- is not proposed: unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "puruṣa",
+   "lex_id": [],
+   "erratum": "púruṣa- 'man' mapped to *perh₃- 'provide'",
+   "note": "EWAia II 147f s.v. púruṣa-: not securely explained; *perh₃- is not proposed: unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "pūruṣa",
+   "lex_id": [],
+   "erratum": "púruṣa- 'man' mapped to *perh₃- 'provide'",
+   "note": "EWAia II 147f s.v. púruṣa-: not securely explained; *perh₃- is not proposed: unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "skambhá-",
+   "lex_id": [],
+   "erratum": "skambhá- 'prop' mapped to *skabʰ- 'scratch'",
+   "note": "EWAia II 750: SKAMBH 'stützen', 'Idg. wohl *ske(m)bʰH-' (lat. scamnum); the lexicon's *skabʰ- 'scratch' (lat. scabō) is a different root and there is no entry for the right one: unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "skambha",
+   "lex_id": [],
+   "erratum": "skambhá- 'prop' mapped to *skabʰ- 'scratch'",
+   "note": "EWAia II 750: SKAMBH 'stützen', 'Idg. wohl *ske(m)bʰH-' (lat. scamnum); the lexicon's *skabʰ- 'scratch' (lat. scabō) is a different root and there is no entry for the right one: unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "takman",
+   "lex_id": [
+    "pie-root-tep-be_warm"
+   ],
+   "erratum": "takmán- 'fever' mapped to a pseudo-etymon *tenk-",
+   "note": "EWAia I 611: 'Dissimiliert aus *tap-mán- ~ TAP' (Av. tafnah- 'fever'; Hoffmann)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "piśāca",
+   "lex_id": [],
+   "erratum": "piśāca- mapped to *peys- 'grind' and *speys- 'breathe'",
+   "note": "EWAia II 135 s.v. piśāca-: no PIE etymology of this kind; unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "áṅga-",
+   "lex_id": [],
+   "erratum": "áṅga- 'limb' mapped to *h₂eng- 'bend' (via the particle aṅgá)",
+   "note": "EWAia I 48: áṅga- 'Glied' — only Kuiper's hesitant root AÑJ 'bend'; DCS aṅga is the noun (aṅgebhyaḥ): unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "aṅga",
+   "lex_id": [],
+   "erratum": "áṅga- 'limb' mapped to *h₂eng- 'bend' (via the particle aṅgá)",
+   "note": "EWAia I 48: áṅga- 'Glied' — only Kuiper's hesitant root AÑJ 'bend'; DCS aṅga is the noun (aṅgebhyaḥ): unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "apsarás-",
+   "lex_id": [],
+   "erratum": "apsarás- mapped to three *sel- roots",
+   "note": "EWAia I 89: 'Nicht überzeugend gedeutet': unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "apsaras",
+   "lex_id": [],
+   "erratum": "apsarás- mapped to three *sel- roots",
+   "note": "EWAia I 89: 'Nicht überzeugend gedeutet': unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "kṣatrá-",
+   "lex_id": [],
+   "erratum": "kṣatrá- 'dominion' mapped to *tek- 'weave', 'take'",
+   "note": "EWAia I 421: iir. *kša-trá- to KṢAY² 'herrschen' (gr. κτάομαι); no lexicon entry for that root: unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "kṣatra",
+   "lex_id": [],
+   "erratum": "kṣatrá- 'dominion' mapped to *tek- 'weave', 'take'",
+   "note": "EWAia I 421: iir. *kša-trá- to KṢAY² 'herrschen' (gr. κτάομαι); no lexicon entry for that root: unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "śarád-",
+   "lex_id": [],
+   "erratum": "śarád- 'autumn' mapped to a pseudo-etymon *ḱelh₁-",
+   "note": "EWAia II 616: 'Die weitere Herkunft von iir. *ćar(a)d- ist nicht gesichert': unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "śarad",
+   "lex_id": [],
+   "erratum": "śarád- 'autumn' mapped to a pseudo-etymon *ḱelh₁-",
+   "note": "EWAia II 616: 'Die weitere Herkunft von iir. *ćar(a)d- ist nicht gesichert': unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√sū- 2",
+   "lex_id": [
+    "pie-root-sewH-bear"
+   ],
+   "erratum": "sū 'beget' also mapped to *suHs 'pig'",
+   "note": "EWAia II 714 s.v. SAV² 'gebären' < *seu̯H-; the pig (sū-kará-) is a homograph. (DCS sū also covers SAV³ 'antreiben', not in the lexicon)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "sū́-",
+   "lex_id": [
+    "pie-root-sewH-bear"
+   ],
+   "erratum": "sū 'beget' also mapped to *suHs 'pig'",
+   "note": "EWAia II 714 s.v. SAV² 'gebären' < *seu̯H-; the pig (sū-kará-) is a homograph. (DCS sū also covers SAV³ 'antreiben', not in the lexicon)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "sū",
+   "lex_id": [
+    "pie-root-sewH-bear"
+   ],
+   "erratum": "sū 'beget' also mapped to *suHs 'pig'",
+   "note": "EWAia II 714 s.v. SAV² 'gebären' < *seu̯H-; the pig (sū-kará-) is a homograph. (DCS sū also covers SAV³ 'antreiben', not in the lexicon)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√sū- 1",
+   "lex_id": [],
+   "erratum": "sū 'impel' mapped to *sewH- 'bear' and the pig",
+   "note": "EWAia II 715 s.v. SAV³ 'antreiben' (suváti) is a different root, absent from the lexicon; VedaWeb surface forms: suva, sāviṣat, prásūtaḥ: unmapped"
+  },
+  {
+   "corpus": "av",
+   "lemma": "hṛ",
+   "lex_id": [],
+   "erratum": "DCS hṛ 'take' joined to RV √hṛ- 2 'like' (*ǵʰer-)",
+   "note": "AV forms are harāmi, ahārṣam 'take' = EWAia II 803f s.v. HAR¹: 'Ohne überzeugenden etymologischen Anschluß': unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√hr̥- 1",
+   "lex_id": [],
+   "erratum": "hṛ 'take' mapped to *ǵʰer- 'desire'",
+   "note": "EWAia II 803f s.v. HAR¹ 'nehmen': no convincing etymology; 'gern haben' is HAR² (√hr̥- 2): unmapped"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√hr̥- 2",
+   "lex_id": [
+    "pie-lex-ghryeti"
+   ],
+   "erratum": "hṛ 'like' also mapped to *ǵʰéreti",
+   "note": "EWAia II 804 s.v. HAR² 'sich freuen, gern haben' (háryati) < *ǵʰer-"
+  },
+  {
+   "corpus": "av",
+   "lemma": "tṛ",
+   "lex_id": [
+    "pie-root-terh2-cross_over"
+   ],
+   "erratum": "tṛ 'cross' also mapped to *h₂stḗr 'star'",
+   "note": "DCS 'tṛ' in AV is the verb (tarema, tīrtvā) = EWAia I 629 s.v. TAR² 'hindurchkommen' < *terh₂-; 'star' is stṛ-"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "hetí-",
+   "lex_id": [
+    "pie-root-gjhey-drive"
+   ],
+   "erratum": "hetí- 'missile' also mapped to *ǵʰey- 'winter'",
+   "note": "EWAia II 802 s.v. HAY 'antreiben, schleudern' (hetí-)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "heti",
+   "lex_id": [
+    "pie-root-gjhey-drive"
+   ],
+   "erratum": "hetí- 'missile' also mapped to *ǵʰey- 'winter'",
+   "note": "EWAia II 802 s.v. HAY 'antreiben, schleudern' (hetí-)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√as- 2",
+   "lex_id": [
+    "pie-root-h1es-throw"
+   ],
+   "erratum": "as 'throw' unmapped",
+   "note": "EWAia I 144 s.v. AS² 'werfen' < *h₁es- (heth. šuu̯ai-?), LIV² *h₁es- 'werfen'"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√as- 1",
+   "lex_id": [
+    "pie-root-h1es-be",
+    "pie-lex-h1esti"
+   ],
+   "erratum": "as 'be' unmapped",
+   "note": "EWAia I 144 s.v. AS¹ 'sein' < *h₁es- (ásti = gr. ἐστί, lat. est); DCS 'as' is 95% AS¹ (1529 of 1606 tokens)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "as",
+   "lex_id": [
+    "pie-root-h1es-be",
+    "pie-lex-h1esti"
+   ],
+   "erratum": "as 'be' unmapped",
+   "note": "EWAia I 144 s.v. AS¹ 'sein' < *h₁es- (ásti = gr. ἐστί, lat. est); DCS 'as' is 95% AS¹ (1529 of 1606 tokens)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "nár-",
+   "lex_id": [
+    "pie-lex-h2nexr"
+   ],
+   "erratum": "nár- 'man' unmapped",
+   "note": "EWAia s.v. nár- < *h₂nḗr (gr. ἀνήρ)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "nṛ",
+   "lex_id": [
+    "pie-lex-h2nexr"
+   ],
+   "erratum": "nár- 'man' unmapped",
+   "note": "EWAia s.v. nár- < *h₂nḗr (gr. ἀνήρ)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "nārī",
+   "lex_id": [
+    "pie-lex-h2nexr"
+   ],
+   "erratum": "nārī 'woman' unmapped",
+   "note": "EWAia s.v. nā́rī- 'Frau', vṛddhi derivative of nár- < *h₂ner-"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "br̥hánt-",
+   "lex_id": [
+    "pie-lex-bhergjhonts"
+   ],
+   "erratum": "bṛhánt- 'high' unmapped",
+   "note": "EWAia II 232 s.v. bṛhánt- < *bʰr̥ǵʰn̥t- (Av. bərəzaṇt-, OIr. Brigit)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "hótar-",
+   "lex_id": [
+    "pie-lex-gjhewtoxr"
+   ],
+   "erratum": "hótar- 'priest' unmapped",
+   "note": "EWAia II 808 s.v. HAV: hótar- 'Opferer' (Av. zaotar-) < *ǵʰeu̯-tor-"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "mahā́nt-",
+   "lex_id": [
+    "pie-lex-megjh2s"
+   ],
+   "erratum": "mahā́nt- 'great' unmapped",
+   "note": "EWAia s.v. MAH / mahā́nt- < *meǵh₂- (gr. μέγας)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "duhitár-",
+   "lex_id": [
+    "pie-lex-dhugh2texr"
+   ],
+   "erratum": "duhitár- 'daughter' unmapped",
+   "note": "EWAia I 737 s.v. duhitár- < *dʰugh₂tḗr (gr. θυγάτηρ)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "nápat-",
+   "lex_id": [
+    "pie-lex-nepoxts"
+   ],
+   "erratum": "nápāt- 'grandson' unmapped",
+   "note": "EWAia II 11 s.v. nápāt- < *népōts (lat. nepōs)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "napāt",
+   "lex_id": [
+    "pie-lex-nepoxts"
+   ],
+   "erratum": "nápāt- 'grandson' unmapped",
+   "note": "EWAia II 11 s.v. nápāt- < *népōts (lat. nepōs)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ghr̥tá-",
+   "lex_id": [
+    "pie-root-gwher-be_warm"
+   ],
+   "erratum": "ghṛtá- 'ghee' unmapped",
+   "note": "EWAia s.v. GHAR 'träufeln' / ghṛtá- (Av. γarəta-): to *gʷʰer- 'warm' (the lexicon lists ghṛ under it)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "ghṛta",
+   "lex_id": [
+    "pie-root-gwher-be_warm"
+   ],
+   "erratum": "ghṛtá- 'ghee' unmapped",
+   "note": "EWAia s.v. GHAR 'träufeln' / ghṛtá- (Av. γarəta-): to *gʷʰer- 'warm' (the lexicon lists ghṛ under it)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "śukrá-",
+   "lex_id": [
+    "pie-root-kjewk-flare_up"
+   ],
+   "erratum": "śukrá- 'bright' unmapped",
+   "note": "EWAia II 645 s.v. śukrá- (ŚOC): 'hell, glänzend' < *ḱuk-ró-"
+  },
+  {
+   "corpus": "av",
+   "lemma": "śukra",
+   "lex_id": [
+    "pie-root-kjewk-flare_up"
+   ],
+   "erratum": "śukrá- 'bright' unmapped",
+   "note": "EWAia II 645 s.v. śukrá- (ŚOC): 'hell, glänzend' < *ḱuk-ró-"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "śocís-",
+   "lex_id": [
+    "pie-root-kjewk-flare_up"
+   ],
+   "erratum": "śocís- 'flame' unmapped",
+   "note": "EWAia s.v. ŚOC: śocís- 'Glut' < *ḱeu̯k-"
+  },
+  {
+   "corpus": "av",
+   "lemma": "śocis",
+   "lex_id": [
+    "pie-root-kjewk-flare_up"
+   ],
+   "erratum": "śocís- 'flame' unmapped",
+   "note": "EWAia s.v. ŚOC: śocís- 'Glut' < *ḱeu̯k-"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "mádhumant-",
+   "lex_id": [
+    "pie-lex-medhu"
+   ],
+   "erratum": "mádhumant- unmapped",
+   "note": "possessive -mant- derivative of mádhu- < *médʰu (EWAia II 302)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "madhumat",
+   "lex_id": [
+    "pie-lex-medhu"
+   ],
+   "erratum": "mádhumant- unmapped",
+   "note": "possessive -mant- derivative of mádhu- < *médʰu (EWAia II 302)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ámartya-",
+   "lex_id": [
+    "pie-root-mer-die"
+   ],
+   "erratum": "ámartya- 'immortal' unmapped",
+   "note": "a-mártya-, privative of mártya- (EWAia II 318 s.v. MAR 'sterben' < *mer-)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "amartya",
+   "lex_id": [
+    "pie-root-mer-die"
+   ],
+   "erratum": "ámartya- 'immortal' unmapped",
+   "note": "a-mártya-, privative of mártya- (EWAia II 318 s.v. MAR 'sterben' < *mer-)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "manyú-",
+   "lex_id": [
+    "pie-root-men-think"
+   ],
+   "erratum": "manyú- 'zeal, wrath' unmapped",
+   "note": "EWAia II 313 s.v. manyú- (MAN 'denken'): < *mn̥-i̯ú- (Av. mainiiu-)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "manyu",
+   "lex_id": [
+    "pie-root-men-think"
+   ],
+   "erratum": "manyú- 'zeal, wrath' unmapped",
+   "note": "EWAia II 313 s.v. manyú- (MAN 'denken'): < *mn̥-i̯ú- (Av. mainiiu-)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "dákṣiṇa-",
+   "lex_id": [
+    "pie-lex-dekjs"
+   ],
+   "erratum": "dákṣiṇa- 'right, south' unmapped",
+   "note": "EWAia I 690 s.v. dákṣiṇa- < *deḱs-i-no- (lat. dexter, gr. δεξιός)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "dakṣiṇa",
+   "lex_id": [
+    "pie-lex-dekjs"
+   ],
+   "erratum": "dákṣiṇa- 'right, south' unmapped",
+   "note": "EWAia I 690 s.v. dákṣiṇa- < *deḱs-i-no- (lat. dexter, gr. δεξιός)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "dakṣiṇā",
+   "lex_id": [
+    "pie-lex-dekjs"
+   ],
+   "erratum": "dákṣiṇa- 'right, south' unmapped",
+   "note": "EWAia I 690 s.v. dákṣiṇa- < *deḱs-i-no- (lat. dexter, gr. δεξιός)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "samídh-",
+   "lex_id": [
+    "pie-root-h2eydh-ignite"
+   ],
+   "erratum": "IDH 'kindle' derivatives unmapped",
+   "note": "EWAia I 190 (IDH, s. EDH) 'entflammen' < *h₂ei̯dʰ- (gr. αἴθω); samídh- 'Brennholz' is sam + idh"
+  },
+  {
+   "corpus": "av",
+   "lemma": "samidh",
+   "lex_id": [
+    "pie-root-h2eydh-ignite"
+   ],
+   "erratum": "IDH 'kindle' derivatives unmapped",
+   "note": "EWAia I 190 (IDH, s. EDH) 'entflammen' < *h₂ei̯dʰ- (gr. αἴθω); samídh- 'Brennholz' is sam + idh"
+  },
+  {
+   "corpus": "av",
+   "lemma": "indh",
+   "lex_id": [
+    "pie-root-h2eydh-ignite"
+   ],
+   "erratum": "IDH 'kindle' derivatives unmapped",
+   "note": "EWAia I 190 (IDH, s. EDH) 'entflammen' < *h₂ei̯dʰ- (gr. αἴθω); samídh- 'Brennholz' is sam + idh"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "vīryà-",
+   "lex_id": [
+    "pie-lex-wiHros"
+   ],
+   "erratum": "vīryà- 'heroism' unmapped",
+   "note": "derivative of vīrá- < *u̯iHró- (EWAia II 569)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vīrya",
+   "lex_id": [
+    "pie-lex-wiHros"
+   ],
+   "erratum": "vīryà- 'heroism' unmapped",
+   "note": "derivative of vīrá- < *u̯iHró- (EWAia II 569)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "suvī́ra-",
+   "lex_id": [
+    "pie-lex-wiHros"
+   ],
+   "erratum": "su-vīra- unmapped",
+   "note": "su- + vīrá- < *u̯iHró- (EWAia II 569)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "suvī́rya-",
+   "lex_id": [
+    "pie-lex-wiHros"
+   ],
+   "erratum": "su-vīra- unmapped",
+   "note": "su- + vīrá- < *u̯iHró- (EWAia II 569)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "mṛtyu",
+   "lex_id": [
+    "pie-root-mer-die"
+   ],
+   "erratum": "mṛtyú- 'death' unmapped",
+   "note": "EWAia II 318 s.v. MAR 'sterben' < *mer-: mṛtyú- 'Tod' (Av. mərəθiiu-)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "hvā",
+   "lex_id": [
+    "pie-root-gjhewH-call_on"
+   ],
+   "erratum": "hvā 'call' unmapped",
+   "note": "EWAia II 825 'HVĀ, HVE, s. HAV¹' 'rufen' < *ǵʰeu̯H- (aksl. zovǫ); DCS forms huve, havāmahe"
+  },
+  {
+   "corpus": "av",
+   "lemma": "pathin",
+   "lex_id": [
+    "pie-lex-pontoh1s"
+   ],
+   "erratum": "pathin- 'path' unmapped",
+   "note": "EWAia II 81 s.v. pánthā- < *pónth₂ōs (gr. πόντος, lat. pōns)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "dīrgha",
+   "lex_id": [
+    "pie-lex-dlh1ghos"
+   ],
+   "erratum": "dīrghá- 'long' unmapped",
+   "note": "EWAia I 728 s.v. dīrghá- < *dl̥h₁gʰó- (gr. δολιχός)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "dīrghá-",
+   "lex_id": [
+    "pie-lex-dlh1ghos"
+   ],
+   "erratum": "dīrghá- 'long' unmapped",
+   "note": "EWAia I 728 s.v. dīrghá- < *dl̥h₁gʰó- (gr. δολιχός)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "krimi",
+   "lex_id": [
+    "pie-lex-kwrmis"
+   ],
+   "erratum": "kṛ́mi- 'worm' unmapped",
+   "note": "EWAia s.v. kṛ́mi- < *kʷr̥mi- (lit. kirmis, air. cruim)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vāsas",
+   "lex_id": [
+    "pie-root-wes-dress"
+   ],
+   "erratum": "vā́sas- 'garment' unmapped",
+   "note": "EWAia II 529 s.v. VAS² 'bekleidet sein' < *u̯es-"
+  },
+  {
+   "corpus": "av",
+   "lemma": "apāna",
+   "lex_id": [
+    "pie-root-h2enh1-breathe"
+   ],
+   "erratum": "apāná- 'downward breath' unmapped",
+   "note": "apa + ana- to AN 'atmen' < *h₂enh₁- (EWAia I 72), as prāṇá- already is"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "bhúvana-",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "bhúvana- 'world' unmapped",
+   "note": "EWAia II 255 s.v. BHAV: bhúvana- 'Wesen, Welt' < *bʰuH-"
+  },
+  {
+   "corpus": "av",
+   "lemma": "bhuvana",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "bhúvana- 'world' unmapped",
+   "note": "EWAia II 255 s.v. BHAV: bhúvana- 'Wesen, Welt' < *bʰuH-"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "mā́nuṣa-",
+   "lex_id": [
+    "pie-lex-mon"
+   ],
+   "erratum": "mánu-/mā́nuṣa- 'man, human' unmapped",
+   "note": "EWAia s.v. mánu- < *mon-u- (got. manna)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "mánu-",
+   "lex_id": [
+    "pie-lex-mon"
+   ],
+   "erratum": "mánu-/mā́nuṣa- 'man, human' unmapped",
+   "note": "EWAia s.v. mánu- < *mon-u- (got. manna)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "mānuṣa",
+   "lex_id": [
+    "pie-lex-mon"
+   ],
+   "erratum": "mánu-/mā́nuṣa- 'man, human' unmapped",
+   "note": "EWAia s.v. mánu- < *mon-u- (got. manna)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "manuṣya",
+   "lex_id": [
+    "pie-lex-mon"
+   ],
+   "erratum": "mánu-/mā́nuṣa- 'man, human' unmapped",
+   "note": "EWAia s.v. mánu- < *mon-u- (got. manna)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "manu",
+   "lex_id": [
+    "pie-lex-mon"
+   ],
+   "erratum": "mánu-/mā́nuṣa- 'man, human' unmapped",
+   "note": "EWAia s.v. mánu- < *mon-u- (got. manna)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "stotár-",
+   "lex_id": [
+    "pie-lex-stewtoxr"
+   ],
+   "erratum": "stotár- 'praiser' unmapped",
+   "note": "EWAia II 757 s.v. STAV: stotár- 'Preiser' (the lexicon has *stewtōr, as for AV stotṛ)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "rátna-",
+   "lex_id": [
+    "pie-root-Hreh1-give"
+   ],
+   "erratum": "rátna- 'treasure' unmapped",
+   "note": "EWAia II 428 s.v. rátna- (to RĀ 'geben') 'Gabe, Schatz'"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "yajñíya-",
+   "lex_id": [
+    "pie-root-h1yagj-sacrifice"
+   ],
+   "erratum": "yajñíya- unmapped",
+   "note": "derivative of yajñá- < *h₁i̯aǵ- (EWAia II 394)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "yajñiya",
+   "lex_id": [
+    "pie-root-h1yagj-sacrifice"
+   ],
+   "erratum": "yajñíya- unmapped",
+   "note": "derivative of yajñá- < *h₁i̯aǵ- (EWAia II 394)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "pūrvyá-",
+   "lex_id": [
+    "pie-lex-prh2wos"
+   ],
+   "erratum": "pūrvyá- unmapped",
+   "note": "derivative of pū́rva- < *pr̥h₂u̯o- (EWAia II 157)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "sakhyá-",
+   "lex_id": [
+    "pie-lex-sokwh2oxy"
+   ],
+   "erratum": "sakhyá- 'friendship' unmapped",
+   "note": "derivative of sákhi- < *sokʷh₂-oi̯ (EWAia II 685 s.v. sakhyá-)"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "havíṣmant-",
+   "lex_id": [
+    "pie-root-gjhew-pour"
+   ],
+   "erratum": "havíṣmant- unmapped",
+   "note": "possessive of havís- 'oblation' (EWAia II 808 s.v. HAV)"
+  },
+  {
+   "corpus": "av",
+   "lemma": "pad",
+   "lex_id": [
+    "pie-lex-poxds",
+    "pie-root-ped-walk"
+   ],
+   "erratum": "pád- 'foot' mapped to *ped-ye- (verb)",
+   "note": "Refines the shared erratum row, which still lists pie-lex-pedyeti (flagged wrong in mapping-errata.md): the noun is *pṓds. DCS 'pad' merges the noun (LemmaId 171474, 43 tokens: padā, padbhyām) and the verb PAD 'fallen, gehen' (157388, 32 tokens: padye, padyatām; EWAia II 76 < *ped-). The verb is kept through the root id pie-root-ped-walk, the same root group as *pṓds, not through the flagged lexeme"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "vŕ̥dh-",
+   "lex_id": [
+    "pie-root-Hwerdh-become_big_strong"
+   ],
+   "erratum": "VARDH derivative mapped to *h₁lewdʰ- (the root of ruh)",
+   "note": "EWAia II 520 s.v. VARDH 'wachsen' < *h₂u̯erdʰ- [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "vr̥dhá-",
+   "lex_id": [
+    "pie-root-Hwerdh-become_big_strong"
+   ],
+   "erratum": "VARDH derivative mapped to *h₁lewdʰ- (the root of ruh)",
+   "note": "EWAia II 520 s.v. VARDH 'wachsen' < *h₂u̯erdʰ- [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "várdhana-",
+   "lex_id": [
+    "pie-root-Hwerdh-become_big_strong"
+   ],
+   "erratum": "VARDH derivative mapped to *h₁lewdʰ- (the root of ruh)",
+   "note": "EWAia II 520 s.v. VARDH 'wachsen' < *h₂u̯erdʰ- [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vardhana",
+   "lex_id": [
+    "pie-root-Hwerdh-become_big_strong"
+   ],
+   "erratum": "VARDH derivative mapped to *h₁lewdʰ- (the root of ruh)",
+   "note": "EWAia II 520 s.v. VARDH 'wachsen' < *h₂u̯erdʰ- [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ājí-",
+   "lex_id": [
+    "pie-root-h2egj-drive"
+   ],
+   "erratum": "AJ 'drive' also mapped to *h₁eǵ- 'say' and *h₂eǵ- 'goat'",
+   "note": "EWAia I 50 s.v. AJ 'treiben' < *h₂eǵ- (lat. agō) [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√aj-",
+   "lex_id": [
+    "pie-root-h2egj-drive"
+   ],
+   "erratum": "AJ 'drive' also mapped to *h₁eǵ- 'say' and *h₂eǵ- 'goat'",
+   "note": "EWAia I 50 s.v. AJ 'treiben' < *h₂eǵ- (lat. agō) [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ajirá-",
+   "lex_id": [
+    "pie-root-h2egj-drive"
+   ],
+   "erratum": "AJ 'drive' also mapped to *h₁eǵ- 'say' and *h₂eǵ- 'goat'",
+   "note": "EWAia I 50 s.v. AJ 'treiben' < *h₂eǵ- (lat. agō) [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "aj",
+   "lex_id": [
+    "pie-root-h2egj-drive"
+   ],
+   "erratum": "AJ 'drive' also mapped to *h₁eǵ- 'say' and *h₂eǵ- 'goat'",
+   "note": "EWAia I 50 s.v. AJ 'treiben' < *h₂eǵ- (lat. agō) [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "āji",
+   "lex_id": [
+    "pie-root-h2egj-drive"
+   ],
+   "erratum": "AJ 'drive' also mapped to *h₁eǵ- 'say' and *h₂eǵ- 'goat'",
+   "note": "EWAia I 50 s.v. AJ 'treiben' < *h₂eǵ- (lat. agō) [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "ajira",
+   "lex_id": [
+    "pie-root-h2egj-drive"
+   ],
+   "erratum": "AJ 'drive' also mapped to *h₁eǵ- 'say' and *h₂eǵ- 'goat'",
+   "note": "EWAia I 50 s.v. AJ 'treiben' < *h₂eǵ- (lat. agō) [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√pat- 2",
+   "lex_id": [
+    "pie-lex-potis"
+   ],
+   "erratum": "pat 'be master' (pátyate) mapped to *peth₂- 'fly'",
+   "note": "EWAia II 72 s.v. PAT² 'Gebieter sein, herrschen', denominal to páti- (lat. potior); VedaWeb forms patyate, pátyamānaḥ [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√diś-",
+   "lex_id": [
+    "pie-lex-dikjeti",
+    "pie-root-deykj-point_out"
+   ],
+   "erratum": "diś 'point' also mapped to *deyḱ- 'throw'",
+   "note": "EWAia s.v. DEŚ 'zeigen' < *dei̯ḱ- (lat. dīcō, gr. δείκνυμι); the 'throw' homograph is unrelated [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "díś-",
+   "lex_id": [
+    "pie-lex-dikjeti",
+    "pie-root-deykj-point_out"
+   ],
+   "erratum": "diś 'point' also mapped to *deyḱ- 'throw'",
+   "note": "EWAia s.v. DEŚ 'zeigen' < *dei̯ḱ- (lat. dīcō, gr. δείκνυμι); the 'throw' homograph is unrelated [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "diś",
+   "lex_id": [
+    "pie-lex-dikjeti",
+    "pie-root-deykj-point_out"
+   ],
+   "erratum": "diś 'point' also mapped to *deyḱ- 'throw'",
+   "note": "EWAia s.v. DEŚ 'zeigen' < *dei̯ḱ- (lat. dīcō, gr. δείκνυμι); the 'throw' homograph is unrelated [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√vā-",
+   "lex_id": [
+    "pie-lex-h2wexh1ti",
+    "pie-root-h2weh1-blow"
+   ],
+   "erratum": "vā 'blow' also mapped to *we 'or' and *h₁weh₂- 'be empty'",
+   "note": "EWAia s.v. VĀ 'wehen' < *h₂u̯eh₁- (gr. ἄησι); VedaWeb/DCS forms vāti, vātu [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vā",
+   "lex_id": [
+    "pie-lex-h2wexh1ti",
+    "pie-root-h2weh1-blow"
+   ],
+   "erratum": "vā 'blow' also mapped to *we 'or' and *h₁weh₂- 'be empty'",
+   "note": "EWAia s.v. VĀ 'wehen' < *h₂u̯eh₁- (gr. ἄησι); VedaWeb/DCS forms vāti, vātu [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "avyáya-",
+   "lex_id": [
+    "pie-lex-h2owis"
+   ],
+   "erratum": "avyáya- 'ovine' also mapped to the pronoun *is and *h₁ey- 'go'",
+   "note": "EWAia s.v. ávi- 'Schaf' < *h₂óu̯i- (avyáya- 'vom Schaf') [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "bhójana-",
+   "lex_id": [
+    "pie-root-bhewg-enjoy"
+   ],
+   "erratum": "BHOJ 'enjoy' also mapped to *bʰewg- 'flee' (and *bʰewgʰ- 'bend')",
+   "note": "EWAia s.v. BHOJ² 'genießen' (bhunákti, lat. fungor) < *bʰeu̯g-; VedaWeb √bhuj- 2 forms bhujema, bhunájāmahai [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√bhuj- 2",
+   "lex_id": [
+    "pie-root-bhewg-enjoy"
+   ],
+   "erratum": "BHOJ 'enjoy' also mapped to *bʰewg- 'flee' (and *bʰewgʰ- 'bend')",
+   "note": "EWAia s.v. BHOJ² 'genießen' (bhunákti, lat. fungor) < *bʰeu̯g-; VedaWeb √bhuj- 2 forms bhujema, bhunájāmahai [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "bhúj-",
+   "lex_id": [
+    "pie-root-bhewg-enjoy"
+   ],
+   "erratum": "BHOJ 'enjoy' also mapped to *bʰewg- 'flee' (and *bʰewgʰ- 'bend')",
+   "note": "EWAia s.v. BHOJ² 'genießen' (bhunákti, lat. fungor) < *bʰeu̯g-; VedaWeb √bhuj- 2 forms bhujema, bhunájāmahai [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "bhóga-",
+   "lex_id": [
+    "pie-root-bhewg-enjoy"
+   ],
+   "erratum": "BHOJ 'enjoy' also mapped to *bʰewg- 'flee' (and *bʰewgʰ- 'bend')",
+   "note": "EWAia s.v. BHOJ² 'genießen' (bhunákti, lat. fungor) < *bʰeu̯g-; VedaWeb √bhuj- 2 forms bhujema, bhunájāmahai [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "bhuj",
+   "lex_id": [
+    "pie-root-bhewg-enjoy"
+   ],
+   "erratum": "BHOJ 'enjoy' also mapped to *bʰewg- 'flee' (and *bʰewgʰ- 'bend')",
+   "note": "EWAia s.v. BHOJ² 'genießen' (bhunákti, lat. fungor) < *bʰeu̯g-; VedaWeb √bhuj- 2 forms bhujema, bhunájāmahai [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "bhoga",
+   "lex_id": [
+    "pie-root-bhewg-enjoy"
+   ],
+   "erratum": "BHOJ 'enjoy' also mapped to *bʰewg- 'flee' (and *bʰewgʰ- 'bend')",
+   "note": "EWAia s.v. BHOJ² 'genießen' (bhunákti, lat. fungor) < *bʰeu̯g-; VedaWeb √bhuj- 2 forms bhujema, bhunájāmahai [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "bhojana",
+   "lex_id": [
+    "pie-root-bhewg-enjoy"
+   ],
+   "erratum": "BHOJ 'enjoy' also mapped to *bʰewg- 'flee' (and *bʰewgʰ- 'bend')",
+   "note": "EWAia s.v. BHOJ² 'genießen' (bhunákti, lat. fungor) < *bʰeu̯g-; VedaWeb √bhuj- 2 forms bhujema, bhunájāmahai [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√bhuj- 1",
+   "lex_id": [
+    "pie-root-bhewgh-bend"
+   ],
+   "erratum": "bhuj 'bend' also mapped to *bʰewg- 'enjoy', 'flee'",
+   "note": "EWAia s.v. BHOJ¹ 'biegen' < *bʰeu̯gʰ- (got. biugan) [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ā́s-",
+   "lex_id": [
+    "pie-lex-h1oh3s"
+   ],
+   "erratum": "ā́s-/āsyà- 'mouth' also mapped to ĀS 'sit'",
+   "note": "EWAia s.v. ā́s- 'Mund' < *h₁óh₃s- (lat. ōs); ĀS 'sitzen' (I 181) is a homograph [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "āsyà-",
+   "lex_id": [
+    "pie-lex-h1oh3s"
+   ],
+   "erratum": "ā́s-/āsyà- 'mouth' also mapped to ĀS 'sit'",
+   "note": "EWAia s.v. ā́s- 'Mund' < *h₁óh₃s- (lat. ōs); ĀS 'sitzen' (I 181) is a homograph [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "āsya",
+   "lex_id": [
+    "pie-lex-h1oh3s"
+   ],
+   "erratum": "ā́s-/āsyà- 'mouth' also mapped to ĀS 'sit'",
+   "note": "EWAia s.v. ā́s- 'Mund' < *h₁óh₃s- (lat. ōs); ĀS 'sitzen' (I 181) is a homograph [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "puróhita-",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "puróhita- mapped to *ǵʰey- 'drive', 'winter'",
+   "note": "puró-hita- 'vorangestellt' = purás + hitá-, ppp. of DHĀ 'setzen' (EWAia I 783); hitá- is not HAY [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "purohita",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "puróhita- mapped to *ǵʰey- 'drive', 'winter'",
+   "note": "puró-hita- 'vorangestellt' = purás + hitá-, ppp. of DHĀ 'setzen' (EWAia I 783); hitá- is not HAY [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "pakvá-",
+   "lex_id": [
+    "pie-root-pekw-crack"
+   ],
+   "erratum": "pakvá- 'cooked' also mapped to *pekʷ- 'trust'",
+   "note": "EWAia II 64 s.v. PAC 'kochen' < *pekʷ- [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "pakva",
+   "lex_id": [
+    "pie-root-pekw-crack"
+   ],
+   "erratum": "pakvá- 'cooked' also mapped to *pekʷ- 'trust'",
+   "note": "EWAia II 64 s.v. PAC 'kochen' < *pekʷ- [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ástar-",
+   "lex_id": [
+    "pie-root-h1es-throw"
+   ],
+   "erratum": "ástar- 'archer' mapped to *h₂stḗr 'star', *terh₂- and *steh₂-",
+   "note": "ás-tar- agent noun of AS² 'werfen, schießen' (EWAia I 144) [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√str̥-",
+   "lex_id": [
+    "pie-lex-strneh3ti",
+    "pie-root-sterh3-spread"
+   ],
+   "erratum": "stṛ 'spread' also mapped to *h₂stḗr 'star'",
+   "note": "EWAia s.v. STAR 'ausbreiten' < *sterh₃- (lat. sternō); the star noun is a homograph [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "stṛ",
+   "lex_id": [
+    "pie-lex-strneh3ti",
+    "pie-root-sterh3-spread"
+   ],
+   "erratum": "stṛ 'spread' also mapped to *h₂stḗr 'star'",
+   "note": "EWAia s.v. STAR 'ausbreiten' < *sterh₃- (lat. sternō); the star noun is a homograph [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "bhī́-",
+   "lex_id": [
+    "pie-root-bheyh2-shake"
+   ],
+   "erratum": "BHAY derivative also mapped to *bʰeyh₂- 'strike'",
+   "note": "EWAia II 245 s.v. BHAY 'sich fürchten' < *bʰei̯h₂- [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ábhaya-",
+   "lex_id": [
+    "pie-root-bheyh2-shake"
+   ],
+   "erratum": "BHAY derivative also mapped to *bʰeyh₂- 'strike'",
+   "note": "EWAia II 245 s.v. BHAY 'sich fürchten' < *bʰei̯h₂- [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "bhayá-",
+   "lex_id": [
+    "pie-root-bheyh2-shake"
+   ],
+   "erratum": "BHAY derivative also mapped to *bʰeyh₂- 'strike'",
+   "note": "EWAia II 245 s.v. BHAY 'sich fürchten' < *bʰei̯h₂- [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "abhaya",
+   "lex_id": [
+    "pie-root-bheyh2-shake"
+   ],
+   "erratum": "BHAY derivative also mapped to *bʰeyh₂- 'strike'",
+   "note": "EWAia II 245 s.v. BHAY 'sich fürchten' < *bʰei̯h₂- [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "bhaya",
+   "lex_id": [
+    "pie-root-bheyh2-shake"
+   ],
+   "erratum": "BHAY derivative also mapped to *bʰeyh₂- 'strike'",
+   "note": "EWAia II 245 s.v. BHAY 'sich fürchten' < *bʰei̯h₂- [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "spáś-",
+   "lex_id": [
+    "pie-lex-spekjs",
+    "pie-root-spekj-see"
+   ],
+   "erratum": "spáś- 'spy' also mapped to *peh₂ḱ- 'join'",
+   "note": "EWAia II 775 → PAŚ (II 107f) < *speḱ- [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√dī- 2",
+   "lex_id": [
+    "pie-root-deyh1-chase"
+   ],
+   "erratum": "dī 'fly' also mapped to *deyh₂- 'shine'",
+   "note": "VedaWeb forms dī́yan, dīyati 'fly' (EWAia s.v. DAY¹), not DAY³ 'leuchten' (I 701) [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "stotrá-",
+   "lex_id": [
+    "pie-root-stew-praise"
+   ],
+   "erratum": "STAV derivative also mapped to *stew- 'push'",
+   "note": "EWAia II 757 s.v. STAV 'preisen' [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "stút-",
+   "lex_id": [
+    "pie-root-stew-praise"
+   ],
+   "erratum": "STAV derivative also mapped to *stew- 'push'",
+   "note": "EWAia II 757 s.v. STAV 'preisen' [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "stutí-",
+   "lex_id": [
+    "pie-root-stew-praise"
+   ],
+   "erratum": "STAV derivative also mapped to *stew- 'push'",
+   "note": "EWAia II 757 s.v. STAV 'preisen' [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "stotra",
+   "lex_id": [
+    "pie-root-stew-praise"
+   ],
+   "erratum": "STAV derivative also mapped to *stew- 'push'",
+   "note": "EWAia II 757 s.v. STAV 'preisen' [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "stuti",
+   "lex_id": [
+    "pie-root-stew-praise"
+   ],
+   "erratum": "STAV derivative also mapped to *stew- 'push'",
+   "note": "EWAia II 757 s.v. STAV 'preisen' [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "stoká-",
+   "lex_id": [],
+   "erratum": "stoká- 'drop' mapped to *stew- 'praise', 'push'",
+   "note": "EWAia II 761: stoká- 'Tropfen' 'durch Metathesis aus *skotá- ~ ŚCOT'; not STAV; no lexicon entry: unmapped [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "stoka",
+   "lex_id": [],
+   "erratum": "stoká- 'drop' mapped to *stew- 'praise', 'push'",
+   "note": "EWAia II 761: stoká- 'Tropfen' 'durch Metathesis aus *skotá- ~ ŚCOT'; not STAV; no lexicon entry: unmapped [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "mádya-",
+   "lex_id": [
+    "pie-root-meh2d-be_wet"
+   ],
+   "erratum": "MAD derivative also mapped to *meh₂d- 'meet'",
+   "note": "EWAia II 299 s.v. MAD [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "mada",
+   "lex_id": [
+    "pie-root-meh2d-be_wet"
+   ],
+   "erratum": "MAD derivative also mapped to *meh₂d- 'meet'",
+   "note": "EWAia II 299 s.v. MAD [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "vará-",
+   "lex_id": [
+    "pie-root-welh1-choose"
+   ],
+   "erratum": "vará- 'suitor' mapped to *wer- 'perceive'",
+   "note": "EWAia II 511 s.v. VAR² 'wählen' (vará- 'Freier') [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ratnadhéya-",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "DHĀ compound also mapped to *dʰeh₁y- 'suck'",
+   "note": "compounds of DHĀ 'setzen' (EWAia I 783) [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "saṃdhā",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "DHĀ compound also mapped to *dʰeh₁y- 'suck'",
+   "note": "compounds of DHĀ 'setzen' (EWAia I 783) [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "vidhā",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "DHĀ compound also mapped to *dʰeh₁y- 'suck'",
+   "note": "compounds of DHĀ 'setzen' (EWAia I 783) [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "sudhā",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "DHĀ compound also mapped to *dʰeh₁y- 'suck'",
+   "note": "compounds of DHĀ 'setzen' (EWAia I 783) [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "dhāna",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "DHĀ compound also mapped to *dʰeh₁y- 'suck'",
+   "note": "compounds of DHĀ 'setzen' (EWAia I 783) [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "abhidhānī",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "DHĀ compound also mapped to *dʰeh₁y- 'suck'",
+   "note": "compounds of DHĀ 'setzen' (EWAia I 783) [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "prasū́-",
+   "lex_id": [
+    "pie-root-sewH-bear"
+   ],
+   "erratum": "prasū́- also mapped to *suHs 'pig'",
+   "note": "EWAia II 714 s.v. SAV² 'gebären'; the pig is a homograph [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "prasū",
+   "lex_id": [
+    "pie-root-sewH-bear"
+   ],
+   "erratum": "prasū́- also mapped to *suHs 'pig'",
+   "note": "EWAia II 714 s.v. SAV² 'gebären'; the pig is a homograph [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√gras-",
+   "lex_id": [],
+   "erratum": "gras 'devour' mapped to *gʷerh₃- 'swallow'",
+   "note": "EWAia s.v. GRAS 'verschlingen' (gr. γράω) is a different root (*gres-); no lexicon entry: unmapped [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "mā́trā-",
+   "lex_id": [
+    "pie-root-meh1-measure"
+   ],
+   "erratum": "MĀ derivative also mapped to the pronoun *eǵh₂ and the prohibitive *meh₁",
+   "note": "EWAia II 341 s.v. MĀ¹ 'messen' [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "mātrā",
+   "lex_id": [
+    "pie-root-meh1-measure"
+   ],
+   "erratum": "MĀ derivative also mapped to the pronoun *eǵh₂ and the prohibitive *meh₁",
+   "note": "EWAia II 341 s.v. MĀ¹ 'messen' [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "nirmā",
+   "lex_id": [
+    "pie-root-meh1-measure"
+   ],
+   "erratum": "MĀ derivative also mapped to the pronoun *eǵh₂ and the prohibitive *meh₁",
+   "note": "EWAia II 341 s.v. MĀ¹ 'messen' [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "sámiti-",
+   "lex_id": [
+    "pie-root-h1ey-go"
+   ],
+   "erratum": "sámiti- 'assembly' mapped to the pronoun *is",
+   "note": "sám-i-ti- to AY 'gehen' (EWAia I 102) [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "samiti",
+   "lex_id": [
+    "pie-root-h1ey-go"
+   ],
+   "erratum": "sámiti- 'assembly' mapped to the pronoun *is",
+   "note": "sám-i-ti- to AY 'gehen' (EWAia I 102) [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "parī",
+   "lex_id": [
+    "pie-root-h1ey-go"
+   ],
+   "erratum": "pari-i 'go round' also mapped to the pronoun *is",
+   "note": "pari + AY 'gehen' (EWAia I 102) [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "adhī",
+   "lex_id": [
+    "pie-root-h1ey-go"
+   ],
+   "erratum": "adhi-i also mapped to the pronoun *is",
+   "note": "adhi + AY 'gehen' (EWAia I 102) [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "śóka-",
+   "lex_id": [
+    "pie-root-kjewk-flare_up"
+   ],
+   "erratum": "śóka- 'glow, grief' also mapped to *ḱewk- 'call'",
+   "note": "EWAia s.v. ŚOC [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "śoka",
+   "lex_id": [
+    "pie-root-kjewk-flare_up"
+   ],
+   "erratum": "śóka- 'glow, grief' also mapped to *ḱewk- 'call'",
+   "note": "EWAia s.v. ŚOC [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "vāsará-",
+   "lex_id": [
+    "pie-root-h2wes-become_bright"
+   ],
+   "erratum": "vāsará- 'matutinal' also mapped to *h₂wes- 'dwell'",
+   "note": "EWAia II 530 s.v. VAS¹ 'aufleuchten' [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "śayana",
+   "lex_id": [
+    "pie-root-kjey-be_lying_down"
+   ],
+   "erratum": "śayana 'bed' also mapped to *ḱey- 'fall'",
+   "note": "EWAia II 614 s.v. ŚAY 'liegen' [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "āśī",
+   "lex_id": [
+    "pie-root-kjey-be_lying_down"
+   ],
+   "erratum": "ā-śī 'lie by' also mapped to *ḱey- 'fall'",
+   "note": "EWAia II 614 s.v. ŚAY 'liegen' [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "tapana",
+   "lex_id": [
+    "pie-root-tep-be_warm"
+   ],
+   "erratum": "tapana also mapped to *tep- 'smear'",
+   "note": "EWAia I 623 s.v. TAP [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "ābhā",
+   "lex_id": [
+    "pie-root-bheh2-shine"
+   ],
+   "erratum": "ā-bhā also mapped to *bʰeh₂- 'speak'",
+   "note": "EWAia II 259 s.v. BHĀ 'leuchten' [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "pūti",
+   "lex_id": [
+    "pie-root-puH-rotten",
+    "pie-root-pewH-rot"
+   ],
+   "erratum": "pūti 'putrid' also mapped to *pewH- 'clean'",
+   "note": "EWAia s.v. pū́ti- 'faul' < *puH- (lat. pūteō) [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√rudh- 1",
+   "lex_id": [
+    "pie-root-lewdh-obstruct"
+   ],
+   "erratum": "rudh 'obstruct' also mapped to *h₁lewdʰ- 'grow'",
+   "note": "EWAia II 467 s.v. RODH¹ 'hemmen' (ruṇáddhi); 'wachsen' (RODH²) is the root of ruh; VedaWeb/DCS forms ruṇaddhi, niruddha- [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "rudh",
+   "lex_id": [
+    "pie-root-lewdh-obstruct"
+   ],
+   "erratum": "rudh 'obstruct' also mapped to *h₁lewdʰ- 'grow'",
+   "note": "EWAia II 467 s.v. RODH¹ 'hemmen' (ruṇáddhi); 'wachsen' (RODH²) is the root of ruh; VedaWeb/DCS forms ruṇaddhi, niruddha- [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√nas-",
+   "lex_id": [
+    "pie-root-nes-return_home"
+   ],
+   "erratum": "nas 'join, approach' also mapped to *neh₂s 'nose' and a pronoun",
+   "note": "EWAia s.v. NAS 'sich vereinigen, sich gesellen' (násate) < *nes- (gr. νέομαι); VedaWeb forms nasanta, násate [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ádbhuta-",
+   "lex_id": [],
+   "erratum": "ádbhuta- 'wondrous' mapped to *dʰebʰ- 'make small'",
+   "note": "a-dbhuta- is not securely explained (EWAia s.v. ádbhuta-, KEWA I 30); unmapped [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√ji- 2 ~ jinv-",
+   "lex_id": [],
+   "erratum": "jinv 'quicken' mapped to *gʷey- 'win'",
+   "note": "VedaWeb √ji- 2 ~ jinv- = EWAia JINV 'beleben' (to JĪV?), not JAY 'siegen': unmapped [batch 2]"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "drapsá-",
+   "lex_id": [],
+   "erratum": "drapsá- 'drop' mapped to *drep- 'cut off'",
+   "note": "EWAia I 754 s.v. drapsá- 'Tropfen; Banner' (iran. *drafša-); no *drep- etymology: unmapped [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "sāman",
+   "lex_id": [],
+   "erratum": "sā́man- 'chant' mapped to *senh₂- 'obtain'",
+   "note": "EWAia II 724: 'Wohl als idg. *sh₂om-' (heth. išḫamai-), extension of *seh₂- 'binden'; no lexicon entry: unmapped [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "āvṛ",
+   "lex_id": [],
+   "erratum": "ā-vṛ 'cover' mapped to *h₂wer- 'lift' and *welh₁- 'choose'",
+   "note": "AV forms āvṛta- = VAR¹ 'umschließen' (EWAia II 512), no lexicon entry: unmapped [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "ve",
+   "lex_id": [],
+   "erratum": "ve 'weave' mapped to *h₂ew- 'enjoy, perceive' and *weyh₁-",
+   "note": "EWAia s.v. VAY² 'weben' (vayati, ūta-): not these roots; unmapped [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "aha",
+   "lex_id": [],
+   "erratum": "particle áha mapped to *h₁e",
+   "note": "EWAia s.v. áha (affirmative particle): no secure etymon; unmapped [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "āvat",
+   "lex_id": [],
+   "erratum": "āvat mapped to the pronoun *eǵh₂",
+   "note": "no relation to *eǵh₂: unmapped [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "nū",
+   "lex_id": [],
+   "erratum": "nū mapped to the particle *nu",
+   "note": "AV nū is the verb NAV 'brüllen, preisen' (cf. RV √nu- ~ nū-): unmapped [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "gaṇa",
+   "lex_id": [],
+   "erratum": "gaṇá- 'troop' mapped to *gʷerH- 'praise'",
+   "note": "EWAia s.v. gaṇá- 'Schar': no PIE etymology of this kind; unmapped [batch 2]"
+  },
+  {
+   "corpus": "av",
+   "lemma": "kulyā",
+   "lex_id": [],
+   "erratum": "kulyā 'channel' mapped to a pseudo-etymon *keh₂ul-",
+   "note": "EWAia s.v. kulyā́-: not securely explained; unmapped [batch 2]"
+  }
+ ],
+ "form": []
+}

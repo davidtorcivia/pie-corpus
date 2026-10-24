@@ -1,0 +1,1553 @@
+{
+ "note": "Italic group (LASLA Latin 'lat', Umbrian Iguvine Tables 'xum'): corrections to the automatic lemma -> PIE mapping, from a check of the 300 most frequent mapped lemmas per corpus against de Vaan 2008 (page = printed page). Empty lex_id = unmapped. See docs/research/mapping-precision-italic.md.",
+ "lemma": [
+  {
+   "corpus": "lat",
+   "lemma": "facio",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "facio mapped also to *dʰeh₁y- 'suckle'",
+   "note": "de Vaan 2008 p.198 s.v. facio: *dʰh₁-k- to *dʰeh₁- 'put'; 'suckle' is a different root"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "possum",
+   "lex_id": [
+    "pie-lex-potis",
+    "pie-root-h1es-be"
+   ],
+   "erratum": "possum mapped also to *h₁es- 'throw' and *sh₁es- 'harvest'",
+   "note": "de Vaan 2008 p.484 s.v. potis: posse < potis esse (*pótis + *h₁es- 'be')"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "uolo",
+   "lex_id": [
+    "pie-root-welh1-choose"
+   ],
+   "erratum": "uolo 'want' mapped also to *gʷelH- (volāre 'fly')",
+   "note": "de Vaan 2008 p.687 s.v. volo, velle: *welh₁- 'want'; LASLA merges volāre 'fly' (35 of 677 tokens), left out"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "do",
+   "lex_id": [
+    "pie-lex-dedeh3ti"
+   ],
+   "erratum": "do 'give' mapped also to *dʰeh₁- 'put' and *dʰeh₁y- 'suckle'",
+   "note": "de Vaan 2008 p.174 s.v. do, dare: *di-deh₃- 'give'; *dʰeh₁- is only in compounds -do (p.175)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "pars",
+   "lex_id": [
+    "pie-root-perh3-provide"
+   ],
+   "erratum": "pars mapped to *perh₂- 'sell'",
+   "note": "de Vaan 2008 p.448 s.v. pars: *par-ti- built on par- of pario (*perh₃-), after Schrijver"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "locus",
+   "lex_id": [],
+   "erratum": "locus mapped to *stl̥kos (*stel- 'put')",
+   "note": "de Vaan 2008 p.347 s.v. locus: derivation from *stel- 'does not make sense'; 'further etymology remains unclear'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "modus",
+   "lex_id": [
+    "pie-root-med-measure"
+   ],
+   "erratum": "modus mapped to *módos 'intoxication' (*med- 'become full')",
+   "note": "de Vaan 2008 p.384 s.v. modus: *med-o- 'measure'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "caelum",
+   "lex_id": [
+    "pie-lex-keh2ilos"
+   ],
+   "erratum": "caelum mapped also to *kh₂eyd- 'cut'",
+   "note": "de Vaan 2008 p.80 s.v. caelum: *keh₂i-lo- 'whole' (Schrijver), preferred over the caedo etymology"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "miser",
+   "lex_id": [],
+   "erratum": "miser mapped to pseudo *mh₂isros",
+   "note": "de Vaan 2008 p.383 s.v. miser: '*mh₂isro-?' ... 'no acceptable PIE pedigree has been found'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "genus",
+   "lex_id": [
+    "pie-lex-gjenh1os-2"
+   ],
+   "erratum": "genus mapped also to *ǵenh₁ós 'born'",
+   "note": "de Vaan 2008 p.260 s.v. gigno (genus): s-stem *ǵenh₁-os 'race'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "manus",
+   "lex_id": [],
+   "erratum": "manus 'hand' mapped to *meh₂no- ('good') and *sméh₂r̥",
+   "note": "de Vaan 2008 p.363 s.v. manus 'hand': *mon-u-, not in the lexicon; *meh₂-no- is the homograph manus 'good' (p.364)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "malus",
+   "lex_id": [],
+   "erratum": "malus mapped to *smólos / *smal- 'small'",
+   "note": "de Vaan 2008 p.360 s.v. malus 'bad': *mol-o-? 'remains uncertain'; not *smal-"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "seruus",
+   "lex_id": [
+    "pie-lex-serwos"
+   ],
+   "erratum": "servus mapped also to *ser- 'bind'",
+   "note": "de Vaan 2008 p.559 s.v. servus: *ser-u-o- 'guardian' (*ser- 'guard')"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "licet",
+   "lex_id": [],
+   "erratum": "licet mapped to pseudo *likeh₁yeti",
+   "note": "de Vaan 2008 p.340 s.v. licet: Italic *lik-e- only, no PIE etymology given"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "audio",
+   "lex_id": [
+    "pie-lex-h2ewis-2"
+   ],
+   "erratum": "audio mapped also to *h₂éwis 'bird'",
+   "note": "de Vaan 2008 p.61 s.v. audio: *h₂eu-is 'clearly' + *dʰh₁-; 'bird' (avis) is a different word"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "uentus",
+   "lex_id": [
+    "pie-lex-h2weh1nts"
+   ],
+   "erratum": "ventus mapped also to *gʷémtus 'a coming'",
+   "note": "de Vaan 2008 p.662 s.v. ventus: *h₂ueh₁-nt- 'blowing'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "quaero",
+   "lex_id": [],
+   "erratum": "quaero mapped to *kʷeh₂- 'dig'",
+   "note": "de Vaan 2008 p.503 s.v. quaero: *kʷeh₂-i- 'acquire' (Nussbaum) or *h₂eis- (LIV), disputed; not 'dig'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "quaeso",
+   "lex_id": [],
+   "erratum": "quaeso mapped to pseudo *h₁seti",
+   "note": "de Vaan 2008 p.503 s.v. quaero (quaeso is its old s-present); not *h₁es-"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "aetas",
+   "lex_id": [
+    "pie-root-h2ey-vital_force"
+   ],
+   "erratum": "aetas mapped also to *h₂ey- 'day' and 'give'",
+   "note": "de Vaan 2008 p.29 s.v. aevum: aetas < *aiwotat-, *h₂ei-u- 'lifetime'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "aeternus",
+   "lex_id": [
+    "pie-root-h2ey-vital_force"
+   ],
+   "erratum": "aeternus mapped also to *h₂ey- 'day' and 'give'",
+   "note": "de Vaan 2008 p.29 s.v. aevum (aeviternus)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "aeuum",
+   "lex_id": [
+    "pie-root-h2ey-vital_force"
+   ],
+   "erratum": "aevum had only a pseudo id (*h₂eyu)",
+   "note": "de Vaan 2008 p.29 s.v. aevum: *h₂oi-u- / *h₂ei-uo- 'lifetime'; lexicon root id so it meets the cognates"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "taceo",
+   "lex_id": [
+    "pie-root-teh2k-be_concealed"
+   ],
+   "erratum": "taceo mapped also to *teh₂k- 'melt'",
+   "note": "de Vaan 2008 p.604 s.v. taceo: *tHk-eh₁- 'be silent' (Go. þahan)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "sero",
+   "lex_id": [
+    "pie-lex-sish1eti"
+   ],
+   "erratum": "sero 'sow' mapped also to *ser- 'join'",
+   "note": "de Vaan 2008 p.557 s.v. sero 1 'sow' (*si-sh₁-); 88 of 89 LASLA tokens are sero 'sow' (Cato)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "sentio",
+   "lex_id": [
+    "pie-root-sent-perceive"
+   ],
+   "erratum": "sentio mapped also to *sent- 'go'",
+   "note": "de Vaan 2008 p.554 s.v. sentio: *sent- 'perceive'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "soleo",
+   "lex_id": [
+    "pie-root-sel-dwell"
+   ],
+   "erratum": "soleo mapped to *swé 'self'",
+   "note": "de Vaan 2008 p.570 s.v. soleo: *sol-eh₁- 'occupy, inhabit' (OCS selo); the *swe- etymology 'must be rejected'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "curo",
+   "lex_id": [
+    "pie-root-kweys-see"
+   ],
+   "erratum": "curo mapped to *kʷóyseh₂ with two root groups",
+   "note": "de Vaan 2008 p.156 s.v. cura: *kʷei-s- 'heed'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "cura",
+   "lex_id": [
+    "pie-root-kweys-see"
+   ],
+   "erratum": "cura mapped also to *kʷey- 'perceive'",
+   "note": "de Vaan 2008 p.156 s.v. cura: *kʷei-s- 'heed'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "libet",
+   "lex_id": [
+    "pie-root-lewbh-desire"
+   ],
+   "erratum": "libet mapped also to *lewbʰ- 'cut off'",
+   "note": "de Vaan 2008 p.338 s.v. libet: *lubʰ-eh₁-, root *leubʰ- 'desire'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "edo",
+   "lex_id": [
+    "pie-lex-h1edti",
+    "pie-root-deh3-give"
+   ],
+   "erratum": "edo mapped to *h₁dónts + *h₂éydʰs 'ignite'",
+   "note": "de Vaan 2008 p.185 s.v. edo 'eat' (*h₁ed-); LASLA merges ēdo 'give out' (ex + do, *deh₃-, p.174): 49 / 31 tokens"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "uarius",
+   "lex_id": [],
+   "erratum": "varius mapped to *h₂wer- / *wers-",
+   "note": "de Vaan 2008 p.654 s.v. varius: proposals 'rather speculative', 'not quite convincing'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "mundus",
+   "lex_id": [],
+   "erratum": "mundus mapped to pseudo *mudno",
+   "note": "de Vaan 2008 p.395 s.v. mundus 'world' (65 of 71 tokens): 'The etymology is unknown'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "muto",
+   "lex_id": [
+    "pie-root-mey-change"
+   ],
+   "erratum": "muto mapped to a 'cross-reference only' stub (*mewH-)",
+   "note": "de Vaan 2008 p.398 s.v. mutuus: *moith₂-o- or *h₂moi-to- 'exchange', root *mei- 'change'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "color",
+   "lex_id": [
+    "pie-root-kjel-cover"
+   ],
+   "erratum": "color mapped also to *ḱel- 'incline'",
+   "note": "de Vaan 2008 p.126 s.v. color: *kel-os 'cover, covering'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "labor",
+   "lex_id": [],
+   "erratum": "labor mapped to pseudo *sleh₂b",
+   "note": "de Vaan 2008 p.320 s.v. labor 'toil' (50 of 68 tokens): connection with labi 'unconvincing', no etymology"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "oro",
+   "lex_id": [
+    "pie-lex-h1oh3s"
+   ],
+   "erratum": "oro mapped to three *h₂er- roots",
+   "note": "de Vaan 2008 p.435 s.v. oro: denominative to os, oris 'mouth' (p.436)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "signum",
+   "lex_id": [
+    "pie-root-sek-cut"
+   ],
+   "erratum": "signum mapped also to *sek- 'dry out'",
+   "note": "de Vaan 2008 p.563 s.v. signum: *sek-no- 'cut'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "mos",
+   "lex_id": [
+    "pie-root-meh1-measure"
+   ],
+   "erratum": "mos mapped to *med- (x2) / *red-",
+   "note": "de Vaan 2008 p.390 s.v. mos: *meh₁-os 'manner', to *meh₁- 'measure'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "uinco",
+   "lex_id": [
+    "pie-lex-winekti-2"
+   ],
+   "erratum": "vinco mapped to three *weyk- homographs",
+   "note": "de Vaan 2008 p.679 s.v. vinco: nasal present *ui-n-k-, aor. *weik- 'overcome'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "fugio",
+   "lex_id": [
+    "pie-root-bhewg-flee"
+   ],
+   "erratum": "fugio mapped also to *bʰewg- 'enjoy'",
+   "note": "de Vaan 2008 p.246 s.v. fugio: *bʰug- 'flee'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "dolium",
+   "lex_id": [],
+   "erratum": "dolium mapped to *delh₁- 'split'",
+   "note": "de Vaan 2008 p.176 s.v. dolium: link with dolare doubted, ō unexplained, 'may be a loanword'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "amicus",
+   "lex_id": [
+    "pie-root-h3emh3-grab"
+   ],
+   "erratum": "amicus mapped to *íh₁ 'emphatic particle'",
+   "note": "de Vaan 2008 p.39 s.v. amo (amicus a derivative): *h₃mh₃- 'take hold of'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "finis",
+   "lex_id": [],
+   "erratum": "finis mapped to *dʰeygʷ- 'stick into'",
+   "note": "de Vaan 2008 p.222 s.v. finis: 'The etymology is disputed' (*fig-s-ni-, *bʰiH-ni-, ...)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "tango",
+   "lex_id": [
+    "pie-root-teh2g-touch"
+   ],
+   "erratum": "tango mapped also to *teh₂g- 'order'",
+   "note": "de Vaan 2008 p.606 s.v. tango: *teh₂g- 'touch'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "simulacrum",
+   "lex_id": [
+    "pie-lex-semh2lo"
+   ],
+   "erratum": "simulacrum mapped to the suffix *-trom",
+   "note": "de Vaan 2008 p.564 s.v. similis (simulare, simulacrum): *sem-h₂-li-"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "leuis",
+   "lex_id": [
+    "pie-lex-h1lenghus"
+   ],
+   "erratum": "levis 'light' mapped also to *h₂leyH- 'smear'",
+   "note": "de Vaan 2008 p.336 s.v. levis 'light' *h₁legʷʰ-u- (31 tokens); LASLA merges lēvis 'smooth' (*leh₁i-u-, p.336, 26 tokens), not in the lexicon"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "oleum",
+   "lex_id": [],
+   "erratum": "oleum mapped to *h₃ed- 'smell'",
+   "note": "Beekes EDG p.400 s.v. ἔλαιον: Lat. oleum, oliva borrowed from Greek; not in de Vaan"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "lapis",
+   "lex_id": [],
+   "erratum": "lapis mapped to *lep- 'peel off'",
+   "note": "de Vaan 2008 p.326 s.v. lapis: 'Probably a Mediterranean loanword'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "fateor",
+   "lex_id": [
+    "pie-root-bheh2-speak"
+   ],
+   "erratum": "fateor mapped also to *bʰeh₂- 'shine'",
+   "note": "de Vaan 2008 p.204 s.v. fateor: *bʰh₂-to- 'speak'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "par",
+   "lex_id": [],
+   "erratum": "par mapped to *perh₂- 'sell'",
+   "note": "de Vaan 2008 p.444 s.v. par: 'no good etymology is available'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "odor",
+   "lex_id": [
+    "pie-root-h3ed-smell"
+   ],
+   "erratum": "odor mapped also to *h₃ed- 'bite' and 'hate'",
+   "note": "de Vaan 2008 p.425 s.v. odor: *h₃ed- 'smell'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "purus",
+   "lex_id": [
+    "pie-root-pewH-be_clean"
+   ],
+   "erratum": "purus mapped also to *pewH- 'rot'",
+   "note": "de Vaan 2008 p.500 s.v. purus: *ph₂u-ro- 'clean'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "crassus",
+   "lex_id": [],
+   "erratum": "crassus mapped to *skert- / *kert-",
+   "note": "de Vaan 2008 p.141 s.v. crassus: no root matches; 'does not clarify the etymology'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "sanus",
+   "lex_id": [],
+   "erratum": "sanus mapped to pseudo *seh₂no",
+   "note": "de Vaan 2008 p.538 s.v. sanus: '*seh₂-no- is purely mechanical', root uncertain"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "tellus",
+   "lex_id": [
+    "pie-root-telh2-ground"
+   ],
+   "erratum": "tellus mapped also to *telh₂- 'bear'",
+   "note": "de Vaan 2008 p.608 s.v. tellus: *telh₂-o- 'ground'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "sto",
+   "lex_id": [
+    "pie-lex-sth2eh1yeti"
+   ],
+   "erratum": "sto mapped also to *steh₂y- 'steal'",
+   "note": "de Vaan 2008 p.589 s.v. sto: *sth₂-eh₁-ie-"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "latus",
+   "lex_id": [],
+   "erratum": "latus mapped to *tl̥h₂tós / *pleth₂-",
+   "note": "de Vaan 2008 p.329 s.v. latus 'broad' (*stlH-to- rejected) and p.330 latus 'side': no secure etymology"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "frons",
+   "lex_id": [],
+   "erratum": "frons mapped to pseudo *bʰrewd",
+   "note": "de Vaan 2008 p.244 s.v. frons 'foliage' (unclear) and frons 'forehead' ('No plausible etymology')"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "familia",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "familia mapped also to *dʰeh₁y- 'suckle'",
+   "note": "de Vaan 2008 p.200 s.v. famulus: *dʰh₁-m-elo- 'fundament' (*dʰeh₁- 'put')"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "populus",
+   "lex_id": [],
+   "erratum": "populus mapped to *pleh₁- 'fill'",
+   "note": "de Vaan 2008 p.480 s.v. populus 'people': Pit. *poplo- 'army', etymology unknown; populus 'poplar': 'No etymology'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "publicus",
+   "lex_id": [],
+   "erratum": "publicus mapped to *poplh₁os (*pleh₁-)",
+   "note": "de Vaan 2008 p.480 s.v. populus: publicus has ū and cannot belong to *poplo-; see pubes (p.495), unclear"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "ora",
+   "lex_id": [],
+   "erratum": "ora 'shore' mapped to *h₁erh₂- 'love'",
+   "note": "de Vaan 2008 has no PIE etymology for ōra; *h₁erh₂- is unrelated (cf. p.435 oro, p.436 os)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "ius",
+   "lex_id": [
+    "pie-root-h2ey-vital_force"
+   ],
+   "erratum": "ius 'law' mapped to *h₂yew- 'straight' + *yewHs 'broth'",
+   "note": "de Vaan 2008 p.316 s.v. ius 'law': *h₂ieu-os 'vital force' (33 of 40 tokens); ius 'broth' *ieuH-s (p.316) left out"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "patior",
+   "lex_id": [],
+   "erratum": "patior mapped to *ph₁tós (*peh₁- 'hate')",
+   "note": "de Vaan 2008 p.450 s.v. patior: link with πῆμα morphologically unclear; alternatives; no secure etymology"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "clarus",
+   "lex_id": [
+    "pie-root-kelh1-call_out_to"
+   ],
+   "erratum": "clarus mapped also to *skelh₁- 'parch'",
+   "note": "de Vaan 2008 p.117 s.v. clarus: *klh₁-ro- 'calling, loud'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "fluo",
+   "lex_id": [
+    "pie-root-bhlewH-overflow"
+   ],
+   "erratum": "fluo mapped also to *bʰel- 'blow' and *bʰlewH- 'strike'",
+   "note": "de Vaan 2008 p.228 s.v. fluo: *bʰleuH- 'flow (over)'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "letum",
+   "lex_id": [],
+   "erratum": "letum mapped to *lewH- 'louse'",
+   "note": "de Vaan 2008 p.335 s.v. letum: 'may be' *leh₁-to- 'let go'; not 'louse'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "herba",
+   "lex_id": [],
+   "erratum": "herba mapped to *gʰerdʰ- 'enclose'",
+   "note": "de Vaan 2008 p.282 s.v. herba: *gʰer-dʰ- 'impossible'; 'No viable alternative'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "tempestas",
+   "lex_id": [
+    "pie-lex-tempos"
+   ],
+   "erratum": "tempestas mapped to pseudo *teh₂ts",
+   "note": "de Vaan 2008 p.611 s.v. tempus: tempestas is *tempes-tāt- from *temp-os"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "purgo",
+   "lex_id": [
+    "pie-root-pewH-be_clean"
+   ],
+   "erratum": "purgo mapped to *péh₂wr̥ 'fire'",
+   "note": "de Vaan 2008 p.500 s.v. purus (purgare < *pūr-ig-)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "penetro",
+   "lex_id": [
+    "pie-root-pen-feed"
+   ],
+   "erratum": "penetro mapped to *peh₂- 'protect'",
+   "note": "de Vaan 2008 p.458 s.v. penus: penetrare to penitus, penus < *pen-os 'food' (*pen- 'feed')"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "cedo",
+   "lex_id": [
+    "pie-lex-kje",
+    "pie-root-deh3-give"
+   ],
+   "erratum": "cedo mapped to *ḱe only",
+   "note": "de Vaan 2008 p.102 s.v. cedo 'give!' (*ḱe + *deh₃-; 26 of 34 tokens are the form cedo); cēdo 'go' (p.103) left out"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "aperio",
+   "lex_id": [
+    "pie-root-h2wer-lift"
+   ],
+   "erratum": "aperio mapped to the preverb *h₂epó only",
+   "note": "de Vaan 2008 p.46 s.v. aperio: *ap-wer-je-, *h₂uer- 'cover'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "niger",
+   "lex_id": [],
+   "erratum": "niger mapped to *negʷ- 'bare'",
+   "note": "de Vaan 2008 p.409 s.v. niger: 'Unknown etymology'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "tener",
+   "lex_id": [
+    "pie-root-ter-tender"
+   ],
+   "erratum": "tener mapped to *ten- 'stretch'",
+   "note": "de Vaan 2008 p.613 s.v. tener: *teru-no- / *ter-en- 'tender'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "uendo",
+   "lex_id": [
+    "pie-root-wes-sell"
+   ],
+   "erratum": "vendo mapped also to *wes- 'dress' and 'graze'",
+   "note": "de Vaan 2008 p.663 s.v. venum (vendere < venum dare): *ues-no- 'price'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "numerus",
+   "lex_id": [
+    "pie-root-nem-distribute"
+   ],
+   "erratum": "numerus mapped also to *nem- 'bend'",
+   "note": "de Vaan 2008 p.419 s.v. numerus: *nem-os 'apportioning'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "mina",
+   "lex_id": [],
+   "erratum": "mina mapped to *meneh₂ (*men- 'stand out')",
+   "note": "Beekes EDG p.958f. s.v. μνᾶ: a Semitic loanword, borrowed as Lat. mina (Plautus' minas); LASLA merges minae 'threats', not separable at lemma level"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "uoluo",
+   "lex_id": [
+    "pie-root-welH-roll"
+   ],
+   "erratum": "volvo mapped also to *welH- 'be strong'",
+   "note": "de Vaan 2008 p.689 s.v. volvo: *uel-u- 'wind, roll'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "pudeo",
+   "lex_id": [],
+   "erratum": "pudeo mapped to pseudo *peu",
+   "note": "de Vaan 2008 p.496 s.v. pudeo: proposals (*speud-, paveo) uncertain"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "os",
+   "lex_id": [
+    "pie-lex-h1oh3s",
+    "pie-lex-h3esth1"
+   ],
+   "erratum": "os mapped to 'bone' only; LASLA merges ōs 'mouth'",
+   "note": "de Vaan 2008 p.436 s.v. os, oris 'mouth' (*h₃eh₁os, 87 tokens) and os, ossis 'bone' (*h₃est-, 27 tokens)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "bonus",
+   "lex_id": [],
+   "erratum": "bonus mapped to *dewh₂- 'fit'",
+   "note": "de Vaan 2008 p.73 s.v. bonus: '*duh₂-eno-?', PIE etymology disputed, regarded as unclear"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "spatium",
+   "lex_id": [],
+   "erratum": "spatium mapped to pseudo *sph₁to",
+   "note": "de Vaan 2008 p.578 s.v. spatium: *sph₁-to- 'is possible ... But this cannot be confirmed'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "digitus",
+   "lex_id": [],
+   "erratum": "digitus mapped to *deyḱ- 'point out'",
+   "note": "de Vaan 2008 p.170 s.v. digitus: 'no PIE root of the form *d(e)ig- is with certainty attested'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "saxum",
+   "lex_id": [],
+   "erratum": "saxum mapped to *soksóm (*sek- 'cut')",
+   "note": "de Vaan 2008 p.541 s.v. saxum: 'cannot go back to the root *sek- of secare'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "labrum",
+   "lex_id": [],
+   "erratum": "labrum mapped to *leb- 'hang down loosely'",
+   "note": "de Vaan 2008 p.319 s.v. labium: only Germanic *lep- 'lip' as cognate, no PIE root; LASLA also merges lābrum 'basin' (9 of 32 tokens)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "terra",
+   "lex_id": [
+    "pie-root-ters-dry"
+   ],
+   "erratum": "terra unmapped",
+   "note": "de Vaan 2008 p.616 s.v. terra: *ters-h₂- 'dry land'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "natura",
+   "lex_id": [
+    "pie-root-gjenh1-produce"
+   ],
+   "erratum": "natura unmapped",
+   "note": "de Vaan 2008 p.400 s.v. nascor (natura < natus)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "abeo",
+   "lex_id": [
+    "pie-lex-h1eyti"
+   ],
+   "erratum": "abeo unmapped",
+   "note": "de Vaan 2008 p.191 s.v. eo (ab-ire)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "pereo",
+   "lex_id": [
+    "pie-lex-h1eyti"
+   ],
+   "erratum": "pereo unmapped",
+   "note": "de Vaan 2008 p.191 s.v. eo (per-ire)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "redeo",
+   "lex_id": [
+    "pie-lex-h1eyti"
+   ],
+   "erratum": "redeo unmapped",
+   "note": "de Vaan 2008 p.191 s.v. eo (red-ire)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "exeo",
+   "lex_id": [
+    "pie-lex-h1eyti"
+   ],
+   "erratum": "exeo unmapped",
+   "note": "de Vaan 2008 p.191 s.v. eo (ex-ire)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "adeo",
+   "lex_id": [
+    "pie-lex-h1eyti"
+   ],
+   "erratum": "adeo unmapped",
+   "note": "de Vaan 2008 p.191 s.v. eo (ad-ire)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "oculus",
+   "lex_id": [
+    "pie-root-h3ekw-see"
+   ],
+   "erratum": "oculus unmapped",
+   "note": "de Vaan 2008 p.425 s.v. oculus: *h₃e/okʷ-(e)lo- 'eye'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "semen",
+   "lex_id": [
+    "pie-lex-seh1mn"
+   ],
+   "erratum": "semen unmapped",
+   "note": "de Vaan 2008 p.557 s.v. sero 1: *seh₁-mn̥ 'seed'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "membrum",
+   "lex_id": [
+    "pie-root-mems-flesh"
+   ],
+   "erratum": "membrum unmapped",
+   "note": "de Vaan 2008 p.370 s.v. membrum: *mems-ro- 'body part'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "amor",
+   "lex_id": [
+    "pie-root-h3emh3-grab"
+   ],
+   "erratum": "amor unmapped",
+   "note": "de Vaan 2008 p.39 s.v. amo (amor)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "amans",
+   "lex_id": [
+    "pie-root-h3emh3-grab"
+   ],
+   "erratum": "amans unmapped",
+   "note": "de Vaan 2008 p.39 s.v. amo"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "amica",
+   "lex_id": [
+    "pie-root-h3emh3-grab"
+   ],
+   "erratum": "amica unmapped",
+   "note": "de Vaan 2008 p.39 s.v. amo (amicus, -a)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "consto",
+   "lex_id": [
+    "pie-lex-sth2eh1yeti"
+   ],
+   "erratum": "consto unmapped",
+   "note": "de Vaan 2008 p.589 s.v. sto (con-stare)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "aduenio",
+   "lex_id": [
+    "pie-lex-gwmyeti"
+   ],
+   "erratum": "aduenio unmapped",
+   "note": "de Vaan 2008 p.661 s.v. venio"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "inuenio",
+   "lex_id": [
+    "pie-lex-gwmyeti"
+   ],
+   "erratum": "inuenio unmapped",
+   "note": "de Vaan 2008 p.661 s.v. venio"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "euenio",
+   "lex_id": [
+    "pie-lex-gwmyeti"
+   ],
+   "erratum": "euenio unmapped",
+   "note": "de Vaan 2008 p.661 s.v. venio"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "accipio",
+   "lex_id": [
+    "pie-lex-kapyeti"
+   ],
+   "erratum": "accipio unmapped",
+   "note": "de Vaan 2008 p.89 s.v. capio (ac-cipere)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "mortalis",
+   "lex_id": [
+    "pie-lex-mertis"
+   ],
+   "erratum": "mortalis unmapped",
+   "note": "de Vaan 2008 p.389 s.v. morior (mors, mortalis)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "immortalis",
+   "lex_id": [
+    "pie-lex-mertis"
+   ],
+   "erratum": "immortalis unmapped",
+   "note": "de Vaan 2008 p.389 s.v. morior (mors, mortalis)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "nolo",
+   "lex_id": [
+    "pie-root-welh1-choose"
+   ],
+   "erratum": "nolo unmapped",
+   "note": "de Vaan 2008 p.687 s.v. volo, velle (nolle < ne + volo)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "cogo",
+   "lex_id": [
+    "pie-lex-h2egjeti"
+   ],
+   "erratum": "cogo unmapped",
+   "note": "de Vaan 2008 p.30 s.v. ago (cogere < co-agere)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "dictum",
+   "lex_id": [
+    "pie-lex-deykjeti"
+   ],
+   "erratum": "dictum unmapped",
+   "note": "de Vaan 2008 p.169 s.v. dico"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "uoco",
+   "lex_id": [
+    "pie-root-wekw-speak"
+   ],
+   "erratum": "uoco unmapped",
+   "note": "de Vaan 2008 p.691 s.v. vox (vocare)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "relinquo",
+   "lex_id": [
+    "pie-lex-linekwti"
+   ],
+   "erratum": "relinquo unmapped",
+   "note": "de Vaan 2008 p.344 s.v. linquo"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "factum",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "factum unmapped",
+   "note": "de Vaan 2008 p.198 s.v. facio (factum)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "affero",
+   "lex_id": [
+    "pie-lex-bhereti"
+   ],
+   "erratum": "affero unmapped",
+   "note": "de Vaan 2008 p.213 s.v. fero"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "refero",
+   "lex_id": [
+    "pie-lex-bhereti"
+   ],
+   "erratum": "refero unmapped",
+   "note": "de Vaan 2008 p.213 s.v. fero"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "cognosco",
+   "lex_id": [
+    "pie-lex-gjnh3skjeti"
+   ],
+   "erratum": "cognosco unmapped",
+   "note": "de Vaan 2008 p.413 s.v. nosco"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "absum",
+   "lex_id": [
+    "pie-root-h1es-be"
+   ],
+   "erratum": "absum unmapped",
+   "note": "de Vaan 2008 p.599 s.v. sum"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "uerus",
+   "lex_id": [
+    "pie-lex-weh1ros"
+   ],
+   "erratum": "uerus unmapped",
+   "note": "de Vaan 2008 p.668 s.v. verus: *ueh₁-ro- 'true'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "uerum",
+   "lex_id": [
+    "pie-lex-weh1ros"
+   ],
+   "erratum": "uerum unmapped",
+   "note": "de Vaan 2008 p.668 s.v. verus"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "auris",
+   "lex_id": [
+    "pie-lex-h2oxws"
+   ],
+   "erratum": "auris unmapped",
+   "note": "de Vaan 2008 p.63 s.v. auris: *h₂eu(-)s- 'ear'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "eximo",
+   "lex_id": [
+    "pie-root-h1em-take"
+   ],
+   "erratum": "eximo unmapped",
+   "note": "de Vaan 2008 p.187 s.v. emo (ex-imere)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "tollo",
+   "lex_id": [
+    "pie-root-telh2-bear"
+   ],
+   "erratum": "tollo unmapped",
+   "note": "de Vaan 2008 p.621 s.v. tollo: *tel(h₂)- 'lift'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "curro",
+   "lex_id": [
+    "pie-root-kjers-run"
+   ],
+   "erratum": "curro unmapped",
+   "note": "de Vaan 2008 p.157 s.v. curro: *kr̥s-e/o- 'run'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "amitto",
+   "lex_id": [
+    "pie-lex-meyth2",
+    "pie-root-meyth2-change"
+   ],
+   "erratum": "amitto unmapped",
+   "note": "de Vaan 2008 p.383 s.v. mitto"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "consisto",
+   "lex_id": [
+    "pie-lex-stisteh2ti"
+   ],
+   "erratum": "consisto unmapped",
+   "note": "de Vaan 2008 p.567 s.v. sisto"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "radix",
+   "lex_id": [
+    "pie-lex-wreh2ds"
+   ],
+   "erratum": "radix unmapped",
+   "note": "de Vaan 2008 p.512 s.v. radix: *ur(e)h₂-d- 'root'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "imber",
+   "lex_id": [
+    "pie-lex-nbhros"
+   ],
+   "erratum": "imber unmapped",
+   "note": "de Vaan 2008 p.298 s.v. imber: *n̥bʰ-r-o- '(rain) cloud'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "frater",
+   "lex_id": [
+    "pie-lex-bhreh2texr"
+   ],
+   "erratum": "frater unmapped",
+   "note": "de Vaan 2008 p.239 s.v. frater"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "diuinus",
+   "lex_id": [
+    "pie-lex-deywos"
+   ],
+   "erratum": "diuinus unmapped",
+   "note": "de Vaan 2008 p.167 s.v. deus (divinus)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "uirtus",
+   "lex_id": [
+    "pie-lex-wiHros"
+   ],
+   "erratum": "uirtus unmapped",
+   "note": "de Vaan 2008 p.681 s.v. vir (virtus)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "sensus",
+   "lex_id": [
+    "pie-root-sent-perceive"
+   ],
+   "erratum": "sensus unmapped",
+   "note": "de Vaan 2008 p.554 s.v. sentio"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "motus",
+   "lex_id": [
+    "pie-root-myewh1-move"
+   ],
+   "erratum": "motus unmapped",
+   "note": "de Vaan 2008 p.390 s.v. moveo"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "opera",
+   "lex_id": [
+    "pie-lex-h3epos"
+   ],
+   "erratum": "opera unmapped",
+   "note": "de Vaan 2008 p.432 s.v. opus (opera)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "sonitus",
+   "lex_id": [
+    "pie-root-swenh2-sound"
+   ],
+   "erratum": "sonitus unmapped",
+   "note": "de Vaan 2008 p.574 s.v. sono"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "fides",
+   "lex_id": [
+    "pie-root-bheydh-trust"
+   ],
+   "erratum": "fides unmapped",
+   "note": "de Vaan 2008 p.218 s.v. fido: *bʰidʰ-eh₂ 'faith'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "cado",
+   "lex_id": [
+    "pie-root-kjad-fall"
+   ],
+   "erratum": "cado unmapped",
+   "note": "de Vaan 2008 p.78 s.v. cado: *ḱh₂d- 'fall'"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "nescio",
+   "lex_id": [
+    "pie-root-skey-split"
+   ],
+   "erratum": "nescio unmapped",
+   "note": "de Vaan 2008 p.545 s.v. scio (nescire)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "filia",
+   "lex_id": [
+    "pie-lex-dheh1ilyos"
+   ],
+   "erratum": "filia unmapped",
+   "note": "de Vaan 2008 p.217 s.v. filius"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "puella",
+   "lex_id": [
+    "pie-lex-ph2weros"
+   ],
+   "erratum": "puella unmapped",
+   "note": "de Vaan 2008 p.496 s.v. puer (puella < *puere-la)"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "soluo",
+   "lex_id": [
+    "pie-root-lewh1-cut_off"
+   ],
+   "erratum": "soluo unmapped",
+   "note": "de Vaan 2008 p.573 s.v. solvo: *se-luh₁-"
+  },
+  {
+   "corpus": "lat",
+   "lemma": "fera",
+   "lex_id": [
+    "pie-lex-gjhweros"
+   ],
+   "erratum": "fera unmapped",
+   "note": "de Vaan 2008 p.215 s.v. ferus: *ǵʰueh₁r- 'wild animal'"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "arsmor",
+   "lex_id": [],
+   "erratum": "arsmor 'ritus' mapped to three *h₂er- roots",
+   "note": "Buck 1904 glossary (OCR l.21281) arsmor 'ritus' gives no etymology and de Vaan 2008 cites no Umbrian arsmo-; the *h₂er- union is a guess"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "arsmo|arsmor",
+   "lex_id": [],
+   "erratum": "arsmo 'ritus' mapped to three *h₂er- roots",
+   "note": "Buck 1904 glossary (OCR l.21281) arsmor, acc. pl. arsmo 'ritus' gives no etymology and de Vaan 2008 cites no Umbrian arsmo-; the *h₂er- union is a guess"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "are",
+   "lex_id": [],
+   "erratum": "'are' mapped to the suffix -ālis (*h₂eli-)",
+   "note": "the token is English 'are' from Buck's commentary leaking into the Umbrian column (Ig. VIa 1); the suffix link is spurious anyway"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "alem",
+   "lex_id": [],
+   "erratum": "alem mapped to the suffix -ālis (*h₂eli-)",
+   "note": "an OCR fragment (Ig. VIa 48, 64, alone on its line); suffix link spurious"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "tu",
+   "lex_id": [],
+   "erratum": "tu mapped to pseudo *dwi- 'two-'",
+   "note": "OCR splits of the postposition -tu (Fisiu tu taper = Fisiu-tu, Ig. VIa 6, 30, 32), not the prefix tu- 'two'"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "iu",
+   "lex_id": [],
+   "erratum": "iu mapped to the suffix *-éyos",
+   "note": "OCR fragments of word ends (Atiief iu, Ig. II/III); suffix link spurious"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "trum",
+   "lex_id": [],
+   "erratum": "trum mapped to the suffix *-trom",
+   "note": "OCR fragment (Ig. VIa 37); suffix link spurious"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "sihitu",
+   "lex_id": [],
+   "erratum": "śihitu mapped to *kenk- 'feel hunger'",
+   "note": "de Vaan 2008 p.114 s.v. cingo: U. śihitu ansihitu 'girded ungirded'?, 'meaning and etymology are uncertain'; *kenk- 'hunger' is a homograph"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "ansihitu",
+   "lex_id": [],
+   "erratum": "ansihitu mapped to *kenk- 'feel hunger'",
+   "note": "de Vaan 2008 p.114 s.v. cingo (as śihitu)"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "sukatu",
+   "lex_id": [],
+   "erratum": "sukatu mapped to *seyk- 'reach'",
+   "note": "de Vaan 2008 p.595: U. sukatu 'declare' < Pit. *soiko- 'swearing', no PIE etymology"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "cehefi",
+   "lex_id": [],
+   "erratum": "cehefi mapped to pseudo *kn̥dtiyo",
+   "note": "de Vaan 2008 p.123 s.v. cohum: U. cehefi 'to take/get' < *kax-je- (Weiss), no PIE root"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "pesetom",
+   "lex_id": [],
+   "erratum": "pesetom mapped to pseudo *ped-ko-",
+   "note": "de Vaan 2008 p.453 s.v. pecco: 'maybe U. pesetom'; the *ped-ko- etymology is rejected"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "hondu",
+   "lex_id": [],
+   "erratum": "hondu mapped to *dʰéǵʰōm 'earth'",
+   "note": "de Vaan 2008 p.249 s.v. fundo: 'uncertain U. hondu 'throw down!'(?)'; not 'earth'"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "frehtu",
+   "lex_id": [],
+   "erratum": "frehtu mapped to *bʰr̥ǵtós",
+   "note": "de Vaan 2008 p.243 s.v. frigo: 'maybe U. frehtu '?''; frigo itself may be a loanword"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "mutu",
+   "lex_id": [],
+   "erratum": "mutu 'multa' mapped to *molh₃tos (*melh₃- 'step forward')",
+   "note": "de Vaan 2008 p.394 s.v. multa: *m(o)l-to- 'good, big'?, 'not certain'; not *melh₃-"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "muta",
+   "lex_id": [],
+   "erratum": "muta 'multa' mapped to *molh₃tos",
+   "note": "de Vaan 2008 p.394 s.v. multa"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "motar",
+   "lex_id": [],
+   "erratum": "motar 'multae' mapped to *molh₃tos",
+   "note": "de Vaan 2008 p.394 s.v. multa"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "mani",
+   "lex_id": [],
+   "erratum": "mani 'manu' mapped to *sméh₂r̥",
+   "note": "de Vaan 2008 p.363 s.v. manus: Pit. *man-u- < *mon-u- (not in the lexicon); *sméh₂r̥ is unrelated"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "manf",
+   "lex_id": [],
+   "erratum": "manf 'manus' mapped to *sméh₂r̥",
+   "note": "de Vaan 2008 p.363 s.v. manus"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "pars",
+   "lex_id": [],
+   "erratum": "U. pars mapped to *perh₃-",
+   "note": "de Vaan 2008 p.444 s.v. par: U. pars (est) 'prescribed' belongs with par, 'no good etymology is available'"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "sanes",
+   "lex_id": [],
+   "erratum": "sanes mapped to *seh₂- 'satiate'",
+   "note": "de Vaan 2008 p.538 s.v. sanus: U. sanes '?', *seh₂-no- 'purely mechanical'"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "kateramu",
+   "lex_id": [],
+   "erratum": "kateramu mapped to pseudo *ḱatwr̥",
+   "note": "de Vaan 2008 p.98 s.v. caterva: *kates-wa-, only a doubtful OE cognate; not 'four'"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "anderuomu",
+   "lex_id": [],
+   "erratum": "anderuomu mapped to *léwh₃eti 'wash'",
+   "note": "Buck 1904 glossary (OCR l.21114): anderuomu 'inter', abl. sg.; not a form of 'wash'"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "sve",
+   "lex_id": [
+    "pie-lex-so"
+   ],
+   "erratum": "sve 'si' mapped to *swé 'self'",
+   "note": "de Vaan 2008 p.561 s.v. si: U. sve, sue < Pit. *suai, PIE *so- 'this'"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "sue",
+   "lex_id": [
+    "pie-lex-so"
+   ],
+   "erratum": "sue 'si' mapped to *swé 'self'",
+   "note": "de Vaan 2008 p.561 s.v. si"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "e",
+   "lex_id": [
+    "pie-lex-h1en",
+    "pie-lex-h1egjh"
+   ],
+   "erratum": "e mapped also to pseudo *eh₁",
+   "note": "de Vaan 2008 p.196 s.v. ex: U. e, ehe 'out' (*h₁eǵʰ); the postposition -e 'in' (*h₁én; tafle e, testre e) is the commoner reading in the OCR lines"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "anclar|anglaf",
+   "lex_id": [
+    "pie-root-kelh1-call_out_to"
+   ],
+   "erratum": "angla- 'oscines' mapped also to *skelh₁- 'parch'",
+   "note": "Buck 1904 glossary: anglar 'oscines' (calling birds); *skelh₁- 'parch' is a spurious homograph"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "anclar",
+   "lex_id": [
+    "pie-root-kelh1-call_out_to"
+   ],
+   "erratum": "anclar mapped also to *skelh₁- 'parch'",
+   "note": "Buck 1904 glossary: anglar, ancla- 'oscines' (calling birds; cf. Lat. calare); *skelh₁- 'parch' is a spurious homograph"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "fiktu",
+   "lex_id": [
+    "pie-lex-dheygweti"
+   ],
+   "erratum": "fiktu 'figito' mapped also to *dʰeyǵʰ- 'form'",
+   "note": "de Vaan 2008 p.221 s.v. figo: U. fiktu, *dʰigʷ- 'stick'"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "am",
+   "lex_id": [
+    "pie-lex-h2mbhi"
+   ],
+   "erratum": "am- mapped also to pseudo *h₂enh₂",
+   "note": "de Vaan 2008 p.37 s.v. ambi-: U. am-, an- 'around' < *h₂mbʰi"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "berus",
+   "lex_id": [
+    "pie-lex-gweru"
+   ],
+   "erratum": "berus 'veribus' mapped also to *weh₁ros 'true'",
+   "note": "de Vaan 2008 p.668 s.v. veru: U. berva, berus 'spits' < *gʷeru-"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "uerfale",
+   "lex_id": [
+    "pie-root-werbh-enclose"
+   ],
+   "erratum": "uerfale mapped to *werdʰom 'word'",
+   "note": "de Vaan 2008 p.643 s.v. urbs: U. uerfale 'area for taking auspices' < *werf-ali-, *u(o)rbʰ- 'enclosure'"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "urnasier",
+   "lex_id": [
+    "pie-root-h3er-move"
+   ],
+   "erratum": "urnasier mapped to *wósr̥ 'spring'",
+   "note": "de Vaan 2008 p.435 s.v. orior: U. urnasier, a spring month, < *orn-āsio- to *h₃r-no- 'shoot' (*h₃er- 'rise')"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "urnasiaru",
+   "lex_id": [
+    "pie-root-h3er-move"
+   ],
+   "erratum": "urnasiaru mapped to *wósr̥ 'spring'",
+   "note": "de Vaan 2008 p.435 s.v. orior"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "sesna",
+   "lex_id": [
+    "pie-lex-skertsneh2"
+   ],
+   "erratum": "śesna 'cenam' mapped to *(s)ker- (root group of *sek-)",
+   "note": "de Vaan 2008 p.106 s.v. cena: U. śesna < Pit. *kert(e)sna-; same lexeme as Latin cena"
+  },
+  {
+   "corpus": "xum",
+   "lemma": "tuderato",
+   "lex_id": [
+    "pie-lex-stewd"
+   ],
+   "erratum": "tuderato mapped to two *(s)tewd- homographs",
+   "note": "de Vaan 2008 p.633 s.v. tundo: U. tuder 'border' < *tud-es- to *(s)tud- 'thrust'"
+  }
+ ],
+ "form": [
+  {
+   "lang": "xum",
+   "form": "totar",
+   "lemma": "totam",
+   "erratum": "totar left unlemmatized",
+   "note": "de Vaan 2008 p.618: U. totar, tote, totaper, tutaper are case forms of tota 'civitas' (*toutā)"
+  },
+  {
+   "lang": "xum",
+   "form": "tote",
+   "lemma": "totam",
+   "erratum": "tote left unlemmatized",
+   "note": "de Vaan 2008 p.618 (tota 'civitas')"
+  },
+  {
+   "lang": "xum",
+   "form": "totaper",
+   "lemma": "totam",
+   "erratum": "totaper left unlemmatized",
+   "note": "de Vaan 2008 p.618 (tota + postposition -per)"
+  },
+  {
+   "lang": "xum",
+   "form": "tutaper",
+   "lemma": "totam",
+   "erratum": "tutaper left unlemmatized",
+   "note": "de Vaan 2008 p.618 (tota + -per)"
+  },
+  {
+   "lang": "xum",
+   "form": "nomneper",
+   "lemma": "nomne",
+   "erratum": "nomneper left unlemmatized",
+   "note": "de Vaan 2008 p.412: U. nomneper = nomne 'nomen' + -per"
+  },
+  {
+   "lang": "xum",
+   "form": "erar",
+   "lemma": "ere",
+   "erratum": "erar left unlemmatized",
+   "note": "de Vaan 2008 p.309: U. erar, erer, gen. of the pronoun ere 'is'"
+  },
+  {
+   "lang": "xum",
+   "form": "erer",
+   "lemma": "ere",
+   "erratum": "erer left unlemmatized",
+   "note": "de Vaan 2008 p.309 (pronoun ere 'is')"
+  },
+  {
+   "lang": "xum",
+   "form": "ocriper",
+   "lemma": "ocre",
+   "erratum": "ocriper left unlemmatized",
+   "note": "de Vaan 2008 p.424: U. ocriper = ocre 'mons, arx' + -per"
+  },
+  {
+   "lang": "xum",
+   "form": "ukriper",
+   "lemma": "ukre",
+   "erratum": "ukriper left unlemmatized",
+   "note": "de Vaan 2008 p.424 (ukre + -per)"
+  },
+  {
+   "lang": "xum",
+   "form": "uerir",
+   "lemma": "verufe",
+   "erratum": "uerir left unlemmatized",
+   "note": "de Vaan 2008 p.668: U. vera, verufe, uerir, uerisco 'city gate'"
+  },
+  {
+   "lang": "xum",
+   "form": "uerisco",
+   "lemma": "verufe",
+   "erratum": "uerisco left unlemmatized",
+   "note": "de Vaan 2008 p.668 (uerir + -com)"
+  }
+ ]
+}

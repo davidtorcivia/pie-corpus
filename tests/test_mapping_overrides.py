@@ -34,10 +34,11 @@ def test_override_table_covers_the_errata():
         assert key in got, key
         assert not (got[key] & WRONG), (key, got[key])
     assert ov["form"]["ang"].get("bid") == "biþ"
+    # rows of the shared errata file each cite a line of mapping-errata.md (per-language files cite dictionaries)
     errata = (ROOT / "data/research/formulas/mapping-errata.md").read_text("utf-8")
-    for _, row in [r for rows in ov["lemma"].values() for r in rows.values()]:
-        if "erratum" in row:
-            assert row["erratum"].split()[0].strip("'") in errata
+    shared = json.loads((ROOT / "data/research/formulas/mapping-overrides.json").read_text("utf-8"))
+    for row in shared.get("lemma", []):
+        assert row["erratum"].split()[0].strip("'") in errata
 
 
 def test_apply_lemma_overrides_replaces_and_unmaps():
