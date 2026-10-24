@@ -160,7 +160,8 @@ def test_removal_blocks_every_route():
     assert ch.check("pie-lex-bhuHt", [ref])["exact_branches"] == []          # inflected word, cited lemma
     # the kaikki link of another word is not touched
     assert ch.match("pie-lex-bhuHt", "sa", "Vedic", "bhū́mi", True)["level"] == "exact"
-    assert not any("pie-lex-bhuHt" in ids for ids, *_ in ch.table("sa").get("bhū", []))
+    # the kaikki link stays in the table (another sense could use it) but is capped by the decision
+    assert any("pie-lex-bhuHt" in ids for ids, *_ in ch.table("sa").get("bhū", []))
 
 
 def test_remap_to_a_root_keeps_its_lexemes_but_not_what_it_removed():
@@ -207,3 +208,34 @@ def test_lemmatizer_group_decision_is_about_its_row_only():
     pop = load_population(codes={"ang"})
     ch = SecureChecker.from_population({}, pop)
     assert ch.governing("ang", "gēar", True) is None and ch.governing("ang", "gear", True) is None
+
+
+def test_root_choice_between_homograph_roots_keeps_the_lexeme_exact():
+    # Ved. bhā: the decision keeps the root 'shine' and drops 'speak'; the 'shine' verb stays exact
+    ent = {"pie-root-bheh2-shine": {"id": "pie-root-bheh2-shine", "kind": "root"},
+           "pie-root-bheh2-speak": {"id": "pie-root-bheh2-speak", "kind": "root"},
+           "pie-lex-shine": {"id": "pie-lex-shine", "root_id": "pie-root-bheh2-shine",
+                             "reflexes": {"Sanskrit": [{"roman": "bhā"}]}},
+           "pie-lex-speak": {"id": "pie-lex-speak", "root_id": "pie-root-bheh2-speak",
+                             "reflexes": {"Sanskrit": [{"roman": "bhā"}]}}}
+    rows = {"av": [{"lemma": "bhā", "lang": "sa", "lex_id": ["pie-lex-shine", "pie-lex-speak"], "path": ["sa:bhā"]}]}
+    ov = {"av": {"bhā": (frozenset({"pie-root-bheh2-shine"}), {"erratum": "bhā 'shine' also mapped to 'speak'"})}}
+    ch = SecureChecker.from_population(ent, build_population(rows, ov, codes={"sa"}))
+    assert ch.match("pie-lex-shine", "sa", "Vedic", "bhā", True)["level"] == "exact"
+    assert ch.match("pie-lex-speak", "sa", "Vedic", "bhā", True) is None
+
+
+def test_accent_homographs_and_remainders_are_not_decided_by_another_lemma():
+    ent = {"pie-lex-raw": {"id": "pie-lex-raw", "reflexes": {"Ancient Greek": [{"form": "ὠμός"}]}},
+           "pie-lex-shoulder": {"id": "pie-lex-shoulder"},
+           "pie-lex-slain": {"id": "pie-lex-slain", "reflexes": {"Ancient Greek": [{"form": "φατός"}]}}}
+    rows = {"grp": [{"lemma": "ὦμος", "lang": "grc", "lex_id": ["pie-lex-raw"], "path": ["grc:ὦμος"]},
+                    {"lemma": "φάτις", "lang": "grc", "lex_id": ["pie-lex-slain"], "path": ["grc:φάτις"]}]}
+    ov = {"grp": {"ὦμος": (frozenset({"pie-lex-shoulder"}), {"erratum": "ὦμος 'shoulder' mapped to 'raw'"}),
+                  "φάτις": (frozenset(), {"erratum": "φάτις 'speech' mapped to 'slain'"})}}
+    ch = SecureChecker.from_population(ent, build_population(rows, ov, codes={"grc"}))
+    assert ch.match("pie-lex-raw", "grc", "Greek", "ὦμος", True) is None
+    assert ch.match("pie-lex-shoulder", "grc", "Greek", "ὦμος", True)["level"] == "exact"
+    assert ch.match("pie-lex-raw", "grc", "Greek", "ὠμός", True)["level"] == "exact"     # same key ωμοσ
+    m = ch.match("pie-lex-slain", "grc", "Greek", "πρόσφατος", False)                     # -φατος, not φάτις
+    assert m["level"] == "exact" and m["path"][0] == "preverb:pros"

@@ -390,6 +390,20 @@ def decision_keys(code: str, lemma: str, word: str | None = None) -> set[str]:
     return {k for k in keys if k}
 
 
+_TONES = {"\u0300", "\u0301", "\u0302", "\u0342", "\u0313", "\u0314", "\u0344"}
+
+
+def _tone_form(s: str) -> str:
+    return "".join(c for c in unicodedata.normalize("NFD", (s or "").lower().replace("ς", "σ"))
+                   if c.isalpha() or c in _TONES)
+
+
+def tone_clash(a: str, b: str) -> bool:
+    """Both written with accents or breathings, and these differ: two words, whatever their keys."""
+    fa, fb = _tone_form(a), _tone_form(b)
+    return bool(_TONES & set(fa)) and bool(_TONES & set(fb)) and fa != fb
+
+
 class Population:
     """What the checker reads from the mapping tables: pie.mapping.iter_resolved (the same population the
     mapping-precision measurement samples), its table recs, and the reviewed decisions per language."""
@@ -548,11 +562,12 @@ LEVEL_RANK = {None: 0, "root": 1, "exact": 2}
 class Gov:
     """The reviewed decisions (pie.mapping.Decision) that apply to one cited word of a language, and what
     they leave to the other routes. Every route's level for a lexeme is capped by `cap`:
-      - lexemes a decision removed (the automatic ids it did not keep) or marked uncertain: no route may
-        give more than the decision itself does;
+      - lexemes marked uncertain: no route may give more than the decision itself does (nothing);
       - a lexeme the decision lists: exact (root for a "derivative" decision);
-      - a lexeme under a root the decision lists, which it did not remove: exact (the decision picked the
-        root, e.g. between homograph roots; a lexicon reflex list may show the lexeme itself);
+      - a lexeme under a root the decision lists: exact (the decision picked the root, e.g. between
+        homograph roots: Ved. bhā 'shine', not 'speak'; a lexicon reflex list may show the lexeme itself),
+        unless the decision only demoted it, i.e. every automatic id it removed lies in the family it kept
+        (υἱός: *suHnús → the root *sewH-, because υἱός is *suH-iu-): then root;
       - a sibling of a listed lexeme: root; anything else: none (no route restores an equation the
         review contradicts)."""
 
@@ -565,6 +580,7 @@ class Gov:
         unc = [d.ids for _, _, d in decided if d.uncertain]
         self.uncertain = (frozenset().union(*unc) if unc else frozenset()) - self.allowed
         self.removed = frozenset(auto) - self.allowed
+        self.demoted = bool(self.removed) and all(checker.level_of(i, self.allowed) for i in self.removed)
         self.path = [f"override:{c}:{lem}" for c, lem, _ in decided[:3]]
 
     def own(self, lid: str) -> str | None:
@@ -582,7 +598,7 @@ class Gov:
 
     def cap(self, lid: str) -> str | None:
         own = self.own(lid)
-        if lid in self.removed or lid in self.uncertain or lid in self.allowed:
+        if lid in self.uncertain or lid in self.allowed or (lid in self.removed and self.demoted):
             return own
         rid = (self.ch.entries.get(lid) or {}).get("root_id")
         if own == "root" and rid in self.allowed and rid not in self.derivative:
@@ -625,7 +641,9 @@ class SecureChecker:
         def loader(code):
             if not cache:
                 cache["others"] = tuple(others_loader()) if others_loader else ()
-            return merge_tables(code, pop.tables, cache["others"], pop.corrected, ch.dropped[code])
+            # no key-level drop of the other sources: the decisions cap them word by word (Gov), where a
+            # drop by key would also hit an accent homograph (ὠμός under ὦμος)
+            return merge_tables(code, pop.tables, cache["others"], {}, ch.dropped[code])
         ch.loader = loader
         return ch
 
@@ -644,43 +662,61 @@ class SecureChecker:
 
     # -- reviewed decisions
     def _gov_index(self, code: str) -> dict:
-        """{"eq": {table key: [(corpus, lemma, decisions)]}, "stem": {comparison stem: [...]}}."""
+        """{"eq": {table key: [entry]}, "full": {comparison key: [entry]}, "stem": {comparison stem: [entry]}},
+        entry = (corpus, lemma, decisions, table keys, citation parts)."""
         if code not in self._gov_idx:
-            eq, st = collections.defaultdict(list), collections.defaultdict(list)
+            eq, full, st = (collections.defaultdict(list) for _ in range(3))
             for corpus, lem, word, ds in (self.population.decided.get(code, []) if self.population else []):
-                e = (corpus, lem, ds, frozenset(decision_keys(code, lem, word)))
+                parts = tuple(_parts(code, lem) + (_parts(code, word) if word and _parts(code, lem) else []))
+                e = (corpus, lem, ds, frozenset(decision_keys(code, lem, word)), parts)
                 for k in e[3]:
                     eq[k].append(e)
                 # comparison space: the table keys themselves, except Greek (tables in Greek script)
-                cks = {key(code, p) for p in _parts(code, lem)} if code == "grc" else e[3]
+                cks = {key(code, p) for p in parts} if code == "grc" else e[3]
                 for ck in cks:
                     if ck and len(ck) >= 2:
+                        full[ck].append(e)
                         for x in stems(code, ck):
                             st[x].append(e)
-            self._gov_idx[code] = {"eq": eq, "stem": st}
+            self._gov_idx[code] = {"eq": eq, "full": full, "stem": st}
         return self._gov_idx[code]
+
+    def _eq_entries(self, code: str, s: str, keys=()) -> dict:
+        """Decided lemmas that cited lemma s is: same table key, and no clash of accent or breathing when
+        both are written with them (Gk ὦμος 'shoulder' is not ὠμός 'raw', though both key ωμοσ)."""
+        idx = self._gov_index(code)
+        out = {}
+        for x in {y for y in self._hit_keys(code, s) if y} | set(keys):
+            for e in idx["eq"].get(x, ()):
+                if not e[4] or any(not tone_clash(s, p) for p in e[4]):
+                    out[(e[0], e[1])] = e
+        return out
 
     def governing(self, code: str | None, s: str | None = None, lemma: bool = True, sense: str | None = None,
                   k: str | None = None, context: set | None = None, eq: set | None = None) -> Gov | None:
-        """The decisions that apply to cited s: a lemma by its table keys (`eq`: given table keys); an
-        inflected word, or with k a remainder already in comparison-key space, also by its stems (the
-        relation the reflex route uses), restricted to the decisions on the lemmas cited with it
-        (`context`: their table keys), so a homograph stem elsewhere in the language does not decide it.
+        """The decisions that apply to cited s. A lemma: the decided lemmas it is (_eq_entries; `eq`: table
+        keys of a word with no citation string). An inflected word, or with k a remainder already in
+        comparison-key space: when its ref cites lemmas (`context`, see SecureChecker.context), a decided
+        lemma among them that it shares a stem with (the relation the reflex route uses); otherwise a
+        decided lemma whose whole key it is plus one declared ending. A homograph stem elsewhere in the
+        language does not decide it (πρόσ-φατος is not φάτις, giráti cited for √gṝ- is not gír-).
         None when no decision applies."""
         if code is None or not self.population or not self.population.decided.get(code):
             return None
         idx = self._gov_index(code)
-        hit, keys = {}, set(eq or ())
+        hit = {}
         if s is not None:
-            keys |= {x for x in self._hit_keys(code, s) if x}
-        for x in keys:
+            hit.update(self._eq_entries(code, s))
+        for x in eq or ():
             for e in idx["eq"].get(x, ()):
                 hit[(e[0], e[1])] = e
         ck = k if k is not None else (key(code, s) if (s is not None and not lemma) else None)
         if ck:
             for x in stems(code, ck):
-                for e in idx["stem"].get(x, ()):
-                    if context is None or e[3] & context:
+                for e in (idx["full"].get(x, ()) if context is None else ()):
+                    hit[(e[0], e[1])] = e
+                for e in (idx["stem"].get(x, ()) if context else ()):
+                    if (e[0], e[1]) in context:
                         hit[(e[0], e[1])] = e
         if not hit:
             return None
@@ -689,10 +725,10 @@ class SecureChecker:
         if not decided:
             return None
         auto: set = set()
+        keys = set()
+        for e in hit.values():
+            keys |= e[3]
         tab = self.table(code)
-        for c, lem, _ in decided:
-            for x in decision_keys(code, lem):
-                keys.add(x)
         for x in keys:
             auto |= self.population.auto.get(code, {}).get(x, set())
             auto |= self.dropped.get(code, {}).get(x, set())
@@ -773,7 +809,8 @@ class SecureChecker:
                     if not ck:
                         continue
                     if gov is None:
-                        gov = self.governing(code, eq={k}) or False
+                        tw = next((p.split(":", 1)[1] for p in path if p.startswith(f"{code}:")), None)
+                        gov = (self.governing(code, tw) if tw else self.governing(code, eq={k})) or False
                     for i in ids:
                         if not gov or gov.cap(i) == "exact":
                             rev[i].add(ck)
@@ -875,9 +912,11 @@ class SecureChecker:
         return best
 
     def context(self, code: str | None, r: dict) -> set | None:
-        """Table keys of a ref's cited lemmas (None when it cites none)."""
+        """The decided lemmas, (corpus, lemma), that a ref's cited lemmas are (None when it cites none)."""
         lem = [p for w in r.get("lemmas", []) or [] for p in re.split(r"\s*~\s*", w)]
-        return {x for p in lem for x in self._hit_keys(code, p) if x} if (lem and code) else None
+        if not (lem and code and self.population and self.population.decided.get(code)):
+            return None
+        return {x for p in lem for x in self._eq_entries(code, p)}
 
     def _cited(self, r: dict):
         senses = r.get("senses") or {}
