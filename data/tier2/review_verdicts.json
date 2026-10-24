@@ -1,5 +1,5 @@
 {
- "_source": "round 1: docs/audits/tier2-review.md (plans at 1fffadb); round 2: docs/audits/tier2-review-r2.md (entries with review: r2)",
+ "_source": "round 1: docs/audits/tier2-review.md (plans at 1fffadb); round 2: docs/audits/tier2-review-r2.md (entries with review: r2); round 4: docs/audits/tier2-review-r4.md (review: r4)",
  "_rule": "a verdict applies only while the plan's sha matches (plan, cognate_refs, secure); a revised line is 'stale' until re-reviewed",
  "verdicts": {
   "cattle-raid-001": {
@@ -79,8 +79,8 @@
   },
   "dawn-sun-009": {
    "verdict": "weak",
-   "plan_sha": "0840368cfa869435",
-   "review": "r2"
+   "plan_sha": "ed0296396fbe95e4",
+   "review": "r4"
   },
   "dawn-sun-010": {
    "verdict": "sound",
@@ -88,8 +88,8 @@
   },
   "dawn-sun-011": {
    "verdict": "weak",
-   "plan_sha": "d45005b004f321eb",
-   "review": "r2"
+   "plan_sha": "7d0fa01976ec837a",
+   "review": "r4"
   },
   "dawn-sun-012": {
    "verdict": "reject",
@@ -115,17 +115,18 @@
    "plan_sha": "146e88bf9e932bda"
   },
   "dawn-sun-017": {
-   "verdict": "weak",
-   "plan_sha": "9901d6153b465e6e",
-   "review": "r2"
+   "verdict": "reject",
+   "plan_sha": "19fa84912358cf8b",
+   "review": "r4"
   },
   "dawn-sun-018": {
    "verdict": "sound",
    "plan_sha": "01867ee1144e94dc"
   },
   "dawn-sun-019": {
-   "verdict": "weak",
-   "plan_sha": "768df3047fd4c9af"
+   "verdict": "reject",
+   "plan_sha": "3b4fbceaaa16b8ff",
+   "review": "r4"
   },
   "dawn-sun-020": {
    "verdict": "weak",
@@ -239,8 +240,8 @@
   },
   "fame-012": {
    "verdict": "reject",
-   "plan_sha": "ba2b266c75f5a710",
-   "review": "r2"
+   "plan_sha": "8972e4cfd1970d15",
+   "review": "r4"
   },
   "fame-013": {
    "verdict": "sound",
@@ -257,8 +258,8 @@
   },
   "sky-father-002": {
    "verdict": "weak",
-   "plan_sha": "c39e368148bc2124",
-   "review": "r2"
+   "plan_sha": "67dc8b9470be7d13",
+   "review": "r4"
   },
   "sky-father-003": {
    "verdict": "sound",
@@ -288,17 +289,19 @@
    "plan_sha": "abf65a04a29beb2d"
   },
   "sky-father-009": {
-   "verdict": "weak",
-   "plan_sha": "dbbda3018b2553a7"
+   "verdict": "reject",
+   "plan_sha": "6b696b4ef54c8043",
+   "review": "r4"
   },
   "sky-father-010": {
    "verdict": "reject",
-   "plan_sha": "f48d977c6b65ed6a",
-   "review": "r2"
+   "plan_sha": "e6509c646b39ea04",
+   "review": "r4"
   },
   "sky-father-011": {
-   "verdict": "sound",
-   "plan_sha": "96b675268d7a9568"
+   "verdict": "weak",
+   "plan_sha": "47c15ffe6d98e0d5",
+   "review": "r4"
   },
   "sky-father-012": {
    "verdict": "weak",
@@ -412,8 +415,8 @@
   },
   "poetics-gifts-002": {
    "verdict": "reject",
-   "plan_sha": "d9960f58767bec60",
-   "review": "r2"
+   "plan_sha": "616bd2de8ab28f60",
+   "review": "r4"
   },
   "poetics-gifts-003": {
    "verdict": "sound",
@@ -433,7 +436,8 @@
   },
   "poetics-gifts-007": {
    "verdict": "weak",
-   "plan_sha": "746ea75392680437"
+   "plan_sha": "df7a5134d10d8ba3",
+   "review": "r4"
   },
   "poetics-gifts-008": {
    "verdict": "sound",
@@ -518,8 +522,8 @@
   },
   "fame-015": {
    "verdict": "sound",
-   "plan_sha": "cac842541b0446e4",
-   "review": "r2"
+   "plan_sha": "f3202d200512f91e",
+   "review": "r4"
   },
   "healing-charms-006": {
    "verdict": "sound",
@@ -543,18 +547,73 @@
   },
   "epic-diction-003": {
    "verdict": "sound",
-   "plan_sha": "17af492c18c8058b",
-   "review": "r3"
+   "plan_sha": "d99bb636d61aea6c",
+   "review": "r4"
   },
   "epic-diction-004": {
    "verdict": "weak",
-   "plan_sha": "41e5ac6ca6f6193d",
-   "review": "r3"
+   "plan_sha": "7f2f6e4665c417cf",
+   "review": "r4"
   },
   "poetics-gifts-016": {
    "verdict": "weak",
    "plan_sha": "9eab46de05564f5e",
    "review": "r3"
+  },
+  "bp-east-001": {
+   "verdict": "weak",
+   "plan_sha": "29c31bc56a446430",
+   "review": "r4"
+  },
+  "bp-east-002": {
+   "verdict": "weak",
+   "plan_sha": "ce4bb95bcb175cb0",
+   "review": "r4"
+  },
+  "bp-east-003": {
+   "verdict": "weak",
+   "plan_sha": "a59d79dec929addc",
+   "review": "r4"
+  },
+  "bp-gk-gmc-001": {
+   "verdict": "weak",
+   "plan_sha": "4dddb481c7279564",
+   "review": "r4"
+  },
+  "bp-gk-gmc-002": {
+   "verdict": "sound",
+   "plan_sha": "71402b1cb168a012",
+   "review": "r4"
+  },
+  "bp-gk-ita-001": {
+   "verdict": "weak",
+   "plan_sha": "3771e2bf06bda28e",
+   "review": "r4"
+  },
+  "bp-ii-gmc-001": {
+   "verdict": "weak",
+   "plan_sha": "d37fbc6f631106e5",
+   "review": "r4"
+  },
+  "bp-ii-gmc-002": {
+   "verdict": "reject",
+   "plan_sha": "2d0c5833e2caa0a2",
+   "review": "r4"
+  },
+  "bp-ii-ita-001": {
+   "verdict": "sound",
+   "plan_sha": "6d2e0874bb107d58",
+   "review": "r4"
+  },
+  "bp-ii-ita-002": {
+   "verdict": "weak",
+   "plan_sha": "40b5bd79a3deb583",
+   "review": "r4"
+  },
+  "bp-ii-ita-003": {
+   "verdict": "weak",
+   "plan_sha": "0a669fbcf47963b6",
+   "review": "r4"
   }
  }
 }
