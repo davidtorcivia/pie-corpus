@@ -102,6 +102,7 @@ Everything in IDEAS.md is folded into PLAN.md, and nothing is rejected outright.
 
 ## Log
 
+- **2026-10-24 (afternoon). 8c Stage C-S: stratified rebuild built, not read.** Pre-registered first (earliest least-derivative layer per tradition and genre; genre classes; at most 2 partners per corpus; decoys from the same layer and class). 10,110 bundles (20% decoys), 44 slabs, 29.4M slab tokens; 1,472 Celtic-pivot bundles in 7 slabs. Lead's addendum on Fínán's horse healing (thematic, not blind) and the next-design note (docs/research/8c-next-design.md). Reading waits for David.
 - **2026-10-24 (afternoon). 8c Stage C Celtic wave read, reviewed and unblinded (docs/research/8c-results.md).** 28 readers, 4,765 bundles, 16 claims; blind review 1 accepted (Indo-Iranian only, excluded by the anchoring rule), 7 weak, 8 reject. Measure (i) not met (0 accepted Celtic parallels); all claims real 4.8x decoy (p = 0.043). Usage 201M input (95% cache), 0.49M output. Remaining 159 slabs on hold (David).
 - **2026-10-24 (afternoon). 8c Stage C Celtic wave started (David: "Run the Celtic pivot stage c").** Scope recorded in the pre-registration before any reading: the 28 Celtic-pivot slabs RC001-RC028 (4,765 bundles, of which 4,687 Celtic-pivot incl. 938 decoys; 18.7M slab tokens); readers Opus 5.5 (1M), 20 at a time; measure (i) on these, (ii) deferred until the other 159 slabs are read. Loci-only slab copies committed. Hourly check-ins disabled at David's request.
 
