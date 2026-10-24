@@ -38,6 +38,12 @@ def compare(family, spec, para):
         want = cells_for(tfam, tspec)
     except Exception:
         return 0, 0
+    # an o-stem table that disagrees with its own headword (h₂ŕ̥ǵn̥tom vs table h₂r̥ǵn̥tó-) tests Wiktionary,
+    # not the rule; athematic tables keep their citation-form mismatch (gʷḗn vs gʷénh₂s). Engine sweep,
+    # docs/audits/engine-sweep/thematic.md "Gating".
+    thematic = (tfam == "noun" and tspec.kind == "thematic") or (tfam == "adj" and tspec.m_weak is None)
+    if thematic and para.get("form") and para["form"] not in want.get("NOM.SG", []):
+        return 0, 0
     try:
         have = cells_for(family, spec) if family == tfam else {}
     except Exception:
@@ -98,7 +104,11 @@ def main() -> int:
         cov["usable"] += usable
         spec = dataclasses.asdict(c.spec) if c.spec else None
         if spec and e.get("spec_override"):            # hand fixes from reviews (data/lexicon/overrides.jsonl)
-            spec = {**spec, **e["spec_override"]}
+            before, spec = spec, {**spec, **e["spec_override"]}
+            # the displaced spec stays indexed for the validator (pie/validate.py reads extra_specs): an override
+            # chooses the primary form, it does not delete the other reconstruction (engine sweep convention)
+            if before != spec and c.family and not any(x["spec"] == before for x in extra):
+                extra.append({"family": c.family, "spec": before, "displaced_by_override": True})
         if e.get("spec_checked") and spec is None and e.get("spec_override"):
             spec = e["spec_override"]
         rows.append({"id": e["id"], "form": e["form"], "rule": c.rule, "family": c.family,

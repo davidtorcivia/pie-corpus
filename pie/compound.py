@@ -37,7 +37,11 @@ PREFIXES = {
 }
 # the lexicon's affix entries name the same prefixes
 PREFIX_ALIASES = {"pie-lex-h1su": "closed:prefix/h1su", "pie-lex-dus": "closed:prefix/dus",
-                  "pie-lex-n": "closed:prefix/n"}
+                  "pie-lex-n": "closed:prefix/n", "pie-lex-sm": "closed:prefix/sm",
+                  # the numeral lexemes compound as *dwi- *tri- *kʷetru- (Fortson §7.18), not as dwó-
+                  # (engine sweep, closed-class-compounds.md P2)
+                  "pie-lex-dwoh1": "closed:numerals/2", "pie-lex-treyes": "closed:numerals/3",
+                  "pie-lex-kwetwores": "closed:numerals/4"}
 
 
 class CompoundError(ValueError):
@@ -149,8 +153,9 @@ class Compound:
         c = decline(NounSpec(**sp), "handbook")
         lemma = self.lx.entries[self.second]["form"]
         base = decline(NounSpec(**r["spec"]), "handbook")
-        if not lemma.endswith("-") and r.get("rule") == "table" and lemma not in base.get("NOM.SG", []):
-            # as Lexicon.cells: the headword is the attested citation form
+        if not lemma.endswith("-") and r.get("rule") == "table" and lemma not in base.get("NOM.SG", []) \
+                and NounSpec(**r["spec"]).kind != "thematic":
+            # as Lexicon.cells: the headword is the attested citation form (not for o-stems: thematic.md 5)
             c = {**c, "NOM.SG": [f + lemma] + c.get("NOM.SG", [])}
             if self.head_gender == "n":
                 c["ACC.SG"] = [f + lemma] + c.get("ACC.SG", [])
@@ -222,6 +227,13 @@ def _first(fid: str, ctype: str, lx) -> tuple[str, bool]:
             if _caland(stem, accented_only=True):
                 raise CompoundError(_CALAND_MSG.format(fid))
             return stem, has_accent(parse(stem))            # Gk khrūsó-thronos, Ved. bāhú-ojas-
+        segs = parse(_bare(sp["strong"]))
+        if len(segs) > 1 and segs[-1].kind == "R" and not segs[-1].syl and segs[-1].base in ("y", "w") \
+                and not segs[-2].vocalic:
+            # a root noun whose stem ends in a glide after a consonant composes in -u-/-i- like a u-stem:
+            # néh₂w- 'ship' → néh₂u- (néh₂uwiHrós; engine sweep: the i-u-stems.md #6 spec néh₂w- replaced néh₂u-)
+            stem = render(segs[:-1] + [replace(segs[-1], syl=True)])
+            return stem, has_accent(parse(stem))
         raise CompoundError(f"first member {fid}: only thematic and i-/u-stem nouns have a compositional "
                             f"form the engine builds (consonant stems take a zero grade: Beekes 13.1.4)")
     raise CompoundError(f"first member {fid} is a {r['family']}: verbal compounds (*ḱlewos-dʰeh₁-) "
@@ -260,6 +272,11 @@ def resolve(c: dict, lx) -> Compound:
     if fid in PREFIXES and _vocalic_onset(st2) and not form.endswith("s") and not (
             fid == "closed:prefix/n" and _vowel_onset(st2)):
         raise CompoundError(f"{fid} before a second member with a vocalic onset: the books give no junction rule")
+    if fid not in PREFIXES and _vocalic_onset(st2):
+        # a vowel-final stem (-o-, -u-, -i-) before a vowel or syllabic resonant gives hiatus (newo-úderos,
+        # newo-n̥bʰrós): rejected as for the prefixes (engine sweep, closed-class-compounds.md P1)
+        raise CompoundError(f"first member {fid} before a second member with a vocalic onset ({sid}): "
+                            f"the books give no junction rule")
     return Compound(ctype, fid, sid, form, acc, kind, lx)
 
 

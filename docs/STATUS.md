@@ -125,3 +125,25 @@ Everything in IDEAS.md is folded into PLAN.md, and nothing is rejected outright.
 - **2026-10-23. Phase 1 (built).** Found the dump via the kaikki.org index and logged it in `raw/MANIFEST.md`. Built `pie/lexicon.py` and `scripts/build_lexicon.py`, wrote the schema in `docs/lexicon.md`, and added two normalizer rules (G-HOMOGLYPH, G-LAR-RING). Lexicon tests cover form parsing, id/link integrity, parent/child symmetry and paradigm cleanliness (1,838 tests in total). A provisional reviewer subagent is auditing a stratified 50-entry sample.
 
 - **2026-10-23. Phase 0.** Set up git, the uv project (Python 3.14), and the directory layout. Built `pie/translit.py` (strict, closed-inventory, reversible), `pie/notation.py` (19 named normalization rules, 4 profiles, applied rules reported per call), and the `scripts/translit.py` CLI, and wrote `docs/notation.md`. The tests caught two real bugs, both fixed: a fixture typed with acute before macron (the strict check correctly rejected it), and `G-CASE` lowercasing a word-final generic `H` (`"" in "₁₂₃"` is True in Python, which is exactly the silent laryngeal corruption the rule log warns about).
+
+## Conventions (engine sweep)
+
+Recorded 2026-10-24 by the lead after the engine audit sweep (docs/audits/engine-sweep/, integration in INTEGRATION.md). Principle: follow the majority of the handbooks together with the Vedic/Greek evidence; the other form stays an alternative cell (for a lexeme override, the displaced spec stays in `extra_specs`, which the validator indexes), never deleted. Code notes: the header of `pie/morph.py`.
+
+| Point | Primary (handbook convention) | Alternative | Basis |
+|---|---|---|---|
+| eh₂ vocative | *-a*, retracted (*h₂ékʷa*, *bʰóra*) | Ringe's *-á*, then *-eh₂* | Fortson §6.70, Ringe §2.3.4 vs M&A *-eh₂* |
+| devī acc. sg. | *-ih₂m* (Stang) | *-ih₂m̥* (Ringe) | Fortson §17.12, Beekes p. 204, L&Y |
+| u-stem loc. sg. | *-éw(i)* | *-ḗw* (Beekes) | Ringe pp. 47, 49 |
+| i-stem loc. sg. | unchanged (*-éy*, *-ḗy* second; acrostatic *-ēy* first) | | Fortson prints no i-stem locative, so the lead's condition (Fortson and Ringe agree) is not met |
+| u-adjective accent | suffix accent where L&Y and Vedic/Greek agree: *pl̥th₂ús, gʷr̥h₂ús, sweh₂dús, h₁wr̥Hús, h₁ln̥gʷʰús, bʰn̥ǵʰús*; *mr̥ǵʰús, dlukús* (Greek) | the root-accented first Wiktionary table (extra_specs) | L&Y ch. 122 §2.5, §3.2; Ved. gurú-, pr̥thú-, svādú-; Gk βαρύς, πλατύς, ἡδύς. *ténh₂us* (Ringe's model word, no Greek pair) left root-accented |
+| thematic dat./abl. pl. | *-oybʰos* (no change) | *-omos*, *-oybʰyos*, *-obʰos* | |
+| vocative plural/dual | retracted like the singular (*déywōs*), non-neuter, all declensions | the nominative form | Fortson §6.52 states it for the plural (Ved. dévās); the dual is extrapolated |
+| consonant-stem nom.-acc. du. | *-h₁e* | *-h₁* | Ringe; Beekes §13.2.11 (C-stems *-h₁e*, u-stems *-h₁*); L&Y §2.1.1 (glide-final stems *-h₁*); Fortson §6.13 either. i/u-stems keep *-h₁* first (t020 review item) |
+| *h₁ed-* 'eat' | Narten *h₁ḗdti*, 3pl *h₁édn̥ti* | Wiktionary's *h₁dénti* (extra_specs) | Ringe p. 27, Fortson ch. 5 n. 17 |
+| *ḱéytor* middle 3sg/3pl | t-less *ḱéyor*, *ḱéyror* (`mid_t_less`) | *-tor*, *-n̥tor* | Fortson §5.16, §5.18; L&Y §4.2, §4.3.1; Beekes §18.7 |
+| *dédeh₃ti* weak stem | mobile *dedh₃-* (*dedh₃més*, 3pl *dédh₃n̥ti*) | Ringe's fixed *dédh₃-* (extra_specs) | Beekes §18.1.3, §18.2.3; Ved. dadmás |
+| 2du primary | *-tes* = 3du | *-th₁es* | Ringe p. 31 prints *-tés* for both; Beekes p. 271 *-tHe/os* "perhaps *-th₁-*" is tentative; Fortson, L&Y no distinct form |
+| 1sg 'I' | *h₁eǵóh₂* | *h₁eǵoh₂, eǵoh₂, h₁eǵ, éǵh₂, eǵh₂óm* | Fortson §7.4 *eǵoh₂*, L&Y *(h₁)eǵoh₂*, Beekes *h₁eǵ(oH)*; Ringe *éǵh₂*. The accent is not printed by any book: final as in Gk ἐγώ, Ved. ahám (flagged) |
+| 'ten' | *déḱm̥* | *déḱm̥t* (Beekes), *déḱm̥d* (Ringe) | Fortson §7.17, L&Y; the lexicon's pie-lex-dekjm |
+| boukólos before u | handbook thematic and eh₂ declensions keep *kʷ* (*pérkʷunos*) | *pérkunos*; the Wiktionary convention keeps its full scope | Mallory & Adams *perkʷunos* (Fortson does not print the name; his §3.39 states the rule for a labiovelar next to u) |

@@ -71,10 +71,10 @@ def _redup_weak(stem: str) -> str | None:
     if j is None:
         return None
     root = [replace(x, acc=(i == j)) for i, x in enumerate(root)]
-    rest = zero_grade(render(root))
-    if rest is None:
-        return None
-    return render([replace(x, acc=False) for x in segs[:2]]) + rest
+    # zero-grade the root with the (deaccented) reduplication in place, so that a glide next to the deleted
+    # vowel sees the reduplication vowel: wé-woḱ → wewḱ, wí-wekʷ → wiwkʷ, yé-yes → yeys (zero-grading the root
+    # alone gave weuḱ, wiukʷ, yeis: two nuclei in hiatus). Engine sweep, athematic-verbs.md S3.
+    return zero_grade(render([replace(x, acc=False) for x in segs[:2]] + root))
 
 
 def zero_grade(stem: str) -> str | None:
@@ -140,7 +140,15 @@ def by_shape(e: dict) -> Classified:
         return Classified(None, "indeclinable" if pos in INDECLINABLE_POS else "unknown", None)
     is_verb = pos == "verb" or (pos is None and f.endswith(("ti", "tor", "toy")))
 
+    # s-aorist (Ringe 2006 p. 34 *dḗyḱ-s-t, *wḗǵʰ-s-t; Fortson §5.47): lengthened grade in the active indicative,
+    # full grade elsewhere (Wiktionary's ine-conj-pf args wḗǵʰs / wéǵʰs). Many are LIV derivatives without pos.
+    # Engine sweep, thematic-verbs.md defect 8.
+    if f.endswith("st") and "ḗ" in f and pos in (None, "verb") and e.get("aspect") in (None, "pf"):
+        st = f[:-1]
+        return Classified(VerbSpec(st, st.replace("ḗ", "é"), "pf"), "shape:s-aorist", "verb")
     if is_verb:
+        if f.endswith(("etor", "étor")):     # thematic media tantum: *mr̥-yé-tor, *sékʷ-e-tor (L&Y §4.2.3, §4.3.1)
+            return Classified(VerbSpec(_strip(f, "tor")), "shape:thematic-middle", "verb")
         if f.endswith(("tor", "toy")):
             return Classified(None, "unknown:middle-only", "verb")
         if e.get("aspect") == "stat" and f.endswith("e"):
@@ -184,7 +192,16 @@ def by_shape(e: dict) -> Classified:
     if f.endswith(("os", "ós")) and (g == "n" or s_stem_evidence or (refl == "s-stem" and not f.endswith("ós"))):
         # neuter s-stem (téwh₂os ~ téwh₂esos), not a thematic masculine
         st = f
-        return Classified(NounSpec(st, _strip(f, "os") + "es", "acrostatic", "n"), "shape:s-stem-neuter", "noun")
+        segs = parse(st)
+        if not any(x.acc for x in segs):
+            # acrostatic: root accent throughout (Ringe 2006 §2.3.4(ii) nébʰos ~ nébʰes-; Fortson §6.38). An
+            # unaccented headword (medos, stugos) would get ending accent in the oblique (medesés): engine
+            # sweep, s-root-heteroclite.md F3
+            i = next((j for j, x in enumerate(segs[:-2]) if x.vocalic), None)
+            if i is not None:              # ḱh₂dos has no root vowel: left alone
+                segs[i] = replace(segs[i], acc=True)
+                st = render(segs)
+        return Classified(NounSpec(st, _strip(st, "os") + "es", "acrostatic", "n"), "shape:s-stem-neuter", "noun")
     if f.endswith("os") and not f.endswith("ós") and g not in ("m", "f") and refl == "neuter":
         # the daughters agree on a neuter (Gk -ον, Lat. -um): plówyos → plówyom
         return Classified(NounSpec(_strip(f, "s"), gender="n"), "shape:thematic-neuter-reflex", "noun")
@@ -200,17 +217,23 @@ def by_shape(e: dict) -> Classified:
         return Classified(NounSpec(st, weak, "proterokinetic", "f", devi=True), "shape:devi", "noun")
     if f.endswith(("eh₂", "éh₂")):
         return Classified(NounSpec(f, gender="f"), "shape:eh2", "noun")
-    if f.endswith(("tḗr", "ḗr")):
+    if f.endswith(("tḗr", "ḗr")) and g != "n":   # not the neuter root noun ḱḗr (a d-stem, ḱérd-/ḱr̥d-)
         st = f.replace("ḗr", "ér")
-        wk = zero_grade(st)
+        # zero-grade suffix only (Fortson §6.23, §6.37: *ph₂tér-/*ph₂tr-, *dh₃tḗr): zero_grade() reduced the root
+        # of a doubly accented lemma instead (spéḱtḗr → spḱter-); such lemmas get no spec (engine sweep,
+        # r-n-stems.md defect 8)
+        one_accent = sum(x.acc for x in _segs(st)) == 1      # (not a count of U+0301: ḱ/ǵ carry one too)
+        wk = _deaccent(st[:-2]) + "r̥" if one_accent else None
         return Classified(NounSpec(st, wk, "hysterokinetic", g if g in ("m", "f") else "m") if wk else None,
                           "shape:er-stem", "noun")
     if f.endswith("tōr"):                       # amphikinetic agent noun: ǵʰéwtōr, ǵʰéwtorm̥
         root = _strip(f, "tōr")
         wk = zero_grade(root)
         if wk:
+            # locative in the accented e-grade suffix with zero-grade root, as in the tables (dh₃tér, pkʷtér;
+            # Fortson §6.24 amphikinetic), not the strong stem (dʰéh₁tori): engine sweep, r-n-stems.md defect 7
             return Classified(NounSpec(root + "tor", wk + "tr̥", "amphikinetic", g if g in ("m", "f") else "m",
-                                       nom_sg=f), "shape:tor-agent", "noun")
+                                       nom_sg=f, loc_sg=[wk + "tér"]), "shape:tor-agent", "noun")
     if f.endswith(("ís", "ús")):
         st = _strip(f, "s")
         weak = _deaccent(st[:-1]) + ("éy" if f.endswith("ís") else "éw")

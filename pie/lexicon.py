@@ -512,6 +512,10 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
                     e["meaning"], e["meaning_source"] = x["meaning"], "override"
                 if "gender" in x:
                     e["gender"] = x["gender"]
+                if "form" in x and x["form"] != e["form"]:
+                    # citation form corrected from the handbooks (yókʷr̥ → yḗkʷr̥); the old one stays a variant
+                    e["variants"] = list(dict.fromkeys(e.get("variants", []) + [e["form"]]))
+                    e["form"], e["form_ascii"] = x["form"], to_ascii(x["form"])
                 if "spec" in x:
                     e["spec_override"] = x["spec"]
                 if "pos" in x:

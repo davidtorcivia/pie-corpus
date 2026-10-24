@@ -136,6 +136,14 @@ def join(stem: list[Seg], ending: list[Seg]) -> list[Seg]:
             out[i] = replace(out[i], syl=True)
             i -= 1
 
+    # 2b. stem-final consonantal resonant before a vocalic ending: a consonantal resonant before it, between
+    #     non-vocalic segments, becomes syllabic (h₂ḱmn+és → h₂ḱm̥nés, as Ringe 2006 §2.3.4 h₁n̥h₃m̥nés;
+    #     engine sweep, r-n-stems.md defect 1)
+    if n >= 3 and n < len(out) and out[n - 1].kind == "R" and not out[n - 1].syl and out[n].vocalic \
+            and out[n - 2].kind == "R" and not out[n - 2].syl and not _fixed(out[n - 2]) \
+            and not out[n - 3].vocalic:
+        out[n - 2] = replace(out[n - 2], syl=True)
+
     # 3. ending resonants, left to right within the initial resonant run
     i = n
     while i < len(out) and out[i].kind == "R" and not _fixed(out[i]):
@@ -221,17 +229,18 @@ def junction_laryngeal_loss(stem: list[Seg], ending: list[Seg]) -> list[Seg]:
     return stem
 
 
-def delabialize(segs: list[Seg]) -> list[Seg]:
+def delabialize(segs: list[Seg], before_u: bool = True) -> list[Seg]:
     """Boukólos rule as Wiktionary's module applies it: a labiovelar loses
     labialization after consonantal w (wéwkʷe- → wéwke-), before consonantal w
     (linkʷ-wós → linkwós), or before unaccented u (ḱm̥tógʷu- → ḱm̥tógu-). It is
-    kept after u (lúkʷos) and before accented ú (pr̥kʷúmos). Applied to whole forms."""
+    kept after u (lúkʷos) and before accented ú (pr̥kʷúmos). Applied to whole forms.
+    before_u=False drops the before-syllabic-u clause (handbook thematic/eh₂ declension: M&A *pérkʷunos)."""
     out = list(segs)
     for i, x in enumerate(out):
         if x.base in _LABIOVELAR:
             prev_w = i > 0 and out[i - 1].base == "w" and not out[i - 1].syl
             nxt = out[i + 1] if i + 1 < len(out) else None
-            next_w = nxt is not None and nxt.base == "w" and (not nxt.syl or not nxt.acc)
+            next_w = nxt is not None and nxt.base == "w" and (not nxt.syl or (before_u and not nxt.acc))
             if prev_w or next_w:
                 out[i] = Seg(_LABIOVELAR[x.base], "C")
     return out

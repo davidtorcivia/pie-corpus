@@ -49,7 +49,7 @@ The realizer never inserts a copula: a clause without a V slot is realized witho
            (Lehmann §4.3.1.a: the verb may be added for emphasis, RV 4.30.1 … asti), and for existence
            ('there is a king').
   np       a bare noun phrase as a whole utterance: a title, an exclamation, an address, an epithet line
-           in a catalogue ('sweet mead' = swéh₂du médʰu). One or more slots with role "NP" (coordinated with
+           in a catalogue ('sweet mead' = sweh₂dú médʰu). One or more slots with role "NP" (coordinated with
            "and") plus their MOD, POSS, APPOS (and participle deps); no V, SUBJ, OBJ or other clause roles,
            no neg. "case": "NOM" (default) | "VOC" (addresses) | any other case name; the NP slots and
            everything that agrees with them take it.
@@ -128,7 +128,7 @@ CASES = ("NOM", "VOC", "ACC", "GEN", "DAT", "INS", "LOC", "ABL")
 # an np utterance holds only its NP slots and what attaches to them
 NP_ROLES = {"NP", "MOD", "POSS", "APPOS"}
 # Wackernagel enclitics: placed after the first word of the clause
-ENCLITIC_PRONOUNS = {"moy", "toy", "me", "te", "nos", "wos", "soy", "se"}
+ENCLITIC_PRONOUNS = {"moy", "toy", "me", "te", "nos", "wos", "soy", "se", "noh₃", "woh₃"}
 
 
 @dataclass
@@ -236,7 +236,10 @@ class Lexicon:
                 c = decline(NounSpec(**sp), "handbook")
                 # the headword is the attested citation form (gʷḗn, not the table's gʷénh₂s)
                 lemma = self.entries[lex_id]["form"]
-                if not lemma.endswith("-") and lemma not in c.get("NOM.SG", []) and r.get("rule") == "table":
+                # not for o-stems: their headword is stem + -s/-m, so a mismatch is a table error (h₂ŕ̥ǵn̥tom vs
+                # table h₂r̥ǵn̥tó-), fixed by a spec override, never by mixing two stems (engine sweep, thematic.md 5)
+                if not lemma.endswith("-") and lemma not in c.get("NOM.SG", []) and r.get("rule") == "table" \
+                        and NounSpec(**sp).kind != "thematic":
                     c = {**c, "NOM.SG": [lemma] + c.get("NOM.SG", [])}
                     if self.gender(lex_id) == "n":     # neuter: accusative and vocative = nominative (ḱḗr, not ḱérd)
                         c["ACC.SG"] = [lemma] + c.get("ACC.SG", [])
@@ -282,6 +285,16 @@ def _closed_form(lx: Lexicon, lex_id: str, feat: str, gender: str) -> str | None
     if not forms and path[0] == "personal" and isinstance(node, dict):
         forms = node.get(feat + ".ENCL")      # no book prints a stressed 1st/2nd pl. genitive (Ringe: "???")
     return forms[0] if forms else None
+
+
+def _closed_feat(lx: Lexicon, lex_id: str, feat: str) -> str:
+    """The feature actually realized: a personal-pronoun cell that falls back to the enclitic says so
+    (engine sweep, closed-class-compounds.md R3)."""
+    if lex_id.startswith("closed:personal/") and not feat.endswith(".ENCL"):
+        node = lx.closed["personal"].get(lex_id.split("/")[1], {})
+        if feat not in node and feat + ".ENCL" in node:
+            return feat + ".ENCL"
+    return feat
 
 
 def _person_number(slot: dict, lx: Lexicon) -> tuple[int, str]:
@@ -408,6 +421,9 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                     errs.append(f"{where}: a participle is a MOD slot holding a verb")
                 elif ptcp.get("voice", "ACT") not in ("ACT", "MID"):
                     errs.append(f"{where}: participle voice must be ACT or MID")
+                elif lx.entries[lid]["form"].endswith(("tor", "toy")) and ptcp.get("voice", "ACT") != "MID":
+                    # engine sweep, thematic-verbs.md defect 10
+                    errs.append(f"{where}: {lid} is middle-only (deponent): its participle is middle (voice MID)")
             if s.get("dep") is not None:
                 d = s["dep"]
                 if not (isinstance(d, int) and 0 <= d < len(slots) and slots[d].get("participle")):
@@ -565,7 +581,7 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     for sl in slots:
         if sl["role"] == "MOD" and sl["lex_id"].startswith("closed:numerals/") and sl.get("head") is not None:
             n = sl["lex_id"].split("/")[1]
-            want = {"2": "DU", "3": "PL", "4": "PL"}.get(n)
+            want = {"2": "DU", "3": "PL", "4": "PL", "indeclinable": "PL"}.get(n)   # 5-1000 too (closed-class R7)
             if want and slots[sl["head"]].get("num") != want:
                 slots = [dict(x) for x in slots] if slots is cl["slots"] else slots
                 slots[sl["head"]]["num"] = want
@@ -589,10 +605,35 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
         for i in range(len(slots)):
             settle(i)
     ctype = cl.get("type", "verbal")
+    # -kʷe goes on the last conjunct (X Y-kʷe, Lat. senatus populusque): a mark only on an earlier
+    # member of a coordinated group (same role and head) moves to the last one (t014 review)
+    groups: dict = {}
+    for i, sl in enumerate(slots):
+        if sl["role"] not in ("V", "MOD", "ADV"):
+            groups.setdefault((sl["role"], sl.get("head")), []).append(i)
+    for ix in groups.values():
+        if len(ix) > 1 and any(slots[i].get("and") for i in ix) and not slots[ix[-1]].get("and"):
+            slots = [dict(x) for x in slots] if slots is cl["slots"] else slots
+            for i in ix[:-1]:
+                slots[i]["and"] = False
+            slots[ix[-1]]["and"] = True
+    coord = {i for ix in groups.values() if len(ix) > 1 and any(slots[i].get("and") for i in ix) for i in ix}
+    pairs = {i for ix in groups.values() if len(ix) == 2 and slots[ix[-1]].get("and") for i in ix}
     subj_i = next((i for i, s in enumerate(slots) if s["role"] == "SUBJ"), None)
     subj = slots[subj_i] if subj_i is not None else None
     person, num = _person_number(subj, lx) if subj else (3, "SG")
     neuter_pl = subj is not None and person == 3 and subj.get("num") == "PL" and _slot_gender(subj, lx) == "n"
+    subjs = sorted(i for i in coord if slots[i]["role"] == "SUBJ" and slots[i].get("head") is None)
+    if len(subjs) > 1:
+        # conjoined subjects (X Y-kʷe) agree as a group (Fortson §8.16): two singulars dual, else plural;
+        # 1st person over 2nd over 3rd (engine sweep, closed-class-compounds.md R4)
+        pn = [_person_number(slots[i], lx) for i in subjs]
+        person = min(p for p, _ in pn)
+        if all(slots[i].get("num") == "PL" and _slot_gender(slots[i], lx) == "n" for i in subjs):
+            num = "SG"      # Il. 2.468 phúlla kaì ánthea gígnetai (Fortson §8.16): neuter plurals stay collective
+        else:
+            num = "DU" if len(subjs) == 2 and all(slots[i].get("num", "SG") == "SG" for i in subjs) else "PL"
+            neuter_pl = False
     vi = next((i for i, s in enumerate(slots) if s["role"] == "V"), None)
     if (vi is None) != (ctype != "verbal"):
         raise KeyError(f"a {ctype} clause {'needs a' if ctype == 'verbal' else 'takes no'} V slot")
@@ -625,7 +666,10 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
                 cells = lx.cells(lid)
                 mid = "MID." if v.get("voice") == "MID" else ""
                 feat = next((f"{mid}{t}.{pn}" for t in ("PST", "AOR") if f"{mid}{t}.{pn}" in cells), feat)
-            form = lx.cells(lid)[feat][0]
+            cells = lx.cells(lid)
+            if feat not in cells and feat.endswith("DU") and feat[:-2] + "PL" in cells:
+                feat = feat[:-2] + "PL"       # no dual cell (e.g. the perfect): the plural stands in
+            form = cells[feat][0]
             if prohibitive:
                 feat = feat.replace("PST", "INJ").replace("AOR", "INJ")
         elif role == "ADV":
@@ -646,6 +690,11 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
             else:
                 head = s
             case = "NOM" if role == "PRED" else case_of(i)
+            hi = i
+            while slots[hi]["role"] in ("MOD", "APPOS") and slots[hi].get("head") is not None:
+                hi = slots[hi]["head"]
+            if case == "VOC" and hi in pairs and slots[hi].get("and"):
+                case = "NOM"        # vā́yav índraś ca 'o Vayu and Indra' (Fortson §8.11; closed-class R5)
             if role == "MOD" and head["role"] == "MOD":
                 raise KeyError("MOD cannot head a MOD")
             n = head.get("num", "SG")
@@ -664,6 +713,7 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
                 form = _closed_form(lx, lid, feat, g)
                 if form is None:
                     raise KeyError(f"{lid} {feat} {g}")
+                feat = _closed_feat(lx, lid, feat)
             elif s.get("participle"):
                 form = lx.participle_cells(lid, s["participle"].get("voice", "ACT"), g)[feat][0]
                 feat = f"PTCP.{s['participle'].get('voice', 'ACT')}.{feat}"
@@ -671,7 +721,8 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
                 form = lx.cells(lid, g)[feat][0]
             else:
                 form = lx.cells(lid)[feat][0]
-        words[i] = Word(form, lid, lx.gloss(lid), feat, i, clitic=form in ENCLITIC_PRONOUNS)
+        words[i] = Word(form, lid, lx.gloss(lid), feat, i,
+                        clitic=feat.endswith(".ENCL") or form in ENCLITIC_PRONOUNS)
 
     # phrases: every MOD/POSS goes directly before its head, recursively; an APPOS phrase follows
     # its head's phrase ('the horses, immortal ones'), or precedes it with "before"
@@ -700,31 +751,28 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     if placed != list(range(len(slots))):
         missing = sorted(set(range(len(slots))) - set(placed))
         raise KeyError(f"slots {missing} not attached to the clause (a MOD/POSS head chain is broken)")
-    # -kʷe goes on the last conjunct (X Y-kʷe, Lat. senatus populusque): a mark only on an earlier
-    # member of a coordinated group (same role and head) moves to the last one (t014 review)
-    groups: dict = {}
-    for i, sl in enumerate(slots):
-        if sl["role"] not in ("V", "MOD", "ADV"):
-            groups.setdefault((sl["role"], sl.get("head")), []).append(i)
-    for ix in groups.values():
-        if len(ix) > 1 and any(slots[i].get("and") for i in ix) and not slots[ix[-1]].get("and"):
-            slots = [dict(x) for x in slots] if slots is cl["slots"] else slots
-            for i in ix[:-1]:
-                slots[i]["and"] = False
-            slots[ix[-1]]["and"] = True
     for i in seq:
         if slots[i]["lex_id"] == "closed:indefinite_kwi":
             words[i].clitic = True        # the indefinite is enclitic: ne kʷis gʷémt 'no one came'
     neg = Word("mē" if (prohibitive or neg_wish) else "ne", "closed:particle:ne", "NEG", "PARTICLE") \
         if cl.get("neg") else None
     vseq = ([neg] if neg else []) + [words[vi]] if vi is not None else []
+    # -kʷe follows the first word of the conjunct it joins, a single word or a phrase
+    # (Fortson §7.27, §8.24: Lat. lūcusue Diānae; Ved. ágna índraś ca; closed-class-compounds.md R1)
+    and_host: dict[int, int] = {}
+    for i, sl in enumerate(slots):
+        if sl.get("and") and sl["role"] not in ("V", "ADV"):
+            ph = [j for j in phrase(i) if not words[j].clitic]
+            h = ph[0] if ph else i
+            and_host[h] = and_host.get(h, 0) + 1
+
     def render_phrase(ph: list[int]) -> list[Word]:
         ws = []
         for i in ph:
             if words[i].clitic:
                 continue
             ws.append(words[i])
-            if slots[i].get("and"):
+            for _ in range(and_host.get(i, 0)):
                 ws.append(Word("-kʷe", "closed:particle:-kʷe", "and", "PARTICLE", clitic=True))
         return ws
 
@@ -747,9 +795,16 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
         out.insert(0, Word("h₁yód", "closed:relative_yo/n", "if/when", "CONJ"))
     # Wackernagel: enclitics after the first word, "and" (-kʷe) / "or" (-wē) on the first word
     clitics = [words[i] for i in seq if words[i].clitic]
+    # one possessive enclitic serves both conjuncts: h₂óweyes moy h₁éḱwōs-kʷe, not *moy moy (closed-class R8)
+    clitics = [w for k, w in enumerate(clitics)
+               if (w.form, w.features) not in {(x.form, x.features) for x in clitics[:k]}]
     if cl.get("particle") == "ge":
         clitics.insert(0, Word("-ge", "closed:particle:-ge", "EMPH", "PARTICLE", clitic=True))
-    out[1:1] = clitics
+    # after the first word and any connective clitic on it (Fortson §8.25: gʷṓs-kʷe te; closed-class R6)
+    k = 1
+    while k < len(out) and out[k].form in ("-kʷe", "-wē"):
+        k += 1
+    out[k:k] = clitics
     if cl.get("conj") in ("kʷe", "wē"):
         f = "-" + cl["conj"]
         out.insert(1, Word(f, f"closed:particle:{f}", "and" if f == "-kʷe" else "or", "PARTICLE", clitic=True))

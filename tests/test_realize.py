@@ -418,12 +418,13 @@ def test_t014_review_fixes():
 
 
 def test_t017_review_stems():
-    """Weak stems keep their material: swesrés, h₂ḱmnés, tetḱnés (pérkus 'oak' is the boukólos
-    rule, *kʷ > k next to u, as Lat. quercus: not an error)."""
+    """Weak stems keep their material: swesrés, h₂ḱm̥nés, tetḱnés (pérkus 'oak' is the boukólos
+    rule, *kʷ > k next to u, as Lat. quercus: not an error). h₂ḱm̥nés: the m between ḱ and n is syllabic
+    (Ringe 2006 §2.3.4 h₁n̥h₃m̥nés; engine sweep r-n-stems.md defect 1; was pinned as h₂ḱmnés)."""
     from pie.realize import Lexicon
     lx = Lexicon.load()
     assert lx.cells("pie-lex-swesoxr")["GEN.SG"][0] == "swesrés"
-    assert lx.cells("pie-lex-h2ekjmox")["GEN.SG"][0] == "h₂ḱmnés"
+    assert lx.cells("pie-lex-h2ekjmox")["GEN.SG"][0] == "h₂ḱm̥nés"
     assert lx.cells("pie-lex-tetkjox")["GEN.SG"][0] == "tetḱnés"
 
 
@@ -481,7 +482,8 @@ def test_np_utterance_has_no_copula(ix):
         {"lex_id": MEAD, "role": "NP"}, {"lex_id": SWEET, "role": "MOD", "head": 0}]}]}
     assert check_plan(p, _lx()) == []
     r = R(p)
-    assert r["pie"] == "swéh₂du médʰu."
+    # sweh₂dú: suffix accent of the u-adjective (Ved. svādú-, Gk ἡδύς; L&Y; engine sweep convention, i-u-stems.md #1)
+    assert r["pie"] == "sweh₂dú médʰu."
     assert not any(w["lex_id"] == "pie-lex-h1esti" for w in r["words"])
     assert _passes(r["pie"], ix)
 
@@ -590,3 +592,114 @@ def test_check_plan_rules_for_verbless_clauses():
     # an adjective in apposition needs no gender of its own (it takes the head's)
     assert errs({"slots": [{"lex_id": HORSE, "role": "SUBJ", "num": "PL"},
                            {"lex_id": IMMORTAL, "role": "APPOS", "head": 0}, V(SEE)]}) == []
+
+
+# --- engine sweep: realize.py fixes (docs/audits/engine-sweep/PENDING-realize.md) --------------------------
+
+def _sweep_lx():
+    from pie.realize import Lexicon
+    return Lexicon.load()
+
+
+def test_sweep_thematic_table_paradigm_has_one_stem():
+    """thematic.md defect 5: no headword mixed into an o-stem table paradigm; athematic citation forms stay."""
+    lx = _sweep_lx()
+    c = lx.cells("pie-lex-h2rgjntom")
+    assert c["NOM.SG"][0] == "h₂r̥ǵn̥tóm" and c["GEN.SG"][0] == "h₂r̥ǵn̥tósyo"
+    assert lx.cells("pie-lex-gwexn")["NOM.SG"][0] == "gʷḗn"
+
+
+def test_sweep_deponent_participle_is_middle():
+    """thematic-verbs.md defect 10."""
+    from pie.realize import check_plan
+    def plan(voice):
+        return {"english": "The lying man.", "clauses": [{"slots": [
+            {"lex_id": "pie-lex-wiHros", "role": "SUBJ"},
+            {"lex_id": "pie-lex-kjeytor", "role": "MOD", "head": 0, "participle": {"voice": voice}},
+            {"lex_id": "pie-lex-gwemt", "role": "V", "verb": {"tense": "AOR"}}]}]}
+    assert any("middle-only" in e for e in check_plan(plan("ACT"), _sweep_lx()))
+    assert not any("middle-only" in e for e in check_plan(plan("MID"), _sweep_lx()))
+
+
+def test_sweep_kwe_follows_first_word_of_a_phrasal_conjunct():
+    """closed-class R1: Fortson §8.24 (Lat. lūcusue Diānae)."""
+    from pie.realize import realize
+    p = {"english": "The warrior and his son-in-law came.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-Hyudhsmos", "role": "SUBJ"},
+        {"lex_id": "pie-lex-gjmros", "role": "SUBJ", "and": True},
+        {"lex_id": "closed:demonstrative_so", "role": "POSS", "head": 1},
+        {"lex_id": "pie-lex-gwemt", "role": "V", "verb": {"tense": "AOR"}}]}]}
+    assert "tósyo-kʷe ǵm̥rós" in realize(p, _sweep_lx())["pie"]
+
+
+def test_sweep_conjoined_subjects_agree_as_a_group():
+    """closed-class R4: Fortson §8.16."""
+    from pie.realize import realize
+    p = {"english": "The wolf and the snake fled.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-wlkwos", "role": "SUBJ"},
+        {"lex_id": "pie-lex-h1ogwhis", "role": "SUBJ", "and": True},
+        {"lex_id": "pie-lex-bhewgt-3", "role": "V", "verb": {"tense": "AOR"}}]}]}
+    w = realize(p, _sweep_lx())["words"]
+    assert [x["features"] for x in w if x["lex_id"] == "pie-lex-bhewgt-3"] == ["AOR.3DU"]
+
+
+def test_sweep_wackernagel_clitic_after_the_first_words_own_kwe():
+    """closed-class R6: Fortson §8.25."""
+    from pie.realize import realize
+    p = {"english": "I nourish you and your cattle.", "clauses": [{"slots": [
+        {"lex_id": "closed:personal/2", "role": "OBJ", "enclitic": True},
+        {"lex_id": "pie-lex-gwoxws", "role": "OBJ", "num": "PL", "and": True},
+        {"lex_id": "pie-lex-h2eleti", "role": "V", "verb": {"person": 1, "num": "SG"}}]}]}
+    assert realize(p, _sweep_lx())["pie"].startswith("gʷṓs-kʷe te ")
+
+
+def test_sweep_dual_enclitics_are_wackernagel():
+    """closed-class R2."""
+    from pie.realize import realize
+    p = {"english": "His brother seized us two.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-bhreh2texr", "role": "SUBJ"},
+        {"lex_id": "closed:demonstrative_so", "role": "POSS", "head": 0},
+        {"lex_id": "closed:personal/2", "role": "OBJ", "num": "DU", "enclitic": True},
+        {"lex_id": "pie-lex-lembht", "role": "V", "verb": {"tense": "AOR"}}]}]}
+    assert realize(p, _sweep_lx())["pie"].split()[1] == "woh₃"
+
+
+def test_sweep_conjoined_vocative_pair_puts_the_second_in_the_nominative():
+    """closed-class R5: Fortson §8.11, Ved. vā́yav índraś ca."""
+    from pie.realize import realize
+    p = {"english": "Father and Mother, hear!", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-ph2texr", "role": "VOC"},
+        {"lex_id": "pie-lex-meh2texr", "role": "VOC", "and": True},
+        {"lex_id": "pie-lex-kjlewt", "role": "V", "verb": {"tense": "AOR", "mood": "IMP", "person": 2, "num": "DU"}}]}]}
+    assert realize(p, _sweep_lx())["pie"].startswith("ph₂ter méh₂tēr-kʷe ")
+
+
+def test_sweep_indeclinable_numeral_makes_its_head_plural():
+    """closed-class R7."""
+    from pie.realize import realize
+    p = {"english": "Seven horses ran.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-h1ekjwos", "role": "SUBJ"},
+        {"lex_id": "closed:numerals/indeclinable/7", "role": "MOD", "head": 0},
+        {"lex_id": "pie-lex-bhewgt-3", "role": "V", "verb": {"tense": "AOR"}}]}]}
+    assert realize(p, _sweep_lx())["pie"] == "septḿ̥ h₁éḱwōs bʰugént."
+
+
+def test_sweep_numeral_vocative():
+    """closed-class C5 (realized)."""
+    from pie.realize import realize
+    p = {"english": "Three brothers, come!", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-bhreh2texr", "role": "VOC", "num": "PL"},
+        {"lex_id": "closed:numerals/3", "role": "MOD", "head": 0},
+        {"lex_id": "pie-lex-gwemt", "role": "V", "verb": {"tense": "AOR", "mood": "IMP", "person": 2, "num": "PL"}}]}]}
+    assert realize(p, _sweep_lx())["pie"].startswith("tréyes ")
+
+
+def test_sweep_stressed_plural_genitive_fallback_is_labelled_enclitic():
+    """closed-class R3."""
+    from pie.realize import realize
+    p = {"english": "Our horses ran.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-h1ekjwos", "role": "SUBJ", "num": "PL"},
+        {"lex_id": "closed:personal/1", "role": "POSS", "head": 0, "num": "PL"},
+        {"lex_id": "pie-lex-bhewgt-3", "role": "V", "verb": {"tense": "AOR"}}]}]}
+    w = realize(p, _sweep_lx())["words"]
+    assert [x["features"] for x in w if x["lex_id"] == "closed:personal/1"] == ["GEN.PL.ENCL"]
