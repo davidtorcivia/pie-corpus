@@ -20,7 +20,7 @@ from pie.meter import measure
 from pie.realize import Lexicon, check_plan, plan_warnings, realize
 from pie.translit import to_ascii
 from pie.compound import member_ids
-from pie.validate import index_plan_compounds, load_index, validate_text
+from pie.validate import all_exact, index_plan_compounds, load_index, validate_text
 
 ROOT = Path(__file__).resolve().parent.parent
 CAP_EXEMPT = {"pie-lex-h1esti"}          # "to be"
@@ -97,7 +97,8 @@ def main() -> int:
         index_plan_compounds(ix, plan)          # compounds are open-ended: indexed per plan
         v = validate_text(r["pie"], ix)
         stats["realized"] += 1
-        stats["exact_pass"] += set(v["tiers"]) == {"exact"} and v["coverage"] == 1.0
+        # primary and supported forms only: a legacy match or a known error fails the all_exact gate
+        stats["exact_pass"] += all_exact(v)
         roots = sorted({lx.entries[i].get("root_id") for w in r["words"]
                         for i in [w["lex_id"], *member_ids(w["lex_id"])] if i in lx.entries} - {None})
         records.append({

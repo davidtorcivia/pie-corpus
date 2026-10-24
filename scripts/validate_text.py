@@ -16,12 +16,15 @@ def main() -> int:
     for line in lines:
         r = validate_text(line, ix)
         print(f"{r['status'].upper():5} cov={r['coverage']:.2f} tiers={r['tiers']} misses={r['misses']}  {line}")
+        if r["accentless"]:
+            print(f"   accentless: {' '.join(r['accentless'])}")
         for t in r["tokens"]:
             if t.found:
                 a = t.analyses[0]
                 more = f" (+{len(t.analyses) - 1})" if len(t.analyses) > 1 else ""
                 extra = "".join(f" {x}" for x in (t.clitic, t.augment and f"aug={t.augment}") if x)
-                print(f"   {t.surface:18} {t.tier:9} {a.lex_id} {a.features}{more}{extra}")
+                st = f" [{t.status}]" if t.status != "primary" else ""
+                print(f"   {t.surface:18} {t.tier:9} {a.lex_id} {a.features}{more}{extra}{st}")
             else:
                 print(f"   {t.surface:18} MISS      {t.miss}  {t.miss_detail or ''}")
     return 0
