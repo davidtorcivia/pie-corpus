@@ -427,3 +427,6 @@ MANIFEST row:
 **Round 4 process note (privacy).** Some round-4 requests sent David's email address in the HTTP User-Agent header: the coordinator's LexLep MediaWiki API pulls (lexlep.univie.ac.at, `acq2-mw-cat.py`), the Germanic agent's early curl calls (GitHub, wulfila.be, heimskringla.no, deutschdiachrondigital.de, laudatio-repository.org, germanic-lexicon-project.org, linguist.is), and one Italic-agent Wikimedia API call. Later calls used a plain User-Agent. The common brief asked for a "descriptive User-Agent" without saying to leave out contact details; next rounds should use a generic UA with no personal data.
 
 Licence spot-checks by the coordinator after the merges: Menota TEI headers (CC BY-SA 4.0), IcePaHC licence text (CC BY 4.0), Perseus canonical-latinLit `license.md` (CC BY-SA 4.0), DMHP Zenodo record (`cc-by-4.0`), TITUS 2.0 `output.xml` header (CC BY-NC-SA 4.0), CCMH README (CC BY).
+
+## CELT permission (2026-10-24)
+David obtained the CELT project's (University College Cork) consent to use the CELT texts. Scope as reported by David: **research and use in model training data**. The texts themselves stay in gitignored raw/ (never committed, never redistributed as files); derived training records cite CELT and the text id. If CELT's written terms differ from this summary, the written terms govern; record them here when received.
