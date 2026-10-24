@@ -1,0 +1,313 @@
+{
+ "scores": {
+  "celtic_pivot": {
+   "bundles": {
+    "real": 3749,
+    "decoy": 938
+   },
+   "accepted": {
+    "real_per_bundle": 0.0,
+    "decoy_per_bundle": 0.0,
+    "ratio": null,
+    "p": 1.0,
+    "outside_selection": 0
+   },
+   "accepted+weak": {
+    "real_per_bundle": 0.001667111229661243,
+    "decoy_per_bundle": 0.0007995735607675906,
+    "ratio": 2.0850004445629944,
+    "p": 0.25177482251774824,
+    "outside_selection": 0
+   },
+   "all claims": {
+    "real_per_bundle": 0.003801013603627634,
+    "decoy_per_bundle": 0.0007995735607675906,
+    "ratio": 4.753801013603628,
+    "p": 0.042995700429957005,
+    "outside_selection": 0
+   }
+  },
+  "all_read": {
+   "bundles": {
+    "real": 3812,
+    "decoy": 953
+   },
+   "accepted": {
+    "real_per_bundle": 0.0,
+    "decoy_per_bundle": 0.0,
+    "ratio": null,
+    "p": 1.0,
+    "outside_selection": 0
+   },
+   "accepted+weak": {
+    "real_per_bundle": 0.0016395592864637985,
+    "decoy_per_bundle": 0.0007869884575026233,
+    "ratio": 2.083333333333333,
+    "p": 0.24827517248275172,
+    "outside_selection": 0
+   },
+   "all claims": {
+    "real_per_bundle": 0.0037381951731374607,
+    "decoy_per_bundle": 0.0007869884575026233,
+    "ratio": 4.75,
+    "p": 0.043495650434956505,
+    "outside_selection": 0
+   }
+  }
+ },
+ "excluded_anchoring": [
+  "C0011"
+ ],
+ "claim_level": {
+  "mixed|weak": 2,
+  "real-only|reject": 8,
+  "real-only|weak": 5,
+  "real-only|accepted": 1
+ },
+ "calibration": {
+  "medium": {
+   "weak": 3,
+   "accepted": 1
+  },
+  "low": {
+   "reject": 8,
+   "weak": 4
+  }
+ },
+ "claims": {
+  "C0001": {
+   "reader": "RC001",
+   "slab": "SC-e13a",
+   "bundles": [
+    "BC-09946",
+    "BC-fc0ea",
+    "BC-6dbef",
+    "BC-6645f"
+   ],
+   "kinds": [
+    "decoy",
+    "real"
+   ],
+   "confidence": "medium",
+   "recalled": true,
+   "grade": "weak",
+   "excluded": false
+  },
+  "C0002": {
+   "reader": "RC026",
+   "slab": "SC-16f7",
+   "bundles": [
+    "BC-07aff"
+   ],
+   "kinds": [
+    "real"
+   ],
+   "confidence": "low",
+   "recalled": true,
+   "grade": "reject",
+   "excluded": false
+  },
+  "C0003": {
+   "reader": "RC028",
+   "slab": "SC-1b06",
+   "bundles": [
+    "BC-0539f",
+    "BC-1a582"
+   ],
+   "kinds": [
+    "real"
+   ],
+   "confidence": "low",
+   "recalled": true,
+   "grade": "weak",
+   "excluded": false
+  },
+  "C0004": {
+   "reader": "RC006",
+   "slab": "SC-b669",
+   "bundles": [
+    "BC-36e04"
+   ],
+   "kinds": [
+    "real"
+   ],
+   "confidence": "low",
+   "recalled": true,
+   "grade": "reject",
+   "excluded": false
+  },
+  "C0005": {
+   "reader": "RC004",
+   "slab": "SC-243e",
+   "bundles": [
+    "BC-17317",
+    "BC-a728a"
+   ],
+   "kinds": [
+    "decoy",
+    "real"
+   ],
+   "confidence": "low",
+   "recalled": true,
+   "grade": "weak",
+   "excluded": false
+  },
+  "C0006": {
+   "reader": "RC027",
+   "slab": "SC-97bc",
+   "bundles": [
+    "BC-897d8"
+   ],
+   "kinds": [
+    "real"
+   ],
+   "confidence": "low",
+   "recalled": true,
+   "grade": "reject",
+   "excluded": false
+  },
+  "C0007": {
+   "reader": "RC002",
+   "slab": "SC-39f6",
+   "bundles": [
+    "BC-a2bc7"
+   ],
+   "kinds": [
+    "real"
+   ],
+   "confidence": "low",
+   "recalled": true,
+   "grade": "weak",
+   "excluded": false
+  },
+  "C0008": {
+   "reader": "RC024",
+   "slab": "SC-4464",
+   "bundles": [
+    "BC-0420d"
+   ],
+   "kinds": [
+    "real"
+   ],
+   "confidence": "low",
+   "recalled": false,
+   "grade": "reject",
+   "excluded": false
+  },
+  "C0009": {
+   "reader": "RC019",
+   "slab": "SC-de1c",
+   "bundles": [
+    "BC-7e4ba",
+    "BC-bde9d",
+    "BC-19793"
+   ],
+   "kinds": [
+    "real"
+   ],
+   "confidence": "low",
+   "recalled": true,
+   "grade": "weak",
+   "excluded": false
+  },
+  "C0010": {
+   "reader": "RC007",
+   "slab": "SC-5d19",
+   "bundles": [
+    "BC-e807e"
+   ],
+   "kinds": [
+    "real"
+   ],
+   "confidence": "medium",
+   "recalled": true,
+   "grade": "weak",
+   "excluded": false
+  },
+  "C0011": {
+   "reader": "RC028",
+   "slab": "SC-1b06",
+   "bundles": [
+    "BC-9b9ad"
+   ],
+   "kinds": [
+    "real"
+   ],
+   "confidence": "medium",
+   "recalled": true,
+   "grade": "accepted",
+   "excluded": true
+  },
+  "C0012": {
+   "reader": "RC026",
+   "slab": "SC-16f7",
+   "bundles": [
+    "BC-b7f43"
+   ],
+   "kinds": [
+    "real"
+   ],
+   "confidence": "low",
+   "recalled": true,
+   "grade": "reject",
+   "excluded": false
+  },
+  "C0013": {
+   "reader": "RC016",
+   "slab": "SC-10fe",
+   "bundles": [
+    "BC-da0d8"
+   ],
+   "kinds": [
+    "real"
+   ],
+   "confidence": "low",
+   "recalled": false,
+   "grade": "reject",
+   "excluded": false
+  },
+  "C0014": {
+   "reader": "RC022",
+   "slab": "SC-cd26",
+   "bundles": [
+    "BC-2e0a1",
+    "BC-62428"
+   ],
+   "kinds": [
+    "real"
+   ],
+   "confidence": "medium",
+   "recalled": true,
+   "grade": "weak",
+   "excluded": false
+  },
+  "C0015": {
+   "reader": "RC012",
+   "slab": "SC-8992",
+   "bundles": [
+    "BC-5043f"
+   ],
+   "kinds": [
+    "real"
+   ],
+   "confidence": "low",
+   "recalled": false,
+   "grade": "reject",
+   "excluded": false
+  },
+  "C0016": {
+   "reader": "RC003",
+   "slab": "SC-101e",
+   "bundles": [
+    "BC-d2afd"
+   ],
+   "kinds": [
+    "real"
+   ],
+   "confidence": "low",
+   "recalled": true,
+   "grade": "reject",
+   "excluded": false
+  }
+ }
+}
