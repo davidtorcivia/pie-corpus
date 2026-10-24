@@ -51,6 +51,8 @@ KEY = ROOT / "data" / "audits" / "keys" / "8c-stageCS-key.json"
 SEED = 0
 SEED_TAG = "8c-stageCS"
 CORPUS_CAP = 2
+THIN_MAX_UNITS = 15000      # a partner corpus with fewer indexed units is thin
+THIN_SLOTS = 2
 HEADER = ("Comparison bundles (Stage C-S): Celtic and newly added traditions with partners from the "
           "comparable layers and genres of all branches")
 
@@ -221,6 +223,70 @@ class Classifier:
         return 0
 
 
+def hittite_paragraph_units(root: Path = ROOT, by_id: dict | None = None) -> list:
+    """Hittite units at paragraph level (TLHdig `parsep` to `parsep`, windowed like every long unit) instead of
+    Stage B's tablet lines: a line is too short to share two roots with anything (Stage C-S, thin-corpus rule)."""
+    from pie import formula_search as fs
+    from pie import formula_search_multi as fm
+    toks = fm.load_hittite(root)
+    hlines, hsurf = B._hit_lines(fm, root)
+    assert len(hsurf) == len(toks)
+    para_lines: dict = collections.defaultdict(list)
+    for t in toks:
+        k = t.units["line"]
+        lst = para_lines[t.units["para"]]
+        if k not in lst:
+            lst.append(k)
+    text_of = {p: " ".join(w for k in ks for w in hlines[k][2]) for p, ks in para_lines.items()}
+    hl, hro = SB.CORPORA["hit"][2], SB.CORPORA["hit"][3]
+    us = SB.units_from_tokens("hit", toks, "para", lambda t: t.units["line"].split("|")[0], hsurf,
+                              B._table("hit"), lambda t: (hl, hro), text_of=text_of)
+    lex = fs.load_jsonl(root / "data/lexicon/lexicon.jsonl")
+    gmap = fs.group_map(lex)
+    for u in us:
+        u.groups = frozenset(gmap.get(x, x) for _, _, ids in u.words for x in ids)
+        u.tag = C.licence_tag(u.licence)
+    return us
+
+
+ALL = NARR | CULT | LAW | WISDOM | LYR
+
+
+def loose_class(c: str, u, clf: Classifier) -> int:
+    """Thin corpora (amendment): the whole native corpus, genre waived (ALL), less translations of foreign
+    texts: Hittite CTH 340-369 (Hurrian and Mesopotamian adaptations), the Old English Psalms."""
+    book = str(u.book)
+    if c == "hit":
+        cth = clf.cth.get(book)
+        return 0 if cth is None or 340 <= cth <= 369 else ALL
+    if c == "ang":                  # the Paris Psalter (Psalmen; OCR'd psalm numbers) and the editor's apparatus
+        if re.search(r"Psalm|P S A L M|Notizen|Vorwort|Verbesserungen|Terbesserfngen|Tokwort|Grein|Wigand", book):
+            return 0
+        if re.fullmatch(r"II:[A-Za-z.,]{1,8}", book) and book not in ("II:Juliana", "II:Kunenlied", "II:Pbauibit"):
+            return 0
+        return ALL
+    return ALL
+
+
+def thin_corpora(idx) -> frozenset:
+    cnt = collections.Counter(c for c, _ in idx.ref)
+    return frozenset(c for c, n in cnt.items() if 0 < n < THIN_MAX_UNITS and c not in PIVOTS)
+
+
+def prepare(units: dict, by_id: dict, meta: dict, cache_dir=None, log=print, root: Path = ROOT):
+    """Hittite paragraph units, the main classification, the thin corpora (by the main rule's indexed units),
+    and the loosened classification of the thin corpora. Returns (cls, thin)."""
+    units["hit"] = C._cached(cache_dir, "hit-para", lambda: hittite_paragraph_units(root))
+    B.assign_pids(units)
+    clf = Classifier(root, meta)
+    cls = classify(units, clf)
+    thin = thin_corpora(SIndex(indexed_view(units, cls), by_id, cls))
+    log("thin corpora: " + ", ".join(sorted(thin)))
+    for c in thin:
+        cls[c] = [loose_class(c, u, clf) for u in units[c]]
+    return cls, thin
+
+
 def classify(units: dict, clf: Classifier) -> dict:
     """corpus → list of class masks, parallel to units[corpus]."""
     return {c: [clf(c, u) for u in us] for c, us in units.items()}
@@ -245,6 +311,7 @@ class SIndex(SB.Index):
         super().__init__(view, by_id, shuffle_seed=shuffle_seed)
         self.cls = np.array([cls[c][i] for c, i in self.ref], dtype=np.int16)
         self.corp = [c for c, _ in self.ref]
+        self.set_thin(frozenset())
 
     def partners(self, u: int, top_k: int | None = None, min_shared: int | None = None) -> list[tuple]:
         top_k = top_k or SB.TOP_K
@@ -301,6 +368,40 @@ class SIndex(SB.Index):
         return out
 
 
+    def set_thin(self, thin: frozenset) -> None:
+        self.thin = thin
+        self.thin_mask = np.array([c in thin for c in self.corp], dtype=bool)
+
+    def thin_partners(self, u: int, slots: int | None = None) -> list[tuple]:
+        """The best partner from each thin corpus (genre class waived; other branch; >= MIN_SHARED matched roots,
+        one outside the n_common most frequent), the top `slots` of them by score."""
+        slots = slots or THIN_SLOTS
+        b = self.branch[u]
+        rare = [g for g in self.ugids[u] if g >= self.n_common]
+        if not rare or not self.cls[u] or not getattr(self, "thin", None):
+            return []
+        cand_parts = []
+        for g in rare:
+            p, bd = self.post[g], self.bounds[g]
+            for seg in (p[:bd[b]], p[bd[b + 1]:]):
+                if len(seg):
+                    seg = seg[self.thin_mask[seg]]
+                    if len(seg):
+                        cand_parts.append(seg)
+        if not cand_parts:
+            return []
+        uniq = np.unique(np.concatenate(cand_parts))
+        best: dict = {}
+        for v in uniq:
+            v = int(v)
+            s, gs = self.match(u, v)
+            if len(gs) >= SB.MIN_SHARED and any(g >= self.n_common for g in gs):
+                c = self.corp[v]
+                if c not in best or (-s, v) < (-best[c][0], best[c][1]):
+                    best[c] = (round(s, 6), v, len(gs))
+        return sorted(best.values(), key=lambda x: (-x[0], x[1]))[:slots]
+
+
 def decoy_partner(idx: SIndex, pivot: int, real: int, exclude: set, rng: random.Random, pools: dict) -> int | None:
     """Stage B's decoy rule, drawn from the units of the real partner's corpus that share a class with the pivot."""
     c = idx.ref[real][0]
@@ -344,6 +445,41 @@ def build_bundles(idx: SIndex, kept: dict, cap: int | None = None) -> list[dict]
     return bundles
 
 
+_IDX = None
+
+
+def _work(us):
+    return [(u, _IDX.partners(u), _IDX.thin_partners(u)) for u in us]
+
+
+def all_partners(idx: SIndex, pivots: list[int], procs: int | None = None, chunk: int = 1000):
+    """(regular partners, thin partners) by pivot uid, for the given pivots (parallel, fork)."""
+    global _IDX
+    _IDX = idx
+    chunks = [pivots[k:k + chunk] for k in range(0, len(pivots), chunk)]
+    if procs == 1 or len(pivots) < 5000:
+        res = [_work(c) for c in chunks]
+    else:
+        import multiprocessing as mp
+        with mp.get_context("fork").Pool(procs or max(1, mp.cpu_count() - 2)) as pool:
+            res = pool.map(_work, chunks)
+    reg = {u: p for part in res for u, p, _ in part if p}
+    thin = {u: t for part in res for u, _, t in part if t}
+    return reg, thin
+
+
+def kept_partners(reg: dict, thin: dict, floor: float, thin_floor: float) -> dict:
+    """Regular partners >= floor and thin partners >= thin_floor (not already among the regular ones), by score."""
+    out = {}
+    for u in set(reg) | set(thin):
+        k = [p for p in reg.get(u, ()) if p[0] >= floor]
+        have = {v for _, v, _ in k}
+        k += [p for p in thin.get(u, ()) if p[0] >= thin_floor and p[1] not in have]
+        if k:
+            out[u] = sorted(k, key=lambda x: (-x[0], x[1]))
+    return out
+
+
 # ---------------------------------------------------------------- build
 
 FLOOR_RULE = (f"floor = the {SB.FLOOR_Q} quantile of the best-partner score over all Stage C-S pivots that have a "
@@ -353,8 +489,20 @@ LAYER_RULE = ("indexed units: each tradition's earliest, least derivative layer 
               "idf over the indexed units only")
 
 
-def make_params(idx, parts, null, notes=None) -> dict:
+THIN_RULE = ("thin corpora: partner-only corpora with < THIN_MAX_UNITS indexed units under the main rule; layer "
+             "loosened to the whole native corpus, genre waived; Hittite unit = paragraph; up to THIN_SLOTS thin "
+             "partners per pivot (best per thin corpus) from a separate search; thin floor = the FLOOR_Q quantile of "
+             "the pivots' best thin-partner scores (amendment of 2026-10-24)")
+
+
+def make_params(idx, parts, null, notes=None, thin_parts=None) -> dict:
     p = C.make_params(idx, parts, SB.score_distribution(parts), null, PIVOTS, notes)
+    if thin_parts:
+        tb = np.array([t[0][0] for t in thin_parts.values()])
+        p.update({"thin_floor": SB._q(tb, SB.FLOOR_Q), "thin_rule": THIN_RULE, "thin_max_units": THIN_MAX_UNITS,
+                  "thin_slots": THIN_SLOTS, "thin_corpora": sorted(getattr(idx, "thin", ())),
+                  "thin_best_quantiles": {str(q): SB._q(tb, q) for q in (0.5, 0.75, 0.9, 0.95)},
+                  "pivots_with_thin_partner": len(thin_parts)})
     p.update({
         "note": "Phase 8c Stage C-S retrieval and bundle parameters, fixed from the score distribution before any "
                 "bundle was built or read (docs/research/8c-preregistration.md, Stage C-S).",
@@ -374,15 +522,18 @@ def make_slab(sid, bis, shown, bid_of, rend, idx) -> dict:
     return s
 
 
-def build(units, by_id, cls, params: dict, procs=None, log=print, parts=None, meta=None, seed: int = SEED) -> dict:
+def build(units, by_id, cls, params: dict, procs=None, log=print, parts=None, meta=None, seed: int = SEED,
+          thin: frozenset = frozenset()) -> dict:
     meta = meta or {}
     view = indexed_view(units, cls)
     idx = SIndex(view, by_id, cls)
+    idx.set_thin(thin)
     pivots = C.pivots_of(idx, PIVOTS)
     log(f"index: {idx.N} units with roots, {len(idx.groups)} root groups, {len(pivots)} Stage C-S pivots")
-    parts = parts if parts is not None else C.pivot_partners(idx, pivots, procs)
+    reg, tparts = parts if parts is not None else all_partners(idx, pivots, procs)
     floor = params["floor"]
-    kept = SB.kept_partners(parts, floor)
+    kept = kept_partners(reg, tparts, floor, params.get("thin_floor", float("inf")))
+    parts = reg
     bundles = build_bundles(idx, kept)
     for b in bundles:
         assert idx.ref[b["pivot"]][0] in PIVOTS
@@ -444,6 +595,8 @@ def build(units, by_id, cls, params: dict, procs=None, log=print, parts=None, me
         key["slabs"][sid] = ent
     stats = C.make_stats(units, idx, parts, kept, bundles, slabs, slab_bis, decoy, rend, pivots, PIVOTS, meta)
     stats["decoy_target"] = len(drawn)
+    stats["thin_partner_slots"] = dict(collections.Counter(
+        idx.corp[v] for b in bundles for v in b["units"][1:] if idx.thin_mask[v]))
     stats["layers"] = layer_report(units, cls)
     stats["bundles_by_pivot_class"] = dict(collections.Counter(
         "+".join(class_names(int(idx.cls[b["pivot"]]))) for b in bundles))
@@ -513,8 +666,7 @@ def main() -> int:
     args = ap.parse_args()
     log = lambda *a: print(time.strftime("%H:%M:%S"), *a, file=sys.stderr, flush=True)
     units, by_id, meta, notes = C.load_all(ROOT, args.cache_dir, None, False, None, log)
-    clf = Classifier(ROOT, meta)
-    cls = classify(units, clf)
+    cls, thin = prepare(units, by_id, meta, args.cache_dir, log)
     rep = layer_report(units, cls)
     log("kept: " + ", ".join(f"{c} {r['kept']}/{r['units']}" for c, r in rep.items()))
     if args.dry_run:
@@ -526,19 +678,21 @@ def main() -> int:
     parts = None
     if params is None:      # freeze the floor before any bundle is built
         idx = SIndex(view, by_id, cls)
+        idx.set_thin(thin)
         pv = C.pivots_of(idx, PIVOTS)
-        parts = C.pivot_partners(idx, pv, args.procs)
-        log(f"partners: {len(parts)} of {len(pv)} pivots")
+        reg, tparts = all_partners(idx, pv, args.procs)
+        parts = (reg, tparts)
+        log(f"partners: {len(reg)} of {len(pv)} pivots; thin partners: {len(tparts)}")
         nidx = SIndex(view, by_id, cls, shuffle_seed=SEED)
         nparts = C.pivot_partners(nidx, C.pivots_of(nidx, PIVOTS), args.procs)
-        best = np.array([p[0][0] for p in parts.values()])
+        best = np.array([p[0][0] for p in reg.values()])
         floors = sorted({SB._q(best, q) for q in (0.5, 0.75, 0.9, 0.95, 0.98, 0.99)})
-        params = make_params(idx, parts, SB.null_comparison(idx, parts, nidx, nparts, floors), notes)
+        params = make_params(idx, reg, SB.null_comparison(idx, reg, nidx, nparts, floors), notes, thin_parts=tparts)
         OUT.mkdir(parents=True, exist_ok=True)
         pfile.write_text(json.dumps(params, ensure_ascii=False, indent=1) + "\n", "utf-8")
-        log(f"params frozen: floor {params['floor']}")
+        log(f"params frozen: floor {params['floor']}, thin floor {params.get('thin_floor')}")
         del nidx, nparts, idx
-    res = build(units, by_id, cls, params, args.procs, log, parts=parts, meta=meta)
+    res = build(units, by_id, cls, params, args.procs, log, parts=parts, meta=meta, thin=thin)
     res["stats"]["mapping_notes"] = notes
     write(res)
     st = res["stats"]

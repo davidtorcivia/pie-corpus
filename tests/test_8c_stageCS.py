@@ -137,3 +137,35 @@ def test_layer_table():
     assert clf("lat", U("PlAmphi")) == 0 and clf("lat", U("CatAgr")) == S.CULT
     assert clf("xto", U("993.359")) == 0 and clf("sqo", U("buzuku")) == 0
     assert clf("sa-ep", U("MBh, 12, 136")) == S.WISDOM | S.LAW and clf("sa-ep", U("MBh, 1, 2")) == S.NARR
+
+
+def test_thin_corpora_rules(small, monkeypatch):
+    units, cls = small
+    monkeypatch.setattr(S, "THIN_MAX_UNITS", 260)        # the fixture's partner corpora have ~270 kept units each
+    idx = S.SIndex(S.indexed_view(units, cls), {}, cls)
+    cnt = {c: sum(1 for c2, _ in idx.ref if c2 == c) for c in ("rv", "hom", "hit")}
+    monkeypatch.setattr(S, "THIN_MAX_UNITS", max(cnt.values()) + 1)
+    thin = S.thin_corpora(idx)
+    assert thin == {"rv", "hom", "hit"} and not thin & set(S.PIVOTS)
+    for c in thin:                                       # genre waived for thin corpora
+        cls[c] = [S.ALL if m else 0 for m in cls[c]]
+    idx = S.SIndex(S.indexed_view(units, cls), {}, cls)
+    idx.set_thin(thin)
+    n = 0
+    for u in C.pivots_of(idx, S.PIVOTS):
+        tp = idx.thin_partners(u)
+        assert len(tp) <= S.THIN_SLOTS and len({idx.corp[v] for _, v, _ in tp}) == len(tp)
+        assert all(idx.corp[v] in thin and idx.branch[v] != idx.branch[u] for _, v, _ in tp)
+        n += bool(tp)
+    assert n
+    reg, tparts = S.all_partners(idx, C.pivots_of(idx, S.PIVOTS), procs=1)
+    kept = S.kept_partners(reg, tparts, floor=1e9, thin_floor=0.0)
+    assert kept and all(idx.corp[v] in thin for ps in kept.values() for _, v, _ in ps)
+    clf = S.Classifier(None)
+    clf.cth = {"KUB 25.1": 627, "KUB 33.98": 345}
+    U = lambda book: type("U", (), {"book": book, "key": "x"})()
+    assert S.loose_class("hit", U("KUB 25.1"), clf) == S.ALL and S.loose_class("hit", U("KUB 33.98"), clf) == 0
+    assert S.loose_class("ang", U("I:Genesis"), clf) == S.ALL and S.loose_class("ang", U("II:Psalmen"), clf) == 0
+    assert S.loose_class("ang", U("II:Lxxxti,"), clf) == 0 and S.loose_class("ang", U("II:Juliana"), clf) == S.ALL
+    assert S.loose_class("ang", U("I:Literarische Notizen"), clf) == 0
+    assert S.loose_class("lat", U("PlAmphi"), clf) == S.ALL
