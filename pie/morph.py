@@ -40,11 +40,37 @@ alternative cell (or, for a lexeme spec, in extra_specs), never deleted.
     (Fortson §6.52: Ved. voc. pl. dévās); non-neuter, every declension.
   - consonant-stem nom.-acc. dual *-h₁e* (Ringe; Beekes §13.2.11; L&Y §2.1.1;
     Fortson §6.13 either), *-h₁* second; i/u-stems keep *-h₁* first.
-  - boukólos: the handbook thematic and eh₂ declensions keep the labiovelar
-    before syllabic u (Mallory & Adams *perkʷunos*); Wiktionary's full scope is
-    the alternative and the Wiktionary convention (phon.delabialize).
+  - boukólos: the handbook convention keeps the labiovelar before syllabic u
+    in every declension and conjugation (pérkʷunos, pérkʷus, ḱm̥tógʷus,
+    gʷunéwti; M&A *pérkʷus p. 160, *perkʷunos; Handbook vol. 3 chs. 84, 119
+    *perkʷu-; Handbook ch. 121 gives the rule only after u; Fortson §3.39,
+    a labiovelar next to u on either side, is the minority); Wiktionary's full
+    scope is the alternative and the Wiktionary convention. One place:
+    phon.boukolos, used by render() and _boukolos_cells() (POSTCHECK 6.2).
   - 2du primary *-tes* = 3du (Ringe 2006 p. 31); Beekes's tentative *-tHe/os*
     as the alternative *-th₁es*.
+  - athematic optative, grade and accent by cell type (fix/accent; every cell
+    carries one accent). (a) Unaccented weak stem (root and nasal presents,
+    root aorists, perfects): singular *-yéh₁-* (h₁syéh₁t), dual/plural and
+    middle *-ih₁-* with the ending accented (h₁sih₁mé, h₁sih₁tó), 3pl *-ih₁ént*
+    (Fortson §5.57; Ringe 2006 p. 30; Beekes §18.8.4 p. 275 *h₁s-iéh₁-m,
+    *h₁s-ih₁-mé; L&Y §4.2.4.3, Tab. 122.11; Handbook ch. 41 §6.7.2
+    *h₁s-ih₁-ént; Ved. syā́m, Handbook ch. 27 §5.3.2). Beekes's static 3pl
+    *h₁és-ih₁-n̥t is not generated. (b) Accented weak stem (Narten, s-aorist,
+    fixed accent): *-ih₁-* throughout, stem accent, the ending unaccented
+    (h₁édih₁t, h₂wéh₁ih₁me, 3pl -ih₁ent; Fortson §5.57, Ringe p. 30); the
+    *-yeh₁-* singular follows. (c) Reduplicated present (accented
+    reduplication in the strong stem): *-ih₁-* throughout on the weak stem with
+    the accent on the reduplication, active and middle (dʰédʰh₁ih₁t,
+    dʰédʰh₁ih₁me, dʰédʰh₁ih₁ent, dʰédʰh₁ih₁to): Ringe p. 30 *dʰé-dʰh₁-ih₁-,
+    *stí-sth₂-ih₁- with his rules p. 30 (zero grade when the accent is fixed to
+    the left) and p. 33 (leftmost accent surfaces); LIV² p. 16 type 1g
+    (reduplication always accented); Beekes p. 275 the zero grade everywhere
+    (Av. daidīt̰), whose unaccented *dʰe-dʰh₁-ih₁-t is no evidence for an
+    accentless form; Ved. mid. dádhīta (Handbook ch. 27 §5.4.1.2). The mobile
+    type follows as alternatives: dʰedʰh₁yéh₁t, dʰedʰh₁ih₁mé, dʰedʰh₁ih₁tó
+    (Fortson's general rule; Ved. act. bibhr̥yā́t, yuyuyā́tām; LIV² type 1h).
+    Thematic *-oyh₁-* on the accented stem is unchanged (bʰéroyh₁t).
   - lexeme decisions (overrides.jsonl): h₁ed- Narten (h₁ḗdti, h₁édn̥ti);
     ḱéytor t-less middle (VerbSpec.mid_t_less); dédeh₃ti mobile weak stem
     (dedh₃més). Closed class: 'I' h₁eǵóh₂, 'ten' déḱm̥ (closed_class.json _refs).
@@ -59,7 +85,7 @@ import re
 
 from dataclasses import dataclass, field, replace
 
-from .phon import (Seg, contract_eh2m, delabialize, has_accent, join, junction_laryngeal_loss,
+from .phon import (Seg, boukolos, contract_eh2m, has_accent, join, junction_laryngeal_loss,
                    lengthen_last_vowel, parse, pinault, stang, szemerenyi, zero_grade_suffix)
 from .phon import render as _render
 
@@ -76,18 +102,18 @@ def _p(s: str) -> list[Seg]:
 
 
 def render(segs: list[Seg]) -> str:
-    return _render(delabialize(segs))
+    """Render with the handbook boukólos scope (kʷ kept before syllabic u: phon.boukolos); the Wiktionary scope is
+    applied to finished cells by _boukolos_cells, once per convention run."""
+    return _render(boukolos(segs, "handbook"))
 
 
-def _render_kw(segs: list[Seg]) -> str:
-    """Handbook rendering for the thematic and eh₂ declensions: the labiovelar is kept before syllabic u
-    (Mallory & Adams *perkʷunos, 7 times), i.e. boukólos only next to consonantal w. The fully
-    delabialized Wiktionary-module form follows as an alternative (_with_delabialized)."""
-    return _render(delabialize(segs, before_u=False))
-
-
-def _with_delabialized(out: Cells) -> Cells:
-    return {k: _uniq(v + [render(_p(f)) for f in v]) for k, v in out.items()}
+def _boukolos_cells(out: Cells, conv: str) -> Cells:
+    """The Wiktionary convention takes the module's full boukólos scope; the handbook convention keeps its forms
+    first and the fully delabialized ones as alternatives (pérkʷus, pérkus)."""
+    full = {k: [_render(boukolos(_p(f), "wiktionary")) for f in v] for k, v in out.items()}
+    if conv == "wiktionary":
+        return {k: _uniq(v) for k, v in full.items()}
+    return {k: _uniq(v + full[k]) for k, v in out.items()}
 
 
 def _add(stem: list[Seg], ending: str) -> list[Seg]:
@@ -171,7 +197,7 @@ def _thematic(spec: NounSpec, conv: str) -> Cells:
             for k in ("NOM.DU", "VOC.DU", "ACC.DU"):
                 table[k] = ["oyh₁", "oy"]
     hb = conv == "handbook"
-    rd = _render_kw if hb else render
+    rd = render
     out = {}
     for feat, ends in table.items():
         forms = []
@@ -184,7 +210,7 @@ def _thematic(spec: NounSpec, conv: str) -> Cells:
     if conv == "handbook" and spec.gender != "n" and has_accent(stem):
         # vocative accent on the first syllable (Ved. vŕ̥ka, Gk ἄδελφε): wĺ̥kʷe, moysé → móyse
         out["VOC.SG"] = _uniq([rd(_initial_accent(base + _p("e")))] + out["VOC.SG"])
-    return _with_delabialized(out) if hb else out
+    return out
 
 
 _EH2 = {
@@ -199,7 +225,6 @@ _EH2 = {
 def _eh2(spec: NounSpec, conv: str) -> Cells:
     stem = _p(_bare(spec.strong))
     hb = conv == "handbook"
-    render = _render_kw if hb else globals()["render"]   # noqa: the handbook keeps kʷ before u (see _render_kw)
     out = {feat: [render(_add(stem, e)) for e in ends] for feat, ends in _EH2.items()}
     if conv == "wiktionary":
         out["ACC.SG"] = [render(contract_eh2m(_add(stem, "m")))]
@@ -227,7 +252,6 @@ def _eh2(spec: NounSpec, conv: str) -> Cells:
         # nom.-acc. du. *-eh₂ih₁ (Beekes §13.2.11: Ved. -e, OCS -ě) beside the generic *-h₁/-h₁e
         for k in ("NOM.DU", "VOC.DU", "ACC.DU"):
             out[k] = _uniq(out[k] + [render(_add(stem, "ih₁"))])
-        out = _with_delabialized(out)
     return out
 
 
@@ -340,7 +364,11 @@ def _athematic(spec: NounSpec, conv: str) -> Cells:
         # i/u-stem with no weak stem given: full-grade suffix -ey-/-ew- (gʰóstipoteys, Ved. -es, Goth. -ais),
         # not strong + s, which would equal the nominative
         full = strong[:-1] + [Seg("e", "V", acc=strong[-1].acc), Seg(strong[-1].base, "R")]   # suHnú- → suHnéws
-        out["GEN.SG"] = out["ABL.SG"] = _uniq([render(_add(full, "s"))] + gen)
+        # acrostatic neuter u-stem (the dóru type): gen. *déru-s with the zero-grade suffix first (Fortson §6.27,
+        # beside the newer proterokinetic *dr-éu-s), the full-grade *-ew-s second (déh₂nus, déh₂news: POSTCHECK 6.1)
+        doru = spec.accent_class == "acrostatic" and neuter and strong[-1].base == "w"
+        fg = [render(_add(full, "s"))]
+        out["GEN.SG"] = out["ABL.SG"] = _uniq(gen + fg if doru else fg + gen)
         out["DAT.SG"] = _uniq([render(_add(full, "ey"))] + out["DAT.SG"])
 
     out["INS.SG"] = [w("éh₁", "h₁", obl)]
@@ -507,8 +535,10 @@ def _locative(spec: NounSpec, strong: list[Seg], weak: list[Seg], hb: bool = Tru
             if not hb:
                 continue                               # Wiktionary: bare -i (h₂éwi)
             # i-stem: *-ēy (Fortson, Ringe; Ved. agnā́, Gk πόληι), then -ey; bare -i stays as an alternative
-            full = s[:-1] + [Seg("e", "V"), Seg("y", "R")]
-            out[-1:] = [render(lengthen_last_vowel(s[:-1] + [Seg("e", "V")]) + [Seg("y", "R")]), render(full),
+            # (an accent on the syllabic i moves to the full-grade vowel: trí- → trḗy, not accentless trēy)
+            e = Seg("e", "V", acc=s[-1].acc)
+            full = s[:-1] + [e, Seg("y", "R")]
+            out[-1:] = [render(lengthen_last_vowel(s[:-1] + [e]) + [Seg("y", "R")]), render(full),
                         render(s)]
             continue
         if len(s) >= 2 and s[-1].base == "y" and not s[-1].syl and s[-2].base == "e" and s[-2].acc:
@@ -536,10 +566,9 @@ def decline(spec: NounSpec, convention: str = "handbook", alternatives: bool = T
             # nominative form stays as the alternative (engine sweep convention, thematic.md defect 2)
             for feat in ("VOC.PL", "VOC.DU"):
                 if c.get(feat) and has_accent(_p(c[feat][0])):
-                    rd = _render_kw if k in ("thematic", "eh2") else render     # keep the boukólos choice
                     ret = _initial_accent(_p(c[feat][0]))
-                    c[feat] = _uniq([rd(ret)] + c[feat] + [render(ret)])
-        return c
+                    c[feat] = _uniq([render(ret)] + c[feat])
+        return _boukolos_cells(c, conv)
 
     out = run(convention)
     if alternatives:
@@ -625,7 +654,7 @@ def conjugate(spec: VerbSpec, convention: str = "handbook", alternatives: bool =
         cells = _conjugate(spec, conv)
         if phase_b:
             cells.update(_phase_b(spec, conv))
-        return cells
+        return _boukolos_cells(cells, conv)
 
     out = run(convention)
     if convention == "handbook":
@@ -768,15 +797,23 @@ def _phase_b(spec: VerbSpec, conv: str) -> Cells:
     if hb and has_accent(weak) and any(x.long and x.acc and x.kind == "V" for x in strong):
         sbjv = weak
     out.update(_slots("SBJV", _SH_SBJV, lambda e: on(sbjv, e)))
-    # optative: *-yéh₁-/-ih₁- on the weak stem; when the weak stem is accented (Narten, fixed-accent stems,
-    # s-aorist) or the stem is reduplicated, the suffix is zero-grade throughout (Fortson §5.57; Ringe 2006
-    # p. 30 *h₁éd-ih₁-, *dʰé-dʰh₁-ih₁-; Beekes §18.8.4 *dʰe-dʰh₁-ih₁-t); the full-grade forms stay as
-    # alternatives (engine sweep, athematic-verbs.md E2, thematic-verbs.md defect 6)
+    # optative (decision: module docstring, "optative"): *-yéh₁-/-ih₁- on the weak stem; when the weak stem is
+    # accented (Narten, fixed-accent stems, s-aorist) the suffix is zero-grade throughout and the stem keeps the
+    # accent (Fortson §5.57; Ringe 2006 p. 30 *h₁éd-ih₁-). A reduplicated present takes the zero grade too, with
+    # the accent on the reduplication in every person and in the middle (Ringe 2006 p. 30 *dʰé-dʰh₁-ih₁-,
+    # *stí-sth₂-ih₁-, p. 33 the leftmost accent surfaces; LIV² p. 16 type 1g; Beekes §18.8.4 zero grade, Av.
+    # daidīt̰; Ved. mid. dádhīta). The mobile forms (full-grade suffix-accented singular, ending-accented plural
+    # and middle; Ved. act. bibhr̥yā́t, yuyuyā́tām) stay as alternatives (engine sweep, athematic-verbs.md E2,
+    # thematic-verbs.md defect 6; fix/accent)
     zero_opt = hb and spec.kind != "stat" and (has_accent(weak) or red is not None)
+    opt_stem = red if red is not None else weak
     opt_sg = ["ih₁m̥", "ih₁s", "ih₁t"] if zero_opt else _ATH_OPT_SG
-    out.update(_slots("OPT", [*opt_sg, *_ATH_OPT_PL], lambda e: on(weak, e)))
+    out.update(_slots("OPT", [*opt_sg, *_ATH_OPT_PL], lambda e: on(opt_stem, e)))
     if zero_opt:
         for pn, e in zip(_P[:3], _ATH_OPT_SG):
+            out[f"OPT.{pn}"] = _uniq(out[f"OPT.{pn}"] + [on(weak, e)])
+    if red is not None:
+        for pn, e in zip(_P[3:], _ATH_OPT_PL):
             out[f"OPT.{pn}"] = _uniq(out[f"OPT.{pn}"] + [on(weak, e)])
     if spec.kind == "stat":
         out["PTCP.ACT"] = [on(weak, "wṓs")]
@@ -802,7 +839,10 @@ def _phase_b(spec: VerbSpec, conv: str) -> Cells:
     out["MID.IMP.2SG"] = [on(weak, "só")]
     out["MID.IMP.2PL"] = [on(weak, "dʰh₂wé")]
     out.update(_slots("MID.SBJV", _SH_MID_SBJV, lambda e: on(sbjv, e)))
-    out.update(_slots("MID.OPT", _ATH_MID_OPT, lambda e: on(weak, e)))
+    out.update(_slots("MID.OPT", _ATH_MID_OPT, lambda e: on(opt_stem, e)))
+    if red is not None:   # the ending-accented middle (dʰedʰh₁ih₁tó) as the alternative
+        for k, forms in _slots("MID.OPT", _ATH_MID_OPT, lambda e: on(weak, e)).items():
+            out[k] = _uniq(out[k] + forms)
     out["PTCP.ACT"] = [on(weak, "ónts")] + ([on(red, "n̥ts")] if red is not None else [])   # Ved. dádhat-
     out["PTCP.MID"] = [on(weak, "m̥h₁nós")]
     return out

@@ -18,6 +18,26 @@ laryngeal notation, and coverage without tiers would be meaningless:
 Clitics (-kʷe, -wē, -ge, -de, -r) and the augment (h₁e-/é-) are split off
 when the whole token fails.
 
+Every analysis carries the status of the reconstruction it comes from
+(docs/audits/alt-form-status.md):
+  primary    the lexeme's spec, the closed class, the lexicon headword
+  supported  an alternative a handbook or the project's conventions endorse:
+             a second Wiktionary table, a convention's displaced spec
+             (extra_specs status "supported"), the Wiktionary table cells
+  legacy     retained for recognition only (a displaced spec not endorsed)
+  rejected   a diagnosed source or parsing error (a displaced spec the
+             override notes or the engine-sweep audits call wrong)
+A token takes the best status among its analyses. Only primary and supported
+matches can be "exact"; a legacy match is reported with tier "legacy" (a
+warning); a token that matches only rejected forms is not found: miss
+"known-error", detail "known error: <note>", and the text fails.
+
+Accent lint: a content word written without an accent mark is listed in
+"accentless" (a warning; status unchanged). Enclitic tokens and the
+closed-class forms that closed_class.json itself writes unaccented
+(particles, enclitic pronouns, the indefinite) and the enclitic lexicon
+particles in ACCENTLESS_LEXEMES are exempt.
+
 Compounds (pie.compound) are open-ended, so they are not pre-indexed: a plan's
 compounds are added with index_plan_compounds(ix, plan) (or ix.add_compound(c))
 before its text is validated. The cells come from the same function the
@@ -39,6 +59,13 @@ from .translit import ACUTE, MACRON, is_canonical
 
 ROOT = Path(__file__).resolve().parent.parent
 TIERS = ("exact", "noaccent", "nolength", "decolored", "generic-H")
+# alternative-form status, best first; only the first two count as exact
+STATUSES = ("primary", "supported", "legacy", "rejected")
+ACCEPTED = ("primary", "supported")
+# lexicon particles written unaccented because they are enclitic or postpositive (Ved. gha, u, ca, vā):
+# exempt from the accent lint like the closed class
+ACCENTLESS_LEXEMES = frozenset({"pie-lex-ghe", "pie-lex-bho", "pie-lex-kje", "pie-lex-kwe", "pie-lex-kwe-2",
+                                "pie-lex-u", "pie-lex-we", "pie-lex-ox-2"})
 CLITICS = ["kʷe", "wē", "we", "ge", "de", "dʰe", "r"]
 AUGMENTS = ["h₁é", "h₁e", "é", "e"]
 _PUNCT = re.compile(r"[.,;:!?\"()\[\]…*=]+")
@@ -94,6 +121,8 @@ class Analysis:
     features: str          # e.g. "NOM.SG", "PRS.3SG", "LEMMA", "PARTICLE"
     source: str            # engine:<rule> | closed | lexicon
     gender: str | None = None
+    status: str = "primary"    # primary | supported | legacy | rejected (STATUSES)
+    note: str | None = None    # why a legacy / rejected form is not endorsed
 
 
 @dataclass
@@ -105,6 +134,9 @@ class Token:
     augment: str | None = None
     miss: str | None = None          # classification when not found
     miss_detail: str | None = None
+    status: str | None = None        # best status of the analyses (STATUSES)
+    match_tier: str | None = None    # the string tier that matched (tier is "legacy"/"rejected" otherwise)
+    rejected: list[Analysis] = field(default_factory=list)   # a known error's analyses
 
     @property
     def found(self) -> bool:
@@ -123,11 +155,18 @@ class FormIndex:
         self.convention = convention
         self.idx: dict[str, dict[str, list[Analysis]]] = {t: collections.defaultdict(list) for t in TIERS}
         self.lemma_forms: dict[str, list[str]] = collections.defaultdict(list)   # for miss classification
+        # lex_id → form → (best status, note) over the lexeme's specs (for its headword and variants)
+        self._form_status: dict[str, dict[str, tuple[str, str | None]]] = collections.defaultdict(dict)
+        # lex_id → (status, note) of its overridden Wiktionary table spec (for its verbatim table cells)
+        self.table_status: dict[str, tuple[str, str | None]] = {}
         for r in specs:
             if r["spec"]:
                 self._add_spec(r)
             for x in r.get("extra_specs", []):
-                self._add_spec({**r, "family": x["family"], "spec": x["spec"]})
+                st = x.get("status") or ("legacy" if x.get("displaced_by_override") else "supported")
+                self._add_spec({**r, "family": x["family"], "spec": x["spec"]}, st, x.get("status_note"))
+                if x.get("displaced_by_override") and r.get("rule") == "table":
+                    self.table_status[r["id"]] = (st, x.get("status_note"))
         self._add_closed(closed)
         for e in lexicon:
             if e["kind"] == "root":
@@ -135,7 +174,10 @@ class FormIndex:
             for f in [e["form"], *e.get("variants", [])]:
                 if f.startswith("-") or f.endswith("-"):
                     continue
-                self._add(f, Analysis(e["id"], e.get("root_id"), "LEMMA", "lexicon"))
+                # a headword or variant that only a legacy / rejected spec generates has that status
+                # (the unaccented headword dinos, the old headword yókʷr̥)
+                st, note = self._form_status[e["id"]].get(f, ("primary" if f == e["form"] else "supported", None))
+                self._add(f, Analysis(e["id"], e.get("root_id"), "LEMMA", "lexicon", status=st, note=note))
             self.lemma_forms[key(e["form"].strip("-"), "generic-H")].append(e["id"])
 
     def _add(self, form: str, a: Analysis) -> None:
@@ -144,7 +186,7 @@ class FormIndex:
             if a not in lst:
                 lst.append(a)
 
-    def _add_spec(self, r: dict) -> None:
+    def _add_spec(self, r: dict, status: str = "primary", note: str | None = None) -> None:
         e = self.lex.get(r["id"], {})
         root = e.get("root_id")
         src = f"engine:{r['rule']}" + ("" if r.get("usable") else ":unusable")
@@ -169,9 +211,12 @@ class FormIndex:
                         continue
                     for k, v in pc.items():
                         cells[(g, f"PTCP.{voice}.{k}")] = v
+        fs = self._form_status[r["id"]]
         for (g, feat), forms in cells.items():
             for f in forms:
-                self._add(f, Analysis(r["id"], root, feat, src, g or e.get("gender")))
+                self._add(f, Analysis(r["id"], root, feat, src, g or e.get("gender"), status, note))
+                if f not in fs or STATUSES.index(status) < STATUSES.index(fs[f][0]):
+                    fs[f] = (status, note)
 
     def add_compound(self, c: dict) -> str | None:
         """Index every cell of one compound ({first, second, type}); returns its lex_id, or None
@@ -197,14 +242,19 @@ class FormIndex:
     def add_table_cells(self, paradigms: list[dict]) -> None:
         """Every cell of every clean Wiktionary table, verbatim, including the
         classes the engine does not build yet (middle, subjunctive, optative,
-        participles). These forms are attested in the lexicon source."""
+        participles). These forms are attested in the lexicon source: a supported alternative, unless an
+        override displaced the table's spec, whose status (legacy, rejected) the cells then share."""
         for p in paradigms:
             e = self.lex.get(p["lex_id"], {})
+            st, note = self.table_status.get(p["lex_id"], ("supported", None))
+            if st == "primary":
+                st = "supported"
             for c in p["cells"]:
                 feat = "+".join(c["tags"])
                 for f in c["forms"]:
                     if not f.startswith("-"):
-                        self._add(f, Analysis(p["lex_id"], e.get("root_id"), feat, "wiktionary-cell"))
+                        self._add(f, Analysis(p["lex_id"], e.get("root_id"), feat, "wiktionary-cell", status=st,
+                                              note=note))
 
     def _add_closed(self, closed: dict) -> None:
         def walk(node, path):
@@ -220,6 +270,25 @@ class FormIndex:
                     else:
                         walk(v, path + [k])
         walk(closed, [])
+        # the closed-class forms written without an accent (particles, enclitic pronouns): exempt from the
+        # accent lint, as is the indefinite below
+        self.accentless_closed: set[str] = set()
+
+        def unaccented(node):
+            if isinstance(node, list):
+                for f in node:
+                    if isinstance(f, str) and _strip_marks(f, ACUTE) == f:
+                        self.accentless_closed.add(f)
+            elif isinstance(node, dict):
+                for k, v in node.items():
+                    if k.startswith("_"):
+                        continue
+                    if isinstance(v, str):
+                        if _strip_marks(k.lstrip("-"), ACUTE) == k.lstrip("-"):
+                            self.accentless_closed.add(k.lstrip("-"))
+                    else:
+                        unaccented(v)
+        unaccented(closed)
         # the indefinite is the unaccented interrogative (ne kʷis 'no one'; pie.realize)
         import unicodedata
         for g, cells in closed.get("interrogative_kwi", {}).items():
@@ -228,6 +297,7 @@ class FormIndex:
                     for f in forms:
                         u = unicodedata.normalize("NFC", unicodedata.normalize("NFD", f).replace("\u0301", ""))
                         self._add(u, Analysis(f"closed:indefinite_kwi/{g}", None, feat, "closed"))
+                        self.accentless_closed.add(u)
 
     def lookup(self, form: str) -> tuple[str | None, list[Analysis]]:
         for t in TIERS:
@@ -332,37 +402,92 @@ def _segments(form: str) -> list:
         return list(form)
 
 
+def _settle(tok: Token, tier: str, an: list[Analysis]) -> bool:
+    """Set the token from one lookup by the best status among its analyses: primary/supported keep the
+    string tier, legacy becomes tier "legacy", rejected-only a known error. True unless rejected."""
+    best = min(STATUSES.index(a.status) for a in an)
+    keep = [a for a in an if a.status in ACCEPTED] if best <= 1 else [a for a in an if STATUSES.index(a.status) == best]
+    tok.match_tier, tok.status = tier, STATUSES[best]
+    if best <= 1:
+        tok.tier, tok.analyses = tier, keep
+    elif best == 2:
+        tok.tier, tok.analyses = "legacy", keep
+    else:
+        tok.tier, tok.analyses, tok.rejected = "rejected", [], keep
+        tok.miss = "known-error"
+        tok.miss_detail = "known error: " + "; ".join(dict.fromkeys(a.note or "a diagnosed error" for a in keep))
+        return False
+    tok.miss = tok.miss_detail = None
+    tok.rejected = []
+    return True
+
+
 def analyze_token(surface: str, ix: FormIndex, laryngealist: bool = True) -> Token:
     tok = Token(surface)
     if surface.startswith("-"):
         tier, an = ix.lookup(surface[1:])
         # a clitic is a particle when one is known (-kʷe "and", not the vocative of kʷos)
         an = [a for a in an if a.features == "PARTICLE"] or an
-        tok.tier, tok.analyses, tok.clitic = tier, an, surface
+        tok.clitic = surface
         if not an:
             tok.miss = "lexicon-gap"
+        else:
+            _settle(tok, tier, an)
         return tok
+    known_error = None
     tier, an = ix.lookup(surface)
     if an and (tier == "exact" or len(_segments(surface)) > 2):
         # Short tokens must match exactly: fuzzy tiers turn the particle tu
         # "then" into the pronoun tú (precision check, Byrd 2013).
-        tok.tier, tok.analyses = tier, an
-        return tok
+        if _settle(tok, tier, an):
+            return tok
+        known_error = (tier, an)        # a diagnosed error, unless a clitic or augment parse is valid
     for c in CLITICS:                           # unhyphenated host+clitic
         if surface.endswith(c) and len(surface) > len(c) + 2:
             tier, an = ix.lookup(surface[: -len(c)])
-            if an:
-                tok.tier, tok.analyses, tok.clitic = tier, an, "-" + c
+            if an and (known_error is None or any(a.status != "rejected" for a in an)):
+                tok.clitic = "-" + c
+                _settle(tok, tier, an)
                 return tok
     for aug in AUGMENTS:                        # augmented past: h₁e-bʰeret
         if surface.startswith(aug) and len(surface) > len(aug) + 2:
             tier, an = ix.lookup(surface[len(aug):])
             sec = [a for a in an if a.features.startswith(("PST", "AOR"))]
-            if sec:
-                tok.tier, tok.analyses, tok.augment = tier, sec, aug
+            if sec and (known_error is None or any(a.status != "rejected" for a in sec)):
+                tok.augment = aug
+                _settle(tok, tier, sec)
                 return tok
+    if known_error:
+        _settle(tok, *known_error)
+        return tok
     _classify_miss(tok, ix, laryngealist)
     return tok
+
+
+def has_accent(form: str) -> bool:
+    """An accent mark on a nucleus (the acute of ḱ, ǵ is the palatal, not an accent)."""
+    return _strip_marks(form, ACUTE) != form
+
+
+def accentless(tok: Token, ix: FormIndex) -> bool:
+    """Accent lint: a found content word written without an accent mark. Enclitic tokens and the
+    closed-class forms closed_class.json writes unaccented, and ACCENTLESS_LEXEMES, are exempt."""
+    if not tok.found or tok.surface.startswith("-") or has_accent(tok.surface):
+        return False
+    host = tok.surface
+    if tok.clitic and host.endswith(tok.clitic[1:]):
+        host = host[: -len(tok.clitic) + 1]
+    if tok.augment and host.startswith(tok.augment):
+        host = host[len(tok.augment):]
+    if host in ix.accentless_closed or tok.surface in ix.accentless_closed:
+        return False
+    return not any(a.lex_id in ACCENTLESS_LEXEMES for a in tok.analyses)
+
+
+def all_exact(v: dict) -> bool:
+    """The quality gate: every token found at the exact tier with a primary or supported form (a legacy
+    match has tier "legacy", a known error is not found)."""
+    return v["coverage"] == 1.0 and set(v["tiers"]) <= {"exact"}
 
 
 def _cases(tok: Token) -> set[tuple[str, str]]:
@@ -385,7 +510,7 @@ def validate_text(text: str, ix: FormIndex, laryngealist: bool = True) -> dict:
     tiers = collections.Counter(t.tier for t in found)
     misses = collections.Counter(t.miss for t in toks if not t.found)
     status = "pass" if len(found) == len(toks) and tiers.get("exact", 0) == len(found) else \
-        "warn" if not any(t.miss in ("notation", "lexicon-gap") for t in toks) else "fail"
+        "warn" if not any(t.miss in ("notation", "lexicon-gap", "known-error") for t in toks) else "fail"
     return {
         "tokens": toks,
         "coverage": len(found) / len(toks) if toks else 1.0,
@@ -396,4 +521,7 @@ def validate_text(text: str, ix: FormIndex, laryngealist: bool = True) -> dict:
         "unknown_roots": sorted({t.surface for t in toks if t.found and not any(a.root_id for a in t.analyses)
                                  and not any(a.source == "closed" for a in t.analyses)}),
         "bad_forms": [t.surface for t in toks if not t.found],
+        "legacy": [t.surface for t in toks if t.tier == "legacy"],
+        "known_errors": [f"{t.surface}: {t.miss_detail}" for t in toks if t.miss == "known-error"],
+        "accentless": [t.surface for t in toks if accentless(t, ix)],
     }

@@ -54,6 +54,13 @@ def compare(family, spec, para):
 
 def main() -> int:
     lex = [json.loads(x) for x in (LEX / "lexicon.jsonl").read_text("utf-8").splitlines()]
+    # status of each displaced spec (docs/audits/alt-form-status.md); the last override line of an id wins,
+    # as in pie/lexicon.py
+    displaced = {}
+    for x in (LEX / "overrides.jsonl").read_text("utf-8").splitlines():
+        o = json.loads(x)
+        if "spec" in o:
+            displaced[o["id"]] = (o.get("displaced_status", "legacy"), o.get("displaced_why") or o.get("note"))
     paras = {}
     for x in (LEX / "paradigms.jsonl").read_text("utf-8").splitlines():
         p = json.loads(x)
@@ -92,7 +99,8 @@ def main() -> int:
             for t in p["templates"][1:]:
                 g2 = spec_from_template(t)
                 if g2:
-                    extra.append({"family": g2[0], "spec": dataclasses.asdict(g2[1])})
+                    # a second Wiktionary table: a supported alternative
+                    extra.append({"family": g2[0], "spec": dataclasses.asdict(g2[1]), "status": "supported"})
         if c is None:
             c = by_shape(e)
         cov[c.rule.split(":")[0] if c.spec is None else ("table" if c.rule == "table" else "shape")] += 1
@@ -105,10 +113,13 @@ def main() -> int:
         spec = dataclasses.asdict(c.spec) if c.spec else None
         if spec and e.get("spec_override"):            # hand fixes from reviews (data/lexicon/overrides.jsonl)
             before, spec = spec, {**spec, **e["spec_override"]}
-            # the displaced spec stays indexed for the validator (pie/validate.py reads extra_specs): an override
-            # chooses the primary form, it does not delete the other reconstruction (engine sweep convention)
+            # the displaced spec stays indexed for the validator (pie/validate.py reads extra_specs), with its
+            # status: supported (a convention alternative), legacy (recognized, a warning) or rejected (a
+            # diagnosed error, reported as one). Unclassified displacements default to legacy.
             if before != spec and c.family and not any(x["spec"] == before for x in extra):
-                extra.append({"family": c.family, "spec": before, "displaced_by_override": True})
+                st, why = displaced.get(e["id"], ("legacy", None))
+                extra.append({"family": c.family, "spec": before, "displaced_by_override": True,
+                              "status": st, "status_note": why})
         if e.get("spec_checked") and spec is None and e.get("spec_override"):
             spec = e["spec_override"]
         rows.append({"id": e["id"], "form": e["form"], "rule": c.rule, "family": c.family,

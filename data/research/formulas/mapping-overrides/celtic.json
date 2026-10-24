@@ -1,0 +1,1740 @@
+{
+ "note": "Celtic mapping corrections (pie/celtic_mapping.py, scripts/build_celtic_mapping.py; docs/research/mapping-precision-celtic.md). Corpora: celt (CELT + Irish OCR editions), sga-glosses (Würzburg, St Gall), cy (Welsh editions). Form rows use lang 'sga' only (load_overrides keys every form row with KEYS[lang]).",
+ "lemma": [
+  {
+   "corpus": "celt",
+   "lemma": "úar|úair",
+   "lex_id": [],
+   "erratum": "uair/úair mapped to *h₃ewǵ- 'cold'",
+   "note": "kaikki sga úar n. 'hour, time, occasion': 'Borrowed from Latin hōra'; the CELT surface uair is chiefly this word ('hour; when, because'); úar adj. 'cold' (*ougros, *h₃ewǵ-) is a homograph"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "úar|úair",
+   "lex_id": [],
+   "erratum": "uair/úair mapped to *h₃ewǵ- 'cold'",
+   "note": "kaikki sga úar n. 'hour, time, occasion': 'Borrowed from Latin hōra'; the CELT surface uair is chiefly this word ('hour; when, because'); úar adj. 'cold' (*ougros, *h₃ewǵ-) is a homograph"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "úair",
+   "lex_id": [],
+   "erratum": "úair 'hour' (Latin loan) mapped",
+   "note": "kaikki sga úair = acc./dat. of úar n. 'hour' (< Latin hōra, kaikki sga úar 2)"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "úair",
+   "lex_id": [],
+   "erratum": "úair 'hour' (Latin loan) mapped",
+   "note": "kaikki sga úair = acc./dat. of úar n. 'hour' (< Latin hōra, kaikki sga úar 2)"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "lá",
+   "lex_id": [],
+   "erratum": "lá 'day' mapped through the homograph ·lá 'put'",
+   "note": "kaikki sga lá n. 'day': 'Unknown' (Thurneysen's derivation from laithe tentative); the mapped *layeti belongs to the homograph verbal root ·lá 'put, throw'"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "lá",
+   "lex_id": [],
+   "erratum": "lá 'day' mapped through the homograph ·lá 'put'",
+   "note": "kaikki sga lá n. 'day': 'Unknown' (Thurneysen's derivation from laithe tentative); the mapped *layeti belongs to the homograph verbal root ·lá 'put, throw'"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "ingen",
+   "lex_id": [
+    "pie-root-gjenh1-produce"
+   ],
+   "erratum": "ingen 'daughter' mapped to *h₃nṓgʰs 'nail'",
+   "note": "kaikki sga ingen 1 'daughter, girl' < Primitive Irish inigena < PCelt *enigenā < *ǵenh₁-; ingen 2 'nail' (*h₃nṓgʰs) is a homograph and rare in the prose corpora"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "ingen",
+   "lex_id": [
+    "pie-root-gjenh1-produce"
+   ],
+   "erratum": "ingen 'daughter' mapped to *h₃nṓgʰs 'nail'",
+   "note": "kaikki sga ingen 1 'daughter, girl' < Primitive Irish inigena < PCelt *enigenā < *ǵenh₁-; ingen 2 'nail' (*h₃nṓgʰs) is a homograph and rare in the prose corpora"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "fír",
+   "lex_id": [
+    "pie-lex-weh1ros"
+   ],
+   "erratum": "fír 'true' mapped to *wiHrós 'man'",
+   "note": "Matasović EDPC s.v. *wīro- 'true' (file p0442): *weh₁-ro-; kaikki sga fír < PCelt *wīros; the descendants-tree link to *wiros 'man' (fer) is a homograph confusion"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "fír",
+   "lex_id": [
+    "pie-lex-weh1ros"
+   ],
+   "erratum": "fír 'true' mapped to *wiHrós 'man'",
+   "note": "Matasović EDPC s.v. *wīro- 'true' (file p0442): *weh₁-ro-; kaikki sga fír < PCelt *wīros; the descendants-tree link to *wiros 'man' (fer) is a homograph confusion"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "ór",
+   "lex_id": [],
+   "erratum": "ór 'gold' (Latin loan) mapped to *póros",
+   "note": "kaikki sga ór 'gold': 'Borrowed from Latin aurum'"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "ór",
+   "lex_id": [],
+   "erratum": "ór 'gold' (Latin loan) mapped to *póros",
+   "note": "kaikki sga ór 'gold': 'Borrowed from Latin aurum'"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "abair",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "abair mapped to the preverb *h₁eǵʰs only",
+   "note": "kaikki ga abair < Middle Irish at·beir < OIr. as·beir < PCelt *exs- + *bereti, *bʰer- (deir, adubhairt, dúirt are its forms); the chain had stopped at the prefix *exs-"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "abair",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "abair mapped to the preverb *h₁eǵʰs only",
+   "note": "kaikki ga abair < Middle Irish at·beir < OIr. as·beir < PCelt *exs- + *bereti, *bʰer- (deir, adubhairt, dúirt are its forms); the chain had stopped at the prefix *exs-"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "deir",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "deir mapped to the preverb *h₁eǵʰs only",
+   "note": "kaikki ga abair < Middle Irish at·beir < OIr. as·beir < PCelt *exs- + *bereti, *bʰer- (deir, adubhairt, dúirt are its forms); the chain had stopped at the prefix *exs-"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "deir",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "deir mapped to the preverb *h₁eǵʰs only",
+   "note": "kaikki ga abair < Middle Irish at·beir < OIr. as·beir < PCelt *exs- + *bereti, *bʰer- (deir, adubhairt, dúirt are its forms); the chain had stopped at the prefix *exs-"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "adubhairt",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "adubhairt mapped to the preverb *h₁eǵʰs only",
+   "note": "kaikki ga abair < Middle Irish at·beir < OIr. as·beir < PCelt *exs- + *bereti, *bʰer- (deir, adubhairt, dúirt are its forms); the chain had stopped at the prefix *exs-"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "adubhairt",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "adubhairt mapped to the preverb *h₁eǵʰs only",
+   "note": "kaikki ga abair < Middle Irish at·beir < OIr. as·beir < PCelt *exs- + *bereti, *bʰer- (deir, adubhairt, dúirt are its forms); the chain had stopped at the prefix *exs-"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "dúirt",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "dúirt mapped to the preverb *h₁eǵʰs only",
+   "note": "kaikki ga abair < Middle Irish at·beir < OIr. as·beir < PCelt *exs- + *bereti, *bʰer- (deir, adubhairt, dúirt are its forms); the chain had stopped at the prefix *exs-"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "dúirt",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "dúirt mapped to the preverb *h₁eǵʰs only",
+   "note": "kaikki ga abair < Middle Irish at·beir < OIr. as·beir < PCelt *exs- + *bereti, *bʰer- (deir, adubhairt, dúirt are its forms); the chain had stopped at the prefix *exs-"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "tabairt",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "tabairt mapped to *déh₃t",
+   "note": "kaikki sga tabairt 'verbal noun of do·beir': 'From to- + bert' (bert < *bʰer-); the form-of chain took do·beir's suppletive *déh₃t"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "tabairt",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "tabairt mapped to *déh₃t",
+   "note": "kaikki sga tabairt 'verbal noun of do·beir': 'From to- + bert' (bert < *bʰer-); the form-of chain took do·beir's suppletive *déh₃t"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "dobeir",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "do·beir mapped to *déh₃t",
+   "note": "kaikki sga do·beir: 'From to- + beirid'; *déh₃t is the etymon of the suppletive perfective do·rat only"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "dobeir",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "do·beir mapped to *déh₃t",
+   "note": "kaikki sga do·beir: 'From to- + beirid'; *déh₃t is the etymon of the suppletive perfective do·rat only"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "bí",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "bí (b-stem of 'be') mapped to *steh₂- or *wel-",
+   "note": "kaikki ga bí 'to be' < OIr. bí- (consuetudinary of at·tá), raibh < OIr. ·roib: the b-stem of the substantive verb is from *bʰuH- (cf. OIr. buith < PCelt *butā, kaikki sga buith); the at·tá chain (*steh₂-) applies to the tá-forms only"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "bí",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "bí (b-stem of 'be') mapped to *steh₂- or *wel-",
+   "note": "kaikki ga bí 'to be' < OIr. bí- (consuetudinary of at·tá), raibh < OIr. ·roib: the b-stem of the substantive verb is from *bʰuH- (cf. OIr. buith < PCelt *butā, kaikki sga buith); the at·tá chain (*steh₂-) applies to the tá-forms only"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "bí|beith|bheadh",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "bí|beith|bheadh (b-stem of 'be') mapped to *steh₂- or *wel-",
+   "note": "kaikki ga bí 'to be' < OIr. bí- (consuetudinary of at·tá), raibh < OIr. ·roib: the b-stem of the substantive verb is from *bʰuH- (cf. OIr. buith < PCelt *butā, kaikki sga buith); the at·tá chain (*steh₂-) applies to the tá-forms only"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "bí|beith|bheadh",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "bí|beith|bheadh (b-stem of 'be') mapped to *steh₂- or *wel-",
+   "note": "kaikki ga bí 'to be' < OIr. bí- (consuetudinary of at·tá), raibh < OIr. ·roib: the b-stem of the substantive verb is from *bʰuH- (cf. OIr. buith < PCelt *butā, kaikki sga buith); the at·tá chain (*steh₂-) applies to the tá-forms only"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "beith",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "beith (b-stem of 'be') mapped to *steh₂- or *wel-",
+   "note": "kaikki ga bí 'to be' < OIr. bí- (consuetudinary of at·tá), raibh < OIr. ·roib: the b-stem of the substantive verb is from *bʰuH- (cf. OIr. buith < PCelt *butā, kaikki sga buith); the at·tá chain (*steh₂-) applies to the tá-forms only"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "beith",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "beith (b-stem of 'be') mapped to *steh₂- or *wel-",
+   "note": "kaikki ga bí 'to be' < OIr. bí- (consuetudinary of at·tá), raibh < OIr. ·roib: the b-stem of the substantive verb is from *bʰuH- (cf. OIr. buith < PCelt *butā, kaikki sga buith); the at·tá chain (*steh₂-) applies to the tá-forms only"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "raibh",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "raibh (b-stem of 'be') mapped to *steh₂- or *wel-",
+   "note": "kaikki ga bí 'to be' < OIr. bí- (consuetudinary of at·tá), raibh < OIr. ·roib: the b-stem of the substantive verb is from *bʰuH- (cf. OIr. buith < PCelt *butā, kaikki sga buith); the at·tá chain (*steh₂-) applies to the tá-forms only"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "raibh",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "raibh (b-stem of 'be') mapped to *steh₂- or *wel-",
+   "note": "kaikki ga bí 'to be' < OIr. bí- (consuetudinary of at·tá), raibh < OIr. ·roib: the b-stem of the substantive verb is from *bʰuH- (cf. OIr. buith < PCelt *butā, kaikki sga buith); the at·tá chain (*steh₂-) applies to the tá-forms only"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "bheadh",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "bheadh (b-stem of 'be') mapped to *steh₂- or *wel-",
+   "note": "kaikki ga bí 'to be' < OIr. bí- (consuetudinary of at·tá), raibh < OIr. ·roib: the b-stem of the substantive verb is from *bʰuH- (cf. OIr. buith < PCelt *butā, kaikki sga buith); the at·tá chain (*steh₂-) applies to the tá-forms only"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "bheadh",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "bheadh (b-stem of 'be') mapped to *steh₂- or *wel-",
+   "note": "kaikki ga bí 'to be' < OIr. bí- (consuetudinary of at·tá), raibh < OIr. ·roib: the b-stem of the substantive verb is from *bʰuH- (cf. OIr. buith < PCelt *butā, kaikki sga buith); the at·tá chain (*steh₂-) applies to the tá-forms only"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "éle",
+   "lex_id": [],
+   "erratum": "ele 'other' mapped to mga éle",
+   "note": "the CELT surface ele is eile/aile 'other' (Middle Irish spelling); mga éle (< *eiglā 'invocation', kaikki) is a different word"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "éle",
+   "lex_id": [],
+   "erratum": "ele 'other' mapped to mga éle",
+   "note": "the CELT surface ele is eile/aile 'other' (Middle Irish spelling); mga éle (< *eiglā 'invocation', kaikki) is a different word"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "find",
+   "lex_id": [
+    "pie-root-weyd-see"
+   ],
+   "erratum": "find mapped also to *wendʰ-",
+   "note": "kaikki cel-pro *windos 'white' < *weyd- 'see' (Matasović EDPC s.v. *windo-); the second root id (*wendʰ- 'wind') is a homograph"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "find",
+   "lex_id": [
+    "pie-root-weyd-see"
+   ],
+   "erratum": "find mapped also to *wendʰ-",
+   "note": "kaikki cel-pro *windos 'white' < *weyd- 'see' (Matasović EDPC s.v. *windo-); the second root id (*wendʰ- 'wind') is a homograph"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "dul|dol|dúil",
+   "lex_id": [],
+   "erratum": "dul 'going' mapped to *dol-éh₂ 'snare'",
+   "note": "dul is the suppletive verbal noun of téit 'go' (kaikki ga dol 3 'archaic form of dul'); the mapping comes from the homograph dol 'loop, snare' (*dol-éh₂)"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "dul|dol|dúil",
+   "lex_id": [],
+   "erratum": "dul 'going' mapped to *dol-éh₂ 'snare'",
+   "note": "dul is the suppletive verbal noun of téit 'go' (kaikki ga dol 3 'archaic form of dul'); the mapping comes from the homograph dol 'loop, snare' (*dol-éh₂)"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "dul",
+   "lex_id": [],
+   "erratum": "dul mapped",
+   "note": "verbal noun of téit, suppletive, no etymology in kaikki or EDPC; dol 'snare' is a homograph"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "dul",
+   "lex_id": [],
+   "erratum": "dul mapped",
+   "note": "verbal noun of téit, suppletive, no etymology in kaikki or EDPC; dol 'snare' is a homograph"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "cúlaigh",
+   "lex_id": [],
+   "erratum": "Culainn lemmatized as cúlaigh",
+   "note": "the CELT surfaces (C)hulaind/Culainn are the name Culann (Cú Chulainn); ga cúlaigh 'recede' (cúl + -igh, kaikki) is a homograph"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "cúlaigh",
+   "lex_id": [],
+   "erratum": "Culainn lemmatized as cúlaigh",
+   "note": "the CELT surfaces (C)hulaind/Culainn are the name Culann (Cú Chulainn); ga cúlaigh 'recede' (cúl + -igh, kaikki) is a homograph"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "cúlaigh|cúlán",
+   "lex_id": [],
+   "erratum": "Culainn lemmatized as cúlaigh",
+   "note": "the CELT surfaces (C)hulaind/Culainn are the name Culann (Cú Chulainn); ga cúlaigh 'recede' (cúl + -igh, kaikki) is a homograph"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "cúlaigh|cúlán",
+   "lex_id": [],
+   "erratum": "Culainn lemmatized as cúlaigh",
+   "note": "the CELT surfaces (C)hulaind/Culainn are the name Culann (Cú Chulainn); ga cúlaigh 'recede' (cúl + -igh, kaikki) is a homograph"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "macha",
+   "lex_id": [],
+   "erratum": "Macha mapped to *pedom",
+   "note": "Macha (name, place) lemmatized as ga macha 'milking-yard' < mga machad; no etymology for the name in kaikki or EDPC"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "macha",
+   "lex_id": [],
+   "erratum": "Macha mapped to *pedom",
+   "note": "Macha (name, place) lemmatized as ga macha 'milking-yard' < mga machad; no etymology for the name in kaikki or EDPC"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "muinter",
+   "lex_id": [],
+   "erratum": "muinter mapped to *mn̥yétor 'think'",
+   "note": "kaikki sga muinter: PCelt *moniterā 'or alternatively a loanword from Latin monastērium'; competing etymologies, and the chain went through the homograph verb ·muinethar"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "muinter",
+   "lex_id": [],
+   "erratum": "muinter mapped to *mn̥yétor 'think'",
+   "note": "kaikki sga muinter: PCelt *moniterā 'or alternatively a loanword from Latin monastērium'; competing etymologies, and the chain went through the homograph verb ·muinethar"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "muintir",
+   "lex_id": [],
+   "erratum": "muinter mapped to *mn̥yétor 'think'",
+   "note": "kaikki sga muinter: PCelt *moniterā 'or alternatively a loanword from Latin monastērium'; competing etymologies, and the chain went through the homograph verb ·muinethar"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "muintir",
+   "lex_id": [],
+   "erratum": "muinter mapped to *mn̥yétor 'think'",
+   "note": "kaikki sga muinter: PCelt *moniterā 'or alternatively a loanword from Latin monastērium'; competing etymologies, and the chain went through the homograph verb ·muinethar"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "gall",
+   "lex_id": [],
+   "erratum": "gall mapped by a wrong EDPC join",
+   "note": "gall 'foreigner, Norseman' (from the ethnonym Galli, kaikki sga gall); the Matasović join took *galw-o- 'call' (EDPC file p0160), a different word"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "gall",
+   "lex_id": [],
+   "erratum": "gall mapped by a wrong EDPC join",
+   "note": "gall 'foreigner, Norseman' (from the ethnonym Galli, kaikki sga gall); the Matasović join took *galw-o- 'call' (EDPC file p0160), a different word"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "drong",
+   "lex_id": [],
+   "erratum": "drong mapped to *dʰer-",
+   "note": "kaikki sga drong: only 'From Proto-Celtic *drungos', no PIE etymon; the lexicon reflex match to *dʰer- is unsupported"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "drong",
+   "lex_id": [],
+   "erratum": "drong mapped to *dʰer-",
+   "note": "kaikki sga drong: only 'From Proto-Celtic *drungos', no PIE etymon; the lexicon reflex match to *dʰer- is unsupported"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "clóigh",
+   "lex_id": [],
+   "erratum": "cloinn lemmatized as clóigh",
+   "note": "the CELT surface cloinn is gen./dat. of clann 'offspring' (< Old Welsh plant < Latin planta, kaikki sga cland); ga clóigh 'tame / print' is a homograph"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "clóigh",
+   "lex_id": [],
+   "erratum": "cloinn lemmatized as clóigh",
+   "note": "the CELT surface cloinn is gen./dat. of clann 'offspring' (< Old Welsh plant < Latin planta, kaikki sga cland); ga clóigh 'tame / print' is a homograph"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "goile|giolla",
+   "lex_id": [],
+   "erratum": "giolla mapped through goile 'stomach'",
+   "note": "ga giolla 'servant' < Middle Irish gilla, no etymology (kaikki); goile 'stomach' is a homograph"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "goile|giolla",
+   "lex_id": [],
+   "erratum": "giolla mapped through goile 'stomach'",
+   "note": "ga giolla 'servant' < Middle Irish gilla, no etymology (kaikki); goile 'stomach' is a homograph"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "giolla",
+   "lex_id": [],
+   "erratum": "giolla mapped through goile 'stomach'",
+   "note": "ga giolla 'servant' < Middle Irish gilla, no etymology (kaikki); goile 'stomach' is a homograph"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "giolla",
+   "lex_id": [],
+   "erratum": "giolla mapped through goile 'stomach'",
+   "note": "ga giolla 'servant' < Middle Irish gilla, no etymology (kaikki); goile 'stomach' is a homograph"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "gilla",
+   "lex_id": [],
+   "erratum": "giolla mapped through goile 'stomach'",
+   "note": "ga giolla 'servant' < Middle Irish gilla, no etymology (kaikki); goile 'stomach' is a homograph"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "gilla",
+   "lex_id": [],
+   "erratum": "giolla mapped through goile 'stomach'",
+   "note": "ga giolla 'servant' < Middle Irish gilla, no etymology (kaikki); goile 'stomach' is a homograph"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "ros",
+   "lex_id": [],
+   "erratum": "ros mapped to *pro-",
+   "note": "kaikki sga ros: two homographs (promontory < *ɸrostos; linseed, possibly a non-IE loan), and ros is also the particle ro + infixed pronoun -s; unresolvable without context"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "ros",
+   "lex_id": [],
+   "erratum": "ros mapped to *pro-",
+   "note": "kaikki sga ros: two homographs (promontory < *ɸrostos; linseed, possibly a non-IE loan), and ros is also the particle ro + infixed pronoun -s; unresolvable without context"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "cáith|caid|caoth",
+   "lex_id": [],
+   "erratum": "Donnchaidh lemmatized as cáith",
+   "note": "the surfaces (Donn)chaidh are the name Donnchad; no relation to cáith 'chaff'"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "cáith|caid|caoth",
+   "lex_id": [],
+   "erratum": "Donnchaidh lemmatized as cáith",
+   "note": "the surfaces (Donn)chaidh are the name Donnchad; no relation to cáith 'chaff'"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "ansa|sáigh|ansacht",
+   "lex_id": [],
+   "erratum": "annsa mapped to *sed-",
+   "note": "annsa / ansa 'dear, difficult' and annsa 'in it'; ga sáigh 'thrust' (< sáidid) is a homograph; no common etymon"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "ansa|sáigh|ansacht",
+   "lex_id": [],
+   "erratum": "annsa mapped to *sed-",
+   "note": "annsa / ansa 'dear, difficult' and annsa 'in it'; ga sáigh 'thrust' (< sáidid) is a homograph; no common etymon"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "conn",
+   "lex_id": [],
+   "erratum": "Conn/Connachta mapped to *h₂welh₁-",
+   "note": "kaikki sga Conn: 'Related to Conall, from Proto-Celtic *Kunowalos' gives no etymon for Conn itself; Connachta = Conn + -achta"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "conn",
+   "lex_id": [],
+   "erratum": "Conn/Connachta mapped to *h₂welh₁-",
+   "note": "kaikki sga Conn: 'Related to Conall, from Proto-Celtic *Kunowalos' gives no etymon for Conn itself; Connachta = Conn + -achta"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "connachta",
+   "lex_id": [],
+   "erratum": "Conn/Connachta mapped to *h₂welh₁-",
+   "note": "kaikki sga Conn: 'Related to Conall, from Proto-Celtic *Kunowalos' gives no etymon for Conn itself; Connachta = Conn + -achta"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "connachta",
+   "lex_id": [],
+   "erratum": "Conn/Connachta mapped to *h₂welh₁-",
+   "note": "kaikki sga Conn: 'Related to Conall, from Proto-Celtic *Kunowalos' gives no etymon for Conn itself; Connachta = Conn + -achta"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "conall",
+   "lex_id": [
+    "pie-root-h2welh1-rule"
+   ],
+   "erratum": "conall mapped to both *h₂welh₁- homographs",
+   "note": "names in PCelt *-walos 'ruler, strong' (*Kunowalos, *Katuwalos; kaikki sga Conall, Cathal; EDPC s.v. *walo- 'ruler' file p0420): *h₂welh₁- 'rule', not the homograph 'hair, wool'"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "conall",
+   "lex_id": [
+    "pie-root-h2welh1-rule"
+   ],
+   "erratum": "conall mapped to both *h₂welh₁- homographs",
+   "note": "names in PCelt *-walos 'ruler, strong' (*Kunowalos, *Katuwalos; kaikki sga Conall, Cathal; EDPC s.v. *walo- 'ruler' file p0420): *h₂welh₁- 'rule', not the homograph 'hair, wool'"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "conaill|conall",
+   "lex_id": [
+    "pie-root-h2welh1-rule"
+   ],
+   "erratum": "conaill|conall mapped to both *h₂welh₁- homographs",
+   "note": "names in PCelt *-walos 'ruler, strong' (*Kunowalos, *Katuwalos; kaikki sga Conall, Cathal; EDPC s.v. *walo- 'ruler' file p0420): *h₂welh₁- 'rule', not the homograph 'hair, wool'"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "conaill|conall",
+   "lex_id": [
+    "pie-root-h2welh1-rule"
+   ],
+   "erratum": "conaill|conall mapped to both *h₂welh₁- homographs",
+   "note": "names in PCelt *-walos 'ruler, strong' (*Kunowalos, *Katuwalos; kaikki sga Conall, Cathal; EDPC s.v. *walo- 'ruler' file p0420): *h₂welh₁- 'rule', not the homograph 'hair, wool'"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "cathal",
+   "lex_id": [
+    "pie-root-h2welh1-rule"
+   ],
+   "erratum": "cathal mapped to both *h₂welh₁- homographs",
+   "note": "names in PCelt *-walos 'ruler, strong' (*Kunowalos, *Katuwalos; kaikki sga Conall, Cathal; EDPC s.v. *walo- 'ruler' file p0420): *h₂welh₁- 'rule', not the homograph 'hair, wool'"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "cathal",
+   "lex_id": [
+    "pie-root-h2welh1-rule"
+   ],
+   "erratum": "cathal mapped to both *h₂welh₁- homographs",
+   "note": "names in PCelt *-walos 'ruler, strong' (*Kunowalos, *Katuwalos; kaikki sga Conall, Cathal; EDPC s.v. *walo- 'ruler' file p0420): *h₂welh₁- 'rule', not the homograph 'hair, wool'"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "cenél",
+   "lex_id": [
+    "pie-root-ken-arise"
+   ],
+   "erratum": "cenél mapped to *sken-",
+   "note": "Matasović EDPC s.v. *kenetlo- 'race, nation' (file p0212): PIE *ken- 'begin' (IEW 563f.); the lexicon id *sken- is a different root"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "cenél",
+   "lex_id": [
+    "pie-root-ken-arise"
+   ],
+   "erratum": "cenél mapped to *sken-",
+   "note": "Matasović EDPC s.v. *kenetlo- 'race, nation' (file p0212): PIE *ken- 'begin' (IEW 563f.); the lexicon id *sken- is a different root"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "muin",
+   "lex_id": [],
+   "erratum": "muin mapped to *mon- 'man'",
+   "note": "kaikki sga muin 'upper back' < PCelt *monis < *mon- 'neck' (EDPC s.v. *moni- file p0290); the lexicon has only the homograph *mon- 'man, human being'"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "muin",
+   "lex_id": [],
+   "erratum": "muin mapped to *mon- 'man'",
+   "note": "kaikki sga muin 'upper back' < PCelt *monis < *mon- 'neck' (EDPC s.v. *moni- file p0290); the lexicon has only the homograph *mon- 'man, human being'"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "inne",
+   "lex_id": [],
+   "erratum": "inne mapped to 'yesterday'",
+   "note": "St Gall inne 'essence, sense, meaning' (UD DipSGG lemma; eDIL s.v. inne) was joined to Middle Irish inné 'yesterday' (*dʰǵʰyés) by the accent-free key"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "rind",
+   "lex_id": [],
+   "erratum": "rind mapped by a wrong EDPC join",
+   "note": "the Matasović join took *kenno- (file p0213); rind 'point, star' is EDPC *rendi- (file p0324), which has no PIE etymology"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "rind",
+   "lex_id": [],
+   "erratum": "rind mapped by a wrong EDPC join",
+   "note": "the Matasović join took *kenno- (file p0213); rind 'point, star' is EDPC *rendi- (file p0324), which has no PIE etymology"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "rhodio",
+   "lex_id": [],
+   "erratum": "rhodio mapped",
+   "note": "MW rodi is rhoddi 'give'; cy rhodio 'walk' (rhod + -io, kaikki) is a homograph"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "nosi|nos|dos",
+   "lex_id": [],
+   "erratum": "nosi|nos|dos mapped",
+   "note": "union of nos 'night' with dos (form of mynet); the mapped *pelh₂- belongs to neither"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "rhys",
+   "lex_id": [],
+   "erratum": "rhys mapped",
+   "note": "Rhys (name) mapped to *Hreth₂- through the lexicon; no etymology in kaikki cy Rhys or EDPC"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "dodi",
+   "lex_id": [],
+   "erratum": "dodi mapped",
+   "note": "kaikki cy dodi: dy- + odi 'hurl', the latter 'ultimately from *peth₂-'; the base chain is a guess about odi"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "bôn",
+   "lex_id": [],
+   "erratum": "bôn mapped",
+   "note": "kaikki cy bôn < PCelt *bonus with no PIE etymon; the *bʰuH- link came from a descendants tree"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "bach",
+   "lex_id": [],
+   "erratum": "bach mapped",
+   "note": "kaikki cy bach 'small' < PCelt *biggos (no PIE etymon); bach 'hook' < *bakkos is a homograph; MW bach in the corpus is chiefly 'small'"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "gwe",
+   "lex_id": [],
+   "erratum": "gwe mapped",
+   "note": "cy gwe 'web' < *wegyā; the MW surfaces wed/gwed are gwedd 'aspect' or gwedy 'after'"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "tewi|dewi",
+   "lex_id": [],
+   "erratum": "tewi|dewi mapped",
+   "note": "Dewi (David, a name) lemmatized as a soft mutation of tewi 'be silent'"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "palu|pêl|peli",
+   "lex_id": [],
+   "erratum": "palu|pêl|peli mapped",
+   "note": "Beli (name) lemmatized as palu / pêl"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "cwd",
+   "lex_id": [],
+   "erratum": "cwd mapped",
+   "note": "kaikki cy cwd 'pouch': 'If not borrowed from Latin cutis'; the surface ydyn is a form of bot 'be'"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "cael|cei",
+   "lex_id": [],
+   "erratum": "cael|cei mapped",
+   "note": "Cei/Kei (Cai, a name) lemmatized as cael 'get'"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "man",
+   "lex_id": [],
+   "erratum": "man mapped",
+   "note": "kaikki cy man: three homographs ('place' < *mendu, 'blemish' possibly < Latin menda, 'manna'); the lexicon id *mend- 'foal' is wrong for all"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "mân|man|ban",
+   "lex_id": [],
+   "erratum": "mân|man|ban mapped",
+   "note": "union of man 'place', mân 'small' and ban; the lexicon id *mend- 'foal' fits none"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "rhoi",
+   "lex_id": [],
+   "erratum": "rhoi mapped",
+   "note": "kaikki cy rhoi: 'a conflation of two separate stems' (roi < *rogīti and rhoddi < *ro-dā-); a single id is wrong for half its forms"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "mynet",
+   "lex_id": [],
+   "erratum": "mynet mapped to *pelh₂-",
+   "note": "kaikki wlm mynet 'to go': suppletive; verbal noun < Proto-Brythonic *moned < PCelt *monītor < *menH-; the mapped *pelh₂- is unsupported and *menH- 'go' is not in the lexicon"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "mynd",
+   "lex_id": [],
+   "erratum": "mynd mapped to *pelh₂-",
+   "note": "kaikki wlm mynet 'to go': suppletive; verbal noun < Proto-Brythonic *moned < PCelt *monītor < *menH-; the mapped *pelh₂- is unsupported and *menH- 'go' is not in the lexicon"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "myned",
+   "lex_id": [],
+   "erratum": "myned mapped to *pelh₂-",
+   "note": "kaikki wlm mynet 'to go': suppletive; verbal noun < Proto-Brythonic *moned < PCelt *monītor < *menH-; the mapped *pelh₂- is unsupported and *menH- 'go' is not in the lexicon"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "mynediad",
+   "lex_id": [],
+   "erratum": "mynediad mapped to *pelh₂-",
+   "note": "kaikki wlm mynet 'to go': suppletive; verbal noun < Proto-Brythonic *moned < PCelt *monītor < *menH-; the mapped *pelh₂- is unsupported and *menH- 'go' is not in the lexicon"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "gallu",
+   "lex_id": [],
+   "erratum": "gallu mapped to *gelH- 'naked'",
+   "note": "Matasović EDPC s.v. *gal-n- 'be able' (file p0159): *gelH- 'be able'; the lexicon has only the homograph *gelH- 'naked'"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "gallu|gellir",
+   "lex_id": [],
+   "erratum": "gallu|gellir mapped to *gelH- 'naked'",
+   "note": "Matasović EDPC s.v. *gal-n- 'be able' (file p0159): *gelH- 'be able'; the lexicon has only the homograph *gelH- 'naked'"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "kenedyl",
+   "lex_id": [
+    "pie-root-ken-arise"
+   ],
+   "erratum": "kenedyl mapped to *sken-",
+   "note": "MW kenedyl = OIr. cenél < PCelt *kenetlom (EDPC s.v. *kenetlo- file p0212: *ken- 'begin'); the lexicon id *sken- is a different root"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "cenedl",
+   "lex_id": [
+    "pie-root-ken-arise"
+   ],
+   "erratum": "cenedl mapped to *sken-",
+   "note": "MW kenedyl = OIr. cenél < PCelt *kenetlom (EDPC s.v. *kenetlo- file p0212: *ken- 'begin'); the lexicon id *sken- is a different root"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "attep",
+   "lex_id": [
+    "pie-root-sekw-say"
+   ],
+   "erratum": "attep mapped to three *sekʷ- homographs",
+   "note": "kaikki wlm attep < PCelt *atiskʷom < *ati- + *sekʷeti 'say': *sekʷ- 'say', not the homographs 'follow', 'see'"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "gwyr",
+   "lex_id": [
+    "pie-lex-wiHros"
+   ],
+   "erratum": "gwyr 'men' mapped to *weh₁iros 'crooked'",
+   "note": "MW gwyr in the corpus is the plural of gwr 'man' (kaikki wlm gwyr 1; < *wiros); gŵyr 'crooked' (*weh₁iros) and gwyr 'knows' are homographs"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "kily",
+   "lex_id": [
+    "pie-root-kjey-be_lying_down"
+   ],
+   "erratum": "kily mapped to both *ḱey- homographs",
+   "note": "PCelt *keiliyos 'companion' (kaikki wlm kilyð; cognate OIr. céile) < *ḱey- 'lie (down)', not the homograph *ḱey- 'fall'"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "kilyð",
+   "lex_id": [
+    "pie-root-kjey-be_lying_down"
+   ],
+   "erratum": "kilyð mapped to both *ḱey- homographs",
+   "note": "PCelt *keiliyos 'companion' (kaikki wlm kilyð; cognate OIr. céile) < *ḱey- 'lie (down)', not the homograph *ḱey- 'fall'"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "cilydd",
+   "lex_id": [
+    "pie-root-kjey-be_lying_down"
+   ],
+   "erratum": "cilydd mapped to both *ḱey- homographs",
+   "note": "PCelt *keiliyos 'companion' (kaikki wlm kilyð; cognate OIr. céile) < *ḱey- 'lie (down)', not the homograph *ḱey- 'fall'"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "tabhair",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "tabhair kept at *bʰer-",
+   "note": "kaikki ga tabhair < OIr. ·tabair, prototonic of do·beir (to- + beirid, *bʰer-)"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "tabhair",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "tabhair kept at *bʰer-",
+   "note": "kaikki ga tabhair < OIr. ·tabair, prototonic of do·beir (to- + beirid, *bʰer-)"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "olc",
+   "lex_id": [],
+   "erratum": "olc 'bad' mapped to *wĺ̥kʷos 'wolf'",
+   "note": "kaikki sga olc: 'From Proto-Celtic *ulkos, of uncertain etymology … Alternatively *wĺ̥kʷos (“wolf”), although there are considerable phonological and semantic problems'"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "olc",
+   "lex_id": [],
+   "erratum": "olc 'bad' mapped to *wĺ̥kʷos 'wolf'",
+   "note": "kaikki sga olc: 'From Proto-Celtic *ulkos, of uncertain etymology … Alternatively *wĺ̥kʷos (“wolf”), although there are considerable phonological and semantic problems'"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "iníon",
+   "lex_id": [
+    "pie-root-gjenh1-produce"
+   ],
+   "erratum": "iníon mapped to *h₁én only",
+   "note": "ga iníon < OIr. ingen 'daughter' < PCelt *enigenā < *ǵenh₁- (kaikki sga ingen 1); the chain kept only the prefix *h₁én"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "iníon",
+   "lex_id": [
+    "pie-root-gjenh1-produce"
+   ],
+   "erratum": "iníon mapped to *h₁én only",
+   "note": "ga iníon < OIr. ingen 'daughter' < PCelt *enigenā < *ǵenh₁- (kaikki sga ingen 1); the chain kept only the prefix *h₁én"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "cían|cian",
+   "lex_id": [],
+   "erratum": "cían|cian mapped",
+   "note": "cían 'long, far' / the name Cían: the lexicon match to *kʷyeh₁- 'rest' is unsupported (no PIE etymon in kaikki sga cían)"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "cían|cian",
+   "lex_id": [],
+   "erratum": "cían|cian mapped",
+   "note": "cían 'long, far' / the name Cían: the lexicon match to *kʷyeh₁- 'rest' is unsupported (no PIE etymon in kaikki sga cían)"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "tomhais|tomhas",
+   "lex_id": [],
+   "erratum": "tomhais|tomhas mapped",
+   "note": "the CELT surface tomais is chiefly Tomás (Thomas, gen.); tomhas 'measuring' (do-mess, *med-) is a homograph"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "tomhais|tomhas",
+   "lex_id": [],
+   "erratum": "tomhais|tomhas mapped",
+   "note": "the CELT surface tomais is chiefly Tomás (Thomas, gen.); tomhas 'measuring' (do-mess, *med-) is a homograph"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "guaire",
+   "lex_id": [],
+   "erratum": "guaire mapped",
+   "note": "Guaire (name) mapped by a root template; no etymology in kaikki or EDPC"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "guaire",
+   "lex_id": [],
+   "erratum": "guaire mapped",
+   "note": "Guaire (name) mapped by a root template; no etymology in kaikki or EDPC"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "tosach",
+   "lex_id": [],
+   "erratum": "tosach mapped",
+   "note": "kaikki sga tosach < PCelt *towissākos 'from either *wedʰ- or *weyd-': two competing etyma"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "tosach",
+   "lex_id": [],
+   "erratum": "tosach mapped",
+   "note": "kaikki sga tosach < PCelt *towissākos 'from either *wedʰ- or *weyd-': two competing etyma"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "aghaidh",
+   "lex_id": [],
+   "erratum": "aghaidh mapped",
+   "note": "agaid 'face' (ga aghaidh): no PIE etymology in EDPC; the three *h₁eǵ-/*h₂eǵ- ids come from a descendants tree"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "aghaidh",
+   "lex_id": [],
+   "erratum": "aghaidh mapped",
+   "note": "agaid 'face' (ga aghaidh): no PIE etymology in EDPC; the three *h₁eǵ-/*h₂eǵ- ids come from a descendants tree"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "agaid",
+   "lex_id": [],
+   "erratum": "agaid mapped",
+   "note": "see aghaidh"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "agaid",
+   "lex_id": [],
+   "erratum": "agaid mapped",
+   "note": "see aghaidh"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "naomh",
+   "lex_id": [],
+   "erratum": "naomh mapped",
+   "note": "noeb/naomh 'holy' mapped to *reybʰ- 'sing'; Matasović EDPC s.v. *noybo- 'holy' gives no such link"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "naomh",
+   "lex_id": [],
+   "erratum": "naomh mapped",
+   "note": "noeb/naomh 'holy' mapped to *reybʰ- 'sing'; Matasović EDPC s.v. *noybo- 'holy' gives no such link"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "nóeb",
+   "lex_id": [],
+   "erratum": "nóeb mapped",
+   "note": "see naomh"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "nóeb",
+   "lex_id": [],
+   "erratum": "nóeb mapped",
+   "note": "see naomh"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "légaid|legaid",
+   "lex_id": [],
+   "erratum": "légaid|legaid mapped",
+   "note": "OIr. légaid 'reads' is borrowed from Latin legere (kaikki sga légaid); the descendants link to *leg- is the loan's source"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "légaid|legaid",
+   "lex_id": [],
+   "erratum": "légaid|legaid mapped",
+   "note": "OIr. légaid 'reads' is borrowed from Latin legere (kaikki sga légaid); the descendants link to *leg- is the loan's source"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "légaid",
+   "lex_id": [],
+   "erratum": "légaid mapped",
+   "note": "see légaid|legaid"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "légaid",
+   "lex_id": [],
+   "erratum": "légaid mapped",
+   "note": "see légaid|legaid"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "léigh",
+   "lex_id": [],
+   "erratum": "léigh mapped",
+   "note": "ga léigh 'read' < OIr. légaid < Latin legere"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "léigh",
+   "lex_id": [],
+   "erratum": "léigh mapped",
+   "note": "ga léigh 'read' < OIr. légaid < Latin legere"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "calad",
+   "lex_id": [],
+   "erratum": "calad mapped",
+   "note": "the surface Cailte (name) was matched by skeleton to calad 'hard'"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "calad",
+   "lex_id": [],
+   "erratum": "calad mapped",
+   "note": "the surface Cailte (name) was matched by skeleton to calad 'hard'"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "ám",
+   "lex_id": [],
+   "erratum": "ám mapped",
+   "note": "ám 'time / hand / host': homographs; the three ids (*meh₂- ×2, *smeh₂-) come from a descendants tree"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "ám",
+   "lex_id": [],
+   "erratum": "ám mapped",
+   "note": "ám 'time / hand / host': homographs; the three ids (*meh₂- ×2, *smeh₂-) come from a descendants tree"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "becc",
+   "lex_id": [],
+   "erratum": "becc mapped",
+   "note": "kaikki sga becc < PCelt *bekkos, no PIE etymon; the two *bʰeg- ids are unsupported"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "becc",
+   "lex_id": [],
+   "erratum": "becc mapped",
+   "note": "kaikki sga becc < PCelt *bekkos, no PIE etymon; the two *bʰeg- ids are unsupported"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "úathad",
+   "lex_id": [],
+   "erratum": "úathad mapped",
+   "note": "úathad 'single, few' mapped to *tih₁tós; no such etymology in kaikki or EDPC"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "úathad",
+   "lex_id": [],
+   "erratum": "úathad mapped",
+   "note": "úathad 'single, few' mapped to *tih₁tós; no such etymology in kaikki or EDPC"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "éis",
+   "lex_id": [],
+   "erratum": "éis mapped",
+   "note": "éis in iar n-éis / tar éis 'after' (function); és 'track' (*ɸanssā) is rare in the glosses"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "éis",
+   "lex_id": [],
+   "erratum": "éis mapped",
+   "note": "éis in iar n-éis / tar éis 'after' (function); és 'track' (*ɸanssā) is rare in the glosses"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "ní",
+   "lex_id": [],
+   "erratum": "ní mapped",
+   "note": "tagged NOUN ní 'thing' joined to the negative copula ní (*ne h₁ésti); ní 'thing' < *nīth? (no PIE etymon in kaikki)"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "ní",
+   "lex_id": [],
+   "erratum": "ní mapped",
+   "note": "tagged NOUN ní 'thing' joined to the negative copula ní (*ne h₁ésti); ní 'thing' < *nīth? (no PIE etymon in kaikki)"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "roboí",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "roboí mapped to *steh₂- / *wel-",
+   "note": "b-stem forms of the substantive verb (ro·boí 'was', beidh 'will be') < *bʰuH- (cf. kaikki sga buith < PCelt *butā); the at·tá chain (*steh₂-) applies to tá-forms only"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "roboí",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "roboí mapped to *steh₂- / *wel-",
+   "note": "b-stem forms of the substantive verb (ro·boí 'was', beidh 'will be') < *bʰuH- (cf. kaikki sga buith < PCelt *butā); the at·tá chain (*steh₂-) applies to tá-forms only"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "beidh",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "beidh mapped to *steh₂- / *wel-",
+   "note": "b-stem forms of the substantive verb (ro·boí 'was', beidh 'will be') < *bʰuH- (cf. kaikki sga buith < PCelt *butā); the at·tá chain (*steh₂-) applies to tá-forms only"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "beidh",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "beidh mapped to *steh₂- / *wel-",
+   "note": "b-stem forms of the substantive verb (ro·boí 'was', beidh 'will be') < *bʰuH- (cf. kaikki sga buith < PCelt *butā); the at·tá chain (*steh₂-) applies to tá-forms only"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "cael|caffo",
+   "lex_id": [],
+   "erratum": "cael|caffo mapped",
+   "note": "MW auo / avo is a vo 'which may be' (bot), not caffo"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "bâr|bar",
+   "lex_id": [],
+   "erratum": "bâr|bar mapped",
+   "note": "MW mar is 'mor' 'so, as' (function); bâr 'anger' / bar 'top' homographs"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "llat",
+   "lex_id": [],
+   "erratum": "llat mapped",
+   "note": "MW lat is chiefly ladd 'kill' / llad; llat 'liquor' is rare"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "bodd|modd",
+   "lex_id": [],
+   "erratum": "bodd|modd mapped",
+   "note": "modd 'manner' is borrowed from Latin modus (kaikki cy modd); bodd 'will' is a homograph"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "modd",
+   "lex_id": [],
+   "erratum": "modd mapped",
+   "note": "borrowed from Latin modus (kaikki cy modd)"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "bun",
+   "lex_id": [],
+   "erratum": "bun mapped",
+   "note": "bun 'maiden' mapped to *bʰuH- through a descendants tree; no PIE etymon in kaikki"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "mynych",
+   "lex_id": [],
+   "erratum": "mynych mapped",
+   "note": "mynych 'frequent' mapped to *méǵh₂s; no such etymology in kaikki or EDPC"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "galw",
+   "lex_id": [],
+   "erratum": "galw mapped",
+   "note": "Matasović EDPC s.v. *galw-o- 'call' (file p0160): *gel- 'call'; FuzzyPie matched the homograph *gel- 'be cold'"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "gwaed",
+   "lex_id": [],
+   "erratum": "gwaed mapped",
+   "note": "gwaed 'blood' mapped to a pseudo id *wai; no PIE etymon in kaikki wlm/cy gwaed"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "powys",
+   "lex_id": [],
+   "erratum": "powys mapped",
+   "note": "Powys < Latin pagenses; the lexicon match to *kʷyeh₁- is unsupported"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "llywelyn",
+   "lex_id": [],
+   "erratum": "llywelyn mapped",
+   "note": "Llywelyn (name) mapped to *h₂lewgʰ-; no etymology in kaikki cy Llywelyn"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "bychan",
+   "lex_id": [],
+   "erratum": "bychan mapped",
+   "note": "bychan 'small' < bych < PCelt *biggos (kaikki cy bach 1), no PIE etymon; the *bʰeg- ids are unsupported"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "glas|las|glàs",
+   "lex_id": [],
+   "erratum": "glas|las|glàs mapped",
+   "note": "MW las is chiefly the preterite of lladd 'kill'; glas 'blue' is a homograph"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "rhod",
+   "lex_id": [],
+   "erratum": "rhod mapped",
+   "note": "MW rod is chiefly rhodd 'gift' / rhoddi 'give'; rhod 'wheel' is a homograph"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "bás",
+   "lex_id": [
+    "pie-lex-gwh2yeti"
+   ],
+   "erratum": "bás mapped to *(s)gʷes-",
+   "note": "Matasović EDPC s.v. *bāsto- 'death' (file p0064): *gʷeh₂- 'go' (bás is the verbal noun of baïd 'dies' < *bayeti, kaikki sga baid); kaikki sga bás offers *gʷeh₂- 'or' *(s)gʷes-, and the chain took the second"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "bás",
+   "lex_id": [
+    "pie-lex-gwh2yeti"
+   ],
+   "erratum": "bás mapped to *(s)gʷes-",
+   "note": "Matasović EDPC s.v. *bāsto- 'death' (file p0064): *gʷeh₂- 'go' (bás is the verbal noun of baïd 'dies' < *bayeti, kaikki sga baid); kaikki sga bás offers *gʷeh₂- 'or' *(s)gʷes-, and the chain took the second"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "fogaib",
+   "lex_id": [
+    "pie-lex-ghh1bhyeti"
+   ],
+   "erratum": "fo·gaib mapped to the perfect's etymon",
+   "note": "fo·gaib 'finds' = fo- + gaibid (*gabyeti, *gʰeh₁bʰ-; kaikki sga gaibid); the mapped *wewroh₁e is the etymon of the suppletive perfect fo·fúair only"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "fogaib",
+   "lex_id": [
+    "pie-lex-ghh1bhyeti"
+   ],
+   "erratum": "fo·gaib mapped to the perfect's etymon",
+   "note": "fo·gaib 'finds' = fo- + gaibid (*gabyeti, *gʰeh₁bʰ-; kaikki sga gaibid); the mapped *wewroh₁e is the etymon of the suppletive perfect fo·fúair only"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "uair",
+   "lex_id": [],
+   "erratum": "uair mapped to *h₃ewǵ- 'cold' (round-3 sample)",
+   "note": "kaikki sga úar n. 'hour, time': 'Borrowed from Latin hōra'; unaccented uair in the editions is this word ('hour; when, because'), not úar 'cold'",
+   "after_measurement": true
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "uair",
+   "lex_id": [],
+   "erratum": "uair mapped to *h₃ewǵ- 'cold' (round-3 sample)",
+   "note": "kaikki sga úar n. 'hour, time': 'Borrowed from Latin hōra'; unaccented uair in the editions is this word ('hour; when, because'), not úar 'cold'",
+   "after_measurement": true
+  },
+  {
+   "corpus": "celt",
+   "lemma": "gnúis",
+   "lex_id": [],
+   "erratum": "gnúis mapped to *ǵénus (round-0 sample)",
+   "note": "kaikki sga gnúis: '< PCelt *gnūstis … further origins unclear … MacBain connects it with *ǵneh₃-'; the *ǵénus link is unsupported",
+   "after_measurement": true
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "gnúis",
+   "lex_id": [],
+   "erratum": "gnúis mapped to *ǵénus (round-0 sample)",
+   "note": "kaikki sga gnúis: '< PCelt *gnūstis … further origins unclear … MacBain connects it with *ǵneh₃-'; the *ǵénus link is unsupported",
+   "after_measurement": true
+  },
+  {
+   "corpus": "celt",
+   "lemma": "cían",
+   "lex_id": [],
+   "erratum": "cían mapped to *kʷyeh₁- (round-2/3 samples)",
+   "note": "kaikki sga cían 'far, long-lasting' < PCelt *keinos, no PIE etymon; the descendants-tree link to *kʷyeh₁- 'rest' is unsupported",
+   "after_measurement": true
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "cían",
+   "lex_id": [],
+   "erratum": "cían mapped to *kʷyeh₁- (round-2/3 samples)",
+   "note": "kaikki sga cían 'far, long-lasting' < PCelt *keinos, no PIE etymon; the descendants-tree link to *kʷyeh₁- 'rest' is unsupported",
+   "after_measurement": true
+  }
+ ],
+ "form": [
+  {
+   "lang": "sga",
+   "form": "fir",
+   "lemma": "fer",
+   "erratum": "fir lemmatized wrongly",
+   "note": "fir is gen. sg. / nom. pl. of fer 'man' (kaikki sga fer inflection table); fír 'true' carries the length mark in the editions"
+  },
+  {
+   "lang": "sga",
+   "form": "ele",
+   "lemma": "aile",
+   "erratum": "ele lemmatized wrongly",
+   "note": "ele is the Middle / Early Modern Irish spelling of aile 'other' (kaikki ga eile < OIr. aile)"
+  },
+  {
+   "lang": "sga",
+   "form": "oile",
+   "lemma": "aile",
+   "erratum": "oile lemmatized wrongly",
+   "note": "oile is the Middle / Early Modern Irish spelling of aile 'other' (kaikki ga eile < OIr. aile)"
+  },
+  {
+   "lang": "sga",
+   "form": "eile",
+   "lemma": "aile",
+   "erratum": "eile lemmatized wrongly",
+   "note": "eile is the Middle / Early Modern Irish spelling of aile 'other' (kaikki ga eile < OIr. aile)"
+  },
+  {
+   "lang": "sga",
+   "form": "aili",
+   "lemma": "aile",
+   "erratum": "aili lemmatized wrongly",
+   "note": "aili is the Middle / Early Modern Irish spelling of aile 'other' (kaikki ga eile < OIr. aile)"
+  },
+  {
+   "lang": "sga",
+   "form": "cloinn",
+   "lemma": "clann",
+   "erratum": "cloinn lemmatized wrongly",
+   "note": "cloinn is a case form of clann 'offspring' (kaikki sga cland, < Latin planta via Old Welsh plant)"
+  },
+  {
+   "lang": "sga",
+   "form": "cloinne",
+   "lemma": "clann",
+   "erratum": "cloinne lemmatized wrongly",
+   "note": "cloinne is a case form of clann 'offspring' (kaikki sga cland, < Latin planta via Old Welsh plant)"
+  },
+  {
+   "lang": "sga",
+   "form": "clainne",
+   "lemma": "clann",
+   "erratum": "clainne lemmatized wrongly",
+   "note": "clainne is a case form of clann 'offspring' (kaikki sga cland, < Latin planta via Old Welsh plant)"
+  },
+  {
+   "lang": "sga",
+   "form": "clainn",
+   "lemma": "clann",
+   "erratum": "clainn lemmatized wrongly",
+   "note": "clainn is a case form of clann 'offspring' (kaikki sga cland, < Latin planta via Old Welsh plant)"
+  },
+  {
+   "lang": "sga",
+   "form": "chloinn",
+   "lemma": "clann",
+   "erratum": "chloinn lemmatized wrongly",
+   "note": "chloinn is a case form of clann 'offspring' (kaikki sga cland, < Latin planta via Old Welsh plant)"
+  },
+  {
+   "lang": "sga",
+   "form": "chloinne",
+   "lemma": "clann",
+   "erratum": "chloinne lemmatized wrongly",
+   "note": "chloinne is a case form of clann 'offspring' (kaikki sga cland, < Latin planta via Old Welsh plant)"
+  },
+  {
+   "lang": "sga",
+   "form": "muire",
+   "lemma": "?muire",
+   "erratum": "muire lemmatized wrongly",
+   "note": "Muire is the Virgin Mary (Latin Maria), not muir 'sea'"
+  },
+  {
+   "lang": "sga",
+   "form": "mhuire",
+   "lemma": "?muire",
+   "erratum": "mhuire lemmatized wrongly",
+   "note": "Muire is the Virgin Mary (Latin Maria), not muir 'sea'"
+  },
+  {
+   "lang": "sga",
+   "form": "cailte",
+   "lemma": "?cailte",
+   "erratum": "Cailte lemmatized as calad",
+   "note": "Caílte (name, Fenian cycle), not calad 'hard'"
+  },
+  {
+   "lang": "sga",
+   "form": "duine",
+   "lemma": "duine",
+   "erratum": "duine unlemmatized or ambiguous",
+   "note": "duine 'person' (kaikki sga duine); not a form of dún"
+  },
+  {
+   "lang": "sga",
+   "form": "ben",
+   "lemma": "ben",
+   "erratum": "ben unlemmatized or ambiguous",
+   "note": "ben 'woman' (kaikki sga ben); the 3 sg. of benaid 'strikes' is rare in the prose corpora"
+  },
+  {
+   "lang": "sga",
+   "form": "bás",
+   "lemma": "bás",
+   "erratum": "bás unlemmatized or ambiguous",
+   "note": "bás 'death' (kaikki sga bás); bad/bas copula forms are a different word"
+  },
+  {
+   "lang": "sga",
+   "form": "bas",
+   "lemma": "bás",
+   "erratum": "bas unlemmatized or ambiguous",
+   "note": "bás 'death' (kaikki sga bás); bad/bas copula forms are a different word"
+  },
+  {
+   "lang": "sga",
+   "form": "bhás",
+   "lemma": "bás",
+   "erratum": "bhás unlemmatized or ambiguous",
+   "note": "bás 'death' (kaikki sga bás); bad/bas copula forms are a different word"
+  },
+  {
+   "lang": "sga",
+   "form": "mbás",
+   "lemma": "bás",
+   "erratum": "mbás unlemmatized or ambiguous",
+   "note": "bás 'death' (kaikki sga bás); bad/bas copula forms are a different word"
+  },
+  {
+   "lang": "sga",
+   "form": "écc",
+   "lemma": "éc",
+   "erratum": "écc unlemmatized or ambiguous",
+   "note": "éc 'death' in Middle / Early Modern spelling (do écc 'died'; kaikki sga éc, ga éag)"
+  },
+  {
+   "lang": "sga",
+   "form": "ecc",
+   "lemma": "éc",
+   "erratum": "ecc unlemmatized or ambiguous",
+   "note": "éc 'death' in Middle / Early Modern spelling (do écc 'died'; kaikki sga éc, ga éag)"
+  },
+  {
+   "lang": "sga",
+   "form": "ég",
+   "lemma": "éc",
+   "erratum": "ég unlemmatized or ambiguous",
+   "note": "éc 'death' in Middle / Early Modern spelling (do écc 'died'; kaikki sga éc, ga éag)"
+  },
+  {
+   "lang": "sga",
+   "form": "eg",
+   "lemma": "éc",
+   "erratum": "eg unlemmatized or ambiguous",
+   "note": "éc 'death' in Middle / Early Modern spelling (do écc 'died'; kaikki sga éc, ga éag)"
+  },
+  {
+   "lang": "sga",
+   "form": "éag",
+   "lemma": "éc",
+   "erratum": "éag unlemmatized or ambiguous",
+   "note": "éc 'death' in Middle / Early Modern spelling (do écc 'died'; kaikki sga éc, ga éag)"
+  },
+  {
+   "lang": "sga",
+   "form": "éacc",
+   "lemma": "éc",
+   "erratum": "éacc unlemmatized or ambiguous",
+   "note": "éc 'death' in Middle / Early Modern spelling (do écc 'died'; kaikki sga éc, ga éag)"
+  },
+  {
+   "lang": "sga",
+   "form": "éc",
+   "lemma": "éc",
+   "erratum": "éc unlemmatized or ambiguous",
+   "note": "éc 'death' in Middle / Early Modern spelling (do écc 'died'; kaikki sga éc, ga éag)"
+  },
+  {
+   "lang": "sga",
+   "form": "marbadh",
+   "lemma": "marbaid",
+   "erratum": "marbadh unlemmatized or ambiguous",
+   "note": "verbal noun marbad 'killing' of marbaid (kaikki sga marbaid; ga marbhadh)"
+  },
+  {
+   "lang": "sga",
+   "form": "mharbadh",
+   "lemma": "marbaid",
+   "erratum": "mharbadh unlemmatized or ambiguous",
+   "note": "verbal noun marbad 'killing' of marbaid (kaikki sga marbaid; ga marbhadh)"
+  },
+  {
+   "lang": "sga",
+   "form": "marbhadh",
+   "lemma": "marbaid",
+   "erratum": "marbhadh unlemmatized or ambiguous",
+   "note": "verbal noun marbad 'killing' of marbaid (kaikki sga marbaid; ga marbhadh)"
+  },
+  {
+   "lang": "sga",
+   "form": "mharbhadh",
+   "lemma": "marbaid",
+   "erratum": "mharbhadh unlemmatized or ambiguous",
+   "note": "verbal noun marbad 'killing' of marbaid (kaikki sga marbaid; ga marbhadh)"
+  },
+  {
+   "lang": "sga",
+   "form": "marbad",
+   "lemma": "marbaid",
+   "erratum": "marbad unlemmatized or ambiguous",
+   "note": "verbal noun marbad 'killing' of marbaid (kaikki sga marbaid; ga marbhadh)"
+  },
+  {
+   "lang": "sga",
+   "form": "mharbad",
+   "lemma": "marbaid",
+   "erratum": "mharbad unlemmatized or ambiguous",
+   "note": "verbal noun marbad 'killing' of marbaid (kaikki sga marbaid; ga marbhadh)"
+  },
+  {
+   "lang": "sga",
+   "form": "atbert",
+   "lemma": "asbeir",
+   "erratum": "atbert unlemmatized or ambiguous",
+   "note": "preterite of as·beir 'says' with Middle Irish at- for as- (kaikki sga as·beir)"
+  },
+  {
+   "lang": "sga",
+   "form": "adbert",
+   "lemma": "asbeir",
+   "erratum": "adbert unlemmatized or ambiguous",
+   "note": "preterite of as·beir 'says' with Middle Irish at- for as- (kaikki sga as·beir)"
+  },
+  {
+   "lang": "sga",
+   "form": "atbertsom",
+   "lemma": "asbeir",
+   "erratum": "atbertsom unlemmatized or ambiguous",
+   "note": "preterite of as·beir 'says' with Middle Irish at- for as- (kaikki sga as·beir)"
+  },
+  {
+   "lang": "sga",
+   "form": "asbert",
+   "lemma": "asbeir",
+   "erratum": "asbert unlemmatized or ambiguous",
+   "note": "preterite of as·beir 'says' with Middle Irish at- for as- (kaikki sga as·beir)"
+  },
+  {
+   "lang": "sga",
+   "form": "tainic",
+   "lemma": "doicc",
+   "erratum": "tainic unlemmatized or ambiguous",
+   "note": "preterite of do·icc 'comes' (·tánaic, kaikki sga do·icc; *h₂neḱ-)"
+  },
+  {
+   "lang": "sga",
+   "form": "táinic",
+   "lemma": "doicc",
+   "erratum": "táinic unlemmatized or ambiguous",
+   "note": "preterite of do·icc 'comes' (·tánaic, kaikki sga do·icc; *h₂neḱ-)"
+  },
+  {
+   "lang": "sga",
+   "form": "tánaic",
+   "lemma": "doicc",
+   "erratum": "tánaic unlemmatized or ambiguous",
+   "note": "preterite of do·icc 'comes' (·tánaic, kaikki sga do·icc; *h₂neḱ-)"
+  },
+  {
+   "lang": "sga",
+   "form": "tanic",
+   "lemma": "doicc",
+   "erratum": "tanic unlemmatized or ambiguous",
+   "note": "preterite of do·icc 'comes' (·tánaic, kaikki sga do·icc; *h₂neḱ-)"
+  },
+  {
+   "lang": "sga",
+   "form": "thainic",
+   "lemma": "doicc",
+   "erratum": "thainic unlemmatized or ambiguous",
+   "note": "preterite of do·icc 'comes' (·tánaic, kaikki sga do·icc; *h₂neḱ-)"
+  },
+  {
+   "lang": "sga",
+   "form": "tháinic",
+   "lemma": "doicc",
+   "erratum": "tháinic unlemmatized or ambiguous",
+   "note": "preterite of do·icc 'comes' (·tánaic, kaikki sga do·icc; *h₂neḱ-)"
+  },
+  {
+   "lang": "sga",
+   "form": "táinig",
+   "lemma": "doicc",
+   "erratum": "táinig unlemmatized or ambiguous",
+   "note": "preterite of do·icc 'comes' (·tánaic, kaikki sga do·icc; *h₂neḱ-)"
+  },
+  {
+   "lang": "sga",
+   "form": "tainig",
+   "lemma": "doicc",
+   "erratum": "tainig unlemmatized or ambiguous",
+   "note": "preterite of do·icc 'comes' (·tánaic, kaikki sga do·icc; *h₂neḱ-)"
+  },
+  {
+   "lang": "sga",
+   "form": "tháinig",
+   "lemma": "doicc",
+   "erratum": "tháinig unlemmatized or ambiguous",
+   "note": "preterite of do·icc 'comes' (·tánaic, kaikki sga do·icc; *h₂neḱ-)"
+  },
+  {
+   "lang": "sga",
+   "form": "tanaic",
+   "lemma": "doicc",
+   "erratum": "tanaic unlemmatized or ambiguous",
+   "note": "preterite of do·icc 'comes' (·tánaic, kaikki sga do·icc; *h₂neḱ-)"
+  },
+  {
+   "lang": "sga",
+   "form": "tic",
+   "lemma": "doicc",
+   "erratum": "tic unlemmatized or ambiguous",
+   "note": "prototonic present ·tic of do·icc 'comes' (kaikki sga do·icc)"
+  },
+  {
+   "lang": "sga",
+   "form": "tig",
+   "lemma": "doicc",
+   "erratum": "tig unlemmatized or ambiguous",
+   "note": "prototonic present ·tic of do·icc 'comes' (kaikki sga do·icc)"
+  }
+ ]
+}

@@ -1,0 +1,1985 @@
+{
+ "note": "Mapping corrections for the Stage C Germanic tables (menota, icepahc, rea-goh, rea-osx), Phase 8c. 'lemma' rows: as in the other override files (applied by formula_search_multi.apply_* and, inside pie/germanic_new_mapping.py, to each '|' alternative of a lemma string). 'proto' rows: corrections of a Proto-Germanic / Proto-West-Germanic term, applied by germanic_new_mapping.BaseResolver while the tables are built (every daughter word whose chain passes the term). No 'form' rows (these corpora are lemmatized). Each row cites its dictionary; see docs/research/mapping-precision-germanic-new.md.",
+ "proto": [
+  {
+   "code": "gem-pro",
+   "term": "*hugiz",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *hugi- (scan p0292): 'No certain etymology' (*kwk-i-? IE?); *kewk- 'cry out' unsupported"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*hugjaną",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *hugi- (scan p0292): derived verb; no certain etymology"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*managaz",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *managa- (scan p0392): < NWIE *monogh-o-, not *meǵh2- 'great'; no lexicon entry"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*managī",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *managa- (scan p0392): *monogh-, not *meǵh2-; no lexicon entry"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*mawī",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *mawi- (scan p0399) and *magu- (scan p0387): obscure origin; *megh- 'be able' unsupported"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*þwahaną",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *þwahan- (scan p0595): *tuok-e- (GM); the lexicon's *twek- 'physical appearance' is a different root"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*handuz",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *handu- (scan p0247): u-stem to *hinþan- 'reach for' (*ḱont-u-, DRV); the pseudo id *ḱomt is wrong and the lexicon has no *ḱent- 'reach'"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*ginnaną",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *ginnan- (scan p0218): 'A strong verb with no certain etymology'; *ken- only a possibility"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*bringaną",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *brengan-: no IE etymology; the chain to *ḱóm 'with' (via a prefix analysis) is unsupported (cf. germanic.json, Go. briggan)"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*haliþaz",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *haleþ- (scan p0244): < *kHl-et- (NIE?), not *ḱel-"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*bagmaz",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *bagma- (scan p0085): < *bhh2gh-mo- (IE); the derivation from *bʰuH- 'grow' is rejected; no lexicon entry"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*breustą",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *breusta- (scan p0114): < *bhreus-sth2-o- 'swell' (Ru. brjuxo 'belly'), not *bhrews- 'break'; no lexicon entry"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*diurijaz",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *deurja- (scan p0134): 'No accepted etymology'; *dʰegʷʰ- 'burn' unsupported"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*þeubaz",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *þeuba- (scan p0579): 'Etymology unclear' (*teup- 'cower'?); not *(s)tewp- 'push'"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*aiþaz",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *aiþa- (scan p0053): Germanic-Celtic isogloss, unlikely to go back to PIE"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*wintruz",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *wintru- (scan p0628): 'A word with no certain etymology' (GM); the derivation from *wed- 'wet' is unconvincing"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*swerdą",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *swerda- (scan p0539): 'No certain etymology'; the two *swer- roots are guesses"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*knuttô",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *knuttan- (scan p0338): no PIE etymology given; 'knee' (*ǵónu) unsupported"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*rīkiją",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *rīk- (scan p0452): a PGm. loanword from Celtic *rīg- (< PIE *h3reǵ-); not inherited"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*rīkijaz",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *rīk- (scan p0452): ON ríkr, OE rīce etc. belong to the Celtic loanword *rīk-; not inherited"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*lēkinōną",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *lēkinōn- and *lēkja- (scan p0371): 'usually assumed to have been borrowed from Celtic *legi̯o-'"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*lēkijaz",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *lēkja- (scan p0371): loanword from Celtic (OIr. liaig)"
+  },
+  {
+   "code": "gmw-pro",
+   "term": "skrīban",
+   "lex_id": [],
+   "note": "OHG scrīban, OS skrīban < Lat. scrībere (loan; Kluge-Seebold s.v. schreiben); no inherited etymon"
+  },
+  {
+   "code": "gmw-pro",
+   "term": "*skrīban",
+   "lex_id": [],
+   "note": "OHG scrīban, OS skrīban < Lat. scrībere (loan); no inherited etymon"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*ganganą",
+   "lex_id": [
+    "pie-lex-gjhongh"
+   ],
+   "note": "Kroonen 2013 s.v. *gangan- (scan p0206): < *ǵhengh-; the suppletive *h1ey- preterite (*h1eh1oye) is Gothic iddja only"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*gāną",
+   "lex_id": [
+    "pie-lex-gjhh1yeti"
+   ],
+   "note": "Kroonen 2013 s.v. *gēn- (scan p0214) 'to go' < *ǵheh1- (IE); *h1ey- id dropped"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*brinnaną",
+   "lex_id": [
+    "pie-lex-bhrenw"
+   ],
+   "note": "Kroonen 2013 s.v. *brinnan- (scan p0115-6): n-present to *bhrewh1- 'boil'; *gʷʰr̥néwti dropped"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*neutaną",
+   "lex_id": [
+    "pie-root-newd-use"
+   ],
+   "note": "Kroonen 2013 s.v. *neutan- (scan p0429) 'to use, enjoy' < *newd- 'use'; homonym 'push' dropped"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*nautą",
+   "lex_id": [
+    "pie-root-newd-use"
+   ],
+   "note": "Kroonen 2013 s.v. *neutan- (scan p0429): *nauta- 'cattle; companion' to *newd- 'use'; 'push' dropped"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*wlītaną",
+   "lex_id": [
+    "pie-lex-wleydeti"
+   ],
+   "note": "Kroonen 2013 s.v. *wlītan- (scan p0631) 'to look': not *weyd- 'see'; *wéydeti dropped"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*gladaz",
+   "lex_id": [
+    "pie-lex-gjhloh1eti",
+    "pie-lex-gjhegjhloh1e"
+   ],
+   "note": "Kroonen 2013 s.v. *glada- (scan p0219): *ǵhlh1-tó- to *ǵhlóh1-e- 'glow'; *ǵhlh2dhós dropped"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*fawaz",
+   "lex_id": [
+    "pie-lex-ph2wos"
+   ],
+   "note": "Kroonen 2013 s.v. *fawa- (scan p0172) 'few' < *ph2u-o-; the *per- id (from fár 'harm') dropped"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*weraldiz",
+   "lex_id": [
+    "pie-root-h2el-grow",
+    "pie-lex-wiHros"
+   ],
+   "note": "Kroonen 2013 s.v. *wera- 'man' and *alda- 'age' (< *h2el- 'grow'): *wer-aldi- 'age of men'; the 'all' and 'beyond' homonyms dropped"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*Harjawaldaz",
+   "lex_id": [
+    "pie-lex-koryos",
+    "pie-root-h2welh1-rule"
+   ],
+   "note": "Kroonen 2013 s.v. *harja- 'army' (< *kor-io-) and *waldan- (scan p0613) 'rule' (< *h2ulh1-t-); the *sker- homonyms dropped"
+  },
+  {
+   "code": "gem-pro",
+   "term": "waldą",
+   "lex_id": [
+    "pie-root-h2welh1-rule"
+   ],
+   "note": "Kroonen 2013 s.v. *waldan- (scan p0613) < *h2ulh1-t- 'rule'; homonym 'hair, wool' dropped"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*haitaną",
+   "lex_id": [
+    "pie-root-kjeyd-call"
+   ],
+   "note": "*haitan- 'call' < *ḱeyd- (LIV² *ḱei̯d-); the *kéHidos id (heitr 'hot') dropped"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*raidijaną",
+   "lex_id": [
+    "pie-lex-h3reyHdheti-2"
+   ],
+   "note": "Kroonen 2013 s.v. *rīdan- (scan p0447): causative *raidjan- 'equip, carry' < *h3reiH-dh-; the 'angry' homonym dropped"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*kannijaną",
+   "lex_id": [
+    "pie-lex-gjnneh3ti"
+   ],
+   "note": "Kroonen 2013 s.v. *kunnan- / *kannjan- 'make known' < *ǵneh3-; the *ǵenh1- 'beget' id dropped"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*wēraz",
+   "lex_id": [
+    "pie-lex-weh1ros"
+   ],
+   "note": "Kroonen 2013 s.v. *wēra- 'true' < *ueh1-ro- (Lat. vērus); *wiHrós 'man' is a key collision"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*siuniz",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471): *sewni- 'sight' to *sekʷ- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*auþijaz",
+   "lex_id": [
+    "pie-root-Hew-weave"
+   ],
+   "note": "Kroonen 2013 s.v. *auda- (scan p0078): *Heu-dhh1-o-, a dhh1-extension of *Heu- 'weave'; *h2ew 'away' wrong"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*audaz",
+   "lex_id": [
+    "pie-root-Hew-weave"
+   ],
+   "note": "Kroonen 2013 s.v. *auda- (scan p0078): *Heu-dhh1-o-, to *Heu- 'weave'"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*maþlą",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): *mad-tlo-, an instrumental noun to *mōtan- 'meet'"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*maþlijaną",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): verb to *maþla- 'meeting, speech' < *mad-tlo- (*mōtan-)"
+  },
+  {
+   "code": "gem-pro",
+   "term": "*matiz",
+   "lex_id": [
+    "pie-root-med-become_full"
+   ],
+   "note": "Kroonen 2013 s.v. *mati- (scan p0398): < *mod-i-, PIE *med- 'satiate'; the link with *meh2d- 'be wet' is 'erroneous'"
+  }
+ ],
+ "lemma": [
+  {
+   "corpus": "menota",
+   "lemma": "vera",
+   "lex_id": [
+    "pie-lex-h1esti",
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h1esti, pie-lex-h2weseti",
+   "note": "Kroonen 2013 s.v. *wesan- 1 (scan p0622): < *h2wes-e- 'stay', suppletive with *h1es- (forms in *es-/*s-); old id pie-lex-sh1es (*sh1-es- 'seed') is blocked as a resolver collision"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vesa",
+   "lex_id": [
+    "pie-lex-h1esti",
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h1esti, pie-lex-h2weseti",
+   "note": "Kroonen 2013 s.v. *wesan- 1 (scan p0622): < *h2wes-e- 'stay', suppletive with *h1es- (forms in *es-/*s-); old id pie-lex-sh1es (*sh1-es- 'seed') is blocked as a resolver collision"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "vera",
+   "lex_id": [
+    "pie-lex-h1esti",
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h1esti, pie-lex-h2weseti",
+   "note": "Kroonen 2013 s.v. *wesan- 1 (scan p0622): < *h2wes-e- 'stay', suppletive with *h1es- (forms in *es-/*s-); old id pie-lex-sh1es (*sh1-es- 'seed') is blocked as a resolver collision"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "vesa",
+   "lex_id": [
+    "pie-lex-h1esti",
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h1esti, pie-lex-h2weseti",
+   "note": "Kroonen 2013 s.v. *wesan- 1 (scan p0622): < *h2wes-e- 'stay', suppletive with *h1es- (forms in *es-/*s-); old id pie-lex-sh1es (*sh1-es- 'seed') is blocked as a resolver collision"
+  },
+  {
+   "corpus": "rea-goh",
+   "lemma": "wesan",
+   "lex_id": [
+    "pie-lex-h1esti",
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h1esti, pie-lex-h2weseti",
+   "note": "Kroonen 2013 s.v. *wesan- 1 (scan p0622): < *h2wes-e- 'stay', suppletive with *h1es- (forms in *es-/*s-); old id pie-lex-sh1es (*sh1-es- 'seed') is blocked as a resolver collision; OHG sīn (ReA lemma 'sin', posLemma VA) is the *h1es- infinitive of the same verb"
+  },
+  {
+   "corpus": "rea-goh",
+   "lemma": "sin",
+   "lex_id": [
+    "pie-lex-h1esti",
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h1esti, pie-lex-h2weseti",
+   "note": "Kroonen 2013 s.v. *wesan- 1 (scan p0622): < *h2wes-e- 'stay', suppletive with *h1es- (forms in *es-/*s-); old id pie-lex-sh1es (*sh1-es- 'seed') is blocked as a resolver collision; OHG sīn (ReA lemma 'sin', posLemma VA) is the *h1es- infinitive of the same verb"
+  },
+  {
+   "corpus": "rea-osx",
+   "lemma": "wesan",
+   "lex_id": [
+    "pie-lex-h1esti",
+    "pie-lex-h2weseti"
+   ],
+   "erratum": "remapped to pie-lex-h1esti, pie-lex-h2weseti",
+   "note": "Kroonen 2013 s.v. *wesan- 1 (scan p0622): < *h2wes-e- 'stay', suppletive with *h1es- (forms in *es-/*s-); old id pie-lex-sh1es (*sh1-es- 'seed') is blocked as a resolver collision"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "synd",
+   "lex_id": [
+    "pie-root-h1es-be"
+   ],
+   "erratum": "remapped to pie-root-h1es-be",
+   "note": "kaikki ON synd < PGmc *sundī < *h1es-; Kroonen 2013 s.v. *sunjō (scan p0532): *h1s-n̥t- 'being (truly)'; pie-lex-sh1es (*seh1- 'sow') blocked"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "synd",
+   "lex_id": [
+    "pie-root-h1es-be"
+   ],
+   "erratum": "remapped to pie-root-h1es-be",
+   "note": "kaikki ON synd < PGmc *sundī < *h1es-; Kroonen 2013 s.v. *sunjō (scan p0532): *h1s-n̥t- 'being (truly)'; pie-lex-sh1es (*seh1- 'sow') blocked"
+  },
+  {
+   "corpus": "rea-goh",
+   "lemma": "sunta",
+   "lex_id": [
+    "pie-root-h1es-be"
+   ],
+   "erratum": "remapped to pie-root-h1es-be",
+   "note": "Kroonen 2013 s.v. *sunjō (scan p0532): OHG sunt(e)a 'sin' < *sund(i)jō- < *h1s-n̥t-; pie-lex-sh1es blocked"
+  },
+  {
+   "corpus": "rea-osx",
+   "lemma": "sundea",
+   "lex_id": [
+    "pie-root-h1es-be"
+   ],
+   "erratum": "remapped to pie-root-h1es-be",
+   "note": "Kroonen 2013 s.v. *sunjō (scan p0532): OS sundea 'sin' < *h1s-n̥t-; pie-lex-sh1es blocked"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "elli-gamall",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *gamala- (scan p0206): 'Uncertain etymology'; *h2eltós unsupported"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "gamall",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *gamala- (scan p0206): 'Uncertain etymology'; *h2eltós unsupported"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "gamall",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *gamala- (scan p0206): 'Uncertain etymology'; *h2eltós unsupported"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "fé-ríkr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *rīk- (scan p0452): Celtic loanword (*rīg-); the ON entries' {root} *h3reǵ- is the Celtic source's root, not inherited"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "ríkr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *rīk- (scan p0452): Celtic loanword (*rīg-); the ON entries' {root} *h3reǵ- is the Celtic source's root, not inherited"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "ó-ríkr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *rīk- (scan p0452): Celtic loanword (*rīg-); the ON entries' {root} *h3reǵ- is the Celtic source's root, not inherited"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "óríkr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *rīk- (scan p0452): Celtic loanword (*rīg-); the ON entries' {root} *h3reǵ- is the Celtic source's root, not inherited"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "úríkr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *rīk- (scan p0452): Celtic loanword (*rīg-); the ON entries' {root} *h3reǵ- is the Celtic source's root, not inherited"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "ríkur",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *rīk- (scan p0452): Celtic loanword (*rīg-); the ON entries' {root} *h3reǵ- is the Celtic source's root, not inherited"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "eyrir",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "eyrir 'ounce (of silver)' < Lat. aureus (de Vries, Anord. etym. Wb. s.v.); not inherited"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "eyri",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "eyrir 'ounce (of silver)' < Lat. aureus (de Vries, Anord. etym. Wb. s.v.); not inherited"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "eyrir",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "eyrir 'ounce (of silver)' < Lat. aureus (de Vries, Anord. etym. Wb. s.v.); not inherited"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "eyri",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "eyrir 'ounce (of silver)' < Lat. aureus (de Vries, Anord. etym. Wb. s.v.); not inherited"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "háleikr",
+   "lex_id": [
+    "pie-lex-kowkos-2"
+   ],
+   "erratum": "remapped to pie-lex-kowkos-2",
+   "note": "Kroonen 2013 s.v. *hauha- (scan p0255): hár 'high' < *kowk-; the 'hair' (*kes-) and *kewh2- ids of the homograph dropped (corpus lemma mostly the adjective)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hár",
+   "lex_id": [
+    "pie-lex-kowkos-2"
+   ],
+   "erratum": "remapped to pie-lex-kowkos-2",
+   "note": "Kroonen 2013 s.v. *hauha- (scan p0255): hár 'high' < *kowk-; the 'hair' (*kes-) and *kewh2- ids of the homograph dropped (corpus lemma mostly the adjective)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "jafn-hár",
+   "lex_id": [
+    "pie-lex-kowkos-2"
+   ],
+   "erratum": "remapped to pie-lex-kowkos-2",
+   "note": "Kroonen 2013 s.v. *hauha- (scan p0255): hár 'high' < *kowk-; the 'hair' (*kes-) and *kewh2- ids of the homograph dropped (corpus lemma mostly the adjective)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "upphár",
+   "lex_id": [
+    "pie-lex-kowkos-2"
+   ],
+   "erratum": "remapped to pie-lex-kowkos-2",
+   "note": "Kroonen 2013 s.v. *hauha- (scan p0255): hár 'high' < *kowk-; the 'hair' (*kes-) and *kewh2- ids of the homograph dropped (corpus lemma mostly the adjective)"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "háleikur",
+   "lex_id": [
+    "pie-lex-kowkos-2"
+   ],
+   "erratum": "remapped to pie-lex-kowkos-2",
+   "note": "Kroonen 2013 s.v. *hauha- (scan p0255): hár 'high' < *kowk-; the 'hair' (*kes-) and *kewh2- ids of the homograph dropped (corpus lemma mostly the adjective)"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "hár",
+   "lex_id": [
+    "pie-lex-kowkos-2"
+   ],
+   "erratum": "remapped to pie-lex-kowkos-2",
+   "note": "Kroonen 2013 s.v. *hauha- (scan p0255): hár 'high' < *kowk-; the 'hair' (*kes-) and *kewh2- ids of the homograph dropped (corpus lemma mostly the adjective)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "gorr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *garwa- (scan p0210): gǫrr 'ready' < *ga-arwa-; not *gurą 'filth' (desc homograph); no lexicon id"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "gǫrr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *garwa- (scan p0210): gǫrr 'ready' < *ga-arwa-; not *gurą 'filth' (desc homograph); no lexicon id"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "ógǫrr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *garwa- (scan p0210): gǫrr 'ready' < *ga-arwa-; not *gurą 'filth' (desc homograph); no lexicon id"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "misgorr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *garwa- (scan p0210): gǫrr 'ready' < *ga-arwa-; not *gurą 'filth' (desc homograph); no lexicon id"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "gorr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *garwa- (scan p0210): gǫrr 'ready' < *ga-arwa-; not *gurą 'filth' (desc homograph); no lexicon id"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "gǫrr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *garwa- (scan p0210): gǫrr 'ready' < *ga-arwa-; not *gurą 'filth' (desc homograph); no lexicon id"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "ógǫrr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *garwa- (scan p0210): gǫrr 'ready' < *ga-arwa-; not *gurą 'filth' (desc homograph); no lexicon id"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "misgorr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *garwa- (scan p0210): gǫrr 'ready' < *ga-arwa-; not *gurą 'filth' (desc homograph); no lexicon id"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "grof",
+   "lex_id": [
+    "pie-root-ghrebh-dig"
+   ],
+   "erratum": "remapped to pie-root-ghrebh-dig",
+   "note": "Kroonen 2013 s.v. *graban- (scan p0226): ON grǫf < *grabō, to *gʰrebʰ- 'dig'; the lexicon id *gʰrebh2- 'seize' is another root"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "grǫf",
+   "lex_id": [
+    "pie-root-ghrebh-dig"
+   ],
+   "erratum": "remapped to pie-root-ghrebh-dig",
+   "note": "Kroonen 2013 s.v. *graban- (scan p0226): ON grǫf < *grabō, to *gʰrebʰ- 'dig'; the lexicon id *gʰrebh2- 'seize' is another root"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "gröf",
+   "lex_id": [
+    "pie-root-ghrebh-dig"
+   ],
+   "erratum": "remapped to pie-root-ghrebh-dig",
+   "note": "Kroonen 2013 s.v. *graban- (scan p0226): ON grǫf < *grabō, to *gʰrebʰ- 'dig'; the lexicon id *gʰrebh2- 'seize' is another root"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "grof",
+   "lex_id": [
+    "pie-root-ghrebh-dig"
+   ],
+   "erratum": "remapped to pie-root-ghrebh-dig",
+   "note": "Kroonen 2013 s.v. *graban- (scan p0226): ON grǫf < *grabō, to *gʰrebʰ- 'dig'; the lexicon id *gʰrebh2- 'seize' is another root"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "grǫf",
+   "lex_id": [
+    "pie-root-ghrebh-dig"
+   ],
+   "erratum": "remapped to pie-root-ghrebh-dig",
+   "note": "Kroonen 2013 s.v. *graban- (scan p0226): ON grǫf < *grabō, to *gʰrebʰ- 'dig'; the lexicon id *gʰrebh2- 'seize' is another root"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "gröf",
+   "lex_id": [
+    "pie-root-ghrebh-dig"
+   ],
+   "erratum": "remapped to pie-root-ghrebh-dig",
+   "note": "Kroonen 2013 s.v. *graban- (scan p0226): ON grǫf < *grabō, to *gʰrebʰ- 'dig'; the lexicon id *gʰrebh2- 'seize' is another root"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hreinn",
+   "lex_id": [
+    "pie-root-krey-sift"
+   ],
+   "erratum": "remapped to pie-root-krey-sift",
+   "note": "Kroonen 2013 s.v. *hraini- (scan p0281): *kroin-i- to *krey- 'sift' (Lat. cernō); *ḱerh2- dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "reinn",
+   "lex_id": [
+    "pie-root-krey-sift"
+   ],
+   "erratum": "remapped to pie-root-krey-sift",
+   "note": "Kroonen 2013 s.v. *hraini- (scan p0281): *kroin-i- to *krey- 'sift' (Lat. cernō); *ḱerh2- dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "hreinn",
+   "lex_id": [
+    "pie-root-krey-sift"
+   ],
+   "erratum": "remapped to pie-root-krey-sift",
+   "note": "Kroonen 2013 s.v. *hraini- (scan p0281): *kroin-i- to *krey- 'sift' (Lat. cernō); *ḱerh2- dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "reinn",
+   "lex_id": [
+    "pie-root-krey-sift"
+   ],
+   "erratum": "remapped to pie-root-krey-sift",
+   "note": "Kroonen 2013 s.v. *hraini- (scan p0281): *kroin-i- to *krey- 'sift' (Lat. cernō); *ḱerh2- dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "missýna",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471): sýna 'show', sjón 'sight' to *sekʷ- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "sýna",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471): sýna 'show', sjón 'sight' to *sekʷ- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "fyrirsjón",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471): sýna 'show', sjón 'sight' to *sekʷ- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "of-sjón",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471): sýna 'show', sjón 'sight' to *sekʷ- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "sión",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471): sýna 'show', sjón 'sight' to *sekʷ- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "sjón",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471): sýna 'show', sjón 'sight' to *sekʷ- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "aug-sýn",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471): sýna 'show', sjón 'sight' to *sekʷ- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "sýn",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471): sýna 'show', sjón 'sight' to *sekʷ- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "yfirsýn",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471): sýna 'show', sjón 'sight' to *sekʷ- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "syna",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471): sýna 'show', sjón 'sight' to *sekʷ- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "sýna",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471): sýna 'show', sjón 'sight' to *sekʷ- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "sjón",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471): sýna 'show', sjón 'sight' to *sekʷ- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "sýn",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471): sýna 'show', sjón 'sight' to *sekʷ- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "yfirsýn",
+   "lex_id": [
+    "pie-root-sekw-see"
+   ],
+   "erratum": "remapped to pie-root-sekw-see",
+   "note": "Kroonen 2013 s.v. *sehwan- (scan p0471): sýna 'show', sjón 'sight' to *sekʷ- 'see'; 'follow'/'say' homonyms dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "Bjǫrn",
+   "lex_id": [
+    "pie-root-bherH-brown"
+   ],
+   "erratum": "remapped to pie-root-bherH-brown",
+   "note": "bjǫrn 'bear' < *bernu- < *bʰerH- 'brown' (Kroonen s.v. *bernu-); homonym 'pierce' dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "biorn",
+   "lex_id": [
+    "pie-root-bherH-brown"
+   ],
+   "erratum": "remapped to pie-root-bherH-brown",
+   "note": "bjǫrn 'bear' < *bernu- < *bʰerH- 'brown' (Kroonen s.v. *bernu-); homonym 'pierce' dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "biǫrn",
+   "lex_id": [
+    "pie-root-bherH-brown"
+   ],
+   "erratum": "remapped to pie-root-bherH-brown",
+   "note": "bjǫrn 'bear' < *bernu- < *bʰerH- 'brown' (Kroonen s.v. *bernu-); homonym 'pierce' dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "bjǫrn",
+   "lex_id": [
+    "pie-root-bherH-brown"
+   ],
+   "erratum": "remapped to pie-root-bherH-brown",
+   "note": "bjǫrn 'bear' < *bernu- < *bʰerH- 'brown' (Kroonen s.v. *bernu-); homonym 'pierce' dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "björn",
+   "lex_id": [
+    "pie-root-bherH-brown"
+   ],
+   "erratum": "remapped to pie-root-bherH-brown",
+   "note": "bjǫrn 'bear' < *bernu- < *bʰerH- 'brown' (Kroonen s.v. *bernu-); homonym 'pierce' dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "dróttning",
+   "lex_id": [
+    "pie-root-dhrewgh-accompany"
+   ],
+   "erratum": "remapped to pie-root-dhrewgh-accompany",
+   "note": "dróttning 'queen' to drótt 'retinue' < *druhti- (Kroonen 2013 s.v. *druhti-) < *dʰrewgʰ- 'follow'; homonym 'deceive' dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "drottning",
+   "lex_id": [
+    "pie-root-dhrewgh-accompany"
+   ],
+   "erratum": "remapped to pie-root-dhrewgh-accompany",
+   "note": "dróttning 'queen' to drótt 'retinue' < *druhti- (Kroonen 2013 s.v. *druhti-) < *dʰrewgʰ- 'follow'; homonym 'deceive' dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "grikkja-herr",
+   "lex_id": [
+    "pie-lex-koryos"
+   ],
+   "erratum": "remapped to pie-lex-koryos",
+   "note": "Kroonen 2013 s.v. *harja- 'army' < *kor-io- (Lith. kãrias); the *ḱerh2- id (key collision of *ker-) wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "herr",
+   "lex_id": [
+    "pie-lex-koryos"
+   ],
+   "erratum": "remapped to pie-lex-koryos",
+   "note": "Kroonen 2013 s.v. *harja- 'army' < *kor-io- (Lith. kãrias); the *ḱerh2- id (key collision of *ker-) wrong"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "her",
+   "lex_id": [
+    "pie-lex-koryos"
+   ],
+   "erratum": "remapped to pie-lex-koryos",
+   "note": "Kroonen 2013 s.v. *harja- 'army' < *kor-io- (Lith. kãrias); the *ḱerh2- id (key collision of *ker-) wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hiarta",
+   "lex_id": [
+    "pie-lex-kjexr"
+   ],
+   "erratum": "remapped to pie-lex-kjexr",
+   "note": "Kroonen 2013 s.v. *herton- (scan p0262): PIE 'heart' *ḱērd/*ḱr̥d-; old id *ḱerh2- 'grow' wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hjarta",
+   "lex_id": [
+    "pie-lex-kjexr"
+   ],
+   "erratum": "remapped to pie-lex-kjexr",
+   "note": "Kroonen 2013 s.v. *herton- (scan p0262): PIE 'heart' *ḱērd/*ḱr̥d-; old id *ḱerh2- 'grow' wrong"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "hjarta",
+   "lex_id": [
+    "pie-lex-kjexr"
+   ],
+   "erratum": "remapped to pie-lex-kjexr",
+   "note": "Kroonen 2013 s.v. *herton- (scan p0262): PIE 'heart' *ḱērd/*ḱr̥d-; old id *ḱerh2- 'grow' wrong"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "hiarta",
+   "lex_id": [
+    "pie-lex-kjexr"
+   ],
+   "erratum": "remapped to pie-lex-kjexr",
+   "note": "Kroonen 2013 s.v. *herton- (scan p0262): PIE 'heart' *ḱērd/*ḱr̥d-; old id *ḱerh2- 'grow' wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hjarrandi",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Odin name Hjarrandi: no accepted etymology; the pseudo id *(s)kerd- is a guess"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "hjarrandi",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Odin name Hjarrandi: no accepted etymology; the pseudo id *(s)kerd- is a guess"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "leóns-merki",
+   "lex_id": [
+    "pie-lex-morgjs"
+   ],
+   "erratum": "remapped to pie-lex-morgjs",
+   "note": "Kroonen 2013 s.v. *markō (scan p0395): merki 'mark' < *markija- to *morǵ- 'border'; the desc link to *móri 'sea' wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "merki",
+   "lex_id": [
+    "pie-lex-morgjs"
+   ],
+   "erratum": "remapped to pie-lex-morgjs",
+   "note": "Kroonen 2013 s.v. *markō (scan p0395): merki 'mark' < *markija- to *morǵ- 'border'; the desc link to *móri 'sea' wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "stór-merki",
+   "lex_id": [
+    "pie-lex-morgjs"
+   ],
+   "erratum": "remapped to pie-lex-morgjs",
+   "note": "Kroonen 2013 s.v. *markō (scan p0395): merki 'mark' < *markija- to *morǵ- 'border'; the desc link to *móri 'sea' wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "tormerki",
+   "lex_id": [
+    "pie-lex-morgjs"
+   ],
+   "erratum": "remapped to pie-lex-morgjs",
+   "note": "Kroonen 2013 s.v. *markō (scan p0395): merki 'mark' < *markija- to *morǵ- 'border'; the desc link to *móri 'sea' wrong"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "merki",
+   "lex_id": [
+    "pie-lex-morgjs"
+   ],
+   "erratum": "remapped to pie-lex-morgjs",
+   "note": "Kroonen 2013 s.v. *markō (scan p0395): merki 'mark' < *markija- to *morǵ- 'border'; the desc link to *móri 'sea' wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "bót",
+   "lex_id": [
+    "pie-lex-bhodeti"
+   ],
+   "erratum": "remapped to pie-lex-bhodeti",
+   "note": "Kroonen 2013 s.v. *bōtō (scan p0110): bót 'improvement' < *bʰoHd-eh2- (*bat- 'good'); the *bʰewgʰ- id (desc of *buhtiz) wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "knés-bót",
+   "lex_id": [
+    "pie-lex-bhodeti"
+   ],
+   "erratum": "remapped to pie-lex-bhodeti",
+   "note": "Kroonen 2013 s.v. *bōtō (scan p0110): bót 'improvement' < *bʰoHd-eh2- (*bat- 'good'); the *bʰewgʰ- id (desc of *buhtiz) wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "nafn-bót",
+   "lex_id": [
+    "pie-lex-bhodeti"
+   ],
+   "erratum": "remapped to pie-lex-bhodeti",
+   "note": "Kroonen 2013 s.v. *bōtō (scan p0110): bót 'improvement' < *bʰoHd-eh2- (*bat- 'good'); the *bʰewgʰ- id (desc of *buhtiz) wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "skaða-bót",
+   "lex_id": [
+    "pie-lex-bhodeti"
+   ],
+   "erratum": "remapped to pie-lex-bhodeti",
+   "note": "Kroonen 2013 s.v. *bōtō (scan p0110): bót 'improvement' < *bʰoHd-eh2- (*bat- 'good'); the *bʰewgʰ- id (desc of *buhtiz) wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "yfirbót",
+   "lex_id": [
+    "pie-lex-bhodeti"
+   ],
+   "erratum": "remapped to pie-lex-bhodeti",
+   "note": "Kroonen 2013 s.v. *bōtō (scan p0110): bót 'improvement' < *bʰoHd-eh2- (*bat- 'good'); the *bʰewgʰ- id (desc of *buhtiz) wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "ǫl-boga-bót",
+   "lex_id": [
+    "pie-lex-bhodeti"
+   ],
+   "erratum": "remapped to pie-lex-bhodeti",
+   "note": "Kroonen 2013 s.v. *bōtō (scan p0110): bót 'improvement' < *bʰoHd-eh2- (*bat- 'good'); the *bʰewgʰ- id (desc of *buhtiz) wrong"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "bót",
+   "lex_id": [
+    "pie-lex-bhodeti"
+   ],
+   "erratum": "remapped to pie-lex-bhodeti",
+   "note": "Kroonen 2013 s.v. *bōtō (scan p0110): bót 'improvement' < *bʰoHd-eh2- (*bat- 'good'); the *bʰewgʰ- id (desc of *buhtiz) wrong"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "yfirbót",
+   "lex_id": [
+    "pie-lex-bhodeti"
+   ],
+   "erratum": "remapped to pie-lex-bhodeti",
+   "note": "Kroonen 2013 s.v. *bōtō (scan p0110): bót 'improvement' < *bʰoHd-eh2- (*bat- 'good'); the *bʰewgʰ- id (desc of *buhtiz) wrong"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "óbót",
+   "lex_id": [
+    "pie-lex-bhodeti"
+   ],
+   "erratum": "remapped to pie-lex-bhodeti",
+   "note": "Kroonen 2013 s.v. *bōtō (scan p0110): bót 'improvement' < *bʰoHd-eh2- (*bat- 'good'); the *bʰewgʰ- id (desc of *buhtiz) wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "byggia",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "remapped to pie-root-bhuH-be",
+   "note": "Kroonen 2013 s.v. *būan- (*buwan-): byggja 'settle' < *buwjan- to *bʰuH-; the *bʰewgʰ- id (homograph *bugjan- 'buy') dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "byggja",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "remapped to pie-root-bhuH-be",
+   "note": "Kroonen 2013 s.v. *būan- (*buwan-): byggja 'settle' < *buwjan- to *bʰuH-; the *bʰewgʰ- id (homograph *bugjan- 'buy') dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "byggja",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "remapped to pie-root-bhuH-be",
+   "note": "Kroonen 2013 s.v. *būan- (*buwan-): byggja 'settle' < *buwjan- to *bʰuH-; the *bʰewgʰ- id (homograph *bugjan- 'buy') dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "byggia",
+   "lex_id": [
+    "pie-root-bhuH-be"
+   ],
+   "erratum": "remapped to pie-root-bhuH-be",
+   "note": "Kroonen 2013 s.v. *būan- (*buwan-): byggja 'settle' < *buwjan- to *bʰuH-; the *bʰewgʰ- id (homograph *bugjan- 'buy') dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "sár",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus sár is mostly 'wound' (*saira-, no secure PIE etymology; cf. germanic.json), not sár 'cask'; *seyk- 'reach' wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "síðu-sár",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus sár is mostly 'wound' (*saira-, no secure PIE etymology; cf. germanic.json), not sár 'cask'; *seyk- 'reach' wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "sara",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus sár is mostly 'wound' (*saira-, no secure PIE etymology; cf. germanic.json), not sár 'cask'; *seyk- 'reach' wrong"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "sár",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus sár is mostly 'wound' (*saira-, no secure PIE etymology; cf. germanic.json), not sár 'cask'; *seyk- 'reach' wrong"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "sara",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Corpus sár is mostly 'wound' (*saira-, no secure PIE etymology; cf. germanic.json), not sár 'cask'; *seyk- 'reach' wrong"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "á",
+   "lex_id": [
+    "pie-lex-h2ekweh2"
+   ],
+   "erratum": "remapped to pie-lex-h2ekweh2",
+   "note": "Kroonen 2013 s.v. *ahwō: á 'river' < *h2ekʷ-eh2; the *h2en 'on' id belongs to the preposition (not content)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "ey",
+   "lex_id": [
+    "pie-lex-h2ekweh2"
+   ],
+   "erratum": "remapped to pie-lex-h2ekweh2",
+   "note": "Kroonen 2013 s.v. *awjō: ey 'island' < *h2ekʷ-ih2-; 'away' and 'ever' ids are homographs"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "ey",
+   "lex_id": [
+    "pie-lex-h2ekweh2"
+   ],
+   "erratum": "remapped to pie-lex-h2ekweh2",
+   "note": "Kroonen 2013 s.v. *awjō: ey 'island' < *h2ekʷ-ih2-; 'away' and 'ever' ids are homographs"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "eyja",
+   "lex_id": [
+    "pie-lex-h2ekweh2"
+   ],
+   "erratum": "remapped to pie-lex-h2ekweh2",
+   "note": "Kroonen 2013 s.v. *awjō: ey 'island' < *h2ekʷ-ih2-; 'away' and 'ever' ids are homographs"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "gá",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "gá 'heed' (< *gaujan-?) is not *gēn- 'go' (Kroonen s.v. *gēn-, scan p0214); no secure etymology"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "gá",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "gá 'heed' (< *gaujan-?) is not *gēn- 'go' (Kroonen s.v. *gēn-, scan p0214); no secure etymology"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "all-lítill",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *lītila- (scan p0379): 'The derivation of the word is still problematic' (GM); *minuyōs (the suppletive comparative) wrong for the positive"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "lítill",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *lītila- (scan p0379): 'The derivation of the word is still problematic' (GM); *minuyōs (the suppletive comparative) wrong for the positive"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "lítilleikr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *lītila- (scan p0379): 'The derivation of the word is still problematic' (GM); *minuyōs (the suppletive comparative) wrong for the positive"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "ólítill",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *lītila- (scan p0379): 'The derivation of the word is still problematic' (GM); *minuyōs (the suppletive comparative) wrong for the positive"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "lítill",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *lītila- (scan p0379): 'The derivation of the word is still problematic' (GM); *minuyōs (the suppletive comparative) wrong for the positive"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "ólítill",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *lītila- (scan p0379): 'The derivation of the word is still problematic' (GM); *minuyōs (the suppletive comparative) wrong for the positive"
+  },
+  {
+   "corpus": "rea-goh",
+   "lemma": "luzzil",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *lītila- (scan p0379): OHG luzzil, problematic derivation; *minuyōs wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "harðr",
+   "lex_id": [
+    "pie-root-kret-be_strong"
+   ],
+   "erratum": "remapped to pie-root-kret-be_strong",
+   "note": "Kroonen 2013 s.v. *hardu- (scan p0251): < *kort-u-, Gr. kratús 'strong'; not *(s)kert- 'cut'"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "stál-harðr",
+   "lex_id": [
+    "pie-root-kret-be_strong"
+   ],
+   "erratum": "remapped to pie-root-kret-be_strong",
+   "note": "Kroonen 2013 s.v. *hardu- (scan p0251): < *kort-u-, Gr. kratús 'strong'; not *(s)kert- 'cut'"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "harður",
+   "lex_id": [
+    "pie-root-kret-be_strong"
+   ],
+   "erratum": "remapped to pie-root-kret-be_strong",
+   "note": "Kroonen 2013 s.v. *hardu- (scan p0251): < *kort-u-, Gr. kratús 'strong'; not *(s)kert- 'cut'"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "harður",
+   "lex_id": [
+    "pie-root-kret-be_strong"
+   ],
+   "erratum": "remapped to pie-root-kret-be_strong",
+   "note": "Kroonen 2013 s.v. *hardu- (scan p0251): < *kort-u-, Gr. kratús 'strong'; not *(s)kert- 'cut'"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "harðr",
+   "lex_id": [
+    "pie-root-kret-be_strong"
+   ],
+   "erratum": "remapped to pie-root-kret-be_strong",
+   "note": "Kroonen 2013 s.v. *hardu- (scan p0251): < *kort-u-, Gr. kratús 'strong'; not *(s)kert- 'cut'"
+  },
+  {
+   "corpus": "rea-goh",
+   "lemma": "hart",
+   "lex_id": [
+    "pie-root-kret-be_strong"
+   ],
+   "erratum": "remapped to pie-root-kret-be_strong",
+   "note": "Kroonen 2013 s.v. *hardu- (scan p0251): < *kort-u-, Gr. kratús; not *(s)kert-"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "lǫg-mál",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-meet",
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): mál 'speech', mæla 'speak' < *mad-tlo- (*mōtan- 'meet'); not *mēla- 'time' (a homograph, rarer in prose)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "mál",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-meet",
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): mál 'speech', mæla 'speak' < *mad-tlo- (*mōtan- 'meet'); not *mēla- 'time' (a homograph, rarer in prose)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "undirmál",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-meet",
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): mál 'speech', mæla 'speak' < *mad-tlo- (*mōtan- 'meet'); not *mēla- 'time' (a homograph, rarer in prose)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "fyrirmǽla",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-meet",
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): mál 'speech', mæla 'speak' < *mad-tlo- (*mōtan- 'meet'); not *mēla- 'time' (a homograph, rarer in prose)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "mis-mǽla",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-meet",
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): mál 'speech', mæla 'speak' < *mad-tlo- (*mōtan- 'meet'); not *mēla- 'time' (a homograph, rarer in prose)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "mismæla",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-meet",
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): mál 'speech', mæla 'speak' < *mad-tlo- (*mōtan- 'meet'); not *mēla- 'time' (a homograph, rarer in prose)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "mæla",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-meet",
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): mál 'speech', mæla 'speak' < *mad-tlo- (*mōtan- 'meet'); not *mēla- 'time' (a homograph, rarer in prose)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "mǽla",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-meet",
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): mál 'speech', mæla 'speak' < *mad-tlo- (*mōtan- 'meet'); not *mēla- 'time' (a homograph, rarer in prose)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "sammǽla",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-meet",
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): mál 'speech', mæla 'speak' < *mad-tlo- (*mōtan- 'meet'); not *mēla- 'time' (a homograph, rarer in prose)"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "mal",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-meet",
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): mál 'speech', mæla 'speak' < *mad-tlo- (*mōtan- 'meet'); not *mēla- 'time' (a homograph, rarer in prose)"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "mál",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-meet",
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): mál 'speech', mæla 'speak' < *mad-tlo- (*mōtan- 'meet'); not *mēla- 'time' (a homograph, rarer in prose)"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "undirmál",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-meet",
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): mál 'speech', mæla 'speak' < *mad-tlo- (*mōtan- 'meet'); not *mēla- 'time' (a homograph, rarer in prose)"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "formæla",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-meet",
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): mál 'speech', mæla 'speak' < *mad-tlo- (*mōtan- 'meet'); not *mēla- 'time' (a homograph, rarer in prose)"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "mæla",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-meet",
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): mál 'speech', mæla 'speak' < *mad-tlo- (*mōtan- 'meet'); not *mēla- 'time' (a homograph, rarer in prose)"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "mǽla",
+   "lex_id": [
+    "pie-root-meh2d-meet"
+   ],
+   "erratum": "remapped to pie-root-meh2d-meet",
+   "note": "Kroonen 2013 s.v. *maþla- (scan p0398): mál 'speech', mæla 'speak' < *mad-tlo- (*mōtan- 'meet'); not *mēla- 'time' (a homograph, rarer in prose)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "matr",
+   "lex_id": [
+    "pie-root-med-become_full"
+   ],
+   "erratum": "remapped to pie-root-med-become_full",
+   "note": "Kroonen 2013 s.v. *mati- (scan p0398): < *mod-i-, *med- 'satiate'; the *meh2d- 'be wet' link is 'erroneous'"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "matur",
+   "lex_id": [
+    "pie-root-med-become_full"
+   ],
+   "erratum": "remapped to pie-root-med-become_full",
+   "note": "Kroonen 2013 s.v. *mati- (scan p0398): < *mod-i-, *med- 'satiate'; the *meh2d- 'be wet' link is 'erroneous'"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "höldur",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *haleþ- (scan p0244): < *kHl-et- (NIE?), not *ḱel-"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "halur",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *haleþ- (scan p0244): < *kHl-et- (NIE?), not *ḱel-"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "höldur",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *haleþ- (scan p0244): < *kHl-et- (NIE?), not *ḱel-"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "halur",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *haleþ- (scan p0244): < *kHl-et- (NIE?), not *ḱel-"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "salr",
+   "lex_id": [
+    "pie-root-sel-dwell"
+   ],
+   "erratum": "remapped to pie-root-sel-dwell",
+   "note": "Kroonen 2013 s.v. *salaz- (scan p0464): < *sol(H)-es-, = OCS selo 'abode'; homonyms 'jump', 'sneak' dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "Loki",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Theonym Loki: no accepted PIE etymology (cf. germanic.json)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "þegia",
+   "lex_id": [
+    "pie-lex-th2keh1yeti"
+   ],
+   "erratum": "remapped to pie-lex-th2keh1yeti",
+   "note": "Kroonen 2013 s.v. *þagēn- (scan p0571): stative *tHk-eh1- = Lat. tacēre; homonymous *tek- roots wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "þegja",
+   "lex_id": [
+    "pie-lex-th2keh1yeti"
+   ],
+   "erratum": "remapped to pie-lex-th2keh1yeti",
+   "note": "Kroonen 2013 s.v. *þagēn- (scan p0571): stative *tHk-eh1- = Lat. tacēre; homonymous *tek- roots wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "þǫgull",
+   "lex_id": [
+    "pie-lex-th2keh1yeti"
+   ],
+   "erratum": "remapped to pie-lex-th2keh1yeti",
+   "note": "Kroonen 2013 s.v. *þagēn- (scan p0571): stative *tHk-eh1- = Lat. tacēre; homonymous *tek- roots wrong"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "þegja",
+   "lex_id": [
+    "pie-lex-th2keh1yeti"
+   ],
+   "erratum": "remapped to pie-lex-th2keh1yeti",
+   "note": "Kroonen 2013 s.v. *þagēn- (scan p0571): stative *tHk-eh1- = Lat. tacēre; homonymous *tek- roots wrong"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "þögull",
+   "lex_id": [
+    "pie-lex-th2keh1yeti"
+   ],
+   "erratum": "remapped to pie-lex-th2keh1yeti",
+   "note": "Kroonen 2013 s.v. *þagēn- (scan p0571): stative *tHk-eh1- = Lat. tacēre; homonymous *tek- roots wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "rún",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "rún 'secret, rune': not a Kroonen entry, no accepted PIE etymology; *HrewH- unsupported"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "rún",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "rún 'secret, rune': not a Kroonen entry, no accepted PIE etymology; *HrewH- unsupported"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vanr",
+   "lex_id": [
+    "pie-lex-h1uh2nos",
+    "pie-lex-h1weh2nos"
+   ],
+   "erratum": "remapped to pie-lex-h1uh2nos, pie-lex-h1weh2nos",
+   "note": "Kroonen 2013 s.v. *wana- (scan p0612) 'lacking' < *h1uh2-no-; *wonh1ós 'wont' dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vanr ",
+   "lex_id": [
+    "pie-lex-h1uh2nos",
+    "pie-lex-h1weh2nos"
+   ],
+   "erratum": "remapped to pie-lex-h1uh2nos, pie-lex-h1weh2nos",
+   "note": "Kroonen 2013 s.v. *wana- (scan p0612) 'lacking' < *h1uh2-no-; *wonh1ós 'wont' dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "óvanr",
+   "lex_id": [
+    "pie-lex-h1uh2nos",
+    "pie-lex-h1weh2nos"
+   ],
+   "erratum": "remapped to pie-lex-h1uh2nos, pie-lex-h1weh2nos",
+   "note": "Kroonen 2013 s.v. *wana- (scan p0612) 'lacking' < *h1uh2-no-; *wonh1ós 'wont' dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "úvanr",
+   "lex_id": [
+    "pie-lex-h1uh2nos",
+    "pie-lex-h1weh2nos"
+   ],
+   "erratum": "remapped to pie-lex-h1uh2nos, pie-lex-h1weh2nos",
+   "note": "Kroonen 2013 s.v. *wana- (scan p0612) 'lacking' < *h1uh2-no-; *wonh1ós 'wont' dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "vanur",
+   "lex_id": [
+    "pie-lex-h1uh2nos",
+    "pie-lex-h1weh2nos"
+   ],
+   "erratum": "remapped to pie-lex-h1uh2nos, pie-lex-h1weh2nos",
+   "note": "Kroonen 2013 s.v. *wana- (scan p0612) 'lacking' < *h1uh2-no-; *wonh1ós 'wont' dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "óvanur",
+   "lex_id": [
+    "pie-lex-h1uh2nos",
+    "pie-lex-h1weh2nos"
+   ],
+   "erratum": "remapped to pie-lex-h1uh2nos, pie-lex-h1weh2nos",
+   "note": "Kroonen 2013 s.v. *wana- (scan p0612) 'lacking' < *h1uh2-no-; *wonh1ós 'wont' dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hión",
+   "lex_id": [
+    "pie-root-kjey-be_lying_down"
+   ],
+   "erratum": "remapped to pie-root-kjey-be_lying_down",
+   "note": "hjón 'household' < *hīwa- (Kroonen 2013 scan p0267, Go. heiwa-frauja) < *ḱey- 'lie, settle'; homonym 'fall' dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hjón",
+   "lex_id": [
+    "pie-root-kjey-be_lying_down"
+   ],
+   "erratum": "remapped to pie-root-kjey-be_lying_down",
+   "note": "hjón 'household' < *hīwa- (Kroonen 2013 scan p0267, Go. heiwa-frauja) < *ḱey- 'lie, settle'; homonym 'fall' dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "rafn",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *hrabn- (scan p0280): *krobh-on-(?) (GM); *ḱerh2- 'horn' wrong"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "norn",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "norn: no accepted PIE etymology; *nér 'below' unsupported"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vél",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "vél 'artifice': no secure etymology; *wéy 'we' wrong"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "vél",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "vél 'artifice': no secure etymology; *wéy 'we' wrong"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "afi",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "afi 'grandfather' = Go. aba; Kroonen 2013 s.v. *aban- (scan p0039): nursery word, no certain IE etymology"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "smiðr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "smiðr 'smith' (*smiþa-): *smey- 'laugh' wrong; no lexicon root"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "smiður",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "smiðr 'smith' (*smiþa-): *smey- 'laugh' wrong; no lexicon root"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "blása",
+   "lex_id": [
+    "pie-lex-bhleh1-3"
+   ],
+   "erratum": "remapped to pie-lex-bhleh1-3",
+   "note": "blása 'blow' < *bhleh1- 'blow' (< *bhel- 'swell'); the 'bleat' and 'shine' homonyms dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "blása",
+   "lex_id": [
+    "pie-lex-bhleh1-3"
+   ],
+   "erratum": "remapped to pie-lex-bhleh1-3",
+   "note": "blása 'blow' < *bhleh1- 'blow' (< *bhel- 'swell'); the 'bleat' and 'shine' homonyms dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "leyfa",
+   "lex_id": [
+    "pie-root-lewbh-desire"
+   ],
+   "erratum": "remapped to pie-root-lewbh-desire",
+   "note": "leyfa 'praise, permit' < *laubjan- (Kroonen 2013 s.v. *leuba-, scan p0372): *lewbh- 'desire'; 'cut off' dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "óleyfa",
+   "lex_id": [
+    "pie-root-lewbh-desire"
+   ],
+   "erratum": "remapped to pie-root-lewbh-desire",
+   "note": "leyfa 'praise, permit' < *laubjan- (Kroonen 2013 s.v. *leuba-, scan p0372): *lewbh- 'desire'; 'cut off' dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "leyfa",
+   "lex_id": [
+    "pie-root-lewbh-desire"
+   ],
+   "erratum": "remapped to pie-root-lewbh-desire",
+   "note": "leyfa 'praise, permit' < *laubjan- (Kroonen 2013 s.v. *leuba-, scan p0372): *lewbh- 'desire'; 'cut off' dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "barns-bein",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *baina- (scan p0086): 'No further etymology'; link with *bʰeyh2- 'hew' rejected"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "bein",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *baina- (scan p0086): 'No further etymology'; link with *bʰeyh2- 'hew' rejected"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "fíls-bein",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *baina- (scan p0086): 'No further etymology'; link with *bʰeyh2- 'hew' rejected"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hals-bein",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *baina- (scan p0086): 'No further etymology'; link with *bʰeyh2- 'hew' rejected"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "bein",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *baina- (scan p0086): 'No further etymology'; link with *bʰeyh2- 'hew' rejected"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "erfiðis-laun",
+   "lex_id": [
+    "pie-lex-lowh2nom",
+    "pie-lex-leh2unom",
+    "pie-lex-lh2ewnom"
+   ],
+   "erratum": "remapped to pie-lex-lowh2nom, pie-lex-leh2unom, pie-lex-lh2ewnom",
+   "note": "laun 'reward' < *launa- (Go. laun) < *leh2w- 'gain'; *h2lewgh- id from laun 'secrecy' dropped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "laun",
+   "lex_id": [
+    "pie-lex-lowh2nom",
+    "pie-lex-leh2unom",
+    "pie-lex-lh2ewnom"
+   ],
+   "erratum": "remapped to pie-lex-lowh2nom, pie-lex-leh2unom, pie-lex-lh2ewnom",
+   "note": "laun 'reward' < *launa- (Go. laun) < *leh2w- 'gain'; *h2lewgh- id from laun 'secrecy' dropped"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "laun",
+   "lex_id": [
+    "pie-lex-lowh2nom",
+    "pie-lex-leh2unom",
+    "pie-lex-lh2ewnom"
+   ],
+   "erratum": "remapped to pie-lex-lowh2nom, pie-lex-leh2unom, pie-lex-lh2ewnom",
+   "note": "laun 'reward' < *launa- (Go. laun) < *leh2w- 'gain'; *h2lewgh- id from laun 'secrecy' dropped"
+  },
+  {
+   "corpus": "rea-osx",
+   "lemma": "her",
+   "lex_id": [
+    "pie-lex-skjeh3iros"
+   ],
+   "erratum": "remapped to pie-lex-skjeh3iros",
+   "note": "Kroonen 2013 s.v. *haira- (scan p0241): OS hēr 'noble, aged' < *haira- 'hoary'; the *ḱís 'this' id (adverb hēr 'here') wrong"
+  },
+  {
+   "corpus": "rea-goh",
+   "lemma": "war",
+   "lex_id": [
+    "pie-lex-weh1ros"
+   ],
+   "erratum": "remapped to pie-lex-weh1ros",
+   "note": "Kroonen 2013 s.v. *wēra-: OHG wār 'true' < *ueh1-ro- (Lat. vērus); *wiHrós 'man' wrong"
+  },
+  {
+   "corpus": "rea-goh",
+   "lemma": "wan|wanen",
+   "lex_id": [
+    "pie-lex-wonh1os"
+   ],
+   "erratum": "remapped to pie-lex-wonh1os",
+   "note": "OHG wān 'opinion, hope' < *wēnu- (Kroonen s.v. *wēni-) < *wenh1-; the 'lacking' ids of wan 'empty' dropped"
+  },
+  {
+   "corpus": "rea-goh",
+   "lemma": "wan",
+   "lex_id": [
+    "pie-lex-wonh1os"
+   ],
+   "erratum": "remapped to pie-lex-wonh1os",
+   "note": "OHG wān 'opinion, hope' < *wēnu- (Kroonen s.v. *wēni-) < *wenh1-; the 'lacking' ids of wan 'empty' dropped"
+  },
+  {
+   "corpus": "rea-osx",
+   "lemma": "beda",
+   "lex_id": [
+    "pie-lex-gwhedheh2"
+   ],
+   "erratum": "remapped to pie-lex-gwhedheh2",
+   "note": "Kroonen 2013 s.v. *bedjan- (scan p0095): OS beda 'prayer' < *gʷʰedʰ-; *bʰedʰ- id dropped"
+  },
+  {
+   "corpus": "rea-osx",
+   "lemma": "alowaldo",
+   "lex_id": [
+    "pie-root-h2el-all",
+    "pie-root-h2welh1-rule"
+   ],
+   "erratum": "remapped to pie-root-h2el-all, pie-root-h2welh1-rule",
+   "note": "OS alowaldo 'all-ruler' = *ala- 'all' + *waldan- 'rule' (Kroonen 2013 scan p0613, *h2ulh1-t-); homonym 'wool' dropped"
+  },
+  {
+   "corpus": "rea-osx",
+   "lemma": "githuld",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "githuld 'patience' was mapped through its prefix gi- (*ḱóm); þuld (*þuldi- to *þulēn-) — left unmapped"
+  },
+  {
+   "corpus": "rea-osx",
+   "lemma": "gidult",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "githuld 'patience' was mapped through its prefix gi- (*ḱóm); þuld (*þuldi- to *þulēn-) — left unmapped"
+  },
+  {
+   "corpus": "rea-goh",
+   "lemma": "githuld",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "githuld 'patience' was mapped through its prefix gi- (*ḱóm); þuld (*þuldi- to *þulēn-) — left unmapped"
+  },
+  {
+   "corpus": "rea-goh",
+   "lemma": "gidult",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "githuld 'patience' was mapped through its prefix gi- (*ḱóm); þuld (*þuldi- to *þulēn-) — left unmapped"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "sverð",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *swerda- (scan p0539): 'No certain etymology'; the ON entry's {root} *swer- is a guess"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "sverð",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *swerda- (scan p0539): 'No certain etymology'; the ON entry's {root} *swer- is a guess"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "Egill",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Personal name Egill: no secure etymology (*Agilaz; *h2eḱ- 'sharp' is a guess)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "egill",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Personal name Egill: no secure etymology (*Agilaz; *h2eḱ- 'sharp' is a guess)"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "egill",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Personal name Egill: no secure etymology (*Agilaz; *h2eḱ- 'sharp' is a guess)"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vetr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *wintru- (scan p0628): 'winter', no certain etymology; the *wihti- id comes from the homograph vettr 'being'"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vetur",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *wintru- (scan p0628): 'winter', no certain etymology; the *wihti- id comes from the homograph vettr 'being'"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "vetr",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *wintru- (scan p0628): 'winter', no certain etymology; the *wihti- id comes from the homograph vettr 'being'"
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "vetur",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "Kroonen 2013 s.v. *wintru- (scan p0628): 'winter', no certain etymology; the *wihti- id comes from the homograph vettr 'being'"
+  },
+  {
+   "corpus": "rea-goh",
+   "lemma": "firtan",
+   "lex_id": [],
+   "erratum": "unmapped",
+   "note": "firtān 'wicked': mapped through an OCR'd Kroonen reflex (taan) of *dēan- 'suckle'; no secure etymology"
+  }
+ ],
+ "form": []
+}

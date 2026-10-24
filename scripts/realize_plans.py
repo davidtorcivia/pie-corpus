@@ -17,10 +17,10 @@ import sys
 from pathlib import Path
 
 from pie.meter import measure
-from pie.realize import Lexicon, check_plan, plan_warnings, realize
+from pie.realize import Lexicon, check_plan, plan_warnings, realize, token_cell
 from pie.translit import to_ascii
 from pie.compound import member_ids
-from pie.validate import index_plan_compounds, load_index, validate_text
+from pie.validate import all_exact, index_plan_compounds, load_index, validate_text
 
 ROOT = Path(__file__).resolve().parent.parent
 CAP_EXEMPT = {"pie-lex-h1esti"}          # "to be"
@@ -97,7 +97,8 @@ def main() -> int:
         index_plan_compounds(ix, plan)          # compounds are open-ended: indexed per plan
         v = validate_text(r["pie"], ix)
         stats["realized"] += 1
-        stats["exact_pass"] += set(v["tiers"]) == {"exact"} and v["coverage"] == 1.0
+        # primary and supported forms only: a legacy match or a known error fails the all_exact gate
+        stats["exact_pass"] += all_exact(v)
         roots = sorted({lx.entries[i].get("root_id") for w in r["words"]
                         for i in [w["lex_id"], *member_ids(w["lex_id"])] if i in lx.entries} - {None})
         records.append({
@@ -105,9 +106,10 @@ def main() -> int:
             "tier": 3, "provenance": "synthetic", "citation": None,
             "work_id": args.batch, "work_group_id": None, "line_no": None,
             "pie": r["pie"], "pie_ascii": to_ascii(r["pie"]), "source_form": None,
+            # gender and voice: the resolved cell (pie.export.token_variants offers alternatives of that cell only)
             "tokens": [{"form": w["form"], "lex_id": w["lex_id"],
                         "root_id": lx.entries.get(w["lex_id"], {}).get("root_id"),
-                        "features": w["features"], "verified": True} for w in r["words"]],
+                        "features": w["features"], **token_cell(w), "verified": True} for w in r["words"]],
             "gloss": r["gloss"], "english": r["english"],
             "genre": p.get("genre"), "theme": p.get("theme", []),
             "syllables": measure(r["pie"])["syllables"], "meter": _meter(r["pie"], p.get("genre")),

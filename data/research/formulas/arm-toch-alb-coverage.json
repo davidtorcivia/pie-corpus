@@ -1,0 +1,250 @@
+{
+ "sqo": {
+  "all": {
+   "content_incl_unknown": {
+    "content_tokens": 109820,
+    "content_tokens_mapped": 9698,
+    "content_types": 19099,
+    "content_types_mapped": 368,
+    "share": 0.0883
+   },
+   "content_known_lemma": {
+    "content_tokens": 32799,
+    "content_tokens_mapped": 9698,
+    "content_types": 1332,
+    "content_types_mapped": 368,
+    "share": 0.2957
+   }
+  },
+  "bardhi": {
+   "content_incl_unknown": {
+    "content_tokens": 6149,
+    "content_tokens_mapped": 411,
+    "content_types": 3409,
+    "content_types_mapped": 144,
+    "share": 0.0668
+   },
+   "content_known_lemma": {
+    "content_tokens": 1295,
+    "content_tokens_mapped": 411,
+    "content_types": 491,
+    "content_types_mapped": 144,
+    "share": 0.3174
+   },
+   "tokens": 9611
+  },
+  "bogdani": {
+   "content_incl_unknown": {
+    "content_tokens": 54595,
+    "content_tokens_mapped": 5839,
+    "content_types": 9584,
+    "content_types_mapped": 268,
+    "share": 0.107
+   },
+   "content_known_lemma": {
+    "content_tokens": 17526,
+    "content_tokens_mapped": 5839,
+    "content_types": 909,
+    "content_types_mapped": 268,
+    "share": 0.3332
+   },
+   "tokens": 109059
+  },
+  "buzuku": {
+   "content_incl_unknown": {
+    "content_tokens": 49076,
+    "content_tokens_mapped": 3448,
+    "content_types": 8584,
+    "content_types_mapped": 203,
+    "share": 0.0703
+   },
+   "content_known_lemma": {
+    "content_tokens": 13978,
+    "content_tokens_mapped": 3448,
+    "content_types": 681,
+    "content_types_mapped": 203,
+    "share": 0.2467
+   },
+   "tokens": 118441
+  },
+  "changed_by_rule": {
+   "borrowed": 13,
+   "hedged": 54,
+   "homograph": 80,
+   "homograph-resolved": 21,
+   "mixed-homograph": 36,
+   "root-gloss-mismatch": 54,
+   "via-borrowed": 35,
+   "via-hedged": 80,
+   "via-mixed-homograph": 120,
+   "via-root-gloss-mismatch": 81
+  },
+  "lemmatizer_levels_by_type": {
+   "ambiguous": 1277,
+   "exact": 1443,
+   "fixed": 59,
+   "skeleton": 1337,
+   "unknown": 17419
+  },
+  "rows": 437,
+  "tokens": 237111
+ },
+ "xcl": {
+  "changed_by_rule": {
+   "borrowed": 14,
+   "hedged": 143,
+   "homograph": 38,
+   "homograph-resolved": 5,
+   "root-gloss-mismatch": 5
+  },
+  "dmhp": {
+   "content_tokens": 329644,
+   "content_tokens_mapped": 84312,
+   "content_types": 24543,
+   "content_types_mapped": 574,
+   "share": 0.2558
+  },
+  "dmhp_by_text": {
+   "MH_1_1_01_Gregor_Lus": {
+    "content_tokens": 33688,
+    "content_tokens_mapped": 8273,
+    "content_types": 4062,
+    "content_types_mapped": 259,
+    "share": 0.2456
+   },
+   "MH_1_1_02_Sahak": {
+    "content_tokens": 4931,
+    "content_tokens_mapped": 1143,
+    "content_types": 1665,
+    "content_types_mapped": 158,
+    "share": 0.2318
+   },
+   "MH_1_1_03_Koriun": {
+    "content_tokens": 7227,
+    "content_tokens_mapped": 1436,
+    "content_types": 1900,
+    "content_types_mapped": 146,
+    "share": 0.1987
+   },
+   "MH_1_1_04_Faustos": {
+    "content_tokens": 36005,
+    "content_tokens_mapped": 8991,
+    "content_types": 5005,
+    "content_types_mapped": 316,
+    "share": 0.2497
+   },
+   "MH_1_1_05_Eznik": {
+    "content_tokens": 18777,
+    "content_tokens_mapped": 5844,
+    "content_types": 3320,
+    "content_types_mapped": 249,
+    "share": 0.3112
+   },
+   "MH_1_1_06_Yeghishe": {
+    "content_tokens": 55957,
+    "content_tokens_mapped": 15759,
+    "content_types": 7155,
+    "content_types_mapped": 364,
+    "share": 0.2816
+   },
+   "MH_1_1_07_Giwt": {
+    "content_tokens": 1155,
+    "content_tokens_mapped": 272,
+    "content_types": 647,
+    "content_types_mapped": 88,
+    "share": 0.2355
+   },
+   "MH_1_1_08_Mambre": {
+    "content_tokens": 9704,
+    "content_tokens_mapped": 2660,
+    "content_types": 2427,
+    "content_types_mapped": 191,
+    "share": 0.2741
+   },
+   "MH_1_1_09_Anania": {
+    "content_tokens": 1348,
+    "content_tokens_mapped": 337,
+    "content_types": 594,
+    "content_types_mapped": 78,
+    "share": 0.25
+   },
+   "MH_1_1_10_Mandakuni": {
+    "content_tokens": 29279,
+    "content_tokens_mapped": 6958,
+    "content_types": 4752,
+    "content_types_mapped": 295,
+    "share": 0.2376
+   },
+   "MH_1_2_11_Agathangelos": {
+    "content_tokens": 42022,
+    "content_tokens_mapped": 11011,
+    "content_types": 6495,
+    "content_types_mapped": 357,
+    "share": 0.262
+   },
+   "MH_1_2_12_Movses_Khor": {
+    "content_tokens": 49051,
+    "content_tokens_mapped": 11145,
+    "content_types": 9274,
+    "content_types_mapped": 390,
+    "share": 0.2272
+   },
+   "MH_1_2_13_Lazar_Parp": {
+    "content_tokens": 40500,
+    "content_tokens_mapped": 10483,
+    "content_types": 5939,
+    "content_types_mapped": 310,
+    "share": 0.2588
+   }
+  },
+  "dmhp_names": {
+   "content_tokens": 2001,
+   "content_tokens_mapped": 64,
+   "content_types": 486,
+   "content_types_mapped": 23,
+   "share": 0.032
+  },
+  "proiel": {
+   "content_tokens": 9430,
+   "content_tokens_mapped": 3918,
+   "content_types": 1498,
+   "content_types_mapped": 227,
+   "share": 0.4155
+  },
+  "rows": 635
+ },
+ "xto": {
+  "changed_by_rule": {
+   "borrowed": 2,
+   "hedged": 2,
+   "homograph": 2,
+   "homograph-resolved": 1,
+   "root-gloss-mismatch": 3,
+   "via-hedged": 1
+  },
+  "cognate_fills": 8,
+  "content_incl_unknown": {
+   "content_tokens": 30455,
+   "content_tokens_mapped": 2793,
+   "content_types": 9163,
+   "content_types_mapped": 177,
+   "share": 0.0917
+  },
+  "content_known_lemma": {
+   "content_tokens": 5562,
+   "content_tokens_mapped": 2793,
+   "content_types": 365,
+   "content_types_mapped": 177,
+   "share": 0.5022
+  },
+  "lemmatizer_levels_by_type": {
+   "loose": 78,
+   "noun-suffix": 185,
+   "table": 493,
+   "unknown": 8798,
+   "verb-suffix": 99
+  },
+  "rows": 202,
+  "tokens": 32456
+ }
+}

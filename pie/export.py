@@ -85,32 +85,52 @@ def record_tasks(r: dict) -> list[dict]:
 
 
 def token_variants(r: dict, lx) -> list[list[str]] | None:
-    """Per word, the engine's alternative forms for the same cell (e.g. -éy/-ḗy locatives, -mes/-mos):
-    a scorer may accept any of them. Only for engine-built records (Tier 2/3) whose tokens carry one
-    feature string; None otherwise."""
+    """Per word, the engine's alternative forms for the same cell (e.g. -éy/-ḗy locatives, -mes/-mos): a
+    scorer may accept any of them. Only for engine-built records (Tier 2/3) whose tokens carry one feature
+    string; None otherwise. The cell is the token's full analysis: case, number, person, tense, mood and voice
+    (in `features`) and, for adjectives and participles, the resolved gender (`gender`), read through the
+    lexicon's admissible cells. A token without a resolved gender (records realized before tokens carried
+    it) gets no alternatives: a guessed gender offered agreement errors as acceptable (David's review:
+    neuter sweh₂dú with masculine sweh₂dús)."""
     if r.get("tier") == 1:
         return None
     out = []
     for t in r.get("tokens", []):
         feat, lid = t.get("features"), t.get("lex_id") or ""
         alts = [t["form"]]
-        if isinstance(feat, str) and lid in lx.specs and lx.specs[lid].get("usable"):
+        if isinstance(feat, str) and lid in lx.specs and not lx.inadmissible(lid):
+            cell, gender, fam = feat.split("|")[0], t.get("gender"), lx.specs[lid]["family"]
             try:
-                cells = lx.cells(lid) if lx.specs[lid]["family"] != "adj" else lx.cells(lid, "m")
-                alts = list(dict.fromkeys([t["form"]] + list(cells.get(feat.split("|")[0], []))))
-            except Exception:
+                if cell.startswith("PTCP."):                     # PTCP.MID.NOM.SG
+                    _, voice, cell = cell.split(".", 2)
+                    cells = lx.admissible_participle_cells(lid, voice, gender) if gender else {}
+                elif fam == "adj":
+                    cells = lx.admissible_cells(lid, gender) if gender else {}
+                else:
+                    cells = lx.admissible_cells(lid)
+                if t["form"] in cells.get(cell, []):           # the token is the cell's form: offer the cell
+                    alts = list(dict.fromkeys([t["form"]] + list(cells[cell])))
+            except (KeyError, ValueError):
                 pass
         out.append(alts)
     return out
 
 
+GENDER_TAG = {"m": "M", "f": "F", "n": "N"}
+
+
 def inflection_tasks(lx: Lexicon, rng: random.Random, per_lexeme: int = 3) -> list[dict]:
-    """lemma + features → form, from the engine, for usable lexemes (primary forms only)."""
+    """lemma + features → form, from the engine, for usable lexemes (primary forms only). Only admissible
+    cells (Lexicon.admissible_cells: no active cells of a middle-only verb, nothing of a blocked lexeme); an
+    adjective's feature names its gender first (F.NOM.SG), since the cell differs by gender."""
     out = []
     for lid, r in lx.specs.items():
-        if not r.get("usable") or not lx.entries[lid]["meaning"]:
+        if not r.get("usable") or not lx.entries[lid]["meaning"] or lx.inadmissible(lid):
             continue
-        cells = lx.cells(lid) if r["family"] != "adj" else lx.cells(lid, "m")
+        if r["family"] == "adj":
+            cells = {f"{GENDER_TAG[g]}.{f}": v for g in ("m", "f", "n") for f, v in lx.admissible_cells(lid, g).items()}
+        else:
+            cells = lx.admissible_cells(lid)
         feats = sorted(cells)
         for f in rng.sample(feats, min(per_lexeme, len(feats))):
             out.append({"task": "inflect", "input": f"{lx.entries[lid]['form']} {f}", "output": cells[f][0],

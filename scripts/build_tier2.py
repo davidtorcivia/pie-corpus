@@ -23,7 +23,7 @@ import sys
 from pathlib import Path
 
 from pie.meter import measure
-from pie.realize import Lexicon, check_plan, realize
+from pie.realize import Lexicon, check_plan, realize, token_cell
 from pie.tier2_secure import SecureChecker, plan_compound_ids
 from pie.translit import to_ascii
 from pie.validate import index_plan_compounds, load_index, validate_text
@@ -118,6 +118,7 @@ def main() -> int:
         for w, t in zip(r["words"], v["tokens"]):
             toks.append({"form": w["form"], "lex_id": w["lex_id"],
                          "root_id": lx.entries.get(w["lex_id"], {}).get("root_id"), "features": w["features"],
+                         **token_cell(w),
                          "verified": w["lex_id"] in secure and t.tier == "exact",
                          "secure_level": "exact" if w["lex_id"] in secure else "root" if w["lex_id"] in root_level else None,
                          "interpolated": w["lex_id"] not in secure})

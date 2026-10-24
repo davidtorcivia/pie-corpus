@@ -1,0 +1,194 @@
+{
+ "byliny": {
+  "all": {
+   "content": 482352,
+   "content_mapped": 157189,
+   "content_no_names": 411185,
+   "content_no_names_mapped": 157189,
+   "share": 0.3259,
+   "share_no_names": 0.3823,
+   "tokens": 798125,
+   "unknown": 158943
+  },
+  "lemmatizer_levels_by_type": {
+   "form": 53500,
+   "form-loose": 7737,
+   "unknown": 84392,
+   "variant": 13550,
+   "variant-loose": 2002
+  },
+  "russian-byliny-wikisource": {
+   "content": 37853,
+   "content_mapped": 15095,
+   "content_no_names": 33026,
+   "content_no_names_mapped": 15095,
+   "share": 0.3988,
+   "share_no_names": 0.4571,
+   "tokens": 63743,
+   "unknown": 8455
+  },
+  "russian-hilferding-1894-archiveorg": {
+   "content": 102272,
+   "content_mapped": 35750,
+   "content_no_names": 87419,
+   "content_no_names_mapped": 35750,
+   "share": 0.3496,
+   "share_no_names": 0.4089,
+   "tokens": 182623,
+   "unknown": 34164
+  },
+  "russian-kireevsky-1860-1874-archiveorg": {
+   "content": 191749,
+   "content_mapped": 56802,
+   "content_no_names": 161820,
+   "content_no_names_mapped": 56802,
+   "share": 0.2962,
+   "share_no_names": 0.351,
+   "tokens": 311850,
+   "unknown": 63970
+  },
+  "russian-rybnikov-1861-1867-archiveorg": {
+   "content": 150478,
+   "content_mapped": 49542,
+   "content_no_names": 128920,
+   "content_no_names_mapped": 49542,
+   "share": 0.3292,
+   "share_no_names": 0.3843,
+   "tokens": 239909,
+   "unknown": 52354
+  }
+ },
+ "ccmh": {
+  "all": {
+   "content": 126832,
+   "content_mapped": 73764,
+   "content_no_names": 126832,
+   "content_no_names_mapped": 73764,
+   "share": 0.5816,
+   "share_no_names": 0.5816,
+   "tokens": 265676,
+   "unknown": 9778
+  },
+  "lemmatizer_levels_by_type": {
+   "form": 31885,
+   "unknown": 6432
+  },
+  "ocs-ccmh": {
+   "content": 126832,
+   "content_mapped": 73764,
+   "content_no_names": 126832,
+   "content_no_names_mapped": 73764,
+   "share": 0.5816,
+   "share_no_names": 0.5816,
+   "tokens": 265676,
+   "unknown": 9778
+  }
+ },
+ "dainos": {
+  "all": {
+   "content": 232935,
+   "content_mapped": 49117,
+   "content_no_names": 212297,
+   "content_no_names_mapped": 49117,
+   "share": 0.2109,
+   "share_no_names": 0.2314,
+   "tokens": 355848,
+   "unknown": 147572
+  },
+  "lemmatizer_levels_by_type": {
+   "form": 10199,
+   "form-loose": 2870,
+   "unknown": 73721,
+   "variant": 7758,
+   "variant-loose": 1198
+  },
+  "lithuanian-bartsch-dainubalsai-1886": {
+   "content": 8886,
+   "content_mapped": 497,
+   "content_no_names": 7614,
+   "content_no_names_mapped": 497,
+   "share": 0.0559,
+   "share_no_names": 0.0653,
+   "tokens": 13725,
+   "unknown": 7733
+  },
+  "lithuanian-juskevic-dainos-1880-1883": {
+   "content": 128638,
+   "content_mapped": 24412,
+   "content_no_names": 117241,
+   "content_no_names_mapped": 24412,
+   "share": 0.1898,
+   "share_no_names": 0.2082,
+   "tokens": 197152,
+   "unknown": 86038
+  },
+  "lithuanian-leskien-brugmann-1882": {
+   "content": 45711,
+   "content_mapped": 13129,
+   "content_no_names": 42115,
+   "content_no_names_mapped": 13129,
+   "share": 0.2872,
+   "share_no_names": 0.3117,
+   "tokens": 71100,
+   "unknown": 22276
+  },
+  "lithuanian-nesselmann-1853": {
+   "content": 35864,
+   "content_mapped": 10546,
+   "content_no_names": 34083,
+   "content_no_names_mapped": 10546,
+   "share": 0.2941,
+   "share_no_names": 0.3094,
+   "tokens": 53748,
+   "unknown": 19062
+  },
+  "lithuanian-rhesa-dainos-1825-1843": {
+   "content": 11715,
+   "content_mapped": 524,
+   "content_no_names": 9329,
+   "content_no_names_mapped": 524,
+   "share": 0.0447,
+   "share_no_names": 0.0562,
+   "tokens": 17289,
+   "unknown": 10363
+  },
+  "lithuanian-schleicher-1857": {
+   "content": 2121,
+   "content_mapped": 9,
+   "content_no_names": 1915,
+   "content_no_names_mapped": 9,
+   "share": 0.0042,
+   "share_no_names": 0.0047,
+   "tokens": 2834,
+   "unknown": 2100
+  }
+ },
+ "vuk": {
+  "all": {
+   "content": 416749,
+   "content_mapped": 135951,
+   "content_no_names": 356034,
+   "content_no_names_mapped": 135951,
+   "share": 0.3262,
+   "share_no_names": 0.3818,
+   "tokens": 705329,
+   "unknown": 103291
+  },
+  "lemmatizer_levels_by_type": {
+   "form": 26596,
+   "form-loose": 7,
+   "unknown": 27423,
+   "variant": 2211
+  },
+  "serbian-vuk-wikisource": {
+   "content": 416749,
+   "content_mapped": 135951,
+   "content_no_names": 356034,
+   "content_no_names_mapped": 135951,
+   "share": 0.3262,
+   "share_no_names": 0.3818,
+   "tokens": 705329,
+   "unknown": 103291
+  }
+ }
+}

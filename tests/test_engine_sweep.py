@@ -108,7 +108,7 @@ def test_iu_neuter_dual():
 
 def test_iu_spec_overrides(lx):
     """i-u-stems.md #4, #6, #8–#13."""
-    assert lx.cells("pie-lex-deh2nu")["GEN.SG"][0] == "déh₂news"
+    assert lx.cells("pie-lex-deh2nu")["GEN.SG"][0] == "déh₂nus"   # Fortson §6.27 *déru-s (POSTCHECK 6.1)
     assert lx.cells("pie-lex-neh2us")["GEN.SG"][0] == "neh₂wés"
     assert lx.cells("pie-lex-HeHkjus", "f")["NOM.SG"][0] == "HeHḱéwih₂"
     assert lx.cells("pie-lex-pekju")["INS.SG"][0] == "pḱúh₁"
@@ -223,7 +223,65 @@ def test_reduplicated_present_3pl():
     r = cj("dʰédʰeh₁", "dʰedʰh₁")
     assert r["PRS.3PL"][0] == "dʰédʰh₁n̥ti" and r["PST.3PL"][0] == "dʰédʰh₁n̥t" and r["IMP.3PL"][0] == "dʰédʰh₁n̥tu"
     assert r["MID.PRS.3PL"][0] == "dʰédʰh₁n̥tor" and r["PRS.1PL"][0] == "dʰedʰh₁més"
-    assert r["OPT.3SG"][0] == "dʰedʰh₁ih₁t" and "dʰedʰh₁énti" in r["PRS.3PL"]
+    assert "dʰedʰh₁énti" in r["PRS.3PL"]
+
+
+# --- optative accent (fix/accent; decision in pie/morph.py's docstring and STATUS.md) -------------------------
+# One test per cell type: the primary form, and the minority form still present as an alternative.
+
+def test_optative_unaccented_weak_stem_root_present():
+    """(a) Fortson §5.57; Ringe 2006 p. 30; Beekes p. 275 *h₁s-iéh₁-m, *h₁s-ih₁-mé; Handbook ch. 41 §6.7.2."""
+    c = cj("h₁és", "h₁s")
+    assert c["OPT.3SG"][0] == "h₁syéh₁t" and c["OPT.1PL"][0] == "h₁sih₁mé" and c["OPT.3PL"][0] == "h₁sih₁ént"
+    assert c["MID.OPT.3SG"][0] == "h₁sih₁tó" and c["MID.OPT.3PL"][0] == "h₁sih₁ró"
+
+
+def test_optative_unaccented_weak_stem_root_aorist_and_perfect():
+    """(a) Ringe 2006 p. 30 *gʷm̥-yéh₁- ~ *gʷm-ih₁-, *wid-yéh₁- ~ *wid-ih₁-; Ved. vidyā́t."""
+    a = cj("gʷém", "gʷm̥", "pf")
+    assert a["OPT.3SG"][0] == "gʷm̥yéh₁t" and a["OPT.1PL"][0] == "gʷmih₁mé" and a["MID.OPT.3SG"][0] == "gʷmih₁tó"
+    p = cj("wóyd", "wid", "stat")
+    assert p["OPT.3SG"][0] == "widyéh₁t" and p["OPT.3PL"][0] == "widih₁ént"
+
+
+def test_optative_accented_weak_stem():
+    """(b) Fortson §5.57 (Narten); Ringe 2006 p. 30 *h₁éd-ih₁-; the -yeh₁- singular stays an alternative."""
+    n = cj("h₂wḗh₁", "h₂wéh₁")
+    assert n["OPT.3SG"][:2] == ["h₂wéh₁ih₁t", "h₂wéh₁yeh₁t"]
+    assert n["OPT.1PL"][0] == "h₂wéh₁ih₁me" and n["OPT.3PL"][0] == "h₂wéh₁ih₁ent" and n["MID.OPT.3SG"][0] == "h₂wéh₁ih₁to"
+    assert cj("wḗǵʰs", "wéǵʰs", "pf")["OPT.1PL"][0] == "wéǵʰsih₁me"
+
+
+def test_optative_reduplicated_singular():
+    """(c) Ringe 2006 p. 30 *dʰé-dʰh₁-ih₁-; LIV² p. 16 type 1g; Beekes p. 275 (zero grade). Alternative: the mobile
+    *dʰedʰh₁yéh₁t (Ved. act. bibhr̥yā́t)."""
+    r = cj("dʰédʰeh₁", "dʰedʰh₁")
+    assert r["OPT.3SG"][0] == "dʰédʰh₁ih₁t" and "dʰedʰh₁yéh₁t" in r["OPT.3SG"]
+    assert r["OPT.1SG"][0] == "dʰédʰh₁ih₁m̥"
+    # the mobile dédeh₃ti (weak dedh₃-, D2) and i-reduplication take the same optative
+    assert cj("dédeh₃", "dedh₃")["OPT.3SG"][0] == "dédh₃ih₁t"
+    assert cj("stísteh₂", "stisth₂")["OPT.3SG"][0] == "stísth₂ih₁t"
+
+
+def test_optative_reduplicated_plural_and_dual():
+    """(c) accent on the reduplication, ending unaccented (Ringe p. 33: the leftmost accent surfaces);
+    3pl *-ent* (Fortson §5.57). Alternative: the ending-accented dʰedʰh₁ih₁mé."""
+    r = cj("dʰédʰeh₁", "dʰedʰh₁")
+    assert r["OPT.1PL"][:2] == ["dʰédʰh₁ih₁me", "dʰedʰh₁ih₁mé"]
+    assert r["OPT.3PL"][:2] == ["dʰédʰh₁ih₁ent", "dʰedʰh₁ih₁ént"]
+    assert r["OPT.2DU"][0] == "dʰédʰh₁ih₁tom"
+
+
+def test_optative_reduplicated_middle():
+    """(c) Ved. mid. dádhīta (Handbook ch. 27 §5.4.1.2). Alternative: the ending-accented dʰedʰh₁ih₁tó."""
+    r = cj("dʰédʰeh₁", "dʰedʰh₁")
+    assert r["MID.OPT.3SG"][0] == "dʰédʰh₁ih₁to" and "dʰedʰh₁ih₁tó" in r["MID.OPT.3SG"]
+    assert r["MID.OPT.3PL"][:2] == ["dʰédʰh₁ih₁ro", "dʰedʰh₁ih₁ró"]
+
+
+def test_optative_thematic_unchanged():
+    """Fortson §5.57; L&Y §4.2.4.3: *-o-ih₁- on the accented thematic stem."""
+    assert cj("bʰére")["OPT.3SG"][0] == "bʰéroyh₁t"
 
 
 def test_narten_and_s_aorist_subjunctive_on_the_e_grade():
@@ -356,3 +414,29 @@ def test_regressions_found_by_the_dry_rerealization(lx):
     c = resolve({"first": "pie-lex-neh2us", "second": "pie-lex-wiHros", "type": "determinative"}, lx)
     assert c.first_form == "néh₂u"
     assert lx.cells("pie-lex-neh2us")["VOC.SG"][0] == "néh₂u"
+
+
+def test_acrostatic_neuter_u_stem_genitive(lx):
+    """POSTCHECK 6.1: the dóru type has gen. *déru-s (Fortson §6.27); the full-grade *-ew-s stays second."""
+    c = lx.cells("pie-lex-deh2nu")
+    assert c["GEN.SG"] == ["déh₂nus", "déh₂news"] and c["ABL.SG"][0] == "déh₂nus"
+    assert c["DAT.SG"][0] == "déh₂newey"
+
+
+def test_boukolos_scope_is_one_rule_in_every_paradigm(lx):
+    """POSTCHECK 6.2; phon.boukolos: the handbook keeps kʷ before syllabic u in every declension and conjugation
+    (M&A *pérkʷus p. 160, *perkʷunos; Handbook ch. 121 rule only after u); the Wiktionary scope is the alternative."""
+    assert lx.cells("pie-lex-perkus")["NOM.SG"] == ["pérkʷus", "pérkus"]          # u-stem, like the thematic
+    assert lx.cells("pie-lex-perkwunos")["NOM.SG"] == ["pérkʷunos", "pérkunos"]   # pérkʷunos
+    assert lx.cells("pie-lex-kjmtogwus")["NOM.SG"][:2] == ["ḱm̥tógʷus", "ḱm̥tógus"]
+    assert lx.cells("pie-lex-gwunewti")["PRS.3SG"][:2] == ["gʷunéwti", "gunéwti"]   # verbs too
+    assert lx.cells("pie-lex-gwuHeti")["PRS.3SG"][0] == "gʷuHéti"
+    # next to consonantal w the rule applies in the handbook convention as well (*gʷow-kʷolos → boukólos)
+    assert conjugate(VerbSpec("linékʷ", "linkʷ"), "handbook")["MID.PRS.1DU"][0].startswith("linkw")
+    # the Wiktionary convention keeps the module's full scope
+    assert decline(NounSpec("pérkʷu", None, "proterokinetic"), "wiktionary", alternatives=False)["NOM.SG"] == ["pérkus"]
+
+
+def test_i_stem_locative_keeps_a_suffix_accent():
+    """Accent invariant (fix/accent): the accent of a suffix-accented i-stem moves to the full-grade -ēy/-ey."""
+    assert decline(NounSpec("trí", "tri", "amphikinetic"), "handbook")["LOC.SG"][:2] == ["trḗy", "tréy"]
