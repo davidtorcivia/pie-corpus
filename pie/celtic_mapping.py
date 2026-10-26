@@ -1736,6 +1736,17 @@ for _form, _rules in {
     IR_REVIEWED_CONTEXT.setdefault(_form, []).extend(_rules)
 
 
+# Wave-8 source/dictionary evidence: error-verdicts-w8-celtic.jsonl.
+# The preposition-plus-possessive forms retain the preposition's function status.
+for _form, _rules in {
+    'foda': [(('fothlocht fann',), ('for a lár',), 'fota', False)],
+    'rena': [(('sé féin',), ('fáistine',), 'fri', False)],
+    'áidchi': [(('láe nó',), ('ar in ríg',), 'adaig@night', False)],
+    'ret': [(('nó',), ('buimme', 't aiti'), 'fri', False)],
+}.items():
+    IR_REVIEWED_CONTEXT.setdefault(_form, []).extend(_rules)
+
+
 def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
     """Lemmas for a word sequence: `lemz(w)` for each word, except that a form in CONTEXT_FORMS takes the
     lemma its preceding word selects (tig after isin / i / ina / dia … → tech 'house'). Stage C should use

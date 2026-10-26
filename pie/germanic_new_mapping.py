@@ -259,7 +259,7 @@ def menota_words(path: Path, doc: str) -> list[MenotaWord]:
     from pie.material_units import repair_menota_words
     out = repair_menota_words(out)
     # Source-verified material repairs, not general verse deduplication.
-    for wave in (3, 4, 5):
+    for wave in (3, 4, 5, 8):
         repairs = path.parents[4] / f"data/research/formulas/menota-material-w{wave}.json" if len(path.parents) > 4 else None
         if not repairs or not repairs.exists():
             continue
@@ -291,7 +291,7 @@ def menota_reviewed_tokens(root: Path = ROOT) -> dict:
     from changing the analysis of the same surface form elsewhere.
     """
     rows = []
-    for wave in (2, 3, 4, 5, 6, 7):
+    for wave in (2, 3, 4, 5, 6, 7, 8):
         path = Path(root) / f"data/research/formulas/menota-reviewed-w{wave}.json"
         if path.exists():
             rows.extend(json.loads(path.read_text("utf-8")))
@@ -299,11 +299,21 @@ def menota_reviewed_tokens(root: Path = ROOT) -> dict:
             for r in rows}
 
 
-def reviewed_menota_token(w: MenotaWord, lemma: str, msa: str, rules: dict) -> tuple[str, str]:
+def reviewed_menota_token(w: MenotaWord, lemma: str, msa: str, rules: dict,
+                          votes: collections.Counter | None = None,
+                          min_votes: int = 3) -> tuple[str, str]:
     key = (w.doc, w.folio, w.line, w.form)
     row = rules.get((*key, w.occurrence), rules.get(key))
     if row and lemma == row["given_lemma"]:
         return row["lemma"], row["tag"]
+    # An unannotated lowercase homograph is not securely a name when a
+    # common-word reading independently meets the form table's vote floor.
+    # Abstain rather than promote the minority reading to a certain lemma.
+    # Explicit coordinate reviews above and source NP tags remain authoritative.
+    if not w.lemma and msa == "NP" and w.form.islower() and votes:
+        if any(n >= min_votes and tag in {"NC", "AJ", "VB", "AV", "PD", "PP", "DQ"}
+               for (_, tag), n in votes.items()):
+            return "?" + menota_form_key(w.form), ""
     # Retain the previously reviewed personal-name exceptions.
     names = {"án", "hróðný", "gunnarr", "eyvindr", "kári", "freyr", "bjarni", "bróðir",
              "haraldr", "mímir", "yngvi", "einarr", "sveinn", "finnr", "alfr", "ósló",
@@ -329,10 +339,9 @@ def annotated_norse_lemma(lemma: str, tag: str, corpus: str = "menota") -> str:
     Qualified names remain unmapped unless an explicit override permits them.
     """
     if re.fullmatch(r"NP|NPRS?(?:-[NADG])?", tag):
-        # Reviewed personal homographs: Hjǫrtr (Gunnarr's brother) and
-        # Jökull (Finnboga saga), not the deer/ice common nouns or a
-        # first-person-pronoun spelling match. Wave-7 Norse ledger.
-        if fm.key_non(lemma) in {"hjörtr", "jökull"}:
+        # Individually reviewed personal homographs (wave-7/8 ledgers),
+        # not a general narrowing of the inherited-theonym exemption.
+        if fm.key_non(lemma) in REVIEWED_NORSE_PERSONAL_HOMOGRAPHS:
             return lemma + " (name)"
         from .name_mapping import name_lemma
         return name_lemma(corpus, lemma)
@@ -341,6 +350,17 @@ def annotated_norse_lemma(lemma: str, tag: str, corpus: str = "menota") -> str:
         return {"síða": "síða@side", "vit": "vit@understanding",
                 "reka": "reka@shovel"}.get(lemma, lemma)
     return lemma
+
+
+REVIEWED_NORSE_PERSONAL_HOMOGRAPHS = {
+    "hjörtr": "Gunnarr's brother, not deer (wave 7).",
+    "jökull": "Finnboga saga personal name, not ice (wave 7).",
+    "unnr": "Daughter returning with her father, AM-162-B-alfa-fol 1v:2.",
+    "vagn": "Vagn Akason, the bound prisoner, AM-35-fol 299-300.",
+    "barði": "Named speaker addressed by Grettir, IcePaHC Grettir s1736/s1738.",
+    "hafr": "Named arbitrator Hafr inn spaki, Njals saga 42v:38.",
+    "ormur": "Person receiving Gissur, IcePaHC Sturlunga s480.",
+}
 
 
 def icepahc_reviewed_tokens(root: Path = ROOT) -> dict:
@@ -391,9 +411,11 @@ def load_menota(root: Path = ROOT, languages=WEST_NORSE, min_share: float = 2 / 
                 src = "form-table" if not lem.startswith("?") else "unknown"
             elif not lem:
                 continue
-            corrected, tag = reviewed_menota_token(w, lem, msa, reviewed)
+            corrected, tag = reviewed_menota_token(
+                w, lem, msa, reviewed, votes.get(menota_form_key(w.form)), min_votes)
             if (corrected, tag) != (lem, msa):
-                lem, msa, src = corrected, tag, "reviewed"
+                lem, msa = corrected, tag
+                src = "unknown" if lem.startswith("?") else "reviewed"
             if msa == "FW" or lem in ("Latin.expression", "unass.", "?"):
                 continue
             pos = MENOTA_CONTENT.get(msa, "other")

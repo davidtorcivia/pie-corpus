@@ -228,6 +228,11 @@ class Unit:
     research_only: bool = False
     pid: str = ""
 
+    @property
+    def emendations(self):
+        from pie.material_units import reading_emendations
+        return reading_emendations(self.corpus, self.locus, self.text)
+
 
 def _units_from_tokens(corpus, toks, unit, book_of, surfaces, mapping, licence_of):
     """Tokens → ordered Units. mapping: lemma → lex ids; gmap applied by caller via `groups`."""
@@ -511,6 +516,7 @@ def _etymon(ids, by_id, qualification=None):
 
 def _line(u: Unit, role: str, by_id) -> dict:
     return {"role": role, "locus": u.locus, "text": u.text,
+            **({"emendations": u.emendations} if u.emendations else {}),
             "words": [{"form": f, "lemma": lem,
                        "etymon": _etymon(ids, by_id, getattr(u, "qualifications", {}).get(lem))}
                       for f, lem, ids in u.words]}

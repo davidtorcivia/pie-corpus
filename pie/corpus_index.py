@@ -18,7 +18,12 @@ def _pack(record):
 
 
 def _unpack(blob):
-    return json.loads(zlib.decompress(blob))
+    record = json.loads(zlib.decompress(blob))
+    from .material_units import reading_emendations
+    annotations = reading_emendations(record.get("corpus", ""), record.get("locus", ""), record.get("text", ""))
+    if annotations:
+        record["emendations"] = annotations
+    return record
 
 
 def build_index(path: Path, records) -> int:

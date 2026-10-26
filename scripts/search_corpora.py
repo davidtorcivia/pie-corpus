@@ -62,6 +62,7 @@ def build(path, cache_dir):
                 mask = classes[corpus][ordinal]
                 yield dict(corpus=corpus, branch=stage.SB.CORPORA[corpus][0],
                            key=unit.key, locus=unit.locus, book=str(unit.book), ordinal=ordinal,
+                           emendations=unit.emendations,
                            text=unit.text, words=[dict(form=f, lemma=l, root_ids=list(ids),
                                root_groups=sorted({groups.get(r, r) for r in ids})) for f, l, ids in unit.words],
                            root_ids=sorted({r for _, _, ids in unit.words for r in ids}),
@@ -73,6 +74,11 @@ def build(path, cache_dir):
                            class_mask=mask, main_class_mask=classifier(corpus, unit),
                            layer_status="included" if mask else "excluded", thin_corpus=corpus in thin)
     return build_index(path, records())
+
+
+def reading_flags(record):
+    return "".join(f" [emended {a['form']}; source: {a['source_reading'] or 'unspecified'}]"
+                   for a in record.get("emendations", []))
 
 
 def main(argv=None):
@@ -111,9 +117,9 @@ def main(argv=None):
                     if args.json:
                         print(json.dumps(hit, ensure_ascii=False))
                     else:
-                        print(f"{hit['corpus']} | {hit['locus']} | {hit['layer_status']} | {hit['licence_tag']}: {hit['text']}")
+                        print(f"{hit['corpus']} | {hit['locus']} | {hit['layer_status']} | {hit['licence_tag']}: {hit['text']}{reading_flags(hit)}")
                         for neighbour in hit.get("context", []):
-                            print(f"  {neighbour['locus']}: {neighbour['text']}")
+                            print(f"  {neighbour['locus']}: {neighbour['text']}{reading_flags(neighbour)}")
         finally:
             index.close()
     except (ValueError, re.error, sqlite3.Error, OSError) as exc:

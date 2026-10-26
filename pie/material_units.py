@@ -18,7 +18,7 @@ RULES = ROOT / "data/research/8c/stageCS/material-unit-rules.json"
 @lru_cache(maxsize=1)
 def reviewed_ranges():
     rows = json.loads(RULES.read_text(encoding="utf-8"))
-    for name in ('material-unit-rules-w6-other.json', 'material-unit-rules-w7-other.json'):
+    for name in ('material-unit-rules-w6-other.json', 'material-unit-rules-w7-other.json', 'material-unit-rules-w8-other.json'):
         extra = RULES.with_name(name)
         if extra.exists():
             rows += json.loads(extra.read_text(encoding='utf-8'))
@@ -247,6 +247,10 @@ def repair_celtic_rows(rows: list[dict]) -> list[dict]:
     for original in rows:
         d = dict(original)
         uid, text = d["id"], d["text"]
+        # W8 Celtic: quotation-initial preterite, not a personal name.
+        # CELT G301012.xml:4293; Kaikki Old Irish doicc (2825).
+        if uid == "G301012:#1/#2/#52:26":
+            text = text.replace("Táinic buiden", "táinic buiden")
         # W6 Celtic review: sentence/quotation-initial verbs inside flattened
         # units are not names. Normalize only these reviewed capitals before
         # the loader's medial-capital heuristic; raw text remains unchanged.
@@ -405,3 +409,36 @@ def byliny_page_material(lines: list[str]) -> dict[int, str]:
                 if j not in protected and len(_RU_WORD.findall(lines[j])) >= 9 and critical.search(normal[j]):
                     out[j] = 'notes-section-prose'
     return out
+
+
+# Harrison & Sharp, pg9701: notes/glossary identify adopted emendations.
+# Coordinates refer to poem lines, not OCR numbering. No normalization-only
+# accent/hyphen changes or unadopted apparatus proposals are included.
+_ANG_EMENDATIONS = {
+    ('Finn. 39', 'swētne'): ('hwitne', 'Finnsburh 39; Hickes transcript; Tolkien, Finn and Hengest, commentary to line 39'),
+    ('Beo. 105', 'won-sǣlig'): ('won-sǣli', 'Harrison & Sharp, note to 105'),
+    ('Beo. 218', 'fāmig-heals'): ('fāmi-heals', 'Harrison & Sharp, note to 218'),
+    ('Beo. 281', 'bōt'): ('', 'Harrison & Sharp, glossary s.v. bōt'),
+    ('Beo. 299', 'Gūð-fremmendra'): ('gōd-fremmendra', 'Harrison & Sharp, note to 299'),
+    ('Beo. 367', 'glædnian'): ('glædman', 'Harrison & Sharp, note to 367'),
+    ('Beo. 443', 'Gēatena'): ('Geotena', 'Harrison & Sharp, note to 443'),
+    ('Beo. 499', 'Unferð'): ('Hunferð', 'Harrison & Sharp, note to 499'),
+    ('Beo. 770', 'ealu-scerwen'): ('cerwen', 'Harrison & Sharp, note to 770 (second compound member)'),
+    ('Beo. 1021', 'bearn'): ('brand', 'Harrison & Sharp, glossary s.v. brand'),
+    ('Beo. 1279', 'dēað'): ('þeod', 'Harrison & Sharp, note to 1279'),
+    ('Beo. 1364', 'hrīmge'): ('hrinde', 'Harrison & Sharp, note to 1364'),
+    ('Beo. 1460', 'āter-tēarum'): ('', 'Harrison & Sharp, glossary s.v. tān (compound lemma āter-tān); Gutenberg correction'),
+    ('Beo. 2210', 'wintru'): ('wintra', 'Harrison & Sharp, note to 2210'),
+    ('Beo. 2247', 'fēa'): ('fec', 'Harrison & Sharp, note to 2247'),
+    ('Beo. 2688', 'wundrum'): ('wundum', 'Harrison & Sharp, note to 2688'),
+}
+
+
+def reading_emendations(corpus: str, locus: str, text: str) -> list[dict]:
+    """Verified adopted readings only; preserve the edition text and mapping."""
+    if corpus != 'ang':
+        return []
+    return [dict(form=form, status='emended', source_reading=old, citation=cite)
+            for (loc, form), (old, cite) in _ANG_EMENDATIONS.items()
+            if locus.split(' (w')[0] == loc and
+            re.search(r'(?<!\w)' + re.escape(form) + r'(?!\w)', text)]

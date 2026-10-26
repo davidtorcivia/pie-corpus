@@ -1,0 +1,796 @@
+{
+ "changed_tokens": 421,
+ "counts_per_rule": {
+  "reviewed-personal-homograph": 120,
+  "coordinate-review": 92,
+  "inferred-NP-abstention": 203,
+  "material-repair": 6
+ },
+ "samples_per_rule": {
+  "reviewed-personal-homograph": [
+   {
+    "corpus": "menota",
+    "locus": "AM-132-fol-Laxdaela-saga 157v:33",
+    "form": "Unnr",
+    "occurrence": 0,
+    "old": {
+     "lemma": "unnr",
+     "tag": "NP",
+     "content": true,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "unnr (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "rule": "reviewed-personal-homograph"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-132-fol-Njals-saga 42v:40",
+    "form": "Hafr",
+    "occurrence": 0,
+    "old": {
+     "lemma": "hafr",
+     "tag": "NP",
+     "content": true,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "hafr (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "rule": "reviewed-personal-homograph"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-132-fol-Njals-saga 43r:15",
+    "form": "Hafr",
+    "occurrence": 0,
+    "old": {
+     "lemma": "hafr",
+     "tag": "NP",
+     "content": true,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "hafr (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "rule": "reviewed-personal-homograph"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-132-fol-Laxdaela-saga 157r:3",
+    "form": "Unnr",
+    "occurrence": 0,
+    "old": {
+     "lemma": "unnr",
+     "tag": "NP",
+     "content": true,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "unnr (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "rule": "reviewed-personal-homograph"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-132-fol-Laxdaela-saga 157v:14",
+    "form": "Unnr",
+    "occurrence": 0,
+    "old": {
+     "lemma": "unnr",
+     "tag": "NP",
+     "content": true,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "unnr (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "rule": "reviewed-personal-homograph"
+   },
+   {
+    "corpus": "icepahc",
+    "locus": "1310.grettir.nar-sag s1686",
+    "form": "Barði",
+    "occurrence": 0,
+    "old": {
+     "lemma": "barði",
+     "tag": "NPR-N",
+     "content": true,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "barði (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "pos": "noun"
+    },
+    "rule": "reviewed-personal-homograph"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-132-fol-Laxdaela-saga 157r:13",
+    "form": "Unnar",
+    "occurrence": 0,
+    "old": {
+     "lemma": "unnr",
+     "tag": "NP",
+     "content": true,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "unnr (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "rule": "reviewed-personal-homograph"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-132-fol-Laxdaela-saga 157r:19",
+    "form": "Unni",
+    "occurrence": 0,
+    "old": {
+     "lemma": "unnr",
+     "tag": "NP",
+     "content": true,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "unnr (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "rule": "reviewed-personal-homograph"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-132-fol-Laxdaela-saga 157r:32",
+    "form": "Unnr",
+    "occurrence": 0,
+    "old": {
+     "lemma": "unnr",
+     "tag": "NP",
+     "content": true,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "unnr (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "rule": "reviewed-personal-homograph"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-132-fol-Laxdaela-saga 157v:39",
+    "form": "Unnar",
+    "occurrence": 0,
+    "old": {
+     "lemma": "unnr",
+     "tag": "NP",
+     "content": true,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "unnr (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "rule": "reviewed-personal-homograph"
+   }
+  ],
+  "coordinate-review": [
+   {
+    "corpus": "menota",
+    "locus": "AM-35-fol 299:",
+    "form": "Vagn",
+    "occurrence": 0,
+    "old": {
+     "lemma": "vagn",
+     "tag": "NC",
+     "content": true,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "vagn (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "rule": "coordinate-review"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-36-fol 429:29",
+    "form": "víso",
+    "occurrence": 0,
+    "old": {
+     "lemma": "víss",
+     "tag": "AJ",
+     "content": true,
+     "pos": "adj"
+    },
+    "new": {
+     "lemma": "vísa@stanza",
+     "tag": "NC",
+     "content": true,
+     "pos": "noun"
+    },
+    "rule": "coordinate-review"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-36-fol 505:29",
+    "form": "Ber",
+    "occurrence": 0,
+    "old": {
+     "lemma": "bera",
+     "tag": "VB",
+     "content": true,
+     "pos": "verb"
+    },
+    "new": {
+     "lemma": "berja",
+     "tag": "VB",
+     "content": true,
+     "pos": "verb"
+    },
+    "rule": "coordinate-review"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-302-fol 42r:10",
+    "form": "aflaz",
+    "occurrence": 0,
+    "old": {
+     "lemma": "aflát",
+     "tag": "NC",
+     "content": true,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "afla@acquire",
+     "tag": "VB",
+     "content": true,
+     "pos": "verb"
+    },
+    "rule": "coordinate-review"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-302-fol 9v:9",
+    "form": "sæli",
+    "occurrence": 0,
+    "old": {
+     "lemma": "sǽll",
+     "tag": "AJ",
+     "content": true,
+     "pos": "adj"
+    },
+    "new": {
+     "lemma": "selja",
+     "tag": "VB",
+     "content": true,
+     "pos": "verb"
+    },
+    "rule": "coordinate-review"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-78-4to 60v:7",
+    "form": "man",
+    "occurrence": 0,
+    "old": {
+     "lemma": "munu",
+     "tag": "VB",
+     "content": true,
+     "pos": "verb"
+    },
+    "new": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "content": true,
+     "pos": "noun"
+    },
+    "rule": "coordinate-review"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-242-fol 27:25",
+    "form": "dyr",
+    "occurrence": 0,
+    "old": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "content": true,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "dyrr",
+     "tag": "NC",
+     "content": true,
+     "pos": "noun"
+    },
+    "rule": "coordinate-review"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-302-fol 19r:11",
+    "form": "æggiar",
+    "occurrence": 0,
+    "old": {
+     "lemma": "eggia",
+     "tag": "VB",
+     "content": true,
+     "pos": "verb"
+    },
+    "new": {
+     "lemma": "egg@edge",
+     "tag": "NC",
+     "content": true,
+     "pos": "noun"
+    },
+    "rule": "coordinate-review"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-302-fol 57r:10",
+    "form": "man",
+    "occurrence": 0,
+    "old": {
+     "lemma": "munu",
+     "tag": "VB",
+     "content": true,
+     "pos": "verb"
+    },
+    "new": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "content": true,
+     "pos": "noun"
+    },
+    "rule": "coordinate-review"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-35-fol 363:",
+    "form": "goða",
+    "occurrence": 0,
+    "old": {
+     "lemma": "góðr",
+     "tag": "AJ",
+     "content": true,
+     "pos": "adj"
+    },
+    "new": {
+     "lemma": "goði",
+     "tag": "NC",
+     "content": true,
+     "pos": "noun"
+    },
+    "rule": "coordinate-review"
+   }
+  ],
+  "inferred-NP-abstention": [
+   {
+    "corpus": "menota",
+    "locus": "AM-302-fol 84v:10",
+    "form": "barðr",
+    "occurrence": 0,
+    "old": {
+     "lemma": "bárðr (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "?barðr",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "rule": "inferred-NP-abstention"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-36-fol 346:03",
+    "form": "bolla",
+    "occurrence": 0,
+    "old": {
+     "lemma": "bolli (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "?bolla",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "rule": "inferred-NP-abstention"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-36-fol 386:06",
+    "form": "svæins",
+    "occurrence": 0,
+    "old": {
+     "lemma": "Sveinn (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "?svæins",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "rule": "inferred-NP-abstention"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-242-fol 73:3",
+    "form": "æínar",
+    "occurrence": 0,
+    "old": {
+     "lemma": "Einarr (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "?æinar",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "rule": "inferred-NP-abstention"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-242-fol 81:26",
+    "form": "helga",
+    "occurrence": 0,
+    "old": {
+     "lemma": "helgi (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "?helga",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "rule": "inferred-NP-abstention"
+   },
+   {
+    "corpus": "menota",
+    "locus": "DG-8-MLL 30r:27",
+    "form": "kol",
+    "occurrence": 0,
+    "old": {
+     "lemma": "kolr (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "?kol",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "rule": "inferred-NP-abstention"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-242-fol 155:9",
+    "form": "bolla",
+    "occurrence": 0,
+    "old": {
+     "lemma": "bolli (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "?bolla",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "rule": "inferred-NP-abstention"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-242-fol 42:3",
+    "form": "ketil",
+    "occurrence": 0,
+    "old": {
+     "lemma": "ketill (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "?ketil",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "rule": "inferred-NP-abstention"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-242-fol 75:25",
+    "form": "æínar",
+    "occurrence": 0,
+    "old": {
+     "lemma": "Einarr (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "?æinar",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "rule": "inferred-NP-abstention"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-305-fol 19r:27",
+    "form": "rane",
+    "occurrence": 0,
+    "old": {
+     "lemma": "Rani (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "?rane",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "rule": "inferred-NP-abstention"
+   }
+  ],
+  "material-repair": [
+   {
+    "corpus": "menota",
+    "locus": "AM-36-fol 113:",
+    "form": "rǫðu",
+    "occurrence": 0,
+    "old": null,
+    "new": {
+     "lemma": "rǿða",
+     "tag": "NC",
+     "content": true,
+     "pos": "noun"
+    },
+    "rule": "material-repair"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-36-fol 220:",
+    "form": "føogon;ri",
+    "occurrence": 0,
+    "old": {
+     "lemma": "?foogonri",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "new": null,
+    "rule": "material-repair"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-36-fol 275:23",
+    "form": "hann",
+    "occurrence": 0,
+    "old": null,
+    "new": {
+     "lemma": "hann",
+     "tag": "PE",
+     "content": false,
+     "pos": "other"
+    },
+    "rule": "material-repair"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-36-fol 113:",
+    "form": "røogon;þo",
+    "occurrence": 0,
+    "old": {
+     "lemma": "?roogonþo",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "new": null,
+    "rule": "material-repair"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-36-fol 275:23",
+    "form": "hannstað",
+    "occurrence": 0,
+    "old": {
+     "lemma": "?hannstað",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "new": null,
+    "rule": "material-repair"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-36-fol 275:23",
+    "form": "stað",
+    "occurrence": 0,
+    "old": null,
+    "new": {
+     "lemma": "staðr",
+     "tag": "NC",
+     "content": true,
+     "pos": "noun"
+    },
+    "rule": "material-repair"
+   }
+  ]
+ },
+ "inferred_np_guard": {
+  "before": 203,
+  "after": 0,
+  "meaning": "lowercase inferred NP tokens with a competing common-word reading of at least 3 votes",
+  "sample": [
+   {
+    "corpus": "menota",
+    "locus": "AM-242-fol 113:3",
+    "form": "mar",
+    "occurrence": 0,
+    "old": {
+     "lemma": "már (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "?mar",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "rule": "inferred-NP-abstention"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-242-fol 142:22",
+    "form": "mar",
+    "occurrence": 0,
+    "old": {
+     "lemma": "már (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "?mar",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "rule": "inferred-NP-abstention"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-242-fol 148:25",
+    "form": "mar",
+    "occurrence": 0,
+    "old": {
+     "lemma": "már (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "?mar",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "rule": "inferred-NP-abstention"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-242-fol 38:20",
+    "form": "mar",
+    "occurrence": 0,
+    "old": {
+     "lemma": "már (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "?mar",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "rule": "inferred-NP-abstention"
+   },
+   {
+    "corpus": "menota",
+    "locus": "AM-242-fol 56:13",
+    "form": "mar",
+    "occurrence": 0,
+    "old": {
+     "lemma": "már (name)",
+     "tag": "NP",
+     "content": false,
+     "pos": "noun"
+    },
+    "new": {
+     "lemma": "?mar",
+     "tag": "",
+     "content": true,
+     "pos": "other"
+    },
+    "rule": "inferred-NP-abstention"
+   }
+  ],
+  "skula_votes": [
+   [
+    "skúli",
+    "NP",
+    4
+   ],
+   [
+    "Skúli",
+    "NP",
+    1
+   ]
+  ],
+  "skula_note": "No common-word votes exist in current table, so the queued skula example does not meet this guard. No lexical guess added."
+ },
+ "validation": {
+  "full_suite": "uv run pytest -q: 3057 passed in 492.46s",
+  "norse_regressions": "82 passed",
+  "fresh_loader": "All Menota and pre-1401 IcePaHC tokens matched the audited output in a fresh process; every confirmed report correction checked at its relocated source coordinate.",
+  "table_diff": "12 Menota rows changed; IcePaHC table unchanged. All changes match the causal pre/post builder delta.",
+  "coordination": "ps showed other workers running tests/verification rather than editors; tracked inputs stable before starting full suite. Another worker changed pie/material_units.py during the successful run; fresh-process material and wave-8 regressions run afterward.",
+  "fresh_material_and_wave8_regressions": "28 passed in 1.73s after the concurrent material_units.py change"
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "menota": {
+  "changed": [
+   "at-sókn",
+   "gerði",
+   "goði",
+   "hamarr",
+   "máttr",
+   "nyt@yield",
+   "sá@demonstrative",
+   "sókn",
+   "vanmáttr",
+   "vist@provisions",
+   "vist@stay",
+   "yfirsókn"
+  ],
+  "unreviewed_gains_excluded": [],
+  "unrelated_builder_drift_preserved": 174,
+  "propagated_base_decisions": {
+   "at-sókn": "sókn nominal derivative cap",
+   "yfirsókn": "sókn nominal derivative cap",
+   "vanmáttr": "máttr nominal derivative cap"
+  },
+  "validation": "Compared a pre-change and post-change build using the same dictionary mapping object; preserved 174 unrelated pre-existing table differences. All 12 changed rows are review decisions, new reviewed senses, or propagation of reviewed base decisions. IcePaHC stored rows unchanged."
+ },
+ "icepahc": {
+  "changed": [],
+  "unreviewed_gains_excluded": [],
+  "unrelated_builder_drift_preserved": 1628
+ }
+}

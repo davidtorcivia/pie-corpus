@@ -1,0 +1,122 @@
+{
+ "note": "Wave-8 Norse reviewed senses and derivative ancestry; source citations in own ledger.",
+ "lemma": [
+  {
+   "corpus": "menota",
+   "lemma": "fat@clothes",
+   "lex_id": [],
+   "note": "Zoega fat, plural föt, garments: https://norse.ulver.com/dct/zoega/f.html. AM-78-4to 16v:26 clothes worn riding or seated. Exclude the accent-folded fótr foot path; no replacement PIE equation asserted.",
+   "erratum": "Wave-8 independent Norse source/dictionary verification; error-verdicts-w8-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "nyt@yield",
+   "lex_id": [
+    "pie-root-newd-use"
+   ],
+   "note": "Zoega nyt milk/yield and Icelandic Kaikki nyt < Old Norse nyt < *nutjō. AM-302-fol 77r:11 cow yield; use root only, exclude *newd- push.",
+   "erratum": "Wave-8 independent Norse source/dictionary verification; error-verdicts-w8-norse.jsonl.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "full@cup",
+   "lex_id": [],
+   "note": "Zoega full noun contents of a drinking vessel, https://norse.ulver.com/dct/zoega/f.html. AM-35-fol 184 signing a cup. Separate the substantive; no new exact PIE equation asserted.",
+   "erratum": "Wave-8 independent Norse source/dictionary verification; error-verdicts-w8-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "sá@demonstrative",
+   "lex_id": [
+    "pie-lex-so"
+   ],
+   "note": "Kaikki sá pronoun < PGmc *sa < PIE *só; AM-242-fol 167:26 demonstrative before relative clause, not sow.",
+   "erratum": "Wave-8 independent Norse source/dictionary verification; error-verdicts-w8-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vist@stay",
+   "lex_id": [
+    "pie-root-h2wes-dwell"
+   ],
+   "note": "Kaikki vist distinguishes stay/abode from food; AM-56-4to 18r:16 residence and 68v:5 presence. Root ancestry only.",
+   "erratum": "Wave-8 independent Norse source/dictionary verification; error-verdicts-w8-norse.jsonl.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vist@provisions",
+   "lex_id": [
+    "pie-root-wes-graze"
+   ],
+   "note": "Kaikki vist food/provisions < *wistiz < *wesaną graze; AM-63-fol 414 two days provisions. Root ancestry only.",
+   "erratum": "Wave-8 independent Norse source/dictionary verification; error-verdicts-w8-norse.jsonl.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "verja@defend",
+   "lex_id": [],
+   "note": "Kaikki verja distinguishes *warjaną defend from *wazjaną clothe. AM-56-4to 65v:19 armed resistance; exclude clothing/sensing equations, no replacement PIE equation asserted.",
+   "erratum": "Wave-8 independent Norse source/dictionary verification; error-verdicts-w8-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "stefna@summon",
+   "lex_id": [],
+   "note": "Zoega stefna verb summon, https://norse.ulver.com/dct/zoega/s.html; Icelandic Kaikki stefna fixed meeting/time. AM-36-fol 544:29 summons to a king; exclude mouth lexeme, no replacement PIE equation asserted.",
+   "erratum": "Wave-8 independent Norse source/dictionary verification; error-verdicts-w8-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hamarr",
+   "lex_id": [
+    "pie-lex-h2ekjmox"
+   ],
+   "note": "Kaikki Old Norse hamarr < *hamaraz < *h₂eḱmoros, derivative of *h₂éḱmō stone. AM-35-fol 184 hammer sign. Preserve derivative ancestry, not whole-word identity.",
+   "erratum": "Wave-8 independent Norse source/dictionary verification; error-verdicts-w8-norse.jsonl.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "máttr",
+   "lex_id": [
+    "pie-lex-memoghe"
+   ],
+   "note": "Kaikki máttr *mahtiz from *maganą plus nominal suffix, or PIE *mógʰtis; AM-35-fol 184 noun might. Existing perfect-base ancestry is derivative, not an exact finite perfect.",
+   "erratum": "Wave-8 independent Norse source/dictionary verification; error-verdicts-w8-norse.jsonl.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "sókn",
+   "lex_id": [
+    "pie-lex-seh2gyeti"
+   ],
+   "note": "Kaikki Icelandic sókn < Old Norse sókn < *sōkniz; Zoega sókn attack. AM-36-fol 64 noun paired with seeking/attacking verb. Retain verbal-base ancestry only as derivative.",
+   "erratum": "Wave-8 independent Norse source/dictionary verification; error-verdicts-w8-norse.jsonl.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "goði",
+   "lex_id": [
+    "pie-lex-gjhutos"
+   ],
+   "note": "Kaikki goði < *gudjô, related to god *gudą; AM-35-fol 363 priest title. The god lexeme is a base of the agent noun, not whole-word identity.",
+   "erratum": "Wave-8 independent Norse source/dictionary verification; error-verdicts-w8-norse.jsonl.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "gerði",
+   "lex_id": [
+    "pie-lex-ghordhos"
+   ],
+   "note": "Kaikki gerði fenced field derives from garðr < *gardaz. AM-302-fol 63v:9/11 enclosure; retain base ancestry as derivative.",
+   "erratum": "Wave-8 independent Norse source/dictionary verification; error-verdicts-w8-norse.jsonl.",
+   "formation": "derivative"
+  }
+ ]
+}

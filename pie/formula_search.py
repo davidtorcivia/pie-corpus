@@ -270,6 +270,11 @@ class Token:
     rel: str | None = None
     roots: frozenset = frozenset()
 
+    @property
+    def emendations(self):
+        from .material_units import reading_emendations
+        return reading_emendations(self.corpus, self.locus, self.surface)
+
     def __post_init__(self):
         from .w6_other_mapping import annotated_name
         if annotated_name(self.corpus, self.lemma, self.pos):
@@ -289,6 +294,9 @@ class Token:
             from .w7_other_mapping import armenian_name
             if armenian_name(self.lemma, self.surface, self.locus):
                 self.content = False
+        from .w8_other_mapping import READINGS
+        if (self.corpus, self.locus, self.surface) in READINGS and self.lemma.endswith(" (name)"):
+            self.content, self.pos = False, "name"
         if self.corpus == "xcl" and self.lemma == "34@numeral":
             self.content, self.pos = False, "other"
 

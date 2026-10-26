@@ -1796,7 +1796,7 @@ def text_tokens(corpus: str, units, lemmatize, is_content) -> list[Token]:
             # These legacy tokens store surfaces separately; disambiguate
             # while the source form is still available (e.g. Latvian vilka).
             lem = fs.contextual_lemma(corpus, lem, w, locus)
-            toks.append(Token(corpus, lem, "", locus, u, is_content(lem), "other"))
+            toks.append(Token(corpus, lem, w if corpus == "ang" else "", locus, u, is_content(lem), "other"))
     return toks
 
 
@@ -1874,7 +1874,12 @@ def beowulf_lines(root: Path = ROOT) -> list[tuple[str, dict, str]]:
         m = re.match(r"^(\d+)\s+", s)
         n = int(m[1]) if m else n + 1          # the edition prints every fifth line number
         s = s[m.end():] if m else s
-        out.append((f"{poem} {n}", {"line": f"{poem}{n}", "book": poem}, s))
+        from .material_units import reading_emendations
+        annotations = reading_emendations("ang", f"{poem} {n}", s)
+        u = {"line": f"{poem}{n}", "book": poem}
+        if annotations:
+            u["emendations"] = annotations
+        out.append((f"{poem} {n}", u, s))
     return out
 
 
