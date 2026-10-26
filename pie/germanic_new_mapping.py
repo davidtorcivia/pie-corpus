@@ -46,7 +46,7 @@ import html
 import json
 import re
 import unicodedata
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 from . import formula_search as fs
@@ -1099,8 +1099,14 @@ def corpus_recs(maps: GermanicMappings, corpus: str, lemmas, overrides: dict | N
             if len(keep) != len(r.ids):
                 r = fm.MapRec(r.key, r.word, frozenset(keep), r.path, r.how, r.confidence, r.sources, r.gloss)
             recs[lem] = r
-    recs = fm.apply_rec_overrides(corpus, recs, root=root, overrides=overrides)
-    return recs, steps
+    decided = fm.apply_rec_overrides(corpus, recs, root=root, overrides=overrides)
+    # Keep the ancestry that made a proto decision govern this word. Without
+    # it, reading a regenerated table loses the decision's formation cap.
+    for lem, r in decided.items():
+        if lem in recs and r.how == "erratum":
+            path = tuple(dict.fromkeys((*recs[lem].path, *r.path[1:])))
+            decided[lem] = replace(r, path=path)
+    return decided, steps
 
 
 def table_rows(corpus: str, recs: dict) -> list[dict]:

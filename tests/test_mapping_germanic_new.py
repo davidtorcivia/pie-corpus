@@ -165,6 +165,27 @@ def test_icelandic_bridge_and_borrowed_sources():
     assert gm._ice_rec(maps, loose["non"], "herra") == (None, "bridge-borrowed")
 
 
+def test_regeneration_keeps_proto_decision_ancestry():
+    from pie import mapping as mp
+    from pie.tier2_secure import SecureChecker, build_population
+
+    maps = _maps(non={"fara": ("fara", {"pie-lex-piporti"})})
+    maps.non.recs["fara"] = fm.MapRec(
+        "fara", "fara", frozenset({"pie-lex-piporti"}),
+        ("non:fara", "gem-pro:*faraną", "lexicon-reflex"), "chain", "high", ("chain",))
+    ov = {**mp.as_overrides({}), "proto": mp.load_overrides(ROOT)["proto"]}
+    recs, _ = gm.corpus_recs(maps, "menota", ["fara", "misfara"], root=ROOT, overrides=ov)
+    rows = gm.table_rows("menota", recs)
+    assert {r["lemma"] for r in rows} == {"fara", "misfara"}
+    for row in rows:
+        assert "gem-pro:*faraną" in row["path"]
+        assert row["lex_id"] == ["pie-root-per-go_through"]
+    checker = SecureChecker.from_population(
+        {e["id"]: e for e in LEX}, build_population({"menota": rows}, mp.load_overrides(ROOT)))
+    for lemma in ("fara", "misfara"):
+        assert checker.match("pie-lex-piporti", "non", "Old Norse", lemma, True)["level"] == "root"
+
+
 def test_name_lemmas_map_only_through_name_entries():
     maps = _maps(goh={"aram": ("aram", {"pie-lex-h2ermos"})})
     assert gm._name_rec(maps, "goh", "Aram")[0] is None               # the poor-word is not the name Aram

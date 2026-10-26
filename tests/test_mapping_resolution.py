@@ -91,9 +91,13 @@ def test_added_only_override_row_is_used_by_the_checker():
     assert m["level"] == "exact" and m["via"].startswith("table:")
     assert any(ids == {"pie-lex-gwih3wos"} and src == "table:cu" for ids, _, src, _ in
                ch.table("cu")[row_keys("cu", {"lemma": "животъ"}).pop()])
-    # Hittite additions too (168 in east.json): every one is in the checker's table
-    hit = load_population(codes={"hit"}).resolved
-    assert sum(x.status == "added" for x in hit) >= 168
+    # Hittite decisions too (east.json): every lemma an override maps is in the resolved population, as an
+    # added row while hit.jsonl predates the override, as a confirmed/remapped one once the table is rebuilt
+    # (`formula_search.py mapping --corpus hit` writes the decided rows as how 'erratum')
+    hit = {x.lemma: x for x in load_population(codes={"hit"}).resolved}
+    decided = {l for l, (ids, _) in fm.load_overrides(ROOT)["lemma"]["hit"].items() if ids}
+    assert len(decided) >= 100 and decided <= set(hit)
+    assert all(hit[l].decisions for l in decided)
 
 
 def test_audit_population_is_the_checker_population():
@@ -190,6 +194,46 @@ def test_derivative_and_uncertain_rows():
     x = mp.resolve_rows("av", [{"lemma": "bhū", "lex_id": ["pie-lex-bhuHt"]}], ov)["bhū"]
     assert x.uncertain and x.confidence == "low" and x.ids == {"pie-lex-bhuHt"}   # kept for formula search
     assert fm.apply_table_overrides("av", {"bhū": ("pie-lex-bhuHt",)}, overrides=ov) == {"bhū": ("pie-lex-bhuHt",)}
+
+
+def test_tain_is_root_evidence_and_other_celtic_rows_are_unchanged():
+    """ENG-03: the reviewed nominal derivative cannot attest the thematic present."""
+    from pie.realize import Lexicon
+
+    lid = "pie-lex-h2egjeti"
+    ov = mp.load_overrides(ROOT)
+    without = {**ov, "decisions": {**ov["decisions"], "celt": {
+        k: v for k, v in ov["decisions"]["celt"].items() if k != "táin"}}}
+    rows = mp.read_table("celt", ROOT)
+    resolved = mp.resolve_rows("celt", rows, ov)
+    baseline = mp.resolve_rows("celt", rows, without)
+    assert resolved["táin"].ids == {lid}
+    assert resolved["táin"].derivative
+    # Rebuilt override rows carry the corpus label as lang; they must still
+    # govern Irish evidence, including the separate glosses table.
+    assert code_of("celt", "celt") == "sga"
+    assert {k: v for k, v in resolved.items() if k != "táin"} == {
+        k: v for k, v in baseline.items() if k != "táin"}
+
+    entries = Lexicon.load().entries
+    ch = SecureChecker.from_disk(entries)
+    plan = json.loads((ROOT / "data/tier2/plans/cattle-raid.jsonl").read_text().splitlines()[0])
+    verb = ch.check(lid, plan["cognate_refs"])
+    assert verb["exact_branches"] == ["II", "It"]
+    assert verb["root_branches"] == ["Ce"]
+    assert verb["level"] == "exact"
+    assert ch.check("pie-lex-gwoxws", plan["cognate_refs"])["exact_branches"] == ["Ce", "II", "It"]
+    # The ambiguous táin|doaig table route must not downgrade the verb doaig.
+    assert ch.match(lid, "sga", "Old Irish", "doaig", True)["level"] == "exact"
+
+    # Even a competing dictionary route and a direct lexicon reflex cannot
+    # restore exact evidence against the shipped lemma decision.
+    entries = {**entries, lid: {**entries[lid], "reflexes": {"Old Irish": [{"form": "táin"}]}}}
+    pop = load_population(codes={"sga"})
+    alternative = {"táin": [rec({lid}, "táin", "sga", "alternative")]}
+    guarded = SecureChecker.from_population(entries, pop, others_loader=lambda: ({"sga": alternative},))
+    for lemma in (True, False):
+        assert guarded.match(lid, "sga", "Old Irish", "táin", lemma)["level"] == "root"
 
 
 def test_every_override_file_and_key_is_loaded():
@@ -315,7 +359,8 @@ FARA = {"pie-root-per-go_through": {"id": "pie-root-per-go_through", "kind": "ro
 def test_a_proto_row_decides_every_route_through_the_page():
     # ON fara / OHG faran reach *píporti through the lexicon reflex link of gem-pro *faraną (Kroonen p0168:
     # *por-e-, píparti only a cognate). A proto row for the page decides the tables and blocks the
-    # checker's reflex route for the words mapped through it. (The row itself is for germanic-new.json.)
+    # checker's reflex route for the words mapped through it. This fixture isolates the mechanism;
+    # the production-data regression below also covers regeneration and the shipped formation cap.
     rows = {"menota": [{"lemma": "fara", "lang": "non", "lex_id": ["pie-lex-piporti"],
                         "path": ["non:fara", "gem-pro:*faraną", "lexicon-reflex"]},
                        {"lemma": "misfara", "lang": "non", "lex_id": ["pie-lex-piporti"],
@@ -334,13 +379,48 @@ def test_a_proto_row_decides_every_route_through_the_page():
     assert ch.match("pie-root-per-go_through", "non", "Old Norse", "fara", True)["level"] == "exact"
 
 
-def test_dvignoti_unmap_reaches_podici():
-    # balto-slavic-new.json unmaps sla-pro *dvignǫti; vuk podići 'raise' then fell through to pod- + ići
-    # (*h₁ey- 'go'), a path that no longer names the page. Tables record only the chosen path, so the
-    # resolver cannot see that podići descends from *(po)dvignǫti; this needs a 'key' row (sh podići) or the
-    # builder to keep the rejected page in the path.
-    import pytest
-    x = mp.resolve_table("vuk", ROOT).get("podići")
-    if x is None or "pie-lex-h1eyti" not in x.ids:
-        return
-    pytest.xfail("podići still maps to *h₁éyti through pod- + ići: needs a key row or the rejected page in the path")
+def test_shipped_farana_decision_reaches_tables_and_secure_checker():
+    corpora = {"menota": "fara", "icepahc": "fara", "rea-goh": "faran", "rea-osx": "faran"}
+    rows = {c: mp.read_table(c, ROOT) for c in corpora}
+    languages = {"menota": "Old Norse", "icepahc": "Old Norse",
+                 "rea-goh": "Old High German", "rea-osx": "Old Saxon"}
+    ov = mp.load_overrides(ROOT)
+    assert ov["proto"][("gem-pro", mp.proto_key("*faraną"))].ids == {"pie-root-per-go_through"}
+    entries = {r["id"]: r for r in fm.fs.load_jsonl(ROOT / "data/lexicon/lexicon.jsonl")}
+    checker = SecureChecker.from_population(entries, build_population(rows, ov))
+    for corpus, lemma in corpora.items():
+        resolved = mp.resolve_table(corpus, ROOT)
+        assert resolved[lemma].ids == {"pie-root-per-go_through"}
+        covered = [r for r in rows[corpus] if "gem-pro:*faraną" in r["path"]]
+        assert any(r["lemma"] != lemma for r in covered)  # prefixed/inflected descendants
+        for row in covered:
+            assert row["lex_id"] == ["pie-root-per-go_through"], (corpus, row["lemma"])
+            assert resolved[row["lemma"]].ids == {"pie-root-per-go_through"}
+            assert resolved[row["lemma"]].derivative
+            code = code_of(corpus, row["lang"])
+            # The secure checker currently consumes non, but not is/goh/osx.
+            # All four tables still carry the same root-only formation decision.
+            if code is None:
+                continue
+            match = checker.match("pie-lex-piporti", code, languages[corpus], row["lemma"], True)
+            assert match is not None and match["level"] == "root", (corpus, row["lemma"], match)
+            assert checker.match("pie-root-per-go_through", code, languages[corpus],
+                                 row["lemma"], True) is not None
+    # The legitimate PIE lexeme remains available outside this Germanic formation.
+    assert "pie-lex-piporti" in fm._strip_blocked({"pie-lex-piporti"})
+
+
+def test_shipped_podici_key_removes_fallback_but_preserves_go_verbs():
+    ov = mp.load_overrides(ROOT)
+    assert ov["key"]["sh"][mp._keyer("sh")("podići")].removal
+    rows = {r["lemma"]: r for r in mp.read_table("vuk", ROOT)}
+    resolved = mp.resolve_table("vuk", ROOT)
+    assert "podići" not in rows
+    assert "podići" not in resolved
+    for lemma in ("ići", "doći", "otići"):
+        assert rows[lemma]["lex_id"] == ["pie-lex-h1eyti"]
+        assert resolved[lemma].ids == {"pie-lex-h1eyti"}
+    # Also govern the formerly selected path, which omitted the rejected proto page.
+    old = {"lemma": "podići", "lang": "sh", "lex_id": ["pie-lex-h1eyti"],
+           "path": ["sh:podići", "base:ići", "sh:ići", "ine-pro:*h₁éyti"]}
+    assert mp.resolve_rows("vuk", [old], ov) == {}

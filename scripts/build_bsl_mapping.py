@@ -34,6 +34,7 @@ sys.path.insert(0, str(ROOT))
 from pie import bsl_mapping as bm  # noqa: E402
 from pie import formula_search as fs  # noqa: E402
 from pie import formula_search_multi as fm  # noqa: E402
+from pie import mapping  # noqa: E402
 
 MAPPING_DIR = ROOT / bm.MAPPING_DIR
 COVERAGE = ROOT / "data/research/formulas/bsl-coverage.json"
@@ -82,7 +83,7 @@ def main(argv=None):
     didx = bm.derksen_index(ROOT)
     n_dk = bm.add_derksen_lt(maps.lt, didx, fz)
     print(f"mappings built ({time.time() - t0:.0f}s); Derksen EDBIL additions: {n_dk}")
-    fm._OVR_CACHE.clear()
+    mapping._OVR_CACHE.clear()
     ov = fm.load_overrides(ROOT)
     lms = {"vuk": maps.sh, "byliny": maps.ru, "dainos": maps.lt, "ccmh": ocs}
     cov, samples = {}, {}
