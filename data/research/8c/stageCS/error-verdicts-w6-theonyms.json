@@ -1,0 +1,6903 @@
+{
+  "task": "fix-batch-6 inherited source-tagged names",
+  "date": "2026-10-26",
+  "verdict": "General name exclusion was overbroad; preserve names whose bare lemma resolves to an exact production lexeme.",
+  "implementation": {
+    "shared_rule": "pie.name_mapping.name_lemma / exact_name_ids",
+    "resolution": "Corpus production mapping ids plus the SecureChecker exact-formation gate; only pie-lex ids, never research-only ids or component-only prefix/base/preverb routes.",
+    "corpus_routes": {
+      "hom": "live Greek mapping, hom decisions",
+      "grc/grp/grc-late": "live Greek mapping, grp decisions",
+      "lat": "live Latin mapping, lat decisions",
+      "av": "resolved av table",
+      "sa-ep": "live Sanskrit plus resolved av table, av decisions",
+      "orv": "Old Russian dictionary with Church Slavonic backoff and orv decisions",
+      "menota": "resolved menota table",
+      "icepahc": "resolved icepahc table; historical Norse formation rules"
+    },
+    "content": "Retained inherited names use the ordinary lemma and are content. Other annotated names receive (name) and are non-content. Explicit reviewed contextual name distinctions remain authoritative.",
+    "stage_c_loader": "IcePaHC Stage C wrapper now delegates to the shared reviewed loader, with source forms requested explicitly.",
+    "limitations": "EXACT is the production resolver classification, not a new exhaustive etymological review. Unreviewed exact homographs follow the requested gate; narrow reviewed exceptions and the complete frequency census are exposed below."
+  },
+  "reviewed_exceptions": {
+    "grc": {
+      "πάτροκλος": "Πάτροκλος is compound; the reviewed override lists πατήρ and κλέος as members, not whole-word matches.",
+      "εὐρύκλεια": "Εὐρύκλεια is compound; the reviewed override lists εὐρύς and κλέος as members, not whole-word matches.",
+      "κλεάνωρ": "Κλεάνωρ is compound; Kaikki's direct *ḱléwos link supplies only the first member.",
+      "ζήνων": "Ζήνων is a derivative personal name, not Ζεύς itself; its direct *dyḗws link loses the name suffix.",
+      "ἀρκαδία": "Ἀρκαδία is a derived place name, not the inherited word for bear; its *h₂ŕ̥tḱos link is a base.",
+      "στέντωρ": "Στέντωρ is an agent-name formation in -τωρ; *(s)tenh₂- is its derivational base.",
+      "λύκος": "Source-tagged Lycus (personal/place name), not the inherited common noun λύκος 'wolf'; wave-6 homograph review."
+    },
+    "non": {
+      "oddr": "Personal name Oddr; not the common noun 'point' (reviewed_menota_lemma, earlier source review).",
+      "hallr": "Personal name Hallr; the common noun 'slope' is a different sense (wave-6 Menota review).",
+      "ulfr": "Personal name Úlfr/Ulfr; not the common noun 'wolf' (wave-6 Menota review).",
+      "úlfr": "Personal name Úlfr (accented spelling); not the common noun 'wolf' (wave-6 Menota review).",
+      "finnr": "Personal name Finnr; not an inherited common-word lexeme (wave-6 Menota review).",
+      "oddur": "IcePaHC spelling of the reviewed personal name Oddr, not 'point'.",
+      "hallur": "IcePaHC spelling of the reviewed personal name Hallr, not 'slope'.",
+      "úlfur": "IcePaHC spelling of the reviewed personal name Úlfr, not 'wolf'.",
+      "steinarr": "Steinarr is compound: the automatic path reaches only *warjaz 'defender'; Kaikki non s.v. Steinarr.",
+      "ívarr": "Ívarr is compound: the automatic path reaches only *īwaz 'yew'; Kaikki non s.v. Ívarr.",
+      "ívar": "IcePaHC Ívar maps through the Ívarr compound's yew component.",
+      "ögmundr": "Ǫgmundr is compound: the path reaches only *agjō; Kaikki non s.v. Ǫgmundr.",
+      "danmǫrk": "Place name Danmǫrk is compound; *daniz is only its first component; Kaikki non s.v. Danmǫrk.",
+      "danmörk": "IcePaHC spelling of Danmǫrk, whose mapping is only a compound component.",
+      "einar": "IcePaHC Einarr maps only to *ainaz 'one'; the personal name is compound (earlier Menota name review).",
+      "gestr": "Personal name Gestr at Menota AM-132-fol-Finnboga-saga 100r:15; not the common noun 'guest'.",
+      "gestur": "IcePaHC spelling of the personal name Gestr; not the common noun 'guest'.",
+      "brandr": "Personal name Brandr at Menota AM-132-fol-Finnboga-saga 112v:29; not the common noun 'brand'.",
+      "brandur": "IcePaHC spelling of the personal name Brandr; not the common noun 'brand'.",
+      "hrafn": "Personal name Hrafn at Menota AM-132-fol-Egils-saga 70v:27; not the common noun 'raven'.",
+      "finna": "IcePaHC's name-tagged Finnr is mislemmatized as the verb finna 'find' (wave-6 review)."
+    }
+  },
+  "evidence": [
+    {
+      "corpus": "hom",
+      "lemma": "Ζεύς",
+      "locus": "Il. 4.235",
+      "form": "Ζεὺς",
+      "content": true,
+      "roots": [
+        "pie-lex-dyexws"
+      ]
+    },
+    {
+      "corpus": "lat",
+      "lemma": "aurora",
+      "locus": "Catul 64.271",
+      "form": "Aurora",
+      "content": true,
+      "roots": [
+        "pie-lex-h2ewsoxs"
+      ]
+    },
+    {
+      "corpus": "lat",
+      "lemma": "iuppiter",
+      "locus": "CatAgr 132.1",
+      "form": "Ioui",
+      "content": true,
+      "roots": [
+        "pie-lex-dyexws"
+      ]
+    },
+    {
+      "corpus": "lat",
+      "lemma": "luna",
+      "locus": "CatAgr 29.1",
+      "form": "luna",
+      "content": true,
+      "roots": [
+        "pie-lex-lowksneh2"
+      ]
+    },
+    {
+      "corpus": "lat",
+      "lemma": "sol",
+      "locus": "CatAgr 6.2",
+      "form": "soli",
+      "content": true,
+      "roots": [
+        "pie-lex-soh2wl"
+      ]
+    },
+    {
+      "corpus": "menota",
+      "lemma": "dagr",
+      "locus": "AM-113-b-fol 1v:5",
+      "form": "dǫgum",
+      "content": true,
+      "roots": [
+        "pie-lex-dhogwhos"
+      ]
+    },
+    {
+      "corpus": "menota",
+      "lemma": "jǫrð",
+      "locus": "AM-132-fol-Bandamanna-saga 114v:42",
+      "form": "jarðir",
+      "content": true,
+      "roots": [
+        "pie-lex-h1erteh2"
+      ]
+    },
+    {
+      "corpus": "menota",
+      "lemma": "sól",
+      "locus": "AM-132-fol-Egils-saga 96v:37",
+      "form": "sól",
+      "content": true,
+      "roots": [
+        "pie-lex-soh2wl"
+      ]
+    },
+    {
+      "corpus": "menota",
+      "lemma": "týr",
+      "status": "not present with this bare lemma in this population"
+    },
+    {
+      "corpus": "menota",
+      "lemma": "þórr",
+      "locus": "AM-132-fol-Hallfredar-saga 151v:36",
+      "form": "Þór",
+      "content": true,
+      "roots": [
+        "pie-lex-stenh2"
+      ]
+    },
+    {
+      "check": "Stage C IcePaHC wrapper agrees with shared loader on lemma, content and locus",
+      "tokens": 255967
+    },
+    {
+      "corpus": "av",
+      "lemma": "div",
+      "form": "dyaur",
+      "locus": "AVŚ, 9, 10.s23",
+      "content": true,
+      "roots": [
+        "pie-lex-dyexws",
+        "pie-root-dyew-be_bright"
+      ],
+      "baseline_identical": true
+    },
+    {
+      "corpus": "grc-late",
+      "lemma": "Ἠώς",
+      "form": "Ἠώς",
+      "locus": "Quintus Posthomerica 2.635",
+      "content": true,
+      "roots": [
+        "pie-lex-h2ewsoxs"
+      ],
+      "before": [
+        "Ἠώς (name)",
+        false,
+        "name",
+        []
+      ]
+    },
+    {
+      "corpus": "grc-late",
+      "lemma": "Ἥλιος",
+      "form": "Ἥλιος",
+      "locus": "Athenaeus Deipnosophistae 11.39.470c s2",
+      "content": true,
+      "roots": [
+        "pie-lex-soh2wl"
+      ],
+      "before": [
+        "Ἥλιος (name)",
+        false,
+        "name",
+        []
+      ]
+    }
+  ],
+  "baseline": {
+    "method": "Aligned all tokens by ordinal, locus and individual surface form; compare lemma, content, POS and production lexeme ids before/after. No sampling used for counts.",
+    "capture": "hom, lat, av, sa-ep, grc, grc-late and grp snapshots were captured by the running original-code process before production edits. The first run stopped at the table-less orv mapping. orv, menota and icepahc were then snapshotted with the exact pre-fix Token hook and unconditional name qualification replayed by the audit script.",
+    "reproduction": [
+      "UV_CACHE_DIR=/tmp/pie-uv-cache uv run python -I scripts/audit_w6_theonyms.py before /tmp/w6-theonyms-fresh",
+      "UV_CACHE_DIR=/tmp/pie-uv-cache uv run python -I scripts/audit_w6_theonyms.py after /tmp/w6-theonyms-fresh"
+    ],
+    "snapshot_directory": "/tmp/w6-theonyms",
+    "snapshot_sha256": {
+      "av.jsonl.gz": "689db6530ed006a5a6c166fa888517453ee3962dc184749429ce017337af9932",
+      "grc-late.jsonl.gz": "8332b4f6ec8b53b820212700fdd5bd466721e6622d43a0e2b576e50e2985ace7",
+      "grc.jsonl.gz": "329a5b4e8c649a104119bf1af4f498be05527e4b3687d62b5f101bd971151f58",
+      "grp.jsonl.gz": "858321bd7f4b5c6a479c68f965f7b1d24a7f91675ab10c663283cd625912915b",
+      "hom.jsonl.gz": "6ba2590cbcbef9c9a098b0e0dee5126bc6e5c5ca8bffa9a55bda4c5bd0ea6234",
+      "icepahc.jsonl.gz": "119f77a222f8f9d47218c24d912fd038b038ec56bd2c62f27f7b2721749dc7a2",
+      "lat.jsonl.gz": "0c2f431d49f23247fe5c17a291d56c4d2777e103aac92de34b8856282ae13ffd",
+      "menota.jsonl.gz": "0530c731b2032f3d86cbbb2a38662710ba26a39c51886fd06224a155605b3fdc",
+      "orv.jsonl.gz": "a7259777940d8b0a885ae44e8812b5f14c1695dc2c096968f43f2f5b88f7917a",
+      "sa-ep.jsonl.gz": "dd9d6a41da3eac3c83fde24c34a9a2eaf8ce0db08b409e9825d90717ca170086"
+    },
+    "scope": "Whole affected loader populations, not just Stage C-S-selected passages. grp is the earlier poetry population and overlaps grc; it is reported separately and excluded from the primary aggregate."
+  },
+  "aggregate_excluding_overlapping_grp": {
+    "tokens": 18358373,
+    "regained_tokens": 15866,
+    "lost_roots_tokens": 0,
+    "top_40_regained_lemmas": [
+      [
+        "Ζεύς",
+        8112
+      ],
+      [
+        "guð",
+        812
+      ],
+      [
+        "Πόντος",
+        620
+      ],
+      [
+        "Ἥλιος",
+        494
+      ],
+      [
+        "Ταῦρος",
+        434
+      ],
+      [
+        "Ὀρφεύς",
+        253
+      ],
+      [
+        "Βορέας",
+        237
+      ],
+      [
+        "drottinn",
+        213
+      ],
+      [
+        "Ῥέα",
+        170
+      ],
+      [
+        "Μήνη",
+        161
+      ],
+      [
+        "Δαίδαλος",
+        158
+      ],
+      [
+        "Μέμνων",
+        155
+      ],
+      [
+        "Καύκασος",
+        152
+      ],
+      [
+        "jökull",
+        148
+      ],
+      [
+        "Σεμέλη",
+        114
+      ],
+      [
+        "Νεμέα",
+        112
+      ],
+      [
+        "Κατάνη",
+        112
+      ],
+      [
+        "sveinn",
+        108
+      ],
+      [
+        "Ἄρκτος",
+        101
+      ],
+      [
+        "Δίκη",
+        100
+      ],
+      [
+        "Στρυμών",
+        99
+      ],
+      [
+        "iuppiter",
+        97
+      ],
+      [
+        "Ἥβη",
+        87
+      ],
+      [
+        "Τρίτων",
+        84
+      ],
+      [
+        "Πάδος",
+        83
+      ],
+      [
+        "halli",
+        81
+      ],
+      [
+        "Νηρεύς",
+        77
+      ],
+      [
+        "Ὥρα",
+        76
+      ],
+      [
+        "uenus",
+        67
+      ],
+      [
+        "Ἠριδανός",
+        67
+      ],
+      [
+        "Ἠώς",
+        67
+      ],
+      [
+        "Φυλή",
+        66
+      ],
+      [
+        "Μέντωρ",
+        61
+      ],
+      [
+        "andi",
+        58
+      ],
+      [
+        "álfur",
+        51
+      ],
+      [
+        "ljótr",
+        50
+      ],
+      [
+        "Πάρος",
+        49
+      ],
+      [
+        "Μαῖα",
+        43
+      ],
+      [
+        "unnr",
+        40
+      ],
+      [
+        "Νύξ",
+        39
+      ]
+    ]
+  },
+  "whole_corpus_diff": {
+    "seed": 6026,
+    "scope": "All tokens of all ten affected production loader populations; grp is the earlier poetry selection and overlaps grc.",
+    "corpora": {
+      "hom": {
+        "tokens": 200145,
+        "changed_tokens": 783,
+        "regained_tokens": 783,
+        "change_categories": {
+          "lemma": 783,
+          "content": 783,
+          "pos": 783,
+          "roots": 783
+        },
+        "lost_roots_tokens": 0,
+        "lost_roots_sample_30": [],
+        "regained_lemma_counts": {
+          "Ζεύς": 696,
+          "Βορέας": 25,
+          "Μέντωρ": 20,
+          "Ἀΐδης": 12,
+          "Ἔρεβος": 7,
+          "Εὖρος": 6,
+          "Ἥβη": 4,
+          "Ἄκτωρ": 3,
+          "Ῥέα": 2,
+          "Σεμέλη": 2,
+          "Ἕλος": 2,
+          "Φόβος": 1,
+          "Δαίδαλος": 1,
+          "Ὥρα": 1,
+          "Μέμνων": 1
+        },
+        "top_40": [
+          [
+            "Ζεύς",
+            696
+          ],
+          [
+            "Βορέας",
+            25
+          ],
+          [
+            "Μέντωρ",
+            20
+          ],
+          [
+            "Ἀΐδης",
+            12
+          ],
+          [
+            "Ἔρεβος",
+            7
+          ],
+          [
+            "Εὖρος",
+            6
+          ],
+          [
+            "Ἥβη",
+            4
+          ],
+          [
+            "Ἄκτωρ",
+            3
+          ],
+          [
+            "Ῥέα",
+            2
+          ],
+          [
+            "Σεμέλη",
+            2
+          ],
+          [
+            "Ἕλος",
+            2
+          ],
+          [
+            "Φόβος",
+            1
+          ],
+          [
+            "Δαίδαλος",
+            1
+          ],
+          [
+            "Ὥρα",
+            1
+          ],
+          [
+            "Μέμνων",
+            1
+          ]
+        ],
+        "sample_30": [
+          {
+            "index": 78466,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Il. 24.241",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 3688,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Il. 1.495",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 50710,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Il. 19.204",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 21847,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Il. 13.524",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 3977,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Il. 1.533",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 108321,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Il. 9.117",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 151359,
+            "lemma": "Βορέας",
+            "form": "Βορέης",
+            "locus": "Od. 19.200",
+            "before": [
+              "Βορέας (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Βορέας",
+              true,
+              "noun",
+              [
+                "pie-lex-gworHeh2"
+              ]
+            ]
+          },
+          {
+            "index": 77910,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Il. 24.169",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 199637,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Od. 9.479",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 188100,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Od. 6.151",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 9117,
+            "lemma": "Ἀΐδης",
+            "form": "Ἄϊδι",
+            "locus": "Il. 11.55",
+            "before": [
+              "Ἀΐδης (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ἀΐδης",
+              true,
+              "noun",
+              [
+                "pie-lex-nwidexs"
+              ]
+            ]
+          },
+          {
+            "index": 33868,
+            "lemma": "Ζεύς",
+            "form": "Ζεῦ",
+            "locus": "Il. 16.97",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 12283,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Il. 11.493",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 172133,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Od. 24.344",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 159477,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Od. 20.273",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 94632,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Il. 5.675",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 55698,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Il. 2.482",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 52307,
+            "lemma": "Ζεύς",
+            "form": "Δία",
+            "locus": "Il. 2.2",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 55672,
+            "lemma": "Ζεύς",
+            "form": "Διὶ",
+            "locus": "Il. 2.478",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 85960,
+            "lemma": "Ἥβη",
+            "form": "Ἥβη",
+            "locus": "Il. 4.2",
+            "before": [
+              "Ἥβη (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ἥβη",
+              true,
+              "noun",
+              [
+                "pie-lex-yeh1gw"
+              ]
+            ]
+          },
+          {
+            "index": 58381,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Il. 20.4",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 110031,
+            "lemma": "Ζεύς",
+            "form": "Διὶ",
+            "locus": "Il. 9.357",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 53323,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Il. 2.146",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 133357,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Od. 14.328",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 172182,
+            "lemma": "Ζεύς",
+            "form": "Ζεῦ",
+            "locus": "Od. 24.351",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 107227,
+            "lemma": "Ζεύς",
+            "form": "Διί",
+            "locus": "Il. 8.526",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 5187,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Il. 10.89",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 43802,
+            "lemma": "Ζεύς",
+            "form": "Ζεύς",
+            "locus": "Il. 17.627",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 138633,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Od. 15.523",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 93571,
+            "lemma": "Βορέας",
+            "form": "Βορέαο",
+            "locus": "Il. 5.524",
+            "before": [
+              "Βορέας (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Βορέας",
+              true,
+              "noun",
+              [
+                "pie-lex-gworHeh2"
+              ]
+            ]
+          }
+        ]
+      },
+      "lat": {
+        "tokens": 144786,
+        "changed_tokens": 2339,
+        "regained_tokens": 289,
+        "change_categories": {
+          "lemma": 2050,
+          "content": 289,
+          "pos": 2050,
+          "roots": 289
+        },
+        "lost_roots_tokens": 0,
+        "lost_roots_sample_30": [],
+        "regained_lemma_counts": {
+          "iuppiter": 97,
+          "uenus": 67,
+          "ceres": 11,
+          "mater": 11,
+          "hercules": 11,
+          "sol": 8,
+          "neptunus": 6,
+          "liber": 6,
+          "fortuna": 6,
+          "hesperus": 5,
+          "diana": 4,
+          "curculio": 4,
+          "pompeii": 3,
+          "luna": 3,
+          "septimius": 3,
+          "pater": 3,
+          "manes": 3,
+          "nola": 2,
+          "quirites": 2,
+          "auster": 2,
+          "piso": 2,
+          "remus": 2,
+          "uesper": 2,
+          "fors": 2,
+          "uirtus": 2,
+          "minerua": 2,
+          "plautus": 2,
+          "terminus": 1,
+          "rhenus": 1,
+          "somnus": 1,
+          "taurus": 1,
+          "aurora": 1,
+          "pompeius": 1,
+          "ancus": 1,
+          "cancer": 1,
+          "flora": 1,
+          "septentrio": 1,
+          "nox": 1,
+          "sermo": 1,
+          "dies": 1,
+          "spes": 1,
+          "scortum": 1,
+          "lux": 1,
+          "diespiter": 1,
+          "cara": 1
+        },
+        "top_40": [
+          [
+            "iuppiter",
+            97
+          ],
+          [
+            "uenus",
+            67
+          ],
+          [
+            "ceres",
+            11
+          ],
+          [
+            "mater",
+            11
+          ],
+          [
+            "hercules",
+            11
+          ],
+          [
+            "sol",
+            8
+          ],
+          [
+            "neptunus",
+            6
+          ],
+          [
+            "liber",
+            6
+          ],
+          [
+            "fortuna",
+            6
+          ],
+          [
+            "hesperus",
+            5
+          ],
+          [
+            "diana",
+            4
+          ],
+          [
+            "curculio",
+            4
+          ],
+          [
+            "pompeii",
+            3
+          ],
+          [
+            "luna",
+            3
+          ],
+          [
+            "septimius",
+            3
+          ],
+          [
+            "pater",
+            3
+          ],
+          [
+            "manes",
+            3
+          ],
+          [
+            "nola",
+            2
+          ],
+          [
+            "quirites",
+            2
+          ],
+          [
+            "auster",
+            2
+          ],
+          [
+            "piso",
+            2
+          ],
+          [
+            "remus",
+            2
+          ],
+          [
+            "uesper",
+            2
+          ],
+          [
+            "fors",
+            2
+          ],
+          [
+            "uirtus",
+            2
+          ],
+          [
+            "minerua",
+            2
+          ],
+          [
+            "plautus",
+            2
+          ],
+          [
+            "terminus",
+            1
+          ],
+          [
+            "rhenus",
+            1
+          ],
+          [
+            "somnus",
+            1
+          ],
+          [
+            "taurus",
+            1
+          ],
+          [
+            "aurora",
+            1
+          ],
+          [
+            "pompeius",
+            1
+          ],
+          [
+            "ancus",
+            1
+          ],
+          [
+            "cancer",
+            1
+          ],
+          [
+            "flora",
+            1
+          ],
+          [
+            "septentrio",
+            1
+          ],
+          [
+            "nox",
+            1
+          ],
+          [
+            "sermo",
+            1
+          ],
+          [
+            "dies",
+            1
+          ]
+        ],
+        "sample_30": [
+          {
+            "index": 85319,
+            "lemma": "sol",
+            "form": "Solem",
+            "locus": "PlAmphi 282",
+            "before": [
+              "sol",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "sol",
+              true,
+              "noun",
+              [
+                "pie-lex-soh2wl"
+              ]
+            ]
+          },
+          {
+            "index": 11606,
+            "lemma": "iuppiter",
+            "form": "Ioui",
+            "locus": "CatAgr 134.2",
+            "before": [
+              "iuppiter",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "iuppiter",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 63855,
+            "lemma": "uenus",
+            "form": "Ueneris",
+            "locus": "LucrDRN4 4.1148",
+            "before": [
+              "uenus",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "uenus",
+              true,
+              "noun",
+              [
+                "pie-lex-wenh1os"
+              ]
+            ]
+          },
+          {
+            "index": 24287,
+            "lemma": "hercules",
+            "form": "Herculei",
+            "locus": "Catul 55.13",
+            "before": [
+              "hercules",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "hercules",
+              true,
+              "noun",
+              [
+                "pie-lex-Hyoh1r",
+                "pie-lex-yoh1r",
+                "pie-lex-yoh1r-2",
+                "pie-lex-yoh1r-3"
+              ]
+            ]
+          },
+          {
+            "index": 11660,
+            "lemma": "iuppiter",
+            "form": "Iupiter",
+            "locus": "CatAgr 134.3",
+            "before": [
+              "iuppiter",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "iuppiter",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 127412,
+            "lemma": "hercules",
+            "form": "Hercules",
+            "locus": "PlCasin 275",
+            "before": [
+              "hercules",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "hercules",
+              true,
+              "noun",
+              [
+                "pie-lex-Hyoh1r",
+                "pie-lex-yoh1r",
+                "pie-lex-yoh1r-2",
+                "pie-lex-yoh1r-3"
+              ]
+            ]
+          },
+          {
+            "index": 85277,
+            "lemma": "nox",
+            "form": "Nox",
+            "locus": "PlAmphi 277",
+            "before": [
+              "nox",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "nox",
+              true,
+              "noun",
+              [
+                "pie-lex-nokwts"
+              ]
+            ]
+          },
+          {
+            "index": 20054,
+            "lemma": "iuppiter",
+            "form": "Iupiter",
+            "locus": "Catul 1.7",
+            "before": [
+              "iuppiter",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "iuppiter",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 33158,
+            "lemma": "uenus",
+            "form": "Uenus",
+            "locus": "LucrDRN1 1.2",
+            "before": [
+              "uenus",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "uenus",
+              true,
+              "noun",
+              [
+                "pie-lex-wenh1os"
+              ]
+            ]
+          },
+          {
+            "index": 22298,
+            "lemma": "piso",
+            "form": "Pisonis",
+            "locus": "Catul 28.1",
+            "before": [
+              "piso",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "piso",
+              true,
+              "noun",
+              [
+                "pie-lex-peysHox"
+              ]
+            ]
+          },
+          {
+            "index": 98747,
+            "lemma": "fortuna",
+            "form": "Fortunam",
+            "locus": "PlAsina 718",
+            "before": [
+              "fortuna",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "fortuna",
+              true,
+              "noun",
+              [
+                "pie-lex-bhrtewneh2"
+              ]
+            ]
+          },
+          {
+            "index": 64965,
+            "lemma": "hercules",
+            "form": "Herculis",
+            "locus": "LucrDRN5 5.22",
+            "before": [
+              "hercules",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "hercules",
+              true,
+              "noun",
+              [
+                "pie-lex-Hyoh1r",
+                "pie-lex-yoh1r",
+                "pie-lex-yoh1r-2",
+                "pie-lex-yoh1r-3"
+              ]
+            ]
+          },
+          {
+            "index": 64027,
+            "lemma": "uenus",
+            "form": "Ueneris",
+            "locus": "LucrDRN4 4.1172",
+            "before": [
+              "uenus",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "uenus",
+              true,
+              "noun",
+              [
+                "pie-lex-wenh1os"
+              ]
+            ]
+          },
+          {
+            "index": 89768,
+            "lemma": "iuppiter",
+            "form": "Iuppiter",
+            "locus": "PlAmphi 791",
+            "before": [
+              "iuppiter",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "iuppiter",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 69811,
+            "lemma": "flora",
+            "form": "Flora",
+            "locus": "LucrDRN5 5.739",
+            "before": [
+              "flora",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "flora",
+              true,
+              "noun",
+              [
+                "pie-lex-bhleh3s"
+              ]
+            ]
+          },
+          {
+            "index": 127899,
+            "lemma": "iuppiter",
+            "form": "Iuppiter",
+            "locus": "PlCasin 335",
+            "before": [
+              "iuppiter",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "iuppiter",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 64552,
+            "lemma": "uenus",
+            "form": "Ueneris",
+            "locus": "LucrDRN4 4.1248",
+            "before": [
+              "uenus",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "uenus",
+              true,
+              "noun",
+              [
+                "pie-lex-wenh1os"
+              ]
+            ]
+          },
+          {
+            "index": 125887,
+            "lemma": "plautus",
+            "form": "Plautus",
+            "locus": "PlCasin 65",
+            "before": [
+              "plautus",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "plautus",
+              true,
+              "noun",
+              [
+                "pie-lex-plh2utos"
+              ]
+            ]
+          },
+          {
+            "index": 11773,
+            "lemma": "nola",
+            "form": "Nolae",
+            "locus": "CatAgr 135.2",
+            "before": [
+              "nola",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "nola",
+              true,
+              "noun",
+              [
+                "pie-lex-newos"
+              ]
+            ]
+          },
+          {
+            "index": 53746,
+            "lemma": "uenus",
+            "form": "Ueneris",
+            "locus": "LucrDRN3 3.776",
+            "before": [
+              "uenus",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "uenus",
+              true,
+              "noun",
+              [
+                "pie-lex-wenh1os"
+              ]
+            ]
+          },
+          {
+            "index": 96186,
+            "lemma": "iuppiter",
+            "form": "Iouem",
+            "locus": "PlAsina 414",
+            "before": [
+              "iuppiter",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "iuppiter",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 92262,
+            "lemma": "iuppiter",
+            "form": "Iuppiter",
+            "locus": "PlAmphi 1077",
+            "before": [
+              "iuppiter",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "iuppiter",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 134349,
+            "lemma": "uenus",
+            "form": "Uenu'",
+            "locus": "PlCurcu 196",
+            "before": [
+              "uenus",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "uenus",
+              true,
+              "noun",
+              [
+                "pie-lex-wenh1os"
+              ]
+            ]
+          },
+          {
+            "index": 108251,
+            "lemma": "uenus",
+            "form": "Uenu'",
+            "locus": "PlBacch 115",
+            "before": [
+              "uenus",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "uenus",
+              true,
+              "noun",
+              [
+                "pie-lex-wenh1os"
+              ]
+            ]
+          },
+          {
+            "index": 109227,
+            "lemma": "luna",
+            "form": "Luna",
+            "locus": "PlBacch 255",
+            "before": [
+              "luna",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "luna",
+              true,
+              "noun",
+              [
+                "pie-lex-lowksneh2"
+              ]
+            ]
+          },
+          {
+            "index": 11555,
+            "lemma": "ceres",
+            "form": "Cereri",
+            "locus": "CatAgr 134.1",
+            "before": [
+              "ceres",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "ceres",
+              true,
+              "noun",
+              [
+                "pie-lex-kjerexs"
+              ]
+            ]
+          },
+          {
+            "index": 67508,
+            "lemma": "sol",
+            "form": "Solis",
+            "locus": "LucrDRN5 5.397",
+            "before": [
+              "sol",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "sol",
+              true,
+              "noun",
+              [
+                "pie-lex-soh2wl"
+              ]
+            ]
+          },
+          {
+            "index": 29384,
+            "lemma": "iuppiter",
+            "form": "Iupiter",
+            "locus": "Catul 66.48",
+            "before": [
+              "iuppiter",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "iuppiter",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 11573,
+            "lemma": "iuppiter",
+            "form": "Ioui",
+            "locus": "CatAgr 134.1",
+            "before": [
+              "iuppiter",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "iuppiter",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 89255,
+            "lemma": "iuppiter",
+            "form": "Ioui",
+            "locus": "PlAmphi 739",
+            "before": [
+              "iuppiter",
+              false,
+              "noun",
+              []
+            ],
+            "after": [
+              "iuppiter",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          }
+        ]
+      },
+      "av": {
+        "tokens": 107134,
+        "changed_tokens": 0,
+        "regained_tokens": 0,
+        "change_categories": {},
+        "lost_roots_tokens": 0,
+        "lost_roots_sample_30": [],
+        "regained_lemma_counts": {},
+        "top_40": [],
+        "sample_30": []
+      },
+      "sa-ep": {
+        "tokens": 1409567,
+        "changed_tokens": 5,
+        "regained_tokens": 0,
+        "change_categories": {
+          "lemma": 0,
+          "content": 5,
+          "pos": 0,
+          "roots": 0
+        },
+        "lost_roots_tokens": 0,
+        "lost_roots_sample_30": [],
+        "regained_lemma_counts": {},
+        "top_40": [],
+        "sample_30": []
+      },
+      "grc": {
+        "tokens": 3809801,
+        "changed_tokens": 3813,
+        "regained_tokens": 3764,
+        "change_categories": {
+          "lemma": 3763,
+          "content": 3812,
+          "pos": 3763,
+          "roots": 3764
+        },
+        "lost_roots_tokens": 0,
+        "lost_roots_sample_30": [],
+        "regained_lemma_counts": {
+          "Ζεύς": 2848,
+          "Πόντος": 177,
+          "Βορέας": 63,
+          "Ἥλιος": 58,
+          "Στρυμών": 51,
+          "Νεμέα": 46,
+          "Φυλή": 45,
+          "Ὀρφεύς": 32,
+          "Κατάνη": 32,
+          "Δίκη": 31,
+          "Δαίδαλος": 30,
+          "Νηρεύς": 29,
+          "Σεμέλη": 29,
+          "Ῥέα": 28,
+          "Ἥβη": 18,
+          "Ταῦρος": 18,
+          "Μαῖα": 17,
+          "Τρίτων": 13,
+          "Πάρος": 13,
+          "Ἀπατούρια": 13,
+          "Μέμνων": 12,
+          "Τέως": 12,
+          "Νύξ": 10,
+          "Ἔρεβος": 9,
+          "Ἠριδανός": 9,
+          "Ἠώς": 9,
+          "Ὥρα": 9,
+          "Καύκασος": 9,
+          "Κολοφών": 8,
+          "Κολωνός": 7,
+          "Μέλισσα": 7,
+          "Ἄκτωρ": 6,
+          "Κώρυκος": 6,
+          "Πορθμός": 6,
+          "Μνημοσύνη": 5,
+          "Λήθη": 5,
+          "Ἕσπερος": 5,
+          "Καρδία": 5,
+          "Ἱέραξ": 4,
+          "Μέντωρ": 4,
+          "Ὕπνος": 3,
+          "Χθών": 3,
+          "Δεύς": 3,
+          "Ἀΐδης": 2,
+          "Ἕως": 2,
+          "Ὠλήν": 2,
+          "Ἕλος": 2,
+          "Ἀκάδημος": 1,
+          "Μήνη": 1,
+          "Κόρος": 1,
+          "Ἄρκτος": 1,
+          "Ἁίδας": 1,
+          "Ἄγρα": 1,
+          "Ῥήβας": 1,
+          "ΘΩ": 1,
+          "Ἔννα": 1
+        },
+        "top_40": [
+          [
+            "Ζεύς",
+            2848
+          ],
+          [
+            "Πόντος",
+            177
+          ],
+          [
+            "Βορέας",
+            63
+          ],
+          [
+            "Ἥλιος",
+            58
+          ],
+          [
+            "Στρυμών",
+            51
+          ],
+          [
+            "Νεμέα",
+            46
+          ],
+          [
+            "Φυλή",
+            45
+          ],
+          [
+            "Ὀρφεύς",
+            32
+          ],
+          [
+            "Κατάνη",
+            32
+          ],
+          [
+            "Δίκη",
+            31
+          ],
+          [
+            "Δαίδαλος",
+            30
+          ],
+          [
+            "Νηρεύς",
+            29
+          ],
+          [
+            "Σεμέλη",
+            29
+          ],
+          [
+            "Ῥέα",
+            28
+          ],
+          [
+            "Ἥβη",
+            18
+          ],
+          [
+            "Ταῦρος",
+            18
+          ],
+          [
+            "Μαῖα",
+            17
+          ],
+          [
+            "Τρίτων",
+            13
+          ],
+          [
+            "Πάρος",
+            13
+          ],
+          [
+            "Ἀπατούρια",
+            13
+          ],
+          [
+            "Μέμνων",
+            12
+          ],
+          [
+            "Τέως",
+            12
+          ],
+          [
+            "Νύξ",
+            10
+          ],
+          [
+            "Ἔρεβος",
+            9
+          ],
+          [
+            "Ἠριδανός",
+            9
+          ],
+          [
+            "Ἠώς",
+            9
+          ],
+          [
+            "Ὥρα",
+            9
+          ],
+          [
+            "Καύκασος",
+            9
+          ],
+          [
+            "Κολοφών",
+            8
+          ],
+          [
+            "Κολωνός",
+            7
+          ],
+          [
+            "Μέλισσα",
+            7
+          ],
+          [
+            "Ἄκτωρ",
+            6
+          ],
+          [
+            "Κώρυκος",
+            6
+          ],
+          [
+            "Πορθμός",
+            6
+          ],
+          [
+            "Μνημοσύνη",
+            5
+          ],
+          [
+            "Λήθη",
+            5
+          ],
+          [
+            "Ἕσπερος",
+            5
+          ],
+          [
+            "Καρδία",
+            5
+          ],
+          [
+            "Ἱέραξ",
+            4
+          ],
+          [
+            "Μέντωρ",
+            4
+          ]
+        ],
+        "sample_30": [
+          {
+            "index": 404873,
+            "lemma": "Βορέας",
+            "form": "βορέῃ",
+            "locus": "Herodotus Historiae 5.33.1 s1",
+            "before": [
+              "Βορέας (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Βορέας",
+              true,
+              "noun",
+              [
+                "pie-lex-gworHeh2"
+              ]
+            ]
+          },
+          {
+            "index": 6605,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Hesiodus Theogonia 920",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 2282546,
+            "lemma": "Ζεύς",
+            "form": "Δί’",
+            "locus": "Xenophon Cyropaedia 7.5.8 s3",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 175916,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Euripides Hippolytus 15",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 42538,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Hymni Homerici In Mercurium 230",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 2235527,
+            "lemma": "Ζεύς",
+            "form": "Δί’",
+            "locus": "Xenophon Cyropaedia 2.2.22 s8",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 7739,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Hesiodus Opera et dies 51",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 793293,
+            "lemma": "Ζεύς",
+            "form": "Δία",
+            "locus": "Aristophanes Lysistrata 559",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 1653661,
+            "lemma": "Ζεύς",
+            "form": "Δί’",
+            "locus": "Plato Charmides 176a s3",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 399721,
+            "lemma": "Τρίτων",
+            "form": "Τρίτωνος",
+            "locus": "Herodotus Historiae 4.191.1 s1",
+            "before": [
+              "Τρίτων (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Τρίτων",
+              true,
+              "noun",
+              [
+                "pie-lex-treyes"
+              ]
+            ]
+          },
+          {
+            "index": 2214228,
+            "lemma": "Πόντος",
+            "form": "Πόντον",
+            "locus": "Xenophon Anabasis 7.5.12 s1",
+            "before": [
+              "Πόντος (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Πόντος",
+              true,
+              "noun",
+              [
+                "pie-lex-pontoh1s"
+              ]
+            ]
+          },
+          {
+            "index": 2128987,
+            "lemma": "Ζεύς",
+            "form": "Δί’",
+            "locus": "Xenophon Memorabilia 4.6.2 s3",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 3665171,
+            "lemma": "Πόντος",
+            "form": "Πόντον",
+            "locus": "Demosthenes Contra Lacritum 53 s1",
+            "before": [
+              "Πόντος (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Πόντος",
+              true,
+              "noun",
+              [
+                "pie-lex-pontoh1s"
+              ]
+            ]
+          },
+          {
+            "index": 20917,
+            "lemma": "Ζεύς",
+            "form": "Ζεύς",
+            "locus": "Hesiodus Fragmenta 141.15",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 105306,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Pindarus Pythia 1.6",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 27383,
+            "lemma": "Ζεύς",
+            "form": "Διός",
+            "locus": "Hymni Homerici In Venerem 8",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 3611964,
+            "lemma": "Μέμνων",
+            "form": "Μέμνων",
+            "locus": "Demosthenes In Aristocratem 157 s2",
+            "before": [
+              "Μέμνων (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Μέμνων",
+              true,
+              "noun",
+              [
+                "pie-lex-memnox-2"
+              ]
+            ]
+          },
+          {
+            "index": 1861890,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Plato Timaeus 41.40e s2",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 1749346,
+            "lemma": "Ζεύς",
+            "form": "Διὶ",
+            "locus": "Plato Hippias minor 370a s2",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 602276,
+            "lemma": "Βορέας",
+            "form": "βορέαν",
+            "locus": "Thucydides Historiae 3.4.5 s1",
+            "before": [
+              "Βορέας (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Βορέας",
+              true,
+              "noun",
+              [
+                "pie-lex-gworHeh2"
+              ]
+            ]
+          },
+          {
+            "index": 229301,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Euripides Troiades 836",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 186086,
+            "lemma": "Μαῖα",
+            "form": "Μαίας",
+            "locus": "Euripides Andromacha 276",
+            "before": [
+              "Μαῖα (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Μαῖα",
+              true,
+              "noun",
+              [
+                "pie-lex-meh2texr"
+              ]
+            ]
+          },
+          {
+            "index": 227768,
+            "lemma": "Ζεύς",
+            "form": "Ζεῦ",
+            "locus": "Euripides Troiades 580",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 600854,
+            "lemma": "Στρυμών",
+            "form": "Στρυμόνος",
+            "locus": "Thucydides Historiae 2.99.4 s1",
+            "before": [
+              "Στρυμών (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Στρυμών",
+              true,
+              "noun",
+              [
+                "pie-lex-srew",
+                "pie-root-srew-flow"
+              ]
+            ]
+          },
+          {
+            "index": 500867,
+            "lemma": "Ζεύς",
+            "form": "Ζεῦ",
+            "locus": "Sophocles Trachiniae 995",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 252828,
+            "lemma": "Ζεύς",
+            "form": "Διός",
+            "locus": "Euripides Helena 674",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 796760,
+            "lemma": "Ζεύς",
+            "form": "Δί’",
+            "locus": "Aristophanes Lysistrata 1090",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 2366506,
+            "lemma": "Ζεύς",
+            "form": "Δία",
+            "locus": "Aeschines In Timarchum 98 s1",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 211852,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Euripides Hercules 906",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 1445677,
+            "lemma": "Ζεύς",
+            "form": "Δία",
+            "locus": "Plato Crito 43b s2",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          }
+        ]
+      },
+      "grc-late": {
+        "tokens": 10657541,
+        "changed_tokens": 8601,
+        "regained_tokens": 8485,
+        "change_categories": {
+          "lemma": 8483,
+          "content": 8599,
+          "pos": 8483,
+          "roots": 8485
+        },
+        "lost_roots_tokens": 0,
+        "lost_roots_sample_30": [],
+        "regained_lemma_counts": {
+          "Ζεύς": 4568,
+          "Πόντος": 443,
+          "Ἥλιος": 436,
+          "Ταῦρος": 416,
+          "Ὀρφεύς": 221,
+          "Μήνη": 160,
+          "Βορέας": 149,
+          "Καύκασος": 143,
+          "Μέμνων": 142,
+          "Ῥέα": 140,
+          "Δαίδαλος": 127,
+          "Ἄρκτος": 100,
+          "Σεμέλη": 83,
+          "Πάδος": 83,
+          "Κατάνη": 80,
+          "Τρίτων": 71,
+          "Δίκη": 69,
+          "Ὥρα": 66,
+          "Νεμέα": 66,
+          "Ἥβη": 65,
+          "Ἠριδανός": 58,
+          "Ἠώς": 58,
+          "Νηρεύς": 48,
+          "Στρυμών": 48,
+          "Μέντωρ": 37,
+          "Πάρος": 36,
+          "Γένεσις": 36,
+          "Κώρυκος": 31,
+          "Κολοφών": 30,
+          "Νύξ": 29,
+          "Φόβος": 27,
+          "Μαῖα": 26,
+          "Λήθη": 26,
+          "Μνημοσύνη": 25,
+          "Ἄκτωρ": 24,
+          "Ὕπνος": 23,
+          "Φυλή": 21,
+          "Τέως": 19,
+          "Ἱέραξ": 19,
+          "Δάν": 17,
+          "Ἅρμα": 17,
+          "Κολωνός": 17,
+          "Ἕλος": 15,
+          "Ἕσπερος": 13,
+          "Δίς": 12,
+          "Ὠλήν": 11,
+          "Ἔννα": 11,
+          "Σάος": 10,
+          "Ἐλεύθερος": 10,
+          "Μέλισσα": 10,
+          "Ἴδμων": 9,
+          "Εὖρος": 9,
+          "Ἀπατούρια": 7,
+          "Ἕως": 7,
+          "Μελιτηνή": 6,
+          "Δεύς": 5,
+          "Ἄγρα": 5,
+          "Ἀκάδημος": 5,
+          "Ἔρεβος": 5,
+          "Πορθμός": 5,
+          "Σκίλουρος": 4,
+          "Ῥήβας": 3,
+          "Βύζας": 3,
+          "Τέρμων": 3,
+          "Κόρος": 3,
+          "ΘΩ": 2,
+          "Ἰλλυρία": 2,
+          "Πατήρ": 2,
+          "Μήν": 2,
+          "Ῥᾶ": 2,
+          "Καρδία": 1,
+          "Ἀνάκτωρ": 1,
+          "Ἀΐδας": 1,
+          "Ἀΐδης": 1
+        },
+        "top_40": [
+          [
+            "Ζεύς",
+            4568
+          ],
+          [
+            "Πόντος",
+            443
+          ],
+          [
+            "Ἥλιος",
+            436
+          ],
+          [
+            "Ταῦρος",
+            416
+          ],
+          [
+            "Ὀρφεύς",
+            221
+          ],
+          [
+            "Μήνη",
+            160
+          ],
+          [
+            "Βορέας",
+            149
+          ],
+          [
+            "Καύκασος",
+            143
+          ],
+          [
+            "Μέμνων",
+            142
+          ],
+          [
+            "Ῥέα",
+            140
+          ],
+          [
+            "Δαίδαλος",
+            127
+          ],
+          [
+            "Ἄρκτος",
+            100
+          ],
+          [
+            "Σεμέλη",
+            83
+          ],
+          [
+            "Πάδος",
+            83
+          ],
+          [
+            "Κατάνη",
+            80
+          ],
+          [
+            "Τρίτων",
+            71
+          ],
+          [
+            "Δίκη",
+            69
+          ],
+          [
+            "Ὥρα",
+            66
+          ],
+          [
+            "Νεμέα",
+            66
+          ],
+          [
+            "Ἥβη",
+            65
+          ],
+          [
+            "Ἠριδανός",
+            58
+          ],
+          [
+            "Ἠώς",
+            58
+          ],
+          [
+            "Νηρεύς",
+            48
+          ],
+          [
+            "Στρυμών",
+            48
+          ],
+          [
+            "Μέντωρ",
+            37
+          ],
+          [
+            "Πάρος",
+            36
+          ],
+          [
+            "Γένεσις",
+            36
+          ],
+          [
+            "Κώρυκος",
+            31
+          ],
+          [
+            "Κολοφών",
+            30
+          ],
+          [
+            "Νύξ",
+            29
+          ],
+          [
+            "Φόβος",
+            27
+          ],
+          [
+            "Μαῖα",
+            26
+          ],
+          [
+            "Λήθη",
+            26
+          ],
+          [
+            "Μνημοσύνη",
+            25
+          ],
+          [
+            "Ἄκτωρ",
+            24
+          ],
+          [
+            "Ὕπνος",
+            23
+          ],
+          [
+            "Φυλή",
+            21
+          ],
+          [
+            "Τέως",
+            19
+          ],
+          [
+            "Ἱέραξ",
+            19
+          ],
+          [
+            "Δάν",
+            17
+          ]
+        ],
+        "sample_30": [
+          {
+            "index": 8185395,
+            "lemma": "Δίκη",
+            "form": "Δίκη",
+            "locus": "Pausanias Graeciae descriptio 5.18.2.0 s1",
+            "before": [
+              "Δίκη (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Δίκη",
+              true,
+              "noun",
+              [
+                "pie-lex-dikjeh2"
+              ]
+            ]
+          },
+          {
+            "index": 119642,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Apollonius Rhodius Argonautica 3.922",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 4731489,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Aelius Aristides Ἀσκληπιάδαι 42 s5",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 1938423,
+            "lemma": "Ζεύς",
+            "form": "Δία",
+            "locus": "Strabo Geographica 1.2.3 s14",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 251902,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Dorieus Poeta Epigramma 2",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 10343495,
+            "lemma": "Ἠώς",
+            "form": "Ἠώς",
+            "locus": "Quintus Posthomerica 2.635",
+            "before": [
+              "Ἠώς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ἠώς",
+              true,
+              "noun",
+              [
+                "pie-lex-h2ewsoxs"
+              ]
+            ]
+          },
+          {
+            "index": 8181385,
+            "lemma": "Ἠριδανός",
+            "form": "Ἠριδανοῦ",
+            "locus": "Pausanias Graeciae descriptio 5.12.7.0 s4",
+            "before": [
+              "Ἠριδανός (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ἠριδανός",
+              true,
+              "noun",
+              [
+                "pie-lex-deh2nu"
+              ]
+            ]
+          },
+          {
+            "index": 825396,
+            "lemma": "Δίκη",
+            "form": "Δίκα",
+            "locus": "Moschus Epitaphius Bionis 3.114",
+            "before": [
+              "Δίκη (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Δίκη",
+              true,
+              "noun",
+              [
+                "pie-lex-dikjeh2"
+              ]
+            ]
+          },
+          {
+            "index": 3898059,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Plutarchus Agesilaus 21.5 s3",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 919067,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Diodorus Siculus Bibliotheca historica 4.14.4 s2",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 8812450,
+            "lemma": "Ζεύς",
+            "form": "Διὶ",
+            "locus": "Athenaeus Deipnosophistae 11.56.478c s3",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 6854718,
+            "lemma": "Ῥέα",
+            "form": "Ῥέας",
+            "locus": "Galenus De compositione medicamentorum secundum locos libri x 9.4.609.297 s14",
+            "before": [
+              "Ῥέα (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ῥέα",
+              true,
+              "noun",
+              [
+                "pie-lex-h1roxs"
+              ]
+            ]
+          },
+          {
+            "index": 4845189,
+            "lemma": "Ζεύς",
+            "form": "Δία",
+            "locus": "Aelius Aristides Λευκτρικὸς βʹ 439 s2",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 6468575,
+            "lemma": "Ζεύς",
+            "form": "Δία",
+            "locus": "Galenus De methodo medendi libri xiv 10.5.231.143 s18",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 8809459,
+            "lemma": "Ἥλιος",
+            "form": "Ἥλιος",
+            "locus": "Athenaeus Deipnosophistae 11.39.470c s2",
+            "before": [
+              "Ἥλιος (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ἥλιος",
+              true,
+              "noun",
+              [
+                "pie-lex-soh2wl"
+              ]
+            ]
+          },
+          {
+            "index": 8353459,
+            "lemma": "Ἔρεβος",
+            "form": "Ἔρεβος",
+            "locus": "Theophilus Ad Autolycum 2.12 s9",
+            "before": [
+              "Ἔρεβος (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ἔρεβος",
+              true,
+              "noun",
+              [
+                "pie-lex-h1regwos"
+              ]
+            ]
+          },
+          {
+            "index": 7766659,
+            "lemma": "Μαῖα",
+            "form": "Μαίας",
+            "locus": "Lucianus Prometheus 5 s10",
+            "before": [
+              "Μαῖα (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Μαῖα",
+              true,
+              "noun",
+              [
+                "pie-lex-meh2texr"
+              ]
+            ]
+          },
+          {
+            "index": 10384508,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Quintus Posthomerica 12.386",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 5106066,
+            "lemma": "Ζεύς",
+            "form": "Ζεύς",
+            "locus": "Athenagoras Legatio sive Supplicatio pro Christianis 5.19 s1",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 10312488,
+            "lemma": "Ῥέα",
+            "form": "Ῥέας",
+            "locus": "Porphyrius Vita Pythagorae 41 s7",
+            "before": [
+              "Ῥέα (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ῥέα",
+              true,
+              "noun",
+              [
+                "pie-lex-h1roxs"
+              ]
+            ]
+          },
+          {
+            "index": 732698,
+            "lemma": "Ζεύς",
+            "form": "Δία",
+            "locus": "Polybius Historiae 30.10.6 s1",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 4637046,
+            "lemma": "Τρίτων",
+            "form": "Τρίτωνος",
+            "locus": "Pseudo-Apollodorus Bibliotheca 1.3.6 s3",
+            "before": [
+              "Τρίτων (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Τρίτων",
+              true,
+              "noun",
+              [
+                "pie-lex-treyes"
+              ]
+            ]
+          },
+          {
+            "index": 8753258,
+            "lemma": "Ἥβη",
+            "form": "Ἥβας",
+            "locus": "Athenaeus Deipnosophistae 7.137.328c s3",
+            "before": [
+              "Ἥβη (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ἥβη",
+              true,
+              "noun",
+              [
+                "pie-lex-yeh1gw"
+              ]
+            ]
+          },
+          {
+            "index": 8644210,
+            "lemma": "Ζεύς",
+            "form": "Δία",
+            "locus": "Athenaeus Deipnosophistae 2.18.43b s3",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 9397712,
+            "lemma": "Ῥέα",
+            "form": "Ῥείη",
+            "locus": "Origenes Contra Celsum 3.43 s18",
+            "before": [
+              "Ῥέα (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ῥέα",
+              true,
+              "noun",
+              [
+                "pie-lex-h1roxs"
+              ]
+            ]
+          },
+          {
+            "index": 9567111,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Flavius Philostratus Vita Apollonii 2.7 s1",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 8358479,
+            "lemma": "Ὀρφεύς",
+            "form": "Ὀρφέα",
+            "locus": "Theophilus Ad Autolycum 2.30 s18",
+            "before": [
+              "Ὀρφεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ὀρφεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-h3orbhos"
+              ]
+            ]
+          },
+          {
+            "index": 102109,
+            "lemma": "Ζεύς",
+            "form": "Ζηνὸς",
+            "locus": "Apollonius Rhodius Argonautica 1.997",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 6999608,
+            "lemma": "Δίς",
+            "form": "Δὶς",
+            "locus": "Galenus De antidotis libri ii 2.5.905.444 s3",
+            "before": [
+              "Δίς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Δίς",
+              true,
+              "noun",
+              [
+                "pie-lex-dwis"
+              ]
+            ]
+          },
+          {
+            "index": 3455843,
+            "lemma": "Πόντος",
+            "form": "Πόντου",
+            "locus": "Flavius Arrianus Periplus ponti Euxini 12.1.17 s1",
+            "before": [
+              "Πόντος (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Πόντος",
+              true,
+              "noun",
+              [
+                "pie-lex-pontoh1s"
+              ]
+            ]
+          }
+        ]
+      },
+      "grp": {
+        "tokens": 340300,
+        "changed_tokens": 1378,
+        "regained_tokens": 1378,
+        "change_categories": {
+          "lemma": 1377,
+          "content": 1377,
+          "pos": 1377,
+          "roots": 1378
+        },
+        "lost_roots_tokens": 0,
+        "lost_roots_sample_30": [],
+        "regained_lemma_counts": {
+          "Ζεύς": 1081,
+          "Νεμέα": 30,
+          "Νηρεύς": 25,
+          "Σεμέλη": 24,
+          "Δίκη": 23,
+          "Ἥλιος": 22,
+          "Ῥέα": 21,
+          "Μαῖα": 17,
+          "Ἥβη": 16,
+          "Βορέας": 12,
+          "Στρυμών": 10,
+          "Ὀρφεύς": 9,
+          "Ἠώς": 8,
+          "Ὥρα": 7,
+          "Ἔρεβος": 6,
+          "Μέμνων": 6,
+          "Ἄκτωρ": 6,
+          "Νύξ": 6,
+          "Πόντος": 5,
+          "Τρίτων": 4,
+          "Κολωνός": 4,
+          "Ἠριδανός": 3,
+          "Ταῦρος": 3,
+          "Πάρος": 3,
+          "Χθών": 3,
+          "Κολοφών": 2,
+          "Μνημοσύνη": 2,
+          "Καύκασος": 2,
+          "Ἀΐδης": 2,
+          "Δαίδαλος": 2,
+          "Λήθη": 2,
+          "Ἕως": 2,
+          "Ὕπνος": 2,
+          "Κώρυκος": 1,
+          "Ἀκάδημος": 1,
+          "Μήνη": 1,
+          "Κόρος": 1,
+          "Τέως": 1,
+          "Ἕσπερος": 1,
+          "Ἄρκτος": 1,
+          "Ἁίδας": 1
+        },
+        "top_40": [
+          [
+            "Ζεύς",
+            1081
+          ],
+          [
+            "Νεμέα",
+            30
+          ],
+          [
+            "Νηρεύς",
+            25
+          ],
+          [
+            "Σεμέλη",
+            24
+          ],
+          [
+            "Δίκη",
+            23
+          ],
+          [
+            "Ἥλιος",
+            22
+          ],
+          [
+            "Ῥέα",
+            21
+          ],
+          [
+            "Μαῖα",
+            17
+          ],
+          [
+            "Ἥβη",
+            16
+          ],
+          [
+            "Βορέας",
+            12
+          ],
+          [
+            "Στρυμών",
+            10
+          ],
+          [
+            "Ὀρφεύς",
+            9
+          ],
+          [
+            "Ἠώς",
+            8
+          ],
+          [
+            "Ὥρα",
+            7
+          ],
+          [
+            "Ἔρεβος",
+            6
+          ],
+          [
+            "Μέμνων",
+            6
+          ],
+          [
+            "Ἄκτωρ",
+            6
+          ],
+          [
+            "Νύξ",
+            6
+          ],
+          [
+            "Πόντος",
+            5
+          ],
+          [
+            "Τρίτων",
+            4
+          ],
+          [
+            "Κολωνός",
+            4
+          ],
+          [
+            "Ἠριδανός",
+            3
+          ],
+          [
+            "Ταῦρος",
+            3
+          ],
+          [
+            "Πάρος",
+            3
+          ],
+          [
+            "Χθών",
+            3
+          ],
+          [
+            "Κολοφών",
+            2
+          ],
+          [
+            "Μνημοσύνη",
+            2
+          ],
+          [
+            "Καύκασος",
+            2
+          ],
+          [
+            "Ἀΐδης",
+            2
+          ],
+          [
+            "Δαίδαλος",
+            2
+          ],
+          [
+            "Λήθη",
+            2
+          ],
+          [
+            "Ἕως",
+            2
+          ],
+          [
+            "Ὕπνος",
+            2
+          ],
+          [
+            "Κώρυκος",
+            1
+          ],
+          [
+            "Ἀκάδημος",
+            1
+          ],
+          [
+            "Μήνη",
+            1
+          ],
+          [
+            "Κόρος",
+            1
+          ],
+          [
+            "Τέως",
+            1
+          ],
+          [
+            "Ἕσπερος",
+            1
+          ],
+          [
+            "Ἄρκτος",
+            1
+          ]
+        ],
+        "sample_30": [
+          {
+            "index": 103364,
+            "lemma": "Ζεύς",
+            "form": "Ζεῦ",
+            "locus": "Pindarus Pythia 1.29",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 3381,
+            "lemma": "Ῥέα",
+            "form": "Ῥείη",
+            "locus": "Hesiodus Theogonia 453",
+            "before": [
+              "Ῥέα (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ῥέα",
+              true,
+              "noun",
+              [
+                "pie-lex-h1roxs"
+              ]
+            ]
+          },
+          {
+            "index": 59225,
+            "lemma": "Ζεύς",
+            "form": "Διός",
+            "locus": "Aeschylus Supplices 780",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 19917,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Hesiodus Fragmenta 75.17",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 3899,
+            "lemma": "Ζεύς",
+            "form": "Ζηνὸς",
+            "locus": "Hesiodus Theogonia 529",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 184697,
+            "lemma": "Ζεύς",
+            "form": "Ζεῦ",
+            "locus": "Euripides Hercules 1086",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 281044,
+            "lemma": "Ζεύς",
+            "form": "Ζεῦ",
+            "locus": "Sophocles Trachiniae 995",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 102860,
+            "lemma": "Ζεύς",
+            "form": "Ζηνὸς",
+            "locus": "Pindarus Olympia 13.92",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 7360,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Hesiodus Theogonia 1022",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 39872,
+            "lemma": "Ἥλιος",
+            "form": "Ἠελίοιο",
+            "locus": "Hymni Homerici In Apollinem 411",
+            "before": [
+              "Ἥλιος (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ἥλιος",
+              true,
+              "noun",
+              [
+                "pie-lex-soh2wl"
+              ]
+            ]
+          },
+          {
+            "index": 9278,
+            "lemma": "Ζεύς",
+            "form": "Διὶ",
+            "locus": "Hesiodus Opera et dies 259",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 337227,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Sophocles Oedipus Coloneus 1606",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 322308,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Sophocles Philoctetes 677",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 120342,
+            "lemma": "Ὥρα",
+            "form": "Ὧραι",
+            "locus": "Simonides Epigrammata 13.28.1",
+            "before": [
+              "Ὥρα (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ὥρα",
+              true,
+              "noun",
+              [
+                "pie-lex-Hyoh1r",
+                "pie-lex-yoh1r",
+                "pie-lex-yoh1r-2",
+                "pie-lex-yoh1r-3"
+              ]
+            ]
+          },
+          {
+            "index": 71144,
+            "lemma": "Ζεύς",
+            "form": "Διός",
+            "locus": "Aeschylus Prometheus vinctus 928",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 65219,
+            "lemma": "Πάρος",
+            "form": "Πάρος",
+            "locus": "Aeschylus Persae 884",
+            "before": [
+              "Πάρος (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Πάρος",
+              true,
+              "noun",
+              [
+                "pie-lex-preh2",
+                "pie-root-preh2-before"
+              ]
+            ]
+          },
+          {
+            "index": 71004,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Aeschylus Prometheus vinctus 906",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 120248,
+            "lemma": "Νεμέα",
+            "form": "Νεμέᾳ",
+            "locus": "Simonides Epigrammata 13.19.7",
+            "before": [
+              "Νεμέα (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Νεμέα",
+              true,
+              "noun",
+              [
+                "pie-lex-nemeseh2"
+              ]
+            ]
+          },
+          {
+            "index": 112335,
+            "lemma": "Νεμέα",
+            "form": "Νεμέᾳ",
+            "locus": "Pindarus Nemea 4.75",
+            "before": [
+              "Νεμέα (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Νεμέα",
+              true,
+              "noun",
+              [
+                "pie-lex-nemeseh2"
+              ]
+            ]
+          },
+          {
+            "index": 74910,
+            "lemma": "Ἄκτωρ",
+            "form": "Ἄκτωρ",
+            "locus": "Aeschylus Septem contra Thebas 555",
+            "before": [
+              "Ἄκτωρ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ἄκτωρ",
+              true,
+              "noun",
+              [
+                "pie-lex-h2egjtoxr"
+              ]
+            ]
+          },
+          {
+            "index": 187247,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Euripides Ion 63",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 68753,
+            "lemma": "Ζεύς",
+            "form": "Διός",
+            "locus": "Aeschylus Prometheus vinctus 510",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 253837,
+            "lemma": "Σεμέλη",
+            "form": "Σεμέλην",
+            "locus": "Euripides Bacchae 468",
+            "before": [
+              "Σεμέλη (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Σεμέλη",
+              true,
+              "noun",
+              [
+                "pie-lex-dhegjhoxm"
+              ]
+            ]
+          },
+          {
+            "index": 338039,
+            "lemma": "Ζεύς",
+            "form": "Ζεῦ",
+            "locus": "Sophocles Oedipus Coloneus 1748",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 183241,
+            "lemma": "Ζεύς",
+            "form": "Ζηνὸς",
+            "locus": "Euripides Hercules 826",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 6152,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Hesiodus Theogonia 853",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 51691,
+            "lemma": "Ζεύς",
+            "form": "Ζεὺς",
+            "locus": "Theognis Elegiae 894",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 268479,
+            "lemma": "Ζεύς",
+            "form": "Διὸς",
+            "locus": "Euripides Iphigenia Aulidensis 1543",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          },
+          {
+            "index": 118711,
+            "lemma": "Μέμνων",
+            "form": "Μέμνονός",
+            "locus": "Pindarus Isthmia 8.54",
+            "before": [
+              "Μέμνων (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Μέμνων",
+              true,
+              "noun",
+              [
+                "pie-lex-memnox-2"
+              ]
+            ]
+          },
+          {
+            "index": 116608,
+            "lemma": "Ζεύς",
+            "form": "Ζεῦ",
+            "locus": "Pindarus Isthmia 3.4",
+            "before": [
+              "Ζεύς (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "Ζεύς",
+              true,
+              "noun",
+              [
+                "pie-lex-dyexws"
+              ]
+            ]
+          }
+        ]
+      },
+      "orv": {
+        "tokens": 122818,
+        "changed_tokens": 72,
+        "regained_tokens": 71,
+        "change_categories": {
+          "lemma": 71,
+          "content": 71,
+          "pos": 72,
+          "roots": 71
+        },
+        "lost_roots_tokens": 0,
+        "lost_roots_sample_30": [],
+        "regained_lemma_counts": {
+          "дунаи": 20,
+          "блудъ": 10,
+          "сѣверъ": 7,
+          "кыи": 7,
+          "бугъ": 6,
+          "весь": 4,
+          "малъ": 4,
+          "волосъ": 4,
+          "дивъ": 2,
+          "семь": 2,
+          "воинъ": 2,
+          "стрибогъ": 1,
+          "боръ": 1,
+          "вьрхъ": 1
+        },
+        "top_40": [
+          [
+            "дунаи",
+            20
+          ],
+          [
+            "блудъ",
+            10
+          ],
+          [
+            "сѣверъ",
+            7
+          ],
+          [
+            "кыи",
+            7
+          ],
+          [
+            "бугъ",
+            6
+          ],
+          [
+            "весь",
+            4
+          ],
+          [
+            "малъ",
+            4
+          ],
+          [
+            "волосъ",
+            4
+          ],
+          [
+            "дивъ",
+            2
+          ],
+          [
+            "семь",
+            2
+          ],
+          [
+            "воинъ",
+            2
+          ],
+          [
+            "стрибогъ",
+            1
+          ],
+          [
+            "боръ",
+            1
+          ],
+          [
+            "вьрхъ",
+            1
+          ]
+        ],
+        "sample_30": [
+          {
+            "index": 14327,
+            "lemma": "блудъ",
+            "form": "блудъ",
+            "locus": "lav 76.24",
+            "before": [
+              "блудъ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "блудъ",
+              true,
+              "noun",
+              [
+                "pie-lex-bhlondhos"
+              ]
+            ]
+          },
+          {
+            "index": 1748,
+            "lemma": "дунаи",
+            "form": "Дунаю",
+            "locus": "spi 130",
+            "before": [
+              "дунаи (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "дунаи",
+              true,
+              "noun",
+              [
+                "pie-lex-deh2nu"
+              ]
+            ]
+          },
+          {
+            "index": 5776,
+            "lemma": "весь",
+            "form": "весь",
+            "locus": "lav 20.18",
+            "before": [
+              "весь (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "весь",
+              true,
+              "noun",
+              [
+                "pie-lex-wisos"
+              ]
+            ]
+          },
+          {
+            "index": 3484,
+            "lemma": "сѣверъ",
+            "form": "сѣверъ",
+            "locus": "lav 6.23",
+            "before": [
+              "сѣверъ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "сѣверъ",
+              true,
+              "noun",
+              [
+                "pie-lex-skjeh1wer"
+              ]
+            ]
+          },
+          {
+            "index": 1757,
+            "lemma": "дунаи",
+            "form": "Дуная",
+            "locus": "spi 130",
+            "before": [
+              "дунаи (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "дунаи",
+              true,
+              "noun",
+              [
+                "pie-lex-deh2nu"
+              ]
+            ]
+          },
+          {
+            "index": 59438,
+            "lemma": "волосъ",
+            "form": "волосом",
+            "locus": "pvl-hyp 32.5",
+            "before": [
+              "волосъ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "волосъ",
+              true,
+              "noun",
+              [
+                "pie-lex-h2wolh1kjos"
+              ]
+            ]
+          },
+          {
+            "index": 106364,
+            "lemma": "волосъ",
+            "form": "волоса",
+            "locus": "nov-sin",
+            "before": [
+              "волосъ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "волосъ",
+              true,
+              "noun",
+              [
+                "pie-lex-h2wolh1kjos"
+              ]
+            ]
+          },
+          {
+            "index": 2264,
+            "lemma": "дунаи",
+            "form": "Дунаеви",
+            "locus": "spi 169",
+            "before": [
+              "дунаи (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "дунаи",
+              true,
+              "noun",
+              [
+                "pie-lex-deh2nu"
+              ]
+            ]
+          },
+          {
+            "index": 3479,
+            "lemma": "семь",
+            "form": "сѣли",
+            "locus": "lav 6.22",
+            "before": [
+              "семь (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "семь",
+              true,
+              "noun",
+              [
+                "pie-lex-septm"
+              ]
+            ]
+          },
+          {
+            "index": 86509,
+            "lemma": "дунаи",
+            "form": "дѹнаи",
+            "locus": "nov-sin",
+            "before": [
+              "дунаи (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "дунаи",
+              true,
+              "noun",
+              [
+                "pie-lex-deh2nu"
+              ]
+            ]
+          },
+          {
+            "index": 29322,
+            "lemma": "сѣверъ",
+            "form": "сѣверъ",
+            "locus": "lav 148.28",
+            "before": [
+              "сѣверъ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "сѣверъ",
+              true,
+              "noun",
+              [
+                "pie-lex-skjeh1wer"
+              ]
+            ]
+          },
+          {
+            "index": 14285,
+            "lemma": "блудъ",
+            "form": "блуду",
+            "locus": "lav 76.18",
+            "before": [
+              "блудъ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "блудъ",
+              true,
+              "noun",
+              [
+                "pie-lex-bhlondhos"
+              ]
+            ]
+          },
+          {
+            "index": 14263,
+            "lemma": "блудъ",
+            "form": "блудомъ",
+            "locus": "lav 76.15",
+            "before": [
+              "блудъ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "блудъ",
+              true,
+              "noun",
+              [
+                "pie-lex-bhlondhos"
+              ]
+            ]
+          },
+          {
+            "index": 4486,
+            "lemma": "сѣверъ",
+            "form": "сѣверъ",
+            "locus": "lav 12.22",
+            "before": [
+              "сѣверъ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "сѣверъ",
+              true,
+              "noun",
+              [
+                "pie-lex-skjeh1wer"
+              ]
+            ]
+          },
+          {
+            "index": 4037,
+            "lemma": "кыи",
+            "form": "кии",
+            "locus": "lav 10.4",
+            "before": [
+              "кыи (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "кыи",
+              true,
+              "noun",
+              [
+                "pie-lex-kuh2yos",
+                "pie-root-kw-primary_interrogative_root"
+              ]
+            ]
+          },
+          {
+            "index": 4029,
+            "lemma": "кыи",
+            "form": "кии",
+            "locus": "lav 10.2",
+            "before": [
+              "кыи (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "кыи",
+              true,
+              "noun",
+              [
+                "pie-lex-kuh2yos",
+                "pie-root-kw-primary_interrogative_root"
+              ]
+            ]
+          },
+          {
+            "index": 30346,
+            "lemma": "дунаи",
+            "form": "дунаи",
+            "locus": "lav 154.6",
+            "before": [
+              "дунаи (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "дунаи",
+              true,
+              "noun",
+              [
+                "pie-lex-deh2nu"
+              ]
+            ]
+          },
+          {
+            "index": 40544,
+            "lemma": "воинъ",
+            "form": "воину",
+            "locus": "lav 204.13",
+            "before": [
+              "воинъ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "воинъ",
+              true,
+              "noun",
+              [
+                "pie-lex-woyh1os"
+              ]
+            ]
+          },
+          {
+            "index": 4268,
+            "lemma": "дунаи",
+            "form": "дунаи",
+            "locus": "lav 11.15",
+            "before": [
+              "дунаи (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "дунаи",
+              true,
+              "noun",
+              [
+                "pie-lex-deh2nu"
+              ]
+            ]
+          },
+          {
+            "index": 4064,
+            "lemma": "дунаи",
+            "form": "дунаеви",
+            "locus": "lav 10.7",
+            "before": [
+              "дунаи (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "дунаи",
+              true,
+              "noun",
+              [
+                "pie-lex-deh2nu"
+              ]
+            ]
+          },
+          {
+            "index": 6642,
+            "lemma": "дунаи",
+            "form": "дунаеви",
+            "locus": "lav 25.25",
+            "before": [
+              "дунаи (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "дунаи",
+              true,
+              "noun",
+              [
+                "pie-lex-deh2nu"
+              ]
+            ]
+          },
+          {
+            "index": 29264,
+            "lemma": "сѣверъ",
+            "form": "сѣверъ",
+            "locus": "lav 148.18",
+            "before": [
+              "сѣверъ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "сѣверъ",
+              true,
+              "noun",
+              [
+                "pie-lex-skjeh1wer"
+              ]
+            ]
+          },
+          {
+            "index": 9723,
+            "lemma": "малъ",
+            "form": "малъ",
+            "locus": "lav 56.5",
+            "before": [
+              "малъ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "малъ",
+              true,
+              "noun",
+              [
+                "pie-lex-smoh1los"
+              ]
+            ]
+          },
+          {
+            "index": 50184,
+            "lemma": "воинъ",
+            "form": "воину",
+            "locus": "lav 250.17",
+            "before": [
+              "воинъ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "воинъ",
+              true,
+              "noun",
+              [
+                "pie-lex-woyh1os"
+              ]
+            ]
+          },
+          {
+            "index": 14684,
+            "lemma": "блудъ",
+            "form": "блудъ",
+            "locus": "lav 78.13",
+            "before": [
+              "блудъ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "блудъ",
+              true,
+              "noun",
+              [
+                "pie-lex-bhlondhos"
+              ]
+            ]
+          },
+          {
+            "index": 95640,
+            "lemma": "вьрхъ",
+            "form": "вьрхѹ",
+            "locus": "nov-sin",
+            "before": [
+              "вьрхъ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "вьрхъ",
+              true,
+              "noun",
+              [
+                "pie-lex-wrsu"
+              ]
+            ]
+          },
+          {
+            "index": 3928,
+            "lemma": "кыи",
+            "form": "кии",
+            "locus": "lav 9.11",
+            "before": [
+              "кыи (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "кыи",
+              true,
+              "noun",
+              [
+                "pie-lex-kuh2yos",
+                "pie-root-kw-primary_interrogative_root"
+              ]
+            ]
+          },
+          {
+            "index": 11764,
+            "lemma": "дунаи",
+            "form": "дунаи",
+            "locus": "lav 65.14",
+            "before": [
+              "дунаи (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "дунаи",
+              true,
+              "noun",
+              [
+                "pie-lex-deh2nu"
+              ]
+            ]
+          },
+          {
+            "index": 29223,
+            "lemma": "сѣверъ",
+            "form": "сѣверъ",
+            "locus": "lav 148.12",
+            "before": [
+              "сѣверъ (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "сѣверъ",
+              true,
+              "noun",
+              [
+                "pie-lex-skjeh1wer"
+              ]
+            ]
+          },
+          {
+            "index": 4279,
+            "lemma": "дунаи",
+            "form": "дунаеви",
+            "locus": "lav 11.17",
+            "before": [
+              "дунаи (name)",
+              false,
+              "name",
+              []
+            ],
+            "after": [
+              "дунаи",
+              true,
+              "noun",
+              [
+                "pie-lex-deh2nu"
+              ]
+            ]
+          }
+        ]
+      },
+      "menota": {
+        "tokens": 1650614,
+        "changed_tokens": 42175,
+        "regained_tokens": 344,
+        "change_categories": {
+          "lemma": 344,
+          "content": 41831,
+          "pos": 0,
+          "roots": 344
+        },
+        "lost_roots_tokens": 0,
+        "lost_roots_sample_30": [],
+        "regained_lemma_counts": {
+          "ljótr": 50,
+          "unnr": 40,
+          "geirr": 36,
+          "þórr": 20,
+          "gróa": 16,
+          "ǫrn": 16,
+          "svartr": 16,
+          "gríma": 15,
+          "hjǫrtr": 15,
+          "ari": 14,
+          "skjǫldr": 12,
+          "rauðr": 10,
+          "uxi": 9,
+          "hafr": 9,
+          "steinn": 8,
+          "mǫn": 7,
+          "karl": 6,
+          "baugr": 4,
+          "hlíf": 4,
+          "gaukr": 4,
+          "naðr": 3,
+          "eilífr": 3,
+          "una": 3,
+          "borg": 3,
+          "Hǫðr": 3,
+          "gunnr": 2,
+          "áll": 2,
+          "bót": 2,
+          "faðir": 1,
+          "langr": 1,
+          "oddi": 1,
+          "hel": 1,
+          "stúfr": 1,
+          "súrr": 1,
+          "áss": 1,
+          "hjalmr": 1,
+          "skíð": 1,
+          "kýr": 1,
+          "mars": 1,
+          "Guð": 1
+        },
+        "top_40": [
+          [
+            "ljótr",
+            50
+          ],
+          [
+            "unnr",
+            40
+          ],
+          [
+            "geirr",
+            36
+          ],
+          [
+            "þórr",
+            20
+          ],
+          [
+            "gróa",
+            16
+          ],
+          [
+            "ǫrn",
+            16
+          ],
+          [
+            "svartr",
+            16
+          ],
+          [
+            "gríma",
+            15
+          ],
+          [
+            "hjǫrtr",
+            15
+          ],
+          [
+            "ari",
+            14
+          ],
+          [
+            "skjǫldr",
+            12
+          ],
+          [
+            "rauðr",
+            10
+          ],
+          [
+            "uxi",
+            9
+          ],
+          [
+            "hafr",
+            9
+          ],
+          [
+            "steinn",
+            8
+          ],
+          [
+            "mǫn",
+            7
+          ],
+          [
+            "karl",
+            6
+          ],
+          [
+            "baugr",
+            4
+          ],
+          [
+            "hlíf",
+            4
+          ],
+          [
+            "gaukr",
+            4
+          ],
+          [
+            "naðr",
+            3
+          ],
+          [
+            "eilífr",
+            3
+          ],
+          [
+            "una",
+            3
+          ],
+          [
+            "borg",
+            3
+          ],
+          [
+            "Hǫðr",
+            3
+          ],
+          [
+            "gunnr",
+            2
+          ],
+          [
+            "áll",
+            2
+          ],
+          [
+            "bót",
+            2
+          ],
+          [
+            "faðir",
+            1
+          ],
+          [
+            "langr",
+            1
+          ],
+          [
+            "oddi",
+            1
+          ],
+          [
+            "hel",
+            1
+          ],
+          [
+            "stúfr",
+            1
+          ],
+          [
+            "súrr",
+            1
+          ],
+          [
+            "áss",
+            1
+          ],
+          [
+            "hjalmr",
+            1
+          ],
+          [
+            "skíð",
+            1
+          ],
+          [
+            "kýr",
+            1
+          ],
+          [
+            "mars",
+            1
+          ],
+          [
+            "Guð",
+            1
+          ]
+        ],
+        "sample_30": [
+          {
+            "index": 193904,
+            "lemma": "ljótr",
+            "form": "Ljóts",
+            "locus": "AM-132-fol-Laxdaela-saga 197v:21",
+            "before": [
+              "ljótr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "ljótr",
+              true,
+              "noun",
+              [
+                "pie-lex-lewdos"
+              ]
+            ]
+          },
+          {
+            "index": 22340,
+            "lemma": "gróa",
+            "form": "Gróa",
+            "locus": "AM-132-fol-Droplaugarsona-saga 145r:38",
+            "before": [
+              "gróa (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "gróa",
+              true,
+              "noun",
+              [
+                "pie-lex-ghroh1yeti"
+              ]
+            ]
+          },
+          {
+            "index": 134319,
+            "lemma": "unnr",
+            "form": "Unnr",
+            "locus": "AM-132-fol-Laxdaela-saga 157r:16",
+            "before": [
+              "unnr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "unnr",
+              true,
+              "noun",
+              [
+                "pie-lex-h2en"
+              ]
+            ]
+          },
+          {
+            "index": 68128,
+            "lemma": "ljótr",
+            "form": "Ljót",
+            "locus": "AM-132-fol-Egils-saga 90r:16",
+            "before": [
+              "ljótr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "ljótr",
+              true,
+              "noun",
+              [
+                "pie-lex-lewdos"
+              ]
+            ]
+          },
+          {
+            "index": 22482,
+            "lemma": "gróa",
+            "form": "Gró",
+            "locus": "AM-132-fol-Droplaugarsona-saga 146r:10",
+            "before": [
+              "gróa (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "gróa",
+              true,
+              "noun",
+              [
+                "pie-lex-ghroh1yeti"
+              ]
+            ]
+          },
+          {
+            "index": 212632,
+            "lemma": "hjǫrtr",
+            "form": "Hjǫrtr",
+            "locus": "AM-132-fol-Njals-saga 23v:7",
+            "before": [
+              "hjǫrtr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "hjǫrtr",
+              true,
+              "noun",
+              [
+                "pie-lex-kjerh2"
+              ]
+            ]
+          },
+          {
+            "index": 290924,
+            "lemma": "una",
+            "form": "Una",
+            "locus": "AM-132-fol-Viga-Glums-saga 136v:27",
+            "before": [
+              "una (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "una",
+              true,
+              "noun",
+              [
+                "pie-lex-wnh1eh1yeti"
+              ]
+            ]
+          },
+          {
+            "index": 189126,
+            "lemma": "ari",
+            "form": "Ari",
+            "locus": "AM-132-fol-Laxdaela-saga 194v:11",
+            "before": [
+              "ari (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "ari",
+              true,
+              "noun",
+              [
+                "pie-lex-h3erox"
+              ]
+            ]
+          },
+          {
+            "index": 54528,
+            "lemma": "langr",
+            "form": "Lang",
+            "locus": "AM-132-fol-Egils-saga 81r:21",
+            "before": [
+              "langr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "langr",
+              true,
+              "noun",
+              [
+                "pie-lex-dlonghos"
+              ]
+            ]
+          },
+          {
+            "index": 112371,
+            "lemma": "gríma",
+            "form": "Gríma",
+            "locus": "AM-132-fol-Fostbraedra-saga 201v:25",
+            "before": [
+              "gríma (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "gríma",
+              true,
+              "noun",
+              [
+                "pie-lex-ghrey"
+              ]
+            ]
+          },
+          {
+            "index": 65912,
+            "lemma": "ljótr",
+            "form": "Ljótr",
+            "locus": "AM-132-fol-Egils-saga 88v:14",
+            "before": [
+              "ljótr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "ljótr",
+              true,
+              "noun",
+              [
+                "pie-lex-lewdos"
+              ]
+            ]
+          },
+          {
+            "index": 1590859,
+            "lemma": "Guð",
+            "form": "Guðs",
+            "locus": "NRA-norrfragm-66 4v:7",
+            "before": [
+              "Guð (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "Guð",
+              true,
+              "noun",
+              [
+                "pie-lex-gjhutos"
+              ]
+            ]
+          },
+          {
+            "index": 1534237,
+            "lemma": "þórr",
+            "form": "þor",
+            "locus": "HolmPerg-6-fol 136:11",
+            "before": [
+              "þórr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "þórr",
+              true,
+              "noun",
+              [
+                "pie-lex-stenh2"
+              ]
+            ]
+          },
+          {
+            "index": 199267,
+            "lemma": "svartr",
+            "form": "Svartr",
+            "locus": "AM-132-fol-Njals-saga 13v:35",
+            "before": [
+              "svartr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "svartr",
+              true,
+              "noun",
+              [
+                "pie-lex-swordos"
+              ]
+            ]
+          },
+          {
+            "index": 136067,
+            "lemma": "gróa",
+            "form": "Gró",
+            "locus": "AM-132-fol-Laxdaela-saga 158v:17",
+            "before": [
+              "gróa (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "gróa",
+              true,
+              "noun",
+              [
+                "pie-lex-ghroh1yeti"
+              ]
+            ]
+          },
+          {
+            "index": 134459,
+            "lemma": "unnr",
+            "form": "Unnr",
+            "locus": "AM-132-fol-Laxdaela-saga 157r:32",
+            "before": [
+              "unnr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "unnr",
+              true,
+              "noun",
+              [
+                "pie-lex-h2en"
+              ]
+            ]
+          },
+          {
+            "index": 194194,
+            "lemma": "ljótr",
+            "form": "Ljótr",
+            "locus": "AM-132-fol-Laxdaela-saga 198r:11",
+            "before": [
+              "ljótr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "ljótr",
+              true,
+              "noun",
+              [
+                "pie-lex-lewdos"
+              ]
+            ]
+          },
+          {
+            "index": 144260,
+            "lemma": "ǫrn",
+            "form": "Ǫrn",
+            "locus": "AM-132-fol-Laxdaela-saga 164v:27",
+            "before": [
+              "ǫrn (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "ǫrn",
+              true,
+              "noun",
+              [
+                "pie-lex-h3erox"
+              ]
+            ]
+          },
+          {
+            "index": 213368,
+            "lemma": "hjǫrtr",
+            "form": "Hjǫrt",
+            "locus": "AM-132-fol-Njals-saga 24r:37",
+            "before": [
+              "hjǫrtr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "hjǫrtr",
+              true,
+              "noun",
+              [
+                "pie-lex-kjerh2"
+              ]
+            ]
+          },
+          {
+            "index": 134739,
+            "lemma": "unnr",
+            "form": "Unnr",
+            "locus": "AM-132-fol-Laxdaela-saga 157v:26",
+            "before": [
+              "unnr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "unnr",
+              true,
+              "noun",
+              [
+                "pie-lex-h2en"
+              ]
+            ]
+          },
+          {
+            "index": 241690,
+            "lemma": "hafr",
+            "form": "Hafr",
+            "locus": "AM-132-fol-Njals-saga 41v:33",
+            "before": [
+              "hafr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "hafr",
+              true,
+              "noun",
+              [
+                "pie-lex-kapros"
+              ]
+            ]
+          },
+          {
+            "index": 1603818,
+            "lemma": "áll",
+            "form": "Páll",
+            "locus": "NRA-norrfragm-77 3v:6",
+            "before": [
+              "áll (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "áll",
+              true,
+              "noun",
+              [
+                "pie-lex-h2enkulos"
+              ]
+            ]
+          },
+          {
+            "index": 212416,
+            "lemma": "hjǫrtr",
+            "form": "Hjǫrtr",
+            "locus": "AM-132-fol-Njals-saga 23v:28",
+            "before": [
+              "hjǫrtr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "hjǫrtr",
+              true,
+              "noun",
+              [
+                "pie-lex-kjerh2"
+              ]
+            ]
+          },
+          {
+            "index": 39464,
+            "lemma": "ǫrn",
+            "form": "Arnar",
+            "locus": "AM-132-fol-Egils-saga 71v:34",
+            "before": [
+              "ǫrn (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "ǫrn",
+              true,
+              "noun",
+              [
+                "pie-lex-h3erox"
+              ]
+            ]
+          },
+          {
+            "index": 133718,
+            "lemma": "unnr",
+            "form": "Unni",
+            "locus": "AM-132-fol-Laxdaela-saga 157r:21",
+            "before": [
+              "unnr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "unnr",
+              true,
+              "noun",
+              [
+                "pie-lex-h2en"
+              ]
+            ]
+          },
+          {
+            "index": 257315,
+            "lemma": "gaukr",
+            "form": "Gauk",
+            "locus": "AM-132-fol-Njals-saga 50v:1",
+            "before": [
+              "gaukr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "gaukr",
+              true,
+              "noun",
+              [
+                "pie-lex-gheghugjhos"
+              ]
+            ]
+          },
+          {
+            "index": 199076,
+            "lemma": "svartr",
+            "form": "Svart",
+            "locus": "AM-132-fol-Njals-saga 13v:17",
+            "before": [
+              "svartr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "svartr",
+              true,
+              "noun",
+              [
+                "pie-lex-swordos"
+              ]
+            ]
+          },
+          {
+            "index": 195867,
+            "lemma": "karl",
+            "form": "Karl",
+            "locus": "AM-132-fol-Njals-saga 11v:7",
+            "before": [
+              "karl (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "karl",
+              true,
+              "noun",
+              [
+                "pie-lex-gjorh2os"
+              ]
+            ]
+          },
+          {
+            "index": 224229,
+            "lemma": "þórr",
+            "form": "Þórs",
+            "locus": "AM-132-fol-Njals-saga 32r:1",
+            "before": [
+              "þórr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "þórr",
+              true,
+              "noun",
+              [
+                "pie-lex-stenh2"
+              ]
+            ]
+          },
+          {
+            "index": 204606,
+            "lemma": "skjǫldr",
+            "form": "Skjǫldr",
+            "locus": "AM-132-fol-Njals-saga 16v:26",
+            "before": [
+              "skjǫldr (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "skjǫldr",
+              true,
+              "noun",
+              [
+                "pie-lex-skelHtus",
+                "pie-lex-skelHtus-2"
+              ]
+            ]
+          }
+        ]
+      },
+      "icepahc": {
+        "tokens": 255967,
+        "changed_tokens": 15573,
+        "regained_tokens": 2130,
+        "change_categories": {
+          "lemma": 2130,
+          "content": 13443,
+          "pos": 0,
+          "roots": 2130
+        },
+        "lost_roots_tokens": 0,
+        "lost_roots_sample_30": [],
+        "regained_lemma_counts": {
+          "guð": 812,
+          "drottinn": 213,
+          "jökull": 148,
+          "sveinn": 108,
+          "halli": 81,
+          "andi": 58,
+          "álfur": 51,
+          "barði": 37,
+          "vali": 36,
+          "ormur": 33,
+          "örn": 32,
+          "borg": 29,
+          "svartur": 27,
+          "glámur": 26,
+          "loðinn": 24,
+          "foss": 22,
+          "faðir": 21,
+          "stúfur": 19,
+          "helvíti": 17,
+          "himinn": 17,
+          "ótta": 17,
+          "bjarg": 16,
+          "oddi": 14,
+          "hof": 14,
+          "rauður": 12,
+          "staður": 12,
+          "sonur": 11,
+          "hann": 11,
+          "flói": 9,
+          "þetta": 9,
+          "holt": 8,
+          "ég": 8,
+          "fiður": 8,
+          "þú": 7,
+          "tunga": 7,
+          "uxi": 7,
+          "æsa": 6,
+          "loft": 6,
+          "ás": 5,
+          "skíði": 5,
+          "fell": 5,
+          "hlíð": 5,
+          "haf": 4,
+          "hel": 4,
+          "karl": 4,
+          "máni": 4,
+          "kol": 4,
+          "skál": 4,
+          "steinn": 4,
+          "gála": 4,
+          "halla": 3,
+          "börkur": 3,
+          "blundur": 3,
+          "sumar": 3,
+          "maður": 3,
+          "þér": 3,
+          "sá": 3,
+          "mörk": 3,
+          "brúnn": 3,
+          "ari": 2,
+          "dagur": 2,
+          "vér": 2,
+          "fljót": 2,
+          "stjarna": 2,
+          "hjálmur": 2,
+          "horn": 2,
+          "berg": 2,
+          "skalli": 2,
+          "skjálgur": 2,
+          "jörð": 1,
+          "sól": 1,
+          "hraun": 1,
+          "veggur": 1,
+          "akur": 1,
+          "spaði": 1,
+          "ljótur": 1,
+          "ósk": 1,
+          "hólmur": 1,
+          "selja": 1,
+          "óreiða": 1,
+          "iða": 1,
+          "hersir": 1,
+          "askur": 1,
+          "mýri": 1,
+          "mýrar": 1,
+          "vatn": 1,
+          "haust": 1,
+          "gangur": 1,
+          "mér": 1,
+          "orri": 1,
+          "sigur": 1,
+          "gæs": 1,
+          "wór": 1,
+          "bróðir": 1,
+          "mæri": 1,
+          "bakki": 1,
+          "séra": 1,
+          "vog": 1,
+          "garður": 1,
+          "eilífur": 1,
+          "tveir": 1,
+          "kinn": 1,
+          "hún": 1,
+          "önd": 1,
+          "skuggi": 1,
+          "bleikur": 1,
+          "brún": 1
+        },
+        "top_40": [
+          [
+            "guð",
+            812
+          ],
+          [
+            "drottinn",
+            213
+          ],
+          [
+            "jökull",
+            148
+          ],
+          [
+            "sveinn",
+            108
+          ],
+          [
+            "halli",
+            81
+          ],
+          [
+            "andi",
+            58
+          ],
+          [
+            "álfur",
+            51
+          ],
+          [
+            "barði",
+            37
+          ],
+          [
+            "vali",
+            36
+          ],
+          [
+            "ormur",
+            33
+          ],
+          [
+            "örn",
+            32
+          ],
+          [
+            "borg",
+            29
+          ],
+          [
+            "svartur",
+            27
+          ],
+          [
+            "glámur",
+            26
+          ],
+          [
+            "loðinn",
+            24
+          ],
+          [
+            "foss",
+            22
+          ],
+          [
+            "faðir",
+            21
+          ],
+          [
+            "stúfur",
+            19
+          ],
+          [
+            "helvíti",
+            17
+          ],
+          [
+            "himinn",
+            17
+          ],
+          [
+            "ótta",
+            17
+          ],
+          [
+            "bjarg",
+            16
+          ],
+          [
+            "oddi",
+            14
+          ],
+          [
+            "hof",
+            14
+          ],
+          [
+            "rauður",
+            12
+          ],
+          [
+            "staður",
+            12
+          ],
+          [
+            "sonur",
+            11
+          ],
+          [
+            "hann",
+            11
+          ],
+          [
+            "flói",
+            9
+          ],
+          [
+            "þetta",
+            9
+          ],
+          [
+            "holt",
+            8
+          ],
+          [
+            "ég",
+            8
+          ],
+          [
+            "fiður",
+            8
+          ],
+          [
+            "þú",
+            7
+          ],
+          [
+            "tunga",
+            7
+          ],
+          [
+            "uxi",
+            7
+          ],
+          [
+            "æsa",
+            6
+          ],
+          [
+            "loft",
+            6
+          ],
+          [
+            "ás",
+            5
+          ],
+          [
+            "skíði",
+            5
+          ]
+        ],
+        "sample_30": [
+          {
+            "index": 162952,
+            "lemma": "bakki",
+            "form": "",
+            "locus": "1310.grettir.nar-sag s1594",
+            "before": [
+              "bakki (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "bakki",
+              true,
+              "noun",
+              [
+                "pie-lex-bhongox"
+              ]
+            ]
+          },
+          {
+            "index": 6956,
+            "lemma": "guð",
+            "form": "",
+            "locus": "1150.homiliubok.rel-ser s135",
+            "before": [
+              "guð (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "guð",
+              true,
+              "noun",
+              [
+                "pie-lex-gjhutos"
+              ]
+            ]
+          },
+          {
+            "index": 58528,
+            "lemma": "guð",
+            "form": "",
+            "locus": "1210.thorlakur.rel-sag s508",
+            "before": [
+              "guð (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "guð",
+              true,
+              "noun",
+              [
+                "pie-lex-gjhutos"
+              ]
+            ]
+          },
+          {
+            "index": 19740,
+            "lemma": "guð",
+            "form": "",
+            "locus": "1150.homiliubok.rel-ser s881",
+            "before": [
+              "guð (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "guð",
+              true,
+              "noun",
+              [
+                "pie-lex-gjhutos"
+              ]
+            ]
+          },
+          {
+            "index": 8205,
+            "lemma": "guð",
+            "form": "",
+            "locus": "1150.homiliubok.rel-ser s233",
+            "before": [
+              "guð (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "guð",
+              true,
+              "noun",
+              [
+                "pie-lex-gjhutos"
+              ]
+            ]
+          },
+          {
+            "index": 236263,
+            "lemma": "jökull",
+            "form": "",
+            "locus": "1400.gunnar.nar-sag s341",
+            "before": [
+              "jökull (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "jökull",
+              true,
+              "noun",
+              [
+                "pie-lex-h1yegox"
+              ]
+            ]
+          },
+          {
+            "index": 162364,
+            "lemma": "barði",
+            "form": "",
+            "locus": "1310.grettir.nar-sag s1528",
+            "before": [
+              "barði (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "barði",
+              true,
+              "noun",
+              [
+                "pie-lex-bhardheh2"
+              ]
+            ]
+          },
+          {
+            "index": 12225,
+            "lemma": "guð",
+            "form": "",
+            "locus": "1150.homiliubok.rel-ser s448",
+            "before": [
+              "guð (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "guð",
+              true,
+              "noun",
+              [
+                "pie-lex-gjhutos"
+              ]
+            ]
+          },
+          {
+            "index": 34545,
+            "lemma": "drottinn",
+            "form": "",
+            "locus": "1150.homiliubok.rel-ser s1862",
+            "before": [
+              "drottinn (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "drottinn",
+              true,
+              "noun",
+              [
+                "pie-lex-dhrewghtis"
+              ]
+            ]
+          },
+          {
+            "index": 14377,
+            "lemma": "guð",
+            "form": "",
+            "locus": "1150.homiliubok.rel-ser s571",
+            "before": [
+              "guð (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "guð",
+              true,
+              "noun",
+              [
+                "pie-lex-gjhutos"
+              ]
+            ]
+          },
+          {
+            "index": 203924,
+            "lemma": "álfur",
+            "form": "",
+            "locus": "1350.finnbogi.nar-sag s742",
+            "before": [
+              "álfur (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "álfur",
+              true,
+              "noun",
+              [
+                "pie-lex-albhos"
+              ]
+            ]
+          },
+          {
+            "index": 92314,
+            "lemma": "ótta",
+            "form": "",
+            "locus": "1260.jomsvikingar.nar-sag s755",
+            "before": [
+              "ótta (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "ótta",
+              true,
+              "noun",
+              [
+                "pie-lex-nokwts"
+              ]
+            ]
+          },
+          {
+            "index": 62790,
+            "lemma": "ormur",
+            "form": "",
+            "locus": "1250.sturlunga.nar-sag s385",
+            "before": [
+              "ormur (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "ormur",
+              true,
+              "noun",
+              [
+                "pie-lex-wrmis"
+              ]
+            ]
+          },
+          {
+            "index": 91915,
+            "lemma": "himinn",
+            "form": "",
+            "locus": "1260.jomsvikingar.nar-sag s724",
+            "before": [
+              "himinn (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "himinn",
+              true,
+              "noun",
+              [
+                "pie-lex-h2ekjmox"
+              ]
+            ]
+          },
+          {
+            "index": 202786,
+            "lemma": "hann",
+            "form": "",
+            "locus": "1350.finnbogi.nar-sag s599",
+            "before": [
+              "hann (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "hann",
+              true,
+              "noun",
+              [
+                "pie-lex-is-2"
+              ]
+            ]
+          },
+          {
+            "index": 174075,
+            "lemma": "ormur",
+            "form": "",
+            "locus": "1325.arni.nar-sag s380",
+            "before": [
+              "ormur (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "ormur",
+              true,
+              "noun",
+              [
+                "pie-lex-wrmis"
+              ]
+            ]
+          },
+          {
+            "index": 99697,
+            "lemma": "sveinn",
+            "form": "",
+            "locus": "1260.jomsvikingar.nar-sag s1358",
+            "before": [
+              "sveinn (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "sveinn",
+              true,
+              "noun",
+              [
+                "pie-lex-swe-2"
+              ]
+            ]
+          },
+          {
+            "index": 242609,
+            "lemma": "jökull",
+            "form": "",
+            "locus": "1400.gunnar2.nar-sag s196",
+            "before": [
+              "jökull (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "jökull",
+              true,
+              "noun",
+              [
+                "pie-lex-h1yegox"
+              ]
+            ]
+          },
+          {
+            "index": 75392,
+            "lemma": "óreiða",
+            "form": "",
+            "locus": "1250.sturlunga.nar-sag s1752",
+            "before": [
+              "óreiða (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "óreiða",
+              true,
+              "noun",
+              [
+                "pie-lex-h3reyHdheti-2"
+              ]
+            ]
+          },
+          {
+            "index": 234234,
+            "lemma": "jökull",
+            "form": "",
+            "locus": "1400.gunnar.nar-sag s104",
+            "before": [
+              "jökull (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "jökull",
+              true,
+              "noun",
+              [
+                "pie-lex-h1yegox"
+              ]
+            ]
+          },
+          {
+            "index": 10063,
+            "lemma": "guð",
+            "form": "",
+            "locus": "1150.homiliubok.rel-ser s345",
+            "before": [
+              "guð (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "guð",
+              true,
+              "noun",
+              [
+                "pie-lex-gjhutos"
+              ]
+            ]
+          },
+          {
+            "index": 47954,
+            "lemma": "guð",
+            "form": "",
+            "locus": "1210.jartein.rel-sag s727",
+            "before": [
+              "guð (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "guð",
+              true,
+              "noun",
+              [
+                "pie-lex-gjhutos"
+              ]
+            ]
+          },
+          {
+            "index": 193871,
+            "lemma": "borg",
+            "form": "",
+            "locus": "1350.bandamennM.nar-sag s870",
+            "before": [
+              "borg (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "borg",
+              true,
+              "noun",
+              [
+                "pie-lex-bhergjhs"
+              ]
+            ]
+          },
+          {
+            "index": 186059,
+            "lemma": "guð",
+            "form": "",
+            "locus": "1325.arni.nar-sag s1125",
+            "before": [
+              "guð (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "guð",
+              true,
+              "noun",
+              [
+                "pie-lex-gjhutos"
+              ]
+            ]
+          },
+          {
+            "index": 212471,
+            "lemma": "svartur",
+            "form": "",
+            "locus": "1350.finnbogi.nar-sag s1697",
+            "before": [
+              "svartur (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "svartur",
+              true,
+              "noun",
+              [
+                "pie-lex-swordos"
+              ]
+            ]
+          },
+          {
+            "index": 213928,
+            "lemma": "jökull",
+            "form": "",
+            "locus": "1350.finnbogi.nar-sag s1877",
+            "before": [
+              "jökull (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "jökull",
+              true,
+              "noun",
+              [
+                "pie-lex-h1yegox"
+              ]
+            ]
+          },
+          {
+            "index": 174548,
+            "lemma": "guð",
+            "form": "",
+            "locus": "1325.arni.nar-sag s408",
+            "before": [
+              "guð (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "guð",
+              true,
+              "noun",
+              [
+                "pie-lex-gjhutos"
+              ]
+            ]
+          },
+          {
+            "index": 6125,
+            "lemma": "guð",
+            "form": "",
+            "locus": "1150.homiliubok.rel-ser s100",
+            "before": [
+              "guð (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "guð",
+              true,
+              "noun",
+              [
+                "pie-lex-gjhutos"
+              ]
+            ]
+          },
+          {
+            "index": 92962,
+            "lemma": "ótta",
+            "form": "",
+            "locus": "1260.jomsvikingar.nar-sag s803",
+            "before": [
+              "ótta (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "ótta",
+              true,
+              "noun",
+              [
+                "pie-lex-nokwts"
+              ]
+            ]
+          },
+          {
+            "index": 31349,
+            "lemma": "drottinn",
+            "form": "",
+            "locus": "1150.homiliubok.rel-ser s1670",
+            "before": [
+              "drottinn (name)",
+              true,
+              "noun",
+              []
+            ],
+            "after": [
+              "drottinn",
+              true,
+              "noun",
+              [
+                "pie-lex-dhrewghtis"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "validation": {
+    "focused_regressions": "137 passed before the last exception additions; final dedicated name regression run: 38 passed in 8.23s.",
+    "full_suite": {
+      "status": "passed",
+      "tests_passed": 2968,
+      "elapsed_seconds": 469.2,
+      "output_summary": "2968 passed in 469.20s (0:07:49)",
+      "log": "/tmp/w6-theonyms/pytest-final.txt"
+    },
+    "full_suite_command": "UV_CACHE_DIR=/tmp/pie-uv-cache uv run pytest -q",
+    "audit_consistency": "Passed: all census sums, top-40 ordering, sample sizes, reviewed-exception exclusions and implementation hashes match."
+  },
+  "files_changed": [
+    "pie/name_mapping.py",
+    "pie/w6_other_mapping.py",
+    "pie/formula_search.py",
+    "pie/germanic_new_mapping.py",
+    "scripts/build_8c_stageC.py",
+    "scripts/audit_w6_theonyms.py",
+    "tests/test_name_mapping.py",
+    "tests/test_formula_search.py",
+    "tests/test_stagecs_w6_other.py"
+  ],
+  "implementation_sha256": {
+    "pie/name_mapping.py": "6775667870ab5119ab314ed618cc18d0f229d00ec64982e81902d662c7af5995",
+    "pie/w6_other_mapping.py": "d8636d7fb5d7b55914d218efd1c186f42b2edbac5c4b9d4879050dca70ecc341",
+    "pie/formula_search.py": "72e42b67d7a0408910052beb4fe5080c0fdb85019f04a4eceb951cb51027f63a",
+    "pie/germanic_new_mapping.py": "86946d24635e32cd969c0d9af4cdc5b4de73a57e9135bc27eab382a7921218af",
+    "scripts/build_8c_stageC.py": "eeab89dc0613f608c682d99afb769de069e5fba3642c2ccdd5c6f2de9ef2a5dc",
+    "scripts/audit_w6_theonyms.py": "35f9db2d52e8726c47c1b4b7c2cff3d96617e943fbf95360ec7546bb3502dfa9",
+    "tests/test_name_mapping.py": "053b0c4d76953a14163f3c1aa3d82bc2e120b54a8abee3978cf57864fb441d13",
+    "tests/test_formula_search.py": "2af7c7d6a26ad89009c759db48eb35682758b3b69bae7e6b659a434e5938383d",
+    "tests/test_stagecs_w6_other.py": "2a3ba5e761bfb3c53e2da84d783839b7d90a47848102b489c0bf9e6be34cc320"
+  },
+  "restrictions": {
+    "tier2_tier3_export_regenerated": false,
+    "stage_cs_slabs_rebuilt": false,
+    "prohibited_key_or_slabs_opened": false,
+    "git_used": false,
+    "docs_status_edited": false
+  },
+  "status_report": "Shared exact-name gate implemented; required regressions pass; whole-corpus census complete; full suite 2968 passed. Lead regeneration remains pending; no corpus/export/slab regeneration performed. docs/STATUS.md was not edited."
+}

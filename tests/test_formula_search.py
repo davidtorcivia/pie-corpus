@@ -334,7 +334,7 @@ def test_load_latin(tmp_path):
                       "CitationHierarchy=Capitulum_141,Paragraphus_2"])
     (d / "Cato_CatoAgricultura_CatAgr.conllup").write_text(f"# sent_id = s1\n{row}\n{row2}\n\n", "utf-8")
     t = fs.load_latin(tmp_path)
-    assert [x.lemma for x in t] == ["Mars", "pater"] and t[1].case == "VOC" and t[1].content and not t[0].content
+    assert [x.lemma for x in t] == ["Mars (name)", "pater"] and t[1].case == "VOC" and t[1].content and not t[0].content
     assert t[0].units["line"] == "CatAgr 141.2" and t[0].corpus == "lat"
 
 

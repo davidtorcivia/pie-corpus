@@ -334,26 +334,9 @@ def icepahc_tokens(root: Path) -> list:
     """gm.load_icepahc's tokens with the word form kept (checked against it)."""
     from pie import germanic_new_mapping as gm
     lic = SB.CORPORA["icepahc"][2]
-    toks = []
-    for f in gm.icepahc_files(root):
-        stem = f.name[: -len(".tagged")]
-        s = 0
-        for line in f.read_text("utf-8").splitlines():
-            if not line.strip():
-                s += 1
-                continue
-            p = line.split("\t")
-            if len(p) != 3:
-                continue
-            w, tag, lem = p
-            if not re.search(r"\w", lem) or tag in (".", ",", '"', "FW"):
-                continue
-            tag1 = tag.split("+")[-1] if tag.startswith(("Q+", "ONE+")) else tag
-            toks.append(_tok("icepahc", lem, w, f"{stem} s{s + 1}", f"{stem}.{s}", stem,
-                             bool(gm.ICE_CONTENT.match(tag1)), lic))
-    ref = gm.load_icepahc(root)
-    assert [(t.lemma, t.content) for t in ref] == [(t.lemma, t.content) for t in toks], "icepahc differs"
-    return toks
+    return [_tok("icepahc", t.lemma, t.surface, t.locus, t.units["sentence"],
+                 t.units["text"], t.content, lic)
+            for t in gm.load_icepahc(root, include_surface=True)]
 
 
 def rea_editions(root: Path) -> dict:

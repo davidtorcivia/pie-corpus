@@ -1,0 +1,99 @@
+Wave 6 other/material review — 2026-10-26
+
+95 report rows reviewed independently: 88 confirmed, 1 already-fixed,
+1 rejected, 5 unclear. Ledger: error-verdicts-w6-other.jsonl (one-based
+input report_line). Attached second-look observations are recorded too.
+No claims files, blinding key or Stage C-S slabs were opened. Raw sources
+were read as text only. No git command, corpus/export regeneration, or
+STATUS.md edit. Germanic/Celtic override files are untouched.
+
+Source changes
+- Greek exact dictionary name POS plus uppercase source noun lemma; exclude
+  dictionary heads also attested as common nouns/adjectives. Surface case
+  alone is insufficient. TOROT Ne and DCS PROPN retain name status. DCS
+  ambiguous NOUN/name homonyms still need the three reviewed contexts.
+  Latin PROPN and Hittite/DMHP source names already have content exclusions.
+- Greek suppletive seeing/speaking stems, Sanskrit cover/choose distinction,
+  Vuk homonyms and function words, Latvian diminutives, Armenian word81226,
+  Latin bark/young-shoot/grind distinctions, byliny eyes and OCR readings.
+- Preserve TOROT поити#1 rather than discarding the source homonym label;
+  reuse the existing wave2 поити@go root mapping. Blud was already fixed.
+- General byliny dollar handling retains the complete corrupted Cyrillic
+  word and sends it through ru_norm_ocr and the normal dictionary lemma path.
+  Includes final OCR yat, not only internal splits. ASCII/currency controls
+  remain separate. L7991 is a different SPACE split and has a narrow repair.
+- Conservative Lithuanian interleaving detector requires repeated internal
+  stanza numbers, capital initials and words in both columns. It is gated to
+  the independently inspected two-column svotbinės edition. New song titles
+  bound exclusions; no column order is invented. Other editions are unchanged.
+- Sixteen reviewed byliny editorial lines are still missed by the existing
+  prose detector. Add only source-coordinate backstops, without tuning its
+  thresholds. Three dainos editorial/contents lines and two Vuk editorial
+  lines are excluded separately. IcePaHC title s1506 is excluded at the
+  shared unit boundary, not through a Germanic lexical override.
+- AGDT Odyssey sentence2187720 supplies subdoc8.585–8.586; seven truncated
+  word citations become8.586. The words and source text are preserved.
+
+Uncertain/rejected proposals
+Kaikki explicitly records competing analyses for torpeo, mesti, sukha, aktu
+and pero; the reports do not justify categorical replacements. Pregnuti's
+proposed pre+gnuti derivation is rejected against the dictionary's *pręgnǫti
+and *(s)préngʰ-e-ti. tih does have a wrong homographic go/climb root; its
+possible await-patiently etymology does not justify that mapping.
+
+Whole-corpus evidence
+Snapshots use current production tokenizers/loaders, not Stage C-S slabs.
+Complete before/after token snapshots are in /private/tmp/w6-other; committed
+token diff, per-corpus metrics and per-rule counts accompany the ledger.
+Removed material units are asserted to be exactly declared coordinates or
+detector exclusions. Temporary resolved tables change only declared rows.
+
+General rules (counts of tokens affected, not research findings):
+- Byliny: 3,132 dollar words restored, plus 1 independently repaired space
+  split. 2,165 internal-dollar and 968 final-dollar words including that
+  special repair. Nine очушкахъ tokens normalize to the eye lemma.
+  Material backstops remove 114 tokens in16 units. Overall token count falls
+  779,986 →777,702, mostly because fragments are now single words.
+- Dainos columns: 5,012 units /26,970 tokens excluded. Reviewed editorial
+  backstops remove another3 units /20 tokens. Four lexical tokens change.
+  Seed82066 spot-check of15 exclusion coordinates found blanks or visibly
+  paired column text; this is a development check, not a precision estimate.
+- Early Greek: 51,138 source/dictionary name tokens,236 suppletive seeing
+  forms and6 future speaking forms. Homer:8,743 names and7 locus repairs.
+  Late Greek:212,216 names,1,012 seeing forms and3 speaking forms, measured
+  against all10,657,541 source tokens with only wave6 hooks disabled for
+  the baseline. No source token is dropped by the name rule; names stay
+  visible as context but are excluded from common-word comparisons.
+- Old Russian:10,239 source-tagged names and292 source-labelled go tokens.
+- Vuk:22 contextual token changes,24 editorial tokens removed.
+- Sanskrit: AV1 and epic4 contextual changes. Latin4 contextual changes;
+  existing PROPN exclusion retained. Full Latvian scan:6 changes /7,770
+  tokens; full Armenian scan:1 change /551,142 tokens. The separate
+  context-diff.json records their forms and source coordinates only.
+
+Reproduce (set UV_CACHE_DIR=/private/tmp/pie-uv-cache):
+  uv run python -I scripts/verify_w6_other.py before  # pre-change snapshot
+  uv run python -I scripts/verify_w6_other.py after
+  uv run python -I scripts/verify_w6_other.py late
+  uv run python -I scripts/verify_w6_other.py compare
+The before snapshot was taken before edits. Running 'before' on the final
+tree would overwrite it with current output; preserve the original snapshot.
+The late command instead reconstructs before by disabling only wave6 hooks.
+
+Validation
+Focused tests cover OCR joins, unchanged controls, two-column boundaries,
+name/common homonyms, source POS, contextual lemmas, mapping decisions and
+the repaired Homer citation. Earlier focused failures caught a dictionary
+name/common-head ambiguity and an unnecessary duplicate go mapping; both
+were corrected. A trial Latin name relabel was removed because the loader
+already excludes PROPN from content. No older tests were weakened.
+The final run began after ps showed both peers running pytest (no active
+editing command), and a stability check found no changes to183 source/test
+files over52 seconds. Command: UV_CACHE_DIR=/private/tmp/pie-uv-cache
+uv run pytest -q. This worker makes no code/test edits during that run.
+
+FINAL: 2930 passed in479.61s (0:07:59), exit0. The final stability check
+confirmed that all183 source/test files were unchanged, with no additions
+or deletions, throughout this run. No rerun for a concurrent-file race was
+needed. All requested source fixes, verdicts and temporary-table checks
+are complete; the lead retains corpus/export/index regeneration.

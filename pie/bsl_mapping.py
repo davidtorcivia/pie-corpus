@@ -1249,6 +1249,9 @@ def vuk_units(root: Path = ROOT):
     (`vuk_song_line`) are skipped."""
     p = Path(root) / KD / "serbian-vuk-wikisource/songs-plaintext.txt"
     for pid, title, i, line in _plaintext_songs(p):
+        from pie.material_units import reviewed_vuk_material
+        if reviewed_vuk_material(pid, i):
+            continue
         line = re.sub(r"\[\d+\]", "", re.sub(r"^\s*\d{1,5}\.?\s+", "", line))
         if not vuk_song_line(line):
             continue
@@ -1285,7 +1288,7 @@ def byliny_units(root: Path = ROOT):
     remain a backstop, not detector training at runtime. Doubtful units stay;
     this is not a claim that all remaining OCR is verse.
     Rybnikov pt. I is in both the wikisource and the OCR set."""
-    from pie.material_units import byliny_wiki_lines, byliny_non_epic, excluded_source
+    from pie.material_units import byliny_wiki_lines, byliny_non_epic, excluded_source, reviewed_byliny_text
     root = Path(root)
     p = root / KD / "russian-byliny-wikisource/texts-plaintext.txt"
     for pid, title, i, line in byliny_wiki_lines(_plaintext_songs(p)):
@@ -1301,7 +1304,7 @@ def byliny_units(root: Path = ROOT):
                 if (_verse_like(line) and i not in excluded and
                         not excluded_source("byliny", fp.name, i + 1)):
                     yield (f"{stem}:{i + 1}", {"page_file": f"{d}/{stem}", "line": f"{stem}:{i + 1}",
-                                               "source": d}, line)
+                                               "source": d}, reviewed_byliny_text(f'{stem}:{i + 1}', line))
 
 
 LT_FUNC = set("""ir ar kad kur o ei tai ne nei su iš isz į ant po prie pri mano mana tavo tava savo sava jo jos
@@ -1345,6 +1348,7 @@ def dainos_units(root: Path = ROOT):
     """Lithuanian dainos: every OCR line that passes `lt_line` (facing German translations, German
     notes and introductions fail it). Line-final hyphens are joined to the next line."""
     root = Path(root)
+    from pie.material_units import dainos_interleaved, excluded_source
     for d, files in DAINOS_FILES.items():
         for fn in files:
             fp = root / KD / d / fn
@@ -1352,8 +1356,15 @@ def dainos_units(root: Path = ROOT):
                 continue
             stem = re.sub(r"[^A-Za-z0-9]+", "-", fp.stem.replace("_djvu", "")).strip("-")
             lines = fp.read_text("utf-8", errors="replace").splitlines()
+            # This edition's OCR is independently verified as two-column.
+            # Other editions have different layouts; do not infer their layout
+            # from isolated verse/page numbers in prose.
+            excluded = dainos_interleaved(lines) if fn == 'Lietuviškos svotbinės dainos, 1883_djvu.txt' else set()
             carry = ""
             for i, line in enumerate(lines):
+                if i in excluded or excluded_source('dainos', fn, i + 1):
+                    carry = ''
+                    continue
                 line = carry + line
                 carry = ""
                 if re.search(r"\w[-⸗]\s*$", line):
@@ -1724,9 +1735,9 @@ def corpus_words(corpus: str, text: str) -> list[str]:
     if corpus == "ccmh":
         return [c for c in (ccmh_word(w) for w in ccmh_words(text)) if c]
     if corpus == "byliny":
-        # Hilferding OCR: a medial yat read as $ must not expose лось.
-        # Preserve source spelling; the reviewed lemma rule resolves the verb.
-        return re.findall(r"р[ао]згор\$лос[ьиея]|" + _TOKEN.pattern, text, re.I)
+        # Preserve OCR yat ($) inside Cyrillic words, including final yat.
+        # The normal ru_norm_ocr + dictionary path resolves the joined form.
+        return re.findall(r"[А-Яа-яЁёѣѢіІ]+(?:\$[А-Яа-яЁёѣѢіІ]+)*\$(?:[А-Яа-яЁёѣѢіІ]+)?|" + _TOKEN.pattern, text)
     return words(text)
 
 

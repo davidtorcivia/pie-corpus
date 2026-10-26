@@ -141,6 +141,9 @@ def units_from_tokens(corpus, toks, unit, book_of, surfaces, mapping, licence_of
     for k in order:
         items = by[k]
         t0 = items[0][0]
+        from pie.material_units import excluded_token_unit
+        if excluded_token_unit(corpus, t0.locus):
+            continue
         lic, ro = licence_of(t0)
         cpos = [i for i, (t, _) in enumerate(items) if t.content]
         sizes = split_windows(len(cpos), max_words) if window and len(cpos) > max_words else [len(cpos)]
@@ -244,9 +247,11 @@ def load_torot_b(files, root: Path = ROOT) -> tuple[list, list]:
                     first = f"{name} {a.get('citation-part', '')}".strip()
                 pos = a.get("part-of-speech", "")
                 lemma = (a.get("lemma") or "?").split("#")[0]
+                if a.get('lemma') == 'поити#1':
+                    lemma = 'поити@go'
                 content = pos[:1] in ("N", "A", "V") and lemma != "?"
                 toks.append(fs.Token("orv", lemma, a["form"], first, {"sentence": f"{name}.{sid}", "book": name},
-                                     content, {"N": "noun", "A": "adj", "V": "verb"}.get(pos[:1], "other")))
+                                     content, 'name' if pos == 'Ne' else {"N": "noun", "A": "adj", "V": "verb"}.get(pos[:1], "other")))
                 surf.append((a.get("presentation-before", "") + a["form"] + a.get("presentation-after", "")).strip())
     return toks, surf
 

@@ -271,7 +271,20 @@ class Token:
     roots: frozenset = frozenset()
 
     def __post_init__(self):
+        from .w6_other_mapping import annotated_name
+        if annotated_name(self.corpus, self.lemma, self.pos):
+            from .name_mapping import name_lemma
+            self.lemma = name_lemma(self.corpus, self.lemma)
+            self.content = not self.lemma.endswith(' (name)')
+            self.pos = 'noun' if self.content else 'name'
         self.lemma = contextual_lemma(self.corpus, self.lemma, self.surface, self.locus)
+        if self.corpus == 'vuk' and self.lemma == 'more@sea':
+            self.content, self.pos = True, 'noun'
+        if self.lemma.endswith(('@conjunction','@preposition','@interrogative')):
+            self.content, self.pos = False, 'other'
+        if self.corpus in {'menota', 'icepahc', 'grc', 'grp', 'grc-late', 'hom',
+                           'av', 'sa-ep', 'orv', 'lat'} and self.lemma.endswith(' (name)'):
+            self.content = False
         if self.corpus == "xcl" and self.lemma == "34@numeral":
             self.content, self.pos = False, "other"
 
@@ -333,6 +346,10 @@ def load_homer(root: Path = ROOT) -> list[Token]:
                 if not cite:
                     continue
                 work, line = cite.rsplit(":", 2)[-2:]
+                # AGDT sentence 2187720 has a truncated cite on its final
+                # seven words; the sentence subdoc ends at Odyssey 8.586.
+                if work == 'tlg0012.tlg002' and line == '8' and sent.startswith('subdoc="8.585-8.586" id="2187720"'):
+                    line = '8.586'
                 work = HOMER_WORKS.get(work.split(".")[-1], work)
                 book = line.split(".")[0]
                 pos = {"n": "noun", "a": "adj", "v": "verb"}.get(tag[0], "other")
@@ -893,7 +910,7 @@ def load_latin(root: Path = ROOT) -> list[Token]:
                 .replace("Capitulum_", "").replace("Paragraphus_", "").replace(",", ".")
             feats = dict(x.split("=", 1) for x in c[5].split("|") if "=" in x)
             upos = c[3]
-            pos = {"NOUN": "noun", "PROPN": "noun", "ADJ": "adj", "VERB": "verb"}.get(upos, "other")
+            pos = {"NOUN": "noun", "PROPN": "name", "ADJ": "adj", "VERB": "verb"}.get(upos, "other")
             if upos == "VERB" and feats.get("VerbForm") == "Part":
                 pos = "adj"
             lemma = re.sub(r"\d+$", "", c[2])

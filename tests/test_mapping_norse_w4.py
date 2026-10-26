@@ -71,6 +71,8 @@ def test_sense_mappings_and_rejected_reports():
         assert lemma not in table
     assert table['munnr'] == ('pie-lex-mntos-2',)
     assert table['veita'] == ('pie-lex-woydeyeti',)
-    assert table['Baldr'] == ('pie-lex-bholtos',)
+    # Wave 6 separates every source-tagged name, including divine names.
+    assert 'Baldr' not in table
+    assert 'Baldr (name)' not in table
     assert table['nótt'] == ('pie-lex-nokwts',)
     assert table['fara'] == ('pie-root-per-go_through',)

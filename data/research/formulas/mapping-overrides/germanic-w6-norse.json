@@ -1,0 +1,150 @@
+{
+ "note": "Wave-6 source-verified Norse decisions; qualified names have no mapping unless explicitly reviewed.",
+ "lemma": [
+  {
+   "corpus": "menota",
+   "lemma": "tiginn",
+   "lex_id": [],
+   "note": "Source tignum is AJ modifying mǫnnum. Kaikki s.v. tiginn gives highborn; Zoega s.v. tiginn versus tigr (https://norse.ulver.com/dct/zoega/t.html) distinguishes noble from decade. Remove numeral mapping.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vit@understanding",
+   "lex_id": [
+    "pie-lex-weydos"
+   ],
+   "note": "Source vit is N-A object of hafa; Kaikki s.v. vit distinguishes neuter understanding < *witą from the dual pronoun. Retain only pie-lex-weydos for source noun tags.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "reka@shovel",
+   "lex_id": [],
+   "note": "Source reku$ is N-A, an implement held ready to strike. Kaikki s.v. reka noun shovel < *rekǭ differs from verb drive < *wrekaną. Resolve source nouns to reka@shovel; no new PIE equation.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "tiginn",
+   "lex_id": [],
+   "note": "Source tignum is ADJ-D modifying manni. Kaikki s.v. tiginn gives highborn; Zoega s.v. tiginn versus tigr distinguishes noble from decade. Remove numeral mapping.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "vit@understanding",
+   "lex_id": [
+    "pie-lex-weydos"
+   ],
+   "note": "Source vit is N-A object of hafa; Kaikki s.v. vit distinguishes neuter understanding < *witą from the dual pronoun. Retain only pie-lex-weydos for source noun tags.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "reka@shovel",
+   "lex_id": [],
+   "note": "Source reku$ is N-A, an implement held ready to strike. Kaikki s.v. reka noun shovel < *rekǭ differs from verb drive < *wrekaną. Resolve source nouns to reka@shovel; no new PIE equation.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "lund",
+   "lex_id": [],
+   "note": "Source HolmPerg-4-fol 100r:7 (sentence 8788, not reported line 17) uses lund as the manner of answering. Cleasby–Vigfusson s.v. lund II (https://oldnorsedictionary.com/home/word/lund) distinguishes manner from lundr grove. The current land/heath chain is unsupported for this sense.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "ríða",
+   "lex_id": [
+    "pie-lex-h3reyHdheti-2"
+   ],
+   "note": "Source tags ríða VB in a clause about riding from across the valley. Kaikki Old Norse s.v. ríða explicitly derives it from PGmc *rīdaną < PIE *reydʰ-. Reuse the reviewed Menota ride identity pie-lex-h3reyHdheti-2.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "danskur",
+   "lex_id": [],
+   "note": "Source adjective dönsk modifies tunga. Kaikki s.v. danskr derives the adjective from *daniskaz, not the listed flow noun; remove the unsupported deep equation without asserting another.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "ónýtur",
+   "lex_id": [
+    "pie-root-newd-use"
+   ],
+   "note": "Source ónýtum modifies orðum. Kaikki s.v. nýtr derives useful from njóta. Retain use/benefit, remove unrelated push root.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "síða@side",
+   "lex_id": [],
+   "note": "Source síðu is N-A after a blow with a staff; following broken ribs establish the anatomical noun. Kaikki s.v. síða separates noun < *sīdǭ from verb < *sīþaną, magic. Resolve all source noun tags to síða@side.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "geldingur",
+   "lex_id": [],
+   "note": "Source refers respectively to selling, missing, driving and seeking geldings. Kaikki s.v. geldingr derives wether from gelda castrate. The call/chant root is not supported.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "minni@memory",
+   "lex_id": [],
+   "note": "Source minnum is NS-D in the expression preserving events in memory. Kaikki s.v. minni noun memory < *(ga)minþiją differs from comparative minni. Isolate this occurrence; another noun sense mouth prevents a blanket noun-memory equation.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "val",
+   "lex_id": [
+    "pie-root-welh1-choose"
+   ],
+   "note": "Source völ is NS-N referring to the selection of eligible men. Kaikki choice family val/velja supports *welh₁-; remove wolf collision.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "viti@beacon",
+   "lex_id": [],
+   "note": "Source vita is N-A object of brenni. Kaikki s.v. viti includes beacon; source describes burning one at sea. Isolate viti@beacon; do not transfer vita know or pronoun mappings.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "heita@heat",
+   "lex_id": [],
+   "note": "Source heitt describes preparation of ale, coordinated with slaughter and mead mixing. Cleasby–Vigfusson s.v. heita I (https://cleasby-vigfusson-dictionary.vercel.app/word/heita) gives heating and ale brewing, distinct from calling. Isolate heita@heat.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "icepahc",
+   "lemma": "selur",
+   "lex_id": [],
+   "note": "Source sela is NS-A in a marine hunting list alongside fish and whales. Kaikki s.v. selr seal < *selhaz is distinct from selja; remove the false take/sell mapping.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "non",
+   "lemma": "œrr@mad",
+   "lex_id": [],
+   "note": "OCR line 11377 has Œr predicated of systir and coordinated with ørvita. Kaikki s.v. œrr supplies feminine nominative œr and points to ǿrr mad. A locus-guarded lemma repair preserves unrelated ær ewe.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  },
+  {
+   "corpus": "non",
+   "lemma": "marr@horse",
+   "lex_id": [
+    "pie-lex-markos"
+   ],
+   "note": "OCR line 4383 has raari after af in the saddle-removal clause. Kaikki s.v. marr horse gives the dative mari; the sea homograph is inappropriate to unsaddling. Isolate marr@horse rather than the merged horse/sea table.",
+   "erratum": "Independent source/dictionary verification: error-verdicts-w6-norse.jsonl."
+  }
+ ]
+}

@@ -1,0 +1,124 @@
+[
+ {
+  "text": "1270.gragas.law-law",
+  "sentence": 161,
+  "form": "skildi",
+  "given_lemma": "skilja",
+  "lemma": "skjöldur",
+  "tag": "N-D",
+  "note": "Source skildi is mistagged VBDI/skilja but is the dative object of valda, coordinated with shooting a bow. Kaikki s.v. skjǫldr gives shield and its i-umlaut oblique stem. Correct locally to skjöldur/N-D."
+ },
+ {
+  "text": "1275.morkin.nar-his",
+  "sentence": 2083,
+  "form": "Sám",
+  "given_lemma": "sá",
+  "lemma": "sjá",
+  "tag": "VBDI",
+  "note": "Source s2083 Sám is tagged VBDI/sá, followed by first-person plural subject vér and object það. Kaikki s.v. sjá verb derives see from *sehwaną; local correction avoids sowing/demonstrative homographs."
+ },
+ {
+  "text": "1350.bandamennM.nar-sag",
+  "sentence": 1089,
+  "form": "minnum",
+  "given_lemma": "minni",
+  "lemma": "minni@memory",
+  "tag": "NS-D",
+  "note": "Source minnum is NS-D in the expression preserving events in memory. Kaikki s.v. minni noun memory < *(ga)minþiją differs from comparative minni. Isolate this occurrence; another noun sense mouth prevents a blanket noun-memory equation."
+ },
+ {
+  "text": "1325.arni.nar-sag",
+  "sentence": 1007,
+  "form": "félli",
+  "given_lemma": "féll",
+  "lemma": "falla",
+  "tag": "VBPS",
+  "note": "Source félli is VBPS with property passing away from heirs. Kaikki s.v. falla supports fall, not fell skin/mountain; correct the local erroneous lemma féll."
+ },
+ {
+  "text": "1325.arni.nar-sag",
+  "sentence": 985,
+  "form": "beðið",
+  "given_lemma": "bíða",
+  "lemma": "biðja",
+  "tag": "VBN",
+  "note": "Source beðið takes the person Loft and an infinitival request. Kaikki s.v. biðja ask < *bidjaną, distinct from bíða wait. Local correction to biðja retains participial tag."
+ },
+ {
+  "text": "1350.finnbogi.nar-sag",
+  "sentence": 352,
+  "form": "vita",
+  "given_lemma": "vita",
+  "lemma": "viti@beacon",
+  "tag": "N-A",
+  "note": "Source vita is N-A object of brenni. Kaikki s.v. viti includes beacon; source describes burning one at sea. Isolate viti@beacon; do not transfer vita know or pronoun mappings."
+ },
+ {
+  "text": "1350.finnbogi.nar-sag",
+  "sentence": 611,
+  "form": "sé",
+  "given_lemma": "vera",
+  "lemma": "sjá",
+  "tag": "VBPS",
+  "note": "Source sé has object eyrun and first-person subject eg. Kaikki s.v. sjá see distinguishes perception from vera; repair local lemma and BEPS to VBPS."
+ },
+ {
+  "text": "1350.finnbogi.nar-sag",
+  "sentence": 1514,
+  "form": "heitt",
+  "given_lemma": "heita",
+  "lemma": "heita@heat",
+  "tag": "VAN",
+  "note": "Source heitt describes preparation of ale, coordinated with slaughter and mead mixing. Cleasby–Vigfusson s.v. heita I (https://cleasby-vigfusson-dictionary.vercel.app/word/heita) gives heating and ale brewing, distinct from calling. Isolate heita@heat."
+ },
+ {
+  "text": "1350.finnbogi.nar-sag",
+  "sentence": 1514,
+  "form": "mjöður",
+  "given_lemma": "mjöða",
+  "lemma": "mjöður",
+  "tag": "N-N",
+  "note": "Source mjöður is the subject of blandinn and wrongly lemmatized mjöða/NS-N. Kaikki s.v. mjǫðr and the existing mjöður table give mead < *médʰu. Correct to mjöður/N-N."
+ },
+ {
+  "text": "1350.finnbogi.nar-sag",
+  "sentence": 1514,
+  "form": "öxn",
+  "given_lemma": "öxn",
+  "lemma": "uxi",
+  "tag": "NS-N",
+  "note": "Source öxn is NS-N with felld at feast preparation. Kaikki s.v. uxi gives ox < *uksḗn. Correct the unnormalized plural lemma locally to uxi."
+ },
+ {
+  "text": "1260.jomsvikingar.nar-sag",
+  "sentence": 1506,
+  "form": "13.",
+  "given_lemma": "þrettándi",
+  "exclude": true,
+  "note": "The complete source unit s1506 is a numbered chapter heading (13., kafli, Lát, Ólafar). Exclude all its tokens with exact source guards, preserving subsequent sentence numbers."
+ },
+ {
+  "text": "1260.jomsvikingar.nar-sag",
+  "sentence": 1506,
+  "form": "kafli",
+  "given_lemma": "kafli",
+  "exclude": true,
+  "note": "The complete source unit s1506 is a numbered chapter heading (13., kafli, Lát, Ólafar). Exclude all its tokens with exact source guards, preserving subsequent sentence numbers."
+ },
+ {
+  "text": "1260.jomsvikingar.nar-sag",
+  "sentence": 1506,
+  "form": "Lát",
+  "given_lemma": "lát",
+  "exclude": true,
+  "note": "The complete source unit s1506 is a numbered chapter heading (13., kafli, Lát, Ólafar). Exclude all its tokens with exact source guards, preserving subsequent sentence numbers."
+ },
+ {
+  "text": "1260.jomsvikingar.nar-sag",
+  "sentence": 1506,
+  "form": "Ólafar",
+  "given_lemma": "ólöf",
+  "exclude": true,
+  "note": "The complete source unit s1506 is a numbered chapter heading (13., kafli, Lát, Ólafar). Exclude all its tokens with exact source guards, preserving subsequent sentence numbers."
+ }
+]

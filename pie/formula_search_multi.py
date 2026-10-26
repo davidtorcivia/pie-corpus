@@ -768,7 +768,11 @@ def load_proiel(files: list[str], corpus: str, root: Path = ROOT) -> list[Token]
                     continue
                 pos = a.get("part-of-speech", "")
                 lemma = a["lemma"].split("#")[0]
+                if corpus == 'orv' and a['lemma'] == 'поити#1':
+                    lemma = 'поити@go'
                 coarse = {"N": "noun", "A": "adj", "V": "verb"}.get(pos[:1], "other")
+                if corpus == 'orv' and pos == 'Ne':
+                    coarse = 'name'
                 morph = a.get("morphology", "") or "-" * 10
                 if coarse == "verb" and len(morph) > 3 and morph[3] == "p":
                     coarse = "adj"
@@ -1098,7 +1102,7 @@ def load_dcs(texts=DCS_VEDIC, corpus: str = "av", root: Path = ROOT) -> list[Tok
                         continue
                     feats = dict(x.split("=", 1) for x in c[5].split("|") if "=" in x)
                     upos = c[3]
-                    pos = {"NOUN": "noun", "PROPN": "noun", "ADJ": "adj", "VERB": "verb"}.get(upos, "other")
+                    pos = {"NOUN": "noun", "PROPN": "name", "ADJ": "adj", "VERB": "verb"}.get(upos, "other")
                     if upos == "VERB" and feats.get("VerbForm") == "Part":
                         pos = "adj"
                     ci = cites[nsent - 1] if 0 < nsent <= len(cites) else {}
@@ -1786,6 +1790,9 @@ def text_tokens(corpus: str, units, lemmatize, is_content) -> list[Token]:
     for locus, u, text in units:
         for w in (_WORDS.findall(text) if isinstance(text, str) else text):
             lem = lemmatize(w)
+            if corpus == "non":
+                from .material_units import reviewed_edda_lemma
+                lem = reviewed_edda_lemma(u.get("line", ""), w, lem)
             # These legacy tokens store surfaces separately; disambiguate
             # while the source form is still available (e.g. Latvian vilka).
             lem = fs.contextual_lemma(corpus, lem, w, locus)

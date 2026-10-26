@@ -29,6 +29,7 @@ def test_ledger_accounts_for_all_norse_observations():
 def test_names_require_source_np_annotation(lemma):
     w = gm.MenotaWord('unrelated', lemma, 'NP', lemma, '1', '1', None, 0)
     assert gm.reviewed_menota_token(w, lemma, 'NP', {}) == (lemma + ' (name)', 'NP')
+    w.msa = 'NC'
     assert gm.reviewed_menota_token(w, lemma, 'NC', {}) == (lemma, 'NC')
 
 

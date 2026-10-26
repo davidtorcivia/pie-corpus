@@ -291,7 +291,7 @@ def menota_reviewed_tokens(root: Path = ROOT) -> dict:
     from changing the analysis of the same surface form elsewhere.
     """
     rows = []
-    for wave in (2, 3, 4, 5):
+    for wave in (2, 3, 4, 5, 6):
         path = Path(root) / f"data/research/formulas/menota-reviewed-w{wave}.json"
         if path.exists():
             rows.extend(json.loads(path.read_text("utf-8")))
@@ -300,16 +300,45 @@ def menota_reviewed_tokens(root: Path = ROOT) -> dict:
 
 
 def reviewed_menota_token(w: MenotaWord, lemma: str, msa: str, rules: dict) -> tuple[str, str]:
+    key = (w.doc, w.folio, w.line, w.form)
+    row = rules.get((*key, w.occurrence), rules.get(key))
+    if row and lemma == row["given_lemma"]:
+        return row["lemma"], row["tag"]
+    # Legacy inference for unannotated documents is intentionally frozen.
     names = {"án", "hróðný", "gunnarr", "eyvindr", "kári", "freyr", "bjarni", "bróðir",
              "haraldr", "mímir", "yngvi", "einarr", "sveinn", "finnr", "alfr", "ósló",
              "áki", "bjǫrn", "hringr", "ormr"}
     if msa == "NP" and lemma.lower() in names:
         return lemma + " (name)", msa
-    key = (w.doc, w.folio, w.line, w.form)
-    row = rules.get((*key, w.occurrence), rules.get(key))
-    if row and lemma == row["given_lemma"]:
-        return row["lemma"], row["tag"]
+    # Apply source annotation only after voting. Changing the training votes
+    # would silently change unannotated documents too. Explicit coordinate
+    # reviews above take precedence, including reviewed exceptions to NP.
+    if w.lemma and w.msa:
+        return annotated_norse_lemma(lemma, w.msa), msa
     return lemma, msa
+
+
+def annotated_norse_lemma(lemma: str, tag: str, corpus: str = "menota") -> str:
+    """Separate source-tagged names and reviewed POS homographs.
+
+    Menota NP / IcePaHC NPR(S) are authoritative per token, never by a
+    majority vote over a shared lemma. Evidence: error-verdicts-w6-norse.
+    Qualified names remain unmapped unless an explicit override permits them.
+    """
+    if re.fullmatch(r"NP|NPRS?(?:-[NADG])?", tag):
+        from .name_mapping import name_lemma
+        return name_lemma(corpus, lemma)
+    noun = tag == "NC" or bool(re.fullmatch(r"NS?-[NADG]", tag))
+    if noun:
+        return {"síða": "síða@side", "vit": "vit@understanding",
+                "reka": "reka@shovel"}.get(lemma, lemma)
+    return lemma
+
+
+def icepahc_reviewed_tokens(root: Path = ROOT) -> dict:
+    path = Path(root) / "data/research/formulas/icepahc-reviewed-w6.json"
+    rows = json.loads(path.read_text("utf-8")) if path.exists() else []
+    return {(r["text"], r["sentence"], r["form"], r["given_lemma"]): r for r in rows}
 
 
 def menota_documents(root: Path = ROOT, languages=WEST_NORSE) -> list[tuple[str, dict]]:
@@ -377,12 +406,13 @@ def icepahc_files(root: Path = ROOT, max_year: int | None = 1400) -> list[Path]:
     return [f for f in fs_ if max_year is None or int(f.name[:4]) <= max_year]
 
 
-def load_icepahc(root: Path = ROOT, max_year: int | None = 1400) -> list[Token]:
+def load_icepahc(root: Path = ROOT, max_year: int | None = 1400, *, include_surface: bool = False) -> list[Token]:
     """IcePaHC .tagged (word, tag, lemma; blank line = sentence). Content:
     nouns, proper nouns, adjectives, all verbs (VB, BE, HV, MD, RD, DO and
     the participles VAN/VAG), as for PROIEL's V. Units: sentence, text.
     Files dated after max_year are skipped (None: all)."""
     toks = []
+    reviewed = icepahc_reviewed_tokens(root)
     for f in icepahc_files(root, max_year):
         stem = f.name[: -len(".tagged")]
         s = 0
@@ -397,10 +427,17 @@ def load_icepahc(root: Path = ROOT, max_year: int | None = 1400) -> list[Token]:
             if not re.search(r"\w", lem) or tag in (".", ",", '"', "FW"):
                 continue
             tag1 = tag.split("+")[-1] if tag.startswith(("Q+", "ONE+")) else tag
+            row = reviewed.get((stem, s + 1, w, lem))
+            if row:
+                if row.get("exclude"):
+                    continue
+                lem, tag1 = row["lemma"], row["tag"]
+            else:
+                lem = annotated_norse_lemma(lem, tag1, "icepahc")
             content = bool(ICE_CONTENT.match(tag1))
             pos = "verb" if re.match(r"^(VB|VA|BE|HV|MD|RD|DO)", tag1) else "adj" if tag1.startswith("ADJ") else \
                 "noun" if tag1.startswith("N") else "other"
-            toks.append(Token("icepahc", lem, "", f"{stem} s{s + 1}", {"sentence": f"{stem}.{s}", "text": stem,
+            toks.append(Token("icepahc", lem, w if include_surface else "", f"{stem} s{s + 1}", {"sentence": f"{stem}.{s}", "text": stem,
                                                                        "tag": tag1}, content, pos))
     return toks
 

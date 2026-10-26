@@ -1,0 +1,32 @@
+[
+ {
+  "doc": "AM-63-fol",
+  "folio": "110",
+  "line": "",
+  "form": "Finnr",
+  "given_lemma": "finna",
+  "lemma": "finnr (name)",
+  "tag": "NP",
+  "note": "Source AM-63-fol 110: Finnr is the subject of marriage attribution, following Finnr Árnason. This document has no POS annotation; inferred finna/VB is wrong. Kaikki s.v. Finnr is a male given name. Use a reviewed local name repair, not the general annotated rule."
+ },
+ {
+  "doc": "Lbs-fragm-82",
+  "folio": "1r",
+  "line": "13",
+  "form": "helga",
+  "given_lemma": "helgr",
+  "lemma": "helgr (name)",
+  "tag": "NP",
+  "note": "Source Lbs-fragm-82 1r:13 has the river-name constituents Ǫ́ en and helga. Óttarr Knútsdrápa 11 (https://www.heimskringla.no/wiki/Kn%C3%BAtsdr%C3%A1pa) identifies the Holy River; isolate both constituents as names, retaining helgr elsewhere."
+ },
+ {
+  "doc": "Lbs-fragm-82",
+  "folio": "1r",
+  "line": "13",
+  "form": "Ǫ́ en",
+  "given_lemma": "á",
+  "lemma": "á (name)",
+  "tag": "NP",
+  "note": "Source Lbs-fragm-82 1r:13 has the river-name constituents Ǫ́ en and helga. Óttarr Knútsdrápa 11 (https://www.heimskringla.no/wiki/Kn%C3%BAtsdr%C3%A1pa) identifies the Holy River; isolate both constituents as names, retaining helgr elsewhere."
+ }
+]

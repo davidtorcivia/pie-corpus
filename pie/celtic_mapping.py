@@ -1690,6 +1690,25 @@ for _form, _rules in {'aigid': [(('a',), ('forro',), 'agad@face', False)],
     IR_REVIEWED_CONTEXT.setdefault(_form, []).extend(_rules)
 
 
+# Wave-6 independent source/dictionary review: error-verdicts-w6-celtic.jsonl.
+# Narrow contexts preserve the milk verb, rock noun and other homographs.
+for _form, _rules in {
+    'crúim': [(('dá',), ('and',), 'cruim', False)],
+    't-ech': [(('an',), ('gu cenn',), 'ech', False)],
+    'áilli': [(('neoil',), ('aen-gela',), 'álaind', False)],
+    'thúaithi': [(('rí mo',), ('do-ratusa',), 'túath', False)],
+    'abhull': [((), ('fo bláth', 'abaigh'), 'aball', False)],
+    'abull': [((), ('ac tuitim',), 'aball', False)],
+    'oengus': [(('^',), ('find',), 'óengus (name)', True)],
+    'do-ratusa': [(('thúaithi',), ('dúibsi',), 'dorat', False)],
+    'toig': [(('dia',), ('indisid',), 'tech', False)],
+    'días': [((), ('ban',), 'dias@pair', False)],
+    'mbrec': [(('iasc',), ('for',), 'brecc', False)],
+    'aengus': [(('^',), ('aainm',), 'aengus (name)', True)],
+}.items():
+    IR_REVIEWED_CONTEXT.setdefault(_form, []).extend(_rules)
+
+
 def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
     """Lemmas for a word sequence: `lemz(w)` for each word, except that a form in CONTEXT_FORMS takes the
     lemma its preceding word selects (tig after isin / i / ina / dia … → tech 'house'). Stage C should use

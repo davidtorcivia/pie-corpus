@@ -17,7 +17,49 @@ RULES = ROOT / "data/research/8c/stageCS/material-unit-rules.json"
 
 @lru_cache(maxsize=1)
 def reviewed_ranges():
-    return json.loads(RULES.read_text(encoding="utf-8"))
+    rows = json.loads(RULES.read_text(encoding="utf-8"))
+    extra = RULES.with_name('material-unit-rules-w6-other.json')
+    return rows + (json.loads(extra.read_text(encoding='utf-8')) if extra.exists() else [])
+
+
+def dainos_interleaved(lines: list[str]) -> set[int]:
+    """Conservative two-column OCR exclusion, without guessing column order.
+
+    Require repeated embedded stanza numbers followed by a capital initial,
+    with at least two words on each side. Only the span between nearby anchors
+    is excluded (plus three continuation lines); no whole-edition rejection.
+    """
+    anchors = []
+    for i, line in enumerate(lines):
+        for m in re.finditer(r'(?<!\w)([1-9]\d?)\s+([A-ZĄČĘĖĮŠŲŪŽ])', line):
+            if len(re.findall(r'[^\W\d_]+',line[:m.start()])) >= 2 and len(re.findall(r'[^\W\d_]+',line[m.end()-1:])) >= 2:
+                anchors.append(i)
+                break
+    out = set()
+    for a,b in zip(anchors,anchors[1:]):
+        if b-a <= 12:
+            # A new song title/page header is a hard boundary.
+            if any(re.match(r'^\s*\d{3,}\.', s) for s in lines[a+1:b]):
+                continue
+            out.update(range(a,min(b+4,len(lines))))
+    return out
+
+
+def reviewed_vuk_material(page: str, line: int) -> bool:
+    return (page,line) in {('13232',153),('48084',50)}
+
+
+def excluded_token_unit(corpus: str, locus: str) -> bool:
+    # IcePaHC source sentence is chapter number + chapter label + title.
+    return (corpus,locus) == ('icepahc','1260.jomsvikingar.nar-sag s1506')
+
+
+def reviewed_byliny_text(locus: str, text: str) -> str:
+    # Hilferding vol. 3 L7991: a space swallowed the medial vowel. Keep
+    # the damaged form joined, then use the normal reviewed verb analysis.
+    if locus == 'sbornikotdelenijarusskogojazykaislovesno92:7991':
+        return text.replace('Розгор лось','Розгор$лось')
+    return text
 
 
 def excluded_source(corpus: str, filename: str, start: int, end: int | None = None) -> bool:
@@ -187,6 +229,13 @@ def byliny_wiki_lines(rows):
             yield pid, title, i, line
 
 
+_CELTIC_W6_NON_NAMES = {
+    "welsh-white-book-mabinogion-evans-1907:whitebookofmabin00evan:L17016-L17028": "Dỳwawt",
+    "G301041:#1:208": "Dogebhthar",
+    "G301000:#1:5": "As-noí",
+}
+
+
 def repair_celtic_rows(rows: list[dict]) -> list[dict]:
     out = []
     welsh = "welsh-white-book-mabinogion-evans-1907:whitebookofmabin00evan:"
@@ -195,6 +244,13 @@ def repair_celtic_rows(rows: list[dict]) -> list[dict]:
     for original in rows:
         d = dict(original)
         uid, text = d["id"], d["text"]
+        # W6 Celtic review: sentence/quotation-initial verbs inside flattened
+        # units are not names. Normalize only these reviewed capitals before
+        # the loader's medial-capital heuristic; raw text remains unchanged.
+        # Source/dictionary citations: error-verdicts-w6-celtic.jsonl 100-102.
+        if uid in _CELTIC_W6_NON_NAMES:
+            word = _CELTIC_W6_NON_NAMES[uid]
+            text = re.sub(r"(?<!\w)" + re.escape(word) + r"(?!\w)", word.lower(), text)
         # Wave-5 Celtic review: manuscript-variant footnote, not continuous
         # daughter text (error-verdicts-w5-celtic.jsonl, report 88).
         if uid == "oldirish-tbc-windisch-1905:diealtirischehel00wind:L15483-L15484":
@@ -236,6 +292,12 @@ def repair_celtic_rows(rows: list[dict]) -> list[dict]:
         if d.get("dup_of") in (first, second) and any(x["id"] == merged_id for x in out):
             d["dup_of"] = merged_id
     return out
+
+
+def reviewed_edda_lemma(line: str, form: str, lemma: str) -> str:
+    """Wave-6 source/dictionary checks; preserve unrelated ewe/sea readings."""
+    return {("edda:11377", "Œr", "ær"): "œrr@mad",
+            ("edda:4383", "raari", "?raari"): "marr@horse"}.get((line, form, lemma), lemma)
 
 
 def edda_region(line: int) -> tuple[str | None, bool]:

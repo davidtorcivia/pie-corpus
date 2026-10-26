@@ -1,0 +1,260 @@
+{
+ "documents": 82,
+ "tokens": 1650613,
+ "changed_tokens": 38437,
+ "counts_per_rule": {
+  "NP": 38260,
+  "POS:vit": 102,
+  "POS:reka": 3,
+  "POS:síða": 68,
+  "reviewed-coordinate": 3,
+  "NP:previously-filtered": 1
+ },
+ "changed_per_document": {
+  "AM-113-b-fol": 522,
+  "AM-132-fol-Bandamanna-saga": 452,
+  "AM-132-fol-Droplaugarsona-saga": 726,
+  "AM-132-fol-Egils-saga": 3542,
+  "AM-132-fol-Finnboga-saga": 1303,
+  "AM-132-fol-Fostbraedra-saga": 350,
+  "AM-132-fol-Hallfredar-saga": 680,
+  "AM-132-fol-Kormaks-saga": 1035,
+  "AM-132-fol-Laxdaela-saga": 4417,
+  "AM-132-fol-Njals-saga": 5263,
+  "AM-132-fol-Olkofra": 173,
+  "AM-132-fol-Viga-Glums-saga": 1228,
+  "AM-178-fol": 1207,
+  "AM-243-b-alfa-fol": 756,
+  "AM-383-I-4to": 5,
+  "AM-519a-4to": 34,
+  "AM-619-4to": 984,
+  "AM-63-fol": 1,
+  "AM-655-XXX-4to": 4,
+  "AM-677-4to": 839,
+  "DG-4at7-Streng": 394,
+  "DG-8-OHleg": 1846,
+  "GKS-2365-4to-Vsp": 160,
+  "HolmPerg-17-4to": 1524,
+  "HolmPerg-34-4to-MLB": 30,
+  "HolmPerg-34-4to-MLL": 104,
+  "HolmPerg-4-fol": 6317,
+  "HolmPerg-6-fol": 799,
+  "Lbs-fragm-82": 122,
+  "NKS-235-g-4to": 1,
+  "NRA-norrfragm-51": 45,
+  "NRA-norrfragm-52": 154,
+  "NRA-norrfragm-53": 57,
+  "NRA-norrfragm-54": 64,
+  "NRA-norrfragm-55-A": 191,
+  "NRA-norrfragm-55-B": 28,
+  "NRA-norrfragm-56": 46,
+  "NRA-norrfragm-57": 65,
+  "NRA-norrfragm-58-B": 16,
+  "NRA-norrfragm-58-C": 16,
+  "NRA-norrfragm-59": 9,
+  "NRA-norrfragm-60-B": 1,
+  "NRA-norrfragm-60-C": 10,
+  "NRA-norrfragm-61": 11,
+  "NRA-norrfragm-62": 14,
+  "NRA-norrfragm-63": 20,
+  "NRA-norrfragm-64": 1,
+  "NRA-norrfragm-66": 28,
+  "NRA-norrfragm-67": 50,
+  "NRA-norrfragm-69": 10,
+  "NRA-norrfragm-70": 2,
+  "NRA-norrfragm-71": 5,
+  "NRA-norrfragm-72-76": 9,
+  "NRA-norrfragm-75": 3,
+  "NRA-norrfragm-77": 102,
+  "NRA-norrfragm-78": 28,
+  "NRA-norrfragm-79": 33,
+  "NRA-norrfragm-80": 24,
+  "NRA-norrfragm-81-A": 1,
+  "TuebUB-Me-II-2": 12,
+  "Wolf-Aug-9-10-4to": 2564
+ },
+ "seed": 6,
+ "sample_30": [
+  {
+   "form": "Egill",
+   "tag": "NP",
+   "old_lemma": "Egill",
+   "new_lemma": "Egill (name)"
+  },
+  {
+   "form": "Syrpa",
+   "tag": "NP",
+   "old_lemma": "syrpa",
+   "new_lemma": "syrpa (name)"
+  },
+  {
+   "form": "reínalld",
+   "tag": "NP",
+   "old_lemma": "Reinaldr",
+   "new_lemma": "Reinaldr (name)"
+  },
+  {
+   "form": "Flosa",
+   "tag": "NP",
+   "old_lemma": "flosi",
+   "new_lemma": "flosi (name)"
+  },
+  {
+   "form": "Ǫlvis",
+   "tag": "NP",
+   "old_lemma": "ǫlvir",
+   "new_lemma": "ǫlvir (name)"
+  },
+  {
+   "form": "Snorradóttur",
+   "tag": "NP",
+   "old_lemma": "Snorradóttir",
+   "new_lemma": "Snorradóttir (name)"
+  },
+  {
+   "form": "Hǫskulds",
+   "tag": "NP",
+   "old_lemma": "hǫskuldr",
+   "new_lemma": "hǫskuldr (name)"
+  },
+  {
+   "form": "Grímsholt",
+   "tag": "NP",
+   "old_lemma": "Grímsholt",
+   "new_lemma": "Grímsholt (name)"
+  },
+  {
+   "form": "hertnit",
+   "tag": "NP",
+   "old_lemma": "Hertnið",
+   "new_lemma": "Hertnið (name)"
+  },
+  {
+   "form": "miors",
+   "tag": "NP",
+   "old_lemma": "Miors",
+   "new_lemma": "Miors (name)"
+  },
+  {
+   "form": "Grœna land",
+   "tag": "NP",
+   "old_lemma": "Grœnaland",
+   "new_lemma": "Grœnaland (name)"
+  },
+  {
+   "form": "Hjarranda",
+   "tag": "NP",
+   "old_lemma": "hjarrandi",
+   "new_lemma": "hjarrandi (name)"
+  },
+  {
+   "form": "Hallr",
+   "tag": "NP",
+   "old_lemma": "hallr",
+   "new_lemma": "hallr (name)"
+  },
+  {
+   "form": "Attila",
+   "tag": "NP",
+   "old_lemma": "Attila",
+   "new_lemma": "Attila (name)"
+  },
+  {
+   "form": "Ljótr",
+   "tag": "NP",
+   "old_lemma": "ljótr",
+   "new_lemma": "ljótr (name)"
+  },
+  {
+   "form": "englandz",
+   "tag": "NP",
+   "old_lemma": "England",
+   "new_lemma": "England (name)"
+  },
+  {
+   "form": "Grindholmasunda",
+   "tag": "NP",
+   "old_lemma": "grindholmasund",
+   "new_lemma": "grindholmasund (name)"
+  },
+  {
+   "form": "Klemetr",
+   "tag": "NP",
+   "old_lemma": "Klemetr",
+   "new_lemma": "Klemetr (name)"
+  },
+  {
+   "form": "Ásbjǫrn",
+   "tag": "NP",
+   "old_lemma": "ásbjǫrn",
+   "new_lemma": "ásbjǫrn (name)"
+  },
+  {
+   "form": "Gellis",
+   "tag": "NP",
+   "old_lemma": "gellir",
+   "new_lemma": "gellir (name)"
+  },
+  {
+   "form": "Þórir",
+   "tag": "NP",
+   "old_lemma": "Þórir",
+   "new_lemma": "Þórir (name)"
+  },
+  {
+   "form": "Þórolfr",
+   "tag": "NP",
+   "old_lemma": "Þórolfr",
+   "new_lemma": "Þórolfr (name)"
+  },
+  {
+   "form": "Þóris",
+   "tag": "NP",
+   "old_lemma": "þórir",
+   "new_lemma": "þórir (name)"
+  },
+  {
+   "form": "Finnbogi",
+   "tag": "NP",
+   "old_lemma": "finnbogi",
+   "new_lemma": "finnbogi (name)"
+  },
+  {
+   "form": "Osið",
+   "tag": "NP",
+   "old_lemma": "Osið",
+   "new_lemma": "Osið (name)"
+  },
+  {
+   "form": "Crist",
+   "tag": "NP",
+   "old_lemma": "Kristr",
+   "new_lemma": "Kristr (name)"
+  },
+  {
+   "form": "Jǫkuls",
+   "tag": "NP",
+   "old_lemma": "jǫkull",
+   "new_lemma": "jǫkull (name)"
+  },
+  {
+   "form": "Michaels",
+   "tag": "NP",
+   "old_lemma": "Michael",
+   "new_lemma": "Michael (name)"
+  },
+  {
+   "form": "hæinreke",
+   "tag": "NP",
+   "old_lemma": "Heinrekr",
+   "new_lemma": "Heinrekr (name)"
+  },
+  {
+   "form": "Flosi",
+   "tag": "NP",
+   "old_lemma": "flosi",
+   "new_lemma": "flosi (name)"
+  }
+ ],
+ "note": "All Menota documents compared by token index, form and locus. Unannotated inference unchanged except independently reviewed coordinate repairs. Full diff contains forms, tags, lemmas and citations only."
+}

@@ -1,0 +1,113 @@
+{
+  "note": "Wave6 source and dictionary review; error-verdicts-w6-other.jsonl.",
+  "lemma": [
+    {
+      "corpus": "grp",
+      "lemma": "εἴρω@speak",
+      "lex_id": [
+        "pie-lex-weryeti"
+      ],
+      "note": "Kaikki Ancient Greek s.v. εἴρω row4384: speak vs bind row4383; future ἐρέων in GLAUx Hdt2.40.1."
+    },
+    {
+      "corpus": "hom",
+      "lemma": "εἴρω@speak",
+      "lex_id": [
+        "pie-lex-weryeti"
+      ],
+      "note": "Kaikki Ancient Greek s.v. εἴρω row4384: speak vs bind row4383; future ἐρέων in GLAUx Hdt2.40.1."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "ἰσχυρός",
+      "lex_id": [],
+      "note": "Kaikki Ancient Greek 8772 s.v. ἰσχυρός, derivative of ἰσχύς; not the separative adverb *wi. GLAUx Thuc2.49.2."
+    },
+    {
+      "corpus": "av",
+      "lemma": "vṛ@cover",
+      "lex_id": [
+        "pie-root-h2wer-lift"
+      ],
+      "note": "Kaikki Sanskrit वृ row3192 cover vs choose row3191; DCS AVŚ18.2.s106 and MBh5.22.s49. Root includes cover/enclose; not a claim to a reconstructed participle."
+    },
+    {
+      "corpus": "vuk",
+      "lemma": "tih",
+      "lex_id": [],
+      "note": "Kaikki Proto-Slavic s.v. tixъ row2072 gives possible *(s)teygʰ- await patiently, not the homographic go/climb root. Vuk1598:45."
+    },
+    {
+      "corpus": "vuk",
+      "lemma": "padati",
+      "lex_id": [
+        "pie-root-ped-walk"
+      ],
+      "note": "Kaikki Serbo-Croatian padati row11089; Proto-Slavic pasti row206 fall (*ped-), distinct from row205 pasture (*peh₂-). Vuk28284:31."
+    },
+    {
+      "corpus": "vuk",
+      "lemma": "more@sea",
+      "lex_id": [
+        "pie-lex-mori"
+      ],
+      "note": "Kaikki Serbo-Croatian more row552, *móri; Vuk23722:93 genitive mora qualifies shore, unlike modal/verb homonyms."
+    },
+    {
+      "corpus": "vuk",
+      "lemma": "vila@fairy",
+      "lex_id": [],
+      "note": "Kaikki Serbo-Croatian vila row7492 fairy; not viti twist or row7493 villa loan. Etymology uncertain; preserve unmapped fairy."
+    },
+    {
+      "corpus": "byliny",
+      "lemma": "овчинник",
+      "lex_id": [],
+      "note": "Hilferding vol2 OCR L22138 occupational noun in predication, not овчина; no independent PIE equation asserted."
+    },
+    {
+      "corpus": "byliny",
+      "lemma": "море",
+      "lex_id": [
+        "pie-lex-mori"
+      ],
+      "note": "Kaikki Russian море row822 sea; Hilferding vol2 L22138 final OCR $ is yat, normalized by existing ru_norm_ocr."
+    },
+    {
+      "corpus": "dainos",
+      "lemma": "žibėti",
+      "lex_id": [],
+      "note": "Kaikki Lithuanian žibėti row25014: Baltic shine; wider origin uncertain, not *ǵebʰ- eat. Leskien-Brugmann L18672."
+    },
+    {
+      "corpus": "dainos",
+      "lemma": "būti@present",
+      "lex_id": [
+        "pie-lex-h1esti"
+      ],
+      "note": "Kaikki Lithuanian būti row714: present continues *h₁es-, suppletive *bʰuH- elsewhere. Leskien-Brugmann L16851 copula yra."
+    },
+    {
+      "corpus": "lat",
+      "lemma": "liber@bark",
+      "lex_id": [
+        "pie-root-lewbh-cut_off"
+      ],
+      "note": "Kaikki Latin liber row1725 inner bark, *lewbʰ-; Cato Agr40.2 grafting; not free adjective row1723."
+    },
+    {
+      "corpus": "lat",
+      "lemma": "pullus@young",
+      "lex_id": [],
+      "note": "Kaikki Latin pullus row10367 young animal/shoot, disputed origin; exclude dark adjective row10368. Cato Agr133.1."
+    },
+    {
+      "corpus": "lat",
+      "lemma": "molo",
+      "lex_id": [
+        "pie-root-melh2-grind"
+      ],
+      "note": "Kaikki Latin molo row11246 *melh₂- grind; Cato Agr162.1 moliti qualifies salt, not molior."
+    }
+  ]
+}
