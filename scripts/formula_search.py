@@ -36,6 +36,7 @@ from pathlib import Path
 
 from pie import formula_search as fs
 from pie import formula_search_multi as fm
+from pie import hittite_mapping as hm
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = Path(os.environ.get("FORMULA_SEARCH_OUT") or ROOT / "data" / "research" / "formulas")
@@ -639,26 +640,8 @@ class R3:
         self.maps[c], self.recs[c] = fm.multi_lemma_mapping(self.tok[c], lm, self.gmap)
 
     def _hittite(self):
-        """kaikki + lexicon (gloss-checked) first, EDHIL headwords as the second source."""
-        toks, lm = self.tok["hit"], self.lm["hit"]
-        m, recs = fm.corpus_mapping(toks, lm, lemma_keys=fm.hit_tlh_keys, gmap=self.gmap)
-        ok = {l: r for l, r in recs.items() if fm.hittite_gloss_ok(l, r)}
-        lemmas = sorted({t.lemma for t in toks if t.content})
-        kh = fm.kloekhorst_hittite(lemmas, self.env.lex, gmap=self.gmap)
-        cont = [t for t in toks if t.content]
-        share = lambda d: round(sum(t.lemma in d for t in cont) / len(cont), 4)
-        self.hit_cov = {"kaikki_lexicon_raw": share(recs), "kaikki_lexicon_gloss_checked": share(ok),
-                        "kloekhorst_only": share(kh), "kloekhorst_agree_with_kaikki":
-                            sum(1 for l in set(kh) & set(ok) if kh[l].ids & ok[l].ids),
-                        "kloekhorst_disagree_with_kaikki": sum(1 for l in set(kh) & set(ok) if not kh[l].ids & ok[l].ids)}
-        final = dict(ok)
-        for l, r in kh.items():
-            if l not in final:
-                final[l] = r
-            elif r.ids & final[l].ids:
-                fr = final[l]
-                final[l] = fm.MapRec(fr.key, fr.word, fr.ids & r.ids, fr.path, fr.how, "high", fr.sources + ("kloekhorst",), fr.gloss)
-        self.hit_cov["final"] = share(final)
+        """kaikki + lexicon (gloss-checked) first, EDHIL headwords as the second source (hm.hittite_table)."""
+        final, self.hit_cov = hm.hittite_table(self.tok["hit"], self.lm["hit"], self.env.lex, self.gmap)
         mm = fs.Mapping()
         for l, r in final.items():
             mm.lemma_lex[l] = r.ids
@@ -876,6 +859,28 @@ def write_mapping_tables(r3: R3):
         (MAPPING_DIR / f"{c}.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in rows), "utf-8")
 
 
+def write_hittite_table() -> dict:
+    """Rewrite data/research/formulas/mapping/hit.jsonl alone (the R3 route for Hittite without building
+    the other corpora): TLHdig tokens, the kaikki Hittite LangMapping, hm.hittite_table, the mapping
+    errata. Returns the coverage notes."""
+    lex = fs.load_jsonl(ROOT / "data/lexicon/lexicon.jsonl")
+    gmap = fs.group_map(lex)
+    lm = fm.build_lang_mapping("hit", lex, fm.ProtoDB(want_desc=fm.LANGS["hit"].desc_codes), idx=fs.PieIndex(lex))
+    toks = fm.load_hittite()
+    final, cov = hm.hittite_table(toks, lm, lex, gmap)
+    final = fm.apply_rec_overrides("hit", final)
+    MAPPING_DIR.mkdir(parents=True, exist_ok=True)
+    (MAPPING_DIR / "hit.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n"
+                                                   for x in hm.table_rows(final)), "utf-8")
+    log(f"hit.jsonl: {len(final)} rows; coverage {cov}")
+    st: dict = {}
+    dt = hm.doubtful_table(toks, lex, gmap, final, stats=st)
+    (ROOT / hm.DOUBTFUL_TABLE).write_text("".join(json.dumps({**x, "note": hm.doubtful_note(x)}, ensure_ascii=False) + "\n"
+                                                  for x in hm.table_rows(dt)), "utf-8")
+    log(f"hit-doubtful.jsonl (retrieval only): {len(dt)} rows; {st}")
+    return cov
+
+
 def coverage_r3(r3: R3) -> dict:
     out = {}
     for c, toks in r3.tok.items():
@@ -980,8 +985,12 @@ def write_round3_json(r3, res, regression, third, baseline, cands, items):
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("stage", choices=["ablation", "candidates", "all", "round3", "mapping"])
+    ap.add_argument("--corpus", choices=["hit"], help="mapping stage: rewrite this corpus's table only")
     args = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
+    if args.stage == "mapping" and args.corpus == "hit":
+        write_hittite_table()
+        return 0
     load_spot_checks()
     env = Env()
     if args.stage == "round3":

@@ -201,7 +201,7 @@ def test_proiel_and_dcs_loaders(tmp_path, monkeypatch):
 def test_kloekhorst_entry_parser(tmp_path):
     d = tmp_path / fm.KLOEKHORST
     d.mkdir(parents=True)
-    (d / "p0001.txt").write_text(
+    (d / f"{fm.KH_FIRST_FILE}.txt").write_text(
         " \nedzi / ad- (Ia3) ‘to eat’: 1sg.pres.act. e-et-mi.\n  PIE *h1ed-, *h1d-\n \n"
         "andaš-: see anda(i)š-\n \nantezzi(a)- (adj.) ‘first’: nom.sg.c. x.\n  PIE *h2ent-etiHo- \n", "utf-8")
     ents = fm.kloekhorst_entries(tmp_path)

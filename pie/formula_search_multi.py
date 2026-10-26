@@ -1168,11 +1168,27 @@ _HIT_W = re.compile(r"<w ([^>]*)>")
 _HIT_LB = re.compile(r'<lb [^>]*?txtid="([^"]*)"[^>]*?lnr="([^"]*)"')
 
 
-def hit_lemma(a: dict) -> tuple[str, str] | None:
-    """TLHdig word attributes → (lemma, morphology) when the analysis is
-    unique: a single selected analysis (mrp0sel), or a single proposal, or
-    several proposals that all share the lemma. Sumerograms and Akkadograms
-    (no lowercase letter) are dropped."""
+# TLHdig prefixes a lemma with the marks of the analysis it was selected from (①, Ⓐ, ⓷Ⓐ, ⓶ⓑⒸ, ...):
+# not part of the lemma
+_HIT_MARKS = re.compile(r"^[\u2460-\u24ff\u2776-\u2793\s]+")
+
+# morphology classes (the leading tag of an analysis, TLHdig's own tag set)
+HIT_NAME_TAGS = frozenset({"DN", "GN", "PN", "PNm", "PNf", "PPNf", "PPNm", "Nm", "RN", "MN", "WN", "ON"})
+HIT_FUNCTION_TAGS = frozenset({"CONNn", "CONNt", "CONNs", "CONN", "PPRO", "PPROa", "DEM1", "DEM2", "DEM3",
+                               "DEM2/3", "DEM2selb", "DEMann", "REL", "INT", "INDFany", "INDFevr", "INDFall",
+                               "INDoth", "INDcl", "POSS", "PTC", "NEG", "CNJ", "CONJ", "IRR", "QUANcar",
+                               "QUANmul", "PRP", "INTJ"})
+# TLHdig inflection-class numbers of names: 35 divine, 37 female, 38 male personal, 39 geographical
+HIT_NAME_CLASSES = frozenset({"35", "37", "38", "39"})
+# clitic chains: connective nu / ta / šu (n=, t=, š=) with enclitic pronouns and particles (n=aš=kan)
+_HIT_CLITIC_CHAIN = re.compile(r"^(?:nu|n|ta|t|šu|š)(?:=|$)")
+
+
+def hit_analysis(a: dict) -> tuple[str, str, str] | None:
+    """TLHdig word attributes → (lemma, morphology, inflection class) when the analysis is
+    unique: a single selected analysis (mrp0sel), or a single proposal, or several proposals that
+    all share the lemma. Selection marks (①, Ⓐ, ⓷Ⓐ) are dropped from the lemma. Sumerograms and
+    Akkadograms (no lowercase letter) are dropped."""
     sel = (a.get("mrp0sel") or "").split()
     props = {k[3:]: v for k, v in a.items() if re.fullmatch(r"mrp\d+", k)}
     if not props:
@@ -1184,21 +1200,76 @@ def hit_lemma(a: dict) -> tuple[str, str] | None:
         chosen = list(props.values())
     else:
         chosen = [props[n] for n in nums if n in props]
-    lemmas = {c.split("@")[0].strip() for c in chosen}
+    lemmas = {_HIT_MARKS.sub("", c.split("@")[0]).strip() for c in chosen}
     if len(lemmas) != 1:
         return None
-    lem = re.sub(r"^[①-⑳]\s*", "", lemmas.pop())
+    lem = lemmas.pop()
     if re.search(r"[A-ZḪŠ]", lem.split("=")[0]) or not re.search(r"[a-zḫšāēīū]", lem):
         return None                     # Sumerograms / Akkadograms (also as stems: LUGAL=u-)
     parts = chosen[0].split("@")
     gloss = parts[1].strip() if len(parts) > 1 else ""
-    return (f"{lem}@{gloss}" if gloss else lem), (parts[2] if len(parts) > 2 else "")
+    cls = parts[3].strip() if len(parts) > 3 else ""
+    return (f"{lem}@{gloss}" if gloss else lem), (parts[2] if len(parts) > 2 else ""), cls
+
+
+def hit_lemma(a: dict) -> tuple[str, str] | None:
+    """(lemma, morphology) of hit_analysis."""
+    r = hit_analysis(a)
+    return r[:2] if r else None
+
+
+def hit_morph_tags(morph: str) -> list[str]:
+    """The leading class tag of each analysis: '{ a → CONNn=PPRO.3SG.N.NOM} { b → ...}' → ['CONNn', ...],
+    'DN.NOM.SG(UNM)' → ['DN'], '3SG.PRS.MP' → ['3SG']."""
+    alts = re.findall(r"→\s*([^{}]*)", morph) or [morph]
+    out = []
+    for x in alts:
+        m = re.match(r"\s*([^\s.=:(]+)", x)
+        if m:
+            out.append(m[1])
+    return out
+
+
+def hit_word_kind(lemma: str, morph: str, cls: str = "") -> str:
+    """'name' (divine, personal, geographical name), 'function' (connective + clitic chain, pronoun,
+    particle, conjunction, numeral) or 'word', from TLHdig's own tags: the leading class tag of the
+    analyses (HIT_NAME_TAGS / HIT_FUNCTION_TAGS; a name tag in any analysis, a function tag in all),
+    the inflection class number (HIT_NAME_CLASSES), and a lemma without gloss that starts with a
+    connective (n=aš=kan, nu=war=at, ta=aš)."""
+    tags = hit_morph_tags(morph)
+    if any(t in HIT_NAME_TAGS for t in tags) or re.match(r"\d+", cls) and re.match(r"\d+", cls)[0] in HIT_NAME_CLASSES:
+        return "name"
+    if tags and all(t in HIT_FUNCTION_TAGS or t.startswith(("CONN", "PPRO", "DEM", "INDF")) for t in tags):
+        return "function"
+    if hit_is_clitic_chain(lemma):
+        return "function"
+    return "word"
+
+
+def hit_is_clitic_chain(lemma: str) -> bool:
+    """A lemma without gloss that starts with a connective: n=aš=kan, nu=war=at, ta=aš, nu."""
+    return "@" not in lemma and bool(_HIT_CLITIC_CHAIN.match(lemma))
+
+
+def hit_pos(lemma: str, morph: str, cls: str = "") -> tuple[str, bool]:
+    """(coarse POS, content?) of a TLHdig word. Verbs (person, participle, infinitive, supine, tense
+    or mood tags) and nominals (a case tag) are content unless hit_word_kind calls them a function
+    word; names are not content (pos 'name'; cf. the DMHP N+Top/N+Ant rule of the Stage C builder)."""
+    kind = hit_word_kind(lemma, morph, cls)
+    if kind == "name":
+        return "name", False
+    verbal = bool(re.match(r"\d|PTCP|INF|SUP", morph)) or "PRS" in morph or "PST" in morph or "IMP" in morph
+    pos = "verb" if verbal and "PTCP" not in morph else "noun" if re.search(r"NOM|ACC|GEN|D/L|ABL|ALL|INS|STF", morph) else "other"
+    if kind == "function":
+        return "other", False
+    return pos, pos in ("verb", "noun")
 
 
 def load_hittite(root: Path = ROOT, corpus: str = "hit") -> list[Token]:
     """TLHdig AOxml (CC BY 4.0), Hittite-language lines only. Unit: tablet
     line (`lb`); paragraph (between `parsep`) as the alternative. Every
-    manuscript is read, so duplicates of one composition count separately."""
+    manuscript is read, so duplicates of one composition count separately.
+    Content words: hit_pos (function words and names are not content)."""
     toks: list[Token] = []
     for fn in sorted((root / HIT_DIR).glob("*/*.xml")):
         cth = fn.parent.name.split("_")[0]
@@ -1218,14 +1289,11 @@ def load_hittite(root: Path = ROOT, corpus: str = "hit") -> list[Token]:
                 continue
             for wm in _HIT_W.finditer(piece):
                 a = dict(re.findall(r'([\w:]+)="([^"]*)"', wm[1]))
-                r = hit_lemma(a)
+                r = hit_analysis(a)
                 if not r:
                     continue
-                lem, morph = r
-                verbal = bool(re.match(r"\d|PTCP|INF|SUP", morph)) or "PRS" in morph or "PST" in morph \
-                    or "IMP" in morph
-                pos = "verb" if verbal and "PTCP" not in morph else "noun" if re.search(r"NOM|ACC|GEN|D/L|ABL|ALL|INS|STF", morph) else "other"
-                content = pos in ("verb", "noun")
+                lem, morph, cls = r
+                pos, content = hit_pos(lem, morph, cls)
                 toks.append(Token(corpus, lem, "", f"{cur[0]} {cur[1]}",
                                   {"line": f"{fn.stem}|{cur[1]}", "para": f"{fn.stem}|{para}", "book": cth},
                                   content, pos))
@@ -1294,17 +1362,22 @@ def corpus_mapping(tokens: list[Token], lm: LangMapping, lemma_keys=None, gmap: 
 
 # ---------------------------------------------------------------- Hittite: Kloekhorst (EDHIL) headwords
 #
-# The extracted text layer drops the glyphs of a private-use font: ḫ, w and
-# some long or accented vowels vanish (ḫalki- → alki-, šiu- → šu-). Headwords
-# and TLHdig lemmas are therefore compared on a *damaged key* (both sides with
-# h/ḫ/w deleted and vowels unmarked), and a match is used only when the key is
-# unique on both sides. Only the headword and the PIE line are read; nothing
-# of the running text is stored.
+# The extracted text layer replaces the glyphs of a private-use font by control characters, and the
+# code depends on the font: in headwords \x02 is ḫ or ē, \x04 ā, \x05 i̯ or ū, \x06 w, \x07 ī; in the
+# PIE lines \x05 is i̯, \x06 u̯ and \x02 / \x03 are dorsals (ḱ, ǵ, ǵʰ). Headwords and TLHdig lemmas are
+# therefore compared on a *damaged key* (h/ḫ/w/y deleted, vowels unmarked, geminates single) in which a
+# headword's control character matches an optional vowel (edhil_stem_pattern). Only the headword, its
+# gloss and the PIE line are read; nothing of the running text is stored.
 
 KLOEKHORST = "raw/books/text/kloekhorst-hitt"
-_KH_HEAD = re.compile(r"^\*?([^\s‘:]+(?: / [^\s‘:]+)*)\s+((?:\([^)]*\)\s*)*)‘")
-_KH_PIE = re.compile(r"^\s*PIE (\*.*)$")
-_HIT_VERB_END = re.compile(r"-(?:zi|i|ari|tta|tta\(ri\)|a\(ri\)|a|ttari)$")
+KH_FIRST_FILE = "p0170"               # the dictionary part (the files before it: introduction, phonology)
+_KH_PIE = re.compile(r"^\s*PIE\b\s*(.*)$")
+_KH_VERB_END = re.compile(r"-(?:\(t\)ta\(ri\)|tta\(ri\)|a\(ri\)|ttari|tta|ari|zi|i)$")
+_KH_TOKEN = re.compile(r"[^\s‘,/:;]+")
+_KH_DET = re.compile(r"^(?:\([A-ZÚÙÍÀÉŠḪ0-9.₀-₉]+\)|[A-ZÚÙÍÀÉŠḪ0-9.₀-₉]{2,}(?=[a-zšḫ\x01-\x1f(]))")
+_KH_STEM_OK = re.compile(r"^[a-zšḫāēīūâêîû\x01-\x1f()\-/=]+$")
+# a class or language label marking a foreign word: (Luw. verb), (Hurr.), (Hatt.)
+_KH_FOREIGN = re.compile(r"\b(?:Luw|CLuw|HLuw|Hurr|Hatt|Akk|Sum|Pal)\.")
 
 
 def _kh_variants(stem: str) -> list[str]:
@@ -1313,8 +1386,23 @@ def _kh_variants(stem: str) -> list[str]:
     return [x for x in dict.fromkeys(out) if x]
 
 
+def _slash_vowels(stem: str) -> list[str]:
+    """In-place alternation of one letter: `iye/a` → iye, iya; `kara/ep(p)` → karap(p), karep(p);
+    `ḫame/ink` → ḫamenk, ḫamink. A consonant before the slash (`išpart/za`) marks two stems:
+    išpart, išparza."""
+    m = re.search(r"([^\W\d_]|[\x01-\x1f])/([^\W\d_]|[\x01-\x1f])", stem)
+    if not m:
+        return [stem]
+    a, b = stem[:m.start()] + m[1] + stem[m.end():], stem[:m.start()] + m[2] + stem[m.end():]
+    if not (_nfd_strip(m[1]) in "aeiou" and _nfd_strip(m[2]) in "aeiou"):
+        a = stem[:m.start() + 1]
+    return list(dict.fromkeys(_slash_vowels(a) + _slash_vowels(b)))
+
+
 def hit_damaged_key(s: str) -> str:
-    s = _nfd_strip((s or "").lower()).replace("ḫ", "").replace("h", "").replace("w", "")
+    """The key on which TLHdig lemmas meet EDHIL headwords: lowercase, h/ḫ/w/y/j deleted, š → s,
+    marks and digits off, geminates and plene writing single."""
+    s = _nfd_strip((s or "").lower()).replace("ḫ", "").replace("h", "").replace("w", "").replace("y", "").replace("j", "")
     s = s.replace("š", "s")
     s = re.sub(r"[₀-₉0-9]", "", s)
     s = re.sub(r"[^a-z]", "", s)
@@ -1322,48 +1410,128 @@ def hit_damaged_key(s: str) -> str:
 
 
 def hit_lemma_stems(lemma: str) -> list[str]:
-    """TLHdig lemma `ēd-/ad-`, `ḫatt=eššar`, `eku-/aku-` → stem strings."""
+    """TLHdig lemma → stem strings: `ēd-/ad-` → ēd, ad; `šak(k)-, šek(k)-` → šak, šakk, šek, šekk;
+    `iye/a-` → iye, iya (a one-letter alternation, not two stems); `ḫatr=ā(e)-` → ḫatrā, ḫatrāe;
+    selection marks (①, Ⓐ), `=` segmentation, `˽` and homograph digits (kurš=i-2) dropped."""
     out = []
-    lemma = re.sub(r"^[①-⑳]\s*", "", lemma.split("@")[0])
-    for alt in lemma.split("/"):
-        alt = alt.replace("=", "").strip().strip("-")
-        out += _kh_variants(alt)
-    return [x for x in out if x]
+    lemma = _HIT_MARKS.sub("", lemma.split("@")[0]).strip()
+    alts = re.split(r"-\s*/\s*|,\s*", lemma)
+    if len(alts) == 1 and len(lemma) > 3:      # ḫaršar/ḫarš(ša)n-: a second stem with the same beginning
+        alts = re.split(r"/(?=%s)" % re.escape(lemma[:2]), lemma)
+    for alt in alts:
+        alt = re.sub(r"[=˽\s]|(?<=-)\d+$", "", alt).strip("-")
+        for v in _slash_vowels(alt):
+            out += _kh_variants(v)
+    return [x for x in dict.fromkeys(out) if x]
+
+
+def _kh_page_number(lines: list[str]) -> str:
+    for line in lines[:5]:
+        if re.fullmatch(r"\s*\d{1,4}\s*", line):
+            return line.strip()
+    return ""
+
+
+def _kh_heads(line: str) -> tuple[list[str], str] | None:
+    """`parši-a(ri), parš-a(ri) (IIIc > IIIg) ‘to break’: ...` → (['parši-a(ri)', 'parš-a(ri)'], rest
+    after the heads), or None if the line does not start with Hittite stems."""
+    heads, pos = [], 1 if line.startswith("*") else 0       # *arma-: a reading of a logogram
+    while True:
+        m = _KH_TOKEN.match(line, pos)
+        if not m:
+            return None
+        tok = m[0]
+        if heads and re.match(r"[^\W\d_](?:-|$)", tok) and line[:pos].rstrip().endswith("/"):
+            heads[-1] += "/" + tok          # `wišuriye / a-zi`: a one-letter alternation, not a second stem
+        else:
+            heads.append(tok)
+        pos = m.end()
+        sep = re.match(r"\s*(?:/|,)\s*(?![(‘])", line[pos:])
+        if not sep or not _KH_TOKEN.match(line, pos + sep.end()):
+            break
+        pos += sep.end()
+    return heads, line[pos:]
 
 
 def kloekhorst_entries(root: Path = ROOT) -> list[dict]:
-    """Headword entries of EDHIL: {'head', 'stems', 'pie', 'page'}. An entry
-    starts on a line after a blank line with `headword (class) ‘gloss’`;
-    its PIE reconstruction is the first indented `PIE *…` line before the
-    next entry. Cross-references (`x: see y`) and cuneiform transliterations
-    (several syllable hyphens) are skipped."""
-    out = []
-    files = sorted((root / KLOEKHORST).glob("p*.txt"))
+    """Headword entries of EDHIL: {'head', 'stems', 'pie', 'page' (file), 'printed' (printed page),
+    'gloss' (Kloekhorst's English gloss), 'doubtful' (a '?' on the PIE line), 'foreign' (a Luwian,
+    Hurrian, Hattic ... label)}. An entry starts on a line after a blank line with `headword(s)
+    (class) ‘gloss’`; its PIE reconstruction is the first `PIE *…` line before the next entry ('pie'
+    is [] when there is none). Cross-references (`x: see y`), enclitics (`=kkan`) and cuneiform
+    transliterations (several syllable hyphens) are skipped, but still end the previous
+    entry. Unquoted class-labelled entries also end it; discussion forms are never read."""
+    out, want_pie = [], False
+    files = sorted(p for p in (root / KLOEKHORST).glob("p*.txt") if p.stem >= KH_FIRST_FILE)
     for fn in files:
-        lines = fn.read_text("utf-8", errors="replace").splitlines()
+        # PDF font control codes (including CR/VT/FS) are glyphs, not line breaks.
+        lines = fn.read_bytes().decode("utf-8", errors="replace").split("\n")
+        printed = _kh_page_number(lines)
         prev_blank = True
         for line in lines:
-            m = _KH_HEAD.match(line) if prev_blank else None
-            prev_blank = not line.strip()
-            if m:
-                head = m[1]
-                parts = [p.strip() for p in head.split(" / ")]
-                if any(p.count("-") > 2 for p in parts) or not re.search(r"[a-zš]", head):
-                    continue
-                stems = []
-                for p in parts:
-                    p = _HIT_VERB_END.sub("", p) if re.search(r"-(zi|i|ari|tta|ttari)$", p) else p
-                    stems += _kh_variants(p.strip("-*"))
-                out.append({"head": head, "stems": stems, "pie": [], "page": fn.stem})
-                continue
+            # a running head (Ḫ, M) or page number counts as a blank line: an entry may follow it
+            blank = not line.strip() or bool(re.fullmatch(r"\s*(?:\d{1,4}|[A-ZŠḪ\x01-\x1f])\s*", line))
+            if prev_blank and not blank and not line[:1].isspace():
+                h = _kh_heads(line)
+                if h:
+                    heads, rest = h
+                    # Entry boundaries are broader than indexable headwords: enclitics,
+                    # cross-references and unquoted descriptions still own their PIE lines.
+                    # Require header syntax, not just an arbitrary discussion paragraph.
+                    if (re.match(r"\s*(?:‘|:\s*see\b|\((?:[IVX]+[a-z0-9]|c\.|n\.|adj\.|adv\.|encl\.|pron\.|particle|suffix|gender|Luw\.|Hurr\.|Hatt\.))", rest)
+                            and all(_KH_STEM_OK.fullmatch(_KH_DET.sub("", x).lstrip("*="))
+                                    and re.search(r"[a-zšḫ]", x) for x in heads)):
+                        want_pie = False
+                    cls = re.match(r"\s*((?:\((?:[^()]|\([^()]*\))*\)\s*)*)", rest)[1]
+                    after = rest[len(re.match(r"\s*", rest)[0]) + len(cls):] if cls else rest.lstrip()
+                    stems = []
+                    for p in heads:
+                        p = _KH_DET.sub("", p)
+                        p = _KH_VERB_END.sub("", p) if re.search(r"-(zi|i|a\(ri\)|ari|tta|tta\(ri\)|ttari)$", p) else p
+                        p = p.strip("-*")
+                        if not _KH_STEM_OK.match(p) or p.count("-") > 2 or p.startswith("="):
+                            stems = []
+                            break
+                        for v in _slash_vowels(p):
+                            stems += _kh_variants(v.replace("-", ""))
+                    gm = re.search(r"‘([^’]*)’?", rest)
+                    crossref = bool(re.match(r"\s*(?:‘[^’]*’\s*)?:\s*see\b", after)) or after.lstrip().startswith(": see")
+                    if stems and gm and not crossref and after.startswith("‘"):
+                        out.append({"head": " / ".join(heads), "stems": list(dict.fromkeys(stems)), "pie": [],
+                                    "page": fn.stem, "printed": printed, "gloss": gm[1].strip(),
+                                    "doubtful": False, "foreign": bool(_KH_FOREIGN.search(cls)), "cls": cls.strip()})
+                        want_pie, prev_blank = True, blank
+                        continue
             pm = _KH_PIE.match(line)
-            if pm and out and not out[-1]["pie"] and out[-1]["page"] <= fn.stem:
-                forms = re.split(r"\s*(?:,|/|~| or )\s*", pm[1])
-                out[-1]["pie"] = [f.strip(" ?.;").split(" ")[0] for f in forms if f.strip().startswith("*")]
-    return [e for e in out if e["pie"]]
+            if pm and out and want_pie and line[:1].isspace():
+                txt = pm[1].strip()
+                want_pie = False  # even an unsupported labelled PIE line belongs here
+                if txt.startswith("*"):
+                    out[-1]["pie"] = parse_pie_line(txt)
+                    out[-1]["doubtful"] = "?" in txt
+                    # alternatives Kloekhorst offers with 'or' (*h1mé-h1m-oi-ei ?? or *mé-moi-ei ??)
+                    out[-1]["pie_alts"] = [a for a in (parse_pie_line(x) for x in re.split(r"\s+or\s+", txt)) if a]
+            prev_blank = blank
+    return out
+
+
+def parse_pie_line(txt: str) -> list[str]:
+    """Kloekhorst's PIE line → its starred forms: alternatives split at ', ', ' / ', ';', ' or ', '~'
+    (not inside `h1/3`, `ské/ó`), a form continuing without '*' (`*nóh2-ei, nh2énti`) starred."""
+    txt = re.sub(r"[.?!\s]+$", "", txt)
+    txt = re.sub(r"\s*\+\s*", "+", txt)          # *h1poi + *h1s-ie/o-: one compound form
+    out = []
+    for f in re.split(r"\s*(?:,|;|\s/\s|\sor\s|~|<|>)\s*", txt):
+        f = f.strip(" ?.;()")
+        if not f or not re.search(r"[a-zA-Z]", f):
+            continue
+        f = f.split(" ")[0]
+        out.append(f if f.startswith("*") else "*" + f)
+    return out
 
 
 def pie_fuzzy_key(s: str) -> str:
+
     """Key on which Kloekhorst's plain-text PIE (u for w, i for y, h1 for h₁,
     flattened superscripts and diacritics) meets the lexicon forms."""
     s = unicodedata.normalize("NFD", (s or "").lower().lstrip("*"))
@@ -1393,46 +1561,6 @@ class FuzzyPie:
             if len(k) >= 2 and k in self.idx:
                 return set(self.idx[k]), ("form" if n == len(segs) else "root-of-form")
         return set(), ""
-
-
-def kloekhorst_hittite(lemmas, lexicon: list[dict], root: Path = ROOT, gmap: dict | None = None) -> dict:
-    """TLHdig lemma → MapRec via EDHIL headwords (unique damaged-key match on
-    both sides; the PIE line resolved by FuzzyPie)."""
-    ents = kloekhorst_entries(root)
-    fz = FuzzyPie(lexicon)
-    by_key: dict[str, list] = collections.defaultdict(list)
-    for e in ents:
-        for st in e["stems"]:
-            k = hit_damaged_key(st)
-            if len(k) >= 3:
-                by_key[k].append(e)
-    lem_by_key: dict[str, set] = collections.defaultdict(set)
-    for lem in lemmas:
-        for st in hit_lemma_stems(lem):
-            lem_by_key[hit_damaged_key(st)].add(lem)
-    out = {}
-    for lem in lemmas:
-        for st in hit_lemma_stems(lem):
-            k = hit_damaged_key(st)
-            es = {id(x): x for x in by_key.get(k, [])}
-            if len(k) < 3 or len(es) != 1 or len(lem_by_key[k]) != 1:
-                continue
-            e = next(iter(es.values()))
-            ids, how = set(), ""
-            for f in e["pie"]:
-                ids, how = fz.lookup(f)
-                if ids:
-                    break
-            if not ids or how != "form":
-                continue          # the leading-segment fallback was wrong in 2 of 3 checked cases
-            g = {(gmap or {}).get(i, i) for i in ids}
-            if len(g) > fs.MAX_GROUPS:
-                continue
-            out[lem] = MapRec(k, e["head"], frozenset(ids), (f"hit:{lem}", f"kloekhorst:{e['page']}:{e['head']}",
-                                                             f"ine-pro:{e['pie'][0]}"),
-                              "kloekhorst" if how == "form" else "kloekhorst-root", "medium", ("kloekhorst",))
-            break
-    return out
 
 
 # German glosses of TLHdig → English words that must occur in the matched

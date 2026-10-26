@@ -301,8 +301,13 @@ class Resolved:
         return self.formation == "derivative"
 
 
+# retrieval-only tables (hit-doubtful.jsonl: EDHIL etymologies Kloekhorst marks doubtful) sit beside the
+# corpus tables but are not part of the resolved population: no audit or secure check reads them
+RETRIEVAL_ONLY_SUFFIX = "-doubtful"
+
+
 def table_corpora(root: Path = ROOT) -> list[str]:
-    return sorted(p.stem for p in (Path(root) / MAPPING).glob("*.jsonl"))
+    return sorted(p.stem for p in (Path(root) / MAPPING).glob("*.jsonl") if not p.stem.endswith(RETRIEVAL_ONLY_SUFFIX))
 
 
 def read_table(corpus: str, root: Path = ROOT) -> list[dict]:

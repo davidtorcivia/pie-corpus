@@ -18,13 +18,6 @@
   },
   {
    "corpus": "hit",
-   "lemma": "⓷Ⓐ ann=a/i-@Mutter",
-   "lex_id": [],
-   "erratum": "anna- 'mother' mapped to *h₂en- 'on, onto' (string collision)",
-   "note": "Kloekhorst EDHIL s.v. anna- (c.) 'mother', p. 174: nursery word, no connection with *h₂en-"
-  },
-  {
-   "corpus": "hit",
    "lemma": "dašš=u-@stark",
    "lex_id": [
     "pie-root-dens-become_skilled"
@@ -94,20 +87,6 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓐ ištanan=a-@Altar",
-   "lex_id": [],
-   "erratum": "ištanana- 'altar' mapped to *steh₂- 'stand'",
-   "note": "Kloekhorst EDHIL s.v. GIŠištanana- 'altar', p. 413: the connection with *steh₂- is rejected ('I know of no' PIE root *sTeNh₂/₃-); no etymology"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓶ⓐⒸ ištanan=a-@Altar",
-   "lex_id": [],
-   "erratum": "ištanana- 'altar' mapped to *steh₂- 'stand'",
-   "note": "Kloekhorst EDHIL s.v. GIŠištanana- 'altar', p. 413: the connection with *steh₂- is rejected ('I know of no' PIE root *sTeNh₂/₃-); no etymology"
-  },
-  {
-   "corpus": "hit",
    "lemma": "ištanann=a-@Altar",
    "lex_id": [],
    "erratum": "ištanana- 'altar' mapped to *steh₂- 'stand'",
@@ -161,13 +140,6 @@
   },
   {
    "corpus": "hit",
-   "lemma": "⓶ⓑⒸ ḫuppar=a-@Schale",
-   "lex_id": [],
-   "erratum": "ḫuppar- 'bowl' mapped to kaikki *h₂weph₁- 'weave' (speculative Wiktionary etymology)",
-   "note": "Kloekhorst EDHIL has no entry for ḫuppar- 'bowl' (cf. p. 51, cited only for its spelling): no accepted IE etymology"
-  },
-  {
-   "corpus": "hit",
    "lemma": "ḫupparr=a-@Schale",
    "lex_id": [],
    "erratum": "ḫuppar- 'bowl' mapped to kaikki *h₂weph₁- 'weave' (speculative Wiktionary etymology)",
@@ -176,33 +148,6 @@
   {
    "corpus": "hit",
    "lemma": "pai-/pā-@gehen",
-   "lex_id": [
-    "pie-root-h1ey-go"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. pai-zi / pai- 'to go', p. 616: PIE *h₁pói + *h₁éi-ti / *h₁i-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ pai-/pā-@gehen",
-   "lex_id": [
-    "pie-root-h1ey-go"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. pai-zi / pai- 'to go', p. 616: PIE *h₁pói + *h₁éi-ti / *h₁i-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓶ⓑⒸ pai-/pā-@gehen",
-   "lex_id": [
-    "pie-root-h1ey-go"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. pai-zi / pai- 'to go', p. 616: PIE *h₁pói + *h₁éi-ti / *h₁i-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓷Ⓐ pai-/pā-@gehen",
    "lex_id": [
     "pie-root-h1ey-go"
    ],
@@ -220,52 +165,7 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓐ eku-/aku-@trinken",
-   "lex_id": [
-    "pie-lex-h1egwhti"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. eku-zi / aku- 'to drink', p. 236: PIE *h₁egʷʰ-ti / *h₁gʷʰ-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓶ⓑⒸ eku-/aku-@trinken",
-   "lex_id": [
-    "pie-lex-h1egwhti"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. eku-zi / aku- 'to drink', p. 236: PIE *h₁egʷʰ-ti / *h₁gʷʰ-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓷Ⓐ eku-/aku-@trinken",
-   "lex_id": [
-    "pie-lex-h1egwhti"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. eku-zi / aku- 'to drink', p. 236: PIE *h₁egʷʰ-ti / *h₁gʷʰ-énti"
-  },
-  {
-   "corpus": "hit",
    "lemma": "akkuš=k-@trinken",
-   "lex_id": [
-    "pie-root-h1egwh-drink"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. eku-zi / aku- 'to drink', p. 236 (impf. akkuške/a-, cf. p. 312)"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ akkuš=k-@trinken",
-   "lex_id": [
-    "pie-root-h1egwh-drink"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. eku-zi / aku- 'to drink', p. 236 (impf. akkuške/a-, cf. p. 312)"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓶ⓐⒸ akkuš=k-@trinken",
    "lex_id": [
     "pie-root-h1egwh-drink"
    ],
@@ -284,24 +184,6 @@
   {
    "corpus": "hit",
    "lemma": "dā-/d-@nehmen",
-   "lex_id": [
-    "pie-lex-doh3ey"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. dā-i / d- 'to take', p. 803-804: PIE *dóh₃-ei, *dh₃-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ dā-/d-@nehmen",
-   "lex_id": [
-    "pie-lex-doh3ey"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. dā-i / d- 'to take', p. 803-804: PIE *dóh₃-ei, *dh₃-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓷Ⓐ dā-/d-@nehmen",
    "lex_id": [
     "pie-lex-doh3ey"
    ],
@@ -346,15 +228,6 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓐ ped=a-@hinschaffen",
-   "lex_id": [
-    "pie-root-deh3-give"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. peda-i / ped- 'to take (somewhere)', p. 673: PIE *h₁poi + *doh₃-ei / *dh₃-enti"
-  },
-  {
-   "corpus": "hit",
    "lemma": "ped=ae-@hinschaffen",
    "lex_id": [
     "pie-root-deh3-give"
@@ -365,24 +238,6 @@
   {
    "corpus": "hit",
    "lemma": "šipant=@libieren",
-   "lex_id": [
-    "pie-root-spend-libate"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. šipand-i / išpand- 'to libate', p. 404-405: PIE *spónd-ei, *spnd-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ šipant=@libieren",
-   "lex_id": [
-    "pie-root-spend-libate"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. šipand-i / išpand- 'to libate', p. 404-405: PIE *spónd-ei, *spnd-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓶ⓐⒸ šipant=@libieren",
    "lex_id": [
     "pie-root-spend-libate"
    ],
@@ -418,24 +273,6 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓐ šipanza=k-@libieren",
-   "lex_id": [
-    "pie-root-spend-libate"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. šipand-i / išpand- 'to libate', p. 404-405 (impf. šipanzake/a-)"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓶ⓐⒸ šipanza=k-@libieren",
-   "lex_id": [
-    "pie-root-spend-libate"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. šipand-i / išpand- 'to libate', p. 404-405 (impf. šipanzake/a-)"
-  },
-  {
-   "corpus": "hit",
    "lemma": "išpanduzz=i-@Libation",
    "lex_id": [
     "pie-root-spend-libate"
@@ -445,34 +282,7 @@
   },
   {
    "corpus": "hit",
-   "lemma": "ⓐⒸ išpanduzz=i-@Libation",
-   "lex_id": [
-    "pie-root-spend-libate"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. šipand-i / išpand- 'to libate', p. 404-405 (derivative išpanduzzi- 'libation')"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓶ⓑⒸ išpanduzz=i-@Libation",
-   "lex_id": [
-    "pie-root-spend-libate"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. šipand-i / išpand- 'to libate', p. 404-405 (derivative išpanduzzi- 'libation')"
-  },
-  {
-   "corpus": "hit",
    "lemma": "wē-/uwa-@kommen",
-   "lex_id": [
-    "pie-root-h1ey-go"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. u- (preverb) 'hither', p. 909 (uē-zi / uu̯a- 'to come'), and p. 103: PIE *h₂ou + *h₁éiti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ wē-/uwa-@kommen",
    "lex_id": [
     "pie-root-h1ey-go"
    ],
@@ -499,88 +309,7 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓐ ka-@dieser",
-   "lex_id": [
-    "pie-lex-kjis"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. kā- / kū- / kī- 'this', p. 426: PIE *ḱo-, *ḱi-"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓑ ka-@dieser",
-   "lex_id": [
-    "pie-lex-kjis"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. kā- / kū- / kī- 'this', p. 426: PIE *ḱo-, *ḱi-"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "ⓐⒸ ka-@dieser",
-   "lex_id": [
-    "pie-lex-kjis"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. kā- / kū- / kī- 'this', p. 426: PIE *ḱo-, *ḱi-"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓶ⓐⒸ ka-@dieser",
-   "lex_id": [
-    "pie-lex-kjis"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. kā- / kū- / kī- 'this', p. 426: PIE *ḱo-, *ḱi-"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓶ⓑⒸ ka-@dieser",
-   "lex_id": [
-    "pie-lex-kjis"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. kā- / kū- / kī- 'this', p. 426: PIE *ḱo-, *ḱi-"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓷Ⓐ ka-@dieser",
-   "lex_id": [
-    "pie-lex-kjis"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. kā- / kū- / kī- 'this', p. 426: PIE *ḱo-, *ḱi-"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓷Ⓑ ka-@dieser",
-   "lex_id": [
-    "pie-lex-kjis"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. kā- / kū- / kī- 'this', p. 426: PIE *ḱo-, *ḱi-"
-  },
-  {
-   "corpus": "hit",
    "lemma": "ḫašš=a-@Herd",
-   "lex_id": [
-    "pie-lex-h2eHsh2"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ḫašša- 'hearth', p. 318-319: PIE *h₂eh₁s-eh₂- (Lat. āra)"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ ḫašš=a-@Herd",
-   "lex_id": [
-    "pie-lex-h2eHsh2"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ḫašša- 'hearth', p. 318-319: PIE *h₂eh₁s-eh₂- (Lat. āra)"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "ⓐⒸ ḫašš=a-@Herd",
    "lex_id": [
     "pie-lex-h2eHsh2"
    ],
@@ -607,43 +336,7 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓐ ēd-/ad-@essen",
-   "lex_id": [
-    "pie-lex-h1edti"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ed-zi / ad- 'to eat', p. 261: PIE *h₁éd-ti / *h₁d-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓶ⓑⒸ ēd-/ad-@essen",
-   "lex_id": [
-    "pie-lex-h1edti"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ed-zi / ad- 'to eat', p. 261: PIE *h₁éd-ti / *h₁d-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓷Ⓐ ēd-/ad-@essen",
-   "lex_id": [
-    "pie-lex-h1edti"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ed-zi / ad- 'to eat', p. 261: PIE *h₁éd-ti / *h₁d-énti"
-  },
-  {
-   "corpus": "hit",
    "lemma": "azik=k-@essen",
-   "lex_id": [
-    "pie-root-h1ed-eat"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ed-zi / ad- 'to eat', p. 261 (impf. azzikke/a-)"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ azik=k-@essen",
    "lex_id": [
     "pie-root-h1ed-eat"
    ],
@@ -661,15 +354,6 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓐ ki=@liegen",
-   "lex_id": [
-    "pie-lex-kjeytor"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ki-tta(ri) 'to lie', p. 473: PIE *ḱéi-to / *ḱéi-nto"
-  },
-  {
-   "corpus": "hit",
    "lemma": "eš-@sitzen",
    "lex_id": [
     "pie-lex-h1eh1sti"
@@ -679,25 +363,7 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓐ eš-@sitzen",
-   "lex_id": [
-    "pie-lex-h1eh1sti"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. eš-a(ri) / aš- 'to sit down', p. 252: PIE *h₁éh₁s-o"
-  },
-  {
-   "corpus": "hit",
    "lemma": "eš-@sein",
-   "lex_id": [
-    "pie-lex-h1esti"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. eš-zi / aš- 'to be', p. 250: PIE *h₁és-ti, *h₁s-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓒⓑ eš-@sein",
    "lex_id": [
     "pie-lex-h1esti"
    ],
@@ -726,37 +392,28 @@
    "corpus": "hit",
    "lemma": "šunn=a-@füllen",
    "lex_id": [
-    "pie-lex-suneHti"
+    "pie-root-sewh3-be_become_full"
    ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. šunna-i / šunn- 'to fill', p. 785: PIE *su-nó-h₁/₃-e / *su-n-h₁/₃-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ šunn=a-@füllen",
-   "lex_id": [
-    "pie-lex-suneHti"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. šunna-i / šunn- 'to fill', p. 785: PIE *su-nó-h₁/₃-e / *su-n-h₁/₃-énti"
+   "erratum": "Reviewed formation correction: EDHIL pp. 785-786: hi-inflected *su-no-H-ei; not mi-present *su-ne-H-ti. Fullness root, not the bear homograph; secondary formations remain root only.",
+   "note": "EDHIL pp. 785-786: hi-inflected *su-no-H-ei; not mi-present *su-ne-H-ti. Fullness root, not the bear homograph; secondary formations remain root only."
   },
   {
    "corpus": "hit",
    "lemma": "šunn=iye/a-@füllen",
    "lex_id": [
-    "pie-lex-suneHti"
+    "pie-root-sewh3-be_become_full"
    ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. šunna-i / šunn- 'to fill', p. 785"
+   "erratum": "Reviewed formation correction: EDHIL pp. 785-786: hi-inflected *su-no-H-ei; not mi-present *su-ne-H-ti. Fullness root, not the bear homograph; secondary formations remain root only.",
+   "note": "EDHIL pp. 785-786: hi-inflected *su-no-H-ei; not mi-present *su-ne-H-ti. Fullness root, not the bear homograph; secondary formations remain root only."
   },
   {
    "corpus": "hit",
    "lemma": "šunn=išk-@füllen",
    "lex_id": [
-    "pie-lex-suneHti"
+    "pie-root-sewh3-be_become_full"
    ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. šunna-i / šunn- 'to fill', p. 785 (impf.)"
+   "erratum": "Reviewed formation correction: EDHIL pp. 785-786: hi-inflected *su-no-H-ei; not mi-present *su-ne-H-ti. Fullness root, not the bear homograph; secondary formations remain root only.",
+   "note": "EDHIL pp. 785-786: hi-inflected *su-no-H-ei; not mi-present *su-ne-H-ti. Fullness root, not the bear homograph; secondary formations remain root only."
   },
   {
    "corpus": "hit",
@@ -788,11 +445,9 @@
   {
    "corpus": "hit",
    "lemma": "laḫ=u-@gießen",
-   "lex_id": [
-    "pie-lex-loh3wey"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. lāḫu-i / laḫu- 'to pour', p. 511: PIE *lóh₂u-ei, *lh₂u-énti"
+   "lex_id": [],
+   "erratum": "Reviewed formation correction: EDHIL pp. 512-513: *loh₂u-ei; rejects *leuh₃-. No matching preferred root in the lexicon; the wash-family lexeme is rejected.",
+   "note": "EDHIL pp. 512-513: *loh₂u-ei; rejects *leuh₃-. No matching preferred root in the lexicon; the wash-family lexeme is rejected."
   },
   {
    "corpus": "hit",
@@ -832,15 +487,6 @@
   },
   {
    "corpus": "hit",
-   "lemma": "⓶ⓑⒸ au(š)-/u(wa)-@sehen",
-   "lex_id": [
-    "pie-root-h2ew-perceive"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. au-i / u- 'to see', p. 227: PIE *h₂óu-ei, *h₂u-énti"
-  },
-  {
-   "corpus": "hit",
    "lemma": "uš=k-@sehen",
    "lex_id": [
     "pie-root-h2ew-perceive"
@@ -850,43 +496,7 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓐ uš=k-@sehen",
-   "lex_id": [
-    "pie-root-h2ew-perceive"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. au-i / u- 'to see', p. 227 (impf. uške/a-)"
-  },
-  {
-   "corpus": "hit",
    "lemma": "akk-@sterben",
-   "lex_id": [
-    "pie-root-h1ekj-die"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. āk-i / akk- 'to die', p. 167-168: PIE *h₁/₃ók-ei, *h₁/₃k-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ akk-@sterben",
-   "lex_id": [
-    "pie-root-h1ekj-die"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. āk-i / akk- 'to die', p. 167-168: PIE *h₁/₃ók-ei, *h₁/₃k-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓶ⓑⒸ akk-@sterben",
-   "lex_id": [
-    "pie-root-h1ekj-die"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. āk-i / akk- 'to die', p. 167-168: PIE *h₁/₃ók-ei, *h₁/₃k-énti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓷Ⓐ akk-@sterben",
    "lex_id": [
     "pie-root-h1ekj-die"
    ],
@@ -922,25 +532,7 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓐ war=nu-@verbrennen",
-   "lex_id": [
-    "pie-lex-wrnewti"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. war(nu)- / urāni 'to burn', p. 924: PIE *urh₁-; causative warnu-"
-  },
-  {
-   "corpus": "hit",
    "lemma": "war=@brennen",
-   "lex_id": [
-    "pie-root-wer-burn"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ur-ri, ar-ri 'to burn', p. 923-924: PIE *urh₁-ó-ri"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓷Ⓐ war=@brennen",
    "lex_id": [
     "pie-root-wer-burn"
    ],
@@ -987,37 +579,28 @@
    "corpus": "hit",
    "lemma": "šanḫ-@suchen/reinigen",
    "lex_id": [
-    "pie-lex-senh2t"
+    "pie-root-senh2-obtain"
    ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ša(n)ḫ-zi 'to seek', p. 720: PIE *senh₂-ti, *snh₂-enti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ šanḫ-@suchen/reinigen",
-   "lex_id": [
-    "pie-lex-senh2t"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ša(n)ḫ-zi 'to seek', p. 720: PIE *senh₂-ti, *snh₂-enti"
+   "erratum": "Reviewed formation correction: EDHIL pp. 720-721: *senh₂-ti / *snh₂-enti, mi-present; not root aorist *senh₂-t. Root only.",
+   "note": "EDHIL pp. 720-721: *senh₂-ti / *snh₂-enti, mi-present; not root aorist *senh₂-t. Root only."
   },
   {
    "corpus": "hit",
    "lemma": "šanḫ-@suchen",
    "lex_id": [
-    "pie-lex-senh2t"
+    "pie-root-senh2-obtain"
    ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ša(n)ḫ-zi 'to seek', p. 720"
+   "erratum": "Reviewed formation correction: EDHIL pp. 720-721: *senh₂-ti / *snh₂-enti, mi-present; not root aorist *senh₂-t. Root only.",
+   "note": "EDHIL pp. 720-721: *senh₂-ti / *snh₂-enti, mi-present; not root aorist *senh₂-t. Root only."
   },
   {
    "corpus": "hit",
    "lemma": "šanḫ=išk-@suchen/reinigen",
    "lex_id": [
-    "pie-lex-senh2t"
+    "pie-root-senh2-obtain"
    ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ša(n)ḫ-zi 'to seek', p. 720 (impf.)"
+   "erratum": "Reviewed formation correction: Formation differs from pie-lex-senh2t; root only. EDHIL 720; formations: *senh2-ti, *snh2-enti",
+   "note": "Formation differs from pie-lex-senh2t; root only. EDHIL 720; formations: *senh2-ti, *snh2-enti"
   },
   {
    "corpus": "hit",
@@ -1059,55 +642,19 @@
    "corpus": "hit",
    "lemma": "zinn=a-@beendigen",
    "lex_id": [
-    "pie-lex-tineh1ti"
+    "pie-root-teyh1-get_hot"
    ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. zinni-zi / zinn- 'to stop, to finish', p. 1036: PIE *ti-ne-h₁-, *ti-n-h₁-"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ zinn=a-@beendigen",
-   "lex_id": [
-    "pie-lex-tineh1ti"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. zinni-zi / zinn- 'to stop, to finish', p. 1036: PIE *ti-ne-h₁-, *ti-n-h₁-"
+   "erratum": "Reviewed formation correction: Formation differs from pie-lex-tineh1ti; root only. EDHIL 1036; formations: *ti-ne-h1-, *ti-n-h1-",
+   "note": "Formation differs from pie-lex-tineh1ti; root only. EDHIL 1036; formations: *ti-ne-h1-, *ti-n-h1-"
   },
   {
    "corpus": "hit",
    "lemma": "ḫark=@umkommen",
    "lex_id": [
-    "pie-lex-h3ergt"
+    "pie-root-h3erg-perish"
    ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ḫark-zi 'to perish', p. 306: PIE *h₃erg-ti, *h₃rg-enti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ ḫark=@umkommen",
-   "lex_id": [
-    "pie-lex-h3ergt"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ḫark-zi 'to perish', p. 306: PIE *h₃erg-ti, *h₃rg-enti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓶ⓐⒸ ḫark=@umkommen",
-   "lex_id": [
-    "pie-lex-h3ergt"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ḫark-zi 'to perish', p. 306: PIE *h₃erg-ti, *h₃rg-enti"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓶ⓑⒸ ḫark=@umkommen",
-   "lex_id": [
-    "pie-lex-h3ergt"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ḫark-zi 'to perish', p. 306: PIE *h₃erg-ti, *h₃rg-enti"
+   "erratum": "Reviewed formation correction: Formation differs from pie-lex-h3ergt; root only. EDHIL 306; formations: *h3erg-ti, *h3rg-enti",
+   "note": "Formation differs from pie-lex-h3ergt; root only. EDHIL 306; formations: *h3erg-ti, *h3rg-enti"
   },
   {
    "corpus": "hit",
@@ -1121,15 +668,6 @@
   {
    "corpus": "hit",
    "lemma": "karp=@heben",
-   "lex_id": [
-    "pie-lex-kerpt"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. karp(ie/a)-zi 'to lift', p. 452: PIE *(s)kérp-t / *(s)krp-ént"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓷Ⓐ karp=@heben",
    "lex_id": [
     "pie-lex-kerpt"
    ],
@@ -1228,34 +766,7 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓑ la(e)-@lösen",
-   "lex_id": [
-    "pie-lex-leh1t"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. lā-i / l- 'to loosen, release', p. 509: PIE *lóh₁-ei, *lh₁-énti (*leh₁- 'let go')"
-  },
-  {
-   "corpus": "hit",
    "lemma": "ze=a-@kochen",
-   "lex_id": [
-    "pie-lex-tyeh1o"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. zē-a(ri) / z- 'to cook (intr.)', p. 1033: PIE *tiéh₁-o"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ ze=a-@kochen",
-   "lex_id": [
-    "pie-lex-tyeh1o"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. zē-a(ri) / z- 'to cook (intr.)', p. 1033: PIE *tiéh₁-o"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓑ ze=a-@kochen",
    "lex_id": [
     "pie-lex-tyeh1o"
    ],
@@ -1273,15 +784,6 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓐ zen=a-@Herbst",
-   "lex_id": [
-    "pie-lex-tyeh1nos"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. zēna- 'autumn', p. 1034: PIE *tiéh₁-no-"
-  },
-  {
-   "corpus": "hit",
    "lemma": "zen=ant-@Herbst",
    "lex_id": [
     "pie-lex-tyeh1nos"
@@ -1291,30 +793,10 @@
   },
   {
    "corpus": "hit",
-   "lemma": "⓶ⓑⒸ zen=ant-@Herbst",
-   "lex_id": [
-    "pie-lex-tyeh1nos"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. zēna- / zēnant- 'autumn', p. 1034: PIE *tiéh₁-no-"
-  },
-  {
-   "corpus": "hit",
    "lemma": "tarn=a-@lassen",
-   "lex_id": [
-    "pie-lex-trneh2ti"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. tarna-i / tarn- 'to let (go)', p. 846: PIE *tr-nó-h₁/₃-ei"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ tarn=a-@lassen",
-   "lex_id": [
-    "pie-lex-trneh2ti"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. tarna-i / tarn- 'to let (go)', p. 846: PIE *tr-nó-h₁/₃-ei"
+   "lex_id": [],
+   "erratum": "Reviewed formation correction: EDHIL pp. 846-847: *trK-no-h₁/₃-; rejects *terh₂-. LIV² p. 635 separates *TerKh₂-. Leave unmapped rather than identify the differing reconstructions.",
+   "note": "EDHIL pp. 846-847: *trK-no-h₁/₃-; rejects *terh₂-. LIV² p. 635 separates *TerKh₂-. Leave unmapped rather than identify the differing reconstructions."
   },
   {
    "corpus": "hit",
@@ -1327,34 +809,16 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓐ weš@wir",
-   "lex_id": [
-    "pie-lex-wey"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. wēš / anz- 'we', p. 1004: PIE *uei-(e)s"
-  },
-  {
-   "corpus": "hit",
    "lemma": "gulš-@ritzen",
    "lex_id": [
-    "pie-lex-kwelsti"
+    "pie-root-kwels-pull"
    ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. gulš-zi 'to carve, engrave', p. 492: PIE *kʷels- / *kʷls-énti"
+   "erratum": "Reviewed formation correction: EDHIL pp. 492-493: *kwls-enti; the shared plural does not establish the singular formation *kwels-ti. Retain the existing root family only.",
+   "note": "EDHIL pp. 492-493: *kwls-enti; the shared plural does not establish the singular formation *kwels-ti. Retain the existing root family only."
   },
   {
    "corpus": "hit",
    "lemma": "išḫ=a-@Herr",
-   "lex_id": [
-    "pie-lex-h1esh2os"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. išḫa- 'lord, master', p. 390: PIE *h₁esh₂-ó-"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓷Ⓐ išḫ=a-@Herr",
    "lex_id": [
     "pie-lex-h1esh2os"
    ],
@@ -1399,34 +863,7 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓐ lukk=a-@hell werden",
-   "lex_id": [
-    "pie-lex-lukto"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. lukk-tta 'to get light', p. 530-531: PIE *leuk-to"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓑ lukk=a-@hell werden",
-   "lex_id": [
-    "pie-lex-lukto"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. lukk-tta 'to get light', p. 530-531: PIE *leuk-to"
-  },
-  {
-   "corpus": "hit",
    "lemma": "luk=a-@hell werden",
-   "lex_id": [
-    "pie-lex-lukto"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. lukk-tta 'to get light', p. 530-531"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ luk=a-@hell werden",
    "lex_id": [
     "pie-lex-lukto"
    ],
@@ -1455,32 +892,14 @@
    "corpus": "hit",
    "lemma": "wer=iye/a-@rufen",
    "lex_id": [
-    "pie-lex-weryeti"
+    "pie-root-werh1-speak"
    ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. uer(ie/a)-zi 'to call, to name', p. 1002: PIE *uérh₁-t, *urh₁-é-ti"
+   "erratum": "Reviewed formation correction: Formation differs from pie-lex-weryeti; root only. EDHIL 1002; formations: *uérh1-t, *urh1-·é-ti",
+   "note": "Formation differs from pie-lex-weryeti; root only. EDHIL 1002; formations: *uérh1-t, *urh1-·é-ti"
   },
   {
    "corpus": "hit",
    "lemma": "karš=@abschneiden",
-   "lex_id": [
-    "pie-lex-kerst"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. karš(ie/a)-zi 'to cut (off)', p. 454: PIE *kérs-t / *krs-ént"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓑ karš=@abschneiden",
-   "lex_id": [
-    "pie-lex-kerst"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. karš(ie/a)-zi 'to cut (off)', p. 454: PIE *kérs-t / *krs-ént"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓷Ⓐ karš=@abschneiden",
    "lex_id": [
     "pie-lex-kerst"
    ],
@@ -1498,25 +917,7 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓐ ḫuiš=u-@lebendig",
-   "lex_id": [
-    "pie-root-h2wes-dwell"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ḫuišu- / ḫušu- 'alive, fresh', p. 354 (from ḫuiš- 'to live', p. 353): PIE *h₂ues-"
-  },
-  {
-   "corpus": "hit",
    "lemma": "ḫueš=u-@lebendig",
-   "lex_id": [
-    "pie-root-h2wes-dwell"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. ḫuišu- / ḫuešu- 'alive, fresh', p. 354: PIE *h₂ues-"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ ḫueš=u-@lebendig",
    "lex_id": [
     "pie-root-h2wes-dwell"
    ],
@@ -1536,37 +937,37 @@
    "corpus": "hit",
    "lemma": "paḫḫaš=@beschützen",
    "lex_id": [
-    "pie-lex-peh2sti"
+    "pie-root-peh2-protect"
    ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. paḫš-a(ri) 'to protect', p. 611: PIE *peh₂-s-"
+   "erratum": "Reviewed formation correction: EDHIL pp. 611-612: middle *peh₂s-o, hi-active *poh₂s-ei; causative *ph₂s-neu-. None is mi-present *peh₂s-ti; retain the protection root only.",
+   "note": "EDHIL pp. 611-612: middle *peh₂s-o, hi-active *poh₂s-ei; causative *ph₂s-neu-. None is mi-present *peh₂s-ti; retain the protection root only."
   },
   {
    "corpus": "hit",
    "lemma": "paḫḫaš=nu-@beschützen",
    "lex_id": [
-    "pie-lex-peh2sti"
+    "pie-root-peh2-protect"
    ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. paḫš-a(ri) 'to protect', p. 611 (caus. paḫšnu-)"
+   "erratum": "Reviewed formation correction: EDHIL pp. 611-612: middle *peh₂s-o, hi-active *poh₂s-ei; causative *ph₂s-neu-. None is mi-present *peh₂s-ti; retain the protection root only.",
+   "note": "EDHIL pp. 611-612: middle *peh₂s-o, hi-active *poh₂s-ei; causative *ph₂s-neu-. None is mi-present *peh₂s-ti; retain the protection root only."
   },
   {
    "corpus": "hit",
    "lemma": "walḫ=anna-@schlagen",
    "lex_id": [
-    "pie-lex-welh3ti"
+    "pie-root-welh3-hit"
    ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. walḫ-zi 'to strike', p. 945-946 (impf. walḫanna-): PIE *uélh₃-ti"
+   "erratum": "Reviewed formation correction: Formation differs from pie-lex-welh3ti; root only. EDHIL 945; formations: *uélh3-ti, *ulh3-énti",
+   "note": "Formation differs from pie-lex-welh3ti; root only. EDHIL 945; formations: *uélh3-ti, *ulh3-énti"
   },
   {
    "corpus": "hit",
    "lemma": "mau(š)-/mu-@fallen",
    "lex_id": [
-    "pie-lex-myowh1ti"
+    "pie-root-myewh1-move"
    ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. mau-i / mu- 'to fall', p. 564-565: PIE *móuh₁-ei / *muh₁-énti"
+   "erratum": "Reviewed formation correction: Formation differs from pie-lex-myowh1ti; root only. EDHIL 564; formations: *móuh1-ei, *muh1-énti",
+   "note": "Formation differs from pie-lex-myowh1ti; root only. EDHIL 564; formations: *móuh1-ei, *muh1-énti"
   },
   {
    "corpus": "hit",
@@ -1581,41 +982,21 @@
    "corpus": "hit",
    "lemma": "tepaw=eš-@wenig werden",
    "lex_id": [
-    "pie-lex-dhebhus"
+    "pie-root-dhebh-make_small"
    ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. tēpu- 'little', p. 869 (deriv. tepaw-ešš- 'to become little'): PIE *dʰébʰ-u-"
+   "erratum": "Reviewed formation correction: Formation differs from pie-lex-dhebhus; root only. EDHIL 869; formations: *dhébh-u-",
+   "note": "Formation differs from pie-lex-dhebhus; root only. EDHIL 869; formations: *dhébh-u-"
   },
   {
    "corpus": "hit",
    "lemma": "kara/ep(p)-@fressen",
-   "lex_id": [
-    "pie-lex-ghrebh2t"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. karap-i / kare/ip- 'to devour', p. 442: PIE *gʰróbʰh₁-ei"
+   "lex_id": [],
+   "erratum": "Reviewed formation correction: EDHIL pp. 442-443: *ghrobh₁-ei / *ghrbh₁-enti, hi-formation; neither the aorist *ghrebh₂-t nor its h₂-root is a matching reconstruction. No preferred h₁-root exists in the lexicon; leave unmapped.",
+   "note": "EDHIL pp. 442-443: *ghrobh₁-ei / *ghrbh₁-enti, hi-formation; neither the aorist *ghrebh₂-t nor its h₂-root is a matching reconstruction. No preferred h₁-root exists in the lexicon; leave unmapped."
   },
   {
    "corpus": "hit",
    "lemma": "udd=ar@Wort; Sache",
-   "lex_id": [
-    "pie-lex-weth2r"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. uttar / uddan- 'word, thing', p. 932: PIE *uéth₂-r, *uth₂-én-s"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓶ⓑⒸ udd=ar@Wort; Sache",
-   "lex_id": [
-    "pie-lex-weth2r"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. uttar / uddan- 'word, thing', p. 932: PIE *uéth₂-r, *uth₂-én-s"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓷Ⓐ udd=ar@Wort; Sache",
    "lex_id": [
     "pie-lex-weth2r"
    ],
@@ -1644,26 +1025,6 @@
   },
   {
    "corpus": "hit",
-   "lemma": "Ⓐ kuišša@jeder",
-   "lex_id": [
-    "pie-lex-kwis",
-    "pie-lex-kwis-2"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. kui- 'who, which', p. 488 (kuišša 'each' = kui- + =a): PIE *kʷi-"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "⓶Ⓒⓐ kuišša@jeder",
-   "lex_id": [
-    "pie-lex-kwis",
-    "pie-lex-kwis-2"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. kui- 'who, which', p. 488 (kuišša 'each' = kui- + =a): PIE *kʷi-"
-  },
-  {
-   "corpus": "hit",
    "lemma": "app=a-@fassen",
    "lex_id": [
     "pie-lex-h1epti"
@@ -1674,15 +1035,6 @@
   {
    "corpus": "hit",
    "lemma": "mald=@äußern",
-   "lex_id": [
-    "pie-lex-moldhey"
-   ],
-   "erratum": "unmapped (TLHdig lemma; kaikki/lexicon match missing or rejected by the gloss filter)",
-   "note": "Kloekhorst EDHIL s.v. māld-i / mald- 'to recite, to make a vow', p. 550: PIE *móldʰ-ei"
-  },
-  {
-   "corpus": "hit",
-   "lemma": "Ⓐ mald=@äußern",
    "lex_id": [
     "pie-lex-moldhey"
    ],
@@ -3715,6 +3067,258 @@
    ],
    "erratum": "unmapped (PROIEL lemma not linked by the kaikki chain)",
    "note": "denominative of surb 'holy' (as sowrb, *ḱubʰrós)"
+  },
+  {
+   "corpus": "hit",
+   "lemma": "warp=@baden",
+   "lex_id": [
+    "pie-root-werp-turn_back_and-2"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 965-966: warp-; *u̯érp-ti / *u̯r̥p-énti. The washing sense is connected through rubbing to repeated turning. LIV² p. 690 explicitly includes warapzi and war(ap)panzi."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "šak(k)-, šek(k)-@wissen",
+   "lex_id": [
+    "pie-root-sekH-separate"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 695-696: šākk- / šakk-; *sókh₁-ei / *skh₁-énti. The semantic bridge is discrimination to knowledge; LIV² p. 524 includes sakki and sakteni under *sekH-. None of the *sekʷ- homographs is intended."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "meḫ=ur@Zeit",
+   "lex_id": [
+    "pie-root-meyH-become_small"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 567-568: mēḫur; *méih₂-ur. EDHIL explicitly connects a finite period with diminution, rejecting the competing maturity explanation; *meyH- is the lexicon notation."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "ar=a-@Freund",
+   "lex_id": [
+    "pie-root-h2er-fit"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 198-199: arā- is included among the derivatives of āra; *h₂or-o-. The entry connects this family with fitting and joining."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "ar=ae-@erheben",
+   "lex_id": [
+    "pie-root-h3er-move"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 200: arai- / ari-; *h₃r-oi- / *h₃r-i-. The raising verb is distinguished from arae- on p. 199; the latter headword caused the key collision."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "arw=ā(e)-@sich verneigen",
+   "lex_id": [
+    "pie-root-h2er-speak_weightily_loudly"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 213: aruwae-; *h₂or-u̯o-ye/o-. EDHIL relates the act of obeisance to the nominal prayer family; LIV² p. 271 identifies Greek *arwā- with this root."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "lutt=ai-@Fenster",
+   "lex_id": [
+    "pie-root-lewt-see"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 534-535: luttāi / lutti-; *lut-oi / *lut-i-. EDHIL explicitly chooses *leut- and the visual function of the window, rather than the competing cutting etymology."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "ḫamenk-@binden",
+   "lex_id": [
+    "pie-root-h2emgjh-lace_up"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 278-279: ḫamank- / ḫame/ink-; *h₂m-ón-ǵʰ-ei. EDHIL identifies the nasal-infixed formation with *h₂emǵʰ-; ḫamenk- is an explicit cross-reference."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "an=iye/a-@wirken",
+   "lex_id": [
+    "pie-root-h3enH-onerate"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 179-181: aniye/a- and its imperfective anniške/a-; *h₃n-ye/o-. EDHIL retains the onus/ánas cognate family but removes the final laryngeal of the lexicon notation *h₃enH-. This is a reviewed family equation, not an endorsement of that laryngeal."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "ann=išk-@wirken",
+   "lex_id": [
+    "pie-root-h3enH-onerate"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 179-181: aniye/a- and its imperfective anniške/a-; *h₃n-ye/o-. EDHIL retains the onus/ánas cognate family but removes the final laryngeal of the lexicon notation *h₃enH-. This is a reviewed family equation, not an endorsement of that laryngeal."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "pešš=iye/a-@werfen",
+   "lex_id": [
+    "pie-root-h1es-throw"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 670-671: peššiye/a-; *h₁poi + *h₁s-ye/o-. The throwing lemma continues the prefixed verb, not peš(š)- on p. 669; the compound PIE line blocks the automatic root route."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "pešš=@werfen",
+   "lex_id": [
+    "pie-root-h1es-throw"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 670-671: peššiye/a-; *h₁poi + *h₁s-ye/o-. The throwing lemma continues the prefixed verb, not peš(š)- on p. 669; the compound PIE line blocks the automatic root route."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "išḫu=a-@schütten",
+   "lex_id": [
+    "pie-root-sh2ew-pour"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 396-398: išḫuwai- / išḫui-; *sh₂u-(o)i-. These shortened TLHdig stems belong to the pouring paradigm; root *sh₂eu-."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "išḫ=u-@schütten",
+   "lex_id": [
+    "pie-root-sh2ew-pour"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 396-398: išḫuwai- / išḫui-; *sh₂u-(o)i-. These shortened TLHdig stems belong to the pouring paradigm; root *sh₂eu-."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "ištamašš=@hören",
+   "lex_id": [
+    "pie-lex-steh3mn"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 411-413: ištamašš- is the s-extension of ištaman-; *stéh₃mn̥ / *sth₃mén-s. The existing nominal lexeme includes the Hittite ear reflex; this mapping is through the stated nominal base."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "genz=u-@Schoß",
+   "lex_id": [
+    "pie-root-gjenh1-produce"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 468-469: genzu-; *ǵenh₁-su-. EDHIL explicitly derives the anatomical and figurative senses from the procreation family."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "kur=eššar@abgeschnittener Stoff",
+   "lex_id": [
+    "pie-root-kwer-do"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 494: kurēššar; *kʷr-éh₁sh₁-r. EDHIL identifies this as a derivative of kuer-; the existing root includes carving and cutting, despite its id ending in do."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "tani=nu-@ordnen",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 827-828: taninu-; *dʰoh₁-ni-neu-. EDHIL connects its base with placement; the TLHdig gloss does not express the installation sense used in the headword."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "wašš=@bedecken",
+   "lex_id": [
+    "pie-root-wes-dress"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 1004-1006: wešš- / wašše/a-; *u̯és-to / *u̯s-yé-ti. The entry includes covering as well as clothing; the shortened key misses this headword."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "šuwa=@füllen",
+   "lex_id": [
+    "pie-root-sewh3-be_become_full"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 794, 797: šuwe/a-; *sHu-ye/o-. EDHIL explains laryngeal metathesis from *suH- and explicitly connects the verb with šūu- and šunna-; the intended root is fullness, not pouring."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "ling=ai-@Schwur",
+   "lex_id": [
+    "pie-root-h1lengjh-assert_on_oath"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 526-528: lingai- / linki- is listed as a derivative of li(n)k-; *h₁lenǵʰ-. The derived nominal key fails to reach the verbal entry."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "išḫi=ul-@Vertrag",
+   "lex_id": [
+    "pie-root-sh2ey-bind"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: automatic notation, gloss or headword matching missed the existing etymon.",
+   "note": "Kloekhorst EDHIL pp. 391-393: išḫiul- is a derivative of išḫai- / išḫi-; *sh₂-(o)i-. EDHIL treats i as a stem extension where LIV² and the existing root use *sh₂ei-; the binding family is the same, not *seh₂- satiation."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "taganzip=a-@Erde",
+   "lex_id": [
+    "pie-lex-dhegjhoxm"
+   ],
+   "erratum": "Reviewed top-200 unmapped lemma: derived earth stem is not reached by automatic headword matching.",
+   "note": "Kloekhorst EDHIL pp. 812-813: tagānzepa- contains the earth stem of tēkan / takn-, *dʰǵʰōm + *sepa-. The existing earth lexeme supplies its nominal base; the additional element is not assigned a separate etymon."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "šup=@schlafen",
+   "lex_id": [
+    "pie-root-swep-sleep"
+   ],
+   "erratum": "Reviewed formation correction: EDHIL pp. 787-788: *sup-o / *sup-to, middle; not active root aorist *swep-t. Root only.",
+   "note": "EDHIL pp. 787-788: *sup-o / *sup-to, middle; not active root aorist *swep-t. Root only."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "šupp=@schlafen",
+   "lex_id": [
+    "pie-root-swep-sleep"
+   ],
+   "erratum": "Reviewed formation correction: EDHIL pp. 787-788: *sup-o / *sup-to, middle; not active root aorist *swep-t. Root only.",
+   "note": "EDHIL pp. 787-788: *sup-o / *sup-to, middle; not active root aorist *swep-t. Root only."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "šupp=a-@schlafen",
+   "lex_id": [
+    "pie-root-swep-sleep"
+   ],
+   "erratum": "Reviewed formation correction: EDHIL pp. 787-788: *sup-o / *sup-to, middle; not active root aorist *swep-t. Root only.",
+   "note": "EDHIL pp. 787-788: *sup-o / *sup-to, middle; not active root aorist *swep-t. Root only."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "te-/tar-@sprechen",
+   "lex_id": [
+    "pie-root-dheh1-do"
+   ],
+   "erratum": "Reviewed formation correction: EDHIL pp. 857-858, 870-871: te- *dheh₁-ti, not root aorist *dheh₁-t. This mapping covers ONLY te-; suppletive tar- *ter- has no existing speech-root id (the tender homograph is excluded).",
+   "note": "EDHIL pp. 857-858, 870-871: te- *dheh₁-ti, not root aorist *dheh₁-t. This mapping covers ONLY te-; suppletive tar- *ter- has no existing speech-root id (the tender homograph is excluded)."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "paḫš=@beschützen",
+   "lex_id": [
+    "pie-root-peh2-protect"
+   ],
+   "erratum": "Reviewed formation correction: EDHIL pp. 611-612: middle *peh₂s-o, hi-active *poh₂s-ei; causative *ph₂s-neu-. None is mi-present *peh₂s-ti; retain the protection root only.",
+   "note": "EDHIL pp. 611-612: middle *peh₂s-o, hi-active *poh₂s-ei; causative *ph₂s-neu-. None is mi-present *peh₂s-ti; retain the protection root only."
   }
  ],
  "form": []
