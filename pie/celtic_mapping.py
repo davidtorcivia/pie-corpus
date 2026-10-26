@@ -1217,16 +1217,415 @@ CONTEXT_FORMS = {
 }
 
 
+# Reviewed Irish homographs and names: error-verdicts-irish.jsonl supplies the
+# independent source loci and dictionary citations for every IR-CS identifier.
+# Rules use immediate lexical context, never passage IDs. Missing neighbours
+# do not match; capitalization alone is insufficient without a reviewed name.
+# (previous word sequences, following forms, corrected lemma/sense, requires capital)
+IR_REVIEWED_CONTEXT = {
+    'adaig': [
+        (('mbai',), ('and',), 'adaig@night', False),  # IR-CS-065
+    ],
+    'adaigh': [
+        (('an',), ('sin',), 'adaig@night', False),  # IR-CS-079, IR-CS-080
+    ],
+    'agaib': [
+        (('cúich',), ('dingbhus',), 'ag', False),  # IR-CS-113
+    ],
+    'aidchi': [
+        (('teora',), ('ac',), 'adaig@night', False),  # IR-CS-063
+    ],
+    'aide': [
+        (('mo',), ('i',), 'aite', False),  # IR-CS-044
+    ],
+    'aingil': [
+        (('bennachadur',), ('dé',), 'aingel@angel', False),  # IR-CS-117
+        (('tainic',), ('do',), 'aingel@angel', False),  # IR-CS-173
+    ],
+    'airc': [
+        (('isin',), ('ruc',), 'arc@ark', False),  # IR-CS-034
+        (('isin',), ('oiret',), 'arc@ark', False),  # IR-CS-034
+    ],
+    'asna': [
+        (('fesin',), ('srothaibh',), 'as', False),  # IR-CS-054
+        (('iar',), ('losaib-sin',), 'as', False),  # IR-CS-055, IR-CS-160
+    ],
+    'bas': [
+        (('sin',), ('chommairge',), 'is', False),  # IR-CS-031
+    ],
+    'ben': [
+        (('badesta',), ('a',), 'benaid', False),  # IR-CS-038
+    ],
+    'bether': [
+        (('ní',), ('co',), 'bí', False),  # IR-CS-060
+    ],
+    'bhai': [
+        (('ro',), ('mac',), 'bí', False),  # IR-CS-016
+    ],
+    'bheithi': [
+        (('fedh',), ('a',), 'bí', False),  # IR-CS-030
+    ],
+    'bhir': [
+        (('do',), ('chruaidh',), 'bir', False),  # IR-CS-066
+        (('don',), ('isin',), 'bir', False),  # IR-CS-068
+    ],
+    'bhud': [
+        (('nach',), ('marbh',), 'bud', False),  # IR-CS-104
+    ],
+    'bhó': [
+        (('gur',), ('fliuch',), 'bo', False),  # IR-CS-017, IR-CS-159
+    ],
+    'biadh': [
+        (('nach',), ('ainm',), 'bí', False),  # IR-CS-077
+    ],
+    'bias': [
+        (('cidh',), ('damh',), 'bí', False),  # IR-CS-058
+    ],
+    'boinn': [
+        (('co',), ('combai',), 'boand (name)', False),  # IR-CS-151
+    ],
+    'brcith': [
+        (('dot',), (), 'breith', False),  # IR-CS-168
+    ],
+    'broind': [
+        (('ósa',), ('brúis',), 'brú@belly', False),  # IR-CS-157
+    ],
+    'bás': [
+        (('ní',), ('remi',), 'bí', False),  # IR-CS-032
+    ],
+    'bía': [
+        (('ní',), ('fáitsine',), 'bí', False),  # IR-CS-059
+    ],
+    'bíad': [
+        (('no',), ('congal',), 'bí', False),  # IR-CS-105
+        (('no',), ('for',), 'bí', False),  # IR-CS-106
+        (('no',), ('fora',), 'bí', False),  # IR-CS-106
+    ],
+    'bíd': [
+        (('gacha',), (), 'bíad', False),  # IR-CS-069
+    ],
+    'caera': [
+        (('sumha',), ('mil',), 'cáer@berry', False),  # IR-CS-048
+    ],
+    'cas': [
+        ((), (), 'cas (name)', True),  # IR-CS-098
+    ],
+    'chlaid': [
+        (('fâcbur a',), (), 'claideb', False),  # IR-CS-147: truncated at the unit boundary
+    ],
+    'chlíu': [
+        (('bara',), (), 'clé', False),  # IR-CS-056
+    ],
+    'chomla': [
+        (('in',), ('sin',), 'comla', False),  # IR-CS-123
+    ],
+    'chuain': [
+        (('an',), ('do',), 'cúan@harbour', False),  # IR-CS-081
+    ],
+    'cháera': [
+        (('immar',), ('tenda',), 'cáer@berry', False),  # IR-CS-049
+    ],
+    'collaib': [
+        (('dá',), (), 'colainn', False),  # IR-CS-088
+    ],
+    'comla': [
+        (('tiprait',), ('furri',), 'comla', False),  # IR-CS-124
+    ],
+    'cuala': [
+        (('gu',), ('in',), 'rocluinethar', False),  # IR-CS-091
+    ],
+    'cáilte': [
+        ((), (), 'caílte (name)', True),  # IR-CS-166
+    ],
+    'damhsa': [
+        (('briathar',), ('ol',), 'do', False),  # IR-CS-052
+    ],
+    'deógan': [
+        ((), (), 'eógan (name)', True),  # IR-CS-092
+    ],
+    'dfionn': [
+        ((), (), 'fionn (name)', True),  # IR-CS-128
+    ],
+    'dhuin': [
+        (('ferr',), ('a',), 'do', False),  # IR-CS-015
+    ],
+    'dobo': [
+        ((), ('córa',), 'bo', False),  # IR-CS-089
+        (('n-érinn',), ('mó',), 'bo', False),  # IR-CS-090
+    ],
+    'dáed': [
+        ((), (), 'áed (name)', True),  # IR-CS-045
+    ],
+    'dána': [
+        (('co',), ('dúrcraidech',), 'dána@bold', False),  # IR-CS-116
+    ],
+    'día': [
+        (('buille',), ('ghlúin',), 'dia', False),  # IR-CS-028
+    ],
+    'días': [
+        (('n-amus',), ('cach',), 'dias@pair', False),  # IR-CS-006
+        (('acht',), ('ro',), 'dias@pair', False),  # IR-CS-007
+        (('an',), ('daltadh',), 'dias@pair', False),  # IR-CS-008
+    ],
+    'eitir': [
+        ((), ('ṡrotha',), 'eter', False),  # IR-CS-133
+    ],
+    'eogan': [
+        ((), (), 'eógan (name)', True),  # IR-CS-094
+    ],
+    'eó': [
+        ((), ('uma',), 'eó@pin', False),  # IR-CS-033
+    ],
+    'fele': [
+        (('fos',), ('toa',), 'féile@modesty', False),  # IR-CS-122
+    ],
+    'fer': [
+        (('ega',), ('or',), 'fér', False),  # IR-CS-014
+    ],
+    'fiacha': [
+        ((), (), 'fiacha (name)', True),  # IR-CS-180
+    ],
+    'file': [
+        (('é',), ('sund',), 'fil', False),  # IR-CS-102
+        (('céin',), ('in',), 'fil', False),  # IR-CS-102
+    ],
+    'filed': [
+        (('h-aisia',), ('araon',), 'fil', False),  # IR-CS-114
+    ],
+    'find': [
+        (('lia',), ('lia',), 'find@white', False),  # IR-CS-083
+    ],
+    'fir': [
+        (('as',), ('don',), 'fír', False),  # IR-CS-012
+        (('deiligud',), ('gai',), 'fír', False),  # IR-CS-013
+    ],
+    'fáe': [
+        (('chlé',), ('ri',), 'fo', False),  # IR-CS-009
+    ],
+    'gaet': [
+        (('màthair',), ('in',), 'gonaid', False),  # IR-CS-167
+    ],
+    'gai': [
+        (('fir',), ('and',), 'gáu', False),  # IR-CS-078
+    ],
+    'gairit': [
+        (('bo',), ('linn',), 'gairid@short', False),  # IR-CS-111
+    ],
+    'ghaibh': [
+        (('do',), ('coirrbreaca',), 'gae', False),  # IR-CS-041
+    ],
+    'gonadh': [
+        (('chuir',), ('ann',), 'conid', False),  # IR-CS-129
+    ],
+    'grain': [
+        (('gab',), ('eacla',), 'gráin@fear', False),  # IR-CS-084
+    ],
+    'gráin': [
+        (('gabus',), ('egla',), 'gráin@fear', False),  # IR-CS-085
+        (('gan',), ('ré',), 'gráin@fear', False),  # IR-CS-086
+    ],
+    'h-aidchi-so': [
+        (('na',), ('di',), 'adaig@night', False),  # IR-CS-062
+    ],
+    'h-alpain': [
+        ((), (), 'alba (name)', True),  # IR-CS-022
+    ],
+    'h-erenà': [
+        ((), (), 'ériu (name)', True),  # IR-CS-131
+    ],
+    'h-eógan': [
+        ((), (), 'eógan (name)', True),  # IR-CS-093
+    ],
+    'herind': [
+        ((), (), 'ériu (name)', True),  # IR-CS-132
+    ],
+    'hingnib': [
+        (('cosaib',), ('doib',), 'ingen@nail', False),  # IR-CS-042
+    ],
+    'husci': [
+        (('fri',), ('andes',), 'uisce', False),  # IR-CS-171
+    ],
+    'ior': [
+        (('lethchind',), ('icthchlocind',), 'for', False),  # IR-CS-146, IR-CS-176
+        (('icthchlocind',), ('cnàinired',), 'for', False),  # IR-CS-146, IR-CS-176
+    ],
+    'iṅgni': [
+        (('bertsatar',), ('na',), 'ingen@nail', False),  # IR-CS-043
+    ],
+    'lasan': [
+        (('duibi',), ('sruth',), 'la', False),  # IR-CS-051
+    ],
+    'leiginn': [
+        (('mac',), ('dia',), 'légend@learning', False),  # IR-CS-130
+    ],
+    'lind': [
+        (('assu',), ('óenláech',), 'la', False),  # IR-CS-004
+        (('fein',), ('gura',), 'la', False),  # IR-CS-005
+    ],
+    'lotair': [
+        (('léo',), ('îor',), 'luid', False),  # IR-CS-169
+    ],
+    'lotar': [
+        ((), ('na',), 'luid', False),  # IR-CS-001
+    ],
+    'lía': [
+        (('a',), ('ro',), 'lia@stone', False),  # IR-CS-097
+    ],
+    'm-bíd': [
+        (('m-bec',), ('sin',), 'bíad', False),  # IR-CS-067
+    ],
+    'maid': [
+        (('ro',), ('cnómaidm',), 'maidid', False),  # IR-CS-020
+    ],
+    'mbo': [
+        (('co',), ('marb',), 'bo', False),  # IR-CS-018
+    ],
+    'messi': [
+        ((), ('tarlaic',), 'mé', False),  # IR-CS-027
+    ],
+    'messu': [
+        (('ba',), ('lais-sium',), 'messu@worse', False),  # IR-CS-026
+    ],
+    'mina': [
+        ((), ('bhedh',), 'mani', False),  # IR-CS-099
+    ],
+    'mun': [
+        ((), ('budh',), 'mani', False),  # IR-CS-110
+    ],
+    'méd': [
+        (('caithemh',), ('na',), 'méid', False),  # IR-CS-070
+        (('ar',), ('menman',), 'méid', False),  # IR-CS-071
+    ],
+    'mín': [
+        (('riamh',), ('bud',), 'mani', False),  # IR-CS-103
+    ],
+    'n-adaig': [
+        (('i',), ('ríg',), 'agaid', False),  # IR-CS-064
+    ],
+    'n-airc': [
+        (('gach',), ('gach',), 'airc@distress', False),  # IR-CS-100
+    ],
+    'n-alpain': [
+        ((), (), 'alba (name)', True),  # IR-CS-023
+    ],
+    'n-domnall': [
+        ((), (), 'domnall (name)', True),  # IR-CS-096
+    ],
+    'n-eistecht': [
+        (('á',), ('adubairt',), 'éistecht@hearing', False),  # IR-CS-076
+    ],
+    'n-uird': [
+        (('a',), ('a',), 'ord@office', False),  # IR-CS-073, IR-CS-074
+    ],
+    'nalpain': [
+        ((), (), 'alba (name)', True),  # IR-CS-021
+    ],
+    'no-mbligtis': [
+        (('chluined',), ('da',), 'mligid', False),  # IR-CS-149, IR-CS-175
+    ],
+    'nís': [
+        (('úadib',), ('arlaic',), 'ní', False),  # IR-CS-019
+        (('súas',), ('arlaic',), 'ní', False),  # IR-CS-019
+    ],
+    'nít': [
+        (('aile',), ('fírlaech',), 'ní', False),  # IR-CS-047
+    ],
+    'oss': [
+        (('lia',), ('a',), 'ós', False),  # IR-CS-119, IR-CS-162
+        (('oghaim',), ('a',), 'ós', False),  # IR-CS-120, IR-CS-161
+    ],
+    'rena': [
+        (('claidbib',), ('carpdib',), 'ria', False),  # IR-CS-024, IR-CS-155
+    ],
+    'rioghacht': [
+        (('ar',), ('do',), 'ríge', False),  # IR-CS-057
+    ],
+    'shaltair': [
+        (('a',), ('forsin',), 'saltair@psalter', False),  # IR-CS-087
+    ],
+    'smera': [
+        (('fuarus',), ('imdha',), 'smér', False),  # IR-CS-029
+    ],
+    'suil': [
+        (('sin',), ('dech',), 'suil@before', False),  # IR-CS-011
+    ],
+    't-art': [
+        (('in',), ('amnas',), 'art', False),  # IR-CS-050
+    ],
+    't-ech': [
+        (('in',), ('bocóidech',), 'ech', False),  # IR-CS-109
+    ],
+    't-echt': [
+        (('in',), ('dosom',), 'écht', False),  # IR-CS-179
+    ],
+    'thes': [
+        (('na',), (), 'tes@south', False),  # IR-CS-036
+        (('lendchaime',), ('ro',), 'tes@south', False),  # IR-CS-165
+    ],
+    'tibridis': [
+        (('cona',), ('usce',), 'dobeir@give-present', False),  # IR-CS-172
+    ],
+    'áed': [
+        ((), (), 'áed (name)', True),  # IR-CS-046
+    ],
+    'áilli': [
+        (('rempu',), ('do',), 'álaind', False),  # IR-CS-101
+    ],
+    'áith': [
+        (('neimhnech',), ('uillend-glas',), 'áith@sharp', False),  # IR-CS-107
+        (('claidim',), ('urnocht',), 'áith@sharp', False),  # IR-CS-108
+    ],
+    'ás': [
+        (('scíath',), ('gúallib',), 'ós', False),  # IR-CS-040
+    ],
+    'éistecht': [
+        (('tagra',), ('re',), 'éistecht@hearing', False),  # IR-CS-075
+    ],
+    'îor': [
+        (('lotair',), ('muir',), 'for', False),  # IR-CS-170
+    ],
+    'óengus': [
+        ((), (), 'óengus (name)', True),  # IR-CS-095
+    ],
+    'órda': [
+        (('slabrad',), ('claidim',), 'órda@golden', False),  # IR-CS-072
+    ],
+    'úathu': [
+        (('gaíthe',), ('chuccu',), 'ó', False),  # IR-CS-003
+    ],
+    'ḟálti': [
+        (('ind',), ('sin',), 'fáilte', False),  # IR-CS-010
+    ],
+    'ṅdiad': [
+        ((), (), 'diad (name)', True),  # IR-CS-039
+    ],
+    'ṅgabail': [
+        (('in',), ('bífed',), 'gabul', False),  # IR-CS-002
+    ],
+}
+
 def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
     """Lemmas for a word sequence: `lemz(w)` for each word, except that a form in CONTEXT_FORMS takes the
     lemma its preceding word selects (tig after isin / i / ina / dia … → tech 'house'). Stage C should use
     this rather than calling the lemmatizer word by word."""
     rules = CONTEXT_FORMS.get(lemz.lm.lang, {})
     out = []
+    normalized = [_ir_clean(w) for w in words] if lemz.lm.lang == "sga" else []
     for i, w in enumerate(words):
         lem = lemz(w)
         for prev, target in rules.get(w.lower(), ()):
             if i and words[i - 1].lower() in prev:
+                lem = target
+                break
+        if normalized:
+            for previous, following, target, capitalized in IR_REVIEWED_CONTEXT.get(normalized[i], ()):
+                if capitalized and not any(c.isupper() for c in w):
+                    continue
+                if previous and not any(normalized[max(0, i - len(p.split())):i] == p.split()
+                                        for p in previous):
+                    continue
+                if following and (i + 1 == len(words) or normalized[i + 1] not in following):
+                    continue
                 lem = target
                 break
         out.append(lem)
@@ -1248,7 +1647,8 @@ def welsh_lemmatizer(maps: CelticMappings, diplomatic: bool = False, **kw) -> Ce
 def is_function_lemma(lm: fm.LangMapping, lem: str) -> bool:
     """A lemma string all of whose parts are function words (no table row)."""
     fw = IR_FUNCTION if lm.lang == "sga" else CY_FUNCTION
-    return all(p in fw for p in lem.split("|"))
+    return all(p in fw or (lm.lang == "sga" and p in {"suil@before", "ós", "eter", "mani"})
+               for p in lem.split("|"))
 
 
 def content_of(lm: fm.LangMapping, lem: str, surface: str, lemz=None) -> bool:
@@ -1258,6 +1658,8 @@ def content_of(lm: fm.LangMapping, lem: str, surface: str, lemz=None) -> bool:
     two-letter forms that the lemmatizer `lemz` matched only after mutation
     stripping or by skeleton."""
     lang = "cy" if lm.lang == "cy" else "sga"
+    if lm.lang == "sga" and is_function_lemma(lm, lem):
+        return False
     if len(surface) <= 1 or is_function_word(surface, lang):
         return False
     if lem.startswith("?") and len(lem) <= 3:

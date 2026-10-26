@@ -43,6 +43,8 @@ import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from .other_mapping import contextual_lemma, homer_lemma, latin_lemma
+
 ROOT = Path(__file__).resolve().parent.parent
 RV_TEI = "raw/daughters/rigveda-vedaweb/extract/vedaweb-data-main/rigveda/TEI"
 HOMER = "raw/daughters/homer-perseus-agdt"
@@ -268,6 +270,9 @@ class Token:
     rel: str | None = None
     roots: frozenset = frozenset()
 
+    def __post_init__(self):
+        self.lemma = contextual_lemma(self.corpus, self.lemma, self.surface, self.locus)
+
 
 _RV_ID = re.compile(r'xml:id="b(\d+)_h(\d+)_(\d+)_zur_([a-z])_\d+"')
 _RV_F = re.compile(r'<f name="(surface|gra_lemma|gra_gramm|case|number|person|non-finite|tense)">\s*'
@@ -334,7 +339,7 @@ def load_homer(root: Path = ROOT) -> list[Token]:
                     pos = "adj"      # participles agree like adjectives
                 local[a.get("id", "")] = len(toks)
                 heads.append((len(toks), a.get("head", "")))
-                toks.append(Token("hom", a["lemma"], a.get("form", ""), f"{work} {line}",
+                toks.append(Token("hom", homer_lemma(a["lemma"], a.get("form", "")), a.get("form", ""), f"{work} {line}",
                                   {"line": f"{work} {line}", "sentence": f"{fn.stem[:15]}.{si}",
                                    "book": f"{work} {book}"},
                                   tag[0] in HOM_CONTENT, pos, _HOM_CASE.get(tag[7]), _HOM_NUM.get(tag[2]),
@@ -890,6 +895,7 @@ def load_latin(root: Path = ROOT) -> list[Token]:
             if upos == "VERB" and feats.get("VerbForm") == "Part":
                 pos = "adj"
             lemma = re.sub(r"\d+$", "", c[2])
+            lemma = latin_lemma(lemma, c[1], c[10:])
             toks.append(Token("lat", lemma, c[1], f"{work} {cite}",
                               {"line": f"{work} {cite}", "sentence": f"{work}.{sent}", "book": work},
                               upos in LAT_CONTENT, pos, _LAT_CASE.get(feats.get("Case", "").split(",")[0]),

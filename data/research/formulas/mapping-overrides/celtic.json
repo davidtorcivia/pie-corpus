@@ -2189,6 +2189,396 @@
    "lex_id": [],
    "erratum": "Old Welsh coret misses the cored rejection",
    "note": "Matasović EDPC p0228, *koret-: the cored family is probably a non-IE borrowing, with no secure PIE reconstruction; remove the *(s)ker- assignment to Old Welsh coret."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "adaig@night",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: adaig@night",
+   "note": "IR-CS-062; IR-CS-063; IR-CS-065; IR-CS-079; IR-CS-080. raw/daughters/celt-ucc/units.jsonl#G303000:#1:4; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:1495 s.v. adaig. The temporal construction selects night; the drive verb is a homograph. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "adaig@night",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: adaig@night",
+   "note": "IR-CS-062; IR-CS-063; IR-CS-065; IR-CS-079; IR-CS-080. raw/daughters/celt-ucc/units.jsonl#G303000:#1:4; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:1495 s.v. adaig. The temporal construction selects night; the drive verb is a homograph. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "aingel@angel",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: aingel@angel",
+   "note": "IR-CS-117; IR-CS-173. raw/daughters/celt-ucc/units.jsonl#G303000:#1:796; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:1576 s.v. aingel. The divine/heavenly referent is the Latin angel loan, not the bright adjective. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "aingel@angel",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: aingel@angel",
+   "note": "IR-CS-117; IR-CS-173. raw/daughters/celt-ucc/units.jsonl#G303000:#1:796; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:1576 s.v. aingel. The divine/heavenly referent is the Latin angel loan, not the bright adjective. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "airc@distress",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: airc@distress",
+   "note": "IR-CS-100. raw/daughters/celt-ucc/units.jsonl#G303000:#1:1117; raw/daughters/kaikki-all-20261021/split/irish.jsonl:12466 s.v. airc. Relief from distress and hardship selects need, not an ark. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "airc@distress",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: airc@distress",
+   "note": "IR-CS-100. raw/daughters/celt-ucc/units.jsonl#G303000:#1:1117; raw/daughters/kaikki-all-20261021/split/irish.jsonl:12466 s.v. airc. Relief from distress and hardship selects need, not an ark. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "arc@ark",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: arc@ark",
+   "note": "IR-CS-034. raw/daughters/celt-ucc/units.jsonl#G301041:#1:371; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:2684 s.v. áirc. Noah and his family enter the ark; the Latin loan is the appropriate sense. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "arc@ark",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: arc@ark",
+   "note": "IR-CS-034. raw/daughters/celt-ucc/units.jsonl#G301041:#1:371; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:2684 s.v. áirc. Noah and his family enter the ark; the Latin loan is the appropriate sense. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "brú@belly",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: brú@belly",
+   "note": "IR-CS-157. raw/daughters/celt-ucc/units.jsonl#G301035:#1/4/#1:316; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:637 s.v. brú. The dictionary paradigm has broinn; the shield is over the body, not a bank. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "brú@belly",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: brú@belly",
+   "note": "IR-CS-157. raw/daughters/celt-ucc/units.jsonl#G301035:#1/4/#1:316; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:637 s.v. brú. The dictionary paradigm has broinn; the shield is over the body, not a bank. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "cáer@berry",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: cáer@berry",
+   "note": "IR-CS-048; IR-CS-049. raw/daughters/celt-ucc/units.jsonl#G301041:#1:208; raw/daughters/kaikki-all-20261021/split/irish.jsonl:2888 s.v. caor. The food list and glowing-eye simile select berry/round object, not sheep. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "cáer@berry",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: cáer@berry",
+   "note": "IR-CS-048; IR-CS-049. raw/daughters/celt-ucc/units.jsonl#G301041:#1:208; raw/daughters/kaikki-all-20261021/split/irish.jsonl:2888 s.v. caor. The food list and glowing-eye simile select berry/round object, not sheep. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "cúan@harbour",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: cúan@harbour",
+   "note": "IR-CS-081. raw/daughters/celt-ucc/units.jsonl#G303000:#1:562; raw/daughters/kaikki-all-20261021/split/irish.jsonl:2044 s.v. cuan. The rock and approaching boat identify a harbour, not a litter of dogs. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "cúan@harbour",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: cúan@harbour",
+   "note": "IR-CS-081. raw/daughters/celt-ucc/units.jsonl#G303000:#1:562; raw/daughters/kaikki-all-20261021/split/irish.jsonl:2044 s.v. cuan. The rock and approaching boat identify a harbour, not a litter of dogs. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "dias@pair",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: dias@pair",
+   "note": "IR-CS-006; IR-CS-007; IR-CS-008. raw/daughters/celt-ucc/units.jsonl#G301035:#1/1:12; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:1889 s.v. dias. The passage counts people in pairs; the god mapping is a false base analysis. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "dias@pair",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: dias@pair",
+   "note": "IR-CS-006; IR-CS-007; IR-CS-008. raw/daughters/celt-ucc/units.jsonl#G301035:#1/1:12; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:1889 s.v. dias. The passage counts people in pairs; the god mapping is a false base analysis. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "dobeir@give-present",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "Reviewed Irish sense/stem: dobeir@give-present",
+   "note": "IR-CS-172. raw/daughters/celtic-journal-eriu-1904-1928/eriu_1911_5_djvu.txt:L7628-L7631; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:2053 s.v. dobeir. The negative subordinate clause has water, forest and earth withholding their produce; use the present-system giving stem."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "dobeir@give-present",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "erratum": "Reviewed Irish sense/stem: dobeir@give-present",
+   "note": "IR-CS-172. raw/daughters/celtic-journal-eriu-1904-1928/eriu_1911_5_djvu.txt:L7628-L7631; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:2053 s.v. dobeir. The negative subordinate clause has water, forest and earth withholding their produce; use the present-system giving stem."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "dána@bold",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: dána@bold",
+   "note": "IR-CS-116. raw/daughters/celt-ucc/units.jsonl#G303000:#1:567; raw/daughters/kaikki-all-20261021/split/irish.jsonl:20010 s.v. dána. The co-adverbial describes bold fighting, not gifts. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "dána@bold",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: dána@bold",
+   "note": "IR-CS-116. raw/daughters/celt-ucc/units.jsonl#G303000:#1:567; raw/daughters/kaikki-all-20261021/split/irish.jsonl:20010 s.v. dána. The co-adverbial describes bold fighting, not gifts. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "eó@pin",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: eó@pin",
+   "note": "IR-CS-033. raw/daughters/celt-ucc/units.jsonl#G301035:#1/39:249; raw/daughters/kaikki-all-20261021/split/irish.jsonl:40 s.v. eo. The bronze item in a cloak is a pin, not salmon or yew. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "eó@pin",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: eó@pin",
+   "note": "IR-CS-033. raw/daughters/celt-ucc/units.jsonl#G301035:#1/39:249; raw/daughters/kaikki-all-20261021/split/irish.jsonl:40 s.v. eo. The bronze item in a cloak is a pin, not salmon or yew. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "find@white",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: find@white",
+   "note": "IR-CS-083. raw/daughters/celt-ucc/units.jsonl#G302000:#1/20:1; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:113 s.v. find. White contrasts with black and speckled stones, not knowing. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "find@white",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: find@white",
+   "note": "IR-CS-083. raw/daughters/celt-ucc/units.jsonl#G302000:#1/20:1; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:113 s.v. find. White contrasts with black and speckled stones, not knowing. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "féile@modesty",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: féile@modesty",
+   "note": "IR-CS-122. raw/daughters/celt-ucc/units.jsonl#G303009:#1/10/21:1; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:2068 s.v. féile. A list of virtues requires the modesty noun, not the existential verb. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "féile@modesty",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: féile@modesty",
+   "note": "IR-CS-122. raw/daughters/celt-ucc/units.jsonl#G303009:#1/10/21:1; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:2068 s.v. féile. A list of virtues requires the modesty noun, not the existential verb. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "gairid@short",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: gairid@short",
+   "note": "IR-CS-111. raw/daughters/celt-ucc/units.jsonl#G303000:#1:35; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:1198 s.v. garait. The copular predicate describes the duration of conversation, not calling. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "gairid@short",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: gairid@short",
+   "note": "IR-CS-111. raw/daughters/celt-ucc/units.jsonl#G303000:#1:35; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:1198 s.v. garait. The copular predicate describes the duration of conversation, not calling. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "gráin@fear",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: gráin@fear",
+   "note": "IR-CS-084; IR-CS-085; IR-CS-086. raw/daughters/celt-ucc/units.jsonl#G303000:#1:1170; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:2916 s.v. gráin. Fear is coordinated with other fear nouns or felt toward the threatening creature. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "gráin@fear",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: gráin@fear",
+   "note": "IR-CS-084; IR-CS-085; IR-CS-086. raw/daughters/celt-ucc/units.jsonl#G303000:#1:1170; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:2916 s.v. gráin. Fear is coordinated with other fear nouns or felt toward the threatening creature. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "ingen@nail",
+   "lex_id": [
+    "pie-lex-h3noxghs"
+   ],
+   "erratum": "Reviewed Irish sense/stem: ingen@nail",
+   "note": "IR-CS-042; IR-CS-043. raw/daughters/celt-ucc/units.jsonl#G301044:#1/100:4; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:683 s.v. ingen. Animal feet/hooves select the nail/claw homograph rather than daughter."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "ingen@nail",
+   "lex_id": [
+    "pie-lex-h3noxghs"
+   ],
+   "erratum": "Reviewed Irish sense/stem: ingen@nail",
+   "note": "IR-CS-042; IR-CS-043. raw/daughters/celt-ucc/units.jsonl#G301044:#1/100:4; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:683 s.v. ingen. Animal feet/hooves select the nail/claw homograph rather than daughter."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "lia@stone",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: lia@stone",
+   "note": "IR-CS-097. raw/daughters/celt-ucc/units.jsonl#G303000:#1:958; raw/daughters/kaikki-all-20261021/split/irish.jsonl:14327 s.v. liag. A memorial stone is raised and inscribed, not a comparative quantity. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "lia@stone",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: lia@stone",
+   "note": "IR-CS-097. raw/daughters/celt-ucc/units.jsonl#G303000:#1:958; raw/daughters/kaikki-all-20261021/split/irish.jsonl:14327 s.v. liag. A memorial stone is raised and inscribed, not a comparative quantity. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "luid",
+   "lex_id": [
+    "pie-lex-h1ludhet"
+   ],
+   "erratum": "Reviewed Irish sense/stem: luid",
+   "note": "IR-CS-001; IR-CS-169. raw/daughters/celt-ucc/units.jsonl#G301035:#1/3:89; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:3412 s.v. téit. The plural preterite belongs to the suppletive arrival stem, not loit or the present stem of téit."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "luid",
+   "lex_id": [
+    "pie-lex-h1ludhet"
+   ],
+   "erratum": "Reviewed Irish sense/stem: luid",
+   "note": "IR-CS-001; IR-CS-169. raw/daughters/celt-ucc/units.jsonl#G301035:#1/3:89; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:3412 s.v. téit. The plural preterite belongs to the suppletive arrival stem, not loit or the present stem of téit."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "légend@learning",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: légend@learning",
+   "note": "IR-CS-130. raw/daughters/celtic-journal-eriu-1904-1928/eriu_1911_5_djvu.txt:L7498-L7499; raw/daughters/kaikki-all-20261021/split/irish.jsonl:22047 s.v. léann. The genitive after mac identifies a student, not a stone. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "légend@learning",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: légend@learning",
+   "note": "IR-CS-130. raw/daughters/celtic-journal-eriu-1904-1928/eriu_1911_5_djvu.txt:L7498-L7499; raw/daughters/kaikki-all-20261021/split/irish.jsonl:22047 s.v. léann. The genitive after mac identifies a student, not a stone. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "messu@worse",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: messu@worse",
+   "note": "IR-CS-026. raw/daughters/celt-ucc/units.jsonl#G301035:#1/15:18; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:994 s.v. olc. Comparative evaluation is worse, not a finite measuring verb; keep the suppletive stem separate. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "messu@worse",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: messu@worse",
+   "note": "IR-CS-026. raw/daughters/celt-ucc/units.jsonl#G301035:#1/15:18; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:994 s.v. olc. Comparative evaluation is worse, not a finite measuring verb; keep the suppletive stem separate. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "ord@office",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: ord@office",
+   "note": "IR-CS-073; IR-CS-074. raw/daughters/celt-ucc/units.jsonl#G303000:#1:1075; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:305 s.v. ord. Clerics perform their office and hours; the order sense is a Latin loan. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "ord@office",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: ord@office",
+   "note": "IR-CS-073; IR-CS-074. raw/daughters/celt-ucc/units.jsonl#G303000:#1:1075; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:305 s.v. ord. Clerics perform their office and hours; the order sense is a Latin loan. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "saltair@psalter",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: saltair@psalter",
+   "note": "IR-CS-087. raw/daughters/celt-ucc/units.jsonl#G302014:#1/#1:34; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:3131 s.v. saltair. The bishop prays with his psalter on the shore; not an altar. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "saltair@psalter",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: saltair@psalter",
+   "note": "IR-CS-087. raw/daughters/celt-ucc/units.jsonl#G302014:#1/#1:34; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:3131 s.v. saltair. The bishop prays with his psalter on the shore; not an altar. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "suil@before",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: suil@before",
+   "note": "IR-CS-011. raw/daughters/celt-ucc/units.jsonl#G301041:#1:212; raw/daughters/kaikki-all-20261021/split/irish.jsonl:688 s.v. sul. The word introduces a temporal clause rather than an eye noun. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "suil@before",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: suil@before",
+   "note": "IR-CS-011. raw/daughters/celt-ucc/units.jsonl#G301041:#1:212; raw/daughters/kaikki-all-20261021/split/irish.jsonl:688 s.v. sul. The word introduces a temporal clause rather than an eye noun. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "tes@south",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: tes@south",
+   "note": "IR-CS-036; IR-CS-165. raw/daughters/celt-ucc/units.jsonl#G301041:#1/t#4:15; raw/daughters/kaikki-all-20261021/split/irish.jsonl:4747 s.v. theas. The geographic north/south contrast selects the adverb; theas explicitly continues Middle Irish tess and Old Irish dess in the dictionary. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "tes@south",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: tes@south",
+   "note": "IR-CS-036; IR-CS-165. raw/daughters/celt-ucc/units.jsonl#G301041:#1/t#4:15; raw/daughters/kaikki-all-20261021/split/irish.jsonl:4747 s.v. theas. The geographic north/south contrast selects the adverb; theas explicitly continues Middle Irish tess and Old Irish dess in the dictionary. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "áith@sharp",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: áith@sharp",
+   "note": "IR-CS-107; IR-CS-108. raw/daughters/celt-ucc/units.jsonl#G303000:#1:489; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:593 s.v. áith. The adjective qualifies a spear or sword; the kiln etymology is the wrong homograph. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "áith@sharp",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: áith@sharp",
+   "note": "IR-CS-107; IR-CS-108. raw/daughters/celt-ucc/units.jsonl#G303000:#1:489; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:593 s.v. áith. The adjective qualifies a spear or sword; the kiln etymology is the wrong homograph. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "éistecht@hearing",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: éistecht@hearing",
+   "note": "IR-CS-075; IR-CS-076. raw/daughters/celt-ucc/units.jsonl#G302025:#1/75:1; raw/daughters/kaikki-all-20261021/split/irish.jsonl:1018 s.v. éisteacht. The verbal noun is listening; the base analysis through techt is spurious. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "éistecht@hearing",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: éistecht@hearing",
+   "note": "IR-CS-075; IR-CS-076. raw/daughters/celt-ucc/units.jsonl#G302025:#1/75:1; raw/daughters/kaikki-all-20261021/split/irish.jsonl:1018 s.v. éisteacht. The verbal noun is listening; the base analysis through techt is spurious. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "órda@golden",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: órda@golden",
+   "note": "IR-CS-072. raw/daughters/celt-ucc/units.jsonl#G303000:#1:822; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:952 s.v. ór. The adjective describes golden chains; it is derived from the Latin gold loan. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "órda@golden",
+   "lex_id": [],
+   "erratum": "Reviewed Irish sense/stem: órda@golden",
+   "note": "IR-CS-072. raw/daughters/celt-ucc/units.jsonl#G303000:#1:822; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:952 s.v. ór. The adjective describes golden chains; it is derived from the Latin gold loan. No unsupported PIE equation is supplied."
   }
  ],
  "form": [

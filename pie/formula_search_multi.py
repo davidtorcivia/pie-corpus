@@ -51,6 +51,7 @@ from pathlib import Path
 from . import formula_search as fs
 from . import mapping as _mp
 from .formula_search import PieIndex, Token, pie_key
+from .other_mapping import dcs_lemma, hittite_selection
 
 ROOT = fs.ROOT
 KD = "raw/daughters"
@@ -1101,7 +1102,7 @@ def load_dcs(texts=DCS_VEDIC, corpus: str = "av", root: Path = ROOT) -> list[Tok
                     if upos == "VERB" and feats.get("VerbForm") == "Part":
                         pos = "adj"
                     ci = cites[nsent - 1] if 0 < nsent <= len(cites) else {}
-                    toks.append(Token(corpus, c[2], c[1], f"{chapter}.s{nsent}",
+                    toks.append(Token(corpus, dcs_lemma(c[2], c[1]), c[1], f"{chapter}.s{nsent}",
                                       {"sentence": f"{chapter}|{sent}", "chapter": chapter, "book": t,
                                        "sent_id": sent, "verse": ci.get("verse", ""), "cite": ci.get("cite", ""),
                                        "verse_status": ci.get("status", "unmapped")},
@@ -1289,7 +1290,7 @@ def load_hittite(root: Path = ROOT, corpus: str = "hit") -> list[Token]:
                 continue
             for wm in _HIT_W.finditer(piece):
                 a = dict(re.findall(r'([\w:]+)="([^"]*)"', wm[1]))
-                r = hit_analysis(a)
+                r = hit_analysis(hittite_selection(a, *cur))
                 if not r:
                     continue
                 lem, morph, cls = r
@@ -1794,13 +1795,21 @@ EDDA = "raw/daughters/edda-fj1926/smundareddaeddu00jngoog_djvu.txt"
 
 def edda_lines(root: Path = ROOT) -> list[tuple[str, dict, str]]:
     """Finnur Jónsson 1926 (PD), OCR. Verse lines between the first poem
-    header and the name index; the poem is the running header (capitals),
+    header and the commentary; the poem is the running header (capitals),
     the stanza the 'N.' prefix. Lines with digits only, headers and lines
-    with OCR debris (no letters, ≥ 30% non-letters) are dropped."""
+    with OCR debris (no letters, ≥ 30% non-letters) are dropped. Reviewed
+    introductory prose spans are excluded and reset the owning poem."""
+    from pie.material_units import edda_region
     lines = (root / EDDA).read_text("utf-8", errors="replace").splitlines()
     out, poem, stanza, started = [], None, "0", False
     for i, raw in enumerate(lines):
         s = raw.strip()
+        if re.fullmatch(r"Nokkrar\s+skýr[íi]ngar\.", s):
+            break                         # commentary follows the final poem
+        owner, prose = edda_region(i + 1)
+        if prose:
+            poem, stanza = owner, "0"
+            continue
         if not s:
             continue
         hdr = re.match(r"^([A-ZÁÉÍÓÚÝÞÆÖ][A-ZÁÉÍÓÚÝÞÆÖÐ\- ]{3,})\.\s*\S{0,8}\s*$", s)
@@ -1814,10 +1823,12 @@ def edda_lines(root: Path = ROOT) -> list[tuple[str, dict, str]]:
                 started = True
             if started:
                 poem = name.title()
+                if name.startswith(("GOÐ", "GOB", "GUÐ")) and "EN" in name and "FORNA" in name:
+                    poem = "Guðrúnarkviða en forna"
             continue
         if not started or re.fullmatch(r"[\d\W]+", s):
             continue
-        m = re.match(r"^(?:[A-ZÁÉÍÓÚÞ][a-zþð]*\.\s*kv[.,]\s*)?(\d+)\.\s+(.*)$", s)
+        m = re.match(r"^(?:[A-ZÁÉÍÓÚÞ][a-zþð]*\.\s*kv[.,]\s*|[AB]\.\s*)?(\d+)\.\s+(.*)$", s)
         if m:
             stanza, s = m[1], m[2]
         letters = sum(c.isalpha() for c in s)
@@ -1955,6 +1966,7 @@ def grein_lines(lemmatize, root: Path = ROOT, min_share: float = 0.6) -> list[tu
     English (this drops the German apparatus, page furniture and the worst
     OCR); Grein's Beowulf is skipped (the Gutenberg text has it). Locus:
     volume, OCR line, and the last poem header seen."""
+    from pie.material_units import grein_apparatus
     out = []
     for vol, fn in GREIN_VOLS.items():
         lines = (root / GREIN_DIR / fn).read_text("utf-8", errors="replace").splitlines()
@@ -1962,6 +1974,8 @@ def grein_lines(lemmatize, root: Path = ROOT, min_share: float = 0.6) -> list[tu
         beo_span = (beo[0] - 5, beo[-1] + 120) if beo else (-1, -1)
         poem = "?"
         for i, raw in enumerate(lines):
+            if grein_apparatus(raw):
+                continue
             if beo_span[0] <= i <= beo_span[1]:
                 continue
             h = re.match(r"^\s*\d*\s*([A-ZÆ][A-ZÆ ,.]{3,}?)\.?\s*\d*\s*$", raw)

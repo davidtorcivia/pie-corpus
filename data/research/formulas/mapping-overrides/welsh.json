@@ -1,0 +1,22 @@
+{
+ "note": "Stage C-S reviewed non-Irish corrections; see error-verdicts-other.jsonl.",
+ "lemma": [
+  {
+   "corpus": "cy",
+   "lemma": "maur",
+   "lex_id": [
+    "pie-lex-meh2ros"
+   ],
+   "note": "White Book Mabinogion OCR L21480 vaur; Matasović EDPC s.v. *māro-, p.256 (file p0272). Great, not wet; spelling maur is explicitly attested.",
+   "erratum": "White Book Mabinogion OCR L21480 vaur; Matasović EDPC s.v. *māro-, p.256 (file p0272). Great, not wet; spelling maur is explicitly attested."
+  },
+  {
+   "corpus": "cy",
+   "lemma": "cau@close",
+   "lex_id": [],
+   "note": "White Book source L17239 kae, verbal command concerning the eye; Spurrell Welsh-English dictionary s.v. cau (https://deriv.nls.uk/dcn23/7661/76612002.23.pdf). Noun enclosure mapping removed at this token; no new etymology asserted.",
+   "erratum": "White Book source L17239 kae, verbal command concerning the eye; Spurrell Welsh-English dictionary s.v. cau (https://deriv.nls.uk/dcn23/7661/76612002.23.pdf). Noun enclosure mapping removed at this token; no new etymology asserted."
+  }
+ ],
+ "form": []
+}

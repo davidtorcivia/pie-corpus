@@ -189,6 +189,31 @@ def _level(body: str, lv: str) -> str:
     return menota_decode(_TAGS.sub("", m.group(1))).strip()
 
 
+def reviewed_menota_lemma(lemma: str | None, msa: str, form: str,
+                          doc: str = "", previous: str = "") -> str | None:
+    """Keep reviewed names and homonyms separate using source annotation.
+
+    Evidence and loci: stageCS/error-verdicts-other.jsonl. Do not infer a
+    name from capitalization alone, or replace a common-word homonym.
+    """
+    names = {"einarr", "helga", "helgi", "bera", "yngvarr", "haraldr", "oddr", "bjǫrn"}
+    if lemma in names and msa.startswith("xNP"):
+        return lemma + " (name)"
+    if lemma == "þverá" and form == "Þverá" and doc == "AM-132-fol-Droplaugarsona-saga":
+        return lemma + " (name)"
+    if lemma == "máni" and doc == "AM-113-b-fol" and previous == "Þorkels":
+        return lemma + " (name)"
+    if lemma == "egg" and msa.startswith("xNC") and "gF" in msa.split():
+        return "egg@edge"
+    if lemma == "nema" and msa.startswith("xVB"):
+        return "nema@take"
+    if lemma == "vár" and msa.startswith("xNC"):
+        return "vár@spring"
+    if lemma == "niðr" and msa.startswith("xNC"):
+        return "niðr@kinsman"
+    return lemma
+
+
 def menota_words(path: Path, doc: str) -> list[MenotaWord]:
     """The <w> elements of one Menota file in text order, with folio/line
     (pb/lb), stanza (lg n) and a sentence counter (a full stop, colon,
@@ -204,6 +229,7 @@ def menota_words(path: Path, doc: str) -> list[MenotaWord]:
             lem = menota_decode(a["lemma"]) if "lemma" in a else None
             msa = a.get("me:msa", "")
             form = _level(body, "norm") or _level(body, "dipl")
+            lem = reviewed_menota_lemma(lem, msa, form, doc, out[-1].form if out else "")
             out.append(MenotaWord(doc, lem, msa[1:3] if msa.startswith("x") else "", form, folio, line, stanza, sent))
         elif m.group(3) is not None:
             p = menota_decode(_TAGS.sub("", m.group(3)))
@@ -242,7 +268,8 @@ def load_menota(root: Path = ROOT, languages=WEST_NORSE, min_share: float = 2 / 
     document without lemmas, the form-table lemma of its normalized or
     diplomatic form (a form key seen at least `min_votes` times in the
     lemmatized documents, its top lemma holding `min_share` of the votes;
-    otherwise '?' + form key). Token.surface is left empty."""
+    otherwise '?' + form key). Surface forms remain in memory for reviewed
+    token-level sense corrections; mapping tables contain no running text."""
     root = Path(root)
     docs = menota_documents(root, languages)
     words = {d: menota_words(root / MENOTA / "xml" / f"{d}.xml", d) for d, _ in docs}
@@ -276,7 +303,7 @@ def load_menota(root: Path = ROOT, languages=WEST_NORSE, min_share: float = 2 / 
             u = {"sentence": f"{d}.{w.sent}", "folio": f"{d}.{w.folio}", "doc": d, "lemma_source": src, "tag": msa}
             if w.stanza:
                 u["stanza"] = f"{d}.{w.stanza}"
-            toks.append(Token("menota", lem, "", f"{d} {w.folio}:{w.line}".strip(), u, content, pos))
+            toks.append(Token("menota", lem, w.form, f"{d} {w.folio}:{w.line}".strip(), u, content, pos))
     return toks
 
 # ---------------------------------------------------------------- IcePaHC
@@ -1001,6 +1028,8 @@ def map_lemma(maps: GermanicMappings, corpus: str, lemma: str, loose: dict,
     alternative as well as (by the caller) to the whole string."""
     lang = CORPORA[corpus]["lang"]
     ov = ov or {}
+    if lemma.endswith(" (name)"):
+        return None, "name-unmapped"
     if lemma.startswith("?"):
         return None, "unknown"
     parts = [p for p in lemma.split("|") if p]

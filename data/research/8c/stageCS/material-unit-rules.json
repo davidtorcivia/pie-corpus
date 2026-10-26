@@ -1,0 +1,137 @@
+[
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimch3vyp36_djvu.txt",
+    "start": 22792,
+    "end": 22796,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports.jsonl:94",
+    "reason": "Editorial/biographical prose, not a bylina verse witness"
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimch3vyp51_djvu.txt",
+    "start": 20601,
+    "end": 20608,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports.jsonl:95",
+    "reason": "Editorial/biographical prose, not a bylina verse witness"
+  },
+  {
+    "corpus": "celtic",
+    "source": "raw/daughters/celtic-journal-revue-celtique-1870-1928/revueceltique07pari_djvu.txt",
+    "start": 16269,
+    "end": 16269,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports.jsonl:109",
+    "reason": "Editorial list of cited verb forms, not a continuous Irish passage"
+  },
+  {
+    "corpus": "celtic",
+    "source": "raw/daughters/celtic-journal-eriu-1904-1928/eriu_1910_4_djvu.txt",
+    "start": 9175,
+    "end": 9177,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports.jsonl:111",
+    "reason": "Apparatus variants keyed to section 27, not continuous narrative"
+  },
+  {
+    "corpus": "celtic",
+    "source": "raw/daughters/celtic-journal-revue-celtique-1870-1928/revueceltique10pari_djvu.txt",
+    "start": 11521,
+    "end": 11521,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports.jsonl:112",
+    "reason": "Editorial dictionary reference, not a continuous Irish source passage"
+  },
+  {
+    "corpus": "celtic",
+    "source": "raw/daughters/celtic-journal-eriu-1904-1928/eriu_1910_4_djvu.txt",
+    "start": 8699,
+    "end": 8701,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports.jsonl:114",
+    "reason": "Editorial apparatus of variants labelled L"
+  },
+  {
+    "corpus": "celtic",
+    "source": "raw/daughters/celtic-journal-revue-celtique-1870-1928/revueceltique14pari_djvu.txt",
+    "start": 22341,
+    "end": 22343,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports.jsonl:116",
+    "reason": "This is an editorial list of verbal forms with references, not continuous narrative."
+  },
+  {
+    "corpus": "celtic",
+    "source": "raw/daughters/oldirish-irische-texte-1880-1909/irischetextemit00stokgoog_djvu.txt",
+    "start": 25882,
+    "end": 25888,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports.jsonl:116",
+    "reason": "Editorial textual comparison containing German instructions and Irish variants."
+  },
+  {
+    "corpus": "celtic",
+    "source": "raw/daughters/oldirish-irische-texte-1880-1909/irischetextemit00stokgoog_djvu.txt",
+    "start": 13233,
+    "end": 13235,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports.jsonl:116",
+    "reason": "German grammatical/editorial commentary quoting Irish variants."
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/11016812bsb_djvu.txt",
+    "start": 12349,
+    "end": 12352,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports.jsonl:117",
+    "reason": "Lexical/editorial Russian discussion, not a bylina verse."
+  },
+  {
+    "corpus": "celtic",
+    "source": "raw/daughters/celtic-journal-revue-celtique-1870-1928/revueceltique13pari_djvu.txt",
+    "start": 22520,
+    "end": 22524,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports.jsonl:118",
+    "reason": "An editorial paradigm/list of preterite forms."
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimvyp1pesn13_djvu.txt",
+    "start": 14916,
+    "end": 14922,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports.jsonl:119",
+    "reason": "Editorial enumeration of episodes, not an epic verse."
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-hilferding-1894-archiveorg/sbornikotdelenijarusskogojazykaislovesno92_djvu.txt",
+    "start": 8616,
+    "end": 8621,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports.jsonl:139",
+    "reason": "Editorial prose describing an informant, not an epic verse unit."
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimch2pesni36_djvu.txt",
+    "start": 18509,
+    "end": 18513,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports.jsonl:154",
+    "reason": "Exclude this editorial explanatory note from the verse corpus."
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/11016812bsb_djvu.txt",
+    "start": 6392,
+    "end": 6394,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports.jsonl:155",
+    "reason": "Exclude the editorial metrical correction from the verse corpus."
+  }
+]

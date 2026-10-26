@@ -1280,7 +1280,10 @@ def byliny_units(root: Path = ROOT):
     Hilferding byliny), every verse line; and the archive.org OCR of Hilferding vols. 2-3, Kireevsky
     vyp. 1, 4-10 and Rybnikov pts. 1-4, OCR lines that look like verse: 2-8 words, ≥ 85% Cyrillic
     letters, no number of two or more digits, no line-final hyphen (prose commentary, headers and
-    indexes mostly fail this). Rybnikov pt. I is in both the wikisource and the OCR set."""
+    indexes mostly fail this). Reviewed editorial source spans are excluded by
+    material_units; this is not a claim that all remaining OCR is verse.
+    Rybnikov pt. I is in both the wikisource and the OCR set."""
+    from pie.material_units import excluded_source
     root = Path(root)
     p = root / KD / "russian-byliny-wikisource/texts-plaintext.txt"
     for pid, title, i, line in _plaintext_songs(p):
@@ -1291,7 +1294,7 @@ def byliny_units(root: Path = ROOT):
         for fp in paths:
             stem = fp.stem.replace("_djvu", "")
             for i, line in enumerate(fp.read_text("utf-8", errors="replace").splitlines()):
-                if _verse_like(line):
+                if _verse_like(line) and not excluded_source("byliny", fp.name, i + 1):
                     yield (f"{stem}:{i + 1}", {"page_file": f"{d}/{stem}", "line": f"{stem}:{i + 1}",
                                                "source": d}, line)
 

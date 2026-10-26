@@ -217,7 +217,8 @@ def celtic_rows(root: Path = ROOT, max_date: int | None = None, notes: dict | No
                     notes["celtic_late_units_skipped"] = notes.get("celtic_late_units_skipped", 0) + 1
                 continue
             out.append(d)
-    return out
+    from pie.material_units import repair_celtic_rows
+    return repair_celtic_rows(out)
 
 
 def celtic_corpus(d: dict) -> str:
@@ -602,6 +603,8 @@ def load_extra(root: Path, lex: list, gmap: dict, log=print) -> tuple[dict, dict
 
 def _cached(cache_dir, name, fn):
     if cache_dir:
+        if name == "stageB" or name.startswith(("celtic-", "bsl")):
+            name += "-material-v2"
         p = Path(cache_dir) / f"stagec-cache-{name}.pkl"
         if p.exists():
             return pickle.loads(p.read_bytes())
