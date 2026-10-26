@@ -1,4 +1,4 @@
-"""Secure check v2 (pie/tier2_secure.py) on small fixtures: no tables or dumps from disk."""
+"""Secure check v2 (pie/tier2_secure.py) on fixtures and the production mapping population."""
 
 from pie.tier2_secure import SecureChecker, plan_compound_ids
 
@@ -210,7 +210,8 @@ def test_agent_noun_types():
     assert [agent_type_cited("sa", w) for w in ("dātā́", "dātár-", "janitā́", "janitṛ́")] == ["suffix"] * 4
     assert [agent_type_cited("sa", w) for w in ("dā́tā", "jánitā", "dā́tāraḥ")] == ["root"] * 3
     assert agent_type_cited("grc", "δωτῆρες") == agent_type_cited("grc", "δωτήρ") == "suffix"
-    assert agent_type_cited("grc", "δῶτορ") == agent_type_cited("la", "genitor") == "root"
+    assert agent_type_cited("grc", "δῶτορ") == "root"
+    assert agent_type_cited("la", "genitor") is None
     # no accent, no grade: no evidence (DCS dātṛ, Av. dātārō, Ved. śrávas-)
     assert {agent_type_cited("sa", "dātṛ"), agent_type_cited("ae", "dātārō"), agent_type_cited("sa", "śrávas-")} == {None}
 
@@ -240,9 +241,78 @@ def test_suffix_accented_data_is_not_exact_for_root_accented_deh3tor():
 
 
 def test_janitar_is_not_exact_for_gjenh1tor():
-    # sky-father-011: Ved. janitā́ is the suffix-accented *ǵenh₁tér-; Lat. genitor shows the o-grade *-tor-
+    # sky-father-011: Ved. janitā́ is the suffix-accented *ǵenh₁tér-; Lat. genitor has generalized -tor- and cannot decide the type
     refs = [ref("Vedic", ["janitár-"], ["janitā́"]), ref("Latin", ["genitor"], ["genitor"])]
     c = form_checker().check("pie-lex-gjenh1toxr", refs)
     assert c["exact_branches"] == ["It"] and c["root_branches"] == ["II"] and c["level"] == "root"
-    # the same words are root level for the suffix-accented sibling, which no table maps
-    assert form_checker().check("pie-lex-gjenh1texr", refs)["exact_branches"] == []
+    # The cited formation identifies the suffix-accented sibling despite the table head.
+    assert form_checker().check("pie-lex-gjenh1texr", refs)["exact_branches"] == ["II", "It"]
+
+
+import json
+from pathlib import Path
+
+import pytest
+
+from pie.realize import Lexicon
+from pie.tier2_secure import LANG_CODE, code_of, load_population
+
+
+@pytest.mark.parametrize("corpus,row_lang,lang,word,lid,branch", [
+    ("cy", "wlm", "Middle Welsh", "tad", "pie-lex-tata", "Ce"),
+    ("dainos", "lt", "Lithuanian", "diẽvas", "pie-lex-deywos", "BS"),
+    ("byliny", "ru", "Russian", "ма́ть", "pie-lex-meh2texr", "BS"),
+    ("vuk", "sh", "Serbian", "мати", "pie-lex-meh2texr", "BS"),
+])
+def test_new_languages_production_population(corpus, row_lang, lang, word, lid, branch):
+    code = LANG_CODE[lang]
+    assert code_of(corpus, row_lang) == code
+    pop = load_population(codes={code})
+    # With no lexicon reflexes or dictionary loader, this must use the real table.
+    ch = SecureChecker.from_population({lid: {"id": lid}}, pop)
+    result = ch.check(lid, [ref(lang, [word])])
+    assert result["exact_branches"] == [branch]
+    assert result["evidence"][branch]["via"] == f"table:{corpus}"
+
+
+@pytest.mark.parametrize("lang,form,roman,cited", [
+    ("Russian", "ма́ть", "matʹ", "мать"),
+    ("Serbian", "мати", "máti", "mati"),
+    ("Lithuanian", "duktė̃", None, "duktė"),
+    ("Welsh", "tâd", None, "tâd"),
+])
+def test_new_language_reflex_key_space(lang, form, roman, cited):
+    lid = "test-reflex"
+    name = "Serbo-Croatian" if lang == "Serbian" else lang
+    ch = SecureChecker({lid: {"reflexes": {name: [{"form": form, "roman": roman}]}}})
+    assert ch.check(lid, [ref(lang, [cited])])["exact_branches"]
+    assert not ch.check(lid, [ref(lang, ["unrelated"])])["exact_branches"]
+
+
+def test_shared_agents_production_corpus():
+    lx = Lexicon.load()
+    ch = SecureChecker.from_population(lx.entries, load_population())
+    root = Path(__file__).resolve().parents[1]
+    for cluster, lid, branches in [
+        ("poetics-gifts", "pie-lex-dh3texr", ["Gk", "II"]),
+        ("sky-father", "pie-lex-gjenh1texr", ["II", "It"]),
+    ]:
+        suffix = "007" if cluster == "poetics-gifts" else "011"
+        records = [json.loads(line) for line in (root / "corpus/tier2" / f"{cluster}.jsonl").read_text().splitlines()]
+        record = next(r for r in records if r["id"] == f"t2-{cluster}-{suffix}")
+        result = ch.check(lid, record["cognate_refs"])
+        assert result["level"] == "exact"
+        assert result["exact_branches"] == branches
+
+
+def test_agent_sibling_transfer_respects_type_and_derivation():
+    ch = form_checker()
+    lid = "pie-lex-gjenh1texr"
+    assert ch.check(lid, [ref("Vedic", ["jánitṛ-"])])["exact_branches"] == []
+    entries = {**FORM, "feminine": {"form": "ǵénh₁trih₂", "root_id": "pie-root-gjenh1-produce",
+                                  "reflexes": {"Sanskrit": [{"form": "jánitrī"}]}}}
+    ch = SecureChecker(entries)
+    assert not ch.check(lid, [ref("Vedic", ["jánitrī"])])["exact_branches"]
+    tables, _ = table_from_rows([row("av", "sa", "janitṛ", {"pie-lex-gjenh1toxr"},
+                                   path=["sa:janitṛ", "base:other"])])
+    assert not SecureChecker(FORM, tables).check(lid, [ref("Vedic", ["janitár-"])])["exact_branches"]

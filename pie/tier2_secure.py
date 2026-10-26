@@ -46,7 +46,7 @@ for one it removed in favour of a root (υἱός: *suHnús only root level). A 
 ({"senses": {word: gloss}}): a decision whose sense does not overlap does not apply. Reviewed 'form' rows
 send a cited surface form to its lemma first.
 Either way 'exact' means the same formation: an agent / kin noun in *-tor-/*-tér-
-whose cited daughter word shows the other type (Vedic accent, Greek / Latin suffix
+whose cited daughter word shows the other type (Vedic accent, Greek suffix
 grade: dātā́ and δωτῆρες against *déh₃tōr) is root level (formation_clash).
 
 Compounds ("compound:<type>:<first>+<second>"): a cited word counts for a branch
@@ -76,6 +76,8 @@ LANG_CODE = {
     "Greek": "grc", "Homeric Greek": "grc",
     "Latin": "la", "Umbrian": "xum", "Oscan": "xum",
     "Avestan": "ae", "Old Avestan": "ae", "Young Avestan": "ae",
+    "Welsh": "cy", "Middle Welsh": "cy", "Old Welsh": "cy", "Lithuanian": "lt",
+    "Russian": "ru", "Serbian": "sh", "Serbo-Croatian": "sh", "Croatian": "sh",
     "Hittite": "hit", "Old Irish": "sga", "Middle Irish": "sga",
     "Old Norse": "non", "Old Icelandic": "non", "Old English": "ang", "Gothic": "got",
     "Old Church Slavonic": "cu", "Old Russian": "cu", "Latvian": "lv", "Armenian": "xcl", "Old Armenian": "xcl",
@@ -91,6 +93,8 @@ LEX_NAMES = {
     "ae": ("Avestan", "Old Avestan", "Younger Avestan"), "non": ("Old Norse", "Old Icelandic", "Old West Norse"),
     "cu": ("Old Church Slavonic", "Old East Slavic", "Old Russian"), "xcl": ("Old Armenian",),
     "hit": ("Hittite",), "sga": ("Old Irish",), "ang": ("Old English",), "got": ("Gothic",), "lv": ("Latvian",),
+    "cy": ("Welsh", "Middle Welsh", "Old Welsh"), "lt": ("Lithuanian", "Old Lithuanian"),
+    "ru": ("Russian",), "sh": ("Serbo-Croatian", "Serbian", "Croatian"),
     "la": ("Latin", "Old Latin"), "xum": ("Umbrian",),
 }
 EXTRA_LEX_NAMES = {"Welsh": ("Welsh", "Middle Welsh", "Old Welsh"), "Luwian": ("Luwian", "Cuneiform Luwian",
@@ -110,7 +114,7 @@ BRANCH = {"II": ("Sanskrit", "Vedic", "Avestan", "Persian", "Indo-Aryan", "Irani
           "Gk": ("Greek", "Hellenic", "Mycenaean"), "It": ("Latin", "Italic", "Oscan", "Umbrian"),
           "Ce": ("Irish", "Welsh", "Celtic", "Gaulish", "Breton"),
           "Gm": ("Germanic", "Gothic", "Norse", "English", "German", "Saxon", "Icelandic"),
-          "BS": ("Slavic", "Slavonic", "Lithuanian", "Latvian", "Prussian", "Russian", "Baltic"),
+          "BS": ("Slavic", "Slavonic", "Lithuanian", "Latvian", "Prussian", "Russian", "Baltic", "Serbian", "Croatian"),
           "An": ("Hittite", "Luwian", "Anatolian", "Palaic", "Lycian"), "Arm": ("Armenian",),
           "To": ("Tocharian",), "Alb": ("Albanian",)}
 
@@ -168,6 +172,8 @@ def key(code: str | None, s: str) -> str:
         return fm.key_cu(s)
     if code == "hit":
         return fm.key_hit(s)
+    if code in ("cy", "lt", "ru", "sh"):
+        return mp._keyer(code)(s)
     if code in fm.KEYS:
         return fm.KEYS[code](s)
     s = _strip(s.lower()).replace("ḫ", "h")
@@ -251,8 +257,9 @@ DERIVED_MARKS = ("base:", "r2-tier:kaikki-chain", "r2-tier:privative", "kaikki-c
 
 # The two PIE agent-noun types are different formations (Tichy 1995; Lindeman): root-accented *-tor-
 # (o-grade suffix: *déh₃tōr, *ǵénh₁tōr) and suffix-accented *-tér- (e-grade: *ǵenh₁tḗr, *ph₂tḗr).
-# Vedic keeps the accent (dā́tā vásu 'giving goods' ~ dātā́ vásūnām 'giver of goods'), Greek and Latin
-# the suffix grade (δώτωρ, -τορ- ~ δωτήρ, -τῆρ-; Lat. -tor). Avestan, Germanic etc. show neither:
+# Vedic keeps the accent (dā́tā vásu 'giving goods' ~ dātā́ vásūnām 'giver of goods'), Greek keeps
+# the suffix grade (δώτωρ, -τορ- ~ δωτήρ, -τῆρ-). Latin generalized -tor- and, like Avestan,
+# does not distinguish the two types (tier2-review-r5 §3). Germanic etc. show neither:
 # a word there is not checked. Keys drop accents, so the cited string is read as written.
 _ACUTE, _SYLLABIC = "́", ("̥", "̣")
 
@@ -298,11 +305,11 @@ def agent_type_cited(code: str | None, s: str) -> str | None:
         if not ts or not acc:
             return None                 # unaccented (DCS, epic): no evidence either way
         return "suffix" if acc[0] > ts[-1] else "root"
-    if code in ("grc", "la"):
-        k = _strip(s).replace("ς", "σ") if code == "grc" else _strip(s)
-        m = list(re.finditer(r"τ([ηεωο])ρ" if code == "grc" else r"t([eo])r", k))
+    if code == "grc":
+        k = _strip(s).replace("ς", "σ")
+        m = list(re.finditer(r"τ([ηεωο])ρ", k))
         if m:
-            return "suffix" if m[-1].group(1) in "ηεe" else "root"
+            return "suffix" if m[-1].group(1) in "ηε" else "root"
     return None
 
 
@@ -316,7 +323,7 @@ def _rec(ids, path, source, derived=False):
 LIVE_CORPUS_CODE = {"rv": "sa", "hom": "grc", "lat": "la", "orv": "cu"}
 # Table row languages read under another code. Rebuilt CELT override rows use
 # lang="celt"; their decisions must still govern Irish evidence routes.
-LANG_ALIAS = {"mga": "sga", "celt": "sga", "orv": "cu"}
+LANG_ALIAS = {"mga": "sga", "celt": "sga", "orv": "cu", "wlm": "cy", "owl": "cy", "sr": "sh", "hr": "sh"}
 CHECK_CODES = frozenset(c for c in LANG_CODE.values() if c)
 
 
@@ -812,7 +819,7 @@ class SecureChecker:
                     continue
                 if L in names:
                     f = r.get("form") or ""
-                    if code not in ("grc", "cu") and r.get("roman") and (code in ("sa", "hit", "ae", "xcl", "got")
+                    if code not in ("grc", "cu", "ru", "sh") and r.get("roman") and (code in ("sa", "hit", "ae", "xcl", "got")
                                                                         or not re.search(r"[a-zA-Z]", f)):
                         f = r["roman"]          # transliterate non-Latin scripts (Luw. 𒉺𒋫𒀀𒀸 → patās)
                     if f and not f.startswith("-"):
@@ -871,6 +878,21 @@ class SecureChecker:
             return []
         return [r for k in self._hit_keys(code, s) if k for r in t.get(k, [])]
 
+    def agent_sibling(self, lid: str, other: str, code: str | None, cited: str) -> bool:
+        """A sibling agent noun can attest this type when the daughter permits it.
+
+        Mapping pages often group both *-tor- and *-ter- under one PIE head.
+        Require two agent heads of the same root, then let the cited accent/grade
+        decide. Unmarked Vedic, Latin and Avestan cannot distinguish the types.
+        Reviewed decisions still cap this route in match.put.
+        """
+        target, source = self.entries.get(lid, {}), self.entries.get(other, {})
+        want = agent_type_pie(target.get("form", ""))
+        return bool(want and agent_type_pie(source.get("form", ""))
+                    and target.get("root_id") and target["root_id"] == source.get("root_id")
+                    and (agent_type_cited(code, cited) == want
+                         or (code in ("sa", "la", "ae") and agent_type_cited(code, cited) is None)))
+
     def formation_clash(self, lid: str, code: str | None, s: str) -> str | None:
         """Why cited s, though it reaches lid, is another formation of it (None: no evidence of that).
         Only the agent-noun type is read off the word itself; derivatives come marked from the tables."""
@@ -917,6 +939,10 @@ class SecureChecker:
         for ids, path, src, derived in self._table_hits(code, s, lemma):
             lv = self.level_of(lid, ids)
             if lv:
+                if lv == "root" and not derived and any(self.agent_sibling(lid, i, code, cited) for i in ids):
+                    lv, path = "exact", [*path, "formation:agent-noun:compatible-sibling"]
+                if clash and any(agent_type_pie(self.entries.get(i, {}).get("form", "")) for i in ids):
+                    path = [*path, clash]
                 put("root" if derived else lv, src, path)
         # (b) whole-word equality with the reflexes (and with the root's / siblings' reflexes: root level)
         k = key(code, s)
@@ -940,9 +966,20 @@ class SecureChecker:
                 for other in ([rid] if rid else []) + sorted(self._siblings.get(rid, set()) - {lid}):
                     hit = next((lab for rk, lab, rst in self._reflex_keys(other, code, lang)
                                 if not lab.startswith("table-form") and mine & rst), None)
+                    compatible = self.agent_sibling(lid, other, code, cited)
+                    # Greek preserves the suffix grade. Compare the same agent stem
+                    # across -tōr/-tēr only when the citation shows the target type.
+                    if not hit and compatible and code == "grc":
+                        agent_key = lambda x: re.sub(r"t[ōoēe]r", "tVr", x)
+                        hit = next((lab for rk, lab, rst in self._reflex_keys(other, code, lang)
+                                    if not lab.startswith("table-form") and
+                                    {agent_key(x) for x in mine} & {agent_key(x) for x in rst}), None)
                     if hit:
-                        put("root", "reflex", [f"{other}", hit])
-                        break
+                        put("exact" if compatible else "root", "reflex", [f"{other}", hit] +
+                            (["formation:agent-noun:compatible-sibling"] if compatible else
+                             [clash] if clash and agent_type_pie(self.entries.get(other, {}).get("form", "")) else []))
+                        if best and best["level"] == "exact":
+                            break
         # (c) the decision itself (an inflected word it governs through its stem, an override-only lemma)
         if gov is not None and (lv := gov.own(lid)):
             put(lv, "override", gov.path + [f"erratum:{d.note}" for _, _, d in gov.decided[:1]])
