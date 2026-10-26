@@ -2,7 +2,7 @@
  "schema_version": 1,
  "batch": "t005",
  "sha256": {
-  "records": "23e81ba33a609e9eb9f565c812afec57964ced6ccf2a98fcf09e3499b59a4105",
+  "records": "7c4097572f5b0d760fb328e5071d95eca2518bd645c26368cdc7b2163a4e97e4",
   "plans": "c5ac1be3e9ddca76792f64d07933470e12c33fe5ee4d9c6fff902c8c9d7a6241",
   "gate_report": "f90dc29b4c41a0b9bdcd0f4df47038cdc45fe7b92b28304d7e83775e80a7f607"
  },
@@ -13,8 +13,10 @@
    "data/generation/batches/t005.json",
    "docs/audits/tier3-t005-review.md",
    "docs/STATUS.md:16",
-   "docs/STATUS.md:111-112"
+   "docs/STATUS.md:111-112",
+   "docs/audits/review-2026-10-25-rollout-hittite.md#2-some-new-behavior-has-not-reached-the-published-artifacts",
+   "docs/audits/eng-01-release-migration.md#finding-2-targeted-artifact-refresh"
   ],
-  "rationale": "STATUS explicitly records calibrated reviews t001-t015, findings fixed at source and all batches re-realized; subsequent merged-engine regeneration. Migrated historical release, not approval inferred from audit existence."
+  "rationale": "STATUS explicitly records calibrated reviews t001-t015, findings fixed at source and all batches re-realized; subsequent merged-engine regeneration. Migrated historical release, not approval inferred from audit existence. 2026-10-25 finding 2: explicitly renewed content binding after targeted re-realization and byte comparison; metadata-only num_fallback=du->pl change, surface forms unchanged. Every other record byte, source plan, and gate report is unchanged. Existing approval reaffirmed only for this reviewed metadata change."
  }
 }

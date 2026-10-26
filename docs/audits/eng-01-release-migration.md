@@ -89,3 +89,87 @@ in `tests/test_formula_search_multi.py`: use `KH_FIRST_FILE` rather than a
 front-matter page. All parser assertions were preserved, and no protected
 Hittite implementation or mapping files were edited. The final full run includes
 that fixture correction and passes.
+
+## Finding 2: targeted artifact refresh
+
+2026-10-25 follow-up to finding 2 (A and B) in
+`docs/audits/review-2026-10-25-rollout-hittite.md`.
+
+### Tier 3 metadata and explicit release renewal
+
+Targeted `realize()` calls on the six stored generator plans confirmed unchanged
+PIE, gloss, English, token forms, lexeme IDs and realized features. Added exactly
+one `num_fallback: "du->pl"` token field in each of:
+
+- `t3-b003-00192` — bʰidn̥tó
+- `t3-t005-00016` — bʰebʰih₂ḗr
+- `t3-t010-00012` — tetr̥pḗr
+- `t3-t016-00007` — kʷrn̥tó
+- `t3-t016-00011` — ḱéyro
+- `t3-t022-00028` — sléh₂gʷontor
+
+Removing those six inserted fields restores the original record bytes exactly;
+all other lines are byte-identical. Before mutation, all three bound hashes in
+each affected release matched the existing artifacts. After reviewing this
+metadata-only difference, `pie.batch_release.release_metadata()` explicitly
+renewed b003, t005, t010 and t016 as approved, retaining their historical evidence
+and adding this audit and finding 2 as evidence. The release rationales record
+that surface forms are unchanged and approval covers only this metadata change.
+t022's binding was renewed with status **pending**, not approved; its failed
+gate and exclusion remain. Plans and gate-report hashes are unchanged. No other
+release metadata changed.
+
+### Tier 2 evidence refresh, without editorial regrading
+
+Used the record-level path from `scripts/build_tier2.py`: `checks_for()` with
+`SecureChecker.from_disk()`, `realize()`, compound indexing, text validation and
+the builder's token/secure-share derivation. The CLI was not invoked because it
+executes git. Stored engine provenance remains unchanged.
+
+| Record / agent noun | Before | After | Secure share | Retained judgment |
+|---|---|---|---|---|
+| `t2-poetics-gifts-007` / `pie-lex-dh3texr` | none; no exact branches | exact; Greek + Indo-Iranian | 0.5 → 1.0 | sound; eval-grade true |
+| `t2-sky-father-011` / `pie-lex-gjenh1texr` | root; Indo-Iranian + Italic | exact; Indo-Iranian + Italic | 0.333 → 0.667 | weak; eval-grade false |
+
+Both agent tokens now have `verified: true`, `secure_level: "exact"` and
+`interpolated: false`. Recomputed the complete `secure_checks` for each record
+and replaced only the obsolete trailing builder explanation in its notes.
+Other record fields, including linguistic forms, features, generator provenance,
+review and eval-grade, are unchanged. All other Tier 2 lines are byte-identical.
+`data/tier2/review_verdicts.json` is byte-identical. Neither targeted verdict is
+stale against `plan_sha`: poetics-gifts-007 retains `9d2f40dc5e71e506`, and
+sky-father-011 retains `a3ff513f0b254ce0`. Automatic evidence changes do not imply
+a new editorial review.
+
+Source-plan files are outside this task's write scope and were left unchanged;
+their old builder commentary remains historical. A future whole-cluster rebuild
+that copies those notes verbatim would need to carry forward these corrections.
+
+### Default export comparison
+
+Rebuilt with `uv run python -I scripts/export.py`. No exporter code change was
+needed: it already propagates the fallback flag from stored tokens.
+
+| View | Before | After |
+|---|---:|---:|
+| Training records | 1,928 | 1,928 |
+| Training tasks | 11,541 | 11,541 |
+| Evaluation records | 104 | 104 |
+| Evaluation tasks | 333 | 333 |
+| Accent-specified evaluation tasks | 326 | 326 |
+| Fallback-tagged training tasks | 0 | 15 |
+| Fallback-tagged evaluation tasks | 0 | 0 |
+
+Exactly five admitted Tier 3 records supply the 15 newly tagged tasks: five
+English-to-PIE, five PIE-to-English and five gloss tasks. Each task differs only
+by `num_fallback: "du->pl"`; task order, identity, inputs and outputs are
+unchanged. t022 contributes no default tasks. `export/train.jsonl` changes only
+those five Tier 3 records and sky-father-011; `export/eval.jsonl` changes only
+poetics-gifts-007. All remaining export files, including summary, task evaluation
+views, accent-specified evaluation tasks and plain-text views, are byte-identical.
+
+Validation: `UV_CACHE_DIR=/tmp/pie-uv-cache uv run pytest -q` — **2,606 passed
+in 411.70s**. The final byte-scope comparison confirmed exactly eight changed
+corpus records and no changes to other corpus lines. No git commands were run,
+no raw files were executed, and the protected Stage C-S key, slabs and claims
+were not opened.
