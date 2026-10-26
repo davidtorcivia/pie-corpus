@@ -133,5 +133,59 @@
     "action": "exclude",
     "report": "data/research/8c/stageCS/error-reports.jsonl:155",
     "reason": "Exclude the editorial metrical correction from the verse corpus."
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/10945725bsb_djvu.txt",
+    "start": 14046,
+    "end": 14048,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports-w2.jsonl:45",
+    "reason": "Numbered editorial notes"
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/10945725bsb_djvu.txt",
+    "start": 25535,
+    "end": 25547,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports-w2.jsonl:46",
+    "reason": "Editorial scholarly polemic"
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/10945725bsb_djvu.txt",
+    "start": 25485,
+    "end": 25497,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports-w2.jsonl:100",
+    "reason": "Editorial review and award discussion"
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/11016812bsb_djvu.txt",
+    "start": 27698,
+    "end": 27710,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports-w2.jsonl:71",
+    "reason": "Multi-column geographical index"
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/11016812bsb_djvu.txt",
+    "start": 16080,
+    "end": 16087,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports-w2.jsonl:75",
+    "reason": "Editorial historical and religious discussion"
+  },
+  {
+    "corpus": "celtic",
+    "source": "raw/daughters/celtic-journal-revue-celtique-1870-1928/revueceltique13pari_djvu.txt",
+    "start": 1311,
+    "end": 1317,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports-w2.jsonl:47",
+    "reason": "French comparative footnote and citation list"
   }
 ]
