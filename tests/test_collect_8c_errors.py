@@ -138,3 +138,46 @@ def test_separate_quoted_lead_does_not_inherit_previous_bundle():
     reports = harvest("BC-11111 unrelated shield; 'abc' (Irish abc = def, not ghi)",
                       {'sga:1': {'corpus': 'Irish'}}, {'BC-11111': ['sga:1']})
     assert reports[0]['error']['passage'] == ''
+
+
+def test_reader_selection_and_exclusion_before_open(tmp_path, monkeypatch):
+    claims = tmp_path / 'stageCS' / 'claims'
+    claims.mkdir(parents=True)
+    loci = tmp_path / 'loci'
+    loci.mkdir()
+    record = {'reader': 'RS004', 'error': {
+        'passage': 'xx:1', 'form': 'abc', 'kind': 'mapping'}}
+    (claims / 'RS004.jsonl').write_text(json.dumps(record))
+    (claims / 'RS004.progress').write_text('wrong lemma def')
+    for name in ['RS002H.jsonl', 'RS004F.jsonl', 'RS005.jsonl', 'RS001.jsonl',
+                 'RS004.txt']:
+        (claims / name).write_text('MUST NOT OPEN')
+    original = Path.read_text
+
+    def guarded_read(path, *args, **kwargs):
+        assert path.name in {'RS004.jsonl', 'RS004.progress'}
+        return original(path, *args, **kwargs)
+
+    with monkeypatch.context() as m:
+        m.setattr(Path, 'read_text', guarded_read)
+        exact = S.collect([claims], [loci], readers=['RS004'])
+        glob = S.collect([claims], [loci], readers=['RS00[245]*'],
+                         exclude=['*F', 'RS005'])
+        assert exact == glob
+        assert len(exact) == 2
+        assert S.collect([claims], [loci], readers=['NO_MATCH']) == []
+        assert S.collect([claims], [loci], readers=['RS004'], exclude=['RS004']) == []
+        output = tmp_path / 'reports.jsonl'
+        m.setattr('sys.argv', ['collect_8c_errors.py', str(claims), '--output',
+                              str(output), '--loci-dirs', str(loci), '--readers',
+                              'RS004', 'RS005', '--exclude', 'RS005'])
+        S.main()
+    assert [json.loads(line) for line in output.read_text().splitlines()] == exact
+
+
+def test_default_and_explicit_selection_outside_stagecs():
+    assert S.allowed(Path('stageC/claims/RC001.jsonl'))
+    assert not S.allowed(Path('stageC/claims/RC001.jsonl'), ['RS004'])
+    assert S.allowed(Path('stageCS/claims/RS001X.progress'))
+    assert not S.allowed(Path('stageCS/claims/RS004.progress'))
+    assert not S.allowed(Path('stageCS/claims/RS002H.progress'), ['*'])

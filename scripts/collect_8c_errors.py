@@ -2,7 +2,10 @@
 """Collect unverified reader error reports without loading text-bearing slabs.
 
 Usage: uv run python -I scripts/collect_8c_errors.py CLAIMS_DIR ... --output FILE
-Stage C-S input is restricted to the finished pilot readers; RS002H is excluded.
+Without --readers, Stage C-S input defaults to the finished pilot readers.
+Use --readers RS004 RS005 or --readers 'RS00[4-8]' to select another wave;
+--exclude accepts the same reader-ID globs and takes precedence. Quote globs
+to prevent shell expansion. RS002H is always excluded before opening files.
 Output retains the reader-brief envelope, adds corpus/source/provenance, and
 merges reports by corpus + given lemma (or form). Unidentified notes remain
 separate instead of collapsing all unknown words into one error. Harvesting is
@@ -12,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+from fnmatch import fnmatchcase
 import json
 from pathlib import Path
 import re
@@ -34,10 +38,15 @@ LANGUAGES = {'Irish': ('sga', 'mga', 'ga'), 'Welsh': ('wlm', 'cy'),
              'ON': ('menota', 'non'), 'Norse': ('menota', 'non')}
 
 
-def allowed(path: Path) -> bool:
+def allowed(path: Path, readers: list[str] | None = None,
+            exclude: list[str] = ()) -> bool:
     """Filter names before opening; never inspect the unfinished pilot reader."""
     if path.suffix not in {'.jsonl', '.progress'} or path.name.startswith('RS002H.'):
         return False
+    if any(fnmatchcase(path.stem, pattern) for pattern in exclude):
+        return False
+    if readers is not None:
+        return any(fnmatchcase(path.stem, pattern) for pattern in readers)
     return 'stageCS' not in path.parts or bool(PILOT.fullmatch(path.name))
 
 
@@ -171,10 +180,12 @@ def deduplicate(reports: list[dict]) -> list[dict]:
     return list(merged.values())
 
 
-def collect(claims_dirs: list[Path], loci_dirs: list[Path]) -> list[dict]:
+def collect(claims_dirs: list[Path], loci_dirs: list[Path],
+            readers: list[str] | None = None, exclude: list[str] = ()) -> list[dict]:
     passages, bundles = load_loci(loci_dirs)
     reports = []
-    paths = sorted({p for d in claims_dirs for p in d.iterdir() if allowed(p)})
+    paths = sorted({p for d in claims_dirs for p in d.iterdir()
+                    if p.is_file() and allowed(p, readers, exclude)})
     metadata = {}
     for path in paths:
         if path.suffix != '.jsonl':
@@ -207,11 +218,15 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('claims_dirs', type=Path, nargs='+')
     parser.add_argument('--output', '-o', required=True, type=Path)
+    parser.add_argument('--readers', nargs='+', metavar='ID_OR_GLOB',
+                        help='Select reader filename stems (overrides the pilot default)')
+    parser.add_argument('--exclude', nargs='+', default=[], metavar='ID_OR_GLOB',
+                        help='Exclude reader filename stems, even if selected')
     parser.add_argument('--loci-dirs', nargs='+', type=Path, default=[
         ROOT / 'data/research/8c/stageC/slabs-loci',
         ROOT / 'data/research/8c/stageCS/slabs-loci'])
     args = parser.parse_args()
-    reports = collect(args.claims_dirs, args.loci_dirs)
+    reports = collect(args.claims_dirs, args.loci_dirs, args.readers, args.exclude)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(''.join(json.dumps(r, ensure_ascii=False) + '\n' for r in reports), encoding='utf-8')
     print(f'{len(reports)} deduplicated reports')
