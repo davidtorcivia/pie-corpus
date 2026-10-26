@@ -168,15 +168,23 @@ def main():
     out["confidence_calibration"] = {k: dict(v) for k, v in cal.items()}
     out["accepted_claims"] = [{k: c.get(k) for k in ("id", "reader", "slab", "bundles", "kind", "confidence", "recalled", "anchors")}
                               for c in claims if c["grade"] == "accepted"]
-    # exploratory: near-miss flags by bundle kind (primary readers only)
+    # exploratory: near-miss flags by bundle kind (primary readers only; the pilot readers had no near-miss
+    # line type, so their slabs are left out of the denominator)
+    pilot = set()
+    for r in ("RS001", "RS002", "RS003", "RS009"):
+        for line in open(CS / f"claims/{r}.jsonl", encoding="utf-8"):
+            if line.strip() and "done" in json.loads(line):
+                pilot.add(json.loads(line)["slab"])
+    nm_bundles = {(s, b) for s, b in bundles if s not in pilot}
     nm = {"real": 0, "decoy": 0}
     for (s, b), n in flags.items():
-        if (s, b) in bundles:
+        if (s, b) in nm_bundles:
             nm[slabs[s][b]["kind"]] += 1
-    nb = out["bundles_read"]
+    nb = dict(collections.Counter(slabs[s][b]["kind"] for s, b in nm_bundles))
     rr = rate_ratio_ci(nm["real"], nb["real"], nm["decoy"], nb["decoy"])
-    keys = sorted(bundles)
-    out["exploratory_near_miss"] = {"flagged_real": nm["real"], "flagged_decoy": nm["decoy"],
+    keys = sorted(nm_bundles)
+    out["exploratory_near_miss"] = {"slabs": len(read - pilot), "bundles": nb,
+                                    "flagged_real": nm["real"], "flagged_decoy": nm["decoy"],
                                     "share_real": nm["real"] / nb["real"], "share_decoy": nm["decoy"] / nb["decoy"],
                                     "rate_ratio": rr[0], "rr_95ci": [rr[1], rr[2]],
                                     "perm_p": perm_test([1 if flags[k] else 0 for k in keys],

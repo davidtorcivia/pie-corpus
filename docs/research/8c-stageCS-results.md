@@ -1,5 +1,11 @@
 # 8c Stage C-S results (2026-10-26)
 
+**Summary.** Under the preregistered primary measure, Stage C-S found no inherited phraseology beyond
+recalled textbook formulas. The enrichment measures (real bundles draw near-misses and accepted-or-weak
+claims at about 3.5× the decoy rate) are consistent with readers tracking the root overlap that defines a
+real bundle; they do not show that retrieval finds inheritance. One candidate-new item survives as a lead:
+"bear victory" (ON *bera sigr* ~ RV *sáhaḥ bibharṣi*), not found in the held literature.
+
 Stage C-S is the stratified, exhaustive reading of the Stage C retrieval (design and every amendment:
 [8c-preregistration.md](8c-preregistration.md)). Numbers below are recomputed by
 `scripts/stagecs_measures.py` from the committed claims and verdicts and the gitignored keys; output:
@@ -20,8 +26,16 @@ Stage C-S is the stratified, exhaustive reading of the Stage C retrieval (design
 
 ## Measures
 
+**How to read the decoy comparison** (SCI-04): a real bundle's partners must share at least two root groups
+with the pivot, one outside the 50 most frequent; a decoy's partners share at most one and no rare root, and
+readers see the etymon annotations. Decoys keep a genuine pivot. A higher claim or near-miss rate on real
+bundles is therefore partly built into the construction: it shows enrichment of reader judgements under
+targeted retrieval, not a historical false-discovery rate.
+
 Claims of primary and follow-up readers count together; a claim found twice (same slab and anchor set)
-counts once (2 duplicates); a claim citing k bundles adds 1/k to each. 65 claims counted; all graded.
+counts once (2 duplicates); a claim citing k bundles adds 1/k to each. 65 claims counted; all graded. The
+permutation test is the preregistered one; the rate-ratio intervals are Poisson approximations on fractional
+weights (secondary (ii): the interval touches 1.0 while the permutation p is 0.001).
 
 | Measure (preregistered unless noted) | Real | Decoy | Ratio (95% CI) | One-sided permutation p | Criterion |
 |---|---|---|---|---|---|
@@ -29,48 +43,54 @@ counts once (2 duplicates); a claim citing k bundles adds 1/k to each. 65 claims
 | **Primary (i): accepted per bundle, Celtic pivots** (contributing Celtic anchor) | 0 / 2,264 | 0 / 567 | – | 1.00 | **not met** |
 | Secondary (ii): accepted + weak, all | 34.7 / 16,068 | 2.3 / 4,016 | 3.8 (1.0–14.7) | 0.001 | met |
 | Secondary (i): accepted + weak, Celtic pivots | 4.7 / 2,264 | 0.3 / 567 | 3.5 (0.1–118) | 0.30 | not met |
-| Exploratory (not preregistered): bundles flagged as near-miss by primary readers | 1,731 (10.8%) | 125 (3.1%) | 3.5 (2.9–4.2) | < 0.001 | – |
+| Exploratory (not preregistered): bundles flagged as near-miss by primary readers (80 slabs; the four pilot slabs had no near-miss line type) | 1,731 / 15,191 (11.4%) | 125 / 3,796 (3.3%) | 3.5 (2.9–4.2) | < 0.001 | – |
 
 - **Reviewer grades by claim anchoring:** real-only claims 1 accepted / 29 weak / 26 reject; claims citing
   real and decoy bundles 0 / 7 / 1; decoy-only claims 0 / 0 / 1.
 - **Confidence calibration:** high 1 (accepted); medium 11 weak / 2 reject; low 25 weak / 26 reject.
-- **Decoy interpretation** (SCI-04): decoys keep a genuine pivot, and real candidates must share at least two
-  root groups while decoys share at most one, so the ratios measure enrichment under targeted retrieval, not
-  a historical false-discovery rate.
 
-**Reading.** The primary test fails: one claim was accepted and it is a recalled textbook formula. The
-secondary and exploratory measures show that targeted retrieval concentrates what readers judge plausible:
-real bundles draw near-misses and accepted-or-weak claims at about 3.5-3.8× the decoy rate. Blind reviewers
-confirm almost none of it as inherited phraseology; the weak grade is largely generic wording, contact or
-learned transmission (Biblical and Greek models in Armenian, Latin in Norse law).
+**Reading.** The primary test fails: one claim was accepted and it is a recalled textbook formula. Real
+bundles draw near-misses and accepted-or-weak claims at about 3.5-3.8× the decoy rate, which fits readers
+responding to visible root overlap; blind reviewers confirm almost none of it as inherited phraseology. The
+weak grade is largely generic wording, contact or learned transmission (Biblical and Greek models in
+Armenian, Latin in Norse law).
 
 ## Accepted items
 
-All five accepted items are known formulas, and every one is marked `recalled` by its reader (the reader
-recognised a formula it already knew). They are positive controls for the pipeline, not discoveries.
+All five accepted items are known formulas, and every one is marked `recalled` by its reader. The reader
+brief defines it: "mark a claim `"recalled": true` when it is something you remember from the literature
+rather than see in the passages." They are positive controls for the pipeline, not discoveries. Novelty was
+checked against the held literature in `raw/books/text/` (West IEPP, Watkins HKD, Schmitt 1967,
+Mallory–Adams, Fortson; Martirosyan for Armenian).
 
-| Item | Track | Witnesses | Literature |
+| Item | Track | Witnesses | Novelty (held literature) |
 |---|---|---|---|
-| *dyéws ph₂tḗr* "Father Sky" | claim (in measure) | Il. 4.235 πατὴρ Ζεύς ~ AVŚ 9.10.23 *dyaúr naḥ pitā́* | textbook |
+| *dyéws ph₂tḗr* "Father Sky" | claim (in measure) | Il. 4.235 πατὴρ Ζεύς ~ AVŚ 9.10.23 *dyaúr naḥ pitā́* | known (West) |
 | live and see the light of the sun | search lead | Il. 24.558 ~ RV 10.37.7d | known (West) |
-| "neither earth nor heaven above" | search lead | Vsp 3 ~ Wessobrunn Prayer (Germanic pair) | textbook |
-| setting a child on the knees (*sed- + *ǵónu + reflexive) | search lead | ON *setja í kné sér* ~ Il. 9.455/9.488, Od. 16.443 ~ OIr *suidid fo glún* | Onians, Benveniste, Güterbock |
-| "put a name" (*h₁nómn̥ dʰeh₁-) | search lead | Arm. *anown dnel* ~ Gk ὄνομα θέσθαι ~ Ved. *nā́ma dhā-* | Martirosyan |
+| "neither earth nor heaven above" | search lead | Vsp 3 ~ Wessobrunn Prayer (Germanic pair) | known (West, Schmitt) |
+| setting a child on the knees (*sed- + *ǵónu + reflexive) | search lead | ON *setja í kné sér* ~ Il. 9.455/9.488, Od. 16.443 ~ OIr *suidid fo glún* | not in the held books; reviewers cite Onians, Benveniste, Güterbock (not held) |
+| "put a name" (*h₁nómn̥ dʰeh₁-) | search lead | Arm. *anown dnel* ~ Gk ὄνομα θέσθαι ~ Ved. *nā́ma dhā-* | Martirosyan s.v. *anun* (per the reviewer) |
 
 Search leads (158 reviewed: 4 accepted, 67 weak, 87 reject) are outside the measures: the anchoring rule and
 the decoy control cannot apply to partners a reader found by searching.
 
 ## Strongest unconfirmed candidates (for the novelty check and an expert's eye)
 
-- **bear victory** (*bʰer- + *seǵʰ-): ON *bera sigr* ~ RV 10.84.6 *sáhaḥ bibharṣi*; both words cognate; the
-  reviewer did not know it as a discussed formula.
+- **bear victory** (*bʰer- + *seǵʰ-): ON *bera sigr* ~ RV 10.84.6 *sáhaḥ bibharṣi*; both words cognate.
+  **Not found in the held literature** (findings lit-0056 to lit-0059; near-hits only: Fortson's name *Berenike* "bearing victory", whose
+  νίκη is not cognate; West's Sigrdrífumál 3 "give victory", a different verb). The one candidate-new item.
+  Graded weak: the senses differ ("carry off the victory" vs "bear might") and the Norse is hagiography.
 - **sleeping on someone's knees** (*swep- + *ǵónu): ON (Laxdæla, Heimskringla) ~ Hittite KUB 36.89 rev. 56-57.
-  The wave-8 reject rests partly on "the Hittite sleep word is not cognate", which Kloekhorst contradicts (he
-  cites this passage's *šuppariyant-* with ON *svefn*); recorded in the leads file.
-- **redden the earth with blood** (*h₁rewdʰ-): Rígsþula 37, Reginsmál 26 ~ Il. 11.394, 18.329; verb cognate.
-- **gods and un-gods**: OIr *dé ⁊ andé* ~ RV *deváḥ / ádevaḥ* (known; the Irish *andee* mapping is still open).
-- **the bride's in-law list**: Il. 24.769-770 ~ Vuk ~ Russian ~ RV 10.85.46 (known; graded weak).
-- **sweet mead**: Gk μέθυ ἡδύ ~ Ved. *svādú mádhu* (known; the Old English witness is an emendation).
+  Not found in the held literature. The wave-8 reject rests partly on "the Hittite sleep word is not
+  cognate", which Kloekhorst contradicts (he cites this passage's *šuppariyant-* with ON *svefn*).
+- **redden the earth with blood** (*h₁rewdʰ-): Rígsþula 37, Reginsmál 26 ~ Il. 11.394, 18.329; verb cognate,
+  the earth noun differs. Not found in the held literature.
+- **gods and un-gods**: OIr *dé ⁊ andé* ~ RV *deváḥ / ádevaḥ*: known (West IEPP ch. 2 cites exactly Táin
+  2043 ~ RV 6.22.11); the Irish *andee* mapping is still open.
+- **the bride's in-law list**: Il. 24.769-770 ~ Vuk ~ Russian ~ RV 10.85.46; graded weak; not found as a
+  phrase-level comparison in the held books (reviewers cite Delbrück, Benveniste; not held).
+- **sweet mead**: Gk μέθυ ἡδύ ~ Ved. *svādú mádhu*: known (West IEPP ch. 2); the Old English witness is an
+  emendation.
 
 Full list with witnesses and caveats: `data/research/8c/leads.jsonl`.
 
