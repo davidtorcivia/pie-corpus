@@ -1,0 +1,17 @@
+{
+  "reader": "RS078",
+  "slab": "SS-03fa",
+  "bundles_read": 267,
+  "last_bundle": "BS-ff33d",
+  "next_bundle_ordinal": null,
+  "status": "done",
+  "claims_by_confidence": {
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "near_misses": 26,
+  "search_leads": 2,
+  "error_reports": 42,
+  "verification": "All recorded passage and bundle IDs validated against own slab; final JSONL line is done."
+}
