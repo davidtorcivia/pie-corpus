@@ -60,3 +60,36 @@ Verb slot: `{"lex_id": ..., "role": "V", "verb": {"tense": "PRS|PST|AOR|PRF", "m
 5. Modify nothing else. Never run `realize_plans.py` on another batch's plans.
 
 Final message ≤150 words: the initial and final reject counts, gate results, words per text, meter_fit, formula_uses, distinct lexemes and roots, and anything you could not express.
+
+## Slice accent policy (2026-10-25)
+
+The slice's `form` is a dictionary display headword, not an instruction to reproduce its accent.
+An unaccented headword may be offered when the primary paradigm supplies resolved accent.
+The engine supplies the forms; planners still use only ids in their slice. Missing lexical accent
+(`accent: unresolved` in `data/morph/accent_unresolved.json`) remains outside this selection gate,
+without changing morphological usability or export policy. Frozen representation exceptions remain
+separate from missing information. Gloss, NIL, blocklist and benchmark-root gates still apply.
+
+Audit of the 11 accentless headwords excluded by the old P10 check in `scripts/make_slice.py`:
+all have resolved status and exactly one accent in each of their 19 primary cells (209 checked cells).
+Each should therefore pass the accent gate. This does not supply new linguistic accents or override
+specs: it uses the existing primary paradigms. Rejected/displaced alternatives cannot qualify a word.
+
+| Lexeme id | Headword → primary example | Existing accent evidence | Decision |
+|---|---|---|---|
+| `pie-lex-h2elut` | h₂elut- → h₂ólut | Table, acrostatic | Admit |
+| `pie-lex-suH` | suH- → súHs | Table, acrostatic | Admit |
+| `pie-lex-wekwsperos` | wekʷsperos → wékʷsperos | Corrected primary thematic spec; unaccented alternative rejected | Admit |
+| `pie-lex-dinos` | dinos → dinós | Corrected primary thematic spec; unaccented alternative rejected | Admit |
+| `pie-lex-Hrewdos` | Hrewdos → Hréwdos | Primary acrostatic neuter s-stem | Admit accent; derived-gloss gate still applies |
+| `pie-lex-h1rowdhos-2` | h₁rowdʰos → h₁rówdʰos | Primary acrostatic neuter s-stem | Admit accent; derived-gloss gate still applies |
+| `pie-lex-leh2dhos` | leh₂dʰos → léh₂dʰos | Primary acrostatic neuter s-stem | Admit accent; derived-gloss gate still applies |
+| `pie-lex-medos` | medos → médos | Primary acrostatic neuter s-stem | Admit |
+| `pie-lex-moyth2os` | moyth₂os → móyth₂os | Primary acrostatic neuter s-stem | Admit accent; derived-gloss gate still applies |
+| `pie-lex-sterkjos` | sterḱos → stérḱos | Primary acrostatic neuter s-stem | Admit |
+| `pie-lex-stugos` | stugos → stúgos | Primary acrostatic neuter s-stem | Admit accent; derived-gloss gate still applies |
+
+The five derived-only entries still require `--derived` and its transparent-suffix/two-branch test.
+These 11 are distinct from the manifest's 11 unresolved lexemes investigated in stored Tier 3 texts.
+A separate old-gate parse failure, `pie-lex-h1edt` (display `*h₁édt`, leading reconstruction marker),
+is outside this accentless-headword audit and unchanged. No batches or exports were regenerated.

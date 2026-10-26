@@ -15,7 +15,7 @@ from pathlib import Path
 
 from pie.compound import CompoundError, resolve as resolve_compound
 from pie.phon import has_accent, parse
-from pie.realize import Lexicon
+from pie.realize import Lexicon, accent_manifest
 
 ROOT = Path(__file__).resolve().parent.parent
 CORE_VERBS = ["be", "see", "carry", "give", "speak", "say", "go", "come", "know", "eat", "drink", "hear",
@@ -112,6 +112,36 @@ def verb_features(cells: dict) -> list[str]:
     return sorted(feats)
 
 
+def planner_accent_ok(lx: Lexicon, lex_id: str) -> bool:
+    """Keep P10, but let a resolved primary paradigm supply a missing headword accent.
+
+    Absence from the unresolved manifest alone is not positive accent evidence.
+    Inspect primary cells only; alternatives may include rejected source specs.
+    """
+    try:
+        if has_accent(parse(lx.entries[lex_id]["form"].strip("-"))):
+            return True
+        if lx.accent_status(lex_id) == "unresolved":
+            return False
+        exceptions = accent_manifest()["exception_cells"]
+        accented = False
+        for gender in (["m", "f", "n"] if lx.specs[lex_id]["family"] == "adj" else [None]):
+            cells = lx.cells(lex_id, gender)
+            if not cells:
+                return False
+            for cell, forms in cells.items():
+                if not forms:
+                    return False
+                count = sum(s.acc for s in parse(forms[0]))
+                if count == 1:
+                    accented = True
+                elif count != 0 or (lex_id, gender, cell, forms[0]) not in exceptions:
+                    return False
+        return accented
+    except ValueError:
+        return False
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("name")
@@ -130,13 +160,7 @@ def main() -> int:
         suffix = lx.derived[i].split("[", 1)[-1].split(":", 1)[0].strip()
         return suffix in TRANSPARENT_SUFFIXES or len(branches(lx.entries[i].get("reflexes", {}))) >= 2
 
-    def accented(i):
-        try:
-            return has_accent(parse(lx.entries[i]["form"].strip("-")))
-        except ValueError:
-            return False
-
-    # gates (tier3-b001/b002 reviews): an accented headword (P10), and a derived gloss
+    # gates (tier3-b001/b002 reviews): an accented headword or resolved primary paradigm (P10), and a derived gloss
     # only for a transparent suffix or a word attested in two branches (R1)
     # NIL after the re-review (docs/audits/nil-merge-rereview.md): NIL glosses on existing words are
     # admitted except NIL_GLOSS_HELD; of the new NIL lexemes only the NIL_ADMIT subset judged ok.
@@ -152,7 +176,7 @@ def main() -> int:
     # root families the export holds out for the cognate/inflection benchmark are never offered to
     # planners, so they stay unseen in training sentences (pie.export.eval_root)
     from pie.export import eval_root
-    pool = [i for i, r in lx.specs.items() if r.get("usable") and i not in lx.blocked and accented(i) and
+    pool = [i for i, r in lx.specs.items() if r.get("usable") and i not in lx.blocked and planner_accent_ok(lx, i) and
             not eval_root(lx.entries[i].get("root_id")) and
             not nil_held(i) and
             (lx.entries[i]["meaning"] or (ap_derived and i in lx.derived and derived_ok(i)))]
