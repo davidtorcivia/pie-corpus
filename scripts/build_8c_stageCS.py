@@ -778,6 +778,8 @@ def main() -> int:
     ap.add_argument("--out-dir", type=Path, default=OUT)
     ap.add_argument("--key", type=Path, default=KEY)
     ap.add_argument("--reader-start", type=int, default=1)
+    ap.add_argument("--frozen-params", type=Path, default=None,
+                    help="params.json whose frozen floors are reused (between-wave rebuilds: the Stage C-S floors)")
     args = ap.parse_args()
     if args.reader_start < 1:
         ap.error("--reader-start must be positive")
@@ -798,7 +800,16 @@ def main() -> int:
         dry_run(units, cls, log)
         return 0
     pfile = args.out_dir / "params.json"
-    params = None if args.refreeze or not pfile.exists() else json.loads(pfile.read_text("utf-8"))
+    if args.exclude_read_pivots is not None and (args.frozen_params is None or args.refreeze):
+        ap.error("an exclusion rebuild reuses the frozen Stage C-S floors: pass --frozen-params, not --refreeze "
+                 "(docs/research/8c-preregistration.md, between-wave rebuild rule, correction of 2026-10-25)")
+    if args.frozen_params is not None:
+        params = json.loads(args.frozen_params.read_text("utf-8"))
+        params["excluded_read_pivots"] = sorted(excluded)
+        params["reader_start"] = args.reader_start
+        params["frozen_from"] = str(args.frozen_params)
+    else:
+        params = None if args.refreeze or not pfile.exists() else json.loads(pfile.read_text("utf-8"))
     view = indexed_view(units, cls)
     parts = None
     if params is None:      # freeze the floor before any bundle is built
@@ -823,6 +834,8 @@ def main() -> int:
                 excluded=excluded, reader_start=args.reader_start, reserved_ids=reserved)
     res["stats"]["mapping_notes"] = notes
     write(res, args.out_dir, args.key)
+    if args.frozen_params is not None:
+        pfile.write_text(json.dumps(params, ensure_ascii=False, indent=1) + "\n", "utf-8")
     st = res["stats"]
     log(f"bundles {st['bundles']}, decoys {st['decoy_bundles']} ({st['decoy_share']}), slabs {st['slabs']}, "
         f"slab tokens {st['total_slab_tokens']}, read est. {st['read_tokens_est']}")

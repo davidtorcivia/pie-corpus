@@ -262,7 +262,8 @@ def test_rebuild_requires_fresh_destinations(tmp_path):
     assert key.read_text() == 'historical sentinel'
 
 
-def test_between_wave_cli_refreezes_remaining_pivots(small, monkeypatch, tmp_path):
+def test_between_wave_cli_keeps_frozen_floors(small, monkeypatch, tmp_path):
+    """Between-wave rebuilds reuse the frozen Stage C-S floors (pre-registration correction of 2026-10-25)."""
     import json
     import numpy as np
     units, cls = small
@@ -284,22 +285,28 @@ def test_between_wave_cli_refreezes_remaining_pivots(small, monkeypatch, tmp_pat
     monkeypatch.setattr(S, 'historical_ids', lambda: reserved)
     monkeypatch.setattr(C, 'load_all', lambda *a: (units, {}, {}, {}))
     monkeypatch.setattr(S, 'prepare', lambda *a: (cls, thin))
+    frozen = S.make_params(idx, reg, None, thin_parts=tp)
+    fpath = tmp_path / 'frozen.json'
+    fpath.write_text(json.dumps(frozen))
+    # without the frozen floors an exclusion rebuild is refused
     monkeypatch.setattr(sys, 'argv', ['build', '--exclude-read-pivots', str(path),
+                        '--out-dir', str(out), '--key', str(key), '--reader-start', '13', '--procs', '1'])
+    with pytest.raises(SystemExit):
+        S.main()
+    monkeypatch.setattr(sys, 'argv', ['build', '--exclude-read-pivots', str(path), '--frozen-params', str(fpath),
                         '--out-dir', str(out), '--key', str(key), '--reader-start', '13', '--procs', '1'])
     assert S.main() == 0
     params = json.loads((out / 'params.json').read_text())
     remaining_reg = {u:p for u,p in reg.items() if u not in removed}
-    remaining_tp = {u:p for u,p in tp.items() if u not in removed}
-    assert params['floor'] == SB._q(np.array([p[0][0] for p in remaining_reg.values()]), SB.FLOOR_Q)
-    assert params['thin_floor'] == SB._q(np.array([p[0][0] for p in remaining_tp.values()]), SB.FLOOR_Q)
-    assert params['floor'] != S.make_params(idx, reg, None)['floor']
+    assert params['floor'] == frozen['floor'] and params['thin_floor'] == frozen['thin_floor']
     assert params['excluded_read_pivots'] == sorted(excluded)
     result = S.build(units, {}, cls, params, procs=1, log=lambda *a:None,
                      parts=(reg, tp), thin=thin, excluded=excluded, reader_start=13)
     assert result['idx'].ref == idx.ref
     assert result['idx'].idf.tolist() == idx.idf.tolist()
     assert all(b['pivot'] not in removed for b in result['bundles'])
-    assert any(v in removed for b in result['bundles'] for v in b['units'][1:])
+    # read pivots stay indexed and can still be retrieved as partners (before the floor is applied)
+    assert any(v in removed for ps in result['parts'].values() for _, v, _ in ps)
     assert len(result['parts']) == len(remaining_reg)
     assignment = json.loads((out / 'assignment.json').read_text())['slabs']
     assert list(assignment.values()) == [f'RS{k+13:03d}' for k in range(len(assignment))]
