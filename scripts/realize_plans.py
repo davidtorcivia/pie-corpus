@@ -6,16 +6,18 @@
 Plans that fail the checker go to data/generation/rejects/<batch>.jsonl with
 their errors. Realized records go to corpus/tier3/<batch>.jsonl. Warnings (pie.realize.plan_warnings)
 are printed as WARN lines and counted in the summary; they never reject a plan.
+Gate FAIL returns exit status 1, retaining candidates and reports. Every run
+creates pending release metadata; PASS alone does not authorize training export.
 """
 
 import argparse
 import collections
 import json
 import re
-import subprocess
 import sys
 from pathlib import Path
 
+from pie.batch_release import release_metadata
 from pie.meter import measure
 from pie.realize import Lexicon, check_plan, plan_warnings, realize, token_cell
 from pie.translit import to_ascii
@@ -79,9 +81,9 @@ def main() -> int:
     ap.add_argument("--batch", required=True)
     ap.add_argument("--model", default="claude-opus-5-5")
     ap.add_argument("--prompt-id", default="tier3-planner-v1")
+    ap.add_argument("--engine-version", default="unknown", help="caller-supplied engine provenance")
     args = ap.parse_args()
-    sha = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--short", "HEAD"], capture_output=True,
-                         text=True).stdout.strip()
+    sha = args.engine_version
     lx, ix = Lexicon.load(), load_index()
     plans = [json.loads(x) for x in args.plans.read_text("utf-8").splitlines() if x.strip()]
     records, rejects, stats, warnings = [], [], collections.Counter(), []
@@ -171,12 +173,22 @@ def main() -> int:
     (ROOT / "data" / "generation" / "batches").mkdir(exist_ok=True)
     (ROOT / "data" / "generation" / "batches" / f"{args.batch}.json").write_text(
         json.dumps(summary, ensure_ascii=False, indent=1) + "\n", "utf-8")
+    # Preserve the exact input plans alongside the candidate. Every realization
+    # resets review to pending, including a byte-identical rerun.
+    plan_copy = ROOT / "data/generation/plans" / f"{args.batch}.jsonl"
+    plan_copy.parent.mkdir(parents=True, exist_ok=True)
+    if args.plans.resolve() != plan_copy.resolve():
+        plan_copy.write_bytes(args.plans.read_bytes())
+    releases = ROOT / "data/generation/releases"
+    releases.mkdir(parents=True, exist_ok=True)
+    (releases / f"{args.batch}.json").write_text(
+        json.dumps(release_metadata(ROOT, args.batch), indent=1) + "\n", "utf-8")
     print(json.dumps(summary, ensure_ascii=False))
     for r in rejects[:10]:
         print("  REJECT", r["plan_id"], r["errors"][:3])
     for pid, w in warnings:
         print("  WARN", pid, w)
-    return 0
+    return 0 if summary["gate"] == "PASS" else 1
 
 
 if __name__ == "__main__":

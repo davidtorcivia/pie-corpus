@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "pilot2",
+ "sha256": {
+  "records": "f86a575578ad54740fbe3e03fa955e97f88671d668aceba4030efe6ecba80988",
+  "plans": "9994bb0e44489dd0a340018b4f24d1ede781207c2ed26b79d303bcdd2627b441",
+  "gate_report": "2e5ec16f5dc836c8c3ace981c25a028609828af09d847de86a0869d13e6b7c84"
+ },
+ "review": {
+  "required": true,
+  "status": "pending",
+  "evidence": [
+   "data/generation/batches/pilot2.json",
+   "docs/audits/tier3-pilot2-review.md",
+   "docs/STATUS.md:78-91"
+  ],
+  "rationale": "Historical provisional pilot review completed, but current gate FAIL; no documented release approval for this failed candidate. Pilots remain opt-in and require experimental inclusion."
+ }
+}

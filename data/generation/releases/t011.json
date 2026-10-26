@@ -1,0 +1,20 @@
+{
+ "schema_version": 1,
+ "batch": "t011",
+ "sha256": {
+  "records": "48b3aa49c755a419e3f12f1d344e6d431b053d68db55420b9e91f04c72b5ea01",
+  "plans": "ab15013e32245ecad32b1b1ba76347269918660a157267b2e3e998409da3b632",
+  "gate_report": "4aab5407f3099a4011b80f7019b91cfab6cde13522d648b481a39e97fb9789f7"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "data/generation/batches/t011.json",
+   "docs/audits/tier3-t011-review.md",
+   "docs/STATUS.md:16",
+   "docs/STATUS.md:111-112"
+  ],
+  "rationale": "STATUS explicitly records calibrated reviews t001-t015, findings fixed at source and all batches re-realized; subsequent merged-engine regeneration. Migrated historical release, not approval inferred from audit existence."
+ }
+}

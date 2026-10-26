@@ -1,0 +1,20 @@
+{
+ "schema_version": 1,
+ "batch": "t021",
+ "sha256": {
+  "records": "36070a578ac49a87daa53c5e4008259e437335bcb0c0de3d8fe41b9bd2530400",
+  "plans": "c3ecf05469d6a8690c7e5011f74c4e019600ecdcb84439d0b1463ffa39222843",
+  "gate_report": "febd6e883b3345e2c5ad80ce9d7e5757a11dad102198d7c79e4f2d1a5e00d089"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "data/generation/batches/t021.json",
+   "docs/audits/tier3-t021-review.md",
+   "docs/STATUS.md:119",
+   "docs/STATUS.md:111-112"
+  ],
+  "rationale": "STATUS records t018-t021 reviews (0-2/20 real wrong), fixes and merged-engine regeneration. Migrated historical release on review plus remediation account."
+ }
+}

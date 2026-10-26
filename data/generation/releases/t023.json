@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t023",
+ "sha256": {
+  "records": "df5562c5f2a89ac5a6dc9bf004777caeca63f80f6454110955eb5c1c35bf13d5",
+  "plans": "dfc37283e4b85389dc17fe9ae22226395310f5b49d8cab14d160d653818ba13c",
+  "gate_report": "a55bb5c8c6cdb2f997f0b00c7342ec16a5f8b9ad1325689a4700a1ca98bf2978"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "data/generation/batches/t023.json",
+   "docs/audits/tier3-t023-review.md",
+   "docs/STATUS.md:112"
+  ],
+  "rationale": "STATUS explicitly records t023 review (plants 5/5; real 2/20 wrong, fixed). Current automated gates PASS."
+ }
+}

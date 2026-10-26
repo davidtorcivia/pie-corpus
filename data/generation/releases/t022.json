@@ -1,0 +1,18 @@
+{
+ "schema_version": 1,
+ "batch": "t022",
+ "sha256": {
+  "records": "c171601ac0fae6987e5bb940b39ac34fd219d42988529ced6bb48351e5c926b3",
+  "plans": "8dd2153992e96510103811faa570fb9d131e0e2316ff86ee66bc14d03a7edcf9",
+  "gate_report": "6cb2fcaf482248bc4f3a323920110103accab67db213aa9743ab5cf107adf971"
+ },
+ "review": {
+  "required": true,
+  "status": "pending",
+  "evidence": [
+   "data/generation/batches/t022.json",
+   "docs/STATUS.md:112-115"
+  ],
+  "rationale": "Explicitly unreviewed, redo open; gate FAIL on ordinary lexeme cap (18 > 8)."
+ }
+}

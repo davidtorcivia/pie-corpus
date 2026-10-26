@@ -1,0 +1,20 @@
+{
+ "schema_version": 1,
+ "batch": "b004",
+ "sha256": {
+  "records": "f5bce18639c2e5eadb4b9dad989182c821e2e5c1606bbeadcef4a496d288c1b0",
+  "plans": "8686fdd328416a74a9e914e0d2c682cdfc36f3067a5a5c313b2f86ba835aae32",
+  "gate_report": "61411f25a983f7acd602a4cdcf508efc7a279d47c27812336e9061b7c915549e"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "data/generation/batches/b004.json",
+   "docs/audits/tier3-b004-review.md",
+   "docs/STATUS.md:16",
+   "docs/STATUS.md:111-112"
+  ],
+  "rationale": "Review verdict explicitly passes scaling; STATUS records findings fixed at source and subsequent merged-engine regeneration. Migrated historical release, not a new scholarly review."
+ }
+}

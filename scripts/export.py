@@ -4,7 +4,7 @@
 eval_tasks_accent_specified.jsonl is the accent-sensitive eval view: eval_tasks.jsonl without the tasks flagged
 "accent": "unresolved" (export/README.md).
 
-  uv run python -I scripts/export.py [--include-pilot]
+  uv run python -I scripts/export.py [--include-pilot] [--experimental-batches]
 """
 
 import argparse
@@ -21,8 +21,10 @@ ROOT = Path(__file__).resolve().parent.parent
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--include-pilot", action="store_true")
+    ap.add_argument("--experimental-batches", action="store_true",
+                    help="explicitly admit failed/pending batches; record bypasses in summary")
     args = ap.parse_args()
-    d = build(include_pilot=args.include_pilot)
+    d = build(include_pilot=args.include_pilot, experimental_batches=args.experimental_batches)
     out = ROOT / "export"
     for name in ("train_records", "eval_records", "train_tasks", "eval_tasks"):
         (out / f"{name.replace('_records', '').replace('_tasks', '_tasks')}.jsonl").write_text(
@@ -32,7 +34,9 @@ def main() -> int:
     for split in ("train", "eval"):
         for fname, text in views(d[f"{split}_records"]).items():
             (vdir / f"{split}.{fname}").write_text(text, "utf-8")
-    summary = {k: len(v) for k, v in d.items()}
+    summary = {k: len(v) for k, v in d.items() if k != "batch_eligibility"}
+    summary["experimental_batches"] = args.experimental_batches
+    summary["batch_eligibility"] = d["batch_eligibility"]
     summary["train_tasks_by_type"] = dict(collections.Counter(t["task"] for t in d["train_tasks"]))
     summary["eval_tasks_by_type"] = dict(collections.Counter(t["task"] for t in d["eval_tasks"]))
     (out / "eval_tasks_accent_specified.jsonl").write_text(

@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t016",
+ "sha256": {
+  "records": "26fca3acefea349004d8c6e5a8469d5f4979ceada0e11d30cdac32b1893687f3",
+  "plans": "08d93f73aa4cd9e2cfc5d22b48c2b6e22401cd301f989ee3a989ee32ca57e431",
+  "gate_report": "62f0dda10feedd3f068fefeb279df2b3f27f42ad92c74202bb9c46e107bd68a8"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "data/generation/batches/t016.json",
+   "docs/audits/tier3-t016-review.md",
+   "docs/STATUS.md:111-112"
+  ],
+  "rationale": "Individual review documents completed assessment and correctable causes; consolidated 2026-10-24 account records validity fixes and regeneration of the 25 historical batches, distinguishing new unreviewed t022. Migrated historical release on that combined evidence; not a claim of a fresh post-fix scholarly review."
+ }
+}

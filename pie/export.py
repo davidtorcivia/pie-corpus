@@ -6,8 +6,8 @@ Policy (docs/STATUS.md, open question 1 until David decides):
           root families for the cognate and inflection tasks: hash-selected
           families that occur in NO training record (so the test is unseen
           root families across all training material; checked)
-  train = Tier 2 and Tier 3 records; batches named pilot-* only with
-          include_pilot=True (unreviewed)
+  train = Tier 2 and release-eligible Tier 3 records; pilots additionally require
+          include_pilot=True. Experimental inclusion explicitly bypasses eligibility.
 Cognate→PIE examples hold out *whole root families* (a deterministic hash
 of root_id), so no derivative of an eval root appears in a training task.
 The leakage check fails the export if any PIE string or record id is in both
@@ -30,6 +30,7 @@ import json
 import random
 from pathlib import Path
 
+from .batch_release import batch_eligibility
 from .realize import Lexicon, accent_manifest, accent_status
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -204,7 +205,8 @@ def cognate_tasks(lx: Lexicon) -> list[dict]:
     return out
 
 
-def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0) -> dict:
+def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0,
+          experimental_batches: bool = False) -> dict:
     rng = random.Random(seed)
     tier1 = [r for r in _load("corpus/tier1/*.jsonl", root) if r.get("pie")]
     tier2 = _load("corpus/tier2/*.jsonl", root)
@@ -213,8 +215,14 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0) -> dict
     t2_eval = [r for r in tier2 if r.get("eval_grade")]
     train_recs = [r for r in tier2 if not r.get("eval_grade")]
     tier1 = tier1 + t2_eval
+    batch_decisions = []
     for f in sorted((root / "corpus" / "tier3").glob("*.jsonl")):
+        decision = batch_eligibility(root, f.stem, experimental=experimental_batches)
         if f.name.startswith("pilot") and not include_pilot:
+            decision = {**decision, "admitted": False,
+                        "reasons": [*decision["reasons"], "pilot not requested"]}
+        batch_decisions.append(decision)
+        if not decision["admitted"]:
             continue
         train_recs += [json.loads(x) for x in f.read_text("utf-8").splitlines() if x.strip()]
     lx = Lexicon.load()
@@ -250,7 +258,8 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0) -> dict
     tier1 = [{**r, "seen_in_train": r["id"] in seen} for r in tier1]
     eval_tasks = [{**t, "seen_in_train": t.get("source_id") in seen} if "source_id" in t else t for t in eval_tasks]
     return {"train_records": train_recs, "eval_records": tier1, "train_tasks": train_tasks, "eval_tasks": eval_tasks,
-            "eval_tasks_accent_specified": accent_specified(eval_tasks)}
+            "eval_tasks_accent_specified": accent_specified(eval_tasks),
+            "batch_eligibility": batch_decisions}
 
 
 def views(records: list[dict]) -> dict[str, str]:

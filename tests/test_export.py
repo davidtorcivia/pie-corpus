@@ -26,6 +26,14 @@ def test_leakage_guard(tmp_path, monkeypatch):
     rec = {"id": "a", "pie": "h₂ówis.", "pie_ascii": "h2o/wis.", "english": "sheep"}
     (tmp_path / "corpus/tier1/x.jsonl").write_text(json.dumps(rec) + "\n", "utf-8")
     (tmp_path / "corpus/tier3/b.jsonl").write_text(json.dumps({**rec, "id": "b"}) + "\n", "utf-8")
+    from pie.batch_release import release_metadata
+    (tmp_path / "data/generation/plans").mkdir(parents=True)
+    (tmp_path / "data/generation/batches").mkdir(parents=True)
+    (tmp_path / "data/generation/releases").mkdir(parents=True)
+    (tmp_path / "data/generation/plans/b.jsonl").write_text("{}\n")
+    (tmp_path / "data/generation/batches/b.json").write_text(json.dumps({"gate": "PASS", "gates": {"exact": True}}))
+    (tmp_path / "data/generation/releases/b.json").write_text(json.dumps(
+        release_metadata(tmp_path, "b", status="approved", evidence=["fixture review"])))
     monkeypatch.setattr(ex, "inflection_tasks", lambda lx, rng: [])
     monkeypatch.setattr(ex, "cognate_tasks", lambda lx: [])
     with pytest.raises(ValueError, match="leakage"):
