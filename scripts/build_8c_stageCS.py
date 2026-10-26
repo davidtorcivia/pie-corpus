@@ -566,10 +566,14 @@ def remaining_pivots(idx, units, excluded=frozenset()):
             if units[idx.ref[u][0]][idx.ref[u][1]].pid not in excluded]
 
 
-def historical_ids(loci_dir: Path = OUT / "slabs-loci") -> set[str]:
-    """Reserve historical IDs without consulting text slabs or the blinding key."""
+def historical_ids(loci_dir: Path | None = None) -> set[str]:
+    """Reserve historical IDs without consulting text slabs or the blinding key: the Stage C-S build and every
+    between-wave build (sibling stageCS-w* directories), so slab and bundle ids never repeat across waves."""
     ids = set()
-    for path in sorted(loci_dir.glob("SS-*.json")):
+    dirs = [loci_dir] if loci_dir is not None else \
+        [OUT / "slabs-loci"] + sorted(p / "slabs-loci" for p in OUT.parent.glob(OUT.name + "-w*") if p.is_dir())
+    paths = [path for d in dirs for path in sorted(d.glob("SS-*.json"))]
+    for path in paths:
         slab = json.loads(path.read_text("utf-8"))
         ids.add(slab["slab"])
         ids.update(b["bundle"] for b in slab["bundles"])

@@ -326,3 +326,13 @@ def test_new_ids_skip_old_series():
     baseline = S.fresh_ids('SS', 4, 3, random.Random(7), set())
     new = S.fresh_ids('SS', 4, 3, random.Random(7), set(baseline))
     assert len(set(new)) == 3 and not set(new) & set(baseline)
+
+
+def test_historical_ids_cover_every_wave(tmp_path, monkeypatch):
+    import json
+    base = tmp_path / "stageCS"
+    for d, sid, bid in ((base, "SS-0001", "BS-00001"), (tmp_path / "stageCS-w2", "SS-0002", "BS-00002")):
+        (d / "slabs-loci").mkdir(parents=True)
+        (d / "slabs-loci" / f"{sid}.json").write_text(json.dumps({"slab": sid, "bundles": [{"bundle": bid}]}))
+    monkeypatch.setattr(S, "OUT", base)
+    assert S.historical_ids() == {"SS-0001", "BS-00001", "SS-0002", "BS-00002"}
