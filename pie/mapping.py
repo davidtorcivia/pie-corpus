@@ -54,6 +54,8 @@ import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from .research_scope import mapping_scope, RESEARCH_ONLY
+
 ROOT = Path(__file__).resolve().parent.parent
 OVERRIDES = "data/research/formulas/mapping-overrides.json"
 MAPPING = "data/research/formulas/mapping"
@@ -101,6 +103,11 @@ class Decision:
     note: str = "override"
     row: dict = field(default_factory=dict, compare=False, hash=False, repr=False)
 
+    scope: str = "production"
+
+    def __post_init__(self):
+        object.__setattr__(self, "scope", mapping_scope(self.ids, self.scope))
+
     @property
     def removal(self) -> bool:
         return not self.ids
@@ -116,9 +123,10 @@ def decision(row: dict, corpus: str | None = None, lemma: str | None = None, ids
         m = _QUOTED.match(str(row.get("erratum") or ""))
         sense = m.group(1) if m else None
     unc = bool(row.get("uncertain")) or str(row.get("confidence", "")).lower() in ("uncertain", "low")
+    target_ids = frozenset(row.get("lex_id", ()) if ids is None else ids)
     return Decision(corpus if corpus is not None else row.get("corpus"), lemma if lemma is not None else row.get("lemma"),
-                    frozenset(row.get("lex_id", ()) if ids is None else ids), row.get("formation"), unc, sense,
-                    row.get("erratum") or row.get("note") or "override", row)
+                    target_ids, row.get("formation"), unc, sense,
+                    row.get("erratum") or row.get("note") or "override", row, mapping_scope(target_ids, row.get("scope")))
 
 
 # modules that register daughter key functions in formula_search_multi.KEYS when imported
@@ -295,6 +303,11 @@ class Resolved:
     formation: str | None = None
     uncertain: bool = False
     decisions: tuple = ()
+    scope: str = "production"
+
+    def __post_init__(self):
+        scope = RESEARCH_ONLY if any(d.scope == RESEARCH_ONLY for d in self.decisions) else self.scope
+        object.__setattr__(self, "scope", mapping_scope(self.ids, scope))
 
     @property
     def derivative(self) -> bool:
@@ -345,7 +358,7 @@ def resolve_rows(corpus: str, rows: list[dict], overrides: dict | None = None, r
         else:
             out[lem] = Resolved(corpus, r.get("lang") or lang, lem, r.get("word") or lem, ids, auto,
                                 tuple(r.get("path", ())), r.get("how", ""), r.get("confidence", ""),
-                                tuple(r.get("sources", ())), "auto")
+                                tuple(r.get("sources", ())), "auto", scope=mapping_scope(ids, r.get("scope")))
     seen = {r["lemma"] for r in rows}
     for lem in ov["decisions"].get(corpus, {}):
         if lem in seen:

@@ -347,16 +347,12 @@ def override_row(r: dict, overrides: dict) -> tuple[dict | None, bool]:
     An override row with "formation": "derivative" says the lemma continues a derivative of the listed
     lexeme (Ved. mahā́nt- for *méǵh₂s): the row then counts as a derivation, root level.
     (Kept for callers; the checker itself resolves through pie.mapping.)"""
-    hit = overrides.get(r.get("corpus"), {}).get(r.get("lemma"))
-    if not hit:
-        return r, False
-    ids, orow = hit
-    if not ids:
+    corpus = r.get("corpus", "")
+    resolved = mp.resolve_rows(corpus, [r], overrides).get(r["lemma"])
+    if resolved is None:
         return None, True
-    note = orow.get("erratum") or orow.get("note") or "override"
-    path = [p for p in r.get("path", [])[:1]] + ["erratum:" + note]
-    return {**r, "lex_id": sorted(ids), "path": path, "how": "erratum",
-            "formation": orow.get("formation")}, True
+    return {**r, "lex_id": sorted(resolved.ids), "path": list(resolved.path), "how": resolved.how,
+            "formation": resolved.formation, "scope": resolved.scope}, bool(resolved.decisions)
 
 
 def _parts(code: str, lemma: str) -> list[str]:
@@ -441,6 +437,12 @@ def build_population(rows_by_corpus: dict, overrides: dict | None, codes=None, a
             if code is None or (codes is not None and code not in codes):
                 continue
             pop.resolved.append(x)
+            if x.scope == mp.RESEARCH_ONLY:
+                # Keep a blocking decision: dropping the row alone lets reflex/dictionary routes restore it.
+                ds = (mp.decision({"lex_id": list(x.ids), "scope": mp.RESEARCH_ONLY}, corpus, x.lemma),)
+                pop.decided[code].append((corpus, x.lemma, x.word, ds))
+                pop.corrected[code] |= decision_keys(code, x.lemma, x.word)
+                continue
             if x.uncertain:
                 continue                      # an uncertain equation is never secure evidence
             r = row_of.get(x.lemma, {})
@@ -574,7 +576,7 @@ def _path_decided(code: str, rec, overrides: dict | None):
     pd = mp.path_decision(p[1:], code, overrides) if overrides else None
     if pd is None:
         return rec
-    if not pd.ids or pd.uncertain:
+    if not pd.ids or pd.uncertain or pd.scope == mp.RESEARCH_ONLY:
         return None
     return (pd.ids, tuple(p) + ("erratum:" + pd.note,), s, d or pd.derivative)
 
@@ -618,7 +620,8 @@ class Gov:
     def __init__(self, checker: "SecureChecker", decided: list, auto: set):
         self.ch = checker
         self.decided = decided                       # [(corpus, lemma, Decision)]
-        certain = [d for _, _, d in decided if not d.uncertain]
+        self.research_only = any(d.scope == mp.RESEARCH_ONLY for _, _, d in decided)
+        certain = [d for _, _, d in decided if not d.uncertain and d.scope != mp.RESEARCH_ONLY]
         self.allowed = frozenset().union(*(d.ids for d in certain)) if certain else frozenset()
         self.derivative = frozenset().union(*(d.ids for d in certain if d.derivative)) if certain else frozenset()
         unc = [d.ids for _, _, d in decided if d.uncertain]
@@ -629,6 +632,8 @@ class Gov:
 
     def own(self, lid: str) -> str | None:
         """The level the decisions themselves give lid."""
+        if self.research_only:
+            return None
         best = None
         for _, _, d in self.decided:
             if d.uncertain or not d.ids:
@@ -663,7 +668,9 @@ class SecureChecker:
     the tables alone decide."""
 
     def __init__(self, entries: dict, tables: dict | None = None, loader=None, population: Population | None = None):
-        self.entries = entries
+        from .research_scope import research_entry
+        self._research_ids = {i for i, e in entries.items() if research_entry({**e, "id": i})}
+        self.entries = {i: e for i, e in entries.items() if i not in self._research_ids}
         self.tables = {c: dict(t) for c, t in (tables or {}).items()}
         self.loader = loader
         self.population = population
@@ -672,7 +679,7 @@ class SecureChecker:
         self._memo: dict = {}
         self._gov_idx: dict = {}
         self._siblings: dict = collections.defaultdict(set)
-        for i, e in entries.items():
+        for i, e in self.entries.items():
             if e.get("root_id"):
                 self._siblings[e["root_id"]].add(i)
 
@@ -685,6 +692,27 @@ class SecureChecker:
         def loader(code):
             if not cache:
                 cache["others"] = tuple(others_loader()) if others_loader else ()
+            # An external path decision must govern reflex and compound routes too, even if
+            # no corpus table row mentions the word. Preserve the blocking decision before merge
+            # drops its table evidence. Do not turn cross-links into production aliases.
+            for source in cache["others"]:
+                for key, recs in source.get(code, {}).items():
+                    for ids, path, _, _ in recs:
+                        pd = mp.path_decision(path[1:], code, pop.overrides)
+                        if pd is not None:
+                            research = pd.scope == mp.RESEARCH_ONLY
+                        else:
+                            research = mp.mapping_scope(ids) == mp.RESEARCH_ONLY
+                        if research:
+                            word = next((p.split(":", 1)[1] for p in path
+                                         if p.startswith((f"{code}:", f"kaikki-{code}:"))), key)
+                            dc = pd or mp.decision({"lex_id": list(ids), "scope": mp.RESEARCH_ONLY})
+                            # A lemma decision remains authoritative over path/automatic evidence.
+                            if not any(mp.decisions_for(c, word, pop.overrides)
+                                       for c in (pop.overrides or {}).get("decisions", {})
+                                       if code_of(c, mp.corpus_lang(c)) == code):
+                                pop.decided[code].append((f"external:{code}", word, None, (dc,)))
+                                ch._gov_idx.pop(code, None)
             # no key-level drop of the other sources: the decisions cap them word by word (Gov), where a
             # drop by key would also hit an accent homograph (ὠμός under ὦμος)
             return merge_tables(code, pop.tables, cache["others"], {}, ch.dropped[code], pop.overrides)
@@ -745,6 +773,8 @@ class SecureChecker:
         decided lemma whose whole key it is plus one declared ending. A homograph stem elsewhere in the
         language does not decide it (πρόσ-φατος is not φάτις, giráti cited for √gṝ- is not gír-).
         None when no decision applies."""
+        if code is not None and self.population is not None:
+            self.table(code)  # external path decisions must exist before building the governing index
         if code is None or not self.population or not self.population.decided.get(code):
             return None
         idx = self._gov_index(code)
@@ -793,6 +823,8 @@ class SecureChecker:
     # -- levels
     def level_of(self, lid: str, ids) -> str | None:
         ids = set(ids)
+        if mp.mapping_scope(ids | {lid}) == mp.RESEARCH_ONLY or (ids | {lid}) & self._research_ids:
+            return None
         if lid in ids:
             return "exact"
         rid = (self.entries.get(lid) or {}).get("root_id")
@@ -909,6 +941,8 @@ class SecureChecker:
         (pie.mapping) that applies to s caps every route (Gov); a reviewed 'form' row first sends an
         inflected word to its lemma. context: table keys of the lemmas cited with an inflected word
         (None: any decided lemma whose stem it shares)."""
+        if mp.mapping_scope((lid,)) == mp.RESEARCH_ONLY or lid in self._research_ids:
+            return None
         cited = s
         if not lemma:
             fl = self.form_lemma(code, s)
@@ -919,6 +953,9 @@ class SecureChecker:
         best = None
         clash = self.formation_clash(lid, code, cited)
         gov = self.governing(code, s, lemma, sense, context=context)
+        if gov is None and any(mp.mapping_scope(rec[0]) == mp.RESEARCH_ONLY
+                               for rec in self._table_hits(code, s, lemma)):
+            return None
 
         def put(level, via, path, g=None):
             nonlocal best
@@ -1071,6 +1108,8 @@ class SecureChecker:
             for s, is_lemma, sense in self._cited(r):
                 k = key(code, s)
                 whole = self.governing(code, s, is_lemma, sense, context=ctx)
+                if whole is not None and whole.research_only:
+                    continue
                 for pref, plab in sorted(self._first_prefixes(first, code, lang), key=lambda x: -len(x[0])):
                     if not (k.startswith(pref) and len(k) - len(pref) >= 2):
                         continue
@@ -1111,6 +1150,9 @@ class SecureChecker:
         """A compound's remainder (already in key space) against the second member, capped by the
         decisions that govern the remainder."""
         gov = self.governing(code, k=rest, context=context)
+        if gov is None and any(mp.mapping_scope(rec[0]) == mp.RESEARCH_ONLY
+                               for st in stems(code, rest) for rec in self.table(code).get(st, ())):
+            return None
 
         def capped(m):
             if m is None or gov is None:
