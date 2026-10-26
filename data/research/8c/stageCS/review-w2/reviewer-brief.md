@@ -28,3 +28,5 @@ Only in the session scratchpad, inside a folder named after your review part (e.
 
 ## Output
 `data/research/8c/stageCS/review-w2/verdicts-<part>.jsonl`, one line per claim: `{"claim": "C0xx", "grade": "accepted"|"weak"|"reject", "reasons": "…", "checked_loci": ["…"], "etymology_ok": true|false, "generic_risk": "low"|"medium"|"high"}`. Quote daughter text only as single words.
+
+Note (2026-10-26): the etymological dictionaries in raw/books/text/ are present (35 directories of page text). List directories with `/bin/ls` or Python; the shell alias `ls` (eza) can show nothing, and two reviewers wrongly concluded the folder was empty.

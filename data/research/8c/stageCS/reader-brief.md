@@ -53,3 +53,5 @@ A second reader may look at these bundles again.
 If a passage in your slab seems to continue a phrase whose best partner is NOT in your slab, search the corpora for it (scripts/search_corpora.py, see its --help; or the loaders). The search index data/research/8c/search-index/ (used by scripts/search_corpora.py) is explicitly allowed, as an exception to the off-limits list. If you find a partner passage, add one line (it is not a claim; it does not need two slab anchors):
 `{"reader": "...", "slab": "...", "search_lead": {"bundles": ["BS-..."], "slab_anchor": "<passage id>", "found": [{"corpus": "...", "locus": "...", "words": ["..."]}], "cognate": "...", "argument": "...", "recalled": true|false}}`
 Quote only the cited words. Search leads go to a separate review; they never enter the measures.
+
+Note (2026-10-26): the etymological dictionaries in raw/books/text/ are present (35 directories of page text). List directories with `/bin/ls` or Python; the shell alias `ls` (eza) can show nothing, and two reviewers wrongly concluded the folder was empty.
