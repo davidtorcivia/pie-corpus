@@ -64,3 +64,13 @@ Three mapping errors found by the scans are in
 `data/research/8c/stageCS/error-reports-search.jsonl` for fix batch 4: byliny
 *разгорелось* → *h₁el-*; Greek κέρδος 'gain' → *ḱerd-*; ON *nótt* grouped under
 *negʷ-* 'bare'.
+
+## Wave-4 figures (2026-10-26)
+
+| Figure | Scan | Reading |
+|---|---|---|
+| Set a child on the knees (*sed-* + *ǵónu*) | Greek 116, Germanic 25, Celtic 4 (pair window 4) | Il. 9.488 and 9.455, Od. 19.401; ON *setti í kné sér* (Egils saga), *knésetja*; OIr Cú Chulainn *fo glún Chonchobair*. Found independently by RS031, RS031F and RS032F (two slabs). Known theme; Near Eastern parallels. |
+| Men and cattle (*wiHro-* + *peḱu-*) | Indo-Iranian 14 (AV *paśubhiś ca vīraiḥ*, *paśu-vid vīra-vid*), Germanic 0 real, Italic 0 | The textbook formula; **coverage gap**: Umbrian *ueiro pequo* and Avestan *pasu vīra* are not found, so those mappings are missing. |
+| Slay the serpent (*gʷʰen-* + *h₁ógʷʰis*) | RV *áhan áhim* ×36; Greek 0 (ὄφις not cognate) | As expected: outside Vedic the formula uses renewed words (Watkins). |
+| Leave the light = die (*leykʷ-*) | Greek 517 (λείπειν φάος ἠελίοιο: Il. 18.11, Od. 11.93, Hes. *Op.* 155, *H. Ven.* 272); Latin 4 (Lucr. 3.542 *lumina … linquunt*, 3.1025 Ennius, 5.989 *linquebant … lumina vitae*); RV 1.113.1 (night leaves its place to dawn, *ric-*) | Greek formulaic; Latin repeated in Lucretius, a reader of Ennius and Homer (imitation risk); a known theme (light = life). |
+| Redden with blood (*h₁rewdʰ-*) | No cross-branch pair with blood words | Weak. |
