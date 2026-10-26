@@ -35,6 +35,19 @@ def join_restorations(text: str) -> str:
     return re.sub(r"(?<=[^\W\d_])\[([^\W\d_]+)\](?=[^\W\d_])", r"\1", text)
 
 
+def byliny_wiki_lines(rows):
+    """Stop at the reviewed notes section, preserving page/unit numbers."""
+    page = None
+    notes = False
+    for pid, title, i, line in rows:
+        if pid != page:
+            page, notes = pid, False
+        if pid == "425083" and line.strip() == "Примечания":
+            notes = True
+        if not notes:
+            yield pid, title, i, line
+
+
 def repair_celtic_rows(rows: list[dict]) -> list[dict]:
     out = []
     welsh = "welsh-white-book-mabinogion-evans-1907:whitebookofmabin00evan:"
@@ -58,6 +71,14 @@ def repair_celtic_rows(rows: list[dict]) -> list[dict]:
             # The edition expands these abbreviations in parentheses. Keep
             # the letters together, without treating other parentheses as words.
             text = text.replace("atfia(datar)", "atfiadatar").replace("der(ed)", "dered")
+        # W2 Celtic source repairs; exact source spans, not global OCR guesses.
+        # Evidence: error-verdicts-w2-celtic.jsonl, reports 43, 47, 51.
+        if uid.endswith(":revueceltique13pari:L1311-L1312"):
+            continue  # numbered French comparative footnote, not primary narrative
+        if uid.endswith(":zeitschriftfrc09meyeuoft:L7859-L7863"):
+            text = re.sub(r"\bbrag(?:/|\s+)ait\b", "brágait", text)
+        if uid.endswith(":zeitschriftfurcelti14:L22144-L22145"):
+            text = text.replace("fichi(t)", "fichit")
         if d.get("source", "").startswith("celt-ucc/"):
             text = join_restorations(text)
         d["text"] = text

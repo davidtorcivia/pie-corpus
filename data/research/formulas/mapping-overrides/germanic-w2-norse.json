@@ -1,0 +1,174 @@
+{
+ "note": "Wave-2 Norse corrections; source and independent dictionary verification in data/research/8c/stageCS/error-verdicts-w2-norse.jsonl.",
+ "lemma": [
+  {
+   "corpus": "menota",
+   "lemma": "svelgja",
+   "lex_id": [
+    "pie-root-swel-swallow"
+   ],
+   "note": "Zoega s.v. svelgja, svelga; https://norse.ulver.com/dct/zoega/s.html; Swallowing carrion; remove homonymous smolder root.",
+   "erratum": "Swallowing carrion; remove homonymous smolder root."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "rjóða",
+   "lex_id": [
+    "pie-root-h1rewdh-red"
+   ],
+   "note": "Kaikki Old Norse s.v. rjóða; Reddening in battle; *h₁rewdʰ-, not *Hrew- tearing out.",
+   "erratum": "Reddening in battle; *h₁rewdʰ-, not *Hrew- tearing out."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "gegna",
+   "lex_id": [],
+   "note": "Zoega s.v. gegna; https://norse.ulver.com/dct/zoega/g.html; Suit/turn out for the speakers; remove yawning equation, no replacement asserted.",
+   "erratum": "Suit/turn out for the speakers; remove yawning equation, no replacement asserted."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "iarn",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *īsarna-/*īzarna-, p.271 (scan p0311); Celtic loan, uncertain further derivation; do not use blood as inherited Norse evidence.",
+   "erratum": "Celtic loan, uncertain further derivation; do not use blood as inherited Norse evidence."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "járn",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *īsarna-/*īzarna-, p.271 (scan p0311); Celtic loan, uncertain further derivation; do not use blood as inherited Norse evidence.",
+   "erratum": "Celtic loan, uncertain further derivation; do not use blood as inherited Norse evidence."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "skaði",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *skaþjan-, p.441 (scan p0481); Kaikki Old Norse s.v. skaði; Harm noun, not *skaduz shadow. Root spelling differs across references; remove darkness equation without forcing a target.",
+   "erratum": "Harm noun, not *skaduz shadow. Root spelling differs across references; remove darkness equation without forcing a target."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "grund",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *grumþu-/*grundu-, p.192 (scan p0232); Kaikki Old Norse s.v. grund; Ground in the kenning, not roaring; further etymology is not secure enough for substitution.",
+   "erratum": "Ground in the kenning, not roaring; further etymology is not secure enough for substitution."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "tún",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *tūna-, p.526 (scan p0566); Enclosure; Celtic loan, not smoke.",
+   "erratum": "Enclosure; Celtic loan, not smoke."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "gler",
+   "lex_id": [],
+   "note": "Kroonen 2013 s.v. *glasa-/*glaza-, p.180 (scan p0220); Kaikki Old Norse s.v. gler; Glass in eye-designation list; remove calling root, no precise replacement asserted.",
+   "erratum": "Glass in eye-designation list; remove calling root, no precise replacement asserted."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vega@slay",
+   "lex_id": [
+    "pie-lex-wiketi"
+   ],
+   "note": "Kaikki Old Norse s.v. vega, fighting sense; *wiganą < *weyk-.",
+   "erratum": "Wave-2 Norse reviewed sense; see error-verdicts-w2-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "bára@wave",
+   "lex_id": [
+    "pie-root-bher-bear"
+   ],
+   "note": "Kaikki Old Norse s.v. bára; wave noun, root-level *bʰer- only, not the finite verb or bier lexeme.",
+   "erratum": "Wave-2 Norse reviewed sense; see error-verdicts-w2-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "minni@memory",
+   "lex_id": [
+    "pie-root-men-think"
+   ],
+   "note": "Kaikki Old Norse s.v. minni, memory; *(ga)minþiją, root-level *men- only.",
+   "erratum": "Wave-2 Norse reviewed sense; see error-verdicts-w2-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "brá@eyelash",
+   "lex_id": [],
+   "note": "Kaikki Old Norse s.v. brá, noun *brēwō; no reviewed lexeme target, exclude bregða.",
+   "erratum": "Wave-2 Norse reviewed sense; see error-verdicts-w2-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "fló@layer",
+   "lex_id": [
+    "pie-root-pleh2-flat"
+   ],
+   "note": "Kaikki Old Norse s.v. fló, layer; *flohō < *plāk-, *pleh₂-; root-level only.",
+   "erratum": "Wave-2 Norse reviewed sense; see error-verdicts-w2-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "selja@willow",
+   "lex_id": [],
+   "note": "Kaikki Old Norse s.v. selja, noun *salhijǭ; no reviewed target, exclude sell verb.",
+   "erratum": "Wave-2 Norse reviewed sense; see error-verdicts-w2-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "megin@side",
+   "lex_id": [],
+   "note": "Zoega s.v. megin, adverb from vegr; not might.",
+   "erratum": "Wave-2 Norse reviewed sense; see error-verdicts-w2-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "óttask@fear",
+   "lex_id": [],
+   "note": "Zoega s.v. óttast; exclude night/dawn; no reviewed PIE target.",
+   "erratum": "Wave-2 Norse reviewed sense; see error-verdicts-w2-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "mara@nightmare",
+   "lex_id": [],
+   "note": "Kaikki Old Norse s.v. mara, nightmare; *marǭ; no reviewed target.",
+   "erratum": "Wave-2 Norse reviewed sense; see error-verdicts-w2-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "rýgr",
+   "lex_id": [],
+   "note": "Faulkes Skáldskaparmál II glossary s.v. rýgr; woman, not hryggr or rye.",
+   "erratum": "Wave-2 Norse reviewed sense; see error-verdicts-w2-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "fóthvatr",
+   "lex_id": [],
+   "note": "Faulkes Gylfaginning glossary s.v. fóthvatr; compound, no reviewed whole-lexeme equation.",
+   "erratum": "Wave-2 Norse reviewed sense; see error-verdicts-w2-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hræ",
+   "lex_id": [
+    "pie-root-krewh2-blood_outside_the"
+   ],
+   "note": "Kroonen 2013 s.v. *hraiwa-, p.242 (scan p0282): *krou(h₂)-io-. Root-level link only; the s-stem blood lexeme is not the corpse formation.",
+   "erratum": "Kroonen 2013 s.v. *hraiwa-, p.242 (scan p0282): *krou(h₂)-io-. Root-level link only; the s-stem blood lexeme is not the corpse formation."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vitnir",
+   "lex_id": [],
+   "note": "Kaikki Old Norse s.v. vitnir: proposed *h₂wéyd-r̥ connection is explicitly tentative. Recover the wolf lemma without asserting this PIE equation.",
+   "erratum": "Kaikki Old Norse s.v. vitnir: proposed *h₂wéyd-r̥ connection is explicitly tentative. Recover the wolf lemma without asserting this PIE equation."
+  }
+ ],
+ "form": []
+}

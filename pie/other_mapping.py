@@ -53,6 +53,27 @@ def contextual_lemma(corpus: str, lemma: str, surface: str, locus: str) -> str:
     are actual source-token loci, not the sometimes earlier unit-start labels
     in reader reports. Unlisted contexts retain their original lemma.
     """
+    # Wave 2: source and dictionary checks are recorded in
+    # error-verdicts-w2-other.jsonl. Keep homographs outside these contexts.
+    if corpus in {"grc", "grp", "grc-late"}:
+        if lemma == "ὁράω" and surface == "εἶδε":
+            return "εἶδον@see"
+        if lemma == "λέγω" and surface == "εἶπε":
+            return "εἶπον@say"
+        if locus == "Thucydides Historiae 1.1.1 s1" and surface == "ᾖσαν" and lemma == "ἔρχομαι":
+            return "εἰμί"
+        if locus == "Thucydides Historiae 4.75.2 s1" and surface == "Κάλητα":
+            return "Κάλης (name)"
+    if corpus == "orv" and lemma == "поити" and surface == "поидоша":
+        return "поити@go"
+    if corpus == "vuk" and locus == "Vuk 22093:40" and surface == "секу":
+        return "seka"
+    if corpus == "vuk" and locus == "Vuk 33208:10" and surface == "мрклој":
+        return "mrkli"
+    if corpus == "byliny" and locus == "pesnisobrannyepvkireevskimch2pes74:203" and surface == "стБну":
+        return "стена"
+    if corpus == "lv" and locus == "p0216" and surface == "vilka":
+        return "vilkt"
     if corpus == "menota":
         fixes = {
             ("AM-63-fol 326:", "mól", "mál"): "mala",

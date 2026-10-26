@@ -124,7 +124,7 @@ MENOTA_ENTITIES = {
     "Eogon": "Ę", "eogonacute": "ę́", "slong": "s", "slongdes": "s", "rrot": "r", "rscapdot": "r",
     "dstrok": "đ", "Dstrok": "Đ", "zstrok": "z", "ezh": "z", "inodot": "i", "jnodot": "j", "jnodotenl": "j",
     "jacute": "í", "vacute": "ú", "ydot": "y", "fins": "f", "Fins": "F", "vins": "v", "vinsdot": "v",
-    "ocurl": "ǫ", "Ocurl": "Ǫ", "oogoncurl": "ǫ", "acurl": "a", "ecurl": "e", "ucurl": "u",
+    "ocurl": "ǫ", "Ocurl": "Ǫ", "oogoncurl": "ǫ", "oslashcurl": "ø", "acurl": "a", "ecurl": "e", "ucurl": "u",
     "avlig": "au", "AVlig": "Au", "avligacute": "au", "aylig": "ey", "aalig": "á", "aaligacute": "á",
     "aaligdblac": "á", "adblac": "á", "aolig": "ǫ", "aoligacute": "ǫ́", "drotvlig": "dv", "gethlig": "gð",
     "et": "ok", "etslash": "ok", "etfin": "ok", "combacute": "\u0301", "drot": "d", "drotenl": "d",
@@ -219,6 +219,9 @@ def menota_words(path: Path, doc: str) -> list[MenotaWord]:
     (pb/lb), stanza (lg n) and a sentence counter (a full stop, colon,
     question or exclamation mark in a <pc>, or an <s>/<p> boundary)."""
     t = path.read_text("utf-8")
+    # Comments can contain apparent XML tags; remove them before tokenization,
+    # not with the generic tag stripper (which stops at an internal '>').
+    t = re.sub(r"<!--.*?-->", "", t, flags=re.S)
     i = t.find("<text")
     t = t[i:] if i >= 0 else t
     out, folio, line, stanza, sent = [], "", "", None, 0
@@ -257,6 +260,31 @@ def menota_form_key(s: str) -> str:
     return fm.key_non(s, True)
 
 
+def menota_reviewed_tokens(root: Path = ROOT) -> dict:
+    """Source-coordinate sense repairs, applied after form-table inference.
+
+    Each row cites its source and dictionary in the wave-2 Norse ledger.
+    Keeping these out of the voting table prevents a local sense decision
+    from changing the analysis of the same surface form elsewhere.
+    """
+    path = Path(root) / "data/research/formulas/menota-reviewed-w2.json"
+    if not path.exists():
+        return {}
+    return {(r["doc"], r["folio"], r["line"], r["form"]): r
+            for r in json.loads(path.read_text("utf-8"))}
+
+
+def reviewed_menota_token(w: MenotaWord, lemma: str, msa: str, rules: dict) -> tuple[str, str]:
+    names = {"án", "hróðný", "gunnarr", "eyvindr", "kári", "freyr", "bjarni", "bróðir",
+             "haraldr", "mímir", "yngvi"}
+    if msa == "NP" and lemma.lower() in names:
+        return lemma + " (name)", msa
+    row = rules.get((w.doc, w.folio, w.line, w.form))
+    if row and lemma == row["given_lemma"]:
+        return row["lemma"], row["tag"]
+    return lemma, msa
+
+
 def menota_documents(root: Path = ROOT, languages=WEST_NORSE) -> list[tuple[str, dict]]:
     cat = menota_catalogue(root)
     return [(d, cat[d]) for d in sorted(cat) if cat[d].get("language") in languages]
@@ -271,6 +299,7 @@ def load_menota(root: Path = ROOT, languages=WEST_NORSE, min_share: float = 2 / 
     otherwise '?' + form key). Surface forms remain in memory for reviewed
     token-level sense corrections; mapping tables contain no running text."""
     root = Path(root)
+    reviewed = menota_reviewed_tokens(root)
     docs = menota_documents(root, languages)
     words = {d: menota_words(root / MENOTA / "xml" / f"{d}.xml", d) for d, _ in docs}
     votes: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
@@ -296,6 +325,9 @@ def load_menota(root: Path = ROOT, languages=WEST_NORSE, min_share: float = 2 / 
                 src = "form-table" if not lem.startswith("?") else "unknown"
             elif not lem:
                 continue
+            corrected, tag = reviewed_menota_token(w, lem, msa, reviewed)
+            if (corrected, tag) != (lem, msa):
+                lem, msa, src = corrected, tag, "reviewed"
             if msa == "FW" or lem in ("Latin.expression", "unass.", "?"):
                 continue
             pos = MENOTA_CONTENT.get(msa, "other")

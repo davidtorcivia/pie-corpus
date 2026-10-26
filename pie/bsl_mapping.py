@@ -1283,10 +1283,10 @@ def byliny_units(root: Path = ROOT):
     indexes mostly fail this). Reviewed editorial source spans are excluded by
     material_units; this is not a claim that all remaining OCR is verse.
     Rybnikov pt. I is in both the wikisource and the OCR set."""
-    from pie.material_units import excluded_source
+    from pie.material_units import byliny_wiki_lines, excluded_source
     root = Path(root)
     p = root / KD / "russian-byliny-wikisource/texts-plaintext.txt"
-    for pid, title, i, line in _plaintext_songs(p):
+    for pid, title, i, line in byliny_wiki_lines(_plaintext_songs(p)):
         yield (f"ruws {pid}:{i}", {"song": f"ruws:{pid}", "line": f"ruws:{pid}:{i}",
                                    "source": "russian-byliny-wikisource"}, line)
     for d, files in BYLINY_OCR.items():

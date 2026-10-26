@@ -1297,6 +1297,7 @@ IR_REVIEWED_CONTEXT = {
         (('ní',), ('fáitsine',), 'bí', False),  # IR-CS-059
     ],
     'bíad': [
+        (('no',), ('a chend',), 'bí', False),  # W2-044: conditional with a chend
         (('no',), ('congal',), 'bí', False),  # IR-CS-105
         (('no',), ('for',), 'bí', False),  # IR-CS-106
         (('no',), ('fora',), 'bí', False),  # IR-CS-106
@@ -1329,6 +1330,7 @@ IR_REVIEWED_CONTEXT = {
         (('dá',), (), 'colainn', False),  # IR-CS-088
     ],
     'comla': [
+        (('dorsaide in',), ('la',), 'comla', False),  # W2-065
         (('tiprait',), ('furri',), 'comla', False),  # IR-CS-124
     ],
     'cuala': [
@@ -1604,6 +1606,18 @@ IR_REVIEWED_CONTEXT = {
     ],
 }
 
+# Wave-2 source and dictionary evidence: error-verdicts-w2-celtic.jsonl.
+IR_REVIEWED_CONTEXT.update({
+    'hlechta': [(('trian',), (), 'mlicht', False)],
+    'fóirithin': [(('furtacht',), ('orum',), 'foirithin@help', False)],
+    'tliúath': [(('toing mo',), ('or',), 'túath', False)],
+    'cléib': [(('for-fholumh a',), ('co',), 'clíab', False)],
+    'coin': [(('erne',), ('hingenaib',), 'cona', False)],
+    'mben': [(('co',), ('dí',), 'benaid', False)],
+    'tóchta': [(('dechmaid in',), ('co',), 'tócht@piece', False)],
+})
+
+
 def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
     """Lemmas for a word sequence: `lemz(w)` for each word, except that a form in CONTEXT_FORMS takes the
     lemma its preceding word selects (tig after isin / i / ina / dia … → tech 'house'). Stage C should use
@@ -1624,10 +1638,18 @@ def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
                 if previous and not any(normalized[max(0, i - len(p.split())):i] == p.split()
                                         for p in previous):
                     continue
-                if following and (i + 1 == len(words) or normalized[i + 1] not in following):
+                if following and not any(normalized[i + 1:i + 1 + len(f.split())] == f.split()
+                                         for f in following):
                     continue
                 lem = target
                 break
+        # W2-089: negative preverbal complex; the exact clitic/OCR analysis
+        # of final f is not needed to exclude the snow noun here.
+        # nyf also denotes snow; preserve that noun outside this reviewed context.
+        if (lemz.lm.lang == "cy" and key_cy(welsh_norm(w, True)) == "nyf"
+                and i + 1 < len(words)
+                and key_cy(welsh_norm(words[i + 1], True)) == "rygelwy"):
+            lem = "ny"
         out.append(lem)
     return out
 
@@ -1658,7 +1680,8 @@ def content_of(lm: fm.LangMapping, lem: str, surface: str, lemz=None) -> bool:
     two-letter forms that the lemmatizer `lemz` matched only after mutation
     stripping or by skeleton."""
     lang = "cy" if lm.lang == "cy" else "sga"
-    if lm.lang == "sga" and is_function_lemma(lm, lem):
+    if (lm.lang == "sga" and is_function_lemma(lm, lem)
+            or lm.lang == "cy" and lem == "ny" and key_cy(surface) == "nyf"):
         return False
     if len(surface) <= 1 or is_function_word(surface, lang):
         return False

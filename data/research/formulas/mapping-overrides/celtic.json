@@ -2579,6 +2579,34 @@
    "lex_id": [],
    "erratum": "Reviewed Irish sense/stem: órda@golden",
    "note": "IR-CS-072. raw/daughters/celt-ucc/units.jsonl#G303000:#1:822; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:952 s.v. ór. The adjective describes golden chains; it is derived from the Latin gold loan. No unsupported PIE equation is supplied."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "foirithin@help",
+   "lex_id": [],
+   "erratum": "Wave-2 reviewed nominal sense; exclude unrelated homograph mapping",
+   "note": "Windisch, Irische Texte I, glossary s.v. fo-riuth, source OCR lines 51092-51103; CELT G303000:#1:1308. See error-verdicts-w2-celtic.jsonl. Keep unmapped pending a reviewed PIE derivation."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "foirithin@help",
+   "lex_id": [],
+   "erratum": "Wave-2 reviewed nominal sense; exclude unrelated homograph mapping",
+   "note": "Windisch, Irische Texte I, glossary s.v. fo-riuth, source OCR lines 51092-51103; CELT G303000:#1:1308. See error-verdicts-w2-celtic.jsonl. Keep unmapped pending a reviewed PIE derivation."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "tócht@piece",
+   "lex_id": [],
+   "erratum": "Wave-2 reviewed nominal sense; exclude unrelated homograph mapping",
+   "note": "Windisch, Irische Texte I, glossary s.v. tócht, source OCR lines 87417-87419; CELT G308002:#1/23:11. See error-verdicts-w2-celtic.jsonl. Keep unmapped pending a reviewed PIE derivation."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "tócht@piece",
+   "lex_id": [],
+   "erratum": "Wave-2 reviewed nominal sense; exclude unrelated homograph mapping",
+   "note": "Windisch, Irische Texte I, glossary s.v. tócht, source OCR lines 87417-87419; CELT G308002:#1/23:11. See error-verdicts-w2-celtic.jsonl. Keep unmapped pending a reviewed PIE derivation."
   }
  ],
  "form": [

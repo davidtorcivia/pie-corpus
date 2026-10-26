@@ -1,0 +1,61 @@
+{
+  "note": "Independently reviewed wave2 other corrections; error-verdicts-w2-other.jsonl.",
+  "lemma": [
+    {
+      "corpus": "grp",
+      "lemma": "εἶδον@see",
+      "lex_id": [
+        "pie-root-weyd-see"
+      ],
+      "note": "GLAUx Hdt7.147.2 εἶδε; Kaikki Ancient Greek s.v. εἶδον: suppletive aorist, *weyd-. Wave2 report69."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "εἶπον@say",
+      "lex_id": [
+        "pie-root-wekw-speak"
+      ],
+      "note": "GLAUx Hdt1.32.1 εἶπε; Kaikki Ancient Greek s.v. εἶπον: *wekʷ-. Wave2 report70."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "Ἴων",
+      "lex_id": [],
+      "note": "GLAUx Hdt5.97.3/7.31.1/2.179.1/2.23.1; Kaikki Ancient Greek s.v. Ἴων: ethnic or proper name, excluded from common-word matching. Wave2 reports81–83,102."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "Φρυγία",
+      "lex_id": [],
+      "note": "GLAUx Hdt5.97.3/7.31.1/2.179.1/2.23.1; Kaikki Ancient Greek s.v. Φρυγία: ethnic or proper name, excluded from common-word matching. Wave2 reports81–83,102."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "Ναύκρατις",
+      "lex_id": [],
+      "note": "GLAUx Hdt5.97.3/7.31.1/2.179.1/2.23.1; Kaikki Ancient Greek s.v. Ναύκρατις: ethnic or proper name, excluded from common-word matching. Wave2 reports81–83,102."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "Ὅμηρος",
+      "lex_id": [],
+      "note": "GLAUx Hdt5.97.3/7.31.1/2.179.1/2.23.1; Kaikki Ancient Greek s.v. Ὅμηρος: ethnic or proper name, excluded from common-word matching. Wave2 reports81–83,102."
+    },
+    {
+      "corpus": "orv",
+      "lemma": "поити@go",
+      "lex_id": [
+        "pie-root-h1ey-go"
+      ],
+      "note": "TOROT suz-lav token3343122 поидоша, lemma поити#1; Kaikki Old East Slavic s.v. поити and ити: motion *pojьti, not causative drink *pojiti. Wave2 report68."
+    },
+    {
+      "corpus": "av",
+      "lemma": "svasṛ",
+      "lex_id": [
+        "pie-lex-swesoxr"
+      ],
+      "note": "DCS AVP19,46.s26 compound member svasṛ; Kaikki Sanskrit s.v. स्वसृ: inherited *swésōr. Wave2 report130."
+    }
+  ]
+}

@@ -1786,6 +1786,9 @@ def text_tokens(corpus: str, units, lemmatize, is_content) -> list[Token]:
     for locus, u, text in units:
         for w in (_WORDS.findall(text) if isinstance(text, str) else text):
             lem = lemmatize(w)
+            # These legacy tokens store surfaces separately; disambiguate
+            # while the source form is still available (e.g. Latvian vilka).
+            lem = fs.contextual_lemma(corpus, lem, w, locus)
             toks.append(Token(corpus, lem, "", locus, u, is_content(lem), "other"))
     return toks
 
