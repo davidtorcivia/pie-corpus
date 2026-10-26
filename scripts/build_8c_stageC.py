@@ -271,9 +271,10 @@ def load_celtic(root: Path, lex: list, max_date=None, log=print) -> tuple[dict, 
         book, locus, uid = celtic_book(d), d["id"], d["id"]
         lic = d["licence"]
         src = d["source"].split("/")
-        if src[0] == "celt-ucc" and len(src) > 1 and (src[1] in cm.CELT_RESEARCH_ONLY) != (lic == "research"):
-            research_mismatch += 1
-        meta[uid] = celtic_meta(d)
+        if src[0] == "celt-ucc" and len(src) > 1:
+            lic = cm.celt_licence(src[1])
+            research_mismatch += lic != d["licence"]
+        meta[uid] = celtic_meta({**d, "licence": lic})
         texts[c][uid] = d["text"]
         if c == "sga-gl" and gloss_unit_key(d) in gl:
             key = gloss_unit_key(d)
@@ -563,6 +564,21 @@ def glaux_late_selection(root: Path = ROOT) -> list[dict]:
     return out
 
 
+def load_greek_late(root, lex, gmap):
+    """GLAUx late Greek: grc-late corpus, grc links, grp reviewed decisions."""
+    from pie import formula_search as fs
+    from pie import formula_search_multi as fm
+    sel = glaux_late_selection(root)
+    glic = {r["TLG"]: r["SOURCE_LICENSE"] for r in sel}
+    gtoks, gsurf = SB.load_glaux_b(sel, root)
+    m = fs.build_kaikki_mapping("grc", lex, gtoks, fs.build_homer_mapping(lex, gtoks), root=root, pseudo=True)
+    m = fm.apply_lemma_overrides("grp", m, gmap, root=root)
+    units = SB.units_from_tokens(
+        "grc-late", gtoks, "line", lambda t: t.units["book"], gsurf, {k: tuple(v) for k, v in m.lemma_lex.items()},
+        lambda t: lic_pair(f"GLAUx; source text licence: {glic.get(t.units['book'], '?')}"))
+    return units, len(sel)
+
+
 def load_extra(root: Path, lex: list, gmap: dict, log=print) -> tuple[dict, dict]:
     from pie import formula_search as fs
     from pie import formula_search_multi as fm
@@ -576,16 +592,9 @@ def load_extra(root: Path, lex: list, gmap: dict, log=print) -> tuple[dict, dict
     out["sa-ep"] = SB.units_from_tokens("sa-ep", ep, "sentence", lambda t: t.units["chapter"],
                                         [t.surface for t in ep], emap, lambda t: lic_pair(lic))
     log(f"sa-ep: {len(out['sa-ep'])} units")
-    sel = glaux_late_selection(root)
-    glic = {r["TLG"]: r["SOURCE_LICENSE"] for r in sel}
-    gtoks, gsurf = SB.load_glaux_b(sel, root)
-    m = fs.build_kaikki_mapping("grc", lex, gtoks, fs.build_homer_mapping(lex, gtoks), root=root, pseudo=True)
-    m = fm.apply_lemma_overrides("grc", m, gmap, root=root)
-    out["grc-late"] = SB.units_from_tokens(
-        "grc-late", gtoks, "line", lambda t: t.units["book"], gsurf, {k: tuple(v) for k, v in m.lemma_lex.items()},
-        lambda t: lic_pair(f"GLAUx; source text licence: {glic.get(t.units['book'], '?')}"))
-    notes["glaux_late_texts"] = len(sel)
-    log(f"grc-late: {len(out['grc-late'])} units from {len(sel)} texts")
+    out["grc-late"], count = load_greek_late(root, lex, gmap)
+    notes["glaux_late_texts"] = count
+    log(f"grc-late: {len(out['grc-late'])} units from {count} texts")
     return out, notes
 
 

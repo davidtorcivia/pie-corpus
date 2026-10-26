@@ -1,5 +1,66 @@
 # Phase 8c Stage C: build report (2026-10-24)
 
+## 2026-10-25 ENG-02 routing correction (historical inputs preserved)
+
+The current builders now apply the reviewed `grp` decisions to both GLAUx
+populations. The etymological-link language remains `grc`, and passage corpus
+labels remain `grc` / `grc-late`. Homer still uses the separate `hom` decisions.
+The two erroneous calls were still present when ENG-02 was checked against the
+working tree; no git commands were used. Stage C-S inherits both corrected
+routes through `Stage C.load_all`; Stage A's `grp` table route and the
+formula-search GLAUx `grp` route already select the reviewed population. The
+formula-search Greek NT calque comparator is a separate population and was not
+rerouted or merged with these GLAUx decisions.
+
+Production-loader regressions use the shipped lexicon and Greek links to check
+ὦμος → shoulder, ἕπομαι → follow only, δαμάζω → tame only, and the distinct
+ὠμός → raw, plus unmapped words, unchanged Homeric routing, stable passage IDs,
+loci and licences.
+
+Reproduce the impact check with:
+
+```
+uv run python -I scripts/check_8c_greek_routing.py
+```
+
+The script reloads each complete GLAUx population twice in separate fresh
+processes, changing only the reviewed-decision namespace (`grc` versus `grp`).
+Loader caches are disabled; neither `scratchpad/stagecs-cache` nor any old
+`stagec-cache` is reused. Temporary snapshots contain IDs, root sets and hashes,
+not passage text. The shipped Greek link extract remains a common mapping input.
+It compares all units before retrieval deduplication and checks passage identity,
+text, lemmas, loci and licence provenance for equality. Annotation changes mean
+a change in a content word's lexicon-ID set, even if the unit's root union stays
+the same. Existing Stage C bundle membership is inspected only through its
+historical loci files; this is not a rerun of retrieval or a count of bundles
+that would survive corrected retrieval.
+
+Measured on 2026-10-25 ([machine-readable counts and input SHA-256 hashes](8c-greek-routing-impact-2026-10-25.json)):
+
+| corpus | units compared | changed root sets | changed word-level mappings |
+|---|---:|---:|---:|
+| `grc` | 282,885 | 143,224 | 144,835 |
+| `grc-late` | 632,158 | 352,909 | 358,285 |
+
+All compared passage identities and provenance hashes were unchanged. The
+correction applies the entire reviewed `grp` population, not only the three
+illustrative bad mappings. Across the 187 historical Stage C loci files present
+in this checkout (24,730 distinct bundles), 23,014 distinct member passages
+change root sets, affecting 16,892 bundles. Word-level mappings change in 23,420
+distinct member passages across 17,056 bundles. These counts cover listed pivots
+and partners, not adjacent context passages, and describe the currently available
+historical files rather than the preliminary totals farther below.
+
+Completed Stage C artifacts, caches, frozen parameters and original results
+remain historical inputs and have not been regenerated. Their Greek annotations
+must not be treated as corrected inputs. The lead will rebuild Stage C-S with
+fresh caches and record the new engine/mapping provenance, input hashes,
+parameters and dated amendment before reading. No Stage C-S key or slab was
+opened for this correction.
+
+Validation: `uv run pytest -q` completed with **2,504 passed** (367.77 s).
+`UV_CACHE_DIR` was set to a writable temporary directory for this environment.
+
 The build follows the pre-registration (docs/research/8c-preregistration.md, sections "Stage C" and "Stage C build deviations"). The builder is `scripts/build_8c_stageC.py`. It imports the Stage B builder and reuses its retrieval, bundling, decoy and slab-packing code unchanged. Tests are in `tests/test_8c_stageC.py`.
 
 **These are preliminary numbers.** They come from the mapping tables as of 2026-10-24 05:00, which include Celtic mapping round 2 (CELT coverage 32.8%; `lemmatize_words` is applied to every Celtic word sequence, including the untagged gloss tokens). The final build will be rerun after the fix/mapres merge (see "Re-running").
@@ -143,10 +204,10 @@ Period is the century of the date midpoint. *Pivots* are the indexed units.
 
 ### Licence tags
 
-Every passage carries `licence` and `licence_tag`, and every slab lists its tag counts. `research_only` is true for the tags research, nc, nd and unchecked; for the Stage B corpora it is Stage B's own flag (e.g. GLAUx texts outside CC BY / CC BY-SA 4.0 stay research_only, as in Stage B). CELT files are tagged as the Celtic layer tags them:
+Every passage carries `licence` and `licence_tag`, and every slab lists its tag counts. `research_only` is true for the tags research, nc, nd and unchecked; for the Stage B corpora it is Stage B's own flag (e.g. GLAUx texts outside CC BY / CC BY-SA 4.0 stay research_only, as in Stage B). As of 2026-10-25, per David's ruling, `celtic_mapping.celt_licence` decides CELT tags in the builder's units and metadata:
 - 58 OUP-notice files G400001–G400058 are `research`.
-- The CC BY-NC-SA files G100055/56 and G600019/31 are `nc`.
-- **Mismatch to settle with David.** The layer also tags 1,429 units of G400065–G400090 as `research`, but `celtic_mapping.CELT_RESEARCH_ONLY` (G400001–058) would make them `consent-train`. The build keeps the stricter tag.
+- All other CELT files are `consent-train`, including G400065–G400090, whose 1,429 layer units are tagged `research`, and G100055/56 and G600019/31, whose layer tags are `nc`.
+- `notes["celt_research_tag_mismatch"]` counts layer tags that disagreed with the CELT rule and were corrected. Non-CELT units retain their layer tags.
 
 ReA, Tocharian A and Old Albanian are `nc`, as are PROIEL-derived TOROT and the CAB Avesta.
 

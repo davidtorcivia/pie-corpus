@@ -1,0 +1,31 @@
+{
+  "cache_policy": "fresh subprocess per corpus/mode; loader caches disabled",
+  "corpora": {
+    "grc": {
+      "units": 282885,
+      "root_sets_changed": 143224,
+      "mapping_annotations_changed": 144835
+    },
+    "grc-late": {
+      "units": 632158,
+      "root_sets_changed": 352909,
+      "mapping_annotations_changed": 358285
+    }
+  },
+  "historical_stageC": {
+    "loci_files": 187,
+    "bundles": 24730,
+    "member_passages_with_changed_roots": 23014,
+    "member_passages_with_changed_annotations": 23420,
+    "bundles_with_changed_roots": 16892,
+    "bundles_with_changed_annotations": 17056
+  },
+  "sha256": {
+    "scripts/build_8c_stageB.py": "54f1655d5f39e3b8bd1f253503e77e2aa25a0390d81fdc8249aa060f610fb547",
+    "scripts/build_8c_stageC.py": "c0c725d0341b6a04be87267d4cc335f449a84434b251e57cd0de8dfb505fe64d",
+    "scripts/check_8c_greek_routing.py": "3b28a26e1c4b848cc68b6311444c019c62f4a2beb06a8fc6f0c9eccdad773166",
+    "data/lexicon/lexicon.jsonl": "63d44dceac01956cf19262ae2a555bad668c3fcdaffadff1bc14f07da1972969",
+    "data/research/formulas/kaikki_links/grc.jsonl": "498732cc56b831c539667584bf6654ce59f57f85baf78218db59219f9da10449",
+    "data/research/formulas/mapping-overrides/greek.json": "2c3e6ef6405e8c992c4d3476fdfa28b7db16e3c001d3fded09ace7f2b58cd1b2"
+  }
+}

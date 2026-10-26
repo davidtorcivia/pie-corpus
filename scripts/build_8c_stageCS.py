@@ -51,6 +51,7 @@ KEY = ROOT / "data" / "audits" / "keys" / "8c-stageCS-key.json"
 SEED = 0
 SEED_TAG = "8c-stageCS"
 CORPUS_CAP = 2
+CAND_MAX = 400              # most candidates rescored per pivot when the cap leaves slots empty
 THIN_MAX_UNITS = 15000      # a partner corpus with fewer indexed units is thin
 THIN_SLOTS = 2
 HEADER = ("Comparison bundles (Stage C-S): Celtic and newly added traditions with partners from the "
@@ -223,21 +224,44 @@ class Classifier:
         return 0
 
 
+def hittite_paragraph_texts(root: Path = ROOT) -> dict:
+    """Paragraph key (as load_hittite's 'para': 'tablet|n') → the displayed text of every Hittite-language word in
+    it, unlemmatized words included, cut at `parsep` even inside a line (load_hittite's segmentation)."""
+    from pie import formula_search_multi as fm
+    out: dict = collections.defaultdict(list)
+    for fn in sorted((root / fm.HIT_DIR).glob("*/*.xml")):
+        body = fn.read_text("utf-8", errors="replace").split("<body>", 1)[-1]
+        cur, para = None, 0
+        for piece in re.split(r"(<lb [^>]*>|<parsep[^>]*>)", body):
+            if piece.startswith("<lb "):
+                m = fm._HIT_LB.search(piece)
+                lg = re.search(r'lg="([^"]*)"', piece)
+                cur = (m[1], m[2]) if m and (not lg or lg[1] == "Hit") else None
+                continue
+            if piece.startswith("<parsep"):
+                para += 1
+                continue
+            if not cur:
+                continue
+            for wm in fm._HIT_W.finditer(piece):
+                attrs = wm[1]
+                end = piece.find("</w>", wm.end())
+                inner = "" if attrs.endswith("/") or end < 0 else piece[wm.end():end]
+                disp = B._hit_w_text(inner)
+                if disp:
+                    out[f"{fn.stem}|{para}"].append(disp)
+    return {k: " ".join(v) for k, v in out.items()}
+
+
 def hittite_paragraph_units(root: Path = ROOT, by_id: dict | None = None) -> list:
     """Hittite units at paragraph level (TLHdig `parsep` to `parsep`, windowed like every long unit) instead of
     Stage B's tablet lines: a line is too short to share two roots with anything (Stage C-S, thin-corpus rule)."""
     from pie import formula_search as fs
     from pie import formula_search_multi as fm
     toks = fm.load_hittite(root)
-    hlines, hsurf = B._hit_lines(fm, root)
+    _, hsurf = B._hit_lines(fm, root)
     assert len(hsurf) == len(toks)
-    para_lines: dict = collections.defaultdict(list)
-    for t in toks:
-        k = t.units["line"]
-        lst = para_lines[t.units["para"]]
-        if k not in lst:
-            lst.append(k)
-    text_of = {p: " ".join(w for k in ks for w in hlines[k][2]) for p, ks in para_lines.items()}
+    text_of = hittite_paragraph_texts(root)
     hl, hro = SB.CORPORA["hit"][2], SB.CORPORA["hit"][3]
     us = SB.units_from_tokens("hit", toks, "para", lambda t: t.units["line"].split("|")[0], hsurf,
                               B._table("hit"), lambda t: (hl, hro), text_of=text_of)
@@ -349,16 +373,24 @@ class SIndex(SB.Index):
         if not ok.any():
             return []
         uniq, sc = uniq[ok], sc[ok]
-        order = np.lexsort((uniq, -np.round(sc, 9)))[:SB.CAND_K]
-        scored = []
-        for k in order:
+        order = np.lexsort((uniq, -np.round(sc, 9)))
+        # rescore the CAND_K best by the fast score; if the per-corpus cap then leaves slots empty, keep rescoring
+        # further candidates (up to CAND_MAX) so that one corpus filling the first CAND_K cannot crowd out others
+        scored, out = [], []
+        for n_done, k in enumerate(order[:CAND_MAX]):
+            if n_done >= SB.CAND_K and len(out) >= top_k:
+                break
             v = int(uniq[k])
             s, gs = self.match(u, v)
             if len(gs) >= min_shared and any(g >= self.n_common for g in gs):
                 scored.append((round(s, 6), v, len(gs)))
-        scored.sort(key=lambda x: (-x[0], x[1]))
+            if n_done + 1 >= SB.CAND_K:
+                out = self._capped(scored, top_k)
+        return self._capped(scored, top_k)
+
+    def _capped(self, scored: list, top_k: int) -> list:
         out, per = [], collections.Counter()
-        for s, v, n in scored:
+        for s, v, n in sorted(scored, key=lambda x: (-x[0], x[1])):
             if per[self.corp[v]] >= CORPUS_CAP:
                 continue
             per[self.corp[v]] += 1
@@ -395,10 +427,11 @@ class SIndex(SB.Index):
         for v in uniq:
             v = int(v)
             s, gs = self.match(u, v)
+            s = round(s, 6)                 # compare at the stored precision (ties: lower uid)
             if len(gs) >= SB.MIN_SHARED and any(g >= self.n_common for g in gs):
                 c = self.corp[v]
                 if c not in best or (-s, v) < (-best[c][0], best[c][1]):
-                    best[c] = (round(s, 6), v, len(gs))
+                    best[c] = (s, v, len(gs))
         return sorted(best.values(), key=lambda x: (-x[0], x[1]))[:slots]
 
 

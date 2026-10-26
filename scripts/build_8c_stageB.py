@@ -256,6 +256,28 @@ def B_fm():
     return fm
 
 
+def live(population, lang, toks, backoff, lex, gmap, root=ROOT):
+    """Keep the reviewed population distinct from the etymological-link language."""
+    from pie import formula_search as fs
+    m = fs.build_kaikki_mapping(lang, lex, toks, backoff, root=root, pseudo=True)
+    m = B_fm().apply_lemma_overrides(population, m, gmap, root=root)
+    return {k: tuple(v) for k, v in m.lemma_lex.items()}
+
+
+def load_greek_b(root, lex, gmap):
+    """GLAUx broad Greek: grc corpus/link language, grp reviewed decisions."""
+    from pie import formula_search as fs
+    sel = glaux_selection_b(root)
+    glic = {r["TLG"]: r["SOURCE_LICENSE"] for r in sel}
+    gtoks, gsurf = load_glaux_b(sel, root)
+    gmapping = live("grp", "grc", gtoks, fs.build_homer_mapping(lex, gtoks), lex, gmap, root)
+    units = units_from_tokens(
+        "grc", gtoks, "line", lambda t: t.units["book"], gsurf, gmapping,
+        lambda t: (f"GLAUx; source text licence: {glic.get(t.units['book'], '?')}",
+                   glic.get(t.units["book"]) not in B.GLAUX_FREE))
+    return units, len(sel)
+
+
 def load_units_b(root: Path = ROOT, log=print) -> tuple[dict, dict, dict]:
     """All Stage B corpora as ordered Units with content words mapped (round-3 mapping + errata).
     Returns (units by corpus, lexicon by id, mapping coverage notes)."""
@@ -267,31 +289,18 @@ def load_units_b(root: Path = ROOT, log=print) -> tuple[dict, dict, dict]:
     notes: dict = {}
     lic = lambda c: (lambda t, c=c: (CORPORA[c][2], CORPORA[c][3]))
 
-    def live(c, lang, toks, backoff):
-        m = fs.build_kaikki_mapping(lang, lex, toks, backoff, root=root, pseudo=True)
-        m = fm.apply_lemma_overrides(c, m, gmap, root=root)
-        return {k: tuple(v) for k, v in m.lemma_lex.items()}
-
     rv, hom, lat = fs.load_rv(root), fs.load_homer(root), fs.load_latin(root)
     for c, toks, lang, r1, unit, book in (("rv", rv, "sa", fs.build_rv_mapping, "pada", "hymn"),
                                           ("hom", hom, "grc", fs.build_homer_mapping, "line", "book"),
                                           ("lat", lat, "la", fs.build_latin_mapping, "line", "book")):
-        mp_ = live(c, lang, toks, r1(lex, toks))
+        mp_ = live(c, lang, toks, r1(lex, toks), lex, gmap, root)
         out[c] = units_from_tokens(c, toks, unit, lambda t, b=book: t.units[b], [t.surface for t in toks], mp_,
                                    lic(c))
     log("rv/hom/lat loaded")
     av = fm.load_dcs(texts=fm.DCS_VEDIC[:2], root=root)
     out["av"] = units_from_tokens("av", av, "sentence", lambda t: t.units["chapter"], [t.surface for t in av],
                                   B._table("av"), lic("av"))
-    sel = glaux_selection_b(root)
-    glic = {r["TLG"]: r["SOURCE_LICENSE"] for r in sel}
-    gtoks, gsurf = load_glaux_b(sel, root)
-    gmapping = live("grc", "grc", gtoks, fs.build_homer_mapping(lex, gtoks))
-    out["grc"] = units_from_tokens(
-        "grc", gtoks, "line", lambda t: t.units["book"], gsurf, gmapping,
-        lambda t: (f"GLAUx; source text licence: {glic.get(t.units['book'], '?')}",
-                   glic.get(t.units["book"]) not in B.GLAUX_FREE))
-    notes["glaux_texts"] = len(sel)
+    out["grc"], notes["glaux_texts"] = load_greek_b(root, lex, gmap)
     sga_files = sorted((root / fm.UD_SGA).glob("*/*.conllu"))
     sga = fm.load_conllu_simple(sga_files, "sga")
     forms, texts = B._sga_surfaces(sga_files)

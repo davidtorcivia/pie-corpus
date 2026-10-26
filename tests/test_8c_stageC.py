@@ -7,6 +7,7 @@ import json
 import random
 import sys
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -72,6 +73,47 @@ def test_licence_tag():
     for t in C.CELTIC_LICENCE:
         assert C.licence_tag(t) == t
     assert C.CELTIC_LICENCE["research"][1] and C.CELTIC_LICENCE["nc"][1] and not C.CELTIC_LICENCE["consent-train"][1]
+
+
+def test_load_celtic_uses_celt_licence_rule(monkeypatch, tmp_path):
+    from pie import celtic_mapping as cm
+
+    cases = [
+        ("celt-ucc/G400001", "consent-train", "research"),
+        ("celt-ucc/G400058", "research", "research"),
+        ("celt-ucc/G400065", "research", "consent-train"),
+        ("celt-ucc/G400090", "research", "consent-train"),
+        ("celt-ucc/G100055", "nc", "consent-train"),
+        ("celt-ucc/G301035", "consent-train", "consent-train"),
+        ("invented/G400001", "consent-train", "consent-train"),
+        ("invented/G400065", "research", "research"),
+        ("invented/edition", "nc", "nc"),
+    ]
+    rows = [{"id": f"invented{i}:1", "source": source, "licence": tag,
+             "text": "invented", "kind": "l", "lang": "mga", "genre": "verse",
+             "date_from": 1200, "date_to": 1300}
+            for i, (source, tag, _) in enumerate(cases)]
+    monkeypatch.setattr(C, "celtic_rows", lambda *args: rows)
+    monkeypatch.setattr(cm, "build_mappings", lambda *args, **kwargs: SimpleNamespace(irish={}, welsh={}))
+    monkeypatch.setattr(cm, "irish_lemmatizer", lambda *args, **kwargs: SimpleNamespace(level={}))
+    monkeypatch.setattr(cm, "welsh_lemmatizer", lambda *args, **kwargs: None)
+    monkeypatch.setattr(cm, "read_table", lambda *args: {})
+    monkeypatch.setattr(cm, "gloss_tokens", lambda *args: [])
+    monkeypatch.setattr(cm, "irish_words", lambda text: text.split())
+    monkeypatch.setattr(cm, "lemmatize_words", lambda lz, words: words)
+    monkeypatch.setattr(cm, "content_of", lambda *args: True)
+
+    units, meta, notes = C.load_celtic(tmp_path, [], log=lambda *args: None)
+
+    by_id = {u.key: u for u in units["mga"]}
+    assert len(by_id) == len(rows)
+    for row, (_, original, expected) in zip(rows, cases):
+        unit = by_id[row["id"]]
+        assert unit.tag == expected
+        assert (unit.licence, unit.research_only) == C.CELTIC_LICENCE[expected]
+        assert meta[row["id"]]["licence"] == expected
+        assert row["licence"] == original
+    assert notes["celt_research_tag_mismatch"] == 4
 
 
 def test_celtic_unit_helpers():
