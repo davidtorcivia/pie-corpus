@@ -1,0 +1,17 @@
+Read bundles 1–30 of 290 in order. No defensible claims yet. Leads: B17 leaf/wind (likely generic); B23 dog/chasing (Irish syntax doubtful); B29 fish comparison lacks matching figure in Norse.
+Read bundles 31–65. No defensible matches; B60 naming looks generic, unrelated etiology.
+Read bundles 66–100. Leads B81 children/parents and survival (Irish Alexander tradition may be translated; Latin syntax differs), B96 grey/pale horse (generic epithet). No claims accepted.
+Read bundles 101–140 (120–123 reread to recover output truncation). B130 broad thighs: anatomical similarity, mismatched lexemes; no claim.
+Read bundles 141–170. No defensible shared formula; grammatical/common-word overlaps and mismapped OCR dominate.
+Read bundles 171–200. No accepted claims. B172 sea/tears versus rowing lacks shared figure; B199 blessing versus Parcae songs is thematic only.
+Read bundles 201–230. B206 ploughing land is a real shared collocation but everyday agricultural expression; test wider corpus before final decision.
+Read bundles 231–260. Sleep/death in B245 has no corresponding figure in its partners; star-number comparisons lack matching Latin syntax. No accepted claims.
+Read bundles 261–290. All 290 bundles read with their partner/context text. Final corpus checks pending for B17, B23, B81, B206.
+Final lead checks completed by reading raw data as text with python3 -I only.
+Searched the full Celtic units.jsonl text layer for dog/gloss variants, parent-before-child death, leaf/wind, and ploughing; refined word boundaries after false substring hits.
+B17 BS-0e73a: Welsh leaf/wind recurs at Red Book L776 and Skene L13316. Avestan CAB search found the wind/earth/growth sequence at VS5.12c, VS5.13a, VS8.9b, VS8.10a. No shared leaf figure; automatic vaiio/woe mapping is not evidence. Reject.
+B23 BS-1396c: only the supplied Irish glossary occurrence of darcinnes was found; go dian is adverbial, not a finite chasing verb like Greek dietai/diontai. cuib is explicitly glossed as cu, but no secure matching predication. Reject.
+B81 BS-3b9eb: parent/child sentence is unique in searched Celtic layer. Nearby Dindim and one-God language confirm Alexander/Brahman discourse; Latin plague context supplies no distinctive shared wording beyond parents/offspring. Vedic cosmic parents, Armenian Christian discussion, and Norse genealogy are different constructions. Reject.
+B206 BS-b0b5d: eredic/tir and ares/terram are cognate verb/object material, but ordinary ploughing. Wider Welsh occurrences include eredic brynar and ar ac eredic, and the pivot has aradur/eredic wordplay absent from Cato. No distinctive shared formula beyond an expected agricultural collocation. Reject.
+Other reviewed leads: B29/B287 fish simile versus literal Norse fishing; B96 grey/pale horse; B130 broad thighs; B172 sea/tears versus rowing; B245 sleep/death without partner figure. None meets the inherited-phrase criterion.
+Complete: 290/290 bundles read in slab order, all partner and context texts inspected. Claims: high 0, medium 0, low 0. No off-limits paths opened/listed/searched; no git used; scratch confined to /tmp/pie-RS009X/.
