@@ -314,8 +314,9 @@ def _rec(ids, path, source, derived=False):
 
 # corpora whose mapping is built live (no table in mapping/): their override rows still decide
 LIVE_CORPUS_CODE = {"rv": "sa", "hom": "grc", "lat": "la", "orv": "cu"}
-# table row languages that the checker reads under another code (Middle Irish rows of a CELT table: sga)
-LANG_ALIAS = {"mga": "sga", "orv": "cu"}
+# Table row languages read under another code. Rebuilt CELT override rows use
+# lang="celt"; their decisions must still govern Irish evidence routes.
+LANG_ALIAS = {"mga": "sga", "celt": "sga", "orv": "cu"}
 CHECK_CODES = frozenset(c for c in LANG_CODE.values() if c)
 
 
