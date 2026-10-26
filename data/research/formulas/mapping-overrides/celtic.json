@@ -2898,6 +2898,47 @@
    "lex_id": [],
    "erratum": "Wave-7 reviewed contextual sense",
    "note": "CELT-W7-016. revueceltique06pari_djvu.txt:9066-9068; Kaikki Old Irish:299 s.v. aer and :6685 s.v. áer. Air is a Latin loan; the satire etymon is inappropriate in this element list."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "muinter@household",
+   "lex_id": [],
+   "note": "CELT G106500D.xml:6843; Kaikki Old Irish muinter, row 1714: household/attendants noun, not múin. Etymological alternatives unresolved; leave this noun sense unmapped.",
+   "erratum": "Wave-9 reviewed homograph; see error-verdicts-w9-celtic.jsonl."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "lige@lying",
+   "lex_id": [
+    "pie-root-legh-lie"
+   ],
+   "note": "CELT G302014.xml:1046-1047; Kaikki Old Irish lige row 881 and laigid row 3224; Matasović EDPC file p0249, s.v. *leg-o-: nominal derivative *legyo-, root *legʰ-. Not Modern Irish lig leave.",
+   "erratum": "Wave-9 reviewed homograph; see error-verdicts-w9-celtic.jsonl."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "lín@number",
+   "lex_id": [
+    "pie-root-leyH-pour"
+   ],
+   "note": "CELT G302014.xml:1046-1047; Kaikki Old Irish lín row 969; Matasović EDPC files p0253-p0254, s.v. *līno-. Retain *leyH- flow, exclude homographic cling root. The report’s *pleh₁- replacement is not supported by these dictionaries.",
+   "erratum": "Wave-9 reviewed homograph; see error-verdicts-w9-celtic.jsonl."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "línaid@fill",
+   "lex_id": [
+    "pie-root-leyH-pour"
+   ],
+   "note": "CELT G301012.xml:4276-4277 and G303000:#1:1667; Kaikki Old Irish lín rows 970-971 and línaid row 3420: preterite of denominative línaid, based on lín. Retain *leyH- flow, not cling; do not substitute *pleh₁- merely from the English sense.",
+   "erratum": "Wave-9 reviewed homograph; see error-verdicts-w9-celtic.jsonl."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "lín@net",
+   "lex_id": [],
+   "note": "CELT G100039.xml:237-238; Kaikki Old Irish lín row 972 distinguishes flax/linen/net from number/flow; Matasović EDPC file p0253 s.v. *līno- flax. Net noun cannot inherit the flow/cling mapping. No new uncertain etymology asserted.",
+   "erratum": "Wave-9 reviewed homograph; see error-verdicts-w9-celtic.jsonl."
   }
  ],
  "form": [

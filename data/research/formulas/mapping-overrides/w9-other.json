@@ -1,0 +1,143 @@
+{
+  "note": "Wave9 independently reviewed other/material corrections; source-coordinate evidence in the verdict ledger.",
+  "lemma": [
+    {
+      "corpus": "xcl",
+      "lemma": "kamkʻ",
+      "lex_id": [],
+      "note": "W9 r87; Kaikki Old Armenian row1505, Iranian loan; excludes erroneous stand/live mapping."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "goyn",
+      "lex_id": [],
+      "note": "W9 r89; Kaikki row2997 Iranian colour loan, no gom mapping."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "tʻanjramac",
+      "lex_id": [],
+      "note": "W9 r91; Kaikki թանձր row2621 + մած row1602; no supported whole-compound PIE mapping."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "dastakert",
+      "lex_id": [],
+      "note": "W9 r92; Kaikki row7539 Iranian estate loan."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "erkeam",
+      "lex_id": [],
+      "note": "W9 r101; Kaikki row5651, two-year compound; no speculative whole-compound mapping."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "oyž",
+      "lex_id": [],
+      "note": "W9 r106; Kaikki row1667 Parthian loan, not interrogative ov."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "erkdimi",
+      "lex_id": [],
+      "note": "W9 r109; Kaikki երկու row49 + դէմ row6035; no supported whole-compound mapping."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "lwanam",
+      "lex_id": [],
+      "note": "W9 r110 observation; Kaikki row3535 wash, competing *plew-/*lewh₃- origins, not light."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "lcʻowcʻanem",
+      "lex_id": [
+        "pie-root-pleh1-fill"
+      ],
+      "note": "W9 r110; Kaikki լնում row3336 and լի row1341, causative fill; root-level mapping only."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "ar̄ow",
+      "lex_id": [
+        "pie-root-srew-flow"
+      ],
+      "note": "W9 r115; Kaikki առու row563, channel from *srew-; no take mapping."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "aman",
+      "lex_id": [],
+      "note": "W9 r116; Kaikki row2462 vessel, not year; no secure inherited mapping assigned."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "hamr",
+      "lex_id": [],
+      "note": "W9 r133; Kaikki row1927 mute, uncertain origin; not taste."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "lapʻem",
+      "lex_id": [],
+      "note": "W9 r122; Kaikki row7120 *lh₂P- lick; removes unrelated *leb- hang. Proposed lapping family does not license a secure available root ID."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "ἄδυτος",
+      "lex_id": [],
+      "note": "W9 r119; GLAUx Ion938; Kaikki Greek rows1277 and1167, privative + enter; not numeral two. No matching secure enter root supplied."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "δύσις",
+      "lex_id": [],
+      "note": "W9 r131; GLAUx Thuc3.78.4; Kaikki Greek rows8358 and1167, sunset from sink/enter; not numeral two."
+    },
+    {
+      "corpus": "hom",
+      "lemma": "ἔσθω",
+      "lex_id": [
+        "pie-root-h1ed-eat"
+      ],
+      "note": "W9 r137; AGDT Od5.197; Kaikki Greek row34179 poetic ἐσθίω, eat, *h₁ed-."
+    },
+    {
+      "corpus": "av",
+      "lemma": "akṣa@eye",
+      "lex_id": [
+        "pie-lex-h3okws"
+      ],
+      "note": "W9 r132; DCS Rām Ki30.s72; Kaikki Sanskrit rows918 and849; compound eyed from eye. Epic production uses av decisions."
+    },
+    {
+      "corpus": "byliny",
+      "lemma": "волна@wave",
+      "lex_id": [
+        "pie-root-welH-roll"
+      ],
+      "note": "W9 r28; Rybnikov2 L18787; Derksen EDSIL p537 (*vьlna wave, *ulH-n-); Kaikki Russian355. Keep wool homograph unchanged."
+    },
+    {
+      "corpus": "byliny",
+      "lemma": "лисица",
+      "lex_id": [],
+      "note": "W9 r27; Rybnikov4 L9656/L13987; Derksen EDSIL p279 *lisa/*lisica raises vocalism difficulties; Kaikki Proto-Slavic231 labels h₂wl̥p derivation contested. Remove secure fox etymon without asserting an alternative."
+    },
+    {
+      "corpus": "vuk",
+      "lemma": "bol@pain",
+      "lex_id": [],
+      "note": "W9 r56; Kaikki Serbo-Croatian242 bol; Proto-Slavic1772 bolěti tentative *bʰel(H)- sick/weak, not *bʰelH- sound. Leave reviewed pain sense unmapped."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "gam@aorist",
+      "lex_id": [
+        "pie-root-gwem-come"
+      ],
+      "note": "W9 r104; DMHP Faustos word52287 Եկն; Kaikki Old Armenian1526 *h₁é-gʷem-t. Retain reviewed present gam/*weh₂dh- decision elsewhere."
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+ "menota": [
+  {
+   "lemma": "samkvǽði",
+   "before": {
+    "corpus": "menota",
+    "lang": "non",
+    "lemma": "samkvǽði",
+    "word": "*kvæði",
+    "lex_id": [
+     "pie-lex-gwextyom"
+    ],
+    "path": [
+     "non:samkvǽði",
+     "prefix:sam-",
+     "non:*kvæði",
+     "ine-pro:*gʷētyom"
+    ],
+    "how": "prefix",
+    "confidence": "medium",
+    "sources": [
+     "chain",
+     "desc",
+     "lexicon",
+     "prefix"
+    ],
+    "licence": "CC BY-SA 4.0 (Menota); mapping sources kaikki/Wiktionary CC BY-SA 4.0",
+    "research_only": false
+   },
+   "after": {
+    "corpus": "menota",
+    "lang": "non",
+    "lemma": "samkvǽði",
+    "word": "samkvǽði",
+    "lex_id": [
+     "pie-root-gwet-say"
+    ],
+    "path": [
+     "non:samkvǽði",
+     "erratum:AM-132-fol-Njals-saga 52r:28. Zoega sam-kvæði consent; Kaikki kvæði < *kwēþiją related to kveða. Remove resin collision, retain speech root as compound ancestry.",
+     "erratum:Independent wave-9 Norse source/dictionary verification; error-verdicts-w9-norse.jsonl."
+    ],
+    "how": "erratum",
+    "confidence": "high",
+    "sources": [
+     "mapping-overrides"
+    ],
+    "licence": "CC BY-SA 4.0 (Menota); mapping sources kaikki/Wiktionary CC BY-SA 4.0",
+    "research_only": false
+   }
+  }
+ ],
+ "icepahc": [],
+ "validation": {
+  "changed": [
+   "samkvǽði"
+  ],
+  "unrelated_builder_drift_preserved": 174,
+  "method": "Same dictionary object for baseline and final builds; regenerate only their row delta with write_table, retaining pre-existing unrelated table rows. IcePaHC byte-identical. No Tier 2/3, export or slab regeneration."
+ }
+}

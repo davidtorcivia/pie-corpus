@@ -1,0 +1,79 @@
+Wave 9 other/material review — 2026-10-26
+
+Ledger: data/research/8c/stageCS/error-verdicts-w9-other.jsonl
+74 input reports: 66 confirmed, 4 already-fixed, 3 unclear, 1 rejected.
+Attached observations have individual verdict records. Scope includes all
+reported material units, including Lithuanian units; Lithuanian lexical
+corrections belong to the parallel worker.
+
+Source corrections
+- Exact source-word corrections for Armenian, Greek, Old Russian, Sanskrit,
+  Russian byliny and Vuk. Armenian coordinates are actual DMHP word IDs,
+  not the often earlier window-start labels in the reports.
+- Armenian names and the chapter numeral become noncontent, while their
+  original surface forms, positions, and source POS are retained.
+- Distinguish Armenian gam@aorist from the effective present gam decision:
+  the stored table alone misleadingly appeared already correct. Preserve
+  the existing gam@present decision and generic present mapping.
+- Reviewed mapping decisions remove unsupported homograph roots and add
+  dictionary-supported fill, flow, eat, eye, wave and come readings. Loans
+  and unresolved compounds remain unmapped rather than receiving guesses.
+- 67 precise material exclusions: 51 byliny and 16 Lithuanian. The existing
+  general byliny detector was checked; no detector thresholds were changed.
+  Two Lithuanian continuation lines (919 and 22847) were also independently
+  verified as editorial: excluding their preceding hyphenated lines alone
+  changed carried words in retained units. Both continuations are now
+  explicit exclusions, leaving every retained unit identical.
+- Exact-match theonym policy is untouched. Name homographs are corrected
+  only at reviewed contexts, with a reason for each in the ledger.
+
+Verdicts left without source edits
+- Already-fixed: reported Russian wind/blow OCR analyses, Armenian Greeks,
+  and Greek Medes mapping. Original OCR surfaces remain visible.
+- Unclear: Armenian bread/day glyph restorations require printed-image
+  collation; the hoof etymology report conflicts with dictionary evidence.
+- Rejected: the reported Norse reint is absent from the cited Russian line.
+
+Evidence and boundaries
+Raw daughter sources and local dictionaries were read as text. Book
+references are headwords, forms and page citations; no book running text
+is quoted in repository artifacts. No claims, slabs, or blinding key were
+opened. No raw code was imported or executed. No git commands, STATUS.md
+edits, Germanic/Celtic override changes, or Tier2/Tier3/export regeneration.
+Affected tables were resolved into /private/tmp/w9-other/resolved only.
+
+Verification
+Pre-edit token snapshots: /private/tmp/w9-other/*-before.jsonl.
+Reproducible comparison: UV_CACHE_DIR=/private/tmp/pie-uv-cache uv run
+python -I scripts/verify_w9_other.py
+
+1,565,002 tokens compared across five populations: 59 declared lemma/content
+changes, no surface, coordinate or source-POS changes. The actual Russian
+and Serbian lemmatizer adds five further declared token corrections, with
+before/after records in error-verdicts-w9-other-bsl-diff.json.
+
+Armenian: 551,142 tokens; 52 lemma/content changes plus 11 mapping-only
+changes (nine existing fill/fulfil tokens and two adjacent lapping forms).
+All 63 affected tokens, including before/after mapping IDs, are in
+error-verdicts-w9-other-xcl-token-diff.json. The eleven propagated mapping
+changes were individually checked in raw DMHP context and recorded in the
+ledger. No Armenian segmentation or surface changes.
+
+Material comparison: 51 byliny and 16 Lithuanian units removed; zero added
+units, zero changes to retained unit records. Resolved-table comparison:
+11 nonempty ID differences, all declared override rows; additional empty
+decisions explicitly prevent unsupported automatic mappings.
+
+Focused tests: 65 passed in14.67s (wave9, wave7, wave8 and material tests).
+After the continuation exclusions, wave9 tests: 15 passed in11.33s.
+The first focused run exposed the effective gam override; it was corrected.
+The material comparison exposed the two carried-word boundary effects;
+those were corrected and the full comparison passed.
+
+FINAL VALIDATION
+UV_CACHE_DIR=/private/tmp/pie-uv-cache uv run pytest -q
+3092 passed in483.94s (0:08:03), exit0.
+At test start, ps showed peer validation had finished or was running pytest;
+both peer fix9 processes subsequently exited. All209 monitored source, test,
+script, override and material-rule hashes remained unchanged throughout
+the final run. STATUS.md is unchanged; regeneration remains with the lead.

@@ -18,7 +18,7 @@ RULES = ROOT / "data/research/8c/stageCS/material-unit-rules.json"
 @lru_cache(maxsize=1)
 def reviewed_ranges():
     rows = json.loads(RULES.read_text(encoding="utf-8"))
-    for name in ('material-unit-rules-w6-other.json', 'material-unit-rules-w7-other.json', 'material-unit-rules-w8-other.json'):
+    for name in ('material-unit-rules-w6-other.json', 'material-unit-rules-w7-other.json', 'material-unit-rules-w8-other.json', 'material-unit-rules-w9-other.json'):
         extra = RULES.with_name(name)
         if extra.exists():
             rows += json.loads(extra.read_text(encoding='utf-8'))
@@ -247,6 +247,13 @@ def repair_celtic_rows(rows: list[dict]) -> list[dict]:
     for original in rows:
         d = dict(original)
         uid, text = d["id"], d["text"]
+        # W9-018: secure OCR confusions in the Alexander narrative;
+        # Irische Texte II L14602-L14604; Kaikki sga ben (76), cen (773).
+        # Leave the uncertain parent-form spellings for image-based review.
+        if uid == "oldirish-irische-texte-1880-1909:irischetextemitw02winduoft:L14602-L14604":
+            text = (text.replace("hen cen cheli", "ben cen cheli")
+                    .replace("siur cell brathair", "siur cen brathair")
+                    .replace("AlaxawiüiV", "Alaxandir"))
         # W8 Celtic: quotation-initial preterite, not a personal name.
         # CELT G301012.xml:4293; Kaikki Old Irish doicc (2825).
         if uid == "G301012:#1/#2/#52:26":

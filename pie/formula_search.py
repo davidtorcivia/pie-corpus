@@ -299,6 +299,9 @@ class Token:
             self.content, self.pos = False, "name"
         if self.corpus == "xcl" and self.lemma == "34@numeral":
             self.content, self.pos = False, "other"
+        from .w9_other_mapping import noncontent
+        if noncontent(self.corpus, self.lemma, self.surface, self.locus):
+            self.content = False
 
 
 _RV_ID = re.compile(r'xml:id="b(\d+)_h(\d+)_(\d+)_zur_([a-z])_\d+"')

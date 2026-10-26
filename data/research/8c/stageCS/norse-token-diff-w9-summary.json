@@ -1,0 +1,1033 @@
+{
+ "changed_tokens": 33,
+ "by_corpus": {
+  "menota": 33
+ },
+ "whole_corpus_counts": {
+  "menota": {
+   "man": {
+    "before": {
+     "maðr|NC|corpus": 9,
+     "maðr|NC|reviewed": 32,
+     "muna|VB|corpus": 14,
+     "munn|VB|corpus": 1,
+     "munu|VB|corpus": 777,
+     "munu|VB|form-table": 574
+    },
+    "after": {
+     "maðr|NC|corpus": 9,
+     "maðr|NC|reviewed": 45,
+     "muna|VB|corpus": 14,
+     "munn|VB|corpus": 1,
+     "munu|VB|corpus": 777,
+     "munu|VB|form-table": 561
+    },
+    "by_lemma": {
+     "before": {
+      "maðr": 41,
+      "muna": 14,
+      "munn": 1,
+      "munu": 1351
+     },
+     "after": {
+      "maðr": 54,
+      "muna": 14,
+      "munn": 1,
+      "munu": 1338
+     }
+    },
+    "tokens": 1407
+   },
+   "dyr": {
+    "before": {
+     "dyrr|NC|corpus": 5,
+     "dyrr|NC|reviewed": 4,
+     "dýrr|AJ|corpus": 5,
+     "dýrr|AJ|reviewed": 1,
+     "dýr|NC|corpus": 97,
+     "dýr|NC|form-table": 101,
+     "dýr||corpus": 1
+    },
+    "after": {
+     "dyrr|NC|corpus": 6,
+     "dyrr|NC|reviewed": 5,
+     "dýrr|AJ|corpus": 5,
+     "dýrr|AJ|reviewed": 1,
+     "dýr|NC|corpus": 96,
+     "dýr|NC|form-table": 100,
+     "dýr||corpus": 1
+    },
+    "by_lemma": {
+     "before": {
+      "dyrr": 9,
+      "dýrr": 6,
+      "dýr": 199
+     },
+     "after": {
+      "dyrr": 11,
+      "dýrr": 6,
+      "dýr": 197
+     }
+    },
+    "tokens": 214
+   }
+  },
+  "icepahc": {
+   "man": {
+    "before": {
+     "man (name)|NPR-A": 1,
+     "muna|VBPI": 43,
+     "munu|MDPI": 43
+    },
+    "after": {
+     "man (name)|NPR-A": 1,
+     "muna|VBPI": 43,
+     "munu|MDPI": 43
+    },
+    "tokens": 87,
+    "by_lemma": {
+     "before": {
+      "muna": 43,
+      "munu": 43,
+      "man (name)": 1
+     },
+     "after": {
+      "muna": 43,
+      "munu": 43,
+      "man (name)": 1
+     }
+    }
+   },
+   "dyr": {
+    "before": {
+     "dyr|NS-A": 36,
+     "dyr|NS-N": 16
+    },
+    "after": {
+     "dyr|NS-A": 36,
+     "dyr|NS-N": 16
+    },
+    "tokens": 52,
+    "by_lemma": {
+     "before": {
+      "dyr": 52
+     },
+     "after": {
+      "dyr": 52
+     }
+    }
+   }
+  }
+ },
+ "samples": {
+  "man": [
+   {
+    "index": 79859,
+    "locus": "AM-132-fol-Egils-saga 97r:32",
+    "form": "Man",
+    "before": {
+     "lemma": "muna",
+     "tag": "VB",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "muna",
+     "tag": "VB",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 432717,
+    "locus": "AM-243-b-alfa-fol 44r:4",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 469795,
+    "locus": "AM-302-fol 26v:1",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 476670,
+    "locus": "AM-302-fol 39r:4",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 476685,
+    "locus": "AM-302-fol 39r:6",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 491979,
+    "locus": "AM-302-fol 65v:18",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 494200,
+    "locus": "AM-302-fol 69v:5",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 501633,
+    "locus": "AM-302-fol 81r:4",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 501765,
+    "locus": "AM-302-fol 81r:14",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 501779,
+    "locus": "AM-302-fol 81r:15",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 630904,
+    "locus": "AM-36-fol 48:",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 704654,
+    "locus": "AM-36-fol 429:29",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 759709,
+    "locus": "AM-519a-4to 26v:14",
+    "form": "Man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 787611,
+    "locus": "AM-56-4to 19v:8",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 791475,
+    "locus": "AM-56-4to 25v:16",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 792197,
+    "locus": "AM-56-4to 26v:1",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 792376,
+    "locus": "AM-56-4to 27r:1",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 793917,
+    "locus": "AM-56-4to 27v:22",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 821025,
+    "locus": "AM-56-4to 71r:1",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 824747,
+    "locus": "AM-56-4to 76v:13",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 831657,
+    "locus": "AM-619-4to 10v:2",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 915656,
+    "locus": "AM-63-fol 151:",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 1061790,
+    "locus": "AM-78-4to 48r:13",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 1100782,
+    "locus": "DG-4at7-Streng 0055:25",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 1170560,
+    "locus": "DG-8-OHleg 0020:30",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 1207316,
+    "locus": "HolmPerg-17-4to 0016:22",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 1254586,
+    "locus": "HolmPerg-17-4to 77v:14",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 1298034,
+    "locus": "HolmPerg-30-4to 65v:10",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 1422549,
+    "locus": "HolmPerg-4-fol 2-011:8",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 1480057,
+    "locus": "HolmPerg-4-fol 2-324:22",
+    "form": "man",
+    "before": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "munu",
+     "tag": "VB",
+     "source": "corpus"
+    }
+   }
+  ],
+  "dyr": [
+   {
+    "index": 315449,
+    "locus": "AM-178-fol 108v:17",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 329768,
+    "locus": "AM-242-fol 2:20",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 349784,
+    "locus": "AM-242-fol 38:32",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 378289,
+    "locus": "AM-242-fol 108:13",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 401812,
+    "locus": "AM-243-b-alfa-fol 29:3",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 493617,
+    "locus": "AM-302-fol 68v:7",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "dyrr",
+     "tag": "NC",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 494860,
+    "locus": "AM-302-fol 70r:14",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 542651,
+    "locus": "AM-305-fol 59v:26",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 559780,
+    "locus": "AM-35-fol 43:",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 621260,
+    "locus": "AM-35-fol 410:",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 663175,
+    "locus": "AM-36-fol 210:",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 775218,
+    "locus": "AM-544-4to-Vsp 20v:20",
+    "form": "dyr",
+    "before": {
+     "lemma": "dyrr",
+     "tag": "NC",
+     "source": "reviewed"
+    },
+    "after": {
+     "lemma": "dyrr",
+     "tag": "NC",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 815571,
+    "locus": "AM-56-4to 63r:10",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 841485,
+    "locus": "AM-619-4to 23v:22",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 847808,
+    "locus": "AM-619-4to 32v:2",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "dyrr",
+     "tag": "NC",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 900647,
+    "locus": "AM-63-fol 82:",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýrr",
+     "tag": "AJ",
+     "source": "reviewed"
+    },
+    "after": {
+     "lemma": "dýrr",
+     "tag": "AJ",
+     "source": "reviewed"
+    }
+   },
+   {
+    "index": 1090565,
+    "locus": "DG-4at7-Streng 0033:9",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 1091497,
+    "locus": "DG-4at7-Streng 0035:8",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 1151970,
+    "locus": "DG-8-MLL 44v:14",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 1301827,
+    "locus": "HolmPerg-30-4to 70v:29",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 1304119,
+    "locus": "HolmPerg-30-4to 74r:12",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "form-table"
+    }
+   },
+   {
+    "index": 1417869,
+    "locus": "HolmPerg-4-fol 60v:3",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 1443210,
+    "locus": "HolmPerg-4-fol 2-123:3",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 1443590,
+    "locus": "HolmPerg-4-fol 2-125:2",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 1444056,
+    "locus": "HolmPerg-4-fol 2-127:13",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 1444361,
+    "locus": "HolmPerg-4-fol 2-129:3",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 1445013,
+    "locus": "HolmPerg-4-fol 2-132:14",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 1460534,
+    "locus": "HolmPerg-4-fol 2-224:30",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 1470276,
+    "locus": "HolmPerg-4-fol 113r:13",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    }
+   },
+   {
+    "index": 1534192,
+    "locus": "HolmPerg-6-fol 68v:5",
+    "form": "dyr",
+    "before": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    },
+    "after": {
+     "lemma": "dýr",
+     "tag": "NC",
+     "source": "corpus"
+    }
+   }
+  ]
+ },
+ "note": "All Menota West Norse documents and IcePaHC all years; Edda has no source POS annotation and is unchanged. man: source noun/verb distinction, masculine vs neuter man safeguarded. dyr: both senses are nouns, requiring source feminine/neuter gender. Unannotated corrections are coordinate reviews, never guesses from inferred tags. Samples contain all changed homograph tokens plus deterministic controls (30 each).",
+ "whole_corpus_token_totals": {
+  "menota": 1650615,
+  "icepahc_all_years": 900937
+ }
+}

@@ -1747,6 +1747,22 @@ for _form, _rules in {
     IR_REVIEWED_CONTEXT.setdefault(_form, []).extend(_rules)
 
 
+
+# Wave-9 source/dictionary evidence: error-verdicts-w9-celtic.jsonl.
+# Sense keys keep the reviewed readings apart from productive homographs.
+for _form, _rules in {
+    'maigi': [(('tar leth in',), ('arna',), 'mag', False)],
+    'muintear': [(('in',), ('na comaltadha',), 'muinter@household', False)],
+    'ligiu': [(('suidiu ní tallat a',), (), 'lige@lying', False)],
+    'lín': [
+        (('in',), ('bíte i seasam', 'tallat i suidiu'), 'lín@number', False),
+        (('ro',), ('na fántu', 'na glenntu', 'in t-óclach', 'iat'), 'línaid@fill', False),
+        (('l',), ('fri h-aige', 'fria h-íascach', 'éisc'), 'lín@net', False),
+    ],
+}.items():
+    IR_REVIEWED_CONTEXT.setdefault(_form, []).extend(_rules)
+
+
 def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
     """Lemmas for a word sequence: `lemz(w)` for each word, except that a form in CONTEXT_FORMS takes the
     lemma its preceding word selects (tig after isin / i / ina / dia … → tech 'house'). Stage C should use
@@ -1791,6 +1807,11 @@ def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
                 and i + 1 < len(words)
                 and key_cy(welsh_norm(words[i + 1], True)) == "trei"):
             lem = "yny"
+        # W9-120: lenited fabric noun after o; preserve palu elsewhere.
+        if (lemz.lm.lang == "cy" and i > 0 and i + 1 < len(words)
+                and [key_cy(welsh_norm(v, True)) for v in words[i - 1:i + 2]]
+                == ["o", "bali", "llathreit"]):
+            lem = "pali@brocade"
         out.append(lem)
     return out
 

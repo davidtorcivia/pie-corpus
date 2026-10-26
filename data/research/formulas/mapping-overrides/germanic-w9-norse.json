@@ -1,0 +1,29 @@
+{
+ "note": "Wave-9 Norse verified corrections.",
+ "lemma": [
+  {
+   "corpus": "menota",
+   "lemma": "samkvǽði",
+   "lex_id": [
+    "pie-root-gwet-say"
+   ],
+   "note": "AM-132-fol-Njals-saga 52r:28. Zoega sam-kvæði consent; Kaikki kvæði < *kwēþiją related to kveða. Remove resin collision, retain speech root as compound ancestry.",
+   "erratum": "Independent wave-9 Norse source/dictionary verification; error-verdicts-w9-norse.jsonl.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "menota",
+   "lemma": "stefna@summons",
+   "lex_id": [],
+   "note": "AM-56-4to 40v:13. Zoega stefna noun summons; Kaikki Icelandic stefna < *stabnijaz/*stabnijō fixed time, not *stebnō mouth. No new PIE equation asserted.",
+   "erratum": "Independent wave-9 Norse source/dictionary verification; error-verdicts-w9-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "viti@beacon",
+   "lex_id": [],
+   "note": "AM-302-fol 13v:26; AM-56-4to 12r:7. Kaikki viti beacon/sign is a nominal derivative; exclude finite know and pronoun equations. Same conservative sense separation as wave 6 IcePaHC.",
+   "erratum": "Independent wave-9 Norse source/dictionary verification; error-verdicts-w9-norse.jsonl."
+  }
+ ]
+}

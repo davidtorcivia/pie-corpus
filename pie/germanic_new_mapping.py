@@ -197,6 +197,8 @@ def reviewed_menota_lemma(lemma: str | None, msa: str, form: str,
     Evidence and loci: stageCS/error-verdicts-other.jsonl. Do not infer a
     name from capitalization alone, or replace a common-word homonym.
     """
+    if lemma and form.lower() in {"man", "dyr"} and msa.startswith(("xNC", "xVB")):
+        lemma = annotated_norse_lemma(lemma, msa[1:3], form=form, morphology=msa)
     names = {"einarr", "helga", "helgi", "bera", "yngvarr", "haraldr", "oddr", "bjǫrn"}
     if lemma in names and msa.startswith("xNP"):
         return lemma + " (name)"
@@ -291,7 +293,7 @@ def menota_reviewed_tokens(root: Path = ROOT) -> dict:
     from changing the analysis of the same surface form elsewhere.
     """
     rows = []
-    for wave in (2, 3, 4, 5, 6, 7, 8):
+    for wave in (2, 3, 4, 5, 6, 7, 8, 9):
         path = Path(root) / f"data/research/formulas/menota-reviewed-w{wave}.json"
         if path.exists():
             rows.extend(json.loads(path.read_text("utf-8")))
@@ -331,7 +333,8 @@ def reviewed_menota_token(w: MenotaWord, lemma: str, msa: str, rules: dict,
     return lemma, msa
 
 
-def annotated_norse_lemma(lemma: str, tag: str, corpus: str = "menota") -> str:
+def annotated_norse_lemma(lemma: str, tag: str, corpus: str = "menota", *,
+                          form: str = "", morphology: str = "") -> str:
     """Separate source-tagged names and reviewed POS homographs.
 
     Menota NP / IcePaHC NPR(S) are authoritative per token, never by a
@@ -347,6 +350,17 @@ def annotated_norse_lemma(lemma: str, tag: str, corpus: str = "menota") -> str:
         return name_lemma(corpus, lemma)
     noun = tag == "NC" or bool(re.fullmatch(r"NS?-[NADG]", tag))
     if noun:
+        # Wave 9: use source morphology, never an inferred form-table tag.
+        # Both dyrr and dýr are nouns: feminine vs neuter is essential.
+        # Masculine man is maðr; neuter man 'bondfolk' must survive.
+        features = morphology.split()
+        if form.lower() == "man" and "gM" in features and lemma in {"man", "maðr", "muna", "munu"}:
+            return "maðr"
+        if form.lower() == "dyr" and lemma in {"dyr", "dyrr", "dýr"}:
+            if "gF" in features:
+                return "dyrr"
+            if "gN" in features:
+                return "dýr"
         return {"síða": "síða@side", "vit": "vit@understanding",
                 "reka": "reka@shovel"}.get(lemma, lemma)
     return lemma

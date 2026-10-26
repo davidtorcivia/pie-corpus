@@ -1,0 +1,59 @@
+[
+  {
+    "corpus": "byliny",
+    "locus": "pesnisobrannyepnrybnikovymch1narod12:28535",
+    "surface": "пьеть",
+    "before": "петь",
+    "after": "пить",
+    "content_before": true,
+    "content_after": true,
+    "mapping_after": [
+      "pie-lex-peh3y",
+      "pie-lex-pih3"
+    ]
+  },
+  {
+    "corpus": "byliny",
+    "locus": "pesnisobrannyepnrybnikovymch2narod72:18787",
+    "surface": "Волну",
+    "before": "волна",
+    "after": "волна@wave",
+    "content_before": true,
+    "content_after": true,
+    "mapping_after": [
+      "pie-root-welH-roll"
+    ]
+  },
+  {
+    "corpus": "byliny",
+    "locus": "pesnisobrannyepnrybnikovymch2narod72:18787",
+    "surface": "мори",
+    "before": "морить",
+    "after": "море",
+    "content_before": true,
+    "content_after": true,
+    "mapping_after": [
+      "pie-lex-mori"
+    ]
+  },
+  {
+    "corpus": "byliny",
+    "locus": "pesnisobrannyepnrybnikovymch4narod9:13391",
+    "surface": "кр$икаго",
+    "before": "?креикаго",
+    "after": "крепкий",
+    "content_before": true,
+    "content_after": true,
+    "mapping_after": []
+  },
+  {
+    "corpus": "vuk",
+    "locus": "Vuk 23740:48",
+    "surface": "бола",
+    "before": "bosti",
+    "after": "bol@pain",
+    "content_before": true,
+    "content_after": true,
+    "mapping_after": []
+  }
+]
