@@ -78,3 +78,7 @@ Three mapping errors found by the scans are in
 ## Coverage fix confirmed (2026-10-26, rebuilt index after fix batch 5)
 
 Men and cattle (*peḱu-* + *wiHro-*, window 4): Indo-Iranian 20 (Vedic 14 and Avestan *pasu vīra* in Y 9.4, 31.15, 45.9, 58.6, Vidēvdād, Yašts), Italic 9 (Umbrian *ueiro pequo castruo frif*, Iguvine Tables VIa 30, 32, 34, 40, 42, 52, 60). Before the fix: Avestan 0, Umbrian 0. The textbook formula is now found in its three classic branches.
+
+## Correction (2026-10-26)
+
+Sweet mead: the Old English hit (Finnsburh 39 *swētne medo*) is an editorial emendation (Hickes's transcript reads *hwitne*), not a witness. The figure rests on Greek and Vedic; it is a standard item (Schmitt 1967).
