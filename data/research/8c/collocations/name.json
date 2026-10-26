@@ -1,0 +1,623 @@
+{
+ "target": [
+  "pie-lex-h1nomn"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 4001,
+  "Germanic": 2150,
+  "Slavic": 1024,
+  "Armenian": 1000,
+  "Tocharian": 102,
+  "Albanian": 9,
+  "Indo-Iranian": 855,
+  "Greek": 17041,
+  "Anatolian": 19,
+  "Italic": 173
+ },
+ "rows": [
+  {
+   "root": "pie-root-wekw-speak",
+   "branches": {
+    "Germanic": [
+     148,
+     10.3,
+     14.4
+    ],
+    "Slavic": [
+     12,
+     3.5,
+     3.4
+    ],
+    "Italic": [
+     6,
+     1.6,
+     3.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Bandamanna-saga 117r:4: nefndir ~ váttar",
+     "menota AM-132-fol-Droplaugarsona-saga 143v:3: nefna ~ vátta",
+     "menota AM-132-fol-Droplaugarsona-saga 144r:8: nefndi ~ vátta"
+    ],
+    "Slavic": [
+     "ccmh marianus 2093800: именемъ ~ отъвѣшта",
+     "ccmh marianus 3235000: іменемь ~ съвѣтьникъ",
+     "ccmh marianus 3241800: имѧ ~ отъвѣштавъ"
+    ],
+    "Italic": [
+     "lat CatOrig 2.Fragmentum_23: nomen ~ uocantur",
+     "lat LucrDRN6 6.740: nomine ~ uocantur",
+     "lat LucrDRN6 6.908: nomine ~ uocant"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dekjs-be_fit",
+   "branches": {
+    "Germanic": [
+     3,
+     0.9,
+     3.5
+    ],
+    "Indo-Iranian": [
+     2,
+     0.8,
+     2.5
+    ],
+    "Greek": [
+     145,
+     53.4,
+     2.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_108 v11: námo ~ zéseuuun",
+     "rea-goh Z-Notker-Psalmen N_Ps_148 v6: namen ~ zeseuuun",
+     "rea-goh Z-Notker-Psalmen N_Ps_117 v6: námen ~ zeseuua"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 12, 201.s16: nāmanī ~ dakṣaḥ",
+     "sa-ep MBh, 13, 82.s56: nāmataḥ ~ dakṣasya"
+    ],
+    "Greek": [
+     "grc Thucydides Historiae 4.43.4 s1: εὐωνύμῳ ~ δεξιὸν",
+     "grc Thucydides Historiae 5.71.1 s3 (w1/2): εὐώνυμον ~ δεξιῷ",
+     "grc Thucydides Historiae 8.104.4 s1 (w1/2): εὐωνύμῳ ~ δεξιὸν"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-is-2",
+   "branches": {
+    "Celtic": [
+     2,
+     0.2,
+     8.8
+    ],
+    "Italic": [
+     48,
+     0.6,
+     76.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100055:#1/1/1/5:2: ainm ~ éagsamhail",
+     "ga-early G100055:#1/2/3/7:7: ainm ~ éagsamhla"
+    ],
+    "Italic": [
+     "xum Ig. VIa 23: nomne ~ erer",
+     "xum Ig. VIa 23: nomneper ~ erar",
+     "xum Ig. VIa 24: nomne ~ erer"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kwekj-see",
+   "branches": {
+    "Slavic": [
+     43,
+     8.4,
+     5.1
+    ],
+    "Indo-Iranian": [
+     44,
+     3.4,
+     13.0
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 18827:12: имену ~ казат'",
+     "vuk Vuk 22038:5: имену ~ казат’",
+     "vuk Vuk 22060:146: имену ~ казат’"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 12, 5.s9: nāma ~ cakṣuś",
+     "ae RatuLetDat2.3 (w1/6): nāmanō ~ cašmanō",
+     "ae RatuLetDat2.3 (w2/6): nāmanō ~ cašmanō"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-tewteh2",
+   "branches": {
+    "Germanic": [
+     26,
+     7.5,
+     3.5
+    ],
+    "Italic": [
+     17,
+     0.9,
+     18.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-178-fol 2r:15 (w2/2): nafni ~ þiodin",
+     "menota AM-242-fol 98:16 (w50/57): nefndu ~ þioðer",
+     "menota AM-243-b-alfa-fol 68v:14: nafn ~ þyðizt"
+    ],
+    "Italic": [
+     "xum Ig. VIa 30: nome ~ totar",
+     "xum Ig. VIa 31: nomne ~ tote",
+     "xum Ig. VIa 39: nome ~ totar"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-nekj-perish",
+   "branches": {
+    "Germanic": [
+     2,
+     0.2,
+     8.9
+    ],
+    "Tocharian": [
+     2,
+     0.3,
+     6.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-242-fol 2:1 (w146/152): nefndr ~ yngvi",
+     "menota AM-35-fol 15: (w6/10): nafne ~ yn‐gvi"
+    ],
+    "Tocharian": [
+     "xto A 696 63a1: ñomyo ~ oṅk",
+     "xto A 937 304a5: ñomā ~ oṅk"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-Heh3leneh2",
+   "branches": {
+    "Celtic": [
+     2,
+     1.0,
+     2.0
+    ],
+    "Greek": [
+     3,
+     0.2,
+     13.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G502003:#1/3:92: ainm ~ uilleann",
+     "mga G502003:#1/3:93: ainm ~ uilleann"
+    ],
+    "Greek": [
+     "grc Herodotus Historiae 4.35.3 s1 (w1/3): ἐπονομαζούσας ~ Ὠλὴν",
+     "grc Herodotus Historiae 4.35.3 s1 (w2/3): ὀνομάζοντάς ~ Ὠλὴν",
+     "grc-late Pausanias Graeciae descriptio 10.5.8.0 s3: ὠνόμασεν ~ Ὠλῆνα"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sem-one",
+   "branches": {
+    "Slavic": [
+     2,
+     0.7,
+     3.1
+    ],
+    "Armenian": [
+     2,
+     0.3,
+     6.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 29626:31: име ~ Сама",
+     "vuk Vuk 32937:31: име ~ Сама"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_03_Koriun ed. page 237 - PDF page 9 (word id 1797) (w2/2): անուն։ ~ Ամիդ",
+     "xcl MH_1_1_03_Koriun ed. page 259 - PDF page 31 (word id 7044) (w2/2): անուն։ ~ Ամիդ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwerH-express_approval",
+   "branches": {
+    "Celtic": [
+     30,
+     10.7,
+     2.8
+    ],
+    "Armenian": [
+     15,
+     2.2,
+     6.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301012:#1/#2/#8:4 (w2/2): ainm ~ bráth",
+     "sga G301012:#1/#2/#8:27: ainm ~ bráth",
+     "sga G301012:#1/#2/#9:7: ainm ~ bráth"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 40 - PDF page 34 (word id 13836): անուանն ~ կարդասցէ։",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 91 - PDF page 85 (word id 34628) (w3/3): զանուն ~ կարդասցէ",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 116 - PDF page 110 (word id 44331): զանուն ~ կարդասցէ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-stew-praise",
+   "branches": {
+    "Slavic": [
+     3,
+     0.4,
+     7.0
+    ],
+    "Indo-Iranian": [
+     7,
+     3.1,
+     2.3
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 1104210: імѧ ~ стоуденꙑ",
+     "ccmh zographensis 1104210: імѧ ~ стоуденꙑ",
+     "ccmh savvina 1104210: имѧ ~ стоуденꙑ"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 12, 43.s9: nāmbhiḥ ~ stuvanti",
+     "sa-ep MBh, 12, 326.s2: nāmabhiḥ ~ stutaḥ",
+     "sa-ep MBh, 13, 17.s6: nāmabhiḥ ~ stoṣyāmi"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kjley-shelter",
+   "branches": {
+    "Germanic": [
+     4,
+     1.0,
+     4.0
+    ],
+    "Greek": [
+     2,
+     0.5,
+     3.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-242-fol 49:9 (w29/52): nefndr ~ hlið",
+     "icepahc 1150.homiliubok.rel-ser s328: nöfn ~ hliðum",
+     "icepahc 1150.homiliubok.rel-ser s329: nöfn ~ hliðum"
+    ],
+    "Greek": [
+     "grc-late Galenus In Hippocratis librum de articulis et Galeni in eum commentarii iv 4.53.461.657 s4: ὠνόμασε ~ κλιμακτῆρος",
+     "grc-late Pausanias Graeciae descriptio 8.6.4.0 s3: ὀνομαζόμενον ~ Κλίμακα"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-kjlewos",
+   "branches": {
+    "Celtic": [
+     10,
+     4.4,
+     2.3
+    ],
+    "Indo-Iranian": [
+     3,
+     0.5,
+     6.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G103005:#1:516: hainm ~ clú",
+     "mga G206000:#1/26:7: ainm ~ chlu",
+     "ga-early G100001C:#1/U1528/U1528.9:1 (w1/2): ainm ~ clú"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.57.3c: nā́ma ~ śrávase",
+     "rv RV 1.103.4d: nā́ma ~ śrávase",
+     "rv RV 10.28.12d: nā́ma ~ śrávaḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-stebh-stand_still",
+   "branches": {
+    "Germanic": [
+     12,
+     2.9,
+     4.1
+    ],
+    "Greek": [
+     14,
+     4.2,
+     3.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-242-fol 87:13 (w18/97): nafní ~ staf",
+     "menota AM-242-fol 87:13 (w20/97): nafní ~ staf",
+     "menota AM-242-fol 87:13 (w69/97): nafní ~ staf"
+    ],
+    "Greek": [
+     "grc Plato Leges 845.844e s1 (w1/2): ἐπονομαζόμενα ~ σταφυλὴν",
+     "grc-late Diodorus Siculus Bibliotheca historica 4.5.1 s2: ὀνομάσαι ~ σταφυλὰς",
+     "grc-late Strabo Geographica 1.3.18 s7: ὠνόμακεν ~ πολυστάφυλον"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-meh2texr",
+   "branches": {
+    "Celtic": [
+     39,
+     17.2,
+     2.3
+    ],
+    "Tocharian": [
+     2,
+     0.4,
+     5.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G100002:#1/T543/T543.5:1: ainm ~ mathar",
+     "sga G100016:#1/#3/CS544/CS544.4:2: ainm ~ mathar",
+     "sga G105003:#1/3/14:28: ainm ~ máthar"
+    ],
+    "Tocharian": [
+     "xto A 652 19a4: ñomā ~ mācar",
+     "xto A 658 25a1: ñom ~ mācar"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gjhewH-call_on",
+   "branches": {
+    "Slavic": [
+     15,
+     3.2,
+     4.7
+    ],
+    "Indo-Iranian": [
+     5,
+     2.1,
+     2.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 22037:140: имену ~ зовеш",
+     "vuk Vuk 22041:158: имену ~ зовеш",
+     "vuk Vuk 28031:218: имену ~ зовеш"
+    ],
+    "Indo-Iranian": [
+     "rv RV 2.37.2b: nā́ma ~ hávyaḥ",
+     "rv RV 3.56.4b: nā́ma ~ ahve",
+     "rv RV 7.56.10a: nā́ma ~ huve"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-mon",
+   "branches": {
+    "Celtic": [
+     2,
+     0.7,
+     2.9
+    ],
+    "Slavic": [
+     15,
+     4.2,
+     3.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100056:#1/12:107 (w3/3): ainm ~ mhúin",
+     "ga-early G208020:#1/1/19:8 (w1/4): ainm ~ mhúin"
+    ],
+    "Slavic": [
+     "ccmh marianus 3012700: имѧ ~ мѫжеви",
+     "ccmh marianus 3084100: имѧ ~ мѫжь",
+     "ccmh marianus 3190200: именемь ~ мѫжъ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1yagj-sacrifice",
+   "branches": {
+    "Indo-Iranian": [
+     81,
+     18.5,
+     4.4
+    ],
+    "Greek": [
+     61,
+     29.7,
+     2.1
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.6.4c: nā́ma ~ yajñíyam",
+     "rv RV 1.72.3c: nā́māni ~ yajñíyāni",
+     "rv RV 1.87.5d: nā́māni ~ yajñíyāni"
+    ],
+    "Greek": [
+     "grc-late Aristeae Epistula Aristeae epistula ad Philocratem 98 s1 (w2/2): ὄνομα ~ ἁγίοις",
+     "grc-late Diodorus Siculus Bibliotheca historica 15.18.1 s2: ὀνομαζομένην ~ ἅγιον",
+     "grc-late Diodorus Siculus Bibliotheca historica 16.58.4 s1: ὀνομαζομένας ~ ἅγιον"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-ph2texr",
+   "branches": {
+    "Germanic": [
+     66,
+     30.0,
+     2.2
+    ],
+    "Tocharian": [
+     3,
+     0.8,
+     3.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 74v:2: nefndi ~ fǫður",
+     "menota AM-132-fol-Finnboga-saga 104r:40: nefndi ~ fǫður",
+     "menota AM-132-fol-Hallfredar-saga 153v:11: nafn ~ faðir"
+    ],
+    "Tocharian": [
+     "xto A 652 19a4: ñomā ~ pācar",
+     "xto A 658 25a1: ñom ~ pācar",
+     "xto A 704 71a1: ñomyo ~ pācar"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-tewh2-swell",
+   "branches": {
+    "Celtic": [
+     4,
+     1.6,
+     2.6
+    ],
+    "Indo-Iranian": [
+     2,
+     0.7,
+     2.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G106500D:#1/4/1/66:9: h-ainm ~ Tulach",
+     "mga G201000:#1/17/xxi/53:3: h-ainm ~ Tulach",
+     "mga G201001:#1/1/#80:23: ainm ~ tealach"
+    ],
+    "Indo-Iranian": [
+     "rv RV 7.56.10a: nā́ma ~ turā́ṇām",
+     "av AVP, 4, 21.s17: nāma ~ turāyāḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2ekjmox",
+   "branches": {
+    "Germanic": [
+     31,
+     14.0,
+     2.2
+    ],
+    "Greek": [
+     3,
+     1.0,
+     3.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-35-fol 75: (w1/2): nafn ~ himni",
+     "menota AM-619-4to 66v:22: nǫmn ~ himnum",
+     "menota NRA-norrfragm-80 2r:26: nefndir ~ himinn"
+    ],
+    "Greek": [
+     "grc-late Callimachus In Dianam 48: οὔνομά ~ ἄκμοσιν",
+     "grc-late Strabo Geographica 10.3.22 s4: ὀνομάζουσί ~ Ἄκμονα",
+     "grc-late Flavius Josephus Antiquitates Judaicae 7.298 s1 (w2/2): τοὔνομα ~ Ἄκμονος"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwhen-strike",
+   "branches": {
+    "Germanic": [
+     21,
+     8.1,
+     2.6
+    ],
+    "Slavic": [
+     6,
+     2.3,
+     2.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Njals-saga 21v:39: nefndu ~ benjum",
+     "menota AM-132-fol-Njals-saga 24r:25 (w1/2): nefna ~ benjum",
+     "menota AM-132-fol-Njals-saga 39v:9: nefnir ~ benjum"
+    ],
+    "Slavic": [
+     "ccmh marianus 1072210: именемь ~ изгонихомъ",
+     "ccmh marianus 2161710: іменемъ ~ ижденѫтъ",
+     "ccmh zographensis 1072210: іменемь ~ ізгънахомъ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gjnh3tos",
+   "branches": {
+    "Germanic": [
+     11,
+     4.8,
+     2.3
+    ],
+    "Greek": [
+     3,
+     1.3,
+     2.4
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-677-4to 30r:35: nafn ~ kynnask",
+     "rea-goh Isidor I_DeFide_1 vn/a (w2/8): ganemnitist ~ chundennefona",
+     "rea-goh Otfrid O_Otfr.Ev.1.14 v8: námo ~ kúndt"
+    ],
+    "Greek": [
+     "grc-late Pausanias Graeciae descriptio 10.25.3.0 s5: ὀνόματα ~ Πολύγνωτος",
+     "grc-late Pausanias Graeciae descriptio 10.26.2.0 s2: ὀνόματα ~ Πολύγνωτος",
+     "grc-late Pausanias Graeciae descriptio 10.30.7.0 s2: ὄνομα ~ Πολυγνώτου"
+    ]
+   }
+  }
+ ]
+}

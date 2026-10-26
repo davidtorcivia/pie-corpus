@@ -1,0 +1,1720 @@
+{
+ "target": [
+  "pie-root-kjerd-heart"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 641,
+  "Germanic": 963,
+  "Slavic": 1487,
+  "Baltic": 521,
+  "Armenian": 438,
+  "Tocharian": 14,
+  "Indo-Iranian": 859,
+  "Greek": 4507,
+  "Anatolian": 22,
+  "Italic": 57
+ },
+ "rows": [
+  {
+   "root": "pie-lex-h2oxws",
+   "branches": {
+    "Germanic": [
+     7,
+     0.7,
+     10.1
+    ],
+    "Slavic": [
+     4,
+     0.8,
+     5.1
+    ],
+    "Armenian": [
+     15,
+     1.6,
+     9.6
+    ],
+    "Greek": [
+     43,
+     10.0,
+     4.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Benediktiner_Regel B_0 vn/a (w9/30): herzin ~ oora",
+     "rea-goh Benediktiner_Regel B_0 vn/a (w15/30): herza ~ orrun",
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler GGB2_SangallerGlaubenBeichteII vn/a (w2/15): herzen ~ ôren"
+    ],
+    "Slavic": [
+     "ccmh zographensis 1131500: срдьце ~ оушима",
+     "ccmh suprasliensis 3025225: срьдьцемь ~ оушима",
+     "ccmh suprasliensis 3033225: срьдьцемъ ~ оушима"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 18 - PDF page 12 (word id 4685) (w2/2): սիրտ ~ ունկն",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 115 - PDF page 109 (word id 43950) (w6/6): սիրտ ~ ունկն",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 136 - PDF page 130 (word id 52307) (w2/2): սիրտ ~ ունկն"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De morbo sacro 17 s3: καρδίῃ ~ ὦτα",
+     "grc Hippocrates et Corpus Hippocraticum De corde 7 s1: καρδίης ~ οὐάτων",
+     "grc Hippocrates et Corpus Hippocraticum De corde 8 s7: καρδίην ~ οὔατα"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-krewH-pile",
+   "branches": {
+    "Celtic": [
+     7,
+     1.1,
+     6.1
+    ],
+    "Germanic": [
+     6,
+     0.8,
+     7.2
+    ],
+    "Baltic": [
+     4,
+     0.3,
+     13.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G400089:#1/2/t#1:219: cride ~ crūaidh",
+     "mga G106500D:#1/4/1/22:25: cridi ~ crao",
+     "mga G301028:#1/t#1:14: cridi ~ cró"
+    ],
+    "Germanic": [
+     "menota AM-677-4to 9r:38: hjarta ~ hryggvask",
+     "menota HolmPerg-17-4to 1r:1 (w1200/1823): hiartans ~ rygð",
+     "menota HolmPerg-6-fol 2r:13 (w18/46): hiartta ~ rygvizt"
+    ],
+    "Baltic": [
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:48513: Šarka ~ krovė",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:48555: Sarka ~ krovė",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:48566: Šarkaj ~ krauti"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dakjru",
+   "branches": {
+    "Celtic": [
+     3,
+     0.5,
+     6.6
+    ],
+    "Germanic": [
+     9,
+     0.9,
+     9.9
+    ],
+    "Armenian": [
+     11,
+     2.7,
+     4.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G100027:#1/649/649.1:15: chride ~ déraib",
+     "mga G203000:#1/6:63: cride ~ dēr",
+     "mga G206000:#1/28~2/XVIII:14: cride ~ ṅ-déraib"
+    ],
+    "Germanic": [
+     "menota AM-619-4to 10:21: hiartano ~ tǫr",
+     "menota DG-8-OHleg 40v:26 (w7/13): hiarta ~ tarom",
+     "menota HolmPerg-17-4to 1r:1 (w226/1823): hiartans ~ tarum"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 77 - PDF page 71 (word id 29075) (w1/3): սրտիւ, ~ արտասուաւք",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 91 - PDF page 85 (word id 34628) (w2/3): սրտէ ~ արտասուաւք,",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 96 - PDF page 90 (word id 36739): սրտին ~ զարտասուաց"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ew-perceive",
+   "branches": {
+    "Germanic": [
+     36,
+     11.2,
+     3.2
+    ],
+    "Armenian": [
+     15,
+     1.6,
+     9.6
+    ],
+    "Anatolian": [
+     2,
+     0.3,
+     7.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-619-4to 42:27: hiortum ~ hæyrir",
+     "menota AM-619-4to 144:5 (w2/2): hiarta ~ høyra",
+     "menota AM-677-4to 21v:40: hjǫrtu ~ heyranda"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 18 - PDF page 12 (word id 4685) (w2/2): սիրտ ~ ունկն",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 115 - PDF page 109 (word id 43950) (w6/6): սիրտ ~ ունկն",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 136 - PDF page 130 (word id 52307) (w2/2): սիրտ ~ ունկն"
+    ],
+    "Anatolian": [
+     "hit KBo 31.77 Vs. I 8′: ge-er-me-et ~ a-uš-te-en",
+     "hit KBo 3.34 Vs. I 19: kar-da ~ u-uḫ-ḫi"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dngjhweh2s",
+   "branches": {
+    "Germanic": [
+     9,
+     2.0,
+     4.4
+    ],
+    "Armenian": [
+     11,
+     2.8,
+     3.9
+    ],
+    "Indo-Iranian": [
+     7,
+     0.8,
+     9.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-242-fol 118:26 (w2/2): hiarta ~ tunga",
+     "menota HolmPerg-6-fol 128:14 (w5/6): hiarttat ~ tunguna",
+     "rea-goh Benediktiner_Regel B_0 vn/a (w23/30): herzin ~ zungun"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 54 - PDF page 48 (word id 19622) (w1/2): սրտիւ ~ լեզուոյ",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 128 - PDF page 122 (word id 49369) (w5/5): սիրտս՝ ~ լեզուս",
+     "xcl MH_1_1_10_Mandakuni ed. page 1172 - PDF page 14 (word id 5590) (w1/2): սրտիւ, ~ լեզուաւ"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 5, 29.s7: hṛdayaṃ ~ jihvāṃ",
+     "av AVŚ, 6, 76.s2: hṛdayād ~ jihvābhir",
+     "av AVP, 1, 92.s7: hṛdaye ~ jihvāyāḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-keh2-desire",
+   "branches": {
+    "Celtic": [
+     5,
+     1.1,
+     4.4
+    ],
+    "Germanic": [
+     3,
+     0.5,
+     6.2
+    ],
+    "Indo-Iranian": [
+     26,
+     7.4,
+     3.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga celtic-journal-eriu-1904-1928:eriu_1907_3:L5156-L5156: cridi ~ carae",
+     "mga G206003:#1/4:1: chridi ~ sercæ",
+     "mga G400028:#1:3: chride ~ charas"
+    ],
+    "Germanic": [
+     "menota AM-619-4to 75r:2: hiarta ~ hordóme",
+     "icepahc 1150.homiliubok.rel-ser s905: hjarta ~ hórdómi",
+     "rea-goh Otfrid O_Otfr.Ev.2.19 v5: herzen ~ húorot"
+    ],
+    "Indo-Iranian": [
+     "rv RV 10.40.12b: hr̥tsú ~ kā́māḥ",
+     "rv RV 10.97.18d: hr̥dé ~ kā́māya",
+     "av AVŚ, 3, 25.s3: hṛdi ~ kāmasya"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-weyHs",
+   "branches": {
+    "Indo-Iranian": [
+     6,
+     0.9,
+     6.8
+    ],
+    "Greek": [
+     6,
+     2.0,
+     2.9
+    ],
+    "Italic": [
+     2,
+     0.6,
+     3.2
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 1, 79.s22: hṛdayāt ~ vayaḥ",
+     "sa-ep MBh, 1, 79.s33: hṛdayāt ~ vayaḥ",
+     "sa-ep MBh, 1, 79.s51: hṛdayāt ~ vayaḥ"
+    ],
+    "Greek": [
+     "grc-late Galenus De temperamentis libri iii 2.12.61.73 s8: καρδίᾳ ~ ἶνες",
+     "grc-late Galenus De anatomicis administrationibus libri ix 7.8.154.178 s9: καρδίας ~ ἰσίν",
+     "grc-late Galenus De anatomicis administrationibus libri ix 7.8.154.178 s10: καρδία ~ ἶνας"
+    ],
+    "Italic": [
+     "lat LucrDRN1 1.13: corda ~ ui",
+     "lat LucrDRN6 6.1152: cor ~ uis"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kjel-incline",
+   "branches": {
+    "Celtic": [
+     4,
+     1.4,
+     2.9
+    ],
+    "Indo-Iranian": [
+     14,
+     2.0,
+     7.0
+    ],
+    "Greek": [
+     9,
+     3.7,
+     2.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301037:#1/1/2:59 (w7/8): chride ~ clúas",
+     "mga G206000:#1/1/#2:23 (w3/3): cridib ~ cluasaib-ne",
+     "mga G206009:#1/1/1/#3:32 (w1/2): cridi ~ cluasaib"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 8, 3.s11: hṛdaye ~ śalyāṁ",
+     "sa-ep MBh, 1, 44.s17: hṛdi ~ śalyam",
+     "sa-ep MBh, 1, 129.s106: hṛdi ~ śalyam"
+    ],
+    "Greek": [
+     "hom Il. 7.100: ἀκήριοι ~ ἀκλεὲς",
+     "hom Od. 13.299: κέρδεσιν ~ κλέομαι",
+     "grc Pindarus Isthmia 5.27: ἐκέρδαναν ~ κλέονται"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-plh1nos",
+   "branches": {
+    "Slavic": [
+     5,
+     1.8,
+     2.8
+    ],
+    "Baltic": [
+     2,
+     0.5,
+     3.6
+    ],
+    "Indo-Iranian": [
+     2,
+     0.6,
+     3.3
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 28031:234: срцу ~ испунио",
+     "vuk Vuk 21695:90: срце ~ испунити",
+     "vuk Vuk 28240:263: срце ~ напунити"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:1174: Szirdis ~ pilna",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:19852: širdėlė ~ Pilnas"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 3, 72.s56: hṛdayaṃ ~ pūrṇe",
+     "sa-ep Rām, Su, 26.s7: hṛdayaṃ ~ pūrṇam"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dheh1-do",
+   "branches": {
+    "Celtic": [
+     13,
+     3.7,
+     3.5
+    ],
+    "Germanic": [
+     47,
+     23.2,
+     2.0
+    ],
+    "Baltic": [
+     7,
+     3.4,
+     2.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga-gl wb:7d:10 (w1/2): cridiu ~ cretem",
+     "sga G400072:#1/1:13: cridi ~ Hiris",
+     "mga G206000:#1/1/#2:2 (w2/2): cride ~ hiris"
+    ],
+    "Germanic": [
+     "menota AM-619-4to 12:16 (w2/2): hiartans ~ domara",
+     "menota AM-619-4to 68r:10: hiortum ~ domande",
+     "menota AM-677-4to 5v:10: hjǫrtunum ~ dǿma"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:29156: szirdele ~ dėjau",
+     "dainos litauischevolksl00leskuoft:16437: szirdį ~ pradėjo",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:7125: Širdėlė ~ sudėčiau"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-plewmox",
+   "branches": {
+    "Indo-Iranian": [
+     3,
+     0.0,
+     193.0
+    ],
+    "Greek": [
+     21,
+     1.5,
+     14.3
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "av AVŚ, 2, 33.s5: hṛdayāt ~ klomno",
+     "av AVŚ, 9, 8.s23: hṛdayād ~ klomno",
+     "av AVŚ, 10, 9.s30: hṛdayam ~ klomā"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 6.5.5 s2: καρδίην ~ πλεύμονα",
+     "grc Hippocrates et Corpus Hippocraticum Coa praesagia 20 s57: καρδίης ~ πλεύμων",
+     "grc Hippocrates et Corpus Hippocraticum De morbo sacro 6 s2 (w1/2): καρδίην ~ πλεύμονα"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dolh1eyeti",
+   "branches": {
+    "Slavic": [
+     16,
+     0.4,
+     36.9
+    ],
+    "Italic": [
+     3,
+     0.1,
+     55.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 1557:115: срцу ~ одољет'",
+     "vuk Vuk 22083:97: срцу ~ одољети",
+     "vuk Vuk 12353:330: срцу ~ одољет"
+    ],
+    "Italic": [
+     "lat CatAgr 157.7 (w1/4): cor ~ dolet",
+     "lat PlAmphi 922: cordi ~ doluerit",
+     "lat PlCurcu 238: cordis ~ dolent"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kjley-lean",
+   "branches": {
+    "Celtic": [
+     18,
+     0.2,
+     104.7
+    ],
+    "Indo-Iranian": [
+     6,
+     0.6,
+     9.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G207008:#1/55:2: cridi ~ clīab",
+     "sga G301012:#1/#2/#34:103: chride ~ chlíab",
+     "mga G301009:#1/1:119 (w2/2): chride ~ chlíab"
+    ],
+    "Indo-Iranian": [
+     "rv RV 4.43.1d: hr̥dí ~ śreṣāma",
+     "rv RV 7.86.8b: hr̥dí ~ úpaśritaḥ",
+     "av AVŚ, 6, 18.s3: hṛdi ~ śritam"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bheyd-split",
+   "branches": {
+    "Indo-Iranian": [
+     30,
+     2.4,
+     12.7
+    ],
+    "Italic": [
+     2,
+     0.0,
+     67.2
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "av AVP, 12, 21.s3: hṛdaḥ ~ bhinddhi",
+     "av AVP, 12, 21.s4: hṛdayam ~ bhinddhi",
+     "sa-ep MBh, 1, 60.s90: hṛdayaṃ ~ bhittvā"
+    ],
+    "Italic": [
+     "lat CatAgr 157.7 (w1/4): cor ~ bilis",
+     "lat PlBacch 251: cor ~ finditur"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-delh1-split",
+   "branches": {
+    "Slavic": [
+     16,
+     0.8,
+     20.9
+    ],
+    "Italic": [
+     3,
+     0.1,
+     20.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 1557:115: срцу ~ одољет'",
+     "vuk Vuk 22083:97: срцу ~ одољети",
+     "vuk Vuk 12353:330: срцу ~ одољет"
+    ],
+    "Italic": [
+     "lat CatAgr 157.7 (w1/4): cor ~ dolet",
+     "lat PlAmphi 922: cordi ~ doluerit",
+     "lat PlCurcu 238: cordis ~ dolent"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-leb-hang_down_loosely",
+   "branches": {
+    "Germanic": [
+     4,
+     0.2,
+     25.4
+    ],
+    "Greek": [
+     5,
+     1.0,
+     4.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_141 v8: herzen ~ lefsen",
+     "rea-goh Z-Notker-Psalmen N_Ps_037 v6: herzen ~ léfsen",
+     "rea-goh Z-Notker-Psalmen N_Ps_044 v2 (w1/2): herzen ~ lefsen"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De corde 1 s6: καρδίη ~ λάπτουσα",
+     "grc-late Valerius Babrius Mythiambi Aesopici 1.95.90 (w2/2): καρδίην ~ λάπτει",
+     "grc-late Galenus De usu partium 6.13.435.436 s16: καρδία ~ λοβὸς"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1el-greyish_or_brownish",
+   "branches": {
+    "Slavic": [
+     19,
+     0.7,
+     29.0
+    ],
+    "Greek": [
+     11,
+     2.7,
+     4.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:8203: Сердцё ~ лоси",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:39454: сердце ~ лоси",
+     "byliny sbornikotdelenijarusskogojazykaislovesno92:3323: сердце ~ лосе"
+    ],
+    "Greek": [
+     "hom Il. 1.225: κραδίην ~ ἐλάφοιο",
+     "grc Plato Respublica 390.389e s3: κραδίην ~ ἐλάφοιο",
+     "grc Aristoteles et Corpus Aristotelicum De partibus animalium 3.4.667a s9: καρδίας ~ ἔλαφος"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kjey-fall",
+   "branches": {
+    "Germanic": [
+     2,
+     0.3,
+     7.2
+    ],
+    "Indo-Iranian": [
+     7,
+     0.6,
+     10.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler C_CarmenAdDeum vn/a (w4/5): hercin ~ ungahiuri",
+     "rea-osx Genesis Gen_2 v685: herta ~ sinhîun"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 9, 32.s64: hṛd ~ śayam",
+     "sa-ep MBh, 9, 55.s36: hṛd ~ śayam",
+     "sa-ep MBh, 13, 84.s38: hṛd ~ śayaḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-men-think",
+   "branches": {
+    "Celtic": [
+     13,
+     0.7,
+     17.6
+    ],
+    "Indo-Iranian": [
+     87,
+     22.6,
+     3.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G204001:#1/6:10 (w1/2): cride ~ menman",
+     "mga G201011:#1/13:1 (w1/3): cride ~ menman",
+     "mga G206000:#1/1/#2:2 (w2/2): cride ~ menman"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.61.2c: hr̥dā́ ~ mánasā",
+     "rv RV 1.67.4b: hr̥dā́ ~ mántrān",
+     "rv RV 1.73.10b: hr̥dé ~ mánase"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-solh2-whole",
+   "branches": {
+    "Celtic": [
+     3,
+     0.1,
+     28.8
+    ],
+    "Greek": [
+     105,
+     51.1,
+     2.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G200001:#1/#2/#3:380: chride ~ slánaigid",
+     "sga G200001:#1/#2/#3:400: chride ~ slánaigid",
+     "sga oldirish-felire-oengusso-stokes-1905:martyrologyofoen29oenguoft:L24754-L24754: cride ~ slanaid"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 5.89 s2: καρδίη ~ ὅλῃ",
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 7.10 s6: καρδίην ~ ὅλον",
+     "grc Aristoteles et Corpus Aristotelicum Historia animalium 3.3 s37: καρδίας ~ ὅλη"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-speh1-succeed",
+   "branches": {
+    "Germanic": [
+     2,
+     0.9,
+     2.3
+    ],
+    "Italic": [
+     2,
+     0.1,
+     24.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_111 v3: herzen ~ gespáret",
+     "rea-goh Z-Notker-Psalmen N_Ps_067 v16 (w1/2): herzen ~ gespáret"
+    ],
+    "Italic": [
+     "lat LucrDRN1 1.923: cor ~ spes",
+     "lat PlBacch Fragmentum_Fr.12.Linea_1: cor ~ spes"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-worteyeti",
+   "branches": {
+    "Celtic": [
+     3,
+     0.3,
+     11.8
+    ],
+    "Indo-Iranian": [
+     20,
+     4.4,
+     4.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga celtic-journal-eriu-1904-1928:eriu_1905_2:L6473-L6475 (w2/2): cride ~ dortai",
+     "ga-early G206008:#1/56:9: chreidimh ~ dhortadh",
+     "ga-early G208020:#1/2/5:30 (w2/2): chreidimh ~ dhortadh"
+    ],
+    "Indo-Iranian": [
+     "rv RV 10.95.17d: hŕ̥dayam ~ vartasva",
+     "sa-ep MBh, 1, 5.s70: hṛdi ~ vartati",
+     "sa-ep MBh, 1, 43.s54: hṛdi ~ vartate"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-yes-foam",
+   "branches": {
+    "Germanic": [
+     3,
+     0.4,
+     8.5
+    ],
+    "Greek": [
+     11,
+     2.3,
+     4.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota HolmPerg-17-4to 1r:1 (w987/1823): hiarta ~ œsande",
+     "menota HolmPerg-17-4to 1r:1 (w1572/1823): hiarta ~ œsez",
+     "rea-osx Heliand Hel_01 v21: hertan ~ gêst"
+    ],
+    "Greek": [
+     "grc Aristoteles et Corpus Aristotelicum De anima 1.1 s45: καρδίαν ~ ζέσιν",
+     "grc Aristoteles et Corpus Aristotelicum De partibus animalium 2.7.652b s13: καρδίᾳ ~ ζέσιν",
+     "grc Aristoteles et Corpus Aristotelicum Problemata 2.26 s6: καρδίαν ~ ζέσις"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2enk-curve",
+   "branches": {
+    "Celtic": [
+     7,
+     0.5,
+     15.1
+    ],
+    "Indo-Iranian": [
+     3,
+     1.1,
+     2.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G100027:#1/626/626.1:8: chride ~ dúthracht",
+     "sga G200001:#1/#2/#3:68: chridi ~ dúthracht",
+     "mga G201009:#1/102:9: cride ~ duthracht"
+    ],
+    "Indo-Iranian": [
+     "rv RV 10.119.5b: hr̥dā́ ~ acāmi",
+     "av AVŚ, 3, 25.s5: hṛdi ~ prācīna",
+     "av AVP, 1, 17.s4: hṛdi ~ aṅkān"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h3nebh-hub",
+   "branches": {
+    "Indo-Iranian": [
+     5,
+     0.5,
+     11.1
+    ],
+    "Greek": [
+     9,
+     2.6,
+     3.5
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "av AVŚ, 6, 9.s5: hṛdi ~ nābhir",
+     "av AVŚ, 9, 8.s23: hṛdayād ~ nābhyā",
+     "av AVP, 19, 28.s27: hṛdaye ~ nābhi"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum Coa praesagia 15 s40: καρδίης ~ ὀμφαλὸν",
+     "grc Aristoteles et Corpus Aristotelicum Historia animalium 6.3 s17 (w2/2): καρδίας ~ ὀμφαλῷ",
+     "grc Aristoteles et Corpus Aristotelicum Historia animalium 6.3 s28: καρδίας ~ ὀμφαλὸς"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1egwh-drink",
+   "branches": {
+    "Germanic": [
+     2,
+     0.1,
+     15.5
+    ],
+    "Greek": [
+     3,
+     1.3,
+     2.4
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Tatian T_Tat22 vn/a (w8/11): herzon ~ subere",
+     "rea-goh Z-Notker-Psalmen N_Ps_016 v14: herzon ~ únsûbren"
+    ],
+    "Greek": [
+     "grc-late Longinus De sublimitate 34.4 s1 (w1/3): καρδίῃ ~ νήφοντος",
+     "grc-late Plutarchus De garrulitate 4 s8: καρδίᾳ ~ νήφοντος",
+     "grc-late Corpus Hermeticum Ὅτι μέγιστον κακὸν ἐν ἀνθρώποις ἡ περὶ τοῦ θεοῦ ἀγνωσία 2 s1 (w2/2): καρδίᾳ ~ νήφουσιν"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h3okws",
+   "branches": {
+    "Germanic": [
+     27,
+     5.1,
+     5.3
+    ],
+    "Indo-Iranian": [
+     2,
+     0.3,
+     6.4
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-619-4to 45v:12: hiartans ~ ǫugum",
+     "menota HolmPerg-17-4to 1r:1 (w861/1823): hiarta ~ augum",
+     "menota HolmPerg-6-fol 2r:13 (w18/46): hiartta ~ augv"
+    ],
+    "Indo-Iranian": [
+     "av AVP, 12, 18.s9: hṛdayaṃ ~ akṣyau",
+     "av AVP, 19, 7.s15: hṛdayena ~ akṣībhyām"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-mntos-2",
+   "branches": {
+    "Germanic": [
+     19,
+     2.0,
+     9.5
+    ],
+    "Indo-Iranian": [
+     2,
+     0.6,
+     3.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Njals-saga 23v:3: hjartað ~ munni",
+     "menota AM-243-b-alfa-fol 55v:10: hiarta ~ munni",
+     "menota AM-677-4to 2r:5: hjartans ~ munnsins"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 12, 274.s67: hṛd ~ mataṃ",
+     "sa-ep MBh, 13, 18.s68: hṛdi ~ mataṃ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2eghos",
+   "branches": {
+    "Germanic": [
+     2,
+     0.7,
+     2.9
+    ],
+    "Greek": [
+     11,
+     1.0,
+     10.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota HolmPerg-17-4to 1r:1 (w1787/1823): hiarta ~ aga",
+     "rea-goh Otfrid O_Otfr.Ev.5.21 v2: hérzen ~ égislih"
+    ],
+    "Greek": [
+     "hom Il. 15.208: κραδίην ~ ἄχος",
+     "hom Il. 16.52: κραδίην ~ ἄχος",
+     "hom Il. 17.539: κῆρ ~ ἄχεος"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-nu",
+   "branches": {
+    "Tocharian": [
+     3,
+     0.8,
+     3.8
+    ],
+    "Greek": [
+     2,
+     0.2,
+     8.0
+    ]
+   },
+   "examples": {
+    "Tocharian": [
+     "xto A 687 54b6: krī ~ nu",
+     "xto A 859 226b6: krī ~ nu",
+     "xto A 859 226b7: krī ~ nu"
+    ],
+    "Greek": [
+     "grc Plato Cratylus 417b s1: κέρδος ~ νῦ",
+     "grc Plato Cratylus 417b s4: κέρδος ~ νῦ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gjhleh1-shine",
+   "branches": {
+    "Celtic": [
+     11,
+     2.3,
+     4.9
+    ],
+    "Germanic": [
+     11,
+     1.8,
+     6.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga celtic-journal-eriu-1904-1928:eriu_1907_3:L5537-L5537: cride ~ glan",
+     "sga celtic-journal-zcp-1897-1926:zeitschriftfrc13meyeuoft:L7797-L7797: cride ~ glan",
+     "mga G206000:#1/1/#2:2 (w2/2): cride ~ glan"
+    ],
+    "Germanic": [
+     "menota AM-519a-4to 2r:29: hjarta ~ glǫðu",
+     "menota AM-677-4to 9v:5: hjǫrtu ~ glóandi",
+     "menota AM-677-4to 23v:1: hjarta ~ glóar"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-wert-turn",
+   "branches": {
+    "Celtic": [
+     3,
+     0.4,
+     7.4
+    ],
+    "Indo-Iranian": [
+     22,
+     6.9,
+     3.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga celtic-journal-eriu-1904-1928:eriu_1905_2:L6473-L6475 (w2/2): cride ~ dortai",
+     "ga-early G206008:#1/56:9: chreidimh ~ dhortadh",
+     "ga-early G208020:#1/2/5:30 (w2/2): chreidimh ~ dhortadh"
+    ],
+    "Indo-Iranian": [
+     "rv RV 10.95.17d: hŕ̥dayam ~ vartasva",
+     "sa-ep MBh, 1, 5.s70: hṛdi ~ vartati",
+     "sa-ep MBh, 1, 43.s54: hṛdi ~ vartate"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-kjlew",
+   "branches": {
+    "Celtic": [
+     4,
+     0.5,
+     7.6
+    ],
+    "Greek": [
+     5,
+     1.6,
+     3.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301037:#1/1/2:59 (w7/8): chride ~ clúas",
+     "mga G206000:#1/1/#2:23 (w3/3): cridib ~ cluasaib-ne",
+     "mga G206009:#1/1/1/#3:32 (w1/2): cridi ~ cluasaib"
+    ],
+    "Greek": [
+     "hom Il. 7.100: ἀκήριοι ~ ἀκλεὲς",
+     "hom Od. 13.299: κέρδεσιν ~ κλέομαι",
+     "grc Pindarus Isthmia 5.27: ἐκέρδαναν ~ κλέονται"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-kjeleti",
+   "branches": {
+    "Celtic": [
+     2,
+     0.4,
+     5.1
+    ],
+    "Germanic": [
+     2,
+     0.5,
+     4.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100055:#1/2/6/3:8: gcreidimh ~ ceilt",
+     "ga-early G402568:#1/55:7: creidimh ~ ceilt"
+    ],
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_039 v6: herzen ~ ",
+     "rea-osx Heliand Hel_20 v1754: herte ~ farhelan"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-seh1yeti",
+   "branches": {
+    "Germanic": [
+     4,
+     0.5,
+     7.6
+    ],
+    "Slavic": [
+     2,
+     0.8,
+     2.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "icepahc 1150.homiliubok.rel-ser s788: hjörtu ~ seri",
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler APB_PredigtsammlungB vn/a (w34/44): herzi ~ sait",
+     "rea-goh Monsee MF_1_M.IX vn/a (w2/6): her ~ ga"
+    ],
+    "Slavic": [
+     "ccmh marianus 2041520: сръдьцихъ ~ сѣное",
+     "ccmh zographensis 2041520: сръдьцихъ ~ сѣаное"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-peyh2-swell",
+   "branches": {
+    "Celtic": [
+     19,
+     6.1,
+     3.1
+    ],
+    "Slavic": [
+     2,
+     0.3,
+     5.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100054:#1/1~2/47:64: chreidimh ~ n-Éirinn",
+     "ga-early G100054:#1/2/1/#1:3 (w2/2): chreidimh ~ n-Éirinn",
+     "ga-early G100054:#1/2/1/#1:16: gcreideamh ~ n-Éirinn"
+    ],
+    "Slavic": [
+     "byliny 10945725bsb:21095: сердца ~ питающееся",
+     "byliny 10945725bsb:24638: средня ~ воспитан"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kwyeh1-rest",
+   "branches": {
+    "Germanic": [
+     5,
+     1.7,
+     2.9
+    ],
+    "Indo-Iranian": [
+     3,
+     0.5,
+     5.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-619-4to 29v:27: hiarta ~ hvilisc",
+     "menota AM-677-4to 24r:9: hjǫrtum ~ hvílisk",
+     "menota DG-4at7-Streng 0054:4 (w31/40): hiarta ~ huilazc"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 1, 44.s17: hṛdi ~ cira",
+     "sa-ep MBh, 4, 43.s38: hṛdi ~ cira",
+     "sa-ep MBh, 9, 55.s79: hṛdaya ~ cira"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-seh2-satiate",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.3,
+     5.9
+    ],
+    "Greek": [
+     10,
+     3.6,
+     2.8
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "av AVŚ, 3, 7.s4: hṛdi ~ ṣya",
+     "av AVP, 19, 36.s16: hṛdaś ~ ṣyata"
+    ],
+    "Greek": [
+     "hom Il. 16.481: κῆρ ~ ἁδινὸν",
+     "hom Od. 19.516: κῆρ ~ ἀδινὸν",
+     "grc Euripides Medea 245: καρδίαν ~ ἄσης"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2sews-be_dry",
+   "branches": {
+    "Slavic": [
+     4,
+     1.2,
+     3.3
+    ],
+    "Indo-Iranian": [
+     2,
+     0.4,
+     4.9
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 2030300: срѣдѣ ~ соухѫ",
+     "ccmh marianus 3060810: срѣдѣ ~ соухѫ",
+     "ccmh assemanianus 2030300: срѣдѣ ~ соухѫ"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 6, 139.s4: hṛdayam ~ śuṣyatu",
+     "sa-ep MBh, 3, 126.s19: hṛdayaḥ ~ śuṣka"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-der-split",
+   "branches": {
+    "Germanic": [
+     3,
+     0.8,
+     3.7
+    ],
+    "Indo-Iranian": [
+     7,
+     1.6,
+     4.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_030 v9 (w1/2): hérzen ~ zorn",
+     "rea-goh Z-Notker-Psalmen N_Ps_054 v25 (w2/2): hérza ~ zorne",
+     "rea-goh Z-Notker-Psalmen N_Ps_007 v6: hérzon ~ zórn"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 1, 48.s48: hṛdayaṃ ~ dīryati",
+     "sa-ep MBh, 1, 137.s88: hṛdaye ~ dīryate",
+     "sa-ep MBh, 3, 7.s9: hṛdayaṃ ~ dīryati"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-menos",
+   "branches": {
+    "Indo-Iranian": [
+     58,
+     8.9,
+     6.5
+    ],
+    "Greek": [
+     5,
+     2.5,
+     2.0
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.61.2c: hr̥dā́ ~ mánasā",
+     "rv RV 1.73.10b: hr̥dé ~ mánase",
+     "rv RV 1.171.2b: hr̥dā́ ~ mánasā"
+    ],
+    "Greek": [
+     "grc-late Galenus De placitis Hippocratis et Platonis 3.3.117.266 s2 (w1/2): κραδίη ~ μένος",
+     "grc-late Galenus De placitis Hippocratis et Platonis 6.8.203.308 s17: καρδίας ~ μένος",
+     "grc-late Oppianus Cynegetica 4.28: κραδίην ~ ἀμενηνοί"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sh2ey-bind",
+   "branches": {
+    "Celtic": [
+     2,
+     0.5,
+     4.4
+    ],
+    "Indo-Iranian": [
+     2,
+     0.8,
+     2.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301015:#1/29/t#1:35: chridi ~ sáeth",
+     "mga G301009:#1/1/t#7:31: chride ~ sáeth"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 3, 7.s4: hṛdi ~ ṣya",
+     "av AVP, 19, 36.s16: hṛdaś ~ ṣyata"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dwiplos",
+   "branches": {
+    "Germanic": [
+     2,
+     0.4,
+     4.5
+    ],
+    "Greek": [
+     11,
+     4.4,
+     2.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Benediktiner_Regel B_4 vn/a (w8/16): herzin ~ zuuifal",
+     "rea-goh Otfrid O_Otfr.Ev.5.11 v32: hérzen ~ zuívolonton"
+    ],
+    "Greek": [
+     "grc Euripides Heraclidae 1043: κέρδος ~ διπλοῦν",
+     "grc Euripides Hecuba 518: κερδᾶναι ~ διπλᾶ",
+     "grc Euripides Rhesus 163: κέρδος ~ διπλῆν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-steg-pole",
+   "branches": {
+    "Celtic": [
+     3,
+     0.8,
+     3.9
+    ],
+    "Greek": [
+     2,
+     0.8,
+     2.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100055:#1/3/9/11:1 (w2/2): gcreideamh ~ gcoitcheann",
+     "ga-early G100056:#1/14:24 (w1/3): gCreideamh ~ gCoitcheann",
+     "ga-early G208020:#1/2/5:36 (w1/2): chreidimh ~ coitcheann"
+    ],
+    "Greek": [
+     "grc-late Galenus De usu partium 6.17.444.440 s11: καρδίας ~ στεγανὸν",
+     "grc-late Galenus De semine libri ii 1.8.195.230 s1 (w2/2): καρδίαν ~ στεγανός"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-sker",
+   "branches": {
+    "Germanic": [
+     11,
+     2.6,
+     4.2
+    ],
+    "Baltic": [
+     5,
+     2.2,
+     2.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Murbacher_Hymnen MH_Murb.H.XVI v2: herza ~ scirmi",
+     "rea-goh Z-Notker-Psalmen N_Ps_118 vn/a (w32/146): herzen ~ scrodon",
+     "rea-goh Z-Notker-Psalmen N_Ps_030 v14 (w2/2): herza ~ scírmest"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:7136: szirdy ~ sk'irkis",
+     "dainos litauischevolksl00leskuoft:7404: szirdy ~ skirk",
+     "dainos litauischevolksl00leskuoft:7996: szirdy ~ skirk"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-mori",
+   "branches": {
+    "Germanic": [
+     2,
+     0.5,
+     3.6
+    ],
+    "Slavic": [
+     3,
+     1.3,
+     2.4
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_045 v8: herzen ~ mére",
+     "rea-goh Z-Notker-Psalmen N_Ps_045 v12: herza ~ méres"
+    ],
+    "Slavic": [
+     "ccmh marianus 1142400: срѣдѣ ~ морѣ",
+     "ccmh marianus 2064700: срѣдѣ ~ морѣ",
+     "ccmh assemanianus 1142400: срѣдѣ ~ морѣ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-mer-sea",
+   "branches": {
+    "Germanic": [
+     2,
+     0.5,
+     3.6
+    ],
+    "Slavic": [
+     3,
+     1.3,
+     2.4
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_045 v8: herzen ~ mére",
+     "rea-goh Z-Notker-Psalmen N_Ps_045 v12: herza ~ méres"
+    ],
+    "Slavic": [
+     "ccmh marianus 1142400: срѣдѣ ~ морѣ",
+     "ccmh marianus 2064700: срѣдѣ ~ морѣ",
+     "ccmh assemanianus 1142400: срѣдѣ ~ морѣ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-trewd-push",
+   "branches": {
+    "Celtic": [
+     4,
+     1.6,
+     2.5
+    ],
+    "Germanic": [
+     2,
+     0.6,
+     3.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga-gl sg:65b2:1645: chride ~ trom",
+     "mga G103005:#1:15 (w1/2): chridi ~ Trom",
+     "mga G305001:#1/15:86 (w1/2): ancride ~ troma"
+    ],
+    "Germanic": [
+     "menota HolmPerg-17-4to 1r:1 (w1457/1823): hiortum ~ þrutens",
+     "rea-goh Z-Notker-Psalmen N_Ps_077 v16 (w1/2): herza ~ "
+    ]
+   }
+  },
+  {
+   "root": "pie-root-new-new",
+   "branches": {
+    "Celtic": [
+     2,
+     0.7,
+     2.8
+    ],
+    "Germanic": [
+     5,
+     1.6,
+     3.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100070:#1/91/3:24: chreidimh ~ aithne",
+     "ga-early G208020:#1/2/5:62 (w1/4): creideamh ~ aithne"
+    ],
+    "Germanic": [
+     "menota HolmPerg-17-4to 1r:1 (w1327/1823): hiarta ~ nýr",
+     "menota HolmPerg-17-4to 1r:1 (w1534/1823): hiarta ~ nygian",
+     "menota HolmPerg-6-fol 16:25 (w21/21): hiartta ~ nyum"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h3regj-straighten",
+   "branches": {
+    "Celtic": [
+     14,
+     6.5,
+     2.2
+    ],
+    "Germanic": [
+     53,
+     14.0,
+     3.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G207003:#1/7:10: cride ~ aithrige",
+     "sga G303016:#1/8/t#1:173: cride ~ recht",
+     "sga celtic-journal-revue-celtique-1870-1928:revueceltique15pari:L27780-L27786 (w3/3): cride ~ aithrige"
+    ],
+    "Germanic": [
+     "menota AM-132-fol-Njals-saga 38v:6: hjarta ~ rétt",
+     "menota HolmPerg-17-4to 1r:1 (w348/1823): hiarta ~ rǽtto",
+     "menota HolmPerg-17-4to 1r:1 (w1007/1823): hiarta ~ vanrétte"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sek-cut",
+   "branches": {
+    "Germanic": [
+     11,
+     3.1,
+     3.6
+    ],
+    "Baltic": [
+     5,
+     2.2,
+     2.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Murbacher_Hymnen MH_Murb.H.XVI v2: herza ~ scirmi",
+     "rea-goh Z-Notker-Psalmen N_Ps_118 vn/a (w32/146): herzen ~ scrodon",
+     "rea-goh Z-Notker-Psalmen N_Ps_030 v14 (w2/2): herza ~ scírmest"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:7136: szirdy ~ sk'irkis",
+     "dainos litauischevolksl00leskuoft:7404: szirdy ~ skirk",
+     "dainos litauischevolksl00leskuoft:7996: szirdy ~ skirk"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gjneh3-recognise",
+   "branches": {
+    "Celtic": [
+     7,
+     2.9,
+     2.4
+    ],
+    "Italic": [
+     2,
+     0.6,
+     3.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301017:#1/92:5: cridi ~ Gnása",
+     "sga G301900:#1/#23/#8:15: cride ~ Gnása",
+     "mga G201000:#1/17/i/3:1: creidimh ~ h-eccna"
+    ],
+    "Italic": [
+     "lat LucrDRN4 4.53: corde ~ cognoscere",
+     "lat LucrDRN5 5.882: corde ~ cognoscere"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-yeh2-go",
+   "branches": {
+    "Armenian": [
+     2,
+     0.6,
+     3.5
+    ],
+    "Greek": [
+     70,
+     32.9,
+     2.1
+    ]
+   },
+   "examples": {
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 112 - PDF page 106 (word id 42919) (w2/2): սրտի ~ ջանք",
+     "xcl MH_1_2_13_Lazar_Parp ed. page 2239 - PDF page 39 (word id 11723) (w2/4): սրտի ~ ջանս"
+    ],
+    "Greek": [
+     "grc Euripides Cyclops 312: κέρδη ~ ζημίαν",
+     "grc Euripides Iphigenia Taurica 506: κέρδος ~ ζητεῖς",
+     "grc Gorgias Testimonia 19 s3: κέρδος ~ ζημίαν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-leykw-leave",
+   "branches": {
+    "Celtic": [
+     7,
+     2.7,
+     2.6
+    ],
+    "Baltic": [
+     8,
+     2.9,
+     2.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G100027:#1/649/649.1:15: chride ~ theilg",
+     "mga G106500D:#1/4/1/32:9: cride ~ roléic",
+     "mga G305001:#1/15:65 (w2/2): chride ~ leicc"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:3498: szirdužė ~ laikysiu",
+     "dainos litauischevolksl00leskuoft:3504: szirdužė ~ laikysiu",
+     "dainos litauischevolksl00leskuoft:5189: szirdy ~ nelaikei"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-med-measure",
+   "branches": {
+    "Celtic": [
+     10,
+     3.5,
+     2.9
+    ],
+    "Armenian": [
+     36,
+     14.2,
+     2.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G206000:#1/16/#1:60: cridib ~ choimded",
+     "mga G206000:#1/29~2/XXVII:1: cride ~ coimdid",
+     "mga G206000:#1/29~2/XXVII:8: cride ~ choimdid"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 68 - PDF page 62 (word id 25496) (w1/2): սրտէ ~ մտաց.",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 134 - PDF page 128 (word id 51616): զսիրտս ~ միտ",
+     "xcl MH_1_1_02_Sahak ed. page 221 - PDF page 63 (word id 7344) (w1/3): սրտի ~ մտաւք"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-peh1-hate",
+   "branches": {
+    "Germanic": [
+     9,
+     2.8,
+     3.2
+    ],
+    "Greek": [
+     5,
+     2.3,
+     2.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-677-4to 25v:14: hjarta ~ fjándi",
+     "menota HolmPerg-6-fol 67:23 (w3/10): hiartta ~ fiondom",
+     "menota HolmPerg-6-fol 93:29 (w2/6): hiarta ~ fiandans"
+    ],
+    "Greek": [
+     "grc Theognis Elegiae 361: κραδίη ~ πῆμα",
+     "grc Aeschylus Agamemnon 574: κέρδος ~ πῆμα",
+     "grc Pindarus Nemea 1.54: κραδία ~ ἀπήμων"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-doru",
+   "branches": {
+    "Slavic": [
+     5,
+     1.7,
+     3.0
+    ],
+    "Indo-Iranian": [
+     3,
+     1.4,
+     2.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 34446:2: срца ~ дрвце",
+     "vuk Vuk 34446:9: срца ~ дрвце",
+     "vuk Vuk 34446:16: срца ~ дрвце"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 12, 246.s2: hṛdi ~ drumaḥ",
+     "sa-ep Rām, Bā, 63.s10: hṛdaya ~ drume",
+     "sa-ep Rām, Ār, 19.s44: hṛdayāḥ ~ drumāḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-lewbh-desire",
+   "branches": {
+    "Celtic": [
+     2,
+     0.9,
+     2.1
+    ],
+    "Germanic": [
+     26,
+     8.9,
+     2.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301012:#1/#2/#52:304: cridi ~ luíg",
+     "mga oldirish-tbc-windisch-1905:diealtirischehel00wind:L45696-L45697: cridi ~ luig"
+    ],
+    "Germanic": [
+     "menota HolmPerg-6-fol 72v:8 (w1/6): hiartta ~ lovaðe",
+     "menota HolmPerg-6-fol 101r:21 (w9/9): hiartta ~ lovaðe",
+     "icepahc 1350.marta.rel-sag s599 (w2/2): hjarta ~ lofi"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dheh1t",
+   "branches": {
+    "Germanic": [
+     35,
+     12.5,
+     2.8
+    ],
+    "Baltic": [
+     7,
+     3.3,
+     2.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Benediktiner_Regel B_0 vn/a (w23/30): herzin ~ ",
+     "rea-goh Benediktiner_Regel B_7 vn/a (w28/41): herzin ~ ketaniu",
+     "rea-goh Otfrid O_Otfr.Ev.5.23 v40: hérza ~ duit"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:29156: szirdele ~ dėjau",
+     "dainos litauischevolksl00leskuoft:16437: szirdį ~ pradėjo",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:7125: Širdėlė ~ sudėčiau"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1enteros",
+   "branches": {
+    "Indo-Iranian": [
+     4,
+     1.9,
+     2.1
+    ],
+    "Greek": [
+     11,
+     5.1,
+     2.1
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 7.101.5b: hr̥dáḥ ~ ántaram",
+     "rv RV 10.91.13c: hr̥dí ~ ántarā",
+     "sa-ep MBh, 1, 136.s19: hṛdayā ~ antara"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum Aphorismi 6.18 s1: καρδίην ~ ἐντέρων",
+     "grc Aristoteles et Corpus Aristotelicum Historia animalium 6.3 s17 (w2/2): καρδίας ~ ἐντέρων",
+     "grc Aristoteles et Corpus Aristotelicum De partibus animalium 4.1.676b s5: καρδίαν ~ μεσεντέριον"
+    ]
+   }
+  }
+ ]
+}

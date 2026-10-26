@@ -1,0 +1,626 @@
+{
+ "target": [
+  "pie-lex-dhugh2texr"
+ ],
+ "window": 4,
+ "units": {
+  "Germanic": 1353,
+  "Slavic": 873,
+  "Baltic": 1012,
+  "Armenian": 99,
+  "Tocharian": 9,
+  "Indo-Iranian": 264,
+  "Greek": 3008
+ },
+ "rows": [
+  {
+   "root": "pie-lex-meh2texr",
+   "branches": {
+    "Germanic": [
+     95,
+     6.8,
+     13.9
+    ],
+    "Slavic": [
+     14,
+     6.4,
+     2.2
+    ],
+    "Armenian": [
+     2,
+     0.5,
+     4.0
+    ],
+    "Indo-Iranian": [
+     8,
+     1.2,
+     6.7
+    ],
+    "Greek": [
+     129,
+     13.9,
+     9.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Bandamanna-saga 114r:5: dóttir ~ Móðir",
+     "menota AM-132-fol-Egils-saga 70r:29: dóttir ~ Móðir",
+     "menota AM-132-fol-Egils-saga 85v:12: dóttur ~ móður"
+    ],
+    "Slavic": [
+     "vuk Vuk 36541:1: кћери ~ мати",
+     "byliny ruws 426315:32: дочери ~ Мать",
+     "byliny pesnisobrannyepvkireevskimch2vyp57:13320: дочь ~ мать"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_02_Sahak ed. page 201 - PDF page 43 (word id 4522): զդստերս ~ զմայր,",
+     "xcl MH_1_2_12_Movses_Khor ed. page 2193 - PDF page 450 (word id 81370): դուստր։ ~ մաւր"
+    ],
+    "Indo-Iranian": [
+     "rv RV 3.55.12a: duhitā́ ~ mātā́",
+     "rv RV 5.47.1b: duhitúḥ ~ mātā́",
+     "rv RV 8.101.15a: duhitā́ ~ mātā́"
+    ],
+    "Greek": [
+     "hom Il. 24.562: θυγάτηρ ~ μήτηρ",
+     "hom Il. 5.371: θυγατέρα ~ μητρὸς",
+     "grc Euripides Andromacha 174: θυγατρὶ ~ μητρὶ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gwexn",
+   "branches": {
+    "Germanic": [
+     78,
+     15.1,
+     5.2
+    ],
+    "Slavic": [
+     13,
+     4.0,
+     3.3
+    ],
+    "Armenian": [
+     14,
+     1.7,
+     8.0
+    ],
+    "Greek": [
+     270,
+     37.0,
+     7.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Bandamanna-saga 114r:8: dóttir ~ kona",
+     "menota AM-132-fol-Droplaugarsona-saga 142r:23: dóttur ~ konu",
+     "menota AM-132-fol-Droplaugarsona-saga 146r:30: dóttir ~ kona"
+    ],
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:13244: дочь ~ жена",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:13342: дочь ~ жена",
+     "byliny 11016812bsb:19712: дочь ~ жены"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_03_Koriun ed. page 253 - PDF page 25 (word id 5531) (w2/3): Դուստր, ~ կին",
+     "xcl MH_1_1_04_Faustos ed. page 336 - PDF page 60 (word id 23947): դստերք. ~ կին.",
+     "xcl MH_1_1_04_Faustos ed. page 350 - PDF page 74 (word id 30148): զդուստր ~ կին"
+    ],
+    "Greek": [
+     "hom Od. 18.276: θύγατρα ~ γυναῖκα",
+     "grc Euripides Iphigenia Aulidensis 1345: θύγατερ ~ γύναι",
+     "grc Herodotus Historiae 1.1.3 s1: θυγατέρα ~ γυναῖκας"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sewH-bear",
+   "branches": {
+    "Germanic": [
+     183,
+     38.0,
+     4.8
+    ],
+    "Armenian": [
+     7,
+     0.0,
+     239.2
+    ],
+    "Greek": [
+     206,
+     19.3,
+     10.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Bandamanna-saga 114r:5: dóttir ~ sonar",
+     "menota AM-132-fol-Bandamanna-saga 118v:10: dóttur ~ syni",
+     "menota AM-132-fol-Droplaugarsona-saga 142r:41: dóttir ~ sonr"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 82 - PDF page 76 (word id 31190): դստերս, ~ յուստերս",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 135 - PDF page 129 (word id 52158): զդստերաց ~ զուստերաց",
+     "xcl MH_1_1_02_Sahak ed. page 201 - PDF page 43 (word id 4522): զդստերս ~ զուստերս"
+    ],
+    "Greek": [
+     "hom Il. 15.197: θυγατέρεσσιν ~ υἱάσι",
+     "hom Il. 22.62: θύγατρας ~ υἷάς",
+     "hom Il. 24.604: θυγατέρες ~ υἱέες"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-bhreh2texr",
+   "branches": {
+    "Germanic": [
+     34,
+     14.5,
+     2.3
+    ],
+    "Armenian": [
+     4,
+     1.5,
+     2.7
+    ],
+    "Greek": [
+     9,
+     0.3,
+     28.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 74r:7: dóttir ~ bróður",
+     "menota AM-132-fol-Njals-saga 34v:18: dóttur ~ bróðir",
+     "menota AM-302-fol 1r:1 (w506/2251): dottor ~ broðor"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_06_Yeghishe ed. page 579 - PDF page 59 (word id 9376): Դստերք ~ եղբարց.",
+     "xcl MH_1_1_06_Yeghishe ed. page 667 - PDF page 147 (word id 23727) (w1/2): դստերք, ~ եղբարք",
+     "xcl MH_1_1_10_Mandakuni ed. page 1238 - PDF page 80 (word id 33021) (w3/4): դուստր ~ եղբայր"
+    ],
+    "Greek": [
+     "grc Isaeus De Pyrrho 73 s2 (w1/2): θυγατέρα ~ φράτορας",
+     "grc Isaeus De Pyrrho 75 s1: θυγατέρα ~ φράτορας",
+     "grc Isaeus De Pyrrho 79 s4: θυγατέρα ~ φράτερσιν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-deh3-give",
+   "branches": {
+    "Armenian": [
+     15,
+     5.8,
+     2.6
+    ],
+    "Indo-Iranian": [
+     14,
+     3.7,
+     3.8
+    ],
+    "Greek": [
+     254,
+     93.4,
+     2.7
+    ]
+   },
+   "examples": {
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 135 - PDF page 129 (word id 52158): զդստերաց ~ տաց",
+     "xcl MH_1_1_04_Faustos ed. page 281 - PDF page 5 (word id 1399): զդուստր ~ ետ",
+     "xcl MH_1_1_04_Faustos ed. page 302 - PDF page 26 (word id 10150): զդստերս ~ ետուն"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 1, 61.s275: duhitaraṃ ~ adadat",
+     "sa-ep MBh, 1, 105.s7: duhitā ~ dattā",
+     "sa-ep MBh, 1, 160.s25: duhitaraṃ ~ deyāṃ"
+    ],
+    "Greek": [
+     "hom Il. 11.226: θυγατέρα ~ δίδου",
+     "hom Il. 13.378: θυγατρῶν ~ δοῖμεν",
+     "hom Il. 6.192: θυγατέρα ~ δίδου"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-ph2texr",
+   "branches": {
+    "Germanic": [
+     45,
+     18.9,
+     2.4
+    ],
+    "Indo-Iranian": [
+     8,
+     2.9,
+     2.8
+    ],
+    "Greek": [
+     152,
+     50.0,
+     3.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 95r:18: dóttir ~ feðr",
+     "menota AM-132-fol-Laxdaela-saga 183r:16: dǿtr ~ fǫður",
+     "menota AM-132-fol-Njals-saga 39v:33: dóttir ~ fǫður"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.164.33d: duhitúḥ ~ pitā́",
+     "rv RV 3.31.1c: duhitúḥ ~ pitā́",
+     "rv RV 10.61.7a: duhitáram ~ pitā́"
+    ],
+    "Greek": [
+     "grc Pindarus Pythia 9.111: θυγατρὶ ~ πατὴρ",
+     "grc Pindarus Isthmia 8.17: θύγατρες ~ πατρὸς",
+     "grc Euripides Andromacha 40: θυγατρὶ ~ πατήρ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-peh2-protect",
+   "branches": {
+    "Germanic": [
+     52,
+     22.5,
+     2.3
+    ],
+    "Indo-Iranian": [
+     8,
+     3.9,
+     2.0
+    ],
+    "Greek": [
+     152,
+     54.6,
+     2.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 71v:39: dǿtr ~ fǿðask",
+     "menota AM-132-fol-Egils-saga 95r:18: dóttir ~ feðr",
+     "menota AM-132-fol-Laxdaela-saga 183r:16: dǿtr ~ fǫður"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.164.33d: duhitúḥ ~ pitā́",
+     "rv RV 3.31.1c: duhitúḥ ~ pitā́",
+     "rv RV 10.61.7a: duhitáram ~ pitā́"
+    ],
+    "Greek": [
+     "grc Pindarus Pythia 9.111: θυγατρὶ ~ πατὴρ",
+     "grc Pindarus Isthmia 8.17: θύγατρες ~ πατρὸς",
+     "grc Euripides Andromacha 40: θυγατρὶ ~ πατήρ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-snusos",
+   "branches": {
+    "Indo-Iranian": [
+     5,
+     0.1,
+     50.3
+    ],
+    "Greek": [
+     3,
+     0.0,
+     67.2
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 1, 185.s41: duhitā ~ snuṣā",
+     "sa-ep MBh, 2, 62.s17: duhitaraṃ ~ snuṣāṃ",
+     "sa-ep MBh, 4, 66.s64: duhitaraṃ ~ snuṣāṃ"
+    ],
+    "Greek": [
+     "hom Il. 24.166: θυγατέρες ~ νυοὶ",
+     "hom Od. 3.451: θυγατέρες ~ νυοί",
+     "grc-late Quintus Posthomerica 10.383: θύγατράς ~ νυοὺς"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-suHnus",
+   "branches": {
+    "Germanic": [
+     183,
+     38.0,
+     4.8
+    ],
+    "Armenian": [
+     7,
+     0.0,
+     239.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Bandamanna-saga 114r:5: dóttir ~ sonar",
+     "menota AM-132-fol-Bandamanna-saga 118v:10: dóttur ~ syni",
+     "menota AM-132-fol-Droplaugarsona-saga 142r:41: dóttir ~ sonr"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 82 - PDF page 76 (word id 31190): դստերս, ~ յուստերս",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 135 - PDF page 129 (word id 52158): զդստերաց ~ զուստերաց",
+     "xcl MH_1_1_02_Sahak ed. page 201 - PDF page 43 (word id 4522): զդստերս ~ զուստերս"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-swesoxr",
+   "branches": {
+    "Germanic": [
+     79,
+     3.6,
+     22.1
+    ],
+    "Armenian": [
+     3,
+     0.2,
+     13.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 74r:7: dóttir ~ systir",
+     "menota AM-132-fol-Egils-saga 74v:3: dóttir ~ systir",
+     "menota AM-132-fol-Egils-saga 85v:12: dóttur ~ systur"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_10_Mandakuni ed. page 1238 - PDF page 80 (word id 33021) (w3/4): դուստր ~ քոյր,",
+     "xcl MH_1_2_11_Agathangelos ed. page 1403 - PDF page 109 (word id 19357): դստերն ~ քերցն",
+     "xcl MH_1_2_12_Movses_Khor ed. page 1894 - PDF page 152 (word id 22042) (w1/2): դուստր ~ քոյր"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gjem-marry",
+   "branches": {
+    "Slavic": [
+     3,
+     0.7,
+     4.5
+    ],
+    "Greek": [
+     272,
+     10.7,
+     25.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny ruws 426310:23: дочи ~ зятю",
+     "byliny ruws 426310:34: дочери ~ зять",
+     "byliny ruws 426310:59: дочерь ~ зятю"
+    ],
+    "Greek": [
+     "hom Il. 14.121: θυγατρῶν ~ ἔγημε",
+     "hom Od. 19.406: θυγάτηρ ~ γαμβρὸς",
+     "grc Euripides Medea 262: θυγατέρ’ ~ ἐγήματο"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-deywih2",
+   "branches": {
+    "Indo-Iranian": [
+     6,
+     1.0,
+     5.8
+    ],
+    "Greek": [
+     2,
+     0.2,
+     12.3
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 6.64.5c: duhitar ~ devī́",
+     "rv RV 7.79.3c: duhitā́ ~ devī́",
+     "rv RV 10.70.6a: duhitárā ~ devī́"
+    ],
+    "Greek": [
+     "grc-late Harpocration Lexicon in decem oratores Atticos melite s3: θυγατρὸς ~ Δίου",
+     "grc-late Certamen Homeri Et Hesiodi Certamen Homeri et Hesiodi 1 s20 (w2/2): θυγατρὸς ~ Δίου"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dyexws",
+   "branches": {
+    "Indo-Iranian": [
+     38,
+     2.0,
+     19.4
+    ],
+    "Greek": [
+     96,
+     27.4,
+     3.5
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.30.22b: duhitar ~ divaḥ",
+     "rv RV 1.48.1b: duhitar ~ divaḥ",
+     "rv RV 1.48.8c: duhitā́ ~ diváḥ"
+    ],
+    "Greek": [
+     "hom Il. 14.193: θυγάτηρ ~ Διὸς",
+     "hom Il. 14.224: θυγάτηρ ~ Διὸς",
+     "hom Il. 19.91: θυγάτηρ ~ Διὸς"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwelbh-womb",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.5,
+     3.9
+    ],
+    "Greek": [
+     154,
+     20.0,
+     7.7
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.164.33d: duhitúḥ ~ gárbham",
+     "av AVŚ, 9, 10.s24: duhitur ~ garbham"
+    ],
+    "Greek": [
+     "grc Herodotus Historiae 3.53.2 s2: θυγατέρα ~ ἀδελφεήν",
+     "grc Herodotus Historiae 4.80.1 s1: θυγατρός ~ ἀδελφεὸν",
+     "grc Herodotus Historiae 5.39.1 s2: θυγατέρα ~ ἀδελφεῆς"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-mryetor",
+   "branches": {
+    "Slavic": [
+     8,
+     1.4,
+     5.6
+    ],
+    "Baltic": [
+     3,
+     0.8,
+     4.0
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 48176:21: кћери ~ Умрле",
+     "ccmh marianus 1091810: дъшти ~ оумьрѣтъ",
+     "ccmh marianus 2053510: дъшти ~ оумьрѣтъ"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:17283: duktė ~ numirė",
+     "dainos litauischevolksl00leskuoft:17294: dukterį ~ numirusiu",
+     "dainos litauischevolksl00leskuoft:17379: dukteris ~ numirė"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-albhos",
+   "branches": {
+    "Germanic": [
+     8,
+     1.4,
+     5.6
+    ],
+    "Slavic": [
+     4,
+     1.1,
+     3.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Finnboga-saga 104r:41: dóttur ~ Alfr",
+     "menota AM-132-fol-Finnboga-saga 104v:41: dóttur ~ Alfs",
+     "menota AM-132-fol-Fostbraedra-saga 198v:19: dóttir ~ Alfs"
+    ],
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno92:22959: дочь ~ Лебедь",
+     "byliny sbornikotdelenijarusskogojazykaislovesno92:23058: дочь ~ Лебедь",
+     "byliny sbornikotdelenijarusskogojazykaislovesno92:23064: дочь ~ Лебедь"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-twos",
+   "branches": {
+    "Indo-Iranian": [
+     6,
+     1.1,
+     5.7
+    ],
+    "Greek": [
+     36,
+     11.6,
+     3.1
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 1, 66.s50: duhitṛ ~ tve",
+     "sa-ep MBh, 1, 99.s65: duhitṛ ~ tve",
+     "sa-ep MBh, 1, 189.s155: duhitṛ ~ tvam"
+    ],
+    "Greek": [
+     "grc Euripides Andromacha 334: θυγατρὶ ~ σῇ",
+     "grc Euripides Ion 925: θύγατερ ~ σὸν",
+     "grc Euripides Ion 998: θύγατερ ~ σοῖς"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dyew-be_bright",
+   "branches": {
+    "Indo-Iranian": [
+     44,
+     11.3,
+     3.9
+    ],
+    "Greek": [
+     101,
+     31.1,
+     3.3
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.30.22b: duhitar ~ divaḥ",
+     "rv RV 1.48.1b: duhitar ~ divaḥ",
+     "rv RV 1.48.8c: duhitā́ ~ diváḥ"
+    ],
+    "Greek": [
+     "hom Il. 14.193: θυγάτηρ ~ Διὸς",
+     "hom Il. 14.224: θυγάτηρ ~ Διὸς",
+     "hom Il. 19.91: θυγάτηρ ~ Διὸς"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gjhoysos",
+   "branches": {
+    "Germanic": [
+     3,
+     1.1,
+     2.6
+    ],
+    "Greek": [
+     2,
+     0.8,
+     2.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 76r:12: dóttur ~ Geirr",
+     "icepahc 1400.gunnar.nar-sag s877: dóttur ~ Geirs",
+     "icepahc 1400.gunnar.nar-sag s884: dóttur ~ Geir"
+    ],
+    "Greek": [
+     "grc Plato Respublica 393.392e s2: θυγατέρα ~ Ἀχαιῶν",
+     "grc Plato Respublica 393d s2 (w1/2): θυγατρὸς ~ Ἀχαιῶν"
+    ]
+   }
+  }
+ ]
+}

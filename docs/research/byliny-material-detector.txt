@@ -1,0 +1,96 @@
+BYLINY MATERIAL DETECTOR — 2026-10-26
+
+Implementation: pie/material_units.py; byliny loader in pie/bsl_mapping.py.
+Reproduction: UV_CACHE_DIR=/private/tmp/pie-uv-cache uv run python -I tests/byliny_material_audit.py
+
+Method: classify before normalization/mapping, using OCR paragraph boundaries and
+a maximum nine-line window. Wrapped prose needs scholarly vocabulary, several
+long lines, line-end word breaks, internal sentence punctuation and a vowel-count
+proxy. Separate rules cover recording/editorial markers and signed footnotes.
+Notes headings stop any Wikisource page until the next page. Original IDs and
+source text are preserved. Quoted passages and primary prose without editorial
+evidence stay. Modern/pre-reform orthography and inline footnote calls alone do
+not cause rejection. No claims of stress-based metrical scanning.
+
+CALIBRATION AND EVALUATION
+Positives: all 31 old candidate units in the batch-1/batch-2 reviewed removals.
+Calibration: batch 1 (17 positives); held-out: complete batch-2 spans (14 positives,
+including two Wikisource units). No random split of neighboring positive lines.
+Negatives: 45 manually checked verse/lyric lines from a seed-82026 old-candidate
+sample (20 per OCR edition before rejecting prose/ambiguous debris); alternate
+accepted examples supply 23 calibration and 22 held-out negatives. Another 28
+manually checked wiki lines from seed 82028 supply held-out negatives (two sampled
+wiki template fields were excluded from the negative set). References live in
+tests/byliny_material_audit.py. These are clear-verse negatives, not a prevalence
+sample. The positive batches share editions/books: this is not a book-held-out study.
+
+Initial held-out detector: 5/14 recalled, 0/22 negative errors. Safety inspection
+of random removals then found embedded quotations and primary prose; protection
+was tightened using those observations, not by adding batch-2 coordinates or terms.
+Final detector-only scores (historical exclusions DISABLED for scoring):
+calibration: TP=6, FP=0, TN=23, FN=11; precision=100.0%; recall=35.3%.
+held_out: TP=3, FP=0, TN=50, FN=11; precision=100.0%; recall=21.4%.
+
+Precision has very small positive support and must not be read as population
+precision. Low recall is deliberate: doubtful units remain. Existing reviewed
+exclusions remain a regression backstop (22 additional known units); no new
+coordinate rules were added. This replaces the future one-off removal workflow,
+but does not make the old review evidence redundant. Index fragments, unmarked
+commentary, OCR-corrupted markers, and some wiki template fields remain limitations.
+
+COUNTS (old line-shape candidate population; not corpus records)
+Edition/source | Candidates | Detector | Reviewed-only backstop | Pipeline total | New versus current loader
+Hilferding (wiki) | 475 | 1 | 0 | 1 | 1
+Kirsha Danilov (wiki) | 9703 | 95 | 0 | 95 | 93
+Rybnikov (wiki) | 2765 | 51 | 0 | 51 | 51
+russian-hilferding-1894-archiveorg | 33100 | 170 | 1 | 171 | 168
+russian-kireevsky-1860-1874-archiveorg | 61021 | 1830 | 21 | 1851 | 1825
+russian-rybnikov-1861-1867-archiveorg | 46663 | 639 | 0 | 639 | 639
+
+Total additional removals: 2,777. Total exclusions including reviewed: 2,808.
+Combined edition additional removals: Hilferding 169; Kireevsky 1,825;
+Rybnikov 690; Kirsha Danilov 93. Wiki total additional removals: 145 (overlaps
+edition totals; it is a source channel, not another edition).
+
+SPOT CHECK: 30 uniformly sampled detector removals, seed 82027.
+Locations plus at most three first whitespace words only (single-word headings
+are shown as headings). Final sample inspected in source context: 30/30 editorial,
+notes, metadata or apparatus; this is a small same-reviewer check, not an independent
+blind precision study. The final sample overlaps some earlier safety inspection.
+
+01. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch2pesni36:12158 / мен!е); о построент … [wrapped-prose]
+02. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch2vyp57:12268 / существовави такого огромнато … [wrapped-prose]
+03. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch2vyp57:9067 / он запечатльны единымь … [wrapped-prose]
+04. russian-rybnikov-1861-1867-archiveorg / pesnisobrannyepnrybnikovymch2narod72:22190 / варянты, записанные со … [wrapped-prose]
+05. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch2vyp57:8930 / шихъ, до-Московекихъ Былинъ, … [wrapped-prose]
+06. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch2pesni36:10610 / ^") У народа … [signed-footnote]
+07. russian-rybnikov-1861-1867-archiveorg / pesnisobrannyepnrybnikovymch1narod12:11364 / *) Ровию миф.— … [signed-footnote]
+08. russian-rybnikov-1861-1867-archiveorg / pesnisobrannyepnrybnikovymch2narod72:35440 / и обширное, выразившееся … [wrapped-prose]
+09. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch3vyp51:3704 / (Туб. Орловской, у. … [editorial-marker]
+10. russian-kireevsky-1860-1874-archiveorg / 11016812bsb:10988 / Возав Потыка `Ставръ-бояринъ … [wrapped-prose]
+11. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch3vyp51:17116 / посл$дующимь поражентемь на … [wrapped-prose]
+12. russian-kireevsky-1860-1874-archiveorg / 10945725bsb:13653 / стить ее на … [wrapped-prose]
+13. russian-rybnikov-1861-1867-archiveorg / pesnisobrannyepnrybnikovymch3narod26:18955 / (Отъ крестьянина дер. … [editorial-marker]
+14. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimvyp1pesn13:13718 / *) Улановьи, улановья, … [signed-footnote]
+15. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch2vyp57:5464 / (Ср. „Ворон. Бесду,“ … [editorial-marker]
+16. Kirsha Danilov (wiki) / ruws 426312:100 / Примечания … [wiki-editorial]
+17. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch2vyp57:8314 / Малорусскаго, слБдуетъ вообще … [wrapped-prose]
+18. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch2vyp57:3868 / А. Н. Аванасьевъ … [wrapped-prose]
+19. russian-kireevsky-1860-1874-archiveorg / 10945725bsb:569 / чйя б®дствя какъ … [wrapped-prose]
+20. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch2pes74:8193 / *) Ближайше сходна … [signed-footnote]
+21. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch3vyp51:21232 / разсказываеть, что Нарышкина … [editorial-paragraph]
+22. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch2pesni36:13534 / тырей: завфтныя стремлешя … [wrapped-prose]
+23. Rybnikov (wiki) / ruws 391445:1 / НЕТ_АВТОРА = Собиратель … [wiki-editorial]
+24. Kirsha Danilov (wiki) / ruws 426014:372 / Калики перехожие в … [wiki-editorial]
+25. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch2vyp57:7973 / заиметвоваями` изъ ‘рукописей, … [wrapped-prose]
+26. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimvyp1pesn13:9265 / *) Переговариваютъ, — … [signed-footnote]
+27. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch2pesni36:15382 / помянутой). Богатый негощантъ-издатель, … [editorial-marker]
+28. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch3vyp36:12599 / (Записано … [editorial-marker]
+29. russian-kireevsky-1860-1874-archiveorg / pesnisobrannyepvkireevskimch2vyp57:1204 / (Орловск. губ., Малоарх. … [editorial-marker]
+30. russian-kireevsky-1860-1874-archiveorg / 10945725bsb:23464 / ними трудами и … [wrapped-prose]
+
+No corpus/export regeneration; no Stage C-S slab reads or rebuilds; STATUS.md unchanged.
+Final-state full suite: UV_CACHE_DIR=/private/tmp/pie-uv-cache uv run pytest -q
+2723 passed in 472.43s (0:07:52).
+Live-loader comparison: 153696 -> 150919 units; 2777 removed, zero additions,
+zero retained-text changes.

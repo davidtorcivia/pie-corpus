@@ -1,0 +1,388 @@
+{
+ "target": [
+  "pie-lex-kjlewmn",
+  "pie-lex-kjlewos"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 402,
+  "Slavic": 2926,
+  "Indo-Iranian": 163,
+  "Greek": 1205
+ },
+ "rows": [
+  {
+   "root": "pie-lex-bhewdheti",
+   "branches": {
+    "Slavic": [
+     9,
+     1.4,
+     6.6
+    ],
+    "Greek": [
+     2,
+     0.0,
+     68.0
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 4085100: слово ~ съблюдетъ",
+     "ccmh marianus 4085220: слово ~ съблюдетъ",
+     "ccmh marianus 4152020: слово ~ съблюсѧ"
+    ],
+    "Greek": [
+     "hom Il. 11.21: κλέος ~ πεύθετο",
+     "hom Il. 9.524: κλέα ~ ἐπευθόμεθα"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-weydeti",
+   "branches": {
+    "Celtic": [
+     2,
+     0.6,
+     3.1
+    ],
+    "Greek": [
+     2,
+     0.1,
+     30.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga oldirish-meyer-editions-1892-1919:Hibernica_minora_Meyer:L3082-L3082: clu ~ doadbat",
+     "ga-early G100055:#1/2/7/11:5 (w3/3): chlú ~ faisnéis"
+    ],
+    "Greek": [
+     "hom Il. 17.402: Πάτροκλον ~ ᾔδεε",
+     "hom Il. 2.486: κλέος ~ ἴδμεν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gewH-call",
+   "branches": {
+    "Slavic": [
+     1589,
+     57.7,
+     27.5
+    ],
+    "Greek": [
+     2,
+     0.8,
+     2.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 28211:239: слово ~ изговори",
+     "byliny ruws 425379:152: слово ~ Говорят",
+     "byliny ruws 425379:187: слово ~ Говорит"
+    ],
+    "Greek": [
+     "hom Il. 18.315: Πάτροκλον ~ γοῶντες",
+     "hom Il. 18.355: Πάτροκλον ~ γοῶντες"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dhgwhey-decline",
+   "branches": {
+    "Indo-Iranian": [
+     3,
+     0.3,
+     11.1
+    ],
+    "Greek": [
+     5,
+     1.0,
+     5.2
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.40.4b: śrávaḥ ~ ákṣiti",
+     "rv RV 8.103.5b: śrávaḥ ~ ákṣiti",
+     "rv RV 9.66.7c: śrávaḥ ~ ákṣiti"
+    ],
+    "Greek": [
+     "hom Il. 16.581: Πατρόκλῳ ~ φθιμένου",
+     "hom Il. 9.413: κλέος ~ ἄφθιτον",
+     "grc Hesiodus Fragmenta 70.5: κλέος ~ ἄφθιτον"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-deywos",
+   "branches": {
+    "Indo-Iranian": [
+     9,
+     4.0,
+     2.2
+    ],
+    "Greek": [
+     6,
+     0.5,
+     12.6
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.73.5d: śrávase ~ devéṣu",
+     "rv RV 3.53.15d: śrávaḥ ~ devéṣu",
+     "rv RV 4.31.15b: śrávaḥ ~ devéṣu"
+    ],
+    "Greek": [
+     "grc-late Achilles Tatius Leucippe et Clitophon 3.5.6 s2: Κλεινίαν ~ Σάτυρον",
+     "grc-late Achilles Tatius Leucippe et Clitophon 5.11.4 s1: Κλεινίαν ~ Σάτυρος",
+     "grc-late Achilles Tatius Leucippe et Clitophon 5.12.1 s1: Κλεινίας ~ Σάτυρος"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-mer-die",
+   "branches": {
+    "Indo-Iranian": [
+     6,
+     1.3,
+     4.6
+    ],
+    "Greek": [
+     5,
+     1.2,
+     4.0
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.31.7b: śrávase ~ mártam",
+     "rv RV 1.110.5d: śrávaḥ ~ ámartyeṣu",
+     "rv RV 3.53.15d: śrávaḥ ~ amŕ̥tam"
+    ],
+    "Greek": [
+     "hom Il. 18.345: Πάτροκλον ~ βρότον",
+     "grc Bacchylides Epinicia 9.74: κλεινὰν ~ βροτοῖς",
+     "grc Euripides Iphigenia Aulidensis 429: κλεινοὶ ~ βροτοῖς"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-terh2-cross_over",
+   "branches": {
+    "Indo-Iranian": [
+     3,
+     0.8,
+     4.0
+    ],
+    "Greek": [
+     2,
+     0.5,
+     4.0
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.11.7d: śrávāṃsi ~ tira",
+     "rv RV 8.74.10c: śrávāṃsi ~ tū́rvatha",
+     "rv RV 9.80.2c: śrávaḥ ~ pratirán"
+    ],
+    "Greek": [
+     "grc Aristophanes Ranae 1041: Πατρόκλων ~ Τεύκρων",
+     "grc-late Pseudo-Apollodorus Bibliotheca 3.10.8 s3 (w4/4): Πάτροκλος ~ Τεῦκρος"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-kjlew",
+   "branches": {
+    "Slavic": [
+     94,
+     42.7,
+     2.2
+    ],
+    "Greek": [
+     3,
+     0.4,
+     6.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny ruws 425595:85: слова ~ услыша",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:36721: слова ~ выслушаль",
+     "byliny 10945725bsb:4802: слова ~ слушайте"
+    ],
+    "Greek": [
+     "hom Il. 16.463: Πάτροκλος ~ ἀγακλειτὸν",
+     "grc-late Achilles Tatius Leucippe et Clitophon 2.26.2 s3: Κλεινίας ~ Κλειοῦς",
+     "grc-late Achilles Tatius Leucippe et Clitophon 2.27.1 s1 (w1/2): Κλεινίας ~ Κλειοῦς"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1nomn",
+   "branches": {
+    "Celtic": [
+     10,
+     4.4,
+     2.3
+    ],
+    "Indo-Iranian": [
+     3,
+     0.5,
+     5.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G103005:#1:516: clú ~ hainm",
+     "mga G206000:#1/26:7: chlu ~ ainm",
+     "ga-early G100001C:#1/U1528/U1528.9:1 (w1/2): clú ~ ainm"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.57.3c: śrávase ~ nā́ma",
+     "rv RV 1.103.4d: śrávase ~ nā́ma",
+     "rv RV 10.28.12d: śrávaḥ ~ nā́ma"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-pleth2-spread",
+   "branches": {
+    "Celtic": [
+     6,
+     1.9,
+     3.1
+    ],
+    "Indo-Iranian": [
+     4,
+     1.3,
+     3.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201001:#1/4/#19:1: clú ~ leth",
+     "ga-early G100062:#1/#1:236 (w3/6): clú ~ leth",
+     "ga-early G100080:#1/5:170: clú ~ lleith"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.9.7b: śrávaḥ ~ pr̥thú",
+     "rv RV 3.59.7c: śrávobhiḥ ~ pr̥thivī́m",
+     "rv RV 7.5.8d: śrávaḥ ~ pr̥thú"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-wekw-speak",
+   "branches": {
+    "Slavic": [
+     28,
+     10.1,
+     2.8
+    ],
+    "Greek": [
+     16,
+     5.0,
+     3.2
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:15383: слова ~ отвфчаетъ",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:15437: слова ~ отвЪчаетъ",
+     "byliny pesnisobrannyepvkireevskimch3vyp36:11462: слова ~ отвфчали"
+    ],
+    "Greek": [
+     "hom Il. 11.602: Πατροκλῆα ~ προσέειπε",
+     "hom Il. 11.647: Πάτροκλος ~ εἶπέ",
+     "hom Il. 16.125: Πατροκλῆα ~ προσέειπεν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2reh1-think",
+   "branches": {
+    "Celtic": [
+     3,
+     0.9,
+     3.3
+    ],
+    "Greek": [
+     19,
+     9.0,
+     2.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100001C:#1/U1462/U1462.3:1 (w2/3): clu ~ d'airimh",
+     "ga-early G100005D:#1/M1381/M1381.2:1 (w1/2): clú ~ aireamh",
+     "ga-early G100011:#1/1464/1464.21:1: clu ~ arem"
+    ],
+    "Greek": [
+     "grc Theognis Elegiae 867: κλέος ~ ἀρετῆς",
+     "grc Pindarus Olympia 9.101: κλέος ~ ἀρεταῖς",
+     "grc Pindarus Pythia 3.114: κλειναῖς ~ ἀρετὰ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kjel-incline",
+   "branches": {
+    "Slavic": [
+     94,
+     44.7,
+     2.1
+    ],
+    "Greek": [
+     3,
+     1.0,
+     3.0
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny ruws 425595:85: слова ~ услыша",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:36721: слова ~ выслушаль",
+     "byliny 10945725bsb:4802: слова ~ слушайте"
+    ],
+    "Greek": [
+     "hom Il. 16.463: Πάτροκλος ~ ἀγακλειτὸν",
+     "grc-late Achilles Tatius Leucippe et Clitophon 2.26.2 s3: Κλεινίας ~ Κλειοῦς",
+     "grc-late Achilles Tatius Leucippe et Clitophon 2.27.1 s1 (w1/2): Κλεινίας ~ Κλειοῦς"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhewdh-be_awake",
+   "branches": {
+    "Slavic": [
+     10,
+     4.1,
+     2.5
+    ],
+    "Greek": [
+     10,
+     4.7,
+     2.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch4narod9:6480: словцомъ ~ побудила",
+     "ccmh marianus 4085100: слово ~ съблюдетъ",
+     "ccmh marianus 4085220: слово ~ съблюдетъ"
+    ],
+    "Greek": [
+     "hom Il. 11.21: κλέος ~ πεύθετο",
+     "hom Il. 24.592: Πάτροκλε ~ πύθηαι",
+     "hom Il. 9.524: κλέα ~ ἐπευθόμεθα"
+    ]
+   }
+  }
+ ]
+}

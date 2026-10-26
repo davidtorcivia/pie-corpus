@@ -1,0 +1,570 @@
+{
+ "target": [
+  "pie-lex-gjenus",
+  "pie-lex-gjonu"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 375,
+  "Germanic": 199,
+  "Slavic": 2,
+  "Armenian": 30,
+  "Tocharian": 6,
+  "Indo-Iranian": 100,
+  "Greek": 5520,
+  "Anatolian": 110,
+  "Italic": 13
+ },
+ "rows": [
+  {
+   "root": "pie-root-ped-walk",
+   "branches": {
+    "Germanic": [
+     17,
+     0.9,
+     18.1
+    ],
+    "Armenian": [
+     2,
+     0.3,
+     6.1
+    ],
+    "Indo-Iranian": [
+     2,
+     0.6,
+     3.1
+    ],
+    "Greek": [
+     265,
+     80.2,
+     3.3
+    ],
+    "Anatolian": [
+     6,
+     1.3,
+     4.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Droplaugarsona-saga 147v:15: kné ~ fótinn",
+     "menota AM-132-fol-Egils-saga 89r:28: kné ~ fótinn",
+     "menota AM-132-fol-Laxdaela-saga 188v:32: kné ~ fótinn"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_04_Faustos ed. page 323 - PDF page 47 (word id 18285): ծունգ ~ ոտն",
+     "xcl MH_1_1_06_Yeghishe ed. page 1008 - PDF page 488 (word id 73311): ծնաւտս ~ յոտս,"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 9, 8.s41: jānubhyāṃ ~ pādābhyāṃ",
+     "sa-ep MBh, 12, 141.s26: hanuḥ ~ pādaḥ"
+    ],
+    "Greek": [
+     "hom Il. 15.269: γούνατ̓ ~ πόδας",
+     "hom Il. 17.386: γούνατά ~ πόδες",
+     "hom Il. 21.302: γούνατ̓ ~ ἐπήδα"
+    ],
+    "Anatolian": [
+     "hit HFAC 50 3′: ge-nu-wa-aš ~ pa-ta-an-na",
+     "hit KBo 17.74+  {€1+11} Vs. I 8′/Vs. I 9: ge-nu-wa-aš ~ pa-ta-a-an-na",
+     "hit KBo 20.8 Vs.? 1′: ge-nu-wa-aš ~ pa-ta-a-na"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-poxds",
+   "branches": {
+    "Germanic": [
+     17,
+     0.9,
+     19.8
+    ],
+    "Armenian": [
+     2,
+     0.2,
+     8.4
+    ],
+    "Greek": [
+     138,
+     58.6,
+     2.4
+    ],
+    "Anatolian": [
+     6,
+     0.0,
+     213.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Droplaugarsona-saga 147v:15: kné ~ fótinn",
+     "menota AM-132-fol-Egils-saga 89r:28: kné ~ fótinn",
+     "menota AM-132-fol-Laxdaela-saga 188v:32: kné ~ fótinn"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_04_Faustos ed. page 323 - PDF page 47 (word id 18285): ծունգ ~ ոտն",
+     "xcl MH_1_1_06_Yeghishe ed. page 1008 - PDF page 488 (word id 73311): ծնաւտս ~ յոտս,"
+    ],
+    "Greek": [
+     "hom Il. 15.269: γούνατ̓ ~ πόδας",
+     "hom Il. 17.386: γούνατά ~ πόδες",
+     "hom Il. 21.611: γοῦνα ~ πόδες"
+    ],
+    "Anatolian": [
+     "hit HFAC 50 3′: ge-nu-wa-aš ~ pa-ta-an-na",
+     "hit KBo 17.74+  {€1+11} Vs. I 8′/Vs. I 9: ge-nu-wa-aš ~ pa-ta-a-an-na",
+     "hit KBo 20.8 Vs.? 1′: ge-nu-wa-aš ~ pa-ta-a-na"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dakjru",
+   "branches": {
+    "Germanic": [
+     2,
+     0.2,
+     10.6
+    ],
+    "Italic": [
+     3,
+     0.0,
+     324.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota HolmPerg-6-fol 95r:12 (w13/13): kne ~ tarom",
+     "menota HolmPerg-6-fol 73v:24 (w3/6): kinnr ~ tarom"
+    ],
+    "Italic": [
+     "lat LucrDRN1 1.920: genas ~ lacrimis",
+     "lat LucrDRN2 2.977: genas ~ lacrimis",
+     "lat LucrDRN3 3.469: genas ~ lacrimis"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h3esth1",
+   "branches": {
+    "Greek": [
+     81,
+     20.7,
+     3.9
+    ],
+    "Italic": [
+     3,
+     0.1,
+     38.6
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De fracturis 37 s1: γούνατα ~ ὀστέων",
+     "grc Hippocrates et Corpus Hippocraticum De fracturis 37 s9: γόνυ ~ ὀστέα",
+     "grc Hippocrates et Corpus Hippocraticum De articulis 53 s14: γόνυ ~ ὀστέον"
+    ],
+    "Italic": [
+     "lat LucrDRN1 1.920: genas ~ ora",
+     "lat LucrDRN2 2.977: genas ~ ora",
+     "lat LucrDRN3 3.469: genas ~ ora"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bheg-bend",
+   "branches": {
+    "Germanic": [
+     2,
+     0.5,
+     4.3
+    ],
+    "Indo-Iranian": [
+     4,
+     0.1,
+     26.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Kormaks-saga 125v:25: kné ~ bak",
+     "menota AM-132-fol-Njals-saga 36v:33: knjánum ~ bakkann"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 6, 91.s132: jānuni ~ babhañja",
+     "sa-ep Rām, Yu, 55.s95: jānum ~ babhañja",
+     "sa-ep Rām, Ki, 65.s43: hanur ~ abhajyata"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ent-face",
+   "branches": {
+    "Celtic": [
+     2,
+     0.1,
+     17.0
+    ],
+    "Germanic": [
+     3,
+     0.5,
+     6.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga celtic-journal-revue-celtique-1870-1928:revueceltique16pari:L2110-L2115 (w2/2): nglun ~ n-etan",
+     "ga-early G100054:#1/1~2/45:44: ghlún ~ éadan"
+    ],
+    "Germanic": [
+     "rea-goh Benediktiner_Regel B_35 vn/a (w4/4): chneum ~ keentoteem",
+     "menota AM-243-b-alfa-fol 35:23 (w2/2): kinnr ~ ænne",
+     "menota HolmPerg-17-4to 1r:1 (w1795/1823): kinnena ~ enniss"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-telh2-ground",
+   "branches": {
+    "Celtic": [
+     8,
+     1.5,
+     5.3
+    ],
+    "Indo-Iranian": [
+     4,
+     0.2,
+     17.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301012:#1/#2/#52:49: ṅglúne ~ talmain",
+     "sga G301031:#1/6:5: glún ~ talmain",
+     "mga G201001:#1/6/#6:12: ghluinibh ~ talam"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 6, 66.s39: jānubhiḥ ~ talaiḥ",
+     "sa-ep MBh, 7, 58.s60: jānubhyāṃ ~ tale",
+     "sa-ep Rām, Yu, 21.s15: jānubhir ~ talaiḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-telh2-bear",
+   "branches": {
+    "Celtic": [
+     8,
+     1.5,
+     5.3
+    ],
+    "Indo-Iranian": [
+     4,
+     0.2,
+     17.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301012:#1/#2/#52:49: ṅglúne ~ talmain",
+     "sga G301031:#1/6:5: glún ~ talmain",
+     "mga G201001:#1/6/#6:12: ghluinibh ~ talam"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 6, 66.s39: jānubhiḥ ~ talaiḥ",
+     "sa-ep MBh, 7, 58.s60: jānubhyāṃ ~ tale",
+     "sa-ep Rām, Yu, 21.s15: jānubhir ~ talaiḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-wel-turn",
+   "branches": {
+    "Celtic": [
+     3,
+     0.9,
+     3.3
+    ],
+    "Greek": [
+     2,
+     0.1,
+     13.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301021:#1/24:1 (w1/2): glun ~ filed",
+     "sga G301900:#1/#33:135: glún ~ filed",
+     "ga-early G100054:#1/1~2/23:16: glúine ~ file"
+    ],
+    "Greek": [
+     "grc-late Polybius Historiae 6.28.3 s2: τετράγωνον ~ οὐλαμῶν",
+     "grc-late Plutarchus Lycurgus 23.1 s2: τετραγώνῳ ~ οὐλαμόν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-wel-enclose",
+   "branches": {
+    "Celtic": [
+     3,
+     1.0,
+     3.1
+    ],
+    "Greek": [
+     2,
+     0.1,
+     13.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301021:#1/24:1 (w1/2): glun ~ filed",
+     "sga G301900:#1/#33:135: glún ~ filed",
+     "ga-early G100054:#1/1~2/23:16: glúine ~ file"
+    ],
+    "Greek": [
+     "grc-late Polybius Historiae 6.28.3 s2: τετράγωνον ~ οὐλαμῶν",
+     "grc-late Plutarchus Lycurgus 23.1 s2: τετραγώνῳ ~ οὐλαμόν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2enk-curve",
+   "branches": {
+    "Celtic": [
+     3,
+     0.3,
+     11.1
+    ],
+    "Greek": [
+     43,
+     15.0,
+     2.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201000:#1/17/xxiii/64:1 (w1/2): ghluinibh ~ duthrachtach",
+     "ga-early G201005:#1/13:2 (w1/2): gluine ~ duthrachtach",
+     "ga-early G306000:#1/1/41:14 (w3/5): gluinibh ~ duthrachtach"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De officina medici 3 s12: γούνατα ~ ἀγκώνων",
+     "grc Hippocrates et Corpus Hippocraticum De officina medici 3 s15: γούνατα ~ ἀγκῶνας",
+     "grc Hippocrates et Corpus Hippocraticum De fracturis 30 s10 (w2/2): γούνατος ~ ὀγκηραὶ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bheyd-split",
+   "branches": {
+    "Germanic": [
+     2,
+     0.5,
+     4.0
+    ],
+    "Indo-Iranian": [
+     2,
+     0.3,
+     7.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Njals-saga 47r:31: kampi ~ bitit",
+     "menota DG-8-OHleg 0084:2 (w11/12): kampenom ~ bæit"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 3, 105.s48: jānu ~ bhinna",
+     "av AVP, 19, 20.s9: hanū ~ bhintaṃ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-bheh2gjhus",
+   "branches": {
+    "Indo-Iranian": [
+     4,
+     0.8,
+     5.3
+    ],
+    "Greek": [
+     35,
+     7.9,
+     4.4
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 5, 124.s30: jāno ~ bāhuḥ",
+     "sa-ep Rām, Su, 42.s31: jānunī ~ bāhū",
+     "sa-ep MBh, 5, 149.s49: hanuḥ ~ bāhuḥ"
+    ],
+    "Greek": [
+     "grc Hymni Homerici In Apollinem 117: γοῦνα ~ πήχεε",
+     "grc Hippocrates et Corpus Hippocraticum De officina medici 15 s4: ἐγγωνίου ~ πήχεος",
+     "grc Hippocrates et Corpus Hippocraticum De fracturis 8 s6: γωνίην ~ πήχεος"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2ekjs",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.3,
+     7.9
+    ],
+    "Greek": [
+     11,
+     4.2,
+     2.6
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "av AVŚ, 5, 19.s13: hanuḥ ~ akṣī",
+     "sa-ep MBh, 12, 102.s29: hanavaḥ ~ akṣāḥ"
+    ],
+    "Greek": [
+     "grc-late Archimedes De conoidibus et sphaeroidibus pr s34 (w2/2): τετράγωνα ~ ἀξόνεσσιν",
+     "grc-late Archimedes De conoidibus et sphaeroidibus 23 s1: τετραγώνοις ~ ἀξόνων",
+     "grc-late Archimedes De conoidibus et sphaeroidibus 23 s3 (w4/4): τετραγώνοις ~ ἀξόνων"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dyexws",
+   "branches": {
+    "Celtic": [
+     3,
+     1.1,
+     2.7
+    ],
+    "Indo-Iranian": [
+     5,
+     0.7,
+     6.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G301026:#1/52:11 (w1/2): ghlúin ~ día",
+     "ga-early G100070:#1/109/1:32: glúinibh ~ día",
+     "ga-early G100080:#1/12:13 (w1/2): ghlúinibh ~ día"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 9, 7.s2: hanuḥ ~ dyaur",
+     "av AVŚ, 10, 2.s16: hanvoḥ ~ divaṃ",
+     "sa-ep MBh, 3, 124.s46: hanur ~ divaṃ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwhedh-request",
+   "branches": {
+    "Celtic": [
+     5,
+     1.4,
+     3.6
+    ],
+    "Germanic": [
+     10,
+     3.4,
+     2.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201000:#1/17/xxiii/64:1 (w1/2): ghluinibh ~ guidh",
+     "ga-early G100054:#1/2/7:44: ghluine ~ ghuidhe",
+     "ga-early G100056:#1/6:54: ghlúinibh ~ guidhe"
+    ],
+    "Germanic": [
+     "menota AM-132-fol-Njals-saga 41r:14 (w2/2): kné ~ biðja",
+     "menota AM-132-fol-Njals-saga 50v:24: kné ~ bað",
+     "menota AM-178-fol 2-346:17 (w1/2): kne ~ bidia"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-medhyos",
+   "branches": {
+    "Germanic": [
+     2,
+     0.5,
+     4.3
+    ],
+    "Greek": [
+     116,
+     50.3,
+     2.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-35-fol 83: (w4/12): kne ~ miðian",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.I.55-59 vn/a (w19/20): chníu ~ míttiu"
+    ],
+    "Greek": [
+     "grc Euripides Hecuba 1150: γόνυ ~ μέσῳ",
+     "grc Aristophanes Aves 1005: τετράγωνος ~ μέσῳ",
+     "grc Hippocrates et Corpus Hippocraticum Vectiarius 38 s26: τετράγωνον ~ μέσῳ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gwhedhyeti",
+   "branches": {
+    "Celtic": [
+     4,
+     1.1,
+     3.5
+    ],
+    "Germanic": [
+     8,
+     3.1,
+     2.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201000:#1/17/xxiii/64:1 (w1/2): ghluinibh ~ guidh",
+     "ga-early G100056:#1/6:54: ghlúinibh ~ guidhe",
+     "ga-early G100070:#1/109/3:27: glúinibh ~ guide"
+    ],
+    "Germanic": [
+     "menota AM-132-fol-Njals-saga 41r:14 (w2/2): kné ~ biðja",
+     "menota AM-132-fol-Njals-saga 50v:24: kné ~ bað",
+     "menota AM-178-fol 2-346:17 (w1/2): kne ~ bidia"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2enh1-breathe",
+   "branches": {
+    "Celtic": [
+     2,
+     0.7,
+     3.0
+    ],
+    "Greek": [
+     4,
+     1.4,
+     2.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G206000:#1/30:109: glún ~ anail",
+     "mga G206000:#1/30:124: glúine ~ anad"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 2.6.25 s1: γούνατα ~ ἆσθμα",
+     "grc Hippocrates et Corpus Hippocraticum De judicationibus 59 s2: γούνατα ~ ἆσθμα",
+     "grc-late Philo Judaeus Legatio ad Gaium 33.243 s1 (w1/2): ἀγωνίας ~ ἄσθματι"
+    ]
+   }
+  }
+ ]
+}
