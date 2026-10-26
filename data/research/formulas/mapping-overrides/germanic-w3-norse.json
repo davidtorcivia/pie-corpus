@@ -1,0 +1,122 @@
+{
+ "note": "Independently checked wave-3 Norse corrections; see error-verdicts-w3-norse.jsonl.",
+ "lemma": [
+  {
+   "corpus": "menota",
+   "lemma": "vísa@stanza",
+   "lex_id": [
+    "pie-root-weyd-see"
+   ],
+   "note": "Kaikki Old Norse s.v. vísa, noun *wīsǭ; root-level only.",
+   "erratum": "Wave-3 Norse source/dictionary verification."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hrista@shake",
+   "lex_id": [],
+   "note": "Zoega s.v. hrista; shaking verb, not rísta; no new PIE etymon asserted.",
+   "erratum": "Wave-3 Norse source/dictionary verification."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vísi@ruler",
+   "lex_id": [
+    "pie-root-weyd-see"
+   ],
+   "note": "Kaikki Old Norse s.v. vísi, agent noun from vísa; exclude adjective *weydsos.",
+   "erratum": "Wave-3 Norse source/dictionary verification."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hár@hair",
+   "lex_id": [],
+   "note": "Kaikki Old Norse s.v. hár, noun *hērą; exclude high *hauhaz; no secure replacement asserted.",
+   "erratum": "Wave-3 Norse source/dictionary verification."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "raun",
+   "lex_id": [],
+   "note": "Zoega s.v. raun; trial/proof, not hraun; https://norse.ulver.com/dct/zoega/r.html",
+   "erratum": "Wave-3 Norse source/dictionary verification."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "sætta@reconcile",
+   "lex_id": [],
+   "note": "Zoega s.v. sætta; reconciliation, not sweetening; https://norse.ulver.com/dct/zoega/s.html",
+   "erratum": "Wave-3 Norse source/dictionary verification."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "bœr@dwelling",
+   "lex_id": [],
+   "note": "Kaikki Old Norse s.v. bœr/bǿr; dwelling noun, not bærr carrying; no replacement asserted.",
+   "erratum": "Wave-3 Norse source/dictionary verification."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "varmr",
+   "lex_id": [
+    "pie-root-gwher-be_warm"
+   ],
+   "note": "Kroonen 2013 s.v. *warma-, p.575 (scan p0615): *gʷʰor-mo-; target wórmos belongs to worm root in this lexicon.",
+   "erratum": "Wave-3 Norse source/dictionary verification."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vara@wares",
+   "lex_id": [],
+   "note": "Zoega s.v. vara, wares; exclude vera; no replacement asserted.",
+   "erratum": "Wave-3 Norse source/dictionary verification."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vax@wax",
+   "lex_id": [],
+   "note": "Zoega s.v. vax; wax noun, not vaxa; no new inherited equation asserted. https://norse.ulver.com/dct/zoega/v.html",
+   "erratum": "Wave-3 Norse source/dictionary verification."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "fœða@bear",
+   "lex_id": [],
+   "note": "Zoega s.v. fœða verb; born, not foot or the food noun. https://norse.ulver.com/dct/zoega/f.html",
+   "erratum": "Wave-3 Norse source/dictionary verification."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "væringi",
+   "lex_id": [],
+   "note": "Kaikki Old Norse s.v. væringi; oath/pledge formation; alternative compound analysis does not justify whole-lexeme walking equation.",
+   "erratum": "Wave-3 Norse source/dictionary verification."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hrár",
+   "lex_id": [
+    "pie-root-krewh2-blood_outside_the"
+   ],
+   "note": "Kaikki Old Norse s.v. hrár < *hrawaz; Kroonen 2013 s.v. *hrawa-, p.244 (scan p0284), *krowh₂-o-; root-level only.",
+   "erratum": "Wave-3 Norse source/dictionary verification."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "úlfr",
+   "lex_id": [
+    "pie-lex-wlkwos"
+   ],
+   "note": "Kaikki Old Norse s.v. úlfr; lexicon s.v. *wĺ̥kʷos, wolf.",
+   "erratum": "Wave-3 Norse source/dictionary verification."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "ǫrn",
+   "lex_id": [
+    "pie-lex-h3erox"
+   ],
+   "note": "Kaikki Old Norse s.v. ǫrn < *arnuz; lexicon s.v. *h₃érō, eagle.",
+   "erratum": "Wave-3 Norse source/dictionary verification."
+  }
+ ]
+}

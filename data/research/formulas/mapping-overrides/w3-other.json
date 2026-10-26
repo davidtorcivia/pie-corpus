@@ -1,0 +1,69 @@
+{
+  "note": "Independently verified wave3; see error-verdicts-w3-other.jsonl.",
+  "lemma": [
+    {
+      "corpus": "grp",
+      "lemma": "Ἶρις",
+      "lex_id": [],
+      "note": "Wave3 source GLAUx Eur.Herc.872 / Hdt5.92F.3,2.120.4 / Thuc5.46.4,1.65.1; Kaikki Ancient Greek s.v. Ἶρις: proper name, excluded from common-word matching."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "Περίανδρος",
+      "lex_id": [],
+      "note": "Wave3 source GLAUx Eur.Herc.872 / Hdt5.92F.3,2.120.4 / Thuc5.46.4,1.65.1; Kaikki Ancient Greek s.v. Περίανδρος: proper name, excluded from common-word matching."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "Ἕκτωρ",
+      "lex_id": [],
+      "note": "Wave3 source GLAUx Eur.Herc.872 / Hdt5.92F.3,2.120.4 / Thuc5.46.4,1.65.1; Kaikki Ancient Greek s.v. Ἕκτωρ: proper name, excluded from common-word matching."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "Νικίας",
+      "lex_id": [],
+      "note": "Wave3 source GLAUx Eur.Herc.872 / Hdt5.92F.3,2.120.4 / Thuc5.46.4,1.65.1; Kaikki Ancient Greek s.v. Νικίας: proper name, excluded from common-word matching."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "Ἀριστεύς",
+      "lex_id": [],
+      "note": "Wave3 source GLAUx Eur.Herc.872 / Hdt5.92F.3,2.120.4 / Thuc5.46.4,1.65.1; Kaikki Ancient Greek s.v. Ἀριστεύς: proper name, excluded from common-word matching."
+    },
+    {
+      "corpus": "hom",
+      "lemma": "Ἕκτωρ",
+      "lex_id": [],
+      "note": "Wave3 Il.6.86, AGDT; Kaikki Ancient Greek s.v. Ἕκτωρ: personal name."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "φέρω@aorist",
+      "lex_id": [
+        "pie-root-h1nekj-receive"
+      ],
+      "note": "GLAUx Hesiod Op.563 ἐνείκῃ; Kaikki Ancient Greek s.v. φέρω separates inherited aorist *h₁neḱ- from present *bʰer-."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "δέω@need",
+      "lex_id": [],
+      "note": "GLAUx Hdt2.126.1 s3; Kaikki Ancient Greek s.v. δέω separates need/request from bind. No PIE mapping asserted for this sense."
+    },
+    {
+      "corpus": "av",
+      "lemma": "vid@perfect",
+      "lex_id": [
+        "pie-root-weyd-see"
+      ],
+      "note": "DCS AVŚ2.1.s5,6.46.s3,16.5.s1 veda/vidma; Kaikki Sanskrit s.v. वेद (verb), विद्: inherited perfect, not causative *woydéyeti."
+    },
+    {
+      "corpus": "sa-ep",
+      "lemma": "Droṇa (name)",
+      "lex_id": [],
+      "note": "DCS MBh9.7.s28; Kaikki Sanskrit s.v. द्रोण (name), distinct from the vessel noun."
+    }
+  ]
+}

@@ -1617,6 +1617,19 @@ IR_REVIEWED_CONTEXT.update({
     'tóchta': [(('dechmaid in',), ('co',), 'tócht@piece', False)],
 })
 
+# Wave-3 source and dictionary evidence: error-verdicts-w3-celtic.jsonl.
+# Keep homographs outside these independently checked lexical contexts.
+IR_REVIEWED_CONTEXT.update({
+    'annocht': [(('rogenair',), (), 'innocht', False)],
+    'sir': [(('ro',), ('immoro',), 'síraid', False)],
+    't-ochtur': [(('in',), ('ar xx oclach',), 'ochtar', False)],
+    'ṡétaib': [(('tairces do',), ('dó',), 'sét@treasure', False)],
+    'imshnímaib': [(('dia',), ('móra',), 'imshním', False)],
+    'h-aithli': [(('bodéin asa',), (), 'aithle@afterwards', False)],
+    'légud': [(('ingen do',), ('úad',), 'léicid', False)],
+})
+IR_REVIEWED_CONTEXT['bíad'].append((('ná',), ('commus',), 'bí', False))
+
 
 def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
     """Lemmas for a word sequence: `lemz(w)` for each word, except that a form in CONTEXT_FORMS takes the
@@ -1669,7 +1682,7 @@ def welsh_lemmatizer(maps: CelticMappings, diplomatic: bool = False, **kw) -> Ce
 def is_function_lemma(lm: fm.LangMapping, lem: str) -> bool:
     """A lemma string all of whose parts are function words (no table row)."""
     fw = IR_FUNCTION if lm.lang == "sga" else CY_FUNCTION
-    return all(p in fw or (lm.lang == "sga" and p in {"suil@before", "ós", "eter", "mani"})
+    return all(p in fw or (lm.lang == "sga" and p in {"suil@before", "ós", "eter", "mani", "aithle@afterwards"})
                for p in lem.split("|"))
 
 

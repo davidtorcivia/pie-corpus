@@ -56,8 +56,18 @@ def contextual_lemma(corpus: str, lemma: str, surface: str, locus: str) -> str:
     # Wave 2: source and dictionary checks are recorded in
     # error-verdicts-w2-other.jsonl. Keep homographs outside these contexts.
     if corpus in {"grc", "grp", "grc-late"}:
-        if lemma == "ὁράω" and surface == "εἶδε":
+        if lemma == "ὁράω" and surface in {"εἶδε", "εἶδον"}:
             return "εἶδον@see"
+        # Source-locus corrections independently checked in wave 3.
+        fixes = {
+            ("Hesiodus Opera et dies 563", "ἐνείκῃ", "φέρω"): "φέρω@aorist",
+            ("Thucydides Historiae 2.92.1 s1", "κελεύσματος", "κέλευθος"): "κέλευσμα",
+            ("Euripides Ion 1403", "λιποῦσα", "λιπάω"): "λείπω",
+            ("Herodotus Historiae 2.39.2 s1", "καταρησάμενοι", "καταλέγω"): "καταράομαι",
+            ("Herodotus Historiae 2.126.1 s3", "δέεσθαι", "δέω"): "δέω@need",
+        }
+        if (locus, surface, lemma) in fixes:
+            return fixes[locus, surface, lemma]
         if lemma == "λέγω" and surface == "εἶπε":
             return "εἶπον@say"
         if locus == "Thucydides Historiae 1.1.1 s1" and surface == "ᾖσαν" and lemma == "ἔρχομαι":
@@ -75,6 +85,10 @@ def contextual_lemma(corpus: str, lemma: str, surface: str, locus: str) -> str:
     if corpus == "lv" and locus == "p0216" and surface == "vilka":
         return "vilkt"
     if corpus == "menota":
+        if locus == "AM-35-fol 201:" and surface == "eydana":
+            return "Eydanir (name)"
+        if locus == "AM-63-fol 62:" and surface == "brenosteini":
+            return "brennisteinn"
         fixes = {
             ("AM-63-fol 326:", "mól", "mál"): "mala",
             ("AM-36-fol 473:29", "mǫðr", "móðr"): "móðir",
@@ -86,6 +100,15 @@ def contextual_lemma(corpus: str, lemma: str, surface: str, locus: str) -> str:
         if surface == "þa(+K)" and lemma == "þak" and locus.startswith("AM-36-fol "):
             return "þá"
     if corpus == "xcl":
+        fixes = {
+            ("MH_1_2_12_Movses_Khor", "18372", "or"): "ors",
+            ("MH_1_1_04_Faustos", "28360", "mayr"): "Mari (name)",
+            ("MH_1_1_04_Faustos", "13418", "bambir"): "Bambišn (name)",
+            ("MH_1_1_04_Faustos", "13422", "tiranam"): "Tiran (name)",
+        }
+        for (work, word, old), new in fixes.items():
+            if work + " " in locus and f"(word id {word})" in locus and lemma == old:
+                return new
         if "MH_1_1_06_Yeghishe " in locus and "(word id 9391)" in locus and lemma == "haw":
             return "haw@ancestor"
         if "MH_1_1_04_Faustos " in locus:
@@ -97,4 +120,10 @@ def contextual_lemma(corpus: str, lemma: str, surface: str, locus: str) -> str:
         return "snīw@noun"
     if corpus == "cy" and "whitebookofmabin00evan:L17235-L17250" in locus and surface == "kae" and lemma == "cae":
         return "cau@close"
+    if corpus == "hom" and locus == "Il. 5.176" and surface == "ἔλυσεν" and lemma == "ἐλύω":
+        return "λύω"
+    if corpus == "sa-ep" and locus == "MBh, 9, 7.s28" and surface == "droṇasya" and lemma == "droṇa":
+        return "Droṇa (name)"
+    if corpus == "av" and lemma == "vid" and surface in {"veda", "vidma"}:
+        return "vid@perfect"
     return lemma

@@ -1280,10 +1280,12 @@ def byliny_units(root: Path = ROOT):
     Hilferding byliny), every verse line; and the archive.org OCR of Hilferding vols. 2-3, Kireevsky
     vyp. 1, 4-10 and Rybnikov pts. 1-4, OCR lines that look like verse: 2-8 words, ≥ 85% Cyrillic
     letters, no number of two or more digits, no line-final hyphen (prose commentary, headers and
-    indexes mostly fail this). Reviewed editorial source spans are excluded by
-    material_units; this is not a claim that all remaining OCR is verse.
+    indexes mostly fail this). Contextual prose and editorial features in
+    material_units exclude non-epic material. Historical reviewed exclusions
+    remain a backstop, not detector training at runtime. Doubtful units stay;
+    this is not a claim that all remaining OCR is verse.
     Rybnikov pt. I is in both the wikisource and the OCR set."""
-    from pie.material_units import byliny_wiki_lines, excluded_source
+    from pie.material_units import byliny_wiki_lines, byliny_non_epic, excluded_source
     root = Path(root)
     p = root / KD / "russian-byliny-wikisource/texts-plaintext.txt"
     for pid, title, i, line in byliny_wiki_lines(_plaintext_songs(p)):
@@ -1293,8 +1295,11 @@ def byliny_units(root: Path = ROOT):
         paths = [root / KD / d / f for f in files] if files else sorted((root / KD / d).glob("*_djvu.txt"))
         for fp in paths:
             stem = fp.stem.replace("_djvu", "")
-            for i, line in enumerate(fp.read_text("utf-8", errors="replace").splitlines()):
-                if _verse_like(line) and not excluded_source("byliny", fp.name, i + 1):
+            lines = fp.read_text("utf-8", errors="replace").splitlines()
+            excluded = byliny_non_epic(lines)
+            for i, line in enumerate(lines):
+                if (_verse_like(line) and i not in excluded and
+                        not excluded_source("byliny", fp.name, i + 1)):
                     yield (f"{stem}:{i + 1}", {"page_file": f"{d}/{stem}", "line": f"{stem}:{i + 1}",
                                                "source": d}, line)
 

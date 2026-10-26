@@ -180,6 +180,7 @@ class MenotaWord:
     line: str
     stanza: str | None
     sent: int
+    occurrence: int = 0  # same form at a source coordinate, zero-based
 
 
 def _level(body: str, lv: str) -> str:
@@ -253,6 +254,24 @@ def menota_words(path: Path, doc: str) -> list[MenotaWord]:
             sent += 1
         elif m.group(6) == "lg":
             stanza = None
+    from pie.material_units import repair_menota_words
+    out = repair_menota_words(out)
+    # Wave-3 source-verified duplicate, not a general verse deduplication.
+    repairs = path.parents[4] / "data/research/formulas/menota-material-w3.json" if len(path.parents) > 4 else None
+    if repairs and repairs.exists():
+        for r in json.loads(repairs.read_text("utf-8")):
+            if r["doc"] != doc:
+                continue
+            for j in range(len(out) - len(r["forms"]), -1, -1):
+                w = out[j]
+                if (w.folio, w.line) == (r["folio"], r["line"]) and \
+                        [x.form for x in out[j:j + len(r["forms"])]] == r["forms"]:
+                    out[j:j + len(r["forms"])] = [replace(w, form=f) for f in r["replacement"]]
+    counts = collections.Counter()
+    for w in out:
+        key = (w.folio, w.line, w.form)
+        w.occurrence = counts[key]
+        counts[key] += 1
     return out
 
 
@@ -263,15 +282,17 @@ def menota_form_key(s: str) -> str:
 def menota_reviewed_tokens(root: Path = ROOT) -> dict:
     """Source-coordinate sense repairs, applied after form-table inference.
 
-    Each row cites its source and dictionary in the wave-2 Norse ledger.
+    Each row cites its source and dictionary in the wave-2 or wave-3 Norse ledger.
     Keeping these out of the voting table prevents a local sense decision
     from changing the analysis of the same surface form elsewhere.
     """
-    path = Path(root) / "data/research/formulas/menota-reviewed-w2.json"
-    if not path.exists():
-        return {}
-    return {(r["doc"], r["folio"], r["line"], r["form"]): r
-            for r in json.loads(path.read_text("utf-8"))}
+    rows = []
+    for wave in (2, 3):
+        path = Path(root) / f"data/research/formulas/menota-reviewed-w{wave}.json"
+        if path.exists():
+            rows.extend(json.loads(path.read_text("utf-8")))
+    return {(r["doc"], r["folio"], r["line"], r["form"], *([r["occurrence"]] if "occurrence" in r else [])): r
+            for r in rows}
 
 
 def reviewed_menota_token(w: MenotaWord, lemma: str, msa: str, rules: dict) -> tuple[str, str]:
@@ -279,7 +300,8 @@ def reviewed_menota_token(w: MenotaWord, lemma: str, msa: str, rules: dict) -> t
              "haraldr", "mímir", "yngvi"}
     if msa == "NP" and lemma.lower() in names:
         return lemma + " (name)", msa
-    row = rules.get((w.doc, w.folio, w.line, w.form))
+    key = (w.doc, w.folio, w.line, w.form)
+    row = rules.get((*key, w.occurrence), rules.get(key))
     if row and lemma == row["given_lemma"]:
         return row["lemma"], row["tag"]
     return lemma, msa

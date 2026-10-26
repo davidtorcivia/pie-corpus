@@ -35,16 +35,155 @@ def join_restorations(text: str) -> str:
     return re.sub(r"(?<=[^\W\d_])\[([^\W\d_]+)\](?=[^\W\d_])", r"\1", text)
 
 
+def reviewed_daina_quote(page: str, offset: int) -> bool:
+    """Whether an extracted quotation is primary verse (wave 3 report 18)."""
+    # Endzelīns p0341:1046 is a linguistic footnote, opened by a less-than
+    # etymological sign and closed by a gloss quotation mark.
+    return (page, offset) != ("p0341", 1046)
+
+
+def repair_menota_words(words):
+    """Remove reviewed editorial brackets; repair three source word boundaries.
+
+    Preserve unreviewed readings and token coordinates. This deliberately does
+    not collapse manuscript variants or infer repairs from spelling alone.
+    Evidence: error-verdicts-w3-other.jsonl, reports 11,38,43–46,48,54,110.
+    """
+    from dataclasses import replace
+
+    out = []
+    i = 0
+    while i < len(words):
+        w = words[i]
+        if w.doc == "AM-36-fol" and w.folio in {"8", "17", "28", "75", "117", "138"} and w.form.startswith("["):
+            depth, j = 0, i
+            while j < min(i + 40, len(words)):
+                if words[j].folio != w.folio:
+                    break
+                depth += words[j].form.count("[") - words[j].form.count("]")
+                j += 1
+                if depth <= 0:
+                    break
+            phrase = " ".join(x.form for x in words[i:j])
+            if depth == 0 and re.search(r"underpr|manglar|siste d|tegnet|usikkert|mellomrom", phrase):
+                i = j
+                continue
+        if (w.doc, w.folio, w.form) == ("AM-36-fol", "15", "brygiorsverþ"):
+            out.extend((replace(w, form="brygior"), replace(w, form="sverþ")))
+            i += 1
+            continue
+        if i + 1 < len(words):
+            nxt = words[i + 1]
+            key = (w.doc, w.folio, w.form, nxt.form)
+            joined = {
+                ("AM-35-fol", "201", "ey", "dana"): "eydana",
+                ("AM-63-fol", "62", "breno", "steini"): "brenosteini",
+            }.get(key)
+            if joined and (w.doc, w.folio, w.stanza, w.sent) == (nxt.doc, nxt.folio, nxt.stanza, nxt.sent):
+                out.append(replace(w, form=joined))
+                i += 2
+                continue
+        out.append(w)
+        i += 1
+    return out
+
+
+_RU_WORD = re.compile(r"[а-яёѣіѳѵ]+", re.I)
+_RU_NOTES = re.compile(r"^(?:примечани[ея]|комментари[ийя]|сноски|источники)\s*[.:]?$", re.I)
+_RU_EDITOR = re.compile(
+    r"записан[оаы]|запись\s+от|по\s+записи|собирател|сказител|"
+    r"по\s+складу\s+стиха|вариант[а-я]*\s+(?:песни|былины)|"
+    r"нужно\s+разум|по\s+описанию|\bдер\.|\bгуб\.|\bуезд|"
+    r"\bредактор|\bиздател|\bрукопис|\bпримечани", re.I)
+_RU_NOTE_START = re.compile(r"^\s*(?:\d{1,3}|[*¹²³⁴⁵⁶⁷⁸⁹]|[.)])\s*[).]\s*")
+_RU_SIGNED_NOTE = re.compile(r"[—–]\s*(?:[А-Яа-яѢѣA-Z0-9]\.?){1,3}\s*[.]?\s*$")
+_RU_SCHOLAR = re.compile(
+    r"\b(?:рукопис|издани|издан|сборник|литератур|редакт|исслед|"
+    r"вариант|предислов|примечан|собирател|сказител|правопис|"
+    r"этимолог|сравнен|печат|напечат|пересказ|происхожден)|"
+    r"\b(?:см|ср|стр)\.", re.I)
+
+
+def _byliny_normal(text: str) -> str:
+    # This is feature extraction only: the yielded source text is never changed.
+    return text.lower().replace("ѣ", "е").replace("і", "и").replace("ъ", "")
+
+
+def byliny_non_epic(lines: list[str]) -> dict[int, str]:
+    """Conservative, edition-independent exclusions, keyed by zero-based line.
+
+    Use OCR paragraphs and bounded windows, not reviewed coordinates. Long
+    lines, punctuation, spelling or footnote calls alone cannot reject verse.
+    Vowel counts are a rough rhythm proxy, not a claim to scan Russian stress.
+    Blank lines bound contextual evidence; windows prevent a note contaminating
+    an entire song. Explicit notes headings are handled separately on wiki pages.
+    """
+    out = {}
+    start = 0
+    while start < len(lines):
+        if not lines[start].strip():
+            start += 1
+            continue
+        end = start + 1
+        while end < len(lines) and lines[end].strip():
+            end += 1
+        quoted = False
+        for i in range(start, end):
+            line = lines[i]
+            normal = _byliny_normal(line)
+            if _RU_NOTES.fullmatch(normal.strip()):
+                out[i] = "notes-heading"
+                continue
+            # Prose discussions often embed actual epic quotations. Do not
+            # discard these doubtful units merely because their wrapper is prose.
+            in_quote = quoted or "«" in line or "»" in line
+            for char in line:
+                if char == "«":
+                    quoted = True
+                elif char == "»":
+                    quoted = False
+            if in_quote:
+                continue
+            # At most nine physical lines, within the same OCR paragraph.
+            nearby = lines[max(start, i - 4):min(end, i + 5)]
+            norm = [_byliny_normal(s) for s in nearby]
+            editorial = any(_RU_EDITOR.search(s) and not re.search('[«»]', s) for s in norm)
+            scholarly = any(_RU_SCHOLAR.search(s) for s in norm)
+            long = sum(len(_RU_WORD.findall(s)) >= 9 or len(s.strip()) >= 65 for s in norm)
+            broken = sum(bool(re.search(r"[а-яё]-\s*$", s)) for s in norm)
+            sentences = sum(bool(re.search(r"[а-яё][.;]\s+[а-яё]", s)) for s in norm)
+            vowels = [len(re.findall(r"[аеёиоуыэюя]", s)) for s in norm]
+            # Require several full-width lines AND independent prose evidence.
+            if (scholarly and len(nearby) >= 3 and long >= 3 and
+                    (broken >= 2 or (broken >= 1 and sentences >= 1)) and
+                    sum(v > 18 for v in vowels) >= 2):
+                out[i] = "wrapped-prose"
+            elif _RU_EDITOR.search(normal):
+                out[i] = "editorial-marker"
+            elif (editorial and
+                  (any(_RU_EDITOR.search(_byliny_normal(s)) and not re.search('[«»]', s)
+                       for s in lines[max(start, i - 4):i + 1]) or
+                   (len(line.strip()) >= 60 and long >= 2)) and
+                  (broken or sentences or any(re.search(r"\b\d{2,4}\b", s) for s in norm))):
+                out[i] = "editorial-paragraph"
+            elif _RU_NOTE_START.search(line) and _RU_SIGNED_NOTE.search(line):
+                out[i] = "signed-footnote"
+            elif _RU_SIGNED_NOTE.search(line) and editorial:
+                out[i] = "signed-footnote"
+        start = end
+    return out
+
+
 def byliny_wiki_lines(rows):
-    """Stop at the reviewed notes section, preserving page/unit numbers."""
+    """Stop at notes on any page; retain original page/unit numbers and text."""
     page = None
     notes = False
     for pid, title, i, line in rows:
         if pid != page:
             page, notes = pid, False
-        if pid == "425083" and line.strip() == "Примечания":
+        if _RU_NOTES.fullmatch(_byliny_normal(line).strip()):
             notes = True
-        if not notes:
+        if not notes and not byliny_non_epic([line]):
             yield pid, title, i, line
 
 

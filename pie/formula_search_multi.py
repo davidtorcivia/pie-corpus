@@ -2058,6 +2058,9 @@ def dainas_units(root: Path = ROOT, min_chars: int = 20) -> list[tuple[str, dict
         text = fn.read_text("utf-8", errors="replace")
         text = re.sub(r"-\s*\n\s*", "", text).replace("\n", " ")
         for m in re.finditer(r"[«<]([^«»]{%d,400})»([^«]{0,30})" % min_chars, text):
+            from pie.material_units import reviewed_daina_quote
+            if not reviewed_daina_quote(fn.stem, m.start()):
+                continue
             bv = re.search(r"B\.\s*V\.\s*(\d+)", m[2])
             loc = f"BV {bv[1]}" if bv else f"{fn.stem}"
             out.append((loc, {"song": f"{fn.stem}:{m.start()}", "book": fn.stem}, m[1]))

@@ -187,5 +187,23 @@
     "action": "exclude",
     "report": "data/research/8c/stageCS/error-reports-w2.jsonl:47",
     "reason": "French comparative footnote and citation list"
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimvyp1pesn13_djvu.txt",
+    "start": 784,
+    "end": 786,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports-w3.jsonl:15",
+    "reason": "Independently reviewed editorial prose; general detector retains this OCR span."
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-rybnikov-1861-1867-archiveorg/pesnisobrannyepnrybnikovymch2narod72_djvu.txt",
+    "start": 36778,
+    "end": 36789,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports-w3.jsonl:56",
+    "reason": "Independently reviewed editorial prose; general detector retains this OCR span."
   }
 ]

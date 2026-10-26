@@ -32,6 +32,7 @@ def test_source_rules_are_guarded_and_do_not_change_other_loci():
     rules = gm.menota_reviewed_tokens(ROOT)
     for key, r in rules.items():
         w = word(r['form'], r['doc'], r['folio'], r['line'])
+        w.occurrence = r.get('occurrence', 0)
         assert gm.reviewed_menota_token(w, r['given_lemma'], '', rules) == (r['lemma'], r['tag'])
         assert gm.reviewed_menota_token(w, '?different', '', rules) == ('?different', '')
         w.line += '-elsewhere'

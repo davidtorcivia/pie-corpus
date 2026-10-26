@@ -62,7 +62,7 @@ def test_reviewed_notes_do_not_shift_numbering_or_affect_other_pages():
             ("425083", "song", 130, "editorial"),
             ("next", "other", 1, "verse"),
             ("next", "other", 2, "Примечания")]
-    assert list(byliny_wiki_lines(rows)) == [rows[0], rows[3], rows[4]]
+    assert list(byliny_wiki_lines(rows)) == [rows[0], rows[3]]
     assert excluded_source("byliny", "10945725bsb_djvu.txt", 14048)
     assert not excluded_source("byliny", "10945725bsb_djvu.txt", 14054)
     assert excluded_source("celtic", "revueceltique13pari_djvu.txt", 1311, 1312)

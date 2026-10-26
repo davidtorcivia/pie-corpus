@@ -2607,6 +2607,76 @@
    "lex_id": [],
    "erratum": "Wave-2 reviewed nominal sense; exclude unrelated homograph mapping",
    "note": "Windisch, Irische Texte I, glossary s.v. tócht, source OCR lines 87417-87419; CELT G308002:#1/23:11. See error-verdicts-w2-celtic.jsonl. Keep unmapped pending a reviewed PIE derivation."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "síraid",
+   "lex_id": [],
+   "erratum": "Wave-3 reviewed contextual lemma; no independently verified PIE assignment for this sense.",
+   "note": "CELT-W3-005; The cited OCR passage has a past verb following Ro, with Alexander traversing the world as its argument. Irish sir is independently listed as traverse/search. The adjective sír is incorrect; no PIE assignment is inferred for the corrected verb. Sources: raw/daughters/kaikki-all-20261021/split/irish.jsonl:224"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "síraid",
+   "lex_id": [],
+   "erratum": "Wave-3 reviewed contextual lemma; no independently verified PIE assignment for this sense.",
+   "note": "CELT-W3-005; The cited OCR passage has a past verb following Ro, with Alexander traversing the world as its argument. Irish sir is independently listed as traverse/search. The adjective sír is incorrect; no PIE assignment is inferred for the corrected verb. Sources: raw/daughters/kaikki-all-20261021/split/irish.jsonl:224"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "ochtar",
+   "lex_id": [],
+   "erratum": "Wave-3 reviewed contextual lemma; no independently verified PIE assignment for this sense.",
+   "note": "CELT-W3-016; The source counts twenty-eight warriors; the article-prefixed collective numeral is ochtar, independently recorded as a group of eight people. Correct the lemma; do not invent a PIE formation for this collective. Sources: raw/daughters/kaikki-all-20261021/split/irish.jsonl:20976; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:1224"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "ochtar",
+   "lex_id": [],
+   "erratum": "Wave-3 reviewed contextual lemma; no independently verified PIE assignment for this sense.",
+   "note": "CELT-W3-016; The source counts twenty-eight warriors; the article-prefixed collective numeral is ochtar, independently recorded as a group of eight people. Correct the lemma; do not invent a PIE formation for this collective. Sources: raw/daughters/kaikki-all-20261021/split/irish.jsonl:20976; raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:1224"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "sét@treasure",
+   "lex_id": [],
+   "erratum": "Wave-3 reviewed contextual lemma; no independently verified PIE assignment for this sense.",
+   "note": "CELT-W3-030; The source coordinates offered valuables with the girl, so this is the treasure homograph, not the path noun. The dictionary distinguishes the two senses and gives sétaib as dative plural. Leave the treasure sense unmapped pending a reviewed PIE derivation. Sources: raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:1245-1246"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "sét@treasure",
+   "lex_id": [],
+   "erratum": "Wave-3 reviewed contextual lemma; no independently verified PIE assignment for this sense.",
+   "note": "CELT-W3-030; The source coordinates offered valuables with the girl, so this is the treasure homograph, not the path noun. The dictionary distinguishes the two senses and gives sétaib as dative plural. Leave the treasure sense unmapped pending a reviewed PIE derivation. Sources: raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:1245-1246"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "imshním",
+   "lex_id": [],
+   "erratum": "Wave-3 reviewed contextual lemma; no independently verified PIE assignment for this sense.",
+   "note": "CELT-W3-031; The source expresses one of the great anxieties and the next unit resumes it with Imṡním. The dictionary imní explicitly cites Middle Irish imṡním, anxiety/grief. Normalize the inflected noun without inventing a PIE mapping. Sources: raw/daughters/kaikki-all-20261021/split/irish.jsonl:3210"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "imshním",
+   "lex_id": [],
+   "erratum": "Wave-3 reviewed contextual lemma; no independently verified PIE assignment for this sense.",
+   "note": "CELT-W3-031; The source expresses one of the great anxieties and the next unit resumes it with Imṡním. The dictionary imní explicitly cites Middle Irish imṡním, anxiety/grief. Normalize the inflected noun without inventing a PIE mapping. Sources: raw/daughters/kaikki-all-20261021/split/irish.jsonl:3210"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "aithle@afterwards",
+   "lex_id": [],
+   "erratum": "Wave-3 reviewed contextual lemma; no independently verified PIE assignment for this sense.",
+   "note": "CELT-W3-032; The following source unit G301012:#1/#2/#41:86 ends with a temporal expression. Windisch and Ó Dónaill independently attest the adverbial use. Dictionary aithle is related to adlen; that relationship is not rejected, but this grammaticalized temporal use must not count as a lexical smearing verb. Sources: raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:6257; raw/daughters/oldirish-irische-texte-1880-1909/irischetextemitw01winduoft_djvu.txt:21595-21603; https://focail.ie/en/fgb/aithle"
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "aithle@afterwards",
+   "lex_id": [],
+   "erratum": "Wave-3 reviewed contextual lemma; no independently verified PIE assignment for this sense.",
+   "note": "CELT-W3-032; The following source unit G301012:#1/#2/#41:86 ends with a temporal expression. Windisch and Ó Dónaill independently attest the adverbial use. Dictionary aithle is related to adlen; that relationship is not rejected, but this grammaticalized temporal use must not count as a lexical smearing verb. Sources: raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:6257; raw/daughters/oldirish-irische-texte-1880-1909/irischetextemitw01winduoft_djvu.txt:21595-21603; https://focail.ie/en/fgb/aithle"
   }
  ],
  "form": [
