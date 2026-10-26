@@ -1,5 +1,6 @@
 """Wave 6 whole-corpus token snapshots; writes only /private/tmp by default."""
 import importlib.util
+import gzip
 import json
 import sys
 import itertools
@@ -129,7 +130,8 @@ def compare():
             assert current is None, (c,current[0])
         totals[c]=dict(before_tokens=nold,after_tokens=nnew,changed_tokens=changed,removed_tokens=removed,added_tokens=added)
     dest=ROOT/'data/research/8c/stageCS'
-    (dest/'error-verdicts-w6-other-token-diff.jsonl').write_text(''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in changes))
+    with gzip.open(dest/'error-verdicts-w6-other-token-diff.jsonl.gz', 'wt', encoding='utf-8') as f:  # ~66 MB uncompressed
+        f.write(''.join(json.dumps(r,ensure_ascii=False)+'\n' for r in changes))
     (dest/'error-verdicts-w6-other-metrics.json').write_text(json.dumps(totals,indent=2)+'\n')
     from collections import Counter
     counts=Counter()
