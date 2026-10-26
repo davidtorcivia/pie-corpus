@@ -1,0 +1,129 @@
+{
+ "note": "Source-verified wave-4 Norse corrections; see error-verdicts-w4-norse.jsonl. Only local senses and independently verified lexical mappings.",
+ "lemma": [
+  {
+   "corpus": "menota",
+   "lemma": "lund@manner",
+   "lex_id": [],
+   "note": "Zoega s.v. lund distinguishes manner/mind from land: https://norse.ulver.com/dct/zoega/l.html. Source construction is demonstrative plus lund expressing manner.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "gerð@act",
+   "lex_id": [],
+   "note": "Kaikki s.v. gerð explicitly derives act from gera; levy organization is not garðr/enclosure. No replacement PIE equation asserted.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "sál@soul",
+   "lex_id": [],
+   "note": "Zoega s.v. sál, soul, https://norse.ulver.com/dct/zoega/s.html. Christian penance construction; exclude sun and do not inherit ambiguous sál root mappings.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "afla@acquire",
+   "lex_id": [],
+   "note": "Zoega s.v. afla, acquire, with reflexive/passive construction: https://norse.ulver.com/dct/zoega/a.html. Source hævir and subsequent property division establish acquired property, not aflát.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vit@understanding",
+   "lex_id": [
+    "pie-lex-weydos"
+   ],
+   "note": "Kaikki s.v. vit distinguishes understanding < *witą from the dual pronoun. Source hafa with noun object and knowledge of trading; exclude víðr and the pronoun.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "vanr@accustomed",
+   "lex_id": [
+    "pie-root-wenh1-love"
+   ],
+   "note": "Kaikki s.v. vanr separates accustomed < *wenh₁- from lacking < *h₁weh₂-. Source experience in trading, not deficiency.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "fǫr@journey",
+   "lex_id": [
+    "pie-root-per-go_through"
+   ],
+   "note": "Kaikki fǫr journey < *farō differs from for furrow < *furhs. Source travel noun with journey modifiers or í; root-level *per- only.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "sæta@cause",
+   "lex_id": [
+    "pie-root-sed-sit"
+   ],
+   "note": "Kaikki s.v. sæta, cause/bring about < *sētijaną. Source asks the cause of commotion or a broken bow; not sweetness. Root-level sitting family only.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "kvæði",
+   "lex_id": [
+    "pie-root-gwet-say"
+   ],
+   "note": "Kaikki kvæði < *kwēþiją, related to kveða < *gʷet- say. Source composition of a poem; remove resin root collision, retain speech root only.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "œrr",
+   "lex_id": [],
+   "note": "Kaikki œrr -> ǿrr < *wōrijaz, possibly *h₂weH-, not the h₂er homographs. Source mad-man simile. Reporter’s alternative *wōþ- is not adopted; uncertain deeper origin left unmapped.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "ber@berry",
+   "lex_id": [],
+   "note": "Kaikki ber noun < *basją/*bazją, berry; source heather bearing berries. Separate noun from bera and bare homographs; no secure PIE replacement asserted.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "siǫt",
+   "lex_id": [
+    "pie-root-sed-sit"
+   ],
+   "note": "Kaikki sjǫt < *setō, abode/seat; source dwelling of gods reddened with blood. Root-level *sed- is supported; reflexive *swé is not.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "ákall",
+   "lex_id": [],
+   "note": "Kaikki ákall from á- + kall, invocation; source invocation with weeping. Not karl/man or the growing-old root; no new inherited equation asserted.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "óttask",
+   "lex_id": [],
+   "note": "Zoega s.v. ótta/óttask, fear, https://norse.ulver.com/dct/zoega/oo.html; finite middle forms in fearing clauses, not the pre-dawn noun.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "mannmǫrgð",
+   "lex_id": [],
+   "note": "Zoega s.v. barnǫska / mann-mörgð; local source repair, no replacement PIE equation asserted.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "barnǫska",
+   "lex_id": [],
+   "note": "Source XML diplomatic token contains malformed vowel entity residue; schooling context requires childhood. Lexicon Poeticum s.v. barnæska (childhood); Saga-Book XXIX (2005) review recommends normalization barnǫska: https://vsnr.org/wp-content/uploads/2021/11/Saga-Book-XXIX.pdf. Repair only this coordinate.",
+   "erratum": "Wave-4 Norse independent source/dictionary verification; error-verdicts-w4-norse.jsonl."
+  }
+ ]
+}

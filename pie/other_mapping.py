@@ -53,6 +53,8 @@ def contextual_lemma(corpus: str, lemma: str, surface: str, locus: str) -> str:
     are actual source-token loci, not the sometimes earlier unit-start labels
     in reader reports. Unlisted contexts retain their original lemma.
     """
+    from .w4_other_mapping import reviewed_lemma
+    lemma = reviewed_lemma(corpus, lemma, surface, locus)
     # Wave 2: source and dictionary checks are recorded in
     # error-verdicts-w2-other.jsonl. Keep homographs outside these contexts.
     if corpus in {"grc", "grp", "grc-late"}:

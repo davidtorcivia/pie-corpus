@@ -205,5 +205,41 @@
     "action": "exclude",
     "report": "data/research/8c/stageCS/error-reports-w3.jsonl:56",
     "reason": "Independently reviewed editorial prose; general detector retains this OCR span."
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimch2vyp57_djvu.txt",
+    "start": 8979,
+    "end": 8979,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports-w4.jsonl:11",
+    "reason": "Independently reviewed editorial prose/footnote; see wave4 other verdict ledger."
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/10945725bsb_djvu.txt",
+    "start": 24393,
+    "end": 24393,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports-w4.jsonl:12",
+    "reason": "Independently reviewed editorial prose/footnote; see wave4 other verdict ledger."
+  },
+  {
+    "corpus": "byliny",
+    "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimch3vyp51_djvu.txt",
+    "start": 11694,
+    "end": 11694,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports-w4.jsonl:79",
+    "reason": "Independently reviewed editorial prose/footnote; see wave4 other verdict ledger."
+  },
+  {
+    "corpus": "celtic",
+    "source": "raw/daughters/oldirish-tbc-windisch-1905/diealtirischehel00wind_djvu.txt",
+    "start": 24626,
+    "end": 24631,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports-w4.jsonl:22",
+    "reason": "Independently reviewed editorial prose/footnote; see wave4 other verdict ledger."
   }
 ]

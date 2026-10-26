@@ -1723,6 +1723,10 @@ def corpus_words(corpus: str, text: str) -> list[str]:
     and words with unreadable letters dropped)."""
     if corpus == "ccmh":
         return [c for c in (ccmh_word(w) for w in ccmh_words(text)) if c]
+    if corpus == "byliny":
+        # Hilferding OCR: a medial yat read as $ must not expose лось.
+        # Preserve source spelling; the reviewed lemma rule resolves the verb.
+        return re.findall(r"р[ао]згор\$лос[ьиея]|" + _TOKEN.pattern, text, re.I)
     return words(text)
 
 

@@ -1631,6 +1631,31 @@ IR_REVIEWED_CONTEXT.update({
 IR_REVIEWED_CONTEXT['bíad'].append((('ná',), ('commus',), 'bí', False))
 
 
+# Wave-4 source and dictionary evidence: error-verdicts-w4-celtic.jsonl.
+for _form, _rules in {'daig': [(('fo',), ('tathar',), 'dáig@because', False)],
+ 'lind': [(('fochen',), ('do',), 'la', False)],
+ 'fochen': [((), ('lind do',), 'fochen@welcome', False)],
+ 'aodh': [(('^',), ('mend',), 'aodh (name)', True)],
+ 'chriad': [(('coirp',), (), 'cré@clay', False)],
+ 'aidche': [(('lathi',), ('and',), 'adaig@night', False)],
+ 'theigh': [(('ro',), ('ro folaig',), 'teichid', False)],
+ 'thes': [(('na rígh',), ('ar',), 'tess@south', False)],
+ 'airc': [(('is',), ('dúnn',), 'airc@need', False)],
+ 'cuan': [(('in',), ('lan do longaib',), 'cúan@harbour', False)],
+ 'fäid': [((), ('iter na faidib',), 'fáith', False)],
+ 'h-ögaib': [(('ög iter na',), ('apstal',), 'óg@virgin', False)],
+ 'or': [(('lem',), ('si-si',), 'ol', False)],
+ 'orgain': [(('do',), ('in sidiu',), 'orgain@slaying', False)],
+ 'ndéni': [(('co',), ('íar',), 'déne@speed', False)],
+ 'forecmaing': [((), ('sin scíath',), 'doecmaing', False)],
+ 'broind': [(('ósa',), ('coro',), 'brú@belly', False)],
+ 'nádaim': [(('síl',), ('do',), 'ádam (name)', True)],
+ 'uig': [(('don',), ('ucut',), 'og@egg', False)],
+ 'gé': [(('acht',), ('atá',), 'gé@although', False)],
+ 't-tarladar': [(('go',), ('for dhuirteach',), 'tarla@happen', False)]}.items():
+    IR_REVIEWED_CONTEXT.setdefault(_form, []).extend(_rules)
+
+
 def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
     """Lemmas for a word sequence: `lemz(w)` for each word, except that a form in CONTEXT_FORMS takes the
     lemma its preceding word selects (tig after isin / i / ina / dia … → tech 'house'). Stage C should use
@@ -1648,7 +1673,10 @@ def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
             for previous, following, target, capitalized in IR_REVIEWED_CONTEXT.get(normalized[i], ()):
                 if capitalized and not any(c.isupper() for c in w):
                     continue
-                if previous and not any(normalized[max(0, i - len(p.split())):i] == p.split()
+                # ^ anchors a reviewed name to unit start; later capitals
+                # already receive the loader's name label.
+                if previous and not any((i == 0 if p == "^" else
+                                         normalized[max(0, i - len(p.split())):i] == p.split())
                                         for p in previous):
                     continue
                 if following and not any(normalized[i + 1:i + 1 + len(f.split())] == f.split()
@@ -1682,7 +1710,7 @@ def welsh_lemmatizer(maps: CelticMappings, diplomatic: bool = False, **kw) -> Ce
 def is_function_lemma(lm: fm.LangMapping, lem: str) -> bool:
     """A lemma string all of whose parts are function words (no table row)."""
     fw = IR_FUNCTION if lm.lang == "sga" else CY_FUNCTION
-    return all(p in fw or (lm.lang == "sga" and p in {"suil@before", "ós", "eter", "mani", "aithle@afterwards"})
+    return all(p in fw or (lm.lang == "sga" and p in {"suil@before", "ós", "eter", "mani", "aithle@afterwards", "dáig@because", "fochen@welcome", "gé@although"})
                for p in lem.split("|"))
 
 

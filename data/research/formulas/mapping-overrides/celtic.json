@@ -2279,14 +2279,14 @@
    "lemma": "cúan@harbour",
    "lex_id": [],
    "erratum": "Reviewed Irish sense/stem: cúan@harbour",
-   "note": "IR-CS-081. raw/daughters/celt-ucc/units.jsonl#G303000:#1:562; raw/daughters/kaikki-all-20261021/split/irish.jsonl:2044 s.v. cuan. The rock and approaching boat identify a harbour, not a litter of dogs. No unsupported PIE equation is supplied."
+   "note": "IR-CS-081. raw/daughters/celt-ucc/units.jsonl#G303000:#1:562; raw/daughters/kaikki-all-20261021/split/irish.jsonl:2044 s.v. cuan. The rock and approaching boat identify a harbour, not a litter of dogs. No unsupported PIE equation is supplied. Wave 4: raw/daughters/oldirish-irische-texte-1880-1909/irischetextemitw01winduoft_djvu.txt:35276; https://www.teanglann.ie/en/fgb/cuan. The ships filling it identify a harbour. Windisch distinguishes this noun from the puppy homograph."
   },
   {
    "corpus": "sga-glosses",
    "lemma": "cúan@harbour",
    "lex_id": [],
    "erratum": "Reviewed Irish sense/stem: cúan@harbour",
-   "note": "IR-CS-081. raw/daughters/celt-ucc/units.jsonl#G303000:#1:562; raw/daughters/kaikki-all-20261021/split/irish.jsonl:2044 s.v. cuan. The rock and approaching boat identify a harbour, not a litter of dogs. No unsupported PIE equation is supplied."
+   "note": "IR-CS-081. raw/daughters/celt-ucc/units.jsonl#G303000:#1:562; raw/daughters/kaikki-all-20261021/split/irish.jsonl:2044 s.v. cuan. The rock and approaching boat identify a harbour, not a litter of dogs. No unsupported PIE equation is supplied. Wave 4: raw/daughters/oldirish-irische-texte-1880-1909/irischetextemitw01winduoft_djvu.txt:35276; https://www.teanglann.ie/en/fgb/cuan. The ships filling it identify a harbour. Windisch distinguishes this noun from the puppy homograph."
   },
   {
    "corpus": "celt",
@@ -2677,6 +2677,192 @@
    "lex_id": [],
    "erratum": "Wave-3 reviewed contextual lemma; no independently verified PIE assignment for this sense.",
    "note": "CELT-W3-032; The following source unit G301012:#1/#2/#41:86 ends with a temporal expression. Windisch and Ó Dónaill independently attest the adverbial use. Dictionary aithle is related to adlen; that relationship is not rejected, but this grammaticalized temporal use must not count as a lexical smearing verb. Sources: raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:6257; raw/daughters/oldirish-irische-texte-1880-1909/irischetextemitw01winduoft_djvu.txt:21595-21603; https://focail.ie/en/fgb/aithle"
+  },
+  {
+   "corpus": "celt",
+   "lemma": "dáig@because",
+   "lex_id": [],
+   "erratum": "CELT-W4-009: reviewed sense/root",
+   "note": "raw/daughters/oldirish-irische-texte-1880-1909/irischetextemitw01winduoft_djvu.txt:36274-36300. Following parental genitives identify the causal prepositional expression; Windisch records this construction."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "dáig@because",
+   "lex_id": [],
+   "erratum": "CELT-W4-009: reviewed sense/root",
+   "note": "raw/daughters/oldirish-irische-texte-1880-1909/irischetextemitw01winduoft_djvu.txt:36274-36300. Following parental genitives identify the causal prepositional expression; Windisch records this construction."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "fochen@welcome",
+   "lex_id": [],
+   "erratum": "CELT-W4-014: reviewed sense/root",
+   "note": "raw/daughters/oldirish-irische-texte-1880-1909/irischetextemitw01winduoft_djvu.txt:49055-49067. Windisch identifies the welcome expression and its prepositional complements. Making it non-content prevents the loader from labeling the capitalized interjection as a name."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "fochen@welcome",
+   "lex_id": [],
+   "erratum": "CELT-W4-014: reviewed sense/root",
+   "note": "raw/daughters/oldirish-irische-texte-1880-1909/irischetextemitw01winduoft_djvu.txt:49055-49067. Windisch identifies the welcome expression and its prepositional complements. Making it non-content prevents the loader from labeling the capitalized interjection as a name."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "gal",
+   "lex_id": [],
+   "erratum": "CELT-W4-015: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:468; raw/books/text/matasovic-pcelt/p0159.txt. The genitive of gal denotes valour. Its association as a verbal noun of fichid is not an etymological equation. EDPC *galā belongs with *gelH-; the available homograph for nakedness must not replace the fighting root."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "gal",
+   "lex_id": [],
+   "erratum": "CELT-W4-015: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:468; raw/books/text/matasovic-pcelt/p0159.txt. The genitive of gal denotes valour. Its association as a verbal noun of fichid is not an etymological equation. EDPC *galā belongs with *gelH-; the available homograph for nakedness must not replace the fighting root."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "cré@clay",
+   "lex_id": [],
+   "erratum": "CELT-W4-029: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:2043. The source describes bodies made of clay. The dictionary explicitly records crïad as the genitive of cré, excluding the buy verb."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "cré@clay",
+   "lex_id": [],
+   "erratum": "CELT-W4-029: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:2043. The source describes bodies made of clay. The dictionary explicitly records crïad as the genitive of cré, excluding the buy verb."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "tess@south",
+   "lex_id": [],
+   "erratum": "CELT-W4-033: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:903; https://www.teanglann.ie/en/fgb/theas. The place is located to the south; the directional adverb follows the place-name. Preserve other homographs."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "tess@south",
+   "lex_id": [],
+   "erratum": "CELT-W4-033: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:903; https://www.teanglann.ie/en/fgb/theas. The place is located to the south; the directional adverb follows the place-name. Preserve other homographs."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "airc@need",
+   "lex_id": [],
+   "erratum": "CELT-W4-050: reviewed sense/root",
+   "note": "raw/daughters/kaikki-all-20261021/split/irish.jsonl:12466-12467. The predicate expresses need for counsel; the dictionary distinguishes need from inflections of the pig noun."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "airc@need",
+   "lex_id": [],
+   "erratum": "CELT-W4-050: reviewed sense/root",
+   "note": "raw/daughters/kaikki-all-20261021/split/irish.jsonl:12466-12467. The predicate expresses need for counsel; the dictionary distinguishes need from inflections of the pig noun."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "óg@virgin",
+   "lex_id": [],
+   "erratum": "CELT-W4-053: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:532. Parallel saintly roles identify the virgin noun and its dative plural; distinguish the whole/virgin adjective from modern young."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "óg@virgin",
+   "lex_id": [],
+   "erratum": "CELT-W4-053: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:532. Parallel saintly roles identify the virgin noun and its dative plural; distinguish the whole/virgin adjective from modern young."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "orgain@slaying",
+   "lex_id": [],
+   "erratum": "CELT-W4-055: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:3263; raw/daughters/oldirish-irische-texte-1880-1909/irischetextemitw01winduoft_djvu.txt:72643-72704. The infinitival construction describes destruction of the sid and is repeated by orguin. Windisch records the verbal noun; no new PIE nominal formation is inferred."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "orgain@slaying",
+   "lex_id": [],
+   "erratum": "CELT-W4-055: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:3263; raw/daughters/oldirish-irische-texte-1880-1909/irischetextemitw01winduoft_djvu.txt:72643-72704. The infinitival construction describes destruction of the sid and is repeated by orguin. Windisch records the verbal noun; no new PIE nominal formation is inferred."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "déne@speed",
+   "lex_id": [],
+   "erratum": "CELT-W4-078: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:4494-4495. The adverbial prepositional phrase modifies enduring/taking; dictionary déni is an oblique form of the speed noun, distinct from the imperative of do/make."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "déne@speed",
+   "lex_id": [],
+   "erratum": "CELT-W4-078: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:4494-4495. The adverbial prepositional phrase modifies enduring/taking; dictionary déni is an oblique form of the speed noun, distinct from the imperative of do/make."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "og@egg",
+   "lex_id": [],
+   "erratum": "CELT-W4-084: reviewed sense/root",
+   "note": "raw/daughters/kaikki-all-20261021/split/irish.jsonl:4227. Repeated eggs and eating in the feast narrative identify the oblique egg noun; the dictionary derives ubh from Old Irish og, not young."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "og@egg",
+   "lex_id": [],
+   "erratum": "CELT-W4-084: reviewed sense/root",
+   "note": "raw/daughters/kaikki-all-20261021/split/irish.jsonl:4227. Repeated eggs and eating in the feast narrative identify the oblique egg noun; the dictionary derives ubh from Old Irish og, not young."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "gé@although",
+   "lex_id": [],
+   "erratum": "CELT-W4-085: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:963; https://www.teanglann.ie/en/fgb/g%C3%A9; https://www.teanglann.ie/en/fgb/c%C3%A9. The following finite clause is concessive; the dictionary distinguishes gé as a variant of the conjunction cé from the subjunctive of guidid."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "gé@although",
+   "lex_id": [],
+   "erratum": "CELT-W4-085: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:963; https://www.teanglann.ie/en/fgb/g%C3%A9; https://www.teanglann.ie/en/fgb/c%C3%A9. The following finite clause is concessive; the dictionary distinguishes gé as a variant of the conjunction cé from the subjunctive of guidid."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "fili",
+   "lex_id": [
+    "pie-root-wel-see"
+   ],
+   "erratum": "CELT-W4-090: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:793; raw/books/text/matasovic-pcelt/p0428.txt; raw/books/text/matasovic-pcelt/p0430.txt. The poetic grades require fili. EDPC *welet- and *wel-o- support the see root, excluding the enclose and turn homographs."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "fili",
+   "lex_id": [
+    "pie-root-wel-see"
+   ],
+   "erratum": "CELT-W4-090: reviewed sense/root",
+   "note": "raw/daughters/kaikki-oldirish/kaikki.org-dictionary-OldIrish.jsonl:793; raw/books/text/matasovic-pcelt/p0428.txt; raw/books/text/matasovic-pcelt/p0430.txt. The poetic grades require fili. EDPC *welet- and *wel-o- support the see root, excluding the enclose and turn homographs."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "tarla@happen",
+   "lex_id": [],
+   "erratum": "CELT-W4-095: reviewed sense/root",
+   "note": "raw/daughters/oldirish-irische-texte-1880-1909/irischetextemitw01winduoft_djvu.txt:84502-84531. The collectors come upon an oratory. Windisch explicitly records plural tárladar under tarla, excluding the address verb."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "tarla@happen",
+   "lex_id": [],
+   "erratum": "CELT-W4-095: reviewed sense/root",
+   "note": "raw/daughters/oldirish-irische-texte-1880-1909/irischetextemitw01winduoft_djvu.txt:84502-84531. The collectors come upon an oratory. Windisch explicitly records plural tárladar under tarla, excluding the address verb."
   }
  ],
  "form": [

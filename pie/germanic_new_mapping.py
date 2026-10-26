@@ -256,9 +256,11 @@ def menota_words(path: Path, doc: str) -> list[MenotaWord]:
             stanza = None
     from pie.material_units import repair_menota_words
     out = repair_menota_words(out)
-    # Wave-3 source-verified duplicate, not a general verse deduplication.
-    repairs = path.parents[4] / "data/research/formulas/menota-material-w3.json" if len(path.parents) > 4 else None
-    if repairs and repairs.exists():
+    # Source-verified material repairs, not general verse deduplication.
+    for wave in (3, 4):
+        repairs = path.parents[4] / f"data/research/formulas/menota-material-w{wave}.json" if len(path.parents) > 4 else None
+        if not repairs or not repairs.exists():
+            continue
         for r in json.loads(repairs.read_text("utf-8")):
             if r["doc"] != doc:
                 continue
@@ -282,12 +284,12 @@ def menota_form_key(s: str) -> str:
 def menota_reviewed_tokens(root: Path = ROOT) -> dict:
     """Source-coordinate sense repairs, applied after form-table inference.
 
-    Each row cites its source and dictionary in the wave-2 or wave-3 Norse ledger.
+    Each row cites its source and dictionary in the corresponding Norse ledger.
     Keeping these out of the voting table prevents a local sense decision
     from changing the analysis of the same surface form elsewhere.
     """
     rows = []
-    for wave in (2, 3):
+    for wave in (2, 3, 4):
         path = Path(root) / f"data/research/formulas/menota-reviewed-w{wave}.json"
         if path.exists():
             rows.extend(json.loads(path.read_text("utf-8")))
@@ -297,7 +299,7 @@ def menota_reviewed_tokens(root: Path = ROOT) -> dict:
 
 def reviewed_menota_token(w: MenotaWord, lemma: str, msa: str, rules: dict) -> tuple[str, str]:
     names = {"án", "hróðný", "gunnarr", "eyvindr", "kári", "freyr", "bjarni", "bróðir",
-             "haraldr", "mímir", "yngvi"}
+             "haraldr", "mímir", "yngvi", "einarr", "sveinn", "finnr", "alfr", "ósló"}
     if msa == "NP" and lemma.lower() in names:
         return lemma + " (name)", msa
     key = (w.doc, w.folio, w.line, w.form)
