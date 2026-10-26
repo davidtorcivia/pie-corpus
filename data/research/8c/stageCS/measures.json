@@ -1,0 +1,186 @@
+{
+ "slabs_read": 84,
+ "bundles_read": {
+  "real": 16068,
+  "decoy": 4016
+ },
+ "celtic_bundles_read": {
+  "real": 2264,
+  "decoy": 567
+ },
+ "claims_counted": 65,
+ "claims_by_kind_grade": {
+  "decoy/reject": 1,
+  "mixed/reject": 1,
+  "mixed/weak": 7,
+  "real/accepted": 1,
+  "real/reject": 26,
+  "real/weak": 29
+ },
+ "excluded_claims": [
+  {
+   "id": "review-w2/S0006",
+   "reader": "RS016F",
+   "why": "duplicate"
+  },
+  {
+   "id": "review-w9/S0008",
+   "reader": "RS076F",
+   "why": "duplicate"
+  }
+ ],
+ "ungraded": [],
+ "primary_ii_all": {
+  "real_bundles": 16068,
+  "decoy_bundles": 4016,
+  "real_weight": 1.0,
+  "decoy_weight": 0,
+  "r": 6.223549912870301e-05,
+  "d": 0.0,
+  "rate_ratio": 0.4998755290017426,
+  "rr_95ci": [
+   0.016769127425339918,
+   14.900927052243858
+  ],
+  "perm_p": 0.7974202579742026,
+  "success": false
+ },
+ "primary_i_celtic": {
+  "real_bundles": 2264,
+  "decoy_bundles": 567,
+  "real_weight": 0,
+  "decoy_weight": 0,
+  "r": 0.0,
+  "d": 0.0,
+  "rate_ratio": 0.2504416961130742,
+  "rr_95ci": [
+   0.004969037420520297,
+   12.622372875072054
+  ],
+  "perm_p": 1.0,
+  "success": false
+ },
+ "secondary_ii_accepted_weak": {
+  "real_bundles": 16068,
+  "decoy_bundles": 4016,
+  "real_weight": 34.733,
+  "decoy_weight": 2.267,
+  "r": 0.002161646336403618,
+  "d": 0.0005644090305444887,
+  "rate_ratio": 3.8299286854398225,
+  "rr_95ci": [
+   0.9991850190396028,
+   14.68031791514823
+  ],
+  "perm_p": 0.0012998700129987,
+  "success": true
+ },
+ "secondary_i_accepted_weak": {
+  "real_bundles": 2264,
+  "decoy_bundles": 567,
+  "real_weight": 4.667,
+  "decoy_weight": 0.333,
+  "r": 0.0020612485276796234,
+  "d": 0.0005878894767783657,
+  "rate_ratio": 3.5061837455830394,
+  "rr_95ci": [
+   0.10440852837824799,
+   117.74253165656003
+  ],
+  "perm_p": 0.29687031296870314,
+  "success": false
+ },
+ "acceptance_by_kind": {
+  "real": {
+   "weak": 29,
+   "reject": 26,
+   "accepted": 1
+  },
+  "mixed": {
+   "weak": 7,
+   "reject": 1
+  },
+  "decoy": {
+   "reject": 1
+  }
+ },
+ "confidence_calibration": {
+  "low": {
+   "weak": 25,
+   "reject": 26
+  },
+  "medium": {
+   "weak": 11,
+   "reject": 2
+  },
+  "high": {
+   "accepted": 1
+  }
+ },
+ "accepted_claims": [
+  {
+   "id": "review-w5/S0003",
+   "reader": "RS039",
+   "slab": "SS-7f8a",
+   "bundles": [
+    "BS-a4824"
+   ],
+   "kind": "real",
+   "confidence": "high",
+   "recalled": true,
+   "anchors": [
+    "hom:Il. 4.235",
+    "av:AVŚ, 9, 10.s23"
+   ]
+  }
+ ],
+ "exploratory_near_miss": {
+  "flagged_real": 1731,
+  "flagged_decoy": 125,
+  "share_real": 0.10772964899178492,
+  "share_decoy": 0.031125498007968128,
+  "rate_ratio": 3.4611381628080657,
+  "rr_95ci": [
+   2.886574093066006,
+   4.150067518039096
+  ],
+  "perm_p": 9.999000099990002e-05
+ },
+ "search_leads": {
+  "grades": {
+   "reject": 87,
+   "weak": 67,
+   "accepted": 4
+  },
+  "accepted": [
+   {
+    "review": "review-w3",
+    "lead": "L009",
+    "reader": "RS021",
+    "recalled": true,
+    "known": null
+   },
+   {
+    "review": "review-w7",
+    "lead": "L004",
+    "reader": "RS056F",
+    "recalled": true,
+    "known": "Yes: the knee and paternity/adoption complex (Onians 1951; Benveniste; ON knésetja; Hittite Ullikummi, where Kumarbi sets the newborn on his knee and names him, compared with Od. 19.401 by Güterbock and West)."
+   },
+   {
+    "review": "review-w4",
+    "lead": "L007",
+    "reader": "RS036F",
+    "recalled": true,
+    "known": "Yes, well known: Wessobrunn ~ Vsp 3 is a textbook comparison; RV 10.129 and Enuma Elish parallels also discussed."
+   },
+   {
+    "review": "review-w9",
+    "lead": "L004",
+    "reader": "RS074F",
+    "recalled": true,
+    "known": "Yes: PIE *h₁nómn̥ dʰeh₁- (Ved. nā́ma dhā-, Gk ὄνομα θέσθαι, Hitt. lāman dai-) is standard (Ivanov 1964ff., Mallory/Adams 1997: 438); Martirosyan (s.v. anun) cites Arm. anun dnem as its reflex."
+   }
+  ]
+ }
+}
