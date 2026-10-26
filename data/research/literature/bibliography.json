@@ -2651,41 +2651,117 @@
  },
  {
   "id": "gunkel-vocative",
-  "type": "article",
+  "type": "speech",
   "author": [
    {
     "family": "Gunkel",
     "given": "Dieter"
    }
   ],
-  "title": "[to verify: Gunkel's study of the Vedic vocative accent]",
-  "status": "to verify",
-  "note": "Metadata not verified (title, year, venue unknown here); named by David 2026-10-24. Distinguishes phrase-initial from phrase-internal vocatives; argues that Ved. pítar beside Gk πάτερ does not force an accented schwa or an accent-bearing laryngeal in PIE; proposes lexically unaccented vocatives. Lead (unverified, web search 2026-10-24): Lundquist's ECIEC 44 handout (2025, https://www.indogermanistik.uni-muenchen.de/eciec_44/eciec_44_handouts/8_lundquist_recessive_eciec.pdf) cites a 'Gunkel 2017' on the vocative; the identification is not checked."
+  "title": "On the Accentual Status of Vocatives in PIE",
+  "genre": "Conference paper (abstract)",
+  "event-title": "29th Annual UCLA Indo-European Conference",
+  "event-place": "Los Angeles",
+  "event-date": {
+   "date-parts": [
+    [
+     2017,
+     11,
+     3
+    ]
+   ]
+  },
+  "issued": {
+   "date-parts": [
+    [
+     2017,
+     11,
+     3
+    ]
+   ]
+  },
+  "URL": "https://ucla.box.com/v/weciec2017-gunkel",
+  "note": "Verified 2026-10-25 via the conference programme (https://pies.ucla.edu/conference/weciec-archives/weciec-29: Dieter Gunkel, University of Richmond, 'The accentual status of vocatives in Indo-European', 3 Nov. 2017, Panel IV, linked to the PDF at the URL above) and the linked one-page PDF itself (file gunkel_d_2017.pdf, read in full; title as printed on it: 'On the Accentual Status of Vocatives in PIE'). Lundquist's ECIEC 44 handout (2025) cites it as 'Gunkel, Dieter. (2017, November 3). On the accentual status of vocatives in Proto-Indo-European [Handout]'. Unpublished: not in the conference proceedings (Proceedings of the 29th Annual UCLA IE Conference, Hamburg: Buske 2019, contents checked on meiner-elibrary.de) and not found in K10plus or CrossRef; no DOI/ISBN. Content: Vedic vocatives are lexically unaccented; the phrase-initial accent (pítar) is a phrasal boundary tone, not a lexical accent; Greek πάτερ and Slavic barytone vocatives derivable from the same grammar.",
+  "accessed": {
+   "date-parts": [
+    [
+     2026,
+     10,
+     25
+    ]
+   ]
+  }
  },
  {
   "id": "keydana-vocative",
-  "type": "article",
+  "type": "article-journal",
   "author": [
    {
     "family": "Keydana",
     "given": "Götz"
    }
   ],
-  "title": "Accent or intonation? The vocative in Vedic",
-  "status": "to verify",
-  "note": "Title as given by David 2026-10-24; year, venue and pages not verified. Treats the initial high tone of Vedic vocatives and their low tone in non-initial position as intonation; the word-level accent of the vocative is the same as the nominative's. Web search 2026-10-24 found no record with this title; Keydana and Aufderheide's Early Vedic phonology slides (https://spw.uni-goettingen.de/projects/aig/doc/VED-PHO-003.pdf) state the positional pattern (vocatives accented on the first syllable when sentence-initial, otherwise unaccented); not the cited work."
+  "title": "Accent or intonation? The vocative in Vedic. With an excursus on Greek",
+  "container-title": "Historische Sprachforschung / Historical Linguistics",
+  "volume": "134",
+  "issue": "1",
+  "page": "196-213",
+  "publisher": "Vandenhoeck & Ruprecht",
+  "issued": {
+   "date-parts": [
+    [
+     2021
+    ]
+   ]
+  },
+  "ISSN": "0935-3518",
+  "DOI": "10.13109/hisp.2021.134.1.196",
+  "URL": "https://doi.org/10.13109/hisp.2021.134.1.196",
+  "note": "Verified via CrossRef 2026-10-25 (DOI 10.13109/hisp.2021.134.1.196: author Götz Keydana, Göttingen; title incl. subtitle 'With an excursus on Greek'; container 'Historical Linguistics' vol. 134, issue 1, pp. 196-213, issued 2021-10-12; ISSN print 0935-3518, online 2196-8071; CrossRef now lists the publisher as Walter de Gruyter GmbH, the DOI resolves to vr-elibrary.de, the Vandenhoeck & Ruprecht platform). Matches Lundquist's ECIEC 44 handout reference (HS 134, 196-213). Not found as an article record in K10plus. Article text not read (paywalled); the finding's paraphrase is unchecked.",
+  "accessed": {
+   "date-parts": [
+    [
+     2026,
+     10,
+     25
+    ]
+   ]
+  }
  },
  {
   "id": "hackstein-skyfather",
-  "type": "article",
+  "type": "book",
   "author": [
    {
     "family": "Hackstein",
     "given": "Olav"
    }
   ],
-  "title": "[to verify: the work in which Hackstein prints the Sky-Father vocative]",
-  "status": "to verify",
-  "note": "Metadata not verified; named by David 2026-10-24. Writes the Sky-Father vocative with the accent on the syllabic laryngeal (ph₂́ter), an option the project's notation does not support yet."
+  "title": "Apposition and Nominal Classification in Indo-European and Beyond",
+  "collection-title": "Sitzungsberichte der Österreichischen Akademie der Wissenschaften, Philosophisch-Historische Klasse 798; Veröffentlichungen zur Iranistik",
+  "collection-number": "56",
+  "publisher": "Verlag der Österreichischen Akademie der Wissenschaften",
+  "publisher-place": "Wien",
+  "issued": {
+   "date-parts": [
+    [
+     2010
+    ]
+   ]
+  },
+  "number-of-pages": "78",
+  "ISBN": "9783700168034",
+  "DOI": "10.1553/0x0022e0c5",
+  "URL": "https://sru.k10plus.de/opac-de-627?version=1.1&operation=searchRetrieve&recordSchema=marcxml&maximumRecords=1&query=pica.ppn%3D1603978674",
+  "note": "Verified via K10plus 2026-10-25: PPN 1603978674 (Wien: Verl. der Österr. Akad. der Wiss. 2010; 78 S.; ISBN 978-3-7001-6803-4 (pbk.); series Sitzungsberichte ÖAW phil.-hist. Kl. Bd. 798 and Veröffentlichungen zur Iranistik Nr. 56). DOI 10.1553/0x0022e0c5 from CrossRef (resolves to hw.oeaw.ac.at/6803-4); the CrossRef title reads 'Indo-Iranian and Beyond', an error against the title page and K10plus ('Indo-European and Beyond'). Title page and p. 13 checked in the author's PDF on the LMU Munich Indogermanistik publications page (https://www.indogermanistik.uni-muenchen.de/downloads/publikationen/publ_hackstein/apposition_classification.pdf). Identification: p. 13 prints the PIE vocative *d(í)i̯eu̯ ph₂́ter 'oh Sky father' (acute on the laryngeal subscript) beside nom. *d(i)i̯ḗu̯s ph₂tḗr and dat. *diu̯éi̯ ph₂tréi̯; whether David's reference was to this work is inferred from that match.",
+  "accessed": {
+   "date-parts": [
+    [
+     2026,
+     10,
+     25
+    ]
+   ]
+  }
  }
 ]
