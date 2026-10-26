@@ -319,48 +319,15 @@ def load_celtic(root: Path, lex: list, max_date=None, log=print) -> tuple[dict, 
 # ---------------------------------------------------------------- Germanic (Menota, IcePaHC, ReA)
 
 def menota_tokens(root: Path) -> list:
-    """gm.load_menota's tokens with the surface form (normalized, else diplomatic) kept; checked against
-    gm.load_menota (same lemmas in the same order)."""
+    """gm.load_menota's tokens (the one Menota loader: form table, reviewed repairs, numeral guard), with
+    Stage C units: stanza for verse documents, else sentence; book = document."""
     from pie import germanic_new_mapping as gm
-    root = Path(root)
-    docs = gm.menota_documents(root)
-    words = {d: gm.menota_words(root / gm.MENOTA / "xml" / f"{d}.xml", d) for d, _ in docs}
-    votes: dict = collections.defaultdict(collections.Counter)
-    for ws in words.values():
-        for w in ws:
-            if w.lemma and w.form:
-                votes[gm.menota_form_key(w.form)][(w.lemma, w.msa)] += 1
-    table = {}
-    for k, c in votes.items():
-        (lem, msa), n = c.most_common(1)[0]
-        if n >= 3 and n >= 2 / 3 * sum(c.values()) and len(k) >= 2:
-            table[k] = (lem, msa)
     lic = SB.CORPORA["menota"][2]
-    reviewed = gm.menota_reviewed_tokens(root)     # the same reviewed sense repairs as gm.load_menota
-    toks = []
-    for d, _ in docs:
-        lemmatized = any(w.lemma for w in words[d])
-        for w in words[d]:
-            lem, msa, src = w.lemma, w.msa, "corpus"
-            if not lemmatized:
-                k = gm.menota_form_key(w.form)
-                if not k:
-                    continue
-                lem, msa = table.get(k, ("?" + k, ""))
-                src = "form-table" if not lem.startswith("?") else "unknown"
-            elif not lem:
-                continue
-            corrected, tag = gm.reviewed_menota_token(w, lem, msa, reviewed)
-            if (corrected, tag) != (lem, msa):
-                lem, msa, src = corrected, tag, "reviewed"
-            if msa == "FW" or lem in ("Latin.expression", "unass.", "?"):
-                continue
-            content = msa in gm.MENOTA_CONTENT or src == "unknown"
-            unit = f"{d}.st{w.stanza}" if w.stanza else f"{d}.{w.sent}"
-            toks.append(_tok("menota", lem, w.form, f"{d} {w.folio}:{w.line}".strip(), unit, d, content, lic))
-    ref = gm.load_menota(root)
-    assert [t.lemma for t in ref] == [t.lemma for t in toks], "menota tokens differ from gm.load_menota"
-    return toks
+    def unit(t):
+        d, s = t.units["doc"], t.units.get("stanza")
+        return f"{d}.st{s[len(d) + 1:]}" if s else t.units["sentence"]
+    return [_tok("menota", t.lemma, t.surface, t.locus, unit(t), t.units["doc"], t.content, lic)
+            for t in gm.load_menota(Path(root))]
 
 
 def icepahc_tokens(root: Path) -> list:
