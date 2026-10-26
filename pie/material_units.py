@@ -118,7 +118,7 @@ def byliny_non_epic(lines: list[str]) -> dict[int, str]:
     Blank lines bound contextual evidence; windows prevent a note contaminating
     an entire song. Explicit notes headings are handled separately on wiki pages.
     """
-    out = {}
+    out = byliny_page_material(lines)
     start = 0
     while start < len(lines):
         if not lines[start].strip():
@@ -195,6 +195,10 @@ def repair_celtic_rows(rows: list[dict]) -> list[dict]:
     for original in rows:
         d = dict(original)
         uid, text = d["id"], d["text"]
+        # Wave-5 Celtic review: manuscript-variant footnote, not continuous
+        # daughter text (error-verdicts-w5-celtic.jsonl, report 88).
+        if uid == "oldirish-tbc-windisch-1905:diealtirischehel00wind:L15483-L15484":
+            continue
         m = re.search(r":([^:]+):L(\d+)-L(\d+)", uid)
         if m and excluded_source("celtic", m[1] + "_djvu.txt", int(m[2]), int(m[3])):
             continue
@@ -248,3 +252,91 @@ def grein_apparatus(text: str) -> bool:
     # Numbered variant citations with manuscript/editor sigla, before OCR
     # normalization and lemmatization can make the quoted OE look like verse.
     return bool(re.search(r"\b\d+\)\s", text) and re.search(r"\b(?:MS|M3|Th|Grimm)\.", text))
+
+
+def menota_numerals(text: str) -> str:
+    """Expose normalized TEI numerals to the word loader, not their inner dots.
+
+    Menota MLL 24v:22, 10v:12/27, 43v:26 provide explicit <num> values.
+    No numeral value is inferred from surrounding legal prose.
+    """
+    def convert(match):
+        if match[1] is None:
+            return match[0]  # preserve existing word elements, including inner nums
+        body = match[2]
+        if '<w ' in body or '<w>' in body:
+            return match[0]  # already tokenized; do not nest word elements
+        value = re.search(r'\bvalue="([0-9]+)"', match[1])
+        if not value:
+            return match[0]
+        n = value[1]
+        return f'<w lemma="{n}" me:msa="xMC"><me:norm>{n}</me:norm></w>'
+    return re.sub(r'<w\b[^>]*>.*?</w>|<num\b([^>]*)>(.*?)</num>', convert, text, flags=re.S)
+
+
+def byliny_page_material(lines: list[str]) -> dict[int, str]:
+    """Bounded page/footnote evidence, independent of source coordinates.
+
+    A page-like window needs several full-width prose lines, word wrapping,
+    and explicit critical vocabulary. Quotes and short verse remain protected.
+    Numbering alone is never sufficient. OCR page numbers stop propagation.
+    """
+    normal = [_byliny_normal(s) for s in lines]
+    out = {}
+    critical = re.compile(r'\b(?:примечани|комментари|редактор|издател|рукопис|'
+                          r'стихотворени|сравните|сравнивая|предислов|исследован)')
+    boundary = re.compile(r'^\s*(?:\d{1,4}|[ivxlcхх]+)\s*[.]?\s*$', re.I)
+    # Prefix counts keep the page pass linear in source length. This matters
+    # for the many repeated full-edition loader checks in the suite.
+    from bisect import bisect_left, bisect_right
+    from itertools import accumulate
+    word_counts = [len(_RU_WORD.findall(line)) for line in lines]
+    counts = [
+        [bool(line.strip()) for line in lines],
+        [word_counts[j] >= 9 and len(line.strip()) >= 60 for j,line in enumerate(normal)],
+        [bool(re.search(r'[а-яё]-\s*$', line)) for line in normal],
+        [bool(critical.search(line)) for line in normal],
+    ]
+    prefix = [[0, *accumulate(values)] for values in counts]
+    boundaries = [j for j,line in enumerate(lines) if boundary.fullmatch(line)]
+    quoted = False
+    protected = set()
+    for i, line in enumerate(lines):
+        if quoted or re.search('[«»„“]', line):
+            protected.add(i)
+        for char in line:
+            if char == '«':
+                quoted = True
+            elif char == '»':
+                quoted = False
+        # Quotation state does not cross blank paragraph boundaries.
+        if not line.strip():
+            quoted = False
+    for i, line in enumerate(lines):
+        if i in protected or not line.strip():
+            continue
+        lo, hi = max(0, i-24), min(len(lines), i+25)
+        before = bisect_left(boundaries, i)
+        after = bisect_right(boundaries, i)
+        if before:
+            lo = max(lo, boundaries[before-1]+1)
+        if after < len(boundaries):
+            hi = min(hi, boundaries[after])
+        size, wide, wrapped, anchors = [p[hi]-p[lo] for p in prefix]
+        if (size >= 8 and wide >= 6 and wide / size >= .55 and
+                wrapped >= 2 and anchors >= 2 and word_counts[i] >= 7):
+            out[i] = 'critical-prose-page'
+        # A compact block of independently signed editorial footnotes.
+        if _RU_SIGNED_NOTE.search(line):
+            nearby = lines[max(lo,i-5):min(hi,i+6)]
+            if sum(bool(_RU_SIGNED_NOTE.search(s)) for s in nearby) >= 2 and any(
+                _RU_NOTE_START.search(s) or _RU_EDITOR.search(_byliny_normal(s)) for s in nearby
+            ):
+                out[i] = 'footnote-block'
+        if _RU_NOTES.fullmatch(normal[i].strip()):
+            # Only the first bounded prose paragraph after an explicit heading;
+            # embedded primary verse remains protected by shape and quotes.
+            for j in range(i+1, min(hi,i+25)):
+                if j not in protected and len(_RU_WORD.findall(lines[j])) >= 9 and critical.search(normal[j]):
+                    out[j] = 'notes-section-prose'
+    return out

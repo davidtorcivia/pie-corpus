@@ -223,6 +223,8 @@ def menota_words(path: Path, doc: str) -> list[MenotaWord]:
     # Comments can contain apparent XML tags; remove them before tokenization,
     # not with the generic tag stripper (which stops at an internal '>').
     t = re.sub(r"<!--.*?-->", "", t, flags=re.S)
+    from pie.material_units import menota_numerals
+    t = menota_numerals(t)
     i = t.find("<text")
     t = t[i:] if i >= 0 else t
     out, folio, line, stanza, sent = [], "", "", None, 0
@@ -257,7 +259,7 @@ def menota_words(path: Path, doc: str) -> list[MenotaWord]:
     from pie.material_units import repair_menota_words
     out = repair_menota_words(out)
     # Source-verified material repairs, not general verse deduplication.
-    for wave in (3, 4):
+    for wave in (3, 4, 5):
         repairs = path.parents[4] / f"data/research/formulas/menota-material-w{wave}.json" if len(path.parents) > 4 else None
         if not repairs or not repairs.exists():
             continue
@@ -289,7 +291,7 @@ def menota_reviewed_tokens(root: Path = ROOT) -> dict:
     from changing the analysis of the same surface form elsewhere.
     """
     rows = []
-    for wave in (2, 3, 4):
+    for wave in (2, 3, 4, 5):
         path = Path(root) / f"data/research/formulas/menota-reviewed-w{wave}.json"
         if path.exists():
             rows.extend(json.loads(path.read_text("utf-8")))
@@ -299,7 +301,8 @@ def menota_reviewed_tokens(root: Path = ROOT) -> dict:
 
 def reviewed_menota_token(w: MenotaWord, lemma: str, msa: str, rules: dict) -> tuple[str, str]:
     names = {"án", "hróðný", "gunnarr", "eyvindr", "kári", "freyr", "bjarni", "bróðir",
-             "haraldr", "mímir", "yngvi", "einarr", "sveinn", "finnr", "alfr", "ósló"}
+             "haraldr", "mímir", "yngvi", "einarr", "sveinn", "finnr", "alfr", "ósló",
+             "áki", "bjǫrn", "hringr", "ormr"}
     if msa == "NP" and lemma.lower() in names:
         return lemma + " (name)", msa
     key = (w.doc, w.folio, w.line, w.form)
@@ -329,7 +332,7 @@ def load_menota(root: Path = ROOT, languages=WEST_NORSE, min_share: float = 2 / 
     votes: dict[str, collections.Counter] = collections.defaultdict(collections.Counter)
     for ws in words.values():
         for w in ws:
-            if w.lemma and w.form:
+            if w.lemma and w.form and w.msa != "MC":
                 votes[menota_form_key(w.form)][(w.lemma, w.msa)] += 1
     table = {}
     for k, c in votes.items():
@@ -338,10 +341,12 @@ def load_menota(root: Path = ROOT, languages=WEST_NORSE, min_share: float = 2 / 
             table[k] = (lem, msa)
     toks: list[Token] = []
     for d, meta in docs:
-        lemmatized = any(w.lemma for w in words[d])
+        # Numerals exposed by material_units are context only; they must not
+        # make an otherwise unannotated document appear lemmatized.
+        lemmatized = any(w.lemma for w in words[d] if w.msa != "MC")
         for w in words[d]:
             lem, msa, src = w.lemma, w.msa, "corpus"
-            if not lemmatized:
+            if not lemmatized and w.msa != "MC":
                 k = menota_form_key(w.form)
                 if not k:
                     continue

@@ -1924,6 +1924,7 @@ class AvestanLemmatizer:
 
     def __init__(self, lm: LangMapping, entries_words: dict[str, str]):
         self.lm = lm
+        self.form_overrides = load_overrides()["form"].get("ae", {})
         ends = {key_ae(e, True) for e in AE_ENDINGS}
         self.ends = sorted(ends, key=len, reverse=True)
         self.stems: dict[str, set] = collections.defaultdict(set)
@@ -1937,6 +1938,9 @@ class AvestanLemmatizer:
                     self.stems[lk[: -len(e)]].add(k)
 
     def __call__(self, surface: str) -> str:
+        reviewed = self.form_overrides.get(key_ae(surface))
+        if reviewed:
+            return reviewed
         t = key_ae(surface, True)
         if len(t) < 4:
             return "?" + t                   # short forms are mostly particles and pronouns

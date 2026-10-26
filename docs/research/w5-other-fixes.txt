@@ -1,0 +1,127 @@
+Wave 5 other/material fixes — 2026-10-26
+
+Scope and evidence
+39 wave-5 reports plus 3 search reports have independent verdicts in
+error-verdicts-w5-other.jsonl. Observations attached to a report are included.
+No claims, Stage C-S slabs, or blinding key were opened. No git command ran.
+No Tier 2/Tier 3 corpus, export, STATUS.md, or shared search-index regeneration.
+Raw files were read as text only. Book evidence is cited by forms/pages only.
+
+Source fixes
+- Contextual Greek, Sanskrit, Armenian, Vuk, byliny and Latvian lemma/sense rules;
+  Greek and Old Russian proper-name exclusions; reviewed Hittite mapping veto.
+- Armenian chapter numeral stays in context but is not a content word.
+- Current Homer ἐλελίζω differs from the report: live roots are jump/similar/illness,
+  not bind. Keep the existing jump/whirl candidate, remove unrelated alternatives;
+  the proposed certain *wel- replacement is NOT accepted.
+- Pskov was only partly fixed: name tagging existed, but Cyrillic normalization
+  stripped '(name)' and remapped it. An explicit named-lemma veto now closes this.
+- Menota <num> values enter as non-content MC tokens, with inner punctuation
+  unable to create sentence boundaries. MLL comparison: 45,243 preexisting words
+  unchanged in form, lemma, POS, folio, line and stanza; 438 numerals restored.
+  Reported values are 3, 8, 4, 15; no numbers inferred.
+- Celtic apparatus only through material ranges: RC8 L663–671, RC13 L4237.
+
+Coverage scans
+Umbrian ueiro/uiro were already mapped. pequo lacked both dictionary form and
+mapping rows. Buck1904 glossary/§171 supplies the cited noun. Avestan pasu/vīra
+already had both etyma; inflected pasə̄uš, vīrə̄ṇg, pasubiia, vīraēibiia did not
+match the generic stem matcher. Reviewed form overrides now run first.
+Fresh temporary loader index: 8 Iguvine pairs (including VIa30 and32), 11 Avestan
+pairs (including Y31.15c, Y45.9d and VS6.32c/38a/41a) at content-word window4.
+Some direct-stem Avestan pairs already worked; the initial gap was not universal.
+The shared index is stale and should be rebuilt by the lead after merge.
+
+Reproduce (all Python commands use UV_CACHE_DIR=/private/tmp/pie-uv-cache):
+  uv run python -I scripts/verify_w5_other.py
+  uv run python -I scripts/collocates_8c.py --db /private/tmp/fix5-pairs.sqlite \
+    --target pie-lex-pekju,pie-lex-pekju-2 --pair pie-lex-wiHros --window 4 --show 20
+The verifier uses production tokenization/windowing and current resolved tables.
+It writes only temporary index/resolved-table snapshots. It asserts every changed
+resolved row is declared by this worker's override file. The committed row-level
+comparison is error-verdicts-w5-other-table-diff.json. No generated table was
+hand-edited; on-read resolution makes the source overrides immediately effective.
+
+Byliny page-level pass
+Bounded windows use independent critical vocabulary, full-width prose density,
+wrapped words and page-number boundaries. Signed footnote blocks and explicit
+notes headings supplement the original paragraph detector. Quoted verse and
+short lines remain protected; bare numbering and primary narrative are insufficient.
+Counters are precomputed for linear runtime; this does not relax the rules.
+
+Evaluation: original complete w2 spans remain held out; 14 positive removals and
+50 clear-verse negatives. BEFORE and AFTER: TP3, FN11, TN50, FP0; precision100%,
+recall21.4%, unchanged. This small enriched set is not population precision.
+Development (all other reviewed ranges, now including the two new source backstops):
+before TP6/FN19/TN23/FP0; after TP8/FN17/TN23/FP0. Not book-held-out validation.
+No thresholds were adjusted after observing held-out results. Recall remains low.
+
+Detector exclusions, old line-shape candidate population:
+Edition/source                 Before   After   Additional
+Hilferding wiki                    1       1       0
+Kirsha Danilov wiki                95      95       0
+Rybnikov wiki                     51      51       0
+Hilferding OCR                   170     170       0
+Kireevsky OCR                   1830    1959     129
+Rybnikov OCR                     639     665      26
+Total                                            155
+Two additional detector removals overlap previous reviewed exclusions; 153 are
+new relative to the reviewed-range backstop. Two further reviewed single-line
+backstops address wave5 L7571/L34618; L18343 is caught by the new general rule.
+Combined additional live-loader exclusions versus pre-wave5 state: 155.
+Seed82055 spot check: 25 new-rule removals read in context, all apparatus or
+critical prose (including an editor's proposed reconstructed line). Coordinates
+only in source audit; no raw book running text stored. Persistent misses remain
+unmarked commentary, indexes and badly corrupted editorial headings.
+
+  uv run python -I scripts/audit_byliny_w5.py
+Prints before/after counts, held-out scores and coordinates only. Saved results:
+data/research/8c/stageCS/error-verdicts-w5-other-metrics.json.
+
+Validation
+Targeted source/lemma/material tests passed; final full-suite result appended
+below after parallel fix workers stop editing. No project status file edited.
+
+Seed82055 reviewed new-rule removals (file, one-based OCR line, reason):
+pesnisobrannyepnrybnikovymch1narod12_djvu.txt 8197 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimvyp1pesn13_djvu.txt 2584 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimch3vyp36_djvu.txt 22062 critical-prose-page; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimch2pesni36_djvu.txt 2866 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimch2pesni36_djvu.txt 4736 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimch2pesni36_djvu.txt 4612 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimvyp1pesn13_djvu.txt 10189 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimvyp1pesn13_djvu.txt 13991 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimch2pesni36_djvu.txt 4952 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepnrybnikovymch1narod12_djvu.txt 7918 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimch3vyp51_djvu.txt 22718 critical-prose-page; confirmed non-epic apparatus/commentary
+11016812bsb_djvu.txt 5105 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimch2pesni36_djvu.txt 242 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepnrybnikovymch2narod72_djvu.txt 5040 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimvyp1pesn13_djvu.txt 13811 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimvyp1pesn13_djvu.txt 16318 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimvyp1pesn13_djvu.txt 8568 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimch2pesni36_djvu.txt 291 footnote-block; confirmed non-epic apparatus/commentary
+11016812bsb_djvu.txt 6394 footnote-block; confirmed non-epic apparatus/commentary
+11016812bsb_djvu.txt 6392 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimch2pesni36_djvu.txt 1424 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimvyp1pesn13_djvu.txt 5532 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimvyp1pesn13_djvu.txt 5319 footnote-block; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimch3vyp36_djvu.txt 3419 critical-prose-page; confirmed non-epic apparatus/commentary
+pesnisobrannyepvkireevskimch2pesni36_djvu.txt 2470 footnote-block; confirmed non-epic apparatus/commentary
+
+First full run: 2862 passed, one Vuk resolver assertion failed because it
+expected an empty whole mapping and did not allow unrelated added override rows.
+The assertion now checks that the rejected podići row is absent; 44 focused
+resolver/wave5 tests pass. Fresh final full-suite result follows.
+
+FINAL full suite (fresh process, after process check found no parallel editing):
+  UV_CACHE_DIR=/private/tmp/pie-uv-cache uv run pytest -q
+  2863 passed in 474.91s (0:07:54); exit status 0.
+The initial failure was a stale whole-map test expectation, not a concurrent-file
+race. The corrected test preserves the intended rejected-lemma assertion.
+Final detector audit exactly matches the saved before/after metrics after the
+linear-time implementation optimization. Final temporary scan: ae11, xum8.
+
+One combined diagnostic was rejected by automatic approval review because it
+would print raw source text. It was replaced by separate process-only and
+attributes-only checks; no task work remains blocked by that rejection.

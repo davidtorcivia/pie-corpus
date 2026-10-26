@@ -1,0 +1,97 @@
+{
+ "note": "Source-verified wave-5 Norse repairs; ledger records qualified and unclear reports.",
+ "lemma": [
+  {
+   "corpus": "menota",
+   "lemma": "kórr",
+   "lex_id": [],
+   "note": "Burial in Hallvarðskirkja beside the choir establishes kórr, chancel (Kaikki s.v. kórr). The reported folio 383 is inaccurate: the words are on 385, with two duplicated kor tokens in the XML; both have the same sense.",
+   "erratum": "Wave-5 Norse independent source/dictionary verification; error-verdicts-w5-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "austr@bailing",
+   "lex_id": [],
+   "note": "Coordinated duties of rowing, bailing and covering a ship establish the action noun. Zoega s.v. austr distinguishes masculine bailing from neuter east: https://norse.ulver.com/dct/zoega/a.html.",
+   "erratum": "Wave-5 Norse independent source/dictionary verification; error-verdicts-w5-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "sýni",
+   "lex_id": [],
+   "note": "Source paternity attribution uses at sýni; the XML noun lemma is sýni, not sonr. Zoega s.v. sýni, sight/proof, https://norse.ulver.com/dct/zoega/s.html. Remove the false son mapping; no replacement asserted.",
+   "erratum": "Wave-5 Norse independent source/dictionary verification; error-verdicts-w5-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hlýða",
+   "lex_id": [
+    "pie-root-kjlew-hear"
+   ],
+   "note": "The source commands attention to the law book. Kaikki s.v. hlýða derives listening/obedience from *hliuþijaną < *ḱlew-. Lexicon pie-root-kjlew-hear is the hearing root; the existing pie-lex-kjlew points instead to incline. Use the explicit hearing root.",
+   "erratum": "Wave-5 Norse independent source/dictionary verification; error-verdicts-w5-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "risi",
+   "lex_id": [
+    "pie-root-wers-rise"
+   ],
+   "note": "Source risa modifies the severed giant tongue. Kaikki s.v. risi and Proto-Germanic risiz give uncertain etymology, explicitly including *wers- hill/top. That sense is present in pie-root-wers-rise; retain it as the existing proposed alternative, remove unrelated pie-root-wers-wipe. Reject the report’s blanket claim that no rise/height connection has been proposed. https://en.wiktionary.org/wiki/Reconstruction:Proto-Germanic/risiz.",
+   "erratum": "Wave-5 Norse independent source/dictionary verification; error-verdicts-w5-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hnefi",
+   "lex_id": [],
+   "note": "The source describes raising a fist or striking with it, respectively. Zoega s.v. hnefi, fist, https://norroen.info/dct/zoega/h.html. The h-less forms are not nefi nephew. Existing hnefi table also wrongly falls back to nefi, so block that false mapping explicitly.",
+   "erratum": "Wave-5 Norse independent source/dictionary verification; error-verdicts-w5-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "iáta",
+   "lex_id": [],
+   "note": "Both source clauses concern assent to a marriage, not eating. Kaikki s.v. játa, agree/accept < *jaatjaną. Correct the mapping of orthographic iáta; no new PIE equation asserted.",
+   "erratum": "Wave-5 Norse independent source/dictionary verification; error-verdicts-w5-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hljóð",
+   "lex_id": [
+    "pie-root-kjlew-hear"
+   ],
+   "note": "Source command to listen and stand still is followed by silence before the king speaks. Kaikki s.v. hljóð lists silence/hearing < *hleuþą < *ḱlew-. Repair lióð to hljóð and use the hearing root rather than the existing incline-linked pseudo-lexeme.",
+   "erratum": "Wave-5 Norse independent source/dictionary verification; error-verdicts-w5-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "ulfr",
+   "lex_id": [
+    "pie-lex-wlkwos"
+   ],
+   "note": "Source ulfs modifies the wolf-food noun. Kaikki s.v. ulfr explicitly derives it from *wulfaz < *wĺ̥kʷos. Earlier override covers úlfr only; unaccented ulfr remains unmapped and needs its own row.",
+   "erratum": "Wave-5 Norse independent source/dictionary verification; error-verdicts-w5-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hræðiligr",
+   "lex_id": [],
+   "note": "Source comparative adjective retains hræði- and is coordinated with mæiri in the dragon description. Zoega s.v. hræði-ligr, dreadful, https://norroen.info/dct/zoega/h.html; correct the dropped initial h in ræðiligr.",
+   "erratum": "Wave-5 Norse independent source/dictionary verification; error-verdicts-w5-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "síða@side",
+   "lex_id": [],
+   "note": "The source places the king’s hands on Egill’s painful side. Actual location is Lbs-fragm-82 1v:28, not reported 1r:22. Kaikki s.v. síða noun < *sīdǭ and Proto-Germanic sīdǭ < *sīdaz distinguish side from the magic verb. Isolate noun sense; no new deep PIE equation asserted.",
+   "erratum": "Wave-5 Norse independent source/dictionary verification; error-verdicts-w5-norse.jsonl."
+  },
+  {
+   "corpus": "menota",
+   "lemma": "hluta",
+   "lex_id": [],
+   "note": "Source orders drawing lots for seats, followed by lots in a cloth. Zoega s.v. hluta, cast lots, https://norroen.info/dct/zoega/h.html. The *ludéti mapping comes from lúta, a distinct verb; remove it without asserting a replacement.",
+   "erratum": "Wave-5 Norse independent source/dictionary verification; error-verdicts-w5-norse.jsonl."
+  }
+ ]
+}

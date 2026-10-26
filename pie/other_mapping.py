@@ -55,6 +55,8 @@ def contextual_lemma(corpus: str, lemma: str, surface: str, locus: str) -> str:
     """
     from .w4_other_mapping import reviewed_lemma
     lemma = reviewed_lemma(corpus, lemma, surface, locus)
+    from .w5_other_mapping import reviewed_lemma as w5_reviewed_lemma
+    lemma = w5_reviewed_lemma(corpus, lemma, surface, locus)
     # Wave 2: source and dictionary checks are recorded in
     # error-verdicts-w2-other.jsonl. Keep homographs outside these contexts.
     if corpus in {"grc", "grp", "grc-late"}:

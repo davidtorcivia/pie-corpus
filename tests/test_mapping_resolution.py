@@ -423,4 +423,5 @@ def test_shipped_podici_key_removes_fallback_but_preserves_go_verbs():
     # Also govern the formerly selected path, which omitted the rejected proto page.
     old = {"lemma": "podići", "lang": "sh", "lex_id": ["pie-lex-h1eyti"],
            "path": ["sh:podići", "base:ići", "sh:ići", "ine-pro:*h₁éyti"]}
-    assert mp.resolve_rows("vuk", [old], ov) == {}
+    # resolve_rows also adds independent reviewed lemmas (e.g. mrkli).
+    assert "podići" not in mp.resolve_rows("vuk", [old], ov)

@@ -272,6 +272,8 @@ class Token:
 
     def __post_init__(self):
         self.lemma = contextual_lemma(self.corpus, self.lemma, self.surface, self.locus)
+        if self.corpus == "xcl" and self.lemma == "34@numeral":
+            self.content, self.pos = False, "other"
 
 
 _RV_ID = re.compile(r'xml:id="b(\d+)_h(\d+)_(\d+)_zur_([a-z])_\d+"')

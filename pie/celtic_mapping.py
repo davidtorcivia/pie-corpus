@@ -1656,6 +1656,40 @@ for _form, _rules in {'daig': [(('fo',), ('tathar',), 'dáig@because', False)],
     IR_REVIEWED_CONTEXT.setdefault(_form, []).extend(_rules)
 
 
+# Wave-5 independent source/dictionary review: error-verdicts-w5-celtic.jsonl.
+for _form, _rules in {'aigid': [(('a',), ('forro',), 'agad@face', False)],
+ 'airg': [(('ra',), ('dún sobairchi',), 'orcaid', False)],
+ 'alta': [(('dáig',), ('in mac',), 'ailid', False)],
+ 'bee': [(('ba',), ('id',), 'bec', False)],
+ 'bhas': [(('mar',), ('maith',), 'bí', False)],
+ 'caclia': [(('dech',), ('gäese',), 'cach', False)],
+ 'decli': [(('trebaire',), ('áilclie',), 'dech', False)],
+ 'dhun': [(('faitsine',), ('forfindam',), 'do', False)],
+ 'dáigh': [(('fo',), ('meic dé',), 'dáig@because', False)],
+ 'fata': [(('claideb',), ('sithlaí',), 'fota', False)],
+ 'fichi': [(('^',), ('rlg',), 'fiche', False)],
+ 'file': [(('thigi',), ('isind',), 'fil', False)],
+ 'fir': [(('imba',), (), 'fír', False)],
+ 'féch': [(('ro',), ('úadha',), 'fégaid', False)],
+ 'ge': [(('^',), ('bo flaitli',), 'gé@although', False)],
+ 'gona': [(('talmain',), ('thorthaibh',), 'cona', False)],
+ 'gráin': [(('tardad',), ('na',), 'gráin@fear', False)],
+ 'gái': [(('ceiledh',), ('fair',), 'gáu', False)],
+ 'gé': [(('acht',), ('ro loitis',), 'gé@although', False),
+        (('^',), ('romgonais',), 'gé@although', False)],
+ 'h-eriu': [(('m-buí',), ('h-i',), 'ériu (name)', True)],
+ 'inathar': [(('maicc',), (), 'athair', False)],
+ 'lis': [(('isind',), (), 'les', False)],
+ 'maigi': [(('sechnón in',), ('dochuaid',), 'mag', False)],
+ 'nocht': [(('a',), ('febh',), 'innocht', False)],
+ 'oss': [(('n-anmond',), ('aird',), 'ós', False)],
+ 'rigi': [(('ngabail',), ('dó',), 'ríge', False)],
+ 'sen': [(('iad',), ('robo',), 'sin', False)],
+ 'tessed': [(('na',), ('isan cath',), 'téit@secondary', False)],
+ 'torcaib': [((), ('idna catha',), 'túargabim@raise', False)]}.items():
+    IR_REVIEWED_CONTEXT.setdefault(_form, []).extend(_rules)
+
+
 def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
     """Lemmas for a word sequence: `lemz(w)` for each word, except that a form in CONTEXT_FORMS takes the
     lemma its preceding word selects (tig after isin / i / ina / dia … → tech 'house'). Stage C should use
@@ -1691,6 +1725,15 @@ def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
                 and i + 1 < len(words)
                 and key_cy(welsh_norm(words[i + 1], True)) == "rygelwy"):
             lem = "ny"
+        # The Stage C loader adds a name marker to medial capitalized forms.
+        # Keep the reviewed initial-name rule, but avoid a second marker here.
+        if i > 0 and w[:1].isupper() and lem == "caílte (name)":
+            lem = "caílte"
+        # W5-036: conjunction eny/yny before the reviewed tide verb.
+        if (lemz.lm.lang == "cy" and key_cy(welsh_norm(w, True)) == "eny"
+                and i + 1 < len(words)
+                and key_cy(welsh_norm(words[i + 1], True)) == "trei"):
+            lem = "yny"
         out.append(lem)
     return out
 
@@ -1722,7 +1765,7 @@ def content_of(lm: fm.LangMapping, lem: str, surface: str, lemz=None) -> bool:
     stripping or by skeleton."""
     lang = "cy" if lm.lang == "cy" else "sga"
     if (lm.lang == "sga" and is_function_lemma(lm, lem)
-            or lm.lang == "cy" and lem == "ny" and key_cy(surface) == "nyf"):
+            or lm.lang == "cy" and (lem, key_cy(surface)) in {("ny", "nyf"), ("yny", "eny")}):
         return False
     if len(surface) <= 1 or is_function_word(surface, lang):
         return False

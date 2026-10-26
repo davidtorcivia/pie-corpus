@@ -241,5 +241,41 @@
     "action": "exclude",
     "report": "data/research/8c/stageCS/error-reports-w4.jsonl:22",
     "reason": "Independently reviewed editorial prose/footnote; see wave4 other verdict ledger."
+  },
+  {
+    "corpus": "celtic",
+    "source": "raw/daughters/celtic-journal-revue-celtique-1870-1928/revueceltique08pari_djvu.txt",
+    "start": 663,
+    "end": 671,
+    "report": "w5-other:60",
+    "reason": "Numbered critical apparatus, verified against source OCR; not continuous daughter text.",
+    "action": "exclude"
+  },
+  {
+    "corpus": "celtic",
+    "source": "raw/daughters/celtic-journal-revue-celtique-1870-1928/revueceltique13pari_djvu.txt",
+    "start": 4237,
+    "end": 4237,
+    "report": "w5-other:81",
+    "reason": "Numbered critical apparatus, verified against source OCR; not continuous daughter text.",
+    "action": "exclude"
+  },
+  {
+    "corpus": "byliny",
+    "source": "pesnisobrannyepvkireevskimvyp1pesn13_djvu.txt",
+    "start": 7571,
+    "end": 7571,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports-w5.jsonl:59",
+    "reason": "Independently reviewed analytical prose. Conservative general page detector does not reach this line; source context verified in w5-other ledger."
+  },
+  {
+    "corpus": "byliny",
+    "source": "pesnisobrannyepnrybnikovymch2narod72_djvu.txt",
+    "start": 34618,
+    "end": 34618,
+    "action": "exclude",
+    "report": "data/research/8c/stageCS/error-reports-w5.jsonl:61",
+    "reason": "Independently reviewed analytical prose. Conservative general page detector does not reach this line; source context verified in w5-other ledger."
   }
 ]
