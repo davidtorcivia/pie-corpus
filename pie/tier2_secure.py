@@ -68,6 +68,22 @@ from . import mapping as mp
 ROOT = Path(__file__).resolve().parent.parent
 MAPPING_DIR = ROOT / "data" / "research" / "formulas" / "mapping"
 
+# Secure-use adjudication, 2026-10-25: docs/research/mapping-precision-hittite-reviewed.md.
+# These are negative, equation-specific decisions, not positive retrieval mappings.
+# Keep the doubtful file out of the population; preserve the lexicon's reflexes.
+# Citation variants explicitly include the headwords used by reflex routes.
+SECURE_HITTITE_UNCERTAINTY = (
+    ("arun=a-@Meer", "aruna- ~ arunaš", "pie-root-h3er-move", "212"),
+    ("palw=ā(e)-@anstimmen", "palwae-zi", "pie-root-bhleh1-bleat", "623"),
+    ("palwatall=a-@Anstimmer", None, "pie-root-bhleh1-bleat", "623"),
+    ("palwattall=a-@Anstimmer", None, "pie-root-bhleh1-bleat", "623"),
+    ("punušš=@fragen", "punušš-zi ~ punuššanzi", "pie-root-pnewH-regain_consciousness", "681-682"),
+    ("wep=@weben", "wep-zi ~ ·ep-zi", "pie-lex-webhti", "1001"),
+    ("šuḫḫ=a-@schütten", "šuḫḫa-i ~ šuḫḫ-", "pie-root-sh2ew-pour", "773-774"),
+    ("ḫurt=ai-@Fluch", "ḫuwart-i ~ ḫurt-", "pie-root-h2wert-swear", "372-373"),
+)
+_SECURE_UNCERTAINTY_CORPUS = "secure-uncertainty:hit"
+
 # ---------------------------------------------------------------- languages
 
 # ref language → mapping code (None: lexicon reflexes only)
@@ -484,6 +500,12 @@ def build_population(rows_by_corpus: dict, overrides: dict | None, codes=None, a
     for lang, fo in ov.get("form", {}).items():
         code = LANG_ALIAS.get(lang, lang)
         pop.forms.setdefault(code, {}).update(fo)
+    if codes is None or "hit" in codes:
+        for lemma, word, lid, pages in SECURE_HITTITE_UNCERTAINTY:
+            d = mp.decision({"lex_id": [lid], "uncertain": True,
+                             "note": f"Secure review 2026-10-25: EDHIL pp. {pages}; uncertainty retained"},
+                            _SECURE_UNCERTAINTY_CORPUS, lemma)
+            pop.decided["hit"].append((_SECURE_UNCERTAINTY_CORPUS, lemma, word, (d,)))
     pop.overrides = ov
     return pop
 
@@ -608,6 +630,8 @@ LEVEL_RANK = {None: 0, "root": 1, "exact": 2}
 class Gov:
     """The reviewed decisions (pie.mapping.Decision) that apply to one cited word of a language, and what
     they leave to the other routes. Every route's level for a lexeme is capped by `cap`:
+      - secure-only uncertainty decisions: no credit for the specified equation/family, without
+        granting evidence or constraining unrelated equations;
       - lexemes marked uncertain: no route may give more than the decision itself does (nothing);
       - a lexeme the decision lists: exact (root for a "derivative" decision);
       - a lexeme under a root the decision lists: exact (the decision picked the root, e.g. between
@@ -619,6 +643,11 @@ class Gov:
 
     def __init__(self, checker: "SecureChecker", decided: list, auto: set):
         self.ch = checker
+        # A secure-only uncertainty decision blocks its equation/family across all
+        # routes, but grants nothing and does not reject unrelated equations.
+        self.secure_uncertain = frozenset().union(*(d.ids for c, _, d in decided
+                                                   if c == _SECURE_UNCERTAINTY_CORPUS))
+        decided = [(c, lem, d) for c, lem, d in decided if c != _SECURE_UNCERTAINTY_CORPUS]
         self.decided = decided                       # [(corpus, lemma, Decision)]
         self.research_only = any(d.scope == mp.RESEARCH_ONLY for _, _, d in decided)
         certain = [d for _, _, d in decided if not d.uncertain and d.scope != mp.RESEARCH_ONLY]
@@ -646,6 +675,13 @@ class Gov:
         return best
 
     def cap(self, lid: str) -> str | None:
+        family = set(self.secure_uncertain)
+        family.update(self.ch.entries[i]["root_id"] for i in self.secure_uncertain
+                      if self.ch.entries.get(i, {}).get("root_id"))
+        if self.ch.level_of(lid, family):
+            return None
+        if not self.decided:
+            return "exact"
         own = self.own(lid)
         if lid in self.uncertain or lid in self.allowed or (lid in self.removed and self.demoted):
             return own

@@ -398,3 +398,56 @@ Validation: `uv run pytest -q tests/test_hittite_mapping.py`: **26 passed**;
 `UV_CACHE_DIR=/private/tmp/pie-uv-cache` because the default cache was sandbox-inaccessible.
 The final all-row formation check found no remaining mismatches; post-suite
 hashes again confirmed that only `hit.jsonl` changed among mapping tables.
+
+## Secure-evidence adjudication — 2026-10-25 (rollout review 3A / 3B policy)
+
+The two main overrides `ištamašš=@hören` → `pie-lex-steh3mn` and
+`taganzip=a-@Erde` → `pie-lex-dhegjhoxm` now explicitly carry
+`formation: derivative`. The existing EDHIL references (pp. 411–413 and
+812–813 respectively) justify derivation through a nominal base, not identity
+of formation. The Hittite table was regenerated with
+`uv run python -I scripts/formula_search.py mapping --corpus hit`. Both retain
+root evidence through the production checker; reviewed decisions cap competing
+exact table, dictionary, reflex and compound-remainder routes at root.
+
+The following is a secure-use decision for every row of the eight-row doubtful
+table, including its pre-existing weaving row. The audit tested the shipped
+lexicon's Hittite reflex routes against the corpus citation and the recorded
+headword variants, then checked the production population with automatic
+sources enabled. “No reflex credit” means no existing reflex supports the listed
+equation; it is not a claim that the equation is disproved. No independent
+support sufficient to remove the recorded uncertainty is accepted in this
+review. All eight therefore receive a targeted cap of **none**, including root
+credit, for the doubtful equation and its root family.
+
+| Doubtful corpus lemma | Existing reflex-route credit before this policy | Explicit adjudication / source |
+|---|---|---|
+| `arun=a-@Meer` | Exact `pie-lex-h3rewnos` from `a-ru-na-aš`; root credit spreads through the `pie-root-h3er-move` family. | Cap the sea equation with `pie-root-h3er-move` and its family. Retain EDHIL p. 212 uncertainty on the proposed water/elevation connection. |
+| `palw=ā(e)-@anstimmen` | No reflex credit for `pie-root-bhleh1-bleat`, including `palwae-zi`. | Cap this crying/bleating equation; EDHIL p. 623 marks the reconstruction doubtful. |
+| `palwatall=a-@Anstimmer` | No reflex credit for `pie-root-bhleh1-bleat`. | Cap the derivative's equation with this family; EDHIL p. 623 gives the derivative under the same doubtful reconstruction. |
+| `palwattall=a-@Anstimmer` | No reflex credit for `pie-root-bhleh1-bleat`. | Same explicit cap for this corpus spelling; EDHIL p. 623. |
+| `punušš=@fragen` | No reflex credit for `pie-root-pnewH-regain_consciousness`, including `punušš-zi`. | Cap the cognition/desiderative equation. EDHIL pp. 681–682 retains double doubt; the previously recorded LIV² p. 489 assignment is acknowledged but does not resolve that uncertainty for secure use here. |
+| `wep=@weben` | No reflex credit for `pie-lex-webhti`. The damaged headword `·ep-zi` instead collides with the unrelated grabbing reflex `e-ep-zi`; that is not support for weaving. | Cap the weaving equation and its family; EDHIL p. 1001 marks it doubtful. The corpus stem, `wep-zi` and damaged headword are negative-decision keys only; the damaged form grants no weaving evidence and does not block the unrelated grabbing equation. |
+| `šuḫḫ=a-@schütten` | Exact `pie-lex-sh2ewti` from `suhhai` (also cited `šuḫḫa-i`); root credit for `pie-root-sh2ew-pour` and its sibling. | Cap this equation with the pouring family; EDHIL pp. 773–774, comparing pp. 396–398, retains doubt on the metathesis connection. The separately reviewed `išḫuwai-` equation remains available. |
+| `ḫurt=ai-@Fluch` | No reflex credit for `pie-root-h2wert-swear`, including `ḫuwart-i` and `ḫurt-`. | Cap the cursing/swearing equation and family; EDHIL pp. 372–373 marks the reconstruction doubtful. |
+
+Implementation: `SECURE_HITTITE_UNCERTAINTY` in `pie/tier2_secure.py` records
+these eight reviewed negative decisions separately from retrieval mappings.
+They enter the production population's governing-decision index, including
+explicit headword variants, and `Gov.cap` enforces them across all evidence
+routes. They grant no evidence themselves. An unrelated target for the same
+normalized word remains eligible; another Hittite word in the same PIE family
+is not globally banned. Reflex records are preserved. Main-table positive
+decisions cannot override these targeted uncertainty caps. The doubtful table
+remains available for exploratory retrieval and is not imported as positive
+secure evidence.
+
+Production-path regressions in `tests/test_hittite_secure_review.py` cover all
+eight decisions, the two existing reflex bypasses, competing exact routes,
+inflected citations and compound remainders, preservation of unrelated targets,
+and the separately supported pouring word. Source statements above are review
+paraphrases and page references; no book running text is reproduced.
+
+Validation (2026-10-25): the complete `uv run pytest -q` suite passed:
+**2,618 passed** in 468.66 seconds. `UV_CACHE_DIR=/tmp/pie-uv-cache` was used
+because the default user cache is outside the writable sandbox.
