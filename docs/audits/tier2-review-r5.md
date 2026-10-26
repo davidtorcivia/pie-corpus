@@ -99,3 +99,51 @@ Caveat: as before, this review was not plant-calibrated.
    - Vahlen: Enn. Ann. 113.
 
    Not local (confirmed by search): the Æcerbot, in Grein, Sweet and Bright.
+
+## 2026-10-25 — Local-source corrections and adjective-order follow-up
+
+Rechecked all six locality claims with `python3 -I`, reading only text under
+`raw/daughters/` (XML parsed as data; no raw code imported or executed).
+
+| Plan | Local evidence and disposition |
+|---|---|
+| bp-ii-gmc-001 | OE Bede 2.5 is in `oe-bibliothek-ags-prosa/bibliothekderang0004chri_djvu.txt` (Bibliothek IV): OCR `freonama Oesc` in Æthelberht's genealogy. Corrected the support ref's locus and added the local verification to notes. |
+| sky-father-002 | Varro RR 1.1.5 is in `latin-ogl-latin/extract/data/phi0684/phi002/phi0684.phi002.ogl-lat1.xml`, section `n="5"`, `xml:base` ending `:1.1`; the father/mother wording is present. Replaced the stale parenthesis; support status unchanged. |
+| dawn-sun-009 | `glaux/src/glaux-main/xml/0020-001.xml`, line 19: Ἠέλιόν … μέγαν, with μέγαν tagged ATR. The plan already records this correctly; no edit needed. |
+| dawn-sun-011 | `glaux/src/glaux-main/xml/0013-002.xml`, line 62: Ἠέλιον … σκοπὸν, with σκοπὸν tagged APOS. The plan already records this correctly; no edit needed. |
+| sky-father-010 | `glaux/src/glaux-main/xml/0013-033.xml`, line 1: Διὸς κούρους. Replaced the stale claim in place and removed the now-redundant appended correction. |
+| sky-father-009 | `glaux/src/glaux-main/xml/0006-014.xml`, line 1096: ἀστέρων ποικίλματα. Replaced the stale claim in place and removed the now-redundant appended correction. |
+
+**Adjective order remains an engine limitation.** In `pie/realize.py`,
+`realize_clause()`'s nested `phrase()` places every MOD/POSS recursively before
+its head; only APPOS consults `before`. The documented slot schema supplies no
+postposed attributive-MOD option. An in-memory probe of `before: false` on the
+MOD leaves both outputs unchanged: dawn-sun-009 `méǵh₂ sóh₂wl̥` and
+bp-ii-ita-003 `n̥mr̥tóns deywóns`. Slot order already puts the head first in both
+plans, but phrase assembly overrides it. Neither plan nor engine was changed
+for this issue, and no APPOS workaround was introduced.
+
+Needed engine change (for its owner): introduce and validate a MOD-only
+`position: "pre" | "post"` option, defaulting to `"pre"`; partition MODs in
+`phrase()` by this option, emitting postposed modifier phrases after the head
+and before following APPOS phrases, while retaining existing agreement,
+participle dependencies, POSS placement, and stable order within each group.
+Then set `position: "post"` on slot 1 of clause 0 in dawn-sun-009 and
+bp-ii-ita-003. Expected token order is `sóh₂wl̥ méǵh₂` and
+`deywóns n̥mr̥tóns`, respectively (accent issues are separate). Engine tests
+should establish unchanged default order, postposed case/number/gender
+agreement, and compatibility with APPOS and modifier dependencies. Those two
+future plan changes would require new SHA-bound reviews.
+
+**Verdict impact:** `plan_sha()` hashes `plan`, `cognate_refs`, and `secure`,
+not top-level notes. Only **bp-ii-gmc-001** becomes newly stale in this task:
+its r5 sound verdict remains bound to `6214527438fce4f8`; correcting the Bede
+locus changes the plan SHA to `c9fc9df993d5f079`. The three notes-only changes
+leave their verdict hashes unchanged. `data/tier2/review_verdicts.json` was
+not edited. No Tier 2/Tier 3 corpus or export was regenerated.
+
+Validation: all seven task-targeted plans pass `check_plan`; the two
+in-memory adjective-order probes confirm the limitation above.
+Full suite: `UV_CACHE_DIR=/tmp/pie-uv-cache uv run pytest -q` — **2526 passed**
+in 377.29s. The temporary cache path avoids the sandbox-blocked default uv
+cache; no test selection or exclusions were used.
