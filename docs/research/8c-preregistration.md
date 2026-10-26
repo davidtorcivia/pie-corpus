@@ -201,3 +201,9 @@ The build of 2026-10-24 15:42 is superseded; nothing of it was read. The rebuild
 - **Counting:** measure (i) and (ii) use the claims of the primary readers and of the follow-up readers together (a claim found by both counts once). The pilot slabs keep the counting recorded above (official Opus reader). Decoys are among the slabs and among the flagged bundles alike, so the decoy rate still measures reader enrichment under this protocol (SCI-04 wording).
 - **Review:** blind, all claims of a wave shuffled together; every anchor opened in the corpora with per-anchor verification status.
 - **Errors:** collected per wave; fixes applied between waves only (above).
+
+### Search-lead track (David, 2026-10-25: "we should have a way for agents to search extended corpus on suspected links like this"; recorded before wave 2)
+- A shared, indexed corpus search (scripts/search_corpora.py; index outside git) lets readers look up roots, root pairs within a window, lemmas and forms across every corpus held, with loci.
+- Readers record links whose partner is found by search, not in the slab, as `search_lead` lines (reader brief, "Search leads"). They are not claims: the anchoring rule and the decoy control cannot apply to what a reader searches up, so search leads never enter measures (i) or (ii).
+- Search leads get their own blind review (every locus opened, same grades) and the novelty check, and are reported separately as exploratory finds.
+- Bug fixed before any review of wave 1: the review exporter counted near-miss and error lines as claims (459 instead of 3); the faulty packet was never reviewed.
