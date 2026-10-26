@@ -61,6 +61,11 @@ def main() -> int:
         o = json.loads(x)
         if "spec" in o:
             displaced[o["id"]] = (o.get("displaced_status", "legacy"), o.get("displaced_why") or o.get("note"))
+    alternatives = collections.defaultdict(list)
+    for x in (OUT / "alternative_specs.jsonl").read_text("utf-8").splitlines():
+        alternative = json.loads(x)
+        lex_id = alternative.pop("id")
+        alternatives[lex_id].append(alternative)
     paras = {}
     for x in (LEX / "paradigms.jsonl").read_text("utf-8").splitlines():
         p = json.loads(x)
@@ -122,6 +127,9 @@ def main() -> int:
                               "status": st, "status_note": why})
         if e.get("spec_checked") and spec is None and e.get("spec_override"):
             spec = e["spec_override"]
+        # Independent convention alternatives retain their own provenance, even
+        # when their cells coincide with a displaced Wiktionary spec.
+        extra.extend(alternatives.get(e["id"], []))
         rows.append({"id": e["id"], "form": e["form"], "rule": c.rule, "family": c.family,
                      "spec": spec,
                      "backtest_cell_accuracy": acc, "usable": usable, "extra_specs": extra})

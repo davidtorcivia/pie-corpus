@@ -29,7 +29,7 @@ Notes on particular cases:
 - Gender only (*déywih₂*, *h₃rḗǵnih₂*, *néptih₂*, *pótnih₂*, *wl̥kʷíh₂s*): the displaced spec had gender m. Its cells are identical to the primary's, so the rejection never applies to a form. It is listed for completeness.
 - Rejected but never firing: two more lexemes have no string of their own. *h₁áyt*'s weak *h₁i-* forms (*h₁idʰí*) are valid forms of *h₁éyti* 'go', the confusion the override note describes, and they validate as 'go'. *h₃mígʰleh₂*'s unaccented forms (*h₃migʰleh₂*) are also the primary cells of the duplicate lexeme `pie-lex-h3mighleh2-2`, whose unusable shape spec is unaccented. The accent lint flags them, but they still validate exact through the duplicate (a lexicon question, left open).
 - Check: every realizer cell (`Lexicon.cells`, first form, all usable lexemes, three genders for adjectives: 197,217 forms) validates without a legacy or rejected status, so the gate cannot fail on the engine's own output.
-- Mixed (*swéh₂dus*, *h₁léngʰus*): the root accent is a convention alternative (i-u-stems #1), but the same displaced spec also carries a diagnosed error: zero-grade oblique *suh₂déw-* (i-u-stems #9), and the gʰ/gʷʰ mix (#12). The whole spec is therefore legacy. The root-accented nominatives (*swéh₂dus*, the headword) validate as legacy, not exact. A clean root-accented alternative would need its own spec.
+- Mixed (*swéh₂dus*, *h₁léngʰus*): the root accent is a convention alternative (i-u-stems #1), but the same displaced spec also carries a diagnosed error: zero-grade oblique *suh₂déw-* (i-u-stems #9), and the gʰ/gʷʰ mix (#12). The whole spec is therefore legacy. The original displaced specs remain legacy. Separate clean root-accented specs now support *swéh₂dus* and *h₁léngʰus* without endorsing the erroneous oblique/feminine forms (see below).
 - Contested, so legacy rather than rejected: *h₂ḱn̥-* (Asno's law, an open question in INTEGRATION.md), *tń̥neh₂* (no handbook has the word), acrostatic *h₃réǵ-*, *h₂yuh₁n̥téh₂*, feminine 'one' *sih₂*, *yókʷr̥*.
 - LIV's prevocalic weak stems (*ul-*, *un-*, *Hur-*) and lost breves (*h₂ur̥g-*, *gul̥-*, *ul̥h₁-*): rejected. athematic-verbs.md S1 calls them "uncontroversial data fixes", and the displaced spec turns the notation into wrong strings before a consonant (*undʰí*).
 
@@ -99,6 +99,16 @@ Notes on particular cases:
 | `pie-lex-welt` | wélt | rejected | weak ul | LIV's prevocalic weak ul- mis-read as a stem for every environment (athematic-verbs S1) |
 | `pie-lex-went` | wént | rejected | weak un | LIV's prevocalic weak un- mis-read as a stem for every environment: undʰí (athematic-verbs S1) |
 | `pie-lex-wlkwih2s` | wl̥kʷíh₂s | rejected | gender m | spec gender m for an ih₂ noun (feminine.md housekeeping) |
+
+## Clean root-accented u-adjective alternatives (2026-10-25)
+
+`data/morph/alternative_specs.jsonl` supplies eight explicit supported adjective specs: *bʰénǵʰus, dléwkus, gʷréh₂us, h₁wérHus, mréǵʰus, pléth₂us, h₁léngʰus, swéh₂dus*. They implement the proterokinetic alternative of engine-sweep i-u-stems #1 (Ringe 2006 p. 49): root-accented strong stem, suffix-accented weak stem. `decline_adj` generates masculine, feminine and neuter paradigms from these specs; no verbatim table cells are copied. The suffix-accented primary specs are unchanged.
+
+The clean specs retain the primary's checked weak and feminine stems. In particular, *swéh₂du-* has full-grade *sweh₂déw-*, *sweh₂déwih₂-*, *sweh₂duyéh₂-* (#9); *h₁léngʷʰu-* retains the labiovelar throughout (#12), with regular delabialization before *u*. Thus *swéh₂dus* and *h₁léngʰus* are supported, while old erroneous *suh₂déws* and *h₁ln̥gʰéwih₂* remain legacy.
+
+The rebuild command `uv run python -I scripts/classify_lexicon.py` includes these as independent `extra_specs` with source `clean-root-accented-u-adjective`, without `displaced_by_override`. The six error-free displaced specs remain supported and the two mixed ones remain legacy: the displacement inventory above is unchanged. For the six, the clean spec intentionally generates the same paradigm as the displaced spec; its independent provenance makes the convention alternative explicit. The historical counts under “Effect” below predate these clean alternatives.
+
+Rebuild verification (2026-10-25): of 6,748 rows in `inflection_specs.jsonl`, exactly the eight listed above changed, each appending one clean entry to `extra_specs`. Existing extras and every other field are unchanged; `classify_report.json` is byte-identical. All 971 generated primary forms across the eight adjectives are unchanged, including all three genders.
 
 ## Second Wiktionary tables (not displaced): supported
 
