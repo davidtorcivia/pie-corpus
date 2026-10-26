@@ -7,10 +7,10 @@
    "units": 6958,
    "tokens": 38746,
    "content_words": 19578,
-   "content_words_mapped": 6083,
+   "content_words_mapped": 6078,
    "indexed_units": 0,
    "indexed_units_below_30pct_mapped": 0,
-   "mapped_share": 0.3107,
+   "mapped_share": 0.3105,
    "licence_tags": {
     "cc-by": 3548,
     "nc": 3410
@@ -23,13 +23,13 @@
    "units": 40260,
    "tokens": 349550,
    "content_words": 198370,
-   "content_words_mapped": 43944,
-   "indexed_units": 13861,
-   "indexed_units_below_30pct_mapped": 5223,
-   "mapped_share": 0.2215,
+   "content_words_mapped": 43749,
+   "indexed_units": 13831,
+   "indexed_units_below_30pct_mapped": 5249,
+   "mapped_share": 0.2205,
    "licence_tags": {
-    "consent-train": 32199,
-    "research": 5035,
+    "consent-train": 32777,
+    "research": 4457,
     "pd": 3021,
     "nc": 5
    }
@@ -41,13 +41,13 @@
    "units": 150666,
    "tokens": 1529523,
    "content_words": 836858,
-   "content_words_mapped": 186715,
-   "indexed_units": 39437,
-   "indexed_units_below_30pct_mapped": 15864,
-   "mapped_share": 0.2231,
+   "content_words_mapped": 186086,
+   "indexed_units": 39371,
+   "indexed_units_below_30pct_mapped": 15902,
+   "mapped_share": 0.2224,
    "licence_tags": {
-    "consent-train": 112471,
-    "research": 27716,
+    "consent-train": 112688,
+    "research": 27499,
     "pd": 10344,
     "nc": 135
    }
@@ -59,10 +59,10 @@
    "units": 43372,
    "tokens": 417153,
    "content_words": 257401,
-   "content_words_mapped": 32475,
-   "indexed_units": 8122,
-   "indexed_units_below_30pct_mapped": 5247,
-   "mapped_share": 0.1262,
+   "content_words_mapped": 32372,
+   "indexed_units": 8102,
+   "indexed_units_below_30pct_mapped": 5240,
+   "mapped_share": 0.1258,
    "licence_tags": {
     "research": 8594,
     "pd": 34778
@@ -75,15 +75,15 @@
    "units": 127922,
    "tokens": 2056833,
    "content_words": 1093017,
-   "content_words_mapped": 250998,
-   "indexed_units": 1264,
-   "indexed_units_below_30pct_mapped": 399,
-   "mapped_share": 0.2296,
+   "content_words_mapped": 249945,
+   "indexed_units": 1253,
+   "indexed_units_below_30pct_mapped": 400,
+   "mapped_share": 0.2287,
    "licence_tags": {
-    "consent-train": 106672,
-    "nc": 6813,
-    "research": 13473,
-    "pd": 964
+    "consent-train": 113718,
+    "research": 12837,
+    "pd": 964,
+    "nc": 403
    }
   },
   "menota": {
@@ -153,10 +153,10 @@
    "units": 146777,
    "tokens": 703184,
    "content_words": 416749,
-   "content_words_mapped": 135951,
-   "indexed_units": 77558,
-   "indexed_units_below_30pct_mapped": 8552,
-   "mapped_share": 0.3262,
+   "content_words_mapped": 135658,
+   "indexed_units": 77432,
+   "indexed_units_below_30pct_mapped": 8559,
+   "mapped_share": 0.3255,
    "licence_tags": {
     "cc-by-sa": 146777
    }
@@ -304,10 +304,10 @@
    "units": 282885,
    "tokens": 3809801,
    "content_words": 1644522,
-   "content_words_mapped": 1180921,
-   "indexed_units": 70175,
-   "indexed_units_below_30pct_mapped": 2183,
-   "mapped_share": 0.7181,
+   "content_words_mapped": 1101327,
+   "indexed_units": 69582,
+   "indexed_units_below_30pct_mapped": 2983,
+   "mapped_share": 0.6697,
    "licence_tags": {
     "unchecked": 6629,
     "cc-by-sa": 276023,
@@ -349,15 +349,15 @@
    "label": "Hittite (TLHdig)",
    "branch": "Anatolian",
    "role": "partner",
-   "units": 47862,
-   "tokens": 529384,
-   "content_words": 185489,
-   "content_words_mapped": 67180,
-   "indexed_units": 22053,
-   "indexed_units_below_30pct_mapped": 5180,
-   "mapped_share": 0.3622,
+   "units": 47009,
+   "tokens": 754929,
+   "content_words": 135038,
+   "content_words_mapped": 64781,
+   "indexed_units": 18308,
+   "indexed_units_below_30pct_mapped": 2226,
+   "mapped_share": 0.4797,
    "licence_tags": {
-    "cc-by": 47862
+    "cc-by": 47009
    }
   },
   "lat": {
@@ -442,10 +442,10 @@
    "units": 632158,
    "tokens": 10657541,
    "content_words": 4845187,
-   "content_words_mapped": 3157585,
+   "content_words_mapped": 2969676,
    "indexed_units": 0,
    "indexed_units_below_30pct_mapped": 0,
-   "mapped_share": 0.6517,
+   "mapped_share": 0.6129,
    "licence_tags": {
     "cc-by-sa": 623456,
     "nc": 8334,
@@ -460,19 +460,19 @@
     "units": 127922,
     "tokens": 2056833,
     "content_words": 1093017,
-    "content_words_mapped": 250998,
-    "pivots": 1264,
-    "pivots_below_30pct_mapped": 399,
-    "mapped_share": 0.2296
+    "content_words_mapped": 249945,
+    "pivots": 1253,
+    "pivots_below_30pct_mapped": 400,
+    "mapped_share": 0.2287
    },
    "mga": {
     "units": 150666,
     "tokens": 1529523,
     "content_words": 836858,
-    "content_words_mapped": 186715,
-    "pivots": 39437,
-    "pivots_below_30pct_mapped": 15864,
-    "mapped_share": 0.2231
+    "content_words_mapped": 186086,
+    "pivots": 39371,
+    "pivots_below_30pct_mapped": 15902,
+    "mapped_share": 0.2224
    },
    "owl": {
     "units": 2,
@@ -487,19 +487,19 @@
     "units": 47218,
     "tokens": 388296,
     "content_words": 217948,
-    "content_words_mapped": 50027,
-    "pivots": 13861,
-    "pivots_below_30pct_mapped": 5223,
-    "mapped_share": 0.2295
+    "content_words_mapped": 49827,
+    "pivots": 13831,
+    "pivots_below_30pct_mapped": 5249,
+    "mapped_share": 0.2286
    },
    "wlm": {
     "units": 43370,
     "tokens": 417139,
     "content_words": 257394,
-    "content_words_mapped": 32473,
-    "pivots": 8122,
-    "pivots_below_30pct_mapped": 5247,
-    "mapped_share": 0.1262
+    "content_words_mapped": 32370,
+    "pivots": 8102,
+    "pivots_below_30pct_mapped": 5240,
+    "mapped_share": 0.1258
    }
   },
   "period": {
@@ -507,10 +507,10 @@
     "units": 487,
     "tokens": 5885,
     "content_words": 3127,
-    "content_words_mapped": 692,
+    "content_words_mapped": 665,
     "pivots": 0,
     "pivots_below_30pct_mapped": 0,
-    "mapped_share": 0.2213
+    "mapped_share": 0.2127
    },
    "06 c.": {
     "units": 385,
@@ -525,100 +525,100 @@
     "units": 756,
     "tokens": 5544,
     "content_words": 3598,
-    "content_words_mapped": 779,
+    "content_words_mapped": 777,
     "pivots": 126,
     "pivots_below_30pct_mapped": 57,
-    "mapped_share": 0.2165
+    "mapped_share": 0.216
    },
    "08 c.": {
     "units": 12595,
     "tokens": 109781,
     "content_words": 61125,
-    "content_words_mapped": 14212,
-    "pivots": 4610,
-    "pivots_below_30pct_mapped": 2071,
-    "mapped_share": 0.2325
+    "content_words_mapped": 14168,
+    "pivots": 4604,
+    "pivots_below_30pct_mapped": 2076,
+    "mapped_share": 0.2318
    },
    "09 c.": {
     "units": 29443,
     "tokens": 251213,
     "content_words": 141045,
-    "content_words_mapped": 33300,
-    "pivots": 8108,
-    "pivots_below_30pct_mapped": 2775,
-    "mapped_share": 0.2361
+    "content_words_mapped": 33187,
+    "pivots": 8088,
+    "pivots_below_30pct_mapped": 2792,
+    "mapped_share": 0.2353
    },
    "10 c.": {
     "units": 10967,
     "tokens": 104293,
     "content_words": 58452,
-    "content_words_mapped": 12836,
-    "pivots": 3370,
-    "pivots_below_30pct_mapped": 1150,
-    "mapped_share": 0.2196
+    "content_words_mapped": 12795,
+    "pivots": 3362,
+    "pivots_below_30pct_mapped": 1157,
+    "mapped_share": 0.2189
    },
    "11 c.": {
     "units": 108720,
     "tokens": 1205572,
     "content_words": 690049,
-    "content_words_mapped": 149210,
-    "pivots": 23864,
-    "pivots_below_30pct_mapped": 9682,
-    "mapped_share": 0.2162
+    "content_words_mapped": 148610,
+    "pivots": 23818,
+    "pivots_below_30pct_mapped": 9695,
+    "mapped_share": 0.2154
    },
    "12 c.": {
     "units": 70250,
     "tokens": 672844,
     "content_words": 365729,
-    "content_words_mapped": 81531,
-    "pivots": 17330,
-    "pivots_below_30pct_mapped": 7979,
-    "mapped_share": 0.2229
+    "content_words_mapped": 81208,
+    "pivots": 17303,
+    "pivots_below_30pct_mapped": 7997,
+    "mapped_share": 0.222
    },
    "13 c.": {
     "units": 18369,
     "tokens": 196725,
     "content_words": 113097,
-    "content_words_mapped": 20435,
-    "pivots": 5276,
-    "pivots_below_30pct_mapped": 3019,
-    "mapped_share": 0.1807
+    "content_words_mapped": 20344,
+    "pivots": 5256,
+    "pivots_below_30pct_mapped": 3017,
+    "mapped_share": 0.1799
    },
    "14 c.": {
     "units": 36978,
     "tokens": 457511,
     "content_words": 270128,
-    "content_words_mapped": 44240,
+    "content_words_mapped": 44118,
     "pivots": 0,
     "pivots_below_30pct_mapped": 0,
-    "mapped_share": 0.1638
+    "mapped_share": 0.1633
    },
    "15 c.": {
     "units": 33993,
     "tokens": 561979,
     "content_words": 290346,
-    "content_words_mapped": 64070,
+    "content_words_mapped": 63831,
     "pivots": 0,
     "pivots_below_30pct_mapped": 0,
-    "mapped_share": 0.2207
+    "mapped_share": 0.2198
    },
    "16 c.": {
     "units": 23729,
     "tokens": 358479,
     "content_words": 188823,
-    "content_words_mapped": 41744,
+    "content_words_mapped": 41610,
     "pivots": 0,
     "pivots_below_30pct_mapped": 0,
-    "mapped_share": 0.2211
+    "mapped_share": 0.2204
    },
    "17 c.": {
     "units": 22506,
     "tokens": 459177,
     "content_words": 217745,
-    "content_words_mapped": 56797,
+    "content_words_mapped": 56548,
     "pivots": 0,
     "pivots_below_30pct_mapped": 0,
-    "mapped_share": 0.2608
+    "mapped_share": 0.2597
    }
   },
   "genre": {
@@ -626,136 +626,136 @@
     "units": 17474,
     "tokens": 342287,
     "content_words": 171545,
-    "content_words_mapped": 36478,
+    "content_words_mapped": 36292,
     "pivots": 0,
     "pivots_below_30pct_mapped": 0,
-    "mapped_share": 0.2126
+    "mapped_share": 0.2116
    },
    "annals": {
     "units": 69903,
     "tokens": 938664,
     "content_words": 565375,
-    "content_words_mapped": 120583,
+    "content_words_mapped": 120094,
     "pivots": 0,
     "pivots_below_30pct_mapped": 0,
-    "mapped_share": 0.2133
+    "mapped_share": 0.2124
    },
    "dindshenchas": {
     "units": 13857,
     "tokens": 84824,
     "content_words": 50357,
-    "content_words_mapped": 13316,
-    "pivots": 8525,
-    "pivots_below_30pct_mapped": 1902,
-    "mapped_share": 0.2644
+    "content_words_mapped": 13248,
+    "pivots": 8507,
+    "pivots_below_30pct_mapped": 1916,
+    "mapped_share": 0.2631
    },
    "genealogy": {
     "units": 30344,
     "tokens": 229161,
     "content_words": 137030,
-    "content_words_mapped": 27367,
+    "content_words_mapped": 27302,
     "pivots": 0,
     "pivots_below_30pct_mapped": 0,
-    "mapped_share": 0.1997
+    "mapped_share": 0.1992
    },
    "glosses": {
     "units": 7384,
     "tokens": 41756,
     "content_words": 21345,
-    "content_words_mapped": 6371,
+    "content_words_mapped": 6366,
     "pivots": 0,
     "pivots_below_30pct_mapped": 0,
-    "mapped_share": 0.2985
+    "mapped_share": 0.2982
    },
    "history": {
     "units": 20485,
     "tokens": 355102,
     "content_words": 186802,
-    "content_words_mapped": 38498,
-    "pivots": 2554,
-    "pivots_below_30pct_mapped": 1180,
-    "mapped_share": 0.2061
+    "content_words_mapped": 38369,
+    "pivots": 2546,
+    "pivots_below_30pct_mapped": 1182,
+    "mapped_share": 0.2054
    },
    "law": {
     "units": 3362,
     "tokens": 30569,
     "content_words": 15980,
-    "content_words_mapped": 3983,
+    "content_words_mapped": 3977,
     "pivots": 1982,
-    "pivots_below_30pct_mapped": 599,
-    "mapped_share": 0.2492
+    "pivots_below_30pct_mapped": 600,
+    "mapped_share": 0.2489
    },
    "medical-scientific": {
     "units": 11204,
     "tokens": 252903,
     "content_words": 125898,
-    "content_words_mapped": 27566,
+    "content_words_mapped": 27554,
     "pivots": 0,
     "pivots_below_30pct_mapped": 0,
-    "mapped_share": 0.219
+    "mapped_share": 0.2189
    },
    "other": {
     "units": 3865,
     "tokens": 42288,
     "content_words": 25699,
-    "content_words_mapped": 4747,
+    "content_words_mapped": 4735,
     "pivots": 0,
     "pivots_below_30pct_mapped": 0,
-    "mapped_share": 0.1847
+    "mapped_share": 0.1842
    },
    "prose": {
     "units": 7736,
     "tokens": 117888,
     "content_words": 61728,
-    "content_words_mapped": 7758,
-    "pivots": 2253,
-    "pivots_below_30pct_mapped": 1816,
-    "mapped_share": 0.1257
+    "content_words_mapped": 7721,
+    "pivots": 2244,
+    "pivots_below_30pct_mapped": 1810,
+    "mapped_share": 0.1251
    },
    "religious": {
     "units": 62631,
     "tokens": 811496,
     "content_words": 410825,
-    "content_words_mapped": 94605,
+    "content_words_mapped": 94184,
     "pivots": 0,
     "pivots_below_30pct_mapped": 0,
-    "mapped_share": 0.2303
+    "mapped_share": 0.2293
    },
    "saga": {
     "units": 71440,
     "tokens": 811823,
     "content_words": 427719,
-    "content_words_mapped": 97517,
-    "pivots": 37738,
-    "pivots_below_30pct_mapped": 17007,
-    "mapped_share": 0.228
+    "content_words_mapped": 97084,
+    "pivots": 37664,
+    "pivots_below_30pct_mapped": 17050,
+    "mapped_share": 0.227
    },
    "scholarship": {
     "units": 4990,
     "tokens": 62454,
     "content_words": 31826,
-    "content_words_mapped": 7027,
+    "content_words_mapped": 7013,
     "pivots": 0,
     "pivots_below_30pct_mapped": 0,
-    "mapped_share": 0.2208
+    "mapped_share": 0.2204
    },
    "verse": {
     "units": 42478,
     "tokens": 255105,
     "content_words": 163946,
-    "content_words_mapped": 32114,
-    "pivots": 8562,
-    "pivots_below_30pct_mapped": 3876,
-    "mapped_share": 0.1959
+    "content_words_mapped": 32013,
+    "pivots": 8544,
+    "pivots_below_30pct_mapped": 3879,
+    "mapped_share": 0.1953
    },
    "wisdom": {
     "units": 2025,
     "tokens": 15485,
     "content_words": 9149,
-    "content_words_mapped": 2285,
+    "content_words_mapped": 2278,
     "pivots": 1070,
-    "pivots_below_30pct_mapped": 353,
-    "mapped_share": 0.2498
+    "pivots_below_30pct_mapped": 354,
+    "mapped_share": 0.249
    }
   },
   "licence": {
@@ -763,231 +763,231 @@
     "units": 3548,
     "tokens": 20652,
     "content_words": 12533,
-    "content_words_mapped": 2759,
+    "content_words_mapped": 2757,
     "pivots": 0,
     "pivots_below_30pct_mapped": 0,
-    "mapped_share": 0.2201
+    "mapped_share": 0.22
    },
    "consent-train": {
-    "units": 251342,
-    "tokens": 3115602,
-    "content_words": 1696125,
-    "content_words_mapped": 390846,
-    "pivots": 36536,
-    "pivots_below_30pct_mapped": 12420,
-    "mapped_share": 0.2304
+    "units": 259183,
+    "tokens": 3277112,
+    "content_words": 1767266,
+    "content_words_mapped": 411392,
+    "pivots": 36696,
+    "pivots_below_30pct_mapped": 12517,
+    "mapped_share": 0.2328
    },
    "nc": {
-    "units": 10363,
-    "tokens": 177066,
-    "content_words": 76962,
-    "content_words_mapped": 24878,
+    "units": 3953,
+    "tokens": 22577,
+    "content_words": 9627,
+    "content_words_mapped": 3778,
     "pivots": 50,
     "pivots_below_30pct_mapped": 15,
-    "mapped_share": 0.3233
+    "mapped_share": 0.3924
    },
    "pd": {
     "units": 49107,
     "tokens": 486537,
     "content_words": 294688,
-    "content_words_mapped": 41807,
-    "pivots": 9429,
-    "pivots_below_30pct_mapped": 5968,
-    "mapped_share": 0.1419
+    "content_words_mapped": 41669,
+    "pivots": 9410,
+    "pivots_below_30pct_mapped": 5961,
+    "mapped_share": 0.1414
    },
    "research": {
-    "units": 54818,
-    "tokens": 591948,
-    "content_words": 324916,
-    "content_words_mapped": 59925,
-    "pivots": 16669,
-    "pivots_below_30pct_mapped": 8330,
-    "mapped_share": 0.1844
+    "units": 53387,
+    "tokens": 584927,
+    "content_words": 321110,
+    "content_words_mapped": 58634,
+    "pivots": 16401,
+    "pivots_below_30pct_mapped": 8298,
+    "mapped_share": 0.1826
    }
   }
  },
  "index": {
-  "units_with_roots": 760055,
-  "root_groups": 3086,
-  "stageC_pivots": 364065
+  "units_with_roots": 755464,
+  "root_groups": 3089,
+  "stageC_pivots": 363812
  },
- "pivots_below_30pct_mapped": 81566,
- "pivots_below_30pct_mapped_with_partner": 16519,
- "pivots_below_30pct_mapped_in_bundles": 1182,
- "pivots_with_any_partner": 122950,
- "pivots_above_floor": 16799,
- "bundles": 15557,
- "bundles_merged_into": 790,
+ "pivots_below_30pct_mapped": 81631,
+ "pivots_below_30pct_mapped_with_partner": 16508,
+ "pivots_below_30pct_mapped_in_bundles": 1162,
+ "pivots_with_any_partner": 122693,
+ "pivots_above_floor": 16576,
+ "bundles": 15201,
+ "bundles_merged_into": 864,
  "bundle_size": {
-  "2": 9666,
-  "3": 3828,
-  "4": 1154,
-  "5": 424,
-  "6": 208,
-  "7": 117,
-  "8": 71,
+  "2": 9563,
+  "3": 3628,
+  "4": 1079,
+  "5": 451,
+  "6": 182,
+  "7": 130,
+  "8": 76,
   "9": 26,
-  "10": 19,
+  "10": 18,
   "11": 13,
-  "12": 31
+  "12": 35
  },
- "decoy_bundles": 3112,
- "real_bundles": 12445,
+ "decoy_bundles": 3040,
+ "real_bundles": 12161,
  "decoy_share": 0.2,
  "pivot_groups": {
   "celtic": {
-   "bundles": 2434,
-   "decoys": 486
+   "bundles": 2449,
+   "decoys": 490
   },
   "other": {
-   "bundles": 13123,
-   "decoys": 2626
+   "bundles": 12752,
+   "decoys": 2550
   }
  },
  "bundles_by_pivot_corpus": {
   "sga": {
-   "bundles": 585,
-   "decoys": 117
+   "bundles": 586,
+   "decoys": 118
   },
   "mga": {
-   "bundles": 1599,
-   "decoys": 320
+   "bundles": 1610,
+   "decoys": 321
   },
   "cy": {
-   "bundles": 207,
-   "decoys": 41
+   "bundles": 209,
+   "decoys": 42
   },
   "ga-early": {
-   "bundles": 43,
-   "decoys": 8
-  },
-  "menota": {
-   "bundles": 7907,
-   "decoys": 1583
-  },
-  "icepahc": {
-   "bundles": 998,
-   "decoys": 199
-  },
-  "rea-goh": {
-   "bundles": 46,
+   "bundles": 44,
    "decoys": 9
   },
+  "menota": {
+   "bundles": 7695,
+   "decoys": 1539
+  },
+  "icepahc": {
+   "bundles": 934,
+   "decoys": 187
+  },
+  "rea-goh": {
+   "bundles": 45,
+   "decoys": 8
+  },
   "vuk": {
-   "bundles": 480,
-   "decoys": 96
+   "bundles": 500,
+   "decoys": 101
   },
   "byliny": {
-   "bundles": 899,
+   "bundles": 905,
    "decoys": 180
   },
   "dainos": {
-   "bundles": 301,
-   "decoys": 60
+   "bundles": 325,
+   "decoys": 65
   },
   "xcl": {
-   "bundles": 2492,
-   "decoys": 499
+   "bundles": 2348,
+   "decoys": 470
   }
  },
- "slabs": 62,
+ "slabs": 59,
  "slab_tokens": {
   "SS-a602": {
-   "bundles": 277,
-   "decoy_share": 0.199,
-   "tokens": 628360,
+   "bundles": 260,
+   "decoy_share": 0.2,
+   "tokens": 601327,
    "licence_tags": {
-    "cc-by": 90,
-    "cc-by-sa": 139,
-    "consent-train": 298,
-    "nc": 100,
-    "pd": 39,
-    "research": 3,
-    "unchecked": 9
+    "cc-by": 87,
+    "cc-by-sa": 131,
+    "consent-train": 287,
+    "nc": 93,
+    "pd": 38,
+    "research": 5,
+    "unchecked": 8
    },
    "sections": [
     "sga: G100037",
     "sga: G100039",
     "sga: G100041",
     "...",
-    "sga: G301021"
+    "sga: G301017"
    ]
   },
   "SS-5c03": {
-   "bundles": 238,
-   "decoy_share": 0.202,
-   "tokens": 602678,
+   "bundles": 247,
+   "decoy_share": 0.198,
+   "tokens": 600047,
    "licence_tags": {
-    "cc-by": 89,
-    "cc-by-sa": 146,
-    "consent-train": 204,
-    "nc": 105,
-    "pd": 30,
-    "research": 51,
-    "unchecked": 1
+    "cc-by": 101,
+    "cc-by-sa": 130,
+    "consent-train": 229,
+    "nc": 107,
+    "pd": 28,
+    "research": 34,
+    "unchecked": 2
    },
    "sections": [
+    "sga: G301018",
+    "sga: G301021",
     "sga: G301021A",
-    "sga: G301029",
-    "sga: G301031",
     "...",
-    "sga: celtic-journal-zcp-1897-1926/zeitschriftfrc04meyeuoft|Táin Bó Fraích (Mitteilungen aus irischen Handschriften V, aus Egerton 1782)"
+    "sga: celtic-journal-revue-celtique-1870-1928/revueceltique03pari|Aislinge Oengusso"
    ]
   },
   "SS-c887": {
-   "bundles": 319,
-   "decoy_share": 0.201,
-   "tokens": 655695,
+   "bundles": 300,
+   "decoy_share": 0.203,
+   "tokens": 601528,
    "licence_tags": {
-    "cc-by": 95,
-    "cc-by-sa": 137,
-    "consent-train": 252,
-    "nc": 118,
-    "pd": 88,
-    "research": 34,
-    "unchecked": 5
+    "cc-by": 91,
+    "cc-by-sa": 115,
+    "consent-train": 225,
+    "nc": 120,
+    "pd": 81,
+    "research": 45,
+    "unchecked": 6
    },
    "sections": [
-    "sga: celtic-journal-zcp-1897-1926/zeitschriftfrc05meyeuoft|Das Märchen von Etáin (Tochmarc Étaíne citations from H.3.18 glosses)",
-    "sga: celtic-journal-zcp-1897-1926/zeitschriftfrc09meyeuoft|Altirische Reimsprüche",
-    "sga: celtic-journal-zcp-1897-1926/zeitschriftfrc11meyeuoft|Audacht Morainn (Redaktionen A, L, B)",
+    "sga: celtic-journal-revue-celtique-1870-1928/revueceltique11pari|Tochmarc Emire (oldest version)",
+    "sga: celtic-journal-revue-celtique-1870-1928/revueceltique15pari|An Old-Irish treatise De Arreis",
+    "sga: celtic-journal-revue-celtique-1870-1928/revueceltique45pari|Senbriathra Fithail (with parallels)",
     "...",
-    "mga: G301026"
+    "mga: G301020B"
    ]
   },
   "SS-ca34": {
-   "bundles": 241,
+   "bundles": 272,
    "decoy_share": 0.199,
-   "tokens": 617903,
+   "tokens": 688080,
    "licence_tags": {
-    "cc-by": 81,
-    "cc-by-sa": 153,
-    "consent-train": 251,
-    "nc": 83,
-    "pd": 41,
-    "research": 3,
+    "cc-by": 100,
+    "cc-by-sa": 155,
+    "consent-train": 285,
+    "nc": 92,
+    "pd": 50,
+    "research": 2,
     "unchecked": 5
    },
    "sections": [
+    "mga: G301023",
+    "mga: G301026",
     "mga: G301028",
-    "mga: G301035",
-    "mga: G301041",
     "...",
     "mga: G301044"
    ]
   },
   "SS-ac76": {
-   "bundles": 274,
-   "decoy_share": 0.201,
-   "tokens": 696575,
+   "bundles": 272,
+   "decoy_share": 0.199,
+   "tokens": 695663,
    "licence_tags": {
-    "cc-by": 105,
-    "cc-by-sa": 154,
-    "consent-train": 283,
-    "nc": 98,
-    "pd": 48,
+    "cc-by": 116,
+    "cc-by-sa": 157,
+    "consent-train": 292,
+    "nc": 87,
+    "pd": 44,
     "research": 2,
-    "unchecked": 3
+    "unchecked": 2
    },
    "sections": [
     "mga: G301045",
@@ -998,16 +998,16 @@
    ]
   },
   "SS-a4f7": {
-   "bundles": 232,
-   "decoy_share": 0.203,
-   "tokens": 672855,
+   "bundles": 230,
+   "decoy_share": 0.204,
+   "tokens": 658471,
    "licence_tags": {
-    "cc-by": 90,
-    "cc-by-sa": 179,
-    "consent-train": 240,
-    "nc": 81,
-    "pd": 20,
-    "research": 3,
+    "cc-by": 98,
+    "cc-by-sa": 148,
+    "consent-train": 241,
+    "nc": 92,
+    "pd": 29,
+    "research": 5,
     "unchecked": 1
    },
    "sections": [
@@ -1019,116 +1019,116 @@
    ]
   },
   "SS-4d8c": {
-   "bundles": 261,
-   "decoy_share": 0.195,
-   "tokens": 610072,
+   "bundles": 253,
+   "decoy_share": 0.198,
+   "tokens": 600810,
    "licence_tags": {
-    "cc-by": 100,
-    "cc-by-sa": 137,
-    "consent-train": 93,
-    "nc": 95,
-    "pd": 37,
-    "research": 185,
-    "unchecked": 6
+    "cc-by": 86,
+    "cc-by-sa": 138,
+    "consent-train": 101,
+    "nc": 98,
+    "pd": 39,
+    "research": 169,
+    "unchecked": 8
    },
    "sections": [
     "mga: G303012",
+    "mga: G303013",
     "mga: G303017",
-    "mga: G303018",
     "...",
-    "mga: celtic-journal-revue-celtique-1870-1928/revueceltique14pari|Aided Guill maic Carbada ocus Aided Gairb Glinne Rige (The Violent Deaths of Goll and Garb)"
+    "mga: celtic-journal-revue-celtique-1870-1928/revueceltique13pari|On the Irish text Togail Bruidne Da Derga and connected stories III"
    ]
   },
   "SS-c155": {
-   "bundles": 271,
-   "decoy_share": 0.199,
-   "tokens": 678596,
+   "bundles": 252,
+   "decoy_share": 0.198,
+   "tokens": 612008,
    "licence_tags": {
-    "cc-by": 70,
-    "cc-by-sa": 166,
-    "consent-train": 16,
-    "nc": 106,
-    "pd": 107,
-    "research": 202,
+    "cc-by": 87,
+    "cc-by-sa": 132,
+    "consent-train": 12,
+    "nc": 101,
+    "pd": 69,
+    "research": 216,
     "unchecked": 6
    },
    "sections": [
-    "mga: celtic-journal-revue-celtique-1870-1928/revueceltique15pari|The Prose Tales in the Rennes Dindsenchas (I)",
-    "mga: celtic-journal-revue-celtique-1870-1928/revueceltique15pari|The Prose Tales in the Rennes Dindsenchas (II)",
-    "mga: celtic-journal-revue-celtique-1870-1928/revueceltique16pari|The Prose Tales in the Rennes Dindsenchas (III)",
+    "mga: celtic-journal-revue-celtique-1870-1928/revueceltique13pari|Cath Maige Mucrime (The Battle of Mag Mucrime)",
+    "mga: celtic-journal-revue-celtique-1870-1928/revueceltique14pari|Immram curaig Ua Corra (The Voyage of the Húi Corra)",
+    "mga: celtic-journal-revue-celtique-1870-1928/revueceltique14pari|On the Irish text Togail Bruidne Da Derga and connected stories IV",
     "...",
-    "mga: oldirish-irische-texte-1880-1909/irischetextemitw01winduoft|IX Fled Bricrend"
+    "mga: oldirish-irische-texte-1880-1909/irischetextemitw01winduoft|V Compert Conculaind (LU; Eg. second version in Anhang)"
    ]
   },
   "SS-136d": {
-   "bundles": 278,
-   "decoy_share": 0.201,
-   "tokens": 571849,
+   "bundles": 290,
+   "decoy_share": 0.2,
+   "tokens": 612510,
    "licence_tags": {
-    "cc-by": 64,
-    "cc-by-sa": 101,
-    "consent-train": 1,
-    "nc": 130,
-    "pd": 264,
-    "research": 74,
-    "unchecked": 6
+    "cc-by": 72,
+    "cc-by-sa": 123,
+    "consent-train": 7,
+    "nc": 118,
+    "pd": 277,
+    "research": 76,
+    "unchecked": 4
    },
    "sections": [
-    "mga: oldirish-irische-texte-1880-1909/irischetextemitw02winduoft|Fled Bricrend ocus Loinges mac nDuil Dermait (YBL)",
-    "mga: oldirish-irische-texte-1880-1909/irischetextemitw02winduoft|Die Geschichte von Philipp und Alexander (LBr; BB excerpts)",
-    "mga: oldirish-irische-texte-1880-1909/irischetextemitw02winduoft|Táin bó Flidais (LU, LL, Eg. texts)",
+    "mga: oldirish-irische-texte-1880-1909/irischetextemitw01winduoft|VI Drei Gedichte aus der Finnsage",
+    "mga: oldirish-irische-texte-1880-1909/irischetextemitw01winduoft|VIII Serglige Conculaind",
+    "mga: oldirish-irische-texte-1880-1909/irischetextemitw01winduoft|IX Fled Bricrend",
     "...",
-    "cy: welsh-white-book-mabinogion-evans-1907/whitebookofmabin00evan|Historia Peredur, second text (Peniarth 7)"
+    "cy: welsh-white-book-mabinogion-evans-1907/whitebookofmabin00evan|Chwedyl Gereint vab Erbin (W.B., with Peniarth 6 pt iv facing)"
    ]
   },
   "SS-9e82": {
-   "bundles": 280,
-   "decoy_share": 0.2,
-   "tokens": 699356,
+   "bundles": 274,
+   "decoy_share": 0.201,
+   "tokens": 698642,
    "licence_tags": {
-    "cc-by": 115,
-    "cc-by-sa": 400,
-    "consent-train": 50,
-    "nc": 93,
-    "pd": 6,
-    "research": 6,
-    "unchecked": 5
+    "cc-by": 122,
+    "cc-by-sa": 355,
+    "consent-train": 48,
+    "nc": 105,
+    "pd": 40,
+    "research": 5,
+    "unchecked": 6
    },
    "sections": [
-    "ga-early: G301019",
-    "ga-early: G302018",
-    "ga-early: G303008",
+    "cy: welsh-white-book-mabinogion-evans-1907/whitebookofmabin00evan|Mal y kavas Kulhwch Olwen (W.B. & R.B.)",
+    "cy: welsh-white-book-mabinogion-evans-1907/whitebookofmabin00evan|Gereint fragments (Peniarth 6 pt iii)",
+    "cy: welsh-white-book-mabinogion-evans-1907/whitebookofmabin00evan|Historia Peredur, beginning (Peniarth 14)",
     "...",
     "menota: AM-132-fol-Egils-saga"
    ]
   },
   "SS-df32": {
-   "bundles": 272,
-   "decoy_share": 0.202,
-   "tokens": 699051,
+   "bundles": 293,
+   "decoy_share": 0.201,
+   "tokens": 699537,
    "licence_tags": {
-    "cc-by": 91,
-    "cc-by-sa": 478,
-    "consent-train": 6,
-    "nc": 82,
-    "pd": 7,
-    "research": 3,
-    "unchecked": 2
+    "cc-by": 114,
+    "cc-by-sa": 487,
+    "consent-train": 9,
+    "nc": 80,
+    "pd": 14,
+    "research": 2,
+    "unchecked": 3
    },
    "sections": [
     "menota: AM-132-fol-Egils-saga"
    ]
   },
   "SS-86a8": {
-   "bundles": 319,
-   "decoy_share": 0.197,
-   "tokens": 700594,
+   "bundles": 329,
+   "decoy_share": 0.198,
+   "tokens": 698825,
    "licence_tags": {
-    "cc-by": 103,
-    "cc-by-sa": 484,
+    "cc-by": 119,
+    "cc-by-sa": 473,
     "consent-train": 10,
-    "nc": 122,
-    "pd": 15,
+    "nc": 134,
+    "pd": 22,
     "research": 1,
     "unchecked": 1
    },
@@ -1141,16 +1141,16 @@
    ]
   },
   "SS-58ef": {
-   "bundles": 312,
+   "bundles": 317,
    "decoy_share": 0.202,
-   "tokens": 697628,
+   "tokens": 700653,
    "licence_tags": {
-    "cc-by": 98,
-    "cc-by-sa": 496,
-    "consent-train": 6,
-    "nc": 120,
-    "pd": 11,
-    "research": 1
+    "cc-by": 105,
+    "cc-by-sa": 504,
+    "consent-train": 5,
+    "nc": 115,
+    "pd": 13,
+    "research": 2
    },
    "sections": [
     "menota: AM-132-fol-Laxdaela-saga",
@@ -1158,87 +1158,88 @@
    ]
   },
   "SS-321d": {
-   "bundles": 277,
+   "bundles": 312,
    "decoy_share": 0.199,
-   "tokens": 673273,
+   "tokens": 699220,
    "licence_tags": {
-    "cc-by": 109,
-    "cc-by-sa": 457,
-    "consent-train": 7,
-    "nc": 81,
-    "pd": 5,
+    "cc-by": 133,
+    "cc-by-sa": 476,
+    "consent-train": 9,
+    "nc": 102,
+    "pd": 8,
     "research": 3,
-    "unchecked": 1
-   },
-   "sections": [
-    "menota: AM-132-fol-Njals-saga"
-   ]
-  },
-  "SS-b70e": {
-   "bundles": 241,
-   "decoy_share": 0.199,
-   "tokens": 698347,
-   "licence_tags": {
-    "cc-by": 116,
-    "cc-by-sa": 404,
-    "consent-train": 10,
-    "nc": 88,
-    "pd": 10,
-    "research": 2,
     "unchecked": 2
    },
    "sections": [
+    "menota: AM-132-fol-Njals-saga",
     "menota: AM-132-fol-Olkofra",
+    "menota: AM-132-fol-Viga-Glums-saga"
+   ]
+  },
+  "SS-b70e": {
+   "bundles": 225,
+   "decoy_share": 0.2,
+   "tokens": 697691,
+   "licence_tags": {
+    "cc-by": 120,
+    "cc-by-sa": 397,
+    "consent-train": 5,
+    "nc": 73,
+    "pd": 9,
+    "research": 6
+   },
+   "sections": [
     "menota: AM-132-fol-Viga-Glums-saga",
     "menota: AM-162-B-alfa-fol",
+    "menota: AM-162-B-fol-kappa",
     "...",
     "menota: AM-178-fol"
    ]
   },
   "SS-2fdd": {
-   "bundles": 215,
-   "decoy_share": 0.2,
-   "tokens": 656379,
+   "bundles": 236,
+   "decoy_share": 0.203,
+   "tokens": 697126,
    "licence_tags": {
-    "cc-by": 85,
-    "cc-by-sa": 390,
-    "consent-train": 8,
-    "nc": 59,
-    "pd": 4,
-    "research": 4,
-    "unchecked": 1
+    "cc-by": 101,
+    "cc-by-sa": 402,
+    "consent-train": 10,
+    "nc": 62,
+    "pd": 19,
+    "unchecked": 2
    },
    "sections": [
-    "menota: AM-178-fol"
+    "menota: AM-178-fol",
+    "menota: AM-242-fol"
    ]
   },
   "SS-0775": {
-   "bundles": 228,
-   "decoy_share": 0.202,
-   "tokens": 696801,
+   "bundles": 238,
+   "decoy_share": 0.197,
+   "tokens": 696158,
    "licence_tags": {
-    "cc-by": 97,
-    "cc-by-sa": 371,
-    "consent-train": 5,
-    "nc": 75,
+    "cc-by": 94,
+    "cc-by-sa": 387,
+    "consent-train": 6,
+    "nc": 74,
     "pd": 10,
-    "unchecked": 2
+    "unchecked": 4
    },
    "sections": [
     "menota: AM-242-fol"
    ]
   },
   "SS-127d": {
-   "bundles": 252,
-   "decoy_share": 0.198,
-   "tokens": 696343,
+   "bundles": 274,
+   "decoy_share": 0.201,
+   "tokens": 696961,
    "licence_tags": {
-    "cc-by": 87,
-    "cc-by-sa": 393,
-    "nc": 90,
-    "pd": 4,
-    "research": 1,
-    "unchecked": 5
+    "cc-by": 112,
+    "cc-by-sa": 337,
+    "nc": 121,
+    "pd": 2,
+    "research": 2,
+    "unchecked": 3
    },
    "sections": [
     "menota: AM-242-fol",
@@ -1247,51 +1248,52 @@
    ]
   },
   "SS-4b72": {
-   "bundles": 311,
-   "decoy_share": 0.203,
-   "tokens": 695844,
+   "bundles": 262,
+   "decoy_share": 0.198,
+   "tokens": 689472,
    "licence_tags": {
-    "cc-by": 105,
-    "cc-by-sa": 312,
-    "consent-train": 1,
-    "nc": 119,
-    "pd": 2,
-    "research": 2
+    "cc-by": 93,
+    "cc-by-sa": 337,
+    "consent-train": 2,
+    "nc": 98,
+    "pd": 8,
+    "research": 1,
+    "unchecked": 3
    },
    "sections": [
     "menota: AM-302-fol",
-    "menota: AM-305-fol"
-   ]
-  },
-  "SS-fa0d": {
-   "bundles": 216,
-   "decoy_share": 0.194,
-   "tokens": 697289,
-   "licence_tags": {
-    "cc-by": 73,
-    "cc-by-sa": 395,
-    "consent-train": 12,
-    "nc": 48,
-    "pd": 9,
-    "research": 1,
-    "unchecked": 2
-   },
-   "sections": [
     "menota: AM-305-fol",
     "menota: AM-35-fol"
    ]
   },
-  "SS-fa14": {
-   "bundles": 212,
-   "decoy_share": 0.203,
-   "tokens": 698346,
+  "SS-fa0d": {
+   "bundles": 213,
+   "decoy_share": 0.202,
+   "tokens": 695373,
    "licence_tags": {
-    "cc-by": 57,
-    "cc-by-sa": 395,
-    "consent-train": 12,
-    "nc": 69,
-    "pd": 4,
-    "research": 2,
+    "cc-by": 78,
+    "cc-by-sa": 390,
+    "consent-train": 18,
+    "nc": 57,
+    "pd": 5,
+    "research": 4,
+    "unchecked": 2
+   },
+   "sections": [
+    "menota: AM-35-fol"
+   ]
+  },
+  "SS-fa14": {
+   "bundles": 216,
+   "decoy_share": 0.199,
+   "tokens": 692804,
+   "licence_tags": {
+    "cc-by": 62,
+    "cc-by-sa": 408,
+    "consent-train": 16,
+    "nc": 59,
+    "pd": 3,
+    "research": 1,
     "unchecked": 3
    },
    "sections": [
@@ -1299,17 +1301,16 @@
    ]
   },
   "SS-6bbf": {
-   "bundles": 212,
-   "decoy_share": 0.203,
-   "tokens": 697173,
+   "bundles": 218,
+   "decoy_share": 0.202,
+   "tokens": 697436,
    "licence_tags": {
-    "cc-by": 63,
-    "cc-by-sa": 409,
-    "consent-train": 13,
-    "nc": 42,
-    "pd": 4,
-    "research": 1,
-    "unchecked": 2
+    "cc-by": 64,
+    "cc-by-sa": 403,
+    "consent-train": 12,
+    "nc": 45,
+    "pd": 3,
+    "research": 2
    },
    "sections": [
     "menota: AM-35-fol",
@@ -1317,16 +1318,16 @@
    ]
   },
   "SS-e9aa": {
-   "bundles": 211,
-   "decoy_share": 0.199,
-   "tokens": 697114,
+   "bundles": 221,
+   "decoy_share": 0.195,
+   "tokens": 697598,
    "licence_tags": {
-    "cc-by": 61,
-    "cc-by-sa": 383,
-    "consent-train": 12,
-    "nc": 52,
-    "pd": 1,
-    "research": 1,
+    "cc-by": 74,
+    "cc-by-sa": 377,
+    "consent-train": 14,
+    "nc": 49,
+    "pd": 2,
+    "research": 2,
     "unchecked": 1
    },
    "sections": [
@@ -1334,49 +1335,34 @@
    ]
   },
   "SS-4762": {
-   "bundles": 211,
-   "decoy_share": 0.199,
-   "tokens": 696507,
+   "bundles": 214,
+   "decoy_share": 0.206,
+   "tokens": 697317,
    "licence_tags": {
-    "cc-by": 76,
-    "cc-by-sa": 372,
-    "consent-train": 7,
+    "cc-by": 62,
+    "cc-by-sa": 409,
+    "consent-train": 5,
     "nc": 52,
-    "pd": 3,
-    "research": 2
-   },
-   "sections": [
-    "menota: AM-36-fol"
-   ]
-  },
-  "SS-31f6": {
-   "bundles": 215,
-   "decoy_share": 0.2,
-   "tokens": 698443,
-   "licence_tags": {
-    "cc-by": 63,
-    "cc-by-sa": 407,
-    "consent-train": 8,
-    "nc": 44,
-    "pd": 3,
-    "research": 1,
+    "pd": 5,
+    "research": 3,
     "unchecked": 1
    },
    "sections": [
     "menota: AM-36-fol"
    ]
   },
-  "SS-1606": {
-   "bundles": 257,
+  "SS-31f6": {
+   "bundles": 242,
    "decoy_share": 0.198,
-   "tokens": 696774,
+   "tokens": 697887,
    "licence_tags": {
-    "cc-by": 91,
-    "cc-by-sa": 348,
-    "consent-train": 5,
-    "nc": 93,
-    "pd": 2,
-    "unchecked": 3
+    "cc-by": 104,
+    "cc-by-sa": 373,
+    "consent-train": 6,
+    "nc": 59,
+    "pd": 3,
+    "research": 1,
+    "unchecked": 2
    },
    "sections": [
     "menota: AM-36-fol",
@@ -1384,65 +1370,65 @@
     "menota: AM-56-4to"
    ]
   },
-  "SS-31d8": {
-   "bundles": 217,
-   "decoy_share": 0.198,
-   "tokens": 695612,
+  "SS-1606": {
+   "bundles": 238,
+   "decoy_share": 0.202,
+   "tokens": 696951,
    "licence_tags": {
-    "cc-by": 61,
-    "cc-by-sa": 406,
-    "consent-train": 10,
-    "nc": 46,
-    "pd": 8
+    "cc-by": 71,
+    "cc-by-sa": 386,
+    "consent-train": 5,
+    "nc": 82,
+    "pd": 6,
+    "unchecked": 1
    },
    "sections": [
     "menota: AM-56-4to",
     "menota: AM-63-fol"
    ]
   },
-  "SS-6008": {
-   "bundles": 224,
-   "decoy_share": 0.201,
-   "tokens": 697511,
+  "SS-31d8": {
+   "bundles": 230,
+   "decoy_share": 0.2,
+   "tokens": 697431,
    "licence_tags": {
-    "cc-by": 58,
-    "cc-by-sa": 405,
+    "cc-by": 67,
+    "cc-by-sa": 416,
     "consent-train": 6,
-    "nc": 59,
+    "nc": 52,
     "pd": 4,
-    "research": 5,
-    "unchecked": 1
+    "research": 3
+   },
+   "sections": [
+    "menota: AM-63-fol"
+   ]
+  },
+  "SS-6008": {
+   "bundles": 213,
+   "decoy_share": 0.197,
+   "tokens": 650893,
+   "licence_tags": {
+    "cc-by": 67,
+    "cc-by-sa": 374,
+    "consent-train": 11,
+    "nc": 54,
+    "pd": 6,
+    "research": 3,
+    "unchecked": 2
    },
    "sections": [
     "menota: AM-63-fol"
    ]
   },
   "SS-a064": {
-   "bundles": 196,
-   "decoy_share": 0.204,
-   "tokens": 622207,
+   "bundles": 279,
+   "decoy_share": 0.201,
+   "tokens": 696174,
    "licence_tags": {
-    "cc-by": 60,
-    "cc-by-sa": 354,
-    "consent-train": 11,
-    "nc": 46,
-    "pd": 5,
-    "research": 2,
-    "unchecked": 1
-   },
-   "sections": [
-    "menota: AM-63-fol"
-   ]
-  },
-  "SS-5b0a": {
-   "bundles": 280,
-   "decoy_share": 0.2,
-   "tokens": 694636,
-   "licence_tags": {
-    "cc-by": 125,
-    "cc-by-sa": 306,
-    "consent-train": 2,
-    "nc": 112,
+    "cc-by": 132,
+    "cc-by-sa": 307,
+    "consent-train": 1,
+    "nc": 109,
     "pd": 2,
     "research": 1,
     "unchecked": 1
@@ -1453,264 +1439,246 @@
     "menota: DG-8-OHleg"
    ]
   },
-  "SS-15e6": {
-   "bundles": 158,
-   "decoy_share": 0.196,
-   "tokens": 696981,
+  "SS-5b0a": {
+   "bundles": 157,
+   "decoy_share": 0.204,
+   "tokens": 695895,
    "licence_tags": {
-    "cc-by": 83,
-    "cc-by-sa": 316,
-    "consent-train": 23,
-    "nc": 71,
-    "pd": 5,
-    "research": 4,
+    "cc-by": 90,
+    "cc-by-sa": 320,
+    "consent-train": 18,
+    "nc": 70,
+    "pd": 8,
+    "research": 9,
     "unchecked": 1
+   },
+   "sections": [
+    "menota: DG-8-OHleg"
+   ]
+  },
+  "SS-15e6": {
+   "bundles": 151,
+   "decoy_share": 0.199,
+   "tokens": 697959,
+   "licence_tags": {
+    "cc-by": 95,
+    "cc-by-sa": 314,
+    "consent-train": 17,
+    "nc": 61,
+    "pd": 6,
+    "research": 2,
+    "unchecked": 2
    },
    "sections": [
     "menota: DG-8-OHleg"
    ]
   },
   "SS-f71c": {
-   "bundles": 154,
-   "decoy_share": 0.201,
-   "tokens": 697119,
+   "bundles": 153,
+   "decoy_share": 0.196,
+   "tokens": 697350,
    "licence_tags": {
-    "cc-by": 82,
-    "cc-by-sa": 320,
+    "cc-by": 88,
+    "cc-by-sa": 313,
     "consent-train": 16,
-    "nc": 58,
-    "pd": 4,
-    "research": 3,
-    "unchecked": 2
+    "nc": 57,
+    "pd": 16,
+    "research": 5,
+    "unchecked": 1
    },
    "sections": [
     "menota: DG-8-OHleg"
    ]
   },
   "SS-6e65": {
-   "bundles": 150,
-   "decoy_share": 0.2,
-   "tokens": 698847,
+   "bundles": 152,
+   "decoy_share": 0.204,
+   "tokens": 698286,
    "licence_tags": {
-    "cc-by": 75,
-    "cc-by-sa": 322,
-    "consent-train": 18,
-    "nc": 57,
-    "pd": 7,
-    "research": 6,
-    "unchecked": 1
+    "cc-by": 92,
+    "cc-by-sa": 312,
+    "consent-train": 24,
+    "nc": 63,
+    "pd": 10,
+    "research": 3
    },
    "sections": [
     "menota: DG-8-OHleg"
    ]
   },
   "SS-f434": {
-   "bundles": 151,
-   "decoy_share": 0.199,
-   "tokens": 695867,
+   "bundles": 135,
+   "decoy_share": 0.193,
+   "tokens": 600499,
    "licence_tags": {
-    "cc-by": 91,
-    "cc-by-sa": 310,
-    "consent-train": 18,
-    "nc": 52,
-    "pd": 7,
-    "research": 4
-   },
-   "sections": [
-    "menota: DG-8-OHleg"
-   ]
-  },
-  "SS-0b25": {
-   "bundles": 153,
-   "decoy_share": 0.203,
-   "tokens": 694432,
-   "licence_tags": {
-    "cc-by": 104,
-    "cc-by-sa": 331,
-    "consent-train": 16,
-    "nc": 71,
-    "pd": 10,
-    "research": 1
+    "cc-by": 102,
+    "cc-by-sa": 270,
+    "consent-train": 19,
+    "nc": 69,
+    "pd": 14,
+    "research": 3
    },
    "sections": [
     "menota: DG-8-OHleg",
     "menota: GKS-2365-4to-Vsp"
    ]
   },
-  "SS-1478": {
-   "bundles": 331,
-   "decoy_share": 0.199,
-   "tokens": 695032,
+  "SS-0b25": {
+   "bundles": 332,
+   "decoy_share": 0.202,
+   "tokens": 695919,
    "licence_tags": {
-    "cc-by": 138,
-    "cc-by-sa": 333,
-    "consent-train": 3,
+    "cc-by": 145,
+    "cc-by-sa": 332,
+    "consent-train": 2,
     "nc": 144,
     "pd": 1,
     "research": 1,
     "unchecked": 1
    },
    "sections": [
-    "menota: GKS-2365-4to-Vsp",
     "menota: HolmPerg-30-4to",
     "menota: HolmPerg-34-4to-MLB",
-    "...",
     "menota: HolmPerg-34-4to-MLL"
    ]
   },
-  "SS-4ab4": {
-   "bundles": 300,
-   "decoy_share": 0.203,
-   "tokens": 692271,
+  "SS-1478": {
+   "bundles": 298,
+   "decoy_share": 0.198,
+   "tokens": 697882,
    "licence_tags": {
-    "cc-by": 127,
-    "cc-by-sa": 367,
-    "consent-train": 13,
+    "cc-by": 138,
+    "cc-by-sa": 373,
+    "consent-train": 15,
     "nc": 141,
-    "pd": 3,
-    "research": 2,
-    "unchecked": 4
+    "pd": 8,
+    "research": 3,
+    "unchecked": 3
    },
    "sections": [
     "menota: HolmPerg-34-4to-MLL",
     "menota: HolmPerg-4-fol"
    ]
   },
-  "SS-0450": {
-   "bundles": 236,
-   "decoy_share": 0.199,
-   "tokens": 697938,
+  "SS-4ab4": {
+   "bundles": 243,
+   "decoy_share": 0.202,
+   "tokens": 697015,
    "licence_tags": {
-    "cc-by": 112,
-    "cc-by-sa": 420,
-    "consent-train": 21,
+    "cc-by": 120,
+    "cc-by-sa": 427,
+    "consent-train": 17,
     "nc": 63,
-    "pd": 17,
-    "research": 8,
-    "unchecked": 2
-   },
-   "sections": [
-    "menota: HolmPerg-4-fol"
-   ]
-  },
-  "SS-79e9": {
-   "bundles": 278,
-   "decoy_share": 0.198,
-   "tokens": 696346,
-   "licence_tags": {
-    "cc-by": 86,
-    "cc-by-sa": 465,
-    "consent-train": 11,
-    "nc": 78,
-    "pd": 9,
-    "research": 3,
+    "pd": 16,
+    "research": 5,
     "unchecked": 1
    },
    "sections": [
     "menota: HolmPerg-4-fol"
    ]
   },
-  "SS-4b7d": {
-   "bundles": 239,
-   "decoy_share": 0.197,
-   "tokens": 697033,
+  "SS-0450": {
+   "bundles": 267,
+   "decoy_share": 0.199,
+   "tokens": 696587,
+   "licence_tags": {
+    "cc-by": 106,
+    "cc-by-sa": 451,
+    "consent-train": 12,
+    "nc": 72,
+    "pd": 16,
+    "research": 2
+   },
+   "sections": [
+    "menota: HolmPerg-4-fol"
+   ]
+  },
+  "SS-79e9": {
+   "bundles": 248,
+   "decoy_share": 0.202,
+   "tokens": 697089,
    "licence_tags": {
     "cc-by": 105,
-    "cc-by-sa": 410,
+    "cc-by-sa": 415,
     "consent-train": 17,
-    "nc": 56,
+    "nc": 62,
     "pd": 13,
-    "research": 8,
-    "unchecked": 2
+    "research": 4,
+    "unchecked": 3
+   },
+   "sections": [
+    "menota: HolmPerg-4-fol"
+   ]
+  },
+  "SS-4b7d": {
+   "bundles": 217,
+   "decoy_share": 0.198,
+   "tokens": 626919,
+   "licence_tags": {
+    "cc-by": 98,
+    "cc-by-sa": 387,
+    "consent-train": 13,
+    "nc": 53,
+    "pd": 6,
+    "research": 3
    },
    "sections": [
     "menota: HolmPerg-4-fol"
    ]
   },
   "SS-0099": {
-   "bundles": 234,
-   "decoy_share": 0.205,
-   "tokens": 695857,
-   "licence_tags": {
-    "cc-by": 88,
-    "cc-by-sa": 427,
-    "consent-train": 13,
-    "nc": 58,
-    "pd": 9,
-    "research": 4
-   },
-   "sections": [
-    "menota: HolmPerg-4-fol"
-   ]
-  },
-  "SS-ebf5": {
-   "bundles": 246,
-   "decoy_share": 0.199,
-   "tokens": 696650,
+   "bundles": 249,
+   "decoy_share": 0.201,
+   "tokens": 697039,
    "licence_tags": {
     "cc-by": 122,
-    "cc-by-sa": 420,
-    "consent-train": 17,
-    "nc": 80,
-    "pd": 7,
-    "research": 5,
+    "cc-by-sa": 417,
+    "consent-train": 14,
+    "nc": 95,
+    "pd": 12,
+    "research": 4,
     "unchecked": 2
    },
    "sections": [
-    "menota: HolmPerg-4-fol",
     "menota: Lbs-fragm-82",
     "menota: NRA-norrfragm-51",
+    "menota: NRA-norrfragm-52",
     "...",
     "menota: Wolf-Aug-9-10-4to"
    ]
   },
-  "SS-8b6a": {
-   "bundles": 162,
-   "decoy_share": 0.204,
-   "tokens": 450327,
+  "SS-ebf5": {
+   "bundles": 266,
+   "decoy_share": 0.203,
+   "tokens": 698434,
    "licence_tags": {
-    "cc-by": 67,
-    "cc-by-sa": 277,
-    "consent-train": 10,
-    "nc": 74,
-    "pd": 7,
-    "research": 2,
-    "unchecked": 5
+    "cc-by": 255,
+    "cc-by-sa": 307,
+    "consent-train": 7,
+    "nc": 97,
+    "pd": 13,
+    "research": 6,
+    "unchecked": 6
    },
    "sections": [
-    "menota: Wolf-Aug-9-10-4to"
-   ]
-  },
-  "SS-24f6": {
-   "bundles": 251,
-   "decoy_share": 0.195,
-   "tokens": 696944,
-   "licence_tags": {
-    "cc-by": 335,
-    "cc-by-sa": 199,
-    "consent-train": 12,
-    "nc": 84,
-    "pd": 7,
-    "research": 2,
-    "unchecked": 3
-   },
-   "sections": [
+    "menota: Wolf-Aug-9-10-4to",
     "icepahc: 1250.sturlunga.nar-sag",
     "icepahc: 1250.thetubrot.nar-sag",
+    "...",
     "icepahc: 1260.jomsvikingar.nar-sag"
    ]
   },
-  "SS-41b2": {
-   "bundles": 252,
-   "decoy_share": 0.198,
-   "tokens": 655531,
+  "SS-8b6a": {
+   "bundles": 275,
+   "decoy_share": 0.2,
+   "tokens": 696509,
    "licence_tags": {
-    "cc-by": 327,
-    "cc-by-sa": 158,
+    "cc-by": 357,
+    "cc-by-sa": 179,
     "consent-train": 8,
-    "nc": 102,
-    "pd": 2,
-    "research": 2,
+    "nc": 99,
+    "pd": 4,
+    "research": 4,
     "unchecked": 3
    },
    "sections": [
@@ -1719,36 +1687,37 @@
     "icepahc: 1275.morkin.nar-his"
    ]
   },
-  "SS-0621": {
-   "bundles": 247,
-   "decoy_share": 0.206,
-   "tokens": 697756,
+  "SS-24f6": {
+   "bundles": 264,
+   "decoy_share": 0.197,
+   "tokens": 698052,
    "licence_tags": {
-    "cc-by": 313,
-    "cc-by-sa": 190,
-    "consent-train": 7,
-    "nc": 98,
-    "pd": 3,
-    "research": 2,
-    "unchecked": 5
+    "cc-by": 340,
+    "cc-by-sa": 177,
+    "consent-train": 8,
+    "nc": 106,
+    "pd": 2,
+    "research": 1,
+    "unchecked": 7
    },
    "sections": [
+    "icepahc: 1275.morkin.nar-his",
     "icepahc: 1310.grettir.nar-sag",
     "icepahc: 1325.arni.nar-sag"
    ]
   },
-  "SS-eb65": {
-   "bundles": 248,
-   "decoy_share": 0.198,
-   "tokens": 586946,
+  "SS-41b2": {
+   "bundles": 251,
+   "decoy_share": 0.203,
+   "tokens": 597820,
    "licence_tags": {
-    "cc-by": 337,
-    "cc-by-sa": 149,
-    "consent-train": 6,
-    "nc": 92,
-    "pd": 8,
+    "cc-by": 352,
+    "cc-by-sa": 145,
+    "consent-train": 8,
+    "nc": 98,
+    "pd": 9,
     "research": 1,
-    "unchecked": 5
+    "unchecked": 4
    },
    "sections": [
     "icepahc: 1325.arni.nar-sag",
@@ -1758,78 +1727,78 @@
     "icepahc: 1400.viglundur.nar-sag"
    ]
   },
-  "SS-487f": {
-   "bundles": 367,
-   "decoy_share": 0.202,
-   "tokens": 596646,
+  "SS-0621": {
+   "bundles": 361,
+   "decoy_share": 0.197,
+   "tokens": 597536,
    "licence_tags": {
-    "cc-by": 105,
-    "cc-by-sa": 417,
-    "consent-train": 2,
-    "nc": 154,
-    "pd": 65,
-    "unchecked": 18
+    "cc-by": 111,
+    "cc-by-sa": 415,
+    "consent-train": 3,
+    "nc": 148,
+    "pd": 70,
+    "unchecked": 23
    },
    "sections": [
     "rea-goh: Kleinere_Althochdeutsche_Denkmäler/MA_Augensegen",
     "rea-goh: Kleinere_Althochdeutsche_Denkmäler/PPfS_Pariser_Pferdesegen",
     "rea-goh: Kleinere_Althochdeutsche_Denkmäler/M_Muspilli",
     "...",
-    "vuk: vuk:32927"
+    "vuk: vuk:47814"
    ]
   },
-  "SS-b9a6": {
-   "bundles": 497,
-   "decoy_share": 0.197,
-   "tokens": 621431,
-   "licence_tags": {
-    "cc-by": 94,
-    "cc-by-sa": 320,
-    "consent-train": 5,
-    "nc": 136,
-    "pd": 317,
-    "research": 1,
-    "unchecked": 30
-   },
-   "sections": [
-    "vuk: vuk:47765",
-    "vuk: vuk:33180",
-    "vuk: vuk:34465",
-    "...",
-    "byliny: russian-kireevsky-1860-1874-archiveorg/11016812bsb"
-   ]
-  },
-  "SS-2906": {
-   "bundles": 453,
+  "SS-eb65": {
+   "bundles": 487,
    "decoy_share": 0.201,
-   "tokens": 619436,
+   "tokens": 611693,
    "licence_tags": {
-    "cc-by": 77,
-    "cc-by-sa": 101,
-    "consent-train": 3,
-    "nc": 137,
-    "pd": 504,
-    "research": 2,
-    "unchecked": 18
+    "cc-by": 82,
+    "cc-by-sa": 354,
+    "consent-train": 5,
+    "nc": 141,
+    "pd": 282,
+    "research": 1,
+    "unchecked": 21
    },
    "sections": [
+    "vuk: vuk:33207",
+    "vuk: vuk:34338",
+    "vuk: vuk:34348",
+    "...",
+    "byliny: russian-kireevsky-1860-1874-archiveorg/10945725bsb"
+   ]
+  },
+  "SS-487f": {
+   "bundles": 488,
+   "decoy_share": 0.201,
+   "tokens": 666297,
+   "licence_tags": {
+    "cc-by": 95,
+    "cc-by-sa": 120,
+    "consent-train": 2,
+    "nc": 141,
+    "pd": 538,
+    "research": 2,
+    "unchecked": 24
+   },
+   "sections": [
+    "byliny: russian-kireevsky-1860-1874-archiveorg/11016812bsb",
     "byliny: russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimch2pes74",
     "byliny: russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimch2pesni36",
-    "byliny: russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimch2vyp57",
     "...",
     "byliny: russian-rybnikov-1861-1867-archiveorg/pesnisobrannyepnrybnikovymch2narod72"
    ]
   },
-  "SS-1fd2": {
-   "bundles": 409,
-   "decoy_share": 0.2,
-   "tokens": 519853,
+  "SS-b9a6": {
+   "bundles": 439,
+   "decoy_share": 0.198,
+   "tokens": 558320,
    "licence_tags": {
-    "cc-by": 42,
-    "cc-by-sa": 50,
+    "cc-by": 46,
+    "cc-by-sa": 56,
     "consent-train": 1,
-    "nc": 178,
-    "pd": 448,
+    "nc": 182,
+    "pd": 487,
     "unchecked": 10
    },
    "sections": [
@@ -1840,15 +1809,15 @@
     "dainos: lithuanian-juskevic-dainos-1880-1883/Lietuvi-kos-svotbin-s-dainos-1883"
    ]
   },
-  "SS-170f": {
-   "bundles": 249,
-   "decoy_share": 0.201,
-   "tokens": 698514,
+  "SS-2906": {
+   "bundles": 266,
+   "decoy_share": 0.203,
+   "tokens": 698008,
    "licence_tags": {
-    "cc-by": 331,
-    "cc-by-sa": 239,
+    "cc-by": 363,
+    "cc-by-sa": 214,
     "consent-train": 2,
-    "nc": 56,
+    "nc": 69,
     "pd": 7,
     "research": 1,
     "unchecked": 1
@@ -1857,48 +1826,47 @@
     "xcl: MH_1_1_04_Faustos"
    ]
   },
-  "SS-37de": {
-   "bundles": 246,
-   "decoy_share": 0.199,
-   "tokens": 699763,
+  "SS-1fd2": {
+   "bundles": 259,
+   "decoy_share": 0.201,
+   "tokens": 699818,
    "licence_tags": {
-    "cc-by": 370,
-    "cc-by-sa": 213,
-    "consent-train": 3,
-    "nc": 45,
-    "pd": 5,
-    "unchecked": 2
+    "cc-by": 392,
+    "cc-by-sa": 212,
+    "consent-train": 4,
+    "nc": 48,
+    "pd": 6,
+    "unchecked": 1
    },
    "sections": [
     "xcl: MH_1_1_04_Faustos",
     "xcl: MH_1_1_06_Yeghishe"
    ]
   },
-  "SS-89d4": {
-   "bundles": 237,
-   "decoy_share": 0.198,
-   "tokens": 698887,
+  "SS-170f": {
+   "bundles": 259,
+   "decoy_share": 0.201,
+   "tokens": 699445,
    "licence_tags": {
-    "cc-by": 354,
-    "cc-by-sa": 228,
+    "cc-by": 389,
+    "cc-by-sa": 199,
     "consent-train": 3,
-    "nc": 43,
-    "pd": 9,
-    "unchecked": 2
+    "nc": 58,
+    "pd": 10
    },
    "sections": [
     "xcl: MH_1_1_06_Yeghishe"
    ]
   },
-  "SS-3406": {
-   "bundles": 241,
-   "decoy_share": 0.203,
-   "tokens": 700738,
+  "SS-37de": {
+   "bundles": 256,
+   "decoy_share": 0.199,
+   "tokens": 658426,
    "licence_tags": {
-    "cc-by": 319,
-    "cc-by-sa": 223,
-    "consent-train": 1,
-    "nc": 50,
+    "cc-by": 346,
+    "cc-by-sa": 191,
+    "consent-train": 2,
+    "nc": 52,
     "pd": 5,
     "research": 1,
     "unchecked": 1
@@ -1907,116 +1875,97 @@
     "xcl: MH_1_1_06_Yeghishe"
    ]
   },
-  "SS-81c5": {
-   "bundles": 265,
-   "decoy_share": 0.196,
-   "tokens": 695753,
+  "SS-89d4": {
+   "bundles": 267,
+   "decoy_share": 0.199,
+   "tokens": 699988,
    "licence_tags": {
-    "cc-by": 342,
-    "cc-by-sa": 189,
-    "consent-train": 1,
-    "nc": 64,
-    "pd": 8,
-    "research": 1,
-    "unchecked": 3
-   },
-   "sections": [
-    "xcl: MH_1_1_06_Yeghishe",
-    "xcl: MH_1_2_11_Agathangelos"
-   ]
-  },
-  "SS-8c45": {
-   "bundles": 247,
-   "decoy_share": 0.202,
-   "tokens": 700770,
-   "licence_tags": {
-    "cc-by": 331,
-    "cc-by-sa": 197,
-    "consent-train": 8,
-    "nc": 72,
-    "pd": 8,
+    "cc-by": 369,
+    "cc-by-sa": 183,
+    "consent-train": 5,
+    "nc": 76,
+    "pd": 12,
     "unchecked": 3
    },
    "sections": [
     "xcl: MH_1_2_11_Agathangelos"
    ]
   },
-  "SS-88c5": {
-   "bundles": 255,
-   "decoy_share": 0.2,
-   "tokens": 698893,
+  "SS-3406": {
+   "bundles": 273,
+   "decoy_share": 0.198,
+   "tokens": 698372,
    "licence_tags": {
-    "cc-by": 362,
-    "cc-by-sa": 215,
-    "consent-train": 1,
-    "nc": 58,
+    "cc-by": 397,
+    "cc-by-sa": 185,
+    "consent-train": 4,
+    "nc": 67,
     "pd": 6,
-    "research": 1,
-    "unchecked": 1
+    "research": 2,
+    "unchecked": 2
    },
    "sections": [
     "xcl: MH_1_2_11_Agathangelos",
     "xcl: MH_1_2_12_Movses_Khor"
    ]
   },
-  "SS-a158": {
-   "bundles": 253,
-   "decoy_share": 0.202,
-   "tokens": 662619,
+  "SS-81c5": {
+   "bundles": 279,
+   "decoy_share": 0.204,
+   "tokens": 699149,
    "licence_tags": {
-    "cc-by": 342,
-    "cc-by-sa": 176,
-    "consent-train": 9,
-    "nc": 58,
-    "pd": 13,
-    "research": 1
+    "cc-by": 380,
+    "cc-by-sa": 186,
+    "consent-train": 5,
+    "nc": 70,
+    "pd": 12
    },
    "sections": [
     "xcl: MH_1_2_12_Movses_Khor"
    ]
   },
-  "SS-cf4d": {
-   "bundles": 251,
-   "decoy_share": 0.199,
-   "tokens": 700221,
+  "SS-8c45": {
+   "bundles": 247,
+   "decoy_share": 0.194,
+   "tokens": 699305,
    "licence_tags": {
-    "cc-by": 340,
-    "cc-by-sa": 214,
-    "consent-train": 1,
-    "nc": 34,
-    "pd": 11,
-    "research": 2,
+    "cc-by": 352,
+    "cc-by-sa": 218,
+    "consent-train": 7,
+    "nc": 50,
+    "pd": 9,
+    "research": 1,
     "unchecked": 1
    },
    "sections": [
+    "xcl: MH_1_2_12_Movses_Khor",
     "xcl: MH_1_2_13_Lazar_Parp"
    ]
   },
-  "SS-3d7b": {
-   "bundles": 230,
-   "decoy_share": 0.2,
-   "tokens": 699297,
+  "SS-88c5": {
+   "bundles": 240,
+   "decoy_share": 0.204,
+   "tokens": 697479,
    "licence_tags": {
-    "cc-by": 298,
-    "cc-by-sa": 240,
+    "cc-by": 312,
+    "cc-by-sa": 247,
     "consent-train": 7,
-    "nc": 44,
-    "pd": 8,
+    "nc": 41,
+    "pd": 9,
     "research": 2
    },
    "sections": [
     "xcl: MH_1_2_13_Lazar_Parp"
    ]
   },
-  "SS-f6c7": {
-   "bundles": 18,
-   "decoy_share": 0.222,
-   "tokens": 57420,
+  "SS-a158": {
+   "bundles": 2,
+   "decoy_share": 0.0,
+   "tokens": 7644,
    "licence_tags": {
-    "cc-by": 20,
-    "cc-by-sa": 22,
-    "nc": 2,
-    "pd": 3
+    "cc-by": 3,
+    "cc-by-sa": 2,
+    "nc": 1
    },
    "sections": [
     "xcl: MH_1_2_13_Lazar_Parp"
@@ -2024,94 +1973,94 @@
   }
  },
  "decoy_share_per_slab_min_max": [
-  0.194,
-  0.222
+  0.0,
+  0.206
  ],
  "slab_tokens_min_max": [
-  57420,
-  700770
+  7644,
+  700653
  ],
- "total_slab_tokens": 41051929,
- "read_tokens_est": 53367508,
- "readers_at_stageB_capacity": 62,
+ "total_slab_tokens": 39145327,
+ "read_tokens_est": 50888925,
+ "readers_at_stageB_capacity": 59,
  "reader_capacity": {
   "target_tokens": 600000,
   "max_tokens": 700000
  },
  "partner_slots_by_corpus": {
-  "grc": 8495,
-  "lat": 4421,
-  "av": 2696,
-  "sa-ep": 2381,
-  "hom": 1513,
-  "orv": 1382,
-  "menota": 840,
-  "mga": 538,
-  "ang": 467,
-  "xcl": 410,
-  "rv": 346,
-  "ae": 321,
-  "hit": 318,
-  "lv": 270,
-  "byliny": 269,
-  "sga": 254,
-  "non": 173,
-  "vuk": 158,
-  "icepahc": 150,
-  "dainos": 72,
-  "cy": 40,
-  "ga-early": 20,
-  "rea-goh": 18,
-  "xum": 17
+  "grc": 7252,
+  "lat": 4437,
+  "av": 2653,
+  "sa-ep": 2593,
+  "hom": 1674,
+  "orv": 1321,
+  "menota": 913,
+  "mga": 549,
+  "ang": 474,
+  "xcl": 462,
+  "rv": 381,
+  "byliny": 369,
+  "hit": 350,
+  "ae": 318,
+  "lv": 277,
+  "sga": 264,
+  "non": 179,
+  "icepahc": 167,
+  "vuk": 166,
+  "dainos": 74,
+  "cy": 36,
+  "rea-goh": 21,
+  "xum": 19,
+  "ga-early": 18
  },
  "floor_alternatives": {
   "0.9": {
-   "floor": 13.5495,
-   "bundles": 11044,
-   "celtic_pivot_bundles": 1635,
-   "slab_tokens_est_no_dedupe": 35102184,
-   "read_tokens_est_no_dedupe": 45632839
+   "floor": 13.4891,
+   "bundles": 10894,
+   "celtic_pivot_bundles": 1653,
+   "slab_tokens_est_no_dedupe": 33454201,
+   "read_tokens_est_no_dedupe": 43490461
   },
   "0.95": {
-   "floor": 14.4957,
-   "bundles": 5563,
-   "celtic_pivot_bundles": 728,
-   "slab_tokens_est_no_dedupe": 17349345,
-   "read_tokens_est_no_dedupe": 22554148
+   "floor": 14.4027,
+   "bundles": 5478,
+   "celtic_pivot_bundles": 750,
+   "slab_tokens_est_no_dedupe": 16361295,
+   "read_tokens_est_no_dedupe": 21269684
   },
   "0.97": {
-   "floor": 15.1574,
-   "bundles": 3345,
-   "celtic_pivot_bundles": 398,
-   "slab_tokens_est_no_dedupe": 10489094,
-   "read_tokens_est_no_dedupe": 13635823
+   "floor": 15.0197,
+   "bundles": 3284,
+   "celtic_pivot_bundles": 428,
+   "slab_tokens_est_no_dedupe": 9884555,
+   "read_tokens_est_no_dedupe": 12849921
   },
   "0.98": {
-   "floor": 15.7155,
-   "bundles": 2234,
-   "celtic_pivot_bundles": 237,
-   "slab_tokens_est_no_dedupe": 6898477,
-   "read_tokens_est_no_dedupe": 8968020
+   "floor": 15.544,
+   "bundles": 2189,
+   "celtic_pivot_bundles": 261,
+   "slab_tokens_est_no_dedupe": 6493407,
+   "read_tokens_est_no_dedupe": 8441429
   },
   "0.99": {
-   "floor": 16.6032,
-   "bundles": 1128,
-   "celtic_pivot_bundles": 108,
-   "slab_tokens_est_no_dedupe": 3443734,
-   "read_tokens_est_no_dedupe": 4476854
+   "floor": 16.3391,
+   "bundles": 1101,
+   "celtic_pivot_bundles": 122,
+   "slab_tokens_est_no_dedupe": 3239806,
+   "read_tokens_est_no_dedupe": 4211748
   }
  },
- "decoy_target": 3112,
+ "decoy_target": 3040,
  "thin_partner_slots": {
-  "av": 2696,
-  "lat": 4421,
-  "hit": 318,
-  "orv": 1382,
-  "ang": 467,
-  "ae": 321,
-  "lv": 270,
-  "non": 173,
-  "xum": 17
+  "av": 2653,
+  "lat": 4437,
+  "hit": 350,
+  "ae": 318,
+  "orv": 1321,
+  "ang": 474,
+  "lv": 277,
+  "xum": 19,
+  "non": 179
  },
  "layers": {
   "sga-gl": {
@@ -2305,11 +2254,11 @@
    }
   },
   "hit": {
-   "units": 47862,
-   "kept": 47157,
-   "left_out": 705,
+   "units": 47009,
+   "kept": 46338,
+   "left_out": 671,
    "kept_by_classes": {
-    "NARR+CULT+LAW+WISDOM+LYR": 47157
+    "NARR+CULT+LAW+WISDOM+LYR": 46338
    }
   },
   "lat": {
@@ -2361,13 +2310,13 @@
   }
  },
  "bundles_by_pivot_class": {
-  "NARR": 13011,
-  "LAW": 1473,
-  "NARR+LYR": 480,
-  "NARR+CULT+LYR": 246,
+  "NARR": 12647,
+  "LAW": 1429,
+  "NARR+LYR": 500,
+  "NARR+CULT+LYR": 257,
   "CULT": 12,
-  "LAW+WISDOM": 34,
-  "LYR": 301
+  "LAW+WISDOM": 31,
+  "LYR": 325
  },
  "mapping_notes": {
   "stageB": {
@@ -2380,7 +2329,7 @@
   "stageB_sga_units_dropped": 99,
   "celtic": {
    "celtic_dup_units_skipped": 49536,
-   "celt_research_tag_mismatch": 1429,
+   "celt_research_tag_mismatch": 6036,
    "gloss_units_joined_to_tagged_tokens": 6915,
    "irish_lemmatizer_levels_by_type": {
     "unknown": 419581,

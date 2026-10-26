@@ -7,99 +7,99 @@
   "window_rule": "a unit with more than max_content_words content words is cut into ceil(n/max) consecutive windows of near-equal size"
  },
  "root_weight": "idf = ln(N / df); df = number of indexed units (all corpora, pivots and partners) containing the root group; N = indexed units with >= 1 mapped root group",
- "N_units": 760055,
+ "N_units": 755464,
  "partner_rule": "other branch; >= 2 shared root groups, >= 1 of them outside the 50 most frequent root groups; score = sum of idf over shared groups",
  "top_k": 6,
  "n_common": 50,
  "min_shared": 2,
  "floor_rule": "floor = the 0.9 quantile of the best-partner score over all Stage C-S pivots that have a partner (Stage B's size rule); a pivot keeps its top-k partners scoring >= floor",
  "floor_quantile": 0.9,
- "floor": 13.5495,
+ "floor": 13.4891,
  "score_distribution": {
-  "pivots_with_partner": 122950,
-  "pairs_top_k": 529579,
+  "pivots_with_partner": 122693,
+  "pairs_top_k": 543421,
   "best_score_quantiles": {
    "0.5": 10.8408,
-   "0.75": 12.1735,
-   "0.9": 13.5495,
-   "0.95": 14.4957,
-   "0.98": 15.7155,
-   "0.99": 16.6032,
-   "0.995": 17.363,
-   "0.999": 18.9791
+   "0.75": 12.1456,
+   "0.9": 13.4891,
+   "0.95": 14.4027,
+   "0.98": 15.544,
+   "0.99": 16.3391,
+   "0.995": 17.0589,
+   "0.999": 18.7744
   },
   "pair_score_quantiles": {
-   "0.5": 10.1998,
-   "0.75": 11.257,
-   "0.9": 12.4499,
-   "0.95": 13.247,
-   "0.98": 14.3391,
-   "0.99": 15.142,
-   "0.995": 15.9605,
-   "0.999": 17.6747
+   "0.5": 10.1614,
+   "0.75": 11.2191,
+   "0.9": 12.3831,
+   "0.95": 13.1656,
+   "0.98": 14.2111,
+   "0.99": 14.969,
+   "0.995": 15.7853,
+   "0.999": 17.3933
   }
  },
  "null_model": "null model: the same deduplicated units of every corpus, each content word's root-group set permuted among the content words of its corpus (seed 0); the same retrieval from the Stage C pivots",
  "null_comparison": {
   "10.8408": {
-   "real": 61477,
-   "null": 72237,
+   "real": 61351,
+   "null": 72234,
    "per_corpus_real_null": {
     "sga-gl": [
      0,
      0
     ],
     "sga": [
-     2494,
-     3174
+     2503,
+     3209
     ],
     "mga": [
-     6955,
-     8853
+     6944,
+     8814
     ],
     "cy": [
-     799,
-     1385
+     832,
+     1420
     ],
     "ga-early": [
      217,
-     261
+     278
     ],
     "menota": [
-     25454,
-     26717
+     25117,
+     26576
     ],
     "icepahc": [
-     3661,
-     3835
+     3563,
+     3804
     ],
     "rea-goh": [
      82,
      99
     ],
     "rea-osx": [
-     4,
+     3,
      5
     ],
     "vuk": [
-     5593,
-     7228
+     5611,
+     7312
     ],
     "byliny": [
-     7108,
-     9954
+     7257,
+     10045
     ],
     "dainos": [
-     1783,
-     2996
+     1839,
+     3011
     ],
     "ccmh": [
      0,
      0
     ],
     "xcl": [
-     7327,
-     7730
+     7383,
+     7661
     ],
     "xto": [
      0,
@@ -167,65 +167,65 @@
     ]
    }
   },
-  "12.1735": {
-   "real": 30737,
-   "null": 36283,
+  "12.1456": {
+   "real": 30669,
+   "null": 36635,
    "per_corpus_real_null": {
     "sga-gl": [
      0,
      0
     ],
     "sga": [
-     1130,
-     1667
+     1160,
+     1650
     ],
     "mga": [
-     3336,
-     4625
+     3379,
+     4707
     ],
     "cy": [
-     385,
-     778
+     397,
+     750
     ],
     "ga-early": [
      111,
-     157
+     169
     ],
     "menota": [
-     14263,
-     15563
+     14052,
+     15594
     ],
     "icepahc": [
-     1946,
-     2021
+     1876,
+     2009
     ],
     "rea-goh": [
-     61,
-     74
+     62,
+     75
     ],
     "rea-osx": [
      0,
      5
     ],
     "vuk": [
-     1735,
-     2026
+     1766,
+     2116
     ],
     "byliny": [
-     2588,
-     3375
+     2735,
+     3578
     ],
     "dainos": [
-     603,
-     1047
+     636,
+     1087
     ],
     "ccmh": [
      0,
      0
     ],
     "xcl": [
-     4579,
-     4945
+     4495,
+     4895
     ],
     "xto": [
      0,
@@ -293,65 +293,65 @@
     ]
    }
   },
-  "13.5495": {
-   "real": 12289,
-   "null": 14690,
+  "13.4891": {
+   "real": 12270,
+   "null": 14944,
    "per_corpus_real_null": {
     "sga-gl": [
      0,
      0
     ],
     "sga": [
-     439,
-     684
+     450,
+     696
     ],
     "mga": [
-     1233,
-     1861
+     1259,
+     1878
     ],
     "cy": [
-     128,
-     280
+     127,
+     287
     ],
     "ga-early": [
-     43,
-     72
+     44,
+     75
     ],
     "menota": [
-     6251,
-     6913
+     6246,
+     7052
     ],
     "icepahc": [
-     811,
-     832
+     774,
+     833
     ],
     "rea-goh": [
-     40,
-     48
+     42,
+     49
     ],
     "rea-osx": [
      0,
      2
     ],
     "vuk": [
-     320,
-     416
+     357,
+     437
     ],
     "byliny": [
-     559,
-     827
+     632,
+     883
     ],
     "dainos": [
-     135,
-     256
+     141,
+     263
     ],
     "ccmh": [
      0,
      0
     ],
     "xcl": [
-     2330,
-     2499
+     2198,
+     2489
     ],
     "xto": [
      0,
@@ -419,65 +419,191 @@
     ]
    }
   },
-  "14.4957": {
-   "real": 6148,
-   "null": 7317,
+  "14.4027": {
+   "real": 6135,
+   "null": 7437,
    "per_corpus_real_null": {
     "sga-gl": [
      0,
      0
     ],
     "sga": [
-     190,
-     323
+     205,
+     349
     ],
     "mga": [
-     545,
-     863
+     551,
+     907
     ],
     "cy": [
-     49,
-     138
+     52,
+     141
     ],
     "ga-early": [
-     19,
+     22,
+     34
+    ],
+    "menota": [
+     3229,
+     3660
+    ],
+    "icepahc": [
+     377,
+     436
+    ],
+    "rea-goh": [
+     29,
+     32
+    ],
+    "rea-osx": [
+     0,
+     1
+    ],
+    "vuk": [
+     161,
+     135
+    ],
+    "byliny": [
+     234,
+     297
+    ],
+    "dainos": [
+     56,
+     107
+    ],
+    "ccmh": [
+     0,
+     0
+    ],
+    "xcl": [
+     1219,
+     1338
+    ],
+    "xto": [
+     0,
+     0
+    ],
+    "sqo": [
+     0,
+     0
+    ],
+    "rv": [
+     0,
+     0
+    ],
+    "av": [
+     0,
+     0
+    ],
+    "ae": [
+     0,
+     0
+    ],
+    "hom": [
+     0,
+     0
+    ],
+    "grc": [
+     0,
+     0
+    ],
+    "non": [
+     0,
+     0
+    ],
+    "ang": [
+     0,
+     0
+    ],
+    "hit": [
+     0,
+     0
+    ],
+    "lat": [
+     0,
+     0
+    ],
+    "xum": [
+     0,
+     0
+    ],
+    "lv": [
+     0,
+     0
+    ],
+    "orv": [
+     0,
+     0
+    ],
+    "sa-ep": [
+     0,
+     0
+    ],
+    "grc-late": [
+     0,
+     0
+    ]
+   }
+  },
+  "15.544": {
+   "real": 2452,
+   "null": 3007,
+   "per_corpus_real_null": {
+    "sga-gl": [
+     0,
+     0
+    ],
+    "sga": [
+     61,
+     133
+    ],
+    "mga": [
+     194,
+     392
+    ],
+    "cy": [
+     17,
+     47
+    ],
+    "ga-early": [
+     8,
+     11
+    ],
+    "menota": [
+     1338,
+     1474
+    ],
+    "icepahc": [
+     153,
+     184
+    ],
+    "rea-goh": [
+     17,
+     14
+    ],
+    "rea-osx": [
+     0,
+     1
+    ],
+    "vuk": [
+     55,
+     42
+    ],
+    "byliny": [
+     67,
+     81
+    ],
+    "dainos": [
+     24,
      46
     ],
-    "menota": [
-     3203,
-     3612
-    ],
-    "icepahc": [
-     398,
-     431
-    ],
-    "rea-goh": [
-     27,
-     32
-    ],
-    "rea-osx": [
-     0,
-     1
-    ],
-    "vuk": [
-     147,
-     120
-    ],
-    "byliny": [
-     206,
-     284
-    ],
-    "dainos": [
-     49,
-     102
-    ],
     "ccmh": [
      0,
      0
     ],
     "xcl": [
-     1315,
-     1365
+     518,
+     582
     ],
     "xto": [
      0,
@@ -545,191 +671,65 @@
     ]
    }
   },
-  "15.7155": {
-   "real": 2458,
-   "null": 2710,
+  "16.3391": {
+   "real": 1227,
+   "null": 1521,
    "per_corpus_real_null": {
     "sga-gl": [
      0,
      0
     ],
     "sga": [
-     55,
-     121
-    ],
-    "mga": [
-     180,
-     314
-    ],
-    "cy": [
-     15,
-     43
-    ],
-    "ga-early": [
-     6,
-     17
-    ],
-    "menota": [
-     1321,
-     1357
-    ],
-    "icepahc": [
-     165,
-     168
-    ],
-    "rea-goh": [
-     15,
-     13
-    ],
-    "rea-osx": [
-     0,
-     1
-    ],
-    "vuk": [
-     51,
-     25
-    ],
-    "byliny": [
-     57,
+     29,
      75
     ],
-    "dainos": [
-     24,
-     32
-    ],
-    "ccmh": [
-     0,
-     0
-    ],
-    "xcl": [
-     569,
-     544
-    ],
-    "xto": [
-     0,
-     0
-    ],
-    "sqo": [
-     0,
-     0
-    ],
-    "rv": [
-     0,
-     0
-    ],
-    "av": [
-     0,
-     0
-    ],
-    "ae": [
-     0,
-     0
-    ],
-    "hom": [
-     0,
-     0
-    ],
-    "grc": [
-     0,
-     0
-    ],
-    "non": [
-     0,
-     0
-    ],
-    "ang": [
-     0,
-     0
-    ],
-    "hit": [
-     0,
-     0
-    ],
-    "lat": [
-     0,
-     0
-    ],
-    "xum": [
-     0,
-     0
-    ],
-    "lv": [
-     0,
-     0
-    ],
-    "orv": [
-     0,
-     0
-    ],
-    "sa-ep": [
-     0,
-     0
-    ],
-    "grc-late": [
-     0,
-     0
-    ]
-   }
-  },
-  "16.6032": {
-   "real": 1230,
-   "null": 1251,
-   "per_corpus_real_null": {
-    "sga-gl": [
-     0,
-     0
-    ],
-    "sga": [
-     24,
-     57
-    ],
     "mga": [
-     77,
-     137
+     88,
+     190
     ],
     "cy": [
-     7,
-     16
+     9,
+     21
     ],
     "ga-early": [
      3,
-     5
+     6
     ],
     "menota": [
-     691,
-     626
+     703,
+     754
     ],
     "icepahc": [
-     72,
-     83
+     70,
+     90
     ],
     "rea-goh": [
-     9,
-     10
+     11,
+     9
     ],
     "rea-osx": [
      0,
      1
     ],
     "vuk": [
-     28,
-     8
+     33,
+     22
     ],
     "byliny": [
-     27,
+     35,
      31
     ],
     "dainos": [
-     8,
-     12
+     9,
+     23
     ],
     "ccmh": [
      0,
      0
     ],
     "xcl": [
-     284,
-     265
+     237,
+     299
     ],
     "xto": [
      0,
@@ -801,31 +801,27 @@
  "common_roots": [
   {
    "group": "pie-root-h1es-be",
-   "df": 67843
+   "df": 68527
   },
   {
    "group": "pie-root-h2wes-dwell",
-   "df": 33826
+   "df": 33845
   },
   {
    "group": "pie-root-gjenh1-produce",
-   "df": 30762
+   "df": 30910
   },
   {
    "group": "pie-root-steh2-stand",
-   "df": 26548
+   "df": 26684
   },
   {
    "group": "pie-root-bhuH-be",
-   "df": 25454
+   "df": 25485
   },
   {
    "group": "pie-lex-megjh2s",
-   "df": 25273
-  },
-  {
-   "group": "pie-root-dheh1-do",
-   "df": 19907
+   "df": 25259
   },
   {
    "group": "pie-lex-mon",
@@ -833,39 +829,43 @@
   },
   {
    "group": "pie-root-gwem-come",
-   "df": 19595
+   "df": 19604
   },
   {
    "group": "pie-root-weyd-see",
-   "df": 19470
+   "df": 19535
   },
   {
    "group": "pie-root-kwer-do",
-   "df": 19459
+   "df": 19522
+  },
+  {
+   "group": "pie-root-dheh1-do",
+   "df": 18727
   },
   {
    "group": "pie-root-bher-bear",
-   "df": 18562
+   "df": 18658
   },
   {
    "group": "pie-root-deh3-give",
-   "df": 16577
-  },
-  {
-   "group": "pie-root-h1ey-go",
-   "df": 16434
+   "df": 16300
   },
   {
    "group": "pie-root-dyew-be_bright",
-   "df": 15868
+   "df": 15865
   },
   {
    "group": "pie-root-men-think",
-   "df": 15518
+   "df": 15502
+  },
+  {
+   "group": "pie-root-h1ey-go",
+   "df": 15439
   },
   {
    "group": "pie-root-h3regj-straighten",
-   "df": 15037
+   "df": 15035
   },
   {
    "group": "pie-root-wekw-speak",
@@ -877,7 +877,7 @@
   },
   {
    "group": "pie-root-per-go_through",
-   "df": 13269
+   "df": 13312
   },
   {
    "group": "pie-root-welh1-choose",
@@ -885,11 +885,11 @@
   },
   {
    "group": "pie-root-skel-be_obligated",
-   "df": 12056
+   "df": 12009
   },
   {
    "group": "pie-root-sed-sit",
-   "df": 10592
+   "df": 10604
   },
   {
    "group": "pie-root-wert-turn",
@@ -897,51 +897,47 @@
   },
   {
    "group": "pie-root-peh2-protect",
-   "df": 10258
+   "df": 10237
   },
   {
    "group": "pie-root-sekw-say",
-   "df": 10036
-  },
-  {
-   "group": "pie-root-peh2w-few",
-   "df": 9568
+   "df": 9766
   },
   {
    "group": "pie-root-derkj-see",
-   "df": 9493
+   "df": 9504
+  },
+  {
+   "group": "pie-root-gjneh3-recognise",
+   "df": 9368
   },
   {
    "group": "pie-lex-h2nexr",
    "df": 9352
   },
   {
+   "group": "pie-root-peh2w-few",
+   "df": 9340
+  },
+  {
    "group": "pie-root-dher-support",
    "df": 9324
   },
   {
-   "group": "pie-root-gjneh3-recognise",
-   "df": 9297
-  },
-  {
    "group": "pie-root-kjlew-hear",
-   "df": 8939
+   "df": 8943
   },
   {
    "group": "pie-root-h1ep-grab",
-   "df": 8902
-  },
-  {
-   "group": "pie-root-sewH-bear",
-   "df": 8338
+   "df": 8565
   },
   {
    "group": "pie-root-h1er-arrive",
-   "df": 8213
+   "df": 8366
   },
   {
    "group": "pie-root-segjh-overpower",
-   "df": 8187
+   "df": 8255
   },
   {
    "group": "pie-lex-wiHros",
@@ -949,11 +945,15 @@
   },
   {
    "group": "pie-root-gwhen-strike",
-   "df": 8020
+   "df": 8004
   },
   {
    "group": "pie-root-pleh1-fill",
-   "df": 7923
+   "df": 7948
+  },
+  {
+   "group": "pie-root-sewH-bear",
+   "df": 7857
   },
   {
    "group": "pie-root-meh2kj-raise",
@@ -961,23 +961,23 @@
   },
   {
    "group": "pie-root-lewk-bright",
-   "df": 7550
+   "df": 7546
   },
   {
    "group": "pie-root-teh2g-touch",
    "df": 7159
   },
   {
-   "group": "pie-root-legh-lie",
-   "df": 6697
+   "group": "pie-root-h2er-fit",
+   "df": 6736
   },
   {
-   "group": "pie-root-h2er-fit",
-   "df": 6636
+   "group": "pie-root-legh-lie",
+   "df": 6684
   },
   {
    "group": "pie-root-mer-die",
-   "df": 6541
+   "df": 6575
   },
   {
    "group": "pie-root-meh2d-meet",
@@ -1125,7 +1125,7 @@
   "stageB_sga_units_dropped": 99,
   "celtic": {
    "celtic_dup_units_skipped": 49536,
-   "celt_research_tag_mismatch": 1429,
+   "celt_research_tag_mismatch": 6036,
    "gloss_units_joined_to_tagged_tokens": 6915,
    "irish_lemmatizer_levels_by_type": {
     "unknown": 419581,
@@ -1150,7 +1150,7 @@
    "glaux_late_texts": 727
   }
  },
- "thin_floor": 12.3706,
+ "thin_floor": 12.3867,
  "thin_rule": "thin corpora: partner-only corpora with < THIN_MAX_UNITS indexed units under the main rule; layer loosened to the whole native corpus, genre waived; Hittite unit = paragraph; up to THIN_SLOTS thin partners per pivot (best per thin corpus) from a separate search; thin floor = the FLOOR_Q quantile of the pivots' best thin-partner scores (amendment of 2026-10-24)",
  "thin_max_units": 15000,
  "thin_slots": 2,
@@ -1166,12 +1166,12 @@
   "xum"
  ],
  "thin_best_quantiles": {
-  "0.5": 10.0657,
-  "0.75": 11.1548,
-  "0.9": 12.3706,
-  "0.95": 13.1024
+  "0.5": 10.0812,
+  "0.75": 11.1766,
+  "0.9": 12.3867,
+  "0.95": 13.1284
  },
- "pivots_with_thin_partner": 85655,
+ "pivots_with_thin_partner": 85793,
  "layer_rule": "indexed units: each tradition's earliest, least derivative layer per genre (docs/research/8c-preregistration.md, Stage C-S table; scripts/build_8c_stageCS.py Classifier); idf over the indexed units only",
  "class_rule": "a partner shares at least one genre class (NARR, CULT, LAW, WISDOM, LYR) with its pivot",
  "corpus_cap": 2,
