@@ -43,3 +43,8 @@ Quote daughter text only as the cited words. When you finish, add one line `{"re
 When you notice an error in the material — a wrong lemma, a wrong or missing PIE mapping, an OCR misreading, a unit cut in the wrong place, a name taken as a word — add one line per error to your claims file (it is not a claim and does not count as one):
 `{"reader": "...", "slab": "...", "error": {"passage": "<passage id>", "form": "...", "given_lemma": "...", "given_etymon": "...", "kind": "mapping|lemma|ocr|unit|name", "correct_reading": "...", "evidence": "..."}}`
 Report what you are confident of; do not stop reading to hunt for errors.
+
+## Near-miss lines (added 2026-10-25)
+For every lead you test against the corpora (or read closely) but do not claim, add one line to your claims file (it is not a claim):
+`{"reader": "...", "slab": "...", "near_miss": {"bundles": ["BS-..."], "anchors": ["<passage id>", ...], "lead": "<the phrase or figure>", "why_not": "<why you did not claim it>"}}`
+A second reader may look at these bundles again.
