@@ -336,6 +336,7 @@ def menota_tokens(root: Path) -> list:
         if n >= 3 and n >= 2 / 3 * sum(c.values()) and len(k) >= 2:
             table[k] = (lem, msa)
     lic = SB.CORPORA["menota"][2]
+    reviewed = gm.menota_reviewed_tokens(root)     # the same reviewed sense repairs as gm.load_menota
     toks = []
     for d, _ in docs:
         lemmatized = any(w.lemma for w in words[d])
@@ -349,6 +350,9 @@ def menota_tokens(root: Path) -> list:
                 src = "form-table" if not lem.startswith("?") else "unknown"
             elif not lem:
                 continue
+            corrected, tag = gm.reviewed_menota_token(w, lem, msa, reviewed)
+            if (corrected, tag) != (lem, msa):
+                lem, msa, src = corrected, tag, "reviewed"
             if msa == "FW" or lem in ("Latin.expression", "unass.", "?"):
                 continue
             content = msa in gm.MENOTA_CONTENT or src == "unknown"
