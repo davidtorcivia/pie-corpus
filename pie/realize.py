@@ -170,6 +170,7 @@ class Word:
     clitic: bool = False
     gender: str | None = None       # the resolved gender of a nominal (an adjective's is its head's)
     voice: str | None = None        # ACT | MID for verbs and participles
+    num_fallback: str | None = None  # du->pl when the controller's dual cell is unavailable
 
 
 @dataclass
@@ -983,7 +984,8 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
             form = lx.admissible_cells(lid)[feat][0]
             if prohibitive:
                 feat = feat.replace("PST", "INJ").replace("AOR", "INJ")
-            words[i] = Word(form, lid, lx.gloss(lid), feat, i, voice=v.get("voice", "ACT"))
+            words[i] = Word(form, lid, lx.gloss(lid), feat, i, voice=v.get("voice", "ACT"),
+                            num_fallback="du->pl" if num == "DU" and feat.endswith("PL") else None)
             continue
         elif role == "ADV":
             feat, form = "ADV", (lx.entries[lid]["form"] if not lid.startswith("closed:") else lid.split(":")[-1])
@@ -1127,9 +1129,9 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
 
 
 def token_cell(w: dict) -> dict:
-    """The resolved gender and voice of a realized word (realize()["words"] entry) for a corpus token: only
-    the keys that apply (a particle has neither)."""
-    return {k: w[k] for k in ("gender", "voice") if w.get(k)}
+    """Resolved cell metadata and number fallback of a realized word for a corpus token.
+    Only applicable keys are included; features continues to name the realized cell."""
+    return {k: w[k] for k in ("gender", "voice", "num_fallback") if w.get(k)}
 
 
 def realize(plan: dict, lx: Lexicon | None = None) -> dict:

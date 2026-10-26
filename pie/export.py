@@ -119,10 +119,13 @@ def record_tasks(r: dict) -> list[dict]:
     if r.get("gloss"):
         out.append({"task": "gloss", "input": r["pie"], "output": r["gloss"], "style": style})
     acc = _record_accent(r)
+    num_fallback = any(w.get("num_fallback") == "du->pl" for w in r.get("tokens", []))
     for t in out:
         t["source_id"] = r["id"]
         if acc:
             t["accent"] = acc
+        if num_fallback:
+            t["num_fallback"] = "du->pl"
     return out
 
 

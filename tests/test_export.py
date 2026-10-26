@@ -94,3 +94,24 @@ def test_adjective_inflection_tasks_name_the_gender():
         lemma, feat = t["input"].rsplit(" ", 1)
         g, cell = feat.split(".", 1)
         assert g in ("M", "F", "N") and t["output"] == lx.cells(t["source_id"], g.lower())[cell][0]
+
+
+@pytest.mark.parametrize("num,flag", [("DU", "du->pl"), ("PL", None)])
+def test_record_tasks_carry_realized_number_fallback(num, flag):
+    from pie.export import record_tasks, token_variants
+    from pie.realize import token_cell
+    from .helpers import produce
+    lx = _lx()
+    realized = produce({"english": "They carry for themselves.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-bhereti", "role": "V", "verb": {
+            "voice": "MID", "person": 3, "num": num}}]}]}, lx)
+    tokens = [{k: w[k] for k in ("form", "lex_id", "features")} | token_cell(w)
+              for w in realized["words"]]
+    record = {**realized, "id": "fallback-test", "tier": 2, "tokens": tokens}
+    tasks = record_tasks(record)
+    assert {t["task"] for t in tasks} == {"translate_en_pie", "translate_pie_en", "gloss"}
+    assert all(t.get("num_fallback") == flag for t in tasks)
+    assert all(("num_fallback" in t) == bool(flag) for t in tasks)
+    assert token_variants(record, lx) == [lx.admissible_cells("pie-lex-bhereti")["MID.PRS.3PL"]]
+    tokens[0].pop("num_fallback", None)
+    assert all("num_fallback" not in t for t in record_tasks(record))

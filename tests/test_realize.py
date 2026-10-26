@@ -988,3 +988,37 @@ def test_epithet_pairs_leave_the_number_to_the_verb():
     assert "ḱlutóm" in produce(plan(kwe, "DU"))["pie"]
     assert any("addressee" in e for e in check_plan(plan(kwe, "SG")))
     assert "ḱludʰí" in produce(plan(voc[:2], None))["pie"]
+
+
+@pytest.mark.parametrize("lid,voice,tense,person,num,expected", [
+    ("pie-lex-bhereti", "MID", "PRS", 2, "DU", "du->pl"),
+    ("pie-lex-bhereti", "MID", "PRS", 3, "DU", "du->pl"),
+    ("pie-lex-woyde", "ACT", "PRF", 3, "DU", "du->pl"),
+    ("pie-lex-bhereti", "MID", "PRS", 1, "DU", None),
+    ("pie-lex-bhereti", "ACT", "PRS", 3, "DU", None),
+    ("pie-lex-bhereti", "MID", "PRS", 3, "PL", None),
+    ("pie-lex-bhereti", "MID", "PRS", 3, "SG", None),
+])
+def test_number_fallback_metadata_pro_drop(lid, voice, tense, person, num, expected):
+    from pie.realize import token_cell
+    plan = {"english": "Inflection metadata.", "clauses": [{"slots": [
+        {"lex_id": lid, "role": "V", "verb": {
+            "voice": voice, "tense": tense, "person": person, "num": num}}]}]}
+    word, = produce(plan)["words"]
+    assert word["num_fallback"] == expected
+    assert word["features"].endswith(f"{person}{'PL' if expected else num}")
+    assert token_cell(word).get("num_fallback") == expected
+    assert ("num_fallback" in token_cell(word)) == bool(expected)
+
+
+@pytest.mark.parametrize("explicit_num", [None, "DU", "PL"])
+def test_number_fallback_uses_controller_even_with_explicit_plural(explicit_num):
+    from pie.realize import token_cell
+    plan = {"english": "The two horses carry for themselves.", "clauses": [{"slots": [
+        {"lex_id": HORSE, "role": "SUBJ", "num": "DU"},
+        {"lex_id": "pie-lex-bhereti", "role": "V", "verb": {
+            "voice": "MID", "num": explicit_num}}]}]}
+    noun, verb = produce(plan)["words"]
+    assert "num_fallback" not in token_cell(noun)
+    assert verb["features"] == "MID.PRS.3PL"
+    assert token_cell(verb) == {"voice": "MID", "num_fallback": "du->pl"}
