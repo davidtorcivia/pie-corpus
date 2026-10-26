@@ -1,0 +1,1674 @@
+{
+ "corpora": {
+  "sga-gl": {
+   "label": "Old Irish glosses (Würzburg, Doyle; St Gall, UD DipSGG)",
+   "branch": "Celtic",
+   "role": "pivot",
+   "units": 6958,
+   "tokens": 38746,
+   "content_words": 19533,
+   "content_words_mapped": 6076,
+   "indexed_units": 0,
+   "indexed_units_below_30pct_mapped": 0,
+   "mapped_share": 0.3111,
+   "licence_tags": {
+    "cc-by": 3548,
+    "nc": 3410
+   }
+  },
+  "sga": {
+   "label": "Old Irish (CELT; Irish editions and journals, OCR)",
+   "branch": "Celtic",
+   "role": "pivot",
+   "units": 40238,
+   "tokens": 349577,
+   "content_words": 197627,
+   "content_words_mapped": 43491,
+   "indexed_units": 13780,
+   "indexed_units_below_30pct_mapped": 5210,
+   "mapped_share": 0.2201,
+   "licence_tags": {
+    "consent-train": 32760,
+    "research": 4454,
+    "pd": 3019,
+    "nc": 5
+   }
+  },
+  "mga": {
+   "label": "Middle Irish (CELT; Irish editions and journals, OCR)",
+   "branch": "Celtic",
+   "role": "pivot",
+   "units": 150560,
+   "tokens": 1529165,
+   "content_words": 833905,
+   "content_words_mapped": 184688,
+   "indexed_units": 39169,
+   "indexed_units_below_30pct_mapped": 15883,
+   "mapped_share": 0.2215,
+   "licence_tags": {
+    "consent-train": 112616,
+    "research": 27474,
+    "pd": 10335,
+    "nc": 135
+   }
+  },
+  "cy": {
+   "label": "Middle Welsh (Skene; Evans and Rhŷs & Evans editions; journals, OCR)",
+   "branch": "Celtic",
+   "role": "pivot",
+   "units": 43368,
+   "tokens": 417068,
+   "content_words": 257362,
+   "content_words_mapped": 32363,
+   "indexed_units": 8099,
+   "indexed_units_below_30pct_mapped": 5239,
+   "mapped_share": 0.1257,
+   "licence_tags": {
+    "research": 8591,
+    "pd": 34777
+   }
+  },
+  "ga-early": {
+   "label": "Early Modern Irish (CELT; Irish editions and journals, OCR)",
+   "branch": "Celtic",
+   "role": "pivot",
+   "units": 127621,
+   "tokens": 2056936,
+   "content_words": 1087361,
+   "content_words_mapped": 246965,
+   "indexed_units": 1246,
+   "indexed_units_below_30pct_mapped": 398,
+   "mapped_share": 0.2271,
+   "licence_tags": {
+    "consent-train": 113429,
+    "research": 12825,
+    "pd": 964,
+    "nc": 403
+   }
+  },
+  "menota": {
+   "label": "Old Norse, West Norse documents (Menota)",
+   "branch": "Germanic",
+   "role": "pivot",
+   "units": 125165,
+   "tokens": 1666586,
+   "content_words": 964794,
+   "content_words_mapped": 490838,
+   "indexed_units": 81693,
+   "indexed_units_below_30pct_mapped": 12565,
+   "mapped_share": 0.5087,
+   "licence_tags": {
+    "cc-by-sa": 125165
+   }
+  },
+  "icepahc": {
+   "label": "Old Icelandic, IcePaHC texts to 1400",
+   "branch": "Germanic",
+   "role": "pivot",
+   "units": 22516,
+   "tokens": 255971,
+   "content_words": 119313,
+   "content_words_mapped": 77349,
+   "indexed_units": 14420,
+   "indexed_units_below_30pct_mapped": 561,
+   "mapped_share": 0.6483,
+   "licence_tags": {
+    "cc-by": 22516
+   }
+  },
+  "rea-goh": {
+   "label": "Old High German (Referenzkorpus Altdeutsch)",
+   "branch": "Germanic",
+   "role": "pivot",
+   "units": 18140,
+   "tokens": 337765,
+   "content_words": 147812,
+   "content_words_mapped": 108666,
+   "indexed_units": 175,
+   "indexed_units_below_30pct_mapped": 8,
+   "mapped_share": 0.7352,
+   "licence_tags": {
+    "nc": 18140
+   }
+  },
+  "rea-osx": {
+   "label": "Old Saxon (Referenzkorpus Altdeutsch)",
+   "branch": "Germanic",
+   "role": "pivot",
+   "units": 7066,
+   "tokens": 58868,
+   "content_words": 30445,
+   "content_words_mapped": 21362,
+   "indexed_units": 5,
+   "indexed_units_below_30pct_mapped": 0,
+   "mapped_share": 0.7017,
+   "licence_tags": {
+    "nc": 7066
+   }
+  },
+  "vuk": {
+   "label": "Serbian epic and lyric songs (Vuk Karadžić, sr.wikisource)",
+   "branch": "Slavic",
+   "role": "pivot",
+   "units": 146777,
+   "tokens": 703184,
+   "content_words": 416749,
+   "content_words_mapped": 135659,
+   "indexed_units": 77432,
+   "indexed_units_below_30pct_mapped": 8559,
+   "mapped_share": 0.3255,
+   "licence_tags": {
+    "cc-by-sa": 146777
+   }
+  },
+  "byliny": {
+   "label": "Russian byliny (Kirsha Danilov, Rybnikov, Hilferding, Kireevsky)",
+   "branch": "Slavic",
+   "role": "pivot",
+   "units": 150772,
+   "tokens": 789455,
+   "content_words": 470284,
+   "content_words_mapped": 154522,
+   "indexed_units": 81180,
+   "indexed_units_below_30pct_mapped": 16098,
+   "mapped_share": 0.3286,
+   "licence_tags": {
+    "cc-by-sa": 12810,
+    "pd": 137962
+   }
+  },
+  "dainos": {
+   "label": "Lithuanian dainos (Rhesa, Nesselmann, Schleicher, Leskien-Brugmann, Bartsch, Juškevič; OCR)",
+   "branch": "Baltic",
+   "role": "pivot",
+   "units": 84802,
+   "tokens": 363840,
+   "content_words": 232935,
+   "content_words_mapped": 49117,
+   "indexed_units": 25766,
+   "indexed_units_below_30pct_mapped": 5653,
+   "mapped_share": 0.2109,
+   "licence_tags": {
+    "pd": 84802
+   }
+  },
+  "xcl": {
+   "label": "Classical Armenian, 5th-century authors (DMHP)",
+   "branch": "Armenian",
+   "role": "pivot",
+   "units": 30443,
+   "tokens": 551142,
+   "content_words": 329643,
+   "content_words_mapped": 84303,
+   "indexed_units": 18716,
+   "indexed_units_below_30pct_mapped": 10960,
+   "mapped_share": 0.2557,
+   "licence_tags": {
+    "cc-by": 30443
+   }
+  },
+  "xto": {
+   "label": "Tocharian A (TITUS 2.0, Sieg & Siegling)",
+   "branch": "Tocharian",
+   "role": "pivot",
+   "units": 5026,
+   "tokens": 32456,
+   "content_words": 30455,
+   "content_words_mapped": 2793,
+   "indexed_units": 0,
+   "indexed_units_below_30pct_mapped": 0,
+   "mapped_share": 0.0917,
+   "licence_tags": {
+    "nc": 5026
+   }
+  },
+  "sqo": {
+   "label": "Old Albanian, Buzuku 1555 and Bogdani 1685 (TITUS 2.0)",
+   "branch": "Albanian",
+   "role": "pivot",
+   "units": 8038,
+   "tokens": 227500,
+   "content_words": 103671,
+   "content_words_mapped": 9287,
+   "indexed_units": 0,
+   "indexed_units_below_30pct_mapped": 0,
+   "mapped_share": 0.0896,
+   "licence_tags": {
+    "nc": 8038
+   }
+  },
+  "rv": {
+   "label": "Rigveda (VedaWeb, Zurich annotation surface forms)",
+   "branch": "Indo-Iranian",
+   "role": "partner",
+   "units": 39832,
+   "tokens": 166865,
+   "content_words": 118887,
+   "content_words_mapped": 77444,
+   "indexed_units": 32875,
+   "indexed_units_below_30pct_mapped": 751,
+   "mapped_share": 0.6514,
+   "licence_tags": {
+    "cc-by": 39832
+   }
+  },
+  "av": {
+   "label": "Atharvaveda Śaunaka/Paippalāda (DCS)",
+   "branch": "Indo-Iranian",
+   "role": "partner",
+   "units": 13800,
+   "tokens": 107134,
+   "content_words": 70660,
+   "content_words_mapped": 43678,
+   "indexed_units": 11630,
+   "indexed_units_below_30pct_mapped": 833,
+   "mapped_share": 0.6181,
+   "licence_tags": {
+    "cc-by": 13800
+   }
+  },
+  "ae": {
+   "label": "Avesta (CAB Linguistic Corpus)",
+   "branch": "Indo-Iranian",
+   "role": "partner",
+   "units": 16466,
+   "tokens": 102447,
+   "content_words": 103999,
+   "content_words_mapped": 31214,
+   "indexed_units": 8404,
+   "indexed_units_below_30pct_mapped": 3257,
+   "mapped_share": 0.3001,
+   "licence_tags": {
+    "nc": 16466
+   }
+  },
+  "hom": {
+   "label": "Homer (Perseus AGDT)",
+   "branch": "Greek",
+   "role": "partner",
+   "units": 27760,
+   "tokens": 200145,
+   "content_words": 116533,
+   "content_words_mapped": 74494,
+   "indexed_units": 23694,
+   "indexed_units_below_30pct_mapped": 1905,
+   "mapped_share": 0.6393,
+   "licence_tags": {
+    "cc-by-sa": 27760
+   }
+  },
+  "grc": {
+   "label": "Greek poetry and prose to 300 BC (GLAUx)",
+   "branch": "Greek",
+   "role": "partner",
+   "units": 282885,
+   "tokens": 3809801,
+   "content_words": 1644522,
+   "content_words_mapped": 1097486,
+   "indexed_units": 69504,
+   "indexed_units_below_30pct_mapped": 3081,
+   "mapped_share": 0.6674,
+   "licence_tags": {
+    "unchecked": 6629,
+    "cc-by-sa": 276023,
+    "cc-by": 206,
+    "nc": 27
+   }
+  },
+  "non": {
+   "label": "Poetic Edda (Finnur Jónsson 1926, OCR)",
+   "branch": "Germanic",
+   "role": "partner",
+   "units": 12591,
+   "tokens": 40863,
+   "content_words": 25392,
+   "content_words_mapped": 13866,
+   "indexed_units": 7771,
+   "indexed_units_below_30pct_mapped": 111,
+   "mapped_share": 0.5461,
+   "licence_tags": {
+    "pd": 12591
+   }
+  },
+  "ang": {
+   "label": "Old English poetry (Beowulf, Gutenberg; Grein 1857-58, OCR)",
+   "branch": "Germanic",
+   "role": "partner",
+   "units": 15486,
+   "tokens": 95174,
+   "content_words": 56409,
+   "content_words_mapped": 23658,
+   "indexed_units": 9875,
+   "indexed_units_below_30pct_mapped": 1617,
+   "mapped_share": 0.4194,
+   "licence_tags": {
+    "pd": 15486
+   }
+  },
+  "hit": {
+   "label": "Hittite (TLHdig)",
+   "branch": "Anatolian",
+   "role": "partner",
+   "units": 47009,
+   "tokens": 754929,
+   "content_words": 135038,
+   "content_words_mapped": 64651,
+   "indexed_units": 18293,
+   "indexed_units_below_30pct_mapped": 2236,
+   "mapped_share": 0.4788,
+   "licence_tags": {
+    "cc-by": 47009
+   }
+  },
+  "lat": {
+   "label": "Latin (LASLA: Plautus, Lucretius, Catullus, Cato)",
+   "branch": "Italic",
+   "role": "partner",
+   "units": 18841,
+   "tokens": 144788,
+   "content_words": 73932,
+   "content_words_mapped": 44176,
+   "indexed_units": 16872,
+   "indexed_units_below_30pct_mapped": 1107,
+   "mapped_share": 0.5975,
+   "licence_tags": {
+    "nc": 18841
+   }
+  },
+  "xum": {
+   "label": "Umbrian, Iguvine Tables (Buck 1904, OCR)",
+   "branch": "Italic",
+   "role": "partner",
+   "units": 2221,
+   "tokens": 8775,
+   "content_words": 8723,
+   "content_words_mapped": 1375,
+   "indexed_units": 745,
+   "indexed_units_below_30pct_mapped": 261,
+   "mapped_share": 0.1576,
+   "licence_tags": {
+    "pd": 2221
+   }
+  },
+  "lv": {
+   "label": "Latvian dainas (quotations in a book on the dainas, OCR)",
+   "branch": "Baltic",
+   "role": "partner",
+   "units": 751,
+   "tokens": 7820,
+   "content_words": 5940,
+   "content_words_mapped": 1640,
+   "indexed_units": 626,
+   "indexed_units_below_30pct_mapped": 318,
+   "mapped_share": 0.2761,
+   "licence_tags": {
+    "unchecked": 751
+   }
+  },
+  "orv": {
+   "label": "Early Old Russian (TOROT)",
+   "branch": "Slavic",
+   "role": "partner",
+   "units": 14662,
+   "tokens": 123312,
+   "content_words": 66927,
+   "content_words_mapped": 21496,
+   "indexed_units": 10534,
+   "indexed_units_below_30pct_mapped": 3286,
+   "mapped_share": 0.3212,
+   "licence_tags": {
+    "nc": 14662
+   }
+  },
+  "sa-ep": {
+   "label": "Epic Sanskrit, Mahābhārata and Rāmāyaṇa (DCS)",
+   "branch": "Indo-Iranian",
+   "role": "partner",
+   "units": 206208,
+   "tokens": 1409567,
+   "content_words": 987133,
+   "content_words_mapped": 475724,
+   "indexed_units": 180472,
+   "indexed_units_below_30pct_mapped": 34169,
+   "mapped_share": 0.4819,
+   "licence_tags": {
+    "cc-by": 206208
+   }
+  },
+  "grc-late": {
+   "label": "Greek after 300 BC (GLAUx; texts with a stated licence)",
+   "branch": "Greek",
+   "role": "partner",
+   "units": 632158,
+   "tokens": 10657541,
+   "content_words": 4845187,
+   "content_words_mapped": 2964106,
+   "indexed_units": 0,
+   "indexed_units_below_30pct_mapped": 0,
+   "mapped_share": 0.6118,
+   "licence_tags": {
+    "cc-by-sa": 623456,
+    "nc": 8334,
+    "cc-by": 68,
+    "gpl": 300
+   }
+  }
+ },
+ "celtic": {
+  "lang": {
+   "ga-early": {
+    "units": 127621,
+    "tokens": 2056936,
+    "content_words": 1087361,
+    "content_words_mapped": 246965,
+    "pivots": 1246,
+    "pivots_below_30pct_mapped": 398,
+    "mapped_share": 0.2271
+   },
+   "mga": {
+    "units": 150560,
+    "tokens": 1529165,
+    "content_words": 833905,
+    "content_words_mapped": 184688,
+    "pivots": 39169,
+    "pivots_below_30pct_mapped": 15883,
+    "mapped_share": 0.2215
+   },
+   "owl": {
+    "units": 2,
+    "tokens": 14,
+    "content_words": 7,
+    "content_words_mapped": 2,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.2857
+   },
+   "sga": {
+    "units": 47196,
+    "tokens": 388323,
+    "content_words": 217160,
+    "content_words_mapped": 49567,
+    "pivots": 13780,
+    "pivots_below_30pct_mapped": 5210,
+    "mapped_share": 0.2283
+   },
+   "wlm": {
+    "units": 43366,
+    "tokens": 417054,
+    "content_words": 257355,
+    "content_words_mapped": 32361,
+    "pivots": 8099,
+    "pivots_below_30pct_mapped": 5239,
+    "mapped_share": 0.1257
+   }
+  },
+  "period": {
+   "05 c.": {
+    "units": 487,
+    "tokens": 5885,
+    "content_words": 3122,
+    "content_words_mapped": 664,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.2127
+   },
+   "06 c.": {
+    "units": 385,
+    "tokens": 2802,
+    "content_words": 1956,
+    "content_words_mapped": 369,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.1887
+   },
+   "07 c.": {
+    "units": 756,
+    "tokens": 5544,
+    "content_words": 3591,
+    "content_words_mapped": 775,
+    "pivots": 126,
+    "pivots_below_30pct_mapped": 57,
+    "mapped_share": 0.2158
+   },
+   "08 c.": {
+    "units": 12588,
+    "tokens": 109790,
+    "content_words": 60876,
+    "content_words_mapped": 14098,
+    "pivots": 4595,
+    "pivots_below_30pct_mapped": 2067,
+    "mapped_share": 0.2316
+   },
+   "09 c.": {
+    "units": 29433,
+    "tokens": 251227,
+    "content_words": 140617,
+    "content_words_mapped": 33017,
+    "pivots": 8050,
+    "pivots_below_30pct_mapped": 2766,
+    "mapped_share": 0.2348
+   },
+   "10 c.": {
+    "units": 10958,
+    "tokens": 104244,
+    "content_words": 58301,
+    "content_words_mapped": 12722,
+    "pivots": 3342,
+    "pivots_below_30pct_mapped": 1152,
+    "mapped_share": 0.2182
+   },
+   "11 c.": {
+    "units": 108607,
+    "tokens": 1205472,
+    "content_words": 687467,
+    "content_words_mapped": 147814,
+    "pivots": 23697,
+    "pivots_below_30pct_mapped": 9691,
+    "mapped_share": 0.215
+   },
+   "12 c.": {
+    "units": 70210,
+    "tokens": 672776,
+    "content_words": 364391,
+    "content_words_mapped": 80583,
+    "pivots": 17242,
+    "pivots_below_30pct_mapped": 7987,
+    "mapped_share": 0.2211
+   },
+   "13 c.": {
+    "units": 18358,
+    "tokens": 196583,
+    "content_words": 112836,
+    "content_words_mapped": 20233,
+    "pivots": 5242,
+    "pivots_below_30pct_mapped": 3010,
+    "mapped_share": 0.1793
+   },
+   "14 c.": {
+    "units": 36971,
+    "tokens": 457506,
+    "content_words": 269926,
+    "content_words_mapped": 44008,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.163
+   },
+   "15 c.": {
+    "units": 33937,
+    "tokens": 562031,
+    "content_words": 289374,
+    "content_words_mapped": 63199,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.2184
+   },
+   "16 c.": {
+    "units": 23688,
+    "tokens": 358436,
+    "content_words": 188016,
+    "content_words_mapped": 41325,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.2198
+   },
+   "17 c.": {
+    "units": 22367,
+    "tokens": 459196,
+    "content_words": 215315,
+    "content_words_mapped": 54776,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.2544
+   }
+  },
+  "genre": {
+   "adaptation": {
+    "units": 17419,
+    "tokens": 342304,
+    "content_words": 170583,
+    "content_words_mapped": 35787,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.2098
+   },
+   "annals": {
+    "units": 69804,
+    "tokens": 938775,
+    "content_words": 563387,
+    "content_words_mapped": 119785,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.2126
+   },
+   "dindshenchas": {
+    "units": 13855,
+    "tokens": 84827,
+    "content_words": 50179,
+    "content_words_mapped": 13143,
+    "pivots": 8459,
+    "pivots_below_30pct_mapped": 1909,
+    "mapped_share": 0.2619
+   },
+   "genealogy": {
+    "units": 30339,
+    "tokens": 229161,
+    "content_words": 136654,
+    "content_words_mapped": 27034,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.1978
+   },
+   "glosses": {
+    "units": 7384,
+    "tokens": 41756,
+    "content_words": 21297,
+    "content_words_mapped": 6365,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.2989
+   },
+   "history": {
+    "units": 20443,
+    "tokens": 355050,
+    "content_words": 186051,
+    "content_words_mapped": 38019,
+    "pivots": 2536,
+    "pivots_below_30pct_mapped": 1180,
+    "mapped_share": 0.2043
+   },
+   "law": {
+    "units": 3359,
+    "tokens": 30573,
+    "content_words": 15938,
+    "content_words_mapped": 3963,
+    "pivots": 1977,
+    "pivots_below_30pct_mapped": 593,
+    "mapped_share": 0.2487
+   },
+   "medical-scientific": {
+    "units": 11181,
+    "tokens": 252913,
+    "content_words": 125527,
+    "content_words_mapped": 27235,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.217
+   },
+   "other": {
+    "units": 3864,
+    "tokens": 42290,
+    "content_words": 25666,
+    "content_words_mapped": 4720,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.1839
+   },
+   "prose": {
+    "units": 7732,
+    "tokens": 117803,
+    "content_words": 61658,
+    "content_words_mapped": 7693,
+    "pivots": 2240,
+    "pivots_below_30pct_mapped": 1810,
+    "mapped_share": 0.1248
+   },
+   "religious": {
+    "units": 62524,
+    "tokens": 811475,
+    "content_words": 408586,
+    "content_words_mapped": 92556,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.2265
+   },
+   "saga": {
+    "units": 71354,
+    "tokens": 811541,
+    "content_words": 425854,
+    "content_words_mapped": 96308,
+    "pivots": 37495,
+    "pivots_below_30pct_mapped": 17007,
+    "mapped_share": 0.2262
+   },
+   "scholarship": {
+    "units": 4988,
+    "tokens": 62440,
+    "content_words": 31710,
+    "content_words_mapped": 6957,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.2194
+   },
+   "verse": {
+    "units": 42475,
+    "tokens": 255095,
+    "content_words": 163574,
+    "content_words_mapped": 31754,
+    "pivots": 8523,
+    "pivots_below_30pct_mapped": 3879,
+    "mapped_share": 0.1941
+   },
+   "wisdom": {
+    "units": 2024,
+    "tokens": 15489,
+    "content_words": 9124,
+    "content_words_mapped": 2264,
+    "pivots": 1064,
+    "pivots_below_30pct_mapped": 352,
+    "mapped_share": 0.2481
+   }
+  },
+  "licence": {
+   "cc-by": {
+    "units": 3548,
+    "tokens": 20652,
+    "content_words": 12488,
+    "content_words_mapped": 2755,
+    "pivots": 0,
+    "pivots_below_30pct_mapped": 0,
+    "mapped_share": 0.2206
+   },
+   "consent-train": {
+    "units": 258805,
+    "tokens": 3277199,
+    "content_words": 1758962,
+    "content_words_mapped": 407200,
+    "pivots": 36508,
+    "pivots_below_30pct_mapped": 12472,
+    "mapped_share": 0.2315
+   },
+   "nc": {
+    "units": 3953,
+    "tokens": 22577,
+    "content_words": 9622,
+    "content_words_mapped": 3777,
+    "pivots": 49,
+    "pivots_below_30pct_mapped": 16,
+    "mapped_share": 0.3925
+   },
+   "pd": {
+    "units": 49095,
+    "tokens": 486413,
+    "content_words": 294390,
+    "content_words_mapped": 41576,
+    "pivots": 9396,
+    "pivots_below_30pct_mapped": 5956,
+    "mapped_share": 0.1412
+   },
+   "research": {
+    "units": 53344,
+    "tokens": 584651,
+    "content_words": 320326,
+    "content_words_mapped": 58275,
+    "pivots": 16341,
+    "pivots_below_30pct_mapped": 8286,
+    "mapped_share": 0.1819
+   }
+  }
+ },
+ "index": {
+  "units_with_roots": 752976,
+  "root_groups": 3086,
+  "stageC_pivots": 351326
+ },
+ "pivots_below_30pct_mapped": 80322,
+ "pivots_below_30pct_mapped_with_partner": 15735,
+ "pivots_below_30pct_mapped_in_bundles": 476,
+ "pivots_with_any_partner": 111031,
+ "pivots_above_floor": 6186,
+ "bundles": 5894,
+ "bundles_merged_into": 190,
+ "bundle_size": {
+  "2": 3797,
+  "3": 1372,
+  "4": 398,
+  "5": 162,
+  "6": 60,
+  "7": 45,
+  "8": 23,
+  "9": 16,
+  "10": 7,
+  "11": 4,
+  "12": 10
+ },
+ "decoy_bundles": 1179,
+ "real_bundles": 4715,
+ "decoy_share": 0.2,
+ "pivot_groups": {
+  "celtic": {
+   "bundles": 33,
+   "decoys": 6
+  },
+  "other": {
+   "bundles": 5861,
+   "decoys": 1173
+  }
+ },
+ "bundles_by_pivot_corpus": {
+  "sga": {
+   "bundles": 11,
+   "decoys": 2
+  },
+  "mga": {
+   "bundles": 17,
+   "decoys": 4
+  },
+  "cy": {
+   "bundles": 4,
+   "decoys": 0
+  },
+  "ga-early": {
+   "bundles": 1,
+   "decoys": 0
+  },
+  "menota": {
+   "bundles": 344,
+   "decoys": 70
+  },
+  "icepahc": {
+   "bundles": 1004,
+   "decoys": 200
+  },
+  "rea-goh": {
+   "bundles": 50,
+   "decoys": 10
+  },
+  "vuk": {
+   "bundles": 571,
+   "decoys": 114
+  },
+  "byliny": {
+   "bundles": 1038,
+   "decoys": 208
+  },
+  "dainos": {
+   "bundles": 328,
+   "decoys": 65
+  },
+  "xcl": {
+   "bundles": 2526,
+   "decoys": 506
+  }
+ },
+ "slabs": 21,
+ "slab_tokens": {
+  "SS-f042": {
+   "bundles": 268,
+   "decoy_share": 0.201,
+   "tokens": 658839,
+   "licence_tags": {
+    "cc-by": 111,
+    "cc-by-sa": 323,
+    "consent-train": 40,
+    "nc": 121,
+    "pd": 9,
+    "research": 9,
+    "unchecked": 3
+   },
+   "sections": [
+    "sga: G301006",
+    "sga: G301012",
+    "sga: G301013",
+    "...",
+    "menota: HolmPerg-34-4to-MLL"
+   ]
+  },
+  "SS-d784": {
+   "bundles": 264,
+   "decoy_share": 0.201,
+   "tokens": 696711,
+   "licence_tags": {
+    "cc-by": 264,
+    "cc-by-sa": 286,
+    "consent-train": 24,
+    "nc": 83,
+    "pd": 11,
+    "research": 4,
+    "unchecked": 1
+   },
+   "sections": [
+    "menota: HolmPerg-4-fol",
+    "menota: Lbs-fragm-82",
+    "menota: NRA-norrfragm-55-B",
+    "...",
+    "icepahc: 1260.jomsvikingar.nar-sag"
+   ]
+  },
+  "SS-1f23": {
+   "bundles": 266,
+   "decoy_share": 0.195,
+   "tokens": 697619,
+   "licence_tags": {
+    "cc-by": 340,
+    "cc-by-sa": 171,
+    "consent-train": 22,
+    "nc": 97,
+    "pd": 6,
+    "research": 10,
+    "unchecked": 3
+   },
+   "sections": [
+    "icepahc: 1260.jomsvikingar.nar-sag",
+    "icepahc: 1270.gragas.law-law",
+    "icepahc: 1275.morkin.nar-his"
+   ]
+  },
+  "SS-1755": {
+   "bundles": 265,
+   "decoy_share": 0.204,
+   "tokens": 697894,
+   "licence_tags": {
+    "cc-by": 348,
+    "cc-by-sa": 168,
+    "consent-train": 21,
+    "nc": 102,
+    "pd": 5,
+    "research": 4,
+    "unchecked": 5
+   },
+   "sections": [
+    "icepahc: 1275.morkin.nar-his",
+    "icepahc: 1310.grettir.nar-sag",
+    "icepahc: 1325.arni.nar-sag"
+   ]
+  },
+  "SS-47b5": {
+   "bundles": 251,
+   "decoy_share": 0.199,
+   "tokens": 611313,
+   "licence_tags": {
+    "cc-by": 339,
+    "cc-by-sa": 141,
+    "consent-train": 11,
+    "nc": 99,
+    "pd": 8,
+    "research": 5,
+    "unchecked": 4
+   },
+   "sections": [
+    "icepahc: 1325.arni.nar-sag",
+    "icepahc: 1350.bandamennM.nar-sag",
+    "icepahc: 1350.finnbogi.nar-sag",
+    "...",
+    "icepahc: 1400.gunnar.nar-sag"
+   ]
+  },
+  "SS-bda6": {
+   "bundles": 117,
+   "decoy_share": 0.197,
+   "tokens": 403535,
+   "licence_tags": {
+    "cc-by": 147,
+    "cc-by-sa": 77,
+    "consent-train": 19,
+    "nc": 109,
+    "pd": 4,
+    "research": 3,
+    "unchecked": 3
+   },
+   "sections": [
+    "icepahc: 1400.gunnar2.nar-sag",
+    "icepahc: 1400.viglundur.nar-sag",
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/MA_Augensegen",
+    "...",
+    "rea-goh: Kleinere_Althochdeutsche_Denkmäler/WM2_Wuerzburger_Markbeschreibung_2"
+   ]
+  },
+  "SS-6350": {
+   "bundles": 455,
+   "decoy_share": 0.2,
+   "tokens": 594733,
+   "licence_tags": {
+    "cc-by": 88,
+    "cc-by-sa": 569,
+    "consent-train": 16,
+    "nc": 93,
+    "pd": 83,
+    "research": 4,
+    "unchecked": 20
+   },
+   "sections": [
+    "vuk: vuk:1598",
+    "vuk: vuk:1599",
+    "vuk: vuk:1600",
+    "...",
+    "vuk: vuk:28257"
+   ]
+  },
+  "SS-5b8d": {
+   "bundles": 483,
+   "decoy_share": 0.201,
+   "tokens": 666365,
+   "licence_tags": {
+    "cc-by": 67,
+    "cc-by-sa": 353,
+    "consent-train": 26,
+    "nc": 124,
+    "pd": 318,
+    "research": 3,
+    "unchecked": 19
+   },
+   "sections": [
+    "vuk: vuk:28260",
+    "vuk: vuk:28261",
+    "vuk: vuk:28263",
+    "...",
+    "byliny: russian-kireevsky-1860-1874-archiveorg/10945725bsb"
+   ]
+  },
+  "SS-d975": {
+   "bundles": 450,
+   "decoy_share": 0.2,
+   "tokens": 636420,
+   "licence_tags": {
+    "cc-by": 79,
+    "cc-by-sa": 114,
+    "consent-train": 26,
+    "nc": 123,
+    "pd": 506,
+    "research": 5,
+    "unchecked": 20
+   },
+   "sections": [
+    "byliny: russian-kireevsky-1860-1874-archiveorg/11016812bsb",
+    "byliny: russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimch2pes74",
+    "byliny: russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimch2pesni36",
+    "...",
+    "byliny: russian-rybnikov-1861-1867-archiveorg/pesnisobrannyepnrybnikovymch1narod12"
+   ]
+  },
+  "SS-f85d": {
+   "bundles": 418,
+   "decoy_share": 0.201,
+   "tokens": 598952,
+   "licence_tags": {
+    "cc-by": 55,
+    "cc-by-sa": 100,
+    "consent-train": 8,
+    "nc": 155,
+    "pd": 458,
+    "research": 5,
+    "unchecked": 11
+   },
+   "sections": [
+    "byliny: russian-rybnikov-1861-1867-archiveorg/pesnisobrannyepnrybnikovymch2narod72",
+    "byliny: russian-rybnikov-1861-1867-archiveorg/pesnisobrannyepnrybnikovymch3narod26",
+    "byliny: russian-rybnikov-1861-1867-archiveorg/pesnisobrannyepnrybnikovymch4narod9",
+    "...",
+    "dainos: lithuanian-bartsch-dainubalsai-1886/dainubalsai00tilsgoog"
+   ]
+  },
+  "SS-7214": {
+   "bundles": 336,
+   "decoy_share": 0.199,
+   "tokens": 699315,
+   "licence_tags": {
+    "cc-by": 289,
+    "cc-by-sa": 181,
+    "consent-train": 6,
+    "nc": 114,
+    "pd": 149,
+    "research": 4,
+    "unchecked": 1
+   },
+   "sections": [
+    "dainos: lithuanian-juskevic-dainos-1880-1883/lietvikosdjnos00iugoog",
+    "dainos: lithuanian-juskevic-dainos-1880-1883/Lietuvi-kos-svotbin-s-dainos-1883",
+    "xcl: MH_1_1_04_Faustos"
+   ]
+  },
+  "SS-fd39": {
+   "bundles": 237,
+   "decoy_share": 0.198,
+   "tokens": 699395,
+   "licence_tags": {
+    "cc-by": 354,
+    "cc-by-sa": 224,
+    "consent-train": 11,
+    "nc": 56,
+    "pd": 9,
+    "research": 4,
+    "unchecked": 1
+   },
+   "sections": [
+    "xcl: MH_1_1_04_Faustos",
+    "xcl: MH_1_1_06_Yeghishe"
+   ]
+  },
+  "SS-bd50": {
+   "bundles": 248,
+   "decoy_share": 0.202,
+   "tokens": 695912,
+   "licence_tags": {
+    "cc-by": 367,
+    "cc-by-sa": 225,
+    "consent-train": 10,
+    "nc": 42,
+    "pd": 10,
+    "research": 2,
+    "unchecked": 2
+   },
+   "sections": [
+    "xcl: MH_1_1_06_Yeghishe"
+   ]
+  },
+  "SS-37c4": {
+   "bundles": 234,
+   "decoy_share": 0.197,
+   "tokens": 696611,
+   "licence_tags": {
+    "cc-by": 347,
+    "cc-by-sa": 200,
+    "consent-train": 8,
+    "nc": 62,
+    "pd": 10,
+    "research": 3,
+    "unchecked": 4
+   },
+   "sections": [
+    "xcl: MH_1_1_06_Yeghishe"
+   ]
+  },
+  "SS-9886": {
+   "bundles": 269,
+   "decoy_share": 0.204,
+   "tokens": 695902,
+   "licence_tags": {
+    "cc-by": 363,
+    "cc-by-sa": 185,
+    "consent-train": 8,
+    "nc": 62,
+    "pd": 8,
+    "research": 2,
+    "unchecked": 1
+   },
+   "sections": [
+    "xcl: MH_1_1_06_Yeghishe",
+    "xcl: MH_1_2_11_Agathangelos"
+   ]
+  },
+  "SS-69ef": {
+   "bundles": 257,
+   "decoy_share": 0.198,
+   "tokens": 699528,
+   "licence_tags": {
+    "cc-by": 348,
+    "cc-by-sa": 192,
+    "consent-train": 12,
+    "nc": 80,
+    "pd": 7,
+    "unchecked": 5
+   },
+   "sections": [
+    "xcl: MH_1_2_11_Agathangelos"
+   ]
+  },
+  "SS-c6b1": {
+   "bundles": 259,
+   "decoy_share": 0.197,
+   "tokens": 699848,
+   "licence_tags": {
+    "cc-by": 382,
+    "cc-by-sa": 189,
+    "consent-train": 13,
+    "nc": 59,
+    "pd": 8,
+    "research": 4,
+    "unchecked": 1
+   },
+   "sections": [
+    "xcl: MH_1_2_11_Agathangelos",
+    "xcl: MH_1_2_12_Movses_Khor"
+   ]
+  },
+  "SS-d4c0": {
+   "bundles": 258,
+   "decoy_share": 0.202,
+   "tokens": 700537,
+   "licence_tags": {
+    "cc-by": 351,
+    "cc-by-sa": 199,
+    "consent-train": 10,
+    "nc": 64,
+    "pd": 14,
+    "research": 4,
+    "unchecked": 1
+   },
+   "sections": [
+    "xcl: MH_1_2_12_Movses_Khor"
+   ]
+  },
+  "SS-a399": {
+   "bundles": 250,
+   "decoy_share": 0.2,
+   "tokens": 699025,
+   "licence_tags": {
+    "cc-by": 354,
+    "cc-by-sa": 205,
+    "consent-train": 11,
+    "nc": 54,
+    "pd": 12,
+    "research": 1,
+    "unchecked": 1
+   },
+   "sections": [
+    "xcl: MH_1_2_12_Movses_Khor",
+    "xcl: MH_1_2_13_Lazar_Parp"
+   ]
+  },
+  "SS-ce04": {
+   "bundles": 234,
+   "decoy_share": 0.201,
+   "tokens": 698981,
+   "licence_tags": {
+    "cc-by": 304,
+    "cc-by-sa": 244,
+    "consent-train": 9,
+    "nc": 43,
+    "pd": 8,
+    "research": 3
+   },
+   "sections": [
+    "xcl: MH_1_2_13_Lazar_Parp"
+   ]
+  },
+  "SS-a40f": {
+   "bundles": 75,
+   "decoy_share": 0.2,
+   "tokens": 224685,
+   "licence_tags": {
+    "cc-by": 101,
+    "cc-by-sa": 84,
+    "consent-train": 2,
+    "nc": 9,
+    "pd": 3,
+    "research": 1
+   },
+   "sections": [
+    "xcl: MH_1_2_13_Lazar_Parp"
+   ]
+  }
+ },
+ "decoy_share_per_slab_min_max": [
+  0.195,
+  0.204
+ ],
+ "slab_tokens_min_max": [
+  224685,
+  700537
+ ],
+ "total_slab_tokens": 13472120,
+ "read_tokens_est": 17513756,
+ "readers_at_stageB_capacity": 21,
+ "reader_capacity": {
+  "target_tokens": 600000,
+  "max_tokens": 700000
+ },
+ "partner_slots_by_corpus": {
+  "grc": 2500,
+  "lat": 1554,
+  "sa-ep": 876,
+  "av": 824,
+  "hom": 782,
+  "menota": 666,
+  "orv": 386,
+  "mga": 309,
+  "ang": 236,
+  "hit": 233,
+  "ae": 224,
+  "lv": 189,
+  "rv": 139,
+  "sga": 107,
+  "non": 98,
+  "xcl": 80,
+  "dainos": 69,
+  "icepahc": 50,
+  "vuk": 40,
+  "byliny": 39,
+  "cy": 32,
+  "rea-goh": 15,
+  "ga-early": 4,
+  "xum": 3
+ },
+ "floor_alternatives": {
+  "0.9": {
+   "floor": 12.7299,
+   "bundles": 10169,
+   "celtic_pivot_bundles": 836,
+   "slab_tokens_est_no_dedupe": 29529929,
+   "read_tokens_est_no_dedupe": 38388908
+  },
+  "0.95": {
+   "floor": 13.327,
+   "bundles": 5160,
+   "celtic_pivot_bundles": 184,
+   "slab_tokens_est_no_dedupe": 14589414,
+   "read_tokens_est_no_dedupe": 18966238
+  },
+  "0.97": {
+   "floor": 13.8479,
+   "bundles": 3120,
+   "celtic_pivot_bundles": 24,
+   "slab_tokens_est_no_dedupe": 8696022,
+   "read_tokens_est_no_dedupe": 11304828
+  },
+  "0.98": {
+   "floor": 14.3947,
+   "bundles": 2102,
+   "celtic_pivot_bundles": 14,
+   "slab_tokens_est_no_dedupe": 5759953,
+   "read_tokens_est_no_dedupe": 7487939
+  },
+  "0.99": {
+   "floor": 15.2156,
+   "bundles": 1055,
+   "celtic_pivot_bundles": 6,
+   "slab_tokens_est_no_dedupe": 2905254,
+   "read_tokens_est_no_dedupe": 3776830
+  }
+ },
+ "decoy_target": 1179,
+ "thin_partner_slots": {
+  "av": 824,
+  "lat": 1554,
+  "ae": 224,
+  "orv": 386,
+  "hit": 233,
+  "lv": 189,
+  "ang": 236,
+  "non": 98,
+  "xum": 3
+ },
+ "layers": {
+  "sga-gl": {
+   "units": 6958,
+   "kept": 0,
+   "left_out": 6958,
+   "kept_by_classes": {}
+  },
+  "sga": {
+   "units": 40238,
+   "kept": 21337,
+   "left_out": 18901,
+   "kept_by_classes": {
+    "NARR": 17311,
+    "LAW+WISDOM": 1715,
+    "NARR+CULT+LYR": 1633,
+    "LAW": 678
+   }
+  },
+  "mga": {
+   "units": 150560,
+   "kept": 61893,
+   "left_out": 88667,
+   "kept_by_classes": {
+    "NARR": 53529,
+    "LAW": 2529,
+    "LAW+WISDOM": 142,
+    "NARR+CULT+LYR": 5693
+   }
+  },
+  "cy": {
+   "units": 43368,
+   "kept": 16843,
+   "left_out": 26525,
+   "kept_by_classes": {
+    "NARR": 7426,
+    "NARR+CULT+LYR": 9381,
+    "LAW+WISDOM": 36
+   }
+  },
+  "ga-early": {
+   "units": 127621,
+   "kept": 2055,
+   "left_out": 125566,
+   "kept_by_classes": {
+    "NARR": 1994,
+    "NARR+CULT+LYR": 61
+   }
+  },
+  "menota": {
+   "units": 125165,
+   "kept": 95856,
+   "left_out": 29309,
+   "kept_by_classes": {
+    "NARR": 76876,
+    "LAW": 18980
+   }
+  },
+  "icepahc": {
+   "units": 22516,
+   "kept": 16080,
+   "left_out": 6436,
+   "kept_by_classes": {
+    "NARR": 15717,
+    "LAW": 363
+   }
+  },
+  "rea-goh": {
+   "units": 18140,
+   "kept": 190,
+   "left_out": 17950,
+   "kept_by_classes": {
+    "CULT": 41,
+    "NARR": 111,
+    "LYR": 2,
+    "LAW": 34,
+    "WISDOM": 2
+   }
+  },
+  "rea-osx": {
+   "units": 7066,
+   "kept": 5,
+   "left_out": 7061,
+   "kept_by_classes": {
+    "WISDOM": 2,
+    "CULT": 3
+   }
+  },
+  "vuk": {
+   "units": 146777,
+   "kept": 146777,
+   "left_out": 0,
+   "kept_by_classes": {
+    "NARR+LYR": 146777
+   }
+  },
+  "byliny": {
+   "units": 150772,
+   "kept": 150772,
+   "left_out": 0,
+   "kept_by_classes": {
+    "NARR": 150772
+   }
+  },
+  "dainos": {
+   "units": 84802,
+   "kept": 84802,
+   "left_out": 0,
+   "kept_by_classes": {
+    "LYR": 84802
+   }
+  },
+  "xcl": {
+   "units": 30443,
+   "kept": 20717,
+   "left_out": 9726,
+   "kept_by_classes": {
+    "NARR": 20717
+   }
+  },
+  "xto": {
+   "units": 5026,
+   "kept": 0,
+   "left_out": 5026,
+   "kept_by_classes": {}
+  },
+  "sqo": {
+   "units": 8038,
+   "kept": 0,
+   "left_out": 8038,
+   "kept_by_classes": {}
+  },
+  "rv": {
+   "units": 39832,
+   "kept": 39832,
+   "left_out": 0,
+   "kept_by_classes": {
+    "NARR+CULT": 39832
+   }
+  },
+  "av": {
+   "units": 13800,
+   "kept": 13800,
+   "left_out": 0,
+   "kept_by_classes": {
+    "NARR+CULT+LAW+WISDOM+LYR": 13800
+   }
+  },
+  "ae": {
+   "units": 16466,
+   "kept": 16466,
+   "left_out": 0,
+   "kept_by_classes": {
+    "NARR+CULT+LAW+WISDOM+LYR": 16466
+   }
+  },
+  "hom": {
+   "units": 27760,
+   "kept": 27760,
+   "left_out": 0,
+   "kept_by_classes": {
+    "NARR": 27760
+   }
+  },
+  "grc": {
+   "units": 282885,
+   "kept": 76599,
+   "left_out": 206286,
+   "kept_by_classes": {
+    "NARR": 22367,
+    "CULT+LYR": 9431,
+    "NARR+WISDOM": 831,
+    "WISDOM": 81,
+    "NARR+LYR": 43889
+   }
+  },
+  "non": {
+   "units": 12591,
+   "kept": 12591,
+   "left_out": 0,
+   "kept_by_classes": {
+    "NARR+CULT+LAW+WISDOM+LYR": 12591
+   }
+  },
+  "ang": {
+   "units": 15486,
+   "kept": 11726,
+   "left_out": 3760,
+   "kept_by_classes": {
+    "NARR+CULT+LAW+WISDOM+LYR": 11726
+   }
+  },
+  "hit": {
+   "units": 47009,
+   "kept": 46338,
+   "left_out": 671,
+   "kept_by_classes": {
+    "NARR+CULT+LAW+WISDOM+LYR": 46338
+   }
+  },
+  "lat": {
+   "units": 18841,
+   "kept": 18841,
+   "left_out": 0,
+   "kept_by_classes": {
+    "NARR+CULT+LAW+WISDOM+LYR": 18841
+   }
+  },
+  "xum": {
+   "units": 2221,
+   "kept": 2221,
+   "left_out": 0,
+   "kept_by_classes": {
+    "NARR+CULT+LAW+WISDOM+LYR": 2221
+   }
+  },
+  "lv": {
+   "units": 751,
+   "kept": 751,
+   "left_out": 0,
+   "kept_by_classes": {
+    "NARR+CULT+LAW+WISDOM+LYR": 751
+   }
+  },
+  "orv": {
+   "units": 14662,
+   "kept": 14662,
+   "left_out": 0,
+   "kept_by_classes": {
+    "NARR+CULT+LAW+WISDOM+LYR": 14662
+   }
+  },
+  "sa-ep": {
+   "units": 206208,
+   "kept": 206208,
+   "left_out": 0,
+   "kept_by_classes": {
+    "NARR": 164655,
+    "LAW+WISDOM": 41553
+   }
+  },
+  "grc-late": {
+   "units": 632158,
+   "kept": 0,
+   "left_out": 632158,
+   "kept_by_classes": {}
+  }
+ },
+ "bundles_by_pivot_class": {
+  "NARR": 4757,
+  "NARR+LYR": 571,
+  "LAW": 222,
+  "CULT": 12,
+  "NARR+CULT+LYR": 3,
+  "LYR": 328,
+  "LAW+WISDOM": 1
+ },
+ "mapping_notes": {
+  "stageB": {
+   "glaux_texts": 499,
+   "non_notes_units_dropped": 0,
+   "orv_content_token_share_mapped": 0.321,
+   "orv_mapped_by_orv_dictionary": 576,
+   "orv_mapped_by_ocs_backoff": 247
+  },
+  "stageB_sga_units_dropped": 99,
+  "celtic": {
+   "celtic_dup_units_skipped": 49536,
+   "celt_research_tag_mismatch": 6036,
+   "gloss_units_joined_to_tagged_tokens": 6915,
+   "irish_lemmatizer_levels_by_type": {
+    "unknown": 419513,
+    "form": 64773,
+    "demutated": 16291,
+    "override": 461,
+    "form-loose": 10002,
+    "demutated-loose": 1210
+   }
+  },
+  "germanic": {
+   "menota_tokens_without_surface": 17,
+   "icepahc_tokens_without_surface": 0,
+   "rea-goh_tokens_without_surface": 6740,
+   "rea-osx_tokens_without_surface": 838
+  },
+  "bsl": {},
+  "east": {
+   "sqo_bardhi_dictionary_entries_left_out": 4870
+  },
+  "extra": {
+   "glaux_late_texts": 727
+  }
+ }
+}
