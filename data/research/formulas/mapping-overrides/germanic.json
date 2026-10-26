@@ -208,10 +208,10 @@
    "corpus": "got",
    "lemma": "mats",
    "lex_id": [
-    "pie-root-meh2d-be_wet"
+    "pie-root-med-become_full"
    ],
-   "erratum": "remapped to pie-root-meh2d-be_wet",
-   "note": "Kroonen 2013 s.v. *mati- (scan p0398) 'food' (cf. matjan *m̥h2d-): homonym *meh2d- 'meet' dropped"
+   "erratum": "remapped to pie-root-med-become_full",
+   "note": "Kroonen 2013 p. 358 (scan p0398), s.v. *mati-: PGmc *mati- < *mod-i-, probably from *med-; OE mete, Go. mats, OS meti. The food noun and its factitive Go. matjan belong here; the distinct *matjan- represented by ON metja continues *m̥h₂d-ie-. Lexicon target: pie-root-med-become_full; neither *meh₂d- homonym."
   },
   {
    "corpus": "got",
@@ -938,10 +938,10 @@
    "corpus": "non",
    "lemma": "matr",
    "lex_id": [
-    "pie-root-meh2d-be_wet"
+    "pie-root-med-become_full"
    ],
-   "erratum": "remapped to pie-root-meh2d-be_wet",
-   "note": "Kroonen 2013 s.v. *mati- (scan p0398) 'food': homonym *meh2d- 'meet' dropped"
+   "erratum": "remapped to pie-root-med-become_full",
+   "note": "Kroonen 2013 p. 358 (scan p0398), s.v. *mati-: ON matr / PGmc *matiz < *mod-i-, probably from *med-; the proposed connection with *m̥h₂d- is explicitly rejected. Lexicon target: pie-root-med-become_full (LIV² p. 423), not either *meh₂d- homonym."
   },
   {
    "corpus": "non",
@@ -1708,10 +1708,10 @@
    "corpus": "ang",
    "lemma": "mete",
    "lex_id": [
-    "pie-root-meh2d-be_wet"
+    "pie-root-med-become_full"
    ],
-   "erratum": "remapped to pie-root-meh2d-be_wet",
-   "note": "Kroonen 2013 s.v. *mati- (scan p0398) 'food' (cf. *matjan-): homonym *meh2d- 'meet' dropped"
+   "erratum": "remapped to pie-root-med-become_full",
+   "note": "Kroonen 2013 p. 358 (scan p0398), s.v. *mati-: PGmc *mati- < *mod-i-, probably from *med-; OE mete, Go. mats, OS meti. The food noun and its factitive Go. matjan belong here; the distinct *matjan- represented by ON metja continues *m̥h₂d-ie-. Lexicon target: pie-root-med-become_full; neither *meh₂d- homonym."
   },
   {
    "corpus": "ang",
@@ -1981,6 +1981,60 @@
    ],
    "erratum": "remapped to pie-root-teng-think",
    "note": "from þanc (Kroonen 2013 s.v. *þanka-, scan p0573, < *tong-); homonym 'make wet' dropped"
+  },
+  {
+   "corpus": "ang",
+   "lemma": "met",
+   "lex_id": [
+    "pie-root-med-become_full"
+   ],
+   "erratum": "remapped to pie-root-med-become_full",
+   "note": "Kroonen 2013 p. 358 (scan p0398), s.v. *mati-: PGmc *mati- < *mod-i-, probably from *med-; OE mete, Go. mats, OS meti. The food noun and its factitive Go. matjan belong here; the distinct *matjan- represented by ON metja continues *m̥h₂d-ie-. Lexicon target: pie-root-med-become_full; neither *meh₂d- homonym."
+  },
+  {
+   "corpus": "ang",
+   "lemma": "mete|met",
+   "lex_id": [
+    "pie-root-med-become_full"
+   ],
+   "erratum": "remapped to pie-root-med-become_full",
+   "note": "Kroonen 2013 p. 358 (scan p0398), s.v. *mati-: PGmc *mati- < *mod-i-, probably from *med-; OE mete, Go. mats, OS meti. The food noun and its factitive Go. matjan belong here; the distinct *matjan- represented by ON metja continues *m̥h₂d-ie-. Lexicon target: pie-root-med-become_full; neither *meh₂d- homonym."
+  },
+  {
+   "corpus": "got",
+   "lemma": "matjan",
+   "lex_id": [
+    "pie-root-med-become_full"
+   ],
+   "erratum": "remapped to pie-root-med-become_full",
+   "note": "Kroonen 2013 p. 358 (scan p0398), s.v. *mati-: PGmc *mati- < *mod-i-, probably from *med-; OE mete, Go. mats, OS meti. The food noun and its factitive Go. matjan belong here; the distinct *matjan- represented by ON metja continues *m̥h₂d-ie-. Lexicon target: pie-root-med-become_full; neither *meh₂d- homonym."
+  },
+  {
+   "corpus": "got",
+   "lemma": "ga-matjan",
+   "lex_id": [
+    "pie-root-med-become_full"
+   ],
+   "erratum": "remapped to pie-root-med-become_full",
+   "note": "Kroonen 2013 p. 358 (scan p0398), s.v. *mati-: PGmc *mati- < *mod-i-, probably from *med-; OE mete, Go. mats, OS meti. The food noun and its factitive Go. matjan belong here; the distinct *matjan- represented by ON metja continues *m̥h₂d-ie-. Lexicon target: pie-root-med-become_full; neither *meh₂d- homonym."
+  },
+  {
+   "corpus": "got",
+   "lemma": "miþ-matjan",
+   "lex_id": [
+    "pie-root-med-become_full"
+   ],
+   "erratum": "remapped to pie-root-med-become_full",
+   "note": "Kroonen 2013 p. 358 (scan p0398), s.v. *mati-: PGmc *mati- < *mod-i-, probably from *med-; OE mete, Go. mats, OS meti. The food noun and its factitive Go. matjan belong here; the distinct *matjan- represented by ON metja continues *m̥h₂d-ie-. Lexicon target: pie-root-med-become_full; neither *meh₂d- homonym."
+  },
+  {
+   "corpus": "rea-osx",
+   "lemma": "meti",
+   "lex_id": [
+    "pie-root-med-become_full"
+   ],
+   "erratum": "remapped to pie-root-med-become_full",
+   "note": "Kroonen 2013 p. 358 (scan p0398), s.v. *mati-: PGmc *mati- < *mod-i-, probably from *med-; OE mete, Go. mats, OS meti. The food noun and its factitive Go. matjan belong here; the distinct *matjan- represented by ON metja continues *m̥h₂d-ie-. Lexicon target: pie-root-med-become_full; neither *meh₂d- homonym."
   }
  ],
  "form": [
