@@ -37,13 +37,13 @@ def test_icepahc_names_use_tag_even_with_bad_dictionary_lemma(tag):
     assert gm.annotated_norse_lemma('finna', tag) == 'finna (name)'
 
 
-def test_menota_uses_original_annotation_not_inferred_tag_and_allows_review():
+def test_menota_uses_source_or_winning_np_tag_and_allows_review():
     w = gm.MenotaWord('doc', 'ulfr', 'NP', 'Ulfr', '1r', '2', None, 0)
     assert gm.reviewed_menota_token(w, 'ulfr', 'NP', {}) == ('ulfr (name)', 'NP')
     rules = {('doc', '1r', '2', 'Ulfr'): {'given_lemma': 'ulfr', 'lemma': 'ulfr', 'tag': 'NC'}}
     assert gm.reviewed_menota_token(w, 'ulfr', 'NP', rules) == ('ulfr', 'NC')
     w.lemma, w.msa = None, ''
-    assert gm.reviewed_menota_token(w, 'ulfr', 'NP', {}) == ('ulfr', 'NP')
+    assert gm.reviewed_menota_token(w, 'ulfr', 'NP', {}) == ('ulfr (name)', 'NP')
     assert gm.reviewed_menota_token(w, 'síða', 'NC', {}) == ('síða', 'NC')
 
 

@@ -1,0 +1,109 @@
+{
+  "note": "Independently reviewed wave7 other reports; see error-verdicts-w7-other.jsonl.",
+  "lemma": [
+    {
+      "corpus": "grp",
+      "lemma": "πλέω",
+      "lex_id": [
+        "pie-root-plew-fly"
+      ],
+      "note": "W7 report25; GLAUx Thuc4.3.1; Kaikki Ancient Greek row3773 s.v. πλέω: *plew-, not *pel-."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "ἐπείρομαι",
+      "lex_id": [],
+      "note": "W7 report3; Hdt3.64.5; LSJ s.v. εἴρω(C), ἐπέρομαι: inquiry. Do not infer a PIE root for this corrected lemma."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "δέω@need",
+      "lex_id": [],
+      "note": "W7 report26; Eur.Ba.492; Kaikki Greek rows684-685 distinguish bind and lack/need; row8524 sense necessity. No secure root supplied."
+    },
+    {
+      "corpus": "grp",
+      "lemma": "ναός@temple",
+      "lex_id": [],
+      "note": "W7 report93 and observation; Hdt3.60.4; Kaikki Greek rows856,859. Temple etymology has competing proposals; no ship mapping."
+    },
+    {
+      "corpus": "hom",
+      "lemma": "λείπω",
+      "lex_id": [
+        "pie-root-leykw-leave"
+      ],
+      "note": "W7 report82; AGDT Il3.174; Kaikki Greek row4118, aorist λιποῦσα in the leave paradigm."
+    },
+    {
+      "corpus": "orv",
+      "lemma": "слава",
+      "lex_id": [
+        "pie-root-kjlew-hear"
+      ],
+      "note": "W7 report6; TOROT spi112; Derksen Slavic p453 (PDF464), *slàva, *ḱlew-. Exclude homographic incline entry."
+    },
+    {
+      "corpus": "orv",
+      "lemma": "доити@go",
+      "lex_id": [
+        "pie-root-h1ey-go"
+      ],
+      "note": "W7 report38; TOROT lav66.1/token3247814; ESSJa5 s.v. *dojьti, Sreznevsky I691; do- + iti go, not milk."
+    },
+    {
+      "corpus": "av",
+      "lemma": "kṣam@earth",
+      "lex_id": [
+        "pie-lex-dhegjhoxm"
+      ],
+      "note": "W7 report31; DCS AVŚ18.1.s77; Kaikki Sanskrit row4850 क्षम् noun earth, distinct from verbal homonyms."
+    },
+    {
+      "corpus": "av",
+      "lemma": "tūrya",
+      "lex_id": [],
+      "note": "W7 report32; DCS Rām.Bā72.s53; Kaikki Sanskrit row13797 तूर्य instrument, uncertain origin. Not tṛ cross."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "ayrowmn",
+      "lex_id": [
+        "pie-lex-h2eh1ter"
+      ],
+      "note": "W7 report47; Faustos word24984. Kaikki Armenian row1482 այրեմ; NBHL s.v. Այրումն. Burning verbal noun, not ayr man."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "hownjkʻ",
+      "lex_id": [],
+      "note": "W7 report48; Faustos word24990; Kaikki Armenian row2568 հունձք harvest; uncertain origin, not hown ford."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "siwnhodos",
+      "lex_id": [],
+      "note": "W7 report59; Faustos word4838; NBHL/Calfa s.v. Սիւնհոդոս. Council, Greek loan; no inherited reconstruction assigned."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "bdeašx",
+      "lex_id": [],
+      "note": "W7 report79; Movses word18394; Kaikki Armenian row7562 բդեաշխ, Iranian title; no speculative PIE mapping."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "lcʻowcʻičʻ",
+      "lex_id": [
+        "pie-root-pleh1-fill"
+      ],
+      "note": "W7 report91; Yeghishe word71033; Kaikki Armenian row3336 լնում and causative paradigm լցուցանեմ; Martirosyan s.v. li, PDF323. Agent of filling, not kindling."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "yordabowłx",
+      "lex_id": [],
+      "note": "W7 report92; Movses word82371; NBHL/Calfa s.v. Յորդաբուղխ and Kaikki row3659 յորդեմ. Gushing compound, not joy; no speculative root assigned."
+    }
+  ]
+}

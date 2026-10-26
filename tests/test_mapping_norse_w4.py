@@ -28,7 +28,10 @@ def test_name_guard_uses_annotation_and_preserves_common_words():
     for lemma in ('Einarr', 'Sveinn', 'Finnr', 'alfr', 'Ósló'):
         assert gm.reviewed_menota_token(word, lemma, 'NP', rules) == (lemma + ' (name)', 'NP')
         assert gm.reviewed_menota_token(word, lemma, 'NC', rules) == (lemma, 'NC')
-    assert gm.reviewed_menota_token(word, 'Baldr', 'NP', rules) == ('Baldr', 'NP')
+    # Inferred NP now uses the same gate as source NP. Baldr has no exact
+    # production lexeme here; Hǫðr retains the inherited-theonym exemption.
+    assert gm.reviewed_menota_token(word, 'Baldr', 'NP', rules) == ('Baldr (name)', 'NP')
+    assert gm.reviewed_menota_token(word, 'Hǫðr', 'NP', rules) == ('Hǫðr', 'NP')
 
 
 def test_hair_and_high_in_same_passage_stay_separate():

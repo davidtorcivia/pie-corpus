@@ -1,0 +1,444 @@
+[
+  {
+    "corpus": "grc",
+    "before": [
+      "Hesiodus Fragmenta 136.3",
+      "Κοίρανον",
+      "Κοίρανος",
+      true,
+      "noun"
+    ],
+    "after": [
+      "Hesiodus Fragmenta 136.3",
+      "Κοίρανον",
+      "Κοίρανος (name)",
+      false,
+      "noun"
+    ]
+  },
+  {
+    "corpus": "grc",
+    "before": [
+      "Euripides Bacchae 492",
+      "δεῖ",
+      "δέω",
+      true,
+      "verb"
+    ],
+    "after": [
+      "Euripides Bacchae 492",
+      "δεῖ",
+      "δέω@need",
+      true,
+      "verb"
+    ]
+  },
+  {
+    "corpus": "grc",
+    "before": [
+      "Herodotus Historiae 1.98.3 s2",
+      "Μήδων",
+      "Μῆδος",
+      true,
+      "noun"
+    ],
+    "after": [
+      "Herodotus Historiae 1.98.3 s2",
+      "Μήδων",
+      "Μῆδος (name)",
+      false,
+      "noun"
+    ]
+  },
+  {
+    "corpus": "grc",
+    "before": [
+      "Herodotus Historiae 3.60.4 s1",
+      "νηὸς",
+      "ναῦς",
+      true,
+      "noun"
+    ],
+    "after": [
+      "Herodotus Historiae 3.60.4 s1",
+      "νηὸς",
+      "ναός@temple",
+      true,
+      "noun"
+    ]
+  },
+  {
+    "corpus": "grc",
+    "before": [
+      "Herodotus Historiae 3.60.4 s1",
+      "νηῶν",
+      "ναῦς",
+      true,
+      "noun"
+    ],
+    "after": [
+      "Herodotus Historiae 3.60.4 s1",
+      "νηῶν",
+      "ναός@temple",
+      true,
+      "noun"
+    ]
+  },
+  {
+    "corpus": "grc",
+    "before": [
+      "Herodotus Historiae 3.64.5 s1",
+      "ἐπειρόμενος",
+      "ἐπιλέγω",
+      true,
+      "verb"
+    ],
+    "after": [
+      "Herodotus Historiae 3.64.5 s1",
+      "ἐπειρόμενος",
+      "ἐπείρομαι",
+      true,
+      "verb"
+    ]
+  },
+  {
+    "corpus": "grc",
+    "before": [
+      "Herodotus Historiae 4.199.2 s1",
+      "ἐκπέποται",
+      "ἐκπίπτω",
+      true,
+      "verb"
+    ],
+    "after": [
+      "Herodotus Historiae 4.199.2 s1",
+      "ἐκπέποται",
+      "ἐκπίνω",
+      true,
+      "verb"
+    ]
+  },
+  {
+    "corpus": "grc",
+    "before": [
+      "Thucydides Historiae 2.29.3 s1",
+      "Θρᾳκῶν",
+      "Θρᾷξ",
+      true,
+      "adj"
+    ],
+    "after": [
+      "Thucydides Historiae 2.29.3 s1",
+      "Θρᾳκῶν",
+      "Θρᾷξ (name)",
+      false,
+      "adj"
+    ]
+  },
+  {
+    "corpus": "hom",
+    "before": [
+      "Il. 3.174",
+      "λιποῦσα",
+      "λιπάω",
+      true,
+      "adj"
+    ],
+    "after": [
+      "Il. 3.174",
+      "λιποῦσα",
+      "λείπω",
+      true,
+      "adj"
+    ]
+  },
+  {
+    "corpus": "lat",
+    "before": [
+      "LucrDRN3 3.1025",
+      "Ancu'",
+      "ancus",
+      true,
+      "noun"
+    ],
+    "after": [
+      "LucrDRN3 3.1025",
+      "Ancu'",
+      "Ancus (name)",
+      false,
+      "noun"
+    ]
+  },
+  {
+    "corpus": "orv",
+    "before": [
+      "lav 66.1",
+      "доити",
+      "доити",
+      true,
+      "verb"
+    ],
+    "after": [
+      "lav 66.1",
+      "доити",
+      "доити@go",
+      true,
+      "verb"
+    ]
+  },
+  {
+    "corpus": "av",
+    "before": [
+      "AVŚ, 18, 1.s77",
+      "kṣām",
+      "kṣā",
+      true,
+      "noun"
+    ],
+    "after": [
+      "AVŚ, 18, 1.s77",
+      "kṣām",
+      "kṣam@earth",
+      true,
+      "noun"
+    ]
+  },
+  {
+    "corpus": "sa-ep",
+    "before": [
+      "MBh, 1, 100.s2",
+      "satyavatī",
+      "satyavatī",
+      true,
+      "noun"
+    ],
+    "after": [
+      "MBh, 1, 100.s2",
+      "satyavatī",
+      "satyavatī (name)",
+      false,
+      "noun"
+    ]
+  },
+  {
+    "corpus": "sa-ep",
+    "before": [
+      "Rām, Bā, 72.s53",
+      "tūrya",
+      "tṛ",
+      true,
+      "verb"
+    ],
+    "after": [
+      "Rām, Bā, 72.s53",
+      "tūrya",
+      "tūrya",
+      true,
+      "verb"
+    ]
+  },
+  {
+    "corpus": "xcl",
+    "before": [
+      "MH_1_1_04_Faustos ed. page 289 - PDF page 13 (word id 4838)",
+      "սիւնհոդոսին",
+      "siwdopown",
+      true,
+      "other"
+    ],
+    "after": [
+      "MH_1_1_04_Faustos ed. page 289 - PDF page 13 (word id 4838)",
+      "սիւնհոդոսին",
+      "siwnhodos",
+      true,
+      "other"
+    ]
+  },
+  {
+    "corpus": "xcl",
+    "before": [
+      "MH_1_1_04_Faustos ed. page 289 - PDF page 13 (word id 4840)",
+      "Նիկիա,",
+      "nikem",
+      true,
+      "other"
+    ],
+    "after": [
+      "MH_1_1_04_Faustos ed. page 289 - PDF page 13 (word id 4840)",
+      "Նիկիա,",
+      "Nikia (name)",
+      false,
+      "other"
+    ]
+  },
+  {
+    "corpus": "xcl",
+    "before": [
+      "MH_1_1_04_Faustos ed. page 338 - PDF page 62 (word id 24984)",
+      "յայրումն",
+      "ayr",
+      true,
+      "other"
+    ],
+    "after": [
+      "MH_1_1_04_Faustos ed. page 338 - PDF page 62 (word id 24984)",
+      "յայրումն",
+      "ayrowmn",
+      true,
+      "other"
+    ]
+  },
+  {
+    "corpus": "xcl",
+    "before": [
+      "MH_1_1_04_Faustos ed. page 338 - PDF page 62 (word id 24990)",
+      "հունձք",
+      "hown",
+      true,
+      "other"
+    ],
+    "after": [
+      "MH_1_1_04_Faustos ed. page 338 - PDF page 62 (word id 24990)",
+      "հունձք",
+      "hownjkʻ",
+      true,
+      "other"
+    ]
+  },
+  {
+    "corpus": "xcl",
+    "before": [
+      "MH_1_1_04_Faustos ed. page 368 - PDF page 92 (word id 37133)",
+      "Արեաց",
+      "ariwn",
+      true,
+      "other"
+    ],
+    "after": [
+      "MH_1_1_04_Faustos ed. page 368 - PDF page 92 (word id 37133)",
+      "Արեաց",
+      "ari (name)",
+      false,
+      "other"
+    ]
+  },
+  {
+    "corpus": "xcl",
+    "before": [
+      "MH_1_1_06_Yeghishe ed. page 1002 - PDF page 482 (word id 71033)",
+      "լցուցիչն",
+      "lowcʻanem",
+      true,
+      "other"
+    ],
+    "after": [
+      "MH_1_1_06_Yeghishe ed. page 1002 - PDF page 482 (word id 71033)",
+      "լցուցիչն",
+      "lcʻowcʻičʻ",
+      true,
+      "other"
+    ]
+  },
+  {
+    "corpus": "xcl",
+    "before": [
+      "MH_1_2_12_Movses_Khor ed. page 1867 - PDF page 125 (word id 18391)",
+      "Միհրդատայ",
+      "mirdahar",
+      true,
+      "other"
+    ],
+    "after": [
+      "MH_1_2_12_Movses_Khor ed. page 1867 - PDF page 125 (word id 18391)",
+      "Միհրդատայ",
+      "Mihrdat (name)",
+      false,
+      "other"
+    ]
+  },
+  {
+    "corpus": "xcl",
+    "before": [
+      "MH_1_2_12_Movses_Khor ed. page 1867 - PDF page 125 (word id 18394)",
+      "բդեշխի",
+      "bčem",
+      true,
+      "other"
+    ],
+    "after": [
+      "MH_1_2_12_Movses_Khor ed. page 1867 - PDF page 125 (word id 18394)",
+      "բդեշխի",
+      "bdeašx",
+      true,
+      "other"
+    ]
+  },
+  {
+    "corpus": "xcl",
+    "before": [
+      "MH_1_2_12_Movses_Khor ed. page 1867 - PDF page 125 (word id 18400)",
+      "Միհրդատայ,",
+      "mirdahar",
+      true,
+      "other"
+    ],
+    "after": [
+      "MH_1_2_12_Movses_Khor ed. page 1867 - PDF page 125 (word id 18400)",
+      "Միհրդատայ,",
+      "Mihrdat (name)",
+      false,
+      "other"
+    ]
+  },
+  {
+    "corpus": "xcl",
+    "before": [
+      "MH_1_2_12_Movses_Khor ed. page 1867 - PDF page 125 (word id 18401)",
+      "Դարեհի",
+      "darem",
+      true,
+      "other"
+    ],
+    "after": [
+      "MH_1_2_12_Movses_Khor ed. page 1867 - PDF page 125 (word id 18401)",
+      "Դարեհի",
+      "Dareh (name)",
+      false,
+      "other"
+    ]
+  },
+  {
+    "corpus": "xcl",
+    "before": [
+      "MH_1_2_12_Movses_Khor ed. page 2056 - PDF page 314 (word id 47211)",
+      "Ձիրաւ,",
+      "jir",
+      true,
+      "other"
+    ],
+    "after": [
+      "MH_1_2_12_Movses_Khor ed. page 2056 - PDF page 314 (word id 47211)",
+      "Ձիրաւ,",
+      "Jiraw (name)",
+      false,
+      "other"
+    ]
+  },
+  {
+    "corpus": "xcl",
+    "before": [
+      "MH_1_2_12_Movses_Khor ed. page 2195 - PDF page 452 (word id 82371)",
+      "յորդաբուղխ",
+      "ordaxowtʻiwn",
+      true,
+      "other"
+    ],
+    "after": [
+      "MH_1_2_12_Movses_Khor ed. page 2195 - PDF page 452 (word id 82371)",
+      "յորդաբուղխ",
+      "yordabowłx",
+      true,
+      "other"
+    ]
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "grc": {
+    "tokens": 519073,
+    "changed": 8
+  },
+  "hom": {
+    "tokens": 200145,
+    "changed": 1
+  },
+  "lat": {
+    "tokens": 144786,
+    "changed": 1
+  },
+  "orv": {
+    "tokens": 58150,
+    "changed": 1
+  },
+  "av": {
+    "tokens": 114639,
+    "changed": 1
+  },
+  "sa-ep": {
+    "tokens": 1409567,
+    "changed": 2
+  },
+  "xcl": {
+    "tokens": 551142,
+    "changed": 12
+  },
+  "byliny-material": {
+    "before": 150742,
+    "after": 150741,
+    "removed": [
+      "pesnisobrannyepnrybnikovymch3narod26:34987"
+    ],
+    "retained_changes": 0
+  },
+  "celtic-material": {
+    "before": 325543,
+    "after": 325539,
+    "removed": [
+      "celtic-journal-eriu-1904-1928:eriu_1912_6:L7994-L7995",
+      "celtic-journal-eriu-1904-1928:eriu_1912_6:L7995-L7995",
+      "celtic-journal-revue-celtique-1870-1928:revueceltique13pari:L22538-L22539",
+      "oldirish-meyer-editions-1892-1919:berdielteste00meyeuoft:L6500-L6500"
+    ],
+    "retained_changes": 0
+  }
+}

@@ -18,8 +18,11 @@ RULES = ROOT / "data/research/8c/stageCS/material-unit-rules.json"
 @lru_cache(maxsize=1)
 def reviewed_ranges():
     rows = json.loads(RULES.read_text(encoding="utf-8"))
-    extra = RULES.with_name('material-unit-rules-w6-other.json')
-    return rows + (json.loads(extra.read_text(encoding='utf-8')) if extra.exists() else [])
+    for name in ('material-unit-rules-w6-other.json', 'material-unit-rules-w7-other.json'):
+        extra = RULES.with_name(name)
+        if extra.exists():
+            rows += json.loads(extra.read_text(encoding='utf-8'))
+    return rows
 
 
 def dainos_interleaved(lines: list[str]) -> set[int]:

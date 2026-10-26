@@ -291,7 +291,7 @@ def menota_reviewed_tokens(root: Path = ROOT) -> dict:
     from changing the analysis of the same surface form elsewhere.
     """
     rows = []
-    for wave in (2, 3, 4, 5, 6):
+    for wave in (2, 3, 4, 5, 6, 7):
         path = Path(root) / f"data/research/formulas/menota-reviewed-w{wave}.json"
         if path.exists():
             rows.extend(json.loads(path.read_text("utf-8")))
@@ -304,15 +304,18 @@ def reviewed_menota_token(w: MenotaWord, lemma: str, msa: str, rules: dict) -> t
     row = rules.get((*key, w.occurrence), rules.get(key))
     if row and lemma == row["given_lemma"]:
         return row["lemma"], row["tag"]
-    # Legacy inference for unannotated documents is intentionally frozen.
+    # Retain the previously reviewed personal-name exceptions.
     names = {"án", "hróðný", "gunnarr", "eyvindr", "kári", "freyr", "bjarni", "bróðir",
              "haraldr", "mímir", "yngvi", "einarr", "sveinn", "finnr", "alfr", "ósló",
              "áki", "bjǫrn", "hringr", "ormr"}
     if msa == "NP" and lemma.lower() in names:
         return lemma + " (name)", msa
-    # Apply source annotation only after voting. Changing the training votes
-    # would silently change unannotated documents too. Explicit coordinate
-    # reviews above take precedence, including reviewed exceptions to NP.
+    # The form-table winner is a (lemma, tag) pair: its NP status must
+    # survive inference too. Keep votes unchanged and use the same exact
+    # inherited-lexeme exemption as source-tagged names. Coordinate reviews
+    # above take precedence, including reviewed exceptions to inferred NP.
+    if msa == "NP":
+        return annotated_norse_lemma(lemma, msa), msa
     if w.lemma and w.msa:
         return annotated_norse_lemma(lemma, w.msa), msa
     return lemma, msa
@@ -326,6 +329,11 @@ def annotated_norse_lemma(lemma: str, tag: str, corpus: str = "menota") -> str:
     Qualified names remain unmapped unless an explicit override permits them.
     """
     if re.fullmatch(r"NP|NPRS?(?:-[NADG])?", tag):
+        # Reviewed personal homographs: Hjǫrtr (Gunnarr's brother) and
+        # Jökull (Finnboga saga), not the deer/ice common nouns or a
+        # first-person-pronoun spelling match. Wave-7 Norse ledger.
+        if fm.key_non(lemma) in {"hjörtr", "jökull"}:
+            return lemma + " (name)"
         from .name_mapping import name_lemma
         return name_lemma(corpus, lemma)
     noun = tag == "NC" or bool(re.fullmatch(r"NS?-[NADG]", tag))
@@ -1232,7 +1240,13 @@ def corpus_recs(maps: GermanicMappings, corpus: str, lemmas, overrides: dict | N
     for lem, r in decided.items():
         if lem in recs and r.how == "erratum":
             path = tuple(dict.fromkeys((*recs[lem].path, *r.path[1:])))
-            decided[lem] = replace(r, path=path)
+            # A reviewed compound's component is evidence, not an alias for
+            # the whole word. Otherwise the secure checker's word aliases
+            # also apply its formation cap to standalone maðr, guð, etc.
+            row = ov.get(lem, ((), {}))[1]
+            component = any(p.startswith(("hyphen:", "prefix:")) for p in path)
+            word = lem if row.get("formation") == "derivative" and component else r.word
+            decided[lem] = replace(r, word=word, path=path)
     return decided, steps
 
 

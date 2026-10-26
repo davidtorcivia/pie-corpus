@@ -1,0 +1,82 @@
+Wave 7 other/material review — 2026-10-26
+
+Ledger: data/research/8c/stageCS/error-verdicts-w7-other.jsonl
+32 input reports: 30 confirmed, 1 already-fixed, 1 unclear. Attached
+observations for reports19 and93 are also explicitly adjudicated.
+
+Source corrections
+- Residual Latin report97: Ancus was not covered by either peer ledger.
+  Live LASLA still treats the elided name as a common noun; correct only
+  LucrDRN3 3.1025 using the source context and Kaikki name/common distinction.
+- Exact Greek contextual readings for inquiry, necessity, drinking, temple,
+  leaving, and three personal/ethnic names. Keep πλέω only in the flow family.
+- Sanskrit earth/instrument readings and Satyavati name exclusion.
+- Old Russian glory corrected from incline to hear; contextual do-iti go
+  separated from the milk homonym. Live ORV+OCS mapping checked explicitly.
+- Twelve Armenian tokens corrected at actual DMHP word IDs, rather than
+  review-window start labels. Six name tokens are excluded from content but
+  remain in context. Harvest, council, viceroy and gushing-compound lemmas
+  remain unmapped; filling maps to a root, not an invented agent-noun form.
+- Four material reports yield five unit removals: three reported Celtic
+  units plus the wholly overlapping Eriu L7995 unit, and one byliny errata
+  heading. The existing byliny detector was checked and misses that heading;
+  no detector thresholds or general patterns were changed.
+
+The corrupt Greek G?GG? placeholder was already noncontent/unmapped in the
+live loader. Its damaged raw surface remains visible; no restoration is
+claimed. Byliny цфлой already lemmatizes to целый; the proposed printed
+spelling needs image collation and remains unclear, without a source edit.
+
+Evidence
+Raw daughter source contexts and local Kaikki dictionaries were read as text.
+Book evidence is cited by headword and page only in repository artifacts.
+Additional dictionary links are in the ledger. No claims files, Stage C-S
+slabs or blinding key were opened. No raw code was executed or imported.
+No git commands, STATUS edits, Tier2/Tier3/export regeneration, or
+Germanic/Celtic override changes were made.
+
+Verification
+Pre-edit production token snapshots are retained in /private/tmp/w7-other,
+as *-before.jsonl (seven corpora; Greek includes all texts by the four affected
+authors, Old Russian includes spi/lav). Snapshot capture used the production
+load_glaux_b, load_homer, load_torot_b, load_dcs and dmhp_tokens loaders.
+The current verification command is:
+  UV_CACHE_DIR=/private/tmp/pie-uv-cache uv run python -I scripts/verify_w7_other.py
+It compares all token fields in those populations, requires each changed
+lemma to be explicitly declared, checks actual material loaders before/after
+with only wave7 material rules disabled, and resolves affected mapping tables
+into /private/tmp/w7-other/resolved. No generated repository table is edited.
+Committed token/table diffs and metrics accompany the ledger.
+Live Homer and ORV+OCS checks additionally verify that production mappings
+(not merely static table resolution) now give leave, hear and go respectively.
+
+Focused tests: 44 passed in7.89s (w7 other, material, stageCS other).
+The first test attempt caught a test-harness API error (decide returns a tuple),
+which was corrected. The first material comparison exposed the overlapping
+Eriu unit; source line7995 was already independently verified as editorial,
+and the intended removal list now explicitly includes this nested unit.
+Final full-suite result is recorded below.
+
+Completed comparison: 2,997,502 tokens across the seven checked populations;
+26 declared lemma/content changes, zero surface/coordinate/POS changes.
+Byliny150742→150741 units; Celtic325543→325539 units; zero retained-unit
+changes. Seven nonempty mapping-ID differences, all declared override rows;
+additional explicit empty decisions prevent speculative automatic mapping.
+A first full-suite attempt was interrupted after413 passes because the Norse
+worker resumed override/test edits. It is not counted as final validation.
+
+Expanded focused validation (including Latin):45 passed in8.05s.
+Second full-suite attempt stopped at1210 passes and one reproducible
+peer-owned failure: tests/test_mapping_norse_w4.py::test_name_guard_uses_annotation_and_preserves_common_words
+expects Baldr/NP unchanged, while the current Norse rule returns Baldr (name).
+A fresh single-test process reproduces it. No peer source/test was edited by this worker. The Norse worker subsequently
+repaired the regression; its fresh single-test run passed before final validation.
+
+FINAL VALIDATION
+UV_CACHE_DIR=/private/tmp/pie-uv-cache uv run pytest -q
+3029 passed in495.40s (0:08:15), exit0.
+Before starting, ps showed validation rather than editing, and successive
+file checks showed stability. All monitored Python sources/tests, mapping
+overrides and material rules remained unchanged throughout this final run.
+Ledger32 reports:30 confirmed,1 already-fixed,1 unclear. Corpus/export and
+Stage C-S regeneration remain with the lead. STATUS.md is unchanged.

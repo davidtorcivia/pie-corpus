@@ -285,6 +285,10 @@ class Token:
         if self.corpus in {'menota', 'icepahc', 'grc', 'grp', 'grc-late', 'hom',
                            'av', 'sa-ep', 'orv', 'lat'} and self.lemma.endswith(' (name)'):
             self.content = False
+        if self.corpus == 'xcl' and self.lemma.endswith(' (name)'):
+            from .w7_other_mapping import armenian_name
+            if armenian_name(self.lemma, self.surface, self.locus):
+                self.content = False
         if self.corpus == "xcl" and self.lemma == "34@numeral":
             self.content, self.pos = False, "other"
 

@@ -1709,6 +1709,33 @@ for _form, _rules in {
     IR_REVIEWED_CONTEXT.setdefault(_form, []).extend(_rules)
 
 
+# Wave-7 independent source/dictionary review: error-verdicts-w7-celtic.jsonl.
+# Contexts keep unrelated homographs and prefixed names separate.
+for _form, _rules in {
+    'ḟind': [(('bláth',), ('ina',), 'find@white', False)],
+    'élúd': [(('imma-ricfa',), ('dó',), 'élúd@escape', False)],
+    't-áes': [(('in',), ('cumachta', 'trebaire'), 'áes', False)],
+    'thenid': [(('do',), ('sinnaig',), 'tene', False)],
+    'usci': [(('esca',), ('aer',), 'uisce', False)],
+    'adaig': [(('id',), ('muir',), 'adaig@night', False)],
+    'lir': [(('bid', 'bit'), ('bomand ega',), 'il', False)],
+    'muir': [(('adaig',), ('tir',), 'muir', False)],
+    'aer': [(('usci',), ('id',), 'aer@air', False)],
+    'h-erind': [(('saer-chlanna', 'daer-tuathaib'), (), 'ériu (name)', True)],
+    'haine': [(('co',), ('co hairigi',), 'áine (name)', True)],
+    'gus': [(('riut',), ('aniu',), 'co', False)],
+    'gusa': [(('fhleid',), ('m-bertha',), 'co', False)],
+    'lotar': [(('ocus',), ('i m-breith',), 'luid', False)],
+    'craide': [(('bris a',), ('ina cliab',), 'cride', False)],
+    't-shlegh': [(('in',), ('ina h-ucht',), 'sleg', False)],
+    'rus': [(('ni',), ('leic',), 'ro', False)],
+    'cor': [(('h-ucht',), ('bris',), 'co', False)],
+    'aill': [(('o', 'ó'), ('do aill',), 'aill', False),
+             (('do',), ('ocom',), 'aill', False)],
+}.items():
+    IR_REVIEWED_CONTEXT.setdefault(_form, []).extend(_rules)
+
+
 def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
     """Lemmas for a word sequence: `lemz(w)` for each word, except that a form in CONTEXT_FORMS takes the
     lemma its preceding word selects (tig after isin / i / ina / dia … → tech 'house'). Stage C should use

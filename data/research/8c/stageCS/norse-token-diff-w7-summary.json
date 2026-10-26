@@ -1,0 +1,4789 @@
+{
+ "seed": 7,
+ "corpus_tokens": {
+  "menota": 1650614,
+  "icepahc": 900937,
+  "non": 40613
+ },
+ "changed_tokens": 7408,
+ "counts_per_rule": {
+  "compound-component": 1974,
+  "lexical-mapping": 601,
+  "reviewed-formation": 324,
+  "reviewed-personal-homograph": 176,
+  "reviewed-coordinate": 43,
+  "inferred-NP": 4290
+ },
+ "counts_per_corpus": {
+  "menota": {
+   "compound-component": 1759,
+   "lexical-mapping": 601,
+   "reviewed-formation": 324,
+   "reviewed-personal-homograph": 27,
+   "reviewed-coordinate": 43,
+   "inferred-NP": 4290
+  },
+  "icepahc": {
+   "compound-component": 195,
+   "reviewed-personal-homograph": 149
+  },
+  "non": {
+   "compound-component": 20
+  }
+ },
+ "samples_per_rule": {
+  "compound-component": [
+   {
+    "corpus": "menota",
+    "index": 741058,
+    "locus": "AM-519a-4to 12r:33",
+    "form": "borgarmanna",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "borgar-maðr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-mon"
+     ],
+     "levels": {
+      "pie-lex-mon": "exact"
+     }
+    },
+    "new": {
+     "lemma": "borgar-maðr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-mon"
+     ],
+     "levels": {
+      "pie-lex-mon": "root"
+     }
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 820726,
+    "locus": "1985.margsaga.nar-fic s143",
+    "form": "helvítis",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "helvíti",
+     "tag": "N-G",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjelyo"
+     ],
+     "levels": {
+      "pie-lex-kjelyo": "exact"
+     }
+    },
+    "new": {
+     "lemma": "helvíti",
+     "tag": "N-G",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjelyo"
+     ],
+     "levels": {
+      "pie-lex-kjelyo": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 585770,
+    "locus": "AM-35-fol 207:",
+    "form": "upphaf",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "upphaf",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kapom"
+     ],
+     "levels": {
+      "pie-lex-kapom": "exact"
+     }
+    },
+    "new": {
+     "lemma": "upphaf",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kapom"
+     ],
+     "levels": {
+      "pie-lex-kapom": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 749924,
+    "locus": "AM-519a-4to 19r:15",
+    "form": "ránfengi",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "rán-fengi",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-ph2nekj"
+     ],
+     "levels": {
+      "pie-lex-ph2nekj": "exact"
+     }
+    },
+    "new": {
+     "lemma": "rán-fengi",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-ph2nekj"
+     ],
+     "levels": {
+      "pie-lex-ph2nekj": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 918309,
+    "locus": "AM-63-fol 162:",
+    "form": "England",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "England",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "England (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 165444,
+    "locus": "AM-132-fol-Laxdaela-saga 178v:38",
+    "form": "hýbýli",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "hýbýli",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "hýbýli",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 257076,
+    "locus": "AM-132-fol-Njals-saga 50v:20",
+    "form": "Torsóttr",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "torsóttr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-seh2gyeti"
+     ],
+     "levels": {
+      "pie-lex-seh2gyeti": "exact"
+     }
+    },
+    "new": {
+     "lemma": "torsóttr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-seh2gyeti"
+     ],
+     "levels": {
+      "pie-lex-seh2gyeti": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1555909,
+    "locus": "HolmPerg-6-fol 96v:31",
+    "form": "vpp-\nhafs",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "upphaf",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kapom"
+     ],
+     "levels": {
+      "pie-lex-kapom": "exact"
+     }
+    },
+    "new": {
+     "lemma": "upphaf",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kapom"
+     ],
+     "levels": {
+      "pie-lex-kapom": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 772436,
+    "locus": "AM-519a-4to 35v:32",
+    "form": "Sýrlandi",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "sýr-land",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-londhom"
+     ],
+     "levels": {
+      "pie-lex-londhom": "exact"
+     }
+    },
+    "new": {
+     "lemma": "sýr-land",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-londhom"
+     ],
+     "levels": {
+      "pie-lex-londhom": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 364149,
+    "locus": "AM-242-fol 81:5",
+    "form": "eilifr",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "eilífr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h2oyu"
+     ],
+     "levels": {
+      "pie-lex-h2oyu": "exact"
+     }
+    },
+    "new": {
+     "lemma": "eilífr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h2oyu"
+     ],
+     "levels": {
+      "pie-lex-h2oyu": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 745258,
+    "locus": "AM-519a-4to 15v:15",
+    "form": "kaupmaðr",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "kaup-maðr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-mon"
+     ],
+     "levels": {
+      "pie-lex-mon": "exact"
+     }
+    },
+    "new": {
+     "lemma": "kaup-maðr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-mon"
+     ],
+     "levels": {
+      "pie-lex-mon": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 839583,
+    "locus": "AM-619-4to 43:11",
+    "form": "æilift",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "eilífr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h2oyu"
+     ],
+     "levels": {
+      "pie-lex-h2oyu": "exact"
+     }
+    },
+    "new": {
+     "lemma": "eilífr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h2oyu"
+     ],
+     "levels": {
+      "pie-lex-h2oyu": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 206704,
+    "locus": "AM-132-fol-Njals-saga 17v:25",
+    "form": "hýbýlum",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "hýbýli",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "hýbýli",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 464391,
+    "locus": "1630.gerhard.rel-oth s683",
+    "form": "helvíti",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "helvíti",
+     "tag": "N-D",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjelyo"
+     ],
+     "levels": {
+      "pie-lex-kjelyo": "exact"
+     }
+    },
+    "new": {
+     "lemma": "helvíti",
+     "tag": "N-D",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjelyo"
+     ],
+     "levels": {
+      "pie-lex-kjelyo": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 768965,
+    "locus": "AM-519a-4to 33r:30",
+    "form": "borgarmenn",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "borgar-maðr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-mon"
+     ],
+     "levels": {
+      "pie-lex-mon": "exact"
+     }
+    },
+    "new": {
+     "lemma": "borgar-maðr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-mon"
+     ],
+     "levels": {
+      "pie-lex-mon": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 728540,
+    "locus": "AM-519a-4to 2r:17",
+    "form": "nafnbǿtr",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "nafn-bót",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-bhodeti"
+     ],
+     "levels": {
+      "pie-lex-bhodeti": "exact"
+     }
+    },
+    "new": {
+     "lemma": "nafn-bót",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-bhodeti"
+     ],
+     "levels": {
+      "pie-lex-bhodeti": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 132087,
+    "locus": "AM-132-fol-Kormaks-saga 128v:4",
+    "form": "Danmerkr",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "danmǫrk",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-dhonh2is"
+     ],
+     "levels": {
+      "pie-lex-dhonh2is": "exact"
+     }
+    },
+    "new": {
+     "lemma": "danmǫrk",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-dhonh2is"
+     ],
+     "levels": {
+      "pie-lex-dhonh2is": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 331334,
+    "locus": "AM-242-fol 5:24",
+    "form": "helvitís",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "helvíti",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjelyo"
+     ],
+     "levels": {
+      "pie-lex-kjelyo": "exact"
+     }
+    },
+    "new": {
+     "lemma": "helvíti",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjelyo"
+     ],
+     "levels": {
+      "pie-lex-kjelyo": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 755666,
+    "locus": "AM-519a-4to 23v:7",
+    "form": "miskunnsamr",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "mis-kunn-samr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-somHos"
+     ],
+     "levels": {
+      "pie-lex-somHos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "mis-kunn-samr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-somHos"
+     ],
+     "levels": {
+      "pie-lex-somHos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 753090,
+    "locus": "AM-519a-4to 21v:12",
+    "form": "borgarlýðrinn",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "borgar-lýðr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1lewdhis"
+     ],
+     "levels": {
+      "pie-lex-h1lewdhis": "exact"
+     }
+    },
+    "new": {
+     "lemma": "borgar-lýðr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1lewdhis"
+     ],
+     "levels": {
+      "pie-lex-h1lewdhis": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 247104,
+    "locus": "AM-132-fol-Njals-saga 44v:35",
+    "form": "ófúss",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "ófúss",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-pntstos"
+     ],
+     "levels": {
+      "pie-lex-pntstos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "ófúss",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-pntstos"
+     ],
+     "levels": {
+      "pie-lex-pntstos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 731061,
+    "locus": "AM-519a-4to 4r:28",
+    "form": "rúmfátt",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "rúm-fár",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-ph2wos"
+     ],
+     "levels": {
+      "pie-lex-ph2wos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "rúm-fár",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-ph2wos"
+     ],
+     "levels": {
+      "pie-lex-ph2wos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 351319,
+    "locus": "AM-242-fol 41:30",
+    "form": "upphaf",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "upphaf",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kapom"
+     ],
+     "levels": {
+      "pie-lex-kapom": "exact"
+     }
+    },
+    "new": {
+     "lemma": "upphaf",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kapom"
+     ],
+     "levels": {
+      "pie-lex-kapom": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 824951,
+    "locus": "AM-619-4to 1:11",
+    "form": "upphafum",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "upphaf",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kapom"
+     ],
+     "levels": {
+      "pie-lex-kapom": "exact"
+     }
+    },
+    "new": {
+     "lemma": "upphaf",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kapom"
+     ],
+     "levels": {
+      "pie-lex-kapom": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 753864,
+    "locus": "AM-519a-4to 22r:17",
+    "form": "fóstrjarðir",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "fóstr-jǫrð",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1erteh2"
+     ],
+     "levels": {
+      "pie-lex-h1erteh2": "exact"
+     }
+    },
+    "new": {
+     "lemma": "fóstr-jǫrð",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1erteh2"
+     ],
+     "levels": {
+      "pie-lex-h1erteh2": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 218538,
+    "locus": "AM-132-fol-Njals-saga 27r:39",
+    "form": "útferðar",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "útferð",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-portis"
+     ],
+     "levels": {
+      "pie-lex-portis": "exact"
+     }
+    },
+    "new": {
+     "lemma": "útferð",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-portis"
+     ],
+     "levels": {
+      "pie-lex-portis": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1560810,
+    "locus": "HolmPerg-6-fol 212:26",
+    "form": "eilifum",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "eilífr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h2oyu"
+     ],
+     "levels": {
+      "pie-lex-h2oyu": "exact"
+     }
+    },
+    "new": {
+     "lemma": "eilífr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h2oyu"
+     ],
+     "levels": {
+      "pie-lex-h2oyu": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 833202,
+    "locus": "AM-619-4to 12v:6",
+    "form": "æilift",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "eilífr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h2oyu"
+     ],
+     "levels": {
+      "pie-lex-h2oyu": "exact"
+     }
+    },
+    "new": {
+     "lemma": "eilífr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h2oyu"
+     ],
+     "levels": {
+      "pie-lex-h2oyu": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 428649,
+    "locus": "AM-243-b-alfa-fol 39v:25",
+    "form": "upphaf",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "upphaf",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kapom"
+     ],
+     "levels": {
+      "pie-lex-kapom": "exact"
+     }
+    },
+    "new": {
+     "lemma": "upphaf",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kapom"
+     ],
+     "levels": {
+      "pie-lex-kapom": "root"
+     }
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 820592,
+    "locus": "1985.margsaga.nar-fic s130",
+    "form": "helvít$",
+    "rule": "compound-component",
+    "old": {
+     "lemma": "helvíti",
+     "tag": "NS-A",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjelyo"
+     ],
+     "levels": {
+      "pie-lex-kjelyo": "exact"
+     }
+    },
+    "new": {
+     "lemma": "helvíti",
+     "tag": "NS-A",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjelyo"
+     ],
+     "levels": {
+      "pie-lex-kjelyo": "root"
+     }
+    }
+   }
+  ],
+  "inferred-NP": [
+   {
+    "corpus": "menota",
+    "index": 703952,
+    "locus": "AM-36-fol 425:29",
+    "form": "Erlings",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "Erlingr",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "Erlingr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 610815,
+    "locus": "AM-35-fol 347:",
+    "form": "Guðrún",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "guðrún",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "guðrún (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 929983,
+    "locus": "AM-63-fol 220:",
+    "form": "Sogni",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "sogn",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "sogn (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 357852,
+    "locus": "AM-242-fol 56:13",
+    "form": "mar",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "már",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "már (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 391106,
+    "locus": "AM-242-fol 167:5",
+    "form": "oðíns",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "Óðinn",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [
+      "pie-root-weh2t-excited"
+     ],
+     "levels": {
+      "pie-root-weh2t-excited": "exact"
+     }
+    },
+    "new": {
+     "lemma": "Óðinn (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 569436,
+    "locus": "AM-35-fol 101:",
+    "form": "Atla",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "atli",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "atli (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 890405,
+    "locus": "AM-63-fol 33:",
+    "form": "Jotlandi",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "Jótland",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "Jótland (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 364107,
+    "locus": "AM-242-fol 81:2",
+    "form": "sighvatr",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "Sighvatr",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "Sighvatr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 976997,
+    "locus": "AM-63-fol 454:",
+    "form": "Guðrúnar",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "guðrún",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "guðrún (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 657618,
+    "locus": "AM-36-fol 181:",
+    "form": "Gautlandi",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "Gautland",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "Gautland (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 342046,
+    "locus": "AM-242-fol 24:11",
+    "form": "garmr",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "Garmr",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [
+      "kaikki:ger"
+     ],
+     "levels": {
+      "kaikki:ger": "exact"
+     }
+    },
+    "new": {
+     "lemma": "Garmr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 561052,
+    "locus": "AM-35-fol 51:",
+    "form": "Eysteins",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "eysteinn",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "eysteinn (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 949657,
+    "locus": "AM-63-fol 310:",
+    "form": "Sigurðr",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "Sigurðr",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "Sigurðr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 940620,
+    "locus": "AM-63-fol 269:",
+    "form": "Gilli",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "gilli",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "gilli (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 386758,
+    "locus": "AM-242-fol 144:1",
+    "form": "skula",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "skúli",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "skúli (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 668277,
+    "locus": "AM-36-fol 236:",
+    "form": "Árne",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "Arni",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "Arni (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 565293,
+    "locus": "AM-35-fol 77:",
+    "form": "Sogni",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "sogn",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "sogn (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 946407,
+    "locus": "AM-63-fol 294:",
+    "form": "Þorkell",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "þorkell",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "þorkell (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 364817,
+    "locus": "AM-242-fol 81:14",
+    "form": "ottar",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "Óttarr",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "Óttarr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 591289,
+    "locus": "AM-35-fol 241:",
+    "form": "þorstein",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "þorsteinn",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "þorsteinn (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 662024,
+    "locus": "AM-36-fol 204:",
+    "form": "þorkeli",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "þorkell",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "þorkell (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 376168,
+    "locus": "AM-242-fol 104:3",
+    "form": "snorri",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "snorri",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "snorri (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 931189,
+    "locus": "AM-63-fol 227:",
+    "form": "Sigurðr",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "Sigurðr",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "Sigurðr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 360263,
+    "locus": "AM-242-fol 73:7",
+    "form": "brandr",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "brandr",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [
+      "pie-lex-bhrenw"
+     ],
+     "levels": {
+      "pie-lex-bhrenw": "exact"
+     }
+    },
+    "new": {
+     "lemma": "brandr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 661574,
+    "locus": "AM-36-fol 202:",
+    "form": "Brusa",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "Brúsi",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "Brúsi (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 354906,
+    "locus": "AM-242-fol 49:13",
+    "form": "oðinn",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "Óðinn",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [
+      "pie-root-weh2t-excited"
+     ],
+     "levels": {
+      "pie-root-weh2t-excited": "exact"
+     }
+    },
+    "new": {
+     "lemma": "Óðinn (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 598189,
+    "locus": "AM-35-fol 278:",
+    "form": "Tryggva",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "tryggvi",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "tryggvi (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 687973,
+    "locus": "AM-36-fol 338:04",
+    "form": "Ragnhildr",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "ragnhildr",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "ragnhildr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 942009,
+    "locus": "AM-63-fol 275:",
+    "form": "Asbiorn",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "Ásbiorn",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "Ásbiorn (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 606220,
+    "locus": "AM-35-fol 323:",
+    "form": "Astríði",
+    "rule": "inferred-NP",
+    "old": {
+     "lemma": "ástríðr",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "ástríðr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   }
+  ],
+  "lexical-mapping": [
+   {
+    "corpus": "menota",
+    "index": 1093833,
+    "locus": "DG-4at7-Streng 30r:19",
+    "form": "skorta",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-skerdh"
+     ],
+     "levels": {
+      "pie-lex-skerdh": "root"
+     }
+    },
+    "new": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 393220,
+    "locus": "AM-243-b-alfa-fol 2r:24",
+    "form": "bœ",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "bœr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-root-bher-bear"
+     ],
+     "levels": {
+      "pie-root-bher-bear": "root"
+     }
+    },
+    "new": {
+     "lemma": "bœr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-root-bhuH-be"
+     ],
+     "levels": {
+      "pie-root-bhuH-be": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1231369,
+    "locus": "HolmPerg-17-4to 0135:6",
+    "form": "bœ",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "bœr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-root-bher-bear"
+     ],
+     "levels": {
+      "pie-root-bher-bear": "root"
+     }
+    },
+    "new": {
+     "lemma": "bœr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-root-bhuH-be"
+     ],
+     "levels": {
+      "pie-root-bhuH-be": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 90991,
+    "locus": "AM-132-fol-Finnboga-saga 104r:32",
+    "form": "skortir",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-skerdh"
+     ],
+     "levels": {
+      "pie-lex-skerdh": "root"
+     }
+    },
+    "new": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 166258,
+    "locus": "AM-132-fol-Laxdaela-saga 179v:3",
+    "form": "slitit",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "slíta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-root-leyd-let",
+      "pie-root-leyd-play"
+     ],
+     "levels": {
+      "pie-root-leyd-let": "exact",
+      "pie-root-leyd-play": "exact"
+     }
+    },
+    "new": {
+     "lemma": "slíta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1561031,
+    "locus": "Lbs-fragm-82 1r:13",
+    "form": "hrafn",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "hrafn",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjerh2"
+     ],
+     "levels": {
+      "pie-lex-kjerh2": "exact"
+     }
+    },
+    "new": {
+     "lemma": "hrafn",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 250717,
+    "locus": "AM-132-fol-Njals-saga 47r:1",
+    "form": "skorta",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-skerdh"
+     ],
+     "levels": {
+      "pie-lex-skerdh": "root"
+     }
+    },
+    "new": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1183101,
+    "locus": "DG-8-OHleg 21v:10",
+    "form": "skorte",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-skerdh"
+     ],
+     "levels": {
+      "pie-lex-skerdh": "root"
+     }
+    },
+    "new": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1633539,
+    "locus": "Wolf-Aug-9-10-4to 41v:23",
+    "form": "versta",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "verri",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "kaikki:h₁elḱ"
+     ],
+     "levels": {
+      "kaikki:h₁elḱ": "exact"
+     }
+    },
+    "new": {
+     "lemma": "verri",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 118127,
+    "locus": "AM-132-fol-Hallfredar-saga 153r:41",
+    "form": "skortir",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-skerdh"
+     ],
+     "levels": {
+      "pie-lex-skerdh": "root"
+     }
+    },
+    "new": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1494668,
+    "locus": "HolmPerg-6-fol 36:13",
+    "form": "slita",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "slíta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-root-leyd-let",
+      "pie-root-leyd-play"
+     ],
+     "levels": {
+      "pie-root-leyd-let": "exact",
+      "pie-root-leyd-play": "exact"
+     }
+    },
+    "new": {
+     "lemma": "slíta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 676579,
+    "locus": "AM-36-fol 277:05",
+    "form": "slitit",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "slíta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-root-leyd-let",
+      "pie-root-leyd-play"
+     ],
+     "levels": {
+      "pie-root-leyd-let": "exact",
+      "pie-root-leyd-play": "exact"
+     }
+    },
+    "new": {
+     "lemma": "slíta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 60094,
+    "locus": "AM-132-fol-Egils-saga 85r:24",
+    "form": "slíti",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "slíta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-root-leyd-let",
+      "pie-root-leyd-play"
+     ],
+     "levels": {
+      "pie-root-leyd-let": "exact",
+      "pie-root-leyd-play": "exact"
+     }
+    },
+    "new": {
+     "lemma": "slíta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 205770,
+    "locus": "AM-132-fol-Njals-saga 17r:19",
+    "form": "skorti",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-skerdh"
+     ],
+     "levels": {
+      "pie-lex-skerdh": "root"
+     }
+    },
+    "new": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1348490,
+    "locus": "HolmPerg-34-4to-MLL 44v:24",
+    "form": "verra",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "verri",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "kaikki:h₁elḱ"
+     ],
+     "levels": {
+      "kaikki:h₁elḱ": "exact"
+     }
+    },
+    "new": {
+     "lemma": "verri",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1293043,
+    "locus": "HolmPerg-30-4to 58v:18",
+    "form": "slita",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "slíta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-root-leyd-let",
+      "pie-root-leyd-play"
+     ],
+     "levels": {
+      "pie-root-leyd-let": "exact",
+      "pie-root-leyd-play": "exact"
+     }
+    },
+    "new": {
+     "lemma": "slíta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 160881,
+    "locus": "AM-132-fol-Laxdaela-saga 176r:5",
+    "form": "slitit",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "slíta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-root-leyd-let",
+      "pie-root-leyd-play"
+     ],
+     "levels": {
+      "pie-root-leyd-let": "exact",
+      "pie-root-leyd-play": "exact"
+     }
+    },
+    "new": {
+     "lemma": "slíta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 774867,
+    "locus": "AM-544-4to-Vsp 20r:31",
+    "form": "sal",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "sál",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-root-sel-dwell",
+      "pie-root-sel-jump",
+      "pie-root-sel-sneak"
+     ],
+     "levels": {
+      "pie-root-sel-dwell": "exact",
+      "pie-root-sel-jump": "exact",
+      "pie-root-sel-sneak": "exact"
+     }
+    },
+    "new": {
+     "lemma": "sál",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 216049,
+    "locus": "AM-132-fol-Njals-saga 25v:9",
+    "form": "sliti",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "slíta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-root-leyd-let",
+      "pie-root-leyd-play"
+     ],
+     "levels": {
+      "pie-root-leyd-let": "exact",
+      "pie-root-leyd-play": "exact"
+     }
+    },
+    "new": {
+     "lemma": "slíta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1593599,
+    "locus": "NRA-norrfragm-68 1r:2",
+    "form": "sál",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "sál",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-root-sel-dwell",
+      "pie-root-sel-jump",
+      "pie-root-sel-sneak"
+     ],
+     "levels": {
+      "pie-root-sel-dwell": "exact",
+      "pie-root-sel-jump": "exact",
+      "pie-root-sel-sneak": "exact"
+     }
+    },
+    "new": {
+     "lemma": "sál",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1324779,
+    "locus": "HolmPerg-34-4to-MLL 9r:2",
+    "form": "skortir",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-skerdh"
+     ],
+     "levels": {
+      "pie-lex-skerdh": "root"
+     }
+    },
+    "new": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 122060,
+    "locus": "AM-132-fol-Hallfredar-saga 155v:20",
+    "form": "mjúka",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "mjúkr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-root-mewk-untie",
+      "pie-root-smewk-let_loose"
+     ],
+     "levels": {
+      "pie-root-mewk-untie": "exact",
+      "pie-root-smewk-let_loose": "exact"
+     }
+    },
+    "new": {
+     "lemma": "mjúkr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1617100,
+    "locus": "Wolf-Aug-9-10-4to 29v:20",
+    "form": "finnum",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "finnr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-root-pes-penis"
+     ],
+     "levels": {
+      "pie-root-pes-penis": "exact"
+     }
+    },
+    "new": {
+     "lemma": "finnr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 340858,
+    "locus": "AM-242-fol 23:11",
+    "form": "bæ",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "bœr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-root-bher-bear"
+     ],
+     "levels": {
+      "pie-root-bher-bear": "root"
+     }
+    },
+    "new": {
+     "lemma": "bœr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-root-bhuH-be"
+     ],
+     "levels": {
+      "pie-root-bhuH-be": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 728645,
+    "locus": "AM-519a-4to 2r:24",
+    "form": "mjúkr",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "mjúkr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-root-mewk-untie",
+      "pie-root-smewk-let_loose"
+     ],
+     "levels": {
+      "pie-root-mewk-untie": "exact",
+      "pie-root-smewk-let_loose": "exact"
+     }
+    },
+    "new": {
+     "lemma": "mjúkr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 134128,
+    "locus": "AM-132-fol-Laxdaela-saga 157r:31",
+    "form": "Skortir",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-skerdh"
+     ],
+     "levels": {
+      "pie-lex-skerdh": "root"
+     }
+    },
+    "new": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1626196,
+    "locus": "Wolf-Aug-9-10-4to 36v:4",
+    "form": "mjúkari",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "mjúkr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-root-mewk-untie",
+      "pie-root-smewk-let_loose"
+     ],
+     "levels": {
+      "pie-root-mewk-untie": "exact",
+      "pie-root-smewk-let_loose": "exact"
+     }
+    },
+    "new": {
+     "lemma": "mjúkr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1644677,
+    "locus": "Wolf-Aug-9-10-4to 49v:5",
+    "form": "hrafni",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "hrafn",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjerh2"
+     ],
+     "levels": {
+      "pie-lex-kjerh2": "exact"
+     }
+    },
+    "new": {
+     "lemma": "hrafn",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1239636,
+    "locus": "HolmPerg-17-4to 0171:9",
+    "form": "versta",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "verri",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "kaikki:h₁elḱ"
+     ],
+     "levels": {
+      "kaikki:h₁elḱ": "exact"
+     }
+    },
+    "new": {
+     "lemma": "verri",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 93891,
+    "locus": "AM-132-fol-Finnboga-saga 106r:19",
+    "form": "skorti",
+    "rule": "lexical-mapping",
+    "old": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-skerdh"
+     ],
+     "levels": {
+      "pie-lex-skerdh": "root"
+     }
+    },
+    "new": {
+     "lemma": "skorta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   }
+  ],
+  "reviewed-coordinate": [
+   {
+    "corpus": "menota",
+    "index": 787744,
+    "locus": "AM-56-4to 20r:3",
+    "form": "man",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "munu",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-memone"
+     ],
+     "levels": {
+      "pie-lex-memone": "exact"
+     }
+    },
+    "new": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-mon"
+     ],
+     "levels": {
+      "pie-lex-mon": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 650031,
+    "locus": "AM-36-fol 143:",
+    "form": "Svein",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "sveinn",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-swe-2"
+     ],
+     "levels": {
+      "pie-lex-swe-2": "exact"
+     }
+    },
+    "new": {
+     "lemma": "sveinn (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 812978,
+    "locus": "AM-56-4to 59r:8",
+    "form": "stoð",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "standa",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-sth2nedhh1ti"
+     ],
+     "levels": {
+      "pie-lex-sth2nedhh1ti": "exact"
+     }
+    },
+    "new": {
+     "lemma": "stǫð@station",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-root-steh2-stand"
+     ],
+     "levels": {
+      "pie-root-steh2-stand": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 504042,
+    "locus": "AM-302-fol 84v:20",
+    "form": "fott",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "fǿða",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-peh2y"
+     ],
+     "levels": {
+      "pie-lex-peh2y": "exact"
+     }
+    },
+    "new": {
+     "lemma": "fótr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-poxds"
+     ],
+     "levels": {
+      "pie-lex-poxds": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 570778,
+    "locus": "AM-35-fol 109:",
+    "form": "Asa",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "áss",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h2emsus"
+     ],
+     "levels": {
+      "pie-lex-h2emsus": "exact"
+     }
+    },
+    "new": {
+     "lemma": "ása (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1181155,
+    "locus": "DG-8-OHleg 19v:20",
+    "form": "for",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "for",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-perkjs"
+     ],
+     "levels": {
+      "pie-lex-perkjs": "exact"
+     }
+    },
+    "new": {
+     "lemma": "fǫr@journey",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-root-per-go_through"
+     ],
+     "levels": {
+      "pie-root-per-go_through": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 573099,
+    "locus": "AM-35-fol 123:",
+    "form": "Hallaði",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "halla",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjoltos"
+     ],
+     "levels": {
+      "pie-lex-kjoltos": "root"
+     }
+    },
+    "new": {
+     "lemma": "hallaðr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 812641,
+    "locus": "AM-56-4to 58v:5",
+    "form": "stoð",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "standa",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-sth2nedhh1ti"
+     ],
+     "levels": {
+      "pie-lex-sth2nedhh1ti": "exact"
+     }
+    },
+    "new": {
+     "lemma": "stǫð@station",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-root-steh2-stand"
+     ],
+     "levels": {
+      "pie-root-steh2-stand": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1196081,
+    "locus": "DG-8-OHleg 35v:24",
+    "form": "lyða",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "lýða",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1lewdhis"
+     ],
+     "levels": {
+      "pie-lex-h1lewdhis": "exact"
+     }
+    },
+    "new": {
+     "lemma": "hlýða",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-root-kjlew-hear"
+     ],
+     "levels": {
+      "pie-root-kjlew-hear": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1172095,
+    "locus": "DG-8-OHleg 0024:36",
+    "form": "syr",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "sýr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-suH"
+     ],
+     "levels": {
+      "pie-lex-suH": "exact"
+     }
+    },
+    "new": {
+     "lemma": "sýr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 686897,
+    "locus": "AM-36-fol 332:10",
+    "form": "Steinn",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "steinn",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-steyh2"
+     ],
+     "levels": {
+      "pie-lex-steyh2": "exact"
+     }
+    },
+    "new": {
+     "lemma": "steinn (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 466617,
+    "locus": "AM-302-fol 20v:22",
+    "form": "fott",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "fǿða",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-peh2y"
+     ],
+     "levels": {
+      "pie-lex-peh2y": "exact"
+     }
+    },
+    "new": {
+     "lemma": "fótr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-poxds"
+     ],
+     "levels": {
+      "pie-lex-poxds": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1170364,
+    "locus": "DG-8-OHleg 0020:5",
+    "form": "for",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "for",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-perkjs"
+     ],
+     "levels": {
+      "pie-lex-perkjs": "exact"
+     }
+    },
+    "new": {
+     "lemma": "fǫr@journey",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-root-per-go_through"
+     ],
+     "levels": {
+      "pie-root-per-go_through": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1179620,
+    "locus": "DG-8-OHleg 18r:13",
+    "form": "syr",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "sýr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-suH"
+     ],
+     "levels": {
+      "pie-lex-suH": "exact"
+     }
+    },
+    "new": {
+     "lemma": "sýr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1167410,
+    "locus": "DG-8-OHleg 5v:12",
+    "form": "beðet",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "biðia",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-gwhedhyeti"
+     ],
+     "levels": {
+      "pie-lex-gwhedhyeti": "exact"
+     }
+    },
+    "new": {
+     "lemma": "bíða",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-bheydheti"
+     ],
+     "levels": {
+      "pie-lex-bheydheti": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1167520,
+    "locus": "DG-8-OHleg 5v:22",
+    "form": "love",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "lof",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-lubhom"
+     ],
+     "levels": {
+      "pie-lex-lubhom": "exact"
+     }
+    },
+    "new": {
+     "lemma": "lǫg",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-loghos"
+     ],
+     "levels": {
+      "pie-lex-loghos": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 649998,
+    "locus": "AM-36-fol 143:",
+    "form": "man",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "munu",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-memone"
+     ],
+     "levels": {
+      "pie-lex-memone": "exact"
+     }
+    },
+    "new": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-mon"
+     ],
+     "levels": {
+      "pie-lex-mon": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1164147,
+    "locus": "DG-8-OHleg 0003:4",
+    "form": "ryggr",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "ryggr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "kaikki:skrewk"
+     ],
+     "levels": {
+      "kaikki:skrewk": "exact"
+     }
+    },
+    "new": {
+     "lemma": "hryggr@sad",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 697094,
+    "locus": "AM-36-fol 386:23",
+    "form": "hrafn",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "hrafn",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjerh2"
+     ],
+     "levels": {
+      "pie-lex-kjerh2": "exact"
+     }
+    },
+    "new": {
+     "lemma": "hrafn@raven",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1167357,
+    "locus": "DG-8-OHleg 5v:8",
+    "form": "vanr",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "vanr",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1uh2nos",
+      "pie-lex-h1weh2nos"
+     ],
+     "levels": {
+      "pie-lex-h1uh2nos": "exact",
+      "pie-lex-h1weh2nos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "vanr@accustomed",
+     "tag": "AJ",
+     "content": true,
+     "lex_id": [
+      "pie-root-wenh1-love"
+     ],
+     "levels": {
+      "pie-root-wenh1-love": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 302742,
+    "locus": "AM-162-B-fol-theta 2r:16",
+    "form": "Mön",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "munu",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-memone"
+     ],
+     "levels": {
+      "pie-lex-memone": "exact"
+     }
+    },
+    "new": {
+     "lemma": "mǫn (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 704815,
+    "locus": "AM-36-fol 429:29",
+    "form": "hrafn",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "hrafn",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjerh2"
+     ],
+     "levels": {
+      "pie-lex-kjerh2": "exact"
+     }
+    },
+    "new": {
+     "lemma": "hrafn@raven",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1189115,
+    "locus": "DG-8-OHleg 0070:35",
+    "form": "sættozk",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "sætta",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-sweh2dus"
+     ],
+     "levels": {
+      "pie-lex-sweh2dus": "root"
+     }
+    },
+    "new": {
+     "lemma": "sætta@reconcile",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 824699,
+    "locus": "AM-56-4to 76v:6",
+    "form": "man",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "munu",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-memone"
+     ],
+     "levels": {
+      "pie-lex-memone": "exact"
+     }
+    },
+    "new": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-mon"
+     ],
+     "levels": {
+      "pie-lex-mon": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 788307,
+    "locus": "AM-56-4to 20v:14",
+    "form": "man",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "munu",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-memone"
+     ],
+     "levels": {
+      "pie-lex-memone": "exact"
+     }
+    },
+    "new": {
+     "lemma": "maðr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-mon"
+     ],
+     "levels": {
+      "pie-lex-mon": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 808502,
+    "locus": "AM-56-4to 52r:5",
+    "form": "gærði",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "gera",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "gerði",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-ghordhos"
+     ],
+     "levels": {
+      "pie-lex-ghordhos": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 670673,
+    "locus": "AM-36-fol 247:",
+    "form": "solarinar",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "?solarinar",
+     "tag": "",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "sól",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-soh2wl"
+     ],
+     "levels": {
+      "pie-lex-soh2wl": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 812969,
+    "locus": "AM-56-4to 59r:6",
+    "form": "stoð",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "standa",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-sth2nedhh1ti"
+     ],
+     "levels": {
+      "pie-lex-sth2nedhh1ti": "exact"
+     }
+    },
+    "new": {
+     "lemma": "stǫð@station",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-root-steh2-stand"
+     ],
+     "levels": {
+      "pie-root-steh2-stand": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1202509,
+    "locus": "DG-8-OHleg 0108:29",
+    "form": "lytt",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "lýða",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1lewdhis"
+     ],
+     "levels": {
+      "pie-lex-h1lewdhis": "exact"
+     }
+    },
+    "new": {
+     "lemma": "hlýða",
+     "tag": "VB",
+     "content": true,
+     "lex_id": [
+      "pie-root-kjlew-hear"
+     ],
+     "levels": {
+      "pie-root-kjlew-hear": "exact"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 263088,
+    "locus": "AM-132-fol-Njals-saga 54r:1",
+    "form": "kviðinn",
+    "rule": "reviewed-coordinate",
+    "old": {
+     "lemma": "kviðr",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-gewt",
+      "pie-lex-gwetis"
+     ],
+     "levels": {
+      "pie-lex-gewt": "exact",
+      "pie-lex-gwetis": "exact"
+     }
+    },
+    "new": {
+     "lemma": "kviðr@verdict",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-gwetis"
+     ],
+     "levels": {
+      "pie-lex-gwetis": "exact"
+     }
+    }
+   }
+  ],
+  "reviewed-formation": [
+   {
+    "corpus": "menota",
+    "index": 632820,
+    "locus": "AM-36-fol 57:",
+    "form": "heraðe",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 284975,
+    "locus": "AM-132-fol-Viga-Glums-saga 133r:32",
+    "form": "heraðinu",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 864409,
+    "locus": "AM-619-4to 55v:15",
+    "form": "mund",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "mund",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-smh2onts"
+     ],
+     "levels": {
+      "pie-lex-smh2onts": "exact"
+     }
+    },
+    "new": {
+     "lemma": "mund",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-smh2onts"
+     ],
+     "levels": {
+      "pie-lex-smh2onts": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 109358,
+    "locus": "AM-132-fol-Fostbraedra-saga 199v:19",
+    "form": "heraðinu",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 141920,
+    "locus": "AM-132-fol-Laxdaela-saga 162v:36",
+    "form": "mund",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "mund",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-smh2onts"
+     ],
+     "levels": {
+      "pie-lex-smh2onts": "exact"
+     }
+    },
+    "new": {
+     "lemma": "mund",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-smh2onts"
+     ],
+     "levels": {
+      "pie-lex-smh2onts": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1326130,
+    "locus": "HolmPerg-34-4to-MLL 11r:6",
+    "form": "herað",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 168271,
+    "locus": "AM-132-fol-Laxdaela-saga 180v:28",
+    "form": "heraði",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 786080,
+    "locus": "AM-56-4to 16v:25",
+    "form": "heraðe",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1366148,
+    "locus": "HolmPerg-34-4to-MLL 70r:24",
+    "form": "heraði",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 111780,
+    "locus": "AM-132-fol-Fostbraedra-saga 201v:1",
+    "form": "heraði",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1271692,
+    "locus": "HolmPerg-30-4to 29r:32",
+    "form": "heraðe",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 408667,
+    "locus": "AM-243-b-alfa-fol 18v:40",
+    "form": "heraðum",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 80531,
+    "locus": "AM-132-fol-Egils-saga 97v:12",
+    "form": "herað",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 157279,
+    "locus": "AM-132-fol-Laxdaela-saga 173v:16",
+    "form": "heraði",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1033506,
+    "locus": "AM-78-4to 5r:13",
+    "form": "heraðe",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1004305,
+    "locus": "AM-677-4to 22r:1",
+    "form": "heraði",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 130336,
+    "locus": "AM-132-fol-Kormaks-saga 127r:6",
+    "form": "herað",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 463468,
+    "locus": "AM-302-fol 15r:17",
+    "form": "heraðe",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 165494,
+    "locus": "AM-132-fol-Laxdaela-saga 179r:3",
+    "form": "heruð",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1331458,
+    "locus": "HolmPerg-34-4to-MLL 19r:11",
+    "form": "heraði",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1021327,
+    "locus": "AM-677-4to 28r:11",
+    "form": "heraði",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 114397,
+    "locus": "AM-132-fol-Hallfredar-saga 150v:35",
+    "form": "mund",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "mund",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-smh2onts"
+     ],
+     "levels": {
+      "pie-lex-smh2onts": "exact"
+     }
+    },
+    "new": {
+     "lemma": "mund",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-smh2onts"
+     ],
+     "levels": {
+      "pie-lex-smh2onts": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1335895,
+    "locus": "HolmPerg-34-4to-MLL 25v:14",
+    "form": "heraði",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 207995,
+    "locus": "AM-132-fol-Njals-saga 21r:22",
+    "form": "heraðinu",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 463314,
+    "locus": "AM-302-fol 15r:2",
+    "form": "heraðe",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1637293,
+    "locus": "Wolf-Aug-9-10-4to 44r:35",
+    "form": "heraðit",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1634642,
+    "locus": "Wolf-Aug-9-10-4to 42v:5",
+    "form": "heruðunum",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 118934,
+    "locus": "AM-132-fol-Hallfredar-saga 153v:6",
+    "form": "mundar",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "mund",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-smh2onts"
+     ],
+     "levels": {
+      "pie-lex-smh2onts": "exact"
+     }
+    },
+    "new": {
+     "lemma": "mund",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-smh2onts"
+     ],
+     "levels": {
+      "pie-lex-smh2onts": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1350105,
+    "locus": "HolmPerg-34-4to-MLL 47r:21",
+    "form": "heraði",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 1366251,
+    "locus": "HolmPerg-34-4to-MLL 70v:4",
+    "form": "heraði",
+    "rule": "reviewed-formation",
+    "old": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "exact"
+     }
+    },
+    "new": {
+     "lemma": "herað",
+     "tag": "NC",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjeywos"
+     ],
+     "levels": {
+      "pie-lex-kjeywos": "root"
+     }
+    }
+   }
+  ],
+  "reviewed-personal-homograph": [
+   {
+    "corpus": "icepahc",
+    "index": 214315,
+    "locus": "1350.finnbogi.nar-sag s1932",
+    "form": "Jökuls",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-G",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-G",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 211328,
+    "locus": "1350.finnbogi.nar-sag s1573",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 216538,
+    "locus": "1350.finnbogi.nar-sag s2194",
+    "form": "Jökuls",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-G",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-G",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 251494,
+    "locus": "1400.viglundur.nar-sag s788",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 214476,
+    "locus": "AM-132-fol-Njals-saga 24v:19",
+    "form": "Hjartar",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "hjǫrtr",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjerh2"
+     ],
+     "levels": {
+      "pie-lex-kjerh2": "exact"
+     }
+    },
+    "new": {
+     "lemma": "hjǫrtr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 707415,
+    "locus": "AM-36-fol 442:29",
+    "form": "Jǫkli",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jǫkull",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "jǫkull (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 242609,
+    "locus": "1400.gunnar2.nar-sag s196",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 707646,
+    "locus": "AM-36-fol 443:29",
+    "form": "Jokull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jǫkull",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "jǫkull (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 216149,
+    "locus": "1350.finnbogi.nar-sag s2145",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 248178,
+    "locus": "1400.viglundur.nar-sag s455",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 214700,
+    "locus": "AM-132-fol-Njals-saga 25r:1",
+    "form": "Hjartar",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "hjǫrtr",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjerh2"
+     ],
+     "levels": {
+      "pie-lex-kjerh2": "exact"
+     }
+    },
+    "new": {
+     "lemma": "hjǫrtr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 236243,
+    "locus": "1400.gunnar.nar-sag s337",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 212318,
+    "locus": "1350.finnbogi.nar-sag s1678",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 213368,
+    "locus": "AM-132-fol-Njals-saga 24r:37",
+    "form": "Hjǫrt",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "hjǫrtr",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjerh2"
+     ],
+     "levels": {
+      "pie-lex-kjerh2": "exact"
+     }
+    },
+    "new": {
+     "lemma": "hjǫrtr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 707581,
+    "locus": "AM-36-fol 443:29",
+    "form": "Jokull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jǫkull",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "jǫkull (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 217873,
+    "locus": "1350.finnbogi.nar-sag s2339",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 216817,
+    "locus": "1350.finnbogi.nar-sag s2213",
+    "form": "Jökuls",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-G",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-G",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 621365,
+    "locus": "AM-35-fol 410:",
+    "form": "jokuls",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jǫkull",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "jǫkull (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 212579,
+    "locus": "1350.finnbogi.nar-sag s1711",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 707611,
+    "locus": "AM-36-fol 443:29",
+    "form": "Jokull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jǫkull",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [],
+     "levels": {}
+    },
+    "new": {
+     "lemma": "jǫkull (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 246803,
+    "locus": "1400.viglundur.nar-sag s311",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 216844,
+    "locus": "1350.finnbogi.nar-sag s2215",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "menota",
+    "index": 301807,
+    "locus": "AM-162-B-fol-theta 1r:24",
+    "form": "Hjörtr",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "hjǫrtr",
+     "tag": "NP",
+     "content": true,
+     "lex_id": [
+      "pie-lex-kjerh2"
+     ],
+     "levels": {
+      "pie-lex-kjerh2": "exact"
+     }
+    },
+    "new": {
+     "lemma": "hjǫrtr (name)",
+     "tag": "NP",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 247881,
+    "locus": "1400.viglundur.nar-sag s426",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 166756,
+    "locus": "1310.grettir.nar-sag s2023",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 212448,
+    "locus": "1350.finnbogi.nar-sag s1692",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 251730,
+    "locus": "1400.viglundur.nar-sag s815",
+    "form": "Jökli",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-D",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-D",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 250519,
+    "locus": "1400.viglundur.nar-sag s685",
+    "form": "Jökli",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-D",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-D",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 247947,
+    "locus": "1400.viglundur.nar-sag s434",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   },
+   {
+    "corpus": "icepahc",
+    "index": 251746,
+    "locus": "1400.viglundur.nar-sag s818",
+    "form": "Jökull",
+    "rule": "reviewed-personal-homograph",
+    "old": {
+     "lemma": "jökull",
+     "tag": "NPR-N",
+     "content": true,
+     "lex_id": [
+      "pie-lex-h1yegox"
+     ],
+     "levels": {
+      "pie-lex-h1yegox": "exact"
+     }
+    },
+    "new": {
+     "lemma": "jökull (name)",
+     "tag": "NPR-N",
+     "content": false,
+     "lex_id": [],
+     "levels": {}
+    }
+   }
+  ]
+ },
+ "note": "All Menota documents, all IcePaHC years (1150–2008), and Edda tokens compared in source order. Rules with fewer than 30 changes include every changed token. Exact/root levels use the corpus-local production SecureChecker; unverified means no secure match. No corpus/export/slab files regenerated.",
+ "rule_precedence": [
+  "compound-component (including normalized spelling counterparts)",
+  "reviewed-formation",
+  "reviewed-personal-homograph",
+  "inferred-NP",
+  "reviewed-coordinate",
+  "lexical-mapping"
+ ],
+ "mapping_table_rows_changed": {
+  "menota": 365,
+  "icepahc": 8,
+  "non": 11
+ },
+ "compound_lemma_decisions": 363,
+ "reports_verdicts": {
+  "confirmed": 55,
+  "already-fixed": 1,
+  "rejected": 4,
+  "unclear": 1
+ }
+}

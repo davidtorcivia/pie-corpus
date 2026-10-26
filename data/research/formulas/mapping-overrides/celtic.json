@@ -2884,6 +2884,20 @@
    "lex_id": [],
    "erratum": "Wave-5 contextual homograph correction; no secure stem-specific PIE mapping asserted.",
    "note": "CELT-W5-082; Purpose is to prevent entering battle, not flight. Windisch s.v. tiagu (OCR 86003) lists tessed in the secondary tense. Confirm wrong teichid, but use a stem-specific unmapped lemma rather than projecting the suppletive form from the present stem."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "élúd@escape",
+   "lex_id": [],
+   "erratum": "Wave-7 reviewed contextual sense",
+   "note": "CELT-W7-004. G301017.xml:3553-3556; Kaikki Old Irish:4283 s.v. asluí. The escape verbal noun must not inherit the louse homograph. No replacement PIE equation asserted."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "aer@air",
+   "lex_id": [],
+   "erratum": "Wave-7 reviewed contextual sense",
+   "note": "CELT-W7-016. revueceltique06pari_djvu.txt:9066-9068; Kaikki Old Irish:299 s.v. aer and :6685 s.v. áer. Air is a Latin loan; the satire etymon is inappropriate in this element list."
   }
  ],
  "form": [
