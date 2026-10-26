@@ -181,6 +181,13 @@ class Lexicon:
     blocked: dict = field(default_factory=dict)     # lex_id → reason (data/generation/blocklist.jsonl)
     _cache: dict = field(default_factory=dict)
 
+    def __post_init__(self):
+        from .research_scope import research_entry, mapping_scope, RESEARCH_ONLY
+        if any(research_entry({**e, "id": i}) for i, e in self.entries.items()) or any(
+            mapping_scope((i,), r.get("scope")) == RESEARCH_ONLY for i, r in self.specs.items()
+        ):
+            raise ValueError("research_only entries/specs cannot enter the production Lexicon")
+
     @classmethod
     @lru_cache(maxsize=1)
     def load(cls) -> "Lexicon":

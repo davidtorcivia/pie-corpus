@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-25",
+  "population": "Historical top-500 unmapped content lemmas underlying the main-checkout mapping-precision report; 23 later main-tier top-200 additions removed from the mapped set to freeze that baseline.",
+  "lemmas": 500,
+  "tokens": 51554,
+  "dispositions": {
+    "missing-etymon": 155,
+    "existing-family": 64,
+    "no-admissible-reconstruction": 23,
+    "no-new-etymon-established": 258
+  },
+  "inventory": {
+    "registry-only": 102,
+    "lexicon-candidate": 8
+  },
+  "inputs": [
+    {
+      "path": "/Users/david/AI/PIE/docs/research/mapping-precision-hittite.md",
+      "sha256": "bfb38b07054bc552c4f2239a661f3e98315e70eba578602d78c1677fc1e0744b"
+    },
+    {
+      "path": "/Users/david/AI/PIE/pie/hittite_mapping.py",
+      "sha256": "fc69f0da3c2ee98d1c2f408d40e19ff126caf050a9136b9f891d125370f51bbd"
+    },
+    {
+      "path": "/Users/david/AI/PIE/data/research/formulas/hit-reviewed-top200.json",
+      "sha256": "4703ddeceef11450a03859edd7aa16253cccd5a9bcb9ec372caad6fcec7ddd0b"
+    },
+    {
+      "path": "/Users/david/AI/PIE-wt-etyma/data/lexicon/lexicon.jsonl",
+      "sha256": "63d44dceac01956cf19262ae2a555bad668c3fcdaffadff1bc14f07da1972969"
+    }
+  ],
+  "source_policy": "Read raw text only. No book running text stored in these artifacts. Source matches alone are not agreement.",
+  "validation": {
+    "command": ".venv/bin/python -m pytest -q",
+    "passed": 2480,
+    "xfailed": 1,
+    "seconds": 337.52,
+    "registry_tests_passed": 25,
+    "production_files_unchanged": 226,
+    "source_review_records": 110,
+    "searched_collections_per_record": 10
+  }
+}

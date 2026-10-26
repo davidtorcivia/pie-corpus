@@ -38,6 +38,9 @@ COGNATE_LANGS = ["Sanskrit", "Ancient Greek", "Latin", "Proto-Germanic", "Hittit
 
 
 def eval_root(root_id: str | None, share: float = 0.10) -> bool:
+    from .research_scope import mapping_scope, RESEARCH_ONLY
+    if mapping_scope((root_id,)) == RESEARCH_ONLY:
+        raise ValueError("research_only id cannot enter evaluation holdouts")
     if not root_id:
         return False
     h = int(hashlib.sha256(root_id.encode()).hexdigest()[:8], 16)
@@ -106,6 +109,10 @@ def accent_specified(tasks: list[dict]) -> list[dict]:
 
 
 def record_tasks(r: dict) -> list[dict]:
+    from .research_scope import mapping_scope, RESEARCH_ONLY
+    for item in (r, *r.get("tokens", [])):
+        if mapping_scope((item.get("id"), item.get("lex_id"), item.get("root_id")), item.get("scope")) == RESEARCH_ONLY:
+            raise ValueError("research_only record cannot enter export")
     out = []
     style = record_style(r)
     if r.get("english"):
@@ -187,8 +194,11 @@ def inflection_tasks(lx: Lexicon, rng: random.Random, per_lexeme: int = 3) -> li
 
 def cognate_tasks(lx: Lexicon) -> list[dict]:
     """Cognate set (≥2 daughters, no loans or analogical forms) → PIE lemma."""
+    from .research_scope import research_entry
     out = []
     for e in lx.entries.values():
+        if research_entry(e):
+            raise ValueError("research_only entry in cognate export")
         refl = e.get("reflexes", {})
         parts = []
         for lang in COGNATE_LANGS:
