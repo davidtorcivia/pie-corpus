@@ -38,3 +38,4 @@ data/research/8c/stageCS/review/claims-*.jsonl
 data/research/8c/stageCS/review-*/claims-*.jsonl
 # Shared corpus search index and loader caches contain restricted corpus text; local only.
 data/research/8c/search-index/
+data/research/8c/stageCS/review-*/leads-*.jsonl
