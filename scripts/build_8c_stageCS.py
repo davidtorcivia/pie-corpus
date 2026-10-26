@@ -263,8 +263,10 @@ def hittite_paragraph_units(root: Path = ROOT, by_id: dict | None = None) -> lis
     assert len(hsurf) == len(toks)
     text_of = hittite_paragraph_texts(root)
     hl, hro = SB.CORPORA["hit"][2], SB.CORPORA["hit"][3]
+    from pie import hittite_mapping as hm
+    table = hm.read_union_table(root, doubtful=True)      # thin-corpus rule: the doubtful tier, retrieval only
     us = SB.units_from_tokens("hit", toks, "para", lambda t: t.units["line"].split("|")[0], hsurf,
-                              B._table("hit"), lambda t: (hl, hro), text_of=text_of)
+                              table, lambda t: (hl, hro), text_of=text_of)
     lex = fs.load_jsonl(root / "data/lexicon/lexicon.jsonl")
     gmap = fs.group_map(lex)
     for u in us:
