@@ -98,3 +98,21 @@ def test_default_options_and_legacy_parts():
 def test_invalid_parts(argv):
     with pytest.raises(SystemExit):
         review.parse_args(argv)
+
+
+def test_non_claim_lines_are_skipped(tmp_path):
+    """near-miss, error and search-lead lines are not claims and never enter review packets."""
+    import json, subprocess, sys
+    from pathlib import Path
+    root = Path(__file__).resolve().parent.parent
+    cd = tmp_path / "claims"; cd.mkdir()
+    rows = [{"reader": "RS900", "slab": "SS-x", "near_miss": {"bundles": ["BS-1"]}},
+            {"reader": "RS900", "slab": "SS-x", "error": {"passage": "p", "kind": "lemma"}},
+            {"reader": "RS900", "slab": "SS-x", "search_lead": {"bundles": ["BS-1"]}},
+            {"reader": "RS900", "slab": "SS-x", "done": True, "bundles_read": 1}]
+    (cd / "RS900.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows), "utf-8")
+    out = tmp_path / "out"
+    r = subprocess.run([sys.executable, "-I", str(root / "scripts/make_8c_review_stageC.py"), "--claims-dir", str(cd),
+                        "--slabs-dir", str(tmp_path), "--out-dir", str(out), "--key-out", str(tmp_path / "k.json"),
+                        "--prefix", "S", "--seed", "1", "--parts", "1"], capture_output=True, text=True, cwd=root)
+    assert "claims 0" in r.stdout, r.stdout + r.stderr

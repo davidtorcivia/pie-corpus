@@ -52,7 +52,7 @@ def main(argv=None):
             for line in source:
                 if line.strip():
                     c = json.loads(line)
-                    if not c.get('done') and not c.get('none'):
+                    if not c.get('done') and not c.get('none') and not any(k in c for k in ('near_miss', 'error', 'search_lead')):
                         claims.append(c)
     print('claims', len(claims))
     slabs = {c['slab'] for c in claims}

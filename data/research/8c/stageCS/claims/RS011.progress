@@ -1,0 +1,5 @@
+Reader RS011; slab SS-df32.
+Read all 293 bundles in supplied order, sections 1-40, 41-85, 86-135, 136-190, 191-245, 246-293.
+Close checks completed; corpus searches: Vuk pages.jsonl, Menota XML, Rybnikov volume 1 text, Homer Odyssey treebank, Umbrian UD test (negative search).
+Claims: high 0, medium 0, low 0. Near-misses: 14. Error reports: 11.
+Output validated: JSONL parses; all passage and bundle references belong to the slab; near-miss anchors belong to their cited bundles. Done line appended. Complete.
