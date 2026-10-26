@@ -74,3 +74,7 @@ Three mapping errors found by the scans are in
 | Slay the serpent (*gʷʰen-* + *h₁ógʷʰis*) | RV *áhan áhim* ×36; Greek 0 (ὄφις not cognate) | As expected: outside Vedic the formula uses renewed words (Watkins). |
 | Leave the light = die (*leykʷ-*) | Greek 517 (λείπειν φάος ἠελίοιο: Il. 18.11, Od. 11.93, Hes. *Op.* 155, *H. Ven.* 272); Latin 4 (Lucr. 3.542 *lumina … linquunt*, 3.1025 Ennius, 5.989 *linquebant … lumina vitae*); RV 1.113.1 (night leaves its place to dawn, *ric-*) | Greek formulaic; Latin repeated in Lucretius, a reader of Ennius and Homer (imitation risk); a known theme (light = life). |
 | Redden with blood (*h₁rewdʰ-*) | No cross-branch pair with blood words | Weak. |
+
+## Coverage fix confirmed (2026-10-26, rebuilt index after fix batch 5)
+
+Men and cattle (*peḱu-* + *wiHro-*, window 4): Indo-Iranian 20 (Vedic 14 and Avestan *pasu vīra* in Y 9.4, 31.15, 45.9, 58.6, Vidēvdād, Yašts), Italic 9 (Umbrian *ueiro pequo castruo frif*, Iguvine Tables VIa 30, 32, 34, 40, 42, 52, 60). Before the fix: Avestan 0, Umbrian 0. The textbook formula is now found in its three classic branches.
