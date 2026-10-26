@@ -69,3 +69,16 @@ def test_edda_prose_does_not_inherit_previous_poem_and_commentary_stops(tmp_path
     units = edda_lines(tmp_path)
     assert [u[0] for u in units] == ["Völuspá 1", "Lokasenna 1", "Reginsmál 1",
                                     "Guðrúnarkviða en forna 1", "Völsungakviða En Forna 1"]
+
+
+def test_reviewed_entity_and_parenthetical_expansions_are_locus_scoped():
+    rows = [
+        {'id': 'G302025:#1/105:5', 'text': 'h-othar eacute;ga', 'source': 'celt-ucc/G302025'},
+        {'id': 'x:revueceltique10pari:L5026-L5028',
+         'text': 'atfia(datar) co der(ed)', 'source': 'ocr'},
+        {'id': 'other', 'text': 'eacute;ga der(ed) (note)', 'source': 'ocr'},
+    ]
+    fixed = repair_celtic_rows(rows)
+    assert [r['text'] for r in fixed] == ['h-othar éga', 'atfiadatar co dered', 'eacute;ga der(ed) (note)']
+    assert repair_celtic_rows(fixed) == fixed
+    assert rows[0]['text'] == 'h-othar eacute;ga'

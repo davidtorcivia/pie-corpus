@@ -207,3 +207,9 @@ The build of 2026-10-24 15:42 is superseded; nothing of it was read. The rebuild
 - Readers record links whose partner is found by search, not in the slab, as `search_lead` lines (reader brief, "Search leads"). They are not claims: the anchoring rule and the decoy control cannot apply to what a reader searches up, so search leads never enter measures (i) or (ii).
 - Search leads get their own blind review (every locus opened, same grades) and the novelty check, and are reported separately as exploratory finds.
 - Bug fixed before any review of wave 1: the review exporter counted near-miss and error lines as claims (459 instead of 3); the faulty packet was never reviewed.
+
+### Between-wave rebuild rule (recorded 2026-10-25, before the wave-2 build)
+- Fix batch 1 (commit 76ae1d4: pilot + wave-1 error reports, each verified before fixing) changes mappings and units, so the unread part of Stage C-S is rebuilt before wave 2.
+- **Already-read pivots are left out:** every pivot of the 12 read slabs (pilot RS001-RS003, RS009; wave 1 RS004-RS008, RS010-RS012) is removed from the pivot set; they are not read twice. Their units stay in the index as partners (the retrieval rules are unchanged).
+- Both floors are refrozen by the recorded rules (0.90 quantiles) over the remaining pivots; decoys, slab packing and the reading protocol as before. New slab and reader ids continue the series (wave 2 onwards); the read slabs, their claims and their reviews stay as read.
+- This rule applies at every later between-wave rebuild (pivots of all read slabs left out).

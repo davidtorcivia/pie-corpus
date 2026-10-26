@@ -51,6 +51,13 @@ def repair_celtic_rows(rows: list[dict]) -> list[dict]:
             text = text.split(":", 1)[0] + ":"
         if "revueceltique16pari:L8224-L8230" in uid:
             text = re.sub(r"^in the Bodleian manuscript:\s*", "", text)
+        if uid == "G302025:#1/105:5":
+            # CELT XML line 7093 itself lacks the entity's opening ampersand.
+            text = text.replace("eacute;ga", "éga")
+        if uid.endswith(":revueceltique10pari:L5026-L5028"):
+            # The edition expands these abbreviations in parentheses. Keep
+            # the letters together, without treating other parentheses as words.
+            text = text.replace("atfia(datar)", "atfiadatar").replace("der(ed)", "dered")
         if d.get("source", "").startswith("celt-ucc/"):
             text = join_restorations(text)
         d["text"] = text

@@ -18,6 +18,8 @@ docs/research/8c-preregistration.md ("Stage C-S"): Stage C's corpora, mappings a
    built. Retrieval, bundles, merging, slab packing and rendering are Stage B's / Stage C's.
 
 --dry-run loads, classifies and prints the kept and left-out counts per corpus and document, then stops.
+Between waves, --exclude-read-pivots FILE requires fresh --out-dir and --key destinations;
+--reader-start 13 continues the reader series. Use a fresh --cache-dir after source repairs.
 Nothing under raw/ is executed or imported; raw files are read as text or JSON.
 """
 
@@ -526,7 +528,8 @@ def kept_partners(reg: dict, thin: dict, floor: float, thin_floor: float) -> dic
 
 # ---------------------------------------------------------------- build
 
-FLOOR_RULE = (f"floor = the {SB.FLOOR_Q} quantile of the best-partner score over all Stage C-S pivots that have a "
+FLOOR_RULE = (f"floor = the {SB.FLOOR_Q} quantile of the best-partner score over eligible Stage C-S pivots "
+              "(excluding already-read pivots in between-wave rebuilds) that have a "
               "partner (Stage B's size rule); a pivot keeps its top-k partners scoring >= floor")
 LAYER_RULE = ("indexed units: each tradition's earliest, least derivative layer per genre "
               "(docs/research/8c-preregistration.md, Stage C-S table; scripts/build_8c_stageCS.py Classifier); "
@@ -537,6 +540,63 @@ THIN_RULE = ("thin corpora: partner-only corpora with < THIN_MAX_UNITS indexed u
              "loosened to the whole native corpus, genre waived; Hittite unit = paragraph; up to THIN_SLOTS thin "
              "partners per pivot (best per thin corpus) from a separate search; thin floor = the FLOOR_Q quantile of "
              "the pivots' best thin-partner scores (amendment of 2026-10-24)")
+
+
+def read_pivot_exclusions(path: Path, loci_dir: Path = OUT / "slabs-loci") -> frozenset[str]:
+    """Read passage IDs or resolve slab IDs using only the public loci copies."""
+    values = json.loads(path.read_text("utf-8"))
+    if not isinstance(values, list) or any(not isinstance(x, str) or not x for x in values):
+        raise ValueError("--exclude-read-pivots must contain a JSON list of nonempty IDs")
+    excluded = set()
+    for value in values:
+        if re.fullmatch(r"SS-[0-9a-f]+", value):
+            slab = json.loads((loci_dir / f"{value}.json").read_text("utf-8"))
+            if slab["slab"] != value:
+                raise ValueError(f"slab ID mismatch: {value}")
+            excluded.update(b["pivot"] for b in slab["bundles"])
+        elif ":" in value and not value.startswith("SS-"):
+            excluded.add(value)
+        else:
+            raise ValueError(f"invalid passage or slab ID: {value!r}")
+    return frozenset(excluded)
+
+
+def remaining_pivots(idx, units, excluded=frozenset()):
+    return [u for u in C.pivots_of(idx, PIVOTS)
+            if units[idx.ref[u][0]][idx.ref[u][1]].pid not in excluded]
+
+
+def historical_ids(loci_dir: Path = OUT / "slabs-loci") -> set[str]:
+    """Reserve historical IDs without consulting text slabs or the blinding key."""
+    ids = set()
+    for path in sorted(loci_dir.glob("SS-*.json")):
+        slab = json.loads(path.read_text("utf-8"))
+        ids.add(slab["slab"])
+        ids.update(b["bundle"] for b in slab["bundles"])
+    return ids
+
+
+def fresh_ids(prefix, width, n, rng, reserved):
+    if n + sum(x.startswith(prefix + "-") for x in reserved) > 16 ** width:
+        raise ValueError("ID namespace exhausted")
+    out, seen = [], set(reserved)
+    while len(out) < n:
+        value = SB._ids(prefix, width, 1, rng)[0]
+        if value not in seen:
+            out.append(value)
+            seen.add(value)
+    return out
+
+
+def validate_rebuild_paths(out_dir, key_path):
+    """A between-wave build must never reuse a historical destination."""
+    out, key = out_dir.resolve(), key_path.resolve()
+    if out == OUT.resolve() or OUT.resolve() in out.parents or out in OUT.resolve().parents:
+        raise ValueError("exclusion rebuild requires a new output directory outside Stage C-S")
+    if key == KEY.resolve() or OUT.resolve() in key.parents:
+        raise ValueError("exclusion rebuild requires a new key outside Stage C-S")
+    if out.exists() or key.exists():
+        raise ValueError("exclusion rebuild output directory and key must not already exist")
 
 
 def make_params(idx, parts, null, notes=None, thin_parts=None) -> dict:
@@ -567,14 +627,20 @@ def make_slab(sid, bis, shown, bid_of, rend, idx) -> dict:
 
 
 def build(units, by_id, cls, params: dict, procs=None, log=print, parts=None, meta=None, seed: int = SEED,
-          thin: frozenset = frozenset()) -> dict:
+          thin: frozenset = frozenset(), excluded=frozenset(), reader_start: int = 1,
+          reserved_ids=frozenset()) -> dict:
+    if reader_start < 1:
+        raise ValueError("reader_start must be positive")
     meta = meta or {}
     view = indexed_view(units, cls)
     idx = SIndex(view, by_id, cls)
     idx.set_thin(thin)
-    pivots = C.pivots_of(idx, PIVOTS)
+    pivots = remaining_pivots(idx, units, excluded)
     log(f"index: {idx.N} units with roots, {len(idx.groups)} root groups, {len(pivots)} Stage C-S pivots")
     reg, tparts = parts if parts is not None else all_partners(idx, pivots, procs)
+    allowed = set(pivots)
+    reg = {u: p for u, p in reg.items() if u in allowed}
+    tparts = {u: p for u, p in tparts.items() if u in allowed}
     floor = params["floor"]
     kept = kept_partners(reg, tparts, floor, params.get("thin_floor", float("inf")))
     parts = reg
@@ -607,8 +673,8 @@ def build(units, by_id, cls, params: dict, procs=None, log=print, parts=None, me
     shown = {bi: [b["pivot"]] + [decoy.get(bi, {}).get(v, v) for v in b["units"][1:]] for bi, b in enumerate(bundles)}
     slab_bis = SB.pack_slabs(idx, bundles, rend, shown)
     ids_rng = random.Random(f"{SEED_TAG}:{seed}:ids")
-    sids = SB._ids("SS", 4, len(slab_bis), ids_rng)
-    bids = SB._ids("BS", 5, len(bundles), ids_rng)
+    sids = fresh_ids("SS", 4, len(slab_bis), ids_rng, reserved_ids)
+    bids = fresh_ids("BS", 5, len(bundles), ids_rng, reserved_ids)
     perm = list(range(len(bundles)))
     ids_rng.shuffle(perm)
     bid_of = {bi: bids[perm[bi]] for bi in range(len(bundles))}
@@ -647,7 +713,7 @@ def build(units, by_id, cls, params: dict, procs=None, log=print, parts=None, me
     return {"params": params, "slabs": slabs, "key": key, "stats": stats, "bundles": bundles, "decoy": decoy,
             "idx": idx, "parts": parts,
             "assignment": {"note": "Phase 8c Stage C-S: one reader per slab (Stage B capacity).",
-                           "slabs": {sid: f"RS{k + 1:03d}" for k, sid in enumerate(sids)}}}
+                           "slabs": {sid: f"RS{k + reader_start:03d}" for k, sid in enumerate(sids)}}}
 
 
 def layer_report(units: dict, cls: dict) -> dict:
@@ -707,7 +773,22 @@ def main() -> int:
     ap.add_argument("--procs", type=int, default=None)
     ap.add_argument("--refreeze", action="store_true", help="recompute params.json (only before any slab is read)")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--exclude-read-pivots", type=Path,
+                    help="JSON list of read pivot passage IDs or slab IDs (resolved from Stage C-S loci copies)")
+    ap.add_argument("--out-dir", type=Path, default=OUT)
+    ap.add_argument("--key", type=Path, default=KEY)
+    ap.add_argument("--reader-start", type=int, default=1)
     args = ap.parse_args()
+    if args.reader_start < 1:
+        ap.error("--reader-start must be positive")
+    excluded, reserved = frozenset(), frozenset()
+    if args.exclude_read_pivots is not None:
+        try:
+            validate_rebuild_paths(args.out_dir, args.key)
+            excluded = read_pivot_exclusions(args.exclude_read_pivots)
+            reserved = historical_ids()
+        except (ValueError, OSError, KeyError, TypeError) as exc:
+            ap.error(str(exc))
     log = lambda *a: print(time.strftime("%H:%M:%S"), *a, file=sys.stderr, flush=True)
     units, by_id, meta, notes = C.load_all(ROOT, args.cache_dir, None, False, None, log)
     cls, thin = prepare(units, by_id, meta, args.cache_dir, log)
@@ -716,29 +797,32 @@ def main() -> int:
     if args.dry_run:
         dry_run(units, cls, log)
         return 0
-    pfile = OUT / "params.json"
+    pfile = args.out_dir / "params.json"
     params = None if args.refreeze or not pfile.exists() else json.loads(pfile.read_text("utf-8"))
     view = indexed_view(units, cls)
     parts = None
     if params is None:      # freeze the floor before any bundle is built
         idx = SIndex(view, by_id, cls)
         idx.set_thin(thin)
-        pv = C.pivots_of(idx, PIVOTS)
+        pv = remaining_pivots(idx, units, excluded)
         reg, tparts = all_partners(idx, pv, args.procs)
         parts = (reg, tparts)
         log(f"partners: {len(reg)} of {len(pv)} pivots; thin partners: {len(tparts)}")
         nidx = SIndex(view, by_id, cls, shuffle_seed=SEED)
-        nparts = C.pivot_partners(nidx, C.pivots_of(nidx, PIVOTS), args.procs)
+        nparts = C.pivot_partners(nidx, remaining_pivots(nidx, units, excluded), args.procs)
         best = np.array([p[0][0] for p in reg.values()])
         floors = sorted({SB._q(best, q) for q in (0.5, 0.75, 0.9, 0.95, 0.98, 0.99)})
         params = make_params(idx, reg, SB.null_comparison(idx, reg, nidx, nparts, floors), notes, thin_parts=tparts)
-        OUT.mkdir(parents=True, exist_ok=True)
+        params["excluded_read_pivots"] = sorted(excluded)
+        params["reader_start"] = args.reader_start
+        args.out_dir.mkdir(parents=True, exist_ok=True)
         pfile.write_text(json.dumps(params, ensure_ascii=False, indent=1) + "\n", "utf-8")
         log(f"params frozen: floor {params['floor']}, thin floor {params.get('thin_floor')}")
         del nidx, nparts, idx
-    res = build(units, by_id, cls, params, args.procs, log, parts=parts, meta=meta, thin=thin)
+    res = build(units, by_id, cls, params, args.procs, log, parts=parts, meta=meta, thin=thin,
+                excluded=excluded, reader_start=args.reader_start, reserved_ids=reserved)
     res["stats"]["mapping_notes"] = notes
-    write(res)
+    write(res, args.out_dir, args.key)
     st = res["stats"]
     log(f"bundles {st['bundles']}, decoys {st['decoy_bundles']} ({st['decoy_share']}), slabs {st['slabs']}, "
         f"slab tokens {st['total_slab_tokens']}, read est. {st['read_tokens_est']}")

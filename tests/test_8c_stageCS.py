@@ -224,3 +224,98 @@ def test_thin_corpora_rules(small, monkeypatch):
     assert S.loose_class("ang", U("II:Lxxxti,"), clf) == 0 and S.loose_class("ang", U("II:Juliana"), clf) == S.ALL
     assert S.loose_class("ang", U("I:Literarische Notizen"), clf) == 0
     assert S.loose_class("lat", U("PlAmphi"), clf) == S.ALL
+
+
+def test_exclusion_inputs_use_only_loci(tmp_path):
+    import json
+    loci = tmp_path / 'slabs-loci'
+    loci.mkdir()
+    (loci / 'SS-1234.json').write_text(json.dumps({
+        'slab': 'SS-1234', 'bundles': [{'bundle': 'BS-12345', 'pivot': 'mga:one'}]}))
+    path = tmp_path / 'read.json'
+    path.write_text(json.dumps(['SS-1234', 'mga:two', 'mga:one']))
+    assert S.read_pivot_exclusions(path, loci) == {'mga:one', 'mga:two'}
+    assert S.historical_ids(loci) == {'SS-1234', 'BS-12345'}
+    for invalid in ({'ids': []}, [1], [''], ['SS-../secret'], ['bad-id']):
+        path.write_text(json.dumps(invalid))
+        with pytest.raises(ValueError):
+            S.read_pivot_exclusions(path, loci)
+    path.write_text('["SS-dead"]')
+    with pytest.raises(FileNotFoundError):
+        S.read_pivot_exclusions(path, loci)
+
+
+def test_rebuild_requires_fresh_destinations(tmp_path):
+    out, key = tmp_path / 'wave2', tmp_path / 'key.json'
+    S.validate_rebuild_paths(out, key)
+    for old_out, old_key in ((S.OUT, key), (S.OUT / 'nested', key),
+                             (S.OUT.parent, key), (out, S.KEY)):
+        with pytest.raises(ValueError):
+            S.validate_rebuild_paths(old_out, old_key)
+    out.mkdir()
+    with pytest.raises(ValueError):
+        S.validate_rebuild_paths(out, key)
+    out.rmdir()
+    key.write_text('historical sentinel')
+    with pytest.raises(ValueError):
+        S.validate_rebuild_paths(out, key)
+    assert key.read_text() == 'historical sentinel'
+
+
+def test_between_wave_cli_refreezes_remaining_pivots(small, monkeypatch, tmp_path):
+    import json
+    import numpy as np
+    units, cls = small
+    thin = frozenset({'hit'})
+    cls['hit'] = [S.ALL if m else 0 for m in cls['hit']]
+    idx = S.SIndex(S.indexed_view(units, cls), {}, cls)
+    idx.set_thin(thin)
+    pivots = C.pivots_of(idx, S.PIVOTS)
+    reg, tp = S.all_partners(idx, pivots, procs=1)
+    # Exclude the highest-scoring half, so freezing before filtering would
+    # produce different floors. The same indexed units remain partners.
+    ordered = sorted(reg, key=lambda u: reg[u][0][0], reverse=True)
+    removed = set(ordered[:len(ordered)//2])
+    excluded = {units[idx.ref[u][0]][idx.ref[u][1]].pid for u in removed}
+    path = tmp_path / 'read.json'
+    path.write_text(json.dumps(sorted(excluded)))
+    out, key = tmp_path / 'wave2', tmp_path / 'wave2-key.json'
+    reserved = {'SS-1234', 'BS-12345'}
+    monkeypatch.setattr(S, 'historical_ids', lambda: reserved)
+    monkeypatch.setattr(C, 'load_all', lambda *a: (units, {}, {}, {}))
+    monkeypatch.setattr(S, 'prepare', lambda *a: (cls, thin))
+    monkeypatch.setattr(sys, 'argv', ['build', '--exclude-read-pivots', str(path),
+                        '--out-dir', str(out), '--key', str(key), '--reader-start', '13', '--procs', '1'])
+    assert S.main() == 0
+    params = json.loads((out / 'params.json').read_text())
+    remaining_reg = {u:p for u,p in reg.items() if u not in removed}
+    remaining_tp = {u:p for u,p in tp.items() if u not in removed}
+    assert params['floor'] == SB._q(np.array([p[0][0] for p in remaining_reg.values()]), SB.FLOOR_Q)
+    assert params['thin_floor'] == SB._q(np.array([p[0][0] for p in remaining_tp.values()]), SB.FLOOR_Q)
+    assert params['floor'] != S.make_params(idx, reg, None)['floor']
+    assert params['excluded_read_pivots'] == sorted(excluded)
+    result = S.build(units, {}, cls, params, procs=1, log=lambda *a:None,
+                     parts=(reg, tp), thin=thin, excluded=excluded, reader_start=13)
+    assert result['idx'].ref == idx.ref
+    assert result['idx'].idf.tolist() == idx.idf.tolist()
+    assert all(b['pivot'] not in removed for b in result['bundles'])
+    assert any(v in removed for b in result['bundles'] for v in b['units'][1:])
+    assert len(result['parts']) == len(remaining_reg)
+    assignment = json.loads((out / 'assignment.json').read_text())['slabs']
+    assert list(assignment.values()) == [f'RS{k+13:03d}' for k in range(len(assignment))]
+    assert not set(assignment) & reserved
+    for slab in json.loads(key.read_text())['slabs'].values():
+        assert not set(slab) & reserved
+        assert all(b['pivot'] not in excluded for b in slab.values())
+    # A rerun refuses to touch the completed wave, before loading anything.
+    monkeypatch.setattr(C, 'load_all', lambda *a: pytest.fail('loaded before validation'))
+    before = key.read_bytes()
+    with pytest.raises(SystemExit):
+        S.main()
+    assert key.read_bytes() == before
+
+
+def test_new_ids_skip_old_series():
+    baseline = S.fresh_ids('SS', 4, 3, random.Random(7), set())
+    new = S.fresh_ids('SS', 4, 3, random.Random(7), set(baseline))
+    assert len(set(new)) == 3 and not set(new) & set(baseline)
