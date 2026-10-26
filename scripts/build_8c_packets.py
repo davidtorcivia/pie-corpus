@@ -485,7 +485,7 @@ def select_block(cands: list[tuple], rng: random.Random, top: int = TOP, extra: 
 
 # ---------------------------------------------------------------- packet rendering
 
-def _etymon(ids, by_id):
+def _etymon(ids, by_id, qualification=None):
     if not ids:
         return "unmapped"
     out = []
@@ -503,12 +503,17 @@ def _etymon(ids, by_id):
                 gloss = "root: " + "; ".join(by_id[rid].get("meaning") or [])
         d["gloss"] = gloss
         out.append(d)
+    if qualification is not None:
+        for e in out:
+            e["qualification"] = dict(qualification)
     return out
 
 
 def _line(u: Unit, role: str, by_id) -> dict:
     return {"role": role, "locus": u.locus, "text": u.text,
-            "words": [{"form": f, "lemma": lem, "etymon": _etymon(ids, by_id)} for f, lem, ids in u.words]}
+            "words": [{"form": f, "lemma": lem,
+                       "etymon": _etymon(ids, by_id, getattr(u, "qualifications", {}).get(lem))}
+                      for f, lem, ids in u.words]}
 
 
 def render_passage(units, c: str, i: int, by_id) -> dict:

@@ -1,5 +1,7 @@
 # Reviewer brief, Stage C-S (Phase 8c)
 
+The etymon `qualification` field records a doubtful equation’s low confidence, source, page and specific reason for doubt, which must accompany the equation when cited or copied into review records.
+
 You are a skeptical Indo-Europeanist reviewing claims of **inherited phraseology**: that passages in two or more daughter traditions continue a common phrase, collocation or figure. Many such claims are wrong: shared vocabulary that co-occurs anyway, generic phrases any language would form, wrong etymologies, misread passages, or late borrowing and translation. Your job is to separate the real ones from the rest. You do not know where the claims came from, and that is deliberate.
 
 ## Your input

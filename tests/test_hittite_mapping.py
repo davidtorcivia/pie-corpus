@@ -288,6 +288,24 @@ def test_doubtful_table_is_retrieval_only(tmp_path):
     assert hm.read_union_table(tmp_path) == {"a@b": ("pie-lex-x",), "c@d": ("pie-lex-y",)}
 
 
+def test_union_retains_doubtful_qualification_without_changing_ids():
+    import json
+    qualifications = {}
+    union = hm.read_union_table(qualifications=qualifications)
+    assert union == hm.read_union_table()
+    rows = [json.loads(line) for line in (hm.ROOT / hm.DOUBTFUL_TABLE).read_text().splitlines() if line.strip()]
+    assert len(qualifications) == len(rows) == 8
+    for row in rows:
+        q = qualifications[row["lemma"]]
+        assert q["confidence"] == row["confidence"] == "low"
+        assert q["source"] == "Kloekhorst EDHIL"
+        assert "edhil-page:" + q["page"] in row["path"]
+        assert q["reason"] == row["note"]
+        assert union[row["lemma"]] == tuple(sorted(row["lex_id"]))
+    hm.read_union_table(doubtful=False, qualifications=qualifications)
+    assert qualifications == {}
+
+
 def _reviewed_file(tmp_path, **changes):
     import json
     row = dict(lemma="arr=a-@waschen", lex_id=["pie-root-h1erH-wash"], head="arr-",

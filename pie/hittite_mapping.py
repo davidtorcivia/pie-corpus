@@ -846,13 +846,16 @@ def doubtful_note(row: dict) -> str:
     return f"Kloekhorst EDHIL s.v. {head}, p. {page}: PIE {row['path'][-1].split(':', 1)[1]} (marked doubtful)"
 
 
-def read_union_table(root: Path = ROOT, doubtful: bool = True) -> dict:
+def read_union_table(root: Path = ROOT, doubtful: bool = True, *, qualifications: dict | None = None) -> dict:
     """lemma → lex ids tuple: hit.jsonl with the mapping errata applied (what the 8c loaders read through
     _table('hit')), plus, if doubtful, the rows of hit-doubtful.jsonl for lemmas the main table leaves
     unmapped and no override decides. For retrieval only (Stage C-S may opt in); the corpus tables and the
-    Tier 2 secure check never see the doubtful rows."""
+    Tier 2 secure check never see the doubtful rows. If supplied, qualifications is populated by lemma
+    with the doubtful equations' reader-facing evidence, independently of the retrieval ids."""
     import json
     from . import mapping as mp
+    if qualifications is not None:
+        qualifications.clear()
     rows = mp.read_table("hit", root)
     out = dict(fm.apply_table_overrides("hit", {r["lemma"]: tuple(r["lex_id"]) for r in rows}, root=root))
     p = Path(root) / DOUBTFUL_TABLE
@@ -863,4 +866,11 @@ def read_union_table(root: Path = ROOT, doubtful: bool = True) -> dict:
                 r = json.loads(line)
                 if r["lemma"] not in out and not mp.decisions_for("hit", r["lemma"], ov, root=root):
                     out[r["lemma"]] = tuple(sorted(r["lex_id"]))
+                    if qualifications is not None:
+                        qualifications[r["lemma"]] = {
+                            "confidence": "low", "source": "Kloekhorst EDHIL",
+                            "page": next(x.split(":", 1)[1] for x in r["path"]
+                                         if x.startswith("edhil-page:")),
+                            "reason": r.get("note") or doubtful_note(r),
+                        }
     return out

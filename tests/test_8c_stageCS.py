@@ -139,6 +139,61 @@ def test_layer_table():
     assert clf("sa-ep", U("MBh, 12, 136")) == S.WISDOM | S.LAW and clf("sa-ep", U("MBh, 1, 2")) == S.NARR
 
 
+def test_doubtful_annotations_preserve_retrieval(small):
+    import copy
+    import json
+    from pie import hittite_mapping as hm
+
+    units, cls = small
+    baseline = run(units, cls)
+    annotated = copy.deepcopy(units)
+    qualifications = {}
+    hm.read_union_table(qualifications=qualifications)
+    q = qualifications["arun=a-@Meer"]
+    for u in annotated["hit"]:
+        u.qualifications = {lem: q for _, lem, _ in u.words}
+    result = run(annotated, cls)
+    assert result["idx"].groups == baseline["idx"].groups
+    assert result["idx"].ugids == baseline["idx"].ugids
+    assert result["parts"] == baseline["parts"]
+    assert result["bundles"] == baseline["bundles"]
+    assert result["decoy"] == baseline["decoy"]
+    p = SB.render(annotated, "hit", 1, {})
+    assert len(p["lines"]) == 3  # context annotations retain the qualification too
+    for line in p["lines"]:
+        for word in line["words"]:
+            assert all(e["qualification"] == q for e in word["etymon"])
+    assert json.loads(json.dumps(p))["lines"] == p["lines"]
+
+
+def test_hittite_paragraph_carries_doubtful_qualification(monkeypatch):
+    from pie import formula_search as fs, formula_search_multi as fm, hittite_mapping as hm
+    lemma = "arun=a-@Meer"
+    qualifications = {}
+    table = hm.read_union_table(qualifications=qualifications)
+    tok = fs.Token("hit", lemma, "fixture", "fixture 1", {"line": "fixture|1", "para": "fixture|1"}, True, "noun")
+    monkeypatch.setattr(fm, "load_hittite", lambda root: [tok])
+    monkeypatch.setattr(B, "_hit_lines", lambda fm, root: ({}, ["fixture"]))
+    monkeypatch.setattr(S, "hittite_paragraph_texts", lambda root: {})
+    us = S.hittite_paragraph_units()
+    assert us[0].words == [("fixture", lemma, table[lemma])]
+    p = SB.render({"hit": us}, "hit", 0, {})
+    assert p["lines"][0]["words"][0]["etymon"][0]["qualification"] == qualifications[lemma]
+
+    # An old cached unit has no annotation metadata; prepare must refresh it without
+    # rebuilding the corpus or changing the retrieval words and groups.
+    words, groups = list(us[0].words), us[0].groups
+    del us[0].qualifications
+    monkeypatch.setattr(C, "_cached", lambda cache, name, fn: us)
+    monkeypatch.setattr(S, "Classifier", lambda root, meta: None)
+    monkeypatch.setattr(S, "classify", lambda units, clf: {"hit": [S.NARR]})
+    monkeypatch.setattr(S, "thin_corpora", lambda idx: frozenset())
+    units = {}
+    S.prepare(units, {}, {}, log=lambda *a: None)
+    assert units["hit"][0].words == words and units["hit"][0].groups == groups
+    assert units["hit"][0].qualifications == {lemma: qualifications[lemma]}
+
+
 def test_thin_corpora_rules(small, monkeypatch):
     units, cls = small
     monkeypatch.setattr(S, "THIN_MAX_UNITS", 260)        # the fixture's partner corpora have ~270 kept units each

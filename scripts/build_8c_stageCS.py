@@ -264,12 +264,14 @@ def hittite_paragraph_units(root: Path = ROOT, by_id: dict | None = None) -> lis
     text_of = hittite_paragraph_texts(root)
     hl, hro = SB.CORPORA["hit"][2], SB.CORPORA["hit"][3]
     from pie import hittite_mapping as hm
-    table = hm.read_union_table(root, doubtful=True)      # thin-corpus rule: the doubtful tier, retrieval only
+    qualifications = {}
+    table = hm.read_union_table(root, doubtful=True, qualifications=qualifications)
     us = SB.units_from_tokens("hit", toks, "para", lambda t: t.units["line"].split("|")[0], hsurf,
                               table, lambda t: (hl, hro), text_of=text_of)
     lex = fs.load_jsonl(root / "data/lexicon/lexicon.jsonl")
     gmap = fs.group_map(lex)
     for u in us:
+        u.qualifications = {lem: qualifications[lem] for _, lem, _ in u.words if lem in qualifications}
         u.groups = frozenset(gmap.get(x, x) for _, _, ids in u.words for x in ids)
         u.tag = C.licence_tag(u.licence)
     return us
@@ -303,6 +305,13 @@ def prepare(units: dict, by_id: dict, meta: dict, cache_dir=None, log=print, roo
     """Hittite paragraph units, the main classification, the thin corpora (by the main rule's indexed units),
     and the loosened classification of the thin corpora. Returns (cls, thin)."""
     units["hit"] = C._cached(cache_dir, "hit-para", lambda: hittite_paragraph_units(root))
+    # Refresh annotation metadata even for caches created before qualifications were retained;
+    # never alter their words, ids or root groups.
+    from pie import hittite_mapping as hm
+    qualifications = {}
+    hm.read_union_table(root, doubtful=True, qualifications=qualifications)
+    for u in units["hit"]:
+        u.qualifications = {lem: qualifications[lem] for _, lem, _ in u.words if lem in qualifications}
     B.assign_pids(units)
     clf = Classifier(root, meta)
     cls = classify(units, clf)
