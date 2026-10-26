@@ -1,5 +1,7 @@
 # Reader brief, Stage C-S (Phase 8c)
 
+The etymon `qualification` field records a doubtful equation’s low confidence, source, page and specific reason for doubt, which must accompany the equation when cited or copied into review records.
+
 You are a comparative philologist looking for **inherited Indo-European phraseology**: places where two or more daughter traditions continue the *same* phrase, collocation or poetic figure from a common ancestor (e.g. Ved. śrávas ákṣitam ~ Gk κλέος ἄφθιτον; Ved. áhann áhim ~ Av. jaγna ažīm).
 
 ## Your material
@@ -36,3 +38,8 @@ Every claim must include **at least two passages from your slab, from different 
 `data/research/8c/stageCS/claims/<reader id>.jsonl`, one claim per line:
 `{"reader": "RS0xx", "slab": "SS-xxxx", "bundles": ["BS-xxxxx"], "anchors": ["<passage id>", ...], "support": [{"locus": "...", "corpus": "...", "words": ["..."]}], "words": [{"passage": "<id>", "form": "...", "lemma": "...", "etymon": "..."}], "cognate": "...", "drift_or_renewal": "... or 'none'", "shared_syntax": "...", "context": "...", "phrase": "...", "recalled": true|false, "confidence": "high"|"medium"|"low"}`
 Quote daughter text only as the cited words. When you finish, add one line `{"reader": "...", "slab": "...", "done": true, "bundles_read": N, "note": "..."}`. Report everything you would defend and nothing you would not: there is no quota, and many slabs will have few or no claims.
+
+## Error reports (added 2026-10-25)
+When you notice an error in the material — a wrong lemma, a wrong or missing PIE mapping, an OCR misreading, a unit cut in the wrong place, a name taken as a word — add one line per error to your claims file (it is not a claim and does not count as one):
+`{"reader": "...", "slab": "...", "error": {"passage": "<passage id>", "form": "...", "given_lemma": "...", "given_etymon": "...", "kind": "mapping|lemma|ocr|unit|name", "correct_reading": "...", "evidence": "..."}}`
+Report what you are confident of; do not stop reading to hunt for errors.
