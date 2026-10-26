@@ -295,6 +295,7 @@ clear gain. What the W are:
   'cold' (the existing *úair* row does not cover the lemma *úar*); Welsh *dal* (×2; *daly*'s EDPC verdict did not
   propagate), *budd* (= *búaid*), *crwn* (= *cruind*), OW *coret* (*cored* was unmapped), *daioni* (derived from
   *da*: an override row does not reach keys that inherit through `base`).
+- 2026-10-25: Fixed the remaining *bua*, *úar* (hour), *dal*, *budd*, *crwn*, and *coret* rows with reviewed overrides; *daioni* now inherits the reviewed *da* decision through `base` (regression tested). The sample above remains the original measurement.
 - **EDPC hedges** counted W: *bliadain* (3 items, about 1,100 tokens: *bʰleyd-* 'possible formally … semantic
   connection weak'), *glan*, *léir*. Counting EDPC-hedged / disputed items as correct raises strict celt to 0.83.
 - **Lemmatizer homographs**: *bíu* → *benaid*, Latin *ego* → *aig*, *comain* → *tiomáin*, *nós* → *os*, tagged

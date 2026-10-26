@@ -3,6 +3,16 @@
  "lemma": [
   {
    "corpus": "celt",
+   "lemma": "táin",
+   "lex_id": [
+    "pie-lex-h2egjeti"
+   ],
+   "formation": "derivative",
+   "erratum": "táin 'driving, raid' promoted to exact evidence for the thematic present",
+   "note": "Gordon, Randall Clark (2012), Derivational Morphology of the Early Irish Verbal Noun, §3.1.2, printed p. 141: the nominal formation associated with driving is distinct from the thematic verb. Retain the *h₂eǵ- root relationship, but táin is a nominal derivative, not the same formation as *h₂éǵeti (ENG-03; docs/audits/handoff-2026-10-24.md). This decision does not require choosing a particular reconstructed nominal preform."
+  },
+  {
+   "corpus": "celt",
    "lemma": "úar|úair",
    "lex_id": [],
    "erratum": "uair/úair mapped to *h₃ewǵ- 'cold'",
@@ -2123,6 +2133,62 @@
    "erratum": "mapped only to the prefix *ḱóm",
    "note": "kaikki cy Cymru < *kom- + *mrogis (*mórǵs 'border')",
    "round2": true
+  },
+  {
+   "corpus": "celt",
+   "lemma": "bua",
+   "lex_id": [],
+   "erratum": "bua retains the rejected búaid mapping",
+   "note": "Matasović EDPC p0077, *bowdi-; Kaikki Irish bua continues Old Irish búaid. EDPC connects the family with *bʰewd-, absent from the PIE lexicon, rather than *gʷowdʰ-."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "bua",
+   "lex_id": [],
+   "erratum": "bua retains the rejected búaid mapping",
+   "note": "Matasović EDPC p0077, *bowdi-; Kaikki Irish bua continues Old Irish búaid. EDPC connects the family with *bʰewd-, absent from the PIE lexicon, rather than *gʷowdʰ-."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "úar",
+   "lex_id": [],
+   "erratum": "hour lemma úar inherits the cold homograph mapping",
+   "note": "Kaikki Old Irish lexicon, úar noun (etymology 2): a Latin hōra loan. The hour sense must not inherit the adjective úar and its *h₃ewǵ- mapping; the merged lemma is conservatively unmapped."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "úar",
+   "lex_id": [],
+   "erratum": "hour lemma úar inherits the cold homograph mapping",
+   "note": "Kaikki Old Irish lexicon, úar noun (etymology 2): a Latin hōra loan. The hour sense must not inherit the adjective úar and its *h₃ewǵ- mapping; the merged lemma is conservatively unmapped."
+  },
+  {
+   "corpus": "cy",
+   "lemma": "dal",
+   "lex_id": [],
+   "erratum": "dal misses the EDPC decision for daly",
+   "note": "Matasović EDPC p0100, *delg-o-: lists dal with daly and dala; rejects the proposed PIE comparison on semantic grounds and provides no secure PIE derivation."
+  },
+  {
+   "corpus": "cy",
+   "lemma": "budd",
+   "lex_id": [],
+   "erratum": "budd retains the rejected búaid mapping",
+   "note": "Matasović EDPC p0077, *bowdi-: Welsh budd and Old Irish búaid belong to the same family, compared with *bʰewd-, absent from the PIE lexicon; no support for *gʷowdʰ-."
+  },
+  {
+   "corpus": "cy",
+   "lemma": "crwn",
+   "lex_id": [],
+   "erratum": "crwn retains the rejected cruind mapping",
+   "note": "Matasović EDPC p0239, *krundi-: Welsh crwn and Old Irish cruind share an uncertain IE etymology, possibly from a non-IE source; no secure *(s)ker- mapping."
+  },
+  {
+   "corpus": "cy",
+   "lemma": "coret",
+   "lex_id": [],
+   "erratum": "Old Welsh coret misses the cored rejection",
+   "note": "Matasović EDPC p0228, *koret-: the cored family is probably a non-IE borrowing, with no secure PIE reconstruction; remove the *(s)ker- assignment to Old Welsh coret."
   }
  ],
  "form": [

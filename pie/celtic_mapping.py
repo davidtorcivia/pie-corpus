@@ -39,6 +39,7 @@ from pathlib import Path
 
 from . import formula_search as fs
 from . import formula_search_multi as fm
+from . import mapping as mp
 
 ROOT = fs.ROOT
 KD = fm.KD
@@ -806,6 +807,36 @@ class CelticMappings:
     parts: dict                 # per-stage LangMappings
     lexicon: list
     precedence: dict = None     # matasovic_precedence log: {lang: {key: (old ids, new ids | None, EDPC page:head)}}
+
+
+def apply_base_overrides(recs: dict, corpus: str, overrides: dict) -> dict:
+    """Resolve corpus decisions inherited through base paths, nearest base first.
+
+    Use the shared resolver for decisions; an explicit decision on the derived
+    key takes priority. Keep this corpus-specific because Irish tables share a
+    language mapping but can have different reviewed decisions.
+    """
+    out = dict(recs)
+    for key, rec in recs.items():
+        bases = [p.split(":", 1)[1] for p in rec.path if p.startswith("base:")]
+        if not bases:
+            continue
+        lang = rec.path[0].split(":", 1)[0] if rec.path else None
+        ids, decisions = mp.decide_row(corpus, key, rec.ids, rec.path, lang, overrides)
+        if not decisions:
+            for base in bases:
+                ids, decisions = mp.decide(corpus, base, rec.ids, overrides)
+                if decisions:
+                    break
+        if not decisions:
+            continue
+        if not ids:
+            out.pop(key, None)
+        else:
+            out[key] = fm.MapRec(key, rec.word, ids, rec.path, "erratum",
+                                 "low" if any(d.uncertain for d in decisions) else "high",
+                                 rec.sources + ("mapping-overrides",), rec.gloss)
+    return out
 
 
 def build_mappings(root: Path = ROOT, lexicon: list[dict] | None = None, matasovic: bool = True) -> CelticMappings:

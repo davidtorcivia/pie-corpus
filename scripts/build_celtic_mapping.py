@@ -111,9 +111,11 @@ class TableMapper:
     def __init__(self, lm: fm.LangMapping, gmap: dict, corpus: str, overrides: dict | None = None):
         self.lm, self.gmap, self.corpus, self.K = lm, gmap, corpus, fm.KEYS[lm.lang]
         # lemma overrides apply to the parts of a union too ('fír|fer' sees the corrected fír)
-        self.ov = (overrides if overrides is not None else fm.load_overrides(ROOT))["lemma"].get(corpus, {})
+        overrides = overrides if overrides is not None else fm.load_overrides(ROOT)
+        self.ov = overrides["lemma"].get(corpus, {})
+        self.recs = cm.apply_base_overrides(lm.recs, corpus, overrides)
         self.loose = collections.defaultdict(set)
-        for k in lm.recs:
+        for k in self.recs:
             self.loose[self.K(k, True)].add(k)
         self.memo = {}
 
@@ -124,16 +126,18 @@ class TableMapper:
                 return None
             return fm.MapRec(p, p, ids, (f"{self.corpus}:{p}", "erratum:" + (row.get("note") or "")), "erratum",
                              "high", ("mapping-overrides",))
-        r = self.lm.recs.get(p) or self.lm.recs.get(self.K(p))
+        if any(k in self.lm.recs and k not in self.recs for k in (p, self.K(p))):
+            return None  # a reviewed base removal must not fall back to a loose homograph
+        r = self.recs.get(p) or self.recs.get(self.K(p))
         if r:
             return r
         ks = self.loose.get(self.K(p, True), set())
         if len(ks) == 1:
-            return self.lm.recs[next(iter(ks))]
+            return self.recs[next(iter(ks))]
         if ks:
-            g = {frozenset(self.gmap.get(x, x) for x in self.lm.recs[k].ids) for k in ks}
+            g = {frozenset(self.gmap.get(x, x) for x in self.recs[k].ids) for k in ks}
             if len(g) == 1:
-                return self.lm.recs[sorted(ks)[0]]
+                return self.recs[sorted(ks)[0]]
         return None
 
     def __call__(self, lem: str):

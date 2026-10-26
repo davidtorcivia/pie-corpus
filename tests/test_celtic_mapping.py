@@ -221,6 +221,53 @@ def test_override_file_rows_cite_a_source():
     assert max(counts.values()) == 1
 
 
+def test_base_inherits_reviewed_decisions_without_mutating_shared_mapping():
+    from pie import mapping as mp
+
+    rec = fm.MapRec("daioni", "daioni", frozenset({"old-id"}),
+                    ("cy:daioni", "base:da", "cy:da"), "base", "low", ("base",))
+    recs = {"daioni": rec}
+    for ids in (frozenset(), frozenset({"corrected-id"})):
+        ov = mp.as_overrides({"cy": {"da": (ids, {"note": "reviewed base"})}})
+        got = cm.apply_base_overrides(recs, "cy", ov)
+        assert (got["daioni"].ids if "daioni" in got else frozenset()) == ids
+        assert cm.apply_base_overrides(recs, "other-corpus", ov) == recs
+        assert recs["daioni"] == rec
+        # An explicit derived-word decision wins over its base's decision.
+        ov = mp.as_overrides({"cy": {"da": (ids, {}),
+                                    "daioni": (frozenset({"own-id"}), {})}})
+        assert cm.apply_base_overrides(recs, "cy", ov)["daioni"].ids == {"own-id"}
+    # Without a base edge, an etymological mention must not inherit lemma overrides.
+    own = fm.MapRec("other", "other", rec.ids, ("cy:other", "cy:da"), "chain", "high", ())
+    assert cm.apply_base_overrides({"other": own}, "cy", ov) == {"other": own}
+
+
+def test_remaining_celtic_sample_rows_are_unmapped():
+    for corpus, lemmas in (("celt", ("bua", "úar")), ("sga-glosses", ("bua", "úar")),
+                           ("cy", ("dal", "budd", "crwn", "coret", "daioni"))):
+        # Check generated rows as well as the shared resolver's view.
+        rows = {r["lemma"]: r for r in map(json.loads, (TABLES / f"{corpus}.jsonl").read_text().splitlines())}
+        table = cm.read_table(corpus, ROOT)
+        for lemma in lemmas:
+            assert lemma not in rows
+            assert not table.get(lemma)
+
+
+def test_table_mapper_base_removal_blocks_loose_fallback():
+    from pie import mapping as mp
+    from scripts.build_celtic_mapping import TableMapper
+
+    lm = _lm("cy")
+    lm.recs["daioni"] = fm.MapRec("daioni", "daioni", frozenset({"old-id"}),
+                                 ("cy:daioni", "base:da", "cy:da"), "base", "low", ())
+    lm.recs["daioní"] = fm.MapRec("daioní", "daioní", frozenset({"other-id"}),
+                                 ("cy:daioní",), "chain", "high", ())
+    ov = mp.as_overrides({"cy": {"da": (frozenset(), {})}})
+    mapper = TableMapper(lm, {}, "cy", ov)
+    assert mapper("daioni") is None
+    assert mapper("daioní").ids == {"other-id"}
+
+
 # ---------------------------------------------------------------- round 2 (independent blind check)
 
 def test_tig_is_resolved_by_the_preceding_word():
