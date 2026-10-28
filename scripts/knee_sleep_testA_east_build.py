@@ -257,6 +257,18 @@ def short(ctx, word, n):
 
 def main():
     rows = [json.loads(l) for l in open(sys.argv[1], encoding="utf-8")]
+    # Candidate ids are sequential, so a changed search would shift them under CLS. Guard: every
+    # id must still point at the same locus and support word as in the committed output.
+    import os
+    if os.path.exists(sys.argv[2]):
+        ref = {}
+        for l in open(sys.argv[2], encoding="utf-8"):
+            x = json.loads(l)
+            ref[x["id"]] = (x["locus"], x["words"]["support"])
+        for r in rows:
+            k = f"testA-east-{r['cand']}"
+            if r["role"] != "knee-nosleep" and k in ref and ref[k] != (r["locus"], r["word"]):
+                raise SystemExit(f"candidate {r['cand']} moved ({ref[k]} -> {(r['locus'], r['word'])}): reclassify")
     out = []
     for r in rows:
         if r["role"] == "knee-nosleep":

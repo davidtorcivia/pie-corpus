@@ -61,6 +61,14 @@ compiled 978). Earlier Chinese knee-pillow scenes are lying awake or dying, not 
   Each needs within ±12 tokens a word from نام/نوم/نائم, رقد/راقد, نعس, هجع, وسن, الكرى, حلم/رؤيا/منام, وسد/توسد, اضطجع,
   or مات/توفي/قبض.
 
+**Known gaps in the terms** (recorded, not rerun; neither can add a counted knee positive):
+- The Chinese death set is 死卒薨崩殂. The Quan Tangshi 801 death on the knee (逝) was caught only through 枕 within ±4,
+  so a death-on-knee phrased 終/絕/逝於膝 without 枕 would be missed. Deaths on the knee are not counted under the rule
+  anyway.
+- Arabic knee search left out the bare plural ركب, which is ambiguous with "rode". Arabic ḥijr was matched only with a
+  pronoun suffix, so في حجر + a bare name (e.g. عائشة) would be missed. That affects contrasts only.
+- 覺 "wake" is not in the Chinese sleep set, because it is too common. The Li Mi passage was caught through 睡/寐.
+
 ## Recall checks (run before reading)
 
 | Corpus | Known knee passage | Found? |
@@ -153,14 +161,18 @@ The scene is attested from 712 as a verb phrase (枕…膝, *piza maku*), not as
   before registration) only adds a third tradition.
 
 The rule's word "unrelated" is ambiguous here: Japanese and Chinese are unrelated languages, but the Japanese
-chronicles take part of their phrasing from Chinese literature. That is recorded, not redesigned. The Japanese scene
-also shows a pattern the Chinese one lacks: a sovereign asleep on a queen's knee at the moment of a planned killing,
-twice, which is close in shape to the Hittite and Greek knee-sleep-death scenes.
+chronicles take part of their phrasing from Chinese literature. That is recorded, not redesigned. The two Japanese royal
+scenes have the same structure as Judges 16:19, the item known before registration: a man asleep on the knees of a
+woman who is party to a plot against him (Suinin: the dagger is raised over the sleeper; Ankō: he is killed in his
+sleep). The Judges item belongs to the Near East half. Any comparison with the shape of KUB 36.89 or AP 7.170 is left to
+the results synthesis; those texts were not read here.
 
 ## Procedure notes
 
 - Each row's `context` is a short window of the original text only. No translations were quoted.
 - OpenITI rows carry `licence: research only`.
 - The Jinshu repo files for juan 31 and 33 repeat the same text. The duplicates are tagged `dup` and counted once.
+- Candidate ids are sequential. The build script refuses to run if any id now points at a different locus or word than
+  the committed jsonl, so a changed search forces a re-read, not a silent shift.
 - The rule's "explicit" was read as "a sleep, dream or death-in-sleep word applies to the person on the knee". Rows
   that are knee-pillow only carry `explicit: false`.
