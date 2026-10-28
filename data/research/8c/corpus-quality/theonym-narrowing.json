@@ -225,7 +225,7 @@
   },
   "hercules": {
    "decision": "name",
-   "reason": "Deified hero (half-deity); decided conservatively. Its match is the iuvenis 'youth' family, not a power."
+   "reason": "Deified hero (half-deity); decided conservatively. Its exact match is the *yoh₁r- 'year, season' lexemes, not a power."
   },
   "mater": {
    "decision": "name",
@@ -462,7 +462,7 @@
    ],
    "hercules": [
     "name",
-    "Deified hero (half-deity); decided conservatively. Its match is the iuvenis 'youth' family, not a power."
+    "Deified hero (half-deity); decided conservatively. Its exact match is the *yoh₁r- 'year, season' lexemes, not a power."
    ],
    "hesperus": [
     "keep",
@@ -1890,6 +1890,11 @@
   "IcePaHC pronouns and numerals mis-tagged NPR (hann, þetta, ég, þú, þér, sá, vér, mér, hún, tveir) lose roots; this is a correction, not a deity loss.",
   "Πόντος changes a batch-6 test expectation (tests/test_stagecs_w6_other.py); flagged for David as the largest borderline."
  ],
+ "validation": {
+  "full_suite_command": "UV_CACHE_DIR=/tmp/pie-uv-cache uv run python -I -m pytest -q",
+  "full_suite": "3113 passed in 486.04s (first run: 2 failed, 3111 passed: the w9 óðr divine exemption and the w6 Πόντος expectation, both resolved)",
+  "focused": "tests/test_name_mapping.py, test_mapping_norse_w9.py, test_stagecs_w6_other.py: 98 passed"
+ },
  "whole_corpus_diff": {
   "seed": 6026,
   "corpora": {
@@ -7967,10 +7972,5 @@
   "scripts/audit_theonym_narrowing.py": "e3d20be1c5e75bf88e61323d050ff8a6008cc09a58818a39d9dd4d517f04f6bf",
   "tests/test_name_mapping.py": "bb2370f2158332c2d183c7b2327806553654dea753c8b4b448f7ab346aa6aea6",
   "tests/test_stagecs_w6_other.py": "0d6e7eae7f8baec2ebe27a1a890364635853de7dce4ca44f1cfb132e9cebea82"
- },
- "validation": {
-  "full_suite_command": "UV_CACHE_DIR=/tmp/pie-uv-cache uv run python -I -m pytest -q",
-  "full_suite": "3113 passed in 486.04s (first run before fixes: 2 failed, 3111 passed: the w9 óðr divine exemption and the w6 Πόντος expectation, both resolved)",
-  "focused": "tests/test_name_mapping.py, test_mapping_norse_w9.py, test_stagecs_w6_other.py: 98 passed"
  }
 }

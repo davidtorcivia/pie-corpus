@@ -30,9 +30,9 @@ The allowlist has 80 entries: grc 24, la 23, sa 14, non 17, orv 2. It was
 built from a census of every lemma that the batch-6 gate kept bare in hom,
 grc, grc-late, grp, lat, av, sa-ep, orv, menota and icepahc. The Sanskrit
 entries are preventive, because neither DCS selection name-tags a Vedic
-theonym, so av and sa-ep do not change. Two further entries come from earlier
-reviewed decisions rather than the census: `óðr` (the wave-9 divine
-exemption) and `týr`.
+theonym, so av and sa-ep do not change. Norse entries outside the census: `óðr` is the wave-9
+reviewed divine exemption; `þór`, `baldr`, `týr` and `nótt` are preventive,
+like the Sanskrit set.
 
 ## Counts (tokens that lose roots; whole corpus, no sampling)
 
