@@ -21,9 +21,14 @@ the full count dumps `testB-summary.json`, `testC-summary.json`.
 |---|---|---|---|
 | B, knee | *šupp-* 1/13 paragraphs, *šeš-* 1/216 | 0.11 | Not significant. Counts tiny: **descriptive only.** |
 | B, dream (*tešḫa-*, *zašḫai-*, MÁŠ.GI₆) | 4/13 vs 5/216 | 0.0007 | **Significant**, but every swep hit is *tešḫa-*, which also means "sleep" (see the caveat) |
-| B, knee or dream (the rule as worded) | 4/13 vs 6/216 | 0.0011 | **Significant**, same caveat |
+| B, knee or dream (the rule as worded) | 4/13 vs 6/216 | 0.0011 | **Significant**, same caveat. Small counts (4 hits, 3 compositions): the result is reported, but it is close to the descriptive-only clause |
 | C, unit as registered | 0 knee units with a sleep word in target relation | – (no positives) | **Not testable**: the recall check fails (Il. 22.500 and AP 7.170 are split across verse-line units) |
 | C, ±2-line window (supplement) | 2 positives; *swep- 1 of 3 lexeme tokens vs base 53% | 0.90 (A), 0.80 (B) | No excess. 2 items: **descriptive only.** |
+
+The preregistration gives no number for "tiny". Here a cell with fewer than about 5 hits in the smaller group is
+treated as tiny: knee (1 vs 1) and Greek (2 positives) are descriptive only. The dream rows (4–5 hits among 13
+*šupp-* paragraphs, from 3–4 compositions) are on that boundary; the p-values are reported, but they rest on
+three or four texts.
 
 My reading: Hittite does not make *šupp-* the marked verb in knee contexts. Knee hits are one per verb,
 and only one of them (KUB 36.89) is in the target relation. *šupp-* does co-occur strongly with *tešḫa-*, but
@@ -49,8 +54,8 @@ verdicts override the automatic class (`testB-vetting.jsonl`).
 - *šeš-*: lemmas šēš-/šaš-, šiš=k-, šiškeš=k-, šišk= (sleep gloss); spelling list for unanalysed forms.
 - *šupp-* (*swep-): šupp=/šup=/šupp=a-/šupp=ar/šupp=iye/a-/šuppar=iye/a-/šuppar=iya-/šupparu=ant- with a sleep
   gloss. The annotator gives a "schlafen" candidate to most šuppa/šuppi/šuppaš forms, which are really *šuppi-*
-  "pure" or *šuppa* "meat". 311 such words stayed "amb" and 250 had a non-sleep selection. All 16 counted
-  tokens were read, and 3 were rejected: KUB 25.27 *šuppa* ŠE.NAGA "pure soap"; DBH 43_2.81 *šuppiyanzi*,
+  "pure" or *šuppa* "meat". 311 such words stayed "amb" and 250 had a non-sleep selection. All 19 automatically
+  counted tokens were read; 3 were rejected and 16 kept: KUB 25.27 *šuppa* ŠE.NAGA "pure soap"; DBH 43_2.81 *šuppiyanzi*,
   purity context; KBo 36.53, an Akkadian omen.
 - knee: gen=u-, gan=u-, kinu-, genušš=a/i- (gloss Knie). ginuw=a- "Knietuch" is kept apart (0 hits with sleep).
 - dream: *tešḫa-* (tešḫ=a-, tiešḫ=a-, tešḫan=iye/a-, tešḫanišk=) and *zašḫai-*. "Broad" adds the logograms:
