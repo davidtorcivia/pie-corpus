@@ -459,3 +459,10 @@ Fetched under the consent recorded above. One request at a time, ≥ 1.5 s apart
 **kaikki all-languages split, Celtic (2026-10-24):** Irish, Welsh and Scottish Gaelic per-language JSONL extracted from the kaikki all-languages dump (2026-10-21) into raw/daughters/kaikki-all-20261021/split/ by the Celtic-mapping agent (CC BY-SA, as the dump).
 
 **kaikki all-languages split, Balto-Slavic (2026-10-24):** two trimmed per-language JSONL files written into raw/daughters/kaikki-all-20261021/split/ by the Balto-Slavic mapping agent for the Vuk/byliny/dainos/CCMH lemmatizers (CC BY-SA, as the dump).
+
+## Knee/sleep research packets (2026-10-28)
+
+| Dir | Source | URL / origin | Retrieved | sha256 | License / basis |
+|---|---|---|---|---|---|
+| `knee-sleep-packets/archive-R49/` (237 files) | David's own knee/sleep research, rounds 1-49, consolidated synthesis archive produced with another AI tool (`PIE_Knee_Sleep_Research_Archive_through_R49_2026-10-28.zip`); untrusted, not executed | local: ~/Downloads/PIE_Knee_Sleep_Research_Archive_through_R49_2026-10-28.zip | 2026-10-28 | `8b9cb41868ffa68c4d7b138f69ddc5e066f3ccd046032c6034a30207a432cc47` | Owner's own work. Not distributed; a curated subset is in docs/research/knee-sleep/packet/ |
+| `knee-sleep-packets/checkpoint-v25/` (2,110 files; the patch lists 2,105) | David's own cumulative checkpoint v25 (git patch against this repo, `lap-knee-sleep-checkpoint-2026-10-27-v25.zip`), same research via another AI tool; NOT applied, scripts not run | local: ~/Downloads/lap-knee-sleep-checkpoint-2026-10-27-v25.zip | 2026-10-28 | `5af2349c36ed6db46fee921b030ea5ed970b15425b6d75700ae82ae8ec300a12` | Owner's own work. Not distributed |
