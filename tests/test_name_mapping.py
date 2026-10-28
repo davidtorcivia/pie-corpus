@@ -85,8 +85,60 @@ def test_gate_obeys_production_decisions(monkeypatch, formation, ids, scope, exp
     entries = {'pie-lex-test': {'id': 'pie-lex-test', 'form': 'test', 'root_id': 'pie-root-test'}}
     checker = secure.SecureChecker.from_population(entries, secure.build_population({'menota': [{**row, 'lang': 'non'}]}, ov))
     monkeypatch.setattr(nm, '_resources', lambda _: ('non', ov, resolved, checker))
+    # This test isolates the exact-formation gate; allowlist membership is separate.
+    monkeypatch.setattr(nm, 'theonym_allowed', lambda corpus, lemma: True)
     nm.exact_name_ids.cache_clear()
     try:
         assert bool(nm.exact_name_ids('menota', 'testname')) == expected
     finally:
         nm.exact_name_ids.cache_clear()
+
+
+# Narrowed exemption (docs/research/8c-theonym-narrowing.md): only reviewed
+# deities and personified powers keep roots; other exact matches are names.
+@pytest.mark.parametrize('corpus,lemma,lid', [
+    ('hom', 'Ζεύς', 'pie-lex-dyexws'),
+    ('menota', 'þórr', 'pie-lex-stenh2'),
+    ('lat', 'iuppiter', 'pie-lex-dyexws'),
+    ('av', 'div', 'pie-lex-dyexws'),
+    ('sa-ep', 'uṣas', 'pie-lex-h2ewsoxs'),
+])
+def test_theonyms_keep_roots(corpus, lemma, lid):
+    assert nm.theonym_allowed(corpus, lemma)
+    assert lid in nm.exact_name_ids(corpus, lemma)
+    assert nm.name_lemma(corpus, lemma) == lemma
+
+
+@pytest.mark.parametrize('corpus,lemma', [
+    ('hom', 'Μέντωρ'), ('hom', 'Ἕλος'), ('hom', 'Ἄκτωρ'), ('hom', 'Μέμνων'),
+    ('hom', 'Δαίδαλος'), ('grc-late', 'Πόντος'), ('grc-late', 'Ἕως'),
+    ('lat', 'hercules'), ('lat', 'pater'), ('orv', 'дунаи'), ('orv', 'волосъ'),
+    ('menota', 'ljótr'), ('icepahc', 'sveinn'), ('icepahc', 'hann'),
+])
+def test_exact_non_theonyms_become_names(corpus, lemma):
+    assert not nm.theonym_allowed(corpus, lemma)
+    assert nm.exact_name_ids(corpus, lemma) == frozenset()
+    assert nm.name_lemma(corpus, lemma) == lemma + ' (name)'
+
+
+def test_theonym_narrowing_production_tokens():
+    # Through Token.__post_init__ -> annotated_name -> name_lemma.
+    t = fs.Token('hom', 'Μέντωρ', 'Μέντωρ', 'fixture', {}, True, 'name')
+    assert (t.lemma, t.content, t.pos) == ('Μέντωρ (name)', False, 'name')
+    t = fs.Token('hom', 'Ἕλος', 'Ἕλος', 'fixture', {}, True, 'name')
+    assert (t.lemma, t.content) == ('Ἕλος (name)', False)
+    t = fs.Token('hom', 'Ζεύς', 'Ζεύς', 'fixture', {}, True, 'name')
+    assert (t.lemma, t.content, t.pos) == ('Ζεύς', True, 'noun')
+    t = fs.Token('lat', 'iuppiter', '', 'fixture', {}, False, 'name')
+    assert (t.lemma, t.content) == ('iuppiter', True)
+    t = fs.Token('av', 'div', 'dyaur', 'fixture', {}, True, 'name')
+    assert (t.lemma, t.content) == ('div', True)
+    assert gm.annotated_norse_lemma('þórr', 'NP', 'menota') == 'þórr'
+    assert gm.annotated_norse_lemma('ljótr', 'NP', 'menota') == 'ljótr (name)'
+
+
+def test_real_homer_mentor_is_a_name():
+    ts = fs.load_homer()
+    mentor = [t for t in ts if t.lemma.startswith('Μέντωρ')]
+    assert mentor and all(t.lemma == 'Μέντωρ (name)' and not t.content for t in mentor)
+    assert any(t.lemma == 'Ζεύς' and t.content for t in ts)

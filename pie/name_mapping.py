@@ -46,6 +46,108 @@ PERSONAL_HOMOGRAPHS = {
     },
 }
 
+# Narrowed exemption (David, 2026-10-28): an exact-match name keeps its lemma
+# and roots only when it names a deity or a personified natural/abstract power.
+# Every other exact match (heroes, mortals, places, rivers-as-geography, titles)
+# gets "(name)" like any non-exact name. Keys use the production language
+# normalizer; one line per entry: the power named, and the source of the fact.
+# Census and borderline decisions: docs/research/8c-theonym-narrowing.md.
+THEONYMS = {
+    'grc': {
+        'ζεύς': "Zeus, the Sky-father (*dyḗws); handbook (West 2007 ch. 4), project lexicon pie-lex-dyexws.",
+        'δεύς': "Δεύς, dialectal (Aeolic/Boeotian) form of Zeus; same Sky-father lexeme (pie-lex-dyexws).",
+        'βορέας': "Boreas, the North Wind as god (Hesiod Th. 379); a personified wind.",
+        'εὖρος': "Euros, the East Wind as power (Il. 2.145, Od. 5.295 wind catalogue).",
+        'ἀΐδης': "Hades, god of the dead (Il. 15.188); David's example, keep.",
+        'ἀΐδας': "Doric/lyric spelling of Hades, god of the dead.",
+        'ἁίδας': "Doric spelling of Hades, god of the dead.",
+        'ἔρεβος': "Erebos, personified primeval Darkness (Hesiod Th. 123); David's example, keep.",
+        'ἥβη': "Hebe, goddess and personified Youth (Il. 4.2; Hesiod Th. 922).",
+        'ἠώς': "Eos, the Dawn goddess (*h₂éwsōs); handbook (West 2007 ch. 5), pie-lex-h2ewsoxs.",
+        'ὥρα': "the Hours (Ὧραι), goddesses of the seasons (Il. 5.749; Hesiod Th. 901).",
+        'φόβος': "Phobos, personified Fear, companion of Ares (Il. 4.440, 13.299).",
+        'νύξ': "Nyx, personified Night (Il. 14.259; Hesiod Th. 123).",
+        'χθών': "Chthon, personified Earth as primeval power; pie-lex-dhegjhoxm.",
+        'ἥλιος': "Helios, the Sun god (*sóh₂wl̥); pie-lex-soh2wl.",
+        'μήνη': "Mene/Selene, the Moon as goddess (H. Herm. 99-100); pie-lex-mexh1ns.",
+        'μήν': "Men, the Anatolian Moon god (Strabo 12.3.31); pie-lex-mexh1ns.",
+        'δίκη': "Dike, goddess and personified Justice (Hesiod Th. 902, Op. 256).",
+        'λήθη': "Lethe, personified Oblivion (Hesiod Th. 227) and the mythic river of the dead.",
+        'μνημοσύνη': "Mnemosyne, Titaness and personified Memory (Hesiod Th. 54, 135).",
+        'ὕπνος': "Hypnos, personified Sleep (Il. 14.231; Hesiod Th. 212); pie-lex-supnos.",
+        'ἕσπερος': "Hesperos, the Evening Star as god (Il. 22.318); pie-lex-wekwsperos.",
+        'τέρμων': "Greek rendering of the Roman boundary god Terminus (Plut. Num. 16; Dion. Hal. 2.74).",
+        'κόρος': "Koros, personified Satiety, son of Hybris (Hdt. 8.77 oracle; Pind. O. 13.10).",
+    },
+    'la': {
+        'iuppiter': "Jupiter, the Sky-father (*dyḗws ph₂tḗr); pie-lex-dyexws.",
+        'diespiter': "Diespiter, archaic name of Jupiter as Sky-father; pie-lex-dyexws.",
+        'uenus': "Venus, goddess (Roman pantheon).",
+        'ceres': "Ceres, goddess of grain (Roman pantheon).",
+        'neptunus': "Neptune, god of the sea (Roman pantheon).",
+        'diana': "Diana, goddess (Roman pantheon; from *dyew- 'bright sky').",
+        'minerua': "Minerva, goddess (Roman pantheon).",
+        'flora': "Flora, goddess of flowering (Varro LL 5.74).",
+        'fortuna': "Fortuna, goddess and personified Fortune.",
+        'fors': "Fors (Fors Fortuna), personified Chance as goddess.",
+        'uirtus': "Virtus, deified Valour with a Roman temple (Cic. Leg. 2.28).",
+        'spes': "Spes, deified Hope with a Roman temple (Cic. Leg. 2.28).",
+        'somnus': "Somnus, personified Sleep (Verg. A. 5.838).",
+        'nox': "Nox, personified Night (Verg. A. 5.721).",
+        'sol': "Sol, the Sun god (*sóh₂wl̥); pie-lex-soh2wl; batch-6 regression case.",
+        'luna': "Luna, the Moon goddess (Varro LL 5.74); pie-lex-lowksneh2.",
+        'aurora': "Aurora, the Dawn goddess (*h₂éwsōs); pie-lex-h2ewsoxs.",
+        'hesperus': "Hesperus, the Evening Star personified (Catul. 62.20).",
+        'uesper': "Vesper, the Evening Star personified (Catul. 62.1).",
+        'auster': "Auster, the South Wind as power.",
+        'terminus': "Terminus, god of boundaries (Ov. F. 2.639).",
+        'manes': "Manes, the deified spirits of the dead (Di Manes).",
+        'liber': "Liber, god of wine and fertility (Roman pantheon); source-tagged as a name.",
+    },
+    'sa': {
+        'div': "Dyaus, the Sky-father (*dyḗws); RV dyaúṣ pitā́; pie-lex-dyexws.",
+        'dyaus': "Dyaus, the Sky-father, if lemmatized in the nominative.",
+        'uṣas': "Uṣas, the Dawn goddess (*h₂éwsōs); pie-lex-h2ewsoxs.",
+        'agni': "Agni, god of Fire (*h₁n̥gʷnis); pie-lex-h1ngwnis.",
+        'vāta': "Vāta, the Wind god (*h₂weh₁n̥ts).",
+        'vāyu': "Vāyu, the Wind god (RV 1.2).",
+        'sūrya': "Sūrya, the Sun god (*sóh₂wl̥).",
+        'pṛthivī': "Pṛthivī, Earth as goddess (*pl̥th₂éwih₂); RV dyā́vāpṛthivī́.",
+        'soma': "Soma, the deified sacred drink (RV book 9).",
+        'mitra': "Mitra, god of the covenant (RV 3.59).",
+        'bhaga': "Bhaga, god of the portion (RV 7.41).",
+        'yama': "Yama, god of the dead (RV 10.14).",
+        'parjanya': "Parjanya, god of Thunder and rain (RV 5.83).",
+        'rātri': "Rātrī, personified Night (RV 10.127).",
+    },
+    'non': {
+        'þórr': "Þórr, the Thunder god (*(s)tenh₂-); batch-6 regression case, pie-lex-stenh2.",
+        'þór': "Spelling of Þórr, the Thunder god.",
+        'höðr': "Hǫðr, the god (Gylfaginning 28); name means 'battle'.",
+        'baldr': "Baldr, the god (Gylfaginning 22).",
+        'týr': "Týr, the god (*deywós); not present as a bare lemma in batch 6.",
+        'hel': "Hel, goddess and realm of the dead (Gylfaginning 34).",
+        'áss': "Áss, 'god', one of the Æsir (*h₂énsus).",
+        'guð': "Guð, God (Christian); pie-lex-gjhutos.",
+        'drottinn': "Drottinn, 'the Lord' as the name of God in the IcePaHC religious texts.",
+        'andi': "Andi, the Holy Spirit (heilagr andi) in the IcePaHC religious texts.",
+        'jörð': "Jǫrð, personified Earth, mother of Þórr (Gylfaginning 9); pie-lex-h1erteh2.",
+        'sól': "Sól, personified Sun (Gylfaginning 11); pie-lex-soh2wl.",
+        'máni': "Máni, personified Moon (Gylfaginning 11); pie-lex-mexh1ns.",
+        'dagr': "Dagr, personified Day (Gylfaginning 10); batch-6 regression case.",
+        'dagur': "IcePaHC spelling of Dagr, personified Day.",
+        'nótt': "Nótt, personified Night (Gylfaginning 10).",
+        'óðr': "Óðr, the god, Freyja's husband (Gylfaginning 35); wave-9 reviewed divine exemption (AM-242-fol 55:4).",
+    },
+    'orv': {
+        'дивъ': "Div, the mythic divine being of the Slovo o polku Igoreve (*deywós).",
+        'стрибогъ': "Stribog, god of the winds (Primary Chronicle pantheon of 980).",
+    },
+}
+
+# Personal homographs predate THEONYMS. With the allowlist none of them can be
+# kept any more, so this table is now redundant; it stays as the record of the
+# reviewed batch-6/wave-6 decisions and as a second guard.
 POPULATION = {'grc': 'grp', 'grc-late': 'grp', 'sa-ep': 'av'}
 LANGUAGE = {'hom': 'grc', 'grp': 'grc', 'lat': 'la', 'av': 'sa',
             'menota': 'non', 'icepahc': 'non', 'orv': 'orv'}
@@ -124,13 +226,22 @@ def _resources(population):
     return lang, local, resolved, ch
 
 
+def theonym_allowed(corpus, lemma):
+    """Reviewed deity / personified-power allowlist membership (THEONYMS)."""
+    lang = LANGUAGE.get(POPULATION.get(corpus, corpus))
+    return bool(lang) and mp._keyer(lang)(lemma) in THEONYMS.get(lang, {})
+
+
 @lru_cache(maxsize=None)
 def exact_name_ids(corpus, lemma):
-    """Exact production lexeme ids of an unqualified source-tagged name."""
+    """Exact production lexeme ids of an unqualified source-tagged name that
+    names a reviewed deity or personified power (THEONYMS)."""
     from . import formula_search as fs
     from . import tier2_secure as secure
     population = POPULATION.get(corpus, corpus)
     if population not in LANGUAGE or lemma.endswith(' (name)'):
+        return frozenset()
+    if not theonym_allowed(corpus, lemma):
         return frozenset()
     lang, ov, resolved, checker = _resources(population)
     if mp._keyer(lang)(lemma) in PERSONAL_HOMOGRAPHS.get(lang, {}):
@@ -170,7 +281,7 @@ def _live_keys(lang):
 
 
 def name_lemma(corpus, lemma):
-    """Preserve exact inherited words; qualify all other annotated names."""
+    """Preserve exact inherited theonyms; qualify all other annotated names."""
     if lemma.endswith(' (name)') or exact_name_ids(corpus, lemma):
         return lemma
     return lemma + ' (name)'

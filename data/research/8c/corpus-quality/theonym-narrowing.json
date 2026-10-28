@@ -1,0 +1,7976 @@
+{
+ "task": "Narrow the exact-match name exemption to deities and personified powers (David, approved)",
+ "date": "2026-10-28",
+ "rule": "A source-tagged proper noun becomes 'X (name)' (non-content, no roots) unless its bare lemma both maps exactly to an inherited PIE lexeme (batch-6 gate) and is on the reviewed THEONYMS allowlist of deities and personified natural/abstract powers. PERSONAL_HOMOGRAPHS stays as a second guard (now redundant).",
+ "implementation": {
+  "allowlist": "pie/name_mapping.py THEONYMS (keys = production language normalizer, one justification each)",
+  "gate": "pie/name_mapping.py theonym_allowed + exact_name_ids",
+  "hook": "pie/formula_search.Token.__post_init__ via pie/w6_other_mapping.annotated_name; Norse via pie/germanic_new_mapping.annotated_norse_lemma",
+  "scope": "Future builds and the search index only. Read slabs and committed Stage C-S results are unchanged."
+ },
+ "method": "Whole-corpus before/after over every token of the ten production loader populations, aligned by ordinal, locus and individual form; before = batch-6 gate (theonym_allowed forced True), after = production code. The census is every lemma name_lemma kept bare under the batch-6 gate. grp overlaps grc and is excluded from the aggregate.",
+ "reproduction": [
+  "UV_CACHE_DIR=/tmp/pie-uv-cache uv run python -I scripts/audit_theonym_narrowing.py before DIR",
+  "UV_CACHE_DIR=/tmp/pie-uv-cache uv run python -I scripts/audit_theonym_narrowing.py after DIR",
+  "UV_CACHE_DIR=/tmp/pie-uv-cache uv run python -I scripts/audit_theonym_narrowing.py report DIR OUT.json"
+ ],
+ "allowlist": {
+  "grc": {
+   "ζεύς": "Zeus, the Sky-father (*dyḗws); handbook (West 2007 ch. 4), project lexicon pie-lex-dyexws.",
+   "δεύς": "Δεύς, dialectal (Aeolic/Boeotian) form of Zeus; same Sky-father lexeme (pie-lex-dyexws).",
+   "βορέας": "Boreas, the North Wind as god (Hesiod Th. 379); a personified wind.",
+   "εὖρος": "Euros, the East Wind as power (Il. 2.145, Od. 5.295 wind catalogue).",
+   "ἀΐδης": "Hades, god of the dead (Il. 15.188); David's example, keep.",
+   "ἀΐδας": "Doric/lyric spelling of Hades, god of the dead.",
+   "ἁίδας": "Doric spelling of Hades, god of the dead.",
+   "ἔρεβος": "Erebos, personified primeval Darkness (Hesiod Th. 123); David's example, keep.",
+   "ἥβη": "Hebe, goddess and personified Youth (Il. 4.2; Hesiod Th. 922).",
+   "ἠώς": "Eos, the Dawn goddess (*h₂éwsōs); handbook (West 2007 ch. 5), pie-lex-h2ewsoxs.",
+   "ὥρα": "the Hours (Ὧραι), goddesses of the seasons (Il. 5.749; Hesiod Th. 901).",
+   "φόβος": "Phobos, personified Fear, companion of Ares (Il. 4.440, 13.299).",
+   "νύξ": "Nyx, personified Night (Il. 14.259; Hesiod Th. 123).",
+   "χθών": "Chthon, personified Earth as primeval power; pie-lex-dhegjhoxm.",
+   "ἥλιος": "Helios, the Sun god (*sóh₂wl̥); pie-lex-soh2wl.",
+   "μήνη": "Mene/Selene, the Moon as goddess (H. Herm. 99-100); pie-lex-mexh1ns.",
+   "μήν": "Men, the Anatolian Moon god (Strabo 12.3.31); pie-lex-mexh1ns.",
+   "δίκη": "Dike, goddess and personified Justice (Hesiod Th. 902, Op. 256).",
+   "λήθη": "Lethe, personified Oblivion (Hesiod Th. 227) and the mythic river of the dead.",
+   "μνημοσύνη": "Mnemosyne, Titaness and personified Memory (Hesiod Th. 54, 135).",
+   "ὕπνος": "Hypnos, personified Sleep (Il. 14.231; Hesiod Th. 212); pie-lex-supnos.",
+   "ἕσπερος": "Hesperos, the Evening Star as god (Il. 22.318); pie-lex-wekwsperos.",
+   "τέρμων": "Greek rendering of the Roman boundary god Terminus (Plut. Num. 16; Dion. Hal. 2.74).",
+   "κόρος": "Koros, personified Satiety, son of Hybris (Hdt. 8.77 oracle; Pind. O. 13.10)."
+  },
+  "la": {
+   "iuppiter": "Jupiter, the Sky-father (*dyḗws ph₂tḗr); pie-lex-dyexws.",
+   "diespiter": "Diespiter, archaic name of Jupiter as Sky-father; pie-lex-dyexws.",
+   "uenus": "Venus, goddess (Roman pantheon).",
+   "ceres": "Ceres, goddess of grain (Roman pantheon).",
+   "neptunus": "Neptune, god of the sea (Roman pantheon).",
+   "diana": "Diana, goddess (Roman pantheon; from *dyew- 'bright sky').",
+   "minerua": "Minerva, goddess (Roman pantheon).",
+   "flora": "Flora, goddess of flowering (Varro LL 5.74).",
+   "fortuna": "Fortuna, goddess and personified Fortune.",
+   "fors": "Fors (Fors Fortuna), personified Chance as goddess.",
+   "uirtus": "Virtus, deified Valour with a Roman temple (Cic. Leg. 2.28).",
+   "spes": "Spes, deified Hope with a Roman temple (Cic. Leg. 2.28).",
+   "somnus": "Somnus, personified Sleep (Verg. A. 5.838).",
+   "nox": "Nox, personified Night (Verg. A. 5.721).",
+   "sol": "Sol, the Sun god (*sóh₂wl̥); pie-lex-soh2wl; batch-6 regression case.",
+   "luna": "Luna, the Moon goddess (Varro LL 5.74); pie-lex-lowksneh2.",
+   "aurora": "Aurora, the Dawn goddess (*h₂éwsōs); pie-lex-h2ewsoxs.",
+   "hesperus": "Hesperus, the Evening Star personified (Catul. 62.20).",
+   "uesper": "Vesper, the Evening Star personified (Catul. 62.1).",
+   "auster": "Auster, the South Wind as power.",
+   "terminus": "Terminus, god of boundaries (Ov. F. 2.639).",
+   "manes": "Manes, the deified spirits of the dead (Di Manes).",
+   "liber": "Liber, god of wine and fertility (Roman pantheon); source-tagged as a name."
+  },
+  "sa": {
+   "div": "Dyaus, the Sky-father (*dyḗws); RV dyaúṣ pitā́; pie-lex-dyexws.",
+   "dyaus": "Dyaus, the Sky-father, if lemmatized in the nominative.",
+   "uṣas": "Uṣas, the Dawn goddess (*h₂éwsōs); pie-lex-h2ewsoxs.",
+   "agni": "Agni, god of Fire (*h₁n̥gʷnis); pie-lex-h1ngwnis.",
+   "vāta": "Vāta, the Wind god (*h₂weh₁n̥ts).",
+   "vāyu": "Vāyu, the Wind god (RV 1.2).",
+   "sūrya": "Sūrya, the Sun god (*sóh₂wl̥).",
+   "pṛthivī": "Pṛthivī, Earth as goddess (*pl̥th₂éwih₂); RV dyā́vāpṛthivī́.",
+   "soma": "Soma, the deified sacred drink (RV book 9).",
+   "mitra": "Mitra, god of the covenant (RV 3.59).",
+   "bhaga": "Bhaga, god of the portion (RV 7.41).",
+   "yama": "Yama, god of the dead (RV 10.14).",
+   "parjanya": "Parjanya, god of Thunder and rain (RV 5.83).",
+   "rātri": "Rātrī, personified Night (RV 10.127)."
+  },
+  "non": {
+   "þórr": "Þórr, the Thunder god (*(s)tenh₂-); batch-6 regression case, pie-lex-stenh2.",
+   "þór": "Spelling of Þórr, the Thunder god.",
+   "höðr": "Hǫðr, the god (Gylfaginning 28); name means 'battle'.",
+   "baldr": "Baldr, the god (Gylfaginning 22).",
+   "týr": "Týr, the god (*deywós); not present as a bare lemma in batch 6.",
+   "hel": "Hel, goddess and realm of the dead (Gylfaginning 34).",
+   "áss": "Áss, 'god', one of the Æsir (*h₂énsus).",
+   "guð": "Guð, God (Christian); pie-lex-gjhutos.",
+   "drottinn": "Drottinn, 'the Lord' as the name of God in the IcePaHC religious texts.",
+   "andi": "Andi, the Holy Spirit (heilagr andi) in the IcePaHC religious texts.",
+   "jörð": "Jǫrð, personified Earth, mother of Þórr (Gylfaginning 9); pie-lex-h1erteh2.",
+   "sól": "Sól, personified Sun (Gylfaginning 11); pie-lex-soh2wl.",
+   "máni": "Máni, personified Moon (Gylfaginning 11); pie-lex-mexh1ns.",
+   "dagr": "Dagr, personified Day (Gylfaginning 10); batch-6 regression case.",
+   "dagur": "IcePaHC spelling of Dagr, personified Day.",
+   "nótt": "Nótt, personified Night (Gylfaginning 10).",
+   "óðr": "Óðr, the god, Freyja's husband (Gylfaginning 35); wave-9 reviewed divine exemption (AM-242-fol 55:4)."
+  },
+  "orv": {
+   "дивъ": "Div, the mythic divine being of the Slovo o polku Igoreve (*deywós).",
+   "стрибогъ": "Stribog, god of the winds (Primary Chronicle pantheon of 980)."
+  }
+ },
+ "allowlist_size": {
+  "grc": 24,
+  "la": 23,
+  "sa": 14,
+  "non": 17,
+  "orv": 2,
+  "total": 80
+ },
+ "borderline_decisions": {
+  "Πόντος": {
+   "decision": "name",
+   "reason": "Largest borderline. Personified Sea exists (Hesiod Th. 132), but source-tagged Πόντος in these corpora is overwhelmingly the region Pontus / the Black Sea. Lowercase inherited πόντος is unaffected. Flag for David."
+  },
+  "Νηρεύς": {
+   "decision": "name",
+   "reason": "Sea god, but the exact match is to *nér 'below', a speculative etymology, not the word for a power; root collocates would be false."
+  },
+  "Τρίτων": {
+   "decision": "name",
+   "reason": "Sea god, but the exact match is to *tréyes 'three' (folk link via τρίτος); also a Libyan lake/river in geographers."
+  },
+  "Ῥέα": {
+   "decision": "name",
+   "reason": "Titaness, but the exact match is to *h₁rṓs 'dew, moisture' (folk link to ῥέω); the name has no secure PIE etymology."
+  },
+  "Σεμέλη": {
+   "decision": "name",
+   "reason": "Mortal mother of Dionysus, deified only later; half-deity, decided conservatively (match is earth *dʰéǵʰōm via the Thracian etymology)."
+  },
+  "Μαῖα": {
+   "decision": "name",
+   "reason": "Nymph, mother of Hermes; her name is the common noun 'mother, nurse', not a personified power."
+  },
+  "Ἕως": {
+   "decision": "name",
+   "reason": "Attic dawn word, but the exact match is the conjunction ἕως 'until' (*Hyos): wrong lexeme."
+  },
+  "Δίς": {
+   "decision": "name",
+   "reason": "Exact match is *dwis 'twice': wrong lexeme for any god (Zeus/Dis)."
+  },
+  "Δάν": {
+   "decision": "name",
+   "reason": "Biblical Dan; exact match *dweh₂m is a homograph."
+  },
+  "Πατήρ": {
+   "decision": "name",
+   "reason": "Title/epithet ('Father'), not a theonym; treated like Latin pater/mater and Norse faðir."
+  },
+  "Ἠριδανός": {
+   "decision": "name",
+   "reason": "Mythic river, matched to *déh₂nu 'river'; tokens are mostly the geographic river (Po). Rivers as geography get (name)."
+  },
+  "Στρυμών": {
+   "decision": "name",
+   "reason": "River; listed as a river god in Hesiod, but tokens are the geographic river."
+  },
+  "Πάδος": {
+   "decision": "name",
+   "reason": "River Po (geography)."
+  },
+  "Ῥᾶ": {
+   "decision": "name",
+   "reason": "River Rha (Volga) in geographers; match *h₁rṓs is a homograph."
+  },
+  "Ταῦρος": {
+   "decision": "name",
+   "reason": "Mountain range / constellation / Tauri; not a deity."
+  },
+  "Ἄρκτος": {
+   "decision": "name",
+   "reason": "The constellation Bear / the north; not a deity or personified power."
+  },
+  "Ὀρφεύς": {
+   "decision": "name",
+   "reason": "Mythic singer, mortal hero."
+  },
+  "Μέμνων": {
+   "decision": "name",
+   "reason": "Hero, son of Eos; mortal."
+  },
+  "Δαίδαλος": {
+   "decision": "name",
+   "reason": "Mythic craftsman, mortal."
+  },
+  "Γένεσις": {
+   "decision": "name",
+   "reason": "Book title (Genesis)."
+  },
+  "Ἐλεύθερος": {
+   "decision": "name",
+   "reason": "Personal name / epithet."
+  },
+  "Κόρος": {
+   "decision": "keep",
+   "reason": "Personified Satiety (Hdt. 8.77; Pind. O. 13.10); rare (1-3 tokens per corpus); could be a personal name."
+  },
+  "Μήν": {
+   "decision": "keep",
+   "reason": "Anatolian Moon god Men; the common noun μήν is lowercase and unaffected."
+  },
+  "Λήθη": {
+   "decision": "keep",
+   "reason": "Personified Oblivion; also the mythic river of the dead, still a mythic power."
+  },
+  "Τέρμων": {
+   "decision": "keep",
+   "reason": "Greek rendering of the Roman god Terminus."
+  },
+  "Χθών": {
+   "decision": "keep",
+   "reason": "Personified Earth."
+  },
+  "Δεύς": {
+   "decision": "keep",
+   "reason": "Dialectal Zeus; same Sky-father lexeme."
+  },
+  "hercules": {
+   "decision": "name",
+   "reason": "Deified hero (half-deity); decided conservatively. Its match is the iuvenis 'youth' family, not a power."
+  },
+  "mater": {
+   "decision": "name",
+   "reason": "Title/epithet ('Mother', e.g. Magna Mater), not a theonym by itself."
+  },
+  "pater": {
+   "decision": "name",
+   "reason": "Title/epithet ('Father')."
+  },
+  "dies": {
+   "decision": "name",
+   "reason": "One token; personified Day is marginal in Latin; likely an epithet or mistag."
+  },
+  "lux": {
+   "decision": "name",
+   "reason": "One token; not a Roman deity."
+  },
+  "septentrio": {
+   "decision": "name",
+   "reason": "The seven plough-oxen / north; constellation, not a deity."
+  },
+  "liber": {
+   "decision": "keep",
+   "reason": "The god Liber (source-tagged as a name); the common noun/adjective homographs are not name-tagged."
+  },
+  "manes": {
+   "decision": "keep",
+   "reason": "Di Manes, the deified dead."
+  },
+  "волосъ": {
+   "decision": "name",
+   "reason": "The god Volos, but the exact match is *h₂wĺ̥h₁ḱos 'wolf': wrong lexeme."
+  },
+  "сѣверъ": {
+   "decision": "name",
+   "reason": "North / the Severiane tribe; not personified."
+  },
+  "дунаи": {
+   "decision": "name",
+   "reason": "Danube (geography); matched to *déh₂nu 'river'."
+  },
+  "бугъ": {
+   "decision": "name",
+   "reason": "River Bug (geography)."
+  },
+  "стрибогъ": {
+   "decision": "keep",
+   "reason": "Wind god of the 980 pantheon; match *srew- 'flow' is the production exact route."
+  },
+  "дивъ": {
+   "decision": "keep",
+   "reason": "Div, mythic divine being (*deywós)."
+  },
+  "drottinn": {
+   "decision": "keep",
+   "reason": "'The Lord' as the name of God in religious texts; a deity reference whose root is its meaning."
+  },
+  "andi": {
+   "decision": "keep",
+   "reason": "The Holy Spirit (heilagr andi) in religious texts."
+  },
+  "faðir": {
+   "decision": "name",
+   "reason": "Title ('Father') or kinship mistag; consistent with Greek Πατήρ, Latin pater."
+  },
+  "sonur": {
+   "decision": "name",
+   "reason": "Title ('Son') or kinship mistag."
+  },
+  "himinn": {
+   "decision": "name",
+   "reason": "Heaven as a place in these texts; no personified Norse Sky god."
+  },
+  "haf": {
+   "decision": "name",
+   "reason": "Sea as a place name/element; not personified."
+  },
+  "sumar": {
+   "decision": "name",
+   "reason": "Season word name-tagged; not personified here."
+  },
+  "stjarna": {
+   "decision": "name",
+   "reason": "Star; not a deity."
+  },
+  "ás": {
+   "decision": "name",
+   "reason": "IcePaHC Ás is ambiguous with the place/farm name 'ridge'; Menota áss 'god' keeps."
+  },
+  "mars": {
+   "decision": "name",
+   "reason": "Match is horse/sea (*markos, *mori): wrong lexeme for Roman Mars."
+  },
+  "gunnr": {
+   "decision": "name",
+   "reason": "Valkyrie name 'battle', but also a woman's name element; decided conservatively."
+  },
+  "glámur": {
+   "decision": "name",
+   "reason": "Glámr is a revenant (draugr), not a deity."
+  },
+  "álfur": {
+   "decision": "name",
+   "reason": "Personal name Álfr; elves are not individual deities."
+  },
+  "askur": {
+   "decision": "name",
+   "reason": "Askr, the first man; not a deity."
+  },
+  "gróa": {
+   "decision": "name",
+   "reason": "Gróa, a seeress (völva); human/mythic woman, not a deity."
+  },
+  "hann": {
+   "decision": "name",
+   "reason": "Pronoun mis-tagged NPR; loses roots correctly (also þetta, ég, þú, þér, sá, vér, mér, hún, tveir)."
+  }
+ },
+ "census_classification": {
+  "hom": {
+   "Βορέας": [
+    "keep",
+    "Boreas, the North Wind as god (Hesiod Th. 379); a personified wind."
+   ],
+   "Δαίδαλος": [
+    "name",
+    "Mythic craftsman, mortal."
+   ],
+   "Εὖρος": [
+    "keep",
+    "Euros, the East Wind as power (Il. 2.145, Od. 5.295 wind catalogue)."
+   ],
+   "Ζεύς": [
+    "keep",
+    "Zeus, the Sky-father (*dyḗws); handbook (West 2007 ch. 4), project lexicon pie-lex-dyexws."
+   ],
+   "Μέμνων": [
+    "name",
+    "Hero, son of Eos; mortal."
+   ],
+   "Μέντωρ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Σεμέλη": [
+    "name",
+    "Mortal mother of Dionysus, deified only later; half-deity, decided conservatively (match is earth *dʰéǵʰōm via the Thracian etymology)."
+   ],
+   "Φόβος": [
+    "keep",
+    "Phobos, personified Fear, companion of Ares (Il. 4.440, 13.299)."
+   ],
+   "Ἀΐδης": [
+    "keep",
+    "Hades, god of the dead (Il. 15.188); David's example, keep."
+   ],
+   "Ἄκτωρ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἔρεβος": [
+    "keep",
+    "Erebos, personified primeval Darkness (Hesiod Th. 123); David's example, keep."
+   ],
+   "Ἕλος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἥβη": [
+    "keep",
+    "Hebe, goddess and personified Youth (Il. 4.2; Hesiod Th. 922)."
+   ],
+   "Ὥρα": [
+    "keep",
+    "the Hours (Ὧραι), goddesses of the seasons (Il. 5.749; Hesiod Th. 901)."
+   ],
+   "Ῥέα": [
+    "name",
+    "Titaness, but the exact match is to *h₁rṓs 'dew, moisture' (folk link to ῥέω); the name has no secure PIE etymology."
+   ]
+  },
+  "lat": {
+   "ancus": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "aurora": [
+    "keep",
+    "Aurora, the Dawn goddess (*h₂éwsōs); pie-lex-h2ewsoxs."
+   ],
+   "auster": [
+    "keep",
+    "Auster, the South Wind as power."
+   ],
+   "cancer": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "cara": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "ceres": [
+    "keep",
+    "Ceres, goddess of grain (Roman pantheon)."
+   ],
+   "curculio": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "diana": [
+    "keep",
+    "Diana, goddess (Roman pantheon; from *dyew- 'bright sky')."
+   ],
+   "dies": [
+    "name",
+    "One token; personified Day is marginal in Latin; likely an epithet or mistag."
+   ],
+   "diespiter": [
+    "keep",
+    "Diespiter, archaic name of Jupiter as Sky-father; pie-lex-dyexws."
+   ],
+   "flora": [
+    "keep",
+    "Flora, goddess of flowering (Varro LL 5.74)."
+   ],
+   "fors": [
+    "keep",
+    "Fors (Fors Fortuna), personified Chance as goddess."
+   ],
+   "fortuna": [
+    "keep",
+    "Fortuna, goddess and personified Fortune."
+   ],
+   "hercules": [
+    "name",
+    "Deified hero (half-deity); decided conservatively. Its match is the iuvenis 'youth' family, not a power."
+   ],
+   "hesperus": [
+    "keep",
+    "Hesperus, the Evening Star personified (Catul. 62.20)."
+   ],
+   "iuppiter": [
+    "keep",
+    "Jupiter, the Sky-father (*dyḗws ph₂tḗr); pie-lex-dyexws."
+   ],
+   "liber": [
+    "keep",
+    "The god Liber (source-tagged as a name); the common noun/adjective homographs are not name-tagged."
+   ],
+   "luna": [
+    "keep",
+    "Luna, the Moon goddess (Varro LL 5.74); pie-lex-lowksneh2."
+   ],
+   "lux": [
+    "name",
+    "One token; not a Roman deity."
+   ],
+   "manes": [
+    "keep",
+    "Di Manes, the deified dead."
+   ],
+   "mater": [
+    "name",
+    "Title/epithet ('Mother', e.g. Magna Mater), not a theonym by itself."
+   ],
+   "minerua": [
+    "keep",
+    "Minerva, goddess (Roman pantheon)."
+   ],
+   "neptunus": [
+    "keep",
+    "Neptune, god of the sea (Roman pantheon)."
+   ],
+   "nola": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "nox": [
+    "keep",
+    "Nox, personified Night (Verg. A. 5.721)."
+   ],
+   "pater": [
+    "name",
+    "Title/epithet ('Father')."
+   ],
+   "piso": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "plautus": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "pompeii": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "pompeius": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "quirites": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "remus": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "rhenus": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "scortum": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "septentrio": [
+    "name",
+    "The seven plough-oxen / north; constellation, not a deity."
+   ],
+   "septimius": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "sermo": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "sol": [
+    "keep",
+    "Sol, the Sun god (*sóh₂wl̥); pie-lex-soh2wl; batch-6 regression case."
+   ],
+   "somnus": [
+    "keep",
+    "Somnus, personified Sleep (Verg. A. 5.838)."
+   ],
+   "spes": [
+    "keep",
+    "Spes, deified Hope with a Roman temple (Cic. Leg. 2.28)."
+   ],
+   "taurus": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "terminus": [
+    "keep",
+    "Terminus, god of boundaries (Ov. F. 2.639)."
+   ],
+   "uenus": [
+    "keep",
+    "Venus, goddess (Roman pantheon)."
+   ],
+   "uesper": [
+    "keep",
+    "Vesper, the Evening Star personified (Catul. 62.1)."
+   ],
+   "uirtus": [
+    "keep",
+    "Virtus, deified Valour with a Roman temple (Cic. Leg. 2.28)."
+   ]
+  },
+  "av": {},
+  "sa-ep": {},
+  "grc": {
+   "Βορέας": [
+    "keep",
+    "Boreas, the North Wind as god (Hesiod Th. 379); a personified wind."
+   ],
+   "Δίκη": [
+    "keep",
+    "Dike, goddess and personified Justice (Hesiod Th. 902, Op. 256)."
+   ],
+   "Δαίδαλος": [
+    "name",
+    "Mythic craftsman, mortal."
+   ],
+   "Δεύς": [
+    "keep",
+    "Dialectal Zeus; same Sky-father lexeme."
+   ],
+   "Ζεύς": [
+    "keep",
+    "Zeus, the Sky-father (*dyḗws); handbook (West 2007 ch. 4), project lexicon pie-lex-dyexws."
+   ],
+   "ΘΩ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Καρδία": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Κατάνη": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Καύκασος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Κολοφών": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Κολωνός": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Κόρος": [
+    "keep",
+    "Personified Satiety (Hdt. 8.77; Pind. O. 13.10); rare (1-3 tokens per corpus); could be a personal name."
+   ],
+   "Κώρυκος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Λήθη": [
+    "keep",
+    "Personified Oblivion; also the mythic river of the dead, still a mythic power."
+   ],
+   "Μέλισσα": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Μέμνων": [
+    "name",
+    "Hero, son of Eos; mortal."
+   ],
+   "Μέντωρ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Μήνη": [
+    "keep",
+    "Mene/Selene, the Moon as goddess (H. Herm. 99-100); pie-lex-mexh1ns."
+   ],
+   "Μαῖα": [
+    "name",
+    "Nymph, mother of Hermes; her name is the common noun 'mother, nurse', not a personified power."
+   ],
+   "Μνημοσύνη": [
+    "keep",
+    "Mnemosyne, Titaness and personified Memory (Hesiod Th. 54, 135)."
+   ],
+   "Νεμέα": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Νηρεύς": [
+    "name",
+    "Sea god, but the exact match is to *nér 'below', a speculative etymology, not the word for a power; root collocates would be false."
+   ],
+   "Νύξ": [
+    "keep",
+    "Nyx, personified Night (Il. 14.259; Hesiod Th. 123)."
+   ],
+   "Πάρος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Πορθμός": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Πόντος": [
+    "name",
+    "Largest borderline. Personified Sea exists (Hesiod Th. 132), but source-tagged Πόντος in these corpora is overwhelmingly the region Pontus / the Black Sea. Lowercase inherited πόντος is unaffected. Flag for David."
+   ],
+   "Σεμέλη": [
+    "name",
+    "Mortal mother of Dionysus, deified only later; half-deity, decided conservatively (match is earth *dʰéǵʰōm via the Thracian etymology)."
+   ],
+   "Στρυμών": [
+    "name",
+    "River; listed as a river god in Hesiod, but tokens are the geographic river."
+   ],
+   "Τέως": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ταῦρος": [
+    "name",
+    "Mountain range / constellation / Tauri; not a deity."
+   ],
+   "Τρίτων": [
+    "name",
+    "Sea god, but the exact match is to *tréyes 'three' (folk link via τρίτος); also a Libyan lake/river in geographers."
+   ],
+   "Φυλή": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Χθών": [
+    "keep",
+    "Personified Earth."
+   ],
+   "Ἀΐδης": [
+    "keep",
+    "Hades, god of the dead (Il. 15.188); David's example, keep."
+   ],
+   "Ἀκάδημος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἀπατούρια": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἄγρα": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἄκτωρ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἄρκτος": [
+    "name",
+    "The constellation Bear / the north; not a deity or personified power."
+   ],
+   "Ἔννα": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἔρεβος": [
+    "keep",
+    "Erebos, personified primeval Darkness (Hesiod Th. 123); David's example, keep."
+   ],
+   "Ἕλος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἕσπερος": [
+    "keep",
+    "Hesperos, the Evening Star as god (Il. 22.318); pie-lex-wekwsperos."
+   ],
+   "Ἕως": [
+    "name",
+    "Attic dawn word, but the exact match is the conjunction ἕως 'until' (*Hyos): wrong lexeme."
+   ],
+   "Ἠριδανός": [
+    "name",
+    "Mythic river, matched to *déh₂nu 'river'; tokens are mostly the geographic river (Po). Rivers as geography get (name)."
+   ],
+   "Ἠώς": [
+    "keep",
+    "Eos, the Dawn goddess (*h₂éwsōs); handbook (West 2007 ch. 5), pie-lex-h2ewsoxs."
+   ],
+   "Ἥβη": [
+    "keep",
+    "Hebe, goddess and personified Youth (Il. 4.2; Hesiod Th. 922)."
+   ],
+   "Ἥλιος": [
+    "keep",
+    "Helios, the Sun god (*sóh₂wl̥); pie-lex-soh2wl."
+   ],
+   "Ἱέραξ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ὀρφεύς": [
+    "name",
+    "Mythic singer, mortal hero."
+   ],
+   "Ὕπνος": [
+    "keep",
+    "Hypnos, personified Sleep (Il. 14.231; Hesiod Th. 212); pie-lex-supnos."
+   ],
+   "Ὠλήν": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ὥρα": [
+    "keep",
+    "the Hours (Ὧραι), goddesses of the seasons (Il. 5.749; Hesiod Th. 901)."
+   ],
+   "Ῥέα": [
+    "name",
+    "Titaness, but the exact match is to *h₁rṓs 'dew, moisture' (folk link to ῥέω); the name has no secure PIE etymology."
+   ],
+   "Ῥήβας": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ]
+  },
+  "grc-late": {
+   "Βορέας": [
+    "keep",
+    "Boreas, the North Wind as god (Hesiod Th. 379); a personified wind."
+   ],
+   "Βύζας": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Γένεσις": [
+    "name",
+    "Book title (Genesis)."
+   ],
+   "Δάν": [
+    "name",
+    "Biblical Dan; exact match *dweh₂m is a homograph."
+   ],
+   "Δίκη": [
+    "keep",
+    "Dike, goddess and personified Justice (Hesiod Th. 902, Op. 256)."
+   ],
+   "Δίς": [
+    "name",
+    "Exact match is *dwis 'twice': wrong lexeme for any god (Zeus/Dis)."
+   ],
+   "Δαίδαλος": [
+    "name",
+    "Mythic craftsman, mortal."
+   ],
+   "Δεύς": [
+    "keep",
+    "Dialectal Zeus; same Sky-father lexeme."
+   ],
+   "Εὖρος": [
+    "keep",
+    "Euros, the East Wind as power (Il. 2.145, Od. 5.295 wind catalogue)."
+   ],
+   "Ζεύς": [
+    "keep",
+    "Zeus, the Sky-father (*dyḗws); handbook (West 2007 ch. 4), project lexicon pie-lex-dyexws."
+   ],
+   "ΘΩ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Καρδία": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Κατάνη": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Καύκασος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Κολοφών": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Κολωνός": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Κόρος": [
+    "keep",
+    "Personified Satiety (Hdt. 8.77; Pind. O. 13.10); rare (1-3 tokens per corpus); could be a personal name."
+   ],
+   "Κώρυκος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Λήθη": [
+    "keep",
+    "Personified Oblivion; also the mythic river of the dead, still a mythic power."
+   ],
+   "Μέλισσα": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Μέμνων": [
+    "name",
+    "Hero, son of Eos; mortal."
+   ],
+   "Μέντωρ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Μήν": [
+    "keep",
+    "Anatolian Moon god Men; the common noun μήν is lowercase and unaffected."
+   ],
+   "Μήνη": [
+    "keep",
+    "Mene/Selene, the Moon as goddess (H. Herm. 99-100); pie-lex-mexh1ns."
+   ],
+   "Μαῖα": [
+    "name",
+    "Nymph, mother of Hermes; her name is the common noun 'mother, nurse', not a personified power."
+   ],
+   "Μελιτηνή": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Μνημοσύνη": [
+    "keep",
+    "Mnemosyne, Titaness and personified Memory (Hesiod Th. 54, 135)."
+   ],
+   "Νεμέα": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Νηρεύς": [
+    "name",
+    "Sea god, but the exact match is to *nér 'below', a speculative etymology, not the word for a power; root collocates would be false."
+   ],
+   "Νύξ": [
+    "keep",
+    "Nyx, personified Night (Il. 14.259; Hesiod Th. 123)."
+   ],
+   "Πάδος": [
+    "name",
+    "River Po (geography)."
+   ],
+   "Πάρος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Πατήρ": [
+    "name",
+    "Title/epithet ('Father'), not a theonym; treated like Latin pater/mater and Norse faðir."
+   ],
+   "Πορθμός": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Πόντος": [
+    "name",
+    "Largest borderline. Personified Sea exists (Hesiod Th. 132), but source-tagged Πόντος in these corpora is overwhelmingly the region Pontus / the Black Sea. Lowercase inherited πόντος is unaffected. Flag for David."
+   ],
+   "Σάος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Σεμέλη": [
+    "name",
+    "Mortal mother of Dionysus, deified only later; half-deity, decided conservatively (match is earth *dʰéǵʰōm via the Thracian etymology)."
+   ],
+   "Σκίλουρος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Στρυμών": [
+    "name",
+    "River; listed as a river god in Hesiod, but tokens are the geographic river."
+   ],
+   "Τέρμων": [
+    "keep",
+    "Greek rendering of the Roman god Terminus."
+   ],
+   "Τέως": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ταῦρος": [
+    "name",
+    "Mountain range / constellation / Tauri; not a deity."
+   ],
+   "Τρίτων": [
+    "name",
+    "Sea god, but the exact match is to *tréyes 'three' (folk link via τρίτος); also a Libyan lake/river in geographers."
+   ],
+   "Φυλή": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Φόβος": [
+    "keep",
+    "Phobos, personified Fear, companion of Ares (Il. 4.440, 13.299)."
+   ],
+   "Ἀΐδης": [
+    "keep",
+    "Hades, god of the dead (Il. 15.188); David's example, keep."
+   ],
+   "Ἀκάδημος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἀπατούρια": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἄγρα": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἄκτωρ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἄρκτος": [
+    "name",
+    "The constellation Bear / the north; not a deity or personified power."
+   ],
+   "Ἅρμα": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἐλεύθερος": [
+    "name",
+    "Personal name / epithet."
+   ],
+   "Ἔννα": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἔρεβος": [
+    "keep",
+    "Erebos, personified primeval Darkness (Hesiod Th. 123); David's example, keep."
+   ],
+   "Ἕλος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἕσπερος": [
+    "keep",
+    "Hesperos, the Evening Star as god (Il. 22.318); pie-lex-wekwsperos."
+   ],
+   "Ἕως": [
+    "name",
+    "Attic dawn word, but the exact match is the conjunction ἕως 'until' (*Hyos): wrong lexeme."
+   ],
+   "Ἠριδανός": [
+    "name",
+    "Mythic river, matched to *déh₂nu 'river'; tokens are mostly the geographic river (Po). Rivers as geography get (name)."
+   ],
+   "Ἠώς": [
+    "keep",
+    "Eos, the Dawn goddess (*h₂éwsōs); handbook (West 2007 ch. 5), pie-lex-h2ewsoxs."
+   ],
+   "Ἥβη": [
+    "keep",
+    "Hebe, goddess and personified Youth (Il. 4.2; Hesiod Th. 922)."
+   ],
+   "Ἥλιος": [
+    "keep",
+    "Helios, the Sun god (*sóh₂wl̥); pie-lex-soh2wl."
+   ],
+   "Ἰλλυρία": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἱέραξ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἴδμων": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ὀρφεύς": [
+    "name",
+    "Mythic singer, mortal hero."
+   ],
+   "Ὕπνος": [
+    "keep",
+    "Hypnos, personified Sleep (Il. 14.231; Hesiod Th. 212); pie-lex-supnos."
+   ],
+   "Ὠλήν": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ὥρα": [
+    "keep",
+    "the Hours (Ὧραι), goddesses of the seasons (Il. 5.749; Hesiod Th. 901)."
+   ],
+   "Ῥέα": [
+    "name",
+    "Titaness, but the exact match is to *h₁rṓs 'dew, moisture' (folk link to ῥέω); the name has no secure PIE etymology."
+   ],
+   "Ῥήβας": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ῥᾶ": [
+    "name",
+    "River Rha (Volga) in geographers; match *h₁rṓs is a homograph."
+   ]
+  },
+  "grp": {
+   "Βορέας": [
+    "keep",
+    "Boreas, the North Wind as god (Hesiod Th. 379); a personified wind."
+   ],
+   "Δίκη": [
+    "keep",
+    "Dike, goddess and personified Justice (Hesiod Th. 902, Op. 256)."
+   ],
+   "Δαίδαλος": [
+    "name",
+    "Mythic craftsman, mortal."
+   ],
+   "Ζεύς": [
+    "keep",
+    "Zeus, the Sky-father (*dyḗws); handbook (West 2007 ch. 4), project lexicon pie-lex-dyexws."
+   ],
+   "Καύκασος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Κολοφών": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Κολωνός": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Κόρος": [
+    "keep",
+    "Personified Satiety (Hdt. 8.77; Pind. O. 13.10); rare (1-3 tokens per corpus); could be a personal name."
+   ],
+   "Κώρυκος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Λήθη": [
+    "keep",
+    "Personified Oblivion; also the mythic river of the dead, still a mythic power."
+   ],
+   "Μέμνων": [
+    "name",
+    "Hero, son of Eos; mortal."
+   ],
+   "Μήνη": [
+    "keep",
+    "Mene/Selene, the Moon as goddess (H. Herm. 99-100); pie-lex-mexh1ns."
+   ],
+   "Μαῖα": [
+    "name",
+    "Nymph, mother of Hermes; her name is the common noun 'mother, nurse', not a personified power."
+   ],
+   "Μνημοσύνη": [
+    "keep",
+    "Mnemosyne, Titaness and personified Memory (Hesiod Th. 54, 135)."
+   ],
+   "Νεμέα": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Νηρεύς": [
+    "name",
+    "Sea god, but the exact match is to *nér 'below', a speculative etymology, not the word for a power; root collocates would be false."
+   ],
+   "Νύξ": [
+    "keep",
+    "Nyx, personified Night (Il. 14.259; Hesiod Th. 123)."
+   ],
+   "Πάρος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Πόντος": [
+    "name",
+    "Largest borderline. Personified Sea exists (Hesiod Th. 132), but source-tagged Πόντος in these corpora is overwhelmingly the region Pontus / the Black Sea. Lowercase inherited πόντος is unaffected. Flag for David."
+   ],
+   "Σεμέλη": [
+    "name",
+    "Mortal mother of Dionysus, deified only later; half-deity, decided conservatively (match is earth *dʰéǵʰōm via the Thracian etymology)."
+   ],
+   "Στρυμών": [
+    "name",
+    "River; listed as a river god in Hesiod, but tokens are the geographic river."
+   ],
+   "Τέως": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ταῦρος": [
+    "name",
+    "Mountain range / constellation / Tauri; not a deity."
+   ],
+   "Τρίτων": [
+    "name",
+    "Sea god, but the exact match is to *tréyes 'three' (folk link via τρίτος); also a Libyan lake/river in geographers."
+   ],
+   "Χθών": [
+    "keep",
+    "Personified Earth."
+   ],
+   "Ἀΐδης": [
+    "keep",
+    "Hades, god of the dead (Il. 15.188); David's example, keep."
+   ],
+   "Ἀκάδημος": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἄκτωρ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "Ἄρκτος": [
+    "name",
+    "The constellation Bear / the north; not a deity or personified power."
+   ],
+   "Ἔρεβος": [
+    "keep",
+    "Erebos, personified primeval Darkness (Hesiod Th. 123); David's example, keep."
+   ],
+   "Ἕσπερος": [
+    "keep",
+    "Hesperos, the Evening Star as god (Il. 22.318); pie-lex-wekwsperos."
+   ],
+   "Ἕως": [
+    "name",
+    "Attic dawn word, but the exact match is the conjunction ἕως 'until' (*Hyos): wrong lexeme."
+   ],
+   "Ἠριδανός": [
+    "name",
+    "Mythic river, matched to *déh₂nu 'river'; tokens are mostly the geographic river (Po). Rivers as geography get (name)."
+   ],
+   "Ἠώς": [
+    "keep",
+    "Eos, the Dawn goddess (*h₂éwsōs); handbook (West 2007 ch. 5), pie-lex-h2ewsoxs."
+   ],
+   "Ἥβη": [
+    "keep",
+    "Hebe, goddess and personified Youth (Il. 4.2; Hesiod Th. 922)."
+   ],
+   "Ἥλιος": [
+    "keep",
+    "Helios, the Sun god (*sóh₂wl̥); pie-lex-soh2wl."
+   ],
+   "Ὀρφεύς": [
+    "name",
+    "Mythic singer, mortal hero."
+   ],
+   "Ὕπνος": [
+    "keep",
+    "Hypnos, personified Sleep (Il. 14.231; Hesiod Th. 212); pie-lex-supnos."
+   ],
+   "Ὥρα": [
+    "keep",
+    "the Hours (Ὧραι), goddesses of the seasons (Il. 5.749; Hesiod Th. 901)."
+   ],
+   "Ῥέα": [
+    "name",
+    "Titaness, but the exact match is to *h₁rṓs 'dew, moisture' (folk link to ῥέω); the name has no secure PIE etymology."
+   ]
+  },
+  "orv": {
+   "блудъ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "боръ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "бугъ": [
+    "name",
+    "River Bug (geography)."
+   ],
+   "весь": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "воинъ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "волосъ": [
+    "name",
+    "The god Volos, but the exact match is *h₂wĺ̥h₁ḱos 'wolf': wrong lexeme."
+   ],
+   "вьрхъ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "дивъ": [
+    "keep",
+    "Div, mythic divine being (*deywós)."
+   ],
+   "дунаи": [
+    "name",
+    "Danube (geography); matched to *déh₂nu 'river'."
+   ],
+   "кыи": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "малъ": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "семь": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "стрибогъ": [
+    "keep",
+    "Wind god of the 980 pantheon; match *srew- 'flow' is the production exact route."
+   ],
+   "сѣверъ": [
+    "name",
+    "North / the Severiane tribe; not personified."
+   ]
+  },
+  "menota": {
+   "Guð": [
+    "keep",
+    "Guð, God (Christian); pie-lex-gjhutos."
+   ],
+   "Hǫðr": [
+    "keep",
+    "Hǫðr, the god (Gylfaginning 28); name means 'battle'."
+   ],
+   "ari": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "baugr": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "borg": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "bót": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "faðir": [
+    "name",
+    "Title ('Father') or kinship mistag; consistent with Greek Πατήρ, Latin pater."
+   ],
+   "gaukr": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "geirr": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "gríma": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "gróa": [
+    "name",
+    "Gróa, a seeress (völva); human/mythic woman, not a deity."
+   ],
+   "gunnr": [
+    "name",
+    "Valkyrie name 'battle', but also a woman's name element; decided conservatively."
+   ],
+   "hel": [
+    "keep",
+    "Hel, goddess and realm of the dead (Gylfaginning 34)."
+   ],
+   "hjalmr": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "hlíf": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "karl": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "kýr": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "langr": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "ljótr": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "mars": [
+    "name",
+    "Match is horse/sea (*markos, *mori): wrong lexeme for Roman Mars."
+   ],
+   "mǫn": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "naðr": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "oddi": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "rauðr": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "skjǫldr": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "skíð": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "steinn": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "stúfr": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "svartr": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "súrr": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "una": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "uxi": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "áll": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "áss": [
+    "keep",
+    "Áss, 'god', one of the Æsir (*h₂énsus)."
+   ],
+   "þórr": [
+    "keep",
+    "Þórr, the Thunder god (*(s)tenh₂-); batch-6 regression case, pie-lex-stenh2."
+   ],
+   "ǫrn": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ]
+  },
+  "icepahc": {
+   "akur": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "andi": [
+    "keep",
+    "The Holy Spirit (heilagr andi) in religious texts."
+   ],
+   "ari": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "askur": [
+    "name",
+    "Askr, the first man; not a deity."
+   ],
+   "bakki": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "berg": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "bjarg": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "bleikur": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "blundur": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "borg": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "bróðir": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "brún": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "brúnn": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "börkur": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "dagur": [
+    "keep",
+    "IcePaHC spelling of Dagr, personified Day."
+   ],
+   "drottinn": [
+    "keep",
+    "'The Lord' as the name of God in religious texts; a deity reference whose root is its meaning."
+   ],
+   "eilífur": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "faðir": [
+    "name",
+    "Title ('Father') or kinship mistag; consistent with Greek Πατήρ, Latin pater."
+   ],
+   "fell": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "fiður": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "fljót": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "flói": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "foss": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "gangur": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "garður": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "glámur": [
+    "name",
+    "Glámr is a revenant (draugr), not a deity."
+   ],
+   "guð": [
+    "keep",
+    "Guð, God (Christian); pie-lex-gjhutos."
+   ],
+   "gála": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "gæs": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "haf": [
+    "name",
+    "Sea as a place name/element; not personified."
+   ],
+   "halla": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "halli": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "hann": [
+    "name",
+    "Pronoun mis-tagged NPR; loses roots correctly (also þetta, ég, þú, þér, sá, vér, mér, hún, tveir)."
+   ],
+   "haust": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "hel": [
+    "keep",
+    "Hel, goddess and realm of the dead (Gylfaginning 34)."
+   ],
+   "hersir": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "himinn": [
+    "name",
+    "Heaven as a place in these texts; no personified Norse Sky god."
+   ],
+   "hjálmur": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "hlíð": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "hof": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "holt": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "horn": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "hraun": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "hólmur": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "hún": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "iða": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "jörð": [
+    "keep",
+    "Jǫrð, personified Earth, mother of Þórr (Gylfaginning 9); pie-lex-h1erteh2."
+   ],
+   "karl": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "kinn": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "kol": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "ljótur": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "loft": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "loðinn": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "maður": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "máni": [
+    "keep",
+    "Máni, personified Moon (Gylfaginning 11); pie-lex-mexh1ns."
+   ],
+   "mæri": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "mér": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "mörk": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "mýrar": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "mýri": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "oddi": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "orri": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "rauður": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "selja": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "sigur": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "skalli": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "skjálgur": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "skuggi": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "skál": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "skíði": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "sonur": [
+    "name",
+    "Title ('Son') or kinship mistag."
+   ],
+   "spaði": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "staður": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "steinn": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "stjarna": [
+    "name",
+    "Star; not a deity."
+   ],
+   "stúfur": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "sumar": [
+    "name",
+    "Season word name-tagged; not personified here."
+   ],
+   "svartur": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "sveinn": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "sá": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "séra": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "sól": [
+    "keep",
+    "Sól, personified Sun (Gylfaginning 11); pie-lex-soh2wl."
+   ],
+   "tunga": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "tveir": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "uxi": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "vali": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "vatn": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "veggur": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "vog": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "vér": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "wór": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "álfur": [
+    "name",
+    "Personal name Álfr; elves are not individual deities."
+   ],
+   "ás": [
+    "name",
+    "IcePaHC Ás is ambiguous with the place/farm name 'ridge'; Menota áss 'god' keeps."
+   ],
+   "æsa": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "ég": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "óreiða": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "ósk": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "ótta": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "önd": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "örn": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "þetta": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "þér": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ],
+   "þú": [
+    "name",
+    "Ordinary personal, place, people, festival or other name (or mistag); not a deity or personified power."
+   ]
+  }
+ },
+ "notes": [
+  "av and sa-ep: no source-tagged name was kept by the batch-6 gate (DCS does not name-tag the Vedic theonyms in these selections), so nothing changes; the Sanskrit allowlist is preventive and unit-tested (div, uṣas).",
+  "óðr was added after the first after-run to honour the wave-9 reviewed divine exemption (tests/test_mapping_norse_w9.py); it was not in the census, and Menota was re-run.",
+  "IcePaHC pronouns and numerals mis-tagged NPR (hann, þetta, ég, þú, þér, sá, vér, mér, hún, tveir) lose roots; this is a correction, not a deity loss.",
+  "Πόντος changes a batch-6 test expectation (tests/test_stagecs_w6_other.py); flagged for David as the largest borderline."
+ ],
+ "whole_corpus_diff": {
+  "seed": 6026,
+  "corpora": {
+   "hom": {
+    "tokens": 200145,
+    "changed_tokens": 31,
+    "census_exact_name_lemmas": 15,
+    "census_allowlisted": [
+     "Βορέας",
+     "Εὖρος",
+     "Ζεύς",
+     "Φόβος",
+     "Ἀΐδης",
+     "Ἔρεβος",
+     "Ἥβη",
+     "Ὥρα"
+    ],
+    "census_now_qualified": [
+     "Δαίδαλος",
+     "Μέμνων",
+     "Μέντωρ",
+     "Σεμέλη",
+     "Ἄκτωρ",
+     "Ἕλος",
+     "Ῥέα"
+    ],
+    "lost_roots_tokens": 31,
+    "lost_roots_lemma_counts": {
+     "Μέντωρ": 20,
+     "Ἄκτωρ": 3,
+     "Ῥέα": 2,
+     "Σεμέλη": 2,
+     "Ἕλος": 2,
+     "Δαίδαλος": 1,
+     "Μέμνων": 1
+    },
+    "regained_tokens": 0,
+    "deity_tokens_lost_roots": 0,
+    "kept_census_lemma_token_counts": {
+     "Ζεύς": 696,
+     "Βορέας": 25,
+     "Ἀΐδης": 12,
+     "Ἔρεβος": 7,
+     "Εὖρος": 6,
+     "Ἥβη": 4,
+     "Φόβος": 1,
+     "Ὥρα": 1
+    },
+    "lost_roots_sample_30": [
+     {
+      "index": 56451,
+      "lemma": "Ἕλος",
+      "form": "Ἕλος",
+      "locus": "Il. 2.594",
+      "before": [
+       "Ἕλος",
+       true,
+       "noun",
+       [
+        "pie-lex-selos"
+       ]
+      ],
+      "after": [
+       "Ἕλος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 14319,
+      "lemma": "Ἄκτωρ",
+      "form": "Ἄκτορος",
+      "locus": "Il. 11.785",
+      "before": [
+       "Ἄκτωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-h2egjtoxr"
+       ]
+      ],
+      "after": [
+       "Ἄκτωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 173292,
+      "lemma": "Μέντωρ",
+      "form": "Μέντορι",
+      "locus": "Od. 24.503",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 49063,
+      "lemma": "Δαίδαλος",
+      "form": "Δαίδαλος",
+      "locus": "Il. 18.592",
+      "before": [
+       "Δαίδαλος",
+       true,
+       "noun",
+       [
+        "pie-lex-deldelh1o"
+       ]
+      ],
+      "after": [
+       "Δαίδαλος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 25524,
+      "lemma": "Ῥέα",
+      "form": "Ῥείας",
+      "locus": "Il. 14.203",
+      "before": [
+       "Ῥέα",
+       true,
+       "noun",
+       [
+        "pie-lex-h1roxs"
+       ]
+      ],
+      "after": [
+       "Ῥέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 172951,
+      "lemma": "Μέντωρ",
+      "form": "Μέντορι",
+      "locus": "Od. 24.456",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 181950,
+      "lemma": "Μέντωρ",
+      "form": "Μέντορα",
+      "locus": "Od. 4.654",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 156182,
+      "lemma": "Μέντωρ",
+      "form": "Μέντωρ",
+      "locus": "Od. 2.253",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 164916,
+      "lemma": "Μέντωρ",
+      "form": "Μέντορ",
+      "locus": "Od. 22.208",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 181963,
+      "lemma": "Μέντωρ",
+      "form": "Μέντορα",
+      "locus": "Od. 4.655",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 19313,
+      "lemma": "Μέντωρ",
+      "form": "Μέντορος",
+      "locus": "Il. 13.171",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 29210,
+      "lemma": "Ῥέα",
+      "form": "Ῥέα",
+      "locus": "Il. 15.187",
+      "before": [
+       "Ῥέα",
+       true,
+       "noun",
+       [
+        "pie-lex-h1roxs"
+       ]
+      ],
+      "after": [
+       "Ῥέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 164949,
+      "lemma": "Μέντωρ",
+      "form": "Μέντορ",
+      "locus": "Od. 22.213",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 142895,
+      "lemma": "Μέντωρ",
+      "form": "Μέντωρ",
+      "locus": "Od. 17.68",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 55918,
+      "lemma": "Ἄκτωρ",
+      "form": "Ἄκτορος",
+      "locus": "Il. 2.513",
+      "before": [
+       "Ἄκτωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-h2egjtoxr"
+       ]
+      ],
+      "after": [
+       "Ἄκτωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 173767,
+      "lemma": "Μέντωρ",
+      "form": "Μέντορ",
+      "locus": "Od. 3.22",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 26398,
+      "lemma": "Σεμέλη",
+      "form": "Σεμέλη",
+      "locus": "Il. 14.325",
+      "before": [
+       "Σεμέλη",
+       true,
+       "noun",
+       [
+        "pie-lex-dhegjhoxm"
+       ]
+      ],
+      "after": [
+       "Σεμέλη (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 33282,
+      "lemma": "Ἄκτωρ",
+      "form": "Ἄκτορος",
+      "locus": "Il. 16.14",
+      "before": [
+       "Ἄκτωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-h2egjtoxr"
+       ]
+      ],
+      "after": [
+       "Ἄκτωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 165204,
+      "lemma": "Μέντωρ",
+      "form": "Μέντωρ",
+      "locus": "Od. 22.249",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 156111,
+      "lemma": "Μέντωρ",
+      "form": "Μέντορ",
+      "locus": "Od. 2.243",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 172878,
+      "lemma": "Μέντωρ",
+      "form": "Μέντορι",
+      "locus": "Od. 24.446",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 123695,
+      "lemma": "Μέμνων",
+      "form": "Μέμνονα",
+      "locus": "Od. 11.522",
+      "before": [
+       "Μέμνων",
+       true,
+       "noun",
+       [
+        "pie-lex-memnox-2"
+       ]
+      ],
+      "after": [
+       "Μέμνων (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 165110,
+      "lemma": "Μέντωρ",
+      "form": "Μέντωρ",
+      "locus": "Od. 22.235",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 175318,
+      "lemma": "Μέντωρ",
+      "form": "Μέντορ",
+      "locus": "Od. 3.240",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 164901,
+      "lemma": "Μέντωρ",
+      "form": "Μέντορι",
+      "locus": "Od. 22.206",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 56385,
+      "lemma": "Ἕλος",
+      "form": "Ἕλος",
+      "locus": "Il. 2.584",
+      "before": [
+       "Ἕλος",
+       true,
+       "noun",
+       [
+        "pie-lex-selos"
+       ]
+      ],
+      "after": [
+       "Ἕλος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 26383,
+      "lemma": "Σεμέλη",
+      "form": "Σεμέλης",
+      "locus": "Il. 14.323",
+      "before": [
+       "Σεμέλη",
+       true,
+       "noun",
+       [
+        "pie-lex-dhegjhoxm"
+       ]
+      ],
+      "after": [
+       "Σεμέλη (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 157287,
+      "lemma": "Μέντωρ",
+      "form": "Μέντορι",
+      "locus": "Od. 2.401",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 173608,
+      "lemma": "Μέντωρ",
+      "form": "Μέντορι",
+      "locus": "Od. 24.548",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 155986,
+      "lemma": "Μέντωρ",
+      "form": "Μέντωρ",
+      "locus": "Od. 2.225",
+      "before": [
+       "Μέντωρ",
+       true,
+       "noun",
+       [
+        "pie-lex-mentoxr"
+       ]
+      ],
+      "after": [
+       "Μέντωρ (name)",
+       false,
+       "name",
+       []
+      ]
+     }
+    ]
+   },
+   "lat": {
+    "tokens": 144786,
+    "changed_tokens": 56,
+    "census_exact_name_lemmas": 45,
+    "census_allowlisted": [
+     "aurora",
+     "auster",
+     "ceres",
+     "diana",
+     "diespiter",
+     "flora",
+     "fors",
+     "fortuna",
+     "hesperus",
+     "iuppiter",
+     "liber",
+     "luna",
+     "manes",
+     "minerua",
+     "neptunus",
+     "nox",
+     "sol",
+     "somnus",
+     "spes",
+     "terminus",
+     "uenus",
+     "uesper",
+     "uirtus"
+    ],
+    "census_now_qualified": [
+     "ancus",
+     "cancer",
+     "cara",
+     "curculio",
+     "dies",
+     "hercules",
+     "lux",
+     "mater",
+     "nola",
+     "pater",
+     "piso",
+     "plautus",
+     "pompeii",
+     "pompeius",
+     "quirites",
+     "remus",
+     "rhenus",
+     "scortum",
+     "septentrio",
+     "septimius",
+     "sermo",
+     "taurus"
+    ],
+    "lost_roots_tokens": 55,
+    "lost_roots_lemma_counts": {
+     "mater": 11,
+     "hercules": 11,
+     "curculio": 4,
+     "pompeii": 3,
+     "septimius": 3,
+     "pater": 3,
+     "nola": 2,
+     "quirites": 2,
+     "piso": 2,
+     "remus": 2,
+     "plautus": 2,
+     "rhenus": 1,
+     "taurus": 1,
+     "pompeius": 1,
+     "cancer": 1,
+     "septentrio": 1,
+     "sermo": 1,
+     "dies": 1,
+     "scortum": 1,
+     "lux": 1,
+     "cara": 1
+    },
+    "regained_tokens": 0,
+    "deity_tokens_lost_roots": 0,
+    "kept_census_lemma_token_counts": {
+     "pater": 237,
+     "dies": 190,
+     "sol": 167,
+     "iuppiter": 97,
+     "mater": 90,
+     "liber": 87,
+     "nox": 87,
+     "uenus": 68,
+     "lux": 61,
+     "uirtus": 48,
+     "somnus": 48,
+     "luna": 42,
+     "fortuna": 29,
+     "spes": 26,
+     "sermo": 23,
+     "scortum": 19,
+     "auster": 12,
+     "ceres": 11,
+     "taurus": 9,
+     "terminus": 9,
+     "uesper": 7,
+     "neptunus": 6,
+     "aurora": 6,
+     "hesperus": 5,
+     "diana": 4,
+     "remus": 4,
+     "fors": 4,
+     "curculio": 3,
+     "manes": 3,
+     "cancer": 2,
+     "minerua": 2,
+     "flora": 1,
+     "diespiter": 1
+    },
+    "lost_roots_sample_30": [
+     {
+      "index": 34801,
+      "lemma": "pater",
+      "form": "Pater",
+      "locus": "LucrDRN1 1.250",
+      "before": [
+       "pater",
+       true,
+       "noun",
+       [
+        "pie-lex-ph2texr"
+       ]
+      ],
+      "after": [
+       "pater (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 3986,
+      "lemma": "pompeii",
+      "form": "Pompeis",
+      "locus": "CatAgr 22.4",
+      "before": [
+       "pompeii",
+       true,
+       "noun",
+       [
+        "pie-lex-penkwe"
+       ]
+      ],
+      "after": [
+       "pompeii (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 136231,
+      "lemma": "cara",
+      "form": "Caras",
+      "locus": "PlCurcu 443",
+      "before": [
+       "cara",
+       true,
+       "noun",
+       [
+        "pie-lex-kjerh2sox"
+       ]
+      ],
+      "after": [
+       "cara (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 23804,
+      "lemma": "septimius",
+      "form": "Septimio",
+      "locus": "Catul 45.23",
+      "before": [
+       "septimius",
+       true,
+       "noun",
+       [
+        "pie-lex-septmmos"
+       ]
+      ],
+      "after": [
+       "septimius (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 18416,
+      "lemma": "quirites",
+      "form": "Quirites",
+      "locus": "CatOrat Fragmentum_176.Linea_1",
+      "before": [
+       "quirites",
+       true,
+       "noun",
+       [
+        "pie-lex-kjom"
+       ]
+      ],
+      "after": [
+       "quirites (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 135641,
+      "lemma": "hercules",
+      "form": "Herculem",
+      "locus": "PlCurcu 358",
+      "before": [
+       "hercules",
+       true,
+       "noun",
+       [
+        "pie-lex-Hyoh1r",
+        "pie-lex-yoh1r",
+        "pie-lex-yoh1r-2",
+        "pie-lex-yoh1r-3"
+       ]
+      ],
+      "after": [
+       "hercules (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 140119,
+      "lemma": "hercules",
+      "form": "Hercules",
+      "locus": "PlEpidic 178",
+      "before": [
+       "hercules",
+       true,
+       "noun",
+       [
+        "pie-lex-Hyoh1r",
+        "pie-lex-yoh1r",
+        "pie-lex-yoh1r-2",
+        "pie-lex-yoh1r-3"
+       ]
+      ],
+      "after": [
+       "hercules (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 47182,
+      "lemma": "mater",
+      "form": "Mater",
+      "locus": "LucrDRN2 2.993",
+      "before": [
+       "mater",
+       true,
+       "noun",
+       [
+        "pie-lex-meh2texr"
+       ]
+      ],
+      "after": [
+       "mater (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 112412,
+      "lemma": "hercules",
+      "form": "Herculem",
+      "locus": "PlBacch 665",
+      "before": [
+       "hercules",
+       true,
+       "noun",
+       [
+        "pie-lex-Hyoh1r",
+        "pie-lex-yoh1r",
+        "pie-lex-yoh1r-2",
+        "pie-lex-yoh1r-3"
+       ]
+      ],
+      "after": [
+       "hercules (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 140131,
+      "lemma": "hercules",
+      "form": "Herculi",
+      "locus": "PlEpidic 179",
+      "before": [
+       "hercules",
+       true,
+       "noun",
+       [
+        "pie-lex-Hyoh1r",
+        "pie-lex-yoh1r",
+        "pie-lex-yoh1r-2",
+        "pie-lex-yoh1r-3"
+       ]
+      ],
+      "after": [
+       "hercules (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 11772,
+      "lemma": "pompeii",
+      "form": "Pompeis",
+      "locus": "CatAgr 135.2",
+      "before": [
+       "pompeii",
+       true,
+       "noun",
+       [
+        "pie-lex-penkwe"
+       ]
+      ],
+      "after": [
+       "pompeii (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 22948,
+      "lemma": "mater",
+      "form": "Mater",
+      "locus": "Catul 35.18",
+      "before": [
+       "mater",
+       true,
+       "noun",
+       [
+        "pie-lex-meh2texr"
+       ]
+      ],
+      "after": [
+       "mater (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 11773,
+      "lemma": "nola",
+      "form": "Nolae",
+      "locus": "CatAgr 135.2",
+      "before": [
+       "nola",
+       true,
+       "noun",
+       [
+        "pie-lex-newos"
+       ]
+      ],
+      "after": [
+       "nola (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 117447,
+      "lemma": "scortum",
+      "form": "Scorto",
+      "locus": "PlCapt 69",
+      "before": [
+       "scortum",
+       true,
+       "noun",
+       [
+        "pie-lex-skorto"
+       ]
+      ],
+      "after": [
+       "scortum (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 44637,
+      "lemma": "mater",
+      "form": "Matris",
+      "locus": "LucrDRN2 2.609",
+      "before": [
+       "mater",
+       true,
+       "noun",
+       [
+        "pie-lex-meh2texr"
+       ]
+      ],
+      "after": [
+       "mater (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 24287,
+      "lemma": "hercules",
+      "form": "Herculei",
+      "locus": "Catul 55.13",
+      "before": [
+       "hercules",
+       true,
+       "noun",
+       [
+        "pie-lex-Hyoh1r",
+        "pie-lex-yoh1r",
+        "pie-lex-yoh1r-2",
+        "pie-lex-yoh1r-3"
+       ]
+      ],
+      "after": [
+       "hercules (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 23876,
+      "lemma": "piso",
+      "form": "Pisonis",
+      "locus": "Catul 47.2",
+      "before": [
+       "piso",
+       true,
+       "noun",
+       [
+        "pie-lex-peysHox"
+       ]
+      ],
+      "after": [
+       "piso (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 128454,
+      "lemma": "hercules",
+      "form": "Herculei",
+      "locus": "PlCasin 398",
+      "before": [
+       "hercules",
+       true,
+       "noun",
+       [
+        "pie-lex-Hyoh1r",
+        "pie-lex-yoh1r",
+        "pie-lex-yoh1r-2",
+        "pie-lex-yoh1r-3"
+       ]
+      ],
+      "after": [
+       "hercules (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 114198,
+      "lemma": "hercules",
+      "form": "Hercules",
+      "locus": "PlBacch 894",
+      "before": [
+       "hercules",
+       true,
+       "noun",
+       [
+        "pie-lex-Hyoh1r",
+        "pie-lex-yoh1r",
+        "pie-lex-yoh1r-2",
+        "pie-lex-yoh1r-3"
+       ]
+      ],
+      "after": [
+       "hercules (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 44567,
+      "lemma": "mater",
+      "form": "Mater",
+      "locus": "LucrDRN2 2.598",
+      "before": [
+       "mater",
+       true,
+       "noun",
+       [
+        "pie-lex-meh2texr"
+       ]
+      ],
+      "after": [
+       "mater (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 24444,
+      "lemma": "remus",
+      "form": "Remi",
+      "locus": "Catul 58.5",
+      "before": [
+       "remus",
+       true,
+       "noun",
+       [
+        "pie-lex-yemHos"
+       ]
+      ],
+      "after": [
+       "remus (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 135173,
+      "lemma": "curculio",
+      "form": "Curculio",
+      "locus": "PlCurcu 303",
+      "before": [
+       "curculio",
+       true,
+       "noun",
+       [
+        "pie-lex-sker",
+        "pie-root-sker-cut_off",
+        "pie-root-sker-turn"
+       ]
+      ],
+      "after": [
+       "curculio (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 108534,
+      "lemma": "hercules",
+      "form": "Hercules",
+      "locus": "PlBacch 155",
+      "before": [
+       "hercules",
+       true,
+       "noun",
+       [
+        "pie-lex-Hyoh1r",
+        "pie-lex-yoh1r",
+        "pie-lex-yoh1r-2",
+        "pie-lex-yoh1r-3"
+       ]
+      ],
+      "after": [
+       "hercules (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 67518,
+      "lemma": "pater",
+      "form": "Pater",
+      "locus": "LucrDRN5 5.399",
+      "before": [
+       "pater",
+       true,
+       "noun",
+       [
+        "pie-lex-ph2texr"
+       ]
+      ],
+      "after": [
+       "pater (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 135195,
+      "lemma": "curculio",
+      "form": "Curculio",
+      "locus": "PlCurcu 306",
+      "before": [
+       "curculio",
+       true,
+       "noun",
+       [
+        "pie-lex-sker",
+        "pie-root-sker-cut_off",
+        "pie-root-sker-turn"
+       ]
+      ],
+      "after": [
+       "curculio (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 18434,
+      "lemma": "quirites",
+      "form": "Quirites",
+      "locus": "CatOrat Fragmentum_176.Linea_3",
+      "before": [
+       "quirites",
+       true,
+       "noun",
+       [
+        "pie-lex-kjom"
+       ]
+      ],
+      "after": [
+       "quirites (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 25875,
+      "lemma": "mater",
+      "form": "Mater",
+      "locus": "Catul 63.9",
+      "before": [
+       "mater",
+       true,
+       "noun",
+       [
+        "pie-lex-meh2texr"
+       ]
+      ],
+      "after": [
+       "mater (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 23693,
+      "lemma": "septimius",
+      "form": "Septimius",
+      "locus": "Catul 45.1",
+      "before": [
+       "septimius",
+       true,
+       "noun",
+       [
+        "pie-lex-septmmos"
+       ]
+      ],
+      "after": [
+       "septimius (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 44754,
+      "lemma": "mater",
+      "form": "Matrem",
+      "locus": "LucrDRN2 2.628",
+      "before": [
+       "mater",
+       true,
+       "noun",
+       [
+        "pie-lex-meh2texr"
+       ]
+      ],
+      "after": [
+       "mater (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 68988,
+      "lemma": "cancer",
+      "form": "Canceris",
+      "locus": "LucrDRN5 5.617",
+      "before": [
+       "cancer",
+       true,
+       "noun",
+       [
+        "pie-lex-sker",
+        "pie-root-sker-cut_off",
+        "pie-root-sker-turn"
+       ]
+      ],
+      "after": [
+       "cancer (name)",
+       false,
+       "name",
+       []
+      ]
+     }
+    ]
+   },
+   "av": {
+    "tokens": 107134,
+    "changed_tokens": 0,
+    "census_exact_name_lemmas": 0,
+    "census_allowlisted": [],
+    "census_now_qualified": [],
+    "lost_roots_tokens": 0,
+    "lost_roots_lemma_counts": {},
+    "regained_tokens": 0,
+    "deity_tokens_lost_roots": 0,
+    "kept_census_lemma_token_counts": {},
+    "lost_roots_sample_30": []
+   },
+   "sa-ep": {
+    "tokens": 1409567,
+    "changed_tokens": 0,
+    "census_exact_name_lemmas": 0,
+    "census_allowlisted": [],
+    "census_now_qualified": [],
+    "lost_roots_tokens": 0,
+    "lost_roots_lemma_counts": {},
+    "regained_tokens": 0,
+    "deity_tokens_lost_roots": 0,
+    "kept_census_lemma_token_counts": {},
+    "lost_roots_sample_30": []
+   },
+   "grc": {
+    "tokens": 3809801,
+    "changed_tokens": 677,
+    "census_exact_name_lemmas": 55,
+    "census_allowlisted": [
+     "Βορέας",
+     "Δίκη",
+     "Δεύς",
+     "Ζεύς",
+     "Κόρος",
+     "Λήθη",
+     "Μήνη",
+     "Μνημοσύνη",
+     "Νύξ",
+     "Χθών",
+     "Ἀΐδης",
+     "Ἔρεβος",
+     "Ἕσπερος",
+     "Ἠώς",
+     "Ἥβη",
+     "Ἥλιος",
+     "Ὕπνος",
+     "Ὥρα"
+    ],
+    "census_now_qualified": [
+     "Δαίδαλος",
+     "ΘΩ",
+     "Καρδία",
+     "Κατάνη",
+     "Καύκασος",
+     "Κολοφών",
+     "Κολωνός",
+     "Κώρυκος",
+     "Μέλισσα",
+     "Μέμνων",
+     "Μέντωρ",
+     "Μαῖα",
+     "Νεμέα",
+     "Νηρεύς",
+     "Πάρος",
+     "Πορθμός",
+     "Πόντος",
+     "Σεμέλη",
+     "Στρυμών",
+     "Τέως",
+     "Ταῦρος",
+     "Τρίτων",
+     "Φυλή",
+     "Ἀκάδημος",
+     "Ἀπατούρια",
+     "Ἄγρα",
+     "Ἄκτωρ",
+     "Ἄρκτος",
+     "Ἔννα",
+     "Ἕλος",
+     "Ἕως",
+     "Ἠριδανός",
+     "Ἱέραξ",
+     "Ὀρφεύς",
+     "Ὠλήν",
+     "Ῥέα",
+     "Ῥήβας"
+    ],
+    "lost_roots_tokens": 676,
+    "lost_roots_lemma_counts": {
+     "Πόντος": 177,
+     "Στρυμών": 51,
+     "Νεμέα": 46,
+     "Φυλή": 45,
+     "Ὀρφεύς": 32,
+     "Κατάνη": 32,
+     "Δαίδαλος": 30,
+     "Νηρεύς": 29,
+     "Σεμέλη": 29,
+     "Ῥέα": 28,
+     "Ταῦρος": 18,
+     "Μαῖα": 17,
+     "Τρίτων": 13,
+     "Πάρος": 13,
+     "Ἀπατούρια": 13,
+     "Μέμνων": 12,
+     "Τέως": 12,
+     "Ἠριδανός": 9,
+     "Κολοφών": 8,
+     "Καύκασος": 8,
+     "Κολωνός": 7,
+     "Μέλισσα": 7,
+     "Ἄκτωρ": 6,
+     "Κώρυκος": 6,
+     "Πορθμός": 6,
+     "Καρδία": 4,
+     "Ἱέραξ": 4,
+     "Μέντωρ": 4,
+     "Ἕως": 2,
+     "Ἕλος": 2,
+     "Ἀκάδημος": 1,
+     "Ἄρκτος": 1,
+     "Ἄγρα": 1,
+     "Ῥήβας": 1,
+     "ΘΩ": 1,
+     "Ἔννα": 1
+    },
+    "regained_tokens": 0,
+    "deity_tokens_lost_roots": 0,
+    "kept_census_lemma_token_counts": {
+     "Ζεύς": 2848,
+     "Βορέας": 63,
+     "Ἥλιος": 58,
+     "Δίκη": 31,
+     "Ἥβη": 18,
+     "Νύξ": 10,
+     "Ἔρεβος": 9,
+     "Ἠώς": 9,
+     "Ὥρα": 9,
+     "Πάρος": 7,
+     "Μνημοσύνη": 5,
+     "Λήθη": 5,
+     "Ἕσπερος": 5,
+     "Ὀρφεύς": 4,
+     "Ὕπνος": 3,
+     "Χθών": 3,
+     "Δεύς": 3,
+     "Ἀΐδης": 2,
+     "Μήνη": 1,
+     "Κόρος": 1
+    },
+    "lost_roots_sample_30": [
+     {
+      "index": 753334,
+      "lemma": "Μέμνων",
+      "form": "Μέμνον’",
+      "locus": "Aristophanes Nubes 622",
+      "before": [
+       "Μέμνων",
+       true,
+       "noun",
+       [
+        "pie-lex-memnox-2"
+       ]
+      ],
+      "after": [
+       "Μέμνων (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 7245,
+      "lemma": "Νηρεύς",
+      "form": "Νηρῆος",
+      "locus": "Hesiodus Theogonia 1003",
+      "before": [
+       "Νηρεύς",
+       true,
+       "noun",
+       [
+        "pie-lex-ner"
+       ]
+      ],
+      "after": [
+       "Νηρεύς (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 412804,
+      "lemma": "Μέλισσα",
+      "form": "Μέλισσαν",
+      "locus": "Herodotus Historiae 5.92G.1 s2",
+      "before": [
+       "Μέλισσα",
+       true,
+       "noun",
+       [
+        "pie-lex-melit"
+       ]
+      ],
+      "after": [
+       "Μέλισσα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 115917,
+      "lemma": "Νεμέα",
+      "form": "Νεμέᾳ",
+      "locus": "Pindarus Nemea 7.80",
+      "before": [
+       "Νεμέα",
+       true,
+       "noun",
+       [
+        "pie-lex-nemeseh2"
+       ]
+      ],
+      "after": [
+       "Νεμέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 21458,
+      "lemma": "Μαῖα",
+      "form": "Μαῖά",
+      "locus": "Hesiodus Fragmenta 169*.3",
+      "before": [
+       "Μαῖα",
+       true,
+       "noun",
+       [
+        "pie-lex-meh2texr"
+       ]
+      ],
+      "after": [
+       "Μαῖα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2199241,
+      "lemma": "Πόντος",
+      "form": "Πόντου",
+      "locus": "Xenophon Anabasis 5.7.7 s1",
+      "before": [
+       "Πόντος",
+       true,
+       "noun",
+       [
+        "pie-lex-pontoh1s"
+       ]
+      ],
+      "after": [
+       "Πόντος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 3661973,
+      "lemma": "Πόντος",
+      "form": "Πόντον",
+      "locus": "Demosthenes Contra Lacritum 6 s3",
+      "before": [
+       "Πόντος",
+       true,
+       "noun",
+       [
+        "pie-lex-pontoh1s"
+       ]
+      ],
+      "after": [
+       "Πόντος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 732975,
+      "lemma": "Ἀπατούρια",
+      "form": "Ἀπατουρίων",
+      "locus": "Aristophanes Acharnenses 146",
+      "before": [
+       "Ἀπατούρια",
+       true,
+       "noun",
+       [
+        "pie-lex-somHoph2toxr"
+       ]
+      ],
+      "after": [
+       "Ἀπατούρια (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 39288,
+      "lemma": "Νηρεύς",
+      "form": "Νηρῆος",
+      "locus": "Hymni Homerici In Apollinem 319",
+      "before": [
+       "Νηρεύς",
+       true,
+       "noun",
+       [
+        "pie-lex-ner"
+       ]
+      ],
+      "after": [
+       "Νηρεύς (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 298055,
+      "lemma": "Μαῖα",
+      "form": "Μαίας",
+      "locus": "Euripides Rhesus 216",
+      "before": [
+       "Μαῖα",
+       true,
+       "noun",
+       [
+        "pie-lex-meh2texr"
+       ]
+      ],
+      "after": [
+       "Μαῖα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 70148,
+      "lemma": "Καύκασος",
+      "form": "Καύκασον",
+      "locus": "Aeschylus Prometheus vinctus 719",
+      "before": [
+       "Καύκασος",
+       true,
+       "noun",
+       [
+        "pie-lex-kewk",
+        "pie-root-kewk-bend"
+       ]
+      ],
+      "after": [
+       "Καύκασος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 3802196,
+      "lemma": "Δαίδαλος",
+      "form": "Δαίδαλον",
+      "locus": "Palaephatus De incredibilibus 2 s1",
+      "before": [
+       "Δαίδαλος",
+       true,
+       "noun",
+       [
+        "pie-lex-deldelh1o"
+       ]
+      ],
+      "after": [
+       "Δαίδαλος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 1445244,
+      "lemma": "Ὀρφεύς",
+      "form": "Ὀρφεῖ",
+      "locus": "Plato Apologia Socratis 3.41a.41 s1",
+      "before": [
+       "Ὀρφεύς",
+       true,
+       "noun",
+       [
+        "pie-lex-h3orbhos"
+       ]
+      ],
+      "after": [
+       "Ὀρφεύς (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 472143,
+      "lemma": "Στρυμών",
+      "form": "Στρυμόνος",
+      "locus": "Herodotus Historiae 8.120.1 s4",
+      "before": [
+       "Στρυμών",
+       true,
+       "noun",
+       [
+        "pie-lex-srew",
+        "pie-root-srew-flow"
+       ]
+      ],
+      "after": [
+       "Στρυμών (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 418811,
+      "lemma": "Πόντος",
+      "form": "Πόντου",
+      "locus": "Herodotus Historiae 6.26.1 s2",
+      "before": [
+       "Πόντος",
+       true,
+       "noun",
+       [
+        "pie-lex-pontoh1s"
+       ]
+      ],
+      "after": [
+       "Πόντος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 471825,
+      "lemma": "Στρυμών",
+      "form": "Στρυμόνι",
+      "locus": "Herodotus Historiae 8.118.1 s1",
+      "before": [
+       "Στρυμών",
+       true,
+       "noun",
+       [
+        "pie-lex-srew",
+        "pie-root-srew-flow"
+       ]
+      ],
+      "after": [
+       "Στρυμών (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 1274795,
+      "lemma": "Μέμνων",
+      "form": "Μέμνονος",
+      "locus": "Isocrates Helenae encomium 52 s1",
+      "before": [
+       "Μέμνων",
+       true,
+       "noun",
+       [
+        "pie-lex-memnox-2"
+       ]
+      ],
+      "after": [
+       "Μέμνων (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 600802,
+      "lemma": "Στρυμών",
+      "form": "Στρυμόνος",
+      "locus": "Thucydides Historiae 2.99.3 s1",
+      "before": [
+       "Στρυμών",
+       true,
+       "noun",
+       [
+        "pie-lex-srew",
+        "pie-root-srew-flow"
+       ]
+      ],
+      "after": [
+       "Στρυμών (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2214228,
+      "lemma": "Πόντος",
+      "form": "Πόντον",
+      "locus": "Xenophon Anabasis 7.5.12 s1",
+      "before": [
+       "Πόντος",
+       true,
+       "noun",
+       [
+        "pie-lex-pontoh1s"
+       ]
+      ],
+      "after": [
+       "Πόντος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 441396,
+      "lemma": "Στρυμών",
+      "form": "Στρυμόνι",
+      "locus": "Herodotus Historiae 7.75.2 s1",
+      "before": [
+       "Στρυμών",
+       true,
+       "noun",
+       [
+        "pie-lex-srew",
+        "pie-root-srew-flow"
+       ]
+      ],
+      "after": [
+       "Στρυμών (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 3032610,
+      "lemma": "Πόντος",
+      "form": "Πόντου",
+      "locus": "Aristoteles et Corpus Aristotelicum Oeconomica 1346b s14",
+      "before": [
+       "Πόντος",
+       true,
+       "noun",
+       [
+        "pie-lex-pontoh1s"
+       ]
+      ],
+      "after": [
+       "Πόντος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2198054,
+      "lemma": "Πόντος",
+      "form": "Πόντῳ",
+      "locus": "Xenophon Anabasis 5.6.15 s1",
+      "before": [
+       "Πόντος",
+       true,
+       "noun",
+       [
+        "pie-lex-pontoh1s"
+       ]
+      ],
+      "after": [
+       "Πόντος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 30643,
+      "lemma": "Ῥέα",
+      "form": "Ῥείη",
+      "locus": "Hymni Homerici In Junonem 1",
+      "before": [
+       "Ῥέα",
+       true,
+       "noun",
+       [
+        "pie-lex-h1roxs"
+       ]
+      ],
+      "after": [
+       "Ῥέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 388482,
+      "lemma": "Πόντος",
+      "form": "Πόντου",
+      "locus": "Herodotus Historiae 4.86.4 s1",
+      "before": [
+       "Πόντος",
+       true,
+       "noun",
+       [
+        "pie-lex-pontoh1s"
+       ]
+      ],
+      "after": [
+       "Πόντος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 3478147,
+      "lemma": "Ἱέραξ",
+      "form": "Ἱέραξ",
+      "locus": "Demosthenes Olynthiaca 1 8 s2",
+      "before": [
+       "Ἱέραξ",
+       true,
+       "noun",
+       [
+        "pie-lex-wiHros"
+       ]
+      ],
+      "after": [
+       "Ἱέραξ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 1434570,
+      "lemma": "Δαίδαλος",
+      "form": "Δαιδάλου",
+      "locus": "Plato Euthyphro 11b s5",
+      "before": [
+       "Δαίδαλος",
+       true,
+       "noun",
+       [
+        "pie-lex-deldelh1o"
+       ]
+      ],
+      "after": [
+       "Δαίδαλος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 1401509,
+      "lemma": "Φυλή",
+      "form": "Φυλὴν",
+      "locus": "Lysias In Agoratum 82 s3",
+      "before": [
+       "Φυλή",
+       true,
+       "noun",
+       [
+        "pie-lex-bhuHlom"
+       ]
+      ],
+      "after": [
+       "Φυλή (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2808750,
+      "lemma": "Πόντος",
+      "form": "Πόντου",
+      "locus": "Aristoteles et Corpus Aristotelicum Historia animalium 8.12 s4",
+      "before": [
+       "Πόντος",
+       true,
+       "noun",
+       [
+        "pie-lex-pontoh1s"
+       ]
+      ],
+      "after": [
+       "Πόντος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 1861889,
+      "lemma": "Ῥέα",
+      "form": "Ῥέας",
+      "locus": "Plato Timaeus 41.40e s2",
+      "before": [
+       "Ῥέα",
+       true,
+       "noun",
+       [
+        "pie-lex-h1roxs"
+       ]
+      ],
+      "after": [
+       "Ῥέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2018869,
+      "lemma": "Ἠριδανός",
+      "form": "Ἠριδανὸς",
+      "locus": "Scylax Periplus Scylacis 19 s1",
+      "before": [
+       "Ἠριδανός",
+       true,
+       "noun",
+       [
+        "pie-lex-deh2nu"
+       ]
+      ],
+      "after": [
+       "Ἠριδανός (name)",
+       false,
+       "name",
+       []
+      ]
+     }
+    ]
+   },
+   "grc-late": {
+    "tokens": 10657541,
+    "changed_tokens": 2742,
+    "census_exact_name_lemmas": 72,
+    "census_allowlisted": [
+     "Βορέας",
+     "Δίκη",
+     "Δεύς",
+     "Εὖρος",
+     "Ζεύς",
+     "Κόρος",
+     "Λήθη",
+     "Μήν",
+     "Μήνη",
+     "Μνημοσύνη",
+     "Νύξ",
+     "Τέρμων",
+     "Φόβος",
+     "Ἀΐδης",
+     "Ἔρεβος",
+     "Ἕσπερος",
+     "Ἠώς",
+     "Ἥβη",
+     "Ἥλιος",
+     "Ὕπνος",
+     "Ὥρα"
+    ],
+    "census_now_qualified": [
+     "Βύζας",
+     "Γένεσις",
+     "Δάν",
+     "Δίς",
+     "Δαίδαλος",
+     "ΘΩ",
+     "Καρδία",
+     "Κατάνη",
+     "Καύκασος",
+     "Κολοφών",
+     "Κολωνός",
+     "Κώρυκος",
+     "Μέλισσα",
+     "Μέμνων",
+     "Μέντωρ",
+     "Μαῖα",
+     "Μελιτηνή",
+     "Νεμέα",
+     "Νηρεύς",
+     "Πάδος",
+     "Πάρος",
+     "Πατήρ",
+     "Πορθμός",
+     "Πόντος",
+     "Σάος",
+     "Σεμέλη",
+     "Σκίλουρος",
+     "Στρυμών",
+     "Τέως",
+     "Ταῦρος",
+     "Τρίτων",
+     "Φυλή",
+     "Ἀκάδημος",
+     "Ἀπατούρια",
+     "Ἄγρα",
+     "Ἄκτωρ",
+     "Ἄρκτος",
+     "Ἅρμα",
+     "Ἐλεύθερος",
+     "Ἔννα",
+     "Ἕλος",
+     "Ἕως",
+     "Ἠριδανός",
+     "Ἰλλυρία",
+     "Ἱέραξ",
+     "Ἴδμων",
+     "Ὀρφεύς",
+     "Ὠλήν",
+     "Ῥέα",
+     "Ῥήβας",
+     "Ῥᾶ"
+    ],
+    "lost_roots_tokens": 2742,
+    "lost_roots_lemma_counts": {
+     "Πόντος": 443,
+     "Ταῦρος": 416,
+     "Ὀρφεύς": 221,
+     "Καύκασος": 143,
+     "Μέμνων": 142,
+     "Ῥέα": 140,
+     "Δαίδαλος": 127,
+     "Ἄρκτος": 100,
+     "Σεμέλη": 83,
+     "Πάδος": 83,
+     "Κατάνη": 80,
+     "Τρίτων": 71,
+     "Νεμέα": 66,
+     "Ἠριδανός": 58,
+     "Νηρεύς": 48,
+     "Στρυμών": 48,
+     "Μέντωρ": 37,
+     "Πάρος": 36,
+     "Γένεσις": 36,
+     "Κώρυκος": 31,
+     "Κολοφών": 30,
+     "Μαῖα": 26,
+     "Ἄκτωρ": 24,
+     "Φυλή": 21,
+     "Τέως": 19,
+     "Ἱέραξ": 19,
+     "Δάν": 17,
+     "Ἅρμα": 17,
+     "Κολωνός": 17,
+     "Ἕλος": 15,
+     "Δίς": 12,
+     "Ὠλήν": 11,
+     "Ἔννα": 11,
+     "Σάος": 10,
+     "Ἐλεύθερος": 10,
+     "Μέλισσα": 10,
+     "Ἴδμων": 9,
+     "Ἀπατούρια": 7,
+     "Ἕως": 7,
+     "Μελιτηνή": 6,
+     "Ἄγρα": 5,
+     "Ἀκάδημος": 5,
+     "Πορθμός": 5,
+     "Σκίλουρος": 4,
+     "Ῥήβας": 3,
+     "Βύζας": 3,
+     "ΘΩ": 2,
+     "Ἰλλυρία": 2,
+     "Πατήρ": 2,
+     "Ῥᾶ": 2,
+     "Καρδία": 1,
+     "Ἀνάκτωρ": 1
+    },
+    "regained_tokens": 0,
+    "deity_tokens_lost_roots": 0,
+    "kept_census_lemma_token_counts": {
+     "Ζεύς": 4568,
+     "Ἥλιος": 436,
+     "Μήνη": 160,
+     "Βορέας": 149,
+     "Δίκη": 69,
+     "Ὥρα": 66,
+     "Ἥβη": 65,
+     "Ἠώς": 59,
+     "Πάρος": 39,
+     "Νύξ": 29,
+     "Φόβος": 27,
+     "Λήθη": 26,
+     "Μνημοσύνη": 25,
+     "Ὕπνος": 23,
+     "Ὀρφεύς": 18,
+     "Ἕσπερος": 13,
+     "Εὖρος": 9,
+     "Δεύς": 5,
+     "Ἔρεβος": 5,
+     "Τέρμων": 3,
+     "Κόρος": 3,
+     "Μήν": 2,
+     "Σάος": 1,
+     "Ἀΐδης": 1
+    },
+    "lost_roots_sample_30": [
+     {
+      "index": 3457221,
+      "lemma": "Πόντος",
+      "form": "Πόντου",
+      "locus": "Flavius Arrianus Periplus ponti Euxini 19.1.29 s2",
+      "before": [
+       "Πόντος",
+       true,
+       "noun",
+       [
+        "pie-lex-pontoh1s"
+       ]
+      ],
+      "after": [
+       "Πόντος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 108497,
+      "lemma": "Πόντος",
+      "form": "Πόντος",
+      "locus": "Apollonius Rhodius Argonautica 2.579",
+      "before": [
+       "Πόντος",
+       true,
+       "noun",
+       [
+        "pie-lex-pontoh1s"
+       ]
+      ],
+      "after": [
+       "Πόντος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2110324,
+      "lemma": "Καύκασος",
+      "form": "Καυκάσου",
+      "locus": "Strabo Geographica 11.5.6 s8",
+      "before": [
+       "Καύκασος",
+       true,
+       "noun",
+       [
+        "pie-lex-kewk",
+        "pie-root-kewk-bend"
+       ]
+      ],
+      "after": [
+       "Καύκασος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 821912,
+      "lemma": "Ταῦρος",
+      "form": "Ταύρου",
+      "locus": "Hipparchus In Arati et Eudoxi phaenomena commentariorum libri iii 3.4.11 s1",
+      "before": [
+       "Ταῦρος",
+       true,
+       "noun",
+       [
+        "pie-lex-tawros"
+       ]
+      ],
+      "after": [
+       "Ταῦρος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 129082,
+      "lemma": "Ὀρφεύς",
+      "form": "Ὀρφεὺς",
+      "locus": "Apollonius Rhodius Argonautica 4.905",
+      "before": [
+       "Ὀρφεύς",
+       true,
+       "noun",
+       [
+        "pie-lex-h3orbhos"
+       ]
+      ],
+      "after": [
+       "Ὀρφεύς (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 8145845,
+      "lemma": "Τρίτων",
+      "form": "Τρίτωνες",
+      "locus": "Pausanias Graeciae descriptio 3.18.10.0 s2",
+      "before": [
+       "Τρίτων",
+       true,
+       "noun",
+       [
+        "pie-lex-treyes"
+       ]
+      ],
+      "after": [
+       "Τρίτων (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 9680824,
+      "lemma": "Μέμνων",
+      "form": "Μέμνονος",
+      "locus": "Flavius Philostratus Heroicus 699 s3",
+      "before": [
+       "Μέμνων",
+       true,
+       "noun",
+       [
+        "pie-lex-memnox-2"
+       ]
+      ],
+      "after": [
+       "Μέμνων (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 3455876,
+      "lemma": "Πόντος",
+      "form": "Πόντον",
+      "locus": "Flavius Arrianus Periplus ponti Euxini 12.1.17 s2",
+      "before": [
+       "Πόντος",
+       true,
+       "noun",
+       [
+        "pie-lex-pontoh1s"
+       ]
+      ],
+      "after": [
+       "Πόντος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 540047,
+      "lemma": "Πόντος",
+      "form": "Πόντον",
+      "locus": "Polybius Historiae 4.52.4 s1",
+      "before": [
+       "Πόντος",
+       true,
+       "noun",
+       [
+        "pie-lex-pontoh1s"
+       ]
+      ],
+      "after": [
+       "Πόντος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 1621106,
+      "lemma": "Πόντος",
+      "form": "Πόντον",
+      "locus": "Pseudo-Scymnus Ad Nicomedem regem, vv. 1-980 735",
+      "before": [
+       "Πόντος",
+       true,
+       "noun",
+       [
+        "pie-lex-pontoh1s"
+       ]
+      ],
+      "after": [
+       "Πόντος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 795054,
+      "lemma": "Ἄρκτος",
+      "form": "Ἄρκτου",
+      "locus": "Hipparchus In Arati et Eudoxi phaenomena commentariorum libri iii 1.2.8 s1",
+      "before": [
+       "Ἄρκτος",
+       true,
+       "noun",
+       [
+        "pie-lex-h2rtkjos"
+       ]
+      ],
+      "after": [
+       "Ἄρκτος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 10632757,
+      "lemma": "Πόντος",
+      "form": "Πόντου",
+      "locus": "Paeanius Breviarium ab urbe condita 4.20.1 s3",
+      "before": [
+       "Πόντος",
+       true,
+       "noun",
+       [
+        "pie-lex-pontoh1s"
+       ]
+      ],
+      "after": [
+       "Πόντος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 10063885,
+      "lemma": "Ταῦρος",
+      "form": "Ταύροιο",
+      "locus": "Manetho Apotelesmatica 5.274",
+      "before": [
+       "Ταῦρος",
+       true,
+       "noun",
+       [
+        "pie-lex-tawros"
+       ]
+      ],
+      "after": [
+       "Ταῦρος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 4647014,
+      "lemma": "Ὀρφεύς",
+      "form": "Ὀρφέως",
+      "locus": "Pseudo-Apollodorus Bibliotheca 2.4.9 s2",
+      "before": [
+       "Ὀρφεύς",
+       true,
+       "noun",
+       [
+        "pie-lex-h3orbhos"
+       ]
+      ],
+      "after": [
+       "Ὀρφεύς (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2163978,
+      "lemma": "Ταῦρος",
+      "form": "Ταύρου",
+      "locus": "Strabo Geographica 14.3.1 s5",
+      "before": [
+       "Ταῦρος",
+       true,
+       "noun",
+       [
+        "pie-lex-tawros"
+       ]
+      ],
+      "after": [
+       "Ταῦρος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2117749,
+      "lemma": "Ταῦρος",
+      "form": "Ταῦρον",
+      "locus": "Strabo Geographica 11.14.2 s1",
+      "before": [
+       "Ταῦρος",
+       true,
+       "noun",
+       [
+        "pie-lex-tawros"
+       ]
+      ],
+      "after": [
+       "Ταῦρος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2159589,
+      "lemma": "Δαίδαλος",
+      "form": "Δαιδάλων",
+      "locus": "Strabo Geographica 14.2.2 s3",
+      "before": [
+       "Δαίδαλος",
+       true,
+       "noun",
+       [
+        "pie-lex-deldelh1o"
+       ]
+      ],
+      "after": [
+       "Δαίδαλος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 4644693,
+      "lemma": "Ἴδμων",
+      "form": "Ἴδμων",
+      "locus": "Pseudo-Apollodorus Bibliotheca 2.1.5 s13",
+      "before": [
+       "Ἴδμων",
+       true,
+       "noun",
+       [
+        "pie-lex-widmox"
+       ]
+      ],
+      "after": [
+       "Ἴδμων (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 3907157,
+      "lemma": "Πάδος",
+      "form": "Πάδον",
+      "locus": "Plutarchus Pompeius 16.4 s2",
+      "before": [
+       "Πάδος",
+       true,
+       "noun",
+       [
+        "pie-lex-bhudhmexn"
+       ]
+      ],
+      "after": [
+       "Πάδος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2201045,
+      "lemma": "Ταῦρος",
+      "form": "Ταῦροι",
+      "locus": "Strabo Geographica 16.4.7 s6",
+      "before": [
+       "Ταῦρος",
+       true,
+       "noun",
+       [
+        "pie-lex-tawros"
+       ]
+      ],
+      "after": [
+       "Ταῦρος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 8188627,
+      "lemma": "Μέμνων",
+      "form": "Μέμνων",
+      "locus": "Pausanias Graeciae descriptio 5.22.2.0 s3",
+      "before": [
+       "Μέμνων",
+       true,
+       "noun",
+       [
+        "pie-lex-memnox-2"
+       ]
+      ],
+      "after": [
+       "Μέμνων (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2132211,
+      "lemma": "Ταῦρος",
+      "form": "Ταύρου",
+      "locus": "Strabo Geographica 12.6.4 s1",
+      "before": [
+       "Ταῦρος",
+       true,
+       "noun",
+       [
+        "pie-lex-tawros"
+       ]
+      ],
+      "after": [
+       "Ταῦρος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 9019247,
+      "lemma": "Ταῦρος",
+      "form": "Ταύρου",
+      "locus": "Cassius Dio Historiae Romanae 47.31.1 s1",
+      "before": [
+       "Ταῦρος",
+       true,
+       "noun",
+       [
+        "pie-lex-tawros"
+       ]
+      ],
+      "after": [
+       "Ταῦρος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 10635281,
+      "lemma": "Πόντος",
+      "form": "Πόντον",
+      "locus": "Paeanius Breviarium ab urbe condita 6.8.2 s2",
+      "before": [
+       "Πόντος",
+       true,
+       "noun",
+       [
+        "pie-lex-pontoh1s"
+       ]
+      ],
+      "after": [
+       "Πόντος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 8118234,
+      "lemma": "Ὠλήν",
+      "form": "Ὠλῆνι",
+      "locus": "Pausanias Graeciae descriptio 2.13.3.0 s5",
+      "before": [
+       "Ὠλήν",
+       true,
+       "noun",
+       [
+        "pie-lex-Heh3leneh2"
+       ]
+      ],
+      "after": [
+       "Ὠλήν (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 508576,
+      "lemma": "Πάδος",
+      "form": "Πάδον",
+      "locus": "Polybius Historiae 3.56.6 s1",
+      "before": [
+       "Πάδος",
+       true,
+       "noun",
+       [
+        "pie-lex-bhudhmexn"
+       ]
+      ],
+      "after": [
+       "Πάδος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2040704,
+      "lemma": "Ταῦρος",
+      "form": "Ταῦροι",
+      "locus": "Strabo Geographica 7.4.5 s15",
+      "before": [
+       "Ταῦρος",
+       true,
+       "noun",
+       [
+        "pie-lex-tawros"
+       ]
+      ],
+      "after": [
+       "Ταῦρος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 9416089,
+      "lemma": "Γένεσις",
+      "form": "Γένεσιν",
+      "locus": "Origenes Contra Celsum 4.34 s6",
+      "before": [
+       "Γένεσις",
+       true,
+       "noun",
+       [
+        "pie-lex-gjenh1tis"
+       ]
+      ],
+      "after": [
+       "Γένεσις (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 4636781,
+      "lemma": "Ὀρφεύς",
+      "form": "Ὀρφεὺς",
+      "locus": "Pseudo-Apollodorus Bibliotheca 1.3.2 s3",
+      "before": [
+       "Ὀρφεύς",
+       true,
+       "noun",
+       [
+        "pie-lex-h3orbhos"
+       ]
+      ],
+      "after": [
+       "Ὀρφεύς (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 4310471,
+      "lemma": "Ὀρφεύς",
+      "form": "Ὀρφέως",
+      "locus": "Plutarchus De defectu oraculorum 10 s5",
+      "before": [
+       "Ὀρφεύς",
+       true,
+       "noun",
+       [
+        "pie-lex-h3orbhos"
+       ]
+      ],
+      "after": [
+       "Ὀρφεύς (name)",
+       false,
+       "name",
+       []
+      ]
+     }
+    ]
+   },
+   "grp": {
+    "tokens": 340300,
+    "changed_tokens": 182,
+    "census_exact_name_lemmas": 40,
+    "census_allowlisted": [
+     "Βορέας",
+     "Δίκη",
+     "Ζεύς",
+     "Κόρος",
+     "Λήθη",
+     "Μήνη",
+     "Μνημοσύνη",
+     "Νύξ",
+     "Χθών",
+     "Ἀΐδης",
+     "Ἔρεβος",
+     "Ἕσπερος",
+     "Ἠώς",
+     "Ἥβη",
+     "Ἥλιος",
+     "Ὕπνος",
+     "Ὥρα"
+    ],
+    "census_now_qualified": [
+     "Δαίδαλος",
+     "Καύκασος",
+     "Κολοφών",
+     "Κολωνός",
+     "Κώρυκος",
+     "Μέμνων",
+     "Μαῖα",
+     "Νεμέα",
+     "Νηρεύς",
+     "Πάρος",
+     "Πόντος",
+     "Σεμέλη",
+     "Στρυμών",
+     "Τέως",
+     "Ταῦρος",
+     "Τρίτων",
+     "Ἀκάδημος",
+     "Ἄκτωρ",
+     "Ἄρκτος",
+     "Ἕως",
+     "Ἠριδανός",
+     "Ὀρφεύς",
+     "Ῥέα"
+    ],
+    "lost_roots_tokens": 182,
+    "lost_roots_lemma_counts": {
+     "Νεμέα": 30,
+     "Νηρεύς": 25,
+     "Σεμέλη": 24,
+     "Ῥέα": 21,
+     "Μαῖα": 17,
+     "Στρυμών": 10,
+     "Ὀρφεύς": 9,
+     "Μέμνων": 6,
+     "Ἄκτωρ": 6,
+     "Πόντος": 5,
+     "Τρίτων": 4,
+     "Κολωνός": 4,
+     "Ἠριδανός": 3,
+     "Ταῦρος": 3,
+     "Πάρος": 3,
+     "Κολοφών": 2,
+     "Καύκασος": 2,
+     "Δαίδαλος": 2,
+     "Ἕως": 2,
+     "Κώρυκος": 1,
+     "Ἀκάδημος": 1,
+     "Τέως": 1,
+     "Ἄρκτος": 1
+    },
+    "regained_tokens": 0,
+    "deity_tokens_lost_roots": 0,
+    "kept_census_lemma_token_counts": {
+     "Ζεύς": 1081,
+     "Δίκη": 23,
+     "Ἥλιος": 22,
+     "Ἥβη": 16,
+     "Βορέας": 12,
+     "Ἠώς": 8,
+     "Ὥρα": 7,
+     "Ἔρεβος": 6,
+     "Νύξ": 6,
+     "Χθών": 3,
+     "Μνημοσύνη": 2,
+     "Ἀΐδης": 2,
+     "Λήθη": 2,
+     "Ὕπνος": 2,
+     "Μήνη": 1,
+     "Κόρος": 1,
+     "Πάρος": 1,
+     "Ἕσπερος": 1
+    },
+    "lost_roots_sample_30": [
+     {
+      "index": 111998,
+      "lemma": "Νεμέα",
+      "form": "Νεμέᾳ",
+      "locus": "Pindarus Nemea 4.9",
+      "before": [
+       "Νεμέα",
+       true,
+       "noun",
+       [
+        "pie-lex-nemeseh2"
+       ]
+      ],
+      "after": [
+       "Νεμέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2043,
+      "lemma": "Νηρεύς",
+      "form": "Νηρῆος",
+      "locus": "Hesiodus Theogonia 263",
+      "before": [
+       "Νηρεύς",
+       true,
+       "noun",
+       [
+        "pie-lex-ner"
+       ]
+      ],
+      "after": [
+       "Νηρεύς (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 68267,
+      "lemma": "Καύκασος",
+      "form": "Καυκάσου",
+      "locus": "Aeschylus Prometheus vinctus 422",
+      "before": [
+       "Καύκασος",
+       true,
+       "noun",
+       [
+        "pie-lex-kewk",
+        "pie-root-kewk-bend"
+       ]
+      ],
+      "after": [
+       "Καύκασος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 18326,
+      "lemma": "Ταῦρος",
+      "form": "Ταῦρόν",
+      "locus": "Hesiodus Fragmenta 33a.10",
+      "before": [
+       "Ταῦρος",
+       true,
+       "noun",
+       [
+        "pie-lex-tawros"
+       ]
+      ],
+      "after": [
+       "Ταῦρος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2507,
+      "lemma": "Νεμέα",
+      "form": "Νεμείης",
+      "locus": "Hesiodus Theogonia 331",
+      "before": [
+       "Νεμέα",
+       true,
+       "noun",
+       [
+        "pie-lex-nemeseh2"
+       ]
+      ],
+      "after": [
+       "Νεμέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 150317,
+      "lemma": "Σεμέλη",
+      "form": "Σεμέλης",
+      "locus": "Euripides Hippolytus 454",
+      "before": [
+       "Σεμέλη",
+       true,
+       "noun",
+       [
+        "pie-lex-dhegjhoxm"
+       ]
+      ],
+      "after": [
+       "Σεμέλη (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 253133,
+      "lemma": "Σεμέλη",
+      "form": "Σεμέλη",
+      "locus": "Euripides Bacchae 335",
+      "before": [
+       "Σεμέλη",
+       true,
+       "noun",
+       [
+        "pie-lex-dhegjhoxm"
+       ]
+      ],
+      "after": [
+       "Σεμέλη (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 111939,
+      "lemma": "Νεμέα",
+      "form": "Νεμέας",
+      "locus": "Pindarus Nemea 3.84",
+      "before": [
+       "Νεμέα",
+       true,
+       "noun",
+       [
+        "pie-lex-nemeseh2"
+       ]
+      ],
+      "after": [
+       "Νεμέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 4549,
+      "lemma": "Ῥέα",
+      "form": "Ῥείη",
+      "locus": "Hesiodus Theogonia 625",
+      "before": [
+       "Ῥέα",
+       true,
+       "noun",
+       [
+        "pie-lex-h1roxs"
+       ]
+      ],
+      "after": [
+       "Ῥέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 36949,
+      "lemma": "Πάρος",
+      "form": "Πάρον",
+      "locus": "Hymni Homerici In Cererem 491",
+      "before": [
+       "Πάρος",
+       true,
+       "noun",
+       [
+        "pie-lex-preh2",
+        "pie-root-preh2-before"
+       ]
+      ],
+      "after": [
+       "Πάρος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 6854,
+      "lemma": "Μαῖα",
+      "form": "Μαίη",
+      "locus": "Hesiodus Theogonia 938",
+      "before": [
+       "Μαῖα",
+       true,
+       "noun",
+       [
+        "pie-lex-meh2texr"
+       ]
+      ],
+      "after": [
+       "Μαῖα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 270809,
+      "lemma": "Στρυμών",
+      "form": "Στρυμόνος",
+      "locus": "Euripides Rhesus 394",
+      "before": [
+       "Στρυμών",
+       true,
+       "noun",
+       [
+        "pie-lex-srew",
+        "pie-root-srew-flow"
+       ]
+      ],
+      "after": [
+       "Στρυμών (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 265503,
+      "lemma": "Νηρεύς",
+      "form": "Νηρέως",
+      "locus": "Euripides Iphigenia Aulidensis 1057",
+      "before": [
+       "Νηρεύς",
+       true,
+       "noun",
+       [
+        "pie-lex-ner"
+       ]
+      ],
+      "after": [
+       "Νηρεύς (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 117920,
+      "lemma": "Νεμέα",
+      "form": "Νεμέας",
+      "locus": "Pindarus Isthmia 6.61",
+      "before": [
+       "Νεμέα",
+       true,
+       "noun",
+       [
+        "pie-lex-nemeseh2"
+       ]
+      ],
+      "after": [
+       "Νεμέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 97845,
+      "lemma": "Ῥέα",
+      "form": "Ῥέας",
+      "locus": "Pindarus Olympia 2.12",
+      "before": [
+       "Ῥέα",
+       true,
+       "noun",
+       [
+        "pie-lex-h1roxs"
+       ]
+      ],
+      "after": [
+       "Ῥέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 70634,
+      "lemma": "Ῥέα",
+      "form": "Ῥέας",
+      "locus": "Aeschylus Prometheus vinctus 837",
+      "before": [
+       "Ῥέα",
+       true,
+       "noun",
+       [
+        "pie-lex-h1roxs"
+       ]
+      ],
+      "after": [
+       "Ῥέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 269925,
+      "lemma": "Μαῖα",
+      "form": "Μαίας",
+      "locus": "Euripides Rhesus 216",
+      "before": [
+       "Μαῖα",
+       true,
+       "noun",
+       [
+        "pie-lex-meh2texr"
+       ]
+      ],
+      "after": [
+       "Μαῖα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 270218,
+      "lemma": "Στρυμών",
+      "form": "Στρυμόνος",
+      "locus": "Euripides Rhesus 279",
+      "before": [
+       "Στρυμών",
+       true,
+       "noun",
+       [
+        "pie-lex-srew",
+        "pie-root-srew-flow"
+       ]
+      ],
+      "after": [
+       "Στρυμών (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 113801,
+      "lemma": "Νεμέα",
+      "form": "Νεμέᾳ",
+      "locus": "Pindarus Nemea 7.80",
+      "before": [
+       "Νεμέα",
+       true,
+       "noun",
+       [
+        "pie-lex-nemeseh2"
+       ]
+      ],
+      "after": [
+       "Νεμέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 100357,
+      "lemma": "Νεμέα",
+      "form": "Νεμέᾳ",
+      "locus": "Pindarus Olympia 7.82",
+      "before": [
+       "Νεμέα",
+       true,
+       "noun",
+       [
+        "pie-lex-nemeseh2"
+       ]
+      ],
+      "after": [
+       "Νεμέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 151968,
+      "lemma": "Ἠριδανός",
+      "form": "Ἠριδανοῦ",
+      "locus": "Euripides Hippolytus 737",
+      "before": [
+       "Ἠριδανός",
+       true,
+       "noun",
+       [
+        "pie-lex-deh2nu"
+       ]
+      ],
+      "after": [
+       "Ἠριδανός (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 85574,
+      "lemma": "Ὀρφεύς",
+      "form": "Ὀρφεῖ",
+      "locus": "Aeschylus Agamemnon 1629",
+      "before": [
+       "Ὀρφεύς",
+       true,
+       "noun",
+       [
+        "pie-lex-h3orbhos"
+       ]
+      ],
+      "after": [
+       "Ὀρφεύς (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 240795,
+      "lemma": "Κολωνός",
+      "form": "Κολωνός",
+      "locus": "Euripides Phoenisae 1707",
+      "before": [
+       "Κολωνός",
+       true,
+       "noun",
+       [
+        "pie-lex-kolHox"
+       ]
+      ],
+      "after": [
+       "Κολωνός (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 149559,
+      "lemma": "Ταῦρος",
+      "form": "Ταύρου",
+      "locus": "Euripides Hippolytus 338",
+      "before": [
+       "Ταῦρος",
+       true,
+       "noun",
+       [
+        "pie-lex-tawros"
+       ]
+      ],
+      "after": [
+       "Ταῦρος (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2556,
+      "lemma": "Στρυμών",
+      "form": "Στρυμόνα",
+      "locus": "Hesiodus Theogonia 339",
+      "before": [
+       "Στρυμών",
+       true,
+       "noun",
+       [
+        "pie-lex-srew",
+        "pie-root-srew-flow"
+       ]
+      ],
+      "after": [
+       "Στρυμών (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 45044,
+      "lemma": "Μαῖα",
+      "form": "Μαῖα",
+      "locus": "Hymni Homerici In Mercurium 3",
+      "before": [
+       "Μαῖα",
+       true,
+       "noun",
+       [
+        "pie-lex-meh2texr"
+       ]
+      ],
+      "after": [
+       "Μαῖα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 251517,
+      "lemma": "Σεμέλη",
+      "form": "Σεμέλην",
+      "locus": "Euripides Bacchae 28",
+      "before": [
+       "Σεμέλη",
+       true,
+       "noun",
+       [
+        "pie-lex-dhegjhoxm"
+       ]
+      ],
+      "after": [
+       "Σεμέλη (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 117830,
+      "lemma": "Νεμέα",
+      "form": "Νεμέᾳ",
+      "locus": "Pindarus Isthmia 6.48",
+      "before": [
+       "Νεμέα",
+       true,
+       "noun",
+       [
+        "pie-lex-nemeseh2"
+       ]
+      ],
+      "after": [
+       "Νεμέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 117275,
+      "lemma": "Νεμέα",
+      "form": "Νεμέα",
+      "locus": "Pindarus Isthmia 5.18",
+      "before": [
+       "Νεμέα",
+       true,
+       "noun",
+       [
+        "pie-lex-nemeseh2"
+       ]
+      ],
+      "after": [
+       "Νεμέα (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 193188,
+      "lemma": "Νηρεύς",
+      "form": "Νηρέος",
+      "locus": "Euripides Ion 1082",
+      "before": [
+       "Νηρεύς",
+       true,
+       "noun",
+       [
+        "pie-lex-ner"
+       ]
+      ],
+      "after": [
+       "Νηρεύς (name)",
+       false,
+       "name",
+       []
+      ]
+     }
+    ]
+   },
+   "orv": {
+    "tokens": 122818,
+    "changed_tokens": 69,
+    "census_exact_name_lemmas": 14,
+    "census_allowlisted": [
+     "дивъ",
+     "стрибогъ"
+    ],
+    "census_now_qualified": [
+     "блудъ",
+     "боръ",
+     "бугъ",
+     "весь",
+     "воинъ",
+     "волосъ",
+     "вьрхъ",
+     "дунаи",
+     "кыи",
+     "малъ",
+     "семь",
+     "сѣверъ"
+    ],
+    "lost_roots_tokens": 65,
+    "lost_roots_lemma_counts": {
+     "дунаи": 20,
+     "блудъ": 8,
+     "кыи": 7,
+     "сѣверъ": 6,
+     "бугъ": 6,
+     "весь": 4,
+     "малъ": 4,
+     "волосъ": 4,
+     "семь": 2,
+     "воинъ": 2,
+     "боръ": 1,
+     "вьрхъ": 1
+    },
+    "regained_tokens": 0,
+    "deity_tokens_lost_roots": 0,
+    "kept_census_lemma_token_counts": {
+     "вьрхъ": 14,
+     "сѣверъ": 6,
+     "блудъ": 6,
+     "боръ": 5,
+     "воинъ": 5,
+     "дивъ": 2,
+     "стрибогъ": 1
+    },
+    "lost_roots_sample_30": [
+     {
+      "index": 14499,
+      "lemma": "блудъ",
+      "form": "блудъ",
+      "locus": "lav 77.17",
+      "before": [
+       "блудъ",
+       true,
+       "noun",
+       [
+        "pie-lex-bhlondhos"
+       ]
+      ],
+      "after": [
+       "блудъ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2252,
+      "lemma": "дунаи",
+      "form": "Дунаи",
+      "locus": "spi 168",
+      "before": [
+       "дунаи",
+       true,
+       "noun",
+       [
+        "pie-lex-deh2nu"
+       ]
+      ],
+      "after": [
+       "дунаи (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 30346,
+      "lemma": "дунаи",
+      "form": "дунаи",
+      "locus": "lav 154.6",
+      "before": [
+       "дунаи",
+       true,
+       "noun",
+       [
+        "pie-lex-deh2nu"
+       ]
+      ],
+      "after": [
+       "дунаи (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 4037,
+      "lemma": "кыи",
+      "form": "кии",
+      "locus": "lav 10.4",
+      "before": [
+       "кыи",
+       true,
+       "noun",
+       [
+        "pie-lex-kuh2yos",
+        "pie-root-kw-primary_interrogative_root"
+       ]
+      ],
+      "after": [
+       "кыи (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 3029,
+      "lemma": "дунаи",
+      "form": "дунаи",
+      "locus": "lav 3.15",
+      "before": [
+       "дунаи",
+       true,
+       "noun",
+       [
+        "pie-lex-deh2nu"
+       ]
+      ],
+      "after": [
+       "дунаи (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 29322,
+      "lemma": "сѣверъ",
+      "form": "сѣверъ",
+      "locus": "lav 148.28",
+      "before": [
+       "сѣверъ",
+       true,
+       "noun",
+       [
+        "pie-lex-skjeh1wer"
+       ]
+      ],
+      "after": [
+       "сѣверъ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 1757,
+      "lemma": "дунаи",
+      "form": "Дуная",
+      "locus": "spi 130",
+      "before": [
+       "дунаи",
+       true,
+       "noun",
+       [
+        "pie-lex-deh2nu"
+       ]
+      ],
+      "after": [
+       "дунаи (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 9468,
+      "lemma": "малъ",
+      "form": "маломъ",
+      "locus": "lav 54.28",
+      "before": [
+       "малъ",
+       true,
+       "noun",
+       [
+        "pie-lex-smoh1los"
+       ]
+      ],
+      "after": [
+       "малъ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 14263,
+      "lemma": "блудъ",
+      "form": "блудомъ",
+      "locus": "lav 76.15",
+      "before": [
+       "блудъ",
+       true,
+       "noun",
+       [
+        "pie-lex-bhlondhos"
+       ]
+      ],
+      "after": [
+       "блудъ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 4268,
+      "lemma": "дунаи",
+      "form": "дунаи",
+      "locus": "lav 11.15",
+      "before": [
+       "дунаи",
+       true,
+       "noun",
+       [
+        "pie-lex-deh2nu"
+       ]
+      ],
+      "after": [
+       "дунаи (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 29264,
+      "lemma": "сѣверъ",
+      "form": "сѣверъ",
+      "locus": "lav 148.18",
+      "before": [
+       "сѣверъ",
+       true,
+       "noun",
+       [
+        "pie-lex-skjeh1wer"
+       ]
+      ],
+      "after": [
+       "сѣверъ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 14684,
+      "lemma": "блудъ",
+      "form": "блудъ",
+      "locus": "lav 78.13",
+      "before": [
+       "блудъ",
+       true,
+       "noun",
+       [
+        "pie-lex-bhlondhos"
+       ]
+      ],
+      "after": [
+       "блудъ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 95640,
+      "lemma": "вьрхъ",
+      "form": "вьрхѹ",
+      "locus": "nov-sin",
+      "before": [
+       "вьрхъ",
+       true,
+       "noun",
+       [
+        "pie-lex-wrsu"
+       ]
+      ],
+      "after": [
+       "вьрхъ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 3917,
+      "lemma": "кыи",
+      "form": "кии",
+      "locus": "lav 9.10",
+      "before": [
+       "кыи",
+       true,
+       "noun",
+       [
+        "pie-lex-kuh2yos",
+        "pie-root-kw-primary_interrogative_root"
+       ]
+      ],
+      "after": [
+       "кыи (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 2264,
+      "lemma": "дунаи",
+      "form": "Дунаеви",
+      "locus": "spi 169",
+      "before": [
+       "дунаи",
+       true,
+       "noun",
+       [
+        "pie-lex-deh2nu"
+       ]
+      ],
+      "after": [
+       "дунаи (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 14451,
+      "lemma": "блудъ",
+      "form": "блудъ",
+      "locus": "lav 77.10",
+      "before": [
+       "блудъ",
+       true,
+       "noun",
+       [
+        "pie-lex-bhlondhos"
+       ]
+      ],
+      "after": [
+       "блудъ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 14433,
+      "lemma": "блудъ",
+      "form": "блудъ",
+      "locus": "lav 77.8",
+      "before": [
+       "блудъ",
+       true,
+       "noun",
+       [
+        "pie-lex-bhlondhos"
+       ]
+      ],
+      "after": [
+       "блудъ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 4508,
+      "lemma": "дунаи",
+      "form": "дунаеви",
+      "locus": "lav 13.3",
+      "before": [
+       "дунаи",
+       true,
+       "noun",
+       [
+        "pie-lex-deh2nu"
+       ]
+      ],
+      "after": [
+       "дунаи (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 4090,
+      "lemma": "кыи",
+      "form": "киеви",
+      "locus": "lav 10.12",
+      "before": [
+       "кыи",
+       true,
+       "noun",
+       [
+        "pie-lex-kuh2yos",
+        "pie-root-kw-primary_interrogative_root"
+       ]
+      ],
+      "after": [
+       "кыи (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 4064,
+      "lemma": "дунаи",
+      "form": "дунаеви",
+      "locus": "lav 10.7",
+      "before": [
+       "дунаи",
+       true,
+       "noun",
+       [
+        "pie-lex-deh2nu"
+       ]
+      ],
+      "after": [
+       "дунаи (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 50184,
+      "lemma": "воинъ",
+      "form": "воину",
+      "locus": "lav 250.17",
+      "before": [
+       "воинъ",
+       true,
+       "noun",
+       [
+        "pie-lex-woyh1os"
+       ]
+      ],
+      "after": [
+       "воинъ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 28165,
+      "lemma": "бугъ",
+      "form": "буга",
+      "locus": "lav 143.3",
+      "before": [
+       "бугъ",
+       true,
+       "noun",
+       [
+        "pie-lex-bhowghos"
+       ]
+      ],
+      "after": [
+       "бугъ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 4486,
+      "lemma": "сѣверъ",
+      "form": "сѣверъ",
+      "locus": "lav 12.22",
+      "before": [
+       "сѣверъ",
+       true,
+       "noun",
+       [
+        "pie-lex-skjeh1wer"
+       ]
+      ],
+      "after": [
+       "сѣверъ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 4173,
+      "lemma": "весь",
+      "form": "весь",
+      "locus": "lav 10.22",
+      "before": [
+       "весь",
+       true,
+       "noun",
+       [
+        "pie-lex-wisos"
+       ]
+      ],
+      "after": [
+       "весь (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 61540,
+      "lemma": "дунаи",
+      "form": "дунаю",
+      "locus": "pvl-hyp 42.12",
+      "before": [
+       "дунаи",
+       true,
+       "noun",
+       [
+        "pie-lex-deh2nu"
+       ]
+      ],
+      "after": [
+       "дунаи (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 14560,
+      "lemma": "блудъ",
+      "form": "блудъ",
+      "locus": "lav 77.25",
+      "before": [
+       "блудъ",
+       true,
+       "noun",
+       [
+        "pie-lex-bhlondhos"
+       ]
+      ],
+      "after": [
+       "блудъ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 11779,
+      "lemma": "дунаи",
+      "form": "дунаеви",
+      "locus": "lav 65.16",
+      "before": [
+       "дунаи",
+       true,
+       "noun",
+       [
+        "pie-lex-deh2nu"
+       ]
+      ],
+      "after": [
+       "дунаи (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 14327,
+      "lemma": "блудъ",
+      "form": "блудъ",
+      "locus": "lav 76.24",
+      "before": [
+       "блудъ",
+       true,
+       "noun",
+       [
+        "pie-lex-bhlondhos"
+       ]
+      ],
+      "after": [
+       "блудъ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 50005,
+      "lemma": "бугъ",
+      "form": "б҃ъ",
+      "locus": "lav 249.34",
+      "before": [
+       "бугъ",
+       true,
+       "noun",
+       [
+        "pie-lex-bhowghos"
+       ]
+      ],
+      "after": [
+       "бугъ (name)",
+       false,
+       "name",
+       []
+      ]
+     },
+     {
+      "index": 4029,
+      "lemma": "кыи",
+      "form": "кии",
+      "locus": "lav 10.2",
+      "before": [
+       "кыи",
+       true,
+       "noun",
+       [
+        "pie-lex-kuh2yos",
+        "pie-root-kw-primary_interrogative_root"
+       ]
+      ],
+      "after": [
+       "кыи (name)",
+       false,
+       "name",
+       []
+      ]
+     }
+    ]
+   },
+   "menota": {
+    "tokens": 1650615,
+    "changed_tokens": 260,
+    "census_exact_name_lemmas": 36,
+    "census_allowlisted": [
+     "Guð",
+     "Hǫðr",
+     "hel",
+     "áss",
+     "þórr"
+    ],
+    "census_now_qualified": [
+     "ari",
+     "baugr",
+     "borg",
+     "bót",
+     "faðir",
+     "gaukr",
+     "geirr",
+     "gríma",
+     "gróa",
+     "gunnr",
+     "hjalmr",
+     "hlíf",
+     "karl",
+     "kýr",
+     "langr",
+     "ljótr",
+     "mars",
+     "mǫn",
+     "naðr",
+     "oddi",
+     "rauðr",
+     "skjǫldr",
+     "skíð",
+     "steinn",
+     "stúfr",
+     "svartr",
+     "súrr",
+     "una",
+     "uxi",
+     "áll",
+     "ǫrn"
+    ],
+    "lost_roots_tokens": 260,
+    "lost_roots_lemma_counts": {
+     "ljótr": 50,
+     "geirr": 43,
+     "gróa": 17,
+     "ǫrn": 16,
+     "svartr": 16,
+     "gríma": 16,
+     "ari": 14,
+     "skjǫldr": 12,
+     "rauðr": 10,
+     "uxi": 9,
+     "steinn": 8,
+     "mǫn": 7,
+     "karl": 6,
+     "baugr": 4,
+     "hlíf": 4,
+     "gaukr": 4,
+     "naðr": 3,
+     "una": 3,
+     "borg": 3,
+     "gunnr": 2,
+     "áll": 2,
+     "bót": 2,
+     "faðir": 1,
+     "langr": 1,
+     "oddi": 1,
+     "stúfr": 1,
+     "súrr": 1,
+     "hjalmr": 1,
+     "skíð": 1,
+     "kýr": 1,
+     "mars": 1
+    },
+    "regained_tokens": 0,
+    "deity_tokens_lost_roots": 0,
+    "kept_census_lemma_token_counts": {
+     "faðir": 1927,
+     "langr": 940,
+     "borg": 926,
+     "steinn": 328,
+     "skjǫldr": 271,
+     "bót": 244,
+     "karl": 220,
+     "þórr": 206,
+     "rauðr": 197,
+     "svartr": 141,
+     "áss": 114,
+     "una": 114,
+     "kýr": 112,
+     "hjalmr": 75,
+     "gróa": 40,
+     "hel": 31,
+     "ljótr": 18,
+     "hlíf": 18,
+     "baugr": 17,
+     "ari": 14,
+     "uxi": 13,
+     "skíð": 8,
+     "Hǫðr": 8,
+     "stúfr": 7,
+     "súrr": 7,
+     "geirr": 5,
+     "gríma": 4,
+     "oddi": 4,
+     "ǫrn": 4,
+     "Guð": 4,
+     "áll": 3,
+     "naðr": 2,
+     "mǫn": 1,
+     "gunnr": 1,
+     "gaukr": 1
+    },
+    "lost_roots_sample_30": [
+     {
+      "index": 204734,
+      "lemma": "skjǫldr",
+      "form": "Skjǫldr",
+      "locus": "AM-132-fol-Njals-saga 16v:39",
+      "before": [
+       "skjǫldr",
+       true,
+       "noun",
+       [
+        "pie-lex-skelHtus",
+        "pie-lex-skelHtus-2"
+       ]
+      ],
+      "after": [
+       "skjǫldr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 22340,
+      "lemma": "gróa",
+      "form": "Gróa",
+      "locus": "AM-132-fol-Droplaugarsona-saga 145r:38",
+      "before": [
+       "gróa",
+       true,
+       "noun",
+       [
+        "pie-lex-ghroh1yeti"
+       ]
+      ],
+      "after": [
+       "gróa (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 156231,
+      "lemma": "gríma",
+      "form": "Grímu",
+      "locus": "AM-132-fol-Laxdaela-saga 172v:19",
+      "before": [
+       "gríma",
+       true,
+       "noun",
+       [
+        "pie-lex-ghrey"
+       ]
+      ],
+      "after": [
+       "gríma (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 68128,
+      "lemma": "ljótr",
+      "form": "Ljót",
+      "locus": "AM-132-fol-Egils-saga 90r:16",
+      "before": [
+       "ljótr",
+       true,
+       "noun",
+       [
+        "pie-lex-lewdos"
+       ]
+      ],
+      "after": [
+       "ljótr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 22482,
+      "lemma": "gróa",
+      "form": "Gró",
+      "locus": "AM-132-fol-Droplaugarsona-saga 146r:10",
+      "before": [
+       "gróa",
+       true,
+       "noun",
+       [
+        "pie-lex-ghroh1yeti"
+       ]
+      ],
+      "after": [
+       "gróa (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 169314,
+      "lemma": "steinn",
+      "form": "Steinn",
+      "locus": "AM-132-fol-Laxdaela-saga 181v:21",
+      "before": [
+       "steinn",
+       true,
+       "noun",
+       [
+        "pie-lex-steyh2"
+       ]
+      ],
+      "after": [
+       "steinn (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 199076,
+      "lemma": "svartr",
+      "form": "Svart",
+      "locus": "AM-132-fol-Njals-saga 13v:17",
+      "before": [
+       "svartr",
+       true,
+       "noun",
+       [
+        "pie-lex-swordos"
+       ]
+      ],
+      "after": [
+       "svartr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 112371,
+      "lemma": "gríma",
+      "form": "Gríma",
+      "locus": "AM-132-fol-Fostbraedra-saga 201v:25",
+      "before": [
+       "gríma",
+       true,
+       "noun",
+       [
+        "pie-lex-ghrey"
+       ]
+      ],
+      "after": [
+       "gríma (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 209974,
+      "lemma": "geirr",
+      "form": "Geirr",
+      "locus": "AM-132-fol-Njals-saga 22r:3",
+      "before": [
+       "geirr",
+       true,
+       "noun",
+       [
+        "pie-lex-gjhoysos"
+       ]
+      ],
+      "after": [
+       "geirr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 207764,
+      "lemma": "geirr",
+      "form": "Geirr",
+      "locus": "AM-132-fol-Njals-saga 18r:40",
+      "before": [
+       "geirr",
+       true,
+       "noun",
+       [
+        "pie-lex-gjhoysos"
+       ]
+      ],
+      "after": [
+       "geirr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 265308,
+      "lemma": "ljótr",
+      "form": "Ljótr",
+      "locus": "AM-132-fol-Njals-saga 55r:33",
+      "before": [
+       "ljótr",
+       true,
+       "noun",
+       [
+        "pie-lex-lewdos"
+       ]
+      ],
+      "after": [
+       "ljótr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 22379,
+      "lemma": "gróa",
+      "form": "Gróa",
+      "locus": "AM-132-fol-Droplaugarsona-saga 146r:1",
+      "before": [
+       "gróa",
+       true,
+       "noun",
+       [
+        "pie-lex-ghroh1yeti"
+       ]
+      ],
+      "after": [
+       "gróa (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 66314,
+      "lemma": "ljótr",
+      "form": "Ljótr",
+      "locus": "AM-132-fol-Egils-saga 89r:29",
+      "before": [
+       "ljótr",
+       true,
+       "noun",
+       [
+        "pie-lex-lewdos"
+       ]
+      ],
+      "after": [
+       "ljótr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 37811,
+      "lemma": "baugr",
+      "form": "Baugi",
+      "locus": "AM-132-fol-Egils-saga 70v:29",
+      "before": [
+       "baugr",
+       true,
+       "noun",
+       [
+        "pie-lex-bhowghos"
+       ]
+      ],
+      "after": [
+       "baugr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 253072,
+      "lemma": "ljótr",
+      "form": "Ljótr",
+      "locus": "AM-132-fol-Njals-saga 48r:20",
+      "before": [
+       "ljótr",
+       true,
+       "noun",
+       [
+        "pie-lex-lewdos"
+       ]
+      ],
+      "after": [
+       "ljótr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 203598,
+      "lemma": "skjǫldr",
+      "form": "Skjǫldr",
+      "locus": "AM-132-fol-Njals-saga 16r:13",
+      "before": [
+       "skjǫldr",
+       true,
+       "noun",
+       [
+        "pie-lex-skelHtus",
+        "pie-lex-skelHtus-2"
+       ]
+      ],
+      "after": [
+       "skjǫldr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 200787,
+      "lemma": "svartr",
+      "form": "Svart",
+      "locus": "AM-132-fol-Njals-saga 14v:2",
+      "before": [
+       "svartr",
+       true,
+       "noun",
+       [
+        "pie-lex-swordos"
+       ]
+      ],
+      "after": [
+       "svartr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 144193,
+      "lemma": "ǫrn",
+      "form": "Ǫrn",
+      "locus": "AM-132-fol-Laxdaela-saga 164v:19",
+      "before": [
+       "ǫrn",
+       true,
+       "noun",
+       [
+        "pie-lex-h3erox"
+       ]
+      ],
+      "after": [
+       "ǫrn (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 100164,
+      "lemma": "rauðr",
+      "form": "Rauðr",
+      "locus": "AM-132-fol-Finnboga-saga 110r:12",
+      "before": [
+       "rauðr",
+       true,
+       "noun",
+       [
+        "pie-lex-h1rowdhos"
+       ]
+      ],
+      "after": [
+       "rauðr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 94619,
+      "lemma": "uxi",
+      "form": "Uxa",
+      "locus": "AM-132-fol-Finnboga-saga 106v:14",
+      "before": [
+       "uxi",
+       true,
+       "noun",
+       [
+        "pie-lex-uksexn"
+       ]
+      ],
+      "after": [
+       "uxi (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 355858,
+      "lemma": "gróa",
+      "form": "gro",
+      "locus": "AM-242-fol 51:4",
+      "before": [
+       "gróa",
+       true,
+       "noun",
+       [
+        "pie-lex-ghroh1yeti"
+       ]
+      ],
+      "after": [
+       "gróa (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 362912,
+      "lemma": "geirr",
+      "form": "geir",
+      "locus": "AM-242-fol 77:22",
+      "before": [
+       "geirr",
+       true,
+       "noun",
+       [
+        "pie-lex-gjhoysos"
+       ]
+      ],
+      "after": [
+       "geirr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 133460,
+      "lemma": "ari",
+      "form": "Ari",
+      "locus": "AM-132-fol-Laxdaela-saga 156v:33",
+      "before": [
+       "ari",
+       true,
+       "noun",
+       [
+        "pie-lex-h3erox"
+       ]
+      ],
+      "after": [
+       "ari (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 100253,
+      "lemma": "rauðr",
+      "form": "Rauðr",
+      "locus": "AM-132-fol-Finnboga-saga 110r:22",
+      "before": [
+       "rauðr",
+       true,
+       "noun",
+       [
+        "pie-lex-h1rowdhos"
+       ]
+      ],
+      "after": [
+       "rauðr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 188929,
+      "lemma": "ari",
+      "form": "Ari",
+      "locus": "AM-132-fol-Laxdaela-saga 194v:31",
+      "before": [
+       "ari",
+       true,
+       "noun",
+       [
+        "pie-lex-h3erox"
+       ]
+      ],
+      "after": [
+       "ari (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 220090,
+      "lemma": "geirr",
+      "form": "Geirr",
+      "locus": "AM-132-fol-Njals-saga 27v:16",
+      "before": [
+       "geirr",
+       true,
+       "noun",
+       [
+        "pie-lex-gjhoysos"
+       ]
+      ],
+      "after": [
+       "geirr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 98084,
+      "lemma": "svartr",
+      "form": "Svartr",
+      "locus": "AM-132-fol-Finnboga-saga 108v:13",
+      "before": [
+       "svartr",
+       true,
+       "noun",
+       [
+        "pie-lex-swordos"
+       ]
+      ],
+      "after": [
+       "svartr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 194304,
+      "lemma": "ljótr",
+      "form": "Ljóti",
+      "locus": "AM-132-fol-Laxdaela-saga 198r:21",
+      "before": [
+       "ljótr",
+       true,
+       "noun",
+       [
+        "pie-lex-lewdos"
+       ]
+      ],
+      "after": [
+       "ljótr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 204568,
+      "lemma": "skjǫldr",
+      "form": "Skjaldar",
+      "locus": "AM-132-fol-Njals-saga 16v:22",
+      "before": [
+       "skjǫldr",
+       true,
+       "noun",
+       [
+        "pie-lex-skelHtus",
+        "pie-lex-skelHtus-2"
+       ]
+      ],
+      "after": [
+       "skjǫldr (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 157972,
+      "lemma": "gríma",
+      "form": "Gríma",
+      "locus": "AM-132-fol-Laxdaela-saga 174r:10",
+      "before": [
+       "gríma",
+       true,
+       "noun",
+       [
+        "pie-lex-ghrey"
+       ]
+      ],
+      "after": [
+       "gríma (name)",
+       false,
+       "noun",
+       []
+      ]
+     }
+    ]
+   },
+   "icepahc": {
+    "tokens": 255967,
+    "changed_tokens": 800,
+    "census_exact_name_lemmas": 103,
+    "census_allowlisted": [
+     "andi",
+     "dagur",
+     "drottinn",
+     "guð",
+     "hel",
+     "jörð",
+     "máni",
+     "sól"
+    ],
+    "census_now_qualified": [
+     "akur",
+     "ari",
+     "askur",
+     "bakki",
+     "berg",
+     "bjarg",
+     "bleikur",
+     "blundur",
+     "borg",
+     "bróðir",
+     "brún",
+     "brúnn",
+     "börkur",
+     "eilífur",
+     "faðir",
+     "fell",
+     "fiður",
+     "fljót",
+     "flói",
+     "foss",
+     "gangur",
+     "garður",
+     "glámur",
+     "gála",
+     "gæs",
+     "haf",
+     "halla",
+     "halli",
+     "hann",
+     "haust",
+     "hersir",
+     "himinn",
+     "hjálmur",
+     "hlíð",
+     "hof",
+     "holt",
+     "horn",
+     "hraun",
+     "hólmur",
+     "hún",
+     "iða",
+     "karl",
+     "kinn",
+     "kol",
+     "ljótur",
+     "loft",
+     "loðinn",
+     "maður",
+     "mæri",
+     "mér",
+     "mörk",
+     "mýrar",
+     "mýri",
+     "oddi",
+     "orri",
+     "rauður",
+     "selja",
+     "sigur",
+     "skalli",
+     "skjálgur",
+     "skuggi",
+     "skál",
+     "skíði",
+     "sonur",
+     "spaði",
+     "staður",
+     "steinn",
+     "stjarna",
+     "stúfur",
+     "sumar",
+     "svartur",
+     "sveinn",
+     "sá",
+     "séra",
+     "tunga",
+     "tveir",
+     "uxi",
+     "vali",
+     "vatn",
+     "veggur",
+     "vog",
+     "vér",
+     "wór",
+     "álfur",
+     "ás",
+     "æsa",
+     "ég",
+     "óreiða",
+     "ósk",
+     "ótta",
+     "önd",
+     "örn",
+     "þetta",
+     "þér",
+     "þú"
+    ],
+    "lost_roots_tokens": 800,
+    "lost_roots_lemma_counts": {
+     "sveinn": 108,
+     "halli": 81,
+     "álfur": 51,
+     "vali": 36,
+     "örn": 32,
+     "borg": 29,
+     "svartur": 27,
+     "glámur": 26,
+     "loðinn": 24,
+     "foss": 22,
+     "faðir": 21,
+     "stúfur": 19,
+     "himinn": 17,
+     "ótta": 17,
+     "bjarg": 16,
+     "oddi": 14,
+     "hof": 14,
+     "rauður": 12,
+     "staður": 12,
+     "sonur": 11,
+     "hann": 11,
+     "flói": 9,
+     "þetta": 9,
+     "holt": 8,
+     "ég": 8,
+     "fiður": 8,
+     "þú": 7,
+     "tunga": 7,
+     "uxi": 7,
+     "æsa": 6,
+     "loft": 6,
+     "ás": 5,
+     "skíði": 5,
+     "fell": 5,
+     "hlíð": 5,
+     "haf": 4,
+     "karl": 4,
+     "kol": 4,
+     "skál": 4,
+     "steinn": 4,
+     "gála": 4,
+     "halla": 3,
+     "börkur": 3,
+     "blundur": 3,
+     "sumar": 3,
+     "maður": 3,
+     "þér": 3,
+     "sá": 3,
+     "mörk": 3,
+     "brúnn": 3,
+     "ari": 2,
+     "vér": 2,
+     "fljót": 2,
+     "stjarna": 2,
+     "hjálmur": 2,
+     "horn": 2,
+     "berg": 2,
+     "skalli": 2,
+     "skjálgur": 2,
+     "hraun": 1,
+     "veggur": 1,
+     "akur": 1,
+     "spaði": 1,
+     "ljótur": 1,
+     "ósk": 1,
+     "hólmur": 1,
+     "selja": 1,
+     "óreiða": 1,
+     "iða": 1,
+     "hersir": 1,
+     "askur": 1,
+     "mýri": 1,
+     "mýrar": 1,
+     "vatn": 1,
+     "haust": 1,
+     "gangur": 1,
+     "mér": 1,
+     "orri": 1,
+     "sigur": 1,
+     "gæs": 1,
+     "wór": 1,
+     "bróðir": 1,
+     "mæri": 1,
+     "bakki": 1,
+     "séra": 1,
+     "vog": 1,
+     "garður": 1,
+     "eilífur": 1,
+     "tveir": 1,
+     "kinn": 1,
+     "hún": 1,
+     "önd": 1,
+     "skuggi": 1,
+     "bleikur": 1,
+     "brún": 1
+    },
+    "regained_tokens": 0,
+    "deity_tokens_lost_roots": 0,
+    "kept_census_lemma_token_counts": {
+     "maður": 2671,
+     "guð": 843,
+     "dagur": 460,
+     "bróðir": 362,
+     "sonur": 326,
+     "faðir": 271,
+     "staður": 256,
+     "drottinn": 221,
+     "sumar": 193,
+     "jörð": 147,
+     "borg": 128,
+     "sveinn": 85,
+     "vatn": 77,
+     "andi": 75,
+     "himinn": 75,
+     "steinn": 73,
+     "haust": 68,
+     "eilífur": 67,
+     "önd": 59,
+     "sól": 57,
+     "garður": 56,
+     "selja": 54,
+     "haf": 48,
+     "sigur": 48,
+     "tunga": 40,
+     "karl": 34,
+     "rauður": 26,
+     "loft": 25,
+     "hjálmur": 23,
+     "uxi": 21,
+     "svartur": 16,
+     "mörk": 15,
+     "bjarg": 14,
+     "stjarna": 12,
+     "hof": 12,
+     "ótta": 11,
+     "brún": 11,
+     "akur": 10,
+     "hólmur": 10,
+     "ljótur": 9,
+     "berg": 9,
+     "örn": 9,
+     "þér": 8,
+     "sá": 8,
+     "kinn": 8,
+     "gangur": 7,
+     "horn": 7,
+     "skuggi": 6,
+     "hel": 6,
+     "stúfur": 6,
+     "þú": 5,
+     "veggur": 5,
+     "bakki": 5,
+     "máni": 5,
+     "hlíð": 5,
+     "fell": 5,
+     "foss": 3,
+     "hann": 3,
+     "holt": 3,
+     "orri": 3,
+     "bleikur": 3,
+     "brúnn": 3,
+     "vér": 2,
+     "loðinn": 2,
+     "hraun": 2,
+     "halla": 2,
+     "vog": 2,
+     "æsa": 2,
+     "halli": 2,
+     "mér": 2,
+     "mýri": 1,
+     "óreiða": 1,
+     "wór": 1,
+     "ari": 1,
+     "skjálgur": 1,
+     "glámur": 1,
+     "skál": 1,
+     "hún": 1,
+     "skíði": 1,
+     "tveir": 1,
+     "hersir": 1
+    },
+    "lost_roots_sample_30": [
+     {
+      "index": 119984,
+      "lemma": "halli",
+      "form": "",
+      "locus": "1275.morkin.nar-his s1345",
+      "before": [
+       "halli",
+       true,
+       "noun",
+       [
+        "pie-lex-kjoltos"
+       ]
+      ],
+      "after": [
+       "halli (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 26389,
+      "lemma": "þú",
+      "form": "",
+      "locus": "1150.homiliubok.rel-ser s1295",
+      "before": [
+       "þú",
+       true,
+       "noun",
+       [
+        "pie-lex-tuh2"
+       ]
+      ],
+      "after": [
+       "þú (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 110953,
+      "lemma": "fiður",
+      "form": "",
+      "locus": "1275.morkin.nar-his s395",
+      "before": [
+       "fiður",
+       true,
+       "noun",
+       [
+        "pie-lex-peth2r"
+       ]
+      ],
+      "after": [
+       "fiður (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 71496,
+      "lemma": "álfur",
+      "form": "",
+      "locus": "1250.sturlunga.nar-sag s1344",
+      "before": [
+       "álfur",
+       true,
+       "noun",
+       [
+        "pie-lex-albhos"
+       ]
+      ],
+      "after": [
+       "álfur (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 255186,
+      "lemma": "örn",
+      "form": "",
+      "locus": "1400.viglundur.nar-sag s1207",
+      "before": [
+       "örn",
+       true,
+       "noun",
+       [
+        "pie-lex-h3erox"
+       ]
+      ],
+      "after": [
+       "örn (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 28474,
+      "lemma": "himinn",
+      "form": "",
+      "locus": "1150.homiliubok.rel-ser s1457",
+      "before": [
+       "himinn",
+       true,
+       "noun",
+       [
+        "pie-lex-h2ekjmox"
+       ]
+      ],
+      "after": [
+       "himinn (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 183262,
+      "lemma": "loðinn",
+      "form": "",
+      "locus": "1325.arni.nar-sag s954",
+      "before": [
+       "loðinn",
+       true,
+       "noun",
+       [
+        "pie-lex-h1lewdheti"
+       ]
+      ],
+      "after": [
+       "loðinn (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 205026,
+      "lemma": "hún",
+      "form": "",
+      "locus": "1350.finnbogi.nar-sag s877",
+      "before": [
+       "hún",
+       true,
+       "noun",
+       [
+        "pie-lex-h1oynos"
+       ]
+      ],
+      "after": [
+       "hún (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 119932,
+      "lemma": "þér",
+      "form": "",
+      "locus": "1275.morkin.nar-his s1337",
+      "before": [
+       "þér",
+       true,
+       "noun",
+       [
+        "pie-lex-yuHs"
+       ]
+      ],
+      "after": [
+       "þér (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 253117,
+      "lemma": "sá",
+      "form": "",
+      "locus": "1400.viglundur.nar-sag s971",
+      "before": [
+       "sá",
+       true,
+       "noun",
+       [
+        "pie-lex-seh1yeti",
+        "pie-lex-so"
+       ]
+      ],
+      "after": [
+       "sá (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 242833,
+      "lemma": "svartur",
+      "form": "",
+      "locus": "1400.gunnar2.nar-sag s222",
+      "before": [
+       "svartur",
+       true,
+       "noun",
+       [
+        "pie-lex-swordos"
+       ]
+      ],
+      "after": [
+       "svartur (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 45104,
+      "lemma": "oddi",
+      "form": "",
+      "locus": "1210.jartein.rel-sag s502",
+      "before": [
+       "oddi",
+       true,
+       "noun",
+       [
+        "pie-lex-ud"
+       ]
+      ],
+      "after": [
+       "oddi (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 97199,
+      "lemma": "sveinn",
+      "form": "",
+      "locus": "1260.jomsvikingar.nar-sag s1147",
+      "before": [
+       "sveinn",
+       true,
+       "noun",
+       [
+        "pie-lex-swe-2"
+       ]
+      ],
+      "after": [
+       "sveinn (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 59870,
+      "lemma": "borg",
+      "form": "",
+      "locus": "1250.sturlunga.nar-sag s81",
+      "before": [
+       "borg",
+       true,
+       "noun",
+       [
+        "pie-lex-bhergjhs"
+       ]
+      ],
+      "after": [
+       "borg (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 213251,
+      "lemma": "kol",
+      "form": "",
+      "locus": "1350.finnbogi.nar-sag s1800",
+      "before": [
+       "kol",
+       true,
+       "noun",
+       [
+        "pie-lex-gjwlHom"
+       ]
+      ],
+      "after": [
+       "kol (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 210818,
+      "lemma": "borg",
+      "form": "",
+      "locus": "1350.finnbogi.nar-sag s1517",
+      "before": [
+       "borg",
+       true,
+       "noun",
+       [
+        "pie-lex-bhergjhs"
+       ]
+      ],
+      "after": [
+       "borg (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 150947,
+      "lemma": "ás",
+      "form": "",
+      "locus": "1310.grettir.nar-sag s244",
+      "before": [
+       "ás",
+       true,
+       "noun",
+       [
+        "pie-lex-h2emsus"
+       ]
+      ],
+      "after": [
+       "ás (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 114442,
+      "lemma": "sveinn",
+      "form": "",
+      "locus": "1275.morkin.nar-his s730",
+      "before": [
+       "sveinn",
+       true,
+       "noun",
+       [
+        "pie-lex-swe-2"
+       ]
+      ],
+      "after": [
+       "sveinn (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 111225,
+      "lemma": "sveinn",
+      "form": "",
+      "locus": "1275.morkin.nar-his s426",
+      "before": [
+       "sveinn",
+       true,
+       "noun",
+       [
+        "pie-lex-swe-2"
+       ]
+      ],
+      "after": [
+       "sveinn (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 114404,
+      "lemma": "sveinn",
+      "form": "",
+      "locus": "1275.morkin.nar-his s726",
+      "before": [
+       "sveinn",
+       true,
+       "noun",
+       [
+        "pie-lex-swe-2"
+       ]
+      ],
+      "after": [
+       "sveinn (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 121499,
+      "lemma": "stúfur",
+      "form": "",
+      "locus": "1275.morkin.nar-his s1523",
+      "before": [
+       "stúfur",
+       true,
+       "noun",
+       [
+        "pie-lex-stewp"
+       ]
+      ],
+      "after": [
+       "stúfur (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 117326,
+      "lemma": "sveinn",
+      "form": "",
+      "locus": "1275.morkin.nar-his s1024",
+      "before": [
+       "sveinn",
+       true,
+       "noun",
+       [
+        "pie-lex-swe-2"
+       ]
+      ],
+      "after": [
+       "sveinn (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 183646,
+      "lemma": "loft",
+      "form": "",
+      "locus": "1325.arni.nar-sag s975",
+      "before": [
+       "loft",
+       true,
+       "noun",
+       [
+        "pie-lex-lubhtus"
+       ]
+      ],
+      "after": [
+       "loft (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 113936,
+      "lemma": "sveinn",
+      "form": "",
+      "locus": "1275.morkin.nar-his s686",
+      "before": [
+       "sveinn",
+       true,
+       "noun",
+       [
+        "pie-lex-swe-2"
+       ]
+      ],
+      "after": [
+       "sveinn (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 202797,
+      "lemma": "hann",
+      "form": "",
+      "locus": "1350.finnbogi.nar-sag s601",
+      "before": [
+       "hann",
+       true,
+       "noun",
+       [
+        "pie-lex-is-2"
+       ]
+      ],
+      "after": [
+       "hann (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 213392,
+      "lemma": "kol",
+      "form": "",
+      "locus": "1350.finnbogi.nar-sag s1820",
+      "before": [
+       "kol",
+       true,
+       "noun",
+       [
+        "pie-lex-gjwlHom"
+       ]
+      ],
+      "after": [
+       "kol (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 181932,
+      "lemma": "loðinn",
+      "form": "",
+      "locus": "1325.arni.nar-sag s908",
+      "before": [
+       "loðinn",
+       true,
+       "noun",
+       [
+        "pie-lex-h1lewdheti"
+       ]
+      ],
+      "after": [
+       "loðinn (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 36366,
+      "lemma": "himinn",
+      "form": "",
+      "locus": "1150.homiliubok.rel-ser s1952",
+      "before": [
+       "himinn",
+       true,
+       "noun",
+       [
+        "pie-lex-h2ekjmox"
+       ]
+      ],
+      "after": [
+       "himinn (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 101863,
+      "lemma": "gangur",
+      "form": "",
+      "locus": "1270.gragas.law-law s8",
+      "before": [
+       "gangur",
+       true,
+       "noun",
+       [
+        "pie-lex-gjhenghos"
+       ]
+      ],
+      "after": [
+       "gangur (name)",
+       false,
+       "noun",
+       []
+      ]
+     },
+     {
+      "index": 204204,
+      "lemma": "þú",
+      "form": "",
+      "locus": "1350.finnbogi.nar-sag s776",
+      "before": [
+       "þú",
+       true,
+       "noun",
+       [
+        "pie-lex-tuh2"
+       ]
+      ],
+      "after": [
+       "þú (name)",
+       false,
+       "noun",
+       []
+      ]
+     }
+    ]
+   }
+  },
+  "aggregate_excluding_overlapping_grp": {
+   "lost_roots_tokens": 4629,
+   "top_40_lost_lemmas": [
+    [
+     "Πόντος",
+     620
+    ],
+    [
+     "Ταῦρος",
+     434
+    ],
+    [
+     "Ὀρφεύς",
+     253
+    ],
+    [
+     "Ῥέα",
+     170
+    ],
+    [
+     "Δαίδαλος",
+     158
+    ],
+    [
+     "Μέμνων",
+     155
+    ],
+    [
+     "Καύκασος",
+     151
+    ],
+    [
+     "Σεμέλη",
+     114
+    ],
+    [
+     "Νεμέα",
+     112
+    ],
+    [
+     "Κατάνη",
+     112
+    ],
+    [
+     "sveinn",
+     108
+    ],
+    [
+     "Ἄρκτος",
+     101
+    ],
+    [
+     "Στρυμών",
+     99
+    ],
+    [
+     "Τρίτων",
+     84
+    ],
+    [
+     "Πάδος",
+     83
+    ],
+    [
+     "halli",
+     81
+    ],
+    [
+     "Νηρεύς",
+     77
+    ],
+    [
+     "Ἠριδανός",
+     67
+    ],
+    [
+     "Φυλή",
+     66
+    ],
+    [
+     "Μέντωρ",
+     61
+    ],
+    [
+     "álfur",
+     51
+    ],
+    [
+     "ljótr",
+     50
+    ],
+    [
+     "Πάρος",
+     49
+    ],
+    [
+     "Μαῖα",
+     43
+    ],
+    [
+     "geirr",
+     43
+    ],
+    [
+     "Κολοφών",
+     38
+    ],
+    [
+     "Κώρυκος",
+     37
+    ],
+    [
+     "Γένεσις",
+     36
+    ],
+    [
+     "vali",
+     36
+    ],
+    [
+     "Ἄκτωρ",
+     33
+    ],
+    [
+     "borg",
+     32
+    ],
+    [
+     "örn",
+     32
+    ],
+    [
+     "Τέως",
+     31
+    ],
+    [
+     "svartur",
+     27
+    ],
+    [
+     "glámur",
+     26
+    ],
+    [
+     "Κολωνός",
+     24
+    ],
+    [
+     "loðinn",
+     24
+    ],
+    [
+     "Ἱέραξ",
+     23
+    ],
+    [
+     "faðir",
+     22
+    ],
+    [
+     "foss",
+     22
+    ]
+   ]
+  }
+ },
+ "implementation_sha256": {
+  "pie/name_mapping.py": "ba929cec8c0a120078156345886b686907474f303963719fc8f5262cc85ebe4b",
+  "scripts/audit_theonym_narrowing.py": "e3d20be1c5e75bf88e61323d050ff8a6008cc09a58818a39d9dd4d517f04f6bf",
+  "tests/test_name_mapping.py": "bb2370f2158332c2d183c7b2327806553654dea753c8b4b448f7ab346aa6aea6",
+  "tests/test_stagecs_w6_other.py": "0d6e7eae7f8baec2ebe27a1a890364635853de7dce4ca44f1cfb132e9cebea82"
+ },
+ "validation": {
+  "full_suite_command": "UV_CACHE_DIR=/tmp/pie-uv-cache uv run python -I -m pytest -q",
+  "full_suite": "3113 passed in 486.04s (first run before fixes: 2 failed, 3111 passed: the w9 óðr divine exemption and the w6 Πόντος expectation, both resolved)",
+  "focused": "tests/test_name_mapping.py, test_mapping_norse_w9.py, test_stagecs_w6_other.py: 98 passed"
+ }
+}

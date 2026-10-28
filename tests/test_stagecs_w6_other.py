@@ -36,10 +36,10 @@ def test_two_columns_require_repeated_internal_stanza_markers():
 @pytest.mark.parametrize('name,common',[('Λύκος','λύκος'),('Φᾶσις','φάσις'),('Πόντος','πόντος'),('Ἀντίλοχος','λόχος')])
 def test_dictionary_name_pos_keeps_common_homonyms(name,common):
     t=fs.Token('grc',name,name,'fixture',{},True,'noun')
-    if name == 'Πόντος':  # inherited sea noun, also personified; exact lexeme survives
-        assert t.lemma == name and t.content
-    else:
-        assert t.lemma == name+' (name)' and not t.content and t.pos=='name'
+    # Theonym narrowing (docs/research/8c-theonym-narrowing.md): source-tagged
+    # Πόντος is mostly the region/Black Sea, so it is a name like the others.
+    # The lowercase inherited sea noun πόντος is unaffected (checked below).
+    assert t.lemma == name+' (name)' and not t.content and t.pos=='name'
     t=fs.Token('grc',common,common.title(),'fixture',{},True,'noun')
     assert t.lemma==common and t.content
     assert fs.Token('grc','Ἄγνωστον','Ἄγνωστον','fixture',{},True,'noun').content
