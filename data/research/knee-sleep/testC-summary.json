@@ -1,0 +1,559 @@
+{
+ "units_by_corpus": {
+  "grc": 281664,
+  "grc-late": 624778,
+  "hom": 27760
+ },
+ "sleep_units": {
+  "simplex": {
+   "grc": 988,
+   "grc-late": 2452,
+   "hom": 213
+  },
+  "compounds": {
+   "grc": 1081,
+   "grc-late": 2657,
+   "hom": 225
+  }
+ },
+ "knee_units": {
+  "grc": 238,
+  "grc-late": 716,
+  "hom": 121
+ },
+ "base": {
+  "simplex": {
+   "hom": {
+    "κοιμάω": 41,
+    "ὕπνος": 104,
+    "καθεύδω": 7,
+    "εὕδω": 60,
+    "ἰαύω": 13,
+    "ὑπνόω": 3,
+    "δαρθάνω": 1
+   },
+   "grc": {
+    "ὕπνος": 486,
+    "κοιμάω": 124,
+    "ἰαύω": 7,
+    "εὕδω": 74,
+    "καθεύδω": 302,
+    "ὑπνόω": 33
+   },
+   "grc-late": {
+    "ὕπνος": 1267,
+    "κοιμάω": 548,
+    "ὑπνόω": 122,
+    "εὕδω": 64,
+    "ἰαύω": 20,
+    "καθεύδω": 535,
+    "δαρθάνω": 1
+   }
+  },
+  "compounds": {
+   "hom": {
+    "κοιμάω": 44,
+    "ὕπνος": 104,
+    "καθεύδω": 7,
+    "εὕδω": 62,
+    "δαρθάνω": 8,
+    "ἰαύω": 13,
+    "ὑπνόω": 3
+   },
+   "grc": {
+    "ὕπνος": 486,
+    "κοιμάω": 179,
+    "ἰαύω": 7,
+    "εὕδω": 85,
+    "καθεύδω": 315,
+    "ὑπνόω": 33,
+    "δαρθάνω": 23
+   },
+   "grc-late": {
+    "ὕπνος": 1267,
+    "κοιμάω": 644,
+    "ὑπνόω": 122,
+    "εὕδω": 66,
+    "ἰαύω": 20,
+    "καθεύδω": 611,
+    "δαρθάνω": 50
+   }
+  }
+ },
+ "elided_added": {
+  "grc:γόνυ": 14,
+  "grc:εὕδω": 6,
+  "grc:καθεύδω": 2,
+  "grc:κοιμάω": 1,
+  "grc:ἰαύω": 1,
+  "grc:ὕπνος": 1,
+  "grc-late:γόνυ": 37,
+  "grc-late:εὕδω": 5,
+  "grc-late:καθεύδω": 2
+ },
+ "cands": {
+  "window": 11,
+  "read-window": 13,
+  "unit": 5
+ },
+ "audit_unlemmatized": [
+  {
+   "family": "knee",
+   "corpus": "grc-late",
+   "form": "γουνατ",
+   "elided": true,
+   "n": 14,
+   "example": "Apollonius Rhodius Argonautica 1.1174"
+  },
+  {
+   "family": "other",
+   "corpus": "grc",
+   "form": "ευδοντ",
+   "elided": true,
+   "n": 5,
+   "example": "Theognis Elegiae 469"
+  },
+  {
+   "family": "knee",
+   "corpus": "grc",
+   "form": "γονατ",
+   "elided": true,
+   "n": 4,
+   "example": "Simonides Epigrammata 16.24.2"
+  },
+  {
+   "family": "knee",
+   "corpus": "grc-late",
+   "form": "γουναθ",
+   "elided": true,
+   "n": 3,
+   "example": "Aratus Phaenomena 655"
+  },
+  {
+   "family": "other",
+   "corpus": "grc-late",
+   "form": "ευδετ",
+   "elided": true,
+   "n": 3,
+   "example": "Theocritus Idyllia 18.54"
+  },
+  {
+   "family": "knee",
+   "corpus": "grc-late",
+   "form": "γονατα",
+   "elided": false,
+   "n": 3,
+   "example": "Polybius Historiae 2.41.10 s1"
+  },
+  {
+   "family": "knee",
+   "corpus": "grc",
+   "form": "γουνατ",
+   "elided": true,
+   "n": 2,
+   "example": "Hymni Homerici In Cererem 281"
+  },
+  {
+   "family": "knee",
+   "corpus": "grc-late",
+   "form": "γονατας",
+   "elided": false,
+   "n": 2,
+   "example": "Polybius Historiae 2.43.9 s1 (w1/2)"
+  },
+  {
+   "family": "knee",
+   "corpus": "grc-late",
+   "form": "γοναταν",
+   "elided": false,
+   "n": 2,
+   "example": "Polybius Historiae 2.45.1 s1 (w2/3)"
+  },
+  {
+   "family": "knee",
+   "corpus": "grc",
+   "form": "γουναθ",
+   "elided": true,
+   "n": 1,
+   "example": "Hesiodus Theogonia 460"
+  },
+  {
+   "family": "other",
+   "corpus": "grc",
+   "form": "ευδοιτ",
+   "elided": true,
+   "n": 1,
+   "example": "Aeschylus Eumenides 94"
+  },
+  {
+   "family": "other",
+   "corpus": "grc",
+   "form": "ιαυονθ",
+   "elided": true,
+   "n": 1,
+   "example": "Euripides Hercules 1049"
+  },
+  {
+   "family": "other",
+   "corpus": "grc",
+   "form": "καθευδουσ",
+   "elided": true,
+   "n": 1,
+   "example": "Euripides Phoenisae 634"
+  },
+  {
+   "family": "other",
+   "corpus": "grc",
+   "form": "εκοιμισ",
+   "elided": true,
+   "n": 1,
+   "example": "Euripides Rhesus 826"
+  },
+  {
+   "family": "swep",
+   "corpus": "grc",
+   "form": "υπν",
+   "elided": true,
+   "n": 1,
+   "example": "Sophocles Philoctetes 827"
+  },
+  {
+   "family": "other",
+   "corpus": "grc",
+   "form": "καθευδ",
+   "elided": true,
+   "n": 1,
+   "example": "Aristophanes Aves 842"
+  },
+  {
+   "family": "other",
+   "corpus": "grc",
+   "form": "κοιμασθ",
+   "elided": true,
+   "n": 1,
+   "example": "Aristophanes Lysistrata 758"
+  },
+  {
+   "family": "other",
+   "corpus": "grc",
+   "form": "ιαυ",
+   "elided": false,
+   "n": 1,
+   "example": "Aristophanes Ranae 272"
+  },
+  {
+   "family": "other",
+   "corpus": "grc",
+   "form": "ιαυοι",
+   "elided": false,
+   "n": 1,
+   "example": "Aristophanes Ranae 1029"
+  },
+  {
+   "family": "knee",
+   "corpus": "grc-late",
+   "form": "γονατ",
+   "elided": true,
+   "n": 1,
+   "example": "Plutarchus Quaestiones convivales 8.9 s48"
+  },
+  {
+   "family": "swep",
+   "corpus": "grc-late",
+   "form": "υπνωδως",
+   "elided": false,
+   "n": 1,
+   "example": "Galenus De comate secundum Hippocratem liber 3.197 s1 (w1/2)"
+  },
+  {
+   "family": "other",
+   "corpus": "grc-late",
+   "form": "ευδο",
+   "elided": false,
+   "n": 1,
+   "example": "Galenus In Hippocratis librum primum epidemiarum commentarii iii 3.2.pr.230.407 s18"
+  },
+  {
+   "family": "other",
+   "corpus": "grc-late",
+   "form": "ευδοντ",
+   "elided": true,
+   "n": 1,
+   "example": "Athenaeus Deipnosophistae 8.66.364c s5"
+  },
+  {
+   "family": "other",
+   "corpus": "grc-late",
+   "form": "καθευδουσ",
+   "elided": true,
+   "n": 1,
+   "example": "Athenaeus Deipnosophistae 9.3.367c s3"
+  },
+  {
+   "family": "other",
+   "corpus": "grc-late",
+   "form": "ευδονθ",
+   "elided": true,
+   "n": 1,
+   "example": "Athenaeus Deipnosophistae 11.39.470a s2 (w3/3)"
+  },
+  {
+   "family": "other",
+   "corpus": "grc-late",
+   "form": "καθευδ",
+   "elided": true,
+   "n": 1,
+   "example": "Athenaeus Deipnosophistae 15.58.699f s4"
+  }
+ ],
+ "base_pooled": {
+  "lexeme_units": {
+   "κοιμάω": 713,
+   "ὕπνος": 1857,
+   "καθεύδω": 844,
+   "εὕδω": 198,
+   "ἰαύω": 40,
+   "ὑπνόω": 158,
+   "δαρθάνω": 2
+  },
+  "swep_share": 0.5285939139559287,
+  "sleep_units": 3653,
+  "units_with_swep": 2010
+ },
+ "base_share_by_layer": {
+  "hom": {
+   "ὕπνος": 0.454,
+   "ὑπνόω": 0.013,
+   "εὕδω": 0.262,
+   "καθεύδω": 0.031,
+   "κοιμάω": 0.179,
+   "ἰαύω": 0.057,
+   "δαρθάνω": 0.004
+  },
+  "grc": {
+   "ὕπνος": 0.474,
+   "ὑπνόω": 0.032,
+   "εὕδω": 0.072,
+   "καθεύδω": 0.294,
+   "κοιμάω": 0.121,
+   "ἰαύω": 0.007,
+   "δαρθάνω": 0.0
+  },
+  "grc-late": {
+   "ὕπνος": 0.496,
+   "ὑπνόω": 0.048,
+   "εὕδω": 0.025,
+   "καθεύδω": 0.209,
+   "κοιμάω": 0.214,
+   "ἰαύω": 0.008,
+   "δαρθάνω": 0.0
+  }
+ },
+ "tests": {
+  "unit:positives": {
+   "loci": [],
+   "lexemes": {},
+   "ruleA_lexeme_occurrences": {
+    "table": [
+     [
+      0,
+      0
+     ],
+     [
+      2015,
+      1797
+     ]
+    ],
+    "p_one_sided": 1.0
+   },
+   "ruleB_units_with_swep": {
+    "table": [
+     [
+      0,
+      0
+     ],
+     [
+      2010,
+      1643
+     ]
+    ],
+    "p_one_sided": 1.0
+   }
+  },
+  "unit:positives_strict": {
+   "loci": [],
+   "lexemes": {},
+   "ruleA_lexeme_occurrences": {
+    "table": [
+     [
+      0,
+      0
+     ],
+     [
+      2015,
+      1797
+     ]
+    ],
+    "p_one_sided": 1.0
+   },
+   "ruleB_units_with_swep": {
+    "table": [
+     [
+      0,
+      0
+     ],
+     [
+      2010,
+      1643
+     ]
+    ],
+    "p_one_sided": 1.0
+   }
+  },
+  "unit:positives+near": {
+   "loci": [
+    "Flavius Josephus Antiquitates Judaicae 8.28 s1"
+   ],
+   "lexemes": {
+    "κοιμάω": 1
+   },
+   "ruleA_lexeme_occurrences": {
+    "table": [
+     [
+      0,
+      1
+     ],
+     [
+      2015,
+      1796
+     ]
+    ],
+    "p_one_sided": 1.0
+   },
+   "ruleB_units_with_swep": {
+    "table": [
+     [
+      0,
+      1
+     ],
+     [
+      2010,
+      1642
+     ]
+    ],
+    "p_one_sided": 1.0
+   }
+  },
+  "window:positives": {
+   "loci": [
+    "Hymni Homerici In Cererem 263",
+    "Posidippus Epigrammata 7.170.5"
+   ],
+   "lexemes": {
+    "ἰαύω": 1,
+    "κοιμάω": 1,
+    "ὕπνος": 1
+   },
+   "ruleA_lexeme_occurrences": {
+    "table": [
+     [
+      1,
+      2
+     ],
+     [
+      2014,
+      1795
+     ]
+    ],
+    "p_one_sided": 0.8953348630734903
+   },
+   "ruleB_units_with_swep": {
+    "table": [
+     [
+      1,
+      1
+     ],
+     [
+      2009,
+      1642
+     ]
+    ],
+    "p_one_sided": 0.7977771274731357
+   }
+  },
+  "window:positives_strict": {
+   "loci": [
+    "Posidippus Epigrammata 7.170.5"
+   ],
+   "lexemes": {
+    "κοιμάω": 1,
+    "ὕπνος": 1
+   },
+   "ruleA_lexeme_occurrences": {
+    "table": [
+     [
+      1,
+      1
+     ],
+     [
+      2014,
+      1796
+     ]
+    ],
+    "p_one_sided": 0.7778416870807787
+   },
+   "ruleB_units_with_swep": {
+    "table": [
+     [
+      1,
+      0
+     ],
+     [
+      2009,
+      1643
+     ]
+    ],
+    "p_one_sided": 0.5502326854640022
+   }
+  },
+  "window:positives+near": {
+   "loci": [
+    "Il. 22.500",
+    "Hymni Homerici In Cererem 263",
+    "Posidippus Epigrammata 7.170.5",
+    "Flavius Josephus Antiquitates Judaicae 8.28 s1"
+   ],
+   "lexemes": {
+    "ὕπνος": 2,
+    "ἰαύω": 1,
+    "κοιμάω": 2
+   },
+   "ruleA_lexeme_occurrences": {
+    "table": [
+     [
+      2,
+      3
+     ],
+     [
+      2013,
+      1794
+     ]
+    ],
+    "p_one_sided": 0.846363604360815
+   },
+   "ruleB_units_with_swep": {
+    "table": [
+     [
+      2,
+      2
+     ],
+     [
+      2008,
+      1641
+     ]
+    ],
+    "p_one_sided": 0.7589486788498901
+   }
+  }
+ }
+}

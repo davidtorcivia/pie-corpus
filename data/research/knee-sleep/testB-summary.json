@@ -1,0 +1,558 @@
+{
+ "tablets": 23937,
+ "tablets_skipped_duplicate_docID": 153,
+ "paragraphs": 92183,
+ "sleep_paragraph_words": {
+  "n": 231,
+  "median": 20,
+  "max": 351
+ },
+ "token_status": {
+  "dream:only": 50,
+  "dream:sel": 55,
+  "dream:spell": 3,
+  "dreamlogo:amb": 920,
+  "dreamlogo:only": 3,
+  "dreamlogo:rej": 436,
+  "dreamlogo:sel": 8,
+  "dreamlogo:spell": 206,
+  "knee:amb": 68,
+  "knee:only": 5,
+  "knee:rej": 1,
+  "knee:sel": 133,
+  "knee:spell": 3,
+  "knee:vet-yes": 1,
+  "kneecloth:amb": 18,
+  "kneecloth:rej": 3,
+  "kneecloth:sel": 3,
+  "ses:amb": 46,
+  "ses:only": 7,
+  "ses:sel": 215,
+  "ses:spell": 20,
+  "ses:vet-no": 1,
+  "swep:amb": 311,
+  "swep:rej": 250,
+  "swep:vet-no": 3,
+  "swep:vet-yes": 16,
+  "tesha:only": 31,
+  "tesha:sel": 13,
+  "tesha:spell": 1,
+  "zashai:only": 19,
+  "zashai:sel": 42,
+  "zashai:spell": 2
+ },
+ "tables": {
+  "knee": {
+   "swep": {
+    "with": 1,
+    "without": 12
+   },
+   "ses": {
+    "with": 1,
+    "without": 215
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 0.11054929901172145,
+    "or": 17.916666666666668
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 0.12487050466183218,
+    "or": 15.5,
+    "table": [
+     [
+      1,
+      14
+     ],
+     [
+      1,
+      217
+     ]
+    ]
+   }
+  },
+  "dream_strict": {
+   "swep": {
+    "with": 4,
+    "without": 9
+   },
+   "ses": {
+    "with": 5,
+    "without": 211
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 0.0006855344486856062,
+    "or": 18.755555555555556
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 0.0011806039713893374,
+    "or": 15.49090909090909,
+    "table": [
+     [
+      4,
+      11
+     ],
+     [
+      5,
+      213
+     ]
+    ]
+   }
+  },
+  "dream_broad": {
+   "swep": {
+    "with": 5,
+    "without": 8
+   },
+   "ses": {
+    "with": 7,
+    "without": 209
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 0.0001639530628098843,
+    "or": 18.660714285714285
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 0.0003336777091560727,
+    "or": 15.071428571428571,
+    "table": [
+     [
+      5,
+      10
+     ],
+     [
+      7,
+      211
+     ]
+    ]
+   }
+  },
+  "knee_or_dream_strict": {
+   "swep": {
+    "with": 4,
+    "without": 9
+   },
+   "ses": {
+    "with": 6,
+    "without": 210
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 0.0011055762570367138,
+    "or": 15.555555555555555
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 0.0018913363657025197,
+    "or": 12.848484848484848,
+    "table": [
+     [
+      4,
+      11
+     ],
+     [
+      6,
+      212
+     ]
+    ]
+   }
+  },
+  "knee_or_dream_broad": {
+   "swep": {
+    "with": 5,
+    "without": 8
+   },
+   "ses": {
+    "with": 8,
+    "without": 208
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 0.0002583300654728813,
+    "or": 16.25
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 0.0005220395445626999,
+    "or": 13.125,
+    "table": [
+     [
+      5,
+      10
+     ],
+     [
+      8,
+      210
+     ]
+    ]
+   }
+  },
+  "kneecloth": {
+   "swep": {
+    "with": 0,
+    "without": 13
+   },
+   "ses": {
+    "with": 0,
+    "without": 216
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 1.0,
+    "or": NaN
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 1.0,
+    "or": NaN,
+    "table": [
+     [
+      0,
+      15
+     ],
+     [
+      0,
+      218
+     ]
+    ]
+   }
+  },
+  "tesha_only": {
+   "swep": {
+    "with": 4,
+    "without": 9
+   },
+   "ses": {
+    "with": 5,
+    "without": 211
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 0.0006855344486856062,
+    "or": 18.755555555555556
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 0.0011806039713893374,
+    "or": 15.49090909090909,
+    "table": [
+     [
+      4,
+      11
+     ],
+     [
+      5,
+      213
+     ]
+    ]
+   }
+  },
+  "zashai_only": {
+   "swep": {
+    "with": 0,
+    "without": 13
+   },
+   "ses": {
+    "with": 0,
+    "without": 216
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 1.0,
+    "or": NaN
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 1.0,
+    "or": NaN,
+    "table": [
+     [
+      0,
+      15
+     ],
+     [
+      0,
+      218
+     ]
+    ]
+   }
+  },
+  "knee__dedup": {
+   "swep": {
+    "with": 1,
+    "without": 11
+   },
+   "ses": {
+    "with": 1,
+    "without": 207
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 0.10635118306351184,
+    "or": 18.818181818181817
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 0.12135650224215247,
+    "or": 16.076923076923077,
+    "table": [
+     [
+      1,
+      13
+     ],
+     [
+      1,
+      209
+     ]
+    ]
+   }
+  },
+  "dream_strict__dedup": {
+   "swep": {
+    "with": 3,
+    "without": 9
+   },
+   "ses": {
+    "with": 3,
+    "without": 205
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 0.0022858413933812545,
+    "or": 22.77777777777778
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 0.003513651215670779,
+    "or": 18.818181818181817,
+    "table": [
+     [
+      3,
+      11
+     ],
+     [
+      3,
+      207
+     ]
+    ]
+   }
+  },
+  "knee_or_dream_strict__dedup": {
+   "swep": {
+    "with": 3,
+    "without": 9
+   },
+   "ses": {
+    "with": 4,
+    "without": 204
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 0.0038752331073892495,
+    "or": 17.0
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 0.005918688068675403,
+    "or": 14.045454545454545,
+    "table": [
+     [
+      3,
+      11
+     ],
+     [
+      4,
+      206
+     ]
+    ]
+   }
+  },
+  "knee_or_dream_broad__dedup": {
+   "swep": {
+    "with": 4,
+    "without": 8
+   },
+   "ses": {
+    "with": 5,
+    "without": 203
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 0.0005646128115375709,
+    "or": 20.3
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 0.0010254772862659947,
+    "or": 16.4,
+    "table": [
+     [
+      4,
+      10
+     ],
+     [
+      5,
+      205
+     ]
+    ]
+   }
+  },
+  "knee__ses_amb": {
+   "swep": {
+    "with": 1,
+    "without": 12
+   },
+   "ses": {
+    "with": 1,
+    "without": 248
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 0.09695533912433096,
+    "or": 20.666666666666668
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 0.10980280890906512,
+    "or": 17.857142857142858,
+    "table": [
+     [
+      1,
+      14
+     ],
+     [
+      1,
+      250
+     ]
+    ]
+   }
+  },
+  "dream_strict__ses_amb": {
+   "swep": {
+    "with": 4,
+    "without": 9
+   },
+   "ses": {
+    "with": 5,
+    "without": 244
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 0.0004073433213549125,
+    "or": 21.68888888888889
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 0.000710529856178602,
+    "or": 17.89090909090909,
+    "table": [
+     [
+      4,
+      11
+     ],
+     [
+      5,
+      246
+     ]
+    ]
+   }
+  },
+  "knee_or_dream_strict__ses_amb": {
+   "swep": {
+    "with": 4,
+    "without": 9
+   },
+   "ses": {
+    "with": 6,
+    "without": 243
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 0.0006597689491334817,
+    "or": 18.0
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 0.001144105693679085,
+    "or": 14.848484848484848,
+    "table": [
+     [
+      4,
+      11
+     ],
+     [
+      6,
+      245
+     ]
+    ]
+   }
+  },
+  "knee_or_dream_broad__ses_amb": {
+   "swep": {
+    "with": 5,
+    "without": 8
+   },
+   "ses": {
+    "with": 8,
+    "without": 241
+   },
+   "both": {
+    "with": 0,
+    "without": 2
+   },
+   "fisher_exclusive": {
+    "p_one_sided": 0.00013531714836188667,
+    "or": 18.828125
+   },
+   "fisher_both_in_each": {
+    "p_one_sided": 0.00027838867075979164,
+    "or": 15.1875,
+    "table": [
+     [
+      5,
+      10
+     ],
+     [
+      8,
+      243
+     ]
+    ]
+   }
+  }
+ }
+}
