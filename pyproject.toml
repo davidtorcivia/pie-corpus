@@ -13,6 +13,19 @@ dev = [
 research = [
     "torch>=2.9",
 ]
+# Kokoro-82M speech backend (pie/speak.py, docs/pronunciation.md "Speech"). kokoro and misaki require
+# Python < 3.13, so this group resolves to nothing on the main 3.14 env; it is installed into a separate env:
+#   UV_PROJECT_ENVIRONMENT=.venv-kokoro uv run --python 3.12 --group kokoro python -I scripts/speak.py ...
+# Exact versions as tested in docs/research/tts-options.md (2026-10-28).
+kokoro = [
+    "kokoro==0.9.4; python_full_version < '3.13'",
+    "misaki[en]==0.9.4; python_full_version < '3.13'",
+    "torch==2.15.0; python_full_version < '3.13'",
+    "transformers==5.21.0; python_full_version < '3.13'",
+    "huggingface-hub==2.3.0; python_full_version < '3.13'",
+    "numpy==2.5.4; python_full_version < '3.13'",
+    "loguru==0.7.3; python_full_version < '3.13'",
+]
 
 [build-system]
 requires = ["hatchling"]
