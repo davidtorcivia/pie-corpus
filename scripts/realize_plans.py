@@ -23,7 +23,7 @@ from pie.meter import measure, record_meter, summary as meter_numbers
 from pie.realize import Lexicon, check_plan, plan_warnings, realize, token_cell
 from pie.translit import to_ascii
 from pie.compound import member_ids
-from pie.neologism import index_neologisms, speaker_errors, with_neologisms
+from pie.neologism import index_neologisms, tier3b_plan_errors, with_neologisms
 from pie.validate import all_exact, index_plan_compounds, index_project, load_index, validate_text
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -107,7 +107,7 @@ def main() -> int:
     records, rejects, stats, warnings = [], [], collections.Counter(), []
     for n, p in enumerate(plans):
         plan = p.get("plan", p)
-        errs = check_plan(plan, lx) + (speaker_errors(plan) if tier3b else [])
+        errs = check_plan(plan, lx) + (tier3b_plan_errors(plan, lx) if tier3b else [])
         if errs:
             rejects.append({"plan_id": p.get("plan_id", n), "errors": errs, "plan": plan})
             stats["rejected"] += 1

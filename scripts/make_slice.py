@@ -296,7 +296,7 @@ def main() -> int:
             item["coined"] = lx.coined(i)      # a project reconstruction (PLAN.md): Tier 3/3b only, flagged
         if r["family"] == "noun":
             item["gender"] = lx.gender(i)
-            if _compound_second(i, lx):
+            if _compound_second(i, lx) and lx.coined(i) != "neologism":   # no compound on a coinage
                 item["compound_second"] = True     # s-stem neuter or thematic: a bahuvrihi second member
         item["attested_in"] = attested(i)
         if r["family"] == "verb":

@@ -25,7 +25,7 @@ Inherited words cover most of a conversation. Use them, and use them in these se
 | name | h₁nómn̥ | |
 | here, yesterday | `closed:deictic_adv/here`; dʰǵʰyés (in `adverbs`) | |
 
-**Never coin.** You use only ids in your slice. Do not build a compound slot for a modern concept: every coinage is logged in `neologisms.jsonl` with its derivation, and a compound you build yourself is not. If a concept is missing, restructure or say what is missing in your final message.
+**Never coin.** You use only ids in your slice. Do not build a compound slot for a modern concept, and never use a neologism as a compound member (`realize_plans.py` rejects it): every coinage is logged in `neologisms.jsonl` with its derivation, and a compound you build yourself is not. If a concept is missing, restructure or say what is missing in your final message.
 
 ## 2. Idioms, not coinages
 
@@ -46,7 +46,7 @@ There is no PIE word for "hello", "please", "yes" or "no". Say these things the 
 Everything in v4's format, plus:
 
 - Every clause has a **`speaker`**: `"user"` for the person chatting and `"model"` for the machine. The engine ignores it; the chat export (`pie/export_chat.py`) splits the text into turns by it, taking the first speaker as the user's side.
-- **Exactly two speakers** per text, `user` and `model`. The `user` speaks first. Consecutive sentences of one speaker form one turn.
+- **Exactly two speakers** per text, `user` and `model` (`realize_plans.py` rejects any other count). The `user` speaks first. Consecutive sentences of one speaker form one turn.
 - **A new speaker always starts a new sentence**: the first clause of every turn after the first has `"break": true`. `realize_plans.py` rejects a plan that changes speaker mid-sentence or leaves a clause without a speaker.
 - `genre`: `"dialogue"` (or `"greeting"`, `"farewell"`, `"riddle"`, the chat export's dialogue genres). These genres are not metered, so the meter gate does not apply.
 - The plan's `english` is the whole dialogue as running English, one sentence per PIE sentence, in order. You may mark turns in the English with the speaker ("User: … Model: …"), but every content word must still have a slot (rule 14).

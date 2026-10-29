@@ -162,7 +162,9 @@ def sentences(text: str) -> list[str]:
 
 
 def _coined(rec: dict | None) -> str | None:
-    return next((w["coined"] for w in (rec or {}).get("tokens", []) if w.get("coined")), None)
+    """As pie.export.record_tasks: "neologism" when a token is one, else the first other coined flag."""
+    flags = {w["coined"] for w in (rec or {}).get("tokens", []) if w.get("coined")}
+    return "neologism" if "neologism" in flags else next(iter(sorted(flags)), None)
 
 
 def _meta(kind: str, source_id: str, rec: dict | None, **extra) -> dict:

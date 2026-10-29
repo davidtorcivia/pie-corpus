@@ -134,6 +134,20 @@ def test_speaker_rule():
     p = _plan()
     del p["clauses"][0]["speaker"]
     assert "needs a speaker" in speaker_errors(p)[0]
+    p = _plan()
+    p["clauses"][0]["speaker"] = "model"
+    assert "exactly two speakers" in speaker_errors(p)[0]       # the chat export needs a user and a model
+
+
+def test_no_compound_on_a_neologism(lx):
+    """A compound slot with a neologism member is an unlogged coinage: rejected in Tier 3b, and the slice never
+    marks a neologism compound_second."""
+    from pie.neologism import tier3b_plan_errors
+    p = _plan()
+    p["clauses"][1]["slots"].append({"lex_id": "compound", "role": "MOD", "head": 0, "compound": {
+        "first": "closed:prefix/h1su", "second": MACHINE, "type": "bahuvrihi"}})
+    assert any("is a neologism" in e for e in tier3b_plan_errors(p, lx))
+    assert tier3b_plan_errors(_plan(), lx) == []
 
 
 def _run_realize(tmp_path, monkeypatch, lx, batch, plans, *flags):
@@ -166,6 +180,7 @@ def test_slice_to_export_production_path(lx, tmp_path, monkeypatch):
     assert not any(it["lex_id"].startswith("pie-neo-") for it in plain)
     assert {r["neo_id"] for r in _rows()} <= set(b) and all(b[r["neo_id"]]["coined"] == "neologism" for r in _rows())
     assert "coined" not in b.get(SEE, {})
+    assert not any(b[r["neo_id"]].get("compound_second") for r in _rows())
     # 2. a plan from the slice, through scripts/realize_plans.py as a Tier 3b batch
     assert _run_realize(tmp_path, monkeypatch, lx, "t3b-probe", [_plan()], "--tier3b") == 0
     batch = json.loads((tmp_path / "data/generation/batches/t3b-probe.json").read_text())

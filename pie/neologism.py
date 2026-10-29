@@ -298,8 +298,9 @@ def index_neologisms(ix, path: Path = NEOLOGISMS) -> list[str]:
 def speaker_errors(plan: dict) -> list[str]:
     """Tier 3b plan rule (docs/generation/planner-brief-3b.md): every clause names its `speaker` (the engine
     ignores it; pie.export_chat splits the chat turns by it), a new speaker starts a new sentence (`break`), and a
-    text has one or two speakers (the chat export takes the first as the user)."""
+    text has exactly two speakers (the chat export takes the first as the user)."""
     errs, prev, seen = [], None, []
+    # exactly two speakers: the chat export (pie.export_chat.dialogue_turns) needs a user and a model
     for ci, cl in enumerate(plan.get("clauses", [])):
         s = cl.get("speaker")
         if not isinstance(s, str) or not s.strip():
@@ -310,8 +311,23 @@ def speaker_errors(plan: dict) -> list[str]:
         prev = s
         if s not in seen:
             seen.append(s)
-    if len(seen) > 2:
-        errs.append(f"a Tier 3b text has one or two speakers, not {len(seen)} ({', '.join(seen)})")
+    if len(seen) != 2:
+        errs.append(f"a Tier 3b text has exactly two speakers, not {len(seen)} ({', '.join(seen)})")
+    return errs
+
+
+def tier3b_plan_errors(plan: dict, lx) -> list[str]:
+    """The Tier 3b checks beyond check_plan: the speaker rule, and no compound slot with a neologism member (that
+    would be a new, unlogged coinage, and a neologism compound inside a compound is a nested compound the engine
+    does not build). Every coinage is a row of neologisms.jsonl (PLAN.md)."""
+    errs = speaker_errors(plan)
+    for ci, cl in enumerate(plan.get("clauses", [])):
+        for si, s in enumerate(cl.get("slots", [])):
+            c = s.get("compound") if s.get("lex_id") == "compound" and isinstance(s.get("compound"), dict) else {}
+            for m in (c.get("first"), c.get("second")):
+                if isinstance(m, str) and lx.coined(m) == "neologism":
+                    errs.append(f"clause {ci} slot {si}: compound member {m} is a neologism: a compound built on "
+                                f"one is a new coinage; use the logged neologisms only")
     return errs
 
 
