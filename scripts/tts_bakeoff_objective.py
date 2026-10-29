@@ -437,9 +437,9 @@ def grade(r: dict, variant: str, pair: dict | None) -> tuple[str, str]:
         f, lab = r["fric_ms"], set(sc)
         if lab & DORSAL_FRIC:
             g, b = "correct", "recognizer: dorsal fricative"
-        elif lab & FRICATIVE:
+        elif lab & (FRICATIVE | {"f", "θ", "ʃ"}):   # eSpeak's [χ] is sometimes labelled [f]
             if f >= H2_LONG and variant != "h":
-                g, b = "correct", f"acoustic: {f:.0f} ms voiceless frication (recognizer hears [h])"
+                g, b = "correct", f"acoustic: {f:.0f} ms voiceless frication (recognizer hears [{'/'.join(sorted(lab))}])"
             elif f >= H2_SOME or (f >= H2_LONG and variant == "h"):
                 g, b = "near", f"acoustic: {f:.0f} ms frication"
             else:

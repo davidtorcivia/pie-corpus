@@ -53,15 +53,15 @@
    "classes": {
     "h2": {
      "best_variant": "chi",
-     "hit": 0.75,
-     "mean_over_variants": 0.625,
+     "hit": 1.0,
+     "mean_over_variants": 0.75,
      "by_variant": {
       "chi": {
-       "hit": 0.75,
+       "hit": 1.0,
        "n": 2,
        "grades": {
         "h2ewsos": "correct",
-        "h2owis": "near"
+        "h2owis": "correct"
        }
       },
       "h": {
@@ -241,7 +241,7 @@
      }
     }
    },
-   "score": 2.57,
+   "score": 2.658,
    "profile": {
     "h2": {
      "variant": "chi",
@@ -5265,7 +5265,7 @@
     "h": 0.197
    },
    "best_variant": "voiced-uvular",
-   "espeak": 0.75
+   "espeak": 1.0
   },
   "dorsal": {
    "best_voices": [
@@ -7820,8 +7820,8 @@
    "per_broad": 0.4,
    "insertions": 0,
    "slot": "f",
-   "grade": "near",
-   "basis": "acoustic: 130 ms frication, recognizer [f]",
+   "grade": "correct",
+   "basis": "acoustic: 130 ms voiceless frication (recognizer hears [f])",
    "accent": "correct",
    "accent_basis": "F0 peak on the accented syllable, +3.1 st",
    "measures": {

@@ -14,7 +14,7 @@ cannot hear a distinction, the acoustic measure decides, and the tables say whic
   `af_heart`, each got in once.
 - **eSpeak** is the reference for the acoustic measures: its [χ] frication is 130 ms and its accent F0 peak is right
   in 24 of 24 clips. Its **recognizer-based** numbers cannot be compared with Kokoro's, because the recognizer is out
-  of its domain on formant synthesis (see Caveats). Its estimated score, 2.57, is mostly that failure.
+  of its domain on formant synthesis (see Caveats). Its estimated score, 2.66, is mostly that failure.
 - **Clear objective findings,** robust to the scoring choices:
   1. The `palatal` dorsal spelling ([ɟ c]) is an affricate in every Kokoro voice. 56 of the 57 Kokoro clips are graded
      wrong: the recognizer hears [dʒ]/[tʃ] in 48 of them and another sibilant in 6. The release noise is 25–75 ms,
@@ -39,7 +39,7 @@ polysyllabic clip (n = 31 per Kokoro voice, 24 for eSpeak).
 
 | voice | score | PER broad | PER strict | ins/clip | χ (h₂) | ǵ/ḱ | breathy | kʷ | h₃ | syllabic | h₁ | accent |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| eSpeak (ref.) | 2.57 | 0.52 | 0.53 | 0.2 | 0.75 (chi) | 0.33 (palatal) | 0.00 (breathy) | 0.00 (labialized) | 0.00 (gw-labialized) | 0.25 (syllabic) | 0.50 (h) | 1.00 |
+| eSpeak (ref.) | 2.66 | 0.52 | 0.53 | 0.2 | 1.00 (chi) | 0.33 (palatal) | 0.00 (breathy) | 0.00 (labialized) | 0.00 (gw-labialized) | 0.25 (syllabic) | 0.50 (h) | 1.00 |
 | bf_isabella | 3.87 | 0.38 | 0.47 | 0.8 | 0.50 (x) | 0.83 (fronted) | 0.67 (breathy) | 1.00 (labialized) | 0.50 (gw-labialized) | 0.75 (syllabic) | 1.00 (h) | 0.82 |
 | af_nicole | 3.84 | 0.33 | 0.42 | 0.1 | 1.00 (x) | 0.50 (fronted) | 0.50 (breathy) | 1.00 (labialized) | 0.50 (gw-labialized) | 0.50 (syllabic) | 1.00 (h) | 0.82 |
 | em_santa | 3.60 | 0.50 | 0.59 | 0.7 | 0.75 (voiced-uvular) | 0.67 (plain) | 0.83 (breathy) | 0.50 (labialized) | 0.50 (gw-labialized) | 0.75 (syllabic) | 1.00 (h) | 0.71 |
@@ -101,7 +101,7 @@ highest best-spelling hit; ties are broken by the mean over all spellings.
 
 | class | best Kokoro voice(s) (hit) | best spelling (Kokoro mean hit per spelling) | eSpeak |
 |---|---|---|---|
-| χ (h₂) | af_nicole, bm_lewis (1.00) | **none is good**: voiced-uvular 0.21 ≈ h 0.20 ≈ x 0.17 > chi 0.07 | 0.75 |
+| χ (h₂) | af_nicole, bm_lewis (1.00) | **none is good**: voiced-uvular 0.21 ≈ h 0.20 ≈ x 0.17 > chi 0.07 | 1.00 |
 | ǵ/ḱ | bf_isabella, pf_dora, ff_siwis (0.83) | **fronted 0.60** > plain 0.51 ≫ palatal 0.01 | 0.33 |
 | breathy | pm_alex (1.00) | breathy = aspirated 0.62 (same input) > plain 0.49 | 0.00 (recognizer fails) |
 | kʷ | af_nicole, bf_isabella, pm_santa, af_heart, bf_emma (1.00) | labialized = cluster 0.55 (same input) | 0.00 (recognizer fails) |
@@ -174,7 +174,7 @@ inserted just before it.
 
 | class | correct | near | wrong / missing |
 |---|---|---|---|
-| χ (h₂, 2 words) | the recognizer hears [χ x]; or it hears a fricative and **≥ 80 ms** of voiceless frication, for any spelling but `h` | 30–80 ms of frication (≥ 80 ms in the `h` spelling, which is [h] by design); capped at near when a vowel is inserted before it | a weak [h] with < 30 ms; a stop or other consonant; a vowel onset |
+| χ (h₂, 2 words) | the recognizer hears [χ x]; or it hears a fricative (incl. [f θ ʃ], which it uses for eSpeak's [χ]) and **≥ 80 ms** of voiceless frication, for any spelling but `h` | 30–80 ms of frication (≥ 80 ms in the `h` spelling, which is [h] by design); capped at near when a vowel is inserted before it | a weak [h] with < 30 ms; a stop or other consonant; a vowel onset |
 | ǵ/ḱ (3 words) | [ɟ c ɡʲ kʲ], velar + [j], or [j] with a 5–25 ms burst (eSpeak's palatal stop) | a plain [ɡ k] (+ an inserted [i]); a palatal with > 45 ms of noise | [dʒ tʃ ʒ ʃ z s ts tɕ dʑ] |
 | breathy (3 words) | voiced stop + [h], or [bʰ dʰ ɡʰ]; or a plain voiced stop with ΔH1–H2 ≥ +3 dB **and** ΔHNR ≤ −2 dB against the same voice's plain clip | voiced stop without murmur; voiceless aspirated stop | voiceless unaspirated stop or other consonant |
 | kʷ | [k w] | [ɡ w], [k] | other |
