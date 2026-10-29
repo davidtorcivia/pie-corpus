@@ -546,6 +546,12 @@ def load_extra(root: Path, lex: list, gmap: dict, log=print) -> tuple[dict, dict
     km = fm.apply_lemma_overrides("av", km, gmap, root=root)
     emap = {k: tuple(v) for k, v in km.lemma_lex.items()}
     emap.update(B._table("av"))
+    # corpus-quality batch 2: the epic's own lemma decisions (corpus "sa-ep") win over the shared 'av'
+    # table; before, a sa-ep row reached the index only when an av row said the same (epic dama
+    # 'self-restraint' vs AV dama 'house', epic dam 'tame')
+    from pie import mapping as mp
+    for lem in mp.load_overrides(root)["decisions"].get("sa-ep", {}):
+        emap[lem] = tuple(sorted(mp.decide("sa-ep", lem, emap.get(lem, ()), root=root)[0]))
     lic = SB.CORPORA["sa-ep"][2]
     out["sa-ep"] = SB.units_from_tokens("sa-ep", ep, "sentence", lambda t: t.units["chapter"],
                                         [t.surface for t in ep], emap, lambda t: lic_pair(lic))

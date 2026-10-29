@@ -143,6 +143,21 @@ def test_cq2_late_rows(corpus, lemma, ids, formation):
         assert lemma not in mp.resolve_table(corpus)
 
 
+def test_avestan_forms_reach_their_verbs_in_the_cab_lemmatizer():
+    lem = fm.AvestanLemmatizer(fm.LangMapping("ae"), {})
+    assert lem("janāni") == "jan" and lem("sōire") == "saē"
+    t = mp.resolve_table("ae")
+    assert t["jan"].ids == {"pie-lex-gwhenti"} and t["saē"].ids == {"pie-lex-kjeytor"}
+
+
+def test_epic_lemma_decisions_win_over_the_shared_av_table():
+    # build_8c_stageC.load_extra applies corpus "sa-ep" decisions after the 'av' table
+    src = (ROOT / "scripts/build_8c_stageC.py").read_text("utf-8")
+    assert 'mp.load_overrides(root)["decisions"].get("sa-ep", {})' in src
+    assert mp.decide("sa-ep", "dama", {"x"})[0] == {"pie-root-demh2-tame"}
+    assert mp.decide("av", "dama", {"x"})[0] == {"pie-lex-doxm"}
+
+
 def test_welsh_neint_is_nant_not_teeth():
     assert tok("cy", "deint", "neint").lemma == "nant"
     assert tok("cy", "deint", "deint").lemma == "deint"
