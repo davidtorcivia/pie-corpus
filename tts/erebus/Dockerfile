@@ -13,7 +13,7 @@ RUN useradd --system --uid 10001 --home-dir /opt/pie --no-create-home pie
 # torch from the CPU index (the PyPI wheel pulls the CUDA stack), then the exact tested freeze.
 RUN pip install --index-url https://download.pytorch.org/whl/cpu torch==2.15.0+cpu
 COPY requirements.txt /opt/pie/requirements.txt
-RUN pip install --only-binary=:all: -r /opt/pie/requirements.txt
+RUN pip install --prefer-binary -r /opt/pie/requirements.txt
 
 WORKDIR /opt/pie
 COPY tts/ /opt/pie/tts/
