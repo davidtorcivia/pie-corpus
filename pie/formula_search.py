@@ -302,6 +302,9 @@ class Token:
         from .w9_other_mapping import noncontent
         if noncontent(self.corpus, self.lemma, self.surface, self.locus):
             self.content = False
+        from .cq1_mapping import noncontent as cq1_noncontent
+        if cq1_noncontent(self.corpus, self.lemma, self.surface, self.locus):
+            self.content = False
 
 
 _RV_ID = re.compile(r'xml:id="b(\d+)_h(\d+)_(\d+)_zur_([a-z])_\d+"')
@@ -386,7 +389,10 @@ def load_homer(root: Path = ROOT) -> list[Token]:
 # ---------------------------------------------------------------- lexicon → corpus lemma mapping
 
 def group_of(e: dict) -> str:
-    return e.get("root_id") or e["id"]
+    """The entry's root group: its lexicon root, unless a reviewed split (pie.cq1_mapping.group_splits,
+    data/research/formulas/group-splits.json) gives it the group of a homonymous root it continues."""
+    from .cq1_mapping import group_splits
+    return group_splits().get(e["id"]) or e.get("root_id") or e["id"]
 
 
 @dataclass

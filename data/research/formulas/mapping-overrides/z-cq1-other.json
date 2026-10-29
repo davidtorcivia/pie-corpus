@@ -1,0 +1,243 @@
+{
+ "note": "Corpus-quality batch 1 (other); verdicts in data/research/8c/corpus-quality/error-verdicts-cq1-other.jsonl. The z- prefix makes these rows read last (override files are read in name order; later rows win).",
+ "lemma": [
+  {
+   "corpus": "lat",
+   "lemma": "libra",
+   "lex_id": [],
+   "note": "cq1 w10/14 (CatAgr 76.1 'l.' = libra 'pound'). de Vaan 2008 s.v. lībra: Proto-Italic *līþrā, cf. Sicilian Greek λίτρα; no PIE etymon accepted; the *leyH- 'pour'/'cling' link is a key collision. Unmapped.",
+   "erratum": "Corpus-quality batch 1; error-verdicts-cq1-other.jsonl."
+  },
+  {
+   "corpus": "lat",
+   "lemma": "papauer",
+   "lex_id": [],
+   "note": "cq1 w10/49 (CatAgr 84.1 papaver 'poppy'). de Vaan 2008 s.v. papāver: expressive/reduplicated, no PIE etymon; *péh₂wr̥ 'fire' is a key collision. Unmapped.",
+   "erratum": "Corpus-quality batch 1; error-verdicts-cq1-other.jsonl."
+  },
+  {
+   "corpus": "lat",
+   "lemma": "rideo",
+   "lex_id": [],
+   "note": "cq1 w10/50 (Catul 64.284 risit). de Vaan 2008 s.v. rīdeō: no accepted etymology; *wert- 'turn' unsupported. Unmapped.",
+   "erratum": "Corpus-quality batch 1; error-verdicts-cq1-other.jsonl."
+  },
+  {
+   "corpus": "ang",
+   "lemma": "fyren",
+   "lex_id": [],
+   "note": "cq1 w10/29 (Beo. 916 fyren 'crime'). Kaikki Old English fyren noun = firen 'crime, sin' (< *firinō; firen is unmapped); Bosworth-Toller s.v. firen. The rare adjective fȳren 'fiery' is not the Beowulf/Grein word. Unmapped like firen.",
+   "erratum": "Corpus-quality batch 1; error-verdicts-cq1-other.jsonl."
+  },
+  {
+   "corpus": "hom",
+   "lemma": "μέλινος",
+   "lex_id": [],
+   "note": "cq1 w10/98 (Il. 22.293 μείλινον ἔγχος 'ashen spear'). Beekes 2010 s.v. μελία 'ash-tree' (μείλινος 'of ash-wood'): no IE etymology, not μέλι 'honey' (*mélit, a key collision). Unmapped.",
+   "erratum": "Corpus-quality batch 1; error-verdicts-cq1-other.jsonl."
+  },
+  {
+   "corpus": "hom",
+   "lemma": "μελία",
+   "lex_id": [],
+   "note": "cq1 w10/98 (Od. 22.259 μελίη = the ash spear). Beekes 2010 s.v. μελία: no IE etymology; *mélit 'honey' is a key collision. Unmapped.",
+   "erratum": "Corpus-quality batch 1; error-verdicts-cq1-other.jsonl."
+  },
+  {
+   "corpus": "grp",
+   "lemma": "μελία",
+   "lex_id": [],
+   "note": "cq1 w10/98, same lexeme in the GLAUx population (Hesiod, Hippocrates, Aristophanes μελία 'ash'). Beekes 2010 s.v. μελία. Unmapped.",
+   "erratum": "Corpus-quality batch 1; error-verdicts-cq1-other.jsonl."
+  },
+  {
+   "corpus": "grp",
+   "lemma": "μέλινος",
+   "lex_id": [],
+   "note": "cq1 w10/98, same lexeme in the GLAUx population. Beekes 2010 s.v. μελία. Unmapped.",
+   "erratum": "Corpus-quality batch 1; error-verdicts-cq1-other.jsonl."
+  },
+  {
+   "corpus": "grp",
+   "lemma": "Μῆδος",
+   "lex_id": [],
+   "note": "cq1 w10/15, w11/35 (+12 observations): the Mede(s), ethnonym of Iranian origin (Kaikki Ancient Greek Μῆδος; Beekes 2010 s.v.), never μῆδος 'counsel' (*mḗdos). The batch-9 'already fixed' verdict checked the grp table only; the grc/grc-late production units still mapped 343 tokens. Unmapped.",
+   "erratum": "Corpus-quality batch 1; error-verdicts-cq1-other.jsonl."
+  },
+  {
+   "corpus": "orv",
+   "lemma": "зьрѣти",
+   "lex_id": [
+    "pie-root-gjher-shine"
+   ],
+   "note": "cq1 w11/15 (lav 177.10) and formula scan line 17 (birchbark 531 зерѧ). Old Russian зьрѣти 'look, see' = Proto-Slavic *zьrěti 'see' (Derksen 2008 s.v. *zьrěti 'look'; Lith. žėrė́ti 'glitter'; PIE *ǵʰer- 'shine, see'), not the homonym *zьrěti 'ripen' (*ǵerh₂-).",
+   "erratum": "Corpus-quality batch 1; error-verdicts-cq1-other.jsonl.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "orv",
+   "lemma": "прозьрѣти",
+   "lex_id": [
+    "pie-root-gjher-shine"
+   ],
+   "note": "cq1 class of w11/15: прозьрѣти 'see again, recover sight' (Lav. 111.13, 241.36; nov-sin), prefixed *zьrěti 'see' (Derksen 2008).",
+   "erratum": "Corpus-quality batch 1; error-verdicts-cq1-other.jsonl.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "ccmh",
+   "lemma": "прозьрѣти",
+   "lex_id": [
+    "pie-root-gjher-shine"
+   ],
+   "note": "cq1 class of w11/15 (CCMH Suprasliensis прозьрѣти 'regain sight'); round-3 table had *ǵerh₂- 'grow old'. Derksen 2008 s.v. *zьrěti 'look'.",
+   "erratum": "Corpus-quality batch 1; error-verdicts-cq1-other.jsonl.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "byliny",
+   "lemma": "старуха",
+   "lex_id": [
+    "pie-lex-sth2ros"
+   ],
+   "note": "cq1 w11/46: старуха 'old woman', lemmatised старик by the form table (57 tokens; rule in pie/cq1_other.py). Same derivative of старый < *starъ < *sth₂ró-s as старик.",
+   "erratum": "Corpus-quality batch 1; error-verdicts-cq1-other.jsonl.",
+   "formation": "derivative"
+  }
+ ],
+ "proto": [
+  {
+   "code": "sla-pro",
+   "term": "*dětę",
+   "lex_id": [
+    "pie-root-dheh1y-suckle"
+   ],
+   "note": "cq1 formula scan line 16 (Vuk 1547:256 дете). Derksen 2008 p.103 s.v. *dětę 'child' (< *dʰeh₁(i)- 'suck'); the automatic path ran through the *dětь page into *dʰéh₁tis 'putting'. Same decision as the earlier dijete erratum.",
+   "formation": "derivative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*dětьca",
+   "lex_id": [
+    "pie-root-dheh1y-suckle"
+   ],
+   "note": "cq1 formula scan line 16: deca/djeca 'children' (*dětьca, collective of *dětь 'children', Derksen 2008 s.v. *dětę, *dětь) < *dʰeh₁(i)- 'suck', not *dʰéh₁tis.",
+   "formation": "derivative"
+  },
+  {
+   "code": "sla-pro",
+   "term": "*zorkъ",
+   "lex_id": [
+    "pie-root-gjher-shine"
+   ],
+   "note": "cq1 formula scan line 17 (Suprasliensis 3104225 зракъ) and w11/15 class: *zorkъ 'look, sight' (Derksen 2008 s.v. *zьrěti 'look') belongs to *zьrěti 'see' < *ǵʰer- 'shine', not to the homonym 'ripen' (*ǵerh₂-) that the lexicon reflex list follows.",
+   "formation": "derivative"
+  }
+ ],
+ "key": [
+  {
+   "lang": "ru",
+   "key": "привыкать",
+   "lex_id": [
+    "pie-root-h1ewk-become_accustomed"
+   ],
+   "note": "cq1 w11/25 (Hilferding 32:14512 отвыкаетъ): при-/от-/на-выкать 'get (un)used to' continue *vyknǫti / *vykati (Derksen 2008 s.v. *vyknǫti 'get used to'; Vasmer s.v. навыкнуть), < PIE *h₁ewk- 'become accustomed'; the automatic chain went through выкать 'address with вы' (*yúHs)."
+  },
+  {
+   "lang": "ru",
+   "key": "отвыкать",
+   "lex_id": [
+    "pie-root-h1ewk-become_accustomed"
+   ],
+   "note": "cq1 w11/25 (Hilferding 32:14512 отвыкаетъ): при-/от-/на-выкать 'get (un)used to' continue *vyknǫti / *vykati (Derksen 2008 s.v. *vyknǫti 'get used to'; Vasmer s.v. навыкнуть), < PIE *h₁ewk- 'become accustomed'; the automatic chain went through выкать 'address with вы' (*yúHs)."
+  },
+  {
+   "lang": "ru",
+   "key": "навыкать",
+   "lex_id": [
+    "pie-root-h1ewk-become_accustomed"
+   ],
+   "note": "cq1 w11/25 (Hilferding 32:14512 отвыкаетъ): при-/от-/на-выкать 'get (un)used to' continue *vyknǫti / *vykati (Derksen 2008 s.v. *vyknǫti 'get used to'; Vasmer s.v. навыкнуть), < PIE *h₁ewk- 'become accustomed'; the automatic chain went through выкать 'address with вы' (*yúHs)."
+  },
+  {
+   "lang": "ru",
+   "key": "воззреть",
+   "lex_id": [
+    "pie-root-gjher-shine"
+   ],
+   "note": "cq1 class of w11/15: a prefixed or derived form of зреть/*zьrěti 'see' (Vasmer s.v. зреть 'смотреть'; Derksen 2008 s.v. *zьrěti 'look'), not the homonym *zьrěti 'ripen' (*ǵerh₂-); PIE *ǵʰer- 'shine, see'. The ambiguous simplex зреть (see / ripen) is left undecided."
+  },
+  {
+   "lang": "ru",
+   "key": "узреть",
+   "lex_id": [
+    "pie-root-gjher-shine"
+   ],
+   "note": "cq1 class of w11/15: a prefixed or derived form of зреть/*zьrěti 'see' (Vasmer s.v. зреть 'смотреть'; Derksen 2008 s.v. *zьrěti 'look'), not the homonym *zьrěti 'ripen' (*ǵerh₂-); PIE *ǵʰer- 'shine, see'. The ambiguous simplex зреть (see / ripen) is left undecided."
+  },
+  {
+   "lang": "ru",
+   "key": "обозреть",
+   "lex_id": [
+    "pie-root-gjher-shine"
+   ],
+   "note": "cq1 class of w11/15: a prefixed or derived form of зреть/*zьrěti 'see' (Vasmer s.v. зреть 'смотреть'; Derksen 2008 s.v. *zьrěti 'look'), not the homonym *zьrěti 'ripen' (*ǵerh₂-); PIE *ǵʰer- 'shine, see'. The ambiguous simplex зреть (see / ripen) is left undecided."
+  },
+  {
+   "lang": "ru",
+   "key": "презреть",
+   "lex_id": [
+    "pie-root-gjher-shine"
+   ],
+   "note": "cq1 class of w11/15: a prefixed or derived form of зреть/*zьrěti 'see' (Vasmer s.v. зреть 'смотреть'; Derksen 2008 s.v. *zьrěti 'look'), not the homonym *zьrěti 'ripen' (*ǵerh₂-); PIE *ǵʰer- 'shine, see'. The ambiguous simplex зреть (see / ripen) is left undecided."
+  },
+  {
+   "lang": "ru",
+   "key": "презирать",
+   "lex_id": [
+    "pie-root-gjher-shine"
+   ],
+   "note": "cq1 class of w11/15: a prefixed or derived form of зреть/*zьrěti 'see' (Vasmer s.v. зреть 'смотреть'; Derksen 2008 s.v. *zьrěti 'look'), not the homonym *zьrěti 'ripen' (*ǵerh₂-); PIE *ǵʰer- 'shine, see'. The ambiguous simplex зреть (see / ripen) is left undecided."
+  },
+  {
+   "lang": "ru",
+   "key": "зрение",
+   "lex_id": [
+    "pie-root-gjher-shine"
+   ],
+   "note": "cq1 class of w11/15: a prefixed or derived form of зреть/*zьrěti 'see' (Vasmer s.v. зреть 'смотреть'; Derksen 2008 s.v. *zьrěti 'look'), not the homonym *zьrěti 'ripen' (*ǵerh₂-); PIE *ǵʰer- 'shine, see'. The ambiguous simplex зреть (see / ripen) is left undecided."
+  },
+  {
+   "lang": "ru",
+   "key": "зрительный",
+   "lex_id": [
+    "pie-root-gjher-shine"
+   ],
+   "note": "cq1 class of w11/15: a prefixed or derived form of зреть/*zьrěti 'see' (Vasmer s.v. зреть 'смотреть'; Derksen 2008 s.v. *zьrěti 'look'), not the homonym *zьrěti 'ripen' (*ǵerh₂-); PIE *ǵʰer- 'shine, see'. The ambiguous simplex зреть (see / ripen) is left undecided."
+  },
+  {
+   "lang": "ru",
+   "key": "зрячий",
+   "lex_id": [
+    "pie-root-gjher-shine"
+   ],
+   "note": "cq1 class of w11/15: a prefixed or derived form of зреть/*zьrěti 'see' (Vasmer s.v. зреть 'смотреть'; Derksen 2008 s.v. *zьrěti 'look'), not the homonym *zьrěti 'ripen' (*ǵerh₂-); PIE *ǵʰer- 'shine, see'. The ambiguous simplex зреть (see / ripen) is left undecided."
+  },
+  {
+   "lang": "ru",
+   "key": "прозрачный",
+   "lex_id": [
+    "pie-root-gjher-shine"
+   ],
+   "note": "cq1 class of w11/15: a prefixed or derived form of зреть/*zьrěti 'see' (Vasmer s.v. зреть 'смотреть'; Derksen 2008 s.v. *zьrěti 'look'), not the homonym *zьrěti 'ripen' (*ǵerh₂-); PIE *ǵʰer- 'shine, see'. The ambiguous simplex зреть (see / ripen) is left undecided."
+  },
+  {
+   "lang": "sh",
+   "key": "prezreti",
+   "lex_id": [
+    "pie-root-gjher-shine"
+   ],
+   "note": "cq1 class of w11/15: a prefixed or derived form of зреть/*zьrěti 'see' (Vasmer s.v. зреть 'смотреть'; Derksen 2008 s.v. *zьrěti 'look'), not the homonym *zьrěti 'ripen' (*ǵerh₂-); PIE *ǵʰer- 'shine, see'. The ambiguous simplex зреть (see / ripen) is left undecided."
+  }
+ ]
+}

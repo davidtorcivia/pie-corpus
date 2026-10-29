@@ -391,7 +391,10 @@ CAND_K = 50        # candidates per pivot by the fast group score, re-scored wor
 
 def _group(x: str, by_id: dict) -> str:
     e = by_id.get(x)
-    return (e.get("root_id") or x) if e else x
+    if not e:
+        return x
+    from pie.formula_search import group_of      # the shared rule, reviewed root-group splits included
+    return group_of(e)
 
 
 class Index:

@@ -114,6 +114,10 @@ DMHP_DIR = "armenian-dmhp-matenagirk/src/mh_zenodo_20250208"
 _DMHP_W = re.compile(r'<w id="([^"]*)">\s*\n(.*?)\n</w>', re.S)
 DMHP_CONTENT = {"N+Com", "A", "V"}
 DMHP_NAMES = {"N+Top", "N+Ant"}
+# Content words that DMHP's POS tag leaves out (text id, DMHP word locus); reviewed in corpus-quality
+# batch 1 (data/research/8c/corpus-quality/error-verdicts-cq1-armenian.jsonl): Movses 1.31 Vahagn song
+# her 'hair' (hur her ownēr 'he had fire for hair') tagged I+Adv.
+DMHP_CONTENT_REVIEWED = {("MH_1_2_12_Movses_Khor", "ed. page 1830 - PDF page 88 (word id 12952)")}
 
 
 @dataclass
@@ -129,7 +133,7 @@ class ArmTok:
 
     @property
     def content(self) -> bool:
-        return any(p in DMHP_CONTENT for p in self.parts)
+        return any(p in DMHP_CONTENT for p in self.parts) or (self.text, self.locus) in DMHP_CONTENT_REVIEWED
 
     @property
     def name(self) -> bool:

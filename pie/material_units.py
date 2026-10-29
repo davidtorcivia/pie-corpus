@@ -22,6 +22,9 @@ def reviewed_ranges():
         extra = RULES.with_name(name)
         if extra.exists():
             rows += json.loads(extra.read_text(encoding='utf-8'))
+    # Corpus-quality batch 1: data/research/8c/corpus-quality/material-unit-rules-cq1-<area>.json
+    for extra in sorted((RULES.parents[1] / 'corpus-quality').glob('material-unit-rules-cq1-*.json')):
+        rows += json.loads(extra.read_text(encoding='utf-8'))
     return rows
 
 
@@ -62,6 +65,11 @@ def reviewed_byliny_text(locus: str, text: str) -> str:
     # the damaged form joined, then use the normal reviewed verb analysis.
     if locus == 'sbornikotdelenijarusskogojazykaislovesno92:7991':
         return text.replace('Розгор лось','Розгор$лось')
+    # Corpus-quality batch 1 (w10/10): Hilferding vol. 1 L25499 line-initial
+    # Кло is the interrogative Кто (т read as л; the tsar asks who could
+    # raise the dead).
+    if locus == 'sbornikotdelenijarusskogojazykaislovesno32:25499':
+        return text.replace('«Кло ', '«Кто ', 1)
     return text
 
 

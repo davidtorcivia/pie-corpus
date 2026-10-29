@@ -40,7 +40,10 @@ def test_context_preserves_other_homographs(words,index,baseline,target):
         form_overrides={fm.key_sga(cm._ir_clean(form)):baseline}, use_skeleton=False)
     assert cm.lemmatize_words(z,words)[index]==target
     assert z(form)==baseline
-    assert cm.lemmatize_words(z,["unrelated",form,"unrelated"])[1]==baseline
+    # corpus-quality batch 1 made these readings general rules (pie.celtic_mapping._cq1_irish_rule;
+    # error-verdicts-cq1-celtic.jsonl): outside the old reviewed context they now give the rule's lemma.
+    cq1_general = {'airc': 'airc@need', 'gráin': 'gráin@fear', 'gona': 'co'}
+    assert cm.lemmatize_words(z, ['unrelated', form, 'unrelated'])[1] == cq1_general.get(form, baseline)
 
 
 def test_welsh_until_not_birth():

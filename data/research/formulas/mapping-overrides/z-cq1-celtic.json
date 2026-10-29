@@ -1,0 +1,133 @@
+{
+ "note": "Corpus-quality batch 1 (celtic); verdicts in data/research/8c/corpus-quality/error-verdicts-cq1-celtic.jsonl. The z- prefix makes these rows read last (override files are read in name order; later rows win).",
+ "lemma": [
+  {
+   "corpus": "celt",
+   "lemma": "día@day",
+   "lex_id": [
+    "pie-lex-dyexws"
+   ],
+   "sense": "day",
+   "note": "cq1 scan 5: OIr. día 'day' (weekday names, día brátha, cach día). Kaikki Old Irish día 'day' < Proto-Celtic *dyīus < *dyew-; Matasović EDPC p0107 s.v. *diyw-o- 'day' (PIE *diy-ew-, paradigm *diyews / *diywos); lexicon *dyḗws lists Proto-Celtic *dyīus. Not día 'god'.",
+   "erratum": "Corpus-quality batch 1; see data/research/8c/corpus-quality/error-verdicts-cq1-celtic.jsonl."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "día@god",
+   "lex_id": [
+    "pie-lex-deywos"
+   ],
+   "sense": "god",
+   "note": "cq1 scan 5: día 'God' before nime / uilechumachtach / mór / dúileach / na ndúl. Kaikki Old Irish día 'god' < Proto-Celtic *deiwos < *deywós; not *dyḗws 'sky'.",
+   "erratum": "Corpus-quality batch 1; see data/research/8c/corpus-quality/error-verdicts-cq1-celtic.jsonl."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "meinic",
+   "lex_id": [],
+   "note": "cq1 scan 6: meinic / menic 'often, frequent'. Matasović EDPC p0279 s.v. *menekki- 'frequent, abundant' < PIE *men- (IEW 730), cognate Go. manags, OCS mъnogъ; Kaikki Proto-Celtic *menekkis gives *menegʰ- or a substrate word and calls the *méǵh₂- derivation an older theory. No *menegʰ- lexeme in the lexicon: unmapped.",
+   "erratum": "Corpus-quality batch 1; see data/research/8c/corpus-quality/error-verdicts-cq1-celtic.jsonl."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "menic",
+   "lex_id": [],
+   "note": "cq1 scan 6: as meinic (EDPC p0279 *menekki-; not *méǵh₂s).",
+   "erratum": "Corpus-quality batch 1; see data/research/8c/corpus-quality/error-verdicts-cq1-celtic.jsonl."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "día@day",
+   "lex_id": [
+    "pie-lex-dyexws"
+   ],
+   "sense": "day",
+   "note": "cq1 scan 5: OIr. día 'day' (weekday names, día brátha, cach día). Kaikki Old Irish día 'day' < Proto-Celtic *dyīus < *dyew-; Matasović EDPC p0107 s.v. *diyw-o- 'day' (PIE *diy-ew-, paradigm *diyews / *diywos); lexicon *dyḗws lists Proto-Celtic *dyīus. Not día 'god'.",
+   "erratum": "Corpus-quality batch 1; see data/research/8c/corpus-quality/error-verdicts-cq1-celtic.jsonl."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "día@god",
+   "lex_id": [
+    "pie-lex-deywos"
+   ],
+   "sense": "god",
+   "note": "cq1 scan 5: día 'God' before nime / uilechumachtach / mór / dúileach / na ndúl. Kaikki Old Irish día 'god' < Proto-Celtic *deiwos < *deywós; not *dyḗws 'sky'.",
+   "erratum": "Corpus-quality batch 1; see data/research/8c/corpus-quality/error-verdicts-cq1-celtic.jsonl."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "meinic",
+   "lex_id": [],
+   "note": "cq1 scan 6: meinic / menic 'often, frequent'. Matasović EDPC p0279 s.v. *menekki- 'frequent, abundant' < PIE *men- (IEW 730), cognate Go. manags, OCS mъnogъ; Kaikki Proto-Celtic *menekkis gives *menegʰ- or a substrate word and calls the *méǵh₂- derivation an older theory. No *menegʰ- lexeme in the lexicon: unmapped.",
+   "erratum": "Corpus-quality batch 1; see data/research/8c/corpus-quality/error-verdicts-cq1-celtic.jsonl."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "menic",
+   "lex_id": [],
+   "note": "cq1 scan 6: as meinic (EDPC p0279 *menekki-; not *méǵh₂s).",
+   "erratum": "Corpus-quality batch 1; see data/research/8c/corpus-quality/error-verdicts-cq1-celtic.jsonl."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "múin",
+   "lex_id": [],
+   "note": "cq1 scan 24: the table's múin is Kaikki Old Irish muin 'upper back' (< *mon- 'neck') and EModIr. (do) mhúin 'taught' (múinid); the automatic chain matched the homonym *mon- 'man, human being' (Germanic *mann-), which continues neither. No 'neck' *mon- lexeme in the lexicon: unmapped.",
+   "erratum": "Corpus-quality batch 1; see data/research/8c/corpus-quality/error-verdicts-cq1-celtic.jsonl."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "múin|múineadh",
+   "lex_id": [],
+   "note": "cq1 scan 24: as múin ('teach'; not *mon- 'man').",
+   "erratum": "Corpus-quality batch 1; see data/research/8c/corpus-quality/error-verdicts-cq1-celtic.jsonl."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "crett@body",
+   "lex_id": [],
+   "sense": "body, frame",
+   "note": "cq1 w10 119 / w11 19: crett 'body, frame' (eDIL s.v. crett) in co n-dírgiud crette (TBC), not creitid 'believes'. No etymon asserted.",
+   "erratum": "Corpus-quality batch 1; see data/research/8c/corpus-quality/error-verdicts-cq1-celtic.jsonl."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "étir@possible",
+   "lex_id": [],
+   "sense": "possible",
+   "note": "cq1 w11 23: ní h-eitir / ba héitir 'it is (not) possible' (eDIL s.v. étir); not eitigh 'refuses' nor eter 'between'. No etymon asserted.",
+   "erratum": "Corpus-quality batch 1; see data/research/8c/corpus-quality/error-verdicts-cq1-celtic.jsonl."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "airc@need",
+   "lex_id": [],
+   "sense": "need, distress; ark",
+   "note": "cq1 w10 115 / w11 13 class: airc in isin airc / bí lán d'airc is airc 'need, distress' (eDIL s.v. airc) or arc 'ark' (Latin arca); not arc 'piglet' (*pórḱos).",
+   "erratum": "Corpus-quality batch 1; see data/research/8c/corpus-quality/error-verdicts-cq1-celtic.jsonl."
+  },
+  {
+   "corpus": "cy",
+   "lemma": "goreu",
+   "lex_id": [],
+   "sense": "best",
+   "note": "cq1 w11 30: yn oreu 'as best' (GPC s.v. gorau), suppletive superlative of da; not the preterite of gwneuthur. Suppletive forms do not inherit da's etymon.",
+   "erratum": "Corpus-quality batch 1; see data/research/8c/corpus-quality/error-verdicts-cq1-celtic.jsonl."
+  }
+ ],
+ "proto": [
+  {
+   "code": "cel-pro",
+   "term": "*menekkis",
+   "lex_id": [],
+   "note": "cq1 scan 6: Matasović EDPC p0279 *menekki- < PIE *men- (IEW 730); Kaikki Proto-Celtic menekkis: *menegʰ- or substrate; not *méǵh₂s."
+  },
+  {
+   "code": "cel-pro",
+   "term": "menekkis",
+   "lex_id": [],
+   "note": "cq1 scan 6: as *menekkis."
+  }
+ ]
+}

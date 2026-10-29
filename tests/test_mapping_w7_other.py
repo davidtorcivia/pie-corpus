@@ -49,7 +49,10 @@ def test_names_stay_in_context_but_not_content(corpus,locus,form,old):
     t=Token(corpus,old,form,locus,{},True,'noun')
     assert t.lemma.endswith(' (name)') and not t.content
     assert t.surface==form
-    assert Token(corpus,old,form,'unreviewed',{},True,'noun').content
+    # cq1 (corpus-quality batch 1) turned the Armenian Areacʻ 'Aryans' reading into a general rule
+    # (pie.cq1_xcl name-aryans); other unreviewed forms keep their content status.
+    from pie.cq1_xcl import rule_for
+    assert Token(corpus,old,form,'unreviewed',{},True,'noun').content or rule_for(corpus,old,form,'unreviewed')
 
 
 def test_mapping_homographs_and_uncertain_etymologies():

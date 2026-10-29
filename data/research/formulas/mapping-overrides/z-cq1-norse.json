@@ -1,0 +1,20 @@
+{
+ "note": "Corpus-quality batch 1 (norse); verdicts in data/research/8c/corpus-quality/error-verdicts-cq1-norse.jsonl. The z- prefix makes these rows read last (override files are read in name order; later rows win).",
+ "lemma": [
+  {
+   "corpus": "menota",
+   "lemma": "for",
+   "lex_id": [],
+   "note": "cq1 report w11/32 (AM-178-fol 2-345:5 før 'journey'). Menota lemma 'for' occurs only in late Norwegian/Icelandic documents (AM-178-fol, DG-8-OHleg, HolmPerg-4-fol, DG-4at7-Streng) as the spelling of fǫr 'journey' (forms før, farar, forena); the furrow noun for (*furhs < *perḱ-) is not attested there. fǫr is unmapped in Menota; same decision.",
+   "erratum": "Corpus-quality batch 1; error-verdicts-cq1-norse.jsonl."
+  }
+ ],
+ "proto": [
+  {
+   "code": "gem-pro",
+   "term": "*flainaz",
+   "lex_id": [],
+   "note": "cq1 report w11/36 (Wolf-Aug-9-10-4to 51v:25 fleins). Kaikki Proto-Germanic *flainaz 'hook, spear-tip' < PIE *pleyn- 'metal arrow' < *(s)pel- 'to split'; the automatic link hit the homonym *spel- 'say aloud' (pie-root-spel-say_aloud). The lexicon has no *(s)pel- 'split' entry: unmapped, not reassigned."
+  }
+ ]
+}

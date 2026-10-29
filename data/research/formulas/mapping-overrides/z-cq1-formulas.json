@@ -1,0 +1,318 @@
+{
+ "note": "Corpus-quality batch 1 (formulas); verdicts in data/research/8c/corpus-quality/error-verdicts-cq1-formulas.jsonl. The z- prefix makes these rows read last (override files are read in name order; later rows win).",
+ "lemma": [
+  {
+   "corpus": "rv",
+   "lemma": "stár- ~ tár-",
+   "lex_id": [
+    "pie-lex-h2stexr"
+   ],
+   "note": "cq1 scan 1: RV stár- 'star' (instr. pl. stŕ̥bhiḥ, RV 1.68.10b); EWAia II 757 s.v. stár- < *h₂stér-; not *terh₂- 'cross over' (the variant tár- matched)."
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√piś-",
+   "lex_id": [
+    "pie-root-peykj-hew"
+   ],
+   "note": "cq1 scan 2: √piś 'adorn, decorate'; LIV2 465 *pei̯ḱ- 'hauen, schmücken'; EWAia II 129; not the homonymous *peyḱ- 'hostile' (EWAia II 129 s.v. píśuna-, a separate root)."
+  },
+  {
+   "corpus": "av",
+   "lemma": "piś",
+   "lex_id": [
+    "pie-root-peykj-hew"
+   ],
+   "note": "cq1 scan 2: DCS piś = √piś 'adorn'; as rv √piś-; LIV2 465."
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√ci- 1",
+   "lex_id": [
+    "pie-lex-kwinewti-2",
+    "pie-root-kwey-gather"
+   ],
+   "note": "cq1 scan 14: Grassmann ci- 1 'schichten, sammeln' (cinóti); LIV2 378 *kʷei̯- 'schichten'; not *kʷey- 'pay, avenge' (ποινή, LIV2 *kʷei̯- 'büßen') or 'perceive' (√ci- 2 / √cit-)."
+  },
+  {
+   "corpus": "av",
+   "lemma": "ci",
+   "lex_id": [
+    "pie-lex-kwinewti-2",
+    "pie-root-kwey-gather"
+   ],
+   "note": "cq1 scan 14: DCS ci 'heap, gather' (cinoti); as rv √ci- 1; perceive is DCS cit / ci 2."
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√hū-",
+   "lex_id": [
+    "pie-lex-gjhewHeti",
+    "pie-root-gjhewH-call_on"
+   ],
+   "note": "cq1 scan 27: √hū/hvā 'call, invoke' (vihváyāmahe, ahūṣata); EWAia II 812 HAVⁱ/HVĀ < *ǵʰeu̯H-; the perfect *ǵʰeǵʰówe (pie-lex-gjhegjhowe) belongs to *ǵʰew- 'pour' (√hu-, already decided in sanskrit.json)."
+  },
+  {
+   "corpus": "rv",
+   "lemma": "anyá-",
+   "lex_id": [],
+   "note": "cq1 scan 38: anyá- 'other' < *h₂en-yo- (EWAia I 77), not cognate with ἄλλος/alius (*h₂el-yo-); no *h₂enyo- entry in the lexicon: unmapped."
+  },
+  {
+   "corpus": "av",
+   "lemma": "anya",
+   "lex_id": [],
+   "note": "cq1 scan 38: anya 'other' < *h₂en-yo- (EWAia I 77), not *h₂élyos; unmapped (also decides sa-ep)."
+  },
+  {
+   "corpus": "ae",
+   "lemma": "anya",
+   "lex_id": [],
+   "note": "cq1 scan 38: Av. aniia- 'other' < PIIr *Hanyás < *h₂en-yo-, not *h₂élyos; unmapped."
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ajuryá-",
+   "lex_id": [
+    "pie-root-gjerh2-grow_old"
+   ],
+   "note": "cq1 scan 41: ajuryá- 'unageing' = a- + jur- (√jr̥̄ 'grow old', EWAia I 593) < *ǵerh₂-; root-level derivative mapping.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "av",
+   "lemma": "tva",
+   "lex_id": [],
+   "note": "cq1 scan 3: DCS lemma tva is the abstract/gerund suffix -tva/-tvā/-tvāya (dīrghāyutvāya, amṛtatvam; AVŚ 9.10.6 tvā is mahitvā), not the possessive *twós; the 2sg pronoun is not a content word; unmapped (also decides sa-ep)."
+  },
+  {
+   "corpus": "av",
+   "lemma": "upamā",
+   "lex_id": [
+    "pie-root-meh1-measure"
+   ],
+   "note": "cq1 scan 28: upamā 'comparison, simile' < upa-mā 'measure against' (EWAia II 342 MĀ¹); the ids pie-lex-egjh2 ('I', from the substring mām) and pie-lex-meh1 (prohibitive mā́) were key collisions."
+  },
+  {
+   "corpus": "av",
+   "lemma": "asthi",
+   "lex_id": [
+    "pie-lex-h3esth1"
+   ],
+   "note": "cq1 scan 37: ásthi- 'bone' (AVP 4.15.3 asthnā asthi) < *h₃ésth₁ (EWAia I 152); was unmapped."
+  },
+  {
+   "corpus": "lat",
+   "lemma": "iuppiter",
+   "lex_id": [
+    "pie-lex-dyexws",
+    "pie-lex-ph2texr"
+   ],
+   "note": "cq1 scan 18: Iuppiter < *dyew-ph₂tēr (de Vaan 2008 s.v. Iuppiter; cf. Ved. dyaúṣ pitā́, Ζεῦ πάτερ): both members keyed (compound hit, never a pair hit by itself)."
+  },
+  {
+   "corpus": "lat",
+   "lemma": "medulla",
+   "lex_id": [],
+   "note": "cq1 scan 35: medulla 'marrow' has no accepted link to *mosgʰós (de Vaan 2008 s.v. medulla: origin unclear); unmapped."
+  },
+  {
+   "corpus": "hit",
+   "lemma": "danku=i-@dunkel",
+   "lex_id": [
+    "pie-root-dhengwh-dark"
+   ],
+   "note": "cq1 scan 20: dankui- 'dark, black' < *dʰéngʷʰ-i- (Kloekhorst EDHIL 836; Wiktionary *dʰengʷʰ- lists *dʰéngʷʰ-is > Proto-Anatolian); was unmapped.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "hit",
+   "lemma": "danku=eš-@schwarz werden",
+   "lex_id": [
+    "pie-root-dhengwh-dark"
+   ],
+   "note": "cq1 scan 20: dankuešš- 'become dark', denominative of dankui- (Kloekhorst EDHIL 836).",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "hit",
+   "lemma": "danku=nu-@schwarz machen",
+   "lex_id": [
+    "pie-root-dhengwh-dark"
+   ],
+   "note": "cq1 scan 20: dankunu- 'make dark', causative of dankui- (Kloekhorst EDHIL 836).",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "hit",
+   "lemma": "dankunuš=k-@schwarz machen",
+   "lex_id": [
+    "pie-root-dhengwh-dark"
+   ],
+   "note": "cq1 scan 20: iterative of dankunu- (Kloekhorst EDHIL 836).",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "hit",
+   "lemma": "danku=išk-@schwarz machen",
+   "lex_id": [
+    "pie-root-dhengwh-dark"
+   ],
+   "note": "cq1 scan 20: dankuišk- 'make dark', of dankui- (Kloekhorst EDHIL 836).",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "grp",
+   "lemma": "σάτυρος",
+   "lex_id": [],
+   "note": "cq1 scan 12: σάτυρος 'satyr' origin unknown (Beekes EDG 1319: Pre-Greek; Wiktionary: 'Unknown'); the *deywós link was a 'possibly' in the etymology text; unmapped."
+  },
+  {
+   "corpus": "grp",
+   "lemma": "Σάτυρος",
+   "lex_id": [],
+   "note": "cq1 scan 12: personal name Satyrus / the satyr; no inherited etymology (Beekes EDG 1319); unmapped."
+  },
+  {
+   "corpus": "grp",
+   "lemma": "Ἀμαζών",
+   "lex_id": [],
+   "note": "cq1 scan 23: Ἀμαζών has no inherited etymology (folk etymology ἀ- + μαζός; Beekes EDG 77 foreign); the 'man' key was a collision; unmapped."
+  },
+  {
+   "corpus": "hom",
+   "lemma": "Ἀμαζών",
+   "lex_id": [],
+   "note": "cq1 scan 23: as grp Ἀμαζών (Il. 3.189, 6.186); unmapped."
+  },
+  {
+   "corpus": "grp",
+   "lemma": "φατός",
+   "lex_id": [
+    "pie-lex-bhh2tos"
+   ],
+   "note": "cq1 scan 13: φατός 'spoken of' (φημί, Beekes EDG 1563 s.v. φημί) < *bʰh₂-tó-; *gʷʰn̥tós belongs to -φατος 'slain' in compounds (ἀρηΐφατος), not the simplex."
+  },
+  {
+   "corpus": "grp",
+   "lemma": "ἄφατος",
+   "lex_id": [
+    "pie-lex-bhh2tos"
+   ],
+   "note": "cq1 scan 13: ἄφατος 'unspeakable' privative of φατός (Hes. Op. 3); *bʰeh₂- only."
+  },
+  {
+   "corpus": "grp",
+   "lemma": "ἔαρ",
+   "lex_id": [
+    "pie-lex-wosr"
+   ],
+   "note": "cq1 scan 34 and reader reports w10 32/120: ἔαρ/ἦρ 'spring' < *wésr̥ (Beekes EDG 365 s.v. ἔαρ 1; Lat. vēr, Ved. vasantá-); ἔαρ 'blood' (EDG 365 s.v. ἔαρ 2, a gloss word) is not the attested lemma in GLAUx."
+  },
+  {
+   "corpus": "hom",
+   "lemma": "ἔαρ",
+   "lex_id": [
+    "pie-lex-wosr"
+   ],
+   "note": "cq1 scan 34: Homeric εἶαρ/ἔαρ 'spring' < *wésr̥ (Beekes EDG 365)."
+  },
+  {
+   "corpus": "grp",
+   "lemma": "πολιός",
+   "lex_id": [
+    "pie-root-pelH-pale"
+   ],
+   "note": "cq1 scan 39: πολιός 'grey' < *pol-yo-, root *pelH- 'pale, grey' (Beekes EDG 1220; Wiktionary); not *polh₁-ús 'much' / *pleh₁- 'fill'."
+  },
+  {
+   "corpus": "hom",
+   "lemma": "πολιός",
+   "lex_id": [
+    "pie-root-pelH-pale"
+   ],
+   "note": "cq1 scan 39: Homeric πολιός 'grey' (πολιοῖο λύκοιο Il. 10.334) < *pelH-."
+  },
+  {
+   "corpus": "hom",
+   "lemma": "ἰός",
+   "lex_id": [
+    "pie-lex-Hisus"
+   ],
+   "note": "cq1 scan 32: Homeric ἰός is 'arrow' (Il. 1.48, 4.116; plural ἰοί), Wiktionary < *(H)isu- (cf. Ved. íṣu-), not ἰός 'poison' (*wisós), which Homer does not use."
+  },
+  {
+   "corpus": "grp",
+   "lemma": "ἰός@arrow",
+   "lex_id": [
+    "pie-lex-Hisus"
+   ],
+   "note": "cq1 scan 32: plural ἰοί/ἰῶν/ἰοῖς/ἰούς is 'arrow' (rule in pie/cq1_formulas.py); the singular stays ambiguous with 'poison, rust' and keeps *wisós."
+  },
+  {
+   "corpus": "grp",
+   "lemma": "ὀμιχέω",
+   "lex_id": [
+    "pie-root-h3meygjh-urinate"
+   ],
+   "note": "cq1 scan 33: ὀμιχέω/ὀμείχω 'urinate' (Hes. Op. 727 ὀμιχεῖν) < *h₃meyǵʰ- (Beekes EDG 1085; Ved. méhati, Lat. mingō); was unmapped."
+  },
+  {
+   "corpus": "hom",
+   "lemma": "ἠέλιος",
+   "lex_id": [
+    "pie-lex-soh2wl"
+   ],
+   "note": "cq1 scan 22: epic ἠέλιος 'sun' (and Ἠέλιος) = ἥλιος < *sóh₂wl̥ (Beekes EDG 516); the epic lemma had no mapping (125 Homeric units)."
+  },
+  {
+   "corpus": "rv",
+   "lemma": "girí-",
+   "lex_id": [
+    "pie-lex-gwrHis"
+   ],
+   "note": "cq1 (noticed verifying scan 26): girí- 'mountain' < *gʷr̥H-í- (EWAia I 474); pie-lex-gjlh2oxws ('husband's sister') came from a Wiktionary reflex marked uncertain (PIIr *gr̥Hiš) and is a key collision."
+  },
+  {
+   "corpus": "av",
+   "lemma": "giri",
+   "lex_id": [
+    "pie-lex-gwrHis"
+   ],
+   "note": "cq1 (noticed verifying scan 26): girí- 'mountain' < *gʷr̥H-í- (EWAia I 474); pie-lex-gjlh2oxws ('husband's sister') came from a Wiktionary reflex marked uncertain (PIIr *gr̥Hiš) and is a key collision."
+  }
+ ],
+ "form": [
+  {
+   "lang": "ae",
+   "form": "vaŋhāu",
+   "lemma": "vohu",
+   "note": "cq1 scan 15: loc. sg. of vohu-/vaŋhu- 'good' (vaŋhāu srauuahī Y30.10c, Y62.6c; Bartholomae AiW 1394); the lemmatizer gave vaŋhati 'wear'."
+  }
+ ],
+ "proto": [
+  {
+   "code": "gem-pro",
+   "term": "*kwerruz",
+   "lex_id": [],
+   "note": "cq1 scan 26: Proto-Germanic *kwerruz 'calm, still' (ON kyrr) is from a *gʷerH- 'crumble, weaken' (kaikki Proto-Germanic; Kroonen EDPG s.v. *kwirru-), not *gʷerH- 'praise'; no such root in the lexicon: unmapped."
+  },
+  {
+   "code": "iir-pro",
+   "term": "*Hanyás",
+   "lex_id": [],
+   "note": "cq1 scan 38: PIIr *Hanyás 'other' < *h₂en-yo-, not *h₂élyos (EWAia I 77)."
+  }
+ ],
+ "key": [
+  {
+   "lang": "ru",
+   "key": "горшок",
+   "lex_id": [
+    "pie-lex-gwhrnos"
+   ],
+   "formation": "derivative",
+   "note": "cq1 scan 26: горшок 'pot' < Proto-Slavic *gъrnьcь, from *gъrnъ 'furnace' < *gʷʰr̥-nó- (kaikki Proto-Slavic *gъrnъ, *gъrnьcь; Derksen EDSIL 191); the chain went through *gornъ (*gʷorH-no-)."
+  }
+ ]
+}

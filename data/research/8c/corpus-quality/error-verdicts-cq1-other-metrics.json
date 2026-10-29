@@ -1,0 +1,4736 @@
+{
+ "method": "Whole production population before/after: fresh no-cache snapshots of the Stage C/C-S unit loaders (scripts/build_8c_stageC.py: Stage B corpora, Germanic, Balto-Slavic, sa-ep/grc-late), content words (form, lemma, ids) aligned per unit; 'before' was taken before this worker's edits (it already contained other workers' work in progress at that time), 'after' with all cq1 work present; every changed token is attributed to a rule, and changes due to the lead's z-cq1-formulas.json / cq1_formulas.py are listed separately. No search-index or Stage C-S artifacts were written. Scripts: scratchpad cq1/other/snap.py, diff.py.",
+ "token_changes_by_rule": {
+  "ang: *flainaz unmapped": 18,
+  "ang: ang fyren unmapped": 8,
+  "ang: ang vowel-less OCR fragment": 117,
+  "byliny: Slavic *dětę/*dětьca suckle": 189,
+  "byliny: Slavic see-words *ǵʰer-": 20,
+  "byliny: byliny OCR Кло -> Кто": 1,
+  "byliny: byliny старуха": 51,
+  "byliny: ru -выкать *h₁ewk-": 3,
+  "grc-late: grc δεξ- middle -> δέχομαι": 72,
+  "grc-late: grp Μῆδος unmapped": 396,
+  "grc-late: μελία/μέλινος unmapped": 49,
+  "grc: grc δεξ- middle -> δέχομαι": 35,
+  "grc: grp Μῆδος unmapped": 343,
+  "grc: μελία/μέλινος unmapped": 9,
+  "hom: hom Πολίτης name": 5,
+  "hom: μελία/μέλινος unmapped": 30,
+  "icepahc: icepahc átta -> eiga": 2,
+  "lat: lat libra unmapped": 13,
+  "lat: lat papauer unmapped": 7,
+  "lat: lat rideo unmapped": 24,
+  "menota: *flainaz unmapped": 6,
+  "menota: menota Tungu farm": 63,
+  "menota: menota for unmapped": 27,
+  "menota: menota máni byname": 1,
+  "menota: menota ottu coordinate": 1,
+  "menota: menota unlemmatised name (bera)": 3,
+  "menota: menota unlemmatised name (dagr)": 58,
+  "menota: menota unlemmatised name (finna)": 36,
+  "menota: menota unlemmatised name (haukr)": 9,
+  "menota: menota veginn coordinate": 1,
+  "menota: menota vindir Wends": 2,
+  "non: *flainaz unmapped": 2,
+  "orv: orv зьрѣти see": 26,
+  "sa-ep: sa-ep Tārā readings": 46,
+  "vuk: Slavic *dětę/*dětьca suckle": 105,
+  "vuk: Slavic see-words *ǵʰer-": 12,
+  "vuk: vuk smesti forms": 6
+ },
+ "token_changes_total": 1796,
+ "other_workers_changes_seen": {
+  "av: OTHER WORKER (lead cq1_formulas / z-cq1-formulas)": 105,
+  "av: OTHER WORKER (lead z-cq1-formulas lemma row)": 12,
+  "byliny: OTHER WORKER (lead cq1_formulas / z-cq1-formulas)": 12,
+  "grc-late: OTHER WORKER (lead cq1_formulas / z-cq1-formulas)": 37,
+  "grc-late: OTHER WORKER (lead z-cq1-formulas lemma row)": 1367,
+  "grc: OTHER WORKER (lead cq1_formulas / z-cq1-formulas)": 7,
+  "grc: OTHER WORKER (lead z-cq1-formulas lemma row)": 454,
+  "hom: OTHER WORKER (lead cq1_formulas / z-cq1-formulas)": 38,
+  "hom: OTHER WORKER (lead z-cq1-formulas lemma row)": 170,
+  "icepahc: OTHER WORKER (lead cq1_formulas / z-cq1-formulas)": 44,
+  "lat: OTHER WORKER (lead z-cq1-formulas lemma row)": 114,
+  "menota: OTHER WORKER (lead cq1_formulas / z-cq1-formulas)": 172,
+  "non: OTHER WORKER (lead cq1_formulas / z-cq1-formulas)": 8,
+  "rv: OTHER WORKER (lead z-cq1-formulas lemma row)": 810,
+  "sa-ep: OTHER WORKER (lead cq1_formulas / z-cq1-formulas)": 2330
+ },
+ "byliny_units_removed": {
+  "pesnisobrannyepvkireevskimch2pesni36 16012-18899": 1009,
+  "sbornikotdelenijarusskogojazykaislovesno32 14482-14513": 6,
+  "pesnisobrannyepvkireevskimvyp1pesn13 23524-23559": 11,
+  "pesnisobrannyepnrybnikovymch2narod72 36539-36619": 12,
+  "pesnisobrannyepnrybnikovymch4narod9 12201-12306": 11
+ },
+ "byliny_units_removed_total": 1049,
+ "byliny_units_removed_unattributed": 0,
+ "corpora": {
+  "hom": {
+   "units_before": 27760,
+   "units_after": 27760,
+   "units_removed": 0,
+   "units_added": 0,
+   "token_changes": 243
+  },
+  "lat": {
+   "units_before": 18420,
+   "units_after": 18420,
+   "units_removed": 0,
+   "units_added": 0,
+   "token_changes": 158
+  },
+  "grc": {
+   "units_before": 267933,
+   "units_after": 267933,
+   "units_removed": 0,
+   "units_added": 0,
+   "token_changes": 848
+  },
+  "grc-late": {
+   "units_before": 564640,
+   "units_after": 564640,
+   "units_removed": 0,
+   "units_added": 0,
+   "token_changes": 1921
+  },
+  "sa-ep": {
+   "units_before": 206171,
+   "units_after": 206171,
+   "units_removed": 0,
+   "units_added": 0,
+   "token_changes": 2376
+  },
+  "ang": {
+   "units_before": 15486,
+   "units_after": 15486,
+   "units_removed": 0,
+   "units_added": 0,
+   "token_changes": 143
+  },
+  "orv": {
+   "units_before": 14468,
+   "units_after": 14468,
+   "units_removed": 0,
+   "units_added": 0,
+   "token_changes": 26
+  },
+  "menota": {
+   "units_before": 90640,
+   "units_after": 90640,
+   "units_removed": 0,
+   "units_added": 0,
+   "token_changes": 379
+  },
+  "icepahc": {
+   "units_before": 21816,
+   "units_after": 21816,
+   "units_removed": 0,
+   "units_added": 0,
+   "token_changes": 46
+  },
+  "vuk": {
+   "units_before": 146775,
+   "units_after": 146775,
+   "units_removed": 0,
+   "units_added": 0,
+   "token_changes": 123
+  },
+  "byliny": {
+   "units_before": 150675,
+   "units_after": 149626,
+   "units_removed": 1049,
+   "units_added": 0,
+   "token_changes": 276
+  },
+  "non": {
+   "units_before": 12591,
+   "units_after": 12591,
+   "units_removed": 0,
+   "units_added": 0,
+   "token_changes": 10
+  },
+  "dainos": {
+   "units_before": 79769,
+   "units_after": 79769,
+   "units_removed": 0,
+   "units_added": 0,
+   "token_changes": 0
+  },
+  "rv": {
+   "units_before": 39832,
+   "units_after": 39832,
+   "units_removed": 0,
+   "units_added": 0,
+   "token_changes": 810
+  },
+  "av": {
+   "units_before": 13792,
+   "units_after": 13792,
+   "units_removed": 0,
+   "units_added": 0,
+   "token_changes": 117
+  }
+ },
+ "samples": {
+  "hom: μελία/μέλινος unmapped": [
+   {
+    "locus": "Il. 13.178",
+    "form": "μελίη",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Il. 13.597",
+    "form": "μείλινον",
+    "before": [
+     "μέλινος",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μέλινος",
+     []
+    ]
+   },
+   {
+    "locus": "Il. 13.715",
+    "form": "μείλινα",
+    "before": [
+     "μέλινος",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μέλινος",
+     []
+    ]
+   },
+   {
+    "locus": "Il. 16.114",
+    "form": "μείλινον",
+    "before": [
+     "μέλινος",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μέλινος",
+     []
+    ]
+   },
+   {
+    "locus": "Il. 16.143",
+    "form": "μελίην",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Il. 16.767",
+    "form": "μελίην",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Il. 16.814",
+    "form": "μείλινον",
+    "before": [
+     "μέλινος",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μέλινος",
+     []
+    ]
+   },
+   {
+    "locus": "Il. 19.361",
+    "form": "μείλινα",
+    "before": [
+     "μέλινος",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μέλινος",
+     []
+    ]
+   },
+   {
+    "locus": "Il. 19.390",
+    "form": "μελίην",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Il. 2.543",
+    "form": "μελίῃσι",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Il. 20.272",
+    "form": "μείλινον",
+    "before": [
+     "μέλινος",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μέλινος",
+     []
+    ]
+   },
+   {
+    "locus": "Il. 20.277",
+    "form": "μελίη",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   }
+  ],
+  "hom: hom Πολίτης name": [
+   {
+    "locus": "Il. 13.533",
+    "form": "Πολίτης",
+    "before": [
+     "Πολίτης",
+     [
+      "pie-lex-tpolHis"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "Il. 15.339",
+    "form": "Πολίτης",
+    "before": [
+     "Πολίτης",
+     [
+      "pie-lex-tpolHis"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "Il. 2.791",
+    "form": "Πολίτῃ",
+    "before": [
+     "Πολίτης",
+     [
+      "pie-lex-tpolHis"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "Il. 24.250",
+    "form": "Πολίτην",
+    "before": [
+     "Πολίτης",
+     [
+      "pie-lex-tpolHis"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "Od. 10.224",
+    "form": "Πολίτης",
+    "before": [
+     "Πολίτης",
+     [
+      "pie-lex-tpolHis"
+     ]
+    ],
+    "after": null
+   }
+  ],
+  "lat: lat libra unmapped": [
+   {
+    "locus": "CatAgr 23.3",
+    "form": "libram",
+    "before": [
+     "libra",
+     [
+      "pie-root-leyH-cling",
+      "pie-root-leyH-pour"
+     ]
+    ],
+    "after": [
+     "libra",
+     []
+    ]
+   },
+   {
+    "locus": "CatAgr 75.1",
+    "form": "libram",
+    "before": [
+     "libra",
+     [
+      "pie-root-leyH-cling",
+      "pie-root-leyH-pour"
+     ]
+    ],
+    "after": [
+     "libra",
+     []
+    ]
+   },
+   {
+    "locus": "CatAgr 76.1",
+    "form": "l.",
+    "before": [
+     "libra",
+     [
+      "pie-root-leyH-cling",
+      "pie-root-leyH-pour"
+     ]
+    ],
+    "after": [
+     "libra",
+     []
+    ]
+   },
+   {
+    "locus": "CatAgr 76.1",
+    "form": "l.",
+    "before": [
+     "libra",
+     [
+      "pie-root-leyH-cling",
+      "pie-root-leyH-pour"
+     ]
+    ],
+    "after": [
+     "libra",
+     []
+    ]
+   },
+   {
+    "locus": "CatAgr 76.1",
+    "form": "l.",
+    "before": [
+     "libra",
+     [
+      "pie-root-leyH-cling",
+      "pie-root-leyH-pour"
+     ]
+    ],
+    "after": [
+     "libra",
+     []
+    ]
+   },
+   {
+    "locus": "CatAgr 76.1",
+    "form": "l.",
+    "before": [
+     "libra",
+     [
+      "pie-root-leyH-cling",
+      "pie-root-leyH-pour"
+     ]
+    ],
+    "after": [
+     "libra",
+     []
+    ]
+   },
+   {
+    "locus": "CatAgr 76.2",
+    "form": "l.",
+    "before": [
+     "libra",
+     [
+      "pie-root-leyH-cling",
+      "pie-root-leyH-pour"
+     ]
+    ],
+    "after": [
+     "libra",
+     []
+    ]
+   },
+   {
+    "locus": "CatAgr 83.1",
+    "form": "l.",
+    "before": [
+     "libra",
+     [
+      "pie-root-leyH-cling",
+      "pie-root-leyH-pour"
+     ]
+    ],
+    "after": [
+     "libra",
+     []
+    ]
+   },
+   {
+    "locus": "CatAgr 85.1",
+    "form": "libram",
+    "before": [
+     "libra",
+     [
+      "pie-root-leyH-cling",
+      "pie-root-leyH-pour"
+     ]
+    ],
+    "after": [
+     "libra",
+     []
+    ]
+   },
+   {
+    "locus": "CatAgr 109.1",
+    "form": "libras",
+    "before": [
+     "libra",
+     [
+      "pie-root-leyH-cling",
+      "pie-root-leyH-pour"
+     ]
+    ],
+    "after": [
+     "libra",
+     []
+    ]
+   },
+   {
+    "locus": "CatAgr 121.1",
+    "form": "libram",
+    "before": [
+     "libra",
+     [
+      "pie-root-leyH-cling",
+      "pie-root-leyH-pour"
+     ]
+    ],
+    "after": [
+     "libra",
+     []
+    ]
+   },
+   {
+    "locus": "CatAgr 122.1",
+    "form": "libram",
+    "before": [
+     "libra",
+     [
+      "pie-root-leyH-cling",
+      "pie-root-leyH-pour"
+     ]
+    ],
+    "after": [
+     "libra",
+     []
+    ]
+   }
+  ],
+  "lat: lat papauer unmapped": [
+   {
+    "locus": "CatAgr 38.4",
+    "form": "papauer",
+    "before": [
+     "papauer",
+     [
+      "pie-lex-peh2wr"
+     ]
+    ],
+    "after": [
+     "papauer",
+     []
+    ]
+   },
+   {
+    "locus": "CatAgr 79.1",
+    "form": "papauer",
+    "before": [
+     "papauer",
+     [
+      "pie-lex-peh2wr"
+     ]
+    ],
+    "after": [
+     "papauer",
+     []
+    ]
+   },
+   {
+    "locus": "CatAgr 84.1",
+    "form": "papauer",
+    "before": [
+     "papauer",
+     [
+      "pie-lex-peh2wr"
+     ]
+    ],
+    "after": [
+     "papauer",
+     []
+    ]
+   },
+   {
+    "locus": "CatOrig 2.Fragmentum_4",
+    "form": "papauer",
+    "before": [
+     "papauer",
+     [
+      "pie-lex-peh2wr"
+     ]
+    ],
+    "after": [
+     "papauer",
+     []
+    ]
+   },
+   {
+    "locus": "Catul 61.195",
+    "form": "papauer",
+    "before": [
+     "papauer",
+     [
+      "pie-lex-peh2wr"
+     ]
+    ],
+    "after": [
+     "papauer",
+     []
+    ]
+   },
+   {
+    "locus": "LucrDRN2 2.453",
+    "form": "papaueris",
+    "before": [
+     "papauer",
+     [
+      "pie-lex-peh2wr"
+     ]
+    ],
+    "after": [
+     "papauer",
+     []
+    ]
+   },
+   {
+    "locus": "LucrDRN3 3.196",
+    "form": "papaueris",
+    "before": [
+     "papauer",
+     [
+      "pie-lex-peh2wr"
+     ]
+    ],
+    "after": [
+     "papauer",
+     []
+    ]
+   }
+  ],
+  "lat: lat rideo unmapped": [
+   {
+    "locus": "Catul 31.14",
+    "form": "ridete",
+    "before": [
+     "rideo",
+     [
+      "pie-root-wert-turn"
+     ]
+    ],
+    "after": [
+     "rideo",
+     []
+    ]
+   },
+   {
+    "locus": "Catul 42.9",
+    "form": "ridentem",
+    "before": [
+     "rideo",
+     [
+      "pie-root-wert-turn"
+     ]
+    ],
+    "after": [
+     "rideo",
+     []
+    ]
+   },
+   {
+    "locus": "Catul 51.5",
+    "form": "ridentem",
+    "before": [
+     "rideo",
+     [
+      "pie-root-wert-turn"
+     ]
+    ],
+    "after": [
+     "rideo",
+     []
+    ]
+   },
+   {
+    "locus": "Catul 53.1",
+    "form": "risi",
+    "before": [
+     "rideo",
+     [
+      "pie-root-wert-turn"
+     ]
+    ],
+    "after": [
+     "rideo",
+     []
+    ]
+   },
+   {
+    "locus": "Catul 56.3",
+    "form": "ride",
+    "before": [
+     "rideo",
+     [
+      "pie-root-wert-turn"
+     ]
+    ],
+    "after": [
+     "rideo",
+     []
+    ]
+   },
+   {
+    "locus": "Catul 61.219",
+    "form": "rideat",
+    "before": [
+     "rideo",
+     [
+      "pie-root-wert-turn"
+     ]
+    ],
+    "after": [
+     "rideo",
+     []
+    ]
+   },
+   {
+    "locus": "Catul 64.284",
+    "form": "risit",
+    "before": [
+     "rideo",
+     [
+      "pie-root-wert-turn"
+     ]
+    ],
+    "after": [
+     "rideo",
+     []
+    ]
+   },
+   {
+    "locus": "LucrDRN1 1.8",
+    "form": "rident",
+    "before": [
+     "rideo",
+     [
+      "pie-root-wert-turn"
+     ]
+    ],
+    "after": [
+     "rideo",
+     []
+    ]
+   },
+   {
+    "locus": "LucrDRN2 2.502",
+    "form": "ridenti",
+    "before": [
+     "rideo",
+     [
+      "pie-root-wert-turn"
+     ]
+    ],
+    "after": [
+     "rideo",
+     []
+    ]
+   },
+   {
+    "locus": "LucrDRN2 2.559",
+    "form": "ridet",
+    "before": [
+     "rideo",
+     [
+      "pie-root-wert-turn"
+     ]
+    ],
+    "after": [
+     "rideo",
+     []
+    ]
+   },
+   {
+    "locus": "LucrDRN2 2.983",
+    "form": "ridere",
+    "before": [
+     "rideo",
+     [
+      "pie-root-wert-turn"
+     ]
+    ],
+    "after": [
+     "rideo",
+     []
+    ]
+   },
+   {
+    "locus": "LucrDRN2 2.986",
+    "form": "ridere",
+    "before": [
+     "rideo",
+     [
+      "pie-root-wert-turn"
+     ]
+    ],
+    "after": [
+     "rideo",
+     []
+    ]
+   }
+  ],
+  "grc: μελία/μέλινος unmapped": [
+   {
+    "locus": "Hesiodus Theogonia 187",
+    "form": "Μελίας",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Hesiodus Theogonia 563",
+    "form": "Μελίῃσι",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Hesiodus Opera et dies 145",
+    "form": "μελιᾶν",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Hesiodus Scutum 420",
+    "form": "μελίη",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Simonides Epigrammata 6.52.1",
+    "form": "μελία",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Aristophanes Aves 742",
+    "form": "μελίας",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Hippocrates et Corpus Hippocraticum De natura muliebri 32 s44",
+    "form": "μελίης",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Hippocrates et Corpus Hippocraticum De natura muliebri 34 s9",
+    "form": "μελίην",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Palaephatus De incredibilibus 35 s1",
+    "form": "μελιῶν",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   }
+  ],
+  "grc: grc δεξ- middle -> δέχομαι": [
+   {
+    "locus": "Hesiodus Fragmenta 25.24",
+    "form": "δεξαμένωι",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Hymni Homerici In Cererem 159",
+    "form": "δέξονται",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Hymni Homerici In Cererem 231",
+    "form": "δέξατο",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Aeschylus Supplices 219",
+    "form": "δεξάσθω",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Pindarus Olympia 6.27",
+    "form": "δέξαντο",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Pindarus Pythia 3.95",
+    "form": "δέξαντο",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Pindarus Isthmia 3.11",
+    "form": "δεξαμένῳ",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Pindarus Isthmia 7.5",
+    "form": "δεξαμένα",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Euripides Helena 867",
+    "form": "δεξώμεθα",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Euripides Orestes 1054",
+    "form": "δέξαιθ’",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Herodotus Historiae 3.38.4 s1",
+    "form": "δεξαίατ’",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Herodotus Historiae 6.112.2 s1",
+    "form": "δεξόμενοι",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   }
+  ],
+  "grc: grp Μῆδος unmapped": [
+   {
+    "locus": "Theognis Elegiae 764",
+    "form": "Μήδων",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Theognis Elegiae 775",
+    "form": "Μήδων",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Aeschylus Persae 236",
+    "form": "Μήδους",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Aeschylus Persae 765",
+    "form": "Μῆδος",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Pythagoras Fragmenta 185a s4",
+    "form": "Μήδων",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Simonides Epigrammata 6.197.1",
+    "form": "Μήδων",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Simonides Epigrammata 6.215.1",
+    "form": "Μήδων",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Simonides Epigrammata 7.258.2",
+    "form": "Μήδων",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Simonides Epigrammata 7.296.5",
+    "form": "Μήδων",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Simonides Epigrammata 7.677.1",
+    "form": "Μῆδοι",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Simonides Epigrammata 16.232.1",
+    "form": "Μήδων",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Xenophanes Fragmenta 18.5",
+    "form": "Μῆδος",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   }
+  ],
+  "grc-late: grp Μῆδος unmapped": [
+   {
+    "locus": "Callimachus Aetia 1.16",
+    "form": "Μῆδον",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Dinarchus In Aristogitonem 24 s1",
+    "form": "Μήδων",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Dinarchus In Aristogitonem 25 s2",
+    "form": "Μήδων",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Polybius Historiae 5.44.1 s1",
+    "form": "Μήδοις",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Polybius Historiae 5.79.7 s1",
+    "form": "Μήδων",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Polybius Historiae 5.79.7 s1",
+    "form": "Μήδου",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Polybius Historiae 5.82.11 s1",
+    "form": "Μήδους",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Polybius Historiae 5.85.4 s2",
+    "form": "Μήδοις",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Polybius Historiae 10.27.2 s1",
+    "form": "Μήδοις",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Polybius Historiae 10.27.4 s1",
+    "form": "Μήδων",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Polybius Historiae 16.22a.4 s1",
+    "form": "Μήδοις",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   },
+   {
+    "locus": "Polybius Historiae 38.22.2 s1",
+    "form": "Μήδων",
+    "before": [
+     "Μῆδος",
+     [
+      "pie-lex-mexdos"
+     ]
+    ],
+    "after": [
+     "Μῆδος",
+     []
+    ]
+   }
+  ],
+  "grc-late: grc δεξ- middle -> δέχομαι": [
+   {
+    "locus": "Theocritus Idyllia 17.59",
+    "form": "δεξαμένα",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Theophrastus Fragmenta 4.18 s2",
+    "form": "δεξόμενον",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Polybius Historiae 1.45.3 s1",
+    "form": "δεξάμενος",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Polybius Historiae 1.49.11 s1",
+    "form": "δεξάμενος",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Polybius Historiae 2.8.12 s1",
+    "form": "δεξαμένη",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Polybius Historiae 10.19.4 s1",
+    "form": "δέξασθαι",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Diodorus Siculus Bibliotheca historica 4.54.6 s1",
+    "form": "δεξαμένην",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Dionysius Halicarnassensis Antiquitates Romanae 1.31.2.82 s2",
+    "form": "δεξάμενος",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Dionysius Halicarnassensis Antiquitates Romanae 3.2.3.407 s2",
+    "form": "δέξεσθαι",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Dionysius Halicarnassensis Antiquitates Romanae 3.16.3.450 s3",
+    "form": "δεξομένης",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Dionysius Halicarnassensis Antiquitates Romanae 5.32.1.915 s1",
+    "form": "δέξεσθαι",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   },
+   {
+    "locus": "Dionysius Halicarnassensis Antiquitates Romanae 6.5.2.1045 s1",
+    "form": "δεξομένης",
+    "before": [
+     "δείκνυμι",
+     [
+      "pie-root-deykj-point_out"
+     ]
+    ],
+    "after": [
+     "δέχομαι",
+     [
+      "pie-root-dekj-take"
+     ]
+    ]
+   }
+  ],
+  "grc-late: μελία/μέλινος unmapped": [
+   {
+    "locus": "Apollonius Rhodius Argonautica 1.1026",
+    "form": "μελίας",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Apollonius Rhodius Argonautica 3.1264",
+    "form": "μελίην",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Dionysius Halicarnassensis Antiquitates Romanae 20.15.1.2365 s2",
+    "form": "μελίαι",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Strabo Geographica 10.1.13 s2",
+    "form": "μελίῃσι",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Strabo Geographica 10.1.13 s3",
+    "form": "μελίην",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Dioscorides Pedanius De materia medica 1.80.1 s1",
+    "form": "μελία",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Dioscorides Pedanius De materia medica 3.148.1 s3",
+    "form": "μελίᾳ",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Harpocration Lexicon in decem oratores Atticos meline s4",
+    "form": "μελίνους",
+    "before": [
+     "μέλινος",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μέλινος",
+     []
+    ]
+   },
+   {
+    "locus": "Plutarchus Quaestiones convivales 4.1 s44",
+    "form": "μελίαν",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Plutarchus Quaestiones convivales 7.1 s21",
+    "form": "μελίη",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Pseudo-Apollodorus Bibliotheca 2.5.4 s3",
+    "form": "μελίας",
+    "before": [
+     "μελία",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μελία",
+     []
+    ]
+   },
+   {
+    "locus": "Pseudo-Apollodorus Bibliotheca 3.13.5 s6",
+    "form": "μείλινον",
+    "before": [
+     "μέλινος",
+     [
+      "pie-lex-melit"
+     ]
+    ],
+    "after": [
+     "μέλινος",
+     []
+    ]
+   }
+  ],
+  "sa-ep: sa-ep Tārā readings": [
+   {
+    "locus": "MBh, 3, 264.s33",
+    "form": "tārā",
+    "before": [
+     "tārā",
+     [
+      "pie-lex-h2stexr"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "MBh, 3, 264.s36",
+    "form": "tārāṃ",
+    "before": [
+     "tārā",
+     [
+      "pie-lex-h2stexr"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "MBh, 3, 264.s40",
+    "form": "tārā",
+    "before": [
+     "tārā",
+     [
+      "pie-lex-h2stexr"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "MBh, 3, 264.s52",
+    "form": "tārāṃ",
+    "before": [
+     "tārā",
+     [
+      "pie-lex-h2stexr"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "MBh, 3, 264.s77",
+    "form": "tārā",
+    "before": [
+     "tārā",
+     [
+      "pie-lex-h2stexr"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "MBh, 3, 264.s79",
+    "form": "tārāṃ",
+    "before": [
+     "tārā",
+     [
+      "pie-lex-h2stexr"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "Rām, Bā, 3.s32",
+    "form": "tārā",
+    "before": [
+     "tārā",
+     [
+      "pie-lex-h2stexr"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "Rām, Ki, 11.s70",
+    "form": "tārā",
+    "before": [
+     "tārā",
+     [
+      "pie-lex-h2stexr"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "Rām, Ki, 15.s11",
+    "form": "tārā",
+    "before": [
+     "tārā",
+     [
+      "pie-lex-h2stexr"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "Rām, Ki, 16.s1",
+    "form": "tārāṃ",
+    "before": [
+     "tārā",
+     [
+      "pie-lex-h2stexr"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "Rām, Ki, 16.s12",
+    "form": "tāre",
+    "before": [
+     "tārā",
+     [
+      "pie-lex-h2stexr"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "Rām, Ki, 16.s17",
+    "form": "tārā",
+    "before": [
+     "tārā",
+     [
+      "pie-lex-h2stexr"
+     ]
+    ],
+    "after": null
+   }
+  ],
+  "ang: ang fyren unmapped": [
+   {
+    "locus": "Beo. 14",
+    "form": "fyren",
+    "before": [
+     "fyren",
+     [
+      "pie-lex-peh2wr"
+     ]
+    ],
+    "after": [
+     "fyren",
+     []
+    ]
+   },
+   {
+    "locus": "Beo. 916",
+    "form": "fyren",
+    "before": [
+     "fyren",
+     [
+      "pie-lex-peh2wr"
+     ]
+    ],
+    "after": [
+     "fyren",
+     []
+    ]
+   },
+   {
+    "locus": "Beo. 1002",
+    "form": "fyren",
+    "before": [
+     "fyren",
+     [
+      "pie-lex-peh2wr"
+     ]
+    ],
+    "after": [
+     "fyren",
+     []
+    ]
+   },
+   {
+    "locus": "Beo. 1670",
+    "form": "fyren",
+    "before": [
+     "fyren",
+     [
+      "pie-lex-peh2wr"
+     ]
+    ],
+    "after": [
+     "fyren",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Genesis l.2121",
+    "form": "fyren",
+    "before": [
+     "fyren",
+     [
+      "pie-lex-peh2wr"
+     ]
+    ],
+    "after": [
+     "fyren",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Reden Dee Seelen An Den Leichnam l.18153",
+    "form": "fyren",
+    "before": [
+     "fyren",
+     [
+      "pie-lex-peh2wr"
+     ]
+    ],
+    "after": [
+     "fyren",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Reden Dee Seelen An Den Leichnam l.18224",
+    "form": "fyren",
+    "before": [
+     "fyren",
+     [
+      "pie-lex-peh2wr"
+     ]
+    ],
+    "after": [
+     "fyren",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Reden Dee Seelen An Den Leichnam l.18323",
+    "form": "fyren",
+    "before": [
+     "fyren",
+     [
+      "pie-lex-peh2wr"
+     ]
+    ],
+    "after": [
+     "fyren",
+     []
+    ]
+   }
+  ],
+  "ang: *flainaz unmapped": [
+   {
+    "locus": "Beo. 1434",
+    "form": "flān",
+    "before": [
+     "flān",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "flān",
+     []
+    ]
+   },
+   {
+    "locus": "Beo. 1745",
+    "form": "flān",
+    "before": [
+     "flān",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "flān",
+     []
+    ]
+   },
+   {
+    "locus": "Beo. 2439",
+    "form": "flāne",
+    "before": [
+     "flan|flān|flah",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "flan|flān|flah",
+     []
+    ]
+   },
+   {
+    "locus": "Beo. 3120",
+    "form": "flāne",
+    "before": [
+     "flan|flān|flah",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "flan|flān|flah",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Cadmons Exodus l.7838",
+    "form": "flane",
+    "before": [
+     "flān|flan|flah",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "flān|flan|flah",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Hi. l.10625",
+    "form": "flam",
+    "before": [
+     "flah|flāh|flān",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "flah|flāh|flān",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Judith l.11602",
+    "form": "flana",
+    "before": [
+     "flān|flan|flah",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "flān|flan|flah",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Satan l.12205",
+    "form": "fla",
+    "before": [
+     "flah|flāh|flān",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "flah|flāh|flān",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Satan l.13024",
+    "form": "fla",
+    "before": [
+     "flah|flāh|flān",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "flah|flāh|flān",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Satan l.13702",
+    "form": "fla",
+    "before": [
+     "flah|flāh|flān",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "flah|flāh|flān",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Cynevulfs Crist l.15057",
+    "form": "fla",
+    "before": [
+     "flah|flāh|flān",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "flah|flāh|flān",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Cynevulfs Crist l.15560",
+    "form": "fla",
+    "before": [
+     "flah|flāh|flān",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "flah|flāh|flān",
+     []
+    ]
+   }
+  ],
+  "ang: ang vowel-less OCR fragment": [
+   {
+    "locus": "Grein I Genesis l.1831",
+    "form": "hd",
+    "before": [
+     "hēdan",
+     []
+    ],
+    "after": [
+     "?hd",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Genesis l.2166",
+    "form": "hl",
+    "before": [
+     "hēlan",
+     []
+    ],
+    "after": [
+     "?hl",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Oenesis l.2382",
+    "form": "dM",
+    "before": [
+     "dēman",
+     []
+    ],
+    "after": [
+     "?dm",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Genesis l.2614",
+    "form": "hl",
+    "before": [
+     "hēlan",
+     []
+    ],
+    "after": [
+     "?hl",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Genesis l.3554",
+    "form": "Mt",
+    "before": [
+     "mētan",
+     [
+      "pie-root-meh2d-meet"
+     ]
+    ],
+    "after": [
+     "?mt",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Genesis l.5078",
+    "form": "wst",
+    "before": [
+     "wēstan",
+     []
+    ],
+    "after": [
+     "?wst",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Genesis l.5132",
+    "form": "wn",
+    "before": [
+     "wēn|wen|wnan",
+     [
+      "pie-root-wenh1-love"
+     ]
+    ],
+    "after": [
+     "?wn",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Genesis l.5613",
+    "form": "wd",
+    "before": [
+     "wēdan",
+     [
+      "pie-root-weh2t-excited"
+     ]
+    ],
+    "after": [
+     "?wd",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Genesis l.5677",
+    "form": "wd",
+    "before": [
+     "wēdan",
+     [
+      "pie-root-weh2t-excited"
+     ]
+    ],
+    "after": [
+     "?wd",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Genesis l.5928",
+    "form": "cn",
+    "before": [
+     "cwēn|cwen",
+     [
+      "pie-lex-gwexn"
+     ]
+    ],
+    "after": [
+     "?cn",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Genesis l.6524",
+    "form": "dm",
+    "before": [
+     "dēman",
+     []
+    ],
+    "after": [
+     "?dm",
+     []
+    ]
+   },
+   {
+    "locus": "Grein I Genesis l.6801",
+    "form": "hl",
+    "before": [
+     "hēlan",
+     []
+    ],
+    "after": [
+     "?hl",
+     []
+    ]
+   }
+  ],
+  "orv: orv зьрѣти see": [
+   {
+    "locus": "lav 15.16",
+    "form": "зрѧтъ",
+    "before": [
+     "зьрѣти",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "зьрѣти",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "lav 71.2",
+    "form": "зрѧ",
+    "before": [
+     "зьрѣти",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "зьрѣти",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "lav 71.5",
+    "form": "зрѣ",
+    "before": [
+     "зьрѣти",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "зьрѣти",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "lav 111.13",
+    "form": "прозрѣ.",
+    "before": [
+     "прозьрѣти",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "прозьрѣти",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "lav 133.20",
+    "form": "зрѧ",
+    "before": [
+     "зьрѣти",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "зьрѣти",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "lav 171.11",
+    "form": "зрѧщю.",
+    "before": [
+     "зьрѣти",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "зьрѣти",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "lav 177.10",
+    "form": "зрѣти.",
+    "before": [
+     "зьрѣти",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "зьрѣти",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "lav 201.18",
+    "form": "зри.",
+    "before": [
+     "зьрѣти",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "зьрѣти",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "lav 210.16",
+    "form": "зрѧща.",
+    "before": [
+     "зьрѣти",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "зьрѣти",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "lav 223.11",
+    "form": "зрѧще",
+    "before": [
+     "зьрѣти",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "зьрѣти",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "lav 241.36",
+    "form": "прозрить",
+    "before": [
+     "прозьрѣти",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "прозьрѣти",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "lav 246.3",
+    "form": "зрите",
+    "before": [
+     "зьрѣти",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "зьрѣти",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   }
+  ],
+  "menota: menota máni byname": [
+   {
+    "locus": "AM-113-b-fol 3v:14",
+    "form": "máni",
+    "before": [
+     "máni",
+     [
+      "pie-lex-mexh1ns"
+     ]
+    ],
+    "after": null
+   }
+  ],
+  "menota: menota Tungu farm": [
+   {
+    "locus": "AM-132-fol-Droplaugarsona-saga 143r:1",
+    "form": "Tungu",
+    "before": [
+     "tunga",
+     [
+      "pie-lex-dngjhweh2s"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-132-fol-Hallfredar-saga 150v:38",
+    "form": "Tungu",
+    "before": [
+     "tunga",
+     [
+      "pie-lex-dngjhweh2s"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-132-fol-Kormaks-saga 121r:39",
+    "form": "Tungu",
+    "before": [
+     "tunga",
+     [
+      "pie-lex-dngjhweh2s"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-132-fol-Kormaks-saga 121v:4",
+    "form": "Tungu",
+    "before": [
+     "tunga",
+     [
+      "pie-lex-dngjhweh2s"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-132-fol-Kormaks-saga 121v:13",
+    "form": "Tungu",
+    "before": [
+     "tunga",
+     [
+      "pie-lex-dngjhweh2s"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-132-fol-Kormaks-saga 121v:32",
+    "form": "Tungu",
+    "before": [
+     "tunga",
+     [
+      "pie-lex-dngjhweh2s"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-132-fol-Kormaks-saga 121v:35",
+    "form": "Tungu",
+    "before": [
+     "tunga",
+     [
+      "pie-lex-dngjhweh2s"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-132-fol-Kormaks-saga 122r:24",
+    "form": "Tungu",
+    "before": [
+     "tunga",
+     [
+      "pie-lex-dngjhweh2s"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-132-fol-Kormaks-saga 122v:6",
+    "form": "Tungu",
+    "before": [
+     "tunga",
+     [
+      "pie-lex-dngjhweh2s"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-132-fol-Kormaks-saga 124v:37",
+    "form": "Tungu",
+    "before": [
+     "tunga",
+     [
+      "pie-lex-dngjhweh2s"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-132-fol-Kormaks-saga 125v:7",
+    "form": "Tungu",
+    "before": [
+     "tunga",
+     [
+      "pie-lex-dngjhweh2s"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-132-fol-Laxdaela-saga 168v:26",
+    "form": "Tungu",
+    "before": [
+     "tunga",
+     [
+      "pie-lex-dngjhweh2s"
+     ]
+    ],
+    "after": null
+   }
+  ],
+  "menota: *flainaz unmapped": [
+   {
+    "locus": "AM-132-fol-Njals-saga 11v:10",
+    "form": "fleinninn",
+    "before": [
+     "fleinn",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "fleinn",
+     []
+    ]
+   },
+   {
+    "locus": "AM-243-b-alfa-fol 59:21",
+    "form": "fleinum",
+    "before": [
+     "fleinn",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "fleinn",
+     []
+    ]
+   },
+   {
+    "locus": "Wolf-Aug-9-10-4to 36v:36",
+    "form": "fleina",
+    "before": [
+     "fleinn",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "fleinn",
+     []
+    ]
+   },
+   {
+    "locus": "Wolf-Aug-9-10-4to 38v:6",
+    "form": "Fleinn",
+    "before": [
+     "fleinn",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "fleinn",
+     []
+    ]
+   },
+   {
+    "locus": "Wolf-Aug-9-10-4to 39v:33",
+    "form": "fleinn",
+    "before": [
+     "fleinn",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "fleinn",
+     []
+    ]
+   },
+   {
+    "locus": "Wolf-Aug-9-10-4to 51v:25",
+    "form": "fleins",
+    "before": [
+     "fleinn",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "fleinn",
+     []
+    ]
+   }
+  ],
+  "menota: menota veginn coordinate": [
+   {
+    "locus": "AM-132-fol-Njals-saga 42v:32",
+    "form": "veginn",
+    "before": [
+     "vega",
+     [
+      "pie-lex-wegjheti",
+      "pie-lex-wiketi"
+     ]
+    ],
+    "after": [
+     "vega@slay",
+     [
+      "pie-lex-wiketi"
+     ]
+    ]
+   }
+  ],
+  "menota: menota for unmapped": [
+   {
+    "locus": "AM-178-fol 2-188:15",
+    "form": "farar",
+    "before": [
+     "for",
+     [
+      "pie-lex-perkjs"
+     ]
+    ],
+    "after": [
+     "for",
+     []
+    ]
+   },
+   {
+    "locus": "AM-178-fol 2-189:10",
+    "form": "før",
+    "before": [
+     "for",
+     [
+      "pie-lex-perkjs"
+     ]
+    ],
+    "after": [
+     "for",
+     []
+    ]
+   },
+   {
+    "locus": "AM-178-fol 2-345:4",
+    "form": "før",
+    "before": [
+     "for",
+     [
+      "pie-lex-perkjs"
+     ]
+    ],
+    "after": [
+     "for",
+     []
+    ]
+   },
+   {
+    "locus": "DG-4at7-Streng 0037:33",
+    "form": "for",
+    "before": [
+     "for",
+     [
+      "pie-lex-perkjs"
+     ]
+    ],
+    "after": [
+     "for",
+     []
+    ]
+   },
+   {
+    "locus": "DG-8-OHleg 0016:18",
+    "form": "for",
+    "before": [
+     "for",
+     [
+      "pie-lex-perkjs"
+     ]
+    ],
+    "after": [
+     "for",
+     []
+    ]
+   },
+   {
+    "locus": "DG-8-OHleg 10r:29",
+    "form": "for",
+    "before": [
+     "for",
+     [
+      "pie-lex-perkjs"
+     ]
+    ],
+    "after": [
+     "for",
+     []
+    ]
+   },
+   {
+    "locus": "DG-8-OHleg 0029:4",
+    "form": "for",
+    "before": [
+     "for",
+     [
+      "pie-lex-perkjs"
+     ]
+    ],
+    "after": [
+     "for",
+     []
+    ]
+   },
+   {
+    "locus": "DG-8-OHleg 0036:11",
+    "form": "farar",
+    "before": [
+     "for",
+     [
+      "pie-lex-perkjs"
+     ]
+    ],
+    "after": [
+     "for",
+     []
+    ]
+   },
+   {
+    "locus": "DG-8-OHleg 0042:12",
+    "form": "forena",
+    "before": [
+     "for",
+     [
+      "pie-lex-perkjs"
+     ]
+    ],
+    "after": [
+     "for",
+     []
+    ]
+   },
+   {
+    "locus": "DG-8-OHleg 41r:29",
+    "form": "for",
+    "before": [
+     "for",
+     [
+      "pie-lex-perkjs"
+     ]
+    ],
+    "after": [
+     "for",
+     []
+    ]
+   },
+   {
+    "locus": "HolmPerg-4-fol 12r:17",
+    "form": "for",
+    "before": [
+     "for",
+     [
+      "pie-lex-perkjs"
+     ]
+    ],
+    "after": [
+     "for",
+     []
+    ]
+   },
+   {
+    "locus": "HolmPerg-4-fol 1-158:3",
+    "form": "for",
+    "before": [
+     "for",
+     [
+      "pie-lex-perkjs"
+     ]
+    ],
+    "after": [
+     "for",
+     []
+    ]
+   }
+  ],
+  "menota: menota ottu coordinate": [
+   {
+    "locus": "AM-242-fol 26:18",
+    "form": "ottu",
+    "before": [
+     "eiga",
+     [
+      "pie-lex-h2eh2oykje"
+     ]
+    ],
+    "after": [
+     "ótta",
+     [
+      "pie-lex-nokwts"
+     ]
+    ]
+   }
+  ],
+  "menota: menota unlemmatised name (dagr)": [
+   {
+    "locus": "AM-35-fol 26:",
+    "form": "Dag",
+    "before": [
+     "dagr",
+     [
+      "pie-lex-dhogwhos"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 26:",
+    "form": "Dagr",
+    "before": [
+     "dagr",
+     [
+      "pie-lex-dhogwhos"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 26:",
+    "form": "Dagr",
+    "before": [
+     "dagr",
+     [
+      "pie-lex-dhogwhos"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 27:",
+    "form": "Dagr",
+    "before": [
+     "dagr",
+     [
+      "pie-lex-dhogwhos"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 31:",
+    "form": "Dags",
+    "before": [
+     "dagr",
+     [
+      "pie-lex-dhogwhos"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 31:",
+    "form": "Dags",
+    "before": [
+     "dagr",
+     [
+      "pie-lex-dhogwhos"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 70:",
+    "form": "Dags",
+    "before": [
+     "dagr",
+     [
+      "pie-lex-dhogwhos"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 114:",
+    "form": "Dagr",
+    "before": [
+     "dagr",
+     [
+      "pie-lex-dhogwhos"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 133:",
+    "form": "Dag",
+    "before": [
+     "dagr",
+     [
+      "pie-lex-dhogwhos"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-36-fol 405:29",
+    "form": "Dagr",
+    "before": [
+     "dagr",
+     [
+      "pie-lex-dhogwhos"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-36-fol 405:29",
+    "form": "Dagr",
+    "before": [
+     "dagr",
+     [
+      "pie-lex-dhogwhos"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-36-fol 405:29",
+    "form": "Dagr",
+    "before": [
+     "dagr",
+     [
+      "pie-lex-dhogwhos"
+     ]
+    ],
+    "after": null
+   }
+  ],
+  "menota: menota unlemmatised name (bera)": [
+   {
+    "locus": "AM-35-fol 31:",
+    "form": "Bera",
+    "before": [
+     "bera",
+     [
+      "pie-lex-bhereti"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 31:",
+    "form": "Bera",
+    "before": [
+     "bera",
+     [
+      "pie-lex-bhereti"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 31:",
+    "form": "Bera",
+    "before": [
+     "bera",
+     [
+      "pie-lex-bhereti"
+     ]
+    ],
+    "after": null
+   }
+  ],
+  "menota: menota unlemmatised name (haukr)": [
+   {
+    "locus": "AM-35-fol 143:",
+    "form": "Haucr",
+    "before": [
+     "haukr",
+     [
+      "pie-root-kap-head",
+      "pie-root-kap-seize"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 143:",
+    "form": "Haucr",
+    "before": [
+     "haukr",
+     [
+      "pie-root-kap-head",
+      "pie-root-kap-seize"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 143:",
+    "form": "Haucr",
+    "before": [
+     "haukr",
+     [
+      "pie-root-kap-head",
+      "pie-root-kap-seize"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 143:",
+    "form": "Haucr",
+    "before": [
+     "haukr",
+     [
+      "pie-root-kap-head",
+      "pie-root-kap-seize"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 143:",
+    "form": "Hauk",
+    "before": [
+     "haukr",
+     [
+      "pie-root-kap-head",
+      "pie-root-kap-seize"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 143:",
+    "form": "Haucr",
+    "before": [
+     "haukr",
+     [
+      "pie-root-kap-head",
+      "pie-root-kap-seize"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 143:",
+    "form": "Haucr",
+    "before": [
+     "haukr",
+     [
+      "pie-root-kap-head",
+      "pie-root-kap-seize"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 351:",
+    "form": "Haucr",
+    "before": [
+     "haukr",
+     [
+      "pie-root-kap-head",
+      "pie-root-kap-seize"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-35-fol 353:",
+    "form": "Haucr",
+    "before": [
+     "haukr",
+     [
+      "pie-root-kap-head",
+      "pie-root-kap-seize"
+     ]
+    ],
+    "after": null
+   }
+  ],
+  "menota: menota unlemmatised name (finna)": [
+   {
+    "locus": "AM-36-fol 336:01",
+    "form": "Finnr",
+    "before": [
+     "finna",
+     [
+      "pie-lex-penteti"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-36-fol 340:01",
+    "form": "Finnr",
+    "before": [
+     "finna",
+     [
+      "pie-lex-penteti"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-36-fol 341:01",
+    "form": "Finnr",
+    "before": [
+     "finna",
+     [
+      "pie-lex-penteti"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-36-fol 341:01",
+    "form": "Finnr",
+    "before": [
+     "finna",
+     [
+      "pie-lex-penteti"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-36-fol 341:01",
+    "form": "Finnr",
+    "before": [
+     "finna",
+     [
+      "pie-lex-penteti"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-36-fol 343:01",
+    "form": "Finnr",
+    "before": [
+     "finna",
+     [
+      "pie-lex-penteti"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-36-fol 343:01",
+    "form": "Finnr",
+    "before": [
+     "finna",
+     [
+      "pie-lex-penteti"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-36-fol 343:01",
+    "form": "Finnr",
+    "before": [
+     "finna",
+     [
+      "pie-lex-penteti"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-36-fol 473:29",
+    "form": "Finnr",
+    "before": [
+     "finna",
+     [
+      "pie-lex-penteti"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-36-fol 526:29",
+    "form": "Finnr",
+    "before": [
+     "finna",
+     [
+      "pie-lex-penteti"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-63-fol 110:",
+    "form": "Finnr",
+    "before": [
+     "finna",
+     [
+      "pie-lex-penteti"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "AM-63-fol 110:",
+    "form": "Finnr",
+    "before": [
+     "finna",
+     [
+      "pie-lex-penteti"
+     ]
+    ],
+    "after": null
+   }
+  ],
+  "menota: menota vindir Wends": [
+   {
+    "locus": "DG-8-OHleg 0101:16",
+    "form": "vindir",
+    "before": [
+     "vindr",
+     [
+      "pie-lex-h2weh1nts"
+     ]
+    ],
+    "after": null
+   },
+   {
+    "locus": "DG-8-OHleg 0103:13",
+    "form": "Vindir",
+    "before": [
+     "vindr",
+     [
+      "pie-lex-h2weh1nts"
+     ]
+    ],
+    "after": null
+   }
+  ],
+  "icepahc: icepahc átta -> eiga": [
+   {
+    "locus": "1325.arni.nar-sag s856",
+    "form": "átta",
+    "before": [
+     "átta",
+     [
+      "pie-lex-okjtoxw"
+     ]
+    ],
+    "after": [
+     "eiga",
+     [
+      "pie-lex-h2eh2oykje"
+     ]
+    ]
+   },
+   {
+    "locus": "1325.arni.nar-sag s873",
+    "form": "átta",
+    "before": [
+     "átta",
+     [
+      "pie-lex-okjtoxw"
+     ]
+    ],
+    "after": [
+     "eiga",
+     [
+      "pie-lex-h2eh2oykje"
+     ]
+    ]
+   }
+  ],
+  "vuk: Slavic *dětę/*dětьca suckle": [
+   {
+    "locus": "Vuk 13015:34",
+    "form": "дете",
+    "before": [
+     "dete",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "dete",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 13015:36",
+    "form": "дете",
+    "before": [
+     "dete",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "dete",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 1547:68",
+    "form": "дете",
+    "before": [
+     "dete",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "dete",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 1547:78",
+    "form": "дете",
+    "before": [
+     "dete",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "dete",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 1547:79",
+    "form": "детета",
+    "before": [
+     "dete",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "dete",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 1547:97",
+    "form": "дете",
+    "before": [
+     "dete",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "dete",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 1547:98",
+    "form": "дете",
+    "before": [
+     "dete",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "dete",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 1547:100",
+    "form": "дете",
+    "before": [
+     "dete",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "dete",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 1547:135",
+    "form": "детета",
+    "before": [
+     "dete",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "dete",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 1547:159",
+    "form": "дете",
+    "before": [
+     "dete",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "dete",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 1547:162",
+    "form": "дете",
+    "before": [
+     "dete",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "dete",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 1547:186",
+    "form": "детета",
+    "before": [
+     "dete",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "dete",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   }
+  ],
+  "vuk: vuk smesti forms": [
+   {
+    "locus": "Vuk 28059:72",
+    "form": "смела",
+    "before": [
+     "smeo",
+     [
+      "pie-root-meh1-measure"
+     ]
+    ],
+    "after": [
+     "smesti",
+     [
+      "pie-root-meh1-measure"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 23664:69",
+    "form": "смеће",
+    "before": [
+     "smeće|smeti",
+     [
+      "pie-root-meh1-measure"
+     ]
+    ],
+    "after": [
+     "smesti",
+     [
+      "pie-root-meh1-measure"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 29609:21",
+    "form": "смеће",
+    "before": [
+     "smeće|smeti",
+     [
+      "pie-root-meh1-measure"
+     ]
+    ],
+    "after": [
+     "smesti",
+     [
+      "pie-root-meh1-measure"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 47944:3",
+    "form": "смеће",
+    "before": [
+     "smeće|smeti",
+     [
+      "pie-root-meh1-measure"
+     ]
+    ],
+    "after": [
+     "smesti",
+     [
+      "pie-root-meh1-measure"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 1546:113",
+    "form": "смела",
+    "before": [
+     "smeo",
+     [
+      "pie-root-meh1-measure"
+     ]
+    ],
+    "after": [
+     "smesti",
+     [
+      "pie-root-meh1-measure"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 23725:174",
+    "form": "смела",
+    "before": [
+     "smeo",
+     [
+      "pie-root-meh1-measure"
+     ]
+    ],
+    "after": [
+     "smesti",
+     [
+      "pie-root-meh1-measure"
+     ]
+    ]
+   }
+  ],
+  "vuk: Slavic see-words *ǵʰer-": [
+   {
+    "locus": "Vuk 28207:50",
+    "form": "зраке",
+    "before": [
+     "zraka|zrak",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "zraka|zrak",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 21395:225",
+    "form": "зрака",
+    "before": [
+     "zraka|zrak",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "zraka|zrak",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 21706:3",
+    "form": "зраком",
+    "before": [
+     "zrak|zraka",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "zrak|zraka",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 21715:771",
+    "form": "зрака",
+    "before": [
+     "zraka|zrak",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "zraka|zrak",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 21715:1229",
+    "form": "зрака",
+    "before": [
+     "zraka|zrak",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "zraka|zrak",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 34430:4",
+    "form": "зрак",
+    "before": [
+     "zrak",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "zrak",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 47883:6",
+    "form": "зраци",
+    "before": [
+     "zrak|zraka",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "zrak|zraka",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 47873:17",
+    "form": "зрак",
+    "before": [
+     "zrak",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "zrak",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 34330:19",
+    "form": "зрака",
+    "before": [
+     "zraka|zrak",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "zraka|zrak",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 1546:54",
+    "form": "зрака",
+    "before": [
+     "zraka|zrak",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "zraka|zrak",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 28280:125",
+    "form": "зрака",
+    "before": [
+     "zraka|zrak",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "zraka|zrak",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "Vuk 23730:81",
+    "form": "презрене",
+    "before": [
+     "prezreti",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "prezreti",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   }
+  ],
+  "byliny: Slavic *dětę/*dětьca suckle": [
+   {
+    "locus": "ruws 425379:10",
+    "form": "дитя",
+    "before": [
+     "дитя",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "дитя",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "ruws 425717:42",
+    "form": "дитя",
+    "before": [
+     "дитя",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "дитя",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "ruws 425717:288",
+    "form": "Подите",
+    "before": [
+     "дитя|дите",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "дитя|дите",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "ruws 426239:10",
+    "form": "дитя",
+    "before": [
+     "дитя",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "дитя",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "ruws 425068:116",
+    "form": "Подите",
+    "before": [
+     "дитя|дите",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "дитя|дите",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "ruws 425074:133",
+    "form": "подите",
+    "before": [
+     "дитя|дите",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "дитя|дите",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "ruws 425598:73",
+    "form": "дите",
+    "before": [
+     "дитя|дите",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "дитя|дите",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "ruws 426227:72",
+    "form": "подите",
+    "before": [
+     "дитя|дите",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "дитя|дите",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "ruws 426315:5",
+    "form": "дитя",
+    "before": [
+     "дитя",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "дитя",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "ruws 426315:5",
+    "form": "дитя",
+    "before": [
+     "дитя",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "дитя",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "ruws 390400:24",
+    "form": "дитя",
+    "before": [
+     "дитя",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "дитя",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   },
+   {
+    "locus": "ruws 425083:36",
+    "form": "дитя",
+    "before": [
+     "дитя",
+     [
+      "pie-lex-dheh1tis"
+     ]
+    ],
+    "after": [
+     "дитя",
+     [
+      "pie-root-dheh1y-suckle"
+     ]
+    ]
+   }
+  ],
+  "byliny: byliny старуха": [
+   {
+    "locus": "ruws 4276:167",
+    "form": "старуха",
+    "before": [
+     "старик",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ],
+    "after": [
+     "старуха",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ]
+   },
+   {
+    "locus": "ruws 426312:53",
+    "form": "старуха",
+    "before": [
+     "старик",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ],
+    "after": [
+     "старуха",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ]
+   },
+   {
+    "locus": "ruws 426312:70",
+    "form": "старуха",
+    "before": [
+     "старик",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ],
+    "after": [
+     "старуха",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ]
+   },
+   {
+    "locus": "ruws 426312:85",
+    "form": "старуху",
+    "before": [
+     "старик",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ],
+    "after": [
+     "старуха",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ]
+   },
+   {
+    "locus": "sbornikotdelenijarusskogojazykaislovesno32:41076",
+    "form": "старухамъ",
+    "before": [
+     "старик",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ],
+    "after": [
+     "старуха",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ]
+   },
+   {
+    "locus": "sbornikotdelenijarusskogojazykaislovesno32:41149",
+    "form": "старухамъ",
+    "before": [
+     "старик",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ],
+    "after": [
+     "старуха",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ]
+   },
+   {
+    "locus": "sbornikotdelenijarusskogojazykaislovesno32:41160",
+    "form": "старухамъ",
+    "before": [
+     "старик",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ],
+    "after": [
+     "старуха",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ]
+   },
+   {
+    "locus": "sbornikotdelenijarusskogojazykaislovesno92:1449",
+    "form": "старухи",
+    "before": [
+     "старик",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ],
+    "after": [
+     "старуха",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ]
+   },
+   {
+    "locus": "sbornikotdelenijarusskogojazykaislovesno92:3025",
+    "form": "старухи",
+    "before": [
+     "старик",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ],
+    "after": [
+     "старуха",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ]
+   },
+   {
+    "locus": "sbornikotdelenijarusskogojazykaislovesno92:3227",
+    "form": "старуха",
+    "before": [
+     "старик",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ],
+    "after": [
+     "старуха",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ]
+   },
+   {
+    "locus": "sbornikotdelenijarusskogojazykaislovesno92:5236",
+    "form": "старуха",
+    "before": [
+     "старик",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ],
+    "after": [
+     "старуха",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ]
+   },
+   {
+    "locus": "sbornikotdelenijarusskogojazykaislovesno92:5274",
+    "form": "старуха",
+    "before": [
+     "старик",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ],
+    "after": [
+     "старуха",
+     [
+      "pie-lex-sth2ros"
+     ]
+    ]
+   }
+  ],
+  "byliny: byliny OCR Кло -> Кто": [
+   {
+    "locus": "sbornikotdelenijarusskogojazykaislovesno32:25499",
+    "form": "Кло",
+    "before": [
+     "?кло",
+     []
+    ],
+    "after": null
+   }
+  ],
+  "byliny: Slavic see-words *ǵʰer-": [
+   {
+    "locus": "10945725bsb:14713",
+    "form": "презрёвъ",
+    "before": [
+     "презреть",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "презреть",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "10945725bsb:15697",
+    "form": "зрении",
+    "before": [
+     "зрение",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "зрение",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "10945725bsb:19882",
+    "form": "узри",
+    "before": [
+     "узреть",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "узреть",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "10945725bsb:19919",
+    "form": "воззри",
+    "before": [
+     "воззреть",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "воззреть",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "pesnisobrannyepvkireevskimch2pesni36:4207",
+    "form": "узрЪли",
+    "before": [
+     "узреть",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "узреть",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "pesnisobrannyepvkireevskimch3vyp36:10535",
+    "form": "прозрачною",
+    "before": [
+     "прозрачный",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "прозрачный",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "pesnisobrannyepvkireevskimch3vyp36:14676",
+    "form": "обозрЪлъ",
+    "before": [
+     "обозреть",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "обозреть",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "pesnisobrannyepvkireevskimch3vyp36:16270",
+    "form": "Презирая",
+    "before": [
+     "презирать",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "презирать",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "pesnisobrannyepvkireevskimch3vyp36:16316",
+    "form": "Презираютъ",
+    "before": [
+     "презирать",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "презирать",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "pesnisobrannyepvkireevskimch3vyp36:18279",
+    "form": "узримъ",
+    "before": [
+     "узреть",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "узреть",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "pesnisobrannyepvkireevskimch3vyp36:18674",
+    "form": "воззрите",
+    "before": [
+     "воззреть",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "воззреть",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   },
+   {
+    "locus": "pesnisobrannyepvkireevskimch3vyp36:22955",
+    "form": "зрительных",
+    "before": [
+     "зрительный",
+     [
+      "pie-root-gjerh2-grow_old"
+     ]
+    ],
+    "after": [
+     "зрительный",
+     [
+      "pie-root-gjher-shine"
+     ]
+    ]
+   }
+  ],
+  "byliny: ru -выкать *h₁ewk-": [
+   {
+    "locus": "pesnisobrannyepvkireevskimch3vyp36:10978",
+    "form": "привыкать",
+    "before": [
+     "привыкать",
+     [
+      "pie-lex-ud",
+      "pie-lex-yuHs"
+     ]
+    ],
+    "after": [
+     "привыкать",
+     [
+      "pie-root-h1ewk-become_accustomed"
+     ]
+    ]
+   },
+   {
+    "locus": "pesnisobrannyepvkireevskimch3vyp36:16176",
+    "form": "привыкать",
+    "before": [
+     "привыкать",
+     [
+      "pie-lex-ud",
+      "pie-lex-yuHs"
+     ]
+    ],
+    "after": [
+     "привыкать",
+     [
+      "pie-root-h1ewk-become_accustomed"
+     ]
+    ]
+   },
+   {
+    "locus": "pesnisobrannyepvkireevskimch3vyp36:16801",
+    "form": "привыкать",
+    "before": [
+     "привыкать",
+     [
+      "pie-lex-ud",
+      "pie-lex-yuHs"
+     ]
+    ],
+    "after": [
+     "привыкать",
+     [
+      "pie-root-h1ewk-become_accustomed"
+     ]
+    ]
+   }
+  ],
+  "non: *flainaz unmapped": [
+   {
+    "locus": "Havamal 151",
+    "form": "flein",
+    "before": [
+     "fleinn",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "fleinn",
+     []
+    ]
+   },
+   {
+    "locus": "Rígsþula 35",
+    "form": "flein",
+    "before": [
+     "fleinn",
+     [
+      "pie-root-spel-say_aloud"
+     ]
+    ],
+    "after": [
+     "fleinn",
+     []
+    ]
+   }
+  ]
+ },
+ "not_changed_classes": {
+  "greek_capitalised_lemmas": "grc units: 8493 mapped tokens (468 lemma types) have a capitalised GLAUx lemma: Ζεύς (theonym) and letter labels Α/Ε/Η, but also ethnonyms and personal names mapped through common-word homographs (Ἀχαιός, Θεσσαλός, Ἀρκάς, Θρᾷξ, Φρύξ, Μακεδών, Κύκλωψ, Τελαμών ...). Only Μῆδος (reported) and Homeric Πολίτης were changed; a general rule is a policy decision for the lead/owner.",
+  "byliny_capitalised_verbs_as_names": "byliny: 2456 name-tagged tokens whose lemma is a verb; mixed real names (Владим->ладить, Щелкан) and capitalised sentence-initial verbs (Фхать, Говоритъ). bsl_mapping.is_name gets no punctuation context from the Stage C loader; not changed.",
+  "byliny_prose_leaks": "Rybnikov vol. 2 (narod72) L22645-38731 is Bessonov's Roman-paginated essay with ~2900 emitted units, and Rybnikov vol. 4 has further ethnographic prose (e.g. L12002-12500); Kireevsky vyp. 1 L23466-23491, 23596-23699 also prose. Only the reported paragraphs were excluded."
+ },
+ "norse_unlemmatised_name_rule_tokens": {
+  "dagr": 63,
+  "bera": 3,
+  "haukr": 9,
+  "finna": 40
+ },
+ "note_on_alignment": "token_changes_by_rule counts aligned word changes per unit; where several words of one window change, alignment can merge them, so the per-rule figures are lower bounds. Exact rule hits for the unlemmatised-name rule are in norse_unlemmatised_name_rule_tokens (all source occurrences meeting the rule)."
+}

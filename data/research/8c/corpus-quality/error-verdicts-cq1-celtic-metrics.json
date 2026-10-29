@@ -1,0 +1,696 @@
+{
+ "note": "Corpus-quality batch 1, Celtic. Verdicts: error-verdicts-cq1-celtic.jsonl. Token diffs measured on the production lemmatizer path (celtic_rows -> irish_words/welsh_words -> lemmatize_words -> content_of -> loader name rule -> formula_search.Token -> read_table) over every non-gloss Celtic unit; unit diff on the real Stage C loader scripts/build_8c_stageC.py load_celtic (all Celtic corpora incl. sga-gl), before vs after, cache-free.",
+ "token_level": {
+  "units_compared": 318622,
+  "units_changed": 3432,
+  "tokens_changed": 3648,
+  "content_lost": 2086,
+  "content_gained": 278,
+  "mapped_before_unmapped_after": 2654,
+  "unit_ids_and_token_counts_unchanged": true
+ },
+ "real_loader_units": {
+  "units_before": 368741,
+  "units_after": 368664,
+  "units_changed": 3809,
+  "content_word_entries_changed": 6684,
+  "units_changed_by_corpus": {
+   "cy": 13,
+   "ga-early": 2116,
+   "mga": 1254,
+   "sga": 421,
+   "sga-gl": 5
+  },
+  "n_units_only_before": 146,
+  "n_units_only_after": 69
+ },
+ "window_recuts": "content-word counts change in long units, so the loader's max-words windows are re-cut: 146 window keys disappear and 69 appear (same source units; e.g. G100005A:#1/M703/M703.2:2 -> ~w1/~w2). Nothing already read is affected; a later rebuild re-windows these units.",
+ "rules": {
+  "dia_preposition (día/die -> do)": {
+   "tokens": 726,
+   "units": 678,
+   "content_lost": 726,
+   "content_gained": 0,
+   "mapping_removed": 726,
+   "by_corpus": {
+    "ga-early": 163,
+    "mga": 404,
+    "sga": 159
+   }
+  },
+  "dia_day (-> día@day, pie-lex-dyexws)": {
+   "tokens": 306,
+   "units": 298,
+   "content_lost": 0,
+   "content_gained": 261,
+   "mapping_removed": 0,
+   "by_corpus": {
+    "sga": 33,
+    "mga": 144,
+    "ga-early": 129
+   }
+  },
+  "dia_god (-> día@god, pie-lex-deywos)": {
+   "tokens": 29,
+   "units": 29,
+   "content_lost": 0,
+   "content_gained": 17,
+   "mapping_removed": 0,
+   "by_corpus": {
+    "sga": 12,
+    "mga": 14,
+    "ga-early": 3
+   }
+  },
+  "dia_foreign (Latin/German die -> die@foreign)": {
+   "tokens": 37,
+   "units": 36,
+   "content_lost": 37,
+   "content_gained": 0,
+   "mapping_removed": 37,
+   "by_corpus": {
+    "ga-early": 4,
+    "mga": 32,
+    "sga": 1
+   }
+  },
+  "gona -> co": {
+   "tokens": 124,
+   "units": 116,
+   "content_lost": 124,
+   "content_gained": 0,
+   "mapping_removed": 124,
+   "by_corpus": {
+    "ga-early": 74,
+    "mga": 36,
+    "sga": 14
+   }
+  },
+  "gonadh/gonad/gonid -> conid": {
+   "tokens": 327,
+   "units": 326,
+   "content_lost": 327,
+   "content_gained": 0,
+   "mapping_removed": 302,
+   "by_corpus": {
+    "ga-early": 297,
+    "sga": 16,
+    "mga": 14
+   }
+  },
+  "asna -> as": {
+   "tokens": 76,
+   "units": 72,
+   "content_lost": 76,
+   "content_gained": 0,
+   "mapping_removed": 76,
+   "by_corpus": {
+    "ga-early": 34,
+    "mga": 40,
+    "sga": 2
+   }
+  },
+  "gráin -> gráin@fear": {
+   "tokens": 175,
+   "units": 172,
+   "content_lost": 0,
+   "content_gained": 0,
+   "mapping_removed": 175,
+   "by_corpus": {
+    "ga-early": 94,
+    "mga": 63,
+    "sga": 18
+   }
+  },
+  "Dál + people -> dál (name)": {
+   "tokens": 120,
+   "units": 117,
+   "content_lost": 0,
+   "content_gained": 0,
+   "mapping_removed": 120,
+   "by_corpus": {
+    "sga": 22,
+    "mga": 56,
+    "ga-early": 42
+   }
+  },
+  "risin -> fri": {
+   "tokens": 553,
+   "units": 522,
+   "content_lost": 553,
+   "content_gained": 0,
+   "mapping_removed": 0,
+   "by_corpus": {
+    "ga-early": 350,
+    "mga": 191,
+    "sga": 12
+   }
+  },
+  "eitir -> eter / étir@possible": {
+   "tokens": 214,
+   "units": 208,
+   "content_lost": 205,
+   "content_gained": 0,
+   "mapping_removed": 214,
+   "by_corpus": {
+    "sga": 9,
+    "mga": 23,
+    "ga-early": 182
+   }
+  },
+  "airc -> orcaid / airc@need (and Airc-siu -> téit@secondary)": {
+   "tokens": 54,
+   "units": 53,
+   "content_lost": 0,
+   "content_gained": 0,
+   "mapping_removed": 44,
+   "by_corpus": {
+    "mga": 21,
+    "ga-early": 30,
+    "sga": 3
+   }
+  },
+  "galaib -> gal": {
+   "tokens": 39,
+   "units": 38,
+   "content_lost": 0,
+   "content_gained": 0,
+   "mapping_removed": 39,
+   "by_corpus": {
+    "sga": 13,
+    "ga-early": 4,
+    "mga": 22
+   }
+  },
+  "Welsh yn/pwy oreu -> goreu": {
+   "tokens": 15,
+   "units": 13,
+   "content_lost": 0,
+   "content_gained": 0,
+   "mapping_removed": 15,
+   "by_corpus": {
+    "cy": 15
+   }
+  },
+  "meinic/menic/minic unmapped (table)": {
+   "tokens": 704,
+   "units": 655,
+   "content_lost": 0,
+   "content_gained": 0,
+   "mapping_removed": 704,
+   "by_corpus": {
+    "mga": 142,
+    "ga-early": 521,
+    "sga": 41
+   }
+  },
+  "múin unmapped (table)": {
+   "tokens": 62,
+   "units": 61,
+   "content_lost": 0,
+   "content_gained": 0,
+   "mapping_removed": 62,
+   "by_corpus": {
+    "ga-early": 46,
+    "mga": 9,
+    "sga": 7
+   }
+  },
+  "asbeir names -> asbeir (exact readings)": {
+   "tokens": 34,
+   "units": 34,
+   "content_lost": 0,
+   "content_gained": 0,
+   "mapping_removed": 0,
+   "by_corpus": {
+    "sga": 9,
+    "ga-early": 11,
+    "mga": 14
+   }
+  },
+  "reviewed contexts (ends, foid, crett, ben, la, lín@net, benaid, dos/do-s, cluiche, cló)": {
+   "tokens": 53,
+   "units": 48,
+   "content_lost": 38,
+   "content_gained": 0,
+   "mapping_removed": 16,
+   "by_corpus": {
+    "mga": 16,
+    "sga": 37
+   }
+  }
+ },
+ "exceptions": {
+  "dia": {
+   "day": "next word a weekday (sathairn, domnaig, luain, mairt, dardaoin, cétaín, aíne ... and spelling variants) or brátha; or cach/cech/gach before it unless chéile/céli/ceiliu or a lenited/nasalized word follows",
+   "god": "next nime/nimhe, uilechumachtach, dúileach, na ndúl; mór/már only unit-initially or after the article; unit-initial Día before lim/limm/ocus/ecna/rí/día/tresin/dod-roíd/ar",
+   "foreign": "die after hoc/eodem, in die + sancti/natali/domini, die sabba(ti), German die + Söhne/Glosse/Notiz/Angabe/Sätze",
+   "untouched": "medial capitals (Día (name)); unaccented dia (already a function word by POS) except the day/god contexts"
+  },
+  "gona": "verbal noun kept after na, a, do, da, tri, trí, mo, boeghal/baoghal, bithin, cuingid, (d')iarraidh, artí or before nó/no/báis",
+  "gonadh": "'was wounded' kept after ro, ra, do, no, ní, nír, níor, ar, coro, gur, gor, diar, nos, ros, dos",
+  "asna": "rib kept after a, tria, trí, tre, dá, da, cech, gach, an, 'n, de'n, cen, gan; changes only before a dat. pl. (-aib/-ib/-ibh/-aibh/-iph/-aiph/-aip), a dual di/dí/da/dá, or an h-prefixed word",
+  "gráin": "grain kept before eorna, cruithnechta, arba, coirce, seccail, sabhus, meles, glas, or after na / maille",
+  "dál": "only before a capitalized (after mutation sign) people name; dál Temra/Temrach/Tailten (assembly) and the common noun kept",
+  "eitir": "h-eitir/héitir and after ní/nach/ba/is/risba/nocha/níor -> étir@possible",
+  "airc": "after ro/cur -> orcaid; Airc-siu do Emain -> téit@secondary; else airc@need",
+  "risin": "hyphenated rí-sin 'that king' untouched",
+  "all Irish rules": "a medial capital (loader name rule) is never changed"
+ },
+ "spot_checks": {
+  "method": "random samples of every changed class read in context (KWIC from the real lemmatizer output); 25-90 per large class, all tokens of small classes",
+  "dia_preposition": "60 + 25 sampled: all preposition/relative (dia n-ebradh, cidh día tá, día thig, día teoru mbliadan) except 1 Latin 'die sabba(ti)' (then added to the foreign rule); estimated residual God/day tokens among the 743: under 3%",
+  "dia_day": "all 110 cach/cech/gach cases read: 5 prepositional (cach dia t-tighibh / celi / ceiliu / chcird) found and excluded by the mutation/chéile exception; all weekday cases are days",
+  "dia_god": "all read: 3 errors with mór (dia mór maithęs 'of his great goods', dia már des, die mór Maige) found and excluded by the unit-initial / article condition",
+  "gona": "25 sampled after the first pass: 6 verbal nouns (gona nó gabhala, do cuingid gona duine, tre bithin gona no fiabhrasa, artí gona Hechtoir, gona bais) -> exceptions added",
+  "gonadh": "25 sampled: all 'so that'; the verb uses (ro gonadh, do gonadh, coro gonad, gur gonad, diar gonad, nos gonad) are excepted",
+  "asna": "25 sampled: all as + article",
+  "gráin": "all 165 read in KWIC: 2 cereal cases (an ghráin ghlais 'the green grain', maille grain) -> exceptions; G600011 'na grain' kept",
+  "dál": "14+14 sampled: tribal names; dál Temra (assembly) excepted",
+  "risin": "25 sampled: all ri/re + article",
+  "eitir": "all read: between, or étir 'possible' with h- / copula",
+  "airc": "all 54 read: none 'piglet'; ro/cur airc = orgaid 'plundered'",
+  "dia_unit_initial": "all 45 unit-initial Día/Die tokens read: ~35 relative/prepositional (Día nderṅta-su, Die mbatar, Día tarla) -> do; 9 God readings (Día lim fri cach sním, Día ocus Chíaran, Día ecna, Dīa tresin mbennachtain ...) kept as día@god by the unit-initial exception"
+ },
+ "rejected_or_unchanged": {
+  "bebsait (bad|baid -> *gʷeh₂-)": "EDPC p0132 *ba-yo- 'die' < 'go'",
+  "tús (*weyd-)": "EDPC p0402",
+  "tarla (*leh₁-)": "EDPC p0248",
+  "óenḟir": "compound left unmapped by design",
+  "mag/maige (*méǵh₂s)": "unclear: EDPC p0267 '(?)'; left",
+  "dál common noun": "genuine homograph share (*deh₂-) / meeting (*dʰeh₁-, EDPC p0098); union kept"
+ },
+ "files": [
+  "pie/celtic_mapping.py (Corpus-quality batch 1 block, _cq1_irish_rule, Welsh goreu rule, CQ1_NONCONTENT_LEMMAS in is_function_lemma)",
+  "data/research/formulas/mapping-overrides/z-cq1-celtic.json",
+  "data/research/formulas/cq1-readings-celtic.json",
+  "tests/test_cq1_celtic.py"
+ ],
+ "window_recut_keys": {
+  "only_before": [
+   [
+    "ga-early",
+    "G100005A:#1/M703/M703.2:2"
+   ],
+   [
+    "ga-early",
+    "G100005B:#1/M1066/M1066.11:1"
+   ],
+   [
+    "ga-early",
+    "G100005C:#1/M1310/M1310.6:1~w1"
+   ],
+   [
+    "ga-early",
+    "G100005C:#1/M1310/M1310.6:1~w2"
+   ],
+   [
+    "ga-early",
+    "G100005D:#1/M1429/M1429.8:1~w3"
+   ],
+   [
+    "ga-early",
+    "G100005D:#1/M1488/M1488.35:1"
+   ],
+   [
+    "ga-early",
+    "G100005E:#1/M1575/M1575.4:4~w1"
+   ],
+   [
+    "ga-early",
+    "G100005E:#1/M1575/M1575.4:4~w2"
+   ],
+   [
+    "ga-early",
+    "G100010A:#1/LC1244/LC1244.4:9~w6"
+   ],
+   [
+    "ga-early",
+    "G100010B:#1/LC1522/LC1522.4:4~w6"
+   ],
+   [
+    "ga-early",
+    "G100010B:#1/LC1567/LC1567.3:2~w1"
+   ],
+   [
+    "ga-early",
+    "G100010B:#1/LC1567/LC1567.3:2~w2"
+   ],
+   [
+    "ga-early",
+    "G100011:#1/1236/1236.11:3~w3"
+   ],
+   [
+    "ga-early",
+    "G100011:#1/1420/1420.12:1"
+   ],
+   [
+    "ga-early",
+    "G100022:#1/OX1467/OX1467.15:1~w1"
+   ],
+   [
+    "ga-early",
+    "G100022:#1/OX1467/OX1467.15:1~w2"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1/5/#1:1~w1"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1/5/#1:1~w2"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/18/#1:14~w6"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/18/#1:21~w1"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/18/#1:21~w2"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/18/#1:8~w1"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/18/#1:8~w2"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/26:38~w1"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/26:38~w2"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/30:26~w6"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/32:29~w3"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/35/#2:11~w3"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/41:55~w4"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/49:15~w1"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/49:15~w2"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/2/14:39~w1"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/2/14:39~w2"
+   ],
+   [
+    "ga-early",
+    "G100055:#1/3/21/4:6~w1"
+   ],
+   [
+    "ga-early",
+    "G100055:#1/3/21/4:6~w2"
+   ],
+   [
+    "ga-early",
+    "G100055:#1/3/21/6:23~w1"
+   ],
+   [
+    "ga-early",
+    "G100055:#1/3/21/6:23~w2"
+   ],
+   [
+    "ga-early",
+    "G100062:#1/#1:183~w3"
+   ],
+   [
+    "ga-early",
+    "G100062:#1/#1:20~w6"
+   ],
+   [
+    "ga-early",
+    "G100080:#1/10:268~w1"
+   ],
+   [
+    "ga-early",
+    "G100080:#1/10:268~w2"
+   ],
+   [
+    "ga-early",
+    "G100080:#1/11:175~w4"
+   ],
+   [
+    "ga-early",
+    "G100080:#1/12:11~w1"
+   ],
+   [
+    "ga-early",
+    "G100080:#1/12:11~w2"
+   ],
+   [
+    "ga-early",
+    "G100080:#1/8:109~w1"
+   ],
+   [
+    "ga-early",
+    "G100080:#1/8:109~w2"
+   ],
+   [
+    "ga-early",
+    "G207009A:#1/7:14~w1"
+   ],
+   [
+    "ga-early",
+    "G207009A:#1/7:14~w2"
+   ],
+   [
+    "ga-early",
+    "G208020:#1/3/3:23~w1"
+   ],
+   [
+    "ga-early",
+    "G208020:#1/3/3:23~w2"
+   ]
+  ],
+  "only_after": [
+   [
+    "ga-early",
+    "G100005A:#1/M703/M703.2:2~w1"
+   ],
+   [
+    "ga-early",
+    "G100005A:#1/M703/M703.2:2~w2"
+   ],
+   [
+    "ga-early",
+    "G100005B:#1/M1066/M1066.11:1~w1"
+   ],
+   [
+    "ga-early",
+    "G100005B:#1/M1066/M1066.11:1~w2"
+   ],
+   [
+    "ga-early",
+    "G100005C:#1/M1310/M1310.6:1"
+   ],
+   [
+    "ga-early",
+    "G100005D:#1/M1488/M1488.35:1~w1"
+   ],
+   [
+    "ga-early",
+    "G100005D:#1/M1488/M1488.35:1~w2"
+   ],
+   [
+    "ga-early",
+    "G100005E:#1/M1511/M1511.2:1~w5"
+   ],
+   [
+    "ga-early",
+    "G100005E:#1/M1575/M1575.4:4"
+   ],
+   [
+    "ga-early",
+    "G100010B:#1/LC1567/LC1567.3:2"
+   ],
+   [
+    "ga-early",
+    "G100011:#1/1407/1407.2:1~w3"
+   ],
+   [
+    "ga-early",
+    "G100011:#1/1420/1420.12:1~w1"
+   ],
+   [
+    "ga-early",
+    "G100011:#1/1420/1420.12:1~w2"
+   ],
+   [
+    "ga-early",
+    "G100022:#1/OX1467/OX1467.15:1"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1/5/#1:1"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/18/#1:21"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/18/#1:8"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/26:38"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/1~2/49:15"
+   ],
+   [
+    "ga-early",
+    "G100054:#1/2/14:39"
+   ],
+   [
+    "ga-early",
+    "G100055:#1/3/21/4:6"
+   ],
+   [
+    "ga-early",
+    "G100055:#1/3/21/6:23"
+   ],
+   [
+    "ga-early",
+    "G100080:#1/10:268"
+   ],
+   [
+    "ga-early",
+    "G100080:#1/12:11"
+   ],
+   [
+    "ga-early",
+    "G100080:#1/8:109"
+   ],
+   [
+    "ga-early",
+    "G207009A:#1/7:14"
+   ],
+   [
+    "ga-early",
+    "G208020:#1/3/3:23"
+   ],
+   [
+    "ga-early",
+    "G302018:#1/22:1"
+   ],
+   [
+    "ga-early",
+    "G302018:#1/84:3"
+   ],
+   [
+    "ga-early",
+    "G305000:#1/222:1"
+   ],
+   [
+    "ga-early",
+    "G305003:#1/6:2"
+   ],
+   [
+    "ga-early",
+    "G305004:#1/11:79"
+   ],
+   [
+    "ga-early",
+    "G305004:#1/1:93"
+   ],
+   [
+    "ga-early",
+    "celtic-journal-revue-celtique-1870-1928:revueceltique11pari:L1854-L1857"
+   ],
+   [
+    "ga-early",
+    "celtic-journal-zcp-1897-1926:zeitschriftfrc13meyeuoft:L9736-L9738"
+   ],
+   [
+    "mga",
+    "G100010A:#1/LC1114/LC1114.4:1"
+   ],
+   [
+    "mga",
+    "G103005:#1:1055"
+   ],
+   [
+    "mga",
+    "G106500D:#1/4/2/78:10"
+   ],
+   [
+    "mga",
+    "G201000:#1/13/lxxiii/247:1"
+   ],
+   [
+    "mga",
+    "G201000:#1/14/xi/20:5"
+   ],
+   [
+    "mga",
+    "G201000:#1/17/x/20:1~w1"
+   ],
+   [
+    "mga",
+    "G201000:#1/17/x/20:1~w2"
+   ],
+   [
+    "mga",
+    "G201000:#1/4/xix/54:2"
+   ],
+   [
+    "mga",
+    "G201000:#1/6/xxix/52:3"
+   ],
+   [
+    "mga",
+    "G201000:#1/8/xiv/28:2"
+   ],
+   [
+    "mga",
+    "G206000:#1/15/XIX:7"
+   ],
+   [
+    "mga",
+    "G206000:#1/34/XXXV:22~w5"
+   ],
+   [
+    "mga",
+    "G301035:#1/31:1"
+   ],
+   [
+    "mga",
+    "G301035:#1/39:648"
+   ],
+   [
+    "mga",
+    "G302014:#1/#2:3"
+   ]
+  ],
+  "note": "first 50 of each"
+ }
+}

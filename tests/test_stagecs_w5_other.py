@@ -32,7 +32,10 @@ def test_reviewed_tokens_preserve_surface(c,old,form,loc,new):
     t=Token(c,old,form,loc,{},True,'noun')
     assert (t.lemma,t.surface)==(new,form)
     if form!='ἰέναι':
-        assert Token(c,old,form,'unreviewed',{},True,'noun').lemma==old
+        # Armenian give / Asia / numeral readings became general rules in corpus-quality batch 1
+        # (pie.cq1_xcl); every other unreviewed form keeps its lemma.
+        from pie.cq1_xcl import rule_for
+        assert Token(c,old,form,'unreviewed',{},True,'noun').lemma==old or rule_for(c,old,form,'unreviewed')
 
 
 def test_resolved_tables_do_not_leak_senses():
@@ -41,7 +44,9 @@ def test_resolved_tables_do_not_leak_senses():
     assert t['nava@new'].ids=={'pie-lex-newos'}
     assert t['lubh@desire'].ids=={'pie-root-lewbh-desire'}
     assert 'pie-root-h2nekj-reach' not in t['naś@perish'].ids
-    assert 'tva' in t and '-tva@abstract' not in t
+    # cq1 (error-verdicts-cq1-formulas.jsonl, scan entry 3): DCS tva is the -tva/-tvā/-tvāya suffix
+    # throughout (1,181 tokens), so the whole lemma is now unmapped, not only the w5 token.
+    assert 'tva' not in t and '-tva@abstract' not in t
     assert 'φᾶρος' not in mp.resolve_table('grp')
     assert 'ḫatt=a-@stechen' not in mp.resolve_table('hit')
     assert mp.resolve_table('xum')['pequo'].ids=={'pie-lex-pekju'}

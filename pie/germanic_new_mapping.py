@@ -204,7 +204,18 @@ def reviewed_menota_lemma(lemma: str | None, msa: str, form: str,
         return lemma + " (name)"
     if lemma == "þverá" and form == "Þverá" and doc == "AM-132-fol-Droplaugarsona-saga":
         return lemma + " (name)"
-    if lemma == "máni" and doc == "AM-113-b-fol" and previous == "Þorkels":
+    if lemma == "máni" and doc == "AM-113-b-fol" and previous.startswith("Þork"):
+        # Þorkell máni the lawspeaker (Þorkels máni, 'Þorkell máni' 4r:19); cq1.
+        return lemma + " (name)"
+    if lemma == "tunga" and form == "Tungu" and previous.lower() in TUNGA_PREPOSITIONS:
+        # Corpus-quality batch 1: 'í/til/ór/gegnt Tungu' is the farm Tunga
+        # (Laxdæla, Njála, Kormákr...), never the organ; 'Tungan' (tongue,
+        # line-initial) and lower-case tungu keep tunga. Verdicts:
+        # data/research/8c/corpus-quality/error-verdicts-cq1-norse.jsonl.
+        return lemma + " (name)"
+    if lemma == "vindr" and form.lower() == "vindir":
+        # cq1: plural -ir is the ethnonym Vindr 'Wends' (the wind's plural is
+        # vindar): DG-8-OHleg 0102:1, 0104:1 (captors of a man).
         return lemma + " (name)"
     if lemma == "egg" and msa.startswith("xNC") and "gF" in msa.split():
         return "egg@edge"
@@ -215,6 +226,33 @@ def reviewed_menota_lemma(lemma: str | None, msa: str, form: str,
     if lemma == "niðr" and msa.startswith("xNC"):
         return "niðr@kinsman"
     return lemma
+
+
+CQ1_VOTE_NEUTRAL = {"tunga", "vindr", "máni"}
+TUNGA_PREPOSITIONS = {"í", "til", "ór", "úr", "frá", "gegnt", "at", "á"}
+
+# Corpus-quality batch 1: documents without lemmas get form-table lemmas, so a
+# capitalised personal name with a common-word homograph (Finnr = finnr 'finds',
+# Dagr 'day', Haukr 'hawk', Bera 'carry') received the verb/noun. These exact
+# capitalised forms, not sentence-initial, in an unlemmatised document are the
+# names (all occurrences read: AM-35-fol, AM-36-fol, AM-63-fol Heimskringla).
+# Capitalisation alone decides nothing else; other forms of these lemmas keep
+# the form-table analysis. Exceptions: (doc, folio) where the reading is not
+# securely the name. Verdicts: error-verdicts-cq1-norse.jsonl.
+UNLEMMATIZED_NAMES = {
+    "finna": ("finnr", {"Finnr", "Finnz", "Finni", "Finn"}),
+    "dagr": ("dagr", {"Dagr", "Dags", "Dag", "Degi"}),
+    "haukr": ("haukr", {"Haucr", "Haukr", "Hauk"}),
+    "bera": ("bera", {"Bera"}),
+}
+UNLEMMATIZED_NAME_EXCEPTIONS = {("AM-63-fol", "259")}  # repeated Dagr/dagr (dittography): unclear
+
+
+def unlemmatized_name(lemma: str, form: str, doc: str, folio: str, initial: bool) -> str | None:
+    rule = UNLEMMATIZED_NAMES.get(lemma)
+    if not rule or initial or form not in rule[1] or (doc, folio) in UNLEMMATIZED_NAME_EXCEPTIONS:
+        return None
+    return rule[0] + " (name)"
 
 
 def menota_words(path: Path, doc: str) -> list[MenotaWord]:
@@ -293,7 +331,7 @@ def menota_reviewed_tokens(root: Path = ROOT) -> dict:
     from changing the analysis of the same surface form elsewhere.
     """
     rows = []
-    for wave in (2, 3, 4, 5, 6, 7, 8, 9):
+    for wave in (2, 3, 4, 5, 6, 7, 8, 9, "cq1"):
         path = Path(root) / f"data/research/formulas/menota-reviewed-w{wave}.json"
         if path.exists():
             rows.extend(json.loads(path.read_text("utf-8")))
@@ -348,6 +386,10 @@ def annotated_norse_lemma(lemma: str, tag: str, corpus: str = "menota", *,
             return lemma + " (name)"
         from .name_mapping import name_lemma
         return name_lemma(corpus, lemma)
+    if corpus == "icepahc" and lemma == "átta" and tag.startswith("VAN"):
+        # cq1: 'hafa átta' is the participle of eiga (married), not 'eight':
+        # 1325.arni.nar-sag s856, s873 (the only verbal átta tokens to 1400).
+        return "eiga"
     noun = tag == "NC" or bool(re.fullmatch(r"NS?-[NADG]", tag))
     if noun:
         # Wave 9: use source morphology, never an inferred form-table tag.
@@ -404,7 +446,10 @@ def load_menota(root: Path = ROOT, languages=WEST_NORSE, min_share: float = 2 / 
     for ws in words.values():
         for w in ws:
             if w.lemma and w.form and w.msa != "MC":
-                votes[menota_form_key(w.form)][(w.lemma, w.msa)] += 1
+                # cq1 contextual names (Tunga farm, Vindr, máni byname) must not
+                # change the form table that unlemmatised documents use.
+                lv = w.lemma[:-7] if w.lemma.endswith(" (name)") and w.lemma[:-7] in CQ1_VOTE_NEUTRAL else w.lemma
+                votes[menota_form_key(w.form)][(lv, w.msa)] += 1
     table = {}
     for k, c in votes.items():
         (lem, msa), n = c.most_common(1)[0]
@@ -415,7 +460,7 @@ def load_menota(root: Path = ROOT, languages=WEST_NORSE, min_share: float = 2 / 
         # Numerals exposed by material_units are context only; they must not
         # make an otherwise unannotated document appear lemmatized.
         lemmatized = any(w.lemma for w in words[d] if w.msa != "MC")
-        for w in words[d]:
+        for i, w in enumerate(words[d]):
             lem, msa, src = w.lemma, w.msa, "corpus"
             if not lemmatized and w.msa != "MC":
                 k = menota_form_key(w.form)
@@ -430,6 +475,10 @@ def load_menota(root: Path = ROOT, languages=WEST_NORSE, min_share: float = 2 / 
             if (corrected, tag) != (lem, msa):
                 lem, msa = corrected, tag
                 src = "unknown" if lem.startswith("?") else "reviewed"
+            if not lemmatized and src == "form-table":
+                name = unlemmatized_name(lem, w.form, d, w.folio, i == 0 or words[d][i - 1].sent != w.sent)
+                if name:
+                    lem, msa, src = name, "NP", "reviewed"
             if msa == "FW" or lem in ("Latin.expression", "unass.", "?"):
                 continue
             pos = MENOTA_CONTENT.get(msa, "other")

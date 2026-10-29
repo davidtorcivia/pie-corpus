@@ -1,0 +1,633 @@
+{
+ "tokens": 551142,
+ "changed": 3544,
+ "stage_c_windows": {
+  "before": 30443,
+  "after": 30350,
+  "sentences_with_window_count_change": 93,
+  "note": "content-word windows of Stage C units (build_8c_stageB.split_windows, MAX_WORDS); a changed count re-labels that sentence's (wJ/n) window loci"
+ },
+ "content_before": 329626,
+ "content_after": 327725,
+ "mapped_before": 84295,
+ "mapped_after": 83612,
+ "surface_changes": 0,
+ "coordinate_changes": 0,
+ "sentence_key_changes": 0,
+ "by_rule": {
+  "numeral": 1242,
+  "name-greeks": 286,
+  "ban-word": 221,
+  "name-aryans": 211,
+  "tam-give": 115,
+  "gini-wine": 102,
+  "shat-much": 91,
+  "name-tigran": 80,
+  "akanj-ear": 73,
+  "ayr-oblique": 64,
+  "mti-mind": 59,
+  "name-eruand": 58,
+  "exact-reading": 56,
+  "village": 47,
+  "name-asia": 47,
+  "name-medes": 44,
+  "haraw-south": 43,
+  "eric-three": 41,
+  "zroyc-story": 38,
+  "name-azhdahak": 38,
+  "mapping-row:ali": 35,
+  "mapping-row:elkʻ": 35,
+  "name-kura": 33,
+  "name-samuel": 32,
+  "ale-particle": 32,
+  "name-ormizd": 30,
+  "elic-filled": 27,
+  "lcowcanem-fill": 27,
+  "gan-come": 27,
+  "amis-month": 24,
+  "name-aram": 22,
+  "goyn-colour": 20,
+  "name-noncontent": 20,
+  "towich-giver": 18,
+  "mapping-row:bov": 18,
+  "name-uti": 14,
+  "name-mar": 13,
+  "tawt-heat": 12,
+  "yarean-arose": 11,
+  "orear-men": 10,
+  "yownaren-greek": 9,
+  "dram-coin": 9,
+  "yariwn-blood": 9,
+  "ere-animal": 9,
+  "name-mashtots": 9,
+  "name-hark": 8,
+  "name-karen": 7,
+  "cpan-surge": 6,
+  "name-garni": 6,
+  "jowkn-fish": 6,
+  "mapping-row:towičʻ": 5,
+  "name-zarewand": 5,
+  "ost-branch": 5,
+  "name-koshm": 5,
+  "name-trelk": 5,
+  "name-halys": 4,
+  "kanon": 3,
+  "name-makuran": 3,
+  "erknem-labour": 3,
+  "name-anush": 3,
+  "crowem-scatter": 2,
+  "mapping-row:alikʻ": 2,
+  "name-astlik": 2,
+  "erjanik": 2,
+  "content-reviewed": 1
+ },
+ "transitions": {
+  "akanj-ear": {
+   "ownkn -> akanǰ": 70,
+   "owkand -> akanǰ": 1,
+   "awdnam -> akanǰ": 1,
+   "awnkn -> akanǰ": 1
+  },
+  "ale-particle": {
+   "ał -> ałē": 32
+  },
+  "amis-month": {
+   "ssis -> amis": 11,
+   "am -> amis": 10,
+   "amssis -> amis": 3
+  },
+  "ayr-oblique": {
+   "ariwn -> ayr": 51,
+   "yar -> ayr": 11,
+   "zarm -> ayr": 1,
+   "arawnd -> ayr": 1
+  },
+  "ban-word": {
+   "bnaw -> ban": 211,
+   "bnawm -> ban": 10
+  },
+  "content-reviewed": {
+   "her -> her": 1
+  },
+  "cpan-surge": {
+   "cownr -> cpʻan": 5,
+   "cownr -> cpʻowmn": 1
+  },
+  "crowem-scatter": {
+   "ēr -> cʻrowem": 2
+  },
+  "dram-coin": {
+   "dar -> dram": 6,
+   "dowr̄n -> dram": 3
+  },
+  "elic-filled": {
+   "elkʻ -> lnowm": 27
+  },
+  "ere-animal": {
+   "erekʻ -> erē": 6,
+   "em -> erē": 3
+  },
+  "eric-three": {
+   "er -> erekʻ": 41
+  },
+  "erjanik": {
+   "erkayn -> erǰanik": 2
+  },
+  "erknem-labour": {
+   "erknčʻim -> erknem": 3
+  },
+  "exact-reading": {
+   "kam -> kamkʻ": 5,
+   "yar̄nem -> ari (name)": 3,
+   "ban -> bacʻ": 1,
+   "anown -> ankʻown": 1,
+   "ariwn -> ari (name)": 1,
+   "lnowm -> lind": 1,
+   "erkow -> erkn": 1,
+   "kam -> kal@floor": 1,
+   "ayri -> ayrem": 1,
+   "inn -> es": 1,
+   "lowr -> lsem": 1,
+   "haw -> hayr": 1,
+   "erkn -> erkow": 1,
+   "low -> asem": 1,
+   "nolakizor -> kočʻem": 1,
+   "aknčʻowk -> akn": 1,
+   "ał -> ałow": 1,
+   "pʻerowtʻiwn -> Pʻerowr (name)": 1,
+   "erknčʻim -> erkdimi": 1,
+   "teł -> teł@rain": 1,
+   "vałegem -> Vałegesos (name)": 1,
+   "pʻokʻr -> očir": 1,
+   "or -> ors": 1,
+   "dnem -> dēn": 1,
+   "aržan -> arpʻayin": 1,
+   "erkn -> erkin": 1,
+   "dowr̄n -> Dowčʻi (name)": 1,
+   "er̄am -> Emaron (name)": 1,
+   "meł -> Meł (name)": 1,
+   "pahem -> Palh (name)": 1,
+   "mit -> mowtkʻ": 1,
+   "yar̄nem -> ayr": 1,
+   "ner -> ar̄nem": 1,
+   "yoys -> yoyn (name)": 1,
+   "Tēr -> Tēr (name)": 1,
+   "ktanem -> ktaw": 1,
+   "šnorh -> šnčʻowmn": 1,
+   "skowtem -> skowteł": 1,
+   "ankanim -> ankʻak": 1,
+   "sowr -> sowrb": 1,
+   "berem -> berd": 1,
+   "kan -> kam": 1,
+   "kam -> kaysr": 1,
+   "anowsem -> aynowhetew": 1,
+   "ordi -> Ordi (name)": 1,
+   "tʻitʻi -> tʻiw": 1,
+   "zawr -> awr": 1,
+   "lsem -> lwanam": 1,
+   "bazmapanakeay -> bazmažamanakeay": 1,
+   "jer̄n -> dowkʻ": 1
+  },
+  "gan-come": {
+   "gan -> gam": 27
+  },
+  "gini-wine": {
+   "gin -> gini": 102
+  },
+  "goyn-colour": {
+   "gom -> goyn": 12,
+   "gin -> goyn": 8
+  },
+  "haraw-south": {
+   "harkanem -> haraw": 43
+  },
+  "jowkn-fish": {
+   "jkowk -> jowkn": 5,
+   "jkowmn -> jowkn": 1
+  },
+  "kanon": {
+   "kin -> kanon": 3
+  },
+  "lcowcanem-fill": {
+   "lowcʻanem -> lcʻowcʻanem": 27
+  },
+  "mapping-row:ali": {
+   "ali -> ali": 35
+  },
+  "mapping-row:alikʻ": {
+   "alikʻ -> alikʻ": 2
+  },
+  "mapping-row:bov": {
+   "bov -> bov": 18
+  },
+  "mapping-row:elkʻ": {
+   "elkʻ -> elkʻ": 35
+  },
+  "mapping-row:towičʻ": {
+   "towičʻ -> towičʻ": 5
+  },
+  "mti-mind": {
+   "mtanem -> mit": 59
+  },
+  "name-anush": {
+   "anown -> Anowš (name)": 3
+  },
+  "name-aram": {
+   "ar̄nem -> Aram (name)": 11,
+   "aramay -> Aram (name)": 5,
+   "cʻar̄am -> Aram (name)": 4,
+   "aram -> Aram (name)": 2
+  },
+  "name-aryans": {
+   "ariwn -> ari (name)": 170,
+   "yar̄nem -> ari (name)": 34,
+   "aris -> ari (name)": 7
+  },
+  "name-asia": {
+   "asia -> Asia (name)": 22,
+   "asim -> Asia (name)": 21,
+   "asiay -> Asia (name)": 4
+  },
+  "name-astlik": {
+   "astłik -> Astłik (name)": 2
+  },
+  "name-azhdahak": {
+   "aččanaka -> Aždahak (name)": 30,
+   "aččakan -> Aždahak (name)": 4,
+   "ačažak -> Aždahak (name)": 2,
+   "yačavakan -> Aždahak (name)": 1,
+   "ačažadim -> Aždahak (name)": 1
+  },
+  "name-eruand": {
+   "erowanam -> Eruand (name)": 37,
+   "erownad -> Eruand (name)": 16,
+   "erownawanem -> Eruandean (name)": 2,
+   "eranowd -> Eruand (name)": 2,
+   "eranowmn -> Eruand (name)": 1
+  },
+  "name-garni": {
+   "gar̄n -> Gar̄ni (name)": 5,
+   "zgar̄n -> Gar̄ni (name)": 1
+  },
+  "name-greeks": {
+   "ownim -> yoyn (name)": 269,
+   "own -> yoyn (name)": 10,
+   "yown -> yoyn (name)": 4,
+   "yoyn -> yoyn (name)": 3
+  },
+  "name-halys": {
+   "ali -> Alis (name)": 4
+  },
+  "name-hark": {
+   "hayr -> Harkʻ (name)": 7,
+   "hark -> Harkʻ (name)": 1
+  },
+  "name-karen": {
+   "karem -> Karēn (name)": 5,
+   "kari -> Karēn (name)": 2
+  },
+  "name-koshm": {
+   "košem -> Košm (name)": 4,
+   "košm -> Košm (name)": 1
+  },
+  "name-kura": {
+   "kowr -> Kowr (name)": 31,
+   "kowrkʻ -> Kowr (name)": 2
+  },
+  "name-makuran": {
+   "makowr -> Makowran (name)": 3
+  },
+  "name-mar": {
+   "mayr -> Mar (name)": 10,
+   "mar -> Mar (name)": 3
+  },
+  "name-mashtots": {
+   "maštowm -> Maštocʻ (name)": 8,
+   "maštowmn -> Maštocʻ (name)": 1
+  },
+  "name-medes": {
+   "mar̄n -> Markʻ (name)": 31,
+   "mayr -> Markʻ (name)": 8,
+   "mar -> Markʻ (name)": 3,
+   "mekʻ -> Medkʻ (name)": 2
+  },
+  "name-noncontent": {
+   "Maštocʻ (name) -> Maštocʻ (name)": 10,
+   "yoyn (name) -> yoyn (name)": 3,
+   "Gind (name) -> Gind (name)": 2,
+   "Bambišn (name) -> Bambišn (name)": 1,
+   "Tiran (name) -> Tiran (name)": 1,
+   "Mari (name) -> Mari (name)": 1,
+   "Haband (name) -> Haband (name)": 1,
+   "Asia (name) -> Asia (name)": 1
+  },
+  "name-ormizd": {
+   "ordi -> Ormizd (name)": 29,
+   "cʻormi -> Ormizd (name)": 1
+  },
+  "name-samuel": {
+   "samowēl -> Samowēl (name)": 24,
+   "saysowlem -> Samowēl (name)": 6,
+   "sawmem -> Samowēl (name)": 1,
+   "salowsem -> Samowēl (name)": 1
+  },
+  "name-tigran": {
+   "tigranam -> Tigran (name)": 53,
+   "tigrani -> Tigran (name)": 21,
+   "tigran -> Tigran (name)": 6
+  },
+  "name-trelk": {
+   "tʻertʻ -> Tʻr̄ełkʻ (name)": 5
+  },
+  "name-uti": {
+   "owti -> Owti (name)": 6,
+   "owtem -> Owti (name)": 6,
+   "zowti -> Owti (name)": 1,
+   "owt -> Owti (name)": 1
+  },
+  "name-zarewand": {
+   "arew -> Zarewand (name)": 4,
+   "arewnadr -> Zarewand (name)": 1
+  },
+  "numeral": {
+   "ew -> 5@numeral": 27,
+   " -> 2@numeral": 27,
+   "gi -> 3@numeral": 27,
+   "dow -> 4@numeral": 26,
+   "i -> 6@numeral": 26,
+   "žbb -> 12@numeral": 25,
+   "ža -> 11@numeral": 23,
+   "žg -> 13@numeral": 23,
+   " -> 8@numeral": 23,
+   "ždž -> 14@numeral": 22,
+   "žem -> 15@numeral": 22,
+   "i -> 21@numeral": 22,
+   "em -> 7@numeral": 22,
+   "žē -> 17@numeral": 21,
+   "žžšł -> 19@numeral": 20,
+   "žži -> 10@numeral": 20,
+   "i -> 22@numeral": 19,
+   "iga -> 23@numeral": 19,
+   "ž -> 18@numeral": 18,
+   "i -> 26@numeral": 18,
+   "em -> 27@numeral": 18,
+   "tʻiw -> 9@numeral": 17,
+   "inčʻ -> 24@numeral": 17,
+   "i -> 28@numeral": 17,
+   "iwtʻ -> 29@numeral": 17,
+   "em -> 25@numeral": 16,
+   "li -> 30@numeral": 14,
+   "lam -> 31@numeral": 13,
+   "low -> 32@numeral": 13,
+   "i -> 20@numeral": 12,
+   "li -> 38@numeral": 12,
+   "xa -> 41@numeral": 12,
+   "xb -> 42@numeral": 12,
+   "xg -> 43@numeral": 12,
+   "xd -> 44@numeral": 12,
+   "a -> 1@numeral": 12,
+   "anim -> 1@numeral": 11,
+   "lgowm -> 33@numeral": 11,
+   "ənd -> 34@numeral": 11,
+   "li -> 35@numeral": 11,
+   "eli -> 37@numeral": 11,
+   "litʻ -> 39@numeral": 11,
+   "ži -> 16@numeral": 11,
+   "žzži -> 16@numeral": 10,
+   "cem -> 55@numeral": 10,
+   "li -> 36@numeral": 10,
+   "xe -> 45@numeral": 10,
+   "xzz -> 46@numeral": 10,
+   "xē -> 47@numeral": 10,
+   "cowb -> 52@numeral": 10,
+   "cog -> 53@numeral": 10,
+   "cnowtʻ -> 54@numeral": 10,
+   "xx -> 40@numeral": 9,
+   "xtʻš -> 49@numeral": 9,
+   "ca -> 51@numeral": 9,
+   "x -> 48@numeral": 8,
+   "cem -> 58@numeral": 8,
+   "cow -> 50@numeral": 7,
+   "cz -> 56@numeral": 7,
+   "ctʻowtʻ -> 59@numeral": 7,
+   "kb -> 62@numeral": 7,
+   "kgn -> 63@numeral": 7,
+   "džn -> 64@numeral": 7,
+   "ke -> 65@numeral": 7,
+   "kē -> 67@numeral": 7,
+   "cēowm -> 57@numeral": 6,
+   "kam -> 61@numeral": 6,
+   "kzi -> 66@numeral": 6,
+   " -> 68@numeral": 5,
+   "ktʻ -> 69@numeral": 5,
+   "ham -> 71@numeral": 5,
+   "hz -> 72@numeral": 5,
+   "hem -> 75@numeral": 5,
+   "hzz -> 76@numeral": 5,
+   "hi -> 78@numeral": 5,
+   "na -> 91@numeral": 5,
+   "łb -> 92@numeral": 5,
+   "kay -> 60@numeral": 4,
+   "hay -> 70@numeral": 4,
+   "hg -> 73@numeral": 4,
+   "hnd -> 74@numeral": 4,
+   "htʻi -> 79@numeral": 4,
+   "jowj -> 80@numeral": 4,
+   "jgem -> 83@numeral": 4,
+   "n -> 90@numeral": 4,
+   "hem -> 77@numeral": 3,
+   "dow -> 82@numeral": 3,
+   "dowj -> 84@numeral": 3,
+   "jer̄n -> 85@numeral": 3,
+   "dow -> 86@numeral": 3,
+   "tʻtʻe -> 89@numeral": 3,
+   "łg -> 93@numeral": 3,
+   "łžn -> 94@numeral": 3,
+   "dē -> 95@numeral": 3,
+   "n -> 96@numeral": 3,
+   "eł -> 97@numeral": 3,
+   "d -> 98@numeral": 3,
+   "łtʻ -> 99@numeral": 3,
+   "čč -> 100@numeral": 3,
+   "j -> 88@numeral": 3,
+   "očʻ -> 708@numeral": 2,
+   "ča -> 101@numeral": 2,
+   "čš -> 102@numeral": 2,
+   "ččn -> 103@numeral": 2,
+   "če -> 105@numeral": 2,
+   "čz -> 106@numeral": 2,
+   "dē -> 107@numeral": 2,
+   "č -> 108@numeral": 2,
+   "ččšn -> 109@numeral": 2,
+   "čžžž -> 110@numeral": 2,
+   "čžž -> 111@numeral": 2,
+   "čžž -> 112@numeral": 2,
+   "čžžž -> 113@numeral": 2,
+   "čžžž -> 114@numeral": 2,
+   "čžžže -> 115@numeral": 2,
+   "čžžž -> 116@numeral": 2,
+   "čžžž -> 117@numeral": 2,
+   "čžžžžži -> 118@numeral": 2,
+   "čžžžžł -> 119@numeral": 2,
+   "čič -> 120@numeral": 2,
+   "či -> 121@numeral": 2,
+   "čiv -> 122@numeral": 2,
+   "čig -> 123@numeral": 2,
+   "čič -> 124@numeral": 2,
+   "če -> 125@numeral": 2,
+   "čiz -> 126@numeral": 2,
+   "če -> 127@numeral": 2,
+   "da -> 81@numeral": 2,
+   "čʻb -> 702@numeral": 2,
+   "čʻtʻ -> 709@numeral": 2,
+   "džr -> 704@numeral": 2,
+   "as -> 321@numeral": 1,
+   "ib -> 322@numeral": 1,
+   "ig -> 323@numeral": 1,
+   "id -> 324@numeral": 1,
+   "es -> 325@numeral": 1,
+   "i -> 326@numeral": 1,
+   "es -> 327@numeral": 1,
+   "i -> 328@numeral": 1,
+   "yal -> 331@numeral": 1,
+   "low -> 332@numeral": 1,
+   "lig -> 333@numeral": 1,
+   "ənd -> 334@numeral": 1,
+   "li -> 335@numeral": 1,
+   "yoli -> 337@numeral": 1,
+   "owl -> 338@numeral": 1,
+   "əntʻ -> 339@numeral": 1,
+   "xay -> 340@numeral": 1,
+   "yxab -> 342@numeral": 1,
+   "gayt -> 343@numeral": 1,
+   "dži -> 344@numeral": 1,
+   "yxer -> 345@numeral": 1,
+   "xaz -> 346@numeral": 1,
+   "yēx -> 347@numeral": 1,
+   "xi -> 348@numeral": 1,
+   "xatʻ -> 349@numeral": 1,
+   "yoh -> 350@numeral": 1,
+   "ši -> 520@numeral": 1,
+   "ši -> 521@numeral": 1,
+   "šiwt -> 522@numeral": 1,
+   "šig -> 523@numeral": 1,
+   "šid -> 524@numeral": 1,
+   "šewm -> 525@numeral": 1,
+   "šiz -> 526@numeral": 1,
+   "šēem -> 527@numeral": 1,
+   "ši -> 528@numeral": 1,
+   "šitʻi -> 529@numeral": 1,
+   "šli -> 530@numeral": 1,
+   "šlaw -> 531@numeral": 1,
+   "šowtʻ -> 532@numeral": 1,
+   "šlowtʻiwn -> 533@numeral": 1,
+   "šədowmd -> 534@numeral": 1,
+   "šlem -> 535@numeral": 1,
+   "šlowz -> 536@numeral": 1,
+   "šlem -> 537@numeral": 1,
+   "šli -> 538@numeral": 1,
+   "šxn -> 540@numeral": 1,
+   "šxn -> 541@numeral": 1,
+   "šxx -> 542@numeral": 1,
+   "šxn -> 543@numeral": 1,
+   "šxn -> 544@numeral": 1,
+   "šxem -> 545@numeral": 1,
+   "šxn -> 546@numeral": 1,
+   "šxem -> 547@numeral": 1,
+   "šxn -> 548@numeral": 1,
+   "šxxn -> 549@numeral": 1,
+   "šcowh -> 550@numeral": 1,
+   "cowš -> 551@numeral": 1,
+   "štʻowh -> 552@numeral": 1,
+   "cowtʻ -> 553@numeral": 1,
+   "šcowtʻiwn -> 554@numeral": 1,
+   "šcem -> 555@numeral": 1,
+   "ššitʻ -> 556@numeral": 1,
+   "šcem -> 557@numeral": 1,
+   "šcim -> 558@numeral": 1,
+   "štʻtʻ -> 559@numeral": 1,
+   "škn -> 560@numeral": 1,
+   "škan -> 561@numeral": 1,
+   "bkiš -> 562@numeral": 1,
+   "kšik -> 563@numeral": 1,
+   "škn -> 564@numeral": 1,
+   "škem -> 565@numeral": 1,
+   "škiz -> 566@numeral": 1,
+   "škem -> 567@numeral": 1,
+   "ški -> 568@numeral": 1,
+   "štʻtʻ -> 569@numeral": 1,
+   "šh -> 570@numeral": 1,
+   "šh -> 571@numeral": 1,
+   "šhh -> 572@numeral": 1,
+   "hhowh -> 573@numeral": 1,
+   "šhnh -> 574@numeral": 1,
+   "ox -> 647@numeral": 1,
+   "yžoyr -> 318@numeral": 1,
+   "ox -> 648@numeral": 1,
+   "otʻ -> 649@numeral": 1,
+   "ogg -> 653@numeral": 1,
+   "odc -> 654@numeral": 1,
+   "ocem -> 655@numeral": 1,
+   "ččn -> 104@numeral": 1,
+   "em -> 707@numeral": 1,
+   "čʻz -> 706@numeral": 1,
+   "nłowm -> section@numeral": 1,
+   "lgam -> section@numeral": 1,
+   "čʻg -> 703@numeral": 1,
+   "xlowm -> section@numeral": 1,
+   "hi -> section@numeral": 1,
+   "cʻam -> section@numeral": 1,
+   "e -> section@numeral": 1,
+   "em -> 87@numeral": 1
+  },
+  "orear-men": {
+   "or -> orear": 6,
+   "em -> orear": 2,
+   "orem -> orear": 2
+  },
+  "ost-branch": {
+   "otn -> ost": 5
+  },
+  "shat-much": {
+   "šta -> šat": 91
+  },
+  "tam-give": {
+   "towr -> tam": 57,
+   "tawn -> tam": 50,
+   "tasn -> tam": 8
+  },
+  "tawt-heat": {
+   "tawn -> tawtʻ": 12
+  },
+  "towich-giver": {
+   "tiw -> towičʻ": 14,
+   "tiow -> towičʻ": 2,
+   "towir -> towičʻ": 2
+  },
+  "village": {
+   "geł -> geł@village": 39,
+   "gełik -> gełǰowk": 5,
+   "gełł -> geł@village": 1,
+   "gełł -> gełǰowk": 1,
+   "gełowk -> gełǰowk": 1
+  },
+  "yarean-arose": {
+   "ariwn -> yar̄nem": 11
+  },
+  "yariwn-blood": {
+   "yarm -> ariwn": 9
+  },
+  "yownaren-greek": {
+   "ownayn -> yownarēn": 9
+  },
+  "zroyc-story": {
+   "or -> zroycʻ": 19,
+   "zrowr -> zroycʻ": 9,
+   "rowr -> zroycʻ": 6,
+   "zrowrankʻ -> zroycʻ": 3,
+   "orkʻ -> zroycʻ": 1
+  }
+ },
+ "exact_readings": 56,
+ "command": "UV_CACHE_DIR=/tmp/pie-uv-cache uv run python -I scripts/verify_cq1_xcl.py verify <before.jsonl>"
+}

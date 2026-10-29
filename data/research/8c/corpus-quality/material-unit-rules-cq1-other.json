@@ -1,0 +1,37 @@
+[
+ {
+  "corpus": "byliny",
+  "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimvyp1pesn13_djvu.txt",
+  "start": 23524,
+  "end": 23559,
+  "note": "cq1 w10/1, w10/2 (unit 23534): editor's essay on the name Ivan (folk etymology, Kupala, Venelin); one OCR paragraph 23524-23559, no verse or quotation lines; the detector kept 12 of its lines. See data/research/8c/corpus-quality/error-verdicts-cq1-other.jsonl."
+ },
+ {
+  "corpus": "byliny",
+  "source": "raw/daughters/russian-kireevsky-1860-1874-archiveorg/pesnisobrannyepvkireevskimch2pesni36_djvu.txt",
+  "start": 16012,
+  "end": 18899,
+  "note": "cq1 w10/5, w10/6 (unit 17966): the volume's УКАЗАТЕЛЬ (index of persons, places and things, Part II vyp. 5) runs from its heading at 16012 to the end of the file; narrow-column index entries with page references, read at 16012-16045, 16200, 16500, 16800, 17200, 17600, 17944-17990, 18100, 18300, 18500, 18700, 18850-18899. The detector's long-line tests miss the narrow columns (1009 emitted units). No other byliny source has an УКАЗАТЕЛЬ heading. See data/research/8c/corpus-quality/error-verdicts-cq1-other.jsonl."
+ },
+ {
+  "corpus": "byliny",
+  "source": "raw/daughters/russian-hilferding-1894-archiveorg/sbornikotdelenijarusskogojazykaislovesno32_djvu.txt",
+  "start": 14482,
+  "end": 14513,
+  "note": "cq1 w11/25, w11/26, w11/41, w11/42, w11/51 (unit 14512): Hilferding's recording note, section number and biography of the singer Andrej Sarafanov (14482 recording note, 14486 name heading, 14489-14513 prose). See data/research/8c/corpus-quality/error-verdicts-cq1-other.jsonl."
+ },
+ {
+  "corpus": "byliny",
+  "source": "raw/daughters/russian-rybnikov-1861-1867-archiveorg/pesnisobrannyepnrybnikovymch2narod72_djvu.txt",
+  "start": 36539,
+  "end": 36619,
+  "note": "cq1 w10/11 (unit 36583): two pages (сссххуи-сссххш) of Bessonov's Roman-paginated essay: Balkan Slav history (36539-36576) and a prose paraphrase of the spiritual verse on Egorij and Lizaveta with comparative commentary (36582-36619). See data/research/8c/corpus-quality/error-verdicts-cq1-other.jsonl."
+ },
+ {
+  "corpus": "byliny",
+  "source": "raw/daughters/russian-rybnikov-1861-1867-archiveorg/pesnisobrannyepnrybnikovymch4narod9_djvu.txt",
+  "start": 12201,
+  "end": 12306,
+  "note": "cq1 w11/46, w11/47, w11/48 (unit 12276): Rybnikov's ethnographic prose on forest and water spirits, with a midwife's narrative in dialect prose (12201-12275) and the collector's commentary (12276-12306). See data/research/8c/corpus-quality/error-verdicts-cq1-other.jsonl."
+ }
+]

@@ -1763,6 +1763,129 @@ for _form, _rules in {
     IR_REVIEWED_CONTEXT.setdefault(_form, []).extend(_rules)
 
 
+# Corpus-quality batch 1 source/dictionary evidence: data/research/8c/corpus-quality/
+# error-verdicts-cq1-celtic.jsonl (token counts in error-verdicts-cq1-celtic-metrics.json).
+# Exact reviewed contexts first; the general homograph rules follow (_cq1_irish_rule).
+for _form, _rules in {
+    'muá': [(('fri a',), ('ocus is áil',), 'ben', False)],            # OCR of mná
+    'lin': [(('is áil',), (), 'la', False),                            # linn 'with us'
+            ((), ('argdide',), 'lín@net', False)],
+    'lin-sin': [(('mocou ind',), (), 'lín@net', False)],
+    'airc-siu': [((), ('do emain',), 'téit@secondary', False)],      # airg 2sg ipv. of téit + -siu
+    'crette': [(('n-dírgiud', 'n-dirgiud'), (), 'crett@body', False)],
+    'foídis': [((), ('in aidchi', 'in agaid', 'lia', 'léa', 'lea', 'la'), 'foid', False)],
+    'fóidis': [((), ('in aidchi', 'in agaid', 'in agaid-sin', 'lia', 'léa', 'lea', 'la'), 'foid', False)],
+    'foidis': [((), ('in aidchi', 'in agaid', 'lia', 'léa', 'lea', 'la', 'uathach la'), 'foid', False)],
+    'mben': [(('ro', 'co'), ('a',), 'benaid', False)],
+    'dos': [((), ('beir', 'rala', 'fuc', 'farluicset', 'ranaic', 'narraid', 'fil'), 'do', False)],
+    'do-s': [((), ('fil',), 'do', False)],
+    'clu': [((), ('i che',), 'cluiche', False)],                        # Clu(i)che split by the editor's brackets
+    'cluib': [(('cusna',), ('teintidib',), 'cló', False)],             # dat. pl. of cló 'nail'
+    'ends': [(('r',), (), 'ends@editorial', False)],                    # editorial '[r. ends]'
+}.items():
+    IR_REVIEWED_CONTEXT.setdefault(_form, []).extend(_rules)
+
+# Lemmas that are never content words (foreign or editorial material inside Irish units).
+CQ1_NONCONTENT_LEMMAS = frozenset({"die@foreign", "ends@editorial"})
+
+# día: OIr. día 'day' (EDPC *diyw-o-, PIE *diy-ew-; Kaikki sga día 'day' < *dyīus < *dyew-) and
+# día 'god' (< *deywós) are real nouns, but most accented día / die tokens in CELT are the
+# preposition + possessive or relative (do/di + a: Kaikki sga dia det./pron./conj.). A day reading
+# needs a weekday or brátha after it, or cach / cech / gach before it; a god reading an attribute
+# after it; Latin / German die is foreign; otherwise the content noun día becomes the preposition.
+_DIA_FORMS = frozenset({"día", "dia", "die", "díe", "dïa"})
+_DIA_DAY_NEXT = frozenset("""sathairn sathuirn satharn domnaig domnaigh domhnaigh domhnaig domnaich dardaoin
+dardain dardáin dardaín dardaóin dardáoin mairt máirt luain lúain luan cétaín cetain céitaín cédáoin cédaoin
+céadaoin aíne aine aoine háine haíne brátha bratha bhrátha mbrátha""".split())
+_DIA_EACH = frozenset("cach cech gach gacha cecha".split())
+_DIA_EACH_NOT = frozenset("chéile cheile chéle céle celi céli ceili ceiliu".split())  # cach dia chéile 'each to the other'
+_MUTATED = re.compile(r"^(?:[nth]-|[bcdfgmpst]h|ḟ|ṡ|ṁ|cc|gc|dt|nd|ng|mb|bhf|ṅ)")  # a lenited / nasalized noun: dia + possessive
+_DIA_GOD_NEXT = frozenset("""nime nimhe nimi nimhi uilechumachtach uilecumachtach uilichumachtach
+dúileach duileach dúilech""".split())
+_DIA_GREAT = frozenset("már mór mor".split())          # Día mór 'great God' only unit-initially or after the article
+_DIA_ARTICLE = frozenset("in an int".split())
+_DIA_GOD_INITIAL = frozenset("lim limm ocus ecna rí día tresin dod-roíd ar".split())  # Día lim fri cach sním, Día ocus Chíaran
+_DIA_LATIN_PREV = frozenset("hoc eodem".split())
+_DIA_LATIN_NEXT = frozenset("sancti natali domini sabba sabbati".split())
+_DIA_GERMAN_NEXT = frozenset("söhne glosse notiz angabe sätze bemertiung bemerkung".split())
+# gona: co + a 'with his / her / their' (Kaikki sga cona 'contraction of co + a'); the verbal noun
+# (gen. / pl. of guin, gonaid 'wounds') after the article, a possessive, do or a numeral.
+_GONA_VN_PREV = frozenset("na a do da tri trí mo boeghal baoghal bithin cuingid d'iarraidh iarraidh artí".split())
+_GONA_VN_NEXT = frozenset("nó no nō bais báis".split())     # gona nó gabála 'wounding or capture'
+# gonadh / gonad / gonid: co + is 'so that (it) is' (Kaikki sga conid); 'was wounded' after ro / do.
+_GONADH_FORMS = frozenset({"gonadh", "gonad", "gonid"})
+_GONADH_VERB_PREV = frozenset("ro ra do no ní ni nír nir níor nior ar coro gur gor diar nos ros dos".split())
+# asna: as + plural article 'out of the' before a plural noun (dat. pl. -(a)ib, -(a)ibh, -iph) or a
+# dual (di, da); the rib noun (asna, *h₃ésth₁) after a possessive, tria / trí, dá or an article.
+_ASNA_RIB_PREV = frozenset("a tria trí tre dá da cech gach an 'n de'n cen gan".split())
+_ASNA_NEXT = frozenset("di dí da dá".split())
+_DAT_PL = ("aib", "ib", "ibh", "aibh", "iph", "aiph", "aip")
+# gráin 'awfulness, horror' (EDPC *gragni-, expressive, no PIE etymon; Kaikki sga gráin 2916);
+# grán 'grain' (*ǵr̥h₂nóm) keeps its gen. / pl. gráin before a cereal or after na / maille.
+_GRAIN_FORMS = frozenset({"gráin", "grain", "ghráin", "ghrain"})
+_GRAIN_NEXT = frozenset("eorna eórna cruithnechta cruithneachta arba arbha coirce seccail sabhus meles glais ghlais".split())
+_GRAIN_PREV = frozenset("na maille".split())
+# Dál + people (Dál nAraide, Dál Riata, Dál Cais, Dál Fiatach): a tribal name, not dál 'share' /
+# 'meeting'. The loader already names a medial capital Dál; this covers unit-initial and mutated forms.
+_DAL_FORMS = frozenset({"dál", "dal", "dhál", "dhal", "n-dál", "n-dal", "ndál", "ndal", "ṅdál", "ṅ-dál"})
+_DAL_ASSEMBLY = frozenset("temra temrach tailten tailtenn".split())   # dál Temra 'the assembly of Tara'
+_MUTATION = re.compile(r"^(?:n-|m-|g-|c-|b-|h-|t-|ṅ-|bh|n(?=[A-ZÁÉÍÓÚ])|g(?=[A-ZÁÉÍÓÚ])|c(?=[A-ZÁÉÍÓÚ])|m(?=[A-ZÁÉÍÓÚ]))")
+# risin: ri / re + article (fri-sin); not a diminutive rísín.
+_RISIN_FORMS = frozenset({"risin", "rísin"})
+# eitir: Early Modern eter / idir 'between'; with h- or after the copula it is étir 'possible'.
+_EITIR_FORMS = frozenset({"eitir", "éitir", "h-eitir", "h-éitir", "heitir", "héitir"})
+_EITIR_COPULA_PREV = frozenset("ní ni nach ba is risba nocha níor".split())
+# airc: not arc 'piglet' in these texts: pret. of orgaid after ro / cur, else airc 'need' / arc 'ark'.
+_AIRC_VERB_PREV = frozenset("ro cur".split())
+
+
+def _cq1_irish_rule(words: list[str], normalized: list[str], i: int, lem: str) -> str:
+    """Corpus-quality batch 1 general homograph rules for Irish (see the block comment above)."""
+    w, n = words[i], normalized[i]
+    if i and w[:1].isupper():
+        return lem      # medial capitals: the loader's name rule (and the reviewed names) decide
+    prev = normalized[i - 1] if i else ""
+    nxt = normalized[i + 1] if i + 1 < len(words) else ""
+    if n in _DIA_FORMS and lem in ("día", "día|dia", "dia", "dia|día"):
+        if nxt in _DIA_DAY_NEXT or (prev in _DIA_EACH and nxt not in _DIA_EACH_NOT and not _MUTATED.match(nxt)):
+            return "día@day"
+        if n == "die" and (prev in _DIA_LATIN_PREV or (prev == "in" and nxt in _DIA_LATIN_NEXT) or nxt in ("sabba", "sabbati")
+                           or nxt in _DIA_GERMAN_NEXT):
+            return "die@foreign"
+        if (nxt in _DIA_GOD_NEXT or (nxt == "na" and normalized[i + 2:i + 3] in (["ndúl"], ["ndúile"]))
+                or (nxt in _DIA_GREAT and (i == 0 or prev in _DIA_ARTICLE))
+                or (i == 0 and w[:1].isupper() and nxt in _DIA_GOD_INITIAL)):
+            return "día@god"
+        if lem == "día":
+            return "do"
+        return lem
+    if n == "gona" and lem == "goin|gonaid|guin" and prev not in _GONA_VN_PREV and nxt not in _GONA_VN_NEXT:
+        return "co"
+    if n in _GONADH_FORMS and lem in ("goin", "gónad", "nigh") and prev not in _GONADH_VERB_PREV:
+        return "conid"
+    if n == "asna" and lem in ("easna", "asna") and prev not in _ASNA_RIB_PREV:
+        nx = re.sub(r"^(?:h-|n-|t-)", "", nxt)
+        if nxt in _ASNA_NEXT or nxt.startswith("h-") or nx.endswith(_DAT_PL):
+            return "as"
+        return lem
+    if n in _GRAIN_FORMS and lem in ("grán|gráin", "gráin", "gráin|grán"):
+        if nxt not in _GRAIN_NEXT and prev not in _GRAIN_PREV:
+            return "gráin@fear"
+        return lem
+    if (n in _DAL_FORMS and i + 1 < len(words) and _MUTATION.sub("", words[i + 1])[:1].isupper()
+            and nxt not in _DAL_ASSEMBLY):
+        return "dál (name)"
+    if n in _RISIN_FORMS and lem == "rísín":
+        return "fri"
+    if n in _EITIR_FORMS and lem == "eitigh":
+        return "étir@possible" if (n.startswith("h") or prev in _EITIR_COPULA_PREV) else "eter"
+    if n in ("airc", "äirc") and lem == "arc|airc|árc":
+        return "orcaid" if prev in _AIRC_VERB_PREV else "airc@need"
+    if n in ("galaib", "ngalaib", "n-galaib") and lem == "fichid":
+        return "gal"
+    return lem
+
+
 def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
     """Lemmas for a word sequence: `lemz(w)` for each word, except that a form in CONTEXT_FORMS takes the
     lemma its preceding word selects (tig after isin / i / ina / dia … → tech 'house'). Stage C should use
@@ -1777,6 +1900,7 @@ def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
                 lem = target
                 break
         if normalized:
+            lem = _cq1_irish_rule(words, normalized, i, lem)
             for previous, following, target, capitalized in IR_REVIEWED_CONTEXT.get(normalized[i], ()):
                 if capitalized and not any(c.isupper() for c in w):
                     continue
@@ -1812,6 +1936,11 @@ def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
                 and [key_cy(welsh_norm(v, True)) for v in words[i - 1:i + 2]]
                 == ["o", "bali", "llathreit"]):
             lem = "pali@brocade"
+        # CQ1 (w11 report 30): lenited goreu 'best' after yn / pwy, not the preterite of gwneuthur.
+        if (lemz.lm.lang == "cy" and i > 0 and lem == "goreu|gwneuthur"
+                and key_cy(welsh_norm(w, True)) == "oreu"
+                and key_cy(welsh_norm(words[i - 1], True)) in ("yn", "ỳn", "ýn", "pwy", "pỽy", "pỳ")):
+            lem = "goreu"
         out.append(lem)
     return out
 
@@ -1831,7 +1960,8 @@ def welsh_lemmatizer(maps: CelticMappings, diplomatic: bool = False, **kw) -> Ce
 def is_function_lemma(lm: fm.LangMapping, lem: str) -> bool:
     """A lemma string all of whose parts are function words (no table row)."""
     fw = IR_FUNCTION if lm.lang == "sga" else CY_FUNCTION
-    return all(p in fw or (lm.lang == "sga" and p in {"suil@before", "ós", "eter", "mani", "aithle@afterwards", "dáig@because", "fochen@welcome", "gé@although"})
+    return all(p in fw or (lm.lang == "sga" and (p in {"suil@before", "ós", "eter", "mani", "aithle@afterwards", "dáig@because", "fochen@welcome", "gé@although"}
+                                               or p in CQ1_NONCONTENT_LEMMAS))
                for p in lem.split("|"))
 
 

@@ -1,0 +1,47 @@
+{
+  "note": "Corpus-quality batch 1 (xcl); verdicts in data/research/8c/corpus-quality/error-verdicts-cq1-armenian.jsonl. The z- prefix makes these rows read last (override files are read in name order; later rows win).",
+  "lemma": [
+    {
+      "corpus": "xcl",
+      "lemma": "ali",
+      "lex_id": ["pie-root-pelH-pale"],
+      "erratum": "ali 'wave; grey hair' mapped to *Heh₃l- 'bend, elbow' + *pelH- 'pale, grey'",
+      "note": "cq1 w10 r4 (DMHP Agathangelos word 23691 aleacʻn 'waves'). Martirosyan EDAIL s.v. ali-kʻ 1/2, pp. 14-15 (file p0028-p0029): waves and grey hair from *pel- 'grey' (Gr. πολιός); Kaikki Old Armenian ալի (wave) likewise. *Heh₃l- belongs only to the rare homograph ali 'axle, millstone' (J̌ahukyan apud Kaikki), not attested in the DMHP tokens of this lemma."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "alikʻ",
+      "lex_id": ["pie-root-pelH-pale"],
+      "erratum": "alikʻ 'waves' mapped to *Heh₃l- 'bend, elbow' + *pelH- 'pale, grey'",
+      "note": "cq1 w10 r4; as ali (Martirosyan EDAIL pp. 14-15, file p0028-p0029)."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "bov",
+      "lex_id": [],
+      "erratum": "bov 'furnace, crucible' mapped to *bʰo (emphatic particle) by key collision",
+      "note": "cq1 w10 r48 (DMHP Agathangelos word 51127 i bovs pʻorjowtʻean 'in the crucible of trial'). Kaikki Old Armenian բով 'furnace, crucible': only Ačaṙyan's old *bʰō-/*bʰow- (*bʰeh₁- 'warm'); not the particle. Unmapped rather than asserting the disputed root."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "elkʻ",
+      "lex_id": [],
+      "erratum": "elkʻ 'exit, issue' mapped to *h₁ésti 'be' through the infinitive el of em",
+      "note": "cq1 w10 r28 obs2 (DMHP Lazar word 21943 elkʻ gorcoyn 'the outcome of the work'). Kaikki Old Armenian ել noun 'egress, departure, exit', from the root of ելանեմ; the form-of em link is a homograph. The aorist elicʻ 'filled' tokens go to lnowm by the cq1_xcl elic-filled rule."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "towičʻ",
+      "lex_id": ["pie-root-deh3-give"],
+      "formation": "derivative",
+      "note": "cq1 formula witness scan item 11 (DMHP Eznik word 15023 towičʻ tʻagaworowtʻeancʻ 'giver of kingdoms'): agent noun in -ičʻ on tow-, the aorist stem of tam 'give' (*deh₃-); DMHP lemmatised it as tiw 'day' (*dyḗws)."
+    },
+    {
+      "corpus": "xcl",
+      "lemma": "akanǰ",
+      "lex_id": ["pie-lex-h2oxws"],
+      "formation": "derivative",
+      "note": "cq1 w10 r121 (DMHP Lazar word 60637 y-akanǰs 'into the ears'). Martirosyan EDAIL s.v. akanǰ, pp. 21-22 (file p0035-p0036): originally the dual of unkn 'ear' (*h₂ous-), ǰ after ačʻ 'eyes' (Meillet, HAB); a Kartvelian alternative is noted there. Kept on the ear lexeme as another formation."
+    }
+  ]
+}

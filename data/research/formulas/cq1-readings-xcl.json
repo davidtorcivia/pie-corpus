@@ -1,0 +1,510 @@
+[
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_11_Agathangelos ed. page 1489 - PDF page 195 (word id 34343)",
+  "surface": "լնդովք,",
+  "old": "lnowm",
+  "lemma": "lind",
+  "report": "error-reports-w10.jsonl line 9",
+  "evidence": "DMHP word id 34343. Raw DMHP context: gums blowing a horn; instr. pl. of լինդ 'gum' (Kaikki Old Armenian լինդ); not լնում 'fill'."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2339 - PDF page 139 (word id 49563)",
+  "surface": "Որդի",
+  "old": "ordi",
+  "lemma": "Ordi (name)",
+  "report": "error-reports-w10.jsonl line 35 obs0",
+  "evidence": "DMHP word id 49563. Raw DMHP context: personal name with lineage (Dimakʻsean house); Lazar names Ordi among the martyrs."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_11_Agathangelos ed. page 1615 - PDF page 321 (word id 54862)",
+  "surface": "լո՛ւր",
+  "old": "lowr",
+  "lemma": "lsem",
+  "report": "error-reports-w10.jsonl line 25",
+  "evidence": "DMHP word id 54862. Raw DMHP: aor. impv. 2sg lowr 'hear!' governing the prophet (Kaikki Old Armenian լսեմ); not the noun lowr."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_11_Agathangelos ed. page 1523 - PDF page 229 (word id 40398)",
+  "surface": "զերկունս",
+  "old": "erkow",
+  "lemma": "erkn",
+  "report": "error-reports-w10.jsonl line 27",
+  "evidence": "DMHP word id 40398. Raw DMHP: z-erkowns mahow 'pains of death' (Acts 2:24); acc. pl. of երկն (Kaikki Old Armenian); not erkow 'two'. Mapping of erkn left as is."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_11_Agathangelos ed. page 1573 - PDF page 279 (word id 48354)",
+  "surface": "այրի",
+  "old": "ayri",
+  "lemma": "ayrem",
+  "report": "error-reports-w10.jsonl line 38",
+  "evidence": "DMHP word id 48354. Raw DMHP: ayri ew hrdehi 'is burned and consumed'; mediopassive of այրեմ (Kaikki Old Armenian); not ayri 'widow'."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_11_Agathangelos ed. page 1551 - PDF page 257 (word id 44933)",
+  "surface": "կալք",
+  "old": "kam",
+  "lemma": "kal@floor",
+  "report": "error-reports-w10.jsonl line 40",
+  "evidence": "DMHP word id 44933. Raw DMHP: Joel 2:24 'the threshing floors shall be full'; nom. pl. of կալ 'threshing floor' (Kaikki Old Armenian կալ); not kam 'stand'. Unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2280 - PDF page 80 (word id 27282)",
+  "surface": "կայսը",
+  "old": "kam",
+  "lemma": "kaysr",
+  "report": "error-reports-w10.jsonl line 40 obs0",
+  "evidence": "DMHP word id 27282. Raw DMHP: letters to the emperor (կայսըր, OCR ը); Kaikki Old Armenian կայսր, Latin loan; unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2357 - PDF page 157 (word id 56785)",
+  "surface": "զկամս",
+  "old": "kam",
+  "lemma": "kamkʻ",
+  "report": "error-reports-w10.jsonl line 40 obs1",
+  "evidence": "DMHP word id 56785. Raw DMHP: z-kams xndroyn 'the wishes of the request'; Kaikki Old Armenian կամք (w9 lemma kamkʻ, Iranian loan, unmapped)."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2387 - PDF page 187 (word id 66298)",
+  "surface": "կամացդ",
+  "old": "kam",
+  "lemma": "kamkʻ",
+  "report": "error-reports-w10.jsonl line 40 obs2",
+  "evidence": "DMHP word id 66298. Raw DMHP: kamacʻd ... kamakatarkʻ 'performers of your wishes'; Kaikki Old Armenian կամք."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2356 - PDF page 156 (word id 56406)",
+  "surface": "կամք",
+  "old": "kam",
+  "lemma": "kamkʻ",
+  "report": "error-reports-w10.jsonl line 40 obs3",
+  "evidence": "DMHP word id 56406. Raw DMHP: orpēs kʻo kamkʻ en 'as your wishes are'; Kaikki Old Armenian կամք."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_11_Agathangelos ed. page 1471 - PDF page 177 (word id 31209)",
+  "surface": "կամք",
+  "old": "kam",
+  "lemma": "kamkʻ",
+  "report": "error-reports-w11.jsonl line 28",
+  "evidence": "DMHP word id 31209. Raw DMHP: kamkʻ nora source of all blessings; Kaikki Old Armenian կամք."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 2156 - PDF page 413 (word id 66725)",
+  "surface": "կամս",
+  "old": "kam",
+  "lemma": "kamkʻ",
+  "report": "error-reports-w11.jsonl line 28 obs0",
+  "evidence": "DMHP word id 66725. Raw DMHP: orpēs tʻē kams inčʻ ownicʻin 'as if they had a will'; Kaikki Old Armenian կամք."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 1756 - PDF page 14 (word id 1919)",
+  "surface": "երկուքն",
+  "old": "erkn",
+  "lemma": "erkow",
+  "report": "error-reports-w10.jsonl line 41",
+  "evidence": "DMHP word id 1919. Raw DMHP: erkowkʻn ... ǝnddēm erkowcʻ 'the two against the two'; Kaikki Old Armenian երկու."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 2099 - PDF page 357 (word id 54580)",
+  "surface": "երկնէ.",
+  "old": "erkn",
+  "lemma": "erkin",
+  "report": "error-reports-w10.jsonl line 41 obs0",
+  "evidence": "DMHP word id 54580. Raw DMHP: y-arpʻayinn erknē 'from the ethereal heaven'; abl. of երկին (Kaikki Old Armenian)."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_11_Agathangelos ed. page 1644 - PDF page 350 (word id 59836)",
+  "surface": "Հաւը",
+  "old": "haw",
+  "lemma": "hayr",
+  "report": "error-reports-w10.jsonl line 43",
+  "evidence": "DMHP word id 59836. Raw DMHP: John 1:2 'was with the Father' (Հաւը, OCR for Հաւր, obl. of հայր; next clause Hayr). Surface kept; lemma only (no xcl emendation mechanism)."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 2084 - PDF page 342 (word id 52317)",
+  "surface": "դեն",
+  "old": "dnem",
+  "lemma": "dēn",
+  "report": "error-reports-w10.jsonl line 58",
+  "evidence": "DMHP word id 52317. Raw DMHP: i dēn mazdēzancʻ 'into the religion of the Mazdeans'; Kaikki Old Armenian դէն, Iranian loan; unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 1914 - PDF page 172 (word id 25396)",
+  "surface": "երկդիմի.",
+  "old": "erknčʻim",
+  "lemma": "erkdimi",
+  "report": "error-reports-w10.jsonl line 59",
+  "evidence": "DMHP word id 25396. Raw DMHP: two-sided (one way by day, another by night); w9 lemma erkdimi (Kaikki Old Armenian երկու + դէմ), unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 2032 - PDF page 290 (word id 43285)",
+  "surface": "ոճիրս",
+  "old": "pʻokʻr",
+  "lemma": "očir",
+  "report": "error-reports-w10.jsonl line 60",
+  "evidence": "DMHP word id 43285. Raw DMHP: gorcēin očirs 'they committed outrages'; Kaikki Old Armenian ոճիր; unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 1830 - PDF page 88 (word id 12960)",
+  "surface": "աչկունքն",
+  "old": "aknčʻowk",
+  "lemma": "akn",
+  "report": "error-reports-w10.jsonl line 62",
+  "evidence": "DMHP word id 12960. Raw DMHP (Vahagn song): ačʻkownkʻn ēin aregakownkʻ 'his eyes were suns'; plural of ակն (ačʻkʻ, Kaikki Old Armenian ակն); *h₃ekʷ-."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 2099 - PDF page 357 (word id 54579)",
+  "surface": "յարփայինն",
+  "old": "aržan",
+  "lemma": "arpʻayin",
+  "report": "error-reports-w10.jsonl line 64",
+  "evidence": "DMHP word id 54579. Raw DMHP: y-arpʻayinn erknē 'from the ethereal heaven'; Kaikki Old Armenian արփի / արփային; unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 1928 - PDF page 186 (word id 27577)",
+  "surface": "«Տեղ",
+  "old": "teł",
+  "lemma": "teł@rain",
+  "report": "error-reports-w10.jsonl line 65",
+  "evidence": "DMHP word id 27577. Raw DMHP (Artašēs wedding song): teł oski tełayr 'a rain of gold rained'; teł 'shower' (figura etymologica with tełam), not teł 'place'. Unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 1828 - PDF page 86 (word id 12663)",
+  "surface": "զնոսակոչելով,",
+  "old": "nolakizor",
+  "lemma": "kočʻem",
+  "report": "error-reports-w10.jsonl line 66",
+  "evidence": "DMHP word id 12663. Raw DMHP: z-nosa kočʻelov 'calling them' printed as one word; content word kočʻem; surface kept."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 1891 - PDF page 149 (word id 21707)",
+  "surface": "Փերուրի",
+  "old": "pʻerowtʻiwn",
+  "lemma": "Pʻerowr (name)",
+  "report": "error-reports-w10.jsonl line 69",
+  "evidence": "DMHP word id 21707. Raw DMHP: kin Pʻerowri ełbawr iwroy 'wife of Pheroras his brother' (Herod's brother)."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 2188 - PDF page 445 (word id 79770)",
+  "surface": "մտից",
+  "old": "mit",
+  "lemma": "mowtkʻ",
+  "report": "error-reports-w10.jsonl line 72",
+  "evidence": "DMHP word id 79770. Raw DMHP (Geography): Owti ... mticʻ kay Erasxay 'lies west of the Araxes'; gen. pl. of մուտք 'setting, west' (Kaikki Old Armenian); unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2203 - PDF page 3 (word id 664)",
+  "surface": "յառնէ",
+  "old": "yar̄nem",
+  "lemma": "ayr",
+  "report": "error-reports-w10.jsonl line 76 obs0",
+  "evidence": "DMHP word id 664. Raw DMHP: y-aṙnē owmemnē 'by a certain man' (abl. sg. of այր, Kaikki Old Armenian այր obl. առն-)."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2367 - PDF page 167 (word id 60712)",
+  "surface": "Արի",
+  "old": "yar̄nem",
+  "lemma": "ari (name)",
+  "report": "error-reports-w10.jsonl line 76 obs5",
+  "evidence": "DMHP word id 60712. Raw DMHP: Ari ayr 'an Aryan man' (contrast Armenian man); ethnonym Arikʻ."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2278 - PDF page 78 (word id 26458)",
+  "surface": "Արի",
+  "old": "yar̄nem",
+  "lemma": "ari (name)",
+  "report": "error-reports-w10.jsonl line 76",
+  "evidence": "DMHP word id 26458. Raw DMHP: Ari ew anari 'Aryan and non-Aryan'; ethnonym (read with the w10 r76 Aryan forms)."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2331 - PDF page 131 (word id 46692)",
+  "surface": "Արի",
+  "old": "yar̄nem",
+  "lemma": "ari (name)",
+  "report": "error-reports-w10.jsonl line 76",
+  "evidence": "DMHP word id 46692. Raw DMHP: ǝnd Ari mardkan 'against Aryan men'; ethnonym (read with the w10 r76 Aryan forms)."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_1_06_Yeghishe ed. page 528 - PDF page 8 (word id 1094)",
+  "surface": "արեաց",
+  "old": "ariwn",
+  "lemma": "ari (name)",
+  "report": "error-reports-w10.jsonl line 17",
+  "evidence": "DMHP word id 1094. Raw DMHP: areacʻ ew anareacʻ 'Aryans and non-Aryans' (royal address); ethnonym, not blood."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2227 - PDF page 27 (word id 8495)",
+  "surface": "կտաւն",
+  "old": "ktanem",
+  "lemma": "ktaw",
+  "report": "error-reports-w10.jsonl line 77",
+  "evidence": "DMHP word id 8495. Raw DMHP: the cloth lifted by the breeze; Kaikki Old Armenian կտաւ 'linen cloth'; unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2227 - PDF page 27 (word id 8497)",
+  "surface": "շնչմանէ",
+  "old": "šnorh",
+  "lemma": "šnčʻowmn",
+  "report": "error-reports-w10.jsonl line 78",
+  "evidence": "DMHP word id 8497. Raw DMHP: i šnčʻmanē kʻałcʻr awdoyn 'by the breath of the sweet air'; Kaikki Old Armenian շնչումն; unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2227 - PDF page 27 (word id 8504)",
+  "surface": "սկուտեղ",
+  "old": "skowtem",
+  "lemma": "skowteł",
+  "report": "error-reports-w10.jsonl line 79",
+  "evidence": "DMHP word id 8504. Raw DMHP: skowteł arcatʻi mec 'a large silver dish'; Kaikki Old Armenian սկուտեղ (loan); unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2244 - PDF page 44 (word id 13998)",
+  "surface": "անքակ",
+  "old": "ankanim",
+  "lemma": "ankʻak",
+  "report": "error-reports-w10.jsonl line 82",
+  "evidence": "DMHP word id 13998. Raw DMHP: ankʻak ew anerkewan 'indissoluble and unwavering'; Kaikki Old Armenian անքակ; unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 2174 - PDF page 431 (word id 74335)",
+  "surface": "զՄեղ,",
+  "old": "meł",
+  "lemma": "Meł (name)",
+  "report": "error-reports-w10.jsonl line 87",
+  "evidence": "DMHP word id 74335. Raw DMHP (Geography): z-Meł in the list of districts of the Persian quarter (z-Ger, z-Meł, z-Mahik)."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 2174 - PDF page 431 (word id 74339)",
+  "surface": "զՊալհ։",
+  "old": "pahem",
+  "lemma": "Palh (name)",
+  "report": "error-reports-w10.jsonl line 88",
+  "evidence": "DMHP word id 74339. Raw DMHP (Geography): z-Palh, Balkh, last member of the list of districts."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 2158 - PDF page 415 (word id 67791)",
+  "surface": "Եմառոն",
+  "old": "er̄am",
+  "lemma": "Emaron (name)",
+  "report": "error-reports-w10.jsonl line 92",
+  "evidence": "DMHP word id 67791. Raw DMHP (Geography): Emaron lerinn 'Mount Emaron'."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 2149 - PDF page 406 (word id 63297)",
+  "surface": "Դուչի",
+  "old": "dowr̄n",
+  "lemma": "Dowčʻi (name)",
+  "report": "error-reports-w10.jsonl line 97",
+  "evidence": "DMHP word id 63297. Raw DMHP (Geography): Dowčʻi Bowlkar, in the list of Bulgar tribes."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2211 - PDF page 11 (word id 3099)",
+  "surface": "զյոյն,",
+  "old": "yoys",
+  "lemma": "yoyn (name)",
+  "report": "error-reports-w10.jsonl line 90",
+  "evidence": "DMHP word id 3099. Raw DMHP: owseal dprowtʻiwn z-yoyn 'learned Greek letters'; ethnonym Յոյն (Kaikki Old Armenian); not yoys 'hope'."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2214 - PDF page 14 (word id 3766)",
+  "surface": "Տէր՝",
+  "old": "Tēr",
+  "lemma": "Tēr (name)",
+  "report": "error-reports-w10.jsonl line 91",
+  "evidence": "DMHP word id 3766. Raw DMHP: list of pupils with origins (erkrordin Tēr i Xorjenoy); personal name."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2211 - PDF page 11 (word id 2988)",
+  "surface": "նէր։",
+  "old": "ner",
+  "lemma": "ar̄nem",
+  "report": "error-reports-w10.jsonl line 94",
+  "evidence": "DMHP word id 2988. Raw DMHP: orpēs aṙ nēr printed split for aṙnēr 'as he used to do' (impf. 3sg of առնեմ, Kaikki Old Armenian); not ner 'sister-in-law'."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2267 - PDF page 67 (word id 22521)",
+  "surface": "«Սուր",
+  "old": "sowr",
+  "lemma": "sowrb",
+  "report": "error-reports-w10.jsonl line 102",
+  "evidence": "DMHP word id 22521. Raw DMHP: «Սուր քահանայից» with final բ lost: sowrb 'holy' (Kaikki Old Armenian սուրբ); surface kept, lemma only."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2271 - PDF page 71 (word id 24053)",
+  "surface": "բերդիցն",
+  "old": "berem",
+  "lemma": "berd",
+  "report": "error-reports-w10.jsonl line 104",
+  "evidence": "DMHP word id 24053. Raw DMHP: i tełis tełis yamowrs berdicʻn 'in the strongholds of the fortresses'; gen. pl. of բերդ 'fortress' (Kaikki Old Armenian line 4135 բերդ); not berem 'carry'. Unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2275 - PDF page 75 (word id 25482)",
+  "surface": "կանս",
+  "old": "kan",
+  "lemma": "kam",
+  "report": "error-reports-w10.jsonl line 105",
+  "evidence": "DMHP word id 25482. Raw DMHP: or kans i harcʻmans 'who stand here for questioning' (kan + deictic -s; Kaikki Old Armenian կամ 'stand')."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2314 - PDF page 114 (word id 40069)",
+  "surface": "ալնուհետեւ",
+  "old": "anowsem",
+  "lemma": "aynowhetew",
+  "report": "error-reports-w10.jsonl line 108",
+  "evidence": "DMHP word id 40069. Raw DMHP: ալնուհետեւ, OCR of aynowhetew 'thereafter' (adverb, as elsewhere in Lazar); non-content.",
+  "noncontent": true
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2370 - PDF page 170 (word id 61720)",
+  "surface": "զաւր",
+  "old": "zawr",
+  "lemma": "awr",
+  "report": "error-reports-w10.jsonl line 111",
+  "evidence": "DMHP word id 61720. Raw DMHP: awr kʻan z-awr 'day by day'; acc. of աւր 'day' (Kaikki Old Armenian) with z-."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2390 - PDF page 190 (word id 67521)",
+  "surface": "զձեզա.",
+  "old": "jer̄n",
+  "lemma": "dowkʻ",
+  "report": "error-reports-w10.jsonl line 116",
+  "evidence": "DMHP word id 67521. Raw DMHP: Matt. 11:28 hangowcʻanem z-jez 'I will give you rest' (pronoun, citation marker ա); non-content.",
+  "noncontent": true
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2381 - PDF page 181 (word id 64673)",
+  "surface": "լուացեալ",
+  "old": "lsem",
+  "lemma": "lwanam",
+  "report": "error-reports-w10.jsonl line 117",
+  "evidence": "DMHP word id 64673. Raw DMHP: Matt. 27:24 lowacʻeal z-jeṙs 'having washed his hands'; Kaikki Old Armenian լուանամ (w9 lemma lwanam, competing etymologies, unmapped)."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2382 - PDF page 182 (word id 65097)",
+  "surface": "բազմաժամանակեայ",
+  "old": "bazmapanakeay",
+  "lemma": "bazmažamanakeay",
+  "report": "error-reports-w10.jsonl line 122",
+  "evidence": "DMHP word id 65097. Raw DMHP: bazmažamanakeay 'long-lived' (bazowm + žamanak, Kaikki Old Armenian ժամանակ); compound unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_13_Lazar_Parp ed. page 2350 - PDF page 150 (word id 53806)",
+  "surface": "թուով",
+  "old": "tʻitʻi",
+  "lemma": "tʻiw",
+  "report": "error-reports-w11.jsonl line 2",
+  "evidence": "DMHP word id 53806. Raw DMHP: tʻowov eresown 'thirty in number'; instr. of թիւ (Kaikki Old Armenian); unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_1_04_Faustos ed. page 332 - PDF page 56 (word id 22194)",
+  "surface": "անքուն",
+  "old": "anown",
+  "lemma": "ankʻown",
+  "report": "error-reports-w11.jsonl line 11",
+  "evidence": "DMHP word id 22194. Raw DMHP: ankʻown linēr minčʻew y-aṙawawtn 'stayed sleepless until dawn'; Kaikki Old Armenian անքուն; compound unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_1_04_Faustos ed. page 332 - PDF page 56 (word id 22189)",
+  "surface": "բացաւք,",
+  "old": "ban",
+  "lemma": "bacʻ",
+  "report": "error-reports-w11.jsonl line 12",
+  "evidence": "DMHP word id 22189. Raw DMHP: ačʻawkʻ bacʻawkʻ 'with open eyes'; instr. pl. of բաց (Kaikki Old Armenian); unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 1946 - PDF page 204 (word id 30495)",
+  "surface": "Վաղեգեսոս",
+  "old": "vałegem",
+  "lemma": "Vałegesos (name)",
+  "report": "error-reports-w11.jsonl line 52",
+  "evidence": "DMHP word id 30495. Raw DMHP: earlier called Vałegesos in the Greek tongue (Greek name, Vologeses)."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_11_Agathangelos ed. page 1605 - PDF page 311 (word id 53555)",
+  "surface": "յինէնա.",
+  "old": "inn",
+  "lemma": "es",
+  "report": "error-reports-w10.jsonl line 20",
+  "evidence": "DMHP word id 53555. Raw DMHP: Deut. 32:39 'no other God but me': y-inēn (abl. of es, with citation marker ա); not inn 'nine'; pronoun, non-content.",
+  "noncontent": true
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 1859 - PDF page 117 (word id 16994)",
+  "surface": "աղու",
+  "old": "ał",
+  "lemma": "ałow",
+  "report": "error-reports-w10.jsonl line 24 obs1",
+  "evidence": "DMHP word id 16994. Raw DMHP: Ałowankʻ named for his sweet (ałow) character; Kaikki Old Armenian աղու; not ał 'salt'. Unmapped."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 2084 - PDF page 342 (word id 52303)",
+  "surface": "որսոց,",
+  "old": "or",
+  "lemma": "ors",
+  "report": "error-reports-w10.jsonl line 19 obs2",
+  "evidence": "DMHP word id 52303. Raw DMHP: zbawsanawkʻ orsocʻ 'with the pleasures of hunting'; gen. pl. of որս (Kaikki Old Armenian); lemma as the earlier Movses 18372 reading."
+ },
+ {
+  "corpus": "xcl",
+  "locus": "MH_1_2_12_Movses_Khor ed. page 1765 - PDF page 23 (word id 3229)",
+  "surface": "լով",
+  "old": "low",
+  "lemma": "asem",
+  "report": "mapping-errors-found.jsonl entry 9",
+  "evidence": "DMHP word id 3229. Raw DMHP: ասե | լով printed split for asel-ov (participle of ասեմ); the fragment is not lowr 'hear' / *ḱlutós; the first half already carries asem. Non-content.",
+  "noncontent": true
+ }
+]

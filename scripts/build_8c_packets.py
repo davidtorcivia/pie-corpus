@@ -163,7 +163,9 @@ def phrase_in(toks: list[str], phrase: str) -> bool:
 
 
 def group_of(e: dict) -> str:
-    return e.get("root_id") or e["id"]
+    # the shared rule (reviewed root-group splits included): pie.formula_search.group_of
+    from pie.formula_search import group_of as shared_group_of
+    return shared_group_of(e)
 
 
 def match_seeds(lexicon: list[dict], themes=THEMES) -> dict:

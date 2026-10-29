@@ -1,0 +1,15 @@
+{
+ "_doc": "Reviewed root-group splits, read by pie.formula_search.group_of (pie.cq1_mapping.group_splits). A lexicon entry listed here keeps its lexeme id and its lexicon root_id; only the root GROUP used by search, the Stage B/C/C-S index and the packets changes. Use when the Wiktionary tree files derivatives of a homonymous root under one page. Verdicts: data/research/8c/corpus-quality/error-verdicts-cq1-formulas.jsonl.",
+ "groups": [
+  {
+   "group": "pie-root-gwerH-mountain",
+   "label": "*gʷerH- 'mountain, elevation' (IEW 477 *gʷer- 'Berg'), not *gʷerH- 'praise' (IEW 478; LIV2 210 *gʷerH- 'Zustimmung äußern')",
+   "ids": [
+    "pie-lex-gworHeh2",
+    "pie-lex-gwrHis",
+    "pie-lex-gworHno"
+   ],
+   "evidence": "Wiktionary 'gʷerH-' (kaikki PIE dump 2026-10-21) has two senses, 'to express approval; praise' and 'to elevate', and lists *gʷorH-eh2 (Proto-Balto-Slavic *garā́ˀ, Βορέας), *gʷr̥H-í-s (Proto-Indo-Iranian *gr̥Híš, Skt girí-) and *gʷorH-no- (Proto-Slavic *gornъ / *grano) under the one page; kaikki Proto-Slavic *gora 'mountain'. IEW 477 and 478 separate the two roots; LIV2 210 has only the verb 'praise'. Formula witness scan 2026-10-28 entries 26 and 29."
+  }
+ ]
+}
