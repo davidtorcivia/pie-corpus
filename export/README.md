@@ -54,8 +54,10 @@ For token counts, run it as
 | file | what |
 |---|---|
 | `chat/train.jsonl`, `chat/eval.jsonl` | one conversation per line: `{"messages": [{"role": "system"\|"user"\|"assistant", "content": …}], "meta": {…}}` |
-| `chat/train_mix.jsonl` | a subset of `chat/train.jsonl` in the target mix (English input 60%, see "Mix"): the default SFT file for the chat and translation model |
-| `chat/summary.json` | examples per kind and per mode, the mix table, the translator's items, the self-overlap measure, English-alignment coverage of the dialogues, demo seeds used/skipped, the conversational eval's counts, Qwen3-4B token counts per kind, tokens per word (Unicode vs ASCII), leakage report, Tier 3b neologism share, source commit |
+| `chat/train_mix.jsonl` | a subset of `chat/train.jsonl` in the target mix (English input 50%, PIE chat 15%, see "Mix"): **the default SFT file for the chat model** (the LLM you converse with) |
+| `translator/train.jsonl`, `translator/eval.jsonl` | **the translation app's dataset**: every translator item in both directions, English → PIE and PIE → English, 1:1 (see "Translator dataset"). Not part of the chat model's mix |
+| `translator/summary.json` | the translator dataset's examples per direction and unit, gloss coverage, assistant-turn self-overlap, leakage report, source commit |
+| `chat/summary.json` | examples per kind and per mode, the mix table, user turns per kind and the multi-turn breakdown (`turns`), the translator's items, the self-overlap measure, English-alignment coverage of the dialogues, demo seeds used/skipped, the conversational eval's counts, Qwen3-4B token counts per kind, tokens per word (Unicode vs ASCII), leakage report, Tier 3b neologism share, source commit |
 | `eval_dialogues.jsonl` | the records reserved for the conversational eval (data/export/held_dialogues.json) |
 | `text/train.txt`, `text/eval.txt` | plain PIE for LM loss: one text per paragraph (blank-line separated, each on one line); a Tier 1 work is one paragraph in line order |
 | `text-ascii/…` | the same in `pie_ascii`, for a tokenizer ablation |
@@ -75,8 +77,9 @@ with each model's own template. Train on the assistant turns only (the default "
   for en→PIE). The reconstruction convention ("project handbook convention" or a named scholarly
   reconstruction for Tier 1) is stated in the system turn, never mixed into the user text.
 - `pie_dialogue`: PIE-only conversations (`meta.mode` `pie_pie`). In training these are the dialogues that
-  get no English-input conversation (no sentence alignment, or narrated) and one half of some two-exchange
-  dialogues (see `en_dialogue`); the conversational eval has every reserved dialogue in it. The system prompt (English) says to answer only in PIE; every
+  get no English-input conversation (no sentence alignment, or narrated) and, whole, one in two (crc32,
+  `PIE_PIE_EVERY`) of the aligned dialogues: the same exchanges as their English-input conversations, with
+  the user turns in PIE (see `en_dialogue`); the conversational eval has every reserved dialogue in it. The system prompt (English) says to answer only in PIE; every
   user and assistant turn is PIE. Built from the dialogue-like genres (`dialogue`, `greeting`, `challenge`,
   `parley`, `council`, `farewell`, `riddle`) by splitting a text into turns. `meta.split` records how:
   `speaker` when the plan's clauses name a speaker (wave-2 / Tier 3b plans; consecutive sentences of one
@@ -93,10 +96,12 @@ with each model's own template. Train on the assistant turns only (the default "
   40% of its sentences, or of a Tier 1 work's lines) and the assistant continues it in PIE.
 - `en_dialogue`: the same dialogues with **English user input**, for chatting with the model in English.
   Every aligned dialogue of k exchanges (a user turn and its reply) gets (`mode_plan`):
-  `en_pie` on the whole dialogue; `en_pie_gloss` on the whole when k = 1, else on one half of the exchanges
-  (`[:k//2]` or `[k//2:]`); on the other half `mixed` when it has two or more exchanges, else `pie_pie`
-  (k = 2). So each assistant turn is trained in exactly two dialogue-mode examples, never as duplicates of
-  one conversation (`meta.window`: the exchanges an example covers, when not the whole). The modes:
+  `en_pie` on the whole dialogue; `en_pie_gloss` on the whole when k ≤ 3, else on one half of the exchanges
+  (`[:k//2]` or `[k//2:]`, two or more exchanges each, so a dialogue stays multi-turn); `mixed` on the whole
+  when k is 2 or 3, on the other half when k ≥ 4; and on one aligned dialogue in two (crc32) `pie_pie` on
+  the whole (k = 2 or 3: instead of `mixed`). So each assistant turn is trained in at most three
+  dialogue-mode examples (`DEDUP_CAP` 3; `meta.window`: the exchanges an example covers, when not the
+  whole). The modes:
   - `en_pie`: every user turn is the English of the user's sentences; every assistant turn is PIE only.
     System prompt: "Reply in Proto-Indo-European."
   - `en_pie_gloss`: as en_pie, but each assistant turn is fixed-format: the PIE reply, a newline, then
@@ -122,8 +127,15 @@ with each model's own template. Train on the assistant turns only (the default "
   paragraphs, `meta.unit`, `meta.sentences`; a line without final punctuation, such as a title, ends its
   item), so every sentence is in exactly one item. A record whose
   English does not align sentence by sentence is one item when it has at most three sentences, else
-  skipped (`summary.json` `translate_app`). One item in five (crc32) is the inverse mode
-  (`meta.mode` `pie_en`; the default is `en_pie`). Tier 3b records are treated the same way.
+  skipped (`summary.json` `translate_app`). In the chat data one item in five (crc32) is the inverse mode
+  (`meta.mode` `pie_en`; the default is `en_pie`): PIE → English stays small for the chat model. The
+  translation app's dataset (`translator/`) has every item in both directions. Tier 3b records are treated
+  the same way.
+- `app_session`: a few multi-turn translator sessions (train only): adjacent `en_pie` items of one text,
+  in text order, chained into one conversation of two or three requests ("And this: …", "Next: …"). They are
+  the same items, not copies: each sentence is still in exactly one translator example. Chained requests
+  (`app_session` and the two-turn `demo_chat` seeds) are capped at 10% of the multi-turn examples
+  (`APP_SESSION_SHARE`), so the multi-turn data is conversation, not a phrasebook.
 - `demo_chat`: a small hand-written seed set for the live demo (data/export/demo_seeds.jsonl): English
   requests ("Can you say hello?", "Who are you?", "Translate: …", "How do you say 'horse'?", "And
   'horses'?"), one to two turns each, mode `en_pie` or `en_pie_gloss` by crc32. The answers are never
@@ -159,8 +171,19 @@ gloss."; the user turn is PIE and the assistant turn is `English: …` then `Glo
 `translate_en_pie`) and the `Gloss:` line only where `meta.gloss_reference` is true; the reconstruction
 convention of a Tier 1 item is in `meta.style` (the fixed system prompt does not carry it).
 
+**Translator dataset** (`translator/`, `pie.export_chat.build_translator`). For the translation app, which
+translates both ways (a user gets a PIE answer, then translates it back to English): every `translate_app`
+item emitted twice, once `en_pie` (English in; `PIE:` / `Gloss:` / `Notes:` out) and once `pie_en` (PIE in;
+`English:` / `Gloss:` out), the pair sharing `meta.item`. Single requests only (no sessions). The same items
+and split as the chat export's translator (`app_chats(..., both_directions=True)`): train items from train
+records, eval items from eval records, both directions of an eval item in eval only. The leakage check is
+the chat export's, run against the translator's train and the chat train together, and fails the export.
+`summary.json` `self_overlap` counts assistant turns only: an `en_pie` output's PIE is the `pie_en` partner's
+input, by design. Train the translation model on `translator/train.jsonl`; train the chat model on
+`chat/train_mix.jsonl`.
+
 **Mix.** `summary.json` `mix` groups the kinds: `english_input` (`translate_en_pie`, `translate_app` en_pie,
-`en_dialogue`, `demo_chat`), `pie_to_english` (`translate_pie_en`, `translate_app` pie_en),
+`app_session`, `en_dialogue`, `demo_chat`), `pie_to_english` (`translate_pie_en`, `translate_app` pie_en),
 `pie_only_chat` (`pie_dialogue`, `continuation`) and `grammar` (`gloss`, `inflect`, `paradigm`,
 `cognates_to_pie`), with each split's examples, content tokens (Qwen3-4B), shares and the per-example
 sampling weight that reaches the target. Every task stays a conversation in `chat/train.jsonl`, so the
@@ -181,7 +204,7 @@ By tokens, English input is 59.5% of `train_mix.jsonl` (545,284 of 916,243). Of 
 translation examples (all but grammar), English input is 66% in `train.jsonl` and 81% in `train_mix.jsonl`.
 
 **Self-overlap.** `summary.json` `self_overlap`: per assistant turn of a dialogue record, the number of
-dialogue-mode examples that train on it (cap 2, `DEDUP_CAP`; the tests fail above it); and, reported only,
+dialogue-mode examples that train on it (cap 3, `DEDUP_CAP`; the tests fail above it); and, reported only,
 per PIE sentence and per word 4-gram of every PIE-output kind, the number of train examples whose assistant
 turns contain it (a single-sentence record is a `translate_en_pie` output and a translator item, 2 by
 design; a short formula that many records share counts once per example).
@@ -248,4 +271,5 @@ for line in open("export/chat/train_mix.jsonl"):
 For the plain text, split `text/train.txt` on blank lines and train with LM loss on every token (a base
 checkpoint, or the instruct model before chat SFT). Filter on `meta.task` to train or score one kind, e.g.
 `pie_dialogue` + `en_dialogue` + `demo_chat` + `continuation` for speaking PIE (`meta.mode` for
-the input language), `translate_app` for the translator, the task kinds for grammar.
+the input language), `translate_app` for the translator, the task kinds for grammar. For the translation app, load
+`export/translator/train.jsonl` and `eval.jsonl` the same way.
