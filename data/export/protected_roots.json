@@ -520,12 +520,25 @@
    "lift/raise/pick up",
    "lip",
    "understand",
-   "wake/wake up/awaken"
+   "wake/wake up/awaken",
+   "roof",
+   "bed",
+   "beech",
+   "owe",
+   "suckle",
+   "sweat",
+   "wash",
+   "wipe",
+   "hornet",
+   "fortress/stronghold",
+   "womb",
+   "elk",
+   "grief/hatred/care"
   ]
  },
  "rootless_lexemes_by_reason": {
   "conversation": 3,
-  "conversation-core": 3,
+  "conversation-core": 4,
   "core-noun": 17,
   "core-verb": 4,
   "formula": 11,
@@ -540,7 +553,7 @@
  },
  "lexemes_by_reason": {
   "conversation": 12,
-  "conversation-core": 301,
+  "conversation-core": 337,
   "core-noun": 55,
   "core-verb": 210,
   "formula": 30,
@@ -2094,6 +2107,11 @@
    "beard": [
     "pie-root-smekj-beard"
    ],
+   "bed": [
+    "pie-root-legh-lie",
+    "pie-root-sterh3-spread"
+   ],
+   "beech": [],
    "bury": [
     "pie-root-dhembh-bury"
    ],
@@ -2152,6 +2170,9 @@
    "dream": [
     "pie-root-swep-sleep"
    ],
+   "elk": [
+    "pie-root-h1el-greyish_or_brownish"
+   ],
    "evening": [],
    "exchange/trade": [
     "pie-root-h2meygw-change",
@@ -2164,9 +2185,16 @@
    "forget": [
     "pie-root-mers-forget"
    ],
+   "fortress/stronghold": [
+    "pie-root-tpelH-fortification"
+   ],
    "goat": [
     "pie-root-h2egj-goat",
     "pie-root-h2eygj-goat"
+   ],
+   "grief/hatred/care": [
+    "pie-root-h2engjh-constrict",
+    "pie-root-kjeh2d-hatred"
    ],
    "grow": [
     "pie-root-bhengjh-thick",
@@ -2194,6 +2222,9 @@
    "help/assist": [
     "pie-root-h1ewH-help",
     "pie-root-h2reh1gj-care_for"
+   ],
+   "hornet": [
+    "pie-root-kjerh2-head"
    ],
    "know/recognize": [
     "pie-root-gjneh3-recognise",
@@ -2272,6 +2303,10 @@
     "pie-root-perkj-open",
     "pie-root-rewh1-open"
    ],
+   "owe": [
+    "pie-root-dhlegh-owe",
+    "pie-root-skel-be_obligated"
+   ],
    "play": [
     "pie-root-leyd-play",
     "pie-root-leyg-jump_around"
@@ -2303,6 +2338,10 @@
    ],
    "return/come back/return home": [
     "pie-root-nes-return_home"
+   ],
+   "roof": [
+    "pie-root-h1rebh-cover",
+    "pie-root-steg-cover"
    ],
    "sell/be for sale": [
     "pie-root-perh2-sell",
@@ -2350,6 +2389,9 @@
     "pie-root-steh2y-steal",
     "pie-root-teh2-steal"
    ],
+   "suckle": [
+    "pie-root-dheh1y-suckle"
+   ],
    "summer": [
     "pie-root-Hyeh1-throw",
     "pie-root-semh2-summer"
@@ -2359,6 +2401,9 @@
     "pie-root-h2wert-swear",
     "pie-root-h3emh3-grab",
     "pie-root-teg-swear"
+   ],
+   "sweat": [
+    "pie-root-sweyd-sweat"
    ],
    "take care of/care for": [
     "pie-root-bhergh-safeguard",
@@ -2441,6 +2486,12 @@
     "pie-root-wekj-wish",
     "pie-root-welh1-choose"
    ],
+   "wash": [
+    "pie-root-h1erH-wash",
+    "pie-root-lewh3-wash",
+    "pie-root-neygw-wash",
+    "pie-root-plew-fly"
+   ],
    "weep/cry": [
     "pie-root-HrewdH-weep",
     "pie-root-bhel-sound",
@@ -2458,6 +2509,16 @@
     "pie-root-up-cry_out",
     "pie-root-weh2gh-cry_out"
    ],
+   "wipe": [
+    "pie-root-h3mergj-wipe_off",
+    "pie-root-strewg-stroke",
+    "pie-root-swerbh-wipe_off",
+    "pie-root-tergj-wipe_off",
+    "pie-root-wers-wipe"
+   ],
+   "womb": [
+    "pie-root-gwelbh-womb"
+   ],
    "work": [
     "pie-root-h3ep-work",
     "pie-root-sterbh-exert",
@@ -2465,7 +2526,7 @@
    ]
   }
  },
- "families": 829,
+ "families": 835,
  "roots": {
   "pie-root-Hedh-say": [
    "leipzig-jakarta",
@@ -2809,6 +2870,7 @@
    "leipzig-jakarta"
   ],
   "pie-root-dheh1y-suckle": [
+   "conversation-core",
    "leipzig-jakarta",
    "swadesh-207"
   ],
@@ -2882,6 +2944,7 @@
    "tier2-secure"
   ],
   "pie-root-dhlegh-owe": [
+   "conversation-core",
    "core-verb"
   ],
   "pie-root-dhmeH-blow": [
@@ -3173,6 +3236,9 @@
   "pie-root-gwelH-throw": [
    "swadesh-207"
   ],
+  "pie-root-gwelbh-womb": [
+   "conversation-core"
+  ],
   "pie-root-gwelh1-hit": [
    "leipzig-jakarta",
    "swadesh-207"
@@ -3296,6 +3362,9 @@
   "pie-root-h1ekj-die": [
    "swadesh-207"
   ],
+  "pie-root-h1el-greyish_or_brownish": [
+   "conversation-core"
+  ],
   "pie-root-h1elh2-drive": [
    "core-verb"
   ],
@@ -3322,6 +3391,7 @@
    "swadesh-207"
   ],
   "pie-root-h1erH-wash": [
+   "conversation-core",
    "swadesh-207"
   ],
   "pie-root-h1ergjh-mount": [
@@ -3506,6 +3576,7 @@
    "swadesh-207"
   ],
   "pie-root-h2engjh-constrict": [
+   "conversation-core",
    "swadesh-207"
   ],
   "pie-root-h2enh1-breathe": [
@@ -3741,6 +3812,7 @@
    "conversation-core"
   ],
   "pie-root-h3mergj-wipe_off": [
+   "conversation-core",
    "swadesh-207"
   ],
   "pie-root-h3meygh-fog": [
@@ -3862,6 +3934,9 @@
   "pie-root-kjeh1s-teach": [
    "conversation-core"
   ],
+  "pie-root-kjeh2d-hatred": [
+   "conversation-core"
+  ],
   "pie-root-kjel-cover": [
    "conversation-core",
    "core-verb"
@@ -3885,6 +3960,7 @@
    "swadesh:body"
   ],
   "pie-root-kjerh2-head": [
+   "conversation-core",
    "leipzig-jakarta",
    "swadesh-207",
    "swadesh:body"
@@ -4147,6 +4223,7 @@
    "swadesh-207"
   ],
   "pie-root-lewh3-wash": [
+   "conversation-core",
    "swadesh-207"
   ],
   "pie-root-lewk-bright": [
@@ -4372,6 +4449,7 @@
    "swadesh-207"
   ],
   "pie-root-neygw-wash": [
+   "conversation-core",
    "swadesh-207"
   ],
   "pie-root-peHs-see": [
@@ -4552,6 +4630,7 @@
    "swadesh-207"
   ],
   "pie-root-plew-fly": [
+   "conversation-core",
    "leipzig-jakarta",
    "swadesh-207",
    "swadesh:body"
@@ -4782,6 +4861,9 @@
   ],
   "pie-root-skabh-scratch": [
    "swadesh-207"
+  ],
+  "pie-root-skel-be_obligated": [
+   "conversation-core"
   ],
   "pie-root-skel-bend": [
    "leipzig-jakarta",
@@ -5030,6 +5112,9 @@
   "pie-root-sterh1-lack": [
    "conversation-core"
   ],
+  "pie-root-sterh3-spread": [
+   "conversation-core"
+  ],
   "pie-root-stew-push": [
    "leipzig-jakarta",
    "swadesh-207"
@@ -5069,6 +5154,7 @@
    "swadesh-207"
   ],
   "pie-root-strewg-stroke": [
+   "conversation-core",
    "swadesh-207"
   ],
   "pie-root-streyg-stroke": [
@@ -5100,6 +5186,7 @@
    "tier2-secure"
   ],
   "pie-root-swerbh-wipe_off": [
+   "conversation-core",
    "swadesh-207"
   ],
   "pie-root-swerd-dirty": [
@@ -5110,6 +5197,7 @@
    "conversation-core"
   ],
   "pie-root-sweyd-sweat": [
+   "conversation-core",
    "core-verb"
   ],
   "pie-root-sweyd-throw": [
@@ -5178,6 +5266,7 @@
    "swadesh-207"
   ],
   "pie-root-tergj-wipe_off": [
+   "conversation-core",
    "swadesh-207"
   ],
   "pie-root-tergw-scare": [
@@ -5223,6 +5312,9 @@
   ],
   "pie-root-tkjey-cultivate": [
    "swadesh-207"
+  ],
+  "pie-root-tpelH-fortification": [
+   "conversation-core"
   ],
   "pie-root-treh1-turn": [
    "swadesh-207"
@@ -5399,6 +5491,7 @@
    "conversation-core"
   ],
   "pie-root-wers-wipe": [
+   "conversation-core",
    "swadesh-207"
   ],
   "pie-root-wert-turn": [

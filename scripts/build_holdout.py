@@ -135,7 +135,10 @@ CONCEPTS = {
         "lose", "show", "grow", "put/place/lay", "steal", "trust", "touch", "clean", "lick", "chew", "cough",
         "sick/ill/be ill/be sick/become sick", "silent/be silent", "soft", "pretty/beautiful", "tall/high",
         "share/divide", "exchange/trade", "take care of/care for", "happy/glad/be glad/joyful", "lift/raise/pick up",
-        "lip", "understand", "wake/wake up/awaken"],
+        "lip", "understand", "wake/wake up/awaken",
+        # the vocabulary push's requested everyday words (docs/audits/vocab-push.md), kept trainable
+        "roof", "bed", "beech", "owe", "suckle", "sweat", "wash", "wipe", "hornet", "fortress/stronghold",
+        "womb", "elk", "grief/hatred/care"],
     # the 2026-10-29 review pass is closed: adding concepts later changes the held set (a redraw, see the docstring)
 }
 # concept words that are nouns on the lists but also English verbs: matched only where the gloss gives them as nouns
