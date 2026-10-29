@@ -1,0 +1,348 @@
+{
+ "items": [
+  "kjlewos",
+  "hymn-1"
+ ],
+ "source_median_hz": {
+  "kjlewos": 91.2,
+  "hymn-1": 91.3
+ },
+ "voices": {
+  "bf_isabella": {
+   "range_hz": {
+    "p10": 174.8,
+    "p25": 183.3,
+    "median": 200.6,
+    "p75": 224.6,
+    "p90": 250.8
+   },
+   "trials": [
+    {
+     "shift": 0,
+     "median_hz": 95.7,
+     "per_item_median_hz": {
+      "kjlewos": 97.2,
+      "hymn-1": 94.3
+     },
+     "st_from_voice_median": -12.81,
+     "in_iqr": false,
+     "f0_r": [
+      0.966,
+      0.804
+     ],
+     "contrast_ratio": [
+      0.83,
+      0.63
+     ],
+     "per_src": [
+      0.429,
+      0.44
+     ],
+     "dur_ratio": [
+      1.0,
+      0.948
+     ]
+    },
+    {
+     "shift": 5,
+     "median_hz": 127.4,
+     "per_item_median_hz": {
+      "kjlewos": 129.0,
+      "hymn-1": 125.7
+     },
+     "st_from_voice_median": -7.86,
+     "in_iqr": false,
+     "f0_r": [
+      0.569,
+      0.975
+     ],
+     "contrast_ratio": [
+      0.61,
+      1.01
+     ],
+     "per_src": [
+      0.429,
+      0.4
+     ],
+     "dur_ratio": [
+      1.0,
+      0.987
+     ]
+    },
+    {
+     "shift": 7,
+     "median_hz": 136.7,
+     "per_item_median_hz": {
+      "kjlewos": 132.8,
+      "hymn-1": 140.8
+     },
+     "st_from_voice_median": -6.63,
+     "in_iqr": false,
+     "f0_r": [
+      0.926,
+      0.962
+     ],
+     "contrast_ratio": [
+      0.84,
+      0.92
+     ],
+     "per_src": [
+      0.429,
+      0.44
+     ],
+     "dur_ratio": [
+      1.0,
+      0.974
+     ]
+    },
+    {
+     "shift": 9,
+     "median_hz": 157.4,
+     "per_item_median_hz": {
+      "kjlewos": 157.2,
+      "hymn-1": 157.7
+     },
+     "st_from_voice_median": -4.2,
+     "in_iqr": false,
+     "f0_r": [
+      0.947,
+      0.878
+     ],
+     "contrast_ratio": [
+      0.78,
+      0.77
+     ],
+     "per_src": [
+      0.571,
+      0.44
+     ],
+     "dur_ratio": [
+      1.0,
+      0.948
+     ]
+    },
+    {
+     "shift": 11,
+     "median_hz": 177.0,
+     "per_item_median_hz": {
+      "kjlewos": 176.2,
+      "hymn-1": 177.8
+     },
+     "st_from_voice_median": -2.17,
+     "in_iqr": false,
+     "f0_r": [
+      0.942,
+      0.947
+     ],
+     "contrast_ratio": [
+      0.71,
+      0.83
+     ],
+     "per_src": [
+      0.857,
+      0.44
+     ],
+     "dur_ratio": [
+      1.0,
+      0.961
+     ]
+    },
+    {
+     "shift": 13,
+     "median_hz": 195.5,
+     "per_item_median_hz": {
+      "kjlewos": 192.4,
+      "hymn-1": 198.7
+     },
+     "st_from_voice_median": -0.44,
+     "in_iqr": true,
+     "f0_r": [
+      0.896,
+      0.862
+     ],
+     "contrast_ratio": [
+      0.76,
+      0.72
+     ],
+     "per_src": [
+      0.571,
+      0.32
+     ],
+     "dur_ratio": [
+      1.0,
+      0.948
+     ]
+    }
+   ],
+   "chosen": 13
+  },
+  "af_nicole": {
+   "range_hz": {
+    "p10": 138.1,
+    "p25": 144.2,
+    "median": 159.1,
+    "p75": 181.3,
+    "p90": 200.1
+   },
+   "trials": [
+    {
+     "shift": 0,
+     "median_hz": 94.2,
+     "per_item_median_hz": {
+      "kjlewos": 92.3,
+      "hymn-1": 96.0
+     },
+     "st_from_voice_median": -9.08,
+     "in_iqr": false,
+     "f0_r": [
+      0.911,
+      0.861
+     ],
+     "contrast_ratio": [
+      0.72,
+      0.88
+     ],
+     "per_src": [
+      0.571,
+      0.56
+     ],
+     "dur_ratio": [
+      1.0,
+      0.974
+     ]
+    },
+    {
+     "shift": 5,
+     "median_hz": 117.8,
+     "per_item_median_hz": {
+      "kjlewos": 110.2,
+      "hymn-1": 125.8
+     },
+     "st_from_voice_median": -5.21,
+     "in_iqr": false,
+     "f0_r": [
+      -0.858,
+      0.905
+     ],
+     "contrast_ratio": [
+      -0.76,
+      0.91
+     ],
+     "per_src": [
+      0.571,
+      0.52
+     ],
+     "dur_ratio": [
+      1.0,
+      0.974
+     ]
+    },
+    {
+     "shift": 7,
+     "median_hz": 140.8,
+     "per_item_median_hz": {
+      "kjlewos": 139.9,
+      "hymn-1": 141.8
+     },
+     "st_from_voice_median": -2.11,
+     "in_iqr": false,
+     "f0_r": [
+      0.917,
+      0.893
+     ],
+     "contrast_ratio": [
+      0.73,
+      0.77
+     ],
+     "per_src": [
+      0.286,
+      0.56
+     ],
+     "dur_ratio": [
+      1.0,
+      0.948
+     ]
+    },
+    {
+     "shift": 9,
+     "median_hz": 152.9,
+     "per_item_median_hz": {
+      "kjlewos": 145.7,
+      "hymn-1": 160.3
+     },
+     "st_from_voice_median": -0.69,
+     "in_iqr": true,
+     "f0_r": [
+      0.899,
+      0.891
+     ],
+     "contrast_ratio": [
+      0.76,
+      0.66
+     ],
+     "per_src": [
+      0.714,
+      0.52
+     ],
+     "dur_ratio": [
+      1.0,
+      0.922
+     ]
+    },
+    {
+     "shift": 11,
+     "median_hz": 174.6,
+     "per_item_median_hz": {
+      "kjlewos": 173.3,
+      "hymn-1": 176.0
+     },
+     "st_from_voice_median": 1.61,
+     "in_iqr": true,
+     "f0_r": [
+      0.904,
+      0.944
+     ],
+     "contrast_ratio": [
+      0.84,
+      0.99
+     ],
+     "per_src": [
+      0.714,
+      0.52
+     ],
+     "dur_ratio": [
+      1.0,
+      0.987
+     ]
+    },
+    {
+     "shift": 13,
+     "median_hz": 195.3,
+     "per_item_median_hz": {
+      "kjlewos": 194.2,
+      "hymn-1": 196.4
+     },
+     "st_from_voice_median": 3.55,
+     "in_iqr": false,
+     "f0_r": [
+      0.97,
+      0.905
+     ],
+     "contrast_ratio": [
+      1.03,
+      0.66
+     ],
+     "per_src": [
+      0.429,
+      0.56
+     ],
+     "dur_ratio": [
+      1.0,
+      0.935
+     ]
+    }
+   ],
+   "chosen": 9
+  }
+ }
+}
