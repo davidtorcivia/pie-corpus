@@ -386,3 +386,16 @@ advance, and on 2.4 voices the scaled murmur shape stops vibration altogether.
 **h after ElevenLabs.** The darker h (−18 dB) is right in the raw render, but ElevenLabs strips more of it:
 - two of the word-final túH drop to 0.01–0.15 (v4 kept them at 0.65–0.85);
 - h₁wésu drops to 0.06–0.10.
+
+### Speech-to-speech services: cost and terms (checked 2026-10-29)
+
+- **ElevenLabs:**
+  - Voice Changer costs $0.12/min on every plan; Pro ($99/mo) includes 825 min.
+  - Its Prohibited Use Policy §12 bars "Using our Services or Output to develop, train, fine-tune, or improve any AI model or service", "including Output in a dataset used for any of those purposes".
+  - So ElevenLabs audio can't be Kokoro training data. It is fine for listening tests and demos.
+- **Cartesia:**
+  - Voice changer costs 15 credits/s, about $2/hour on Startup ($49/mo for 1.25M credits). The free plan's 20K credits cover about 22 min.
+  - ToS §4.2(5) bars using Output "to research and develop products, models and services that compete with Cartesia". A PIE TTS model is arguably that, so ask Cartesia before using it.
+- **Fish Audio:** its API offers TTS, cloning and transcription only. There is no audio-in voice conversion, so it can't carry PIE phones.
+- **Resemble:** has speech-to-speech, but the public pricing page lists no rate; its licence for training use is unverified.
+- **Open-source VC:** Chatterbox VC (MIT), OpenVoice (MIT), RVC (MIT), Seed-VC (GPL-3.0 code). These place no restrictions on outputs and run on tr-desktop.
