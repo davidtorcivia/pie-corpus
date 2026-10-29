@@ -1,0 +1,42 @@
+// PIE phoneme table for eSpeak-NG 1.52.0 (docs/research/tts-options.md §4.1, docs/pronunciation.md "Speech").
+// Inherits Hindi (phonemetable pie hi): murmured stops b# d# g# J#, palatals c J, X Q ? h, syllabic r- l- m- n-.
+// Added here: Arabic pharyngeals, unconditional long i:, the colored-schwa vowels, and two level tones.
+// The mnemonic each converter IPA symbol maps to is in mapping.json; tests/test_speak.py round-trips all of them.
+
+phoneme H                       // ħ: h2 under the pharyngeal preset
+  import_phoneme ar/H
+endphoneme
+
+phoneme A                       // ʕ: h3 under the pharyngeal preset (written Aw for ʕʷ)
+  import_phoneme ar/A
+endphoneme
+
+phoneme i:                      // Hindi shortens unstressed i:; PIE length is phonemic and must survive
+  vwl lng starttype #i endtype #i
+  length 230
+  FMT(vowel/i_fnt)
+endphoneme
+
+phoneme 6                       // ɐ: vocalized h2 under vocalized="colored" (formants of pt-pt &)
+  vwl starttype #@ endtype #@
+  length 140
+  ipa ɐ
+  FMT(vowel/a#_3)
+endphoneme
+
+phoneme 8                       // ɵ: vocalized h3 under vocalized="colored" (formants of sv 8)
+  vwl starttype #u endtype #u
+  length 140
+  ipa ɵ
+  FMT(vowel/8_2)
+endphoneme
+
+phoneme 1                       // low level tone: every unaccented syllable (voice pie-tone)
+  stress
+  Tone(22, 20, envelope/p_level, NULL)
+endphoneme
+
+phoneme 5                       // high level tone: the PIE acute (voice pie-tone)
+  stress
+  Tone(55, 52, envelope/p_level, NULL)
+endphoneme

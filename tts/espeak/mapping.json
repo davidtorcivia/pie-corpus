@@ -1,0 +1,27 @@
+{
+  "_doc": "Converter IPA (pie.ipa.to_ipa, NFD) -> eSpeak-NG [[...]] mnemonics for the voices pie/pie and pie/pie-tone built by build.sh from ph_pie. Read by pie/speak.py; tests/test_speak.py round-trips every phone the converter can emit. phone_substitutions apply first (whole phones), then ʷʱ is reordered to ʱʷ, then codepoints map one by one. Anything not listed raises UnsupportedPhone, with the reason from unsupported when there is one.",
+  "phone_substitutions": {
+    "kʲ": "c",
+    "ɡʲ": "ɟ"
+  },
+  "_phone_substitutions": "dorsals=\"fronted\" writes the palatal stops as fronted velars; docs/pronunciation.md §3.1 calls it the same articulation, and eSpeak has no palatalized velar in the Hindi base",
+  "codepoints": {
+    "p": "p", "b": "b", "t": "t", "d": "d", "k": "k", "ɡ": "g", "c": "c", "ɟ": "J", "q": "q",
+    "s": "s", "z": "z", "h": "h", "ʔ": "?", "χ": "X", "ħ": "H", "ɣ": "Q", "ʕ": "A",
+    "m": "m", "n": "n", "r": "R", "l": "l", "j": "j", "w": "w",
+    "a": "a", "e": "e", "i": "i", "o": "o", "u": "u", "ə": "@", "ɐ": "6", "ɵ": "8",
+    "ʱ": "#", "ʷ": "w", "̩": "-", "ː": ":", "ˈ": "'",
+    " ": " ", "‖": "_:", "|": "_"
+  },
+  "_notes": {
+    "r": "base1 R, an alveolar trill (ipa r); the Hindi r is a tap [ɾ] in most positions",
+    "ʷ": "eSpeak has no labialized stops: kʷ is said k+w, ɡʷʱ is ɡʱ+w",
+    "ʱ": "Hindi b# d# g# J# are breathy-voiced (murmured) stops; eSpeak's --ipa writes them with ʰ",
+    "̩": "a resonant + ̩ maps as a whole through syllabic (r̩ -> r-, not R-); after anything else it is unsupported"
+  },
+  "syllabic": {"r": "r-", "l": "l-", "m": "m-", "n": "n-"},
+  "unsupported": {
+    "ɢ": "no eSpeak-NG 1.52.0 table has a voiced uvular stop (dorsals=\"uvular\" writes g as ɢ); use the default or fronted dorsals",
+    "̩": "a syllabic laryngeal (vocalized=\"syllabic\") has no eSpeak phoneme; use vocalized=\"schwa\" or \"colored\""
+  }
+}
