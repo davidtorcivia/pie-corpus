@@ -26,3 +26,6 @@ These are fixed centrally after wave 1, before wave 2 starts. Each item names th
 - **closed:indefinite_kwi with no gender** defaults to animate kʷim ("no one" where "nothing" was meant) (t032).
 - **The antecedent warning checks only gender and number**, so it misses same-gender ambiguity (wolf vs dog). Nothing checks reflexive swo- (t032).
 - **engine_version is "unknown"** on t024–t032 records: wave-2 planners must pass `--engine-version $(git rev-parse --short HEAD)` (silent-defaults audit).
+- **Adverbs such as "toward" take no object**, so an extra slot is needed (t033).
+- **The batch's "love" verb is glossed "protect~"**: check the gloss. There is no "sing" lexeme in the slice (t033).
+- **Planner brief: at most one repeated set-piece block per batch** (the "Who is this?" block appeared ×8 in t033).
