@@ -74,7 +74,7 @@ def shape(snd, ratio, st_of, rng):
 
 def main(rid, out_wav):
     r = record(rid); rng = random.Random(0)
-    sr, parts, report = None, [], []
+    sr, parts, report, t = None, [], [], 0.0
     lines = verse_lines(r["pie"])
     with tempfile.TemporaryDirectory() as tmp:
         for li, line in enumerate(lines):
@@ -94,10 +94,13 @@ def main(rid, out_wav):
                                                        + (FINAL_FALL * x if last else 0))
                 y = shape(snd, ratio, st_of, rng)
                 parts.append(y.values[0])
+                start, t = t, t + len(y.values[0]) / sr
                 gap = END if (last and li == len(lines) - 1) else LINE if last else CAESURA if caes else GAP
                 parts.append(np.zeros(int(gap * sr)))
-                report.append({"line": li + 1, "word": w, "weights": wwt, "espeak_s": round(snd.duration, 3),
+                report.append({"line": li + 1, "word": w, "ipa": to_ipa(w, tone=True), "weights": wwt,
+                               "start": round(start, 4), "end": round(t, 4), "espeak_s": round(snd.duration, 3),
                                "ratio": round(ratio, 2), "pause_after": gap})
+                t += gap
                 pos += k
     a = np.concatenate(parts); a = a / np.abs(a).max() * 0.89
     parselmouth.Sound(a, sampling_frequency=sr).save(out_wav, "WAV")
