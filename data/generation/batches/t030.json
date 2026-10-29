@@ -37,8 +37,11 @@
  "words_per_sentence": 16.25,
  "words_per_record": 16.25,
  "meter_fit": null,
+ "meter_near": null,
+ "meter_exact": null,
+ "meter_cadence": null,
  "formula_uses": 6,
- "warnings": 0,
+ "warnings": 12,
  "accent_unresolved": {
   "tokens": 0,
   "lexemes": 0,

@@ -1,1 +1,15 @@
-{"schema_version": 1, "batch": "t027", "sha256": {"records": "d45b4eb51f230f2a402fc1b4abe8278f9d0874c61c89fdbe7f6c9418ac67fbff", "plans": "742502ce5ec418d279d09ae0968654b1911ee5f4fdbe4a55a576b31136b989d8", "gate_report": "16902f7a416309156df030b363e81711a63fc638d11d799e0dcee3d626153b08"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t027.json", "docs/audits/tier3-t027-review.md", "docs/audits/packets/t027-verdicts.jsonl"], "rationale": "Calibrated review (docs/audits/tier3-t027-review.md): plants 4/5 blind; real 14/20 wrong before fixes (12 from imperatives without person defaulting to 3sg; person:2 set on all 51 such imperatives batch-wide), 0/20 after; gate PASS."}}
+{
+ "schema_version": 1,
+ "batch": "t027",
+ "sha256": {
+  "records": "888d0001a358b0aa344ee0d51eaa76a4a98266af28e96e365a7a754e95545f47",
+  "plans": "8d9fe520e9748eb3738deb1ee7bd0cff322e53c77d89a46a99760975bbdfb622",
+  "gate_report": "e24e457e9cf5b36afc38f6469802cad62b9bce766af5d3c502adfab033c4e1bc"
+ },
+ "review": {
+  "required": true,
+  "status": "pending",
+  "evidence": [],
+  "rationale": "Awaiting review."
+ }
+}

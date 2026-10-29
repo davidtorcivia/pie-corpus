@@ -1,1 +1,15 @@
-{"schema_version": 1, "batch": "t028", "sha256": {"records": "6afc40699fa7ce16e82b2f61c62101258b89204449a8a9c5ebb8fa14abc7e4a2", "plans": "1a8355d52743a19a3bc2522389e50cc0a00ec2e1fe57b4289f4d614db1c7d310", "gate_report": "c6046854a811f4503e534794dba97ceb2dcf62c3d7b3486d4de8ec51a64d4499"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t028.json", "docs/audits/tier3-t028-review.md", "docs/audits/packets/t028-verdicts.jsonl"], "rationale": "Calibrated review (docs/audits/tier3-t028-review.md): real 0/20 wrong (one meaning error under a plant, t028-0014, also fixed); gate PASS. Plant recall 5/5 not blind (packet diffed against corpus; 1 caught blind, 4 self-evident cell errors); approved on the real-item result; brief tightened (scripts/resolve_review_items.py)."}}
+{
+ "schema_version": 1,
+ "batch": "t028",
+ "sha256": {
+  "records": "466f9296b42676fd4abb2a77110f57302987d9a288dec935a12f5c394e6a4d24",
+  "plans": "1a8355d52743a19a3bc2522389e50cc0a00ec2e1fe57b4289f4d614db1c7d310",
+  "gate_report": "e7677bbdd4f93047789db25e0790a9f69014492b44210f104e630d61cb35ee6c"
+ },
+ "review": {
+  "required": true,
+  "status": "pending",
+  "evidence": [],
+  "rationale": "Awaiting review."
+ }
+}
