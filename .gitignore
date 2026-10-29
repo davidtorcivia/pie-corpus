@@ -49,6 +49,7 @@ data/research/8c/stageCS/review-*/leads-*.jsonl
 tts/espeak/build/
 tts/cache/
 tts/samples/*.wav
+tts/bakeoff/audio/
 .venv-kokoro/
 
 # D1 discovery caches (reproducible: scripts/discovery_d1.py extract/count)

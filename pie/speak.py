@@ -4,6 +4,7 @@
     speak("h₂ówis h₁éḱwōs-kʷe", backend="kokoro", out_wav="ovis.wav")              # Kokoro-82M, imposed F0 accent
     speak("h₂ówis h₁éḱwōs-kʷe", backend="kokoro-remote", out_wav="ovis.wav")       # Kokoro-FastAPI server
     speak("h₂ówis h₁éḱwōs-kʷe", backend="kokoro-erebus", out_wav="ovis.wav")       # pie-tts service (F0 accent)
+    speak("h₂éǵeti", backend="kokoro", profile="h2-velar", convention="plain", out_wav="ageti.wav")  # respelled
     speak_ipa("ʔés.ti", backend="espeak", out_wav="esti.wav")                        # IPA in (minimal pairs)
 
 Backends:
@@ -23,6 +24,10 @@ Backends:
 - "kokoro-erebus": the "kokoro" backend itself (pitch patch included) run as the pie-tts service on erebus
   (tts/erebus/, docs/pronunciation.md "Deployment on erebus"). The converter IPA is posted to its /speak_ipa;
   PIE_KOKORO_PITCH_URL, default http://localhost:8881 through `ssh -N -L 8881:localhost:8881 erebus`.
+
+A Profile (PROFILES) respells the converter IPA before any backend sees it, e.g. "h2-velar" says h₂ as [x]
+instead of [χ]. It is applied first, so the eSpeak round trip checks exactly what was sent. The bake-off of
+voices and respellings is docs/research/tts-bakeoff.md (scripts/tts_bakeoff.py).
 
 Every phone a Kokoro backend receives is checked against Kokoro's vocab (tts/kokoro/vocab.json); KModel would
 otherwise drop unknown symbols silently.
@@ -45,7 +50,7 @@ import wave
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from .ipa import HIGH, LONG, STRESS, SYLLABIC, to_ipa
+from .ipa import HIGH, LONG, STRESS, SYLLABIC, respell, to_ipa
 
 ROOT = Path(__file__).resolve().parent.parent
 ESPEAK_DIR = ROOT / "tts" / "espeak"
@@ -74,6 +79,15 @@ KOKORO_FILES = {
     "voices/em_alex.pt": "5eac53f767c3f31a081918ba531969aea850bed18fe56419b804d642c6973431",
     "voices/pm_alex.pt": "cf0ba8c573c2480fc54123683a35cf1e2ae130428e441eb91f9149bdb188a526",
     "voices/ff_siwis.pt": "8073bf2d2c4b9543a90f2f0fd2144de4ed157e2d4b79ddeb0d5123066171fbc9",
+    "voices/em_santa.pt": "aa8620cb96cec705823efca0d956a63e158e09ad41aca934d354b7f0778f63cb",
+    "voices/pf_dora.pt": "07e4ff987c5d5a8c3995efd15cc4f0db7c4c15e881b198d8ab7f67ecf51f5eb7",
+    "voices/pm_santa.pt": "d42103169c5c872abbafb9129133af7e942bb9d272c3cc3b95c203e7d7198c29",
+    "voices/if_sara.pt": "6c0b253b955fe32f1a1a86006aebe83d050ea95afd0e7be15182f087deedbf55",
+    "voices/af_heart.pt": "0ab5709b8ffab19bfd849cd11d98f75b60af7733253ad0d67b12382a102cb4ff",
+    "voices/af_nicole.pt": "c5561808bcf5250fe8c5f5de32caf2d94f27e57e95befdb098c5c85991d4c5da",
+    "voices/bf_emma.pt": "d0a423deabf4a52b4f49318c51742c54e21bb89bbbe9a12141e7758ddb5da701",
+    "voices/bf_isabella.pt": "cdd4c37003805104d1d08fb1e05855c8fb2c68de24ca6e71f264a30aaa59eefd",
+    "voices/bm_lewis.pt": "b5204750dcba01029d2ac9cec17aec3b20a6d64073c579d694a23cb40effbd0e",
 }
 KOKORO_CACHE = Path(os.environ.get("PIE_KOKORO_CACHE", ROOT / "tts" / "cache" / "hf"))
 KOKORO_VOCAB = json.loads((ROOT / "tts" / "kokoro" / "vocab.json").read_text("utf-8"))["vocab"]
@@ -107,7 +121,62 @@ class SpeechResult:
     engine_input: str            # exactly what the engine received
     out_wav: str
     round_trip: str | None = None          # espeak only: what espeak-ng --ipa read back
+    profile: str = "default"               # the respelling profile applied to the converter IPA
     notes: list[str] = field(default_factory=list)
+
+
+# ---------------------------------------------------------------- respelling profiles
+
+@dataclass(frozen=True)
+class Profile:
+    """A named respelling of converter IPA for an engine: whole phones replaced by pie.ipa.respell (one pass,
+    longest key first) before the backend's own front end. a + b merges two profiles, b winning on a shared
+    key."""
+    name: str
+    subst: tuple[tuple[str, str], ...] = ()
+    doc: str = ""
+
+    def apply(self, ipa: str) -> str:
+        return respell(ipa, dict(self.subst))
+
+    def __add__(self, other: "Profile") -> "Profile":
+        if not self.subst:
+            return other
+        if not other.subst:
+            return self
+        return Profile(f"{self.name}+{other.name}", tuple({**dict(self.subst), **dict(other.subst)}.items()),
+                       f"{self.doc}; {other.doc}")
+
+
+def _profile(name: str, subst: dict[str, str], doc: str) -> Profile:
+    return Profile(name, tuple(subst.items()), doc)
+
+
+# Respellings of the default convention's phones (each source phone has one origin there: χ is h₂, h is h₁
+# or H, ɣʷ is h₃, ʱ is the murmur of bʰ dʰ gʰ ǵʰ gʷʰ). The dorsal choices are conventions, not profiles
+# (pie.ipa DORSALS "fronted" / "plain").
+PROFILES = {p.name: p for p in (
+    Profile("default", (), "the converter IPA unchanged"),
+    _profile("h2-velar", {"χ": "x"}, "h₂ as velar [x]"),
+    _profile("h2-voiced-uvular", {"χ": "ʁ"}, "h₂ as voiced uvular [ʁ]"),
+    _profile("h2-h", {"χ": "h"}, "h₂ as [h]"),
+    _profile("h1-glottal-stop", {"h": "ʔ"}, "h₁ as [ʔ]"),
+    _profile("h3-unrounded-w", {"ɣʷ": "ɣw"}, "h₃ as [ɣ] + [w]"),
+    _profile("h3-voiced-uvular-w", {"ɣʷ": "ʁw"}, "h₃ as [ʁ] + [w]"),
+    _profile("murmur-aspirated", {"ʷʱ": "ʰʷ", "ʱ": "ʰ"}, "breathy stops written with ʰ (ɡʷʱ → ɡʰʷ)"),
+    _profile("murmur-plain", {"ʱ": ""}, "breathy stops as plain voiced"),
+    _profile("labiovelar-cluster", {"ʷ": "w"}, "kʷ ɡʷ ɡʷʱ as C + [w]"),
+    _profile("syllabic-schwa", {"r̩": "ər", "l̩": "əl", "m̩": "əm", "n̩": "ən"}, "syllabic resonants as [ə] + C"),
+)}
+
+
+def get_profile(profile: str | Profile | None) -> Profile:
+    if isinstance(profile, Profile):
+        return profile
+    try:
+        return PROFILES[profile or "default"]
+    except KeyError:
+        raise ValueError(f"unknown profile {profile!r}; known: {sorted(PROFILES)}") from None
 
 
 def _nfd(s: str) -> str:
@@ -557,25 +626,48 @@ def _speak_kokoro_erebus(ipa: str, out_wav: str, *, tone, voice: str | None, pit
 
 # ---------------------------------------------------------------- API
 
+def engine_input(ipa: str, *, backend: str = "espeak", voice: str | None = None, tone: bool | str = True,
+                 pitch: bool = True, profile: str | Profile | None = None) -> str:
+    """Exactly what the backend's engine would receive for this IPA, without synthesizing: eSpeak [[codes]],
+    Kokoro phonemes (accent-flagged phonemes carry an acute when the pitch patch would raise them). Raises UnsupportedPhone like the renderer. Two inputs that are equal give the same audio
+    (up to the engine's sampling noise)."""
+    ipa = get_profile(profile).apply(ipa)
+    if backend == "espeak":
+        return f"[[{espeak_codes(ipa, tone=tone is True)}]]"
+    if backend in ("kokoro", "kokoro-erebus", "kokoro-remote"):
+        use_pitch = backend != "kokoro-remote" and pitch and tone is True
+        chunks = kokoro_chunks(ipa if use_pitch else acute_to_stress(ipa))
+        return _nfc(" ‖ ".join("".join(c + (HIGH if h else "") for c, h in zip(ph, hi)) for ph, hi in chunks))
+    raise ValueError(f"unknown backend {backend!r}; known: {BACKENDS}")
+
+
 def speak_ipa(ipa: str, *, backend: str = "espeak", out_wav: str = "out.wav", tone: bool | str = True,
               voice: str | None = None, strict: bool = True, pitch: bool = True, rate: int = 130,
-              espeak_pitch: int | None = None, speed: float = 0.9) -> SpeechResult:
+              espeak_pitch: int | None = None, speed: float = 0.9,
+              profile: str | Profile | None = None) -> SpeechResult:
     """Render converter IPA (to_ipa output, with acutes for tone=True or ˈ for tone="stress").
 
     tone: True renders the acute as pitch (espeak: level tones; kokoro: imposed F0 when pitch=True);
     "stress"/False render ˈ marks only. voice: espeak voice (default pie/pie-tone or pie/pie) or Kokoro voice
-    (default hf_alpha). strict: espeak round-trip mismatch raises (True) or warns (False)."""
+    (default hf_alpha). strict: espeak round-trip mismatch raises (True)
+    or warns (False). profile: a PROFILES name or Profile, applied to the IPA first; result.ipa is the
+    respelled IPA."""
     if backend not in BACKENDS:
         raise ValueError(f"unknown backend {backend!r}; known: {BACKENDS}")
+    prof = get_profile(profile)
+    ipa = prof.apply(ipa)
     Path(out_wav).parent.mkdir(parents=True, exist_ok=True)
     if backend == "espeak":
-        return _speak_espeak(ipa, out_wav, tone=tone is True, strict=strict, rate=rate, pitch=espeak_pitch,
-                             voice=voice)
-    if backend == "kokoro":
-        return _speak_kokoro(ipa, out_wav, tone=tone, voice=voice, pitch=pitch, speed=speed)
-    if backend == "kokoro-erebus":
-        return _speak_kokoro_erebus(ipa, out_wav, tone=tone, voice=voice, pitch=pitch, speed=speed)
-    return _speak_kokoro_remote(ipa, out_wav, voice=voice)
+        r = _speak_espeak(ipa, out_wav, tone=tone is True, strict=strict, rate=rate, pitch=espeak_pitch,
+                          voice=voice)
+    elif backend == "kokoro":
+        r = _speak_kokoro(ipa, out_wav, tone=tone, voice=voice, pitch=pitch, speed=speed)
+    elif backend == "kokoro-erebus":
+        r = _speak_kokoro_erebus(ipa, out_wav, tone=tone, voice=voice, pitch=pitch, speed=speed)
+    else:
+        r = _speak_kokoro_remote(ipa, out_wav, voice=voice)
+    r.profile = prof.name
+    return r
 
 
 def speak(pie_text: str, backend: str = "espeak", out_wav: str = "out.wav", convention="default",

@@ -7,6 +7,7 @@ the remote server is only contacted with PIE_TEST_KOKORO_REMOTE=1.
 
 import json
 import os
+import re
 import subprocess
 import sys
 import unicodedata
@@ -26,6 +27,7 @@ needs_espeak = pytest.mark.skipif(S.espeak_status() is not None, reason=str(S.es
 # The presets plus every Convention option eSpeak supports; uvular and syllabic are expected to raise.
 SUPPORTED = {**I.CONVENTIONS,
              "fronted": I.Convention("fronted", dorsals="fronted"),
+             "plain": I.Convention("plain", dorsals="plain"),
              "colored": I.Convention("colored", vocalized="colored"),
              "voiceless": I.Convention("voiceless", laryngeals="voiceless"),
              "generic-glottal": I.Convention("generic-glottal", generic="ʔ")}
@@ -237,3 +239,99 @@ def test_cli_unsupported_phone_exit_1(tmp_path):
 def test_cli_bad_text_exit_2(tmp_path):
     p = _cli("-o", str(tmp_path / "x.wav"), "qqq%%")
     assert p.returncode == 2 and "error" in p.stderr
+
+
+# ---------------------------------------------------------------- respelling profiles (docs/research/tts-bakeoff.md)
+
+def test_respell_is_one_pass_longest_first():
+    assert I.respell("ɣʷós.tə", {"ɣʷ": "ʁw", "ʷ": "w"}) == "ʁwós.tə"
+    assert I.respell("ab", {"a": "b", "b": "c"}) == "bc"            # replacements are not re-scanned
+    assert I.respell("χá.ɟe.ti", {}) == "χá.ɟe.ti"
+    assert I.respell("wĺ̩.kʷos", {"l̩": "əl"}) == unicodedata.normalize("NFC", "wəĺ.kʷos")   # the acute stays on the syllable
+
+
+def test_plain_dorsals_convention():
+    plain = I.Convention("plain", dorsals="plain")
+    assert I.to_ipa("h₂éǵeti", convention=plain) == "χá.ɡe.ti"
+    assert I.to_ipa("ḱléwos ǵʰimé", convention=plain) == "klé.wos ɡʱi.mé"
+
+
+@pytest.mark.parametrize("name,word,want", [
+    ("h2-velar", "h₂éwsos", "xáw.sos"), ("h2-voiced-uvular", "h₂ówis", "ʁó.wis"), ("h2-h", "h₂ówis", "hó.wis"),
+    ("h1-glottal-stop", "h₁ésti", "ʔés.ti"), ("h3-unrounded-w", "h₃ésth₁", "ɣwós.tə"),
+    ("h3-voiced-uvular-w", "h₃ésth₁", "ʁwós.tə"), ("murmur-aspirated", "bʰréh₂tēr", "bʰráχ.teːr"),
+    ("murmur-aspirated", "gʷʰénti", "ɡʰʷén.ti"), ("murmur-plain", "dʰugh₂tḗr", "du.ɡə.téːr"),
+    ("labiovelar-cluster", "kʷetwóres", "kwet.wó.res"), ("syllabic-schwa", "ḱm̥tóm", "cəm.tóm"),
+])
+def test_profiles_respell_their_phone_only(name, word, want):
+    assert S.PROFILES[name].apply(I.to_ipa(word)) == unicodedata.normalize("NFC", want)
+
+
+def test_profile_merge_and_lookup():
+    both = S.PROFILES["h2-velar"] + S.PROFILES["h1-glottal-stop"]
+    assert both.apply(I.to_ipa("h₂ówis h₁ésti")) == "xó.wis ʔés.ti"
+    override = S.PROFILES["h2-velar"] + S.PROFILES["h2-h"]                  # the right-hand profile wins
+    assert override.apply("χó.wis") == "hó.wis"
+    assert S.get_profile(None) is S.PROFILES["default"]
+    with pytest.raises(ValueError):
+        S.get_profile("no-such-profile")
+
+
+def test_kokoro_engine_input_with_profiles():
+    """Pure: what Kokoro receives; the aspirated labiovelar keeps murmur before the w, as the default does."""
+    gwh = I.to_ipa("gʷʰénti")
+    assert S.engine_input(gwh, backend="kokoro") == "ɡʰwénti"
+    assert S.engine_input(gwh, backend="kokoro", profile="murmur-aspirated") == "ɡʰwénti"
+    assert S.engine_input(I.to_ipa("h₂éǵeti", convention=SUPPORTED["fronted"]), backend="kokoro",
+                          profile="h2-velar") == "xáɡʲeti"
+    with pytest.raises(S.UnsupportedPhone):
+        S.engine_input("ħó.wis", backend="kokoro", profile=S.Profile("bad", (("ħ", "ǂ"),)))
+
+
+@needs_espeak
+@pytest.mark.parametrize("name", sorted(S.PROFILES))
+def test_profiles_round_trip_or_raise_in_espeak(name, tmp_path):
+    """Every profile either renders through eSpeak with the strict round trip, or is refused up front
+    (x, ʁ and ʰ have no phoneme in the pie table)."""
+    words = ["h₂éwsos", "h₁ésti", "h₃ésth₁", "bʰréh₂tēr", "gʷʰénti", "kʷetwóres", "wĺ̥kʷos"]
+    ipa = " ".join(I.to_ipa(w) for w in words)
+    respelled = S.PROFILES[name].apply(ipa)
+    if any(c in unicodedata.normalize("NFD", respelled) for c in "xʁʰ"):
+        with pytest.raises(S.UnsupportedPhone):
+            S.speak_ipa(ipa, backend="espeak", out_wav=str(tmp_path / "x.wav"), profile=name)
+        return
+    r = S.speak_ipa(ipa, backend="espeak", out_wav=str(tmp_path / "x.wav"), profile=name)
+    assert r.profile == name and r.ipa == respelled
+    assert r.engine_input == S.engine_input(ipa, backend="espeak", profile=name)
+
+
+@pytest.mark.skipif(S.kokoro_status() is not None or not _cached("kokoro-v1_0.pth"),
+                    reason=str(S.kokoro_status() or "Kokoro weights not cached"))
+def test_kokoro_render_matches_engine_input(tmp_path):
+    ipa = I.to_ipa("h₂éǵeti", convention=SUPPORTED["plain"])
+    r = S.speak_ipa(ipa, backend="kokoro", out_wav=str(tmp_path / "k.wav"), profile="h2-velar")
+    assert r.engine_input == S.engine_input(ipa, backend="kokoro", profile="h2-velar").replace("́", "") \
+        == unicodedata.normalize("NFC", "xaɡeti")
+    with wave.open(r.out_wav) as w:
+        assert w.getnframes() > 0.3 * w.getframerate()
+
+
+def test_bakeoff_grid_ids_and_defaults():
+    """scripts/tts_bakeoff.py: ASCII clip-id parts, one target per word, and each target's first variant is the
+    converter default (the page falls back to it for the eSpeak reference)."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import tts_bakeoff as B
+    ids = [w[0] for w in B.WORDS] + [v["id"] for t in B.TARGETS for v in t["variants"]]
+    ids += [s["id"] for s in B.systems()]
+    assert all(re.fullmatch(r"[a-z0-9_-]+", i) for i in ids)
+    assert {w[3] for w in B.WORDS} <= set(B.TARGET)
+    for t in B.TARGETS:
+        first = t["variants"][0]
+        if t["id"] != "h2":
+            assert first["profile"] == "default" and first["convention"] is None
+    for v in B.KOKORO_VOICES:
+        assert f"voices/{v}.pt" in S.KOKORO_FILES
+    ipa, prof = B.variant_ipa("h₂éǵeti", "dorsal", B.TARGET["dorsal"]["variants"][2], "kokoro")
+    assert prof.apply(ipa) == "xá.ɡe.ti"
+    ipa, prof = B.variant_ipa("h₂éǵeti", "dorsal", B.TARGET["dorsal"]["variants"][2], "espeak")
+    assert prof.apply(ipa) == "χá.ɡe.ti"

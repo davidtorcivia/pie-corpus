@@ -38,6 +38,9 @@ DORSALS = {
     "fronted": {"k'": "kʲ", "g'": "ɡʲ", "g'h": "ɡʲʱ", "k": "k", "g": "ɡ", "gh": "ɡʱ"},
     # the uvular hypothesis: the written palatovelars are plain velars and the plain velars uvulars
     "uvular": {"k'": "k", "g'": "ɡ", "g'h": "ɡʱ", "k": "q", "g": "ɢ", "gh": "ɢʱ"},
+    # ḱ ǵ ǵʰ said as plain velars (a centum-style merger): a speech choice for engines that hear [c ɟ] as
+    # affricates (docs/research/tts-bakeoff.md), not a claim about PIE
+    "plain": {"k'": "k", "g'": "ɡ", "g'h": "ɡʱ", "k": "k", "g": "ɡ", "gh": "ɡʱ"},
 }
 LARYNGEAL_VALUES = {
     "fricative": {"h1": "h", "h2": "χ", "h3": "ɣʷ"},      # default
@@ -201,6 +204,18 @@ def to_ipa(text: str, *, convention: str | Convention = "default", tone: bool | 
             continue
         out += [_word(w, conv, tone)[1] for w in words(chunk)]
     return " ".join(out)
+
+
+def respell(ipa: str, subst: dict[str, str]) -> str:
+    """Converter IPA with whole phones replaced: one left-to-right pass over the NFD string, longest key first
+    (so ɣʷ → ʁw wins over ʷ → w), replacements never re-scanned. Dots, accents and breaks pass through.
+    pie.speak.Profile uses it for per-engine respellings."""
+    if not subst:
+        return ipa
+    keys = sorted((unicodedata.normalize("NFD", k) for k in subst), key=len, reverse=True)
+    table = {unicodedata.normalize("NFD", k): unicodedata.normalize("NFD", v) for k, v in subst.items()}
+    pat = re.compile("|".join(re.escape(k) for k in keys))
+    return unicodedata.normalize("NFC", pat.sub(lambda m: table[m.group(0)], unicodedata.normalize("NFD", ipa)))
 
 
 # X-SAMPA, for engines that take ASCII phoneme codes. Applied to the NFD of to_ipa's output.

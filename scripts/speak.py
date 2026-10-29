@@ -5,6 +5,7 @@
   uv run python -I scripts/speak.py --tone stress --play "ph₂tḗr"                # eSpeak, stress; afplay
   echo "h2o/wis" | uv run python -I scripts/speak.py --ascii -o ovis.wav          # stdin, pie_ascii
   uv run python -I scripts/speak.py --ipa -o esti.wav "ʔés.ti"                    # IPA in
+  uv run python -I scripts/speak.py --profile h1-glottal-stop -o esti.wav "h₁ésti"  # respelled (pie.speak.PROFILES)
   uv run python -I scripts/speak.py --backend kokoro-remote --voice hm_omega -o x.wav "deywós"
   UV_PROJECT_ENVIRONMENT=.venv-kokoro uv run --python 3.12 --group kokoro --no-default-groups \\
       python -I scripts/speak.py --backend kokoro -o x.wav "deywós"                # local Kokoro (Python 3.12)
@@ -22,7 +23,7 @@ import subprocess
 import sys
 
 from pie.ipa import CONVENTIONS, to_ipa
-from pie.speak import BACKENDS, SpeechError, speak_ipa
+from pie.speak import BACKENDS, PROFILES, SpeechError, speak_ipa
 
 TONES = {"tone": True, "stress": "stress", "none": False}
 
@@ -34,6 +35,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--backend", choices=BACKENDS, default="espeak")
     ap.add_argument("--voice", help="espeak voice (default pie/pie-tone or pie/pie) or Kokoro voice (default hf_alpha)")
     ap.add_argument("--convention", choices=sorted(CONVENTIONS), default="default")
+    ap.add_argument("--profile", choices=sorted(PROFILES), default="default",
+                    help="respell the IPA before the backend (e.g. h2-velar: h₂ as [x])")
     ap.add_argument("--tone", choices=TONES, default="tone", help="accent as pitch (tone), stress, or none")
     ap.add_argument("--ascii", action="store_true", help="input is pie_ascii")
     ap.add_argument("--ipa", action="store_true", help="input is already converter IPA")
@@ -59,7 +62,7 @@ def main(argv: list[str] | None = None) -> int:
         return 2
     try:
         r = speak_ipa(ipa, backend=a.backend, out_wav=a.out, tone=tone, voice=a.voice, strict=not a.no_strict,
-                      pitch=not a.no_pitch, rate=a.rate, speed=a.speed)
+                      pitch=not a.no_pitch, rate=a.rate, speed=a.speed, profile=a.profile)
     except SpeechError as e:
         print(f"error: {e}", file=sys.stderr)
         return 1
