@@ -247,6 +247,7 @@ def render(args) -> None:
         "systems": syss,
         "clips": clips,
     }
+    build_sprites(manifest)
     (OUT / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1) + "\n", "utf-8")
     summarize(manifest)
 
@@ -336,23 +337,64 @@ def coverage(args) -> None:
     print("\nlabel words per language:", sizes)
 
 
+SPRITE_GAP = 0.5             # seconds of silence between clips in a sprite
+
+
+def build_sprites(m: dict) -> None:
+    """One AAC sprite per system (audio/<system>.mp4): its rendered clips back to back, SPRITE_GAP apart, so the page
+    publishes 20 audio files instead of one per clip (an artifact version holds at most 511 files). Each clip gets
+    "sprite": {"file", "start", "duration"} in seconds; "audio" keeps the per-clip file name for local use."""
+    import numpy as np
+    for sy in m["systems"]:
+        clips = [c for c in m["clips"] if c["system"] == sy["id"] and c["audio"]]
+        parts, t, rate = [], 0.0, None
+        for c in clips:
+            with wave.open(str(AUDIO / c["audio"].replace(".mp4", ".wav"))) as w:
+                rate = rate or w.getframerate()
+                if w.getframerate() != rate:
+                    raise SystemExit(f"{c['id']}: sample rate {w.getframerate()} != {rate}")
+                a = np.frombuffer(w.readframes(w.getnframes()), "<i2")
+            gap = np.zeros(int(SPRITE_GAP * rate), dtype="<i2")
+            c["sprite"] = {"file": f"{sy['id']}.mp4", "start": round(t, 4), "duration": round(len(a) / rate, 4)}
+            parts += [a, gap]
+            t += (len(a) + len(gap)) / rate
+        if not clips:
+            continue
+        wav = AUDIO / "sprites" / f"{sy['id']}.wav"
+        wav.parent.mkdir(exist_ok=True)
+        with wave.open(str(wav), "wb") as w:
+            w.setnchannels(1), w.setsampwidth(2), w.setframerate(rate)
+            w.writeframes(np.concatenate(parts).tobytes())
+        to_mp4(wav, wav.with_suffix(".mp4"))
+
+
+def sprites(args) -> None:
+    p = OUT / "manifest.json"
+    m = json.loads(p.read_text("utf-8"))
+    build_sprites(m)
+    p.write_text(json.dumps(m, ensure_ascii=False, indent=1) + "\n", "utf-8")
+    print(f"{sum(1 for c in m['clips'] if c.get('sprite'))} clips in {len(list((AUDIO / 'sprites').glob('*.mp4')))} sprites")
+
+
 PAGE = OUT / "rating-page"
 PUBLISH_BATCH = 250          # files per Artifact publish (the tool takes at most 255)
 
 
 def page_files(args) -> None:
     """Write rating-page/files.txt (published path <- source path, one per line) and files-N.json (Artifact `files`
-    maps in batches): the page, manifests/kokoro.json, every rendered clip under audio/, and, when present,
-    tts/vc/manifest.json as manifests/vc.json with its clips under the VC manifest's own audio_base."""
+    maps in batches): the page, manifests/kokoro.json, one audio sprite per system under audio/, and, when present,
+    tts/vc/manifest.json as manifests/vc.json with its audio (sprites, or single clips) under its own audio_base."""
     m = json.loads((OUT / "manifest.json").read_text("utf-8"))
     pairs = [("manifests/kokoro.json", "tts/bakeoff/manifest.json")]
-    pairs += [(m["audio_base"] + c["audio"], f"tts/bakeoff/audio/{c['audio']}") for c in m["clips"] if c["audio"]]
+    pairs += [(m["audio_base"] + f, f"tts/bakeoff/audio/sprites/{f}")
+              for f in sorted({c["sprite"]["file"] for c in m["clips"] if c.get("sprite")})]
     vc = ROOT / "tts" / "vc" / "manifest.json"
     if vc.exists():
         v = json.loads(vc.read_text("utf-8"))
         pairs.append(("manifests/vc.json", "tts/vc/manifest.json"))
         src_dir = v.get("audio_dir", "tts/vc/audio")
-        pairs += [(v["audio_base"] + c["audio"], f"{src_dir}/{c['audio']}") for c in v["clips"] if c.get("audio")]
+        files = {c["sprite"]["file"] if c.get("sprite") else c["audio"] for c in v["clips"] if c.get("audio")}
+        pairs += [(v["audio_base"] + f, f"{src_dir}/{f}") for f in sorted(files)]
     missing = [src for _, src in pairs if not (ROOT / src).exists()]
     if missing:
         sys.exit(f"{len(missing)} source files missing, e.g. {missing[:3]}")
@@ -364,6 +406,8 @@ def page_files(args) -> None:
     for i in range(0, len(pairs), PUBLISH_BATCH):
         part = dict(pairs[i:i + PUBLISH_BATCH])
         (PAGE / f"files-{i // PUBLISH_BATCH + 1}.json").write_text(json.dumps(part, indent=1) + "\n", "utf-8")
+    if len(pairs) + 1 > 511:
+        sys.exit(f"{len(pairs) + 1} files: over the 511 files an artifact version may hold")
     print(f"{len(pairs)} files + index.html, {total / 1e6:.1f} MB, {-(-len(pairs) // PUBLISH_BATCH)} publish batches")
 
 
@@ -375,10 +419,11 @@ def main(argv=None) -> int:
     r.add_argument("--resume", action="store_true", help="keep clips already rendered")
     sub.add_parser("qc")
     sub.add_parser("page-files")
+    sub.add_parser("sprites")
     c = sub.add_parser("coverage")
     c.add_argument("--texts", required=True, help="directory with the NLTK udhr files named in UDHR_FILE")
     a = ap.parse_args(argv)
-    {"render": render, "qc": rerun_qc, "coverage": coverage, "page-files": page_files}[a.cmd](a)
+    {"render": render, "qc": rerun_qc, "coverage": coverage, "page-files": page_files, "sprites": sprites}[a.cmd](a)
     return 0
 
 

@@ -29,7 +29,9 @@ manifests with this schema and merges them on `words[].id` and `variants[].id`.
   "clips": [
     {"id": "h2ewsos__x__kokoro-hf_alpha",  // {word}__{variant}__{system}; ASCII [a-z0-9_-] only
      "word": "h2ewsos", "variant": "x", "system": "kokoro-hf_alpha",
-     "audio": "h2ewsos__x__kokoro-hf_alpha.mp4",   // file name under audio_base (AAC in .mp4)
+     "audio": "h2ewsos__x__kokoro-hf_alpha.mp4",   // per-clip file name (local; AAC in .mp4)
+     "sprite": {"file": "kokoro-hf_alpha.mp4", "start": 12.4, "duration": 0.83},  // what the page plays: a slice
+                                         // of one file per system under audio_base (seconds); optional, else "audio"
      "ipa": "xáw.sos",                   // the respelled converter IPA that was rendered
      "engine_input": "xáwsos",           // exactly what the engine received
      "same_as": null,                    // clip id with identical engine input for this system (no audio of its own)
@@ -48,6 +50,11 @@ kw `labialized cluster`; h3 `gw-labialized gw-cluster rw-cluster`; syllabic `syl
 `default`; h1 `h glottal-stop`.
 
 A rating is stored at `ratings/{clip id}` as `{score: 1-5, note: string}`.
+
+**Sprites.** An artifact version holds at most 511 files, so the page plays clips as slices of one AAC file per
+system (`scripts/tts_bakeoff.py sprites`: the clips back to back, 0.5 s apart; afconvert compensates the codec
+priming, measured lag 0 ms; the page still starts 50 ms early). A second source should do the same, or keep its
+single-clip count low enough that the total stays under 511.
 
 For a second source (the VC experiment): set `"source": "vc"` and `"audio_base": "vc/audio/"`, and give system ids a
 prefix of their own (e.g. `espeak-vc-knnvc-hf_alpha`, label `eSpeak→VC kNN-VC/hf_alpha`). Reuse the word and
@@ -71,8 +78,8 @@ variant ids above so clips land on the same rows. An extra field `"audio_dir"` (
   ɣw = ɣʷ, and əl/əm = l̩/m̩. For eSpeak, 5 rows collapse (fronted = palatal, because the table writes kʲ as c;
   kw = kʷ; ɣw = ɣʷ), and 8 are refused up front: [x], [ʁ] and [ʰ] are not in the pie table. The page then shows the
   word's default eSpeak clip on those rows, marked as such.
-- **Count:** 634 audio clips: Kokoro 32 per voice × 19 = 608, plus eSpeak 26. AAC 48 kb/s in .mp4 totals 7.1 MB
-  (wavs are kept locally for analysis, not published).
+- **Count:** 634 audio clips: Kokoro 32 per voice × 19 = 608, plus eSpeak 26. Published as 20 AAC sprites, one per
+  system (5.5 MB). The per-clip .mp4 and .wav files stay local.
 
 ## Coverage (objective, before listening)
 
@@ -161,5 +168,6 @@ bf_isabella 130, bm_lewis 130, am_santa 120 (grade D−, left out), bm_fable 100
 - Rating page: `tts/bakeoff/rating-page/index.html`. It fetches `manifests/kokoro.json` and, if published,
   `manifests/vc.json`, and stores ratings in the artifact `db` (in memory only, with a notice, when `db` is
   unavailable). `scripts/tts_bakeoff.py page-files` writes `rating-page/files.txt` (published path ← source) and
-  `files-N.json`, the Artifact `files` maps in batches of at most 250 (636 files, 3 publishes to the same URL).
-- Rebuild: `scripts/tts_bakeoff.py render`, `qc`, `coverage --texts <udhr dir>`, `page-files` (Kokoro env).
+  `files-1.json`, the Artifact `files` map: the manifest and 20 sprites, 6.1 MB with the page, one publish.
+- Rebuild: `scripts/tts_bakeoff.py render` (also builds the sprites), `qc`, `sprites`, `coverage --texts <udhr dir>`,
+  `page-files` (Kokoro env).

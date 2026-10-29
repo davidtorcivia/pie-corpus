@@ -52,11 +52,12 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .filters .lab { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
 .filters button { font: inherit; font-size: 0.78rem; background: none; border: 0; color: var(--accent); cursor: pointer; padding: 1px 4px; }
 
+.wrap > *, main, section.target { min-width: 0; }
 section.target { display: flex; flex-direction: column; gap: 8px; }
 section.target h2 { margin: 0; font: 600 1.15rem/1.3 var(--font-ui); display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
 section.target h2 .sym { font-family: var(--font-ipa); font-weight: 600; color: var(--accent); font-size: 1.3rem; }
 section.target h2 small { font-weight: 400; color: var(--muted); font-size: 0.85rem; }
-.scroller { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+.scroller { max-width: 100%; overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
 table { border-collapse: separate; border-spacing: 0; font-variant-numeric: tabular-nums; }
 th, td { border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); vertical-align: top; padding: 6px 7px; }
 thead th { position: sticky; top: 0; background: var(--panel); font-size: 0.74rem; font-weight: 600; text-align: left;
@@ -101,7 +102,7 @@ button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid 
 <div class="wrap">
   <header>
     <h1>Which voice says <span class="pie">h₂éǵeti</span> right?</h1>
-    <p class="lede">Each row is one PIE word with one hard sound spelled one way. Each column is a voice. Play a clip, give it 1–5 for how close it sounds to the target, and add a note if something is off. The tinted eSpeak column is the segmentally exact reference.</p>
+    <p class="lede">Each row is one PIE word with one hard sound spelled one way. Each column is a voice. Play a clip, give it 1–5 for how close it sounds to the target, and add a note if something is off. The tinted eSpeak column is the segmentally exact reference. Under each play button is exactly what the engine received; an acute marks the phoneme whose pitch is raised for the accent.</p>
     <div class="status" id="status"><span class="pill">Loading clips…</span></div>
   </header>
   <div class="bar">
@@ -158,26 +159,61 @@ function merge(m) {
   for (const w of m.words || []) if (!state.words.find(x => x.id === w.id)) state.words.push(w);
   for (const s of m.systems || []) if (!state.systems.find(x => x.id === s.id)) state.systems.push({ ...s, source: m.source });
   for (const c of m.clips || []) {
-    const clip = { ...c, src: c.audio ? base + c.audio : null };
+    const clip = { ...c, src: c.audio ? base + (c.sprite ? c.sprite.file : c.audio) : null };
     state.clips.set(c.id, clip);
     state.byCell.set(`${c.word}|${c.variant}|${c.system}`, clip);
   }
 }
 
-// ---- audio
-const audio = new Audio();
-let playingBtn = null;
-function play(clip, btn) {
-  if (playingBtn === btn && !audio.paused) { audio.pause(); setPlaying(null); return; }
-  audio.src = clip.src; audio.currentTime = 0;
-  audio.play().then(() => setPlaying(btn)).catch(() => setPlaying(null));
+// ---- audio: each clip is a slice of its system's sprite (clip.sprite = {file, start, duration}, seconds)
+const LEAD = 0.05, TAIL = 0.1;                 // start a little early and end a little late (codec priming)
+let ctx = null, current = null, playingBtn = null;
+const buffers = new Map();
+function buffer(src) {
+  if (!buffers.has(src)) buffers.set(src, fetch(src).then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+    .then(b => ctx.decodeAudioData(b)).catch(e => { buffers.delete(src); throw e; }));
+  return buffers.get(src);
+}
+const fallbackAudio = new Audio();
+let fallbackTimer = null;
+function stop() {
+  if (current) { try { current.stop(); } catch (e) {} current = null; }
+  fallbackAudio.pause(); clearTimeout(fallbackTimer);
+  setPlaying(null);
+}
+async function play(clip, btn) {
+  const again = playingBtn === btn && btn;
+  stop();
+  if (again) return;
+  const sp = clip.sprite || { start: 0, duration: null };
+  const from = Math.max(0, sp.start - LEAD), len = sp.duration == null ? undefined : sp.duration + LEAD + TAIL;
+  setPlaying(btn);
+  try {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) throw new Error("no Web Audio");
+    ctx = ctx || new AC();
+    if (ctx.state === "suspended") await ctx.resume();
+    const buf = await buffer(clip.src);
+    if (playingBtn !== btn) return;                    // another clip was started meanwhile
+    const node = ctx.createBufferSource();
+    node.buffer = buf; node.connect(ctx.destination);
+    node.onended = () => { if (current === node) { current = null; setPlaying(null); } };
+    current = node;
+    node.start(0, from, len);
+  } catch (e) {
+    fallbackAudio.src = clip.src;
+    fallbackAudio.currentTime = from;
+    fallbackAudio.play().then(() => {
+      if (len) fallbackTimer = setTimeout(stop, len * 1000);
+    }).catch(() => { setPlaying(null); showWarn("This browser could not play the clip."); });
+  }
 }
 function setPlaying(btn) {
   if (playingBtn) { playingBtn.classList.remove("on"); playingBtn.innerHTML = PLAY; playingBtn.setAttribute("aria-label", playingBtn.dataset.label); }
   playingBtn = btn;
   if (btn) { btn.classList.add("on"); btn.innerHTML = STOP; btn.setAttribute("aria-label", "Stop"); }
 }
-audio.addEventListener("ended", () => setPlaying(null));
+fallbackAudio.addEventListener("ended", () => setPlaying(null));
 
 // ---- ratings
 async function save(clipId, patch) {
@@ -218,14 +254,23 @@ function scoreRow(clip) {
   return box;
 }
 
-function clipCell(clip, { fallback = false } = {}) {
+function playButton(clip) {
   const btn = el("button", { type: "button", class: "play", html: PLAY, "aria-label": `Play ${clip.id}`, "data-label": `Play ${clip.id}`,
     onclick: () => play(clip, btn) });
+  return btn;
+}
+
+function clipCell(clip, { fallback = false } = {}) {
+  const btn = playButton(clip);
+  if (fallback) {                 // the default-spelling reference: rated on its own row, so play only here
+    return el("div", { class: "cell" },
+      el("div", { class: "top" }, btn, el("span", { class: "inp", text: clip.engine_input || "" })),
+      el("span", { class: "fallback", text: "eSpeak cannot say this spelling. This is its default-spelling clip; rate it on that row." }));
+  }
   const note = el("input", { class: "note", id: `note-${clip.id}`, placeholder: "note", value: state.ratings[clip.id]?.note || "",
     "aria-label": "Note", onchange: (e) => save(clip.id, { note: e.target.value.trim() }) });
   const cell = el("div", { class: "cell" },
     el("div", { class: "top" }, btn, el("span", { class: "inp", text: clip.engine_input || "", title: clip.ipa ? `IPA ${clip.ipa}` : "" })),
-    fallback ? el("span", { class: "fallback", text: "default spelling: eSpeak cannot say this one" }) : null,
     scoreRow(clip), note,
     clip.qc && !clip.qc.ok ? el("span", { class: "flag", text: "auto-check: " + clip.qc.flags.join("; ") }) : null);
   return cell;
@@ -300,7 +345,7 @@ async function connect() {
   try { db = window.claude ? await window.claude.use("db") : null; } catch (e) { db = null; }
   if (!db) { state.mode = "memory"; updateStatus(); return; }
   state.db = db; state.mode = "db"; updateStatus();
-  db.collection("ratings").onSnapshot(snap => {
+  db.collection("ratings").limit(1000).onSnapshot(snap => {
     for (const d of snap.docs) {
       const v = d.data() || {};
       const mine = state.ratings[d.id];
