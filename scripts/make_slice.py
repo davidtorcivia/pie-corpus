@@ -40,6 +40,12 @@ CORE_NOUNS = ["pie-lex-h2owis", "pie-lex-h1ngwnis", "pie-lex-peh2wr", "pie-lex-h
 CONVERSATION = ["pie-lex-kwoteros", "pie-lex-priHos", "pie-lex-keh2ilos", "pie-lex-h1wesus", "pie-lex-gwemt",
                 "pie-lex-deh3t", "pie-lex-gwrneHti", "pie-lex-deh3toxr", "pie-lex-kjlewos", "pie-lex-menos",
                 "pie-lex-h1sntyos", "pie-lex-gjenh1os-2"]
+# Tier 3b (--tier3b): inherited words the planner brief and the t3b-001 review point to in place of a coinage
+# (archaic first): mówdos 'joy' and swéh₂dos 'pleasure' (not géh₂dʰos), néwos 'new' (not h₂énteros 'other' beside
+# 'answer'). mówdos is NIL single-branch (Ved. móda-; P9 keeps those out of Tier 3 slices); Tier 3b offers it
+# (lead, 2026-10-29), as the inherited word beats a coinage. The review's h₁éwHt 'help' is NOT offered: its root
+# family pie-root-h1ewH-help is held out for the benchmark (eval_root), and werdʰom has no resolved accent.
+TIER3B_INHERITED = ["pie-lex-mowdos", "pie-lex-sweh2dos", "pie-lex-newos"]
 ADVERB_POS = ("adv", "prep", "postp")
 NIL_ADMIT = {"pie-lex-bhagos", "pie-lex-bhngjhulos", "pie-lex-bhrtos", "pie-lex-gwowsth2os", "pie-lex-kjh3tos",
              "pie-lex-medtos", "pie-lex-priHtos", "pie-lex-h2rgjipyos", "pie-lex-kjolHtos", "pie-lex-rotos"}
@@ -266,6 +272,10 @@ def main() -> int:
                and lx.meaning(i)[1] in TRUSTED_GLOSS]
     chosen += [i for i in CORE_NOUNS + CONVERSATION if i in pool and i not in chosen]
     chosen += [i for i in pool if args.tier3b and lx.coined(i) == "neologism" and i not in chosen]
+    if args.tier3b:      # the inherited alternatives to coinages: usable, unblocked and accented; P9's NIL hold waived
+        chosen += [i for i in TIER3B_INHERITED if i not in chosen and lx.specs.get(i, {}).get("usable")
+                   and i not in lx.blocked and planner_accent_ok(lx, i)
+                   and not eval_root(lx.entries[i].get("root_id"))]
     # the formula menu's words, so planners can use the inherited phrases
     menu_path = ROOT / "data" / "generation" / "formula_menu.json"
     menu = json.loads(menu_path.read_text("utf-8")) if menu_path.exists() else []

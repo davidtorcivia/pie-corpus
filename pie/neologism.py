@@ -316,11 +316,38 @@ def speaker_errors(plan: dict) -> list[str]:
     return errs
 
 
+def _sentences(plan: dict) -> list[list[dict]]:
+    """The plan's clauses grouped into sentences: clause 0 and every `break` start one (pie.realize)."""
+    out: list[list[dict]] = []
+    for ci, cl in enumerate(plan.get("clauses", [])):
+        if not ci or cl.get("break"):
+            out.append([])
+        out[-1].append(cl)
+    return out
+
+
+def sentence_english_errors(plan: dict) -> list[str]:
+    """Tier 3b plan rule (brief §3): every sentence-initial clause (clause 0 and every `break`) carries that
+    sentence's English, so the chat export (pie.export_chat) pairs each PIE sentence with its English exactly."""
+    return [f"clause {ci}: a Tier 3b sentence needs its own english on its first clause"
+            for ci, cl in enumerate(plan.get("clauses", []))
+            if (not ci or cl.get("break")) and not (isinstance(cl.get("english"), str) and cl["english"].strip())]
+
+
+def coined_sentences(plan: dict, lx) -> tuple[int, int]:
+    """(sentences with a neologism slot, sentences) of a plan: the coinage-density measure of brief §1 (target
+    <= 25% of a batch's sentences, gated in scripts/realize_plans.py)."""
+    sents = _sentences(plan)
+    coined = sum(any(lx.coined(s.get("lex_id")) == "neologism" for cl in sent for s in cl.get("slots", []))
+                 for sent in sents)
+    return coined, len(sents)
+
+
 def tier3b_plan_errors(plan: dict, lx) -> list[str]:
-    """The Tier 3b checks beyond check_plan: the speaker rule, and no compound slot with a neologism member (that
-    would be a new, unlogged coinage, and a neologism compound inside a compound is a nested compound the engine
-    does not build). Every coinage is a row of neologisms.jsonl (PLAN.md)."""
-    errs = speaker_errors(plan)
+    """The Tier 3b checks beyond check_plan: the speaker rule, the per-sentence English, and no compound slot with
+    a neologism member (that would be a new, unlogged coinage, and a neologism compound inside a compound is a
+    nested compound the engine does not build). Every coinage is a row of neologisms.jsonl (PLAN.md)."""
+    errs = speaker_errors(plan) + sentence_english_errors(plan)
     for ci, cl in enumerate(plan.get("clauses", [])):
         for si, s in enumerate(cl.get("slots", [])):
             c = s.get("compound") if s.get("lex_id") == "compound" and isinstance(s.get("compound"), dict) else {}

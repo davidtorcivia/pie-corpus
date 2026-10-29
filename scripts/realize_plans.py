@@ -23,11 +23,13 @@ from pie.meter import measure, record_meter, summary as meter_numbers
 from pie.realize import Lexicon, check_plan, plan_warnings, realize, token_cell
 from pie.translit import to_ascii
 from pie.compound import member_ids
-from pie.neologism import index_neologisms, tier3b_plan_errors, with_neologisms
+from pie.neologism import coined_sentences, index_neologisms, tier3b_plan_errors, with_neologisms
 from pie.validate import all_exact, index_plan_compounds, index_project, load_index, validate_text
 
 ROOT = Path(__file__).resolve().parent.parent
 CAP_EXEMPT = {"pie-lex-h1esti"}          # "to be"
+# Tier 3b: at most a quarter of the PIE sentences may contain a neologism (t3b-001 review: the pilot had 48/95)
+COINED_SENTENCE_MAX = 0.25
 
 
 def _meter_summary(records: list[dict]) -> dict | None:
@@ -179,6 +181,10 @@ def main() -> int:
         neo = [t["lex_id"] for r in records for t in r["tokens"] if t.get("coined") == "neologism"]
         summary["neologism_tokens"] = {"tokens": len(neo), "share": round(len(neo) / max(1, summary["tokens"]), 3),
                                        "lexemes": len(set(neo))}
+        # and how many sentences contain one (brief §1: most contain none; gated at COINED_SENTENCE_MAX)
+        cs = [coined_sentences(r["generator"]["plan"], lx) for r in records]
+        c, t = sum(x for x, _ in cs), sum(y for _, y in cs)
+        summary["coined_sentences"] = {"sentences": t, "coined": c, "share": round(c / max(1, t), 3)}
     # accent: unresolved (missing information: the lexeme's headword has no accent; data/morph/accent_unresolved.json)
     unres = [(r["id"], t["lex_id"]) for r in records for t in r["tokens"] if lx.accent_status(t["lex_id"]) == "unresolved"]
     summary["accent_unresolved"] = {"tokens": len(unres), "lexemes": len({x for _, x in unres}),
@@ -192,6 +198,9 @@ def main() -> int:
              "roots_per_sentence>=0.35": summary["roots_per_sentence"] >= 0.35,
              "duplicates<=2%": (dup_within + dup_across) <= 0.02 * n,
              "all_exact": stats["exact_pass"] == stats["realized"]}
+    if tier3b:
+        gates[f"coined_sentence_share<={COINED_SENTENCE_MAX:.2f}"] = \
+            summary["coined_sentences"]["share"] <= COINED_SENTENCE_MAX
     if summary["meter_exact"] is not None:   # only batches with verse lines in a metered genre
         gates[f"meter_exact>={METER_EXACT_MIN:.2f}"] = summary["meter_exact"]["share"] >= METER_EXACT_MIN
     summary["gates"] = gates

@@ -47,20 +47,21 @@ def V(lex, person=None, num=None, tense="PRS", mood="IND"):
 def _plan():
     """'Do you write questions? I see a machine, a word-maker.' (user, then model)."""
     return {"english": "Do you write questions? I see the word-maker's machine.", "clauses": [
-        {"speaker": "user", "question": True, "slots": [{"lex_id": QUESTION, "role": "OBJ", "num": "PL"},
+        {"speaker": "user", "question": True, "english": "Do you write questions?", "slots": [{"lex_id": QUESTION, "role": "OBJ", "num": "PL"},
                                                          V(WRITE, 2, "SG")]},
-        {"speaker": "model", "break": True, "slots": [{"lex_id": MACHINE, "role": "OBJ"},
+        {"speaker": "model", "break": True, "english": "I see the word-maker's machine.", "slots": [{"lex_id": MACHINE, "role": "OBJ"},
                                                        {"lex_id": WORDMAKER, "role": "POSS", "head": 0},
                                                        V(SEE, 1, "SG")]}]}
 
 
 def test_rows_meet_the_policy(base):
-    """PLAN schema; 40-60 coinages of the three models; each derived by the engine (the stored pie and inflection
+    """PLAN schema; 39-60 coinages of the three models (the floor is this test's, not PLAN's: 40 at the pilot, 39
+    since géh₂dʰos 'joy' was dropped for the inherited mówdos, t3b-001 review); each derived by the engine (the stored pie and inflection
     are what pie.neologism derives); attested roots (kind root) and productive suffixes (kind affix) only; no
     held-out root family; ids never in lexicon.jsonl."""
     from pie.export import eval_root
     rows = _rows()
-    assert 40 <= len(rows) <= 60
+    assert 39 <= len(rows) <= 60
     assert {r["model"] for r in rows} == {"compound", "calque", "derivative"}
     for r in rows:
         assert {"neo_id", "pie", "english", "derivation", "model", "rationale", "inflection"} <= set(r), r["neo_id"]
@@ -139,6 +140,34 @@ def test_speaker_rule():
     assert "exactly two speakers" in speaker_errors(p)[0]       # the chat export needs a user and a model
 
 
+def test_sentence_english_rule():
+    """Every sentence-initial clause (clause 0 and every break) carries that sentence's English (brief §3), so the
+    chat export pairs each PIE sentence with its English; a non-initial clause needs none."""
+    from pie.neologism import sentence_english_errors
+    assert sentence_english_errors(_plan()) == []
+    p = _plan()
+    del p["clauses"][1]["english"]
+    assert "clause 1" in sentence_english_errors(p)[0]
+    p = _plan()
+    p["clauses"][0]["english"] = " "
+    assert "clause 0" in sentence_english_errors(p)[0]
+    p = _plan()
+    p["clauses"].insert(1, {"speaker": "user", "slots": [V(SPEAK, 2, "SG")]})     # same sentence: no english needed
+    assert sentence_english_errors(p) == []
+
+
+def test_coined_sentences(lx):
+    """The share of PIE sentences with a neologism (brief §1: target <= 25%, a Tier 3b gate)."""
+    from pie.neologism import coined_sentences
+    assert coined_sentences(_plan(), lx) == (2, 2)
+    p = _plan()
+    p["clauses"].append({"speaker": "model", "english": "I speak.", "slots": [V(SPEAK, 1, "SG")]})
+    p["clauses"][-1]["break"] = False
+    assert coined_sentences(p, lx) == (2, 2)
+    p["clauses"][-1]["break"] = True
+    assert coined_sentences(p, lx) == (2, 3)
+
+
 def test_no_compound_on_a_neologism(lx):
     """A compound slot with a neologism member is an unlogged coinage: rejected in Tier 3b, and the slice never
     marks a neologism compound_second."""
@@ -150,7 +179,7 @@ def test_no_compound_on_a_neologism(lx):
     assert tier3b_plan_errors(_plan(), lx) == []
 
 
-def _run_realize(tmp_path, monkeypatch, lx, batch, plans, *flags):
+def _run_realize(tmp_path, monkeypatch, lx, batch, plans, *flags, coined_max=1.0):
     from pie.validate import FormIndex
     rp = runpy.run_path(str(ROOT / "scripts/realize_plans.py"))
     main = rp["main"]
@@ -160,6 +189,9 @@ def _run_realize(tmp_path, monkeypatch, lx, batch, plans, *flags):
     # only the scholarly verbs are pre-indexed; realize_plans adds the neologisms itself (index_neologisms)
     ix = FormIndex([lx.entries[SEE], lx.entries[SPEAK]], [lx.specs[SEE], lx.specs[SPEAK]], closed)
     monkeypatch.setitem(main.__globals__, "load_index", lambda: ix)
+    # the one-record probe is all coined sentences; the coinage-density gate is a batch measure, tested below
+    if coined_max is not None:
+        monkeypatch.setitem(main.__globals__, "COINED_SENTENCE_MAX", coined_max)
     f = tmp_path / f"{batch}.input.jsonl"
     f.write_text("".join(json.dumps({"plan_id": i, "genre": "dialogue", "plan": p}, ensure_ascii=False) + "\n"
                          for i, p in enumerate(plans)), "utf-8")
@@ -181,10 +213,14 @@ def test_slice_to_export_production_path(lx, tmp_path, monkeypatch):
     assert {r["neo_id"] for r in _rows()} <= set(b) and all(b[r["neo_id"]]["coined"] == "neologism" for r in _rows())
     assert "coined" not in b.get(SEE, {})
     assert not any(b[r["neo_id"]].get("compound_second") for r in _rows())
+    # and the inherited alternatives the brief points to (mówdos for joy, h₁éwHt for help), never in a Tier 3 slice
+    assert set(ms["TIER3B_INHERITED"]) <= set(b) and "pie-lex-mowdos" not in {it["lex_id"] for it in plain}
     # 2. a plan from the slice, through scripts/realize_plans.py as a Tier 3b batch
     assert _run_realize(tmp_path, monkeypatch, lx, "t3b-probe", [_plan()], "--tier3b") == 0
     batch = json.loads((tmp_path / "data/generation/batches/t3b-probe.json").read_text())
     assert batch["realized"] == 1 and batch["exact_pass"] == 1 and batch["neologism_tokens"]["tokens"] == 4
+    assert batch["coined_sentences"] == {"sentences": 2, "coined": 2, "share": 1.0}
+    assert batch["gates"]["coined_sentence_share<=1.00"] is True
     rec = json.loads((tmp_path / "corpus/tier3b/t3b-probe.jsonl").read_text().splitlines()[0])
     assert rec["tier"] == 3 and rec["neologism"] is True
     assert rec["pie"] == "preḱnóns pinéḱsi? werdʰokʷr̥trés kʷértrom spéḱyoh₂."
@@ -199,6 +235,22 @@ def test_slice_to_export_production_path(lx, tmp_path, monkeypatch):
     assert tasks and all(t["coined"] == "neologism" and t["neologism"] is True for t in tasks)
     plain_rec = {**rec, "tokens": [rec["tokens"][-1]]}
     assert all(t["neologism"] is True and "coined" not in t for t in record_tasks(plain_rec))
+
+
+def test_coined_sentence_gate(lx, tmp_path, monkeypatch):
+    """With the shipped cap (25%), a batch whose sentences are all coined fails the gate; a plain sentence added
+    six times over brings it to 2/8 and passes."""
+    assert _run_realize(tmp_path, monkeypatch, lx, "t3b-dense", [_plan()], "--tier3b", coined_max=None) == 1
+    g = json.loads((tmp_path / "data/generation/batches/t3b-dense.json").read_text())["gates"]
+    assert g["coined_sentence_share<=0.25"] is False
+    p = _plan()
+    for k in range(6):
+        p["clauses"].append({"speaker": "model" if k % 2 == 0 else "user", "break": True, "english": "I speak.",
+                             "slots": [V(SPEAK, 1, "SG")]})
+    _run_realize(tmp_path, monkeypatch, lx, "t3b-light", [p], "--tier3b", coined_max=None)
+    b = json.loads((tmp_path / "data/generation/batches/t3b-light.json").read_text())
+    assert b["coined_sentences"] == {"sentences": 8, "coined": 2, "share": 0.25}
+    assert b["gates"]["coined_sentence_share<=0.25"] is True
 
 
 def test_tier3_and_tier2_reject_them(lx, base, tmp_path, monkeypatch):
