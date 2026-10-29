@@ -25,3 +25,4 @@ These are fixed centrally after wave 1, before wave 2 starts. Each item names th
 - **meter_fit is lenient.** Its ±1 window around 8 and 11 accepts any line of 7–12 syllables. t032's 0.963 means "lines are 7–12 syllables"; only 29% have exactly 8 or 11, and cadence isn't checked. Report the exact-count share as well, and don't describe meter_fit as "scans" (t032).
 - **closed:indefinite_kwi with no gender** defaults to animate kʷim ("no one" where "nothing" was meant) (t032).
 - **The antecedent warning checks only gender and number**, so it misses same-gender ambiguity (wolf vs dog). Nothing checks reflexive swo- (t032).
+- **engine_version is "unknown"** on t024–t032 records: wave-2 planners must pass `--engine-version $(git rev-parse --short HEAD)` (silent-defaults audit).
