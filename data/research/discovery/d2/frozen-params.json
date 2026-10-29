@@ -1,0 +1,36 @@
+{
+ "round": "D2",
+ "chosen": {
+  "min_O": 2,
+  "min_OE": 2.0,
+  "pct": 95
+ },
+ "rule": "max tune recall s.t. false rate <= 0.20; ties: lower false rate, higher pct, higher O/E, higher min O",
+ "tune_recall": 0.3939393939393939,
+ "false_rate": 0.1384802333117304,
+ "threshold_log2": 2.2777999913781537,
+ "window": 4,
+ "min_branches": 2,
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19
+ ]
+}
