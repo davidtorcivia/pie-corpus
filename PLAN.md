@@ -63,6 +63,7 @@ Also keep separate tables:
 - `data/lexicon/lexicon.jsonl` — `root_id, root, meaning, root_type (verbal/nominal), aspect (for verbal roots: LIV class), derivatives[], reflexes{lang: [forms]}, source (wiktionary|liv|mallory-adams|…), confidence`.
 - `data/formulas/formulas.jsonl` — Watkins/West formulas: `formula_id, pie, english, cognate_attestations[], citation, slot_pattern` (for example `*X-gʷʰen- h₃egʷʰi-`).
 - `data/lexicon/neologisms.jsonl` — Tier 3b coinages only: `neo_id, pie, english, derivation (roots + suffixes, each by root_id), model (compound | calque | derivative), rationale`. Never merged into `lexicon.jsonl`.
+- **Project reconstructions (David, 2026-10-28: "We can invent words that reconstruct well as long as we denote them as such").** A lexeme absent from Wiktionary/LIV may be added when it is projected from cognates in ≥ 2 branches through the regular correspondences (sound-law checker pass, each reflex cited). It lives in `data/lexicon/project_reconstructions.jsonl` with `source: "project"`, is usable in Tiers 3 and 3b, and every token and export task built from it carries `"coined": "project"`. It is never used to validate Tier 1 or Tier 2. Modern concepts with no cognate set stay Tier 3b neologisms (above).
 - `data/themes/themes.jsonl` — West's motifs (sky-father, dawn goddess, dragon-slayer, horse sacrifice, twin horsemen, the poet's craft as weaving/carpentry, …), each with chapter refs and canonical vocabulary.
 
 ### Directory layout
