@@ -362,3 +362,27 @@ Phone timings are identical to v3.
 ElevenLabs keeps every h and every χ, along with the accent. The eSpeak h values are 0.08–0.71, mostly about 0.2.
 The patched h now sits above that, so `--h-level` is the setting to tune by ear if it sounds hissy.
 VTL v4 → ElevenLabs is the first chain to pass all three tests (accent, χ, h) with no pitch correction.
+
+### VTL v5: male JD3 and female W02 (VTL 2.4), syllabic r̩/l̩, darker h, batch + QC (2026-10-29)
+
+| file | step | accent | decl/line | voiced nuclei |
+|---|---|---|---|---|
+| JD3 | 0.097 | +3.8 | −3.6 | 68/68 |
+| JD3 → ElevenLabs | 0.211 | +3.9 | −1.7 | 68/68 |
+| W02 | 0.098 | +2.6 | −0.2 | 65/68 |
+| W02 → ElevenLabs | 0.170 | +4.2 | −2.9 | 68/68 |
+
+**Swallowed syllables (David heard them in the second half).** The vowel right after a breathy stop (ʱ) is weak.
+Measured on the 9 post-ʱ nuclei against the other 59:
+- JD3 and W02 are 9–10 dB down; the eSpeak reference is 0 dB.
+- W02 keeps only 72 ms of voicing per vowel (others 110).
+- ElevenLabs restores only part of it (−5.9 to −8.4 dB).
+
+Lines 4–7 hold 6 of the 9: ń̥dʰgʷʰiteh₂, bʰéh₂os, h₃kʷbʰós, dh₃dʰí, ń̥dʰgʷʰitom, h₁áydʰi.
+Worst are the i of ń̥dʰgʷʰiteh₂ (−16 to −18 dB) and, in W02, the a of bʰéh₂os and the o of h₃kʷbʰós (no voicing).
+The likely cause is the 70 ms murmur spill. On a short vowel it stacks with the glottal lead before χ/t and the 2.4 glottis
+advance, and on 2.4 voices the scaled murmur shape stops vibration altogether.
+
+**h after ElevenLabs.** The darker h (−18 dB) is right in the raw render, but ElevenLabs strips more of it:
+- two of the word-final túH drop to 0.01–0.15 (v4 kept them at 0.65–0.85);
+- h₁wésu drops to 0.06–0.10.
