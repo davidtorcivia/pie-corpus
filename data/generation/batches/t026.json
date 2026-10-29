@@ -5,9 +5,9 @@
  "accent_representation_tokens": 5,
  "accent_defect_tokens": 4,
  "reject_rate": 0.0,
- "distinct_roots": 135,
- "roots_per_sentence": 3.375,
- "distinct_lexemes": 228,
+ "distinct_roots": 136,
+ "roots_per_sentence": 3.4,
+ "distinct_lexemes": 229,
  "max_lexeme_uses": 7,
  "most_used": [
   [
@@ -38,8 +38,32 @@
  "words_per_record": 29.7,
  "meter_fit": {
   "lines": 159,
-  "fit": 159,
-  "share": 1.0
+  "fit": 157,
+  "share": 0.987
+ },
+ "meter_near": {
+  "lines": 159,
+  "near": 157,
+  "share": 0.987
+ },
+ "meter_exact": {
+  "lines": 159,
+  "exact": 55,
+  "share": 0.346
+ },
+ "meter_cadence": {
+  "8": {
+   "lines": 38,
+   "cadence": 2,
+   "pattern": "LHLX",
+   "share": 0.053
+  },
+  "11": {
+   "lines": 17,
+   "cadence": 2,
+   "pattern": "HLHX",
+   "share": 0.118
+  }
  },
  "formula_uses": 20,
  "warnings": 0,
@@ -54,7 +78,8 @@
   "theme_core_uses<=20": true,
   "roots_per_sentence>=0.35": true,
   "duplicates<=2%": true,
-  "all_exact": true
+  "all_exact": true,
+  "meter_exact>=0.90": false
  },
- "gate": "PASS"
+ "gate": "FAIL"
 }
