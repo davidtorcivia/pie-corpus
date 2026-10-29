@@ -11,7 +11,7 @@ which gave 28 items: 20 real, 5 planted and 3 Tier 1.
 1. **Blind back-translation.** I translated 6 items seeing only `pie`, before I looked at any English:
    `docs/audits/packets/t3b-002-blind-translations.jsonl`.
    - All 6 agree in sense with the plan English.
-   - My blind notes flagged two forms that later proved to be plants: h₁ési (157a7221) and stóygʰoh₁. The items with stóygʰoh₁ were not in the blind six.
+   - One plant was caught in the blind pass itself: h₁ési (157a7221), flagged as a person error. The other plants were not among the blind six.
    - Two senses I didn't recognise blind:
      - stewd- 'become cold' (LIV);
      - séngʷm̥ 'fell' (sengʷ- 'sink, fall down').
@@ -31,7 +31,7 @@ which gave 28 items: 20 real, 5 planted and 3 Tier 1.
    - Real items: 0 wrong and 5 minor out of 20.
 4. **Second pass.** I read all 40 records in full, sentence by sentence, with speaker, PIE, per-sentence English and gloss.
    - This pass checked character (brief §5), archaic-first, the English-to-PIE match, and whether each turn answers the one before.
-   - The 5 records seen only in planted form are 0003, 0011, 0014, 0022 and 0039. Their verdicts come only from this pass and are **uncalibrated**.
+   - The 5 records seen only in planted form are 0011, 0014, 0022, 0035 and 0039. Their verdicts come only from this pass and are **uncalibrated**.
 
 ## 1. Counts
 
@@ -41,6 +41,8 @@ which gave 28 items: 20 real, 5 planted and 3 Tier 1.
 | calibrated packet, real items (20), after fixes | 0 | 2 | 18 |
 | all 40 records (second pass), before fixes | 0 | 9 | 31 |
 | all 40 records, after fixes (re-realized) | 0 | 6 | 34 |
+
+Following the t3b-001 precedent, English-only mismatches and character slips are counted as minor. By the strict reviewer-brief definition ("PIE and English that say different things"), 0030 "ram" for wr̥h₁ḗn 'lamb' would count as wrong. It is fixed, and it is not a packet item, so the 0/20 figure is unaffected.
 
 Grammar was clean everywhere outside the plants:
 - agreement and case were correct;
@@ -132,6 +134,7 @@ Weak spots (none fixed, since none is an error):
 - **No oblique dual in `closed:demonstrative_so`.** Only NOM/ACC.DU tóh₁ exist, so a DU IO silently takes the flagged `du->pl` fallback (0014 tóybʰos). Adding DAT/ABL/INS.DU *tóybʰyoh₁* (Ved. *tā́bhyām*), GEN/LOC.DU *tóyh₁ows* would fix it.
 - **`words_per_sentence` equals `words_per_record`** (19.15) in the batch report. With 801 tokens and 261 sentences, the true figure is about 3.1 words per sentence, so the metric seems to divide by records.
 - **Two "give" aorists.** déh₃t (deh₃-) and déh₃ut (LIV-uncertain deh₃w-) both enter chat data. The brief could name déh₃t as the default and point to dédeh₃ti or a subjunctive when the cap bites.
+- **Brief §3 "Welcome" idiom vs §5 "no home".** The welcome formula (VOC gʰóstis, "Come in, guest!", v4's "be dear to us") puts the model in a host's house whenever the model is the one welcoming. That caused 0021, and every v2 planner will reproduce it. Restrict the idiom to the user's mouth, or reword it for the model (e.g. advice to a user who is hosting).
 - **Caps on everyday words.** The 6-use cap on everyday words (h₂éwsōs, déh₃t, dṓm, gʷémt, h₁wésus) already blocks the natural fix in two places in a 40-dialogue batch.
 - **drḗm** (AOR.1SG of drem-, from *drém-m̥) is an engine convention, not an error in this batch.
 
