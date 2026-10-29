@@ -204,8 +204,12 @@ def confirm(entry: dict, family: str | None, derived: str | None, rec: dict | No
                     ev.setdefault((x["lang"], x["form"]), x)
         if kept:
             return {"gloss": ", ".join(kept), "rule": "head", "evidence": _evidence(ev.values())}
-    # consensus: a content word in >= 2 branches, every counted reflex of the lexeme's part of speech
+    # consensus: a content word of the primary sense (the first sense of the first gloss) of reflexes in >= 2
+    # branches, each of the lexeme's part of speech. A word deep in a long gloss list is not a shared meaning:
+    # Gk νέμω 'deal out, ...; enjoy' and Latv. ņemt 'take; ... enjoy' do not make németi 'to enjoy'
     pos_refl = [x for x in refl if x["pos"] in _POS_OK[family]]
+    pos_refl = [{**x, "glosses": [_senses(x["glosses"][0])[0]]} for x in pos_refl
+                if x["glosses"] and _senses(x["glosses"][0])]
     by_word: dict[str, set[str]] = {}
     for x in pos_refl:
         for w in set().union(*(_words(g) for g in x["glosses"])):
@@ -235,8 +239,8 @@ def _same_segment(a: str, b: str, refl: list[dict]) -> bool:
 
 
 def _clean(s: str) -> str:
-    s = re.sub(r"^(a|an|the)\s+", "", s.strip().rstrip("."))
-    return s
+    s = re.sub(r"^(a|an|the)\s+", "", s.strip().rstrip("."), flags=re.I)
+    return s[:1].lower() + s[1:]
 
 
 def _evidence(xs) -> list[dict]:

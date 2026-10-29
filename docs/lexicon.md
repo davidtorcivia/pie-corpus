@@ -64,6 +64,17 @@ source, source_ref  wiktionary; dump label, page title, etymology number
 - **Paradigms are filtered at the source.** Any table whose template args contain `( Ø ∅ ~ /` is dropped. Wiktionary's module mangles the dual `-h₁` on those stems (`é₁`, `Ø₁`, `s₁`). Tables with any non-canonical cell are dropped too. The surviving tables are **one Lua module's view** (`source: wiktionary-module`). They are a Phase 2 cross-check, not the authority: the golden paradigms come from Fortson/Ringe.
 - **Placeholders are rejected, not guessed:** V́, T, Ø, schwa notation, "or"/comma alternative lists, queries with `?`, e/o slashes. Rejects are in `rejects.jsonl`.
 
+## Reflex-confirmed glosses
+
+Most derivatives have no dictionary gloss, only the approximate derived one (root meaning + suffix function, `pie/glosses.py`), which slices offer only with `--derived`. A lexeme gets a real gloss when its own reflexes' dictionary entries agree in at least two branches. Evidence: `data/lexicon/reflex_glosses.jsonl` (`scripts/build_reflex_glosses.py`, from the daughter kaikki dumps in `raw/daughters`; committed because the dumps are not). Rule (`pie.glosses.confirm`), tried in order:
+
+- **head:** a sense of the derived gloss whose content words recur in the reflex glosses of ≥ 2 branches. The gloss is that sense, so it never says more than the derived gloss did (*bʰéndʰeti* 'to bind': PGmc *\*bindaną*, Skt *bandhati*).
+- **consensus:** a content word of the *primary* sense (the first sense of the first gloss) of reflexes in ≥ 2 branches, all of the lexeme's part of speech; the gloss is the shortest such primary sense (*lókus* 'lake': Alb. *liqen*, PCelt. *\*loku*). A word deep in a gloss list does not count (Gk νέμω 'deal out, …, enjoy' and Latv. *ņemt* 'take; …, enjoy' do not make *németi* 'to enjoy'). Two unrelated words tied for most branches give no gloss.
+
+A reflex counts only if its entry is linked to the lexeme: its etymology cites the lexeme's form (accents and hyphens ignored), or it is the only entry under that form. Branches come from one table, `pie.glosses.BRANCHES` (also make_slice's). `scripts/build_glosses.py` writes `data/lexicon/confirmed_glosses.jsonl` (with the evidence) after `classify_lexicon.py`; `Lexicon.load` gives those lexemes `meaning_source: "reflex-confirmed"`, so make_slice offers them by default and marks each slice item `gloss_source: "reflex-confirmed"`, for reviews to sample apart. A dictionary gloss or override always wins.
+
+2026-10-29: 123 lexemes (72 head, 51 consensus). Of the 2,300 usable derived-gloss-only lexemes left, 1,340 have linked reflexes in one branch only, 151 in none, 553 have no reflex record, and 256 have linked reflexes in ≥ 2 branches that do not agree under the rule.
+
 ## Known gaps
 
 - **Verbal roots are 730**, short of the ≥800 target. Only 116 of those are explicitly marked by Wiktionary. The other 614 come from the gloss heuristic (cross-checked by the derivative signal, which disagrees on 104 roots; the list is in `build_report.json`). Closing the gap needs LIV² or a harvest of PIE etymologies from the daughter-language dumps.

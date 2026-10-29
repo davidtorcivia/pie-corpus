@@ -14,6 +14,7 @@ import sys
 from pathlib import Path
 
 from pie.compound import CompoundError, resolve as resolve_compound
+from pie.glosses import branch
 from pie.phon import has_accent, parse
 from pie.realize import Lexicon, accent_manifest
 
@@ -47,18 +48,10 @@ NIL_GLOSS_HELD = {"pie-lex-h2gjtos", "pie-lex-priHnos", "pie-lex-h2ewgos", "pie-
                   "pie-lex-h2egjtoxr", "pie-lex-segjhtoxr"}
 # dictionary glosses and the hand-checked ones (overrides, supplement: docs/audits/lexicon-gaps-*.md; project
 # reconstructions, glossed from their handbook cognates: docs/lexicon-project-reconstructions.md)
-TRUSTED_GLOSS = {"wiktionary", "override", "supplement", "project"}
+TRUSTED_GLOSS = {"wiktionary", "override", "supplement", "project", "reflex-confirmed"}
 # derived glosses are kept only for transparent, productive suffixes (b002 review R1);
 # other derived-gloss lexemes need reflexes in at least two branches
 TRANSPARENT_SUFFIXES = {"-tōr", "-tḗr", "-éyeti", "-trom", "-tlom", "-tis", "-tus", "-néh₂ti", "-néwti", "-eti"}
-BRANCHES = [("Indo-Iranian", r"Sanskrit|Vedic|Avestan|Persian|Pali|Prakrit|Indo-Aryan|Iranian|Hindi|Ossetian|"
-             r"Pashto|Khotanese|Sogdian|Bactrian|Kurdish|Parthian|Bengali|Marathi|Punjabi|Nuristani"),
-            ("Greek", r"Greek|Hellenic|Mycenaean"), ("Italic", r"Latin|Italic|Oscan|Umbrian|Faliscan"),
-            ("Celtic", r"Irish|Welsh|Celtic|Gaulish|Breton|Cornish|Celtiberian|Gaelic|Manx"),
-            ("Germanic", r"Germanic|Gothic|Norse|English|German|Saxon|Frisian|Dutch|Icelandic|Swedish|Danish"),
-            ("Balto-Slavic", r"Slavic|Slavonic|Lithuanian|Latvian|Prussian|Russian|Polish|Czech|Baltic|Serbo"),
-            ("Armenian", r"Armenian"), ("Albanian", r"Albanian"),
-            ("Anatolian", r"Hittite|Luwian|Lycian|Palaic|Lydian|Anatolian"), ("Tocharian", r"Tocharian")]
 VALENCY = json.loads((Path(__file__).resolve().parent.parent / "data/generation/verb_valency.json").read_text("utf-8"))
 
 
@@ -67,7 +60,7 @@ def branches(reflexes: dict) -> set[str]:
     for lang, xs in reflexes.items():
         if not any(not (x.get("borrowed") or x.get("analogical")) for x in xs):
             continue
-        out.add(next((b for b, pat in BRANCHES if re.search(pat, lang)), lang))
+        out.add(branch(lang))         # one branch table (pie.glosses.BRANCHES)
     return out
 
 
@@ -299,6 +292,8 @@ def main() -> int:
             item["valency"] = VALENCY[i]["valency"]
         if src == "derived":
             item["gloss_approximate"] = True   # root meaning + suffix function, not a dictionary gloss
+        elif src == "reflex-confirmed":
+            item["gloss_source"] = src         # the daughters' agreed gloss (pie.glosses.confirm): reviewed apart
         if lx.coined(i):
             item["coined"] = lx.coined(i)      # a project reconstruction (PLAN.md): Tier 3/3b only, flagged
         if r["family"] == "noun":

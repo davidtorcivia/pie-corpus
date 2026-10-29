@@ -113,3 +113,49 @@ def test_unsourced_accents_stay_unresolved(lx, pool):
     for lid in ("pie-lex-dhlghos", "pie-lex-polHwos", "pie-lex-h1eyHwos"):
         assert lx.meaning(lid)[1] == "override" and lid not in pool
         assert lx.accent_status(lid) == "unresolved"
+
+
+# 3. reflex-confirmed glosses (docs/lexicon.md) ----------------------------------------------------------------------
+
+def _confirmed():
+    return [json.loads(x) for x in (ROOT / "data/lexicon/confirmed_glosses.jsonl").read_text("utf-8").splitlines()]
+
+
+def test_confirmed_glosses_reach_the_default_pool(lx, pool):
+    assert lx.meaning("pie-lex-lokus") == ("lake", "reflex-confirmed")
+    assert "pie-lex-lokus" in pool
+    assert lx.meaning("pie-lex-bhendheti") == ("to bind", "reflex-confirmed")
+
+
+def test_confirmed_glosses_rest_on_two_branches_of_the_lexemes_own_reflexes(lx):
+    from pie.glosses import branch
+    for c in _confirmed():
+        e = lx.entries[c["id"]]
+        assert e.get("meaning_source") == "reflex-confirmed", c["id"]
+        assert len({branch(x["lang"]) for x in c["evidence"]}) >= 2, c["id"]
+        langs = set(e.get("reflexes", {}))
+        assert {x["lang"] for x in c["evidence"]} <= langs, c["id"]
+
+
+def test_secondary_senses_do_not_make_a_consensus(lx):
+    ids = {c["id"] for c in _confirmed()}
+    for i in ("pie-lex-nemeti", "pie-lex-bhewdhtis", "pie-lex-koseh2"):   # 'enjoy', 'information', 'hair-net'
+        assert i not in ids and lx.meaning(i)[1] == "derived"
+
+
+def test_dictionary_gloss_wins_over_confirmation():
+    lex = {json.loads(x)["id"]: json.loads(x) for x in (ROOT / "data/lexicon/lexicon.jsonl").read_text("utf-8").splitlines()}
+    assert all(not lex[c["id"]]["meaning"] for c in _confirmed())
+
+
+def test_slice_items_flag_confirmed_glosses(tmp_path, lx):
+    import subprocess, sys
+    name = "zz-test-confirmed"
+    out = ROOT / "data/generation/slices" / f"{name}.json"
+    try:
+        subprocess.run([sys.executable, "-I", str(ROOT / "scripts/make_slice.py"), name, "--size", "20",
+                        "--keywords", "lake"], check=True, capture_output=True, cwd=ROOT)
+        items = {it["lex_id"]: it for it in json.loads(out.read_text("utf-8"))["lexemes"]}
+        assert items["pie-lex-lokus"]["gloss_source"] == "reflex-confirmed"
+    finally:
+        out.unlink(missing_ok=True)
