@@ -329,3 +329,22 @@ voicing gaps, soft-limited to ±3.5 st, pitch floor 75 Hz): **A = PSOLA is the o
 second; C = Seed-VC re-synthesis of A in the ElevenLabs voice "terrible" (also HNR 9.6 dB and weaker h₂/h₁).
 Current best chain: cadence.py → OpenVoice em_alex → ElevenLabs STS (manual) → repitch.py psola (RANGE 1.6).
 Next: VocalTractLab with the other agent's IPA compiler (check χ and line pauses).
+
+### VTL v3: native prosody on the cadence timeline (2026-10-29)
+
+The other agent's compiler (`pie_vtl.py --timeline`) now renders on the cadence timeline (27.21 s, 6 pauses) and writes
+phone timings. Pitch comes from VTL's F0 tier: accent bumps (`--accent-range 4.6`, about 0.74× delivered),
+declination 1.5 → −2.5 st, and a final fall. There is no post-correction. All measures below use the exact phone
+intervals from `dawn-hymn-vtl.json`. Accent = mean nucleus F0, accented minus unaccented. Declination = slope fitted
+on unaccented nuclei per line.
+
+| file | F0 sd | step | HNR | r vs eSpeak | accent | decl/line | voiced nuclei |
+|---|---|---|---|---|---|---|---|
+| eSpeak cadence | 2.6 | 0.073 | 13.3 | 1.00 | +1.2 | +1.4 | 63/68 |
+| A (OpenVoice→11L→repitch) | 2.6 | 0.192 | 12.3 | 0.80 | +2.4 | −0.9 | 66/68 |
+| VTL v3 | 2.5 | 0.097 | 14.8 | 0.69 | +3.8 | −3.5 | 68/68 |
+| VTL v3 → ElevenLabs | 3.1 | 0.225 | 14.5 | 0.47 | +3.2 | −0.5 | 68/68 |
+
+χ through ElevenLabs now survives every time. Its 2–8 kHz share is 0.63–0.91, against 0.01–0.05 lost in v2.
+Glottal h/H is the gap. VTL gives 0.00–0.03 at wiHrṓs, túH and the H of h₂yuHénih₂, where eSpeak gives 0.18–0.71.
+Word-initial h₁ of h₁áydʰi alone survives (0.24).
