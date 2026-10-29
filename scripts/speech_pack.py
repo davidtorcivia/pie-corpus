@@ -188,9 +188,11 @@ def main(argv=None) -> int:
                 except S.SpeechError as e:
                     c["error"] = str(e)
             clips.append(c)
-            print(f"{system:24} {p['phrase']:14} {'ERROR ' + c['error'][:60] if c.get('error') else 'ok'}")
         if batch:
             render_piper(batch, a.piper_venv, a.piper_voice)
+        for c in clips:
+            if c["system"] == system:
+                print(f"{system:24} {c['phrase']:14} {'ERROR ' + c['error'][:60] if c.get('error') else 'ok'}")
     hymn_now = batch_eligibility(ROOT, HYMN_APPROVAL["batch"])
     manifest = {
         "generated": dt.date.today().isoformat(),
