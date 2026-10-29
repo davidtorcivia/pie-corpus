@@ -31,3 +31,9 @@ Judge "a living language you can converse with", not a talking dictionary: use t
 - **Glosses for the translator app** use internal labels (`personal/2-ACC.SG.ENCL`, `demonstrative_so-ACC.SG`). Map them to readable English glosses.
 - **Compound engine:** a determinative prefix compound such as h₂énti- "counter-" for the "answer" coinage (h₂entiwékʷos).
 - **t3b-001** predates the v2 rules (per-sentence English, the coined-sentence gate). Re-plan it under v2 if it is ever re-realized.
+- **From the t3b-002 review:**
+  - closed:demonstrative_so has no DAT/INS/GEN dual (the dual falls back to the plural).
+  - The `words_per_sentence` metric equals `words_per_record`, which is a bug.
+  - Two 'give' aorists (déh₃t, déh₃ut) both enter the chat data; pick one.
+  - The 6-use cap blocks natural fixes for everyday words in Tier 3b.
+  - Brief-3b §3 "Welcome, guest" idiom puts the model in a house, contradicting §5's "no home". Restrict it to the user's lines.
