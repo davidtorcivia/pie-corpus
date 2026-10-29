@@ -2,7 +2,7 @@
  "plans": 40,
  "realized": 40,
  "exact_pass": 40,
- "accent_representation_tokens": 5,
+ "accent_representation_tokens": 4,
  "accent_defect_tokens": 11,
  "reject_rate": 0.0,
  "distinct_roots": 135,
@@ -10,6 +10,10 @@
  "distinct_lexemes": 249,
  "max_lexeme_uses": 11,
  "most_used": [
+  [
+   "pie-lex-potnih2",
+   11
+  ],
   [
    "pie-lex-suHnus",
    11
@@ -25,24 +29,44 @@
   [
    "pie-lex-weryeti",
    11
-  ],
-  [
-   "pie-lex-meh2texr",
-   11
   ]
  ],
  "dup_within": 0,
  "dup_across_batches": 0,
- "tokens": 2156,
- "words_per_sentence": 50.3,
- "words_per_record": 50.3,
+ "tokens": 2184,
+ "words_per_sentence": 50.48,
+ "words_per_record": 50.48,
  "meter_fit": {
   "lines": 60,
   "fit": 60,
   "share": 1.0
  },
+ "meter_near": {
+  "lines": 60,
+  "near": 60,
+  "share": 1.0
+ },
+ "meter_exact": {
+  "lines": 60,
+  "exact": 60,
+  "share": 1.0
+ },
+ "meter_cadence": {
+  "8": {
+   "lines": 32,
+   "cadence": 3,
+   "pattern": "LHLX",
+   "share": 0.094
+  },
+  "11": {
+   "lines": 28,
+   "cadence": 2,
+   "pattern": "HLHX",
+   "share": 0.071
+  }
+ },
  "formula_uses": 16,
- "warnings": 26,
+ "warnings": 44,
  "accent_unresolved": {
   "tokens": 0,
   "lexemes": 0,
@@ -51,10 +75,11 @@
  "gates": {
   "reject_rate<=0.10": true,
   "max_lexeme_uses<=11": true,
-  "theme_core_uses<=32": true,
+  "theme_core_uses<=33": true,
   "roots_per_sentence>=0.35": true,
   "duplicates<=2%": true,
-  "all_exact": true
+  "all_exact": true,
+  "meter_exact>=0.90": true
  },
  "gate": "PASS"
 }

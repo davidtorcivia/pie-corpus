@@ -2,19 +2,14 @@
  "schema_version": 1,
  "batch": "t014",
  "sha256": {
-  "records": "c0c8f3a521b8eb4d3b7cba0229dd75e5f9126663c55502471c400685f25232af",
-  "plans": "73379173acf0a4fe043e95a724f464eb3c1920de4bcdf0d731c81bb76c31a1c9",
-  "gate_report": "5f5fc5da1ca6515a71b9ae00fd888d3717abaaf436d7db844e174d62f484ac91"
+  "records": "627ebe0e061eb23e96e8d1e173364b12d1c1f7c851c3186990a1d50159df7c98",
+  "plans": "987734c267ba61e57eb1a80327213cfa94d684c6f8f3f9e7361c6900185eca0d",
+  "gate_report": "1fe3203d43d508eed0381e2699487131eae2b98068ffd7a194eae7af1650c223"
  },
  "review": {
   "required": true,
-  "status": "approved",
-  "evidence": [
-   "data/generation/batches/t014.json",
-   "docs/audits/tier3-t014-review.md",
-   "docs/STATUS.md:16",
-   "docs/STATUS.md:111-112"
-  ],
-  "rationale": "STATUS explicitly records calibrated reviews t001-t015, findings fixed at source and all batches re-realized; subsequent merged-engine regeneration. Migrated historical release, not approval inferred from audit existence."
+  "status": "pending",
+  "evidence": [],
+  "rationale": "Awaiting review."
  }
 }
