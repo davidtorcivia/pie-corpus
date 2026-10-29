@@ -33,9 +33,9 @@
  ],
  "dup_within": 0,
  "dup_across_batches": 0,
- "tokens": 1719,
- "words_per_sentence": 39.42,
- "words_per_record": 39.42,
+ "tokens": 1729,
+ "words_per_sentence": 39.6,
+ "words_per_record": 39.6,
  "meter_fit": {
   "lines": 332,
   "fit": 321,
@@ -48,21 +48,21 @@
  },
  "meter_exact": {
   "lines": 332,
-  "exact": 300,
-  "share": 0.904
+  "exact": 302,
+  "share": 0.91
  },
  "meter_cadence": {
   "8": {
-   "lines": 201,
-   "cadence": 29,
+   "lines": 199,
+   "cadence": 28,
    "pattern": "LHLX",
-   "share": 0.144
+   "share": 0.141
   },
   "11": {
-   "lines": 99,
+   "lines": 103,
    "cadence": 11,
    "pattern": "HLHX",
-   "share": 0.111
+   "share": 0.107
   }
  },
  "formula_uses": 27,
