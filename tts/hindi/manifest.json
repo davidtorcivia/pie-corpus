@@ -1,0 +1,574 @@
+{
+ "voices": [
+  "hm_omega",
+  "hf_alpha"
+ ],
+ "variants": {
+  "palatal": "ḱ ǵ as c ɟ (Hindi च ज)",
+  "plain": "ḱ ǵ as k ɡ"
+ },
+ "profile": "h2-velar + h3-unrounded-w",
+ "items": [
+  {
+   "id": "h2ewsos",
+   "pie": "h₂éwsos",
+   "ipa": "χáw.sos",
+   "english": "dawn",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "h2ewsos__espeak.wav",
+     "input": "χáw.sos"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "h2ewsos__hm_omega__palatal.wav",
+     "input": "xawsos"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "h2ewsos__hf_alpha__palatal.wav",
+     "input": "xawsos"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "h2ewsos__hm_omega__plain.wav",
+     "input": "xawsos"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "h2ewsos__hf_alpha__plain.wav",
+     "input": "xawsos"
+    }
+   ]
+  },
+  {
+   "id": "h2owis",
+   "pie": "h₂ówis",
+   "ipa": "χó.wis",
+   "english": "sheep",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "h2owis__espeak.wav",
+     "input": "χó.wis"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "h2owis__hm_omega__palatal.wav",
+     "input": "xowis"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "h2owis__hf_alpha__palatal.wav",
+     "input": "xowis"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "h2owis__hm_omega__plain.wav",
+     "input": "xowis"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "h2owis__hf_alpha__plain.wav",
+     "input": "xowis"
+    }
+   ]
+  },
+  {
+   "id": "h2egjeti",
+   "pie": "h₂éǵeti",
+   "ipa": "χá.ɟe.ti",
+   "english": "drives",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "h2egjeti__espeak.wav",
+     "input": "χá.ɟe.ti"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "h2egjeti__hm_omega__palatal.wav",
+     "input": "xaɟeti"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "h2egjeti__hf_alpha__palatal.wav",
+     "input": "xaɟeti"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "h2egjeti__hm_omega__plain.wav",
+     "input": "xaɡeti"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "h2egjeti__hf_alpha__plain.wav",
+     "input": "xaɡeti"
+    }
+   ]
+  },
+  {
+   "id": "gjenh1tor",
+   "pie": "ǵénh₁tor",
+   "ipa": "ɟé.nə.tor",
+   "english": "begetter",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "gjenh1tor__espeak.wav",
+     "input": "ɟé.nə.tor"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "gjenh1tor__hm_omega__palatal.wav",
+     "input": "ɟenətor"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "gjenh1tor__hf_alpha__palatal.wav",
+     "input": "ɟenətor"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "gjenh1tor__hm_omega__plain.wav",
+     "input": "ɡenətor"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "gjenh1tor__hf_alpha__plain.wav",
+     "input": "ɡenətor"
+    }
+   ]
+  },
+  {
+   "id": "kjlewos",
+   "pie": "ḱléwos",
+   "ipa": "clé.wos",
+   "english": "fame",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "kjlewos__espeak.wav",
+     "input": "clé.wos"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "kjlewos__hm_omega__palatal.wav",
+     "input": "clewos"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "kjlewos__hf_alpha__palatal.wav",
+     "input": "clewos"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "kjlewos__hm_omega__plain.wav",
+     "input": "klewos"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "kjlewos__hf_alpha__plain.wav",
+     "input": "klewos"
+    }
+   ]
+  },
+  {
+   "id": "bhreh2ter",
+   "pie": "bʰréh₂tēr",
+   "ipa": "bʱráχ.teːr",
+   "english": "brother",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "bhreh2ter__espeak.wav",
+     "input": "bʱráχ.teːr"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "bhreh2ter__hm_omega__palatal.wav",
+     "input": "bʰraxteːr"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "bhreh2ter__hf_alpha__palatal.wav",
+     "input": "bʰraxteːr"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "bhreh2ter__hm_omega__plain.wav",
+     "input": "bʰraxteːr"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "bhreh2ter__hf_alpha__plain.wav",
+     "input": "bʰraxteːr"
+    }
+   ]
+  },
+  {
+   "id": "dhugh2ter",
+   "pie": "dʰugh₂tḗr",
+   "ipa": "dʱu.ɡə.téːr",
+   "english": "daughter",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "dhugh2ter__espeak.wav",
+     "input": "dʱu.ɡə.téːr"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "dhugh2ter__hm_omega__palatal.wav",
+     "input": "dʰuɡəteːr"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "dhugh2ter__hf_alpha__palatal.wav",
+     "input": "dʰuɡəteːr"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "dhugh2ter__hm_omega__plain.wav",
+     "input": "dʰuɡəteːr"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "dhugh2ter__hf_alpha__plain.wav",
+     "input": "dʰuɡəteːr"
+    }
+   ]
+  },
+  {
+   "id": "gwhenti",
+   "pie": "gʷʰénti",
+   "ipa": "ɡʷʱén.ti",
+   "english": "strikes",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "gwhenti__espeak.wav",
+     "input": "ɡʷʱén.ti"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "gwhenti__hm_omega__palatal.wav",
+     "input": "ɡʰwenti"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "gwhenti__hf_alpha__palatal.wav",
+     "input": "ɡʰwenti"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "gwhenti__hm_omega__plain.wav",
+     "input": "ɡʰwenti"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "gwhenti__hf_alpha__plain.wav",
+     "input": "ɡʰwenti"
+    }
+   ]
+  },
+  {
+   "id": "kwetwores",
+   "pie": "kʷetwóres",
+   "ipa": "kʷet.wó.res",
+   "english": "four",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "kwetwores__espeak.wav",
+     "input": "kʷet.wó.res"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "kwetwores__hm_omega__palatal.wav",
+     "input": "kwetwores"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "kwetwores__hf_alpha__palatal.wav",
+     "input": "kwetwores"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "kwetwores__hm_omega__plain.wav",
+     "input": "kwetwores"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "kwetwores__hf_alpha__plain.wav",
+     "input": "kwetwores"
+    }
+   ]
+  },
+  {
+   "id": "h3esth1",
+   "pie": "h₃ésth₁",
+   "ipa": "ɣʷós.tə",
+   "english": "bone",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "h3esth1__espeak.wav",
+     "input": "ɣʷós.tə"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "h3esth1__hm_omega__palatal.wav",
+     "input": "ɣwostə"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "h3esth1__hf_alpha__palatal.wav",
+     "input": "ɣwostə"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "h3esth1__hm_omega__plain.wav",
+     "input": "ɣwostə"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "h3esth1__hf_alpha__plain.wav",
+     "input": "ɣwostə"
+    }
+   ]
+  },
+  {
+   "id": "wlkwos",
+   "pie": "wĺ̥kʷos",
+   "ipa": "wĺ̩.kʷos",
+   "english": "wolf",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "wlkwos__espeak.wav",
+     "input": "wĺ̩.kʷos"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "wlkwos__hm_omega__palatal.wav",
+     "input": "wəlkwos"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "wlkwos__hf_alpha__palatal.wav",
+     "input": "wəlkwos"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "wlkwos__hm_omega__plain.wav",
+     "input": "wəlkwos"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "wlkwos__hf_alpha__plain.wav",
+     "input": "wəlkwos"
+    }
+   ]
+  },
+  {
+   "id": "kmtom",
+   "pie": "ḱm̥tóm",
+   "ipa": "cm̩.tóm",
+   "english": "hundred",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "kmtom__espeak.wav",
+     "input": "cm̩.tóm"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "kmtom__hm_omega__palatal.wav",
+     "input": "cəmtom"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "kmtom__hf_alpha__palatal.wav",
+     "input": "cəmtom"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "kmtom__hm_omega__plain.wav",
+     "input": "kəmtom"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "kmtom__hf_alpha__plain.wav",
+     "input": "kəmtom"
+    }
+   ]
+  },
+  {
+   "id": "ph2ter",
+   "pie": "ph₂tḗr",
+   "ipa": "pə.téːr",
+   "english": "father",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "ph2ter__espeak.wav",
+     "input": "pə.téːr"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "ph2ter__hm_omega__palatal.wav",
+     "input": "pəteːr"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "ph2ter__hf_alpha__palatal.wav",
+     "input": "pəteːr"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "ph2ter__hm_omega__plain.wav",
+     "input": "pəteːr"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "ph2ter__hf_alpha__plain.wav",
+     "input": "pəteːr"
+    }
+   ]
+  },
+  {
+   "id": "dyews",
+   "pie": "dyḗws",
+   "ipa": "djéːws",
+   "english": "sky, day",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "dyews__espeak.wav",
+     "input": "djéːws"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "dyews__hm_omega__palatal.wav",
+     "input": "djeːws"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "dyews__hf_alpha__palatal.wav",
+     "input": "djeːws"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "dyews__hm_omega__plain.wav",
+     "input": "djeːws"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "dyews__hf_alpha__plain.wav",
+     "input": "djeːws"
+    }
+   ]
+  },
+  {
+   "id": "h1esti",
+   "pie": "h₁ésti",
+   "ipa": "hés.ti",
+   "english": "is",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "h1esti__espeak.wav",
+     "input": "hés.ti"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "h1esti__hm_omega__palatal.wav",
+     "input": "hesti"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "h1esti__hf_alpha__palatal.wav",
+     "input": "hesti"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "h1esti__hm_omega__plain.wav",
+     "input": "hesti"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "h1esti__hf_alpha__plain.wav",
+     "input": "hesti"
+    }
+   ]
+  },
+  {
+   "id": "ghime",
+   "pie": "ǵʰimḗ",
+   "ipa": "ɟʱi.méː",
+   "english": "in winter",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "ghime__espeak.wav",
+     "input": "ɟʱi.méː"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "ghime__hm_omega__palatal.wav",
+     "input": "ɟʰimeː"
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "ghime__hf_alpha__palatal.wav",
+     "input": "ɟʰimeː"
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "ghime__hm_omega__plain.wav",
+     "input": "ɡʰimeː"
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "ghime__hf_alpha__plain.wav",
+     "input": "ɡʰimeː"
+    }
+   ]
+  },
+  {
+   "id": "t3-t026-00015",
+   "pie": "h₂éwsos léwka déywi diwés dʰúgh₂ter. n̥sméy léwks sḱih₃wós-kʷe twéd bʰéwgt. nu wiHrṓs twé kʷḱént mudént-kʷe. túH h₂yuHénih₂ túH ń̥dʰgʷʰiteh₂. túH kʷspés swésōr téwe bʰéh₂os h₃kʷbʰós lewbʰóm. nu ḱéywa n̥sméy h₁wésu ḱléwos dh₃dʰí. nu-kʷe n̥sméy ń̥dʰgʷʰitom ḱléwos h₁áydʰi.",
+   "ipa": "χáw.sos léw.ka déj.wi di.wés dʱú.ɡə.ter ‖ n̩s.méj léwks sciɣʷ.wós.kʷe twéd bʱéwɡt ‖ nu wih.róːs twé kʷcént mu.dén.tkʷe ‖ túh χju.hé.niχ túh ń̩dʱ.ɡʷʱi.taχ ‖ túh kʷspés swé.soːr té.we bʱá.χos ɣʷkʷbʱós lew.bʱóm ‖ nu céj.wa n̩s.méj hwé.su clé.wos də.dʱí ‖ nu.kʷe n̩s.méj ń̩dʱ.ɡʷʱi.tom clé.wos háj.dʱi ‖",
+   "english": "Dawn, bright goddess, Daughter of Sky! You shone for us, and darkness fled from you. Men caught sight of you and became glad. You are young, you are imperishable. You are the sister of the night. Your radiance is dear to the eyes. Give us good fame, dear one! And give us imperishable fame!",
+   "clips": [
+    {
+     "system": "espeak",
+     "file": "t3-t026-00015__espeak.wav",
+     "input": "χáw.sos léw.ka déj.wi di.wés dʱú.ɡə.ter ‖ n̩s.méj léwks sciɣʷ.wós.kʷe twéd bʱéwɡt ‖ nu wih.róːs twé kʷcént mu.dén.tkʷe ‖ túh χju.hé.niχ túh ń̩dʱ.ɡʷʱi.taχ ‖ túh kʷspés swé.soːr té.we bʱá.χos ɣʷkʷbʱós lew.bʱóm ‖ nu céj.wa n̩s.méj hwé.su clé.wos də.dʱí ‖ nu.kʷe n̩s.méj ń̩dʱ.ɡʷʱi.tom clé.wos háj.dʱi ‖"
+    },
+    {
+     "system": "hm_omega/palatal",
+     "file": "t3-t026-00015__hm_omega__palatal.wav",
+     "input": "xawsos lewka dejwi diwes dʰuɡəter. ‖ ənsmej lewks sciɣwwoskwe twed bʰewɡt. ‖ nu wihroːs twe kwcent mudentkwe. ‖ tuh xjuhenix tuh əndʰɡʰwitax. ‖ tuh kwspes swesoːr tewe bʰaxos ɣwkwbʰos lewbʰom. ‖ nu cejwa ənsmej hwesu clewos dədʰi. ‖ nukwe ənsmej əndʰɡʰwitom clewos hajdʰi."
+    },
+    {
+     "system": "hf_alpha/palatal",
+     "file": "t3-t026-00015__hf_alpha__palatal.wav",
+     "input": "xawsos lewka dejwi diwes dʰuɡəter. ‖ ənsmej lewks sciɣwwoskwe twed bʰewɡt. ‖ nu wihroːs twe kwcent mudentkwe. ‖ tuh xjuhenix tuh əndʰɡʰwitax. ‖ tuh kwspes swesoːr tewe bʰaxos ɣwkwbʰos lewbʰom. ‖ nu cejwa ənsmej hwesu clewos dədʰi. ‖ nukwe ənsmej əndʰɡʰwitom clewos hajdʰi."
+    },
+    {
+     "system": "hm_omega/plain",
+     "file": "t3-t026-00015__hm_omega__plain.wav",
+     "input": "xawsos lewka dejwi diwes dʰuɡəter. ‖ ənsmej lewks skiɣwwoskwe twed bʰewɡt. ‖ nu wihroːs twe kwkent mudentkwe. ‖ tuh xjuhenix tuh əndʰɡʰwitax. ‖ tuh kwspes swesoːr tewe bʰaxos ɣwkwbʰos lewbʰom. ‖ nu kejwa ənsmej hwesu klewos dədʰi. ‖ nukwe ənsmej əndʰɡʰwitom klewos hajdʰi."
+    },
+    {
+     "system": "hf_alpha/plain",
+     "file": "t3-t026-00015__hf_alpha__plain.wav",
+     "input": "xawsos lewka dejwi diwes dʰuɡəter. ‖ ənsmej lewks skiɣwwoskwe twed bʰewɡt. ‖ nu wihroːs twe kwkent mudentkwe. ‖ tuh xjuhenix tuh əndʰɡʰwitax. ‖ tuh kwspes swesoːr tewe bʰaxos ɣwkwbʰos lewbʰom. ‖ nu kejwa ənsmej hwesu klewos dədʰi. ‖ nukwe ənsmej əndʰɡʰwitom klewos hajdʰi."
+    }
+   ]
+  }
+ ]
+}
