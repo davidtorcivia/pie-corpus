@@ -3,69 +3,69 @@
  "realized": 40,
  "exact_pass": 40,
  "accent_representation_tokens": 7,
- "accent_defect_tokens": 8,
+ "accent_defect_tokens": 13,
  "reject_rate": 0.0,
  "distinct_roots": 156,
  "roots_per_sentence": 3.9,
  "distinct_lexemes": 254,
- "max_lexeme_uses": 12,
+ "max_lexeme_uses": 13,
  "most_used": [
   [
    "pie-lex-ph2texr",
-   12
+   13
+  ],
+  [
+   "pie-lex-h2ew",
+   13
   ],
   [
    "pie-lex-wekwos",
    12
   ],
   [
+   "pie-lex-h1wesus",
+   12
+  ],
+  [
    "pie-lex-gweHyeti",
-   12
-  ],
-  [
-   "pie-lex-h1werHus",
-   12
-  ],
-  [
-   "pie-lex-megjh2s",
    12
   ]
  ],
  "dup_within": 0,
  "dup_across_batches": 0,
- "tokens": 2485,
- "words_per_sentence": 55.7,
- "words_per_record": 55.7,
+ "tokens": 2612,
+ "words_per_sentence": 58.02,
+ "words_per_record": 58.02,
  "meter_fit": {
   "lines": 490,
-  "fit": 490,
-  "share": 1.0
+  "fit": 480,
+  "share": 0.98
  },
  "meter_near": {
   "lines": 490,
-  "near": 490,
-  "share": 1.0
+  "near": 480,
+  "share": 0.98
  },
  "meter_exact": {
   "lines": 490,
-  "exact": 490,
-  "share": 1.0
+  "exact": 461,
+  "share": 0.941
  },
  "meter_cadence": {
   "8": {
-   "lines": 308,
-   "cadence": 38,
+   "lines": 262,
+   "cadence": 29,
    "pattern": "LHLX",
-   "share": 0.123
+   "share": 0.111
   },
   "11": {
-   "lines": 182,
-   "cadence": 29,
+   "lines": 199,
+   "cadence": 28,
    "pattern": "HLHX",
-   "share": 0.159
+   "share": 0.141
   }
  },
- "formula_uses": 35,
+ "formula_uses": 36,
  "warnings": 11,
  "accent_unresolved": {
   "tokens": 0,
@@ -74,8 +74,8 @@
  },
  "gates": {
   "reject_rate<=0.10": true,
-  "max_lexeme_uses<=12": true,
-  "theme_core_uses<=37": true,
+  "max_lexeme_uses<=13": true,
+  "theme_core_uses<=39": true,
   "roots_per_sentence>=0.35": true,
   "duplicates<=2%": true,
   "all_exact": true,

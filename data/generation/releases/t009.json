@@ -2,19 +2,14 @@
  "schema_version": 1,
  "batch": "t009",
  "sha256": {
-  "records": "5a51a55b0999f16cc8f67da1c1b32d8ec569cddb624132a11cf50f6daf30046f",
+  "records": "b07609ac7ff50e3da89d0b623953c64569c4df81015712009cca8acaecd691f5",
   "plans": "41f1b1a0b53de7521f2eabe802e260291fb7b47433b16f91d19ea001530b6d6e",
-  "gate_report": "0db5c21ef5ff100509571186a8b153eee4e3236b34900bf5bd4fcb5e19e595e6"
+  "gate_report": "5dbf5ac52d7878948df6329a6187b45db557880308cbeeb94b3367b13dee01f9"
  },
  "review": {
   "required": true,
-  "status": "approved",
-  "evidence": [
-   "data/generation/batches/t009.json",
-   "docs/audits/tier3-t009-review.md",
-   "docs/STATUS.md:16",
-   "docs/STATUS.md:111-112"
-  ],
-  "rationale": "STATUS explicitly records calibrated reviews t001-t015, findings fixed at source and all batches re-realized; subsequent merged-engine regeneration. Migrated historical release, not approval inferred from audit existence."
+  "status": "pending",
+  "evidence": [],
+  "rationale": "Awaiting review."
  }
 }
