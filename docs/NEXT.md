@@ -1,7 +1,7 @@
 # Next steps (handoff list, started 2026-10-29)
 
 ## Morning first
-1. **Rate the TTS finals** on the finals rating page (link in chat). Candidates: Kokoro + profile (bf_isabella, af_nicole, em_santa) and eSpeak → Seed-VC F0 (em_santa, em_alex, bf_isabella, af_nicole), with eSpeak as reference. Then set the winner as the `pie.speak` default and redeploy erebus `pie-tts` if Kokoro wins.
+1. **Rate the TTS finals** on the finals rating page, https://claude.ai/artifact/23p85eZLQR3nawtMgUxZAf. Candidates: Kokoro + profile (bf_isabella, af_nicole, em_santa) and eSpeak → Seed-VC F0 (em_santa, em_alex, bf_isabella, af_nicole), with eSpeak as reference. Then set the winner as the `pie.speak` default and redeploy erebus `pie-tts` if Kokoro wins.
    - Seed-VC is GPL-3.0 and offline-only (~35 s/clip on CPU); a Seed-VC winner means pre-rendered demo audio, or a GPU host.
    - The earlier bake-off page (19 voices) and the Voice Lab stay up for reference.
 2. **Owner decisions:**
