@@ -8,14 +8,14 @@ This census covers every word and derivative in `data/morph/inflection_specs.jso
 - pk-iu-stem rule, where an o-grade root is acrostatic (Fortson §6.21, §6.27): +226 (backtest 84.7% → 89.3%);
 - n-stem-ak rule, consonantal root resonant before -n̥: +50 (backtest 82.6% → 85.3%).
 
-**Offered by default ("ok"):** about 1,071 before (now minus the 57 rows unusable at base) and 1,128 after. With `--derived`, a further 2,327 rows are offered, up from 1,983 before.
+**Offered by default ("ok"):** about 1,071 before (now minus the 57 rows unusable at base) and 1,131 after. With `--derived`, a further 2,324 rows are offered, up from 1,983 before.
 
 ## Buckets
 
 | bucket | lexemes | with a dictionary gloss | kind of fix |
 |---|---|---|---|
-| derived gloss only (needs --derived) | 2327 | 0 | gloss data: a dictionary gloss, or the slice built with `--derived` |
-| ok | 1128 | 1128 | none needed |
+| derived gloss only (needs --derived) | 2324 | 0 | gloss data: a dictionary gloss, or the slice built with `--derived` |
+| ok | 1131 | 1131 | none needed |
 | unknown:noun-shape | 823 | 94 | per word: no shape rule; 783 are unglossed tree derivatives with no part of speech |
 | bound-stem (form with a hyphen) | 797 | 113 | not words (roots, stems, suffixes); a citation form would make some usable |
 | no-accent (pool P10) | 795 | 76 | per word: an accent from a source (accent manifest category 1) |
