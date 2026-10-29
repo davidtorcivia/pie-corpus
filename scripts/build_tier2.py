@@ -23,7 +23,7 @@ import sys
 from pathlib import Path
 
 from pie.meter import measure
-from pie.realize import Lexicon, check_plan, realize, token_cell
+from pie.realize import Lexicon, check_plan, plan_coined, realize, token_cell
 from pie.tier2_secure import SecureChecker, plan_compound_ids
 from pie.translit import to_ascii
 from pie.validate import index_plan_compounds, load_index, validate_text
@@ -93,6 +93,8 @@ def main() -> int:
             continue
         p = json.loads(line)
         errs = check_plan(p["plan"], lx)
+        # project reconstructions are Tier 3/3b only (PLAN.md): never in a back-projection
+        errs += [f"{i} is a project reconstruction (coined), not allowed in Tier 2" for i in plan_coined(p["plan"], lx)]
         if branches(p.get("cognate_refs", [])) < 2:
             errs.append("cognate_refs must cite at least two branches")
         rv = raw_review.get(p.get("proj_id"))

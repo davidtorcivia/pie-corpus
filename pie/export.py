@@ -21,6 +21,14 @@ ph₂ter) carries "accent": "representation". Such tasks stay in the full eval
 and in training. The accent-sensitive eval view (eval_tasks_accent_specified)
 omits the unresolved ones; a score presented as testing fully specified accent
 uses that view.
+
+Project reconstructions (data/lexicon/project_reconstructions.jsonl, PLAN.md):
+every task from a record with a token from one, and every inflection task of
+one, carries "coined": "project". They are training data only: their
+inflection tasks never go to eval (and are dropped when their root family is
+held out), they make no cognate→PIE task (the answer
+would be our own projection), and an evaluation record with such a token
+fails the export.
 """
 
 from __future__ import annotations
@@ -127,12 +135,16 @@ def record_tasks(r: dict) -> list[dict]:
         out.append({"task": "gloss", "input": r["pie"], "output": r["gloss"], "style": style})
     acc = _record_accent(r)
     num_fallback = any(w.get("num_fallback") == "du->pl" for w in r.get("tokens", []))
+    # a token from a project reconstruction (pie.realize.Lexicon.coined) marks every task of its record
+    coined = next((w["coined"] for w in r.get("tokens", []) if w.get("coined")), None)
     for t in out:
         t["source_id"] = r["id"]
         if acc:
             t["accent"] = acc
         if num_fallback:
             t["num_fallback"] = "du->pl"
+        if coined:
+            t["coined"] = coined
     return out
 
 
@@ -192,6 +204,8 @@ def inflection_tasks(lx: Lexicon, rng: random.Random, per_lexeme: int = 3) -> li
             acc = _target_accent(lid, g, cell, cells[f][0])
             if acc:
                 t["accent"] = acc
+            if lx.coined(lid):
+                t["coined"] = lx.coined(lid)
             out.append(t)
     return out
 
@@ -203,6 +217,8 @@ def cognate_tasks(lx: Lexicon) -> list[dict]:
     for e in lx.entries.values():
         if research_entry(e):
             raise ValueError("research_only entry in cognate export")
+        if e.get("coined"):
+            continue      # a project reconstruction's lemma is our projection, not a handbook answer
         refl = e.get("reflexes", {})
         parts = []
         for lang in COGNATE_LANGS:
@@ -254,7 +270,16 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0,
     seen_roots = train_root_ids(train_recs, lx)
     held = lambda rid: eval_root(rid) and rid not in seen_roots
     for t in inflection_tasks(lx, rng) + cognate_tasks(lx):
+        # a project reconstruction never enters evaluation (PLAN.md "Project reconstructions"); one of a
+        # held-out root family is dropped, so the family stays unseen in training too
+        if t.get("coined"):
+            if not held(t.get("root_id")):
+                train_tasks.append(t)
+            continue
         (eval_tasks if held(t.get("root_id")) else train_tasks).append(t)
+    coined_eval = [r["id"] for r in tier1 if any(t.get("coined") for t in r.get("tokens") or [])]
+    if coined_eval:
+        raise ValueError(f"project reconstruction in an evaluation record: {coined_eval[0]}")
     bad = [t for t in train_tasks if held(t.get("root_id"))]
     if bad:
         raise ValueError(f"held-out root family in training tasks: {bad[0].get('root_id')}")

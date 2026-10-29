@@ -601,6 +601,33 @@
       ]
     }
   },
+  "interrogative_adv": {
+    "_note": "Indeclinable interrogative adverbs and the quantifier 'how many' of the *kʷo-/*kʷi- system (Mallory & Adams 2006 §24.3, Table 24.3). Each key is the English meaning; the list is the form, primary first. why and when are case forms of the pronouns used adverbially (interrogative_kwi/n/ACC.SG, interrogative_kwo/m/ACC.SG). where, how and how_many are the lexicon's kúdʰe, kʷíh₁ and kʷóti given as closed ids, so they front like the pronouns.",
+    "why": [
+      "kʷíd"
+    ],
+    "when": [
+      "kʷóm"
+    ],
+    "where": [
+      "kúdʰe"
+    ],
+    "how": [
+      "kʷíh₁"
+    ],
+    "how_many": [
+      "kʷóti"
+    ]
+  },
+  "correlative_adv": {
+    "_note": "Indeclinable correlative quantifiers answering kʷóti 'how many?': demonstrative *tóti 'so many', relative *h₁yóti 'as many' (Mallory & Adams 2006 §24.2, §24.4). Not fronted.",
+    "so_many": [
+      "tóti"
+    ],
+    "as_many": [
+      "h₁yóti"
+    ]
+  },
   "numerals": {
     "2": {
       "m": {
@@ -1156,7 +1183,14 @@
     "numerals/3/f/ACC.PL": "Ringe 2017 p. 53 tisrn̥s (accent?), accented like nom. tísres (engine sweep, closed-class C3)",
     "_engine_sweep_C4": "closed-class C4: masc. = neut. in the obliques and dat. pl. = abl. pl. in every pronoun table, masculine primary kept (-oybʰos, -oysōm); Ringe's -oymos/-oysoHom are the alternatives; kʷo-/h₁yo- dat./gen./loc. sg. like so/tod (Ringe p. 55, L&Y §2.2.3)",
     "personal/1/NOM.SG": "engine sweep convention: the -oh₂ form most handbooks print: Fortson §7.4 *eǵoh₂, L&Y Handbook ch. 122 *(h₁)eǵoh₂, Beekes §15.3.1 *h₁eǵ(oH, -Hom); with the table's initial h₁ (Beekes, L&Y, M&A *h₁eĝ-). No book prints the accent: final as in Gk ἐγώ, Ved. ahám. Ringe 2017 p. 57 éǵh₂ and the earlier primary h₁eǵ stay as alternatives",
-    "numerals/indeclinable/10": "engine sweep convention: Fortson §7.17 *dék̑m̥, L&Y Handbook ch. 122 *dék̑m̥ (= the lexicon's pie-lex-dekjm and Wiktionary); Beekes §15.4 *dék´mt and Ringe 2017 p. 54 déḱm̥d kept as alternatives"
+    "numerals/indeclinable/10": "engine sweep convention: Fortson §7.17 *dék̑m̥, L&Y Handbook ch. 122 *dék̑m̥ (= the lexicon's pie-lex-dekjm and Wiktionary); Beekes §15.4 *dék´mt and Ringe 2017 p. 54 déḱm̥d kept as alternatives",
+    "interrogative_adv/why": "the neuter interrogative used adverbially: Ved. kím adv. 'why?' (EWAia I 347 s.v. kí-), Lat. quid, Gk τί 'why?'; Goth. ƕa 'what' = 'why' < *kʷod (Fortson 2010 ch. 15, Gothic text commentary); M&A 2006 §24.3 p. 419 *kʷíd 'what' (Lat. quid, Hitt. kuit)",
+    "interrogative_adv/when": "Mallory & Adams 2006 §24.3, Table 24.3 / pp. 419-420 *kʷóm 'when' (Lat. cum, Goth. ƕan, OPr. kan, Alb. kë), 'a special development of the masculine accusative of *kʷós'; Fortson 2010 §7.27 (Archaic Lat. quom 'when, since'); Beekes 2011 p. 250 (cum < quom)",
+    "interrogative_adv/where": "Beekes 2011 p. 246 (*-dʰe: Skt kúha, OCS kъde 'where?'); EWAia I 383 s.v. kúha (RV; OAv. kudā); M&A 2006 §24.3 p. 420 *kʷu 'where'; = lexicon pie-lex-kudhe",
+    "interrogative_adv/how": "Fortson 2010 §19.10 (*kʷih₁ instr. > Alb. si, Lat. quī 'how'); = interrogative_kwi INS.SG and lexicon pie-lex-kwih1",
+    "interrogative_adv/how_many": "Mallory & Adams 2006 §24.3, Table 24.3 / pp. 419-420 *kʷóti ~ *kʷéti (Lat. quot, Skt káti, Gk πόσος; Av. čaiti); EWAia I 294 s.v. káti ('wie viele, quot', RV); = lexicon pie-lex-kwoti",
+    "correlative_adv/so_many": "Mallory & Adams 2006 §24.2 / p. 418 *tóti 'so much, many' (Lat. tot, Gk τόσος); Skt táti; = lexicon pie-lex-toti",
+    "correlative_adv/as_many": "Mallory & Adams 2006 §24.4 / p. 421 *yóti 'as much, as many' (Skt yáti, Gk ὅσος; Greek and Indo-Iranian only, 'or were created?'); initial h₁ as in relative_yo"
   },
   "_derived": {
     "interrogative_kwo/m/ABL.SG": "derived from demonstrative_so/m/ABL.SG (Ringe 2017 p. 56: these stems inflect like so/tod)",

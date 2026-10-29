@@ -22,7 +22,7 @@ from pie.meter import measure
 from pie.realize import Lexicon, check_plan, plan_warnings, realize, token_cell
 from pie.translit import to_ascii
 from pie.compound import member_ids
-from pie.validate import all_exact, index_plan_compounds, load_index, validate_text
+from pie.validate import all_exact, index_plan_compounds, index_project, load_index, validate_text
 
 ROOT = Path(__file__).resolve().parent.parent
 CAP_EXEMPT = {"pie-lex-h1esti"}          # "to be"
@@ -85,6 +85,7 @@ def main() -> int:
     args = ap.parse_args()
     sha = args.engine_version
     lx, ix = Lexicon.load(), load_index()
+    index_project(ix)      # Tier 3 may use project reconstructions (tokens carry coined: project)
     plans = [json.loads(x) for x in args.plans.read_text("utf-8").splitlines() if x.strip()]
     records, rejects, stats, warnings = [], [], collections.Counter(), []
     for n, p in enumerate(plans):

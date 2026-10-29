@@ -12,6 +12,7 @@ Built by `uv run python -I scripts/build_lexicon.py <kaikki dump>` (code: `pie/l
 | `id_registry.jsonl` | **persistent** key → id map; committed; never hand-edit ids |
 | `build_report.json` | counts, rules fired, unresolved links, root-type disagreements |
 | `neologisms.jsonl` | (Tier 3b, later) coinages; never merged into `lexicon.jsonl` |
+| `project_reconstructions.jsonl` | hand-authored lexemes projected from ≥2 branches, `coined: "project"`, Tier 3/3b only; loaded by `pie.realize.Lexicon.load`, never by the build or `load_index` (docs/lexicon-project-reconstructions.md) |
 
 ## Entry kinds
 

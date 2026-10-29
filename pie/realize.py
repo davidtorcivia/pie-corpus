@@ -69,6 +69,10 @@ Apposition. A slot with role "APPOS" and "head": k is a noun phrase in appositio
   an APPOS; a MOD cannot. Unlike MOD it is a separate phrase (Ringe 2017 §3.3.2: nouns in apposition are
   separate NPs), so an adjective there reads 'the immortal ones', not 'immortal'.
 
+Interrogative and correlative adverbs. closed:interrogative_adv/why|when|where|how|how_many (kʷíd, kʷóm, kúdʰe,
+  kʷíh₁, kʷóti) and closed:correlative_adv/so_many|as_many (tóti, h₁yóti) are indeclinable (closed_class.json, with
+  their refs): role ADV; the three quantifiers also MOD with a head, which takes the plural. Interrogatives front
+  like the interrogative pronouns ('where did the horse go?' = kúdʰe h₁éḱwos …).
 Compounds (pie/compound.py). A slot may hold a compound built from two lexemes:
   {"lex_id": "compound", "compound": {"first": F, "second": S, "type": "bahuvrihi" | "determinative"},
    "role": ..., "head": k, "gender": ...}
@@ -87,7 +91,8 @@ F (first member):
       lexicon's 'swift', i.e. *h₁ōḱu-), unaccented (L&Y's dominant Vedic pattern; West ch. 10 cites 1M-accented
       vásu-śravas-). Caland -ro- adjectives are rejected: their compound form is -i- (Fortson §6.87, Ringe
       2.4.2: h₂r̥ǵrós → h₂r̥ǵi-), which the engine does not build (Ved. ugrá-bāhu- keeps -ro-; the books differ).
-  a noun lex_id: thematic (-o-) or i-/u-stem noun, its stem as is (Gk khrūsó-thronos, Ved. bāhú-ojas-).
+  a noun lex_id: thematic (-o-) or i-/u-stem noun, its stem as is (Gk khrūsó-thronos, Ved. bāhú-ojas-); h₂nḗr 'man'
+      in its zero grade h₂nr̥- (Ved. nṛ-máṇas-, Av. Nərəmanah-; compound.ZERO_GRADE_FIRST), unaccented.
 S (second member, a noun lex_id):
   bahuvrihi: an s-stem neuter → the -es- adjective, common gender (Beekes 13.1.2: Gk εὐμενής, Ved. sumánas-;
       Gk εὐκλεής, Ved. suśrávas-, Illyr. Ves-cleves): m./f. nom. sg. *-ēs, acc. *-esm̥, gen. *-esos,
@@ -110,7 +115,7 @@ The privative keeps its syllabic n̥ before a laryngeal (Beekes p. 84: Gk νήγ
 The word's lex_id is "compound:<type>:<first>+<second>"; its gloss "good+fame". The validator indexes a plan's
   compounds with pie.validate.index_plan_compounds (same cells), called by realize_plans.py and build_tier2.py. Not supported: root-noun,
   r/n/i/u/eh₂-stem second members in bahuvrihis (*-pod-, eu-pátōr), consonant-stem first members (wiḱ-,
-  déms-), verbal governing compounds (*ḱlewos-dʰeh₁-, vr̥tra-hán-), Caland -i-, nested compounds.
+  déms-; except h₂nḗr, compound.ZERO_GRADE_FIRST), verbal governing compounds (*ḱlewos-dʰeh₁-, vr̥tra-hán-), Caland -i-, nested compounds.
 """
 
 from __future__ import annotations
@@ -171,6 +176,43 @@ class Word:
     gender: str | None = None       # the resolved gender of a nominal (an adjective's is its head's)
     voice: str | None = None        # ACT | MID for verbs and participles
     num_fallback: str | None = None  # du->pl when the controller's dual cell is unavailable
+    coined: str | None = None       # "project" for a project reconstruction (Lexicon.coined)
+
+
+PROJECT_RECONSTRUCTIONS = ROOT / "data/lexicon/project_reconstructions.jsonl"
+
+
+def load_project_reconstructions(path: Path = PROJECT_RECONSTRUCTIONS) -> tuple[dict, dict]:
+    """(entries, specs) of the project reconstructions (PLAN.md "Project reconstructions",
+    docs/lexicon-project-reconstructions.md). Each line is a lexicon entry with source "project" and
+    coined "project", plus an "inflection" record in the inflection_specs.jsonl schema; it is split here
+    into the entry and its spec. The one loader: Lexicon.load and pie.validate.index_project read it."""
+    entries, specs = {}, {}
+    if not path.exists():
+        return entries, specs
+    for x in path.read_text("utf-8").splitlines():
+        if not x.strip():
+            continue
+        e = json.loads(x)
+        if e.get("source") != "project" or e.get("coined") != "project":
+            raise ValueError(f"{e.get('id')}: a project reconstruction needs source and coined 'project'")
+        inf = e.pop("inflection", None)
+        entries[e["id"]] = e
+        if inf:
+            specs[e["id"]] = {"id": e["id"], "form": e["form"], **inf}
+    return entries, specs
+
+
+def plan_coined(plan: dict, lx: "Lexicon") -> list[str]:
+    """The project-reconstruction lexemes a plan uses (slots and compound members), in order."""
+    out = []
+    for cl in plan.get("clauses", []):
+        for s in cl.get("slots", []):
+            c = s.get("compound") if s.get("lex_id") == "compound" and isinstance(s.get("compound"), dict) else {}
+            for i in (s.get("lex_id"), c.get("first"), c.get("second")):
+                if isinstance(i, str) and lx.coined(i) and i not in out:
+                    out.append(i)
+    return out
 
 
 @dataclass
@@ -200,6 +242,12 @@ class Lexicon:
         for x in (ROOT / "data/morph/inflection_specs.jsonl").read_text("utf-8").splitlines():
             r = json.loads(x)
             specs[r["id"]] = r
+        # project reconstructions (PLAN.md): flagged coined, Tier 3/3b only; never in the default validator index
+        p_lex, p_specs = load_project_reconstructions()
+        if p_lex.keys() & lex.keys():
+            raise ValueError(f"project reconstruction id already in lexicon.jsonl: {sorted(p_lex.keys() & lex.keys())}")
+        lex.update(p_lex)
+        specs.update(p_specs)
         closed = json.loads((ROOT / "data/morph/closed_class.json").read_text("utf-8"))
         blocked = {}
         bp = ROOT / "data/generation/blocklist.jsonl"
@@ -218,6 +266,16 @@ class Lexicon:
     def accent_status(self, lex_id: str) -> str:
         """"resolved" | "unresolved" (module accent_status: data/morph/accent_unresolved.json)."""
         return accent_status(lex_id)
+
+    def coined(self, lex_id: str | None) -> str | None:
+        """"project" when the lexeme, or a member of a compound, is a project reconstruction
+        (data/lexicon/project_reconstructions.jsonl); None otherwise. The one source of the token flag."""
+        from .compound import member_ids
+        for i in [lex_id or "", *member_ids(lex_id or "")]:
+            c = self.entries.get(i, {}).get("coined")
+            if c:
+                return c
+        return None
 
     def gloss(self, lex_id: str) -> str:
         if lex_id.startswith("closed:"):
@@ -385,9 +443,9 @@ def _closed_form(lx: Lexicon, lex_id: str, feat: str, gender: str) -> str | None
             f = sub.get(feat)
             return _unaccent(f[0]) if f else None
         node = node.get("n" if gender == "n" else "mf", {})
+    if isinstance(node, list):        # indeclinables: closed:numerals/indeclinable/7, closed:interrogative_adv/why
+        return node[0]
     if path[0] == "numerals":
-        if isinstance(node, list):                      # indeclinable 5-10: closed:numerals/indeclinable/7
-            return node[0]
         node = node.get(gender) or node.get("fn" if gender in ("f", "n") else "m") or node.get("m", {})
         if feat.endswith(".SG") or feat.endswith(".DU"):  # 2 is dual, 3 and 4 plural: number follows the numeral
             feat = feat.rsplit(".", 1)[0] + (".DU" if path[1] == "2" else ".PL")
@@ -395,6 +453,38 @@ def _closed_form(lx: Lexicon, lex_id: str, feat: str, gender: str) -> str | None
     if not forms and path[0] == "personal" and isinstance(node, dict):
         forms = node.get(feat + ".ENCL")      # no book prints a stressed 1st/2nd pl. genitive (Ringe: "???")
     return forms[0] if forms else None
+
+
+# indeclinable closed adverbs (closed_class.json interrogative_adv, correlative_adv): role ADV; the quantifiers
+# also MOD with a head, which they put in the plural like a numeral ('how many horses': kʷóti h₁éḱwōs, Lat. quot)
+CLOSED_ADVERBS = ("interrogative_adv", "correlative_adv")
+CLOSED_QUANTIFIERS = ("closed:interrogative_adv/how_many", "closed:correlative_adv/so_many",
+                      "closed:correlative_adv/as_many")
+
+
+def closed_adverb_ids(lx: Lexicon) -> list[str]:
+    """closed:interrogative_adv/why, … : every indeclinable closed adverb id (make_slice offers them)."""
+    return [f"closed:{sec}/{k}" for sec in CLOSED_ADVERBS for k in lx.closed.get(sec, {}) if not k.startswith("_")]
+
+
+def _check_closed(s: dict, slots: list, where: str, lx: Lexicon) -> list[str]:
+    """A closed id must exist; an indeclinable closed adverb is an ADV (a quantifier also a MOD with a head)."""
+    lid = s.get("lex_id", "")
+    path = lid.split(":", 1)[1].split("/")
+    if path[0] not in CLOSED_ADVERBS:
+        return []
+    if not isinstance(lx.closed.get(path[0], {}).get(path[1] if len(path) > 1 else "_"), list):
+        return [f"{where}: unknown closed id {lid} (the slice's closed list names them)"]
+    role = s.get("role")
+    if role == "MOD" and lid in CLOSED_QUANTIFIERS:
+        h = s.get("head")
+        if not (isinstance(h, int) and 0 <= h < len(slots)) or slots[h].get("role") in ("V", "MOD", "ADV"):
+            return [f"{where}: MOD needs a nominal head slot"]
+        return []
+    if role == "ADV":
+        return []
+    return [f"{where}: {lid} is an indeclinable adverb: role ADV"
+            + (" (or MOD with a head: 'how many horses')" if lid in CLOSED_QUANTIFIERS else "")]
 
 
 def _closed_feat(lx: Lexicon, lex_id: str, feat: str) -> str:
@@ -433,7 +523,9 @@ class Agreement:
 
 def numeral_number(lex_id: str) -> str | None:
     """The number a numeral gives the noun it counts: 1 SG, 2 DU, 3 and up PL (closed:numerals/2,
-    closed:numerals/indeclinable/7); None for anything else."""
+    closed:numerals/indeclinable/7), and the quantifiers kʷóti, tóti, h₁yóti PL; None for anything else."""
+    if lex_id in CLOSED_QUANTIFIERS:
+        return "PL"
     if not lex_id.startswith("closed:numerals/"):
         return None
     try:
@@ -656,6 +748,7 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                     errs.append(e)
                     continue
             if lid.startswith("closed:"):
+                errs += _check_closed(s, slots, where, lx)
                 continue
             if lid == "compound":
                 errs += _check_compound(s, slots, where, lx)
@@ -995,7 +1088,8 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
                             num_fallback="du->pl" if num == "DU" and feat.endswith("PL") else None)
             continue
         elif role == "ADV":
-            feat, form = "ADV", (lx.entries[lid]["form"] if not lid.startswith("closed:") else lid.split(":")[-1])
+            feat, form = "ADV", (lx.entries[lid]["form"] if not lid.startswith("closed:")
+                                 else _closed_form(lx, lid, "ADV", None) or lid.split(":")[-1])
         else:
             # agreement source: a MOD agrees with its head; a predicate adjective with the subject
             if role == "MOD":
@@ -1136,9 +1230,10 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
 
 
 def token_cell(w: dict) -> dict:
-    """Resolved cell metadata and number fallback of a realized word for a corpus token.
-    Only applicable keys are included; features continues to name the realized cell."""
-    return {k: w[k] for k in ("gender", "voice", "num_fallback") if w.get(k)}
+    """Resolved cell metadata, number fallback and the project-reconstruction flag ("coined": "project")
+    of a realized word for a corpus token. Only applicable keys are included; features continues to name
+    the realized cell."""
+    return {k: w[k] for k in ("gender", "voice", "num_fallback", "coined") if w.get(k)}
 
 
 def realize(plan: dict, lx: Lexicon | None = None) -> dict:
@@ -1150,6 +1245,7 @@ def realize(plan: dict, lx: Lexicon | None = None) -> dict:
         ws = realize_clause(cl, lx)
         words += ws
         for w in ws:
+            w.coined = lx.coined(w.lex_id)
             if w.form.startswith("-") and text:
                 text[-1] += w.form
                 gloss[-1] += "=" + w.gloss

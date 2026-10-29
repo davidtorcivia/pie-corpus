@@ -44,6 +44,12 @@ PREFIX_ALIASES = {"pie-lex-h1su": "closed:prefix/h1su", "pie-lex-dus": "closed:p
                   "pie-lex-kwetwores": "closed:numerals/4"}
 
 
+# consonant-stem nouns whose zero-grade compositional form the daughters agree on (Beekes 13.1.4: consonant stems
+# compose in the zero grade): *h₂nr̥- 'man' in Ved. nṛ-máṇas-, Av. nərə-manah- (also the name Nərəmanah-, cf. Gk
+# Ἀνδρο-μένης, thematized; West 2007 ch. 10), Ved. nṛ-pá-, nṛ-cákṣas-. Unaccented: the second member keeps its accent.
+ZERO_GRADE_FIRST = {"pie-lex-h2nexr": "h₂nr̥"}
+
+
 class CompoundError(ValueError):
     """A compound the engine cannot build; the message is for the planner."""
 
@@ -234,6 +240,8 @@ def _first(fid: str, ctype: str, lx) -> tuple[str, bool]:
             # néh₂w- 'ship' → néh₂u- (néh₂uwiHrós; engine sweep: the i-u-stems.md #6 spec néh₂w- replaced néh₂u-)
             stem = render(segs[:-1] + [replace(segs[-1], syl=True)])
             return stem, has_accent(parse(stem))
+        if fid in ZERO_GRADE_FIRST:
+            return ZERO_GRADE_FIRST[fid], False
         raise CompoundError(f"first member {fid}: only thematic and i-/u-stem nouns have a compositional "
                             f"form the engine builds (consonant stems take a zero grade: Beekes 13.1.4)")
     raise CompoundError(f"first member {fid} is a {r['family']}: verbal compounds (*ḱlewos-dʰeh₁-) "

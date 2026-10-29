@@ -33,13 +33,19 @@ CORE_NOUNS = ["pie-lex-h2owis", "pie-lex-h1ngwnis", "pie-lex-peh2wr", "pie-lex-h
               "pie-lex-bhoydheh2", "pie-lex-HrewdHti", "pie-lex-poh2imexn", "pie-lex-yugom", "pie-lex-yewgt-2",
               "pie-lex-Hyeh1kt", "pie-lex-dremt", "pie-lex-went", "pie-lex-bhewgt-3", "pie-lex-misdhos",
               "pie-lex-potnih2", "pie-lex-kwseps", "pie-lex-kjoymos-2", "pie-lex-neh2us", "pie-lex-polh1us"]
+# always offered when usable, for conversation (t024 found no 'which of two', no names, no greetings): kʷóteros, the
+# greeting words of planner-brief-v4 ("Greetings and thanks") and the members of its ready-made personal names
+CONVERSATION = ["pie-lex-kwoteros", "pie-lex-priHos", "pie-lex-keh2ilos", "pie-lex-h1wesus", "pie-lex-gwemt",
+                "pie-lex-deh3t", "pie-lex-gwrneHti", "pie-lex-deh3toxr", "pie-lex-kjlewos", "pie-lex-menos",
+                "pie-lex-h1sntyos", "pie-lex-gjenh1os-2"]
 ADVERB_POS = ("adv", "prep", "postp")
 NIL_ADMIT = {"pie-lex-bhagos", "pie-lex-bhngjhulos", "pie-lex-bhrtos", "pie-lex-gwowsth2os", "pie-lex-kjh3tos",
              "pie-lex-medtos", "pie-lex-priHtos", "pie-lex-h2rgjipyos", "pie-lex-kjolHtos", "pie-lex-rotos"}
 NIL_GLOSS_HELD = {"pie-lex-h2gjtos", "pie-lex-priHnos", "pie-lex-h2ewgos", "pie-lex-wersos", "pie-lex-kjltos",
                   "pie-lex-h2egjtoxr", "pie-lex-segjhtoxr"}
-# dictionary glosses and the hand-checked ones (overrides, supplement: docs/audits/lexicon-gaps-*.md)
-TRUSTED_GLOSS = {"wiktionary", "override", "supplement"}
+# dictionary glosses and the hand-checked ones (overrides, supplement: docs/audits/lexicon-gaps-*.md; project
+# reconstructions, glossed from their handbook cognates: docs/lexicon-project-reconstructions.md)
+TRUSTED_GLOSS = {"wiktionary", "override", "supplement", "project"}
 # derived glosses are kept only for transparent, productive suffixes (b002 review R1);
 # other derived-gloss lexemes need reflexes in at least two branches
 TRANSPARENT_SUFFIXES = {"-tōr", "-tḗr", "-éyeti", "-trom", "-tlom", "-tis", "-tus", "-néh₂ti", "-néwti", "-eti"}
@@ -82,6 +88,13 @@ CLOSED = {
     "closed:interrogative_kwo": "who? which? (m/f/n by head)",
     "closed:interrogative_kwi": "who? what? (kʷís, kʷíd)",
     "closed:indefinite_kwi": "anyone, anything; with neg 'no one, nothing' (enclitic kʷis, kʷid)",
+    "closed:interrogative_adv/why": "why? (kʷíd; ADV, fronted)",
+    "closed:interrogative_adv/when": "when? (kʷóm; ADV, fronted)",
+    "closed:interrogative_adv/where": "where? (kúdʰe; ADV, fronted)",
+    "closed:interrogative_adv/how": "how? (kʷíh₁; ADV, fronted)",
+    "closed:interrogative_adv/how_many": "how many? (kʷóti; MOD with a head, which takes the plural, or ADV; fronted)",
+    "closed:correlative_adv/so_many": "so many (tóti; MOD with a head, plural, or ADV; answers 'how many?')",
+    "closed:correlative_adv/as_many": "as many (as) (h₁yóti; MOD with a head, plural, or ADV; relative of tóti)",
     "compound": ("compound adjective (bahuvrihi) 'having (a) F S' or noun (determinative): {\"lex_id\": \"compound\", "
                  "\"compound\": {\"first\": F, \"second\": S, \"type\": \"bahuvrihi\"|\"determinative\"}}; F = "
                  "closed:prefix/h1su 'good', closed:prefix/dus 'bad', closed:prefix/n 'un-, -less', closed:prefix/sm "
@@ -96,6 +109,17 @@ def _compound_second(lex_id: str, lx) -> bool:
         return True
     except CompoundError:
         return False
+
+
+def slice_adverbs(lx, attested, n: int = 40) -> list[dict]:
+    """The slice's adverbs and adpositions (role ADV): the n best attested, leaving out a word a closed adverb id
+    already offers (kúdʰe, kʷíh₁, kʷóti, tóti: closed:interrogative_adv/…, so one word has one id)."""
+    from pie.realize import _closed_form, closed_adverb_ids
+    closed_forms = {_closed_form(lx, c, "ADV", None) for c in closed_adverb_ids(lx)}
+    advs = sorted((i for i, e in lx.entries.items() if e.get("pos") in ADVERB_POS and e["meaning"]
+                   and i not in lx.blocked and not e["form"].startswith("-") and e["form"] not in closed_forms),
+                  key=lambda i: -attested(i))[:n]
+    return [{"lex_id": i, "form": lx.entries[i]["form"], "gloss": lx.meaning(i)[0][:60]} for i in advs]
 
 
 def verb_features(cells: dict) -> list[str]:
@@ -211,7 +235,7 @@ def main() -> int:
                                         (lx.entries[i].get("root_id"), lx.meaning(i)[0]) in words_rg)]
     chosen += [i for i in pool if lx.specs[i]["family"] == "verb" and hits(i, CORE_VERBS) and i not in chosen
                and lx.meaning(i)[1] in TRUSTED_GLOSS]
-    chosen += [i for i in CORE_NOUNS if i in pool and i not in chosen]
+    chosen += [i for i in CORE_NOUNS + CONVERSATION if i in pool and i not in chosen]
     # the formula menu's words, so planners can use the inherited phrases
     menu_path = ROOT / "data" / "generation" / "formula_menu.json"
     menu = json.loads(menu_path.read_text("utf-8")) if menu_path.exists() else []
@@ -238,6 +262,8 @@ def main() -> int:
             item["valency"] = VALENCY[i]["valency"]
         if src == "derived":
             item["gloss_approximate"] = True   # root meaning + suffix function, not a dictionary gloss
+        if lx.coined(i):
+            item["coined"] = lx.coined(i)      # a project reconstruction (PLAN.md): Tier 3/3b only, flagged
         if r["family"] == "noun":
             item["gender"] = lx.gender(i)
             if _compound_second(i, lx):
@@ -258,9 +284,7 @@ def main() -> int:
     ids = {it["lex_id"] for it in items}
     formulas = [m for m in menu if all(x["lex_id"] in ids for x in m["lexemes"])]
     # adverbs and adpositions (role ADV): indeclinables have no paradigm spec, so the pool never has them
-    advs = sorted((i for i, e in lx.entries.items() if e.get("pos") in ADVERB_POS and e["meaning"]
-                   and i not in lx.blocked and not e["form"].startswith("-")), key=lambda i: -attested(i))[:40]
-    adverbs = [{"lex_id": i, "form": lx.entries[i]["form"], "gloss": lx.meaning(i)[0][:60]} for i in advs]
+    adverbs = slice_adverbs(lx, attested)
     out.write_text(json.dumps({"name": args.name, "keywords": args.keywords,
                                "closed": {**CLOSED, **CLOSED_NUMERALS}, "adverbs": adverbs, "theme_core": core,
                                "formulas": formulas, "lexemes": items},

@@ -48,6 +48,10 @@ Compounds (pie.compound) are open-ended, so they are not pre-indexed: a plan's
 compounds are added with index_plan_compounds(ix, plan) (or ix.add_compound(c))
 before its text is validated. The cells come from the same function the
 realizer uses, so a realized compound validates at the exact tier.
+
+Project reconstructions (data/lexicon/project_reconstructions.jsonl, coined
+"project") are not in load_index's index, so Tier 1 and Tier 2 are never
+validated against them. Tier 3/3b adds them with index_project(ix).
 """
 
 from __future__ import annotations
@@ -324,6 +328,30 @@ def index_plan_compounds(ix: FormIndex, plan: dict) -> list[str]:
                 if lid:
                     out.append(lid)
     return out
+
+
+def index_project(ix: FormIndex, path: Path | None = None) -> list[str]:
+    """Add the project reconstructions (data/lexicon/project_reconstructions.jsonl, coined "project") to an
+    index, for Tier 3/3b texts built from them (scripts/realize_plans.py). load_index never does this: Tier 1
+    and Tier 2 are validated against the scholarly lexicon only (PLAN.md "Project reconstructions"). Their
+    analyses carry source "engine:project" / "project-lexicon", so a caller can tell them apart."""
+    from .realize import PROJECT_RECONSTRUCTIONS, load_project_reconstructions
+    entries, specs = load_project_reconstructions(path or PROJECT_RECONSTRUCTIONS)
+    for i, e in entries.items():
+        if i in ix.lex and ix.lex[i].get("source") != "project":
+            raise ValueError(f"project reconstruction id already in the index: {i}")
+        ix.lex[i] = e
+    for i, r in specs.items():
+        ix.specs[i] = r
+        if r.get("spec"):
+            ix._add_spec(r)
+    for i, e in entries.items():
+        for f in [e["form"], *e.get("variants", [])]:
+            if not (f.startswith("-") or f.endswith("-")):
+                ix._add(f, Analysis(i, e.get("root_id"), "LEMMA", "project-lexicon",
+                                    status="primary" if f == e["form"] else "supported"))
+        ix.lemma_forms[key(e["form"].strip("-"), "generic-H")].append(i)
+    return sorted(entries)
 
 
 def load_index(root: Path = ROOT, convention: str | None = None) -> FormIndex:
