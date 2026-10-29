@@ -180,7 +180,9 @@ records, eval items from eval records, both directions of an eval item in eval o
 the chat export's, run against the translator's train and the chat train together, and fails the export.
 `summary.json` `self_overlap` counts assistant turns only: an `en_pie` output's PIE is the `pie_en` partner's
 input, by design. Train the translation model on `translator/train.jsonl`; train the chat model on
-`chat/train_mix.jsonl`.
+`chat/train_mix.jsonl`. As built: train 5,908 examples (2,954 per direction: 1,609 sentence-level and
+1,345 short-paragraph items), eval 170 (85 per direction, 84 with a gloss reference; the Tier 1 items have
+none).
 
 **Mix.** `summary.json` `mix` groups the kinds: `english_input` (`translate_en_pie`, `translate_app` en_pie,
 `app_session`, `en_dialogue`, `demo_chat`), `pie_to_english` (`translate_pie_en`, `translate_app` pie_en),
@@ -188,20 +190,36 @@ input, by design. Train the translation model on `translator/train.jsonl`; train
 `cognates_to_pie`), with each split's examples, content tokens (Qwen3-4B), shares and the per-example
 sampling weight that reaches the target. Every task stays a conversation in `chat/train.jsonl`, so the
 grammar tasks are most of its examples; `chat/train_mix.jsonl` keeps every English-input example and
-fills the rest in the target proportions (the lowest crc32 of their content; no example repeated).
-As built (the commit is `chat/summary.json` `provenance`; Tier 3 batches pending re-approval are out, so
-train is smaller for now):
+fills the rest in the target proportions (the lowest crc32 of their content; no example repeated), or all a
+group has when it is short of its target. The target (`TARGET_MIX`): **50% English input, 10% PIE → English,
+15% PIE-only chat, 25% grammar**. PIE → English is kept small for the chat model; the translation app's
+both-ways data is the separate `translator/` dataset. As built (the commit is `chat/summary.json`
+`provenance`; Tier 3 batches pending re-approval, among them b001-b003 and t3b-002, are out, so train is
+smaller for now):
 
 | group | target | `train.jsonl` examples | share | tokens | token share | `train_mix.jsonl` examples | share |
 |---|---|---|---|---|---|---|---|
-| english_input | 60% | 4,268 | 28.3% | 545,284 | 30.1% | 4,268 | 60.3% |
-| pie_to_english | 10% | 1,842 | 12.2% | 289,467 | 16.0% | 711 | 10.0% |
-| pie_only_chat | 5% | 320 | 2.1% | 73,857 | 4.1% | 320 | 4.5% |
-| grammar | 25% | 8,648 | 57.4% | 903,395 | 49.9% | 1,778 | 25.1% |
-| total | | 15,078 | | 1,812,003 | | 7,077 | |
+| english_input | 50% | 3,699 | 26.4% | 509,797 | 29.3% | 3,699 | 55.6% |
+| pie_to_english | 10% | 1,541 | 11.0% | 268,698 | 15.4% | 740 | 11.1% |
+| pie_only_chat | 15% | 360 | 2.6% | 80,850 | 4.6% | 360 | 5.4% |
+| grammar | 25% | 8,398 | 60.0% | 880,908 | 50.6% | 1,850 | 27.8% |
+| total | | 13,998 | | 1,740,253 | | 6,649 | |
 
-By tokens, English input is 59.5% of `train_mix.jsonl` (545,284 of 916,243). Of the conversation and
-translation examples (all but grammar), English input is 66% in `train.jsonl` and 81% in `train_mix.jsonl`.
+**PIE-only chat is short of its 15% target**: the mix takes all 360 such examples (111 `pie_dialogue`, 249
+`continuation`), 5.4% of `train_mix.jsonl`, so English input lands at 55.6% rather than 50%. Doubling every
+aligned dialogue into `pie_pie` instead of one in two would still give only about 6%; reaching 15% needs more
+dialogue corpus. By tokens, English input is 55.6% of `train_mix.jsonl` (509,797 of 916,536). Of the
+conversation and translation examples (all but grammar), English input is 66% in `train.jsonl` and 77% in
+`train_mix.jsonl`.
+
+**Multi-turn.** `summary.json` `turns`: user turns per example (1, 2, 3, 4+) per kind and mode, and the
+multi-turn examples (two or more user turns) by source: `dialogue` (the exchanges of one dialogue text, each
+reply answering what was said: `en_dialogue`, `pie_dialogue`) and `chained` (a user's requests one after
+another: `app_session`, `demo_chat`), the latter capped at 10%. As built, `train_mix.jsonl` has 278
+multi-turn examples, 4.2% of it: 251 dialogue-derived and 27 chained (9.7% of the multi-turn). Every
+multi-turn example of `train.jsonl` is in the mix. The dialogue data is thin: the admitted corpus has 149
+aligned dialogues and 111 `pie_pie` conversations, many single-exchange, so conversational multi-turn
+cannot be a large share until more dialogue corpus is written.
 
 **Self-overlap.** `summary.json` `self_overlap`: per assistant turn of a dialogue record, the number of
 dialogue-mode examples that train on it (cap 3, `DEDUP_CAP`; the tests fail above it); and, reported only,
