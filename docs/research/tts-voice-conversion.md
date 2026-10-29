@@ -301,3 +301,24 @@ near zero partly by method: the F0 tracks are compared on normalised time, and o
 timing (1.1–1.7× eSpeak's length) puts its syllables elsewhere; read them as "not eSpeak's contour", not as
 "no accent". Seed-VC F0 keeps the contour on the hymns as on the words. Its χ is weakest in the shifted female
 voices, bf_isabella above all, which matches §5.2 (0.56 there, unshifted).
+
+## 2026-10-29: recitation cadence + ElevenLabs chain (Dawn hymn, t3-t026-00015)
+
+Owner listening: Seed-VC sounds good but loses the laryngeals; OpenVoice keeps them. Best so far (owner's pick):
+**eSpeak re-timed as verse (tts/cadence/cadence.py) → OpenVoice V2 em_alex → ElevenLabs speech-to-speech (owner, by
+hand) → tts/cadence/transplant_f0.py with MICRO=1 F0_RANGE=1.6** (the slow melody from the eSpeak source,
+widened 1.6×, ElevenLabs' own micro-variation kept).
+
+Measurements (all on the 27.21 s cadence timeline, which ElevenLabs preserves to the millisecond):
+- h₂ friction (2–8 kHz share, initial h₂ of h₂éwsos): eSpeak 0.38, OpenVoice 0.15, Seed-VC 0.05, ElevenLabs on
+  OpenVoice 0.32. ElevenLabs restores what OpenVoice thinned.
+- Melody: ElevenLabs re-invents it (window r 0.22 to the source; Seed-VC F0 mode keeps it, 0.86). A plain F0
+  transplant gets r 0.99 but copies eSpeak's piecewise-flat contour (median 10 ms step 0.06 st vs ElevenLabs'
+  0.22), heard as robotic; MICRO mode gives r 0.93 with step 0.15 st.
+- A second ElevenLabs pass over the transplanted file again drops the melody (r 0.30); the transplant has to be last.
+
+VocalTractLab render (built by another agent, 19.8 s), and ElevenLabs over it: cleanest voice (HNR 14.3 dB), pitch
+steps 0.105 st, and ElevenLabs follows its melody (r 0.84). But there are no pauses between lines (longest
+silence 0.21 s), and the h₂ windows (located by DTW from the cadence source, so approximate) show almost no
+friction (0.02–0.05 against eSpeak's 0.36–0.41), although its [s] is strong. Its χ looks absent or very weak;
+to be confirmed by ear.
