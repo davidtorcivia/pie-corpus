@@ -83,6 +83,34 @@ def _drop(slots: list[dict], k: int) -> list[dict]:
     return out
 
 
+def _insert(slots: list[dict], k: int, slot: dict) -> list[dict]:
+    """Slots with `slot` inserted at index k; every head/dep at or after k moves up by one, so links keep
+    pointing at the same slot."""
+    out = []
+    for s in slots:
+        s = dict(s)
+        for key in ("head", "dep"):
+            if isinstance(s.get(key), int) and s[key] >= k:
+                s[key] += 1
+        out.append(s)
+    out.insert(k, slot)
+    return out
+
+
+def cap_uses(words: list[dict]) -> Counter:
+    """Lexeme uses exactly as realize_plans' max_lexeme_uses gate counts them: no closed-class ids and no
+    copula (CAP_EXEMPT). Theme-core lexemes are included; over_cap() compares them with theme_cap."""
+    return Counter(w["lex_id"] for w in words
+                   if not w["lex_id"].startswith("closed:") and w["lex_id"] not in GATE["CAP_EXEMPT"])
+
+
+def over_cap(added: Counter, uses: Counter, cap: int, core: set[str], core_cap: int) -> list[str]:
+    """Added lexemes whose batch count would pass the gate's cap: theme_cap for the slice's theme core,
+    lexeme_cap for every other lexeme."""
+    return [lid for lid, n in added.items() if n > 0 and not lid.startswith("closed:")
+            and lid not in GATE["CAP_EXEMPT"] and uses[lid] + n > (core_cap if lid in core else cap)]
+
+
 def candidate_edits(plan: dict, line: int, grp: list[int], lx: Lexicon, slice_: dict) -> list[tuple[str, str, dict]]:
     """(kind, description, edited plan) for one sentence."""
     out = []
@@ -121,7 +149,7 @@ def candidate_edits(plan: dict, line: int, grp: list[int], lx: Lexicon, slice_: 
                 edit("drop", f"c{ci} slot {k}: drop {DROPPABLE[s['role']]} {lid} [update the English]",
                      lambda p, ci=ci, k=k: p["clauses"][ci].__setitem__("slots", _drop(p["clauses"][ci]["slots"], k)))
         # epithets: a slice adjective on a noun slot
-        adjs = [x["lex_id"] for x in slice_.get("lexemes", []) if x.get("family") == "adj"]
+        adjs = list(dict.fromkeys(x["lex_id"] for x in slice_.get("lexemes", []) if x.get("family") == "adj"))
         for k, s in enumerate(slots):
             lid = s.get("lex_id", "")
             if s.get("role") in NOMINAL_ROLES and lx.specs.get(lid, {}).get("family") == "noun":
@@ -138,7 +166,8 @@ def candidate_edits(plan: dict, line: int, grp: list[int], lx: Lexicon, slice_: 
             core = [x for x in slice_.get("theme_core", []) if lx.specs.get(x, {}).get("family") == "noun"]
             for n in dict.fromkeys([*used, *core]):
                 edit("vocative", f"c{ci}: add vocative {n} [add it to the English]",
-                     lambda p, ci=ci, n=n: p["clauses"][ci]["slots"].insert(0, {"lex_id": n, "role": "VOC"}))
+                     lambda p, ci=ci, n=n: p["clauses"][ci].__setitem__(
+                         "slots", _insert(p["clauses"][ci]["slots"], 0, {"lex_id": n, "role": "VOC"})))
     for ci in grp[1:]:
         edit("split", f"split the sentence before c{ci} (break: true) [two lines]",
              lambda p, ci=ci: p["clauses"][ci].__setitem__("break", True))
@@ -166,8 +195,9 @@ def report(path: Path, misses_only: bool = False, max_edits: int = 8) -> dict:
         r = realize(plan, lx)
         realized[n] = r
         n_tokens += len(r["words"])
-        uses.update(w["lex_id"] for w in r["words"] if not w["lex_id"].startswith("closed:"))
+        uses.update(cap_uses(r["words"]))
     cap = GATE["lexeme_cap"](len(realized), n_tokens)
+    core, core_cap = GATE["theme_core"](batch), GATE["theme_cap"](len(realized), n_tokens)
     out_plans = []
     total = exact = 0
     for n, rec in enumerate(plans):
@@ -230,9 +260,8 @@ def report(path: Path, misses_only: bool = False, max_edits: int = 8) -> dict:
                     continue
                 if check_plan(p, lx):
                     continue
-                added = Counter(w["lex_id"] for w in realize(p, lx)["words"]) - \
-                    Counter(w["lex_id"] for w in r["words"])
-                over = [lid for lid in added if not lid.startswith("closed:") and uses[lid] + added[lid] > cap]
+                added = cap_uses(realize(p, lx)["words"]) - cap_uses(r["words"])
+                over = over_cap(added, uses, cap, core, core_cap)
                 found.append({"kind": kind, "edit": desc, "result": result, "exact": score == 0,
                               **({"over_cap": over} if over else {})})
             found.sort(key=lambda e: (not e["exact"], "over_cap" in e,
@@ -241,7 +270,8 @@ def report(path: Path, misses_only: bool = False, max_edits: int = 8) -> dict:
             line["edits"] = found[:max_edits]
             line["alt"] = [f"{w} → {f} ({d:+d})" for w in text.replace("-", " -").split()
                            for f, d in alt_by_form.get(w, []) if abs(gap - d) < abs(gap)]
-    return {"batch": batch, "source": str(path), "lexeme_cap": cap, "lines": total, "exact": exact,
+    return {"batch": batch, "source": str(path), "lexeme_cap": cap, "theme_cap": core_cap,
+            "uses": dict(uses), "lines": total, "exact": exact,
             "exact_share": round(exact / max(1, total), 3), "gate_min": GATE["METER_EXACT_MIN"],
             "plans": out_plans}
 
@@ -295,7 +325,8 @@ def main() -> int:
         return 0
     print(f"{rep['batch']}: {rep['exact']}/{rep['lines']} verse lines exact ({rep['exact_share']:.3f}; "
           f"gate meter_exact>={rep['gate_min']:.2f} {'PASS' if rep['exact_share'] >= rep['gate_min'] else 'FAIL'}); "
-          f"lexeme cap {rep['lexeme_cap']}")
+          f"lexeme cap {rep['lexeme_cap']}, theme-core cap {rep['theme_cap']}")
+    print("OVER CAP is per edit against the batch's current counts: several adds of one lexeme add up.")
     print("Counts are per word: word order never changes them. [..] = what else the edit changes.")
     for e in rep["plans"]:
         if "rejected" in e:
