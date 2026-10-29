@@ -192,6 +192,7 @@ Code: `pie/speak.py` (API), `scripts/speak.py` (CLI), `scripts/speech_pack.py` (
 | `espeak` | eSpeak-NG 1.52.0, custom `pie` phoneme table (Hindi base + Arabic ħ ʕ + level tones) | `tone=True`: voice `pie/pie-tone`, high level tone (`5`) on the accented syllable, low (`1`) elsewhere; `tone="stress"`/`False`: voice `pie/pie`, `'` stress | Robotic, segmentally right: χ ɣ ʔ ħ ʕ c ɟ, murmured stops, syllabic resonants, length |
 | `kokoro` | Kokoro-82M v1.0, local PyTorch | `pitch=True` (default with `tone=True`): the predicted F0 is flattened to 0.92 × median and raised to 1.3 × median on the accented vowel (and its ː); `pitch=False` ("raw"): ˈ before the accented syllable | Natural; Hindi voices `hf_alpha` (default), `hf_beta`, `hm_omega`, `hm_psi` |
 | `kokoro-remote` | Kokoro-FastAPI server, `POST /dev/generate_from_phonemes` | ˈ only (no F0 access on the server) | Same model; any server voice (Hindi, English `af_*`/`bm_*`, Italian `im_nicola`, …) |
+| `kokoro-erebus` | The `kokoro` backend itself, run as the `pie-tts` service on erebus (§11.6), `POST /speak_ipa` | Same as `kokoro` (`pitch=True` F0 patch, or ˈ) | Same output as local `kokoro`, with no local PyTorch env needed; the voices pinned in the deployed revision |
 
 **Round trip (espeak).** eSpeak does not reject an unknown phoneme code: it silently drops the rest of the word (`[[H'eKw0s]]` is read as ħˈe). Every rendering is therefore read back with `espeak-ng --ipa` on the exact string sent and compared with the converter's IPA. The comparison ignores dots, stress and tone, reads eSpeak's ʰ after a voiced stop as ʱ, kw as kʷ, and a doubled r̩ l̩ m̩ n̩ ɐ ɵ as one (eSpeak prints a tone-bearing or long one twice). A mismatch raises `RoundTripError`, or with `strict=False` (`--no-strict`) prints a WARNING on stderr and warns. A second failure mode is also guarded: `[[…]]` input longer than about 750 characters is cut mid-word into a new clause that eSpeak reads as English text, so input goes to eSpeak in pieces of at most 400 characters.
 
@@ -252,3 +253,78 @@ speak_ipa("ʔés.ti", backend="kokoro-remote", out_wav="e.wav", voice="hf_alpha"
 - **eSpeak conventions.** All three presets and the `fronted`, `colored`, `voiceless` and `generic` options are supported. `fronted` kʲ ɡʲ ɡʲʱ are said as the palatals c ɟ ɟʱ (§3.1: the same articulation). `dorsals="uvular"` (ɢ: no eSpeak table has a voiced uvular stop) and `vocalized="syllabic"` (χ̩ etc.) raise `UnsupportedPhone`.
 - **eSpeak stress.** In stress mode a word without an accent spoken alone still gets eSpeak's default stress. The tone voice's pitch range is narrow (about 80 → 98 Hz at default settings).
 - **Licences.** The eSpeak data is GPL-3.0 (the audio is not covered). Kokoro is Apache-2.0. Piper's code is GPL-3.0; the licence of the `hi_IN-rohan` data (IIT Madras IndicTTS) is unverified, so confirm it before any public use of Piper clips.
+
+### 11.6 Deployment on erebus
+
+The pitch-patched `kokoro` backend runs as a Docker service, `pie-tts`, on the home server erebus. It exists so the demo can use the F0 accent without the local Python 3.12 Kokoro env. The files are in `tts/erebus/`:
+
+- `server.py`: a standard-library HTTP server. Each request goes through `pie.speak.speak` or `speak_ipa` with `backend="kokoro"`, so the server renders exactly what a local run renders. One lock serializes synthesis, because the pitch patch swaps a method on the shared model.
+- `Dockerfile`:
+  - base `python:3.12.13-slim-bookworm`, pinned by digest;
+  - `torch==2.15.0+cpu` from the PyTorch CPU index;
+  - `requirements.txt`, the exact freeze of `.venv-kokoro`;
+  - the weights, fetched at build time by `pie.speak.kokoro_file` (the pinned revision and sha256 of §11.2) and baked into the image. At runtime the server runs with `HF_HUB_OFFLINE=1`.
+- `deploy.sh`: run from the Mac. It stages the needed files from the committed HEAD with `git archive`:
+  - `pie/{__init__,translit,phon,meter,ipa,speak}.py`;
+  - `tts/espeak/mapping.json`, which `pie.speak` reads at import;
+  - `tts/kokoro/vocab.json`;
+  - the three `tts/erebus/` files.
+
+  It then copies them to `~/pie-tts/` on erebus, builds `pie-tts:<git rev>` and `pie-tts:latest` there, starts the container and waits for `/health`.
+
+**Footprint.** The deployment uses only the image `pie-tts:*`, the container `pie-tts` and the directory `~/pie-tts/` (the build context, about 200 KB). The existing `kokoro-tts` container (Kokoro-FastAPI on XPU, port 8880) and every other service are separate and untouched.
+
+**Container settings:**
+- `-p 127.0.0.1:8881:8881`: the port is bound to localhost on erebus only;
+- `--restart unless-stopped`;
+- `--cpus 6 --memory 6g --memory-swap 6g --pids-limit 256`;
+- a read-only root filesystem with a 256 MB `/tmp` tmpfs;
+- `--cap-drop ALL --security-opt no-new-privileges`, running as a non-root user;
+- logs capped at 3 × 10 MB.
+
+**Measured on 2026-10-28:**
+- image 1.93 GB;
+- about 2.1 GiB RAM, idle and while rendering;
+- about 590% CPU (the 6-CPU cap) while rendering;
+- about 0.4 × real time: 351 characters of PIE gave 35 s of audio in 14 s.
+
+**API** (JSON in; `audio/wav` out, 16-bit mono 24 kHz):
+
+| Endpoint | Body | Notes |
+|---|---|---|
+| `GET /health` | | `{"status": "ok", "revision", "voices", "torch", "threads", ...}` once the model and voices are loaded |
+| `POST /speak` | `{"text": PIE, "voice": "hf_alpha", "pitch": true, "convention": "default", "tone": true, "speed": 0.9, "seed": null}` | Only `text` is required. `convention` is a key of `pie.ipa.CONVENTIONS`; `tone` is `true`, `false` or `"stress"` |
+| `POST /speak_ipa` | `{"ipa": converter IPA, "voice", "pitch", "tone", "speed", "seed"}` | Used by the `kokoro-erebus` backend |
+
+- **Limits:** `text` or `ipa` of at most 2,000 characters (413 above that) and a request body of at most 16 KB. `speed` must be in [0.5, 2.0].
+- **Errors:** an unknown voice or convention, an out-of-vocab phone (`"type": "UnsupportedPhone"`), or a ‖ chunk over 510 phonemes gives 400 with `{"error", "type"}`.
+- **Response headers:** a wav response carries `X-PIE-IPA`, `X-PIE-Engine-Input` and `X-PIE-Voice` (percent-encoded UTF-8).
+- **Seed:** the Kokoro decoder adds random excitation noise, so two unseeded renders of the same input differ slightly. Two local runs give r ≈ 0.996-0.997 and identical length. `seed` fixes that noise, and with the same seed the service and a local CPU run agree to float drift.
+
+**Commands** (from the Mac, in the repo):
+
+```sh
+sh tts/erebus/deploy.sh            # (re)deploy HEAD: stage, build on erebus, replace the pie-tts container
+sh tts/erebus/deploy.sh status     # docker ps line, docker stats, /health
+sh tts/erebus/deploy.sh logs 200   # last 200 log lines (one per request; request bodies are never logged)
+sh tts/erebus/deploy.sh stop       # docker stop pie-tts   (stays stopped until started)
+sh tts/erebus/deploy.sh start      # docker start pie-tts
+sh tts/erebus/deploy.sh remove     # docker rm -f pie-tts; docker rmi the pie-tts images; rm -rf ~/pie-tts
+
+ssh -N -L 8881:localhost:8881 erebus     # tunnel; then:
+curl -s localhost:8881/health
+curl -s -X POST localhost:8881/speak -H 'Content-Type: application/json' \
+     -d '{"text": "h₂ówis h₁éḱwōs-kʷe", "voice": "hf_alpha", "pitch": true}' -o ovis.wav
+uv run python -I scripts/speak.py --backend kokoro-erebus -o x.wav "deywós"   # no Kokoro env needed
+```
+
+On erebus itself: `docker logs -f pie-tts`, `docker stop pie-tts` and `docker start pie-tts`. Manual removal is `docker rm -f pie-tts; docker rmi pie-tts:latest pie-tts:<rev>; rm -rf ~/pie-tts`.
+
+The client backend `kokoro-erebus` posts to `PIE_KOKORO_PITCH_URL` (default `http://localhost:8881`). `tests/test_speak.py::test_kokoro_erebus_renders` skips when `/health` does not answer within 2 s.
+
+**Verification (2026-10-28, deployed revision c7d80e2).** Three pack lines (schleicher-1, king-1 and hymn-1) were sent through the tunnel to `/speak` as PIE text.
+- The returned IPA and engine input equal the manifest's.
+- Every sample count equals the local pack wav's.
+- Unseeded, service vs pack gives r = 0.9956-0.9976, the same range as a local rerun vs pack (r = 0.9956-0.9975).
+- With seed 1234 on both sides, service vs local gives r = 0.99996-1.00000 (max |Δ| ≤ 0.023 of full scale).
+- F0 of `ɟʱi.méː` (Praat, as in tts-options.md §2.3) is the same track to the Hz on both sides: 171-204 Hz on ɟʱi, rising to a 271 Hz peak on méː. The earlier local measurement was 172-205 Hz, then 254-271 Hz.

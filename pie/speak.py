@@ -3,6 +3,7 @@
     speak("h₂ówis h₁éḱwōs-kʷe", backend="espeak", out_wav="ovis.wav")              # eSpeak-NG, level tones
     speak("h₂ówis h₁éḱwōs-kʷe", backend="kokoro", out_wav="ovis.wav")              # Kokoro-82M, imposed F0 accent
     speak("h₂ówis h₁éḱwōs-kʷe", backend="kokoro-remote", out_wav="ovis.wav")       # Kokoro-FastAPI server
+    speak("h₂ówis h₁éḱwōs-kʷe", backend="kokoro-erebus", out_wav="ovis.wav")       # pie-tts service (F0 accent)
     speak_ipa("ʔés.ti", backend="espeak", out_wav="esti.wav")                        # IPA in (minimal pairs)
 
 Backends:
@@ -19,6 +20,9 @@ Backends:
 - "kokoro-remote": the same substituted input to a Kokoro-FastAPI server's /dev/generate_from_phonemes. No F0
   access, so the accent is sent as ˈ. Transport: PIE_KOKORO_URL (e.g. http://localhost:8880 through
   `ssh -N -L 8880:localhost:8880 erebus`) if set, else `ssh $PIE_KOKORO_SSH curl ...` (default host erebus).
+- "kokoro-erebus": the "kokoro" backend itself (pitch patch included) run as the pie-tts service on erebus
+  (tts/erebus/, docs/pronunciation.md "Deployment on erebus"). The converter IPA is posted to its /speak_ipa;
+  PIE_KOKORO_PITCH_URL, default http://localhost:8881 through `ssh -N -L 8881:localhost:8881 erebus`.
 
 Every phone a Kokoro backend receives is checked against Kokoro's vocab (tts/kokoro/vocab.json); KModel would
 otherwise drop unknown symbols silently.
@@ -51,7 +55,7 @@ VOICE_STRESS, VOICE_TONE = "pie/pie", "pie/pie-tone"
 ESPEAK_MAP = json.loads((ESPEAK_DIR / "mapping.json").read_text("utf-8"))
 HIGH_TONE, LOW_TONE = "5", "1"           # tone phonemes defined in tts/espeak/ph_pie
 
-BACKENDS = ("espeak", "kokoro", "kokoro-remote")
+BACKENDS = ("espeak", "kokoro", "kokoro-remote", "kokoro-erebus")
 BREAKS = ("‖", "|")
 
 # Kokoro-82M v1.0, pinned (docs/pronunciation.md "Speech" lists URLs and checksums).
@@ -494,6 +498,57 @@ def _speak_kokoro_remote(ipa: str, out_wav: str, *, voice: str | None) -> Speech
                         notes=["accent sent as ˈ (no F0 control on the server)"])
 
 
+# ---------------------------------------------------------------- Kokoro on erebus (pie-tts, tts/erebus/)
+
+def kokoro_erebus_url() -> str:
+    return os.environ.get("PIE_KOKORO_PITCH_URL", "http://localhost:8881").rstrip("/")
+
+
+def kokoro_erebus_status(timeout: float = 2.0) -> str | None:
+    """None when the pie-tts service answers GET /health, else the reason it does not."""
+    url = kokoro_erebus_url() + "/health"
+    try:
+        with urllib.request.urlopen(url, timeout=timeout) as r:
+            if json.loads(r.read()).get("status") == "ok":
+                return None
+            return f"{url}: not ok"
+    except Exception as e:  # noqa: BLE001 - any failure means "not reachable"
+        return f"pie-tts not reachable at {url} ({e}); tunnel: ssh -N -L 8881:localhost:8881 erebus"
+
+
+def _speak_kokoro_erebus(ipa: str, out_wav: str, *, tone, voice: str | None, pitch: bool,
+                         speed: float) -> SpeechResult:
+    from urllib.error import HTTPError, URLError
+    from urllib.parse import unquote
+    voice = voice or "hf_alpha"
+    body = json.dumps({"ipa": ipa, "tone": tone, "voice": voice, "pitch": pitch, "speed": speed},
+                      ensure_ascii=False).encode("utf-8")
+    req = urllib.request.Request(kokoro_erebus_url() + "/speak_ipa", data=body,
+                                 headers={"Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=180) as r:
+            data, hdr = r.read(), r.headers
+    except HTTPError as e:
+        try:
+            err = json.loads(e.read())
+        except ValueError:
+            err = {"error": str(e)}
+        cls = UnsupportedPhone if err.get("type") == "UnsupportedPhone" else SpeechError
+        raise cls(f"kokoro-erebus: {e.code} {err.get('error')}") from None
+    except URLError as e:
+        raise SpeechError(f"kokoro-erebus: {kokoro_erebus_url()} unreachable ({e.reason}); "
+                          "tunnel: ssh -N -L 8881:localhost:8881 erebus") from None
+    try:
+        with wave.open(io.BytesIO(data)) as w:
+            if w.getsampwidth() != 2 or w.getnchannels() != 1 or w.getframerate() != KOKORO_RATE:
+                raise SpeechError("kokoro-erebus returned a wav that is not 16-bit mono 24 kHz")
+    except wave.Error as e:
+        raise SpeechError(f"kokoro-erebus returned no wav ({e}): {data[:200]!r}") from None
+    Path(out_wav).write_bytes(data)
+    return SpeechResult("kokoro-erebus", unquote(hdr.get("X-PIE-Voice", voice)), ipa,
+                        unquote(hdr.get("X-PIE-Engine-Input", "")), str(out_wav))
+
+
 # ---------------------------------------------------------------- API
 
 def speak_ipa(ipa: str, *, backend: str = "espeak", out_wav: str = "out.wav", tone: bool | str = True,
@@ -512,6 +567,8 @@ def speak_ipa(ipa: str, *, backend: str = "espeak", out_wav: str = "out.wav", to
                              voice=voice)
     if backend == "kokoro":
         return _speak_kokoro(ipa, out_wav, tone=tone, voice=voice, pitch=pitch, speed=speed)
+    if backend == "kokoro-erebus":
+        return _speak_kokoro_erebus(ipa, out_wav, tone=tone, voice=voice, pitch=pitch, speed=speed)
     return _speak_kokoro_remote(ipa, out_wav, voice=voice)
 
 

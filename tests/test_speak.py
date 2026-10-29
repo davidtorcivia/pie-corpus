@@ -192,6 +192,23 @@ def test_kokoro_remote_renders(tmp_path):
         assert w.getnframes() > 4800
 
 
+_EREBUS = S.kokoro_erebus_status()
+
+
+@pytest.mark.skipif(_EREBUS is not None, reason=str(_EREBUS))
+def test_kokoro_erebus_renders(tmp_path):
+    """The pie-tts service (tts/erebus/) through PIE_KOKORO_PITCH_URL: pitch-patched, same front end."""
+    r = S.speak("ǵʰimḗ", backend="kokoro-erebus", out_wav=str(tmp_path / "e.wav"))
+    assert r.backend == "kokoro-erebus" and r.voice == "hf_alpha +pitch"
+    assert r.engine_input == unicodedata.normalize("NFC", S.kokoro_chunks(r.ipa)[0][0])
+    with wave.open(r.out_wav) as w:
+        assert w.getframerate() == 24000 and w.getnchannels() == 1 and w.getnframes() > 4800
+    with pytest.raises(S.UnsupportedPhone):
+        S.speak_ipa("tθ̼", backend="kokoro-erebus", out_wav=str(tmp_path / "x.wav"))
+    with pytest.raises(S.SpeechError, match="limit"):
+        S.speak_ipa("ta " * 700, backend="kokoro-erebus", out_wav=str(tmp_path / "y.wav"))
+
+
 # ---------------------------------------------------------------- CLI
 
 def _cli(*args, stdin=None):
