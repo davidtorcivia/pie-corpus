@@ -1,51 +1,52 @@
 {
  "provenance": {
-  "commit": "76c31b957c40d85d7d6281743923d1f2332e7741",
+  "commit": "bc388e390e67f5629bac35176dedd81863e618f6",
   "inputs_dirty": false,
   "include_pilot": false,
   "experimental_batches": false
  },
  "examples": {
-  "train": 11621,
-  "eval": 536
+  "train": 11677,
+  "eval": 534
  },
  "examples_by_kind": {
   "train": {
    "cognates_to_pie": 1774,
    "continuation": 249,
    "demo_chat": 41,
-   "en_dialogue": 168,
-   "gloss": 1172,
+   "en_dialogue": 172,
+   "gloss": 1188,
    "inflect": 4251,
    "paradigm": 1417,
-   "pie_dialogue": 205,
-   "translate_en_pie": 1172,
-   "translate_pie_en": 1172
+   "pie_dialogue": 209,
+   "translate_en_pie": 1188,
+   "translate_pie_en": 1188
   },
   "eval": {
    "cognates_to_pie": 96,
    "continuation": 10,
-   "en_dialogue": 44,
-   "gloss": 40,
+   "en_dialogue": 48,
+   "gloss": 38,
    "inflect": 105,
    "paradigm": 35,
    "pie_dialogue": 16,
-   "translate_en_pie": 95,
-   "translate_pie_en": 95
+   "translate_en_pie": 93,
+   "translate_pie_en": 93
   }
  },
  "pie_dialogue_split_method": {
   "train": {
-   "sentence_qa": 205
+   "sentence_qa": 180,
+   "english_quotes": 29
   },
   "eval": {
-   "sentence_qa": 16
+   "english_quotes": 16
   }
  },
  "dialogue_records_skipped": {
   "train": {
    "no_answer": 2,
-   "no_question": 135,
+   "no_question": 131,
    "question_flag_mismatch": 6
   },
   "eval": {}
@@ -53,7 +54,7 @@
  "dialogue_english_alignment": {
   "train": {
    "aligned:plain": 132,
-   "aligned:quotes": 25,
+   "aligned:quotes": 29,
    "aligned:quotes_semicolon": 2,
    "aligned:semicolon": 9,
    "narrated:quotes": 2,
@@ -68,21 +69,21 @@
   "train": {
    "demo_chat/en_pie": 26,
    "demo_chat/en_pie_gloss": 15,
-   "en_dialogue/en_pie": 74,
+   "en_dialogue/en_pie": 75,
    "en_dialogue/en_pie_gloss": 77,
-   "en_dialogue/mixed": 17,
-   "pie_dialogue/pie_pie": 205
+   "en_dialogue/mixed": 20,
+   "pie_dialogue/pie_pie": 209
   },
   "eval": {
    "en_dialogue/en_pie": 16,
    "en_dialogue/en_pie_gloss": 16,
-   "en_dialogue/mixed": 12,
+   "en_dialogue/mixed": 16,
    "pie_dialogue/pie_pie": 16
   }
  },
  "english_input_conversations": {
-  "train": 209,
-  "eval": 44
+  "train": 213,
+  "eval": 48
  },
  "demo_seeds": {
   "seeds": 51,
@@ -97,13 +98,13 @@
   "examples": {
    "en_dialogue/en_pie": 16,
    "en_dialogue/en_pie_gloss": 16,
-   "en_dialogue/mixed": 12,
+   "en_dialogue/mixed": 16,
    "pie_dialogue/pie_pie": 16
   }
  },
  "neologism": {
   "neologism_words": 0,
-  "total_words": 25106,
+  "total_words": 25145,
   "share": 0.0,
   "cap": 0.15,
   "exceeded": false
@@ -111,12 +112,20 @@
  "leakage": {
   "ngram": 4,
   "per_kind": {
-   "pie_dialogue": {
-    "n": 16,
-    "with_ngrams": 16,
-    "mean_overlap": 0.0042,
-    "max_overlap": 0.0667,
-    "any_overlap": 1,
+   "translate_en_pie": {
+    "n": 93,
+    "with_ngrams": 52,
+    "mean_overlap": 0.0,
+    "max_overlap": 0.0,
+    "any_overlap": 0,
+    "single_word_in_train_text": 1
+   },
+   "en_dialogue": {
+    "n": 48,
+    "with_ngrams": 48,
+    "mean_overlap": 0.0214,
+    "max_overlap": 0.1628,
+    "any_overlap": 11,
     "single_word_in_train_text": 0
    },
    "inflect": {
@@ -127,28 +136,20 @@
     "any_overlap": 0,
     "single_word_in_train_text": 1
    },
-   "translate_en_pie": {
-    "n": 95,
-    "with_ngrams": 52,
-    "mean_overlap": 0.0,
-    "max_overlap": 0.0,
-    "any_overlap": 0,
-    "single_word_in_train_text": 1
-   },
-   "en_dialogue": {
-    "n": 44,
-    "with_ngrams": 44,
-    "mean_overlap": 0.0237,
-    "max_overlap": 0.1064,
-    "any_overlap": 15,
-    "single_word_in_train_text": 0
-   },
    "gloss": {
-    "n": 40,
+    "n": 38,
     "with_ngrams": 15,
     "mean_overlap": 0.0,
     "max_overlap": 0.0,
     "any_overlap": 0,
+    "single_word_in_train_text": 0
+   },
+   "translate_pie_en": {
+    "n": 93,
+    "with_ngrams": 86,
+    "mean_overlap": 0.1203,
+    "max_overlap": 1.0,
+    "any_overlap": 28,
     "single_word_in_train_text": 0
    },
    "cognates_to_pie": {
@@ -159,17 +160,17 @@
     "any_overlap": 0,
     "single_word_in_train_text": 0
    },
-   "translate_pie_en": {
-    "n": 95,
-    "with_ngrams": 86,
-    "mean_overlap": 0.1203,
-    "max_overlap": 1.0,
-    "any_overlap": 28,
-    "single_word_in_train_text": 0
-   },
    "paradigm": {
     "n": 35,
     "with_ngrams": 35,
+    "mean_overlap": 0.0,
+    "max_overlap": 0.0,
+    "any_overlap": 0,
+    "single_word_in_train_text": 0
+   },
+   "pie_dialogue": {
+    "n": 16,
+    "with_ngrams": 16,
     "mean_overlap": 0.0,
     "max_overlap": 0.0,
     "any_overlap": 0,
@@ -220,21 +221,21 @@
    },
    "demo_chat": {
     "examples": 41,
-    "words": 849,
-    "tokens": 1716,
-    "assistant_tokens": 699
+    "words": 850,
+    "tokens": 1723,
+    "assistant_tokens": 706
    },
    "en_dialogue": {
-    "examples": 168,
-    "words": 7681,
-    "tokens": 18667,
-    "assistant_tokens": 11835
+    "examples": 172,
+    "words": 7667,
+    "tokens": 18382,
+    "assistant_tokens": 11308
    },
    "gloss": {
-    "examples": 1172,
-    "words": 78758,
-    "tokens": 324662,
-    "assistant_tokens": 153421
+    "examples": 1188,
+    "words": 79221,
+    "tokens": 325771,
+    "assistant_tokens": 153680
    },
    "inflect": {
     "examples": 4251,
@@ -249,22 +250,22 @@
     "assistant_tokens": 259815
    },
    "pie_dialogue": {
-    "examples": 205,
-    "words": 6364,
-    "tokens": 26344,
-    "assistant_tokens": 14536
+    "examples": 209,
+    "words": 6371,
+    "tokens": 26286,
+    "assistant_tokens": 14078
    },
    "translate_en_pie": {
-    "examples": 1172,
-    "words": 89063,
-    "tokens": 216382,
-    "assistant_tokens": 125718
+    "examples": 1188,
+    "words": 89507,
+    "tokens": 217268,
+    "assistant_tokens": 125951
    },
    "translate_pie_en": {
-    "examples": 1172,
-    "words": 90051,
-    "tokens": 216704,
-    "assistant_tokens": 50493
+    "examples": 1188,
+    "words": 90502,
+    "tokens": 217587,
+    "assistant_tokens": 50583
    }
   },
   "eval": {
@@ -281,16 +282,16 @@
     "assistant_tokens": 1512
    },
    "en_dialogue": {
-    "examples": 44,
-    "words": 2421,
-    "tokens": 6560,
-    "assistant_tokens": 4668
+    "examples": 48,
+    "words": 2399,
+    "tokens": 5684,
+    "assistant_tokens": 3092
    },
    "gloss": {
-    "examples": 40,
-    "words": 1225,
-    "tokens": 3146,
-    "assistant_tokens": 824
+    "examples": 38,
+    "words": 1165,
+    "tokens": 3016,
+    "assistant_tokens": 797
    },
    "inflect": {
     "examples": 105,
@@ -306,54 +307,54 @@
    },
    "pie_dialogue": {
     "examples": 16,
-    "words": 550,
-    "tokens": 2372,
-    "assistant_tokens": 1460
+    "words": 509,
+    "tokens": 2150,
+    "assistant_tokens": 885
    },
    "translate_en_pie": {
-    "examples": 95,
-    "words": 3820,
-    "tokens": 8332,
-    "assistant_tokens": 2967
+    "examples": 93,
+    "words": 3765,
+    "tokens": 8223,
+    "assistant_tokens": 2940
    },
    "translate_pie_en": {
-    "examples": 95,
-    "words": 3911,
-    "tokens": 8379,
-    "assistant_tokens": 1204
+    "examples": 93,
+    "words": 3857,
+    "tokens": 8267,
+    "assistant_tokens": 1194
    }
   },
   "text/train.txt": {
-   "paragraphs": 1172,
-   "words": 25106,
-   "tokens": 125718,
-   "tokens_per_word": 5.0075
+   "paragraphs": 1188,
+   "words": 25145,
+   "tokens": 125951,
+   "tokens_per_word": 5.009
   },
   "text/eval.txt": {
-   "paragraphs": 58,
-   "words": 637,
-   "tokens": 3155,
-   "tokens_per_word": 4.9529
+   "paragraphs": 56,
+   "words": 633,
+   "tokens": 3128,
+   "tokens_per_word": 4.9415
   },
   "text-ascii/train.txt": {
-   "paragraphs": 1172,
-   "words": 25106,
-   "tokens": 113419,
-   "tokens_per_word": 4.5176
+   "paragraphs": 1188,
+   "words": 25145,
+   "tokens": 113614,
+   "tokens_per_word": 4.5184
   },
   "text-ascii/eval.txt": {
-   "paragraphs": 58,
-   "words": 637,
-   "tokens": 2744,
-   "tokens_per_word": 4.3077
+   "paragraphs": 56,
+   "words": 633,
+   "tokens": 2724,
+   "tokens_per_word": 4.3033
   },
   "train_tokens_per_word_unicode_vs_ascii": [
-   5.0075,
-   4.5176
+   5.009,
+   4.5184
   ],
   "eval_tokens_per_word_unicode_vs_ascii": [
-   4.9529,
-   4.3077
+   4.9415,
+   4.3033
   ]
  }
 }
