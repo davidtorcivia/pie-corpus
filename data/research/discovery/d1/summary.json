@@ -1,0 +1,1682 @@
+{
+ "branches": [
+  "Indo-Iranian",
+  "Greek",
+  "Italic",
+  "Celtic",
+  "Germanic",
+  "Balto-Slavic",
+  "Armenian",
+  "Anatolian"
+ ],
+ "window": 4,
+ "min_O": 3,
+ "min_OE": 3.0,
+ "min_branches": 2,
+ "null_threshold_log2": 3.0481052177472336,
+ "null_threshold_OE": 8.271249101638254,
+ "null_qualifying_per_seed": {
+  "0": 90,
+  "1": 74,
+  "2": 93,
+  "3": 71,
+  "4": 83,
+  "5": 90,
+  "6": 84,
+  "7": 65,
+  "8": 88,
+  "9": 88,
+  "10": 97,
+  "11": 71,
+  "12": 81,
+  "13": 82,
+  "14": 94,
+  "15": 80,
+  "16": 83,
+  "17": 73,
+  "18": 84,
+  "19": 74
+ },
+ "null_score_quantiles": {
+  "1": 1.5887880004603019,
+  "5": 1.6027825823298323,
+  "25": 1.6858534834159686,
+  "50": 1.7962079689659167,
+  "75": 2.001142209956976,
+  "90": 2.2737033230533443,
+  "95": 2.4916401973998688,
+  "99": 3.0481052177472336,
+  "99.9": 3.5117934558715387
+ },
+ "null_score_max": 4.282472104564521,
+ "real_qualifying_after_exclusion": 1322,
+ "candidates": 247,
+ "candidate_group_pairs": 176,
+ "function_keys": 125,
+ "top50_groups": [
+  "pie-root-h1es-be",
+  "pie-root-gjenh1-produce",
+  "pie-root-legj-gather",
+  "pie-root-segjh-overpower",
+  "pie-root-pleh1-fill",
+  "pie-root-bher-bear",
+  "pie-root-steh2-stand",
+  "pie-root-bhuH-be",
+  "pie-root-dheh1-do",
+  "pie-root-bheh2-speak",
+  "pie-root-h2wes-dwell",
+  "pie-root-weyd-see",
+  "pie-lex-megjh2s",
+  "pie-root-per-go_through",
+  "pie-root-h2egj-drive",
+  "pie-root-meh2kj-raise",
+  "pie-root-kwey-gather",
+  "pie-root-h1er-arrive",
+  "pie-root-deh3-give",
+  "pie-root-gwem-come",
+  "pie-root-deykj-point_out",
+  "pie-root-sleh2gw-take",
+  "kaikki:h₂r̥sḱeti",
+  "pie-root-dekj-take",
+  "pie-root-h2ew-perceive",
+  "pie-root-gjneh3-recognise",
+  "pie-root-per-before",
+  "pie-root-wergj-make",
+  "pie-root-tpelH-fortification",
+  "pie-lex-dhedheh1ti",
+  "pie-root-deh1-bind",
+  "pie-lex-h2nexr",
+  "pie-root-sed-sit",
+  "pie-root-men-think",
+  "pie-root-bheh2-shine",
+  "pie-root-sem-one",
+  "pie-root-gweyh3-live",
+  "pie-root-kwelh1-turn",
+  "pie-root-peh2-protect",
+  "pie-root-peh2w-few",
+  "pie-root-wekw-speak",
+  "kaikki:gʷl̥neh₁",
+  "pie-lex-mon",
+  "pie-root-dhewgh-hit",
+  "pie-root-smer-assign",
+  "pie-lex-h1nomn",
+  "pie-root-dyew-be_bright",
+  "pie-root-leykw-leave",
+  "pie-root-weykj-enter_in",
+  "pie-root-kjey-be_lying_down"
+ ],
+ "positive_control": {
+  "n": 120,
+  "recovered": 12,
+  "recall": 0.1,
+  "recovered_ids": [
+   {
+    "formula_id": "imperishable-fame",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": "fame+imperish",
+    "keys_in_index": true
+   },
+   {
+    "formula_id": "imperishable-fame-be-dative",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": "fame+imperish",
+    "keys_in_index": true
+   },
+   {
+    "formula_id": "imperishable-fame-get-nominative",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": "fame+imperish",
+    "keys_in_index": true
+   },
+   {
+    "formula_id": "god-grant-imperishable-fame",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": "fame+imperish",
+    "keys_in_index": true
+   },
+   {
+    "formula_id": "have-imperishable-fame-schema",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": "fame+imperish",
+    "keys_in_index": true
+   },
+   {
+    "formula_id": "west_ch09_f01",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Anatolian",
+     "Indo-Iranian"
+    ],
+    "spec": "earth+cloud",
+    "keys_in_index": true
+   },
+   {
+    "formula_id": "west_ch09_f02",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Anatolian",
+     "Indo-Iranian"
+    ],
+    "spec": "earth+cloud",
+    "keys_in_index": true
+   },
+   {
+    "formula_id": "west_ch09_f03",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Anatolian",
+     "Indo-Iranian"
+    ],
+    "spec": "earth+cloud",
+    "keys_in_index": true
+   },
+   {
+    "formula_id": "west_ch10_f01",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": "fame+imperish",
+    "keys_in_index": true
+   },
+   {
+    "formula_id": "west_ch08_f08",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Anatolian",
+     "Indo-Iranian"
+    ],
+    "spec": "earth+cloud",
+    "keys_in_index": true
+   },
+   {
+    "formula_id": "west_ch02_f01",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": "fame+imperish",
+    "keys_in_index": true
+   },
+   {
+    "formula_id": "west_ch02_f08",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": "raw+eat",
+    "keys_in_index": true
+   }
+  ],
+  "missed_ids": [
+   {
+    "formula_id": "swift-horses",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "horse+swift"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "craft-words",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "craft+word",
+     "craft+song"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "holy-strength-isira-manas",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "strong+mind"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "great-path-of-chariot",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "path+great"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "protect-men-livestock",
+    "subclass": "lexical",
+    "real_branches": [
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "cattle+men"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "dems-potis",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "master+house"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "quantifier-argument-negated-argument",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "see+self",
+     "god+self"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "famous-name",
+    "subclass": "lexical",
+    "real_branches": [
+     "Celtic",
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "name+famous",
+     "name+hear",
+     "fame+name"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "hero-slay-serpent",
+    "subclass": "lexical",
+    "real_branches": [
+     "Germanic",
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+serpent",
+     "slay+worm"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "great-fame",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "fame+great"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "slew-the-serpent-egwhent-ogwhim",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+serpent"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "swift-flying-eagle",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "swift+fly"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "protect-men-cattle-phrase",
+    "subclass": "lexical",
+    "real_branches": [
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "cattle+men"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "men-and-cattle",
+    "subclass": "lexical",
+    "real_branches": [
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "cattle+men"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "seen-and-unseen-disease",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "see+self"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "basic-formula-with-weapon-companion",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+serpent"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "who-slew-relative-clause",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+serpent"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "slayer-slain-reciprocal",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+self",
+     "slay+serpent"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "slay-serpent-with-companion",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+serpent"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "slay-gwhen-serpent-ogwhi",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+serpent"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "egwhent-ogwhim-augment",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+serpent"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "slay-serpent-slaying-ring",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+serpent"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "serpent-slay-adversary",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+serpent"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "serpent-slayer-man-slayer-epithets",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+man",
+     "slay+serpent"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "kill-serpent-germanic-bidirectional",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Germanic",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+worm"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "become-the-bane",
+    "subclass": "lexical",
+    "real_branches": [
+     "Germanic",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "deathn+become"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "hero-slay-three-headed-drive-off-cows",
+    "subclass": "lexical",
+    "real_branches": [
+     "Celtic",
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "cow+drive"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "slay-and-avenge-gwhen-kwei",
+    "subclass": "lexical",
+    "real_branches": [
+     "Celtic",
+     "Greek"
+    ],
+    "spec": [
+     "slay+pay"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "be-the-death-of",
+    "subclass": "lexical",
+    "real_branches": [
+     "Germanic",
+     "Greek"
+    ],
+    "spec": [
+     "deathn+be"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "slain-lies",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slain+lie"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "slay-lie-sleep-nexus",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "lie+sleep",
+     "slain+lie"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "slay-the-worm-charm",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Germanic",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+worm"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "slay-adversary-plus-marrow-list-charm",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Germanic",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+worm",
+     "slay+marrow"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "craft-the-formula",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "craft+song"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch09_f08",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "earth+navel"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch09_f10",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "star+adorn"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch05_f01",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "sun+great"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch05_f05",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "sun+spy"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch05_f06",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "skygod+eye"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch05_f09",
+    "subclass": "lexical",
+    "real_branches": [
+     "Germanic",
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "sun+wheel"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch05_f10",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "sun+rota"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch05_f11",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "path+great"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch05_f14",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "skygod+daughter"
+    ],
+    "keys_in_index": true,
+    "why": "excluded (function/top-50)"
+   },
+   {
+    "formula_id": "west_ch05_f15",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "dawn+immortal",
+     "ageless+immortal"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch05_f16",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "dawn+shine"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "west_ch05_f22",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "skygod+door"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch05_f25",
+    "subclass": "lexical",
+    "real_branches": [
+     "Balto-Slavic",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "sun+daughter"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch04_f01",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "sky+father"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch04_f02",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "sky+great"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch04_f03",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "skygod+rain"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "west_ch04_f04",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "skygod+cloud"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "west_ch04_f06",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "skygod+door"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch04_f11",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "skygod+eye"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch04_f12",
+    "subclass": "lexical",
+    "real_branches": [
+     "Balto-Slavic",
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "earth+mother"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch04_f14",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "earth+wide"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "west_ch04_f15",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "earth+wide"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "west_ch04_f16",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "earth+wide",
+     "god+wide-seat"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "west_ch04_f22",
+    "subclass": "lexical",
+    "real_branches": [
+     "Balto-Slavic",
+     "Greek",
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "sky+father",
+     "earth+mother"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch04_f23",
+    "subclass": "lexical",
+    "real_branches": [
+     "Balto-Slavic",
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "earth+mother"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch04_f26",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "skygod+daughter"
+    ],
+    "keys_in_index": true,
+    "why": "excluded (function/top-50)"
+   },
+   {
+    "formula_id": "west_ch10_f05",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "fame+great"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch10_f06",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "fame+wide"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch10_f14",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "fame+put"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch10_f15",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "fame+men"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch10_f16",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "name+famous",
+     "name+hear"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch10_f17",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "name+put"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch10_f18",
+    "subclass": "lexical",
+    "real_branches": [
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "name+dear"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch10_f33",
+    "subclass": "lexical",
+    "real_branches": [
+     "Germanic",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "deathn+become"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch01_f05",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "craft+word"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch01_f06",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "craft+song"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch01_f07",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "craft+song"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch01_f12",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "fly+word"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch01_f17",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "fame+men"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch03_f07",
+    "subclass": "lexical",
+    "real_branches": [
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "race+god"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch03_f08",
+    "subclass": "lexical",
+    "real_branches": [
+     "Germanic",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "race+mankind"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch03_f09",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "god+immortal"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch03_f11",
+    "subclass": "lexical",
+    "real_branches": [
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "immortal+mortal",
+     "god+mortal"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch03_f20",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "giver+good"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch03_f22",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "master+house"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "west_ch03_f30",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "immortal+eat"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch06_f01",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+serpent"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch06_f02",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+serpent",
+     "serpent+lie"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch06_f11",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "master+house"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "west_ch08_f18",
+    "subclass": "lexical",
+    "real_branches": [
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "cattle+men"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch08_f23",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "upright+stand"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "west_ch08_f26",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Germanic",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "slay+worm"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch12_f17",
+    "subclass": "lexical",
+    "real_branches": [
+     "Celtic",
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "horse+men"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch12_f18",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "horse+swift"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "west_ch02_f02",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "fame+wide"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch02_f03",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "fame+great"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch02_f06",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "swift+fly"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch02_f19",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "white+clothe"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch02_f20",
+    "subclass": "lexical",
+    "real_branches": [
+     "Balto-Slavic",
+     "Greek"
+    ],
+    "spec": [
+     "wolf+grey"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch02_f21",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "mead+sweet"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "west_ch02_f26",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "sun+see"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "west_ch02_f29",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "sun+see"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "west_ch02_f31",
+    "subclass": "lexical",
+    "real_branches": [
+     "Germanic",
+     "Greek"
+    ],
+    "spec": [
+     "knee+mother"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch02_f35",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "good+mind"
+    ],
+    "keys_in_index": true,
+    "why": "qualifies, below null threshold"
+   },
+   {
+    "formula_id": "west_ch02_f36",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "bold+mind"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch02_f38",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "strong+mind"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch02_f43",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "immortal+word"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch02_f48",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "cloud+clothe"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch02_f64",
+    "subclass": "lexical",
+    "real_branches": [
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "immortal+mortal",
+     "god+mortal",
+     "god+human"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch02_f66",
+    "subclass": "lexical",
+    "real_branches": [
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "cattle+men"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch02_f72",
+    "subclass": "partial-lexical",
+    "real_branches": [
+     "Indo-Iranian",
+     "Italic"
+    ],
+    "spec": [
+     "see+self"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch02_f94",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "mortal+self"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch02_f96",
+    "subclass": "lexical",
+    "real_branches": [
+     "Balto-Slavic",
+     "Germanic",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "brother+self"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   },
+   {
+    "formula_id": "west_ch02_f99",
+    "subclass": "lexical",
+    "real_branches": [
+     "Greek",
+     "Indo-Iranian"
+    ],
+    "spec": [
+     "wish+self"
+    ],
+    "keys_in_index": true,
+    "why": "not qualifying in >=2 branches"
+   }
+  ],
+  "by_subclass": {
+   "lexical": [
+    8,
+    102
+   ],
+   "partial-lexical": [
+    4,
+    18
+   ]
+  }
+ },
+ "control_seconds": 0.3
+}

@@ -50,3 +50,6 @@ tts/espeak/build/
 tts/cache/
 tts/samples/*.wav
 .venv-kokoro/
+
+# D1 discovery caches (reproducible: scripts/discovery_d1.py extract/count)
+data/research/discovery/d1/*.npz
