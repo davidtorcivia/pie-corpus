@@ -23,6 +23,9 @@ is set by the lead after reading the review; a reviewer never approves a batch.
    - Check doubtful forms against `data/lexicon/lexicon.jsonl`, `data/morph/closed_class.json`,
      `pie.realize.Lexicon(...).cells()` and `.participle_cells()`.
    - Work from handbook knowledge (Fortson, Beekes, Ringe, LIV², Mallory–Adams); don't quote book text.
+   **Write and save the verdicts file before you open `corpus/tier3/` or the plans.** Matching packet items
+   to records reveals which items are planted, so plant recall counts only if the verdicts already exist.
+   Record the file's sha256 in the report, then look the items up for fixing (t030 review).
 4. **Score:** `uv run python -I scripts/score_review.py <batch>`, which writes `data/audits/<batch>-calibration.json`.
    The reviewer may run this script but must not open its key.
 5. **Report:** write `docs/audits/tier3-<batch>-review.md` with counts, each wrong item with its fix, the minor
