@@ -2,13 +2,13 @@
  "entries": 6748,
  "coverage": {
   "table": 588,
-  "usable": 4916,
+  "usable": 4917,
   "shape": 4373,
   "unknown": 1698,
   "indeclinable": 89
  },
  "inflectable": 4961,
- "usable_for_tier3": 4916,
+ "usable_for_tier3": 4917,
  "usable_threshold": 0.85,
  "backtest": {
   "indeclinable": {
@@ -108,10 +108,10 @@
   },
   "shape:thematic": {
    "tables": 68,
-   "cells_ok": 1121,
-   "cells": 1292,
-   "tables_exact": 59,
-   "cell_accuracy": 0.8676
+   "cells_ok": 1102,
+   "cells": 1273,
+   "tables_exact": 58,
+   "cell_accuracy": 0.8657
   },
   "shape:thematic-adj": {
    "tables": 86,

@@ -72,3 +72,44 @@ def test_hysterokinetic_n_stem_locative_is_e_grade():
 def test_hk_iu_backtest_skips_tables_on_another_headword():
     bt = _report()["backtest"]["shape:hk-iu-stem"]
     assert (bt["cells_ok"], bt["cells"]) == (33, 57)          # Hrugʰís, bʰeh₂ǵʰús skipped; still not usable
+
+
+# 2. requested and everyday words (data/lexicon/overrides.jsonl, "vocab push") -------------------------------------
+
+REQUESTED = {   # keyword -> lexeme, each offered by default with a dictionary (override) gloss
+    "roof": "pie-lex-stegos", "bed": "pie-lex-leghos", "wait": "pie-lex-meneti", "owe": "pie-lex-dhlgheti",
+    "swear": "pie-lex-h3mneh3ti", "hornet": "pie-lex-kjrh2sexr", "suckle": "pie-lex-dheh1yeti",
+    "sweat": "pie-lex-sweydos", "wash": "pie-lex-lewh3eti", "lick": "pie-lex-leygjheti", "fortress": "pie-lex-tpolHis",
+    "womb": "pie-lex-gwelbhus", "elk": "pie-lex-h1olkjis", "grief": "pie-lex-kjeh2dos", "wipe": "pie-lex-wrseti",
+    "beech": "pie-lex-bheh2gjos", "tooth": "pie-lex-h3donts",
+}
+
+
+@pytest.mark.parametrize("kw,lid", sorted(REQUESTED.items()))
+def test_requested_word_is_offered(lx, pool, kw, lid):
+    assert lid in pool
+    assert lx.meaning(lid)[1] in ("override", "wiktionary")      # a dictionary gloss, not a derived one
+    ms = runpy.run_path(str(ROOT / "scripts/make_slice.py"))
+    assert ms["keyword_hit"](lx, lid, [kw])
+
+
+def test_tooth_has_the_checked_hysterokinetic_paradigm(lx):
+    c = lx.cells("pie-lex-h3donts")
+    assert (c["NOM.SG"][0], c["ACC.SG"][0], c["GEN.SG"][0]) == ("h₃dónts", "h₃dóntm̥", "h₃dn̥tés")   # Ved. datás
+    r = produce({"english": "x", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-h3donts", "role": "OBJ"},
+        {"lex_id": "pie-lex-bhereti", "role": "V", "verb": {"tense": "PRS", "mood": "IND", "voice": "ACT"}}]}]}, lx)
+    assert r["pie"] == "h₃dóntm̥ bʰéreti."
+
+
+def test_beech_takes_the_printed_accent(lx):
+    c = lx.cells("pie-lex-bheh2gjos")
+    assert c["NOM.SG"][0] == "bʰeh₂ǵós" and lx.gender("pie-lex-bheh2gjos") == "f"
+    assert lx.accent_status("pie-lex-bheh2gjos") == "resolved"
+
+
+def test_unsourced_accents_stay_unresolved(lx, pool):
+    """debt, grey, yew: glossed now, but no source gives an accent, so they stay out of the pool."""
+    for lid in ("pie-lex-dhlghos", "pie-lex-polHwos", "pie-lex-h1eyHwos"):
+        assert lx.meaning(lid)[1] == "override" and lid not in pool
+        assert lx.accent_status(lid) == "unresolved"
