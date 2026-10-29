@@ -322,3 +322,10 @@ steps 0.105 st, and ElevenLabs follows its melody (r 0.84). But there are no pau
 silence 0.21 s), and the h₂ windows (located by DTW from the cadence source, so approximate) show almost no
 friction (0.02–0.05 against eSpeak's 0.36–0.41), although its [s] is strong. Its χ looks absent or very weak;
 to be confirmed by ear.
+
+Repitch round (owner listening, 2026-10-29): the plain transplant's pitch edit was audibly phasey/aliased (shifts
+median 2.2 st, p90 5.5, jumps at voicing edges). tts/cadence/repitch.py (one smooth shift curve, filled across
+voicing gaps, soft-limited to ±3.5 st, pitch floor 75 Hz): **A = PSOLA is the owner's pick**; B = WORLD vocoder
+second; C = Seed-VC re-synthesis of A in the ElevenLabs voice "terrible" (also HNR 9.6 dB and weaker h₂/h₁).
+Current best chain: cadence.py → OpenVoice em_alex → ElevenLabs STS (manual) → repitch.py psola (RANGE 1.6).
+Next: VocalTractLab with the other agent's IPA compiler (check χ and line pauses).
