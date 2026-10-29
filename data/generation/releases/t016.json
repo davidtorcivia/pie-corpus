@@ -2,20 +2,14 @@
  "schema_version": 1,
  "batch": "t016",
  "sha256": {
-  "records": "ccb29e48adcd8b4653ab711fdf2852f894e5e4a328acfe799ded14af2fc25897",
-  "plans": "08d93f73aa4cd9e2cfc5d22b48c2b6e22401cd301f989ee3a989ee32ca57e431",
-  "gate_report": "62f0dda10feedd3f068fefeb279df2b3f27f42ad92c74202bb9c46e107bd68a8"
+  "records": "af950689abcb985389e41e04377fb7ccc8a5b0326a2dc321ae8d7247ab1789ed",
+  "plans": "0cb6101c7d844377f0c497d18b6a23c1d856856dd109e597dfe4f1c4a7b0a36c",
+  "gate_report": "f99bc7f9f0618338f718b8ebd28a416238dfef3a9c653db9f1765dab14efd775"
  },
  "review": {
   "required": true,
-  "status": "approved",
-  "evidence": [
-   "data/generation/batches/t016.json",
-   "docs/audits/tier3-t016-review.md",
-   "docs/STATUS.md:111-112",
-   "docs/audits/review-2026-10-25-rollout-hittite.md#2-some-new-behavior-has-not-reached-the-published-artifacts",
-   "docs/audits/eng-01-release-migration.md#finding-2-targeted-artifact-refresh"
-  ],
-  "rationale": "Individual review documents completed assessment and correctable causes; consolidated 2026-10-24 account records validity fixes and regeneration of the 25 historical batches, distinguishing new unreviewed t022. Migrated historical release on that combined evidence; not a claim of a fresh post-fix scholarly review. 2026-10-25 finding 2: explicitly renewed content binding after targeted re-realization and byte comparison; metadata-only num_fallback=du->pl change, surface forms unchanged. Every other record byte, source plan, and gate report is unchanged. Existing approval reaffirmed only for this reviewed metadata change."
+  "status": "pending",
+  "evidence": [],
+  "rationale": "Awaiting review."
  }
 }

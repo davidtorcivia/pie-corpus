@@ -2,18 +2,14 @@
  "schema_version": 1,
  "batch": "t023",
  "sha256": {
-  "records": "df5562c5f2a89ac5a6dc9bf004777caeca63f80f6454110955eb5c1c35bf13d5",
-  "plans": "dfc37283e4b85389dc17fe9ae22226395310f5b49d8cab14d160d653818ba13c",
-  "gate_report": "a55bb5c8c6cdb2f997f0b00c7342ec16a5f8b9ad1325689a4700a1ca98bf2978"
+  "records": "9ca139b662037d12a8bc9c0680b37135f855b7a9e2fbefdeccdc70fea7280acc",
+  "plans": "bb870f172b1ba034a370753e21279407e24e082ef8e27df0eebfc920006ae2a9",
+  "gate_report": "e45de240c785a57b9dbfa7b9cfc5c950d2c0f034c936d5444c455df55b9c89c4"
  },
  "review": {
   "required": true,
-  "status": "approved",
-  "evidence": [
-   "data/generation/batches/t023.json",
-   "docs/audits/tier3-t023-review.md",
-   "docs/STATUS.md:112"
-  ],
-  "rationale": "STATUS explicitly records t023 review (plants 5/5; real 2/20 wrong, fixed). Current automated gates PASS."
+  "status": "pending",
+  "evidence": [],
+  "rationale": "Awaiting review."
  }
 }
