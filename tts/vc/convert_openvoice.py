@@ -30,17 +30,21 @@ tcc = ToneColorConverter.__new__(ToneColorConverter)
 OpenVoiceBaseClass.__init__(tcc, str(CK / "config.json"), device="cpu")
 tcc.watermark_model, tcc.version = None, getattr(tcc.hps, "_version_", "v1")
 tcc.load_ckpt(str(CK / "checkpoint.pth"))
+sys.path.insert(0, str(VC))
+from words import TIMBRES, selection  # noqa: E402
+
+VOICES, ITEMS = selection(TIMBRES)  # env VC_VOICES / VC_ITEMS
 srcs = json.loads((VC / "audio" / "espeak.json").read_text("utf-8"))
 src_se = tcc.extract_se([s["wav"] for s in srcs])
 out_dir = VC / "audio" / "openvoice"
 out_dir.mkdir(parents=True, exist_ok=True)
 log = []
-for voice in ["hm_omega", "ef_dora", "em_alex"]:
+for voice in VOICES:
     tgt_se = tcc.extract_se([str(VC / "audio" / "ref" / f"{voice}.wav")])
-    for s in srcs:
+    for s in (x for x in srcs if ITEMS is None or x["id"] in ITEMS):
         t = time.time()
         out = out_dir / f"{s['id']}.openvoice-{voice}.wav"
         tcc.convert(s["wav"], src_se, tgt_se, output_path=str(out), tau=TAU)
         log.append(dict(id=s["id"], voice=voice, wav=str(out), tau=TAU, seconds=round(time.time() - t, 2)))
         print(voice, s["id"], log[-1]["seconds"], "s", flush=True)
-(out_dir / "log.json").write_text(json.dumps(log, indent=1), "utf-8")
+(out_dir / f"log-{'-'.join(VOICES)}.json").write_text(json.dumps(log, indent=1), "utf-8")

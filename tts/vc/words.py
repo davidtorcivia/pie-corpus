@@ -24,3 +24,18 @@ WORDS = [
 ]
 
 TIMBRES = ["hm_omega", "ef_dora", "em_alex"]
+
+# Fair-comparison round (owner's request): the bake-off's top-3 Kokoro voices, each with its recommended profile
+# (docs/research/tts-bakeoff-objective.md "Top 3 voices and recommended profiles"), on 4 hard words + the 2 lines.
+TIMBRES2 = ["bf_isabella", "af_nicole", "em_santa"]
+VOICE_PROFILE = {"bf_isabella": ("h2-velar", "fronted"), "af_nicole": ("h2-velar", "fronted"),
+                 "em_santa": ("h2-voiced-uvular", "plain")}
+SUBSET = ["h2ewsos", "h2egjeti", "kjlewos", "bhreh2ter", "hymn-1", "hymn-2"]
+
+
+def selection(default_voices):
+    """(voices, item ids) for a converter run: VC_VOICES / VC_ITEMS (comma lists) override the defaults."""
+    import os
+    v = os.environ.get("VC_VOICES")
+    i = os.environ.get("VC_ITEMS")
+    return (v.split(",") if v else list(default_voices)), (set(i.split(",")) if i else None)

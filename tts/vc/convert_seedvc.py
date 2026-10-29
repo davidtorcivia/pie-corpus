@@ -34,11 +34,15 @@ args = argparse.Namespace(diffusion_steps=steps, length_adjust=1.0, inference_cf
 models = inference.load_models(args)
 inference.load_models = lambda a: models
 
+sys.path.insert(0, str(VC))
+from words import TIMBRES, selection  # noqa: E402
+
+VOICES, ITEMS = selection(TIMBRES)  # env VC_VOICES / VC_ITEMS
 srcs = json.loads((VC / "audio" / "espeak.json").read_text("utf-8"))
 out_dir = VC / "audio" / tag
 log = []
-for voice in ["hm_omega", "ef_dora", "em_alex"]:
-    for s in srcs:
+for voice in VOICES:
+    for s in (x for x in srcs if ITEMS is None or x["id"] in ITEMS):
         args.source, args.target = s["wav"], str(VC / "audio" / "ref" / f"{voice}.wav")
         t = time.time()
         inference.main(args)
@@ -49,4 +53,4 @@ for voice in ["hm_omega", "ef_dora", "em_alex"]:
         print(voice, s["id"], log[-1]["seconds"], "s", flush=True)
 weights = {str(p.relative_to("checkpoints")): hashlib.sha256(p.read_bytes()).hexdigest()
            for p in Path("checkpoints").rglob("*") if p.is_file() and p.suffix in (".pth", ".pt", ".bin", ".safetensors")}
-(out_dir / "log.json").write_text(json.dumps(dict(device=str(inference.device), weights=weights, clips=log), indent=1), "utf-8")
+(out_dir / f"log-{'-'.join(VOICES)}.json").write_text(json.dumps(dict(device=str(inference.device), weights=weights, clips=log), indent=1), "utf-8")

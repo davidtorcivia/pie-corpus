@@ -7,6 +7,7 @@ pack in sounds a kNN-VC frame pool needs: Spanish [x] (jota), English aspirated 
 ʃ, θ, ɾ, ŋ and a full vowel range. Pinned Kokoro model and voices through pie.speak (sha256-checked).
 Writes tts/vc/audio/ref/<voice>.wav and ref.json."""
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -24,13 +25,18 @@ ES = ("El viejo general cruzó la sierra con su caballo rojo. Junto al río, la 
       "garbanzos. Cuando llegó la noche, quiso escribir una carta a su hija Ximena, pero la tinta se había "
       "secado. Mañana, dijo, iremos juntos hacia el pueblo, y cada uno traerá algo: pan, vino, ajo, "
       "guitarras y un cuaderno lleno de canciones antiguas.")
-REFS = {"hm_omega": ("en-us", EN), "ef_dora": ("es", ES), "em_alex": ("es", ES)}
+REFS = {"hm_omega": ("en-us", EN), "ef_dora": ("es", ES), "em_alex": ("es", ES),
+        # fair-comparison round: the bake-off top 3, each in its own language
+        "bf_isabella": ("en-gb", EN), "af_nicole": ("en-us", EN), "em_santa": ("es", ES)}
+ONLY = [v for v in os.environ.get("VC_VOICES", "").split(",") if v]
 
 out_dir = ROOT / "tts" / "vc" / "audio" / "ref"
 out_dir.mkdir(parents=True, exist_ok=True)
 model = _kokoro_model()
 meta = {}
 for voice, (lang, text) in REFS.items():
+    if ONLY and voice not in ONLY:
+        continue
     g2p = EspeakG2P(language=lang)
     pack = _kokoro_voice(voice)
     parts, phs = [], []
@@ -44,4 +50,5 @@ for voice, (lang, text) in REFS.items():
     _write_wav(out_dir / f"{voice}.wav", audio)
     meta[voice] = dict(lang=lang, text=text, phonemes=phs, seconds=round(len(audio) / KOKORO_RATE, 2))
     print(voice, meta[voice]["seconds"], "s", flush=True)
-(out_dir / "ref.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), "utf-8")
+old = json.loads((out_dir / "ref.json").read_text("utf-8")) if (out_dir / "ref.json").exists() else {}
+(out_dir / "ref.json").write_text(json.dumps({**old, **meta}, ensure_ascii=False, indent=1), "utf-8")

@@ -36,14 +36,18 @@ def load16(p):
     return torchaudio.functional.resample(x, sr, 16000) if sr != 16000 else x
 
 
+sys.path.insert(0, str(VC))
+from words import TIMBRES, selection  # noqa: E402
+
+VOICES, ITEMS = selection(TIMBRES)  # env VC_VOICES / VC_ITEMS
 srcs = json.loads((VC / "audio" / "espeak.json").read_text("utf-8"))
 out_dir = VC / "audio" / "knnvc"
 out_dir.mkdir(parents=True, exist_ok=True)
 log = []
-for voice in ["hm_omega", "ef_dora", "em_alex"]:
+for voice in VOICES:
     # vad_trigger_level=0 like the README; the reference is clean TTS with only 0.25 s pauses
     pool = knn.get_matching_set([load16(VC / "audio" / "ref" / f"{voice}.wav")], vad_trigger_level=0)
-    for s in srcs:
+    for s in (x for x in srcs if ITEMS is None or x["id"] in ITEMS):
         t = time.time()
         q = knn.get_features(load16(s["wav"]))
         wav = knn.match(q, pool, topk=K).numpy()
@@ -52,4 +56,4 @@ for voice in ["hm_omega", "ef_dora", "em_alex"]:
         log.append(dict(id=s["id"], voice=voice, wav=str(out), pool_frames=int(pool.shape[0]),
                         seconds=round(time.time() - t, 2)))
         print(voice, s["id"], log[-1]["seconds"], "s", flush=True)
-(out_dir / "log.json").write_text(json.dumps(log, indent=1), "utf-8")
+(out_dir / f"log-{'-'.join(VOICES)}.json").write_text(json.dumps(log, indent=1), "utf-8")

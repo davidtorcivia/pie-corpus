@@ -16,23 +16,29 @@ import soundfile as sf
 
 VC = Path(__file__).resolve().parent
 sys.path.insert(0, str(VC))
-from words import TIMBRES, WORDS  # noqa: E402
+from words import SUBSET, TIMBRES, TIMBRES2, VOICE_PROFILE, WORDS  # noqa: E402
 
 LIST = VC / "listening"
 AUD = LIST / "audio"
 R = json.loads((VC / "results.json").read_text("utf-8"))
 SRC = {s["id"]: s for s in json.loads((VC / "audio" / "espeak.json").read_text("utf-8"))}
 KOK = {(s["id"], s["voice"]): s for s in json.loads((VC / "audio" / "kokoro.json").read_text("utf-8"))}
+KP = {(s["id"], s["voice"]): s for s in json.loads((VC / "audio" / "kokoro-prof.json").read_text("utf-8"))}
 
 METHODS = {
     "knnvc": dict(label="kNN-VC", licence="MIT (code, prematched HiFi-GAN); WavLM-Large MIT",
                   repo="bshall/knn-vc@c616845"),
-    "openvoice": dict(label="OpenVoice V2", licence="MIT (code and weights)",
+    "openvoice": dict(label="OpenVoice V2", note="single words only (owner's ear: em_alex excellent on words, a disaster on phrases)", licence="MIT (code and weights)",
                       repo="myshell-ai/OpenVoice@74a1d14, myshell-ai/OpenVoiceV2@f36e7ed"),
     "seedvc": dict(label="Seed-VC", licence="GPL-3.0 (code and weights)", repo="Plachtaa/seed-vc@51383ef"),
     "seedvc-f0": dict(label="Seed-VC F0", licence="GPL-3.0 (code and weights)", repo="Plachtaa/seed-vc@51383ef"),
     "kokoro": dict(label="Kokoro alone", licence="Apache-2.0", repo="hexgrad/Kokoro-82M@f3ff357"),
+    "kokoro-prof": dict(label="Kokoro + profile", licence="Apache-2.0", repo="hexgrad/Kokoro-82M@f3ff357"),
 }
+MAIN = ["knnvc", "openvoice", "seedvc", "seedvc-f0", "kokoro"]
+TOP = ["seedvc", "seedvc-f0", "knnvc", "openvoice", "kokoro-prof"]
+# bake-off variant id that each top-3 voice's recommended profile sends, per target class
+PROF_VARIANT = {"h2-velar": "x", "h2-voiced-uvular": "voiced-uvular", "fronted": "fronted", "plain": "plain"}
 TIMBRE_LABEL = {"hm_omega": "hm_omega", "ef_dora": "ef_dora", "em_alex": "em_alex"}
 # bake-off target/variant ids (tts/bakeoff/manifest.json); every source here is the converter default
 TARGET = {"h2ewsos": ("h2", "chi"), "h2owis": ("h2", "chi"), "h2egjeti": ("dorsal", "palatal"),
@@ -78,30 +84,42 @@ for r in R["clips"]:
         continue
     wid, m, v = r["id"], r["method"], r["timbre"]
     tgt, var = TARGET[wid]
-    sysid = f"kokoro-{v}" if m == "kokoro" else f"vc-{m}-{v}"
+    sysid = f"kokoro-{v}" if m == "kokoro" else f"kokoro-{v}-profiled" if m == "kokoro-prof" else f"vc-{m}-{v}"
+    prof = VOICE_PROFILE[v] if m == "kokoro-prof" else None
+    if prof and tgt == "h2":
+        var = PROF_VARIANT[prof[0]]
+    elif prof and tgt == "dorsal":
+        var = PROF_VARIANT[prof[1]]
     a = enc(Path(r["wav"]), f"{m}/{wid}.{v}.mp4")
     pie = SRC[wid]["pie"]
-    engine = KOK[(wid, v)]["engine_input"] if m == "kokoro" else SRC[wid]["engine_input"]
-    rec = dict(id=f"{wid}__{var}__{sysid}", word=wid, variant=var, system=sysid, **a, ipa=SRC[wid]["ipa"],
-               engine_input=engine, profile=None, same_as=None, qc=dict(ok=a["clipped"] == 0, flags=[] if a["clipped"] == 0 else ["clipped"]),
+    engine = (KOK[(wid, v)] if m == "kokoro" else KP[(wid, v)] if m == "kokoro-prof" else SRC[wid])["engine_input"]
+    ipa = KP[(wid, v)]["ipa"] if m == "kokoro-prof" else SRC[wid]["ipa"]
+    rec = dict(id=f"{wid}__{var}__{sysid}", word=wid, variant=var, system=sysid, **a, ipa=ipa,
+               engine_input=engine, profile=(f"{prof[0]} + dorsals={prof[1]}" if prof else None), same_as=None, qc=dict(ok=a["clipped"] == 0, flags=[] if a["clipped"] == 0 else ["clipped"]),
                pie=pie, target=SRC[wid]["target"], method=m, timbre=v, wav=r["wav"], mp4=str(AUD / a["audio"]),
                source_wav=SRC[wid]["wav"],
                metrics={k: r[k] for k in ("rec", "per_src", "per_src_base", "per_ipa", "f0_r", "peak_src", "peak",
-                                          "peak_ok", "contrast_src", "contrast", "contrast_ratio", "dur_ratio", "len_ratio")})
+                                          "peak_ok", "contrast_src", "contrast", "contrast_ratio", "dur_ratio", "len_ratio",
+                                          "post_dtw", "onset_src_ms", "onset_ms")})
     clips.append(rec)
     cells[(wid, m, v)] = rec
 refs = {}
-for v in TIMBRES:
+for v in TIMBRES + TIMBRES2:
     refs[v] = enc(VC / "audio" / "ref" / f"{v}.wav", f"ref/{v}.mp4")
 
 systems = [dict(id="espeak-tone", label="eSpeak (tone)", family="espeak", language="pie (hi base)",
                 licence="GPL-3.0 engine; output unrestricted", reference=True)]
 for m, d in METHODS.items():
-    for v in TIMBRES:
-        systems.append(dict(id=f"kokoro-{v}" if m == "kokoro" else f"vc-{m}-{v}",
-                            label=f"{d['label']} {v}" if m == "kokoro" else f"eSpeak→{d['label']} {v}",
-                            family="kokoro" if m == "kokoro" else "vc", method=m, voice=v, licence=d["licence"],
-                            repo=d["repo"], reference=False))
+    for v in ([] if m == "kokoro-prof" else TIMBRES) + ([] if m == "kokoro" else TIMBRES2):
+        if not any(c["system"].endswith(v) or c["system"].endswith(v + "-profiled") for c in clips if c["method"] == m):
+            continue
+        kok = m.startswith("kokoro")
+        sid = f"kokoro-{v}" if m == "kokoro" else f"kokoro-{v}-profiled" if m == "kokoro-prof" else f"vc-{m}-{v}"
+        systems.append(dict(id=sid, label=f"{d['label']} {v}" if kok else f"eSpeak→{d['label']} {v}",
+                            family="kokoro" if kok else "vc", method=m, voice=v, licence=d["licence"],
+                            repo=d["repo"], reference=False, items="all" if v in TIMBRES else SUBSET,
+                            profile=(" + dorsals=".join(VOICE_PROFILE[v]) if m == "kokoro-prof" else None),
+                            note=d.get("note")))
 bake = json.loads((VC.parent / "bakeoff" / "manifest.json").read_text("utf-8")) if (VC.parent / "bakeoff" / "manifest.json").exists() else {}
 words = [dict(id=w, pie=p, gloss=GLOSS[w], target=TARGET[w][0], ipa=SRC[w]["ipa"], sound=t) for w, p, t in WORDS]
 manifest = dict(schema="pie-tts-bakeoff/1", source="vc", generated=str(date.today()), audio_base="listening/audio/",
@@ -137,17 +155,18 @@ def chip_r(x):
 
 FLOOR = S["ctrl-espeak-p80"]["all"]["per_src"]
 rows = []
-for m, d in METHODS.items():
+for m in MAIN:
+    d = METHODS[m]
     a = S[m]["all"]
     rows.append(f"""<tr><th scope="row">{d['label']}</th><td class="{chip_per(a['per_src'], FLOOR)}">{fmt(a['per_src'])}</td>
-<td>{fmt(S[m]['lines']['per_src'])}</td><td>{fmt(a['post_dtw'] * 1000, 1)}</td><td>{fmt(a['per_ipa'])}</td><td class="{chip_r(a['f0_r_median'])}">{fmt(a['f0_r_median'])}</td>
+<td>{fmt(S[m]['lines']['per_src'])}</td><td>{fmt(a['post_dtw'] * 1000, 1)}</td><td>{fmt(a['per_ipa'])}</td><td>{fmt(a['chi_onset_ratio'])}</td><td class="{chip_r(a['f0_r_median'])}">{fmt(a['f0_r_median'])}</td>
 <td>{fmt(a['contrast_ratio'])}</td><td>{fmt(a['peak_ok'] * 100, 0)}%</td><td>{fmt(a['dur_ratio'])}</td></tr>""")
 CTRL = {"ctrl-aac": "Control: source after AAC", "ctrl-espeak-p80": "Control: eSpeak at pitch 80",
         "ctrl-shift3": "Control: source +3 semitones"}
 for k, lab in CTRL.items():
     c = S[k]["all"]
     rows.append(f"""<tr class="ctrl"><th scope="row">{lab}</th><td>{fmt(c['per_src'])}</td><td>{fmt(S[k]['lines']['per_src'])}</td>
-<td>{fmt(c['post_dtw'] * 1000, 1)}</td><td>{fmt(c['per_ipa'])}</td>
+<td>{fmt(c['post_dtw'] * 1000, 1)}</td><td>{fmt(c['per_ipa'])}</td><td>{fmt(c['chi_onset_ratio'])}</td>
 <td>{fmt(c['f0_r_median'])}</td><td>{fmt(c['contrast_ratio'])}</td><td>{fmt(c['peak_ok'] * 100, 0)}%</td><td>{fmt(c['dur_ratio'])}</td></tr>""")
 summary_table = "\n".join(rows)
 
@@ -156,6 +175,45 @@ def play(rel, label, extra=""):
     return f'<button class="play" type="button" data-src="audio/{html.escape(rel)}" aria-label="Play {html.escape(label)}"><span class="tri" aria-hidden="true"></span>{extra}</button>'
 
 
+def grid_html(wid, pie, timbres, methods, caption):
+    grid = [f'<div class="grid" role="table" aria-label="{html.escape(caption)}"><p class="gcap">{html.escape(caption)}</p>'
+            '<div class="gh" role="row"><span role="columnheader"></span>' +
+            "".join(f'<span role="columnheader">{v}</span>' for v in timbres) + "</div>"]
+    for m in methods:
+        d = METHODS[m]
+        cellhtml = []
+        for v in timbres:
+            cl = cells.get((wid, m, v))
+            if not cl:
+                cellhtml.append('<span class="cell na" role="cell">missing</span>')
+                continue
+            mt = cl["metrics"]
+            prof = f'<span class="prof">{html.escape(cl["profile"])}</span>' if cl.get("profile") else ""
+            cellhtml.append(f"""<span class="cell" role="cell">{play(cl['audio'], f"{pie} {d['label']} {v}")}{prof}
+<span class="nums"><span class="{chip_per(mt['per_src'], FLOOR)}" title="phone edit distance vs source">PER {fmt(mt['per_src'])}</span>
+<span class="{chip_r(mt['f0_r'])}" title="F0 correlation with source">r {fmt(mt['f0_r'])}</span>
+<span title="speech-span duration / source">×{fmt(mt['dur_ratio'])}</span></span>
+<code class="heard" title="recognizer output">{html.escape(mt['rec'])}</code></span>""")
+        flag = '<span class="flag">words only</span>' if m == "openvoice" else ""
+        grid.append(f'<div class="gr{" kok" if m.startswith("kokoro") else ""}" role="row"><span class="mlabel" role="rowheader">{d["label"]}{flag}</span>{"".join(cellhtml)}</div>')
+    grid.append("</div>")
+    return "".join(grid)
+
+
+# fair comparison: per top-3 voice, Seed-VC (both modes) and the others vs profiled Kokoro, words and lines
+cmp_rows = []
+for v in TIMBRES2:
+    for i, m in enumerate(TOP):
+        sv = S.get(m, {}).get(v)
+        if not sv:
+            continue
+        w, l = sv.get("words") or {}, sv.get("lines") or {}
+        flag = ' <span class="flag">words only</span>' if m == "openvoice" else ""
+        vlab = f'<th scope="rowgroup" rowspan="{sum(1 for mm in TOP if S.get(mm, {}).get(v))}">{v}</th>' if i == 0 else ""
+        cmp_rows.append(f"""<tr class="{'kokrow' if m == 'kokoro-prof' else ''}{' first' if i == 0 else ''}">{vlab}<th scope="row">{METHODS[m]['label']}{flag}</th>
+<td>{fmt(w.get('per_src'))}</td><td>{fmt(l.get('per_src'))}</td><td>{fmt((l.get('post_dtw') or 0) * 1000, 1) if l.get('post_dtw') is not None else '–'}</td>
+<td>{fmt(sv['all'].get('chi_onset_ratio'))}</td><td>{fmt(l.get('f0_r'))}</td><td>{fmt(l.get('contrast_ratio'))}</td><td>{fmt(l.get('dur_ratio'))}</td><td>{fmt(w.get('dur_ratio'))}</td></tr>""")
+cmp_table = "\n".join(cmp_rows)
 sections = []
 for wid, pie, target in WORDS:
     src = cells[(wid, "src", None)]
@@ -164,26 +222,12 @@ for wid, pie, target in WORDS:
 <span class="tag">{html.escape(target)}</span></div></header>"""
     srcrow = f"""<div class="srcrow">{play(src['audio'], pie + ' eSpeak source', '<span>eSpeak source</span>')}
 <span class="rec" title="recognizer output on the source">heard as <code>{html.escape(src['metrics']['rec'])}</code></span></div>"""
-    grid = ['<div class="grid" role="table"><div class="gh" role="row"><span role="columnheader"></span>' +
-            "".join(f'<span role="columnheader">{TIMBRE_LABEL[v]}</span>' for v in TIMBRES) + "</div>"]
-    for m, d in METHODS.items():
-        cellhtml = []
-        for v in TIMBRES:
-            cl = cells.get((wid, m, v))
-            if not cl:
-                cellhtml.append('<span class="cell na" role="cell">missing</span>')
-                continue
-            mt = cl["metrics"]
-            cellhtml.append(f"""<span class="cell" role="cell">{play(cl['audio'], f"{pie} {d['label']} {v}")}
-<span class="nums"><span class="{chip_per(mt['per_src'], FLOOR)}" title="phone edit distance vs source">PER {fmt(mt['per_src'])}</span>
-<span class="{chip_r(mt['f0_r'])}" title="F0 correlation with source">r {fmt(mt['f0_r'])}</span>
-<span title="speech-span duration / source">×{fmt(mt['dur_ratio'])}</span></span>
-<code class="heard" title="recognizer output">{html.escape(mt['rec'])}</code></span>""")
-        grid.append(f'<div class="gr{" kok" if m == "kokoro" else ""}" role="row"><span class="mlabel" role="rowheader">{d["label"]}</span>{"".join(cellhtml)}</div>')
-    grid.append("</div>")
-    sections.append(f'<section class="word" id="{wid}">{head}{srcrow}{"".join(grid)}</section>')
+    grids = grid_html(wid, pie, TIMBRES, MAIN, "Voices hm_omega, ef_dora, em_alex (Kokoro alone = converter default spellings)")
+    if wid in SUBSET:
+        grids += grid_html(wid, pie, TIMBRES2, TOP, "Top-3 bake-off voices (Kokoro with each voice's recommended profile)")
+    sections.append(f'<section class="word" id="{wid}">{head}{srcrow}{grids}</section>')
 
-refrow = "".join(play(refs[v]["audio"], f"{v} reference", f"<span>{v} · {refs[v]['duration_s']:.0f} s</span>") for v in TIMBRES)
+refrow = "".join(play(refs[v]["audio"], f"{v} reference", f"<span>{v} · {refs[v]['duration_s']:.0f} s</span>") for v in TIMBRES + TIMBRES2)
 page = f"""<title>PIE Voice Conversion</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -247,6 +291,12 @@ code {{ font-family: var(--f-mono); font-size: .8rem; }}
 .gh, .gr {{ display: grid; grid-template-columns: 8.5rem repeat(3, minmax(0, 1fr)); gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); align-items: start; }}
 .gh {{ font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding-block: 6px; }}
 .gr.kok {{ background: linear-gradient(var(--accent-soft), var(--accent-soft)) left / 3px 100% no-repeat; padding-left: 0; }}
+.gcap {{ margin: 10px 0 0; font-size: .8rem; color: var(--muted); }}
+.prof {{ font: 500 .7rem var(--f-mono); color: var(--accent); }}
+.flag {{ display: inline-block; margin-left: 6px; font: 500 .66rem var(--f-body); text-transform: uppercase; letter-spacing: .05em; color: var(--warn); background: var(--warn-bg); border-radius: 3px; padding: 0 4px; vertical-align: 1px; }}
+table.cmp tr.first th, table.cmp tr.first td {{ border-top: 2px solid var(--line); }}
+table.cmp tr.kokrow th[scope=row], table.cmp tr.kokrow td {{ background: var(--accent-soft); }}
+th[scope=rowgroup] {{ text-align: left; vertical-align: top; font-weight: 600; }}
 .mlabel {{ font-weight: 600; font-size: .88rem; padding-top: 6px; padding-left: 8px; }}
 .cell {{ display: flex; flex-direction: column; gap: 4px; min-width: 0; }}
 .cell .play {{ align-self: flex-start; padding: 5px 10px 5px 9px; }}
@@ -273,16 +323,26 @@ nav.jump a:hover {{ text-decoration: underline; }}
 <section class="panel" aria-labelledby="sum">
 <h2 id="sum">Averages over 18 items × 3 timbres</h2>
 <div class="tablewrap"><table>
-<thead><tr><th>System</th><th>Phone edit distance vs source</th><th>Same, hymn lines only</th><th>Logit DTW distance ×1000</th><th>Phone edit distance vs IPA</th><th>F0 r (median)</th><th>Accent contrast kept</th><th>F0 peak on accent</th><th>Duration ratio</th></tr></thead>
+<thead><tr><th>System</th><th>Phone edit distance vs source</th><th>Same, hymn lines only</th><th>Logit DTW distance ×1000</th><th>Phone edit distance vs IPA</th><th>χ noise kept</th><th>F0 r (median)</th><th>Accent contrast kept</th><th>F0 peak on accent</th><th>Duration ratio</th></tr></thead>
 <tbody>
 {summary_table}
 </tbody></table></div>
-<p class="note">Edit distance uses a wav2vec2 phone recognizer (xlsr-53-espeak-cv-ft) on the source and on each clip, divided by the source length. The recognizer never outputs χ, ʔ or murmured stops, so it measures how stable the heard phone string is, not whether the PIE sounds are right. The control rows change nothing phonetic: the source after the page's AAC encoding, the same eSpeak codes rendered at a higher pitch, and the source pitch-shifted by a phase vocoder. They show how much the recognizer moves on its own; on 1-second words that is a lot, so the hymn-line column and the logit DTW distance (frame-level, continuous) are the steadier guides. Accent contrast kept is the semitone gap between the source's high-tone frames and the rest, in the clip, divided by the same gap in the source. Green, amber and red mark distance within 0.15, 0.35 or more of the eSpeak-pitch control, and F0 r of at least 0.7, 0.4 or less.</p>
+<p class="note">Edit distance uses a wav2vec2 phone recognizer (xlsr-53-espeak-cv-ft) on the source and on each clip, divided by the source length. The recognizer never outputs χ, ʔ or murmured stops, so it measures how stable the heard phone string is, not whether the PIE sounds are right. The control rows change nothing phonetic: the source after the page's AAC encoding, the same eSpeak codes rendered at a higher pitch, and the source pitch-shifted by a phase vocoder. They show how much the recognizer moves on its own; on 1-second words that is a lot, so the hymn-line column and the logit DTW distance (frame-level, continuous) are the steadier guides. χ noise kept is the length of voiceless noise before voicing in the χ-initial items (h₂éwsos, h₂ówis, h₂éǵeti, the first hymn line), clip over source. Accent contrast kept is the semitone gap between the source's high-tone frames and the rest, in the clip, divided by the same gap in the source. Green, amber and red mark distance within 0.15, 0.35 or more of the eSpeak-pitch control, and F0 r of at least 0.7, 0.4 or less.</p>
 </section>
 <section class="panel" aria-labelledby="refh">
 <h2 id="refh">Target timbre references (Kokoro, plain speech)</h2>
 <div class="refs">{refrow}</div>
-<p class="note">hm_omega reads English; ef_dora and em_alex read Spanish. kNN-VC can only reuse frames that exist in these clips.</p>
+<p class="note">hm_omega, bf_isabella and af_nicole read English; ef_dora, em_alex and em_santa read Spanish. kNN-VC can only reuse frames that exist in these clips; Seed-VC uses the first 25 s.</p>
+</section>
+<section class="panel" aria-labelledby="cmph">
+<h2 id="cmph">Fair comparison: Seed-VC from eSpeak vs profiled Kokoro, top-3 voices</h2>
+<p class="note">Kokoro here uses each voice's recommended spellings from the bake-off: bf_isabella and af_nicole h2-velar with fronted dorsals, em_santa h2-voiced-uvular with plain dorsals. The converters start from the same eSpeak source as everywhere else. Items: h₂éwsos, h₂éǵeti, ḱléwos, bʰréh₂tēr and the two hymn lines.</p>
+<div class="tablewrap"><table class="cmp">
+<thead><tr><th>Voice</th><th>System</th><th>Phone edit distance, 4 words</th><th>Phone edit distance, 2 lines</th><th>Logit DTW ×1000, lines</th><th>χ noise kept</th><th>F0 r, lines</th><th>Accent contrast kept, lines</th><th>Duration ratio, lines</th><th>Duration ratio, words</th></tr></thead>
+<tbody>
+{cmp_table}
+</tbody></table></div>
+<p class="note">Kokoro is not a conversion of the eSpeak clip, so its edit distance and F0 numbers measure how far it is from eSpeak's rendering, which is the accurate one. Lower distance and a duration ratio near 1 mean closer to the source.</p>
 </section>
 <nav class="jump" aria-label="Words">{"".join(f'<a href="#{w}">{html.escape(p)}</a>' for w, p, _ in WORDS)}</nav>
 {"".join(sections)}
