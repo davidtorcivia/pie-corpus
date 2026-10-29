@@ -151,6 +151,14 @@ def _keyer(lang: str):
 _form_key = _keyer
 
 
+def headword_key(lang: str, s: str) -> str:
+    """Key of a daughter headword in a "key" override row and in a mapping path. A word the language keyer
+    cannot read (Avestan script: key_ae keys transliteration only) keys to itself, NFC and lower-cased,
+    never to "": an empty key would match every unreadable path term (cq2: the 𐬨𐬀𐬴𐬌𐬌𐬀 row capped every
+    Avestan-script dictionary route, vohu- and saē- among them)."""
+    return _keyer(lang)(s) or unicodedata.normalize("NFC", (s or "").strip().lower())
+
+
 def proto_key(term: str) -> str:
     from .formula_search import PieIndex
     return PieIndex.proto_key(term)
@@ -190,12 +198,15 @@ def load_overrides(root: Path = ROOT) -> dict:
             per[dc.corpus][dc.lemma][(dc.sense or "").strip().lower() if r.get("sense") else None] = dc
         form: dict = collections.defaultdict(dict)
         for r in d["form"]:
-            form[r["lang"]][_keyer(r["lang"])(r["form"])] = r["lemma"]
+            fk = _keyer(r["lang"])(r["form"])
+            if not fk:
+                raise ValueError(f"form row {r['lang']} {r['form']!r}: empty key (the {r['lang']} keyer cannot read it)")
+            form[r["lang"]][fk] = r["lemma"]
         out = _pack({c: {lem: list(v.values()) for lem, v in rows.items()} for c, rows in per.items()}, dict(form))
         out["proto"] = {(r["code"], proto_key(r["term"])): decision(r, r["code"], r["term"]) for r in d["proto"]}
         key: dict = collections.defaultdict(dict)
         for r in d["key"]:
-            key[r["lang"]][_keyer(r["lang"])(r["key"])] = decision(r, r["lang"], r["key"])
+            key[r["lang"]][headword_key(r["lang"], r["key"])] = decision(r, r["lang"], r["key"])
         out["key"] = dict(key)
         _OVR_CACHE[p] = out
     return _OVR_CACHE[p]
@@ -217,7 +228,7 @@ def path_decision(path, lang: str | None, overrides: dict | None = None, root: P
     if not (ov.get("proto") or ov.get("key")):
         return None
     keyed = ov.get("key", {}).get(lang) if lang else None
-    K = _keyer(lang) if keyed else None
+    K = (lambda t: headword_key(lang, t)) if keyed else None
     for el in path or ():
         if ":" not in str(el):
             continue

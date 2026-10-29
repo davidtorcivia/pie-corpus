@@ -158,6 +158,207 @@
    ],
    "note": "cq2 tier2-r3: mártya- 'mortal' < *mórtyo- / *mr̥tyó- (EWAia II 318 s.v. MAR): the Wiktionary page kept as its exact id, and *mr̥tós as another formation of the same root (root level), so that the *mer- group finds it (god+mortal).",
    "formation": "derivative"
+  },
+  {
+   "corpus": "sa-ep",
+   "lemma": "dam",
+   "lex_id": [
+    "pie-lex-domh2eyeti",
+    "pie-root-demh2-tame"
+   ],
+   "note": "cq2 lead expansion (data/research/formulas/mapping-errors-lead-expansion.jsonl): √dam 'tame' (dānta-, dāmyati, damayati; EWAia I 697 DAMⁱ < *demh₂-, LIV² 116; causative damáyati = *domh₂éyeti). The ids also had *dṓm 'house' and *demh₂- 'join' through the homograph dám- 'house'."
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√damⁱ-",
+   "lex_id": [
+    "pie-lex-domh2eyeti",
+    "pie-root-demh2-tame"
+   ],
+   "note": "cq2 lead expansion (data/research/formulas/mapping-errors-lead-expansion.jsonl): √damⁱ- 'tame' (damáyantam RV 7.6.4d, 10.74.5b; EWAia I 697): not *dṓm 'house' or *demh₂- 'join'."
+  },
+  {
+   "corpus": "sa-ep",
+   "lemma": "dama",
+   "lex_id": [
+    "pie-root-demh2-tame"
+   ],
+   "note": "cq2 lead expansion (data/research/formulas/mapping-errors-lead-expansion.jsonl): epic dama- 'self-restraint, taming' from √dam 'tame' (EWAia I 697): *demh₂- 'tame' only, not the homograph *demh₂- 'join'.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "dám-",
+   "lex_id": [
+    "pie-lex-doxm"
+   ],
+   "note": "cq2 lead expansion (data/research/formulas/mapping-errors-lead-expansion.jsonl): found while verifying: RV dám- 'house' (dán, EWAia I 696) = *dṓm; it had the 'tame' and 'join' ids instead."
+  },
+  {
+   "corpus": "rv",
+   "lemma": "dáma-",
+   "lex_id": [
+    "pie-lex-doxm"
+   ],
+   "note": "cq2 lead expansion (data/research/formulas/mapping-errors-lead-expansion.jsonl): found while verifying: RV dáma- 'house' (dáme 'at home'; EWAia I 696, thematic *dómo-, cf. δόμος, Lat. domus) was keyed to *demh₂- 'tame' and 'join'. Another formation of *dṓm: root level.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "av",
+   "lemma": "dama",
+   "lex_id": [
+    "pie-lex-doxm"
+   ],
+   "note": "cq2 lead expansion (data/research/formulas/mapping-errors-lead-expansion.jsonl): found while verifying: AV dama is dáma- 'house' (dame dame AVŚ 7.29; damāsaḥ 7.73), keyed 'tame'/'join'. Root level (*dómo-).",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "cy",
+   "lemma": "deint",
+   "lex_id": [
+    "pie-lex-h3donts"
+   ],
+   "note": "cq2 lead expansion (data/research/formulas/mapping-errors-lead-expansion.jsonl): Welsh deint, plural of dant 'tooth' (GPC s.v. dant) < *h₃dónts; the route cel-pro *dantos went to *dm̥tós ('built'). neint 'streams' is lemmatised separately (pie/cq2_other.py: nant).",
+   "formation": "same"
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√śī-",
+   "lex_id": [
+    "pie-lex-kjeytor",
+    "pie-root-kjey-be_lying_down"
+   ],
+   "note": "cq2 tier2-r6 (docs/audits/tier2-review-r6.md §4): √śī- 'lie' is the root-present middle śáye / śéte, áśeran = *ḱéy-or / *ḱéytor (LIV² 320, EWAia II 614); the lemma had only the root id (death-otherworld-004). The 'fall' homograph stays out."
+  },
+  {
+   "corpus": "av",
+   "lemma": "śī",
+   "lex_id": [
+    "pie-lex-kjeytor",
+    "pie-root-kjey-be_lying_down"
+   ],
+   "note": "cq2 tier2-r6 (docs/audits/tier2-review-r6.md §4): AV śī 'lie' = *ḱéytor (see rv √śī-)."
+  },
+  {
+   "corpus": "sa-ep",
+   "lemma": "śī",
+   "lex_id": [
+    "pie-lex-kjeytor",
+    "pie-root-kjey-be_lying_down"
+   ],
+   "note": "cq2 tier2-r6 (docs/audits/tier2-review-r6.md §4): epic śī 'lie' (śete) = *ḱéytor (see rv √śī-)."
+  },
+  {
+   "corpus": "ae",
+   "lemma": "saē",
+   "lex_id": [
+    "pie-lex-kjeytor"
+   ],
+   "note": "cq2 tier2-r6 (docs/audits/tier2-review-r6.md §4): Avestan saē- 'lie' (saēte, 3pl sōire; Bartholomae AiW 1567) = Ved. śáye, *ḱéytor; the dictionary route went to the u-stem *ḱéy-u-s (death-otherworld-004)."
+  },
+  {
+   "corpus": "ae",
+   "lemma": "saēte",
+   "lex_id": [
+    "pie-lex-kjeytor"
+   ],
+   "note": "cq2 tier2-r6 (docs/audits/tier2-review-r6.md §4): Avestan saēte 'lies' (CAB, 2 tokens) = *ḱéytor."
+  },
+  {
+   "corpus": "ae",
+   "lemma": "sōire",
+   "lex_id": [
+    "pie-lex-kjeytor"
+   ],
+   "note": "cq2 tier2-r6 (docs/audits/tier2-review-r6.md §4): Avestan sōire 'they lie' (Yt 10.80; Bartholomae AiW 1567) = Ved. śére, *ḱéy-ro(r) (the lexicon's own Avestan reflex sōⁱre); was unmapped."
+  },
+  {
+   "corpus": "ae",
+   "lemma": "jan",
+   "lex_id": [
+    "pie-lex-gwhenti"
+   ],
+   "note": "cq2 tier2-r6 (docs/audits/tier2-review-r6.md §4): Avestan jan- 'strike, slay' (jaiṇti; Bartholomae AiW 491) = Ved. han-, *gʷʰénti; the cited lemma reached it only through the noun *gʷʰéntis (dragon-slaying-016)."
+  },
+  {
+   "corpus": "ae",
+   "lemma": "janāni",
+   "lex_id": [
+    "pie-lex-gwhenti"
+   ],
+   "note": "cq2 tier2-r6 (docs/audits/tier2-review-r6.md §4): Avestan janāni 1sg subj. of jan- 'slay' (VS 19.5, Yt 15; CAB 5 tokens) = *gʷʰénti; was unmapped."
+  },
+  {
+   "corpus": "hom",
+   "lemma": "ἠέλιος",
+   "lex_id": [
+    "pie-lex-soh2wl"
+   ],
+   "note": "cq2 tier2-r6 (docs/audits/tier2-review-r6.md §4): ἠέλιος/ἥλιος is the -iyo- derivative *sāwel-iyo- of *sóh₂wl̥ (Beekes EDG 516), the type of Ved. sū́rya- (already root level, sanskrit.json): root level, not exact (dawn-sun-009, -016).",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "hom",
+   "lemma": "ἥλιος",
+   "lex_id": [
+    "pie-lex-soh2wl"
+   ],
+   "note": "cq2 tier2-r6 (docs/audits/tier2-review-r6.md §4): ἥλιος: see hom ἠέλιος.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "grp",
+   "lemma": "ἥλιος",
+   "lex_id": [
+    "pie-lex-soh2wl"
+   ],
+   "note": "cq2 tier2-r6 (docs/audits/tier2-review-r6.md §4): ἥλιος: see hom ἠέλιος.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "grp",
+   "lemma": "ἠέλιος",
+   "lex_id": [
+    "pie-lex-soh2wl"
+   ],
+   "note": "cq2 tier2-r6 (docs/audits/tier2-review-r6.md §4): ἠέλιος: see hom ἠέλιος.",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "sga",
+   "lemma": "focal",
+   "lex_id": [],
+   "note": "cq2 lead expansion (data/research/formulas/mapping-errors-lead-expansion.jsonl): Irish focal/focul 'word' is a loan from Latin vocabulum (Matasović EDPC s.v. *wokʷ-; eDIL focul), not an inherited reflex of *wókʷtlom; unmapped (286 Celtic units)."
+  },
+  {
+   "corpus": "sga",
+   "lemma": "focul",
+   "lex_id": [],
+   "note": "cq2 lead expansion (data/research/formulas/mapping-errors-lead-expansion.jsonl): Irish focal/focul 'word' is a loan from Latin vocabulum (Matasović EDPC s.v. *wokʷ-; eDIL focul), not an inherited reflex of *wókʷtlom; unmapped (286 Celtic units)."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "focal",
+   "lex_id": [],
+   "note": "cq2 lead expansion (data/research/formulas/mapping-errors-lead-expansion.jsonl): Irish focal/focul 'word' is a loan from Latin vocabulum (Matasović EDPC s.v. *wokʷ-; eDIL focul), not an inherited reflex of *wókʷtlom; unmapped (286 Celtic units)."
+  },
+  {
+   "corpus": "celt",
+   "lemma": "focul",
+   "lex_id": [],
+   "note": "cq2 lead expansion (data/research/formulas/mapping-errors-lead-expansion.jsonl): Irish focal/focul 'word' is a loan from Latin vocabulum (Matasović EDPC s.v. *wokʷ-; eDIL focul), not an inherited reflex of *wókʷtlom; unmapped (286 Celtic units)."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "focal",
+   "lex_id": [],
+   "note": "cq2 lead expansion (data/research/formulas/mapping-errors-lead-expansion.jsonl): Irish focal/focul 'word' is a loan from Latin vocabulum (Matasović EDPC s.v. *wokʷ-; eDIL focul), not an inherited reflex of *wókʷtlom; unmapped (286 Celtic units)."
+  },
+  {
+   "corpus": "sga-glosses",
+   "lemma": "focul",
+   "lex_id": [],
+   "note": "cq2 lead expansion (data/research/formulas/mapping-errors-lead-expansion.jsonl): Irish focal/focul 'word' is a loan from Latin vocabulum (Matasović EDPC s.v. *wokʷ-; eDIL focul), not an inherited reflex of *wókʷtlom; unmapped (286 Celtic units)."
   }
  ],
  "key": [

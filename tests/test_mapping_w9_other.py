@@ -10,12 +10,14 @@ from pie import formula_search as fs, mapping as mp
 from pie.w9_other_mapping import ROWS, reviewed_lemma
 
 ROOT = Path(__file__).resolve().parents[1]
+# corpus-quality batch 2, lead decision: Armenian gan follows the cq1 rule (gam) everywhere
+CQ2 = {'gam@present': 'gam'}
 
 
 def test_contextual_corrections_do_not_change_unreviewed_homographs():
     for r in ROWS:
         t = fs.Token(r['corpus'], r['old'], r['surface'], r['locus'], {}, True, 'noun')
-        assert t.lemma == r['lemma'], r
+        assert t.lemma == CQ2.get(r['lemma'], r['lemma']), r
         assert t.surface == r['surface']
         assert t.content == (not r['lemma'].endswith((' (name)', '@numeral')))
         assert reviewed_lemma(r['corpus'], r['old'], r['surface'], 'elsewhere') == r['old']
@@ -33,7 +35,7 @@ def test_actual_dmhp_coordinates_and_segmentation():
         r = expected.get((t.locus, t.surface))
         if r:
             seen.add((t.locus, t.surface))
-            assert t.lemma == r['lemma']
+            assert t.lemma == CQ2.get(r['lemma'], r['lemma'])
             assert t.content == (not t.lemma.endswith((' (name)', '@numeral')))
     assert seen == expected.keys()
 
@@ -67,4 +69,7 @@ def test_reviewed_material_exclusions_have_exact_boundaries():
     for r in rows:
         assert r['start'] == r['end']
         assert excluded_source(r['corpus'], Path(r['source']).name, r['start'])
+        # cq2 excludes all of Rybnikov vol. 2 from line 21980 (its editorial matter)
+        if Path(r['source']).name == 'pesnisobrannyepnrybnikovymch2narod72_djvu.txt' and r['start'] >= 21980:
+            continue
         assert not excluded_source(r['corpus'], Path(r['source']).name, r['start']-1, r['end'])

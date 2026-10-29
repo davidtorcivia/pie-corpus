@@ -35,7 +35,9 @@ def test_reviewed_tokens_preserve_surface(c,old,form,loc,new):
         # Armenian give / Asia / numeral readings became general rules in corpus-quality batch 1
         # (pie.cq1_xcl); every other unreviewed form keeps its lemma.
         from pie.cq1_xcl import rule_for
-        assert Token(c,old,form,'unreviewed',{},True,'noun').lemma==old or rule_for(c,old,form,'unreviewed')
+        # cq2: a capitalised Greek lemma is a name everywhere (pie.cq2_other.greek_capitalised)
+        cq2_name = c in {'grc','grp','grc-late','hom'} and old[:1].isupper()
+        assert Token(c,old,form,'unreviewed',{},True,'noun').lemma==old or rule_for(c,old,form,'unreviewed') or cq2_name
 
 
 def test_resolved_tables_do_not_leak_senses():

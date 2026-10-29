@@ -105,6 +105,49 @@ def test_avestan_mashiia_key_row_caps_the_dictionary_route():
     assert d is not None and d.derivative and "pie-lex-mrtos" in d.ids
 
 
+def test_unreadable_headword_key_matches_only_itself():
+    # regression: key_ae reads transliteration only, so the Avestan-script key row keyed to "" and capped
+    # every Avestan-script dictionary path (16,232 ae index words keyed *mr̥tós, vohu- lost *h₁wésus)
+    assert mp.path_decision(["ae:𐬬𐬊𐬵𐬎", "iir-pro:Hwásuš", "ine-pro:*h₁wésus"], "ae") is None
+    assert mp.headword_key("ae", "𐬨𐬀𐬴𐬌𐬌𐬀") == "𐬨𐬀𐬴𐬌𐬌𐬀" and mp.headword_key("ae", "vohu-") == "vohu"
+    ov = mp.load_overrides(ROOT)
+    assert all(k for rows in ov["key"].values() for k in rows)
+    assert all(k for rows in ov["form"].values() for k in rows)
+    assert mp.resolve_table("ae")["vohu"].ids == {"pie-lex-h1wesus"}
+
+
+@pytest.mark.parametrize("corpus,lemma,ids,formation", [
+    ("sa-ep", "dam", {"pie-lex-domh2eyeti", "pie-root-demh2-tame"}, None),     # lead expansion
+    ("rv", "√damⁱ-", {"pie-lex-domh2eyeti", "pie-root-demh2-tame"}, None),
+    ("sa-ep", "dama", {"pie-root-demh2-tame"}, "derivative"),
+    ("rv", "dám-", {"pie-lex-doxm"}, None),
+    ("rv", "dáma-", {"pie-lex-doxm"}, "derivative"),
+    ("av", "dama", {"pie-lex-doxm"}, "derivative"),
+    ("cy", "deint", {"pie-lex-h3donts"}, "same"),
+    ("celt", "focal", set(), None),
+    ("celt", "focul", set(), None),
+    ("rv", "√śī-", {"pie-lex-kjeytor", "pie-root-kjey-be_lying_down"}, None),   # tier2-r6
+    ("av", "śī", {"pie-lex-kjeytor", "pie-root-kjey-be_lying_down"}, None),
+    ("ae", "saē", {"pie-lex-kjeytor"}, None),
+    ("ae", "sōire", {"pie-lex-kjeytor"}, None),
+    ("ae", "jan", {"pie-lex-gwhenti"}, None),
+    ("ae", "janāni", {"pie-lex-gwhenti"}, None),
+    ("hom", "ἠέλιος", {"pie-lex-soh2wl"}, "derivative"),
+    ("grp", "ἥλιος", {"pie-lex-soh2wl"}, "derivative"),
+])
+def test_cq2_late_rows(corpus, lemma, ids, formation):
+    got, ds = mp.decide(corpus, lemma, {"wrong-auto-id"})
+    assert got == ids and ds
+    assert ds[-1].formation == formation
+    if not ids:
+        assert lemma not in mp.resolve_table(corpus)
+
+
+def test_welsh_neint_is_nant_not_teeth():
+    assert tok("cy", "deint", "neint").lemma == "nant"
+    assert tok("cy", "deint", "deint").lemma == "deint"
+
+
 # ---------------------------------------------------------------- Irish
 
 def lz(form, baseline):

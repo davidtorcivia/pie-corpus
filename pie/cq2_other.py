@@ -25,6 +25,9 @@ Rules:
     wave-8/9 readings gam@present (Movses 82268, Yeghishe 20801) become gam, whose reviewed row is
     *weh₂(dʰ)- 'go' (arm-toch-alb.json, Martirosyan EDAIL 196), the etymology the w8 reviewer gave the
     present; gam@present was unmapped.
+  - Welsh neint 'streams, valleys' (pl. of nant, GPC s.v. nant) lemmatised deint 'teeth' (pl. of dant):
+    surface neint -> nant. All 10 tokens of the cq2 index read: blaen neint, adar ... neint (Skene,
+    Red Book poetry); none after a nasal-mutation trigger (fy, yn), which would make it 'my teeth'.
 """
 from __future__ import annotations
 
@@ -102,6 +105,8 @@ def contextual_lemma(corpus: str, lemma: str, surface: str, locus: str) -> str:
         return lemma
     if corpus == "xcl" and lemma == "gam@present":
         return "gam"
+    if corpus == "cy" and lemma == "deint" and surface.strip(".,;:!?'’").lower() == "neint":
+        return "nant"
     return lemma
 
 

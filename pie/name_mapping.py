@@ -226,6 +226,14 @@ def _resources(population):
     return lang, local, resolved, ch
 
 
+# Allowlisted theonyms whose word is a reviewed derivative of the lexeme (formation "derivative": the
+# secure check counts it at root level) yet is the god's own name for that power, not a homograph:
+# Helios / Sūrya are the -iyo- derivative of *sóh₂wl̥ (tier2-review-r6 §4, EWAia II 742). They keep their
+# roots as the narrowing rule meant (docs/research/8c-theonym-narrowing.md: the exclusions are wrong
+# lexemes). Corpus-quality batch 2.
+THEONYM_DERIVATIVES = {'grc': {'ἥλιος': 'pie-lex-soh2wl'}, 'sa': {'sūrya': 'pie-lex-soh2wl'}}
+
+
 def theonym_allowed(corpus, lemma):
     """Reviewed deity / personified-power allowlist membership (THEONYMS)."""
     lang = LANGUAGE.get(POPULATION.get(corpus, corpus))
@@ -266,9 +274,10 @@ def exact_name_ids(corpus, lemma):
         component = r and (r.how in {'base', 'root', 'prefix', 'compound'} or
                            any(p.startswith(('prefix:', 'base:', 'compound:', 'privative:')) for p in r.path))
         ids = r.ids if r and not component else frozenset()
+    deriv = THEONYM_DERIVATIVES.get(lang, {}).get(mp._keyer(lang)(lemma))
     return frozenset(i for i in ids if i.startswith('pie-lex-') and
                      (hit := checker.match(i, secure.code_of(population, lang), LANG_LABEL[lang], lemma, True)) and
-                     hit['level'] == 'exact' and
+                     (hit['level'] == 'exact' or (hit['level'] == 'root' and i == deriv)) and
                      not any(p.startswith(('preverb:', 'prefix:', 'base:', 'compound:', 'privative:'))
                              for p in hit['path']))
 

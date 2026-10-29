@@ -42,7 +42,9 @@ def test_dictionary_name_pos_keeps_common_homonyms(name,common):
     assert t.lemma == name+' (name)' and not t.content and t.pos=='name'
     t=fs.Token('grc',common,common.title(),'fixture',{},True,'noun')
     assert t.lemma==common and t.content
-    assert fs.Token('grc','Ἄγνωστον','Ἄγνωστον','fixture',{},True,'noun').content
+    # cq2 (corpus-quality batch 2): a capitalised Greek lemma outside the dictionary names is now a name
+    # too (pie.cq2_other.greek_capitalised); before, it stayed content
+    assert fs.Token('grc','Ἄγνωστον','Ἄγνωστον','fixture',{},True,'noun').lemma == 'Ἄγνωστον (name)'
 
 
 @pytest.mark.parametrize('key,new',VUK.items())

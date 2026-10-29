@@ -42,7 +42,8 @@ def test_context_preserves_other_homographs(words,index,baseline,target):
     assert z(form)==baseline
     # corpus-quality batch 1 made these readings general rules (pie.celtic_mapping._cq1_irish_rule;
     # error-verdicts-cq1-celtic.jsonl): outside the old reviewed context they now give the rule's lemma.
-    cq1_general = {'airc': 'airc@need', 'gráin': 'gráin@fear', 'gona': 'co'}
+    cq1_general = {'airc': 'airc@need', 'gráin': 'gráin@fear', 'gona': 'co',
+                   'Fichi': 'fiche'}   # cq2: fichi is the numeral everywhere (error-verdicts-cq2.jsonl)
     assert cm.lemmatize_words(z, ['unrelated', form, 'unrelated'])[1] == cq1_general.get(form, baseline)
 
 
