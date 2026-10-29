@@ -20,7 +20,9 @@ from pie.realize import Lexicon, accent_manifest
 ROOT = Path(__file__).resolve().parent.parent
 CORE_VERBS = ["be", "see", "carry", "give", "speak", "say", "go", "come", "know", "eat", "drink", "hear",
               "sit", "stand", "lead", "drive", "kill", "slay", "live", "fear", "seek", "protect", "milk",
-              "plough", "walk", "arrive", "seize", "burn", "lie", "put", "become", "split", "cover"]
+              "plough", "walk", "arrive", "seize", "burn", "lie", "put", "become", "split", "cover",
+              # t033: no 'sing' in the slice (planners wrote mléwH- 'speak') and 'love' only as stérg- 'protect~'
+              "sing", "love"]
 # always offered when usable, so a concept is never carried by a thin synonym (b001 review Q2)
 CORE_NOUNS = ["pie-lex-h2owis", "pie-lex-h1ngwnis", "pie-lex-peh2wr", "pie-lex-h1ekjwos", "pie-lex-gwoxws",
               "pie-lex-kjwox", "pie-lex-wlkwos", "pie-lex-dyexws", "pie-lex-ph2texr", "pie-lex-meh2texr",

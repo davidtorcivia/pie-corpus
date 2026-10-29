@@ -245,3 +245,42 @@ def test_census_rules_pass_the_backtest_and_their_lexemes_are_usable(lx):
         assert all(r["usable"] for r in rows if r["rule"] == rule), rule
     lid = next(r["id"] for r in rows if r["rule"] == "shape:n-stem-ak" and r["form"] == "stérō")
     assert lx.admissible_cells(lid)["GEN.SG"][0] == "str̥nés"
+
+
+# owner's t033 items: adposition objects, 'love', 'sing' -----------------------------------------------------------
+
+TOWARD, WOLF, CREEP = "pie-lex-proti", "pie-lex-wlkwos", "pie-lex-serpeti"
+
+
+def test_adposition_governs_a_dependent_noun_phrase(lx, ix):
+    # t033: 'crept toward them' had no slot for 'them'; próti took no object
+    them = {"lex_id": "closed:demonstrative_so", "role": "GOAL", "num": "PL", "gender": "m", "dep": 2}
+    plan = P({"slots": [{"lex_id": WOLF, "role": "SUBJ"}, them, {"lex_id": TOWARD, "role": "ADV"},
+                        V(CREEP, tense="PST")]})
+    r = produce(plan, lx)
+    assert r["pie"] == "wĺ̥kʷos tóns próti sérpet."
+    assert _ok(r["pie"], ix)
+    # a noun works the same way, and keeps its own phrase (MOD) before the adposition
+    plan["clauses"][0]["slots"][1] = {"lex_id": SHEEP, "role": "GOAL", "dep": 2}
+    plan["clauses"][0]["slots"].append({"lex_id": WHITE, "role": "MOD", "head": 1})
+    assert produce(plan, lx)["pie"] == "wĺ̥kʷos bʰl̥Héh₂m h₂ówim próti sérpet."
+    bad = [dict(s) for s in plan["clauses"][0]["slots"]]
+    bad[1]["role"] = "SUBJ"
+    assert any("governed by an adposition" in e for e in _errs(P({"slots": bad}), lx))
+    bad = [dict(s) for s in plan["clauses"][0]["slots"]]
+    bad[2] = {"lex_id": "closed:interrogative_adv/where", "role": "ADV"}
+    assert any("cannot govern" in e or "not an adverb or adposition" in e for e in _errs(P({"slots": bad}), lx))
+
+
+def test_love_and_sing_verbs_are_glossed_usable_and_offered(lx, tmp_path, monkeypatch):
+    assert lx.meaning("pie-lex-stergeti")[0].startswith("to love, cherish")
+    for i in ("pie-lex-lubhyeti", "pie-lex-stergeti", "pie-lex-kh2neti", "pie-lex-sengwheti"):
+        assert lx.inadmissible(i) is None and lx.meaning(i)[1] == "override", i
+    assert lx.cells("pie-lex-kh2neti")["PRS.3SG"][0] == "kh₂néti"
+    ms = runpy.run_path(str(ROOT / "scripts/make_slice.py"))
+    monkeypatch.setitem(ms["main"].__globals__, "ROOT", tmp_path)
+    (tmp_path / "data/generation/slices").mkdir(parents=True)
+    monkeypatch.setattr(sys, "argv", ["make_slice.py", "hymn", "--keywords", "sky", "dawn", "--size", "60"])
+    assert ms["main"]() == 0
+    ids = {it["lex_id"] for it in json.loads((tmp_path / "data/generation/slices/hymn.json").read_text())["lexemes"]}
+    assert {"pie-lex-lubhyeti", "pie-lex-kh2neti"} <= ids        # core verbs: every slice offers them

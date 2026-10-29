@@ -27,6 +27,8 @@ Plan (one sentence):
        "enclitic": false,                          # pronoun slots: the enclitic form (moy, toy, …)
        "gender": null | "m|f|n",                   # pronoun slots used on their own (tod "it", kʷíd "what")
        "and": false,                               # -kʷe "and" after this word (X Y-kʷe = X and Y)
+       "dep": null | <slot index>,                 # a participle's own object; or a GOAL/LOC/ABL/INS/IO noun governed
+                                                   # by an ADV adposition, placed before it (tóns próti 'toward them')
        "verb": {"tense": "PRS|PST|AOR|PRF", "mood": "IND|IMP|SBJV|OPT", "voice": "ACT|MID",
                 "person": null | 1 | 2 | 3,       # person and number default to the subject's (3SG without one);
                 "num": null | "SG|DU|PL"}}]}]}    # set them for pro-drop ("let us go": person 1, num PL, no SUBJ)
@@ -648,7 +650,8 @@ def verb_person_number(cl: dict, v: dict, lx: Lexicon) -> tuple[int, str]:
 def finite_cell(lx: Lexicon, lid: str, v: dict, person: int, num: str, prohibitive: bool) -> str:
     """The verb cell realized for person and number: mē + injunctive (augmentless secondary form) for a
     prohibitive; where no dual cell exists (the 2du/3du middle and perfect, Ringe 2006 pp. 31-32) the plural
-    stands in. Raises KeyError if the cell is not admissible."""
+    stands in (check_plan rejects the 2du/3du perfect: _check_perfect_dual; the middle keeps the flagged fallback).
+    Raises KeyError if the cell is not admissible."""
     mood, tense, voice = v.get("mood", "IND"), v.get("tense", "PRS"), v.get("voice", "ACT")
     base = {"IND": tense, "IMP": "IMP", "SBJV": "SBJV", "OPT": "OPT"}[mood]
     mid = "MID." if voice == "MID" else ""
@@ -765,6 +768,26 @@ def _check_imp_person(ci: int, cl: dict, verbs: list) -> list[str]:
             f"forth!'), or 3 for 'let him …'; without one it would be 3rd person"]
 
 
+# the cases an adposition governs, by the role of its dependent: 'toward X' GOAL (acc.), 'in X' LOC, 'from X' ABL,
+# 'with X' INS, 'for X' IO (dat.)
+ADPOSITION_ROLES = {"GOAL": "ACC", "LOC": "LOC", "ABL": "ABL", "INS": "INS", "IO": "DAT"}
+
+
+def _check_adposition_dep(s: dict, head: dict, where: str, lx: Lexicon) -> list[str]:
+    """A noun phrase governed by an adverb/adposition: {"role": "GOAL", "dep": <ADV slot>} 'toward them' (t033 review:
+    próti took no object, and the planner left the "them" out). In PIE these were adverbs construed with a case
+    form, postposed in Anatolian and Vedic (Fortson §8.8: Hitt. šuḫḫi šēr "on the roof", Ved. jánām̐ ánu "among men"); the
+    dependent stands directly before its adposition and takes the case of its role. The head must be a lexicon
+    adverb or adposition, not a closed interrogative or quantifier."""
+    hid = head.get("lex_id", "")
+    if hid.startswith("closed:") or lx.entries.get(hid, {}).get("pos") not in ("adv", "prep", "postp"):
+        return [f"{where}: dep points at ADV {hid}, which is not an adverb or adposition that can govern a noun"]
+    if s.get("role") not in ADPOSITION_ROLES:
+        return [f"{where}: a noun governed by an adposition takes one of the roles "
+                f"{', '.join(f'{r} ({c})' for r, c in ADPOSITION_ROLES.items())}, not {s.get('role')}"]
+    return []
+
+
 def _check_pred_gender(ci: int, cl: dict, slots: list, lx: Lexicon) -> list[str]:
     """A predicate adjective agrees with its controller (the subject or addressee), so a `gender` on the PRED
     slot itself is ignored. One that contradicts the controller's gender is a plan error: the gender
@@ -839,6 +862,9 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                 if e:
                     errs.append(e)
                     continue
+            d = s.get("dep")
+            if isinstance(d, int) and 0 <= d < len(slots) and slots[d].get("role") == "ADV":
+                errs += _check_adposition_dep(s, slots[d], where, lx)
             if lid.startswith("closed:"):
                 errs += _check_closed(s, slots, where, lx)
                 continue
@@ -866,8 +892,9 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                                 if lx.middle_only(lid) else f"{where}: {lid} has no {ptcp.get('voice', 'ACT')} participle")
             if s.get("dep") is not None:
                 d = s["dep"]
-                if not (isinstance(d, int) and 0 <= d < len(slots) and slots[d].get("participle")):
-                    errs.append(f"{where}: dep must point at a participle slot")
+                if not (isinstance(d, int) and 0 <= d < len(slots)
+                        and (slots[d].get("participle") or slots[d].get("role") == "ADV")):
+                    errs.append(f"{where}: dep must point at a participle slot or an adposition (ADV) slot")
             if role == "V" and fam != "verb":
                 errs.append(f"{where}: V slot needs a verb, {lid} is a {fam}")
             if role == "V" and fam == "verb" and (s.get("verb") or {}).get("voice", "ACT") not in lx.voices(lid):
@@ -1041,7 +1068,7 @@ def _default_warnings(ci: int, cl: dict, prev: dict | None, lx: Lexicon) -> list
                 out.append(f"clause {ci} slot {si}: the pronoun has no gender, so the adjective agreeing with it "
                            f"(slot {agrees[0]}) is masculine; set gender on the pronoun (f for a woman or a ewe, "
                            f"n for the fire)")
-    if vi is not None and not slots[vi].get("lex_id", "").startswith("closed:"):
+    if vi is not None and _confusables().get(slots[vi].get("lex_id", "")):      # realize only when it can warn
         try:
             form = realize_clause(cl, lx)
         except Exception:
