@@ -13,12 +13,11 @@ creates pending release metadata; PASS alone does not authorize training export.
 import argparse
 import collections
 import json
-import re
 import sys
 from pathlib import Path
 
 from pie.batch_release import release_metadata
-from pie.meter import measure
+from pie.meter import measure, record_meter, summary as meter_numbers
 from pie.realize import Lexicon, check_plan, plan_warnings, realize, token_cell
 from pie.translit import to_ascii
 from pie.compound import member_ids
@@ -29,11 +28,23 @@ CAP_EXEMPT = {"pie-lex-h1esti"}          # "to be"
 
 
 def _meter_summary(records: list[dict]) -> dict | None:
+    """The original meter_fit report (lines within ±1 of 8 or 11), kept in this shape for older readers."""
     m = [r["meter"] for r in records if r.get("meter")]
     if not m:
         return None
     lines = sum(len(x["line_syllables"]) for x in m)
     return {"lines": lines, "fit": sum(x["fit"] for x in m), "share": round(sum(x["fit"] for x in m) / max(1, lines), 3)}
+
+
+def _meter_fields(records: list[dict]) -> dict:
+    """meter_near (±1, the same number as meter_fit), meter_exact (exactly a target length: the gated number)
+    and meter_cadence (the Vedic close of exact lines, information only), over verse lines of metered genres."""
+    s = meter_numbers([r["meter"] for r in records if r.get("meter")])
+    if s is None:
+        return {"meter_near": None, "meter_exact": None, "meter_cadence": None}
+    return {"meter_near": {"lines": s["lines"], "near": s["near"], "share": s["near_share"]},
+            "meter_exact": {"lines": s["lines"], "exact": s["exact"], "share": s["exact_share"]},
+            "meter_cadence": s["cadence"]}
 
 
 def _formula_uses(records: list[dict]) -> int:
@@ -49,17 +60,13 @@ def lexeme_cap(n_sentences: int, n_tokens: int = 0) -> int:
     return max(6, round(0.02 * n_sentences), round(0.005 * n_tokens))
 
 
-METER_TARGETS = (8, 11)          # Vedic gāyatrī and triṣṭubh line lengths (±1)
+METER_EXACT_MIN = 0.90          # gate: share of verse lines with exactly 8 or 11 (12 if declared) syllables
 
 
-def _meter(pie: str, genre: str | None) -> dict | None:
-    """Hymns: syllables per line (a line = a sentence) and how many fit 8 or 11 (±1)."""
-    if genre not in ("hymn", "prayer", "charm", "praise", "lament", "wedding"):
-        return None
-    lines = [x.strip() for x in re.split(r"[.?!]", pie) if x.strip()]
-    syl = [measure(x)["syllables"] for x in lines]
-    return {"line_syllables": syl, "fit": sum(any(abs(n - t) <= 1 for t in METER_TARGETS) for n in syl),
-            "targets": list(METER_TARGETS)}
+def _meter(pie: str, genre: str | None, declared: int | None = None) -> dict | None:
+    """Verse genres (pie.meter.METERED_GENRES): syllables per line (a line = a sentence), how many are within
+    ±1 of a target (`fit`) and exactly a target (`exact`), and each line's cadence (pie.meter.record_meter)."""
+    return record_meter(pie, genre, declared)
 
 
 def theme_cap(n_sentences: int, n_tokens: int = 0) -> int:
@@ -119,7 +126,7 @@ def main() -> int:
                         "features": w["features"], **token_cell(w), "verified": True} for w in r["words"]],
             "gloss": r["gloss"], "english": r["english"],
             "genre": p.get("genre"), "theme": p.get("theme", []),
-            "syllables": measure(r["pie"])["syllables"], "meter": _meter(r["pie"], p.get("genre")),
+            "syllables": measure(r["pie"])["syllables"], "meter": _meter(r["pie"], p.get("genre"), p.get("meter")),
             "formulas": [], "cognate_refs": [], "alt_reconstructions": [],
             "validator": {k: v[k] for k in ("status", "coverage", "tiers", "misses")},
             "generator": {"model": args.model, "engine_version": sha, "prompt_id": args.prompt_id,
@@ -155,6 +162,7 @@ def main() -> int:
                "words_per_sentence": round(sum(len(r["pie"].split()) for r in records) / n, 2),
                "words_per_record": round(sum(len(r["pie"].split()) for r in records) / n, 2),
                "meter_fit": _meter_summary(records),
+               **_meter_fields(records),
                "formula_uses": _formula_uses(records), "warnings": len(warnings)}
     # accent: unresolved (missing information: the lexeme's headword has no accent; data/morph/accent_unresolved.json)
     unres = [(r["id"], t["lex_id"]) for r in records for t in r["tokens"] if lx.accent_status(t["lex_id"]) == "unresolved"]
@@ -169,6 +177,8 @@ def main() -> int:
              "roots_per_sentence>=0.35": summary["roots_per_sentence"] >= 0.35,
              "duplicates<=2%": (dup_within + dup_across) <= 0.02 * n,
              "all_exact": stats["exact_pass"] == stats["realized"]}
+    if summary["meter_exact"] is not None:   # only batches with verse lines in a metered genre
+        gates[f"meter_exact>={METER_EXACT_MIN:.2f}"] = summary["meter_exact"]["share"] >= METER_EXACT_MIN
     summary["gates"] = gates
     summary["gate"] = "PASS" if all(gates.values()) else "FAIL"
     (ROOT / "data" / "generation" / "batches").mkdir(exist_ok=True)
