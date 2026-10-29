@@ -23,3 +23,11 @@ Before training C and D:
 - Check whether Tinker supports C or D as a base model; otherwise train them locally.
 
 Judge "a living language you can converse with", not a talking dictionary: use the conversational eval plus a human read of multi-turn exchanges.
+
+## Corpus and tooling (queued 2026-10-29)
+- **More conversational corpus.** The owner wants a living language you can converse with, so plan more multi-turn dialogue batches in Tier 3 (wave 2, t034–t083, is still parked) and Tier 3b.
+- **Slice gaps for Tier 3b:** bread, milk, hungry, angry, story, tomorrow, and the verbs pr̥sḱéti "ask/please" and wéḱti "wish". The brief's please/sorry idioms need them.
+- **`realize_plans.py` should reject held-out root families** (`eval_root`) in plans. Today a held-out root can enter training unnoticed (t3b-001 0019 used h₁éwHt).
+- **Glosses for the translator app** use internal labels (`personal/2-ACC.SG.ENCL`, `demonstrative_so-ACC.SG`). Map them to readable English glosses.
+- **Compound engine:** a determinative prefix compound such as h₂énti- "counter-" for the "answer" coinage (h₂entiwékʷos).
+- **t3b-001** predates the v2 rules (per-sentence English, the coined-sentence gate). Re-plan it under v2 if it is ever re-realized.
