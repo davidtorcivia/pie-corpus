@@ -2,13 +2,13 @@
  "entries": 6748,
  "coverage": {
   "table": 588,
-  "usable": 4215,
+  "usable": 4606,
   "shape": 4389,
   "unknown": 1682,
   "indeclinable": 89
  },
  "inflectable": 4977,
- "usable_for_tier3": 4215,
+ "usable_for_tier3": 4606,
  "usable_threshold": 0.85,
  "backtest": {
   "indeclinable": {
@@ -32,9 +32,9 @@
   "shape:eh2": {
    "tables": 19,
    "cells_ok": 285,
-   "cells": 361,
+   "cells": 285,
    "tables_exact": 15,
-   "cell_accuracy": 0.7895
+   "cell_accuracy": 1.0
   },
   "shape:er-stem": {
    "tables": 7,

@@ -85,7 +85,9 @@ def test_every_primary_lexeme_cell_has_one_accent(lx, hits):
 
 def test_representation_exceptions_are_frozen_vocatives():
     rec = KNOWN["representation_exceptions"]
-    assert len(rec["cells"]) == 111 and rec["lexemes"] == len(rec["ids"]) == 30
+    # 111 cells / 30 lexemes, plus 18 / 6 from the eh₂ nouns made usable by the backtest gate (dh₂pn̥néh₂,
+    # dʰh₁tléh₂, h₂ph₃néh₂, sph₂dʰh₁éh₂, sth₂wéh₂, th₂géh₂: same laryngeal first nucleus; engine-queue-wave1)
+    assert len(rec["cells"]) == 129 and rec["lexemes"] == len(rec["ids"]) == 36
     assert {c["lex_id"] for c in rec["cells"]} == set(rec["ids"])
     assert all(c["cell"].startswith("VOC.") and n_acc(c["form"]) == 0 for c in rec["cells"])
     # the three categories do not overlap
