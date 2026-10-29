@@ -1,0 +1,269 @@
+{
+ "provenance": {
+  "commit": "763cfb8bd125482e884967b2c2714f8c99857d4b",
+  "inputs_dirty": false,
+  "include_pilot": false,
+  "experimental_batches": false
+ },
+ "examples": {
+  "train": 14604,
+  "eval": 460
+ },
+ "examples_by_kind": {
+  "train": {
+   "bilingual_chat": 67,
+   "cognates_to_pie": 1774,
+   "continuation": 632,
+   "gloss": 2208,
+   "inflect": 3909,
+   "paradigm": 1303,
+   "pie_dialogue": 295,
+   "translate_en_pie": 2208,
+   "translate_pie_en": 2208
+  },
+  "eval": {
+   "cognates_to_pie": 96,
+   "continuation": 10,
+   "gloss": 40,
+   "inflect": 93,
+   "paradigm": 31,
+   "translate_en_pie": 95,
+   "translate_pie_en": 95
+  }
+ },
+ "pie_dialogue_split_method": {
+  "train": {
+   "sentence_qa": 295
+  },
+  "eval": {}
+ },
+ "dialogue_records_skipped": {
+  "train": {
+   "no_answer": 2,
+   "no_question": 161,
+   "question_flag_mismatch": 6
+  },
+  "eval": {}
+ },
+ "neologism": {
+  "neologism_words": 0,
+  "total_words": 45848,
+  "share": 0.0,
+  "cap": 0.15,
+  "exceeded": false
+ },
+ "leakage": {
+  "ngram": 4,
+  "per_kind": {
+   "translate_en_pie": {
+    "n": 95,
+    "with_ngrams": 52,
+    "mean_overlap": 0.0,
+    "max_overlap": 0.0,
+    "any_overlap": 0,
+    "single_word_in_train_text": 1
+   },
+   "inflect": {
+    "n": 93,
+    "with_ngrams": 0,
+    "mean_overlap": 0.0,
+    "max_overlap": 0.0,
+    "any_overlap": 0,
+    "single_word_in_train_text": 1
+   },
+   "translate_pie_en": {
+    "n": 95,
+    "with_ngrams": 86,
+    "mean_overlap": 0.1879,
+    "max_overlap": 1.0,
+    "any_overlap": 39,
+    "single_word_in_train_text": 0
+   },
+   "continuation": {
+    "n": 10,
+    "with_ngrams": 10,
+    "mean_overlap": 0.0,
+    "max_overlap": 0.0,
+    "any_overlap": 0,
+    "single_word_in_train_text": 0
+   },
+   "cognates_to_pie": {
+    "n": 96,
+    "with_ngrams": 0,
+    "mean_overlap": 0.0,
+    "max_overlap": 0.0,
+    "any_overlap": 0,
+    "single_word_in_train_text": 0
+   },
+   "gloss": {
+    "n": 40,
+    "with_ngrams": 15,
+    "mean_overlap": 0.0,
+    "max_overlap": 0.0,
+    "any_overlap": 0,
+    "single_word_in_train_text": 0
+   },
+   "paradigm": {
+    "n": 31,
+    "with_ngrams": 31,
+    "mean_overlap": 0.0,
+    "max_overlap": 0.0,
+    "any_overlap": 0,
+    "single_word_in_train_text": 0
+   }
+  },
+  "failures": [],
+  "flagged_seen_in_train": [
+   {
+    "source_id": "t1-formula-dems-potis",
+    "task": "translate_en_pie",
+    "why": [
+     "assistant turn verbatim in train"
+    ]
+   },
+   {
+    "source_id": "t2-cattle-raid-001",
+    "task": "translate_pie_en",
+    "why": [
+     "assistant turn verbatim in train"
+    ]
+   }
+  ],
+  "ok": true
+ },
+ "tokens": {
+  "tokenizer": "/private/tmp/claude-501/-Users-david-AI-PIE/7bdc6640-3091-456e-a081-2c28d7d03867/scratchpad/tok/Qwen_Qwen3-4B/tokenizer.json",
+  "train": {
+   "bilingual_chat": {
+    "examples": 67,
+    "words": 4326,
+    "tokens": 8487,
+    "assistant_tokens": 5059
+   },
+   "cognates_to_pie": {
+    "examples": 1774,
+    "words": 41040,
+    "tokens": 89090,
+    "assistant_tokens": 9129
+   },
+   "continuation": {
+    "examples": 632,
+    "words": 35013,
+    "tokens": 139587,
+    "assistant_tokens": 73282
+   },
+   "gloss": {
+    "examples": 2208,
+    "words": 145334,
+    "tokens": 603192,
+    "assistant_tokens": 283589
+   },
+   "inflect": {
+    "examples": 3909,
+    "words": 66709,
+    "tokens": 161749,
+    "assistant_tokens": 27208
+   },
+   "paradigm": {
+    "examples": 1303,
+    "words": 63731,
+    "tokens": 280068,
+    "assistant_tokens": 234442
+   },
+   "pie_dialogue": {
+    "examples": 295,
+    "words": 8702,
+    "tokens": 35557,
+    "assistant_tokens": 19638
+   },
+   "translate_en_pie": {
+    "examples": 2208,
+    "words": 165387,
+    "tokens": 404154,
+    "assistant_tokens": 234274
+   },
+   "translate_pie_en": {
+    "examples": 2208,
+    "words": 167310,
+    "tokens": 404734,
+    "assistant_tokens": 93855
+   }
+  },
+  "eval": {
+   "cognates_to_pie": {
+    "examples": 96,
+    "words": 2173,
+    "tokens": 4691,
+    "assistant_tokens": 532
+   },
+   "continuation": {
+    "examples": 10,
+    "words": 667,
+    "tokens": 2576,
+    "assistant_tokens": 1512
+   },
+   "gloss": {
+    "examples": 40,
+    "words": 1225,
+    "tokens": 3146,
+    "assistant_tokens": 824
+   },
+   "inflect": {
+    "examples": 93,
+    "words": 1621,
+    "tokens": 3917,
+    "assistant_tokens": 646
+   },
+   "paradigm": {
+    "examples": 31,
+    "words": 1206,
+    "tokens": 5069,
+    "assistant_tokens": 3961
+   },
+   "translate_en_pie": {
+    "examples": 95,
+    "words": 3820,
+    "tokens": 8332,
+    "assistant_tokens": 2967
+   },
+   "translate_pie_en": {
+    "examples": 95,
+    "words": 3911,
+    "tokens": 8379,
+    "assistant_tokens": 1204
+   }
+  },
+  "text/train.txt": {
+   "paragraphs": 2208,
+   "words": 45848,
+   "tokens": 234274,
+   "tokens_per_word": 5.1098
+  },
+  "text/eval.txt": {
+   "paragraphs": 58,
+   "words": 637,
+   "tokens": 3155,
+   "tokens_per_word": 4.9529
+  },
+  "text-ascii/train.txt": {
+   "paragraphs": 2208,
+   "words": 45848,
+   "tokens": 210553,
+   "tokens_per_word": 4.5924
+  },
+  "text-ascii/eval.txt": {
+   "paragraphs": 58,
+   "words": 637,
+   "tokens": 2744,
+   "tokens_per_word": 4.3077
+  },
+  "train_tokens_per_word_unicode_vs_ascii": [
+   5.1098,
+   4.5924
+  ],
+  "eval_tokens_per_word_unicode_vs_ascii": [
+   4.9529,
+   4.3077
+  ]
+ }
+}
