@@ -1,15 +1,1 @@
-{
- "schema_version": 1,
- "batch": "t032",
- "sha256": {
-  "records": "8402fa92b5379695cc97385cfee777ce31f7167aa7c63fb771b8d5088349cade",
-  "plans": "5c082cac8fdb9553d917473606a240acf15df06dc86fac7d0ebddecf1ca489df",
-  "gate_report": "2b787886c51323b822153cd79d944c14ed9f0653d626608c5a728abf3032b232"
- },
- "review": {
-  "required": true,
-  "status": "pending",
-  "evidence": [],
-  "rationale": "Awaiting review."
- }
-}
+{"schema_version": 1, "batch": "t032", "sha256": {"records": "e97fea285541c4c519aac3054cd001f91f08520e636c87dedad9a693a031eb9e", "plans": "5c082cac8fdb9553d917473606a240acf15df06dc86fac7d0ebddecf1ca489df", "gate_report": "2b787886c51323b822153cd79d944c14ed9f0653d626608c5a728abf3032b232"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t032.json", "docs/audits/tier3-t032-review.md", "docs/audits/packets/t032-verdicts.jsonl", "docs/audits/consolidation-2026-10-28.md", "docs/audits/vocab-push.md", "docs/audits/meter-repair-t032.md"], "rationale": "Calibrated review (docs/audits/tier3-t032-review.md): plants 5/5 blind; real 0/20 wrong (two wrong items outside the sample fixed: kwim for 'nothing'); gate PASS. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only)."}}

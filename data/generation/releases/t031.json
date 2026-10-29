@@ -1,15 +1,1 @@
-{
- "schema_version": 1,
- "batch": "t031",
- "sha256": {
-  "records": "8b6f41af52c2a36080ebc026da2d901457b001ac7074c0901c0a926cd83e20e8",
-  "plans": "f5df8712caf14311f5829db055c3bcd9febe8498fa405334a76497031886ec66",
-  "gate_report": "7dec136a5452e418e68a3dc847b60795faef58219a1021c494f726c500903b40"
- },
- "review": {
-  "required": true,
-  "status": "pending",
-  "evidence": [],
-  "rationale": "Awaiting review."
- }
-}
+{"schema_version": 1, "batch": "t031", "sha256": {"records": "01749eab693d56e9c4f5eb3400d41a677d207fd7692027be3091b978965d62ef", "plans": "f5df8712caf14311f5829db055c3bcd9febe8498fa405334a76497031886ec66", "gate_report": "7dec136a5452e418e68a3dc847b60795faef58219a1021c494f726c500903b40"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t031.json", "docs/audits/tier3-t031-review.md", "docs/audits/packets/t031-verdicts.jsonl", "docs/audits/consolidation-2026-10-28.md", "docs/audits/vocab-push.md"], "rationale": "Calibrated review (docs/audits/tier3-t031-review.md): plants 5/5, blind (verdicts hashed before any corpus lookup); real 2/20 wrong -> 0 after fixes at the source; gate PASS. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only)."}}

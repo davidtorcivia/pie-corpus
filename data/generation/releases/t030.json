@@ -1,15 +1,1 @@
-{
- "schema_version": 1,
- "batch": "t030",
- "sha256": {
-  "records": "fe7d90e9d2b625f9461ace23f307cd7a401e1044a8bbad0a6402deff2b56e121",
-  "plans": "bf7773b72424c4d7f69cf0e0bb9758dd292d25f3d8b65ea2697bb5b590ca3459",
-  "gate_report": "ba36b44ab88bfeecb6e853adc67b69db5d136cba646c410879209d60448e2604"
- },
- "review": {
-  "required": true,
-  "status": "pending",
-  "evidence": [],
-  "rationale": "Awaiting review."
- }
-}
+{"schema_version": 1, "batch": "t030", "sha256": {"records": "5398c1746a2e7df5d89938884e66e41c6368c880d14f917b11f71954e04fe763", "plans": "bf7773b72424c4d7f69cf0e0bb9758dd292d25f3d8b65ea2697bb5b590ca3459", "gate_report": "ba36b44ab88bfeecb6e853adc67b69db5d136cba646c410879209d60448e2604"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t030.json", "docs/audits/tier3-t030-review.md", "docs/audits/packets/t030-verdicts.jsonl", "docs/audits/consolidation-2026-10-28.md", "docs/audits/vocab-push.md"], "rationale": "Calibrated review (docs/audits/tier3-t030-review.md): real 1/20 wrong -> 0 after fixes; gate PASS. Plant recall 5/5 is not independent (the reviewer compared packet with corpus before writing verdicts; it reports flagging all six before the comparison); approved on the real-item result, with the review brief tightened so verdicts are saved before any corpus lookup. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only)."}}

@@ -1,15 +1,1 @@
-{
- "schema_version": 1,
- "batch": "b003",
- "sha256": {
-  "records": "255b67fe405a7518fa3f0a01fdd86c1899e233df2b68379b8477f27601653ec3",
-  "plans": "b8eb2401df34e1ba25b372a4956329793b0b978f95bfb801ee81ce10710085c0",
-  "gate_report": "dc5bc232caa0f74eeb35357863479caee0ee6e50ad6b3704494be9a39f76a5eb"
- },
- "review": {
-  "required": true,
-  "status": "pending",
-  "evidence": [],
-  "rationale": "Awaiting review."
- }
-}
+{"schema_version": 1, "batch": "b003", "sha256": {"records": "80d2d7333d3d864bca6029ec95fcfc0a46047cea74ab51546a76515ab3298b82", "plans": "b8eb2401df34e1ba25b372a4956329793b0b978f95bfb801ee81ce10710085c0", "gate_report": "dc5bc232caa0f74eeb35357863479caee0ee6e50ad6b3704494be9a39f76a5eb"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/b003.json", "docs/audits/tier3-b003-review.md", "docs/STATUS.md:16", "docs/STATUS.md:111-112", "docs/audits/consolidation-2026-10-28.md", "docs/audits/vocab-push.md", "docs/audits/meter-repair-b003.md"], "rationale": "Review verdict explicitly passes scaling; STATUS records findings fixed at source and subsequent merged-engine regeneration. Migrated historical release, not a new scholarly review. 2026-10-25 finding 2: explicitly renewed content binding after targeted re-realization and byte comparison; metadata-only num_fallback=du->pl change, surface forms unchanged. Every other record byte, source plan, and gate report is unchanged. Existing approval reaffirmed only for this reviewed metadata change. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only)."}}

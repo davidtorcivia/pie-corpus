@@ -1,15 +1,1 @@
-{
- "schema_version": 1,
- "batch": "t016",
- "sha256": {
-  "records": "12e60e5a9634d0492285fb2eef3c164503e080fae2f82d5ef6efcb25205e131a",
-  "plans": "26f0529a54222b1b64abde6715e743432195a091cee64ed1ece42a70c169a1c9",
-  "gate_report": "75d4b7735b9aa978212672a5d62660c1e7c98b0446f8f0b94ad58c58abb4bd89"
- },
- "review": {
-  "required": true,
-  "status": "pending",
-  "evidence": [],
-  "rationale": "Awaiting review."
- }
-}
+{"schema_version": 1, "batch": "t016", "sha256": {"records": "e1de7037c847c501a43140ea6e1dea60f3c898d637852a9993f52caef67bbef9", "plans": "26f0529a54222b1b64abde6715e743432195a091cee64ed1ece42a70c169a1c9", "gate_report": "75d4b7735b9aa978212672a5d62660c1e7c98b0446f8f0b94ad58c58abb4bd89"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t016.json", "docs/audits/tier3-t016-review.md", "docs/STATUS.md:111-112", "docs/audits/consolidation-2026-10-28.md", "docs/audits/vocab-push.md", "docs/audits/meter-repair-t016.md"], "rationale": "Individual review documents completed assessment and correctable causes; consolidated 2026-10-24 account records validity fixes and regeneration of the 25 historical batches, distinguishing new unreviewed t022. Migrated historical release on that combined evidence; not a claim of a fresh post-fix scholarly review. 2026-10-25 finding 2: explicitly renewed content binding after targeted re-realization and byte comparison; metadata-only num_fallback=du->pl change, surface forms unchanged. Every other record byte, source plan, and gate report is unchanged. Existing approval reaffirmed only for this reviewed metadata change. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only)."}}

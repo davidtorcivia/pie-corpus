@@ -1,15 +1,1 @@
-{
- "schema_version": 1,
- "batch": "t033",
- "sha256": {
-  "records": "bd3c354258a8eed4d07b68acee27c56de8e63ceece2dda2caec55f33f130bb28",
-  "plans": "1aabad672aaa9f879f4543d3286752edd99b080beac8001da2da267335b7d807",
-  "gate_report": "95b5cc6fc4e218ff84a6f9274957ba556c5c66074d0c79624d5a73dfeb6579d0"
- },
- "review": {
-  "required": true,
-  "status": "pending",
-  "evidence": [],
-  "rationale": "Awaiting review."
- }
-}
+{"schema_version": 1, "batch": "t033", "sha256": {"records": "d82b6faf69c44a8451f54fd2cb0b2ae677b26112dd5184eefdb17ff8bbe17f0e", "plans": "1aabad672aaa9f879f4543d3286752edd99b080beac8001da2da267335b7d807", "gate_report": "95b5cc6fc4e218ff84a6f9274957ba556c5c66074d0c79624d5a73dfeb6579d0"}, "review": {"required": true, "status": "approved", "evidence": ["docs/audits/tier3-t033-review.md", "docs/audits/packets/t033-verdicts.jsonl", "docs/audits/meter-repair-t033.md", "docs/audits/consolidation-2026-10-28.md"], "rationale": "Calibrated review (docs/audits/tier3-t033-review.md): plants 5/5 blind; real 0/20 wrong after fixes; 49 English/plan mismatches fixed. Meter repair 0.110 -> 0.941 (docs/audits/meter-repair-t033.md); consolidation 2026-10-28; gate PASS."}}

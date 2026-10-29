@@ -1,15 +1,1 @@
-{
- "schema_version": 1,
- "batch": "b004",
- "sha256": {
-  "records": "b140f6fd79e4e799a03c184af0df456ef363569edd41802c71c799c6dcfdc8e7",
-  "plans": "8686fdd328416a74a9e914e0d2c682cdfc36f3067a5a5c313b2f86ba835aae32",
-  "gate_report": "fb93f4baf99f74fc93845242a5897fcfb9858e85315300fe6d9c9fd44bb3aab9"
- },
- "review": {
-  "required": true,
-  "status": "pending",
-  "evidence": [],
-  "rationale": "Awaiting review."
- }
-}
+{"schema_version": 1, "batch": "b004", "sha256": {"records": "1c14d9bcf44bccbbc9f4ba1375d58e28303504bb531c341ec4e4486cbad6aea2", "plans": "8686fdd328416a74a9e914e0d2c682cdfc36f3067a5a5c313b2f86ba835aae32", "gate_report": "fb93f4baf99f74fc93845242a5897fcfb9858e85315300fe6d9c9fd44bb3aab9"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/b004.json", "docs/audits/tier3-b004-review.md", "docs/STATUS.md:16", "docs/STATUS.md:111-112", "docs/audits/consolidation-2026-10-28.md", "docs/audits/vocab-push.md"], "rationale": "Review verdict explicitly passes scaling; STATUS records findings fixed at source and subsequent merged-engine regeneration. Migrated historical release, not a new scholarly review. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only)."}}

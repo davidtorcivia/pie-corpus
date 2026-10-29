@@ -1,15 +1,1 @@
-{
- "schema_version": 1,
- "batch": "t005",
- "sha256": {
-  "records": "85254b102205bf2ef0362a8ff874128fd03e8beaa4509c67c029753e67ad269a",
-  "plans": "89e654358a90a0d348821a179304f0b7c74aaf83e3ff04c750ccaa4614e446ac",
-  "gate_report": "5bf6035d98a4572ed76be6527391f52624fa9cd291d1e512b60a79a426e764a3"
- },
- "review": {
-  "required": true,
-  "status": "pending",
-  "evidence": [],
-  "rationale": "Awaiting review."
- }
-}
+{"schema_version": 1, "batch": "t005", "sha256": {"records": "fd8c21cfb0eca4a03ca9387c5d28b916e72b7c18a567f97de8126e723a69c9aa", "plans": "89e654358a90a0d348821a179304f0b7c74aaf83e3ff04c750ccaa4614e446ac", "gate_report": "5bf6035d98a4572ed76be6527391f52624fa9cd291d1e512b60a79a426e764a3"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t005.json", "docs/audits/tier3-t005-review.md", "docs/STATUS.md:16", "docs/STATUS.md:111-112", "docs/audits/consolidation-2026-10-28.md", "docs/audits/vocab-push.md", "docs/audits/meter-repair-t005.md"], "rationale": "STATUS explicitly records calibrated reviews t001-t015, findings fixed at source and all batches re-realized; subsequent merged-engine regeneration. Migrated historical release, not approval inferred from audit existence. 2026-10-25 finding 2: explicitly renewed content binding after targeted re-realization and byte comparison; metadata-only num_fallback=du->pl change, surface forms unchanged. Every other record byte, source plan, and gate report is unchanged. Existing approval reaffirmed only for this reviewed metadata change. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only)."}}

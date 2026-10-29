@@ -1,15 +1,1 @@
-{
- "schema_version": 1,
- "batch": "t008",
- "sha256": {
-  "records": "e26b41b1593a3f85ef53495808ab5acbcc0805e16b489646132412c188da8926",
-  "plans": "501a96f41cd56a1534a08cc679a403bdef6db481b6a02ff9b50c8a1b107a5f89",
-  "gate_report": "b81b784ba54907deda9e56ff3308504885445e981d85af60a0c116a14e0d3619"
- },
- "review": {
-  "required": true,
-  "status": "pending",
-  "evidence": [],
-  "rationale": "Awaiting review."
- }
-}
+{"schema_version": 1, "batch": "t008", "sha256": {"records": "25ca08e184a13dcb038f3c23abafee62011205bf6a0ea7d5af8c561919c8ba32", "plans": "501a96f41cd56a1534a08cc679a403bdef6db481b6a02ff9b50c8a1b107a5f89", "gate_report": "b81b784ba54907deda9e56ff3308504885445e981d85af60a0c116a14e0d3619"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t008.json", "docs/audits/tier3-t008-review.md", "docs/STATUS.md:16", "docs/STATUS.md:111-112", "docs/audits/consolidation-2026-10-28.md", "docs/audits/vocab-push.md", "docs/audits/meter-repair-t008.md"], "rationale": "STATUS explicitly records calibrated reviews t001-t015, findings fixed at source and all batches re-realized; subsequent merged-engine regeneration. Migrated historical release, not approval inferred from audit existence. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only)."}}
