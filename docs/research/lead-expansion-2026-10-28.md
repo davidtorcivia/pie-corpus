@@ -91,6 +91,11 @@ or translation wording; **mapping error** = the match rests on a wrong key.
 | *ḱlew-* + *wékʷos* + 1sg 'hear my word(s)' | RV 1.145.3b, 10.65.13c, 10.66.11c; AVŚ 10.1.28 (inf.), AVP 5.26.2ab; Il. 16.236 = 14.234 | *vácas-* = ἔπος (same neuter s-stem). The verb is root-level only (Ved. nasal present *śr̥ṇó-* vs Gk thematic aorist ἔκλυον). The possessor is root-level only (Ved. *me* vs Gk ἐμόν). | 'Hear me' is known: Schmitt 1967 §§396–405 (pp. 195–198, κλῦθί μοι ~ *śrudhí me*); West ch. 8 (prayer). With this object it is not found in the held literature (as `8c-novelty.md` C022). | Candidate; re-find of C022 |
 | *n̥dʰgʷʰitós* + water word 'imperishable water' | Hes. Th. 805; RV 1.64.6d, 8.7.16c, 9.110.5b; AVŚ 4.27.2ab, 18.4.36ab, 10.6.14 | *ákṣita-* = ἄφθιτος (exact). The noun is root-level only: *útsa-* (*ud-s-o-*) vs ὕδωρ (*wód-r̥*); Ved. *ā́p-* is not cognate. | Not found in the held literature. West ch. 2 and Watkins ch. 15 treat only the fame formula and cite Nagy 1974, which we do not hold. | Candidate (weak); re-find of B023/B065 (weak). A single Greek locus, and the contexts differ (a spring that is milked vs the water of the gods' oath). |
 
+Check on the cq2 build (current `corpora.sqlite`), with `--pair` on both builds. For hear + word
+(*wekʷ-* root + *ḱlew-* root), Indo-Iranian 1445 → 1446, Slavic 28 → 28, Greek 27 → 26 and
+Germanic 2 → 2; Il. 14.234 and 16.236 are still found. For imperishable water (the three water
+ids + *dʰgʷʰey-*), Indo-Iranian 7 → 7 and Greek 6 → 6. Neither verdict changes.
+
 ## Mapping errors found
 
 These are recorded in `data/research/formulas/mapping-errors-lead-expansion.jsonl` (five rows) for
