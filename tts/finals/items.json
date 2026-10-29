@@ -1,0 +1,523 @@
+{
+ "corpus_head": "2284132",
+ "items": [
+  {
+   "id": "t3-t026-00015",
+   "kind": "hymn",
+   "pie": "h₂éwsos léwka déywi diwés dʰúgh₂ter. n̥sméy léwks sḱih₃wós-kʷe twéd bʰéwgt. nu wiHrṓs twé kʷḱént mudént-kʷe. túH h₂yuHénih₂ túH ń̥dʰgʷʰiteh₂. túH kʷspés swésōr téwe bʰéh₂os h₃kʷbʰós lewbʰóm. nu ḱéywa n̥sméy h₁wésu ḱléwos dh₃dʰí. nu-kʷe n̥sméy ń̥dʰgʷʰitom ḱléwos h₁áydʰi.",
+   "english": "Dawn, bright goddess, Daughter of Sky! You shone for us, and darkness fled from you. Men caught sight of you and became glad. You are young, you are imperishable. You are the sister of the night. Your radiance is dear to the eyes. Give us good fame, dear one! And give us imperishable fame!",
+   "genre": "hymn",
+   "theme": [
+    "dawn",
+    "sky"
+   ],
+   "meter": {
+    "line_syllables": [
+     11,
+     8,
+     8,
+     8,
+     11,
+     11,
+     11
+    ],
+    "fit": 7,
+    "targets": [
+     8,
+     11
+    ],
+    "exact": 7,
+    "cadence": [
+     false,
+     false,
+     false,
+     true,
+     false,
+     false,
+     false
+    ]
+   },
+   "source": "corpus/tier3/t026.jsonl@HEAD"
+  },
+  {
+   "id": "t3-t026-00016",
+   "kind": "hymn",
+   "pie": "h₂éwsos ḱéywa pótni gʷṓs h₁éǵʰs wédʰesi. lewkéh₂m wéstim woséyeth₂er. h₂éweyes sth₂ént h₁yód gʷm̥yési. n̥sméy h₂éh₂usom dédeh₃si. poh₂imnéy h₂wĺ̥h₁neh₂m dédeh₃si. nu n̥sméy suHnúns moysóns-kʷe h₁opéye. pótni n̥sméy ń̥dʰgʷʰitom ḱléwos duh₃dʰí.",
+   "english": "Dawn, dear mistress, you lead out the cattle. You clothe yourself in bright clothing. The birds rise when you come. You give us gold. You give wool to the shepherd. Give us sons and rams! Give us imperishable fame, mistress!",
+   "genre": "hymn",
+   "theme": [
+    "dawn",
+    "wealth"
+   ],
+   "meter": {
+    "line_syllables": [
+     11,
+     8,
+     8,
+     8,
+     8,
+     11,
+     11
+    ],
+    "fit": 7,
+    "targets": [
+     8,
+     11
+    ],
+    "exact": 7,
+    "cadence": [
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false
+    ]
+   },
+   "source": "corpus/tier3/t026.jsonl@HEAD"
+  },
+  {
+   "id": "t3-t026-00017",
+   "kind": "hymn",
+   "pie": "sóh₂wl̥ diwés h₃ókʷ h₁yód h₂n̥rṓm ḱérdh₂ wóydth₂e. nu h₁yód HeHḱúns h₁éḱwons yéwgs h₁yód dʰewséh₂ gʷʰr̥néwsi. h₁yód snígʷʰm̥ tinéh₁si h₁yód dʰoHnéh₂m pékʷesi. n̥sméy h₂ew l̥h₂pdʰí n̥sméy léwkm̥ h₁áydʰi.",
+   "english": "Sun, eye of Sky! You who know the hearts of men, you who yoke the swift horses, you who warm the animals, you who melt the snow, you who ripen the grain, shine for us again, give us light!",
+   "genre": "hymn",
+   "theme": [
+    "sun",
+    "sky"
+   ],
+   "meter": {
+    "line_syllables": [
+     12,
+     13,
+     12,
+     11
+    ],
+    "fit": 3,
+    "targets": [
+     8,
+     11
+    ],
+    "exact": 1,
+    "cadence": [
+     null,
+     null,
+     null,
+     true
+    ]
+   },
+   "source": "corpus/tier3/t026.jsonl@HEAD"
+  },
+  {
+   "id": "t3-t026-00001",
+   "kind": "hymn",
+   "pie": "dyḗws dʰéǵʰōm-kʷe sḱih₃wóy ḱéyro. lewkóm kʷid ne h₁ést. nu méǵh₂s dyḗws wérh₁t. léwks bʰúHtu. h₂yuHénih₂ déywih₂ h₁ésmōd ǵn̥h₁yéto. deywṓs dʰm̥bʰént. h₁íh₂ stéh₂t wóyḱons-kʷe lowkéyet. h₁ésyeh₂s bʰéh₂os h₃kʷbʰós lewbʰóm. h₂néres h₁íh₂m̥ widéh₁yont mudént-kʷe. nu ph₂tḗr h₁ésyeh₂ey ḱlutóm h₁nómn̥ dʰéh₁t. h₁ésyeh₂s h₁nómn̥ h₂éwsōs. h₁ésyeh₂s ǵʰleymós ń̥dʰgʷʰitos.",
+   "english": "Sky and Earth lay in darkness. Nothing was bright. Then great Sky spoke. \"Let light come to be!\" A young goddess was born from him. The gods were astonished. She stood up, and lit up the settlements. Her radiance is dear to the eyes. Men saw her and became glad. The father set a famous name for her. Her name is Dawn. Her brightness is imperishable.",
+   "genre": "myth",
+   "theme": [
+    "dawn",
+    "sky",
+    "creation"
+   ],
+   "meter": null,
+   "source": "corpus/tier3/t026.jsonl@HEAD"
+  },
+  {
+   "id": "t3-t026-00005",
+   "kind": "hymn",
+   "pie": "nókʷts h₂éwsōs-kʷe swésorh₁e h₁stā́m. nókʷts dʰǵʰémi gʷm̥sḱét. nu h₂éwsōs swéh₂m swésorm̥ sékʷeto h₁rudʰéh₁t-kʷe h₂yuHénih₂-kʷe h₁ést. nókʷts gʷm̥yóntih₂m h₁íh₂m̥ widét bʰéwgt-kʷe. swésorh₁e ne ǵn̥h₃tā́m.",
+   "english": "Night and Dawn were sisters. Night was walking on the earth. Then Dawn followed her own sister, and glowed red, and was young. Night saw her coming and fled. The sisters did not know each other.",
+   "genre": "myth",
+   "theme": [
+    "dawn",
+    "night"
+   ],
+   "meter": null,
+   "source": "corpus/tier3/t026.jsonl@HEAD"
+  },
+  {
+   "id": "t3-t005-00001",
+   "kind": "hymn",
+   "pie": "dyéw nos ph₂ter wékʷesh₂ ḱludʰí. nu-kʷe h₁uséwōm déh₃tor twé gʷéHyomes. h₁wr̥Húm lowkóm tetólh₂th₂e. deywóysu-kʷe méǵh₂s h₁ési. bʰéyds h₂éḱmonm̥ gʷr̥h₂úh₁ gʰrómoh₁. nu-kʷe wédōr tósmōd mélh₃t. h₁wr̥Héwih₂ dʰéǵʰōm wódr̥ péh₃t. nu n̥smé upér spéḱyesi. dl̥h₁gʰóns-ge h₂strṓm stóygʰons wóydth₂e. ḱérdh₂ nos ménesh₂-kʷe twé wewórte. ḱwónes toy gʰrómōd dedwiyḗr. dh₃dʰí-kʷe nos HeHḱúns h₁éḱwons. nu nos ph₂sdʰí h₂ówins wĺ̥kʷōd. ḱléwos-kʷe nos ń̥dʰgʷʰitom h₁syéh₁t. léwke-kʷe nos kéh₂nmn̥ ḱléwse.",
+   "english": "Father Sky, hear our words. And now, giver of good things, we sing of you. You hold up the broad space of light. And you are great among the gods. With heavy thunder you split the vault. And then the waters came forth from it. The broad earth drank the water. Now, you look upon us from above. Indeed, you know the long paths of the stars. Our hearts and minds are turned towards you. The dogs are afraid of your thunder. And give us swift horses. Now, guard our sheep from the wolf. And may our fame be imperishable. And shining one, listen to our song.",
+   "genre": "hymn",
+   "theme": [
+    "Dyeus",
+    "sky",
+    "thunder",
+    "praise"
+   ],
+   "meter": {
+    "line_syllables": [
+     9,
+     11,
+     8,
+     8,
+     8,
+     8,
+     8,
+     8,
+     8,
+     11,
+     8,
+     8,
+     8,
+     8,
+     8
+    ],
+    "fit": 15,
+    "targets": [
+     8,
+     11
+    ],
+    "exact": 14,
+    "cadence": [
+     null,
+     false,
+     false,
+     true,
+     true,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     false,
+     true,
+     false,
+     false
+    ]
+   },
+   "source": "corpus/tier3/t005.jsonl@HEAD"
+  },
+  {
+   "id": "t3-t005-00005",
+   "kind": "hymn",
+   "pie": "nu dyéw méǵh₂ léwke ph₂ter ḱl̥nudʰí. h₁yós gʷr̥h₂úm h₂éḱmonm̥ bʰéydt twé h₁érkʷomes. h₁yós h₂stérn̥s dʰéh₁t twé gʷéHyomes. nu-kʷe h₁yós wédōr spért twé moldʰéyomes. méǵh₂-kʷe toy ḱléwos deywóns h₂eh₂nóḱe. twé bʰebʰidʰmé supnṓd-kʷe ne dedwimé. spéḱye nos h₃épesh₂ upér. nu nos táwrōs h₂óweyes-kʷe Hwr̥dʰih₁ént. Hyudʰsmṓs nos HeHḱéwes h₁sih₁ént. wĺ̥kʷos nos gʰórdʰons mē gʷm̥yéh₁t. nu-kʷe toy bʰáge tód kéh₂nmn̥ dedh₃més. ḱludʰí-kʷe tód h₁áyso-kʷe tód.",
+   "english": "Now, Sky, great shining father, listen! You who split the heavy vault, you we praise. You who set the stars, you we sing. And now you who freed the waters, to you we pray. And your great fame has reached the gods. We trust you, and we do not fear death. Look upon our works from above. Now, may our bulls and sheep become strong. May our warriors be swift. May the wolf not come to our fences. And now, Allotter, we give you this song. And hear it and receive it.",
+   "genre": "hymn",
+   "theme": [
+    "Dyeus",
+    "praise",
+    "relative clauses",
+    "herds"
+   ],
+   "meter": {
+    "line_syllables": [
+     11,
+     11,
+     8,
+     11,
+     11,
+     11,
+     8,
+     11,
+     8,
+     8,
+     11,
+     8
+    ],
+    "fit": 12,
+    "targets": [
+     8,
+     11
+    ],
+    "exact": 12,
+    "cadence": [
+     false,
+     false,
+     true,
+     false,
+     false,
+     false,
+     false,
+     false,
+     true,
+     false,
+     false,
+     false
+    ]
+   },
+   "source": "corpus/tier3/t005.jsonl@HEAD"
+  },
+  {
+   "id": "t3-t032-00001",
+   "kind": "hymn",
+   "pie": "kʷŕ̥mey h₃sth₁és h₁éǵʰs gʷh₂dʰí h₁sh₂éns-kʷe h₁éǵʰs gʷh₂dʰí. h₁ésh₂r̥ mē gʷr̥h₃és h₁élḱos mē srobʰéyes. nu kʷŕ̥mis mr̥tós h₁élḱos-kʷe lelóykʷe. h₁íd Hwérdʰtu ḱéywom-kʷe h₁ésh₂r̥ h₃sth₁í h₁éstu. deywós te h₂léksoyh₁t h₂éwsōs-kʷe te ph₂syéh₁t.",
+   "english": "Worm, go out of the bone, go out of the blood! Do not devour the blood, do not suck the sore. The worm is dead, and the sore is gone. Let it grow strong, and let the dear blood be in it. May the god protect you, and may Dawn guard you.",
+   "genre": "charm",
+   "theme": [
+    "worm",
+    "bone",
+    "blood"
+   ],
+   "meter": {
+    "line_syllables": [
+     11,
+     11,
+     11,
+     11,
+     11
+    ],
+    "fit": 5,
+    "targets": [
+     8,
+     11
+    ],
+    "exact": 5,
+    "cadence": [
+     false,
+     false,
+     false,
+     true,
+     false
+    ]
+   },
+   "source": "corpus/tier3/t032.jsonl@HEAD"
+  },
+  {
+   "id": "t3-t032-00003",
+   "kind": "hymn",
+   "pie": "kréwh₂s sth₂éh₁ye h₁éǵʰs-kʷe mē léyts. sh₂imónm̥ h₁élḱesi péri logʰéyoh₂. sh₂wéns h₃ókʷ h₁íd spéḱyoyh₁t sóh₂wl̥ kréwh₂s h₂sowséyoyh₁t. nu dʰwṓr Hwr̥tó h₁ésh₂r̥ h₁n̥dóm sédyeti. nu tébʰye wékʷos trís wéwkom.",
+   "english": "Blood, stand still, and do not go out! I lay a cord around the sore. May the eye of the sun look upon it. May the sun dry the blood. The door is shut, the blood stays within. Thrice I speak the word to you.",
+   "genre": "charm",
+   "theme": [
+    "wound",
+    "blood"
+   ],
+   "meter": {
+    "line_syllables": [
+     8,
+     11,
+     13,
+     11,
+     8
+    ],
+    "fit": 4,
+    "targets": [
+     8,
+     11
+    ],
+    "exact": 4,
+    "cadence": [
+     false,
+     false,
+     null,
+     false,
+     false
+    ]
+   },
+   "source": "corpus/tier3/t032.jsonl@HEAD"
+  },
+  {
+   "id": "t3-t002-00001",
+   "kind": "hymn",
+   "pie": "dyéw nos ph₂ter wékʷos ḱludʰí. nu-kʷe nos dʰéh₁s dʰubʰréh₂ bʰréh₁wōr. h₁ógʷʰim gʷʰéns h₂ékʷeh₂es h₁n̥dʰént. nu h₁uséwōm déh₃tōr h₁ési. nu nos wóydth₂e wénHs-kʷe nos. nu nos kʷís n̥bʰróm déh₃t? nu-kʷe só ḱlutós dyḗws h₁ésti. nu dʰéǵʰōm sweh₂dú wódr̥ péh₃t. ḱlutóm toy h₁nómn̥ gʷéHyomes. wéyHm̥ nos h₂éwgmn̥-kʷe bʰére. nu nos memn̥dʰí nu nos wérǵom r̥h₁dʰyéh₁t.",
+   "english": "Father Sky, hear our word. And then you placed our deep springs. You slew the serpent; the waters came forth. You are the giver of good things. You know us, and you love us. Who then gave us the rain? And he is famous Sky. Then the earth drank the sweet water. We sing your famous name. Bring us strength and increase. Now remember us; may our work succeed.",
+   "genre": "hymn",
+   "theme": [
+    "Sky and Earth",
+    "Gods and Goddesses"
+   ],
+   "meter": {
+    "line_syllables": [
+     8,
+     8,
+     8,
+     8,
+     8,
+     6,
+     8,
+     8,
+     8,
+     8,
+     11
+    ],
+    "fit": 10,
+    "targets": [
+     8,
+     11
+    ],
+    "exact": 10,
+    "cadence": [
+     true,
+     false,
+     true,
+     false,
+     true,
+     null,
+     false,
+     false,
+     true,
+     false,
+     true
+    ]
+   },
+   "source": "corpus/tier3/t002.jsonl@HEAD"
+  },
+  {
+   "id": "h2ewsos",
+   "kind": "word",
+   "pie": "h₂éwsos",
+   "english": "dawn",
+   "target": "h2",
+   "sound": "χ",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "h2owis",
+   "kind": "word",
+   "pie": "h₂ówis",
+   "english": "sheep",
+   "target": "h2",
+   "sound": "χ",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "h2egjeti",
+   "kind": "word",
+   "pie": "h₂éǵeti",
+   "english": "drives",
+   "target": "dorsal",
+   "sound": "χ + palatal ǵ",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "gjenh1tor",
+   "kind": "word",
+   "pie": "ǵénh₁tor",
+   "english": "begetter",
+   "target": "dorsal",
+   "sound": "palatal ǵ",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "kjlewos",
+   "kind": "word",
+   "pie": "ḱléwos",
+   "english": "fame",
+   "target": "dorsal",
+   "sound": "palatal ḱ",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "bhreh2ter",
+   "kind": "word",
+   "pie": "bʰréh₂tēr",
+   "english": "brother",
+   "target": "murmur",
+   "sound": "breathy bʰ",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "dhugh2ter",
+   "kind": "word",
+   "pie": "dʰugh₂tḗr",
+   "english": "daughter",
+   "target": "murmur",
+   "sound": "breathy dʰ",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "gwhenti",
+   "kind": "word",
+   "pie": "gʷʰénti",
+   "english": "strikes",
+   "target": "murmur",
+   "sound": "breathy labiovelar gʷʰ",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "kwetwores",
+   "kind": "word",
+   "pie": "kʷetwóres",
+   "english": "four",
+   "target": "kw",
+   "sound": "labiovelar kʷ",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "h3esth1",
+   "kind": "word",
+   "pie": "h₃ésth₁",
+   "english": "bone",
+   "target": "h3",
+   "sound": "h₃ (ʕʷ) + final h₁",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "wlkwos",
+   "kind": "word",
+   "pie": "wĺ̥kʷos",
+   "english": "wolf",
+   "target": "syllabic",
+   "sound": "syllabic l̥ + kʷ",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "kmtom",
+   "kind": "word",
+   "pie": "ḱm̥tóm",
+   "english": "hundred",
+   "target": "syllabic",
+   "sound": "ḱ + syllabic m̥",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "ph2ter",
+   "kind": "word",
+   "pie": "ph₂tḗr",
+   "english": "father",
+   "target": "vocalized",
+   "sound": "h₂ between stops",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "dyews",
+   "kind": "word",
+   "pie": "dyḗws",
+   "english": "sky, day",
+   "target": "accent",
+   "sound": "long ē + accent",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "h1esti",
+   "kind": "word",
+   "pie": "h₁ésti",
+   "english": "is",
+   "target": "h1",
+   "sound": "h₁ (ʔ)",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "ghime",
+   "kind": "word",
+   "pie": "ǵʰimḗ",
+   "english": "in winter",
+   "target": "accent",
+   "sound": "breathy ǵʰ + final accent (F0 peak check, ɟʱi.méː)",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "hymn-1",
+   "kind": "line",
+   "pie": "h₂éwsos léwka déywi diwés dʰúgh₂ter.",
+   "english": "Dawn, bright goddess, Daughter of Sky!",
+   "target": "line",
+   "sound": "hymn line (t3-t026-00015 s1)",
+   "source": "tts/vc/manifest.json"
+  },
+  {
+   "id": "hymn-2",
+   "kind": "line",
+   "pie": "n̥sméy léwks sḱih₃wós-kʷe twéd bʰéwgt.",
+   "english": "You shone for us, and darkness fled from you.",
+   "target": "line",
+   "sound": "hymn line (t3-t026-00015 s2)",
+   "source": "tts/vc/manifest.json"
+  }
+ ]
+}
