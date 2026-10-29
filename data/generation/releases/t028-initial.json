@@ -1,0 +1,15 @@
+{
+ "schema_version": 1,
+ "batch": "t028-initial",
+ "sha256": {
+  "records": "0d32d7a88ff20f9201a4d7524877c5d192c10e38eeb885ef8dfd0cb902001e38",
+  "plans": "0a51111d3c57f2b8636e33693df07096fc1a379312d1839398c431bf27691265",
+  "gate_report": "b0edcb66fefbc31b636a91cd51f8c02a172004e969cf7c5e6b22a7bc82ae4b96"
+ },
+ "review": {
+  "required": true,
+  "status": "pending",
+  "evidence": [],
+  "rationale": "Awaiting review."
+ }
+}
