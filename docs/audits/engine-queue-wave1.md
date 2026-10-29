@@ -14,3 +14,6 @@ These are fixed centrally after wave 1, before wave 2 starts. Each item names th
 - **Antecedent checker**: its two-clause window gives false positives on story topics (t028).
 - **Cap verdict (t029 reviewer): keep the cap formula.** The squeeze came from the slice: the theme-core picker matches whole gloss words, so "cow" missed gʷṓws (glossed "cattle"), and 2 of the 8 core slots stayed empty. Wave-2 slices pass `--core` explicitly, and the picker should match synonyms.
 - **Ungendered "you"/"we"** silently takes masculine adjectives, with no warning (t029).
+- **Colour words specced as masculine nouns** (bʰl̥Hós 'white', h₂r̥ǵrós 'shining'): they can't agree with a neuter head, and check_plan doesn't flag it (t031).
+- **A verb-only clause defaults to 3sg** even when the plural subject is understood (t031; brief rule 9 tells planners to set the number, but the engine doesn't warn).
+- **Gender on a predicate slot is silently ignored** (t031).

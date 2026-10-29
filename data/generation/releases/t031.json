@@ -1,15 +1,1 @@
-{
- "schema_version": 1,
- "batch": "t031",
- "sha256": {
-  "records": "ae1f3cc0b413be9997aa334c516f9506f285a918be965adc48822f343ea86467",
-  "plans": "75dec788b432541f54a8bfc8ef3ac5ce83ae455a1e6a7a4ba2cdef281ed8ab86",
-  "gate_report": "815ef5787da41c3aad4c96e11078cb557d69471bb15fdffb44d0152cea405979"
- },
- "review": {
-  "required": true,
-  "status": "pending",
-  "evidence": [],
-  "rationale": "Awaiting review."
- }
-}
+{"schema_version": 1, "batch": "t031", "sha256": {"records": "3651de7056b95ff668517e4cde41fe4ca1a0754c0009fd3cb2afad46ce7b499f", "plans": "f5df8712caf14311f5829db055c3bcd9febe8498fa405334a76497031886ec66", "gate_report": "02d7c054c9f7ddc61980b3d8862f80afaee71df95a821617e7a9408b31ac38a7"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t031.json", "docs/audits/tier3-t031-review.md", "docs/audits/packets/t031-verdicts.jsonl"], "rationale": "Calibrated review (docs/audits/tier3-t031-review.md): plants 5/5, blind (verdicts hashed before any corpus lookup); real 2/20 wrong -> 0 after fixes at the source; gate PASS."}}
