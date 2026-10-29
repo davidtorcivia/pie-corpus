@@ -44,3 +44,9 @@ data/research/8c/stageCS/review-*/claims-*.jsonl
 # Shared corpus search index and loader caches contain restricted corpus text; local only.
 data/research/8c/search-index/
 data/research/8c/stageCS/review-*/leads-*.jsonl
+# Speech pipeline (docs/pronunciation.md "Speech"): compiled eSpeak-NG data, model-weight cache,
+# the Kokoro Python 3.12 env, and rendered audio stay local; tts/samples/manifest.json is committed.
+tts/espeak/build/
+tts/cache/
+tts/samples/*.wav
+.venv-kokoro/
