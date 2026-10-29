@@ -1,15 +1,1 @@
-{
- "schema_version": 1,
- "batch": "t028",
- "sha256": {
-  "records": "c8342957aefebd596bdea1041c7f9782a3c8119d8581bb8fb6144442f1cf81da",
-  "plans": "ec3a3992ff00c91284929a8a4bf4b0a73e4cca3b24a97da5fb83366a0689d576",
-  "gate_report": "1ea5e5c0fdad3da5769cfe5a5d1ac54d4afd816bc451ef09c01543224c55abdf"
- },
- "review": {
-  "required": true,
-  "status": "pending",
-  "evidence": [],
-  "rationale": "Awaiting review."
- }
-}
+{"schema_version": 1, "batch": "t028", "sha256": {"records": "6afc40699fa7ce16e82b2f61c62101258b89204449a8a9c5ebb8fa14abc7e4a2", "plans": "1a8355d52743a19a3bc2522389e50cc0a00ec2e1fe57b4289f4d614db1c7d310", "gate_report": "c6046854a811f4503e534794dba97ceb2dcf62c3d7b3486d4de8ec51a64d4499"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t028.json", "docs/audits/tier3-t028-review.md", "docs/audits/packets/t028-verdicts.jsonl"], "rationale": "Calibrated review (docs/audits/tier3-t028-review.md): real 0/20 wrong (one meaning error under a plant, t028-0014, also fixed); gate PASS. Plant recall 5/5 not blind (packet diffed against corpus; 1 caught blind, 4 self-evident cell errors); approved on the real-item result; brief tightened (scripts/resolve_review_items.py)."}}

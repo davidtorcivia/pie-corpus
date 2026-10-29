@@ -26,6 +26,10 @@ is set by the lead after reading the review; a reviewer never approves a batch.
    **Write and save the verdicts file before you open `corpus/tier3/` or the plans.** Matching packet items
    to records reveals which items are planted, so plant recall counts only if the verdicts already exist.
    Record the file's sha256 in the report, then look the items up for fixing (t030 review).
+   **Don't diff the packet against the corpus** (it exposes the plants: t028, t030). Instead run
+   `uv run python -I scripts/resolve_review_items.py <batch>`: for each item you flagged, it prints the record
+   id, or says the item was planted. Open only those records. To judge token features, use
+   `Lexicon(...).cells()`, not the corpus file.
 4. **Score:** `uv run python -I scripts/score_review.py <batch>`, which writes `data/audits/<batch>-calibration.json`.
    The reviewer may run this script but must not open its key.
 5. **Report:** write `docs/audits/tier3-<batch>-review.md` with counts, each wrong item with its fix, the minor
