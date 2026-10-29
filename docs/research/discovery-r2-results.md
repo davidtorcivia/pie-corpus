@@ -44,7 +44,7 @@ These were fixed in the script header and committed in b8026a6, before any D2 co
 
   The within-layer shuffle permutes key sets among the keyed slots of each layer. The check: over all
   different-group pairs, Σ O / Σ E is 0.998 on every shuffle (0.9979–0.9986; per layer 0.98–1.12, with the high
-  end on the tiny layers). On the real index it is 0.983. D1's unit-level E had no such match.
+  end on the tiny layers). On the real index it is 0.983. D1's E was unit-level while its O was window-level, so the identity was not expected to hold there, and it was not checked.
 - **Branch rule.** A pair qualifies in a layer if O_L ≥ min O and O_L/E_L ≥ min O/E. It qualifies in a branch if it
   qualifies in any of that branch's layers, and the branch's log₂ O/E is the maximum over its qualifying layers.
   The pair's score is the minimum over its qualifying branches, of which there must be at least 2. The rule is the
@@ -88,20 +88,20 @@ All 12 cells meet the false-rate cap.
 
 **Frozen parameters** (`frozen-params.json`, commit 6cc5221, "D2 parameters frozen", made before test recall was
 computed): min O 2, O/E 2, null 95th percentile, threshold log₂ 2.278 (O/E > 4.85 in every qualifying branch),
-≥ 2 branches, window 4, seeds 0–19. The 13 tune items recovered were:
-- dyew + mer
-- fame + great
-- livestock + men
-- swift + horse
-- lie + sleep
-- upright + stand
-- immortal + dyew
-- fame + decline
-- dawn + shine
-- immortal + eat
-- earth + cloud
-- mead + sweet
-- white + dress
+≥ 2 branches, window 4, seeds 0–19. The 13 tune items recovered were (gloss: key pair as in `split.json`):
+- dyew + mer: `pie-root-dyew-be_bright|pie-root-mer-die`
+- fame + great: `pie-lex-kjlewos|pie-lex-megjh2s`
+- livestock + men: `pie-lex-pekju|pie-lex-wiHros`
+- swift + horse: `pie-lex-HeHkjus|pie-lex-h1ekjwos`
+- lie + sleep: `pie-root-kjey-be_lying_down|pie-root-swep-sleep`
+- upright + stand: `pie-root-h3erdh-upright|pie-root-steh2-stand`
+- immortal + dyew: `pie-lex-nmrtos|pie-root-dyew-be_bright`
+- fame + decline: `pie-lex-kjlewos|pie-root-dhgwhey-decline`
+- dawn + shine: `pie-lex-h2ewsoxs|pie-root-bheh2-shine`
+- immortal + eat: `pie-lex-nmrtos|pie-root-h1ed-eat`
+- earth + cloud: `pie-lex-dhegjhoxm|pie-root-nebh-become_damp`
+- mead + sweet: `pie-lex-medhu|pie-lex-sweh2dus`
+- white + dress: `pie-root-h2ergj-white|pie-root-wes-dress`
 
 ## Test (measured once; `test-results.json`)
 
@@ -132,6 +132,43 @@ Each item below gives its best key pair within the root-group pair and the layer
 | O ≥ 2 in at most one branch | 2 | wolf + grey (Greek only); worm + slay (av 25 ×19.0 only; 4 rows) |
 | excluded (top-50 groups) | 1 | dyew + beget (west_ch03_f07; both groups in the top 50) |
 | self pair | 1 | mortal + self (west_ch02_f94) |
+
+The glosses in the two tables above map to key pairs as follows (all 32 test items):
+
+| key pair | result | formulas |
+|---|---|---|
+| `pie-root-nebh-become_damp|pie-root-wes-dress` | recovered | west_ch02_f48 |
+| `pie-lex-h2eh3mos|pie-root-h1ed-eat` | recovered | west_ch02_f08 |
+| `pie-lex-h1wesus|pie-lex-menos` | recovered | west_ch02_f35 |
+| `pie-root-h1werH-broad|pie-root-pleth2-spread` | recovered | west_ch04_f14, west_ch04_f15, west_ch04_f16 |
+| `pie-lex-menos|pie-root-dhers-be_bold` | recovered | west_ch02_f36 |
+| `pie-lex-kwekwlos|pie-lex-soh2wl` | recovered | west_ch05_f09 |
+| `pie-lex-soh2wl|pie-root-derkj-see` | recovered | west_ch02_f26, west_ch02_f29 |
+| `pie-lex-dyexws|pie-lex-nbhros` | recovered | west_ch04_f03, west_ch04_f04 |
+| `pie-lex-woxkws|pie-root-tetkj-create` | O >= min O in >= 2 branches, but O/E >= min O/E in <= 1 | craft-words, craft-the-formula, west_ch01_f05, west_ch01_f06, west_ch01_f07 |
+| `pie-lex-h1ogwhis|pie-root-gwhen-strike` | O >= min O in >= 2 branches, but O/E >= min O/E in <= 1 | hero-slay-serpent, slew-the-serpent-egwhent-ogwhim, basic-formula-with-weapon-companion, who-slew-relative-clause, slayer-slain-reciprocal, slay-serpent-with-companion, slay-gwhen-serpent-ogwhi, egwhent-ogwhim-augment, slay-serpent-slaying-ring, serpent-slay-adversary, serpent-slayer-man-slayer-epithets, west_ch06_f01, west_ch06_f02 |
+| `pie-lex-deh3toxr|pie-lex-h1wesus` | qualifies in >= 2 branches, score <= threshold | west_ch03_f20 |
+| `pie-lex-gwoxws|pie-root-h2egj-drive` | qualifies in >= 2 branches, score <= threshold | hero-slay-three-headed-drive-off-cows |
+| `pie-lex-wlkwos|pie-root-pelH-pale` | O >= min O in <= 1 branch | west_ch02_f20 |
+| `pie-lex-h1nomn|pie-lex-kjlewos` | qualifies in >= 2 branches, score <= threshold | famous-name |
+| `pie-lex-nmrtos|pie-lex-wekwos` | O >= min O in >= 2 branches, but O/E >= min O/E in <= 1 | west_ch02_f43 |
+| `pie-lex-h1nomn|pie-lex-priHos` | O >= min O in >= 2 branches, but O/E >= min O/E in <= 1 | west_ch10_f18 |
+| `pie-root-dyew-be_bright|pie-root-gjenh1-produce` | excluded (function / top-50) | west_ch03_f07 |
+| `pie-lex-kwrmis|pie-root-gwhen-strike` | O >= min O in <= 1 branch | kill-serpent-germanic-bidirectional, slay-the-worm-charm, slay-adversary-plus-marrow-list-charm, west_ch08_f26 |
+| `pie-lex-h2nexr|pie-root-kjlew-hear` | qualifies in >= 2 branches, score <= threshold | west_ch10_f15, west_ch01_f17 |
+| `pie-lex-h1nomn|pie-root-kjlew-hear` | qualifies in >= 2 branches, score <= threshold | west_ch10_f16 |
+| `pie-lex-h1ekjwos|pie-lex-h2nexr` | qualifies in >= 2 branches, score <= threshold | west_ch12_f17 |
+| `pie-lex-megjh2s|pie-root-h2egj-drive` | O >= min O in >= 2 branches, but O/E >= min O/E in <= 1 | great-path-of-chariot, west_ch05_f11 |
+| `pie-root-derkj-see|pie-root-weyd-see` | O >= min O in >= 2 branches, but O/E >= min O/E in <= 1 | quantifier-argument-negated-argument, seen-and-unseen-disease, west_ch02_f72 |
+| `pie-lex-h2stexr|pie-root-peykj-hew` | O >= min O in >= 2 branches, but O/E >= min O/E in <= 1 | west_ch09_f10 |
+| `pie-root-gwhen-strike|pie-root-h1es-be` | O >= min O in >= 2 branches, but O/E >= min O/E in <= 1 | be-the-death-of |
+| `pie-lex-soh2wl|pie-root-Hreth2-run` | qualifies in >= 2 branches, score <= threshold | west_ch05_f10 |
+| `pie-lex-megjh2s|pie-lex-soh2wl` | O >= min O in >= 2 branches, but O/E >= min O/E in <= 1 | west_ch05_f01 |
+| `pie-lex-mrtos|pie-lex-mrtos` | self pair (one word with itself): same-group pairs are not counted | west_ch02_f94 |
+| `pie-lex-dhegjhoxm|pie-lex-meh2texr` | qualifies in >= 2 branches, score <= threshold | west_ch04_f12, west_ch04_f22, west_ch04_f23 |
+| `pie-lex-wekwos|pie-root-peth2-spread_out` | O >= min O in >= 2 branches, but O/E >= min O/E in <= 1 | west_ch01_f12 |
+| `pie-root-gwhen-strike|pie-root-kjey-be_lying_down` | qualifies in >= 2 branches, score <= threshold | slain-lies |
+| `pie-lex-kjlewos|pie-root-pleth2-spread` | qualifies in >= 2 branches, score <= threshold | west_ch10_f06, west_ch02_f02 |
 
 The per-layer O, E and O/E for every test item are in `test-results.json`.
 
