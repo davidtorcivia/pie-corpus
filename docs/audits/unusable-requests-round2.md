@@ -64,6 +64,7 @@ A gloss override would put each in the default pool.
 - `pie-lex-h2endhos` *h₂éndʰos* "bloom": keyword **`bloom`** (for "flower").
 - `pie-lex-gjombhos` *ǵómbʰos* "tooth": keyword **`tooth`**. The classic *h₃dónts* (`pie-lex-h3donts`) is `unknown:noun-shape`.
 - `pie-lex-ghostipotis` *gʰóstipotis* "lord, master": the "host" of Lat. *hospes*, keyword **`lord`**.
+- `pie-lex-h3enHos` *h₃énHos* "load; burden": keywords **`load`**, **`burden`**.
 
 ### Unusable
 
@@ -83,7 +84,7 @@ The cause is in parentheses.
 - `n-stem`: 59;
 - `devi`: 47.
 
-The other common cause is `unknown:noun-shape` (826). Hand-written specs show the engine paradigms are sound for these shapes. Round 2's acrostatic i-stem, u-stem and s-stem entries realize correctly, so the threshold, not the paradigm code, is what blocks them.
+The other common cause is `unknown:noun-shape` (826). In spot checks, hand-written specs for these shapes realize correctly: round 2's acrostatic i-stem and u-stem entries give the expected cells, and so do the lexicon's `table` specs, such as *bʰardʰéh₂*. That suggests the backtest threshold, not the paradigm code, is what blocks them. This is not a validation of the paradigms.
 
 ## 3. Tier 3b neologism candidates (no cognate set; not created here)
 

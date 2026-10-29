@@ -133,9 +133,9 @@ These are in `lexicon.jsonl`, but their specs are unusable or they have no dicti
 
 Requested by the wave-1 planners (judge, witness, owe/debt, sell, swear, sick/illness, spring, grave, long, wait, mounted, beak, sing, love, thank/praise, here, grey, man/human), plus a search for missing everyday words. What happened to each request is in `docs/audits/unusable-requests-round2.md`. Most of the requested words, and most everyday words, **already exist** in `lexicon.jsonl`. They are unusable or have no dictionary gloss, so they are listed there and not duplicated here.
 
-Round 2 adds the first adjectives (`family: "adj"`, thematic: `m_strong` only) and the first verb (`family: "verb"`, thematic present: `strong`, `kind: "impf"`). They use the same engine paradigms as the lexicon's `shape:thematic-adj` and `shape:thematic-present` specs. The nouns use shapes already proven in the lexicon: thematic m., acrostatic i-stem (as *h₁ógʷʰis*), neuter s-stem (as *h₂éḱos*) and u-stem (as *bʰébʰrus*). `tests/test_project_reconstructions.py` realizes each entry through `check_plan` + `realize`, and checks that `make_slice.py` offers it flagged.
+Round 2 adds the first adjectives (`family: "adj"`, thematic: `m_strong` only) and the first verb (`family: "verb"`, thematic present: `strong`, `kind: "impf"`). They use the same engine paradigms as the lexicon's `shape:thematic-adj` and `shape:thematic-present` specs. The nouns use shapes already proven in the lexicon: thematic m., acrostatic i-stem (as *h₁ógʷʰis*) and u-stem (as *bʰébʰrus*). `tests/test_project_reconstructions.py` realizes each entry through `check_plan` + `realize`, and checks that `make_slice.py` offers it flagged.
 
-Sound-law checks, round 2: 18 run, 0 warnings.
+Sound-law checks, round 2: 17 run, 0 warnings.
 
 | Id | Form | Gloss | Branches (same formation) | Checks |
 |---|---|---|---|---|
@@ -148,7 +148,6 @@ Sound-law checks, round 2: 18 run, 0 warnings.
 | `pie-proj-swerghos` | *swérgʰos* m. | illness, sickness | Celtic, Tocharian | 1 (PGmc s-, root-level) |
 | `pie-proj-gwhermos` | *gʷʰermós* adj. | warm, hot | Greek, Armenian (Albanian) | 3 (Skt gh-, Gk th-, Lat. f-) |
 | `pie-proj-moghus` | *mógʰus* m. | boy, young man; servant (Celtic) | Germanic, Celtic | 1 (PGmc m-) |
-| `pie-proj-h3enos` | *h₃énos* n. | load, burden; wagon-load (Indic) | Italic, Indo-Iranian | 1 (Lat. o- colouring) |
 | `pie-proj-keh2ros` | *keh₂rós* adj. | dear, beloved; desired | Italic, Baltic, Germanic, Gaulish | 2 (Lat. c-, PGmc h-) |
 
 ### *ḱásnos* "grey" (`pie-proj-kjasnos`)
@@ -161,7 +160,7 @@ Sound-law checks, round 2: 18 run, 0 warnings.
 | Germanic | OE *hasu*, ON *hǫss* "grey" (*haswa-*) | no (-wo-) | Kroonen; de Vaan |
 
 - Handbooks: de Vaan 2008 s.v. *cānus*; Kroonen 2013 s.v. *haswa-* ("OHG *hasan* < *hasna-*, the same suffixation as Lat. *cānus*"); Mallory–Adams 2006 §20.4.
-- Honest notes: this is the adjective the hare word (`pie-proj-kjasos`) is named from. The root vowel is *a*, as in the hare word. Germanic's colour sense is weak ("mat, dull"). **Accent:** PGmc *hasna-* keeps voiceless *s*, not Verner *z*, which fits a root accent, so the project writes *ḱásnos*. For "grey wolf", the better-attested *pelH-wo-* adjective exists but is unusable (`pie-lex-polHwos`; see the audit).
+- Honest notes: this is the adjective the hare word (`pie-proj-kjasos`) is named from. The root vowel is *a*, as in the hare word. Germanic's colour sense is weak ("mat, dull"). **Accent: projected.** The root accent *ḱásnos* is consistent with OHG *hasan* (voiceless *s*), but this does not decide it, because West Germanic also levelled *s* in the hare word, where Anglo-Nordic has the Verner variant *hazan-* (Kroonen). For "grey wolf", the better-attested *pelH-wo-* adjective exists but is unusable (`pie-lex-polHwos`; see the audit).
 - Spec: adj, thematic, `m_strong` `ḱásno`.
 
 ### *kólsos* m. "neck" (`pie-proj-kolsos`)
@@ -263,17 +262,6 @@ Sound-law checks, round 2: 18 run, 0 warnings.
 - Honest notes: this is a West European word; Kroonen calls it "of obscure origin". Celtic *mogu-* needs *o*, and Germanic *a* is the regular reflex of *o*, so *mogʰ-u-* (Matasović) fits both. Kroonen and M&A write *a*, and Gaulish *Magu-* is unexplained. The accent and the proterokinetic pattern are projected. The feminine *mogʰwih₂* "girl" (Go. *mawi*) is not added.
 - Spec: noun, u-stem, strong `mógʰu`, weak `mogʰéw`, proterokinetic, m. (the pattern of *bʰébʰrus*).
 
-### *h₃énos* n. "load, burden" (`pie-proj-h3enos`)
-
-| Branch | Reflex | Same formation | Cited |
-|---|---|---|---|
-| Italic | Lat. *onus*, *oneris* n. "burden, load" | yes | de Vaan s.v.; M&A |
-| Indo-Iranian | Ved. *ánas-* n. "heavy cart, freight wagon" | yes | EWAia I s.v.; de Vaan; M&A |
-
-- Handbooks: de Vaan 2008 s.v. *onus* (PIE *h₃en-os, -es-*); EWAia I s.v. *ánas-*; M&A 2006 §17.3 ("Italic-Indic isogloss").
-- Honest notes: Lat. *o-* needs *h₃*, so the project follows de Vaan. M&A write *h₁ónHes-*. A root-final laryngeal is needed only if Hitt. *aniya-* "work" belongs here, which de Vaan finds semantically not compelling. The meaning is "burden" in Latin and "freight cart" in Indic.
-- Spec: noun, neuter s-stem, strong `h₃énos`, weak `h₃énes`, acrostatic, n. (the pattern of *h₂éḱos*). Gen. sg. *h₃énesos*.
-
 ### *keh₂rós* "dear" (`pie-proj-keh2ros`)
 
 | Branch | Reflex | Same formation | Cited |
@@ -305,4 +293,5 @@ Sound-law checks, round 2: 18 run, 0 warnings.
 | rot (*puHyéti*) | LIV: the *yé*-present is only Indo-Iranian. |
 | wait (*th₂usyéti*) | LIV: only Hitt. *tuḫḫušiya-*. |
 | kid (*ǵʰaydos*) | Only Lat. *haedus* is thematic; Gmc *gait-* is another stem. |
+| load, burden (*h₃énos*) | Exists and is usable: `pie-lex-h3enHos` *h₃énHos* "load; burden" (Lat. *onus*, Skt *ánas-*), offered under the keywords `load` and `burden`. A draft project entry was removed after the validator found the homograph. |
 | sweep, cauldron, flower | Sweep exists (`pie-lex-wrseti`, derived gloss). The cauldron *u*-stem is only Skt *carú-*. Flower exists (`pie-lex-h2endhos` "bloom", usable). |

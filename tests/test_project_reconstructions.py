@@ -23,7 +23,7 @@ SEE = "pie-lex-spekjyeti"
 ROUND2 = {"pie-proj-kjasnos": "grey", "pie-proj-kolsos": "neck", "pie-proj-bhodhHros": "deaf",
           "pie-proj-konHis": "ashes", "pie-proj-lh2eywos": "left", "pie-proj-reydheti": "ride",
           "pie-proj-swerghos": "illness", "pie-proj-gwhermos": "warm", "pie-proj-moghus": "boy",
-          "pie-proj-h3enos": "load", "pie-proj-keh2ros": "dear"}
+          "pie-proj-keh2ros": "dear"}
 
 
 def _rows():
@@ -52,6 +52,8 @@ def test_entries_meet_the_policy():
         assert all(x.get("cite") for xs in r["reflexes"].values() for x in xs), r["id"]
         assert r["evidence"]["handbooks"] and all(h["text_file"].startswith("raw/books/text/")
                                                    for h in r["evidence"]["handbooks"])
+        if (ROOT / "raw/books/text").is_dir():     # raw/ is local-only; where it exists, every cited page must
+            assert all((ROOT / h["text_file"]).is_file() for h in r["evidence"]["handbooks"]), r["id"]
         assert sum(x["same_formation"] for xs in r["reflexes"].values() for x in xs) >= 2, r["id"]
         assert r["inflection"]["usable"] and r["inflection"]["spec"]
         checks = list(check_entry(r))
@@ -208,11 +210,10 @@ def test_round2_entry_loads_realizes_and_is_flagged(lx, lex_id):
 
 
 def test_round2_paradigms(lx):
-    """Spot cells for each spec shape round 2 adds (thematic m., acrostatic i-stem, s-stem neuter, u-stem,
-    thematic adjective, thematic present)."""
+    """Spot cells for each spec shape round 2 adds (thematic m., acrostatic i-stem, u-stem, thematic adjective,
+    thematic present)."""
     assert lx.cells("pie-proj-kolsos")["ACC.SG"][0] == "kólsom"
     assert lx.cells("pie-proj-konHis")["GEN.SG"][0] == "kénHis"          # acrostatic, like h₁ógʷʰis
-    assert lx.cells("pie-proj-h3enos")["GEN.SG"][0] == "h₃énesos"        # neuter s-stem, like h₂éḱos
     assert lx.cells("pie-proj-moghus")["GEN.SG"][0] == "mogʰéws"         # u-stem, like bʰébʰrus
     assert lx.cells("pie-proj-gwhermos", "f")["NOM.SG"][0] == "gʷʰerméh₂"
     assert lx.cells("pie-proj-reydheti")["PRS.3PL"][0] == "réydʰonti"
@@ -233,3 +234,29 @@ def test_round2_offered_by_make_slice_with_flag(tmp_path, monkeypatch):
              json.loads((tmp_path / "data/generation/slices/probe2.json").read_text())["lexemes"]}
     for i in ROUND2:
         assert items[i]["coined"] == "project", i
+
+
+def test_round2_adjective_and_verb_validate_at_the_exact_tier(lx, tmp_path, monkeypatch):
+    """A Tier 3 plan with a project adjective, noun and verb goes through scripts/realize_plans.py (check_plan,
+    realize, validate with index_project) at the exact tier, and every token carries the flag."""
+    plan = {"english": "The grey boy rides.", "clauses": [{"slots": [
+        {"lex_id": "pie-proj-moghus", "role": "SUBJ"}, {"lex_id": "pie-proj-kjasnos", "role": "MOD", "head": 0},
+        _V("pie-proj-reydheti")]}]}
+    rp = runpy.run_path(str(ROOT / "scripts/realize_plans.py"))
+    main = rp["main"]
+    monkeypatch.setitem(main.__globals__, "ROOT", tmp_path)
+    for p in ("corpus/tier3", "data/generation/rejects"):
+        (tmp_path / p).mkdir(parents=True)
+    from pie.validate import FormIndex
+    closed = json.loads((ROOT / "data/morph/closed_class.json").read_text())
+    monkeypatch.setitem(main.__globals__, "load_index", lambda: FormIndex([], [], closed))
+    plans = tmp_path / "input.jsonl"
+    plans.write_text(json.dumps({"plan_id": 1, "plan": plan}) + "\n")
+    monkeypatch.setattr(sys, "argv", ["realize_plans.py", str(plans), "--batch", "probe2"])
+    main()
+    batch = json.loads((tmp_path / "data/generation/batches/probe2.json").read_text())
+    assert batch["realized"] == 1 and batch["exact_pass"] == 1
+    rec = json.loads((tmp_path / "corpus/tier3/probe2.jsonl").read_text().splitlines()[0])
+    assert rec["pie"] == "ḱásnos mógʰus réydʰeti."
+    assert {t["lex_id"]: t.get("coined") for t in rec["tokens"]} == {
+        "pie-proj-moghus": "project", "pie-proj-kjasnos": "project", "pie-proj-reydheti": "project"}
