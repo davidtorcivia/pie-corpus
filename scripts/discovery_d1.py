@@ -61,7 +61,7 @@ def _extract_chunk(args):
         if branch not in BRANCH_MAP:
             continue
         ws = json.loads(zlib.decompress(payload))['words']
-        kw = [(i, sorted(set(w['root_ids']) | set(w['root_groups'])), w['root_groups'])
+        kw = [(i, sorted(set(w['root_ids']) | set(w['root_groups'])), w['root_groups'], w['root_ids'])
               for i, w in enumerate(ws) if w['root_ids'] or w['root_groups']]
         out.append((uid, corpus, branch, len(ws), kw))
     return out
@@ -84,14 +84,14 @@ def cmd_extract(a):
                 if corpus not in cidx:
                     cidx[corpus] = len(corpora); corpora.append(corpus)
                 U_uid.append(uid); U_corp.append(cidx[corpus]); U_br.append(BRANCHES.index(BRANCH_MAP[branch])); U_len.append(n)
-                for pos, ks, groups in kw:
+                for pos, ks, groups, rids in kw:
                     ids = []
                     for k in ks:
                         if k not in keyid:
                             keyid[k] = len(keyid); group_cache[k] = key_group(k, lex)
                         ids.append(keyid[k])
                     # consistency: the payload's groups should be the groups of its keys
-                    if set(groups) - {group_cache[k] for k in ks}:
+                    if set(groups) != {key_group(r, lex) for r in rids}:
                         mism += 1
                     if len(ids) > M:
                         over += 1; ids = ids[:M]

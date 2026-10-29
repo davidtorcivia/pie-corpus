@@ -19,7 +19,7 @@ key were not built (`packet` was never run), and no blind review should be dispa
   the index has already dropped function words. A pair is two keys on different words, counted once per
   unit. E_b = n_b(x)·n_b(y)/N_b, where n_b is the number of units that contain the key in branch b,
   recomputed for each shuffled index. The index has 6,580,692 keyed words, 7,105 keys and 3,298 root groups
-  (`group_of`, with group splits). The payload's groups agree with `group_of` on every word.
+  (`group_of`, with group splits). On every keyed word (all 6,580,692 carry `root_ids`), the payload's `root_groups` equal `{group_of(r) for r in root_ids}`; the check runs in `extract`.
   - Checked against `collocates_8c.py --pair` on horse + swift: Greek O = 70 and Indo-Iranian O = 8 in both
     tools.
 - **Same-group pairs** are dropped: a lexeme with its own root group on another word is not a two-word phrase.
