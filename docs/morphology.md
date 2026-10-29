@@ -109,7 +109,7 @@ The order is: a Wiktionary table if the entry has one; otherwise a shape rule on
 | pk-iu-stem | 34 | 27 | 89.3% (2026-10-28: an o-grade root is acrostatic, Fortson §6.21, except before RC, §6.27; was 84.7%) |
 | n-stem-ak | 10 | 7 | 85.3% (2026-10-28: a root-final liquid or nasal is consonantal before -n̥; was 82.6%) |
 | thematic-neuter / er-stem | | | 79–85% |
-| devi | 4 | 3 | 86.8% (2026-10-29: an accented o-grade or lengthened-grade root keeps its grade and accent in the weak stem, Ved. pátnī, gen. pátnyāḥ, rā́jñī, rā́jñyāḥ; was 60.5%. The e-grade branch alone scores 28/38: néptih₂'s table keeps *nept-*. An unaccented headword gets no spec; síh₂ 'she' is a pronoun) |
+| devi | 4 | 3 | 86.8% (2026-10-29: an accented o-grade or lengthened-grade root keeps the root accent throughout (Ved. pátnī, gen. pátnyāḥ, rā́jñī, rā́jñyāḥ; fixed accent as in Fortson §6.21) and the grade the tables write (pótn̥yeh₂-; Vedic cannot tell *o from *e); was 60.5%. The e-grade branch alone scores 28/38: néptih₂'s table keeps *nept-*. An unaccented headword gets no spec; síh₂ 'she' is a pronoun) |
 | n-stem-hk | 2 | 1 | 76.3% (2026-10-29: locative in accented *-én(i)*, Fortson §6.11; was 71.0%; sh₂imṓ's weak stem sh₂in̥ is lexical) — not usable |
 | hk-iu-stem | 3 scored | 1 | 57.9% (2026-10-29: the tables of Hrugʰís and bʰeh₂ǵʰús are written on root-accented headwords and are skipped, as for eh₂; was 45.3%; suHnús, suHyús have an o-grade weak stem, Beekes 2011's *-ou-s against the rule's *-ew-s) — not usable |
 

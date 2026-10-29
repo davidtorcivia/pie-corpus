@@ -217,9 +217,10 @@ def by_shape(e: dict) -> Classified:
         bs = _segs(base)
         acc = next((x for x in bs if x.kind == "V" and x.acc), None)
         if f.endswith("ih₂") and acc is not None and (acc.base == "o" or acc.long):
-            # an accented o-grade or lengthened-grade root keeps its grade and accent in the weak stem, as an
-            # accented o-grade root does in the i-stems (Fortson §6.21; shape:pk-iu-stem): Ved. pátnī, gen.
-            # pátnyāḥ; rā́jñī, gen. rā́jñyāḥ, and Wiktionary's tables pótnih₂ ~ pótn̥yeh₂, h₃rḗǵnih₂ ~ h₃rḗǵn̥yeh₂.
+            # an accented o-grade or lengthened-grade root keeps the root accent throughout (fixed accent, as in
+            # acrostatic nouns, Fortson §6.21; Ved. pátnī, gen. pátnyāḥ; rā́jñī, gen. rā́jñyāḥ) and, as Wiktionary's
+            # tables write it, its grade (pótnih₂ ~ pótn̥yeh₂, h₃rḗǵnih₂ ~ h₃rḗǵn̥yeh₂): Vedic cannot tell *o from
+            # *e, and §6.21's o/e ablaut is not applied here.
             # zero_grade() deleted the only root vowel instead (pótnih₂ → ptnyéh₂). A resonant after a consonant
             # is syllabic before -yeh₂, as the tables write it.
             if len(bs) > 1 and bs[-1].kind == "R" and not bs[-2].vocalic:

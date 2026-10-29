@@ -11,6 +11,9 @@ Built by `uv run python -I scripts/build_lexicon.py <kaikki dump>` (code: `pie/l
 | `rejects.jsonl` | every PIE string that could not be normalized, with the reason |
 | `id_registry.jsonl` | **persistent** key → id map; committed; never hand-edit ids |
 | `build_report.json` | counts, rules fired, unresolved links, root-type disagreements |
+| `derived_glosses.jsonl` | approximate glosses (root meaning + suffix function) for unglossed lexemes (`scripts/build_glosses.py`) |
+| `reflex_glosses.jsonl` | the daughters' Wiktionary glosses and cited etyma for each unglossed lexeme's reflexes (`scripts/build_reflex_glosses.py`; committed facts, the dumps are not) |
+| `confirmed_glosses.jsonl` | reflex-confirmed glosses with their evidence (see "Reflex-confirmed glosses") |
 | `neologisms.jsonl` | (Tier 3b, later) coinages; never merged into `lexicon.jsonl` |
 | `project_reconstructions.jsonl` | hand-authored lexemes projected from ≥2 branches, `coined: "project"`, Tier 3/3b only; loaded by `pie.realize.Lexicon.load`, never by the build or `load_index` (docs/lexicon-project-reconstructions.md) |
 

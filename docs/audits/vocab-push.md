@@ -28,7 +28,7 @@ Where the gain comes from:
 | bed | *légʰos* | offered | gloss "bed, couch; lair" (Beekes s.v. λέχεται; M&A *\*légʰes-*) |
 | tooth | *h₃dónts* | offered | checked hysterokinetic spec h₃dónt-/h₃dn̥t- (Beekes 2011 p. 197; Ved. *dán, dántam, datás*) |
 | swear | *h₃m̥néh₃ti* | offered | gloss "to swear (an oath)" (Beekes s.v. ὄμνυμι; Ved. *ámīti*). Greek and Indic only |
-| owe | *dʰl̥gʰéti* | offered | gloss "to be entitled to; to owe" (Matasović *\*dlig-o-*). Celtic only |
+| owe | *dʰl̥gʰéti* | offered | gloss "to owe, be entitled to" (Matasović *\*dlig-o-*). Celtic only |
 | wait | *méneti* | offered | gloss "to stay, remain; to wait (for)" (Beekes s.v. μένω) |
 | hornet | *ḱr̥h₂sḗr* | offered | gloss "hornet" (de Vaan s.v. *crābrō*; Kroonen *\*hurnuta-*) |
 | suckle, sweat, wash, lick | *dʰéh₁yeti, swéydos, léwh₃eti, léyǵʰeti* | offered | dictionary glosses (Beekes, de Vaan, Kroonen, LIV²) |
@@ -52,7 +52,7 @@ Where the gain comes from:
 | n-stem-hk | 71.0% | 76.3% | no |
 | hk-iu-stem | 45.3% (on 5 tables) | 57.9% (on 3) | no |
 
-- **devī:** an accented o-grade or lengthened-grade root keeps its grade and accent in the weak stem (Ved. *pátnī*, gen. *pátnyāḥ*; *rā́jñī*, *rā́jñyāḥ*; Fortson §6.21). Before this fix, `zero_grade()` deleted the only root vowel (*pótnih₂ → ptnyéh₂*).
+- **devī:** an accented o-grade or lengthened-grade root keeps the root accent throughout (Ved. *pátnī*, gen. *pátnyāḥ*; *rā́jñī*, *rā́jñyāḥ*; fixed accent as in Fortson §6.21's acrostatic class) and the grade the Wiktionary tables write (*pótn̥yeh₂-*). Vedic cannot tell *\*o* from *\*e*, and §6.21's o/e ablaut is not applied. Before this fix, `zero_grade()` deleted the only root vowel (*pótnih₂ → ptnyéh₂*).
   - The e-grade branch alone scores 28/38: néptih₂'s table keeps *nept-*.
   - Unaccented devī headwords now get no spec (15 lexemes): their oblique accent would be a guess.
   - *síh₂* 'she' is a pronoun, not a devī noun.
