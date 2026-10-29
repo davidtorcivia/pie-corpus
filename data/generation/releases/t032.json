@@ -1,15 +1,1 @@
-{
- "schema_version": 1,
- "batch": "t032",
- "sha256": {
-  "records": "4f62154938ba0bf98752def11ca7be217783364b78ab6f90b666c38c4b14fae7",
-  "plans": "c221d7338a389ced3fe5da1693fe1d67002f4db91d4d1788e289f46bf6eb4a57",
-  "gate_report": "15f8f12383354a4ae210cf9a1faf07b48553fa0b063a434ea536e79c18631d19"
- },
- "review": {
-  "required": true,
-  "status": "pending",
-  "evidence": [],
-  "rationale": "Awaiting review."
- }
-}
+{"schema_version": 1, "batch": "t032", "sha256": {"records": "002efe59b4ef9c18066d338770487a7fbf07ea04dd7adafd49c46c2021dfd711", "plans": "b13058ca432321d062b22fdb01cc27dee340a8792de562d4fb4da162538723df", "gate_report": "79964654d9d165ac7f6ee50bfd008ba52ca9aeb55e2e476940fff2454b12a974"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t032.json", "docs/audits/tier3-t032-review.md", "docs/audits/packets/t032-verdicts.jsonl"], "rationale": "Calibrated review (docs/audits/tier3-t032-review.md): plants 5/5 blind; real 0/20 wrong (two wrong items outside the sample fixed: kwim for 'nothing'); gate PASS."}}

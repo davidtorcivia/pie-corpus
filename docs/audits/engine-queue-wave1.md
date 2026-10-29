@@ -22,3 +22,6 @@ These are fixed centrally after wave 1, before wave 2 starts. Each item names th
 - **Slice keywords to add in wave 2**: nest, fly, thirst, hunger/hungry (needs `--derived`).
 - **Imperative with no `person` defaults to 3sg** ("let him take"), with no warning even when a vocative is present, and brief v4 never says imperatives need `person`. This caused 12 of the 14 wrong items in t027. Older approved batches have IMP verbs without person: t003 (6), t006 (1), t007 (2), t015 (21), t023 (18). These are being audited.
 - **Accents on the new imperatives** h₁éddʰi and tétḱdʰi are wrong (t027).
+- **meter_fit is lenient.** Its ±1 window around 8 and 11 accepts any line of 7–12 syllables. t032's 0.963 means "lines are 7–12 syllables"; only 29% have exactly 8 or 11, and cadence isn't checked. Report the exact-count share as well, and don't describe meter_fit as "scans" (t032).
+- **closed:indefinite_kwi with no gender** defaults to animate kʷim ("no one" where "nothing" was meant) (t032).
+- **The antecedent warning checks only gender and number**, so it misses same-gender ambiguity (wolf vs dog). Nothing checks reflexive swo- (t032).
