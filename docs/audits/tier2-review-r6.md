@@ -172,7 +172,7 @@ A rebuild in that tree changed four levels on unchanged plans: dawn-sun-016 *só
 - every cluster was rebuilt in a clean git worktree at HEAD, with only this round's `review_verdicts.json` added (raw/ symlinked read-only);
 - that output was committed.
 
-The clean build reproduces the step-1 commit (4f54115) exactly, apart from the review fields, so the drift table in §1 is the committed-mapping drift. When batch 2 lands, these four lines should be checked again.
+Against the step-1 commit (4f54115), the clean build is identical in text, levels, secure_share and verified flags on all 109 shared records (review fields aside), so the drift table in §1 is the committed-mapping drift. Four records differ only in evidence-path strings: dawn-sun-001, -018, healing-charms-001 and sky-father-006, all with the same levels. Their clusters had been built after the WIP edits began. This commit carries the clean versions. When batch 2 lands, these four lines should be checked again.
 
 **Eval grade:**
 - Committed state before this round: 40 eval-grade lines out of 98.
