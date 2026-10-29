@@ -4,7 +4,7 @@
 {"id": "welcome", "turns": [{"user": "Say 'welcome, guest'.", "answer": {"record": "t3-t3b-001-00001", "sentence": 1, "english": "Welcome, guest!"}}]}
 {"id": "guest-dear", "turns": [{"user": "Tell your guest that he is dear to you.", "answer": {"record": "t3-t031-00024", "sentence": 0, "english": "Guest, you are dear to me."}}]}
 {"id": "live", "turns": [{"user": "Wish me well.", "answer": {"record": "t3-t024-00001", "sentence": 4, "english": "May you live!"}}]}
-{"id": "thirsty", "turns": [{"user": "I am thirsty.", "answer": {"record": "t3-b004-00106", "sentence": 0, "english": "Sit down and drink!"}}, {"user": "And I am hungry too.", "answer": {"record": "t3-t024-00010", "sentence": 4, "english": "Eat, and drink the mead!"}}]}
+{"id": "thirsty", "turns": [{"user": "I am thirsty.", "answer": {"record": "t3-b004-00106", "sentence": 0, "english": "Sit down and drink!"}}, {"user": "And I am hungry too.", "answer": {"record": "t3-b001-00078", "sentence": 0, "english": "Eat the duck and be satisfied!"}}]}
 {"id": "goodbye", "turns": [{"user": "How do you say goodbye?", "answer": {"record": "t3-t024-00005", "sentence": 0, "english": "Guest, go, and may the gods lead you!"}}]}
 {"id": "goodbye-friend", "turns": [{"user": "Now I am going home.", "answer": {"record": "t3-t3b-001-00014", "sentence": [1, 2], "english": "Go, friend! Be well!"}}]}
 {"id": "thanks", "turns": [{"user": "How do you say thank you?", "answer": {"record": "t3-t3b-001-00007", "sentence": 1, "english": "I give you thanks."}}]}
