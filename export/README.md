@@ -101,8 +101,10 @@ pair or a multi-word eval assistant turn occurs verbatim in train, or if 50% or 
 assistant turn's word 4-grams occur in train (all train messages and `text/train.txt`). Items flagged
 `seen_in_train` are reported in `summary.json`, not failed. The per-kind overlap distribution is reported.
 
-**Tier 3b cap.** PLAN.md caps Tier 3b (`neologism: true`) at 10–15% of training tokens. The export warns
-on stderr when the share in the training records exceeds 15%; `summary.json` `neologism` gives the share.
+**Tier 3b cap.** PLAN.md caps Tier 3b (`neologism: true`, `corpus/tier3b/`) at 10–15% of training tokens.
+`pie.export.build` fails when Tier 3b words exceed 15% of the training records' words and reports status
+`warn` above 10% (`summary.json` `neologism_share`; the count is `pie.export_chat.neologism_share`, also in
+`chat/summary.json` `neologism`). Tier 3b records are training data only; their tasks carry `neologism: true`.
 
 **Loading.** Any SFT trainer that reads OpenAI-style `messages` takes the files as they are:
 
