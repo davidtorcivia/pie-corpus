@@ -993,7 +993,7 @@ def test_epithet_pairs_leave_the_number_to_the_verb():
 @pytest.mark.parametrize("lid,voice,tense,person,num,expected", [
     ("pie-lex-bhereti", "MID", "PRS", 2, "DU", "du->pl"),
     ("pie-lex-bhereti", "MID", "PRS", 3, "DU", "du->pl"),
-    ("pie-lex-woyde", "ACT", "PRF", 3, "DU", "du->pl"),
+    ("pie-lex-woyde", "ACT", "PRF", 1, "DU", None),     # 2du/3du perfect: rejected (test_engine_queue_wave1)
     ("pie-lex-bhereti", "MID", "PRS", 1, "DU", None),
     ("pie-lex-bhereti", "ACT", "PRS", 3, "DU", None),
     ("pie-lex-bhereti", "MID", "PRS", 3, "PL", None),
