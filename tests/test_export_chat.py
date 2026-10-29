@@ -28,6 +28,7 @@ def exported(tmp_path_factory):
     out = tmp / "export"
     load = lambda p: [json.loads(x) for x in (out / p).read_text("utf-8").splitlines()]
     return {"out": out, "train": load("chat/train.jsonl"), "eval": load("chat/eval.jsonl"),
+            "train_mix": load("chat/train_mix.jsonl"),
             "train_tasks": load("train_tasks.jsonl"), "eval_tasks": load("eval_tasks.jsonl"),
             "train_records": load("train.jsonl"), "eval_records": load("eval.jsonl"),
             "eval_dialogues": load("eval_dialogues.jsonl"),
@@ -89,11 +90,18 @@ def test_kinds_and_summary(exported):
         assert s["examples"][split] == len(exported[split])
     c = s["examples_by_kind"]["train"]
     assert c["pie_dialogue"] and c["continuation"] and c["paradigm"] and c["demo_chat"]
-    # English input is first-class: every aligned, non-narrated dialogue gets an English-input conversation
-    assert c["en_dialogue"] == sum(v for k, v in s["dialogue_english_alignment"]["train"].items()
-                                   if k.startswith("aligned:"))
-    assert s["english_input_conversations"]["train"] == c["en_dialogue"] + c["demo_chat"] >= 150
-    assert {m.split("/")[1] for m in s["modes"]["train"]} == {"pie_pie", *ec.EN_MODES}
+    # English input is first-class: every aligned, non-narrated dialogue gets en_pie and en_pie_gloss
+    aligned = sum(v for k, v in s["dialogue_english_alignment"]["train"].items() if k.startswith("aligned:"))
+    assert s["modes"]["train"]["en_dialogue/en_pie"] == aligned
+    by = collections.defaultdict(set)
+    for e in exported["train"]:
+        if e["meta"]["task"] in ec.DIALOGUE_KINDS:
+            by[e["meta"]["source_id"]].add(e["meta"]["mode"])
+    assert sum({"en_pie", "en_pie_gloss"} <= v for v in by.values()) == aligned
+    assert s["english_input_conversations"]["train"] == c["en_dialogue"] + c["demo_chat"] >= 300
+    assert {m.split("/")[1] for m in s["modes"]["train"]} == {"pie_pie", *ec.EN_MODES, "pie_en"}
+    # pie_pie is a minority of the dialogue conversations
+    assert s["modes"]["train"]["pie_dialogue/pie_pie"] < 0.25 * c["en_dialogue"]
     assert 30 <= s["demo_seeds"]["used"] <= 60
     assert s["examples_by_kind"]["eval"]["continuation"]      # Tier 1 works continued
     assert set(s["pie_dialogue_split_method"]["train"]) <= {"speaker", "english_quotes", "sentence_qa"}
@@ -108,8 +116,10 @@ def test_pie_only_conversations(exported):
         if m["task"] == "pie_dialogue":
             assert "Proto-Indo-European" in e["messages"][0]["content"] or "PIE" in e["messages"][0]["content"]
             turns = [x["content"] for x in e["messages"][1:]]
-            # the turns are the record's PIE, in order, minus at most a dropped trailing question
-            assert recs[m["source_id"]]["pie"].startswith(" ".join(turns))
+            # the turns are the record's PIE, in order: the whole minus at most a dropped trailing question, or a
+            # window of its exchanges
+            pie = recs[m["source_id"]]["pie"]
+            assert pie.startswith(" ".join(turns)) if not m.get("window") else " ".join(turns) in pie
             assert m["split"] in ("speaker", "english_quotes", "sentence_qa") and m["genre"] in ec.DIALOGUE_GENRES
         elif m["task"] == "en_dialogue":
             r = recs[m["source_id"]]
@@ -339,7 +349,10 @@ def test_english_modes_deterministic():
              "Who are you? I am. Where are you going? I am going home.", clauses=c, id="t3b-x-1")
     one = ec.dialogue_chats([r], collections.Counter())
     assert one == ec.dialogue_chats([r], collections.Counter())
-    assert [e["meta"]["mode"] for e in one][0] == "pie_pie" and len(one) == 2
+    # two exchanges: en_pie whole, en_pie_gloss on the first, pie_pie on the second (mode_plan)
+    assert [(e["meta"]["mode"], e["meta"].get("window")) for e in one] == \
+        [("en_pie", None), ("en_pie_gloss", [0, 1]), ("pie_pie", [1, 2])]
+    assert [m["content"] for m in one[2]["messages"][1:]] == ["kúdʰe h₁éysi?", "h₁éymi wóyḱom."]
     allm = ec.dialogue_chats([r], collections.Counter(), all_modes=True, chat_eval=True)
     assert [e["meta"]["mode"] for e in allm] == ["pie_pie", *ec.EN_MODES]
     assert all(e["meta"]["chat_eval"] for e in allm)
@@ -353,3 +366,149 @@ def test_english_modes_deterministic():
     r1 = _rec("kʷís h₁ési? h₁ésmi.", "Who are you? I am.", id="t3-y-1")
     assert [e["meta"]["mode"] for e in ec.dialogue_chats([r1], collections.Counter(), all_modes=True)] == \
         ["pie_pie", "en_pie", "en_pie_gloss"]
+
+
+# ---------------------------------------------------------------- the rebalance and the translator
+
+
+def test_mode_plan_caps_each_turn_at_two():
+    for k in range(1, 9):
+        plan = ec.mode_plan(f"t3-x-{k}", k)
+        assert plan[0] == ("en_pie", (0, k)) and plan[1][0] == "en_pie_gloss"
+        cover = collections.Counter(i for _m, (a, b) in plan for i in range(a, b))
+        assert set(cover) == set(range(k)) and set(cover.values()) == {ec.DEDUP_CAP}
+        assert all(m != "mixed" or b - a >= 2 for m, (a, b) in plan)
+    assert [m for m, _ in ec.mode_plan("x", 2)] == ["en_pie", "en_pie_gloss", "pie_pie"]
+    assert [m for m, _ in ec.mode_plan("x", 5)] == ["en_pie", "en_pie_gloss", "mixed"]
+
+
+def test_self_overlap_cap_holds(exported):
+    so = exported["summary"]["self_overlap"]
+    assert so["dialogue_turns"]["max"] <= ec.DEDUP_CAP and so["dialogue_turns"]["over_2"] == 0
+    assert so["dialogue_turns"]["items"] > 300
+    # every dialogue example's assistant turns, counted directly
+    c = collections.Counter()
+    for e in exported["train"]:
+        if e["meta"]["task"] in ec.DIALOGUE_KINDS:
+            for x in {m["content"].split("\nEnglish: ")[0] for m in e["messages"] if m["role"] == "assistant"}:
+                c[(e["meta"]["source_id"], x)] += 1
+    assert max(c.values()) <= ec.DEDUP_CAP
+
+
+def test_app_format_round_trips():
+    t = ec.app_format("h₁éḱwos.", "horse-NOM.SG", "a note.")
+    assert t == "PIE: h₁éḱwos.\nGloss: horse-NOM.SG\nNotes: a note."
+    assert ec.parse_app(t) == {"PIE": "h₁éḱwos.", "Gloss": "horse-NOM.SG", "Notes": "a note."}
+    assert ec.parse_app(ec.app_format("x y.", None)) == {"PIE": "x y."}
+    assert ec.parse_app(ec.app_inverse_format("A horse.", "horse-NOM.SG")) == {"English": "A horse.",
+                                                                             "Gloss": "horse-NOM.SG"}
+
+
+def test_app_items_partition_sentences_with_sliced_gloss():
+    toks = [{"form": f} for f in ("kʷís", "h₁ési", "h₁ésmi", "wiHrós", "nu", "h₁éymi")]
+    toks[3]["coined"] = "neologism"
+    r = _rec("kʷís h₁ési? h₁ésmi wiHrós. nu h₁éymi.", "Who are you? I am a man. Now I go.", id="t3-z-1",
+             gloss="who-NOM.SG be-PRS.2SG be-PRS.1SG man-NOM.SG now go-PRS.1SG", tokens=toks)
+    for rid in ("t3-z-1", "t3-z-2", "t3-z-3", "t3-z-4", "t3-z-5"):
+        st = collections.Counter()
+        items = ec.app_chats([dict(r, id=rid)], st)
+        pies, engs = [], []
+        for e in items:
+            m, a = e["meta"], e["messages"][-1]["content"]
+            if m["mode"] == "en_pie":
+                assert e["messages"][0]["content"] == ec.APP_SYSTEM
+                f = ec.parse_app(a)
+                pies.append(f["PIE"]), engs.append(e["messages"][1]["content"])
+                assert len(f["Gloss"].split()) == len(f["PIE"].split())
+                assert ("wiHrós" in f["PIE"]) == ("wiHrós" in f.get("Notes", ""))
+            else:
+                assert e["messages"][0]["content"] == ec.APP_INVERSE_SYSTEM
+                f = ec.parse_app(a)
+                pies.append(e["messages"][1]["content"]), engs.append(f["English"])
+            assert m["sentences"] == len(ec.sentences(pies[-1])) and m["unit"] == ("sentence" if m["sentences"] == 1
+                                                                                  else "paragraph")
+        assert " ".join(pies) == r["pie"] and " ".join(engs) == r["english"]      # each sentence once
+    # a gloss without one word per PIE word is left out, never guessed
+    st = collections.Counter()
+    items = ec.app_chats([dict(r, gloss="who be")], st, inverse=False)
+    assert st["gloss_mismatch"] == 1 and all("Gloss:" not in e["messages"][-1]["content"] for e in items)
+    assert not any(e["meta"]["gloss_reference"] for e in items)
+    # a long record whose English does not align is skipped; a short one is one item
+    st = collections.Counter()
+    long = _rec("a. b. c. d.", "A b c d.", id="t3-z-9")
+    assert ec.app_chats([long], st) == [] and st["unaligned_long:count_mismatch"] == 1
+    short = ec.app_chats([_rec("a. b.", "A b.", id="t3-z-8")], collections.Counter(), inverse=False)
+    assert len(short) == 1 and short[0]["meta"]["sentences"] == 2
+
+
+def test_translator_conversations(exported):
+    """translate_app: English in, the fixed format out; every train record with English is covered sentence by
+    sentence; eval items come from the eval records only (Tier 1 has no gloss reference)."""
+    recs = {r["id"]: r for r in exported["train_records"]}
+    app = [e for e in exported["train"] if e["meta"]["task"] == "translate_app"]
+    inv = [e for e in app if e["meta"]["mode"] == "pie_en"]
+    assert app and 0.1 < len(inv) / len(app) < 0.3
+    assert {e["meta"]["unit"] for e in app} == {"sentence", "paragraph"}
+    covered = collections.defaultdict(list)
+    for e in app:
+        m, a = e["meta"], e["messages"][-1]["content"]
+        f = ec.parse_app(a)
+        r = recs[m["source_id"]]
+        if m["mode"] == "en_pie":
+            assert set(f) <= {"PIE", "Gloss", "Notes"} and list(f)[:2] == ["PIE", "Gloss"]
+            pie, gloss = f["PIE"], f["Gloss"]
+            words = [w.strip(".,;:!?") for w in pie.split()]
+            coined = ({t["form"] for t in r["tokens"] if t.get("coined")}
+                      if len(r["tokens"]) == len(r["pie"].split()) else set())
+            # Notes names exactly the item's coined words (a neologism or a project reconstruction)
+            assert ("Notes" in f) == bool(coined & set(words))
+            if "Notes" in f:
+                assert all(w in f["Notes"] for w in coined & set(words))
+        else:
+            pie, gloss = e["messages"][1]["content"], f["Gloss"]
+            assert list(f) == ["English", "Gloss"]
+        assert pie in r["pie"] and gloss in r["gloss"] and len(gloss.split()) == len(pie.split())
+        covered[r["id"]].append(pie)
+    aligned = [r for r in exported["train_records"] if r.get("english") and ec.align_english(r)[0]]
+    for r in aligned:
+        assert sorted(ec.sentences(" ".join(covered[r["id"]]))) == sorted(ec.sentences(r["pie"])), r["id"]
+    # Tier 3b gets the same English-input treatment
+    neo = [e for e in exported["train"] if e["meta"].get("neologism")]
+    assert {"translate_app/en_pie", "en_dialogue"} <= {ec.mix_key(e) for e in neo}
+    assert {e["meta"]["mode"] for e in neo if e["meta"]["task"] == "en_dialogue"} >= {"en_pie", "en_pie_gloss"}
+    # eval
+    ev = [e for e in exported["eval"] if e["meta"]["task"] == "translate_app"]
+    eval_ids = {r["id"] for r in exported["eval_records"]} | {r["work_id"] for r in exported["eval_records"]}
+    assert ev and {e["meta"]["source_id"] for e in ev} <= eval_ids
+    assert {e["meta"]["tier"] for e in ev} == {1, 2}
+    assert all(e["meta"]["gloss_reference"] is (e["meta"]["tier"] == 2) for e in ev)
+    assert all("Gloss:" not in e["messages"][-1]["content"] for e in ev if e["meta"]["tier"] == 1)
+    kinds = exported["summary"]["leakage"]["per_kind"]
+    assert kinds["translate_app/en_pie"]["n"] and kinds["translate_app/en_pie"]["max_overlap"] < 0.5
+
+
+def test_translator_leakage_is_checked_on_the_pie():
+    """An eval sentence that a train translator item (or translate_en_pie) already says fails, even inside a
+    differently formatted turn."""
+    r = _rec("h₁éḱwōs tréxonti.", "Horses run.", genre="household", id="t2-e-1",
+             gloss="horse-NOM.PL run-PRS.3PL")
+    tr = ec.app_chats([dict(r, id="t3-e-1")], collections.Counter(), inverse=False)
+    ev = ec.app_chats([r], collections.Counter(), inverse=False)
+    rep = ec.leakage_report(tr, ev, "")
+    assert not rep["ok"] and "PIE verbatim in a train assistant turn" in rep["failures"][0]["why"]
+
+
+def test_mix_and_train_mix(exported):
+    s = exported["summary"]["mix"]
+    tr = s["train"]
+    assert set(tr["groups"]) == set(ec.TARGET_MIX)
+    assert sum(g["examples"] for g in tr["groups"].values()) == len(exported["train"])
+    assert tr["english_input_share_of_conversation"] > 0.6
+    assert tr["groups"]["english_input"]["examples"] > tr["groups"]["pie_only_chat"]["examples"] * 5
+    tm = exported["train_mix"]
+    ids = {e["meta"]["id"] for e in exported["train"]}
+    assert {e["meta"]["id"] for e in tm} <= ids and len({e["meta"]["id"] for e in tm}) == len(tm)
+    eng = [e for e in tm if ec.mix_group(e) == "english_input"]
+    assert len(eng) == tr["groups"]["english_input"]["examples"]          # every English-input example
+    assert abs(len(eng) / len(tm) - ec.TARGET_MIX["english_input"]) < 0.01
+    assert s["train_mix"]["examples"] == len(tm) and s["train_mix"]["english_input_share"] > 0.55

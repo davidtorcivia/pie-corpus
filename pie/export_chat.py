@@ -9,12 +9,18 @@ Kinds (meta.task):
                        one user prompt (several paraphrased templates, chosen deterministically) and the
                        task's exact output as the assistant turn, so a scorer can compare it directly
   pie_dialogue         PIE-only conversations from the dialogue genres, split into turns (meta.split:
-                       "speaker" where the plan's clauses carry one, else "sentence_qa")
+                       "speaker", "english_quotes" or "sentence_qa"); in training, the dialogues that have no
+                       English-input conversation, and one half of some two-exchange ones (mode_plan)
   continuation         the opening of a hymn, story or charm in PIE; the assistant continues it
   en_dialogue          the same dialogues with English user input (meta.mode): en_pie (English user, PIE
                        replies), en_pie_gloss (PIE reply + "English: ..." line), mixed (the user switches
-                       between English and PIE, the replies are PIE); one mode per record, chosen by crc32.
-                       Needs a sentence-by-sentence English alignment (align_english)
+                       between English and PIE, the replies are PIE). Every aligned dialogue (align_english)
+                       gets en_pie whole and en_pie_gloss, with mixed or pie_pie on the other half (mode_plan),
+                       no assistant turn in more than DEDUP_CAP of them (self_overlap)
+  translate_app        the translator: English in, "PIE: ..." / "Gloss: ..." / optional "Notes: ..." out
+                       (app_format, parse_app), from every record with English, its sentences partitioned into
+                       sentence-level and short-paragraph items; one in five is the inverse (PIE in,
+                       "English: ..." / "Gloss: ..." out)
   demo_chat            the hand-written demo seeds (data/export/demo_seeds.jsonl): English questions answered
                        with an existing training sentence or an engine form of a lexicon (or neologism) entry
 
@@ -25,6 +31,10 @@ Hold-out: nothing here re-splits. Each example inherits its split from build(): 
 train_tasks/eval_tasks, texts from train_records/eval_records. A paradigm goes to the split its lexeme's
 inflection tasks went to (the same held-family and project-reconstruction decisions), so it never needs its
 own predicate. The leakage check (leakage_report) fails the export when an eval item reappears in train.
+
+Mix: mix_table groups the kinds (english_input, pie_to_english, pie_only_chat, grammar) and gives each split's
+shares and the sampling weights that reach TARGET_MIX; chat/train_mix.jsonl (select_mix) is a subset of train
+in those proportions.
 """
 
 from __future__ import annotations
@@ -47,6 +57,8 @@ HELD_DIALOGUES = Path(__file__).resolve().parent.parent / "data/export/held_dial
 DEMO_SEEDS = Path(__file__).resolve().parent.parent / "data/export/demo_seeds.jsonl"
 NEOLOGISM_CAP = 0.15           # PLAN.md Tier 3b: 10-15% of training tokens
 NGRAM = 4
+# kinds whose assistant turns are PIE sentences (assistant_pie, self_overlap)
+PIE_OUT_KINDS = ("translate_en_pie", "pie_dialogue", "en_dialogue", "continuation", "demo_chat")
 
 # ---------------------------------------------------------------- templates
 
@@ -479,10 +491,12 @@ def _user_langs(rec_id: str, n_user: int) -> list[str]:
 
 
 def en_dialogue(rec: dict, turns, en: list[str], sents: list[str], mode: str, method: str,
-                align: str, dropped: int, **extra) -> dict:
-    """One English-input conversation over the record's turns (EN_MODES); the assistant always speaks PIE."""
+                align: str, dropped: int, window: tuple[int, int] | None = None, **extra) -> dict:
+    """One English-input conversation over the record's turns (EN_MODES); the assistant always speaks PIE.
+    `window`: the (start, end) exchanges these turns are, when not the whole dialogue (meta.window)."""
     n_user = sum(r == "user" for r, _ in turns)
-    langs = _user_langs(rec["id"], n_user) if mode == "mixed" else ["en"] * n_user
+    key = rec["id"] if window is None else f"{rec['id']}|w{window[0]}"
+    langs = _user_langs(key, n_user) if mode == "mixed" else ["en"] * n_user
     out, k = [], 0
     for r, ix in turns:
         e, p = " ".join(en[i] for i in ix), " ".join(sents[i] for i in ix)
@@ -490,7 +504,7 @@ def en_dialogue(rec: dict, turns, en: list[str], sents: list[str], mode: str, me
             if langs[k] == "pie":
                 out.append(("user", p))
             elif mode == "en_pie_gloss" and k == 0:
-                out.append(("user", BILINGUAL_TEMPLATES[_pick(rec["id"] + "|bt", len(BILINGUAL_TEMPLATES))]
+                out.append(("user", BILINGUAL_TEMPLATES[_pick(key + "|bt", len(BILINGUAL_TEMPLATES))]
                             .format(x=e)))
             else:
                 out.append(("user", e))
@@ -498,15 +512,48 @@ def en_dialogue(rec: dict, turns, en: list[str], sents: list[str], mode: str, me
         else:
             out.append(("assistant", f"{p}\nEnglish: {e}" if mode == "en_pie_gloss" else p))
     meta = _meta("en_dialogue", rec["id"], rec, mode=mode, split=method, align=align, turns=len(turns),
-                 user_langs=langs if mode == "mixed" else None, dropped_trailing=dropped or None, **extra)
+                 user_langs=langs if mode == "mixed" else None, dropped_trailing=dropped or None,
+                 window=list(window) if window else None, **extra)
     return {"messages": _msgs(MODE_SYSTEM[mode], *out), "meta": meta}
+
+
+def pie_dialogue(rec: dict, turns, sents: list[str], method: str, dropped: int,
+                 window: tuple[int, int] | None = None, **extra) -> dict:
+    system = PIE_ONLY_SYSTEM[_pick(rec["id"] + "|sys", len(PIE_ONLY_SYSTEM))]
+    msgs = _msgs(system, *[(r, " ".join(sents[i] for i in ix)) for r, ix in turns])
+    return {"messages": msgs, "meta": _meta("pie_dialogue", rec["id"], rec, mode="pie_pie", split=method,
+                                            turns=len(turns), dropped_trailing=dropped or None,
+                                            window=list(window) if window else None, **extra)}
+
+
+def mode_plan(rec_id: str, k: int) -> list[tuple[str, tuple[int, int]]]:
+    """The training modes of an aligned, non-narrated dialogue of k exchanges (user turn + reply), as
+    (mode, (start, end) exchanges). Each assistant turn lands in exactly two of them (the self-overlap cap):
+      en_pie        the whole dialogue, always
+      en_pie_gloss  the whole dialogue when k == 1; else one of two halves (exchanges [:k//2], [k//2:])
+      mixed         the other half when it has two or more exchanges (mixed needs two user turns)
+      pie_pie       the other half when it has one exchange (k == 2 only)
+    With k >= 4 crc32 picks which half is mixed; with k == 2 or 3 the gloss half is the first."""
+    if k == 1:
+        return [("en_pie", (0, 1)), ("en_pie_gloss", (0, 1))]
+    h = k // 2
+    halves = [(0, h), (h, k)]
+    if k >= 4 and _pick(rec_id + "|half", 2):
+        halves.reverse()
+    gloss, other = halves
+    return [("en_pie", (0, k)), ("en_pie_gloss", gloss),
+            ("mixed" if other[1] - other[0] >= 2 else "pie_pie", other)]
 
 
 def dialogue_chats(records: list[dict], skipped: collections.Counter, align_stats: collections.Counter | None = None,
                    all_modes: bool = False, **extra) -> list[dict]:
-    """pie_dialogue (mode pie_pie) for every dialogue-genre record that splits into turns, and, when its English
-    aligns (align_english) and it is not narrated, an en_dialogue: one mode per record by crc32 (all_modes: every
-    mode, for the eval). `extra` goes into every example's meta."""
+    """Conversations from every dialogue-genre record that splits into turns (dialogue_turns).
+
+    Training (all_modes False): a record whose English aligns (align_english) and is not narrated gets the
+    English-input modes of mode_plan (en_pie whole; en_pie_gloss and mixed, or pie_pie, on disjoint halves),
+    so English input dominates and no assistant turn is in more than two of them; any other record is a
+    pie_pie conversation (its only possible mode). The conversational eval (all_modes True): the whole
+    dialogue in pie_pie and in every English mode. `extra` goes into every example's meta."""
     align_stats = collections.Counter() if align_stats is None else align_stats
     out = []
     for rec in records:
@@ -517,22 +564,30 @@ def dialogue_chats(records: list[dict], skipped: collections.Counter, align_stat
             skipped[method] += 1
             continue
         sents = sentences(rec["pie"])
-        system = PIE_ONLY_SYSTEM[_pick(rec["id"] + "|sys", len(PIE_ONLY_SYSTEM))]
-        msgs = _msgs(system, *[(r, " ".join(sents[i] for i in ix)) for r, ix in turns])
-        out.append({"messages": msgs, "meta": _meta("pie_dialogue", rec["id"], rec, mode="pie_pie", split=method,
-                                                     turns=len(turns), dropped_trailing=dropped or None, **extra)})
         en, align = align_english(rec)
-        if en is None:
-            align_stats[f"unaligned:{align}"] += 1
-            continue
-        if narrated(en):
+        if en is not None and narrated(en):
             align_stats[f"narrated:{align}"] += 1
+            en = None
+        elif en is None:
+            align_stats[f"unaligned:{align}"] += 1
+        else:
+            align_stats[f"aligned:{align}"] += 1
+        if all_modes or en is None:
+            out.append(pie_dialogue(rec, turns, sents, method, dropped, **extra))
+        if en is None:
             continue
-        align_stats[f"aligned:{align}"] += 1
-        n_user = sum(r == "user" for r, _ in turns)
-        modes = [m for m in EN_MODES if m != "mixed" or n_user >= 2]
-        for mode in modes if all_modes else [modes[_pick(rec["id"] + "|mode", len(modes))]]:
-            out.append(en_dialogue(rec, turns, en, sents, mode, method, align, dropped, **extra))
+        k = len(turns) // 2
+        if all_modes:
+            n_user = sum(r == "user" for r, _ in turns)
+            for mode in (m for m in EN_MODES if m != "mixed" or n_user >= 2):
+                out.append(en_dialogue(rec, turns, en, sents, mode, method, align, dropped, **extra))
+            continue
+        for mode, (a, b) in mode_plan(rec["id"], k):
+            sub, win = turns[2 * a:2 * b], (None if (a, b) == (0, k) else (a, b))
+            if mode == "pie_pie":
+                out.append(pie_dialogue(rec, sub, sents, method, dropped, window=win, **extra))
+            else:
+                out.append(en_dialogue(rec, sub, en, sents, mode, method, align, dropped, window=win, **extra))
     return out
 
 
@@ -627,27 +682,27 @@ def demo_chats(seeds: list[dict], train_records: list[dict], lx, skipped: collec
 # ---------------------------------------------------------------- continuation
 
 
-def _texts(records: list[dict]) -> list[tuple[str, list[str], list[str], dict]]:
-    """(source id, PIE units, ASCII units, representative record) per text: a Tier 1 work's lines in line
-    order form one text; every other record is its own text."""
+def _grouped(records: list[dict]):
+    """(source id, records) per translation text: a Tier 1 work's numbered lines in line order form one text
+    (an item may join consecutive lines), every other record is its own."""
     works: dict[str, list[dict]] = {}
-    out: list = []
+    order: list = []
     for r in records:
         if r.get("tier") == 1 and r.get("line_no") is not None and r.get("work_id"):
             if r["work_id"] not in works:
                 works[r["work_id"]] = []
-                out.append(("work", r["work_id"]))
+                order.append(("work", r["work_id"]))
             works[r["work_id"]].append(r)
         else:
-            out.append(("rec", r))
-    res = []
-    for kind, v in out:
-        if kind == "work":
-            lines = sorted(works[v], key=lambda r: r["line_no"])
-            res.append((v, [r["pie"] for r in lines], [r["pie_ascii"] for r in lines], lines[0]))
-        else:
-            res.append((v["id"], [v["pie"]], [v["pie_ascii"]], v))
-    return res
+            order.append(("rec", r))
+    for kind, v in order:
+        yield (v, sorted(works[v], key=lambda r: r["line_no"])) if kind == "work" else (v["id"], [v])
+
+
+def _texts(records: list[dict]) -> list[tuple[str, list[str], list[str], dict]]:
+    """(source id, PIE units, ASCII units, representative record) per text (_grouped: a Tier 1 work's lines in
+    line order form one text; every other record is its own text)."""
+    return [(sid, [r["pie"] for r in rs], [r["pie_ascii"] for r in rs], rs[0]) for sid, rs in _grouped(records)]
 
 
 def continuation_chats(records: list[dict]) -> list[dict]:
@@ -666,6 +721,143 @@ def continuation_chats(records: list[dict]) -> list[dict]:
         out.append({"messages": _msgs(system, ("user", user), ("assistant", " ".join(parts[k:]))),
                     "meta": _meta("continuation", sid, rec, template=i, opening_units=k, units=len(parts),
                                   seen_in_train=rec.get("seen_in_train") if len(units) == 1 else None)})
+    return out
+
+
+# ---------------------------------------------------------------- translator (translate_app)
+
+APP_SYSTEM = "Translate English into Proto-Indo-European. Give the PIE, then a word-by-word gloss."
+APP_INVERSE_SYSTEM = "Translate Proto-Indo-European into English. Give the English, then a word-by-word gloss."
+APP_CHUNK = (1, 1, 2, 3)        # sentences per item, by crc32: half sentence-level, half short paragraphs
+APP_INVERSE_EVERY = 5           # one item in five (crc32) is the inverse PIE -> English mode
+APP_SHORT = 3                   # an unaligned record is one item when it has at most this many sentences
+
+
+def app_format(pie: str, gloss: str | None, notes: str | None = None) -> str:
+    """The translator's assistant turn (export/README.md "Translator format"): `PIE: ...`, `Gloss: ...`, then
+    an optional `Notes: ...`, one field per line, in that order. parse_app inverts it."""
+    return "\n".join([f"PIE: {pie}"] + ([f"Gloss: {gloss}"] if gloss else []) + ([f"Notes: {notes}"] if notes else []))
+
+
+def app_inverse_format(english: str, gloss: str | None) -> str:
+    return "\n".join([f"English: {english}"] + ([f"Gloss: {gloss}"] if gloss else []))
+
+
+APP_FIELDS = ("PIE", "English", "Gloss", "Notes")
+
+
+def parse_app(text: str) -> dict[str, str]:
+    """{"PIE": ..., "Gloss": ..., "Notes": ...} (or "English" for the inverse) from a translator turn; a line
+    that starts no field continues the previous one."""
+    out: dict[str, str] = {}
+    last = None
+    for line in text.splitlines():
+        m = re.match(r"(PIE|English|Gloss|Notes): ?(.*)", line)
+        if m:
+            last = m[1]
+            out[last] = m[2].strip()
+        elif last and line.strip():
+            out[last] += " " + line.strip()
+    return out
+
+
+def _coined_note(toks: list[dict]) -> str | None:
+    """Notes for the coined words of an item: modern coinages (Tier 3b neologisms) and project reconstructions."""
+    neo = list(dict.fromkeys(t["form"] for t in toks if t.get("coined") == "neologism"))
+    proj = list(dict.fromkeys(t["form"] for t in toks if t.get("coined") and t.get("coined") != "neologism"))
+    parts = []
+    if neo:
+        parts.append(f"{', '.join(neo)}: {'a modern coinage' if len(neo) == 1 else 'modern coinages'} "
+                     "built from inherited roots.")
+    if proj:
+        parts.append(f"{', '.join(proj)}: {'a project reconstruction' if len(proj) == 1 else 'project reconstructions'}"
+                     ", not a standard handbook form.")
+    return " ".join(parts) or None
+
+
+def _app_units(rec: dict) -> tuple[list[tuple[str, str, str | None, list[dict]]] | None, str]:
+    """(PIE, English, gloss or None, tokens) per sentence of a record, or (None, why). The gloss and tokens are
+    sliced by each sentence's word count (sentences() keeps every word), only when the record's gloss (and its
+    tokens) have exactly one entry per PIE word; otherwise the gloss is left out, never guessed."""
+    pie = sentences(rec["pie"])
+    en, how = align_english(rec)
+    if en is None:
+        if len(pie) > APP_SHORT:
+            return None, f"unaligned_long:{how}"
+        pie, en = [" ".join(pie)], [_clean_en(" ".join((rec.get("english") or "").split()))]
+    words = [len(x.split()) for x in pie]
+    gw = (rec.get("gloss") or "").split()
+    toks = rec.get("tokens") or []
+    gl = toks_ok = None
+    if gw and len(gw) == sum(words):
+        gl = gw
+    if len(toks) == sum(words):
+        toks_ok = toks
+    out, i = [], 0
+    for p, e, n in zip(pie, en, words):
+        out.append((p, e, " ".join(gl[i:i + n]) if gl else None, toks_ok[i:i + n] if toks_ok else []))
+        i += n
+    return out, how if gl or not gw else f"{how}:gloss_mismatch"
+
+
+def app_chats(records: list[dict], stats: collections.Counter, tasks: dict[str, dict] | None = None,
+              inverse: bool = True) -> list[dict]:
+    """translate_app: English in, `PIE:` / `Gloss:` / `Notes:` out (app_format), from every record with English.
+
+    Each text's sentences (a Tier 1 work: its lines) are partitioned into items of 1-3 sentences (APP_CHUNK, by
+    crc32), so every sentence is in exactly one item: sentence-level and short-paragraph items. A record whose
+    English does not align sentence by sentence is one item when it is short (APP_SHORT), else skipped. One
+    item in APP_INVERSE_EVERY is the inverse mode (PIE in, `English:` / `Gloss:` out) when `inverse`. The gloss
+    is the gloss task's own (the record's gloss, sliced per sentence); a record without one (Tier 1) gets no
+    Gloss line (meta.gloss_reference false). `tasks`: source id -> its translate_en_pie task, whose acceptable
+    alternatives and token variants an item of the whole record (or the matching words) carries for scoring."""
+    tasks = tasks or {}
+    out = []
+    for sid, recs in _grouped(records):
+        units: list[tuple[str, str, str | None, list[dict], dict]] = []
+        for r in recs:
+            if not r.get("english"):
+                stats["no_english"] += 1
+                continue
+            u, how = _app_units(r)
+            if u is None:
+                stats[how] += 1
+                continue
+            if how.endswith("gloss_mismatch"):
+                stats["gloss_mismatch"] += 1
+            units += [(*x, r) for x in u]
+        pos = 0
+        while pos < len(units):
+            n = min(APP_CHUNK[_pick(f"{sid}|app|{pos}", len(APP_CHUNK))], len(units) - pos)
+            chunk = units[pos:pos + n]
+            rs = list(dict.fromkeys(id(x[4]) for x in chunk))
+            rec = chunk[0][4]
+            src = rec["id"] if len(rs) == 1 else sid
+            pie = " ".join(x[0] for x in chunk)
+            eng = " ".join(x[1] for x in chunk)
+            has_gloss = all(x[2] for x in chunk)
+            gloss = " ".join(x[2] for x in chunk) if has_gloss else None
+            toks = [t for x in chunk for t in x[3]]
+            mode = "pie_en" if inverse and _pick(f"{sid}|inv|{pos}", APP_INVERSE_EVERY) == 0 else "en_pie"
+            whole = len(rs) == 1 and n == len([u for u in units if u[4] is rec])
+            if mode == "en_pie":
+                msgs = _msgs(APP_SYSTEM, ("user", eng), ("assistant", app_format(pie, gloss, _coined_note(toks))))
+            else:
+                msgs = _msgs(APP_INVERSE_SYSTEM, ("user", pie), ("assistant", app_inverse_format(eng, gloss)))
+            t = tasks.get(rec["id"]) or {}
+            extra = {"acceptable": t.get("acceptable") if whole and mode == "en_pie" else None}
+            tv = t.get("token_variants")
+            if mode == "en_pie" and len(rs) == 1 and tv and len(tv) == len(rec["pie"].split()):
+                start = sum(len(x[0].split()) for x in units[:pos] if x[4] is rec)
+                extra["token_variants"] = tv[start:start + len(pie.split())]
+            seen = any(units[pos + j][4].get("seen_in_train") for j in range(n)) or None
+            ns = len(sentences(pie))
+            unit = "sentence" if ns == 1 else "paragraph"
+            meta = _meta("translate_app", src, rec, mode=mode, unit=unit, sentences=ns, gloss_reference=has_gloss, style=t.get("style"), seen_in_train=seen,
+                         accent=t.get("accent"), **extra)
+            out.append({"messages": msgs, "meta": meta})
+            stats[f"{mode}:{unit}"] += 1
+            pos += n
     return out
 
 
@@ -696,6 +888,28 @@ def _content(ex: dict, role: str) -> str:
     return "\n".join(m["content"] for m in ex["messages"] if m["role"] == role)
 
 
+_FIELD = re.compile(r"^(?:PIE|English|Gloss|Notes): ")
+
+
+def _lines(text: str) -> list[str]:
+    """A message's lines without a translator or gloss-line field label (`PIE: `, `English: `, ...), so n-grams
+    never bridge a field."""
+    return [_FIELD.sub("", x) for x in text.splitlines()]
+
+
+def assistant_pie(ex: dict) -> str | None:
+    """The PIE an example's assistant turns say, or None when they say English or grammar: the PIE before an
+    `English:` line (en_pie_gloss, demo_chat), the `PIE:` field (translate_app), the whole turn for the other
+    PIE-output kinds."""
+    m = ex["meta"]
+    if m["task"] in PIE_OUT_KINDS or (m["task"] == "translate_app" and m.get("mode") == "en_pie"):
+        turns = [x["content"] for x in ex["messages"] if x["role"] == "assistant"]
+        if m["task"] == "translate_app":
+            return parse_app(turns[0]).get("PIE")
+        return " ".join(t.split("\nEnglish: ")[0] for t in turns)
+    return None
+
+
 def leakage_report(train: list[dict], eval_: list[dict], train_text: str) -> dict:
     """Eval items must not reappear in train, even under another prompt template.
 
@@ -703,31 +917,38 @@ def leakage_report(train: list[dict], eval_: list[dict], train_text: str) -> dic
     assistant) pair, or an eval assistant turn of >= 2 words, found verbatim in train; an eval assistant turn
     whose word 4-grams are >= 50% in train (PIE kinds only: English outputs share ordinary phrases). Eval
     items flagged seen_in_train (Tier 1 lines Tier 3 reuses on purpose, pie.export) are reported, not failed.
+    A translator item (translate_app en_pie) is measured on its `PIE:` field, and also fails when that PIE is
+    the whole PIE of a train assistant turn (assistant_pie); its inverse mode outputs English.
     Reported: the 4-gram overlap distribution per kind (all assistant turns, against every train message
     and the train plain text), and how many one-word answers (inflect, cognates_to_pie) occur as a word of
     the train plain text (a homograph, or a form shared across families)."""
     train_ids = {e["meta"]["source_id"] for e in train}
     train_pairs = {(_content(e, "user"), _content(e, "assistant")) for e in train}
     train_asst = {" ".join(_words(_content(e, "assistant"))) for e in train}
+    train_pie = {" ".join(_words(p)) for e in train if (p := assistant_pie(e))}
     grams: set = set()
     for e in train:
         for m in e["messages"]:
             if m["role"] != "system":
-                grams |= _ngrams(_words(m["content"]))
+                for line in _lines(m["content"]):
+                    grams |= _ngrams(_words(line))
     train_words: set = set()
     for para in train_text.split("\n\n"):
         ws = _words(para)
         grams |= _ngrams(ws)
         train_words.update(ws)
-    english_out = {"translate_pie_en"}
+    english_out = {"translate_pie_en", "translate_app/pie_en"}
     per_kind: dict[str, dict] = {}
     failures, flagged = [], []
     for e in eval_:
         m, a = e["meta"], _content(e, "assistant")
+        kind = f"{m['task']}/{m['mode']}" if m["task"] == "translate_app" else m["task"]
         ws = _words(a)
-        g = _ngrams(ws)
+        # a translator turn's overlap is its PIE (an English gloss shares ordinary words)
+        pie = parse_app(a).get("PIE") if kind == "translate_app/en_pie" else None
+        g = _ngrams(_words(pie)) if pie is not None else _ngrams(ws)
         share = len(g & grams) / len(g) if g else None
-        k = per_kind.setdefault(m["task"], {"n": 0, "with_ngrams": 0, "mean_overlap": 0.0, "max_overlap": 0.0,
+        k = per_kind.setdefault(kind, {"n": 0, "with_ngrams": 0, "mean_overlap": 0.0, "max_overlap": 0.0,
                                             "any_overlap": 0, "single_word_in_train_text": 0})
         k["n"] += 1
         k["single_word_in_train_text"] += len(ws) == 1 and ws[0] in train_words
@@ -743,7 +964,9 @@ def leakage_report(train: list[dict], eval_: list[dict], train_text: str) -> dic
             why.append("exact pair in train")
         if len(ws) >= 2 and " ".join(ws) in train_asst:
             why.append("assistant turn verbatim in train")
-        if share is not None and share >= 0.5 and m["task"] not in english_out:
+        if pie is not None and len(_words(pie)) >= 2 and " ".join(_words(pie)) in train_pie:
+            why.append("PIE verbatim in a train assistant turn")
+        if share is not None and share >= 0.5 and kind not in english_out:
             why.append(f"4-gram overlap {share:.2f}")
         if why:
             (flagged if m.get("seen_in_train") else failures).append({"source_id": m["source_id"],
@@ -754,6 +977,115 @@ def leakage_report(train: list[dict], eval_: list[dict], train_text: str) -> dic
         k["max_overlap"] = round(k["max_overlap"], 4)
     return {"ngram": NGRAM, "per_kind": per_kind, "failures": failures,
             "flagged_seen_in_train": flagged, "ok": not failures}
+
+
+DIALOGUE_KINDS = ("pie_dialogue", "en_dialogue")
+DEDUP_CAP = 2          # an assistant turn of a dialogue record is in at most this many dialogue-mode examples
+
+
+def self_overlap(train: list[dict]) -> dict:
+    """How often the same PIE is trained on as an assistant turn (the self-overlap of the modes).
+
+    dialogue_turns: per (record, assistant turn) of the dialogue kinds, the number of dialogue-mode examples
+    (pie_pie and the English modes) that have it; mode_plan caps it at DEDUP_CAP. all_kinds: per PIE sentence
+    (normalized text) of every PIE-output kind (assistant_pie), the number of train examples whose assistant
+    turns contain it (a single-sentence record is a translate_en_pie output and a translator item: 2 by
+    design; a formula many records share counts once per example). ngram4: the same over word 4-grams."""
+    turn = collections.Counter()
+    sent: dict[str, set] = collections.defaultdict(set)
+    gram: dict[tuple, set] = collections.defaultdict(set)
+    for n, e in enumerate(train):
+        m = e["meta"]
+        if m["task"] in DIALOGUE_KINDS:
+            for x in {x["content"].split("\nEnglish: ")[0] for x in e["messages"] if x["role"] == "assistant"}:
+                turn[(m["source_id"], x)] += 1
+        p = assistant_pie(e)
+        if p:
+            for x in sentences(p):
+                sent[" ".join(_words(x))].add(n)
+            for g in _ngrams(_words(p)):
+                gram[g].add(n)
+
+    def dist(counts) -> dict:
+        c = list(counts)
+        h = collections.Counter(min(x, 4) for x in c)
+        return {"items": len(c), "max": max(c, default=0), "mean": round(sum(c) / len(c), 4) if c else 0.0,
+                "histogram": {("4+" if k == 4 else str(k)): v for k, v in sorted(h.items())},
+                f"over_{DEDUP_CAP}": sum(x > DEDUP_CAP for x in c)}
+    return {"cap": DEDUP_CAP, "dialogue_turns": dist(turn.values()),
+            "all_kinds_sentences": dist(len(v) for v in sent.values()),
+            "all_kinds_ngram4": dist(len(v) for v in gram.values())}
+
+
+ENGLISH_INPUT = ("translate_en_pie", "translate_app/en_pie", "en_dialogue", "demo_chat")
+MIX_GROUPS = {
+    "english_input": ENGLISH_INPUT,
+    "pie_to_english": ("translate_pie_en", "translate_app/pie_en"),
+    "pie_only_chat": ("pie_dialogue", "continuation"),
+    "grammar": ("gloss", "inflect", "paradigm", "cognates_to_pie"),
+}
+# the recommended sampling mix (export/README.md "Mix"): share of training examples per group
+TARGET_MIX = {"english_input": 0.60, "pie_to_english": 0.10, "pie_only_chat": 0.05, "grammar": 0.25}
+
+
+def mix_key(ex: dict) -> str:
+    m = ex["meta"]
+    return f"{m['task']}/{m['mode']}" if m["task"] == "translate_app" else m["task"]
+
+
+def mix_group(ex: dict) -> str:
+    k = mix_key(ex)
+    return next(g for g, ks in MIX_GROUPS.items() if k in ks)
+
+
+def mix_table(exs: list[dict], tokens: dict | None = None) -> dict:
+    """Examples (and content tokens, from token_stats' per-key counts) per mix group, with shares; the
+    English-input share; the Tier 3b (neologism: true) share of the chat examples."""
+    ex = collections.Counter(mix_group(e) for e in exs)
+    out: dict = {"groups": {}}
+    tok_by_group = collections.Counter()
+    if tokens:
+        for k, v in tokens.items():
+            g = next((g for g, ks in MIX_GROUPS.items() if k in ks), None)
+            if g and "tokens" in v:
+                tok_by_group[g] += v["tokens"]
+    tt = sum(tok_by_group.values())
+    for g in MIX_GROUPS:
+        row = {"examples": ex[g], "share": round(ex[g] / len(exs), 4) if exs else 0.0}
+        if tt:
+            row["tokens"] = tok_by_group[g]
+            row["token_share"] = round(tok_by_group[g] / tt, 4)
+        # the per-example sampling weight that reaches the target mix (TARGET_MIX) from this split's counts
+        row["target_share"] = TARGET_MIX[g]
+        row["sampling_weight"] = round(TARGET_MIX[g] / row["share"], 3) if row["share"] else None
+        out["groups"][g] = row
+    out["english_input_share"] = out["groups"]["english_input"]["share"]
+    if tt:
+        out["english_input_token_share"] = out["groups"]["english_input"]["token_share"]
+    conv = [e for e in exs if mix_group(e) != "grammar"]
+    out["english_input_share_of_conversation"] = round(
+        sum(mix_group(e) == "english_input" for e in conv) / len(conv), 4) if conv else 0.0
+    neo = sum(e["meta"].get("neologism") is True for e in exs)
+    out["tier3b_examples"] = neo
+    out["tier3b_example_share"] = round(neo / len(exs), 4) if exs else 0.0
+    return out
+
+
+def select_mix(train: list[dict]) -> list[dict]:
+    """chat/train_mix.jsonl: a subset of train in the TARGET_MIX proportions, without repeating an example (so
+    the self-overlap cap holds). Every English-input example is kept and sets the size (english_input is
+    TARGET_MIX's share of it); every other group keeps that size times its target share (or all it has), the
+    ones with the lowest crc32 of their content, in train order."""
+    by = collections.defaultdict(list)
+    for e in train:
+        by[mix_group(e)].append(e)
+    total = len(by["english_input"]) / TARGET_MIX["english_input"]
+    keep: set[int] = set()
+    for g, t in TARGET_MIX.items():
+        n = min(len(by[g]), round(total * t))
+        ranked = sorted(by[g], key=lambda e: zlib.crc32(json.dumps(e["messages"], ensure_ascii=False).encode()))
+        keep |= {id(e) for e in ranked[:n]}
+    return [e for e in train if id(e) in keep]
 
 
 def neologism_share(records: list[dict]) -> dict:
@@ -781,19 +1113,34 @@ def token_stats(chat: dict[str, list[dict]], texts: dict[str, str], tokenizer: s
         kinds: dict[str, dict] = {}
         allc = [m["content"] for e in exs for m in e["messages"]]
         lens = iter(enc(allc)) if enc else None
+        by_key: dict[str, dict] = {}
+        neo = {"examples": 0, "words": 0, "tokens": 0}
         for e in exs:
-            k = kinds.setdefault(e["meta"]["task"], {"examples": 0, "words": 0, "tokens": 0, "assistant_tokens": 0})
-            k["examples"] += 1
+            new = lambda: {"examples": 0, "words": 0, "tokens": 0, "assistant_tokens": 0}
+            ks = [kinds.setdefault(e["meta"]["task"], new())]
+            if mix_key(e) != e["meta"]["task"]:
+                ks.append(by_key.setdefault(mix_key(e), new()))
+            is_neo = e["meta"].get("neologism") is True
+            for k in ks:
+                k["examples"] += 1
+            neo["examples"] += is_neo
             for m in e["messages"]:
-                k["words"] += len(m["content"].split())
-                if lens:
-                    n = next(lens)
+                w = len(m["content"].split())
+                n = next(lens) if lens else 0
+                for k in ks:
+                    k["words"] += w
                     k["tokens"] += n
                     k["assistant_tokens"] += n if m["role"] == "assistant" else 0
+                if is_neo:
+                    neo["words"] += w
+                    neo["tokens"] += n
         if not enc:
-            for k in kinds.values():
+            for k in [*kinds.values(), *by_key.values()]:
                 k.pop("tokens"), k.pop("assistant_tokens")
+            neo.pop("tokens")
         out[split] = dict(sorted(kinds.items()))
+        out[f"{split}_by_mode"] = dict(sorted(by_key.items()))
+        out[f"{split}_tier3b"] = neo
     for name, txt in texts.items():
         paras = [p for p in txt.split("\n\n") if p.strip()]
         words = sum(len(p.split()) for p in paras)
@@ -819,6 +1166,7 @@ def build_chat(d: dict, lx=None, seeds: list[dict] | None = None) -> dict:
     skipped = {"train": collections.Counter(), "eval": collections.Counter()}
     align = {"train": collections.Counter(), "eval": collections.Counter()}
     demo_skipped: collections.Counter = collections.Counter()
+    app = {"train": collections.Counter(), "eval": collections.Counter()}
     chat = {}
     for split in ("train", "eval"):
         tasks, records = d[f"{split}_tasks"], d[f"{split}_records"]
@@ -826,6 +1174,8 @@ def build_chat(d: dict, lx=None, seeds: list[dict] | None = None) -> dict:
         exs += paradigm_chats(lx, tasks)
         exs += dialogue_chats(records, skipped[split], align[split])
         exs += continuation_chats(records)
+        en_tasks = {t["source_id"]: t for t in tasks if t["task"] == "translate_en_pie"}
+        exs += app_chats(records, app[split], en_tasks)
         if split == "train":
             exs += demo_chats(seeds, records, lx, demo_skipped)
         else:      # the conversational eval: the reserved dialogue records, in every mode
@@ -843,7 +1193,8 @@ def build_chat(d: dict, lx=None, seeds: list[dict] | None = None) -> dict:
     if neo["exceeded"]:
         print(f"WARNING: Tier 3b neologism share {neo['share']:.1%} of training words exceeds the "
               f"{NEOLOGISM_CAP:.0%} cap (PLAN.md)", file=sys.stderr)
-    return {"chat": chat, "text": text, "leakage": leak, "neologism": neo,
+    return {"chat": chat, "text": text, "leakage": leak, "neologism": neo, "self_overlap": self_overlap(chat["train"]),
+            "translate_app": {k: dict(sorted(v.items())) for k, v in app.items()},
             "dialogue_skipped": {k: dict(v) for k, v in skipped.items()},
             "alignment": {k: dict(sorted(v.items())) for k, v in align.items()},
             "demo_seeds": {"seeds": len(seeds), "used": sum(e["meta"]["task"] == "demo_chat" for e in chat["train"]),
@@ -857,8 +1208,9 @@ def write_chat(d: dict, out: Path, tokenizer: str | None = None, provenance: dic
     """Write export/chat/{train,eval}.jsonl + summary.json, export/text/ and export/text-ascii/."""
     c = build_chat(d, lx)
     (out / "chat").mkdir(parents=True, exist_ok=True)
-    for split, exs in c["chat"].items():
-        (out / "chat" / f"{split}.jsonl").write_text(
+    mix = select_mix(c["chat"]["train"])
+    for name, exs in (*c["chat"].items(), ("train_mix", mix)):
+        (out / "chat" / f"{name}.jsonl").write_text(
             "".join(json.dumps(e, ensure_ascii=False) + "\n" for e in exs), "utf-8")
     texts = {}
     for sub, i in (("text", 0), ("text-ascii", 1)):
@@ -881,8 +1233,12 @@ def write_chat(d: dict, out: Path, tokenizer: str | None = None, provenance: dic
         "modes": {s: dict(sorted(collections.Counter(f"{e['meta']['task']}/{e['meta']['mode']}" for e in v
                                                      if e["meta"].get("mode")).items()))
                   for s, v in c["chat"].items()},
-        "english_input_conversations": {s: sum(e["meta"].get("mode", "pie_pie") != "pie_pie" for e in v)
+        "english_input_conversations": {s: sum(e["meta"]["task"] in ("en_dialogue", "demo_chat") for e in v)
                                         for s, v in c["chat"].items()},
+        # translate_app items per mode and unit, and the records it could not use (no English; a long record
+        # whose English does not align sentence by sentence; a gloss without one word per PIE word)
+        "translate_app": c["translate_app"],
+        "self_overlap": c["self_overlap"],
         "demo_seeds": c["demo_seeds"],
         "chat_eval": {**c["chat_eval"], "examples": dict(sorted(collections.Counter(
             f"{e['meta']['task']}/{e['meta']['mode']}" for e in c["chat"]["eval"] if e["meta"].get("chat_eval")).items()))},
@@ -890,6 +1246,11 @@ def write_chat(d: dict, out: Path, tokenizer: str | None = None, provenance: dic
         "leakage": c["leakage"],
         "tokens": token_stats(c["chat"], texts, tokenizer),
     }
+    tk = summary["tokens"]
+    summary["mix"] = {s: mix_table(v, {**tk.get(s, {}), **tk.get(f"{s}_by_mode", {})}) for s, v in c["chat"].items()}
+    tm = token_stats({"train_mix": mix}, {}, tokenizer)
+    summary["mix"]["train_mix"] = {**mix_table(mix, {**tm["train_mix"], **tm["train_mix_by_mode"]}), "examples": len(mix),
+                                   "examples_by_kind": dict(sorted(collections.Counter(mix_key(e) for e in mix).items()))}
     for name in ("train", "eval"):
         ta, tu = summary["tokens"].get(f"text-ascii/{name}.txt", {}), summary["tokens"].get(f"text/{name}.txt", {})
         if "tokens_per_word" in tu:
