@@ -171,14 +171,14 @@ train is smaller for now):
 
 | group | target | `train.jsonl` examples | share | tokens | token share | `train_mix.jsonl` examples | share |
 |---|---|---|---|---|---|---|---|
-| english_input | 60% | 4,136 | 27.8% | 542,640 | 30.0% | 4,136 | 60.2% |
-| pie_to_english | 10% | 1,799 | 12.1% | 287,581 | 15.9% | 689 | 10.0% |
-| pie_only_chat | 5% | 320 | 2.1% | 73,857 | 4.1% | 320 | 4.7% |
-| grammar | 25% | 8,648 | 58.0% | 903,395 | 50.0% | 1,723 | 25.1% |
-| total | | 14,903 | | 1,807,473 | | 6,868 | |
+| english_input | 60% | 4,268 | 28.3% | 545,284 | 30.1% | 4,268 | 60.3% |
+| pie_to_english | 10% | 1,842 | 12.2% | 289,467 | 16.0% | 711 | 10.0% |
+| pie_only_chat | 5% | 320 | 2.1% | 73,857 | 4.1% | 320 | 4.5% |
+| grammar | 25% | 8,648 | 57.4% | 903,395 | 49.9% | 1,778 | 25.1% |
+| total | | 15,078 | | 1,812,003 | | 7,077 | |
 
-By tokens, English input is 59.9% of `train_mix.jsonl` (542,640 of 906,638). Of the conversation and
-translation examples (all but grammar), English input is 66% in `train.jsonl` and 80% in `train_mix.jsonl`.
+By tokens, English input is 59.5% of `train_mix.jsonl` (545,284 of 916,243). Of the conversation and
+translation examples (all but grammar), English input is 66% in `train.jsonl` and 81% in `train_mix.jsonl`.
 
 **Self-overlap.** `summary.json` `self_overlap`: per assistant turn of a dialogue record, the number of
 dialogue-mode examples that train on it (cap 2, `DEDUP_CAP`; the tests fail above it); and, reported only,
