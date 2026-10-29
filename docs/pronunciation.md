@@ -160,7 +160,7 @@ Named presets (`CONVENTIONS`):
 
 Any combination can be built with `Convention(laryngeals="fricative"|"pharyngeal"|"voiceless", generic=None|"<ipa>", dorsals="palatal"|"fronted"|"uvular", vocalized="schwa"|"colored"|"syllabic", coloring=True|False)`.
 
-**X-SAMPA** (`to_xsampa`) maps: χ `X`, ħ `X\`, ɣ `G`, ʕ `?\`, ʔ `?`, c `c`, ɟ `J\`, q `q`, ɢ `G\`, ə `@`, ɐ `6`, ɵ `8`, ʷ `_w`, ʲ `'`, ʱ `_t` (breathy voice), ː `:`, syllabic `=`, high tone `_H` (after length: `e:_H`), ˈ `"`, ‖ `||`. Kirshenbaum and eSpeak `[[…]]` phoneme names are voice-specific in eSpeak-NG and are not generated here. They are left to the TTS integration.
+**X-SAMPA** (`to_xsampa`) maps: χ `X`, ħ `X\`, ɣ `G`, ʕ `?\`, ʔ `?`, c `c`, ɟ `J\`, q `q`, ɢ `G\`, ə `@`, ɐ `6`, ɵ `8`, ʷ `_w`, ʲ `'`, ʱ `_t` (breathy voice), ː `:`, syllabic `=`, high tone `_H` (after length: `e:_H`), ˈ `"`, ‖ `||`. Kirshenbaum and eSpeak `[[…]]` phoneme names are voice-specific in eSpeak-NG and are not generated here. The eSpeak mapping for the PIE voice is in `tts/espeak/mapping.json` (§11).
 
 **CLI** (`scripts/to_ipa.py`):
 - `convert [--ascii] [--xsampa] [--tone tone|stress|none] [--convention P] TEXT…` reads stdin when no text is given.
@@ -180,3 +180,75 @@ Any combination can be built with `Convention(laryngeals="fricative"|"pharyngeal
 | ə | 2,944 | | ɟ | 2,235 |
 
 They are followed by ɣʷ 2,180, n̩ 2,092, r̩ 1,970, m̩ 1,783, l̩ 1,265, ɟʱ 1,202, ɡʱ 1,045 and ɡʷʱ 918. The high-tone acute (U+0301) and the syllabic mark (U+0329) are the two combining marks. Under `pharyngeal`, [h] becomes [ʔ], χ becomes ħ and ɣʷ becomes ʕʷ, with the same counts.
+
+## 11. Speech
+
+Code: `pie/speak.py` (API), `scripts/speak.py` (CLI), `scripts/speech_pack.py` (listening pack), `tts/espeak/` (eSpeak voice), `tts/kokoro/vocab.json` (Kokoro's symbol set). The research behind the choices is `docs/research/tts-options.md`. Nobody has judged the audio by ear yet; listen to the pack (§11.4) before the demo.
+
+### 11.1 Backends
+
+| Backend | Engine | Accent | Character |
+|---|---|---|---|
+| `espeak` | eSpeak-NG 1.52.0, custom `pie` phoneme table (Hindi base + Arabic ħ ʕ + level tones) | `tone=True`: voice `pie/pie-tone`, high level tone (`5`) on the accented syllable, low (`1`) elsewhere; `tone="stress"`/`False`: voice `pie/pie`, `'` stress | Robotic, segmentally right: χ ɣ ʔ ħ ʕ c ɟ, murmured stops, syllabic resonants, length |
+| `kokoro` | Kokoro-82M v1.0, local PyTorch | `pitch=True` (default with `tone=True`): the predicted F0 is flattened to 0.92 × median and raised to 1.3 × median on the accented vowel (and its ː); `pitch=False` ("raw"): ˈ before the accented syllable | Natural; Hindi voices `hf_alpha` (default), `hf_beta`, `hm_omega`, `hm_psi` |
+| `kokoro-remote` | Kokoro-FastAPI server, `POST /dev/generate_from_phonemes` | ˈ only (no F0 access on the server) | Same model; any server voice (Hindi, English `af_*`/`bm_*`, Italian `im_nicola`, …) |
+
+**Round trip (espeak).** eSpeak does not reject an unknown phoneme code: it silently drops the rest of the word (`[[H'eKw0s]]` is read as ħˈe). Every rendering is therefore read back with `espeak-ng --ipa` on the exact string sent and compared with the converter's IPA. The comparison ignores dots, stress and tone, reads eSpeak's ʰ after a voiced stop as ʱ, kw as kʷ, and a doubled r̩ l̩ m̩ n̩ ɐ ɵ as one (eSpeak prints a tone-bearing or long one twice). A mismatch raises `RoundTripError`, or with `strict=False` (`--no-strict`) prints a WARNING on stderr and warns. A second failure mode is also guarded: `[[…]]` input longer than about 750 characters is cut mid-word into a new clause that eSpeak reads as English text, so input goes to eSpeak in pieces of at most 400 characters.
+
+**Kokoro input.** Kokoro's vocab lacks ʱ ʷ ̩ ħ ʕ ɢ ɵ and the acute, and `KModel` drops unknown symbols silently. The converter IPA goes through one substitution map (`pie.speak.KOKORO_SUBST`) and every resulting symbol is checked against `tts/kokoro/vocab.json` (`UnsupportedPhone` otherwise):
+
+| Converter | Kokoro |
+|---|---|
+| ʷʱ → ʱʷ, then ʱ | ʰ (Kokoro's Hindi voices learned breathy stops as ʰ) |
+| ʷ | w (kʷ → kw) |
+| ħ, ʕ (pharyngeal preset) | χ, ɣ |
+| C̩ (r̩ l̩ m̩ n̩) | əC; the accent goes on ə |
+| ɢ (uvular dorsals), ɵ (colored vocalized h₃) | ɡ, o |
+| acute | F0 mask (`pitch=True`) or ˈ |
+| ‖, \| | end of chunk (`.`, synthesized separately, 0.3 s apart), `,` |
+
+### 11.2 Setup
+
+1. **eSpeak-NG** (Homebrew, required for `espeak`): `brew install espeak-ng` (1.52.0). Then build the PIE voice: `sh tts/espeak/build.sh`. It checks the installed version, clones the eSpeak-NG source at tag 1.52.0 (commit `4870adfa25b1a32b4361592f1be8a40337c58d6c`, needed for the phoneme sources, which Homebrew does not ship) into the gitignored `tts/espeak/build/`, copies the installed data there, adds `ph_pie` and the two voices, compiles with `--compile-phonemes` (must report 0 errors) and runs a smoke test. The system install is only read. `pie.speak` uses `tts/espeak/build/data` (override: `PIE_ESPEAK_DATA`).
+2. **Kokoro, local** (optional). `kokoro` 0.9.4 and `misaki` 0.9.4 require Python < 3.13, and the main env is 3.14, so the `kokoro` dependency group (exact pins: kokoro 0.9.4, misaki[en] 0.9.4, torch 2.15.0, transformers 5.21.0, huggingface-hub 2.3.0, numpy 2.5.4, loguru 0.7.3) goes into a separate env:
+   ```sh
+   UV_PROJECT_ENVIRONMENT=.venv-kokoro uv sync --python 3.12 --group kokoro --no-default-groups
+   UV_PROJECT_ENVIRONMENT=.venv-kokoro uv run --no-sync python -I scripts/speak.py --backend kokoro -o x.wav "deywós"
+   ```
+   The weights are not in git. On first use `pie.speak` downloads them from Hugging Face, pinned to revision `f3ff3571791e39611d31c381e3a41a3af07b4987` of `hexgrad/Kokoro-82M` (Apache-2.0), into the gitignored `tts/cache/hf/` (override: `PIE_KOKORO_CACHE`), and verifies each sha256:
+
+   | File (`https://huggingface.co/hexgrad/Kokoro-82M/resolve/f3ff3571791e39611d31c381e3a41a3af07b4987/<file>`) | Bytes | sha256 |
+   |---|---|---|
+   | `config.json` | 2,351 | `5abb01e2403b072bf03d04fde160443e209d7a0dad49a423be15196b9b43c17f` |
+   | `kokoro-v1_0.pth` | 327,212,226 | `496dba118d1a58f5f3db2efc88dbdc216e0483fc89fe6e47ee1f2c53f18ad1e4` |
+   | `voices/hf_alpha.pt` | 523,425 | `06906fe05746d13a79c5c01e21fd7233b05027221a933c9ada650f5aafc8f044` |
+   | `voices/hf_beta.pt` | 523,420 | `63c0a1a6272e98d43f4511bba40e30dd9c8ceaf5f39af869509b9f51a71c503e` |
+   | `voices/hm_omega.pt` | 523,425 | `b55f02a8e8483fffe0afa566e7d22ed8013acf47ad4f6bbee2795a840155703e` |
+   | `voices/hm_psi.pt` | 523,351 | `2f0f055cea4f1083f4ef127ece48d71606347f6557dbb961c0ca5740a2da485b` |
+
+   `tts/kokoro/vocab.json` is the `vocab` of that `config.json`.
+3. **Kokoro, remote** (optional): a Kokoro-FastAPI server. With `PIE_KOKORO_URL` set (e.g. `http://localhost:8880` through `ssh -N -L 8880:localhost:8880 erebus`), requests go there over HTTP. Otherwise they go through `ssh $PIE_KOKORO_SSH curl …` (default host `erebus`, port `PIE_KOKORO_PORT`, default 8880). Treat the server as production: the backend only posts to the TTS endpoint.
+
+### 11.3 Usage
+
+```python
+from pie.speak import speak, speak_ipa
+speak("h₂ówis h₁éḱwōs-kʷe", backend="espeak", out_wav="ovis.wav", convention="default", tone=True)
+speak("ǵʰimḗ", backend="kokoro", out_wav="g.wav", voice="hm_omega", pitch=True)
+speak_ipa("ʔés.ti", backend="kokoro-remote", out_wav="e.wav", voice="hf_alpha")   # IPA in
+```
+
+`speak` returns a `SpeechResult` with the IPA, the exact engine input and (espeak) the read-back. CLI: `uv run python -I scripts/speak.py [-o out.wav] [--backend B] [--voice V] [--tone tone|stress|none] [--convention P] [--ascii|--ipa] [--no-strict] [--no-pitch] [--play] [TEXT…]`. With no text it reads stdin, one utterance per line, joined by ‖. `--play` plays the wav with `afplay` (macOS). Exit status: 1 on a speech error (including a round-trip mismatch), 2 on bad input.
+
+### 11.4 Listening pack
+
+`scripts/speech_pack.py` renders a fixed set to `tts/samples/`: the wavs are gitignored, and `tts/samples/manifest.json` (committed) lists every clip with phrase id, source record, PIE, English, IPA, system, voice, exact engine input and wav path. The set has the openings of Schleicher's fable and "The King and the God" (Byrd 2013, three lines each), three Tier 3 hymn lines (b003, from its last approved release; no batch containing hymns is eligible at the moment) and the 11 minimal pairs of tts-options.md §2.4. It uses nine systems: eSpeak stress and tone, local Kokoro raw and pitch-patched, Kokoro-remote with `hf_alpha`, `hm_omega`, `bm_george` and `im_nicola`, and Piper `hi_IN-rohan-medium` (through the researcher's temporary venv; skipped when that is gone). Run it in the Kokoro env to get every system (`--systems` picks a subset).
+
+### 11.5 Known limits
+
+- **Hindi accent.** Both main engines speak through Hindi: eSpeak's `hi` base and Kokoro's Hindi voices give dental or retroflex-coloured t d and Hindi vowel colours. The eSpeak r is the base1 alveolar trill (`R`) rather than Hindi's tap. With the non-Hindi Kokoro voices, χ c ɟ and murmur were never trained.
+- **kʷ is k+w** in every engine (eSpeak has no labialized stops, Kokoro and Piper no ʷ), and ɡʷʱ is ɡʱ+w.
+- **Kokoro substitutions** (§11.1 table): no ħ ʕ (said χ ɣ), syllabic resonants as ə + resonant, ʱ as ʰ. The accent is an imposed F0 contour on the local backend and plain ˈ stress on the remote one.
+- **eSpeak conventions.** All three presets and the `fronted`, `colored`, `voiceless` and `generic` options are supported. `fronted` kʲ ɡʲ ɡʲʱ are said as the palatals c ɟ ɟʱ (§3.1: the same articulation). `dorsals="uvular"` (ɢ: no eSpeak table has a voiced uvular stop) and `vocalized="syllabic"` (χ̩ etc.) raise `UnsupportedPhone`.
+- **eSpeak stress.** In stress mode a word without an accent spoken alone still gets eSpeak's default stress. The tone voice's pitch range is narrow (about 80 → 98 Hz at default settings).
+- **Licences.** The eSpeak data is GPL-3.0 (the audio is not covered). Kokoro is Apache-2.0. Piper's code is GPL-3.0; the licence of the `hi_IN-rohan` data (IIT Madras IndicTTS) is unverified, so confirm it before any public use of Piper clips.
