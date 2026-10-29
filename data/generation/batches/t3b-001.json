@@ -5,9 +5,9 @@
  "accent_representation_tokens": 0,
  "accent_defect_tokens": 0,
  "reject_rate": 0.0,
- "distinct_roots": 40,
- "roots_per_sentence": 2.0,
- "distinct_lexemes": 63,
+ "distinct_roots": 42,
+ "roots_per_sentence": 2.1,
+ "distinct_lexemes": 62,
  "max_lexeme_uses": 6,
  "most_used": [
   [
@@ -33,9 +33,9 @@
  ],
  "dup_within": 0,
  "dup_across_batches": 0,
- "tokens": 290,
- "words_per_sentence": 13.9,
- "words_per_record": 13.9,
+ "tokens": 292,
+ "words_per_sentence": 14.0,
+ "words_per_record": 14.0,
  "meter_fit": null,
  "meter_near": null,
  "meter_exact": null,
@@ -43,9 +43,9 @@
  "formula_uses": 0,
  "warnings": 0,
  "neologism_tokens": {
-  "tokens": 64,
-  "share": 0.221,
-  "lexemes": 25
+  "tokens": 59,
+  "share": 0.202,
+  "lexemes": 23
  },
  "accent_unresolved": {
   "tokens": 0,
