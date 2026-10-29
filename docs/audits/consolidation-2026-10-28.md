@@ -525,3 +525,11 @@ pass (870f092), matching by plan. The classes:
   and tts files in the tree belong to other sessions and were not touched.
 - **Scratch files.** All `zz-t005-*` and `zz-t006-*` files were deleted (they were superseded by the committed t005/t006
   repairs).
+- **Full test suite** (before the test fix below): 3750 passed, 5 skipped, 2 failed, 14 errors.
+  - `test_shipped_migration` fails, as expected until the lead re-approves.
+  - `test_meter_exact_gate` failed because it read the live t023-0001 plan as its example of a failing charm, and that
+    plan has been exact since the t023 meter repair (bbe64b3). It now reads the pre-repair plan from
+    `tests/data/meter_gate_t023-0001.jsonl`, as bc388e3 did for t032-0002, and passes.
+  - The 14 `tests/test_export_chat.py` setup errors are `ValueError: Tier 3b neologism share 82.2% ... exceeds the 15%
+    cap`. With every Tier 3 release back at pending, almost all admitted training words are Tier 3b, so the cap check
+    trips. This should clear when the lead re-approves Tier 3.

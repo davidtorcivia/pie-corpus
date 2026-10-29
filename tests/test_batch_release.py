@@ -176,7 +176,9 @@ def test_meter_exact_gate(tmp_path, monkeypatch):
     assert r['meter_near']['share'] == r['meter_fit']['share'] == 1.0
     assert batch_eligibility(tmp_path, 'probe')['gate'] == 'PASS'
 
-    charm = _plan('t023', 't023-0001')               # six lines, 7-12 syllables, one exact
+    # t023-0001 as planned before its meter repair (bbe64b3): six lines, 7-10 syllables, one exact
+    root = Path(__file__).resolve().parents[1]
+    charm = json.loads((root / 'tests/data/meter_gate_t023-0001.jsonl').read_text('utf-8'))
     assert _produce(tmp_path, monkeypatch, [charm]) == 1
     r = _report(tmp_path)
     assert r['meter_fit']['share'] == 1.0 and r['meter_exact']['share'] < 0.9
