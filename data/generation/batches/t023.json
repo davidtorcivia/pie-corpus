@@ -27,45 +27,45 @@
    6
   ],
   [
-   "pie-lex-sneh1wr",
+   "pie-lex-soh2wl",
    6
   ]
  ],
  "dup_within": 0,
  "dup_across_batches": 0,
- "tokens": 977,
- "words_per_sentence": 22.85,
- "words_per_record": 22.85,
+ "tokens": 1009,
+ "words_per_sentence": 23.48,
+ "words_per_record": 23.48,
  "meter_fit": {
   "lines": 125,
-  "fit": 124,
-  "share": 0.992
+  "fit": 121,
+  "share": 0.968
  },
  "meter_near": {
   "lines": 125,
-  "near": 124,
-  "share": 0.992
+  "near": 121,
+  "share": 0.968
  },
  "meter_exact": {
   "lines": 125,
-  "exact": 121,
-  "share": 0.968
+  "exact": 114,
+  "share": 0.912
  },
  "meter_cadence": {
   "8": {
-   "lines": 71,
-   "cadence": 11,
+   "lines": 61,
+   "cadence": 9,
    "pattern": "LHLX",
-   "share": 0.155
+   "share": 0.148
   },
   "11": {
-   "lines": 50,
+   "lines": 53,
    "cadence": 2,
    "pattern": "HLHX",
-   "share": 0.04
+   "share": 0.038
   }
  },
- "formula_uses": 16,
+ "formula_uses": 17,
  "warnings": 9,
  "accent_unresolved": {
   "tokens": 0,

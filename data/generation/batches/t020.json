@@ -2,7 +2,7 @@
  "plans": 40,
  "realized": 40,
  "exact_pass": 40,
- "accent_representation_tokens": 4,
+ "accent_representation_tokens": 5,
  "accent_defect_tokens": 11,
  "reject_rate": 0.0,
  "distinct_roots": 135,
@@ -33,36 +33,36 @@
  ],
  "dup_within": 0,
  "dup_across_batches": 0,
- "tokens": 2184,
- "words_per_sentence": 50.48,
- "words_per_record": 50.48,
+ "tokens": 2190,
+ "words_per_sentence": 50.6,
+ "words_per_record": 50.6,
  "meter_fit": {
   "lines": 60,
-  "fit": 60,
-  "share": 1.0
+  "fit": 57,
+  "share": 0.95
  },
  "meter_near": {
   "lines": 60,
-  "near": 60,
-  "share": 1.0
+  "near": 57,
+  "share": 0.95
  },
  "meter_exact": {
   "lines": 60,
-  "exact": 60,
-  "share": 1.0
+  "exact": 57,
+  "share": 0.95
  },
  "meter_cadence": {
   "8": {
-   "lines": 32,
+   "lines": 31,
    "cadence": 3,
    "pattern": "LHLX",
-   "share": 0.094
+   "share": 0.097
   },
   "11": {
-   "lines": 28,
-   "cadence": 2,
+   "lines": 26,
+   "cadence": 3,
    "pattern": "HLHX",
-   "share": 0.071
+   "share": 0.115
   }
  },
  "formula_uses": 16,

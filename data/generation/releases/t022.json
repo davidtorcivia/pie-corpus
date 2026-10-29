@@ -2,19 +2,14 @@
  "schema_version": 1,
  "batch": "t022",
  "sha256": {
-  "records": "87d66fd6c92931b2d0aa0b21c20378cc900529aefd746684501e2c25d239301c",
+  "records": "8a2648cab30df3a549db8fd757694db1bdc5396308bf56496d018f985d754eff",
   "plans": "8dd2153992e96510103811faa570fb9d131e0e2316ff86ee66bc14d03a7edcf9",
-  "gate_report": "6cb2fcaf482248bc4f3a323920110103accab67db213aa9743ab5cf107adf971"
+  "gate_report": "f403986248d6a376f65b0aec9fdf1dc8c73e9a3f1d695d94a10d39019170dde8"
  },
  "review": {
   "required": true,
   "status": "pending",
-  "evidence": [
-   "data/generation/batches/t022.json",
-   "docs/STATUS.md:112-115",
-   "docs/audits/review-2026-10-25-rollout-hittite.md#2-some-new-behavior-has-not-reached-the-published-artifacts",
-   "docs/audits/eng-01-release-migration.md#finding-2-targeted-artifact-refresh"
-  ],
-  "rationale": "Explicitly unreviewed, redo open; gate FAIL on ordinary lexeme cap (18 > 8). 2026-10-25 finding 2: explicitly renewed content binding after targeted re-realization and byte comparison; metadata-only num_fallback=du->pl change, surface forms unchanged. Every other record byte, source plan, and gate report is unchanged. Review remains pending; this is not release approval."
+  "evidence": [],
+  "rationale": "Awaiting review."
  }
 }

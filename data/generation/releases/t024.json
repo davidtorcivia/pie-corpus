@@ -1,1 +1,15 @@
-{"schema_version": 1, "batch": "t024", "sha256": {"records": "e8c0df9c5b2ab0bb22e644f864c7437048d46bcb735e543e85075a89346c563a", "plans": "a4bfe2e1a73afe342acb223e541bc37f0ac61c55b9cd97efa281544051076928", "gate_report": "7224572ac3d230ffa151fedd4d78d948f621a520bee1e8dbe35af779341479fa"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t024.json", "docs/audits/tier3-t024-review.md", "docs/audits/packets/t024-verdicts.jsonl"], "rationale": "Calibrated review (docs/audits/tier3-t024-review.md): plants 5/5; real 0/20 wrong after fixes (1 before); gate PASS. Approved under docs/generation/reviewer-brief.md release rule."}}
+{
+ "schema_version": 1,
+ "batch": "t024",
+ "sha256": {
+  "records": "3cc2f34712c14a07923ad224f842564080867ff27737ed7c16f05e595203035f",
+  "plans": "a4bfe2e1a73afe342acb223e541bc37f0ac61c55b9cd97efa281544051076928",
+  "gate_report": "9a1c1c6784877d56fdb16b07691623c3b1f7bac392f798b357b07f35fbc445eb"
+ },
+ "review": {
+  "required": true,
+  "status": "pending",
+  "evidence": [],
+  "rationale": "Awaiting review."
+ }
+}

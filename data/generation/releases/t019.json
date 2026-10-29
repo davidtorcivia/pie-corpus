@@ -2,19 +2,14 @@
  "schema_version": 1,
  "batch": "t019",
  "sha256": {
-  "records": "538947d18c6b81e008d9f6e703abe52372216682c963e1b9fb4579c288dd2be3",
+  "records": "8aac3a9bc547eee2689e2e335744be041a53e36c7bd26f2643680ad1735eb0c9",
   "plans": "e3711a1fcdf798ca6b15ece5fac54c587976c4a2a47510c65dbeb9f58c7e6343",
-  "gate_report": "f7bf7b1d38d27a4e375e88c9c28248c4216c20c4c5ebd16f8c5da56200759c8a"
+  "gate_report": "fb8759ccd74eb93e7040f8eba42d9ff94152a313e6a5a8b081f0ef153d4d939e"
  },
  "review": {
   "required": true,
-  "status": "approved",
-  "evidence": [
-   "data/generation/batches/t019.json",
-   "docs/audits/tier3-t019-review.md",
-   "docs/STATUS.md:119",
-   "docs/STATUS.md:111-112"
-  ],
-  "rationale": "STATUS records t018-t021 reviews (0-2/20 real wrong), fixes and merged-engine regeneration. Migrated historical release on review plus remediation account."
+  "status": "pending",
+  "evidence": [],
+  "rationale": "Awaiting review."
  }
 }
