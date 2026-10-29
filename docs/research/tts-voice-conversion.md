@@ -348,3 +348,17 @@ on unaccented nuclei per line.
 χ through ElevenLabs now survives every time. Its 2–8 kHz share is 0.63–0.91, against 0.01–0.05 lost in v2.
 Glottal h/H is the gap. VTL gives 0.00–0.03 at wiHrṓs, túH and the H of h₂yuHénih₂, where eSpeak gives 0.18–0.71.
 Word-initial h₁ of h₁áydʰi alone survives (0.24).
+
+### VTL v4: aspiration patch for h (2026-10-29)
+
+v4 adds noise over each h interval, coloured by the LPC envelope of the neighbouring vowel (`--h-level`, default −12 dB).
+Phone timings are identical to v3.
+
+| file | step | accent | decl/line | h 2–8 kHz share (7 tokens) | χ (5 tokens) |
+|---|---|---|---|---|---|
+| VTL v4 | 0.096 | +3.8 | −3.6 | 0.26–0.76 | 0.56–0.61 |
+| VTL v4 → ElevenLabs | 0.232 | +3.9 | −1.2 | 0.41–0.85 | 0.54–0.93 |
+
+ElevenLabs keeps every h and every χ, along with the accent. The eSpeak h values are 0.08–0.71, mostly about 0.2.
+The patched h now sits above that, so `--h-level` is the setting to tune by ear if it sounds hissy.
+VTL v4 → ElevenLabs is the first chain to pass all three tests (accent, χ, h) with no pitch correction.
