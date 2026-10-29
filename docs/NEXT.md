@@ -43,3 +43,9 @@ Judge "a living language you can converse with", not a talking dictionary: use t
 - **Owner's call:** some families are still held but arguably everyday: mneh₂- 'remind', h₃neh₂- 'enjoy', h₁rey- 'rise', prep- 'appear', ḱenk- 'hang', treH- 'protect', h₂ens- 'give birth', melkʷ- 'fall silent'. Protecting them needs another redraw (cheap until scores exist).
 - Offer `pie-lex-h1ewHt` 'help' in Tier 3b slices (`TIER3B_INHERITED`) now that it is trainable.
 - wait, thank, answer, today and tomorrow have no trusted gloss in the lexicon, so the concept list can't protect them. They need glosses or coinages.
+
+## From corpus-quality batch 2 (done: 9297a88 … 068ee42)
+- **Decided for the owner, reversible:** `THEONYM_DERIVATIVES` keeps Ἥλιος and Sūrya, both sun gods, as content with the sun root, now that ἥλιος counts as a derivative. Delete it in `pie/name_mapping.py` to undo.
+- **Tier 2 lines to re-review after the cq2 mapping changes:** dawn-sun-016 and dawn-sun-009 (exact → root), epic-diction-013 (exact → root), death-otherworld-012 and -004 (root → exact). Rebuild `corpus/tier2` first.
+- **Open:** Welsh nant is still keyed to *nem- through an unverified route. Clitics stay non-content; a clitic-aware scan would need a function-word layer in the index.
+- **Old index copies:** `corpora.pre-cq2.sqlite` and the corrupt `corpora.cq2-decd105.sqlite`, plus the old caches under data/research/8c/search-index/. Delete them to free space.
