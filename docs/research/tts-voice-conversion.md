@@ -399,3 +399,31 @@ advance, and on 2.4 voices the scaled murmur shape stops vibration altogether.
 - **Fish Audio:** its API offers TTS, cloning and transcription only. There is no audio-in voice conversion, so it can't carry PIE phones.
 - **Resemble:** has speech-to-speech, but the public pricing page lists no rate; its licence for training use is unverified.
 - **Open-source VC:** Chatterbox VC (MIT), OpenVoice (MIT), RVC (MIT), Seed-VC (GPL-3.0 code). These place no restrictions on outputs and run on tr-desktop.
+
+### Measurement correction and VTL v6 + Cartesia (2026-10-29)
+
+**Correction.** Until this commit, `vtl_check.py` (and the scratch scripts behind the v3–v5 tables above) folded any
+F0 frame more than 6 st from the median by an octave, and used a 75 Hz pitch floor. With JD3 near 101 Hz and a
+declination down to about −5 st, line-final vowels were folded up or dropped. That understated accent lift and
+declination, worst for the male voice and for ElevenLabs output. The fold is now 9 st and the floor 55 Hz.
+
+Corrected, ElevenLabs does **not** flatten declination, and it **raises** accent lift:
+
+| hymn | accent VTL → 11L → Cartesia | decl/line VTL → 11L → Cartesia | melody r vs VTL (11L / Cartesia) |
+|---|---|---|---|
+| JD3, `--declination 2,-3.5` | +3.9 → +5.6 → +5.4 | −4.9 → −5.0 → −3.5 | 0.95 / 0.91 |
+| W02, default | +3.8 → +4.8 → +5.7 | −3.7 → −3.5 → −3.6 | 0.97 / 0.95 |
+
+eSpeak cadence measures +3.1 / −3.7. The v3–v5 accent and declination figures above are therefore low.
+
+**v6 vowels after ʱ.** These are now −4.2 dB (JD3) and −4.6 dB (W02) against the other vowels; in v5 both were about −9.5.
+The i after gʷʰ (ń̥dʰgʷʰiteh₂, ń̥dʰgʷʰitom) is still −7 dB in JD3, and −10 to −11 dB through ElevenLabs.
+
+**h.** The middle túH (before ń̥dʰgʷʰiteh₂) is lost through both ElevenLabs and Cartesia (0.00–0.03). Raw JD3 is only 0.13 there.
+H after u is generally dark and the services drop it (hard test suHnús after ElevenLabs: 0.03 JD3, 0.12 W02).
+
+**Cartesia** (web voice changer, no API):
+- It keeps timing and melody about as well as ElevenLabs.
+- It strips more h: female túH 0.25/0.00/0.02, the H of h₂yuHénih₂ 0.13, and ɣʷ is gone in the female voice.
+- Its male output is rougher (HNR 11.2 vs 14.1).
+- ElevenLabs matches or beats it on every measure.

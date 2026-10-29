@@ -2,7 +2,7 @@
 
     tts/vc/.venv-eval/bin/python -I tts/cadence/vtl_check.py <phones.json> name=file.wav [name=file.mp3 ...]
 
-The first file is the melody reference ("r ref"). Per file:
+The first file is the melody reference (\"r ref\"); the others are aligned to it (±300 ms). Per file:
 - step: median frame-to-frame F0 change (st), where eSpeak ≈ 0.07 is robotic and speech ≈ 0.2;
 - accent: mean F0 of accented nuclei minus unaccented (st);
 - decl/line: fitted F0 slope over the unaccented nuclei of each line (st);
@@ -14,13 +14,29 @@ import librosa, numpy as np, parselmouth
 SR = 22050
 J = json.load(open(sys.argv[1], encoding="utf-8"))
 A = {k: librosa.load(p, sr=SR, mono=True)[0] for k, p in (x.split("=", 1) for x in sys.argv[2:])}
+
+
+def align(a, ref, max_s=0.3):
+    """shift a onto ref's timeline: energy-envelope cross-correlation within ±max_s (5 ms steps)"""
+    env = lambda x: np.log(librosa.feature.rms(y=x, frame_length=440, hop_length=110)[0] + 1e-4)
+    e, r = env(a), env(ref); n = min(len(e), len(r)); m = int(max_s * SR / 110)
+    lag = max(range(-m, m + 1), key=lambda k: np.corrcoef(e[max(k, 0):n + min(k, 0)], r[max(-k, 0):n - max(k, 0)])[0, 1])
+    a = a[lag * 110:] if lag > 0 else np.r_[np.zeros(-lag * 110), a]
+    return a, lag * 110 / SR
+
+
+R0 = next(iter(A.values()))
+for k in list(A)[1:]:
+    A[k], lag = align(A[k], R0)
+    if abs(lag) > 0.004: print(f"{k}: shifted {lag * 1000:+.0f} ms onto the reference timeline")
+
 nuc = [p for w in J["words"] for p in w["phones"] if p["kind"] in ("V", "Ns")]
 
 
 def st(a):
-    f = parselmouth.Sound(a, SR).to_pitch_ac(0.01, 75, 400).selected_array["frequency"]
-    s = 12 * np.log2(np.where(f > 0, f, np.nan)); m = np.nanmedian(s); s = np.where(s - m > 6, s - 12, s)
-    return np.where(m - s > 6, s + 12, s)
+    f = parselmouth.Sound(a, SR).to_pitch_ac(0.01, 55, 450).selected_array["frequency"]
+    s = 12 * np.log2(np.where(f > 0, f, np.nan)); m = np.nanmedian(s); s = np.where(s - m > 9, s - 12, s)
+    return np.where(m - s > 9, s + 12, s)
 
 
 def wr(X, Y):
@@ -40,7 +56,7 @@ F = {k: st(a) for k, a in A.items()}; ref = next(iter(F.values()))
 print(f"{'file':18s}{'dur':>7s}{'step':>7s}{'HNR':>6s}{'r ref':>7s}{'accent':>8s}{'decl/line':>10s}{'voiced':>9s}")
 for k, a in A.items():
     S = F[k]; d = np.abs(np.diff(S)); d = d[~np.isnan(d)]
-    h = parselmouth.Sound(a, SR).to_harmonicity_cc(0.01, 75, 0.1, 1.0); hv = h.values[h.values > -100]
+    h = parselmouth.Sound(a, SR).to_harmonicity_cc(0.01, 55, 0.1, 1.0); hv = h.values[h.values > -100]
     acc, un, byline = [], [], {}
     for p in nuc:
         seg = S[int(p["start"] / 0.01):int(p["end"] / 0.01) + 1]; seg = seg[~np.isnan(seg)]
