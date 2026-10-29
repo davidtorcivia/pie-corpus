@@ -370,6 +370,26 @@ def align_english(rec: dict) -> tuple[list[str] | None, str]:
     return None, why
 
 
+_SPEECH = re.compile(r"(?:^|(?<=\s))[\"'“‘](.+?[.?!])[\"'”’](?=\s|$)", re.S)
+
+
+def quote_turns(rec: dict) -> list[int] | None:
+    """Sentences per quoted speech when the English is only quoted speeches (two or more) and their sentences are
+    exactly the aligned English (align_english); else None."""
+    text = (rec.get("english") or "").strip()
+    speeches = [m[1] for m in _SPEECH.finditer(text)]
+    if len(speeches) < 2 or _SPEECH.sub("", text).strip():
+        return None
+    en, _how = align_english(rec)
+    if en is None:
+        return None
+    for _name, pat in EN_SPLITS:
+        per = [_en_split(x, pat) for x in speeches]
+        if [e for p in per for e in p] == en:
+            return [len(p) for p in per]
+    return None
+
+
 def narrated(en: list[str]) -> bool:
     """A narrated dialogue ("Then the master said: ..."): its frames would be user turns that are not
     conversation, so the English-input modes skip it (pie_dialogue keeps it)."""
@@ -398,6 +418,9 @@ def dialogue_turns(rec: dict) -> tuple[list[tuple[str, list[int]]], str, int] | 
 
     "speaker": every sentence's plan clauses name a speaker (Tier 3b / wave-2 plans); consecutive sentences
     of one speaker form a turn; exactly two speakers, the first is the user.
+    "english_quotes": the record's English is nothing but quoted speeches ('Who is at the door?' 'I am a
+    stranger. Make me sip!' ...), each a turn, the speakers alternating, the first is the user; used only when
+    the speeches' sentences are exactly align_english's (so every PIE sentence falls in one speech).
     "sentence_qa" (conservative fallback): a run of questions is a user turn and the run of statements after
     it the assistant's reply; statements before the first question open the first user turn. The record is
     skipped when '?' and the plan's `question` flags disagree, or no question is answered.
@@ -410,6 +433,9 @@ def dialogue_turns(rec: dict) -> tuple[list[tuple[str, list[int]]], str, int] | 
             return None, "speaker_count", 0
         roles = ["user" if s == spk[0] else "assistant" for s in spk]
         method = "speaker"
+    elif (spans := quote_turns(rec)) is not None:
+        roles = [("user", "assistant")[k % 2] for k, n in enumerate(spans) for _ in range(n)]
+        method = "english_quotes"
     else:
         q = [s.endswith("?") for s in sents]
         if groups and q != [any(c.get("question") for c in g) for g in groups]:

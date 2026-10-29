@@ -77,8 +77,11 @@ with each model's own template. Train on the assistant turns only (the default "
   user and assistant turn is PIE. Built from the dialogue-like genres (`dialogue`, `greeting`, `challenge`,
   `parley`, `council`, `farewell`, `riddle`) by splitting a text into turns. `meta.split` records how:
   `speaker` when the plan's clauses name a speaker (wave-2 / Tier 3b plans; consecutive sentences of one
-  speaker form a turn, exactly two speakers, the first is the user), else `sentence_qa`, a conservative
-  heuristic: a run of questions is a user turn, the run of statements after it is the reply, statements
+  speaker form a turn, exactly two speakers, the first is the user); else `english_quotes` when the record's
+  English is nothing but quoted speeches ('Who is at the door?' 'I am a stranger.' …) whose sentences are
+  exactly the aligned English: each speech is a turn, the speakers alternate, the first is the user (strict
+  alternation: a speaker who goes on in a second quotation is read as the other speaker); else
+  `sentence_qa`, a conservative heuristic: a run of questions is a user turn, the run of statements after it is the reply, statements
   before the first question open the first user turn. A record is skipped when its `?` disagree with the
   plan's `question` flags or no question is answered; a trailing unanswered question is dropped
   (`meta.dropped_trailing`). Skips are counted in `summary.json`. Single-question records (b001–b004) are
@@ -119,7 +122,7 @@ with each model's own template. Train on the assistant turns only (the default "
   batch t3b-001 and appear once that batch is admitted. Train only.
 
 **Conversational eval.** The dialogue records listed in `data/export/held_dialogues.json` (frozen; its
-`rule` documents the choice: the 16 dialogue records of the approved batch t010, 12 of them multi-turn)
+`rule` documents the choice: the 16 dialogue records of the approved batch t010, quoted exchanges of speeches with 2-5 user turns each)
 leave training in `pie.export.build()` (`eval_dialogue_records`, written to `eval_dialogues.jsonl`): no
 train record, task, chat example or plain text contains them, and they make no task-benchmark item. In
 `chat/eval.jsonl` each is a `pie_dialogue` and an `en_dialogue` in every mode, with `meta.chat_eval: true`.

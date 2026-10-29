@@ -96,7 +96,7 @@ def test_kinds_and_summary(exported):
     assert {m.split("/")[1] for m in s["modes"]["train"]} == {"pie_pie", *ec.EN_MODES}
     assert 30 <= s["demo_seeds"]["used"] <= 60
     assert s["examples_by_kind"]["eval"]["continuation"]      # Tier 1 works continued
-    assert set(s["pie_dialogue_split_method"]["train"]) <= {"speaker", "sentence_qa"}
+    assert set(s["pie_dialogue_split_method"]["train"]) <= {"speaker", "english_quotes", "sentence_qa"}
     assert s["neologism"]["share"] <= ec.NEOLOGISM_CAP
     assert s["provenance"]["include_pilot"] is False
 
@@ -110,7 +110,7 @@ def test_pie_only_conversations(exported):
             turns = [x["content"] for x in e["messages"][1:]]
             # the turns are the record's PIE, in order, minus at most a dropped trailing question
             assert recs[m["source_id"]]["pie"].startswith(" ".join(turns))
-            assert m["split"] in ("speaker", "sentence_qa") and m["genre"] in ec.DIALOGUE_GENRES
+            assert m["split"] in ("speaker", "english_quotes", "sentence_qa") and m["genre"] in ec.DIALOGUE_GENRES
         elif m["task"] == "en_dialogue":
             r = recs[m["source_id"]]
             assert e["messages"][0]["content"] == ec.MODE_SYSTEM[m["mode"]]
@@ -306,6 +306,22 @@ def test_align_english_splits_and_never_guesses():
     # the 3b brief's turn markers are not English text
     r = _rec("kʷís h₁ési? h₁ésmi.", "User: Who are you? Model: I am.")
     assert ec.align_english(r)[0] == ["Who are you?", "I am."]
+
+
+def test_quoted_speeches_are_turns():
+    """An English that is only quoted speeches: each speech is a turn, speakers alternating (sentence_qa would
+    have joined the asker's next line to the reply)."""
+    r = _rec("kʷís h₁ésti? h₁ésmi gʰóstis. ph₃dʰí. kʷís h₁ési? h₁ésmi pótis.",
+             "'Who is it?' 'I am a guest.' 'Drink!' 'Who are you?' 'I am the master.'")
+    turns, method, dropped = ec.dialogue_turns(r)
+    assert method == "english_quotes" and dropped == 1
+    assert turns == [("user", [0]), ("assistant", [1]), ("user", [2]), ("assistant", [3])]
+    # narration outside the quotes: not a pure exchange of speeches, the heuristic decides
+    r = _rec("nu só wérh₁t. kʷís h₁ési? h₁ésmi.", 'Then he said: "Who are you?" "I am."')
+    assert ec.dialogue_turns(r)[1] == "sentence_qa"
+    # an apostrophe is not a quote
+    r = _rec("kʷís h₁ési? h₁ésmi.", "'Whose son's son are you?' 'I am the king's.'")
+    assert ec.dialogue_turns(r)[1] == "english_quotes"
 
 
 def test_plan_english_field_wins():
