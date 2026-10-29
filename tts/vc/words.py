@@ -1,12 +1,12 @@
-"""Hard-word set for the eSpeak + voice-conversion viability test (docs/research/tts-voice-conversion.md)."""
+"""Hard-word set (ids as in tts/bakeoff/manifest.json where the word is shared) for the eSpeak + voice-conversion viability test (docs/research/tts-voice-conversion.md)."""
 
 # (id, PIE text, target sound(s) under test)
 WORDS = [
     ("h2ewsos", "h₂éwsos", "χ"),
     ("h2owis", "h₂ówis", "χ"),
-    ("h2egeti", "h₂éǵeti", "χ + palatal ǵ"),
-    ("genh1tor", "ǵénh₁tor", "palatal ǵ"),
-    ("klewos", "ḱléwos", "palatal ḱ"),
+    ("h2egjeti", "h₂éǵeti", "χ + palatal ǵ"),
+    ("gjenh1tor", "ǵénh₁tor", "palatal ǵ"),
+    ("kjlewos", "ḱléwos", "palatal ḱ"),
     ("bhreh2ter", "bʰréh₂tēr", "breathy bʰ"),
     ("dhugh2ter", "dʰugh₂tḗr", "breathy dʰ"),
     ("gwhenti", "gʷʰénti", "breathy labiovelar gʷʰ"),

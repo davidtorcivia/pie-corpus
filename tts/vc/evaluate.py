@@ -6,9 +6,12 @@ Per clip (each VC method x timbre, and raw pitch-patched Kokoro for comparison),
   The recognizer (recognize.py) is itself unreliable on these sounds (it never emits χ, ʔ or murmured stops),
   so this measures stability of what it hears, not correctness. per_src_base does the same after folding
   length, tone digits, aspiration/murmur and ɡ/g (BASE below).
+- post_dtw: mean cosine distance between the recognizer's frame-level CTC logits for source and clip along
+  the DTW path (librosa.sequence.dtw). Continuous, so less jumpy than the greedy phone string on 1 s clips.
 - per_ipa: base-character edit distance between the clip's recognized phones and the converter IPA, / IPA length.
 - f0_r: Pearson r of F0 in semitones on a common normalised-time grid (speech span, 200 points), frames voiced
-  in both; F0 from Praat autocorrelation (parselmouth, 10 ms, 50-600 Hz).
+  in both; F0 from Praat autocorrelation (parselmouth, 10 ms, 50-600 Hz),
+  octave jumps folded to within 6 st of the clip median.
 - peak_src / peak: normalised time of the F0 maximum; peak_ok if within 0.12.
 - contrast_src / contrast: mean semitone difference between the frames that are high in the source (eSpeak's
   level high tone = the accented syllable) and the rest; contrast_ratio = clip / source.
@@ -25,7 +28,7 @@ import parselmouth
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from recognize import phones  # noqa: E402
+from recognize import decode, logits  # noqa: E402
 
 VC = Path(__file__).resolve().parent
 AUDIO = VC / "audio"
@@ -67,6 +70,10 @@ def f0_track(wav):
     keep = (t >= a) & (t <= b)
     t, f = (t[keep] - a) / max(b - a, 1e-6), f[keep]
     st = np.where(f > 0, 12 * np.log2(np.maximum(f, 1) / 100), np.nan)
+    if (~np.isnan(st)).any():
+        # fold octave errors: the accent contrast is ~3 st, so any frame > 6 st from the median is a tracker jump
+        med = np.nanmedian(st)
+        st = st - 12 * np.round((st - med) / 12)
     # nearest-frame lookup on the grid (no interpolation across unvoiced gaps)
     idx = np.clip(np.searchsorted(t, GRID), 0, len(t) - 1) if len(t) else np.zeros(len(GRID), int)
     g = st[idx] if len(t) else np.full(len(GRID), np.nan)
@@ -92,7 +99,10 @@ def compare(src, clip):
     out["contrast_src"] = src["contrast"]
     out["dur_ratio"] = round((cb - ca) / (sb - sa), 3)
     out["len_ratio"] = round(ctot / stot, 3)
-    rec = phones(str(clip))
+    lg = logits(str(clip))
+    rec = decode(lg)
+    D, wp = librosa.sequence.dtw(X=src["logits"].T, Y=lg.T, metric="cosine")
+    out["post_dtw"] = round(float(D[-1, -1] / len(wp)), 3)
     out["rec"] = " ".join(rec)
     out["per_src"] = per(src["rec"], rec)
     out["per_src_base"] = per([base(x) for x in src["rec"]], [base(x) for x in rec])
@@ -106,7 +116,7 @@ def mean(xs):
 
 
 def summarize(rows):
-    return dict(n=len(rows), per_src=mean([r["per_src"] for r in rows]),
+    return dict(n=len(rows), per_src=mean([r["per_src"] for r in rows]), post_dtw=mean([r["post_dtw"] for r in rows]),
                 per_src_base=mean([r["per_src_base"] for r in rows]), per_ipa=mean([r["per_ipa"] for r in rows]),
                 f0_r=mean([r["f0_r"] for r in rows]), f0_r_median=round(float(np.median([r["f0_r"] for r in rows if r["f0_r"] is not None])), 3),
                 peak_ok=mean([float(r["peak_ok"]) for r in rows]),
@@ -121,7 +131,8 @@ for s in srcs.values():
     thr = (np.percentile(v, 10) + np.percentile(v, 90)) / 2
     s["high"] = ~np.isnan(s["f0"]) & (s["f0"] > thr)
     s["contrast"] = round(float(np.nanmean(s["f0"][s["high"]]) - np.nanmean(s["f0"][~s["high"] & ~np.isnan(s["f0"])])), 2)
-    s["rec"] = phones(s["wav"])
+    s["logits"] = logits(s["wav"])
+    s["rec"] = decode(s["logits"])
     s["ipa_base"] = "".join(base(c) for c in s["ipa"] if not c.isspace())
     s["per_ipa"] = per(list(s["ipa_base"]), list("".join(base(x) for x in s["rec"])))
     print("src", s["id"], " ".join(s["rec"]), flush=True)
@@ -136,10 +147,20 @@ for sid, s in srcs.items():
         y, sr = librosa.load(s["wav"], sr=None)
         import soundfile as sf
         sf.write(out, librosa.effects.pitch_shift(y, sr=sr, n_steps=3), sr)
+    # Control 2: AAC 48 kb/s round trip of the source (what the listening page plays). Control 3,
+    # ctrl-espeak-p80, is rendered by render_pie.py: the same eSpeak codes at eSpeak pitch 80.
+    out = ctrl / f"{sid}.ctrl-aac-none.wav"
+    if not out.exists():
+        import subprocess
+        m4 = ctrl / f"{sid}.aac.mp4"
+        subprocess.run(["afconvert", "-f", "m4af", "-d", "aac", "-b", "48000", s["wav"], str(m4)], check=True)
+        subprocess.run(["afconvert", "-f", "WAVE", "-d", "LEI16", str(m4), str(out)], check=True)
 
 clips = []
 systems = [(m, f"{m}-{{v}}", AUDIO / m) for m in METHODS] + [("kokoro", "kokoro-pitch-{v}", AUDIO / "kokoro"),
-                                                               ("ctrl-shift3", "ctrl-shift3-{v}", ctrl)]
+                                                               ("ctrl-shift3", "ctrl-shift3-{v}", ctrl),
+                                                               ("ctrl-aac", "ctrl-aac-{v}", ctrl),
+                                                               ("ctrl-espeak-p80", "ctrl-espeak-p80-{v}", ctrl)]
 for method, pat, d in systems:
     for v in (["none"] if method.startswith("ctrl") else TIMBRES):
         for sid, s in srcs.items():
@@ -151,10 +172,12 @@ for method, pat, d in systems:
             print(method, v, sid, r["per_src"], r["f0_r"], r["dur_ratio"], flush=True)
 
 summary = {}
-for method in METHODS + ["kokoro", "ctrl-shift3"]:
+for method in METHODS + ["kokoro", "ctrl-shift3", "ctrl-aac", "ctrl-espeak-p80"]:
     rows = [r for r in clips if r["method"] == method]
     if rows:
-        summary[method] = dict(all=summarize(rows), **{v: summarize([r for r in rows if r["timbre"] == v])
+        summary[method] = dict(all=summarize(rows),
+                               words=summarize([r for r in rows if not r["id"].startswith("hymn")]),
+                               lines=summarize([r for r in rows if r["id"].startswith("hymn")]), **{v: summarize([r for r in rows if r["timbre"] == v])
                                                         for v in TIMBRES + ["none"] if any(r["timbre"] == v for r in rows)})
 sources = {sid: dict(rec=" ".join(s["rec"]), ipa=s["ipa"], per_ipa=s["per_ipa"], contrast=s["contrast"],
                      peak=round(float(GRID[np.nanargmax(s["f0"])]), 3)) for sid, s in srcs.items()}

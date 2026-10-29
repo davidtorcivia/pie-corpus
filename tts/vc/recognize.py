@@ -28,12 +28,16 @@ def model():
     return _M["p"], _M["m"]
 
 
-def phones(wav: str) -> list[str]:
+def logits(wav: str):
+    """CTC logits, frames x vocab (20 ms frames)."""
     p, m = model()
     x, _ = librosa.load(wav, sr=16000)
     with torch.no_grad():
-        logits = m(p(x, sampling_rate=16000, return_tensors="pt").input_values).logits
-    ids, out, prev = logits.argmax(-1)[0].tolist(), [], None
+        return m(p(x, sampling_rate=16000, return_tensors="pt").input_values).logits[0].numpy()
+
+
+def decode(lg) -> list[str]:
+    ids, out, prev = lg.argmax(-1).tolist(), [], None
     for i in ids:
         if i != prev:
             t = _M["v"][i]
@@ -41,6 +45,10 @@ def phones(wav: str) -> list[str]:
                 out.append(t)
         prev = i
     return out
+
+
+def phones(wav: str) -> list[str]:
+    return decode(logits(wav))
 
 
 if __name__ == "__main__":

@@ -2,6 +2,7 @@
 
     .venv/bin/python -I tts/vc/render_pie.py espeak
     .venv-kokoro/bin/python -I tts/vc/render_pie.py kokoro      # hm_omega, ef_dora, em_alex
+    .venv/bin/python -I tts/vc/render_pie.py espeak-p80         # control: same codes, eSpeak pitch 80 (default 50)
 Writes tts/vc/audio/src/<id>.espeak-tone.wav or tts/vc/audio/kokoro/<id>.kokoro-pitch-<voice>.wav and
 tts/vc/audio/<backend>.json (id, pie, ipa, engine input)."""
 import json
@@ -26,6 +27,10 @@ for wid, pie, target in WORDS:
         speak(pie, backend="espeak", out_wav=str(out), tone=True)
         rows.append(dict(id=wid, pie=pie, target=target, ipa=ipa, wav=str(out),
                          engine_input=engine_input(ipa, backend="espeak")))
+    elif backend == "espeak-p80":
+        out = AUDIO / "ctrl" / f"{wid}.ctrl-espeak-p80-none.wav"
+        speak(pie, backend="espeak", out_wav=str(out), tone=True, espeak_pitch=80)
+        rows.append(dict(id=wid, pie=pie, ipa=ipa, wav=str(out)))
     else:
         for v in TIMBRES:
             out = AUDIO / "kokoro" / f"{wid}.kokoro-pitch-{v}.wav"
