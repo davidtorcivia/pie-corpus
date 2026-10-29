@@ -191,25 +191,10 @@ def planner_accent_ok(lx: Lexicon, lex_id: str) -> bool:
         return False
 
 
-def main() -> int:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("name")
-    ap.add_argument("--keywords", nargs="*", default=[])
-    ap.add_argument("--size", type=int, default=220)
-    ap.add_argument("--seed", type=int, default=0)
-    ap.add_argument("--derived", action="store_true", help="include lexemes with approximate derived glosses")
-    ap.add_argument("--core", nargs="*", default=[],
-                    help="up to 8 theme-core lexeme ids, capped at 15 uses per batch instead of 6")
-    ap.add_argument("--tier3b", action="store_true",
-                    help="Tier 3b slice: also offer every neologism (data/lexicon/neologisms.jsonl), flagged coined")
-    args = ap.parse_args()
-    lx = Lexicon.load()
-    if args.tier3b:      # a new Lexicon with the neologisms; the default one never has them (pie/neologism.py)
-        from pie.neologism import with_neologisms
-        lx = with_neologisms(lx)
-    rng = random.Random(args.seed)
-    ap_derived = args.derived
-
+def offered(lx: Lexicon, derived: bool = False) -> list[str]:
+    """The ids a slice may offer (the pool): usable spec, not blocklisted, accent (P10), not an eval-holdout root,
+    not NIL-held, and a dictionary gloss, or with derived=True an approximate derived gloss on a transparent suffix
+    or on a word attested in two branches."""
     def derived_ok(i):
         suffix = lx.derived[i].split("[", 1)[-1].split(":", 1)[0].strip()
         return suffix in TRANSPARENT_SUFFIXES or len(branches(lx.entries[i].get("reflexes", {}))) >= 2
@@ -230,10 +215,32 @@ def main() -> int:
     # root families the export holds out for the cognate/inflection benchmark are never offered to
     # planners, so they stay unseen in training sentences (pie.export.eval_root)
     from pie.export import eval_root
-    pool = [i for i, r in lx.specs.items() if r.get("usable") and i not in lx.blocked and planner_accent_ok(lx, i) and
+    return [i for i, r in lx.specs.items() if r.get("usable") and i not in lx.blocked and planner_accent_ok(lx, i) and
             not eval_root(lx.entries[i].get("root_id")) and
             not nil_held(i) and
-            (lx.entries[i]["meaning"] or (ap_derived and i in lx.derived and derived_ok(i)))]
+            (lx.entries[i]["meaning"] or (derived and i in lx.derived and derived_ok(i)))]
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("name")
+    ap.add_argument("--keywords", nargs="*", default=[])
+    ap.add_argument("--size", type=int, default=220)
+    ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--derived", action="store_true", help="include lexemes with approximate derived glosses")
+    ap.add_argument("--core", nargs="*", default=[],
+                    help="up to 8 theme-core lexeme ids, capped at 15 uses per batch instead of 6")
+    ap.add_argument("--tier3b", action="store_true",
+                    help="Tier 3b slice: also offer every neologism (data/lexicon/neologisms.jsonl), flagged coined")
+    args = ap.parse_args()
+    lx = Lexicon.load()
+    if args.tier3b:      # a new Lexicon with the neologisms; the default one never has them (pie/neologism.py)
+        from pie.neologism import with_neologisms
+        lx = with_neologisms(lx)
+    rng = random.Random(args.seed)
+    ap_derived = args.derived
+
+    pool = offered(lx, ap_derived)
 
     def attested(i):
         """Daughter languages with a reflex (of the lexeme, or else its root): prefer well-attested words."""

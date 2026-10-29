@@ -47,7 +47,12 @@ def compare(family, spec, para):
     # under h₃mígʰleh₂) scored 0/19 on every cell. Those 4 tables were the whole gap from 100% to 78.9%, and
     # kept 391 eh₂ nouns unusable (docs/audits/engine-queue-wave1.md).
     eh2 = tfam == "noun" and tspec.kind == "eh2"
-    if (thematic or eh2) and para.get("form") and para["form"] not in want.get("NOM.SG", []):
+    # the oxytone i/u-stem rule likewise takes its stems from the headword: the tables of Hrugʰís and bʰeh₂ǵʰús
+    # are written on root-accented Hréwgʰi- and bʰéh₂ǵʰu- (proterokinetic), so they score the table's other
+    # headword, not the rule (unusable-lexemes census, "hk-iu")
+    hk_iu = family == "noun" and spec is not None and spec.accent_class == "hysterokinetic" and \
+        para.get("form", "").endswith(("ís", "ús"))
+    if (thematic or eh2 or hk_iu) and para.get("form") and para["form"] not in want.get("NOM.SG", []):
         return 0, 0
     try:
         have = cells_for(family, spec) if family == tfam else {}

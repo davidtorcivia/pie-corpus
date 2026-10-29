@@ -2,13 +2,13 @@
  "entries": 6748,
  "coverage": {
   "table": 588,
-  "usable": 4885,
-  "shape": 4389,
-  "unknown": 1682,
+  "usable": 4916,
+  "shape": 4373,
+  "unknown": 1698,
   "indeclinable": 89
  },
- "inflectable": 4977,
- "usable_for_tier3": 4885,
+ "inflectable": 4961,
+ "usable_for_tier3": 4916,
  "usable_threshold": 0.85,
  "backtest": {
   "indeclinable": {
@@ -24,10 +24,10 @@
   },
   "shape:devi": {
    "tables": 4,
-   "cells_ok": 46,
+   "cells_ok": 66,
    "cells": 76,
-   "tables_exact": 1,
-   "cell_accuracy": 0.6053
+   "tables_exact": 3,
+   "cell_accuracy": 0.8684
   },
   "shape:eh2": {
    "tables": 19,
@@ -45,10 +45,10 @@
   },
   "shape:hk-iu-stem": {
    "tables": 5,
-   "cells_ok": 43,
-   "cells": 95,
+   "cells_ok": 33,
+   "cells": 57,
    "tables_exact": 1,
-   "cell_accuracy": 0.4526
+   "cell_accuracy": 0.5789
   },
   "shape:men-neuter": {
    "tables": 14,
@@ -66,10 +66,10 @@
   },
   "shape:n-stem-hk": {
    "tables": 2,
-   "cells_ok": 27,
+   "cells_ok": 29,
    "cells": 38,
-   "tables_exact": 0,
-   "cell_accuracy": 0.7105
+   "tables_exact": 1,
+   "cell_accuracy": 0.7632
   },
   "shape:perfect": {
    "tables": 20,
@@ -201,17 +201,19 @@
   "shape:s-aorist": 62,
   "shape:n-stem-ak": 50,
   "shape:hk-iu-stem": 47,
-  "shape:devi": 47,
   "unknown:athematic-no-ablaut": 45,
   "shape:thematic-middle": 35,
+  "shape:devi": 31,
   "shape:tor-agent": 24,
   "shape:er-stem": 23,
+  "unknown:devi-no-accent": 15,
   "shape:n-stem-hk": 9,
   "unknown:adj-shape": 5,
   "shape:perfect": 4,
   "unknown:verb-shape": 2,
   "unknown:middle-only": 2,
   "shape:thematic-neuter-reflex": 2,
+  "unknown:pronoun": 1,
   "shape:thematic-aorist": 1
  }
 }

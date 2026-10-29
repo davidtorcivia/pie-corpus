@@ -210,8 +210,27 @@ def by_shape(e: dict) -> Classified:
     if f.endswith(("om", "óm")):
         return Classified(NounSpec(_strip(f, "m"), gender="n"), "shape:thematic-neuter", "noun")
     if f.endswith(("ih₂", "íh₂")):
+        if pos == "pron":     # síh₂ 'she': pronominal inflection is closed-class (data/morph/closed_class.json)
+            return Classified(None, "unknown:pronoun", "noun")
         st = f
         base = _strip(f, "íh₂") if f.endswith("íh₂") else _strip(f, "ih₂")
+        bs = _segs(base)
+        acc = next((x for x in bs if x.kind == "V" and x.acc), None)
+        if f.endswith("ih₂") and acc is not None and (acc.base == "o" or acc.long):
+            # an accented o-grade or lengthened-grade root keeps its grade and accent in the weak stem, as an
+            # accented o-grade root does in the i-stems (Fortson §6.21; shape:pk-iu-stem): Ved. pátnī, gen.
+            # pátnyāḥ; rā́jñī, gen. rā́jñyāḥ, and Wiktionary's tables pótnih₂ ~ pótn̥yeh₂, h₃rḗǵnih₂ ~ h₃rḗǵn̥yeh₂.
+            # zero_grade() deleted the only root vowel instead (pótnih₂ → ptnyéh₂). A resonant after a consonant
+            # is syllabic before -yeh₂, as the tables write it.
+            if len(bs) > 1 and bs[-1].kind == "R" and not bs[-2].vocalic:
+                bs = bs[:-1] + [replace(bs[-1], syl=True)]
+            return Classified(NounSpec(st, render(bs) + "yeh₂", "proterokinetic", "f", devi=True), "shape:devi",
+                              "noun")
+        if acc is None and not f.endswith("íh₂"):
+            # no accent on the headword: the oblique accent depends on it (Ved. devī́, devyā́s against pátnī,
+            # pátnyāḥ), and an unaccented athematic stem would take accented endings, so any paradigm would guess
+            # one (the accent is missing information: docs/morphology.md accent policy)
+            return Classified(None, "unknown:devi-no-accent", "noun")
         root = zero_grade(base) if f.endswith("ih₂") else None
         weak = (root or _deaccent(base)) + "yéh₂"
         return Classified(NounSpec(st, weak, "proterokinetic", "f", devi=True), "shape:devi", "noun")
@@ -264,8 +283,11 @@ def by_shape(e: dict) -> Classified:
     if f.endswith("ṓ"):                       # final accent: hysterokinetic (ḱwṓ, ḱwn̥-)
         st = f[:-1] + "ón"
         wk = zero_grade(st)
-        return Classified(NounSpec(st, wk, "hysterokinetic", g if g in ("m", "f") else "m") if wk else None,
-                          "shape:n-stem-hk", "noun")
+        # the locative has the accented e-grade suffix, -én(i), not the o-grade of the strong stem (the tables
+        # ḱwṓ: ḱwén, ḱwéni; sh₂imṓ: sh₂imén; Fortson §6.24 hysterokinetic loc. in *-ér/-én)
+        loc = [wk[:-2] + "én", wk[:-2] + "éni"] if wk and wk.endswith("n̥") else []
+        return Classified(NounSpec(st, wk, "hysterokinetic", g if g in ("m", "f") else "m", loc_sg=loc)
+                          if wk else None, "shape:n-stem-hk", "noun")
     if f.endswith("ō"):                        # root accent: amphikinetic (kólHō, kl̥Hn̥-, loc. kl̥Hén)
         root = zero_grade(f[:-1])
         # (liquids and nasals only: a glide stays vocalic, gléwō → glun̥ as pléwmō → plumn̥ in the tables)
