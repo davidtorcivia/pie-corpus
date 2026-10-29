@@ -33,40 +33,40 @@
  ],
  "dup_within": 0,
  "dup_across_batches": 0,
- "tokens": 1378,
- "words_per_sentence": 4.76,
- "words_per_record": 4.76,
+ "tokens": 1383,
+ "words_per_sentence": 4.77,
+ "words_per_record": 4.77,
  "meter_fit": {
   "lines": 206,
-  "fit": 193,
-  "share": 0.937
+  "fit": 190,
+  "share": 0.922
  },
  "meter_near": {
   "lines": 206,
-  "near": 193,
-  "share": 0.937
+  "near": 190,
+  "share": 0.922
  },
  "meter_exact": {
   "lines": 206,
-  "exact": 192,
-  "share": 0.932
+  "exact": 189,
+  "share": 0.917
  },
  "meter_cadence": {
   "8": {
    "lines": 107,
-   "cadence": 17,
+   "cadence": 18,
    "pattern": "LHLX",
-   "share": 0.159
+   "share": 0.168
   },
   "11": {
-   "lines": 85,
+   "lines": 82,
    "cadence": 11,
    "pattern": "HLHX",
-   "share": 0.129
+   "share": 0.134
   }
  },
  "formula_uses": 4,
- "warnings": 16,
+ "warnings": 22,
  "accent_unresolved": {
   "tokens": 0,
   "lexemes": 0,
