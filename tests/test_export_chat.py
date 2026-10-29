@@ -30,6 +30,7 @@ def exported(tmp_path_factory):
     return {"out": out, "train": load("chat/train.jsonl"), "eval": load("chat/eval.jsonl"),
             "train_tasks": load("train_tasks.jsonl"), "eval_tasks": load("eval_tasks.jsonl"),
             "train_records": load("train.jsonl"), "eval_records": load("eval.jsonl"),
+            "eval_dialogues": load("eval_dialogues.jsonl"),
             "summary": json.loads((out / "chat/summary.json").read_text("utf-8"))}
 
 
@@ -69,7 +70,7 @@ def test_hold_out(exported):
     ev = {e["meta"]["source_id"] for e in exported["eval"]}
     assert not tr & ev
     eval_ids = {r["id"] for r in exported["eval_records"]} | {r["work_id"] for r in exported["eval_records"]} | \
-        {t["source_id"] for t in exported["eval_tasks"]}
+        {t["source_id"] for t in exported["eval_tasks"]} | {r["id"] for r in exported["eval_dialogues"]}
     assert ev <= eval_ids
     for split in ("train", "eval"):
         infl = {t["source_id"] for t in exported[f"{split}_tasks"] if t["task"] == "inflect"}
@@ -87,8 +88,13 @@ def test_kinds_and_summary(exported):
         assert s["examples_by_kind"][split] == dict(sorted(c.items()))
         assert s["examples"][split] == len(exported[split])
     c = s["examples_by_kind"]["train"]
-    assert c["pie_dialogue"] and c["continuation"] and c["paradigm"]
-    assert 0 < c["bilingual_chat"] < c["pie_dialogue"]      # bilingual is a minority
+    assert c["pie_dialogue"] and c["continuation"] and c["paradigm"] and c["demo_chat"]
+    # English input is first-class: every aligned, non-narrated dialogue gets an English-input conversation
+    assert c["en_dialogue"] == sum(v for k, v in s["dialogue_english_alignment"]["train"].items()
+                                   if k.startswith("aligned:"))
+    assert s["english_input_conversations"]["train"] == c["en_dialogue"] + c["demo_chat"] >= 150
+    assert {m.split("/")[1] for m in s["modes"]["train"]} == {"pie_pie", *ec.EN_MODES}
+    assert 30 <= s["demo_seeds"]["used"] <= 60
     assert s["examples_by_kind"]["eval"]["continuation"]      # Tier 1 works continued
     assert set(s["pie_dialogue_split_method"]["train"]) <= {"speaker", "sentence_qa"}
     assert s["neologism"]["share"] <= ec.NEOLOGISM_CAP
@@ -105,10 +111,18 @@ def test_pie_only_conversations(exported):
             # the turns are the record's PIE, in order, minus at most a dropped trailing question
             assert recs[m["source_id"]]["pie"].startswith(" ".join(turns))
             assert m["split"] in ("speaker", "sentence_qa") and m["genre"] in ec.DIALOGUE_GENRES
-        elif m["task"] == "bilingual_chat":
-            for x in e["messages"][2::2]:
-                pie, eng = x["content"].split("\nEnglish: ")
-                assert pie in recs[m["source_id"]]["pie"] and eng in recs[m["source_id"]]["english"]
+        elif m["task"] == "en_dialogue":
+            r = recs[m["source_id"]]
+            assert e["messages"][0]["content"] == ec.MODE_SYSTEM[m["mode"]]
+            en = ec.align_english(r)[0]
+            for x in e["messages"][2::2]:            # the assistant always speaks PIE
+                pie, _, eng = x["content"].partition("\nEnglish: ")
+                assert pie in r["pie"] and (eng in " ".join(en)) and bool(eng) == (m["mode"] == "en_pie_gloss")
+            users = [x["content"] for x in e["messages"][1::2]]
+            langs = m.get("user_langs") or ["en"] * len(users)
+            assert len(langs) == len(users) and (m["mode"] == "mixed") == (len(set(langs)) == 2)
+            for u, lang in zip(users, langs):
+                assert (u in r["pie"]) == (lang == "pie")
         elif m["task"] == "continuation" and m["tier"] != 1:
             r = recs[m["source_id"]]
             opening = e["messages"][1]["content"]
@@ -226,3 +240,100 @@ def test_templates_are_deterministic_and_features_described():
     assert ec.describe_features("PRS.3SG") == "present third person singular"
     assert ec.describe_features("F.NOM.SG") == "feminine nominative singular"
     assert ec.describe_features("MID.AOR.1PL") == "middle aorist first person plural"
+
+
+def test_conversational_eval_reservation(exported):
+    """The frozen reservation (data/export/held_dialogues.json): those records are out of every train view and
+    are eval conversations in every mode."""
+    held = json.loads((ROOT / "data/export/held_dialogues.json").read_text("utf-8"))
+    ids = set(held["records"])
+    assert ec.held_dialogue_ids() == ids and len(ids) >= 10
+    assert {r["id"] for r in exported["eval_dialogues"]} == ids          # all present while the batch is admitted
+    assert not ids & {r["id"] for r in exported["train_records"]}
+    assert not ids & {t["source_id"] for t in exported["train_tasks"]}
+    assert not ids & {e["meta"]["source_id"] for e in exported["train"]}
+    assert not ids & {t["source_id"] for t in exported["eval_tasks"]}     # chat only, not a task benchmark
+    train_txt = (exported["out"] / "text/train.txt").read_text("utf-8")
+    assert not any(r["pie"] in train_txt for r in exported["eval_dialogues"])
+    ce = [e for e in exported["eval"] if e["meta"].get("chat_eval")]
+    assert {e["meta"]["source_id"] for e in ce} == ids
+    assert {e["meta"]["mode"] for e in ce} == {"pie_pie", *ec.EN_MODES}
+    by = collections.Counter(e["meta"]["source_id"] for e in ce if e["meta"]["mode"] == "en_pie")
+    assert set(by.values()) == {1} and len(by) == len(ids)             # every record aligns: an en_pie eval each
+    assert exported["summary"]["chat_eval"]["reserved_records"] == len(ids)
+
+
+def test_demo_seeds_are_corpus_or_engine_forms(exported):
+    """Every demo answer is a sentence of a training record or an engine cell of a lexicon or neologism entry:
+    never invented text."""
+    from pie.neologism import with_neologisms
+    from pie.realize import Lexicon
+    nx = with_neologisms(Lexicon.load())
+    train_pie = " ".join(r["pie"] for r in exported["train_records"])
+    demos = [e for e in exported["train"] if e["meta"]["task"] == "demo_chat"]
+    assert demos and not [e for e in exported["eval"] if e["meta"]["task"] == "demo_chat"]
+    for e in demos:
+        for x in e["messages"][2::2]:
+            pie = x["content"].split("\nEnglish: ")[0]
+            if len(pie.split()) > 1:
+                assert pie in train_pie, pie
+            else:
+                lid = None
+                for sd in ec.load_demo_seeds():
+                    if sd["id"] == e["meta"]["seed"]:
+                        lid = {t["answer"].get("lexeme") or t["answer"].get("neologism") for t in sd["turns"]}
+                forms = {f for l in lid if l for v in nx.admissible_cells(l).values() for f in v}
+                assert pie.rstrip(".") in forms or pie in train_pie, pie
+        if any(sd["id"] == e["meta"]["seed"] and any("neologism" in t["answer"] for t in sd["turns"])
+               for sd in ec.load_demo_seeds()):
+            assert e["meta"]["coined"] == "neologism" and e["meta"]["neologism"] is True
+
+
+# ---------------------------------------------------------------- English alignment (synthetic)
+
+
+def test_align_english_splits_and_never_guesses():
+    r = _rec("kʷís h₁ési? h₁ésmi wiHrós. nu h₁éymi.", "'Who are you?' 'I am a man. Now I go.'")
+    assert ec.align_english(r) == (["Who are you?", "I am a man.", "Now I go."], "quotes")
+    r = _rec("nu só wérh₁t. kʷís h₁ési? h₁ésmi.", 'Then he said: "Who are you?" "I am."')
+    en, how = ec.align_english(r)
+    assert how == "quotes_colon" and en == ["Then he said:", "Who are you?", "I am."] and ec.narrated(en)
+    r = _rec("kʷíd h₁ésti? ne h₁ésti. gʷémt.", "What is it? It is not; it comes.")
+    assert ec.align_english(r)[1] == "semicolon"
+    # sentence counts that never agree, or questions on other sentences: skipped
+    assert ec.align_english(_rec("kʷís h₁ési? h₁ésmi.", "Who are you? I am. I go."))[0] is None
+    assert ec.align_english(_rec("kʷís h₁ési? h₁ésmi.", "Who are you. I am?")) == (None, "question_mismatch")
+    # the 3b brief's turn markers are not English text
+    r = _rec("kʷís h₁ési? h₁ésmi.", "User: Who are you? Model: I am.")
+    assert ec.align_english(r)[0] == ["Who are you?", "I am."]
+
+
+def test_plan_english_field_wins():
+    """The optional per-sentence plan field (planner-brief-v4.md): english on each sentence-initial clause."""
+    c = [{"english": "Who are you?", "question": True}, {"break": True, "english": "I am a man; I go."}]
+    r = _rec("kʷís h₁ési? h₁ésmi wiHrós h₁éymi-kʷe.", "Who are you? I am a man; I go.", clauses=c)
+    assert ec.align_english(r) == (["Who are you?", "I am a man; I go."], "plan_english")
+    c[1]["english"] = "I am a man?"
+    assert ec.align_english(r) == (None, "plan_english_mismatch")
+
+
+def test_english_modes_deterministic():
+    c = [{"break": True, "speaker": s, "question": s == "user"} for s in ("user", "model", "user", "model")]
+    r = _rec("kʷís h₁ési? h₁ésmi. kúdʰe h₁éysi? h₁éymi wóyḱom.",
+             "Who are you? I am. Where are you going? I am going home.", clauses=c, id="t3b-x-1")
+    one = ec.dialogue_chats([r], collections.Counter())
+    assert one == ec.dialogue_chats([r], collections.Counter())
+    assert [e["meta"]["mode"] for e in one][0] == "pie_pie" and len(one) == 2
+    allm = ec.dialogue_chats([r], collections.Counter(), all_modes=True, chat_eval=True)
+    assert [e["meta"]["mode"] for e in allm] == ["pie_pie", *ec.EN_MODES]
+    assert all(e["meta"]["chat_eval"] for e in allm)
+    en_pie = allm[1]["messages"]
+    assert en_pie[0] == {"role": "system", "content": "Reply in Proto-Indo-European."}
+    assert [m["content"] for m in en_pie[1:]] == ["Who are you?", "h₁ésmi.", "Where are you going?", "h₁éymi wóyḱom."]
+    assert allm[2]["messages"][2]["content"] == "h₁ésmi.\nEnglish: I am."
+    mixed = allm[3]
+    assert sorted(mixed["meta"]["user_langs"]) == ["en", "pie"]
+    # a single-question dialogue has no mixed mode
+    r1 = _rec("kʷís h₁ési? h₁ésmi.", "Who are you? I am.", id="t3-y-1")
+    assert [e["meta"]["mode"] for e in ec.dialogue_chats([r1], collections.Counter(), all_modes=True)] == \
+        ["pie_pie", "en_pie", "en_pie_gloss"]

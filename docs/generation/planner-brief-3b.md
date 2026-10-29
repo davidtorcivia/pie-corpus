@@ -50,6 +50,7 @@ Everything in v4's format, plus:
 - **A new speaker always starts a new sentence**: the first clause of every turn after the first has `"break": true`. `realize_plans.py` rejects a plan that changes speaker mid-sentence or leaves a clause without a speaker.
 - `genre`: `"dialogue"` (or `"greeting"`, `"farewell"`, `"riddle"`, the chat export's dialogue genres). These genres are not metered, so the meter gate does not apply.
 - The plan's `english` is the whole dialogue as running English, one sentence per PIE sentence, in order. You may mark turns in the English with the speaker ("User: … Model: …"), but every content word must still have a slot (rule 14).
+- **Per-sentence English (optional, recommended here):** v4's `english` on each sentence-initial clause (the first clause and every `break`), that sentence's English. With it the chat export pairs every PIE sentence with its English exactly, which the English-input chat modes need (an English user turn is the English of the user's sentences). Example: `[{"speaker": "user", "english": "Who are you?", "question": true, "slots": [...]}, {"speaker": "model", "break": true, "english": "I am a machine.", "slots": [...]}]`.
 - Length: 4–14 clauses and 2–8 turns. A turn is one to three sentences. Chat replies are short.
 
 ## 4. The model as a character

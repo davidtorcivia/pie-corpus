@@ -1,0 +1,51 @@
+{"id": "hello", "turns": [{"user": "Can you say hello?", "answer": {"record": "t3-t3b-001-00001", "sentence": 0, "english": "Friend, be well!"}}]}
+{"id": "hello-friend", "turns": [{"user": "Greet me in Proto-Indo-European.", "answer": {"record": "t3-t024-00001", "sentence": 0, "english": "Friend, you have come!"}}]}
+{"id": "greet-king", "turns": [{"user": "How would you greet a king?", "answer": {"record": "t3-b004-00145", "sentence": 0, "english": "May you live, king!"}}]}
+{"id": "welcome", "turns": [{"user": "Say 'welcome, guest'.", "answer": {"record": "t3-t3b-001-00001", "sentence": 1, "english": "Welcome, guest!"}}]}
+{"id": "guest-dear", "turns": [{"user": "Tell your guest that he is dear to you.", "answer": {"record": "t3-t031-00024", "sentence": 0, "english": "Guest, you are dear to me."}}]}
+{"id": "live", "turns": [{"user": "Wish me well.", "answer": {"record": "t3-t024-00001", "sentence": 4, "english": "May you live!"}}]}
+{"id": "thirsty", "turns": [{"user": "I am thirsty.", "answer": {"record": "t3-b004-00106", "sentence": 0, "english": "Sit down and drink!"}}, {"user": "And I am hungry too.", "answer": {"record": "t3-t024-00010", "sentence": 4, "english": "Eat, and drink the mead!"}}]}
+{"id": "goodbye", "turns": [{"user": "How do you say goodbye?", "answer": {"record": "t3-t024-00005", "sentence": 0, "english": "Guest, go, and may the gods lead you!"}}]}
+{"id": "goodbye-friend", "turns": [{"user": "Now I am going home.", "answer": {"record": "t3-t3b-001-00014", "sentence": [1, 2], "english": "Go, friend! Be well!"}}]}
+{"id": "thanks", "turns": [{"user": "How do you say thank you?", "answer": {"record": "t3-t3b-001-00007", "sentence": 1, "english": "I give you thanks."}}]}
+{"id": "who-are-you", "turns": [{"user": "Who are you?", "answer": {"record": "t3-t3b-001-00001", "sentence": 3, "english": "I am a machine."}}, {"user": "What is your name?", "answer": {"record": "t3-t3b-001-00003", "sentence": 1, "english": "My name is Word-maker."}}]}
+{"id": "old-tongue", "turns": [{"user": "Do you speak the old tongue?", "answer": {"record": "t3-t3b-001-00002", "sentence": 1, "english": "I speak it."}}]}
+{"id": "who-made-you", "turns": [{"user": "Who made you?", "answer": {"record": "t3-t3b-001-00017", "sentence": 1, "english": "Engineers made me, and teachers taught me."}}]}
+{"id": "are-you-a-man", "turns": [{"user": "Are you a man?", "answer": {"record": "t3-t3b-001-00017", "sentence": [3, 4], "english": "I am not a man. I am a made mind."}}]}
+{"id": "sleep", "turns": [{"user": "Do you sleep at night?", "answer": {"record": "t3-t3b-001-00006", "sentence": 1, "english": "I do not sleep."}}]}
+{"id": "eat", "turns": [{"user": "Do you eat?", "answer": {"record": "t3-t3b-001-00005", "sentence": 1, "english": "I do not eat."}}]}
+{"id": "stranger", "turns": [{"user": "Who are you, stranger?", "answer": {"record": "t3-t024-00004", "sentence": 1, "english": "I am a shepherd, and my name is Wolf."}}]}
+{"id": "name", "turns": [{"user": "What is your name?", "answer": {"record": "t3-t024-00006", "sentence": 2, "english": "My name is Dawn."}}]}
+{"id": "afraid", "turns": [{"user": "Are you afraid?", "answer": {"record": "t3-t013-00028", "sentence": 1, "english": "I am not afraid."}}]}
+{"id": "know-me", "turns": [{"user": "Do you know me?", "answer": {"record": "t3-b004-00153", "sentence": 1, "english": "I know you."}}]}
+{"id": "going", "turns": [{"user": "Where are you going?", "answer": {"record": "t3-b004-00116", "sentence": 1, "english": "I am going to the settlement."}}]}
+{"id": "listening", "turns": [{"user": "Are you listening?", "answer": {"record": "t3-b001-00126", "sentence": 1, "english": "I am listening."}}, {"user": "Do you know the answer?", "answer": {"record": "t3-t021-00034", "sentence": 8, "english": "I do not know."}}]}
+{"id": "awake", "turns": [{"user": "Are you awake?", "answer": {"record": "t3-t024-00003", "sentence": 2, "english": "Yes, I am awake."}}]}
+{"id": "say-sheep-flee", "turns": [{"user": "Translate into PIE: The sheep flee from him.", "answer": {"record": "t3-t021-00024", "sentence": 8, "english": "The sheep flee from him."}}]}
+{"id": "say-fame", "turns": [{"user": "How would you say 'Good fame does not die'?", "answer": {"record": "t3-t015-00040", "sentence": 1, "english": "Good fame does not die."}}]}
+{"id": "say-truth", "turns": [{"user": "Say 'I shall speak the truth.'", "answer": {"record": "t3-t021-00018", "sentence": 11, "english": "I shall speak the truth."}}]}
+{"id": "say-tongue", "turns": [{"user": "Translate: Guard your tongue!", "answer": {"record": "t3-b004-00223", "sentence": 0, "english": "Guard your tongue!"}}, {"user": "And this one: The tongue is a snake.", "answer": {"record": "t3-b004-00213", "sentence": 0, "english": "The tongue is a snake."}}]}
+{"id": "say-sit", "turns": [{"user": "How do I say 'Sit down beside the sheep'?", "answer": {"record": "t3-t010-00040", "sentence": 1, "english": "Sit down beside the sheep."}}]}
+{"id": "say-lie", "turns": [{"user": "Put this into PIE: Do not speak a lie to your father.", "answer": {"record": "t3-t007-00008", "sentence": 2, "english": "Do not speak a lie to your father."}}]}
+{"id": "say-know-you", "turns": [{"user": "Say 'I know you' in Proto-Indo-European.", "answer": {"record": "t3-t013-00022", "sentence": 0, "english": "I know you."}}]}
+{"id": "word-horse", "turns": [{"user": "How do you say 'horse'?", "answer": {"lexeme": "pie-lex-h1ekjwos", "cell": "NOM.SG", "english": "horse"}}, {"user": "And 'horses'?", "answer": {"lexeme": "pie-lex-h1ekjwos", "cell": "NOM.PL", "english": "horses"}}]}
+{"id": "word-sheep", "turns": [{"user": "What is the PIE word for 'sheep'?", "answer": {"lexeme": "pie-lex-h2owis", "cell": "NOM.SG", "english": "sheep"}}]}
+{"id": "word-parents", "turns": [{"user": "What is 'father' in PIE?", "answer": {"lexeme": "pie-lex-ph2texr", "cell": "NOM.SG", "english": "father"}}, {"user": "And 'mother'?", "answer": {"lexeme": "pie-lex-meh2texr", "cell": "NOM.SG", "english": "mother"}}]}
+{"id": "word-water", "turns": [{"user": "Say 'water'.", "answer": {"lexeme": "pie-lex-wodr", "cell": "NOM.SG", "english": "water"}}]}
+{"id": "word-fire", "turns": [{"user": "What is the word for fire?", "answer": {"lexeme": "pie-lex-peh2wr", "cell": "NOM.SG", "english": "fire"}}]}
+{"id": "word-sun", "turns": [{"user": "How do you say 'sun'?", "answer": {"lexeme": "pie-lex-soh2wl", "cell": "NOM.SG", "english": "sun"}}]}
+{"id": "word-wolf", "turns": [{"user": "What was the word for 'wolf'?", "answer": {"lexeme": "pie-lex-wlkwos", "cell": "NOM.SG", "english": "wolf"}}, {"user": "And 'dog'?", "answer": {"lexeme": "pie-lex-kjwox", "cell": "NOM.SG", "english": "dog"}}]}
+{"id": "word-name", "turns": [{"user": "Give me the word for 'name'.", "answer": {"lexeme": "pie-lex-h1nomn", "cell": "NOM.SG", "english": "name"}}]}
+{"id": "word-king", "turns": [{"user": "How do you say 'king'?", "answer": {"lexeme": "pie-lex-h3rexgjs", "cell": "NOM.SG", "english": "king"}}]}
+{"id": "word-family", "turns": [{"user": "What is 'brother' in PIE?", "answer": {"lexeme": "pie-lex-bhreh2texr", "cell": "NOM.SG", "english": "brother"}}, {"user": "And 'daughter'?", "answer": {"lexeme": "pie-lex-dhugh2texr", "cell": "NOM.SG", "english": "daughter"}}]}
+{"id": "word-god", "turns": [{"user": "Say 'god'.", "answer": {"lexeme": "pie-lex-deywos", "cell": "NOM.SG", "english": "god"}}, {"user": "And 'gods'?", "answer": {"lexeme": "pie-lex-deywos", "cell": "NOM.PL", "english": "gods"}}]}
+{"id": "word-sky-earth", "turns": [{"user": "How do you say 'sky'?", "answer": {"lexeme": "pie-lex-dyexws", "cell": "NOM.SG", "english": "sky"}}, {"user": "And 'earth'?", "answer": {"lexeme": "pie-lex-dhegjhoxm", "cell": "NOM.SG", "english": "earth"}}]}
+{"id": "word-fame", "turns": [{"user": "What is the word for 'fame'?", "answer": {"lexeme": "pie-lex-kjlewos", "cell": "NOM.SG", "english": "fame"}}]}
+{"id": "word-word", "turns": [{"user": "What is the PIE for 'word'?", "answer": {"lexeme": "pie-lex-wekwos", "cell": "NOM.SG", "english": "word"}}]}
+{"id": "neo-machine", "turns": [{"user": "Is there a word for 'machine'?", "answer": {"neologism": "pie-neo-kwertrom", "cell": "NOM.SG", "english": "machine"}}]}
+{"id": "neo-computer", "turns": [{"user": "How do you say 'computer'?", "answer": {"neologism": "pie-neo-h2ridhmokwertrom", "cell": "NOM.SG", "english": "computer"}}]}
+{"id": "neo-teacher", "turns": [{"user": "What is 'teacher' in PIE?", "answer": {"neologism": "pie-neo-dokjtoxr", "cell": "NOM.SG", "english": "teacher"}}, {"user": "And 'student'?", "answer": {"neologism": "pie-neo-h1ewktoxr", "cell": "NOM.SG", "english": "student"}}]}
+{"id": "neo-qa", "turns": [{"user": "Say 'question'.", "answer": {"neologism": "pie-neo-prekjnos", "cell": "NOM.SG", "english": "question"}}, {"user": "And 'answer'?", "answer": {"neologism": "pie-neo-h2enterowekwos", "cell": "NOM.SG", "english": "answer"}}]}
+{"id": "neo-thanks", "turns": [{"user": "What is the word for 'thanks'?", "answer": {"neologism": "pie-neo-gwrHtis", "cell": "NOM.SG", "english": "thanks"}}]}
+{"id": "neo-message", "turns": [{"user": "How would you say 'message'?", "answer": {"neologism": "pie-neo-wekwmn", "cell": "NOM.SG", "english": "message"}}]}
+{"id": "neo-helper", "turns": [{"user": "What do you call a helper or an assistant?", "answer": {"neologism": "pie-neo-h2reh1gjtoxr", "cell": "NOM.SG", "english": "helper"}}]}

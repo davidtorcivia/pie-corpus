@@ -11,7 +11,15 @@ Kinds (meta.task):
   pie_dialogue         PIE-only conversations from the dialogue genres, split into turns (meta.split:
                        "speaker" where the plan's clauses carry one, else "sentence_qa")
   continuation         the opening of a hymn, story or charm in PIE; the assistant continues it
-  bilingual_chat       English user turns, PIE replies with an English line in a fixed format (a minority)
+  en_dialogue          the same dialogues with English user input (meta.mode): en_pie (English user, PIE
+                       replies), en_pie_gloss (PIE reply + "English: ..." line), mixed (the user switches
+                       between English and PIE, the replies are PIE); one mode per record, chosen by crc32.
+                       Needs a sentence-by-sentence English alignment (align_english)
+  demo_chat            the hand-written demo seeds (data/export/demo_seeds.jsonl): English questions answered
+                       with an existing training sentence or an engine form of a lexicon (or neologism) entry
+
+Conversational eval: the dialogue records frozen in data/export/held_dialogues.json leave train in
+pie.export.build() (eval_dialogue_records) and become eval conversations in every mode (meta.chat_eval).
 
 Hold-out: nothing here re-splits. Each example inherits its split from build(): tasks from
 train_tasks/eval_tasks, texts from train_records/eval_records. A paradigm goes to the split its lexeme's
@@ -34,7 +42,9 @@ DIALOGUE_GENRES = ("dialogue", "greeting", "challenge", "parley", "council", "fa
 CONTINUATION_GENRES = {"hymn": "hymn", "prayer": "prayer", "praise": "hymn of praise", "charm": "charm",
                        "healing": "healing charm", "myth": "story", "fable": "fable", "tale": "story",
                        "narrative": "story", "epic": "epic story", "parable": "parable"}
-BILINGUAL_EVERY = 3            # one aligned dialogue in three also becomes a bilingual chat
+EN_MODES = ("en_pie", "en_pie_gloss", "mixed")     # English-input modes; mixed needs two user turns
+HELD_DIALOGUES = Path(__file__).resolve().parent.parent / "data/export/held_dialogues.json"
+DEMO_SEEDS = Path(__file__).resolve().parent.parent / "data/export/demo_seeds.jsonl"
 NEOLOGISM_CAP = 0.15           # PLAN.md Tier 3b: 10-15% of training tokens
 NGRAM = 4
 
@@ -65,6 +75,9 @@ CONTINUATION_SYSTEM = [
 
 BILINGUAL_SYSTEM = ("The user writes in English. Reply in Proto-Indo-European, then give an English translation "
                     "of your reply on its own line beginning \"English:\".")
+EN_PIE_SYSTEM = "Reply in Proto-Indo-European."
+MIXED_SYSTEM = "The user may write in English or in Proto-Indo-European. Always reply in Proto-Indo-European."
+MODE_SYSTEM = {"en_pie": EN_PIE_SYSTEM, "en_pie_gloss": BILINGUAL_SYSTEM, "mixed": MIXED_SYSTEM}
 
 TASK_TEMPLATES = {
     "translate_en_pie": [
@@ -298,6 +311,71 @@ def paradigm_chats(lx, tasks: list[dict]) -> list[dict]:
     return out
 
 
+# ---------------------------------------------------------------- English alignment
+
+# sentence splits of a record's English, tried in order; the first that aligns wins (align_english)
+_Q_CLOSE = "\"'”’"
+EN_SPLITS = (
+    ("plain", r"(?<=[.?!])\s+"),
+    # a closing quote after the sentence's punctuation ('Come in!' 'Are you ...?')
+    ("quotes", r"(?<=[.?!])[\"'”’]+\s+|(?<=[.?!])\s+"),
+    # and a speech frame before an opening quote (Then the master spoke: "Who are you?")
+    ("quotes_colon", r"(?<=[.?!])[\"'”’]+\s+|(?<=[.?!])\s+|(?<=:)\s+(?=[\"'“‘])"),
+    # and at a semicolon (In the sky he is born; in the water he is born.), plain then with quotes
+    ("semicolon", r"(?<=[.?!;])\s+"),
+    ("quotes_semicolon", r"(?<=[.?!])[\"'”’]+\s+|(?<=[.?!;])\s+"),
+)
+SPEAKER_MARK = re.compile(r"^(?:user|model|assistant)\s*:\s*", re.I)
+
+
+def _clean_en(seg: str) -> str:
+    """One English sentence without its quotation marks or a "User:"/"Model:" turn marker (planner-brief-3b)."""
+    seg = SPEAKER_MARK.sub("", seg.strip()).strip("\"“”").strip()
+    if seg[:1] in "'‘":
+        seg = seg[1:]
+    if len(seg) > 1 and seg[-1] in "'’" and seg[-2] in ".?!":
+        seg = seg[:-1]
+    return seg.strip()
+
+
+def _en_split(text: str, pattern: str) -> list[str]:
+    return [c for c in (_clean_en(x) for x in re.split(pattern, text.strip())) if c]
+
+
+def _parity(en: list[str], pie: list[str]) -> bool:
+    return len(en) == len(pie) and [e.endswith("?") for e in en] == [x.endswith("?") for x in pie]
+
+
+def align_english(rec: dict) -> tuple[list[str] | None, str]:
+    """The record's English, one sentence per PIE sentence, or (None, why not).
+
+    "plan_english": every sentence-initial plan clause (the first, and each with `break`) carries its own
+    `english` (the optional plan field, docs/generation/planner-brief-v4.md): exact by construction.
+    Otherwise the record's `english` is split at sentence ends (EN_SPLITS: plain, then also at a closing quote,
+    then also at a "said:" frame before a quotation), and the first split whose sentence count equals the
+    PIE's and whose questions ('?') fall on the same sentences is taken. Anything else is skipped, never
+    guessed: "count_mismatch" or "question_mismatch" (of the last split tried)."""
+    pie = sentences(rec["pie"])
+    groups = _sentence_groups(rec)
+    if groups and all(isinstance(g[0].get("english"), str) and g[0]["english"].strip() for g in groups):
+        en = [_clean_en(g[0]["english"]) for g in groups]
+        return (en, "plan_english") if _parity(en, pie) else (None, "plan_english_mismatch")
+    why = "no_english"
+    for name, pat in EN_SPLITS:
+        en = _en_split(rec.get("english") or "", pat)
+        if _parity(en, pie):
+            return en, name
+        if en:
+            why = "count_mismatch" if len(en) != len(pie) else "question_mismatch"
+    return None, why
+
+
+def narrated(en: list[str]) -> bool:
+    """A narrated dialogue ("Then the master said: ..."): its frames would be user turns that are not
+    conversation, so the English-input modes skip it (pie_dialogue keeps it)."""
+    return any(e.endswith(":") or re.search(r":\s*[\"'“‘]", e) for e in en)
+
+
 # ---------------------------------------------------------------- PIE-only dialogues
 
 
@@ -358,7 +436,52 @@ def dialogue_turns(rec: dict) -> tuple[list[tuple[str, list[int]]], str, int] | 
     return turns, method, dropped
 
 
-def dialogue_chats(records: list[dict], skipped: collections.Counter) -> list[dict]:
+def held_dialogue_ids(root: Path | None = None) -> frozenset[str]:
+    """The record ids reserved for the conversational eval (data/export/held_dialogues.json)."""
+    path = HELD_DIALOGUES if root is None else Path(root) / "data/export/held_dialogues.json"
+    if not path.exists():
+        return frozenset()
+    return frozenset(json.loads(path.read_text("utf-8"))["records"])
+
+
+def _user_langs(rec_id: str, n_user: int) -> list[str]:
+    """The mixed mode's per-user-turn language, by crc32; at least one English and one PIE turn."""
+    langs = ["en" if _pick(f"{rec_id}|mix|{k}", 2) == 0 else "pie" for k in range(n_user)]
+    if len(set(langs)) == 1:
+        langs[-1] = "pie" if langs[-1] == "en" else "en"
+    return langs
+
+
+def en_dialogue(rec: dict, turns, en: list[str], sents: list[str], mode: str, method: str,
+                align: str, dropped: int, **extra) -> dict:
+    """One English-input conversation over the record's turns (EN_MODES); the assistant always speaks PIE."""
+    n_user = sum(r == "user" for r, _ in turns)
+    langs = _user_langs(rec["id"], n_user) if mode == "mixed" else ["en"] * n_user
+    out, k = [], 0
+    for r, ix in turns:
+        e, p = " ".join(en[i] for i in ix), " ".join(sents[i] for i in ix)
+        if r == "user":
+            if langs[k] == "pie":
+                out.append(("user", p))
+            elif mode == "en_pie_gloss" and k == 0:
+                out.append(("user", BILINGUAL_TEMPLATES[_pick(rec["id"] + "|bt", len(BILINGUAL_TEMPLATES))]
+                            .format(x=e)))
+            else:
+                out.append(("user", e))
+            k += 1
+        else:
+            out.append(("assistant", f"{p}\nEnglish: {e}" if mode == "en_pie_gloss" else p))
+    meta = _meta("en_dialogue", rec["id"], rec, mode=mode, split=method, align=align, turns=len(turns),
+                 user_langs=langs if mode == "mixed" else None, dropped_trailing=dropped or None, **extra)
+    return {"messages": _msgs(MODE_SYSTEM[mode], *out), "meta": meta}
+
+
+def dialogue_chats(records: list[dict], skipped: collections.Counter, align_stats: collections.Counter | None = None,
+                   all_modes: bool = False, **extra) -> list[dict]:
+    """pie_dialogue (mode pie_pie) for every dialogue-genre record that splits into turns, and, when its English
+    aligns (align_english) and it is not narrated, an en_dialogue: one mode per record by crc32 (all_modes: every
+    mode, for the eval). `extra` goes into every example's meta."""
+    align_stats = collections.Counter() if align_stats is None else align_stats
     out = []
     for rec in records:
         if rec.get("genre") not in DIALOGUE_GENRES:
@@ -370,22 +493,108 @@ def dialogue_chats(records: list[dict], skipped: collections.Counter) -> list[di
         sents = sentences(rec["pie"])
         system = PIE_ONLY_SYSTEM[_pick(rec["id"] + "|sys", len(PIE_ONLY_SYSTEM))]
         msgs = _msgs(system, *[(r, " ".join(sents[i] for i in ix)) for r, ix in turns])
-        out.append({"messages": msgs, "meta": _meta("pie_dialogue", rec["id"], rec, split=method,
-                                                     turns=len(turns), dropped_trailing=dropped or None)})
-        en = sentences(rec.get("english") or "")
-        aligned = len(en) == len(sents) and [s.endswith("?") for s in en] == [s.endswith("?") for s in sents]
-        if aligned and _pick(rec["id"] + "|bi", BILINGUAL_EVERY) == 0:
-            bturns = []
-            for k, (r, ix) in enumerate(turns):
-                e = " ".join(en[i] for i in ix)
-                if r == "user":
-                    bturns.append(("user", BILINGUAL_TEMPLATES[_pick(rec["id"] + "|bt", len(BILINGUAL_TEMPLATES))]
-                                   .format(x=e) if k == 0 else e))
-                else:
-                    bturns.append(("assistant", f"{' '.join(sents[i] for i in ix)}\nEnglish: {e}"))
-            out.append({"messages": _msgs(BILINGUAL_SYSTEM, *bturns),
-                        "meta": _meta("bilingual_chat", rec["id"], rec, split=method, turns=len(turns),
-                                      dropped_trailing=dropped or None)})
+        out.append({"messages": msgs, "meta": _meta("pie_dialogue", rec["id"], rec, mode="pie_pie", split=method,
+                                                     turns=len(turns), dropped_trailing=dropped or None, **extra)})
+        en, align = align_english(rec)
+        if en is None:
+            align_stats[f"unaligned:{align}"] += 1
+            continue
+        if narrated(en):
+            align_stats[f"narrated:{align}"] += 1
+            continue
+        align_stats[f"aligned:{align}"] += 1
+        n_user = sum(r == "user" for r, _ in turns)
+        modes = [m for m in EN_MODES if m != "mixed" or n_user >= 2]
+        for mode in modes if all_modes else [modes[_pick(rec["id"] + "|mode", len(modes))]]:
+            out.append(en_dialogue(rec, turns, en, sents, mode, method, align, dropped, **extra))
+    return out
+
+
+# ---------------------------------------------------------------- demo seeds
+
+
+def load_demo_seeds(path: Path | None = None) -> list[dict]:
+    path = path or DEMO_SEEDS
+    if not path.exists():
+        return []
+    return [json.loads(x) for x in path.read_text("utf-8").splitlines() if x.strip() and not x.startswith("//")]
+
+
+def _seed_answer(src: dict, train: dict[str, dict], lex_ids: set[str], lx, nx) -> tuple[str, str, dict] | str:
+    """(PIE, English, flags) for one seed answer, or the reason it is skipped. Sources: a sentence (or a run of
+    sentences) of a TRAINING record, checked against its aligned English; or an engine cell of a lexicon entry
+    that occurs in a training record (so never a held-out family), or of a neologism (flagged)."""
+    if "record" in src:
+        rec = train.get(src["record"])
+        if rec is None:
+            return "record_not_in_train"
+        en, _a = align_english(rec)
+        if en is None:
+            return "record_unaligned"
+        ix = src["sentence"] if isinstance(src["sentence"], list) else [src["sentence"]]
+        sents = sentences(rec["pie"])
+        if max(ix) >= len(sents):
+            return "sentence_out_of_range"
+        eng = " ".join(en[i] for i in ix)
+        if eng != src["english"]:
+            return "english_changed"
+        return " ".join(sents[i] for i in ix), eng, {"source_record": rec["id"], "neologism": rec.get("neologism"),
+                                                      "coined": _coined(rec)}
+    from .realize import Lexicon
+    if not isinstance(lx, Lexicon):
+        return "no_lexicon"
+    lid, cell = src.get("lexeme") or src.get("neologism"), src.get("cell", "NOM.SG")
+    if "lexeme" in src:
+        if lid not in lex_ids:
+            return "lexeme_not_in_train"
+        use, flags = lx, {"coined": lx.coined(lid) or None}
+    else:
+        if nx is None:
+            return "no_neologisms"
+        if lid not in nx.specs:
+            return "neologism_unknown"
+        use, flags = nx, {"coined": "neologism", "neologism": True}
+    try:
+        cells = use.admissible_cells(lid, src["gender"]) if src.get("gender") else use.admissible_cells(lid)
+    except (KeyError, ValueError):
+        return "no_cells"
+    if not cells.get(cell):
+        return "no_cell"
+    form = cells[cell][0]
+    return form + src.get("punct", "."), src["english"], {"source_lexeme": lid, **flags}
+
+
+def demo_chats(seeds: list[dict], train_records: list[dict], lx, skipped: collections.Counter) -> list[dict]:
+    """The demo seed conversations (English user turns; PIE answers, with the gloss line when the seed's crc32
+    picks en_pie_gloss). A seed is skipped whole when any answer cannot be resolved (never invented)."""
+    train = {r["id"]: r for r in train_records}
+    lex_ids = {t.get("lex_id") for r in train_records for t in r.get("tokens", [])}
+    nx = None
+    if any("neologism" in t["answer"] for sd in seeds for t in sd["turns"]):
+        from .realize import Lexicon
+        if isinstance(lx, Lexicon):
+            from .neologism import NEOLOGISMS, with_neologisms
+            nx = with_neologisms(lx) if NEOLOGISMS.exists() else None
+    out = []
+    for sd in seeds:
+        mode = sd.get("mode") or ("en_pie", "en_pie_gloss")[_pick(sd["id"] + "|mode", 2)]
+        turns, flags, why = [], {}, None
+        for t in sd["turns"]:
+            a = _seed_answer(t["answer"], train, lex_ids, lx, nx)
+            if isinstance(a, str):
+                why = a
+                break
+            pie, eng, f = a
+            turns += [("user", t["user"]), ("assistant", f"{pie}\nEnglish: {eng}" if mode == "en_pie_gloss" else pie)]
+            if f.get("neologism"):
+                flags["neologism"] = True
+            if f.get("coined") and flags.get("coined") != "neologism":      # a neologism wins (pie.export)
+                flags["coined"] = f["coined"]
+        if why:
+            skipped[why] += 1
+            continue
+        meta = _meta("demo_chat", f"demo:{sd['id']}", None, mode=mode, seed=sd["id"], turns=len(turns), **flags)
+        out.append({"messages": _msgs(MODE_SYSTEM[mode], *turns), "meta": meta})
     return out
 
 
@@ -573,20 +782,29 @@ def token_stats(chat: dict[str, list[dict]], texts: dict[str, str], tokenizer: s
 # ---------------------------------------------------------------- build / write
 
 
-def build_chat(d: dict, lx=None) -> dict:
-    """The chat examples, text views and checks for build()'s splits. Raises on leakage."""
+def build_chat(d: dict, lx=None, seeds: list[dict] | None = None) -> dict:
+    """The chat examples, text views and checks for build()'s splits. Raises on leakage. `seeds`: the demo seeds
+    (default data/export/demo_seeds.jsonl)."""
     if lx is None:
         from .realize import Lexicon
         lx = Lexicon.load()
+    seeds = load_demo_seeds() if seeds is None else seeds
     recs = {r["id"]: r for r in d["train_records"] + d["eval_records"]}
     skipped = {"train": collections.Counter(), "eval": collections.Counter()}
+    align = {"train": collections.Counter(), "eval": collections.Counter()}
+    demo_skipped: collections.Counter = collections.Counter()
     chat = {}
     for split in ("train", "eval"):
         tasks, records = d[f"{split}_tasks"], d[f"{split}_records"]
         exs = [task_chat(t, recs.get(t.get("source_id"))) for t in tasks]
         exs += paradigm_chats(lx, tasks)
-        exs += dialogue_chats(records, skipped[split])
+        exs += dialogue_chats(records, skipped[split], align[split])
         exs += continuation_chats(records)
+        if split == "train":
+            exs += demo_chats(seeds, records, lx, demo_skipped)
+        else:      # the conversational eval: the reserved dialogue records, in every mode
+            exs += dialogue_chats(d.get("eval_dialogue_records", []), skipped[split], align[split], all_modes=True,
+                                  chat_eval=True)
         random.Random(f"chat-{split}").shuffle(exs)
         for n, e in enumerate(exs):
             e["meta"]["id"] = f"{split}-{n:06d}"
@@ -600,7 +818,12 @@ def build_chat(d: dict, lx=None) -> dict:
         print(f"WARNING: Tier 3b neologism share {neo['share']:.1%} of training words exceeds the "
               f"{NEOLOGISM_CAP:.0%} cap (PLAN.md)", file=sys.stderr)
     return {"chat": chat, "text": text, "leakage": leak, "neologism": neo,
-            "dialogue_skipped": {k: dict(v) for k, v in skipped.items()}}
+            "dialogue_skipped": {k: dict(v) for k, v in skipped.items()},
+            "alignment": {k: dict(sorted(v.items())) for k, v in align.items()},
+            "demo_seeds": {"seeds": len(seeds), "used": sum(e["meta"]["task"] == "demo_chat" for e in chat["train"]),
+                           "skipped": dict(sorted(demo_skipped.items()))},
+            "chat_eval": {"reserved_records": len(d.get("eval_dialogue_records", [])),
+                          "held_dialogues": str(HELD_DIALOGUES.relative_to(HELD_DIALOGUES.parents[2]))}}
 
 
 def write_chat(d: dict, out: Path, tokenizer: str | None = None, provenance: dict | None = None,
@@ -626,6 +849,17 @@ def write_chat(d: dict, out: Path, tokenizer: str | None = None, provenance: dic
                                                                   if e["meta"]["task"] == "pie_dialogue"))
                                       for s, v in c["chat"].items()},
         "dialogue_records_skipped": c["dialogue_skipped"],
+        # per dialogue record that splits into turns: aligned:<method> (gets an English-input conversation),
+        # narrated:<method> (aligned, but "Then he said:" frames), unaligned:<reason> (skipped, never guessed)
+        "dialogue_english_alignment": c["alignment"],
+        "modes": {s: dict(sorted(collections.Counter(f"{e['meta']['task']}/{e['meta']['mode']}" for e in v
+                                                     if e["meta"].get("mode")).items()))
+                  for s, v in c["chat"].items()},
+        "english_input_conversations": {s: sum(e["meta"].get("mode", "pie_pie") != "pie_pie" for e in v)
+                                        for s, v in c["chat"].items()},
+        "demo_seeds": c["demo_seeds"],
+        "chat_eval": {**c["chat_eval"], "examples": dict(sorted(collections.Counter(
+            f"{e['meta']['task']}/{e['meta']['mode']}" for e in c["chat"]["eval"] if e["meta"].get("chat_eval")).items()))},
         "neologism": c["neologism"],
         "leakage": c["leakage"],
         "tokens": token_stats(c["chat"], texts, tokenizer),

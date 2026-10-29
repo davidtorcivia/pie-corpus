@@ -37,6 +37,9 @@ def main() -> int:
     for name in ("train_records", "eval_records", "train_tasks", "eval_tasks"):
         (out / f"{name.replace('_records', '').replace('_tasks', '_tasks')}.jsonl").write_text(
             "".join(json.dumps(x, ensure_ascii=False) + "\n" for x in d[name]), "utf-8")
+    # the conversational eval's reserved records (data/export/held_dialogues.json), for scorers
+    (out / "eval_dialogues.jsonl").write_text(
+        "".join(json.dumps(x, ensure_ascii=False) + "\n" for x in d["eval_dialogue_records"]), "utf-8")
     vdir = out / "views"
     vdir.mkdir(exist_ok=True)
     for split in ("train", "eval"):

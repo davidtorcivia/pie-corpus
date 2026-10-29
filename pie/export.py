@@ -10,6 +10,9 @@ Policy (docs/STATUS.md, open question 1 until David decides):
           across all training material; checked)
   train = Tier 2 and release-eligible Tier 3 records; pilots additionally require
           include_pilot=True. Experimental inclusion explicitly bypasses eligibility.
+  conversational eval = the whole dialogue records frozen in data/export/held_dialogues.json (one
+          approved batch's dialogues), taken out of train (eval_dialogue_records): they make no task
+          and no text view, only the chat/eval.jsonl conversations (pie.export_chat, export/README.md "Chat export")
 Cognate→PIE examples hold out *whole root families* (eval_root, the one predicate
 make_slice and export share), so no derivative of an eval root appears in a training task.
 The leakage check fails the export if any PIE string or record id is in both
@@ -283,6 +286,12 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0,
         if bad3b:
             raise ValueError(f"a corpus/tier3b record needs tier 3 and neologism: true: {bad3b[0]}")
         train_recs += recs
+    # the conversational eval (data/export/held_dialogues.json, pie.export_chat.held_dialogue_ids): whole dialogue
+    # records reserved from training; they feed only chat/eval.jsonl, never a task or a text view
+    from .export_chat import held_dialogue_ids
+    held_dia = held_dialogue_ids(root)
+    eval_dialogues = [r for r in train_recs if r["id"] in held_dia]
+    train_recs = [r for r in train_recs if r["id"] not in held_dia]
     neo_share = neologism_cap(train_recs)
     lx = Lexicon.load()
     train_tasks = [t for r in train_recs for t in record_tasks(r)]
@@ -315,8 +324,8 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0,
         raise ValueError(f"held-out root family in training tasks: {bad[0].get('root_id')}")
     # leakage check
     train_pie = {r["pie"] for r in train_recs}
-    leak = sorted({r["pie"] for r in tier1} & train_pie)
-    ids = {r["id"] for r in tier1} & {r["id"] for r in train_recs}
+    leak = sorted({r["pie"] for r in tier1 + eval_dialogues} & train_pie)
+    ids = {r["id"] for r in tier1 + eval_dialogues} & {r["id"] for r in train_recs}
     if leak or ids:
         raise ValueError(f"eval leakage: {len(leak)} shared PIE strings, {len(ids)} shared ids, e.g. {leak[:3]}")
     # an eval line found verbatim inside a training text (Tier 3 reuses the formula menu on purpose):
@@ -326,7 +335,7 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0,
     tier1 = [{**r, "seen_in_train": r["id"] in seen} for r in tier1]
     eval_tasks = [{**t, "seen_in_train": t.get("source_id") in seen} if "source_id" in t else t for t in eval_tasks]
     return {"train_records": train_recs, "eval_records": tier1, "train_tasks": train_tasks, "eval_tasks": eval_tasks,
-            "eval_tasks_accent_specified": accent_specified(eval_tasks),
+            "eval_tasks_accent_specified": accent_specified(eval_tasks), "eval_dialogue_records": eval_dialogues,
             "batch_eligibility": batch_decisions, "neologism_share": neo_share}
 
 
