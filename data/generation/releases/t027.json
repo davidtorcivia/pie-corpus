@@ -1,15 +1,1 @@
-{
- "schema_version": 1,
- "batch": "t027",
- "sha256": {
-  "records": "c63b9fbf7c02f74b15b936419d32b2419c62c153c9d0d2fced7686e6fa7ad4fb",
-  "plans": "acc913c64cb35816b681b46da9f141abfdfcf58a237f9742ad71e8d26772f486",
-  "gate_report": "23ef65fb78079643ebbcf6484c05b58f5049f34d5b661375b332a7db4b5e722c"
- },
- "review": {
-  "required": true,
-  "status": "pending",
-  "evidence": [],
-  "rationale": "Awaiting review."
- }
-}
+{"schema_version": 1, "batch": "t027", "sha256": {"records": "d45b4eb51f230f2a402fc1b4abe8278f9d0874c61c89fdbe7f6c9418ac67fbff", "plans": "742502ce5ec418d279d09ae0968654b1911ee5f4fdbe4a55a576b31136b989d8", "gate_report": "16902f7a416309156df030b363e81711a63fc638d11d799e0dcee3d626153b08"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t027.json", "docs/audits/tier3-t027-review.md", "docs/audits/packets/t027-verdicts.jsonl"], "rationale": "Calibrated review (docs/audits/tier3-t027-review.md): plants 4/5 blind; real 14/20 wrong before fixes (12 from imperatives without person defaulting to 3sg; person:2 set on all 51 such imperatives batch-wide), 0/20 after; gate PASS."}}

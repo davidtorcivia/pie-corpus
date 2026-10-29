@@ -20,3 +20,5 @@ These are fixed centrally after wave 1, before wave 2 starts. Each item names th
 - **391 eh₂-stem nouns are unusable** because they fall below the shape-backtest threshold (mare h₁éḱweh₂, tail, wasp, …). Other core words are also unusable: ugʷsḗn 'ox', sḗh₂l 'salt', 'louse', 'bee', 'nit'; fox h₂wl̥pis needs an override. This is a large vocabulary loss and the highest-priority engine item (project-reconstructions agent).
 - **ḱe 'here'** is a particle, so make_slice never offers it as an adverb. Add a deictic 'here' adverb.
 - **Slice keywords to add in wave 2**: nest, fly, thirst, hunger/hungry (needs `--derived`).
+- **Imperative with no `person` defaults to 3sg** ("let him take"), with no warning even when a vocative is present, and brief v4 never says imperatives need `person`. This caused 12 of the 14 wrong items in t027. Older approved batches have IMP verbs without person: t003 (6), t006 (1), t007 (2), t015 (21), t023 (18). These are being audited.
+- **Accents on the new imperatives** h₁éddʰi and tétḱdʰi are wrong (t027).
