@@ -251,3 +251,53 @@ pitch well (0.84), and Seed-VC F0 keeps it everywhere (0.91–0.96).
   list does not define.
 - Per-clip numbers: `tts/vc/results.json`.
 
+
+## 7. Finals set (2026-10-29)
+
+The owner's finals: 8 systems on 28 items, 224 clips, for rating on `tts/finals/index.html` (manifest
+`tts/finals/manifest.json`, schema `pie-tts-bakeoff/1`, `source: "finals"`; publish map `tts/finals/files.json`).
+Pipeline `tts/finals/finals.py` (steps in its docstring); audio under `tts/finals/audio/` (gitignored).
+
+- **Items:** the 10 corpus hymns of the Voice Lab, whole records read at HEAD 2284132 (13–32 s in eSpeak), then
+  the 18 words and lines above.
+- **Systems:** eSpeak tone; Kokoro + pitch patch with each voice's recommended profile (as §5.2); eSpeak →
+  Seed-VC F0 into em_santa, em_alex, bf_isabella, af_nicole (references as before).
+- **Long sources.** With a 25 s reference prompt Seed-VC's window holds only ~5 s of source, and it would cut
+  the hymns there. Instead each source is cut at the longest quiet run (a pause or stop closure, ≥ 30 ms at
+  −40 dB) in the second half of each 4.6 s window, the pieces are converted separately and joined; every seam
+  is in silence. (eSpeak pie-tone's sentence pause is only 30–60 ms, no longer than a closure.)
+- **Semitone shift for the female targets** (`tts/finals/shift_trials.json`). eSpeak's tone voice sits at
+  ~94 Hz, so +5 to +7 st leaves both voices well under their own range. Trials at 0, +5, +7, +9, +11, +13 st on
+  ḱléwos and hymn-1; the pick is the shift whose converted median F0 is nearest the voice's reference median
+  (first 25 s, Praat AC) among those inside its interquartile range:
+
+  | voice | reference median (IQR), Hz | +7 st | +9 st | +11 st | +13 st | chosen |
+  |---|---|---|---|---|---|---|
+  | bf_isabella | 201 (183–225) | 137 | 157 | 177 | **196** | **+13** |
+  | af_nicole | 159 (144–181) | 141 | **153** | 175 | 195 | **+9** |
+
+  F0 r and accent contrast stay at the unshifted level (0.86–0.98, 0.66–1.0). The shift does not affect χ:
+  its onset noise varies run to run (af_nicole hymn-1: 10–100 ms across the six trials).
+- **QC.** No clip is clipped, silent or truncated (Seed-VC file length 0.99–1.00× the source in every clip).
+  Eleven clips whose first segment kept less than half of eSpeak's word-initial noise got a second render of
+  that segment, keeping the one with more noise (`tts/finals/rerenders.json`, 7 of 11 improved). Five remain
+  under half (bf_isabella h₂éwsos, h₂ówis, hymn-1, t3-t026-00015; af_nicole h₂éwsos), noted on the page.
+
+Objective checks (`tts/vc/evaluate.py`, against the eSpeak source; `tts/finals/results.json`):
+
+| system | PER, hymns | PER, words | F0 r median, hymns | F0 r median, words | accent kept, hymns | χ noise kept | duration, hymns | duration, words |
+|---|---|---|---|---|---|---|---|---|
+| Kokoro bf_isabella | 0.62 | 0.91 | 0.14 | 0.69 | 0.12 | 0.54 | 1.39 | 1.43 |
+| Kokoro af_nicole | 0.62 | 0.80 | 0.05 | 0.79 | −0.04 | 0.79 | 1.66 | 1.46 |
+| Kokoro em_santa | 0.69 | 0.93 | 0.18 | 0.55 | 0.15 | 0.80 | 1.11 | 1.23 |
+| Seed-VC F0 em_santa | 0.54 | 0.76 | 0.94 | 0.95 | 0.90 | 0.85 | 1.00 | 1.00 |
+| Seed-VC F0 em_alex | 0.52 | 0.75 | 0.86 | 0.95 | 0.81 | 0.74 | 1.00 | 0.99 |
+| Seed-VC F0 bf_isabella (+13) | 0.51 | 0.68 | 0.96 | 0.98 | 0.87 | 0.35 | 1.00 | 0.96 |
+| Seed-VC F0 af_nicole (+9) | 0.53 | 0.77 | 0.95 | 0.93 | 0.88 | 0.52 | 1.00 | 0.96 |
+
+"Words" here are the 16 single words; the two lines are in `results.json`. χ noise kept is over the χ-initial
+items (4 words and lines, and the hymns that open with h₂). On the hymns Kokoro's F0 r and accent numbers are
+near zero partly by method: the F0 tracks are compared on normalised time, and over 15–30 s Kokoro's own
+timing (1.1–1.7× eSpeak's length) puts its syllables elsewhere; read them as "not eSpeak's contour", not as
+"no accent". Seed-VC F0 keeps the contour on the hymns as on the words. Its χ is weakest in the shifted female
+voices, bf_isabella above all, which matches §5.2 (0.56 there, unshifted).
