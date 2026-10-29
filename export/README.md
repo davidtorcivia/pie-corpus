@@ -175,8 +175,8 @@ Built from 084027b (Tier 3 batches pending re-approval are out, so train is smal
 | grammar | 25% | 8,648 | 58.0% | 903,395 | 50.0% | 1,723 | 25.1% |
 | total | | 14,903 | | 1,807,473 | | 6,868 | |
 
-Of the conversation and translation examples (all but grammar), English input is 66% in `train.jsonl`
-and 80% in `train_mix.jsonl`.
+By tokens, English input is 59.9% of `train_mix.jsonl` (542,640 of 906,638). Of the conversation and
+translation examples (all but grammar), English input is 66% in `train.jsonl` and 80% in `train_mix.jsonl`.
 
 **Self-overlap.** `summary.json` `self_overlap`: per assistant turn of a dialogue record, the number of
 dialogue-mode examples that train on it (cap 2, `DEDUP_CAP`; the tests fail above it); and, reported only,
