@@ -9,6 +9,7 @@ Each word is rendered by eSpeak alone (pie/pie-tone), then PSOLA (Praat via pars
   between lines.
 
     tts/vc/.venv-eval/bin/python -I tts/cadence/cadence.py t3-t026-00015 out.wav
+    tts/vc/.venv-eval/bin/python -I tts/cadence/cadence.py tts/cadence/hardtest.txt out.wav   # a text file
     CADENCE_PITCH=0 ...   # the timing and pauses alone, eSpeak's own pitch
 """
 import json, math, os, random, sys, tempfile
@@ -72,8 +73,9 @@ def shape(snd, ratio, st_of, rng):
     return call(man, "Get resynthesis (overlap-add)")
 
 
-def main(rid, out_wav):
-    r = record(rid); rng = random.Random(0)
+def main(src, out_wav):
+    r = {"pie": Path(src).read_text(encoding="utf-8")} if Path(src).is_file() else record(src)
+    rng = random.Random(0)
     sr, parts, report, t = None, [], [], 0.0
     lines = verse_lines(r["pie"])
     with tempfile.TemporaryDirectory() as tmp:
