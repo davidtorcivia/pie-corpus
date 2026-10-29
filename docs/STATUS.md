@@ -102,6 +102,17 @@ Everything in IDEAS.md is folded into PLAN.md, and nothing is rejected outright.
 
 ## Log
 
+- **2026-10-29 (overnight). Wrap-up:**
+  - Consolidation pass done: all Tier 3 batches re-realized, 0 unexplained changes, meaning cut by the meter repairs restored, spot check 0/40 wrong.
+  - Vocabulary push merged (usable 4,917, slice-offered 1,325).
+  - 35 batches re-approved.
+  - Corpus-quality batch 2 done, index rebuilt.
+  - Hold-out protects 835 core families (help, drink, hear, water, …).
+  - Tier 3b brief v2; t3b-002 approved.
+  - Export: English-input chat mix plus a separate 1:1 translator dataset (b8498a5).
+  - TTS: IPA converter, eSpeak and Kokoro backends, pitch-patched Kokoro on erebus (pie-tts:8881), 19-voice bake-off with objective scores, eSpeak → Seed-VC F0 judged viable.
+  - Lead expansion closed with no new candidates.
+  - Handoff list: docs/NEXT.md.
 - **2026-10-29. Owner decisions:**
   - The meter convention is accepted: a laryngeal after a -y diphthong is not syllabic, so *bʰéroyh₁t has 2 syllables, as Ved. bháret (pie/meter.py).
   - The 8 neologism demo seeds stay in training, flagged.

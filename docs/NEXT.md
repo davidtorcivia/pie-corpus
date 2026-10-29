@@ -1,6 +1,13 @@
 # Next steps (handoff list, started 2026-10-29)
 
-This file is finished at the end of the session, with everything left over from the work in progress.
+## Morning first
+1. **Rate the TTS finals** on the finals rating page (link in chat). Candidates: Kokoro + profile (bf_isabella, af_nicole, em_santa) and eSpeak → Seed-VC F0 (em_santa, em_alex, bf_isabella, af_nicole), with eSpeak as reference. Then set the winner as the `pie.speak` default and redeploy erebus `pie-tts` if Kokoro wins.
+   - Seed-VC is GPL-3.0 and offline-only (~35 s/clip on CPU); a Seed-VC winner means pre-rendered demo audio, or a GPU host.
+   - The earlier bake-off page (19 voices) and the Voice Lab stay up for reference.
+2. **Owner decisions:**
+   - THEONYM_DERIVATIVES (Helios/Sūrya) — kept for now.
+   - Still-held everyday roots (remind, rise, protect, …).
+   - Two t027 plural-perfect meaning changes (consolidation audit).
 
 ## Model training tests (owner, 2026-10-29)
 
@@ -49,3 +56,9 @@ Judge "a living language you can converse with", not a talking dictionary: use t
 - **Tier 2 lines to re-review after the cq2 mapping changes:** dawn-sun-016 and dawn-sun-009 (exact → root), epic-diction-013 (exact → root), death-otherworld-012 and -004 (root → exact). Rebuild `corpus/tier2` first.
 - **Open:** Welsh nant is still keyed to *nem- through an unverified route. Clitics stay non-content; a clitic-aware scan would need a function-word layer in the index.
 - **Old index copies:** `corpora.pre-cq2.sqlite` and the corrupt `corpora.cq2-decd105.sqlite`, plus the old caches under data/research/8c/search-index/. Delete them to free space.
+
+## State at end of session (2026-10-29)
+- **Corpus:** 35 Tier 3 batches approved after consolidation (t022 and t025 excluded: lexeme caps), Tier 3b t3b-001 and t3b-002 approved; final export b8498a5.
+- **Engine:** usable lexemes 4,917; meter exact gate ≥ 0.90 in verse genres; hold-out protects 835 core families.
+- **Parked by the owner (not started):** Tier 3 wave 2 (t034–t083), more Tier 3b batches, the translation-app shell, further discovery rounds (D1/D2 failed their controls: docs/research/discovery-r2-results.md).
+- **Disk clean-up when convenient:** old search indexes and caches under data/research/8c/search-index/; tts/vc venvs and caches; tts/cache/hf.
