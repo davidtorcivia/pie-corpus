@@ -234,3 +234,35 @@ def test_syllable_weight_matches_meter():
 def test_shared_nuclei():
     segs, nuclei = word_nuclei("dʰugh₂tḗr")
     assert len(syllables("dʰugh₂tḗr")) == len(nuclei) == 3
+
+
+# --- scripts/to_ipa.py --------------------------------------------------------------------------------------
+
+def _cli(*args, stdin=None):
+    import subprocess
+    import sys
+    return subprocess.run([sys.executable, "-I", str(ROOT / "scripts" / "to_ipa.py"), *args], input=stdin,
+                          capture_output=True, text=True, cwd=ROOT)
+
+
+def test_cli_convert():
+    r = _cli("convert", "--tone", "stress", "h₂ówis h₁éḱwōs-kʷe")
+    assert r.returncode == 0 and r.stdout.strip() == "ˈχo.wis ˈhec.woːs.kʷe"
+    r = _cli("convert", "--ascii", "--xsampa", stdin="ph2te:/r\n")
+    assert r.stdout.strip() == "p@.te:_Hr"
+    assert _cli("convert", "qqq").returncode == 1
+
+
+def test_cli_batch_adds_field_and_never_writes_in_place(tmp_path):
+    src = tmp_path / "in.jsonl"
+    src.write_text(json.dumps({"id": "a", "pie": "ph₂tḗr"}, ensure_ascii=False) + "\n"
+                   + json.dumps({"id": "b"}) + "\n", "utf-8")
+    before = src.read_text("utf-8")
+    out = tmp_path / "out.jsonl"
+    assert _cli("batch", str(src), str(out), "--xsampa").returncode == 0
+    recs = [json.loads(x) for x in out.read_text("utf-8").splitlines()]
+    assert recs[0]["ipa"] == "pə.téːr" and recs[0]["xsampa"] == "p@.te:_Hr" and "ipa" not in recs[1]
+    assert src.read_text("utf-8") == before
+    assert _cli("batch", str(src), str(src)).returncode != 0          # in place: refused
+    assert _cli("batch", str(src), str(out)).returncode != 0          # existing output without --force
+    assert src.read_text("utf-8") == before
