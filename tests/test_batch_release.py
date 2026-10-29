@@ -107,7 +107,12 @@ def test_shipped_migration():
     assert decisions['t022']['review'] == 'pending'
     assert not decisions['t022']['admitted']
     assert decisions['t023']['admitted']
-    assert {b for b, d in decisions.items() if not d['admitted']} == {'t022', 'pilot', 'pilot2'}
+    assert not decisions['pilot']['admitted'] and not decisions['pilot2']['admitted']
+    # ENG-01's invariant, not today's batch list: a shipped batch is excluded only for a documented
+    # reason (gate FAIL, review pending/rejected), never for missing, malformed or stale evidence. A new
+    # batch parked at review pending is fine; an approved batch whose binding went stale is not.
+    for b, d in decisions.items():
+        assert d['admitted'] == (d['gate'] == 'PASS' and d['review'] == 'approved'), (b, d['reasons'])
 
 
 def _produce(tmp_path, monkeypatch, plans_list):
