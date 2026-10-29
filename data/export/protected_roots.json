@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28",
+ "generated": "2026-10-29",
  "by": "scripts/build_holdout.py",
  "swadesh_concepts": {
   "kin": [
@@ -141,284 +141,3286 @@
    "bear"
   ]
  },
+ "concepts": {
+  "swadesh-207": [
+   "I",
+   "you",
+   "he/she/it",
+   "we",
+   "they",
+   "this",
+   "that",
+   "here",
+   "there",
+   "who",
+   "what",
+   "where",
+   "when",
+   "how",
+   "not",
+   "all",
+   "many",
+   "some",
+   "few",
+   "other",
+   "one",
+   "two",
+   "three",
+   "four",
+   "five",
+   "big/great/large",
+   "long",
+   "wide/broad",
+   "thick",
+   "heavy",
+   "small/little/become small",
+   "short",
+   "narrow",
+   "thin",
+   "woman",
+   "man",
+   "human being/person",
+   "child",
+   "wife",
+   "husband",
+   "mother",
+   "father",
+   "animal",
+   "fish",
+   "bird",
+   "dog",
+   "louse",
+   "snake/serpent",
+   "worm",
+   "tree",
+   "forest",
+   "stick",
+   "fruit",
+   "seed",
+   "leaf",
+   "root",
+   "bark",
+   "flower",
+   "grass",
+   "rope",
+   "skin",
+   "meat/flesh",
+   "blood",
+   "bone",
+   "fat/grease",
+   "egg",
+   "horn",
+   "tail",
+   "feather",
+   "hair",
+   "head",
+   "ear",
+   "eye",
+   "nose",
+   "mouth",
+   "tooth",
+   "tongue",
+   "fingernail/nail",
+   "foot",
+   "leg",
+   "knee",
+   "hand",
+   "wing",
+   "belly",
+   "guts/bowels/entrails",
+   "neck",
+   "back",
+   "breast",
+   "heart",
+   "liver",
+   "drink",
+   "eat",
+   "bite",
+   "suck",
+   "spit",
+   "vomit",
+   "blow",
+   "breathe/breath",
+   "laugh",
+   "see",
+   "hear",
+   "know",
+   "think",
+   "smell",
+   "fear/be afraid/become afraid/be terrified",
+   "sleep",
+   "live",
+   "die",
+   "kill",
+   "fight",
+   "hunt",
+   "hit/strike/beat",
+   "cut",
+   "split",
+   "stab/pierce",
+   "scratch",
+   "dig",
+   "swim",
+   "fly",
+   "walk",
+   "come",
+   "lie/lie down",
+   "sit/sit down",
+   "stand",
+   "turn",
+   "fall",
+   "give",
+   "hold",
+   "squeeze/press",
+   "rub",
+   "wash",
+   "wipe",
+   "pull/draw",
+   "push",
+   "throw",
+   "tie/bind",
+   "sew",
+   "count",
+   "say",
+   "sing",
+   "play",
+   "float",
+   "flow",
+   "freeze/be cold",
+   "swell",
+   "sun",
+   "moon",
+   "star",
+   "water",
+   "rain",
+   "river",
+   "lake",
+   "sea",
+   "salt",
+   "stone",
+   "sand",
+   "dust",
+   "earth",
+   "cloud",
+   "fog/mist",
+   "sky",
+   "wind",
+   "snow",
+   "ice",
+   "smoke",
+   "fire",
+   "ash/ashes",
+   "burn",
+   "road/path/way",
+   "mountain",
+   "red",
+   "green",
+   "yellow",
+   "white",
+   "black",
+   "night",
+   "day",
+   "year",
+   "warm/be warm/hot",
+   "cold",
+   "full",
+   "new",
+   "old",
+   "good",
+   "bad/evil",
+   "rotten/rot",
+   "dirty",
+   "straight",
+   "round",
+   "sharp",
+   "dull/blunt",
+   "smooth",
+   "wet",
+   "dry",
+   "correct/right",
+   "near",
+   "far",
+   "right",
+   "left",
+   "at",
+   "in",
+   "with",
+   "and",
+   "if",
+   "because",
+   "name"
+  ],
+  "leipzig-jakarta": [
+   "fire",
+   "nose",
+   "go",
+   "water",
+   "mouth",
+   "tongue",
+   "blood",
+   "bone",
+   "you",
+   "root",
+   "come",
+   "breast",
+   "rain",
+   "I",
+   "name",
+   "louse",
+   "wing",
+   "flesh/meat",
+   "arm/hand",
+   "fly",
+   "night",
+   "ear",
+   "neck",
+   "far",
+   "do/make",
+   "house",
+   "stone/rock",
+   "bitter",
+   "say",
+   "tooth",
+   "hair",
+   "big/great/large",
+   "one",
+   "who",
+   "he/she/it",
+   "hit/beat/strike",
+   "leg/foot",
+   "horn",
+   "this",
+   "fish",
+   "yesterday",
+   "drink",
+   "black",
+   "navel",
+   "stand",
+   "bite",
+   "back",
+   "wind",
+   "smoke",
+   "what",
+   "child",
+   "egg",
+   "give",
+   "new",
+   "burn",
+   "not",
+   "good",
+   "know",
+   "knee",
+   "sand",
+   "laugh",
+   "hear",
+   "soil",
+   "leaf",
+   "red",
+   "liver",
+   "hide",
+   "skin",
+   "suck",
+   "carry",
+   "ant",
+   "heavy",
+   "take",
+   "old",
+   "eat",
+   "thigh",
+   "thick",
+   "long",
+   "blow",
+   "wood",
+   "run",
+   "fall",
+   "eye",
+   "ash/ashes",
+   "tail",
+   "dog",
+   "cry/weep",
+   "tie/bind",
+   "see",
+   "sweet",
+   "rope",
+   "shade/shadow",
+   "bird",
+   "salt",
+   "small/little",
+   "wide/broad",
+   "star",
+   "in",
+   "hard",
+   "crush/grind"
+  ],
+  "conversation-core": [
+   "help/assist",
+   "ask/request",
+   "answer",
+   "thank",
+   "teach",
+   "learn",
+   "want/wish/desire",
+   "love",
+   "like",
+   "call",
+   "name",
+   "know/recognize",
+   "remember",
+   "forget",
+   "wait",
+   "stay/remain",
+   "leave",
+   "return/come back/return home",
+   "open",
+   "close/shut",
+   "buy",
+   "sell/be for sale",
+   "work",
+   "play",
+   "laugh",
+   "weep/cry",
+   "dream",
+   "morning",
+   "evening",
+   "today",
+   "tomorrow",
+   "take/fetch",
+   "summer",
+   "goat",
+   "swear",
+   "measure",
+   "hate",
+   "cover",
+   "bury",
+   "beard",
+   "rejoice",
+   "be ashamed",
+   "lack",
+   "be tired",
+   "lose",
+   "show",
+   "grow",
+   "put/place/lay",
+   "steal",
+   "trust",
+   "touch",
+   "clean",
+   "lick",
+   "chew",
+   "cough",
+   "sick/ill/be ill/be sick/become sick",
+   "silent/be silent",
+   "soft",
+   "pretty/beautiful",
+   "tall/high",
+   "share/divide",
+   "exchange/trade",
+   "take care of/care for",
+   "happy/glad/be glad/joyful",
+   "lift/raise/pick up",
+   "lip",
+   "understand",
+   "wake/wake up/awaken"
+  ]
+ },
  "rootless_lexemes_by_reason": {
   "conversation": 3,
+  "conversation-core": 3,
   "core-noun": 17,
   "core-verb": 4,
   "formula": 11,
   "formula-menu": 11,
+  "leipzig-jakarta": 60,
   "numeral": 22,
-  "swadesh:body": 23,
+  "swadesh-207": 121,
+  "swadesh:body": 24,
   "swadesh:kin": 13,
-  "swadesh:nature": 25,
-  "tier2-secure": 58
+  "swadesh:nature": 27,
+  "tier2-secure": 61
  },
  "lexemes_by_reason": {
   "conversation": 12,
+  "conversation-core": 285,
   "core-noun": 55,
-  "core-verb": 193,
+  "core-verb": 197,
   "formula": 30,
   "formula-menu": 20,
+  "leipzig-jakarta": 464,
   "numeral": 27,
-  "swadesh:body": 43,
-  "swadesh:kin": 17,
-  "swadesh:nature": 53,
-  "tier2-secure": 74
+  "swadesh-207": 844,
+  "swadesh:body": 46,
+  "swadesh:kin": 18,
+  "swadesh:nature": 58,
+  "tier2-secure": 76
  },
- "families": 212,
+ "concept_families": {
+  "swadesh-207": {
+   "I": [],
+   "all": [
+    "pie-root-h2el-all"
+   ],
+   "and": [],
+   "animal": [
+    "pie-root-dhwes-breathe"
+   ],
+   "ash/ashes": [],
+   "at": [
+    "pie-root-h1ep-grab"
+   ],
+   "back": [
+    "pie-root-gew-bend",
+    "pie-root-h2et-but"
+   ],
+   "bad/evil": [
+    "pie-root-peykj-hostile",
+    "pie-root-smel-false"
+   ],
+   "bark": [],
+   "because": [],
+   "belly": [],
+   "big/great/large": [
+    "pie-root-meh2-good"
+   ],
+   "bird": [
+    "pie-root-gerh2-cry_hoarsely"
+   ],
+   "bite": [
+    "pie-root-denkj-bite",
+    "pie-root-gjembh-bite",
+    "pie-root-h3ed-bite",
+    "pie-root-smerd-bite"
+   ],
+   "black": [
+    "pie-root-dhwes-breathe",
+    "pie-root-kers-cut",
+    "pie-root-melh2-black",
+    "pie-root-swerd-dirty"
+   ],
+   "blood": [
+    "pie-root-krewh2-blood_outside_the"
+   ],
+   "blow": [
+    "pie-root-bhel-blow",
+    "pie-root-bhleh1-blow",
+    "pie-root-dhmeH-blow",
+    "pie-root-h2weh1-blow",
+    "pie-root-pewt-blow_up",
+    "pie-root-speys-breathe"
+   ],
+   "bone": [],
+   "breast": [],
+   "breathe/breath": [
+    "pie-root-dhwes-breathe",
+    "pie-root-h1eh1t-breathe",
+    "pie-root-h2enh1-breathe",
+    "pie-root-kwep-breathe",
+    "pie-root-pewk-breathe",
+    "pie-root-pnew-breathe",
+    "pie-root-speys-breathe"
+   ],
+   "burn": [
+    "pie-root-bhel-blaze",
+    "pie-root-dhegwh-burn",
+    "pie-root-gjwelH-burn",
+    "pie-root-h1engw-burn",
+    "pie-root-h1ews-burn",
+    "pie-root-h2eHs-be_dry",
+    "pie-root-h2eh1-burn",
+    "pie-root-h2eh3-be_hot",
+    "pie-root-keh2w-kindle",
+    "pie-root-kjremH-burn",
+    "pie-root-smel-burn",
+    "pie-root-swel-smolder",
+    "pie-root-wer-burn"
+   ],
+   "child": [
+    "pie-root-sewH-bear"
+   ],
+   "cloud": [
+    "pie-root-h3meygh-fog",
+    "pie-root-nebh-become_damp"
+   ],
+   "cold": [
+    "pie-root-skjeh1w-cold"
+   ],
+   "come": [
+    "pie-root-gheh1-come",
+    "pie-root-gwem-come",
+    "pie-root-melh3-step_forward"
+   ],
+   "correct/right": [
+    "pie-root-h2yew-straight",
+    "pie-root-h3regj-straighten"
+   ],
+   "count": [
+    "pie-root-h2reh1-think",
+    "pie-root-h2rey-count",
+    "pie-root-reh1-count"
+   ],
+   "cut": [
+    "pie-root-bheyh2-strike",
+    "pie-root-bhreyH-cut",
+    "pie-root-drep-cut_off",
+    "pie-root-drewH-cut_down",
+    "pie-root-h1erk-cut_up",
+    "pie-root-kerp-cut_off",
+    "pie-root-kers-cut",
+    "pie-root-kh2eyd-cut",
+    "pie-root-kjes-cut",
+    "pie-root-lewbh-cut_off",
+    "pie-root-lewh1-cut_off",
+    "pie-root-met-cut",
+    "pie-root-peykj-hew",
+    "pie-root-sek-cut",
+    "pie-root-skelH-cut",
+    "pie-root-sker-cut_off",
+    "pie-root-skerdh-cut",
+    "pie-root-skerp-cut_off",
+    "pie-root-skert-cut",
+    "pie-root-skeyd-split",
+    "pie-root-snedh-cut",
+    "pie-root-sneyt-cut",
+    "pie-root-tekj-sire",
+    "pie-root-temh1-cut",
+    "pie-root-tend-split",
+    "pie-root-tetkj-create",
+    "pie-root-twerkj-carve"
+   ],
+   "day": [
+    "pie-root-dyew-be_bright",
+    "pie-root-h2ey-day"
+   ],
+   "die": [
+    "pie-root-dhew-die",
+    "pie-root-gheu-disappear",
+    "pie-root-h1ekj-die",
+    "pie-root-mer-die",
+    "pie-root-neh2w-die",
+    "pie-root-sweld-starve"
+   ],
+   "dig": [
+    "pie-root-Hrew-tear_out",
+    "pie-root-HrewH-dig_out",
+    "pie-root-bhedhh2-dig",
+    "pie-root-dhelbh-dig",
+    "pie-root-dheygw-stick_into",
+    "pie-root-ghrebh-dig",
+    "pie-root-ghrebh2-seize",
+    "pie-root-h3rewk-dig",
+    "pie-root-kweh2-dig",
+    "pie-root-perkj-open",
+    "pie-root-rews-dig_up"
+   ],
+   "dirty": [
+    "pie-root-swerd-dirty"
+   ],
+   "dog": [],
+   "drink": [
+    "pie-root-h1egwh-drink",
+    "pie-root-peh3-drink",
+    "pie-root-peh3y-drink"
+   ],
+   "dry": [
+    "pie-root-h2eHs-be_dry",
+    "pie-root-h2ed-dry",
+    "pie-root-h2sews-be_dry",
+    "pie-root-sek-dry_out",
+    "pie-root-ters-dry"
+   ],
+   "dull/blunt": [
+    "pie-root-gwreh2-heavy"
+   ],
+   "dust": [
+    "pie-root-pel-flour"
+   ],
+   "ear": [
+    "pie-root-h2ew-perceive"
+   ],
+   "earth": [
+    "pie-root-h1er-earth"
+   ],
+   "eat": [
+    "pie-root-gjebh-eat",
+    "pie-root-gwerh3-swallow",
+    "pie-root-gwhes-eat",
+    "pie-root-h1ed-eat",
+    "pie-root-h2ekjh3-eat",
+    "pie-root-wes-graze"
+   ],
+   "egg": [],
+   "eye": [
+    "pie-root-derkj-see",
+    "pie-root-h3ekw-see"
+   ],
+   "fall": [
+    "pie-root-bhrenkj-fall_off",
+    "pie-root-dhrews-fall",
+    "pie-root-h1reyp-tear",
+    "pie-root-h3elh1-fall",
+    "pie-root-kjad-fall",
+    "pie-root-kjey-fall",
+    "pie-root-ped-walk",
+    "pie-root-peh3lH-fall",
+    "pie-root-peth1-fall",
+    "pie-root-sengw-sink"
+   ],
+   "far": [
+    "pie-root-dweh2-long"
+   ],
+   "fat/grease": [
+    "pie-root-h3engw-smear",
+    "pie-root-peyh2-swell",
+    "pie-root-selp-fat",
+    "pie-root-speh1-succeed",
+    "pie-root-tewk-become_swollen"
+   ],
+   "father": [
+    "pie-root-peh2-protect"
+   ],
+   "fear/be afraid/become afraid/be terrified": [
+    "pie-root-bheyh2-shake",
+    "pie-root-dwey-fear",
+    "pie-root-h2tewg-be_terrified",
+    "pie-root-kwey-perceive",
+    "pie-root-neh2-become_afraid",
+    "pie-root-prekj-be_afraid",
+    "pie-root-prk-fear",
+    "pie-root-tergw-scare"
+   ],
+   "feather": [
+    "pie-root-peth2-spread_out"
+   ],
+   "few": [
+    "pie-root-peh2w-few"
+   ],
+   "fight": [
+    "pie-root-keh3-fight",
+    "pie-root-pert-come_into_conflict"
+   ],
+   "fingernail/nail": [],
+   "fire": [
+    "pie-root-bhel-blaze",
+    "pie-root-h1engw-burn",
+    "pie-root-h2eh1-burn",
+    "pie-root-h2eydh-ignite"
+   ],
+   "fish": [],
+   "five": [
+    "pie-root-penkw-fist"
+   ],
+   "float": [
+    "pie-root-plew-fly",
+    "pie-root-sneh2-swim"
+   ],
+   "flow": [
+    "pie-root-dhenh2-set_in_motion",
+    "pie-root-dhew-run",
+    "pie-root-dhgwher-meaning_of_this",
+    "pie-root-gwgjher-drift_in_water",
+    "pie-root-h1ers-flow",
+    "pie-root-h3reyH-move",
+    "pie-root-neyd-flow",
+    "pie-root-pleh3w-swim",
+    "pie-root-plew-fly",
+    "pie-root-plewd-fly",
+    "pie-root-plewk-fly",
+    "pie-root-regj-flow",
+    "pie-root-ser-flow",
+    "pie-root-srew-flow",
+    "pie-root-teh2-melt",
+    "pie-root-tekw-run",
+    "pie-root-weys-flow"
+   ],
+   "flower": [
+    "pie-root-bhleh3-bloom"
+   ],
+   "fly": [
+    "pie-root-peth2-fly",
+    "pie-root-peth2-spread_out",
+    "pie-root-plew-fly",
+    "pie-root-plewd-fly",
+    "pie-root-plewk-fly",
+    "pie-root-sper-fly"
+   ],
+   "fog/mist": [
+    "pie-root-dhewh2-smoke",
+    "pie-root-h3meygh-fog",
+    "pie-root-nebh-become_damp"
+   ],
+   "foot": [
+    "pie-root-ped-walk"
+   ],
+   "forest": [],
+   "four": [],
+   "freeze/be cold": [
+    "pie-root-gel-be_cold",
+    "pie-root-h2elgjh-freeze",
+    "pie-root-kjelH-become_cold",
+    "pie-root-kjyeH-freeze",
+    "pie-root-krews-freeze",
+    "pie-root-prews-freeze",
+    "pie-root-sreyHgj-freeze"
+   ],
+   "fruit": [
+    "pie-root-sh1es-harvest",
+    "pie-root-weys-raise"
+   ],
+   "full": [
+    "pie-root-pleh1-fill"
+   ],
+   "give": [
+    "pie-root-Hreh1-give",
+    "pie-root-deh3-give",
+    "pie-root-deh3w-give",
+    "pie-root-ghebh-give",
+    "pie-root-h1ep-grab",
+    "pie-root-h2ey-give",
+    "pie-root-nem-distribute",
+    "pie-root-tyegw-leave_alone"
+   ],
+   "good": [
+    "pie-root-bhuH-be",
+    "pie-root-h1es-be",
+    "pie-root-meh2-good"
+   ],
+   "grass": [
+    "pie-root-h2et-grass"
+   ],
+   "green": [
+    "pie-root-dhelh1-well_forth",
+    "pie-root-gjhelh3-green"
+   ],
+   "guts/bowels/entrails": [
+    "pie-root-gjherH-bowels"
+   ],
+   "hair": [
+    "pie-root-h2welh1-hair",
+    "pie-root-pekj-pluck"
+   ],
+   "hand": [
+    "pie-root-ghebh-give",
+    "pie-root-gjhes-hand",
+    "pie-root-penkw-fist",
+    "pie-root-smeh2-beckon"
+   ],
+   "he/she/it": [],
+   "head": [
+    "pie-root-gelH-naked",
+    "pie-root-ghebh-give",
+    "pie-root-kap-head",
+    "pie-root-kjerh2-head",
+    "pie-root-new-nod"
+   ],
+   "hear": [
+    "pie-root-gwerdh-hear",
+    "pie-root-gwhews-hear",
+    "pie-root-h2weys-hear",
+    "pie-root-kjlew-hear",
+    "pie-root-kjlews-hear",
+    "pie-root-kwerd-hear"
+   ],
+   "heart": [
+    "pie-root-kjerd-heart"
+   ],
+   "heavy": [
+    "pie-root-gwreh2-heavy",
+    "pie-root-tengh-pull"
+   ],
+   "here": [],
+   "hit/strike/beat": [
+    "pie-root-bheld-knock",
+    "pie-root-bherH-pierce",
+    "pie-root-bhewd-strike",
+    "pie-root-bheyh2-strike",
+    "pie-root-bhleh2g-strike",
+    "pie-root-bhlewH-strike",
+    "pie-root-bhleygj-strike",
+    "pie-root-dhebh-make_small",
+    "pie-root-dhembh-be_stunned",
+    "pie-root-dhewgh-hit",
+    "pie-root-dhreb-strike",
+    "pie-root-gwelh1-hit",
+    "pie-root-gwhen-strike",
+    "pie-root-keh2w-strike",
+    "pie-root-kelh2-beat",
+    "pie-root-kewh2-hit",
+    "pie-root-krekj-strike",
+    "pie-root-krews-push",
+    "pie-root-pel-beat",
+    "pie-root-per-beat",
+    "pie-root-per-strike",
+    "pie-root-pleh2g-strike",
+    "pie-root-pleh2k-strike",
+    "pie-root-pyeh2-strike",
+    "pie-root-slak-strike",
+    "pie-root-stew-push",
+    "pie-root-stewd-push",
+    "pie-root-stewg-push",
+    "pie-root-stewk-push",
+    "pie-root-streyg-stroke",
+    "pie-root-telk-thrust",
+    "pie-root-welh3-hit"
+   ],
+   "hold": [
+    "pie-root-dher-support",
+    "pie-root-ghed-find",
+    "pie-root-h2erk-protect",
+    "pie-root-kagh-hold",
+    "pie-root-kap-seize",
+    "pie-root-yem-hold"
+   ],
+   "horn": [
+    "pie-root-kjerh2-head"
+   ],
+   "how": [],
+   "human being/person": [],
+   "hunt": [
+    "pie-root-h2egj-drive",
+    "pie-root-wreg-track"
+   ],
+   "husband": [],
+   "ice": [
+    "pie-root-h1eyH-ice",
+    "pie-root-h1eyg-ice"
+   ],
+   "if": [],
+   "in": [
+    "pie-root-h1negjh-stab",
+    "pie-root-srebh-sip"
+   ],
+   "kill": [
+    "pie-root-gwhen-strike",
+    "pie-root-mer-die"
+   ],
+   "knee": [
+    "pie-root-skel-bend"
+   ],
+   "know": [
+    "pie-root-gjneh3-recognise",
+    "pie-root-weyd-see"
+   ],
+   "lake": [
+    "pie-root-mer-sea"
+   ],
+   "laugh": [
+    "pie-root-gwhes-laugh",
+    "pie-root-smey-laugh"
+   ],
+   "leaf": [
+    "pie-root-peth2-spread_out"
+   ],
+   "left": [],
+   "leg": [
+    "pie-root-skel-bend"
+   ],
+   "lie/lie down": [
+    "pie-root-dhrewgh-deceive",
+    "pie-root-gwel-lie_down",
+    "pie-root-kewbh2-lie_down",
+    "pie-root-legh-lie",
+    "pie-root-lewgh-lie"
+   ],
+   "live": [
+    "pie-root-gweyh3-live",
+    "pie-root-gwyeh3-live",
+    "pie-root-h2wes-dwell",
+    "pie-root-tekj-sire",
+    "pie-root-tkjey-cultivate"
+   ],
+   "liver": [
+    "pie-root-Hyekw-liver"
+   ],
+   "long": [
+    "pie-root-dweh2-long",
+    "pie-root-meh2kj-raise",
+    "pie-root-seh1-long",
+    "pie-root-spey-long"
+   ],
+   "louse": [],
+   "man": [
+    "pie-root-mer-die",
+    "pie-root-weyh1-chase"
+   ],
+   "many": [
+    "pie-root-pleh1-fill"
+   ],
+   "meat/flesh": [
+    "pie-root-mems-flesh"
+   ],
+   "moon": [
+    "pie-root-lewk-bright",
+    "pie-root-meh1-measure"
+   ],
+   "mother": [
+    "pie-root-gjenh1-produce"
+   ],
+   "mountain": [],
+   "mouth": [],
+   "name": [
+    "pie-root-gewH-call"
+   ],
+   "narrow": [
+    "pie-root-h2engjh-constrict"
+   ],
+   "near": [
+    "pie-root-h1ep-grab"
+   ],
+   "neck": [],
+   "new": [
+    "pie-root-new-new"
+   ],
+   "night": [
+    "pie-root-dhengwh-dark",
+    "pie-root-negw-bare"
+   ],
+   "nose": [],
+   "not": [],
+   "old": [
+    "pie-root-gjerh2-grow_old",
+    "pie-root-stru-gray_haired"
+   ],
+   "one": [
+    "pie-root-sem-one"
+   ],
+   "other": [
+    "pie-root-h2el-beyond"
+   ],
+   "play": [
+    "pie-root-leyd-play",
+    "pie-root-leyg-jump_around"
+   ],
+   "pull/draw": [
+    "pie-root-dewk-pull",
+    "pie-root-dhregh-run",
+    "pie-root-h2en-draw",
+    "pie-root-h2welk-drag",
+    "pie-root-h2wet-pull",
+    "pie-root-kwels-pull",
+    "pie-root-semH-scoop",
+    "pie-root-speh2-draw",
+    "pie-root-ten-stretch",
+    "pie-root-tengh-pull"
+   ],
+   "push": [
+    "pie-root-Hers-push",
+    "pie-root-kjewH-throw",
+    "pie-root-krews-push",
+    "pie-root-newd-push",
+    "pie-root-pel-beat",
+    "pie-root-sewh1-press",
+    "pie-root-skewbh-push",
+    "pie-root-skewd-advance",
+    "pie-root-spewd-press",
+    "pie-root-stengw-push",
+    "pie-root-stew-push",
+    "pie-root-stewd-push",
+    "pie-root-stewg-push",
+    "pie-root-stewk-push",
+    "pie-root-stewp-push",
+    "pie-root-trenk-press",
+    "pie-root-trenkw-push",
+    "pie-root-trewd-push",
+    "pie-root-wedhh1-push-2"
+   ],
+   "rain": [
+    "pie-root-h1wers-rain",
+    "pie-root-h3reyH-move",
+    "pie-root-sh2ew-pour"
+   ],
+   "red": [
+    "pie-root-h1rewdh-red"
+   ],
+   "right": [
+    "pie-root-h2yew-straight",
+    "pie-root-h3regj-straighten"
+   ],
+   "river": [],
+   "road/path/way": [
+    "pie-root-h1ey-go",
+    "pie-root-h2egj-drive",
+    "pie-root-pent-pass",
+    "pie-root-steygh-go"
+   ],
+   "root": [],
+   "rope": [
+    "pie-root-kjer-plait",
+    "pie-root-sh2ey-bind",
+    "pie-root-strengh-twist"
+   ],
+   "rotten/rot": [
+    "pie-root-kjyeh2p-rot",
+    "pie-root-pewH-rot",
+    "pie-root-puH-rotten"
+   ],
+   "round": [],
+   "rub": [
+    "pie-root-Hmelkj-touch",
+    "pie-root-gher-rub",
+    "pie-root-ghrendh-grind",
+    "pie-root-gwhrend-rub",
+    "pie-root-smeH-rub",
+    "pie-root-streyg-stroke",
+    "pie-root-swerbh-wipe_off",
+    "pie-root-terh1-rub",
+    "pie-root-treygw-rub"
+   ],
+   "salt": [],
+   "sand": [],
+   "say": [
+    "pie-root-Hedh-say",
+    "pie-root-bheh2-speak",
+    "pie-root-gwet-say",
+    "pie-root-h1egj-say",
+    "pie-root-mlewH-say",
+    "pie-root-sekw-say",
+    "pie-root-wekw-speak",
+    "pie-root-werh1-speak",
+    "pie-root-weth2-say"
+   ],
+   "scratch": [
+    "pie-root-Hreh3d-scrape",
+    "pie-root-kneh2-scratch",
+    "pie-root-knewH-scratch",
+    "pie-root-kneyd-scratch",
+    "pie-root-ksen-card",
+    "pie-root-rasd-scratch",
+    "pie-root-red-scrape",
+    "pie-root-reykwh2-scratch",
+    "pie-root-skabh-scratch",
+    "pie-root-skerbh-scratch",
+    "pie-root-skers-scratch",
+    "pie-root-skewt-scratch",
+    "pie-root-skreb-scrape",
+    "pie-root-skreybh-scratch",
+    "pie-root-wreyd-scratch"
+   ],
+   "sea": [
+    "pie-root-mer-sea"
+   ],
+   "see": [
+    "pie-root-derkj-see",
+    "pie-root-dheyh2-perceive",
+    "pie-root-gjher-shine",
+    "pie-root-h1ew-see",
+    "pie-root-h2ew-perceive",
+    "pie-root-h3ekw-see",
+    "pie-root-kwekj-see",
+    "pie-root-kweys-see",
+    "pie-root-lewk-bright",
+    "pie-root-lewt-see",
+    "pie-root-peHs-see",
+    "pie-root-sekw-see",
+    "pie-root-spekj-see",
+    "pie-root-wel-see",
+    "pie-root-weyd-see"
+   ],
+   "seed": [
+    "pie-root-gjenh1-produce",
+    "pie-root-seh1-impress"
+   ],
+   "sew": [
+    "pie-root-sneh1-spin",
+    "pie-root-syewH-sew"
+   ],
+   "sharp": [
+    "pie-root-h2ekj-sharp",
+    "pie-root-spey-long"
+   ],
+   "short": [
+    "pie-root-mregjh-short"
+   ],
+   "sing": [
+    "pie-root-geH-sing",
+    "pie-root-gweHy-sing",
+    "pie-root-h2weyd-sing",
+    "pie-root-kan-sing",
+    "pie-root-keh2n-sing",
+    "pie-root-peyH-sing",
+    "pie-root-reybh-sing",
+    "pie-root-sengwh-recite"
+   ],
+   "sit/sit down": [
+    "pie-root-h1eh1s-sit",
+    "pie-root-sed-sit"
+   ],
+   "skin": [
+    "pie-root-pel-cover",
+    "pie-root-skewH-cover"
+   ],
+   "sky": [
+    "pie-root-dyew-be_bright"
+   ],
+   "sleep": [
+    "pie-root-dreh1-sleep",
+    "pie-root-drem-sleep",
+    "pie-root-ses-rest",
+    "pie-root-swep-sleep"
+   ],
+   "small/little/become small": [
+    "pie-root-men-small",
+    "pie-root-mey-small",
+    "pie-root-meyH-become_small",
+    "pie-root-peh2w-few",
+    "pie-root-smal-small"
+   ],
+   "smell": [
+    "pie-root-bhreHg-smell",
+    "pie-root-gwhreh1-smell",
+    "pie-root-h3ed-smell"
+   ],
+   "smoke": [
+    "pie-root-dhewh2-smoke"
+   ],
+   "smooth": [
+    "pie-root-ghleh2dh-bright",
+    "pie-root-kh2em-bend",
+    "pie-root-stelgj-smooth_out"
+   ],
+   "snake/serpent": [],
+   "snow": [
+    "pie-root-gjhey-winter",
+    "pie-root-sneygwh-snow"
+   ],
+   "some": [
+    "pie-root-sem-one"
+   ],
+   "spit": [
+    "pie-root-sptyewH-spit"
+   ],
+   "split": [
+    "pie-root-bheyd-split",
+    "pie-root-delgh-split",
+    "pie-root-delh1-split",
+    "pie-root-der-split",
+    "pie-root-glewbh-split",
+    "pie-root-keh2w-strike",
+    "pie-root-nebh-burst",
+    "pie-root-skelH-cut",
+    "pie-root-skey-split",
+    "pie-root-skeyd-split",
+    "pie-root-spelH-split_off",
+    "pie-root-spelt-split",
+    "pie-root-temh1-cut",
+    "pie-root-tend-split",
+    "pie-root-terd-bore_through"
+   ],
+   "squeeze/press": [
+    "pie-root-bhedh-bend",
+    "pie-root-bheh1dh-press",
+    "pie-root-gem-press",
+    "pie-root-gnet-press",
+    "pie-root-gnewH-press",
+    "pie-root-h2edhgjh-press",
+    "pie-root-kem-press",
+    "pie-root-kweh2d-tear",
+    "pie-root-menk-knead",
+    "pie-root-pres-press",
+    "pie-root-sew-press_out",
+    "pie-root-sewh1-press",
+    "pie-root-spewd-press",
+    "pie-root-stewk-push",
+    "pie-root-trenk-press",
+    "pie-root-trenkw-push",
+    "pie-root-treskj-squeeze_out",
+    "pie-root-wergjh-bind"
+   ],
+   "stab/pierce": [
+    "pie-root-bhedhh2-dig",
+    "pie-root-bherH-pierce",
+    "pie-root-dheygw-stick_into",
+    "pie-root-gwelH-throw",
+    "pie-root-h1negjh-stab",
+    "pie-root-h2weg-stab",
+    "pie-root-kjneth2-thrust",
+    "pie-root-per-go_through",
+    "pie-root-pewgj-punch",
+    "pie-root-skerdh-cut",
+    "pie-root-stewk-push",
+    "pie-root-terh1-rub"
+   ],
+   "stand": [
+    "pie-root-gweh2-step",
+    "pie-root-men-stand_out",
+    "pie-root-steh2-stand"
+   ],
+   "star": [],
+   "stick": [
+    "pie-root-steg-pole"
+   ],
+   "stone": [
+    "pie-root-h2ekj-sharp"
+   ],
+   "straight": [
+    "pie-root-h2yew-straight"
+   ],
+   "suck": [
+    "pie-root-sewkj-suck",
+    "pie-root-srebh-sip"
+   ],
+   "sun": [],
+   "swell": [
+    "pie-root-bheg-bend",
+    "pie-root-bhel-blow",
+    "pie-root-bhelgjh-swell",
+    "pie-root-bhengjh-thick",
+    "pie-root-bhleyd-swell_up",
+    "pie-root-bhrend-well_up",
+    "pie-root-bhrenk-swell_up",
+    "pie-root-h2eyd-swell",
+    "pie-root-kjewh1-swell",
+    "pie-root-kjweh1-swell",
+    "pie-root-kret-be_strong",
+    "pie-root-peyh2-swell",
+    "pie-root-pleh1-fill",
+    "pie-root-swelH-swell_up",
+    "pie-root-tewh2-swell",
+    "pie-root-tum-swell",
+    "pie-root-twem-swell_up"
+   ],
+   "swim": [
+    "pie-root-pleh3w-swim",
+    "pie-root-plew-fly",
+    "pie-root-sneh2-swim"
+   ],
+   "tail": [],
+   "that": [],
+   "there": [],
+   "they": [],
+   "thick": [
+    "pie-root-bhengjh-thick",
+    "pie-root-steg-cover"
+   ],
+   "thin": [
+    "pie-root-spey-long",
+    "pie-root-tenh2-stretch"
+   ],
+   "think": [
+    "pie-root-Hreh1dh-think",
+    "pie-root-h2reh1-think",
+    "pie-root-men-think",
+    "pie-root-sent-perceive",
+    "pie-root-teng-think"
+   ],
+   "this": [],
+   "three": [],
+   "throw": [
+    "pie-root-Hyeh1-throw",
+    "pie-root-deykj-throw",
+    "pie-root-gwelH-throw",
+    "pie-root-gwelh1-hit",
+    "pie-root-h1es-throw",
+    "pie-root-kjewH-throw",
+    "pie-root-kjweH-throw",
+    "pie-root-ksweybh-move_swiftly",
+    "pie-root-sewp-throw",
+    "pie-root-skjerd-throw_out",
+    "pie-root-smeyt-throw",
+    "pie-root-sweyd-throw",
+    "pie-root-wergw-throw-2"
+   ],
+   "tie/bind": [
+    "pie-root-Hnedh-bind",
+    "pie-root-Hreygj-bind",
+    "pie-root-bhedh-bend",
+    "pie-root-bhendh-bind",
+    "pie-root-deh1-bind",
+    "pie-root-gwrenth2-knot",
+    "pie-root-h2wer-lift",
+    "pie-root-kwert-bind",
+    "pie-root-leygj-bind",
+    "pie-root-mesg-knot",
+    "pie-root-mey-attach",
+    "pie-root-reygj-bind",
+    "pie-root-ser-bind",
+    "pie-root-sh2ey-bind",
+    "pie-root-wedh-bind",
+    "pie-root-wergjh-bind",
+    "pie-root-yew-hold_fast"
+   ],
+   "tongue": [],
+   "tooth": [
+    "pie-root-gjembh-bite",
+    "pie-root-h3ed-bite"
+   ],
+   "tree": [],
+   "turn": [
+    "pie-root-dhergjh-bind_fast",
+    "pie-root-gjeys-turn",
+    "pie-root-grengjh-turn",
+    "pie-root-h2enk-curve",
+    "pie-root-h2werg-turn",
+    "pie-root-h3erbh-turn",
+    "pie-root-kert-turn",
+    "pie-root-kwelh1-turn",
+    "pie-root-kwelp-wind",
+    "pie-root-kwels-pull",
+    "pie-root-kwerpH-turn",
+    "pie-root-kwreyp-turn",
+    "pie-root-sewk-turn",
+    "pie-root-sker-turn",
+    "pie-root-snewH-turn",
+    "pie-root-strebh-turn",
+    "pie-root-stregwh-turn",
+    "pie-root-terh1-rub",
+    "pie-root-terkw-turn",
+    "pie-root-treh1-turn",
+    "pie-root-trep-turn",
+    "pie-root-weh2-turn-2",
+    "pie-root-wel-turn",
+    "pie-root-wendh-wind",
+    "pie-root-wert-turn",
+    "pie-root-weyk-sift",
+    "pie-root-weyp-vibrate",
+    "pie-root-wremb-turn-2"
+   ],
+   "two": [],
+   "vomit": [
+    "pie-root-h1rewg-belch",
+    "pie-root-wemh1-spew"
+   ],
+   "walk": [
+    "pie-root-gjhengh-walk",
+    "pie-root-ped-walk"
+   ],
+   "warm/be warm/hot": [
+    "pie-root-bheh1-foment",
+    "pie-root-dhegwh-burn",
+    "pie-root-gwher-be_warm",
+    "pie-root-h1ay-be_warm",
+    "pie-root-kjleh1-hot",
+    "pie-root-tep-be_warm"
+   ],
+   "wash": [
+    "pie-root-h1erH-wash",
+    "pie-root-lewh3-wash",
+    "pie-root-neygw-wash",
+    "pie-root-plew-fly"
+   ],
+   "water": [
+    "pie-root-h2en-draw",
+    "pie-root-h2ep-water",
+    "pie-root-wed-well"
+   ],
+   "we": [],
+   "wet": [
+    "pie-root-h1wers-rain",
+    "pie-root-meh2-wet",
+    "pie-root-wed-well",
+    "pie-root-wegw-wet",
+    "pie-root-welg-wet",
+    "pie-root-wleykw-moist"
+   ],
+   "what": [
+    "pie-root-kw-primary_interrogative_root"
+   ],
+   "when": [],
+   "where": [],
+   "white": [
+    "pie-root-bhel-blaze",
+    "pie-root-h2ergj-white",
+    "pie-root-kjweyt-shine",
+    "pie-root-lewk-bright"
+   ],
+   "who": [],
+   "wide/broad": [
+    "pie-root-h1werH-broad",
+    "pie-root-pleth2-spread"
+   ],
+   "wife": [],
+   "wind": [
+    "pie-root-h2weh1-blow"
+   ],
+   "wing": [
+    "pie-root-peth2-spread_out"
+   ],
+   "wipe": [
+    "pie-root-h3mergj-wipe_off",
+    "pie-root-strewg-stroke",
+    "pie-root-swerbh-wipe_off",
+    "pie-root-tergj-wipe_off",
+    "pie-root-wers-wipe"
+   ],
+   "with": [
+    "pie-root-sem-one"
+   ],
+   "woman": [],
+   "worm": [
+    "pie-root-werm-insect_larva"
+   ],
+   "year": [
+    "pie-root-Hyeh1-throw",
+    "pie-root-gjhey-winter",
+    "pie-root-semh2-summer",
+    "pie-root-wet-year",
+    "pie-root-yeh1-make",
+    "pie-root-yeh1-meaning_of_this"
+   ],
+   "yellow": [
+    "pie-root-gjhelh3-green"
+   ],
+   "you": []
+  },
+  "leipzig-jakarta": {
+   "I": [],
+   "ant": [
+    "pie-root-werm-insect_larva"
+   ],
+   "arm/hand": [
+    "pie-root-Heh3l-bow",
+    "pie-root-ghebh-give",
+    "pie-root-gjhes-hand",
+    "pie-root-h2er-fit",
+    "pie-root-penkw-fist",
+    "pie-root-smeh2-beckon"
+   ],
+   "ash/ashes": [],
+   "back": [
+    "pie-root-gew-bend",
+    "pie-root-h2et-but"
+   ],
+   "big/great/large": [
+    "pie-root-meh2-good"
+   ],
+   "bird": [
+    "pie-root-gerh2-cry_hoarsely"
+   ],
+   "bite": [
+    "pie-root-denkj-bite",
+    "pie-root-gjembh-bite",
+    "pie-root-h3ed-bite",
+    "pie-root-smerd-bite"
+   ],
+   "bitter": [
+    "pie-root-h2eh3-be_hot"
+   ],
+   "black": [
+    "pie-root-dhwes-breathe",
+    "pie-root-kers-cut",
+    "pie-root-melh2-black",
+    "pie-root-swerd-dirty"
+   ],
+   "blood": [
+    "pie-root-krewh2-blood_outside_the"
+   ],
+   "blow": [
+    "pie-root-bhel-blow",
+    "pie-root-bhleh1-blow",
+    "pie-root-dhmeH-blow",
+    "pie-root-h2weh1-blow",
+    "pie-root-pewt-blow_up",
+    "pie-root-speys-breathe"
+   ],
+   "bone": [],
+   "breast": [],
+   "burn": [
+    "pie-root-bhel-blaze",
+    "pie-root-dhegwh-burn",
+    "pie-root-gjwelH-burn",
+    "pie-root-h1engw-burn",
+    "pie-root-h1ews-burn",
+    "pie-root-h2eHs-be_dry",
+    "pie-root-h2eh1-burn",
+    "pie-root-h2eh3-be_hot",
+    "pie-root-keh2w-kindle",
+    "pie-root-kjremH-burn",
+    "pie-root-smel-burn",
+    "pie-root-swel-smolder",
+    "pie-root-wer-burn"
+   ],
+   "carry": [
+    "pie-root-bher-bear",
+    "pie-root-weys-carry_out"
+   ],
+   "child": [
+    "pie-root-sewH-bear"
+   ],
+   "come": [
+    "pie-root-gheh1-come",
+    "pie-root-gwem-come",
+    "pie-root-melh3-step_forward"
+   ],
+   "crush/grind": [
+    "pie-root-gher-rub",
+    "pie-root-ghrendh-grind",
+    "pie-root-gwhrend-rub",
+    "pie-root-gwhrendh-crush",
+    "pie-root-h2elh1-grind",
+    "pie-root-h2leh1-grind",
+    "pie-root-kwh2ed-crush",
+    "pie-root-kwsewd-crush",
+    "pie-root-melh2-grind",
+    "pie-root-melh2w-grind",
+    "pie-root-merh2-crumble",
+    "pie-root-pekw-crack",
+    "pie-root-peys-grind",
+    "pie-root-stelgjh-crush"
+   ],
+   "cry/weep": [
+    "pie-root-HrewdH-weep",
+    "pie-root-bhel-sound",
+    "pie-root-bhleh1-bleat",
+    "pie-root-dhrew-cry_out",
+    "pie-root-geH-sing",
+    "pie-root-gewH-call",
+    "pie-root-h3rewH-roar",
+    "pie-root-kewH-cry_out",
+    "pie-root-kjewk-call",
+    "pie-root-kjleh2w-weep",
+    "pie-root-kwrend-cry",
+    "pie-root-newH-cry_out",
+    "pie-root-rewdH-cry_out",
+    "pie-root-up-cry_out",
+    "pie-root-weh2gh-cry_out"
+   ],
+   "do/make": [
+    "pie-root-dheh1-do",
+    "pie-root-dheh1k-make",
+    "pie-root-dhenh2-set_in_motion",
+    "pie-root-dreh2-do",
+    "pie-root-h3ep-work",
+    "pie-root-kwer-do",
+    "pie-root-wergj-make",
+    "pie-root-yeh1-make"
+   ],
+   "dog": [],
+   "drink": [
+    "pie-root-h1egwh-drink",
+    "pie-root-peh3-drink",
+    "pie-root-peh3y-drink"
+   ],
+   "ear": [
+    "pie-root-h2ew-perceive"
+   ],
+   "eat": [
+    "pie-root-gjebh-eat",
+    "pie-root-gwerh3-swallow",
+    "pie-root-gwhes-eat",
+    "pie-root-h1ed-eat",
+    "pie-root-h2ekjh3-eat",
+    "pie-root-wes-graze"
+   ],
+   "egg": [],
+   "eye": [
+    "pie-root-derkj-see",
+    "pie-root-h3ekw-see"
+   ],
+   "fall": [
+    "pie-root-bhrenkj-fall_off",
+    "pie-root-dhrews-fall",
+    "pie-root-h1reyp-tear",
+    "pie-root-h3elh1-fall",
+    "pie-root-kjad-fall",
+    "pie-root-kjey-fall",
+    "pie-root-ped-walk",
+    "pie-root-peh3lH-fall",
+    "pie-root-peth1-fall",
+    "pie-root-sengw-sink"
+   ],
+   "far": [
+    "pie-root-dweh2-long"
+   ],
+   "fire": [
+    "pie-root-bhel-blaze",
+    "pie-root-h1engw-burn",
+    "pie-root-h2eh1-burn",
+    "pie-root-h2eydh-ignite"
+   ],
+   "fish": [],
+   "flesh/meat": [
+    "pie-root-mems-flesh"
+   ],
+   "fly": [
+    "pie-root-peth2-fly",
+    "pie-root-peth2-spread_out",
+    "pie-root-plew-fly",
+    "pie-root-plewd-fly",
+    "pie-root-plewk-fly",
+    "pie-root-sper-fly"
+   ],
+   "give": [
+    "pie-root-Hreh1-give",
+    "pie-root-deh3-give",
+    "pie-root-deh3w-give",
+    "pie-root-ghebh-give",
+    "pie-root-h1ep-grab",
+    "pie-root-h2ey-give",
+    "pie-root-nem-distribute",
+    "pie-root-tyegw-leave_alone"
+   ],
+   "go": [
+    "pie-root-gweh2-step",
+    "pie-root-h1ey-go",
+    "pie-root-h3eygh-go",
+    "pie-root-leyt-go",
+    "pie-root-melh3-step_forward",
+    "pie-root-sent-go",
+    "pie-root-sgwesh2-go_out",
+    "pie-root-steygh-go",
+    "pie-root-weh2dh-go",
+    "pie-root-yeh2-go"
+   ],
+   "good": [
+    "pie-root-bhuH-be",
+    "pie-root-h1es-be",
+    "pie-root-meh2-good"
+   ],
+   "hair": [
+    "pie-root-h2welh1-hair",
+    "pie-root-pekj-pluck"
+   ],
+   "hard": [
+    "pie-root-dhergjh-bind_fast"
+   ],
+   "he/she/it": [],
+   "hear": [
+    "pie-root-gwerdh-hear",
+    "pie-root-gwhews-hear",
+    "pie-root-h2weys-hear",
+    "pie-root-kjlew-hear",
+    "pie-root-kjlews-hear",
+    "pie-root-kwerd-hear"
+   ],
+   "heavy": [
+    "pie-root-gwreh2-heavy",
+    "pie-root-tengh-pull"
+   ],
+   "hide": [
+    "pie-root-gwhewgjh-hide",
+    "pie-root-kewdh-hide",
+    "pie-root-leh2-hide_oneself",
+    "pie-root-pel-cover",
+    "pie-root-pelk-wrap",
+    "pie-root-skewH-cover",
+    "pie-root-teh2k-be_concealed"
+   ],
+   "hit/beat/strike": [
+    "pie-root-bheld-knock",
+    "pie-root-bherH-pierce",
+    "pie-root-bhewd-strike",
+    "pie-root-bheyh2-strike",
+    "pie-root-bhleh2g-strike",
+    "pie-root-bhlewH-strike",
+    "pie-root-bhleygj-strike",
+    "pie-root-dhebh-make_small",
+    "pie-root-dhembh-be_stunned",
+    "pie-root-dhewgh-hit",
+    "pie-root-dhreb-strike",
+    "pie-root-gwelh1-hit",
+    "pie-root-gwhen-strike",
+    "pie-root-keh2w-strike",
+    "pie-root-kelh2-beat",
+    "pie-root-kewh2-hit",
+    "pie-root-krekj-strike",
+    "pie-root-krews-push",
+    "pie-root-pel-beat",
+    "pie-root-per-beat",
+    "pie-root-per-strike",
+    "pie-root-pleh2g-strike",
+    "pie-root-pleh2k-strike",
+    "pie-root-pyeh2-strike",
+    "pie-root-slak-strike",
+    "pie-root-stew-push",
+    "pie-root-stewd-push",
+    "pie-root-stewg-push",
+    "pie-root-stewk-push",
+    "pie-root-streyg-stroke",
+    "pie-root-telk-thrust",
+    "pie-root-welh3-hit"
+   ],
+   "horn": [
+    "pie-root-kjerh2-head"
+   ],
+   "house": [
+    "pie-root-dem-build",
+    "pie-root-dheh1-do"
+   ],
+   "in": [
+    "pie-root-h1negjh-stab",
+    "pie-root-srebh-sip"
+   ],
+   "knee": [
+    "pie-root-skel-bend"
+   ],
+   "know": [
+    "pie-root-gjneh3-recognise",
+    "pie-root-weyd-see"
+   ],
+   "laugh": [
+    "pie-root-gwhes-laugh",
+    "pie-root-smey-laugh"
+   ],
+   "leaf": [
+    "pie-root-peth2-spread_out"
+   ],
+   "leg/foot": [
+    "pie-root-ped-walk",
+    "pie-root-skel-bend"
+   ],
+   "liver": [
+    "pie-root-Hyekw-liver"
+   ],
+   "long": [
+    "pie-root-dweh2-long",
+    "pie-root-meh2kj-raise",
+    "pie-root-seh1-long",
+    "pie-root-spey-long"
+   ],
+   "louse": [],
+   "mouth": [],
+   "name": [
+    "pie-root-gewH-call"
+   ],
+   "navel": [
+    "pie-root-h3nebh-hub"
+   ],
+   "neck": [],
+   "new": [
+    "pie-root-new-new"
+   ],
+   "night": [
+    "pie-root-dhengwh-dark",
+    "pie-root-negw-bare"
+   ],
+   "nose": [],
+   "not": [],
+   "old": [
+    "pie-root-gjerh2-grow_old",
+    "pie-root-stru-gray_haired"
+   ],
+   "one": [
+    "pie-root-sem-one"
+   ],
+   "rain": [
+    "pie-root-h1wers-rain",
+    "pie-root-h3reyH-move",
+    "pie-root-sh2ew-pour"
+   ],
+   "red": [
+    "pie-root-h1rewdh-red"
+   ],
+   "root": [],
+   "rope": [
+    "pie-root-kjer-plait",
+    "pie-root-sh2ey-bind",
+    "pie-root-strengh-twist"
+   ],
+   "run": [
+    "pie-root-Hreth2-run",
+    "pie-root-bhegw-flee",
+    "pie-root-dhew-run",
+    "pie-root-dhregh-run",
+    "pie-root-dreh2-run",
+    "pie-root-drem-run",
+    "pie-root-drew-run",
+    "pie-root-dwer-run",
+    "pie-root-h2wey-run",
+    "pie-root-h3rew-run",
+    "pie-root-kjers-run",
+    "pie-root-plew-fly",
+    "pie-root-plewd-fly",
+    "pie-root-plewk-fly",
+    "pie-root-ret-run",
+    "pie-root-sperdh-compete",
+    "pie-root-tekw-run"
+   ],
+   "salt": [],
+   "sand": [],
+   "say": [
+    "pie-root-Hedh-say",
+    "pie-root-bheh2-speak",
+    "pie-root-gwet-say",
+    "pie-root-h1egj-say",
+    "pie-root-mlewH-say",
+    "pie-root-sekw-say",
+    "pie-root-wekw-speak",
+    "pie-root-werh1-speak",
+    "pie-root-weth2-say"
+   ],
+   "see": [
+    "pie-root-derkj-see",
+    "pie-root-dheyh2-perceive",
+    "pie-root-gjher-shine",
+    "pie-root-h1ew-see",
+    "pie-root-h2ew-perceive",
+    "pie-root-h3ekw-see",
+    "pie-root-kwekj-see",
+    "pie-root-kweys-see",
+    "pie-root-lewk-bright",
+    "pie-root-lewt-see",
+    "pie-root-peHs-see",
+    "pie-root-sekw-see",
+    "pie-root-spekj-see",
+    "pie-root-wel-see",
+    "pie-root-weyd-see"
+   ],
+   "shade/shadow": [
+    "pie-root-skjeh3-darkness"
+   ],
+   "skin": [
+    "pie-root-pel-cover",
+    "pie-root-skewH-cover"
+   ],
+   "small/little": [
+    "pie-root-men-small",
+    "pie-root-mey-small",
+    "pie-root-peh2w-few",
+    "pie-root-smal-small"
+   ],
+   "smoke": [
+    "pie-root-dhewh2-smoke"
+   ],
+   "soil": [],
+   "stand": [
+    "pie-root-gweh2-step",
+    "pie-root-men-stand_out",
+    "pie-root-steh2-stand"
+   ],
+   "star": [],
+   "stone/rock": [
+    "pie-root-h2ekj-sharp"
+   ],
+   "suck": [
+    "pie-root-sewkj-suck",
+    "pie-root-srebh-sip"
+   ],
+   "sweet": [
+    "pie-root-sweh2d-sweet"
+   ],
+   "tail": [],
+   "take": [
+    "pie-root-dekj-take",
+    "pie-root-ghebh-give",
+    "pie-root-gheh1bh-grab",
+    "pie-root-gjheHb-seize",
+    "pie-root-gjher-take",
+    "pie-root-gjher-take-2",
+    "pie-root-gjhes-hand",
+    "pie-root-h1em-take",
+    "pie-root-h1nekj-receive",
+    "pie-root-h1reh1p-take_away",
+    "pie-root-h2er-take",
+    "pie-root-h2ey-give",
+    "pie-root-h3eyt-take",
+    "pie-root-mewsH-lift",
+    "pie-root-nem-distribute",
+    "pie-root-selh1-take",
+    "pie-root-ser-take",
+    "pie-root-sleh2gw-take",
+    "pie-root-wreh2-take_away-2",
+    "pie-root-yem-hold"
+   ],
+   "thick": [
+    "pie-root-bhengjh-thick",
+    "pie-root-steg-cover"
+   ],
+   "thigh": [],
+   "this": [],
+   "tie/bind": [
+    "pie-root-Hnedh-bind",
+    "pie-root-Hreygj-bind",
+    "pie-root-bhedh-bend",
+    "pie-root-bhendh-bind",
+    "pie-root-deh1-bind",
+    "pie-root-gwrenth2-knot",
+    "pie-root-h2wer-lift",
+    "pie-root-kwert-bind",
+    "pie-root-leygj-bind",
+    "pie-root-mesg-knot",
+    "pie-root-mey-attach",
+    "pie-root-reygj-bind",
+    "pie-root-ser-bind",
+    "pie-root-sh2ey-bind",
+    "pie-root-wedh-bind",
+    "pie-root-wergjh-bind",
+    "pie-root-yew-hold_fast"
+   ],
+   "tongue": [],
+   "tooth": [
+    "pie-root-gjembh-bite",
+    "pie-root-h3ed-bite"
+   ],
+   "water": [
+    "pie-root-h2en-draw",
+    "pie-root-h2ep-water",
+    "pie-root-wed-well"
+   ],
+   "what": [
+    "pie-root-kw-primary_interrogative_root"
+   ],
+   "who": [],
+   "wide/broad": [
+    "pie-root-h1werH-broad",
+    "pie-root-pleth2-spread"
+   ],
+   "wind": [
+    "pie-root-h2weh1-blow"
+   ],
+   "wing": [
+    "pie-root-peth2-spread_out"
+   ],
+   "wood": [
+    "pie-root-h1weydhh1-separate"
+   ],
+   "yesterday": [],
+   "you": []
+  },
+  "conversation-core": {
+   "answer": [],
+   "ask/request": [
+    "pie-root-gwhedh-request",
+    "pie-root-h1reh1-rest",
+    "pie-root-h2eys-wish",
+    "pie-root-prekj-ask",
+    "pie-root-yeh2-request"
+   ],
+   "be ashamed": [
+    "pie-root-gjhnew-be_ashamed"
+   ],
+   "be tired": [
+    "pie-root-leh1d-be_tired"
+   ],
+   "beard": [
+    "pie-root-smekj-beard"
+   ],
+   "bury": [
+    "pie-root-dhembh-bury"
+   ],
+   "buy": [
+    "pie-root-kwreyh2-buy"
+   ],
+   "call": [
+    "pie-root-gewH-call",
+    "pie-root-ghel-call",
+    "pie-root-gjar-sound",
+    "pie-root-gjeh2r-shout",
+    "pie-root-gjhewH-call_on",
+    "pie-root-gjhweH-call",
+    "pie-root-kewH-cry_out",
+    "pie-root-kjewk-call",
+    "pie-root-kjeyd-call",
+    "pie-root-kleh1-call"
+   ],
+   "chew": [
+    "pie-root-bhes-chew",
+    "pie-root-bhseH-chew",
+    "pie-root-gjebh-eat",
+    "pie-root-gjyewh1-chew",
+    "pie-root-treh3gj-gnaw"
+   ],
+   "clean": [
+    "pie-root-kjlewH-clean",
+    "pie-root-pewH-be_clean"
+   ],
+   "close/shut": [
+    "pie-root-kagh-hold",
+    "pie-root-kleh2w-hook",
+    "pie-root-mews-shut",
+    "pie-root-wergj-enclose"
+   ],
+   "cough": [
+    "pie-root-kweh2s-cough"
+   ],
+   "cover": [
+    "pie-root-dhengh-cover",
+    "pie-root-h1ergjh-mount",
+    "pie-root-h1rebh-cover",
+    "pie-root-h2wer-lift",
+    "pie-root-kjel-cover",
+    "pie-root-kjley-shelter",
+    "pie-root-krewH-pile",
+    "pie-root-pel-cover",
+    "pie-root-skep-cover",
+    "pie-root-skewH-cover",
+    "pie-root-skjed-cover",
+    "pie-root-steg-cover",
+    "pie-root-weh1y-twist",
+    "pie-root-weh2gj-cover",
+    "pie-root-wel-enclose"
+   ],
+   "dream": [
+    "pie-root-swep-sleep"
+   ],
+   "evening": [],
+   "exchange/trade": [
+    "pie-root-h2meygw-change",
+    "pie-root-kwreyh2-buy",
+    "pie-root-mey-change",
+    "pie-root-meyth2-change",
+    "pie-root-wes-sell",
+    "pie-root-weyk-curve"
+   ],
+   "forget": [
+    "pie-root-mers-forget"
+   ],
+   "goat": [
+    "pie-root-h2egj-goat",
+    "pie-root-h2eygj-goat"
+   ],
+   "grow": [
+    "pie-root-bhengjh-thick",
+    "pie-root-bhuH-be",
+    "pie-root-bhweh2-grow",
+    "pie-root-ghreh1-grow",
+    "pie-root-h1lewdh-grow",
+    "pie-root-h2el-grow",
+    "pie-root-h2weks-increase",
+    "pie-root-kjer-grow",
+    "pie-root-sest-grow"
+   ],
+   "happy/glad/be glad/joyful": [
+    "pie-root-geh2dh-rejoice",
+    "pie-root-geh2w-rejoice",
+    "pie-root-pekj-joyful",
+    "pie-root-smey-laugh",
+    "pie-root-tews-be_calm"
+   ],
+   "hate": [
+    "pie-root-dweys-hate",
+    "pie-root-h3ed-hate",
+    "pie-root-peh1-hate"
+   ],
+   "help/assist": [
+    "pie-root-h1ewH-help",
+    "pie-root-h2reh1gj-care_for"
+   ],
+   "know/recognize": [
+    "pie-root-gjneh3-recognise",
+    "pie-root-kweyt-notice",
+    "pie-root-weyd-see"
+   ],
+   "lack": [
+    "pie-root-dews-need",
+    "pie-root-h1eg-lack",
+    "pie-root-h1egjH-lack",
+    "pie-root-neh2w-die",
+    "pie-root-sterh1-lack"
+   ],
+   "laugh": [
+    "pie-root-gwhes-laugh",
+    "pie-root-smey-laugh"
+   ],
+   "learn": [
+    "pie-root-h1ewk-become_accustomed"
+   ],
+   "leave": [
+    "pie-root-gjheh1-leave",
+    "pie-root-leh1d-be_tired",
+    "pie-root-leykw-leave"
+   ],
+   "lick": [
+    "pie-root-leb-hang_down_loosely",
+    "pie-root-leygjh-lick"
+   ],
+   "lift/raise/pick up": [
+    "pie-root-bhergjh-rise_up",
+    "pie-root-h2wer-lift",
+    "pie-root-h3er-move",
+    "pie-root-kerp-cut_off",
+    "pie-root-meh2kj-raise",
+    "pie-root-mewsH-lift",
+    "pie-root-renk-pick_up",
+    "pie-root-telh2-bear",
+    "pie-root-treh1w-raise",
+    "pie-root-wers-rise",
+    "pie-root-weys-raise"
+   ],
+   "like": [
+    "pie-root-gher-yearn_for",
+    "pie-root-leyg-similar"
+   ],
+   "lip": [
+    "pie-root-leb-hang_down_loosely"
+   ],
+   "lose": [
+    "pie-root-deh2-share",
+    "pie-root-deh2p-sacrifice"
+   ],
+   "love": [
+    "pie-root-h1erh2-love",
+    "pie-root-lewbh-desire",
+    "pie-root-preyH-please",
+    "pie-root-sterg-protect",
+    "pie-root-wenh1-love"
+   ],
+   "measure": [
+    "pie-root-med-measure",
+    "pie-root-meh1-measure",
+    "pie-root-met-measure_off"
+   ],
+   "morning": [
+    "pie-root-h2ey-day"
+   ],
+   "name": [
+    "pie-root-gewH-call"
+   ],
+   "open": [
+    "pie-root-Hrew-tear_out",
+    "pie-root-HrewH-dig_out",
+    "pie-root-h3weyg-open",
+    "pie-root-perkj-open",
+    "pie-root-rewh1-open"
+   ],
+   "play": [
+    "pie-root-leyd-play",
+    "pie-root-leyg-jump_around"
+   ],
+   "pretty/beautiful": [
+    "pie-root-pekj-joyful"
+   ],
+   "put/place/lay": [
+    "pie-root-Hwer-enclose",
+    "pie-root-dheh1-do",
+    "pie-root-kleh2-put",
+    "pie-root-kwleh2-spread_out",
+    "pie-root-legh-lie",
+    "pie-root-steh2-stand",
+    "pie-root-stel-put",
+    "pie-root-wenh1-love"
+   ],
+   "rejoice": [
+    "pie-root-bhend-be_happy",
+    "pie-root-geh2dh-rejoice",
+    "pie-root-geh2w-rejoice",
+    "pie-root-gwhers-rejoice",
+    "pie-root-mewd-rejoice",
+    "pie-root-pekj-rejoice"
+   ],
+   "remember": [
+    "pie-root-men-think",
+    "pie-root-smer-fall_into_thinking"
+   ],
+   "return/come back/return home": [
+    "pie-root-nes-return_home"
+   ],
+   "sell/be for sale": [
+    "pie-root-perh2-sell",
+    "pie-root-wes-sell"
+   ],
+   "share/divide": [
+    "pie-root-bheh2g-divide",
+    "pie-root-deh2-share",
+    "pie-root-deh2y-share",
+    "pie-root-delh1-split",
+    "pie-root-h1weydhh1-separate",
+    "pie-root-krey-sift",
+    "pie-root-sker-cut_off",
+    "pie-root-skerH-separate",
+    "pie-root-skeyd-split"
+   ],
+   "show": [
+    "pie-root-dekws-show",
+    "pie-root-deykj-point_out"
+   ],
+   "sick/ill/be ill/be sick/become sick": [
+    "pie-root-bhen-become_sick",
+    "pie-root-med-measure",
+    "pie-root-swergh-be_ill"
+   ],
+   "silent/be silent": [
+    "pie-root-stelH-be_silent",
+    "pie-root-teh2k-be_concealed",
+    "pie-root-th2ews-be_silent"
+   ],
+   "soft": [
+    "pie-root-h3lemH-break",
+    "pie-root-leh1-soft",
+    "pie-root-len-soft",
+    "pie-root-smeld-soften"
+   ],
+   "stay/remain": [
+    "pie-root-h2wes-dwell",
+    "pie-root-men-stay"
+   ],
+   "steal": [
+    "pie-root-klep-steal",
+    "pie-root-ser-take",
+    "pie-root-steh2-stand",
+    "pie-root-steh2y-steal",
+    "pie-root-teh2-steal"
+   ],
+   "summer": [
+    "pie-root-Hyeh1-throw",
+    "pie-root-semh2-summer"
+   ],
+   "swear": [
+    "pie-root-bheydh-trust",
+    "pie-root-h2wert-swear",
+    "pie-root-h3emh3-grab",
+    "pie-root-teg-swear"
+   ],
+   "take care of/care for": [
+    "pie-root-h2leg-care_for",
+    "pie-root-h2reh1gj-care_for",
+    "pie-root-sep-care_for",
+    "pie-root-ser-guard",
+    "pie-root-smer-fall_into_thinking",
+    "pie-root-swergh-be_ill"
+   ],
+   "take/fetch": [
+    "pie-root-dekj-take",
+    "pie-root-ghebh-give",
+    "pie-root-gheh1bh-grab",
+    "pie-root-gjheHb-seize",
+    "pie-root-gjher-take",
+    "pie-root-gjher-take-2",
+    "pie-root-gjhes-hand",
+    "pie-root-h1em-take",
+    "pie-root-h1nekj-receive",
+    "pie-root-h1reh1p-take_away",
+    "pie-root-h2er-take",
+    "pie-root-h2ey-give",
+    "pie-root-h3eyt-take",
+    "pie-root-mewsH-lift",
+    "pie-root-nem-distribute",
+    "pie-root-selh1-take",
+    "pie-root-ser-take",
+    "pie-root-sleh2gw-take",
+    "pie-root-wreh2-take_away-2",
+    "pie-root-yem-hold"
+   ],
+   "tall/high": [
+    "pie-root-bhergjh-rise_up",
+    "pie-root-h3erdh-upright",
+    "pie-root-kewk-bend"
+   ],
+   "teach": [
+    "pie-root-kjeh1s-teach"
+   ],
+   "thank": [],
+   "today": [],
+   "tomorrow": [],
+   "touch": [
+    "pie-root-Hmelkj-touch",
+    "pie-root-h3emh3-grab",
+    "pie-root-kjreyH-touch",
+    "pie-root-leyt-touch",
+    "pie-root-teh2g-touch"
+   ],
+   "trust": [
+    "pie-root-bheydh-trust",
+    "pie-root-dheh1-do",
+    "pie-root-pekw-trust"
+   ],
+   "understand": [
+    "pie-root-pret-understand"
+   ],
+   "wait": [],
+   "wake/wake up/awaken": [
+    "pie-root-bhewdh-be_awake",
+    "pie-root-h1ger-wake_up",
+    "pie-root-wegj-be_lively",
+    "pie-root-yewt-perceive"
+   ],
+   "want/wish/desire": [
+    "pie-root-gher-yearn_for",
+    "pie-root-gwelh3-wish",
+    "pie-root-h1ep-grab",
+    "pie-root-h1eygjh-desire",
+    "pie-root-h1gwhel-wish",
+    "pie-root-h1weld-wish",
+    "pie-root-h2eys-wish",
+    "pie-root-h3ep-wish",
+    "pie-root-keh2-desire",
+    "pie-root-lewbh-desire",
+    "pie-root-leyp-desire",
+    "pie-root-wekj-wish",
+    "pie-root-welh1-choose"
+   ],
+   "weep/cry": [
+    "pie-root-HrewdH-weep",
+    "pie-root-bhel-sound",
+    "pie-root-bhleh1-bleat",
+    "pie-root-dhrew-cry_out",
+    "pie-root-geH-sing",
+    "pie-root-gewH-call",
+    "pie-root-h3rewH-roar",
+    "pie-root-kewH-cry_out",
+    "pie-root-kjewk-call",
+    "pie-root-kjleh2w-weep",
+    "pie-root-kwrend-cry",
+    "pie-root-newH-cry_out",
+    "pie-root-rewdH-cry_out",
+    "pie-root-up-cry_out",
+    "pie-root-weh2gh-cry_out"
+   ],
+   "work": [
+    "pie-root-h3ep-work",
+    "pie-root-sterbh-exert",
+    "pie-root-wergj-make"
+   ]
+  }
+ },
+ "families": 821,
  "roots": {
+  "pie-root-Hedh-say": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-Heh3l-bow": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-Hers-push": [
+   "swadesh-207"
+  ],
+  "pie-root-Hmelkj-touch": [
+   "conversation-core",
+   "swadesh-207"
+  ],
+  "pie-root-Hnedh-bind": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-Hreh1-give": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-Hreh1dh-think": [
+   "swadesh-207"
+  ],
+  "pie-root-Hreh3d-scrape": [
+   "swadesh-207"
+  ],
   "pie-root-Hreth2-run": [
-   "core-noun"
+   "core-noun",
+   "leipzig-jakarta"
+  ],
+  "pie-root-Hrew-tear_out": [
+   "conversation-core",
+   "swadesh-207"
+  ],
+  "pie-root-HrewH-dig_out": [
+   "conversation-core",
+   "swadesh-207"
   ],
   "pie-root-HrewdH-weep": [
-   "core-noun"
+   "conversation-core",
+   "core-noun",
+   "leipzig-jakarta"
   ],
   "pie-root-Hrewp-break": [
    "core-verb"
   ],
+  "pie-root-Hreygj-bind": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-Hwer-enclose": [
+   "conversation-core",
    "core-verb"
   ],
   "pie-root-Hwerdh-become_big_strong": [
    "core-verb"
   ],
   "pie-root-Hyeh1-throw": [
+   "conversation-core",
    "core-noun",
+   "swadesh-207",
    "swadesh:nature"
+  ],
+  "pie-root-Hyekw-liver": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-Hyewdh-moving_erect": [
    "core-verb"
+  ],
+  "pie-root-bhedh-bend": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-bhedhh2-dig": [
+   "swadesh-207"
+  ],
+  "pie-root-bheg-bend": [
+   "swadesh-207"
+  ],
+  "pie-root-bhegw-flee": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-bheh1-foment": [
+   "swadesh-207"
+  ],
+  "pie-root-bheh1dh-press": [
+   "swadesh-207"
   ],
   "pie-root-bheh2-shine": [
    "tier2-secure"
   ],
   "pie-root-bheh2-speak": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-bheh2g-divide": [
+   "conversation-core"
+  ],
+  "pie-root-bhel-blaze": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-bhel-blow": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-bhel-sound": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-bheld-knock": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-bhelgjh-swell": [
+   "swadesh-207"
+  ],
+  "pie-root-bhen-become_sick": [
+   "conversation-core"
+  ],
+  "pie-root-bhend-be_happy": [
+   "conversation-core"
+  ],
+  "pie-root-bhendh-bind": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-bhengjh-thick": [
+   "conversation-core",
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-bher-bear": [
    "core-verb",
+   "leipzig-jakarta",
    "tier2-secure"
   ],
+  "pie-root-bherH-pierce": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-bhergjh-rise_up": [
+   "conversation-core"
+  ],
+  "pie-root-bhes-chew": [
+   "conversation-core"
+  ],
+  "pie-root-bhewd-strike": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-bhewdh-be_awake": [
+   "conversation-core",
    "core-verb"
   ],
   "pie-root-bhewg-flee": [
    "core-noun"
   ],
   "pie-root-bheyd-split": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
   ],
   "pie-root-bheydh-trust": [
+   "conversation-core",
    "core-noun",
    "core-verb",
    "formula"
   ],
   "pie-root-bheyh2-shake": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-bheyh2-strike": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-bhleh1-bleat": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-bhleh1-blow": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-bhleh2g-strike": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-bhleh3-bloom": [
+   "swadesh-207"
+  ],
+  "pie-root-bhlewH-strike": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-bhleyd-swell_up": [
+   "swadesh-207"
+  ],
+  "pie-root-bhleygj-strike": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-bhreHg-smell": [
+   "swadesh-207"
+  ],
+  "pie-root-bhrend-well_up": [
+   "swadesh-207"
+  ],
+  "pie-root-bhrenk-swell_up": [
+   "swadesh-207"
+  ],
+  "pie-root-bhrenkj-fall_off": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-bhrewh1-boil": [
    "swadesh:nature"
   ],
+  "pie-root-bhreyH-cut": [
+   "swadesh-207"
+  ],
+  "pie-root-bhseH-chew": [
+   "conversation-core"
+  ],
   "pie-root-bhuH-be": [
-   "core-verb"
+   "conversation-core",
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-bhweh2-grow": [
+   "conversation-core",
    "core-verb"
+  ],
+  "pie-root-deh1-bind": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-deh2-share": [
+   "conversation-core"
+  ],
+  "pie-root-deh2p-sacrifice": [
+   "conversation-core"
+  ],
+  "pie-root-deh2y-share": [
+   "conversation-core"
   ],
   "pie-root-deh3-give": [
    "conversation",
    "core-verb",
    "formula-menu",
+   "leipzig-jakarta",
+   "swadesh-207",
    "tier2-secure"
   ],
   "pie-root-deh3w-give": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-dekj-take": [
+   "conversation-core",
+   "leipzig-jakarta",
    "numeral"
+  ],
+  "pie-root-dekws-show": [
+   "conversation-core"
+  ],
+  "pie-root-delgh-split": [
+   "swadesh-207"
+  ],
+  "pie-root-delh1-split": [
+   "conversation-core",
+   "swadesh-207"
   ],
   "pie-root-dem-build": [
    "core-verb",
-   "formula"
+   "formula",
+   "leipzig-jakarta"
+  ],
+  "pie-root-denkj-bite": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-der-split": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
   ],
   "pie-root-derkj-see": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-dewk-pull": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-dews-need": [
+   "conversation-core"
   ],
   "pie-root-deykj-point_out": [
+   "conversation-core",
    "core-verb"
   ],
+  "pie-root-deykj-throw": [
+   "swadesh-207"
+  ],
+  "pie-root-dhebh-make_small": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-dhegwh-burn": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-dhegwhh2-come_near": [
    "core-verb"
   ],
   "pie-root-dheh1-do": [
+   "conversation-core",
    "core-verb",
    "formula",
    "formula-menu",
+   "leipzig-jakarta",
    "tier2-secure"
+  ],
+  "pie-root-dheh1k-make": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-dhelbh-dig": [
+   "swadesh-207"
+  ],
+  "pie-root-dhelh1-well_forth": [
+   "swadesh-207"
   ],
   "pie-root-dhembh-be_astonished": [
    "core-verb"
+  ],
+  "pie-root-dhembh-be_stunned": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-dhembh-bury": [
+   "conversation-core"
+  ],
+  "pie-root-dhengh-cover": [
+   "conversation-core"
+  ],
+  "pie-root-dhengwh-dark": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-dhenh2-set_in_motion": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-dher-support": [
+   "swadesh-207"
+  ],
+  "pie-root-dhergjh-bind_fast": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-dhew-die": [
+   "swadesh-207"
+  ],
+  "pie-root-dhew-run": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-dhewgh-hit": [
    "core-noun",
    "core-verb",
    "formula-menu",
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:kin",
    "tier2-secure"
   ],
   "pie-root-dhewh2-smoke": [
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:nature"
+  ],
+  "pie-root-dheygw-stick_into": [
+   "swadesh-207"
+  ],
+  "pie-root-dheyh2-perceive": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-dhgwher-meaning_of_this": [
+   "swadesh-207"
   ],
   "pie-root-dhgwhey-decline": [
    "formula-menu",
    "tier2-secure"
   ],
+  "pie-root-dhmeH-blow": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-dhreb-strike": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-dhregh-run": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-dhrew-cry_out": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
   "pie-root-dhrewgh-deceive": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-dhrews-fall": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-dhwes-breathe": [
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:nature"
   ],
+  "pie-root-dreh1-sleep": [
+   "swadesh-207"
+  ],
+  "pie-root-dreh2-do": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-dreh2-run": [
+   "leipzig-jakarta"
+  ],
   "pie-root-drem-run": [
-   "core-noun"
+   "core-noun",
+   "leipzig-jakarta"
+  ],
+  "pie-root-drem-sleep": [
+   "swadesh-207"
+  ],
+  "pie-root-drep-cut_off": [
+   "swadesh-207"
+  ],
+  "pie-root-drew-run": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-drewH-cut_down": [
+   "swadesh-207"
+  ],
+  "pie-root-dweh2-long": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-dwer-run": [
+   "leipzig-jakarta"
   ],
   "pie-root-dwey-fear": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-dweys-hate": [
+   "conversation-core"
   ],
   "pie-root-dyew-be_bright": [
    "core-noun",
    "formula",
    "formula-menu",
+   "swadesh-207",
    "swadesh:nature",
    "tier2-secure"
   ],
+  "pie-root-geH-sing": [
+   "conversation-core",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-geh2dh-rejoice": [
+   "conversation-core"
+  ],
+  "pie-root-geh2w-rejoice": [
+   "conversation-core"
+  ],
+  "pie-root-gel-be_cold": [
+   "swadesh-207"
+  ],
+  "pie-root-gelH-naked": [
+   "swadesh-207"
+  ],
+  "pie-root-gem-press": [
+   "swadesh-207"
+  ],
+  "pie-root-gerh2-cry_hoarsely": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-gew-bend": [
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:body"
   ],
+  "pie-root-gewH-call": [
+   "conversation-core",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-ghebh-give": [
+   "conversation-core",
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:body"
+  ],
+  "pie-root-ghed-find": [
+   "swadesh-207"
+  ],
+  "pie-root-gheh1-come": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gheh1bh-grab": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-ghel-call": [
+   "conversation-core"
+  ],
+  "pie-root-gher-rub": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gher-yearn_for": [
+   "conversation-core"
+  ],
+  "pie-root-gheu-disappear": [
+   "swadesh-207"
+  ],
+  "pie-root-ghleh2dh-bright": [
+   "swadesh-207"
+  ],
+  "pie-root-ghrebh-dig": [
+   "swadesh-207"
+  ],
+  "pie-root-ghrebh2-seize": [
+   "swadesh-207"
+  ],
+  "pie-root-ghreh1-grow": [
+   "conversation-core"
   ],
   "pie-root-ghrem-roar": [
    "swadesh:nature"
   ],
+  "pie-root-ghrendh-grind": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gjar-sound": [
+   "conversation-core"
+  ],
+  "pie-root-gjebh-eat": [
+   "conversation-core",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gjeh2r-shout": [
+   "conversation-core"
+  ],
   "pie-root-gjembh-bite": [
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:body"
   ],
   "pie-root-gjenh1-produce": [
    "conversation",
    "core-verb",
+   "swadesh-207",
    "swadesh:nature",
    "tier2-secure"
   ],
+  "pie-root-gjerh2-grow_old": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gjeys-turn": [
+   "swadesh-207"
+  ],
+  "pie-root-gjheHb-seize": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-gjheh1-leave": [
+   "conversation-core"
+  ],
+  "pie-root-gjhelh3-green": [
+   "swadesh-207"
+  ],
+  "pie-root-gjhengh-walk": [
+   "swadesh-207"
+  ],
+  "pie-root-gjher-shine": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gjher-take": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-gjher-take-2": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-gjherH-bowels": [
+   "swadesh-207"
+  ],
   "pie-root-gjhes-hand": [
+   "conversation-core",
+   "leipzig-jakarta",
    "numeral",
+   "swadesh-207",
    "swadesh:body"
   ],
   "pie-root-gjhew-pour": [
    "core-noun",
    "formula"
   ],
+  "pie-root-gjhewH-call_on": [
+   "conversation-core"
+  ],
   "pie-root-gjhey-drive": [
    "core-verb"
   ],
   "pie-root-gjhey-winter": [
+   "swadesh-207",
    "swadesh:nature"
+  ],
+  "pie-root-gjhnew-be_ashamed": [
+   "conversation-core"
+  ],
+  "pie-root-gjhweH-call": [
+   "conversation-core"
   ],
   "pie-root-gjhwer-wild": [
    "core-noun"
   ],
   "pie-root-gjneh3-recognise": [
-   "core-verb"
+   "conversation-core",
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gjwelH-burn": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gjyewh1-chew": [
+   "conversation-core"
   ],
   "pie-root-glewbh-split": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-gnet-press": [
+   "swadesh-207"
+  ],
+  "pie-root-gnewH-press": [
+   "swadesh-207"
+  ],
+  "pie-root-grengjh-turn": [
+   "swadesh-207"
+  ],
+  "pie-root-gweHy-sing": [
+   "swadesh-207"
   ],
   "pie-root-gweh2-step": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gwel-lie_down": [
+   "swadesh-207"
+  ],
+  "pie-root-gwelH-throw": [
+   "swadesh-207"
+  ],
+  "pie-root-gwelh1-hit": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gwelh3-wish": [
+   "conversation-core"
   ],
   "pie-root-gwem-come": [
    "conversation",
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-gwerH-express_approval": [
    "conversation"
   ],
+  "pie-root-gwerdh-hear": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-gwerh3-swallow": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gwet-say": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gweyh3-live": [
+   "swadesh-207"
+  ],
+  "pie-root-gwgjher-drift_in_water": [
+   "swadesh-207"
+  ],
+  "pie-root-gwhedh-request": [
+   "conversation-core"
   ],
   "pie-root-gwhen-strike": [
    "core-verb",
    "formula",
    "formula-menu",
+   "leipzig-jakarta",
+   "swadesh-207",
    "tier2-secure"
   ],
   "pie-root-gwher-be_warm": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-gwhers-rejoice": [
+   "conversation-core"
+  ],
+  "pie-root-gwhes-eat": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gwhes-laugh": [
+   "conversation-core",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gwhewgjh-hide": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-gwhews-hear": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gwhreh1-smell": [
+   "swadesh-207"
+  ],
+  "pie-root-gwhrend-rub": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gwhrendh-crush": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-gwreh2-heavy": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gwrenth2-knot": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-gwyeh3-live": [
+   "swadesh-207"
+  ],
+  "pie-root-h1ay-be_warm": [
+   "swadesh-207"
   ],
   "pie-root-h1ed-eat": [
    "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207",
    "tier2-secure"
   ],
+  "pie-root-h1eg-lack": [
+   "conversation-core"
+  ],
   "pie-root-h1egj-say": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h1egjH-lack": [
+   "conversation-core"
+  ],
+  "pie-root-h1egwh-drink": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h1eh1s-sit": [
+   "swadesh-207"
+  ],
+  "pie-root-h1eh1t-breathe": [
+   "swadesh-207"
+  ],
+  "pie-root-h1ekj-die": [
+   "swadesh-207"
   ],
   "pie-root-h1elh2-drive": [
    "core-verb"
   ],
+  "pie-root-h1em-take": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
   "pie-root-h1engw-burn": [
    "core-noun",
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:nature"
   ],
   "pie-root-h1ep-grab": [
-   "core-verb"
+   "conversation-core",
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-h1er-arrive": [
    "core-verb"
+  ],
+  "pie-root-h1er-earth": [
+   "swadesh-207"
+  ],
+  "pie-root-h1erH-wash": [
+   "swadesh-207"
+  ],
+  "pie-root-h1ergjh-mount": [
+   "conversation-core"
+  ],
+  "pie-root-h1erh2-love": [
+   "conversation-core"
+  ],
+  "pie-root-h1erk-cut_up": [
+   "swadesh-207"
+  ],
+  "pie-root-h1ers-flow": [
+   "swadesh-207"
   ],
   "pie-root-h1es-be": [
    "conversation",
    "core-noun",
    "core-verb",
    "formula",
+   "leipzig-jakarta",
+   "swadesh-207",
    "tier2-secure"
   ],
+  "pie-root-h1es-throw": [
+   "swadesh-207"
+  ],
+  "pie-root-h1ew-see": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h1ewH-help": [
+   "conversation-core"
+  ],
   "pie-root-h1ewk-become_accustomed": [
+   "conversation-core",
    "core-verb"
   ],
   "pie-root-h1ews-burn": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-h1ey-go": [
    "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207",
    "tier2-secure"
   ],
+  "pie-root-h1eyH-ice": [
+   "swadesh-207"
+  ],
+  "pie-root-h1eyg-ice": [
+   "swadesh-207"
+  ],
+  "pie-root-h1eygjh-desire": [
+   "conversation-core"
+  ],
+  "pie-root-h1ger-wake_up": [
+   "conversation-core"
+  ],
+  "pie-root-h1gwhel-wish": [
+   "conversation-core"
+  ],
   "pie-root-h1lewdh-grow": [
+   "conversation-core",
    "core-noun",
    "core-verb"
   ],
   "pie-root-h1nedh-come_forth": [
    "core-verb"
   ],
+  "pie-root-h1negjh-stab": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h1nekj-receive": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-h1rebh-cover": [
+   "conversation-core"
+  ],
+  "pie-root-h1reh1-rest": [
+   "conversation-core"
+  ],
+  "pie-root-h1reh1p-take_away": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
   "pie-root-h1rewdh-red": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h1rewg-belch": [
+   "swadesh-207"
+  ],
+  "pie-root-h1reyp-tear": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-h1weh2-be_become_empty": [
    "core-noun"
   ],
+  "pie-root-h1weld-wish": [
+   "conversation-core"
+  ],
   "pie-root-h1werH-broad": [
+   "leipzig-jakarta",
+   "swadesh-207",
    "tier2-secure"
   ],
   "pie-root-h1wers-rain": [
-   "core-noun"
+   "core-noun",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h1weydhh1-separate": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-h2eHs-be_dry": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h2ed-dry": [
+   "swadesh-207"
+  ],
+  "pie-root-h2edhgjh-press": [
+   "swadesh-207"
   ],
   "pie-root-h2egh-be_upset": [
    "core-verb"
@@ -426,28 +3428,92 @@
   "pie-root-h2egj-drive": [
    "core-noun",
    "core-verb",
+   "swadesh-207",
    "tier2-secure"
   ],
+  "pie-root-h2egj-goat": [
+   "conversation-core"
+  ],
+  "pie-root-h2eh1-burn": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-h2eh3-be_hot": [
+   "leipzig-jakarta",
+   "swadesh-207",
    "tier2-secure"
   ],
   "pie-root-h2ekj-sharp": [
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:nature"
   ],
   "pie-root-h2ekjh3-eat": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h2el-all": [
+   "swadesh-207"
+  ],
+  "pie-root-h2el-beyond": [
+   "swadesh-207"
   ],
   "pie-root-h2el-grow": [
+   "conversation-core",
    "core-verb"
   ],
+  "pie-root-h2elgjh-freeze": [
+   "swadesh-207"
+  ],
+  "pie-root-h2elh1-grind": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-h2en-draw": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h2engjh-constrict": [
+   "swadesh-207"
+  ],
+  "pie-root-h2enh1-breathe": [
+   "swadesh-207"
+  ],
+  "pie-root-h2enk-curve": [
+   "swadesh-207"
+  ],
+  "pie-root-h2ep-water": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-h2er-fit": [
+   "leipzig-jakarta",
    "swadesh:body"
+  ],
+  "pie-root-h2er-take": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-h2ergj-white": [
+   "swadesh-207"
   ],
   "pie-root-h2erh3-plough": [
    "core-verb"
   ],
+  "pie-root-h2erk-protect": [
+   "swadesh-207"
+  ],
+  "pie-root-h2et-but": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h2et-grass": [
+   "swadesh-207"
+  ],
   "pie-root-h2ew-perceive": [
    "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:body"
   ],
   "pie-root-h2ewH-put_on": [
@@ -458,15 +3524,39 @@
    "swadesh:nature",
    "tier2-secure"
   ],
+  "pie-root-h2ey-day": [
+   "conversation-core",
+   "swadesh-207"
+  ],
   "pie-root-h2ey-give": [
-   "core-verb"
+   "conversation-core",
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-h2ey-vital_force": [
    "formula"
   ],
+  "pie-root-h2eyd-swell": [
+   "swadesh-207"
+  ],
+  "pie-root-h2eydh-ignite": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h2eygj-goat": [
+   "conversation-core"
+  ],
   "pie-root-h2eys-wish": [
+   "conversation-core",
    "core-verb",
    "tier2-secure"
+  ],
+  "pie-root-h2leg-care_for": [
+   "conversation-core"
+  ],
+  "pie-root-h2leh1-grind": [
+   "leipzig-jakarta"
   ],
   "pie-root-h2lek-protect": [
    "core-verb"
@@ -477,43 +3567,148 @@
   "pie-root-h2melgj-milk": [
    "core-verb"
   ],
+  "pie-root-h2meygw-change": [
+   "conversation-core"
+  ],
   "pie-root-h2nekj-reach": [
    "core-verb"
   ],
+  "pie-root-h2reh1-think": [
+   "swadesh-207"
+  ],
+  "pie-root-h2reh1gj-care_for": [
+   "conversation-core"
+  ],
   "pie-root-h2rey-count": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
   ],
   "pie-root-h2sews-be_dry": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-h2tewg-be_terrified": [
+   "swadesh-207"
+  ],
+  "pie-root-h2weg-stab": [
+   "swadesh-207"
+  ],
+  "pie-root-h2weh1-blow": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-h2weks-increase": [
+   "conversation-core",
    "core-verb"
   ],
   "pie-root-h2welh1-hair": [
-   "core-noun"
+   "core-noun",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h2welk-drag": [
+   "swadesh-207"
+  ],
+  "pie-root-h2wer-lift": [
+   "conversation-core",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h2werg-turn": [
+   "swadesh-207"
+  ],
+  "pie-root-h2wert-swear": [
+   "conversation-core"
   ],
   "pie-root-h2wes-become_bright": [
    "core-verb"
   ],
+  "pie-root-h2wes-dwell": [
+   "conversation-core",
+   "swadesh-207"
+  ],
+  "pie-root-h2wet-pull": [
+   "swadesh-207"
+  ],
+  "pie-root-h2wey-run": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-h2weyd-sing": [
+   "swadesh-207"
+  ],
   "pie-root-h2weys-hear": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h2yew-straight": [
+   "swadesh-207"
+  ],
+  "pie-root-h3ed-bite": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h3ed-hate": [
+   "conversation-core"
+  ],
+  "pie-root-h3ed-smell": [
+   "swadesh-207"
   ],
   "pie-root-h3ekw-see": [
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:body"
+  ],
+  "pie-root-h3elh1-fall": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-h3emh3-grab": [
+   "conversation-core"
   ],
   "pie-root-h3engw-smear": [
+   "swadesh-207",
    "swadesh:body"
   ],
+  "pie-root-h3ep-wish": [
+   "conversation-core"
+  ],
+  "pie-root-h3ep-work": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
   "pie-root-h3er-move": [
+   "conversation-core",
    "formula"
   ],
   "pie-root-h3erbh-turn": [
+   "swadesh-207",
    "swadesh:kin"
+  ],
+  "pie-root-h3erdh-upright": [
+   "conversation-core"
+  ],
+  "pie-root-h3eygh-go": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-h3eyt-take": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-h3lemH-break": [
+   "conversation-core"
+  ],
+  "pie-root-h3mergj-wipe_off": [
+   "swadesh-207"
+  ],
+  "pie-root-h3meygh-fog": [
+   "swadesh-207"
   ],
   "pie-root-h3meygjh-urinate": [
    "core-verb"
   ],
   "pie-root-h3nebh-hub": [
+   "leipzig-jakarta",
    "swadesh:body"
   ],
   "pie-root-h3pews-increase": [
@@ -521,192 +3716,894 @@
   ],
   "pie-root-h3regj-straighten": [
    "core-noun",
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-h3rew-run": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-h3rewH-roar": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-h3rewk-dig": [
+   "swadesh-207"
+  ],
+  "pie-root-h3reyH-move": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-h3sleydh-slip": [
    "core-verb"
   ],
+  "pie-root-h3weyg-open": [
+   "conversation-core"
+  ],
+  "pie-root-kagh-hold": [
+   "conversation-core",
+   "swadesh-207"
+  ],
+  "pie-root-kan-sing": [
+   "swadesh-207"
+  ],
   "pie-root-kap-head": [
+   "swadesh-207",
    "swadesh:body"
   ],
   "pie-root-kap-seize": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-keh2-desire": [
+   "conversation-core"
+  ],
+  "pie-root-keh2n-sing": [
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-keh2w-kindle": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-keh2w-strike": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-keh3-fight": [
+   "swadesh-207"
+  ],
+  "pie-root-kelh2-beat": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-kem-press": [
+   "swadesh-207"
+  ],
+  "pie-root-kerp-cut_off": [
+   "conversation-core",
+   "swadesh-207"
+  ],
+  "pie-root-kers-cut": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-kert-turn": [
+   "swadesh-207"
+  ],
+  "pie-root-kewH-cry_out": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-kewbh2-lie_down": [
+   "swadesh-207"
+  ],
+  "pie-root-kewdh-hide": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-kewh2-hit": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-kewk-bend": [
+   "conversation-core"
+  ],
+  "pie-root-kh2em-bend": [
+   "swadesh-207"
+  ],
+  "pie-root-kh2eyd-cut": [
+   "swadesh-207"
+  ],
+  "pie-root-kjad-fall": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-kjeh1s-teach": [
+   "conversation-core"
   ],
   "pie-root-kjel-cover": [
+   "conversation-core",
    "core-verb"
+  ],
+  "pie-root-kjelH-become_cold": [
+   "swadesh-207"
   ],
   "pie-root-kjemh2-become_tired": [
    "core-verb"
   ],
+  "pie-root-kjer-grow": [
+   "conversation-core"
+  ],
+  "pie-root-kjer-plait": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-kjerd-heart": [
    "core-noun",
+   "swadesh-207",
    "swadesh:body"
   ],
   "pie-root-kjerh2-head": [
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:body"
+  ],
+  "pie-root-kjers-run": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-kjes-cut": [
+   "swadesh-207"
+  ],
+  "pie-root-kjewH-throw": [
+   "swadesh-207"
+  ],
+  "pie-root-kjewh1-swell": [
+   "swadesh-207"
+  ],
+  "pie-root-kjewk-call": [
+   "conversation-core",
+   "leipzig-jakarta"
   ],
   "pie-root-kjey-be_lying_down": [
    "core-noun",
    "core-verb",
+   "swadesh:kin",
    "tier2-secure"
+  ],
+  "pie-root-kjey-fall": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-kjeyd-call": [
+   "conversation-core"
+  ],
+  "pie-root-kjleh1-hot": [
+   "swadesh-207"
+  ],
+  "pie-root-kjleh2w-weep": [
+   "conversation-core",
+   "leipzig-jakarta"
   ],
   "pie-root-kjlew-hear": [
    "conversation",
    "core-verb",
    "formula",
    "formula-menu",
+   "leipzig-jakarta",
+   "swadesh-207",
    "tier2-secure"
+  ],
+  "pie-root-kjlewH-clean": [
+   "conversation-core"
+  ],
+  "pie-root-kjlews-hear": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-kjley-lean": [
    "core-verb"
   ],
+  "pie-root-kjley-shelter": [
+   "conversation-core"
+  ],
+  "pie-root-kjneth2-thrust": [
+   "swadesh-207"
+  ],
+  "pie-root-kjremH-burn": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-kjremh2-become_slack": [
    "core-verb"
   ],
+  "pie-root-kjreyH-touch": [
+   "conversation-core"
+  ],
+  "pie-root-kjweH-throw": [
+   "swadesh-207"
+  ],
+  "pie-root-kjweh1-swell": [
+   "swadesh-207"
+  ],
+  "pie-root-kjweyt-shine": [
+   "swadesh-207"
+  ],
+  "pie-root-kjyeH-freeze": [
+   "swadesh-207"
+  ],
+  "pie-root-kjyeh2p-rot": [
+   "swadesh-207"
+  ],
+  "pie-root-kleh1-call": [
+   "conversation-core"
+  ],
+  "pie-root-kleh2-put": [
+   "conversation-core"
+  ],
+  "pie-root-kleh2w-hook": [
+   "conversation-core"
+  ],
+  "pie-root-klep-steal": [
+   "conversation-core"
+  ],
+  "pie-root-kneh2-scratch": [
+   "swadesh-207"
+  ],
+  "pie-root-knewH-scratch": [
+   "swadesh-207"
+  ],
+  "pie-root-kneyd-scratch": [
+   "swadesh-207"
+  ],
+  "pie-root-krekj-strike": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-kret-be_strong": [
+   "swadesh-207"
+  ],
+  "pie-root-krewH-pile": [
+   "conversation-core"
+  ],
   "pie-root-krewh2-blood_outside_the": [
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:body",
    "tier2-secure"
   ],
+  "pie-root-krews-freeze": [
+   "swadesh-207"
+  ],
+  "pie-root-krews-push": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-krey-sift": [
+   "conversation-core"
+  ],
+  "pie-root-ksen-card": [
+   "swadesh-207"
+  ],
+  "pie-root-ksweybh-move_swiftly": [
+   "swadesh-207"
+  ],
+  "pie-root-kw-primary_interrogative_root": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-kweh2-dig": [
+   "swadesh-207"
+  ],
+  "pie-root-kweh2d-tear": [
+   "swadesh-207"
+  ],
+  "pie-root-kweh2s-cough": [
+   "conversation-core"
+  ],
   "pie-root-kwekj-see": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-kwelh1-turn": [
    "formula-menu",
+   "swadesh-207",
    "tier2-secure"
   ],
+  "pie-root-kwelp-wind": [
+   "swadesh-207"
+  ],
+  "pie-root-kwels-pull": [
+   "swadesh-207"
+  ],
+  "pie-root-kwep-breathe": [
+   "swadesh-207"
+  ],
+  "pie-root-kwer-do": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-kwerd-hear": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-kwerpH-turn": [
+   "swadesh-207"
+  ],
+  "pie-root-kwert-bind": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-kwey-perceive": [
+   "swadesh-207"
+  ],
+  "pie-root-kweys-see": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-kweyt-notice": [
+   "conversation-core"
+  ],
+  "pie-root-kwh2ed-crush": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-kwleh2-spread_out": [
+   "conversation-core"
+  ],
+  "pie-root-kwrend-cry": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-kwreyh2-buy": [
+   "conversation-core"
+  ],
+  "pie-root-kwreyp-turn": [
+   "swadesh-207"
+  ],
+  "pie-root-kwsewd-crush": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-leb-hang_down_loosely": [
+   "conversation-core"
+  ],
   "pie-root-legh-lie": [
+   "conversation-core",
    "core-verb",
-   "formula"
+   "formula",
+   "swadesh-207"
   ],
   "pie-root-leh1-soft": [
+   "conversation-core",
    "core-verb"
+  ],
+  "pie-root-leh1d-be_tired": [
+   "conversation-core"
+  ],
+  "pie-root-leh2-hide_oneself": [
+   "leipzig-jakarta"
   ],
   "pie-root-lembh-seize": [
    "core-verb"
   ],
+  "pie-root-len-soft": [
+   "conversation-core"
+  ],
+  "pie-root-lewbh-cut_off": [
+   "swadesh-207"
+  ],
   "pie-root-lewbh-desire": [
-   "core-noun"
+   "conversation-core",
+   "core-noun",
+   "core-verb"
+  ],
+  "pie-root-lewgh-lie": [
+   "swadesh-207"
+  ],
+  "pie-root-lewh1-cut_off": [
+   "swadesh-207"
+  ],
+  "pie-root-lewh3-wash": [
+   "swadesh-207"
   ],
   "pie-root-lewk-bright": [
    "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:nature"
   ],
+  "pie-root-lewt-see": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-leyd-play": [
+   "conversation-core",
+   "swadesh-207"
+  ],
+  "pie-root-leyg-jump_around": [
+   "conversation-core",
+   "swadesh-207"
+  ],
+  "pie-root-leyg-similar": [
+   "conversation-core"
+  ],
+  "pie-root-leygj-bind": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-leygjh-lick": [
+   "conversation-core",
    "core-verb"
   ],
   "pie-root-leykw-leave": [
+   "conversation-core",
    "core-verb"
   ],
+  "pie-root-leyp-desire": [
+   "conversation-core"
+  ],
   "pie-root-leyt-go": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta"
+  ],
+  "pie-root-leyt-touch": [
+   "conversation-core"
+  ],
+  "pie-root-med-measure": [
+   "conversation-core"
   ],
   "pie-root-megh-be_able": [
    "core-verb"
   ],
+  "pie-root-meh1-measure": [
+   "conversation-core",
+   "swadesh-207"
+  ],
+  "pie-root-meh2-good": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-meh2-wet": [
+   "swadesh-207"
+  ],
+  "pie-root-meh2kj-raise": [
+   "conversation-core",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-melh2-black": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-melh2-grind": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-melh2w-grind": [
+   "leipzig-jakarta"
+  ],
   "pie-root-melh3-step_forward": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-mems-flesh": [
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:body"
+  ],
+  "pie-root-men-small": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-men-stand_out": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-men-stay": [
+   "conversation-core"
   ],
   "pie-root-men-think": [
    "conversation",
+   "conversation-core",
    "core-verb",
    "formula",
+   "swadesh-207",
    "tier2-secure"
+  ],
+  "pie-root-menk-knead": [
+   "swadesh-207"
   ],
   "pie-root-mer-die": [
    "core-noun",
    "core-verb",
    "formula",
+   "swadesh-207",
    "tier2-secure"
   ],
   "pie-root-mer-sea": [
+   "swadesh-207",
    "swadesh:nature"
   ],
+  "pie-root-merh2-crumble": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-mers-forget": [
+   "conversation-core"
+  ],
+  "pie-root-mesg-knot": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-met-cut": [
+   "swadesh-207"
+  ],
+  "pie-root-met-measure_off": [
+   "conversation-core"
+  ],
   "pie-root-mewd-rejoice": [
+   "conversation-core",
    "core-verb"
   ],
+  "pie-root-mews-shut": [
+   "conversation-core"
+  ],
+  "pie-root-mewsH-lift": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-mey-attach": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-mey-change": [
+   "conversation-core",
    "core-noun",
    "tier2-secure"
   ],
+  "pie-root-mey-small": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-meyH-become_small": [
+   "swadesh-207"
+  ],
+  "pie-root-meyth2-change": [
+   "conversation-core"
+  ],
   "pie-root-mlewH-say": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-mregjh-short": [
+   "swadesh-207"
   ],
   "pie-root-nebh-become_damp": [
+   "swadesh-207",
    "swadesh:nature",
    "tier2-secure"
   ],
+  "pie-root-nebh-burst": [
+   "swadesh-207"
+  ],
   "pie-root-negw-bare": [
    "core-noun",
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:nature"
+  ],
+  "pie-root-neh2-become_afraid": [
+   "swadesh-207"
+  ],
+  "pie-root-neh2w-die": [
+   "conversation-core",
+   "swadesh-207"
   ],
   "pie-root-nekj-perish": [
    "core-verb",
    "formula"
   ],
+  "pie-root-nem-distribute": [
+   "conversation-core",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-nes-return_home": [
+   "conversation-core"
+  ],
+  "pie-root-new-new": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-new-nod": [
+   "swadesh-207"
+  ],
+  "pie-root-newH-cry_out": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-newd-push": [
+   "swadesh-207"
+  ],
+  "pie-root-neyd-flow": [
+   "swadesh-207"
+  ],
+  "pie-root-neygw-wash": [
+   "swadesh-207"
+  ],
+  "pie-root-peHs-see": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-ped-walk": [
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:body",
    "tier2-secure"
+  ],
+  "pie-root-peh1-hate": [
+   "conversation-core"
   ],
   "pie-root-peh2-protect": [
    "core-noun",
    "core-verb",
    "formula-menu",
+   "swadesh-207",
    "swadesh:kin",
    "tier2-secure"
   ],
+  "pie-root-peh2w-few": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-peh3-drink": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-peh3lH-fall": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-peh3y-drink": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-pekj-joyful": [
+   "conversation-core"
+  ],
+  "pie-root-pekj-pluck": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-pekj-rejoice": [
+   "conversation-core"
   ],
   "pie-root-pekw-crack": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta"
+  ],
+  "pie-root-pekw-trust": [
+   "conversation-core"
+  ],
+  "pie-root-pel-beat": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-pel-cover": [
+   "conversation-core",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-pel-flour": [
+   "swadesh-207"
   ],
   "pie-root-pelh1-swing": [
    "core-verb"
   ],
+  "pie-root-pelk-wrap": [
+   "leipzig-jakarta"
+  ],
   "pie-root-penkw-fist": [
+   "leipzig-jakarta",
    "numeral",
+   "swadesh-207",
    "swadesh:body"
+  ],
+  "pie-root-pent-pass": [
+   "swadesh-207"
+  ],
+  "pie-root-per-beat": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-per-go_through": [
+   "swadesh-207"
+  ],
+  "pie-root-per-strike": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-perd-fart_loudly": [
    "core-verb"
   ],
+  "pie-root-perh2-sell": [
+   "conversation-core"
+  ],
+  "pie-root-perkj-open": [
+   "conversation-core",
+   "swadesh-207"
+  ],
   "pie-root-perkw-oak": [
    "core-noun"
   ],
+  "pie-root-pert-come_into_conflict": [
+   "swadesh-207"
+  ],
+  "pie-root-peth1-fall": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-peth2-fly": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-peth2-spread_out": [
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:body",
    "swadesh:nature",
    "tier2-secure"
   ],
+  "pie-root-pewH-be_clean": [
+   "conversation-core"
+  ],
+  "pie-root-pewH-rot": [
+   "swadesh-207"
+  ],
+  "pie-root-pewgj-punch": [
+   "swadesh-207"
+  ],
+  "pie-root-pewk-breathe": [
+   "swadesh-207"
+  ],
+  "pie-root-pewt-blow_up": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-peyH-sing": [
+   "swadesh-207"
+  ],
   "pie-root-peyh2-swell": [
+   "swadesh-207",
    "swadesh:body"
   ],
   "pie-root-peykj-hew": [
-   "formula"
+   "formula",
+   "swadesh-207"
+  ],
+  "pie-root-peykj-hostile": [
+   "swadesh-207"
+  ],
+  "pie-root-peys-grind": [
+   "leipzig-jakarta"
   ],
   "pie-root-pleh1-fill": [
    "core-noun",
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-pleh2g-strike": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-pleh2k-strike": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-pleh3w-swim": [
+   "swadesh-207"
+  ],
+  "pie-root-pleth2-spread": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-plew-fly": [
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:body"
+  ],
+  "pie-root-plewd-fly": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-plewk-fly": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-pnew-breathe": [
+   "swadesh-207"
+  ],
+  "pie-root-prekj-ask": [
+   "conversation-core"
+  ],
+  "pie-root-prekj-be_afraid": [
+   "swadesh-207"
+  ],
+  "pie-root-pres-press": [
+   "swadesh-207"
+  ],
+  "pie-root-pret-understand": [
+   "conversation-core"
+  ],
+  "pie-root-prews-freeze": [
+   "swadesh-207"
   ],
   "pie-root-preyH-please": [
    "conversation",
+   "conversation-core",
    "tier2-secure"
+  ],
+  "pie-root-prk-fear": [
+   "swadesh-207"
+  ],
+  "pie-root-puH-rotten": [
+   "swadesh-207"
+  ],
+  "pie-root-pyeh2-strike": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-rasd-scratch": [
+   "swadesh-207"
+  ],
+  "pie-root-red-scrape": [
+   "swadesh-207"
+  ],
+  "pie-root-regj-flow": [
+   "swadesh-207"
+  ],
+  "pie-root-reh1-count": [
+   "swadesh-207"
   ],
   "pie-root-reh1dh-carry_out_successfully": [
    "core-verb"
   ],
+  "pie-root-renk-pick_up": [
+   "conversation-core"
+  ],
+  "pie-root-ret-run": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-rewdH-cry_out": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-rewh1-open": [
+   "conversation-core"
+  ],
+  "pie-root-rews-dig_up": [
+   "swadesh-207"
+  ],
+  "pie-root-reybh-sing": [
+   "swadesh-207"
+  ],
+  "pie-root-reygj-bind": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-reykwh2-scratch": [
+   "swadesh-207"
+  ],
   "pie-root-sed-sit": [
    "core-verb",
-   "formula"
+   "formula",
+   "swadesh-207"
   ],
   "pie-root-seh1-impress": [
+   "swadesh-207",
    "swadesh:nature"
+  ],
+  "pie-root-seh1-long": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-seh1y-let_go": [
    "core-verb"
@@ -717,138 +4614,690 @@
   "pie-root-seh2y-become_sated": [
    "core-verb"
   ],
+  "pie-root-sek-cut": [
+   "swadesh-207"
+  ],
+  "pie-root-sek-dry_out": [
+   "swadesh-207"
+  ],
   "pie-root-sekw-follow": [
    "core-verb"
   ],
   "pie-root-sekw-say": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-sekw-see": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-selh1-take": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-selp-fat": [
+   "swadesh-207"
   ],
   "pie-root-sem-one": [
    "formula",
-   "numeral"
+   "leipzig-jakarta",
+   "numeral",
+   "swadesh-207"
+  ],
+  "pie-root-semH-scoop": [
+   "swadesh-207"
+  ],
+  "pie-root-semh2-summer": [
+   "conversation-core",
+   "swadesh-207"
   ],
   "pie-root-sengw-sink": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-sengwh-recite": [
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-sent-go": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-sent-perceive": [
+   "swadesh-207"
+  ],
+  "pie-root-sep-care_for": [
+   "conversation-core"
+  ],
+  "pie-root-ser-bind": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-ser-flow": [
+   "swadesh-207"
+  ],
+  "pie-root-ser-guard": [
+   "conversation-core"
+  ],
+  "pie-root-ser-take": [
+   "conversation-core",
+   "leipzig-jakarta"
   ],
   "pie-root-serp-creep": [
    "core-verb"
   ],
   "pie-root-ses-rest": [
-   "formula"
+   "formula",
+   "swadesh-207"
+  ],
+  "pie-root-sest-grow": [
+   "conversation-core"
+  ],
+  "pie-root-sew-press_out": [
+   "swadesh-207"
   ],
   "pie-root-sewH-bear": [
    "core-noun",
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:kin",
    "tier2-secure"
   ],
+  "pie-root-sewh1-press": [
+   "swadesh-207"
+  ],
+  "pie-root-sewk-turn": [
+   "swadesh-207"
+  ],
+  "pie-root-sewkj-suck": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-sewp-throw": [
+   "swadesh-207"
+  ],
+  "pie-root-sgwesh2-go_out": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-sh1es-harvest": [
+   "swadesh-207"
+  ],
+  "pie-root-sh2ew-pour": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-sh2ey-bind": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-skabh-scratch": [
+   "swadesh-207"
+  ],
+  "pie-root-skel-bend": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-skelH-cut": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-skep-cover": [
+   "conversation-core"
+  ],
+  "pie-root-sker-cut_off": [
+   "conversation-core",
+   "swadesh-207"
+  ],
+  "pie-root-sker-turn": [
+   "swadesh-207"
+  ],
+  "pie-root-skerH-separate": [
+   "conversation-core"
+  ],
+  "pie-root-skerbh-scratch": [
+   "swadesh-207"
+  ],
+  "pie-root-skerdh-cut": [
+   "swadesh-207"
+  ],
+  "pie-root-skerp-cut_off": [
+   "swadesh-207"
+  ],
+  "pie-root-skers-scratch": [
+   "swadesh-207"
+  ],
+  "pie-root-skert-cut": [
+   "swadesh-207"
+  ],
+  "pie-root-skewH-cover": [
+   "conversation-core",
+   "leipzig-jakarta",
+   "swadesh-207",
+   "swadesh:body"
+  ],
+  "pie-root-skewbh-push": [
+   "swadesh-207"
+  ],
+  "pie-root-skewd-advance": [
+   "swadesh-207"
+  ],
+  "pie-root-skewt-scratch": [
+   "swadesh-207"
+  ],
+  "pie-root-skey-split": [
+   "swadesh-207"
   ],
   "pie-root-skeyd-split": [
-   "core-verb"
+   "conversation-core",
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-skjed-cover": [
+   "conversation-core"
+  ],
+  "pie-root-skjeh1w-cold": [
+   "swadesh-207"
+  ],
+  "pie-root-skjeh3-darkness": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-skjerd-throw_out": [
+   "swadesh-207"
+  ],
+  "pie-root-skreb-scrape": [
+   "swadesh-207"
+  ],
+  "pie-root-skreybh-scratch": [
+   "swadesh-207"
+  ],
+  "pie-root-slak-strike": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-sleh2gw-take": [
-   "core-verb"
+   "conversation-core",
+   "core-verb",
+   "leipzig-jakarta"
+  ],
+  "pie-root-smal-small": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-smeH-rub": [
+   "swadesh-207"
+  ],
+  "pie-root-smeh2-beckon": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-smekj-beard": [
+   "conversation-core"
+  ],
+  "pie-root-smel-burn": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-smel-false": [
+   "swadesh-207"
+  ],
+  "pie-root-smeld-soften": [
+   "conversation-core"
+  ],
+  "pie-root-smer-fall_into_thinking": [
+   "conversation-core"
+  ],
+  "pie-root-smerd-bite": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-smey-laugh": [
+   "conversation-core",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-smeyt-throw": [
+   "swadesh-207"
+  ],
+  "pie-root-snedh-cut": [
+   "swadesh-207"
+  ],
+  "pie-root-sneh1-spin": [
+   "swadesh-207"
   ],
   "pie-root-sneh2-swim": [
    "core-noun",
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-snewH-turn": [
+   "swadesh-207"
   ],
   "pie-root-sneygwh-snow": [
+   "swadesh-207",
    "swadesh:nature"
+  ],
+  "pie-root-sneyt-cut": [
+   "swadesh-207"
+  ],
+  "pie-root-speh1-succeed": [
+   "swadesh-207"
+  ],
+  "pie-root-speh2-draw": [
+   "swadesh-207"
   ],
   "pie-root-spekj-see": [
    "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207",
    "tier2-secure"
+  ],
+  "pie-root-spelH-split_off": [
+   "swadesh-207"
+  ],
+  "pie-root-spelt-split": [
+   "swadesh-207"
+  ],
+  "pie-root-sper-fly": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-sper-free": [
    "core-noun"
   ],
+  "pie-root-sperdh-compete": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-spewd-press": [
+   "swadesh-207"
+  ],
+  "pie-root-spey-long": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-speys-breathe": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-sptyewH-spit": [
+   "swadesh-207"
+  ],
   "pie-root-srebh-sip": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-srew-flow": [
+   "swadesh-207"
+  ],
+  "pie-root-sreyHgj-freeze": [
+   "swadesh-207"
+  ],
+  "pie-root-steg-cover": [
+   "conversation-core",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-steg-pole": [
+   "swadesh-207"
   ],
   "pie-root-steh2-stand": [
+   "conversation-core",
    "core-noun",
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-steh2y-steal": [
+   "conversation-core"
+  ],
+  "pie-root-stel-put": [
+   "conversation-core"
+  ],
+  "pie-root-stelH-be_silent": [
+   "conversation-core"
+  ],
+  "pie-root-stelgj-smooth_out": [
+   "swadesh-207"
+  ],
+  "pie-root-stelgjh-crush": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-stengw-push": [
+   "swadesh-207"
+  ],
+  "pie-root-sterbh-exert": [
+   "conversation-core"
+  ],
+  "pie-root-sterg-protect": [
+   "conversation-core",
    "core-verb"
+  ],
+  "pie-root-sterh1-lack": [
+   "conversation-core"
+  ],
+  "pie-root-stew-push": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-stewd-become_cold": [
    "core-verb"
   ],
   "pie-root-stewd-push": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-stewg-push": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-stewk-push": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-stewp-push": [
+   "swadesh-207"
   ],
   "pie-root-steygh-go": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-strebh-turn": [
+   "swadesh-207"
+  ],
+  "pie-root-stregwh-turn": [
+   "swadesh-207"
+  ],
+  "pie-root-strengh-twist": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-strewg-stroke": [
+   "swadesh-207"
+  ],
+  "pie-root-streyg-stroke": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-stru-gray_haired": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-sweh2d-sweet": [
    "core-verb",
+   "leipzig-jakarta",
    "tier2-secure"
   ],
+  "pie-root-swel-smolder": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-swelH-swell_up": [
+   "swadesh-207"
+  ],
+  "pie-root-sweld-starve": [
+   "swadesh-207"
+  ],
   "pie-root-swep-sleep": [
+   "conversation-core",
+   "swadesh-207",
    "tier2-secure"
+  ],
+  "pie-root-swerbh-wipe_off": [
+   "swadesh-207"
+  ],
+  "pie-root-swerd-dirty": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-swergh-be_ill": [
+   "conversation-core"
   ],
   "pie-root-sweyd-sweat": [
    "core-verb"
   ],
+  "pie-root-sweyd-throw": [
+   "swadesh-207"
+  ],
+  "pie-root-syewH-sew": [
+   "swadesh-207"
+  ],
+  "pie-root-teg-swear": [
+   "conversation-core"
+  ],
+  "pie-root-teh2-melt": [
+   "swadesh-207"
+  ],
+  "pie-root-teh2-steal": [
+   "conversation-core"
+  ],
+  "pie-root-teh2g-touch": [
+   "conversation-core"
+  ],
+  "pie-root-teh2k-be_concealed": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
   "pie-root-tekj-sire": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-tekw-run": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-telh2-bear": [
+   "conversation-core",
    "core-verb"
+  ],
+  "pie-root-telk-thrust": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-temh1-cut": [
+   "swadesh-207"
   ],
   "pie-root-ten-stretch": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-tend-split": [
+   "swadesh-207"
+  ],
+  "pie-root-teng-think": [
+   "swadesh-207"
+  ],
+  "pie-root-tengh-pull": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-tenh2-stretch": [
+   "swadesh-207"
+  ],
+  "pie-root-tep-be_warm": [
+   "swadesh-207"
   ],
   "pie-root-terd-bore_through": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
+  ],
+  "pie-root-tergj-wipe_off": [
+   "swadesh-207"
+  ],
+  "pie-root-tergw-scare": [
+   "swadesh-207"
+  ],
+  "pie-root-terh1-rub": [
+   "swadesh-207"
   ],
   "pie-root-terh2-cross_over": [
    "core-verb",
    "tier2-secure"
+  ],
+  "pie-root-terkw-turn": [
+   "swadesh-207"
   ],
   "pie-root-terp-satisfy": [
    "core-verb"
   ],
   "pie-root-ters-dry": [
    "core-verb",
-   "formula"
+   "formula",
+   "swadesh-207"
   ],
   "pie-root-tetkj-create": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
   ],
   "pie-root-tewh2-swell": [
-   "numeral"
+   "numeral",
+   "swadesh-207"
+  ],
+  "pie-root-tewk-become_swollen": [
+   "swadesh-207"
+  ],
+  "pie-root-tews-be_calm": [
+   "conversation-core"
   ],
   "pie-root-teyh1-get_hot": [
    "core-verb"
   ],
+  "pie-root-th2ews-be_silent": [
+   "conversation-core"
+  ],
+  "pie-root-tkjey-cultivate": [
+   "swadesh-207"
+  ],
+  "pie-root-treh1-turn": [
+   "swadesh-207"
+  ],
+  "pie-root-treh1w-raise": [
+   "conversation-core"
+  ],
+  "pie-root-treh3gj-gnaw": [
+   "conversation-core"
+  ],
   "pie-root-trem-tremble": [
    "core-verb"
   ],
+  "pie-root-trenk-press": [
+   "swadesh-207"
+  ],
+  "pie-root-trenkw-push": [
+   "swadesh-207"
+  ],
+  "pie-root-trep-turn": [
+   "swadesh-207"
+  ],
   "pie-root-tres-tremble": [
    "core-verb"
+  ],
+  "pie-root-treskj-squeeze_out": [
+   "swadesh-207"
+  ],
+  "pie-root-trewd-push": [
+   "swadesh-207"
+  ],
+  "pie-root-treygw-rub": [
+   "swadesh-207"
+  ],
+  "pie-root-tum-swell": [
+   "swadesh-207"
+  ],
+  "pie-root-twem-swell_up": [
+   "swadesh-207"
+  ],
+  "pie-root-twerkj-carve": [
+   "swadesh-207"
+  ],
+  "pie-root-tyegw-leave_alone": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-up-cry_out": [
+   "conversation-core",
+   "leipzig-jakarta"
   ],
   "pie-root-webh-weave": [
    "tier2-secure"
   ],
   "pie-root-wed-well": [
    "core-noun",
+   "leipzig-jakarta",
+   "swadesh-207",
    "swadesh:nature"
+  ],
+  "pie-root-wedh-bind": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-wedh-lead": [
    "core-verb"
   ],
+  "pie-root-wedhh1-push-2": [
+   "swadesh-207"
+  ],
+  "pie-root-wegj-be_lively": [
+   "conversation-core"
+  ],
   "pie-root-wegjh-bring": [
    "core-verb"
   ],
+  "pie-root-wegw-wet": [
+   "swadesh-207"
+  ],
+  "pie-root-weh1y-twist": [
+   "conversation-core"
+  ],
+  "pie-root-weh2-turn-2": [
+   "swadesh-207"
+  ],
+  "pie-root-weh2dh-go": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-weh2gh-cry_out": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-weh2gj-cover": [
+   "conversation-core"
+  ],
   "pie-root-wekj-wish": [
+   "conversation-core",
    "tier2-secure"
   ],
   "pie-root-wekw-speak": [
    "core-noun",
    "core-verb",
    "formula",
+   "leipzig-jakarta",
+   "swadesh-207",
    "tier2-secure"
+  ],
+  "pie-root-wel-enclose": [
+   "conversation-core"
+  ],
+  "pie-root-wel-see": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-wel-turn": [
+   "swadesh-207"
+  ],
+  "pie-root-welg-wet": [
+   "swadesh-207"
+  ],
+  "pie-root-welh1-choose": [
+   "conversation-core"
+  ],
+  "pie-root-welh3-hit": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-wemh1-spew": [
+   "swadesh-207"
   ],
   "pie-root-wen-overpower-2": [
    "core-noun"
@@ -856,38 +5305,145 @@
   "pie-root-wenH-grow_fond_of-2": [
    "core-verb"
   ],
+  "pie-root-wendh-wind": [
+   "swadesh-207"
+  ],
+  "pie-root-wenh1-love": [
+   "conversation-core"
+  ],
+  "pie-root-wer-burn": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-wergj-enclose": [
+   "conversation-core"
+  ],
   "pie-root-wergj-make": [
+   "conversation-core",
    "core-verb",
+   "leipzig-jakarta",
    "tier2-secure"
   ],
+  "pie-root-wergjh-bind": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-wergw-throw-2": [
+   "swadesh-207"
+  ],
   "pie-root-werh1-speak": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-werm-insect_larva": [
+   "leipzig-jakarta",
+   "swadesh-207",
+   "swadesh:nature"
+  ],
+  "pie-root-wers-rise": [
+   "conversation-core"
+  ],
+  "pie-root-wers-wipe": [
+   "swadesh-207"
   ],
   "pie-root-wert-turn": [
-   "core-verb"
+   "core-verb",
+   "swadesh-207"
   ],
   "pie-root-wes-dress": [
    "core-verb",
    "formula",
    "tier2-secure"
   ],
+  "pie-root-wes-graze": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-wes-sell": [
+   "conversation-core"
+  ],
   "pie-root-wet-year": [
+   "swadesh-207",
    "swadesh:nature"
   ],
+  "pie-root-weth2-say": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-weyd-see": [
-   "core-verb"
+   "conversation-core",
+   "core-verb",
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-weyh1-chase": [
+   "swadesh-207"
+  ],
+  "pie-root-weyk-curve": [
+   "conversation-core"
+  ],
+  "pie-root-weyk-sift": [
+   "swadesh-207"
   ],
   "pie-root-weykj-enter_in": [
    "core-verb"
   ],
+  "pie-root-weyp-vibrate": [
+   "swadesh-207"
+  ],
+  "pie-root-weys-carry_out": [
+   "leipzig-jakarta"
+  ],
+  "pie-root-weys-flow": [
+   "swadesh-207"
+  ],
   "pie-root-weys-raise": [
+   "conversation-core",
+   "swadesh-207",
    "swadesh:nature"
   ],
+  "pie-root-wleykw-moist": [
+   "swadesh-207"
+  ],
+  "pie-root-wreg-track": [
+   "swadesh-207"
+  ],
+  "pie-root-wreh2-take_away-2": [
+   "conversation-core",
+   "leipzig-jakarta"
+  ],
+  "pie-root-wremb-turn-2": [
+   "swadesh-207"
+  ],
+  "pie-root-wreyd-scratch": [
+   "swadesh-207"
+  ],
+  "pie-root-yeh1-make": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
+  "pie-root-yeh1-meaning_of_this": [
+   "swadesh-207"
+  ],
   "pie-root-yeh2-go": [
-   "core-verb"
+   "core-verb",
+   "leipzig-jakarta"
+  ],
+  "pie-root-yeh2-request": [
+   "conversation-core"
+  ],
+  "pie-root-yem-hold": [
+   "conversation-core",
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-yes-foam": [
    "core-verb"
+  ],
+  "pie-root-yew-hold_fast": [
+   "leipzig-jakarta",
+   "swadesh-207"
   ],
   "pie-root-yewg-join": [
    "core-noun",
@@ -896,6 +5452,9 @@
   ],
   "pie-root-yewgjH-become_restless": [
    "core-verb"
+  ],
+  "pie-root-yewt-perceive": [
+   "conversation-core"
   ]
  }
 }

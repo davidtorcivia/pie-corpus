@@ -5,15 +5,18 @@ Two generated files, written by scripts/build_holdout.py (its docstring document
 
   data/export/protected_roots.json  root families that must never be held out (formula vocabulary,
                                      Tier 2 secure lexemes, make_slice's core lists, Swadesh-type
-                                     kin terms, numerals, body parts and natural-world nouns), each
-                                     with its reasons
+                                     kin terms, numerals, body parts and natural-world nouns, and the
+                                     Swadesh-207, Leipzig-Jakarta and conversational-core concepts),
+                                     each with its reasons
   data/export/held_roots.json       the held-out families, frozen at selection time
 
 The hold-out is a frozen list, not a hash predicate: until 2026-10-28 a 10% sha256 hash of root_id
 decided it, which held out core formula vocabulary (dʰugh₂tḗr, so "Daughter of Sky" could not
 appear in training texts). The hash now only ranks families inside the eligible pool. A family
 outside the frozen list (one added to the lexicon later) is not held out. Benchmark scores from
-before and after the swap are not comparable (docs/STATUS.md "Known limitations").
+before and after the swap are not comparable (docs/STATUS.md "Known limitations"). Redrawn
+2026-10-29 so that core everyday families (help, drink, hear, water, day, …) are trainable, before
+any model was trained.
 """
 
 from __future__ import annotations

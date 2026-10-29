@@ -5,15 +5,20 @@ Written by `uv run python -I scripts/export.py` (pie/export.py; policy in its do
 - `train.jsonl`, `eval.jsonl`: records. `train_tasks.jsonl`, `eval_tasks.jsonl`: task views. `views/`: plain text.
 - `eval_tasks_accent_specified.jsonl`: the **accent-sensitive evaluation view**, `eval_tasks.jsonl` without the tasks flagged `"accent": "unresolved"`.
 
-## Benchmark hold-out (changed 2026-10-28)
+## Benchmark hold-out (changed 2026-10-28, redrawn 2026-10-29)
 
 The cognate→PIE and inflection eval tasks come from held-out root families: the frozen list
 `data/export/held_roots.json` (written by `scripts/build_holdout.py`, read through `pie.export.eval_root`),
 restricted to families no training record uses. Families in `data/export/protected_roots.json` (formula
 vocabulary such as *dʰugh₂tḗr*, Tier 2 secure lexemes, the planners' core lists, numerals, Swadesh-type kin,
-body-part and natural-world nouns) are never held out. Until 2026-10-28 a 10% hash of root_id chose the
-families instead. **Benchmark scores from before and after the swap are not comparable**: the held families,
-and so the cognate and inflection eval sets, are different (docs/STATUS.md "Known limitations" (3)).
+body-part and natural-world nouns, and every family glossed with a concept of the Swadesh-207 list, the
+Leipzig-Jakarta list or a conversational core such as help, ask, thank, teach, want, remember, morning) are never
+held out. Until 2026-10-28 a 10% hash of root_id chose the families instead. **Benchmark scores from before and
+after the swap are not comparable**: the held families, and so the cognate and inflection eval sets, are
+different (docs/STATUS.md "Known limitations" (3)). On 2026-10-29 the set was redrawn by the same method with the
+Swadesh / Leipzig-Jakarta / conversational protection, because the first draw still held core words (help, drink,
+hear, sit, water, day, think). No model had been trained and no score existed, so the redraw costs no
+comparability; scores are comparable only from this set on.
 
 ## Accent flags
 

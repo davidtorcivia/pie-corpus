@@ -17,14 +17,24 @@ Protected set (never held out), derived from the data; each family keeps its rea
   numeral          every lexicon entry with pos "num"
   swadesh:kin|body|nature
                    usable nouns with a trusted gloss one of whose sense segments is a Swadesh-type
-                   concept word (SWADESH below: the one hand-written list; the lexemes are found from
-                   the glosses)
+                   concept word (SWADESH below; the lexemes are found from the glosses)
+  swadesh-207, leipzig-jakarta, conversation-core
+                   every lexicon entry (lexeme or root, any part of speech) with a trusted gloss one of
+                   whose sense segments is a concept word of CONCEPTS below: the full Swadesh-207 list,
+                   the Leipzig-Jakarta 100-item list (Tadmor et al. 2010) and a conversational core (help,
+                   ask, thank, teach, want, morning, …, plus the everyday families the owner named on
+                   2026-10-29). A concept is "word/variant/…"; "to" and articles are stripped from the gloss
+                   segments, so "to become afraid" matches "fear/be afraid/become afraid/be terrified"; a list noun that
+                   is also an English verb (NOUN_ONLY: wind, stick, bark, …) matches only a noun sense
+                   (not "to wind, turn"); a phrasal verb gloss also matches its verb ("to swell up": swell).
+                   The hand-written part is only the concept words; the families are
+                   found from the glosses.
 A lexeme without a root_id belongs to no family and cannot be held out; it is counted, not listed.
 
 Hold-out (selection, deterministic):
   universe  every root family of the lexicon (Lexicon.load(): the root_ids of its entries)
-  pool      universe − protected − families used anywhere in Tier 3/3b records (admitted or not),
-            non-eval Tier 2 records, Tier 2 and Tier 3 plans, and planner slices, so no record
+  pool      universe − protected − families used anywhere in Tier 1 records (eval, excluded anyway),
+            Tier 3/3b records (admitted or not), non-eval Tier 2 records, Tier 2 and Tier 3 plans, and planner slices, so no record
             already trained (or planned under the old hold-out) touches a held family
   strata    (task-bearing: the family has an inflection or cognate task) × (branches with an
             inherited reflex: 0, 1-2, 3-4, 5+) × (root_type verbal / nominal), so the new set matches
@@ -32,8 +42,14 @@ Hold-out (selection, deterministic):
   quota     N = round(SHARE × |universe|), split over the strata in the proportions of the old
             hash draw (sha256(root_id) < SHARE over the universe), largest remainder
   ranking   inside each stratum, ascending sha256(root_id)[:8] (pie.holdout.hash_rank)
+  shortfall a stratum whose pool is smaller than its quota is taken whole and the rest is filled from the
+            same task-bearing × root_type strata with fewer branches, nearest first (recorded in
+            held_roots.json "shortfall"). Since the 2026-10-29 protection only (tasks, 5+ branches,
+            verbal) falls short: its well-attested verbs are nearly all everyday words.
 Re-running after the corpus grows selects a different set; the files are frozen on purpose. Do
-not re-run to "refresh" them: benchmark scores across hold-outs are not comparable.
+not re-run to "refresh" them: benchmark scores across hold-outs are not comparable. (Redrawn
+2026-10-29 with the Swadesh-207 / Leipzig-Jakarta / conversational-core protection, before any
+model was trained, so no score was lost; the strata quota still comes from the original hash draw.)
 """
 
 import argparse
@@ -69,6 +85,63 @@ SWADESH = {
                "summer", "spring", "tree", "wood", "forest", "leaf", "root", "bark", "seed", "grass", "fruit",
                "flower", "animal", "fish", "bird", "dog", "louse", "snake", "worm", "wolf", "bear"],
 }
+# Concept lists matched against every trusted gloss (any part of speech). "a/b/c": gloss variants of one concept.
+CONCEPTS = {
+    # Swadesh 207 (the Wiktionary appendix order); pronouns and function words are usually rootless (counted only)
+    "swadesh-207": [
+        "I", "you", "he/she/it", "we", "they", "this", "that", "here", "there", "who", "what", "where", "when",
+        "how", "not", "all", "many", "some", "few", "other", "one", "two", "three", "four", "five",
+        "big/great/large", "long", "wide/broad", "thick", "heavy", "small/little/become small", "short", "narrow", "thin",
+        "woman", "man", "human being/person", "child", "wife", "husband", "mother", "father", "animal", "fish",
+        "bird", "dog", "louse", "snake/serpent", "worm", "tree", "forest", "stick", "fruit", "seed", "leaf",
+        "root", "bark", "flower", "grass", "rope", "skin", "meat/flesh", "blood", "bone", "fat/grease", "egg",
+        "horn", "tail", "feather", "hair", "head", "ear", "eye", "nose", "mouth", "tooth", "tongue",
+        "fingernail/nail", "foot", "leg", "knee", "hand", "wing", "belly", "guts/bowels/entrails", "neck",
+        "back", "breast", "heart", "liver", "drink", "eat", "bite", "suck", "spit", "vomit", "blow",
+        "breathe/breath", "laugh", "see", "hear", "know", "think", "smell", "fear/be afraid/become afraid/be terrified",
+        "sleep", "live", "die", "kill", "fight", "hunt", "hit/strike/beat", "cut", "split", "stab/pierce",
+        "scratch", "dig", "swim", "fly", "walk", "come", "lie/lie down", "sit/sit down", "stand", "turn",
+        "fall", "give", "hold", "squeeze/press", "rub", "wash", "wipe", "pull/draw", "push", "throw", "tie/bind",
+        "sew", "count", "say", "sing", "play", "float", "flow", "freeze/be cold", "swell", "sun", "moon",
+        "star", "water", "rain", "river", "lake", "sea", "salt", "stone", "sand", "dust", "earth", "cloud",
+        "fog/mist", "sky", "wind", "snow", "ice", "smoke", "fire", "ash/ashes", "burn", "road/path/way",
+        "mountain", "red", "green", "yellow", "white", "black", "night", "day", "year", "warm/be warm/hot",
+        "cold", "full", "new", "old", "good", "bad/evil", "rotten/rot", "dirty", "straight", "round", "sharp",
+        "dull/blunt", "smooth", "wet", "dry", "correct/right", "near", "far", "right", "left", "at", "in",
+        "with", "and", "if", "because", "name"],
+    # Leipzig-Jakarta 100 (Tadmor, Haspelmath & Taylor 2010)
+    "leipzig-jakarta": [
+        "fire", "nose", "go", "water", "mouth", "tongue", "blood", "bone", "you", "root", "come", "breast",
+        "rain", "I", "name", "louse", "wing", "flesh/meat", "arm/hand", "fly", "night", "ear", "neck", "far",
+        "do/make", "house", "stone/rock", "bitter", "say", "tooth", "hair", "big/great/large", "one", "who",
+        "he/she/it", "hit/beat/strike", "leg/foot", "horn", "this", "fish", "yesterday", "drink", "black",
+        "navel", "stand", "bite", "back", "wind", "smoke", "what", "child", "egg", "give", "new", "burn",
+        "not", "good", "know", "knee", "sand", "laugh", "hear", "soil", "leaf", "red", "liver", "hide",
+        "skin", "suck", "carry", "ant", "heavy", "take", "old", "eat", "thigh", "thick", "long", "blow",
+        "wood", "run", "fall", "eye", "ash/ashes", "tail", "dog", "cry/weep", "tie/bind", "see", "sweet",
+        "rope", "shade/shadow", "bird", "salt", "small/little", "wide/broad", "star", "in", "hard",
+        "crush/grind"],
+    # what a conversational model needs beyond the lists (owner 2026-10-29: "help is a major critical word and
+    # should not be held out"); the last row: the everyday families of the 2026-10-28 hold-out the owner named
+    "conversation-core": [
+        "help/assist", "ask/request", "answer", "thank", "teach", "learn", "want/wish/desire", "love",
+        "like", "call", "name", "know/recognize", "remember", "forget", "wait", "stay/remain", "leave",
+        "return/come back/return home", "open", "close/shut", "buy", "sell/be for sale", "work", "play", "laugh", "weep/cry",
+        "dream", "morning", "evening", "today", "tomorrow",
+        "take/fetch", "summer", "goat", "swear", "measure", "hate", "cover", "bury", "beard", "rejoice",
+        "be ashamed", "lack", "be tired",
+        # everyday words left in the hold-out by the lists above (review of the redraw, 2026-10-29)
+        "lose", "show", "grow", "put/place/lay", "steal", "trust", "touch", "clean", "lick", "chew", "cough",
+        "sick/ill/be ill/be sick/become sick", "silent/be silent", "soft", "pretty/beautiful", "tall/high",
+        "share/divide", "exchange/trade", "take care of/care for", "happy/glad/be glad/joyful", "lift/raise/pick up",
+        "lip", "understand", "wake/wake up/awaken"],
+    # the 2026-10-29 review pass is closed: adding concepts later changes the held set (a redraw, see the docstring)
+}
+# concept words that are nouns on the lists but also English verbs: matched only where the gloss gives them as nouns
+# (not "to wind, turn", "to stick, adhere")
+NOUN_ONLY = {"wind", "stick", "skin", "bark", "rock", "stone", "smoke", "dust", "salt", "fish", "right", "left",
+             "back", "root", "sand", "soil", "house", "shade", "shadow", "ash", "ashes", "wood", "flesh", "rope", "leaf",
+             "seed", "flower"}
 SECURE_LEVELS = ("exact", "root")
 
 
@@ -153,15 +226,57 @@ def protected(lx, ms) -> tuple[dict[str, list[str]], dict]:
         for kind, words in SWADESH.items():
             if segs & set(words):
                 add(i, f"swadesh:{kind}")
+    matched = concept_matches(lx, ms)
+    for name, by_concept in matched.items():
+        for ids in by_concept.values():
+            for i in ids:
+                add(i, name)
+    families = {name: {c: sorted({lx.entries[i].get("root_id") for i in ids if lx.entries[i].get("root_id")})
+                       for c, ids in sorted(by_concept.items())} for name, by_concept in matched.items()}
     return ({rid: sorted(w) for rid, w in sorted(reasons.items())},
             {"rootless_lexemes_by_reason": dict(sorted(rootless.items())),
-             "lexemes_by_reason": {k: len(v) for k, v in sorted(lexemes.items())}})
+             "lexemes_by_reason": {k: len(v) for k, v in sorted(lexemes.items())},
+             "concept_families": families})
+
+
+def concept_matches(lx, ms) -> dict[str, dict[str, list[str]]]:
+    """CONCEPTS list → concept → the lexicon entries (lexemes and roots, any part of speech) with a trusted gloss
+    one of whose sense segments is one of the concept's variants."""
+    segs, nominal = {}, {}
+    for i, e in lx.entries.items():
+        if i in lx.blocked and not i.startswith("pie-root-"):
+            continue
+        gloss, src = lx.meaning(i)
+        if gloss and src in ms.TRUSTED_GLOSS:
+            segs[i] = _segments(gloss)
+            nominal[i] = segs[i] - _verbal_segments(gloss)
+    out = {}
+    for name, concepts in CONCEPTS.items():
+        out[name] = {}
+        for c in concepts:
+            variants = {v.strip().lower() for v in c.split("/")}
+            noun_only = variants & NOUN_ONLY
+            out[name][c] = sorted(i for i, ss in segs.items()
+                                  if (_bare(ss) & (variants - noun_only)) or (nominal[i] & noun_only))
+    return out
+
+
+def _bare(segs: set[str]) -> set[str]:
+    """The segments and, for a phrasal verb gloss, its verb ("swell up", "wipe off", "close something" → swell, …)."""
+    return segs | {re.sub(r"(\s+(up|down|off|out|away|something|oneself))+$", "", s) for s in segs}
+
+
+def _verbal_segments(gloss: str) -> set[str]:
+    """The sense segments (as _segments spells them) of the ';'-parts of a gloss that are verbs ("to wind, turn")."""
+    return set().union(*(_segments(part) for part in (gloss or "").lower().split(";")
+                         if re.match(r"\s*to\s", part)))
 
 
 def excluded(lx) -> dict[str, set[str]]:
     """Families already used (or planned) for training, by source."""
     out = {}
     tier2 = _load("corpus/tier2/*.jsonl", ROOT)
+    out["tier1"] = train_root_ids(_load("corpus/tier1/*.jsonl", ROOT), lx)   # eval, but no held family there either
     out["tier2-train"] = train_root_ids([r for r in tier2 if not r.get("eval_grade")], lx)
     out["tier3"] = train_root_ids(_load("corpus/tier3/*.jsonl", ROOT) + _load("corpus/tier3b/*.jsonl", ROOT), lx)
     lid_re = re.compile(r'"lex_id": *"(pie-[^"]+)"')
@@ -211,6 +326,9 @@ def branch_bin(n: int) -> str:
     return "0" if n == 0 else "1-2" if n <= 2 else "3-4" if n <= 4 else "5+"
 
 
+BRANCH_BINS = ["branches:0", "branches:1-2", "branches:3-4", "branches:5+"]
+
+
 def stratum(s: dict) -> tuple[str, str, str]:
     return ("tasks" if s["tasks"] else "no-tasks", "branches:" + branch_bin(s["branches"]), s["root_type"])
 
@@ -223,13 +341,31 @@ def select(universe, pool, stats) -> tuple[list[str], dict]:
     quota = {k: int(v) for k, v in raw.items()}
     for k in sorted(raw, key=lambda k: (-(raw[k] - quota[k]), str(k)))[: n - sum(quota.values())]:
         quota[k] += 1
-    held = []
+    def ranked(k):
+        return sorted((r for r in pool if stratum(stats[r]) == k and r not in held), key=lambda r: (hash_rank(r), r))
+    held, shortfall, filled = [], {}, collections.Counter()
     for k in sorted(quota, key=str):
-        cands = sorted((r for r in pool if stratum(stats[r]) == k), key=lambda r: (hash_rank(r), r))
-        if len(cands) < quota[k]:
-            raise SystemExit(f"stratum {k}: pool {len(cands)} < quota {quota[k]}")
-        held += cands[: quota[k]]
-    return sorted(held), {"n": n, "quota": {"/".join(k): v for k, v in sorted(quota.items())}}
+        held += ranked(k)[: quota[k]]
+    for k in sorted(quota, key=str):
+        got = sum(1 for r in held if stratum(stats[r]) == k)
+        if got >= quota[k]:
+            continue
+        # the stratum is exhausted (its well-attested families are protected or used): fill the rest from the same
+        # task-bearing × root_type strata with fewer branches, nearest first; never across tasks or verbal/nominal
+        shortfall["/".join(k)] = quota[k] - got
+        need = quota[k] - got
+        lower = BRANCH_BINS[: BRANCH_BINS.index(k[1])][::-1]
+        for b in lower:
+            take = ranked((k[0], b, k[2]))[:need]
+            held += take
+            filled["/".join((k[0], b, k[2]))] += len(take)
+            need -= len(take)
+            if not need:
+                break
+        if need:
+            raise SystemExit(f"stratum {k}: pool short by {need} even with the lower branch bins")
+    return sorted(held), {"n": n, "quota": {"/".join(k): v for k, v in sorted(quota.items())},
+                          "shortfall": shortfall, "shortfall_filled_from": dict(sorted(filled.items()))}
 
 
 def describe(name, fams, stats) -> dict:
@@ -277,6 +413,11 @@ def main() -> int:
                                         [r for r in old if r not in seen_train], stats),
               "new": describe("new", held, stats),
               "old_protected": sorted(r for r in old if r in prot)}
+    if HELD_PATH.exists():      # the frozen set this run replaces (for the before/after comparison)
+        prev = json.loads(HELD_PATH.read_text("utf-8"))
+        report["previous"] = describe(f"previous frozen set ({prev.get('generated')})",
+                                      [r for r in prev["held"] if r in stats], stats)
+        report["previous_now_protected"] = {r: prot[r] for r in prev["held"] if r in prot}
     print(json.dumps(report, indent=1, ensure_ascii=False))
     print(f"universe {len(universe)}, protected {len(prot)}, used {len(used & set(universe))}, pool {len(pool)}, "
           f"held {len(held)}; old∩new {len(set(old) & set(held))}")
@@ -285,13 +426,14 @@ def main() -> int:
     today = datetime.date.today().isoformat()
     PROTECTED_PATH.parent.mkdir(parents=True, exist_ok=True)
     PROTECTED_PATH.write_text(json.dumps({
-        "generated": today, "by": "scripts/build_holdout.py", "swadesh_concepts": SWADESH,
+        "generated": today, "by": "scripts/build_holdout.py", "swadesh_concepts": SWADESH, "concepts": CONCEPTS,
         **prot_meta, "families": len(prot), "roots": prot}, ensure_ascii=False, indent=1) + "\n", "utf-8")
     HELD_PATH.write_text(json.dumps({
         "generated": today, "by": "scripts/build_holdout.py", "share": SHARE, "universe": len(universe),
         "protected": len(prot), "excluded_used": {k: len(v & set(universe)) for k, v in exc.items()},
         "pool": len(pool), **sel, "ranking": "ascending int(sha256(root_id)[:8], 16) / 0xFFFFFFFF within stratum",
-        "comparison": {k: v for k, v in report.items() if k != "old_protected"},
+        "comparison": {k: v for k, v in report.items() if k not in ("old_protected", "previous_now_protected")},
+        "previous_now_protected": sorted(report.get("previous_now_protected", {})),
         "old_protected_count": len(report["old_protected"]),
         "held": held}, ensure_ascii=False, indent=1) + "\n", "utf-8")
     print(f"wrote {PROTECTED_PATH} and {HELD_PATH}")

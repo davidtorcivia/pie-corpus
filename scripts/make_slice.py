@@ -43,8 +43,9 @@ CONVERSATION = ["pie-lex-kwoteros", "pie-lex-priHos", "pie-lex-keh2ilos", "pie-l
 # Tier 3b (--tier3b): inherited words the planner brief and the t3b-001 review point to in place of a coinage
 # (archaic first): mówdos 'joy' and swéh₂dos 'pleasure' (not géh₂dʰos), néwos 'new' (not h₂énteros 'other' beside
 # 'answer'). mówdos is NIL single-branch (Ved. móda-; P9 keeps those out of Tier 3 slices); Tier 3b offers it
-# (lead, 2026-10-29), as the inherited word beats a coinage. The review's h₁éwHt 'help' is NOT offered: its root
-# family pie-root-h1ewH-help is held out for the benchmark (eval_root), and werdʰom has no resolved accent.
+# (lead, 2026-10-29), as the inherited word beats a coinage. The review's h₁éwHt 'help' is not listed here; its root
+# family pie-root-h1ewH-help is no longer held out (hold-out redrawn 2026-10-29, protected as conversational core),
+# so whether to offer it is open. werdʰom has no resolved accent.
 TIER3B_INHERITED = ["pie-lex-mowdos", "pie-lex-sweh2dos", "pie-lex-newos"]
 ADVERB_POS = ("adv", "prep", "postp")
 NIL_ADMIT = {"pie-lex-bhagos", "pie-lex-bhngjhulos", "pie-lex-bhrtos", "pie-lex-gwowsth2os", "pie-lex-kjh3tos",

@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 import pytest
 
@@ -50,6 +51,32 @@ def test_protected_families_are_never_held_out():
             if lid in lx.entries and eval_root(lx.entries[lid].get("root_id"))}
     assert not held, f"protected lexeme of a held-out family (re-run scripts/build_holdout.py?): {sorted(held)[:3]}"
 
+
+
+def test_core_concepts_are_never_held_out():
+    """Owner 2026-10-29: "help is a major critical word and should not be held out". The Swadesh-207,
+    Leipzig-Jakarta and conversational-core families (scripts/build_holdout.py CONCEPTS, matched from the live
+    glosses) stay trainable; help, drink, hear, water, day, sit and think by name."""
+    import importlib.util
+    from pie.realize import Lexicon
+    root = Path(__file__).resolve().parent.parent
+    mods = {}
+    for name in ("make_slice", "build_holdout"):
+        spec = importlib.util.spec_from_file_location(name, root / "scripts" / f"{name}.py")
+        mods[name] = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mods[name])
+    lx = Lexicon.load()
+    matched = mods["build_holdout"].concept_matches(lx, mods["make_slice"])
+    for concept in ("help/assist", "teach", "morning"):
+        assert matched["conversation-core"][concept], concept
+    for concept in ("drink", "hear", "water", "day", "sit/sit down", "think"):
+        assert matched["swadesh-207"][concept], concept
+    held = sorted({(c, lx.entries[i]["root_id"]) for by in matched.values() for c, ids in by.items() for i in ids
+                   if eval_root(lx.entries[i].get("root_id"))})
+    assert not held, f"core concept in a held-out family (re-run scripts/build_holdout.py?): {held[:3]}"
+    for rid in ("pie-root-h1ewH-help", "pie-root-peh3y-drink", "pie-root-kjlews-hear", "pie-root-gwhews-hear",
+                "pie-root-h2ep-water", "pie-root-h2ey-day", "pie-root-h1eh1s-sit", "pie-root-h2reh1-think"):
+        assert rid in lx.entries and not eval_root(rid), rid
 
 def test_record_tasks():
     r = {"id": "t3-x-1", "pie": "h₂ówis spéḱyeti.", "english": "The sheep sees.", "gloss": "sheep-NOM.SG see-PRS.3SG"}
