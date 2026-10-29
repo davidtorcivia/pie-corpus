@@ -1,0 +1,1666 @@
+{
+ "cell": {
+  "min_O": 2,
+  "min_OE": 2.0,
+  "pct": 95
+ },
+ "threshold_log2": 2.2777999913781537,
+ "null_qualifying_mean": 8546.2,
+ "null_candidates_per_seed": [
+  419,
+  410,
+  431,
+  418,
+  444,
+  449,
+  399,
+  419,
+  458,
+  383,
+  448,
+  400,
+  432,
+  420,
+  434,
+  452,
+  431,
+  403,
+  430,
+  467
+ ],
+ "null_candidates_mean": 427.35,
+ "real_qualifying": 13972,
+ "real_candidates": 3086,
+ "false_rate": 0.1384802333117304,
+ "real_candidate_group_pairs": 2361,
+ "test_recall": 0.25,
+ "test_recovered": 8,
+ "test_n": 32,
+ "criterion_met": false,
+ "items": [
+  {
+   "key": "pie-root-nebh-become_damp|pie-root-wes-dress",
+   "formulas": [
+    "west_ch02_f48"
+   ],
+   "recovered": true,
+   "stage": "recovered",
+   "best_key_pair": [
+    "pie-lex-nebhos",
+    "pie-root-wes-dress"
+   ],
+   "score_log2": 3.086440977428039,
+   "top_layers_by_O": [
+    {
+     "layer": "hom/included",
+     "branch": "Greek",
+     "O": 3,
+     "E": 0.35,
+     "OE": 8.5
+    },
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 2,
+     "E": 0.03,
+     "OE": 61.6
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 2,
+     "E": 1.57,
+     "OE": 1.3
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-h2eh3mos|pie-root-h1ed-eat",
+   "formulas": [
+    "west_ch02_f08"
+   ],
+   "recovered": true,
+   "stage": "recovered",
+   "best_key_pair": [
+    "pie-root-h1ed-eat",
+    "pie-lex-h2eh3mos"
+   ],
+   "score_log2": 4.670462982720453,
+   "top_layers_by_O": [
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 37,
+     "E": 2.62,
+     "OE": 14.1
+    },
+    {
+     "layer": "grc/excluded",
+     "branch": "Greek",
+     "O": 12,
+     "E": 0.47,
+     "OE": 25.5
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 6,
+     "E": 0.24,
+     "OE": 25.5
+    },
+    {
+     "layer": "ga-early/excluded",
+     "branch": "Celtic",
+     "O": 1,
+     "E": 0.02,
+     "OE": 51.2
+    },
+    {
+     "layer": "hom/included",
+     "branch": "Greek",
+     "O": 1,
+     "E": 0.06,
+     "OE": 17.7
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-h1wesus|pie-lex-menos",
+   "formulas": [
+    "west_ch02_f35"
+   ],
+   "recovered": true,
+   "stage": "recovered",
+   "best_key_pair": [
+    "pie-lex-h1wesus",
+    "pie-lex-menos"
+   ],
+   "score_log2": 3.2415917253773556,
+   "top_layers_by_O": [
+    {
+     "layer": "ae/included",
+     "branch": "Indo-Iranian",
+     "O": 137,
+     "E": 14.48,
+     "OE": 9.5
+    },
+    {
+     "layer": "hom/included",
+     "branch": "Greek",
+     "O": 6,
+     "E": 0.2,
+     "OE": 29.7
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 5,
+     "E": 0.02,
+     "OE": 284.5
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 3,
+     "E": 2.37,
+     "OE": 1.3
+    }
+   ]
+  },
+  {
+   "key": "pie-root-h1werH-broad|pie-root-pleth2-spread",
+   "formulas": [
+    "west_ch04_f14",
+    "west_ch04_f15",
+    "west_ch04_f16"
+   ],
+   "recovered": true,
+   "stage": "recovered",
+   "best_key_pair": [
+    "pie-lex-pleth2us",
+    "pie-lex-h1werHus"
+   ],
+   "score_log2": 5.533923570473271,
+   "top_layers_by_O": [
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 7,
+     "E": 0.15,
+     "OE": 46.3
+    },
+    {
+     "layer": "grc/excluded",
+     "branch": "Greek",
+     "O": 3,
+     "E": 0.06,
+     "OE": 49.8
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 2,
+     "E": 0.4,
+     "OE": 5.0
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 1,
+     "E": 0.03,
+     "OE": 33.8
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-menos|pie-root-dhers-be_bold",
+   "formulas": [
+    "west_ch02_f36"
+   ],
+   "recovered": true,
+   "stage": "recovered",
+   "best_key_pair": [
+    "pie-root-dhers-be_bold",
+    "pie-lex-menos"
+   ],
+   "score_log2": 2.6469195751427375,
+   "top_layers_by_O": [
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 5,
+     "E": 0.52,
+     "OE": 9.5
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 4,
+     "E": 0.64,
+     "OE": 6.3
+    },
+    {
+     "layer": "hom/included",
+     "branch": "Greek",
+     "O": 2,
+     "E": 0.41,
+     "OE": 4.9
+    },
+    {
+     "layer": "grc/excluded",
+     "branch": "Greek",
+     "O": 1,
+     "E": 0.05,
+     "OE": 19.9
+    },
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 1,
+     "E": 0.33,
+     "OE": 3.0
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-kwekwlos|pie-lex-soh2wl",
+   "formulas": [
+    "west_ch05_f09"
+   ],
+   "recovered": true,
+   "stage": "recovered",
+   "best_key_pair": [
+    "pie-lex-soh2wl",
+    "pie-lex-kwekwlos"
+   ],
+   "score_log2": 3.232193460413965,
+   "top_layers_by_O": [
+    {
+     "layer": "grc/excluded",
+     "branch": "Greek",
+     "O": 59,
+     "E": 5.19,
+     "OE": 11.4
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 47,
+     "E": 18.47,
+     "OE": 2.5
+    },
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 7,
+     "E": 0.74,
+     "OE": 9.4
+    },
+    {
+     "layer": "grc/included",
+     "branch": "Greek",
+     "O": 7,
+     "E": 0.48,
+     "OE": 14.5
+    },
+    {
+     "layer": "menota/excluded",
+     "branch": "Germanic",
+     "O": 1,
+     "E": 0.06,
+     "OE": 17.2
+    },
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 1,
+     "E": 1.22,
+     "OE": 0.8
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-soh2wl|pie-root-derkj-see",
+   "formulas": [
+    "west_ch02_f26",
+    "west_ch02_f29"
+   ],
+   "recovered": true,
+   "stage": "recovered",
+   "best_key_pair": [
+    "pie-lex-soh2wl",
+    "pie-root-derkj-see"
+   ],
+   "score_log2": 3.2319744828946986,
+   "top_layers_by_O": [
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 32,
+     "E": 22.91,
+     "OE": 1.4
+    },
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 25,
+     "E": 2.02,
+     "OE": 12.4
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 23,
+     "E": 1.96,
+     "OE": 11.7
+    },
+    {
+     "layer": "ga-early/excluded",
+     "branch": "Celtic",
+     "O": 8,
+     "E": 0.73,
+     "OE": 10.9
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 5,
+     "E": 0.53,
+     "OE": 9.4
+    },
+    {
+     "layer": "ae/included",
+     "branch": "Indo-Iranian",
+     "O": 3,
+     "E": 0.06,
+     "OE": 52.8
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-dyexws|pie-lex-nbhros",
+   "formulas": [
+    "west_ch04_f03",
+    "west_ch04_f04"
+   ],
+   "recovered": true,
+   "stage": "recovered",
+   "best_key_pair": [
+    "pie-lex-dyexws",
+    "pie-lex-nbhros"
+   ],
+   "score_log2": 3.6258969651368833,
+   "top_layers_by_O": [
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 14,
+     "E": 3.03,
+     "OE": 4.6
+    },
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 6,
+     "E": 0.48,
+     "OE": 12.4
+    },
+    {
+     "layer": "hom/included",
+     "branch": "Greek",
+     "O": 5,
+     "E": 0.41,
+     "OE": 12.3
+    },
+    {
+     "layer": "grc/included",
+     "branch": "Greek",
+     "O": 4,
+     "E": 0.58,
+     "OE": 6.9
+    },
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 2,
+     "E": 0.32,
+     "OE": 6.3
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 2,
+     "E": 0.51,
+     "OE": 3.9
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-woxkws|pie-root-tetkj-create",
+   "formulas": [
+    "craft-words",
+    "craft-the-formula",
+    "west_ch01_f05",
+    "west_ch01_f06",
+    "west_ch01_f07"
+   ],
+   "recovered": false,
+   "stage": "O >= min O in >= 2 branches, but O/E >= min O/E in <= 1",
+   "best_key_pair": [
+    "pie-root-wekw-speak",
+    "pie-root-tetkj-create"
+   ],
+   "score_log2": null,
+   "top_layers_by_O": [
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 8,
+     "E": 3.77,
+     "OE": 2.1
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 8,
+     "E": 14.96,
+     "OE": 0.5
+    },
+    {
+     "layer": "grc/excluded",
+     "branch": "Greek",
+     "O": 4,
+     "E": 3.69,
+     "OE": 1.1
+    },
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 2,
+     "E": 0.92,
+     "OE": 2.2
+    },
+    {
+     "layer": "grc/included",
+     "branch": "Greek",
+     "O": 2,
+     "E": 1.07,
+     "OE": 1.9
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-h1ogwhis|pie-root-gwhen-strike",
+   "formulas": [
+    "hero-slay-serpent",
+    "slew-the-serpent-egwhent-ogwhim",
+    "basic-formula-with-weapon-companion",
+    "who-slew-relative-clause",
+    "slayer-slain-reciprocal",
+    "slay-serpent-with-companion",
+    "slay-gwhen-serpent-ogwhi",
+    "egwhent-ogwhim-augment",
+    "slay-serpent-slaying-ring",
+    "serpent-slay-adversary",
+    "serpent-slayer-man-slayer-epithets",
+    "west_ch06_f01",
+    "west_ch06_f02"
+   ],
+   "recovered": false,
+   "stage": "O >= min O in >= 2 branches, but O/E >= min O/E in <= 1",
+   "best_key_pair": [
+    "pie-root-gwhen-strike",
+    "pie-lex-h1ogwhis"
+   ],
+   "score_log2": null,
+   "top_layers_by_O": [
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 22,
+     "E": 0.63,
+     "OE": 34.9
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 14,
+     "E": 1.99,
+     "OE": 7.0
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 4,
+     "E": 2.41,
+     "OE": 1.7
+    },
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 1,
+     "E": 0.66,
+     "OE": 1.5
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-deh3toxr|pie-lex-h1wesus",
+   "formulas": [
+    "west_ch03_f20"
+   ],
+   "recovered": false,
+   "stage": "qualifies in >= 2 branches, score <= threshold",
+   "best_key_pair": [
+    "pie-root-deh3-give",
+    "pie-lex-h1wesus"
+   ],
+   "score_log2": 1.881958753949358,
+   "top_layers_by_O": [
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 30,
+     "E": 4.86,
+     "OE": 6.2
+    },
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 26,
+     "E": 4.26,
+     "OE": 6.1
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 7,
+     "E": 3.14,
+     "OE": 2.2
+    },
+    {
+     "layer": "hom/included",
+     "branch": "Greek",
+     "O": 2,
+     "E": 0.54,
+     "OE": 3.7
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 2,
+     "E": 1.61,
+     "OE": 1.2
+    },
+    {
+     "layer": "byliny/included",
+     "branch": "Balto-Slavic",
+     "O": 1,
+     "E": 1.61,
+     "OE": 0.6
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-gwoxws|pie-root-h2egj-drive",
+   "formulas": [
+    "hero-slay-three-headed-drive-off-cows"
+   ],
+   "recovered": false,
+   "stage": "qualifies in >= 2 branches, score <= threshold",
+   "best_key_pair": [
+    "pie-root-h2egj-drive",
+    "pie-lex-gwoxws"
+   ],
+   "score_log2": 1.592840218812097,
+   "top_layers_by_O": [
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 78,
+     "E": 73.24,
+     "OE": 1.1
+    },
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 13,
+     "E": 1.84,
+     "OE": 7.1
+    },
+    {
+     "layer": "sga/included",
+     "branch": "Celtic",
+     "O": 12,
+     "E": 1.34,
+     "OE": 9.0
+    },
+    {
+     "layer": "ga-early/excluded",
+     "branch": "Celtic",
+     "O": 11,
+     "E": 4.05,
+     "OE": 2.7
+    },
+    {
+     "layer": "hom/included",
+     "branch": "Greek",
+     "O": 8,
+     "E": 2.65,
+     "OE": 3.0
+    },
+    {
+     "layer": "grc/excluded",
+     "branch": "Greek",
+     "O": 8,
+     "E": 14.05,
+     "OE": 0.6
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-wlkwos|pie-root-pelH-pale",
+   "formulas": [
+    "west_ch02_f20"
+   ],
+   "recovered": false,
+   "stage": "O >= min O in <= 1 branch",
+   "best_key_pair": [
+    "pie-root-pelH-pale",
+    "pie-lex-wlkwos"
+   ],
+   "score_log2": null,
+   "top_layers_by_O": [
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 2,
+     "E": 0.2,
+     "OE": 10.0
+    },
+    {
+     "layer": "dainos/included",
+     "branch": "Balto-Slavic",
+     "O": 1,
+     "E": 0.05,
+     "OE": 20.5
+    },
+    {
+     "layer": "hom/included",
+     "branch": "Greek",
+     "O": 1,
+     "E": 0.01,
+     "OE": 67.3
+    },
+    {
+     "layer": "grc/included",
+     "branch": "Greek",
+     "O": 1,
+     "E": 0.01,
+     "OE": 105.7
+    },
+    {
+     "layer": "grc/excluded",
+     "branch": "Greek",
+     "O": 1,
+     "E": 0.01,
+     "OE": 75.2
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-h1nomn|pie-lex-kjlewos",
+   "formulas": [
+    "famous-name"
+   ],
+   "recovered": false,
+   "stage": "qualifies in >= 2 branches, score <= threshold",
+   "best_key_pair": [
+    "pie-lex-h1nomn",
+    "pie-root-kjlew-hear"
+   ],
+   "score_log2": 1.4790595074329236,
+   "top_layers_by_O": [
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 21,
+     "E": 10.47,
+     "OE": 2.0
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 13,
+     "E": 12.56,
+     "OE": 1.0
+    },
+    {
+     "layer": "grc/included",
+     "branch": "Greek",
+     "O": 10,
+     "E": 5.18,
+     "OE": 1.9
+    },
+    {
+     "layer": "ga-early/excluded",
+     "branch": "Celtic",
+     "O": 9,
+     "E": 3.23,
+     "OE": 2.8
+    },
+    {
+     "layer": "mga/excluded",
+     "branch": "Celtic",
+     "O": 7,
+     "E": 3.82,
+     "OE": 1.8
+    },
+    {
+     "layer": "ccmh/excluded",
+     "branch": "Balto-Slavic",
+     "O": 6,
+     "E": 10.56,
+     "OE": 0.6
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-nmrtos|pie-lex-wekwos",
+   "formulas": [
+    "west_ch02_f43"
+   ],
+   "recovered": false,
+   "stage": "O >= min O in >= 2 branches, but O/E >= min O/E in <= 1",
+   "best_key_pair": [
+    "pie-root-wekw-speak",
+    "pie-lex-nmrtos"
+   ],
+   "score_log2": null,
+   "top_layers_by_O": [
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 24,
+     "E": 29.05,
+     "OE": 0.8
+    },
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 4,
+     "E": 2.44,
+     "OE": 1.6
+    },
+    {
+     "layer": "grc/included",
+     "branch": "Greek",
+     "O": 4,
+     "E": 0.31,
+     "OE": 12.8
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 2,
+     "E": 2.18,
+     "OE": 0.9
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 1,
+     "E": 0.71,
+     "OE": 1.4
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-h1nomn|pie-lex-priHos",
+   "formulas": [
+    "west_ch10_f18"
+   ],
+   "recovered": false,
+   "stage": "O >= min O in >= 2 branches, but O/E >= min O/E in <= 1",
+   "best_key_pair": [
+    "pie-lex-h1nomn",
+    "pie-root-preyH-please"
+   ],
+   "score_log2": null,
+   "top_layers_by_O": [
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 10,
+     "E": 4.69,
+     "OE": 2.1
+    },
+    {
+     "layer": "menota/included",
+     "branch": "Germanic",
+     "O": 6,
+     "E": 13.07,
+     "OE": 0.5
+    },
+    {
+     "layer": "menota/excluded",
+     "branch": "Germanic",
+     "O": 4,
+     "E": 5.14,
+     "OE": 0.8
+    },
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 3,
+     "E": 0.56,
+     "OE": 5.4
+    },
+    {
+     "layer": "icepahc/included",
+     "branch": "Germanic",
+     "O": 2,
+     "E": 2.17,
+     "OE": 0.9
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 2,
+     "E": 0.39,
+     "OE": 5.1
+    }
+   ]
+  },
+  {
+   "key": "pie-root-dyew-be_bright|pie-root-gjenh1-produce",
+   "formulas": [
+    "west_ch03_f07"
+   ],
+   "recovered": false,
+   "stage": "excluded (function / top-50)",
+   "best_key_pair": [
+    "pie-root-gjenh1-produce",
+    "pie-lex-dyexws"
+   ],
+   "score_log2": 1.2193210446062355,
+   "top_layers_by_O": [
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 459,
+     "E": 452.71,
+     "OE": 1.0
+    },
+    {
+     "layer": "grc/excluded",
+     "branch": "Greek",
+     "O": 90,
+     "E": 204.0,
+     "OE": 0.4
+    },
+    {
+     "layer": "grc/included",
+     "branch": "Greek",
+     "O": 69,
+     "E": 64.17,
+     "OE": 1.1
+    },
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 41,
+     "E": 24.38,
+     "OE": 1.7
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 39,
+     "E": 26.02,
+     "OE": 1.5
+    },
+    {
+     "layer": "hom/included",
+     "branch": "Greek",
+     "O": 27,
+     "E": 11.6,
+     "OE": 2.3
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-kwrmis|pie-root-gwhen-strike",
+   "formulas": [
+    "kill-serpent-germanic-bidirectional",
+    "slay-the-worm-charm",
+    "slay-adversary-plus-marrow-list-charm",
+    "west_ch08_f26"
+   ],
+   "recovered": false,
+   "stage": "O >= min O in <= 1 branch",
+   "best_key_pair": [
+    "pie-root-gwhen-strike",
+    "pie-lex-kwrmis"
+   ],
+   "score_log2": null,
+   "top_layers_by_O": [
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 25,
+     "E": 1.32,
+     "OE": 19.0
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-h2nexr|pie-root-kjlew-hear",
+   "formulas": [
+    "west_ch10_f15",
+    "west_ch01_f17"
+   ],
+   "recovered": false,
+   "stage": "qualifies in >= 2 branches, score <= threshold",
+   "best_key_pair": [
+    "pie-root-kjlew-hear",
+    "pie-lex-h2nexr"
+   ],
+   "score_log2": 1.539068411422221,
+   "top_layers_by_O": [
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 69,
+     "E": 71.96,
+     "OE": 1.0
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 39,
+     "E": 13.42,
+     "OE": 2.9
+    },
+    {
+     "layer": "grc/included",
+     "branch": "Greek",
+     "O": 11,
+     "E": 22.49,
+     "OE": 0.5
+    },
+    {
+     "layer": "hom/included",
+     "branch": "Greek",
+     "O": 8,
+     "E": 9.63,
+     "OE": 0.8
+    },
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 7,
+     "E": 5.35,
+     "OE": 1.3
+    },
+    {
+     "layer": "xcl/included",
+     "branch": "Armenian",
+     "O": 6,
+     "E": 4.61,
+     "OE": 1.3
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-h1nomn|pie-root-kjlew-hear",
+   "formulas": [
+    "west_ch10_f16"
+   ],
+   "recovered": false,
+   "stage": "qualifies in >= 2 branches, score <= threshold",
+   "best_key_pair": [
+    "pie-lex-h1nomn",
+    "pie-root-kjlew-hear"
+   ],
+   "score_log2": 1.4790595074329236,
+   "top_layers_by_O": [
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 21,
+     "E": 10.47,
+     "OE": 2.0
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 13,
+     "E": 12.56,
+     "OE": 1.0
+    },
+    {
+     "layer": "grc/included",
+     "branch": "Greek",
+     "O": 10,
+     "E": 5.18,
+     "OE": 1.9
+    },
+    {
+     "layer": "ga-early/excluded",
+     "branch": "Celtic",
+     "O": 9,
+     "E": 3.23,
+     "OE": 2.8
+    },
+    {
+     "layer": "mga/excluded",
+     "branch": "Celtic",
+     "O": 7,
+     "E": 3.82,
+     "OE": 1.8
+    },
+    {
+     "layer": "ccmh/excluded",
+     "branch": "Balto-Slavic",
+     "O": 6,
+     "E": 10.56,
+     "OE": 0.6
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-h1ekjwos|pie-lex-h2nexr",
+   "formulas": [
+    "west_ch12_f17"
+   ],
+   "recovered": false,
+   "stage": "qualifies in >= 2 branches, score <= threshold",
+   "best_key_pair": [
+    "pie-lex-h1ekjwos",
+    "pie-lex-h2nexr"
+   ],
+   "score_log2": 1.0526631076421342,
+   "top_layers_by_O": [
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 255,
+     "E": 122.93,
+     "OE": 2.1
+    },
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 126,
+     "E": 17.37,
+     "OE": 7.3
+    },
+    {
+     "layer": "grc/excluded",
+     "branch": "Greek",
+     "O": 65,
+     "E": 53.66,
+     "OE": 1.2
+    },
+    {
+     "layer": "hom/included",
+     "branch": "Greek",
+     "O": 20,
+     "E": 17.93,
+     "OE": 1.1
+    },
+    {
+     "layer": "grc/included",
+     "branch": "Greek",
+     "O": 20,
+     "E": 20.52,
+     "OE": 1.0
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 3,
+     "E": 0.56,
+     "OE": 5.3
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-megjh2s|pie-root-h2egj-drive",
+   "formulas": [
+    "great-path-of-chariot",
+    "west_ch05_f11"
+   ],
+   "recovered": false,
+   "stage": "O >= min O in >= 2 branches, but O/E >= min O/E in <= 1",
+   "best_key_pair": [
+    "pie-root-h2egj-drive",
+    "pie-lex-megjh2s"
+   ],
+   "score_log2": null,
+   "top_layers_by_O": [
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 1343,
+     "E": 1129.85,
+     "OE": 1.2
+    },
+    {
+     "layer": "grc/excluded",
+     "branch": "Greek",
+     "O": 329,
+     "E": 220.79,
+     "OE": 1.5
+    },
+    {
+     "layer": "grc/included",
+     "branch": "Greek",
+     "O": 93,
+     "E": 52.51,
+     "OE": 1.8
+    },
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 67,
+     "E": 65.41,
+     "OE": 1.0
+    },
+    {
+     "layer": "xcl/included",
+     "branch": "Armenian",
+     "O": 14,
+     "E": 16.5,
+     "OE": 0.8
+    },
+    {
+     "layer": "hom/included",
+     "branch": "Greek",
+     "O": 5,
+     "E": 12.05,
+     "OE": 0.4
+    }
+   ]
+  },
+  {
+   "key": "pie-root-derkj-see|pie-root-weyd-see",
+   "formulas": [
+    "quantifier-argument-negated-argument",
+    "seen-and-unseen-disease",
+    "west_ch02_f72"
+   ],
+   "recovered": false,
+   "stage": "O >= min O in >= 2 branches, but O/E >= min O/E in <= 1",
+   "best_key_pair": [
+    "pie-root-weyd-see",
+    "pie-root-derkj-see"
+   ],
+   "score_log2": null,
+   "top_layers_by_O": [
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 74,
+     "E": 156.23,
+     "OE": 0.5
+    },
+    {
+     "layer": "xcl/included",
+     "branch": "Armenian",
+     "O": 27,
+     "E": 37.38,
+     "OE": 0.7
+    },
+    {
+     "layer": "xcl/excluded",
+     "branch": "Armenian",
+     "O": 16,
+     "E": 7.71,
+     "OE": 2.1
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 4,
+     "E": 3.56,
+     "OE": 1.1
+    },
+    {
+     "layer": "ga-early/excluded",
+     "branch": "Celtic",
+     "O": 3,
+     "E": 4.09,
+     "OE": 0.7
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 3,
+     "E": 3.37,
+     "OE": 0.9
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-h2stexr|pie-root-peykj-hew",
+   "formulas": [
+    "west_ch09_f10"
+   ],
+   "recovered": false,
+   "stage": "O >= min O in >= 2 branches, but O/E >= min O/E in <= 1",
+   "best_key_pair": [
+    "pie-lex-h2stexr",
+    "pie-root-peykj-hew"
+   ],
+   "score_log2": null,
+   "top_layers_by_O": [
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 2,
+     "E": 0.0,
+     "OE": 403.5
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 2,
+     "E": 2.79,
+     "OE": 0.7
+    },
+    {
+     "layer": "hom/included",
+     "branch": "Greek",
+     "O": 1,
+     "E": 0.04,
+     "OE": 26.4
+    }
+   ]
+  },
+  {
+   "key": "pie-root-gwhen-strike|pie-root-h1es-be",
+   "formulas": [
+    "be-the-death-of"
+   ],
+   "recovered": false,
+   "stage": "O >= min O in >= 2 branches, but O/E >= min O/E in <= 1",
+   "best_key_pair": [
+    "pie-root-gwhen-strike",
+    "pie-lex-h1esti"
+   ],
+   "score_log2": null,
+   "top_layers_by_O": [
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 144,
+     "E": 153.08,
+     "OE": 0.9
+    },
+    {
+     "layer": "menota/included",
+     "branch": "Germanic",
+     "O": 89,
+     "E": 116.21,
+     "OE": 0.8
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 38,
+     "E": 49.37,
+     "OE": 0.8
+    },
+    {
+     "layer": "icepahc/included",
+     "branch": "Germanic",
+     "O": 29,
+     "E": 21.73,
+     "OE": 1.3
+    },
+    {
+     "layer": "menota/excluded",
+     "branch": "Germanic",
+     "O": 15,
+     "E": 18.41,
+     "OE": 0.8
+    },
+    {
+     "layer": "rea-goh/excluded",
+     "branch": "Germanic",
+     "O": 13,
+     "E": 13.22,
+     "OE": 1.0
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-soh2wl|pie-root-Hreth2-run",
+   "formulas": [
+    "west_ch05_f10"
+   ],
+   "recovered": false,
+   "stage": "qualifies in >= 2 branches, score <= threshold",
+   "best_key_pair": [
+    "pie-lex-soh2wl",
+    "pie-root-Hreth2-run"
+   ],
+   "score_log2": 1.3164898256781006,
+   "top_layers_by_O": [
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 18,
+     "E": 16.42,
+     "OE": 1.1
+    },
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 7,
+     "E": 5.27,
+     "OE": 1.3
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 5,
+     "E": 2.01,
+     "OE": 2.5
+    },
+    {
+     "layer": "ga-early/excluded",
+     "branch": "Celtic",
+     "O": 2,
+     "E": 1.36,
+     "OE": 1.5
+    },
+    {
+     "layer": "lat/included",
+     "branch": "Italic",
+     "O": 2,
+     "E": 0.18,
+     "OE": 11.2
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-megjh2s|pie-lex-soh2wl",
+   "formulas": [
+    "west_ch05_f01"
+   ],
+   "recovered": false,
+   "stage": "O >= min O in >= 2 branches, but O/E >= min O/E in <= 1",
+   "best_key_pair": [
+    "pie-lex-soh2wl",
+    "pie-lex-megjh2s"
+   ],
+   "score_log2": null,
+   "top_layers_by_O": [
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 106,
+     "E": 92.78,
+     "OE": 1.1
+    },
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 50,
+     "E": 52.2,
+     "OE": 1.0
+    },
+    {
+     "layer": "grc/excluded",
+     "branch": "Greek",
+     "O": 15,
+     "E": 28.46,
+     "OE": 0.5
+    },
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 7,
+     "E": 7.94,
+     "OE": 0.9
+    },
+    {
+     "layer": "menota/included",
+     "branch": "Germanic",
+     "O": 6,
+     "E": 6.02,
+     "OE": 1.0
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 4,
+     "E": 4.37,
+     "OE": 0.9
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-mrtos|pie-lex-mrtos",
+   "formulas": [
+    "west_ch02_f94"
+   ],
+   "recovered": false,
+   "stage": "self pair (one word with itself): same-group pairs are not counted"
+  },
+  {
+   "key": "pie-lex-dhegjhoxm|pie-lex-meh2texr",
+   "formulas": [
+    "west_ch04_f12",
+    "west_ch04_f22",
+    "west_ch04_f23"
+   ],
+   "recovered": false,
+   "stage": "qualifies in >= 2 branches, score <= threshold",
+   "best_key_pair": [
+    "pie-lex-dhegjhoxm",
+    "pie-lex-meh2texr"
+   ],
+   "score_log2": 1.2708139350998071,
+   "top_layers_by_O": [
+    {
+     "layer": "byliny/included",
+     "branch": "Balto-Slavic",
+     "O": 145,
+     "E": 18.7,
+     "OE": 7.8
+    },
+    {
+     "layer": "ga-early/excluded",
+     "branch": "Celtic",
+     "O": 8,
+     "E": 8.1,
+     "OE": 1.0
+    },
+    {
+     "layer": "grc/included",
+     "branch": "Greek",
+     "O": 5,
+     "E": 5.98,
+     "OE": 0.8
+    },
+    {
+     "layer": "sga/excluded",
+     "branch": "Celtic",
+     "O": 2,
+     "E": 0.83,
+     "OE": 2.4
+    },
+    {
+     "layer": "mga/included",
+     "branch": "Celtic",
+     "O": 2,
+     "E": 1.27,
+     "OE": 1.6
+    },
+    {
+     "layer": "vuk/included",
+     "branch": "Balto-Slavic",
+     "O": 2,
+     "E": 1.56,
+     "OE": 1.3
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-wekwos|pie-root-peth2-spread_out",
+   "formulas": [
+    "west_ch01_f12"
+   ],
+   "recovered": false,
+   "stage": "O >= min O in >= 2 branches, but O/E >= min O/E in <= 1",
+   "best_key_pair": [
+    "pie-root-wekw-speak",
+    "pie-root-peth2-spread_out"
+   ],
+   "score_log2": null,
+   "top_layers_by_O": [
+    {
+     "layer": "hom/included",
+     "branch": "Greek",
+     "O": 129,
+     "E": 21.51,
+     "OE": 6.0
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 33,
+     "E": 49.23,
+     "OE": 0.7
+    },
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 24,
+     "E": 121.27,
+     "OE": 0.2
+    },
+    {
+     "layer": "grc/included",
+     "branch": "Greek",
+     "O": 12,
+     "E": 7.17,
+     "OE": 1.7
+    },
+    {
+     "layer": "grc/excluded",
+     "branch": "Greek",
+     "O": 2,
+     "E": 5.67,
+     "OE": 0.4
+    },
+    {
+     "layer": "av/included",
+     "branch": "Indo-Iranian",
+     "O": 1,
+     "E": 1.42,
+     "OE": 0.7
+    }
+   ]
+  },
+  {
+   "key": "pie-root-gwhen-strike|pie-root-kjey-be_lying_down",
+   "formulas": [
+    "slain-lies"
+   ],
+   "recovered": false,
+   "stage": "qualifies in >= 2 branches, score <= threshold",
+   "best_key_pair": [
+    "pie-root-kjey-be_lying_down",
+    "pie-root-gwhen-strike"
+   ],
+   "score_log2": 1.8554618921884327,
+   "top_layers_by_O": [
+    {
+     "layer": "sa-ep/included",
+     "branch": "Indo-Iranian",
+     "O": 61,
+     "E": 26.95,
+     "OE": 2.3
+    },
+    {
+     "layer": "grc-late/excluded",
+     "branch": "Greek",
+     "O": 32,
+     "E": 41.86,
+     "OE": 0.8
+    },
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 6,
+     "E": 1.17,
+     "OE": 5.1
+    },
+    {
+     "layer": "ga-early/excluded",
+     "branch": "Celtic",
+     "O": 5,
+     "E": 2.35,
+     "OE": 2.1
+    },
+    {
+     "layer": "grc/included",
+     "branch": "Greek",
+     "O": 4,
+     "E": 3.91,
+     "OE": 1.0
+    },
+    {
+     "layer": "menota/included",
+     "branch": "Germanic",
+     "O": 3,
+     "E": 3.73,
+     "OE": 0.8
+    }
+   ]
+  },
+  {
+   "key": "pie-lex-kjlewos|pie-root-pleth2-spread",
+   "formulas": [
+    "west_ch10_f06",
+    "west_ch02_f02"
+   ],
+   "recovered": false,
+   "stage": "qualifies in >= 2 branches, score <= threshold",
+   "best_key_pair": [
+    "pie-root-pleth2-spread",
+    "pie-lex-kjlewos"
+   ],
+   "score_log2": 1.6957025922050726,
+   "top_layers_by_O": [
+    {
+     "layer": "ga-early/excluded",
+     "branch": "Celtic",
+     "O": 4,
+     "E": 0.97,
+     "OE": 4.1
+    },
+    {
+     "layer": "rv/included",
+     "branch": "Indo-Iranian",
+     "O": 4,
+     "E": 1.23,
+     "OE": 3.2
+    },
+    {
+     "layer": "mga/excluded",
+     "branch": "Celtic",
+     "O": 2,
+     "E": 0.47,
+     "OE": 4.2
+    }
+   ]
+  }
+ ],
+ "seconds": 0.8
+}
