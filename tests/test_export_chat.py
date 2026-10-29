@@ -439,6 +439,13 @@ def test_app_items_partition_sentences_with_sliced_gloss():
     assert ec.app_chats([long], st) == [] and st["unaligned_long:count_mismatch"] == 1
     short = ec.app_chats([_rec("a. b.", "A b.", id="t3-z-8")], collections.Counter(), inverse=False)
     assert len(short) == 1 and short[0]["meta"]["sentences"] == 2
+    # a title line (no final punctuation) is never joined to the next line
+    work = [dict(_rec(p, e, genre="fable", id=f"t1-w-{i}", tier=1, work_id="w", line_no=i))
+            for i, (p, e) in enumerate([("owis h₁éḱwōs-kʷe", "The Sheep and the Horses"), ("a b.", "A b."),
+                                        ("c d.", "C d."), ("e f.", "E f.")])]
+    for rid in "wxyz":
+        items = ec.app_chats([dict(r, work_id=rid) for r in work], collections.Counter(), inverse=False)
+        assert items[0]["messages"][1]["content"] == "The Sheep and the Horses"
 
 
 def test_translator_conversations(exported):

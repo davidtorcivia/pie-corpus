@@ -731,6 +731,7 @@ APP_INVERSE_SYSTEM = "Translate Proto-Indo-European into English. Give the Engli
 APP_CHUNK = (1, 1, 2, 3)        # sentences per item, by crc32: half sentence-level, half short paragraphs
 APP_INVERSE_EVERY = 5           # one item in five (crc32) is the inverse PIE -> English mode
 APP_SHORT = 3                   # an unaligned record is one item when it has at most this many sentences
+_FINAL = re.compile(r"[.?!;][\"'”’)]*$")
 
 
 def app_format(pie: str, gloss: str | None, notes: str | None = None) -> str:
@@ -805,7 +806,8 @@ def app_chats(records: list[dict], stats: collections.Counter, tasks: dict[str, 
     """translate_app: English in, `PIE:` / `Gloss:` / `Notes:` out (app_format), from every record with English.
 
     Each text's sentences (a Tier 1 work: its lines) are partitioned into items of 1-3 sentences (APP_CHUNK, by
-    crc32), so every sentence is in exactly one item: sentence-level and short-paragraph items. A record whose
+    crc32; a line without final punctuation, such as a title, ends its item), so every sentence is in exactly
+    one item: sentence-level and short-paragraph items. A record whose
     English does not align sentence by sentence is one item when it is short (APP_SHORT), else skipped. One
     item in APP_INVERSE_EVERY is the inverse mode (PIE in, `English:` / `Gloss:` out) when `inverse`. The gloss
     is the gloss task's own (the record's gloss, sliced per sentence); a record without one (Tier 1) gets no
@@ -829,6 +831,10 @@ def app_chats(records: list[dict], stats: collections.Counter, tasks: dict[str, 
         pos = 0
         while pos < len(units):
             n = min(APP_CHUNK[_pick(f"{sid}|app|{pos}", len(APP_CHUNK))], len(units) - pos)
+            # a unit without sentence-final punctuation (a title, a formula) ends its item: nothing is joined
+            # onto it without a boundary
+            n = next((j + 1 for j in range(n - 1) if not (_FINAL.search(units[pos + j][0])
+                                                          and _FINAL.search(units[pos + j][1]))), n)
             chunk = units[pos:pos + n]
             rs = list(dict.fromkeys(id(x[4]) for x in chunk))
             rec = chunk[0][4]

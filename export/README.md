@@ -119,7 +119,8 @@ with each model's own template. Train on the assistant turns only (the default "
 - `translate_app`: the **translator** (English in, PIE out, gloss alongside), for the translation app;
   format below. Built from every record with English: its sentences (a Tier 1 work: its numbered lines)
   are partitioned into items of one to three sentences (crc32; about half sentence-level, half short
-  paragraphs, `meta.unit`, `meta.sentences`), so every sentence is in exactly one item. A record whose
+  paragraphs, `meta.unit`, `meta.sentences`; a line without final punctuation, such as a title, ends its
+  item), so every sentence is in exactly one item. A record whose
   English does not align sentence by sentence is one item when it has at most three sentences, else
   skipped (`summary.json` `translate_app`). One item in five (crc32) is the inverse mode
   (`meta.mode` `pie_en`; the default is `en_pie`). Tier 3b records are treated the same way.
@@ -131,7 +132,7 @@ with each model's own template. Train on the assistant turns only (the default "
   record (so never a held-out family), or of a Tier 3b neologism (data/lexicon/neologisms.jsonl; flagged
   `coined: neologism`, `neologism: true`). A seed is skipped whole when any answer does not resolve
   (`summary.json` `demo_seeds.skipped`): the seeds about the model itself point at the Tier 3b chat
-  batch t3b-001, admitted, so all 51 seeds resolve at 084027b. Train only.
+  batch t3b-001, now admitted, so all 51 seeds resolve. Train only.
 
 **Translator format** (`translate_app`, `pie.export_chat.app_format` / `parse_app`). System prompt, fixed:
 "Translate English into Proto-Indo-European. Give the PIE, then a word-by-word gloss." The user turn is the
@@ -165,7 +166,8 @@ convention of a Tier 1 item is in `meta.style` (the fixed system prompt does not
 sampling weight that reaches the target. Every task stays a conversation in `chat/train.jsonl`, so the
 grammar tasks are most of its examples; `chat/train_mix.jsonl` keeps every English-input example and
 fills the rest in the target proportions (the lowest crc32 of their content; no example repeated).
-Built from 084027b (Tier 3 batches pending re-approval are out, so train is smaller for now):
+As built (the commit is `chat/summary.json` `provenance`; Tier 3 batches pending re-approval are out, so
+train is smaller for now):
 
 | group | target | `train.jsonl` examples | share | tokens | token share | `train_mix.jsonl` examples | share |
 |---|---|---|---|---|---|---|---|
@@ -225,7 +227,8 @@ the share of training records' words.
 
 ```python
 from datasets import load_dataset
-ds = load_dataset("json", data_files={"train": "export/chat/train.jsonl", "eval": "export/chat/eval.jsonl"})
+# train_mix.jsonl: the chat and translation model's mix; train.jsonl: the full pool (grammar-heavy)
+ds = load_dataset("json", data_files={"train": "export/chat/train_mix.jsonl", "eval": "export/chat/eval.jsonl"})
 # TRL: SFTTrainer(model, train_dataset=ds["train"].remove_columns("meta"),
 #                 args=SFTConfig(assistant_only_loss=True, ...))
 ```
@@ -237,7 +240,7 @@ the tinker-cookbook renderers; check them against your version):
 import json
 from tinker_cookbook import renderers
 renderer = renderers.get_renderer(renderer_name, tokenizer)   # the model's own (e.g. qwen3, Nemotron's)
-for line in open("export/chat/train.jsonl"):
+for line in open("export/chat/train_mix.jsonl"):
     ex = json.loads(line)
     tokens, weights = renderer.build_supervised_example(ex["messages"])   # weights = assistant tokens
 ```
