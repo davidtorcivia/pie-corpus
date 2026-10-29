@@ -20,7 +20,9 @@ Listening page: `tts/vc/listening/index.html`.
 | (Kokoro alone, for comparison) | — | Natural, but it is a different rendering: 28 % longer than eSpeak on words, χ nearly gone with the default spelling (0.15), F0 r 0.53. With each voice's recommended profile (top-3 round) its [x]/[ʁ] fares better, but on the lines it stays further from eSpeak than Seed-VC F0 on phones (PER 0.58–0.66 vs 0.40–0.42) and pitch (F0 r 0.26–0.66 vs 0.84–0.96). |
 
 Recommendation for the demo: render with eSpeak (`pie/pie-tone`) and re-voice offline with Seed-VC F0 mode,
-target timbre em_alex, em_santa or bf_isabella (best per-voice F0 numbers; pick by ear on the listening page).
+target timbre em_alex or em_santa (male voices: F0 mode keeps eSpeak's low male contour as is, so a female
+target such as bf_isabella speaks at male pitch unless `--semi-tone-shift` is used, which was not tested; pick by
+ear on the listening page).
 Keep Seed-VC as a separately licensed GPL component, or pre-render the demo audio so only the audio ships.
 The recognizer is too blunt to certify the hard segments (it never hears χ, ʔ or murmur), so the final call on
 χ, ǵ/ḱ and bʰ must be by ear; the χ-noise check says Seed-VC thins χ by about a third.
@@ -240,6 +242,12 @@ pitch well (0.84), and Seed-VC F0 keeps it everywhere (0.91–0.96).
   only".
 - Manifest for the merged rating page: `tts/vc/manifest.json` (schema `pie-tts-bakeoff/1`, `source: "vc"`; clip
   fields as in `tts/bakeoff/manifest.json` plus `pie`, `target`, `method`, `timbre`, absolute `wav`, `mp4`,
-  `source_wav`, `metrics`). Systems are `vc-<method>-<voice>`, `kokoro-<voice>` and `kokoro-<voice>-profiled`.
+  `source_wav`, `metrics`). Every clip id starts `vc__` and every system id `vc-` (`vc-<method>-<voice>`,
+  `vc-kokoro-default-<voice>`, `vc-kokoro-profiled-<voice>`, `vc-espeak-tone`), so nothing collides with the
+  bake-off manifest. The 15 eSpeak source clips for shared words are the same render as the bake-off's
+  `espeak-tone` clips; their `same_as` names the bake-off id. The Kokoro rows are not bake-off duplicates (the
+  bake-off renders non-h₂ targets with base profile h2-velar; the first round here uses the plain default).
+  `targets` is copied from the bake-off; the hymn lines use target `line` and ǵʰimḗ `accent`, which the bake-off
+  list does not define.
 - Per-clip numbers: `tts/vc/results.json`.
 

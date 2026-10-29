@@ -68,13 +68,18 @@ def enc(wav: Path, rel: str) -> dict:
                 peak=round(float(np.abs(y).max()), 3), clipped=int((np.abs(y) >= 0.999).sum()), rate=sr)
 
 
+bake = json.loads((VC.parent / "bakeoff" / "manifest.json").read_text("utf-8")) if (VC.parent / "bakeoff" / "manifest.json").exists() else {}
+BAKE_IDS = {c["id"] for c in bake.get("clips", [])}
+# Every id here starts "vc__" and every system "vc-", so nothing collides with the bake-off manifest when the two
+# are merged. The eSpeak sources are the same render as the bake-off's espeak-tone clips: same_as points there.
 clips, cells = [], {}
 for wid, pie, target in WORDS:
     s = SRC[wid]
     tgt, var = TARGET[wid]
     a = enc(Path(s["wav"]), f"src/{wid}.mp4")
-    rec = dict(id=f"{wid}__{var}__espeak-tone", word=wid, variant=var, system="espeak-tone", **a,
-               ipa=s["ipa"], engine_input=s["engine_input"], profile=None, same_as=None, qc=dict(ok=True, flags=[]),
+    bid = f"{wid}__{var}__espeak-tone"
+    rec = dict(id=f"vc__{bid}", word=wid, variant=var, system="vc-espeak-tone", **a,
+               ipa=s["ipa"], engine_input=s["engine_input"], profile=None, same_as=bid if bid in BAKE_IDS else None, qc=dict(ok=True, flags=[]),
                pie=pie, target=target, method="espeak-source", timbre=None, wav=s["wav"], mp4=str(AUD / a["audio"]),
                metrics={k: R["sources"][wid][k] for k in ("rec", "per_ipa", "contrast", "peak")})
     clips.append(rec)
@@ -84,7 +89,7 @@ for r in R["clips"]:
         continue
     wid, m, v = r["id"], r["method"], r["timbre"]
     tgt, var = TARGET[wid]
-    sysid = f"kokoro-{v}" if m == "kokoro" else f"kokoro-{v}-profiled" if m == "kokoro-prof" else f"vc-{m}-{v}"
+    sysid = f"vc-kokoro-default-{v}" if m == "kokoro" else f"vc-kokoro-profiled-{v}" if m == "kokoro-prof" else f"vc-{m}-{v}"
     prof = VOICE_PROFILE[v] if m == "kokoro-prof" else None
     if prof and tgt == "h2":
         var = PROF_VARIANT[prof[0]]
@@ -94,7 +99,7 @@ for r in R["clips"]:
     pie = SRC[wid]["pie"]
     engine = (KOK[(wid, v)] if m == "kokoro" else KP[(wid, v)] if m == "kokoro-prof" else SRC[wid])["engine_input"]
     ipa = KP[(wid, v)]["ipa"] if m == "kokoro-prof" else SRC[wid]["ipa"]
-    rec = dict(id=f"{wid}__{var}__{sysid}", word=wid, variant=var, system=sysid, **a, ipa=ipa,
+    rec = dict(id=f"vc__{wid}__{var}__{sysid}", word=wid, variant=var, system=sysid, **a, ipa=ipa,
                engine_input=engine, profile=(f"{prof[0]} + dorsals={prof[1]}" if prof else None), same_as=None, qc=dict(ok=a["clipped"] == 0, flags=[] if a["clipped"] == 0 else ["clipped"]),
                pie=pie, target=SRC[wid]["target"], method=m, timbre=v, wav=r["wav"], mp4=str(AUD / a["audio"]),
                source_wav=SRC[wid]["wav"],
@@ -107,20 +112,19 @@ refs = {}
 for v in TIMBRES + TIMBRES2:
     refs[v] = enc(VC / "audio" / "ref" / f"{v}.wav", f"ref/{v}.mp4")
 
-systems = [dict(id="espeak-tone", label="eSpeak (tone)", family="espeak", language="pie (hi base)",
+systems = [dict(id="vc-espeak-tone", same_as="espeak-tone", label="eSpeak (tone)", family="espeak", language="pie (hi base)",
                 licence="GPL-3.0 engine; output unrestricted", reference=True)]
 for m, d in METHODS.items():
     for v in ([] if m == "kokoro-prof" else TIMBRES) + ([] if m == "kokoro" else TIMBRES2):
-        if not any(c["system"].endswith(v) or c["system"].endswith(v + "-profiled") for c in clips if c["method"] == m):
-            continue
         kok = m.startswith("kokoro")
-        sid = f"kokoro-{v}" if m == "kokoro" else f"kokoro-{v}-profiled" if m == "kokoro-prof" else f"vc-{m}-{v}"
+        sid = f"vc-kokoro-default-{v}" if m == "kokoro" else f"vc-kokoro-profiled-{v}" if m == "kokoro-prof" else f"vc-{m}-{v}"
+        if not any(c["system"] == sid for c in clips):
+            continue
         systems.append(dict(id=sid, label=f"{d['label']} {v}" if kok else f"eSpeak→{d['label']} {v}",
                             family="kokoro" if kok else "vc", method=m, voice=v, licence=d["licence"],
                             repo=d["repo"], reference=False, items="all" if v in TIMBRES else SUBSET,
                             profile=(" + dorsals=".join(VOICE_PROFILE[v]) if m == "kokoro-prof" else None),
                             note=d.get("note")))
-bake = json.loads((VC.parent / "bakeoff" / "manifest.json").read_text("utf-8")) if (VC.parent / "bakeoff" / "manifest.json").exists() else {}
 words = [dict(id=w, pie=p, gloss=GLOSS[w], target=TARGET[w][0], ipa=SRC[w]["ipa"], sound=t) for w, p, t in WORDS]
 manifest = dict(schema="pie-tts-bakeoff/1", source="vc", generated=str(date.today()), audio_base="listening/audio/",
                 settings=dict(espeak=dict(voice="pie/pie-tone", version="1.52.0", rate=130, round_trip="strict"),
@@ -189,7 +193,7 @@ def grid_html(wid, pie, timbres, methods, caption):
                 continue
             mt = cl["metrics"]
             prof = f'<span class="prof">{html.escape(cl["profile"])}</span>' if cl.get("profile") else ""
-            cellhtml.append(f"""<span class="cell" role="cell">{play(cl['audio'], f"{pie} {d['label']} {v}")}{prof}
+            cellhtml.append(f"""<span class="cell" role="cell"><span class="vlab">{v}</span>{play(cl['audio'], f"{pie} {d['label']} {v}")}{prof}
 <span class="nums"><span class="{chip_per(mt['per_src'], FLOOR)}" title="phone edit distance vs source">PER {fmt(mt['per_src'])}</span>
 <span class="{chip_r(mt['f0_r'])}" title="F0 correlation with source">r {fmt(mt['f0_r'])}</span>
 <span title="speech-span duration / source">×{fmt(mt['dur_ratio'])}</span></span>
@@ -293,6 +297,7 @@ code {{ font-family: var(--f-mono); font-size: .8rem; }}
 .gr.kok {{ background: linear-gradient(var(--accent-soft), var(--accent-soft)) left / 3px 100% no-repeat; padding-left: 0; }}
 .gcap {{ margin: 10px 0 0; font-size: .8rem; color: var(--muted); }}
 .prof {{ font: 500 .7rem var(--f-mono); color: var(--accent); }}
+.vlab {{ display: none; font-size: .7rem; color: var(--muted); letter-spacing: .04em; }}
 .flag {{ display: inline-block; margin-left: 6px; font: 500 .66rem var(--f-body); text-transform: uppercase; letter-spacing: .05em; color: var(--warn); background: var(--warn-bg); border-radius: 3px; padding: 0 4px; vertical-align: 1px; }}
 table.cmp tr.first th, table.cmp tr.first td {{ border-top: 2px solid var(--line); }}
 table.cmp tr.kokrow th[scope=row], table.cmp tr.kokrow td {{ background: var(--accent-soft); }}
@@ -312,6 +317,7 @@ nav.jump a:hover {{ text-decoration: underline; }}
   .gr {{ grid-template-columns: repeat(3, minmax(0, 1fr)); }}
   .mlabel {{ grid-column: 1 / -1; padding: 0 0 0 8px; }}
   .heard {{ display: none; }}
+  .vlab {{ display: block; }}
 }}
 @media (prefers-reduced-motion: reduce) {{ * {{ transition: none !important; }} }}
 </style>
