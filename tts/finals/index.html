@@ -1,0 +1,359 @@
+<title>PIE Voice Finals</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* Layout: a listening sheet, as the bake-off page. One block per item (PIE, IPA, English), and under it one row of
+   eight clips in fixed columns: eSpeak, the three Kokoro + profile voices, the four Seed-VC F0 voices. The columns
+   fold to four and then two at narrow widths; every cell carries its own voice label. */
+:root {
+  --bg: #f3f4f1;
+  --panel: #ffffff;
+  --ink: #1d2422;
+  --muted: #5d6763;
+  --line: #d8dcd7;
+  --accent: #2f4a8a;
+  --accent-soft: #e3e8f4;
+  --ref: #f6efe0;
+  --kok: #eef3ea;
+  --vc: #ecf0f6;
+  --warn: #b8473b;
+  --s1: #b8473b; --s2: #c9803a; --s3: #a59a3c; --s4: #5d9450; --s5: #2f7d5b;
+  --font-ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-ipa: "Noto Serif", "Gentium Plus", "Charis SIL", "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141816; --panel: #1c211f; --ink: #e4e8e5; --muted: #9aa49f; --line: #333a37;
+  --accent: #9db3ec; --accent-soft: #263150; --ref: #2c2718; --kok: #1f2a1f; --vc: #1d2433; --warn: #e07a6e;
+  --s1: #e07a6e; --s2: #e3a462; --s3: #cfc36a; --s4: #8cc67e; --s5: #5fc495; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #141816; --panel: #1c211f; --ink: #e4e8e5; --muted: #9aa49f; --line: #333a37;
+  --accent: #9db3ec; --accent-soft: #263150; --ref: #2c2718; --kok: #1f2a1f; --vc: #1d2433; --warn: #e07a6e;
+  --s1: #e07a6e; --s2: #e3a462; --s3: #cfc36a; --s4: #8cc67e; --s5: #5fc495; color-scheme: dark }
+
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--font-ui); }
+.wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 48px; max-width: 1640px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+.wrap > * { min-width: 0; }
+header { display: flex; flex-direction: column; gap: 8px; max-width: 76ch; }
+h1 { font: 600 1.6rem/1.2 var(--font-ui); margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+h1 .pie { font-family: var(--font-ipa); font-weight: 400; font-style: italic; color: var(--accent); }
+h2 { font: 600 1.15rem/1.3 var(--font-ui); margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.lede { color: var(--muted); }
+.status { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: 0.85rem; }
+.pill { border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; background: var(--panel); font-variant-numeric: tabular-nums; }
+.pill.warn { border-color: var(--s2); color: var(--warn); }
+.status label { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+#warn:empty { display: none; }
+#warn { color: var(--warn); font-size: 0.85rem; }
+
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 8px;
+  border-bottom: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.jump { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 0.82rem; }
+.jump .lab { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+.jump a { color: var(--accent); text-decoration: none; border: 1px solid var(--line); border-radius: 6px; padding: 1px 8px;
+  background: var(--panel); font-family: var(--font-ipa); }
+.jump a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* the eight columns */
+.cols { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; }
+.legend { display: none; }
+@media (min-width: 1100px) { .legend { display: grid; } .legend > div { font-size: 0.72rem; color: var(--muted); padding: 0 8px; }
+  .legend .g { text-transform: uppercase; letter-spacing: 0.06em; } .legend b { display: block; color: var(--ink); font-weight: 500; font-size: 0.8rem; } }
+@media (max-width: 1099px) { .cols { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+section.group { display: flex; flex-direction: column; gap: 14px; }
+section.group > h2 small { font-weight: 400; color: var(--muted); font-size: 0.85rem; margin-left: 8px; }
+article.item { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; display: flex;
+  flex-direction: column; gap: 10px; scroll-margin-top: 110px; }
+.text { display: flex; flex-direction: column; gap: 3px; max-width: 110ch; }
+.text .head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; font-size: 0.78rem; color: var(--muted); }
+.text .head .id { font-family: var(--font-mono); }
+.text .pie { font: italic 1.12rem/1.45 var(--font-ipa); color: var(--accent); overflow-wrap: anywhere; }
+.text .ipa { font: 0.92rem/1.45 var(--font-ipa); color: var(--ink); overflow-wrap: anywhere; }
+.text .ipa::before { content: "["; color: var(--muted); } .text .ipa::after { content: "]"; color: var(--muted); }
+.text .en { color: var(--muted); font-size: 0.92rem; }
+.item.hymn .pie { font-size: 1.05rem; }
+
+.cell { border: 1px solid var(--line); border-radius: 6px; padding: 7px; display: flex; flex-direction: column; gap: 6px; min-width: 0;
+  background: var(--vc); }
+.cell.espeak { background: var(--ref); }
+.cell.kokoro { background: var(--kok); }
+.cell .who { font-size: 0.74rem; line-height: 1.25; color: var(--muted); min-height: 2.5em; overflow-wrap: anywhere; }
+.cell .who b { display: block; color: var(--ink); font-weight: 600; font-size: 0.8rem; }
+.row { display: flex; gap: 6px; align-items: center; }
+.play { width: 34px; height: 34px; flex: none; border-radius: 50%; border: 1px solid var(--accent); background: var(--panel);
+  color: var(--accent); cursor: pointer; display: grid; place-items: center; padding: 0; }
+.play.on { background: var(--accent); color: var(--panel); }
+.play svg { width: 14px; height: 14px; fill: currentColor; }
+.dur { font: 0.74rem var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.scores { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 3px; }
+.scores button { font: 500 0.8rem var(--font-ui); border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+  border-radius: 4px; padding: 3px 0; cursor: pointer; font-variant-numeric: tabular-nums; }
+.scores button[aria-pressed="true"][data-s="1"] { background: var(--s1); border-color: var(--s1); color: var(--panel); }
+.scores button[aria-pressed="true"][data-s="2"] { background: var(--s2); border-color: var(--s2); color: var(--panel); }
+.scores button[aria-pressed="true"][data-s="3"] { background: var(--s3); border-color: var(--s3); color: var(--panel); }
+.scores button[aria-pressed="true"][data-s="4"] { background: var(--s4); border-color: var(--s4); color: var(--panel); }
+.scores button[aria-pressed="true"][data-s="5"] { background: var(--s5); border-color: var(--s5); color: var(--panel); }
+.note { font: 0.8rem var(--font-ui); width: 100%; box-sizing: border-box; border: 1px solid var(--line); border-radius: 4px;
+  padding: 3px 6px; background: var(--panel); color: var(--ink); }
+.flag { font-size: 0.72rem; color: var(--warn); }
+.metrics { font: 0.7rem/1.35 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+body:not(.show-metrics) .metrics { display: none; }
+.empty { padding: 24px; color: var(--muted); }
+details.about { max-width: 76ch; font-size: 0.88rem; color: var(--muted); }
+details.about summary { cursor: pointer; color: var(--ink); }
+details.about ul { margin: 6px 0 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>PIE voice finals: <span class="pie">h₂éwsos léwka déywi</span></h1>
+    <p class="lede">Rate each clip from 1 (unusable) to 5 (use it). Each row is one item, played by the eight finalists:
+      eSpeak tone (the accuracy reference), Kokoro with each voice's recommended respelling profile, and eSpeak re-voiced by
+      Seed-VC in F0 mode. Hymns come first, then the hard words.</p>
+    <div class="status">
+      <span class="pill" id="progress">0 rated</span>
+      <span class="pill" id="mode">Connecting…</span>
+      <label for="show-metrics"><input type="checkbox" id="show-metrics"> Show machine checks</label>
+    </div>
+    <p id="warn" role="status"></p>
+    <details class="about">
+      <summary>How the clips were made</summary>
+      <ul id="about"></ul>
+    </details>
+  </header>
+  <div class="bar">
+    <nav class="jump" id="jump" aria-label="Jump to item"></nav>
+    <div class="cols legend" id="legend" aria-hidden="true"></div>
+  </div>
+  <main id="main"><div class="empty">Loading the clips…</div></main>
+</div>
+
+<script>
+const PLAY = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>';
+const STOP = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5h9v9h-9z"/></svg>';
+const state = { m: null, systems: [], clips: new Map(), byCell: new Map(), ratings: {}, db: null, mode: "connecting" };
+
+function el(tag, props = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(props)) {
+    if (v == null || v === false) continue;
+    if (k === "text") n.textContent = v;
+    else if (k === "html") n.innerHTML = v;
+    else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+    else if (k === "checked") n.checked = !!v;
+    else n.setAttribute(k, v === true ? "" : v);
+  }
+  for (const c of kids.flat()) if (c != null) n.append(c.nodeType ? c : document.createTextNode(c));
+  return n;
+}
+
+// ---- audio: each clip is a slice of its system's sprite (clip.sprite = {file, start, duration}, seconds)
+const LEAD = 0.05, TAIL = 0.1;                 // start a little early and end a little late (codec priming)
+let ctx = null, current = null, playingBtn = null;
+const buffers = new Map();
+function buffer(src) {
+  if (!buffers.has(src)) buffers.set(src, fetch(src).then(r => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+    .then(b => ctx.decodeAudioData(b)).catch(e => { buffers.delete(src); throw e; }));
+  return buffers.get(src);
+}
+const fallbackAudio = new Audio();
+let fallbackTimer = null;
+function stop() {
+  if (current) { try { current.stop(); } catch (e) {} current = null; }
+  fallbackAudio.pause(); clearTimeout(fallbackTimer);
+  setPlaying(null);
+}
+async function play(clip, btn) {
+  const again = playingBtn === btn;
+  stop();
+  if (again) return;
+  const sp = clip.sprite;
+  const from = Math.max(0, sp.start - LEAD), len = sp.duration + LEAD + TAIL;
+  setPlaying(btn);
+  try {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) throw new Error("no Web Audio");
+    ctx = ctx || new AC();
+    if (ctx.state === "suspended") await ctx.resume();
+    const buf = await buffer(clip.src);
+    if (playingBtn !== btn) return;
+    const node = ctx.createBufferSource();
+    node.buffer = buf; node.connect(ctx.destination);
+    node.onended = () => { if (current === node) { current = null; setPlaying(null); } };
+    current = node;
+    node.start(0, from, len);
+  } catch (e) {
+    fallbackAudio.src = clip.src;
+    fallbackAudio.currentTime = from;
+    fallbackAudio.play().then(() => { fallbackTimer = setTimeout(stop, len * 1000); })
+      .catch(() => { setPlaying(null); showWarn("This browser could not play the clip."); });
+  }
+}
+function setPlaying(btn) {
+  if (playingBtn) { playingBtn.classList.remove("on"); playingBtn.innerHTML = PLAY; playingBtn.setAttribute("aria-label", playingBtn.dataset.label); }
+  playingBtn = btn;
+  if (btn) { btn.classList.add("on"); btn.innerHTML = STOP; btn.setAttribute("aria-label", "Stop"); }
+}
+fallbackAudio.addEventListener("ended", () => setPlaying(null));
+
+// ---- ratings: db ratings/{clipId} = {score, note}; in memory when the store is not available
+async function save(clipId, patch) {
+  const prev = state.ratings[clipId] || { score: null, note: "" };
+  const next = { score: prev.score ?? null, note: prev.note ?? "", ...patch };
+  state.ratings[clipId] = next;
+  updateStatus();
+  if (!state.db) return;
+  try { await state.db.doc(`ratings/${clipId}`).set({ score: next.score, note: next.note }); }
+  catch (e) { showWarn(`Rating not saved (${e.code || e.message}). It stays on this page until you reload.`); }
+}
+function showWarn(msg) { document.getElementById("warn").textContent = msg; }
+function updateStatus() {
+  const total = state.clips.size;
+  const rated = [...state.clips.keys()].filter(id => state.ratings[id]?.score).length;
+  document.getElementById("progress").textContent = `${rated} of ${total} rated`;
+  const mode = document.getElementById("mode");
+  mode.classList.toggle("warn", state.mode === "memory");
+  mode.textContent = state.mode === "db" ? "Ratings are saved"
+    : state.mode === "memory" ? "Not saving: ratings stay in this tab only and are lost on reload" : "Connecting…";
+}
+
+// ---- render
+const fmtDur = s => s < 60 ? `${s.toFixed(1)} s` : `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, "0")}`;
+const fam = s => s.family === "espeak" ? "espeak" : s.family === "kokoro" ? "kokoro" : "vc";
+function metricsLine(c) {
+  const m = c.metrics;
+  if (!m) return "reference";
+  const f = (v, d = 2) => v == null ? "–" : (+v).toFixed(d);
+  const parts = [`PER ${f(m.per_src)}`, `F0 r ${f(m.f0_r)}`, `accent ${f(m.contrast_ratio)}`, `dur ${f(m.dur_ratio)}`];
+  if (m.onset_src_ms && c.word_ipa?.startsWith("χ")) parts.push(`χ ${f(m.onset_ms / m.onset_src_ms)}`);
+  return parts.join(" · ");
+}
+function cell(word, sys) {
+  const c = state.byCell.get(`${word.id}|${sys.id}`);
+  const box = el("div", { class: `cell ${fam(sys)}` });
+  box.append(el("div", { class: "who" }, el("b", { text: sys.short }), sys.groupNote));
+  if (!c) { box.append(el("div", { class: "flag", text: "no clip" })); return box; }
+  const label = `Play ${sys.short} (${sys.group}), ${word.id}`;
+  const btn = el("button", { type: "button", class: "play", html: PLAY, "aria-label": label, "data-label": label,
+    onclick: () => play(c, btn) });
+  box.append(el("div", { class: "row" }, btn, el("span", { class: "dur", text: fmtDur(c.sprite.duration) })));
+  const r = state.ratings[c.id] || {};
+  const scores = el("div", { class: "scores", role: "group", "aria-label": `Rating for ${sys.short}` });
+  for (let s = 1; s <= 5; s++) scores.append(el("button", { type: "button", "data-s": s, "aria-pressed": String(r.score === s),
+    text: s, onclick: () => { const cur = state.ratings[c.id]?.score; save(c.id, { score: cur === s ? null : s }); syncInputs(); } }));
+  const note = el("input", { type: "text", class: "note", id: `note-${c.id}`, placeholder: "Note", "aria-label": `Note for ${sys.short}`,
+    value: r.note || "" });
+  let t = null;
+  note.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => save(c.id, { note: note.value }), 600); });
+  note.addEventListener("change", () => { clearTimeout(t); save(c.id, { note: note.value }); });
+  box.append(scores, note);
+  if (c.qc && !c.qc.ok) box.append(el("div", { class: "flag", text: c.qc.flags.join("; ") }));
+  box.append(el("div", { class: "metrics", text: metricsLine({ ...c, word_ipa: word.ipa }) }));
+  return box;
+}
+function item(word) {
+  const a = el("article", { class: `item ${word.kind}`, id: `w-${word.id}` });
+  const head = el("div", { class: "head" }, el("span", { class: "id", text: word.id }),
+    word.kind === "hymn" ? "whole record" : word.kind === "line" ? "line of t3-t026-00015" : (word.sound ? `tests ${word.sound}` : null));
+  a.append(el("div", { class: "text" }, head, el("div", { class: "pie", lang: "ine-x-proto", text: word.pie }),
+    el("div", { class: "ipa", text: word.ipa }), el("div", { class: "en", text: word.english || word.gloss })));
+  a.append(el("div", { class: "cols" }, state.systems.map(s => cell(word, s))));
+  return a;
+}
+function render() {
+  const m = state.m;
+  const hymns = m.words.filter(w => w.kind === "hymn"), rest = m.words.filter(w => w.kind !== "hymn");
+  const main = document.getElementById("main");
+  main.replaceChildren(
+    el("section", { class: "group", id: "hymns" }, el("h2", {}, "Hymns", el("small", { text: `${hymns.length} corpus records, read whole` })), hymns.map(item)),
+    el("section", { class: "group", id: "words", style: "margin-top:28px" }, el("h2", {}, "Hard words and lines", el("small", { text: `${rest.length} items` })), rest.map(item)));
+  const jump = document.getElementById("jump");
+  jump.replaceChildren(el("span", { class: "lab", text: "Hymns" }),
+    ...hymns.map((w, i) => el("a", { href: `#w-${w.id}`, title: w.english, text: String(i + 1) })),
+    el("span", { class: "lab", text: "Words" }),
+    ...rest.map(w => el("a", { href: `#w-${w.id}`, text: w.pie.length > 14 ? w.id : w.pie })));
+  document.getElementById("legend").replaceChildren(...state.systems.map(s =>
+    el("div", {}, el("span", { class: "g", text: s.group }), el("b", { text: s.short }))));
+}
+function syncInputs() {
+  for (const c of state.clips.values()) {
+    const note = document.getElementById(`note-${c.id}`);
+    if (!note) continue;
+    const r = state.ratings[c.id] || {};
+    if (document.activeElement !== note) note.value = r.note || "";
+    note.parentElement.querySelectorAll(".scores button").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.s === r.score)));
+  }
+}
+function about(m) {
+  const s = m.settings, sh = s.seedvc.semi_tone_shift || {};
+  const li = t => el("li", { text: t });
+  const shifts = Object.entries(sh).filter(([, v]) => v).map(([v, n]) => `${v} +${n} st`).join(", ");
+  document.getElementById("about").replaceChildren(
+    li(`eSpeak ${s.espeak.version}, voice ${s.espeak.voice}, with level tones on the accented syllable.`),
+    li(`Kokoro (${s.kokoro.model.split("@")[0]}) with the pitch patch at speed ${s.kokoro.speed}. Profiles: ` +
+      m.systems.filter(x => x.family === "kokoro").map(x => `${x.voice} ${x.profile} + dorsals=${x.dorsals}`).join("; ") + "."),
+    li(`Seed-VC F0 mode (${s.seedvc.repo}): eSpeak's audio re-voiced with its own pitch contour kept. ` +
+      `The female voices are shifted up (${shifts || "none"}) so their pitch lands in each voice's own range. ` +
+      `Long hymns were converted in pieces cut at eSpeak's pauses and joined.`),
+    li(`All clips are levelled to the same loudness and played from one AAC file per voice.`),
+    li(`Machine checks (hidden by default) compare each clip with the eSpeak source: PER = phone distance, F0 r = pitch-contour correlation, accent = share of the accent contrast kept, dur = length ratio, χ = share of the χ noise kept.`));
+}
+
+async function load() {
+  const r = await fetch("manifest.json");
+  if (!r.ok) throw new Error(`manifest.json: ${r.status}`);
+  const m = state.m = await r.json();
+  const base = m.audio_base || "audio/";
+  state.systems = m.systems.map(s => ({ ...s, groupNote: s.family === "espeak" ? "reference"
+    : s.family === "kokoro" ? `Kokoro · ${s.profile.replace(/^h2-/, "h₂ ")}, ${s.dorsals}`
+    : `Seed-VC F0${s.semi_tone_shift ? ` · +${s.semi_tone_shift} st` : ""}` }));
+  for (const c of m.clips) {
+    const clip = { ...c, src: base + c.sprite.file };
+    state.clips.set(c.id, clip);
+    state.byCell.set(`${c.word}|${c.system}`, clip);
+  }
+  about(m);
+}
+
+async function useDb() {
+  // window.claude appears once the viewer has wired the page up; give it a moment before giving up
+  for (let i = 0; i < 20 && !(window.claude && typeof window.claude.use === "function"); i++) await new Promise(r => setTimeout(r, 100));
+  if (!(window.claude && typeof window.claude.use === "function")) return null;
+  try { return await window.claude.use("db"); } catch (e) { return null; }
+}
+async function connect() {
+  const db = await useDb();
+  if (!db) { state.mode = "memory"; updateStatus(); return; }
+  state.db = db; state.mode = "db"; updateStatus();
+  db.collection("ratings").limit(1000).onSnapshot(snap => {
+    for (const d of snap.docs) {
+      if (!state.clips.has(d.id)) continue;
+      const v = d.data() || {};
+      state.ratings[d.id] = { score: v.score ?? null, note: v.note ?? "" };
+    }
+    syncInputs(); updateStatus();
+  }, err => { state.mode = "memory"; state.db = null; showWarn(`Saving stopped (${err.code}). New ratings stay in this tab only.`); updateStatus(); });
+}
+
+const metricsBox = document.getElementById("show-metrics");
+try { metricsBox.checked = localStorage.getItem("finalsMetrics") === "1"; } catch (e) {}
+document.body.classList.toggle("show-metrics", metricsBox.checked);
+metricsBox.addEventListener("change", () => {
+  document.body.classList.toggle("show-metrics", metricsBox.checked);
+  try { localStorage.setItem("finalsMetrics", metricsBox.checked ? "1" : "0"); } catch (e) {}
+});
+
+(async () => {
+  try { await load(); }
+  catch (e) { document.getElementById("main").replaceChildren(el("div", { class: "empty", text: `The clips could not be loaded: ${e.message}.` })); return; }
+  render(); updateStatus();
+  connect();
+})();
+</script>
