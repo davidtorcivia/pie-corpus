@@ -6,7 +6,7 @@ The pipeline: the model writes PIE in canonical notation, `pie.ipa.to_ipa` turns
 
 **Status of the result.** Nobody heard PIE. Every value below is a reconstruction of articulation from comparative evidence, and for the laryngeals and the dorsals the handbooks disagree. The default is a single consistent choice for a demo voice. It is not a claim that PIE sounded like this. Where opinion is split, a documented alternative can be selected (§9).
 
-Sources are cited by their key in `data/research/literature/bibliography.json`. Locators: Fortson and Mallory–Adams by section (§), Beekes, Clackson and Ringe by section and page, and Byrd's Handbook chapter (`byrd2018`, Handbook vol. 3 ch. 121) by section.
+Sources are listed in `data/research/literature/bibliography.json` under these keys: Fortson = `fortson2010`, Beekes = `beekes2011`, Clackson = `clackson2007`, Ringe = `ringe2017`, Mallory–Adams = `mallory-adams2006`, Byrd = `byrd2018`, Kimball = `kimball2017`. The findings used here are lit-0073 to lit-0081 in `findings.jsonl`. Locators: Fortson and Mallory–Adams by section (§), Beekes, Clackson and Ringe by section and page, and Byrd's Handbook chapter (`byrd2018`, Handbook vol. 3 ch. 121) by section.
 
 ## 1. Summary of the default convention
 
@@ -70,7 +70,7 @@ A laryngeal is a syllable nucleus exactly where `pie/meter.py` says it is (`mete
 
 ### 2.3 Laryngeal coloring (on by default)
 
-**By default the converter colors a short e next to h₂ to [a] and next to h₃ to [o]**: h₂éǵeti [χá.ɟe.ti], bʰéh₂ti [bʱáχ.ti], h₃ésth₁ [ɣʷós.tə]. The notation writes e, following Wiktionary/LIV, because coloring is predictable. In late PIE the colored vowel was what was pronounced: Ringe (§2.2.4 p. 14) gives *[xáwis] and says that next to h₂, *e was pronounced [a]. Beekes (§11.8 p. 147) explains the o-coloring by the rounding of h₃. This is the single largest surface effect in the converter. In the corpus, about 13,000 h₂ stand against about 650 written a, so most [a] in the output comes from coloring. Preset `uncolored` turns it off.
+**By default the converter colors a short e next to h₂ to [a] and next to h₃ to [o]**: h₂éǵeti [χá.ɟe.ti], bʰéh₂ti [bʱáχ.ti], h₃ésth₁ [ɣʷós.tə]. The notation writes e, following Wiktionary/LIV, because coloring is predictable. In late PIE the colored vowel was what was pronounced: Ringe (§2.2.4 p. 14) gives *[xáwis] and says that next to h₂, *e was pronounced [a]. Beekes (§11.8 p. 147) explains the o-coloring by the rounding of h₃. This is the single largest surface effect in the converter. In the corpus, about 13,000 h₂ stand against about 650 written short a (plus about 660 ā), so most [a] in the output comes from coloring. Preset `uncolored` turns it off.
 
 - Coloring is applied only to **short e**, directly next to the laryngeal (before or after it). If e stands between h₂ and h₃, the preceding laryngeal decides.
 - Long ē is not colored (Eichner's law), and o is not changed.
@@ -94,7 +94,7 @@ The notation has three series: ḱ ǵ ǵʰ, k g gʰ and kʷ gʷ gʷʰ. Three ser
 
 ### 3.3 The glottalic alternative (documented, not implemented)
 
-Under the glottalic theory (Gamkrelidze–Ivanov, Hopper), the traditional plain voiced stops *b d g were ejectives or glottalized, and the voiced aspirates were plain voiced. Beekes (§11.3.6 pp. 128–129) accepts a version of it (p : 'p : p) and cites Lachmann's and Winter's laws. Byrd (§3.1) rejects it, and Fortson (§3.10–3.11) and Ringe (p. 8) find it rejected or unproven. Clackson (§2.3) calls the debate largely a non-argument and suggests that *d may have been "stiff" or creaky-voiced. `docs/notation.md` excludes glottalic notation, so the converter has no glottalic preset.
+Under the glottalic theory (Gamkrelidze–Ivanov, Hopper), the traditional plain voiced stops *b d g were ejectives or glottalized, and the voiced aspirates were plain voiced. Beekes (§11.3.6 pp. 128–129) accepts a version of it, in which the traditional voiced stops were pre-glottalized, and cites Lachmann's and Winter's laws. He still writes b d g bʰ for convenience. Byrd (§3.1) rejects it, and Fortson (§3.10–3.11) and Ringe (p. 8) find it rejected or unproven. Clackson (§2.3) calls the debate largely a non-argument and suggests that *d may have been "stiff" or creaky-voiced. `docs/notation.md` excludes glottalic notation, so the converter has no glottalic preset.
 
 ## 4. Fricatives and resonants
 
