@@ -2,18 +2,14 @@
  "schema_version": 1,
  "batch": "t017",
  "sha256": {
-  "records": "5f0d3e32af28d48561983309f7f10f2e728c6800355aeb0f8e8dd6c35adaac95",
-  "plans": "bb915310f09db6d79dc8dcb02792160fd34da0a873f314df0bbc5b259668909d",
-  "gate_report": "389ce522e23d02f16e8a80b93fabe1921e90746e2643ebdfdbbfc3d3f8e4757b"
+  "records": "5405777199596b18d2f1f335a127367a499a689a91a19daae2908785739b62f3",
+  "plans": "9a65afa3e929b97ea74742e80cf2429fd87ab65ae636539bd303dd328935165f",
+  "gate_report": "107292f9e53d2bb3132605db8192164bf5ab7173523f05cf19ad431723ab4567"
  },
  "review": {
   "required": true,
-  "status": "approved",
-  "evidence": [
-   "data/generation/batches/t017.json",
-   "docs/audits/tier3-t017-review.md",
-   "docs/STATUS.md:111-112"
-  ],
-  "rationale": "Individual review documents completed assessment and correctable causes; consolidated 2026-10-24 account records validity fixes and regeneration of the 25 historical batches, distinguishing new unreviewed t022. Migrated historical release on that combined evidence; not a claim of a fresh post-fix scholarly review."
+  "status": "pending",
+  "evidence": [],
+  "rationale": "Awaiting review."
  }
 }
