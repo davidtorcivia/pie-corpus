@@ -109,13 +109,27 @@ The order is: a Wiktionary table if the entry has one; otherwise a shape rule on
 | pk-iu-stem | 34 | 27 | 89.3% (2026-10-28: an o-grade root is acrostatic, Fortson §6.21, except before RC, §6.27; was 84.7%) |
 | n-stem-ak | 10 | 7 | 85.3% (2026-10-28: a root-final liquid or nasal is consonantal before -n̥; was 82.6%) |
 | thematic-neuter / er-stem | | | 79–85% |
-| n-stem-hk / devi / hk-iu-stem | | | 45–71% (not usable) |
+| devi | 4 | 3 | 86.8% (2026-10-29: an accented o-grade or lengthened-grade root keeps the root accent throughout (Ved. pátnī, gen. pátnyāḥ, rā́jñī, rā́jñyāḥ; fixed accent as in Fortson §6.21) and the grade the tables write (pótn̥yeh₂-; Vedic cannot tell *o from *e); was 60.5%. The e-grade branch alone scores 28/38: néptih₂'s table keeps *nept-*. An unaccented headword gets no spec; síh₂ 'she' is a pronoun) |
+| n-stem-hk | 2 | 1 | 76.3% (2026-10-29: locative in accented *-én(i)*, Fortson §6.11; was 71.0%; sh₂imṓ's weak stem sh₂in̥ is lexical) — not usable |
+| hk-iu-stem | 3 scored | 1 | 57.9% (2026-10-29: the tables of Hrugʰís and bʰeh₂ǵʰús are written on root-accented headwords and are skipped, as for eh₂; was 45.3%; suHnús, suHyús have an o-grade weak stem, Beekes 2011's *-ou-s against the rule's *-ew-s) — not usable |
 
 **Usability policy:** Tier 3 may use only a table spec, or a shape rule with ≥ 85% backtest agreement (`usable` in `data/morph/inflection_specs.jsonl`).
 
 **eh₂ gate (2026-10-28, engine-queue-wave1).** The eh₂ rule takes the headword as the stem. 4 of its 19 tables are written on another spelling of their own headword: unaccented *ǵʰorneh₂* under *ǵʰórneh₂*, *h₂yuh₁n̥téh₂* under *h₂yuHn̥téh₂*, *tń̥neh₂* under *tn̥néh₂*, and *h₃migʰleh₂*. Each scored 0/19, and together they were the whole gap from 100% to 78.9%. The backtest now skips them, as it already did for thematic tables. This makes 391 eh₂ nouns usable (*h₁éḱweh₂* 'mare', *h₁orséh₂* 'tail', *wóbʰseh₂* 'wasp'), so the usable count went from 4,215 to 4,606.
 
 **Coverage:** 4,476 of 6,363 words and derivatives get a spec, and **3,453 are usable** (1,652 nouns, 1,649 verbs, 152 adjectives). These cover **821 of 885 roots** (691 of 730 verbal). The 1,798 unknowns are mostly bound stems (forms ending in a hyphen, which are not words) plus lemma shapes with no rule yet.
+
+## Accent from a Vedic or Greek reflex (2026-10-29)
+
+A headword without an accent is missing information (`data/morph/accent_unresolved.json`). `pie/accent_reflex.py` supplies it only from the lexeme's own accented reflex, where the correspondence is regular, and `scripts/accent_from_reflexes.py --write` records each as a form override naming the reflex (`accent_source`). The conditions:
+
+- **Language:** Ancient Greek, or Sanskrit with a written (Vedic) accent. Never a reconstruction (Proto-Hellenic, Proto-Indo-Iranian), a loan, an analogical form or a name.
+- **Shape class:** thematic nouns and adjectives (*-os/-om*: Gk *-ος/-ον*, Ved. *-a-*), eh₂-stems (Gk *-ᾱ/-η/-α*, Ved. *-ā*), and thematic presents from Vedic *-ati* only. Greek finite verbs are recessive and are never used.
+- **Syllables:** the reflex has as many syllables as the PIE form, and the accented syllable is the same one counted from the end. Prothesis or a compound changes the count, so the form is skipped.
+- **Greek limits:** in a word of three or more syllables, an antepenult accent is the recessive position (privative and other compounds are recessive by rule: ἄσπετος, βλάσφημος), and a penult accent before a long final may come from the law of limitation. Neither is used; final accents, penults before a short final, and disyllables are.
+- **Agreement:** every usable reflex must give the same position. Greek and Vedic disagreeing gives nothing.
+
+Result: 69 lexemes (e.g. *lóǵos* < λόγος, *kerpós* < καρπός, *bʰowdʰós* < Ved. *bodhá-*, *wértenom* < Ved. *vártana-*). Accents from a handbook are separate, cited overrides (*bʰeh₂ǵós*, M&A 2006). Not covered: athematic stems (the reflex accent does not map onto a strong/weak pair without a paradigm), table specs with unaccented stems, and lexemes with no Greek or Vedic reflex (the large majority of the 795).
 
 ## Verification against Fortson and Ringe (2026-10-23)
 

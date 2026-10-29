@@ -265,6 +265,15 @@ class Lexicon:
             for x in p.read_text("utf-8").splitlines():
                 d = json.loads(x)
                 derived[d["id"]] = d["gloss"]
+        # reflex-confirmed glosses (pie.glosses.confirm; docs/lexicon.md): a lexeme without a dictionary gloss
+        # whose own reflexes in >= 2 branches agree gets that gloss, tagged meaning_source "reflex-confirmed"
+        p = ROOT / "data/lexicon/confirmed_glosses.jsonl"
+        if p.exists():
+            for x in p.read_text("utf-8").splitlines():
+                d = json.loads(x)
+                e = lex.get(d["id"])
+                if e is not None and not e["meaning"]:
+                    lex[d["id"]] = {**e, "meaning": [d["gloss"]], "meaning_source": "reflex-confirmed"}
         return cls(lex, specs, closed, derived, blocked)
 
     def accent_status(self, lex_id: str) -> str:

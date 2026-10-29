@@ -47,6 +47,7 @@ Notes on particular cases:
 | `pie-lex-pleth2us` | pléth₂us | supported | m_strong pléth₂u | root-accented first Wiktionary table of a u-adjective (convention i-u-stems #1) |
 | `pie-lex-h1lenghus` | h₁léngʰus | legacy | m_strong h₁léngʰu, f_strong h₁ln̥gʰéwih₂, f_weak h₁ln̥gʰuyéh₂ | mixed: the root accent is a convention alternative, but the same spec mixes gʰ/gʷʰ (i-u-stems #12) |
 | `pie-lex-h2ekjmox` | h₂éḱmō | legacy | weak h₂ḱn̥ | Wiktionary weak h₂ḱn̥- (Asno's law) vs h₂ḱmn-: an open question (INTEGRATION.md 'not applied') |
+| `pie-lex-bheh2gjos` | bʰeh₂ǵós | legacy | strong bʰeh₂ǵo, gender m | the Wiktionary table stem has no accent (missing information, not an error); M&A 2006 print *bʰeh₂ǵós*, Gk φηγός f. (vocab push) |
 | `pie-lex-h2yuHnteh2` | h₂yuHn̥téh₂ | legacy | strong h₂yuh₁n̥téh₂ | table h₂yuh₁n̥téh₂ (specific h₁) vs the lemma's H; the project follows the lemma (feminine.md D8) |
 | `pie-lex-h3rexgjs` | h₃rḗǵs | legacy | weak h₃réǵ, accent_class acrostatic, loc_sg [] | acrostatic h₃rḗǵs ~ h₃réǵ-; the project follows lengthened grade throughout (t003 review, s-root-heteroclite F7) |
 | `pie-lex-sexm` | sḗm | legacy | f_strong sih₂, f_weak None | feminine 'one' sih₂ without a weak stem; Fortson, Beekes, Ringe sm-ih₂ (feminine.md D11) |
