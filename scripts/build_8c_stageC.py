@@ -299,8 +299,8 @@ def load_celtic(root: Path, lex: list, max_date=None, log=print) -> tuple[dict, 
         ws = (cm.welsh_words if welsh else cm.irish_words)(d["text"])
         for i, (w, lem) in enumerate(zip(ws, cm.lemmatize_words(lz, ws))):
             content = cm.content_of(lm, lem, w, lz)
-            if content and i > 0 and w[:1].isupper():
-                lem = _name_lemma(lem)
+            if content and i > 0 and w[:1].isupper() and lem not in cm.CQ2_DEITY_LEMMAS:
+                lem = _name_lemma(lem)      # cq2: Dia 'God' keeps its lemma (theonyms keep their roots)
             toks[c].append(_tok(c, lem, w, locus, uid, book, content, lic))
     notes["celt_research_tag_mismatch"] = research_mismatch
     notes["gloss_units_joined_to_tagged_tokens"] = len(seen_gloss)
@@ -415,15 +415,18 @@ def load_bsl(root: Path, lex: list, include_ccmh: bool = False, log=print) -> tu
     for c in ("vuk", "byliny", "dainos") + (("ccmh",) if include_ccmh else ()):
         lz, lm = bm.lemmatizer(c, maps, ocs), lms[c]
         toks, texts = [], {}
-        for locus, u, text in bm.UNITS[c](root):
+        rows = list(bm.UNITS[c](root))
+        lowercase = bm.lowercase_surfaces(c, rows)      # cq2: sentence-initial capitals are not names
+        for locus, u, text in rows:
             lic = SB.CORPORA[c][2] or bm.SOURCES[c].get(u["source"], "unchecked")
             book = u.get("song") or u.get("page_file") or u.get("codex") or u["source"]
             ws = bm.corpus_words(c, text)
             texts[u["line"]] = " ".join(ws) if c == "ccmh" else text.strip()
+            names = bm.name_flags(c, text, ws, lowercase)
             for i, w in enumerate(ws):
                 lem = lz(w)
                 content = lm.is_content(lem) and not (lem.startswith("?") and len(lem) < 3)
-                if content and bm.is_name(c, w, i):
+                if content and names[i]:
                     lem = _name_lemma(lem)
                 toks.append(_tok(c, lem, w, locus, u["line"], book, content, lic))
         out[c] = _units(c, toks, bm.read_table(c, root), text_of=texts)

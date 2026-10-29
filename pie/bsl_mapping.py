@@ -1748,6 +1748,41 @@ def is_name(corpus: str, surface: str, position: int) -> bool:
     return corpus != "ccmh" and position > 0 and surface[:1].isupper()
 
 
+# Corpus-quality batch 2 (docs/research/8c-corpus-quality-batch2.md): is_name sees only the line position,
+# so a capitalised word that begins a sentence inside a line (after . ! ? … : or an opening quote or dash:
+# "… князь. Говоритъ", "— Сесуте") was taken as a name and lost its mapping. Such a word is a name only
+# if its lower-case form never occurs in the corpus (Иванъ, Дюкъ, Чурилушки stay names; Говоритъ, Больше,
+# На, Въ do not). Words that begin their line are not names, as before.
+_SENTENCE_GAP = re.compile(r"[.!?…:«„“\"—]")
+
+
+def word_gaps(text: str, ws: list[str]) -> list[str]:
+    """The text between each word of corpus_words(text) and the previous one ('' when a word cannot be
+    found verbatim, e.g. a CCMH transliteration)."""
+    out, pos = [], 0
+    for w in ws:
+        j = text.find(w, pos)
+        if j < 0:
+            out.append("")
+            continue
+        out.append(text[pos:j])
+        pos = j + len(w)
+    return out
+
+
+def name_flags(corpus: str, text: str, ws: list[str], lowercase) -> list[bool]:
+    """is_name for every word of one unit, with the sentence-initial exception (lowercase: the set of
+    lower-case surfaces attested anywhere in the corpus)."""
+    gaps = word_gaps(text, ws)
+    return [is_name(corpus, w, i) and not (_SENTENCE_GAP.search(g) and w.lower() in lowercase)
+            for i, (w, g) in enumerate(zip(ws, gaps))]
+
+
+def lowercase_surfaces(corpus: str, units) -> frozenset:
+    """Every word form of the corpus's units that begins with a lower-case letter."""
+    return frozenset(w for _, _, text in units for w in corpus_words(corpus, text) if w[:1].islower())
+
+
 UNITS = {"vuk": vuk_units, "byliny": byliny_units, "dainos": dainos_units, "ccmh": ccmh_units}
 
 

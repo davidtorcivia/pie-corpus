@@ -1886,6 +1886,43 @@ def _cq1_irish_rule(words: list[str], normalized: list[str], i: int, lem: str) -
     return lem
 
 
+# ---------------------------------------------------------------- Corpus-quality batch 2 (cq2)
+# Evidence: data/research/8c/corpus-quality/error-verdicts-cq2.jsonl; docs/research/8c-corpus-quality-batch2.md.
+#  - Dia 'God' (lead decision: content, *deywós; theonyms keep their roots, docs/research/8c-theonym-narrowing.md).
+#    A medial capital Dia / Día / Dhia / Dhía (do Dia, ag Dia, le Dia, Dhia) is día@god, except before a
+#    weekday or brátha (día@day, as cq1) and before a nasalised word (dia n- / dia m-: the conjunction or
+#    preposition + relative, Dia mbetis, Dia n-dernta), where the noun is kept only before an attribute
+#    (Dia m-beo, Dia ṅdil, Dia n-Israhél). The loader's medial-capital name marker skips CQ2_DEITY_LEMMAS.
+#  - dos: the lemmatizer unites gus 'vigour' (*ǵéwstus) with ga dos (a form-of page of gus) for every dos.
+#    In CELT dos is the noun dos 'bush, tree; protector' (eDIL dos 1; dos dítin 'sheltering bush') or the
+#    preverb + infixed pronoun do-s- before a verb; never gus. dos -> dos@bush (unmapped), do before a verb.
+#  - fichi: the lemmatizer sends fichi to fichid 'fights' (*wiketi); in CELT fichi is the numeral fiche
+#    'twenty' (fichi bó fichi each, Fichi bliadan; 107 of 107 read), non-content like fiche / fichet.
+CQ2_DEITY_LEMMAS = frozenset({"día@god"})
+_CQ2_DIA_CAPITALS = frozenset({"Dia", "Día", "Dhia", "Dhía", "Dïa"})
+_CQ2_NASAL = re.compile(r"^(?:n-|m-|mb|nd|ng|bhf|dt|gc|nn|ṅ)")
+_CQ2_DIA_NASAL_GOD = frozenset("""m-beo m-béo mbeo mbeö m-bith-beo ndil ṅdil ndilgudach ndilgedach n-amra
+n-israhél n-israel ṅdron""".split())
+_CQ2_DOS_VERB_NEXT = frozenset("""beir rala fuc farluicset ranaic narraid fil gni gní ghni cuiretar cuiretbar n-icfed
+roine fanic her marb ronam b-aiter m-beniinn n-eicce n-uc fiuscad ghabh leicim-se comart""".split())
+
+
+def _cq2_irish_rule(words: list[str], normalized: list[str], i: int, lem: str) -> str:
+    w, n = words[i], normalized[i]
+    nxt = normalized[i + 1] if i + 1 < len(words) else ""
+    if i and w in _CQ2_DIA_CAPITALS and lem in ("día|dia", "dia", "día", "dia|día"):
+        if nxt in _DIA_DAY_NEXT:
+            return "día@day"
+        if _CQ2_NASAL.match(nxt) and nxt not in _CQ2_DIA_NASAL_GOD:
+            return lem
+        return "día@god"
+    if n == "dos" and lem == "gus|dos" and not (i and w[:1].isupper()):     # medial Dos: the name rule (Dub Dá Dos)
+        return "do" if nxt in _CQ2_DOS_VERB_NEXT else "dos@bush"
+    if n == "fichi" and lem == "fichid":
+        return "fiche"
+    return lem
+
+
 def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
     """Lemmas for a word sequence: `lemz(w)` for each word, except that a form in CONTEXT_FORMS takes the
     lemma its preceding word selects (tig after isin / i / ina / dia … → tech 'house'). Stage C should use
@@ -1901,6 +1938,7 @@ def lemmatize_words(lemz: "CelticLemmatizer", words: list[str]) -> list[str]:
                 break
         if normalized:
             lem = _cq1_irish_rule(words, normalized, i, lem)
+            lem = _cq2_irish_rule(words, normalized, i, lem)
             for previous, following, target, capitalized in IR_REVIEWED_CONTEXT.get(normalized[i], ()):
                 if capitalized and not any(c.isupper() for c in w):
                     continue

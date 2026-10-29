@@ -52,7 +52,27 @@ def build(path, cache_dir):
     classes, thin = stage.prepare(units, by_id, meta, cache_dir, log)
     classifier = stage.Classifier(ROOT, meta)
     from pie.formula_search import group_map, load_jsonl
+    from pie import compound_members as cmem
+    from pie.material_units import same_work
     groups = group_map(load_jsonl(ROOT / "data/lexicon/lexicon.jsonl"))
+    # corpus-quality batch 2: compound members (pie/compound_members.py), resolved against the loaders'
+    # own lemma ids of each language; DCS verse citations (the sentence index in the locus is no verse)
+    pairs = {}
+    for corpus, rows in units.items():
+        lang = cmem.CORPUS_LANG.get(corpus)
+        if lang:
+            pairs.setdefault(lang, []).extend((l, ids) for unit in rows for _, l, ids in unit.words)
+    lemma_ids = {lang: cmem.lemma_id_table(lang, ps) for lang, ps in pairs.items()}
+    cites = dcs_citations(stage.C.DCS_EPIC)
+
+    def word(corpus, f, l, ids):
+        w = dict(form=f, lemma=l, root_ids=list(ids), root_groups=sorted({groups.get(r, r) for r in ids}))
+        lang = cmem.CORPUS_LANG.get(corpus)
+        m = sorted(cmem.members(corpus, l, lemma_ids[lang]) - set(ids)) if lang in lemma_ids else []
+        if m:
+            w["member_ids"] = m
+            w["member_groups"] = sorted({groups.get(r, r) for r in m} - set(w["root_groups"]))
+        return w
 
     def records():
         for corpus, rows in units.items():
@@ -60,11 +80,17 @@ def build(path, cache_dir):
                 metadata = meta.get(unit.key.split("~w")[0], {}) if corpus in stage.C.CELTIC else {}
                 greek = classifier.glaux.get(str(unit.book), {}) if corpus in ("grc", "grc-late") else {}
                 mask = classes[corpus][ordinal]
+                extra = {}
+                cite = cites.get((corpus, unit.key.split("~w")[0]))
+                if cite:
+                    extra["cite"], extra["cite_status"] = cite
+                work = same_work(corpus, unit.key)
+                if work:
+                    extra["work"] = work
                 yield dict(corpus=corpus, branch=stage.SB.CORPORA[corpus][0],
                            key=unit.key, locus=unit.locus, book=str(unit.book), ordinal=ordinal,
-                           emendations=unit.emendations,
-                           text=unit.text, words=[dict(form=f, lemma=l, root_ids=list(ids),
-                               root_groups=sorted({groups.get(r, r) for r in ids})) for f, l, ids in unit.words],
+                           emendations=unit.emendations, **extra,
+                           text=unit.text, words=[word(corpus, f, l, ids) for f, l, ids in unit.words],
                            root_ids=sorted({r for _, _, ids in unit.words for r in ids}),
                            root_groups=sorted(unit.groups), licence_tag=unit.tag,
                            licence=unit.licence, research_only=unit.research_only,
@@ -74,6 +100,19 @@ def build(path, cache_dir):
                            class_mask=mask, main_class_mask=classifier(corpus, unit),
                            layer_status="included" if mask else "excluded", thin_corpus=corpus in thin)
     return build_index(path, records())
+
+
+def dcs_citations(epic_texts) -> dict:
+    """(corpus, DCS unit key 'chapter|sent_id') -> (verse citation, status) for av and sa-ep: the token-level
+    citation of pie.formula_search_multi.dcs_assign_verses ('AVŚ 3.16.3cd'; status counter | bracketed |
+    inferred). A DCS locus 'AVŚ, 3, 16.s6' is a sentence index, not a stanza (Tier 2 round-3 drafter)."""
+    from pie import formula_search_multi as fm
+    out = {}
+    for corpus, texts in (("av", fm.DCS_VEDIC), ("sa-ep", epic_texts)):
+        for t in fm.load_dcs(texts=texts, corpus=corpus, root=ROOT):
+            if t.units.get("cite") and t.units.get("verse_status") != "unmapped":
+                out.setdefault((corpus, t.units["sentence"]), (t.units["cite"], t.units["verse_status"]))
+    return out
 
 
 def reading_flags(record):
@@ -117,7 +156,8 @@ def main(argv=None):
                     if args.json:
                         print(json.dumps(hit, ensure_ascii=False))
                     else:
-                        print(f"{hit['corpus']} | {hit['locus']} | {hit['layer_status']} | {hit['licence_tag']}: {hit['text']}{reading_flags(hit)}")
+                        cite = f" [{hit['cite']}]" if hit.get("cite") else ""
+                        print(f"{hit['corpus']} | {hit['locus']}{cite} | {hit['layer_status']} | {hit['licence_tag']}: {hit['text']}{reading_flags(hit)}")
                         for neighbour in hit.get("context", []):
                             print(f"  {neighbour['locus']}: {neighbour['text']}{reading_flags(neighbour)}")
         finally:

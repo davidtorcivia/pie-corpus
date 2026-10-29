@@ -1,0 +1,175 @@
+{
+ "note": "Corpus-quality batch 2 (Tier 2 round-3 drafter's mapping errors, docs/audits/tier2-round3-drafts.md); verdicts in data/research/8c/corpus-quality/error-verdicts-cq2.jsonl. The z- prefix makes these rows read last.",
+ "lemma": [
+  {
+   "corpus": "hom",
+   "lemma": "νεφέλη",
+   "lex_id": [
+    "pie-lex-nebhelos"
+   ],
+   "note": "cq2 tier2-r3: νεφέλη 'cloud' continues *nebʰelos (Proto-Hellenic *nepʰélā, the lexicon's own reflex; Beekes EDG s.v. νεφέλη, cf. Lat. nebula), not *nébʰos (= νέφος). docs/audits/tier2-round3-drafts.md, epic-diction-011."
+  },
+  {
+   "corpus": "hom",
+   "lemma": "νέφος",
+   "lex_id": [
+    "pie-lex-nebhos"
+   ],
+   "note": "cq2 tier2-r3: νέφος = Ved. nábhas-, *nébʰos (control row kept with the νεφέλη correction)."
+  },
+  {
+   "corpus": "hom",
+   "lemma": "ποίκιλμα",
+   "lex_id": [
+    "pie-lex-poykjos"
+   ],
+   "note": "cq2 tier2-r3: ποίκιλμα 'embroidery' is a -μα noun from ποικίλλω < ποικίλος (*poyḱ-ilo-, lexicon reflex of *poyḱós; Beekes EDG s.v. ποικίλος): another formation, root level. Was unmapped (star+adorn, Eur. Hel. 1096).",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "hom",
+   "lemma": "εἰμί",
+   "lex_id": [
+    "pie-lex-h1esti",
+    "pie-lex-h1esmi"
+   ],
+   "note": "cq2 tier2-r3: εἰμί is the verb 'be' (*h₁ésti; the lexicon's *h₁ésmi is its 1sg form entry, target pie-lex-h1esti): the lemma reached *h₁ésti only at root level (death-otherworld-012, ἔμμεναι / ἔσσεται)."
+  },
+  {
+   "corpus": "grp",
+   "lemma": "νεφέλη",
+   "lex_id": [
+    "pie-lex-nebhelos"
+   ],
+   "note": "cq2 tier2-r3: νεφέλη 'cloud' continues *nebʰelos (Proto-Hellenic *nepʰélā, the lexicon's own reflex; Beekes EDG s.v. νεφέλη, cf. Lat. nebula), not *nébʰos (= νέφος). docs/audits/tier2-round3-drafts.md, epic-diction-011."
+  },
+  {
+   "corpus": "grp",
+   "lemma": "νέφος",
+   "lex_id": [
+    "pie-lex-nebhos"
+   ],
+   "note": "cq2 tier2-r3: νέφος = Ved. nábhas-, *nébʰos (control row kept with the νεφέλη correction)."
+  },
+  {
+   "corpus": "grp",
+   "lemma": "ποίκιλμα",
+   "lex_id": [
+    "pie-lex-poykjos"
+   ],
+   "note": "cq2 tier2-r3: ποίκιλμα 'embroidery' is a -μα noun from ποικίλλω < ποικίλος (*poyḱ-ilo-, lexicon reflex of *poyḱós; Beekes EDG s.v. ποικίλος): another formation, root level. Was unmapped (star+adorn, Eur. Hel. 1096).",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "grp",
+   "lemma": "εἰμί",
+   "lex_id": [
+    "pie-lex-h1esti",
+    "pie-lex-h1esmi"
+   ],
+   "note": "cq2 tier2-r3: εἰμί is the verb 'be' (*h₁ésti; the lexicon's *h₁ésmi is its 1sg form entry, target pie-lex-h1esti): the lemma reached *h₁ésti only at root level (death-otherworld-012, ἔμμεναι / ἔσσεται)."
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√dhr̥ṣ-",
+   "lex_id": [
+    "pie-lex-dhers",
+    "pie-root-dhers-be_bold"
+   ],
+   "note": "cq2 tier2-r3: the root √dhr̥ṣ- 'dare' (participle dhr̥ṣánt-, thematic) is not the nasal present *dʰr̥snéwti (dhr̥ṣṇóti), which the lemma reached as 'exact' (epic-diction-009); EWAia I 796, LIV² 148."
+  },
+  {
+   "corpus": "av",
+   "lemma": "dhṛṣ",
+   "lex_id": [
+    "pie-lex-dhers",
+    "pie-root-dhers-be_bold"
+   ],
+   "note": "cq2 tier2-r3: the root √dhr̥ṣ- 'dare' (participle dhr̥ṣánt-, thematic) is not the nasal present *dʰr̥snéwti (dhr̥ṣṇóti), which the lemma reached as 'exact' (epic-diction-009); EWAia I 796, LIV² 148."
+  },
+  {
+   "corpus": "sa-ep",
+   "lemma": "dhṛṣ",
+   "lex_id": [
+    "pie-lex-dhers",
+    "pie-root-dhers-be_bold"
+   ],
+   "note": "cq2 tier2-r3: the root √dhr̥ṣ- 'dare' (participle dhr̥ṣánt-, thematic) is not the nasal present *dʰr̥snéwti (dhr̥ṣṇóti), which the lemma reached as 'exact' (epic-diction-009); EWAia I 796, LIV² 148."
+  },
+  {
+   "corpus": "rv",
+   "lemma": "√vas- 2",
+   "lex_id": [
+    "pie-lex-westor",
+    "pie-root-wes-dress"
+   ],
+   "note": "cq2 tier2-r3: √vas- 2 'wear, be clothed' (váste, vásāna-) is the middle verb *wéstor 'be wearing' (LIV² 694 *u̯es- 'anhaben'; EWAia II 538); it reached *wéstor only at root level (cloud+clothe, RV 9.83.5b nábho vásānaḥ)."
+  },
+  {
+   "corpus": "rv",
+   "lemma": "ūrdhvá-",
+   "lex_id": [
+    "pie-lex-h3rdhwos"
+   ],
+   "note": "cq2 tier2-r3: ūrdhvá- 'upright' = ὀρθός < *h₃r̥dʰwós (EWAia I 240; Beekes EDG s.v. ὀρθός); it was mapped to *h₃erdʰ- (filed under *h₃er- 'move') and the root only (healing-charms-007, AVŚ 4.12.6)."
+  },
+  {
+   "corpus": "av",
+   "lemma": "ūrdhva",
+   "lex_id": [
+    "pie-lex-h3rdhwos"
+   ],
+   "note": "cq2 tier2-r3: ūrdhvá- 'upright' = ὀρθός < *h₃r̥dʰwós (EWAia I 240; Beekes EDG s.v. ὀρθός); it was mapped to *h₃erdʰ- (filed under *h₃er- 'move') and the root only (healing-charms-007, AVŚ 4.12.6)."
+  },
+  {
+   "corpus": "sa-ep",
+   "lemma": "ūrdhva",
+   "lex_id": [
+    "pie-lex-h3rdhwos"
+   ],
+   "note": "cq2 tier2-r3: ūrdhvá- 'upright' = ὀρθός < *h₃r̥dʰwós (EWAia I 240; Beekes EDG s.v. ὀρθός); it was mapped to *h₃erdʰ- (filed under *h₃er- 'move') and the root only (healing-charms-007, AVŚ 4.12.6)."
+  },
+  {
+   "corpus": "rv",
+   "lemma": "mártya-",
+   "lex_id": [
+    "kaikki:mortyos",
+    "pie-lex-mrtos"
+   ],
+   "note": "cq2 tier2-r3: mártya- 'mortal' < *mórtyo- / *mr̥tyó- (EWAia II 318 s.v. MAR): the Wiktionary page kept as its exact id, and *mr̥tós as another formation of the same root (root level), so that the *mer- group finds it (god+mortal).",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "av",
+   "lemma": "martya",
+   "lex_id": [
+    "kaikki:mortyos",
+    "pie-lex-mrtos"
+   ],
+   "note": "cq2 tier2-r3: mártya- 'mortal' < *mórtyo- / *mr̥tyó- (EWAia II 318 s.v. MAR): the Wiktionary page kept as its exact id, and *mr̥tós as another formation of the same root (root level), so that the *mer- group finds it (god+mortal).",
+   "formation": "derivative"
+  },
+  {
+   "corpus": "sa-ep",
+   "lemma": "martya",
+   "lex_id": [
+    "kaikki:mortyos",
+    "pie-lex-mrtos"
+   ],
+   "note": "cq2 tier2-r3: mártya- 'mortal' < *mórtyo- / *mr̥tyó- (EWAia II 318 s.v. MAR): the Wiktionary page kept as its exact id, and *mr̥tós as another formation of the same root (root level), so that the *mer- group finds it (god+mortal).",
+   "formation": "derivative"
+  }
+ ],
+ "key": [
+  {
+   "lang": "ae",
+   "key": "𐬨𐬀𐬴𐬌𐬌𐬀",
+   "lex_id": [
+    "kaikki:mortyos",
+    "pie-lex-mrtos"
+   ],
+   "formation": "derivative",
+   "note": "cq2 tier2-r3: Avestan maṣ̌iia- 'mortal, man' = Ved. mártya- (*mr̥tyo-; Bartholomae 1167, EWAia II 318): the dictionary route went through Proto-Indo-Iranian *mr̥tás and counted it exact for *mr̥tós (epic-diction-013); root level now."
+  }
+ ]
+}

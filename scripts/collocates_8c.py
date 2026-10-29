@@ -13,7 +13,8 @@ ap.add_argument('--top', type=int, default=40); ap.add_argument('--show', type=i
 a = ap.parse_args()
 T = set(a.target.split(',')); P = set(a.pair.split(',')) if a.pair else None
 db = sqlite3.connect(f'file:{a.db}?mode=ro', uri=True)
-def keys(w): return set(w['root_ids']) | set(w['root_groups'])
+# compound members (pie/compound_members.py, index field member_ids / member_groups) count as keys
+def keys(w): return set(w['root_ids']) | set(w['root_groups']) | set(w.get('member_ids', ())) | set(w.get('member_groups', ()))
 tids = [r[0] for r in db.execute(f"select id from terms where kind='root' and value in ({','.join('?'*len(T))})", tuple(T))]
 units = db.execute(f"select distinct u.corpus,u.branch,u.payload from units u join postings p on p.unit=u.id where p.term in ({','.join('?'*len(tids))})", tids)
 H = collections.Counter(); O = collections.defaultdict(collections.Counter)

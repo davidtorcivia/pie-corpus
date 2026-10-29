@@ -22,8 +22,8 @@ def reviewed_ranges():
         extra = RULES.with_name(name)
         if extra.exists():
             rows += json.loads(extra.read_text(encoding='utf-8'))
-    # Corpus-quality batch 1: data/research/8c/corpus-quality/material-unit-rules-cq1-<area>.json
-    for extra in sorted((RULES.parents[1] / 'corpus-quality').glob('material-unit-rules-cq1-*.json')):
+    # Corpus-quality batches 1, 2: data/research/8c/corpus-quality/material-unit-rules-cq<N>-<area>.json
+    for extra in sorted((RULES.parents[1] / 'corpus-quality').glob('material-unit-rules-cq[0-9]-*.json')):
         rows += json.loads(extra.read_text(encoding='utf-8'))
     return rows
 
@@ -71,6 +71,27 @@ def reviewed_byliny_text(locus: str, text: str) -> str:
     if locus == 'sbornikotdelenijarusskogojazykaislovesno32:25499':
         return text.replace('«Кло ', '«Кто ', 1)
     return text
+
+
+SAME_WORK = ROOT / "data/research/8c/corpus-quality/same-work-cq2.json"
+
+
+@lru_cache(maxsize=1)
+def _same_work_rules():
+    if not SAME_WORK.exists():
+        return ()
+    return tuple((r["work"], frozenset(r["corpus"]), tuple(re.compile(k) for k in r["keys"]))
+                 for r in json.loads(SAME_WORK.read_text(encoding="utf-8")))
+
+
+def same_work(corpus: str, key: str) -> str | None:
+    """The reviewed work id of a unit whose text is another manuscript of a text also in the corpus
+    (data/research/8c/corpus-quality/same-work-cq2.json; corpus-quality batch 2), else None. Both copies
+    stay; a witness count should count one work once."""
+    for work, corpora, keys in _same_work_rules():
+        if corpus in corpora and any(k.search(key) for k in keys):
+            return work
+    return None
 
 
 def excluded_source(corpus: str, filename: str, start: int, end: int | None = None) -> bool:

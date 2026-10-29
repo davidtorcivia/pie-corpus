@@ -24,9 +24,10 @@ from functools import lru_cache
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-READINGS_GLOB = "data/research/formulas/cq1-readings-*.json"
+# batch 2 (cq2, docs/research/8c-corpus-quality-batch2.md) adds cq2-readings-<area>.json and pie/cq2_other.py
+READINGS_GLOB = "data/research/formulas/cq[0-9]-readings-*.json"
 GROUP_SPLITS = ROOT / "data/research/formulas/group-splits.json"
-AREA_MODULES = ("cq1_xcl", "cq1_other", "cq1_formulas")
+AREA_MODULES = ("cq1_xcl", "cq1_other", "cq1_formulas", "cq2_other")
 
 
 @lru_cache(maxsize=1)

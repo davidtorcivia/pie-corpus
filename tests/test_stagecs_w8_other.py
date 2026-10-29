@@ -17,6 +17,8 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_reviewed_context_preserves_surface_and_other_occurrences(key, new):
     c, loc, form = key
     t = fs.Token(c, 'old', form, loc, {}, True, 'noun')
+    # corpus-quality batch 2, lead decision: Armenian gan follows the cq1 rule (gam) everywhere
+    new = 'gam' if new == 'gam@present' else new
     assert t.lemma == new
     assert t.surface == form
     assert t.content == (not new.endswith(' (name)'))
@@ -38,6 +40,10 @@ def test_material_rules_are_exact_source_lines():
     for r in rows:
         assert r['start'] == r['end']
         assert excluded_source('byliny', Path(r['source']).name, r['start'])
+        # cq2 excludes all of Rybnikov vol. 2 from line 21980 (the editorial matter); the w8 lines there
+        # are no longer single-line exclusions
+        if Path(r['source']).name == 'pesnisobrannyepnrybnikovymch2narod72_djvu.txt' and r['start'] >= 21980:
+            continue
         assert not excluded_source('byliny', Path(r['source']).name, r['start'] - 1, r['end'])
 
 

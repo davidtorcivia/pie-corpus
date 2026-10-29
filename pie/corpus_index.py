@@ -58,6 +58,8 @@ def build_index(path: Path, records) -> int:
                 keys.add(("lemma", word["lemma"]))
                 keys.add(("form", word["form"]))
                 keys.update(("root", r) for r in word["root_ids"] + word["root_groups"])
+                # compound members (pie/compound_members.py) are posted as root terms too
+                keys.update(("root", r) for r in word.get("member_ids", []) + word.get("member_groups", []))
             ids = []
             for key in sorted(keys):
                 if key not in terms:
@@ -82,7 +84,8 @@ def roots_near(words, roots, distance):
     loader unit/window, never across neighbouring units.
     """
     choices = [[i for i, w in enumerate(words)
-                if root in w["root_ids"] or root in w["root_groups"]] for root in roots]
+                if root in w["root_ids"] or root in w["root_groups"]
+                or root in w.get("member_ids", ()) or root in w.get("member_groups", ())] for root in roots]
     if any(not c for c in choices):
         return False
     choices.sort(key=len)

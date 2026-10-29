@@ -40,7 +40,7 @@ GENERAL = [
     (['in', 'hoc', 'die'], 2, 'día', 'die@foreign'),
     (['in', 'die', 'Sancti', 'Martini'], 1, 'día', 'die@foreign'),
     (['Die', 'Söhne', 'des'], 0, 'día', 'die@foreign'),
-    (['ar', 'Día'], 1, 'día', 'día'),                              # medial capital: the name rule decides
+    (['ar', 'Día'], 1, 'día', 'día@god'),   # medial capital: cq2 Dia 'God' rule (was: the name rule decides)
     # gona: co + possessive, but the verbal noun after the article / possessive / do, or before nó
     (['ri', 'gona', 'ferann'], 1, 'goin|gonaid|guin', 'co'),
     (['bruth', 'na', 'gona'], 2, 'goin|gonaid|guin', 'goin|gonaid|guin'),
@@ -115,13 +115,15 @@ def test_reviewed_contexts_keep_homographs_elsewhere(words, index, baseline, tar
     form = words[index]
     z = lz(form, baseline)
     assert cm.lemmatize_words(z, words)[index] == target
-    assert cm.lemmatize_words(z, ['unrelated', form, 'unrelated'])[1] == baseline
+    # cq2: dos outside the verb contexts is the noun dos@bush (gus|dos had united it with gus 'vigour')
+    expected = 'dos@bush' if baseline == 'gus|dos' else baseline
+    assert cm.lemmatize_words(z, ['unrelated', form, 'unrelated'])[1] == expected
 
 
 def test_unrelated_homographs_keep_their_lemma():
     # foídis 'sends' (Foídis Medb cét fer), lín 'number', dos 'bush', mben elsewhere
     assert cm.lemmatize_words(lz('Foídis', 'foídid'), ['Foídis', 'Medb', 'cét', 'fer'])[0] == 'foídid'
-    assert cm.lemmatize_words(lz('dos', 'gus|dos'), ['in', 'dos', 'dídin'])[1] == 'gus|dos'
+    assert cm.lemmatize_words(lz('dos', 'gus|dos'), ['in', 'dos', 'dídin'])[1] == 'dos@bush'   # cq2 (was gus|dos)
     assert cm.lemmatize_words(lz('lin', 'lín'), ['in', 'lin', 'sin'])[1] == 'lín'
     assert cm.lemmatize_words(lz('rí-sin', 'rí'), ['in', 'rí-sin'])[1] == 'rí'
 
