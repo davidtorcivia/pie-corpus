@@ -34,7 +34,8 @@ A lexeme without a root_id belongs to no family and cannot be held out; it is co
 Hold-out (selection, deterministic):
   universe  every root family of the lexicon (Lexicon.load(): the root_ids of its entries)
   pool      universe − protected − families used anywhere in Tier 1 records (eval, excluded anyway),
-            Tier 3/3b records (admitted or not), non-eval Tier 2 records, Tier 2 and Tier 3 plans, and planner slices, so no record
+            Tier 3/3b records (admitted or not), Tier 3b coinages (data/lexicon/neologisms.jsonl),
+            non-eval Tier 2 records, Tier 2 and Tier 3 plans, and planner slices, so no record
             already trained (or planned under the old hold-out) touches a held family
   strata    (task-bearing: the family has an inflection or cognate task) × (branches with an
             inherited reflex: 0, 1-2, 3-4, 5+) × (root_type verbal / nominal), so the new set matches
@@ -292,6 +293,15 @@ def excluded(lx) -> dict[str, set[str]]:
                     elif lid.startswith("pie-root-"):
                         s.add(lid)
         out[name] = s
+    # Tier 3b coinages (data/lexicon/neologisms.jsonl): pie.neologism refuses a held root in a derivation
+    s = set()
+    for lid in re.findall(r'"(pie-(?:root|lex)-[^"]+)"', (ROOT / "data/lexicon/neologisms.jsonl").read_text("utf-8")):
+        e = lx.entries.get(lid)
+        if e and e.get("root_id"):
+            s.add(e["root_id"])
+        elif lid.startswith("pie-root-"):
+            s.add(lid)
+    out["neologisms"] = s
     return out
 
 

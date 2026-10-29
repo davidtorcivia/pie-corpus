@@ -9,9 +9,10 @@
   "tier2-train": 56,
   "tier3": 420,
   "plans": 429,
-  "slices": 548
+  "slices": 548,
+  "neologisms": 23
  },
- "pool": 500,
+ "pool": 499,
  "n": 147,
  "quota": {
   "no-tasks/branches:0/verbal": 58,
@@ -117,17 +118,17 @@
    "families": 147,
    "reflex_langs": {
     "median": 4,
-    "mean": 4.92,
+    "mean": 4.93,
     "bins": {
      "0": 69,
      "1-2": 1,
-     "3-5": 15,
-     "6-10": 34,
+     "3-5": 14,
+     "6-10": 35,
      "11+": 28
     }
    },
    "branches": {
-    "mean": 2.53,
+    "mean": 2.52,
     "bins": {
      "0": 69,
      "1": 2,
@@ -144,8 +145,8 @@
    "tasks": 197,
    "tasks_by_lexeme_family": {
     "verb": 115,
-    "noun": 36,
-    "root": 28,
+    "noun": 37,
+    "root": 27,
     "other": 12,
     "adj": 6
    }
@@ -286,11 +287,11 @@
   "pie-root-bhlewdh2-dissolve",
   "pie-root-bhrem-make_noise",
   "pie-root-bhremH-be_unsteady",
-  "pie-root-bhrewHg-make_use_of",
   "pie-root-dewh2-fit",
   "pie-root-deyh2-shine",
   "pie-root-dherh3-leap",
   "pie-root-dhewH-move_quickly_to",
+  "pie-root-dhlegh-owe",
   "pie-root-dhrebh-separate_out",
   "pie-root-dhreh2gh-irritate",
   "pie-root-dhrew-mislead",
