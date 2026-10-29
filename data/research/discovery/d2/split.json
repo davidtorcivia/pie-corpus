@@ -1,0 +1,1182 @@
+{
+ "hash_string": "sorted key ids joined by \"|\"; self items \"<id>|<id>\"",
+ "n_tune": 33,
+ "items": [
+  {
+   "key": "pie-lex-potis|pie-root-dem-build",
+   "pair": [
+    "pie-lex-potis",
+    "pie-root-dem-build"
+   ],
+   "self": false,
+   "formulas": [
+    "dems-potis",
+    "west_ch03_f22",
+    "west_ch06_f11"
+   ],
+   "sha256": "07a04d031ea7c37772ebdc4d0919d33ff0c2d24da8ff735c45224159595a3c10",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-potis",
+    "pie-root-dem-build"
+   ]
+  },
+  {
+   "key": "pie-root-gjerh2-grow_old|pie-root-mer-die",
+   "pair": [
+    "pie-root-gjerh2-grow_old",
+    "pie-root-mer-die"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch05_f15"
+   ],
+   "sha256": "08e776a9238187c1de275d1346a2104c3aae602712b0416f92cabf31aca65bd5",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-gjerh2-grow_old",
+    "pie-root-mer-die"
+   ]
+  },
+  {
+   "key": "pie-lex-megjh2s|pie-root-dyew-be_bright",
+   "pair": [
+    "pie-lex-megjh2s",
+    "pie-root-dyew-be_bright"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch04_f02"
+   ],
+   "sha256": "0bd2749ea90aa06d8d0d9a1683b16eb74af93c220a3018d02fa34dbb8d299589",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-megjh2s",
+    "pie-root-dyew-be_bright"
+   ]
+  },
+  {
+   "key": "pie-root-dyew-be_bright|pie-root-mer-die",
+   "pair": [
+    "pie-root-dyew-be_bright",
+    "pie-root-mer-die"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch03_f11",
+    "west_ch02_f64"
+   ],
+   "sha256": "15cf09770dad2aee76829c7cb40bff184faa1b169fb5201d9c564b53afeea531",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-dyew-be_bright",
+    "pie-root-mer-die"
+   ]
+  },
+  {
+   "key": "pie-lex-bhreh2texr|pie-lex-bhreh2texr",
+   "pair": [
+    "pie-lex-bhreh2texr",
+    "pie-lex-bhreh2texr"
+   ],
+   "self": true,
+   "formulas": [
+    "west_ch02_f96"
+   ],
+   "sha256": "18b5aa9762a3c6d978575ca70c47052809e6ce269eae9023e593626f1f1f6c15",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-bhreh2texr",
+    "pie-lex-bhreh2texr"
+   ]
+  },
+  {
+   "key": "pie-lex-kjlewos|pie-lex-megjh2s",
+   "pair": [
+    "pie-lex-kjlewos",
+    "pie-lex-megjh2s"
+   ],
+   "self": false,
+   "formulas": [
+    "great-fame",
+    "west_ch10_f05",
+    "west_ch02_f03"
+   ],
+   "sha256": "1dde7bcd073d75c2d524e78c2213dffbe39365cecef178e0beb0b2333c731316",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-megjh2s",
+    "pie-root-kjlew-hear"
+   ]
+  },
+  {
+   "key": "pie-lex-mon|pie-root-gjenh1-produce",
+   "pair": [
+    "pie-lex-mon",
+    "pie-root-gjenh1-produce"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch03_f08"
+   ],
+   "sha256": "208265b4d7a539e52a15b1af04cb431c01b853aeafc63914c4db756272177843",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-mon",
+    "pie-root-gjenh1-produce"
+   ]
+  },
+  {
+   "key": "pie-root-dyew-be_bright|pie-root-peh2-protect",
+   "pair": [
+    "pie-root-dyew-be_bright",
+    "pie-root-peh2-protect"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch04_f01"
+   ],
+   "sha256": "23aef57c5b9f00da1c996519f30742025b097eac033885aa3c1cecc3275730ed",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-dyew-be_bright",
+    "pie-root-peh2-protect"
+   ]
+  },
+  {
+   "key": "pie-lex-ish1ros|pie-lex-menos",
+   "pair": [
+    "pie-lex-ish1ros",
+    "pie-lex-menos"
+   ],
+   "self": false,
+   "formulas": [
+    "holy-strength-isira-manas",
+    "west_ch02_f38"
+   ],
+   "sha256": "26a4f93af21f02b23a0f050a3713a7b5cde2c2e827a1a2df645a97150c5ba966",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-ish1ros",
+    "pie-root-men-think"
+   ]
+  },
+  {
+   "key": "pie-lex-pekju|pie-lex-wiHros",
+   "pair": [
+    "pie-lex-pekju",
+    "pie-lex-wiHros"
+   ],
+   "self": false,
+   "formulas": [
+    "protect-men-livestock",
+    "protect-men-cattle-phrase",
+    "men-and-cattle",
+    "west_ch08_f18",
+    "west_ch02_f66"
+   ],
+   "sha256": "282b7cd4603f5457f955a7e8ac8657b3635dd6e9a64eadb531680930101ce19b",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-pekju",
+    "pie-lex-wiHros"
+   ]
+  },
+  {
+   "key": "pie-lex-HeHkjus|pie-lex-h1ekjwos",
+   "pair": [
+    "pie-lex-HeHkjus",
+    "pie-lex-h1ekjwos"
+   ],
+   "self": false,
+   "formulas": [
+    "swift-horses",
+    "west_ch12_f18"
+   ],
+   "sha256": "2db46f9c5eb3e022669bad97846577181efbffa425a33a4722b3cf1d920d0ffa",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-HeHkjus",
+    "pie-lex-h1ekjwos"
+   ]
+  },
+  {
+   "key": "pie-root-dhwer-door|pie-root-dyew-be_bright",
+   "pair": [
+    "pie-root-dhwer-door",
+    "pie-root-dyew-be_bright"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch05_f22",
+    "west_ch04_f06"
+   ],
+   "sha256": "2e57d663b153f9cf9df5274028b245148025a581323e8e144a1a784640fabe27",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-dhwer-door",
+    "pie-root-dyew-be_bright"
+   ]
+  },
+  {
+   "key": "pie-root-kjey-be_lying_down|pie-root-swep-sleep",
+   "pair": [
+    "pie-root-kjey-be_lying_down",
+    "pie-root-swep-sleep"
+   ],
+   "self": false,
+   "formulas": [
+    "slay-lie-sleep-nexus"
+   ],
+   "sha256": "33ef86bc15df7d6756bd1128fe1462f6a24d85826cfc17002ab40fd3c86a35d8",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-kjey-be_lying_down",
+    "pie-root-swep-sleep"
+   ]
+  },
+  {
+   "key": "pie-lex-HeHkjus|pie-root-peth2-fly",
+   "pair": [
+    "pie-lex-HeHkjus",
+    "pie-root-peth2-fly"
+   ],
+   "self": false,
+   "formulas": [
+    "swift-flying-eagle",
+    "west_ch02_f06"
+   ],
+   "sha256": "3ae5648984db495582cb5579621ba909794ed3d5df7788ad255dfabdcfae0bd9",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-HeHkjus",
+    "pie-root-peth2-fly"
+   ]
+  },
+  {
+   "key": "pie-lex-kjlewos|pie-root-dheh1-do",
+   "pair": [
+    "pie-lex-kjlewos",
+    "pie-root-dheh1-do"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch10_f14"
+   ],
+   "sha256": "3c30ee55a79d0b291b7b77ca35dce57679f7cd89975565928afa82246110ec9d",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-dheh1-do",
+    "pie-root-kjlew-hear"
+   ]
+  },
+  {
+   "key": "pie-lex-dhugh2texr|pie-root-dyew-be_bright",
+   "pair": [
+    "pie-lex-dhugh2texr",
+    "pie-root-dyew-be_bright"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch05_f14",
+    "west_ch04_f26"
+   ],
+   "sha256": "3d2af0dc13f8bee25a548d14b9fd3c5db6ad217dda625712225229e30ed6c0e0",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-dhewgh-hit",
+    "pie-root-dyew-be_bright"
+   ]
+  },
+  {
+   "key": "pie-root-h3erdh-upright|pie-root-steh2-stand",
+   "pair": [
+    "pie-root-h3erdh-upright",
+    "pie-root-steh2-stand"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch08_f23"
+   ],
+   "sha256": "40ad6e9616429850d6d188455b9c60ef4fb8667b82242e04a40ef1bbbc38a6e6",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-h3erdh-upright",
+    "pie-root-steh2-stand"
+   ]
+  },
+  {
+   "key": "pie-lex-nmrtos|pie-root-dyew-be_bright",
+   "pair": [
+    "pie-lex-nmrtos",
+    "pie-root-dyew-be_bright"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch03_f09"
+   ],
+   "sha256": "40ef904396cf4b405d8915991e2b8697c52da9b9a14acec3cf98625ed8b3d9cb",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-nmrtos",
+    "pie-root-dyew-be_bright"
+   ]
+  },
+  {
+   "key": "pie-lex-soh2wl|pie-root-spekj-see",
+   "pair": [
+    "pie-lex-soh2wl",
+    "pie-root-spekj-see"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch05_f05"
+   ],
+   "sha256": "45ebbc30e80d3f89449143b852bda2fa8e914b82fad0804b6fb4399af7b71db7",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-soh2wl",
+    "pie-root-spekj-see"
+   ]
+  },
+  {
+   "key": "pie-lex-kjlewos|pie-root-dhgwhey-decline",
+   "pair": [
+    "pie-lex-kjlewos",
+    "pie-root-dhgwhey-decline"
+   ],
+   "self": false,
+   "formulas": [
+    "imperishable-fame",
+    "imperishable-fame-be-dative",
+    "imperishable-fame-get-nominative",
+    "god-grant-imperishable-fame",
+    "have-imperishable-fame-schema",
+    "west_ch10_f01",
+    "west_ch02_f01"
+   ],
+   "sha256": "46ed0221cb8cfb465a5a023023679779f9d1127f29a02eb202b5cd1398666ffa",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-dhgwhey-decline",
+    "pie-root-kjlew-hear"
+   ]
+  },
+  {
+   "key": "pie-lex-h2ewsoxs|pie-root-bheh2-shine",
+   "pair": [
+    "pie-lex-h2ewsoxs",
+    "pie-root-bheh2-shine"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch05_f16"
+   ],
+   "sha256": "47273fe3bc417ac9b68335a7f4c1e706df8cf181525b9a36d52ed7c34d97f00f",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-bheh2-shine",
+    "pie-root-h2ews-become_light"
+   ]
+  },
+  {
+   "key": "pie-lex-soh2wl|pie-root-dhewgh-hit",
+   "pair": [
+    "pie-lex-soh2wl",
+    "pie-root-dhewgh-hit"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch05_f25"
+   ],
+   "sha256": "4ac81bfab99985f82217d74d81ae31fe80616af824eabb818caa374bf856847e",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-soh2wl",
+    "pie-root-dhewgh-hit"
+   ]
+  },
+  {
+   "key": "pie-root-bhuH-be|pie-root-gwhen-strike",
+   "pair": [
+    "pie-root-bhuH-be",
+    "pie-root-gwhen-strike"
+   ],
+   "self": false,
+   "formulas": [
+    "become-the-bane",
+    "west_ch10_f33"
+   ],
+   "sha256": "5868d40ce933055d6a2c14d1b001e2bb69051fb0aa39f5027c7551a39950a69d",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-bhuH-be",
+    "pie-root-gwhen-strike"
+   ]
+  },
+  {
+   "key": "pie-lex-plth2ewih2|pie-root-h3nebh-hub",
+   "pair": [
+    "pie-lex-plth2ewih2",
+    "pie-root-h3nebh-hub"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch09_f08"
+   ],
+   "sha256": "59c6441c15d934f238808ad5e38bd2f6b738ff68537215fe7216ae78e0e33d93",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-h3nebh-hub",
+    "pie-root-pleth2-spread"
+   ]
+  },
+  {
+   "key": "pie-lex-nmrtos|pie-root-h1ed-eat",
+   "pair": [
+    "pie-lex-nmrtos",
+    "pie-root-h1ed-eat"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch03_f30"
+   ],
+   "sha256": "5a3c0006f7399cbf9a851aa54bf7922b90a94217fc13f330804f2aa684a58501",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-nmrtos",
+    "pie-root-h1ed-eat"
+   ]
+  },
+  {
+   "key": "pie-lex-dhegjhoxm|pie-root-nebh-become_damp",
+   "pair": [
+    "pie-lex-dhegjhoxm",
+    "pie-root-nebh-become_damp"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch09_f01",
+    "west_ch09_f02",
+    "west_ch09_f03",
+    "west_ch08_f08"
+   ],
+   "sha256": "5f5bb016714a9e33cd32c34b8e36f1f42e8c144a3f3558af1f0027186a2bf7d9",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-dhegjhoxm",
+    "pie-root-nebh-become_damp"
+   ]
+  },
+  {
+   "key": "pie-lex-medhu|pie-lex-sweh2dus",
+   "pair": [
+    "pie-lex-medhu",
+    "pie-lex-sweh2dus"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch02_f21"
+   ],
+   "sha256": "63669a9119278e7a5a94e62e761565446d0c68ed981158f64dde4d26a069ebac",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-medhu",
+    "pie-root-sweh2d-sweet"
+   ]
+  },
+  {
+   "key": "pie-lex-dhedheh1ti|pie-lex-h1nomn",
+   "pair": [
+    "pie-lex-dhedheh1ti",
+    "pie-lex-h1nomn"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch10_f17"
+   ],
+   "sha256": "656a95a773fa2d9e3734dfd9b33e9d75c3971aa395dfac075398af066fbc8318",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-dhedheh1ti",
+    "pie-lex-h1nomn"
+   ]
+  },
+  {
+   "key": "pie-root-wekj-wish|pie-root-wekj-wish",
+   "pair": [
+    "pie-root-wekj-wish",
+    "pie-root-wekj-wish"
+   ],
+   "self": true,
+   "formulas": [
+    "west_ch02_f99"
+   ],
+   "sha256": "6631b8e39f091a46917f3778653b88ed6a38de99af8efa58b1d75b501612ab3a",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-wekj-wish",
+    "pie-root-wekj-wish"
+   ]
+  },
+  {
+   "key": "pie-lex-gjonu|pie-lex-meh2texr",
+   "pair": [
+    "pie-lex-gjonu",
+    "pie-lex-meh2texr"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch02_f31"
+   ],
+   "sha256": "66ecd9c473f3a43dce53a4b42ef5bc4ad8ddc637aec7d9aae3f916b31e8bac7b",
+   "half": "tune",
+   "group_pair": [
+    "pie-lex-gjonu",
+    "pie-lex-meh2texr"
+   ]
+  },
+  {
+   "key": "pie-lex-kwoyneh2|pie-root-gwhen-strike",
+   "pair": [
+    "pie-lex-kwoyneh2",
+    "pie-root-gwhen-strike"
+   ],
+   "self": false,
+   "formulas": [
+    "slay-and-avenge-gwhen-kwei"
+   ],
+   "sha256": "6911cf915c713641372453ebb4dd72803e1dc2c79693722af941f24d2e0cc2d4",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-gwhen-strike",
+    "pie-root-kwey-pay"
+   ]
+  },
+  {
+   "key": "pie-root-dyew-be_bright|pie-root-h3ekw-see",
+   "pair": [
+    "pie-root-dyew-be_bright",
+    "pie-root-h3ekw-see"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch05_f06",
+    "west_ch04_f11"
+   ],
+   "sha256": "72101fc4157acb9bb1deaee0532cfd2cfa3d7a035259a3f2b634df74cd816fcb",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-dyew-be_bright",
+    "pie-root-h3ekw-see"
+   ]
+  },
+  {
+   "key": "pie-root-h2ergj-white|pie-root-wes-dress",
+   "pair": [
+    "pie-root-h2ergj-white",
+    "pie-root-wes-dress"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch02_f19"
+   ],
+   "sha256": "741913eef5af8a88d71e2a68c613f2c4bd2705200c1364caa673fc696989badc",
+   "half": "tune",
+   "group_pair": [
+    "pie-root-h2ergj-white",
+    "pie-root-wes-dress"
+   ]
+  },
+  {
+   "key": "pie-root-nebh-become_damp|pie-root-wes-dress",
+   "pair": [
+    "pie-root-nebh-become_damp",
+    "pie-root-wes-dress"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch02_f48"
+   ],
+   "sha256": "75c0d27f17cdbad5ef10cf3522104993d351922192ec8327afb4da5371bd50fa",
+   "half": "test",
+   "group_pair": [
+    "pie-root-nebh-become_damp",
+    "pie-root-wes-dress"
+   ]
+  },
+  {
+   "key": "pie-lex-woxkws|pie-root-tetkj-create",
+   "pair": [
+    "pie-lex-woxkws",
+    "pie-root-tetkj-create"
+   ],
+   "self": false,
+   "formulas": [
+    "craft-words",
+    "craft-the-formula",
+    "west_ch01_f05",
+    "west_ch01_f06",
+    "west_ch01_f07"
+   ],
+   "sha256": "7ec81379b66742d82600adc83dce28d65032d3e29a8fed375924638e24c5be80",
+   "half": "test",
+   "group_pair": [
+    "pie-root-tetkj-create",
+    "pie-root-wekw-speak"
+   ]
+  },
+  {
+   "key": "pie-lex-h2eh3mos|pie-root-h1ed-eat",
+   "pair": [
+    "pie-lex-h2eh3mos",
+    "pie-root-h1ed-eat"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch02_f08"
+   ],
+   "sha256": "7fcc62df016857bf4897a7fd8af00c4aa900cf95ce3be67f650c8afaf0b3668c",
+   "half": "test",
+   "group_pair": [
+    "pie-root-h1ed-eat",
+    "pie-root-h2eh3-be_hot"
+   ]
+  },
+  {
+   "key": "pie-lex-h1ogwhis|pie-root-gwhen-strike",
+   "pair": [
+    "pie-lex-h1ogwhis",
+    "pie-root-gwhen-strike"
+   ],
+   "self": false,
+   "formulas": [
+    "hero-slay-serpent",
+    "slew-the-serpent-egwhent-ogwhim",
+    "basic-formula-with-weapon-companion",
+    "who-slew-relative-clause",
+    "slayer-slain-reciprocal",
+    "slay-serpent-with-companion",
+    "slay-gwhen-serpent-ogwhi",
+    "egwhent-ogwhim-augment",
+    "slay-serpent-slaying-ring",
+    "serpent-slay-adversary",
+    "serpent-slayer-man-slayer-epithets",
+    "west_ch06_f01",
+    "west_ch06_f02"
+   ],
+   "sha256": "86fe044a56e50e00f8644b1793f01340d18aaf9604180362862617db6903ad88",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-h1ogwhis",
+    "pie-root-gwhen-strike"
+   ]
+  },
+  {
+   "key": "pie-lex-deh3toxr|pie-lex-h1wesus",
+   "pair": [
+    "pie-lex-deh3toxr",
+    "pie-lex-h1wesus"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch03_f20"
+   ],
+   "sha256": "879722573ec28821759d7b0006075e11bc4ceec317a9bb42dbd5cb6d023bda21",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-h1wesus",
+    "pie-root-deh3-give"
+   ]
+  },
+  {
+   "key": "pie-lex-gwoxws|pie-root-h2egj-drive",
+   "pair": [
+    "pie-lex-gwoxws",
+    "pie-root-h2egj-drive"
+   ],
+   "self": false,
+   "formulas": [
+    "hero-slay-three-headed-drive-off-cows"
+   ],
+   "sha256": "8c19d477fa100c964a33df676e7e2ffda7ccd69fc383df82e87ae783b44a7ebf",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-gwoxws",
+    "pie-root-h2egj-drive"
+   ]
+  },
+  {
+   "key": "pie-lex-wlkwos|pie-root-pelH-pale",
+   "pair": [
+    "pie-lex-wlkwos",
+    "pie-root-pelH-pale"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch02_f20"
+   ],
+   "sha256": "973e9e4b5cff69511352f37f0e2ae16acf6a45401b06fc002ea02efafe278865",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-wlkwos",
+    "pie-root-pelH-pale"
+   ]
+  },
+  {
+   "key": "pie-lex-h1nomn|pie-lex-kjlewos",
+   "pair": [
+    "pie-lex-h1nomn",
+    "pie-lex-kjlewos"
+   ],
+   "self": false,
+   "formulas": [
+    "famous-name"
+   ],
+   "sha256": "983e689891ee0aead1b6e9a6e9602ea3469b0c1cf7fc415a25c9689aade55739",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-h1nomn",
+    "pie-root-kjlew-hear"
+   ]
+  },
+  {
+   "key": "pie-lex-nmrtos|pie-lex-wekwos",
+   "pair": [
+    "pie-lex-nmrtos",
+    "pie-lex-wekwos"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch02_f43"
+   ],
+   "sha256": "9884dfe352643a86985c736831aa1e081907a6557e23ef6fd4e7b8287c70c692",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-nmrtos",
+    "pie-root-wekw-speak"
+   ]
+  },
+  {
+   "key": "pie-lex-h1nomn|pie-lex-priHos",
+   "pair": [
+    "pie-lex-h1nomn",
+    "pie-lex-priHos"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch10_f18"
+   ],
+   "sha256": "9ede5407f9cd8e837de52518d1711798ffb22e6ecfa45e809efff87f0e75fcdb",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-h1nomn",
+    "pie-root-preyH-please"
+   ]
+  },
+  {
+   "key": "pie-root-dyew-be_bright|pie-root-gjenh1-produce",
+   "pair": [
+    "pie-root-dyew-be_bright",
+    "pie-root-gjenh1-produce"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch03_f07"
+   ],
+   "sha256": "a65a82b87cca7d2620ac9b643ec0c276469e36511f53a8575f7034a2a7e65bf7",
+   "half": "test",
+   "group_pair": [
+    "pie-root-dyew-be_bright",
+    "pie-root-gjenh1-produce"
+   ]
+  },
+  {
+   "key": "pie-lex-kwrmis|pie-root-gwhen-strike",
+   "pair": [
+    "pie-lex-kwrmis",
+    "pie-root-gwhen-strike"
+   ],
+   "self": false,
+   "formulas": [
+    "kill-serpent-germanic-bidirectional",
+    "slay-the-worm-charm",
+    "slay-adversary-plus-marrow-list-charm",
+    "west_ch08_f26"
+   ],
+   "sha256": "a817d91ed0171a259911586f1a2f05a30d39ca1c641a182afcdd496cd758ee7c",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-kwrmis",
+    "pie-root-gwhen-strike"
+   ]
+  },
+  {
+   "key": "pie-lex-h2nexr|pie-root-kjlew-hear",
+   "pair": [
+    "pie-lex-h2nexr",
+    "pie-root-kjlew-hear"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch10_f15",
+    "west_ch01_f17"
+   ],
+   "sha256": "a8c6ec53efcadee7bf9a0ac7714700c2bbe933aae68482f88a9e0b623417dd5f",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-h2nexr",
+    "pie-root-kjlew-hear"
+   ]
+  },
+  {
+   "key": "pie-lex-h1wesus|pie-lex-menos",
+   "pair": [
+    "pie-lex-h1wesus",
+    "pie-lex-menos"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch02_f35"
+   ],
+   "sha256": "a8f96fedbeec9fa3119e66932df46873640b716513736960b9a5062ed7bfa879",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-h1wesus",
+    "pie-root-men-think"
+   ]
+  },
+  {
+   "key": "pie-lex-h1nomn|pie-root-kjlew-hear",
+   "pair": [
+    "pie-lex-h1nomn",
+    "pie-root-kjlew-hear"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch10_f16"
+   ],
+   "sha256": "ac748470b88499345ce44f7a95113014339d4339725eb819e6736bf6cc64ae63",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-h1nomn",
+    "pie-root-kjlew-hear"
+   ]
+  },
+  {
+   "key": "pie-root-h1werH-broad|pie-root-pleth2-spread",
+   "pair": [
+    "pie-root-h1werH-broad",
+    "pie-root-pleth2-spread"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch04_f14",
+    "west_ch04_f15",
+    "west_ch04_f16"
+   ],
+   "sha256": "b13da95037771cfcb9219c661a0c2f48088c182767852ce6e50efb7a412920ec",
+   "half": "test",
+   "group_pair": [
+    "pie-root-h1werH-broad",
+    "pie-root-pleth2-spread"
+   ]
+  },
+  {
+   "key": "pie-lex-h1ekjwos|pie-lex-h2nexr",
+   "pair": [
+    "pie-lex-h1ekjwos",
+    "pie-lex-h2nexr"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch12_f17"
+   ],
+   "sha256": "b8a163c27de874dd34ebb160d9c4be61bb308f7cb359a10de4ee748fa17bd109",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-h1ekjwos",
+    "pie-lex-h2nexr"
+   ]
+  },
+  {
+   "key": "pie-lex-megjh2s|pie-root-h2egj-drive",
+   "pair": [
+    "pie-lex-megjh2s",
+    "pie-root-h2egj-drive"
+   ],
+   "self": false,
+   "formulas": [
+    "great-path-of-chariot",
+    "west_ch05_f11"
+   ],
+   "sha256": "bc53079e5a94fe9208777ccd220309ea2efc1e5d7a5376d49a6350855ef578a4",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-megjh2s",
+    "pie-root-h2egj-drive"
+   ]
+  },
+  {
+   "key": "pie-lex-menos|pie-root-dhers-be_bold",
+   "pair": [
+    "pie-lex-menos",
+    "pie-root-dhers-be_bold"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch02_f36"
+   ],
+   "sha256": "c2827c702aa1895776314caa9a0e4c865e6d3415658ee13e09c179e6a2700108",
+   "half": "test",
+   "group_pair": [
+    "pie-root-dhers-be_bold",
+    "pie-root-men-think"
+   ]
+  },
+  {
+   "key": "pie-root-derkj-see|pie-root-weyd-see",
+   "pair": [
+    "pie-root-derkj-see",
+    "pie-root-weyd-see"
+   ],
+   "self": false,
+   "formulas": [
+    "quantifier-argument-negated-argument",
+    "seen-and-unseen-disease",
+    "west_ch02_f72"
+   ],
+   "sha256": "c5f164b9bfedc1311edc22e99d6be382be4997a066206d5d807219c63189d68e",
+   "half": "test",
+   "group_pair": [
+    "pie-root-derkj-see",
+    "pie-root-weyd-see"
+   ]
+  },
+  {
+   "key": "pie-lex-kwekwlos|pie-lex-soh2wl",
+   "pair": [
+    "pie-lex-kwekwlos",
+    "pie-lex-soh2wl"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch05_f09"
+   ],
+   "sha256": "c78494ddda60f3421d60547eb8d5d147c86128417c320e17ad01b964113cbe78",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-soh2wl",
+    "pie-root-kwelh1-turn"
+   ]
+  },
+  {
+   "key": "pie-lex-h2stexr|pie-root-peykj-hew",
+   "pair": [
+    "pie-lex-h2stexr",
+    "pie-root-peykj-hew"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch09_f10"
+   ],
+   "sha256": "cab308fbcfe48be47641c8d21767abfe0207b303a0fadb2ea1d392fc000b239b",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-h2stexr",
+    "pie-root-peykj-hew"
+   ]
+  },
+  {
+   "key": "pie-root-gwhen-strike|pie-root-h1es-be",
+   "pair": [
+    "pie-root-gwhen-strike",
+    "pie-root-h1es-be"
+   ],
+   "self": false,
+   "formulas": [
+    "be-the-death-of"
+   ],
+   "sha256": "cec7c67c99cbcf04b3ced07d4626a53e6c07278a6a4614a4d4facc9f415ebc32",
+   "half": "test",
+   "group_pair": [
+    "pie-root-gwhen-strike",
+    "pie-root-h1es-be"
+   ]
+  },
+  {
+   "key": "pie-lex-soh2wl|pie-root-Hreth2-run",
+   "pair": [
+    "pie-lex-soh2wl",
+    "pie-root-Hreth2-run"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch05_f10"
+   ],
+   "sha256": "d74088d082b622ccce028ceae7ccd588c054fb8cc9ec3440e539924f9890f118",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-soh2wl",
+    "pie-root-Hreth2-run"
+   ]
+  },
+  {
+   "key": "pie-lex-megjh2s|pie-lex-soh2wl",
+   "pair": [
+    "pie-lex-megjh2s",
+    "pie-lex-soh2wl"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch05_f01"
+   ],
+   "sha256": "d90c37e0e9d2cdc8f0ddc920b41c46a429e611705b0376192387d5cf3545533d",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-megjh2s",
+    "pie-lex-soh2wl"
+   ]
+  },
+  {
+   "key": "pie-lex-soh2wl|pie-root-derkj-see",
+   "pair": [
+    "pie-lex-soh2wl",
+    "pie-root-derkj-see"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch02_f26",
+    "west_ch02_f29"
+   ],
+   "sha256": "d9349f7fd5b6f9db122ee96aed5cdd05e715c27f320305cb53da7fdc31b8c70d",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-soh2wl",
+    "pie-root-derkj-see"
+   ]
+  },
+  {
+   "key": "pie-lex-mrtos|pie-lex-mrtos",
+   "pair": [
+    "pie-lex-mrtos",
+    "pie-lex-mrtos"
+   ],
+   "self": true,
+   "formulas": [
+    "west_ch02_f94"
+   ],
+   "sha256": "db2f1f38641a77eacdb43897a351220af72b19b88e80ad9aceecb2f9a0d21e6e",
+   "half": "test",
+   "group_pair": [
+    "pie-root-mer-die",
+    "pie-root-mer-die"
+   ]
+  },
+  {
+   "key": "pie-lex-dhegjhoxm|pie-lex-meh2texr",
+   "pair": [
+    "pie-lex-dhegjhoxm",
+    "pie-lex-meh2texr"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch04_f12",
+    "west_ch04_f22",
+    "west_ch04_f23"
+   ],
+   "sha256": "e4e1302e12893f196c81599d55997af0a4b1bb07a9d280f84caa4326f1414c2a",
+   "half": "test",
+   "group_pair": [
+    "pie-lex-dhegjhoxm",
+    "pie-lex-meh2texr"
+   ]
+  },
+  {
+   "key": "pie-lex-wekwos|pie-root-peth2-spread_out",
+   "pair": [
+    "pie-lex-wekwos",
+    "pie-root-peth2-spread_out"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch01_f12"
+   ],
+   "sha256": "e8f81ee68f21ab9d74d87b6c40fb1c1d6419657a3b84c8bc40e819d18a674f13",
+   "half": "test",
+   "group_pair": [
+    "pie-root-peth2-spread_out",
+    "pie-root-wekw-speak"
+   ]
+  },
+  {
+   "key": "pie-lex-dyexws|pie-lex-nbhros",
+   "pair": [
+    "pie-lex-dyexws",
+    "pie-lex-nbhros"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch04_f03",
+    "west_ch04_f04"
+   ],
+   "sha256": "f2ffc66921c481812bca94e5eed8f4aa16aed8ec666d3a25cb413a85e59e469d",
+   "half": "test",
+   "group_pair": [
+    "pie-root-dyew-be_bright",
+    "pie-root-nebh-become_damp"
+   ]
+  },
+  {
+   "key": "pie-root-gwhen-strike|pie-root-kjey-be_lying_down",
+   "pair": [
+    "pie-root-gwhen-strike",
+    "pie-root-kjey-be_lying_down"
+   ],
+   "self": false,
+   "formulas": [
+    "slain-lies"
+   ],
+   "sha256": "f5f087424caedc574e858233b8a048e4c4ae2a02ac3bf92fc53e80a7141f2aee",
+   "half": "test",
+   "group_pair": [
+    "pie-root-gwhen-strike",
+    "pie-root-kjey-be_lying_down"
+   ]
+  },
+  {
+   "key": "pie-lex-kjlewos|pie-root-pleth2-spread",
+   "pair": [
+    "pie-lex-kjlewos",
+    "pie-root-pleth2-spread"
+   ],
+   "self": false,
+   "formulas": [
+    "west_ch10_f06",
+    "west_ch02_f02"
+   ],
+   "sha256": "fc436068a6a20303ffb33cc5ca49f26857df80ac26ab23510905965f9e4021d0",
+   "half": "test",
+   "group_pair": [
+    "pie-root-kjlew-hear",
+    "pie-root-pleth2-spread"
+   ]
+  }
+ ],
+ "shared_group_pairs": [
+  {
+   "group_pair": [
+    "pie-lex-h1nomn",
+    "pie-root-kjlew-hear"
+   ],
+   "items": [
+    "pie-lex-h1nomn|pie-lex-kjlewos",
+    "pie-lex-h1nomn|pie-root-kjlew-hear"
+   ],
+   "halves": [
+    "test",
+    "test"
+   ]
+  }
+ ]
+}

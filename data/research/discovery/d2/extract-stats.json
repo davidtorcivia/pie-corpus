@@ -1,0 +1,25 @@
+{
+ "index": "data/research/8c/search-index/corpora.sqlite",
+ "index_mtime": "2026-10-28 22:41:02",
+ "index_bytes": 2354298880,
+ "units": 2310589,
+ "keyed_words": 6580692,
+ "keys": 7105,
+ "groups": 3298,
+ "layers": 40,
+ "words_over_M": 0,
+ "group_mismatch_words": 0,
+ "identical_to_d1_cache": {
+  "u_uid": true,
+  "u_corp": true,
+  "u_br": true,
+  "u_len": true,
+  "w_unit": true,
+  "w_pos": true,
+  "w_keys": true,
+  "kgroup": true,
+  "keys": true,
+  "groups": true
+ },
+ "seconds": 21.1
+}

@@ -1,0 +1,325 @@
+{
+ "definition": "(corpus, layer_status) from the index payload, as written by scripts/search_corpora.py with build_8c_stageCS.prepare (Stage C-S layer filter incl. thin-corpus amendment)",
+ "layers": [
+  {
+   "layer": 25,
+   "corpus": "ae",
+   "status": "included",
+   "branch": "Indo-Iranian",
+   "units": 16466,
+   "keyed_words": 31143
+  },
+  {
+   "layer": 24,
+   "corpus": "av",
+   "status": "included",
+   "branch": "Indo-Iranian",
+   "units": 13800,
+   "keyed_words": 43683
+  },
+  {
+   "layer": 23,
+   "corpus": "rv",
+   "status": "included",
+   "branch": "Indo-Iranian",
+   "units": 39832,
+   "keyed_words": 77240
+  },
+  {
+   "layer": 38,
+   "corpus": "sa-ep",
+   "status": "included",
+   "branch": "Indo-Iranian",
+   "units": 206208,
+   "keyed_words": 474412
+  },
+  {
+   "layer": 28,
+   "corpus": "grc",
+   "status": "excluded",
+   "branch": "Greek",
+   "units": 205528,
+   "keyed_words": 872652
+  },
+  {
+   "layer": 27,
+   "corpus": "grc",
+   "status": "included",
+   "branch": "Greek",
+   "units": 76136,
+   "keyed_words": 214068
+  },
+  {
+   "layer": 39,
+   "corpus": "grc-late",
+   "status": "excluded",
+   "branch": "Greek",
+   "units": 624778,
+   "keyed_words": 2923013
+  },
+  {
+   "layer": 26,
+   "corpus": "hom",
+   "status": "included",
+   "branch": "Greek",
+   "units": 27760,
+   "keyed_words": 73659
+  },
+  {
+   "layer": 34,
+   "corpus": "lat",
+   "status": "included",
+   "branch": "Italic",
+   "units": 18841,
+   "keyed_words": 44347
+  },
+  {
+   "layer": 35,
+   "corpus": "xum",
+   "status": "included",
+   "branch": "Italic",
+   "units": 2221,
+   "keyed_words": 1375
+  },
+  {
+   "layer": 5,
+   "corpus": "cy",
+   "status": "excluded",
+   "branch": "Celtic",
+   "units": 26525,
+   "keyed_words": 20599
+  },
+  {
+   "layer": 6,
+   "corpus": "cy",
+   "status": "included",
+   "branch": "Celtic",
+   "units": 16843,
+   "keyed_words": 11748
+  },
+  {
+   "layer": 7,
+   "corpus": "ga-early",
+   "status": "excluded",
+   "branch": "Celtic",
+   "units": 125521,
+   "keyed_words": 243666
+  },
+  {
+   "layer": 8,
+   "corpus": "ga-early",
+   "status": "included",
+   "branch": "Celtic",
+   "units": 2053,
+   "keyed_words": 2284
+  },
+  {
+   "layer": 3,
+   "corpus": "mga",
+   "status": "excluded",
+   "branch": "Celtic",
+   "units": 88656,
+   "keyed_words": 108214
+  },
+  {
+   "layer": 4,
+   "corpus": "mga",
+   "status": "included",
+   "branch": "Celtic",
+   "units": 61884,
+   "keyed_words": 75769
+  },
+  {
+   "layer": 1,
+   "corpus": "sga",
+   "status": "excluded",
+   "branch": "Celtic",
+   "units": 18901,
+   "keyed_words": 15876
+  },
+  {
+   "layer": 2,
+   "corpus": "sga",
+   "status": "included",
+   "branch": "Celtic",
+   "units": 21323,
+   "keyed_words": 27356
+  },
+  {
+   "layer": 0,
+   "corpus": "sga-gl",
+   "status": "excluded",
+   "branch": "Celtic",
+   "units": 6958,
+   "keyed_words": 6073
+  },
+  {
+   "layer": 31,
+   "corpus": "ang",
+   "status": "excluded",
+   "branch": "Germanic",
+   "units": 3760,
+   "keyed_words": 4095
+  },
+  {
+   "layer": 30,
+   "corpus": "ang",
+   "status": "included",
+   "branch": "Germanic",
+   "units": 11726,
+   "keyed_words": 19504
+  },
+  {
+   "layer": 11,
+   "corpus": "icepahc",
+   "status": "excluded",
+   "branch": "Germanic",
+   "units": 6345,
+   "keyed_words": 28979
+  },
+  {
+   "layer": 12,
+   "corpus": "icepahc",
+   "status": "included",
+   "branch": "Germanic",
+   "units": 15996,
+   "keyed_words": 48069
+  },
+  {
+   "layer": 9,
+   "corpus": "menota",
+   "status": "excluded",
+   "branch": "Germanic",
+   "units": 29105,
+   "keyed_words": 136763
+  },
+  {
+   "layer": 10,
+   "corpus": "menota",
+   "status": "included",
+   "branch": "Germanic",
+   "units": 95154,
+   "keyed_words": 352311
+  },
+  {
+   "layer": 29,
+   "corpus": "non",
+   "status": "included",
+   "branch": "Germanic",
+   "units": 12591,
+   "keyed_words": 13856
+  },
+  {
+   "layer": 13,
+   "corpus": "rea-goh",
+   "status": "excluded",
+   "branch": "Germanic",
+   "units": 17950,
+   "keyed_words": 107648
+  },
+  {
+   "layer": 14,
+   "corpus": "rea-goh",
+   "status": "included",
+   "branch": "Germanic",
+   "units": 190,
+   "keyed_words": 1018
+  },
+  {
+   "layer": 15,
+   "corpus": "rea-osx",
+   "status": "excluded",
+   "branch": "Germanic",
+   "units": 7061,
+   "keyed_words": 21322
+  },
+  {
+   "layer": 16,
+   "corpus": "rea-osx",
+   "status": "included",
+   "branch": "Germanic",
+   "units": 5,
+   "keyed_words": 40
+  },
+  {
+   "layer": 18,
+   "corpus": "byliny",
+   "status": "included",
+   "branch": "Balto-Slavic",
+   "units": 149640,
+   "keyed_words": 154408
+  },
+  {
+   "layer": 20,
+   "corpus": "ccmh",
+   "status": "excluded",
+   "branch": "Balto-Slavic",
+   "units": 41606,
+   "keyed_words": 73764
+  },
+  {
+   "layer": 19,
+   "corpus": "dainos",
+   "status": "included",
+   "branch": "Balto-Slavic",
+   "units": 79771,
+   "keyed_words": 44793
+  },
+  {
+   "layer": 36,
+   "corpus": "lv",
+   "status": "included",
+   "branch": "Balto-Slavic",
+   "units": 751,
+   "keyed_words": 1636
+  },
+  {
+   "layer": 37,
+   "corpus": "orv",
+   "status": "included",
+   "branch": "Balto-Slavic",
+   "units": 14570,
+   "keyed_words": 21389
+  },
+  {
+   "layer": 17,
+   "corpus": "vuk",
+   "status": "included",
+   "branch": "Balto-Slavic",
+   "units": 146775,
+   "keyed_words": 135621
+  },
+  {
+   "layer": 21,
+   "corpus": "xcl",
+   "status": "excluded",
+   "branch": "Armenian",
+   "units": 9717,
+   "keyed_words": 26896
+  },
+  {
+   "layer": 22,
+   "corpus": "xcl",
+   "status": "included",
+   "branch": "Armenian",
+   "units": 20633,
+   "keyed_words": 56716
+  },
+  {
+   "layer": 33,
+   "corpus": "hit",
+   "status": "excluded",
+   "branch": "Anatolian",
+   "units": 671,
+   "keyed_words": 1240
+  },
+  {
+   "layer": 32,
+   "corpus": "hit",
+   "status": "included",
+   "branch": "Anatolian",
+   "units": 46338,
+   "keyed_words": 63447
+  }
+ ]
+}
