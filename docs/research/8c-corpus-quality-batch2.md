@@ -18,7 +18,7 @@ Inputs:
 
 ## Ledger
 
-`data/research/8c/corpus-quality/error-verdicts-cq2.jsonl` holds 32 records: 30 confirmed, 1 rejected, 1 unclear.
+`data/research/8c/corpus-quality/error-verdicts-cq2.jsonl` holds 33 records: 31 confirmed, 1 rejected, 1 unclear.
 
 | source | records | confirmed / rejected / unclear |
 |---|---:|---|
@@ -27,7 +27,7 @@ Inputs:
 | Tier 2 r6 builder errors (ἠέλιος, √śī-, saē-, janāni) | 4 | 4 / 0 / 0 (νεφέλη, maṣ̌iia-, dhr̥ṣ-, εἰμί, ūrdhva are counted with the round-3 records) |
 | batch-1 deferred (scan 42, scan 30) | 2 | 1 / 0 / 1 |
 | lead expansion (√dam, damáyantam, dama, deint, focal) + dáma-/dám- found while verifying | 6 | 6 / 0 / 0 |
-| found while verifying the Tier 2 lines: empty headword key | 1 | 1 / 0 / 0 |
+| found while verifying: empty headword key; sa-ep rows ignored by the index loader | 2 | 2 / 0 / 0 |
 
 ## A bug in this batch's first commit (decd105), fixed
 
@@ -141,8 +141,12 @@ Members are never lexeme ids and never secure-check evidence. *Hn̥dʰér "under
 **Full suite** (2026-10-29, at 9297a88 plus the working tree): 3,726 passed, 6 failed, 3 skipped (786 s).
 - `test_mapping_resolution.py::test_every_override_file_and_key_is_loaded` failed because it still keyed rows with the language keyer. It now uses `headword_key` (5cb5499) and passes when rerun alone (20 passed).
 - `test_batch_release.py::test_shipped_migration` and `::test_meter_exact_gate` also fail in a clean worktree at HEAD (Tier 3 t023 is not admitted). This is generation work, not mappings.
-- Three `test_export_chat.py` tests fail only in the shared tree, because of another agent's uncommitted chat-export edits. All 49 tests of the two files pass in a clean worktree at HEAD except the two batch-release tests above.
+- `test_export_chat.py` failures vary from run to run (3, then 7) and appear only in the shared tree, because of another agent's uncommitted chat-export edits. All 49 tests of the two files pass in a clean worktree at HEAD except the two batch-release tests above.
 - After 645326c: `tests/test_cq2.py` and `test_mapping_resolution.py` give 104 passed.
+
+**Final full suite at 4ed5b1a:** 3,750 passed, 2 failed, 5 skipped, 14 errors (790 s).
+- The 2 failures are the same two `test_batch_release.py` tests (rerun alone: 2 failed, 21 passed).
+- The 14 errors are all in `test_export_chat.py`. The export fixture raises because the Tier 3b neologism share is over the cap. That comes from the parallel Tier 3b/export work, not from mappings.
 
 ## Search index
 
@@ -160,7 +164,7 @@ Units: 2,323,653 -> 2,312,634.
 | corpus | change | why |
 |---|---:|---|
 | byliny | -2,730 | Bessonov essay |
-| grc | -1,301 | capitalised names became non-content and windows were re-cut |
+| grc | -1,301 | presumably capitalised names becoming non-content and windows re-cut (not measured) |
 | grc-late | -7,122 | same as grc |
 | ga-early | +88 | Dia "God" became content |
 | mga | +38 | same as ga-early |
