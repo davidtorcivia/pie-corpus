@@ -31,6 +31,13 @@ inflection tasks never go to eval (and are dropped when their root family is
 held out), they make no cognate→PIE task (the answer
 would be our own projection), and an evaluation record with such a token
 fails the export.
+
+Tier 3b, "modern PIE" (corpus/tier3b/, records with neologism: true; PLAN.md "Tier 3b"): admitted through the
+same release eligibility as Tier 3, training only. Every task of a Tier 3b record carries "neologism": true,
+and "coined": "neologism" when a token is a neologism (data/lexicon/neologisms.jsonl, pie/neologism.py).
+Neologisms are not in the default Lexicon, so they make no inflection or cognate task. The cap: Tier 3b words
+are at most NEOLOGISM_CAP (15%) of the training records' words (pie.export_chat.neologism_share, the one
+count) or the build fails; above NEOLOGISM_WARN (10%) the result says so (`neologism_share.status`).
 """
 
 from __future__ import annotations
@@ -43,6 +50,8 @@ from .batch_release import batch_eligibility
 from .realize import Lexicon, accent_manifest, accent_status
 
 ROOT = Path(__file__).resolve().parent.parent
+NEOLOGISM_WARN = 0.10       # PLAN.md: Tier 3b at most 10-15% of training tokens; the hard cap is
+                            # pie.export_chat.NEOLOGISM_CAP (0.15)
 COGNATE_LANGS = ["Sanskrit", "Ancient Greek", "Latin", "Proto-Germanic", "Hittite", "Old Irish", "Gothic",
                  "Avestan", "Old Church Slavonic", "Lithuanian", "Tocharian B", "Old Armenian"]
 
@@ -139,8 +148,11 @@ def record_tasks(r: dict) -> list[dict]:
         out.append({"task": "gloss", "input": r["pie"], "output": r["gloss"], "style": style})
     acc = _record_accent(r)
     num_fallback = any(w.get("num_fallback") == "du->pl" for w in r.get("tokens", []))
-    # a token from a project reconstruction (pie.realize.Lexicon.coined) marks every task of its record
-    coined = next((w["coined"] for w in r.get("tokens", []) if w.get("coined")), None)
+    # a coined token (pie.realize.Lexicon.coined: a project reconstruction or a neologism) marks every task of its
+    # record; a neologism wins over a project reconstruction when a record has both
+    flags = {w["coined"] for w in r.get("tokens", []) if w.get("coined")}
+    coined = "neologism" if "neologism" in flags else next(iter(sorted(flags)), None)
+    tier3b = r.get("neologism") is True
     for t in out:
         t["source_id"] = r["id"]
         if acc:
@@ -149,6 +161,8 @@ def record_tasks(r: dict) -> list[dict]:
             t["num_fallback"] = "du->pl"
         if coined:
             t["coined"] = coined
+        if tier3b:
+            t["neologism"] = True
     return out
 
 
@@ -258,6 +272,18 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0,
         if not decision["admitted"]:
             continue
         train_recs += [json.loads(x) for x in f.read_text("utf-8").splitlines() if x.strip()]
+    # Tier 3b ("modern PIE"): the same release eligibility; training only
+    for f in sorted((root / "corpus" / "tier3b").glob("*.jsonl")):
+        decision = batch_eligibility(root, f.stem, experimental=experimental_batches)
+        batch_decisions.append(decision)
+        if not decision["admitted"]:
+            continue
+        recs = [json.loads(x) for x in f.read_text("utf-8").splitlines() if x.strip()]
+        bad3b = [r["id"] for r in recs if r.get("neologism") is not True or r.get("tier") != 3]
+        if bad3b:
+            raise ValueError(f"a corpus/tier3b record needs tier 3 and neologism: true: {bad3b[0]}")
+        train_recs += recs
+    neo_share = neologism_cap(train_recs)
     lx = Lexicon.load()
     train_tasks = [t for r in train_recs for t in record_tasks(r)]
     eval_tasks = []
@@ -281,9 +307,9 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0,
                 train_tasks.append(t)
             continue
         (eval_tasks if held(t.get("root_id")) else train_tasks).append(t)
-    coined_eval = [r["id"] for r in tier1 if any(t.get("coined") for t in r.get("tokens") or [])]
+    coined_eval = [r["id"] for r in tier1 if r.get("neologism") or any(t.get("coined") for t in r.get("tokens") or [])]
     if coined_eval:
-        raise ValueError(f"project reconstruction in an evaluation record: {coined_eval[0]}")
+        raise ValueError(f"project reconstruction or neologism in an evaluation record: {coined_eval[0]}")
     bad = [t for t in train_tasks if held(t.get("root_id"))]
     if bad:
         raise ValueError(f"held-out root family in training tasks: {bad[0].get('root_id')}")
@@ -301,7 +327,18 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0,
     eval_tasks = [{**t, "seen_in_train": t.get("source_id") in seen} if "source_id" in t else t for t in eval_tasks]
     return {"train_records": train_recs, "eval_records": tier1, "train_tasks": train_tasks, "eval_tasks": eval_tasks,
             "eval_tasks_accent_specified": accent_specified(eval_tasks),
-            "batch_eligibility": batch_decisions}
+            "batch_eligibility": batch_decisions, "neologism_share": neo_share}
+
+
+def neologism_cap(train_records: list[dict]) -> dict:
+    """The Tier 3b share of the training records' words (pie.export_chat.neologism_share) with a status: "ok",
+    "warn" above NEOLOGISM_WARN; above the cap (pie.export_chat.NEOLOGISM_CAP) the export fails (PLAN.md)."""
+    from .export_chat import neologism_share
+    s = neologism_share(train_records)
+    if s["exceeded"]:
+        raise ValueError(f"Tier 3b neologism share {s['share']:.1%} of training words exceeds the {s['cap']:.0%} "
+                         f"cap (PLAN.md 'Tier 3b'): admit fewer Tier 3b batches or more archaic text")
+    return {**s, "warn_at": NEOLOGISM_WARN, "status": "warn" if s["share"] > NEOLOGISM_WARN else "ok"}
 
 
 def views(records: list[dict]) -> dict[str, str]:

@@ -4,7 +4,9 @@
   uv run python -I scripts/realize_plans.py data/generation/plans/pilot-fable.jsonl --batch pilot-fable
 
 Plans that fail the checker go to data/generation/rejects/<batch>.jsonl with
-their errors. Realized records go to corpus/tier3/<batch>.jsonl. Warnings (pie.realize.plan_warnings)
+their errors. Realized records go to corpus/tier3/<batch>.jsonl, or for a Tier 3b batch (named t3b-<n>,
+--tier3b) to corpus/tier3b/<batch>.jsonl with neologism: true, the neologisms loaded into the lexicon and the
+validator index (pie/neologism.py), and every clause naming its speaker (docs/generation/planner-brief-3b.md). Warnings (pie.realize.plan_warnings)
 are printed as WARN lines and counted in the summary; they never reject a plan.
 Gate FAIL returns exit status 1, retaining candidates and reports. Every run
 creates pending release metadata; PASS alone does not authorize training export.
@@ -16,11 +18,12 @@ import json
 import sys
 from pathlib import Path
 
-from pie.batch_release import release_metadata
+from pie.batch_release import corpus_dir, release_metadata
 from pie.meter import measure, record_meter, summary as meter_numbers
 from pie.realize import Lexicon, check_plan, plan_warnings, realize, token_cell
 from pie.translit import to_ascii
 from pie.compound import member_ids
+from pie.neologism import index_neologisms, speaker_errors, with_neologisms
 from pie.validate import all_exact, index_plan_compounds, index_project, load_index, validate_text
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -89,15 +92,22 @@ def main() -> int:
     ap.add_argument("--model", default="claude-opus-5-5")
     ap.add_argument("--prompt-id", default="tier3-planner-v1")
     ap.add_argument("--engine-version", default="unknown", help="caller-supplied engine provenance")
+    ap.add_argument("--tier3b", action="store_true", help="a Tier 3b ('modern PIE') batch: name it t3b-<n>")
     args = ap.parse_args()
     sha = args.engine_version
+    tier3b = args.batch.startswith("t3b-")
+    if args.tier3b != tier3b:
+        ap.error("Tier 3b batches are named t3b-<n> and run with --tier3b (and only they)")
     lx, ix = Lexicon.load(), load_index()
     index_project(ix)      # Tier 3 may use project reconstructions (tokens carry coined: project)
+    if tier3b:             # Tier 3b only: neologisms (coined: neologism); a Tier 3 plan using one is rejected
+        lx = with_neologisms(lx)
+        index_neologisms(ix)
     plans = [json.loads(x) for x in args.plans.read_text("utf-8").splitlines() if x.strip()]
     records, rejects, stats, warnings = [], [], collections.Counter(), []
     for n, p in enumerate(plans):
         plan = p.get("plan", p)
-        errs = check_plan(plan, lx)
+        errs = check_plan(plan, lx) + (speaker_errors(plan) if tier3b else [])
         if errs:
             rejects.append({"plan_id": p.get("plan_id", n), "errors": errs, "plan": plan})
             stats["rejected"] += 1
@@ -131,10 +141,11 @@ def main() -> int:
             "validator": {k: v[k] for k in ("status", "coverage", "tiers", "misses")},
             "generator": {"model": args.model, "engine_version": sha, "prompt_id": args.prompt_id,
                           "convention": "handbook", "plan": plan},
-            "neologism": False, "roots": roots,
+            "neologism": tier3b, "roots": roots,
             "notes": "",
         })
-    out = ROOT / "corpus" / "tier3" / f"{args.batch}.jsonl"
+    out = ROOT / corpus_dir(args.batch) / f"{args.batch}.jsonl"
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in records), "utf-8")
     (ROOT / "data" / "generation" / "rejects" / f"{args.batch}.jsonl").write_text(
         "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rejects), "utf-8")
@@ -146,7 +157,7 @@ def main() -> int:
     core_uses = {k: v for k, v in uses.items() if k in core}
     uses = collections.Counter({k: v for k, v in uses.items() if k not in core})
     others = set()
-    for f in (ROOT / "corpus" / "tier3").glob("*.jsonl"):
+    for f in [*(ROOT / "corpus" / "tier3").glob("*.jsonl"), *(ROOT / "corpus" / "tier3b").glob("*.jsonl")]:
         # a batch's own initial run (<batch>-initial) is a draft of the same plans, not another batch
         if f.name != out.name and not f.stem.endswith("-initial"):
             others |= {json.loads(x)["pie"] for x in f.read_text("utf-8").splitlines() if x.strip()}
@@ -164,6 +175,10 @@ def main() -> int:
                "meter_fit": _meter_summary(records),
                **_meter_fields(records),
                "formula_uses": _formula_uses(records), "warnings": len(warnings)}
+    if tier3b:     # how much of the batch is coined vocabulary (PLAN.md caps Tier 3b at 10-15% of training tokens)
+        neo = [t["lex_id"] for r in records for t in r["tokens"] if t.get("coined") == "neologism"]
+        summary["neologism_tokens"] = {"tokens": len(neo), "share": round(len(neo) / max(1, summary["tokens"]), 3),
+                                       "lexemes": len(set(neo))}
     # accent: unresolved (missing information: the lexeme's headword has no accent; data/morph/accent_unresolved.json)
     unres = [(r["id"], t["lex_id"]) for r in records for t in r["tokens"] if lx.accent_status(t["lex_id"]) == "unresolved"]
     summary["accent_unresolved"] = {"tokens": len(unres), "lexemes": len({x for _, x in unres}),

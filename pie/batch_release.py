@@ -24,8 +24,14 @@ def release_metadata(root: Path, batch: str, *, status: str = "pending",
     }
 
 
+def corpus_dir(batch: str) -> str:
+    """Where a batch's records live: Tier 3b ("modern PIE", PLAN.md) batches are named t3b-<n> and live in
+    corpus/tier3b/; every other Tier 3 batch in corpus/tier3/."""
+    return "corpus/tier3b" if batch.startswith("t3b-") else "corpus/tier3"
+
+
 def artifact_paths(batch: str) -> dict[str, str]:
-    return {"records": f"corpus/tier3/{batch}.jsonl",
+    return {"records": f"{corpus_dir(batch)}/{batch}.jsonl",
             "plans": f"data/generation/plans/{batch}.jsonl",
             "gate_report": f"data/generation/batches/{batch}.json"}
 

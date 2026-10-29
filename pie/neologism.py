@@ -295,6 +295,26 @@ def index_neologisms(ix, path: Path = NEOLOGISMS) -> list[str]:
     return sorted(entries)
 
 
+def speaker_errors(plan: dict) -> list[str]:
+    """Tier 3b plan rule (docs/generation/planner-brief-3b.md): every clause names its `speaker` (the engine
+    ignores it; pie.export_chat splits the chat turns by it), a new speaker starts a new sentence (`break`), and a
+    text has one or two speakers (the chat export takes the first as the user)."""
+    errs, prev, seen = [], None, []
+    for ci, cl in enumerate(plan.get("clauses", [])):
+        s = cl.get("speaker")
+        if not isinstance(s, str) or not s.strip():
+            errs.append(f"clause {ci}: a Tier 3b clause needs a speaker")
+            continue
+        if ci and prev is not None and s != prev and not cl.get("break"):
+            errs.append(f"clause {ci}: speaker {s!r} takes over mid-sentence: set break on the turn's first clause")
+        prev = s
+        if s not in seen:
+            seen.append(s)
+    if len(seen) > 2:
+        errs.append(f"a Tier 3b text has one or two speakers, not {len(seen)} ({', '.join(seen)})")
+    return errs
+
+
 def fill(path: Path = NEOLOGISMS) -> int:
     """Write each row's engine-derived `pie` and `inflection` (rows are authored with the derivation only).
     `uv run python -I -m pie.neologism --fill`; a plain run checks the file and prints the table."""

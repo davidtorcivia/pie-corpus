@@ -3,16 +3,30 @@
 
   uv run python -I scripts/validate_text.py "h₂ówis h₁éḱwōs-kʷe"
   uv run python -I scripts/validate_text.py < lines.txt
+  uv run python -I scripts/validate_text.py --neologisms [data/lexicon/neologisms.jsonl] "…"   (Tier 3b)
+
+The index is the Tier 1-3 validator lexicon, which never includes neologisms (PLAN.md "Tier 3b"); a Tier 3b text
+is validated with the neologism table loaded (--neologisms, pie.neologism.index_neologisms).
 """
 
 import sys
+from pathlib import Path
 
 from pie.validate import load_index, validate_text
 
 
 def main() -> int:
-    lines = sys.argv[1:] or [x.rstrip("\n") for x in sys.stdin if x.strip()]
+    argv, neo = sys.argv[1:], None
+    if "--neologisms" in argv:
+        k = argv.index("--neologisms")
+        has_path = k + 1 < len(argv) and argv[k + 1].endswith(".jsonl")
+        neo = Path(argv[k + 1]) if has_path else True
+        del argv[k: k + 1 + has_path]
+    lines = argv or [x.rstrip("\n") for x in sys.stdin if x.strip()]
     ix = load_index()
+    if neo:
+        from pie.neologism import NEOLOGISMS, index_neologisms
+        index_neologisms(ix, NEOLOGISMS if neo is True else neo)
     for line in lines:
         r = validate_text(line, ix)
         print(f"{r['status'].upper():5} cov={r['coverage']:.2f} tiers={r['tiers']} misses={r['misses']}  {line}")

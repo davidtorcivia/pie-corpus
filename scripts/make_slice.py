@@ -200,8 +200,13 @@ def main() -> int:
     ap.add_argument("--derived", action="store_true", help="include lexemes with approximate derived glosses")
     ap.add_argument("--core", nargs="*", default=[],
                     help="up to 8 theme-core lexeme ids, capped at 15 uses per batch instead of 6")
+    ap.add_argument("--tier3b", action="store_true",
+                    help="Tier 3b slice: also offer every neologism (data/lexicon/neologisms.jsonl), flagged coined")
     args = ap.parse_args()
     lx = Lexicon.load()
+    if args.tier3b:      # a new Lexicon with the neologisms; the default one never has them (pie/neologism.py)
+        from pie.neologism import with_neologisms
+        lx = with_neologisms(lx)
     rng = random.Random(args.seed)
     ap_derived = args.derived
 
@@ -260,6 +265,7 @@ def main() -> int:
     chosen += [i for i in pool if lx.specs[i]["family"] == "verb" and hits(i, CORE_VERBS) and i not in chosen
                and lx.meaning(i)[1] in TRUSTED_GLOSS]
     chosen += [i for i in CORE_NOUNS + CONVERSATION if i in pool and i not in chosen]
+    chosen += [i for i in pool if args.tier3b and lx.coined(i) == "neologism" and i not in chosen]
     # the formula menu's words, so planners can use the inherited phrases
     menu_path = ROOT / "data" / "generation" / "formula_menu.json"
     menu = json.loads(menu_path.read_text("utf-8")) if menu_path.exists() else []

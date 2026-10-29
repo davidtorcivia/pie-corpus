@@ -42,7 +42,8 @@ def main() -> int:
     for split in ("train", "eval"):
         for fname, text in views(d[f"{split}_records"]).items():
             (vdir / f"{split}.{fname}").write_text(text, "utf-8")
-    summary = {k: len(v) for k, v in d.items() if k != "batch_eligibility"}
+    summary = {k: len(v) for k, v in d.items() if k not in ("batch_eligibility", "neologism_share")}
+    summary["neologism_share"] = d["neologism_share"]      # Tier 3b words / training words (PLAN.md cap 10-15%)
     summary["experimental_batches"] = args.experimental_batches
     summary["batch_eligibility"] = d["batch_eligibility"]
     summary["train_tasks_by_type"] = dict(collections.Counter(t["task"] for t in d["train_tasks"]))
