@@ -3,6 +3,7 @@
 measured on errors we planted.
 
   uv run python -I scripts/make_review_packet.py t001 --n 40 --plants 8 --tier1 4
+  uv run python -I scripts/make_review_packet.py t3b-001 --tier tier3b --n 15 --plants 5 --tier1 3
 
 Writes docs/audits/packets/<batch>-packet.jsonl (what the reviewer sees:
 pie, english, genre; ids are opaque; no gloss, which would reveal plants) and
@@ -70,10 +71,15 @@ def main() -> int:
     ap.add_argument("--plants", type=int, default=8)
     ap.add_argument("--tier1", type=int, default=4)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--tier", default="tier3", choices=("tier3", "tier3b"),
+                    help="corpus/<tier>/; tier3b loads the neologisms so plants can hit coined words too")
     args = ap.parse_args()
     rng = random.Random(args.seed)
     lx = Lexicon.load()
-    recs = [json.loads(x) for x in (ROOT / "corpus/tier3" / f"{args.batch}.jsonl").read_text("utf-8").splitlines()]
+    if args.tier == "tier3b":
+        from pie.neologism import with_neologisms
+        lx = with_neologisms(lx)
+    recs = [json.loads(x) for x in (ROOT / "corpus" / args.tier / f"{args.batch}.jsonl").read_text("utf-8").splitlines()]
     sample = rng.sample(recs, min(args.n, len(recs)))
     items, key = [], {}
     for r in sample:
