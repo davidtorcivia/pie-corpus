@@ -68,6 +68,12 @@ KOKORO_FILES = {
     "voices/hf_beta.pt": "63c0a1a6272e98d43f4511bba40e30dd9c8ceaf5f39af869509b9f51a71c503e",
     "voices/hm_omega.pt": "b55f02a8e8483fffe0afa566e7d22ed8013acf47ad4f6bbee2795a840155703e",
     "voices/hm_psi.pt": "2f0f055cea4f1083f4ef127ece48d71606347f6557dbb961c0ca5740a2da485b",
+    "voices/bm_george.pt": "f1bc812213dc59774769e5c80004b13eeb79bd78130b11b2d7f934542dab811b",
+    "voices/im_nicola.pt": "234ed06648649f9bd874b37508ea17560b9c993ef85b4ddb3e3a71e062bd2c12",
+    "voices/ef_dora.pt": "d9d69b0f8a2b87a345f269d89639f89dfbd1a6c9da0c498ae36dd34afcf35530",
+    "voices/em_alex.pt": "5eac53f767c3f31a081918ba531969aea850bed18fe56419b804d642c6973431",
+    "voices/pm_alex.pt": "cf0ba8c573c2480fc54123683a35cf1e2ae130428e441eb91f9149bdb188a526",
+    "voices/ff_siwis.pt": "8073bf2d2c4b9543a90f2f0fd2144de4ed157e2d4b79ddeb0d5123066171fbc9",
 }
 KOKORO_CACHE = Path(os.environ.get("PIE_KOKORO_CACHE", ROOT / "tts" / "cache" / "hf"))
 KOKORO_VOCAB = json.loads((ROOT / "tts" / "kokoro" / "vocab.json").read_text("utf-8"))["vocab"]
