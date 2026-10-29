@@ -1,0 +1,60 @@
+{
+ "plans": 40,
+ "realized": 40,
+ "exact_pass": 40,
+ "accent_representation_tokens": 4,
+ "accent_defect_tokens": 4,
+ "reject_rate": 0.0,
+ "distinct_roots": 144,
+ "roots_per_sentence": 3.6,
+ "distinct_lexemes": 247,
+ "max_lexeme_uses": 11,
+ "most_used": [
+  [
+   "pie-lex-gwmskjeti",
+   11
+  ],
+  [
+   "pie-lex-h2owis",
+   11
+  ],
+  [
+   "pie-lex-suHnus",
+   11
+  ],
+  [
+   "pie-lex-peh2sti",
+   11
+  ],
+  [
+   "pie-lex-h1nomn",
+   11
+  ]
+ ],
+ "dup_within": 0,
+ "dup_across_batches": 0,
+ "tokens": 2135,
+ "words_per_sentence": 48.35,
+ "words_per_record": 48.35,
+ "meter_fit": {
+  "lines": 157,
+  "fit": 53,
+  "share": 0.338
+ },
+ "formula_uses": 18,
+ "warnings": 19,
+ "accent_unresolved": {
+  "tokens": 0,
+  "lexemes": 0,
+  "records": 0
+ },
+ "gates": {
+  "reject_rate<=0.10": true,
+  "max_lexeme_uses<=11": true,
+  "theme_core_uses<=32": true,
+  "roots_per_sentence>=0.35": true,
+  "duplicates<=2%": true,
+  "all_exact": true
+ },
+ "gate": "PASS"
+}
