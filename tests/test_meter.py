@@ -82,3 +82,11 @@ def test_record_meter_fields():
     # an old stored field (no exact/cadence) still summarizes
     old = {"line_syllables": [8, 9, 11], "fit": 3, "targets": [8, 11]}
     assert summary([old])["exact"] == 2 and summary([old])["cadence"] == {}
+
+
+def test_public_nuclei_and_words():
+    from pie.meter import word_nuclei, words
+    segs, nuc = word_nuclei("ph₂tḗr")
+    assert [segs[i].base for i in nuc] == ["h2", "e"]
+    assert len(word_nuclei("h₁éḱwōs-kʷe")[1]) == word_syllables("h₁éḱwōs-kʷe") == 3
+    assert words('h₂ówis, h₁éḱwōs-kʷe. "só"') == ["h₂ówis", "h₁éḱwōs-kʷe", "só"]

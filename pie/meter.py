@@ -104,6 +104,18 @@ def _word_segs(word: str) -> list[Seg]:
     return parse(word.replace("-", ""))
 
 
+def word_nuclei(word: str, laryngeals: str = "interconsonantal") -> tuple[list[Seg], list[int]]:
+    """A word's segments and the indices of its syllable nuclei (shared with pie.ipa, so the IPA
+    syllables are exactly the ones counted here)."""
+    segs = _word_segs(word)
+    return segs, _nuclei(segs, laryngeals)
+
+
+def words(text: str) -> list[str]:
+    """The words a line is counted over (punctuation dropped, clitic hyphens kept inside the word)."""
+    return _words(text)
+
+
 def word_syllables(word: str, laryngeals: str = "interconsonantal", sievers: bool = False) -> int:
     segs = _word_segs(word)
     nuclei = _nuclei(segs, laryngeals)
