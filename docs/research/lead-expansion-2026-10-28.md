@@ -135,3 +135,8 @@ poetics-gifts-016 (hear my word) and epic-diction-008 (μένος ἠΰ). 'Barre
 but it is known at word level, and `pie-lex-sterih2s` is not usable in the engine (rule
 `unknown:noun-shape`), so no plan can be realized for it. Imperishable water fails on the
 noun (root-level only).
+
+**Re-check on the final cq2 index (645326c, after the Avestan empty-key fix).** hear + word (*ḱlew-* + *wekʷ-*,
+window ±4): Indo-Iranian 1446, Slavic 28, Greek 26, Germanic 2, the same as on the earlier build. The verdict
+stands, and lead expansion is closed. The imperishable-water pair rests on Vedic, Atharvaveda and Hesiod loci,
+none of them Avestan, so the faulty Avestan keys could not have affected it.
