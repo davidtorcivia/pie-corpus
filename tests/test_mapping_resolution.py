@@ -255,7 +255,8 @@ def test_every_override_file_and_key_is_loaded():
                 elif kind == "proto":
                     assert (r["code"], mp.proto_key(r["term"])) in ov["proto"], (f.name, r)
                 else:
-                    assert mp._keyer(r["lang"])(r["key"]) in ov["key"][r["lang"]], (f.name, r)
+                    # cq2: headword_key, never "" (an Avestan-script key row keyed to "" matched every path)
+                    assert mp.headword_key(r["lang"], r["key"]) in ov["key"][r["lang"]], (f.name, r)
     assert n["lemma"] and n["form"]
 
 
