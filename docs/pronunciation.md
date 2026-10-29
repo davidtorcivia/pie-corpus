@@ -249,7 +249,7 @@ speak_ipa("ʔés.ti", backend="kokoro-remote", out_wav="e.wav", voice="hf_alpha"
 
 - **Hindi accent.** Both main engines speak through Hindi: eSpeak's `hi` base and Kokoro's Hindi voices give dental or retroflex-coloured t d and Hindi vowel colours. The eSpeak r is the base1 alveolar trill (`R`) rather than Hindi's tap. With the non-Hindi Kokoro voices, χ c ɟ and murmur were never trained.
 - **kʷ is k+w** in every engine (eSpeak has no labialized stops, Kokoro and Piper no ʷ), and ɡʷʱ is ɡʱ+w.
-- **Kokoro substitutions** (§11.1 table): no ħ ʕ (said χ ɣ), syllabic resonants as ə + resonant, ʱ as ʰ. The accent is an imposed F0 contour on the local backend and plain ˈ stress on the remote one.
+- **Kokoro substitutions** (§11.1 table): no ħ ʕ (said χ ɣ), syllabic resonants as ə + resonant, ʱ as ʰ. The accent is an imposed F0 contour on `kokoro` and `kokoro-erebus` and plain ˈ stress on `kokoro-remote`.
 - **eSpeak conventions.** All three presets and the `fronted`, `colored`, `voiceless` and `generic` options are supported. `fronted` kʲ ɡʲ ɡʲʱ are said as the palatals c ɟ ɟʱ (§3.1: the same articulation). `dorsals="uvular"` (ɢ: no eSpeak table has a voiced uvular stop) and `vocalized="syllabic"` (χ̩ etc.) raise `UnsupportedPhone`.
 - **eSpeak stress.** In stress mode a word without an accent spoken alone still gets eSpeak's default stress. The tone voice's pitch range is narrow (about 80 → 98 Hz at default settings).
 - **Licences.** The eSpeak data is GPL-3.0 (the audio is not covered). Kokoro is Apache-2.0. Piper's code is GPL-3.0; the licence of the `hi_IN-rohan` data (IIT Madras IndicTTS) is unverified, so confirm it before any public use of Piper clips.
