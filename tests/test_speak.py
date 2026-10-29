@@ -310,8 +310,9 @@ def test_profiles_round_trip_or_raise_in_espeak(name, tmp_path):
 def test_kokoro_render_matches_engine_input(tmp_path):
     ipa = I.to_ipa("h₂éǵeti", convention=SUPPORTED["plain"])
     r = S.speak_ipa(ipa, backend="kokoro", out_wav=str(tmp_path / "k.wav"), profile="h2-velar")
-    assert r.engine_input == S.engine_input(ipa, backend="kokoro", profile="h2-velar").replace("́", "") \
-        == unicodedata.normalize("NFC", "xaɡeti")
+    planned = NFD(S.engine_input(ipa, backend="kokoro", profile="h2-velar"))
+    assert planned == NFD("xáɡeti")                         # the acute marks the pitch-raised vowel
+    assert NFD(r.engine_input) == planned.replace(I.HIGH, "")
     with wave.open(r.out_wav) as w:
         assert w.getnframes() > 0.3 * w.getframerate()
 

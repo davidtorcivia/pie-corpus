@@ -85,6 +85,7 @@ The notation has three series: ḱ ǵ ǵʰ, k g gʰ and kʷ gʷ gʷʰ. Three ser
 
 - **Default: palatovelars are palatal stops [c ɟ ɟʱ].** Fortson §3.5 calls them true palatals, like k and g farther forward (as in *Tokyo*, *argue*), and Beekes §11.3.2 p. 122 has the tongue raised toward the palate. The single symbols [c ɟ] are easier for TTS than a diacritic.
 - Alternative `dorsals="fronted"`: [kʲ ɡʲ ɡʲʱ], the same articulation written as a fronted velar.
+- Alternative `dorsals="plain"`: [k ɡ ɡʱ], the palatovelars merged with the plain velars. This is a speech choice, not a claim about PIE. Kokoro's only training language with c ɟ labels is Hindi, where they stand for च ज [tʃ dʒ], so [ɟ c] come out as affricates (docs/research/tts-bakeoff.md).
 - Alternative `dorsals="uvular"` (the uvular hypothesis): the written palatovelars are plain velars [k ɡ ɡʱ] and the written plain velars are uvulars [q ɢ ɢʱ]. Ringe (§2.2.1 p. 7 and n. 2) finds true palatal stops most unlikely and takes the other two series as postvelar. Clackson (§2.4) reports Huld's version (ḱ velar, k uvular), and Mallory–Adams (§3.2) mention k, q, qʷ.
 - **Labiovelars = [kʷ ɡʷ ɡʷʱ]**, single segments, velars with lip-rounding, not velar + w (Fortson §3.5; Ringe p. 7; Clackson §2.4 p. 49; Beekes p. 122). Sanskrit and Lithuanian keep them apart from *ku̯. The notation writes a plain velar + w as `k\w` in ASCII, which the converter renders [kw]. Boukólos delabialization is applied in the morphology engine (`phon.boukolos`), not here.
 
@@ -194,6 +195,8 @@ Code: `pie/speak.py` (API), `scripts/speak.py` (CLI), `scripts/speech_pack.py` (
 | `kokoro-remote` | Kokoro-FastAPI server, `POST /dev/generate_from_phonemes` | ˈ only (no F0 access on the server) | Same model; any server voice (Hindi, English `af_*`/`bm_*`, Italian `im_nicola`, …) |
 | `kokoro-erebus` | The `kokoro` backend itself, run as the `pie-tts` service on erebus (§11.6), `POST /speak_ipa` | Same as `kokoro` (`pitch=True` F0 patch, or ˈ) | Same output as local `kokoro`, with no local PyTorch env needed; the voices pinned in the deployed revision |
 
+**Respelling profiles.** `speak(…, profile=…)` (CLI `--profile`) respells the converter IPA before any backend sees it, with whole-phone replacements in one pass, longest first (`pie.ipa.respell`). Examples: `h2-velar` says h₂ as [x], `h1-glottal-stop` says h₁ as [ʔ], `murmur-aspirated` writes ʰ, and `syllabic-schwa` writes əC. The full list is `pie.speak.PROFILES`. Because the profile is applied first, the eSpeak round trip checks the respelled IPA, which is what was actually sent. `pie.speak.engine_input` returns the exact engine input without synthesizing. The bake-off of voices × profiles is docs/research/tts-bakeoff.md.
+
 **Round trip (espeak).** eSpeak does not reject an unknown phoneme code: it silently drops the rest of the word (`[[H'eKw0s]]` is read as ħˈe). Every rendering is therefore read back with `espeak-ng --ipa` on the exact string sent and compared with the converter's IPA. The comparison ignores dots, stress and tone, reads eSpeak's ʰ after a voiced stop as ʱ, kw as kʷ, and a doubled r̩ l̩ m̩ n̩ ɐ ɵ as one (eSpeak prints a tone-bearing or long one twice). A mismatch raises `RoundTripError`, or with `strict=False` (`--no-strict`) prints a WARNING on stderr and warns. A second failure mode is also guarded: `[[…]]` input longer than about 750 characters is cut mid-word into a new clause that eSpeak reads as English text, so input goes to eSpeak in pieces of at most 400 characters.
 
 **Kokoro input.** Kokoro's vocab lacks ʱ ʷ ̩ ħ ʕ ɢ ɵ and the acute, and `KModel` drops unknown symbols silently. The converter IPA goes through one substitution map (`pie.speak.KOKORO_SUBST`) and every resulting symbol is checked against `tts/kokoro/vocab.json` (`UnsupportedPhone` otherwise):
@@ -227,7 +230,7 @@ Code: `pie/speak.py` (API), `scripts/speak.py` (CLI), `scripts/speech_pack.py` (
    | `voices/hm_omega.pt` | 523,425 | `b55f02a8e8483fffe0afa566e7d22ed8013acf47ad4f6bbee2795a840155703e` |
    | `voices/hm_psi.pt` | 523,351 | `2f0f055cea4f1083f4ef127ece48d71606347f6557dbb961c0ca5740a2da485b` |
 
-   `tts/kokoro/vocab.json` is the `vocab` of that `config.json`.
+   The other pinned voices (Hindi, Spanish, Brazilian Portuguese, French, Italian and the English voices chosen in the bake-off) and their sha256 are listed in `pie.speak.KOKORO_FILES`. `tts/kokoro/vocab.json` is the `vocab` of that `config.json`.
 3. **Kokoro, remote** (optional): a Kokoro-FastAPI server. With `PIE_KOKORO_URL` set (e.g. `http://localhost:8880` through `ssh -N -L 8880:localhost:8880 erebus`), requests go there over HTTP. Otherwise they go through `ssh $PIE_KOKORO_SSH curl …` (default host `erebus`, port `PIE_KOKORO_PORT`, default 8880). Treat the server as production: the backend only posts to the TTS endpoint.
 
 ### 11.3 Usage

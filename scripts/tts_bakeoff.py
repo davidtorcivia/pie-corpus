@@ -6,6 +6,7 @@ eSpeak (tone) as the reference. Runs in the Kokoro env:
       python -I scripts/tts_bakeoff.py render              # tts/bakeoff/audio/*.wav|mp4 + tts/bakeoff/manifest.json
   ... python -I scripts/tts_bakeoff.py coverage --texts <unzipped nltk udhr dir>   # coverage table (markdown)
   ... python -I scripts/tts_bakeoff.py qc                  # re-run the automatic checks on rendered clips
+  ... python -I scripts/tts_bakeoff.py page-files          # rating-page/files.txt + files-N.json for publishing
 
 Every clip is one word with one target sound respelled one way (a pie.ipa Convention for the dorsals, a
 pie.speak Profile for the rest); the word's other sounds use the base spelling (BASE_PROFILE for Kokoro, the
@@ -335,6 +336,37 @@ def coverage(args) -> None:
     print("\nlabel words per language:", sizes)
 
 
+PAGE = OUT / "rating-page"
+PUBLISH_BATCH = 250          # files per Artifact publish (the tool takes at most 255)
+
+
+def page_files(args) -> None:
+    """Write rating-page/files.txt (published path <- source path, one per line) and files-N.json (Artifact `files`
+    maps in batches): the page, manifests/kokoro.json, every rendered clip under audio/, and, when present,
+    tts/vc/manifest.json as manifests/vc.json with its clips under the VC manifest's own audio_base."""
+    m = json.loads((OUT / "manifest.json").read_text("utf-8"))
+    pairs = [("manifests/kokoro.json", "tts/bakeoff/manifest.json")]
+    pairs += [(m["audio_base"] + c["audio"], f"tts/bakeoff/audio/{c['audio']}") for c in m["clips"] if c["audio"]]
+    vc = ROOT / "tts" / "vc" / "manifest.json"
+    if vc.exists():
+        v = json.loads(vc.read_text("utf-8"))
+        pairs.append(("manifests/vc.json", "tts/vc/manifest.json"))
+        src_dir = v.get("audio_dir", "tts/vc/audio")
+        pairs += [(v["audio_base"] + c["audio"], f"{src_dir}/{c['audio']}") for c in v["clips"] if c.get("audio")]
+    missing = [src for _, src in pairs if not (ROOT / src).exists()]
+    if missing:
+        sys.exit(f"{len(missing)} source files missing, e.g. {missing[:3]}")
+    total = sum((ROOT / src).stat().st_size for _, src in pairs) + (PAGE / "index.html").stat().st_size
+    for old in PAGE.glob("files-*.json"):
+        old.unlink()
+    (PAGE / "files.txt").write_text("index.html <- tts/bakeoff/rating-page/index.html\n" +
+                                    "".join(f"{a} <- {b}\n" for a, b in pairs), "utf-8")
+    for i in range(0, len(pairs), PUBLISH_BATCH):
+        part = dict(pairs[i:i + PUBLISH_BATCH])
+        (PAGE / f"files-{i // PUBLISH_BATCH + 1}.json").write_text(json.dumps(part, indent=1) + "\n", "utf-8")
+    print(f"{len(pairs)} files + index.html, {total / 1e6:.1f} MB, {-(-len(pairs) // PUBLISH_BATCH)} publish batches")
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -342,10 +374,11 @@ def main(argv=None) -> int:
     r.add_argument("--voices", help="comma-separated Kokoro voices (default all)")
     r.add_argument("--resume", action="store_true", help="keep clips already rendered")
     sub.add_parser("qc")
+    sub.add_parser("page-files")
     c = sub.add_parser("coverage")
     c.add_argument("--texts", required=True, help="directory with the NLTK udhr files named in UDHR_FILE")
     a = ap.parse_args(argv)
-    {"render": render, "qc": rerun_qc, "coverage": coverage}[a.cmd](a)
+    {"render": render, "qc": rerun_qc, "coverage": coverage, "page-files": page_files}[a.cmd](a)
     return 0
 
 
