@@ -2,19 +2,14 @@
  "schema_version": 1,
  "batch": "b002",
  "sha256": {
-  "records": "3596ccd4034ca2004ca9bc1f1cffa2d444bd82c45b46845158c43bfcf794bbc3",
-  "plans": "bbe33930b1ee1b55d83d9a5d2e1d8f17b04694f3b071ba802904b3673f7eb0e3",
-  "gate_report": "3d742e5c56857a3f37105cb71a89f95701551ba6db9e79dc2a415142701ee8f2"
+  "records": "ec563c08819453f95634205458b2bc44700dc4a243ed923c8a1791e4f218d890",
+  "plans": "ca0978d974a6ad6171acb8073e7017420671f6a11b9eeb8ce2e4cc644d8941ff",
+  "gate_report": "43c7db4255e8fc7ef06e51ec76d6e6acd6fea437b0e5500cfbcefcfd0a561d1b"
  },
  "review": {
   "required": true,
-  "status": "approved",
-  "evidence": [
-   "data/generation/batches/b002.json",
-   "docs/audits/tier3-b002-review.md",
-   "docs/STATUS.md:16",
-   "docs/STATUS.md:111-112"
-  ],
-  "rationale": "Review verdict explicitly passes scaling; STATUS records findings fixed at source and subsequent merged-engine regeneration. Migrated historical release, not a new scholarly review."
+  "status": "pending",
+  "evidence": [],
+  "rationale": "Awaiting review."
  }
 }
