@@ -33,39 +33,39 @@
  ],
  "dup_within": 0,
  "dup_across_batches": 0,
- "tokens": 842,
- "words_per_sentence": 19.45,
- "words_per_record": 19.45,
+ "tokens": 850,
+ "words_per_sentence": 19.65,
+ "words_per_record": 19.65,
  "meter_fit": {
   "lines": 152,
-  "fit": 152,
-  "share": 1.0
+  "fit": 148,
+  "share": 0.974
  },
  "meter_near": {
   "lines": 152,
-  "near": 152,
-  "share": 1.0
+  "near": 148,
+  "share": 0.974
  },
  "meter_exact": {
   "lines": 152,
-  "exact": 144,
-  "share": 0.947
+  "exact": 138,
+  "share": 0.908
  },
  "meter_cadence": {
   "8": {
-   "lines": 64,
+   "lines": 63,
    "cadence": 12,
    "pattern": "LHLX",
-   "share": 0.188
+   "share": 0.19
   },
   "11": {
-   "lines": 80,
-   "cadence": 5,
+   "lines": 75,
+   "cadence": 6,
    "pattern": "HLHX",
-   "share": 0.062
+   "share": 0.08
   }
  },
- "formula_uses": 19,
+ "formula_uses": 22,
  "warnings": 3,
  "accent_unresolved": {
   "tokens": 0,
