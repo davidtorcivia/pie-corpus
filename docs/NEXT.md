@@ -37,3 +37,9 @@ Judge "a living language you can converse with", not a talking dictionary: use t
   - Two 'give' aorists (déh₃t, déh₃ut) both enter the chat data; pick one.
   - The 6-use cap blocks natural fixes for everyday words in Tier 3b.
   - Brief-3b §3 "Welcome, guest" idiom puts the model in a house, contradicting §5's "no home". Restrict it to the user's lines.
+
+## Hold-out (redrawn 2026-10-29: 5f2239c, 1a2cb6a)
+- 821 families are protected now (Swadesh-207, Leipzig–Jakarta, a conversational core); 81 core families that were held before are trainable (help, drink, hear, sit, water, day, think, …).
+- **Owner's call:** some families are still held but arguably everyday: mneh₂- 'remind', h₃neh₂- 'enjoy', h₁rey- 'rise', prep- 'appear', ḱenk- 'hang', treH- 'protect', h₂ens- 'give birth', melkʷ- 'fall silent'. Protecting them needs another redraw (cheap until scores exist).
+- Offer `pie-lex-h1ewHt` 'help' in Tier 3b slices (`TIER3B_INHERITED`) now that it is trainable.
+- wait, thank, answer, today and tomorrow have no trusted gloss in the lexicon, so the concept list can't protect them. They need glosses or coinages.
