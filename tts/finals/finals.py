@@ -367,24 +367,35 @@ def clip_stats(path) -> dict:
     speech = (idx[-1] - idx[0] + 1) * 0.01 if idx.size else 0.0
     tail = (n - 1 - idx[-1]) * 0.01 if idx.size else 0.0
     return {"duration_s": round(len(a) / sr, 3), "speech_s": round(float(speech), 3),
-            "tail_s": round(float(tail), 3), "peak": round(float(np.abs(a).max()), 3) if a.size else 0.0,
+            "tail_s": round(float(tail), 3), "amp_peak": round(float(np.abs(a).max()), 3) if a.size else 0.0,
             "clipped": int((np.abs(a) >= 0.999).sum()), "rate": sr}
 
 
 def flags_for(c, src_stats) -> list[str]:
+    """Re-render triggers: silent, clipped, truncated. Seed-VC keeps the source's length by construction, so a
+    converted clip is truncated when its file is more than 5 % shorter than the source or its speech runs into
+    the last frame; Kokoro, a separate rendering, when its speech is under 0.65x eSpeak's."""
     fl = []
-    if c["peak"] < 0.02 or c["speech_s"] < 0.1:
+    if c["amp_peak"] < 0.02 or c["speech_s"] < 0.1:
         fl.append("silent")
     if c["clipped"] > 10:
         fl.append(f"clipped ({c['clipped']} samples)")
     if c["tail_s"] < 0.005 and c["family"] != "espeak":
         fl.append("speech runs to the last frame (cut off?)")
+    if c["family"] == "vc" and c["duration_s"] / src_stats["duration_s"] < 0.95:
+        fl.append(f"truncated: file {c['duration_s'] / src_stats['duration_s']:.2f}x the source")
     r = c["speech_s"] / max(src_stats["speech_s"], 1e-6)
-    if c["family"] == "vc" and not (0.9 <= r <= 1.1):
-        fl.append(f"truncated or padded: speech {r:.2f}× the source")
     if c["family"] == "kokoro" and r < 0.65:
-        fl.append(f"short: speech {r:.2f}× eSpeak's")
+        fl.append(f"short: speech {r:.2f}x eSpeak's")
     return fl
+
+
+def notes_for(c) -> list[str]:
+    """Not re-render triggers, shown beside the clip: a word-initial voiceless onset (eSpeak's χ, h, ʔ) that
+    lost more than half its noise."""
+    if c["family"] == "vc" and c.get("onset_src_ms", 0) >= 80 and c.get("onset_ms", 0) < 0.5 * c["onset_src_ms"]:
+        return [f"onset noise {c['onset_ms']} ms of the source's {c['onset_src_ms']} ms"]
+    return []
 
 
 def evaluate(_):
@@ -396,6 +407,7 @@ def evaluate(_):
     chi = {i for i, s in srcs.items() if s["ipa"].startswith("χ")}
     prepared = {}
     rows = []
+    rer = load("rerenders.json") or []
     for sy in systems():
         for i in it:
             w = wav_path(sy["id"], i)
@@ -410,6 +422,10 @@ def evaluate(_):
             if sy["family"] != "espeak":
                 r.update(compare(prepared[i], w))
             r["flags"] = flags_for(r, prepared[i]["stats"])
+            r["notes"] = notes_for(r)
+            rr = [x for x in rer if x["system"] == sy["id"] and x["item"] == i]
+            if rr:
+                r["rerendered"] = rr[-1]
             rows.append(r)
             print(sy["id"], i, r.get("per_src"), r.get("f0_r"), r.get("dur_ratio"), r["flags"], flush=True)
     summary = {}
@@ -487,9 +503,10 @@ def build(_):
                  "audio": f"{sy['id']}.mp4", "sprite": {"file": f"{sy['id']}.mp4", "start": round(t, 4),
                                                         "duration": round(len(a) / sr, 4)},
                  "gain_db": round(20 * np.log10(g), 2), "rate": sr, "wav": rel(w),
-                 "duration_s": m.get("duration_s"), "speech_s": m.get("speech_s"), "peak": m.get("peak"),
+                 "duration_s": m.get("duration_s"), "speech_s": m.get("speech_s"), "peak": m.get("amp_peak"),
                  "clipped": m.get("clipped"), "same_as": None,
-                 "qc": {"ok": not m.get("flags"), "flags": m.get("flags", [])}}
+                 "qc": {"ok": not m.get("flags"), "flags": m.get("flags", []), "notes": m.get("notes", []),
+                        "rerendered": m.get("rerendered")}}
             if sy["family"] == "espeak":
                 s = srcs[r["id"]]
                 c.update(ipa=s["ipa"], engine_input=s["engine_input"], profile=None, method="espeak-source")
@@ -552,11 +569,38 @@ def build(_):
     print(len(clips), "clips;", len(files), "files +index.html,", f"{size / 1e6:.1f} MB")
 
 
+def pick_rerenders(_):
+    """Second renders (Seed-VC is a sampler) of first segments whose onset noise was weak: seg-r2/<id>.s00.wav.
+    Keep whichever render keeps more of eSpeak's word-initial voiceless noise; the old one is kept as
+    seg-r1/. Writes rerenders.json; run join and eval after it."""
+    import shutil
+    sys.path.insert(0, str(VC))
+    from evaluate import onset_unvoiced_ms
+    srcs = {x["id"]: x for x in load("audio/espeak.json")}
+    out = load("rerenders.json") or []
+    for new in sorted(AUDIO.glob("finals-seedvc-f0-*/seg-r2/*.s00.wav")):
+        base = new.parent.parent
+        item = new.name.split(".")[0]
+        old = base / "seg" / new.name
+        src = ROOT / srcs[item]["segments"][0]["wav"]
+        a, b, s0 = onset_unvoiced_ms(old), onset_unvoiced_ms(new), onset_unvoiced_ms(src)
+        keep = "second" if b > a else "first"
+        (base / "seg-r1").mkdir(exist_ok=True)
+        shutil.copy2(old, base / "seg-r1" / new.name)
+        if keep == "second":
+            shutil.copy2(new, old)
+        new.rename(new.with_suffix(".done.wav"))
+        out.append({"system": base.name, "item": item, "segment": 0, "onset_src_ms": s0, "first_ms": a, "second_ms": b,
+                    "kept": keep})
+        print(base.name, item, s0, a, b, keep, flush=True)
+    save("rerenders.json", out)
+
+
 def main(argv=None):
     import argparse
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
-    for name in ("items", "espeak", "kokoro", "join", "shifts", "eval", "build"):
+    for name in ("items", "espeak", "kokoro", "join", "shifts", "eval", "build", "pick-rerenders"):
         sub.add_parser(name)
     q = sub.add_parser("queue")
     q.add_argument("--voices", required=True)
@@ -567,7 +611,7 @@ def main(argv=None):
     q.add_argument("--force", action="store_true")
     a = ap.parse_args(argv)
     {"items": items, "espeak": espeak, "kokoro": kokoro, "queue": queue, "join": join, "shifts": shifts,
-     "eval": evaluate, "build": build}[a.cmd](a)
+     "eval": evaluate, "build": build, "pick-rerenders": pick_rerenders}[a.cmd](a)
 
 
 if __name__ == "__main__":

@@ -255,7 +255,8 @@ function cell(word, sys) {
   note.addEventListener("change", () => { clearTimeout(t); save(c.id, { note: note.value }); });
   box.append(scores, note);
   if (c.qc && !c.qc.ok) box.append(el("div", { class: "flag", text: c.qc.flags.join("; ") }));
-  box.append(el("div", { class: "metrics", text: metricsLine({ ...c, word_ipa: word.ipa }) }));
+  const extra = [...(c.qc?.notes || []), c.qc?.rerendered ? `best of 2 renders (onset ${c.qc.rerendered.first_ms} / ${c.qc.rerendered.second_ms} ms)` : null].filter(Boolean);
+  box.append(el("div", { class: "metrics", text: [metricsLine({ ...c, word_ipa: word.ipa }), ...extra].join(" · ") }));
   return box;
 }
 function item(word) {
