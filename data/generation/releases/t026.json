@@ -1,15 +1,1 @@
-{
- "schema_version": 1,
- "batch": "t026",
- "sha256": {
-  "records": "4509abc35e8581c1320f2bd58b4d5492317a0a9a594ee89376994fcb1c15bdae",
-  "plans": "011a29cfde5da2149d6969aa38ff26416f9a968c0f11db9c938e77cff5468bda",
-  "gate_report": "8dbe1da2fa4f36e24a43e3d7e722c93d835fd4706896c353d706d675a6d3af63"
- },
- "review": {
-  "required": true,
-  "status": "pending",
-  "evidence": [],
-  "rationale": "Awaiting review."
- }
-}
+{"schema_version": 1, "batch": "t026", "sha256": {"records": "1d27aecb12adbdd36ed1e2021650fb24414b60d757a1647cb16522e6c24f0dfb", "plans": "f1c047c1db8d124764c0c232718889bfd0185ad7b15964cdcef134eb129b0096", "gate_report": "06c689b6bb30fc2cfdac3017931ae6be8185d4c9aac08db64eb532130445c6d8"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t026.json", "docs/audits/tier3-t026-review.md", "docs/audits/packets/t026-verdicts.jsonl"], "rationale": "Calibrated review (docs/audits/tier3-t026-review.md): plants 5/5 blind; real 3-4/20 wrong -> 0 after fixes; gate PASS. The lead reverted one reviewer change (t026-0015 'Daughter of Sky' with pie-lex-dhugh2texr): that root family is held out for the cognate benchmark, pending the owner's decision on swapping held-out families."}}
