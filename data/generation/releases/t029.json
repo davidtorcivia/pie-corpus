@@ -1,15 +1,1 @@
-{
- "schema_version": 1,
- "batch": "t029",
- "sha256": {
-  "records": "2e85f9799ca638d35c18df1dd601935738616f369ecf656984c8888a818c6cd3",
-  "plans": "653d6993d4ba8ad906619e73cc7d7aa06ce1d1223ae56ace85f121d6c6e90055",
-  "gate_report": "e2d40ae17c58f218dfd56dea8c3114597eb5b093245d8067a40ff26f73e5d720"
- },
- "review": {
-  "required": true,
-  "status": "pending",
-  "evidence": [],
-  "rationale": "Awaiting review."
- }
-}
+{"schema_version": 1, "batch": "t029", "sha256": {"records": "711353f56624ab3f852094d253c6267ed1795543412b83985ef0366d12eaa743", "plans": "e2a8efa8649f53afe89a4cfcdcb2bc66781d5bc2c413ae08c9c82f64517630f9", "gate_report": "9b4bdb6715e0193c83e9b896a10f81e9a97c65a75f904a8a9d9c281f94294393"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t029.json", "docs/audits/tier3-t029-review.md", "docs/audits/packets/t029-verdicts.jsonl"], "rationale": "Calibrated review (docs/audits/tier3-t029-review.md): plants 5/5 named; real 2/20 wrong -> 0 after fixes at the source; gate PASS."}}

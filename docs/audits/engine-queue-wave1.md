@@ -12,3 +12,5 @@ These are fixed centrally after wave 1, before wave 2 starts. Each item names th
 - **Say/drive verbs share some forms**: *h₂éǵt* stood where a 'drive' form was meant. Add a warning for homophonous cells (t030).
 - **Pronoun number**: the brief lists SG|PL only, although DU works, and pronoun number isn't checked against the English (t030).
 - **Antecedent checker**: its two-clause window gives false positives on story topics (t028).
+- **Cap verdict (t029 reviewer): keep the cap formula.** The squeeze came from the slice: the theme-core picker matches whole gloss words, so "cow" missed gʷṓws (glossed "cattle"), and 2 of the 8 core slots stayed empty. Wave-2 slices pass `--core` explicitly, and the picker should match synonyms.
+- **Ungendered "you"/"we"** silently takes masculine adjectives, with no warning (t029).
