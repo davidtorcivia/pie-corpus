@@ -106,7 +106,9 @@ The order is: a Wiktionary table if the entry has one; otherwise a shape rule on
 | root-aorist | 22 | 17 | 88.0% |
 | thematic (noun) | 69 | 59 | 85.5% (the misses are adjectives whose lemma lacks a POS) |
 | eh2 | 19 (15 scored) | 15 | 100% (2026-10-28; was 78.9%) |
-| pk-iu-stem / n-stem-ak / thematic-neuter / er-stem | | | 79–85% |
+| pk-iu-stem | 34 | 27 | 89.3% (2026-10-28: an o-grade root is acrostatic, Fortson §6.21, except before RC, §6.27; was 84.7%) |
+| n-stem-ak | 10 | 7 | 85.3% (2026-10-28: a root-final liquid or nasal is consonantal before -n̥; was 82.6%) |
+| thematic-neuter / er-stem | | | 79–85% |
 | n-stem-hk / devi / hk-iu-stem | | | 45–71% (not usable) |
 
 **Usability policy:** Tier 3 may use only a table spec, or a shape rule with ≥ 85% backtest agreement (`usable` in `data/morph/inflection_specs.jsonl`).

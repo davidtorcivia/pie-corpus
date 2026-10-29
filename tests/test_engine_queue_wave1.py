@@ -214,3 +214,34 @@ def test_slice_offers_here_and_matches_synonyms(tmp_path, monkeypatch):
     s = json.loads((tmp_path / "data/generation/slices/herd.json").read_text("utf-8"))
     assert "closed:deictic_adv/here" in s["closed"]
     assert CATTLE in s["theme_core"]
+
+
+# census: shape rules fixed at the source --------------------------------------------------------------------------
+
+def test_o_grade_i_stem_is_acrostatic_and_rc_root_stays_proterokinetic():
+    from pie.classify import by_shape
+    sheep = by_shape({"form": "h₂ówis", "pos": "noun", "gender": "f"}).spec
+    assert (sheep.strong, sheep.weak, sheep.accent_class) == ("h₂ówi", "h₂éwi", "acrostatic")   # = the table
+    testis = by_shape({"form": "h₁órǵʰis", "pos": "noun"}).spec                                  # Fortson §6.27
+    assert (testis.weak, testis.accent_class) == ("h₁r̥ǵʰéy", "proterokinetic")
+    thought = by_shape({"form": "méntis", "pos": "noun", "gender": "f"}).spec
+    assert (thought.weak, thought.accent_class) == ("mn̥téy", "proterokinetic")
+
+
+def test_amphikinetic_n_stem_root_resonant_is_consonantal():
+    from pie.classify import by_shape
+    eagle = by_shape({"form": "h₃érō", "pos": "noun", "gender": "m"}).spec
+    assert (eagle.weak, eagle.loc_sg) == ("h₃rn̥", ["h₃rén"])                                     # = the table
+    assert by_shape({"form": "gléwō", "pos": "noun"}).spec.weak == "glun̥"
+
+
+def test_census_rules_pass_the_backtest_and_their_lexemes_are_usable(lx):
+    rep = json.loads((ROOT / "data/morph/classify_report.json").read_text("utf-8"))
+    assert rep["backtest"]["shape:pk-iu-stem"]["cell_accuracy"] >= 0.85
+    assert rep["backtest"]["shape:n-stem-ak"]["cell_accuracy"] >= 0.85
+    assert rep["usable_for_tier3"] >= 4885
+    rows = [json.loads(x) for x in (ROOT / "data/morph/inflection_specs.jsonl").read_text("utf-8").splitlines()]
+    for rule in ("shape:pk-iu-stem", "shape:n-stem-ak"):
+        assert all(r["usable"] for r in rows if r["rule"] == rule), rule
+    lid = next(r["id"] for r in rows if r["rule"] == "shape:n-stem-ak" and r["form"] == "stérō")
+    assert lx.admissible_cells(lid)["GEN.SG"][0] == "str̥nés"
