@@ -42,7 +42,12 @@ def compare(family, spec, para):
     # not the rule; athematic tables keep their citation-form mismatch (gʷḗn vs gʷénh₂s). Engine sweep,
     # docs/audits/engine-sweep/thematic.md "Gating".
     thematic = (tfam == "noun" and tspec.kind == "thematic") or (tfam == "adj" and tspec.m_weak is None)
-    if thematic and para.get("form") and para["form"] not in want.get("NOM.SG", []):
+    # eh₂-stems likewise: the rule's stem *is* the headword, so a table written on another spelling of it
+    # (unaccented ǵʰorneh₂ under ǵʰórneh₂, h₂yuh₁n̥téh₂ under h₂yuHn̥téh₂, tń̥neh₂ under tn̥néh₂, h₃migʰleh₂
+    # under h₃mígʰleh₂) scored 0/19 on every cell. Those 4 tables were the whole gap from 100% to 78.9%, and
+    # kept 391 eh₂ nouns unusable (docs/audits/engine-queue-wave1.md).
+    eh2 = tfam == "noun" and tspec.kind == "eh2"
+    if (thematic or eh2) and para.get("form") and para["form"] not in want.get("NOM.SG", []):
         return 0, 0
     try:
         have = cells_for(family, spec) if family == tfam else {}

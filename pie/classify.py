@@ -241,6 +241,21 @@ def by_shape(e: dict) -> Classified:
                           "noun")
     if f.endswith(("is", "us")):
         st = _strip(f, "s")
+        segs = _segs(st)
+        ai = next((j for j, x in enumerate(segs) if x.kind == "V" and x.acc), None)
+        acc = segs[ai] if ai is not None else None
+        # Fortson §6.27: mobile (proterokinetic) inflection spread at the expense of acrostatic in roots ending in a
+        # resonant + consonant, so ó + RC (h₁órǵʰis ~ h₁r̥ǵʰéys, ḱlównis ~ ḱlunéys) keeps the zero grade below
+        rc = ai is not None and ai + 2 < len(segs) - 1 and segs[ai + 1].kind == "R" and not segs[ai + 1].syl \
+            and segs[ai + 2].kind in ("C", "R") and not segs[ai + 2].syl
+        if acc is not None and acc.base == "o" and not acc.long and not rc:
+            # an accented o-grade root is acrostatic with o/e ablaut, root accent throughout (Fortson §6.21: *nókʷt-s
+            # ~ *nékʷt-; the tables h₂ówis ~ h₂éwis 'sheep', h₁ógʷʰis ~ h₁égʷʰis 'snake', h₂óḱris ~ h₂éḱris 'edge');
+            # the proterokinetic zero grade (h₂wéys) is the e-grade pattern (Fortson §6.22: ménti- ~ mn̥téy-).
+            # Backtest 84.7% → see data/morph/classify_report.json (engine-queue-wave1 census)
+            weak = render([replace(x, base="e") if x is acc else x for x in segs])
+            return Classified(NounSpec(st, weak, "acrostatic", g if g in ("m", "f") else "f"),
+                              "shape:pk-iu-stem", "noun")
         wk = zero_grade(st)
         if wk:
             weak = wk[:-1] + ("éy" if f.endswith("is") else "éw")
@@ -253,6 +268,12 @@ def by_shape(e: dict) -> Classified:
                           "shape:n-stem-hk", "noun")
     if f.endswith("ō"):                        # root accent: amphikinetic (kólHō, kl̥Hn̥-, loc. kl̥Hén)
         root = zero_grade(f[:-1])
+        # (liquids and nasals only: a glide stays vocalic, gléwō → glun̥ as pléwmō → plumn̥ in the tables)
+        if root and _segs(root)[-1].kind == "R" and _segs(root)[-1].syl and _segs(root)[-1].base in "rlmn":
+            # a root-final resonant before -n̥ / -én is consonantal: h₃érō → h₃rn̥, loc. h₃rén (the table's), not
+            # h₃r̥n̥, h₃r̥én; zero_grade() syllabified it before the suffix was added (engine-queue-wave1 census)
+            rs = _segs(root)
+            root = render(rs[:-1] + [replace(rs[-1], syl=False)])
         if root:
             return Classified(NounSpec(f[:-1] + "on", root + "n̥", "amphikinetic", g if g in ("m", "f") else "m",
                                        loc_sg=[root + "én"]), "shape:n-stem-ak", "noun")

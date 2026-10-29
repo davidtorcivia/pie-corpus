@@ -20,7 +20,9 @@ from pie.realize import Lexicon, accent_manifest
 ROOT = Path(__file__).resolve().parent.parent
 CORE_VERBS = ["be", "see", "carry", "give", "speak", "say", "go", "come", "know", "eat", "drink", "hear",
               "sit", "stand", "lead", "drive", "kill", "slay", "live", "fear", "seek", "protect", "milk",
-              "plough", "walk", "arrive", "seize", "burn", "lie", "put", "become", "split", "cover"]
+              "plough", "walk", "arrive", "seize", "burn", "lie", "put", "become", "split", "cover",
+              # t033: no 'sing' in the slice (planners wrote mléwH- 'speak') and 'love' only as stérg- 'protect~'
+              "sing", "love"]
 # always offered when usable, so a concept is never carried by a thin synonym (b001 review Q2)
 CORE_NOUNS = ["pie-lex-h2owis", "pie-lex-h1ngwnis", "pie-lex-peh2wr", "pie-lex-h1ekjwos", "pie-lex-gwoxws",
               "pie-lex-kjwox", "pie-lex-wlkwos", "pie-lex-dyexws", "pie-lex-ph2texr", "pie-lex-meh2texr",
@@ -95,6 +97,7 @@ CLOSED = {
     "closed:interrogative_adv/how_many": "how many? (kʷóti; MOD with a head, which takes the plural, or ADV; fronted)",
     "closed:correlative_adv/so_many": "so many (tóti; MOD with a head, plural, or ADV; answers 'how many?')",
     "closed:correlative_adv/as_many": "as many (as) (h₁yóti; MOD with a head, plural, or ADV; relative of tóti)",
+    "closed:deictic_adv/here": "here (h₁idʰé; ADV, not fronted; 'there' is the adverb h₂én)",
     "compound": ("compound adjective (bahuvrihi) 'having (a) F S' or noun (determinative): {\"lex_id\": \"compound\", "
                  "\"compound\": {\"first\": F, \"second\": S, \"type\": \"bahuvrihi\"|\"determinative\"}}; F = "
                  "closed:prefix/h1su 'good', closed:prefix/dus 'bad', closed:prefix/n 'un-, -less', closed:prefix/sm "
@@ -134,6 +137,28 @@ def verb_features(cells: dict) -> list[str]:
         elif parts[0] in ("IMP", "SBJV", "OPT"):
             feats.add(f"{parts[0]} {voice}")
     return sorted(feats)
+
+
+# a keyword also matches these gloss words. Wiktionary glosses some concepts under another English word, so
+# 'cow' missed gʷṓws, glossed 'cattle', and the t029 herding slice's theme core lost its main animal (t029 review)
+KEYWORD_SYNONYMS = {
+    "cow": ["cattle", "ox", "bull"], "cattle": ["cow", "ox", "bull"], "ox": ["bull", "cattle"], "bull": ["ox"],
+    "sheep": ["ewe", "ram", "lamb"], "ewe": ["sheep"], "ram": ["sheep"], "pig": ["swine", "piglet", "boar"],
+    "swine": ["pig"], "horse": ["mare", "stallion", "steed"], "mare": ["horse"], "dog": ["hound"],
+    "hound": ["dog"], "man": ["husband", "hero"], "woman": ["wife"], "wife": ["woman"], "house": ["home", "dwelling"],
+    "home": ["house"], "road": ["path", "way"], "path": ["road", "way"], "fire": ["flame"], "sky": ["heaven"],
+    "god": ["deity"], "king": ["ruler", "lord"], "child": ["son", "daughter"], "hungry": ["hunger"],
+    "hunger": ["hungry"], "thirst": ["thirsty"], "thirsty": ["thirst"],
+}
+
+
+def keyword_hit(lx: Lexicon, lex_id: str, words) -> bool:
+    """A keyword, or one of its KEYWORD_SYNONYMS, is a whole word of one of the lexeme's glosses (every sense, not
+    only the first three that the slice shows)."""
+    want = {w.lower() for w in words} | {x for w in words for x in KEYWORD_SYNONYMS.get(w.lower(), [])}
+    senses = list(lx.entries[lex_id].get("meaning") or []) or [lx.meaning(lex_id)[0] or ""]
+    g = " " + re.sub(r"[^a-z]+", " ", " ; ".join(senses).lower()) + " "
+    return any(f" {w} " in g for w in want)
 
 
 def planner_accent_ok(lx: Lexicon, lex_id: str) -> bool:
@@ -212,8 +237,7 @@ def main() -> int:
         return n or len(lx.entries.get(e.get("root_id") or "", {}).get("reflexes", {}))
 
     def hits(i, words):
-        g = " " + re.sub(r"[^a-z]+", " ", (lx.meaning(i)[0] or "").lower()) + " "
-        return any(f" {w} " in g for w in words)
+        return keyword_hit(lx, i, words)
 
     # keyword hits: dictionary-glossed first, then well attested; a derived-gloss
     # lexeme only if its (root, family) isn't represented yet (a root's many
