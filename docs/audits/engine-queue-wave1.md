@@ -30,3 +30,4 @@ These are fixed centrally after wave 1, before wave 2 starts. Each item names th
 - **The batch's "love" verb is glossed "protect~"**: check the gloss. There is no "sing" lexeme in the slice (t033).
 - **Planner brief: at most one repeated set-piece block per batch** (the "Who is this?" block appeared ×8 in t033).
 - **h₃wth₂dʰí / h₃wth₂ént** have a consonantal w between consonants; probably h₃uth₂- (meter audit, 4 tokens).
+- **meter_report**: the 'add vocative' edit doesn't renumber head/dep (t002); the cap note skips added epithets (t026 repair).
