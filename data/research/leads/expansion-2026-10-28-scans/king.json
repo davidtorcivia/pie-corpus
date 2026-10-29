@@ -1,0 +1,40 @@
+{
+ "target": [
+  "pie-lex-h3rexgjs"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 599,
+  "Germanic": 13,
+  "Indo-Iranian": 12711,
+  "Italic": 38
+ },
+ "rows": [
+  {
+   "root": "pie-lex-h3rexgjnih2",
+   "branches": {
+    "Celtic": [
+     2,
+     0.8,
+     2.4
+    ],
+    "Indo-Iranian": [
+     4,
+     1.3,
+     3.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201010:#1/18:6: rigdai ~ rigain",
+     "ga-early G305005:#1:144 (w1/2): rigdai ~ rigan"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 1, 155.s85: rājñā ~ rājñīm",
+     "sa-ep MBh, 3, 13.s239: rājñāṃ ~ rājñī",
+     "sa-ep MBh, 4, 20.s29: rājño ~ rājñī"
+    ]
+   }
+  }
+ ]
+}

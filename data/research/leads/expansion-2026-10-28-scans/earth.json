@@ -1,0 +1,993 @@
+{
+ "target": [
+  "pie-lex-dhegjhoxm"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 4051,
+  "Slavic": 3346,
+  "Baltic": 164,
+  "Tocharian": 43,
+  "Indo-Iranian": 185,
+  "Greek": 1149,
+  "Anatolian": 580
+ },
+ "rows": [
+  {
+   "root": "pie-root-nebh-become_damp",
+   "branches": {
+    "Slavic": [
+     82,
+     7.5,
+     10.9
+    ],
+    "Greek": [
+     4,
+     2.0,
+     2.0
+    ],
+    "Anatolian": [
+     44,
+     2.1,
+     21.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 18818:24: земљи ~ небом",
+     "vuk Vuk 12352:483: земље ~ неба",
+     "vuk Vuk 22048:246: земље ~ неба"
+    ],
+    "Greek": [
+     "grc Euripides Supplices 587: χθόνα ~ ἀφρῷ",
+     "grc-late Asclepiades Epigrammata 5.64.2: χθονὶ ~ νέφη",
+     "grc-late Oppianus Cynegetica 3.370: χθονός ~ ἀφρὸν"
+    ],
+    "Anatolian": [
+     "hit KBo 26.65+ {€2} Rs. III 48′ (w2/2): te-kán-na ~ ne-pí-iš",
+     "hit KBo 26.65 Rs. III 48′ (w2/2): te-kán-na ~ ne-pí-iš",
+     "hit KBo 26.67 3′: te-kán-na ~ ne-pí-iš"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-soh2wl",
+   "branches": {
+    "Celtic": [
+     18,
+     8.6,
+     2.1
+    ],
+    "Indo-Iranian": [
+     4,
+     1.1,
+     3.5
+    ],
+    "Greek": [
+     13,
+     5.5,
+     2.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301012:#1/#2/#35:13 (w2/2): doíni ~ súili",
+     "sga G301017:#1/2:23: doíne ~ súili",
+     "mga G206000:#1/33/XXXIV:83 (w3/3): duine ~ shúl"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.157.1a: jmáḥ ~ sū́ryaḥ",
+     "rv RV 7.60.2b: jmán ~ sū́ryaḥ",
+     "ae VS7.45b: zəmō ~ huuarə"
+    ],
+    "Greek": [
+     "grc Hesiodus Opera et dies 479: χθόνα ~ ἠελίοιο",
+     "grc Hymni Homerici In Mercurium 68: χθονὸς ~ ἠέλιος",
+     "grc Aeschylus Persae 364: χθόνα ~ ἥλιος"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-nebhos",
+   "branches": {
+    "Slavic": [
+     82,
+     7.5,
+     10.9
+    ],
+    "Anatolian": [
+     44,
+     2.1,
+     21.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 18818:24: земљи ~ небом",
+     "vuk Vuk 12352:483: земље ~ неба",
+     "vuk Vuk 22048:246: земље ~ неба"
+    ],
+    "Anatolian": [
+     "hit KBo 26.65+ {€2} Rs. III 48′ (w2/2): te-kán-na ~ ne-pí-iš",
+     "hit KBo 26.65 Rs. III 48′ (w2/2): te-kán-na ~ ne-pí-iš",
+     "hit KBo 26.67 3′: te-kán-na ~ ne-pí-iš"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-trem-tremble",
+   "branches": {
+    "Slavic": [
+     29,
+     0.8,
+     38.2
+    ],
+    "Greek": [
+     2,
+     0.7,
+     2.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 1598:2: земља ~ тресе",
+     "vuk Vuk 1598:4: земља ~ тресе",
+     "vuk Vuk 10110:1: земља ~ тресе"
+    ],
+    "Greek": [
+     "grc-late Theocritus Idyllia 2.12: χθονίᾳ ~ τρομέοντι",
+     "grc-late Quintus Posthomerica 8.344: χθὼν ~ ἔτρεμε"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1yagjnos",
+   "branches": {
+    "Indo-Iranian": [
+     9,
+     1.6,
+     5.5
+    ],
+    "Greek": [
+     9,
+     0.6,
+     15.4
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "ae VS3.18a: zəmō ~ mazdaiiasna",
+     "ae VS5.49a: zəmō ~ mazdaiiasna",
+     "ae VS7.64a: zəmō ~ mazdaiiasna"
+    ],
+    "Greek": [
+     "grc Hesiodus Opera et dies 122: ἐπιχθόνιοι ~ ἁγνοὶ",
+     "grc Hesiodus Opera et dies 465: χθονίῳ ~ ἁγνῇ",
+     "grc Hymni Homerici In Mercurium 410: χθονὸς ~ ἄγνου"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-Hyos",
+   "branches": {
+    "Indo-Iranian": [
+     8,
+     0.5,
+     16.8
+    ],
+    "Greek": [
+     2,
+     0.4,
+     4.7
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "ae Y10.4b: zəmō ~ yaϑra",
+     "ae VS9.6a (w2/2): zəmō ~ yaϑa",
+     "ae VS9.7a (w2/2): zəmō ~ yaϑa"
+    ],
+    "Greek": [
+     "hom Il. 24.505: ἐπιχθόνιος ~ οἷ̓",
+     "grc Euripides Heraclidae 826: χθονὶ ~ Ὦ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-pero",
+   "branches": {
+    "Indo-Iranian": [
+     3,
+     0.2,
+     18.1
+    ],
+    "Greek": [
+     2,
+     0.6,
+     3.2
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "ae Y19.8b: zəmō ~ para",
+     "ae Y22.28a (w1/2): zəmō ~ para",
+     "ae Y66.23a (w1/2): zəmō ~ para"
+    ],
+    "Greek": [
+     "grc Aeschylus Prometheus vinctus 713: χθόνα ~ ἐκπερᾶν",
+     "grc-late Quintus Posthomerica 2.51: χθόνα ~ περόωντες"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-peh2y",
+   "branches": {
+    "Slavic": [
+     31,
+     3.2,
+     9.6
+    ],
+    "Greek": [
+     2,
+     0.4,
+     5.6
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 1102910: земи ~ падетъ",
+     "ccmh marianus 1130500: землѧ ~ падѫ",
+     "ccmh marianus 1130800: земи ~ падѫ"
+    ],
+    "Greek": [
+     "grc Aeschylus Eumenides 249: χθονὸς ~ πεποίμανται",
+     "grc-late Strabo Geographica 10.3.14 s3: χθόνα ~ ποίμνας"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-bhebhoyh2e",
+   "branches": {
+    "Slavic": [
+     7,
+     3.5,
+     2.0
+    ],
+    "Baltic": [
+     2,
+     0.1,
+     25.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch3narod26:234: земли ~ Боятся",
+     "byliny pesnisobrannyepnrybnikovymch3narod26:235: земли ~ боятся",
+     "ccmh marianus 1252500: земи ~ оубоѣвъ"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:20575: žemės ~ nebijau",
+     "dainos litauischevolksl00leskuoft:20602: žemės ~ nebijau"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-skelH-cut",
+   "branches": {
+    "Celtic": [
+     19,
+     4.5,
+     4.2
+    ],
+    "Baltic": [
+     2,
+     0.2,
+     9.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga-gl wb:7c:13: dóine ~ colno",
+     "mga G206000:#1/16/#1:52 (w2/3): doinib ~ collaide",
+     "mga G206000:#1/16/#1:52 (w3/3): doine ~ colann"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:5961: žemę ~ perkeliawom",
+     "dainos littauischevolk00nessgoog:5965: žemę ~ perkeliawom"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-derkj-see",
+   "branches": {
+    "Celtic": [
+     33,
+     9.5,
+     3.5
+    ],
+    "Greek": [
+     3,
+     0.3,
+     9.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G400089:#1/2/t#1:112: duine ~ dreich",
+     "mga G106500D:#1/4/1/24:14: duine ~ drech",
+     "mga G201000:#1/7/xxxiii/70:1: daoine ~ deirc"
+    ],
+    "Greek": [
+     "hom Il. 1.88: χθονὶ ~ δερκομένοιο",
+     "hom Od. 16.439: χθονὶ ~ δερκομένοιο",
+     "grc Sophocles Ajax 425: χθονὸς ~ δέρχθη"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhedh-bend",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.8,
+     2.5
+    ],
+    "Greek": [
+     3,
+     0.2,
+     12.6
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.158.4d: kṣā́m ~ baddháḥ",
+     "rv RV 10.89.1b: jmáḥ ~ vibabādhé"
+    ],
+    "Greek": [
+     "grc-late Apollonius Rhodius Argonautica 4.523: χθονὶ ~ πείσματ’",
+     "grc-late Apollonius Rhodius Argonautica 4.1639: χθονὶ ~ πείσματ’",
+     "grc-late Quintus Posthomerica 14.371: χθονὸς ~ πείσματ’"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2erh3-plough",
+   "branches": {
+    "Baltic": [
+     5,
+     0.5,
+     11.1
+    ],
+    "Greek": [
+     2,
+     0.7,
+     2.7
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:17185: žemę ~ arklys",
+     "dainos litauischevolksl00leskuoft:18067: žemės ~ arklys",
+     "dainos litauischevolksl00leskuoft:18606: žemės ~ arklys"
+    ],
+    "Greek": [
+     "grc Hesiodus Opera et dies 479: χθόνα ~ ἀρόῳς",
+     "grc-late Lycophron Alexandra 1060: χθονός ~ ἀρούρης"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-lewh1-cut_off",
+   "branches": {
+    "Celtic": [
+     16,
+     7.9,
+     2.0
+    ],
+    "Baltic": [
+     2,
+     0.1,
+     14.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201001:#1/7/#19:1 (w2/2): duini ~ lon",
+     "mga G301041:#1:55: duini ~ lon",
+     "ga-early G100005C:#1/M1345/M1345.4:1: daoine ~ lot"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:17607: žemės ~ lovos",
+     "dainos litauischevolksl00leskuoft:18407: žemės ~ lova"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kwep-smoke",
+   "branches": {
+    "Celtic": [
+     3,
+     0.6,
+     4.9
+    ],
+    "Greek": [
+     3,
+     0.5,
+     5.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G204001:#1/6:7: duine ~ accobar",
+     "sga celtic-journal-eriu-1904-1928:eriu_1914_7:L9544-L9545: duini ~ adcobra",
+     "mga G203000:#1/1:31: duine ~ accobra"
+    ],
+    "Greek": [
+     "hom Il. 23.100: χθονὸς ~ καπνὸς",
+     "hom Od. 10.99: χθονὸς ~ καπνὸν",
+     "hom Od. 10.149: χθονὸς ~ καπνὸς"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-preh1-blow_on",
+   "branches": {
+    "Slavic": [
+     2,
+     0.2,
+     9.6
+    ],
+    "Greek": [
+     2,
+     0.9,
+     2.2
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny ruws 426313:50: землю ~ прет",
+     "byliny ruws 426313:60: землю ~ прет"
+    ],
+    "Greek": [
+     "grc Euripides Troiades 1279: χθονὸς ~ πιμπρᾶσί",
+     "grc Aristoteles et Corpus Aristotelicum De mundo 4 s38: χθόνιός ~ πρηστὴρ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kelH-rise",
+   "branches": {
+    "Celtic": [
+     19,
+     3.9,
+     4.8
+    ],
+    "Baltic": [
+     5,
+     1.2,
+     4.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga-gl wb:7c:13: dóine ~ colno",
+     "mga G206000:#1/16/#1:52 (w2/3): doinib ~ collaide",
+     "mga G206000:#1/16/#1:52 (w3/3): doine ~ colann"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:5961: žemę ~ perkeliawom",
+     "dainos littauischevolk00nessgoog:5965: žemę ~ perkeliawom",
+     "dainos litauischevolksl00leskuoft:18606: žemės ~ kėlės"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-ped-walk",
+   "branches": {
+    "Slavic": [
+     54,
+     5.9,
+     9.2
+    ],
+    "Anatolian": [
+     14,
+     6.9,
+     2.0
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 28034:305: Земљи ~ падај",
+     "vuk Vuk 28034:306: Земљи ~ падај",
+     "vuk Vuk 28034:325: Земљи ~ падај"
+    ],
+    "Anatolian": [
+     "hit KBo 48.89+  {€3} Vs. I 38′: ták-ni-i ~ pé-te-eš-ši-ma",
+     "hit KBo 55.97 Rs. 3′: ták-na-aš ~ pé-di",
+     "hit KUB 7.10 Vs. I 7: ták-na-aš-ma ~ pé-di-ma-aš"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1yagj-sacrifice",
+   "branches": {
+    "Indo-Iranian": [
+     15,
+     4.0,
+     3.7
+    ],
+    "Greek": [
+     9,
+     2.0,
+     4.5
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 10.2.6c: kṣā́ḥ ~ yajasva",
+     "ae VS3.18a: zəmō ~ mazdaiiasna",
+     "ae VS5.49a: zəmō ~ mazdaiiasna"
+    ],
+    "Greek": [
+     "grc Hesiodus Opera et dies 122: ἐπιχθόνιοι ~ ἁγνοὶ",
+     "grc Hesiodus Opera et dies 465: χθονίῳ ~ ἁγνῇ",
+     "grc Hymni Homerici In Mercurium 410: χθονὸς ~ ἄγνου"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-men-think",
+   "branches": {
+    "Celtic": [
+     12,
+     4.7,
+     2.6
+    ],
+    "Baltic": [
+     2,
+     0.3,
+     6.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G204001:#1/4:3 (w2/2): duine ~ menmæ",
+     "mga G201000:#1/6/iv/7:1: dhuchas ~ mhenmuin",
+     "mga G206000:#1/16/#1:57 (w2/2): duine ~ menman"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:19444: žemės ~ manė",
+     "dainos litauischevolksl00leskuoft:19446: žemės ~ manė"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-mer-die",
+   "branches": {
+    "Slavic": [
+     36,
+     16.4,
+     2.2
+    ],
+    "Greek": [
+     8,
+     1.2,
+     6.7
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 10607:123: земљу ~ мртве",
+     "vuk Vuk 25235:89: земља ~ Мртва",
+     "vuk Vuk 1658:301: земље ~ Мртва"
+    ],
+    "Greek": [
+     "hom Il. 1.272: ἐπιχθόνιοι ~ βροτοί",
+     "hom Il. 24.505: ἐπιχθόνιος ~ βροτὸς",
+     "hom Od. 6.153: χθονὶ ~ βροτῶν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-skek-jump",
+   "branches": {
+    "Celtic": [
+     6,
+     2.7,
+     2.2
+    ],
+    "Slavic": [
+     67,
+     10.7,
+     6.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga oldirish-meyer-editions-1892-1919:cinadamninol00meyeuoft:L1668-L1671 (w1/2): duine ~ banscal",
+     "mga G201027:#1/15:4: duine ~ scuch",
+     "mga G206000:#1/15/XIX/#1:71: duine-sin ~ banscál"
+    ],
+    "Slavic": [
+     "vuk Vuk 1599:68: земље ~ скочили",
+     "vuk Vuk 1599:119: змију ~ Скочи",
+     "vuk Vuk 1605:22: земље ~ Скочи"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-terh2-cross_over",
+   "branches": {
+    "Celtic": [
+     27,
+     12.6,
+     2.1
+    ],
+    "Greek": [
+     2,
+     0.3,
+     6.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201011:#1/9:1 (w1/2): duine ~ trés",
+     "mga G206000:#1/33/XXXIV:51 (w4/5): duine ~ tráth-sin",
+     "mga G206000:#1/33/XXXIV:91 (w2/3): duine ~ trath"
+    ],
+    "Greek": [
+     "grc Euripides Medea 353: χθονός ~ τερμόνων",
+     "grc-late Flavius Arrianus Periplus ponti Euxini 19.2.29 s3: χθονὸς ~ τέρμονα"
+    ]
+   }
+  },
+  {
+   "root": "kaikki:pew",
+   "branches": {
+    "Celtic": [
+     13,
+     5.6,
+     2.3
+    ],
+    "Slavic": [
+     3,
+     0.5,
+     5.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G106500D:#1/4/1/24:143: duine ~ úatha",
+     "mga G201000:#1/8/viii/13:1: dáoine ~ uathmar",
+     "mga G201001:#1/3/#75:2: duine ~ Fuath"
+    ],
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch2narod72:7808: земли ~ Испытаемъ",
+     "byliny pesnisobrannyepnrybnikovymch2narod72:7834: земли ~ Испытаемъ",
+     "byliny pesnisobrannyepnrybnikovymch2narod72:7906: земли’ ~ Испытаемъ"
+    ]
+   }
+  },
+  {
+   "root": "kaikki:smeh₁l",
+   "branches": {
+    "Celtic": [
+     5,
+     1.5,
+     3.4
+    ],
+    "Greek": [
+     4,
+     1.1,
+     3.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G103006:#1/#1:248 (w1/2): duine ~ Míl",
+     "mga G303000:#1:160: duini ~ mhíl",
+     "mga G503020:#1:15: duine ~ míl"
+    ],
+    "Greek": [
+     "hom Il. 17.550: χθονί ~ μῆλα",
+     "grc Hesiodus Theogonia 284: χθόνα ~ μήλων",
+     "grc Hymni Homerici In Mercurium 570: χθών ~ μήλοισιν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2er-fit",
+   "branches": {
+    "Indo-Iranian": [
+     12,
+     2.7,
+     4.5
+    ],
+    "Anatolian": [
+     3,
+     1.2,
+     2.4
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 10.12.1a: kṣā́mā ~ r̥téna",
+     "av AVŚ, 18, 1.s57: kṣāmā ~ ṛtena",
+     "ae Y4.22a (w2/4): zəmō ~ aṣ̌aōnō"
+    ],
+    "Anatolian": [
+     "hit KBo 7.28+  {€1} Vs. 17′: ták-na-a-aš ~ {LÚ}a-ra-aš-ši-iš",
+     "hit KBo 7.28+  {€1} u R 27′: ták-na-a-aš ~ {LÚ}a-ra-aš-ši-iš",
+     "hit KBo 7.28+  {€1} Rs. 32′: ták-na-a-aš ~ {LÚ}a-ra-aš-ši-iš"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dyew-be_bright",
+   "branches": {
+    "Indo-Iranian": [
+     23,
+     7.9,
+     2.9
+    ],
+    "Greek": [
+     36,
+     11.0,
+     3.3
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.25.20b: gmáḥ ~ diváḥ",
+     "rv RV 1.37.6b: gmáḥ ~ diváḥ",
+     "rv RV 1.100.15c: kṣmáḥ ~ diváḥ"
+    ],
+    "Greek": [
+     "hom Il. 14.347: χθὼν ~ δῖα",
+     "hom Il. 24.532: χθόνα ~ δῖαν",
+     "hom Od. 1.196: χθονὶ ~ δῖος"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2wes-dwell",
+   "branches": {
+    "Greek": [
+     8,
+     2.9,
+     2.7
+    ],
+    "Anatolian": [
+     12,
+     3.5,
+     3.4
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Aeschylus Supplices 372: χθονός ~ ἑστίαν",
+     "grc Pindarus Nemea 8.38: χθονὶ ~ ἀστοῖς",
+     "grc Euripides Ion 290: χθονός ~ ἀστός"
+    ],
+    "Anatolian": [
+     "hit CHDS 7.172 7′: ták-na-aš ~ ḫu-u-e-ša-u-wa-az",
+     "hit IBoT 2.71+ {€2} Vs. II 7′: ta-ga-a-an ~ ḫu-u-i-šu",
+     "hit IBoT 2.71+ {€1} Rs. III 5′: da-ga-a-an ~ ḫu-u-i-šu"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-meh2-good",
+   "branches": {
+    "Celtic": [
+     126,
+     55.2,
+     2.3
+    ],
+    "Slavic": [
+     5,
+     1.4,
+     3.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G503001:#1/31:2 (w2/2): duine ~ maith",
+     "sga celtic-journal-eriu-1904-1928:eriu_1914_7:L9584-L9587 (w2/2): duine ~ maith",
+     "sga celtic-journal-revue-celtique-1870-1928:revueceltique45pari:L515-L516: duiniu ~ maith"
+    ],
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:29476: земли ~ матерой",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:33428: земли ~ матерой",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:33435: земли ~ матерой"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwerh3-swallow",
+   "branches": {
+    "Baltic": [
+     3,
+     1.1,
+     2.8
+    ],
+    "Greek": [
+     4,
+     1.4,
+     2.8
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:18607: žemės ~ negirdėt",
+     "dainos litauischevolksl00leskuoft:18608: žemės ~ girdėt",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:24075: Žėmės ~ gėrė"
+    ],
+    "Greek": [
+     "hom Il. 8.14: χθονός ~ βέρεθρον",
+     "grc Plato Phaedo 112.111e s1: χθονός ~ βέρεθρον",
+     "grc-late Plutarchus De communibus notitiis adversus Stoicos 1064e s1 (w1/2): χθονὸς ~ βέρεθρον"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2wostu",
+   "branches": {
+    "Celtic": [
+     3,
+     1.1,
+     2.7
+    ],
+    "Greek": [
+     5,
+     1.8,
+     2.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G206003:#1/9:1 (w1/3): duini ~ foss",
+     "ga-early G100070:#1/91/15:4 (w2/2): duine ~ fóss",
+     "ga-early G300010:#1/141:3 (w1/2): doine ~ foss"
+    ],
+    "Greek": [
+     "grc Pindarus Nemea 8.38: χθονὶ ~ ἀστοῖς",
+     "grc Euripides Ion 290: χθονός ~ ἀστός",
+     "grc Euripides Iphigenia Taurica 1422: χθονός ~ ἀστοὶ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-potis",
+   "branches": {
+    "Celtic": [
+     11,
+     3.3,
+     3.3
+    ],
+    "Greek": [
+     2,
+     1.0,
+     2.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100055:#1/1/2/16:6 (w1/2): duine ~ fáthach",
+     "ga-early G100055:#1/1/5/5:33 (w1/2): duine ~ fáthach",
+     "ga-early G100055:#1/1/5/5:34 (w1/2): duine ~ fáthach"
+    ],
+    "Greek": [
+     "grc Euripides Helena 1222: χθονί ~ πόσιν",
+     "grc-late Apollonius Rhodius Argonautica 4.805: ἐπιχθονίων ~ πόσιν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-new-nod",
+   "branches": {
+    "Celtic": [
+     9,
+     3.4,
+     2.6
+    ],
+    "Greek": [
+     3,
+     1.2,
+     2.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga oldirish-tbc-windisch-1905:diealtirischehel00wind:L44921-L44923: duine ~ aithne",
+     "ga-early G100001C:#1/U1507/U1507.1:1: duine ~ aithne",
+     "ga-early G100001C:#1/U1508/U1508.3:1 (w1/2): duine ~ aithne"
+    ],
+    "Greek": [
+     "grc Pindarus Nemea 1.14: χθονὸς ~ κατένευσέν",
+     "grc-late Apollonius Rhodius Argonautica 2.683: χθονός ~ νεύσαντες",
+     "grc-late Bion Fragmenta 5.3: χθόνα ~ νευστάζοντα"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gwrh3eti",
+   "branches": {
+    "Slavic": [
+     2,
+     1.0,
+     2.0
+    ],
+    "Baltic": [
+     3,
+     1.1,
+     2.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:27010: змфиную ~ пожри",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:27012: змфиную ~ Пожрала"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:18607: žemės ~ negirdėt",
+     "dainos litauischevolksl00leskuoft:18608: žemės ~ girdėt",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:24075: Žėmės ~ gėrė"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gwih3wos",
+   "branches": {
+    "Celtic": [
+     24,
+     11.8,
+     2.0
+    ],
+    "Slavic": [
+     30,
+     11.1,
+     2.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga-gl sg:39a23:952: dóini ~ bí",
+     "mga G201000:#1/13/liii/145:4 (w1/2): n-daoine ~ bethaid",
+     "mga G206000:#1/16/#1:54 (w1/2): duine ~ bethaid"
+    ],
+    "Slavic": [
+     "vuk Vuk 19342:78: земља ~ жива",
+     "vuk Vuk 22040:164: земља ~ жива",
+     "vuk Vuk 22054:270: земља ~ жива"
+    ]
+   }
+  },
+  {
+   "root": "kaikki:h₁su",
+   "branches": {
+    "Celtic": [
+     2,
+     0.9,
+     2.1
+    ],
+    "Anatolian": [
+     12,
+     5.7,
+     2.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G100017:#1/5/FA_423:4 (w3/3): dháoine ~ séoid",
+     "mga G100016:#1/#3/CS944/CS944.4:1 (w2/2): duine ~ seoda"
+    ],
+    "Anatolian": [
+     "hit KBo 15.31+ {€1} Vs. I 6′: ta-ga-a-an ~ a-aš-šu",
+     "hit KBo 34.19 3′: ták-na-a-aš ~ a-aš-ša-u-e-eš",
+     "hit KBo 7.28+  {€1} Vs. 17′: ták-na-a-aš ~ a-aš-šu"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,994 @@
+{
+ "target": [
+  "pie-root-wekw-speak"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 277,
+  "Germanic": 960,
+  "Slavic": 1236,
+  "Armenian": 36,
+  "Tocharian": 8,
+  "Indo-Iranian": 18653,
+  "Greek": 5697,
+  "Italic": 200
+ },
+ "rows": [
+  {
+   "root": "pie-lex-bhewdheti",
+   "branches": {
+    "Germanic": [
+     27,
+     10.5,
+     2.6
+    ],
+    "Slavic": [
+     3,
+     0.6,
+     5.1
+    ],
+    "Greek": [
+     2,
+     0.1,
+     14.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Njals-saga 22r:38: vátta ~ bauð",
+     "menota AM-132-fol-Njals-saga 26v:42: vátta ~ bauð",
+     "menota AM-132-fol-Njals-saga 51v:15 (w1/2): vǽtti ~ býð"
+    ],
+    "Slavic": [
+     "ccmh zogr-b 1240400: отъвѣщавъ ~ блюдѣте",
+     "ccmh assemanianus 1240400: отъвѣштавъ ~ блюдѣте",
+     "ccmh assemanianus 1240401: отъвѣщавъ ~ блюдѣте"
+    ],
+    "Greek": [
+     "hom Od. 16.412: ἔειπε ~ ἐπεύθετο",
+     "hom Od. 4.677: ἔειπε ~ ἐπεύθετο"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1nomn",
+   "branches": {
+    "Germanic": [
+     149,
+     10.3,
+     14.5
+    ],
+    "Slavic": [
+     12,
+     3.6,
+     3.3
+    ],
+    "Italic": [
+     6,
+     1.6,
+     3.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Bandamanna-saga 117r:4: váttar ~ nefndir",
+     "menota AM-132-fol-Droplaugarsona-saga 143v:3: vátta ~ nefna",
+     "menota AM-132-fol-Droplaugarsona-saga 144r:8: vátta ~ nefndi"
+    ],
+    "Slavic": [
+     "ccmh marianus 2093800: отъвѣшта ~ именемъ",
+     "ccmh marianus 3235000: съвѣтьникъ ~ іменемь",
+     "ccmh marianus 3241800: отъвѣштавъ ~ имѧ"
+    ],
+    "Italic": [
+     "lat CatOrig 2.Fragmentum_23: uocantur ~ nomen",
+     "lat LucrDRN6 6.740: uocantur ~ nomine",
+     "lat LucrDRN6 6.908: uocant ~ nomine"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dher-support",
+   "branches": {
+    "Germanic": [
+     2,
+     0.2,
+     12.2
+    ],
+    "Slavic": [
+     84,
+     4.1,
+     20.4
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-osx Heliand Hel_13 v1055: uuihti ~ dernea",
+     "rea-osx Heliand Hel_36 v2989: uuihti ~ dernea"
+    ],
+    "Slavic": [
+     "byliny ruws 426233:17: Ответ ~ держит",
+     "byliny ruws 426147:48: Ответ ~ держит",
+     "byliny ruws 426231:15: Ответ ~ держит"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-telkw-talk",
+   "branches": {
+    "Slavic": [
+     2,
+     0.1,
+     38.0
+    ],
+    "Italic": [
+     3,
+     1.2,
+     2.6
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh suprasliensis 1031105: отъвѣштавъ ~ тлъкомъ",
+     "ccmh suprasliensis 1031110: извѣштати ~ тлъкъ"
+    ],
+    "Italic": [
+     "lat Catul 67.41: uoce ~ loquentem",
+     "lat PlAulul 811: uocem ~ loquentis",
+     "lat PlCurcu 229: uocem ~ loquitur"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dem-build",
+   "branches": {
+    "Celtic": [
+     4,
+     0.1,
+     33.5
+    ],
+    "Armenian": [
+     6,
+     2.8,
+     2.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G502003:#1/1/1:183: focul ~ damna",
+     "mga G502003:#1/1/1:186: focail ~ ndamna",
+     "mga G502003:#1/2/1:225 (w2/2): focul ~ damna"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_03_Koriun ed. page 231 - PDF page 3 (word id 475) (w1/2): գոչէր ~ Տէրն",
+     "xcl MH_1_2_11_Agathangelos ed. page 1489 - PDF page 195 (word id 34336): գոչել ~ Տէրդ։",
+     "xcl MH_1_2_11_Agathangelos ed. page 1521 - PDF page 227 (word id 40118) (w2/2): գոչեսցէ, ~ Տէր"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-wel-turn",
+   "branches": {
+    "Celtic": [
+     3,
+     0.3,
+     10.2
+    ],
+    "Italic": [
+     2,
+     0.3,
+     6.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G502003:#1/2/2:196: focail ~ file",
+     "ga-early G100062:#1/#1:43 (w2/2): focail ~ file",
+     "ga-early G100062:#1/#1:108 (w6/6): focail ~ file"
+    ],
+    "Italic": [
+     "lat LucrDRN3 3.467: uoces ~ uoltus",
+     "lat LucrDRN4 4.1224: uoces ~ uoltus"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1weydhh1-separate",
+   "branches": {
+    "Celtic": [
+     12,
+     0.5,
+     23.4
+    ],
+    "Germanic": [
+     4,
+     1.7,
+     2.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G300012:#1/3:100 (w2/2): foclai ~ fid",
+     "mga G502003:#1/1/2:111: focail ~ fid",
+     "mga G502003:#1/1/2:291: focail ~ feda"
+    ],
+    "Germanic": [
+     "rea-osx Heliand Hel_58 v4923: uuiht ~ uuîdon",
+     "ang Beo. 1992: wihte ~ wīd",
+     "ang Grein I Genesis l.683: wiht ~ wida"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-wel-enclose",
+   "branches": {
+    "Celtic": [
+     3,
+     0.3,
+     8.8
+    ],
+    "Italic": [
+     2,
+     0.3,
+     6.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G502003:#1/2/2:196: focail ~ file",
+     "ga-early G100062:#1/#1:43 (w2/2): focail ~ file",
+     "ga-early G100062:#1/#1:108 (w6/6): focail ~ file"
+    ],
+    "Italic": [
+     "lat LucrDRN3 3.467: uoces ~ uoltus",
+     "lat LucrDRN4 4.1224: uoces ~ uoltus"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-wel-see",
+   "branches": {
+    "Celtic": [
+     12,
+     1.4,
+     8.6
+    ],
+    "Italic": [
+     2,
+     0.3,
+     6.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G100030:#1/18:5: focuil-si ~ fili",
+     "mga G100030:#1/77:1 (w5/5): focuil-si ~ fili",
+     "mga G502003:#1/1/2:136: focail ~ filed"
+    ],
+    "Italic": [
+     "lat LucrDRN3 3.467: uoces ~ uoltus",
+     "lat LucrDRN4 4.1224: uoces ~ uoltus"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2oxws",
+   "branches": {
+    "Germanic": [
+     2,
+     0.7,
+     2.8
+    ],
+    "Italic": [
+     6,
+     0.5,
+     11.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Otfrid O_Otfr.Ev.4.18 v21: giwúag ~ óra",
+     "rea-goh Otfrid O_Otfr.Ev.3.17 v70: wiht ~ óra"
+    ],
+    "Italic": [
+     "lat LucrDRN4 4.524: uox ~ auris",
+     "lat LucrDRN4 4.568: uocum ~ auris",
+     "lat LucrDRN4 4.597: uoces ~ auris"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-weydeti",
+   "branches": {
+    "Celtic": [
+     2,
+     0.4,
+     4.5
+    ],
+    "Greek": [
+     2,
+     0.3,
+     6.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G502003:#1/1/2:591: focul ~ taidbet",
+     "mga G502003:#1/2/2:222: focul ~ n-aisneis"
+    ],
+    "Greek": [
+     "hom Il. 5.406: νήπιος ~ οἶδε",
+     "hom Od. 13.352: εἰποῦσα ~ εἴσατο"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-twerH-enclose",
+   "branches": {
+    "Slavic": [
+     60,
+     10.3,
+     5.8
+    ],
+    "Greek": [
+     7,
+     1.6,
+     4.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimch2vyp57:7595: отвфть ~ творчества",
+     "ccmh marianus 1121400: съвѣтъ ~ сътворишѧ",
+     "ccmh marianus 1221510: съвѣтъ ~ сътворишѧ"
+    ],
+    "Greek": [
+     "hom Od. 12.42: νήπια ~ Σειρήνων",
+     "hom Od. 12.52: ὄπ̓ ~ Σειρήνοιιν",
+     "grc Hesiodus Fragmenta 150.33: ὄπα ~ Σειρήνων"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-prekj-ask",
+   "branches": {
+    "Slavic": [
+     14,
+     3.4,
+     4.1
+    ],
+    "Italic": [
+     2,
+     0.4,
+     4.7
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch3narod26:22312: отвфчаютъ ~ просятъ",
+     "ccmh marianus 1181910: вешти ~ просите",
+     "ccmh marianus 1202200: отъвѣштавъ ~ просѧшта"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.1086: uocare ~ poscere",
+     "lat PlCurcu 683: uocat ~ posco"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-mey-change",
+   "branches": {
+    "Germanic": [
+     17,
+     5.6,
+     3.0
+    ],
+    "Greek": [
+     86,
+     16.1,
+     5.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-302-fol 1r:1 (w756/2250): vatta ~ missir",
+     "menota AM-302-fol 1r:1 (w1180/2250): vatta ~ míssír",
+     "menota AM-305-fol 27r:19 (w5/15): vatta ~ míssir"
+    ],
+    "Greek": [
+     "hom Il. 1.604: ὀπὶ ~ ἀμειβόμεναι",
+     "hom Il. 15.48: ἔπεα ~ ἀμειβόμενος",
+     "hom Il. 22.329: προτιείποι ~ ἀμειβόμενος"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-lewg-bend",
+   "branches": {
+    "Celtic": [
+     3,
+     0.5,
+     5.6
+    ],
+    "Germanic": [
+     12,
+     4.6,
+     2.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G502003:#1/1/2:111: focail ~ n-elluch",
+     "mga G502003:#1/1/2/t#5:4: focail ~ n-elluch",
+     "mga G502003:#1/2/2:196: focail ~ n-elluch"
+    ],
+    "Germanic": [
+     "menota AM-132-fol-Bandamanna-saga 117r:4: váttar ~ lokit",
+     "menota AM-302-fol 1r:1 (w1136/2250): vatta ~ loket",
+     "menota AM-56-4to 1r:1 (w1183/2303): vatta ~ loket"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-sth2eh1yeti",
+   "branches": {
+    "Celtic": [
+     11,
+     2.0,
+     5.6
+    ],
+    "Italic": [
+     4,
+     1.6,
+     2.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G100027:#1/707/707.1:46: focail ~ atát",
+     "mga G502003:#1/1/1:256: focail ~ atat",
+     "mga G502003:#1/1/2:70: focul ~ mbiat"
+    ],
+    "Italic": [
+     "lat LucrDRN4 4.526: uocem ~ constare",
+     "lat LucrDRN4 4.533: uoces ~ constent",
+     "lat LucrDRN4 4.540: uocem ~ constare"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ew-perceive",
+   "branches": {
+    "Slavic": [
+     13,
+     5.2,
+     2.5
+    ],
+    "Italic": [
+     10,
+     1.9,
+     5.3
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimch3vyp36:4031: отвфть ~ умфль",
+     "byliny pesnisobrannyepnrybnikovymch3narod26:19396: отвфть ~ Умъеть",
+     "ccmh marianus 1131100: отъвѣщавъ ~ разоумѣти"
+    ],
+    "Italic": [
+     "lat Catul 64.166: uoces ~ audire",
+     "lat Catul 67.41: uoce ~ audiui",
+     "lat LucrDRN4 4.524: uox ~ auditur"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-skelh1-parch",
+   "branches": {
+    "Germanic": [
+     2,
+     0.9,
+     2.2
+    ],
+    "Italic": [
+     3,
+     0.5,
+     5.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Otfrid O_Otfr.Ev.2.12 v94: wiht ~ lúage",
+     "rea-goh Otfrid O_Otfr.Ev.4.6 v23: wiht ~ irhólotin"
+    ],
+    "Italic": [
+     "lat LucrDRN1 1.490: uoces ~ clamor",
+     "lat LucrDRN6 6.229: uoces ~ clamor",
+     "lat PlCurcu 683: uocat ~ clamore"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-seh1-impress",
+   "branches": {
+    "Celtic": [
+     2,
+     0.9,
+     2.1
+    ],
+    "Slavic": [
+     5,
+     0.9,
+     5.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100054:#1/0/5:30 (w2/3): bhfocal ~ saoilidh",
+     "ga-early G100054:#1/1~2/20:14 (w2/2): focal ~ saoilid"
+    ],
+    "Slavic": [
+     "ccmh marianus 1133700: отъвѣщавъ ~ вьсѣавꙑ",
+     "ccmh marianus 4083300: отъвѣшташѧ ~ сѣмѧ",
+     "ccmh zographensis 1133700: отъвѣштавъ ~ сѣмѧ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-plh1nos",
+   "branches": {
+    "Celtic": [
+     3,
+     1.1,
+     2.7
+    ],
+    "Slavic": [
+     6,
+     1.4,
+     4.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G301044:#1/74:2 (w1/2): fhuaim ~ lan",
+     "ga-early G600008:#1/#2/21:2 (w1/3): focúil ~ lan",
+     "ga-early celtic-journal-zcp-1897-1926:zeitschriftfrc03meyeuoft:L12022-L12022: focal ~ lan"
+    ],
+    "Slavic": [
+     "vuk Vuk 21695:35: завјет ~ испунити",
+     "vuk Vuk 21695:45: завјет ~ испуни",
+     "vuk Vuk 21695:88: завјет ~ испуни"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-teh2k-be_concealed",
+   "branches": {
+    "Germanic": [
+     4,
+     0.9,
+     4.6
+    ],
+    "Italic": [
+     2,
+     0.9,
+     2.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "non Lokasenna 57: vættr ~ Þegi",
+     "non Lokasenna 58: vættr ~ Þegi",
+     "non Lokasenna 60: vættr ~ Þegi"
+    ],
+    "Italic": [
+     "lat PlCurcu 95: uocem ~ tace",
+     "lat PlEpidic 583: uocas ~ taces"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-mlewH-say",
+   "branches": {
+    "Slavic": [
+     2,
+     0.7,
+     2.7
+    ],
+    "Indo-Iranian": [
+     1320,
+     360.5,
+     3.7
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimvyp1pesn13:6295: отвЪть ~ молвять",
+     "byliny pesnisobrannyepvkireevskimvyp1pesn13:6312: отвфтъ ~ молвятъ"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.84.5b: ukthā́ni ~ bravītana",
+     "rv RV 1.84.19d: vácaḥ ~ brávīmi",
+     "rv RV 6.67.10c: ukthā́ ~ bravāma"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kelh1-call_out_to",
+   "branches": {
+    "Germanic": [
+     2,
+     1.0,
+     2.1
+    ],
+    "Italic": [
+     5,
+     1.1,
+     4.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Otfrid O_Otfr.Ev.2.12 v94: wiht ~ lúage",
+     "rea-goh Otfrid O_Otfr.Ev.4.6 v23: wiht ~ irhólotin"
+    ],
+    "Italic": [
+     "lat LucrDRN1 1.490: uoces ~ clamor",
+     "lat LucrDRN4 4.711: uoce ~ clara",
+     "lat LucrDRN6 6.229: uoces ~ clamor"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-lewk-bright",
+   "branches": {
+    "Germanic": [
+     24,
+     7.6,
+     3.2
+    ],
+    "Armenian": [
+     2,
+     0.7,
+     2.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Njals-saga 26v:33: vátta ~ lýsti",
+     "menota AM-132-fol-Njals-saga 48v:2: vǽtti ~ lýsi",
+     "menota AM-132-fol-Njals-saga 48v:7: vǽtti ~ lýsi"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_09_Anania 57 (ed. page 1148 - word id 1238) (w1/2): գոչեաց ~ լոյսն",
+     "xcl MH_1_2_11_Agathangelos ed. page 1521 - PDF page 227 (word id 40118) (w2/2): գոչեսցէ, ~ զլոյս"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kjlew-hear",
+   "branches": {
+    "Indo-Iranian": [
+     1445,
+     402.5,
+     3.6
+    ],
+    "Greek": [
+     27,
+     10.9,
+     2.5
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.145.3b: vácāṃsi ~ śr̥ṇavat",
+     "rv RV 3.33.10a: vácāṃsi ~ śr̥ṇavāma +",
+     "rv RV 5.43.11d: vā́cam ~ śr̥ṇotu"
+    ],
+    "Greek": [
+     "hom Il. 14.234: ἔπος ~ ἔκλυες",
+     "hom Il. 14.361: εἰπὼν ~ κλυτὰ",
+     "hom Il. 16.76: ὀπὸς ~ ἔκλυον"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h3orbhos",
+   "branches": {
+    "Germanic": [
+     11,
+     3.4,
+     3.2
+    ],
+    "Greek": [
+     4,
+     1.6,
+     2.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-302-fol 1r:1 (w1013/2250): vatta ~ arfr",
+     "menota AM-302-fol 1r:1 (w1032/2250): vatta ~ arfs",
+     "menota AM-305-fol 36v:9 (w2/12): vatta ~ arfr"
+    ],
+    "Greek": [
+     "grc Aristoteles et Corpus Aristotelicum De anima 1.5 s64: ἔπεσι ~ Ὀρφικοῖς",
+     "grc-late Dionysius Halicarnassensis Antiquitates Romanae 4.31.2.721 s1 (w2/2): νηπίοις ~ ὀρφανοῖς",
+     "grc-late Dionysius Halicarnassensis Antiquitates Romanae 8.51.3.1626 s3: νήπιον ~ ὀρφανὸν"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2ew",
+   "branches": {
+    "Slavic": [
+     3,
+     1.1,
+     2.8
+    ],
+    "Greek": [
+     24,
+     10.3,
+     2.3
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 4103200: отъвѣшта ~ ѣвихъ",
+     "ccmh zographensis 4103200: отъвѣшта ~ ѣвихъ",
+     "ccmh assemanianus 4103200: ѡтвѣща ~ ѣвихъ"
+    ],
+    "Greek": [
+     "hom Il. 10.540: ἔπος ~ αὐτοί",
+     "hom Il. 11.561: νηπίη ~ αὐτῶν",
+     "hom Il. 13.3: ὄσσε ~ αὐτὸς"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h3erbh-turn",
+   "branches": {
+    "Germanic": [
+     11,
+     4.6,
+     2.4
+    ],
+    "Greek": [
+     4,
+     1.6,
+     2.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-302-fol 1r:1 (w1013/2250): vatta ~ arfr",
+     "menota AM-302-fol 1r:1 (w1032/2250): vatta ~ arfs",
+     "menota AM-305-fol 36v:9 (w2/12): vatta ~ arfr"
+    ],
+    "Greek": [
+     "grc Aristoteles et Corpus Aristotelicum De anima 1.5 s64: ἔπεσι ~ Ὀρφικοῖς",
+     "grc-late Dionysius Halicarnassensis Antiquitates Romanae 4.31.2.721 s1 (w2/2): νηπίοις ~ ὀρφανοῖς",
+     "grc-late Dionysius Halicarnassensis Antiquitates Romanae 8.51.3.1626 s3: νήπιον ~ ὀρφανὸν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhuH-be",
+   "branches": {
+    "Celtic": [
+     10,
+     3.5,
+     2.8
+    ],
+    "Slavic": [
+     66,
+     30.4,
+     2.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100054:#1/1~2/20:4 (w1/2): focail ~ bheith",
+     "ga-early G100054:#1/1~2/20:8: focal ~ bheith",
+     "ga-early G100054:#1/1~2/20:19 (w1/4): focal ~ bheith"
+    ],
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimch2vyp57:14281: отвфчая ~ быть",
+     "byliny pesnisobrannyepnrybnikovymch2narod72:24564: отвфтъ ~ быть",
+     "byliny pesnisobrannyepnrybnikovymch2narod72:29995: отвфчающимь ~ была"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2elyos",
+   "branches": {
+    "Celtic": [
+     10,
+     4.8,
+     2.1
+    ],
+    "Greek": [
+     39,
+     14.3,
+     2.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301900:#1/#3:28 (w2/2): focul ~ ele",
+     "mga G502003:#1/2/2:57: focal ~ aile",
+     "mga G502003:#1/2/2:721 (w1/2): focail ~ eile"
+    ],
+    "Greek": [
+     "hom Il. 1.498: εὐρύοπα ~ ἄλλων",
+     "hom Il. 12.267: ἐπέεσσι ~ ἄλλον",
+     "hom Il. 13.732: εὐρύοπα ~ ἄλλῳ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kwey-perceive",
+   "branches": {
+    "Celtic": [
+     5,
+     2.0,
+     2.6
+    ],
+    "Slavic": [
+     12,
+     6.0,
+     2.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G502003:#1/1/2:208 (w2/2): focul ~ chiall",
+     "ga-early G100054:#1/1/I/#1:21 (w1/2): fhocail ~ chéill",
+     "ga-early G100054:#1/1/3/#3:4: bhfocal ~ gcéill"
+    ],
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:37407: отвфтъ ~ честна",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:7625: Отвфтъ ~ честна",
+     "byliny pesnisobrannyepnrybnikovymch3narod26:6004: ОтвЪчаеть ~ честна"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-pel-beat",
+   "branches": {
+    "Indo-Iranian": [
+     6,
+     2.7,
+     2.2
+    ],
+    "Italic": [
+     3,
+     1.3,
+     2.3
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 7, 47.s80: vaktraḥ ~ puṭa",
+     "sa-ep MBh, 7, 64.s70: vaktraiḥ ~ puṭaiḥ",
+     "sa-ep Rām, Ār, 59.s61: vākyaṃ ~ puṭa"
+    ],
+    "Italic": [
+     "lat Catul 64.320: uoce ~ pellentes",
+     "lat PlBacch 1141: uoce ~ appellant",
+     "lat PlEpidic 589: uocem ~ appellet"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhewdh-be_awake",
+   "branches": {
+    "Germanic": [
+     31,
+     15.1,
+     2.1
+    ],
+    "Slavic": [
+     4,
+     1.7,
+     2.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Njals-saga 22r:38: vátta ~ bauð",
+     "menota AM-132-fol-Njals-saga 26v:42: vátta ~ bauð",
+     "menota AM-132-fol-Njals-saga 51v:15 (w1/2): vǽtti ~ býð"
+    ],
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimch3vyp51:18290: отвфту ~ будить",
+     "ccmh zogr-b 1240400: отъвѣщавъ ~ блюдѣте",
+     "ccmh assemanianus 1240400: отъвѣштавъ ~ блюдѣте"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-upo",
+   "branches": {
+    "Celtic": [
+     3,
+     1.5,
+     2.1
+    ],
+    "Germanic": [
+     5,
+     2.2,
+     2.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G206000:#1/32/XXXIII:2: fhocuil ~ uasal",
+     "ga-early G100005F:#1/M1602/M1602.10:1 (w1/2): f-focail ~ uasal",
+     "ga-early G100054:#1/1~2/15/#1:27 (w1/2): fhocal-so ~ uasal"
+    ],
+    "Germanic": [
+     "rea-goh Otfrid O_Otfr.Ev.5.19 v13: wiht ~ úbil",
+     "rea-goh Otfrid O_Otfr.Ev.5.19 v43: wiht ~ úbil",
+     "rea-goh Otfrid O_Otfr.Ev.5.19 v65: wiht ~ úbil"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dyew-be_bright",
+   "branches": {
+    "Slavic": [
+     13,
+     6.4,
+     2.0
+    ],
+    "Greek": [
+     131,
+     54.4,
+     2.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 1200200: съвѣщавъ ~ день",
+     "ccmh marianus 1271400: отъвѣшта ~ дивити",
+     "ccmh marianus 2150500: отъвѣшта ~ дивити"
+    ],
+    "Greek": [
+     "hom Il. 1.395: ἔπει ~ Διὸς",
+     "hom Il. 1.419: ἔπος ~ Διὶ",
+     "hom Il. 1.502: προσέειπε ~ Δία"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-pleh1-fill",
+   "branches": {
+    "Celtic": [
+     3,
+     1.5,
+     2.0
+    ],
+    "Slavic": [
+     6,
+     2.6,
+     2.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G301044:#1/74:2 (w1/2): fhuaim ~ lan",
+     "ga-early G600008:#1/#2/21:2 (w1/3): focúil ~ lan",
+     "ga-early celtic-journal-zcp-1897-1926:zeitschriftfrc03meyeuoft:L12022-L12022: focal ~ lan"
+    ],
+    "Slavic": [
+     "vuk Vuk 21695:35: завјет ~ испунити",
+     "vuk Vuk 21695:45: завјет ~ испуни",
+     "vuk Vuk 21695:88: завјет ~ испуни"
+    ]
+   }
+  }
+ ]
+}

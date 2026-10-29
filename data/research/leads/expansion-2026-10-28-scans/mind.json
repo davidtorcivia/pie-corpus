@@ -1,0 +1,816 @@
+{
+ "target": [
+  "pie-root-men-think"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 425,
+  "Germanic": 8524,
+  "Slavic": 837,
+  "Baltic": 155,
+  "Albanian": 1,
+  "Indo-Iranian": 7269,
+  "Greek": 11488,
+  "Italic": 245
+ },
+ "rows": [
+  {
+   "root": "pie-root-gjneh3-recognise",
+   "branches": {
+    "Celtic": [
+     9,
+     2.0,
+     4.6
+    ],
+    "Slavic": [
+     14,
+     3.9,
+     3.6
+    ],
+    "Baltic": [
+     5,
+     0.5,
+     9.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201000:#1/13/xv/37:2 (w1/2): menman ~ iongantus",
+     "mga G201000:#1/13/lvii/151:2: menman ~ h-iongnadh",
+     "ga-early G100005A:#1/M884/M884.11/t#1:5: mheanma ~ ghnas"
+    ],
+    "Slavic": [
+     "vuk Vuk 10131:17: памтити ~ знати",
+     "vuk Vuk 16321:1: запамтили ~ Знате",
+     "vuk Vuk 28214:101: упамтила ~ Знаш"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:16225: manė ~ nežinau",
+     "dainos litauischevolksl00leskuoft:17474: neiszmanot ~ žinau",
+     "dainos litauischevolksl00leskuoft:18547: manė ~ pažįsti"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwelH-drip",
+   "branches": {
+    "Baltic": [
+     3,
+     0.5,
+     6.5
+    ],
+    "Indo-Iranian": [
+     5,
+     1.5,
+     3.3
+    ],
+    "Greek": [
+     2,
+     0.8,
+     2.6
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:9575: įmanau ~ gulti",
+     "dainos littauischevolk00nessgoog:74795: manau ~ gulti",
+     "dainos litauischevolksl00leskuoft:19376: manė ~ gulėjo"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 7, 160.s5: manasaḥ ~ glāna",
+     "sa-ep MBh, 12, 54.s35: manaḥ ~ glāyate",
+     "sa-ep MBh, 15, 6.s42: mano ~ glāyate"
+    ],
+    "Greek": [
+     "grc-late Origenes Contra Celsum 2.69 s18 (w1/2): μνημείῳ ~ συμβολικοῦ",
+     "grc-late Quintus Posthomerica 9.400: μεμνημένος ~ βέλεμνα"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dngjhweh2s",
+   "branches": {
+    "Slavic": [
+     2,
+     0.7,
+     2.7
+    ],
+    "Indo-Iranian": [
+     13,
+     6.4,
+     2.0
+    ],
+    "Italic": [
+     3,
+     0.6,
+     4.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 1060700: мьнѧтъ ~ ѩзꙑчъници",
+     "ccmh suprasliensis 3104122: мьнивѣ ~ ѩзꙑка"
+    ],
+    "Indo-Iranian": [
+     "rv RV 10.53.11b: mánasā ~ jihváyā",
+     "av AVP, 1, 92.s7: manyuḥ ~ jihvāyāḥ",
+     "sa-ep MBh, 1, 85.s41: manasā ~ jihvayā"
+    ],
+    "Italic": [
+     "lat CatAgr 40.4 (w2/2): stramentis ~ linguam",
+     "lat LucrDRN3 3.453: mens ~ lingua",
+     "lat LucrDRN3 3.479: mens ~ lingua"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-kjexr",
+   "branches": {
+    "Celtic": [
+     13,
+     0.4,
+     29.4
+    ],
+    "Indo-Iranian": [
+     87,
+     22.6,
+     3.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G204001:#1/6:10 (w1/2): menman ~ cride",
+     "mga G201011:#1/13:1 (w1/3): menman ~ cride",
+     "mga G206000:#1/1/#2:2 (w2/2): menman ~ cride"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.61.2c: mánasā ~ hr̥dā́",
+     "rv RV 1.67.4b: mántrān ~ hr̥dā́",
+     "rv RV 1.73.10b: mánase ~ hr̥dé"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-Hreh1dh-think",
+   "branches": {
+    "Celtic": [
+     5,
+     0.6,
+     7.7
+    ],
+    "Slavic": [
+     2,
+     0.2,
+     10.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G204001:#1/1:11 (w2/2): menman ~ imrāiti",
+     "mga G206000:#1/21/X:48 (w2/2): menman ~ imradud",
+     "mga G206000:#1/26~2/XV:23 (w1/2): menman ~ t'imradud"
+    ],
+    "Slavic": [
+     "vuk Vuk 23704:1126: памте ~ урадили",
+     "vuk Vuk 21715:209: мудар ~ урадити"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kjerd-heart",
+   "branches": {
+    "Celtic": [
+     13,
+     0.7,
+     17.6
+    ],
+    "Indo-Iranian": [
+     87,
+     22.6,
+     3.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G204001:#1/6:10 (w1/2): menman ~ cride",
+     "mga G201011:#1/13:1 (w1/3): menman ~ cride",
+     "mga G206000:#1/1/#2:2 (w2/2): menman ~ cride"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.61.2c: mánasā ~ hr̥dā́",
+     "rv RV 1.67.4b: mántrān ~ hr̥dā́",
+     "rv RV 1.73.10b: mánase ~ hr̥dé"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gwlHeH",
+   "branches": {
+    "Baltic": [
+     3,
+     0.5,
+     6.5
+    ],
+    "Indo-Iranian": [
+     5,
+     0.8,
+     6.3
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:9575: įmanau ~ gulti",
+     "dainos littauischevolk00nessgoog:74795: manau ~ gulti",
+     "dainos litauischevolksl00leskuoft:19376: manė ~ gulėjo"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 7, 160.s5: manasaḥ ~ glāna",
+     "sa-ep MBh, 12, 54.s35: manaḥ ~ glāyate",
+     "sa-ep MBh, 15, 6.s42: mano ~ glāyate"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1wesus",
+   "branches": {
+    "Indo-Iranian": [
+     168,
+     51.4,
+     3.3
+    ],
+    "Greek": [
+     13,
+     1.4,
+     9.0
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 3.4.1b: sumatím ~ vásvaḥ",
+     "rv RV 3.57.6d: sumatím ~ váso",
+     "rv RV 5.6.1a: manye ~ vásuḥ"
+    ],
+    "Greek": [
+     "hom Il. 17.456: μένος ~ ἠΰ",
+     "hom Il. 20.80: μένος ~ ἠΰ",
+     "hom Il. 23.524: μένος ~ ἠῢ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1ewk-become_accustomed",
+   "branches": {
+    "Celtic": [
+     3,
+     0.3,
+     9.5
+    ],
+    "Slavic": [
+     13,
+     4.8,
+     2.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100054:#1/2/31:9 (w3/3): meanma ~ thuig",
+     "ga-early G100055:#1/3/18/2:38: mheanma ~ thuigeas",
+     "ga-early celtic-journal-zcp-1897-1926:zeitschriftfurcelti14:L15366-L15370 (w2/2): mhenmar ~ tuigidh"
+    ],
+    "Slavic": [
+     "vuk Vuk 21694:150: памети ~ учи",
+     "vuk Vuk 33014:41: памети ~ науче",
+     "vuk Vuk 21718:257: памети ~ науче"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-selh1-take",
+   "branches": {
+    "Celtic": [
+     2,
+     0.4,
+     4.8
+    ],
+    "Italic": [
+     3,
+     0.6,
+     5.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100055:#1/1/1/9:8: mheanman ~ seilbh",
+     "ga-early G303002:#1:459 (w4/4): meanman ~ tuilled"
+    ],
+    "Italic": [
+     "lat LucrDRN3 3.139: mentem ~ consilium",
+     "lat LucrDRN3 3.615: mens ~ consilium",
+     "lat PlAulul 130: monere ~ consulere"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwerH-express_approval",
+   "branches": {
+    "Slavic": [
+     2,
+     0.8,
+     2.4
+    ],
+    "Italic": [
+     2,
+     0.2,
+     10.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny 10945725bsb:19786: мудрЪ ~ гордыню",
+     "ccmh suprasliensis 3075113: памѧти ~ жръти"
+    ],
+    "Italic": [
+     "lat PlCapt 414: meminisse ~ gratum",
+     "lat PlCapt 504: eminebam ~ gratulando"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dhegjhoxm",
+   "branches": {
+    "Celtic": [
+     12,
+     4.7,
+     2.6
+    ],
+    "Baltic": [
+     2,
+     0.3,
+     6.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G204001:#1/4:3 (w2/2): menmæ ~ duine",
+     "mga G201000:#1/6/iv/7:1: mhenmuin ~ dhuchas",
+     "mga G206000:#1/16/#1:57 (w2/2): menman ~ duine"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:19444: manė ~ žemės",
+     "dainos litauischevolksl00leskuoft:19446: manė ~ žemės"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-wewket",
+   "branches": {
+    "Indo-Iranian": [
+     8,
+     1.2,
+     6.9
+    ],
+    "Greek": [
+     24,
+     10.5,
+     2.3
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "ae Y34.15d (w1/2): manaŋhā ~ vaōcā",
+     "ae Y34.15e (w1/2): manaŋhā ~ vaōcā",
+     "ae Y34.15f (w1/2): manaŋhā ~ vaōcā"
+    ],
+    "Greek": [
+     "hom Il. 1.106: μάντι ~ εἶπας",
+     "hom Il. 11.291: μένος ~ εἰπὼν",
+     "hom Il. 13.155: μένος ~ εἰπὼν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sekw-say",
+   "branches": {
+    "Celtic": [
+     5,
+     2.5,
+     2.0
+    ],
+    "Baltic": [
+     17,
+     2.2,
+     7.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga celtic-journal-revue-celtique-1870-1928:revueceltique01pari:L3763-L3771 (w1/3): foraithminedar ~ scél",
+     "mga G206000:#1/28~2/XVIII:5 (w2/2): foraithmentar ~ scel",
+     "mga G302014:#1/#1:84: menman ~ h-aithesc"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:15872: manė ~ sako",
+     "dainos litauischevolksl00leskuoft:15904: manė ~ sako",
+     "dainos litauischevolksl00leskuoft:15956: manė ~ sako"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-sker",
+   "branches": {
+    "Celtic": [
+     3,
+     1.3,
+     2.4
+    ],
+    "Baltic": [
+     4,
+     0.6,
+     6.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G305001:#1/3:11 (w1/4): menman ~ chruinne",
+     "ga-early G100010B:#1/LC1522/LC1522.4:4 (w2/5): mhuinntire ~ g-coir",
+     "ga-early G100054:#1/2/32:30 (w1/2): mhuinntire ~ cruinniughadh"
+    ],
+    "Baltic": [
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:29031: manej ~ Išskirk",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:29032: manej ~ Išskirk",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:38524: manej ~ Atskirk"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sek-cut",
+   "branches": {
+    "Celtic": [
+     3,
+     1.3,
+     2.3
+    ],
+    "Baltic": [
+     4,
+     0.6,
+     6.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G305001:#1/3:11 (w1/4): menman ~ chruinne",
+     "ga-early G100010B:#1/LC1522/LC1522.4:4 (w2/5): mhuinntire ~ g-coir",
+     "ga-early G100054:#1/2/32:30 (w1/2): mhuinntire ~ cruinniughadh"
+    ],
+    "Baltic": [
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:29031: manej ~ Išskirk",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:29032: manej ~ Išskirk",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:38524: manej ~ Atskirk"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-ter-tender",
+   "branches": {
+    "Germanic": [
+     2,
+     0.6,
+     3.3
+    ],
+    "Italic": [
+     2,
+     0.5,
+     4.4
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota HolmPerg-17-4to 1r:1 (w1117/1727): mvnde ~ þrae",
+     "menota HolmPerg-17-4to 1r:1 (w1714/1727): myndi ~ þraatt"
+    ],
+    "Italic": [
+     "lat Catul 63.19: mente ~ tarda",
+     "lat LucrDRN3 3.765: mentem ~ tenero"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-prekj-ask",
+   "branches": {
+    "Baltic": [
+     2,
+     0.4,
+     5.2
+    ],
+    "Indo-Iranian": [
+     5,
+     1.9,
+     2.6
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:15904: manė ~ praszo",
+     "dainos litauischevolksl00leskuoft:19290: užsimanė ~ papraszė"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.164.5a: mánasā ~ pr̥chāmi",
+     "rv RV 9.97.35b: matíbhiḥ ~ pr̥chámānāḥ",
+     "rv RV 10.81.4c: mánasā ~ pr̥cháta"
+    ]
+   }
+  },
+  {
+   "root": "kaikki:gʷʰren",
+   "branches": {
+    "Germanic": [
+     10,
+     1.6,
+     6.3
+    ],
+    "Greek": [
+     50,
+     23.5,
+     2.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 90v:26: muni ~ grunr",
+     "menota AM-35-fol 225: (w10/22): mune ~ grunr",
+     "menota AM-36-fol 291:18 (w8/15): mundi ~ grunr"
+    ],
+    "Greek": [
+     "hom Il. 1.103: μένεος ~ φρένες",
+     "hom Il. 1.107: μαντεύεσθαι ~ φρεσὶ",
+     "hom Il. 15.128: μαινόμενε ~ φρένας"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-tekw-run",
+   "branches": {
+    "Celtic": [
+     3,
+     0.6,
+     5.3
+    ],
+    "Baltic": [
+     2,
+     0.9,
+     2.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G100017:#1/5/FA_459:7: mhuinntire ~ teicheadh",
+     "mga G206000:#1/21/X:25 (w3/4): do-rúmenair ~ teiched",
+     "ga-early G100054:#1/1~2/24/#1:16: mhuinntire ~ teitheadh"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:16225: manė ~ tek",
+     "dainos litauischevolksl00leskuoft:19789: manė ~ taku"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-golHweh2",
+   "branches": {
+    "Slavic": [
+     23,
+     10.4,
+     2.2
+    ],
+    "Baltic": [
+     4,
+     0.8,
+     4.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 10134:284: мудра ~ глава",
+     "vuk Vuk 28226:1062: мудра ~ глава",
+     "vuk Vuk 28235:312: мудра ~ глава"
+    ],
+    "Baltic": [
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:43320: manej ~ galvėlės",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:43365: manej ~ galvėlės",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:43481: manej ~ galvėlu"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-leykw-leave",
+   "branches": {
+    "Celtic": [
+     4,
+     1.8,
+     2.2
+    ],
+    "Baltic": [
+     4,
+     0.8,
+     4.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100010A:#1/LC1310/LC1310.1:10 (w2/2): mhuinntire ~ leicset",
+     "ga-early G100011:#1/1526/1526.15:1 (w2/3): menman ~ léic",
+     "ga-early G100055:#1/1/6/13:11: mheanman ~ teilgidh"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:4985: manei ~ pasilik",
+     "dainos litauischevolksl00leskuoft:16326: manė ~ paliksiu",
+     "dainos litauischevolksl00leskuoft:19446: manė ~ neiszlaikė"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhuH-be",
+   "branches": {
+    "Celtic": [
+     16,
+     5.4,
+     3.0
+    ],
+    "Slavic": [
+     60,
+     20.6,
+     2.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G303000:#1:626 (w1/2): menman ~ baile",
+     "mga G303010:#1/5:1 (w1/2): meanman ~ bhēith",
+     "mga G303010:#1/7:14 (w2/6): meanma ~ raibhe"
+    ],
+    "Slavic": [
+     "byliny ruws 425999:225: память ~ быть",
+     "byliny ruws 426227:59: мудрая ~ была",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:26834: мудроё ~ будетъ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-swepnos",
+   "branches": {
+    "Indo-Iranian": [
+     9,
+     4.1,
+     2.2
+    ],
+    "Italic": [
+     2,
+     0.6,
+     3.6
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 2, 63.s42: manye ~ svapne",
+     "sa-ep MBh, 12, 206.s29: manasā ~ svapne",
+     "sa-ep MBh, 12, 207.s27: manasā ~ svapne"
+    ],
+    "Italic": [
+     "lat LucrDRN4 4.1022: mentibu' ~ somno",
+     "lat LucrDRN5 5.62: mentem ~ somnis"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-terp-become_rigid",
+   "branches": {
+    "Germanic": [
+     5,
+     1.9,
+     2.7
+    ],
+    "Greek": [
+     3,
+     1.1,
+     2.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Njals-saga 14v:17: munu ~ Óþarfir",
+     "menota HolmPerg-17-4to 1r:1 (w346/1727): mvnde ~ o þarft",
+     "menota HolmPerg-17-4to 1r:1 (w817/1727): mynde ~ u þarft"
+    ],
+    "Greek": [
+     "grc-late Plutarchus Timoleon 29.2 s3 (w2/3): μνήμας ~ ἀτερπεῖς",
+     "grc-late Plutarchus De curiositate 10 s7: μνήμην ~ ἀτερπέστατον",
+     "grc-late Plutarchus De sera numinis vindicta 11 s6 (w2/2): μνήμης ~ ἀτερποῦς"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gelH-naked",
+   "branches": {
+    "Slavic": [
+     23,
+     10.9,
+     2.1
+    ],
+    "Baltic": [
+     4,
+     1.1,
+     3.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 10134:284: мудра ~ глава",
+     "vuk Vuk 28226:1062: мудра ~ глава",
+     "vuk Vuk 28235:312: мудра ~ глава"
+    ],
+    "Baltic": [
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:43320: manej ~ galvėlės",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:43365: manej ~ galvėlės",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:43481: manej ~ galvėlu"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kjel-incline",
+   "branches": {
+    "Baltic": [
+     2,
+     0.7,
+     3.0
+    ],
+    "Italic": [
+     2,
+     0.9,
+     2.2
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:19563: manė ~ neklaususi",
+     "dainos litauischevolksl00leskuoft:19572: manė ~ neklaususi"
+    ],
+    "Italic": [
+     "lat PlAsina 588: mentem ~ auscultemus",
+     "lat PlBacch 403: moneo ~ celabis"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1eh1tr",
+   "branches": {
+    "Germanic": [
+     2,
+     0.9,
+     2.1
+    ],
+    "Greek": [
+     9,
+     3.2,
+     2.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota DG-8-OHleg 5v:28 (w11/15): minndi ~ æðet",
+     "non Guðrúnarkviða en forna 1: myndi ~ œðra"
+    ],
+    "Greek": [
+     "hom Il. 8.413: μαίνεται ~ ἦτορ",
+     "grc Hesiodus Scutum 429: μένεος ~ ἦτορ",
+     "grc-late Plutarchus Non posse suaviter vivi secundum Epicurum 21 s11 (w1/2): μνήσωνται ~ ἦτορ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1eh1t-breathe",
+   "branches": {
+    "Indo-Iranian": [
+     218,
+     106.6,
+     2.0
+    ],
+    "Greek": [
+     9,
+     3.2,
+     2.8
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.163.6a: mánasā ~ ātmā́nam",
+     "av AVŚ, 16, 1.s2: manaḥ ~ ātma",
+     "av AVP, 10, 9.s1: manaḥ ~ ātma"
+    ],
+    "Greek": [
+     "hom Il. 8.413: μαίνεται ~ ἦτορ",
+     "grc Hesiodus Scutum 429: μένεος ~ ἦτορ",
+     "grc-late Plutarchus Non posse suaviter vivi secundum Epicurum 21 s11 (w1/2): μνήσωνται ~ ἦτορ"
+    ]
+   }
+  }
+ ]
+}

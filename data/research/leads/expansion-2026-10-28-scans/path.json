@@ -1,0 +1,754 @@
+{
+ "target": [
+  "pie-lex-pontoh1s",
+  "pie-root-pent-pass"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 363,
+  "Germanic": 4055,
+  "Slavic": 719,
+  "Armenian": 6,
+  "Indo-Iranian": 778,
+  "Greek": 1094,
+  "Italic": 8
+ },
+ "rows": [
+  {
+   "root": "pie-root-lewk-bright",
+   "branches": {
+    "Celtic": [
+     5,
+     1.0,
+     4.8
+    ],
+    "Slavic": [
+     2,
+     0.6,
+     3.3
+    ],
+    "Greek": [
+     16,
+     5.9,
+     2.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G100001A:#1/U916/U916.8:1: ait ~ loscadh",
+     "mga G100001A:#1/U1019/U1019.2:1: aitt ~ loscadh",
+     "mga G100001A:#1/U1107/U1107.2:1: ait ~ loscadh"
+    ],
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch1narod12:17351: путь ~ случится",
+     "byliny pesnisobrannyepnrybnikovymch2narod72:20403: путь ~ случится"
+    ],
+    "Greek": [
+     "hom Il. 5.771: πόντον ~ λεύσσων",
+     "grc Hymni Homerici In Cererem 34: πόντον ~ λεῦσσε",
+     "grc Aristoteles et Corpus Aristotelicum Historia animalium 8.17 s13: Ποντικὸς ~ λευκός"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-demh2-tame",
+   "branches": {
+    "Celtic": [
+     2,
+     0.7,
+     2.7
+    ],
+    "Indo-Iranian": [
+     4,
+     1.4,
+     2.9
+    ],
+    "Greek": [
+     3,
+     0.9,
+     3.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G301026:#1/51:4: aitidh ~ damhsa",
+     "ga-early G100005B:#1/1015/M1015.12:1: ait ~ daimh"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 5, 34.s118: pathi ~ dāntāḥ",
+     "sa-ep MBh, 5, 127.s55: pathi ~ dāntāḥ",
+     "sa-ep MBh, 12, 115.s37: pathi ~ damād"
+    ],
+    "Greek": [
+     "grc-late Plutarchus De fortuna 98e.3 s3: πόντου ~ δάμναται",
+     "grc-late Plutarchus De sollertia animalium 959γ s5: πόντου ~ δάμναται",
+     "grc-late Quintus Posthomerica 14.589: πόντῳ ~ δμηθέντα"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1werHus",
+   "branches": {
+    "Indo-Iranian": [
+     6,
+     0.7,
+     8.5
+    ],
+    "Greek": [
+     30,
+     0.8,
+     38.8
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 3.54.9d: pathí ~ uraú",
+     "rv RV 4.26.5b: pathā́ ~ urúṇā",
+     "rv RV 5.1.11c: pathīnā́m ~ urú"
+    ],
+    "Greek": [
+     "hom Il. 6.291: πόντον ~ εὐρέα",
+     "hom Il. 9.72: πόντον ~ εὐρέα",
+     "hom Od. 1.197: πόντῳ ~ εὐρέι"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-lewbh-desire",
+   "branches": {
+    "Celtic": [
+     3,
+     0.5,
+     5.6
+    ],
+    "Italic": [
+     2,
+     0.0,
+     57.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G600005:#1/2/1/52:4 (w2/3): aitt ~ luibh",
+     "ga-early G600005:#1/2/1/70:4 (w2/5): aitt ~ luibhe",
+     "ga-early G600005:#1/2/1/70:4 (w3/5): aitt ~ luibhe"
+    ],
+    "Italic": [
+     "lat CatOrig 4.Fragmentum_1: pontificem ~ lubet",
+     "lat Catul 17.5: pons ~ libidine"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1werH-broad",
+   "branches": {
+    "Indo-Iranian": [
+     6,
+     1.1,
+     5.6
+    ],
+    "Greek": [
+     32,
+     1.1,
+     28.6
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 3.54.9d: pathí ~ uraú",
+     "rv RV 4.26.5b: pathā́ ~ urúṇā",
+     "rv RV 5.1.11c: pathīnā́m ~ urú"
+    ],
+    "Greek": [
+     "hom Il. 2.145: πόντου ~ Εὖρός",
+     "hom Il. 6.291: πόντον ~ εὐρέα",
+     "hom Il. 9.72: πόντον ~ εὐρέα"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2sewt-seethe",
+   "branches": {
+    "Germanic": [
+     9,
+     2.8,
+     3.2
+    ],
+    "Greek": [
+     2,
+     0.1,
+     28.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Njals-saga 25v:16: Fanntu ~ sauðina",
+     "menota AM-619-4to 52:27: fann ~ sǫuðen",
+     "menota AM-677-4to 17r:8: finnr ~ sauðar"
+    ],
+    "Greek": [
+     "grc Hesiodus Theogonia 696: πόντος ~ ἀυτμὴ",
+     "grc-late Apollonius Rhodius Argonautica 4.929: πόντος ~ ἀυτμήν"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-legheti",
+   "branches": {
+    "Celtic": [
+     3,
+     0.8,
+     3.6
+    ],
+    "Slavic": [
+     12,
+     0.6,
+     19.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301900:#1/#16:13 (w1/2): ait ~ laigid",
+     "sga celtic-journal-zcp-1897-1926:zeitschriftfrc11meyeuoft:L8740-L8740: üait ~ leir",
+     "mga celtic-journal-zcp-1897-1926:zeitschriftfrc04meyeuoft:L11901-L11903: Ait ~ legar"
+    ],
+    "Slavic": [
+     "vuk Vuk 22065:53: путују ~ леже",
+     "byliny ruws 426318:26: пути ~ Залегли",
+     "byliny ruws 426318:36: пути ~ Залегли"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-wertmn",
+   "branches": {
+    "Slavic": [
+     10,
+     1.8,
+     5.6
+    ],
+    "Indo-Iranian": [
+     2,
+     0.2,
+     10.6
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 1541:595: путовати ~ вријеме",
+     "vuk Vuk 18813:14: путовати ~ време",
+     "vuk Vuk 18813:36: путовати ~ време"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 12, 1.s98: panthāno ~ vartmā",
+     "sa-ep MBh, 5, 93.s93: pathiṣu ~ vartmani"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-pelH-pale",
+   "branches": {
+    "Germanic": [
+     3,
+     0.9,
+     3.3
+    ],
+    "Greek": [
+     5,
+     0.3,
+     15.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota HolmPerg-34-4to-MLL 71v:25 (w1/2): fundinn ~ fóla",
+     "menota HolmPerg-34-4to-MLL 72v:13: finnsk ~ fóli",
+     "rea-goh Tatian T_Tat116 vn/a (w1/12): findet ~ folon"
+    ],
+    "Greek": [
+     "hom Il. 1.350: πόντον ~ πολιῆς",
+     "hom Il. 21.59: πόντος ~ πολιῆς",
+     "grc Theognis Elegiae 10: πόντος ~ πολιῆς"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2rtkjos",
+   "branches": {
+    "Indo-Iranian": [
+     3,
+     0.4,
+     6.7
+    ],
+    "Greek": [
+     8,
+     1.9,
+     4.2
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep Rām, Yu, 70.s9: pathi ~ ṛkṣa",
+     "sa-ep Rām, Yu, 70.s11: pathi ~ ṛkṣa",
+     "sa-ep Rām, Yu, 72.s62: pathi ~ ṛkṣa"
+    ],
+    "Greek": [
+     "grc Xenophon Cyropaedia 8.6.21 s1: πόντος ~ ἄρκτον",
+     "grc Xenophon Cyropaedia 8.8.1 s2: πόντῳ ~ ἄρκτον",
+     "grc-late Dionysius Halicarnassensis Antiquitates Romanae 14.1.1.2308 s2 (w3/3): Ποντικὸν ~ ἄρκτοις"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gweldh-be_greedy",
+   "branches": {
+    "Slavic": [
+     3,
+     0.3,
+     10.2
+    ],
+    "Indo-Iranian": [
+     2,
+     0.7,
+     2.7
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 34439:11: путника ~ гладнога",
+     "orv nov-sin: путьмъ. ~ глада.",
+     "orv nov-list: пути. ~ голода."
+    ],
+    "Indo-Iranian": [
+     "sa-ep Rām, Su, 24.s49: pathā ~ gṛdhra",
+     "sa-ep Rām, Yu, 53.s88: pathi ~ gṛdhro"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-ped-walk",
+   "branches": {
+    "Celtic": [
+     10,
+     1.6,
+     6.2
+    ],
+    "Slavic": [
+     4,
+     1.3,
+     3.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G206000:#1/16/#1:40: áitt ~ inad",
+     "mga celtic-journal-zcp-1897-1926:zeitschriftfrc04meyeuoft:L11901-L11903: Ait ~ isil",
+     "ga-early G100054:#1/1/6/#2:10: áitigh ~ ionad"
+    ],
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:37518: пути ~ попалъ",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:40957: пути ~ попало",
+     "byliny pesnisobrannyepvkireevskimch2pesni36:743: пути ~ пало"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-pelh1-swing",
+   "branches": {
+    "Slavic": [
+     2,
+     1.0,
+     2.0
+    ],
+    "Greek": [
+     2,
+     0.2,
+     9.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno92:10670: пути ~ поли",
+     "byliny pesnisobrannyepnrybnikovymch3narod26:2813: пути ~ Поли"
+    ],
+    "Greek": [
+     "grc Pindarus Nemea 5.21: πόντοιο ~ πάλλοντ’",
+     "grc-late Oppianus Halieutica 1.166: πόντου ~ πάλλεται"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gjhh2ens",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.7,
+     2.8
+    ],
+    "Greek": [
+     2,
+     0.3,
+     6.7
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "av AVP, 19, 34.s3: patham ~ haṃsānāṃ",
+     "sa-ep Rām, Ki, 57.s54: panthā ~ haṃsānāṃ"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De mulierum affectibus i-iii 2.208 s3: ποντικὰ ~ χηνὸς",
+     "grc-late Galenus De compositione medicamentorum per genera libri vii 7.16.862.422 s9: Ποντικοῦ ~ χηνὸς"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kelh2-beat",
+   "branches": {
+    "Celtic": [
+     4,
+     1.7,
+     2.4
+    ],
+    "Slavic": [
+     3,
+     0.4,
+     7.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201000:#1/4/lvi/177/t#1:14: ait ~ caillech",
+     "mga celtic-journal-revue-celtique-1870-1928:revueceltique13pari:L5109-L5111: n-attaib ~ claideb",
+     "ga-early G100010B:#1/LC1474/LC1474.2:1 (w2/2): ait ~ chloidheamh"
+    ],
+    "Slavic": [
+     "ccmh marianus 2022310: пѫть ~ класꙑ",
+     "ccmh zographensis 2022310: пѫть ~ класꙑ",
+     "ccmh savvina 2022310: пѫть ~ класꙑ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-pedom",
+   "branches": {
+    "Celtic": [
+     9,
+     1.3,
+     6.8
+    ],
+    "Indo-Iranian": [
+     4,
+     1.6,
+     2.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G206000:#1/16/#1:40: áitt ~ inad",
+     "ga-early G100054:#1/1/6/#2:10: áitigh ~ ionad",
+     "ga-early G201020:#1/34:1 (w1/3): ait ~ ionad"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 6, 28.s2: pathi ~ padāni",
+     "sa-ep MBh, 13, 105.s144: patham ~ pada",
+     "sa-ep Rām, Ay, 37.s28: pathi ~ padāni"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2ew",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.4,
+     5.0
+    ],
+    "Greek": [
+     6,
+     2.0,
+     3.0
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 3.54.9d: pathí ~ vyùte",
+     "av AVŚ, 12, 2.s57: pathibhir ~ 'varān"
+    ],
+    "Greek": [
+     "hom Il. 7.64: πόντος ~ αὐτῆς",
+     "hom Od. 12.406: πόντος ~ αὐτῆς",
+     "hom Od. 13.257: πόντου ~ αὐτὸς"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2ekjros",
+   "branches": {
+    "Slavic": [
+     3,
+     0.8,
+     3.6
+    ],
+    "Greek": [
+     8,
+     2.1,
+     3.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 3030510: пѫти ~ острии",
+     "ccmh assemanianus 3030520: пѫті ~ острии",
+     "ccmh savvina 3030510: пѫтие ~ остри"
+    ],
+    "Greek": [
+     "grc Herodotus Historiae 4.99.4 s2: πόντον ~ ἄκρην",
+     "grc-late Apollonius Rhodius Argonautica 1.549: πόντον ~ ἀκροτάτῃσι",
+     "grc-late Galenus De compositione medicamentorum secundum locos libri x 9.2.599.292 s35: Ποντικοῦ ~ ἀκόρου"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-legh-lie",
+   "branches": {
+    "Celtic": [
+     3,
+     1.0,
+     2.9
+    ],
+    "Slavic": [
+     15,
+     3.3,
+     4.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301900:#1/#16:13 (w1/2): ait ~ laigid",
+     "sga celtic-journal-zcp-1897-1926:zeitschriftfrc11meyeuoft:L8740-L8740: üait ~ leir",
+     "mga celtic-journal-zcp-1897-1926:zeitschriftfrc04meyeuoft:L11901-L11903: Ait ~ legar"
+    ],
+    "Slavic": [
+     "vuk Vuk 22065:53: путују ~ леже",
+     "byliny ruws 425717:243: пути ~ лежит",
+     "byliny ruws 426318:26: пути ~ Залегли"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1ey-go",
+   "branches": {
+    "Slavic": [
+     41,
+     18.4,
+     2.2
+    ],
+    "Indo-Iranian": [
+     36,
+     7.4,
+     4.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 1600:102: путовати ~ одоше",
+     "vuk Vuk 10609:563: путујемо ~ дође",
+     "vuk Vuk 18822:94: путовати ~ дође"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.24.8b: pánthām ~ ánvetavaí",
+     "rv RV 1.100.3b: pánthāsaḥ ~ yánti",
+     "rv RV 1.105.18b: pathā́ ~ yántam"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h3er-move",
+   "branches": {
+    "Celtic": [
+     2,
+     0.8,
+     2.6
+    ],
+    "Greek": [
+     36,
+     10.5,
+     3.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga celtic-journal-eriu-1904-1928:eriu_1910_4:L10410-L10411: ait ~ reid",
+     "ga-early G305002:#1/2/#20:8: h-aiti ~ dh'airdi"
+    ],
+    "Greek": [
+     "hom Il. 11.298: πόντον ~ ὀρίνει",
+     "hom Il. 14.254: πόντον ~ ὄρσασ̓",
+     "hom Il. 23.214: πόντον ~ ὦρτο"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-steh2-stand",
+   "branches": {
+    "Celtic": [
+     9,
+     3.4,
+     2.6
+    ],
+    "Indo-Iranian": [
+     63,
+     19.6,
+     3.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201000:#1/4/lvi/177/t#1:14: ait ~ t-tá",
+     "mga G502003:#1/2/1:171 (w3/4): ait ~ atat",
+     "mga G800011E:#1/39:202: Áitt ~ rrabe"
+    ],
+    "Indo-Iranian": [
+     "rv RV 2.24.7b: patháḥ ~ tasthuḥ",
+     "rv RV 3.54.9d: pathí ~ tasthúḥ",
+     "rv RV 10.5.6d: pathā́m ~ tasthau"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-nokwts",
+   "branches": {
+    "Slavic": [
+     5,
+     1.6,
+     3.2
+    ],
+    "Greek": [
+     14,
+     5.5,
+     2.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 1566:52: путовати ~ ноћи",
+     "vuk Vuk 18826:61: путовати ~ ноћи",
+     "vuk Vuk 23729:263: путовао ~ ноћ"
+    ],
+    "Greek": [
+     "hom Od. 12.315: πόντον ~ νύξ",
+     "hom Od. 16.367: πόντῳ ~ νύκτ̓",
+     "hom Od. 5.294: πόντον ~ νύξ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-doru",
+   "branches": {
+    "Slavic": [
+     2,
+     0.8,
+     2.5
+    ],
+    "Indo-Iranian": [
+     4,
+     1.3,
+     3.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 1210810: пѫти ~ дрѣва",
+     "ccmh marianus 2110810: пѫти ~ дрѣва"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 1, 138.s7: pathinaḥ ~ dāru",
+     "sa-ep MBh, 3, 176.s101: pathi ~ drumān",
+     "sa-ep MBh, 9, 23.s106: pathinam ~ drumam"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-peh2w-few",
+   "branches": {
+    "Germanic": [
+     28,
+     11.6,
+     2.4
+    ],
+    "Slavic": [
+     3,
+     1.1,
+     2.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Bandamanna-saga 116r:8: finnask ~ fátt",
+     "menota AM-132-fol-Egils-saga 76v:26: finnask ~ fátt",
+     "menota AM-132-fol-Egils-saga 96v:19: finnask ~ fátt"
+    ],
+    "Slavic": [
+     "byliny 10945725bsb:15120: путь ~ птицамь",
+     "ccmh marianus 2040400: пѫти ~ птицѧ",
+     "ccmh zographensis 1130400: пѫти ~ птицѧ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-wodr",
+   "branches": {
+    "Indo-Iranian": [
+     5,
+     1.9,
+     2.7
+    ],
+    "Greek": [
+     23,
+     11.4,
+     2.0
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 2.4.6b: pathā́ ~ vā́r",
+     "rv RV 10.145.6e: pathā́ ~ vā́r",
+     "av AVŚ, 3, 18.s12: pathā ~ vār"
+    ],
+    "Greek": [
+     "hom Od. 4.359: πόντον ~ ὕδωρ",
+     "grc Bacchylides Epinicia 3.86: πόντου ~ ὕδωρ",
+     "grc Hippocrates et Corpus Hippocraticum De mulierum affectibus i-iii 2.177 s6: πάτον ~ ὕδατι"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-wert-turn",
+   "branches": {
+    "Slavic": [
+     17,
+     7.7,
+     2.2
+    ],
+    "Indo-Iranian": [
+     14,
+     6.3,
+     2.2
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 1541:595: путовати ~ вријеме",
+     "vuk Vuk 18813:14: путовати ~ време",
+     "vuk Vuk 18813:36: путовати ~ време"
+    ],
+    "Indo-Iranian": [
+     "rv RV 2.23.7c: patháḥ ~ vartaya +",
+     "av AVŚ, 12, 1.s98: panthāno ~ vartmā",
+     "sa-ep MBh, 1, 110.s46: pathi ~ vartate"
+    ]
+   }
+  }
+ ]
+}

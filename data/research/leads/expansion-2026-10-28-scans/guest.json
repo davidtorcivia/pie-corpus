@@ -1,0 +1,92 @@
+{
+ "target": [
+  "pie-lex-ghostis"
+ ],
+ "window": 4,
+ "units": {
+  "Germanic": 135,
+  "Slavic": 704,
+  "Italic": 49
+ },
+ "rows": [
+  {
+   "root": "pie-root-peh3-drink",
+   "branches": {
+    "Slavic": [
+     19,
+     7.0,
+     2.7
+    ],
+    "Italic": [
+     3,
+     0.2,
+     15.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 33002:38: Угостише ~ пивом",
+     "vuk Vuk 47617:11: Угостила ~ пивом",
+     "vuk Vuk 28269:428: Угостише ~ пивом"
+    ],
+    "Italic": [
+     "lat PlCapt 92: hostium ~ potitus",
+     "lat PlCapt 144: hostium ~ potitus",
+     "lat PlCapt 762: hostium ~ potitus"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-doxm",
+   "branches": {
+    "Slavic": [
+     5,
+     1.7,
+     2.9
+    ],
+    "Italic": [
+     2,
+     0.6,
+     3.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:22403: гость ~ дома",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:17118: гость ~ домф",
+     "byliny pesnisobrannyepnrybnikovymch2narod72:8234: гость ~ дому"
+    ],
+    "Italic": [
+     "lat PlAmphi 188: hostibus ~ domum",
+     "lat PlAmphi 684: hostibus ~ domum"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dem-build",
+   "branches": {
+    "Slavic": [
+     5,
+     1.7,
+     2.9
+    ],
+    "Italic": [
+     2,
+     0.6,
+     3.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:22403: гость ~ дома",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:17118: гость ~ домф",
+     "byliny pesnisobrannyepnrybnikovymch2narod72:8234: гость ~ дому"
+    ],
+    "Italic": [
+     "lat PlAmphi 188: hostibus ~ domum",
+     "lat PlAmphi 684: hostibus ~ domum"
+    ]
+   }
+  }
+ ]
+}

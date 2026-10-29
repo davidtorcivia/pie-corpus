@@ -1,0 +1,257 @@
+{
+ "target": [
+  "pie-lex-kjlewmn",
+  "pie-lex-kjlewos"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 391,
+  "Slavic": 2882,
+  "Indo-Iranian": 163,
+  "Greek": 543
+ },
+ "rows": [
+  {
+   "root": "pie-lex-bhewdheti",
+   "branches": {
+    "Slavic": [
+     9,
+     1.4,
+     6.6
+    ],
+    "Greek": [
+     2,
+     0.0,
+     149.6
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 4085100: слово ~ съблюдетъ",
+     "ccmh marianus 4085220: слово ~ съблюдетъ",
+     "ccmh marianus 4152020: слово ~ съблюсѧ"
+    ],
+    "Greek": [
+     "hom Il. 11.21: κλέος ~ πεύθετο",
+     "hom Il. 9.524: κλέα ~ ἐπευθόμεθα"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dhgwhey-decline",
+   "branches": {
+    "Indo-Iranian": [
+     3,
+     0.3,
+     11.1
+    ],
+    "Greek": [
+     4,
+     0.4,
+     9.2
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.40.4b: śrávaḥ ~ ákṣiti",
+     "rv RV 8.103.5b: śrávaḥ ~ ákṣiti",
+     "rv RV 9.66.7c: śrávaḥ ~ ákṣiti"
+    ],
+    "Greek": [
+     "hom Il. 9.413: κλέος ~ ἄφθιτον",
+     "grc Hesiodus Fragmenta 70.5: κλέος ~ ἄφθιτον",
+     "grc Aeschylus Epigrammata 7.255.3: κλέος ~ φθιμένων"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-mer-die",
+   "branches": {
+    "Indo-Iranian": [
+     6,
+     1.3,
+     4.6
+    ],
+    "Greek": [
+     5,
+     0.6,
+     8.8
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.31.7b: śrávase ~ mártam",
+     "rv RV 1.110.5d: śrávaḥ ~ ámartyeṣu",
+     "rv RV 3.53.15d: śrávaḥ ~ amŕ̥tam"
+    ],
+    "Greek": [
+     "grc Bacchylides Epinicia 9.74: κλεινὰν ~ βροτοῖς",
+     "grc Euripides Iphigenia Aulidensis 429: κλεινοὶ ~ βροτοῖς",
+     "grc-late Strabo Geographica 15.1.7 s3: κλεινὴν ~ βροτοῖσι"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2reh1-think",
+   "branches": {
+    "Celtic": [
+     3,
+     0.9,
+     3.4
+    ],
+    "Greek": [
+     18,
+     4.1,
+     4.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100001C:#1/U1462/U1462.3:1 (w2/3): clu ~ d'airimh",
+     "ga-early G100005D:#1/M1381/M1381.2:1 (w1/2): clú ~ aireamh",
+     "ga-early G100011:#1/1464/1464.21:1: clu ~ arem"
+    ],
+    "Greek": [
+     "grc Theognis Elegiae 867: κλέος ~ ἀρετῆς",
+     "grc Pindarus Olympia 9.101: κλέος ~ ἀρεταῖς",
+     "grc Pindarus Pythia 3.114: κλειναῖς ~ ἀρετὰ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dheh1-do",
+   "branches": {
+    "Slavic": [
+     27,
+     13.5,
+     2.0
+    ],
+    "Indo-Iranian": [
+     26,
+     3.6,
+     7.3
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny ruws 425686:25: словечко ~ деле",
+     "byliny pesnisobrannyepvkireevskimch3vyp36:1145: Слово ~ дЪло",
+     "ccmh marianus 1053210: словесе ~ дѣати"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.9.8a: śrávaḥ ~ dhehi",
+     "rv RV 1.31.7b: śrávase ~ dadhāsi",
+     "rv RV 1.40.4b: śrávaḥ ~ dhatte"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1nomn",
+   "branches": {
+    "Celtic": [
+     10,
+     4.2,
+     2.4
+    ],
+    "Indo-Iranian": [
+     3,
+     0.5,
+     5.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G103005:#1:516: clú ~ hainm",
+     "mga G206000:#1/26:7: chlu ~ ainm",
+     "ga-early G100001C:#1/U1528/U1528.9:1 (w1/2): clú ~ ainm"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.57.3c: śrávase ~ nā́ma",
+     "rv RV 1.103.4d: śrávase ~ nā́ma",
+     "rv RV 10.28.12d: śrávaḥ ~ nā́ma"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhewdh-be_awake",
+   "branches": {
+    "Slavic": [
+     10,
+     4.0,
+     2.5
+    ],
+    "Greek": [
+     7,
+     2.2,
+     3.2
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch4narod9:6480: словцомъ ~ побудила",
+     "ccmh marianus 4085100: слово ~ съблюдетъ",
+     "ccmh marianus 4085220: слово ~ съблюдетъ"
+    ],
+    "Greek": [
+     "hom Il. 11.21: κλέος ~ πεύθετο",
+     "hom Il. 9.524: κλέα ~ ἐπευθόμεθα",
+     "hom Od. 13.415: κλέος ~ πευσόμενος"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-pleth2-spread",
+   "branches": {
+    "Celtic": [
+     5,
+     1.9,
+     2.6
+    ],
+    "Indo-Iranian": [
+     4,
+     1.3,
+     3.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201001:#1/4/#19:1: clú ~ leth",
+     "ga-early G100080:#1/5:170: clú ~ lleith",
+     "ga-early G305005:#1:978: clu ~ leth"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.9.7b: śrávaḥ ~ pr̥thú",
+     "rv RV 3.59.7c: śrávobhiḥ ~ pr̥thivī́m",
+     "rv RV 7.5.8d: śrávaḥ ~ pr̥thú"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dyew-be_bright",
+   "branches": {
+    "Indo-Iranian": [
+     20,
+     6.9,
+     2.9
+    ],
+    "Greek": [
+     11,
+     5.2,
+     2.1
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.31.7b: śrávase ~ divé-dive",
+     "rv RV 1.73.5d: śrávase ~ devéṣu",
+     "rv RV 1.73.7b: śrávaḥ ~ diví"
+    ],
+    "Greek": [
+     "hom Od. 1.283: κλέος ~ Διός",
+     "hom Od. 1.298: κλέος ~ δῖος",
+     "hom Od. 16.461: κλέος ~ δῖ̓"
+    ]
+   }
+  }
+ ]
+}

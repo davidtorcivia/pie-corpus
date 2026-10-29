@@ -1,0 +1,1439 @@
+{
+ "target": [
+  "pie-root-gweyh3-live"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 3232,
+  "Germanic": 181,
+  "Slavic": 1410,
+  "Baltic": 70,
+  "Armenian": 197,
+  "Tocharian": 85,
+  "Indo-Iranian": 1870,
+  "Greek": 20560,
+  "Italic": 206
+ },
+ "rows": [
+  {
+   "root": "pie-root-mer-die",
+   "branches": {
+    "Slavic": [
+     51,
+     6.9,
+     7.4
+    ],
+    "Armenian": [
+     44,
+     15.3,
+     2.9
+    ],
+    "Indo-Iranian": [
+     59,
+     14.8,
+     4.0
+    ],
+    "Italic": [
+     10,
+     3.1,
+     3.2
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 22054:390: жива ~ мртва",
+     "vuk Vuk 28030:17: жива ~ мртву",
+     "vuk Vuk 28042:244: жива ~ мртву"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 11 - PDF page 5 (word id 1787) (w2/3): կեցցեն ~ մարդ",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 15 - PDF page 9 (word id 3582): կեցցեն ~ մեռանել",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 21 - PDF page 15 (word id 5893): զկեալն ~ զմարդիկ"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.44.11d: jīrám ~ ámartyam",
+     "rv RV 1.91.6b: jīvā́tum ~ marāmahe",
+     "rv RV 1.164.30c: jīváḥ ~ mr̥tásya"
+    ],
+    "Italic": [
+     "lat CatOrat Fragmentum_247.Linea_1: uita ~ immortalium",
+     "lat LucrDRN3 3.79: uitae ~ mortis",
+     "lat LucrDRN3 3.869: uitam ~ mortalem"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-semh2-summer",
+   "branches": {
+    "Celtic": [
+     4,
+     1.6,
+     2.5
+    ],
+    "Armenian": [
+     22,
+     2.3,
+     9.6
+    ],
+    "Indo-Iranian": [
+     3,
+     1.1,
+     2.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301012:#1/#2/#1:91: bíada ~ sám",
+     "mga G800011D:#1/1:2 (w1/2): bíad ~ sám",
+     "ga-early G100005C:#1/M1236/M1236.12:7 (w2/2): biadh ~ saimhe"
+    ],
+    "Armenian": [
+     "xcl MH_1_2_12_Movses_Khor ed. page 1756 - PDF page 14 (word id 1899): կեցեալ ~ ամս",
+     "xcl MH_1_2_12_Movses_Khor ed. page 1758 - PDF page 16 (word id 2176) (w1/3): կեցեալ ~ ամս",
+     "xcl MH_1_2_12_Movses_Khor ed. page 1758 - PDF page 16 (word id 2176) (w2/3): կեցեալ ~ ամս"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 2, 61.s167: jīvatu ~ samāḥ",
+     "sa-ep MBh, 6, 108.s80: jīvantaṃ ~ samāḥ",
+     "sa-ep MBh, 15, 17.s47: jīvasi ~ samā"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ey-vital_force",
+   "branches": {
+    "Germanic": [
+     2,
+     0.7,
+     2.9
+    ],
+    "Indo-Iranian": [
+     38,
+     4.7,
+     8.1
+    ],
+    "Greek": [
+     212,
+     89.8,
+     2.4
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_118 vn/a (w77/146): chíctost ~ êa",
+     "rea-goh Z-Notker-Psalmen N_Ps_118 v18: chícchenne ~ êa"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.37.15c: jīváse ~ ā́yuḥ",
+     "rv RV 1.44.6c: jīváse ~ ā́yuḥ",
+     "rv RV 1.89.2d: jīváse ~ ā́yuḥ"
+    ],
+    "Greek": [
+     "grc Aristophanes Aves 413: βίου ~ διαίτης",
+     "grc Hippocrates et Corpus Hippocraticum De prisca medicina 3 s1 (w2/2): ὑγιαίνοντες ~ διαιτωμένοισί",
+     "grc Hippocrates et Corpus Hippocraticum De prisca medicina 3 s4 (w1/2): ὑγιαινόντων ~ δίαιτάν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2enh1-breathe",
+   "branches": {
+    "Germanic": [
+     2,
+     1.0,
+     2.0
+    ],
+    "Indo-Iranian": [
+     34,
+     11.2,
+     3.0
+    ],
+    "Italic": [
+     3,
+     1.3,
+     2.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-677-4to 3v:2 (w2/2): kykni ~ anda",
+     "ang Beo. 2315: cwices ~ andan"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.164.30a: jīvám ~ anát",
+     "av AVŚ, 2, 28.s8: jīvā ~ prāṇa",
+     "av AVŚ, 3, 31.s17: jīva ~ prāṇena"
+    ],
+    "Italic": [
+     "lat Catul 68.106: uita ~ anima",
+     "lat LucrDRN3 3.254: uitae ~ animai",
+     "lat LucrDRN3 3.397: uitam ~ animai"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-mrtwos",
+   "branches": {
+    "Slavic": [
+     34,
+     2.7,
+     12.4
+    ],
+    "Italic": [
+     2,
+     0.1,
+     25.6
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 22054:390: жива ~ мртва",
+     "vuk Vuk 28030:17: жива ~ мртву",
+     "vuk Vuk 28042:244: жива ~ мртву"
+    ],
+    "Italic": [
+     "lat LucrDRN3 3.1046: uita ~ mortua",
+     "lat PlCurcu 649: uiuam ~ mortuam"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwelH-throw",
+   "branches": {
+    "Germanic": [
+     6,
+     0.1,
+     49.1
+    ],
+    "Slavic": [
+     10,
+     3.2,
+     3.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-osx Genesis Gen_2 v672: quik ~ qualm",
+     "rea-osx Heliand Hel_65 v5438: quic ~ quelidin",
+     "rea-osx Heliand Hel_47 v3848: quica ~ quelidin"
+    ],
+    "Slavic": [
+     "vuk Vuk 10129:72: жива ~ жеља",
+     "vuk Vuk 10129:83: жива ~ жеља",
+     "vuk Vuk 10129:165: жива ~ жеља"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2er-fit",
+   "branches": {
+    "Germanic": [
+     3,
+     0.6,
+     5.2
+    ],
+    "Indo-Iranian": [
+     374,
+     27.2,
+     13.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Benediktiner_Regel B_4 vn/a (w2/16): erqhuichan ~ arame",
+     "rea-goh Z-Notker-Psalmen N_Ps_087 v5: erchicchen ~ arm",
+     "rea-goh Z-Notker_Cantica N_Cant_03_Annae vn/a (w8/11): chícchender ~ armen"
+    ],
+    "Indo-Iranian": [
+     "ae N53.10a: gaēϑā̊ ~ aṣ̌ahe",
+     "ae HN1.1a.3: gaēϑanąm ~ aṣ̌āum",
+     "ae HN2.1.3: gaēϑanąm ~ aṣ̌āum"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-welg-wet",
+   "branches": {
+    "Celtic": [
+     2,
+     0.8,
+     2.4
+    ],
+    "Baltic": [
+     2,
+     0.1,
+     25.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "cy celtic-journal-revue-celtique-1870-1928:revueceltique41pari:L24917-L24917: byw ~ gwalch",
+     "cy welsh-redbook-poetry-evans-1911:poetryinredbooko00evanuoft:L6995-L6995: byt ~ walch"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:17449: gyvas ~ valgyk",
+     "dainos litauischevolksl00leskuoft:19948: gyvas ~ valgė"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-yeh2lo",
+   "branches": {
+    "Slavic": [
+     5,
+     0.6,
+     8.6
+    ],
+    "Greek": [
+     4,
+     0.7,
+     5.7
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 22058:43: живога ~ Јал’",
+     "vuk Vuk 22059:52: жива ~ Јал’",
+     "vuk Vuk 28042:244: жива ~ Јали"
+    ],
+    "Greek": [
+     "grc Sophocles Trachiniae 284: βίον ~ ἄζηλον",
+     "grc-late Dionysius Halicarnassensis Antiquitates Romanae 2.67.2.379 s3 (w1/2): βίων ~ ἄζηλοι",
+     "grc-late Dionysius Halicarnassensis Antiquitates Romanae 5.75.1.1027 s2 (w1/2): βίους ~ ἀζήλου"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2erH-disappear",
+   "branches": {
+    "Slavic": [
+     6,
+     1.0,
+     6.2
+    ],
+    "Baltic": [
+     2,
+     0.3,
+     7.0
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 22059:117: живу ~ оборише",
+     "vuk Vuk 22079:260: живу ~ оборише",
+     "vuk Vuk 28042:322: живу ~ оборила"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:15897: gyvas ~ yra",
+     "dainos litvikosdjnosur00jugoog:13750: gyva ~ yra"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1em-take",
+   "branches": {
+    "Slavic": [
+     60,
+     20.6,
+     2.9
+    ],
+    "Baltic": [
+     5,
+     0.4,
+     14.2
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 33244:49: живу ~ узима",
+     "byliny ruws 425593:164: животы ~ взяли",
+     "byliny 11016812bsb:2615: живых ~ взяли"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:16000: negyvas ~ paėmė",
+     "dainos litauischevolksl00leskuoft:16285: gyvu ~ paimk",
+     "dainos litauischevolksl00leskuoft:16310: gyvus ~ pasiėmė"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwelH-drip",
+   "branches": {
+    "Slavic": [
+     10,
+     2.5,
+     4.0
+    ],
+    "Baltic": [
+     2,
+     0.2,
+     9.6
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 10129:72: жива ~ жеља",
+     "vuk Vuk 10129:83: жива ~ жеља",
+     "vuk Vuk 10129:165: жива ~ жеља"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:15999: negyvas ~ guli",
+     "dainos litauischevolksl00leskuoft:16000: negyvas ~ guli"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kwelh1-turn",
+   "branches": {
+    "Celtic": [
+     5,
+     1.2,
+     4.1
+    ],
+    "Italic": [
+     3,
+     0.3,
+     9.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "cy celtic-journal-revue-celtique-1870-1928:revueceltique40pari:L15863-L15863: fyw ~ bellach",
+     "cy welsh-redbook-mabinogion-rhys-evans-1887:textofmabinogion00evanuoft:L8261-L8268 (w1/2): bwyt ~ bellach",
+     "cy welsh-redbook-mabinogion-rhys-evans-1887:textofmabinogion00evanuoft:L11135-L11136: vyw ~ bellach"
+    ],
+    "Italic": [
+     "lat LucrDRN4 4.1260: uita ~ colatur",
+     "lat PlAulul 187: uitam ~ colas",
+     "lat PlCasin 158: uitam ~ colat"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-kjmtom",
+   "branches": {
+    "Celtic": [
+     2,
+     0.3,
+     7.9
+    ],
+    "Indo-Iranian": [
+     5,
+     1.1,
+     4.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100056:#1/16:21 (w1/2): mbiadh ~ céadlongadh",
+     "ga-early G100056:#1/18:25 (w3/3): mbiadh ~ chéadlongadh"
+    ],
+    "Indo-Iranian": [
+     "rv RV 3.36.10c: jīváse ~ śatám",
+     "rv RV 7.66.16c: jī́vema ~ śatám",
+     "rv RV 10.18.4c: jīvantu ~ śatám"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwerH-express_approval",
+   "branches": {
+    "Celtic": [
+     32,
+     8.7,
+     3.7
+    ],
+    "Armenian": [
+     4,
+     0.4,
+     9.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G109001:#1/#1:306: biadh ~ bráth",
+     "sga G201015:#1:45: mbethaid ~ bráth",
+     "sga G301012:#1/#2/#33:11: bíad ~ bráth"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 91 - PDF page 85 (word id 34628) (w3/3): կեցցէա†։ ~ կարդասցէ",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 116 - PDF page 110 (word id 44331): կեցցէ, ~ կարդասցէ",
+     "xcl MH_1_2_11_Agathangelos ed. page 1621 - PDF page 327 (word id 55692) (w4/4): կեցցէա։ ~ կարդասցէ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h3er-move",
+   "branches": {
+    "Baltic": [
+     2,
+     0.3,
+     7.3
+    ],
+    "Indo-Iranian": [
+     51,
+     12.5,
+     4.1
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:19428: negyvas ~ ryta",
+     "dainos litauischevolksl00leskuoft:19462: gyvas ~ ryto"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.36.14c: jīváse ~ ūrdhvā́n",
+     "rv RV 1.113.8c: jīvám ~ udīráyanti",
+     "rv RV 1.113.16a: jīváḥ ~ īrdhvam"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-mryetor",
+   "branches": {
+    "Slavic": [
+     11,
+     2.3,
+     4.7
+    ],
+    "Italic": [
+     2,
+     0.3,
+     6.0
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 23704:905: живјет’ ~ умријет’",
+     "vuk Vuk 21708:92: живјет’ ~ умријет’",
+     "vuk Vuk 21716:203: живјет’ ~ умријет’"
+    ],
+    "Italic": [
+     "lat PlAmphi 459: uiuo ~ mortuo",
+     "lat PlAsina 35: uiuos ~ mortui"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-deh3-give",
+   "branches": {
+    "Slavic": [
+     70,
+     26.5,
+     2.6
+    ],
+    "Indo-Iranian": [
+     271,
+     25.9,
+     10.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 1371:96: живу ~ Дај",
+     "vuk Vuk 22033:134: живу ~ даје",
+     "vuk Vuk 22034:232: живу ~ даде"
+    ],
+    "Indo-Iranian": [
+     "rv RV 10.186.3c: jīváse ~ dehi",
+     "av AVŚ, 4, 9.s2: jīvanāya ~ dattaṃ",
+     "av AVŚ, 6, 117.s3: jīvā ~ dadma"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2oyu",
+   "branches": {
+    "Germanic": [
+     2,
+     0.7,
+     3.1
+    ],
+    "Indo-Iranian": [
+     38,
+     4.7,
+     8.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_118 vn/a (w77/146): chíctost ~ êa",
+     "rea-goh Z-Notker-Psalmen N_Ps_118 v18: chícchenne ~ êa"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.37.15c: jīváse ~ ā́yuḥ",
+     "rv RV 1.44.6c: jīváse ~ ā́yuḥ",
+     "rv RV 1.89.2d: jīváse ~ ā́yuḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-leykw-leave",
+   "branches": {
+    "Baltic": [
+     2,
+     0.4,
+     5.3
+    ],
+    "Italic": [
+     6,
+     1.3,
+     4.4
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:19462: gyvas ~ liko",
+     "dainos litauischevolksl00leskuoft:19912: negyvas ~ liko"
+    ],
+    "Italic": [
+     "lat LucrDRN4 4.761: uita ~ rellicta",
+     "lat LucrDRN5 5.63: uita ~ reliquit",
+     "lat LucrDRN5 5.804: uitam ~ lincunt"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dheh1-do",
+   "branches": {
+    "Germanic": [
+     13,
+     4.4,
+     3.0
+    ],
+    "Indo-Iranian": [
+     295,
+     40.9,
+     7.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota HolmPerg-6-fol 27:22 (w15/18): kuika ~ døma",
+     "rea-goh Isidor I_DeFide_3 vn/a (w28/29): chiquihhida ~ chideda",
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler RhC_Rheinfränkische_Cantica vn/a (w4/13): ercuuikende ~ duot"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.72.7b: jīváse ~ dhāḥ",
+     "rv RV 1.79.9c: jīváse ~ dhehi",
+     "rv RV 1.91.7c: jīváse ~ dadhāsi"
+    ]
+   }
+  },
+  {
+   "root": "kaikki:ger",
+   "branches": {
+    "Germanic": [
+     2,
+     0.3,
+     7.1
+    ],
+    "Greek": [
+     2,
+     0.7,
+     3.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_084 v13: irchícchest ~ pechêrende",
+     "rea-goh Z-Notker-Psalmen N_Ps_070 v18 (w2/2): bechíhtost ~ pechêrter"
+    ],
+    "Greek": [
+     "grc-late Claudius Aelianus De natura animalium 4.27 s1: ζῷον ~ γρῦπα",
+     "grc-late Heliodorus Aethiopica 10.4 s1 (w1/3): ζώων ~ γρυπῶν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kneh2-scratch",
+   "branches": {
+    "Celtic": [
+     2,
+     0.3,
+     5.8
+    ],
+    "Greek": [
+     4,
+     1.2,
+     3.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G600009A:#1/2/3:51 (w1/2): biada ~ coganta",
+     "ga-early G600009A:#1/2/3:63: biada ~ chogaint"
+    ],
+    "Greek": [
+     "grc Plato Gorgias 494c s6: βίον ~ κνῆσθαι",
+     "grc Plato Gorgias 494d s5: βιῶναι ~ κνώμενον",
+     "grc-late Galenus De usu partium 14.9.644.526 s1 (w2/2): ζώου ~ κνῆσθαι"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2eleti",
+   "branches": {
+    "Celtic": [
+     3,
+     1.2,
+     2.4
+    ],
+    "Italic": [
+     2,
+     0.3,
+     7.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100055:#1/3/5~2/10:2 (w1/2): biadha ~ oileamhain",
+     "ga-early G100056:#1/9:160 (w3/4): beódhacht ~ n-oileamhain",
+     "ga-early G600010:#1/#1:7 (w2/6): biadh ~ d'oileamhain"
+    ],
+    "Italic": [
+     "lat Catul 68.24: uita ~ alebat",
+     "lat Catul 68.96: uita ~ alebat"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dher-support",
+   "branches": {
+    "Baltic": [
+     2,
+     0.3,
+     6.3
+    ],
+    "Italic": [
+     2,
+     0.7,
+     2.8
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:17547: gyvas ~ pasidarė",
+     "dainos litauischevolksl00leskuoft:18755: gyvą ~ darai"
+    ],
+    "Italic": [
+     "lat LucrDRN3 3.79: uitae ~ formidine",
+     "lat LucrDRN3 3.899: uitae ~ infesta"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h3reyH",
+   "branches": {
+    "Baltic": [
+     2,
+     0.3,
+     7.3
+    ],
+    "Indo-Iranian": [
+     2,
+     0.9,
+     2.3
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:19428: negyvas ~ ryta",
+     "dainos litauischevolksl00leskuoft:19462: gyvas ~ ryto"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 11, 5.s24: jīvanti ~ retaḥ",
+     "sa-ep MBh, 13, 112.s79: jīvo ~ retas"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1edti",
+   "branches": {
+    "Slavic": [
+     7,
+     2.5,
+     2.8
+    ],
+    "Greek": [
+     10,
+     1.7,
+     5.9
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 18829:40: жива ~ јели",
+     "byliny 11016812bsb:22749: живому ~ выфст",
+     "ccmh marianus 4065110: живъ ~ сънѣстъ"
+    ],
+    "Greek": [
+     "hom Od. 1.160: βίοτον ~ ἔδουσιν",
+     "hom Od. 11.116: βίοτον ~ κατέδουσι",
+     "hom Od. 13.396: βίοτον ~ κατέδουσιν"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gwih3weti",
+   "branches": {
+    "Greek": [
+     559,
+     163.6,
+     3.4
+    ],
+    "Italic": [
+     4,
+     0.8,
+     4.8
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Heraclitus Fragmenta 67 s1: βίον ~ ζῶντες",
+     "grc Antiphon Tetralogia 2 2.10 s3: βίου ~ ζῶν",
+     "grc Euripides Hecuba 12: βίου ~ ζῶσιν"
+    ],
+    "Italic": [
+     "lat CatOrat Fragmentum_246.Linea_1: uitam ~ uiuere",
+     "lat Catul 68.160: uiua ~ uiuere",
+     "lat PlCapt 282: uiuom ~ uiuit"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-kwrmis",
+   "branches": {
+    "Celtic": [
+     2,
+     0.8,
+     2.6
+    ],
+    "Indo-Iranian": [
+     3,
+     0.5,
+     5.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G206000:#1/33/XXXIV:54 (w3/5): biaid ~ crumaib",
+     "cy welsh-redbook-poetry-evans-1911:poetryinredbooko00evanuoft:L7970-L7970: byt ~ bryf"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 13, 112.s114: jīvati ~ kṛmi",
+     "sa-ep MBh, 13, 112.s157: jīvati ~ kṛmi",
+     "sa-ep MBh, 13, 112.s161: jīvati ~ kṛmir"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gjheh1-leave",
+   "branches": {
+    "Celtic": [
+     5,
+     1.9,
+     2.6
+    ],
+    "Indo-Iranian": [
+     33,
+     6.6,
+     5.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "cy celtic-journal-revue-celtique-1870-1928:revueceltique40pari:L15863-L15863: fyw ~ adawo",
+     "cy welsh-redbook-bruts-rhys-evans-1890:textofbrutsfromr00rhys:L4786-L4789: byt ~ adant",
+     "cy welsh-redbook-poetry-evans-1911:poetryinredbooko00evanuoft:L4407-L4407: fyw ~ adewi"
+    ],
+    "Indo-Iranian": [
+     "rv RV 10.99.5b: gáyam ~ hitvī́",
+     "av AVŚ, 8, 2.s58: jīvaḥ ~ hāsiṣur",
+     "av AVŚ, 10, 5.s65: jīvīt ~ jahātu"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-wodr",
+   "branches": {
+    "Germanic": [
+     2,
+     0.5,
+     3.7
+    ],
+    "Slavic": [
+     13,
+     3.8,
+     3.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-243-b-alfa-fol 55v:25 (w2/3): kyckvænndum ~ vatna",
+     "rea-osx Heliand Hel_41 v3369: quic ~ uuateres"
+    ],
+    "Slavic": [
+     "vuk Vuk 48101:4: жива ~ вода",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:30560: жива ~ ВБдь",
+     "byliny 11016812bsb:5299: живою ~ водой"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-okjtoxw",
+   "branches": {
+    "Armenian": [
+     2,
+     0.4,
+     5.2
+    ],
+    "Indo-Iranian": [
+     2,
+     0.8,
+     2.4
+    ]
+   },
+   "examples": {
+    "Armenian": [
+     "xcl MH_1_2_12_Movses_Khor ed. page 1758 - PDF page 16 (word id 2245) (w2/2): կեցեալ ~ ութ",
+     "xcl MH_1_2_13_Lazar_Parp ed. page 2216 - PDF page 16 (word id 4540): կեցեալ ~ ութ"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 4, 51.s19: gayaḥ ~ aṣṭakaḥ",
+     "sa-ep MBh, 13, 109.s90: jīvan ~ aṣṭamena"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kjens-announce",
+   "branches": {
+    "Celtic": [
+     2,
+     0.4,
+     5.7
+    ],
+    "Italic": [
+     2,
+     0.9,
+     2.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "cy celtic-journal-revue-celtique-1870-1928:revueceltique40pari:L14577-L14577: byw ~ dangos",
+     "cy welsh-redbook-poetry-evans-1911:poetryinredbooko00evanuoft:L13439-L13439: fwyd ~ dangos"
+    ],
+    "Italic": [
+     "lat LucrDRN3 3.420: uita ~ carmina",
+     "lat PlBacch 342: uita ~ censebam"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-wertetor",
+   "branches": {
+    "Celtic": [
+     3,
+     0.6,
+     5.2
+    ],
+    "Germanic": [
+     21,
+     9.2,
+     2.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "cy welsh-redbook-bruts-rhys-evans-1890:textofbrutsfromr00rhys:L15162-L15167 (w1/2): bwyt ~ gwerthit",
+     "cy welsh-redbook-poetry-evans-1911:poetryinredbooko00evanuoft:L8862-L8862: byt ~ gwerth",
+     "cy welsh-white-book-mabinogion-evans-1907:whitebookofmabin00evan:L7578-L7580: bOỳt ~ werth"
+    ],
+    "Germanic": [
+     "menota AM-132-fol-Laxdaela-saga 167r:34: kvikfé ~ orðinn",
+     "menota AM-35-fol 129: (w10/22): kvict ~ verþr",
+     "menota AM-519a-4to 27r:7: kvikr ~ verðr"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gjombhos",
+   "branches": {
+    "Slavic": [
+     4,
+     0.8,
+     4.8
+    ],
+    "Greek": [
+     4,
+     1.7,
+     2.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 22045:291: жива ~ зуба",
+     "vuk Vuk 28054:18: жива ~ зуба",
+     "vuk Vuk 28054:134: жива ~ зуба"
+    ],
+    "Greek": [
+     "grc Xenophon Memorabilia 1.4.6 s3: ζῴοις ~ γομφίους",
+     "grc Aristoteles et Corpus Aristotelicum Historia animalium 2.1 s165: ζῴων ~ γομφίους",
+     "grc-late Aelius Aristides Εἰς τὸν Σάραπιν 52 s6 (w2/2): ὑγιείᾳ ~ γόμφῳ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-mertis",
+   "branches": {
+    "Slavic": [
+     7,
+     1.7,
+     4.1
+    ],
+    "Italic": [
+     6,
+     2.2,
+     2.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 28306:384: живио ~ смрти",
+     "ccmh marianus 4052420: животъ ~ съмръти",
+     "ccmh zographensis 4052430: животъ ~ съмръти"
+    ],
+    "Italic": [
+     "lat CatOrat Fragmentum_247.Linea_1: uita ~ immortalium",
+     "lat LucrDRN3 3.79: uitae ~ mortis",
+     "lat LucrDRN3 3.869: uitam ~ mortalem"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gjembh-bite",
+   "branches": {
+    "Slavic": [
+     4,
+     0.9,
+     4.7
+    ],
+    "Greek": [
+     4,
+     1.7,
+     2.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 22045:291: жива ~ зуба",
+     "vuk Vuk 28054:18: жива ~ зуба",
+     "vuk Vuk 28054:134: жива ~ зуба"
+    ],
+    "Greek": [
+     "grc Xenophon Memorabilia 1.4.6 s3: ζῴοις ~ γομφίους",
+     "grc Aristoteles et Corpus Aristotelicum Historia animalium 2.1 s165: ζῴων ~ γομφίους",
+     "grc-late Aelius Aristides Εἰς τὸν Σάραπιν 52 s6 (w2/2): ὑγιείᾳ ~ γόμφῳ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dheygjh-knead",
+   "branches": {
+    "Slavic": [
+     3,
+     0.8,
+     4.0
+    ],
+    "Indo-Iranian": [
+     8,
+     3.8,
+     2.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh zographensis 3121810: жита ~ съзиждѫ",
+     "ccmh assemanianus 3121810: жита ~ съзиждѫ",
+     "ccmh savvina 3121810: жита ~ съзиждѫ"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 3, 94.s16: jīvan ~ deham",
+     "sa-ep MBh, 3, 200.s56: jīvas ~ deha",
+     "sa-ep MBh, 3, 254.s43: jīva ~ dehaḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-per-before",
+   "branches": {
+    "Celtic": [
+     2,
+     0.9,
+     2.2
+    ],
+    "Italic": [
+     7,
+     1.8,
+     3.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga-gl wb:5b:22: bíi ~ hiris",
+     "sga-gl wb:27a:24: mbiad ~ niress"
+    ],
+    "Italic": [
+     "lat LucrDRN3 3.2: uitae ~ primus",
+     "lat LucrDRN3 3.768: uitam ~ priorem",
+     "lat LucrDRN3 3.935: uita ~ prior"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-sekwetor",
+   "branches": {
+    "Indo-Iranian": [
+     5,
+     1.6,
+     3.1
+    ],
+    "Italic": [
+     3,
+     1.2,
+     2.6
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.136.6f: jī́vantaḥ ~ sacemahi",
+     "rv RV 10.57.5c: jīvám ~ sacemahi",
+     "av AVŚ, 6, 41.s6: jīvase ~ sacadhvam"
+    ],
+    "Italic": [
+     "lat LucrDRN3 3.930: uitae ~ secuta",
+     "lat LucrDRN3 3.968: uita ~ sequentur",
+     "lat LucrDRN6 6.79: uita ~ sequatur"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-wed-well",
+   "branches": {
+    "Germanic": [
+     2,
+     0.8,
+     2.5
+    ],
+    "Slavic": [
+     13,
+     4.1,
+     3.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-243-b-alfa-fol 55v:25 (w2/3): kyckvænndum ~ vatna",
+     "rea-osx Heliand Hel_41 v3369: quic ~ uuateres"
+    ],
+    "Slavic": [
+     "vuk Vuk 48101:4: жива ~ вода",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:30560: жива ~ ВБдь",
+     "byliny 11016812bsb:5299: живою ~ водой"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-tewh2-swell",
+   "branches": {
+    "Greek": [
+     192,
+     92.8,
+     2.1
+    ],
+    "Italic": [
+     2,
+     0.5,
+     3.7
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Aeschylus Supplices 1013: βίου ~ σωφρονεῖν",
+     "grc Herodotus Historiae 4.76.3 s1 (w2/2): ὑγιὴς ~ σῶς",
+     "grc Thucydides Historiae 3.34.3 s1 (w1/2): ὑγιᾶ ~ σῶν"
+    ],
+    "Italic": [
+     "lat LucrDRN1 1.195: uitam ~ tueri",
+     "lat LucrDRN6 6.11: uitam ~ tutam"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-peth2eti",
+   "branches": {
+    "Greek": [
+     66,
+     21.8,
+     3.0
+    ],
+    "Italic": [
+     2,
+     0.8,
+     2.5
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Euripides Hippolytus 1292: βίοτον ~ πτηνὸς",
+     "grc Aristophanes Pax 95: ὑγιαίνεις ~ πέτει",
+     "grc Aristoteles et Corpus Aristotelicum Analytica priora et posteriora posteriora.2.13 s32: ζῷον ~ πτηνὸν"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.804: uitam ~ petentes",
+     "lat LucrDRN5 5.1080: uitam ~ petentes"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-lewk-bright",
+   "branches": {
+    "Germanic": [
+     3,
+     1.4,
+     2.1
+    ],
+    "Italic": [
+     8,
+     2.4,
+     3.4
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-677-4to 3v:2 (w2/2): kykni ~ ljós",
+     "menota AM-677-4to 3v:31: kykni ~ ljós",
+     "icepahc 1150.homiliubok.rel-ser s1305: kviknar ~ ljós"
+    ],
+    "Italic": [
+     "lat Catul 68.160: uiua ~ lux",
+     "lat LucrDRN1 1.227: uitae ~ lumina",
+     "lat LucrDRN2 2.617: uiuam ~ luminis"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-meh1-measure",
+   "branches": {
+    "Germanic": [
+     3,
+     1.0,
+     3.1
+    ],
+    "Italic": [
+     2,
+     1.0,
+     2.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Otfrid O_Otfr.Ludw v68: quékes ~ muates",
+     "rea-goh Otfrid O_Otfr.Ev.3.24 v101: Quek ~ múat",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.II.90-98_J vn/a (w26/28): chég ~ mânodes"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.932: uitam ~ more",
+     "lat PlBacch 1077: uitam ~ mores"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-peri",
+   "branches": {
+    "Celtic": [
+     2,
+     0.9,
+     2.3
+    ],
+    "Greek": [
+     19,
+     7.4,
+     2.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga-gl wb:5b:22: bíi ~ hiris",
+     "sga-gl wb:27a:24: mbiad ~ niress"
+    ],
+    "Greek": [
+     "grc-late Ammonius De adfinium vocabulorum differentia 18 s2 (w2/2): ζῴων ~ Περὶ",
+     "grc-late Alexander Ἀπορίαι καὶ λύσεις 1.11a.1 s1: ζῷον ~ Περὶ",
+     "grc-late Alexander Ἀπορίαι καὶ λύσεις 1.11b.1 s1: ζῷον ~ Περὶ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-skek-jump",
+   "branches": {
+    "Celtic": [
+     5,
+     2.2,
+     2.3
+    ],
+    "Slavic": [
+     11,
+     4.5,
+     2.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G201026:#1/2:1: Bíaid ~ m-banscal",
+     "mga G206000:#1/18/VII:68 (w5/8): biaid ~ banscal",
+     "mga G206009:#1/1/6:1 (w5/14): bethad ~ mbanscál"
+    ],
+    "Slavic": [
+     "vuk Vuk 1599:143: живи ~ скаче",
+     "vuk Vuk 28050:165: Жива ~ скочи",
+     "vuk Vuk 28054:18: жива ~ скаче"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dhewgh-hit",
+   "branches": {
+    "Germanic": [
+     3,
+     1.5,
+     2.0
+    ],
+    "Armenian": [
+     2,
+     0.7,
+     2.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota DG-4at7-Streng 0002:30 (w52/156): kuikan ~ duga",
+     "rea-goh Otfrid O_Otfr.Ev.3.14 v7: Irquíct ~ dóhter",
+     "rea-goh Z-Notker-Psalmen N_Ps_143 v7: chílechun ~ tohtera"
+    ],
+    "Armenian": [
+     "xcl MH_1_2_12_Movses_Khor ed. page 1943 - PDF page 201 (word id 30123) (w2/2): կեայր ~ դուստր",
+     "xcl MH_1_2_13_Lazar_Parp ed. page 2237 - PDF page 37 (word id 11070) (w1/2): զկեալն ~ զդստեր"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-tkjey-cultivate",
+   "branches": {
+    "Indo-Iranian": [
+     26,
+     10.7,
+     2.4
+    ],
+    "Italic": [
+     4,
+     1.8,
+     2.2
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 10.58.1d: jīváse ~ kṣáyāya",
+     "rv RV 10.58.2d: jīváse ~ kṣáyāya",
+     "rv RV 10.58.3d: jīváse ~ kṣáyāya"
+    ],
+    "Italic": [
+     "lat PlBacch 419: uiuo ~ sino",
+     "lat PlCapt 433: uitam ~ positam",
+     "lat PlCasin 679: uitam ~ sinere"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-solh2-whole",
+   "branches": {
+    "Greek": [
+     513,
+     235.2,
+     2.2
+    ],
+    "Italic": [
+     4,
+     1.9,
+     2.1
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De articulis 60 s2: ὑγίαινον ~ ὅλῳ",
+     "grc Hippocrates et Corpus Hippocraticum Aphorismi 3.15 s1: ὑγιεινότεροι ~ ὅλον",
+     "grc Hippocrates et Corpus Hippocraticum De morbis i-iii 4.54 s21 (w2/2): ὑγιὴς ~ ὅλη"
+    ],
+    "Italic": [
+     "lat LucrDRN4 4.506: uita ~ salus",
+     "lat PlAmphi 650: uita ~ salus",
+     "lat PlCapt 518: uitae ~ salus"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-peh3tlom",
+   "branches": {
+    "Celtic": [
+     12,
+     5.1,
+     2.3
+    ],
+    "Indo-Iranian": [
+     2,
+     1.0,
+     2.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G201026:#1/2:8: béo-sa ~ olse-sium",
+     "mga G206000:#1/35/XXXVI:8 (w2/2): biada ~ d'ól",
+     "mga G302014:#1/#1:86 (w2/2): bíad ~ óil"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 12, 3.s50: jīva ~ pātra",
+     "sa-ep MBh, 12, 309.s13: jīve ~ pātra"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhed-improve",
+   "branches": {
+    "Celtic": [
+     6,
+     3.0,
+     2.0
+    ],
+    "Indo-Iranian": [
+     11,
+     5.1,
+     2.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G106500C:#1/3/58:15: bíaid ~ mbuide",
+     "mga G106500C:#1/3/58:23: biaid ~ mbuide",
+     "mga G800011A:#1/4/t#1:6: bethad ~ buide"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.190.5b: upajī́vanti ~ bhadrám",
+     "rv RV 10.37.6d: jī́vantaḥ ~ bhadrám",
+     "av AVŚ, 12, 2.s43: jīvā ~ bhadrā"
+    ]
+   }
+  }
+ ]
+}

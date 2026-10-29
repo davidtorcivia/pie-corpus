@@ -1,0 +1,1233 @@
+{
+ "target": [
+  "pie-root-mer-die"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 11795,
+  "Germanic": 93,
+  "Slavic": 1727,
+  "Baltic": 89,
+  "Armenian": 2352,
+  "Indo-Iranian": 2190,
+  "Greek": 973,
+  "Anatolian": 25,
+  "Italic": 319
+ },
+ "rows": [
+  {
+   "root": "pie-root-gweyh3-live",
+   "branches": {
+    "Slavic": [
+     51,
+     6.9,
+     7.4
+    ],
+    "Armenian": [
+     44,
+     15.3,
+     2.9
+    ],
+    "Indo-Iranian": [
+     59,
+     14.8,
+     4.0
+    ],
+    "Italic": [
+     10,
+     3.1,
+     3.2
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 22054:390: мртва ~ жива",
+     "vuk Vuk 28030:17: мртву ~ жива",
+     "vuk Vuk 28042:244: мртву ~ жива"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 11 - PDF page 5 (word id 1787) (w2/3): մարդ ~ կեցցեն",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 15 - PDF page 9 (word id 3582): մեռանել ~ կեցցեն",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 21 - PDF page 15 (word id 5893): զմարդիկ ~ զկեալն"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.44.11d: ámartyam ~ jīrám",
+     "rv RV 1.91.6b: marāmahe ~ jīvā́tum",
+     "rv RV 1.164.30c: mr̥tásya ~ jīváḥ"
+    ],
+    "Italic": [
+     "lat CatOrat Fragmentum_247.Linea_1: immortalium ~ uita",
+     "lat LucrDRN3 3.79: mortis ~ uitae",
+     "lat LucrDRN3 3.869: mortalem ~ uitam"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gwih3wos",
+   "branches": {
+    "Slavic": [
+     51,
+     5.7,
+     8.9
+    ],
+    "Indo-Iranian": [
+     18,
+     2.0,
+     8.8
+    ],
+    "Italic": [
+     4,
+     0.5,
+     8.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 22054:390: мртва ~ жива",
+     "vuk Vuk 28030:17: мртву ~ жива",
+     "vuk Vuk 28042:244: мртву ~ жива"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.164.30c: mr̥tásya ~ jīváḥ",
+     "rv RV 10.18.3a: mr̥taíḥ ~ jīvā́ḥ",
+     "av AVŚ, 4, 9.s6: amṛtasya ~ jīva"
+    ],
+    "Italic": [
+     "lat LucrDRN3 3.1046: mortua ~ uiuo",
+     "lat PlAmphi 459: mortuo ~ uiuo",
+     "lat PlAsina 35: mortui ~ uiuos"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gjerh2-grow_old",
+   "branches": {
+    "Slavic": [
+     2,
+     0.5,
+     3.8
+    ],
+    "Indo-Iranian": [
+     78,
+     4.6,
+     16.9
+    ],
+    "Greek": [
+     11,
+     4.4,
+     2.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 4122400: оумьретъ ~ зръно",
+     "ccmh assemanianus 4122410: оумьретъ ~ зрьно"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.92.10d: mártasya ~ jaráyantī",
+     "rv RV 1.113.13d: amŕ̥tā ~ ajárā",
+     "rv RV 3.53.15d: amŕ̥tam ~ ajuryám"
+    ],
+    "Greek": [
+     "hom Od. 19.360: βροτοὶ ~ καταγηράσκουσιν",
+     "hom Od. 4.197: βροτοῖσιν ~ γέρας",
+     "grc Hesiodus Opera et dies 93: βροτοὶ ~ καταγηράσκουσιν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-terp-satisfy",
+   "branches": {
+    "Slavic": [
+     4,
+     1.8,
+     2.3
+    ],
+    "Indo-Iranian": [
+     15,
+     1.7,
+     8.7
+    ],
+    "Greek": [
+     3,
+     1.1,
+     2.7
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh suprasliensis 1047117: съмрьти ~ сътрьпимъ",
+     "ccmh suprasliensis 3019229: мрътвааго ~ трѣбовааше",
+     "ccmh suprasliensis 3020119: мрьтвааго ~ трѣбоуꙗше"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 3, 13.s12: amṛtasya ~ atṛpaṃ",
+     "av AVŚ, 10, 8.s87: amṛtaḥ ~ tṛpto",
+     "sa-ep MBh, 1, 90.s11: amṛta ~ tṛpyāmi"
+    ],
+    "Greek": [
+     "hom Od. 19.365: βροτῶν ~ τερπικεραύνῳ",
+     "grc Hesiodus Opera et dies 487: βροτοὺς ~ τέρπει",
+     "grc Hymni Homerici In Mercurium 565: βροτὸν ~ τέρπε"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwher-be_warm",
+   "branches": {
+    "Celtic": [
+     27,
+     7.0,
+     3.9
+    ],
+    "Slavic": [
+     14,
+     5.8,
+     2.4
+    ],
+    "Indo-Iranian": [
+     8,
+     2.9,
+     2.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100001B:#1/U1337/U1337.15:1: marbadh ~ greis",
+     "ga-early G100001B:#1/U1363/U1363.2_col._2:1: mharbadh ~ greis",
+     "ga-early G100001C:#1/U1380/U1380.4:1: marbadh ~ greis"
+    ],
+    "Slavic": [
+     "vuk Vuk 28300:103: смрти ~ гријеха",
+     "byliny sbornikotdelenijarusskogojazykaislovesno92:15544: мори ~ горить",
+     "ccmh marianus 4082110: оумьрете ~ грѣсѣ"
+    ],
+    "Indo-Iranian": [
+     "rv RV 3.26.7b: amŕ̥tam ~ ghr̥tám",
+     "av AVŚ, 3, 12.s18: amṛtena ~ ghṛtasya",
+     "av AVŚ, 8, 7.s24: amṛtasya ~ ghṛtam"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2eydh-ignite",
+   "branches": {
+    "Celtic": [
+     136,
+     48.4,
+     2.8
+    ],
+    "Indo-Iranian": [
+     9,
+     3.9,
+     2.3
+    ],
+    "Greek": [
+     2,
+     0.7,
+     2.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G100002:#1/T1003/T1003.4:1: marbadh ~ Aed",
+     "mga G100002:#1/T1036/T1036.2:1: marbad ~ h-Aed",
+     "mga G100002:#1/T1061/T1061.11:1: marbad ~ h-Aed"
+    ],
+    "Indo-Iranian": [
+     "rv RV 3.10.1c: mártāsaḥ ~ indhate",
+     "rv RV 5.3.8d: mártaiḥ ~ idhyámānaḥ",
+     "rv RV 5.14.1b: ámartyam ~ samidhānáḥ"
+    ],
+    "Greek": [
+     "grc Aristoteles et Corpus Aristotelicum De respiratione 7 s16 (w1/2): βροτέῳ ~ αἰθὴρ",
+     "grc Aristoteles et Corpus Aristotelicum De Xenophane, de Zenone, de Gorgia 2.20 s3 (w2/2): βροτέων ~ αἰθήρ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gwih3weti",
+   "branches": {
+    "Slavic": [
+     22,
+     6.0,
+     3.7
+    ],
+    "Baltic": [
+     4,
+     0.1,
+     53.2
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 3152400: мрътвъ ~ оживе",
+     "ccmh marianus 3153210: мрътвь ~ оживе",
+     "ccmh marianus 4052510: мрътвии ~ оживѫтъ"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:16885: nenumirė ~ gyveno",
+     "dainos litauischevolksl00leskuoft:17081: nenumirė ~ gyvena",
+     "dainos litauischevolksl00leskuoft:18829: nenumirė ~ gyvena"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-kwrmis",
+   "branches": {
+    "Slavic": [
+     6,
+     0.1,
+     55.7
+    ],
+    "Indo-Iranian": [
+     2,
+     0.6,
+     3.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 2094400: оумираатъ ~ чръвь",
+     "ccmh marianus 2094600: оумираатъ ~ чръвь",
+     "ccmh marianus 2094800: оумираатъ ~ чръвь"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 13, 112.s160: mṛto ~ kṛmiḥ",
+     "sa-ep MBh, 13, 112.s164: mṛtaḥ ~ kṛmi"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1edti",
+   "branches": {
+    "Slavic": [
+     8,
+     3.1,
+     2.6
+    ],
+    "Greek": [
+     3,
+     0.1,
+     37.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 4064900: оумьрѣшѧ ~ ѣсѧ",
+     "ccmh marianus 4065010: оумьретъ ~ ѣстъ",
+     "ccmh zographensis 4064900: оумрѣшѧ ~ ѣшѧ"
+    ],
+    "Greek": [
+     "hom Il. 6.142: βροτῶν ~ ἔδουσιν",
+     "hom Od. 5.197: βροτοὶ ~ ἔδουσιν",
+     "hom Od. 8.222: βροτοί ~ ἔδοντες"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-leykw-leave",
+   "branches": {
+    "Slavic": [
+     2,
+     0.3,
+     6.9
+    ],
+    "Baltic": [
+     6,
+     0.5,
+     12.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh suprasliensis 1001130: съмрьти ~ лишити",
+     "ccmh suprasliensis 3094122: мрьтвѣ ~ лишеноу"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:372: numirei ~ palikaj",
+     "dainos litauischevolksl00leskuoft:17094: numirė ~ liko",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:7950: Užmiršaū ~ palikau"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sep-care_for",
+   "branches": {
+    "Indo-Iranian": [
+     3,
+     0.5,
+     5.5
+    ],
+    "Italic": [
+     3,
+     0.2,
+     14.1
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.68.4b: amŕ̥tam ~ sápantaḥ",
+     "rv RV 5.3.4b: amŕ̥tam ~ sapanta",
+     "rv RV 8.44.15b: mártaḥ ~ saparyáti"
+    ],
+    "Italic": [
+     "lat CatOrat Fragmentum_184.Linea_1: mortuus ~ sepelitus",
+     "lat LucrDRN1 1.133: morbo ~ sepultis",
+     "lat PlAmphi 1074: mortuos ~ sepultus"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-meh2texr",
+   "branches": {
+    "Germanic": [
+     3,
+     0.5,
+     6.3
+    ],
+    "Baltic": [
+     2,
+     0.2,
+     9.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Tatian T_Tat84 vn/a (w3/12): gimerrit ~ muoter",
+     "rea-goh Z-Notker-Psalmen N_Ps_018 v3: chámero ~ muô-",
+     "ang Beo. 1684: morðres ~ mōdor"
+    ],
+    "Baltic": [
+     "lv p0031: mirst ~ māte",
+     "lv BV 23276: Mira ~ māte"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-kjlewos",
+   "branches": {
+    "Indo-Iranian": [
+     6,
+     1.3,
+     4.8
+    ],
+    "Greek": [
+     5,
+     0.6,
+     8.8
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.31.7b: mártam ~ śrávase",
+     "rv RV 1.110.5d: ámartyeṣu ~ śrávaḥ",
+     "rv RV 3.53.15d: amŕ̥tam ~ śrávaḥ"
+    ],
+    "Greek": [
+     "grc Bacchylides Epinicia 9.74: βροτοῖς ~ κλεινὰν",
+     "grc Euripides Iphigenia Aulidensis 429: βροτοῖς ~ κλεινοὶ",
+     "grc-late Strabo Geographica 15.1.7 s3: βροτοῖσι ~ κλεινὴν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwelH-drip",
+   "branches": {
+    "Slavic": [
+     21,
+     3.1,
+     6.8
+    ],
+    "Indo-Iranian": [
+     2,
+     0.5,
+     4.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 10133:78: умрије ~ жалосна",
+     "vuk Vuk 28038:156: мријет’ ~ жалите",
+     "vuk Vuk 28211:210: умрети ~ жалили"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 1, 16.s101: amṛtam ~ glānir",
+     "sa-ep MBh, 12, 257.s30: mṛtyu ~ glāyet"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-moh1ros",
+   "branches": {
+    "Celtic": [
+     162,
+     52.3,
+     3.1
+    ],
+    "Greek": [
+     2,
+     0.2,
+     9.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G100002:#1/T1134/T1134.5:2 (w1/2): marbad ~ moran",
+     "mga G100002:#1/T1146/T1146.1:1 (w2/2): marb ~ moran",
+     "mga G100002:#1/T1166/T1166.1:2 (w1/2): marbthar ~ moran"
+    ],
+    "Greek": [
+     "grc Euripides Troiades 989: βροτοῖς ~ μῶρα",
+     "grc-late Lucianus Adversus indoctum et libros multos ementem 15 s6: βροτῶν ~ μωροὶ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dem-build",
+   "branches": {
+    "Celtic": [
+     13,
+     5.1,
+     2.6
+    ],
+    "Baltic": [
+     2,
+     0.2,
+     10.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G100010A:#1/LC1133/LC1133.3:1: mharbadh ~ dhamhna",
+     "mga G100016:#1/#3/CS1068/CS1068.1:1: marbadh ~ dhamna",
+     "mga G303000:#1/t#86:3: marb ~ damna"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:20403: užmirszo ~ name",
+     "lv BV 19206: aizmirsu ~ namā"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-doxm",
+   "branches": {
+    "Baltic": [
+     2,
+     0.2,
+     10.9
+    ],
+    "Greek": [
+     6,
+     2.5,
+     2.4
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:20403: užmirszo ~ name",
+     "lv BV 19206: aizmirsu ~ namā"
+    ],
+    "Greek": [
+     "grc Aeschylus Agamemnon 1189: βρότειον ~ δόμοις",
+     "grc Plato Respublica 2.380.379e s1 (w2/2): βροτοῖς ~ δῶμα",
+     "grc-late Plutarchus Quomodo adolescens poetas audire debeat 17a s3 (w1/2): βροτοῖς ~ δῶμα"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-deh2y-share",
+   "branches": {
+    "Indo-Iranian": [
+     4,
+     0.8,
+     4.8
+    ],
+    "Greek": [
+     25,
+     5.9,
+     4.2
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 7.23.5c: mártān ~ dáyase",
+     "rv RV 7.100.1a: mártaḥ ~ dayate",
+     "av AVŚ, 8, 1.s10: mṛtyur ~ dayatāṃ"
+    ],
+    "Greek": [
+     "hom Il. 15.99: βροτοῖσιν ~ δαίνυται",
+     "hom Il. 24.43: βροτῶν ~ δαῖτα",
+     "grc Theognis Elegiae 381: βροτοῖσιν ~ δαίμονός"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-seh2-satiate",
+   "branches": {
+    "Indo-Iranian": [
+     4,
+     0.9,
+     4.6
+    ],
+    "Italic": [
+     4,
+     1.0,
+     3.9
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "av AVŚ, 3, 6.s9: mṛtyoḥ ~ sinātv",
+     "av AVŚ, 8, 8.s19: mṛtyave ~ sitāḥ",
+     "av AVP, 10, 10.s19: mṛtyoḥ ~ sitvā"
+    ],
+    "Italic": [
+     "lat LucrDRN6 6.663: morbi ~ satis",
+     "lat PlAmphi 1018: mortuom ~ satiu",
+     "lat PlAsina 911: mortuos ~ sat"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sh2ey-bind",
+   "branches": {
+    "Indo-Iranian": [
+     5,
+     1.9,
+     2.6
+    ],
+    "Italic": [
+     7,
+     1.0,
+     6.9
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "av AVŚ, 3, 6.s9: mṛtyoḥ ~ sinātv",
+     "av AVŚ, 8, 8.s19: mṛtyave ~ sitāḥ",
+     "av AVP, 10, 10.s19: mṛtyoḥ ~ sitvā"
+    ],
+    "Italic": [
+     "lat LucrDRN2 2.1153: mortalia ~ saecla",
+     "lat LucrDRN5 5.791: mortalia ~ saecla",
+     "lat LucrDRN5 5.805: mortalia ~ saecla"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-deywos",
+   "branches": {
+    "Indo-Iranian": [
+     147,
+     54.1,
+     2.7
+    ],
+    "Italic": [
+     33,
+     5.7,
+     5.8
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.70.6b: mártān ~ devā́nām",
+     "rv RV 1.77.2c: mártāya ~ devā́n",
+     "rv RV 1.100.15a: mártāḥ ~ devā́ḥ"
+    ],
+    "Italic": [
+     "lat CatOrat Fragmentum_179.Linea_1: immortalis ~ deos",
+     "lat CatOrat Fragmentum_247.Linea_1: immortalium ~ deum",
+     "lat CatOrig 4.Fragmentum_7 (w1/4): immortales ~ dii"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dhegjhoxm",
+   "branches": {
+    "Slavic": [
+     36,
+     16.4,
+     2.2
+    ],
+    "Greek": [
+     8,
+     1.2,
+     6.7
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 10607:123: мртве ~ земљу",
+     "vuk Vuk 25235:89: Мртва ~ земља",
+     "vuk Vuk 1658:301: Мртва ~ земље"
+    ],
+    "Greek": [
+     "hom Il. 1.272: βροτοί ~ ἐπιχθόνιοι",
+     "hom Il. 24.505: βροτὸς ~ ἐπιχθόνιος",
+     "hom Od. 6.153: βροτῶν ~ χθονὶ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-bhreh2texr",
+   "branches": {
+    "Celtic": [
+     319,
+     66.0,
+     4.8
+    ],
+    "Slavic": [
+     35,
+     11.6,
+     3.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G100017:#1/5/FA_443:1 (w1/3): marbad ~ bhráthar",
+     "sga G100017:#1/5/FA_443:3 (w2/2): mharbhadh ~ brathar",
+     "sga G100027:#1/649/649.1:3: marbad ~ bráthar"
+    ],
+    "Slavic": [
+     "vuk Vuk 12343:81: умријех ~ брате",
+     "vuk Vuk 1990:200: мријети ~ брате",
+     "vuk Vuk 22094:35: мртва ~ брата"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kelH-rise",
+   "branches": {
+    "Slavic": [
+     2,
+     0.7,
+     3.0
+    ],
+    "Baltic": [
+     3,
+     0.6,
+     4.7
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 33192:8: умреш ~ чело",
+     "orv lav 79.19: смр҃ти ~ холмѣ"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:16478: numirusiu ~ atsikėlė",
+     "dainos litauischevolksl00leskuoft:17235: numirusiu ~ prikėlsim",
+     "dainos litauischevolksl00leskuoft:17294: numirusiu ~ prikėlsim"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-stewd-push",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.5,
+     4.1
+    ],
+    "Italic": [
+     2,
+     0.6,
+     3.1
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.58.1a: amŕ̥taḥ ~ tundate",
+     "sa-ep MBh, 13, 30.s18: mṛtaṃ ~ tudasi"
+    ],
+    "Italic": [
+     "lat Catul 68.19: mors ~ studium",
+     "lat LucrDRN4 4.1167: mortua ~ tussi"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-peyh2-swell",
+   "branches": {
+    "Slavic": [
+     2,
+     0.4,
+     5.3
+    ],
+    "Indo-Iranian": [
+     7,
+     3.1,
+     2.2
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno92:26851: мори ~ Пищикъ",
+     "byliny pesnisobrannyepvkireevskimch2pesni36:12936: мру ~ пропитан"
+    ],
+    "Indo-Iranian": [
+     "rv RV 6.66.1c: márteṣu ~ pīpā́ya",
+     "av AVŚ, 11, 5.s27: mṛtyur ~ payaḥ",
+     "av AVP, 19, 52.s1: amṛtaṃ ~ payo"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-neh2w-die",
+   "branches": {
+    "Celtic": [
+     3,
+     1.0,
+     2.9
+    ],
+    "Slavic": [
+     3,
+     0.7,
+     4.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "cy welsh-redbook-bruts-rhys-evans-1890:textofbrutsfromr00rhys:L8870-L8875 (w2/2): veirw ~ newyn",
+     "cy welsh-redbook-bruts-rhys-evans-1890:textofbrutsfromr00rhys:L8876-L8879: marw ~ newyn",
+     "cy welsh-redbook-mabinogion-rhys-evans-1887:textofmabinogion00evanuoft:L9439-L9441: marw ~ newyn"
+    ],
+    "Slavic": [
+     "ccmh suprasliensis 1069212: оумьрьшоу ~ нѫждеѭ",
+     "ccmh suprasliensis 1069214: оумьръшоу ~ ноуждеѭ",
+     "ccmh suprasliensis 1069216: оумрѣшѧ ~ ноуждеѭ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-legh-lie",
+   "branches": {
+    "Slavic": [
+     38,
+     7.9,
+     4.8
+    ],
+    "Greek": [
+     3,
+     1.3,
+     2.3
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 23698:101: Мртви ~ леже",
+     "vuk Vuk 34703:127: мртав ~ лежи",
+     "vuk Vuk 36542:1: умрети ~ лећи"
+    ],
+    "Greek": [
+     "grc Pindarus Isthmia 8.35: βροτέων ~ λεχέων",
+     "grc Euripides Andromacha 464: βροτῶν ~ λέκτρ’",
+     "grc-late Lycophron Alexandra 85: βροτῶν ~ λέκτρα"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-swep-sleep",
+   "branches": {
+    "Slavic": [
+     18,
+     4.0,
+     4.5
+    ],
+    "Indo-Iranian": [
+     9,
+     3.9,
+     2.3
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 22035:87: мртви ~ сан",
+     "vuk Vuk 28295:57: мртви ~ заспао",
+     "vuk Vuk 28296:209: мртви ~ Заспа"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 6, 46.s1: amṛta ~ svapna",
+     "av AVŚ, 6, 46.s4: mṛtyur ~ svapna",
+     "av AVP, 19, 46.s19: mṛta ~ svapna"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-telh2-ground",
+   "branches": {
+    "Armenian": [
+     11,
+     4.4,
+     2.5
+    ],
+    "Italic": [
+     3,
+     0.8,
+     3.9
+    ]
+   },
+   "examples": {
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 85 - PDF page 79 (word id 32474): մեռելոցն ~ թաղել",
+     "xcl MH_1_1_05_Eznik ed. page 510 - PDF page 78 (word id 34934) (w2/2): մեռաւ ~ թաղեցաւ",
+     "xcl MH_1_1_06_Yeghishe ed. page 532 - PDF page 12 (word id 1699): մեռաւ ~ թաղեցաւ։"
+    ],
+    "Italic": [
+     "lat LucrDRN1 1.135: morte ~ tellus",
+     "lat LucrDRN4 4.734: morte ~ tellus",
+     "lat LucrDRN6 6.663: morbi ~ tellus"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dyew-be_bright",
+   "branches": {
+    "Greek": [
+     25,
+     9.3,
+     2.7
+    ],
+    "Italic": [
+     35,
+     10.0,
+     3.5
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Il. 12.402: ἀμφιβρότης ~ Ζεὺς",
+     "hom Il. 13.244: βροτοῖσιν ~ ἀρίζηλοι",
+     "hom Il. 7.446: βροτῶν ~ Ζεῦ"
+    ],
+    "Italic": [
+     "lat CatOrat Fragmentum_179.Linea_1: immortalis ~ deos",
+     "lat CatOrat Fragmentum_247.Linea_1: immortalium ~ deum",
+     "lat CatOrig 4.Fragmentum_7 (w1/4): immortales ~ dii"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2egh-be_upset",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.9,
+     2.3
+    ],
+    "Greek": [
+     5,
+     1.2,
+     4.1
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "av AVŚ, 6, 93.s1: mṛtyur ~ agha",
+     "av AVP, 19, 14.s25: mṛtyur ~ agha"
+    ],
+    "Greek": [
+     "grc Hymni Homerici In Venerem 199: βροτοῦ ~ ἄχος",
+     "grc Sophocles Electra 155: βροτῶν ~ ἄχος",
+     "grc-late Plutarchus Quomodo adolescens poetas audire debeat 20e s1 (w2/2): βροτοῖσι ~ ἀχνυμένοις"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dweh2-long",
+   "branches": {
+    "Indo-Iranian": [
+     9,
+     4.4,
+     2.0
+    ],
+    "Italic": [
+     3,
+     0.7,
+     4.1
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.44.11d: ámartyam ~ dūtám",
+     "rv RV 6.15.8a: amŕ̥tam ~ dūtám",
+     "rv RV 6.16.6a: ámartyaḥ ~ dūtáḥ"
+    ],
+    "Italic": [
+     "lat LucrDRN3 3.338: mortem ~ durare",
+     "lat LucrDRN3 3.460: morbos ~ durum",
+     "lat LucrDRN5 5.944: mortalibus ~ dura"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ekj-sharp",
+   "branches": {
+    "Celtic": [
+     8,
+     3.7,
+     2.2
+    ],
+    "Armenian": [
+     2,
+     0.5,
+     3.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100005C:#1/M1367/M1367.3:6: marbhadh ~ Tachar",
+     "ga-early G100005D:#1/M1381/M1381.12:1 (w2/2): mharbhadh ~ tachar-sin",
+     "ga-early G100005E:#1/M1548/M1548.13:1: marbhadh ~ tachar"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_06_Yeghishe ed. page 978 - PDF page 458 (word id 60580) (w4/6): մարդկան. ~ հասկացն",
+     "xcl MH_1_2_11_Agathangelos ed. page 1616 - PDF page 322 (word id 55014): մարդկան ~ հասկն"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dheh1-do",
+   "branches": {
+    "Baltic": [
+     2,
+     0.6,
+     3.5
+    ],
+    "Greek": [
+     94,
+     40.4,
+     2.3
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:11841: mirte ~ pradėjo",
+     "dainos litauischevolksl00leskuoft:16478: numirusiu ~ pradėjo"
+    ],
+    "Greek": [
+     "hom Il. 15.99: βροτοῖσιν ~ θεοῖς",
+     "hom Il. 21.380: βροτῶν ~ θεὸν",
+     "hom Il. 24.67: βροτῶν ~ θεοῖσι"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2welh1-rule",
+   "branches": {
+    "Slavic": [
+     7,
+     3.1,
+     2.3
+    ],
+    "Italic": [
+     5,
+     1.5,
+     3.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 28279:617: умријет’ ~ власт",
+     "byliny ruws 390534:242 (w8/9): мертвый ~ совладаетъ",
+     "ccmh suprasliensis 3021204: сьмрьти ~ властиѭ"
+    ],
+    "Italic": [
+     "lat Catul 76.25: morbum ~ ualere",
+     "lat LucrDRN3 3.1088: mortis ~ ualemus",
+     "lat PlAulul 265: inmortales ~ ualet"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-lewk-bright",
+   "branches": {
+    "Germanic": [
+     2,
+     0.7,
+     2.7
+    ],
+    "Slavic": [
+     4,
+     1.4,
+     2.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "icepahc 1270.gragas.law-law s296: morð ~ lýsir",
+     "rea-goh Z-Notker-Psalmen N_Ps_018 v3: chámero ~ liêhtet"
+    ],
+    "Slavic": [
+     "ccmh marianus 3203500: мрътвꙑхъ ~ оулоучити",
+     "ccmh zographensis 2143100: оумрѣти ~ лоучитъ",
+     "ccmh suprasliensis 3083120: мрьтвии ~ лоуна"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-peh2y",
+   "branches": {
+    "Slavic": [
+     5,
+     1.7,
+     3.0
+    ],
+    "Indo-Iranian": [
+     3,
+     1.2,
+     2.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 4122410: оумьретъ ~ падъ",
+     "ccmh zographensis 4122410: оумьретъ ~ падъ",
+     "ccmh assemanianus 4122410: оумьретъ ~ падъ"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 1, 31.s1: amṛtebhyaḥ ~ pālebhyaḥ",
+     "av AVP, 1, 22.s1: amṛtebhyaḥ ~ pālebhyaḥ",
+     "sa-ep MBh, 9, 35.s63: mṛtyor ~ paḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1ed-eat",
+   "branches": {
+    "Slavic": [
+     9,
+     3.5,
+     2.6
+    ],
+    "Greek": [
+     10,
+     4.0,
+     2.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimch3vyp51:22031: мертваго ~ медвфдя",
+     "ccmh marianus 4064900: оумьрѣшѧ ~ ѣсѧ",
+     "ccmh marianus 4065010: оумьретъ ~ ѣстъ"
+    ],
+    "Greek": [
+     "hom Il. 6.142: βροτῶν ~ ἔδουσιν",
+     "hom Od. 5.197: βροτοὶ ~ ἔσθειν",
+     "hom Od. 8.222: βροτοί ~ ἔδοντες"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2enh1-breathe",
+   "branches": {
+    "Indo-Iranian": [
+     27,
+     13.1,
+     2.1
+    ],
+    "Italic": [
+     5,
+     2.0,
+     2.5
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 10.55.5d: mamā́ra ~ āna",
+     "av AVŚ, 2, 16.s1: mṛtyor ~ prāṇa",
+     "av AVŚ, 3, 31.s20: mṛthāḥ ~ prāṇena"
+    ],
+    "Italic": [
+     "lat LucrDRN3 3.543: mortalem ~ animam",
+     "lat LucrDRN3 3.624: inmortalis ~ animai",
+     "lat LucrDRN3 3.670: inmortalis ~ animai"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-ph2texr",
+   "branches": {
+    "Celtic": [
+     122,
+     57.9,
+     2.1
+    ],
+    "Germanic": [
+     3,
+     1.3,
+     2.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga-gl wb:20c:26: marb ~ nathar",
+     "sga G100039:#1/8:15: marbad-sa ~ athar",
+     "sga G105003:#1/4/50:6: marbad ~ athair"
+    ],
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler C_CarmenAdDeum vn/a (w4/5): murdreo ~ fater",
+     "rea-goh Tatian T_Tat34 vn/a (w2/6): camara ~ fater",
+     "rea-goh Tatian T_Tat84 vn/a (w3/12): gimerrit ~ fater"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhewg-enjoy",
+   "branches": {
+    "Celtic": [
+     4,
+     2.0,
+     2.0
+    ],
+    "Indo-Iranian": [
+     24,
+     10.1,
+     2.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G100001A:#1/U986/U986.3:1: marbsat ~ apaidh",
+     "ga-early G100001C:#1/U1515/U1515.8:1: marbadh ~ n-Abaidh",
+     "ga-early G100005B:#1/917/M917.3:1: mharbhadh ~ abaidh"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.30.20b: mártaḥ ~ bhujé",
+     "rv RV 1.44.5b: amr̥ta ~ bhojana",
+     "rv RV 1.163.7c: mártaḥ ~ bhógam"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1eyti",
+   "branches": {
+    "Baltic": [
+     3,
+     1.4,
+     2.1
+    ],
+    "Indo-Iranian": [
+     27,
+     12.1,
+     2.2
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:8114: užmirsza ~ ėje",
+     "dainos litauischevolksl00leskuoft:19071: užmirszo ~ iszėjo",
+     "dainos litauischevolksl00leskuoft:19091: numirė ~ neateina"
+    ],
+    "Indo-Iranian": [
+     "rv RV 4.35.3c: amŕ̥tasya ~ aita",
+     "rv RV 10.107.8a: mamruḥ ~ īyuḥ",
+     "rv RV 10.122.3a: ámartyaḥ ~ pariyán"
+    ]
+   }
+  }
+ ]
+}

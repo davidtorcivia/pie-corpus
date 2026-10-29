@@ -1,0 +1,3826 @@
+{
+ "target": [
+  "pie-lex-wodr",
+  "pie-root-h2ep-water",
+  "pie-root-wed-well"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 2003,
+  "Germanic": 893,
+  "Slavic": 1028,
+  "Baltic": 164,
+  "Armenian": 488,
+  "Tocharian": 51,
+  "Albanian": 52,
+  "Indo-Iranian": 2546,
+  "Greek": 10805,
+  "Anatolian": 593,
+  "Italic": 88
+ },
+ "rows": [
+  {
+   "root": "pie-root-h2weh1-blow",
+   "branches": {
+    "Germanic": [
+     7,
+     1.4,
+     5.1
+    ],
+    "Slavic": [
+     4,
+     1.2,
+     3.4
+    ],
+    "Tocharian": [
+     3,
+     0.1,
+     24.6
+    ],
+    "Indo-Iranian": [
+     68,
+     14.5,
+     4.7
+    ],
+    "Greek": [
+     16,
+     6.4,
+     2.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-242-fol 94:8 (w7/106): votn ~ vindr",
+     "menota AM-243-b-alfa-fol 23r:1: votnum ~ vinndum",
+     "menota HolmPerg-4-fol 22v:12: vatn ~ vindr"
+    ],
+    "Slavic": [
+     "ccmh marianus 3082410: водъноумоу ~ вѣтроу",
+     "ccmh marianus 3082520: водѣ ~ вѣтромь",
+     "ccmh zographensis 3082520: водѣ ~ вѣтромъ"
+    ],
+    "Tocharian": [
+     "xto A 757 124b2: wär ~ want",
+     "xto A 757 124b5: wäryo ~ wantyo",
+     "xto A 1101 467b2: wär ~ wanti"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.134.2a: índavaḥ ~ vāyo",
+     "rv RV 4.19.4b: vā́r ~ vā́taḥ",
+     "rv RV 9.84.4c: índuḥ ~ vāyúbhiḥ"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De flatibus 8 s12: ὕδατος ~ ἀτμὸς",
+     "grc Hippocrates et Corpus Hippocraticum De flatibus 8 s19 (w1/2): ὑδάτων ~ ἀτμὸς",
+     "grc-late Flavius Arrianus Historia Indica 6.3 s2: ὕδωρ ~ ἠεροειδέστερον"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-srew",
+   "branches": {
+    "Slavic": [
+     2,
+     0.2,
+     9.3
+    ],
+    "Baltic": [
+     6,
+     0.1,
+     86.6
+    ],
+    "Indo-Iranian": [
+     31,
+     1.6,
+     19.0
+    ],
+    "Greek": [
+     17,
+     3.7,
+     4.6
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimch3vyp36:14327: водъ ~ струяхъ",
+     "orv spi 196: водѣ, ~ струяхъ,"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:2211: upelį ~ srovės",
+     "dainos litauischevolksl00leskuoft:6641: upelį ~ sroves",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:26375: upėlį ~ Srovės"
+    ],
+    "Indo-Iranian": [
+     "rv RV 8.91.3d: indo ~ srava",
+     "rv RV 9.56.4b: indo ~ srava",
+     "rv RV 9.62.9a: indo ~ srava"
+    ],
+    "Greek": [
+     "hom Il. 21.365: ὕδωρ ~ ῥέεθρα",
+     "hom Il. 8.369: ὕδατος ~ ῥέεθρα",
+     "grc Euripides Phoenisae 659: ἔνυδρα ~ ῥέεθρα"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-bhreh1wr",
+   "branches": {
+    "Celtic": [
+     6,
+     0.5,
+     13.0
+    ],
+    "Germanic": [
+     11,
+     0.4,
+     25.4
+    ],
+    "Armenian": [
+     19,
+     2.0,
+     9.5
+    ],
+    "Greek": [
+     64,
+     4.5,
+     14.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G400045:#1:36: uisce ~ birar",
+     "ga-early G302018:#1/20:2: uisge ~ biorar",
+     "ga-early G302018:#1/32/t#1:28: uisge ~ bhiorar"
+    ],
+    "Germanic": [
+     "menota AM-242-fol 15:4 (w1/4): vatn ~ brunn",
+     "menota AM-619-4to 28v:25: votn ~ brun",
+     "menota AM-677-4to 19v:22: vatn ~ brunni"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 7 - PDF page 1 (word id 205): գետովք ~ աղբերբք",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 8 - PDF page 2 (word id 475) (w1/2): գետ ~ աղբեւր",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 127 - PDF page 121 (word id 49015) (w3/3): գետոց։ ~ աղբերաց"
+    ],
+    "Greek": [
+     "grc Herodotus Historiae 2.108.4 s2: ὑδάτων ~ φρεάτων",
+     "grc Herodotus Historiae 7.133.1 s2: ὕδωρ ~ φρέαρ",
+     "grc Hippocrates et Corpus Hippocraticum De semine, de natura pueri, de morbis iv 25 s25: ὕδωρ ~ φρέατι"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-peh2wr",
+   "branches": {
+    "Germanic": [
+     12,
+     0.9,
+     12.7
+    ],
+    "Tocharian": [
+     2,
+     0.2,
+     10.9
+    ],
+    "Greek": [
+     663,
+     77.1,
+     8.6
+    ],
+    "Anatolian": [
+     10,
+     2.0,
+     5.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Otfrid O_Otfr.Ev.5.1 v11: wázaru ~ fíuru",
+     "rea-goh Tatian T_Tat92 vn/a (w4/11): uuazzer ~ fiur",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.I.80-84_J vn/a (w4/14): uuázer ~ fíur"
+    ],
+    "Tocharian": [
+     "xto A 635 2b3: wär ~ por",
+     "xto A 647 14a2: wäryo ~ poryo"
+    ],
+    "Greek": [
+     "hom Il. 18.348: ὕδωρ ~ πῦρ",
+     "hom Il. 21.365: ὕδωρ ~ πυρὶ",
+     "hom Od. 10.358: ὕδωρ ~ πῦρ"
+    ],
+    "Anatolian": [
+     "hit KBo 38.251+ {€4}Vs. II 2: wa-a-tar ~ pa-aḫ-ḫur",
+     "hit HKM 116 2: ú-i-te-ni-it ~ pa-aḫ-ḫur",
+     "hit KBo 53.33+  {€2} Rs. IV 4: wa-a-tar ~ pa-aḫ-ḫu-e-ni"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhrewh1-boil",
+   "branches": {
+    "Celtic": [
+     8,
+     1.7,
+     4.6
+    ],
+    "Germanic": [
+     28,
+     5.6,
+     5.0
+    ],
+    "Armenian": [
+     19,
+     2.0,
+     9.5
+    ],
+    "Greek": [
+     64,
+     5.0,
+     12.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G206000:#1/30:119 (w1/2): usce ~ topar",
+     "mga G400045:#1:36: uisce ~ birar",
+     "ga-early G302018:#1/20:2: uisge ~ biorar"
+    ],
+    "Germanic": [
+     "menota AM-242-fol 15:4 (w1/4): vatn ~ brunn",
+     "menota AM-35-fol 83: (w11/12): vatni ~ bratt",
+     "menota AM-36-fol 270: (w61/69): vatnit ~ brendi"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 7 - PDF page 1 (word id 205): գետովք ~ աղբերբք",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 8 - PDF page 2 (word id 475) (w1/2): գետ ~ աղբեւր",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 127 - PDF page 121 (word id 49015) (w3/3): գետոց։ ~ աղբերաց"
+    ],
+    "Greek": [
+     "grc Herodotus Historiae 2.108.4 s2: ὑδάτων ~ φρεάτων",
+     "grc Herodotus Historiae 7.133.1 s2: ὕδωρ ~ φρέαρ",
+     "grc Hippocrates et Corpus Hippocraticum De semine, de natura pueri, de morbis iv 25 s25: ὕδωρ ~ φρέατι"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-srew-flow",
+   "branches": {
+    "Celtic": [
+     24,
+     5.0,
+     4.8
+    ],
+    "Germanic": [
+     2,
+     0.3,
+     6.5
+    ],
+    "Indo-Iranian": [
+     34,
+     2.5,
+     13.7
+    ],
+    "Greek": [
+     359,
+     81.0,
+     4.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G100027:#1/649~2/649.1:36: uisce ~ sruth",
+     "sga celtic-journal-zcp-1897-1926:zeitschriftfrc11meyeuoft:L5194-L5195: uisce ~ srothaib",
+     "mga G201009:#1/17:3: usce ~ sruth"
+    ],
+    "Germanic": [
+     "menota AM-243-b-alfa-fol 55v:25 (w3/3): vatnum ~ straumum",
+     "rea-osx Heliand Hel_21 v1810: uuatares ~ strôm"
+    ],
+    "Indo-Iranian": [
+     "rv RV 8.91.3d: indo ~ srava",
+     "rv RV 9.56.4b: indo ~ srava",
+     "rv RV 9.62.9a: indo ~ srava"
+    ],
+    "Greek": [
+     "hom Il. 12.33: ὕδωρ ~ ῥόον",
+     "hom Il. 16.229: ὕδατος ~ ῥοῇσι",
+     "hom Il. 2.307: ὕδωρ ~ ῥέεν"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-mori",
+   "branches": {
+    "Celtic": [
+     3,
+     1.0,
+     3.2
+    ],
+    "Germanic": [
+     4,
+     0.5,
+     8.0
+    ],
+    "Slavic": [
+     8,
+     1.7,
+     4.8
+    ],
+    "Italic": [
+     6,
+     0.5,
+     13.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga celtic-journal-eriu-1904-1928:eriu_1911_5:L1065-L1068 (w2/2): huiscib ~ muirib",
+     "mga celtic-journal-revue-celtique-1870-1928:revueceltique06pari:L9066-L9068: usci ~ muir",
+     "mga oldirish-irische-texte-1880-1909:irischetextemit00stokgoog:L13357-L13358: huiscib ~ muirib"
+    ],
+    "Germanic": [
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.I.14-37 vn/a (w59/76): uuâzere ~ méres",
+     "rea-goh Z-Notker-Psalmen N_Ps_080 v4: uuázzero ~ mére",
+     "rea-goh Z-Notker-Psalmen N_Ps_113 v22: uuázzeren ~ mére"
+    ],
+    "Slavic": [
+     "byliny 11016812bsb:12629: подводнаго ~ моря",
+     "byliny pesnisobrannyepnrybnikovymch2narod72:19196: воды ~ моря",
+     "byliny pesnisobrannyepnrybnikovymch4narod9:5920: вода ~ моряхъ"
+    ],
+    "Italic": [
+     "lat Catul 64.155: undis ~ mare",
+     "lat LucrDRN1 1.720: undis ~ mare",
+     "lat LucrDRN1 1.1031: undis ~ mare"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-mer-sea",
+   "branches": {
+    "Celtic": [
+     3,
+     1.0,
+     3.2
+    ],
+    "Germanic": [
+     4,
+     0.5,
+     8.0
+    ],
+    "Slavic": [
+     8,
+     1.7,
+     4.8
+    ],
+    "Italic": [
+     6,
+     0.5,
+     13.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga celtic-journal-eriu-1904-1928:eriu_1911_5:L1065-L1068 (w2/2): huiscib ~ muirib",
+     "mga celtic-journal-revue-celtique-1870-1928:revueceltique06pari:L9066-L9068: usci ~ muir",
+     "mga oldirish-irische-texte-1880-1909:irischetextemit00stokgoog:L13357-L13358: huiscib ~ muirib"
+    ],
+    "Germanic": [
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.I.14-37 vn/a (w59/76): uuâzere ~ méres",
+     "rea-goh Z-Notker-Psalmen N_Ps_080 v4: uuázzero ~ mére",
+     "rea-goh Z-Notker-Psalmen N_Ps_113 v22: uuázzeren ~ mére"
+    ],
+    "Slavic": [
+     "byliny 11016812bsb:12629: подводнаго ~ моря",
+     "byliny pesnisobrannyepnrybnikovymch2narod72:19196: воды ~ моря",
+     "byliny pesnisobrannyepnrybnikovymch4narod9:5920: вода ~ моряхъ"
+    ],
+    "Italic": [
+     "lat Catul 64.155: undis ~ mare",
+     "lat LucrDRN1 1.720: undis ~ mare",
+     "lat LucrDRN1 1.1031: undis ~ mare"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-peh3-drink",
+   "branches": {
+    "Celtic": [
+     44,
+     4.5,
+     9.8
+    ],
+    "Slavic": [
+     59,
+     10.2,
+     5.8
+    ],
+    "Indo-Iranian": [
+     48,
+     13.2,
+     3.6
+    ],
+    "Greek": [
+     782,
+     98.7,
+     7.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G109001:#1/#1:153: uisci ~ ól",
+     "sga G301900:#1/#20:31: usce ~ ibis",
+     "mga G106500D:#1/4/1/64:37: usce ~ ól"
+    ],
+    "Slavic": [
+     "vuk Vuk 36170:7: вода ~ Пије",
+     "vuk Vuk 36170:12: вода ~ пије",
+     "vuk Vuk 36170:20: вода ~ Пије"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.116.22b: vā́r ~ pā́tave",
+     "rv RV 6.40.2d: índum ~ pītáye",
+     "rv RV 8.48.4a: indo ~ pītáḥ"
+    ],
+    "Greek": [
+     "hom Il. 2.825: ὕδωρ ~ πίνοντες",
+     "hom Od. 4.511: ὕδωρ ~ πίεν",
+     "grc Heraclitus Fragmenta 52 s1: ὕδωρ ~ πότιμον"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-sexh2l",
+   "branches": {
+    "Celtic": [
+     18,
+     1.8,
+     9.8
+    ],
+    "Slavic": [
+     9,
+     1.3,
+     7.0
+    ],
+    "Indo-Iranian": [
+     8,
+     3.4,
+     2.3
+    ],
+    "Greek": [
+     76,
+     26.7,
+     2.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G100002:#1/T989/T989.2:1 (w2/2): uisce ~ sal",
+     "mga G301041:#1:193 (w1/2): uisce ~ shaill",
+     "ga-early G600005:#1/2/1/11:2 (w5/7): uisce ~ saillti"
+    ],
+    "Slavic": [
+     "byliny ruws 425721:49: ведра ~ сладкова",
+     "byliny ruws 425587:73: ведра ~ сладкова",
+     "byliny ruws 425735:70: ведра ~ сладкова"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 4, 15.s23: samudrād ~ salilād",
+     "sa-ep MBh, 3, 186.s124: samudreṣu ~ salilaṃ",
+     "sa-ep MBh, 5, 44.s44: samudre ~ salilaṃ"
+    ],
+    "Greek": [
+     "grc Herodotus Historiae 4.181.2 s1 (w1/2): ὕδωρ ~ ἁλὸς",
+     "grc Herodotus Historiae 4.182.1 s1: ὕδωρ ~ ἁλός",
+     "grc Herodotus Historiae 4.183.1 s1: ὕδωρ ~ ἁλὸς"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-soh2wl",
+   "branches": {
+    "Celtic": [
+     9,
+     4.3,
+     2.1
+    ],
+    "Indo-Iranian": [
+     45,
+     15.7,
+     2.9
+    ],
+    "Greek": [
+     104,
+     51.9,
+     2.0
+    ],
+    "Italic": [
+     4,
+     0.7,
+     5.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301900:#1/#29/t#1:104: usce ~ súilib",
+     "mga G300012:#1/2:46: usce ~ shuilib",
+     "ga-early G100055:#1/3/9/8/t#1:4: huisge ~ shúil"
+    ],
+    "Indo-Iranian": [
+     "rv RV 9.84.2d: índuḥ ~ sū́ryaḥ",
+     "rv RV 9.97.41d: índuḥ ~ sū́rye",
+     "av AVŚ, 10, 10.s24: samudram ~ sūryeṇa"
+    ],
+    "Greek": [
+     "grc Herodotus Historiae 1.131.2 s2: ὕδατι ~ ἡλίῳ",
+     "grc Herodotus Historiae 2.25.2 s2: ὕδωρ ~ ἥλιος",
+     "grc Herodotus Historiae 4.50.4 s1: ὕδωρ ~ ἥλιος"
+    ],
+    "Italic": [
+     "lat LucrDRN4 4.219: undis ~ sole",
+     "lat LucrDRN5 5.374: undis ~ soli",
+     "lat LucrDRN6 6.925: undis ~ sole"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gweh2bh-be_deep",
+   "branches": {
+    "Germanic": [
+     2,
+     0.0,
+     64.0
+    ],
+    "Indo-Iranian": [
+     6,
+     0.3,
+     21.0
+    ],
+    "Greek": [
+     65,
+     8.2,
+     8.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-619-4to 145:9: vatne ~ cafðer",
+     "icepahc 1270.gragas.law-law s303 (w1/2): vötn ~ kafður"
+    ],
+    "Indo-Iranian": [
+     "rv RV 9.86.8a: samudrám ~ gāhate",
+     "rv RV 9.86.26a: índuḥ ~ gāhate",
+     "rv RV 9.3.6b: apáḥ ~ gāhate"
+    ],
+    "Greek": [
+     "hom Od. 9.392: ὕδατι ~ βάπτῃ",
+     "grc Hippocrates et Corpus Hippocraticum De morbis i-iii 2.22 s4: ὕδατι ~ βάπτων",
+     "grc Hippocrates et Corpus Hippocraticum De morbis i-iii 2.26 s10: ὕδωρ ~ βάπτων"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-ser-flow",
+   "branches": {
+    "Slavic": [
+     2,
+     0.2,
+     9.3
+    ],
+    "Baltic": [
+     6,
+     0.1,
+     86.6
+    ],
+    "Indo-Iranian": [
+     62,
+     4.8,
+     12.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimch3vyp36:14327: водъ ~ струяхъ",
+     "orv spi 196: водѣ, ~ струяхъ,"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:2211: upelį ~ srovės",
+     "dainos litauischevolksl00leskuoft:6641: upelį ~ sroves",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:26375: upėlį ~ Srovės"
+    ],
+    "Indo-Iranian": [
+     "rv RV 7.70.2c: samudrā́n ~ sarítaḥ",
+     "rv RV 8.91.3d: indo ~ srava",
+     "rv RV 9.56.4b: indo ~ srava"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-tekw-run",
+   "branches": {
+    "Slavic": [
+     24,
+     2.3,
+     10.2
+    ],
+    "Baltic": [
+     16,
+     0.9,
+     17.7
+    ],
+    "Indo-Iranian": [
+     5,
+     0.3,
+     19.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 22028:146: вода ~ протече",
+     "vuk Vuk 22028:166: вода ~ протече",
+     "vuk Vuk 36507:4: вода ~ тече"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:45513: upes ~ teka",
+     "dainos litauischevolksl00leskuoft:12276: upė ~ tekėjo",
+     "dainos litauischevolksl00leskuoft:12382: upė ~ teka"
+    ],
+    "Indo-Iranian": [
+     "ae VS5.19b: āpō ~ taciṇti",
+     "ae YtFra2.10b: āpō ~ taciṇti",
+     "ae YtFra2.14b: āpō ~ taciṇti"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-penkw-fist",
+   "branches": {
+    "Germanic": [
+     5,
+     0.4,
+     11.8
+    ],
+    "Armenian": [
+     22,
+     2.0,
+     10.9
+    ],
+    "Indo-Iranian": [
+     12,
+     2.0,
+     6.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-242-fol 111:28: vatní ~ Fingr",
+     "menota AM-677-4to 11v:10: vatn ~ fingri",
+     "menota AM-677-4to 11v:14: vatni ~ fingri"
+    ],
+    "Armenian": [
+     "xcl MH_1_2_12_Movses_Khor ed. page 2143 - PDF page 400 (word id 60670) (w2/2): գետք ~ հինգ,",
+     "xcl MH_1_2_12_Movses_Khor ed. page 2144 - PDF page 401 (word id 61138): գետք ~ հինգ,",
+     "xcl MH_1_2_12_Movses_Khor ed. page 2147 - PDF page 404 (word id 62492) (w2/2): գետս ~ հինգ։"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 15, 15.s6: āpaḥ ~ pañcamaḥ",
+     "sa-ep MBh, 12, 187.s9: āpo ~ pañcamam",
+     "sa-ep MBh, 12, 217.s35: āpo ~ pañcamam"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ews-draw_water",
+   "branches": {
+    "Celtic": [
+     2,
+     0.4,
+     5.3
+    ],
+    "Germanic": [
+     20,
+     0.6,
+     31.7
+    ],
+    "Greek": [
+     7,
+     1.6,
+     4.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G502003:#1/1/1:120: uisgi ~ ael",
+     "mga G502003:#1/2/1:122: uisgi ~ aol"
+    ],
+    "Germanic": [
+     "menota AM-132-fol-Droplaugarsona-saga 145r:5: vatni ~ jóst",
+     "menota AM-132-fol-Egils-saga 73v:6: vatni ~ ausinn",
+     "menota AM-132-fol-Egils-saga 73v:19: vatni ~ ausinn"
+    ],
+    "Greek": [
+     "hom Od. 10.56: ὕδωρ ~ ἀφυσσάμεθ̓",
+     "hom Od. 4.359: ὕδωρ ~ ἀφυσσάμενοι",
+     "hom Od. 9.85: ὕδωρ ~ ἀφυσσάμεθ̓"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dhewbh-sink_in",
+   "branches": {
+    "Germanic": [
+     18,
+     1.7,
+     10.7
+    ],
+    "Indo-Iranian": [
+     7,
+     0.4,
+     16.5
+    ],
+    "Greek": [
+     45,
+     12.4,
+     3.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-619-4to 29v:4: vǫtnum ~ Dufa",
+     "menota AM-619-4to 29v:8: vǫtnum ~ dufur",
+     "menota AM-63-fol 167: (w4/8): vatni ~ diupt"
+    ],
+    "Indo-Iranian": [
+     "rv RV 7.35.13b: samudráḥ ~ budhnyàḥ",
+     "av AVP, 12, 17.s5: samudraḥ ~ budhnyaḥ",
+     "rv RV 1.52.6b: apáḥ ~ budhnám"
+    ],
+    "Greek": [
+     "grc Herodotus Historiae 2.68.4 s2: ὕδατι ~ τυφλὸν",
+     "grc Aristophanes Ranae 247: ἔνυδρον ~ βυθῷ",
+     "grc Aristoteles et Corpus Aristotelicum Problemata 24 s15: ὕδατος ~ πυθμὴν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-welH-roll",
+   "branches": {
+    "Germanic": [
+     9,
+     1.2,
+     7.3
+    ],
+    "Slavic": [
+     6,
+     0.8,
+     7.5
+    ],
+    "Indo-Iranian": [
+     24,
+     2.4,
+     9.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-243-b-alfa-fol 62:28: vatn ~ Vællannde",
+     "menota DG-4at7-Streng 25v:33 (w63/89): vatne ~ vællande",
+     "menota DG-4at7-Streng 25v:33 (w67/89): vatnet ~ vællande"
+    ],
+    "Slavic": [
+     "vuk Vuk 13012:7: вода ~ обалу",
+     "vuk Vuk 13015:25: вода ~ обалу",
+     "vuk Vuk 33087:2: вода ~ валове"
+    ],
+    "Indo-Iranian": [
+     "rv RV 4.58.1a: samudrā́t ~ ūrmíḥ",
+     "rv RV 9.86.2d: índavaḥ ~ ūrmáyaḥ",
+     "rv RV 9.96.19c: apā́m ~ ūrmím"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwher-be_warm",
+   "branches": {
+    "Germanic": [
+     3,
+     0.2,
+     18.1
+    ],
+    "Indo-Iranian": [
+     17,
+     3.4,
+     5.0
+    ],
+    "Greek": [
+     75,
+     23.3,
+     3.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-63-fol 370: (w3/3): vatni ~ varmt",
+     "menota AM-655-XXX-4to 4r:14: vatni ~ vǫrmu",
+     "menota DG-4at7-Streng 25v:33 (w64/89): vatne ~ vormu"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.164.47d: udyate ~ ghr̥téna",
+     "rv RV 5.42.3b: unátta ~ ghr̥téna",
+     "rv RV 5.83.8c: undhi ~ ghr̥téna"
+    ],
+    "Greek": [
+     "grc Herodotus Historiae 4.50.4 s1: ὕδωρ ~ θέρει",
+     "grc Herodotus Historiae 8.12.1 s1: ὕδωρ ~ θέρος",
+     "grc Hippocrates et Corpus Hippocraticum De aëre aquis et locis 10 s3 (w2/2): ὕδατα ~ θέρει"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gjheyoxm",
+   "branches": {
+    "Celtic": [
+     2,
+     0.6,
+     3.1
+    ],
+    "Indo-Iranian": [
+     12,
+     1.7,
+     7.0
+    ],
+    "Greek": [
+     51,
+     5.7,
+     8.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga oldirish-irische-texte-1880-1909:irischetextemit00stokgoog:L4548-L4549: aibhne ~ gem",
+     "ga-early G100005B:#1/M1156/M1156.25:1: aibhne ~ n-geimhreadh"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 7, 115.s43: indu ~ hima",
+     "sa-ep MBh, 8, 68.s110: indu ~ hima",
+     "ae Y19.8b: āpō ~ zəmō"
+    ],
+    "Greek": [
+     "hom Il. 22.152: ὕδατος ~ χιόνι",
+     "grc Hippocrates et Corpus Hippocraticum De aëre aquis et locis 8 s35: ὕδατα ~ χιόνος",
+     "grc Hippocrates et Corpus Hippocraticum De aëre aquis et locis 8 s36: ὑδάτων ~ χιόνος"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-ters-dry",
+   "branches": {
+    "Germanic": [
+     16,
+     1.1,
+     14.1
+    ],
+    "Indo-Iranian": [
+     4,
+     1.3,
+     3.1
+    ],
+    "Italic": [
+     6,
+     1.4,
+     4.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-519a-4to 15v:19: vatni ~ þorsta",
+     "menota HolmPerg-34-4to-MLL 57r:18: vátu ~ þurru",
+     "menota HolmPerg-6-fol 64:15 (w8/9): vatne ~ þurra"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.175.6b: ā́paḥ ~ tŕ̥ṣyate",
+     "rv RV 1.176.6b: ā́paḥ ~ tŕ̥ṣyate",
+     "av AVŚ, 3, 31.s5: āpas ~ tṛṣṇayā"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.374: undis ~ terrae",
+     "lat LucrDRN6 6.864: undis ~ terram",
+     "lat LucrDRN1 1.1032: amnes ~ terra"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h3reyH-move",
+   "branches": {
+    "Celtic": [
+     4,
+     1.8,
+     2.3
+    ],
+    "Slavic": [
+     21,
+     3.1,
+     6.8
+    ],
+    "Indo-Iranian": [
+     15,
+     1.6,
+     9.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga celtic-journal-eriu-1904-1928:eriu_1911_5:L1065-L1068 (w2/2): huiscib ~ reime",
+     "ga-early G600009B:#1/3/1:27 (w3/3): uisgi ~ reime",
+     "ga-early G600009B:#1/3/1:33: uisgi ~ reime"
+    ],
+    "Slavic": [
+     "vuk Vuk 36507:4: вода ~ ријека",
+     "byliny ruws 4276:176: воду ~ реку",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:29979: воду ~ р$ки"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 9, 1.s3: samudrasya ~ reta",
+     "rv RV 1.56.6c: apáḥ ~ ariṇāḥ",
+     "rv RV 2.22.4e: apáḥ ~ riṇán"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2welh1-hair",
+   "branches": {
+    "Celtic": [
+     2,
+     0.2,
+     8.2
+    ],
+    "Indo-Iranian": [
+     2,
+     0.5,
+     4.1
+    ],
+    "Greek": [
+     4,
+     1.0,
+     3.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G502003:#1/1/1:120: uisgi ~ oland",
+     "mga G502003:#1/1/1/t#3:1: uisgi ~ oland"
+    ],
+    "Indo-Iranian": [
+     "ae YtWahr12.3e: āpō ~ varəsō",
+     "ae YtDen3.3i: āpō ~ varəsō"
+    ],
+    "Greek": [
+     "grc-late Heron Pneumatica 1.20 s6 (w1/2): ὕδωρ ~ ληνῷ",
+     "grc-late Heron Pneumatica 1.20 s8: ὕδατος ~ ληνῷ",
+     "grc-late Heron Pneumatica 1.20 s10: ὕδωρ ~ ληνῷ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h3sleydh-slip",
+   "branches": {
+    "Germanic": [
+     2,
+     0.3,
+     5.8
+    ],
+    "Indo-Iranian": [
+     3,
+     0.3,
+     9.9
+    ],
+    "Greek": [
+     9,
+     4.1,
+     2.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler APs_Altalemannische_Psalmen vn/a (w9/17): uuazzer ~ farslintant",
+     "rea-goh Z-Notker-Psalmen N_Ps_105 v17: uuázzeren ~ ferslánt"
+    ],
+    "Indo-Iranian": [
+     "rv RV 9.63.28b: índo ~ srídhaḥ",
+     "rv RV 9.86.18b: índo ~ asrídham",
+     "rv RV 8.94.7b: ā́paḥ ~ srídhaḥ"
+    ],
+    "Greek": [
+     "grc Xenophon Anabasis 4.3.6 s1: ὕδατι ~ ὀλισθηροῖς",
+     "grc Aristoteles et Corpus Aristotelicum Problemata 25 s75: ὕδωρ ~ ὀλισθαίνει",
+     "grc Aristoteles et Corpus Aristotelicum Problemata 32 s61: ὕδωρ ~ ὀλισθηροῦ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-negw-bare",
+   "branches": {
+    "Albanian": [
+     2,
+     0.7,
+     2.9
+    ],
+    "Anatolian": [
+     2,
+     0.3,
+     6.6
+    ],
+    "Italic": [
+     2,
+     0.4,
+     4.9
+    ]
+   },
+   "examples": {
+    "Albanian": [
+     "sqo bogdani part-1-scala-4-chapter-17-p-391 (w1/4): ujè ~ nattenè",
+     "sqo bogdani part-2-scala-12-chapter-51-p-620 (w2/3): uje ~ nattè"
+    ],
+    "Anatolian": [
+     "hit KBo 50.283+  {€1} Vs. II 34: wa-a-tar ~ ne-ku-ma-an-za",
+     "hit KUB 13.4 Rs. III 21: wa-a-tar ~ ne-ku-ma-an-za"
+    ],
+    "Italic": [
+     "lat LucrDRN6 6.864: undis ~ nox",
+     "lat LucrDRN6 6.1173: undas ~ nudum"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhleh3-bloom",
+   "branches": {
+    "Celtic": [
+     14,
+     3.0,
+     4.7
+    ],
+    "Germanic": [
+     15,
+     2.5,
+     6.1
+    ],
+    "Greek": [
+     62,
+     19.4,
+     3.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G600005:#1/2/1/34:1 (w9/9): uisce ~ blath",
+     "ga-early G600005:#1/2/1/66:1 (w2/7): uisce ~ blath",
+     "ga-early G600005:#1/2/1/107:1 (w3/3): uisci ~ blath"
+    ],
+    "Germanic": [
+     "menota AM-242-fol 11:22 (w2/10): votnín ~ bloði",
+     "menota AM-242-fol 91:8 (w76/83): vatn ~ bloð",
+     "menota AM-242-fol 111:5 (w5/7): vatni ~ bloðs"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De affectionibus 38 s3 (w1/2): ὕδατι ~ φύλλα",
+     "grc Hippocrates et Corpus Hippocraticum De ulceribus 11 s10: ὕδατι ~ φύλλα",
+     "grc Hippocrates et Corpus Hippocraticum De fistulis 5 s3: ὕδατι ~ φύλλα"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2eydh-ignite",
+   "branches": {
+    "Germanic": [
+     18,
+     3.1,
+     5.8
+    ],
+    "Greek": [
+     28,
+     7.9,
+     3.6
+    ],
+    "Italic": [
+     2,
+     0.6,
+     3.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Finnboga-saga 104r:11: vatn ~ eld",
+     "menota AM-242-fol 94:8 (w5/106): vǫtnum ~ elldi",
+     "menota AM-242-fol 94:8 (w7/106): votn ~ elldr"
+    ],
+    "Greek": [
+     "grc Pindarus Olympia 1.1: ὕδωρ ~ αἰθόμενον",
+     "grc Xenophanes Fragmenta 26.4: ὕδωρ ~ αἰθέρος",
+     "grc Bacchylides Epinicia 3.86: ὕδωρ ~ αἰθὴρ"
+    ],
+    "Italic": [
+     "lat LucrDRN4 4.219: undis ~ aestus",
+     "lat LucrDRN6 6.925: undis ~ aestus"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-plh1nos",
+   "branches": {
+    "Celtic": [
+     24,
+     8.0,
+     3.0
+    ],
+    "Germanic": [
+     17,
+     5.7,
+     3.0
+    ],
+    "Indo-Iranian": [
+     12,
+     1.8,
+     6.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G201002:#1/1/24:6: uisciu ~ lán",
+     "mga G106500D:#1/4/2/93:9: odhra ~ Lan",
+     "mga G201001:#1/3/#31:2: uisce ~ lan"
+    ],
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 73r:15: vatn ~ fullt",
+     "menota AM-36-fol 245: (w21/32): vatn ~ fylldi",
+     "menota AM-677-4to 31v:26: vatns ~ fylldi"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 1, 213.s117: indu ~ pūrṇa",
+     "sa-ep MBh, 3, 61.s161: indu ~ pūrṇa",
+     "sa-ep MBh, 3, 186.s174: indu ~ pūrṇa"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-lewk-bright",
+   "branches": {
+    "Celtic": [
+     21,
+     5.7,
+     3.7
+    ],
+    "Baltic": [
+     5,
+     0.8,
+     6.3
+    ],
+    "Anatolian": [
+     5,
+     2.0,
+     2.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G302013:#1/#1:23: n-usce ~ luachair",
+     "mga G206000:#1/32/XXXIII:68: usce ~ loisc",
+     "mga G207001:#1/4:4 (w2/2): usce ~ loisc"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:13053: vandeni ~ Palauki",
+     "dainos litauischevolksl00leskuoft:16645: vandenį ~ lauke",
+     "dainos litauischevolksl00leskuoft:19064: vandenį ~ laukė"
+    ],
+    "Anatolian": [
+     "hit IBoT 4.121 Vs. 3′: wa-a-tar ~ lu-uk-kán-zi",
+     "hit KBo 10.26 Vs. I 1: wa-a-tar ~ lu-uk-kán-zi",
+     "hit KBo 27.136 Vs. II 9: ú-e-te-na-az ~ lu-ug-ga-at-ta"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-ped-walk",
+   "branches": {
+    "Germanic": [
+     15,
+     4.3,
+     3.5
+    ],
+    "Slavic": [
+     4,
+     1.8,
+     2.2
+    ],
+    "Italic": [
+     5,
+     1.0,
+     4.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-677-4to 23r:39: vatn ~ fótum",
+     "menota AM-677-4to 23v:34: vatn ~ fótum",
+     "menota DG-4at7-Streng 0037:33 (w30/141): vatne ~ fœtr"
+    ],
+    "Slavic": [
+     "byliny 10945725bsb:8994: воду ~ падала",
+     "byliny pesnisobrannyepvkireevskimvyp1pesn13:16433: воду ~ пала",
+     "byliny pesnisobrannyepnrybnikovymch3narod26:1574: воду ~ пала"
+    ],
+    "Italic": [
+     "lat Catul 65.6: unda ~ pedem",
+     "lat LucrDRN5 5.272: undas ~ pede",
+     "lat LucrDRN6 6.638: undas ~ pede"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kelH-rise",
+   "branches": {
+    "Germanic": [
+     3,
+     1.2,
+     2.6
+    ],
+    "Baltic": [
+     3,
+     1.2,
+     2.5
+    ],
+    "Greek": [
+     4,
+     1.6,
+     2.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-35-fol 239: (w19/24): vatn ~ holmi",
+     "menota AM-619-4to 42r:3: vatne ~ hold",
+     "menota NRA-norrfragm-58-A 3v:4 (w1/3): vatni ~ hólmi"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:16151: vandeniu ~ atsikėlė",
+     "dainos litauischevolksl00leskuoft:19904: vandenį ~ perkėlė",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:55128: vandėns ~ parkėlčiau"
+    ],
+    "Greek": [
+     "grc Herodotus Historiae 4.181.2 s1 (w1/2): ὕδωρ ~ κολωνοῦ",
+     "grc Herodotus Historiae 4.183.1 s1: ὕδωρ ~ κολωνὸς",
+     "grc Herodotus Historiae 4.184.1 s1: ὕδωρ ~ κολωνὸς"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-wrsu",
+   "branches": {
+    "Slavic": [
+     5,
+     0.6,
+     8.7
+    ],
+    "Baltic": [
+     6,
+     0.1,
+     113.3
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch1narod12:23263: воды ~ верхъ",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:23272: воды ~ верхъ",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:23273: воды ~ верхъ"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:12217: wandens ~ Wirszuj’",
+     "dainos littauischevolk00nessgoog:12263: wandens ~ Wirszuj’",
+     "dainos littauischevolk00nessgoog:13502: wandens ~ Wirszuj'"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-wers-rise",
+   "branches": {
+    "Slavic": [
+     5,
+     0.8,
+     6.2
+    ],
+    "Baltic": [
+     7,
+     0.1,
+     122.7
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch1narod12:23263: воды ~ верхъ",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:23272: воды ~ верхъ",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:23273: воды ~ верхъ"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:12217: wandens ~ Wirszuj’",
+     "dainos littauischevolk00nessgoog:12263: wandens ~ Wirszuj’",
+     "dainos littauischevolk00nessgoog:13502: wandens ~ Wirszuj'"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gwh2bhyeti",
+   "branches": {
+    "Germanic": [
+     2,
+     0.0,
+     89.5
+    ],
+    "Greek": [
+     65,
+     8.1,
+     8.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-619-4to 145:9: vatne ~ cafðer",
+     "icepahc 1270.gragas.law-law s303 (w1/2): vötn ~ kafður"
+    ],
+    "Greek": [
+     "hom Od. 9.392: ὕδατι ~ βάπτῃ",
+     "grc Hippocrates et Corpus Hippocraticum De morbis i-iii 2.22 s4: ὕδατι ~ βάπτων",
+     "grc Hippocrates et Corpus Hippocraticum De morbis i-iii 2.26 s10: ὕδωρ ~ βάπτων"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-terstus",
+   "branches": {
+    "Celtic": [
+     17,
+     1.0,
+     17.1
+    ],
+    "Germanic": [
+     8,
+     0.3,
+     25.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G305001:#1/12:32 (w4/4): d'uisci ~ tarta",
+     "ga-early G100055:#1/3/19/5:17: uisge ~ tart",
+     "ga-early G100055:#1/3/19/5:18: d'uisge ~ tart"
+    ],
+    "Germanic": [
+     "menota AM-519a-4to 15v:19: vatni ~ þorsta",
+     "menota HolmPerg-6-fol 97r:12 (w12/12): vatne ~ þosta",
+     "icepahc 1300.alexander.nar-sag s1281 (w3/4): vatni ~ þorsta"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-tekweti",
+   "branches": {
+    "Slavic": [
+     20,
+     1.7,
+     11.8
+    ],
+    "Baltic": [
+     16,
+     0.8,
+     19.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 22028:146: вода ~ протече",
+     "vuk Vuk 22028:166: вода ~ протече",
+     "vuk Vuk 36507:4: вода ~ тече"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:45513: upes ~ teka",
+     "dainos litauischevolksl00leskuoft:12276: upė ~ tekėjo",
+     "dainos litauischevolksl00leskuoft:12382: upė ~ teka"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-tekwti",
+   "branches": {
+    "Slavic": [
+     20,
+     1.7,
+     11.8
+    ],
+    "Baltic": [
+     16,
+     0.8,
+     19.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 22028:146: вода ~ протече",
+     "vuk Vuk 22028:166: вода ~ протече",
+     "vuk Vuk 36507:4: вода ~ тече"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:45513: upes ~ teka",
+     "dainos litauischevolksl00leskuoft:12276: upė ~ tekėjo",
+     "dainos litauischevolksl00leskuoft:12382: upė ~ teka"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1ersti",
+   "branches": {
+    "Indo-Iranian": [
+     13,
+     1.2,
+     10.8
+    ],
+    "Anatolian": [
+     9,
+     0.5,
+     18.8
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 4.58.5a: samudrā́t ~ arṣanti",
+     "rv RV 9.13.7a: índavaḥ ~ arṣanti",
+     "rv RV 9.34.1b: índuḥ ~ arṣati"
+    ],
+    "Anatolian": [
+     "hit KBo 52.13+  {€4} Rs. III 19′: wa-a-tar ~ ar-aš-mi",
+     "hit KUB 58.77 Vs. 2′: wa-a-tar ~ a-ar-aš-zi",
+     "hit KUB 9.1 Rs. III 12′: wa-a-tar ~ a-ar-aš-zi"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2weh1nts",
+   "branches": {
+    "Germanic": [
+     7,
+     1.0,
+     6.8
+    ],
+    "Tocharian": [
+     3,
+     0.1,
+     24.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-242-fol 94:8 (w7/106): votn ~ vindr",
+     "menota AM-243-b-alfa-fol 23r:1: votnum ~ vinndum",
+     "menota HolmPerg-4-fol 22v:12: vatn ~ vindr"
+    ],
+    "Tocharian": [
+     "xto A 757 124b2: wär ~ want",
+     "xto A 757 124b5: wäryo ~ wantyo",
+     "xto A 1101 467b2: wär ~ wanti"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1ers-flow",
+   "branches": {
+    "Indo-Iranian": [
+     52,
+     6.4,
+     8.1
+    ],
+    "Anatolian": [
+     9,
+     0.5,
+     17.8
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 4.58.5a: samudrā́t ~ arṣanti",
+     "rv RV 9.13.7a: índavaḥ ~ arṣanti",
+     "rv RV 9.34.1b: índuḥ ~ arṣati"
+    ],
+    "Anatolian": [
+     "hit KBo 52.13+  {€4} Rs. III 19′: wa-a-tar ~ ar-aš-mi",
+     "hit KUB 58.77 Vs. 2′: wa-a-tar ~ a-ar-aš-zi",
+     "hit KUB 9.1 Rs. III 12′: wa-a-tar ~ a-ar-aš-zi"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-bhudhmexn",
+   "branches": {
+    "Indo-Iranian": [
+     7,
+     0.4,
+     16.5
+    ],
+    "Greek": [
+     33,
+     3.8,
+     8.7
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 7.35.13b: samudráḥ ~ budhnyàḥ",
+     "av AVP, 12, 17.s5: samudraḥ ~ budhnyaḥ",
+     "rv RV 1.52.6b: apáḥ ~ budhnám"
+    ],
+    "Greek": [
+     "grc Aristoteles et Corpus Aristotelicum Problemata 24 s15: ὕδατος ~ πυθμὴν",
+     "grc Aristoteles et Corpus Aristotelicum Problemata 24 s16: ὕδατος ~ πυθμένι",
+     "grc Aristoteles et Corpus Aristotelicum Problemata 24 s27: ὕδατος ~ πυθμένες"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-sreweti",
+   "branches": {
+    "Indo-Iranian": [
+     31,
+     1.4,
+     22.0
+    ],
+    "Greek": [
+     255,
+     39.9,
+     6.4
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 8.91.3d: indo ~ srava",
+     "rv RV 9.56.4b: indo ~ srava",
+     "rv RV 9.62.9a: indo ~ srava"
+    ],
+    "Greek": [
+     "hom Il. 2.307: ὕδωρ ~ ῥέεν",
+     "hom Il. 22.149: ὕδατι ~ ῥέει",
+     "hom Od. 17.209: ὕδωρ ~ ῥέεν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-neygw-wash",
+   "branches": {
+    "Celtic": [
+     7,
+     0.7,
+     9.8
+    ],
+    "Greek": [
+     22,
+     1.8,
+     12.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G201002:#1/1/15:9: usque ~ diunach",
+     "sga G301900:#1/#27/t#5:19: usce ~ negar",
+     "mga G800011E:#1/15/t#4:19: usce ~ negar"
+    ],
+    "Greek": [
+     "hom Il. 11.830: ὕδατι ~ νίζ̓",
+     "hom Il. 11.846: ὕδατι ~ νίζ̓",
+     "hom Il. 16.229: ὕδατος ~ ἔνιψ̓"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-plew-fly",
+   "branches": {
+    "Germanic": [
+     21,
+     5.3,
+     4.0
+    ],
+    "Baltic": [
+     4,
+     0.2,
+     26.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-243-b-alfa-fol 6r:19 (w1/2): vatnit ~ flytr",
+     "menota AM-243-b-alfa-fol 6v:20: vatni ~ flytr",
+     "menota AM-243-b-alfa-fol 55v:25 (w3/3): vatnum ~ fliota"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:62326: wandens ~ plaukia",
+     "dainos litauischevolksl00leskuoft:19886: vandenį ~ perplaukė",
+     "dainos littauischevolk00nessgoog:56204: upe ~ plaukte"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1eh1t-breathe",
+   "branches": {
+    "Celtic": [
+     2,
+     0.1,
+     14.7
+    ],
+    "Germanic": [
+     2,
+     0.3,
+     7.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301018:#1/11:7: uisce ~ inathar",
+     "ga-early G306000:#1/1/23:6 (w2/2): abac ~ inathar"
+    ],
+    "Germanic": [
+     "menota AM-243-b-alfa-fol 98:18 (w1/2): votn ~ æðrum",
+     "rea-goh Isidor I_DeFide_4 vn/a (w10/30): uuazssar« ~ adhmuot"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-yewg-join",
+   "branches": {
+    "Baltic": [
+     2,
+     0.2,
+     8.5
+    ],
+    "Italic": [
+     3,
+     0.3,
+     10.0
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:13055: vandens ~ Jautis",
+     "dainos litauischevolksl00leskuoft:13066: vandens ~ jautis"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.537: aptam ~ coniunctam",
+     "lat LucrDRN5 5.555: apta ~ coniuncta",
+     "lat LucrDRN5 5.558: apta ~ coniuncta"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-tep-be_warm",
+   "branches": {
+    "Celtic": [
+     31,
+     6.5,
+     4.8
+    ],
+    "Slavic": [
+     6,
+     0.3,
+     17.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201001:#1/1/#10:7: t-usce ~ tene",
+     "mga G201009:#1/13:3: usce ~ tened",
+     "mga G206000:#1/32/XXXIII:68: usce ~ tene"
+    ],
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimch3vyp51:10653: водахъ ~ теплыхъ",
+     "ccmh suprasliensis 1040120: водьнаа ~ потопитъ",
+     "ccmh suprasliensis 1040201: вода ~ топла"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-peysks",
+   "branches": {
+    "Celtic": [
+     4,
+     0.5,
+     7.4
+    ],
+    "Germanic": [
+     8,
+     0.7,
+     10.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G207002:#1/16:4: n-uisci ~ iasc",
+     "mga G800011E:#1/41:32: uisci ~ íascaib",
+     "mga celtic-journal-eriu-1904-1928:eriu_1911_5:L7628-L7631 (w1/2): usce ~ iasc"
+    ],
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 73r:15: vatn ~ fiskum",
+     "menota AM-132-fol-Laxdaela-saga 185r:29: vatnit ~ fiska",
+     "menota AM-243-b-alfa-fol 39r:21 (w4/4): vatna ~ fisks"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-yewos",
+   "branches": {
+    "Celtic": [
+     21,
+     0.7,
+     29.1
+    ],
+    "Indo-Iranian": [
+     2,
+     0.8,
+     2.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201001:#1/5/#24:2 (w1/2): uisce ~ eorna",
+     "ga-early G600005:#1/2/1/29:1 (w2/8): uisce ~ eorna",
+     "ga-early G600005:#1/2/1/115:5 (w2/2): huisce ~ eorna"
+    ],
+    "Indo-Iranian": [
+     "rv RV 5.85.3d: unatti ~ yávam",
+     "sa-ep MBh, 13, 88.s7: adbhir ~ yavaiḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-penkwe",
+   "branches": {
+    "Armenian": [
+     22,
+     2.0,
+     10.9
+    ],
+    "Indo-Iranian": [
+     12,
+     2.0,
+     6.1
+    ]
+   },
+   "examples": {
+    "Armenian": [
+     "xcl MH_1_2_12_Movses_Khor ed. page 2143 - PDF page 400 (word id 60670) (w2/2): գետք ~ հինգ,",
+     "xcl MH_1_2_12_Movses_Khor ed. page 2144 - PDF page 401 (word id 61138): գետք ~ հինգ,",
+     "xcl MH_1_2_12_Movses_Khor ed. page 2147 - PDF page 404 (word id 62492) (w2/2): գետս ~ հինգ։"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 15, 15.s6: āpaḥ ~ pañcamaḥ",
+     "sa-ep MBh, 12, 187.s9: āpo ~ pañcamam",
+     "sa-ep MBh, 12, 217.s35: āpo ~ pañcamam"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gwrh3eti",
+   "branches": {
+    "Slavic": [
+     3,
+     0.3,
+     10.0
+    ],
+    "Baltic": [
+     7,
+     1.1,
+     6.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 21686:2831: водо ~ Ждери",
+     "vuk Vuk 21702:563: водо ~ Ждери",
+     "ccmh suprasliensis 1040120: водьнаа ~ пожьрет"
+    ],
+    "Baltic": [
+     "dainos lietvikosdjnos00iugoog:25347: vandens ~ ge'rti",
+     "dainos lietvikosdjnos00iugoog:25364: vandens ~ gerti",
+     "dainos lietvikosdjnos00iugoog:25371: vandens ~ ge'rti"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kjlewH-clean",
+   "branches": {
+    "Germanic": [
+     2,
+     0.2,
+     9.0
+    ],
+    "Greek": [
+     82,
+     11.5,
+     7.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-osx Heliand Hel_55 v4536: uuatares ~ hluttres",
+     "rea-osx Heliand Hel_35 v2958: uuater ~ hlutter"
+    ],
+    "Greek": [
+     "grc Aristophanes Pax 843: ὕδωρ ~ κατάκλυζε",
+     "grc Hippocrates et Corpus Hippocraticum De diaeta acutorum 19 s3 (w1/2): ὕδωρ ~ κλύσον",
+     "grc Hippocrates et Corpus Hippocraticum De morbis i-iii 2.32 s4 (w1/2): ὕδατι ~ κλύζειν"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2wlh1neh2",
+   "branches": {
+    "Celtic": [
+     2,
+     0.2,
+     10.5
+    ],
+    "Greek": [
+     4,
+     0.7,
+     5.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G502003:#1/1/1:120: uisgi ~ oland",
+     "mga G502003:#1/1/1/t#3:1: uisgi ~ oland"
+    ],
+    "Greek": [
+     "grc-late Heron Pneumatica 1.20 s6 (w1/2): ὕδωρ ~ ληνῷ",
+     "grc-late Heron Pneumatica 1.20 s8: ὕδατος ~ ληνῷ",
+     "grc-late Heron Pneumatica 1.20 s10: ὕδωρ ~ ληνῷ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-lewbh-cut_off",
+   "branches": {
+    "Celtic": [
+     49,
+     3.5,
+     14.0
+    ],
+    "Germanic": [
+     11,
+     2.7,
+     4.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G208020:#1/3/5:5 (w1/2): huisge ~ luibh-si",
+     "ga-early G600005:#1/2/1/3:1 (w1/11): uisci ~ luib",
+     "ga-early G600005:#1/2/1/3:1 (w5/11): uisce ~ luibh"
+    ],
+    "Germanic": [
+     "menota AM-242-fol 94:8 (w27/106): vǫtn ~ lopt",
+     "menota AM-243-b-alfa-fol 23r:1: votnum ~ lopti",
+     "menota AM-243-b-alfa-fol 98:18 (w2/2): votn ~ loptz"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-lokus",
+   "branches": {
+    "Celtic": [
+     24,
+     4.6,
+     5.2
+    ],
+    "Greek": [
+     8,
+     0.8,
+     10.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301900:#1/#2/#2:19: usce ~ loch",
+     "mga G106500C:#1/3/72:10: úaine ~ loch",
+     "mga G303000:#1:1358: uisce ~ loch"
+    ],
+    "Greek": [
+     "grc-late Philo Judaeus Quod deus sit immutabilis 31.145 s3: ὕδωρ ~ λάκκου",
+     "grc-late Philo Judaeus De fuga et inventione 197 s3: ὕδωρ ~ λάκκους",
+     "grc-late Strabo Geographica 12.2.5 s2: ὕδατος ~ λάκκος"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h3nebh-hub",
+   "branches": {
+    "Celtic": [
+     2,
+     0.1,
+     13.6
+    ],
+    "Indo-Iranian": [
+     5,
+     1.3,
+     3.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G303015:#1/10:4 (w2/3): usce ~ imlinn",
+     "ga-early G600011:#1/3:7 (w5/11): uisgi ~ imleacan"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 1, 13.s9: samudre ~ nābhiḥ",
+     "av AVP, 19, 3.s10: samudre ~ nābhiḥ",
+     "sa-ep MBh, 3, 21.s35: samudra ~ nābhau"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1nekj-receive",
+   "branches": {
+    "Slavic": [
+     42,
+     7.4,
+     5.7
+    ],
+    "Baltic": [
+     8,
+     0.9,
+     8.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 21702:561: вода ~ носи",
+     "vuk Vuk 36510:13: водо ~ Носи",
+     "vuk Vuk 29610:27: водо ~ нос'"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:36942: Wandens ~ parnesziu",
+     "dainos littauischevolk00nessgoog:38122: Wandens ~ parnesziu",
+     "dainos littauischevolk00nessgoog:39461: Wandens ~ parnesziu"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h3reyH",
+   "branches": {
+    "Germanic": [
+     24,
+     2.5,
+     9.6
+    ],
+    "Indo-Iranian": [
+     6,
+     1.2,
+     5.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-243-b-alfa-fol 32:17 (w2/2): votn ~ rænna",
+     "menota AM-302-fol 1r:1 (w1677/2250): votn ~ renna",
+     "menota AM-305-fol 56r:9 (w2/23): Votn ~ renna"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 9, 1.s3: samudrasya ~ reta",
+     "rv RV 8.44.16c: apā́m ~ rétāṃsi",
+     "av AVŚ, 5, 28.s12: apām ~ reta"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1nekjeti",
+   "branches": {
+    "Slavic": [
+     36,
+     6.7,
+     5.3
+    ],
+    "Baltic": [
+     8,
+     0.9,
+     8.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 21702:561: вода ~ носи",
+     "vuk Vuk 36510:13: водо ~ Носи",
+     "vuk Vuk 29610:27: водо ~ нос'"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:36942: Wandens ~ parnesziu",
+     "dainos littauischevolk00nessgoog:38122: Wandens ~ parnesziu",
+     "dainos littauischevolk00nessgoog:39461: Wandens ~ parnesziu"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-medhu",
+   "branches": {
+    "Slavic": [
+     9,
+     0.6,
+     16.1
+    ],
+    "Indo-Iranian": [
+     20,
+     7.0,
+     2.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny ruws 425721:49: ведра ~ меду",
+     "byliny ruws 425587:73: ведра ~ меду",
+     "byliny ruws 425735:70: ведра ~ меду"
+    ],
+    "Indo-Iranian": [
+     "rv RV 4.58.1a: samudrā́t ~ mádhumān",
+     "rv RV 5.42.3b: unátta ~ mádhvā",
+     "rv RV 5.54.8d: undanti ~ mádhvaḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ews-become_light",
+   "branches": {
+    "Greek": [
+     812,
+     54.9,
+     14.8
+    ],
+    "Italic": [
+     2,
+     0.7,
+     2.9
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Herodotus Historiae 4.48.3 s1 (w1/2): ὕδωρ ~ ἠῶ",
+     "grc Aristophanes Aves 1140: ὕδωρ ~ ἀέρα",
+     "grc Hippocrates et Corpus Hippocraticum De aëre aquis et locis 19 s14: ὕδατα ~ ἠέρα"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.1428: apta ~ auro",
+     "lat LucrDRN6 6.721: amnis ~ austro"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-melit",
+   "branches": {
+    "Celtic": [
+     16,
+     1.8,
+     9.1
+    ],
+    "Greek": [
+     154,
+     33.1,
+     4.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G206000:#1/3:10 (w1/2): usce ~ millse",
+     "mga oldirish-tbc-windisch-1905:diealtirischehel00wind:L36469-L36469: uisgi ~ milis",
+     "ga-early G600005:#1/2/1/169:5 (w2/2): uisce ~ milis"
+    ],
+    "Greek": [
+     "grc Sophocles Oedipus Coloneus 481: ὕδατος ~ μελίσσης",
+     "grc Hippocrates et Corpus Hippocraticum De morbis i-iii 2.14 s13 (w2/2): ὕδατι ~ μέλιτι",
+     "grc Hippocrates et Corpus Hippocraticum De morbis i-iii 2.19 s4 (w2/2): ὕδωρ ~ μέλι"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h3okws",
+   "branches": {
+    "Germanic": [
+     13,
+     4.7,
+     2.8
+    ],
+    "Baltic": [
+     2,
+     0.1,
+     14.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota DG-8-OHleg 0089:23 (w1/12): vatne ~ augu",
+     "menota DG-8-OHleg 0089:23 (w5/12): vatne ~ augu",
+     "menota DG-8-OHleg 0091:10 (w14/15): vatne ~ augu"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:19055: vandeniu ~ akis",
+     "dainos litauischevolksl00leskuoft:20512: vandenį ~ akiu"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h3ekw-see",
+   "branches": {
+    "Germanic": [
+     13,
+     4.8,
+     2.7
+    ],
+    "Baltic": [
+     2,
+     0.1,
+     14.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota DG-8-OHleg 0089:23 (w1/12): vatne ~ augu",
+     "menota DG-8-OHleg 0089:23 (w5/12): vatne ~ augu",
+     "menota DG-8-OHleg 0091:10 (w14/15): vatne ~ augu"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:19055: vandeniu ~ akis",
+     "dainos litauischevolksl00leskuoft:20512: vandenį ~ akiu"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-moyneyeti",
+   "branches": {
+    "Germanic": [
+     4,
+     1.3,
+     3.0
+    ],
+    "Slavic": [
+     2,
+     0.2,
+     12.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Isidor I_DeFide_4 vn/a (w10/30): uuazssar« ~ meinit",
+     "rea-goh Otfrid O_Otfr.Ev.3.4 v21: wázare ~ méinti",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon5_005 vn/a (w1/4): uuázer ~ méino"
+    ],
+    "Slavic": [
+     "ccmh suprasliensis 1065223: водѫ ~ прѣмѣненѫ",
+     "ccmh suprasliensis 2012230: водꙑ ~ мѣните"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-seykw-moisten",
+   "branches": {
+    "Germanic": [
+     13,
+     2.1,
+     6.3
+    ],
+    "Indo-Iranian": [
+     17,
+     3.3,
+     5.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 63v:9: vǫtnin ~ sjóinn",
+     "menota AM-242-fol 91:8 (w7/83): vǫtn ~ sior",
+     "menota AM-78-4to 9r:1 (w8/611): vatn ~ síor"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.30.1c: índubhiḥ ~ siñce",
+     "rv RV 5.85.6d: samudrám ~ āsiñcántīḥ",
+     "rv RV 8.24.13a: índum ~ siñcata"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kret-shake",
+   "branches": {
+    "Celtic": [
+     6,
+     0.5,
+     13.0
+    ],
+    "Germanic": [
+     2,
+     0.8,
+     2.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G303000:#1:2449: t-uisci ~ craith",
+     "ga-early G302018:#1/9:1: uisge ~ crothadh",
+     "ga-early G600009B:#1/3/4:21 (w3/4): uisgi ~ crotar"
+    ],
+    "Germanic": [
+     "menota AM-35-fol 225: (w12/22): vatn ~ hrinda",
+     "menota DG-8-OHleg 0033:28 (w6/15): vatn ~ rundu"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-lewh3-wash",
+   "branches": {
+    "Germanic": [
+     2,
+     0.5,
+     4.1
+    ],
+    "Greek": [
+     169,
+     22.3,
+     7.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota DG-8-MLL 41v:3 (w2/25): votn ~ laugum",
+     "non Sólarljöð 50: vatn ~ lauga"
+    ],
+    "Greek": [
+     "hom Il. 23.282: ὕδατι ~ λοέσσας",
+     "grc Hymni Homerici In Apollinem 120: ὕδατι ~ λόον",
+     "grc Euripides Electra 157: ὑδρανάμενον ~ λουτρὰ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2elh1-grind",
+   "branches": {
+    "Celtic": [
+     4,
+     0.7,
+     5.6
+    ],
+    "Greek": [
+     25,
+     5.2,
+     4.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G600008:#1/#3/13:2 (w3/3): uisgi ~ allus",
+     "ga-early G600008:#1/#4/27:2 (w1/2): uisgi ~ alluis",
+     "ga-early G600020:#1/7:2 (w5/6): t-uisci ~ t-allus"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De diaeta acutorum 39 s1 (w1/2): ὕδωρ ~ ἄλευρον",
+     "grc Hippocrates et Corpus Hippocraticum De haemorrhoidibus 2 s21: ὕδωρ ~ ἄλευρον",
+     "grc Hippocrates et Corpus Hippocraticum De fistulis 9 s24: ὕδατι ~ ἄλευρον"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dhgjhuHs",
+   "branches": {
+    "Armenian": [
+     4,
+     0.5,
+     8.3
+    ],
+    "Greek": [
+     73,
+     24.7,
+     3.0
+    ]
+   },
+   "examples": {
+    "Armenian": [
+     "xcl MH_1_2_12_Movses_Khor ed. page 1938 - PDF page 196 (word id 29100) (w1/2): գետոց ~ ձկանց",
+     "xcl MH_1_2_12_Movses_Khor ed. page 2171 - PDF page 428 (word id 72986): գետս ~ ձկամբք։",
+     "xcl MH_1_2_12_Movses_Khor ed. page 2186 - PDF page 443 (word id 79071): գետս ~ ձկամբք։"
+    ],
+    "Greek": [
+     "grc Hesiodus Scutum 317: ὕδωρ ~ ἰχθύες",
+     "grc Heraclitus Fragmenta 52 s1: ὕδωρ ~ ἰχθύσι",
+     "grc Herodotus Historiae 2.93.6 s3: ὕδωρ ~ ἰχθύες"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-leyH-pour",
+   "branches": {
+    "Celtic": [
+     16,
+     7.9,
+     2.0
+    ],
+    "Slavic": [
+     10,
+     0.8,
+     12.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga celtic-journal-eriu-1904-1928:eriu_1905_2:L11923-L11925: n-uisci ~ Lina",
+     "mga G502003:#1/2/1/t#4:2: uisgi ~ lin",
+     "mga oldirish-tbc-windisch-1905:diealtirischehel00wind:L45166-L45166: uaine ~ lin"
+    ],
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:29559: водою ~ пбдлило",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:29636: водою ~ подлило",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:33488: водою ~ подлило"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-myewh1-move",
+   "branches": {
+    "Slavic": [
+     4,
+     0.5,
+     7.8
+    ],
+    "Indo-Iranian": [
+     2,
+     0.6,
+     3.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimch3vyp36:28556: водой ~ умойте",
+     "byliny pesnisobrannyepvkireevskimch3vyp36:28607: водой ~ обмойте",
+     "byliny pesnisobrannyepnrybnikovymch3narod26:28509: вода ~ умойся"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 7, 51.s63: apsu ~ mūtraṃ",
+     "sa-ep MBh, 13, 107.s49: apsu ~ mūtra"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1ngwnis",
+   "branches": {
+    "Slavic": [
+     18,
+     1.8,
+     9.8
+    ],
+    "Indo-Iranian": [
+     91,
+     38.4,
+     2.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 34470:6: вода ~ огањ",
+     "ccmh marianus 1171520: водѫ ~ огнь",
+     "ccmh marianus 2092200: водѫ ~ огнь"
+    ],
+    "Indo-Iranian": [
+     "rv RV 4.28.3a: indo ~ agníḥ",
+     "av AVŚ, 9, 1.s1: samudrād ~ agner",
+     "av AVP, 1, 39.s1: indo ~ agne"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sh2ey-bind",
+   "branches": {
+    "Indo-Iranian": [
+     12,
+     2.3,
+     5.3
+    ],
+    "Greek": [
+     14,
+     3.2,
+     4.3
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 9.95.5b: indo ~ sya +",
+     "sa-ep MBh, 3, 258.s7: samudrasya ~ setuṃ",
+     "sa-ep MBh, 3, 267.s87: samudre ~ setuṃ"
+    ],
+    "Greek": [
+     "grc Aristoteles et Corpus Aristotelicum De plantis [Dub.] 2.6.826b s15 (w1/2): ὕδατι ~ ἀνιμᾶται",
+     "grc-late Ammonius De adfinium vocabulorum differentia 10.257 s2: ὕδωρ ~ ἀνιμῶσι",
+     "grc-late Flavius Arrianus Periplus ponti Euxini 8.3.9 s1: ὕδωρ ~ ἀνιμήσασθαι"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sem-one",
+   "branches": {
+    "Slavic": [
+     3,
+     0.7,
+     4.5
+    ],
+    "Indo-Iranian": [
+     9,
+     1.9,
+     4.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 28281:60: вода ~ сама",
+     "vuk Vuk 28283:148: вода ~ сама",
+     "vuk Vuk 28305:20: вода ~ сама"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 12, 288.s72: induḥ ~ asamo",
+     "ae VS7.29e: āpō ~ hakərət̰",
+     "ae VS7.30c: āpō ~ hakərət̰"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-swer-ache",
+   "branches": {
+    "Celtic": [
+     4,
+     2.0,
+     2.0
+    ],
+    "Slavic": [
+     2,
+     0.2,
+     10.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100055:#1/3/7~2/10:1: d'uisge ~ searbh",
+     "ga-early G600030:#1/#2/9:8 (w2/3): t-uisci ~ serb",
+     "ga-early G600030:#1/#2/9:8 (w3/3): uisci ~ serb"
+    ],
+    "Slavic": [
+     "ccmh zographensis 4050310: водѣ ~ хромъ",
+     "ccmh assemanianus 4050310: водѣ ~ хромъ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1engw-burn",
+   "branches": {
+    "Slavic": [
+     18,
+     1.9,
+     9.3
+    ],
+    "Indo-Iranian": [
+     91,
+     38.8,
+     2.3
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 34470:6: вода ~ огањ",
+     "ccmh marianus 1171520: водѫ ~ огнь",
+     "ccmh marianus 2092200: водѫ ~ огнь"
+    ],
+    "Indo-Iranian": [
+     "rv RV 4.28.3a: indo ~ agníḥ",
+     "av AVŚ, 9, 1.s1: samudrād ~ agner",
+     "av AVP, 1, 39.s1: indo ~ agne"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dakjru",
+   "branches": {
+    "Celtic": [
+     6,
+     1.4,
+     4.3
+    ],
+    "Germanic": [
+     4,
+     0.8,
+     4.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100055:#1/3/10/2:3 (w3/3): uisge ~ deór",
+     "ga-early G100055:#1/3/10/5:3 (w3/3): uisge ~ deór",
+     "ga-early G206008:#1/37:16: uisci ~ der"
+    ],
+    "Germanic": [
+     "menota HolmPerg-6-fol 73v:24 (w3/6): vætte ~ tarom",
+     "menota HolmPerg-6-fol 154:17 (w11/12): vætte ~ tarom",
+     "menota HolmPerg-6-fol 81r:28 (w1/2): vatt ~ tarom"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h3rewk",
+   "branches": {
+    "Celtic": [
+     2,
+     0.5,
+     3.9
+    ],
+    "Greek": [
+     31,
+     6.1,
+     5.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G502003:#1/2/1:355 (w3/3): uisgi ~ rusg",
+     "ga-early G402563:#1/29:145: uaine ~ Ruisg"
+    ],
+    "Greek": [
+     "grc Herodotus Historiae 1.185.4 s1: ὕδωρ ~ ὀρύσσουσα",
+     "grc Herodotus Historiae 3.9.3 s1 (w2/2): ὕδωρ ~ ὀρύξασθαι",
+     "grc Herodotus Historiae 3.60.2 s2: ὕδωρ ~ ὀρώρυκται"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-weyh1-chase",
+   "branches": {
+    "Germanic": [
+     2,
+     0.9,
+     2.2
+    ],
+    "Indo-Iranian": [
+     4,
+     0.5,
+     8.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-243-b-alfa-fol 50:20: votnum ~ væiðe",
+     "menota AM-305-fol 56r:9 (w1/23): vatn ~ væiða"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 6, 2.s2: indavaḥ ~ vayaḥ",
+     "av AVP, 19, 1.s11: indavo ~ vayo",
+     "rv RV 1.178.2c: ā́paḥ ~ aveṣan"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-poxds",
+   "branches": {
+    "Germanic": [
+     15,
+     3.9,
+     3.8
+    ],
+    "Italic": [
+     4,
+     0.8,
+     5.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-677-4to 23r:39: vatn ~ fótum",
+     "menota AM-677-4to 23v:34: vatn ~ fótum",
+     "menota DG-4at7-Streng 0037:33 (w30/141): vatne ~ fœtr"
+    ],
+    "Italic": [
+     "lat Catul 65.6: unda ~ pedem",
+     "lat LucrDRN5 5.272: undas ~ pede",
+     "lat LucrDRN6 6.638: undas ~ pede"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-nebhos",
+   "branches": {
+    "Indo-Iranian": [
+     6,
+     1.7,
+     3.6
+    ],
+    "Greek": [
+     52,
+     11.2,
+     4.7
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "av AVŚ, 4, 15.s9: samudratas ~ nabha",
+     "sa-ep MBh, 7, 141.s88: indu ~ nabhasi",
+     "av AVŚ, 4, 15.s5: apām ~ nabhāṃsy"
+    ],
+    "Greek": [
+     "grc Euripides Electra 733: ἔνυδροι ~ νεφέλαι",
+     "grc Herodotus Historiae 1.87.2 s1: ὕδατι ~ νέφεα",
+     "grc Aristophanes Nubes 338: ὑδάτων ~ Νεφελᾶν"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2eleti",
+   "branches": {
+    "Celtic": [
+     2,
+     0.8,
+     2.6
+    ],
+    "Germanic": [
+     5,
+     0.8,
+     6.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G600005:#1/2/1/289:3 (w1/2): uisce ~ hoiltear",
+     "ga-early G600005:#1/2/1/289:3 (w2/2): uisce ~ hoiltear"
+    ],
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 84r:5: vatni ~ ól",
+     "menota AM-242-fol 73:18: vaz ~ ála",
+     "menota AM-242-fol 155:27: vatní ~ ol"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1ed-eat",
+   "branches": {
+    "Germanic": [
+     15,
+     3.2,
+     4.7
+    ],
+    "Anatolian": [
+     29,
+     8.4,
+     3.4
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-178-fol 185v:20: vatn ~ eta",
+     "menota AM-178-fol 185v:24: watn ~ eta",
+     "menota AM-619-4to 84:14: vatne ~ eta"
+    ],
+    "Anatolian": [
+     "hit KBo 3.2 Vs.! 22 (w2/2): wa-a-tar-ma-aš ~ a-da-an-zi",
+     "hit KBo 3.2 Rs.! 45 (w1/2): ú-e-te-ni-it ~ a-da-an-zi",
+     "hit KBo 3.5+  {€1} Vs. I 2 (w1/2): wa-a-tar ~ a-da-an-zi"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1edti",
+   "branches": {
+    "Germanic": [
+     15,
+     2.3,
+     6.6
+    ],
+    "Anatolian": [
+     18,
+     7.4,
+     2.4
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-178-fol 185v:20: vatn ~ eta",
+     "menota AM-178-fol 185v:24: watn ~ eta",
+     "menota AM-619-4to 84:14: vatne ~ eta"
+    ],
+    "Anatolian": [
+     "hit KBo 3.2 Vs.! 22 (w2/2): wa-a-tar-ma-aš ~ a-da-an-zi",
+     "hit KBo 3.2 Rs.! 45 (w1/2): ú-e-te-ni-it ~ a-da-an-zi",
+     "hit KBo 3.5+  {€1} Vs. I 2 (w1/2): wa-a-tar ~ a-da-an-zi"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-perkj-colored",
+   "branches": {
+    "Germanic": [
+     2,
+     0.3,
+     6.6
+    ],
+    "Indo-Iranian": [
+     2,
+     0.9,
+     2.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Otfrid O_Otfr.Ev.3.4 v10: wázar ~ fárenti",
+     "rea-goh Physiologus APh_8_Elefant vn/a (w3/4): uuâzzeres ~ uáret"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 10, 5.s49: āpo ~ pṛśnir",
+     "sa-ep MBh, 12, 328.s93: āpo ~ pṛśnir"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sek-cut",
+   "branches": {
+    "Baltic": [
+     2,
+     0.7,
+     3.1
+    ],
+    "Italic": [
+     3,
+     0.7,
+     4.6
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "lv BV 28354: ūdenī ~ cērt",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:453: upės ~ kraštėlyje"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.272: undas ~ secta",
+     "lat LucrDRN6 6.638: undas ~ secta",
+     "lat LucrDRN5 5.1428: apta ~ signis"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-ndhgwhitos",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.4,
+     5.7
+    ],
+    "Greek": [
+     2,
+     0.8,
+     2.5
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "av AVŚ, 6, 142.s5: samudraḥ ~ akṣitaḥ",
+     "av AVŚ, 10, 6.s34: āpo ~ akṣitāḥ"
+    ],
+    "Greek": [
+     "hom Od. 9.133: ὑδρηλοὶ ~ ἄφθιτοι",
+     "grc Hesiodus Theogonia 805: ὕδωρ ~ ἄφθιτον"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1es-be",
+   "branches": {
+    "Celtic": [
+     4,
+     0.9,
+     4.3
+    ],
+    "Anatolian": [
+     27,
+     8.1,
+     3.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G503002:#1/1/133:17 (w1/2): uisci ~ ás",
+     "mga G800011A:#1/1/t#23:5: aub ~ essach",
+     "mga oldirish-irische-texte-1880-1909:irischetextemit00stokgoog:L2263-L2263: aub ~ essach"
+    ],
+    "Anatolian": [
+     "hit KBo 3.5+  {€1} Vs. I 2 (w1/2): wa-a-tar ~ aš-nu-mi",
+     "hit KBo 3.5+  {€1} Vs. I 2 (w2/2): wa-a-tar ~ aš-nu-mi",
+     "hit KBo 3.5+  {€1} Vs. I 12 (w2/2): wa-a-tar-ma ~ aš-nu-an-zi"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-meykj-mix",
+   "branches": {
+    "Celtic": [
+     4,
+     1.2,
+     3.4
+    ],
+    "Greek": [
+     273,
+     66.0,
+     4.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G303000:#1:2334 (w1/2): uisci ~ mescad",
+     "mga celtic-journal-revue-celtique-1870-1928:revueceltique10pari:L3780-L3781: uisci ~ mesca",
+     "mga celtic-journal-revue-celtique-1870-1928:revueceltique10pari:L4190-L4191: n-uisce ~ mescais"
+    ],
+    "Greek": [
+     "hom Il. 3.270: ὕδωρ ~ μίσγον",
+     "hom Od. 1.110: ὕδωρ ~ ἔμισγον",
+     "grc Theognis Elegiae 1245: ὕδωρ ~ συμμείξεται"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sneh2-swim",
+   "branches": {
+    "Celtic": [
+     4,
+     0.8,
+     5.3
+    ],
+    "Indo-Iranian": [
+     13,
+     5.0,
+     2.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early celtic-journal-zcp-1897-1926:zeitschriftfrc13meyeuoft:L9011-L9015 (w1/2): usce ~ snämh",
+     "ga-early G100005E:#1/M1557/M1557.14:24 (w2/3): n-abhann-sin ~ snámh",
+     "ga-early G100005E:#1/M1576/M1576.7:2: abhainn ~ snamha"
+    ],
+    "Indo-Iranian": [
+     "rv RV 6.58.3a: samudré ~ nā́vaḥ",
+     "sa-ep MBh, 1, 212.s203: samudraṃ ~ naubhiḥ",
+     "sa-ep MBh, 2, 56.s9: samudra ~ nāvaṃ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwerh3-swallow",
+   "branches": {
+    "Slavic": [
+     3,
+     1.4,
+     2.1
+    ],
+    "Baltic": [
+     7,
+     1.1,
+     6.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 21686:2831: водо ~ Ждери",
+     "vuk Vuk 21702:563: водо ~ Ждери",
+     "ccmh suprasliensis 1040120: водьнаа ~ пожьрет"
+    ],
+    "Baltic": [
+     "dainos lietvikosdjnos00iugoog:25347: vandens ~ ge'rti",
+     "dainos lietvikosdjnos00iugoog:25364: vandens ~ gerti",
+     "dainos lietvikosdjnos00iugoog:25371: vandens ~ ge'rti"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dngjhweh2s",
+   "branches": {
+    "Celtic": [
+     3,
+     1.3,
+     2.3
+    ],
+    "Germanic": [
+     9,
+     1.6,
+     5.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100055:#1/3/10/2:3 (w3/3): uisge ~ theangaidh",
+     "ga-early G100055:#1/3/10/5:3 (w3/3): uisge ~ theangadh",
+     "ga-early G600024:#1/2:15 (w4/4): t-uisgi ~ teangadh"
+    ],
+    "Germanic": [
+     "menota AM-243-b-alfa-fol 6r:22: vatn ~ tungu",
+     "menota AM-243-b-alfa-fol 6r:15: vatn ~ tungu",
+     "menota AM-243-b-alfa-fol 22:10 (w1/2): vatn ~ tungo"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-Hrew-tear_out",
+   "branches": {
+    "Celtic": [
+     2,
+     0.5,
+     3.9
+    ],
+    "Greek": [
+     31,
+     9.4,
+     3.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G502003:#1/2/1:355 (w3/3): uisgi ~ rusg",
+     "ga-early G402563:#1/29:145: uaine ~ Ruisg"
+    ],
+    "Greek": [
+     "grc Herodotus Historiae 1.185.4 s1: ὕδωρ ~ ὀρύσσουσα",
+     "grc Herodotus Historiae 3.9.3 s1 (w2/2): ὕδωρ ~ ὀρύξασθαι",
+     "grc Herodotus Historiae 3.60.2 s2: ὕδωρ ~ ὀρώρυκται"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1ep-grab",
+   "branches": {
+    "Armenian": [
+     130,
+     28.5,
+     4.6
+    ],
+    "Greek": [
+     9,
+     3.3,
+     2.7
+    ]
+   },
+   "examples": {
+    "Armenian": [
+     "xcl MH_1_2_12_Movses_Khor ed. page 2142 - PDF page 399 (word id 60302): Գետ ~ ունի",
+     "xcl MH_1_2_12_Movses_Khor ed. page 2142 - PDF page 399 (word id 60440) (w1/2): գետով, ~ ունի",
+     "xcl MH_1_2_12_Movses_Khor ed. page 2143 - PDF page 400 (word id 60508): գետով. ~ ունի"
+    ],
+    "Greek": [
+     "hom Il. 16.385: ὕδωρ ~ ὀπωρινῷ",
+     "grc-late Diodorus Siculus Bibliotheca historica 1.10.6 s1: ὑδάτων ~ ὀψίμοις",
+     "grc-late Dioscorides Pedanius De materia medica 4.150.7 s3: ὕδωρ ~ ὀπώραν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kelh1-call_out_to",
+   "branches": {
+    "Celtic": [
+     2,
+     0.4,
+     5.6
+    ],
+    "Germanic": [
+     2,
+     0.9,
+     2.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G206000:#1/22/XI:54: usce ~ cailech",
+     "mga G206000:#1/22/XI:56: usce ~ cailech"
+    ],
+    "Germanic": [
+     "rea-goh Otfrid O_Otfr.Ev.2.14 v14: wázares ~ gihóloti",
+     "rea-goh Tatian T_Tat45 vn/a (w5/6): uuazar) ~ gihalota"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dewkti",
+   "branches": {
+    "Germanic": [
+     2,
+     0.8,
+     2.6
+    ],
+    "Italic": [
+     2,
+     0.4,
+     4.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_022 v7: uuaz- ~ ke-zógen",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon4_055 vn/a (w8/17): uuázer ~ zíhet"
+    ],
+    "Italic": [
+     "lat LucrDRN2 2.479: apta ~ ducat",
+     "lat LucrDRN2 2.523: apta ~ ducat"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-nokwts",
+   "branches": {
+    "Albanian": [
+     2,
+     0.7,
+     2.9
+    ],
+    "Indo-Iranian": [
+     5,
+     1.2,
+     4.2
+    ]
+   },
+   "examples": {
+    "Albanian": [
+     "sqo bogdani part-1-scala-4-chapter-17-p-391 (w1/4): ujè ~ nattenè",
+     "sqo bogdani part-2-scala-12-chapter-51-p-620 (w2/3): uje ~ nattè"
+    ],
+    "Indo-Iranian": [
+     "rv RV 2.30.1c: apā́m ~ aktúḥ",
+     "rv RV 10.14.9c: adbhíḥ ~ aktúbhiḥ",
+     "rv RV 10.93.5a: apā́m ~ náktam"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-bhilos",
+   "branches": {
+    "Celtic": [
+     2,
+     0.7,
+     3.1
+    ],
+    "Germanic": [
+     3,
+     0.8,
+     3.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301017:#1/87:6: odor ~ m-bil",
+     "mga G301035:#1/37:7: odor ~ mbil"
+    ],
+    "Germanic": [
+     "rea-goh Tatian T_Tat156 vn/a (w2/4): uuasgan ~ bilidi",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon3_112 vn/a (w3/8): uuázer ~ bílde",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon5_027 vn/a (w4/8): uuázer ~ bílde"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhil-harmonious",
+   "branches": {
+    "Celtic": [
+     2,
+     0.7,
+     3.1
+    ],
+    "Germanic": [
+     3,
+     0.8,
+     3.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301017:#1/87:6: odor ~ m-bil",
+     "mga G301035:#1/37:7: odor ~ mbil"
+    ],
+    "Germanic": [
+     "rea-goh Tatian T_Tat156 vn/a (w2/4): uuasgan ~ bilidi",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon3_112 vn/a (w3/8): uuázer ~ bílde",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon5_027 vn/a (w4/8): uuázer ~ bílde"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2sews-be_dry",
+   "branches": {
+    "Slavic": [
+     4,
+     0.8,
+     4.7
+    ],
+    "Greek": [
+     28,
+     12.3,
+     2.3
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 33059:1: водо ~ сува",
+     "vuk Vuk 23761:34: вода ~ пресахне",
+     "ccmh zographensis 4050310: водѣ ~ соухъ"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 2.1.5 s2: ὑδάτων ~ αὐχμῶν",
+     "grc Hippocrates et Corpus Hippocraticum De affectionibus interioribus 12 s40: ὕδατος ~ αὐστηροῦ",
+     "grc Hippocrates et Corpus Hippocraticum De mulierum affectibus i-iii 2.133 s31 (w2/2): ὕδωρ ~ αὔων"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-tegus",
+   "branches": {
+    "Celtic": [
+     3,
+     1.1,
+     2.8
+    ],
+    "Germanic": [
+     2,
+     0.6,
+     3.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G600009B:#1/3/10:5 (w2/4): uisgi ~ tiug",
+     "ga-early G600009C:#1/4/3:12 (w3/5): uaine ~ tiug",
+     "ga-early G600030:#1/#2/7:24: t-uisci ~ tiugh"
+    ],
+    "Germanic": [
+     "menota DG-8-OHleg 0027:2 (w4/8): vatnet ~ þiukazt",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon3_103 vn/a (w3/4): uuázer ~ dícchi"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-nebh-become_damp",
+   "branches": {
+    "Indo-Iranian": [
+     8,
+     3.7,
+     2.1
+    ],
+    "Greek": [
+     86,
+     18.7,
+     4.6
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "av AVŚ, 4, 15.s9: samudratas ~ nabha",
+     "sa-ep MBh, 4, 6.s8: indum ~ abhra",
+     "sa-ep MBh, 7, 141.s88: indu ~ nabhasi"
+    ],
+    "Greek": [
+     "grc Euripides Electra 733: ἔνυδροι ~ νεφέλαι",
+     "grc Herodotus Historiae 1.87.2 s1: ὕδατι ~ νέφεα",
+     "grc Aristophanes Nubes 338: ὑδάτων ~ ὄμβρους"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-steygh-go",
+   "branches": {
+    "Germanic": [
+     8,
+     2.8,
+     2.8
+    ],
+    "Greek": [
+     92,
+     28.7,
+     3.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-619-4to 28v:24: vatnet ~ ste",
+     "menota AM-619-4to 29r:3: vatne ~ ste",
+     "menota AM-677-4to 40r:4: vatninu ~ sté"
+    ],
+    "Greek": [
+     "grc Thales Fragmenta 3 s1: ὕδωρ ~ στοιχεῖον",
+     "grc Aristoteles et Corpus Aristotelicum De caelo 3.5.304a s8 (w1/2): ὕδατος ~ στοιχείων",
+     "grc Aristoteles et Corpus Aristotelicum De caelo 3.5.304a s8 (w2/2): ὕδατος ~ στοιχεῖον"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-kjeywos",
+   "branches": {
+    "Germanic": [
+     6,
+     2.0,
+     3.0
+    ],
+    "Indo-Iranian": [
+     13,
+     4.6,
+     2.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Droplaugarsona-saga 147r:3: vatni ~ herað",
+     "menota AM-132-fol-Fostbraedra-saga 199v:19: vǫtnin ~ heraðinu",
+     "menota AM-619-4to 57:9: vatne ~ heraðe"
+    ],
+    "Indo-Iranian": [
+     "rv RV 6.44.22d: índuḥ ~ áśivasya",
+     "rv RV 10.25.9b: indo ~ śiváḥ",
+     "av AVŚ, 1, 33.s7: apaḥ ~ śivena"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-sker",
+   "branches": {
+    "Slavic": [
+     7,
+     2.5,
+     2.8
+    ],
+    "Baltic": [
+     2,
+     0.7,
+     3.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 39301:34: Вода ~ крута",
+     "vuk Vuk 39301:41: Вода ~ крута",
+     "byliny pesnisobrannyepnrybnikovymch3narod26:26250: вБдь ~ скорую"
+    ],
+    "Baltic": [
+     "lv BV 28354: ūdenī ~ cērt",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:453: upės ~ kraštėlyje"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-tewh2-swell",
+   "branches": {
+    "Celtic": [
+     2,
+     0.8,
+     2.6
+    ],
+    "Germanic": [
+     2,
+     0.6,
+     3.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G308002:#1/53:1 (w3/7): h-usce ~ tóin",
+     "mga oldirish-irische-texte-1880-1909:irischetextemitw01winduoft:L14114-L14115: odor ~ thona"
+    ],
+    "Germanic": [
+     "menota Wolf-Aug-9-10-4to 33v:23: vátt ~ þoku",
+     "icepahc 1300.alexander.nar-sag s1345: óvart ~ þúsundum"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-wegw-wet",
+   "branches": {
+    "Indo-Iranian": [
+     3,
+     1.3,
+     2.4
+    ],
+    "Greek": [
+     220,
+     63.6,
+     3.5
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 4.42.4a: apáḥ ~ ukṣámāṇāḥ",
+     "av AVP, 5, 18.s11: apaḥ ~ ukṣata",
+     "sa-ep MBh, 1, 126.s67: adbhiḥ ~ ukṣitaiḥ"
+    ],
+    "Greek": [
+     "hom Od. 4.458: ὕδωρ ~ ὑγρὸν",
+     "grc Hippocrates et Corpus Hippocraticum De aëre aquis et locis 8 s7: ὑδάτων ~ ὑγρόν",
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 7.92 s11: ὕδατος ~ ὑγρὰ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-senh2-obtain",
+   "branches": {
+    "Indo-Iranian": [
+     7,
+     2.6,
+     2.7
+    ],
+    "Anatolian": [
+     13,
+     4.2,
+     3.1
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 5.41.14d: udā́ ~ abhíṣātāḥ",
+     "rv RV 9.23.6c: índo ~ siṣāsasi",
+     "rv RV 9.97.29c: índo ~ sanítram"
+    ],
+    "Anatolian": [
+     "hit KUB 13.4 Vs. II 52′ (w2/2): wa-a-tar-ma ~ ša-an-ḫe-eš-kán-zi",
+     "hit KBo 15.33+  {€1} Vs. II 22′: wa-a-tar ~ ša-an-ḫa-an-zi",
+     "hit KBo 19.128+  {€1} Rs. V 32′: wa-a-tar ~ ša-an-ḫa-an-zi"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhewgh-bend",
+   "branches": {
+    "Celtic": [
+     3,
+     0.9,
+     3.2
+    ],
+    "Germanic": [
+     3,
+     1.1,
+     2.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G600005:#1/2/1/231:6 (w1/3): uisce ~ boc",
+     "ga-early G600008:#1/#4/27:2 (w2/2): uisgi ~ buicc",
+     "ga-early G600011:#1/3:63 (w4/9): uisci ~ boc"
+    ],
+    "Germanic": [
+     "menota Wolf-Aug-9-10-4to 27r:23: vǫtnin ~ óbyggt",
+     "rea-osx Kleinere_Altsächsische_Denkmäler AnfP_57 v8: uuatar ~ bogon",
+     "ang Beo. 93: wæter ~ bebūgeð"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-wogjheyeti",
+   "branches": {
+    "Indo-Iranian": [
+     20,
+     7.8,
+     2.6
+    ],
+    "Greek": [
+     21,
+     6.8,
+     3.1
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.117.15b: samudrám ~ próḷhaḥ (prá-ū*)",
+     "av AVŚ, 4, 27.s7: apaḥ ~ vahanti",
+     "av AVP, 4, 35.s7: apaḥ ~ vahanti"
+    ],
+    "Greek": [
+     "grc Thucydides Historiae 6.100.1 s1 (w2/4): ὕδατος ~ ὀχετοὺς",
+     "grc Aristoteles et Corpus Aristotelicum De caelo 2.13.294a s14 (w2/2): ὕδατος ~ ὀχοῦντος",
+     "grc Aristoteles et Corpus Aristotelicum Meteorologica 1.12 s7 (w1/2): ὕδατος ~ ὀχοῦνται"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gweyh3-live",
+   "branches": {
+    "Germanic": [
+     2,
+     0.8,
+     2.5
+    ],
+    "Slavic": [
+     13,
+     4.1,
+     3.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-243-b-alfa-fol 55v:25 (w2/3): vatna ~ kyckvænndum",
+     "rea-osx Heliand Hel_41 v3369: uuateres ~ quic"
+    ],
+    "Slavic": [
+     "vuk Vuk 48101:4: вода ~ жива",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:30560: ВБдь ~ жива",
+     "byliny 11016812bsb:5299: водой ~ живою"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-leghyeti",
+   "branches": {
+    "Germanic": [
+     19,
+     7.9,
+     2.4
+    ],
+    "Slavic": [
+     7,
+     2.2,
+     3.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-243-b-alfa-fol 22:28: vatni ~ liggr",
+     "menota AM-243-b-alfa-fol 23:16: vatni ~ liggr",
+     "menota AM-36-fol 238: (w7/59): vatn ~ ligr"
+    ],
+    "Slavic": [
+     "vuk Vuk 13012:177: вода ~ лежи",
+     "vuk Vuk 10110:12: вода ~ лежи",
+     "vuk Vuk 10110:39: вода ~ лежи"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-peth2-spread_out",
+   "branches": {
+    "Celtic": [
+     10,
+     3.4,
+     2.9
+    ],
+    "Italic": [
+     2,
+     0.8,
+     2.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga celtic-journal-zcp-1897-1926:zeitschriftfrc11meyeuoft:L5194-L5195: uisce ~ eise",
+     "mga celtic-journal-eriu-1904-1928:eriu_1916_8:L1947-L1949: huisce ~ nesi",
+     "ga-early G402563:#1/20:144: uisge ~ d'eiteallaigh"
+    ],
+    "Italic": [
+     "lat Catul 64.185: undis ~ patet",
+     "lat LucrDRN6 6.728: undis ~ impetus"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-per-before",
+   "branches": {
+    "Armenian": [
+     5,
+     1.7,
+     3.0
+    ],
+    "Indo-Iranian": [
+     29,
+     12.2,
+     2.4
+    ]
+   },
+   "examples": {
+    "Armenian": [
+     "xcl MH_1_2_12_Movses_Khor ed. page 2146 - PDF page 403 (word id 61921) (w2/3): գետս ~ հարաւ",
+     "xcl MH_1_2_12_Movses_Khor ed. page 2150 - PDF page 407 (word id 64056) (w2/5): գետ, ~ հարաւ",
+     "xcl MH_1_2_12_Movses_Khor ed. page 2153 - PDF page 410 (word id 65431) (w2/3): գետոյ, ~ հարաւ,"
+    ],
+    "Indo-Iranian": [
+     "rv RV 7.6.7c: samudrā́t ~ párasmāt",
+     "rv RV 9.86.28d: indo ~ prathamáḥ",
+     "rv RV 9.97.40a: samudráḥ ~ prathamé"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1reh1-row",
+   "branches": {
+    "Celtic": [
+     3,
+     1.3,
+     2.3
+    ],
+    "Germanic": [
+     5,
+     1.6,
+     3.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G800011E:#1/42/t#7:51: t-usce ~ rám",
+     "ga-early G600030:#1/#2/2:1 (w1/2): t-uisci ~ rer",
+     "ga-early G600030:#1/#2/14:30 (w3/3): uisci ~ rer"
+    ],
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 71r:35: vatnit ~ Reru",
+     "menota AM-36-fol 123: (w3/29): vatne ~ róa",
+     "menota AM-36-fol 270: (w57/69): vatnit ~ róa"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-mewk-untie",
+   "branches": {
+    "Celtic": [
+     4,
+     1.5,
+     2.6
+    ],
+    "Greek": [
+     16,
+     5.9,
+     2.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G600005:#1/2/1/65:1 (w4/6): uisce ~ muice",
+     "ga-early G600005:#1/2/1/144:2 (w2/3): uisce ~ muice",
+     "ga-early G600005:#1/2/1/173:2: uisce ~ muice"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De mulierum affectibus i-iii 1.84 s4: ὕδωρ ~ μύξας",
+     "grc Hippocrates et Corpus Hippocraticum De mulierum affectibus i-iii 1.84 s23: ὕδωρ ~ μύξας",
+     "grc Hippocrates et Corpus Hippocraticum De mulierum affectibus i-iii 1.88 s3: ὕδωρ ~ μύξας"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-pleh1-fill",
+   "branches": {
+    "Celtic": [
+     27,
+     10.7,
+     2.5
+    ],
+    "Indo-Iranian": [
+     26,
+     9.5,
+     2.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G201002:#1/1/24:6: uisciu ~ lán",
+     "mga G106500D:#1/4/2/93:9: odhra ~ Lan",
+     "mga G201001:#1/3/#31:2: uisce ~ lan"
+    ],
+    "Indo-Iranian": [
+     "rv RV 6.72.3d: samudrā́ṇi ~ paprathuḥ",
+     "av AVŚ, 13, 3.s11: samudrasya ~ piparti",
+     "sa-ep MBh, 1, 213.s117: indu ~ pūrṇa"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-steg-cover",
+   "branches": {
+    "Germanic": [
+     3,
+     1.0,
+     3.0
+    ],
+    "Greek": [
+     20,
+     8.6,
+     2.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota DG-8-OHleg 0027:2 (w4/8): vatnet ~ þiukazt",
+     "rea-goh Z-Notker-Psalmen N_Ps_105 v22 (w1/2): uuázzer ~ bedáhta",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon3_103 vn/a (w3/4): uuázer ~ dícchi"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De aëre aquis et locis 18 s8: ὕδωρ ~ στεγνὰ",
+     "grc Plato Respublica 10.621a s2: ὕδωρ ~ στέγειν",
+     "grc Aristoteles et Corpus Aristotelicum Meteorologica 1.14 s43: ὕδωρ ~ στέγουσι"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-skjeh3ih2",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.9,
+     2.3
+    ],
+    "Greek": [
+     29,
+     9.8,
+     3.0
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 5.44.6b: apsú ~ chāyáyā",
+     "sa-ep MBh, 12, 73.s50: apsu ~ chāyāyām"
+    ],
+    "Greek": [
+     "grc Plato Respublica 6.509d s4 (w2/2): ὕδασι ~ σκιάς",
+     "grc Plato Respublica 6.510d s2 (w2/2): ὕδασιν ~ σκιαὶ",
+     "grc Plato Respublica 7.516a s3: ὕδασι ~ σκιὰς"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhel-blaze",
+   "branches": {
+    "Baltic": [
+     4,
+     1.5,
+     2.7
+    ],
+    "Greek": [
+     32,
+     12.7,
+     2.5
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:11677: wandens ~ baltas",
+     "dainos littauischevolk00nessgoog:12954: wandens ~ baltas",
+     "lv BV 28012: ūdeņi ~ bāliņam"
+    ],
+    "Greek": [
+     "hom Il. 21.365: ὕδωρ ~ φλέγετο",
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 2.6.31 s1: ὕδωρ ~ φλέγματος",
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 7.109 s2: ὕδωρ ~ φλέγμα"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dhregh-run",
+   "branches": {
+    "Celtic": [
+     2,
+     0.9,
+     2.3
+    ],
+    "Germanic": [
+     12,
+     4.1,
+     2.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301037:#1/2/1:2 (w2/2): abann ~ trāig",
+     "ga-early G100062:#1/#1:78 (w5/5): habhainn ~ thráig"
+    ],
+    "Germanic": [
+     "menota AM-132-fol-Laxdaela-saga 185r:29: vatnit ~ dró",
+     "menota AM-243-b-alfa-fol 12v:5 (w3/4): vatnit ~ drægit",
+     "menota AM-35-fol 110: (w4/11): vatn ~ dro"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ewg-increase",
+   "branches": {
+    "Celtic": [
+     2,
+     0.8,
+     2.6
+    ],
+    "Baltic": [
+     3,
+     1.2,
+     2.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga celtic-journal-eriu-1904-1928:eriu_1910_4:L5889-L5889: uisce ~ fér",
+     "ga-early G303002:#1:512 (w2/2): uisce ~ fér"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:16018: vandeniu ~ užaugo",
+     "lv BV 25950 (w1/2): upe ~ auga",
+     "lv BV 30972: upe ~ auga"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-smewk-let_loose",
+   "branches": {
+    "Celtic": [
+     4,
+     1.5,
+     2.6
+    ],
+    "Greek": [
+     16,
+     6.3,
+     2.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G600005:#1/2/1/65:1 (w4/6): uisce ~ muice",
+     "ga-early G600005:#1/2/1/144:2 (w2/3): uisce ~ muice",
+     "ga-early G600005:#1/2/1/173:2: uisce ~ muice"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De mulierum affectibus i-iii 1.84 s4: ὕδωρ ~ μύξας",
+     "grc Hippocrates et Corpus Hippocraticum De mulierum affectibus i-iii 1.84 s23: ὕδωρ ~ μύξας",
+     "grc Hippocrates et Corpus Hippocraticum De mulierum affectibus i-iii 1.88 s3: ὕδωρ ~ μύξας"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-trewd-push",
+   "branches": {
+    "Celtic": [
+     10,
+     5.0,
+     2.0
+    ],
+    "Slavic": [
+     2,
+     0.7,
+     2.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201001:#1/4/#26/t#1:24: n-uisci ~ trom",
+     "mga G502003:#1/1/2:449 (w3/3): usce ~ trom",
+     "ga-early G600005:#1/2/1/96:2 (w4/4): uisci ~ truim"
+    ],
+    "Slavic": [
+     "ccmh suprasliensis 3141205: водѫ ~ троуда",
+     "ccmh suprasliensis 3142126: водѣ ~ троуда"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-melh2-grind",
+   "branches": {
+    "Greek": [
+     76,
+     36.0,
+     2.1
+    ],
+    "Anatolian": [
+     13,
+     5.2,
+     2.5
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Od. 9.133: ὑδρηλοὶ ~ μαλακοί",
+     "grc Herodotus Historiae 3.117.4 s2: ὕδατι ~ μελίνην",
+     "grc Hippocrates et Corpus Hippocraticum De aëre aquis et locis 1 s12: ὑδάτων ~ μαλακοῖσιν"
+    ],
+    "Anatolian": [
+     "hit KBo 3.2 Vs.! 22 (w2/2): wa-a-tar-ma-aš ~ me-ma-al",
+     "hit KBo 3.5+  {€1} Vs. I 21 (w2/2): wa-a-tar-ra-ia〈〈aš〉〉 ~ me-ma-al",
+     "hit KBo 3.5+  {€1} Vs. I 55: ú-e-te-ni-it ~ me-ma-al"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-selgj-let_go",
+   "branches": {
+    "Celtic": [
+     5,
+     2.4,
+     2.1
+    ],
+    "Indo-Iranian": [
+     30,
+     14.3,
+     2.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G600005:#1/2/1/114:3 (w1/2): huisce ~ seilge",
+     "ga-early G600005:#1/2/1/127:2 (w3/3): huisce ~ seilge",
+     "ga-early G600005:#1/2/1/131:8: uisce ~ seilge"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.130.5b: samudrám ~ asr̥jaḥ",
+     "rv RV 6.30.4d: apáḥ ~ asr̥jaḥ",
+     "rv RV 8.3.10a: samudrám ~ ásr̥jaḥ"
+    ]
+   }
+  }
+ ]
+}

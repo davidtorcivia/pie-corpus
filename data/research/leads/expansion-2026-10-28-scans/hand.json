@@ -1,0 +1,660 @@
+{
+ "target": [
+  "pie-root-gjhes-hand"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 152,
+  "Baltic": 1,
+  "Armenian": 1025,
+  "Tocharian": 31,
+  "Albanian": 178,
+  "Indo-Iranian": 853,
+  "Greek": 13243,
+  "Anatolian": 156,
+  "Italic": 5
+ },
+ "rows": [
+  {
+   "root": "pie-root-ped-walk",
+   "branches": {
+    "Celtic": [
+     3,
+     0.7,
+     4.4
+    ],
+    "Armenian": [
+     51,
+     11.1,
+     4.6
+    ],
+    "Indo-Iranian": [
+     38,
+     5.5,
+     6.9
+    ],
+    "Greek": [
+     566,
+     190.9,
+     3.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G600009B:#1/3/1:19 (w1/2): fogus ~ d'inad",
+     "ga-early G600009B:#1/3/1:20 (w1/2): fogus ~ t-inad",
+     "ga-early G600030:#1/#2/8:3 (w2/2): fogas ~ isle"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 57 - PDF page 51 (word id 20825) (w2/2): ձեռաց, ~ ոտից,",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 98 - PDF page 92 (word id 37235) (w1/2): ձեռք ~ ոտք",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 128 - PDF page 122 (word id 49369) (w5/5): ձեռս ~ ոտս"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.32.7a: ahastáḥ ~ apā́t",
+     "rv RV 4.2.14b: hástebhiḥ ~ paḍbhíḥ",
+     "rv RV 10.22.14a: ahastā́ ~ apádī"
+    ],
+    "Greek": [
+     "hom Il. 13.61: χεῖρας ~ πόδας",
+     "hom Il. 13.75: χεῖρες ~ πόδες",
+     "hom Il. 14.455: χειρὸς ~ πηδῆσαι"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-poxds",
+   "branches": {
+    "Armenian": [
+     49,
+     7.9,
+     6.2
+    ],
+    "Indo-Iranian": [
+     5,
+     0.7,
+     6.9
+    ],
+    "Greek": [
+     550,
+     138.5,
+     4.0
+    ]
+   },
+   "examples": {
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 57 - PDF page 51 (word id 20825) (w2/2): ձեռաց, ~ ոտից,",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 98 - PDF page 92 (word id 37235) (w1/2): ձեռք ~ ոտք",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 128 - PDF page 122 (word id 49369) (w5/5): ձեռս ~ ոտս"
+    ],
+    "Indo-Iranian": [
+     "rv RV 4.2.14b: hástebhiḥ ~ paḍbhíḥ",
+     "av AVŚ, 1, 18.s3: hastayor ~ pador",
+     "sa-ep MBh, 8, 17.s20: hastair ~ padbhiś"
+    ],
+    "Greek": [
+     "hom Il. 13.61: χεῖρας ~ πόδας",
+     "hom Il. 13.75: χεῖρες ~ πόδες",
+     "hom Il. 15.364: χερσὶν ~ ποσὶν"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dhenwr",
+   "branches": {
+    "Indo-Iranian": [
+     25,
+     4.4,
+     5.7
+    ],
+    "Greek": [
+     26,
+     0.8,
+     32.8
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 10.18.9a: hástāt ~ dhánuḥ",
+     "av AVŚ, 18, 2.s122: hastāt ~ dhanuḥ",
+     "sa-ep MBh, 4, 50.s36: hasta ~ dhanvā"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De fracturis 14 s3: χειρῶν ~ θέναρσι",
+     "grc Hippocrates et Corpus Hippocraticum De fracturis 15 s22: χειρέων ~ θέναρσι",
+     "grc Hippocrates et Corpus Hippocraticum De fracturis 19 s11: χειρῶν ~ θέναρσι"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-telh2-bear",
+   "branches": {
+    "Celtic": [
+     7,
+     0.6,
+     11.4
+    ],
+    "Indo-Iranian": [
+     4,
+     1.9,
+     2.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G600009B:#1/3/1:20 (w1/2): fogus ~ talam",
+     "ga-early G600030:#1/#2/27:6 (w1/2): fogus ~ talmain",
+     "ga-early G600030:#1/#2/27:6 (w2/2): fogus ~ talmain"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 7, 78.s63: hasta ~ talayoḥ",
+     "sa-ep Rām, Yu, 46.s23: hastair ~ talaiḥ",
+     "sa-ep Rām, Yu, 58.s71: hastā ~ tala"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-telh2-ground",
+   "branches": {
+    "Celtic": [
+     7,
+     0.6,
+     11.3
+    ],
+    "Indo-Iranian": [
+     4,
+     1.9,
+     2.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G600009B:#1/3/1:20 (w1/2): fogus ~ talam",
+     "ga-early G600030:#1/#2/27:6 (w1/2): fogus ~ talmain",
+     "ga-early G600030:#1/#2/27:6 (w2/2): fogus ~ talmain"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 7, 78.s63: hasta ~ talayoḥ",
+     "sa-ep Rām, Yu, 46.s23: hastair ~ talaiḥ",
+     "sa-ep Rām, Yu, 58.s71: hastā ~ tala"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-demh2-tame",
+   "branches": {
+    "Celtic": [
+     2,
+     0.3,
+     6.5
+    ],
+    "Greek": [
+     37,
+     10.5,
+     3.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201000:#1/6/xvi/32:2: fogas ~ n-dama",
+     "mga G303000:#1:1490 (w1/2): focus ~ dámh"
+    ],
+    "Greek": [
+     "hom Il. 10.310: χείρεσσιν ~ δαμέντες",
+     "hom Il. 10.397: χείρεσσιν ~ δαμέντες",
+     "hom Il. 10.452: χερσὶ ~ δαμεὶς"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-peh2y",
+   "branches": {
+    "Albanian": [
+     2,
+     0.8,
+     2.5
+    ],
+    "Indo-Iranian": [
+     4,
+     0.5,
+     8.5
+    ]
+   },
+   "examples": {
+    "Albanian": [
+     "sqo bogdani part-1-scala-3-chapter-11-p-262 (w5/7): dorè ~ mbaj",
+     "sqo bogdani part-2-scala-12-chapter-48-p-571 (w1/6): dorè ~ mbajti"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 12, 203.s63: hastau ~ pāyur",
+     "sa-ep MBh, 12, 291.s57: hastau ~ pāyur",
+     "sa-ep MBh, 12, 298.s29: hastau ~ pāyur"
+    ]
+   }
+  },
+  {
+   "root": "kaikki:krek",
+   "branches": {
+    "Celtic": [
+     3,
+     0.8,
+     3.6
+    ],
+    "Greek": [
+     22,
+     3.8,
+     5.8
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301004:#1/2/3:2: focus ~ crích",
+     "mga G201001:#1/4/#5:1: focus ~ crich",
+     "ga-early G305005:#1:1263 (w2/2): focus ~ crich"
+    ],
+    "Greek": [
+     "grc Euripides Hecuba 1153: χερὸς ~ κερκίδ’",
+     "grc Sophocles Antigone 976: χείρεσσι ~ κερκίδων",
+     "grc Plato Politicus 282c s1: χερσὶ ~ κερκίδι"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-smerd-bite",
+   "branches": {
+    "Indo-Iranian": [
+     4,
+     0.7,
+     5.8
+    ],
+    "Greek": [
+     6,
+     1.8,
+     3.3
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 3, 62.s33: hasti ~ mṛditā",
+     "sa-ep MBh, 3, 73.s34: hastābhyāṃ ~ mamṛde",
+     "sa-ep MBh, 6, 44.s69: hastibhir ~ mṛditāḥ"
+    ],
+    "Greek": [
+     "hom Il. 12.464: χερσὶ ~ σμερδαλέῳ",
+     "hom Il. 2.389: χεῖρα ~ ἀμφιβρότης",
+     "hom Il. 20.285: χειρὶ ~ σμερδαλέα"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-speh2-draw",
+   "branches": {
+    "Indo-Iranian": [
+     4,
+     0.5,
+     8.5
+    ],
+    "Greek": [
+     89,
+     43.5,
+     2.0
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 12, 203.s63: hastau ~ pāyur",
+     "sa-ep MBh, 12, 291.s57: hastau ~ pāyur",
+     "sa-ep MBh, 12, 298.s29: hastau ~ pāyur"
+    ],
+    "Greek": [
+     "hom Od. 2.321: χειρὸς ~ σπάσατ̓",
+     "grc Euripides Hecuba 277: χερῶν ~ ἀποσπάσῃς",
+     "grc Euripides Iphigenia Taurica 296: χερὶ ~ σπάσας"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-terkw-turn",
+   "branches": {
+    "Greek": [
+     5,
+     1.8,
+     2.8
+    ],
+    "Anatolian": [
+     2,
+     0.4,
+     4.8
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 5.25 s5: χεῖρα ~ ἀτράκτου",
+     "grc Plato Respublica 10.617c s1: χειρὶ ~ ἀτράκτου",
+     "grc Plato Respublica 10.620e s1: χεῖρά ~ ἀτράκτου"
+    ],
+    "Anatolian": [
+     "hit KBo 21.90 Vs. 22′: ki-iš-šar-at ~ tar-ku-iš-ke-ez-zi-pát",
+     "hit KBo 37.51+  {€5+1} Vs. 11′/Vs. 11′: ki-iš-še-ru-uš ~ tar-ku-iš-kán-zi"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-skend-jump_up",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.5,
+     4.2
+    ],
+    "Greek": [
+     3,
+     1.0,
+     3.1
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 3, 215.s48: hastā ~ skandaṃ",
+     "sa-ep MBh, 3, 221.s145: hastam ~ skanda"
+    ],
+    "Greek": [
+     "grc-late Novum Testamentum Evangelium secundum Matthaeum 5.30 s1: χεὶρ ~ σκανδαλίζει",
+     "grc-late Novum Testamentum Evangelium secundum Matthaeum 18.8 s1: χείρ ~ σκανδαλίζει",
+     "grc-late Novum Testamentum Evangelium secundum Marcum 9.43 s1: χείρ ~ σκανδαλίσῃ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-doru",
+   "branches": {
+    "Indo-Iranian": [
+     6,
+     1.4,
+     4.3
+    ],
+    "Greek": [
+     66,
+     24.3,
+     2.7
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 12, 37.s81: hastī ~ dāru",
+     "sa-ep MBh, 12, 79.s93: hastī ~ dāru",
+     "sa-ep MBh, 12, 101.s44: hasti ~ drumā"
+    ],
+    "Greek": [
+     "hom Il. 10.31: χειρὶ ~ δόρυ",
+     "hom Il. 11.571: χειρῶν ~ δοῦρα",
+     "hom Il. 13.77: χεῖρες ~ δούρατι"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-plh1nos",
+   "branches": {
+    "Celtic": [
+     2,
+     0.6,
+     3.3
+    ],
+    "Indo-Iranian": [
+     2,
+     0.6,
+     3.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G600008:#1/#10/37:1 (w1/5): fogas ~ lan",
+     "ga-early G600030:#1/#2/27:6 (w1/2): fogus ~ lan"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 1, 89.s76: hasti ~ pūrṇāṃ",
+     "sa-ep MBh, 8, 13.s26: hasta ~ pūrṇa"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-keyt-shine",
+   "branches": {
+    "Indo-Iranian": [
+     11,
+     4.3,
+     2.6
+    ],
+    "Greek": [
+     2,
+     0.5,
+     4.1
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 3, 254.s32: hastaḥ ~ citra",
+     "sa-ep MBh, 5, 149.s59: hastaḥ ~ citra",
+     "sa-ep MBh, 7, 8.s8: hastam ~ citra"
+    ],
+    "Greek": [
+     "grc Euripides Alcestis 756: χείρεσσι ~ κίσσινον",
+     "grc Euripides Bacchae 25: χεῖρα ~ κίσσινον"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h3regjeti",
+   "branches": {
+    "Celtic": [
+     2,
+     1.0,
+     2.1
+    ],
+    "Greek": [
+     94,
+     19.0,
+     5.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201001:#1/4/#41:4: bh-focus ~ Eirigh",
+     "ga-early G100062:#1/#1:88 (w5/5): fogas ~ éirig"
+    ],
+    "Greek": [
+     "hom Il. 15.371: χεῖῤ ~ ὀρέγων",
+     "hom Il. 23.99: χερσὶ ~ ὠρέξατο",
+     "hom Il. 24.506: χεῖῤ ~ ὀρέγεσθαι"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-kjerh2sox",
+   "branches": {
+    "Indo-Iranian": [
+     12,
+     3.4,
+     3.6
+    ],
+    "Greek": [
+     20,
+     8.0,
+     2.5
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 2.16.2d: háste ~ śīrṣáṇi",
+     "rv RV 4.58.3b: hástāsaḥ ~ śīrṣé",
+     "av AVŚ, 11, 8.s26: hastāv ~ śiro"
+    ],
+    "Greek": [
+     "hom Il. 24.724: χερσὶν ~ κάρη",
+     "hom Od. 18.335: χερσὶ ~ κάρη",
+     "hom Od. 23.87: χεῖρε ~ κάρη"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-Hisus",
+   "branches": {
+    "Indo-Iranian": [
+     4,
+     1.2,
+     3.4
+    ],
+    "Greek": [
+     3,
+     1.2,
+     2.6
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 1, 57.s339: hastām ~ iṣu",
+     "sa-ep MBh, 6, 69.s7: hastaḥ ~ iṣubhiḥ",
+     "sa-ep MBh, 7, 47.s46: hastasya ~ iṣubhiḥ"
+    ],
+    "Greek": [
+     "hom Il. 15.465: χειρός ~ ἰὸς",
+     "grc-late Asclepiades Epigrammata 12.75.1: χερὶ ~ ἰοί",
+     "grc-late Certamen Homeri Et Hesiodi Certamen Homeri et Hesiodi 1 s49: χερσὶ ~ ἰοῖσιν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gweh2-step",
+   "branches": {
+    "Celtic": [
+     4,
+     1.1,
+     3.5
+    ],
+    "Indo-Iranian": [
+     4,
+     1.6,
+     2.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G201009:#1/28:5: focus ~ bas",
+     "ga-early G302026:#1/26:2: focus ~ bás",
+     "ga-early G302026:#1/35:1 (w1/2): focus ~ bās"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 11, 1.s19: hasta ~ aguḥ",
+     "av AVP, 19, 52.s7: hastam ~ agām",
+     "sa-ep Rām, Yu, 10.s11: hastibhir ~ gītāḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-peth2-fly",
+   "branches": {
+    "Indo-Iranian": [
+     12,
+     5.1,
+     2.3
+    ],
+    "Greek": [
+     35,
+     13.5,
+     2.6
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 3, 255.s45: hasti ~ patann",
+     "sa-ep MBh, 6, 57.s61: hastād ~ patato",
+     "sa-ep MBh, 7, 64.s108: hastibhiḥ ~ patitair"
+    ],
+    "Greek": [
+     "hom Il. 13.549: χεῖρε ~ πετάσσας",
+     "hom Il. 14.495: χεῖρε ~ πετάσσας",
+     "hom Il. 21.115: χεῖρε ~ πετάσσας"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kjey-be_lying_down",
+   "branches": {
+    "Celtic": [
+     2,
+     0.9,
+     2.1
+    ],
+    "Anatolian": [
+     5,
+     1.8,
+     2.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga celtic-journal-revue-celtique-1870-1928:revueceltique44pari:L1133-L1136 (w2/2): focus ~ cheile",
+     "ga-early G207009A:#1/7:14: fogus ~ ceilithe"
+    ],
+    "Anatolian": [
+     "hit KBo 58.110+ {€1+4} Vs. I 20: ki-iš-ša-ra-aš ~ ki-it-ta-ri",
+     "hit KBo 58.110+ {€1} Vs. I 26: ki-iš-ša-ra-aš ~ ki-it-ta-ri",
+     "hit KBo 33.25+  {€3} lk. Kol. 13′: ki-iš-ši-ri-it ~ ki-it-ta"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-pleh1-fill",
+   "branches": {
+    "Celtic": [
+     2,
+     0.8,
+     2.5
+    ],
+    "Indo-Iranian": [
+     7,
+     3.2,
+     2.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G600008:#1/#10/37:1 (w1/5): fogas ~ lan",
+     "ga-early G600030:#1/#2/27:6 (w1/2): fogus ~ lan"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.72.1b: háste ~ purū́ṇi",
+     "rv RV 7.45.1c: háste ~ purū́ṇi",
+     "sa-ep MBh, 1, 89.s76: hasti ~ pūrṇāṃ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h3rto",
+   "branches": {
+    "Indo-Iranian": [
+     4,
+     2.0,
+     2.0
+    ],
+    "Anatolian": [
+     5,
+     2.0,
+     2.6
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 12, 118.s39: hasta ~ ārta",
+     "sa-ep MBh, 13, 128.s115: hasta ~ ārta",
+     "sa-ep MBh, 13, 131.s75: hasta ~ ārta"
+    ],
+    "Anatolian": [
+     "hit KBo 11.50 Vs. I 23′: ki-iš-šar-ta ~ a-ra-an-da",
+     "hit KUB 44.8+  {€1+2} Vs.? 10′/Vs. I 2′: ki-iš-ša-ri-it ~ ar-ta-ri",
+     "hit KBo 16.78+  {€1} Rs. IV 7 (w2/2): ki-iš-ša-ri-iš-ši ~ ar-ta"
+    ]
+   }
+  }
+ ]
+}

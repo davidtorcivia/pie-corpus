@@ -1,0 +1,2070 @@
+{
+ "target": [
+  "pie-lex-h1ngwnis",
+  "pie-lex-peh2wr"
+ ],
+ "window": 4,
+ "units": {
+  "Germanic": 212,
+  "Armenian": 481,
+  "Tocharian": 18,
+  "Greek": 6662,
+  "Anatolian": 155,
+  "Italic": 201,
+  "Slavic": 633,
+  "Baltic": 89,
+  "Albanian": 1,
+  "Indo-Iranian": 4171
+ },
+ "rows": [
+  {
+   "root": "pie-root-dhegwh-burn",
+   "branches": {
+    "Armenian": [
+     3,
+     0.1,
+     21.0
+    ],
+    "Greek": [
+     12,
+     4.5,
+     2.7
+    ],
+    "Slavic": [
+     20,
+     0.3,
+     73.3
+    ],
+    "Baltic": [
+     4,
+     0.0,
+     84.2
+    ],
+    "Indo-Iranian": [
+     151,
+     15.5,
+     9.8
+    ]
+   },
+   "examples": {
+    "Armenian": [
+     "xcl MH_1_1_04_Faustos ed. page 386 - PDF page 110 (word id 45024): հուր ~ հրդեհի",
+     "xcl MH_1_2_11_Agathangelos ed. page 1450 - PDF page 156 (word id 27404) (w2/2): զհուր ~ հրդեհ",
+     "xcl MH_1_2_11_Agathangelos ed. page 1463 - PDF page 169 (word id 29761) (w2/2): հուր ~ հրդեհի՝"
+    ],
+    "Greek": [
+     "grc Aristoteles et Corpus Aristotelicum De partibus animalium 2.2.649a s13: πυρωθέντα ~ τέφρα",
+     "grc Aristoteles et Corpus Aristotelicum De partibus animalium 3.9.672a s3: πεπυρωμένοις ~ τέφρᾳ",
+     "grc Aristoteles et Corpus Aristotelicum Problemata 12 s45: πυρός ~ τέφρας"
+    ],
+    "Slavic": [
+     "ccmh marianus 1081410: огнемъ ~ жегомѫ",
+     "ccmh marianus 2013000: огнемь ~ жегома",
+     "ccmh marianus 3031710: огнемь ~ съжежетъ"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:13045: Ugnis ~ degįt",
+     "dainos litauischevolksl00leskuoft:13068: ugnis ~ degįt",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:50400: ugny ~ dėgsi"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.44.8b: agním ~ kṣápaḥ",
+     "rv RV 1.76.3a: agne ~ dhákṣi",
+     "rv RV 2.15.4b: agnaú ~ adhāk"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-wed-well",
+   "branches": {
+    "Germanic": [
+     12,
+     0.9,
+     12.8
+    ],
+    "Tocharian": [
+     2,
+     0.2,
+     11.2
+    ],
+    "Greek": [
+     655,
+     69.6,
+     9.4
+    ],
+    "Anatolian": [
+     10,
+     2.0,
+     5.1
+    ],
+    "Slavic": [
+     18,
+     1.8,
+     9.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Otfrid O_Otfr.Ev.5.1 v11: fíuru ~ wázaru",
+     "rea-goh Tatian T_Tat92 vn/a (w4/11): fiur ~ uuazzer",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.I.80-84_J vn/a (w4/14): fíur ~ uuázer"
+    ],
+    "Tocharian": [
+     "xto A 635 2b3: por ~ wär",
+     "xto A 647 14a2: poryo ~ wäryo"
+    ],
+    "Greek": [
+     "hom Il. 18.348: πῦρ ~ ὕδωρ",
+     "hom Il. 21.365: πυρὶ ~ ὕδωρ",
+     "hom Od. 10.358: πῦρ ~ ὕδωρ"
+    ],
+    "Anatolian": [
+     "hit KBo 38.251+ {€4}Vs. II 2: pa-aḫ-ḫur ~ wa-a-tar",
+     "hit HKM 116 2: pa-aḫ-ḫur ~ ú-i-te-ni-it",
+     "hit KBo 53.33+  {€2} Rs. IV 4: pa-aḫ-ḫu-e-ni ~ wa-a-tar"
+    ],
+    "Slavic": [
+     "vuk Vuk 34470:6: огањ ~ вода",
+     "ccmh marianus 1171520: огнь ~ водѫ",
+     "ccmh marianus 2092200: огнь ~ водѫ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-lewk-bright",
+   "branches": {
+    "Germanic": [
+     7,
+     1.7,
+     4.2
+    ],
+    "Armenian": [
+     26,
+     9.3,
+     2.8
+    ],
+    "Greek": [
+     93,
+     36.1,
+     2.6
+    ],
+    "Anatolian": [
+     3,
+     0.5,
+     5.7
+    ],
+    "Italic": [
+     6,
+     2.3,
+     2.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.I.38-46 vn/a (w7/32): fíures ~ lîehtes",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.II.162-168_J vn/a (w5/20): fíure ~ lîeht",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.II.106-110_J vn/a (w8/18): fíur ~ irlîehte"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 10 - PDF page 4 (word id 1242) (w3/3): հրով ~ լոյսն",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 10 - PDF page 4 (word id 1395): հրովն ~ լուցեալք",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 33 - PDF page 27 (word id 10932): հուր. ~ լոյս"
+    ],
+    "Greek": [
+     "hom Il. 16.127: πυρὸς ~ λεύσσω",
+     "grc Hymni Homerici In Apollinem 491: πῦρ ~ λευκὰ",
+     "grc Hymni Homerici In Apollinem 509: πῦρ ~ λευκὰ"
+    ],
+    "Anatolian": [
+     "hit KBo 6.11 Vs. I 4′: pa-aḫ-ḫur ~ lu-uk-ki-iz-zi",
+     "hit KUB 29.23+  {€3+1+2} 1′/17′/Vs. I 8′: pa-aḫ-ḫur ~ lu-uk-ki-iz-zi",
+     "hit KUB 29.24+  {€1} Vs. I 1′: pa-aḫ-ḫur ~ lu-uk-ki-iz-zi"
+    ],
+    "Italic": [
+     "lat Catul 62.26: ignis ~ lucet",
+     "lat LucrDRN1 1.663: ignis ~ lumen",
+     "lat LucrDRN2 2.675: ignem ~ lumen"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2ekjmox",
+   "branches": {
+    "Germanic": [
+     4,
+     1.4,
+     2.8
+    ],
+    "Greek": [
+     4,
+     0.4,
+     10.6
+    ],
+    "Baltic": [
+     2,
+     0.0,
+     50.3
+    ],
+    "Indo-Iranian": [
+     16,
+     3.3,
+     4.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Tatian T_Tat136 vn/a (w3/3): fiur ~ himile",
+     "rea-goh Tatian T_Tat147 vn/a (w3/12): fiur ~ himile",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.II.106-110_J vn/a (w8/18): fíur ~ hímel"
+    ],
+    "Greek": [
+     "grc-late Heron Pneumatica 1.pr s22 (w2/2): πύρωσιν ~ ἄκμονας",
+     "grc-late Galenus De compositione medicamentorum secundum locos libri x 5.3.466.226 s22: πυρώσας ~ ἄκμονος",
+     "grc-late Clemens Alexandrinus Paedagogus 1.10.94 s2: πυρὸς ~ ἄκμονος"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:13045: Ugnis ~ akmens",
+     "dainos litauischevolksl00leskuoft:13068: ugnis ~ akmens"
+    ],
+    "Indo-Iranian": [
+     "rv RV 2.12.3c: agním ~ áśmanoḥ",
+     "rv RV 2.24.7c: agním ~ áśmani",
+     "av AVŚ, 3, 21.s1: agnayo ~ aśmasu"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-wodr",
+   "branches": {
+    "Tocharian": [
+     2,
+     0.2,
+     11.2
+    ],
+    "Greek": [
+     655,
+     69.2,
+     9.5
+    ],
+    "Anatolian": [
+     10,
+     2.0,
+     5.1
+    ],
+    "Slavic": [
+     13,
+     1.7,
+     7.7
+    ]
+   },
+   "examples": {
+    "Tocharian": [
+     "xto A 635 2b3: por ~ wär",
+     "xto A 647 14a2: poryo ~ wäryo"
+    ],
+    "Greek": [
+     "hom Il. 18.348: πῦρ ~ ὕδωρ",
+     "hom Il. 21.365: πυρὶ ~ ὕδωρ",
+     "hom Od. 10.358: πῦρ ~ ὕδωρ"
+    ],
+    "Anatolian": [
+     "hit KBo 38.251+ {€4}Vs. II 2: pa-aḫ-ḫur ~ wa-a-tar",
+     "hit HKM 116 2: pa-aḫ-ḫur ~ ú-i-te-ni-it",
+     "hit KBo 53.33+  {€2} Rs. IV 4: pa-aḫ-ḫu-e-ni ~ wa-a-tar"
+    ],
+    "Slavic": [
+     "vuk Vuk 34470:6: огањ ~ вода",
+     "ccmh marianus 1171520: огнь ~ водѫ",
+     "ccmh marianus 2092200: огнь ~ водѫ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2weh1-blow",
+   "branches": {
+    "Armenian": [
+     17,
+     2.3,
+     7.3
+    ],
+    "Italic": [
+     8,
+     1.1,
+     7.0
+    ],
+    "Slavic": [
+     2,
+     0.7,
+     2.7
+    ],
+    "Indo-Iranian": [
+     87,
+     23.7,
+     3.7
+    ]
+   },
+   "examples": {
+    "Armenian": [
+     "xcl MH_1_1_05_Eznik ed. page 435 - PDF page 3 (word id 1004) (w3/3): հուր, ~ աւդ",
+     "xcl MH_1_1_05_Eznik ed. page 461 - PDF page 29 (word id 12705) (w1/2): հրոյ, ~ աւդոլյ]",
+     "xcl MH_1_1_05_Eznik ed. page 484 - PDF page 52 (word id 23227) (w1/2): զհրոյ ~ զաւդոյ"
+    ],
+    "Italic": [
+     "lat LucrDRN6 6.222: ignis ~ uenti",
+     "lat LucrDRN6 6.260: ignibus ~ uentis",
+     "lat LucrDRN6 6.269: ignibus ~ uentis"
+    ],
+    "Slavic": [
+     "orv lav 233.21: ѡгнь ~ вѣтру",
+     "orv suz-lav: ѡгнь ~ вѣтру."
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.14.10b: ágne ~ vāyúnā",
+     "rv RV 3.14.3b: ágne ~ vā́tasya",
+     "rv RV 5.41.4b: agníḥ ~ vā́taḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h3er-move",
+   "branches": {
+    "Germanic": [
+     3,
+     0.7,
+     4.3
+    ],
+    "Italic": [
+     5,
+     0.6,
+     9.0
+    ],
+    "Slavic": [
+     4,
+     1.4,
+     2.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.I.14-37 vn/a (w29/76): fíure ~ rínnenten",
+     "rea-goh Z-Notker-Psalmen N_Ps_065 v13: fiûr ~ ferrín-",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon4_039 vn/a (w3/10): fíure ~ errúnnen"
+    ],
+    "Italic": [
+     "xum Ig. VIa 46: pir ~ ortom",
+     "xum Ig. VIa 1: pir ~ orto",
+     "lat LucrDRN2 2.591: ignes ~ oriantur"
+    ],
+    "Slavic": [
+     "ccmh suprasliensis 1014228: огнь ~ ревьнивъ",
+     "orv suz-lav: ѡгнемь ~ ратью.",
+     "orv suz-lav: ѡгнемь ~ ратью."
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1rewdh-red",
+   "branches": {
+    "Greek": [
+     26,
+     9.7,
+     2.7
+    ],
+    "Italic": [
+     3,
+     0.3,
+     9.8
+    ],
+    "Indo-Iranian": [
+     19,
+     9.4,
+     2.0
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 7.44 s2 (w2/2): πυρὸς ~ ἐρυθρὸν",
+     "grc Hippocrates et Corpus Hippocraticum De morbis i-iii 3.7 s3 (w1/2): πῦρ ~ ἐρυθήματα",
+     "grc Hippocrates et Corpus Hippocraticum De mulierum affectibus i-iii 2.174 s4: πῦρ ~ ἐρυθρὸν"
+    ],
+    "Italic": [
+     "lat LucrDRN4 4.56: ignes ~ robora",
+     "lat LucrDRN4 4.404: ignibus ~ rubrum",
+     "lat LucrDRN6 6.210: ignes ~ rubeant"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 5, 29.s19: agne ~ rudhiram",
+     "av AVŚ, 12, 3.s108: agnau ~ lohinī",
+     "av AVŚ, 13, 1.s49: agniṃ ~ rohito"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-soh2wl",
+   "branches": {
+    "Greek": [
+     123,
+     32.0,
+     3.8
+    ],
+    "Italic": [
+     5,
+     1.5,
+     3.2
+    ],
+    "Indo-Iranian": [
+     74,
+     25.8,
+     2.9
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Il. 22.135: πυρὸς ~ ἠελίου",
+     "grc Herodotus Historiae 1.131.2 s2: πυρὶ ~ ἡλίῳ",
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 6.5.15 s15: πυρὶ ~ ἡλίῳ"
+    ],
+    "Italic": [
+     "lat LucrDRN1 1.744: ignem ~ solem",
+     "lat LucrDRN5 5.142: igni ~ solis",
+     "lat LucrDRN5 5.604: igni ~ solis"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.157.1a: agníḥ ~ sū́ryaḥ",
+     "rv RV 3.31.15d: agním ~ sū́ryam",
+     "rv RV 4.3.11d: agnaú ~ svàr"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-meyth2",
+   "branches": {
+    "Italic": [
+     5,
+     2.0,
+     2.5
+    ],
+    "Slavic": [
+     2,
+     0.8,
+     2.6
+    ],
+    "Indo-Iranian": [
+     6,
+     1.2,
+     4.8
+    ]
+   },
+   "examples": {
+    "Italic": [
+     "lat LucrDRN4 4.56: ignes ~ mittunt",
+     "lat LucrDRN6 6.171: igni ~ mittitur",
+     "lat LucrDRN6 6.300: igni ~ missa"
+    ],
+    "Slavic": [
+     "ccmh suprasliensis 1011228: огнь ~ мѣсто",
+     "orv nov-sin: огнь ~ мѣстъ."
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.164.11c: agne ~ mithunā́saḥ",
+     "rv RV 10.87.13a: agne ~ mithunā́",
+     "rv RV 10.87.24a: agne ~ mithunā́"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-nebh-become_damp",
+   "branches": {
+    "Greek": [
+     32,
+     11.5,
+     2.8
+    ],
+    "Italic": [
+     2,
+     0.8,
+     2.6
+    ],
+    "Slavic": [
+     4,
+     1.4,
+     2.8
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Aristoteles et Corpus Aristotelicum Analytica priora et posteriora posteriora.2.8 s35: πυρὸς ~ νέφει",
+     "grc Aristoteles et Corpus Aristotelicum Analytica priora et posteriora posteriora.2.8 s37: πῦρ ~ νέφει",
+     "grc Aristoteles et Corpus Aristotelicum Analytica priora et posteriora posteriora.2.10 s9: πῦρ ~ νέφεσι"
+    ],
+    "Italic": [
+     "lat LucrDRN1 1.715: igni ~ imbri",
+     "lat LucrDRN6 6.222: ignis ~ imbris"
+    ],
+    "Slavic": [
+     "ccmh marianus 3095410: огнь ~ небесе",
+     "ccmh zographensis 3172910: огнь ~ небесе",
+     "ccmh suprasliensis 1011212: огнь ~ небесе"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dhegwheti",
+   "branches": {
+    "Slavic": [
+     20,
+     0.3,
+     73.3
+    ],
+    "Baltic": [
+     4,
+     0.0,
+     86.2
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 1081410: огнемъ ~ жегомѫ",
+     "ccmh marianus 2013000: огнемь ~ жегома",
+     "ccmh marianus 3031710: огнемь ~ съжежетъ"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:13045: Ugnis ~ degįt",
+     "dainos litauischevolksl00leskuoft:13068: ugnis ~ degįt",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:50400: ugny ~ dėgsi"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-wedoxr",
+   "branches": {
+    "Germanic": [
+     12,
+     0.2,
+     53.9
+    ],
+    "Slavic": [
+     5,
+     0.1,
+     34.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Otfrid O_Otfr.Ev.5.1 v11: fíuru ~ wázaru",
+     "rea-goh Tatian T_Tat92 vn/a (w4/11): fiur ~ uuazzer",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.I.80-84_J vn/a (w4/14): fíur ~ uuázer"
+    ],
+    "Slavic": [
+     "orv lav 195.18: ѡгнь. ~ воду.",
+     "orv suz-lav: ѡгнь ~ воду.",
+     "orv suz-lav: ѡгнемь ~ водою"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2eydheti",
+   "branches": {
+    "Greek": [
+     2,
+     0.0,
+     46.7
+    ],
+    "Indo-Iranian": [
+     86,
+     4.0,
+     21.3
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Euripides Cyclops 331: πῦρ ~ ἀναίθων",
+     "grc-late Oppianus Halieutica 3.582: πυρὸς ~ ἀναιθομένοιο"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.12.6a: agnínā ~ idhyate",
+     "rv RV 1.36.7c: agním ~ indhate",
+     "rv RV 1.95.9c: agne ~ iddháḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gwih3wos",
+   "branches": {
+    "Germanic": [
+     2,
+     0.2,
+     12.7
+    ],
+    "Slavic": [
+     105,
+     2.1,
+     50.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon4_039 vn/a (w3/10): fíure ~ chécchemo",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon3_072 vn/a (w8/14): fíur ~ chícchenta"
+    ],
+    "Slavic": [
+     "vuk Vuk 1599:143: огањ ~ живи",
+     "vuk Vuk 1599:155: огањ ~ живи",
+     "vuk Vuk 1605:366: огањ ~ живи"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-kwrmis",
+   "branches": {
+    "Slavic": [
+     8,
+     0.0,
+     202.6
+    ],
+    "Indo-Iranian": [
+     3,
+     1.2,
+     2.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 2094400: огнь ~ чръвь",
+     "ccmh marianus 2094600: огнь ~ чръвь",
+     "ccmh marianus 2094800: огнь ~ чръвь"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 5, 23.s2: agniḥ ~ krimiṃ",
+     "av AVP, 5, 3.s14: agniḥ ~ krimīṇāṃ",
+     "av AVP, 5, 3.s15: agnir ~ krimīṇāṃ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sgwes-be_extinguished",
+   "branches": {
+    "Greek": [
+     120,
+     5.9,
+     20.5
+    ],
+    "Slavic": [
+     2,
+     0.1,
+     24.2
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Il. 16.293: πῦρ ~ ἔσβεσεν",
+     "grc Heraclitus Fragmenta 20 s1: πῦρ ~ ἀποσβεννύμενον",
+     "grc Herodotus Historiae 1.86.6 s1 (w2/2): πῦρ ~ σβεννύναι"
+    ],
+    "Slavic": [
+     "vuk Vuk 34470:6: огањ ~ гаси",
+     "ccmh suprasliensis 3080204: огнь ~ оугасе"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gweyh3-live",
+   "branches": {
+    "Germanic": [
+     2,
+     0.2,
+     10.4
+    ],
+    "Slavic": [
+     105,
+     2.5,
+     41.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon4_039 vn/a (w3/10): fíure ~ chécchemo",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon3_072 vn/a (w8/14): fíur ~ chícchenta"
+    ],
+    "Slavic": [
+     "vuk Vuk 1599:143: огањ ~ живи",
+     "vuk Vuk 1599:155: огањ ~ живи",
+     "vuk Vuk 1605:366: огањ ~ живи"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2eydh-ignite",
+   "branches": {
+    "Greek": [
+     92,
+     4.8,
+     19.0
+    ],
+    "Indo-Iranian": [
+     159,
+     7.4,
+     21.5
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Il. 10.246: πυρὸς ~ αἰθομένοιο",
+     "hom Il. 11.596: πυρὸς ~ αἰθομένοιο",
+     "hom Il. 13.673: πυρὸς ~ αἰθομένοιο"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.12.6a: agnínā ~ idhyate",
+     "rv RV 1.36.7c: agním ~ indhate",
+     "rv RV 1.95.9c: agne ~ iddháḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-leh2p-flash_up",
+   "branches": {
+    "Greek": [
+     88,
+     20.2,
+     4.4
+    ],
+    "Anatolian": [
+     2,
+     0.0,
+     86.7
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Il. 13.474: πυρὶ ~ λάμπετον",
+     "hom Il. 15.623: πυρὶ ~ λαμπόμενος",
+     "hom Il. 19.366: πυρὸς ~ λαμπέσθην"
+    ],
+    "Anatolian": [
+     "hit HKM 116 2: pa-aḫ-ḫur ~ la-ap-ta",
+     "hit KBo 52.67 9′: pa-aḫ-ḫur ~ la-ap-zi"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-prews-freeze",
+   "branches": {
+    "Germanic": [
+     2,
+     0.1,
+     20.5
+    ],
+    "Italic": [
+     2,
+     0.1,
+     17.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.II.99-103_J vn/a (w4/18): fíure ~ fróste",
+     "ang Grein I P H N I X, l.19504: fyres ~ forstes"
+    ],
+    "Italic": [
+     "lat LucrDRN2 2.431: ignis ~ pruinam",
+     "lat LucrDRN2 2.515: ignibus ~ pruinas"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwher-be_warm",
+   "branches": {
+    "Slavic": [
+     68,
+     2.1,
+     31.7
+    ],
+    "Indo-Iranian": [
+     47,
+     5.5,
+     8.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 1599:156: огањ ~ изгорела",
+     "vuk Vuk 1605:366: огањ ~ Изгорје",
+     "vuk Vuk 10108:77: огањ ~ изгорио"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.84.18a: agním ~ ghr̥téna",
+     "rv RV 1.116.8a: agním ~ ghraṃsám",
+     "rv RV 2.10.4a: agním ~ jígharmi"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-deh2w-catch_fire",
+   "branches": {
+    "Greek": [
+     14,
+     1.1,
+     12.4
+    ],
+    "Indo-Iranian": [
+     19,
+     1.3,
+     14.6
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Il. 12.466: πυρὶ ~ δεδήει",
+     "hom Il. 20.316: πυρὶ ~ δάηται",
+     "hom Il. 21.343: πῦρ ~ δαίετο"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 5, 18.s7: 'gnir ~ dunoti",
+     "av AVŚ, 7, 45.s3: agner ~ dāvasya",
+     "av AVŚ, 9, 4.s35: agnayaḥ ~ dunvanty"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kh2em-bend",
+   "branches": {
+    "Greek": [
+     23,
+     11.2,
+     2.1
+    ],
+    "Slavic": [
+     2,
+     0.0,
+     79.6
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Aristoteles et Corpus Aristotelicum De generatione animalium 5.3.782b s19: πυρὸς ~ κάμπτεται",
+     "grc Aristoteles et Corpus Aristotelicum De generatione et corruptione 2.5 s52: πῦρ ~ ἀνακάμψει",
+     "grc-late Philo Judaeus Quis rerum divinarum heres sit 51.251 s4: πυρί ~ καμίνου"
+    ],
+    "Slavic": [
+     "ccmh suprasliensis 2007225: огни ~ кѫпинѫ",
+     "orv lav 95.1: ѡгнемь. ~ купинѣ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2eHsh2",
+   "branches": {
+    "Anatolian": [
+     5,
+     2.1,
+     2.4
+    ],
+    "Italic": [
+     2,
+     0.0,
+     52.4
+    ]
+   },
+   "examples": {
+    "Anatolian": [
+     "hit KUB 51.22 Vs. II? 5′: pa-aḫ-ḫur ~ ḫa-aš-ši-i",
+     "hit KUB 11.35 Rs. V 16′: pa-aḫ-ḫur ~ ḫa-aš-ši-i",
+     "hit KUB 46.1 Rs. III 14′: pa-aḫ-ḫur ~ ḫa-aš-ši-i"
+    ],
+    "Italic": [
+     "xum Ig. VIa 20: Pir ~ ase",
+     "xum Ig. VIa 22: pir ~ ase"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-bhlgmeh2",
+   "branches": {
+    "Greek": [
+     2,
+     0.2,
+     9.0
+    ],
+    "Italic": [
+     8,
+     0.6,
+     13.7
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Euripides Supplices 831: πυρός ~ φλογμὸς",
+     "grc-late Apollonius Rhodius Argonautica 4.870: πυρός ~ φλογμῷ"
+    ],
+    "Italic": [
+     "lat CatAgr 38.4 (w1/3): ignem ~ flamma",
+     "lat LucrDRN2 2.882: ignis ~ flammas",
+     "lat LucrDRN3 3.890: ignibus ~ flammis"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1rewg-belch",
+   "branches": {
+    "Germanic": [
+     2,
+     0.1,
+     27.3
+    ],
+    "Greek": [
+     3,
+     0.8,
+     3.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.II.111-121_J vn/a (w19/36): fíuren ~ róuh",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon1_010 vn/a (w3/6): fíur ~ ríuchenten"
+    ],
+    "Greek": [
+     "grc Pindarus Pythia 1.21: πυρὸς ~ ἐρεύγονται",
+     "grc-late Clemens Alexandrinus Protrepticus 12 s4 (w1/2): πῦρ ~ ἐρεύγεται",
+     "grc-late Oppianus Cynegetica 1.274: πυρσοῖς ~ ἐρευγομένοιο"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gel-be_cold",
+   "branches": {
+    "Germanic": [
+     3,
+     0.2,
+     12.7
+    ],
+    "Italic": [
+     2,
+     0.3,
+     6.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Otfrid O_Otfr.Ev.4.18 v11: fíur ~ kált",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon4_048 vn/a (w4/9): fíur ~ chált",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon3_072 vn/a (w5/14): fíur ~ chált"
+    ],
+    "Italic": [
+     "lat LucrDRN2 2.431: ignis ~ gelidam",
+     "lat LucrDRN2 2.515: ignibus ~ gelidas"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ekj-sharp",
+   "branches": {
+    "Germanic": [
+     4,
+     1.9,
+     2.1
+    ],
+    "Baltic": [
+     2,
+     0.1,
+     38.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Tatian T_Tat136 vn/a (w3/3): fiur ~ himile",
+     "rea-goh Tatian T_Tat147 vn/a (w3/12): fiur ~ himile",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.II.106-110_J vn/a (w8/18): fíur ~ hímel"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:13045: Ugnis ~ akmens",
+     "dainos litauischevolksl00leskuoft:13068: ugnis ~ akmens"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-megjh2s",
+   "branches": {
+    "Anatolian": [
+     5,
+     0.8,
+     6.1
+    ],
+    "Italic": [
+     3,
+     0.2,
+     13.1
+    ]
+   },
+   "examples": {
+    "Anatolian": [
+     "hit KBo 50.275+  {€1} Vs. I 21: pa-aḫ-ḫu-e-na-aš ~ 〈me-ek-ki〉",
+     "hit KBo 50.283+  {€1} Rs. III 15′ (w1/2): pa-aḫ-ḫu-u-e-na-aš-ša ~ me-ek-ki",
+     "hit KBo 50.283+  {€1} Rs. III 15′ (w2/2): pa-aḫ-ḫu-u-e-na-aš ~ me-ek-ki-pát"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.1243: ignis ~ ingentis",
+     "lat PlCapt 843: ignem ~ ingentem",
+     "lat PlCapt 844: ignem ~ ingentem"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dhewh2-smoke",
+   "branches": {
+    "Italic": [
+     3,
+     0.3,
+     10.1
+    ],
+    "Indo-Iranian": [
+     15,
+     2.4,
+     6.3
+    ]
+   },
+   "examples": {
+    "Italic": [
+     "lat LucrDRN2 2.593: ignibus ~ furit",
+     "lat LucrDRN2 2.1098: ignibus ~ suffire",
+     "lat LucrDRN4 4.56: ignes ~ fumum"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.36.9c: agne ~ dhūmám",
+     "av AVŚ, 8, 8.s4: agnim ~ dhūmam",
+     "av AVŚ, 11, 9.s42: agni ~ dhūma"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ews-become_light",
+   "branches": {
+    "Greek": [
+     479,
+     33.8,
+     14.2
+    ],
+    "Indo-Iranian": [
+     31,
+     8.0,
+     3.9
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Od. 16.2: πῦρ ~ ἠοῖ",
+     "grc Heraclitus Fragmenta 25 s1: πῦρ ~ ἀέρος",
+     "grc Hippocrates et Corpus Hippocraticum De natura hominis 1 s3: πῦρ ~ ἠέρα"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.44.1a: ágne ~ uṣásaḥ",
+     "rv RV 1.44.4d: agním ~ vyùṣṭiṣu",
+     "rv RV 1.44.8b: agním ~ vyùṣṭiṣu"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhrewh1-boil",
+   "branches": {
+    "Germanic": [
+     23,
+     1.3,
+     17.3
+    ],
+    "Armenian": [
+     4,
+     2.0,
+     2.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler M_Muspilli vn/a (w14/24): uuir ~ varprinnit",
+     "rea-goh Monsee MF_1_M.X vn/a (w1/8): fyur ~ forbrennitun",
+     "rea-goh Otfrid O_Otfr.Ev.5.23 v66: fiures ~ brénnennes"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 55 - PDF page 49 (word id 20281): հրով ~ աղբիւրք",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 113 - PDF page 107 (word id 43119) (w1/2): հուր ~ աղբերաց",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 127 - PDF page 121 (word id 49015) (w3/3): զհուր ~ աղբերաց"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gjheyoxm",
+   "branches": {
+    "Greek": [
+     22,
+     3.5,
+     6.2
+    ],
+    "Slavic": [
+     3,
+     0.6,
+     5.4
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Euripides Cyclops 331: πῦρ ~ χιόνος",
+     "grc Plato Phaedo 103c s10: πῦρ ~ χιόνα",
+     "grc Plato Phaedo 103d s2: πυρὸς ~ χιόνος"
+    ],
+    "Slavic": [
+     "ccmh zographensis 4181800: огнь ~ зима",
+     "ccmh assemanianus 4181800: огнь ~ зіма",
+     "ccmh savvina 4181800: огнь ~ зима"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhel-blaze",
+   "branches": {
+    "Greek": [
+     34,
+     7.8,
+     4.4
+    ],
+    "Italic": [
+     10,
+     1.4,
+     7.4
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Il. 21.13: πῦρ ~ φλέγει",
+     "hom Il. 21.365: πυρὶ ~ φλέγετο",
+     "grc Aeschylus Prometheus vinctus 583: πυρί ~ φλέξον"
+    ],
+    "Italic": [
+     "lat CatAgr 38.4 (w1/3): ignem ~ flamma",
+     "lat LucrDRN2 2.384: ignem ~ fulminis",
+     "lat LucrDRN2 2.882: ignis ~ flammas"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-ters-dry",
+   "branches": {
+    "Germanic": [
+     2,
+     0.3,
+     7.4
+    ],
+    "Italic": [
+     14,
+     3.3,
+     4.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Tatian T_Tat92 vn/a (w4/11): fiur ~ dorret",
+     "rea-goh Tatian T_Tat167 vn/a (w3/5): fuir ~ thorret"
+    ],
+    "Italic": [
+     "lat CatOrat Fragmentum_193.Linea_1: ignem ~ terram",
+     "lat LucrDRN1 1.713: igni ~ terram",
+     "lat LucrDRN1 1.715: igni ~ terra"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kjerh2-break",
+   "branches": {
+    "Greek": [
+     18,
+     3.0,
+     6.1
+    ],
+    "Indo-Iranian": [
+     8,
+     1.6,
+     5.0
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Aristophanes Nubes 395: πυρί ~ κεραυνὸς",
+     "grc-late Diodorus Siculus Bibliotheca historica 4.38.4 s5: πυρὰ ~ κεραυνῶν",
+     "grc-late Diodorus Siculus Bibliotheca historica 16.63.3 s1: πυρὸς ~ κεραυνῶν"
+    ],
+    "Indo-Iranian": [
+     "rv RV 10.87.10c: agne ~ śr̥ṇīhi",
+     "rv RV 10.87.14b: agne ~ śr̥ṇīhi",
+     "av AVŚ, 5, 29.s8: agne ~ śṛṇīhi"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2oyu",
+   "branches": {
+    "Germanic": [
+     7,
+     0.8,
+     9.1
+    ],
+    "Indo-Iranian": [
+     32,
+     10.5,
+     3.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler WGB_Wess.Glaub vn/a (w18/50): fiur ~ euuigi",
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler WK_Weissenburger_Katechismus vn/a (w32/36): fuir ~ euuig",
+     "rea-goh Z-Notker-Psalmen N_Ps_080 v2 (w2/2): fiûr ~ Éuuîg"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.31.11a: agne ~ āyúm",
+     "rv RV 1.147.1a: agne ~ āyóḥ",
+     "rv RV 3.3.7a: ágne ~ ā́yuni"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ey-vital_force",
+   "branches": {
+    "Germanic": [
+     7,
+     0.8,
+     8.7
+    ],
+    "Indo-Iranian": [
+     32,
+     10.5,
+     3.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler WGB_Wess.Glaub vn/a (w18/50): fiur ~ euuigi",
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler WK_Weissenburger_Katechismus vn/a (w32/36): fuir ~ euuig",
+     "rea-goh Z-Notker-Psalmen N_Ps_080 v2 (w2/2): fiûr ~ Éuuîg"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.31.11a: agne ~ āyúm",
+     "rv RV 1.147.1a: agne ~ āyóḥ",
+     "rv RV 3.3.7a: ágne ~ ā́yuni"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2eHs-be_dry",
+   "branches": {
+    "Anatolian": [
+     5,
+     2.1,
+     2.4
+    ],
+    "Italic": [
+     2,
+     0.2,
+     11.0
+    ]
+   },
+   "examples": {
+    "Anatolian": [
+     "hit KUB 51.22 Vs. II? 5′: pa-aḫ-ḫur ~ ḫa-aš-ši-i",
+     "hit KUB 11.35 Rs. V 16′: pa-aḫ-ḫur ~ ḫa-aš-ši-i",
+     "hit KUB 46.1 Rs. III 14′: pa-aḫ-ḫur ~ ḫa-aš-ši-i"
+    ],
+    "Italic": [
+     "xum Ig. VIa 20: Pir ~ ase",
+     "xum Ig. VIa 22: pir ~ ase"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-tweyseti",
+   "branches": {
+    "Greek": [
+     15,
+     5.1,
+     3.0
+    ],
+    "Indo-Iranian": [
+     5,
+     0.6,
+     7.9
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De diaeta i-iv 1.35 s23: πυρὸς ~ σεισθῇ",
+     "grc-late Strabo Geographica 1.3.3 s3 (w2/2): πυρὸς ~ σεισμῶν",
+     "grc-late Strabo Geographica 5.4.9 s2 (w2/2): πυρὸς ~ σεισμῶν"
+    ],
+    "Indo-Iranian": [
+     "rv RV 8.43.3b: agne ~ tvíṣaḥ",
+     "rv RV 10.84.2a: agníḥ ~ tviṣitáḥ",
+     "av AVŚ, 4, 31.s2: agniḥ ~ tviṣitaḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhewgh-bend",
+   "branches": {
+    "Germanic": [
+     3,
+     0.3,
+     11.1
+    ],
+    "Slavic": [
+     3,
+     1.5,
+     2.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_010 v21: Fiûr ~ bógen",
+     "rea-goh Z-Notker-Psalmen N_Ps_079 v8: fiûre ~ biêgendo",
+     "ang Beo. 1745: fyrenum ~ bogan"
+    ],
+    "Slavic": [
+     "ccmh marianus 2092200: огнь ~ погоубилъ",
+     "ccmh zographensis 3172910: огнь ~ погоуби",
+     "ccmh suprasliensis 1083205: огнь ~ погоубитꙑ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-bheh2os",
+   "branches": {
+    "Greek": [
+     67,
+     12.6,
+     5.3
+    ],
+    "Indo-Iranian": [
+     4,
+     1.0,
+     4.1
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Il. 18.610: πυρὸς ~ φαεινότερον",
+     "hom Il. 5.215: πυρὶ ~ φαεινῷ",
+     "grc Hymni Homerici In Venerem 86: πυρὸς ~ φαεινότερον"
+    ],
+    "Indo-Iranian": [
+     "rv RV 4.5.1b: agnáye ~ bhā́ḥ",
+     "rv RV 6.4.6b: ágne ~ bhāsā́",
+     "sa-ep MBh, 4, 41.s47: agnayaḥ ~ bhāsante"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-sriHgos",
+   "branches": {
+    "Greek": [
+     18,
+     5.4,
+     3.3
+    ],
+    "Italic": [
+     2,
+     0.3,
+     6.2
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 1.13.4 s2: πῦρ ~ ῥίγεος",
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 6.5.15 s10: πῦρ ~ ρῖγος",
+     "grc Hippocrates et Corpus Hippocraticum De morbis i-iii 1.4 s2: πῦρ ~ ῥῖγος"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.1015: ignis ~ frigus",
+     "lat LucrDRN6 6.360: ignes ~ frigore"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-pleh1-fill",
+   "branches": {
+    "Italic": [
+     2,
+     0.4,
+     5.5
+    ],
+    "Slavic": [
+     5,
+     1.3,
+     3.7
+    ]
+   },
+   "examples": {
+    "Italic": [
+     "lat CatAgr 81.1 (w2/2): ignem ~ plenam",
+     "lat LucrDRN6 6.269: ignibus ~ plena"
+    ],
+    "Slavic": [
+     "vuk Vuk 22071:54: огња ~ Пуна",
+     "ccmh marianus 3030910: огнь ~ плода",
+     "ccmh savvina 3030910: огнь ~ плода"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-tend-stretch",
+   "branches": {
+    "Italic": [
+     3,
+     0.5,
+     5.5
+    ],
+    "Indo-Iranian": [
+     2,
+     0.5,
+     3.7
+    ]
+   },
+   "examples": {
+    "Italic": [
+     "xum Ig. VIa 12: pir ~ ententu",
+     "xum Ig. VIa 12: pir ~ ententu",
+     "xum Ig. VIa 22: pir ~ antentu"
+    ],
+    "Indo-Iranian": [
+     "av AVP, 4, 18.s2: agninā ~ tandrīḥ",
+     "sa-ep MBh, 12, 184.s23 (w1/3): agni ~ tandrā"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2ekweh2",
+   "branches": {
+    "Germanic": [
+     2,
+     0.4,
+     4.7
+    ],
+    "Italic": [
+     6,
+     1.4,
+     4.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.I.14-37 vn/a (w29/76): fíure ~ áhôn",
+     "rea-goh Z-Notker-Psalmen N_Ps_065 v13: fiûr ~ âha"
+    ],
+    "Italic": [
+     "lat CatAgr 81.1 (w2/2): ignem ~ aquae",
+     "lat LucrDRN1 1.453: igni ~ aquai",
+     "lat LucrDRN6 6.863: ignis ~ aquai"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-steygh-go",
+   "branches": {
+    "Germanic": [
+     2,
+     0.7,
+     3.0
+    ],
+    "Greek": [
+     114,
+     17.7,
+     6.4
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Tatian T_Tat136 vn/a (w3/3): fiur ~ ",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon4_003 vn/a (w2/9): fíur ~ úberstîget"
+    ],
+    "Greek": [
+     "grc Plato Timaeus 56b s2: πυρὸς ~ στοιχεῖον",
+     "grc Plato Timaeus 61a s3: πῦρ ~ στοιχεῖον",
+     "grc Aristoteles et Corpus Aristotelicum De anima 1.2 s77: πῦρ ~ στοιχεῖον"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2weh1nts",
+   "branches": {
+    "Italic": [
+     8,
+     1.1,
+     7.0
+    ],
+    "Indo-Iranian": [
+     23,
+     10.1,
+     2.3
+    ]
+   },
+   "examples": {
+    "Italic": [
+     "lat LucrDRN6 6.222: ignis ~ uenti",
+     "lat LucrDRN6 6.260: ignibus ~ uentis",
+     "lat LucrDRN6 6.269: ignibus ~ uentis"
+    ],
+    "Indo-Iranian": [
+     "rv RV 3.14.3b: ágne ~ vā́tasya",
+     "rv RV 5.41.4b: agníḥ ~ vā́taḥ",
+     "rv RV 8.40.1e: agníḥ ~ vā́te"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-plh1nos",
+   "branches": {
+    "Italic": [
+     2,
+     0.4,
+     5.7
+    ],
+    "Slavic": [
+     2,
+     0.7,
+     2.7
+    ]
+   },
+   "examples": {
+    "Italic": [
+     "lat CatAgr 81.1 (w2/2): ignem ~ plenam",
+     "lat LucrDRN6 6.269: ignibus ~ plena"
+    ],
+    "Slavic": [
+     "vuk Vuk 22071:54: огња ~ Пуна",
+     "ccmh suprasliensis 1003217: огнѣ ~ пльни"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-tweys-shake",
+   "branches": {
+    "Greek": [
+     15,
+     5.1,
+     3.0
+    ],
+    "Indo-Iranian": [
+     8,
+     1.6,
+     5.1
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De diaeta i-iv 1.35 s23: πυρὸς ~ σεισθῇ",
+     "grc-late Strabo Geographica 1.3.3 s3 (w2/2): πυρὸς ~ σεισμῶν",
+     "grc-late Strabo Geographica 5.4.9 s2 (w2/2): πυρὸς ~ σεισμῶν"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.36.20a: agnéḥ ~ tveṣā́saḥ",
+     "rv RV 4.6.10b: agne ~ tveṣā́saḥ",
+     "rv RV 8.43.3b: agne ~ tvíṣaḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwerH-express_approval",
+   "branches": {
+    "Slavic": [
+     3,
+     0.6,
+     4.8
+    ],
+    "Indo-Iranian": [
+     49,
+     17.4,
+     2.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch2narod72:29607: огненными ~ жертвами",
+     "ccmh marianus 2094900: огнемь ~ жрътва",
+     "ccmh zographensis 2094900: огнемь ~ жрътва"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.14.1a: agne ~ gíraḥ",
+     "rv RV 1.58.8c: ágne ~ gr̥ṇántam",
+     "rv RV 1.58.9c: agne ~ gr̥ṇántam"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-prekj-ask",
+   "branches": {
+    "Germanic": [
+     2,
+     0.6,
+     3.6
+    ],
+    "Indo-Iranian": [
+     4,
+     1.1,
+     3.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Tatian T_Tat108 vn/a (w9/10): fiur ~ uergont",
+     "ang Beo. 2481: fyrene ~ gefrǣge"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.98.2a: agníḥ ~ pr̥ṣṭáḥ",
+     "rv RV 1.98.2c: agníḥ ~ pr̥ṣṭáḥ",
+     "rv RV 7.5.2a: agníḥ ~ pr̥ṣṭáḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-new-new",
+   "branches": {
+    "Italic": [
+     2,
+     0.9,
+     2.1
+    ],
+    "Indo-Iranian": [
+     9,
+     1.4,
+     6.3
+    ]
+   },
+   "examples": {
+    "Italic": [
+     "lat LucrDRN5 5.298: ignibus ~ nouom",
+     "lat LucrDRN5 5.1106: igni ~ nouis"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.143.1a: agnáye ~ návyasīm",
+     "rv RV 1.189.2a: ágne ~ návyaḥ",
+     "rv RV 3.2.13d: agním ~ návyase"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhel-blow",
+   "branches": {
+    "Greek": [
+     2,
+     0.4,
+     5.4
+    ],
+    "Indo-Iranian": [
+     6,
+     2.6,
+     2.3
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Il. 21.361: πυρὶ ~ ἔφλυε",
+     "grc-late Lucianus Juppiter tragoedus 42 s3 (w2/2): πυρὶ ~ Φάλητι"
+    ],
+    "Indo-Iranian": [
+     "rv RV 4.6.4a: agnaú ~ barhíṣi",
+     "rv RV 6.11.5a: agnaú ~ barhíḥ",
+     "rv RV 6.52.17a: agnaú ~ barhíṣi"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhes-chew",
+   "branches": {
+    "Greek": [
+     155,
+     55.1,
+     2.8
+    ],
+    "Indo-Iranian": [
+     6,
+     1.4,
+     4.1
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Euripides Rhesus 417: πῦρ ~ ψυχρὰν",
+     "grc Hippocrates et Corpus Hippocraticum De aëre aquis et locis 20 s10: πυρρὸν ~ ψύχος",
+     "grc Hippocrates et Corpus Hippocraticum De aëre aquis et locis 20 s11: πυρρή ~ ψύχεος"
+    ],
+    "Indo-Iranian": [
+     "rv RV 4.5.4a: agníḥ ~ babhasat",
+     "rv RV 8.43.7b: agníḥ ~ bápsat",
+     "av AVŚ, 10, 3.s27: agniḥ ~ psāto"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gjhey-winter",
+   "branches": {
+    "Greek": [
+     45,
+     21.6,
+     2.1
+    ],
+    "Slavic": [
+     3,
+     0.6,
+     5.4
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Pindarus Pythia 3.50: πυρὶ ~ χειμῶνι",
+     "grc Xenophanes Fragmenta 18.1: πυρὶ ~ χειμῶνος",
+     "grc Euripides Cyclops 331: πῦρ ~ χιόνος"
+    ],
+    "Slavic": [
+     "ccmh zographensis 4181800: огнь ~ зима",
+     "ccmh assemanianus 4181800: огнь ~ зіма",
+     "ccmh savvina 4181800: огнь ~ зима"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-steg-cover",
+   "branches": {
+    "Greek": [
+     17,
+     5.3,
+     3.2
+    ],
+    "Italic": [
+     2,
+     0.6,
+     3.2
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Sophocles Philoctetes 298: πυρὸς ~ στέγη",
+     "grc Plato Timaeus 78a s1: πῦρ ~ στέγει",
+     "grc-late Flavius Josephus De bello Judaico libri vii 5.183 s1: πῦρ ~ στέγας"
+    ],
+    "Italic": [
+     "lat CatAgr 110.1 (w1/2): igni ~ tegula",
+     "lat LucrDRN2 2.191: ignes ~ tecta"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-nebhos",
+   "branches": {
+    "Greek": [
+     25,
+     6.9,
+     3.6
+    ],
+    "Slavic": [
+     4,
+     1.4,
+     2.8
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Aristoteles et Corpus Aristotelicum Analytica priora et posteriora posteriora.2.8 s35: πυρὸς ~ νέφει",
+     "grc Aristoteles et Corpus Aristotelicum Analytica priora et posteriora posteriora.2.8 s37: πῦρ ~ νέφει",
+     "grc Aristoteles et Corpus Aristotelicum Analytica priora et posteriora posteriora.2.10 s9: πῦρ ~ νέφεσι"
+    ],
+    "Slavic": [
+     "ccmh marianus 3095410: огнь ~ небесе",
+     "ccmh zographensis 3172910: огнь ~ небесе",
+     "ccmh suprasliensis 1011212: огнь ~ небесе"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sweyd-sweat",
+   "branches": {
+    "Greek": [
+     32,
+     9.5,
+     3.4
+    ],
+    "Indo-Iranian": [
+     2,
+     0.7,
+     2.8
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Herodotus Historiae 7.140.3 s1 (w1/2): πυρὶ ~ ἱδρῶτι",
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 1.13.13 s21: ἄπυρος ~ ἵδρωσεν",
+     "grc Hippocrates et Corpus Hippocraticum De humidorum usu 6 s1 (w3/3): πῦρ ~ ἱδρώτων"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 6, 61.s124: 'gniḥ ~ sveda",
+     "sa-ep Rām, Ay, 79.s35: agni ~ svedaḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-meyth2-change",
+   "branches": {
+    "Italic": [
+     5,
+     2.2,
+     2.3
+    ],
+    "Indo-Iranian": [
+     6,
+     1.5,
+     4.1
+    ]
+   },
+   "examples": {
+    "Italic": [
+     "lat LucrDRN4 4.56: ignes ~ mittunt",
+     "lat LucrDRN6 6.171: igni ~ mittitur",
+     "lat LucrDRN6 6.300: igni ~ missa"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.164.11c: agne ~ mithunā́saḥ",
+     "rv RV 10.87.13a: agne ~ mithunā́",
+     "rv RV 10.87.24a: agne ~ mithunā́"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dheh1t",
+   "branches": {
+    "Germanic": [
+     13,
+     2.8,
+     4.7
+    ],
+    "Slavic": [
+     2,
+     1.0,
+     2.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler M_Muspilli vn/a (w5/24): fuir ~ tuo",
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler WK_Weissenburger_Katechismus vn/a (w32/36): fuir ~ datun",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.I.14-37 vn/a (w29/76): fíure ~ getéta"
+    ],
+    "Slavic": [
+     "ccmh assemanianus 1063010: огнъ ~ одѣетъ",
+     "ccmh suprasliensis 3124226: огню ~ придѣѩ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-krey-sift",
+   "branches": {
+    "Germanic": [
+     2,
+     0.5,
+     4.4
+    ],
+    "Italic": [
+     5,
+     2.4,
+     2.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler WGB_Wess.Glaub vn/a (w18/50): fiur ~ unreinen",
+     "rea-goh Otfrid O_Otfr.Ev.1.27 v62: fíure ~ réinot"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.505: ignis ~ certo",
+     "lat LucrDRN5 5.586: ignis ~ cernimus",
+     "lat LucrDRN5 5.664: ignis ~ cerni"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-treyes",
+   "branches": {
+    "Armenian": [
+     5,
+     1.3,
+     3.8
+    ],
+    "Indo-Iranian": [
+     14,
+     5.9,
+     2.4
+    ]
+   },
+   "examples": {
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 55 - PDF page 49 (word id 20116): հուրն ~ երից",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 80 - PDF page 74 (word id 30312): զհուր ~ երից",
+     "xcl MH_1_1_05_Eznik ed. page 455 - PDF page 23 (word id 10226) (w1/4): հուր ~ երից"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.72.3a: agne ~ tisráḥ",
+     "rv RV 3.9.9a: agním ~ trī́ṇi",
+     "rv RV 3.17.3b: agne ~ tisráḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1esti",
+   "branches": {
+    "Anatolian": [
+     2,
+     0.7,
+     2.8
+    ],
+    "Italic": [
+     2,
+     0.7,
+     3.0
+    ]
+   },
+   "examples": {
+    "Anatolian": [
+     "hit KUB 29.7+ {€1+2} Vs. 58 (w2/2): pa-aḫ-ḫu-e-ni-it ~ e-eš-tén",
+     "hit KUB 29.7+ {€2} Vs. 68 (w3/3): pa-aḫ-ḫu-e-ni-it ~ e-eš-ten"
+    ],
+    "Italic": [
+     "xum Ig. VIa 48: pir ~ esu",
+     "lat LucrDRN1 1.647: ignem ~ prodesset"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-weyHs",
+   "branches": {
+    "Italic": [
+     7,
+     2.2,
+     3.2
+    ],
+    "Indo-Iranian": [
+     10,
+     4.3,
+     2.3
+    ]
+   },
+   "examples": {
+    "Italic": [
+     "lat LucrDRN1 1.724: ignis ~ uis",
+     "lat LucrDRN5 5.1098: ignis ~ uiribus",
+     "lat LucrDRN6 6.281: ignis ~ uis"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.71.6c: agne ~ váyaḥ",
+     "rv RV 2.1.12a: agne ~ váyaḥ",
+     "rv RV 3.29.8d: ágne ~ váyaḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-newos",
+   "branches": {
+    "Italic": [
+     2,
+     0.9,
+     2.2
+    ],
+    "Indo-Iranian": [
+     2,
+     0.6,
+     3.1
+    ]
+   },
+   "examples": {
+    "Italic": [
+     "lat LucrDRN5 5.298: ignibus ~ nouom",
+     "lat LucrDRN5 5.1106: igni ~ nouis"
+    ],
+    "Indo-Iranian": [
+     "rv RV 6.1.7a: agne ~ návyam",
+     "av AVP, 19, 35.s7: agnir ~ navyāṃ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kelh1-call_out_to",
+   "branches": {
+    "Italic": [
+     3,
+     1.1,
+     2.7
+    ],
+    "Slavic": [
+     3,
+     1.2,
+     2.5
+    ]
+   },
+   "examples": {
+    "Italic": [
+     "lat LucrDRN1 1.490: igni ~ clamor",
+     "lat LucrDRN6 6.147: ignem ~ clamore",
+     "lat LucrDRN6 6.163: ignis ~ claras"
+    ],
+    "Slavic": [
+     "ccmh marianus 1254110: огнъ ~ проклѧтии",
+     "ccmh assemanianus 1254110: огнь ~ проклѩтіи",
+     "ccmh savvina 1254110: огнь ~ проклѧтиі"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-terp-satisfy",
+   "branches": {
+    "Slavic": [
+     2,
+     0.6,
+     3.1
+    ],
+    "Indo-Iranian": [
+     7,
+     3.3,
+     2.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh suprasliensis 1048217: огню ~ сътрьпѣшѧ",
+     "ccmh suprasliensis 3124226: огню ~ трьпѣаше"
+    ],
+    "Indo-Iranian": [
+     "rv RV 10.87.17c: agne ~ títr̥psāt",
+     "sa-ep MBh, 1, 113.s17: agniḥ ~ tṛpyati",
+     "sa-ep MBh, 5, 26.s12: agniḥ ~ tṛpyate"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-uper",
+   "branches": {
+    "Greek": [
+     2,
+     0.8,
+     2.6
+    ],
+    "Italic": [
+     3,
+     1.5,
+     2.1
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Euripides Hippolytus 530: πυρὸς ~ ὑπέρτερον",
+     "grc-late Phaedimus Epigrammata 13.22.7: πυροῖ ~ ὑπέρτατος"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.396: ignis ~ superat",
+     "lat LucrDRN5 5.407: ignis ~ superare",
+     "lat LucrDRN6 6.422: ignis ~ summis"
+    ]
+   }
+  }
+ ]
+}

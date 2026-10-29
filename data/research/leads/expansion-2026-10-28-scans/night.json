@@ -1,0 +1,1570 @@
+{
+ "target": [
+  "pie-lex-nokwts"
+ ],
+ "window": 4,
+ "units": {
+  "Germanic": 1750,
+  "Slavic": 770,
+  "Baltic": 291,
+  "Albanian": 107,
+  "Indo-Iranian": 128,
+  "Greek": 4707,
+  "Italic": 85
+ },
+ "rows": [
+  {
+   "root": "pie-lex-soh2wl",
+   "branches": {
+    "Germanic": [
+     14,
+     4.0,
+     3.5
+    ],
+    "Baltic": [
+     3,
+     0.5,
+     5.5
+    ],
+    "Indo-Iranian": [
+     3,
+     0.8,
+     3.8
+    ],
+    "Greek": [
+     105,
+     22.6,
+     4.6
+    ],
+    "Italic": [
+     3,
+     0.7,
+     4.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-243-b-alfa-fol 7:9: nott ~ solar",
+     "menota AM-243-b-alfa-fol 32:27 (w1/2): nottena ~ solarinnar",
+     "menota AM-243-b-alfa-fol 15r:15: natta ~ solinni"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:18172: naktį ~ saulės",
+     "lv BV 33788: nakti ~ saulīte",
+     "lv BV 33813: nakti ~ Saulīte"
+    ],
+    "Indo-Iranian": [
+     "rv RV 8.92.31b: aktúṣu ~ sū́raḥ",
+     "rv RV 10.12.7c: aktū́n ~ sū́rye",
+     "av AVŚ, 18, 1.s70: aktūn ~ sūrye"
+    ],
+    "Greek": [
+     "hom Od. 12.429: παννύχιος ~ ἠελίῳ",
+     "grc Hesiodus Opera et dies 612: νύκτας ~ ἠελίῳ",
+     "grc Aeschylus Supplices 769: νύκτ’ ~ ἡλίου"
+    ],
+    "Italic": [
+     "lat LucrDRN1 1.1065: noctis ~ solem",
+     "lat LucrDRN5 5.981: nox ~ solis",
+     "lat PlAsina 198: noctem ~ solem"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-temH-dark",
+   "branches": {
+    "Germanic": [
+     9,
+     0.5,
+     19.4
+    ],
+    "Slavic": [
+     109,
+     2.1,
+     50.8
+    ],
+    "Baltic": [
+     22,
+     0.2,
+     95.1
+    ],
+    "Indo-Iranian": [
+     3,
+     0.3,
+     11.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler Ps138_Psalm138 vn/a (w6/8): nacht ~ finster",
+     "rea-goh Murbacher_Hymnen MH_Murb.H.XVI v2: naht ~ finstri",
+     "rea-goh Otfrid O_Otfr.Ev.3.20 v16: naht ~ fínsterun"
+    ],
+    "Slavic": [
+     "byliny ruws 426307:82: ночь ~ темная",
+     "byliny ruws 426307:104: ночь ~ темная",
+     "byliny ruws 426307:109: ночь ~ Темная"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:17179: naktelės ~ Tamsiös",
+     "dainos littauischevolk00nessgoog:18616: naktelės ~ Tamsiös",
+     "dainos littauischevolk00nessgoog:34766: naktele ~ tamsi"
+    ],
+    "Indo-Iranian": [
+     "rv RV 6.65.1d: aktū́n ~ támasaḥ",
+     "rv RV 10.1.2c: aktū́n ~ támāṃsi",
+     "ae N50.5a: upanaxturušu ~ tąϑraēšu"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dyew-be_bright",
+   "branches": {
+    "Slavic": [
+     92,
+     4.0,
+     22.9
+    ],
+    "Baltic": [
+     20,
+     1.1,
+     17.5
+    ],
+    "Indo-Iranian": [
+     16,
+     5.5,
+     2.9
+    ],
+    "Italic": [
+     24,
+     2.7,
+     9.0
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 13015:131: ноћи ~ дни",
+     "vuk Vuk 22054:36: ноћи ~ дневни",
+     "vuk Vuk 21686:1950: Ноћи ~ дневни"
+    ],
+    "Baltic": [
+     "dainos dainubalsai00tilsgoog:17761: naktužėlę ~ dienužėlę",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:2387: Naktį ~ diėną",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:6450: naktį ~ diėną"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.34.8d: aktúbhiḥ ~ dyúbhiḥ",
+     "rv RV 1.112.25a: aktúbhiḥ ~ dyúbhiḥ",
+     "rv RV 3.31.16d: aktúbhiḥ ~ dyúbhiḥ"
+    ],
+    "Italic": [
+     "lat CatAgr 109.1 (w2/3): noctem ~ diem",
+     "lat CatAgr 150.1 (w2/2): noctem ~ diem",
+     "lat Catul 61.118: nocte ~ die"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-mexh1ns",
+   "branches": {
+    "Slavic": [
+     12,
+     0.7,
+     17.0
+    ],
+    "Baltic": [
+     2,
+     0.1,
+     16.8
+    ],
+    "Indo-Iranian": [
+     2,
+     0.2,
+     9.1
+    ],
+    "Greek": [
+     27,
+     9.8,
+     2.7
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 1605:169: ноћи ~ мјесеца",
+     "vuk Vuk 22025:12: ноћи ~ мјесеца",
+     "vuk Vuk 22031:12: ноћи ~ мјесеца"
+    ],
+    "Baltic": [
+     "lv BV 33854: nakti ~ Mēnesītis",
+     "lv BV 33849: nakti ~ Mēnesītis"
+    ],
+    "Indo-Iranian": [
+     "rv RV 10.12.7c: aktū́n ~ māsí",
+     "av AVŚ, 18, 1.s70: aktūn ~ māsy"
+    ],
+    "Greek": [
+     "grc Bacchylides Epinicia 7.2: Νυκτός ~ μηνῶν",
+     "grc Plato Respublica 7.530a s5 (w1/2): νυκτὸς ~ μῆνα",
+     "grc Plato Respublica 9.588a s1: νύκτες ~ μῆνες"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-meh1-measure",
+   "branches": {
+    "Slavic": [
+     13,
+     1.6,
+     8.0
+    ],
+    "Baltic": [
+     2,
+     0.6,
+     3.5
+    ],
+    "Indo-Iranian": [
+     4,
+     0.5,
+     8.3
+    ],
+    "Italic": [
+     2,
+     0.4,
+     4.9
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 1605:169: ноћи ~ мјесеца",
+     "vuk Vuk 22025:12: ноћи ~ мјесеца",
+     "vuk Vuk 22031:12: ноћи ~ мјесеца"
+    ],
+    "Baltic": [
+     "lv BV 33854: nakti ~ Mēnesītis",
+     "lv BV 33849: nakti ~ Mēnesītis"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.50.7b: aktúbhiḥ ~ mímānaḥ",
+     "rv RV 10.12.7c: aktū́n ~ māsí",
+     "av AVŚ, 13, 2.s43: aktubhiḥ ~ mimāno"
+    ],
+    "Italic": [
+     "lat PlAmphi 154: noctis ~ mores",
+     "lat PlAmphi 277: Nox ~ morem"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-swep-sleep",
+   "branches": {
+    "Germanic": [
+     90,
+     5.7,
+     15.8
+    ],
+    "Slavic": [
+     22,
+     1.8,
+     12.3
+    ],
+    "Greek": [
+     110,
+     11.1,
+     10.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 92r:36: nóttina ~ sváfu",
+     "menota AM-132-fol-Egils-saga 92v:31: nótt ~ svefn",
+     "menota AM-132-fol-Finnboga-saga 104r:29: nóttina ~ svaf"
+    ],
+    "Slavic": [
+     "vuk Vuk 21691:335: ноћи ~ спију",
+     "vuk Vuk 36498:2: ноћ ~ заспат'",
+     "vuk Vuk 36500:2: ноћ ~ заспат'"
+    ],
+    "Greek": [
+     "hom Il. 10.2: παννύχιοι ~ ὕπνῳ",
+     "hom Il. 2.2: παννύχιοι ~ ὕπνος",
+     "hom Il. 24.678: παννύχιοι ~ ὕπνῳ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-yeh1-make",
+   "branches": {
+    "Germanic": [
+     3,
+     1.1,
+     2.8
+    ],
+    "Indo-Iranian": [
+     2,
+     0.0,
+     123.4
+    ],
+    "Greek": [
+     104,
+     24.3,
+     4.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler WGB_Wess.Glaub vn/a (w6/50): naht ~ iare",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.II.162-168_J vn/a (w4/20): náht ~ iâr",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon2_007 vn/a (w8/21): náhte ~ iâr"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 5, 29.s17: naktaṃ ~ yātūnām",
+     "av AVP, 12, 18.s19: naktaṃ ~ yātuḥ"
+    ],
+    "Greek": [
+     "hom Od. 11.330: νὺξ ~ ὥρη",
+     "hom Od. 11.373: νὺξ ~ ὥρη",
+     "grc Hymni Homerici In Mercurium 67: νυκτὸς ~ ὥρῃ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-medhyos",
+   "branches": {
+    "Germanic": [
+     42,
+     4.2,
+     10.1
+    ],
+    "Greek": [
+     174,
+     43.2,
+     4.0
+    ],
+    "Italic": [
+     3,
+     0.2,
+     15.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 81r:27: nótt ~ miðri",
+     "menota AM-132-fol-Egils-saga 86v:40: nǽtr ~ miðrar",
+     "menota AM-178-fol 1-014:16: nott ~ midri"
+    ],
+    "Greek": [
+     "hom Od. 7.288: παννύχιος ~ μέσον",
+     "grc Herodotus Historiae 4.181.4 s3: νύκτας ~ μέσας",
+     "grc Herodotus Historiae 4.181.4 s4: νύκτες ~ μέσαι"
+    ],
+    "Italic": [
+     "lat Catul 61.118: nocte ~ medio",
+     "lat PlAmphi 514: nocte ~ media",
+     "lat PlCurcu 4: nox ~ media"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-wekwsperos",
+   "branches": {
+    "Slavic": [
+     7,
+     1.1,
+     6.2
+    ],
+    "Baltic": [
+     3,
+     0.6,
+     5.0
+    ],
+    "Greek": [
+     18,
+     2.1,
+     8.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 22072:70: ноћи ~ вечеру",
+     "vuk Vuk 32935:42: ноћи ~ вечери",
+     "vuk Vuk 28295:49: ноћи ~ вечере"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:16753: naktis ~ vakare",
+     "dainos litauischevolksl00leskuoft:17886: naktį ~ väkara",
+     "dainos litauischevolksl00leskuoft:19433: naktį ~ vakaro"
+    ],
+    "Greek": [
+     "grc Sophocles Ajax 285: νυκτός ~ ἕσπεροι",
+     "grc Aristoteles et Corpus Aristotelicum Historia animalium 9.34 s1: νύκτα ~ ἑσπερίου",
+     "grc Autolycus De ortibus et occasibus 1.propositiones.2 s1 (w1/2): νυκτὸς ~ ἑσπερίας"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-nebh-become_damp",
+   "branches": {
+    "Germanic": [
+     2,
+     0.2,
+     12.0
+    ],
+    "Greek": [
+     17,
+     8.2,
+     2.1
+    ],
+    "Italic": [
+     2,
+     0.3,
+     6.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-osx Heliand Hel_68 v5749: naht ~ neflu",
+     "rea-osx Heliand Hel_35 v2910: naht ~ neƀulo"
+    ],
+    "Greek": [
+     "grc Hesiodus Theogonia 757: Νὺξ ~ νεφέλῃ",
+     "grc Herodotus Historiae 7.37.2 s1: νὺξ ~ ἐπινεφέλων",
+     "grc Herodotus Historiae 8.98.1 s5: νὺξ ~ ὄμβρος"
+    ],
+    "Italic": [
+     "lat LucrDRN4 4.172: nocte ~ nimborum",
+     "lat LucrDRN6 6.253: nocte ~ nimborum"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-lewk-bright",
+   "branches": {
+    "Germanic": [
+     29,
+     13.8,
+     2.1
+    ],
+    "Slavic": [
+     5,
+     0.6,
+     7.7
+    ],
+    "Italic": [
+     8,
+     1.0,
+     8.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 87r:8: nóttina ~ lýsti",
+     "menota AM-178-fol 3r:18 (w2/2): nott ~ liost",
+     "menota AM-243-b-alfa-fol 13r:9: nott ~ liosare"
+    ],
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:42168: ночь ~ лунну",
+     "orv lav 68.9: нощи. ~ луна",
+     "orv lav 276.12: нощь· ~ луны"
+    ],
+    "Italic": [
+     "lat Catul 51.12: nocte ~ lumina",
+     "lat LucrDRN5 5.681: noctes ~ luces",
+     "lat LucrDRN5 5.981: nox ~ lumine"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-lowksneh2",
+   "branches": {
+    "Slavic": [
+     5,
+     0.1,
+     54.5
+    ],
+    "Italic": [
+     4,
+     0.2,
+     24.2
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:42168: ночь ~ лунну",
+     "orv lav 68.9: нощи. ~ луна",
+     "orv lav 276.12: нощь· ~ луны"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.1189: nox ~ luna",
+     "lat LucrDRN5 5.1190: nox ~ luna",
+     "lat PlAsina 198: noctem ~ lunam"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2ewsoxs",
+   "branches": {
+    "Indo-Iranian": [
+     12,
+     0.2,
+     57.7
+    ],
+    "Greek": [
+     49,
+     4.6,
+     10.7
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.73.7c: náktā ~ uṣásā",
+     "rv RV 1.90.7a: náktam ~ uṣásaḥ",
+     "rv RV 3.30.13a: aktóḥ ~ uṣásaḥ"
+    ],
+    "Greek": [
+     "hom Il. 10.251: νὺξ ~ ἠώς",
+     "hom Il. 7.433: νύξ ~ ἠώς",
+     "hom Il. 8.508: παννύχιοι ~ ἠοῦς"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1regw-be_dark",
+   "branches": {
+    "Indo-Iranian": [
+     3,
+     0.2,
+     13.1
+    ],
+    "Greek": [
+     17,
+     0.4,
+     44.4
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.116.20b: náktam ~ rájobhiḥ",
+     "av AVŚ, 13, 2.s43: aktubhiḥ ~ rajas",
+     "av AVP, 19, 45.s11: naktam ~ rajaḥ"
+    ],
+    "Greek": [
+     "hom Il. 13.425: νυκτὶ ~ ἐρεβεννῇ",
+     "hom Il. 13.580: νὺξ ~ ἐρεβεννὴ",
+     "hom Il. 22.466: νὺξ ~ ἐρεβεννὴ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1regwos",
+   "branches": {
+    "Indo-Iranian": [
+     3,
+     0.2,
+     13.1
+    ],
+    "Greek": [
+     17,
+     0.4,
+     44.4
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.116.20b: náktam ~ rájobhiḥ",
+     "av AVŚ, 13, 2.s43: aktubhiḥ ~ rajas",
+     "av AVP, 19, 45.s11: naktam ~ rajaḥ"
+    ],
+    "Greek": [
+     "hom Il. 13.425: νυκτὶ ~ ἐρεβεννῇ",
+     "hom Il. 13.580: νὺξ ~ ἐρεβεννὴ",
+     "hom Il. 22.466: νὺξ ~ ἐρεβεννὴ"
+    ]
+   }
+  },
+  {
+   "root": "kaikki:mergʷ",
+   "branches": {
+    "Germanic": [
+     29,
+     1.4,
+     20.8
+    ],
+    "Slavic": [
+     2,
+     0.2,
+     13.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 76v:38: nóttina ~ myrkt",
+     "menota AM-132-fol-Egils-saga 78r:9: nótt ~ myrkt",
+     "menota AM-132-fol-Finnboga-saga 102v:26: nótt ~ myrkt"
+    ],
+    "Slavic": [
+     "vuk Vuk 36523:2: ноћи ~ мрака",
+     "vuk Vuk 33208:10: ноћи ~ мрклој"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-nebhos",
+   "branches": {
+    "Germanic": [
+     2,
+     0.2,
+     12.0
+    ],
+    "Italic": [
+     2,
+     0.1,
+     22.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-osx Heliand Hel_68 v5749: naht ~ neflu",
+     "rea-osx Heliand Hel_35 v2910: naht ~ neƀulo"
+    ],
+    "Italic": [
+     "lat LucrDRN4 4.172: nocte ~ nimborum",
+     "lat LucrDRN6 6.253: nocte ~ nimborum"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gweHyeti",
+   "branches": {
+    "Baltic": [
+     5,
+     0.1,
+     37.4
+    ],
+    "Indo-Iranian": [
+     2,
+     0.4,
+     5.5
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:12289: naktužėlę ~ giėda",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:12291: naktėlę ~ giėda",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:12324: naktužėlę ~ giėda"
+    ],
+    "Indo-Iranian": [
+     "rv RV 7.104.17a: náktam ~ jígāti",
+     "av AVŚ, 8, 4.s33: naktam ~ jigāti"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dyexws",
+   "branches": {
+    "Indo-Iranian": [
+     8,
+     0.9,
+     8.4
+    ],
+    "Italic": [
+     24,
+     1.1,
+     21.0
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.34.8d: aktúbhiḥ ~ dyúbhiḥ",
+     "rv RV 1.112.25a: aktúbhiḥ ~ dyúbhiḥ",
+     "rv RV 3.31.16d: aktúbhiḥ ~ dyúbhiḥ"
+    ],
+    "Italic": [
+     "lat CatAgr 109.1 (w2/3): noctem ~ diem",
+     "lat CatAgr 150.1 (w2/2): noctem ~ diem",
+     "lat Catul 61.118: nocte ~ die"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ews-become_light",
+   "branches": {
+    "Indo-Iranian": [
+     14,
+     0.2,
+     56.9
+    ],
+    "Greek": [
+     66,
+     23.9,
+     2.8
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.73.7c: náktā ~ uṣásā",
+     "rv RV 1.90.7a: náktam ~ uṣásaḥ",
+     "rv RV 3.30.13a: aktóḥ ~ uṣásaḥ"
+    ],
+    "Greek": [
+     "hom Il. 10.251: νὺξ ~ ἠώς",
+     "hom Il. 7.433: νύξ ~ ἠώς",
+     "hom Il. 8.508: παννύχιοι ~ ἠοῦς"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-geH-sing",
+   "branches": {
+    "Baltic": [
+     5,
+     0.1,
+     37.4
+    ],
+    "Indo-Iranian": [
+     2,
+     0.6,
+     3.1
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:12289: naktužėlę ~ giėda",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:12291: naktėlę ~ giėda",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:12324: naktužėlę ~ giėda"
+    ],
+    "Indo-Iranian": [
+     "rv RV 7.104.17a: náktam ~ jígāti",
+     "av AVŚ, 8, 4.s33: naktam ~ jigāti"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1ger-wake_up",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.1,
+     25.9
+    ],
+    "Greek": [
+     23,
+     6.7,
+     3.5
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "av AVŚ, 5, 30.s20: naktaṃ ~ jāgṛtām",
+     "av AVŚ, 16, 7.s10: naktam ~ jāgrad"
+    ],
+    "Greek": [
+     "hom Od. 15.8: νύκτα ~ ἔγειρεν",
+     "grc Aristophanes Nubes 9: νυκτός ~ ἐγείρεται",
+     "grc Hippocrates et Corpus Hippocraticum Prognosticon 10 s1: νύκτα ~ ἐγρηγορέναι"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sweyd-sweat",
+   "branches": {
+    "Greek": [
+     27,
+     6.7,
+     4.0
+    ],
+    "Italic": [
+     2,
+     0.2,
+     11.8
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum Prognosticon 17 s2 (w1/3): νύκτα ~ ἱδρῶτες",
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 1.13.3 s14: νύκτα ~ ἱδρώς",
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 1.13.3 s39: νύκτα ~ ἵδρωσεν"
+    ],
+    "Italic": [
+     "lat Catul 7.7: nox ~ sidera",
+     "lat LucrDRN1 1.1065: noctis ~ sidera"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h3meygh-fog",
+   "branches": {
+    "Baltic": [
+     5,
+     0.4,
+     12.6
+    ],
+    "Greek": [
+     2,
+     0.6,
+     3.4
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:11259: naktį ~ nemigo",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:25063: Naktį ~ miėgų",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:73965: naktėlę ~ migaū"
+    ],
+    "Greek": [
+     "grc-late Plutarchus Titus Flamininus 8.1 s1 (w1/3): νυκτὸς ~ ὁμίχλην",
+     "grc-late Cassius Dio Historiae Romanae 43.33.4 s1: νυκτὸς ~ ὁμιχλώδους"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kel-drive",
+   "branches": {
+    "Greek": [
+     6,
+     3.0,
+     2.0
+    ],
+    "Italic": [
+     3,
+     0.2,
+     19.6
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Od. 10.86: νυκτός ~ κέλευθοι",
+     "hom Od. 2: παννυχίη ~ κέλευθον",
+     "grc Pindarus Pythia 4.195: νύκτας ~ κελεύθους"
+    ],
+    "Italic": [
+     "lat LucrDRN4 4.456: noctis ~ caligine",
+     "lat LucrDRN5 5.650: nox ~ caligine",
+     "lat LucrDRN6 6.852: nox ~ caligine"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-legheti",
+   "branches": {
+    "Slavic": [
+     3,
+     0.7,
+     4.5
+    ],
+    "Greek": [
+     3,
+     0.4,
+     8.2
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch1narod12:23405: ночь ~ Легъ",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:24126: ночь ~ ляжешь",
+     "orv lav 246.9: ночь ~ лѧзите·"
+    ],
+    "Greek": [
+     "grc-late Novum Testamentum Evangelium secundum Matthaeum 26.34 s2: νυκτὶ ~ ἀλέκτορα",
+     "grc-late Novum Testamentum Evangelium secundum Marcum 14.30 s2: νυκτὶ ~ ἀλέκτορα",
+     "grc-late Aesopus et Aesopica Fabulae 181.1 s3: νυκτὸς ~ ἀλέκτωρ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dreh2-do",
+   "branches": {
+    "Germanic": [
+     3,
+     0.6,
+     5.0
+    ],
+    "Greek": [
+     22,
+     3.1,
+     7.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Finnboga-saga 102v:40: nǽtr ~ troll",
+     "menota HolmPerg-34-4to-MLL 47v:15: nátt ~ trǫð",
+     "icepahc 1350.finnbogi.nar-sag s579: nætur ~ tröll"
+    ],
+    "Greek": [
+     "grc Herodotus Historiae 6.2.1 s2: νύκτα ~ ἀπέδρη",
+     "grc Herodotus Historiae 9.37.3 s1 (w1/2): νύκτας ~ ἀπέδρη",
+     "grc Herodotus Historiae 9.118.1 s2: νύκτα ~ ἀποδράντες"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dreh2-run",
+   "branches": {
+    "Germanic": [
+     3,
+     0.6,
+     4.9
+    ],
+    "Greek": [
+     22,
+     3.1,
+     7.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Finnboga-saga 102v:40: nǽtr ~ troll",
+     "menota HolmPerg-34-4to-MLL 47v:15: nátt ~ trǫð",
+     "icepahc 1350.finnbogi.nar-sag s579: nætur ~ tröll"
+    ],
+    "Greek": [
+     "grc Herodotus Historiae 6.2.1 s2: νύκτα ~ ἀπέδρη",
+     "grc Herodotus Historiae 9.37.3 s1 (w1/2): νύκτας ~ ἀπέδρη",
+     "grc Herodotus Historiae 9.118.1 s2: νύκτα ~ ἀποδράντες"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-supnos",
+   "branches": {
+    "Slavic": [
+     2,
+     0.7,
+     3.1
+    ],
+    "Greek": [
+     109,
+     10.7,
+     10.2
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch1narod12:23419: ночь ~ снЪ",
+     "byliny pesnisobrannyepnrybnikovymch4narod9:1681: ночь ~ сномъ"
+    ],
+    "Greek": [
+     "hom Il. 10.2: παννύχιοι ~ ὕπνῳ",
+     "hom Il. 2.2: παννύχιοι ~ ὕπνος",
+     "hom Il. 24.678: παννύχιοι ~ ὕπνῳ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-medhu",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.4,
+     5.7
+    ],
+    "Greek": [
+     18,
+     3.6,
+     5.0
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.90.7a: náktam ~ mádhu",
+     "av AVP, 19, 45.s11: naktam ~ madhu"
+    ],
+    "Greek": [
+     "grc Xenophon Cyropaedia 4.5.8 s1: νύκτα ~ ἐμεθύσκετο",
+     "grc-late Theocritus Epigrammata 9.2: νυκτὸς ~ μεθύων",
+     "grc-late Diodorus Siculus Bibliotheca historica 12.21.1 s3 (w1/2): νυκτὸς ~ μεθύῃ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dhegwh-burn",
+   "branches": {
+    "Germanic": [
+     280,
+     30.8,
+     9.1
+    ],
+    "Greek": [
+     8,
+     3.1,
+     2.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-113-b-fol 5r:23 (w6/15): nóttina ~ dag",
+     "menota AM-113-b-fol 8r:4 (w19/21): nátta ~ degi",
+     "menota AM-132-fol-Egils-saga 66r:40: nótt ~ dag"
+    ],
+    "Greek": [
+     "hom Od. 11.183: νύκτες ~ φθίνουσιν",
+     "hom Od. 11.330: νὺξ ~ φθῖτ̓",
+     "hom Od. 13.338: νύκτες ~ φθίνουσιν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gjhey-winter",
+   "branches": {
+    "Slavic": [
+     6,
+     0.7,
+     8.9
+    ],
+    "Greek": [
+     38,
+     15.3,
+     2.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh suprasliensis 1046105: ношть ~ зимна",
+     "ccmh suprasliensis 1049225: ношть ~ зимнѫ",
+     "ccmh suprasliensis 2013110: ношть ~ зимноѥ"
+    ],
+    "Greek": [
+     "grc Thucydides Historiae 3.21.4 s1: νύκτας ~ χειμὼν",
+     "grc Thucydides Historiae 3.22.5 s2 (w1/2): νυκτὸς ~ χειμῶνος",
+     "grc Hippocrates et Corpus Hippocraticum De diaeta in morbis acutis 9 s9: νύκτα ~ χειμῶνος"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1eyti",
+   "branches": {
+    "Baltic": [
+     12,
+     4.7,
+     2.6
+    ],
+    "Indo-Iranian": [
+     6,
+     0.7,
+     8.5
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:17948: naktį ~ iszejo",
+     "dainos litauischevolksl00leskuoft:17952: naktį ~ iszejo",
+     "dainos litauischevolksl00leskuoft:18081: naktį ~ parėjo"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.24.10b: náktam ~ īyuḥ",
+     "rv RV 1.24.10d: náktam ~ eti",
+     "rv RV 1.50.2b: aktúbhiḥ ~ yanti"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dhewbh-sink_in",
+   "branches": {
+    "Slavic": [
+     2,
+     0.3,
+     6.1
+    ],
+    "Albanian": [
+     5,
+     1.5,
+     3.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 28226:54: ноћи ~ дна",
+     "byliny pesnisobrannyepvkireevskimch2pes74:12200: ночку ~ дну"
+    ],
+    "Albanian": [
+     "sqo buzuku chapter-104-p-560 (w4/14): nate ~ deet",
+     "sqo buzuku chapter-104-p-612 (w2/6): nateh ~ detit",
+     "sqo buzuku chapter-124-p-1598 (w2/7): nate ~ detit"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-yeh2-go",
+   "branches": {
+    "Baltic": [
+     16,
+     3.4,
+     4.7
+    ],
+    "Indo-Iranian": [
+     5,
+     1.2,
+     4.1
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:34642: naktį ~ jojau",
+     "dainos littauischevolk00nessgoog:34756: Nakti ~ iszjojau",
+     "dainos littauischevolk00nessgoog:34758: Naktį ~ perjojau"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.34.2d: náktam ~ yātháḥ",
+     "rv RV 2.30.1c: aktúḥ ~ yāti",
+     "rv RV 3.30.13a: aktóḥ ~ yā́man"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-somHos",
+   "branches": {
+    "Germanic": [
+     30,
+     10.2,
+     2.9
+    ],
+    "Slavic": [
+     3,
+     0.5,
+     6.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 81r:25: nóttina ~ samt",
+     "menota AM-132-fol-Laxdaela-saga 185v:28: nótt ~ Sǫmu",
+     "menota AM-132-fol-Laxdaela-saga 189v:11: nótt ~ sǫmu"
+    ],
+    "Slavic": [
+     "vuk Vuk 36171:17: ноћи ~ сама",
+     "vuk Vuk 33133:5: ноћи ~ сама",
+     "vuk Vuk 33133:14: ноћи ~ сама"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2stexr",
+   "branches": {
+    "Germanic": [
+     7,
+     1.4,
+     5.1
+    ],
+    "Greek": [
+     17,
+     6.0,
+     2.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota HolmPerg-6-fol 78:30 (w6/10): nott ~ stiornnur",
+     "rea-goh Z-Notker-Psalmen N_Ps_135 v17: naht ~ stérnen",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon4_038 vn/a (w2/7): náht ~ stérnen"
+    ],
+    "Greek": [
+     "hom Il. 22.28: νυκτὸς ~ ἀστράσι",
+     "hom Il. 22.317: νυκτὸς ~ ἀστὴρ",
+     "grc-late Aratus Phaenomena 470: Νύξ ~ ἀστέρας"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kes-scrape",
+   "branches": {
+    "Slavic": [
+     9,
+     2.6,
+     3.5
+    ],
+    "Albanian": [
+     2,
+     0.5,
+     4.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimch3vyp36:12222: ночь ~ часахъ",
+     "byliny pesnisobrannyepvkireevskimch3vyp36:13561: ночи ~ часу",
+     "byliny pesnisobrannyepvkireevskimch3vyp51:1214: ночи ~ часу"
+    ],
+    "Albanian": [
+     "sqo bogdani part-1-scala-2-chapter-4-p-78 (w3/5): nattene ~ cohètè",
+     "sqo bogdani part-2-scala-12-chapter-47-p-541 (w1/6): natè ~ kohete"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-yoh1r-3",
+   "branches": {
+    "Germanic": [
+     3,
+     1.1,
+     2.8
+    ],
+    "Greek": [
+     104,
+     22.1,
+     4.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler WGB_Wess.Glaub vn/a (w6/50): naht ~ iare",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.II.162-168_J vn/a (w4/20): náht ~ iâr",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon2_007 vn/a (w8/21): náhte ~ iâr"
+    ],
+    "Greek": [
+     "hom Od. 11.330: νὺξ ~ ὥρη",
+     "hom Od. 11.373: νὺξ ~ ὥρη",
+     "grc Hymni Homerici In Mercurium 67: νυκτὸς ~ ὥρῃ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-Hyoh1r",
+   "branches": {
+    "Germanic": [
+     3,
+     1.1,
+     2.8
+    ],
+    "Greek": [
+     104,
+     22.1,
+     4.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler WGB_Wess.Glaub vn/a (w6/50): naht ~ iare",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.II.162-168_J vn/a (w4/20): náht ~ iâr",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon2_007 vn/a (w8/21): náhte ~ iâr"
+    ],
+    "Greek": [
+     "hom Od. 11.330: νὺξ ~ ὥρη",
+     "hom Od. 11.373: νὺξ ~ ὥρη",
+     "grc Hymni Homerici In Mercurium 67: νυκτὸς ~ ὥρῃ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-yoh1r",
+   "branches": {
+    "Germanic": [
+     3,
+     1.1,
+     2.8
+    ],
+    "Greek": [
+     104,
+     22.1,
+     4.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler WGB_Wess.Glaub vn/a (w6/50): naht ~ iare",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.II.162-168_J vn/a (w4/20): náht ~ iâr",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon2_007 vn/a (w8/21): náhte ~ iâr"
+    ],
+    "Greek": [
+     "hom Od. 11.330: νὺξ ~ ὥρη",
+     "hom Od. 11.373: νὺξ ~ ὥρη",
+     "grc Hymni Homerici In Mercurium 67: νυκτὸς ~ ὥρῃ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-yoh1r-2",
+   "branches": {
+    "Germanic": [
+     3,
+     1.1,
+     2.8
+    ],
+    "Greek": [
+     104,
+     22.1,
+     4.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler WGB_Wess.Glaub vn/a (w6/50): naht ~ iare",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.II.162-168_J vn/a (w4/20): náht ~ iâr",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon2_007 vn/a (w8/21): náhte ~ iâr"
+    ],
+    "Greek": [
+     "hom Od. 11.330: νὺξ ~ ὥρη",
+     "hom Od. 11.373: νὺξ ~ ὥρη",
+     "grc Hymni Homerici In Mercurium 67: νυκτὸς ~ ὥρῃ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1ey-go",
+   "branches": {
+    "Baltic": [
+     12,
+     4.7,
+     2.6
+    ],
+    "Indo-Iranian": [
+     6,
+     1.2,
+     4.9
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:17948: naktį ~ iszejo",
+     "dainos litauischevolksl00leskuoft:17952: naktį ~ iszejo",
+     "dainos litauischevolksl00leskuoft:18081: naktį ~ parėjo"
+    ],
+    "Indo-Iranian": [
+     "rv RV 1.24.10b: náktam ~ īyuḥ",
+     "rv RV 1.24.10d: náktam ~ eti",
+     "rv RV 1.50.2b: aktúbhiḥ ~ yanti"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-okjtoxwos",
+   "branches": {
+    "Germanic": [
+     2,
+     0.5,
+     3.7
+    ],
+    "Greek": [
+     8,
+     2.8,
+     2.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "icepahc 1210.jartein.rel-sag s724: nótt$ ~ átta",
+     "rea-goh Benediktiner_Regel B_8 vn/a (w1/3): naht ~ ahtodun"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 7.28 s7: νύκτα ~ ὀγδόην",
+     "grc-late Flavius Josephus De bello Judaico libri vii 6.288 s1 (w3/4): νυκτὸς ~ ὀγδόη",
+     "grc-late Galenus De differentiis febrium libri ii 2.7.136.334 s11: νυκτὶ ~ ὀγδόην"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-leghyeti",
+   "branches": {
+    "Germanic": [
+     49,
+     15.5,
+     3.2
+    ],
+    "Slavic": [
+     5,
+     1.6,
+     3.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Bandamanna-saga 120r:17: nǽtr ~ liggja",
+     "menota AM-132-fol-Droplaugarsona-saga 147r:38: nǽtr ~ lá",
+     "menota AM-132-fol-Egils-saga 68v:32: nǽtr ~ lágu"
+    ],
+    "Slavic": [
+     "vuk Vuk 47422:6: ноћ ~ лежи",
+     "byliny pesnisobrannyepvkireevskimch2pesni36:5229: ВЪночки ~ лежать",
+     "ccmh suprasliensis 1074114: ношть ~ прилежѧ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-yeh1-meaning_of_this",
+   "branches": {
+    "Germanic": [
+     3,
+     1.4,
+     2.1
+    ],
+    "Greek": [
+     104,
+     22.1,
+     4.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler WGB_Wess.Glaub vn/a (w6/50): naht ~ iare",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.II.162-168_J vn/a (w4/20): náht ~ iâr",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon2_007 vn/a (w8/21): náhte ~ iâr"
+    ],
+    "Greek": [
+     "hom Od. 11.330: νὺξ ~ ὥρη",
+     "hom Od. 11.373: νὺξ ~ ὥρη",
+     "grc Hymni Homerici In Mercurium 67: νυκτὸς ~ ὥρῃ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-pontoh1s",
+   "branches": {
+    "Slavic": [
+     5,
+     1.6,
+     3.2
+    ],
+    "Greek": [
+     14,
+     5.4,
+     2.6
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 1566:52: ноћи ~ путовати",
+     "vuk Vuk 18826:61: ноћи ~ путовати",
+     "vuk Vuk 23729:263: ноћ ~ путовао"
+    ],
+    "Greek": [
+     "hom Od. 12.315: νύξ ~ πόντον",
+     "hom Od. 16.367: νύκτ̓ ~ πόντῳ",
+     "hom Od. 5.294: νύξ ~ πόντον"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2eydh-ignite",
+   "branches": {
+    "Germanic": [
+     14,
+     6.1,
+     2.3
+    ],
+    "Greek": [
+     12,
+     3.4,
+     3.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 94r:39: nótt ~ eld",
+     "menota AM-132-fol-Egils-saga 94v:4: nóttina ~ eldinn",
+     "menota AM-178-fol 2-189:14 (w2/2): nótt ~ ellda"
+    ],
+    "Greek": [
+     "grc Hesiodus Theogonia 124: Νυκτὸς ~ Αἰθήρ",
+     "grc Euripides Rhesus 95: νύκτα ~ αἴθουσι",
+     "grc Aristoteles et Corpus Aristotelicum De sensu et sensibilibus 2.9 s3 (w1/2): νύκτα ~ αἰθομένοιο"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-pent-pass",
+   "branches": {
+    "Slavic": [
+     5,
+     1.6,
+     3.2
+    ],
+    "Greek": [
+     14,
+     5.5,
+     2.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 1566:52: ноћи ~ путовати",
+     "vuk Vuk 18826:61: ноћи ~ путовати",
+     "vuk Vuk 23729:263: ноћ ~ путовао"
+    ],
+    "Greek": [
+     "hom Od. 12.315: νύξ ~ πόντον",
+     "hom Od. 16.367: νύκτ̓ ~ πόντῳ",
+     "hom Od. 5.294: νύξ ~ πόντον"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1em-take",
+   "branches": {
+    "Baltic": [
+     3,
+     1.5,
+     2.0
+    ],
+    "Italic": [
+     3,
+     0.8,
+     3.5
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:16705: naktį ~ pasiimk",
+     "dainos litauischevolksl00leskuoft:17065: naktį ~ pasiėmė",
+     "dainos litauischevolksl00leskuoft:20601: naktis ~ ėmė"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.681: noctes ~ sumant",
+     "lat PlAmphi 255: nox ~ diremit",
+     "lat PlAsina 198: noctem ~ emo"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-legh-lie",
+   "branches": {
+    "Slavic": [
+     10,
+     3.5,
+     2.8
+    ],
+    "Greek": [
+     14,
+     6.2,
+     2.3
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "vuk Vuk 47422:6: ноћ ~ лежи",
+     "byliny pesnisobrannyepvkireevskimch2pesni36:5229: ВЪночки ~ лежать",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:23405: ночь ~ Легъ"
+    ],
+    "Greek": [
+     "grc Euripides Phoenisae 724: νυκτὸς ~ λόχου",
+     "grc Euripides Rhesus 17: νυκτῶν ~ λόχος",
+     "grc Herodotus Historiae 5.121.1 s2: νυκτὸς ~ ἐλόχησαν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-deh2p-sacrifice",
+   "branches": {
+    "Germanic": [
+     2,
+     0.7,
+     2.9
+    ],
+    "Greek": [
+     29,
+     13.8,
+     2.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota HolmPerg-6-fol 24r:18 (w3/29): ottaðezt ~ tapa",
+     "menota HolmPerg-6-fol 31v:17 (w10/11): nott ~ tapat"
+    ],
+    "Greek": [
+     "grc Sophocles Electra 203: νύξ ~ δείπνων",
+     "grc Hippocrates et Corpus Hippocraticum De diaeta in morbis acutis 9 s9: νύκτα ~ δεῖπνον",
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 5.22 s12: νυκτὶ ~ δεδειπνηκότα"
+    ]
+   }
+  }
+ ]
+}

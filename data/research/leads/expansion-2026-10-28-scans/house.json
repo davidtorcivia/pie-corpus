@@ -1,0 +1,1217 @@
+{
+ "target": [
+  "pie-lex-doxm",
+  "pie-root-dem-build"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 159,
+  "Germanic": 261,
+  "Slavic": 874,
+  "Baltic": 166,
+  "Armenian": 2398,
+  "Albanian": 9,
+  "Indo-Iranian": 217,
+  "Greek": 4137,
+  "Italic": 253
+ },
+ "rows": [
+  {
+   "root": "pie-lex-h1eyti",
+   "branches": {
+    "Slavic": [
+     78,
+     21.5,
+     3.6
+    ],
+    "Baltic": [
+     19,
+     2.7,
+     7.1
+    ],
+    "Greek": [
+     46,
+     21.0,
+     2.2
+    ],
+    "Italic": [
+     31,
+     9.6,
+     3.2
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny ruws 425686:128: дом ~ идти",
+     "ccmh marianus 1122900: домъ ~ вьнити",
+     "ccmh marianus 1130100: домоу ~ ишедъ"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:9155: namužyte ~ eisim",
+     "dainos littauischevolk00nessgoog:10359: namėn ~ Eik",
+     "dainos littauischevolk00nessgoog:69351: Namū ~ pareisiu"
+    ],
+    "Greek": [
+     "hom Il. 1.426: δῶ ~ εἶμι",
+     "hom Il. 14.457: δόμον ~ κατίμεν",
+     "hom Il. 21.285: δέμας ~ ἰόντε"
+    ],
+    "Italic": [
+     "lat CatAgr 143.1 (w2/3): domum ~ eat",
+     "lat CatOrig 3.Fragmentum_4.Linea_2: domum ~ redeuntes",
+     "lat Catul 80.3: domo ~ exis"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1ey-go",
+   "branches": {
+    "Slavic": [
+     78,
+     22.4,
+     3.5
+    ],
+    "Baltic": [
+     19,
+     2.7,
+     7.1
+    ],
+    "Greek": [
+     46,
+     21.7,
+     2.1
+    ],
+    "Italic": [
+     31,
+     10.2,
+     3.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny ruws 425686:128: дом ~ идти",
+     "ccmh marianus 1122900: домъ ~ вьнити",
+     "ccmh marianus 1130100: домоу ~ ишедъ"
+    ],
+    "Baltic": [
+     "dainos littauischevolk00nessgoog:9155: namužyte ~ eisim",
+     "dainos littauischevolk00nessgoog:10359: namėn ~ Eik",
+     "dainos littauischevolk00nessgoog:69351: Namū ~ pareisiu"
+    ],
+    "Greek": [
+     "hom Il. 1.426: δῶ ~ εἶμι",
+     "hom Il. 14.457: δόμον ~ κατίμεν",
+     "hom Il. 21.285: δέμας ~ ἰόντε"
+    ],
+    "Italic": [
+     "lat CatAgr 143.1 (w2/3): domum ~ eat",
+     "lat CatOrig 3.Fragmentum_4.Linea_2: domum ~ redeuntes",
+     "lat Catul 80.3: domo ~ exis"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-steg-cover",
+   "branches": {
+    "Germanic": [
+     5,
+     0.3,
+     17.1
+    ],
+    "Greek": [
+     21,
+     3.3,
+     6.4
+    ],
+    "Italic": [
+     5,
+     0.8,
+     6.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-302-fol 1r:1 (w1478/2250): timbr ~ þak",
+     "menota AM-305-fol 49v:20 (w9/11): tímbr ~ þak",
+     "menota AM-56-4to 1r:1 (w1534/2303): timbr ~ þak"
+    ],
+    "Greek": [
+     "grc Aeschylus Supplices 135: δόμος ~ στέγων",
+     "grc Euripides Cyclops 118: δόμων ~ στέγας",
+     "grc Euripides Hippolytus 468: δόμοι ~ στέγην"
+    ],
+    "Italic": [
+     "lat Catul 64.246: domus ~ tecta",
+     "lat LucrDRN2 2.191: domorum ~ tecta",
+     "lat LucrDRN2 2.1110: domus ~ tecta"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sekw-say",
+   "branches": {
+    "Celtic": [
+     2,
+     0.9,
+     2.1
+    ],
+    "Baltic": [
+     6,
+     2.3,
+     2.6
+    ],
+    "Italic": [
+     3,
+     1.0,
+     3.0
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "cy welsh-white-book-mabinogion-evans-1907:whitebookofmabin00evan:L11329-L11332: defnyd ~ chwedỳl",
+     "ga-early G100080:#1/9:185 (w1/2): damhna ~ scel"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:16510: namu ~ sako",
+     "dainos litauischevolksl00leskuoft:17625: name ~ sakė",
+     "dainos litauischevolksl00leskuoft:18174: name ~ sako"
+    ],
+    "Italic": [
+     "lat PlAmphi 362: domu ~ inquam",
+     "lat PlAmphi 577: domi ~ inquam",
+     "lat PlAmphi 613: domi ~ inquam"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dhengwh-dark",
+   "branches": {
+    "Celtic": [
+     2,
+     0.0,
+     421.6
+    ],
+    "Greek": [
+     2,
+     0.2,
+     11.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "cy welsh-skene-four-ancient-books:fourancientbooks02skenuoft:L13451-L13451: neint ~ deweint",
+     "cy welsh-skene-four-ancient-books:fourancientbooks02skenuoft:L13653-L13653: neint ~ deweint"
+    ],
+    "Greek": [
+     "grc Aeschylus Choephoroe 52: δόμους ~ δνόφοι",
+     "grc Aeschylus Eumenides 379: δώματος ~ δνοφεράν"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-kjlutos",
+   "branches": {
+    "Indo-Iranian": [
+     3,
+     0.1,
+     21.2
+    ],
+    "Greek": [
+     23,
+     1.4,
+     16.2
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 5, 123.s22: dāntau ~ śrutau",
+     "sa-ep MBh, 12, 87.s35: dāntā ~ śrutāḥ",
+     "sa-ep MBh, 13, 90.s71: dāntān ~ śrutān"
+    ],
+    "Greek": [
+     "hom Il. 1.607: δῶμα ~ περικλυτὸς",
+     "hom Il. 13.21: δώματα ~ κλυτὰ",
+     "hom Il. 2.854: δώματ̓ ~ κλυτὰ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h3sleydh-slip",
+   "branches": {
+    "Germanic": [
+     4,
+     0.1,
+     39.8
+    ],
+    "Slavic": [
+     2,
+     0.6,
+     3.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-302-fol 1r:1 (w1478/2250): timbr ~ sleða",
+     "menota AM-305-fol 49v:20 (w9/11): tímbr ~ sleða",
+     "menota AM-56-4to 1r:1 (w1534/2303): timbr ~ sleða"
+    ],
+    "Slavic": [
+     "byliny ruws 425068:237: дом ~ следовал",
+     "byliny pesnisobrannyepvkireevskimch3vyp36:22772: дома ~ послфдовавшимь"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-skewh1-perceive",
+   "branches": {
+    "Germanic": [
+     8,
+     0.5,
+     14.7
+    ],
+    "Greek": [
+     2,
+     0.4,
+     5.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Monsee MF_1_M.XVIII vn/a (w2/5): zimbrit ~ sconit",
+     "rea-goh Otfrid O_Otfr.Ev.5.23 v34: gizámi ~ scóni",
+     "rea-goh Otfrid O_Otfr.Ev.5.23 v289: gizámi ~ sconi"
+    ],
+    "Greek": [
+     "grc-late Galenus De placitis Hippocratis et Platonis 3.7.128.272 s11: δαπέδῳ ~ ἐρικυδέος",
+     "grc-late Galenus De placitis Hippocratis et Platonis 6.8.204.309 s1: δαπέδῳ ~ ἐρικυδέος"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-wekw-speak",
+   "branches": {
+    "Celtic": [
+     4,
+     0.1,
+     33.5
+    ],
+    "Armenian": [
+     6,
+     2.8,
+     2.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G502003:#1/1/1:183: damna ~ focul",
+     "mga G502003:#1/1/1:186: ndamna ~ focail",
+     "mga G502003:#1/2/1:225 (w2/2): damna ~ focul"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_03_Koriun ed. page 231 - PDF page 3 (word id 475) (w1/2): Տէրն ~ գոչէր",
+     "xcl MH_1_2_11_Agathangelos ed. page 1489 - PDF page 195 (word id 34336): Տէրդ։ ~ գոչել",
+     "xcl MH_1_2_11_Agathangelos ed. page 1521 - PDF page 227 (word id 40118) (w2/2): Տէր ~ գոչեսցէ,"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ews-become_light",
+   "branches": {
+    "Slavic": [
+     5,
+     0.3,
+     19.4
+    ],
+    "Italic": [
+     5,
+     2.0,
+     2.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:33509: дома ~ заутреню",
+     "byliny pesnisobrannyepvkireevskimvyp1pesn13:2162: дому ~ заутреню",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:19239: дома ~ заутреню"
+    ],
+    "Italic": [
+     "lat LucrDRN2 2.27: domus ~ auro",
+     "lat PlAulul 110: domi ~ aurum",
+     "lat PlBacch 315: domum ~ auri"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-weyk-curve",
+   "branches": {
+    "Germanic": [
+     2,
+     0.2,
+     10.6
+    ],
+    "Italic": [
+     2,
+     0.4,
+     4.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_101 v23 (w2/2): zimberot ~ uuehsel",
+     "rea-goh Z-Notker_Kleinere-Syllogismus N_Syl_3 vn/a (w1/3): úber-zímber ~ uuéhselônt"
+    ],
+    "Italic": [
+     "lat PlBacch 747: domi ~ uinctum",
+     "lat PlBacch 750: domi ~ uinctum"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-kjreddheh1ti",
+   "branches": {
+    "Indo-Iranian": [
+     4,
+     0.2,
+     18.0
+    ],
+    "Italic": [
+     5,
+     2.5,
+     2.0
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 12, 111.s36: dāntāḥ ~ śraddadhānā",
+     "sa-ep MBh, 12, 174.s10: dāntāḥ ~ śraddadhānāḥ",
+     "sa-ep MBh, 13, 32.s62: dāntāḥ ~ śraddadhānāḥ"
+    ],
+    "Italic": [
+     "lat PlAmphi 654: domum ~ credo",
+     "lat PlAulul 110: domi ~ credo",
+     "lat PlAulul 266: domi ~ credo"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-stwerH-stir_up",
+   "branches": {
+    "Germanic": [
+     5,
+     0.5,
+     10.6
+    ],
+    "Greek": [
+     9,
+     3.1,
+     2.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_027 v18:  ~ stôre",
+     "rea-goh Z-Notker-Psalmen N_Ps_095 v16: zímberóta ~ ze-stôret",
+     "rea-goh Z-Notker-Psalmen N_Ps_059 v1: ke-zimberot ~ zestôrtost"
+    ],
+    "Greek": [
+     "hom Il. 17.323: δέμας ~ ὄτρυνε",
+     "hom Od. 10.546: δώματ̓ ~ ὤτρυνον",
+     "hom Od. 17.75: δῶμα ~ ὄτρυνον"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-mer-die",
+   "branches": {
+    "Celtic": [
+     13,
+     5.1,
+     2.6
+    ],
+    "Baltic": [
+     2,
+     0.2,
+     10.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G100010A:#1/LC1133/LC1133.3:1: dhamhna ~ mharbadh",
+     "mga G100016:#1/#3/CS1068/CS1068.1:1: dhamna ~ marbadh",
+     "mga G303000:#1/t#86:3: damna ~ marb"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:20403: name ~ užmirszo",
+     "lv BV 19206: namā ~ aizmirsu"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-steg-pole",
+   "branches": {
+    "Greek": [
+     2,
+     0.7,
+     2.9
+    ],
+    "Italic": [
+     6,
+     0.7,
+     8.1
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "grc Sophocles Electra 1386: δωμάτων ~ ὑπόστεγοι",
+     "grc-late Callimachus In Cererem 54: δόμον ~ στεγανὸν"
+    ],
+    "Italic": [
+     "lat Catul 64.246: domus ~ tecta",
+     "lat LucrDRN2 2.191: domorum ~ tecta",
+     "lat LucrDRN2 2.1110: domus ~ tecta"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-demh2-join",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.6,
+     3.4
+    ],
+    "Greek": [
+     3,
+     0.5,
+     6.3
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 13, 74.s30: dāntaḥ ~ damaḥ",
+     "sa-ep MBh, 14, 93.s28: dāntāḥ ~ dama"
+    ],
+    "Greek": [
+     "grc-late Flavius Josephus Antiquitates Judaicae 8.226 s1 (w1/2): οἰκοδομήσας ~ δαμάλεις",
+     "grc-late Flavius Josephus Antiquitates Judaicae 8.230 s1 (w2/2): οἰκοδομεῖ ~ δαμάλεως",
+     "grc-late Harpocration Lexicon in decem oratores Atticos i.hippodameia s1: οἰκοδομησαμένου ~ Ἱπποδάμου"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-leghyeti",
+   "branches": {
+    "Germanic": [
+     7,
+     2.3,
+     3.0
+    ],
+    "Slavic": [
+     11,
+     1.8,
+     5.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-302-fol 1r:1 (w1836/2250): Tímbr ~ líggía",
+     "menota AM-305-fol 61r:10 (w12/15): Tímbr ~ líggia",
+     "menota AM-56-4to 1r:1 (w1900/2303): Timbr ~ líggía"
+    ],
+    "Slavic": [
+     "ccmh marianus 1080600: домоу ~ лежитъ",
+     "ccmh marianus 1081400: домъ ~ лежѧщѫ",
+     "ccmh marianus 1091000: домоу ~ вьзлежѧщю"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h3orbhos",
+   "branches": {
+    "Germanic": [
+     2,
+     0.9,
+     2.1
+    ],
+    "Slavic": [
+     13,
+     1.6,
+     8.4
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_126 v21:  ~ arbeite",
+     "rea-goh Z-Notker-Psalmen N_Ps_128 v8: zimberoton ~ arbeîto"
+    ],
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch2narod72:257: дома ~ работай",
+     "ccmh marianus 1102510: домоу ~ рабоу",
+     "ccmh marianus 2133400: домъ ~ рабомъ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-sth2eh1yeti",
+   "branches": {
+    "Germanic": [
+     4,
+     0.5,
+     8.0
+    ],
+    "Slavic": [
+     8,
+     3.7,
+     2.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Benediktiner_Regel B_42 vn/a (w1/4): zimbroe ~ erstant",
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler HiH_HimmelundHoelle vn/a (w3/22): gezamen ~ stat",
+     "rea-goh Z-Notker-Psalmen N_Ps_095 v18: ke-zímberot ~ stât"
+    ],
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:33509: дома ~ Отстояль",
+     "byliny sbornikotdelenijarusskogojazykaislovesno92:15429: домамъ ~ стоять",
+     "byliny sbornikotdelenijarusskogojazykaislovesno92:15435: дому ~ стоять"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2el-all",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.3,
+     7.6
+    ],
+    "Greek": [
+     4,
+     1.9,
+     2.1
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 12, 154.s73: dāntasya ~ araṇyena",
+     "sa-ep MBh, 12, 154.s74: dāntaḥ ~ araṇyaṃ"
+    ],
+    "Greek": [
+     "grc Euripides Cyclops 39: δόμους ~ Ἀλθαίας",
+     "grc-late Flavius Josephus Antiquitates Judaicae 8.318 s1 (w2/2): ᾠκοδόμησε ~ ἄλσος",
+     "grc-late Aelius Aristides Ῥοδιακός 553 s7: ἀνοικοδομεῖν ~ ἄλση"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1edti",
+   "branches": {
+    "Slavic": [
+     6,
+     1.6,
+     3.8
+    ],
+    "Italic": [
+     2,
+     0.5,
+     3.9
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 2080300: домꙑ ~ ѣдъшѧ",
+     "ccmh marianus 3060400: домъ ~ ѣстъ",
+     "ccmh marianus 3100700: домоу ~ ѣдѫште"
+    ],
+    "Italic": [
+     "lat PlCapt 136: domi ~ edo",
+     "lat PlCapt 473: domi ~ ederint"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kjel-cover",
+   "branches": {
+    "Celtic": [
+     2,
+     0.3,
+     6.4
+    ],
+    "Greek": [
+     6,
+     2.7,
+     2.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "cy welsh-redbook-poetry-evans-1911:poetryinredbooko00evanuoft:L11724-L11724: deint ~ gelyn",
+     "ga-early G100005E:#1/M1579/M1579.11:11: damhna ~ chleibh"
+    ],
+    "Greek": [
+     "grc Hymni Homerici In Cererem 107: δώματα ~ κάλπισι",
+     "grc-late Oppianus Halieutica 1.748: δόμον ~ καλιήν",
+     "grc-late Claudius Aelianus De natura animalium 14.7 s8: δαπέδῳ ~ καλιὰν"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-potis",
+   "branches": {
+    "Indo-Iranian": [
+     6,
+     1.7,
+     3.5
+    ],
+    "Greek": [
+     14,
+     3.6,
+     3.9
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "rv RV 1.120.6c: dán ~ patī",
+     "rv RV 1.149.1a: dán ~ pátiḥ",
+     "rv RV 1.153.4c: dán ~ pátiḥ"
+    ],
+    "Greek": [
+     "hom Od. 19.531: δῶμα ~ πόσιος",
+     "grc Euripides Alcestis 234a: δόμων ~ πόσις",
+     "grc Euripides Andromacha 926: δόμους ~ πόσις"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2el-grow",
+   "branches": {
+    "Indo-Iranian": [
+     3,
+     0.5,
+     6.4
+    ],
+    "Greek": [
+     4,
+     1.9,
+     2.1
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 12, 154.s73: dāntasya ~ araṇyena",
+     "sa-ep MBh, 12, 154.s74: dāntaḥ ~ araṇyaṃ",
+     "sa-ep MBh, 12, 174.s10: dāntāḥ ~ āḍhyāḥ"
+    ],
+    "Greek": [
+     "grc Euripides Cyclops 39: δόμους ~ Ἀλθαίας",
+     "grc-late Flavius Josephus Antiquitates Judaicae 8.318 s1 (w2/2): ᾠκοδόμησε ~ ἄλσος",
+     "grc-late Aelius Aristides Ῥοδιακός 553 s7: ἀνοικοδομεῖν ~ ἄλση"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1ed-eat",
+   "branches": {
+    "Slavic": [
+     6,
+     1.8,
+     3.4
+    ],
+    "Italic": [
+     2,
+     0.5,
+     3.9
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 2080300: домꙑ ~ ѣдъшѧ",
+     "ccmh marianus 3060400: домъ ~ ѣстъ",
+     "ccmh marianus 3100700: домоу ~ ѣдѫште"
+    ],
+    "Italic": [
+     "lat PlCapt 136: domi ~ edo",
+     "lat PlCapt 473: domi ~ ederint"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-legh-lie",
+   "branches": {
+    "Slavic": [
+     17,
+     4.0,
+     4.2
+    ],
+    "Greek": [
+     17,
+     5.5,
+     3.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimch3vyp36:23095: домъ ~ выложенный",
+     "ccmh marianus 1080600: домоу ~ лежитъ",
+     "ccmh marianus 1081400: домъ ~ лежѧщѫ"
+    ],
+    "Greek": [
+     "grc Euripides Medea 41: δόμους ~ λέχος",
+     "grc Euripides Medea 380: δόμους ~ λέχος",
+     "grc Euripides Medea 672: δάμαρτος ~ λέχους"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-weyk-overcome",
+   "branches": {
+    "Slavic": [
+     6,
+     1.2,
+     5.0
+    ],
+    "Italic": [
+     2,
+     0.8,
+     2.6
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 3013300: домоу ~ вѣкꙑ",
+     "ccmh marianus 4083500: домоу ~ вѣкъ",
+     "ccmh zographensis 3013300: домоу ~ вѣкꙑ"
+    ],
+    "Italic": [
+     "lat PlAmphi 188: domum ~ uictis",
+     "lat PlAmphi 642: domum ~ uicit"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-swos",
+   "branches": {
+    "Indo-Iranian": [
+     5,
+     1.8,
+     2.8
+    ],
+    "Greek": [
+     6,
+     1.3,
+     4.6
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 12, 235.s27: dānto ~ sva",
+     "sa-ep MBh, 13, 58.s37: dānteṣu ~ sva",
+     "sa-ep MBh, 13, 90.s71: dāntān ~ sva"
+    ],
+    "Greek": [
+     "hom Il. 24.376: δέμας ~ οἷος",
+     "hom Od. 15.379: δμώεσσιν ~ οἷά",
+     "hom Od. 17.479: δώματ̓ ~ οἷ̓"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dewk-pull",
+   "branches": {
+    "Germanic": [
+     2,
+     0.5,
+     4.3
+    ],
+    "Italic": [
+     4,
+     1.4,
+     2.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Z-Notker-Psalmen N_Ps_103 v7 (w2/2): zímberon ~ zúgen",
+     "rea-goh Z-Notker_Boethius-De_Consolatione_philosophiae N_Decon3_102 vn/a (w3/3): zímber ~ gezíug"
+    ],
+    "Italic": [
+     "lat PlAulul 150: domum ~ ducere",
+     "lat PlAulul 162: domum ~ ducit",
+     "lat PlAulul 480: domum ~ ducant"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-lewk-bright",
+   "branches": {
+    "Celtic": [
+     2,
+     0.5,
+     4.4
+    ],
+    "Slavic": [
+     2,
+     0.7,
+     2.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "cy welsh-redbook-poetry-evans-1911:poetryinredbooko00evanuoft:L7548-L7548: defnyd ~ oleuni",
+     "cy welsh-redbook-poetry-evans-1911:poetryinredbooko00evanuoft:L11724-L11724: deint ~ llygat"
+    ],
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimvyp1pesn13:21993: домъ ~ получишь",
+     "byliny pesnisobrannyepnrybnikovymch4narod9:467: дома ~ Случилось"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-wert-turn",
+   "branches": {
+    "Slavic": [
+     20,
+     9.4,
+     2.1
+    ],
+    "Greek": [
+     4,
+     0.8,
+     5.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny 11016812bsb:20868: дбма ~ время",
+     "byliny pesnisobrannyepvkireevskimch2pesni36:4131: дому ~ Ворочусь",
+     "ccmh marianus 1081330: домъ ~ възвраштъ"
+    ],
+    "Greek": [
+     "grc Euripides Medea 115: δόμος ~ ἔρροι",
+     "grc Euripides Phoenisae 624b: δόμος ~ ἐρρέτω",
+     "grc Sophocles Electra 57: δέμας ~ ἔρρει"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dhwer-door",
+   "branches": {
+    "Greek": [
+     29,
+     7.5,
+     3.9
+    ],
+    "Italic": [
+     3,
+     1.2,
+     2.6
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Il. 6.89: δόμοιο ~ θύρας",
+     "hom Il. 9.473: προδόμῳ ~ θυράων",
+     "hom Od. 1.255: δόμου ~ θύρῃσι"
+    ],
+    "Italic": [
+     "lat CatFrag Pagina_p.83.Fragmentum_2.Linea_1: domi ~ foro",
+     "lat PlAulul 273: domum ~ foro",
+     "lat PlCasin 591: domum ~ foro"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2wes-dwell",
+   "branches": {
+    "Indo-Iranian": [
+     4,
+     1.0,
+     4.2
+    ],
+    "Greek": [
+     25,
+     10.5,
+     2.4
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 4, 4.s77: dāntaḥ ~ vasatim",
+     "sa-ep MBh, 5, 39.s100: dānteṣu ~ vasaty",
+     "sa-ep MBh, 12, 154.s74: dāntaḥ ~ vased"
+    ],
+    "Greek": [
+     "hom Il. 6.316: δῶμα ~ αὐλὴν",
+     "hom Od. 10.10: δῶμα ~ αὐλῇ",
+     "hom Od. 14.5: προδόμῳ ~ αὐλὴ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-ghostis",
+   "branches": {
+    "Slavic": [
+     5,
+     1.7,
+     2.9
+    ],
+    "Italic": [
+     2,
+     0.6,
+     3.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:22403: дома ~ гость",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:17118: домф ~ гость",
+     "byliny pesnisobrannyepnrybnikovymch2narod72:8234: дому ~ гость"
+    ],
+    "Italic": [
+     "lat PlAmphi 188: domum ~ hostibus",
+     "lat PlAmphi 684: domum ~ hostibus"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1eh1t-breathe",
+   "branches": {
+    "Indo-Iranian": [
+     11,
+     3.2,
+     3.5
+    ],
+    "Greek": [
+     3,
+     1.2,
+     2.6
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 1, 38.s43: dāntaḥ ~ ātmā",
+     "sa-ep MBh, 1, 159.s42: dānta ~ ātmānaḥ",
+     "sa-ep MBh, 3, 200.s88: dāntasya ~ ātmanaḥ"
+    ],
+    "Greek": [
+     "hom Od. 18.153: δῶμα ~ ἦτορ",
+     "hom Od. 2.298: δῶμα ~ ἦτορ",
+     "hom Od. 8.303: δῶμα ~ ἦτορ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dheh1-do",
+   "branches": {
+    "Germanic": [
+     16,
+     6.3,
+     2.5
+    ],
+    "Indo-Iranian": [
+     15,
+     4.7,
+     3.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Benediktiner_Regel B_0 vn/a (w27/30): kezimbrota ~ tuat",
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler GA_SangallerSchularbeit vn/a (w1/3): zímber ~ ketûon",
+     "rea-goh Otfrid O_Otfr.Ludw v60: zímit ~ duit"
+    ],
+    "Indo-Iranian": [
+     "rv RV 10.115.2a: dán ~ dhāyi",
+     "sa-ep MBh, 1, 159.s42: dānta ~ purohitāḥ",
+     "sa-ep MBh, 3, 299.s22: dāntaḥ ~ saṃdhaḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-peh2y",
+   "branches": {
+    "Slavic": [
+     2,
+     0.8,
+     2.4
+    ],
+    "Greek": [
+     4,
+     1.3,
+     3.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch1narod12:19352: домахъ ~ пасъ",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:19357: домахъ ~ пасъ"
+    ],
+    "Greek": [
+     "grc Euripides Electra 725: δῶμα ~ ποίμναν",
+     "grc Sophocles Ajax 63: δόμους ~ ποίμνας",
+     "grc-late Flavius Josephus Contra Apionem 2.247 s1 (w1/2): οἰκοδομοῦντες ~ ποιμαίνοντες"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1eh1s-sit",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.7,
+     3.0
+    ],
+    "Greek": [
+     17,
+     7.2,
+     2.3
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "sa-ep MBh, 3, 28.s23: dāntaṃ ~ āsanaṃ",
+     "sa-ep MBh, 12, 18.s59: dāntā ~ āsate"
+    ],
+    "Greek": [
+     "hom Od. 11.571: δῶ ~ ἥμενοι",
+     "hom Od. 13.424: δόμοις ~ ἧσται",
+     "hom Od. 14.5: προδόμῳ ~ ἥμενον"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gwem-come",
+   "branches": {
+    "Germanic": [
+     35,
+     16.9,
+     2.1
+    ],
+    "Italic": [
+     19,
+     6.2,
+     3.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-78-4to 29v:1 (w142/554): timbr ~ koma",
+     "menota AM-78-4to 29v:1 (w147/554): tuft ~ koma",
+     "menota HolmPerg-34-4to-MLL 46v:19: túftir ~ kom"
+    ],
+    "Italic": [
+     "lat Catul 9.3: domum ~ uenisti",
+     "lat Catul 64.32: domum ~ aduenere",
+     "lat Catul 68.144: domum ~ uenit"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2eydh-ignite",
+   "branches": {
+    "Germanic": [
+     2,
+     0.9,
+     2.2
+    ],
+    "Greek": [
+     8,
+     3.0,
+     2.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-78-4to 47r:1 (w172/617): tuftum ~ ældr",
+     "menota HolmPerg-34-4to-MLB 78v:2: túftum ~ eldr"
+    ],
+    "Greek": [
+     "hom Il. 11.596: δέμας ~ αἰθομένοιο",
+     "hom Il. 13.673: δέμας ~ αἰθομένοιο",
+     "hom Il. 18.1: δέμας ~ αἰθομένοιο"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-peh2-protect",
+   "branches": {
+    "Slavic": [
+     5,
+     1.8,
+     2.8
+    ],
+    "Greek": [
+     149,
+     70.0,
+     2.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimch3vyp51:8051: Дбма ~ пропадетъ",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:19352: домахъ ~ пасъ",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:19357: домахъ ~ пасъ"
+    ],
+    "Greek": [
+     "hom Il. 18.141: δώματα ~ πατρός",
+     "hom Il. 19.355: δῶ ~ πατρὸς",
+     "hom Od. 10.66: δῶμα ~ πατρίδα"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-wedheti",
+   "branches": {
+    "Slavic": [
+     9,
+     4.0,
+     2.3
+    ],
+    "Baltic": [
+     2,
+     0.8,
+     2.5
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:21208: домъ ~ ведите",
+     "byliny pesnisobrannyepvkireevskimch2pes74:6537: дому ~ вывелъ",
+     "byliny pesnisobrannyepvkireevskimch3vyp36:1121: домъ ~ привелъ"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:16058: namus ~ parveda",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:31764: namūs ~ vėdį"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-ph2texr",
+   "branches": {
+    "Greek": [
+     140,
+     64.7,
+     2.2
+    ],
+    "Italic": [
+     8,
+     3.8,
+     2.1
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Il. 18.141: δώματα ~ πατρός",
+     "hom Il. 19.355: δῶ ~ πατρὸς",
+     "hom Od. 10.66: δῶμα ~ πατρίδα"
+    ],
+    "Italic": [
+     "lat CatAgr 132.1 (w2/3): domo ~ Iupiter",
+     "lat CatAgr 134.2 (w1/2): domo ~ Ioui",
+     "lat PlAmphi 450: domum ~ Iouis"
+    ]
+   }
+  }
+ ]
+}

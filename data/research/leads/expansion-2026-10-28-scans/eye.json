@@ -1,0 +1,1623 @@
+{
+ "target": [
+  "pie-lex-h3okwih1",
+  "pie-lex-h3okws",
+  "pie-root-h3ekw-see"
+ ],
+ "window": 4,
+ "units": {
+  "Celtic": 779,
+  "Germanic": 1067,
+  "Slavic": 940,
+  "Baltic": 69,
+  "Armenian": 627,
+  "Tocharian": 22,
+  "Indo-Iranian": 819,
+  "Greek": 13777,
+  "Italic": 165
+ },
+ "rows": [
+  {
+   "root": "pie-lex-h2oxws",
+   "branches": {
+    "Germanic": [
+     16,
+     0.8,
+     20.4
+    ],
+    "Slavic": [
+     10,
+     0.5,
+     19.7
+    ],
+    "Armenian": [
+     16,
+     2.3,
+     7.0
+    ],
+    "Greek": [
+     323,
+     30.7,
+     10.5
+    ],
+    "Italic": [
+     5,
+     0.4,
+     11.8
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-677-4to 41r:13: augum ~ eyrum",
+     "rea-goh Benediktiner_Regel B_0 vn/a (w14/30): augom ~ oorom",
+     "rea-goh Benediktiner_Regel B_0 vn/a (w18/30): augun ~ ooron"
+    ],
+    "Slavic": [
+     "ccmh marianus 1131600: очи ~ оуши",
+     "ccmh marianus 2081800: очи ~ оуши",
+     "ccmh zographensis 1131510: очи ~ оушима"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 18 - PDF page 12 (word id 4685) (w2/2): ակն ~ ունկն",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 115 - PDF page 109 (word id 43950) (w6/6): ակն ~ ունկն",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 136 - PDF page 130 (word id 52307) (w2/2): ակն ~ ունկն"
+    ],
+    "Greek": [
+     "hom Od. 20.365: ὀφθαλμοί ~ οὔατα",
+     "grc Hesiodus Theogonia 701: ὀφθαλμοῖσιν ~ οὔασι",
+     "grc Theognis Elegiae 1163: ὀφθαλμοὶ ~ οὔατα"
+    ],
+    "Italic": [
+     "lat LucrDRN2 2.511: oculis ~ auribus",
+     "lat LucrDRN3 3.156: oculos ~ auris",
+     "lat LucrDRN3 3.549: oculi ~ aures"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-lewk-bright",
+   "branches": {
+    "Germanic": [
+     33,
+     8.4,
+     3.9
+    ],
+    "Slavic": [
+     2,
+     0.8,
+     2.5
+    ],
+    "Armenian": [
+     99,
+     12.1,
+     8.2
+    ],
+    "Greek": [
+     162,
+     74.7,
+     2.2
+    ],
+    "Italic": [
+     9,
+     1.9,
+     4.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Njals-saga 42v:32: augna ~ ljós",
+     "menota AM-243-b-alfa-fol 21r:15 (w2/2): augum ~ liosari",
+     "menota AM-243-b-alfa-fol 27r:28 (w2/3): augum ~ liost"
+    ],
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:7423: очей ~ лучъ",
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:7448: очей ~ лучъ"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 8 - PDF page 2 (word id 475) (w1/2): արեգական ~ լոյս",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 8 - PDF page 2 (word id 526): արեգակն ~ լուսոյ",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 9 - PDF page 3 (word id 800) (w1/2): յաչաց ~ լոյս"
+    ],
+    "Greek": [
+     "hom Il. 16.70: μέτωπον ~ λεύσσουσι",
+     "hom Il. 5.291: ὀφθαλμόν ~ λευκοὺς",
+     "grc Aeschylus Persae 81: ὄμμασι ~ λεύσσων"
+    ],
+    "Italic": [
+     "lat LucrDRN3 3.1025: oculis ~ lumina",
+     "lat LucrDRN4 4.277: oculos ~ lux",
+     "lat LucrDRN4 4.344: oculorum ~ luce"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h3bhruHs",
+   "branches": {
+    "Germanic": [
+     2,
+     0.6,
+     3.5
+    ],
+    "Slavic": [
+     14,
+     0.3,
+     46.1
+    ],
+    "Indo-Iranian": [
+     3,
+     0.1,
+     22.5
+    ],
+    "Greek": [
+     89,
+     6.1,
+     14.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-243-b-alfa-fol 26:8: augum ~ brunum",
+     "menota AM-243-b-alfa-fol 35:23 (w1/2): aughum ~ brunum"
+    ],
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimch2vyp57:4664: очи ~ Брови",
+     "ccmh marianus 1070300: оцѣ ~ бръвъна",
+     "ccmh marianus 1070320: очесе ~ бръвъно"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 7, 44.s27: akṣi ~ bhru",
+     "sa-ep MBh, 7, 50.s70: akṣi ~ bhrū",
+     "sa-ep MBh, 8, 12.s10: akṣi ~ bhrū"
+    ],
+    "Greek": [
+     "hom Il. 14.236: ὄσσε ~ ὀφρύσιν",
+     "hom Il. 14.493: ὀφθαλμοῖο ~ ὀφρύος",
+     "hom Il. 15.102: μέτωπον ~ ὀφρύσι"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ew-perceive",
+   "branches": {
+    "Germanic": [
+     26,
+     12.5,
+     2.1
+    ],
+    "Slavic": [
+     16,
+     3.9,
+     4.1
+    ],
+    "Armenian": [
+     16,
+     2.3,
+     7.0
+    ],
+    "Italic": [
+     8,
+     1.6,
+     5.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-243-b-alfa-fol 42r:29 (w2/2): aughum ~ hœyrði",
+     "menota AM-243-b-alfa-fol 67r:17 (w2/2): augum ~ hœvra",
+     "menota AM-677-4to 41r:13: augum ~ eyrum"
+    ],
+    "Slavic": [
+     "ccmh marianus 1131600: очи ~ оуши",
+     "ccmh marianus 2081800: очи ~ оуши",
+     "ccmh marianus 4124010: очима ~ разоумѣѭтъ"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 18 - PDF page 12 (word id 4685) (w2/2): ակն ~ ունկն",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 115 - PDF page 109 (word id 43950) (w6/6): ակն ~ ունկն",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 136 - PDF page 130 (word id 52307) (w2/2): ակն ~ ունկն"
+    ],
+    "Italic": [
+     "lat LucrDRN2 2.511: oculis ~ auribus",
+     "lat LucrDRN3 3.156: oculos ~ auris",
+     "lat LucrDRN3 3.549: oculi ~ aures"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-swep-sleep",
+   "branches": {
+    "Slavic": [
+     5,
+     2.2,
+     2.3
+    ],
+    "Armenian": [
+     3,
+     1.0,
+     2.9
+    ],
+    "Greek": [
+     111,
+     32.4,
+     3.4
+    ],
+    "Italic": [
+     3,
+     0.6,
+     5.4
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimch3vyp36:1261: окномъ ~ спящихъ",
+     "ccmh marianus 1264300: очи ~ съпѧщѧ",
+     "ccmh zographensis 1264300: очи ~ съпѧштѧ"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_06_Yeghishe ed. page 695 - PDF page 175 (word id 28488): յաչաց ~ քուն",
+     "xcl MH_1_1_06_Yeghishe ed. page 1018 - PDF page 498 (word id 78263) (w1/4): յաչաց ~ քուն",
+     "xcl MH_1_1_10_Mandakuni ed. page 1198 - PDF page 40 (word id 16371) (w2/3): յաչացն ~ քուն"
+    ],
+    "Greek": [
+     "hom Il. 10.91: ὄμμασι ~ ὕπνος",
+     "hom Il. 14.286: ὄσσε ~ Ὕπνος",
+     "hom Od. 5.492: ὄμμασι ~ ὕπνον"
+    ],
+    "Italic": [
+     "lat Catul 63.37: oculos ~ sopor",
+     "lat LucrDRN3 3.466: oculis ~ soporem",
+     "lat LucrDRN6 6.1181: oculorum ~ somno"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h3meygh-fog",
+   "branches": {
+    "Baltic": [
+     2,
+     0.1,
+     21.2
+    ],
+    "Indo-Iranian": [
+     8,
+     1.4,
+     5.7
+    ],
+    "Greek": [
+     4,
+     1.7,
+     2.3
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:19227: akis ~ užmigo",
+     "dainos litauischevolksl00leskuoft:19239: akis ~ užmigdė"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 3, 71.s15: īkṣya ~ megha",
+     "sa-ep MBh, 6, 22.s32: anīkāni ~ meghā",
+     "sa-ep MBh, 6, 50.s165: anīkeṣu ~ meghā"
+    ],
+    "Greek": [
+     "grc Aeschylus Prometheus vinctus 145: ὄσσοις ~ ὀμίχλα",
+     "grc-late Flavius Josephus De bello Judaico libri vii 3.327 s1 (w1/2): ὄψεις ~ ὁμίχλη",
+     "grc-late Plutarchus De primo frigido 948e s9: δίοψιν ~ ὁμίχλη"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dakjru",
+   "branches": {
+    "Germanic": [
+     12,
+     1.0,
+     11.9
+    ],
+    "Armenian": [
+     8,
+     3.9,
+     2.0
+    ],
+    "Greek": [
+     94,
+     15.8,
+     6.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Laxdaela-saga 193v:36: augum ~ tárin",
+     "menota AM-132-fol-Viga-Glums-saga 132v:24: augum ~ tár",
+     "menota AM-519a-4to 26v:11: augum ~ tárin"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 77 - PDF page 71 (word id 29075) (w1/3): յաչաց ~ զարտասուաց",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 112 - PDF page 106 (word id 42684) (w2/2): աչսն ~ յարտասուս",
+     "xcl MH_1_1_06_Yeghishe ed. page 1003 - PDF page 483 (word id 71175): զաչս ~ արտասուաց։"
+    ],
+    "Greek": [
+     "hom Il. 23.385: ὀφθαλμῶν ~ δάκρυα",
+     "hom Od. 18.173: πρόσωπα ~ δακρύοισι",
+     "grc Euripides Cyclops 405: ὀφθαλμῶν ~ δάκρυ’"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dheh1t",
+   "branches": {
+    "Germanic": [
+     83,
+     13.9,
+     6.0
+    ],
+    "Slavic": [
+     3,
+     1.5,
+     2.0
+    ],
+    "Baltic": [
+     4,
+     0.4,
+     9.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Benediktiner_Regel B_0 vn/a (w18/30): augun ~ tueet",
+     "rea-goh Monsee MF_1_M.XIV vn/a (w6/7): augun ~ tuoe",
+     "rea-goh Otfrid O_Otfr.Ev.3.20 v91: óugun ~ "
+    ],
+    "Slavic": [
+     "ccmh suprasliensis 1022213: очи ~ вьздѣвъ",
+     "ccmh suprasliensis 3131222: очи ~ въздѣвъ",
+     "ccmh suprasliensis 3146125: очи ~ въздѣвъши"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:16446: akiu ~ pradėjo",
+     "dainos litauischevolksl00leskuoft:19055: akis ~ pradėjau",
+     "dainos litauischevolksl00leskuoft:19056: akiu ~ pradėjo"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-plh1nos",
+   "branches": {
+    "Celtic": [
+     33,
+     3.1,
+     10.6
+    ],
+    "Germanic": [
+     15,
+     6.8,
+     2.2
+    ],
+    "Indo-Iranian": [
+     2,
+     0.6,
+     3.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G503002:#1/1/100:1: enech ~ lán",
+     "ga-early G100001B:#1/U1370/U1370.7:1: d'einech ~ lan",
+     "ga-early G100001B:#1/U1371~2/U1371.4:1: d'einech ~ lan"
+    ],
+    "Germanic": [
+     "menota AM-36-fol 245: (w12/32): augom ~ felmsfullir",
+     "menota HolmPerg-4-fol 100r:17: augum ~ fullr",
+     "menota HolmPerg-6-fol 47v:23 (w1/3): augu ~ fylltuzt"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 8, 12.s10: akṣi ~ pūrṇa",
+     "sa-ep MBh, 8, 19.s60: akṣīṇi ~ pūrṇa"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhewgh-bend",
+   "branches": {
+    "Celtic": [
+     3,
+     0.4,
+     8.2
+    ],
+    "Germanic": [
+     3,
+     1.4,
+     2.2
+    ],
+    "Indo-Iranian": [
+     3,
+     1.3,
+     2.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga celtic-journal-zcp-1897-1926:zeitschriftfrc13meyeuoft:L1647-L1648: enech ~ Toboing",
+     "ga-early G100011:#1/1314/1314.7:1 (w1/2): enech ~ dobo",
+     "ga-early G100011:#1/1328/1328.12:1 (w1/2): enech ~ dobo"
+    ],
+    "Germanic": [
+     "menota Wolf-Aug-9-10-4to 49v:16: auga ~ bauga",
+     "menota Wolf-Aug-9-10-4to 51v:11 (w2/2): augum ~ baugi",
+     "rea-goh Benediktiner_Regel B_7 vn/a (w39/41): augun ~ kepoganer"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 3, 214.s39: akṣi ~ bhuja",
+     "sa-ep MBh, 7, 44.s27: akṣi ~ bhujau",
+     "sa-ep MBh, 12, 339.s10: akṣi ~ bhujaḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1ep-grab",
+   "branches": {
+    "Germanic": [
+     2,
+     0.7,
+     2.7
+    ],
+    "Armenian": [
+     76,
+     36.6,
+     2.1
+    ],
+    "Italic": [
+     2,
+     0.7,
+     2.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-78-4to 1r: (w5/255): augu ~ aftan",
+     "menota NRA-norrfragm-77 2v:30: augum ~ aftni"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 57 - PDF page 51 (word id 20985) (w1/2): ակն ~ ունիցի",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 60 - PDF page 54 (word id 22052) (w2/2): ակն ~ ունել",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 71 - PDF page 65 (word id 26652): ակն ~ ունել"
+    ],
+    "Italic": [
+     "lat Catul 63.37: oculos ~ operit",
+     "lat LucrDRN4 4.113: oculi ~ coeptant"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-ped-walk",
+   "branches": {
+    "Germanic": [
+     11,
+     5.1,
+     2.2
+    ],
+    "Indo-Iranian": [
+     12,
+     5.3,
+     2.3
+    ],
+    "Italic": [
+     4,
+     1.9,
+     2.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-63-fol 279: (w3/13): augo ~ fót",
+     "menota HolmPerg-17-4to 1r:1 (w172/1727): augum ~ fœtr",
+     "menota HolmPerg-34-4to-MLL 23v:9: augu ~ fót"
+    ],
+    "Indo-Iranian": [
+     "av AVŚ, 6, 9.s1: akṣyau ~ pādau",
+     "av AVŚ, 6, 24.s3: akṣyor ~ prapadoś",
+     "sa-ep MBh, 6, BhaGī 13.s26: akṣi ~ pādam"
+    ],
+    "Italic": [
+     "lat CatAgr 6.3 (w3/3): oculos ~ pedes",
+     "lat CatAgr 47.1 (w1/2): oculos ~ pedes",
+     "lat LucrDRN4 4.791: oculis ~ pede"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-neh2s",
+   "branches": {
+    "Germanic": [
+     3,
+     0.1,
+     25.5
+    ],
+    "Italic": [
+     6,
+     0.3,
+     23.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 92r:6: augun ~ nasarnar",
+     "menota AM-243-b-alfa-fol 35:23 (w1/2): aughum ~ nasum",
+     "rea-goh Z-Notker-Psalmen N_Ps_113 v3: ougen ~ nása"
+    ],
+    "Italic": [
+     "lat LucrDRN2 2.511: oculis ~ naribus",
+     "lat LucrDRN3 3.551: oculus ~ nares",
+     "lat LucrDRN3 3.631: oculi ~ nares"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-derkj-see",
+   "branches": {
+    "Celtic": [
+     27,
+     1.8,
+     14.8
+    ],
+    "Greek": [
+     33,
+     3.8,
+     8.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G100027:#1/649~2/649.1:35: einech ~ dérc",
+     "mga G100001A:#1/U1119/U1119.3:1 (w1/2): ainech ~ deirc",
+     "mga G100001A:#1/U1165/U1165.8:1: aínech ~ deirc"
+    ],
+    "Greek": [
+     "hom Od. 10.197: ὀφθαλμοῖσι ~ ἔδρακον",
+     "hom Od. 19.446: ὀφθαλμοῖσι ~ δεδορκώς",
+     "grc Hesiodus Scutum 145: ὄσσοισιν ~ δεδορκώς"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2stexr",
+   "branches": {
+    "Germanic": [
+     6,
+     0.8,
+     7.2
+    ],
+    "Armenian": [
+     17,
+     1.5,
+     11.3
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Tatian T_Tat8 vn/a (w4/7): araugta ~ sterren",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.I.85-89_J vn/a (w3/20): ôugon ~ stérnen",
+     "rea-goh Z-Notker-Martianus_Capella N_Mart_Cap.I.64-72 vn/a (w11/40): óugent ~ stérnon"
+    ],
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 10 - PDF page 4 (word id 1314) (w4/4): Արեգակն ~ աստեղք",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 22 - PDF page 16 (word id 6233): Արեգակն ~ աստեղք",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 115 - PDF page 109 (word id 43950) (w1/6): զարեգական ~ զաստեղաց"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-tris",
+   "branches": {
+    "Celtic": [
+     2,
+     0.7,
+     2.7
+    ],
+    "Italic": [
+     2,
+     0.1,
+     28.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga celtic-journal-zcp-1897-1926:zeitschriftfurcelti14:L23396-L23400 (w1/2): einech ~ trian",
+     "mga celtic-journal-zcp-1897-1926:zeitschriftfrc13meyeuoft:L1641-L1647: enech ~ trian"
+    ],
+    "Italic": [
+     "lat CatAgr 6.3 (w3/3): oculos ~ ternos",
+     "lat CatAgr 47.1 (w1/2): oculos ~ ternos"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-wed-well",
+   "branches": {
+    "Germanic": [
+     13,
+     4.7,
+     2.8
+    ],
+    "Baltic": [
+     2,
+     0.1,
+     25.1
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota DG-8-OHleg 0089:23 (w1/12): augu ~ vatne",
+     "menota DG-8-OHleg 0089:23 (w5/12): augu ~ vatne",
+     "menota DG-8-OHleg 0091:10 (w14/15): augu ~ vatne"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:19055: akis ~ vandeniu",
+     "dainos litauischevolksl00leskuoft:20512: akiu ~ vandenį"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-dngjhweh2s",
+   "branches": {
+    "Germanic": [
+     18,
+     1.9,
+     9.5
+    ],
+    "Indo-Iranian": [
+     5,
+     0.7,
+     7.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-56-4to 1r:1 (w523/2303): augu ~ tungu",
+     "menota AM-56-4to 1r:1 (w2295/2303): augu ~ tungu",
+     "menota DG-8-MLL 13r:21 (w16/46): augun ~ tungu"
+    ],
+    "Indo-Iranian": [
+     "av AVP, 12, 18.s9: akṣyau ~ jihvāṃ",
+     "sa-ep MBh, 7, 154.s95: akṣi ~ jihvāḥ",
+     "sa-ep Rām, Ār, 45.s73: akṣi ~ jihvayā"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-negw-bare",
+   "branches": {
+    "Baltic": [
+     4,
+     0.2,
+     16.0
+    ],
+    "Indo-Iranian": [
+     14,
+     3.4,
+     4.1
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos lietvikosdjnos00iugoog:32234: akys ~ naktyse",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:400: akysė ~ naktysė",
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:407: akysė ~ naktysė"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 1, 1.s481: anīkam ~ nāga",
+     "sa-ep MBh, 1, 128.s69: anīkam ~ nāga",
+     "sa-ep MBh, 1, 192.s144: anīkāni ~ nāga"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-new-new",
+   "branches": {
+    "Celtic": [
+     14,
+     0.9,
+     16.1
+    ],
+    "Italic": [
+     3,
+     0.8,
+     3.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100001C:#1/U1402/U1402.2:1: d'einech ~ d'aithne",
+     "ga-early G100001C:#1/U1421/U1421.7:1 (w2/2): einech ~ aithne",
+     "ga-early G100001C:#1/U1425/U1425.7:2 (w1/3): einech ~ aithne"
+    ],
+    "Italic": [
+     "lat Catul 66.64: antiquis ~ nouum",
+     "lat LucrDRN2 2.900: antiquis ~ noua",
+     "lat PlAmphi 118: antiquam ~ nouam"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-new-nod",
+   "branches": {
+    "Celtic": [
+     14,
+     0.7,
+     21.2
+    ],
+    "Greek": [
+     36,
+     14.8,
+     2.4
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100001C:#1/U1402/U1402.2:1: d'einech ~ d'aithne",
+     "ga-early G100001C:#1/U1421/U1421.7:1 (w2/2): einech ~ aithne",
+     "ga-early G100001C:#1/U1425/U1425.7:2 (w1/3): einech ~ aithne"
+    ],
+    "Greek": [
+     "hom Od. 18.154: ὄσσετο ~ νευστάζων",
+     "grc-late Aristarchus De magnitudinibus et distantiis solis et lunae pr s3: ὄψιν ~ νεύειν",
+     "grc-late Aristarchus De magnitudinibus et distantiis solis et lunae 5 s2 (w1/2): ὄψιν ~ νεύων"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-wiHros",
+   "branches": {
+    "Celtic": [
+     62,
+     19.3,
+     3.2
+    ],
+    "Baltic": [
+     2,
+     0.1,
+     14.3
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301012:#1/#2/#7:43: ainech ~ fer",
+     "sga G302022:#1/2/3:3: einech ~ fer",
+     "sga celtic-journal-eriu-1904-1928:eriu_1904_1:L7362-L7363: enech ~ fir"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:20172: akis ~ vyro",
+     "dainos litauischevolksl00leskuoft:20183: akiu ~ vyras"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-gjenus",
+   "branches": {
+    "Germanic": [
+     4,
+     0.2,
+     17.0
+    ],
+    "Greek": [
+     18,
+     7.2,
+     2.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Egils-saga 92v:11: augat ~ kinninni",
+     "menota AM-132-fol-Njals-saga 45v:37: auga ~ kinninni",
+     "menota AM-243-b-alfa-fol 9v:12 (w1/2): augum ~ kinnum"
+    ],
+    "Greek": [
+     "grc Aristoteles et Corpus Aristotelicum Physiognomonica 5 s13 (w1/2): πρόσωπον ~ γένυν",
+     "grc-late Galenus De anatomicis administrationibus libri ix 1.2.26 s4: πρόσωπον ~ γένυες",
+     "grc-late Galenus De anatomicis administrationibus libri ix 4.3.94.151 s21: ὀπαῖς ~ γένυν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sekw-say",
+   "branches": {
+    "Baltic": [
+     7,
+     1.0,
+     7.2
+    ],
+    "Indo-Iranian": [
+     3,
+     0.7,
+     4.5
+    ]
+   },
+   "examples": {
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:16446: akiu ~ sako",
+     "dainos litauischevolksl00leskuoft:19041: akiu ~ sakė",
+     "dainos litauischevolksl00leskuoft:20182: akis ~ sako"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 6, 22.s5: anīkam ~ savyasācinā",
+     "sa-ep MBh, 7, 145.s114: anīkāya ~ savyasācī",
+     "sa-ep MBh, 7, 161.s20: anīkam ~ savyasācin"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-dheh1-do",
+   "branches": {
+    "Germanic": [
+     92,
+     25.9,
+     3.6
+    ],
+    "Baltic": [
+     4,
+     0.4,
+     9.0
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota HolmPerg-6-fol 172:24 (w3/7): augum ~ firir-\ndømdde",
+     "icepahc 1150.homiliubok.rel-ser s1880: augu ~ dæmi",
+     "rea-goh Benediktiner_Regel B_2 vn/a (w8/26): keaucke ~ tatim"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:16446: akiu ~ pradėjo",
+     "dainos litauischevolksl00leskuoft:19055: akis ~ pradėjau",
+     "dainos litauischevolksl00leskuoft:19056: akiu ~ pradėjo"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2leg-care_for",
+   "branches": {
+    "Greek": [
+     23,
+     10.8,
+     2.1
+    ],
+    "Italic": [
+     2,
+     0.1,
+     15.0
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Il. 16.388: ὄπιν ~ ἀλέγοντες",
+     "grc Hesiodus Opera et dies 251: ὄπιν ~ ἀλέγοντες",
+     "grc Hippocrates et Corpus Hippocraticum Prorrheticon 1.109 s1: μετώπου ~ ἀλγήματα"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.86: antiquas ~ religiones",
+     "lat LucrDRN6 6.62: antiquas ~ religiones"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1emt",
+   "branches": {
+    "Slavic": [
+     19,
+     5.7,
+     3.3
+    ],
+    "Baltic": [
+     3,
+     0.3,
+     8.6
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch1narod12:27460: очи ~ Взяли",
+     "ccmh marianus 1052900: око ~ ізьми",
+     "ccmh marianus 1070320: очесе ~ изъмѫ"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:18361: akiu ~ paėmęs",
+     "dainos litauischevolksl00leskuoft:19227: akis ~ paėmė",
+     "dainos lietvikosdjnos00iugoog:30120: ak'i ~ iMk"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1emeti",
+   "branches": {
+    "Slavic": [
+     19,
+     5.7,
+     3.3
+    ],
+    "Baltic": [
+     3,
+     0.3,
+     8.6
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch1narod12:27460: очи ~ Взяли",
+     "ccmh marianus 1052900: око ~ ізьми",
+     "ccmh marianus 1070320: очесе ~ изъмѫ"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:18361: akiu ~ paėmęs",
+     "dainos litauischevolksl00leskuoft:19227: akis ~ paėmė",
+     "dainos lietvikosdjnos00iugoog:30120: ak'i ~ iMk"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gjher-shine",
+   "branches": {
+    "Celtic": [
+     5,
+     2.3,
+     2.2
+    ],
+    "Slavic": [
+     15,
+     1.2,
+     12.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G100027:#1/649~2/649.1:35: einech ~ gráda",
+     "mga G503002:#1/1/100:1: enech ~ gradh",
+     "mga G800011D:#1/10:258 (w2/2): enech ~ grád"
+    ],
+    "Slavic": [
+     "byliny pesnisobrannyepvkireevskimch2pesni36:4207: Очи ~ узрЪли",
+     "ccmh marianus 1070500: очесе ~ оузьриши",
+     "ccmh marianus 1131510: очи ~ оузьрѧтъ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-upo",
+   "branches": {
+    "Celtic": [
+     54,
+     4.1,
+     13.2
+    ],
+    "Germanic": [
+     5,
+     2.4,
+     2.1
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G103006:#1/#1:244 (w1/2): enech ~ úasal",
+     "sga G206006:#1/t#1:1: Eineach ~ ūaisle",
+     "ga-early G100001B:#1/U1276/U1276.1:1: einech ~ uaislí"
+    ],
+    "Germanic": [
+     "rea-goh Kleinere_Althochdeutsche_Denkmäler WB_Wzb.Beichte vn/a (w7/12): ougun ~ ubilero",
+     "rea-goh Monsee MF_2_VG.XXVII vn/a (w3/4): augun ~ ubile",
+     "rea-goh Monsee MF_1_M.VI vn/a (w4/6): au ~ ubil"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-Heh3l-bow",
+   "branches": {
+    "Germanic": [
+     7,
+     1.9,
+     3.7
+    ],
+    "Slavic": [
+     2,
+     0.3,
+     6.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Njals-saga 11r:15: eygðr ~ liðr",
+     "menota AM-63-fol 335: (w32/38): augo ~ Limi",
+     "menota DG-8-OHleg 0096:21 (w11/14): augu ~ límí"
+    ],
+    "Slavic": [
+     "byliny ruws 426312:46: окно ~ локоть",
+     "ccmh suprasliensis 3117217: очима ~ лактꙑ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kjel-cover",
+   "branches": {
+    "Slavic": [
+     7,
+     0.6,
+     10.8
+    ],
+    "Greek": [
+     19,
+     9.0,
+     2.1
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 4093200: очи ~ слѣпоу",
+     "ccmh marianus 4102110: очи ~ слѣпомъ",
+     "ccmh zographensis 4102110: очи ~ слѣпомъ"
+    ],
+    "Greek": [
+     "grc Aristoteles et Corpus Aristotelicum Historia animalium 1.5 s2 (w2/2): μετώπῳ ~ ἀκάλυπτα",
+     "grc Aristoteles et Corpus Aristotelicum Historia animalium 9.47 s8: πρόσωπον ~ ἀπεκαλύφθη",
+     "grc-late Novum Testamentum Evangelium secundum Lucam 2.29 s1 (w2/2): πρόσωπον ~ ἀποκάλυψιν"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h3donts",
+   "branches": {
+    "Greek": [
+     50,
+     18.6,
+     2.7
+    ],
+    "Italic": [
+     2,
+     0.3,
+     8.0
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Il. 19.365: ὄσσε ~ ὀδόντων",
+     "grc Pythagoras Fragmenta astrologica ? s30 (w2/2): ἀνθρωπινώτεροι ~ ὀδόντας",
+     "grc Herodotus Historiae 2.68.3 s1: ὀφθαλμοὺς ~ ὀδόντας"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.1283: antiqua ~ dentes",
+     "lat LucrDRN6 6.659: oculos ~ dentes"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-lewks",
+   "branches": {
+    "Armenian": [
+     3,
+     0.9,
+     3.5
+    ],
+    "Italic": [
+     3,
+     0.5,
+     6.1
+    ]
+   },
+   "examples": {
+    "Armenian": [
+     "xcl MH_1_1_01_Gregor_Lus ed. page 77 - PDF page 71 (word id 28948) (w1/2): արեգականն ~ լուցանի",
+     "xcl MH_1_1_01_Gregor_Lus ed. page 95 - PDF page 89 (word id 36299) (w1/2): զարեգակունս ~ լուցանին",
+     "xcl MH_1_1_08_Mambre text 1, chap. 5, par. 27 (ed. page 1133 - word id 13901) (w2/2): արեգական ~ լուցմանէ"
+    ],
+    "Italic": [
+     "lat LucrDRN4 4.277: oculos ~ lux",
+     "lat LucrDRN4 4.344: oculorum ~ luce",
+     "lat LucrDRN6 6.1146: oculos ~ luce"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h1em-take",
+   "branches": {
+    "Slavic": [
+     33,
+     13.7,
+     2.4
+    ],
+    "Baltic": [
+     3,
+     0.3,
+     8.6
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch1narod12:27460: очи ~ Взяли",
+     "ccmh marianus 1052900: око ~ ізьми",
+     "ccmh marianus 1070320: очесе ~ изъмѫ"
+    ],
+    "Baltic": [
+     "dainos litauischevolksl00leskuoft:18361: akiu ~ paėmęs",
+     "dainos litauischevolksl00leskuoft:19227: akis ~ paėmė",
+     "dainos lietvikosdjnos00iugoog:30120: ak'i ~ iMk"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h3reyH",
+   "branches": {
+    "Celtic": [
+     2,
+     0.4,
+     5.5
+    ],
+    "Germanic": [
+     11,
+     3.0,
+     3.7
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G301900:#1/#3/t#5:7 (w2/2): enech ~ riadait",
+     "cy welsh-redbook-bruts-rhys-evans-1890:textofbrutsfromr00rhys:L14305-L14308 (w1/2): wyneb ~ raeadyr"
+    ],
+    "Germanic": [
+     "menota AM-519a-4to 10v:15: augat ~ rennir",
+     "menota AM-677-4to 7v:5: augu ~ rann",
+     "menota HolmPerg-17-4to 1r:1 (w1642/1727): augu ~ renna"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-sekw-see",
+   "branches": {
+    "Germanic": [
+     171,
+     37.8,
+     4.5
+    ],
+    "Indo-Iranian": [
+     3,
+     0.7,
+     4.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-132-fol-Finnboga-saga 100v:2: augu ~ sjái",
+     "menota AM-132-fol-Hallfredar-saga 153r:4: augat ~ sýn",
+     "menota AM-132-fol-Hallfredar-saga 153r:8: auga ~ sýndi"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 6, 22.s5: anīkam ~ savyasācinā",
+     "sa-ep MBh, 7, 145.s114: anīkāya ~ savyasācī",
+     "sa-ep MBh, 7, 161.s20: anīkam ~ savyasācin"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-krey-sift",
+   "branches": {
+    "Germanic": [
+     6,
+     2.3,
+     2.6
+    ],
+    "Italic": [
+     13,
+     2.0,
+     6.6
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota HolmPerg-6-fol 58r:19 (w6/25): augum ~ reinsa",
+     "rea-goh Isidor I_DeFide_3 vn/a (w23/29): augin ~ hrinit",
+     "rea-goh Monsee MF_1_M.XVIII vn/a (w1/5): auget ~ un"
+    ],
+    "Italic": [
+     "lat LucrDRN1 1.268: oculis ~ cerni",
+     "lat LucrDRN1 1.301: oculis ~ cernere",
+     "lat LucrDRN1 1.342: oculos ~ cernimus"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h3ed-bite",
+   "branches": {
+    "Greek": [
+     120,
+     58.5,
+     2.1
+    ],
+    "Italic": [
+     2,
+     0.3,
+     7.5
+    ]
+   },
+   "examples": {
+    "Greek": [
+     "hom Il. 19.365: ὄσσε ~ ὀδόντων",
+     "grc Pythagoras Fragmenta astrologica ? s30 (w2/2): ἀνθρωπινώτεροι ~ ὀδόντας",
+     "grc Herodotus Historiae 2.68.3 s1: ὀφθαλμοὺς ~ ὀδόντας"
+    ],
+    "Italic": [
+     "lat LucrDRN5 5.1283: antiqua ~ dentes",
+     "lat LucrDRN6 6.659: oculos ~ dentes"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-weyd-see",
+   "branches": {
+    "Slavic": [
+     60,
+     16.5,
+     3.6
+    ],
+    "Italic": [
+     22,
+     5.7,
+     3.8
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "byliny sbornikotdelenijarusskogojazykaislovesno32:25642: окно ~ видитъ",
+     "byliny 10945725bsb:19072: окна ~ увидЪль",
+     "byliny pesnisobrannyepvkireevskimch2vyp57:12467: очи ~ завистливыя"
+    ],
+    "Italic": [
+     "lat CatAgr 157.10 (w3/3): oculi ~ uidebunt",
+     "lat Catul 63.48: oculis ~ uisens",
+     "lat LucrDRN1 1.310: oculi ~ uidere"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kwer-do",
+   "branches": {
+    "Celtic": [
+     13,
+     3.3,
+     3.9
+    ],
+    "Slavic": [
+     7,
+     2.0,
+     3.5
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga G100027:#1/649~2/649.1:81: einech ~ chrud",
+     "mga G100001A:#1/U1119/U1119.8:1 (w1/2): ainech ~ cruth",
+     "mga G100010A:#1/LC1119/LC1119.6:1 (w1/2): einech ~ cruth"
+    ],
+    "Slavic": [
+     "byliny pesnisobrannyepnrybnikovymch1narod12:16183: очи ~ чарочку",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:16306: очи ~ чарочку",
+     "byliny pesnisobrannyepnrybnikovymch1narod12:17990: окошко ~ чару"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-nebh-become_damp",
+   "branches": {
+    "Slavic": [
+     8,
+     2.1,
+     3.8
+    ],
+    "Indo-Iranian": [
+     4,
+     1.2,
+     3.3
+    ]
+   },
+   "examples": {
+    "Slavic": [
+     "ccmh marianus 3181300: очию ~ небо",
+     "ccmh suprasliensis 1002124: очи ~ небо",
+     "ccmh suprasliensis 1082109: очи ~ небо"
+    ],
+    "Indo-Iranian": [
+     "sa-ep MBh, 4, 64.s61: anīkaṃ ~ abhra",
+     "sa-ep MBh, 7, 7.s17: anīkam ~ abhrāṇi",
+     "sa-ep Rām, Yu, 53.s95: anīkam ~ abhra"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-bhel-blaze",
+   "branches": {
+    "Germanic": [
+     5,
+     1.3,
+     3.8
+    ],
+    "Baltic": [
+     2,
+     0.6,
+     3.2
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-519a-4to 15r:19: augu ~ Bleikt",
+     "menota DG-8-OHleg 0096:21 (w6/14): augu ~ blaðraðe",
+     "menota HolmPerg-4-fol 1-334:11: augu ~ bleikt"
+    ],
+    "Baltic": [
+     "dainos Lietuvi-kos-svotbin-s-dainos-1883:63777: Akis ~ baltas",
+     "lv BV 28576: ac's ~ balts"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ep-water",
+   "branches": {
+    "Celtic": [
+     2,
+     0.8,
+     2.4
+    ],
+    "Greek": [
+     71,
+     15.5,
+     4.6
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "ga-early G100011:#1/1462/1462.2:3 (w2/2): n-inchaib ~ abainn-sin",
+     "ga-early G100080:#1/5:127 (w2/2): eineach ~ abhainn"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De morbis popularibus 6.8.17 s1: ὄψις ~ ἁφὴ",
+     "grc Aristoteles et Corpus Aristotelicum De anima 2.11 s60: ὄψις ~ ἁφὴ",
+     "grc Aristoteles et Corpus Aristotelicum De anima 3.1 s1: ὄψιν ~ ἁφήν"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-leh2w-seize",
+   "branches": {
+    "Celtic": [
+     8,
+     2.5,
+     3.2
+    ],
+    "Germanic": [
+     5,
+     1.6,
+     3.2
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "sga celtic-journal-zcp-1897-1926:zeitschriftfurcelti14:L23380-L23382: n-einech ~ log",
+     "sga celtic-journal-zcp-1897-1926:zeitschriftfurcelti14:L23396-L23400 (w1/2): einech ~ loge",
+     "sga celtic-journal-zcp-1897-1926:zeitschriftfurcelti14:L23462-L23464: n-einech ~ log"
+    ],
+    "Germanic": [
+     "menota NRA-norrfragm-77 3v:18: augum ~ laun",
+     "rea-goh Z-Notker-Psalmen N_Ps_018 v21: oûgon ~ lon",
+     "rea-goh Z-Notker-Psalmen N_Ps_102 v24:  ~ lônes"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-gjews-taste",
+   "branches": {
+    "Germanic": [
+     14,
+     3.8,
+     3.7
+    ],
+    "Greek": [
+     50,
+     19.8,
+     2.5
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "rea-goh Physiologus APh_12_Eidechse vn/a (w2/3): ougan ~ kivset",
+     "rea-goh Tatian T_Tat39 vn/a (w4/4): ougen ~ curet",
+     "rea-goh Tatian T_Tat126 vn/a (w3/4): Ouget ~ costot"
+    ],
+    "Greek": [
+     "grc Hippocrates et Corpus Hippocraticum De alimento 27 s2: ὀφθαλμοὶ ~ γεύσιες",
+     "grc Plato Respublica 8.565d s7: ἀνθρωπίνου ~ γευσάμενος",
+     "grc Aristoteles et Corpus Aristotelicum De anima 2.6 s5: ὄψις ~ γεῦσις"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-wey",
+   "branches": {
+    "Celtic": [
+     4,
+     1.3,
+     3.1
+    ],
+    "Germanic": [
+     2,
+     0.7,
+     2.9
+    ]
+   },
+   "examples": {
+    "Celtic": [
+     "mga G800011D:#1/10:245: einech ~ feile",
+     "mga celtic-journal-zcp-1897-1926:zeitschriftfrc07meyeuoft:L18243-L18244: einech ~ feile",
+     "ga-early G100054:#1/0/1:5 (w4/4): n-eineach ~ bhféile"
+    ],
+    "Germanic": [
+     "menota AM-519a-4to 4r:24: augu ~ vita",
+     "icepahc 1300.alexander.nar-sag s779: auga ~ öru"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-kjweyt-shine",
+   "branches": {
+    "Germanic": [
+     5,
+     2.3,
+     2.2
+    ],
+    "Slavic": [
+     22,
+     5.7,
+     3.9
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota HolmPerg-4-fol 2-147:19 (w2/2): augu ~ hvita",
+     "rea-goh Monsee MF_1_M.IX vn/a (w6/6): araugitun ~ hueizi",
+     "rea-goh Tatian T_Tat141 vn/a (w15/21): ougent ~ giuuiziten"
+    ],
+    "Slavic": [
+     "byliny ruws 391421:192: очахъ ~ свѣтъ",
+     "byliny ruws 391421:210: очахъ ~ свѣтъ",
+     "byliny ruws 391421:230: очахъ ~ свѣтъ"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-melh2-black",
+   "branches": {
+    "Indo-Iranian": [
+     2,
+     0.5,
+     3.7
+    ],
+    "Greek": [
+     116,
+     55.6,
+     2.1
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "av AVŚ, 10, 5.s62: pratīkāḥ ~ malaṃ",
+     "sa-ep Rām, Su, 27.s9: akṣyāḥ ~ amala"
+    ],
+    "Greek": [
+     "grc Euripides Troiades 1315: ὄσσε ~ μέλας",
+     "grc Euripides Phoenisae 950: ὄμμασιν ~ μέλαιναν",
+     "grc Herodotus Historiae 2.76.1 s2: πρόσωπον ~ μέλαινα"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h2ewsoxs",
+   "branches": {
+    "Armenian": [
+     3,
+     1.2,
+     2.5
+    ],
+    "Indo-Iranian": [
+     4,
+     1.3,
+     3.0
+    ]
+   },
+   "examples": {
+    "Armenian": [
+     "xcl MH_1_1_05_Eznik ed. page 489 - PDF page 57 (word id 25503) (w1/2): արեգակն. ~ ցայգ",
+     "xcl MH_1_1_05_Eznik ed. page 489 - PDF page 57 (word id 25700): աչս ~ ցայգ",
+     "xcl MH_1_2_12_Movses_Khor ed. page 2159 - PDF page 416 (word id 68152) (w2/2): արեգականն ~ առաւաւտն"
+    ],
+    "Indo-Iranian": [
+     "rv RV 5.76.1a: ánīkam ~ uṣásām",
+     "rv RV 6.47.5b: ánīke ~ uṣásām",
+     "rv RV 6.50.8c: prátīkam ~ uṣásaḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-poxds",
+   "branches": {
+    "Germanic": [
+     11,
+     4.7,
+     2.4
+    ],
+    "Italic": [
+     4,
+     1.5,
+     2.7
+    ]
+   },
+   "examples": {
+    "Germanic": [
+     "menota AM-63-fol 279: (w3/13): augo ~ fót",
+     "menota HolmPerg-17-4to 1r:1 (w172/1727): augum ~ fœtr",
+     "menota HolmPerg-34-4to-MLL 23v:9: augu ~ fót"
+    ],
+    "Italic": [
+     "lat CatAgr 6.3 (w3/3): oculos ~ pedes",
+     "lat CatAgr 47.1 (w1/2): oculos ~ pedes",
+     "lat LucrDRN4 4.791: oculis ~ pede"
+    ]
+   }
+  },
+  {
+   "root": "pie-root-h2ews-become_light",
+   "branches": {
+    "Armenian": [
+     3,
+     1.2,
+     2.5
+    ],
+    "Indo-Iranian": [
+     4,
+     1.6,
+     2.5
+    ]
+   },
+   "examples": {
+    "Armenian": [
+     "xcl MH_1_1_05_Eznik ed. page 489 - PDF page 57 (word id 25503) (w1/2): արեգակն. ~ ցայգ",
+     "xcl MH_1_1_05_Eznik ed. page 489 - PDF page 57 (word id 25700): աչս ~ ցայգ",
+     "xcl MH_1_2_12_Movses_Khor ed. page 2159 - PDF page 416 (word id 68152) (w2/2): արեգականն ~ առաւաւտն"
+    ],
+    "Indo-Iranian": [
+     "rv RV 5.76.1a: ánīkam ~ uṣásām",
+     "rv RV 6.47.5b: ánīke ~ uṣásām",
+     "rv RV 6.50.8c: prátīkam ~ uṣásaḥ"
+    ]
+   }
+  },
+  {
+   "root": "pie-lex-h1oh3s",
+   "branches": {
+    "Indo-Iranian": [
+     4,
+     1.6,
+     2.5
+    ],
+    "Italic": [
+     3,
+     1.4,
+     2.2
+    ]
+   },
+   "examples": {
+    "Indo-Iranian": [
+     "av AVP, 4, 7.s1: akṣībhyāṃ ~ āsyād",
+     "sa-ep MBh, 6, 58.s72: anīkam ~ āsyaḥ",
+     "sa-ep MBh, 6, 59.s43: anīkāni ~ āsyam"
+    ],
+    "Italic": [
+     "lat Catul 9.9: oculos ~ os",
+     "lat Catul 63.39: oculis ~ oris",
+     "lat LucrDRN2 2.511: oculis ~ oris"
+    ]
+   }
+  }
+ ]
+}
