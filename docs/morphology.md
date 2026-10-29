@@ -119,6 +119,18 @@ The order is: a Wiktionary table if the entry has one; otherwise a shape rule on
 
 **Coverage:** 4,476 of 6,363 words and derivatives get a spec, and **3,453 are usable** (1,652 nouns, 1,649 verbs, 152 adjectives). These cover **821 of 885 roots** (691 of 730 verbal). The 1,798 unknowns are mostly bound stems (forms ending in a hyphen, which are not words) plus lemma shapes with no rule yet.
 
+## Accent from a Vedic or Greek reflex (2026-10-29)
+
+A headword without an accent is missing information (`data/morph/accent_unresolved.json`). `pie/accent_reflex.py` supplies it only from the lexeme's own accented reflex, where the correspondence is regular, and `scripts/accent_from_reflexes.py --write` records each as a form override naming the reflex (`accent_source`). The conditions:
+
+- **Language:** Ancient Greek, or Sanskrit with a written (Vedic) accent. Never a reconstruction (Proto-Hellenic, Proto-Indo-Iranian), a loan, an analogical form or a name.
+- **Shape class:** thematic nouns and adjectives (*-os/-om*: Gk *-ος/-ον*, Ved. *-a-*), eh₂-stems (Gk *-ᾱ/-η/-α*, Ved. *-ā*), and thematic presents from Vedic *-ati* only. Greek finite verbs are recessive and are never used.
+- **Syllables:** the reflex has as many syllables as the PIE form, and the accented syllable is the same one counted from the end. Prothesis or a compound changes the count, so the form is skipped.
+- **Greek limits:** in a word of three or more syllables, an antepenult accent is the recessive position (privative and other compounds are recessive by rule: ἄσπετος, βλάσφημος), and a penult accent before a long final may come from the law of limitation. Neither is used; final accents, penults before a short final, and disyllables are.
+- **Agreement:** every usable reflex must give the same position. Greek and Vedic disagreeing gives nothing.
+
+Result: 69 lexemes (e.g. *lóǵos* < λόγος, *kerpós* < καρπός, *bʰowdʰós* < Ved. *bodhá-*, *wértenom* < Ved. *vártana-*). Accents from a handbook are separate, cited overrides (*bʰeh₂ǵós*, M&A 2006). Not covered: athematic stems (the reflex accent does not map onto a strong/weak pair without a paradigm), table specs with unaccented stems, and lexemes with no Greek or Vedic reflex (the large majority of the 795).
+
 ## Verification against Fortson and Ringe (2026-10-23)
 
 A subagent compared every golden cell and every closed-class form with Fortson 2010 (ch. 6–7) and, where Fortson is silent, Ringe 2017 (ch. 2). Result: 236 rows, **144 match, 32 differ, 60 not printed** (`raw/books/extract/fortson/diff.jsonl`, local). The differences were applied to the `handbook` convention, with the Wiktionary-convention forms kept as alternatives (cross-check unchanged at 98.8%):

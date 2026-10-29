@@ -159,3 +159,41 @@ def test_slice_items_flag_confirmed_glosses(tmp_path, lx):
         assert items["pie-lex-lokus"]["gloss_source"] == "reflex-confirmed"
     finally:
         out.unlink(missing_ok=True)
+
+
+# 4. accents from Vedic or Greek reflexes (pie/accent_reflex.py) ---------------------------------------------------
+
+def _accent_overrides():
+    rows = [json.loads(x) for x in (ROOT / "data/lexicon/overrides.jsonl").read_text("utf-8").splitlines()]
+    return [r for r in rows if r.get("accent_source")]
+
+
+def test_every_reflex_accent_is_rederived_from_the_lexicon(lx):
+    from pie.accent_reflex import accented, position
+    rows = _accent_overrides()
+    assert len(rows) == 69
+    for r in rows:
+        e = lx.entries[r["id"]]
+        assert e["form"] == r["form"], r["id"]
+        old = e["variants"][-1]           # the form override keeps the old headword as the last variant
+        p = position(old, lx.specs[r["id"]]["rule"], e["reflexes"])
+        assert p is not None and accented(old, p[0]) == r["form"], r["id"]
+        cited = {(u["lang"], u["form"]) for u in r["accent_source"]}
+        assert cited <= {(lang, x["form"]) for lang, xs in e["reflexes"].items() for x in xs}, r["id"]
+        assert lx.accent_status(r["id"]) == "resolved"
+
+
+def test_reflex_accent_rule_cases():
+    from pie.accent_reflex import position
+    G = lambda *f: {"Ancient Greek": [{"form": x, "roman": x} for x in f]}
+    assert position("loǵos", "shape:thematic", G("lógos"))[0] == 2
+    assert position("kerpos", "shape:thematic", G("karpós"))[0] == 1
+    # recessive antepenult (ἄσπετος, a compound) and a Greek finite verb say nothing
+    assert position("n̥skʷetos", "shape:thematic", G("áspetos")) is None
+    assert position("bʰereti", "shape:thematic-present", G("phérō")) is None
+    # Vedic decides a thematic present; Vedic and Greek disagreeing decide nothing
+    V = {"Sanskrit": [{"form": "x", "roman": "bhárati"}]}
+    assert position("bʰereti", "shape:thematic-present", V)[0] == 3
+    assert position("woros", "shape:thematic", {**G("ourós"), "Sanskrit": [{"form": "x", "roman": "vā́ra"}]}) is None
+    # a different syllable count (prothesis, compounds) says nothing
+    assert position("stegos", "shape:thematic", G("astégos")) is None
