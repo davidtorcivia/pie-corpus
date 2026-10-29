@@ -8,3 +8,7 @@ These are fixed centrally after wave 1, before wave 2 starts. Each item names th
 - **Conversation gaps**: question words, names, greetings (agent in progress); "here" (project reconstructions / deictic_ki).
 - **Slice keyword gaps**: fox, fly, nest, beak and hunger were not offered (t028).
 - **The PIE text doesn't mark who is speaking**, so dialogue reads as a run of lines (t024 review).
+- **neg + 1st-person subjunctive always gives *mē***: "I shall not …" comes out as "let me not …", and plans have no way to ask for *ne* (t028).
+- **Say/drive verbs share some forms**: *h₂éǵt* stood where a 'drive' form was meant. Add a warning for homophonous cells (t030).
+- **Pronoun number**: the brief lists SG|PL only, although DU works, and pronoun number isn't checked against the English (t030).
+- **Antecedent checker**: its two-clause window gives false positives on story topics (t028).
