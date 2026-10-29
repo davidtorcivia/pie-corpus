@@ -2,8 +2,9 @@
 
 Exploratory, outside the pre-registered measures, in the manner of
 `8c-collocation-scans.md`. Tool: `scripts/collocates_8c.py`, window ±4, over the search
-index as rebuilt today after the corpus-quality batch (`corpora.sqlite`, 28 Oct 22:41;
-not rebuilt here). Scan outputs (forms and loci only):
+index as rebuilt today after the corpus-quality batch (the 22:41 build; not rebuilt here).
+A later rebuild (cq2, 23:50) landed after the scans. The build used here is now
+`corpora.pre-cq2.sqlite`, and the counts below are from that build. Scan outputs (forms and loci only):
 `data/research/leads/expansion-2026-10-28-scans/<seed>.json`. Candidate rows:
 `data/research/leads/expansion-2026-10-28.jsonl`. Mapping errors:
 `data/research/formulas/mapping-errors-lead-expansion.jsonl`.
@@ -13,7 +14,8 @@ not rebuilt here). Scan outputs (forms and loci only):
 The method is the one in `8c-collocation-scans.md`. For each seed, `--target` listed the
 cross-branch collocates. For each promising collocate, a `--pair` run listed every hit per
 branch. A scratch variant of `--pair` used the same window logic and also printed the matched
-form pair. I then read each hit in its unit and the two units on either side, with the
+form pair. As a spot check, the tool's own `--pair` on that build (heart + *men-*, window 3) gives the
+same per-branch counts (81/27/11/7/1). I then read each hit in its unit and the two units on either side, with the
 lemma/root of every word shown, and checked the etymology of the words that carried the
 match. Atharvaveda loci are given as verses
 (`pie.formula_search_multi.dcs_verse_citation`, the 8c erratum rule). "(inf.)" marks a verse
@@ -68,9 +70,9 @@ or translation wording; **mapping error** = the match rests on a wrong key.
 | fire | Fire + water in 5 branches (*péh₂wr̥* + *wódr̥*; in Slavic, Serbian *огањ … вода* has *h₁n̥gʷnis*): Hitt. *paḫḫur … watar* (KBo 53.33+ Rs. IV 4, a ritual 'as this fire is quenched'; KUB 34.85+; HKM 116), Hom. (Il. 18.348 = Od. 8.437 boiling water, Od. 4.418), Theognis 1245, Pind. Ol. 1.1, Toch. A 647 14a2 *poryo … wäryo*. The OHG hits are Latin-model (Tatian 92 = Matt. 17:15; Notker Ps. 65). Fire + kindle: RV *agnínā idhyate* ~ πυρὸς αἰθομένοιο (the noun is renewed). Fire + quench (*sgʷes-*): Hom. πῦρ … ἔσβεσεν ~ Serbian *огањ … гаси*. Fire + worm: Mark 9:48 and AV. Living fire: Serbian epic *живи огањ* (88 units), OHG Notker *quecchemo fiure* (Boethius). Fire + stone: RV 2.12.3c ~ a Lith. daina that does not match. | Fire and water: **generic** (a natural pair everywhere; West ch. 6 has fire and water as elemental deities, after Hdt. 1.131.2). The rest: generic or Biblical. |
 | water | Water + imperishable: Hes. Th. 805 Στυγὸς ἄφθιτον ὕδωρ ~ Ved. *útsa- ákṣita-* (RV 1.64.6d, 8.7.16c, 9.110.5b; AVŚ 4.27.2ab, 18.4.36ab, 3.24.4 (inf.)) and *āpo … akṣitāḥ* (AVŚ 10.6.14). Water + wind, flow, drink, sea, salt, snow, deep: everyday pairs. Water + bottom: RV *budhné apā́m* ~ πυθμήν in Aristotle and Heron only. | Imperishable water: **candidate (weak)**, a re-find of B023/B065. Not found in the held literature, but Nagy 1974 (not held) is the likely source. The rest: generic. |
 | horse | Horse + cow (RV *áśvaiḥ … góbhiḥ*, Il. 23.260, OIr *ech … bó* in laws and annals), swift horses, yoking, conveying, chariot. | Swift horses: known (Watkins p. 12; Schmitt §§493–497). Horse and cow: generic wealth pair. |
-| cow | Barren cow (*sterih₂-*): RV 1.116.22d *staryàm … gā́m*, 7.23.4a *staryàḥ ná gā́vaḥ* ~ Od. 10.522 = 11.30 στεῖραν βοῦν, Od. 20.186. Raw + cow: the Vedic paradox *pakvám āmā́su* (RV 1.180.3b, 3.30.14b) vs Od. 12.396 ὀπταλέα τε καὶ ὠμά (κρέα), where βοῶν goes with φωνή, so the construction is not parallel. Cows of the Sun (Od. 12 ~ RV 7.36.1b *sū́ryo gā́ḥ*). Driving cattle (OIr *táin bó*, RV *gā́ ajati*). Cows and sheep, ox, plough, yoke, milk: everyday. Speckled cow: RV *gaúḥ pŕ̥śniḥ* ~ MIr *erc*. | Barren cow: **known** at word level (Mallory–Adams ch. 11, p. 194: *ster-* 'usually a barren cow'). The phrase with *gʷṓws* is not stated, but it is lexical, and the contexts differ (an Aśvin miracle vs an offering). Cows of the Sun: known (West ch. 5). Cattle raid: known. Raw/cooked: not parallel. The rest: generic. |
+| cow | Barren cow (*sterih₂-*): RV 1.116.22d *staryàm … gā́m*, 7.23.4a *staryàḥ ná gā́vaḥ* ~ Od. 10.522 = 11.30 στεῖραν βοῦν, Od. 20.186. Raw + cow: the Vedic paradox *pakvám āmā́su* (RV 1.180.3b, 3.30.14b) vs Od. 12.396 ὀπταλέα τε καὶ ὠμά (κρέα), where βοῶν goes with φωνή, so the construction is not parallel. Cows of the Sun (Od. 12 ~ RV 7.36.1b *sū́ryo gā́ḥ*). Driving cattle (OIr *táin bó*, RV *gā́ ajati*). Cows and sheep, ox, plough, yoke, milk: everyday. Speckled cow: RV *gaúḥ pŕ̥śniḥ* ~ MIr *erc*. | Barren cow: **known** at word level (Mallory–Adams ch. 11, p. 194: *ster-* 'barren', mostly said of cows). The phrase with *gʷṓws* is not stated, but it is lexical, and the contexts differ (an Aśvin miracle vs an offering). Cows of the Sun: known (West ch. 5). Cattle raid: known. Raw/cooked: not parallel. The rest: generic. |
 | word | Root scan: hear + word (*ḱlew-* + *wékʷos*): RV 1.145.3b, 10.65.13c, 10.66.11c *śr̥ṇavat vácāṃsi me*; AVŚ 10.1.28 (inf.) *śṛṇu me vacaḥ*; AVP 5.26.2ab; Il. 16.236 = 14.234 ἐμὸν ἔπος ἔκλυες. Word + name: ON *nefndi vátta* (law formula), Slavic noise. | Hear my word: **candidate**, a re-find of C022 (partly known: 'hear me' in Schmitt 1967 §§396–405 and West ch. 8, where Il. 14.234 and 16.236 are cited for the 'as you heard before' topos; the cognate object is not stated). Already poetics-gifts-016. |
-| sky/day | Day + night (Lat. *diem noctem*, RV *dyúbhir aktúbhiḥ*, Serbian, Lith.); Daughter of Sky; immortal gods; seat of the gods (RV *diví sádaḥ*, Eur. Ion 870 Διὸς ἕδος); pray/vow (εὔχετο Διί ~ Catull. 36.10 *uouere diuis*). | Daughter of Sky, immortal gods, seat of the gods (West ch. 3): known. The vow is not parallel: Διί vs *diuis* is root-level only, and the verbs are cognate only under a unified *h₁wegʷʰ-* (the index key). Mallory–Adams pp. 356–357 list εὔχομαι under *h₁eugʷʰ-* and *uoueō* under *wegʷʰ-*, as "probably related". Day and night: generic. |
+| sky/day | Day + night (Lat. *diem noctem*, RV *dyúbhir aktúbhiḥ*, Serbian, Lith.); Daughter of Sky; immortal gods; seat of the gods (RV *diví sádaḥ*, Eur. Ion 870 Διὸς ἕδος); pray/vow (εὔχετο Διί ~ Catull. 36.10 *uouere diuis*). | Daughter of Sky, immortal gods, seat of the gods (West ch. 3): known. The vow is not parallel: Διί vs *diuis* is root-level only, and the verbs are cognate only under a unified *h₁wegʷʰ-* (the index key). Mallory–Adams pp. 356–357 list εὔχομαι under *h₁eugʷʰ-* and *uoueō* under *wegʷʰ-*, and take the two as likely related. Day and night: generic. |
 | night | Night and Dawn, dark night, night + sleep, midnight, evening, moon, stars. | As 8c: Night and Dawn known; the rest generic. |
 | earth | Heaven and earth (Hitt. *nepiš tekan*, Serbian *небо земља*), 'earthly mortals' (ἐπιχθόνιοι βροτοί), the earth trembles. Celtic hits are *duine* 'person'. | Known or generic. |
 | king | *h₃rēǵs* has 12,711 Indo-Iranian units but only 38 Latin, 13 Germanic and 599 Celtic (*rí*). The only collocate is king + queen. | Generic; little cross-branch material (coverage). |
@@ -93,7 +95,7 @@ or translation wording; **mapping error** = the match rests on a wrong key.
 
 These are recorded in `data/research/formulas/mapping-errors-lead-expansion.jsonl` (five rows) for
 the next corpus-quality batch. Mahābhārata loci there are DCS sentence labels
-('MBh, 5, 123.s22'), not verse numbers.
+('MBh, 5, 123.s22'), not verse numbers. All three errors are still present, with the same counts, in the 23:50 cq2 build.
 
 - **Ved./Epic *√dam* 'tame' keyed to *dóm* / *dem-* 'house, build'** as well as to
   *demh₂-* 'tame'. The likely cause is the homograph *dám-* 'house'. This affects 209 sa-ep
