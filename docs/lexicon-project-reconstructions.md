@@ -128,3 +128,181 @@ These are in `lexicon.jsonl`, but their specs are unusable or they have no dicti
 - `pie-lex-bhey` "bee"
 - `pie-lex-nid` "nit"
 - `pie-lex-kjerh2os` *ḱérh₂os* (Gk κέρας "horn"): usable, but no gloss
+
+## Round 2 (2026-10-28)
+
+Requested by the wave-1 planners (judge, witness, owe/debt, sell, swear, sick/illness, spring, grave, long, wait, mounted, beak, sing, love, thank/praise, here, grey, man/human), plus a search for missing everyday words. What happened to each request is in `docs/audits/unusable-requests-round2.md`. Most of the requested words, and most everyday words, **already exist** in `lexicon.jsonl`. They are unusable or have no dictionary gloss, so they are listed there and not duplicated here.
+
+Round 2 adds the first adjectives (`family: "adj"`, thematic: `m_strong` only) and the first verb (`family: "verb"`, thematic present: `strong`, `kind: "impf"`). They use the same engine paradigms as the lexicon's `shape:thematic-adj` and `shape:thematic-present` specs. The nouns use shapes already proven in the lexicon: thematic m., acrostatic i-stem (as *h₁ógʷʰis*), neuter s-stem (as *h₂éḱos*) and u-stem (as *bʰébʰrus*). `tests/test_project_reconstructions.py` realizes each entry through `check_plan` + `realize`, and checks that `make_slice.py` offers it flagged.
+
+Sound-law checks, round 2: 18 run, 0 warnings.
+
+| Id | Form | Gloss | Branches (same formation) | Checks |
+|---|---|---|---|---|
+| `pie-proj-kjasnos` | *ḱásnos* adj. | grey, hoary | Italic, Germanic | 2 (Lat. c-, PGmc h-) |
+| `pie-proj-kolsos` | *kólsos* m. | neck | Italic, Germanic | 2 (Lat. c-, PGmc h-) |
+| `pie-proj-bhodhHros` | *bʰodʰHrós* adj. | deaf | Indo-Iranian, Celtic | 1 (Skt Grassmann b-) |
+| `pie-proj-konHis` | *kónHis* f. | ashes, dust | Greek, Italic | 2 (Gk k-, Lat. c-) |
+| `pie-proj-lh2eywos` | *lh₂eywós* adj. | left | Italic, Greek, Slavic | 2 (Gk l-, Lat. l-) |
+| `pie-proj-reydheti` | *réydʰeti* | to ride; to move, rock | Germanic, Celtic, Baltic | 1 (PGmc r-) |
+| `pie-proj-swerghos` | *swérgʰos* m. | illness, sickness | Celtic, Tocharian | 1 (PGmc s-, root-level) |
+| `pie-proj-gwhermos` | *gʷʰermós* adj. | warm, hot | Greek, Armenian (Albanian) | 3 (Skt gh-, Gk th-, Lat. f-) |
+| `pie-proj-moghus` | *mógʰus* m. | boy, young man; servant (Celtic) | Germanic, Celtic | 1 (PGmc m-) |
+| `pie-proj-h3enos` | *h₃énos* n. | load, burden; wagon-load (Indic) | Italic, Indo-Iranian | 1 (Lat. o- colouring) |
+| `pie-proj-keh2ros` | *keh₂rós* adj. | dear, beloved; desired | Italic, Baltic, Germanic, Gaulish | 2 (Lat. c-, PGmc h-) |
+
+### *ḱásnos* "grey" (`pie-proj-kjasnos`)
+
+| Branch | Reflex | Same formation | Cited |
+|---|---|---|---|
+| Italic | Lat. *cānus* "white, grey (of hair)" (PIt. *kasno-*) | yes | de Vaan s.v.; Kroonen; M&A |
+| Germanic | PGmc *hasna-* (OHG *hasan* "mat, dull"; de Vaan "grey, shining") | yes | Kroonen s.v. *haswa- |
+| Italic | Osc. (de Vaan: Pael.) *casnar* "old man" | no (derivative) | M&A; de Vaan |
+| Germanic | OE *hasu*, ON *hǫss* "grey" (*haswa-*) | no (-wo-) | Kroonen; de Vaan |
+
+- Handbooks: de Vaan 2008 s.v. *cānus*; Kroonen 2013 s.v. *haswa-* ("OHG *hasan* < *hasna-*, the same suffixation as Lat. *cānus*"); Mallory–Adams 2006 §20.4.
+- Honest notes: this is the adjective the hare word (`pie-proj-kjasos`) is named from. The root vowel is *a*, as in the hare word. Germanic's colour sense is weak ("mat, dull"). **Accent:** PGmc *hasna-* keeps voiceless *s*, not Verner *z*, which fits a root accent, so the project writes *ḱásnos*. For "grey wolf", the better-attested *pelH-wo-* adjective exists but is unusable (`pie-lex-polHwos`; see the audit).
+- Spec: adj, thematic, `m_strong` `ḱásno`.
+
+### *kólsos* m. "neck" (`pie-proj-kolsos`)
+
+| Branch | Reflex | Same formation | Cited |
+|---|---|---|---|
+| Italic | Lat. *collus* m. (Naev.+), *collum* n. (Cic.+) "neck" (-ll- < *-ls-) | yes | de Vaan s.v. collus; Kroonen |
+| Germanic | PGmc *halsaz* m. (Go., ON, OHG *hals*, OE *heals*) | yes | Kroonen s.v. *halsa- |
+
+- Handbooks: Kroonen 2013 s.v. *halsa-* (*kols-o-*); de Vaan 2008 s.v. *collus* ("safer to reconstruct only *kolso-*"); M&A 2006 §11.1.
+- Honest notes: de Vaan also allows *kʷol(H)-s-o-*, from the "wheel" s-stem. Kroonen rejects it, since the loss of labialization would be irregular. MIr. *coll* "head" may be a loan from Latin, so it is not counted. **Accent:** root accent, because PGmc *hals-* has no Verner *z*.
+- Spec: noun, thematic, `kólso`, m.
+
+### *bʰodʰHrós* "deaf" (`pie-proj-bhodhHros`)
+
+| Branch | Reflex | Same formation | Cited |
+|---|---|---|---|
+| Indo-Iranian | Ved. *badhirá-* "deaf" (RV+) | yes | EWAia II s.v.; Matasović; M&A |
+| Celtic | OIr. *bodar*, MW *byddar*, Bret. *bouzar* "deaf" (PCelt. *bodaro-*) | yes | Matasović s.v. *bodaro- |
+
+- Handbooks: Matasović 2009 s.v. *bodaro-* (PIE *bʰod(ʰ)Hro-*); EWAia II s.v. *badhirá-*; M&A 2006 §11.7 ("a strong Celtic-Indic isogloss").
+- Honest notes: **EWAia calls the Sanskrit word "not clear"** and only allows the Celtic link. The laryngeal is vocalized regularly in both daughters (Skt *i*, Celtic *a*), but it cannot be identified. The oxytone accent is from Vedic.
+- Spec: adj, thematic, `bʰodʰHró`.
+
+### *kónHis* f. "ashes, dust" (`pie-proj-konHis`)
+
+| Branch | Reflex | Same formation | Cited |
+|---|---|---|---|
+| Greek | κόνις f. "dust, ashes" | yes | Beekes s.v.; de Vaan |
+| Italic | Lat. *cinis* m./f. "ashes" (*ken(H)-i-*, the e-grade stem; remade as an s-stem) | yes | de Vaan s.v. cinis |
+| Tocharian | B *kentse* "dust; rust" (*kon-is-o-*) | no | de Vaan; M&A |
+
+- Handbooks: de Vaan 2008 s.v. *cinis* ("a PIE i-stem noun *kon(H)i-/*ken(H)-i-*"); Beekes 2010 s.v. κόνις; M&A 2006 §8.2.
+- Honest notes: plain *k* or palatal *ḱ* cannot be decided. The laryngeal is only possible (de Vaan writes *(H)*, M&A *kenHis*). Greek generalized the o-grade and Latin the e-grade of one acrostatic paradigm.
+- Spec: noun, acrostatic i-stem, strong `kónHi`, weak `kénHi`, f. (the pattern of *h₁ógʷʰis*). Gen. sg. *kénHis*.
+
+### *lh₂eywós* "left" (`pie-proj-lh2eywos`)
+
+| Branch | Reflex | Same formation | Cited |
+|---|---|---|---|
+| Italic | Lat. *laevus* "left" | yes | de Vaan s.v.; Beekes; M&A |
+| Greek | λαιός (< *λαιϝός) "left" | yes | Beekes s.v. λαιός 1 |
+| Slavic | PSl. *lěvъ* AP (c) (OCS *lěvъ*, Ru. *lévyj*) | yes | Derksen 2008 s.v. |
+| Tocharian | B *laiwo* "lassitude" | no | de Vaan; M&A |
+
+- Handbooks: de Vaan 2008 s.v. *laevus*; Beekes 2010 s.v. λαιός; Derksen 2008 s.v. *lěvъ* (PIE *lh₂eiwo-*); M&A 2006 §18.3.
+- Honest notes: *leh₂i-wo-* (Beekes; de Vaan's first choice) and *lh₂ei-wo-* (Derksen, Schrijver) give the same daughters. The project follows Derksen, because the Slavic accent decides between them. The accent is oxytone (Gk λαιός, Slavic AP c). The lexicon already has a usable "left", *sewyós* (`pie-lex-sewyos`).
+- Spec: adj, thematic, `lh₂eywó`.
+
+### *réydʰeti* "to ride" (`pie-proj-reydheti`, root `pie-root-reydh-move_swayingly`)
+
+| Branch | Reflex | Same formation | Cited |
+|---|---|---|---|
+| Germanic | PGmc *rīdaną* "to ride; move, rock" (ON *ríða*, OE *rīdan*, OHG *rītan*) | yes | Kroonen s.v. *rīdan-; LIV |
+| Celtic | OIr. *réidid*, *-réid* "rides" (PCelt. *red-o-*) | yes | LIV; Matasović s.v. *red-o- |
+| Baltic | Lith. *riedu* (*riedėti*) "roll (along)" | yes | LIV; Kroonen |
+| Celtic | Gaul. *rēda* "wagon"; PCelt. *wo-redo-* "horse" | no | Matasović |
+
+- Handbooks: LIV² s.v. *rei̯dʰ-* (p. 502: present *réi̯dʰ-e-*); Kroonen 2013 s.v. *rīdan-*; Matasović 2009 s.v. *red-o-*; M&A 2006 §22.17 ("a Celtic-Germanic isogloss").
+- Honest notes: this is a north-western verb ("ride" in Germanic and Celtic, "roll" in Baltic). Kroonen and Matasović write an initial laryngeal (*Hreidʰ-*, *(H)reydʰ-*) that no daughter shows, so the project follows LIV. It is a different verb from `pie-lex-h2reydheti` *h₂réydʰeti* "arrange". LIV calls the Baltic acute problematic. This answers the planners' "mounted (on horseback)": the participle *réydʰonts* means "riding", and no adjective "mounted" reconstructs.
+- Spec: verb, thematic present, strong `réydʰe`, `kind: "impf"`. 3 pl. *réydʰonti*.
+
+### *swérgʰos* m. "illness" (`pie-proj-swerghos`, root `pie-root-swergh-be_ill`)
+
+| Branch | Reflex | Same formation | Cited |
+|---|---|---|---|
+| Celtic | OIr. *serg* m. o-stem "illness" (PCelt. *swergo-*) | yes | Matasović s.v. *swergo-; LIV; M&A |
+| Tocharian | A *särk* "illness, sickness" | yes (stem class not certain) | LIV; Matasović; Adams |
+| Baltic | Lith. *sergù* (*sir̃gti*) "I am ill" | no (verb, present *swérgʰ-e-*) | LIV; M&A |
+| Germanic | PGmc *surgō* f. (Go. *saurga*) "care, sorrow" | no (zero grade, eh₂) | Matasović; LIV |
+
+- Handbooks: Matasović 2009 s.v. *swergo-*; LIV² s.v. *su̯ergʰ-* (pp. 613–614); Adams 2013 s.v. *sark* (TchA *särk* "sickness" is undoubted); M&A 2006 §11.7 ("its PIE status is guaranteed").
+- Honest notes: only OIr. *serg* is certainly thematic. Toch. A *särk* matches it in root and meaning, but its stem class is not certain. The checker's one correspondence (PGmc *s-*) is on the root-level cognate *surgō*. No daughter preserves the accent. Albanian *dergjem* "lie ill" belongs to *derHgʰ-* (LIV).
+- Spec: noun, thematic, `swérgʰo`, m.
+
+### *gʷʰermós* "warm" (`pie-proj-gwhermos`, root `pie-root-gwher-be_warm`)
+
+| Branch | Reflex | Same formation | Cited |
+|---|---|---|---|
+| Greek | θερμός "warm, hot" | yes | Beekes s.v.; de Vaan |
+| Armenian | *ǰerm* "warm" | yes | Beekes; de Vaan |
+| Albanian | *zjarm* "heat, fire" | yes (de Vaan: "maybe") | Beekes; de Vaan |
+| Indo-Iranian | Skt *gharmá-* m. "heat"; Av. *garəma-* "warm; heat" | no (o-grade *gʷʰormó-*) | EWAia I s.v.; de Vaan; Beekes |
+| Italic | Lat. *formus* "warm" | no (o-grade) | de Vaan s.v. formus |
+| Baltic | OPr. *gorme* "heat" | no (o-grade) | de Vaan; Beekes |
+
+- Handbooks: de Vaan 2008 s.v. *formus*; Beekes 2010 s.v. θερμός; EWAia I s.v. *gharmá-*; M&A 2006 §20.9 ("almost ubiquitous").
+- Honest notes: there are two ablaut grades. The e-grade *gʷʰermó-* is in Greek and Armenian; the o-grade *gʷʰormó-* is in Indic, Iranian, Latin and Baltic. The project takes the e-grade adjective. The lexicon has the root's nouns (*gʷʰérmn̥* "warmth", *gʷʰéros* "heat") but no adjective.
+- Spec: adj, thematic, `gʷʰermó`.
+
+### *mógʰus* m. "boy, young man" (`pie-proj-moghus`)
+
+| Branch | Reflex | Same formation | Cited |
+|---|---|---|---|
+| Germanic | PGmc *maguz* (Go. *magus* "boy", OE *magu* "child, young man, son") | yes | Kroonen s.v. *magu-; Matasović |
+| Celtic | OIr. *mug* u m. "servant"; Corn., Bret. *maw* "boy" | yes | Matasović s.v. *mogu-; Kroonen; M&A |
+
+- Handbooks: Kroonen 2013 s.v. *magu-*; Matasović 2009 s.v. *mogu-* (PIE *mogʰ-u-* "young person"); M&A 2006 §12.1.
+- Honest notes: this is a West European word; Kroonen calls it "of obscure origin". Celtic *mogu-* needs *o*, and Germanic *a* is the regular reflex of *o*, so *mogʰ-u-* (Matasović) fits both. Kroonen and M&A write *a*, and Gaulish *Magu-* is unexplained. The accent and the proterokinetic pattern are projected. The feminine *mogʰwih₂* "girl" (Go. *mawi*) is not added.
+- Spec: noun, u-stem, strong `mógʰu`, weak `mogʰéw`, proterokinetic, m. (the pattern of *bʰébʰrus*).
+
+### *h₃énos* n. "load, burden" (`pie-proj-h3enos`)
+
+| Branch | Reflex | Same formation | Cited |
+|---|---|---|---|
+| Italic | Lat. *onus*, *oneris* n. "burden, load" | yes | de Vaan s.v.; M&A |
+| Indo-Iranian | Ved. *ánas-* n. "heavy cart, freight wagon" | yes | EWAia I s.v.; de Vaan; M&A |
+
+- Handbooks: de Vaan 2008 s.v. *onus* (PIE *h₃en-os, -es-*); EWAia I s.v. *ánas-*; M&A 2006 §17.3 ("Italic-Indic isogloss").
+- Honest notes: Lat. *o-* needs *h₃*, so the project follows de Vaan. M&A write *h₁ónHes-*. A root-final laryngeal is needed only if Hitt. *aniya-* "work" belongs here, which de Vaan finds semantically not compelling. The meaning is "burden" in Latin and "freight cart" in Indic.
+- Spec: noun, neuter s-stem, strong `h₃énos`, weak `h₃énes`, acrostatic, n. (the pattern of *h₂éḱos*). Gen. sg. *h₃énesos*.
+
+### *keh₂rós* "dear" (`pie-proj-keh2ros`)
+
+| Branch | Reflex | Same formation | Cited |
+|---|---|---|---|
+| Italic | Lat. *cārus* "dear, precious" | yes | de Vaan s.v.; Kroonen |
+| Baltic | Latv. *kārs* "lecherous, greedy" | yes | de Vaan; Kroonen |
+| Germanic | PGmc *hōraz* "adulterer" (Go. *hors*) | yes | Kroonen s.v. *hōra- 1 |
+| Celtic | Gaulish names in *Cara-*, *-carus* | yes | de Vaan |
+| Celtic | OIr. *caraid* "loves" | no (*kh₂-r-eh₂-ye-*) | Kroonen; de Vaan |
+
+- Handbooks: de Vaan 2008 s.v. *cārus* (PIE *keh₂-ro-* "desired"); Kroonen 2013 s.v. *hōra-* 1.
+- Honest notes: the meaning splits into "dear" (Latin, Gaulish), "lustful" (Latvian) and "adulterer" (Germanic). The project glosses the Latin sense. The oxytone accent is projected from the usual accent of *-ro-* adjectives; no daughter preserves it. *lewbʰós* and *priHós* are other usable words for "dear".
+- Spec: adj, thematic, `keh₂ró`.
+
+### Rejected in round 2
+
+| Word | Why not added |
+|---|---|
+| man, human (*mánus*) | Kroonen s.v. *mannan-*: PGmc *mann-* cannot come from *men-u-/*mon-u-* and is better taken from *dʰǵʰm-on-*. That leaves Skt *mánu-* alone. Existing words: see the audit. |
+| sand (*samh₂dʰos*) | Kroonen s.v. *samda-*: Gmc *samda-*, Lat. *sabulum* and Gk ἄμαθος are irreconcilable, so the word is of non-IE origin. |
+| boar (*h₁eperos*) | Kroonen s.v. *ebura-*: Gmc *epr-*, It. *apr-* and Slav. *wepr-* alternate irregularly, so it is probably not inherited. |
+| thrush (*trosdos*) | Kroonen s.v. *þrastu-*: the initial differs in every branch (Lat. *torzd-*, Lith. *strozd-*, Slav. *drozd-*, Arm. *dorzdh-*). |
+| willow (*salik-*) | de Vaan s.v. *salix*: the *-ik-*/*-k-* interchange is hardly IE, so the word is probably non-IE. |
+| starling, lynx | Formations and initials diverge (de Vaan s.v. *sturnus*; Kroonen s.v. *luhsa-*). |
+| salmon (*loḱs-*) | Kroonen posits a hysterokinetic s-stem (*lóḱ-os*, gen. *loḱ-s-ós*). The daughters continue different stems of it, and the engine has no such paradigm. Deferred. |
+| wax (*woḱso-*) | Gmc *wahsa-* vs BSl. *wosk-*: metathesis, so the formation is uncertain (Kroonen). |
+| boil (*bʰérweti*) | LIV puts W *berw-* with Lat. *fervō*, but Matasović takes the Celtic verb as denominative. With Latin alone, the case is too weak. The lexicon's *yéseti* "to be boiling" is usable. |
+| hope (*wélpeti*) | LIV: the verb is only Greek (ἔλπομαι); Lat. *volup* is an adverb. |
+| rot (*puHyéti*) | LIV: the *yé*-present is only Indo-Iranian. |
+| wait (*th₂usyéti*) | LIV: only Hitt. *tuḫḫušiya-*. |
+| kid (*ǵʰaydos*) | Only Lat. *haedus* is thematic; Gmc *gait-* is another stem. |
+| sweep, cauldron, flower | Sweep exists (`pie-lex-wrseti`, derived gloss). The cauldron *u*-stem is only Skt *carú-*. Flower exists (`pie-lex-h2endhos` "bloom", usable). |

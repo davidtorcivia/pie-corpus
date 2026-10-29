@@ -19,6 +19,11 @@ PROJECT = ROOT / "data/lexicon/project_reconstructions.jsonl"
 pytestmark = pytest.mark.skipif(not PROJECT.exists(), reason="no project reconstructions")
 HARE, FOAL, HORN, FLY = "pie-proj-kjasos", "pie-proj-poxlHos", "pie-proj-kjrnom", "pie-proj-musih2"
 SEE = "pie-lex-spekjyeti"
+# round 2 (docs/lexicon-project-reconstructions.md "Round 2"): id -> a slice keyword its gloss carries
+ROUND2 = {"pie-proj-kjasnos": "grey", "pie-proj-kolsos": "neck", "pie-proj-bhodhHros": "deaf",
+          "pie-proj-konHis": "ashes", "pie-proj-lh2eywos": "left", "pie-proj-reydheti": "ride",
+          "pie-proj-swerghos": "illness", "pie-proj-gwhermos": "warm", "pie-proj-moghus": "boy",
+          "pie-proj-h3enos": "load", "pie-proj-keh2ros": "dear"}
 
 
 def _rows():
@@ -40,7 +45,7 @@ def test_entries_meet_the_policy():
     from make_slice import branches
     lex_ids = {json.loads(x)["id"] for x in (ROOT / "data/lexicon/lexicon.jsonl").read_text("utf-8").splitlines()}
     rows = _rows()
-    assert {r["id"] for r in rows} >= {HARE, FOAL, HORN, FLY}
+    assert {r["id"] for r in rows} >= {HARE, FOAL, HORN, FLY} | set(ROUND2)
     for r in rows:
         assert r["source"] == "project" and r["coined"] == "project" and r["id"] not in lex_ids
         assert len(branches(r["reflexes"])) >= 2, r["id"]
@@ -57,7 +62,7 @@ def test_lexicon_loads_them_with_specs_and_flag(lx):
     from pie.realize import load_project_reconstructions
     entries, specs = load_project_reconstructions()
     for i in entries:
-        assert lx.entries[i] is not None and lx.specs[i]["family"] == "noun"
+        assert lx.entries[i] is not None and lx.specs[i]["family"] in ("noun", "adj", "verb")
         assert "inflection" not in lx.entries[i]          # the spec is split off into Lexicon.specs
         assert lx.coined(i) == "project" and not lx.inadmissible(i)
     assert lx.cells(HARE)["ACC.SG"][0] == "ḱasóm"
@@ -174,3 +179,57 @@ def test_tier2_rejects_project_lexemes(lx):
          "role": "MOD", "head": 0}, {"lex_id": SEE, "role": "V"}]}]}
     assert plan_coined(plan, lx) == [HARE, HORN]
     assert "plan_coined(p[\"plan\"], lx)" in (ROOT / "scripts/build_tier2.py").read_text("utf-8")
+
+
+def _V(lex_id):
+    return {"lex_id": lex_id, "role": "V", "verb": {"tense": "PRS", "mood": "IND", "voice": "ACT"}}
+
+
+@pytest.mark.parametrize("lex_id", sorted(ROUND2))
+def test_round2_entry_loads_realizes_and_is_flagged(lx, lex_id):
+    """Each round-2 entry is in the Lexicon with a paradigm, passes the planner gates (accented headword, not in a
+    held-out root family) and realizes through check_plan + realize with every word of it flagged coined."""
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from make_slice import planner_accent_ok
+    from pie.export import eval_root
+    fam = lx.specs[lex_id]["family"]
+    assert lx.coined(lex_id) == "project" and not lx.inadmissible(lex_id)
+    assert planner_accent_ok(lx, lex_id) and not eval_root(lx.entries[lex_id].get("root_id"))
+    assert all(lx.cells(lex_id, g) for g in ("m", "f", "n")) if fam == "adj" else lx.cells(lex_id)
+    if fam == "noun":
+        slots = [{"lex_id": lex_id, "role": "SUBJ"}, _V(SEE)]
+    elif fam == "adj":
+        slots = [{"lex_id": "pie-lex-h1ekjwos", "role": "SUBJ"}, {"lex_id": lex_id, "role": "MOD", "head": 0}, _V(SEE)]
+    else:
+        slots = [{"lex_id": "pie-lex-wiHros", "role": "SUBJ"}, _V(lex_id)]
+    r = produce({"english": "x", "clauses": [{"slots": slots}]}, lx)
+    assert [w["coined"] for w in r["words"] if w["lex_id"] == lex_id] == ["project"]
+    assert not any(w.get("coined") for w in r["words"] if w["lex_id"] != lex_id)
+
+
+def test_round2_paradigms(lx):
+    """Spot cells for each spec shape round 2 adds (thematic m., acrostatic i-stem, s-stem neuter, u-stem,
+    thematic adjective, thematic present)."""
+    assert lx.cells("pie-proj-kolsos")["ACC.SG"][0] == "kólsom"
+    assert lx.cells("pie-proj-konHis")["GEN.SG"][0] == "kénHis"          # acrostatic, like h₁ógʷʰis
+    assert lx.cells("pie-proj-h3enos")["GEN.SG"][0] == "h₃énesos"        # neuter s-stem, like h₂éḱos
+    assert lx.cells("pie-proj-moghus")["GEN.SG"][0] == "mogʰéws"         # u-stem, like bʰébʰrus
+    assert lx.cells("pie-proj-gwhermos", "f")["NOM.SG"][0] == "gʷʰerméh₂"
+    assert lx.cells("pie-proj-reydheti")["PRS.3PL"][0] == "réydʰonti"
+    r = produce({"english": "The grey boy rides.", "clauses": [{"slots": [
+        {"lex_id": "pie-proj-moghus", "role": "SUBJ"}, {"lex_id": "pie-proj-kjasnos", "role": "MOD", "head": 0},
+        _V("pie-proj-reydheti")]}]}, lx)
+    assert r["pie"] == "ḱásnos mógʰus réydʰeti."
+
+
+def test_round2_offered_by_make_slice_with_flag(tmp_path, monkeypatch):
+    ms = runpy.run_path(str(ROOT / "scripts/make_slice.py"))
+    monkeypatch.setitem(ms["main"].__globals__, "ROOT", tmp_path)
+    (tmp_path / "data/generation/slices").mkdir(parents=True)
+    monkeypatch.setattr(sys, "argv", ["make_slice.py", "probe2", "--keywords", *sorted(set(ROUND2.values())),
+                                      "--size", "120"])
+    assert ms["main"]() == 0
+    items = {it["lex_id"]: it for it in
+             json.loads((tmp_path / "data/generation/slices/probe2.json").read_text())["lexemes"]}
+    for i in ROUND2:
+        assert items[i]["coined"] == "project", i
