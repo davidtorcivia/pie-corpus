@@ -1,1 +1,15 @@
-{"schema_version": 1, "batch": "t032", "sha256": {"records": "002efe59b4ef9c18066d338770487a7fbf07ea04dd7adafd49c46c2021dfd711", "plans": "b13058ca432321d062b22fdb01cc27dee340a8792de562d4fb4da162538723df", "gate_report": "79964654d9d165ac7f6ee50bfd008ba52ca9aeb55e2e476940fff2454b12a974"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t032.json", "docs/audits/tier3-t032-review.md", "docs/audits/packets/t032-verdicts.jsonl"], "rationale": "Calibrated review (docs/audits/tier3-t032-review.md): plants 5/5 blind; real 0/20 wrong (two wrong items outside the sample fixed: kwim for 'nothing'); gate PASS."}}
+{
+ "schema_version": 1,
+ "batch": "t032",
+ "sha256": {
+  "records": "6dfbf7ac78718b88fe5e2be3a88c922d9ce46efb11e43c6e1aa7316999fc3d17",
+  "plans": "2ede1568f9d44cfd722cdba1bacf1729e3532db5a9c664cc4998b1ad8817066e",
+  "gate_report": "fe2845073ab450f59d789fded46adacd06bac626c1f43c9d15fbde0ce6f2bbc5"
+ },
+ "review": {
+  "required": true,
+  "status": "pending",
+  "evidence": [],
+  "rationale": "Awaiting review."
+ }
+}

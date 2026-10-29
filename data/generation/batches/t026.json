@@ -33,40 +33,40 @@
  ],
  "dup_within": 0,
  "dup_across_batches": 0,
- "tokens": 1306,
- "words_per_sentence": 29.7,
- "words_per_record": 29.7,
+ "tokens": 1368,
+ "words_per_sentence": 31.12,
+ "words_per_record": 31.12,
  "meter_fit": {
-  "lines": 159,
-  "fit": 157,
-  "share": 0.987
+  "lines": 158,
+  "fit": 158,
+  "share": 1.0
  },
  "meter_near": {
-  "lines": 159,
-  "near": 157,
-  "share": 0.987
+  "lines": 158,
+  "near": 158,
+  "share": 1.0
  },
  "meter_exact": {
-  "lines": 159,
-  "exact": 55,
-  "share": 0.346
+  "lines": 158,
+  "exact": 157,
+  "share": 0.994
  },
  "meter_cadence": {
   "8": {
-   "lines": 38,
-   "cadence": 2,
+   "lines": 87,
+   "cadence": 4,
    "pattern": "LHLX",
-   "share": 0.053
+   "share": 0.046
   },
   "11": {
-   "lines": 17,
-   "cadence": 2,
+   "lines": 70,
+   "cadence": 9,
    "pattern": "HLHX",
-   "share": 0.118
+   "share": 0.129
   }
  },
- "formula_uses": 20,
- "warnings": 0,
+ "formula_uses": 19,
+ "warnings": 7,
  "accent_unresolved": {
   "tokens": 0,
   "lexemes": 0,
@@ -75,11 +75,11 @@
  "gates": {
   "reject_rate<=0.10": true,
   "max_lexeme_uses<=7": true,
-  "theme_core_uses<=20": true,
+  "theme_core_uses<=21": true,
   "roots_per_sentence>=0.35": true,
   "duplicates<=2%": true,
   "all_exact": true,
-  "meter_exact>=0.90": false
+  "meter_exact>=0.90": true
  },
- "gate": "FAIL"
+ "gate": "PASS"
 }
