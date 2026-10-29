@@ -5,12 +5,50 @@ import pytest
 from pie.export import eval_root, record_tasks
 
 
-def test_root_holdout_is_deterministic_and_about_ten_percent():
-    ids = [f"pie-root-x{i}" for i in range(2000)]
-    held = [i for i in ids if eval_root(i)]
-    assert held == [i for i in ids if eval_root(i)]
-    assert 150 < len(held) < 250
+def _universe():
+    from pie.realize import Lexicon
+    return {e["root_id"] for e in Lexicon.load().entries.values() if e.get("root_id")}
+
+
+def test_root_holdout_is_frozen_and_about_ten_percent():
+    from pie.holdout import held_roots
+    universe = _universe()
+    held = sorted(r for r in universe if eval_root(r))
+    assert held == sorted(held_roots())          # eval_root is membership in the frozen list
+    assert 0.08 * len(universe) < len(held) < 0.12 * len(universe)
     assert not eval_root(None)
+    assert not eval_root("pie-root-not-in-the-list")   # a family outside the frozen list is not held
+
+
+def test_protected_families_are_never_held_out():
+    """dʰugh₂tḗr ("Daughter of Sky") and the rest of the protected set (data/export/protected_roots.json) stay
+    trainable; the cheap protected sources are re-derived from the live data, so drift fails here."""
+    from pie.holdout import PROTECTED_PATH, protected_roots
+    from pie.realize import Lexicon
+    lx = Lexicon.load()
+    assert lx.entries["pie-lex-dhugh2texr"]["root_id"] == "pie-root-dhewgh-hit"
+    assert not eval_root("pie-root-dhewgh-hit")
+    prot = json.loads(PROTECTED_PATH.read_text("utf-8"))["roots"]
+    assert "formula-menu" in prot["pie-root-dhewgh-hit"]
+    assert not any(eval_root(r) for r in protected_roots())
+    root = PROTECTED_PATH.parents[2]
+    live = set()
+    menu = json.loads((root / "data/generation/formula_menu.json").read_text("utf-8"))
+    live |= {x["lex_id"] for m in menu for x in m["lexemes"]}
+    for f in sorted((root / "corpus/tier2").glob("*.jsonl")):
+        for line in f.read_text("utf-8").splitlines():
+            for t in json.loads(line).get("tokens") or []:
+                if t.get("secure_level") in ("exact", "root") and t.get("lex_id"):
+                    live.add(t["lex_id"])
+    live |= {i for i, e in lx.entries.items() if e.get("pos") == "num"}
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("make_slice", root / "scripts/make_slice.py")
+    ms = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(ms)
+    live |= set(ms.CORE_NOUNS) | set(ms.CONVERSATION)
+    held = {(lid, lx.entries[lid]["root_id"]) for lid in live
+            if lid in lx.entries and eval_root(lx.entries[lid].get("root_id"))}
+    assert not held, f"protected lexeme of a held-out family (re-run scripts/build_holdout.py?): {sorted(held)[:3]}"
 
 
 def test_record_tasks():

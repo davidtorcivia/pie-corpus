@@ -3,13 +3,15 @@
 Policy (docs/STATUS.md, open question 1 until David decides):
   eval  = every Tier 1 record with canonical `pie` (scholarly texts and formulas),
           the evaluation-grade Tier 2 lines (eval_grade), plus the held-out
-          root families for the cognate and inflection tasks: hash-selected
-          families that occur in NO training record (so the test is unseen
-          root families across all training material; checked)
+          root families for the cognate and inflection tasks: the frozen list
+          data/export/held_roots.json (pie.holdout, scripts/build_holdout.py;
+          never a protected family such as dʰugh₂tḗr's), restricted to families
+          that occur in NO training record (so the test is unseen root families
+          across all training material; checked)
   train = Tier 2 and release-eligible Tier 3 records; pilots additionally require
           include_pilot=True. Experimental inclusion explicitly bypasses eligibility.
-Cognate→PIE examples hold out *whole root families* (a deterministic hash
-of root_id), so no derivative of an eval root appears in a training task.
+Cognate→PIE examples hold out *whole root families* (eval_root, the one predicate
+make_slice and export share), so no derivative of an eval root appears in a training task.
 The leakage check fails the export if any PIE string or record id is in both
 splits.
 
@@ -33,7 +35,6 @@ fails the export.
 
 from __future__ import annotations
 
-import hashlib
 import json
 import random
 from pathlib import Path
@@ -46,14 +47,17 @@ COGNATE_LANGS = ["Sanskrit", "Ancient Greek", "Latin", "Proto-Germanic", "Hittit
                  "Avestan", "Old Church Slavonic", "Lithuanian", "Tocharian B", "Old Armenian"]
 
 
-def eval_root(root_id: str | None, share: float = 0.10) -> bool:
+def eval_root(root_id: str | None) -> bool:
+    """Is this root family held out of training for the benchmark? Membership in the frozen list
+    data/export/held_roots.json (pie.holdout; selection in scripts/build_holdout.py: about 10% of
+    families, never a protected one, preferring families no training record uses)."""
+    from .holdout import held_roots
     from .research_scope import mapping_scope, RESEARCH_ONLY
     if mapping_scope((root_id,)) == RESEARCH_ONLY:
         raise ValueError("research_only id cannot enter evaluation holdouts")
     if not root_id:
         return False
-    h = int(hashlib.sha256(root_id.encode()).hexdigest()[:8], 16)
-    return h / 0xFFFFFFFF < share
+    return root_id in held_roots()
 
 
 def train_root_ids(records: list[dict], lx) -> set[str]:
@@ -265,7 +269,7 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0,
                     t["token_variants"] = tv
             eval_tasks.append(t)
     # held-out root families must be unseen in ALL training material, not only in the cognate and
-    # inflection tasks: a family the hash selects but that occurs in a training sentence goes to train
+    # inflection tasks: a family the hold-out lists but that occurs in a training sentence goes to train
     # (David's review: deyḱ- was held out of the cognate task while training sentences inflected it)
     seen_roots = train_root_ids(train_recs, lx)
     held = lambda rid: eval_root(rid) and rid not in seen_roots

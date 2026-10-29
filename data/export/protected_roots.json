@@ -1,0 +1,901 @@
+{
+ "generated": "2026-10-28",
+ "by": "scripts/build_holdout.py",
+ "swadesh_concepts": {
+  "kin": [
+   "father",
+   "mother",
+   "daughter",
+   "son",
+   "brother",
+   "sister",
+   "husband",
+   "wife",
+   "widow",
+   "grandfather",
+   "grandmother",
+   "grandson",
+   "granddaughter",
+   "nephew",
+   "niece",
+   "uncle",
+   "aunt",
+   "father-in-law",
+   "mother-in-law",
+   "son-in-law",
+   "daughter-in-law",
+   "brother-in-law",
+   "sister-in-law",
+   "husband's brother",
+   "husband's sister",
+   "child",
+   "orphan"
+  ],
+  "body": [
+   "head",
+   "eye",
+   "ear",
+   "nose",
+   "mouth",
+   "tooth",
+   "tongue",
+   "lip",
+   "hair",
+   "hand",
+   "foot",
+   "leg",
+   "knee",
+   "arm",
+   "elbow",
+   "shoulder",
+   "finger",
+   "nail",
+   "fingernail",
+   "neck",
+   "back",
+   "breast",
+   "heart",
+   "liver",
+   "kidney",
+   "belly",
+   "navel",
+   "guts",
+   "bowels",
+   "blood",
+   "bone",
+   "marrow",
+   "skin",
+   "flesh",
+   "meat",
+   "fat",
+   "horn",
+   "tail",
+   "feather",
+   "wing",
+   "eyebrow",
+   "brow",
+   "jaw",
+   "chin",
+   "cheek",
+   "thigh",
+   "heel",
+   "lung",
+   "bile",
+   "milk",
+   "egg"
+  ],
+  "nature": [
+   "sun",
+   "moon",
+   "star",
+   "sky",
+   "cloud",
+   "fog",
+   "rain",
+   "snow",
+   "ice",
+   "wind",
+   "thunder",
+   "lightning",
+   "water",
+   "river",
+   "lake",
+   "sea",
+   "salt",
+   "stone",
+   "rock",
+   "sand",
+   "dust",
+   "earth",
+   "ground",
+   "mountain",
+   "fire",
+   "smoke",
+   "ash",
+   "ashes",
+   "night",
+   "day",
+   "dawn",
+   "year",
+   "winter",
+   "summer",
+   "spring",
+   "tree",
+   "wood",
+   "forest",
+   "leaf",
+   "root",
+   "bark",
+   "seed",
+   "grass",
+   "fruit",
+   "flower",
+   "animal",
+   "fish",
+   "bird",
+   "dog",
+   "louse",
+   "snake",
+   "worm",
+   "wolf",
+   "bear"
+  ]
+ },
+ "rootless_lexemes_by_reason": {
+  "conversation": 3,
+  "core-noun": 17,
+  "core-verb": 4,
+  "formula": 11,
+  "formula-menu": 11,
+  "numeral": 22,
+  "swadesh:body": 23,
+  "swadesh:kin": 13,
+  "swadesh:nature": 25,
+  "tier2-secure": 58
+ },
+ "lexemes_by_reason": {
+  "conversation": 12,
+  "core-noun": 55,
+  "core-verb": 193,
+  "formula": 30,
+  "formula-menu": 20,
+  "numeral": 27,
+  "swadesh:body": 43,
+  "swadesh:kin": 17,
+  "swadesh:nature": 53,
+  "tier2-secure": 74
+ },
+ "families": 212,
+ "roots": {
+  "pie-root-Hreth2-run": [
+   "core-noun"
+  ],
+  "pie-root-HrewdH-weep": [
+   "core-noun"
+  ],
+  "pie-root-Hrewp-break": [
+   "core-verb"
+  ],
+  "pie-root-Hwer-enclose": [
+   "core-verb"
+  ],
+  "pie-root-Hwerdh-become_big_strong": [
+   "core-verb"
+  ],
+  "pie-root-Hyeh1-throw": [
+   "core-noun",
+   "swadesh:nature"
+  ],
+  "pie-root-Hyewdh-moving_erect": [
+   "core-verb"
+  ],
+  "pie-root-bheh2-shine": [
+   "tier2-secure"
+  ],
+  "pie-root-bheh2-speak": [
+   "core-verb"
+  ],
+  "pie-root-bher-bear": [
+   "core-verb",
+   "tier2-secure"
+  ],
+  "pie-root-bhewdh-be_awake": [
+   "core-verb"
+  ],
+  "pie-root-bhewg-flee": [
+   "core-noun"
+  ],
+  "pie-root-bheyd-split": [
+   "core-verb"
+  ],
+  "pie-root-bheydh-trust": [
+   "core-noun",
+   "core-verb",
+   "formula"
+  ],
+  "pie-root-bheyh2-shake": [
+   "core-verb"
+  ],
+  "pie-root-bhrewh1-boil": [
+   "swadesh:nature"
+  ],
+  "pie-root-bhuH-be": [
+   "core-verb"
+  ],
+  "pie-root-bhweh2-grow": [
+   "core-verb"
+  ],
+  "pie-root-deh3-give": [
+   "conversation",
+   "core-verb",
+   "formula-menu",
+   "tier2-secure"
+  ],
+  "pie-root-deh3w-give": [
+   "core-verb"
+  ],
+  "pie-root-dekj-take": [
+   "numeral"
+  ],
+  "pie-root-dem-build": [
+   "core-verb",
+   "formula"
+  ],
+  "pie-root-der-split": [
+   "core-verb"
+  ],
+  "pie-root-derkj-see": [
+   "core-verb"
+  ],
+  "pie-root-dewk-pull": [
+   "core-verb"
+  ],
+  "pie-root-deykj-point_out": [
+   "core-verb"
+  ],
+  "pie-root-dhegwh-burn": [
+   "core-verb"
+  ],
+  "pie-root-dhegwhh2-come_near": [
+   "core-verb"
+  ],
+  "pie-root-dheh1-do": [
+   "core-verb",
+   "formula",
+   "formula-menu",
+   "tier2-secure"
+  ],
+  "pie-root-dhembh-be_astonished": [
+   "core-verb"
+  ],
+  "pie-root-dhewgh-hit": [
+   "core-noun",
+   "core-verb",
+   "formula-menu",
+   "swadesh:kin",
+   "tier2-secure"
+  ],
+  "pie-root-dhewh2-smoke": [
+   "swadesh:nature"
+  ],
+  "pie-root-dhgwhey-decline": [
+   "formula-menu",
+   "tier2-secure"
+  ],
+  "pie-root-dhrewgh-deceive": [
+   "core-verb"
+  ],
+  "pie-root-dhwes-breathe": [
+   "swadesh:nature"
+  ],
+  "pie-root-drem-run": [
+   "core-noun"
+  ],
+  "pie-root-dwey-fear": [
+   "core-verb"
+  ],
+  "pie-root-dyew-be_bright": [
+   "core-noun",
+   "formula",
+   "formula-menu",
+   "swadesh:nature",
+   "tier2-secure"
+  ],
+  "pie-root-gew-bend": [
+   "swadesh:body"
+  ],
+  "pie-root-ghebh-give": [
+   "swadesh:body"
+  ],
+  "pie-root-ghrem-roar": [
+   "swadesh:nature"
+  ],
+  "pie-root-gjembh-bite": [
+   "swadesh:body"
+  ],
+  "pie-root-gjenh1-produce": [
+   "conversation",
+   "core-verb",
+   "swadesh:nature",
+   "tier2-secure"
+  ],
+  "pie-root-gjhes-hand": [
+   "numeral",
+   "swadesh:body"
+  ],
+  "pie-root-gjhew-pour": [
+   "core-noun",
+   "formula"
+  ],
+  "pie-root-gjhey-drive": [
+   "core-verb"
+  ],
+  "pie-root-gjhey-winter": [
+   "swadesh:nature"
+  ],
+  "pie-root-gjhwer-wild": [
+   "core-noun"
+  ],
+  "pie-root-gjneh3-recognise": [
+   "core-verb"
+  ],
+  "pie-root-glewbh-split": [
+   "core-verb"
+  ],
+  "pie-root-gweh2-step": [
+   "core-verb"
+  ],
+  "pie-root-gwem-come": [
+   "conversation",
+   "core-verb"
+  ],
+  "pie-root-gwerH-express_approval": [
+   "conversation"
+  ],
+  "pie-root-gwerh3-swallow": [
+   "core-verb"
+  ],
+  "pie-root-gwhen-strike": [
+   "core-verb",
+   "formula",
+   "formula-menu",
+   "tier2-secure"
+  ],
+  "pie-root-gwher-be_warm": [
+   "core-verb"
+  ],
+  "pie-root-h1ed-eat": [
+   "core-verb",
+   "tier2-secure"
+  ],
+  "pie-root-h1egj-say": [
+   "core-verb"
+  ],
+  "pie-root-h1elh2-drive": [
+   "core-verb"
+  ],
+  "pie-root-h1engw-burn": [
+   "core-noun",
+   "swadesh:nature"
+  ],
+  "pie-root-h1ep-grab": [
+   "core-verb"
+  ],
+  "pie-root-h1er-arrive": [
+   "core-verb"
+  ],
+  "pie-root-h1es-be": [
+   "conversation",
+   "core-noun",
+   "core-verb",
+   "formula",
+   "tier2-secure"
+  ],
+  "pie-root-h1ewk-become_accustomed": [
+   "core-verb"
+  ],
+  "pie-root-h1ews-burn": [
+   "core-verb"
+  ],
+  "pie-root-h1ey-go": [
+   "core-verb",
+   "tier2-secure"
+  ],
+  "pie-root-h1lewdh-grow": [
+   "core-noun",
+   "core-verb"
+  ],
+  "pie-root-h1nedh-come_forth": [
+   "core-verb"
+  ],
+  "pie-root-h1rewdh-red": [
+   "core-verb"
+  ],
+  "pie-root-h1weh2-be_become_empty": [
+   "core-noun"
+  ],
+  "pie-root-h1werH-broad": [
+   "tier2-secure"
+  ],
+  "pie-root-h1wers-rain": [
+   "core-noun"
+  ],
+  "pie-root-h2egh-be_upset": [
+   "core-verb"
+  ],
+  "pie-root-h2egj-drive": [
+   "core-noun",
+   "core-verb",
+   "tier2-secure"
+  ],
+  "pie-root-h2eh3-be_hot": [
+   "tier2-secure"
+  ],
+  "pie-root-h2ekj-sharp": [
+   "swadesh:nature"
+  ],
+  "pie-root-h2ekjh3-eat": [
+   "core-verb"
+  ],
+  "pie-root-h2el-grow": [
+   "core-verb"
+  ],
+  "pie-root-h2er-fit": [
+   "swadesh:body"
+  ],
+  "pie-root-h2erh3-plough": [
+   "core-verb"
+  ],
+  "pie-root-h2ew-perceive": [
+   "core-verb",
+   "swadesh:body"
+  ],
+  "pie-root-h2ewH-put_on": [
+   "core-verb"
+  ],
+  "pie-root-h2ews-become_light": [
+   "formula-menu",
+   "swadesh:nature",
+   "tier2-secure"
+  ],
+  "pie-root-h2ey-give": [
+   "core-verb"
+  ],
+  "pie-root-h2ey-vital_force": [
+   "formula"
+  ],
+  "pie-root-h2eys-wish": [
+   "core-verb",
+   "tier2-secure"
+  ],
+  "pie-root-h2lek-protect": [
+   "core-verb"
+  ],
+  "pie-root-h2leyH-smear": [
+   "core-verb"
+  ],
+  "pie-root-h2melgj-milk": [
+   "core-verb"
+  ],
+  "pie-root-h2nekj-reach": [
+   "core-verb"
+  ],
+  "pie-root-h2rey-count": [
+   "core-verb"
+  ],
+  "pie-root-h2sews-be_dry": [
+   "core-verb"
+  ],
+  "pie-root-h2weks-increase": [
+   "core-verb"
+  ],
+  "pie-root-h2welh1-hair": [
+   "core-noun"
+  ],
+  "pie-root-h2wes-become_bright": [
+   "core-verb"
+  ],
+  "pie-root-h2weys-hear": [
+   "core-verb"
+  ],
+  "pie-root-h3ekw-see": [
+   "swadesh:body"
+  ],
+  "pie-root-h3engw-smear": [
+   "swadesh:body"
+  ],
+  "pie-root-h3er-move": [
+   "formula"
+  ],
+  "pie-root-h3erbh-turn": [
+   "swadesh:kin"
+  ],
+  "pie-root-h3meygjh-urinate": [
+   "core-verb"
+  ],
+  "pie-root-h3nebh-hub": [
+   "swadesh:body"
+  ],
+  "pie-root-h3pews-increase": [
+   "core-verb"
+  ],
+  "pie-root-h3regj-straighten": [
+   "core-noun",
+   "core-verb"
+  ],
+  "pie-root-h3sleydh-slip": [
+   "core-verb"
+  ],
+  "pie-root-kap-head": [
+   "swadesh:body"
+  ],
+  "pie-root-kap-seize": [
+   "core-verb"
+  ],
+  "pie-root-kjel-cover": [
+   "core-verb"
+  ],
+  "pie-root-kjemh2-become_tired": [
+   "core-verb"
+  ],
+  "pie-root-kjerd-heart": [
+   "core-noun",
+   "swadesh:body"
+  ],
+  "pie-root-kjerh2-head": [
+   "swadesh:body"
+  ],
+  "pie-root-kjey-be_lying_down": [
+   "core-noun",
+   "core-verb",
+   "tier2-secure"
+  ],
+  "pie-root-kjlew-hear": [
+   "conversation",
+   "core-verb",
+   "formula",
+   "formula-menu",
+   "tier2-secure"
+  ],
+  "pie-root-kjley-lean": [
+   "core-verb"
+  ],
+  "pie-root-kjremh2-become_slack": [
+   "core-verb"
+  ],
+  "pie-root-krewh2-blood_outside_the": [
+   "swadesh:body",
+   "tier2-secure"
+  ],
+  "pie-root-kwekj-see": [
+   "core-verb"
+  ],
+  "pie-root-kwelh1-turn": [
+   "formula-menu",
+   "tier2-secure"
+  ],
+  "pie-root-legh-lie": [
+   "core-verb",
+   "formula"
+  ],
+  "pie-root-leh1-soft": [
+   "core-verb"
+  ],
+  "pie-root-lembh-seize": [
+   "core-verb"
+  ],
+  "pie-root-lewbh-desire": [
+   "core-noun"
+  ],
+  "pie-root-lewk-bright": [
+   "core-verb",
+   "swadesh:nature"
+  ],
+  "pie-root-leygjh-lick": [
+   "core-verb"
+  ],
+  "pie-root-leykw-leave": [
+   "core-verb"
+  ],
+  "pie-root-leyt-go": [
+   "core-verb"
+  ],
+  "pie-root-megh-be_able": [
+   "core-verb"
+  ],
+  "pie-root-melh3-step_forward": [
+   "core-verb"
+  ],
+  "pie-root-mems-flesh": [
+   "swadesh:body"
+  ],
+  "pie-root-men-think": [
+   "conversation",
+   "core-verb",
+   "formula",
+   "tier2-secure"
+  ],
+  "pie-root-mer-die": [
+   "core-noun",
+   "core-verb",
+   "formula",
+   "tier2-secure"
+  ],
+  "pie-root-mer-sea": [
+   "swadesh:nature"
+  ],
+  "pie-root-mewd-rejoice": [
+   "core-verb"
+  ],
+  "pie-root-mey-change": [
+   "core-noun",
+   "tier2-secure"
+  ],
+  "pie-root-mlewH-say": [
+   "core-verb"
+  ],
+  "pie-root-nebh-become_damp": [
+   "swadesh:nature",
+   "tier2-secure"
+  ],
+  "pie-root-negw-bare": [
+   "core-noun",
+   "swadesh:nature"
+  ],
+  "pie-root-nekj-perish": [
+   "core-verb",
+   "formula"
+  ],
+  "pie-root-ped-walk": [
+   "swadesh:body",
+   "tier2-secure"
+  ],
+  "pie-root-peh2-protect": [
+   "core-noun",
+   "core-verb",
+   "formula-menu",
+   "swadesh:kin",
+   "tier2-secure"
+  ],
+  "pie-root-peh3-drink": [
+   "core-verb"
+  ],
+  "pie-root-pekw-crack": [
+   "core-verb"
+  ],
+  "pie-root-pelh1-swing": [
+   "core-verb"
+  ],
+  "pie-root-penkw-fist": [
+   "numeral",
+   "swadesh:body"
+  ],
+  "pie-root-perd-fart_loudly": [
+   "core-verb"
+  ],
+  "pie-root-perkw-oak": [
+   "core-noun"
+  ],
+  "pie-root-peth2-spread_out": [
+   "swadesh:body",
+   "swadesh:nature",
+   "tier2-secure"
+  ],
+  "pie-root-peyh2-swell": [
+   "swadesh:body"
+  ],
+  "pie-root-peykj-hew": [
+   "formula"
+  ],
+  "pie-root-pleh1-fill": [
+   "core-noun",
+   "core-verb"
+  ],
+  "pie-root-plew-fly": [
+   "swadesh:body"
+  ],
+  "pie-root-preyH-please": [
+   "conversation",
+   "tier2-secure"
+  ],
+  "pie-root-reh1dh-carry_out_successfully": [
+   "core-verb"
+  ],
+  "pie-root-sed-sit": [
+   "core-verb",
+   "formula"
+  ],
+  "pie-root-seh1-impress": [
+   "swadesh:nature"
+  ],
+  "pie-root-seh1y-let_go": [
+   "core-verb"
+  ],
+  "pie-root-seh2g-trace": [
+   "core-verb"
+  ],
+  "pie-root-seh2y-become_sated": [
+   "core-verb"
+  ],
+  "pie-root-sekw-follow": [
+   "core-verb"
+  ],
+  "pie-root-sekw-say": [
+   "core-verb"
+  ],
+  "pie-root-sem-one": [
+   "formula",
+   "numeral"
+  ],
+  "pie-root-sengw-sink": [
+   "core-verb"
+  ],
+  "pie-root-serp-creep": [
+   "core-verb"
+  ],
+  "pie-root-ses-rest": [
+   "formula"
+  ],
+  "pie-root-sewH-bear": [
+   "core-noun",
+   "swadesh:kin",
+   "tier2-secure"
+  ],
+  "pie-root-skelH-cut": [
+   "core-verb"
+  ],
+  "pie-root-skeyd-split": [
+   "core-verb"
+  ],
+  "pie-root-sleh2gw-take": [
+   "core-verb"
+  ],
+  "pie-root-sneh2-swim": [
+   "core-noun",
+   "core-verb"
+  ],
+  "pie-root-sneygwh-snow": [
+   "swadesh:nature"
+  ],
+  "pie-root-spekj-see": [
+   "core-verb",
+   "tier2-secure"
+  ],
+  "pie-root-sper-free": [
+   "core-noun"
+  ],
+  "pie-root-srebh-sip": [
+   "core-verb"
+  ],
+  "pie-root-steh2-stand": [
+   "core-noun",
+   "core-verb"
+  ],
+  "pie-root-stewd-become_cold": [
+   "core-verb"
+  ],
+  "pie-root-stewd-push": [
+   "core-verb"
+  ],
+  "pie-root-steygh-go": [
+   "core-verb"
+  ],
+  "pie-root-sweh2d-sweet": [
+   "core-verb",
+   "tier2-secure"
+  ],
+  "pie-root-swep-sleep": [
+   "tier2-secure"
+  ],
+  "pie-root-sweyd-sweat": [
+   "core-verb"
+  ],
+  "pie-root-tekj-sire": [
+   "core-verb"
+  ],
+  "pie-root-telh2-bear": [
+   "core-verb"
+  ],
+  "pie-root-ten-stretch": [
+   "core-verb"
+  ],
+  "pie-root-terd-bore_through": [
+   "core-verb"
+  ],
+  "pie-root-terh2-cross_over": [
+   "core-verb",
+   "tier2-secure"
+  ],
+  "pie-root-terp-satisfy": [
+   "core-verb"
+  ],
+  "pie-root-ters-dry": [
+   "core-verb",
+   "formula"
+  ],
+  "pie-root-tetkj-create": [
+   "core-verb"
+  ],
+  "pie-root-tewh2-swell": [
+   "numeral"
+  ],
+  "pie-root-teyh1-get_hot": [
+   "core-verb"
+  ],
+  "pie-root-trem-tremble": [
+   "core-verb"
+  ],
+  "pie-root-tres-tremble": [
+   "core-verb"
+  ],
+  "pie-root-webh-weave": [
+   "tier2-secure"
+  ],
+  "pie-root-wed-well": [
+   "core-noun",
+   "swadesh:nature"
+  ],
+  "pie-root-wedh-lead": [
+   "core-verb"
+  ],
+  "pie-root-wegjh-bring": [
+   "core-verb"
+  ],
+  "pie-root-wekj-wish": [
+   "tier2-secure"
+  ],
+  "pie-root-wekw-speak": [
+   "core-noun",
+   "core-verb",
+   "formula",
+   "tier2-secure"
+  ],
+  "pie-root-wen-overpower-2": [
+   "core-noun"
+  ],
+  "pie-root-wenH-grow_fond_of-2": [
+   "core-verb"
+  ],
+  "pie-root-wergj-make": [
+   "core-verb",
+   "tier2-secure"
+  ],
+  "pie-root-werh1-speak": [
+   "core-verb"
+  ],
+  "pie-root-wert-turn": [
+   "core-verb"
+  ],
+  "pie-root-wes-dress": [
+   "core-verb",
+   "formula",
+   "tier2-secure"
+  ],
+  "pie-root-wet-year": [
+   "swadesh:nature"
+  ],
+  "pie-root-weyd-see": [
+   "core-verb"
+  ],
+  "pie-root-weykj-enter_in": [
+   "core-verb"
+  ],
+  "pie-root-weys-raise": [
+   "swadesh:nature"
+  ],
+  "pie-root-yeh2-go": [
+   "core-verb"
+  ],
+  "pie-root-yes-foam": [
+   "core-verb"
+  ],
+  "pie-root-yewg-join": [
+   "core-noun",
+   "core-verb",
+   "tier2-secure"
+  ],
+  "pie-root-yewgjH-become_restless": [
+   "core-verb"
+  ]
+ }
+}

@@ -82,7 +82,8 @@ def test_bad_gate_report(tmp_path, bad):
 
 def test_excluded_population_does_not_control_holdouts(tmp_path, monkeypatch):
     import pie.export as ex
-    rid = next(f'root-{i}' for i in range(100) if ex.eval_root(f'root-{i}'))
+    from pie.holdout import held_roots
+    rid = sorted(held_roots())[0]
     rec = {'id': 't3-b-1', 'pie': 'test', 'english': 'test', 'gloss': 'test', 'tokens': [{'form': 'test', 'root_id': rid}]}
     candidate(tmp_path, gate='FAIL', records=[rec])
     task = {'task': 'inflect', 'source_id': 'lex-test', 'root_id': rid}
@@ -109,34 +110,76 @@ def test_shipped_migration():
     assert {b for b, d in decisions.items() if not d['admitted']} == {'t022', 'pilot', 'pilot2'}
 
 
-@pytest.mark.parametrize('count,exit_status', [(1, 0), (7, 1)])
-def test_producer_contract(tmp_path, monkeypatch, count, exit_status):
+def _produce(tmp_path, monkeypatch, plans_list):
+    """Run scripts/realize_plans.py main() on these plan records in tmp_path; return its exit status."""
     root = Path(__file__).resolve().parents[1]
     module = runpy.run_path(str(root / 'scripts/realize_plans.py'))
     main = module['main']
     monkeypatch.setitem(main.__globals__, 'ROOT', tmp_path)
     for path in ('corpus/tier3', 'data/generation/rejects'):
-        (tmp_path / path).mkdir(parents=True)
-    plan = json.loads((root / 'data/generation/plans/t023.jsonl').read_text().splitlines()[0])
-    # Exercise the real validator on just this plan's lexemes; the full lexicon
+        (tmp_path / path).mkdir(parents=True, exist_ok=True)
+    # Exercise the real validator on just these plans' lexemes; the full lexicon
     # index is unrelated to the producer's persistence and exit contract.
     from pie.realize import Lexicon
     from pie.validate import FormIndex
     lx = Lexicon.load()
-    lids = {slot['lex_id'] for clause in plan.get('plan', plan)['clauses']
+    lids = {slot['lex_id'] for plan in plans_list for clause in plan.get('plan', plan)['clauses']
             for slot in clause.get('slots', []) if 'lex_id' in slot}
     closed = json.loads((root / 'data/morph/closed_class.json').read_text())
     ix = FormIndex([v for k, v in lx.entries.items() if k in lids],
                    [v for k, v in lx.specs.items() if k in lids], closed)
     monkeypatch.setitem(main.__globals__, 'load_index', lambda: ix)
-    plans = tmp_path / 'input.jsonl' 
-    plans.write_text((json.dumps(plan) + '\n') * count)
+    plans = tmp_path / 'input.jsonl'
+    plans.write_text(''.join(json.dumps(p) + '\n' for p in plans_list))
     monkeypatch.setattr(sys, 'argv', ['realize_plans.py', str(plans), '--batch', 'probe'])
-    assert main() == exit_status
+    status = main()
     assert plans.read_bytes() == (tmp_path / 'data/generation/plans/probe.jsonl').read_bytes()
+    return status
+
+
+def _plan(batch, plan_id):
+    root = Path(__file__).resolve().parents[1]
+    return next(p for p in map(json.loads, (root / f'data/generation/plans/{batch}.jsonl').read_text().splitlines())
+                if p['plan_id'] == plan_id)
+
+
+@pytest.mark.parametrize('count,exit_status', [(1, 0), (7, 1)])
+def test_producer_contract(tmp_path, monkeypatch, count, exit_status):
+    # a charm plan relabelled as prose: this tests persistence and exit status, not meter (test below)
+    plan = {**_plan('t023', 't023-0001'), 'genre': 'narrative'}
+    assert _produce(tmp_path, monkeypatch, [plan] * count) == exit_status
     assert len((tmp_path / 'corpus/tier3/probe.jsonl').read_text().splitlines()) == count
     d = batch_eligibility(tmp_path, 'probe')
     assert d['gate'] == ('PASS' if exit_status == 0 else 'FAIL')
     assert d['review'] == 'pending'
     assert not d['admitted']
     assert (tmp_path / 'data/generation/rejects/probe.jsonl').exists()
+
+
+def _report(tmp_path):
+    return json.loads((tmp_path / 'data/generation/batches/probe.json').read_text())
+
+
+def test_meter_exact_gate(tmp_path, monkeypatch):
+    """The gate counts verse lines (sentences) of metered genres with exactly 8 or 11 syllables;
+    the ±1 window (meter_fit, meter_near) is reported but no longer gates."""
+    exact = _plan('t011', 't011-0036')              # a hymn of three 8-syllable lines
+    assert _produce(tmp_path, monkeypatch, [exact]) == 0
+    r = _report(tmp_path)
+    assert r['gates']['meter_exact>=0.90'] is True
+    assert r['meter_exact'] == {'lines': 3, 'exact': 3, 'share': 1.0}
+    assert r['meter_near']['share'] == r['meter_fit']['share'] == 1.0
+    assert batch_eligibility(tmp_path, 'probe')['gate'] == 'PASS'
+
+    charm = _plan('t023', 't023-0001')               # six lines, 7-12 syllables, one exact
+    assert _produce(tmp_path, monkeypatch, [charm]) == 1
+    r = _report(tmp_path)
+    assert r['meter_fit']['share'] == 1.0 and r['meter_exact']['share'] < 0.9
+    assert r['gates']['meter_exact>=0.90'] is False
+    d = batch_eligibility(tmp_path, 'probe')
+    assert d['gate'] == 'FAIL' and 'meter_exact>=0.90' in d['reasons'][0]
+
+    # prose is not scored: no meter fields, no meter gate
+    assert _produce(tmp_path, monkeypatch, [{**charm, 'genre': 'narrative'}]) == 0
+    r = _report(tmp_path)
+    assert r['meter_exact'] is None and 'meter_exact>=0.90' not in r['gates']
