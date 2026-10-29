@@ -1,0 +1,6 @@
+# VC viability test (docs/research/tts-voice-conversion.md): venvs, cloned repos, weights and audio stay local
+.venv-*/
+src/
+cache/
+audio/
+listening/audio/
