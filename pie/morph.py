@@ -729,6 +729,20 @@ def _handbook_verbal(spec: VerbSpec, out: Cells) -> Cells:
                 if any(f.startswith(bad) for f in forms):
                     out[k] = _uniq([good + f[len(bad):] if f.startswith(bad) else f for f in forms] + forms)
     st = _p(_bare(spec.strong))
+    # Narten present (lengthened strong ḗ, accented e-grade weak stem: h₁ḗd- ~ h₁éd-): the 2sg imperative is the
+    # zero grade + accented *-dʰí, as in every athematic verb (Fortson §5.54: *-dʰi on the zero grade, Ved.
+    # śrudhí), so *h₁d-dʰí (Ved. addhí), not h₁éd-dʰi; the stem form stays as the alternative (t027 review)
+    if not spec.thematic and spec.kind == "impf" and "IMP.2SG" in out and has_accent(_p(_bare(spec.weak or ""))) \
+            and any(x.kind == "V" and x.long and x.acc for x in st):
+        from .classify import zero_grade
+        zg = zero_grade(_bare(spec.weak))
+        # not where the zero grade leaves the root no nucleus at all (tḗtḱ- ~ tétḱ- → *ttḱ-: athematic-verbs S2);
+        # a laryngeal can be one (*h₁d-dʰí > Ved. addhí)
+        # ... and not for a root in a laryngeal: Vedic keeps the full grade there (vā́hi 'blow!', yāhí, pāhí), so
+        # h₂wéh₁dʰi stays
+        lar = lambda x: x.base.startswith("h") or x.base == "H"
+        if zg and any(x.vocalic or lar(x) for x in _p(zg)) and not lar(_p(zg)[-1]):
+            out["IMP.2SG"] = _uniq([render(_add(_p(zg), "dʰí"))] + out["IMP.2SG"])
     if not spec.thematic and st and st[-1].base == "s" and st[-1].kind == "C" and "PRS.2SG" in out:
         out["PRS.2SG"] = _uniq(out["PRS.2SG"] + [render(st) + "si"])
     return out

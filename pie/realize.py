@@ -10,7 +10,9 @@ Plan (one sentence):
   {"english": "...",
    "clauses": [{"order": "SOV" | "VSO",           # VSO = verb-initial (narrative/emphasis)
                 "conj": null | "kʷe" | "wē",       # "and" / "or" joining this clause to the previous one
-                "neg": false,                      # ne before the verb (mē with imperative)
+                "neg": false | true | "ne" | "mē",  # true: ne before the verb (mē with IMP, OPT and 1st-person
+                                                   # SBJV 'let me not'); "ne"/"mē" pick it ("ne" + 1sg SBJV:
+                                                   # 'I shall not …', Hom. οὐδὲ ἴδωμαι)
                 "particle": null | "nu" | "ge" | "yod",  # nu "now, then"; -ge emphatic (enclitic); h₁yód "if, when"
                 "break": false,                    # this clause starts a new sentence
                 "question": false,                 # this clause's sentence ends in "?"
@@ -457,7 +459,7 @@ def _closed_form(lx: Lexicon, lex_id: str, feat: str, gender: str) -> str | None
 
 # indeclinable closed adverbs (closed_class.json interrogative_adv, correlative_adv): role ADV; the quantifiers
 # also MOD with a head, which they put in the plural like a numeral ('how many horses': kʷóti h₁éḱwōs, Lat. quot)
-CLOSED_ADVERBS = ("interrogative_adv", "correlative_adv")
+CLOSED_ADVERBS = ("interrogative_adv", "correlative_adv", "deictic_adv")   # deictic_adv: 'here' h₁idʰé
 CLOSED_QUANTIFIERS = ("closed:interrogative_adv/how_many", "closed:correlative_adv/so_many",
                       "closed:correlative_adv/as_many")
 
@@ -700,6 +702,92 @@ def _check_agreement(ci: int, cl: dict, slots: list, verbs: list, lx: Lexicon) -
     return errs
 
 
+def _check_perfect_dual(ci: int, cl: dict, verbs: list, lx: Lexicon) -> list[str]:
+    """The perfect has no 2nd or 3rd dual: Ringe 2006 p. 32 ('the dual endings are not reconstructable because
+    Greek and Indo-Iranian disagree'). Fortson §5.51 prints none either. The realizer would put the plural in
+    their place (finite_cell's du→pl), so a dual pair addressed or described with a perfect came out plural in
+    an otherwise dual clause (t023 66dc51f8, t024 00010). Rejected, whether the dual comes from the verb's
+    num, a dual subject or two coordinated singulars, so the planner picks a present or aorist. (The middle
+    2du/3du are no better reconstructed, Ringe p. 31, but no tense avoids them; they keep the flagged
+    fallback.)"""
+    if len(verbs) != 1:
+        return []
+    v = verbs[0].get("verb") or {}
+    if v.get("tense") != "PRF" or v.get("mood", "IND") != "IND":
+        return []
+    try:
+        person, num = verb_person_number(cl, v, lx)
+    except Exception:
+        return []
+    if num != "DU" or person == 1:
+        return []
+    return [f"clause {ci}: the perfect has no {person}du (Ringe 2006 p. 32: not reconstructible, Greek and "
+            f"Indo-Iranian disagree), and a plural would stand in for the dual; use a present or aorist verb for "
+            f"a dual subject or addressee (h₁r̥tóm, sth₂éh₁yetes)"]
+
+
+NEG_VALUES = (False, True, None, "ne", "mē")
+
+
+def _check_neg(ci: int, cl: dict, ctype: str, verbs: list) -> list[str]:
+    """`neg`: true picks the particle (ne; mē with IMP, OPT and the 1st-person SBJV); "ne" and "mē" choose it.
+    "ne" + 1st-person SBJV is a negated statement of will or the future ('I shall not …'): Hom. οὐδὲ ἴδωμαι
+    'nor shall I see' (Il. 1.262), the prospective subjunctive negated with οὐ, against hortatory μή 'let me
+    not'; Ved. ná + subjunctive likewise (t027, t028 reviews)."""
+    n = cl.get("neg")
+    if n not in NEG_VALUES:
+        return [f"clause {ci}: neg must be true, false, \"ne\" or \"mē\", not {n!r}"]
+    if not isinstance(n, str):
+        return []
+    mood = ((verbs[0].get("verb") or {}).get("mood", "IND") if len(verbs) == 1 else None)
+    if n == "ne" and mood in ("IMP", "OPT"):
+        return [f"clause {ci}: neg \"ne\" cannot go with {mood}: a prohibition is mē + injunctive (neg + IMP), "
+                f"a negative wish mē + optative"]
+    if n == "mē" and (ctype != "verbal" or mood == "IND"):
+        return [f"clause {ci}: neg \"mē\" negates a command, wish or exhortation (IMP, OPT, SBJV); a statement "
+                f"takes ne (neg: true)"]
+    return []
+
+
+def _check_imp_person(ci: int, cl: dict, verbs: list) -> list[str]:
+    """An imperative with no person and no subject is 3rd person ('let him go'). With a VOC in the clause it is
+    almost always a command to the addressee (t027 review: 12 of the 14 wrong items, h₁ógʷʰey h₁nédʰtu 'Serpent,
+    let him come forth'). So the planner must say which one it means. A person-less IMP with no VOC stays
+    3rd person: the approved records have 56 such commands with no VOC ('whoever has a dog, let him feed it')."""
+    if len(verbs) != 1:
+        return []
+    v = verbs[0].get("verb") or {}
+    slots = cl.get("slots", [])
+    if v.get("mood") != "IMP" or v.get("person") or any(s.get("role") == "SUBJ" for s in slots) \
+            or not any(s.get("role") == "VOC" for s in slots):
+        return []
+    return [f"clause {ci}: an imperative beside a VOC needs a person: 2 to command the addressee ('Serpent, come "
+            f"forth!'), or 3 for 'let him …'; without one it would be 3rd person"]
+
+
+def _check_pred_gender(ci: int, cl: dict, slots: list, lx: Lexicon) -> list[str]:
+    """A predicate adjective agrees with its controller (the subject or addressee), so a `gender` on the PRED
+    slot itself is ignored. One that contradicts the controller's gender is a plan error: the gender
+    belongs on the subject (t031 review: túH … h₂r̥ǵrós for the neuter fire; t029: nogʷṓs for the feminine
+    sheep). With pro-drop the PRED's gender is the referent's and is used."""
+    out = []
+    for si, s in enumerate(slots):
+        g = s.get("gender")
+        if s.get("role") != "PRED" or g not in ("m", "f", "n") or s.get("lex_id", "").startswith("closed:"):
+            continue
+        try:
+            if _family(s, lx) != "adj":
+                continue
+            a, kind = clause_controller(cl, lx)
+        except Exception:
+            continue
+        if kind != "verb" and a.gender and a.gender != g:
+            out.append(f"clause {ci} slot {si}: the predicate adjective agrees with its {kind.lower()} "
+                       f"({a.gender}); its own gender {g} is ignored. Put the gender on the "
+                       f"{'subject' if kind == 'SUBJ' else 'addressee'} slot (a pronoun has none of its own)")
+    return out
+
+
 _VALENCY: dict | None = None
 
 
@@ -736,6 +824,10 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
             errs.append(f"clause {ci}: a 2nd-person verb takes no noun subject: address the god or person "
                         f"with a VOC slot (h₂éwsos 'Dawn!', not SUBJ h₂éwsōs)")
         errs += _check_agreement(ci, cl, slots, verbs, lx)
+        errs += _check_perfect_dual(ci, cl, verbs, lx)
+        errs += _check_neg(ci, cl, ctype, verbs)
+        errs += _check_imp_person(ci, cl, verbs)
+        errs += _check_pred_gender(ci, cl, slots, lx)
         for si, s in enumerate(slots):
             where = f"clause {ci} slot {si}"
             lid, role = s.get("lex_id", ""), s.get("role")
@@ -894,7 +986,119 @@ def plan_warnings(plan: dict, lx: Lexicon | None = None) -> list[str]:
             if near and (g, n) not in near:     # nothing named nearby: the referent is outside the plan
                 out.append(f"clause {ci} slot {si}: {s['lex_id'].split(':')[1]} {s.get('role')} {g} {n} matches no "
                            f"referent of that gender and number in this clause or the two before: check its antecedent")
+        out += _default_warnings(ci, cl, clauses[ci - 1] if ci else None, lx)
     return out
+
+
+def _has(cl: dict | None, role: str) -> bool:
+    return bool(cl) and any(s.get("role") == role for s in cl.get("slots", []))
+
+
+def _addresses(cl: dict | None) -> bool:
+    """The clause names an addressee: a VOC slot, or a vocative np utterance ('Sky!')."""
+    return _has(cl, "VOC") or bool(cl) and cl.get("type") == "np" and cl.get("case") == "VOC"
+
+
+def _default_warnings(ci: int, cl: dict, prev: dict | None, lx: Lexicon) -> list[str]:
+    """Silent defaults that are usually a plan omission (engine-queue-wave1; silent-defaults audit):
+      - a verb with no person, no subject, and a VOC in this clause or the one before: it is 3rd person
+        ('Sky, you are great' with no person says 'he is great');
+      - a verb-only clause with no person and no num after a clause whose subject is not singular: it is
+        3sg, not the subject carried over (t031-0005 'the cows graze … and eats');
+      - an adjective agreeing with a 1st/2nd-person pronoun that has no gender: it is masculine (t029: nogʷṓs
+        for the ewe);
+      - a verb form that is also a form of a verb with another root (h₂éǵt 'said' and h₂éǵet 'drove'; t030)."""
+    slots = cl.get("slots", [])
+    out = []
+    vi = next((i for i, s in enumerate(slots) if s.get("role") == "V"), None)
+    v = (slots[vi].get("verb") or {}) if vi is not None else {}
+    if vi is not None and not v.get("person") and not _has(cl, "SUBJ"):
+        if (_has(cl, "VOC") and v.get("mood") != "IMP") or (_addresses(prev) and not _has(cl, "VOC")):
+            out.append(f"clause {ci}: the verb has no person and no subject, and a VOC is near: it is realized "
+                       f"as 3rd person; set person: 2 if it addresses the VOC")
+        elif not v.get("num") and not _has(cl, "VOC") and _has(prev, "SUBJ"):
+            try:
+                a, kind = clause_controller(prev, lx)
+            except Exception:
+                a, kind = None, None
+            if a is not None and kind == "SUBJ" and a.verb_num != "SG":
+                out.append(f"clause {ci}: a verb-only clause after a {a.verb_num} subject is realized as 3sg; "
+                           f"set the verb's person and num if that subject goes on (person: 3, num: {a.verb_num})")
+    try:
+        ctrl, kind = clause_controller(cl, lx)
+    except Exception:
+        ctrl, kind = None, None
+    for si, s in enumerate(slots):
+        lid = s.get("lex_id", "")
+        if lid.startswith("closed:personal/") and lid.split("/")[1] in ("1", "2") and not s.get("gender"):
+            agrees = [j for j, m in enumerate(slots) if m.get("role") in ("MOD", "APPOS") and m.get("head") == si
+                      and not m.get("lex_id", "").startswith("closed:") and not m.get("gender")
+                      and (m.get("participle") is not None or _safe_family(m, lx) == "adj")]
+            if s.get("role") == "SUBJ" and kind == "SUBJ" and len(role_group(slots, "SUBJ")[0]) == 1:
+                agrees += [j for j, m in enumerate(slots) if m.get("role") == "PRED"
+                           and not m.get("lex_id", "").startswith("closed:") and _safe_family(m, lx) == "adj"]
+            if agrees:
+                out.append(f"clause {ci} slot {si}: the pronoun has no gender, so the adjective agreeing with it "
+                           f"(slot {agrees[0]}) is masculine; set gender on the pronoun (f for a woman or a ewe, "
+                           f"n for the fire)")
+    if vi is not None and not slots[vi].get("lex_id", "").startswith("closed:"):
+        try:
+            form = realize_clause(cl, lx)
+        except Exception:
+            form = None
+        w = next((x for x in form or [] if x.slot == vi), None)
+        for o in (_confusables().get(w.lex_id, ()) if w is not None else ()):
+            # the same form (h₂éǵeti 'drives' = SBJV 'may say'), or two past forms of the same person and number
+            # one letter apart (h₂éǵt AOR.3SG 'said' ~ h₂éǵet PST.3SG 'drove', the t030 slip); one letter apart
+            # in other cells (h₂éǵt ~ h₂éǵe IMP.2SG) is not a likely misreading
+            pn, past = w.features.rsplit(".", 1)[-1], w.features.startswith(PAST_CELLS)
+            near = sorted((f, v[0]) for f, v in lx.admissible_cells(o).items()
+                          if v and not f.startswith("PTCP") and (v[0] == w.form or (
+                              past and f.startswith(PAST_CELLS) and f.rsplit(".", 1)[-1] == pn
+                              and _one_apart(w.form, v[0]))))
+            if near:
+                f, form = near[0]
+                same = "is also" if form == w.form else "is one letter from"
+                out.append(f"clause {ci}: the verb form {w.form} ('{lx.gloss(w.lex_id)}', {w.features}) {same} "
+                           f"{form} ('{lx.gloss(o)}', {o} {f}): check that the English means "
+                           f"'{lx.gloss(w.lex_id)}'")
+    return out
+
+
+_CONFUSABLES: dict | None = None
+PAST_CELLS = ("PST.", "AOR.", "INJ.", "MID.PST.", "MID.AOR.")
+
+
+def _confusables() -> dict:
+    """lex_id → the lex_ids it is easily confused with (data/generation/confusable_verbs.json)."""
+    global _CONFUSABLES
+    if _CONFUSABLES is None:
+        p = ROOT / "data" / "generation" / "confusable_verbs.json"
+        _CONFUSABLES = {}
+        for pair in (json.loads(p.read_text("utf-8"))["pairs"] if p.exists() else []):
+            a, b = pair["lex_ids"]
+            _CONFUSABLES.setdefault(a, []).append(b)
+            _CONFUSABLES.setdefault(b, []).append(a)
+    return _CONFUSABLES
+
+
+def _one_apart(a: str, b: str) -> bool:
+    """Identical, or one inserted, deleted or substituted character apart (NFC): h₂éǵt ~ h₂éǵet."""
+    if a == b:
+        return True
+    if abs(len(a) - len(b)) > 1:
+        return False
+    if len(a) == len(b):
+        return sum(x != y for x, y in zip(a, b)) == 1
+    s, t = (a, b) if len(a) < len(b) else (b, a)
+    return any(t[:i] + t[i + 1:] == s for i in range(len(t)))
+
+
+def _safe_family(s: dict, lx: Lexicon) -> str | None:
+    try:
+        return _family(s, lx)
+    except KeyError:
+        return None
 
 
 def _check_clause_type(ci: int, cl: dict, ctype: str, slots: list, verbs: list) -> list[str]:
@@ -1075,6 +1279,12 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
     # hortative subjunctive 'let us not …' takes mē as well (Gk μή + hortatory subj.)
     person, num = verb_person_number({**cl, "slots": slots}, v, lx) if vi is not None else (ctrl.person, ctrl.verb_num)
     neg_wish = neg_wish or (cl.get("neg") and v.get("mood") == "SBJV" and person == 1)
+    # an explicit particle overrides: "ne" + 1st-person SBJV 'I shall not …', "mē" + SBJV 'let him not …'
+    # (_check_neg; t027, t028 reviews)
+    if cl.get("neg") == "ne":
+        neg_wish = False
+    elif cl.get("neg") == "mē":
+        neg_wish = True
     words: dict[int, Word] = {}
     for i, s in enumerate(slots):
         lid, role = s["lex_id"], s["role"]

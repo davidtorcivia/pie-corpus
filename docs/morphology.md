@@ -105,10 +105,13 @@ The order is: a Wiktionary table if the entry has one; otherwise a shape rule on
 | athematic-root | 41 | 34 | 88.5% |
 | root-aorist | 22 | 17 | 88.0% |
 | thematic (noun) | 69 | 59 | 85.5% (the misses are adjectives whose lemma lacks a POS) |
-| pk-iu-stem / n-stem-ak / thematic-neuter / eh2 / er-stem | | | 79–85% |
+| eh2 | 19 (15 scored) | 15 | 100% (2026-10-28; was 78.9%) |
+| pk-iu-stem / n-stem-ak / thematic-neuter / er-stem | | | 79–85% |
 | n-stem-hk / devi / hk-iu-stem | | | 45–71% (not usable) |
 
 **Usability policy:** Tier 3 may use only a table spec, or a shape rule with ≥ 85% backtest agreement (`usable` in `data/morph/inflection_specs.jsonl`).
+
+**eh₂ gate (2026-10-28, engine-queue-wave1).** The eh₂ rule takes the headword as the stem. 4 of its 19 tables are written on another spelling of their own headword: unaccented *ǵʰorneh₂* under *ǵʰórneh₂*, *h₂yuh₁n̥téh₂* under *h₂yuHn̥téh₂*, *tń̥neh₂* under *tn̥néh₂*, and *h₃migʰleh₂*. Each scored 0/19, and together they were the whole gap from 100% to 78.9%. The backtest now skips them, as it already did for thematic tables. This makes 391 eh₂ nouns usable (*h₁éḱweh₂* 'mare', *h₁orséh₂* 'tail', *wóbʰseh₂* 'wasp'), so the usable count went from 4,215 to 4,606.
 
 **Coverage:** 4,476 of 6,363 words and derivatives get a spec, and **3,453 are usable** (1,652 nouns, 1,649 verbs, 152 adjectives). These cover **821 of 885 roots** (691 of 730 verbal). The 1,798 unknowns are mostly bound stems (forms ending in a hyphen, which are not words) plus lemma shapes with no rule yet.
 
@@ -134,6 +137,8 @@ Ringe writes thematic endings uncontracted (*-oey*, *-ead*, *-oes*), i.e. our `w
 ## Phase B (verbal: built)
 
 `conjugate(..., phase_b=True)` adds the middle (primary *-h₂er/-th₂er/-tor*, secondary *-h₂e/-th₂e/-to*, zero-grade alternatives *-ór/-ró*), subjunctive (thematic lengthened *-ēti*; athematic strong stem + short vowel; *e*-grade in the perfect), optative (*-oy-*; *-yéh₁-/-ih₁-*), participles (*-onts/-omnos*, *-ónts/-m̥h₁nós*, perfect *-wṓs*), and middle imperatives. An accented stem takes zero-grade *-n̥t* in OPT.3PL and PTCP (*bʰúHih₁n̥t*, *h₁édn̥ts*). Handbook alternatives attested in Tier 1: middle imperative *-eswo* and future imperative *-tōd* (Byrd 2013).
+
+The secondary middle 2sg stays *-th₂e*. Both Fortson §5.16 and Ringe 2006 p. 30 print *-th₂e*. Beekes p. 269 takes Ved. *-thās* as the older form but reconstructs it as *-th₂o* and derives the *-s* from the active. So none of the three gives the *-th₂es* that the t024 review asked for. The perfect has no 2du/3du (Ringe p. 32), and `check_plan` rejects a dual perfect. A Narten present's 2sg imperative is the zero grade plus *-dʰí* (Fortson §5.54): *h₁ddʰí* (Ved. *addhí*), with *h₁éddʰi* as the alternative.
 
 Cross-check with these cells in scope: **14,023/14,197 cells (98.8%)**, 0 unexplained. New Wiktionary idiosyncrasy classes: `wikt-hiatus-unsyllabified` (*térh₂u-oh₂*), `wikt-mistagged-cell` (participle cells holding finite middle forms), `wikt-odd-table` (*str̥néh₃ti*).
 

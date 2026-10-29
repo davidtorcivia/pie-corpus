@@ -1,0 +1,8 @@
+{
+ "_note": "Verb pairs whose cells are identical or one letter apart, so a planner or reader can take one for the other. plan_warnings (pie/realize.py _default_warnings) warns when a realized form of one is identical to, or one letter away from, a primary form of the other. A general index over all usable verbs was measured first: identical forms across different roots warned on 1,150 of the 2,555 approved records (h₁ést 'was' = 'threw', bʰéh₂t 'spoke' = 'shone', ...). That is noise, not a check. So only pairs confirmed to have misled a plan are listed here.",
+ "pairs": [
+  {"lex_ids": ["pie-lex-h2egjt", "pie-lex-h2egjeti"],
+   "glosses": ["say (root aorist h₂éǵt, LIV² p. 256)", "drive (thematic present h₂éǵeti)"],
+   "why": "t030 review 3b36d09f: h₂éǵt 'said' stood where 'drove' (h₂éǵet) was meant; the say-aorist's subjunctive h₂éǵeti is the drive-present h₂éǵeti"}
+ ]
+}
