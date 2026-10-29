@@ -17,3 +17,6 @@ These are fixed centrally after wave 1, before wave 2 starts. Each item names th
 - **Colour words specced as masculine nouns** (bʰl̥Hós 'white', h₂r̥ǵrós 'shining'): they can't agree with a neuter head, and check_plan doesn't flag it (t031).
 - **A verb-only clause defaults to 3sg** even when the plural subject is understood (t031; brief rule 9 tells planners to set the number, but the engine doesn't warn).
 - **Gender on a predicate slot is silently ignored** (t031).
+- **391 eh₂-stem nouns are unusable** because they fall below the shape-backtest threshold (mare h₁éḱweh₂, tail, wasp, …). Other core words are also unusable: ugʷsḗn 'ox', sḗh₂l 'salt', 'louse', 'bee', 'nit'; fox h₂wl̥pis needs an override. This is a large vocabulary loss and the highest-priority engine item (project-reconstructions agent).
+- **ḱe 'here'** is a particle, so make_slice never offers it as an adverb. Add a deictic 'here' adverb.
+- **Slice keywords to add in wave 2**: nest, fly, thirst, hunger/hungry (needs `--derived`).
