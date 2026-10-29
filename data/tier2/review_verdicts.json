@@ -1,5 +1,5 @@
 {
- "_source": "round 1: docs/audits/tier2-review.md (plans at 1fffadb); round 2: docs/audits/tier2-review-r2.md (entries with review: r2); round 4: docs/audits/tier2-review-r4.md (review: r4); round 5: docs/audits/tier2-review-r5.md (review: r5)",
+ "_source": "round 1: docs/audits/tier2-review.md (plans at 1fffadb); round 2: docs/audits/tier2-review-r2.md (entries with review: r2); round 4: docs/audits/tier2-review-r4.md (review: r4); round 5: docs/audits/tier2-review-r5.md (review: r5); round 6: docs/audits/tier2-review-r6.md (review: r6)",
  "_rule": "a verdict applies only while the plan's sha matches (plan, cognate_refs, secure); a revised line is 'stale' until re-reviewed",
  "verdicts": {
   "cattle-raid-001": {
@@ -592,8 +592,8 @@
   },
   "bp-ii-gmc-001": {
    "verdict": "sound",
-   "plan_sha": "6214527438fce4f8",
-   "review": "r5"
+   "plan_sha": "c9fc9df993d5f079",
+   "review": "r6"
   },
   "bp-ii-gmc-002": {
    "verdict": "reject",
@@ -614,6 +614,76 @@
    "verdict": "weak",
    "plan_sha": "37b811816481cadd",
    "review": "r5"
+  },
+  "dawn-sun-022": {
+   "verdict": "sound",
+   "plan_sha": "dff482366699301d",
+   "review": "r6"
+  },
+  "epic-diction-006": {
+   "verdict": "sound",
+   "plan_sha": "ff839e8a4b50bfa1",
+   "review": "r6"
+  },
+  "epic-diction-007": {
+   "verdict": "sound",
+   "plan_sha": "4ee9191656fda49a",
+   "review": "r6"
+  },
+  "epic-diction-005": {
+   "verdict": "weak",
+   "plan_sha": "58916b959844fc66",
+   "review": "r6"
+  },
+  "bp-ii-ita-004": {
+   "verdict": "weak",
+   "plan_sha": "c3f31c1371e29ec1",
+   "review": "r6"
+  },
+  "death-otherworld-012": {
+   "verdict": "weak",
+   "plan_sha": "accc30ca0c121d2c",
+   "review": "r6"
+  },
+  "epic-diction-008": {
+   "verdict": "weak",
+   "plan_sha": "d9088d53c6e62e9e",
+   "review": "r6"
+  },
+  "epic-diction-009": {
+   "verdict": "weak",
+   "plan_sha": "cb4e172f63814e03",
+   "review": "r6"
+  },
+  "epic-diction-010": {
+   "verdict": "weak",
+   "plan_sha": "32ab3ca886d48844",
+   "review": "r6"
+  },
+  "epic-diction-011": {
+   "verdict": "reject",
+   "plan_sha": "cc849f8adfceeceb",
+   "review": "r6"
+  },
+  "epic-diction-012": {
+   "verdict": "weak",
+   "plan_sha": "fc2743d642569476",
+   "review": "r6"
+  },
+  "epic-diction-013": {
+   "verdict": "weak",
+   "plan_sha": "650daa9baab0a1e5",
+   "review": "r6"
+  },
+  "healing-charms-007": {
+   "verdict": "reject",
+   "plan_sha": "0219b178372d5f93",
+   "review": "r6"
+  },
+  "dragon-slaying-016": {
+   "verdict": "reject",
+   "plan_sha": "38eadf1d753dfedf",
+   "review": "r6"
   }
  }
 }
