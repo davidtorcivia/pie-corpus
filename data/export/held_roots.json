@@ -3,7 +3,7 @@
  "by": "scripts/build_holdout.py",
  "share": 0.1,
  "universe": 1469,
- "protected": 821,
+ "protected": 829,
  "excluded_used": {
   "tier1": 32,
   "tier2-train": 56,
@@ -12,20 +12,20 @@
   "slices": 548,
   "neologisms": 23
  },
- "pool": 499,
+ "pool": 495,
  "n": 147,
  "quota": {
   "no-tasks/branches:0/verbal": 58,
   "no-tasks/branches:1-2/verbal": 1,
   "no-tasks/branches:3-4/nominal": 2,
-  "no-tasks/branches:3-4/verbal": 7,
-  "no-tasks/branches:5+/verbal": 3,
+  "no-tasks/branches:3-4/verbal": 9,
+  "no-tasks/branches:5+/verbal": 2,
   "tasks/branches:0/verbal": 11,
   "tasks/branches:1-2/nominal": 2,
   "tasks/branches:3-4/nominal": 3,
   "tasks/branches:3-4/verbal": 12,
   "tasks/branches:5+/nominal": 7,
-  "tasks/branches:5+/verbal": 41
+  "tasks/branches:5+/verbal": 40
  },
  "shortfall": {
   "tasks/branches:5+/verbal": 12
@@ -50,13 +50,13 @@
     }
    },
    "branches": {
-    "mean": 3.18,
+    "mean": 3.12,
     "bins": {
      "0": 64,
      "1": 0,
      "2": 3,
-     "3-4": 23,
-     "5+": 48
+     "3-4": 24,
+     "5+": 47
     }
    },
    "root_type": {
@@ -64,10 +64,10 @@
     "nominal": 14
    },
    "task_bearing": 71,
-   "tasks": 510,
+   "tasks": 534,
    "tasks_by_lexeme_family": {
-    "verb": 203,
-    "noun": 200,
+    "noun": 215,
+    "verb": 212,
     "adj": 62,
     "root": 23,
     "other": 17,
@@ -89,13 +89,13 @@
     }
    },
    "branches": {
-    "mean": 1.79,
+    "mean": 1.75,
     "bins": {
      "0": 62,
      "1": 0,
      "2": 3,
-     "3-4": 18,
-     "5+": 19
+     "3-4": 19,
+     "5+": 18
     }
    },
    "root_type": {
@@ -103,10 +103,10 @@
     "nominal": 9
    },
    "task_bearing": 35,
-   "tasks": 99,
+   "tasks": 111,
    "tasks_by_lexeme_family": {
-    "verb": 47,
-    "noun": 27,
+    "verb": 53,
+    "noun": 33,
     "root": 10,
     "adj": 7,
     "other": 7,
@@ -128,7 +128,45 @@
     }
    },
    "branches": {
-    "mean": 2.52,
+    "mean": 2.48,
+    "bins": {
+     "0": 69,
+     "1": 2,
+     "2": 1,
+     "3-4": 38,
+     "5+": 37
+    }
+   },
+   "root_type": {
+    "nominal": 14,
+    "verbal": 133
+   },
+   "task_bearing": 75,
+   "tasks": 220,
+   "tasks_by_lexeme_family": {
+    "verb": 128,
+    "noun": 48,
+    "root": 26,
+    "other": 12,
+    "adj": 6
+   }
+  },
+  "previous": {
+   "set": "previous frozen set (2026-10-29)",
+   "families": 147,
+   "reflex_langs": {
+    "median": 4,
+    "mean": 4.93,
+    "bins": {
+     "0": 69,
+     "1-2": 1,
+     "3-5": 14,
+     "6-10": 35,
+     "11+": 28
+    }
+   },
+   "branches": {
+    "mean": 2.5,
     "bins": {
      "0": 69,
      "1": 2,
@@ -142,137 +180,20 @@
     "verbal": 133
    },
    "task_bearing": 76,
-   "tasks": 197,
+   "tasks": 227,
    "tasks_by_lexeme_family": {
-    "verb": 115,
-    "noun": 37,
+    "verb": 133,
+    "noun": 49,
     "root": 27,
     "other": 12,
     "adj": 6
    }
-  },
-  "previous": {
-   "set": "previous frozen set (2026-10-28)",
-   "families": 147,
-   "reflex_langs": {
-    "median": 5,
-    "mean": 5.48,
-    "bins": {
-     "0": 69,
-     "1-2": 1,
-     "3-5": 11,
-     "6-10": 32,
-     "11+": 34
-    }
-   },
-   "branches": {
-    "mean": 2.81,
-    "bins": {
-     "0": 69,
-     "1": 0,
-     "2": 3,
-     "3-4": 24,
-     "5+": 51
-    }
-   },
-   "root_type": {
-    "verbal": 133,
-    "nominal": 14
-   },
-   "task_bearing": 76,
-   "tasks": 201,
-   "tasks_by_lexeme_family": {
-    "verb": 105,
-    "noun": 43,
-    "root": 32,
-    "other": 13,
-    "adj": 7,
-    "adv": 1
-   }
   }
  },
  "previous_now_protected": [
-  "pie-root-Heh3l-bow",
-  "pie-root-bhelgjh-swell",
-  "pie-root-bhleh3-bloom",
-  "pie-root-deh2-share",
-  "pie-root-dhelbh-dig",
-  "pie-root-dhembh-bury",
-  "pie-root-dhrew-cry_out",
-  "pie-root-drewH-cut_down",
-  "pie-root-geh2w-rejoice",
-  "pie-root-gel-be_cold",
-  "pie-root-gjar-sound",
-  "pie-root-gjheh1-leave",
-  "pie-root-gjher-take-2",
-  "pie-root-gjhnew-be_ashamed",
-  "pie-root-gnet-press",
-  "pie-root-grengjh-turn",
-  "pie-root-gwel-lie_down",
-  "pie-root-gwhews-hear",
-  "pie-root-h1eg-lack",
-  "pie-root-h1eh1s-sit",
-  "pie-root-h1eh1t-breathe",
-  "pie-root-h1es-throw",
-  "pie-root-h1ewH-help",
-  "pie-root-h1reyp-tear",
-  "pie-root-h2egj-goat",
-  "pie-root-h2ep-water",
-  "pie-root-h2ey-day",
-  "pie-root-h2reh1-think",
-  "pie-root-h2werg-turn",
-  "pie-root-h2wert-swear",
-  "pie-root-h3eyt-take",
-  "pie-root-h3meygh-fog",
-  "pie-root-h3rewH-roar",
-  "pie-root-kjad-fall",
-  "pie-root-kjeh1s-teach",
-  "pie-root-kjer-plait",
-  "pie-root-kjlews-hear",
-  "pie-root-kjneth2-thrust",
-  "pie-root-kjreyH-touch",
-  "pie-root-kjyeH-freeze",
-  "pie-root-knewH-scratch",
-  "pie-root-krewH-pile",
-  "pie-root-kweh2d-tear",
-  "pie-root-kweh2s-cough",
-  "pie-root-kwerpH-turn",
-  "pie-root-kwleh2-spread_out",
-  "pie-root-leb-hang_down_loosely",
-  "pie-root-leh1d-be_tired",
-  "pie-root-meh1-measure",
-  "pie-root-meh2-wet",
-  "pie-root-merh2-crumble",
-  "pie-root-mews-shut",
-  "pie-root-neh2-become_afraid",
-  "pie-root-peh1-hate",
-  "pie-root-peh3lH-fall",
-  "pie-root-peh3y-drink",
-  "pie-root-plewd-fly",
-  "pie-root-prews-freeze",
-  "pie-root-rews-dig_up",
-  "pie-root-semh2-summer",
-  "pie-root-skerp-cut_off",
-  "pie-root-skey-split",
-  "pie-root-skjed-cover",
-  "pie-root-smal-small",
-  "pie-root-smeh2-beckon",
-  "pie-root-smekj-beard",
-  "pie-root-snedh-cut",
-  "pie-root-sreyHgj-freeze",
-  "pie-root-strebh-turn",
-  "pie-root-strewg-stroke",
-  "pie-root-swelH-swell_up",
-  "pie-root-syewH-sew",
-  "pie-root-teh2k-be_concealed",
-  "pie-root-telk-thrust",
-  "pie-root-tergj-wipe_off",
-  "pie-root-up-cry_out",
-  "pie-root-weh2dh-go",
-  "pie-root-wemh1-spew",
-  "pie-root-wes-graze",
-  "pie-root-weyk-curve",
-  "pie-root-wleykw-moist"
+  "pie-root-dhlegh-owe",
+  "pie-root-h2lewgh-announce",
+  "pie-root-weyk-overcome"
  ],
  "old_protected_count": 88,
  "held": [
@@ -281,8 +202,8 @@
   "pie-root-bherdh-plunder",
   "pie-root-bherh2-move_quickly",
   "pie-root-bhers-top",
-  "pie-root-bhil-harmonious",
   "pie-root-bhlegj-shine",
+  "pie-root-bhlendh-blend",
   "pie-root-bhlewH-overflow",
   "pie-root-bhlewdh2-dissolve",
   "pie-root-bhrem-make_noise",
@@ -291,7 +212,6 @@
   "pie-root-deyh2-shine",
   "pie-root-dherh3-leap",
   "pie-root-dhewH-move_quickly_to",
-  "pie-root-dhlegh-owe",
   "pie-root-dhrebh-separate_out",
   "pie-root-dhreh2gh-irritate",
   "pie-root-dhrew-mislead",
@@ -314,14 +234,13 @@
   "pie-root-h2ens-beget",
   "pie-root-h2er-speak_weightily_loudly",
   "pie-root-h2erH-disappear",
+  "pie-root-h2eykj-appropriate",
   "pie-root-h2ger-gather",
-  "pie-root-h2lewgh-announce",
   "pie-root-h2merd-do_harm",
   "pie-root-h2wedH-sound",
   "pie-root-h2wyedh-wound",
   "pie-root-h3ew-put_clothes_or",
   "pie-root-h3neh2-enjoy",
-  "pie-root-h3neyd-revile",
   "pie-root-h3yebh-enter_into",
   "pie-root-kakka-defecate",
   "pie-root-keh2p-grasp",
@@ -373,6 +292,7 @@
   "pie-root-pewkj-pine",
   "pie-root-peyg-inactive",
   "pie-root-peygj-vex",
+  "pie-root-preg-yearn",
   "pie-root-prep-appear",
   "pie-root-prew-jump",
   "pie-root-reh1p-creep",
@@ -416,12 +336,13 @@
   "pie-root-tengj-seem",
   "pie-root-tep-smear",
   "pie-root-ter-tender",
+  "pie-root-tpelH-fortification",
   "pie-root-treH-protect",
+  "pie-root-twek-physical_appearance",
   "pie-root-twerH-enclose",
   "pie-root-weHgjh-acknowledge-2",
   "pie-root-weng-bow",
   "pie-root-werp-turn_back_and-2",
-  "pie-root-weyk-overcome",
   "pie-root-wred-become_make_soft-2"
  ]
 }

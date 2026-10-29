@@ -274,6 +274,7 @@ def main() -> int:
     chosen += [i for i in CORE_NOUNS + CONVERSATION if i in pool and i not in chosen]
     chosen += [i for i in pool if args.tier3b and lx.coined(i) == "neologism" and i not in chosen]
     if args.tier3b:      # the inherited alternatives to coinages: usable, unblocked and accented; P9's NIL hold waived
+        from pie.export import eval_root
         chosen += [i for i in TIER3B_INHERITED if i not in chosen and lx.specs.get(i, {}).get("usable")
                    and i not in lx.blocked and planner_accent_ok(lx, i)
                    and not eval_root(lx.entries[i].get("root_id"))]

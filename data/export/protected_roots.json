@@ -532,25 +532,25 @@
   "formula-menu": 11,
   "leipzig-jakarta": 60,
   "numeral": 22,
-  "swadesh-207": 121,
+  "swadesh-207": 122,
   "swadesh:body": 24,
   "swadesh:kin": 13,
-  "swadesh:nature": 27,
+  "swadesh:nature": 28,
   "tier2-secure": 61
  },
  "lexemes_by_reason": {
   "conversation": 12,
-  "conversation-core": 285,
+  "conversation-core": 301,
   "core-noun": 55,
-  "core-verb": 197,
+  "core-verb": 210,
   "formula": 30,
   "formula-menu": 20,
-  "leipzig-jakarta": 464,
+  "leipzig-jakarta": 484,
   "numeral": 27,
-  "swadesh-207": 844,
-  "swadesh:body": 46,
-  "swadesh:kin": 18,
-  "swadesh:nature": 58,
+  "swadesh-207": 872,
+  "swadesh:body": 51,
+  "swadesh:kin": 19,
+  "swadesh:nature": 67,
   "tier2-secure": 76
  },
  "concept_families": {
@@ -795,7 +795,8 @@
    ],
    "fight": [
     "pie-root-keh3-fight",
-    "pie-root-pert-come_into_conflict"
+    "pie-root-pert-come_into_conflict",
+    "pie-root-weyk-overcome"
    ],
    "fingernail/nail": [],
    "fire": [
@@ -1007,6 +1008,7 @@
     "pie-root-smey-laugh"
    ],
    "leaf": [
+    "pie-root-bhleh3-bloom",
     "pie-root-peth2-spread_out"
    ],
    "left": [],
@@ -1016,6 +1018,7 @@
    "lie/lie down": [
     "pie-root-dhrewgh-deceive",
     "pie-root-gwel-lie_down",
+    "pie-root-h2lewgh-announce",
     "pie-root-kewbh2-lie_down",
     "pie-root-legh-lie",
     "pie-root-lewgh-lie"
@@ -1216,7 +1219,8 @@
    ],
    "seed": [
     "pie-root-gjenh1-produce",
-    "pie-root-seh1-impress"
+    "pie-root-seh1-impress",
+    "pie-root-sper-scatter"
    ],
    "sew": [
     "pie-root-sneh1-spin",
@@ -1348,16 +1352,20 @@
     "pie-root-steg-pole"
    ],
    "stone": [
-    "pie-root-h2ekj-sharp"
+    "pie-root-h2ekj-sharp",
+    "pie-root-sek-cut"
    ],
    "straight": [
     "pie-root-h2yew-straight"
    ],
    "suck": [
+    "pie-root-dheh1y-suckle",
     "pie-root-sewkj-suck",
     "pie-root-srebh-sip"
    ],
-   "sun": [],
+   "sun": [
+    "pie-root-h2rew-shine"
+   ],
    "swell": [
     "pie-root-bheg-bend",
     "pie-root-bhel-blow",
@@ -1832,7 +1840,8 @@
    ],
    "house": [
     "pie-root-dem-build",
-    "pie-root-dheh1-do"
+    "pie-root-dheh1-do",
+    "pie-root-steg-cover"
    ],
    "in": [
     "pie-root-h1negjh-stab",
@@ -1850,6 +1859,7 @@
     "pie-root-smey-laugh"
    ],
    "leaf": [
+    "pie-root-bhleh3-bloom",
     "pie-root-peth2-spread_out"
    ],
    "leg/foot": [
@@ -1977,9 +1987,11 @@
    ],
    "star": [],
    "stone/rock": [
-    "pie-root-h2ekj-sharp"
+    "pie-root-h2ekj-sharp",
+    "pie-root-sek-cut"
    ],
    "suck": [
+    "pie-root-dheh1y-suckle",
     "pie-root-sewkj-suck",
     "pie-root-srebh-sip"
    ],
@@ -2349,6 +2361,7 @@
     "pie-root-teg-swear"
    ],
    "take care of/care for": [
+    "pie-root-bhergh-safeguard",
     "pie-root-h2leg-care_for",
     "pie-root-h2reh1gj-care_for",
     "pie-root-sep-care_for",
@@ -2404,7 +2417,9 @@
    "understand": [
     "pie-root-pret-understand"
    ],
-   "wait": [],
+   "wait": [
+    "pie-root-men-stay"
+   ],
    "wake/wake up/awaken": [
     "pie-root-bhewdh-be_awake",
     "pie-root-h1ger-wake_up",
@@ -2450,14 +2465,15 @@
    ]
   }
  },
- "families": 821,
+ "families": 829,
  "roots": {
   "pie-root-Hedh-say": [
    "leipzig-jakarta",
    "swadesh-207"
   ],
   "pie-root-Heh3l-bow": [
-   "leipzig-jakarta"
+   "leipzig-jakarta",
+   "swadesh:body"
   ],
   "pie-root-Hers-push": [
    "swadesh-207"
@@ -2475,6 +2491,7 @@
    "swadesh-207"
   ],
   "pie-root-Hreh1dh-think": [
+   "core-verb",
    "swadesh-207"
   ],
   "pie-root-Hreh3d-scrape": [
@@ -2597,6 +2614,9 @@
    "leipzig-jakarta",
    "swadesh-207"
   ],
+  "pie-root-bhergh-safeguard": [
+   "conversation-core"
+  ],
   "pie-root-bhergjh-rise_up": [
    "conversation-core"
   ],
@@ -2645,7 +2665,9 @@
    "swadesh-207"
   ],
   "pie-root-bhleh3-bloom": [
-   "swadesh-207"
+   "leipzig-jakarta",
+   "swadesh-207",
+   "swadesh:nature"
   ],
   "pie-root-bhlewH-strike": [
    "leipzig-jakarta",
@@ -2786,6 +2808,10 @@
   "pie-root-dheh1k-make": [
    "leipzig-jakarta"
   ],
+  "pie-root-dheh1y-suckle": [
+   "leipzig-jakarta",
+   "swadesh-207"
+  ],
   "pie-root-dhelbh-dig": [
    "swadesh-207"
   ],
@@ -2854,6 +2880,9 @@
   "pie-root-dhgwhey-decline": [
    "formula-menu",
    "tier2-secure"
+  ],
+  "pie-root-dhlegh-owe": [
+   "core-verb"
   ],
   "pie-root-dhmeH-blow": [
    "leipzig-jakarta",
@@ -2933,6 +2962,7 @@
   ],
   "pie-root-geH-sing": [
    "conversation-core",
+   "core-verb",
    "leipzig-jakarta",
    "swadesh-207"
   ],
@@ -3034,6 +3064,7 @@
    "conversation",
    "core-verb",
    "swadesh-207",
+   "swadesh:kin",
    "swadesh:nature",
    "tier2-secure"
   ],
@@ -3378,6 +3409,7 @@
   ],
   "pie-root-h1reh1p-take_away": [
    "conversation-core",
+   "core-verb",
    "leipzig-jakarta"
   ],
   "pie-root-h1rewdh-red": [
@@ -3542,7 +3574,8 @@
   ],
   "pie-root-h2eydh-ignite": [
    "leipzig-jakarta",
-   "swadesh-207"
+   "swadesh-207",
+   "swadesh:nature"
   ],
   "pie-root-h2eygj-goat": [
    "conversation-core"
@@ -3561,6 +3594,9 @@
   "pie-root-h2lek-protect": [
    "core-verb"
   ],
+  "pie-root-h2lewgh-announce": [
+   "swadesh-207"
+  ],
   "pie-root-h2leyH-smear": [
    "core-verb"
   ],
@@ -3578,6 +3614,10 @@
   ],
   "pie-root-h2reh1gj-care_for": [
    "conversation-core"
+  ],
+  "pie-root-h2rew-shine": [
+   "swadesh-207",
+   "swadesh:nature"
   ],
   "pie-root-h2rey-count": [
    "core-verb",
@@ -3604,7 +3644,8 @@
   "pie-root-h2welh1-hair": [
    "core-noun",
    "leipzig-jakarta",
-   "swadesh-207"
+   "swadesh-207",
+   "swadesh:body"
   ],
   "pie-root-h2welk-drag": [
    "swadesh-207"
@@ -3646,7 +3687,8 @@
   ],
   "pie-root-h3ed-bite": [
    "leipzig-jakarta",
-   "swadesh-207"
+   "swadesh-207",
+   "swadesh:body"
   ],
   "pie-root-h3ed-hate": [
    "conversation-core"
@@ -3896,6 +3938,7 @@
    "conversation-core"
   ],
   "pie-root-kjlews-hear": [
+   "core-verb",
    "leipzig-jakarta",
    "swadesh-207"
   ],
@@ -3957,6 +4000,9 @@
   "pie-root-krekj-strike": [
    "leipzig-jakarta",
    "swadesh-207"
+  ],
+  "pie-root-kres-move": [
+   "swadesh:nature"
   ],
   "pie-root-kret-be_strong": [
    "swadesh-207"
@@ -4615,7 +4661,9 @@
    "core-verb"
   ],
   "pie-root-sek-cut": [
-   "swadesh-207"
+   "leipzig-jakarta",
+   "swadesh-207",
+   "swadesh:nature"
   ],
   "pie-root-sek-dry_out": [
    "swadesh-207"
@@ -4650,7 +4698,8 @@
   ],
   "pie-root-semh2-summer": [
    "conversation-core",
-   "swadesh-207"
+   "swadesh-207",
+   "swadesh:nature"
   ],
   "pie-root-sengw-sink": [
    "core-verb",
@@ -4905,6 +4954,10 @@
   "pie-root-sper-free": [
    "core-noun"
   ],
+  "pie-root-sper-scatter": [
+   "swadesh-207",
+   "swadesh:nature"
+  ],
   "pie-root-sperdh-compete": [
    "leipzig-jakarta"
   ],
@@ -4935,6 +4988,7 @@
   ],
   "pie-root-steg-cover": [
    "conversation-core",
+   "core-verb",
    "leipzig-jakarta",
    "swadesh-207"
   ],
@@ -5382,6 +5436,9 @@
   ],
   "pie-root-weyk-curve": [
    "conversation-core"
+  ],
+  "pie-root-weyk-overcome": [
+   "swadesh-207"
   ],
   "pie-root-weyk-sift": [
    "swadesh-207"
