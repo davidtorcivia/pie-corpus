@@ -33,23 +33,23 @@
  ],
  "dup_within": 0,
  "dup_across_batches": 0,
- "tokens": 1980,
- "words_per_sentence": 46.52,
- "words_per_record": 46.52,
+ "tokens": 1982,
+ "words_per_sentence": 46.58,
+ "words_per_record": 46.58,
  "meter_fit": {
   "lines": 45,
-  "fit": 45,
-  "share": 1.0
+  "fit": 43,
+  "share": 0.956
  },
  "meter_near": {
   "lines": 45,
-  "near": 45,
-  "share": 1.0
+  "near": 43,
+  "share": 0.956
  },
  "meter_exact": {
   "lines": 45,
-  "exact": 44,
-  "share": 0.978
+  "exact": 42,
+  "share": 0.933
  },
  "meter_cadence": {
   "8": {
@@ -59,10 +59,10 @@
    "share": 0.071
   },
   "11": {
-   "lines": 16,
-   "cadence": 5,
+   "lines": 14,
+   "cadence": 3,
    "pattern": "HLHX",
-   "share": 0.312
+   "share": 0.214
   }
  },
  "formula_uses": 16,
