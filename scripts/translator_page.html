@@ -51,7 +51,7 @@ let mode="en";
 const $=s=>document.querySelector(s);
 const esc=s=>(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function setMode(m){mode=m;$("#t-en").classList.toggle("on",m==="en");$("#t-pie").classList.toggle("on",m==="pie");
-  $("#in").placeholder=m==="en"?"Be well, friend! The wolf saw the sheep.":"wĺ̥kʷos h₂ówim widét.";$("#out").innerHTML="";}
+  $("#in").placeholder=m==="en"?"Be well, friend! The wolf saw the sheep.":"wĺ̥kʷos h₂ówim widét.  (plain letters work too: wlkwos h2owim widet)";$("#out").innerHTML="";}
 $("#t-en").onclick=()=>setMode("en");$("#t-pie").onclick=()=>setMode("pie");
 async function go(){
   const text=$("#in").value.trim(); if(!text) return;
@@ -65,10 +65,10 @@ async function go(){
       ${s.unknown.length?`<div class="note">No PIE word for: ${esc(s.unknown.join(", "))}</div>`:""}
       ${s.notes.filter(n=>n.includes("≈")).length?`<div class="approx">Nearest words used: ${s.notes.filter(n=>n.includes("≈")).map(n=>esc(n.replace(/ \(no PIE word for.*\)/,""))).join("; ")}</div>`:""}
       ${s.notes.filter(n=>!n.includes("≈")).map(n=>`<div class="note">${esc(n)}</div>`).join("")}</div>`).join("")
-    : `<div class="card"><div class="pie">${esc(d.pie)}</div><div class="ipa">/${esc(d.ipa)}/</div>
+    : `<div class="card"><div class="pie">${esc(d.read_as||d.pie)}</div>${d.read_as?`<div class="en">read from what you typed: ${esc(d.pie)}</div>`:""}<div class="ipa">/${esc(d.ipa)}/</div>
       ${d.memory?`<div class="en" style="margin-top:8px"><span class="badge mem">corpus</span>${esc(d.memory.english)}</div>`:""}
       <div class="en" style="margin-top:8px"><span class="badge rule">word by word</span>${esc(d.rough_english)}</div>
-      <div class="words">${d.words.map(w=>`<div class="w"><b>${esc(w.word)}</b>${w.analyses.length?w.analyses.slice(0,3).map(a=>`<span>${esc(a.gloss)}</span>`).join(""):'<span class="err">unknown</span>'}${w.clitic?`<span>+ ${esc(w.clitic[1])}</span>`:""}</div>`).join("")}</div></div>`;
+      <div class="words">${d.words.map(w=>`<div class="w"><b>${esc(w.spelled||w.word)}</b>${w.spelled?`<span>${w.match==="close"?"did you mean? (typed "+esc(w.word)+")":"typed "+esc(w.word)}</span>`:""}${w.analyses.length?w.analyses.slice(0,3).map(a=>`<span>${esc(a.gloss)}</span>`).join(""):'<span class="err">unknown</span>'}${w.clitic?`<span>+ ${esc(w.clitic[1])}</span>`:""}</div>`).join("")}</div></div>`;
   }catch(e){$("#out").innerHTML=`<div class="card err">${esc(e.message)}</div>`}
   $("#go").disabled=false;
 }

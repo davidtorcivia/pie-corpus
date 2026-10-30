@@ -48,6 +48,42 @@ def nfc(s: str) -> str:
     return unicodedata.normalize("NFC", s)
 
 
+_SKEL = [("ʷ", "w"), ("ʰ", "h"), ("₁", ""), ("₂", ""), ("₃", ""), ("ː", ""), ("ə", "e"), ("i̯", "y"), ("u̯", "w"),
+         ("j", "y"), ("þ", "t")]
+
+
+def skeleton(s: str) -> str:
+    """How people type PIE without the special letters: wekwos, *wékʷos, we/kwos, h2owis, H2OWIS, k'mtom,
+    gwhenti, dhugh2te:r all meet the corpus form here. Lower case; accents, length, syllabic and palatal marks
+    dropped (ḱ → k, m̥ → m, ē → e); ʷ → w, ʰ → h; laryngeals h₁ h₂ h₃ H (or h1 h2 h3) all → h; the project's
+    ASCII marks (/ accent, : length, ' palatal, _ syllabic) and a leading * removed."""
+    s = unicodedata.normalize("NFD", s.lower().lstrip("*"))
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    for a, b in _SKEL:
+        s = s.replace(a, b)
+    s = re.sub(r"[/:'_`´]", "", s)
+    s = re.sub(r"h[123]", "h", s)
+    s = re.sub(r"(?<=[aeiou])u", "w", s)      # diphthongs as people write them: dyeus, deiwos → dyews, deywos
+    s = re.sub(r"(?<=[aeiou])i", "y", s)
+    return s
+
+
+def _overlap(a: str, b: str) -> int:
+    """Shared characters, to rank the typed matches: the form that keeps more of what was typed comes first."""
+    return sum(1 for x, y in zip(unicodedata.normalize("NFD", a), unicodedata.normalize("NFD", b)) if x == y)
+
+
+def bare(s: str) -> str:
+    """skeleton() without laryngeals, for input that leaves them out (ekwos for h₁éḱwos, ster for h₂stḗr). In a
+    corpus form a laryngeal is h₁ h₂ h₃ H; in typed input any h not after b d g k p t (an aspirate) counts as one."""
+    s = unicodedata.normalize("NFC", s)
+    if re.search(r"h[₁₂₃]|H", s):
+        s = re.sub(r"h[₁₂₃]|H", "", s)
+        return skeleton(s)
+    k = skeleton(s)
+    return re.sub(r"(?<![bdgkptw])h", "", k)
+
+
 def unaccented(s: str) -> str:
     return nfc("".join(c for c in unicodedata.normalize("NFD", s) if c not in _ACCENT))
 
@@ -61,13 +97,15 @@ class Analysis:
     pos: str               # noun, verb, adj, ptcp, pron, num, adv, particle
 
     def gloss(self) -> str:
-        return readable_word(f"{self.english}-{self.features}") if self.features else self.english
+        return readable_word(f"{self.english}-{self.features}" if self.features else self.english)
 
 
 @dataclass
 class Analyzer:
     index: dict[str, list[Analysis]]
     loose: dict[str, list[Analysis]] = field(default_factory=dict)     # unaccented keys
+    skel: dict[str, list[tuple[str, Analysis]]] = field(default_factory=dict)   # skeleton() keys → (form, analysis)
+    bare_: dict[str, list[tuple[str, Analysis]]] = field(default_factory=dict)  # bare() keys
 
     @classmethod
     @functools.lru_cache(maxsize=1)
@@ -163,28 +201,85 @@ class Analyzer:
             loose.setdefault(unaccented(f), []).extend(xs)
         return cls(idx, loose)
 
+    def _skeleton_index(self) -> dict:
+        if not self.skel:
+            for f, xs in self.index.items():
+                for a in xs:
+                    self.skel.setdefault(skeleton(f), []).append((f, a))
+                    self.bare_.setdefault(bare(f), []).append((f, a))
+        return self.skel
+
     def word(self, w: str) -> tuple[list[Analysis], str]:
-        """(analyses, how): exact, unaccented, or unknown."""
-        w = nfc(w.strip(_PUNCT))
+        """(analyses, how): exact, unaccented, typed (skeleton(): plain letters, ASCII, a leading *), or unknown.
+        A typed match may fit several forms; the ones closest to what was typed come first."""
+        w = nfc(w.strip(_PUNCT).lstrip("*"))
         if w in self.index:
             return self.index[w], "exact"
         if unaccented(w) in self.loose:
             return self.loose[unaccented(w)], "unaccented"
+        hits = self._skeleton_index().get(skeleton(w), []) or self.bare_.get(bare(w), [])
+        how = "typed"
+        if not hits:
+            hits, how = self._close(w), "close"
+        if hits:
+            hits = sorted(hits, key=lambda fa: -_overlap(fa[0], w))
+            out, seen = [], set()
+            for _, x in hits:
+                k = (x.lex_id, x.features)
+                if k not in seen:
+                    seen.add(k)
+                    out.append(x)
+            return out, how
         return [], "unknown"
+
+    def _close(self, w: str) -> list[tuple[str, Analysis]]:
+        """A near spelling (a misremembered vowel: bhrater for bʰréh₂tēr): bare() keys with the same first letter,
+        length within 2 and similarity ≥ 0.8; the best key's forms."""
+        import difflib
+        k = bare(w)
+        if len(k) < 4:
+            return []
+        self._skeleton_index()
+        if not hasattr(self, "_by_first"):
+            self._by_first = {}
+            for key in self.bare_:
+                if key:
+                    self._by_first.setdefault(key[0], []).append(key)
+        cands = [x for x in self._by_first.get(k[0], []) if abs(len(x) - len(k)) <= 2]
+        best = difflib.get_close_matches(k, cands, n=6, cutoff=0.75)
+        if not best:
+            return []
+        # among the near spellings, the word the corpus uses most (méh₂tēr, not a rare verb form)
+        if not hasattr(self, "_uses"):
+            from .lexmap import _corpus_counts
+            self._uses = _corpus_counts()
+        score = lambda key: (difflib.SequenceMatcher(None, k, key).ratio()
+                             + 0.05 * max(__import__("math").log1p(self._uses[a.lex_id]) for _, a in self.bare_[key]))
+        return self.bare_[max(best, key=score)]
+
+    def forms_for(self, w: str) -> list[str]:
+        """The corpus spellings a typed word stands for (for showing 'did you mean')."""
+        w = w.strip(_PUNCT)
+        hits = self._skeleton_index().get(skeleton(w), []) or self.bare_.get(bare(w), []) or self._close(w)
+        return list(dict.fromkeys(f for f, _ in sorted(hits, key=lambda fa: -_overlap(fa[0], w))))
 
     def analyze(self, text: str) -> list[dict]:
         """Per written word: its analyses (and the split-off enclitic's), with readable glosses."""
         out = []
         for raw in text.split():
-            w = raw.strip(_PUNCT)
+            w = raw.strip(_PUNCT).lstrip("*")
             if not w:
                 continue
             clitic = None
             if "-" in w[1:]:
                 head, tail = w.rsplit("-", 1)
-                if tail in ENCLITICS:
-                    w, clitic = head, tail
+                tail_key = {skeleton(k): k for k in ENCLITICS}.get(skeleton(tail))
+                if tail_key:
+                    w, clitic = head, tail_key
             an, how = self.word(w)
-            out.append({"word": raw, "form": w, "match": how, "analyses": an,
+            spelled = None
+            if how in ("typed", "close", "unaccented"):
+                spelled = next((f for f in self.forms_for(w)), None)
+            out.append({"word": raw, "form": w, "match": how, "analyses": an, "spelled": spelled,
                         "clitic": (clitic, ENCLITICS[clitic]) if clitic else None})
         return out

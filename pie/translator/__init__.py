@@ -76,15 +76,20 @@ def pie_to_english(text: str) -> dict:
     for w in words:
         if w["analyses"]:
             a = w["analyses"][0]
-            rough.append(a.gloss().split("-")[0].replace(".", " ") if a.features else a.english.replace(".", " "))
+            rough.append(a.gloss().split("-")[0].replace(".", " "))
         else:
             rough.append(f"[{w['form']}]")
         if w["clitic"]:
             rough.append(w["clitic"][1])
     mem = Memory.load()
-    exact = next((p for p in mem.pairs if p.pie.strip() == text.strip()), None)
-    return {"pie": text, "ipa": _ipa(text),
-            "words": [{"word": w["word"], "match": w["match"], "clitic": w["clitic"],
+    from .analyze import skeleton
+    key = " ".join(skeleton(w) for w in text.split()).strip(" .?!")
+    exact = next((p for p in mem.pairs if p.pie.strip() == text.strip()), None) or next(
+        (p for p in mem.pairs if " ".join(skeleton(w) for w in p.pie.split()).strip(" .?!") == key), None)
+    # the IPA of the corpus spelling a typed word was read as (wekwos → wékʷos), not of the typing
+    read = " ".join((w["spelled"] or w["form"]) + (f"-{w['clitic'][0]}" if w["clitic"] else "") for w in words)
+    return {"pie": text, "read_as": read if read != text.strip(" .?!") else None, "ipa": _ipa(read),
+            "words": [{"word": w["word"], "match": w["match"], "clitic": w["clitic"], "spelled": w.get("spelled"),
                        "analyses": [{"lex_id": a.lex_id, "lemma": a.lemma, "features": a.features, "gloss": a.gloss(),
                                      "pos": a.pos} for a in w["analyses"][:6]]} for w in words],
             "rough_english": " ".join(rough),

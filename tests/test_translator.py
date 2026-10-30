@@ -81,3 +81,15 @@ def test_transfer_never_drops_a_word_silently(transfer):
     notes = " ".join(r.notes)
     assert "h₁sónt" in r.pie                      # h₁sónts 'true; n. as noun: the truth'
     assert "'evident' ≈ 'visible'" in notes and "self" in notes
+
+
+@pytest.mark.parametrize("typed,form", [("wekwos", "wékʷos"), ("*wékʷos", "wékʷos"), ("we/kwos", "wékʷos"),
+                                        ("h2owis", "h₂ówis"), ("ekwos", "h₁éḱwos"), ("dyeus", "dyḗws"),
+                                        ("bhrater", "bʰréh₂tēr")])
+def test_analyzer_forgives_how_people_type(analyzer, typed, form):
+    """Owner 2026-10-30: 'wekwos' and '*wékʷos' found nothing. Plain letters, ASCII, a leading *, dropped laryngeals
+    and accents, and a misremembered vowel all reach the corpus form."""
+    from pie.translator.analyze import skeleton
+    an, how = analyzer.word(typed)
+    assert an and how in ("exact", "unaccented", "typed", "close")
+    assert form in analyzer.forms_for(typed) or how in ("exact", "unaccented")
