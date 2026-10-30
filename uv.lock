@@ -540,6 +540,14 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/a2/55/8f8cab2afd404cf578136ef2cc5dfb50baa1761b68c9da1fb1e4eed343c9/docopt-0.6.2.tar.gz", hash = "sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491", size = 25901, upload-time = "2014-06-16T11:18:57.406Z" }
 
 [[package]]
+name = "en-core-web-lg"
+version = "3.8.0"
+source = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0-py3-none-any.whl" }
+wheels = [
+    { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0-py3-none-any.whl", hash = "sha256:293e9547a655b25499198ab15a525b05b9407a75f10255e405e8c3854329ab63" },
+]
+
+[[package]]
 name = "espeakng-loader"
 version = "0.2.4"
 source = { registry = "https://pypi.org/simple" }
@@ -1365,6 +1373,7 @@ research = [
     { name = "torch" },
 ]
 translator = [
+    { name = "en-core-web-lg" },
     { name = "spacy" },
 ]
 
@@ -1385,7 +1394,10 @@ kokoro = [
     { name = "transformers", marker = "python_full_version < '3.13'", specifier = "==5.21.0" },
 ]
 research = [{ name = "torch", specifier = ">=2.9" }]
-translator = [{ name = "spacy", specifier = ">=3.8.18" }]
+translator = [
+    { name = "en-core-web-lg", url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0-py3-none-any.whl" },
+    { name = "spacy", specifier = ">=3.8.18" },
+]
 
 [[package]]
 name = "pluggy"

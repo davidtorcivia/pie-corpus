@@ -42,6 +42,7 @@ NUMERALS = {"two": "closed:numerals/2", "three": "closed:numerals/3", "four": "c
             "hundred": "closed:numerals/indeclinable/100", "thousand": "closed:numerals/indeclinable/1000"}
 PREP_ROLE = {"to": "GOAL", "into": "GOAL", "toward": "GOAL", "towards": "GOAL", "in": "LOC", "at": "LOC",
              "on": "LOC", "inside": "LOC", "from": "ABL", "out": "ABL", "with": "INS", "by": "INS", "for": "IO",
+             "through": "INS", "along": "INS", "across": "INS",     # the path: Vedic instrumental of the way
              "of": "POSS"}
 # irregular past forms spaCy's small model leaves unlemmatized when it mis-tags them
 IRREGULAR = dict(x.split(":") for x in (
@@ -82,10 +83,15 @@ def _comma_next_to(tok) -> bool:
     return (tok.i > 0 and d[tok.i - 1].text == ",") or (tok.i + 1 < len(d) and d[tok.i + 1].text == ",")
 
 
+MODEL = "en_core_web_lg"       # parser + full word vectors (md shares one vector across many rare words: tiger =
+                                # wolf = chariot); the vectors give the nearest-word fallback; prod needs it
+SIMILAR_MIN = 0.6               # cosine floor for a nearest-word stand-in by vector
+
+
 @functools.lru_cache(maxsize=1)
 def nlp():
     import spacy
-    return spacy.load("en_core_web_sm", disable=["ner"])
+    return spacy.load(MODEL, disable=["ner"])
 
 
 @dataclass
@@ -127,7 +133,39 @@ class Transfer:
                 if cs:
                     notes.append(f"'{tok.text}' ≈ '{w}' (no PIE word for '{tok.text}')")
                     return cs[0].lex_id, f
+        w, f, sim = self.nearest(lem, families)
+        if w:
+            notes.append(f"'{tok.text}' ≈ '{w}' (no PIE word for '{tok.text}'; nearest by meaning, {sim:.2f})")
+            return self.map.candidates(w, f)[0].lex_id, f
         return None, None
+
+    def nearest(self, lemma: str, families: tuple[str, ...]) -> tuple[str | None, str | None, float]:
+        """The English word with a lexeme whose vector is closest to the lemma's (cosine ≥ SIMILAR_MIN)."""
+        import numpy as np
+        if not hasattr(self, "_vecs"):
+            vocab = nlp().vocab
+            self._vecs = {}
+            for f in ("noun", "adj", "verb"):
+                words = [w for w, cs in self.map.by_lemma.items() if any(c.family == f for c in cs)
+                         and vocab.has_vector(w)]
+                m = np.array([vocab.get_vector(w) for w in words], dtype="float32")
+                m /= np.linalg.norm(m, axis=1, keepdims=True) + 1e-9
+                self._vecs[f] = (words, m)
+        vocab = nlp().vocab
+        if not vocab.has_vector(lemma):
+            return None, None, 0.0
+        v = vocab.get_vector(lemma).astype("float32")
+        v /= np.linalg.norm(v) + 1e-9
+        best = (None, None, 0.0)
+        for f in families:
+            words, m = self._vecs[f]
+            if not words:
+                continue
+            sims = m @ v
+            i = int(sims.argmax())
+            if sims[i] > best[2] and words[i] != lemma:
+                best = (words[i], f, float(sims[i]))
+        return best if best[2] >= SIMILAR_MIN else (None, None, best[2])
 
     def noun(self, tok, notes, unknown) -> str | None:
         lid, _ = self.lookup(tok, ("noun", "adj"), notes)
@@ -303,6 +341,12 @@ class Transfer:
             bad = [c for c in k.children if c.dep_ == "amod" and c.text.lower() in IRREGULAR]
             if d == "dobj" and bad:
                 misread.append((bad[0], k))
+            elif d == "dobj" and low == "home":            # "drive the cattle home" parsed as object 'cattle home'
+                self.used.add(k.i)
+                for c in k.children:
+                    if c.dep_ == "compound":
+                        self.np_slots(c, "OBJ", slots, notes, unknown)
+                slots.append({"lex_id": "pie-lex-doxm", "role": "GOAL"})
             elif d in ("dobj",):
                 self.np_slots(k, "OBJ", slots, notes, unknown)
             elif d in ("dative", "iobj") and k.pos_ != "ADP":
@@ -382,6 +426,17 @@ class Transfer:
         for k in kids:            # "we hold these truths to be evident", "I want to eat": the clause it governs
             if k.dep_ in ("ccomp", "xcomp", "advcl") and k.pos_ in ("VERB", "AUX"):
                 sub_subj = any(x.dep_ in ("nsubj", "nsubjpass") for x in k.children)
+                objs = [i for i, s_ in enumerate(slots) if s_["role"] == "OBJ" and "head" not in s_]
+                preds = [x for x in k.children if x.dep_ in ("acomp", "attr") and x.pos_ == "ADJ"]
+                if k.lemma_ == "be" and not sub_subj and objs and preds:
+                    # "we hold these truths to be evident": a predicative adjective agreeing with the object
+                    # (double accusative), not a clause of its own
+                    self.used.add(k.i)
+                    for p_ in preds:
+                        lid = self.adj(p_, unknown, notes)
+                        if lid:
+                            slots.insert(len(slots) - 1, {"lex_id": lid, "role": "MOD", "head": objs[0]})
+                    continue
                 more = self.clause(k, sent, notes, unknown,
                                    inherit=None if sub_subj or k.lemma_ == "be" else {"tense": tense, "mood": "IND"})
                 for c in more:

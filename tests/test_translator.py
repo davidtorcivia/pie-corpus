@@ -59,11 +59,12 @@ def transfer():
     ("Where is my father?", "kúdʰe moy ph₂tḗr h₁ésti?"),
     ("Do not fear the wolf!", "wĺ̥kʷom mē pr̥ksḱés."),
     ("Let us drive the cattle home.", "gʷṓs dṓm h₂éǵōmes."),
+    ("We walked through the forest.", None),
     ("Give me water!", "méǵʰye wódr̥ dh₃dʰí."),
 ])
 def test_transfer_builds_the_plan(transfer, english, pie):
     r = transfer.translate(english)
-    assert r.pie == pie and not r.errors
+    assert (r.pie == pie if pie else r.pie) and not r.errors
 
 
 def test_transfer_reports_what_it_cannot_say(transfer):
@@ -78,4 +79,5 @@ def test_transfer_never_drops_a_word_silently(transfer):
     r = transfer.translate("We hold these truths to be self evident.")
     assert len(r.pie.split()) >= 4 and not r.errors
     notes = " ".join(r.notes)
-    assert "'truths' ≈ 'true'" in notes and "'evident' ≈ 'visible'" in notes and "self" in notes
+    assert "h₁sónt" in r.pie                      # h₁sónts 'true; n. as noun: the truth'
+    assert "'evident' ≈ 'visible'" in notes and "self" in notes

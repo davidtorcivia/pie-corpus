@@ -121,7 +121,8 @@ class LexMap:
     def build(cls, nlp=None) -> "LexMap":
         if nlp is None:
             import spacy
-            nlp = spacy.load("en_core_web_sm", disable=["ner"])
+            from .transfer import MODEL
+            nlp = spacy.load(MODEL, disable=["ner"])
         lx = Lexicon.load()
         uses = _corpus_counts()
         by: dict[str, list[Candidate]] = collections.defaultdict(list)

@@ -27,6 +27,7 @@ kokoro = [
     "loguru==0.7.3; python_full_version < '3.13'",
 ]
 translator = [
+    "en-core-web-lg",
     "spacy>=3.8.18",
 ]
 
@@ -39,3 +40,6 @@ packages = ["pie"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.uv.sources]
+en-core-web-lg = { url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0-py3-none-any.whl" }
