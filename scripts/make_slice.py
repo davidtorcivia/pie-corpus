@@ -289,11 +289,10 @@ def main() -> int:
     chosen += [i for i in pool if args.tier3b and lx.coined(i) == "neologism" and i not in chosen]
     # the inherited everyday words (named for Tier 3b, where they replaced coinages; since 2026-10-30 offered to every
     # slice, as the in-world Tier 3 dialogues need them most): usable, unblocked and accented; P9's NIL hold waived
-    if True:
-        from pie.export import eval_root
-        chosen += [i for i in TIER3B_INHERITED if i not in chosen and lx.specs.get(i, {}).get("usable")
-                   and i not in lx.blocked and planner_accent_ok(lx, i)
-                   and not eval_root(lx.entries[i].get("root_id"))]
+    from pie.export import eval_root
+    chosen += [i for i in TIER3B_INHERITED if i not in chosen and lx.specs.get(i, {}).get("usable")
+               and i not in lx.blocked and planner_accent_ok(lx, i)
+               and not eval_root(lx.entries[i].get("root_id"))]
     # the formula menu's words, so planners can use the inherited phrases
     menu_path = ROOT / "data" / "generation" / "formula_menu.json"
     menu = json.loads(menu_path.read_text("utf-8")) if menu_path.exists() else []
