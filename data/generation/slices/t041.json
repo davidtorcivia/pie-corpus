@@ -4979,6 +4979,82 @@
    "attested_in": 7
   },
   {
+   "lex_id": "pie-lex-gwexn",
+   "form": "gʷḗn",
+   "gloss": "woman",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 11
+  },
+  {
+   "lex_id": "pie-lex-h2yuHnkjos",
+   "form": "h₂yuHn̥ḱós",
+   "gloss": "young",
+   "family": "adj",
+   "attested_in": 6
+  },
+  {
+   "lex_id": "pie-lex-h2elyos",
+   "form": "h₂élyos",
+   "gloss": "other, another",
+   "family": "noun",
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 10
+  },
+  {
+   "lex_id": "pie-lex-h1eteros",
+   "form": "h₁éteros",
+   "gloss": "the other (of two)",
+   "family": "adj",
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-keh3tus",
+   "form": "kéh₃tus",
+   "gloss": "fight",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 3
+  },
+  {
+   "lex_id": "pie-lex-wiketi",
+   "form": "wikéti",
+   "gloss": "to fight",
+   "family": "verb",
+   "gloss_source": "reflex-confirmed",
+   "attested_in": 2,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND PRS ACT",
+    "IND PRS MID",
+    "IND PST ACT",
+    "IND PST MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-welh1t-2",
+   "form": "wélh₁t",
+   "gloss": "to choose, to select",
+   "family": "verb",
+   "attested_in": 6,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
    "lex_id": "pie-lex-megjh2s",
    "form": "méǵh₂s",
    "gloss": "big, great",
@@ -5056,30 +5132,211 @@
    "attested_in": 17
   },
   {
-   "lex_id": "pie-lex-dhoygjhos",
-   "form": "dʰóyǵʰos",
-   "gloss": "something that is kneaded, formed",
+   "lex_id": "pie-lex-porkjos",
+   "form": "pórḱos",
+   "gloss": "piglet",
+   "family": "noun",
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 10
+  },
+  {
+   "lex_id": "pie-lex-h2enkuleh2",
+   "form": "h₂énkuleh₂",
+   "gloss": "belt",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 9
+  },
+  {
+   "lex_id": "pie-lex-bherstis",
+   "form": "bʰérstis",
+   "gloss": "top",
+   "family": "noun",
+   "gloss_source": "reflex-confirmed",
+   "gender": "f",
+   "attested_in": 8
+  },
+  {
+   "lex_id": "pie-lex-lewkos-2",
+   "form": "léwkos",
+   "gloss": "light",
+   "family": "noun",
+   "gender": "n",
+   "compound_second": true,
+   "attested_in": 2
+  },
+  {
+   "lex_id": "pie-lex-h2ewis",
+   "form": "h₂éwis",
+   "gloss": "bird",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-h2okjets",
+   "form": "h₂óḱets",
+   "gloss": "harrow",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 8
+  },
+  {
+   "lex_id": "pie-lex-gjheymn",
+   "form": "ǵʰéymn̥",
+   "gloss": "winter",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 8
+  },
+  {
+   "lex_id": "pie-lex-mori",
+   "form": "móri",
+   "gloss": "sea; standing water",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 11
+  },
+  {
+   "lex_id": "pie-lex-h2epos",
+   "form": "h₂épos",
+   "gloss": "joint; limb, member",
+   "family": "noun",
+   "gender": "n",
+   "compound_second": true,
+   "attested_in": 12
+  },
+  {
+   "lex_id": "pie-lex-lewks",
+   "form": "léwks",
+   "gloss": "something bright, white; light",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 12
+  },
+  {
+   "lex_id": "pie-lex-yewgos",
+   "form": "yéwgos",
+   "gloss": "team, pair of yoked animals",
+   "family": "noun",
+   "gender": "n",
+   "compound_second": true,
+   "attested_in": 8
+  },
+  {
+   "lex_id": "pie-lex-h2enh1mos-2",
+   "form": "h₂énh₁mos",
+   "gloss": "wind; spirit",
+   "family": "noun",
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 36
+  },
+  {
+   "lex_id": "pie-proj-moghus",
+   "form": "mógʰus",
+   "gloss": "boy, young man; servant (Celtic)",
+   "family": "noun",
+   "coined": "project",
+   "gender": "m",
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-wesos",
+   "form": "wesós",
+   "gloss": "selling, trade",
+   "family": "noun",
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 13
+  },
+  {
+   "lex_id": "pie-lex-wosn",
+   "form": "wósn̥",
+   "gloss": "sale, trade; price",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 0
+  },
+  {
+   "lex_id": "pie-lex-kwyeh1tis",
+   "form": "kʷyéh₁tis",
+   "gloss": "rest, quiet, peace (calm repose, not a treaty)",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-duh2ros",
+   "form": "duh₂rós",
+   "gloss": "far, long",
+   "family": "noun",
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 0
+  },
+  {
+   "lex_id": "pie-lex-gwlh2nos",
+   "form": "gʷĺ̥h₂nos",
+   "gloss": "acorn",
+   "family": "noun",
+   "gloss_source": "reflex-confirmed",
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-proj-poxlHos",
+   "form": "pṓlHos",
+   "gloss": "foal, young horse",
+   "family": "noun",
+   "coined": "project",
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-h2egwnos",
+   "form": "h₂egʷnós",
+   "gloss": "lamb",
    "family": "noun",
    "gender": "m",
    "compound_second": true,
    "attested_in": 9
   },
   {
-   "lex_id": "pie-lex-dheygjhos",
-   "form": "dʰéyǵʰos",
-   "gloss": "wall",
+   "lex_id": "pie-lex-h2rgjntom",
+   "form": "h₂ŕ̥ǵn̥tom",
+   "gloss": "silver",
    "family": "noun",
    "gender": "n",
    "compound_second": true,
-   "attested_in": 3
+   "attested_in": 8
   },
   {
-   "lex_id": "pie-lex-neptih2",
-   "form": "néptih₂",
-   "gloss": "granddaughter; niece",
+   "lex_id": "pie-lex-pertus",
+   "form": "pértus",
+   "gloss": "crossing",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-h3noxghs",
+   "form": "h₃nṓgʰs",
+   "gloss": "nail (of the finger or toe)",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-wormis",
+   "form": "wórmis",
+   "gloss": "worm, larva",
    "family": "noun",
    "gender": "f",
-   "attested_in": 12
+   "attested_in": 0
   },
   {
    "lex_id": "pie-lex-gjenh1mn",
@@ -5090,47 +5347,13 @@
    "attested_in": 12
   },
   {
-   "lex_id": "pie-lex-h2egjmn",
-   "form": "h₂éǵmn̥",
-   "gloss": "army, flock, crowd, multitude; procession or march of an army",
-   "family": "noun",
-   "gender": "n",
-   "attested_in": 7
-  },
-  {
-   "lex_id": "pie-lex-gjheyoxm",
-   "form": "ǵʰéyōm",
-   "gloss": "winter; year (as a measure of time); frost, snow",
-   "family": "noun",
-   "gender": "f",
-   "attested_in": 8
-  },
-  {
-   "lex_id": "pie-lex-h2erh3wos",
-   "form": "h₂erh₃wós",
-   "gloss": "arable",
+   "lex_id": "pie-lex-klh1ros",
+   "form": "kl̥h₁rós",
+   "gloss": "loud, sonorous",
    "family": "noun",
    "gender": "m",
    "compound_second": true,
    "attested_in": 2
-  },
-  {
-   "lex_id": "pie-lex-selos",
-   "form": "sélos",
-   "gloss": "marsh; salt marsh",
-   "family": "noun",
-   "gender": "n",
-   "compound_second": true,
-   "attested_in": 5
-  },
-  {
-   "lex_id": "pie-proj-musih2",
-   "form": "músih₂",
-   "gloss": "fly (the insect)",
-   "family": "noun",
-   "coined": "project",
-   "gender": "f",
-   "attested_in": 6
   },
   {
    "lex_id": "pie-lex-deh3nom",
@@ -5142,24 +5365,6 @@
    "attested_in": 2
   },
   {
-   "lex_id": "pie-lex-koslos",
-   "form": "kóslos",
-   "gloss": "hazel",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 5
-  },
-  {
-   "lex_id": "pie-lex-wisos",
-   "form": "wisós",
-   "gloss": "poison; slime",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 4
-  },
-  {
    "lex_id": "pie-lex-pekju",
    "form": "péḱu",
    "gloss": "livestock, cattle (collective)",
@@ -5168,185 +5373,28 @@
    "attested_in": 5
   },
   {
-   "lex_id": "pie-lex-gwheros",
-   "form": "gʷʰéros",
-   "gloss": "heat; warm weather",
+   "lex_id": "pie-lex-seykwenih2",
+   "form": "seykʷénih₂",
+   "gloss": "she who pours",
    "family": "noun",
-   "gender": "n",
-   "compound_second": true,
+   "gender": "f",
+   "attested_in": 3
+  },
+  {
+   "lex_id": "pie-lex-gwemtis",
+   "form": "gʷémtis",
+   "gloss": "step, act of walking",
+   "family": "noun",
+   "gender": "f",
    "attested_in": 8
   },
   {
-   "lex_id": "pie-lex-h1oytos",
-   "form": "h₁óytos",
-   "gloss": "oath",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 3
-  },
-  {
-   "lex_id": "pie-lex-gjhoysos",
-   "form": "ǵʰoysós",
-   "gloss": "spear, missile, javelin",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 5
-  },
-  {
-   "lex_id": "pie-lex-solh2wos",
-   "form": "solh₂wós",
-   "gloss": "whole",
-   "family": "noun",
-   "gloss_source": "reflex-confirmed",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 5
-  },
-  {
-   "lex_id": "pie-lex-markos",
-   "form": "márkos",
-   "gloss": "horse (Equus ferus caballus); wild horse (Equus ferus przewalskii or Equus ferus ferus)",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 2
-  },
-  {
-   "lex_id": "pie-lex-gjenh1tis",
-   "form": "ǵénh₁tis",
-   "gloss": "birth, production",
-   "family": "noun",
-   "gender": "f",
-   "attested_in": 17
-  },
-  {
-   "lex_id": "pie-lex-h3orbhos",
-   "form": "h₃órbʰos",
-   "gloss": "orphan; servant, slave, worker",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 15
-  },
-  {
-   "lex_id": "pie-lex-gwhrensos",
-   "form": "gʷʰrensós",
-   "gloss": "heat",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 4
-  },
-  {
-   "lex_id": "pie-lex-meykjtis",
-   "form": "méyḱtis",
-   "gloss": "mixing",
-   "family": "noun",
-   "gender": "f",
-   "attested_in": 7
-  },
-  {
-   "lex_id": "pie-lex-wodhris",
-   "form": "wódʰris",
-   "gloss": "castrated",
-   "family": "noun",
-   "gender": "f",
-   "attested_in": 7
-  },
-  {
-   "lex_id": "pie-lex-dhuh2mos",
-   "form": "dʰuh₂mós",
-   "gloss": "smoke",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 6
-  },
-  {
-   "lex_id": "pie-lex-morgjs",
-   "form": "mórǵs",
-   "gloss": "boundary, border",
-   "family": "noun",
-   "gender": "m",
-   "attested_in": 0
-  },
-  {
-   "lex_id": "pie-lex-h1oh3s",
-   "form": "h₁óh₃s",
-   "gloss": "mouth",
+   "lex_id": "pie-lex-krewh2s-2",
+   "form": "kréwh₂s",
+   "gloss": "blood",
    "family": "noun",
    "gender": "n",
-   "attested_in": 11
-  },
-  {
-   "lex_id": "pie-lex-gwerdus",
-   "form": "gʷérdus",
-   "gloss": "heavy; slow, sluggish; dull",
-   "family": "noun",
-   "gender": "f",
-   "attested_in": 7
-  },
-  {
-   "lex_id": "pie-lex-soytos",
-   "form": "soytós",
-   "gloss": "magic",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 5
-  },
-  {
-   "lex_id": "pie-lex-tewh2os",
-   "form": "téwh₂os",
-   "gloss": "might, power",
-   "family": "noun",
-   "gender": "n",
-   "compound_second": true,
-   "attested_in": 1
-  },
-  {
-   "lex_id": "pie-lex-kjoph2os",
-   "form": "ḱoph₂ós",
-   "gloss": "hoof",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 4
-  },
-  {
-   "lex_id": "pie-lex-ghebhestis",
-   "form": "gʰébʰestis",
-   "gloss": "arm, hand",
-   "family": "noun",
-   "gender": "f",
-   "attested_in": 3
-  },
-  {
-   "lex_id": "pie-lex-h2leh1wr",
-   "form": "h₂léh₁wr̥",
-   "gloss": "something that was crushed; flour",
-   "family": "noun",
-   "gender": "n",
-   "attested_in": 2
-  },
-  {
-   "lex_id": "pie-lex-h2ekjru",
-   "form": "h₂éḱru",
-   "gloss": "tear (in the eyes)",
-   "family": "noun",
-   "gender": "n",
-   "attested_in": 7
-  },
-  {
-   "lex_id": "pie-lex-dhuswos",
-   "form": "dʰuswós",
-   "gloss": "dark, black, brown",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 2
+   "attested_in": 8
   }
  ]
 }

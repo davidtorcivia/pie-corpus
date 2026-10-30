@@ -40,7 +40,11 @@ CORE_NOUNS = ["pie-lex-h2owis", "pie-lex-h1ngwnis", "pie-lex-peh2wr", "pie-lex-h
 # greeting words of planner-brief-v4 ("Greetings and thanks") and the members of its ready-made personal names
 CONVERSATION = ["pie-lex-kwoteros", "pie-lex-priHos", "pie-lex-keh2ilos", "pie-lex-h1wesus", "pie-lex-gwemt",
                 "pie-lex-deh3t", "pie-lex-gwrneHti", "pie-lex-deh3toxr", "pie-lex-kjlewos", "pie-lex-menos",
-                "pie-lex-h1sntyos", "pie-lex-gjenh1os-2"]
+                "pie-lex-h1sntyos", "pie-lex-gjenh1os-2",
+                # t036 (2026-10-30): everyday words a slice's size cap had squeezed out: woman, young, other,
+                # second, fight (n. and v.), choose
+                "pie-lex-gwexn", "pie-lex-h2yuHnkjos", "pie-lex-h2elyos", "pie-lex-h1eteros", "pie-lex-keh3tus",
+                "pie-lex-wiketi", "pie-lex-welh1t-2"]
 # Tier 3b (--tier3b): inherited words the planner brief and the t3b-001 review point to in place of a coinage
 # (archaic first): mówdos 'joy' and swéh₂dos 'pleasure' (not géh₂dʰos), néwos 'new' (not h₂énteros 'other' beside
 # 'answer'). mówdos is NIL single-branch (Ved. móda-; P9 keeps those out of Tier 3 slices); Tier 3b offers it
