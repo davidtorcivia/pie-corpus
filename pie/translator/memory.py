@@ -37,6 +37,7 @@ class Pair:
     gloss: str | None
     source_id: str
     tier: int | None
+    lex_ids: list | None = None     # per written word (an enclitic token joins the word before it)
 
 
 @dataclass
@@ -61,11 +62,15 @@ class Memory:
                 pie = sentences(r["pie"])
                 en, _ = align_english(r)
                 glosses = _split_gloss(r.get("gloss"), pie)
+                ids = [t.get("lex_id") for t in r.get("tokens") or [] if not t["form"].startswith("-")]
+                per = _split_list(ids, pie)
                 if en and len(en) == len(pie):
                     for i, (e, s) in enumerate(zip(en, pie)):
-                        pairs.append(Pair(e, s, glosses[i] if glosses else None, r["id"], r.get("tier")))
+                        pairs.append(Pair(e, s, glosses[i] if glosses else None, r["id"], r.get("tier"),
+                                          per[i] if per else None))
                 elif len(pie) <= SHORT:
-                    pairs.append(Pair(" ".join(r["english"].split()), r["pie"], r.get("gloss"), r["id"], r.get("tier")))
+                    pairs.append(Pair(" ".join(r["english"].split()), r["pie"], r.get("gloss"), r["id"], r.get("tier"),
+                                      ids if len(ids) == len(r["pie"].split()) else None))
         inv: dict[str, list[int]] = collections.defaultdict(list)
         exact: dict[str, int] = {}
         for i, p in enumerate(pairs):
@@ -91,6 +96,18 @@ class Memory:
             scored.append((round(sm.ratio(), 3), self.pairs[i]))
         scored.sort(key=lambda x: -x[0])
         return scored[:k]
+
+
+def _split_list(xs: list, pie_sents: list[str]) -> list[list] | None:
+    """xs (one per written word) cut at the PIE sentences' word counts, or None if the counts differ."""
+    n = [len(s.split()) for s in pie_sents]
+    if sum(n) != len(xs):
+        return None
+    out, at = [], 0
+    for k in n:
+        out.append(xs[at:at + k])
+        at += k
+    return out
 
 
 def _split_gloss(gloss: str | None, pie_sents: list[str]) -> list[str] | None:

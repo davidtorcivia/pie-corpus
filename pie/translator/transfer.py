@@ -70,6 +70,7 @@ SYNONYMS = {
     "warrior": ["man", "hero"], "soldier": ["man"], "battle": ["war", "fight"], "begin": ["start"],
     "finish": ["end"], "unalienable": ["imperishable"], "inalienable": ["imperishable"], "eternal": ["imperishable"],
     "immortal": ["undying", "imperishable"], "self": ["own"], "equal": ["alike", "same"], "certain": ["true"],
+    "tell": ["say", "speak"], "talk": ["speak"], "chat": ["speak"],
 }
 # derivational endings stripped to reach a base the lexicon has: happiness → happy, equality → equal
 SUFFIXES = [("iness", "y"), ("ness", ""), ("ity", ""), ("ity", "e"), ("ment", ""), ("ation", "e"), ("ion", ""),
@@ -103,11 +104,13 @@ class Result:
     unknown: list[str] = field(default_factory=list)
     notes: list[str] = field(default_factory=list)
     errors: list[str] = field(default_factory=list)
+    lex_ids: list[str | None] = field(default_factory=list)    # per written word, for the provenance labels
 
 
 class Transfer:
     def __init__(self):
-        self.lx = Lexicon.load()
+        from ..neologism import with_neologisms
+        self.lx = with_neologisms(Lexicon.load())   # coinages are offered (and labelled coined); inherited words rank first
         self.map = LexMap.load(nlp())
         self.used: set[int] = set()        # token indices that became a slot (translate() reports the rest)
 
@@ -500,7 +503,11 @@ class Transfer:
         else:
             return Result(english, None, None, plan, unknown, notes, errors)
         r = realize(plan, self.lx)
-        return Result(english, r["pie"], r["gloss"], plan, unknown, notes, [])
+        ids: list[str | None] = []
+        for w in r["words"]:                     # an enclitic (-kʷe) is written onto the word before it
+            if not w["form"].startswith("-"):
+                ids.append(w["lex_id"])
+        return Result(english, r["pie"], r["gloss"], plan, unknown, notes, [], ids)
 
     @staticmethod
     def _drop_for(plan: dict, err: str, notes: list[str]) -> bool:

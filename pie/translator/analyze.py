@@ -68,9 +68,16 @@ def skeleton(s: str) -> str:
     return s
 
 
+def _plain(s: str) -> str:
+    s = "".join(c for c in unicodedata.normalize("NFD", s) if not unicodedata.combining(c))
+    return s.translate(str.maketrans("₁₂₃ʷʰ", "123wh"))
+
+
 def _overlap(a: str, b: str) -> int:
-    """Shared characters, to rank the typed matches: the form that keeps more of what was typed comes first."""
-    return sum(1 for x, y in zip(unicodedata.normalize("NFD", a), unicodedata.normalize("NFD", b)) if x == y)
+    """Shared characters, to rank the typed matches: the form that keeps more of what was typed comes first
+    (h2enHos → h₂énHos 'grandmother', not another form with the same skeleton)."""
+    a, b = _plain(a), _plain(b)
+    return sum(1 for x, y in zip(a, b) if x == y) + 5 * (a == b)
 
 
 def bare(s: str) -> str:

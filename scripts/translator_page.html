@@ -33,6 +33,11 @@ textarea{width:100%;min-height:110px;padding:12px 14px;border:1px solid var(--li
 .w b{display:block;font-size:17px;font-weight:600}
 .w span{display:block;font:12px/1.35 ui-monospace,Menlo,monospace;color:var(--dim)}
 .err{color:var(--warn)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{font:12.5px/1.2 ui-monospace,Menlo,monospace;border-radius:6px;padding:4px 7px;border:1px solid var(--line)}
+.chip small{display:block;font:11px/1.2 ui-sans-serif,system-ui,sans-serif;color:var(--dim);margin-top:2px}
+.st-attested{border-color:var(--mem)} .st-inferred{border-style:dashed;border-color:var(--rule)} .st-coined{border-color:var(--warn);background:color-mix(in srgb,var(--warn) 10%,transparent)}
+.legend{font:12px/1.4 ui-sans-serif,system-ui,sans-serif;color:var(--dim);margin-top:8px}
 footer{color:var(--dim);font-size:13px;margin-top:30px}
 </style>
 </head>
@@ -44,6 +49,7 @@ footer{color:var(--dim);font-size:13px;margin-top:30px}
 <textarea id="in" placeholder="Be well, friend! The wolf saw the sheep."></textarea>
 <button class="go" id="go">Translate</button>
 <div id="out"></div>
+<div class="legend">Each word is marked: <b>attested</b> (reconstructed from words attested in two or more daughter languages), <b>inferred</b> (one branch, our own reconstruction, or a meaning read from its root; dashed), or <b>coined</b> (built for modern use from inherited roots; shaded).</div>
 <footer>Green: a sentence from the reviewed corpus. Blue: built by rule from the English parse. "Nearest words used" are stand-ins where PIE has no word of its own (truth ≈ true); orange notes list anything left out.</footer>
 </main>
 <script>
@@ -61,14 +67,15 @@ async function go(){
     const d=await r.json(); if(d.error) throw new Error(d.error);
     $("#out").innerHTML = mode==="en" ? d.map(s=>`
       <div class="card"><div class="en"><span class="badge ${s.source==="memory"?"mem":"rule"}">${s.source==="memory"?"corpus":"rules"}</span>${esc(s.english)}</div>
-      ${s.pie?`<div class="pie">${esc(s.pie)}</div><div class="ipa">/${esc(s.ipa)}/</div><div class="gloss">${esc(s.gloss)}</div>`:`<div class="pie err">no translation</div>`}
+      ${s.pie?`<div class="pie">${esc(s.pie)}</div><div class="ipa">/${esc(s.ipa)}/</div>
+        <div class="chips">${s.words.map(w=>`<div class="chip st-${w.status||"none"}">${esc(w.form)}<small>${esc(w.gloss||"")}${w.status?" · "+w.status:""}</small></div>`).join("")}</div>`:`<div class="pie err">no translation</div>`}
       ${s.unknown.length?`<div class="note">No PIE word for: ${esc(s.unknown.join(", "))}</div>`:""}
       ${s.notes.filter(n=>n.includes("≈")).length?`<div class="approx">Nearest words used: ${s.notes.filter(n=>n.includes("≈")).map(n=>esc(n.replace(/ \(no PIE word for.*\)/,""))).join("; ")}</div>`:""}
       ${s.notes.filter(n=>!n.includes("≈")).map(n=>`<div class="note">${esc(n)}</div>`).join("")}</div>`).join("")
     : `<div class="card"><div class="pie">${esc(d.read_as||d.pie)}</div>${d.read_as?`<div class="en">read from what you typed: ${esc(d.pie)}</div>`:""}<div class="ipa">/${esc(d.ipa)}/</div>
       ${d.memory?`<div class="en" style="margin-top:8px"><span class="badge mem">corpus</span>${esc(d.memory.english)}</div>`:""}
       <div class="en" style="margin-top:8px"><span class="badge rule">word by word</span>${esc(d.rough_english)}</div>
-      <div class="words">${d.words.map(w=>`<div class="w"><b>${esc(w.spelled||w.word)}</b>${w.spelled?`<span>${w.match==="close"?"did you mean? (typed "+esc(w.word)+")":"typed "+esc(w.word)}</span>`:""}${w.analyses.length?w.analyses.slice(0,3).map(a=>`<span>${esc(a.gloss)}</span>`).join(""):'<span class="err">unknown</span>'}${w.clitic?`<span>+ ${esc(w.clitic[1])}</span>`:""}</div>`).join("")}</div></div>`;
+      <div class="words">${d.words.map(w=>`<div class="w"><b>${esc(w.spelled||w.word)}</b>${w.spelled?`<span>${w.match==="close"?"did you mean? (typed "+esc(w.word)+")":"typed "+esc(w.word)}</span>`:""}${w.analyses.length?w.analyses.slice(0,3).map(a=>`<span>${esc(a.gloss)}${a.status?" · "+a.status:""}</span>`).join(""):'<span class="err">unknown</span>'}${w.clitic?`<span>+ ${esc(w.clitic[1])}</span>`:""}</div>`).join("")}</div></div>`;
   }catch(e){$("#out").innerHTML=`<div class="card err">${esc(e.message)}</div>`}
   $("#go").disabled=false;
 }

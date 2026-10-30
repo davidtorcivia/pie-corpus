@@ -35,7 +35,7 @@ OVERRIDES = {
     ("healthy", "adj"): "pie-lex-keh2ilos", ("good", "adj"): "pie-lex-h1wesus", ("fast", "adj"): "pie-lex-HeHkjus",
     ("quick", "adj"): "pie-lex-HeHkjus", ("horse", "noun"): "pie-lex-h1ekjwos", ("home", "noun"): "pie-lex-doxm",
     ("house", "noun"): "pie-lex-doxm", ("day", "noun"): "pie-lex-dinos", ("hungry", "adj"): None,
-    ("want", "verb"): "pie-lex-wekjti", ("wish", "verb"): "pie-lex-wekjti", ("dream", "noun"): "pie-lex-supniyom",
+    ("tell", "verb"): "pie-lex-mlewHti", ("want", "verb"): "pie-lex-wekjti", ("wish", "verb"): "pie-lex-wekjti", ("dream", "noun"): "pie-lex-supniyom",
     ("grief", "noun"): "pie-lex-kjeh2dos", ("sorrow", "noun"): "pie-lex-kjeh2dos", ("grandfather", "noun"): "pie-lex-h2ewh2os",
     # dialogue gaps 2026-10-30 (docs/audits/lexicon-gaps-dialogue-2026-10-30.md)
     ("rage", "verb"): "pie-lex-ghremeti", ("anger", "verb"): "pie-lex-ghromeyeti", ("hunger", "noun"): "pie-lex-gwoldhos",
@@ -62,7 +62,7 @@ class Candidate:
     def score(self) -> float:
         """Corpus use counts most (reviewed choices), then attestation, minus a step per later sense."""
         return (2 * math.log1p(self.corpus_uses) + math.log1p(self.branches) - 1.5 * self.sense_rank
-                - 5 * self.approx - 3 * self.phrase)
+                - 5 * self.approx - 3 * self.phrase - 6 * self.lex_id.startswith("pie-neo-"))
 
     def key(self):
         return -self.score()
@@ -130,7 +130,8 @@ class LexMap:
             import spacy
             from .transfer import MODEL
             nlp = spacy.load(MODEL, disable=["ner"])
-        lx = Lexicon.load()
+        from ..neologism import with_neologisms
+        lx = with_neologisms(Lexicon.load())     # coinages too (ranked last: Candidate.score), for bread, forest …
         uses = _corpus_counts()
         by: dict[str, list[Candidate]] = collections.defaultdict(list)
         for lid, r in lx.specs.items():

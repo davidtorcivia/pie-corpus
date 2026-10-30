@@ -30,6 +30,7 @@ class Sentence:
     score: float | None = None
     unknown: list[str] = field(default_factory=list)
     notes: list[str] = field(default_factory=list)
+    words: list[dict] = field(default_factory=list)     # {form, gloss, status}: attested / inferred / coined
 
 
 def _ipa(pie: str | None) -> str | None:
@@ -40,6 +41,17 @@ def _ipa(pie: str | None) -> str | None:
         return to_ipa(pie)
     except Exception:
         return None
+
+
+def _words(pie: str | None, gloss: str | None, lex_ids: list | None) -> list[dict]:
+    from .provenance import provenance
+    if not pie:
+        return []
+    forms = pie.split()
+    gl = (gloss or "").split()
+    ids = lex_ids if lex_ids and len(lex_ids) == len(forms) else [None] * len(forms)
+    return [{"form": f.strip(".,;:?!"), "gloss": gl[i] if i < len(gl) and len(gl) == len(forms) else None,
+             "status": provenance(ids[i])} for i, f in enumerate(forms)]
 
 
 def split_sentences(text: str) -> list[str]:
@@ -56,20 +68,23 @@ def english_to_pie(text: str) -> list[dict]:
         hits = mem.search(s, k=1)
         if hits and hits[0][0] >= MEMORY_ACCEPT:
             score, p = hits[0]
-            out.append(Sentence(s, p.pie, readable(p.gloss), _ipa(p.pie), "memory", p.source_id, score))
+            out.append(Sentence(s, p.pie, readable(p.gloss), _ipa(p.pie), "memory", p.source_id, score,
+                                words=_words(p.pie, readable(p.gloss), p.lex_ids)))
             continue
         if transfer is None:
             from .transfer import Transfer
             transfer = Transfer()
         r = transfer.translate(s)
         notes = r.notes + [f"could not build: {e}" for e in r.errors]
-        out.append(Sentence(s, r.pie, readable(r.gloss), _ipa(r.pie), "rules", None, None, r.unknown, notes))
+        out.append(Sentence(s, r.pie, readable(r.gloss), _ipa(r.pie), "rules", None, None, r.unknown, notes,
+                            _words(r.pie, readable(r.gloss), r.lex_ids)))
     return [asdict(x) for x in out]
 
 
 def pie_to_english(text: str) -> dict:
     from .analyze import Analyzer
     from .memory import Memory
+    from .provenance import provenance
     an = Analyzer.load()
     words = an.analyze(text)
     rough = []
@@ -91,6 +106,7 @@ def pie_to_english(text: str) -> dict:
     return {"pie": text, "read_as": read if read != text.strip(" .?!") else None, "ipa": _ipa(read),
             "words": [{"word": w["word"], "match": w["match"], "clitic": w["clitic"], "spelled": w.get("spelled"),
                        "analyses": [{"lex_id": a.lex_id, "lemma": a.lemma, "features": a.features, "gloss": a.gloss(),
-                                     "pos": a.pos} for a in w["analyses"][:6]]} for w in words],
+                                     "pos": a.pos, "status": provenance(a.lex_id)} for a in w["analyses"][:6]]}
+                      for w in words],
             "rough_english": " ".join(rough),
             "memory": {"english": exact.english, "source_id": exact.source_id} if exact else None}

@@ -93,3 +93,12 @@ def test_analyzer_forgives_how_people_type(analyzer, typed, form):
     an, how = analyzer.word(typed)
     assert an and how in ("exact", "unaccented", "typed", "close")
     assert form in analyzer.forms_for(typed) or how in ("exact", "unaccented")
+
+
+def test_words_carry_their_provenance():
+    """Owner 2026-10-30: the app marks each word attested, inferred or coined."""
+    from pie.translator.provenance import provenance
+    assert provenance("pie-lex-h1ekjwos") == "attested"         # Ved. áśva-, Lat. equus, …
+    assert provenance("pie-proj-spelom") == "inferred"          # our project reconstruction
+    assert provenance("pie-neo-bread") == "coined"
+    assert provenance("closed:personal/1") == "attested"
