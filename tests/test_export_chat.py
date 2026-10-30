@@ -666,5 +666,5 @@ def test_english_only_user_sentences():
     exs = ec.dialogue_chats([rec], collections.Counter(), all_modes=True)
     assert exs and all(e["meta"]["task"] == "en_dialogue" for e in exs)
     assert exs[0]["messages"][1]["content"] == "Hello! I flew here in an airplane."
-    bad = {**plan, "clauses": [{**plan["clauses"][1], "speaker": "model"}, *plan["clauses"][2:]]}
-    assert english_only_errors(bad)
+    bad = {**plan, "clauses": [plan["clauses"][0], plan["clauses"][2], {**plan["clauses"][1], "speaker": "model"}]}
+    assert any("only the user's" in e for e in english_only_errors(bad))
