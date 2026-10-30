@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PIE Translator</title>
+<style>
+:root{--bg:#f7f4ee;--fg:#1d1b18;--dim:#6d675e;--card:#fffdf9;--line:#e3ddd2;--accent:#9a4b16;--mem:#2f6b4f;--rule:#3d5a8a;--warn:#a3561a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15130f;--fg:#ece6dc;--dim:#a09888;--card:#1e1b16;--line:#332e26;--accent:#e08a4c;--mem:#6fc19a;--rule:#8eaee0;--warn:#e0a060}}
+:root[data-theme="dark"]{--bg:#15130f;--fg:#ece6dc;--dim:#a09888;--card:#1e1b16;--line:#332e26;--accent:#e08a4c;--mem:#6fc19a;--rule:#8eaee0;--warn:#e0a060}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 Georgia,"DejaVu Serif",serif}
+main{max-width:860px;margin:0 auto;padding:28px 16px 60px}
+h1{font-size:28px;margin:0 0 4px;font-weight:600}
+.sub{color:var(--dim);margin:0 0 22px;font-size:15px}
+.tabs{display:flex;gap:8px;margin-bottom:10px}
+.tabs button{border:1px solid var(--line);background:var(--card);color:var(--fg);padding:7px 14px;border-radius:999px;cursor:pointer;font:inherit;font-size:14px}
+.tabs button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+textarea{width:100%;min-height:110px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg);font:inherit;font-size:17px;resize:vertical}
+.go{margin-top:10px;background:var(--accent);color:#fff;border:0;padding:9px 20px;border-radius:8px;font:inherit;cursor:pointer}
+.go:disabled{opacity:.5}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:14px}
+.en{color:var(--dim);font-size:14px;margin-bottom:6px}
+.pie{font-size:22px;line-height:1.35;word-wrap:break-word}
+.ipa{font-family:"DejaVu Sans","Noto Sans",sans-serif;color:var(--dim);font-size:14px;margin-top:4px}
+.gloss{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;margin-top:8px;color:var(--fg);opacity:.85;word-wrap:break-word}
+.badge{display:inline-block;font:12px/1 ui-sans-serif,system-ui,sans-serif;padding:4px 8px;border-radius:999px;margin-right:6px;color:#fff}
+.mem{background:var(--mem)}.rule{background:var(--rule)}
+.note{font:13px/1.4 ui-sans-serif,system-ui,sans-serif;color:var(--warn);margin-top:6px}
+.words{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.w{border:1px solid var(--line);border-radius:8px;padding:6px 9px;min-width:90px}
+.w b{display:block;font-size:17px;font-weight:600}
+.w span{display:block;font:12px/1.35 ui-monospace,Menlo,monospace;color:var(--dim)}
+.err{color:var(--warn)}
+footer{color:var(--dim);font-size:13px;margin-top:30px}
+</style>
+</head>
+<body>
+<main>
+<h1>Proto-Indo-European Translator</h1>
+<p class="sub">Reconstructed PIE from our own corpus, lexicon and grammar engine. No language model: every form is built by rule.</p>
+<div class="tabs"><button id="t-en" class="on">English → PIE</button><button id="t-pie">PIE → English</button></div>
+<textarea id="in" placeholder="Be well, friend! The wolf saw the sheep."></textarea>
+<button class="go" id="go">Translate</button>
+<div id="out"></div>
+<footer>Green: a sentence from the reviewed corpus. Blue: built by rule from the English parse. Notes list anything left out.</footer>
+</main>
+<script>
+let mode="en";
+const $=s=>document.querySelector(s);
+const esc=s=>(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function setMode(m){mode=m;$("#t-en").classList.toggle("on",m==="en");$("#t-pie").classList.toggle("on",m==="pie");
+  $("#in").placeholder=m==="en"?"Be well, friend! The wolf saw the sheep.":"wĺ̥kʷos h₂ówim widét.";$("#out").innerHTML="";}
+$("#t-en").onclick=()=>setMode("en");$("#t-pie").onclick=()=>setMode("pie");
+async function go(){
+  const text=$("#in").value.trim(); if(!text) return;
+  $("#go").disabled=true; $("#out").innerHTML='<div class="card">…</div>';
+  try{
+    const r=await fetch(mode==="en"?"/api/en2pie":"/api/pie2en",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({text})});
+    const d=await r.json(); if(d.error) throw new Error(d.error);
+    $("#out").innerHTML = mode==="en" ? d.map(s=>`
+      <div class="card"><div class="en"><span class="badge ${s.source==="memory"?"mem":"rule"}">${s.source==="memory"?"corpus":"rules"}</span>${esc(s.english)}</div>
+      ${s.pie?`<div class="pie">${esc(s.pie)}</div><div class="ipa">/${esc(s.ipa)}/</div><div class="gloss">${esc(s.gloss)}</div>`:`<div class="pie err">no translation</div>`}
+      ${s.unknown.length?`<div class="note">No PIE word for: ${esc(s.unknown.join(", "))}</div>`:""}
+      ${s.notes.map(n=>`<div class="note">${esc(n)}</div>`).join("")}</div>`).join("")
+    : `<div class="card"><div class="pie">${esc(d.pie)}</div><div class="ipa">/${esc(d.ipa)}/</div>
+      ${d.memory?`<div class="en" style="margin-top:8px"><span class="badge mem">corpus</span>${esc(d.memory.english)}</div>`:""}
+      <div class="en" style="margin-top:8px"><span class="badge rule">word by word</span>${esc(d.rough_english)}</div>
+      <div class="words">${d.words.map(w=>`<div class="w"><b>${esc(w.word)}</b>${w.analyses.length?w.analyses.slice(0,3).map(a=>`<span>${esc(a.gloss)}</span>`).join(""):'<span class="err">unknown</span>'}${w.clitic?`<span>+ ${esc(w.clitic[1])}</span>`:""}</div>`).join("")}</div></div>`;
+  }catch(e){$("#out").innerHTML=`<div class="card err">${esc(e.message)}</div>`}
+  $("#go").disabled=false;
+}
+$("#go").onclick=go; $("#in").addEventListener("keydown",e=>{if(e.key==="Enter"&&(e.metaKey||e.ctrlKey))go();});
+</script>
+</body>
+</html>

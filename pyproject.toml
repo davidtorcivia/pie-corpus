@@ -26,6 +26,9 @@ kokoro = [
     "numpy==2.5.4; python_full_version < '3.13'",
     "loguru==0.7.3; python_full_version < '3.13'",
 ]
+translator = [
+    "spacy>=3.8.18",
+]
 
 [build-system]
 requires = ["hatchling"]

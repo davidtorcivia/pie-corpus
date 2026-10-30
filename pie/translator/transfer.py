@@ -1,0 +1,394 @@
+"""English → PIE by rule: parse the English (spaCy), build a plan in the planners' format (docs/generation/
+planner-brief-v4.md), and let the engine realize it (pie.realize.check_plan, realize). No language model.
+
+Each English sentence becomes one or more clauses:
+- the verb: its lemma → a verb lexeme that has the needed tense (lexmap); past → AOR (else PST), present → PRS
+  (else a gnomic AOR), "has seen"/"knows"-type perfects → PRF, "will" → SBJV (the subjunctive as future), "may" →
+  OPT, "let us" → SBJV 1PL, a bare imperative → IMP 2SG/PL; "be" + adjective/noun in the present → a nominal
+  sentence (no copula), else h₁ésti;
+- roles from the dependency parse: nsubj → SUBJ (a personal pronoun is dropped and marks the verb's person and
+  number), dobj → OBJ, dative/iobj → IO, prepositions → GOAL (to, into), LOC (in, at, on), ABL (from, out of), INS
+  (with, by), IO (for), POSS (of); amod → MOD, poss → POSS, nummod → a numeral, this/that → deictic_ki /
+  demonstrative_so, not → neg, where/why/how/when → the interrogative adverbs, an address ("Friend, …") → VOC;
+- a coordinated noun takes "and" (-kʷe) on the last conjunct; a coordinated verb is a new clause with kʷe.
+Everything the rules don't cover is reported in `notes`, and a word with no lexeme stays out of the PIE and is listed
+in `unknown`. check_plan's errors are reported, never hidden: the slot that causes one is dropped and the plan
+retried, and the drop is noted.
+"""
+from __future__ import annotations
+
+import functools
+import re
+from dataclasses import dataclass, field
+
+from ..realize import Lexicon, check_plan, realize
+from .lexmap import LexMap
+
+PRONOUNS = {  # English personal pronoun → (person, number)
+    "i": (1, "SG"), "me": (1, "SG"), "we": (1, "PL"), "us": (1, "PL"),
+    "you": (2, "SG"), "he": (3, "SG"), "him": (3, "SG"), "she": (3, "SG"), "her": (3, "SG"), "it": (3, "SG"),
+    "they": (3, "PL"), "them": (3, "PL"),
+}
+GENDER = {"he": "m", "him": "m", "his": "m", "she": "f", "her": "f", "hers": "f", "it": "n", "its": "n",
+          "they": "m", "them": "m", "their": "m"}
+POSSESSIVE = {"my": (1, "SG"), "our": (1, "PL"), "your": (2, "SG"), "his": (3, "SG"), "her": (3, "SG"),
+              "its": (3, "SG"), "their": (3, "PL")}
+WH_ADV = {"where": "closed:interrogative_adv/where", "why": "closed:interrogative_adv/why",
+          "how": "closed:interrogative_adv/how", "when": "closed:interrogative_adv/when"}
+NUMERALS = {"two": "closed:numerals/2", "three": "closed:numerals/3", "four": "closed:numerals/4",
+            "five": "closed:numerals/indeclinable/5", "six": "closed:numerals/indeclinable/6",
+            "seven": "closed:numerals/indeclinable/7", "eight": "closed:numerals/indeclinable/8",
+            "nine": "closed:numerals/indeclinable/9", "ten": "closed:numerals/indeclinable/10",
+            "hundred": "closed:numerals/indeclinable/100", "thousand": "closed:numerals/indeclinable/1000"}
+PREP_ROLE = {"to": "GOAL", "into": "GOAL", "toward": "GOAL", "towards": "GOAL", "in": "LOC", "at": "LOC",
+             "on": "LOC", "inside": "LOC", "from": "ABL", "out": "ABL", "with": "INS", "by": "INS", "for": "IO",
+             "of": "POSS"}
+# irregular past forms spaCy's small model leaves unlemmatized when it mis-tags them
+IRREGULAR = dict(x.split(":") for x in (
+    "drank:drink ate:eat ran:run sang:sing saw:see went:go came:come gave:give spoke:speak knew:know took:take "
+    "sat:sit stood:stand fell:fall led:lead drove:drive bore:bear slew:slay heard:hear said:say told:tell "
+    "brought:bring thought:think fought:fight held:hold kept:keep slept:sleep wept:weep found:find grew:grow "
+    "threw:throw flew:fly wore:wear rode:ride rose:rise shone:shine struck:strike won:win fed:feed fled:flee "
+    "laid:lay lost:lose made:make met:meet sent:send sold:sell sought:seek taught:teach woke:wake bit:bite "
+    "hid:hide broke:break chose:choose stole:steal swam:swim began:begin drew:draw blew:blow became:become "
+    "bound:bind built:build felt:feel left:leave meant:mean spent:spend swore:swear tore:tear dug:dig "
+    "wove:weave sowed:sow milked:milk ploughed:plough").split())
+GIVE_LIKE = {"give", "say", "tell", "show", "bring", "send", "offer", "sing", "speak"}   # "to X" = IO
+
+
+def _comma_next_to(tok) -> bool:
+    """An address is set off by a comma (or starts/ends the sentence next to one): "Come, friend!", "Friend, …"."""
+    d = tok.doc
+    return (tok.i > 0 and d[tok.i - 1].text == ",") or (tok.i + 1 < len(d) and d[tok.i + 1].text == ",")
+
+
+@functools.lru_cache(maxsize=1)
+def nlp():
+    import spacy
+    return spacy.load("en_core_web_sm", disable=["ner"])
+
+
+@dataclass
+class Result:
+    english: str
+    pie: str | None
+    gloss: str | None
+    plan: dict | None
+    unknown: list[str] = field(default_factory=list)
+    notes: list[str] = field(default_factory=list)
+    errors: list[str] = field(default_factory=list)
+
+
+class Transfer:
+    def __init__(self):
+        self.lx = Lexicon.load()
+        self.map = LexMap.load(nlp())
+
+    # ---------------------------------------------------------------- words
+    def noun(self, tok, notes, unknown) -> str | None:
+        cs = self.map.candidates(tok.lemma_.lower(), "noun") or self.map.candidates(tok.text.lower(), "noun")
+        if not cs:
+            unknown.append(tok.text)
+            return None
+        return cs[0].lex_id
+
+    def adj(self, tok, unknown) -> str | None:
+        cs = self.map.candidates(tok.lemma_.lower(), "adj") or self.map.candidates(tok.text.lower(), "adj")
+        if not cs:
+            unknown.append(tok.text)
+            return None
+        return cs[0].lex_id
+
+    def verb(self, lemma: str, tense: str, mood: str, notes, prohibitive: bool = False) -> tuple[str | None, str]:
+        """A verb lexeme with the needed cell, and the tense actually used. A prohibitive (neg + IMP) needs a present
+        or aorist stem (the injunctive)."""
+        cs = self.map.candidates(lemma, "verb")
+        if not cs:
+            return None, tense
+        want = {"IND": [tense], "IMP": ["IMP"], "SBJV": ["SBJV"], "OPT": ["OPT"]}[mood]
+        prefs = {"AOR": ["AOR", "PST"], "PRS": ["PRS", "AOR"], "PRF": ["PRF", "PRS"], "PST": ["PST", "AOR"]}
+        if mood == "IND":
+            for t in prefs[tense]:
+                for c in cs:
+                    if t in c.tenses:
+                        if t != tense:
+                            notes.append(f"'{lemma}': no {tense} stem, used {t}")
+                        return c.lex_id, t
+            return None, tense
+        for c in cs:
+            if want[0] in c.tenses and (not prohibitive or c.tenses & {"PRS", "AOR"}):
+                stem = "AOR" if "AOR" in c.tenses else "PRF" if "PRF" in c.tenses else "PRS"
+                return c.lex_id, stem
+        return None, tense
+
+    # ---------------------------------------------------------------- clauses
+    def np_slots(self, tok, role, slots, notes, unknown, num=None) -> int | None:
+        """A noun phrase headed by tok (noun, pronoun, proper noun) → slots; returns the head slot's index."""
+        low = tok.text.lower()
+        if tok.pos_ == "PRON":
+            if low in PRONOUNS:
+                p, n = PRONOUNS[low]
+                if p in (1, 2):
+                    slots.append({"lex_id": f"closed:personal/{p}", "role": role, "num": n})
+                else:
+                    slots.append({"lex_id": "closed:anaphoric_i", "role": role, "num": n, "gender": GENDER.get(low, "m")})
+                return len(slots) - 1
+            if low in ("what", "who", "whom"):
+                slots.append({"lex_id": "closed:interrogative_kwi", "role": role, "gender": "n" if low == "what" else "m"})
+                return len(slots) - 1
+            if low in ("this", "that"):
+                slots.append({"lex_id": "closed:deictic_ki" if low == "this" else "closed:demonstrative_so",
+                              "role": role, "gender": "n"})
+                return len(slots) - 1
+            notes.append(f"pronoun '{tok.text}' left out")
+            return None
+        if tok.lemma_.lower() in ("thing", "one") and any(c.dep_ == "amod" for c in tok.children):
+            a = next(c for c in tok.children if c.dep_ == "amod")     # "good things": the adjective as a noun
+            lid = self.adj(a, unknown)
+            if not lid:
+                return None
+            slots.append({"lex_id": lid, "role": role, "num": "PL" if tok.morph.get("Number") == ["Plur"] else "SG",
+                          "gender": "n" if tok.lemma_.lower() == "thing" else "m"})
+            return len(slots) - 1
+        lid = self.noun(tok, notes, unknown)
+        if not lid:
+            return None
+        n = num or ("PL" if tok.morph.get("Number") == ["Plur"] else "SG")
+        head = len(slots)
+        slots.append({"lex_id": lid, "role": role, "num": n})
+        if self.lx.specs.get(lid, {}).get("family") == "adj":       # "friend" = priHós, an adjective as a noun
+            slots[head]["gender"] = "f" if tok.lemma_.lower() in ("woman", "girl", "wife") else "m"
+        for ch in tok.children:
+            cl = ch.text.lower()
+            if ch.dep_ == "amod" and ch.pos_ == "ADJ" and ch.text.lower() not in IRREGULAR:
+                a = self.adj(ch, unknown)
+                if a:
+                    slots.append({"lex_id": a, "role": "MOD", "head": head})
+            elif ch.dep_ == "poss":
+                if cl in POSSESSIVE:
+                    p, pn = POSSESSIVE[cl]
+                    if p in (1, 2):
+                        slots.append({"lex_id": f"closed:personal/{p}", "role": "POSS", "num": pn, "head": head,
+                                      "enclitic": True})
+                    else:
+                        slots.append({"lex_id": "closed:anaphoric_i", "role": "POSS", "num": pn, "head": head,
+                                      "gender": GENDER.get(cl, "m")})
+                else:
+                    self.np_slots(ch, "POSS", slots, notes, unknown)
+                    slots[-1]["head"] = head
+            elif ch.dep_ == "nummod" and cl in NUMERALS:
+                slots.append({"lex_id": NUMERALS[cl], "role": "MOD", "head": head})
+                slots[head]["num"] = "DU" if cl == "two" else "PL"
+            elif ch.dep_ == "det" and cl in ("this", "these", "that", "those"):
+                slots.append({"lex_id": "closed:deictic_ki" if cl in ("this", "these") else "closed:demonstrative_so",
+                              "role": "MOD", "head": head})
+            elif ch.dep_ == "prep" and ch.text.lower() == "of":
+                for g in ch.children:
+                    if g.dep_ == "pobj":
+                        i = self.np_slots(g, "POSS", slots, notes, unknown)
+                        if i is not None:
+                            slots[i]["head"] = head
+            elif ch.dep_ == "conj" and ch.pos_ in ("NOUN", "PROPN", "PRON"):
+                i = self.np_slots(ch, role, slots, notes, unknown)
+                if i is not None:
+                    slots[i]["and"] = True
+        return head
+
+    def clause(self, root, sent, notes, unknown, inherit: dict | None = None) -> list[dict]:
+        """One verbal or nominal clause (and its coordinated verbs as kʷe clauses)."""
+        slots: list[dict] = []
+        cl: dict = {"slots": slots}
+        kids = list(root.children)
+        aux = [k for k in kids if k.dep_ in ("aux", "auxpass")]
+        aux_l = [a.lemma_.lower() for a in aux]
+        neg = any(k.dep_ == "neg" for k in kids)
+        lemma = root.lemma_.lower()
+        tense_m = root.morph.get("Tense")
+        tense = "AOR" if "Past" in tense_m or any(a.morph.get("Tense") == ["Past"] for a in aux if a.lemma_ == "do") else "PRS"
+        mood = "IND"
+        if "will" in aux_l or "shall" in aux_l:
+            mood = "SBJV"
+        elif "may" in aux_l:
+            mood = "OPT"
+        elif "have" in aux_l and root.tag_ == "VBN":
+            tense = "PRF"
+        subj = [k for k in kids if k.dep_ in ("nsubj", "nsubjpass")]
+        if root.tag_ == "VB" and not subj and all(a == "do" for a in aux_l):
+            mood = "IMP"
+        person, num = 3, "SG"
+        if root.lemma_ == "let":                         # "let us go" → SBJV 1PL
+            xs = [k for k in kids if k.dep_ in ("ccomp", "xcomp")]
+            if xs and any(c.text.lower() == "us" for c in list(xs[0].children) + kids):
+                root, lemma, mood = xs[0], xs[0].lemma_.lower(), "SBJV"
+                kids = [c for c in root.children if c.text.lower() != "us"]
+                subj, person, num = [], 1, "PL"
+        voice = "MID" if any(k.dep_ == "nsubjpass" for k in kids) else "ACT"
+        for s in subj:
+            low = s.text.lower()
+            if low in PRONOUNS:
+                person, num = PRONOUNS[low]
+                if person == 3:
+                    num = PRONOUNS[low][1]
+            else:
+                self.np_slots(s, "SUBJ", slots, notes, unknown)
+                conj = sum(c.dep_ == "conj" for c in s.children)
+                num = "DU" if conj == 1 else "PL" if conj or s.morph.get("Number") == ["Plur"] else "SG"
+        if mood == "IMP":
+            person = 2
+        # copula: "X is Y" / "X is good"
+        copula = lemma == "be"
+        attr = [k for k in kids if k.dep_ in ("attr", "acomp")]
+        misread = []          # "…and drank water": the small model reads a past verb as the object's adjective
+        for k in kids:
+            d, low = k.dep_, k.text.lower()
+            bad = [c for c in k.children if c.dep_ == "amod" and c.text.lower() in IRREGULAR]
+            if d == "dobj" and bad:
+                misread.append((bad[0], k))
+            elif d in ("dobj",):
+                self.np_slots(k, "OBJ", slots, notes, unknown)
+            elif d in ("dative", "iobj") and k.pos_ != "ADP":
+                self.np_slots(k, "IO", slots, notes, unknown)
+            elif d == "prep" or (d in ("dative", "iobj") and k.pos_ == "ADP"):
+                prep = low
+                role = PREP_ROLE.get(prep)
+                if prep == "to" and lemma in GIVE_LIKE:
+                    role = "IO"
+                for g in k.children:
+                    if g.dep_ == "pobj" and role:
+                        self.np_slots(g, role, slots, notes, unknown)
+                    elif g.dep_ == "pobj":
+                        notes.append(f"'{prep} {g.text}' left out (no case rule for '{prep}')")
+            elif d == "advmod" and low == "home":            # "go home", "drive the cattle home": a goal
+                slots.append({"lex_id": "pie-lex-doxm", "role": "GOAL"})
+            elif d == "advmod" and low in WH_ADV:
+                slots.append({"lex_id": WH_ADV[low], "role": "ADV"})
+            elif d == "advmod" and low not in ("not", "n't"):
+                notes.append(f"adverb '{k.text}' left out")
+            elif d in ("npadvmod", "intj", "appos") and k.pos_ in ("NOUN", "PROPN") and _comma_next_to(k):
+                self.np_slots(k, "VOC", slots, notes, unknown)
+            elif d == "conj" and k.pos_ in ("VERB", "AUX"):
+                pass
+        if copula and attr:
+            a = attr[0]
+            if a.pos_ == "ADJ":
+                lid = self.adj(a, unknown)
+                if lid:
+                    slots.append({"lex_id": lid, "role": "PRED"})
+            elif a.pos_ in ("NOUN", "PROPN"):
+                self.np_slots(a, "PRED", slots, notes, unknown, num="PL" if num == "PL" else "SG")
+            elif a.pos_ == "PRON" and a.text.lower() in ("who", "what"):
+                slots.append({"lex_id": "closed:interrogative_kwi", "role": "PRED", "gender": "n" if a.text.lower() == "what" else "m"})
+            nominal = tense == "PRS" and mood == "IND" and person == 3 and any(s["role"] == "SUBJ" for s in slots)
+            if nominal:
+                cl["type"] = "nominal"
+            else:
+                slots.append({"lex_id": "pie-lex-h1esti", "role": "V",
+                              "verb": {"tense": "PST" if tense == "AOR" else "PRS", "mood": mood, "voice": "ACT",
+                                       "person": person, "num": num}})
+        elif copula:                                     # "Where is my father?": existence/location
+            slots.append({"lex_id": "pie-lex-h1esti", "role": "V",
+                          "verb": {"tense": "PST" if tense == "AOR" else "PRS", "mood": mood, "voice": "ACT",
+                                   "person": person, "num": num}})
+        else:
+            if root.text.lower() in IRREGULAR:                  # spaCy's small model leaves some ("drank")
+                lemma, tense = IRREGULAR[root.text.lower()], "AOR" if mood == "IND" else tense
+            elif not self.map.candidates(lemma, "verb"):
+                lemma = nlp()(f"they {root.text.lower()}")[1].lemma_.lower()
+            if inherit:
+                tense, mood = inherit["tense"], inherit["mood"]
+            lid, t = self.verb(lemma, tense, mood, notes, prohibitive=neg and mood == "IMP")
+            if not lid:
+                unknown.append(root.text)
+                return []
+            v = {"tense": t, "mood": mood, "voice": voice}
+            if not any(s["role"] == "SUBJ" for s in slots):
+                v.update(person=person, num=num)
+            if self.lx.middle_only(lid):
+                v["voice"] = "MID"
+            slots.append({"lex_id": lid, "role": "V", "verb": v})
+        if neg:
+            cl["neg"] = True
+        out = [cl]
+        for vtok, obj in misread:
+            extra: list[dict] = []
+            self.np_slots(obj, "OBJ", extra, notes, unknown)
+            lid, t = self.verb(IRREGULAR[vtok.text.lower()], tense, mood, notes)
+            if lid:
+                v = {"tense": t, "mood": mood, "voice": "ACT", "person": person, "num": num}
+                out.append({"conj": "kʷe", "slots": extra + [{"lex_id": lid, "role": "V", "verb": v}]})
+            else:
+                unknown.append(vtok.text)
+        for k in kids:                                    # "…and drank": a coordinated verb, same subject
+            if k.dep_ == "conj" and k.pos_ in ("VERB",):
+                more = self.clause(k, sent, notes, unknown, inherit={"tense": tense, "mood": mood})
+                if more:
+                    more[0]["conj"] = "kʷe"
+                    for s in more[0]["slots"]:
+                        if s["role"] == "V" and not any(x.dep_ in ("nsubj", "nsubjpass") for x in k.children):
+                            s["verb"]["person"], s["verb"]["num"] = person, num
+                    out += more
+        return out
+
+    # ---------------------------------------------------------------- text
+    def translate(self, english: str) -> Result:
+        doc = nlp()(english)
+        notes: list[str] = []
+        unknown: list[str] = []
+        clauses = []
+        for sent in doc.sents:
+            root = sent.root
+            voc = None
+            if root.pos_ in ("NOUN", "PROPN") and _comma_next_to(root):
+                verbs = [c for c in root.children if c.pos_ in ("VERB", "AUX") and c.dep_ in ("relcl", "ccomp", "acl", "appos")]
+                if verbs:
+                    voc, root = root, verbs[0]
+            cls = self.clause(root, sent, notes, unknown)
+            if cls and voc is not None:
+                self.np_slots(voc, "VOC", cls[0]["slots"], notes, unknown)
+            if not cls:
+                continue
+            cls[0]["break"] = bool(clauses)
+            if sent.text.strip().endswith("?"):
+                for c in cls:
+                    c["question"] = True
+            cls[0]["english"] = sent.text.strip()
+            clauses += cls
+        if not clauses:
+            return Result(english, None, None, None, unknown, notes, ["nothing to translate"])
+        plan = {"english": english, "clauses": clauses}
+        errors: list[str] = []
+        for _ in range(8):
+            errs = check_plan(plan, self.lx)
+            if not errs:
+                break
+            errors += errs
+            if not self._drop_for(plan, errs[0], notes):
+                return Result(english, None, None, plan, unknown, notes, errs)
+        else:
+            return Result(english, None, None, plan, unknown, notes, errors)
+        r = realize(plan, self.lx)
+        return Result(english, r["pie"], r["gloss"], plan, unknown, notes, [])
+
+    @staticmethod
+    def _drop_for(plan: dict, err: str, notes: list[str]) -> bool:
+        """Drop the slot an error names (clause N slot M), so the rest still translates."""
+        m = re.search(r"clause (\d+).*?slot (\d+)", err)
+        if not m:
+            return False
+        ci, si = int(m[1]), int(m[2])
+        try:
+            slots = plan["clauses"][ci]["slots"]
+            if slots[si]["role"] == "V":
+                return False
+            dropped = slots.pop(si)
+        except (IndexError, KeyError):
+            return False
+        for s in slots:
+            for k in ("head", "dep"):
+                if k in s and s[k] is not None:
+                    if s[k] == si:
+                        s.pop(k)
+                    elif s[k] > si:
+                        s[k] -= 1
+        notes.append(f"left out {dropped['lex_id']} ({err})")
+        return True
