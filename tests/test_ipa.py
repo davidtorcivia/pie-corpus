@@ -29,6 +29,10 @@ ROOT = Path(__file__).resolve().parent.parent
     ("kʷetwóres", "kʷet.wó.res"),        # Ved. cat-vā́-ras: VC.CV
     ("h₂stḗr", "χstéːr"),
     ("deywós", "dej.wós"),
+    ("sḱih₃wós", "sciɣ.wós"),            # h₃w: the rounding is the w's, not doubled
+    ("póh₃wr̥", "póɣ.wr̩"),
+    ("h₃wéyh₁os", "ɣwéj.hos"),
+    ("h₃kʷbʰós", "ɣʷkʷbʱós"),           # only before w
 ])
 def test_famous_forms(pie, ipa):
     assert to_ipa(pie) == NFC(ipa)

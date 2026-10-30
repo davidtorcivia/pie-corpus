@@ -157,7 +157,13 @@ def _word(word: str, conv: Convention, tone: bool | str) -> tuple[list[str], str
     acute = tone is True
 
     def seg(i: int) -> str:
-        return _nucleus(segs[i], conv, acute) if i in nset else _margin(segs[i], conv)
+        if i in nset:
+            return _nucleus(segs[i], conv, acute)
+        m = _margin(segs[i], conv)
+        nxt = segs[i + 1] if i + 1 < len(segs) else None
+        if m.endswith("ʷ") and nxt is not None and nxt.base == "w" and i + 1 not in nset:
+            m = m[:-1]                             # h₃w: the w carries the rounding (ɣw, not ɣʷw)
+        return m
 
     sylls = []
     for idx in _split(segs, nuclei):
