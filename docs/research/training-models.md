@@ -90,3 +90,28 @@ Following the brief, no HF config or model class was invented, and so `mlx_lm.co
 - `reimpl.py`, `gen.py` and `losstest.py` run the verification.
 
 **Follow-up (same day):** David chose an exact custom module over an approximation, so it was written in `training/talkie/`; see its README. Nothing was folded or approximated.
+
+## Training speed (2026-10-30)
+
+LoRA rank 16 on every linear layer, packed 2048-token rows of `export/chat/train_mix.jsonl` (2.27 M tokens per
+epoch), `training/bench_lora.py`.
+
+| machine | model | setup | tokens/s | memory | one epoch |
+|---|---|---|---|---|---|
+| tr-desktop, RTX 5090, Windows | Qwen3-4B-Instruct | bf16 LoRA, cuDNN attention, Liger kernels, grad checkpointing, batch 4 | **4,302** | 11.2 GB | ~9 min |
+| tr-desktop | Qwen3-4B-Instruct | same, batch 8 / 16 | 4,139 / 4,215 | 14.5 / 21.0 GB | ~9 min |
+| tr-desktop | Qwen3-4B-Instruct | bf16 LoRA, default attention, no Liger, batch 4 | 1,681 | 23.3 GB | ~23 min |
+| Mac Studio M3 Ultra, MLX | Qwen3-4B-Base | bare forward+backward ceiling (packed) | ~850–930 | — | ~45 min |
+| Mac Studio, MLX | Qwen3-4B-Base | stock `mlx_lm lora` (pads, short examples) | 140–230 real | 28–148 GB | ~3 h |
+| Mac Studio, MLX | talkie-13B chat | LoRA rank 8, packed 1024 | 335 | 108 GB | ~1.9 h |
+
+What made the 5090 fast, in order:
+1. `model.train()` after `get_peft_model`: from_pretrained returns eval mode, where gradient checkpointing is off;
+   one 2048-token row then held 37 GB of activations and Windows silently spilled past the card into system RAM.
+2. A VRAM cap (`torch.cuda.set_per_process_memory_fraction(0.92)`) so anything too big fails with OOM instead of
+   spilling (the spill is Windows' sysmem fallback; it made the first attempt crawl).
+3. cuDNN attention: torch 2.11 on Windows has no flash or memory-efficient SDPA kernel for the 5090; the math
+   fallback materializes every attention matrix (47.6 ms and 8.6 GB per call vs 8.1 ms and 0.8 GB for cuDNN).
+4. Liger kernels (triton-windows + liger-kernel --no-deps): fused linear cross-entropy never builds the 152k-vocab
+   logits (9.3 GB at batch 8 x 2048), plus fused RMSNorm, SwiGLU and RoPE.
+QLoRA (4-bit) brings no speed for a 4B model; it matters for talkie-13B (26 GB of bf16 weights) on the 32 GB card.
