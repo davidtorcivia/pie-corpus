@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PIE Training</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--bg:#f6f4ef;--fg:#1c1b19;--dim:#6d675e;--card:#fffdf9;--line:#e3ddd2;--accent:#9a4b16}
+@media (prefers-color-scheme:dark){:root{--bg:#141310;--fg:#ece6dc;--dim:#a09888;--card:#1d1b17;--line:#332e26;--accent:#e08a4c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 ui-sans-serif,system-ui,sans-serif}
+main{max-width:1280px;margin:0 auto;padding:20px 16px 60px}
+h1{font:600 22px Georgia,serif;margin:0 0 4px}
+.sub{color:var(--dim);margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.card h2{font-size:13px;margin:0 0 8px;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:5px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-weight:600}
+td.pie{font-family:"DejaVu Serif",Georgia,serif;font-size:14px}
+.pill{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;border:1px solid var(--line);color:var(--dim)}
+.run{cursor:pointer}.run.sel{background:color-mix(in srgb,var(--accent) 12%,transparent)}
+select{font:inherit;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:3px 6px}
+.status{font-weight:600}.live{color:#2f8f4f}.done{color:var(--dim)}
+</style>
+</head>
+<body>
+<main>
+<h1>PIE fine-tuning</h1>
+<div class="sub">tr-desktop · RTX 5090 · refreshes every 15 s · <span id="when"></span></div>
+<div class="card"><h2>Runs</h2><table id="runs"><thead><tr><th>run</th><th>model</th><th>lr</th><th>rank</th><th>status</th><th>step</th><th>epoch</th><th>train loss</th><th>eval loss</th><th>tok/s</th><th>GPU GB</th><th>min</th></tr></thead><tbody></tbody></table></div>
+<div class="grid" style="margin-top:14px">
+<div class="card"><h2>Train loss</h2><canvas id="cTrain" height="220"></canvas></div>
+<div class="card"><h2>Eval loss (per epoch)</h2><canvas id="cEval" height="220"></canvas></div>
+<div class="card"><h2>Learning rate</h2><canvas id="cLr" height="160"></canvas></div>
+<div class="card"><h2>Throughput (tokens/s)</h2><canvas id="cTok" height="160"></canvas></div>
+</div>
+<div class="card" style="margin-top:14px"><h2>Generations <select id="gRun"></select> <select id="gEp"></select> <select id="gKind"><option value="">all kinds</option></select> <span id="gScore" class="pill"></span></h2>
+<table id="gens"><thead><tr><th>kind</th><th>user</th><th>model output</th><th>reference</th></tr></thead><tbody></tbody></table></div>
+</main>
+<script>
+const COLORS=["#c0562b","#2f6b9a","#3a8f5a","#8a4fb0","#b08a2a","#2a9a95","#9a2a5e","#5a5a5a"];
+const charts={};
+function chart(id,yLabel,log){const c=new Chart(document.getElementById(id),{type:"line",data:{datasets:[]},
+ options:{animation:false,parsing:false,normalized:true,interaction:{mode:"nearest",intersect:false},
+ scales:{x:{type:"linear",title:{display:true,text:"step"}},y:{type:log?"logarithmic":"linear",title:{display:!!yLabel,text:yLabel}}},
+ plugins:{legend:{labels:{boxWidth:10}}},elements:{point:{radius:0}}}});charts[id]=c;return c}
+chart("cTrain","loss");chart("cEval","loss");chart("cLr","");chart("cTok","");
+let runs=[], selected=new Set();
+const esc=s=>(s??"").toString().replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function last(ms,ev){for(let i=ms.length-1;i>=0;i--)if(ms[i].event===ev)return ms[i];return null}
+async function refresh(){
+ runs=await (await fetch("/api/runs")).json();
+ if(!selected.size) runs.forEach(r=>selected.add(r.name));
+ const tb=document.querySelector("#runs tbody");tb.innerHTML="";
+ runs.forEach((r,i)=>{const m=r.metrics, t=last(m,"train"), e=last(m,"eval"), done=last(m,"done");
+  const tr=document.createElement("tr");tr.className="run"+(selected.has(r.name)?" sel":"");
+  tr.innerHTML=`<td><b style="color:${COLORS[i%8]}">${esc(r.name)}</b></td><td>${esc((r.config.model||"").split(/[\\/]/).pop())}</td><td>${r.config.lr??""}</td><td>${r.config.rank??""}</td>
+  <td class="status ${done?"done":"live"}">${done?"done":(t?"training":"starting")}</td><td>${t?t.step+" / "+(r.config.total_steps??"?"):""}</td><td>${t?t.epoch:""}</td>
+  <td>${t?t.loss:""}</td><td>${e?e.eval_loss:""}</td><td>${t?t.tok_per_s:""}</td><td>${t?t.gpu_gb:""}</td><td>${(done||t||{}).elapsed_min??""}</td>`;
+  tr.onclick=()=>{selected.has(r.name)?selected.delete(r.name):selected.add(r.name);draw()};tb.appendChild(tr)});
+ draw(); fillRunSelect(); document.getElementById("when").textContent="updated "+new Date().toLocaleTimeString();
+}
+function draw(){
+ const sets=(key,ev,yk)=>runs.map((r,i)=>selected.has(r.name)?{label:r.name,borderColor:COLORS[i%8],backgroundColor:COLORS[i%8],borderWidth:1.6,
+   pointRadius:ev==="eval"?3:0,data:r.metrics.filter(m=>m.event===ev&&m[yk]!=null).map(m=>({x:m.step,y:m[yk]}))}:null).filter(Boolean);
+ charts.cTrain.data.datasets=sets("t","train","loss");charts.cEval.data.datasets=sets("e","eval","eval_loss");
+ charts.cLr.data.datasets=sets("l","train","lr");charts.cTok.data.datasets=sets("k","train","tok_per_s");
+ Object.values(charts).forEach(c=>c.update());
+ document.querySelectorAll("#runs tbody tr").forEach((tr,i)=>tr.classList.toggle("sel",selected.has(runs[i].name)));
+}
+function fillRunSelect(){const s=document.getElementById("gRun"), cur=s.value;
+ s.innerHTML=runs.filter(r=>r.epochs.length).map(r=>`<option${r.name===cur?" selected":""}>${esc(r.name)}</option>`).join("");
+ fillEpoch(false)}
+function fillEpoch(load=true){const r=runs.find(x=>x.name===document.getElementById("gRun").value); const s=document.getElementById("gEp"), cur=s.value;
+ s.innerHTML=r?r.epochs.map(e=>`<option value="${e}"${String(e)===cur?" selected":""}>epoch ${e}</option>`).join(""):"";
+ if(r&&!cur)s.value=r.epochs[r.epochs.length-1]; if(load||!window._loaded){window._loaded=1;loadGens()}}
+async function loadGens(){const run=document.getElementById("gRun").value, ep=document.getElementById("gEp").value; if(!run||!ep)return;
+ const d=await (await fetch(`/api/gens?run=${encodeURIComponent(run)}&epoch=${ep}`)).json();
+ const kinds=[...new Set(d.gens.map(g=>g.kind))], ks=document.getElementById("gKind"), cur=ks.value;
+ ks.innerHTML='<option value="">all kinds</option>'+kinds.map(k=>`<option${k===cur?" selected":""}>${esc(k)}</option>`).join("");
+ const f=ks.value; document.getElementById("gScore").textContent=d.scores?Object.entries(d.scores.summary||{}).map(([k,v])=>k+" "+v).join(" · "):"not scored yet";
+ document.querySelector("#gens tbody").innerHTML=d.gens.filter(g=>!f||g.kind===f).map(g=>`<tr><td><span class="pill">${esc(g.kind)}</span></td><td>${esc(g.user).slice(0,220)}</td><td class="pie">${esc(g.output)}</td><td class="pie">${esc(g.reference)}</td></tr>`).join("")}
+document.getElementById("gRun").onchange=()=>{document.getElementById("gEp").value="";fillEpoch(true)};
+document.getElementById("gEp").onchange=loadGens;document.getElementById("gKind").onchange=loadGens;
+refresh(); setInterval(refresh,15000);
+</script>
+</body>
+</html>
