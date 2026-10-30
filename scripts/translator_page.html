@@ -27,6 +27,7 @@ textarea{width:100%;min-height:110px;padding:12px 14px;border:1px solid var(--li
 .badge{display:inline-block;font:12px/1 ui-sans-serif,system-ui,sans-serif;padding:4px 8px;border-radius:999px;margin-right:6px;color:#fff}
 .mem{background:var(--mem)}.rule{background:var(--rule)}
 .note{font:13px/1.4 ui-sans-serif,system-ui,sans-serif;color:var(--warn);margin-top:6px}
+.approx{font:13px/1.4 ui-sans-serif,system-ui,sans-serif;color:var(--rule);margin-top:6px}
 .words{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
 .w{border:1px solid var(--line);border-radius:8px;padding:6px 9px;min-width:90px}
 .w b{display:block;font-size:17px;font-weight:600}
@@ -43,7 +44,7 @@ footer{color:var(--dim);font-size:13px;margin-top:30px}
 <textarea id="in" placeholder="Be well, friend! The wolf saw the sheep."></textarea>
 <button class="go" id="go">Translate</button>
 <div id="out"></div>
-<footer>Green: a sentence from the reviewed corpus. Blue: built by rule from the English parse. Notes list anything left out.</footer>
+<footer>Green: a sentence from the reviewed corpus. Blue: built by rule from the English parse. "Nearest words used" are stand-ins where PIE has no word of its own (truth ≈ true); orange notes list anything left out.</footer>
 </main>
 <script>
 let mode="en";
@@ -62,7 +63,8 @@ async function go(){
       <div class="card"><div class="en"><span class="badge ${s.source==="memory"?"mem":"rule"}">${s.source==="memory"?"corpus":"rules"}</span>${esc(s.english)}</div>
       ${s.pie?`<div class="pie">${esc(s.pie)}</div><div class="ipa">/${esc(s.ipa)}/</div><div class="gloss">${esc(s.gloss)}</div>`:`<div class="pie err">no translation</div>`}
       ${s.unknown.length?`<div class="note">No PIE word for: ${esc(s.unknown.join(", "))}</div>`:""}
-      ${s.notes.map(n=>`<div class="note">${esc(n)}</div>`).join("")}</div>`).join("")
+      ${s.notes.filter(n=>n.includes("≈")).length?`<div class="approx">Nearest words used: ${s.notes.filter(n=>n.includes("≈")).map(n=>esc(n.replace(/ \(no PIE word for.*\)/,""))).join("; ")}</div>`:""}
+      ${s.notes.filter(n=>!n.includes("≈")).map(n=>`<div class="note">${esc(n)}</div>`).join("")}</div>`).join("")
     : `<div class="card"><div class="pie">${esc(d.pie)}</div><div class="ipa">/${esc(d.ipa)}/</div>
       ${d.memory?`<div class="en" style="margin-top:8px"><span class="badge mem">corpus</span>${esc(d.memory.english)}</div>`:""}
       <div class="en" style="margin-top:8px"><span class="badge rule">word by word</span>${esc(d.rough_english)}</div>

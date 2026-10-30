@@ -53,6 +53,26 @@ IRREGULAR = dict(x.split(":") for x in (
     "hid:hide broke:break chose:choose stole:steal swam:swim began:begin drew:draw blew:blow became:become "
     "bound:bind built:build felt:feel left:leave meant:mean spent:spend swore:swear tore:tear dug:dig "
     "wove:weave sowed:sow milked:milk ploughed:plough").split())
+# Words with no lexeme of their own: the nearest English word the lexicon has (tried in order). The result is
+# reported as an approximation ("truth ≈ true"), never passed off as the word itself.
+SYNONYMS = {
+    "truth": ["true"], "evident": ["visible", "clear"], "obvious": ["visible", "clear"], "apparent": ["visible"],
+    "manifest": ["visible"], "plain": ["clear"], "liberty": ["free"], "freedom": ["free"], "happiness": ["joy"],
+    "joyful": ["glad"], "justice": ["right"], "just": ["right"], "nation": ["people"], "country": ["land"],
+    "consider": ["think"], "believe": ["think"], "suppose": ["think"], "seem": ["appear"], "create": ["make"],
+    "endow": ["give"], "grant": ["give"], "pursue": ["seek"], "pursuit": ["seek"], "hope": ["wish"],
+    "desire": ["wish"], "evil": ["bad"], "wicked": ["bad"], "beautiful": ["fair", "good"], "lovely": ["fair", "good"],
+    "large": ["big", "great"], "huge": ["great"], "tiny": ["small"], "quick": ["swift"], "rapid": ["swift"],
+    "fast": ["swift"], "forest": ["wood", "tree"], "woods": ["wood", "tree"], "ocean": ["sea"], "lake": ["sea", "water"],
+    "child": ["son", "boy"], "kid": ["son", "boy"], "girl": ["daughter"], "boy": ["son"], "lady": ["woman"],
+    "husband": ["man"], "wife": ["woman"], "ruler": ["king"], "lord": ["king", "master"], "chief": ["king"],
+    "warrior": ["man", "hero"], "soldier": ["man"], "battle": ["war", "fight"], "begin": ["start"],
+    "finish": ["end"], "unalienable": ["imperishable"], "inalienable": ["imperishable"], "eternal": ["imperishable"],
+    "immortal": ["undying", "imperishable"], "self": ["own"], "equal": ["alike", "same"], "certain": ["true"],
+}
+# derivational endings stripped to reach a base the lexicon has: happiness → happy, equality → equal
+SUFFIXES = [("iness", "y"), ("ness", ""), ("ity", ""), ("ity", "e"), ("ment", ""), ("ation", "e"), ("ion", ""),
+            ("dom", ""), ("hood", ""), ("ship", ""), ("ful", ""), ("ly", ""), ("th", "e"), ("er", ""), ("or", "")]
 GIVE_LIKE = {"give", "say", "tell", "show", "bring", "send", "offer", "sing", "speak"}   # "to X" = IO
 
 
@@ -83,26 +103,58 @@ class Transfer:
     def __init__(self):
         self.lx = Lexicon.load()
         self.map = LexMap.load(nlp())
+        self.used: set[int] = set()        # token indices that became a slot (translate() reports the rest)
 
     # ---------------------------------------------------------------- words
-    def noun(self, tok, notes, unknown) -> str | None:
-        cs = self.map.candidates(tok.lemma_.lower(), "noun") or self.map.candidates(tok.text.lower(), "noun")
-        if not cs:
-            unknown.append(tok.text)
-            return None
-        return cs[0].lex_id
+    def lookup(self, tok, families: tuple[str, ...], notes) -> tuple[str | None, str | None]:
+        """(lex_id, family) for a token: its own word first, then a synonym (SYNONYMS), then a derivational base
+        (SUFFIXES), in each of the families asked for. Any substitute is noted as an approximation."""
+        lem, text = tok.lemma_.lower(), tok.text.lower()
+        for w in dict.fromkeys([lem, text]):
+            for f in families:
+                cs = self.map.candidates(w, f)
+                if cs:
+                    return cs[0].lex_id, f
+        tries = list(SYNONYMS.get(lem, []))
+        for end, add in SUFFIXES:
+            if lem.endswith(end) and len(lem) - len(end) >= 3:
+                tries.append(lem[: -len(end)] + add)
+        for w in tries:
+            for f in families + tuple(x for x in ("adj", "noun", "verb") if x not in families):
+                if f == "verb" and "verb" not in families:
+                    continue
+                cs = self.map.candidates(w, f)
+                if cs:
+                    notes.append(f"'{tok.text}' ≈ '{w}' (no PIE word for '{tok.text}')")
+                    return cs[0].lex_id, f
+        return None, None
 
-    def adj(self, tok, unknown) -> str | None:
-        cs = self.map.candidates(tok.lemma_.lower(), "adj") or self.map.candidates(tok.text.lower(), "adj")
-        if not cs:
+    def noun(self, tok, notes, unknown) -> str | None:
+        lid, _ = self.lookup(tok, ("noun", "adj"), notes)
+        if not lid:
             unknown.append(tok.text)
             return None
-        return cs[0].lex_id
+        self.used.add(tok.i)
+        return lid
+
+    def adj(self, tok, unknown, notes=None) -> str | None:
+        lid, _ = self.lookup(tok, ("adj",), notes if notes is not None else [])
+        if not lid:
+            unknown.append(tok.text)
+            return None
+        self.used.add(tok.i)
+        return lid
 
     def verb(self, lemma: str, tense: str, mood: str, notes, prohibitive: bool = False) -> tuple[str | None, str]:
         """A verb lexeme with the needed cell, and the tense actually used. A prohibitive (neg + IMP) needs a present
-        or aorist stem (the injunctive)."""
+        or aorist stem (the injunctive). A verb with no lexeme of its own tries its SYNONYMS."""
         cs = self.map.candidates(lemma, "verb")
+        if not cs:
+            for w in SYNONYMS.get(lemma, []):
+                cs = self.map.candidates(w, "verb")
+                if cs:
+                    notes.append(f"'{lemma}' ≈ '{w}' (no PIE word for '{lemma}')")
+                    break
         if not cs:
             return None, tense
         want = {"IND": [tense], "IMP": ["IMP"], "SBJV": ["SBJV"], "OPT": ["OPT"]}[mood]
@@ -125,6 +177,7 @@ class Transfer:
     def np_slots(self, tok, role, slots, notes, unknown, num=None) -> int | None:
         """A noun phrase headed by tok (noun, pronoun, proper noun) → slots; returns the head slot's index."""
         low = tok.text.lower()
+        self.used.add(tok.i)
         if tok.pos_ == "PRON":
             if low in PRONOUNS:
                 p, n = PRONOUNS[low]
@@ -149,6 +202,7 @@ class Transfer:
                 return None
             slots.append({"lex_id": lid, "role": role, "num": "PL" if tok.morph.get("Number") == ["Plur"] else "SG",
                           "gender": "n" if tok.lemma_.lower() == "thing" else "m"})
+            self.used.add(a.i)
             return len(slots) - 1
         lid = self.noun(tok, notes, unknown)
         if not lid:
@@ -156,12 +210,14 @@ class Transfer:
         n = num or ("PL" if tok.morph.get("Number") == ["Plur"] else "SG")
         head = len(slots)
         slots.append({"lex_id": lid, "role": role, "num": n})
-        if self.lx.specs.get(lid, {}).get("family") == "adj":       # "friend" = priHós, an adjective as a noun
-            slots[head]["gender"] = "f" if tok.lemma_.lower() in ("woman", "girl", "wife") else "m"
+        if self.lx.specs.get(lid, {}).get("family") == "adj":       # an adjective as a noun: priHós 'friend',
+            # 'truths' ≈ the true (things): neuter for a thing, else by the referent
+            person_noun = tok.lemma_.lower() in ("friend", "woman", "girl", "wife", "man", "child", "enemy")
+            slots[head]["gender"] = ("f" if tok.lemma_.lower() in ("woman", "girl", "wife") else "m") if person_noun else "n"
         for ch in tok.children:
             cl = ch.text.lower()
             if ch.dep_ == "amod" and ch.pos_ == "ADJ" and ch.text.lower() not in IRREGULAR:
-                a = self.adj(ch, unknown)
+                a = self.adj(ch, unknown, notes)
                 if a:
                     slots.append({"lex_id": a, "role": "MOD", "head": head})
             elif ch.dep_ == "poss":
@@ -177,9 +233,11 @@ class Transfer:
                     self.np_slots(ch, "POSS", slots, notes, unknown)
                     slots[-1]["head"] = head
             elif ch.dep_ == "nummod" and cl in NUMERALS:
+                self.used.add(ch.i)
                 slots.append({"lex_id": NUMERALS[cl], "role": "MOD", "head": head})
                 slots[head]["num"] = "DU" if cl == "two" else "PL"
             elif ch.dep_ == "det" and cl in ("this", "these", "that", "those"):
+                self.used.add(ch.i)
                 slots.append({"lex_id": "closed:deictic_ki" if cl in ("this", "these") else "closed:demonstrative_so",
                               "role": "MOD", "head": head})
             elif ch.dep_ == "prep" and ch.text.lower() == "of":
@@ -198,6 +256,7 @@ class Transfer:
         """One verbal or nominal clause (and its coordinated verbs as kʷe clauses)."""
         slots: list[dict] = []
         cl: dict = {"slots": slots}
+        self.used.add(root.i)
         kids = list(root.children)
         aux = [k for k in kids if k.dep_ in ("aux", "auxpass")]
         aux_l = [a.lemma_.lower() for a in aux]
@@ -259,11 +318,13 @@ class Transfer:
                     elif g.dep_ == "pobj":
                         notes.append(f"'{prep} {g.text}' left out (no case rule for '{prep}')")
             elif d == "advmod" and low == "home":            # "go home", "drive the cattle home": a goal
+                self.used.add(k.i)
                 slots.append({"lex_id": "pie-lex-doxm", "role": "GOAL"})
             elif d == "advmod" and low in WH_ADV:
+                self.used.add(k.i)
                 slots.append({"lex_id": WH_ADV[low], "role": "ADV"})
             elif d == "advmod" and low not in ("not", "n't"):
-                notes.append(f"adverb '{k.text}' left out")
+                pass                                     # reported by translate() as left out
             elif d in ("npadvmod", "intj", "appos") and k.pos_ in ("NOUN", "PROPN") and _comma_next_to(k):
                 self.np_slots(k, "VOC", slots, notes, unknown)
             elif d == "conj" and k.pos_ in ("VERB", "AUX"):
@@ -271,7 +332,7 @@ class Transfer:
         if copula and attr:
             a = attr[0]
             if a.pos_ == "ADJ":
-                lid = self.adj(a, unknown)
+                lid = self.adj(a, unknown, notes)
                 if lid:
                     slots.append({"lex_id": lid, "role": "PRED"})
             elif a.pos_ in ("NOUN", "PROPN"):
@@ -318,6 +379,16 @@ class Transfer:
                 out.append({"conj": "kʷe", "slots": extra + [{"lex_id": lid, "role": "V", "verb": v}]})
             else:
                 unknown.append(vtok.text)
+        for k in kids:            # "we hold these truths to be evident", "I want to eat": the clause it governs
+            if k.dep_ in ("ccomp", "xcomp", "advcl") and k.pos_ in ("VERB", "AUX"):
+                sub_subj = any(x.dep_ in ("nsubj", "nsubjpass") for x in k.children)
+                more = self.clause(k, sent, notes, unknown,
+                                   inherit=None if sub_subj or k.lemma_ == "be" else {"tense": tense, "mood": "IND"})
+                for c in more:
+                    for s_ in c["slots"]:
+                        if s_["role"] == "V" and not sub_subj:
+                            s_["verb"]["person"], s_["verb"]["num"] = person, num
+                out += more
         for k in kids:                                    # "…and drank": a coordinated verb, same subject
             if k.dep_ == "conj" and k.pos_ in ("VERB",):
                 more = self.clause(k, sent, notes, unknown, inherit={"tense": tense, "mood": mood})
@@ -332,6 +403,7 @@ class Transfer:
     # ---------------------------------------------------------------- text
     def translate(self, english: str) -> Result:
         doc = nlp()(english)
+        self.used = set()
         notes: list[str] = []
         unknown: list[str] = []
         clauses = []
@@ -353,6 +425,12 @@ class Transfer:
                     c["question"] = True
             cls[0]["english"] = sent.text.strip()
             clauses += cls
+        # every content word that became no slot is reported, never dropped silently
+        skip = {"be", "do", "have", "will", "shall", "may", "let", "not", "to"}
+        left = [t.text for t in doc if t.i not in self.used and t.pos_ in ("NOUN", "PROPN", "VERB", "ADJ", "ADV", "NUM")
+                and t.lemma_.lower() not in skip and t.text not in unknown]
+        if left:
+            notes.append("left out (no rule for how it fits the sentence): " + ", ".join(left))
         if not clauses:
             return Result(english, None, None, None, unknown, notes, ["nothing to translate"])
         plan = {"english": english, "clauses": clauses}

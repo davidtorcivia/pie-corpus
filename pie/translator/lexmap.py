@@ -49,10 +49,13 @@ class Candidate:
     branches: int
     tenses: frozenset       # verbs: PRS PST AOR PRF IMP SBJV OPT (from the admissible cells)
     gender: str | None
+    approx: bool = False    # the gloss is the approximate derived one (root + suffix function), not a dictionary's
+    phrase: bool = False    # the sense is a phrase whose head isn't the meaning ('take a step' for 'take')
 
     def score(self) -> float:
         """Corpus use counts most (reviewed choices), then attestation, minus a step per later sense."""
-        return 2 * math.log1p(self.corpus_uses) + math.log1p(self.branches) - 1.5 * self.sense_rank
+        return (2 * math.log1p(self.corpus_uses) + math.log1p(self.branches) - 1.5 * self.sense_rank
+                - 5 * self.approx - 3 * self.phrase)
 
     def key(self):
         return -self.score()
@@ -126,7 +129,7 @@ class LexMap:
             fam = r["family"]
             if fam not in FAMILY_POS or lx.inadmissible(lid):
                 continue
-            meaning, _ = lx.meaning(lid)
+            meaning, msource = lx.meaning(lid)
             if not meaning:
                 continue
             tenses = frozenset()
@@ -149,7 +152,9 @@ class LexMap:
                 lem = head_lemma(nlp, s)
                 if lem and lem not in seen:
                     seen.add(lem)
-                    by[lem].append(Candidate(lid, fam, rank, uses[lid], branches, tenses, gender))
+                    content = [w for w in re.findall(r"[a-z]+", s) if w not in ("a", "an", "the", "be", "one", "s")]
+                    by[lem].append(Candidate(lid, fam, rank, uses[lid], branches, tenses, gender,
+                                             approx=msource == "derived", phrase=len(content) > 1))
         for v in by.values():
             v.sort(key=Candidate.key)
         return cls(dict(by))

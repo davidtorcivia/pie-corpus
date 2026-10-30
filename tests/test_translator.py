@@ -69,3 +69,13 @@ def test_transfer_builds_the_plan(transfer, english, pie):
 def test_transfer_reports_what_it_cannot_say(transfer):
     r = transfer.translate("The tiger ate the bread.")
     assert set(r.unknown) >= {"tiger"}
+
+
+def test_transfer_never_drops_a_word_silently(transfer):
+    """Owner 2026-10-30: 'We hold these truths to be self evident' came back as one verb. The governed clause is
+    translated, a missing word is replaced by the nearest one the lexicon has and noted, and every content word
+    that is still left out is listed."""
+    r = transfer.translate("We hold these truths to be self evident.")
+    assert len(r.pie.split()) >= 4 and not r.errors
+    notes = " ".join(r.notes)
+    assert "'truths' ≈ 'true'" in notes and "'evident' ≈ 'visible'" in notes and "self" in notes
