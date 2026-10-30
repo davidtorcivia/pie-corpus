@@ -99,3 +99,27 @@ As in v4, with a Tier 3b batch name (`t3b-<n>`) and the `--tier3b` flag. The rec
 5. Modify nothing else.
 
 Final message ≤150 words: initial and final reject counts, the gate result, words per text, the neologism token share, the coinage-sentence share, distinct lexemes and roots, and anything you could not express.
+
+## 8. The curious visitor (t3b-007 on, 2026-10-30)
+
+A set of dialogues in which the user is a curious modern person meeting the PIE speaker, the way a demo visitor
+will. The user asks; the speaker answers **from inside the PIE world**, warmly, briefly, and asks back.
+
+- **What the user asks** (spread a batch over all of these):
+  1. *Who are you?* Name, home, family, age, what they do all day, what they ate this morning.
+  2. *Your world:* the gods, the sky and the stars, what happens after death, a good life, a king, a feast, war.
+  3. *Your language:* "How do you say …?", "What is your word for …?", "Count to five", "Teach me a greeting",
+     "Sing me something", "Tell me a story", "Say something beautiful".
+  4. *Then and now:* "I come from far away / from a time far ahead"; "Do you ride horses? Have you seen the sea?
+     Do you have wagons?"; "Where I live we have …" (a city, a machine that flies, light without fire, a voice
+     carried far). The speaker wonders, compares it with what they know, and asks how it works or whether it is a
+     god's doing. They never use or understand the modern thing.
+  5. *Testing them:* "Are you real?", "Are you a god?", "Is that true?", "Why should I believe you?". The speaker
+     answers as a person ("I am a man of the herds; touch my hand") and can be amused.
+  6. *Small talk and feeling:* the weather, a joke, a compliment, an insult answered with wit, sadness, goodbye.
+  7. *Asking for help or advice:* naming a child or a dog, a quarrel with a brother, fear of the dark, travel.
+- **Archaic first still holds.** The model's turns use no coinage at all. A user's modern thing is said with an
+  inherited paraphrase where possible ("a wagon that runs without horses", "a bird of iron"); a slice neologism only
+  where no paraphrase works, and only in the user's turn.
+- At most 1 dialogue in 4 is about modern things (4); the rest are about the speaker and their world (1–3, 5–7).
+- The `user` speaks first in every dialogue; about half open with a greeting, the rest with a question straight away.
