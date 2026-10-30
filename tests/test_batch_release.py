@@ -82,11 +82,11 @@ def test_bad_gate_report(tmp_path, bad):
 
 def test_excluded_population_does_not_control_holdouts(tmp_path, monkeypatch):
     import pie.export as ex
-    from pie.holdout import held_roots
-    rid = sorted(held_roots())[0]
+    lid = next(f'lex-test-{i}' for i in range(1000) if ex.eval_drill(f'lex-test-{i}'))   # a drill-eval lexeme
+    rid = 'pie-root-test'
     rec = {'id': 't3-b-1', 'pie': 'test', 'english': 'test', 'gloss': 'test', 'tokens': [{'form': 'test', 'root_id': rid}]}
     candidate(tmp_path, gate='FAIL', records=[rec])
-    task = {'task': 'inflect', 'source_id': 'lex-test', 'root_id': rid}
+    task = {'task': 'inflect', 'source_id': lid, 'root_id': rid}
     monkeypatch.setattr(ex, 'inflection_tasks', lambda lx, rng: [task])
     monkeypatch.setattr(ex, 'cognate_tasks', lambda lx: [])
     default = ex.build(root=tmp_path)
@@ -95,9 +95,9 @@ def test_excluded_population_does_not_control_holdouts(tmp_path, monkeypatch):
     assert 'gate FAIL: diversity' in default['batch_eligibility'][0]['reasons']
     experimental = ex.build(root=tmp_path, experimental_batches=True)
     assert experimental['train_records'] == [rec]
-    assert task in experimental['train_tasks']
-    assert len(experimental['train_tasks']) == 4
-    assert experimental['eval_tasks'] == []
+    assert task not in experimental['train_tasks']          # the drill split ignores which records are admitted
+    assert len(experimental['train_tasks']) == 3
+    assert experimental['eval_tasks'] == [dict(task, seen_in_train=False)]
 
 
 def test_shipped_migration():

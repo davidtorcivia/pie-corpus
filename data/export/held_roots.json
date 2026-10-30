@@ -195,7 +195,8 @@
   "pie-root-tpelH-fortification"
  ],
  "old_protected_count": 88,
- "held": [
+ "held": [],
+ "held_before_2026-10-30": [
   "pie-root-bhel-henbane",
   "pie-root-bhelgj-balk",
   "pie-root-bherdh-plunder",
@@ -343,5 +344,6 @@
   "pie-root-weng-bow",
   "pie-root-werp-turn_back_and-2",
   "pie-root-wred-become_make_soft-2"
- ]
+ ],
+ "dropped": "2026-10-30, owner: no root family is held out of training. The benchmark's inflection and cognate eval is a lexeme-level drill split instead (pie.export.eval_drill); every word stays in the training texts."
 }

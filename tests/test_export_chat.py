@@ -118,7 +118,7 @@ def test_pie_only_conversations(exported):
     for e in exported["train"]:
         m = e["meta"]
         if m["task"] == "pie_dialogue":
-            assert "Proto-Indo-European" in e["messages"][0]["content"] or "PIE" in e["messages"][0]["content"]
+            assert "Proto-Indo-European" in e["messages"][0]["content"]
             turns = [x["content"] for x in e["messages"][1:]]
             # the turns are the record's PIE, in order: the whole minus at most a dropped trailing question, or a
             # window of its exchanges
@@ -127,7 +127,7 @@ def test_pie_only_conversations(exported):
             assert m["split"] in ("speaker", "english_quotes", "sentence_qa") and m["genre"] in ec.DIALOGUE_GENRES
         elif m["task"] == "en_dialogue":
             r = recs[m["source_id"]]
-            assert e["messages"][0]["content"] == ec.MODE_SYSTEM[m["mode"]]
+            assert e["messages"][0]["content"] == ec.system(f"{m['source_id']}|{m['mode']}", ec.MODE_SYSTEM[m["mode"]])
             en = ec.align_english(r)[0]
             for x in e["messages"][2::2]:            # the assistant always speaks PIE
                 pie, _, eng = x["content"].partition("\nEnglish: ")
@@ -363,7 +363,7 @@ def test_english_modes_deterministic():
     assert [e["meta"]["mode"] for e in allm] == ["pie_pie", *ec.EN_MODES]
     assert all(e["meta"]["chat_eval"] for e in allm)
     en_pie = allm[1]["messages"]
-    assert en_pie[0] == {"role": "system", "content": "Reply in Proto-Indo-European."}
+    assert en_pie[0]["content"].endswith(" The user writes in English. Reply in your language.")
     assert [m["content"] for m in en_pie[1:]] == ["Who are you?", "h₁ésmi.", "Where are you going?", "h₁éymi wóyḱom."]
     assert allm[2]["messages"][2]["content"] == "h₁ésmi.\nEnglish: I am."
     mixed = allm[3]
@@ -435,13 +435,13 @@ def test_app_items_partition_sentences_with_sliced_gloss():
         for e in items:
             m, a = e["meta"], e["messages"][-1]["content"]
             if m["mode"] == "en_pie":
-                assert e["messages"][0]["content"] == ec.APP_SYSTEM
+                assert e["messages"][0]["content"].endswith(" " + ec.APP_SYSTEM)
                 f = ec.parse_app(a)
                 pies.append(f["PIE"]), engs.append(e["messages"][1]["content"])
                 assert len(f["Gloss"].split()) == len(f["PIE"].split())
                 assert ("wiHrós" in f["PIE"]) == ("wiHrós" in f.get("Notes", ""))
             else:
-                assert e["messages"][0]["content"] == ec.APP_INVERSE_SYSTEM
+                assert e["messages"][0]["content"].endswith(" " + ec.APP_INVERSE_SYSTEM)
                 f = ec.parse_app(a)
                 pies.append(e["messages"][1]["content"]), engs.append(f["English"])
             assert m["sentences"] == len(ec.sentences(pies[-1])) and m["unit"] == ("sentence" if m["sentences"] == 1
@@ -468,7 +468,7 @@ def test_app_items_partition_sentences_with_sliced_gloss():
     # the same assistant turns, in text order, each once
     flat = lambda xs: [m["content"] for e in xs for m in e["messages"] if m["role"] == "assistant"]
     assert flat(sess) == flat(plain)
-    assert {e["messages"][0]["content"] for e in ss} == {ec.APP_SYSTEM}
+    assert all(e["messages"][0]["content"].endswith(" " + ec.APP_SYSTEM) for e in ss)
     assert all(ec.assistant_pie(e) == " ".join(ec.parse_app(m["content"])["PIE"] for m in e["messages"][2::2])
                for e in ss)
     # a gloss without one word per PIE word is left out, never guessed
@@ -595,7 +595,8 @@ def test_turns_are_conversational(exported):
     tr = t["train"]["multi_turn"]
     assert tr["by_source"]["dialogue"] > 200 and tr["by_source"]["chained"] > 0
     assert set(tr["by_source"]) <= {"dialogue", "chained"}
-    assert t["train_mix"]["multi_turn"]["examples"] == tr["examples"]     # every multi-turn example is kept
+    # every multi-turn dialogue is kept (conversation anchors the mix); chained translator sessions are sampled
+    assert t["train_mix"]["multi_turn"]["by_source"]["dialogue"] == tr["by_source"]["dialogue"]
     assert t["train"]["user_turns"]["pie_dialogue/pie_pie"]["4+"]
 
 
@@ -615,19 +616,26 @@ def test_mix_and_train_mix(exported):
     tr = s["train"]
     assert set(tr["groups"]) == set(ec.TARGET_MIX)
     assert sum(g["examples"] for g in tr["groups"].values()) == len(exported["train"])
-    assert tr["english_input_share_of_conversation"] > 0.6     # PIE -> English stays small in the chat data
-    assert tr["groups"]["english_input"]["examples"] > tr["groups"]["pie_only_chat"]["examples"] * 5
-    assert ec.TARGET_MIX == {"english_input": 0.50, "pie_to_english": 0.10, "pie_only_chat": 0.15, "grammar": 0.25}
+    assert ec.TARGET_MIX == {"conversation": 0.20, "translation": 0.50, "grammar": 0.30, "comparative": 0.0}
     tm = exported["train_mix"]
     ids = {e["meta"]["id"] for e in exported["train"]}
     assert {e["meta"]["id"] for e in tm} <= ids and len({e["meta"]["id"] for e in tm}) == len(tm)
-    eng = [e for e in tm if ec.mix_group(e) == "english_input"]
-    assert len(eng) == tr["groups"]["english_input"]["examples"]          # every English-input example
-    # each other group: its target share of english_input / TARGET, or all it has (no example repeated); a
-    # group short of its target (pie_only_chat today) leaves English input above its 50%
-    total = len(eng) / ec.TARGET_MIX["english_input"]
+    conv = [e for e in tm if ec.mix_group(e) == "conversation"]
+    assert len(conv) == tr["groups"]["conversation"]["examples"]          # every conversation example
+    total = len(conv) / ec.TARGET_MIX["conversation"]
     for g, target in ec.TARGET_MIX.items():
         n = sum(ec.mix_group(e) == g for e in tm)
-        assert n == (len(eng) if g == "english_input" else min(tr["groups"][g]["examples"], round(total * target)))
-    assert len(eng) / len(tm) >= ec.TARGET_MIX["english_input"]
-    assert s["train_mix"]["examples"] == len(tm) and s["train_mix"]["english_input_share"] > 0.45
+        assert n == (len(conv) if g == "conversation" else min(tr["groups"][g]["examples"], round(total * target)))
+    assert not any(e["meta"]["task"] == "cognates_to_pie" for e in tm)  # a speaker doesn't know the daughters
+    assert s["train_mix"]["examples"] == len(tm) and s["train_mix"]["conversation_share"] >= 0.19
+
+
+def test_every_system_prompt_is_the_speaker(exported):
+    """Owner 2026-10-30: the model is a human speaker of PIE: every system prompt opens with the persona, the demo's
+    exact PERSONA in most examples, and nothing calls it a machine or a linguist."""
+    sys_ = [e["messages"][0]["content"] for e in exported["train"]]
+    assert all(any(x.startswith(p) for p in (ec.PERSONA, *ec.PERSONA_VARIANTS)) for x in sys_)
+    assert sum(x.startswith(ec.PERSONA) for x in sys_) > 0.7 * len(sys_)
+    assert not any(w in x.lower() for x in sys_ for w in ("machine", "linguist", "expert", "language model"))
+    gone = set(json.loads((ROOT / "data/export/persona_excluded.json").read_text("utf-8"))["records"])
+    assert gone and not gone & {e["meta"].get("source_id") for e in exported["train"] + exported["eval"]}

@@ -11,14 +11,17 @@ def _universe():
     return {e["root_id"] for e in Lexicon.load().entries.values() if e.get("root_id")}
 
 
-def test_root_holdout_is_frozen_and_about_ten_percent():
+def test_no_root_family_is_held_out():
+    """Owner 2026-10-30: no vocabulary is withheld from training; the drill split replaces the family hold-out."""
+    from pie.export import EVAL_DRILL_SHARE, eval_drill
     from pie.holdout import held_roots
-    universe = _universe()
-    held = sorted(r for r in universe if eval_root(r))
-    assert held == sorted(held_roots())          # eval_root is membership in the frozen list
-    assert 0.08 * len(universe) < len(held) < 0.12 * len(universe)
-    assert not eval_root(None)
-    assert not eval_root("pie-root-not-in-the-list")   # a family outside the frozen list is not held
+    assert held_roots() == frozenset()
+    assert not any(eval_root(r) for r in _universe())
+    from pie.realize import Lexicon
+    ids = list(Lexicon.load().entries)
+    share = sum(eval_drill(i) for i in ids) / len(ids)
+    assert 0.6 * EVAL_DRILL_SHARE < share < 1.4 * EVAL_DRILL_SHARE
+    assert not eval_drill(None) and eval_drill(ids[0]) == eval_drill(ids[0])
 
 
 def test_protected_families_are_never_held_out():

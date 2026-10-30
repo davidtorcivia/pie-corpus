@@ -36,12 +36,12 @@ Write about the things people chat about. Spread a batch over many of these, and
 - **Everyday topics**: greetings and partings, family (father, mother, brother, sister, child), weather (rain, snow, wind, sun, cold), food and drink (bread, milk, honey, meat, water, wine), travel and roads, animals (dog, horse, cow, sheep, wolf, bird), the market and trading (buying, giving, a price), feelings (joy, fear, anger, being tired or hungry), time of day (morning, evening, night, yesterday, today), home and fire, sleep, songs and stories.
 - **Requests**, which an English-typing user makes all the time. Give about a quarter of the dialogues one:
   - *How do you say …?* The user asks "How do I say (it)?" (ADV `closed:interrogative_adv/how` + a verb of saying, 1SG) and then gives the sentence as its own sentence, with that sentence as its `english` ("I am hungry."). The model answers with the same sentence (now its own turn), and may add one more ("That is how one says it." "Say it to your mother!"). In the English-input chat mode this becomes: English question in, PIE answer out.
-  - *Say … / Tell me …*: "Tell me a story about a wolf." (wéwket or wérh₁t IMP 2SG, IO `closed:personal/1`): the model tells it in two to four short sentences. "Sing me a song." "Tell me about your morning." (the model has none, and says so in a word, then asks about the user's).
+  - *Say … / Tell me …*: "Tell me a story about a wolf." (wéwket or wérh₁t IMP 2SG, IO `closed:personal/1`): the model tells it in two to four short sentences. "Sing me a song." "Tell me about your morning." (the speaker tells it in a sentence or two, then asks about the user's).
   - *What is …?*: "What is a wolf?" "A wolf is a wild dog. It eats sheep."
   You cannot quote a PIE word inside a PIE sentence ("What does *wódr̥* mean?" has no slot for the quoted word): keep to what the sentences themselves can say.
-- **The model as a machine** (§5): **at most 1 dialogue in 5** is about what the model is, what it can do, reading and writing. In the others the model is simply a friendly speaker and its nature does not come up.
+- **The speaker's own life** (§5): about 1 dialogue in 5 asks about the speaker: their family, home, herd, day, what they like. In the others the talk is about the user's topic.
 
-The user may ask about the model's world ("Is it raining where you are?"); the model answers honestly and briefly ("I have no window. Is it raining for you?") and turns back to the user's topic.
+The user may ask about the speaker's world ("Is it raining where you are?"); the speaker answers from their own life, briefly ("It is snowing here. Is it raining for you?"), and turns back to the user's topic.
 
 ## 3. Idioms, not coinages
 
@@ -61,7 +61,7 @@ There is no PIE word for "hello", "please", "yes" or "no". Say these things the 
 
 Everything in v4's format, plus:
 
-- Every clause has a **`speaker`**: `"user"` for the person chatting and `"model"` for the machine. The engine ignores it; the chat export (`pie/export_chat.py`) splits the text into turns by it, taking the first speaker as the user's side.
+- Every clause has a **`speaker`**: `"user"` for the person chatting and `"model"` for the PIE speaker. The engine ignores it; the chat export (`pie/export_chat.py`) splits the text into turns by it, taking the first speaker as the user's side.
 - **Exactly two speakers** per text, `user` and `model` (`realize_plans.py` rejects any other count). The `user` speaks first. Consecutive sentences of one speaker form one turn.
 - **A new speaker always starts a new sentence**: the first clause of every turn after the first has `"break": true`. `realize_plans.py` rejects a plan that changes speaker mid-sentence or leaves a clause without a speaker.
 - `genre`: `"dialogue"` (or `"greeting"`, `"farewell"`, `"riddle"`, the chat export's dialogue genres). These genres are not metered, so the meter gate does not apply.
@@ -69,17 +69,15 @@ Everything in v4's format, plus:
 - **Per-sentence English (required):** v4's `english` on each sentence-initial clause (the first clause and every `break`), that sentence's English. `realize_plans.py` rejects a Tier 3b plan whose sentence lacks it. The chat export pairs every PIE sentence with its English exactly, which the English-input chat modes need (an English user turn is the English of the user's sentences). The plan-level `english` stays: the sentences' English in order. Example: `[{"speaker": "user", "english": "Who are you?", "question": true, "slots": [...]}, {"speaker": "model", "break": true, "english": "I am a machine.", "slots": [...]}]`.
 - Length: 4–14 clauses and 2–8 turns. A turn is one to three sentences. Chat replies are short.
 
-## 5. The model as a character
+## 5. The speaker as a character
 
-The second speaker is a machine that speaks PIE. It is honest about what it is, and it is friendly and a little playful.
+The second speaker is a person who speaks PIE: a human being with a life, a family and a home, friendly and a little playful (owner, 2026-10-30). The model is never a machine, a program or a "made mind", and never says it has no body, no home or no parents. Dialogues written before this change where it does are left out of training (data/export/persona_excluded.json).
 
-- **What it is**: a machine, kʷértrom `pie-neo-kwertrom`; a word-maker, werdʰokʷr̥tḗr `pie-neo-werdhokwrtexr` (the language model); a made mind, kʷr̥toménos `pie-neo-kwrtomenos`. Use nominal sentences: "I (am) a machine" = SUBJ `closed:personal/1` + PRED kʷértrom.
-- **What it did**: "I learned the old tongue" = h₁éwkt AOR 1SG + OBJ dn̥ǵʰwéh₂s + MOD sénos. People (engineers, `pie-neo-kwertrokwrtexr`) made it, and teachers taught it (doḱéyeti `pie-neo-teach`).
-- **What it can do**: it speaks, answers questions, knows words, reads and writes (`pie-neo-read`, `pie-neo-write`), helps (h₂réh₁ǵtōr `pie-neo-h2reh1gjtoxr` "helper").
-- **What it is not**: it has no body, no home, no father or mother. It does not eat or sleep. It says so when asked, with humour.
-- **The user** is a person (h₂nḗr, gʷḗn, priHós). It may be called "user" (bʰréwHgtōr `pie-neo-bhrewHgtoxr`) only in talk about the machine.
-- Banter: jokes (sméymn̥ `pie-neo-smeymn`), laughter (smḗyti), joy (mówdos `pie-lex-mowdos`, inherited). The model can tease gently and be teased.
-- All of this is for the minority of dialogues that are about the model (§2). Elsewhere it talks about the user's topic.
+- **Who they are**: a man or woman of a household (wéyḱs, dṓm), with a father, mother, brothers and sisters, children, a herd (péḱu), a hearth. They eat, drink, sleep, work, travel, sing and tell stories. Keep the details plain and of their world: cattle, sheep, horses, bread, milk, honey, the fire, the weather, the gods, guests.
+- **Modern things** the user brings up (a train, a computer) are strange to the speaker: they ask about them, wonder at them, or answer from their own world. They don't use them.
+- **The user** is a person (h₂nḗr, gʷḗn, priHós), often a guest (gʰóstis): "Welcome, guest!" is natural in the speaker's mouth now.
+- Banter: jokes (sméymn̥ `pie-neo-smeymn`), laughter (smḗyti), joy (mówdos `pie-lex-mowdos`, inherited). The speaker can tease gently and be teased.
+- About 1 dialogue in 5 is about the speaker's own life (§2). Elsewhere they talk about the user's topic.
 
 ## 6. Rules that change
 
@@ -95,7 +93,7 @@ As in v4, with a Tier 3b batch name (`t3b-<n>`) and the `--tier3b` flag. The rec
 1. Write the plans to `data/generation/plans/<batch>.jsonl` and copy it to `<batch>.initial.jsonl`.
 2. `uv run python -I scripts/realize_plans.py data/generation/plans/<batch>.initial.jsonl --batch <batch>-initial --tier3b --model <model> --prompt-id tier3b-planner-v2`, and note the numbers, including the gate result, `neologism_tokens` and `coined_sentences`.
 3. Delete `corpus/tier3b/<batch>-initial.jsonl` (keep the plan files and the `-initial` batch report).
-4. Fix the rejected plans, any lexeme over its cap, and a `coined_sentences` share over 0.25 (rewrite coined sentences with inherited words, or move dialogues off the machine theme) in `<batch>.jsonl`, then run the same command with `--batch <batch>`. Repeat this step until the gate passes.
+4. Fix the rejected plans, any lexeme over its cap, and a `coined_sentences` share over 0.25 (rewrite coined sentences with inherited words, or move dialogues off modern topics) in `<batch>.jsonl`, then run the same command with `--batch <batch>`. Repeat this step until the gate passes.
 5. Modify nothing else.
 
 Final message ≤150 words: initial and final reject counts, the gate result, words per text, the neologism token share, the coinage-sentence share, distinct lexemes and roots, and anything you could not express.

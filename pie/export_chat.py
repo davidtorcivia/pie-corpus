@@ -37,7 +37,7 @@ train_tasks/eval_tasks, texts from train_records/eval_records. A paradigm goes t
 inflection tasks went to (the same held-family and project-reconstruction decisions), so it never needs its
 own predicate. The leakage check (leakage_report) fails the export when an eval item reappears in train.
 
-Mix: mix_table groups the kinds (english_input, pie_to_english, pie_only_chat, grammar) and gives each split's
+Mix: mix_table groups the kinds (conversation, translation, grammar, comparative) and gives each split's
 shares and the sampling weights that reach TARGET_MIX; chat/train_mix.jsonl (select_mix) is a subset of train
 in those proportions.
 """
@@ -74,28 +74,52 @@ def _pick(key: str, n: int) -> int:
     return zlib.crc32(key.encode("utf-8")) % n
 
 
-TASK_SYSTEM = [
-    "You are an expert in reconstructed Proto-Indo-European (PIE).",
-    "You are a historical linguist specializing in Proto-Indo-European.",
-    "You know Proto-Indo-European (PIE) grammar, vocabulary and reconstruction well. Answer precisely.",
+# The model is a speaker of Proto-Indo-European (owner, 2026-10-30): one identity in every system prompt, human by
+# omission (never a machine, never a linguist). PERSONA is the demo's own system prompt and opens most examples
+# (persona()); the close variants keep the model from hanging on one exact string. Drills are a teacher going over
+# the speaker's own grammar.
+PERSONA = "You are a speaker of Proto-Indo-European. You think in it and answer in it."
+PERSONA_VARIANTS = [
+    "Proto-Indo-European is your own language. You think in it and answer in it.",
+    "You speak Proto-Indo-European; it is your mother tongue.",
 ]
+PERSONA_SHARE = 0.8     # of the examples of each kind, by crc32: the exact PERSONA; the rest a variant
+
+
+def persona(key: str) -> str:
+    n = _pick(key + "|persona", 100)
+    return PERSONA if n < PERSONA_SHARE * 100 else PERSONA_VARIANTS[n % len(PERSONA_VARIANTS)]
+
+
+TEACHER = [
+    "A teacher is going over the grammar of your language with you. Answer exactly.",
+    "Your teacher is drilling you on the forms and meaning of your language. Answer precisely.",
+    "A teacher is testing how well you know your own language. Answer exactly, in the form asked.",
+]
+COGNATE_TEACHER = ("A teacher shows you words from languages that descend from yours and asks which word of your "
+                   "language they come from.")
 
 PIE_ONLY_SYSTEM = [
-    "Answer only in Proto-Indo-European. Do not use English.",
-    "You speak Proto-Indo-European. Reply only in PIE.",
-    "Converse in reconstructed Proto-Indo-European only; every reply must be in PIE.",
+    "Reply only in your language.",
+    "Answer in your own language, never in English.",
+    "Every reply is in your language.",
 ]
 
 CONTINUATION_SYSTEM = [
-    "Continue the Proto-Indo-European text the user begins. Write only in PIE.",
-    "You compose in Proto-Indo-European. Carry on the text you are given, in PIE only.",
+    "Carry on the text the user begins, in your language only.",
+    "Continue the text you are given, in your own language.",
 ]
 
-BILINGUAL_SYSTEM = ("The user writes in English. Reply in Proto-Indo-European, then give an English translation "
+BILINGUAL_SYSTEM = ("The user writes in English. Reply in your language, then give an English translation "
                     "of your reply on its own line beginning \"English:\".")
-EN_PIE_SYSTEM = "Reply in Proto-Indo-European."
-MIXED_SYSTEM = "The user may write in English or in Proto-Indo-European. Always reply in Proto-Indo-European."
+EN_PIE_SYSTEM = "The user writes in English. Reply in your language."
+MIXED_SYSTEM = "The user may write in English or in your language. Always reply in your language."
 MODE_SYSTEM = {"en_pie": EN_PIE_SYSTEM, "en_pie_gloss": BILINGUAL_SYSTEM, "mixed": MIXED_SYSTEM}
+
+
+def system(key: str, instruction: str | None = None) -> str:
+    """The persona (persona()) followed by the kind's instruction."""
+    return persona(key) + (" " + instruction if instruction else "")
 
 TASK_TEMPLATES = {
     "translate_en_pie": [
@@ -180,8 +204,8 @@ def _style_line(style: str | None) -> str:
         return ""
     if style.startswith("scholarly: "):
         work = style[len("scholarly: "):].replace(" (normalized notation)", "")
-        return (f" The PIE follows the scholarly reconstruction {work}, normalized to the project's notation.")
-    return " The PIE follows the project's handbook convention."
+        return (f" Write it as in the scholarly reconstruction {work}, in the project's notation.")
+    return " Write it in the project's handbook convention."
 
 
 # ---------------------------------------------------------------- helpers
@@ -239,15 +263,15 @@ def task_chat(t: dict, rec: dict | None) -> dict:
         user = tpls[i].format(lemma=lemma, tag=tag, long=describe_features(tag))
     else:
         user = tpls[i].format(x=x)
-    system = TASK_SYSTEM[_pick(key + "|sys", len(TASK_SYSTEM))]
+    sysp = system(key, COGNATE_TEACHER if kind == "cognates_to_pie" else TEACHER[_pick(key + "|sys", len(TEACHER))])
     if kind in ("translate_en_pie", "translate_pie_en", "gloss"):
-        system += _style_line(t.get("style"))
+        sysp += _style_line(t.get("style"))
     extra = {k: t.get(k) for k in TASK_FLAGS + EVAL_KEYS}
     meta = _meta(kind, t.get("source_id"), rec, template=i, **extra)
     for k in ("accent", "coined"):       # the task's own flag wins (inflection targets are not records)
         if t.get(k):
             meta[k] = t[k]
-    return {"messages": _msgs(system, ("user", user), ("assistant", t["output"])), "meta": meta}
+    return {"messages": _msgs(sysp, ("user", user), ("assistant", t["output"])), "meta": meta}
 
 
 def _verb_block(cell: str) -> str | None:
@@ -307,10 +331,10 @@ def paradigm_chat(p: dict, inflect_flags: dict) -> dict:
     key = f"paradigm|{p['source_id']}"
     i = _pick(key, len(tpls))
     user = tpls[i].format(lemma=p["lemma"], what=p["what"], what_plain=p["what_plain"], verb=p["verb"])
-    system = TASK_SYSTEM[_pick(key + "|sys", len(TASK_SYSTEM))]
+    sysp = system(key, TEACHER[_pick(key + "|sys", len(TEACHER))])
     meta = _meta("paradigm", p["source_id"], None, template=i, block=p["block"], root_id=p["root_id"],
                  **inflect_flags)
-    return {"messages": _msgs(system, ("user", user), ("assistant", p["output"])), "meta": meta}
+    return {"messages": _msgs(sysp, ("user", user), ("assistant", p["output"])), "meta": meta}
 
 
 def paradigm_chats(lx, tasks: list[dict]) -> list[dict]:
@@ -520,13 +544,12 @@ def en_dialogue(rec: dict, turns, en: list[str], sents: list[str], mode: str, me
     meta = _meta("en_dialogue", rec["id"], rec, mode=mode, split=method, align=align, turns=len(turns),
                  user_langs=langs if mode == "mixed" else None, dropped_trailing=dropped or None,
                  window=list(window) if window else None, **extra)
-    return {"messages": _msgs(MODE_SYSTEM[mode], *out), "meta": meta}
+    return {"messages": _msgs(system(f"{rec['id']}|{mode}", MODE_SYSTEM[mode]), *out), "meta": meta}
 
 
 def pie_dialogue(rec: dict, turns, sents: list[str], method: str, dropped: int,
                  window: tuple[int, int] | None = None, **extra) -> dict:
-    system = PIE_ONLY_SYSTEM[_pick(rec["id"] + "|sys", len(PIE_ONLY_SYSTEM))]
-    msgs = _msgs(system, *[(r, " ".join(sents[i] for i in ix)) for r, ix in turns])
+    msgs = _msgs(system(rec["id"], PIE_ONLY_SYSTEM[_pick(rec["id"] + "|sys", len(PIE_ONLY_SYSTEM))]), *[(r, " ".join(sents[i] for i in ix)) for r, ix in turns])
     return {"messages": msgs, "meta": _meta("pie_dialogue", rec["id"], rec, mode="pie_pie", split=method,
                                             turns=len(turns), dropped_trailing=dropped or None,
                                             window=list(window) if window else None, **extra)}
@@ -689,7 +712,7 @@ def demo_chats(seeds: list[dict], train_records: list[dict], lx, skipped: collec
             skipped[why] += 1
             continue
         meta = _meta("demo_chat", f"demo:{sd['id']}", None, mode=mode, seed=sd["id"], turns=len(turns), **flags)
-        out.append({"messages": _msgs(MODE_SYSTEM[mode], *turns), "meta": meta})
+        out.append({"messages": _msgs(system(f"demo:{sd['id']}|{mode}", MODE_SYSTEM[mode]), *turns), "meta": meta})
     return out
 
 
@@ -731,8 +754,8 @@ def continuation_chats(records: list[dict]) -> list[dict]:
         k = max(1, round(len(parts) * 0.4))
         i = _pick(sid + "|cont", len(CONTINUATION_TEMPLATES))
         user = CONTINUATION_TEMPLATES[i].format(x=" ".join(parts[:k]), genre=CONTINUATION_GENRES[genre])
-        system = CONTINUATION_SYSTEM[_pick(sid + "|sys", len(CONTINUATION_SYSTEM))]
-        out.append({"messages": _msgs(system, ("user", user), ("assistant", " ".join(parts[k:]))),
+        sysp = system(sid, CONTINUATION_SYSTEM[_pick(sid + "|sys", len(CONTINUATION_SYSTEM))])
+        out.append({"messages": _msgs(sysp, ("user", user), ("assistant", " ".join(parts[k:]))),
                     "meta": _meta("continuation", sid, rec, template=i, opening_units=k, units=len(parts),
                                   seen_in_train=rec.get("seen_in_train") if len(units) == 1 else None)})
     return out
@@ -740,8 +763,8 @@ def continuation_chats(records: list[dict]) -> list[dict]:
 
 # ---------------------------------------------------------------- translator (translate_app)
 
-APP_SYSTEM = "Translate English into Proto-Indo-European. Give the PIE, then a word-by-word gloss."
-APP_INVERSE_SYSTEM = "Translate Proto-Indo-European into English. Give the English, then a word-by-word gloss."
+APP_SYSTEM = "Translate the user's English into your language, then gloss it word by word."     # after persona()
+APP_INVERSE_SYSTEM = "Translate the user's words from your language into English, then gloss them word by word."
 APP_CHUNK = (1, 1, 2, 3)        # sentences per item, by crc32: half sentence-level, half short paragraphs
 APP_INVERSE_EVERY = 5           # one item in five (crc32) is the inverse PIE -> English mode
 APP_SHORT = 3                   # an unaligned record is one item when it has at most this many sentences
@@ -874,9 +897,9 @@ def app_chats(records: list[dict], stats: collections.Counter, tasks: dict[str, 
             for mode in modes:
                 whole = len(rs) == 1 and n == len([u for u in units if u[4] is rec])
                 if mode == "en_pie":
-                    msgs = _msgs(APP_SYSTEM, ("user", eng), ("assistant", app_format(pie, gloss, _coined_note(toks))))
+                    msgs = _msgs(system(f"{sid}|{pos}", APP_SYSTEM), ("user", eng), ("assistant", app_format(pie, gloss, _coined_note(toks))))
                 else:
-                    msgs = _msgs(APP_INVERSE_SYSTEM, ("user", pie), ("assistant", app_inverse_format(eng, gloss)))
+                    msgs = _msgs(system(f"{sid}|{pos}", APP_INVERSE_SYSTEM), ("user", pie), ("assistant", app_inverse_format(eng, gloss)))
                 t = tasks.get(rec["id"]) or {}
                 extra = {"acceptable": t.get("acceptable") if whole and mode == "en_pie" else None}
                 tv = t.get("token_variants")
@@ -957,7 +980,7 @@ def app_sessions(sid: str, items: list[dict], stats: collections.Counter, limit:
                     meta[k] = v
             if len(srcs) > 1:
                 meta["source_ids"] = sorted(srcs)
-            out.append({"messages": _msgs(APP_SYSTEM, *turns), "meta": meta})
+            out.append({"messages": _msgs(system(f"session|{sid}|{made}", APP_SYSTEM), *turns), "meta": meta})
             stats[f"session:{n}"] += 1
             made += 1
             j += n
@@ -1135,14 +1158,17 @@ def self_overlap(train: list[dict]) -> dict:
 
 
 ENGLISH_INPUT = ("translate_en_pie", "translate_app/en_pie", "app_session", "en_dialogue", "demo_chat")
+# Conversation is the model's purpose and sets the mix's size (select_mix); translation is practice, not the
+# product (owner, 2026-10-30: the translator app is not this model). cognates_to_pie stays in chat/train.jsonl but
+# not in the mix: a speaker doesn't know the daughter languages.
 MIX_GROUPS = {
-    "english_input": ENGLISH_INPUT,
-    "pie_to_english": ("translate_pie_en", "translate_app/pie_en"),
-    "pie_only_chat": ("pie_dialogue", "continuation"),
-    "grammar": ("gloss", "inflect", "paradigm", "cognates_to_pie"),
+    "conversation": ("en_dialogue", "demo_chat", "pie_dialogue", "continuation"),
+    "translation": ("translate_en_pie", "translate_app/en_pie", "app_session", "translate_pie_en", "translate_app/pie_en"),
+    "grammar": ("gloss", "inflect", "paradigm"),
+    "comparative": ("cognates_to_pie",),
 }
 # the recommended sampling mix (export/README.md "Mix"): share of training examples per group
-TARGET_MIX = {"english_input": 0.50, "pie_to_english": 0.10, "pie_only_chat": 0.15, "grammar": 0.25}
+TARGET_MIX = {"conversation": 0.20, "translation": 0.50, "grammar": 0.30, "comparative": 0.0}
 
 
 def mix_key(ex: dict) -> str:
@@ -1176,12 +1202,9 @@ def mix_table(exs: list[dict], tokens: dict | None = None) -> dict:
         row["target_share"] = TARGET_MIX[g]
         row["sampling_weight"] = round(TARGET_MIX[g] / row["share"], 3) if row["share"] else None
         out["groups"][g] = row
-    out["english_input_share"] = out["groups"]["english_input"]["share"]
-    if tt:
-        out["english_input_token_share"] = out["groups"]["english_input"]["token_share"]
-    conv = [e for e in exs if mix_group(e) != "grammar"]
-    out["english_input_share_of_conversation"] = round(
-        sum(mix_group(e) == "english_input" for e in conv) / len(conv), 4) if conv else 0.0
+    out["conversation_share"] = out["groups"]["conversation"]["share"]
+    eng = sum(mix_key(e) in ENGLISH_INPUT for e in exs)
+    out["english_input_share"] = round(eng / len(exs), 4) if exs else 0.0
     neo = sum(e["meta"].get("neologism") is True for e in exs)
     out["tier3b_examples"] = neo
     out["tier3b_example_share"] = round(neo / len(exs), 4) if exs else 0.0
@@ -1190,13 +1213,13 @@ def mix_table(exs: list[dict], tokens: dict | None = None) -> dict:
 
 def select_mix(train: list[dict]) -> list[dict]:
     """chat/train_mix.jsonl: a subset of train in the TARGET_MIX proportions, without repeating an example (so
-    the self-overlap cap holds). Every English-input example is kept and sets the size (english_input is
-    TARGET_MIX's share of it); every other group keeps that size times its target share (or all it has), the
-    ones with the lowest crc32 of their content, in train order."""
+    the self-overlap cap holds). Every conversation example is kept and sets the size (conversation is TARGET_MIX's
+    share of it); every other group keeps that size times its target share (or all it has), the ones with the
+    lowest crc32 of their content, in train order."""
     by = collections.defaultdict(list)
     for e in train:
         by[mix_group(e)].append(e)
-    total = len(by["english_input"]) / TARGET_MIX["english_input"]
+    total = len(by["conversation"]) / TARGET_MIX["conversation"]
     keep: set[int] = set()
     for g, t in TARGET_MIX.items():
         n = min(len(by[g]), round(total * t))

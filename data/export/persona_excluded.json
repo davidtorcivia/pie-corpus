@@ -1,0 +1,22 @@
+{
+ "generated": "2026-10-30",
+ "by": "owner decision, applied in pie.export.build",
+ "why": "The model is a human speaker of PIE (owner, 2026-10-30: \"remove any line saying they are a machine\"). These Tier 3b dialogues (brief-3b §5, the model as a machine) are left out of every split. Whole records, not lines: a dialogue with its machine turns cut out no longer coheres. Found by the machine neologisms (kʷértrom, werdʰokʷr̥tḗr, kʷr̥toménos, …) and an English search (machine, made mind, engineers made me, I do not eat/sleep, I have no home).",
+ "records": [
+  "t3-t3b-001-00001",
+  "t3-t3b-001-00002",
+  "t3-t3b-001-00003",
+  "t3-t3b-001-00005",
+  "t3-t3b-001-00006",
+  "t3-t3b-001-00011",
+  "t3-t3b-001-00012",
+  "t3-t3b-001-00014",
+  "t3-t3b-001-00015",
+  "t3-t3b-001-00017",
+  "t3-t3b-001-00020",
+  "t3-t3b-002-00031",
+  "t3-t3b-002-00032",
+  "t3-t3b-002-00035",
+  "t3-t3b-002-00036"
+ ]
+}

@@ -2,19 +2,18 @@
 
 Policy (docs/STATUS.md, open question 1 until David decides):
   eval  = every Tier 1 record with canonical `pie` (scholarly texts and formulas),
-          the evaluation-grade Tier 2 lines (eval_grade), plus the held-out
-          root families for the cognate and inflection tasks: the frozen list
-          data/export/held_roots.json (pie.holdout, scripts/build_holdout.py;
-          never a protected family such as dʰugh₂tḗr's), restricted to families
-          that occur in NO training record (so the test is unseen root families
-          across all training material; checked)
+          the evaluation-grade Tier 2 lines (eval_grade), plus the drill split: the
+          inflection and cognate tasks of about 5% of lexemes (eval_drill, a sha256 rank
+          of the lexeme id). Those lexemes still occur in training texts; only their
+          drills are kept back, so the score tests whether the model inflects a word it
+          was never drilled on. No root family is held out of training (owner, 2026-10-30;
+          the family hold-out of 2026-10-28/29 is kept in data/export/held_roots.json
+          as "held_before_2026-10-30")
   train = Tier 2 and release-eligible Tier 3 records; pilots additionally require
           include_pilot=True. Experimental inclusion explicitly bypasses eligibility.
   conversational eval = the whole dialogue records frozen in data/export/held_dialogues.json (one
           approved batch's dialogues), taken out of train (eval_dialogue_records): they make no task
           and no text view, only the chat/eval.jsonl conversations (pie.export_chat, export/README.md "Chat export")
-Cognate→PIE examples hold out *whole root families* (eval_root, the one predicate
-make_slice and export share), so no derivative of an eval root appears in a training task.
 The leakage check fails the export if any PIE string or record id is in both
 splits.
 
@@ -59,10 +58,20 @@ COGNATE_LANGS = ["Sanskrit", "Ancient Greek", "Latin", "Proto-Germanic", "Hittit
                  "Avestan", "Old Church Slavonic", "Lithuanian", "Tocharian B", "Old Armenian"]
 
 
+EVAL_DRILL_SHARE = 0.05
+
+
+def eval_drill(lex_id: str | None) -> bool:
+    """Do this lexeme's inflection and cognate tasks go to eval? A stable sha256 rank under EVAL_DRILL_SHARE.
+    The lexeme itself stays trainable everywhere else (texts, slices, translation)."""
+    from .holdout import hash_rank
+    return bool(lex_id) and hash_rank(lex_id) < EVAL_DRILL_SHARE
+
+
 def eval_root(root_id: str | None) -> bool:
-    """Is this root family held out of training for the benchmark? Membership in the frozen list
-    data/export/held_roots.json (pie.holdout; selection in scripts/build_holdout.py: about 10% of
-    families, never a protected one, preferring families no training record uses)."""
+    """Is this root family held out of training? Membership in the frozen list data/export/held_roots.json,
+    which has been empty since 2026-10-30 (owner: no vocabulary is withheld). Kept as the one predicate
+    make_slice, neologism and export ask, so a future hold-out needs only the list."""
     from .holdout import held_roots
     from .research_scope import mapping_scope, RESEARCH_ONLY
     if mapping_scope((root_id,)) == RESEARCH_ONLY:
@@ -266,6 +275,9 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0,
     train_recs = [r for r in tier2 if not r.get("eval_grade")]
     tier1 = tier1 + t2_eval
     batch_decisions = []
+    # Tier 3b dialogues where the model calls itself a machine (data/export/persona_excluded.json)
+    persona_excluded = set(json.loads((Path(root) / "data/export/persona_excluded.json").read_text("utf-8"))["records"]) \
+        if (Path(root) / "data/export/persona_excluded.json").exists() else set()
     for f in sorted((root / "corpus" / "tier3").glob("*.jsonl")):
         decision = batch_eligibility(root, f.stem, experimental=experimental_batches)
         if f.name.startswith("pilot") and not include_pilot:
@@ -282,6 +294,7 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0,
         if not decision["admitted"]:
             continue
         recs = [json.loads(x) for x in f.read_text("utf-8").splitlines() if x.strip()]
+        recs = [r for r in recs if r["id"] not in persona_excluded]
         bad3b = [r["id"] for r in recs if r.get("neologism") is not True or r.get("tier") != 3]
         if bad3b:
             raise ValueError(f"a corpus/tier3b record needs tier 3 and neologism: true: {bad3b[0]}")
@@ -303,19 +316,15 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0,
                 if tv:
                     t["token_variants"] = tv
             eval_tasks.append(t)
-    # held-out root families must be unseen in ALL training material, not only in the cognate and
-    # inflection tasks: a family the hold-out lists but that occurs in a training sentence goes to train
-    # (David's review: deyḱ- was held out of the cognate task while training sentences inflected it)
     seen_roots = train_root_ids(train_recs, lx)
-    held = lambda rid: eval_root(rid) and rid not in seen_roots
+    held = lambda rid: eval_root(rid) and rid not in seen_roots      # empty list: never true (eval_root)
     for t in inflection_tasks(lx, rng) + cognate_tasks(lx):
-        # a project reconstruction never enters evaluation (PLAN.md "Project reconstructions"); one of a
-        # held-out root family is dropped, so the family stays unseen in training too
+        # a project reconstruction never enters evaluation (PLAN.md "Project reconstructions")
         if t.get("coined"):
             if not held(t.get("root_id")):
                 train_tasks.append(t)
             continue
-        (eval_tasks if held(t.get("root_id")) else train_tasks).append(t)
+        (eval_tasks if held(t.get("root_id")) or eval_drill(t.get("source_id")) else train_tasks).append(t)
     coined_eval = [r["id"] for r in tier1 if r.get("neologism") or any(t.get("coined") for t in r.get("tokens") or [])]
     if coined_eval:
         raise ValueError(f"project reconstruction or neologism in an evaluation record: {coined_eval[0]}")

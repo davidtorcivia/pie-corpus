@@ -13,6 +13,7 @@ creates pending release metadata; PASS alone does not authorize training export.
 """
 
 import argparse
+import re
 import collections
 import json
 import sys
@@ -172,7 +173,9 @@ def main() -> int:
                "distinct_lexemes": len(uses), "max_lexeme_uses": max(uses.values(), default=0),
                "most_used": uses.most_common(5), "dup_within": dup_within, "dup_across_batches": dup_across,
                "tokens": sum(len(r["tokens"]) for r in records),
-               "words_per_sentence": round(sum(len(r["pie"].split()) for r in records) / n, 2),
+               "words_per_sentence": round(sum(len(r["pie"].split()) for r in records)
+                                           / max(1, sum(len(re.findall(r"[.?!](?=\s|$)", r["pie"])) or 1
+                                                        for r in records)), 2),
                "words_per_record": round(sum(len(r["pie"].split()) for r in records) / n, 2),
                "meter_fit": _meter_summary(records),
                **_meter_fields(records),

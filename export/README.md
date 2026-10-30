@@ -5,20 +5,19 @@ Written by `uv run python -I scripts/export.py` (pie/export.py; policy in its do
 - `train.jsonl`, `eval.jsonl`: records. `train_tasks.jsonl`, `eval_tasks.jsonl`: task views. `views/`: plain text.
 - `eval_tasks_accent_specified.jsonl`: the **accent-sensitive evaluation view**, `eval_tasks.jsonl` without the tasks flagged `"accent": "unresolved"`.
 
-## Benchmark hold-out (changed 2026-10-28, redrawn 2026-10-29)
+## No hold-out; the drill split (2026-10-30)
 
-The cognate→PIE and inflection eval tasks come from held-out root families: the frozen list
-`data/export/held_roots.json` (written by `scripts/build_holdout.py`, read through `pie.export.eval_root`),
-restricted to families no training record uses. Families in `data/export/protected_roots.json` (formula
-vocabulary such as *dʰugh₂tḗr*, Tier 2 secure lexemes, the planners' core lists, numerals, Swadesh-type kin,
-body-part and natural-world nouns, and every family glossed with a concept of the Swadesh-207 list, the
-Leipzig-Jakarta list or a conversational core such as help, ask, thank, teach, want, remember, morning) are never
-held out. Until 2026-10-28 a 10% hash of root_id chose the families instead. **Benchmark scores from before and
-after the swap are not comparable**: the held families, and so the cognate and inflection eval sets, are
-different (docs/STATUS.md "Known limitations" (3)). On 2026-10-29 the set was redrawn by the same method with the
-Swadesh / Leipzig-Jakarta / conversational protection, because the first draw still held core words (help, drink,
-hear, sit, water, day, think). No model had been trained and no score existed, so the redraw costs no
-comparability; scores are comparable only from this set on.
+No root family is held out of training (owner, 2026-10-30): every word in the lexicon can occur in the
+training texts, slices and translation data. `data/export/held_roots.json` is empty; the families held out
+on 2026-10-28/29 are kept there as `held_before_2026-10-30`, and `pie.export.eval_root` (the one predicate
+make_slice, neologism and export ask) is false for every family.
+
+The inflection and cognate eval is a **drill split**: the inflection and cognate tasks of about 5% of lexemes
+(`pie.export.eval_drill`, a sha256 rank of the lexeme id under `EVAL_DRILL_SHARE`) go to eval, and those of
+every other lexeme to train. The eval lexemes still occur in training sentences; what the model has not seen
+is a drill of their forms, so the score tests whether it inflects a word it was never drilled on. It no
+longer tests unseen root families: **benchmark scores from the family hold-out and the drill split are not
+comparable**.
 
 ## Accent flags
 
@@ -59,8 +58,8 @@ For token counts, run it as
 | file | what |
 |---|---|
 | `chat/train.jsonl`, `chat/eval.jsonl` | one conversation per line: `{"messages": [{"role": "system"\|"user"\|"assistant", "content": …}], "meta": {…}}` |
-| `chat/train_mix.jsonl` | a subset of `chat/train.jsonl` in the target mix (English input 50%, PIE chat 15%, see "Mix"): **the default SFT file for the chat model** (the LLM you converse with) |
-| `translator/train.jsonl`, `translator/eval.jsonl` | **the translation app's dataset**: every translator item in both directions, English → PIE and PIE → English, 1:1 (see "Translator dataset"). Not part of the chat model's mix |
+| `chat/train_mix.jsonl` | a subset of `chat/train.jsonl` in the target mix (conversation 20%, translation 50%, grammar drills 30%, see "Mix"): **the default SFT file for the chat model** (the LLM you converse with) |
+| `translator/train.jsonl`, `translator/eval.jsonl` | every translator item in both directions, English → PIE and PIE → English, 1:1 (see "Translator dataset"). The translator app is not a trained model (owner, 2026-10-30); this set is kept as a reference and eval set |
 | `translator/summary.json` | the translator dataset's examples per direction and unit, gloss coverage, assistant-turn self-overlap, leakage report, source commit |
 | `chat/summary.json` | examples per kind and per mode, the mix table, user turns per kind and the multi-turn breakdown (`turns`), the translator's items, the self-overlap measure, English-alignment coverage of the dialogues, demo seeds used/skipped, the conversational eval's counts, Qwen3-4B token counts per kind, tokens per word (Unicode vs ASCII), leakage report, Tier 3b neologism share, source commit |
 | `eval_dialogues.jsonl` | the records reserved for the conversational eval (data/export/held_dialogues.json) |
@@ -189,40 +188,30 @@ input, by design. Train the translation model on `translator/train.jsonl`; train
 1,345 short-paragraph items), eval 170 (85 per direction, 84 with a gloss reference; the Tier 1 items have
 none).
 
-**Mix.** `summary.json` `mix` groups the kinds: `english_input` (`translate_en_pie`, `translate_app` en_pie,
-`app_session`, `en_dialogue`, `demo_chat`), `pie_to_english` (`translate_pie_en`, `translate_app` pie_en),
-`pie_only_chat` (`pie_dialogue`, `continuation`) and `grammar` (`gloss`, `inflect`, `paradigm`,
-`cognates_to_pie`), with each split's examples, content tokens (Qwen3-4B), shares and the per-example
-sampling weight that reaches the target. Every task stays a conversation in `chat/train.jsonl`, so the
-grammar tasks are most of its examples; `chat/train_mix.jsonl` keeps every English-input example and
-fills the rest in the target proportions (the lowest crc32 of their content; no example repeated), or all a
-group has when it is short of its target. The target (`TARGET_MIX`): **50% English input, 10% PIE → English,
-15% PIE-only chat, 25% grammar**. PIE → English is kept small for the chat model; the translation app's
-both-ways data is the separate `translator/` dataset. As built (the commit is `chat/summary.json`
-`provenance`; Tier 3 batches pending re-approval, among them b001-b003 and t3b-002, are out, so train is
-smaller for now):
+**Persona (2026-10-30).** The model is a human speaker of PIE. Every system prompt opens with the persona
+(`PERSONA`, "You are a speaker of Proto-Indo-European. You think in it and answer in it.", the demo's own
+system prompt, in about 80% of each kind's examples; `PERSONA_VARIANTS` in the rest), then the kind's
+instruction in the speaker's terms ("Reply in your language."). Grammar drills are a teacher going over the
+speaker's own grammar (`TEACHER`). Nothing calls the model a machine or a linguist: the Tier 3b dialogues where
+it called itself a machine are left out of every split (`data/export/persona_excluded.json`, 15 records), as
+are the three demo seeds that answered from them.
 
-| group | target | `train.jsonl` examples | share | tokens | token share | `train_mix.jsonl` examples | share |
-|---|---|---|---|---|---|---|---|
-| english_input | 50% | 3,699 | 26.4% | 509,797 | 29.3% | 3,699 | 55.6% |
-| pie_to_english | 10% | 1,541 | 11.0% | 268,698 | 15.4% | 740 | 11.1% |
-| pie_only_chat | 15% | 360 | 2.6% | 80,850 | 4.6% | 360 | 5.4% |
-| grammar | 25% | 8,398 | 60.0% | 880,908 | 50.6% | 1,850 | 27.8% |
-| total | | 13,998 | | 1,740,253 | | 6,649 | |
-
-**PIE-only chat is short of its 15% target**: the mix takes all 360 such examples (111 `pie_dialogue`, 249
-`continuation`), 5.4% of `train_mix.jsonl`, so English input lands at 55.6% rather than 50%. Doubling every
-aligned dialogue into `pie_pie` instead of one in two would still give only about 6%; reaching 15% needs more
-dialogue corpus. By tokens, English input is 55.6% of `train_mix.jsonl` (509,797 of 916,536). Of the
-conversation and translation examples (all but grammar), English input is 66% in `train.jsonl` and 77% in
-`train_mix.jsonl`.
+**Mix.** `summary.json` `mix` groups the kinds: `conversation` (`en_dialogue`, `demo_chat`, `pie_dialogue`,
+`continuation`), `translation` (`translate_en_pie`, `translate_pie_en`, `translate_app` both ways, `app_session`),
+`grammar` (`gloss`, `inflect`, `paradigm`) and `comparative` (`cognates_to_pie`), with each split's examples,
+content tokens, shares and the per-example sampling weight that reaches the target. `chat/train_mix.jsonl`
+keeps every conversation example, which sets its size, and fills the rest in the target proportions (the
+lowest crc32 of their content; no example repeated). The target (`TARGET_MIX`): **20% conversation, 50%
+translation, 30% grammar, 0% comparative** (a speaker doesn't know the daughter languages; the cognate tasks
+stay in `chat/train.jsonl`). Conversation is the purpose and the scarcest data: on 2026-10-30 the mix is 7,765
+examples, 1,553 of them conversation. More dialogue batches grow the whole mix in proportion.
 
 **Multi-turn.** `summary.json` `turns`: user turns per example (1, 2, 3, 4+) per kind and mode, and the
 multi-turn examples (two or more user turns) by source: `dialogue` (the exchanges of one dialogue text, each
 reply answering what was said: `en_dialogue`, `pie_dialogue`) and `chained` (a user's requests one after
 another: `app_session`, `demo_chat`), the latter capped at 10%. As built, `train_mix.jsonl` has 278
 multi-turn examples, 4.2% of it: 251 dialogue-derived and 27 chained (9.7% of the multi-turn). Every
-multi-turn example of `train.jsonl` is in the mix. The dialogue data is thin: the admitted corpus has 149
+multi-turn dialogue of `train.jsonl` is in the mix; chained translator sessions are sampled with translation. The dialogue data is thin: the admitted corpus has 149
 aligned dialogues and 111 `pie_pie` conversations, many single-exchange, so conversational multi-turn
 cannot be a large share until more dialogue corpus is written.
 
