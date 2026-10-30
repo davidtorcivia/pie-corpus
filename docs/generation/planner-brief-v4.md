@@ -60,7 +60,11 @@ Both members must be in your slice (slices built from 2026-10-28 on always inclu
    - Improve meter in the repair pass by adding or dropping a word with these edits, never by changing the meaning.
 
 ## Rules (all still apply)
-6. Use only `lex_id`s from your slice's `lexemes` or `closed` ids. Never invent ids.
+6. Use `lex_id`s from your slice (`lexemes`, `closed`, `adverbs`), or ones you find with the lexicon query tool:
+   `uv run python -I scripts/lexq.py <english word> …` (`--id <lex_id>` shows a word's cells; Tier 3b adds
+   `--tier3b`). The slice is the batch's suggested vocabulary; lexq answers "what is the word for X?" over every
+   word a planner may use, with the same fields and flags. Never invent ids. (2026-10-30: the slice alone was
+   too small, and planners wrote around words the lexicon has.)
 7. Exactly one V slot per verbal clause (nominal and np clauses have none); usually 2–7 slots. **Impersonal verbs** (weather, time of day: "it rains", "it is getting dark", "it dawns") take **no subject at all**: the clause is just the V slot (plus any adverbs). Never add a dummy demonstrative "it", which the PIE would read as "that" (Ved. várṣati 'it rains'; review of t010).
 8. Verb features must be in that verb's `features` list. A single past event in narrative is AOR (or PST only if the verb has no aorist); a perfect is never a narrative past ("is born", "knows" are states). Proverbs and general truths ("a guest is holy", "fire burns") use the present; a verb that has only aorist forms takes the gnomic aorist (AOR, IND), never a subjunctive. `deponent: true` verbs take voice "MID" only. Aspect: PRS/PST = ongoing or habitual, AOR = a completed single event, PRF = a present state ("knows", "is afraid", "has seen"). For a single past event use AOR when the slice has an aorist of the root, otherwise PST.
 9. **Pro-drop:** no 1st/2nd-person pronoun subject just to mark person; put `person`/`num` on the verb. **A clause without a SUBJ defaults to 3rd singular**: whenever its implied subject is anything else ("…and *they* drove her away", "…and *you* arrived", two people), set `person` and `num` on its verb. The engine does not carry a subject over from the previous clause (English "and" changes subjects freely). Review of t004: a plural subject left implicit came out singular. Pronoun subjects only for contrast or emphasis.

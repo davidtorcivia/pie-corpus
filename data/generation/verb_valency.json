@@ -1,10 +1,63 @@
 {
- "_note": "Valency tags for verbs whose lexicon gloss misleads planners (tier3-b001 review S1, b002 R6). 'tr': transitive, the active needs an object and a patient subject takes the middle. 'intr': intransitive. The gloss, when given, replaces the lexicon gloss in slices.",
- "pie-lex-Hrunepti": {"valency": "tr", "gloss": "to break (something); MID: to break, get broken"},
- "pie-lex-Hrewpt": {"valency": "tr", "gloss": "broke (something) (aorist); MID: broke, got broken"},
- "pie-lex-wesnewti": {"valency": "tr", "gloss": "to clothe (someone); MID: to dress oneself, wear"},
- "pie-lex-bhinedti": {"valency": "tr", "gloss": "to split (something); MID: to split, burst"},
- "pie-lex-kjlneyti": {"valency": "tr", "gloss": "to lean (something) against; MID: to lean"},
- "pie-lex-h1ewseti": {"valency": "tr", "gloss": "to burn (something), singe; MID: to burn, be burning"},
- "pie-lex-tkjeyti": {"valency": "intr", "gloss": "to dwell; to settle (intr.)"}
+ "_note": "Valency tags for verbs whose lexicon gloss misleads planners (tier3-b001 review S1, b002 R6). 'tr': transitive, the active needs an object and a patient subject takes the middle. 'intr': intransitive. The gloss, when given, replaces the lexicon gloss in slices. 'fear': a verb of fearing; what is feared is ablative (Ved. bhī- + abl., 'fear from'), never an object (t3b-004, t039, t042 reviews); the causatives 'scare' (troséyeti, torgʷéyeti) are ordinary transitives.",
+ "pie-lex-Hrunepti": {
+  "valency": "tr",
+  "gloss": "to break (something); MID: to break, get broken"
+ },
+ "pie-lex-Hrewpt": {
+  "valency": "tr",
+  "gloss": "broke (something) (aorist); MID: broke, got broken"
+ },
+ "pie-lex-wesnewti": {
+  "valency": "tr",
+  "gloss": "to clothe (someone); MID: to dress oneself, wear"
+ },
+ "pie-lex-bhinedti": {
+  "valency": "tr",
+  "gloss": "to split (something); MID: to split, burst"
+ },
+ "pie-lex-kjlneyti": {
+  "valency": "tr",
+  "gloss": "to lean (something) against; MID: to lean"
+ },
+ "pie-lex-h1ewseti": {
+  "valency": "tr",
+  "gloss": "to burn (something), singe; MID: to burn, be burning"
+ },
+ "pie-lex-tkjeyti": {
+  "valency": "intr",
+  "gloss": "to dwell; to settle (intr.)"
+ },
+ "pie-lex-bhebhoyh2e": {
+  "valency": "fear",
+  "gloss": "to fear, be afraid (perfect: a state); what is feared is ABL, never OBJ"
+ },
+ "pie-lex-bheyh2t-2": {
+  "valency": "fear",
+  "gloss": "to become afraid (aorist); what is feared is ABL, never OBJ"
+ },
+ "pie-lex-dedwoye": {
+  "valency": "fear",
+  "gloss": "to be afraid (perfect: a state); what is feared is ABL, never OBJ"
+ },
+ "pie-lex-h2eh2oghe": {
+  "valency": "fear",
+  "gloss": "to be upset, afraid (perfect); what is feared is ABL, never OBJ"
+ },
+ "pie-lex-treseti": {
+  "valency": "fear",
+  "gloss": "to tremble in fear; what is feared is ABL, never OBJ"
+ },
+ "pie-lex-prkskjeti": {
+  "valency": "fear",
+  "gloss": "to fear; what is feared is ABL, never OBJ"
+ },
+ "pie-lex-trsskjeti": {
+  "valency": "fear",
+  "gloss": "to tremble with fear; what is feared is ABL, never OBJ"
+ },
+ "pie-lex-tromeyeti": {
+  "valency": "fear",
+  "gloss": "to tremble (in fear); what is feared is ABL, never OBJ"
+ }
 }

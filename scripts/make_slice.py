@@ -80,10 +80,23 @@ TIER3B_INHERITED = ["pie-lex-mowdos", "pie-lex-sweh2dos", "pie-lex-newos", "pie-
                     "pie-lex-kjeh2dos", "pie-lex-h2engjhos", "pie-lex-h2ewh2os",
                     "pie-lex-ghremeti", "pie-lex-ghromeyeti", "pie-lex-kenketi", "pie-lex-gwoldhos",
                     "pie-lex-h2melgjos", "pie-lex-loygeti", "pie-lex-teksti", "pie-lex-peh3tlom", "pie-lex-kweros",
-                    "pie-lex-kjstrom", "pie-lex-dh2pnom", "pie-lex-lugjros", "pie-proj-spelom", "pie-proj-h2enHos"]
+                    "pie-lex-kjstrom", "pie-lex-dh2pnom", "pie-lex-lugjros", "pie-proj-spelom", "pie-proj-h2enHos",
+                    # 2026-10-30 core gaps (docs/audits/lexicon-gaps-core-2026-10-30.md; evidence in overrides.jsonl):
+                    # Swadesh-207, Leipzig-Jakarta and conversational-core concepts, and the t036 council words
+                    # (ice h₁yégos, wood dóru and soil dʰéǵʰōm are in EVERYDAY)
+                    "pie-lex-mortos", "pie-lex-tekjnom", "pie-lex-peh2uros", "pie-lex-h1orseh2", "pie-lex-skelos",
+                    "pie-lex-lowbhos", "pie-lex-h2endhos", "pie-lex-ghreh1mn", "pie-lex-uderos", "pie-lex-gjhorneh2",
+                    "pie-lex-skjeh3ih2", "pie-lex-kapros", "pie-lex-h2eghos-2", "pie-lex-puHyeti", "pie-lex-h3regjtos",
+                    "pie-lex-ghlh2dhros", "pie-lex-kjubhros", "pie-lex-mudros", "pie-lex-mewdeti", "pie-lex-wregeti",
+                    "pie-lex-steygheti", "pie-lex-teryeti", "pie-lex-goleti", "pie-lex-kweh2se", "pie-lex-h3edeti",
+                    "pie-lex-bhereti", "pie-lex-deykjeti", "pie-lex-th2keh1yeti", "pie-lex-h3eh3ode-2",
+                    "pie-lex-kjekjomh2e", "pie-lex-kjeHst", "pie-lex-h1egos", "pie-lex-gwrHtos", "pie-lex-h2reh1dheti",
+                    "pie-lex-dhh1tleh2", "pie-lex-gjnh3ros", "pie-lex-poykjos-2"]
 ADVERB_POS = ("adv", "prep", "postp")
 NIL_ADMIT = {"pie-lex-bhagos", "pie-lex-bhngjhulos", "pie-lex-bhrtos", "pie-lex-gwowsth2os", "pie-lex-kjh3tos",
-             "pie-lex-medtos", "pie-lex-priHtos", "pie-lex-h2rgjipyos", "pie-lex-kjolHtos", "pie-lex-rotos"}
+             "pie-lex-medtos", "pie-lex-priHtos", "pie-lex-h2rgjipyos", "pie-lex-kjolHtos", "pie-lex-rotos",
+             # tail: Gk οὐρά and OIr. err, two branches (Beekes s.v. οὐρά; NIL no. 247): core gaps 2026-10-30
+             "pie-lex-h1orseh2"}
 NIL_GLOSS_HELD = {"pie-lex-h2gjtos", "pie-lex-priHnos", "pie-lex-h2ewgos", "pie-lex-wersos", "pie-lex-kjltos",
                   "pie-lex-h2egjtoxr", "pie-lex-segjhtoxr"}
 # dictionary glosses and the hand-checked ones (overrides, supplement: docs/audits/lexicon-gaps-*.md; project
@@ -224,6 +237,42 @@ def planner_accent_ok(lx: Lexicon, lex_id: str) -> bool:
         return False
 
 
+def attested_in(lx: Lexicon, i: str) -> int:
+    """Daughter languages with a reflex (of the lexeme, or else its root): prefer well-attested words."""
+    e = lx.entries[i]
+    n = len(e.get("reflexes", {}))
+    return n or len(lx.entries.get(e.get("root_id") or "", {}).get("reflexes", {}))
+
+
+def slice_item(lx: Lexicon, i: str) -> dict:
+    """A lexeme as planners see it, in a slice or from scripts/lexq.py: form, gloss (the valency gloss where one
+    misleads), family, gender, features, attestation and every flag."""
+    e, r = lx.entries[i], lx.specs[i]
+    gl, src = lx.meaning(i)
+    item = {"lex_id": i, "form": e["form"], "gloss": (VALENCY.get(i, {}).get("gloss") or gl)[:90],
+            "family": r["family"]}
+    if i in VALENCY:
+        item["valency"] = VALENCY[i]["valency"]
+    if src == "derived":
+        item["gloss_approximate"] = True   # root meaning + suffix function, not a dictionary gloss
+    elif src == "reflex-confirmed":
+        item["gloss_source"] = src         # the daughters' agreed gloss (pie.glosses.confirm): reviewed apart
+    if lx.coined(i):
+        item["coined"] = lx.coined(i)      # a project reconstruction (PLAN.md): Tier 3/3b only, flagged
+    if r["family"] == "noun":
+        item["gender"] = lx.gender(i)
+        if _compound_second(i, lx) and lx.coined(i) != "neologism":   # no compound on a coinage
+            item["compound_second"] = True     # s-stem neuter or thematic: a bahuvrihi second member
+    item["attested_in"] = attested_in(lx, i)
+    if r["family"] == "verb":
+        feats = verb_features(lx.cells(i))
+        if e["form"].endswith(("tor", "toy")):     # deponent: middle only
+            feats = [f for f in feats if f.endswith("MID")]
+            item["deponent"] = True
+        item["features"] = feats
+    return item
+
+
 def offered(lx: Lexicon, derived: bool = False) -> list[str]:
     """The ids a slice may offer (the pool): usable spec, not blocklisted, accent (P10), not an eval-holdout root,
     not NIL-held, and a dictionary gloss, or with derived=True an approximate derived gloss on a transparent suffix
@@ -276,10 +325,7 @@ def main() -> int:
     pool = offered(lx, ap_derived)
 
     def attested(i):
-        """Daughter languages with a reflex (of the lexeme, or else its root): prefer well-attested words."""
-        e = lx.entries[i]
-        n = len(e.get("reflexes", {}))
-        return n or len(lx.entries.get(e.get("root_id") or "", {}).get("reflexes", {}))
+        return attested_in(lx, i)
 
     def hits(i, words):
         return keyword_hit(lx, i, words)
@@ -305,7 +351,8 @@ def main() -> int:
     chosen += [i for i in pool if lx.specs[i]["family"] == "verb" and hits(i, CORE_VERBS) and i not in chosen
                and lx.meaning(i)[1] in TRUSTED_GLOSS]
     chosen += [i for i in CORE_NOUNS + CONVERSATION if i in pool and i not in chosen]
-    chosen += [i for i in pool if args.tier3b and lx.coined(i) == "neologism" and i not in chosen]
+    chosen += [i for i in pool if args.tier3b and lx.coined(i) == "neologism" and i not in chosen
+               and i not in lx.blocked]
     # the inherited everyday words (named for Tier 3b, where they replaced coinages; since 2026-10-30 offered to every
     # slice, as the in-world Tier 3 dialogues need them most): usable, unblocked and accented; P9's NIL hold waived
     from pie.export import eval_root
@@ -332,29 +379,7 @@ def main() -> int:
     chosen += rest[: max(0, args.size - len(chosen))]
     items = []
     for i in chosen[: max(args.size, len(chosen))]:
-        e, r = lx.entries[i], lx.specs[i]
-        gl, src = lx.meaning(i)
-        item = {"lex_id": i, "form": e["form"], "gloss": (VALENCY.get(i, {}).get("gloss") or gl)[:90],
-                "family": r["family"]}
-        if i in VALENCY:
-            item["valency"] = VALENCY[i]["valency"]
-        if src == "derived":
-            item["gloss_approximate"] = True   # root meaning + suffix function, not a dictionary gloss
-        elif src == "reflex-confirmed":
-            item["gloss_source"] = src         # the daughters' agreed gloss (pie.glosses.confirm): reviewed apart
-        if lx.coined(i):
-            item["coined"] = lx.coined(i)      # a project reconstruction (PLAN.md): Tier 3/3b only, flagged
-        if r["family"] == "noun":
-            item["gender"] = lx.gender(i)
-            if _compound_second(i, lx) and lx.coined(i) != "neologism":   # no compound on a coinage
-                item["compound_second"] = True     # s-stem neuter or thematic: a bahuvrihi second member
-        item["attested_in"] = attested(i)
-        if r["family"] == "verb":
-            feats = verb_features(lx.cells(i))
-            if e["form"].endswith(("tor", "toy")):     # deponent: middle only
-                feats = [f for f in feats if f.endswith("MID")]
-                item["deponent"] = True
-            item["features"] = feats
+        item = slice_item(lx, i)
         items.append(item)
     out = ROOT / "data" / "generation" / "slices" / f"{args.name}.json"
     # theme core: given with --core, else the 8 best keyword hits that are nouns (the thing or god the

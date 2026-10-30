@@ -46,3 +46,6 @@ from the situation and the words, never from a pun (a sound-joke can't survive t
 Mix: about half dialogues with speakers (§4 of brief-3b format), half short tales and comic verse. Every joke must
 still be grammatical and say exactly what its English says (v4 rule 14); the English should read as funny on its
 own. The `model` speaker, where there is one, is a person of the PIE world who jokes and can be the butt of a joke.
+
+**Finding a word:** your slice is the suggested vocabulary; for anything else run `uv run python -I scripts/lexq.py
+<english word>` (v4 rule 6). Look a word up before you write around it.

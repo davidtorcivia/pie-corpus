@@ -917,6 +917,10 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                     and not any(x.get("role") == "OBJ" for x in slots):
                 errs.append(f"{where}: {lid} is transitive: active needs an OBJ; a patient subject "
                             f"('the wheel broke', 'dress yourself') takes voice MID")
+            if role == "V" and fam == "verb" and _valency(lid) == "fear" \
+                    and any(x.get("role") == "OBJ" and x.get("dep") is None for x in slots):
+                errs.append(f"{where}: {lid} is a verb of fearing: what is feared takes role ABL ('fear from the "
+                            f"wolf', Ved. bhī- + abl.), not OBJ")
             if role != "V" and fam == "verb" and ptcp is None:
                 errs.append(f"{where}: role {role} needs a nominal, {lid} is a verb")
             if role == "MOD":

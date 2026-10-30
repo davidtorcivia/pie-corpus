@@ -83,7 +83,7 @@ The second speaker is a person who speaks PIE: a human being with a life, a fami
 
 ## 6. Rules that change
 
-- Rule 6 (only slice ids) is unchanged. Neologisms are in your slice, flagged `"coined": "neologism"`, with the gloss to keep to (rule 14: a lexeme only in a sense its gloss gives).
+- Rule 6 (slice ids, or ids found with `scripts/lexq.py --tier3b`) is unchanged. Neologisms are in your slice, flagged `"coined": "neologism"`, with the gloss to keep to (rule 14: a lexeme only in a sense its gloss gives).
 - Formulas (v4 §4) are optional: use one where it is natural ("imperishable fame" in praise, the guest-friend words).
 - Meter (v4 §5) does not apply to the dialogue genres.
 - Diversity is gated as in v4: one lexeme at most max(6, 0.5% of tokens) times, the slice's `theme_core` up to max(15, 1.5% of tokens). Vary the verbs of saying (rotate wéwket, wérh₁t, mléwHti, bʰéh₂ti) and the forms of address (priHós, ḱéywos, gʰóstis, h₂nḗr, gʷḗn, a kinship term, a name) across texts; in a 40-dialogue batch no one of them may open every greeting.
