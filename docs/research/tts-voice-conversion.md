@@ -484,3 +484,19 @@ JD3, accent 4.0, ElevenLabs Hindi + restore.py, measured with vtl_ends.py (−10
 Melody r 0.96, accent +5.5 st, declination −3.4 st/line: unchanged from v8. ElevenLabs keeps the trailing ends; it
 weakens two of the three túH tails now that they run into the next word (second half −20 / −28 dB re the u, VTL
 −10 / −16). restore.py adds breath to all three.
+
+## v10: phrase ends hold their pitch — workflow locked (2026-10-30)
+
+pie_vtl v10 keeps v9's decay but cancels the pressure-driven F0 sag and caps final nasal hums. Measured on the hymn
+(accent 4.0, `--final-h murmur`), ElevenLabs Hindi + restore.py:
+
+| | v9 | v10 |
+|---|---|---|
+| JD3 téwe (caesura) F0 fall after ElevenLabs | 11.0 st (creak) | 1.4 st |
+| JD3 lewbʰóm (line end), VTL / ElevenLabs | 6.0 / 6.3 st | 1.2 / 3.7 st |
+| JD3 caesuras after ElevenLabs | 1.7–6.4 st | 1.1–5.5 st (h₂yuHénih₂ highest) |
+| W02 phrase ends after ElevenLabs | — | 0.6–3.1 st, lewbʰóm 5.5; floor ≥ 140 Hz |
+| decay −10→−30 dB after ElevenLabs | 135–304 ms | 132–322 ms (stop-final words excepted) |
+
+Melody r 0.95 (JD3) / 0.93 (W02), accent +5.3 / +4.2 st, declination −3.7 / −3.4 st/line. Owner (2026-10-30): "the best
+one and we got there". The chain is locked: VTL v10 → ElevenLabs Hindi → restore.py → vtl_check / vtl_ends.
