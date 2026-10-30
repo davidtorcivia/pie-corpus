@@ -1,8 +1,10 @@
-# Tier 3b planner brief: "modern PIE" conversations (`prompt_id: tier3b-planner-v2`)
+# Tier 3b planner brief: "modern PIE" conversations (`prompt_id: tier3b-planner-v3`)
+
+v3 (2026-10-30): the second speaker is a human speaker of PIE, not a machine (§5).
 
 Derived from `planner-brief-v4.md`, which still applies in full: the plan format, the clause and slot fields, numerals and adverbs, pronouns, participles, compounds, question words, names, greetings and thanks, verbless sentences, rules 6–19, and the check-and-repair pass. This brief changes only what is listed here. Policy: PLAN.md "Tier 3b". Neologisms: `data/lexicon/neologisms.jsonl` (`pie/neologism.py`).
 
-Tier 3b trains a model to **converse** in PIE: greetings, everyday questions and answers, banter, requests to translate, and now and then a model talking about itself. It will be demoed live, and its users almost always type **English**, so every sentence carries its own English (§4). You write PLANS for short **chat-style dialogues** between two speakers. **You never write PIE.** The engine (`pie/realize.py`) realizes the plans exactly as for Tier 3.
+Tier 3b trains a model to **converse** in PIE: greetings, everyday questions and answers, banter, requests to translate, and now and then the speaker talking about their own life. It will be demoed live, and its users almost always type **English**, so every sentence carries its own English (§4). You write PLANS for short **chat-style dialogues** between two speakers. **You never write PIE.** The engine (`pie/realize.py`) realizes the plans exactly as for Tier 3.
 
 Do not read anything under `corpus/` or `raw/`, or earlier plan files.
 
@@ -66,7 +68,7 @@ Everything in v4's format, plus:
 - **A new speaker always starts a new sentence**: the first clause of every turn after the first has `"break": true`. `realize_plans.py` rejects a plan that changes speaker mid-sentence or leaves a clause without a speaker.
 - `genre`: `"dialogue"` (or `"greeting"`, `"farewell"`, `"riddle"`, the chat export's dialogue genres). These genres are not metered, so the meter gate does not apply.
 - The plan's `english` is the whole dialogue as running English, one sentence per PIE sentence, in order. You may mark turns in the English with the speaker ("User: … Model: …"), but every content word must still have a slot (rule 14).
-- **Per-sentence English (required):** v4's `english` on each sentence-initial clause (the first clause and every `break`), that sentence's English. `realize_plans.py` rejects a Tier 3b plan whose sentence lacks it. The chat export pairs every PIE sentence with its English exactly, which the English-input chat modes need (an English user turn is the English of the user's sentences). The plan-level `english` stays: the sentences' English in order. Example: `[{"speaker": "user", "english": "Who are you?", "question": true, "slots": [...]}, {"speaker": "model", "break": true, "english": "I am a machine.", "slots": [...]}]`.
+- **Per-sentence English (required):** v4's `english` on each sentence-initial clause (the first clause and every `break`), that sentence's English. `realize_plans.py` rejects a Tier 3b plan whose sentence lacks it. The chat export pairs every PIE sentence with its English exactly, which the English-input chat modes need (an English user turn is the English of the user's sentences). The plan-level `english` stays: the sentences' English in order. Example: `[{"speaker": "user", "english": "Who are you?", "question": true, "slots": [...]}, {"speaker": "model", "break": true, "english": "I am a herdsman.", "slots": [...]}]`.
 - Length: 4–14 clauses and 2–8 turns. A turn is one to three sentences. Chat replies are short.
 
 ## 5. The speaker as a character
@@ -91,7 +93,7 @@ The second speaker is a person who speaks PIE: a human being with a life, a fami
 As in v4, with a Tier 3b batch name (`t3b-<n>`) and the `--tier3b` flag. The records go to `corpus/tier3b/<batch>.jsonl` with `tier: 3` and `neologism: true`, and the validator runs with the neologism table loaded.
 
 1. Write the plans to `data/generation/plans/<batch>.jsonl` and copy it to `<batch>.initial.jsonl`.
-2. `uv run python -I scripts/realize_plans.py data/generation/plans/<batch>.initial.jsonl --batch <batch>-initial --tier3b --model <model> --prompt-id tier3b-planner-v2`, and note the numbers, including the gate result, `neologism_tokens` and `coined_sentences`.
+2. `uv run python -I scripts/realize_plans.py data/generation/plans/<batch>.initial.jsonl --batch <batch>-initial --tier3b --model <model> --prompt-id tier3b-planner-v3`, and note the numbers, including the gate result, `neologism_tokens` and `coined_sentences`.
 3. Delete `corpus/tier3b/<batch>-initial.jsonl` (keep the plan files and the `-initial` batch report).
 4. Fix the rejected plans, any lexeme over its cap, and a `coined_sentences` share over 0.25 (rewrite coined sentences with inherited words, or move dialogues off modern topics) in `<batch>.jsonl`, then run the same command with `--batch <batch>`. Repeat this step until the gate passes.
 5. Modify nothing else.
