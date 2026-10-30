@@ -169,6 +169,8 @@ def linked_reflexes(entry: dict, rec: dict) -> list[dict]:
     return out
 
 
+# 'put to sleep', 'cause to fall', 'make wet' (not 'make a mistake', 'set out')
+_CAUSATIVE = re.compile(r"^(?:to )?(?:(?:put|cause|let|set|make) (?:\S+ )?to \w|make \w+$)", re.I)
 _POS_OK = {"noun": {"noun", "name"}, "adj": {"adj", "noun", "participle"}, "verb": {"verb"}}
 
 
@@ -197,7 +199,9 @@ def confirm(entry: dict, family: str | None, derived: str | None, rec: dict | No
             sw = _words(s)
             if not sw:
                 continue
-            hits = [x for x in refl if any(sw & _words(g) for g in x["glosses"])]
+            # a causative reflex ('to put to sleep') doesn't confirm the plain sense ('to sleep'): t3b-003 review
+            hits = [x for x in refl if any(sw & _words(g) and (bool(_CAUSATIVE.match(g)) == bool(_CAUSATIVE.match(s)))
+                                           for g in x["glosses"])]
             if len({x["branch"] for x in hits}) >= 2:
                 kept.append(s)
                 for x in hits:

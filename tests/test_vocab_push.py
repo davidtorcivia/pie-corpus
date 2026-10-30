@@ -197,3 +197,16 @@ def test_reflex_accent_rule_cases():
     assert position("woros", "shape:thematic", {**G("ourós"), "Sanskrit": [{"form": "x", "roman": "vā́ra"}]}) is None
     # a different syllable count (prothesis, compounds) says nothing
     assert position("stegos", "shape:thematic", G("astégos")) is None
+
+
+def test_a_causative_reflex_does_not_confirm_the_plain_sense():
+    """t3b-003 review: Ved. svāpáyati, PGmc *swabjaną 'put to sleep' had confirmed swopéyeti as plain 'to sleep',
+    and planners used it for 'sleep'. A causative reflex confirms only a causative sense."""
+    import json
+    from pathlib import Path
+    from pie.glosses import _CAUSATIVE
+    rows = {json.loads(x)["id"]: json.loads(x) for x in
+            (Path(__file__).resolve().parents[1] / "data/lexicon/confirmed_glosses.jsonl").read_text("utf-8").splitlines()}
+    assert rows["pie-lex-swopeyeti"]["gloss"] == "to put to sleep"
+    assert _CAUSATIVE.match("to put to sleep") and _CAUSATIVE.match("make wet")
+    assert not _CAUSATIVE.match("to make a mistake") and not _CAUSATIVE.match("to sleep")
