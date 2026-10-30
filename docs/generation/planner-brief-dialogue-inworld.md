@@ -27,3 +27,22 @@ What is different from Tier 3b:
 
 Run with Tier 3 commands (no `--tier3b`): the records go to `corpus/tier3/<batch>.jsonl`. Final message ≤150 words
 as v4 asks, plus the share of dialogues with a request and anything you could not express.
+
+## Humor (batch t084, owner 2026-10-30)
+
+A batch of in-world humor, in character. Laugh the way the oldest daughter traditions laugh, and build every joke
+from the situation and the words, never from a pun (a sound-joke can't survive the engine):
+- **Flyting and boasting** (Norse *Lokasenna*, Irish satire, Homeric taunts): two speakers trade insults and boasts;
+  the boaster is outdone. Genre `challenge` (a dialogue genre) with speakers.
+- **Trickster tales** (the fox, the clever youngest son, a thief outwitted): genre `tale` or `fable`, short, with a
+  turn at the end.
+- **The comic household:** the guest who eats everything, the lazy son, the drunk at the feast, the boastful
+  warrior who fears a mouse, the old man who outwits the young, a quarrel between husband and wife that ends in
+  laughter. Genre `dialogue` with speakers.
+- **Gentle mockery of the respectable** (the Vedic frog hymn mocks priests as croaking frogs; the gambler's lament
+  mocks the gambler): genre `praise` or `hymn` turned comic.
+- **Earthy jokes are in-world** (*perd-* 'fart', greed, drink), never crude for its own sake.
+- **Funny riddles:** genre `riddle`, an absurd description whose answer is plain.
+Mix: about half dialogues with speakers (§4 of brief-3b format), half short tales and comic verse. Every joke must
+still be grammatical and say exactly what its English says (v4 rule 14); the English should read as funny on its
+own. The `model` speaker, where there is one, is a person of the PIE world who jokes and can be the butt of a joke.
