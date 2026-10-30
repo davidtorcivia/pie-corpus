@@ -447,3 +447,23 @@ ElevenLabs output can't be training data anyway, so further h tuning should targ
 
 **i after gʷʰ in JD3.** It sits at about −6.5 dB, which is JD3's intrinsic [i] level (about 5 dB under its [o]).
 High vowels are intrinsically quieter in natural speech too, so this is acceptable.
+
+### Open-source VC bake-off on VTL v7, and the one-pass restore (2026-10-30)
+
+Each converter was run on the v7 hymn (accent 4.0), male and female.
+Two targets each: a Kokoro voice (em_alex / bf_isabella) and the ElevenLabs voice, taken from its hard-test output.
+Files are in `vtl-v7/open-vc/` on tr-desktop. David listened briefly: all have issues.
+
+- **OpenVoice V2:** keeps every laryngeal, middle túH included (0.28–0.52), and the melody (0.95–0.99). Its colour change is light.
+- **Chatterbox VC:** cleanest voice (HNR 14–19), melody 0.92–0.98. Deletes final H (0.00–0.08), h₁wésu and h₁áydʰi; χ weak (0.15–0.56).
+- **kNN-VC:** output is 16 kHz, and melody slips (0.76–0.88) with 22–30 s references.
+- **Seed-VC:** the F0 mode keeps melody best of all (0.98–0.99) but loses most laryngeals. χ in bʰéh₂os is 0.01–0.29, and every converter here deletes the middle túH.
+
+None beats ElevenLabs Hindi (David's preferred voice) on quality, so the chain is ElevenLabs + `restore.py`.
+`restore.py` makes one deterministic pass: measure each h/χ on the phone timeline, then on the deleted ones only,
+duck the vowel the converter stretched across the gap and lay in noise coloured by the converted voice's own
+neighbouring vowel. On the Hindi hymn:
+- the middle túH goes 0.00 → 0.57 (male) and 0.02 → 0.44 (female);
+- male h₁wésu 0.14 → 0.37 and h₁áydʰi 0.12 → 0.25.
+
+Accent, melody and timing are unchanged.
