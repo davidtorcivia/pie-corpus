@@ -1,18 +1,18 @@
 {
  "provenance": {
-  "commit": "b5c02b99142db8924abc9f3ee628d01af675d553",
+  "commit": "fd1d34eb796a37cab4a91862926ff68c144afebf",
   "inputs_dirty": true,
   "include_pilot": false,
   "experimental_batches": false
  },
  "examples": {
-  "train": 13340,
+  "train": 16750,
   "eval": 170
  },
  "modes": {
   "train": {
-   "en_pie": 6670,
-   "pie_en": 6670
+   "en_pie": 8375,
+   "pie_en": 8375
   },
   "eval": {
    "en_pie": 85,
@@ -21,10 +21,10 @@
  },
  "units": {
   "train": {
-   "en_pie:paragraph": 3081,
-   "en_pie:sentence": 3589,
-   "pie_en:paragraph": 3081,
-   "pie_en:sentence": 3589
+   "en_pie:paragraph": 4051,
+   "en_pie:sentence": 4324,
+   "pie_en:paragraph": 4051,
+   "pie_en:sentence": 4324
   },
   "eval": {
    "en_pie:paragraph": 7,
@@ -34,21 +34,21 @@
   }
  },
  "gloss_reference": {
-  "train": 13340,
+  "train": 16750,
   "eval": 84
  },
  "neologism_examples": {
-  "train": 1350,
+  "train": 1670,
   "eval": 0
  },
  "items": {
   "train": {
-   "en_pie:paragraph": 3081,
-   "en_pie:sentence": 3589,
-   "pie_en:paragraph": 3081,
-   "pie_en:sentence": 3589,
+   "en_pie:paragraph": 4051,
+   "en_pie:sentence": 4324,
+   "pie_en:paragraph": 4051,
+   "pie_en:sentence": 4324,
    "unaligned_long:count_mismatch": 254,
-   "unaligned_long:plan_english_mismatch": 3,
+   "unaligned_long:plan_english_mismatch": 18,
    "unaligned_long:question_mismatch": 5
   },
   "eval": {
@@ -61,28 +61,28 @@
  },
  "self_overlap": {
   "all_kinds_sentences": {
-   "items": 10165,
-   "max": 13,
-   "mean": 1.0464,
+   "items": 13009,
+   "max": 14,
+   "mean": 1.047,
    "histogram": {
-    "1": 9884,
-    "2": 189,
-    "3": 53,
-    "4+": 39
+    "1": 12655,
+    "2": 235,
+    "3": 64,
+    "4+": 55
    },
-   "over_3": 39
+   "over_3": 55
   },
   "all_kinds_ngram4": {
-   "items": 24302,
-   "max": 8,
-   "mean": 1.0079,
+   "items": 31830,
+   "max": 11,
+   "mean": 1.0073,
    "histogram": {
-    "1": 24138,
-    "2": 147,
-    "3": 13,
-    "4+": 4
+    "1": 31640,
+    "2": 168,
+    "3": 15,
+    "4+": 7
    },
-   "over_3": 4
+   "over_3": 7
   }
  },
  "leakage": {
@@ -99,9 +99,9 @@
    "translate_app/pie_en": {
     "n": 85,
     "with_ngrams": 82,
-    "mean_overlap": 0.0914,
+    "mean_overlap": 0.0931,
     "max_overlap": 0.5,
-    "any_overlap": 33,
+    "any_overlap": 34,
     "single_word_in_train_text": 0
    }
   },

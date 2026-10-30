@@ -5,6 +5,8 @@
   oblique, a middle dual) silently becomes another (plural), with no rejection or warning. check_plan should reject,
   or realize should warn, so the planner chooses.
 - gʷṓws oblique plural built on gʷéw-, not gʷów- (t035).
+- Prohibitive mē is tagged closed:particle:ne (pie/realize.py, t034 review 2); pérkus "oak" is masculine, usually f.; the
+  lexeme cap scales with tokens, so shortening one text can push others over (t034).
 - Middle injunctive 2sg ends in -th₂e, not *-so (t035, t036: the -th₂e/-th₂er middle endings need documenting).
 - péh₂tōr 'guardian' obliques identical to ph₂tḗr 'father' (t037).
 - gʷʰen- 'slay' has no aorist (t037).
