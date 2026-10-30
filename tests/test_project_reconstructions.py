@@ -24,6 +24,8 @@ ROUND2 = {"pie-proj-kjasnos": "grey", "pie-proj-kolsos": "neck", "pie-proj-bhodh
           "pie-proj-konHis": "ashes", "pie-proj-lh2eywos": "left", "pie-proj-reydheti": "ride",
           "pie-proj-swerghos": "illness", "pie-proj-gwhermos": "warm", "pie-proj-moghus": "boy",
           "pie-proj-keh2ros": "dear"}
+# round 3 (dialogue gaps 2026-10-30, docs/audits/lexicon-gaps-dialogue-2026-10-30.md)
+ROUND3 = {"pie-proj-spelom": "story", "pie-proj-h2enHos": "grandmother"}
 
 
 def _rows():
@@ -45,7 +47,7 @@ def test_entries_meet_the_policy():
     from make_slice import branches
     lex_ids = {json.loads(x)["id"] for x in (ROOT / "data/lexicon/lexicon.jsonl").read_text("utf-8").splitlines()}
     rows = _rows()
-    assert {r["id"] for r in rows} >= {HARE, FOAL, HORN, FLY} | set(ROUND2)
+    assert {r["id"] for r in rows} >= {HARE, FOAL, HORN, FLY} | set(ROUND2) | set(ROUND3)
     for r in rows:
         assert r["source"] == "project" and r["coined"] == "project" and r["id"] not in lex_ids
         assert len(branches(r["reflexes"])) >= 2, r["id"]
@@ -187,7 +189,7 @@ def _V(lex_id):
     return {"lex_id": lex_id, "role": "V", "verb": {"tense": "PRS", "mood": "IND", "voice": "ACT"}}
 
 
-@pytest.mark.parametrize("lex_id", sorted(ROUND2))
+@pytest.mark.parametrize("lex_id", sorted(ROUND2) + sorted(ROUND3))
 def test_round2_entry_loads_realizes_and_is_flagged(lx, lex_id):
     """Each round-2 entry is in the Lexicon with a paradigm, passes the planner gates (accented headword, not in a
     held-out root family) and realizes through check_plan + realize with every word of it flagged coined."""
@@ -227,13 +229,18 @@ def test_round2_offered_by_make_slice_with_flag(tmp_path, monkeypatch):
     ms = runpy.run_path(str(ROOT / "scripts/make_slice.py"))
     monkeypatch.setitem(ms["main"].__globals__, "ROOT", tmp_path)
     (tmp_path / "data/generation/slices").mkdir(parents=True)
-    monkeypatch.setattr(sys, "argv", ["make_slice.py", "probe2", "--keywords", *sorted(set(ROUND2.values())),
-                                      "--size", "120"])
+    monkeypatch.setattr(sys, "argv", ["make_slice.py", "probe2", "--keywords",
+                                      *sorted(set(ROUND2.values()) | set(ROUND3.values())), "--size", "120"])
     assert ms["main"]() == 0
     items = {it["lex_id"]: it for it in
              json.loads((tmp_path / "data/generation/slices/probe2.json").read_text())["lexemes"]}
-    for i in ROUND2:
+    for i in {**ROUND2, **ROUND3}:
         assert items[i]["coined"] == "project", i
+
+
+def test_round3_paradigms(lx):
+    assert lx.cells("pie-proj-spelom")["NOM.PL"][0] == "spéleh₂" and lx.gender("pie-proj-spelom") == "n"
+    assert lx.cells("pie-proj-h2enHos")["ACC.SG"][0] == "h₂énHom" and lx.gender("pie-proj-h2enHos") == "f"
 
 
 def test_round2_adjective_and_verb_validate_at_the_exact_tier(lx, tmp_path, monkeypatch):

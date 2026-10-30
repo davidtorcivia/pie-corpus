@@ -210,3 +210,41 @@ def test_a_causative_reflex_does_not_confirm_the_plain_sense():
     assert rows["pie-lex-swopeyeti"]["gloss"] == "to put to sleep"
     assert _CAUSATIVE.match("to put to sleep") and _CAUSATIVE.match("make wet")
     assert not _CAUSATIVE.match("to make a mistake") and not _CAUSATIVE.match("to sleep")
+
+
+# 4. dialogue gaps (docs/audits/lexicon-gaps-dialogue-2026-10-30.md) -----------------------------------------------
+
+DIALOGUE = {   # keyword -> lexeme, offered by default with an override gloss that carries the keyword
+    "angry": "pie-lex-ghremeti", "anger": "pie-lex-ghromeyeti", "hungry": "pie-lex-kenketi",
+    "hunger": "pie-lex-gwoldhos", "milk": "pie-lex-h2melgjos", "play": "pie-lex-loygeti", "weave": "pie-lex-teksti",
+    "cup": "pie-lex-peh3tlom", "pot": "pie-lex-kweros", "knife": "pie-lex-kjstrom", "feast": "pie-lex-dh2pnom",
+    "sad": "pie-lex-lugjros",
+}
+
+
+@pytest.mark.parametrize("kw,lid", sorted(DIALOGUE.items()))
+def test_dialogue_word_is_offered(lx, pool, kw, lid):
+    assert lid in pool and lx.meaning(lid)[1] == "override"
+    ms = runpy.run_path(str(ROOT / "scripts/make_slice.py"))
+    assert ms["keyword_hit"](lx, lid, [kw]) and lid in ms["TIER3B_INHERITED"]
+
+
+def test_dialogue_paradigms(lx):
+    """The two spec changes (knife: headword ḱéstrom, Skt. śástra-; sad: an adjective) and spot cells of the rest."""
+    assert lx.entries["pie-lex-kjstrom"]["form"] == "ḱéstrom" and "ḱstrom" in lx.entries["pie-lex-kjstrom"]["variants"]
+    assert lx.cells("pie-lex-kjstrom")["GEN.SG"][0] == "ḱéstrosyo" and lx.accent_status("pie-lex-kjstrom") == "resolved"
+    assert lx.specs["pie-lex-lugjros"]["family"] == "adj" and lx.cells("pie-lex-lugjros", "f")["NOM.SG"][0] == "luǵréh₂"
+    assert lx.cells("pie-lex-teksti")["PRS.3PL"][0] == "tksénti"            # Hitt. takšanzi
+    assert lx.cells("pie-lex-ghremeti")["PTCP.ACT"][0] == "gʰrémonts"       # YAv. gramant- 'raging'
+    assert lx.cells("pie-lex-h2melgjos")["GEN.SG"][0] == "h₂mélǵesos"
+    r = produce({"english": "The sad man is hungry.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-wiHros", "role": "SUBJ"}, {"lex_id": "pie-lex-lugjros", "role": "MOD", "head": 0},
+        {"lex_id": "pie-lex-kenketi", "role": "V", "verb": {"tense": "PRS", "mood": "IND", "voice": "ACT"}}]}]}, lx)
+    assert r["pie"] == "luǵrós wiHrós kénketi."         # MOD precedes its head
+
+
+def test_forest_stays_unoffered_without_an_accent(lx, pool):
+    """h₁widʰh₁us 'tree, wood; forest' (Kroonen, Matasović): glossed, but no source gives an accent and the engine has
+    no spec for it, so Tier 3b has the calque pie-neo-forest instead."""
+    assert lx.meaning("pie-lex-h1widhh1us")[1] == "override" and "pie-lex-h1widhh1us" not in pool
+    assert lx.inadmissible("pie-lex-h1widhh1us")

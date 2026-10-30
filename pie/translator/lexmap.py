@@ -37,6 +37,13 @@ OVERRIDES = {
     ("house", "noun"): "pie-lex-doxm", ("day", "noun"): "pie-lex-dinos", ("hungry", "adj"): None,
     ("want", "verb"): "pie-lex-wekjti", ("wish", "verb"): "pie-lex-wekjti", ("dream", "noun"): "pie-lex-supniyom",
     ("grief", "noun"): "pie-lex-kjeh2dos", ("sorrow", "noun"): "pie-lex-kjeh2dos", ("grandfather", "noun"): "pie-lex-h2ewh2os",
+    # dialogue gaps 2026-10-30 (docs/audits/lexicon-gaps-dialogue-2026-10-30.md)
+    ("rage", "verb"): "pie-lex-ghremeti", ("anger", "verb"): "pie-lex-ghromeyeti", ("hunger", "noun"): "pie-lex-gwoldhos",
+    ("hunger", "verb"): "pie-lex-kenketi", ("milk", "noun"): "pie-lex-h2melgjos", ("play", "verb"): "pie-lex-loygeti",
+    ("weave", "verb"): "pie-lex-teksti", ("cup", "noun"): "pie-lex-peh3tlom", ("pot", "noun"): "pie-lex-kweros",
+    ("kettle", "noun"): "pie-lex-kweros", ("knife", "noun"): "pie-lex-kjstrom", ("feast", "noun"): "pie-lex-dh2pnom",
+    ("sad", "adj"): "pie-lex-lugjros", ("story", "noun"): "pie-proj-spelom", ("tale", "noun"): "pie-proj-spelom",
+    ("grandmother", "noun"): "pie-proj-h2enHos",
 }
 
 

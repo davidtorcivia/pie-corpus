@@ -295,3 +295,15 @@ Sound-law checks, round 2: 17 run, 0 warnings.
 | kid (*ǵʰaydos*) | Only Lat. *haedus* is thematic; Gmc *gait-* is another stem. |
 | load, burden (*h₃énos*) | Exists and is usable: `pie-lex-h3enHos` *h₃énHos* "load; burden" (Lat. *onus*, Skt *ánas-*), offered under the keywords `load` and `burden`. A draft project entry was removed after the validator found the homograph. |
 | sweep, cauldron, flower | Sweep exists (`pie-lex-wrseti`, derived gloss). The cauldron *u*-stem is only Skt *carú-*. Flower exists (`pie-lex-h2endhos` "bloom", usable). |
+
+## Round 3 (2026-10-30, dialogue gaps)
+
+Requested by the t3b dialogue planners and the translator. The full ladder (lexicon fix → project → neologism) for all 15 concepts is in `docs/audits/lexicon-gaps-dialogue-2026-10-30.md`. Two concepts reached this file. Sound-law checks: 3 run, 0 warnings.
+
+| Id | Form | Gloss | Branches (same formation) | Checks |
+|---|---|---|---|---|
+| `pie-proj-spelom` | *spélom* n. | story, tale, legend | Germanic, Armenian | 1 (PGmc s-) |
+| `pie-proj-h2enHos` | *h₂énHos* f. | grandmother | Anatolian, Armenian | 2 (Gk, Lat. a- < *h₂e, root-level) |
+
+- *spélom*: PGmc *spellą* "story, tale" (Kroonen *spel(H)-o-*) and Arm. *aṙaspel* "myth, tale" (Martirosyan: *aṙ-* + *spel-*, the same formation as OHG *bī-spel*). Kroonen counts the Armenian only at the root level, and the Germanic *-ll-* (laryngeal?) is unexplained. The accent is projected (as in *wérǵom*). Spec: thematic neuter `spélo`.
+- *h₂énHos*: Hitt. *ḫanna-* (a-stem) and Arm. *han* (o-stem) "grandmother" (Kloekhorst *h₂enHo-*; Martirosyan). Root-level cognates: Lat. *anus*, OHG *ana*, OPr. *ane*. The *-H-* is Kloekhorst's, from the Hittite geminate. Gender f and the accent are projected. Spec: thematic `h₂énHo`, f.

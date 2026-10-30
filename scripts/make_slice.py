@@ -51,8 +51,13 @@ CONVERSATION = ["pie-lex-kwoteros", "pie-lex-priHos", "pie-lex-keh2ilos", "pie-l
 # the keyword match missed): wéḱti 'wish, want' (Hitt. wekzi, Ved. váṣṭi, Gk ἑκών), súpniyom 'dream' (OCS sŭnije,
 # Toch. B sänmetse), ḱéh₂dos 'care, grief' (Gk κῆδος, Oscan cadeis), h₂énǵʰos 'anxiety, distress' (PIIr. *Hánȷ́ʰas,
 # Lat. angor), h₂éwh₂os 'grandfather' (Hitt. ḫuḫḫa-, Arm. haw); cognates from their lexicon reflexes
+# 2026-10-30 dialogue gaps (docs/audits/lexicon-gaps-dialogue-2026-10-30.md; evidence in overrides.jsonl and
+# project_reconstructions.jsonl): anger, hunger, milk, play, weave, cup, pot, knife, feast, sad, story, grandmother
 TIER3B_INHERITED = ["pie-lex-mowdos", "pie-lex-sweh2dos", "pie-lex-newos", "pie-lex-wekjti", "pie-lex-supniyom",
-                    "pie-lex-kjeh2dos", "pie-lex-h2engjhos", "pie-lex-h2ewh2os"]
+                    "pie-lex-kjeh2dos", "pie-lex-h2engjhos", "pie-lex-h2ewh2os",
+                    "pie-lex-ghremeti", "pie-lex-ghromeyeti", "pie-lex-kenketi", "pie-lex-gwoldhos",
+                    "pie-lex-h2melgjos", "pie-lex-loygeti", "pie-lex-teksti", "pie-lex-peh3tlom", "pie-lex-kweros",
+                    "pie-lex-kjstrom", "pie-lex-dh2pnom", "pie-lex-lugjros", "pie-proj-spelom", "pie-proj-h2enHos"]
 ADVERB_POS = ("adv", "prep", "postp")
 NIL_ADMIT = {"pie-lex-bhagos", "pie-lex-bhngjhulos", "pie-lex-bhrtos", "pie-lex-gwowsth2os", "pie-lex-kjh3tos",
              "pie-lex-medtos", "pie-lex-priHtos", "pie-lex-h2rgjipyos", "pie-lex-kjolHtos", "pie-lex-rotos"}
