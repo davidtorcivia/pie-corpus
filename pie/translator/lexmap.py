@@ -35,6 +35,8 @@ OVERRIDES = {
     ("healthy", "adj"): "pie-lex-keh2ilos", ("good", "adj"): "pie-lex-h1wesus", ("fast", "adj"): "pie-lex-HeHkjus",
     ("quick", "adj"): "pie-lex-HeHkjus", ("horse", "noun"): "pie-lex-h1ekjwos", ("home", "noun"): "pie-lex-doxm",
     ("house", "noun"): "pie-lex-doxm", ("day", "noun"): "pie-lex-dinos", ("hungry", "adj"): None,
+    ("want", "verb"): "pie-lex-wekjti", ("wish", "verb"): "pie-lex-wekjti", ("dream", "noun"): "pie-lex-supniyom",
+    ("grief", "noun"): "pie-lex-kjeh2dos", ("sorrow", "noun"): "pie-lex-kjeh2dos", ("grandfather", "noun"): "pie-lex-h2ewh2os",
 }
 
 

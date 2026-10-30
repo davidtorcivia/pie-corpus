@@ -47,7 +47,12 @@ CONVERSATION = ["pie-lex-kwoteros", "pie-lex-priHos", "pie-lex-keh2ilos", "pie-l
 # (lead, 2026-10-29), as the inherited word beats a coinage. The review's h₁éwHt 'help' is not listed here; its root
 # family pie-root-h1ewH-help is no longer held out (hold-out redrawn 2026-10-29, protected as conversational core),
 # so whether to offer it is open. werdʰom has no resolved accent.
-TIER3B_INHERITED = ["pie-lex-mowdos", "pie-lex-sweh2dos", "pie-lex-newos"]
+# 2026-10-30 (t3b-003/006 planners found no 'want', 'dream', 'grief', 'grandfather' in their slices: usable words
+# the keyword match missed): wéḱti 'wish, want' (Hitt. wekzi, Ved. váṣṭi, Gk ἑκών), súpniyom 'dream' (OCS sŭnije,
+# Toch. B sänmetse), ḱéh₂dos 'care, grief' (Gk κῆδος, Oscan cadeis), h₂énǵʰos 'anxiety, distress' (PIIr. *Hánȷ́ʰas,
+# Lat. angor), h₂éwh₂os 'grandfather' (Hitt. ḫuḫḫa-, Arm. haw); cognates from their lexicon reflexes
+TIER3B_INHERITED = ["pie-lex-mowdos", "pie-lex-sweh2dos", "pie-lex-newos", "pie-lex-wekjti", "pie-lex-supniyom",
+                    "pie-lex-kjeh2dos", "pie-lex-h2engjhos", "pie-lex-h2ewh2os"]
 ADVERB_POS = ("adv", "prep", "postp")
 NIL_ADMIT = {"pie-lex-bhagos", "pie-lex-bhngjhulos", "pie-lex-bhrtos", "pie-lex-gwowsth2os", "pie-lex-kjh3tos",
              "pie-lex-medtos", "pie-lex-priHtos", "pie-lex-h2rgjipyos", "pie-lex-kjolHtos", "pie-lex-rotos"}
