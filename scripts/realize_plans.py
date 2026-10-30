@@ -29,6 +29,10 @@ from pie.validate import all_exact, index_plan_compounds, index_project, load_in
 
 ROOT = Path(__file__).resolve().parent.parent
 CAP_EXEMPT = {"pie-lex-h1esti"}          # "to be"
+# capped like a theme-core lexeme (max(15, 1.5% of tokens)), not at the per-lexeme cap: 'give' carries the hymns'
+# closing request ("give us …") and the guest-gift talk; since 2026-10-30 it is the only give-aorist (déh₃ut is
+# blocked and its uses moved to déh₃t), so batches written with both would otherwise fail on the sum
+CORE_CAPPED = {"pie-lex-deh3t"}
 # Tier 3b: at most a quarter of the PIE sentences may contain a neologism (t3b-001 review: the pilot had 48/95)
 COINED_SENTENCE_MAX = 0.25
 
@@ -156,7 +160,7 @@ def main() -> int:
     # the copula is exempt from the per-lexeme cap; everything else is capped
     uses = collections.Counter(t["lex_id"] for r in records for t in r["tokens"]
                                if not t["lex_id"].startswith("closed:") and t["lex_id"] not in CAP_EXEMPT)
-    core = theme_core(args.batch)
+    core = theme_core(args.batch) | CORE_CAPPED
     core_uses = {k: v for k, v in uses.items() if k in core}
     uses = collections.Counter({k: v for k, v in uses.items() if k not in core})
     others = set()

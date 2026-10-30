@@ -5,15 +5,11 @@
  "accent_representation_tokens": 5,
  "accent_defect_tokens": 11,
  "reject_rate": 0.0,
- "distinct_roots": 149,
- "roots_per_sentence": 3.725,
- "distinct_lexemes": 253,
- "max_lexeme_uses": 25,
+ "distinct_roots": 148,
+ "roots_per_sentence": 3.7,
+ "distinct_lexemes": 251,
+ "max_lexeme_uses": 18,
  "most_used": [
-  [
-   "pie-lex-deh3t",
-   25
-  ],
   [
    "pie-lex-gwoxws",
    18
@@ -29,12 +25,16 @@
   [
    "pie-lex-h2iskjeti",
    14
+  ],
+  [
+   "pie-lex-wiHros",
+   14
   ]
  ],
  "dup_within": 0,
  "dup_across_batches": 0,
  "tokens": 1775,
- "words_per_sentence": 41.55,
+ "words_per_sentence": 3.25,
  "words_per_record": 41.55,
  "meter_fit": null,
  "meter_near": null,

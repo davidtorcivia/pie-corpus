@@ -197,7 +197,7 @@ def report(path: Path, misses_only: bool = False, max_edits: int = 8) -> dict:
         n_tokens += len(r["words"])
         uses.update(cap_uses(r["words"]))
     cap = GATE["lexeme_cap"](len(realized), n_tokens)
-    core, core_cap = GATE["theme_core"](batch), GATE["theme_cap"](len(realized), n_tokens)
+    core, core_cap = GATE["theme_core"](batch) | GATE["CORE_CAPPED"], GATE["theme_cap"](len(realized), n_tokens)
     out_plans = []
     total = exact = 0
     for n, rec in enumerate(plans):

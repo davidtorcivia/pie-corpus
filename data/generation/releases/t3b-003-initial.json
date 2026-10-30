@@ -1,0 +1,15 @@
+{
+ "schema_version": 1,
+ "batch": "t3b-003-initial",
+ "sha256": {
+  "records": "6d309f491209be52e31f5682fac2d509ca90d0880cfd373d7fa2f7030f86cc3f",
+  "plans": "b6f5b0c70f6cd604acb8b7f08b8c7218e343fd05b08d9e19024d6f8f307c850c",
+  "gate_report": "10e9dfae5ed8a06fdb23838769893c04f1c164ea9ee3e208f89120071d3da9ec"
+ },
+ "review": {
+  "required": true,
+  "status": "pending",
+  "evidence": [],
+  "rationale": "Awaiting review."
+ }
+}

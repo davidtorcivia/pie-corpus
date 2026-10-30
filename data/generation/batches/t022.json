@@ -5,9 +5,9 @@
  "accent_representation_tokens": 1,
  "accent_defect_tokens": 4,
  "reject_rate": 0.0,
- "distinct_roots": 101,
- "roots_per_sentence": 2.525,
- "distinct_lexemes": 162,
+ "distinct_roots": 100,
+ "roots_per_sentence": 2.5,
+ "distinct_lexemes": 160,
  "max_lexeme_uses": 18,
  "most_used": [
   [
@@ -34,7 +34,7 @@
  "dup_within": 0,
  "dup_across_batches": 0,
  "tokens": 1581,
- "words_per_sentence": 37.58,
+ "words_per_sentence": 5.51,
  "words_per_record": 37.58,
  "meter_fit": null,
  "meter_near": null,
@@ -50,7 +50,7 @@
  "gates": {
   "reject_rate<=0.10": true,
   "max_lexeme_uses<=8": false,
-  "theme_core_uses<=24": true,
+  "theme_core_uses<=24": false,
   "roots_per_sentence>=0.35": true,
   "duplicates<=2%": true,
   "all_exact": true
