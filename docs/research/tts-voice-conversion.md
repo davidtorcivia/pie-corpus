@@ -427,3 +427,23 @@ H after u is generally dark and the services drop it (hard test suHnús after El
 - It strips more h: female túH 0.25/0.00/0.02, the H of h₂yuHénih₂ 0.13, and ɣʷ is gone in the female voice.
 - Its male output is rougher (HNR 11.2 vs 14.1).
 - ElevenLabs matches or beats it on every measure.
+
+### VTL v7: accent 4.0 vs 4.6, túH fixes (2026-10-29)
+
+| hymn | accent VTL → ElevenLabs | decl/line VTL → ElevenLabs |
+|---|---|---|
+| JD3 `--accent-range 4.0` | +3.4 → +5.0 | −3.7 → −3.0 |
+| W02 `--accent-range 4.0` | +3.3 → +4.3 | −3.7 → −3.8 |
+
+The VTL renders at 4.6 measure +3.9 / +3.8. ElevenLabs still adds 1–1.6 st of accent on top.
+
+**h.** The middle túH (before ń̥dʰgʷʰiteh₂) is now strong in raw VTL: 0.57 JD3, 0.47 W02 (was 0.13 / 0.32).
+ElevenLabs still deletes it in both voices (0.00 / 0.02). It also drops some other h tokens in the male voice:
+- third túH 0.33 → 0.08;
+- h₁wésu 0.45 → 0.14.
+
+This is ElevenLabs gating short, isolated breath noise before a pause. It can't be fully fixed at the source, and
+ElevenLabs output can't be training data anyway, so further h tuning should target the open-source VC that will build the set.
+
+**i after gʷʰ in JD3.** It sits at about −6.5 dB, which is JD3's intrinsic [i] level (about 5 dB under its [o]).
+High vowels are intrinsically quieter in natural speech too, so this is acceptable.
