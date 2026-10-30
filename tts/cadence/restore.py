@@ -15,6 +15,8 @@ Only the tokens below threshold are rebuilt, and nothing else in the audio is to
 Where the converter deleted an h, it usually stretched the neighbouring vowel across it rather than leaving silence.
 So a rebuilt token first ducks the converter's audio over the interval (H_DUCK / CHI_DUCK, 10 ms ramps),
 then lays the noise in.
+A word-final H that the VTL render itself voices (pie_vtl.py --final-h murmur: share under 0.15 there) is a
+murmured tail the converter usually keeps. It is not ducked; breath is added over its second half only.
 Env: H_LEVEL (−12), CHI_LEVEL (−9), H_DUCK (0.85), CHI_DUCK (0.5), H_MIN_SHARE (0.25), CHI_MIN_SHARE (0.30),
 FORCE=1 rebuilds every token."""
 import json, os, sys
@@ -78,6 +80,7 @@ def main(conv_p, vtl_p, json_p, out_p):
     mid = lambda p: seg(p["start"] + 0.2 * (p["end"] - p["start"]), p["end"] - 0.2 * (p["end"] - p["start"]))
     vmed = np.median([rms(mid(p)) for p in nucs])
     out = y.copy(); report = []
+    ref_share = lambda p: share(ref[int(p["start"] * sr_r):int(p["end"] * sr_r)], sr_r)
     for w in J["words"]:
         ph = w["phones"]
         for i, p in enumerate(ph):
@@ -86,13 +89,17 @@ def main(conv_p, vtl_p, json_p, out_p):
             x = seg(p["start"], p["end"])
             sh, lv = share(x, sr), 20 * np.log10(rms(x) / vmed)
             need = FORCE or sh < (H_MIN if base == "h" else CHI_MIN)
-            report.append(f"{w['word']:14s} {p['phone']:3s} share {sh:.2f} level {lv:+5.1f} dB  {'REBUILT' if need else 'kept'}")
+            murmur = base == "h" and i == len(ph) - 1 and ref_share(p) < 0.15
+            report.append(f"{w['word']:14s} {p['phone']:3s} share {sh:.2f} level {lv:+5.1f} dB  "
+                          f"{('BREATH ADDED' if murmur else 'REBUILT') if need else 'kept'}")
             if not need: continue
             a, b = max(int((p["start"] + d - 0.005) * sr), 0), int((p["end"] + d + 0.005) * sr); n = b - a
             prev = next((q for q in reversed(ph[:i]) if q["kind"] in NUC + ("G",)), None)
             nxt = next((q for q in ph[i + 1:] if q["kind"] in NUC + ("G",)), None)
             ramp = min(int(0.012 * sr), n // 2)
             env = np.ones(n); env[:ramp] = 0.5 - 0.5 * np.cos(np.linspace(0, np.pi, ramp)); env[n - ramp:] = env[:ramp][::-1]
+            if murmur:                                       # breath over the second half, the tail itself kept
+                h = n // 2; env[:h] = 0; env[h:h + ramp] = 0.5 - 0.5 * np.cos(np.linspace(0, np.pi, len(env[h:h + ramp])))
             if base == "h":
                 cols = [v for v in (prev, nxt) if v is not None] or [min(nucs, key=lambda v: abs(v["start"] - p["start"]))]
                 layers = []
@@ -101,7 +108,7 @@ def main(conv_p, vtl_p, json_p, out_p):
                     z = np.fft.irfft(np.fft.rfft(rng.standard_normal(n)) * lpc_env(vx, n, sr), n)
                     layers.append(z / rms(z) * rms(vx) * 10 ** (H_LEVEL / 20))
                 noise = layers[0] * (1 - np.linspace(0, 1, n)) + layers[1] * np.linspace(0, 1, n) if len(layers) == 2 else layers[0]
-                if nxt is None:                                  # word-final H: breath dies away
+                if nxt is None and not murmur:                   # word-final H: breath dies away
                     h = n // 2; env[h:] *= np.linspace(1, 0, n - h) ** 1.5
             else:
                 near = min(nucs, key=lambda v: min(abs(v["start"] - p["end"]), abs(v["end"] - p["start"])))
@@ -111,7 +118,7 @@ def main(conv_p, vtl_p, json_p, out_p):
             duck = np.ones(n); r = min(int(0.010 * sr), n // 2)
             duck[:r] = np.linspace(1, 0, r); duck[n - r:] = np.linspace(0, 1, r); duck[r:n - r] = 0
             if base == "h" and nxt is None: duck[n - r:] = 0          # word-final: the vowel stays cut
-            keep = 1 - (H_DUCK if base == "h" else CHI_DUCK) * (1 - duck)
+            keep = 1 - (0 if murmur else H_DUCK if base == "h" else CHI_DUCK) * (1 - duck)
             out[a:b] = out[a:b] * keep + noise * env
     out = out / max(1.0, np.abs(out).max() / 0.99)
     sf.write(out_p, out, sr)
