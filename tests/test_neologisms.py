@@ -210,11 +210,17 @@ def test_slice_to_export_production_path(lx, tmp_path, monkeypatch):
     plain = json.loads((tmp_path / "data/generation/slices/plain.json").read_text())["lexemes"]
     b = {it["lex_id"]: it for it in json.loads((tmp_path / "data/generation/slices/t3b-probe.json").read_text())["lexemes"]}
     assert not any(it["lex_id"].startswith("pie-neo-") for it in plain)
-    assert {r["neo_id"] for r in _rows()} <= set(b) and all(b[r["neo_id"]]["coined"] == "neologism" for r in _rows())
+    from pie.realize import Lexicon
+    blocked = Lexicon.load().blocked                 # a blocked coinage (pie-neo-money, 2026-10-30) is never offered
+    offered_rows = [r for r in _rows() if r["neo_id"] not in blocked]
+    assert {r["neo_id"] for r in offered_rows} <= set(b) and all(b[r["neo_id"]]["coined"] == "neologism"
+                                                                 for r in offered_rows)
+    assert not any(r["neo_id"] in b for r in _rows() if r["neo_id"] in blocked)
     assert "coined" not in b.get(SEE, {})
-    assert not any(b[r["neo_id"]].get("compound_second") for r in _rows())
-    # and the inherited alternatives the brief points to (mówdos for joy, h₁éwHt for help), never in a Tier 3 slice
-    assert set(ms["TIER3B_INHERITED"]) <= set(b) and "pie-lex-mowdos" not in {it["lex_id"] for it in plain}
+    assert not any(b[r["neo_id"]].get("compound_second") for r in offered_rows)
+    # and the inherited alternatives the brief points to (mówdos for joy, …): since 2026-10-30 in every slice, Tier 3
+    # too (make_slice: the in-world dialogues need them most), so the plain slice has them as well
+    assert set(ms["TIER3B_INHERITED"]) <= set(b) and "pie-lex-mowdos" in {it["lex_id"] for it in plain}
     # 2. a plan from the slice, through scripts/realize_plans.py as a Tier 3b batch
     assert _run_realize(tmp_path, monkeypatch, lx, "t3b-probe", [_plan()], "--tier3b") == 0
     batch = json.loads((tmp_path / "data/generation/batches/t3b-probe.json").read_text())
