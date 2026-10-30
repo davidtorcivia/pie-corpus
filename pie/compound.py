@@ -289,7 +289,10 @@ def resolve(c: dict, lx) -> Compound:
 
 
 def member_ids(lex_id: str) -> list[str]:
-    """The two member ids of a realized compound's lex_id (compound:<type>:<first>+<second>)."""
+    """The two member ids of a realized compound's lex_id (compound:<type>:<first>+<second>); for a degree of
+    comparison (degree:<CMP|SUP>:<lex_id>, pie.degree) the adjective it is built on."""
+    if lex_id.startswith("degree:"):
+        return [lex_id.split(":", 2)[2]]
     if not lex_id.startswith("compound:"):
         return []
     return lex_id.split(":", 2)[2].rsplit("+", 1)

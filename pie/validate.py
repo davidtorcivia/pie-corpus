@@ -49,6 +49,9 @@ compounds are added with index_plan_compounds(ix, plan) (or ix.add_compound(c))
 before its text is validated. The cells come from the same function the
 realizer uses, so a realized compound validates at the exact tier.
 
+Degrees of comparison (pie.degree) are indexed the same way, per plan, with
+index_plan_degrees(ix, plan) (or ix.add_degree(lex_id, degree)).
+
 Project reconstructions (data/lexicon/project_reconstructions.jsonl, coined
 "project") are not in load_index's index, so Tier 1 and Tier 2 are never
 validated against them. Tier 3/3b adds them with index_project(ix).
@@ -250,6 +253,29 @@ class FormIndex:
                     self._add(f, Analysis(cmp.lex_id, root, feat, "engine:compound", g))
         return cmp.lex_id
 
+    def add_degree(self, lex_id: str, degree: str) -> str | None:
+        """Index every cell of one adjective's comparative or superlative (pie.degree, the realizer's function);
+        returns the token lex_id (degree:<CMP|SUP>:<lex_id>), or None if the engine cannot build it."""
+        from .degree import DegreeError, degree_id, cells
+        from .realize import Lexicon
+        if self._lx is None:
+            self._lx = Lexicon(self.lex, self.specs, self.closed)
+        did = degree_id(degree, lex_id)
+        if did in self._compounds:
+            return did
+        try:
+            per_gender = {g: cells(lex_id, degree, g, self._lx) for g in ("m", "f", "n")}
+        except (DegreeError, KeyError, ValueError):
+            return None
+        self._compounds.add(did)
+        root = self.lex.get(lex_id, {}).get("root_id")
+        for g, c in per_gender.items():
+            for feat, forms in c.items():
+                for k, f in enumerate(forms):
+                    self._add(f, Analysis(did, root, feat, "engine:degree", g,
+                                          status="primary" if k == 0 else "supported"))
+        return did
+
     def add_table_cells(self, paradigms: list[dict]) -> None:
         """Every cell of every clean Wiktionary table, verbatim, including the
         classes the engine does not build yet (middle, subjunctive, optative,
@@ -325,6 +351,19 @@ def index_plan_compounds(ix: FormIndex, plan: dict) -> list[str]:
         for s in cl.get("slots", []):
             if s.get("lex_id") == "compound" and isinstance(s.get("compound"), dict):
                 lid = ix.add_compound(s["compound"])
+                if lid:
+                    out.append(lid)
+    return out
+
+
+def index_plan_degrees(ix: FormIndex, plan: dict) -> list[str]:
+    """Add the comparatives and superlatives of a realizer plan (adjective slots with "degree") to the index:
+    like compounds they are built per plan (pie.degree), so a realized degree form validates at the exact tier."""
+    out = []
+    for cl in plan.get("clauses", []):
+        for s in cl.get("slots", []):
+            if s.get("degree") and isinstance(s.get("lex_id"), str) and not s["lex_id"].startswith("closed:"):
+                lid = ix.add_degree(s["lex_id"], s["degree"])
                 if lid:
                     out.append(lid)
     return out

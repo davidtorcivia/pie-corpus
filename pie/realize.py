@@ -28,7 +28,9 @@ Plan (one sentence):
        "gender": null | "m|f|n",                   # pronoun slots used on their own (tod "it", kʷíd "what")
        "and": false,                               # -kʷe "and" after this word (X Y-kʷe = X and Y)
        "dep": null | <slot index>,                 # a participle's own object; or a GOAL/LOC/ABL/INS/IO noun governed
-                                                   # by an ADV adposition, placed before it (tóns próti 'toward them')
+                                                   # by an ADV adposition, placed before it (tóns próti 'toward them');
+                                                   # or the ABL standard of a comparative / POSS of a superlative
+       "degree": null | "CMP" | "SUP",             # adjective slots: comparative *-yos-, superlative *-isto- (below)
        "verb": {"tense": "PRS|PST|AOR|PRF", "mood": "IND|IMP|SBJV|OPT", "voice": "ACT|MID",
                 "person": null | 1 | 2 | 3,       # person and number default to the subject's (3SG without one);
                 "num": null | "SG|DU|PL"}}]}]}    # set them for pro-drop ("let us go": person 1, num PL, no SUBJ)
@@ -73,6 +75,24 @@ Apposition. A slot with role "APPOS" and "head": k is a noun phrase in appositio
   an APPOS; a MOD cannot. Unlike MOD it is a separate phrase (Ringe 2017 §3.3.2: nouns in apposition are
   separate NPs), so an adjective there reads 'the immortal ones', not 'immortal'.
 
+Degrees of comparison (pie.degree; docs/morphology-comparison-and-comitative.md). "degree": "CMP" | "SUP" on an
+  adjective slot (MOD, PRED, APPOS, or a noun role with a gender) builds the primary comparative or superlative on
+  the adjective's root: swéh₂dus → swéh₂dyōs 'sweeter', swéh₂distos 'sweetest' (Fortson §6.78, §6.81; Beekes §14.4;
+  Handbook ch. 122: Ved. svā́dīyas-, svā́diṣṭha-, Gk ἡδίων, ἥδιστος). Comparative: common-gender s-stem, nom. -yōs, acc.
+  -yosm̥, gen. -isés …, neuter -yos; superlative: thematic -istos/-isteh₂/-istom. Only primary adjectives take them
+  (-u-, -ro-, -mo-, root-accented thematic, zero-grade *-ó-, root adjectives like méǵh₂s); check_plan rejects the
+  rest with the reason (-tó- participles, -yo- relational adjectives, compounds …). The token's lex_id is
+  "degree:<CMP|SUP>:<lex_id>", its gloss "sweet.CMP", and it carries degree_status: "nuclear-IE" (comparative: not in
+  Anatolian or Tocharian) or "late-IE" (superlative: built later on the comparative's *-is-; Italic and Celtic
+  have *-is-m̥mo- instead, Ringe 2006 §2.4.2(iii)). The standard of comparison ('than the wolf') is an ABL slot with "dep": <the comparative slot>,
+  placed before it (the ablative of comparison: Ringe 2006 §2.3.1; Old Iranian, Handbook ch. 35 §5.4, Av. aniiō
+  θβāt̰ 'other than you');
+  a superlative's 'of the horses' is a POSS slot with "dep": <the superlative slot> (partitive genitive).
+Personal pronouns under an adposition. A closed:personal/1|2|refl slot may be the dep of an ADV adposition in any
+  role of ADPOSITION_ROLES. The 1st/2nd-person pronouns have no instrumental or locative (Ringe 2006 p. 57): as
+  the dep of an adposition, INS ('with me': ḱóm) and LOC ('among us') are realized in the dative, méǵʰye ḱóm,
+  n̥sméy médʰi, and the token says case_fallback "ins->dat" / "loc->dat" (PRONOUN_ADPOSITION_CASE). Elsewhere a
+  pronoun INS or LOC is a plan error; a pronoun governed by an adposition is never enclitic.
 Interrogative and correlative adverbs. closed:interrogative_adv/why|when|where|how|how_many (kʷíd, kʷóm, kúdʰe,
   kʷíh₁, kʷóti) and closed:correlative_adv/so_many|as_many (tóti, h₁yóti) are indeclinable (closed_class.json, with
   their refs): role ADV; the three quantifiers also MOD with a head, which takes the plural. Interrogatives front
@@ -130,6 +150,7 @@ from functools import lru_cache
 from pathlib import Path
 
 from .compound import CompoundError, resolve as resolve_compound
+from . import degree as _degree
 from .morph import AdjSpec, NounSpec, VerbSpec, conjugate, decline, decline_adj, decline_participle
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -181,6 +202,8 @@ class Word:
     voice: str | None = None        # ACT | MID for verbs and participles
     num_fallback: str | None = None  # du->pl when the controller's dual cell is unavailable
     coined: str | None = None       # "project" for a project reconstruction (Lexicon.coined)
+    degree_status: str | None = None  # a comparative "nuclear-IE" / superlative "late-IE" (pie.degree.STATUS)
+    case_fallback: str | None = None  # "ins->dat" / "loc->dat": a 1st/2nd-person pronoun under an adposition
 
 
 PROJECT_RECONSTRUCTIONS = ROOT / "data/lexicon/project_reconstructions.jsonl"
@@ -420,6 +443,14 @@ class Lexicon:
                 out = {f: v for f, v in self.cells(lex_id).items() if cell_voice(f) in voices}
         self._cache[k] = out
         return out
+
+    def degree_cells(self, lex_id: str, degree: str, gender: str) -> dict:
+        """An adjective's comparative (CMP) or superlative (SUP) cells in one gender (pie.degree; the realizer, the
+        validator and pie.export read them here). {} for a lexeme that may not be used; DegreeError for one whose
+        degree the engine cannot build."""
+        if self.inadmissible(lex_id):
+            return {}
+        return _degree.cells(lex_id, degree, gender, self)
 
     def admissible_participle_cells(self, lex_id: str, voice: str, gender: str) -> dict:
         """A participle's case forms, or {} for a voice the verb may not take (a deponent's is middle)."""
@@ -797,6 +828,98 @@ def _check_adposition_dep(s: dict, head: dict, where: str, lx: Lexicon) -> list[
     return []
 
 
+# --- personal pronouns under an adposition, and the cases they lack ---------------------------------------------
+# The 1st/2nd-person and reflexive pronouns have no instrumental or locative: Ringe 2006 §2.3.6(iii) p. 57 prints
+# four singular cases and '???' for the stressed plural oblique; Fortson §7.2 reconstructs little beyond the stems;
+# only Beekes §15.3.1 offers a singular loc./ins. *h₁mói, *tói, which he calls unclear and which is the shape of
+# his dative-genitive clitic. The daughters' instrumentals (Ved. máyā, OCS mъnojǫ, Lith. manimì) are each built
+# anew. Governed by an adposition ('with me', 'among us') the pronoun takes the dative: the case a pronoun takes
+# after 'with' in Greek (σύν + dat.), Gothic (miþ + dat., miþ sis; miþ is the cognate of médʰi, Kroonen s.v. *medi)
+# and Old Irish (co + dat., the cognate of ḱóm); only Latin has the ablative (mē-cum, mē(d) < *h₁med: de Vaan s.v.
+# com-, me). The token says so (case_fallback "ins->dat" / "loc->dat"). The evidence and the rejected alternatives
+# are in docs/morphology-comparison-and-comitative.md.
+PRONOUN_FALLBACK_CASES = ("INS", "LOC")
+PRONOUN_ADPOSITION_CASE = "DAT"
+
+
+def _governed_by_adposition(s: dict, slots: list) -> bool:
+    d = s.get("dep")
+    return isinstance(d, int) and 0 <= d < len(slots) and slots[d].get("role") == "ADV"
+
+
+def pronoun_fallback(lx: Lexicon, s: dict, slots: list, case: str, num: str) -> str | None:
+    """The case a personal pronoun takes instead of one it lacks: PRONOUN_ADPOSITION_CASE for an instrumental or
+    locative governed by an adposition; None if the pronoun has the case or no fallback applies."""
+    lid = s.get("lex_id", "")
+    if not lid.startswith("closed:personal/") or s.get("enclitic"):
+        return None
+    if _closed_form(lx, lid, f"{case}.{num}", "m") is not None:
+        return None
+    if case in PRONOUN_FALLBACK_CASES and _governed_by_adposition(s, slots):
+        return PRONOUN_ADPOSITION_CASE
+    return None
+
+
+def _check_personal_case(s: dict, si: int, slots: list, where: str, lx: Lexicon) -> list[str]:
+    """A 1st/2nd-person or reflexive pronoun in a case it has no form for is a plan error with the reason (it used
+    to surface as 'form not generated'); under an adposition the instrumental and locative fall back (above)."""
+    lid, role = s.get("lex_id", ""), s.get("role")
+    if not lid.startswith("closed:personal/") or role not in ROLE_CASE:
+        return []
+    if s.get("enclitic") and _governed_by_adposition(s, slots):
+        return [f"{where}: a pronoun governed by an adposition is the stressed form (no enclitic): an enclitic "
+                f"moves to the second position of the clause, away from its adposition"]
+    case = ROLE_CASE[role]
+    num = slot_number(slots, si)
+    if num == "DU" and case not in ("NOM", "ACC", "VOC"):
+        num = "PL"                    # dual obliques: the plural stands in (realize_clause)
+    feat = f"{case}.{num}" + (".ENCL" if s.get("enclitic") else "")
+    if _closed_form(lx, lid, feat, "m") is not None:
+        return []
+    fb = pronoun_fallback(lx, s, slots, case, num)
+    if fb and _closed_form(lx, lid, f"{fb}.{num}", "m") is not None:
+        return []
+    who = {"1": "1st-person", "2": "2nd-person", "refl": "reflexive"}.get(lid.split("/")[1], "personal")
+    hint = {"INS": " For 'with me / with you' put the pronoun under an adposition: ADV ḱóm (pie-lex-kjom) and the "
+                   "pronoun as its dep with role INS ('méǵʰye ḱóm'); for 'by me' (agent or means) rephrase.",
+            "LOC": " For 'in / among us' put the pronoun under an adposition (ADV h₁én, médʰi …) as its dep with role "
+                   "LOC."}.get(case, "")
+    return [f"{where}: the {who} pronoun has no {feat} form (Ringe 2006 p. 57: only the nominative, accusative, "
+            f"genitive and dative are reconstructable in the singular, and the plural oblique only as an enclitic; "
+            f"closed_class.json adds the ablative méd/twéd).{hint}"]
+
+
+# --- degrees of comparison (pie.degree) ---------------------------------------------------------------------------
+def _check_degree(s: dict, where: str, lx: Lexicon) -> list[str]:
+    """"degree": "CMP" | "SUP" on an adjective slot: the engine must be able to build it from the root."""
+    d = s.get("degree")
+    lid = s.get("lex_id", "")
+    if d not in _degree.DEGREES:
+        return [f"{where}: degree must be one of {', '.join(_degree.DEGREES)}, not {d!r}"]
+    if lid.startswith("closed:") or lid == "compound" or s.get("participle") is not None:
+        return [f"{where}: a degree (comparative, superlative) is built on an adjective lexeme, not on "
+                f"{'a participle' if s.get('participle') is not None else lid}"]
+    if lx.inadmissible(lid):
+        return []                     # reported once by check_plan's own lexeme check
+    try:
+        _degree.base(lid, lx)
+    except _degree.DegreeError as e:
+        return [f"{where}: {e}"]
+    return []
+
+
+def _check_degree_dep(s: dict, head: dict, where: str) -> list[str]:
+    """The standard of comparison ('than X') is an ABL slot whose dep is the comparative (the ablative of
+    comparison: Ringe 2006 §2.3.1; Old Iranian, Handbook ch. 35 §5.4); a superlative's 'of X' is a POSS slot (partitive genitive) whose dep is the
+    superlative."""
+    want = {"CMP": "ABL", "SUP": "POSS"}.get(head.get("degree"))
+    if s.get("role") != want:
+        return [f"{where}: a slot governed by a {'comparative' if want == 'ABL' else 'superlative'} is its "
+                f"{'standard (than X): role ABL' if want == 'ABL' else 'partitive genitive (of X): role POSS'}, "
+                f"not {s.get('role')}"]
+    return []
+
+
 def _check_pred_gender(ci: int, cl: dict, slots: list, lx: Lexicon) -> list[str]:
     """A predicate adjective agrees with its controller (the subject or addressee), so a `gender` on the PRED
     slot itself is ignored. One that contradicts the controller's gender is a plan error: the gender
@@ -874,6 +997,11 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
             d = s.get("dep")
             if isinstance(d, int) and 0 <= d < len(slots) and slots[d].get("role") == "ADV":
                 errs += _check_adposition_dep(s, slots[d], where, lx)
+            if isinstance(d, int) and 0 <= d < len(slots) and slots[d].get("degree") is not None:
+                errs += _check_degree_dep(s, slots[d], where)
+            if s.get("degree") is not None:
+                errs += _check_degree(s, where, lx)
+            errs += _check_personal_case(s, si, slots, where, lx)
             if lid.startswith("closed:"):
                 errs += _check_closed(s, slots, where, lx)
                 continue
@@ -902,8 +1030,10 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
             if s.get("dep") is not None:
                 d = s["dep"]
                 if not (isinstance(d, int) and 0 <= d < len(slots)
-                        and (slots[d].get("participle") or slots[d].get("role") == "ADV")):
-                    errs.append(f"{where}: dep must point at a participle slot or an adposition (ADV) slot")
+                        and (slots[d].get("participle") or slots[d].get("role") == "ADV"
+                             or slots[d].get("degree") is not None)):
+                    errs.append(f"{where}: dep must point at a participle slot, an adposition (ADV) slot or a "
+                                f"comparative/superlative (degree) slot")
             if role == "V" and fam != "verb":
                 errs.append(f"{where}: V slot needs a verb, {lid} is a {fam}")
             if role == "V" and fam == "verb" and (s.get("verb") or {}).get("voice", "ACT") not in lx.voices(lid):
@@ -1363,11 +1493,15 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
             if role == "MOD" and head["role"] == "MOD":
                 raise KeyError("MOD cannot head a MOD")
             n = head.get("num", "SG")
+            wlid, wgloss, dstatus, case_fb = lid, None, None, None
             if n == "DU" and case not in ("NOM", "ACC", "VOC") and not lid.startswith("closed:numerals"):
                 # dual obliques are not reconstructible (Fortson §6.13, §6.50; Lundquist & Yates
                 # §122.2.1.1; Ringe ???): the plural stands in, and the feature says so
                 n = "PL"
             g = _slot_gender(head, lx)
+            fb = pronoun_fallback(lx, s, slots, case, n) if lid.startswith("closed:personal/") else None
+            if fb:                    # 'with me': the dative (PRONOUN_ADPOSITION_CASE), flagged on the token
+                case_fb, case = f"{case.lower()}->{fb.lower()}", fb
             feat = f"{case}.{n}" + (".ENCL" if s.get("enclitic") else "")
             if lid == "compound":
                 cmp = resolve_compound(s["compound"], lx)
@@ -1383,14 +1517,21 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
                 pv = s["participle"].get("voice", "ACT")
                 form = lx.admissible_participle_cells(lid, pv, g)[feat][0]
                 feat = f"PTCP.{pv}.{feat}"
+            elif lx.specs[lid]["family"] == "adj" and s.get("degree"):
+                form = lx.degree_cells(lid, s["degree"], g)[feat][0]
+                wlid, wgloss = _degree.degree_id(s["degree"], lid), f"{lx.gloss(lid)}.{_degree.GLOSS[s['degree']]}"
+                dstatus = _degree.STATUS[s["degree"]]
             elif lx.specs[lid]["family"] == "adj":
                 form = lx.admissible_cells(lid, g)[feat][0]
             else:
                 form = lx.admissible_cells(lid)[feat][0]
-        words[i] = Word(form, lid, lx.gloss(lid), feat, i,
+        if role == "ADV":
+            wlid, wgloss, dstatus, case_fb = lid, None, None, None
+        words[i] = Word(form, wlid, wgloss or lx.gloss(lid), feat, i,
                         clitic=feat.endswith(".ENCL") or form in ENCLITIC_PRONOUNS,
                         gender=g if role != "ADV" else None,
-                        voice=s["participle"].get("voice", "ACT") if s.get("participle") else None)
+                        voice=s["participle"].get("voice", "ACT") if s.get("participle") else None,
+                        degree_status=dstatus, case_fallback=case_fb)
 
     # phrases: every MOD/POSS goes directly before its head, recursively; an APPOS phrase follows
     # its head's phrase ('the horses, immortal ones'), or precedes it with "before"
@@ -1483,7 +1624,8 @@ def token_cell(w: dict) -> dict:
     """Resolved cell metadata, number fallback and the project-reconstruction flag ("coined": "project")
     of a realized word for a corpus token. Only applicable keys are included; features continues to name
     the realized cell."""
-    return {k: w[k] for k in ("gender", "voice", "num_fallback", "coined") if w.get(k)}
+    return {k: w[k] for k in ("gender", "voice", "num_fallback", "case_fallback", "degree_status", "coined")
+            if w.get(k)}
 
 
 def realize(plan: dict, lx: Lexicon | None = None) -> dict:

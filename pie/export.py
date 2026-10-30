@@ -192,7 +192,16 @@ def token_variants(r: dict, lx) -> list[list[str]] | None:
     for t in r.get("tokens", []):
         feat, lid = t.get("features"), t.get("lex_id") or ""
         alts = [t["form"]]
-        if isinstance(feat, str) and lid in lx.specs and not lx.inadmissible(lid):
+        if isinstance(feat, str) and lid.startswith("degree:") and t.get("gender"):
+            # a comparative or superlative (pie.degree): the same cell of the same degree and gender
+            _, degree, base = lid.split(":", 2)
+            try:
+                cells = lx.degree_cells(base, degree, t["gender"])
+            except (KeyError, ValueError):
+                cells = {}
+            if t["form"] in cells.get(feat, []):
+                alts = list(dict.fromkeys([t["form"]] + list(cells[feat])))
+        elif isinstance(feat, str) and lid in lx.specs and not lx.inadmissible(lid):
             cell, gender, fam = feat.split("|")[0], t.get("gender"), lx.specs[lid]["family"]
             try:
                 if cell.startswith("PTCP."):                     # PTCP.MID.NOM.SG

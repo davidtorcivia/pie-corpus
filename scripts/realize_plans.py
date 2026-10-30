@@ -25,7 +25,7 @@ from pie.realize import Lexicon, check_plan, plan_warnings, realize, token_cell
 from pie.translit import to_ascii
 from pie.compound import member_ids
 from pie.neologism import coined_sentences, index_neologisms, split_english_only, tier3b_plan_errors, with_neologisms
-from pie.validate import all_exact, index_plan_compounds, index_project, load_index, validate_text
+from pie.validate import all_exact, index_plan_compounds, index_plan_degrees, index_project, load_index, validate_text
 
 ROOT = Path(__file__).resolve().parent.parent
 CAP_EXEMPT = {"pie-lex-h1esti"}          # "to be"
@@ -128,6 +128,7 @@ def main() -> int:
         warnings += [(p.get("plan_id", n), w) for w in plan_warnings(plan, lx)]   # printed, never a reject
         r = realize(plan, lx)
         index_plan_compounds(ix, plan)          # compounds are open-ended: indexed per plan
+        index_plan_degrees(ix, plan)            # and so are comparatives and superlatives (pie.degree)
         v = validate_text(r["pie"], ix)
         stats["realized"] += 1
         # primary and supported forms only: a legacy match or a known error fails the all_exact gate
