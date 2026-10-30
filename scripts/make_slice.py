@@ -45,6 +45,25 @@ CONVERSATION = ["pie-lex-kwoteros", "pie-lex-priHos", "pie-lex-keh2ilos", "pie-l
                 # second, fight (n. and v.), choose
                 "pie-lex-gwexn", "pie-lex-h2yuHnkjos", "pie-lex-h2elyos", "pie-lex-h1eteros", "pie-lex-keh3tus",
                 "pie-lex-wiketi", "pie-lex-welh1t-2"]
+# Everyday words every slice offers (2026-10-30: the t036/t039/t042 planners reported day, evening, road, wind, ice,
+# summer … missing, though usable: the size cap had squeezed them out). Hand-checked, one lexeme per concept: the
+# body, kin, the herd, food and fire, the sky and the seasons, the commonest verbs.
+EVERYDAY = [
+    "pie-lex-dinos", "pie-lex-nokwts", "pie-lex-wekwsperos", "pie-lex-stoyghos", "pie-lex-h2enh1mos-2",
+    "pie-lex-h2werst", "pie-lex-snoygwhos", "pie-lex-h1yegos", "pie-lex-smh2eros", "pie-lex-yoh1r",
+    "pie-lex-prexkjst", "pie-lex-h1edti", "pie-lex-peh3t", "pie-lex-swepnos", "pie-lex-doxm", "pie-lex-peh2wr",
+    "pie-lex-wodr", "pie-lex-maxdsos", "pie-lex-mexms", "pie-lex-h2egjros", "pie-lex-doru", "pie-lex-h2ekjmox",
+    "pie-lex-deh2nu", "pie-lex-soh2wl", "pie-lex-lowksneh2", "pie-lex-h2stexr", "pie-lex-dhegjhoxm",
+    "pie-lex-gwoxws", "pie-lex-h2ewis", "pie-lex-kjerh2sox", "pie-lex-gjhostos", "pie-lex-poxds", "pie-lex-h3okws",
+    "pie-lex-h2oxws", "pie-lex-h1oh3s", "pie-lex-kjexr", "pie-lex-h1nomn", "pie-lex-wekwos", "pie-lex-keh2nmn",
+    "pie-lex-deywos", "pie-lex-h3rexgjs", "pie-lex-ghostis", "pie-lex-bhreh2texr", "pie-lex-swesoxr",
+    "pie-lex-suHnus", "pie-lex-dhugh2texr", "pie-lex-ph2texr", "pie-lex-meh2texr", "pie-lex-potnih2",
+    "pie-lex-gwexn", "pie-lex-wiHros", "pie-lex-gjerh2onts", "pie-lex-h2yuHnkjos", "pie-lex-h1wesus",
+    "pie-lex-megjh2s", "pie-lex-dhebhus", "pie-lex-newos", "pie-lex-sriHgos", "pie-lex-gwmyeti", "pie-lex-h1eyti",
+    "pie-lex-widet", "pie-lex-kjlewt", "pie-lex-woyde", "pie-lex-deh3t", "pie-lex-wewket", "pie-lex-bheh2ti",
+    "pie-lex-sedyeti", "pie-lex-sth2eh1yeti", "pie-lex-kjeytor", "pie-lex-gwih3weti", "pie-lex-mert",
+    "pie-lex-lubhyeti", "pie-lex-bhebhoyh2e", "pie-lex-h2melgjti"
+]
 # Tier 3b (--tier3b): inherited words the planner brief and the t3b-001 review point to in place of a coinage
 # (archaic first): mówdos 'joy' and swéh₂dos 'pleasure' (not géh₂dʰos), néwos 'new' (not h₂énteros 'other' beside
 # 'answer'). mówdos is NIL single-branch (Ved. móda-; P9 keeps those out of Tier 3 slices); Tier 3b offers it
@@ -290,6 +309,8 @@ def main() -> int:
     # the inherited everyday words (named for Tier 3b, where they replaced coinages; since 2026-10-30 offered to every
     # slice, as the in-world Tier 3 dialogues need them most): usable, unblocked and accented; P9's NIL hold waived
     from pie.export import eval_root
+    chosen += [i for i in EVERYDAY if i not in chosen and lx.specs.get(i, {}).get("usable") and i not in lx.blocked
+               and planner_accent_ok(lx, i)]
     chosen += [i for i in TIER3B_INHERITED if i not in chosen and lx.specs.get(i, {}).get("usable")
                and i not in lx.blocked and planner_accent_ok(lx, i)
                and not eval_root(lx.entries[i].get("root_id"))]

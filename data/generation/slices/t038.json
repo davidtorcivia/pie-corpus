@@ -5083,6 +5083,279 @@
    ]
   },
   {
+   "lex_id": "pie-lex-dinos",
+   "form": "dinos",
+   "gloss": "day",
+   "family": "noun",
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-wekwsperos",
+   "form": "wekʷsperos",
+   "gloss": "evening",
+   "family": "noun",
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 8
+  },
+  {
+   "lex_id": "pie-lex-stoyghos",
+   "form": "stóygʰos",
+   "gloss": "path, way",
+   "family": "noun",
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-h2enh1mos-2",
+   "form": "h₂énh₁mos",
+   "gloss": "wind; spirit",
+   "family": "noun",
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 36
+  },
+  {
+   "lex_id": "pie-lex-snoygwhos",
+   "form": "snóygʷʰos",
+   "gloss": "snow",
+   "family": "noun",
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-h1yegos",
+   "form": "h₁yégos",
+   "gloss": "ice, frost [-os: action/result noun, 'act of X']",
+   "family": "noun",
+   "gloss_approximate": true,
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-yoh1r",
+   "form": "yóh₁r̥",
+   "gloss": "year; growing season or harvest season",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 9
+  },
+  {
+   "lex_id": "pie-lex-prexkjst",
+   "form": "prḗḱst",
+   "gloss": "to ask",
+   "family": "verb",
+   "attested_in": 4,
+   "features": [
+    "IMP ACT",
+    "IMP MID",
+    "IND AOR ACT",
+    "IND AOR MID",
+    "OPT ACT",
+    "OPT MID",
+    "SBJV ACT",
+    "SBJV MID"
+   ]
+  },
+  {
+   "lex_id": "pie-lex-swepnos",
+   "form": "swépnos",
+   "gloss": "sleep, slumber",
+   "family": "noun",
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 8
+  },
+  {
+   "lex_id": "pie-lex-doxm",
+   "form": "dṓm",
+   "gloss": "home; house",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 9
+  },
+  {
+   "lex_id": "pie-lex-maxdsos",
+   "form": "mā́dsos",
+   "gloss": "food, mush",
+   "family": "noun",
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 0
+  },
+  {
+   "lex_id": "pie-lex-mexms",
+   "form": "mḗms",
+   "gloss": "flesh, meat",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-doru",
+   "form": "dóru",
+   "gloss": "tree",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 10
+  },
+  {
+   "lex_id": "pie-lex-h2ekjmox",
+   "form": "h₂éḱmō",
+   "gloss": "stone; heaven, the heavenly vault?",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-deh2nu",
+   "form": "déh₂nu",
+   "gloss": "river; river goddess",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-lowksneh2",
+   "form": "lówksneh₂",
+   "gloss": "moon",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 6
+  },
+  {
+   "lex_id": "pie-lex-h2stexr",
+   "form": "h₂stḗr",
+   "gloss": "star",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 14
+  },
+  {
+   "lex_id": "pie-lex-dhegjhoxm",
+   "form": "dʰéǵʰōm",
+   "gloss": "earth",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 9
+  },
+  {
+   "lex_id": "pie-lex-h2ewis",
+   "form": "h₂éwis",
+   "gloss": "bird",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-kjerh2sox",
+   "form": "ḱérh₂sō",
+   "gloss": "head; skull",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 8
+  },
+  {
+   "lex_id": "pie-lex-gjhostos",
+   "form": "ǵʰóstos",
+   "gloss": "hand",
+   "family": "noun",
+   "gender": "m",
+   "compound_second": true,
+   "attested_in": 5
+  },
+  {
+   "lex_id": "pie-lex-poxds",
+   "form": "pṓds",
+   "gloss": "foot",
+   "family": "noun",
+   "gender": "m",
+   "attested_in": 17
+  },
+  {
+   "lex_id": "pie-lex-h3okws",
+   "form": "h₃ókʷ",
+   "gloss": "eye",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 10
+  },
+  {
+   "lex_id": "pie-lex-h2oxws",
+   "form": "h₂ṓws",
+   "gloss": "ear",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 11
+  },
+  {
+   "lex_id": "pie-lex-h1oh3s",
+   "form": "h₁óh₃s",
+   "gloss": "mouth",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 11
+  },
+  {
+   "lex_id": "pie-lex-h1nomn",
+   "form": "h₁nómn̥",
+   "gloss": "name",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 17
+  },
+  {
+   "lex_id": "pie-lex-keh2nmn",
+   "form": "kéh₂nmn̥",
+   "gloss": "song",
+   "family": "noun",
+   "gender": "n",
+   "attested_in": 2
+  },
+  {
+   "lex_id": "pie-lex-gjerh2onts",
+   "form": "ǵérh₂onts",
+   "gloss": "old, aged; as noun (m.): old man, elder",
+   "family": "adj",
+   "attested_in": 4
+  },
+  {
+   "lex_id": "pie-lex-megjh2s",
+   "form": "méǵh₂s",
+   "gloss": "big, great",
+   "family": "adj",
+   "attested_in": 10
+  },
+  {
+   "lex_id": "pie-lex-dhebhus",
+   "form": "dʰébʰus",
+   "gloss": "little, small",
+   "family": "noun",
+   "gender": "f",
+   "attested_in": 1
+  },
+  {
+   "lex_id": "pie-lex-newos",
+   "form": "néwos",
+   "gloss": "new",
+   "family": "adj",
+   "attested_in": 7
+  },
+  {
+   "lex_id": "pie-lex-sriHgos",
+   "form": "sríHgos",
+   "gloss": "cold, frost",
+   "family": "noun",
+   "gender": "n",
+   "compound_second": true,
+   "attested_in": 4
+  },
+  {
    "lex_id": "pie-lex-mowdos",
    "form": "mówdos",
    "gloss": "joy, delight",
@@ -5099,13 +5372,6 @@
    "gender": "n",
    "compound_second": true,
    "attested_in": 6
-  },
-  {
-   "lex_id": "pie-lex-newos",
-   "form": "néwos",
-   "gloss": "new",
-   "family": "adj",
-   "attested_in": 7
   },
   {
    "lex_id": "pie-lex-wekjti",
@@ -5301,13 +5567,6 @@
    "attested_in": 7
   },
   {
-   "lex_id": "pie-lex-megjh2s",
-   "form": "méǵh₂s",
-   "gloss": "big, great",
-   "family": "adj",
-   "attested_in": 10
-  },
-  {
    "lex_id": "pie-lex-h1ogwhis",
    "form": "h₁ógʷʰis",
    "gloss": "snake; a mythic serpent or dragon that is slain by a great hero in Indo-European mythology",
@@ -5330,28 +5589,12 @@
    "attested_in": 5
   },
   {
-   "lex_id": "pie-lex-dhegjhoxm",
-   "form": "dʰéǵʰōm",
-   "gloss": "earth",
-   "family": "noun",
-   "gender": "f",
-   "attested_in": 9
-  },
-  {
    "lex_id": "pie-lex-h2ewsoxs",
    "form": "h₂éwsōs",
    "gloss": "dawn; goddess of dawn, bringer of light",
    "family": "noun",
    "gender": "f",
    "attested_in": 7
-  },
-  {
-   "lex_id": "pie-lex-h1nomn",
-   "form": "h₁nómn̥",
-   "gloss": "name",
-   "family": "noun",
-   "gender": "n",
-   "attested_in": 17
   },
   {
    "lex_id": "pie-lex-kjlutos",
@@ -5368,164 +5611,6 @@
    "gender": "m",
    "compound_second": true,
    "attested_in": 14
-  },
-  {
-   "lex_id": "pie-lex-h1nomn",
-   "form": "h₁nómn̥",
-   "gloss": "name",
-   "family": "noun",
-   "gender": "n",
-   "attested_in": 17
-  },
-  {
-   "lex_id": "pie-lex-h1olos",
-   "form": "h₁ólos",
-   "gloss": "awl",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 9
-  },
-  {
-   "lex_id": "pie-lex-snusos",
-   "form": "snusós",
-   "gloss": "daughter-in-law",
-   "family": "noun",
-   "gender": "f",
-   "compound_second": true,
-   "attested_in": 15
-  },
-  {
-   "lex_id": "pie-lex-deh3nom",
-   "form": "déh₃nom",
-   "gloss": "gift",
-   "family": "noun",
-   "gender": "n",
-   "compound_second": true,
-   "attested_in": 2
-  },
-  {
-   "lex_id": "pie-proj-kolsos",
-   "form": "kólsos",
-   "gloss": "neck",
-   "family": "noun",
-   "coined": "project",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 2
-  },
-  {
-   "lex_id": "pie-lex-yowgyos",
-   "form": "yówgyos",
-   "gloss": "draft animal",
-   "family": "noun",
-   "gloss_source": "reflex-confirmed",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 5
-  },
-  {
-   "lex_id": "pie-lex-gjhostos",
-   "form": "ǵʰóstos",
-   "gloss": "hand",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 5
-  },
-  {
-   "lex_id": "pie-lex-kwrmis",
-   "form": "kʷŕ̥mis",
-   "gloss": "worm, maggot, grub (crawling vermin)",
-   "family": "noun",
-   "gender": "m",
-   "attested_in": 5
-  },
-  {
-   "lex_id": "pie-lex-yemHos-2",
-   "form": "yémHos",
-   "gloss": "twin",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 2
-  },
-  {
-   "lex_id": "pie-lex-kjleyteh2",
-   "form": "ḱleytéh₂",
-   "gloss": "something leaning, sloped, inclined",
-   "family": "noun",
-   "gender": "f",
-   "attested_in": 6
-  },
-  {
-   "lex_id": "pie-lex-h1weydhh1us",
-   "form": "h₁wéydʰh₁us",
-   "gloss": "separate",
-   "family": "noun",
-   "gender": "f",
-   "attested_in": 0
-  },
-  {
-   "lex_id": "pie-lex-koslos",
-   "form": "kóslos",
-   "gloss": "hazel",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 5
-  },
-  {
-   "lex_id": "pie-lex-h2oxms",
-   "form": "h₂ṓms",
-   "gloss": "shoulder",
-   "family": "noun",
-   "gender": "m",
-   "attested_in": 2
-  },
-  {
-   "lex_id": "pie-lex-tewh2os",
-   "form": "téwh₂os",
-   "gloss": "might, power",
-   "family": "noun",
-   "gender": "n",
-   "compound_second": true,
-   "attested_in": 1
-  },
-  {
-   "lex_id": "pie-lex-dhoygjhos",
-   "form": "dʰóyǵʰos",
-   "gloss": "something that is kneaded, formed",
-   "family": "noun",
-   "gender": "m",
-   "compound_second": true,
-   "attested_in": 9
-  },
-  {
-   "lex_id": "pie-lex-steh2tis",
-   "form": "stéh₂tis",
-   "gloss": "standing, position",
-   "family": "noun",
-   "gender": "f",
-   "attested_in": 15
-  },
-  {
-   "lex_id": "pie-lex-h3mighleh2",
-   "form": "h₃mígʰleh₂",
-   "gloss": "mist, cloud",
-   "family": "noun",
-   "gender": "f",
-   "attested_in": 7
-  },
-  {
-   "lex_id": "pie-lex-soksom",
-   "form": "soksóm",
-   "gloss": "stone",
-   "family": "noun",
-   "gloss_source": "reflex-confirmed",
-   "gender": "n",
-   "compound_second": true,
-   "attested_in": 3
   }
  ]
 }
