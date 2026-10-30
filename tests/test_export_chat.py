@@ -639,3 +639,32 @@ def test_every_system_prompt_is_the_speaker(exported):
     assert not any(w in x.lower() for x in sys_ for w in ("machine", "linguist", "expert", "language model"))
     gone = set(json.loads((ROOT / "data/export/persona_excluded.json").read_text("utf-8"))["records"])
     assert gone and not gone & {e["meta"].get("source_id") for e in exported["train"] + exported["eval"]}
+
+
+def test_english_only_user_sentences():
+    """Owner 2026-10-30: a visitor types 'airplane'; the PIE speaker asks what that is. An english_only user sentence
+    is never realized, stays English in the English-input modes, and keeps the dialogue out of the PIE-only mode."""
+    from pie.neologism import english_only_errors, split_english_only
+    from pie.realize import check_plan, realize
+    v = {"tense": "PRS", "mood": "IMP", "voice": "ACT", "person": 2, "num": "SG"}
+    plan = {"english": "Hello! I flew here in an airplane. What is that? I do not know it.", "clauses": [
+        {"speaker": "user", "english": "Hello!", "slots": [{"lex_id": "pie-lex-h1esti", "role": "V", "verb": v},
+                                                          {"lex_id": "pie-lex-keh2ilos", "role": "PRED"}]},
+        {"speaker": "user", "break": True, "english_only": True, "english": "I flew here in an airplane."},
+        {"speaker": "model", "break": True, "english": "What is that?", "question": True, "type": "nominal",
+         "slots": [{"lex_id": "closed:demonstrative_so", "role": "SUBJ", "gender": "n"},
+                   {"lex_id": "closed:interrogative_kwi", "role": "PRED", "gender": "n"}]},
+        {"speaker": "model", "break": True, "english": "I do not know it.", "neg": True,
+         "slots": [{"lex_id": "closed:demonstrative_so", "role": "OBJ", "gender": "n"},
+                   {"lex_id": "pie-lex-woyde", "role": "V", "verb": {"tense": "PRF", "mood": "IND", "voice": "ACT",
+                                                                      "person": 1, "num": "SG"}}]}]}
+    assert english_only_errors(plan) == []
+    pie_plan, eo = split_english_only(plan)
+    assert eo == [{"at": 1, "english": "I flew here in an airplane.", "speaker": "user"}] and not check_plan(pie_plan)
+    rec = {"id": "t3-t3b-x-00001", "genre": "dialogue", "pie": realize(pie_plan)["pie"], "english": plan["english"],
+           "english_only": eo, "generator": {"plan": pie_plan}, "tokens": []}
+    exs = ec.dialogue_chats([rec], collections.Counter(), all_modes=True)
+    assert exs and all(e["meta"]["task"] == "en_dialogue" for e in exs)
+    assert exs[0]["messages"][1]["content"] == "Hello! I flew here in an airplane."
+    bad = {**plan, "clauses": [{**plan["clauses"][1], "speaker": "model"}, *plan["clauses"][2:]]}
+    assert english_only_errors(bad)

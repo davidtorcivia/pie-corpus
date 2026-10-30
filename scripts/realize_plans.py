@@ -24,7 +24,7 @@ from pie.meter import measure, record_meter, summary as meter_numbers
 from pie.realize import Lexicon, check_plan, plan_warnings, realize, token_cell
 from pie.translit import to_ascii
 from pie.compound import member_ids
-from pie.neologism import coined_sentences, index_neologisms, tier3b_plan_errors, with_neologisms
+from pie.neologism import coined_sentences, index_neologisms, split_english_only, tier3b_plan_errors, with_neologisms
 from pie.validate import all_exact, index_plan_compounds, index_project, load_index, validate_text
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -113,8 +113,14 @@ def main() -> int:
     plans = [json.loads(x) for x in args.plans.read_text("utf-8").splitlines() if x.strip()]
     records, rejects, stats, warnings = [], [], collections.Counter(), []
     for n, p in enumerate(plans):
-        plan = p.get("plan", p)
-        errs = check_plan(plan, lx) + (tier3b_plan_errors(plan, lx) if tier3b else [])
+        full = p.get("plan", p)
+        # english_only user sentences (brief-3b §8: "I flew here in an airplane"): Tier 3b only, never realized
+        plan, english_only = split_english_only(full) if tier3b else (full, [])
+        if not tier3b and any(c.get("english_only") for c in full.get("clauses", [])):
+            rejects.append({"plan_id": p.get("plan_id", n), "errors": ["english_only is Tier 3b only"], "plan": full})
+            stats["rejected"] += 1
+            continue
+        errs = check_plan(plan, lx) + (tier3b_plan_errors(full, lx) if tier3b else [])
         if errs:
             rejects.append({"plan_id": p.get("plan_id", n), "errors": errs, "plan": plan})
             stats["rejected"] += 1
@@ -149,6 +155,8 @@ def main() -> int:
             "generator": {"model": args.model, "engine_version": sha, "prompt_id": args.prompt_id,
                           "convention": "handbook", "plan": plan},
             "neologism": tier3b, "roots": roots,
+            # the user's English-only sentences, by their index among the full plan's sentences (brief-3b §8)
+            **({"english_only": english_only} if english_only else {}),
             "notes": "",
         })
     out = ROOT / corpus_dir(args.batch) / f"{args.batch}.jsonl"

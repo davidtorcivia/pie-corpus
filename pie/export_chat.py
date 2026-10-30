@@ -504,6 +504,40 @@ def dialogue_turns(rec: dict) -> tuple[list[tuple[str, list[int]]], str, int] | 
     return turns, method, dropped
 
 
+def english_only_dialogue(rec: dict):
+    """A record with english_only user sentences (brief-3b §8): (turns, sents, en) over the full dialogue in plan
+    order, where an english_only sentence has PIE None, or None when the PIE sentences don't align."""
+    groups, pie = _sentence_groups(rec), sentences(rec["pie"])
+    en, _ = align_english(rec)
+    if not groups or en is None:
+        return None
+    eo = {e["at"]: e for e in rec["english_only"]}
+    sents, ens, spk, k = [], [], [], 0
+    for i in range(len(pie) + len(eo)):
+        if i in eo:
+            sents.append(None), ens.append(_clean_en(eo[i]["english"])), spk.append(eo[i]["speaker"])
+        else:
+            if k >= len(pie):
+                return None
+            sents.append(pie[k]), ens.append(en[k])
+            spk.append(next((c["speaker"] for c in groups[k] if c.get("speaker")), None))
+            k += 1
+    if None in spk or len(set(spk)) != 2:
+        return None
+    turns: list[tuple[str, list[int]]] = []
+    for i, s_ in enumerate(spk):
+        r = "user" if s_ == spk[0] else "assistant"
+        if turns and turns[-1][0] == r:
+            turns[-1][1].append(i)
+        else:
+            turns.append((r, [i]))
+    if turns[-1][0] == "user":
+        turns.pop()
+    if len(turns) < 2 or any(sents[i] is None for r, ix in turns if r == "assistant" for i in ix):
+        return None
+    return turns, sents, ens
+
+
 def held_dialogue_ids(root: Path | None = None) -> frozenset[str]:
     """The record ids reserved for the conversational eval (data/export/held_dialogues.json)."""
     path = HELD_DIALOGUES if root is None else Path(root) / "data/export/held_dialogues.json"
@@ -529,9 +563,10 @@ def en_dialogue(rec: dict, turns, en: list[str], sents: list[str], mode: str, me
     langs = _user_langs(key, n_user) if mode == "mixed" else ["en"] * n_user
     out, k = [], 0
     for r, ix in turns:
-        e, p = " ".join(en[i] for i in ix), " ".join(sents[i] for i in ix)
+        e = " ".join(en[i] for i in ix)
+        p = None if any(sents[i] is None for i in ix) else " ".join(sents[i] for i in ix)
         if r == "user":
-            if langs[k] == "pie":
+            if langs[k] == "pie" and p is not None:      # an english_only sentence stays English (brief-3b §8)
                 out.append(("user", p))
             elif mode == "en_pie_gloss" and k == 0:
                 out.append(("user", BILINGUAL_TEMPLATES[_pick(key + "|bt", len(BILINGUAL_TEMPLATES))]
@@ -595,6 +630,22 @@ def dialogue_chats(records: list[dict], skipped: collections.Counter, align_stat
     out = []
     for rec in records:
         if rec.get("genre") not in DIALOGUE_GENRES:
+            continue
+        if rec.get("english_only"):
+            # the user says words the speaker can't know (brief-3b §8): English-input modes only, never PIE-only
+            got = english_only_dialogue(rec)
+            if got is None:
+                skipped["english_only_unaligned"] += 1
+                continue
+            turns, sents, en = got
+            align_stats["aligned:plan_english_only"] += 1
+            n_user = sum(r == "user" for r, _ in turns)
+            # training: en_pie, plus en_pie_gloss or (with two user turns) mixed, as mode_plan gives other dialogues
+            extra_modes = ["en_pie_gloss"] + (["mixed"] if n_user >= 2 else [])
+            modes = [m for m in EN_MODES if m != "mixed" or n_user >= 2] if all_modes else \
+                ["en_pie", extra_modes[_pick(rec["id"] + "|eo", len(extra_modes))]]
+            for mode in modes:
+                out.append(en_dialogue(rec, turns, en, sents, mode, "speaker", "plan_english_only", 0, **extra))
             continue
         turns, method, dropped = dialogue_turns(rec)
         if turns is None:

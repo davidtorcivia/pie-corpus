@@ -343,11 +343,52 @@ def coined_sentences(plan: dict, lx) -> tuple[int, int]:
     return coined, len(sents)
 
 
+def english_only_errors(plan: dict) -> list[str]:
+    """Tier 3b, brief §8: a user sentence the PIE speaker cannot know the words of ("I flew here in an airplane") is
+    `english_only`: it has its `english` and no slots, it is a whole sentence of the first speaker (the user), and it
+    is never the whole dialogue. The engine skips it (split_english_only); the chat export uses its English in the
+    English-input modes and leaves the dialogue out of the PIE-only mode."""
+    errs, clauses = [], plan.get("clauses", [])
+    users = next((c.get("speaker") for c in clauses if c.get("speaker")), None)
+    for ci, cl in enumerate(clauses):
+        if not cl.get("english_only"):
+            continue
+        if ci and not cl.get("break"):
+            errs.append(f"clause {ci}: an english_only clause is a whole sentence: set break")
+        if ci + 1 < len(clauses) and not clauses[ci + 1].get("break"):
+            errs.append(f"clause {ci}: an english_only sentence has no continuation clauses: break the next clause")
+        if cl.get("speaker") != users:
+            errs.append(f"clause {ci}: only the user's sentences may be english_only")
+        if cl.get("slots"):
+            errs.append(f"clause {ci}: an english_only clause has no slots")
+        if not (isinstance(cl.get("english"), str) and cl["english"].strip()):
+            errs.append(f"clause {ci}: an english_only clause needs its english")
+    if clauses and all(c.get("english_only") for c in clauses):
+        errs.append("a plan needs at least one PIE sentence")
+    return errs
+
+
+def split_english_only(plan: dict) -> tuple[dict, list[dict]]:
+    """(the plan the engine realizes, [{"at": plan sentence index, "english", "speaker"}]): english_only sentences
+    taken out. The first remaining clause starts the text."""
+    keep, eo, sent = [], [], -1
+    for ci, cl in enumerate(plan.get("clauses", [])):
+        if not ci or cl.get("break"):
+            sent += 1
+        if cl.get("english_only"):
+            eo.append({"at": sent, "english": cl["english"].strip(), "speaker": cl.get("speaker")})
+        else:
+            keep.append(cl)
+    if keep:
+        keep = [{**keep[0], "break": False}, *keep[1:]]
+    return {**plan, "clauses": keep}, eo
+
+
 def tier3b_plan_errors(plan: dict, lx) -> list[str]:
     """The Tier 3b checks beyond check_plan: the speaker rule, the per-sentence English, and no compound slot with
     a neologism member (that would be a new, unlogged coinage, and a neologism compound inside a compound is a
     nested compound the engine does not build). Every coinage is a row of neologisms.jsonl (PLAN.md)."""
-    errs = speaker_errors(plan) + sentence_english_errors(plan)
+    errs = speaker_errors(plan) + sentence_english_errors(plan) + english_only_errors(plan)
     for ci, cl in enumerate(plan.get("clauses", [])):
         for si, s in enumerate(cl.get("slots", [])):
             c = s.get("compound") if s.get("lex_id") == "compound" and isinstance(s.get("compound"), dict) else {}

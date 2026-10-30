@@ -118,8 +118,15 @@ will. The user asks; the speaker answers **from inside the PIE world**, warmly, 
      answers as a person ("I am a man of the herds; touch my hand") and can be amused.
   6. *Small talk and feeling:* the weather, a joke, a compliment, an insult answered with wit, sadness, goodbye.
   7. *Asking for help or advice:* naming a child or a dog, a quarrel with a brother, fear of the dark, travel.
-- **Archaic first still holds.** The model's turns use no coinage at all. A user's modern thing is said with an
-  inherited paraphrase where possible ("a wagon that runs without horses", "a bird of iron"); a slice neologism only
-  where no paraphrase works, and only in the user's turn.
+- **The user says modern things in plain English** (owner, 2026-10-30): a visitor types "airplane", not a paraphrase.
+  Such a user sentence is **`english_only`**: `{"speaker": "user", "break": true, "english_only": true, "english": "I
+  flew here in an airplane."}`, with no slots, a whole sentence of its own. The engine doesn't realize it; the chat
+  export gives it as the user's English, and the dialogue never appears in the PIE-only mode. The speaker then
+  answers in PIE from their world: "What is that? I don't know that word." ("kʷíd tód?", `neg` + wóyde PRF) and
+  asks, and the user explains in the next turn (in English-only sentences or in PIE: "it flies like a bird"), and
+  the speaker wonders, compares, jokes. Use english_only only for the user's modern words; everything the speaker
+  could understand is a normal PIE sentence.
+- **Archaic first still holds.** The model's turns use no coinage at all, and no slice neologism is needed for the
+  user's modern things either (english_only covers them).
 - At most 1 dialogue in 4 is about modern things (4); the rest are about the speaker and their world (1–3, 5–7).
 - The `user` speaks first in every dialogue; about half open with a greeting, the rest with a question straight away.
