@@ -5,8 +5,9 @@ Each word is rendered by eSpeak alone (pie/pie-tone), then PSOLA (Praat via pars
   light 1 mora, heavy 2), with lengthening before the caesura and at line end;
 - pitch: eSpeak's own accent peaks kept, a declination across each line, a fall on the line's last word,
   and a slow drift so the voice is not perfectly level;
-- pauses: short between words, longer at the caesura (after syllable 5 in an 11, 4 in an 8), longest
-  between lines.
+- pauses: none between words inside a phrase (connected speech runs on), one at the caesura (after syllable 5
+  in an 11, 4 in an 8), longest between lines;
+- a word ending in h gets FINAL_H more time, so its tail (pie_vtl.py --final-h murmur) needn't eat the vowel.
 
     tts/vc/.venv-eval/bin/python -I tts/cadence/cadence.py t3-t026-00015 out.wav
     tts/vc/.venv-eval/bin/python -I tts/cadence/cadence.py tts/cadence/hardtest.txt out.wav   # a text file
@@ -27,7 +28,8 @@ from pie.speak import speak_ipa
 
 MORA = 0.165            # seconds per mora at this tempo (light syllable 1, heavy 2)
 CAESURA_LEN, FINAL_LEN = 1.12, 1.35
-GAP, CAESURA, LINE, END = 0.05, 0.24, 0.70, 0.9
+GAP, CAESURA, LINE, END = 0.0, 0.24, 0.70, 0.9
+FINAL_H = 0.06
 DECL_START, DECL_END, FINAL_FALL = 1.5, -2.5, -2.0   # semitones
 RATIO = (0.7, 1.7)
 PITCH = os.environ.get("CADENCE_PITCH", "1") != "0"   # 0: timing and pauses only, eSpeak's own pitch
@@ -90,6 +92,7 @@ def main(src, out_wav):
                 target = MORA * sum(2 if x == "H" else 1 for x in wwt)
                 last, caes = wi == len(ws) - 1, pos < cut <= pos + k and wi < len(ws) - 1
                 target *= FINAL_LEN if last else CAESURA_LEN if caes else 1
+                target += FINAL_H if to_ipa(w, tone=True).endswith("h") else 0
                 ratio = min(max(target / snd.duration, RATIO[0]), RATIO[1])
                 a, b = pos / n, (pos + k) / n
                 st_of = lambda x, a=a, b=b, last=last: (DECL_START + (DECL_END - DECL_START) * (a + (b - a) * x)
