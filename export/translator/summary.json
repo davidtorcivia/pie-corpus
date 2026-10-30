@@ -1,18 +1,18 @@
 {
  "provenance": {
-  "commit": "fd1d34eb796a37cab4a91862926ff68c144afebf",
+  "commit": "b7f351e2578264a05b366a62f7227d4edbe080fa",
   "inputs_dirty": true,
   "include_pilot": false,
   "experimental_batches": false
  },
  "examples": {
-  "train": 16750,
+  "train": 17182,
   "eval": 170
  },
  "modes": {
   "train": {
-   "en_pie": 8375,
-   "pie_en": 8375
+   "en_pie": 8591,
+   "pie_en": 8591
   },
   "eval": {
    "en_pie": 85,
@@ -21,10 +21,10 @@
  },
  "units": {
   "train": {
-   "en_pie:paragraph": 4051,
-   "en_pie:sentence": 4324,
-   "pie_en:paragraph": 4051,
-   "pie_en:sentence": 4324
+   "en_pie:paragraph": 4176,
+   "en_pie:sentence": 4415,
+   "pie_en:paragraph": 4176,
+   "pie_en:sentence": 4415
   },
   "eval": {
    "en_pie:paragraph": 7,
@@ -34,7 +34,7 @@
   }
  },
  "gloss_reference": {
-  "train": 16750,
+  "train": 17182,
   "eval": 84
  },
  "neologism_examples": {
@@ -43,10 +43,10 @@
  },
  "items": {
   "train": {
-   "en_pie:paragraph": 4051,
-   "en_pie:sentence": 4324,
-   "pie_en:paragraph": 4051,
-   "pie_en:sentence": 4324,
+   "en_pie:paragraph": 4176,
+   "en_pie:sentence": 4415,
+   "pie_en:paragraph": 4176,
+   "pie_en:sentence": 4415,
    "unaligned_long:count_mismatch": 254,
    "unaligned_long:plan_english_mismatch": 18,
    "unaligned_long:question_mismatch": 5
@@ -61,25 +61,25 @@
  },
  "self_overlap": {
   "all_kinds_sentences": {
-   "items": 13009,
+   "items": 13390,
    "max": 14,
-   "mean": 1.047,
+   "mean": 1.0458,
    "histogram": {
-    "1": 12655,
-    "2": 235,
+    "1": 13034,
+    "2": 237,
     "3": 64,
     "4+": 55
    },
    "over_3": 55
   },
   "all_kinds_ngram4": {
-   "items": 31830,
+   "items": 33182,
    "max": 11,
    "mean": 1.0073,
    "histogram": {
-    "1": 31640,
-    "2": 168,
-    "3": 15,
+    "1": 32984,
+    "2": 175,
+    "3": 16,
     "4+": 7
    },
    "over_3": 7
