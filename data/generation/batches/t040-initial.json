@@ -1,0 +1,59 @@
+{
+ "plans": 40,
+ "realized": 40,
+ "exact_pass": 40,
+ "accent_representation_tokens": 2,
+ "accent_defect_tokens": 3,
+ "reject_rate": 0.0,
+ "distinct_roots": 159,
+ "roots_per_sentence": 3.975,
+ "distinct_lexemes": 271,
+ "max_lexeme_uses": 30,
+ "most_used": [
+  [
+   "pie-lex-swos",
+   30
+  ],
+  [
+   "pie-lex-doxm",
+   28
+  ],
+  [
+   "compound:bahuvrihi:closed:prefix/dus+pie-lex-menos",
+   25
+  ],
+  [
+   "pie-lex-bhoxr",
+   24
+  ],
+  [
+   "pie-lex-h2egjeti",
+   23
+  ]
+ ],
+ "dup_within": 0,
+ "dup_across_batches": 0,
+ "tokens": 1809,
+ "words_per_sentence": 4.87,
+ "words_per_record": 42.35,
+ "meter_fit": null,
+ "meter_near": null,
+ "meter_exact": null,
+ "meter_cadence": null,
+ "formula_uses": 18,
+ "warnings": 22,
+ "accent_unresolved": {
+  "tokens": 1,
+  "lexemes": 1,
+  "records": 1
+ },
+ "gates": {
+  "reject_rate<=0.10": true,
+  "max_lexeme_uses<=9": false,
+  "theme_core_uses<=27": false,
+  "roots_per_sentence>=0.35": true,
+  "duplicates<=2%": true,
+  "all_exact": true
+ },
+ "gate": "FAIL"
+}

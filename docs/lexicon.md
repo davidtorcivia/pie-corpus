@@ -76,7 +76,7 @@ Most derivatives have no dictionary gloss, only the approximate derived one (roo
 
 A reflex counts only if its entry is linked to the lexeme: its etymology cites the lexeme's form (accents and hyphens ignored), or it is the only entry under that form. Branches come from one table, `pie.glosses.BRANCHES` (also make_slice's). `scripts/build_glosses.py` writes `data/lexicon/confirmed_glosses.jsonl` (with the evidence) after `classify_lexicon.py`; `Lexicon.load` gives those lexemes `meaning_source: "reflex-confirmed"`, so make_slice offers them by default and marks each slice item `gloss_source: "reflex-confirmed"`, for reviews to sample apart. A dictionary gloss or override always wins.
 
-2026-10-30: 122 lexemes (69 head, 53 consensus; péh₃tlom 'drinking vessel, cup' now has an override gloss). As of 2026-10-29: of the 2,300 usable derived-gloss-only lexemes left, 1,340 have linked reflexes in one branch only, 151 in none, 553 have no reflex record, and 256 have linked reflexes in ≥ 2 branches that do not agree under the rule.
+2026-10-30: 121 lexemes (68 head, 53 consensus; péh₃tlom 'drinking vessel, cup' and méh₃yeti now have override glosses: the reflex-confirmed 'to get tired' reversed Kroonen's transitive 'to tire'). As of 2026-10-29: of the 2,300 usable derived-gloss-only lexemes left, 1,340 have linked reflexes in one branch only, 151 in none, 553 have no reflex record, and 256 have linked reflexes in ≥ 2 branches that do not agree under the rule.
 
 ## Known gaps
 

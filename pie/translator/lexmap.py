@@ -44,6 +44,25 @@ OVERRIDES = {
     ("kettle", "noun"): "pie-lex-kweros", ("knife", "noun"): "pie-lex-kjstrom", ("feast", "noun"): "pie-lex-dh2pnom",
     ("sad", "adj"): "pie-lex-lugjros", ("story", "noun"): "pie-proj-spelom", ("tale", "noun"): "pie-proj-spelom",
     ("grandmother", "noun"): "pie-proj-h2enHos",
+    # core gaps 2026-10-30 (docs/audits/lexicon-gaps-core-2026-10-30.md)
+    ("person", "noun"): "pie-lex-mortos", ("human", "noun"): "pie-lex-mortos", ("child", "noun"): "pie-lex-tekjnom",
+    ("small", "adj"): "pie-lex-peh2uros", ("little", "adj"): "pie-lex-peh2uros", ("tail", "noun"): "pie-lex-h1orseh2",
+    ("leg", "noun"): "pie-lex-skelos", ("thigh", "noun"): "pie-lex-skelos", ("bark", "noun"): "pie-lex-lowbhos",
+    ("flower", "noun"): "pie-lex-h2endhos", ("blossom", "noun"): "pie-lex-h2endhos", ("grass", "noun"): "pie-lex-ghreh1mn",
+    ("belly", "noun"): "pie-lex-uderos", ("guts", "noun"): "pie-lex-gjhorneh2", ("entrails", "noun"): "pie-lex-gjhorneh2",
+    ("ice", "noun"): "pie-lex-h1yegos", ("shadow", "noun"): "pie-lex-skjeh3ih2", ("shade", "noun"): "pie-lex-skjeh3ih2",
+    ("wood", "noun"): "pie-lex-doru", ("timber", "noun"): "pie-lex-doru", ("soil", "noun"): "pie-lex-dhegjhoxm",
+    ("goat", "noun"): "pie-lex-kapros", ("bad", "adj"): "pie-lex-h2eghos-2", ("evil", "adj"): "pie-lex-h2eghos-2",
+    ("rot", "verb"): "pie-lex-puHyeti", ("straight", "adj"): "pie-lex-h3regjtos", ("smooth", "adj"): "pie-lex-ghlh2dhros",
+    ("beautiful", "adj"): "pie-lex-kjubhros", ("pretty", "adj"): "pie-lex-kjubhros", ("happy", "adj"): "pie-lex-mudros",
+    ("glad", "adj"): "pie-lex-mudros", ("rejoice", "verb"): "pie-lex-mewdeti", ("hunt", "verb"): "pie-lex-wregeti",
+    ("walk", "verb"): "pie-lex-steygheti", ("rub", "verb"): "pie-lex-teryeti", ("freeze", "verb"): "pie-lex-goleti",
+    ("cough", "verb"): "pie-lex-kweh2se", ("smell", "verb"): "pie-lex-h3edeti", ("carry", "verb"): "pie-lex-bhereti",
+    ("show", "verb"): "pie-lex-deykjeti", ("hate", "verb"): "pie-lex-h3eh3ode-2", ("teach", "verb"): "pie-lex-kjeHst",
+    ("lack", "noun"): "pie-lex-h1egos", ("grateful", "adj"): "pie-lex-gwrHtos", ("thankful", "adj"): "pie-lex-gwrHtos",
+    ("decide", "verb"): "pie-lex-h2reh1dheti", ("council", "noun"): "pie-lex-dhh1tleh2",
+    ("assembly", "noun"): "pie-lex-dhh1tleh2", ("wise", "adj"): "pie-lex-gjnh3ros", ("enemy", "noun"): "pie-lex-poykjos-2",
+    ("foe", "noun"): "pie-lex-poykjos-2",
 }
 
 

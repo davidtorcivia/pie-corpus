@@ -57,7 +57,7 @@ def transfer():
 @pytest.mark.parametrize("english,pie", [
     ("The wolf saw the sheep.", "wĺ̥kʷos h₂ówim widét."),
     ("Where is my father?", "kúdʰe moy ph₂tḗr h₁ésti?"),
-    ("Do not fear the wolf!", "wĺ̥kʷom mē pr̥ksḱés."),
+    ("Do not fear the wolf!", "wĺ̥kʷōd mē pr̥ksḱés."),       # fear takes the ablative (fear-ablative-2026-10-30.md)
     ("Let us drive the cattle home.", "gʷṓs dṓm h₂éǵōmes."),
     ("We walked through the forest.", None),
     ("Give me water!", "méǵʰye wódr̥ dh₃dʰí."),
@@ -65,6 +65,14 @@ def transfer():
 def test_transfer_builds_the_plan(transfer, english, pie):
     r = transfer.translate(english)
     assert (r.pie == pie if pie else r.pie) and not r.errors
+
+
+def test_core_gap_words_reach_the_translator(transfer):
+    """docs/audits/lexicon-gaps-core-2026-10-30.md: the English words map to the inherited lexemes, and a stative
+    perfect with no present stem (h₃eh₃óde 'hates', Lat. ōdī) gives the present state."""
+    assert transfer.translate("The beautiful woman carries the goat.").pie == "ḱubʰréh₂ gʷḗn káprom bʰéreti."
+    assert transfer.translate("The council decides.").pie == "dʰh₁tléh₂ h₂réh₁dʰeti."
+    assert transfer.translate("I hate the wolf.").pie == "wĺ̥kʷom h₃eh₃ódh₂e."
 
 
 def test_transfer_reports_what_it_cannot_say(transfer):

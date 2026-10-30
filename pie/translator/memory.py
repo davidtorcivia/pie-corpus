@@ -51,26 +51,28 @@ class Memory:
     def load(cls, root: Path = ROOT) -> "Memory":
         from ..export_chat import align_english, sentences
         pairs: list[Pair] = []
-        for name in ("train.jsonl", "eval.jsonl"):
-            p = root / "export" / name
-            if not p.exists():
+        files = [root / "export" / n for n in ("train.jsonl", "eval.jsonl")]
+        if all(p.exists() for p in files):
+            recs = [json.loads(x) for p in files for x in p.read_text("utf-8").splitlines() if x.strip()]
+        else:                                   # export/*.jsonl are build outputs, not in git: build the records
+            from ..export import build
+            b = build(root=root)
+            recs = b["train_records"] + b["eval_records"]
+        for r in recs:
+            if not r.get("english") or not r.get("pie"):
                 continue
-            for line in p.read_text("utf-8").splitlines():
-                r = json.loads(line)
-                if not r.get("english") or not r.get("pie"):
-                    continue
-                pie = sentences(r["pie"])
-                en, _ = align_english(r)
-                glosses = _split_gloss(r.get("gloss"), pie)
-                ids = [t.get("lex_id") for t in r.get("tokens") or [] if not t["form"].startswith("-")]
-                per = _split_list(ids, pie)
-                if en and len(en) == len(pie):
-                    for i, (e, s) in enumerate(zip(en, pie)):
-                        pairs.append(Pair(e, s, glosses[i] if glosses else None, r["id"], r.get("tier"),
-                                          per[i] if per else None))
-                elif len(pie) <= SHORT:
-                    pairs.append(Pair(" ".join(r["english"].split()), r["pie"], r.get("gloss"), r["id"], r.get("tier"),
-                                      ids if len(ids) == len(r["pie"].split()) else None))
+            pie = sentences(r["pie"])
+            en, _ = align_english(r)
+            glosses = _split_gloss(r.get("gloss"), pie)
+            ids = [t.get("lex_id") for t in r.get("tokens") or [] if not t["form"].startswith("-")]
+            per = _split_list(ids, pie)
+            if en and len(en) == len(pie):
+                for i, (e, s) in enumerate(zip(en, pie)):
+                    pairs.append(Pair(e, s, glosses[i] if glosses else None, r["id"], r.get("tier"),
+                                      per[i] if per else None))
+            elif len(pie) <= SHORT and not r.get("english_only"):     # its English has sentences the PIE lacks
+                pairs.append(Pair(" ".join(r["english"].split()), r["pie"], r.get("gloss"), r["id"], r.get("tier"),
+                                  ids if len(ids) == len(r["pie"].split()) else None))
         inv: dict[str, list[int]] = collections.defaultdict(list)
         exact: dict[str, int] = {}
         for i, p in enumerate(pairs):

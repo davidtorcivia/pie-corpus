@@ -522,6 +522,8 @@ def build(dump: Path, outdir: Path, dump_label: str) -> dict:
                     e["pos"] = x["pos"]
                 if "kind" in x:
                     e["kind"] = x["kind"]
+                if "uncertain" in x:            # a flag lifted (or set) on the handbook evidence in the note
+                    e["uncertain"] = x["uncertain"]
                 if x.get("spec_checked"):
                     e["spec_checked"] = True
                 e["override_note"] = x.get("note")

@@ -43,9 +43,10 @@ def test_devi_o_grade_and_lengthened_roots_keep_their_grade():
 
 
 def test_devi_without_an_accent_gets_no_paradigm(lx):
-    """An unaccented devī headword gets no spec: any paradigm would guess the oblique accent."""
-    assert lx.specs["pie-lex-skjeh3ih2"]["rule"] == "unknown:devi-no-accent"
-    assert not lx.specs["pie-lex-skjeh3ih2"]["usable"]
+    """An unaccented devī headword gets no spec: any paradigm would guess the oblique accent. (sḱeh₃ih₂ 'shadow',
+    the old example, got its sourced accent in the core-gaps round: test_core_gap_paradigms.)"""
+    assert lx.specs["pie-lex-bherontih2"]["rule"] == "unknown:devi-no-accent"
+    assert not lx.specs["pie-lex-bherontih2"]["usable"]
 
 
 def test_devi_noun_realizes(lx):
@@ -248,3 +249,66 @@ def test_forest_stays_unoffered_without_an_accent(lx, pool):
     no spec for it, so Tier 3b has the calque pie-neo-forest instead."""
     assert lx.meaning("pie-lex-h1widhh1us")[1] == "override" and "pie-lex-h1widhh1us" not in pool
     assert lx.inadmissible("pie-lex-h1widhh1us")
+
+
+# 5. core gaps (docs/audits/lexicon-gaps-core-2026-10-30.md) ----------------------------------------------------------
+
+CORE = {   # concept keyword -> lexeme, offered by default with an override gloss that carries the keyword
+    "person": "pie-lex-mortos", "child": "pie-lex-tekjnom", "small": "pie-lex-peh2uros", "tail": "pie-lex-h1orseh2",
+    "leg": "pie-lex-skelos", "thigh": "pie-lex-skelos", "bark": "pie-lex-lowbhos", "flower": "pie-lex-h2endhos",
+    "grass": "pie-lex-ghreh1mn", "belly": "pie-lex-uderos", "guts": "pie-lex-gjhorneh2", "ice": "pie-lex-h1yegos",
+    "wood": "pie-lex-doru", "soil": "pie-lex-dhegjhoxm", "goat": "pie-lex-kapros", "bad": "pie-lex-h2eghos-2",
+    "rot": "pie-lex-puHyeti", "straight": "pie-lex-h3regjtos", "smooth": "pie-lex-ghlh2dhros",
+    "beautiful": "pie-lex-kjubhros", "glad": "pie-lex-mudros", "rejoice": "pie-lex-mewdeti", "hunt": "pie-lex-wregeti",
+    "walk": "pie-lex-steygheti", "rub": "pie-lex-teryeti", "freeze": "pie-lex-goleti", "cough": "pie-lex-kweh2se",
+    "smell": "pie-lex-h3edeti", "carry": "pie-lex-bhereti", "show": "pie-lex-deykjeti", "silent": "pie-lex-th2keh1yeti",
+    "hate": "pie-lex-h3eh3ode-2", "tired": "pie-lex-kjekjomh2e", "teach": "pie-lex-kjeHst", "lack": "pie-lex-h1egos",
+    "thankful": "pie-lex-gwrHtos", "decide": "pie-lex-h2reh1dheti", "council": "pie-lex-dhh1tleh2",
+    "wise": "pie-lex-gjnh3ros", "enemy": "pie-lex-poykjos-2",
+}
+
+
+@pytest.mark.parametrize("kw,lid", sorted(CORE.items()))
+def test_core_gap_word_is_offered_to_every_slice(lx, pool, kw, lid):
+    assert lid in pool and lx.meaning(lid)[1] == "override"
+    ms = runpy.run_path(str(ROOT / "scripts/make_slice.py"))
+    assert ms["keyword_hit"](lx, lid, [kw]) and lid in ms["TIER3B_INHERITED"] + ms["EVERYDAY"]
+
+
+def test_core_gap_concepts_reach_the_holdout_matcher(lx):
+    """scripts/build_holdout.py's concept matcher (trusted glosses only) now finds these concepts in an offered
+    lexeme; the hold-out files themselves are frozen and not redrawn."""
+    hb = runpy.run_path(str(ROOT / "scripts/build_holdout.py"))
+    ms = hb["_make_slice"]()
+    pool = set(ms.offered(lx))
+    found = {c: set(ids) & pool for d in hb["concept_matches"](lx, ms).values() for c, ids in d.items()}
+    for c in ("human being/person", "child", "small/little", "tail", "leg", "thigh", "bark", "flower", "grass",
+              "belly", "guts/bowels/entrails", "ice", "wood", "soil", "goat", "bad/evil", "rotten/rot", "straight",
+              "smooth", "pretty/beautiful", "happy/glad/be glad/joyful", "rejoice", "hunt", "walk", "rub",
+              "freeze/be cold", "cough", "smell", "carry", "show", "silent/be silent", "hate", "be tired", "teach",
+              "lack", "shade/shadow"):
+        assert found[c], c
+
+
+def test_core_gap_paradigms(lx):
+    """The seven spec changes: an accent from the handbooks (shadow), a present headword (cough), two stative
+    perfects (hate, be tired) and three adjectives (small, bad, smooth)."""
+    c = lx.cells("pie-lex-skjeh3ih2")                     # EWAia s.v. chāyā́-: *sḱéh₃-ih₂, gen. *sḱh₃-iéh₂-s
+    assert (c["NOM.SG"][0], c["GEN.SG"][0]) == ("sḱéh₃ih₂", "sḱh₃yéh₂s") and "sḱeh₃ih₂" in lx.entries["pie-lex-skjeh3ih2"]["variants"]
+    assert lx.cells("pie-lex-kweh2se")["PRS.3SG"][0] == "kʷéh₂seti"
+    assert lx.cells("pie-lex-h3eh3ode-2")["PRF.3SG"][0] == "h₃eh₃óde"          # Lat. ōdī
+    assert lx.cells("pie-lex-kjekjomh2e")["PRF.3PL"][0] == "ḱeḱm̥h₂ḗr"          # Ved. śaśāma, Hom. κεκμηώς
+    for lid, f in (("pie-lex-peh2uros", "péh₂ureh₂"), ("pie-lex-h2eghos-2", "h₂egʰéh₂"),
+                   ("pie-lex-ghlh2dhros", "gʰl̥h₂dʰréh₂")):
+        assert lx.specs[lid]["family"] == "adj" and lx.cells(lid, "f")["NOM.SG"][0] == f
+    r = produce({"english": "The small child rubs the goat.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-tekjnom", "role": "SUBJ"}, {"lex_id": "pie-lex-peh2uros", "role": "MOD", "head": 0},
+        {"lex_id": "pie-lex-kapros", "role": "OBJ"},
+        {"lex_id": "pie-lex-teryeti", "role": "V", "verb": {"tense": "PRS", "mood": "IND", "voice": "ACT"}}]}]}, lx)
+    assert r["pie"] == "péh₂urom téḱnom káprom téryeti."        # neuter subject: nom. = acc. -om
+
+
+def test_tail_nil_flag_lifted_on_evidence(lx, pool):
+    """h₁orséh₂ (NIL no. 247) was held by nil-single-branch; Gk οὐρά and OIr. err (Beekes) are two branches, so the
+    override clears the flag (pie.lexicon applies an override's `uncertain`) and NIL_ADMIT admits it."""
+    assert lx.entries["pie-lex-h1orseh2"]["uncertain"] == [] and "pie-lex-h1orseh2" in pool

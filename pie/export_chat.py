@@ -561,12 +561,18 @@ def en_dialogue(rec: dict, turns, en: list[str], sents: list[str], mode: str, me
     n_user = sum(r == "user" for r, _ in turns)
     key = rec["id"] if window is None else f"{rec['id']}|w{window[0]}"
     langs = _user_langs(key, n_user) if mode == "mixed" else ["en"] * n_user
+    if mode == "mixed":
+        # an english_only user turn stays English; the mix then puts PIE on a user turn that has it
+        has_pie = [all(sents[i] is not None for i in ix) for r, ix in turns if r == "user"]
+        langs = [l if ok else "en" for l, ok in zip(langs, has_pie)]
+        if "pie" not in langs and any(has_pie):
+            langs[has_pie.index(True)] = "pie"
     out, k = [], 0
     for r, ix in turns:
         e = " ".join(en[i] for i in ix)
         p = None if any(sents[i] is None for i in ix) else " ".join(sents[i] for i in ix)
         if r == "user":
-            if langs[k] == "pie" and p is not None:      # an english_only sentence stays English (brief-3b §8)
+            if langs[k] == "pie":
                 out.append(("user", p))
             elif mode == "en_pie_gloss" and k == 0:
                 out.append(("user", BILINGUAL_TEMPLATES[_pick(key + "|bt", len(BILINGUAL_TEMPLATES))]
@@ -640,10 +646,11 @@ def dialogue_chats(records: list[dict], skipped: collections.Counter, align_stat
             turns, sents, en = got
             align_stats["aligned:plan_english_only"] += 1
             n_user = sum(r == "user" for r, _ in turns)
-            # training: en_pie, plus en_pie_gloss or (with two user turns) mixed, as mode_plan gives other dialogues
-            extra_modes = ["en_pie_gloss"] + (["mixed"] if n_user >= 2 else [])
+            # training: en_pie and en_pie_gloss whole, as mode_plan gives every aligned dialogue, and mixed on one in
+            # two with two or more user turns; never pie_pie
+            mixed = n_user >= 2 and _pick(rec["id"] + "|eo", 2) == 0
             modes = [m for m in EN_MODES if m != "mixed" or n_user >= 2] if all_modes else \
-                ["en_pie", extra_modes[_pick(rec["id"] + "|eo", len(extra_modes))]]
+                ["en_pie", "en_pie_gloss"] + (["mixed"] if mixed else [])
             for mode in modes:
                 out.append(en_dialogue(rec, turns, en, sents, mode, "speaker", "plan_english_only", 0, **extra))
             continue

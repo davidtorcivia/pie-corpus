@@ -102,7 +102,9 @@ def test_kinds_and_summary(exported):
     assert {m.split("/")[1] for m in s["modes"]["train"]} == {"pie_pie", *ec.EN_MODES, "pie_en"}
     # pie_pie: the dialogues without English input, plus the whole of one aligned dialogue in PIE_PIE_EVERY
     # (the same exchanges as its English-input modes); still fewer than the English-input dialogues
-    doubled = sum(ec._pick(sid + "|pp", ec.PIE_PIE_EVERY) == 0 for sid, v in by.items() if "en_pie" in v)
+    # (a dialogue with english_only user sentences, brief-3b §8, never has a PIE-only version)
+    eo = {e["meta"]["source_id"] for e in exported["train"] if e["meta"].get("align") == "plan_english_only"}
+    doubled = sum(ec._pick(sid + "|pp", ec.PIE_PIE_EVERY) == 0 for sid, v in by.items() if "en_pie" in v and sid not in eo)
     pp = [e for e in exported["train"] if e["meta"]["task"] == "pie_dialogue"]
     assert sum(by[e["meta"]["source_id"]] >= {"en_pie", "pie_pie"} for e in pp) == doubled > 0.3 * aligned
     assert s["modes"]["train"]["pie_dialogue/pie_pie"] < c["en_dialogue"]

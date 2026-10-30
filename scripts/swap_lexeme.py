@@ -2,7 +2,8 @@
 """Replace one lexeme with another in every Tier 3 plan that uses it, re-realize those batches, and report each
 batch's gate and meter before and after.
 
-    uv run python -I scripts/swap_lexeme.py pie-lex-deh3ut pie-lex-deh3t [--dry-run]
+    uv run python -I scripts/swap_lexeme.py pie-lex-deh3ut pie-lex-deh3t --note <audit doc> [--dry-run]
+    uv run python -I scripts/swap_lexeme.py --rerun t001 t007 --note <audit doc>    # plans already fixed by hand
 
 Every slot whose lex_id is OLD becomes NEW, with its role, features and head unchanged; nothing else in the plan
 moves. A batch is realized with the model and prompt id its records already carry (generator) and the current
@@ -35,7 +36,7 @@ def gate(batch: str) -> dict:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("old"), ap.add_argument("new")
+    ap.add_argument("old", nargs="?"), ap.add_argument("new", nargs="?")
     ap.add_argument("--note", required=True, help="the audit note added to a re-approved batch's evidence")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--rerun", nargs="*", default=[],
@@ -43,7 +44,7 @@ def main() -> int:
     a = ap.parse_args()
     head = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True, cwd=ROOT).stdout.strip()
     report = {}
-    for b in batches_using(a.old) + a.rerun:
+    for b in (batches_using(a.old) if a.old else []) + a.rerun:
         plans = ROOT / f"data/generation/plans/{b}.jsonl"
         rec = json.loads((ROOT / corpus_dir(b) / f"{b}.jsonl").read_text("utf-8").splitlines()[0])["generator"]
         rel_path = ROOT / f"data/generation/releases/{b}.json"
@@ -52,7 +53,7 @@ def main() -> int:
                              text=True, cwd=ROOT)
         release = json.loads(git.stdout) if git.returncode == 0 else {}
         before = gate(b)
-        n = plans.read_text("utf-8").count(f'"{a.old}"')
+        n = plans.read_text("utf-8").count(f'"{a.old}"') if a.old else 0
         report[b] = {"slots": n, "before": before, "was": release.get("review", {}).get("status")}
         if a.dry_run:
             continue
@@ -73,8 +74,9 @@ def main() -> int:
             rv = release["review"]
             rel_path.write_text(json.dumps(release_metadata(
                 ROOT, b, status="approved", evidence=[*rv.get("evidence", []), a.note],
-                rationale=rv.get("rationale", "") + f" Re-approved after the mechanical {a.old} -> {a.new} swap "
-                                                     f"({a.note})."), ensure_ascii=False) + "\n", "utf-8")
+                rationale=rv.get("rationale", "") + (f" Re-approved after the mechanical {a.old} -> {a.new} swap "
+                                                      if a.old else " Re-approved after a mechanical plan fix ")
+                + f"({a.note})."), ensure_ascii=False) + "\n", "utf-8")
             report[b]["now"] = "approved"
         else:
             report[b]["now"] = "pending"

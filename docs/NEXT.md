@@ -1,5 +1,21 @@
 # Next steps (handoff list, started 2026-10-29)
 
+## Engine fix list (from the 2026-10-30 reviews; none broke an approved batch)
+- **Silent cell substitution** (t3b-002, t3b-004, t038, t039): a requested cell the engine doesn't build (a dual
+  oblique, a middle dual) silently becomes another (plural), with no rejection or warning. check_plan should reject,
+  or realize should warn, so the planner chooses.
+- gʷṓws oblique plural built on gʷéw-, not gʷów- (t035).
+- Middle injunctive 2sg ends in -th₂e, not *-so (t035, t036: the -th₂e/-th₂er middle endings need documenting).
+- péh₂tōr 'guardian' obliques identical to ph₂tḗr 'father' (t037).
+- gʷʰen- 'slay' has no aorist (t037).
+- Anaphoric m. NOM.SG h₁éy vs *h₁ís (t037; with the engine agent of 2026-10-30).
+- h₂ew 'again' has no accent and is glossed only 'away from' (t042, t084, t034: accent-lint noise).
+- A female cow triggers a false gender warning (t042).
+- Brief: "How do you say …?" makes the model echo the user (t036); aorist-only words beat present synonyms in
+  proverbs (t043).
+- **Vocabulary round 3 (war and exchange, t040):** booty, raid, boast, threaten, weapon, sword, shield, battle,
+  victory, brave, ransom, pay, weep, calf, herald; summer (sm̥h₂erós has no accent); bird/fly/iron (t3b-007).
+
 ## Morning first
 1. **Rate the TTS finals** on the finals rating page, https://claude.ai/artifact/23p85eZLQR3nawtMgUxZAf. Candidates: Kokoro + profile (bf_isabella, af_nicole, em_santa) and eSpeak → Seed-VC F0 (em_santa, em_alex, bf_isabella, af_nicole), with eSpeak as reference. Then set the winner as the `pie.speak` default and redeploy erebus `pie-tts` if Kokoro wins.
    - Seed-VC is GPL-3.0 and offline-only (~35 s/clip on CPU); a Seed-VC winner means pre-rendered demo audio, or a GPU host.

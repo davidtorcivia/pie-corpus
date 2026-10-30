@@ -21,7 +21,7 @@ import functools
 import re
 from dataclasses import dataclass, field
 
-from ..realize import Lexicon, check_plan, realize
+from ..realize import Lexicon, _valency, check_plan, realize
 from .lexmap import LexMap
 
 PRONOUNS = {  # English personal pronoun → (person, number)
@@ -62,10 +62,10 @@ SYNONYMS = {
     "joyful": ["glad"], "justice": ["right"], "just": ["right"], "nation": ["people"], "country": ["land"],
     "consider": ["think"], "believe": ["think"], "suppose": ["think"], "seem": ["appear"], "create": ["make"],
     "endow": ["give"], "grant": ["give"], "pursue": ["seek"], "pursuit": ["seek"], "hope": ["wish"],
-    "desire": ["wish"], "evil": ["bad"], "wicked": ["bad"], "beautiful": ["fair", "good"], "lovely": ["fair", "good"],
+    "desire": ["wish"], "wicked": ["bad"], "lovely": ["beautiful", "fair", "good"],
     "large": ["big", "great"], "huge": ["great"], "tiny": ["small"], "quick": ["swift"], "rapid": ["swift"],
     "fast": ["swift"], "forest": ["wood", "tree"], "woods": ["wood", "tree"], "ocean": ["sea"], "lake": ["sea", "water"],
-    "child": ["son", "boy"], "kid": ["son", "boy"], "girl": ["daughter"], "boy": ["son"], "lady": ["woman"],
+    "kid": ["child", "son", "boy"], "girl": ["daughter"], "boy": ["son"], "lady": ["woman"],
     "husband": ["man"], "wife": ["woman"], "ruler": ["king"], "lord": ["king", "master"], "chief": ["king"],
     "warrior": ["man", "hero"], "soldier": ["man"], "battle": ["war", "fight"], "begin": ["start"],
     "finish": ["end"], "unalienable": ["imperishable"], "inalienable": ["imperishable"], "eternal": ["imperishable"],
@@ -201,6 +201,10 @@ class Transfer:
         want = {"IND": [tense], "IMP": ["IMP"], "SBJV": ["SBJV"], "OPT": ["OPT"]}[mood]
         prefs = {"AOR": ["AOR", "PST"], "PRS": ["PRS", "AOR"], "PRF": ["PRF", "PRS"], "PST": ["PST", "AOR"]}
         if mood == "IND":
+            # a stative perfect with no present or aorist stem (wóyde 'knows', h₃eh₃óde 'hates', ḱeḱómh₂e 'is tired')
+            # says the present state: its perfect is the present tense
+            if tense == "PRS" and "PRF" in cs[0].tenses and not cs[0].tenses & {"PRS", "AOR"}:
+                return cs[0].lex_id, "PRF"
             for t in prefs[tense]:
                 for c in cs:
                     if t in c.tenses:
@@ -413,6 +417,10 @@ class Transfer:
                 v.update(person=person, num=num)
             if self.lx.middle_only(lid):
                 v["voice"] = "MID"
+            if _valency(lid) == "fear":          # 'fear the wolf' = 'fear from the wolf' (check_plan; Ved. bhī- + abl.)
+                for s_ in slots:
+                    if s_["role"] == "OBJ" and s_.get("dep") is None and "head" not in s_:
+                        s_["role"] = "ABL"
             slots.append({"lex_id": lid, "role": "V", "verb": v})
         if neg:
             cl["neg"] = True
