@@ -467,3 +467,20 @@ neighbouring vowel. On the Hindi hymn:
 - male h₁wésu 0.14 → 0.37 and h₁áydʰi 0.12 → 0.25.
 
 Accent, melody and timing are unchanged.
+
+## v9: phrase ends and connected words (2026-10-30)
+
+Timeline change (cadence.py): no silence between words inside a phrase (was 50 ms after every word), +60 ms for words
+ending in h. pie_vtl v9 adds `--phrase-end` (lungs stepped down, breathy then h-shaped glottis, −2 st at line ends).
+JD3, accent 4.0, ElevenLabs Hindi + restore.py, measured with vtl_ends.py (−10 → −30 dB decay of the last nucleus):
+
+| | v8 VTL | v9 VTL | v9 ElevenLabs |
+|---|---|---|---|
+| caesura | 20–25 ms | 95–142 ms | 135–304 ms |
+| line end (vowel/nasal/r) | 12–52 ms | 155–212 ms | 75 (dh₃dʰí) – 287 ms |
+| end of hymn | 22 ms | 224 ms | 277 ms |
+| dip between connected words | −35 to −74 dB (silence) | −1 to −30 dB | −1 to −42 dB |
+
+Melody r 0.96, accent +5.5 st, declination −3.4 st/line: unchanged from v8. ElevenLabs keeps the trailing ends; it
+weakens two of the three túH tails now that they run into the next word (second half −20 / −28 dB re the u, VTL
+−10 / −16). restore.py adds breath to all three.
