@@ -22,6 +22,10 @@
   proverbs (t043).
 - **Vocabulary round 3 (war and exchange, t040):** booty, raid, boast, threaten, weapon, sword, shield, battle,
   victory, brave, ransom, pay, weep, calf, herald; summer (sm̥h₂erós has no accent); bird/fly/iron (t3b-007).
+- **Vocabulary round 5 (after round 3, 2026-10-31):** from t073: herb/medicine, hair, age (noun), staff, ancestor,
+  tears (dáḱru exists: check lexq 'tears'), face, wound (noun), fever, still. Round 3's open list: until, ago, lend,
+  rich, iron, sword, grave, herald, hunter; month, lightning, bee, deer (no engine shape); summer (no accent);
+  sólh₂wos 'all' has a noun spec (an adjective fix changes t003/t026: do it in the re-realize pass).
 - **Vocabulary round 4 (conversation gaps, t044 planner):** every/all (*sólh₂wos), until, before (*pr̥h₂í, *pr̥Hwós),
   because, neighbour, bread, tomorrow; a thanks/please formula beyond praise of the giver; from t050/t056/t059:
   but, only, ago and spans of time ("for three days"), yes/no, morning, count, open, cloak, summer, calf, kick,
