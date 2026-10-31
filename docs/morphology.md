@@ -148,7 +148,7 @@ Ringe writes thematic endings uncontracted (*-oey*, *-ead*, *-oes*), i.e. our `w
 
 ## Closed classes
 
-`data/morph/closed_class.json` holds hand tables: personal pronouns (with enclitics), the reflexive, *so/seh₂/tod*, *kʷi-/kʷo-*, numerals 2–4 declined and 5–10 indeclinable, and core particles. Also handbook-standard and UNVERIFIED. *óynos* declines through the engine as a thematic adjective.
+`data/morph/closed_class.json` holds hand tables: personal pronouns (with enclitics), the reflexive, *so/seh₂/tod*, *kʷi-/kʷo-*, numerals 2–4 declined and 5–10 indeclinable, and core particles. Also handbook-standard and UNVERIFIED. *óynos* declines through the engine as a thematic adjective. A thematic adjective may be **pronominal** (`AdjSpec.pronominal`, set by an override): its neuter NOM/VOC/ACC.SG ends in *-od* like *tód*, everything else is the ordinary o/eh₂ adjective. Only *h₂élyos* 'other' has it (n. *h₂élyod*: Ringe 2006 p. 55 reconstructs it securely from Lat. *aliud*, Gk *ἄλλο*, and leaves the scope of the rest of the pronominal inflection open, so the *-sm-*/*-sy-* obliques and NOM.PL *-oy* are not built for it). `spec_dict` stores the flag only when set.
 
 ## Phase B (verbal: built)
 

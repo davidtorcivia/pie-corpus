@@ -21,9 +21,9 @@ How the validator uses it (`pie/validate.py`):
 - Quality gates: `all_exact(v)` (coverage 1.0 and every token at tier `exact`) counts only primary and supported forms. `scripts/realize_plans.py` uses it for its `all_exact` gate. Tier 1 (`pie/tier1.py`) and Tier 2 (`scripts/build_tier2.py`) set `verified` from `tier == "exact"`, which a legacy match (tier `legacy`) and a known error (not found) never reach. `Lexicon.cells` (pie/realize.py) reads only the primary `spec`, so the realizer never generates a displaced form; no change there.
 - `validate_text` also returns `legacy` (surfaces), `known_errors` (`surface: known error: ...`) and `accentless` (the accent lint, below).
 
-## Classification of the 63 displaced specs
+## Classification of the 68 displaced specs
 
-10 supported, 8 legacy, 45 rejected. Each override's note was read. The "displaced" column lists the fields where the displaced spec differs from the primary.
+10 supported, 9 legacy, 49 rejected. Each override's note was read. The "displaced" column lists the fields where the displaced spec differs from the primary.
 
 Notes on particular cases:
 - Gender only (*déywih₂*, *h₃rḗǵnih₂*, *néptih₂*, *pótnih₂*, *wl̥kʷíh₂s*): the displaced spec had gender m. Its cells are identical to the primary's, so the rejection never applies to a form. It is listed for completeness.
@@ -100,6 +100,9 @@ Notes on particular cases:
 | `pie-lex-welt` | wélt | rejected | weak ul | LIV's prevocalic weak ul- mis-read as a stem for every environment (athematic-verbs S1) |
 | `pie-lex-went` | wént | rejected | weak un | LIV's prevocalic weak un- mis-read as a stem for every environment: undʰí (athematic-verbs S1) |
 | `pie-lex-wlkwih2s` | wl̥kʷíh₂s | rejected | gender m | spec gender m for an ih₂ noun (feminine.md housekeeping) |
+| `pie-lex-bholgjhis` | bʰólǵʰis | rejected | weak bʰl̥ǵʰéy, accent_class proterokinetic | zero-grade oblique against the o-grade i-stem of Gmc *balgi- and Celtic (round 5) |
+| `pie-lex-h2ekjs` | h₂éḱsis | rejected | weak h₂ḱséy, accent_class proterokinetic | zero-grade oblique against full-grade Lat. axis, Lith. ašìs (round 5) |
+| `pie-lex-h2elyos` | h₂élyos | rejected | pronominal false | the nominal neuter h₂élyom: Lat. aliud, Gk ἄλλο continue *-od (Ringe 2006 p. 55; round 5) |
 
 ## Clean root-accented u-adjective alternatives (2026-10-25)
 

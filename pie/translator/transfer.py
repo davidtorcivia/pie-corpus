@@ -285,6 +285,10 @@ class Transfer:
                 self.used.add(ch.i)
                 slots.append({"lex_id": "closed:deictic_ki" if cl in ("this", "these") else "closed:demonstrative_so",
                               "role": "MOD", "head": head})
+            elif ch.dep_ == "det" and cl == "another":
+                # 'another girl': h₂élyos, a pronominal adjective agreeing with its noun (round 5)
+                self.used.add(ch.i)
+                slots.append({"lex_id": "pie-lex-h2elyos", "role": "MOD", "head": head})
             elif ch.dep_ == "prep" and ch.text.lower() == "of":
                 for g in ch.children:
                     if g.dep_ == "pobj":

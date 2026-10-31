@@ -102,7 +102,13 @@ TIER3B_INHERITED = ["pie-lex-mowdos", "pie-lex-sweh2dos", "pie-lex-newos", "pie-
                     "pie-lex-moro", "pie-lex-nekjus", "pie-lex-gwhonos-2", "pie-lex-gwhentoxr", "pie-lex-h1rh1pyeti",
                     "pie-lex-leykwt", "pie-lex-h1yenh2texr", "pie-lex-gjlh2oxws", "pie-lex-swekjruh2", "pie-lex-snusos",
                     "pie-lex-sneh1", "pie-lex-tentlom",
-                    "pie-lex-h3epnos", "pie-lex-h1wogwheyeti", "pie-lex-h3orbhos", "pie-lex-sh1esox"]
+                    "pie-lex-h3epnos", "pie-lex-h1wogwheyeti", "pie-lex-h3orbhos", "pie-lex-sh1esox",
+                    # 2026-10-31 round 5 (docs/audits/lexicon-gaps-round5-2026-10-31.md; evidence in overrides.jsonl):
+                    # the t073-t094 planners' gaps
+                    "pie-lex-h1enih3kwo", "pie-lex-sh2kros", "pie-lex-ish1ros", "pie-lex-h2oyu", "pie-lex-gjenh1eseh2",
+                    "pie-lex-gwhedhyeti", "pie-lex-ghostipotis", "pie-lex-mexdeti", "pie-lex-dakjru",
+                    "pie-lex-bholgjhis", "pie-lex-h2ekjs", "pie-lex-bhrgjyeti", "pie-lex-h1yagjeti", "pie-lex-mexh1ns",
+                    "pie-lex-gwerdus", "pie-lex-dekjsiwos", "pie-lex-uksexn"]
 ADVERB_POS = ("adv", "prep", "postp")
 NIL_ADMIT = {"pie-lex-bhagos", "pie-lex-bhngjhulos", "pie-lex-bhrtos", "pie-lex-gwowsth2os", "pie-lex-kjh3tos",
              "pie-lex-medtos", "pie-lex-priHtos", "pie-lex-h2rgjipyos", "pie-lex-kjolHtos", "pie-lex-rotos",

@@ -9,13 +9,13 @@ data/morph/classify_report.json (coverage and per-rule backtest accuracy).
 """
 
 import collections
-import dataclasses
 import json
 import sys
 from pathlib import Path
 
 from pie.classify import Classified, by_shape, spec_from_template
 from pie.crosscheck import cells_for
+from pie.morph import spec_dict
 
 ROOT = Path(__file__).resolve().parent.parent
 # Tier 3 may only use a spec from a table, or from a shape rule whose
@@ -115,7 +115,7 @@ def main() -> int:
                 g2 = spec_from_template(t)
                 if g2:
                     # a second Wiktionary table: a supported alternative
-                    extra.append({"family": g2[0], "spec": dataclasses.asdict(g2[1]), "status": "supported"})
+                    extra.append({"family": g2[0], "spec": spec_dict(g2[1]), "status": "supported"})
         if c is None:
             c = by_shape(e)
         cov[c.rule.split(":")[0] if c.spec is None else ("table" if c.rule == "table" else "shape")] += 1
@@ -125,7 +125,7 @@ def main() -> int:
         if e.get("spec_checked") and (c.spec is not None or e.get("spec_override")):
             usable = True          # a spec checked by hand from the reviews (data/lexicon/overrides.jsonl)
         cov["usable"] += usable
-        spec = dataclasses.asdict(c.spec) if c.spec else None
+        spec = spec_dict(c.spec) if c.spec else None
         if spec and e.get("spec_override"):            # hand fixes from reviews (data/lexicon/overrides.jsonl)
             before, spec = spec, {**spec, **e["spec_override"]}
             # the displaced spec stays indexed for the validator (pie/validate.py reads extra_specs), with its

@@ -607,6 +607,10 @@ class AdjSpec:
     f_weak: str | None = None
     accent_class: str | None = None
     loc_sg: list[str] = field(default_factory=list)
+    # thematic pronominal adjective: neuter NOM/VOC/ACC.SG in *-od like tód, kʷód (Ringe 2006 p. 55: *h₂élyod
+    # 'other' from Lat. aliud, Gk ἄλλο). Only the neuter: the rest of the pronominal signature (*-sm-, *-sy-,
+    # NOM.PL *-oy) is not secure for these words, so they decline as ordinary o/eh₂ adjectives otherwise.
+    pronominal: bool = False
 
     def genders(self) -> dict[str, NounSpec]:
         if self.m_weak is None:
@@ -621,8 +625,23 @@ class AdjSpec:
         }
 
 
+def spec_dict(spec) -> dict:
+    """A spec as stored in inflection_specs.jsonl (classify_lexicon, pie.neologism): AdjSpec's `pronominal` only
+    when set, so every other row keeps its keys."""
+    import dataclasses
+    d = dataclasses.asdict(spec)
+    if d.get("pronominal") is False:
+        del d["pronominal"]
+    return d
+
+
 def decline_adj(spec: AdjSpec, convention: str = "handbook", alternatives: bool = True) -> dict[str, Cells]:
-    return {g: decline(s, convention, alternatives) for g, s in spec.genders().items()}
+    out = {g: decline(s, convention, alternatives) for g, s in spec.genders().items()}
+    if spec.pronominal:
+        assert spec.m_weak is None, "pronominal: thematic adjectives only"
+        for feat in ("NOM.SG", "VOC.SG", "ACC.SG"):     # h₂élyom → h₂élyod (the nominal -om is not kept)
+            out["n"][feat] = _uniq([f[:-1] + "d" if f.endswith("om") else f for f in out["n"][feat]])
+    return out
 
 
 # =============================================================================

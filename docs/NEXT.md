@@ -1,5 +1,11 @@
 # Next steps (handoff list, started 2026-10-29)
 
+## Owner decisions taken by the lead (overrule freely)
+- **gʷṓws stays common gender, masculine by default** (2026-10-31, round 5): PIE gʷṓws is m./f. (Ved. gáuḥ, Gk βοῦς,
+  Lat. bōs); making it feminine by default would have changed 60 approved records in 41 batches and left 21 with
+  mixed pronouns. Instead planners set gender f for a cow as a female animal (brief v4; plan_warnings flags a
+  pronoun that disagrees). Flip later only with a re-review of the 41 batches.
+
 ## Engine fix list (from the 2026-10-30 reviews; none broke an approved batch)
 - **Done 2026-10-31 (994f7fc):** the re-realize pass ('?', 'two', sólh₂wos) and the recurring APPOS-number /
   np-case / middle-3du gaps (bd6a13d). Left: ~40 batches whose gloss lines predate the current glosses (re-realize

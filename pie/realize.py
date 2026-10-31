@@ -1178,6 +1178,33 @@ def plan_warnings(plan: dict, lx: Lexicon | None = None) -> list[str]:
         out += _pred_gender_warnings(ci, cl, lx)
         out += _answer_case_warnings(ci, cl, clauses[ci - 1] if ci else None)
         out += _dual_fallback_warnings(ci, cl, lx)
+        out += _common_gender_warnings(ci, clauses, lx)
+    return out
+
+
+# nouns of common gender filed under one engine gender (gʷṓws 'cattle; cow, ox': m. f. in the daughters, m in the
+# engine): a cow is the slot gender f. Lexicon gaps round 5 (docs/audits/lexicon-gaps-round5-2026-10-31.md)
+COMMON_GENDER = ("pie-lex-gwoxws",)
+
+
+def _common_gender_warnings(ci: int, clauses: list, lx: Lexicon) -> list[str]:
+    """A 3rd-person pronoun on its own in clause ci whose gender differs from an ungendered common-gender noun
+    (COMMON_GENDER) of its number in this clause or the two before: the pronoun says 'cows' (f) while the noun
+    and its agreeing words say m. Set the gender on the noun slot too (or on neither)."""
+    out = []
+    for si, s in enumerate(clauses[ci].get("slots", [])):
+        if not s.get("lex_id", "").startswith(ANAPHORS) or s.get("role") in ("MOD", "APPOS"):
+            continue
+        g, n = s.get("gender") if s.get("gender") in ("m", "f", "n") else "m", s.get("num", "SG")
+        hits = [(cj, k, t) for cj in range(max(0, ci - 2), ci + 1)
+                for k, t in enumerate(clauses[cj].get("slots", []))
+                if t.get("lex_id") in COMMON_GENDER and not t.get("gender")
+                and slot_number(clauses[cj]["slots"], k) == n and g != lx.gender(t["lex_id"])]
+        for cj, k, t in hits[-1:]:          # the nearest one
+            out.append(f"clause {ci} slot {si}: {s['lex_id'].split(':')[1]} {g} {n} may take up the "
+                       f"{lx.gloss(t['lex_id'])} of clause {cj} slot {k}, which has no gender (so "
+                       f"{lx.gender(t['lex_id'])}): set \"gender\": \"{g}\" on that slot too (a cow, "
+                       f"female cattle), or make the pronoun {lx.gender(t['lex_id'])}")
     return out
 
 

@@ -84,6 +84,15 @@ def test_round3_words_reach_the_translator(transfer):
                                                                        "móros h₁léwdʰins gʷʰénti.")
 
 
+def test_round5_words_reach_the_translator(transfer):
+    """docs/audits/lexicon-gaps-round5-2026-10-31.md: a bull is uksḗn, 'another' is the adjective h₂élyos, and the
+    round's new words."""
+    assert transfer.translate("The great bull sleeps.").pie == "méǵh₂s uksḗn sésti."
+    assert transfer.translate("Another girl sings.").pie == "h₂élyeh₂ dʰugh₂tḗr gʷéHyeti."
+    assert transfer.translate("The other men saw his face.").pie == "h₂élyōs wiHrṓs h₁ésyo h₁énih₃kʷom widónt."
+    assert transfer.translate("The holy man roasts meat.").pie == "sh₂krós wiHrós mḗms bʰr̥ǵyéti."
+
+
 def test_transfer_reports_what_it_cannot_say(transfer):
     r = transfer.translate("The tiger ate the bread.")
     assert set(r.unknown) >= {"tiger"}

@@ -37,11 +37,11 @@ benchmark family (pie.export.eval_root); a derivative or compound may not reprod
 from __future__ import annotations
 
 import json
-from dataclasses import asdict, replace
+from dataclasses import replace
 from pathlib import Path
 
 from .classify import by_shape, zero_grade
-from .morph import AdjSpec, NounSpec, decline, decline_adj
+from .morph import AdjSpec, NounSpec, decline, decline_adj, spec_dict
 from .phon import parse, render
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -111,7 +111,7 @@ def _classify(form: str, pos: str, gender: str | None, where: str) -> dict:
     c = by_shape({"form": form, "pos": pos, "gender": gender})
     if c.spec is None or c.family != POS_FAMILY.get(pos) or not c.rule.startswith("shape:") or c.rule in BLOCKED_RULES:
         raise NeologismError(f"{where}: {form!r} ({pos}) has no usable engine spec (rule {c.rule})")
-    return {"rule": c.rule, "family": c.family, "spec": asdict(c.spec)}
+    return {"rule": c.rule, "family": c.family, "spec": spec_dict(c.spec)}
 
 
 # --- the three models ----------------------------------------------------------------------------------------

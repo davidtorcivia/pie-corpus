@@ -64,7 +64,21 @@ def words(s: str) -> set[str]:
     return set(re.findall(r"[a-z]+", s.lower()))
 
 
+def singular(w: str) -> str:
+    """A plural -s dropped (tears → tear, cows → cow; not 'grass', 'us')."""
+    return w[:-1] if len(w) > 3 and w.endswith("s") and not w.endswith("ss") else w
+
+
 def search(term: str, lx, ids: list[str], uses, n: int) -> list[dict]:
+    """The candidates for a term; a plural with no hit of its own is looked up in the singular ('tears' →
+    dáḱru 'tear': NEXT.md round 5)."""
+    out = _search(term, lx, ids, uses, n)
+    t = term.lower().strip()
+    sg = " ".join(singular(w) for w in t.split())
+    return out or (_search(sg, lx, ids, uses, n) if sg != t else out)
+
+
+def _search(term: str, lx, ids: list[str], uses, n: int) -> list[dict]:
     t = term.lower().strip()
     tw = words(t)
     scored = []
@@ -100,8 +114,7 @@ IDIOMS = ROOT / "data" / "lexicon" / "idioms.json"
 def idioms(term: str, tier3b: bool = False) -> list[dict]:
     """The idiom entries for a query: its English phrase, or every content word of the query, is in an entry's
     `english` list (a plural -s is dropped). Coinage ids (`tier3b_ids`) only for Tier 3b."""
-    def norm(w):
-        return w[:-1] if len(w) > 3 and w.endswith("s") and not w.endswith("ss") else w
+    norm = singular
     t = term.lower().strip()
     tw = {norm(w) for w in words(t)} - FUNCTION_WORDS
     out = []

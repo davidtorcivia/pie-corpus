@@ -82,6 +82,20 @@ OVERRIDES = {
     ("bride", "noun"): "pie-lex-snusos", ("spin", "verb"): "pie-lex-sneh1", ("loom", "noun"): "pie-lex-tentlom",
     ("curse", "verb"): "pie-neo-curse", ("wealth", "noun"): "pie-lex-h3epnos", ("goods", "noun"): "pie-lex-h3epnos",
     ("promise", "verb"): "pie-lex-h1wogwheyeti", ("heir", "noun"): "pie-lex-h3orbhos", ("autumn", "noun"): "pie-lex-sh1esox",
+    # round 5 2026-10-31 (docs/audits/lexicon-gaps-round5-2026-10-31.md)
+    ("other", "adj"): "pie-lex-h2elyos", ("another", "adj"): "pie-lex-h2elyos", ("bull", "noun"): "pie-lex-uksexn",
+    ("ox", "noun"): "pie-lex-uksexn", ("tear", "noun"): "pie-lex-dakjru", ("face", "noun"): "pie-lex-h1enih3kwo",
+    ("age", "noun"): "pie-lex-h2oyu", ("generation", "noun"): "pie-lex-gjenh1eseh2", ("pray", "verb"): "pie-lex-gwhedhyeti",
+    ("holy", "adj"): "pie-lex-sh2kros", ("sacred", "adj"): "pie-lex-sh2kros", ("host", "noun"): "pie-lex-ghostipotis",
+    ("heal", "verb"): "pie-lex-mexdeti", ("cure", "verb"): "pie-lex-mexdeti", ("herb", "noun"): "pie-lex-ghreh1mn",
+    ("fever", "noun"): "pie-lex-tepos", ("serve", "verb"): "pie-lex-sekwetor", ("anvil", "noun"): "pie-lex-h2ekjmox",
+    ("bellows", "noun"): "pie-lex-bholgjhis", ("bag", "noun"): "pie-lex-bholgjhis", ("sack", "noun"): "pie-lex-bholgjhis",
+    ("axle", "noun"): "pie-lex-h2ekjs", ("reins", "noun"): "pie-lex-sh2eymn", ("bridle", "noun"): "pie-lex-sh2eymn",
+    ("dye", "verb"): "pie-lex-pinekjti", ("roast", "verb"): "pie-lex-bhrgjyeti", ("fry", "verb"): "pie-lex-bhrgjyeti",
+    ("sacrifice", "verb"): "pie-lex-h1yagjeti", ("worship", "verb"): "pie-lex-h1yagjeti", ("howl", "verb"): "pie-lex-HrewdHti",
+    ("roar", "verb"): "pie-lex-HrewdHti", ("month", "noun"): "pie-lex-mexh1ns", ("thunder", "noun"): "pie-lex-ghromos",
+    ("deer", "noun"): "pie-lex-h1olkjis", ("stag", "noun"): "pie-lex-h1olkjis", ("slow", "adj"): "pie-lex-gwerdus",
+    ("east", "adj"): "pie-lex-h2ewsteros",
 }
 
 
