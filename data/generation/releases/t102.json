@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t102",
+ "sha256": {
+  "records": "47e15b75b16a9c9b06cab698f44c96802dc27afc733c863eb890b787ee79a1a7",
+  "plans": "9753931a9dcc1559be0aac3e2bc5395fb8391f589f77657f7ecaeb4a373e379c",
+  "gate_report": "65c96a46af648578b47cf4d7ff1d44c3bde495872f65a18792348f204edb6131"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t102-review.md",
+   "docs/audits/packets/t102-verdicts.jsonl",
+   "data/generation/batches/t102.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t102-review.md): plants 4/5 (missed a wrong case in a one-line question; meets the 4/5 bar), real wrong 3 → 0 (2 withdrawn on the numeral table), Tier 1 0/3; second pass wrong 2 → 0, minor 4 → 0 fixed at source (neuter 'it', the lord's possessive, 'want', duplicate possessive enclitics removed); gate PASS 40/40."
+ }
+}
