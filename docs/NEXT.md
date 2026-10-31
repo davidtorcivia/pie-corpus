@@ -17,6 +17,9 @@
   proverbs (t043).
 - **Vocabulary round 3 (war and exchange, t040):** booty, raid, boast, threaten, weapon, sword, shield, battle,
   victory, brave, ransom, pay, weep, calf, herald; summer (sm̥h₂erós has no accent); bird/fly/iron (t3b-007).
+- **Vocabulary round 4 (conversation gaps, t044 planner):** every/all (*sólh₂wos), until, before (*pr̥h₂í, *pr̥Hwós),
+  because, neighbour, bread, tomorrow; a thanks/please formula beyond praise of the giver.
+- gʷṓws: oblique plurals must be o-grade gʷów- (Ved. góbhis, gávām; Gk βουσί); the drills now teach gʷéwbʰos.
 
 ## Morning first
 1. **Rate the TTS finals** on the finals rating page, https://claude.ai/artifact/23p85eZLQR3nawtMgUxZAf. Candidates: Kokoro + profile (bf_isabella, af_nicole, em_santa) and eSpeak → Seed-VC F0 (em_santa, em_alex, bf_isabella, af_nicole), with eSpeak as reference. Then set the winner as the `pie.speak` default and redeploy erebus `pie-tts` if Kokoro wins.
