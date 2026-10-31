@@ -1,18 +1,18 @@
 {
  "provenance": {
-  "commit": "457208d6fa3c8d227480cc545b352b2d2047308f",
-  "inputs_dirty": true,
+  "commit": "7d88cb4cadf71a88c8d4d58e8361c33c98dca3b0",
+  "inputs_dirty": false,
   "include_pilot": false,
   "experimental_batches": false
  },
  "examples": {
-  "train": 21256,
+  "train": 24010,
   "eval": 170
  },
  "modes": {
   "train": {
-   "en_pie": 10628,
-   "pie_en": 10628
+   "en_pie": 12005,
+   "pie_en": 12005
   },
   "eval": {
    "en_pie": 85,
@@ -21,10 +21,10 @@
  },
  "units": {
   "train": {
-   "en_pie:paragraph": 5382,
-   "en_pie:sentence": 5246,
-   "pie_en:paragraph": 5382,
-   "pie_en:sentence": 5246
+   "en_pie:paragraph": 6217,
+   "en_pie:sentence": 5788,
+   "pie_en:paragraph": 6217,
+   "pie_en:sentence": 5788
   },
   "eval": {
    "en_pie:paragraph": 7,
@@ -34,7 +34,7 @@
   }
  },
  "gloss_reference": {
-  "train": 21256,
+  "train": 24010,
   "eval": 84
  },
  "neologism_examples": {
@@ -43,10 +43,10 @@
  },
  "items": {
   "train": {
-   "en_pie:paragraph": 5382,
-   "en_pie:sentence": 5246,
-   "pie_en:paragraph": 5382,
-   "pie_en:sentence": 5246,
+   "en_pie:paragraph": 6217,
+   "en_pie:sentence": 5788,
+   "pie_en:paragraph": 6217,
+   "pie_en:sentence": 5788,
    "unaligned_long:count_mismatch": 254,
    "unaligned_long:plan_english_mismatch": 19,
    "unaligned_long:question_mismatch": 5
@@ -61,28 +61,28 @@
  },
  "self_overlap": {
   "all_kinds_sentences": {
-   "items": 16815,
-   "max": 15,
-   "mean": 1.0486,
+   "items": 19130,
+   "max": 17,
+   "mean": 1.0507,
    "histogram": {
-    "1": 16343,
-    "2": 322,
-    "3": 78,
-    "4+": 72
+    "1": 18574,
+    "2": 380,
+    "3": 93,
+    "4+": 83
    },
-   "over_3": 72
+   "over_3": 83
   },
   "all_kinds_ngram4": {
-   "items": 41471,
-   "max": 16,
-   "mean": 1.0072,
+   "items": 47435,
+   "max": 18,
+   "mean": 1.0073,
    "histogram": {
-    "1": 41229,
-    "2": 213,
-    "3": 21,
-    "4+": 8
+    "1": 47152,
+    "2": 250,
+    "3": 23,
+    "4+": 10
    },
-   "over_3": 8
+   "over_3": 10
   }
  },
  "leakage": {
