@@ -1,11 +1,10 @@
 # Next steps (handoff list, started 2026-10-29)
 
 ## Engine fix list (from the 2026-10-30 reviews; none broke an approved batch)
-- **Re-realize pass due (2026-10-31):** two engine fixes change already-approved records. (1) realize now ends a
-  sentence in "?" when any of its clauses has `question` (it read only the last clause): 35 sentences in t008, t019,
-  t022, t025, t028, t029, t034, t035, t036, t037, t043, t050, t053, t3b-002, t3b-006, t3b-007. (2) check_plan rejects
-  'two' in an oblique case (_check_two_oblique): one clause in t022. Re-realize those batches, rebind their release
-  records, re-export.
+- **Done 2026-10-31 (994f7fc):** the re-realize pass ('?', 'two', sólh₂wos) and the recurring APPOS-number /
+  np-case / middle-3du gaps (bd6a13d). Left: ~40 batches whose gloss lines predate the current glosses (re-realize
+  and rebind them together; realize_plans resets a release to pending, so rebind right after); t022/t025 pending
+  (lexeme cap); t025 has two nominative short answers; t3b-001 cannot re-run under the current Tier 3b rules.
 - **Silent cell substitution** (t3b-002, t3b-004, t038, t039): a requested cell the engine doesn't build (a dual
   oblique, a middle dual) silently becomes another (plural), with no rejection or warning. check_plan should reject,
   or realize should warn, so the planner chooses.
