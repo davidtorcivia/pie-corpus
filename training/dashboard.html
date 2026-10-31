@@ -29,7 +29,7 @@ select{font:inherit;background:var(--card);color:var(--fg);border:1px solid var(
 <body>
 <main>
 <h1>PIE fine-tuning</h1>
-<div class="sub">tr-desktop · RTX 5090 · refreshes every 15 s · <span id="when"></span></div>
+<div class="sub">tr-desktop · RTX 5090, and Tinker (tinker/…) · refreshes every 15 s · <span id="when"></span></div>
 <div class="card"><h2>Runs</h2><table id="runs"><thead><tr><th>run</th><th>model</th><th>lr</th><th>rank</th><th>status</th><th>step</th><th>epoch</th><th>train loss</th><th>eval loss</th><th>tok/s</th><th>GPU GB</th><th>min</th></tr></thead><tbody></tbody></table></div>
 <div class="grid" style="margin-top:14px">
 <div class="card"><h2>Train loss</h2><canvas id="cTrain" height="220"></canvas></div>
@@ -58,7 +58,7 @@ async function refresh(){
  runs.forEach((r,i)=>{const m=r.metrics, t=last(m,"train"), e=last(m,"eval"), done=last(m,"done");
   const tr=document.createElement("tr");tr.className="run"+(selected.has(r.name)?" sel":"");
   tr.innerHTML=`<td><b style="color:${COLORS[i%8]}">${esc(r.name)}</b></td><td>${esc((r.config.model||"").split(/[\\/]/).pop())}</td><td>${r.config.lr??""}</td><td>${r.config.rank??""}</td>
-  <td class="status ${done?"done":"live"}">${done?"done":(t?"training":"starting")}</td><td>${t?t.step+" / "+(r.config.total_steps??"?"):""}</td><td>${t?t.epoch:""}</td>
+  <td class="status ${done?"done":"live"}">${done?"done":(t?"training":"starting")}${r.config.backend==="tinker"?' <span class="pill">tinker</span>':""}</td><td>${t?t.step+" / "+(r.config.total_steps??"?"):""}</td><td>${t?t.epoch:""}</td>
   <td>${t?t.loss:""}</td><td>${e?e.eval_loss:""}</td><td>${t?t.tok_per_s:""}</td><td>${t?t.gpu_gb:""}</td><td>${(done||t||{}).elapsed_min??""}</td>`;
   tr.onclick=()=>{selected.has(r.name)?selected.delete(r.name):selected.add(r.name);draw()};tb.appendChild(tr)});
  draw(); fillRunSelect(); document.getElementById("when").textContent="updated "+new Date().toLocaleTimeString();
