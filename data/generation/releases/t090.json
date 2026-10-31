@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t090",
+ "sha256": {
+  "records": "7c123361c419dd13d90df7959f156a2d85cc70bdde762eb1da6319ca7a070ad6",
+  "plans": "bccce1ce7b2a1fc294a88021c1847db382a024e3fe493752b834a29c52e2dac9",
+  "gate_report": "96b9fb7deca546bbba200fe2fcd6b8e94e1f074583b5bd7322e9b705df49116c"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t090-review.md",
+   "docs/audits/packets/t090-verdicts.jsonl",
+   "data/generation/batches/t090.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t090-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, 0 minor; all 40: 0 wrong, 6 minor fixed (English saying more than the PIE); feminine PREDs carry gender; nothing explicit or modern; gate PASS 40/40."
+ }
+}
