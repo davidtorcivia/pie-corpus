@@ -1,6 +1,11 @@
 # Next steps (handoff list, started 2026-10-29)
 
 ## Engine fix list (from the 2026-10-30 reviews; none broke an approved batch)
+- **Re-realize pass due (2026-10-31):** two engine fixes change already-approved records. (1) realize now ends a
+  sentence in "?" when any of its clauses has `question` (it read only the last clause): 35 sentences in t008, t019,
+  t022, t025, t028, t029, t034, t035, t036, t037, t043, t050, t053, t3b-002, t3b-006, t3b-007. (2) check_plan rejects
+  'two' in an oblique case (_check_two_oblique): one clause in t022. Re-realize those batches, rebind their release
+  records, re-export.
 - **Silent cell substitution** (t3b-002, t3b-004, t038, t039): a requested cell the engine doesn't build (a dual
   oblique, a middle dual) silently becomes another (plural), with no rejection or warning. check_plan should reject,
   or realize should warn, so the planner chooses.
@@ -24,6 +29,7 @@
 - The adposition pie-lex-me ('among, with') has the surface form of the enclitic 1sg ACC, so realize moves it to
   second position (ENCLITIC_PRONOUNS matches forms); no released record has it (t056 used médʰi). Match by id.
 - An apposition's own `num` is silently replaced by its head's (t056).
+- A predicate adjective with no subject or vocative in its clause ('you are dear to him') defaults to masculine; check_plan could warn (t053). h₂énkuleh₂ 'belt' gloss to check (t053).
 - Numeral 'two' has no feminine oblique dual forms (t045: 4 rejects).
 - gʷṓws: oblique plurals must be o-grade gʷów- (Ved. góbhis, gávām; Gk βουσί); the drills now teach gʷéwbʰos.
 

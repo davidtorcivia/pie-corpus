@@ -745,6 +745,21 @@ def _check_agreement(ci: int, cl: dict, slots: list, verbs: list, lx: Lexicon) -
     return errs
 
 
+def _check_two_oblique(ci: int, cl: dict, lx: Lexicon) -> list[str]:
+    """'two' in an oblique case: the numeral has its dual oblique (dwóbʰih₁, dwóyh₁s), but the counted noun's dual
+    oblique is not reconstructible and the plural stands in (realize_clause), so the pair disagreed in number
+    (t059 review: dwóbʰih₁ with an instrumental plural, three dialogues). Rejected, so the planner puts the pair
+    in the NOM/ACC (dual), names the two, or drops the numeral."""
+    try:
+        words = realize_clause(cl, lx)
+    except (KeyError, ValueError, IndexError):
+        return []                     # the clause's own errors are reported by the other checks
+    return [f"clause {ci}: 'two' ({w.form}, {w.features}) in an oblique case: its noun's dual oblique does not "
+            f"exist and the plural stands in, so the pair disagrees; put the pair in the NOM/ACC, name the two, or "
+            f"drop the numeral" for w in words
+            if w.lex_id.startswith("closed:numerals/2") and w.features.split(".")[0] not in ("NOM", "ACC", "VOC")]
+
+
 def _check_perfect_dual(ci: int, cl: dict, verbs: list, lx: Lexicon) -> list[str]:
     """The perfect has no 2nd or 3rd dual: Ringe 2006 p. 32 ('the dual endings are not reconstructable because
     Greek and Indo-Iranian disagree'). Fortson §5.51 prints none either. The realizer would put the plural in
@@ -980,6 +995,7 @@ def check_plan(plan: dict, lx: Lexicon | None = None) -> list[str]:
                         f"with a VOC slot (h₂éwsos 'Dawn!', not SUBJ h₂éwsōs)")
         errs += _check_agreement(ci, cl, slots, verbs, lx)
         errs += _check_perfect_dual(ci, cl, verbs, lx)
+        errs += _check_two_oblique(ci, cl, lx)
         errs += _check_neg(ci, cl, ctype, verbs)
         errs += _check_imp_person(ci, cl, verbs)
         errs += _check_pred_gender(ci, cl, slots, lx)
@@ -1631,9 +1647,14 @@ def token_cell(w: dict) -> dict:
 def realize(plan: dict, lx: Lexicon | None = None) -> dict:
     lx = lx or Lexicon.load()
     text, gloss, words = [], [], []
+    # a sentence is a question when any of its clauses says so: the brief sets `question` on the sentence's first
+    # clause, and reading only its last dropped the "?" of 35 multi-clause questions (t045 review)
+    asked = False
     for ci, cl in enumerate(plan["clauses"]):
         if ci and cl.get("break"):
-            text[-1] += "?" if plan["clauses"][ci - 1].get("question") else "."
+            text[-1] += "?" if asked else "."
+            asked = False
+        asked = asked or bool(cl.get("question"))
         ws = realize_clause(cl, lx)
         words += ws
         for w in ws:
@@ -1644,6 +1665,6 @@ def realize(plan: dict, lx: Lexicon | None = None) -> dict:
             else:
                 text.append(w.form)
                 gloss.append(f"{w.gloss}-{w.features}" if w.features not in ("PARTICLE", "ADV") else w.gloss)
-    end = "?" if plan["clauses"][-1].get("question") else "."
+    end = "?" if asked else "."
     return {"pie": " ".join(text) + end, "gloss": " ".join(gloss), "english": plan["english"],
             "words": [w.__dict__ for w in words]}

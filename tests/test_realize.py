@@ -441,6 +441,32 @@ def test_numeral_fixes_head_number():
     assert all("DU" in x["features"] for x in w if x["lex_id"] in ("pie-lex-kjwox", "pie-lex-widet"))
 
 
+def test_two_in_an_oblique_case_rejected():
+    """t059 review: dwóbʰih₁ (the numeral's dual instrumental) stood with a plural noun, because the noun's dual
+    oblique falls back to the plural; check_plan rejects 'two' in an oblique case, and keeps it in the NOM."""
+    from pie.realize import Lexicon, check_plan
+    lx = Lexicon.load()
+    slot = lambda role: {"english": "I saw it with two dogs.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-kjwox", "role": role},
+        {"lex_id": "closed:numerals/2", "role": "MOD", "head": 0},
+        {"lex_id": "pie-lex-widet", "role": "V", "verb": {"tense": "AOR", "person": 1 if role == "INS" else 3}}]}]}
+    assert any("'two'" in e for e in check_plan(slot("INS"), lx))
+    assert not any("'two'" in e for e in check_plan(slot("SUBJ"), lx))
+
+
+def test_question_flag_on_a_sentences_first_clause():
+    """t045 review: the brief sets `question` on a sentence's first clause; a two-clause question kept its "?"
+    only when the flag sat on the last clause."""
+    from pie.realize import Lexicon
+    lx = Lexicon.load()
+    v = lambda: {"lex_id": "pie-lex-widet", "role": "V", "verb": {"tense": "AOR", "person": 2}}
+    p = {"english": "Did you see and did you hear? I saw.", "clauses": [
+        {"question": True, "slots": [v()]}, {"conj": "kʷe", "slots": [v()]},
+        {"break": True, "slots": [{"lex_id": "pie-lex-widet", "role": "V", "verb": {"tense": "AOR", "person": 1}}]}]}
+    pie = produce(p, lx)["pie"]
+    assert pie.count("?") == 1 and pie.endswith(".") and pie.index("?") < len(pie) - 1
+
+
 def test_s_stem_neuter_plural():
     """t019 review: s-stem neuter nom. pl. in *-es-h₂ (Gk γένεα, Ved. -āṃsi), collective -ōs as alternative."""
     from pie.realize import Lexicon
