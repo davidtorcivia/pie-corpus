@@ -12,6 +12,8 @@
 - Comparatives/superlatives of derived adjectives are rejected ('younger', 'youngest', 'smallest': t092). The
   formula counter credits words that merely co-occur in a record (t089). An object relative h₁yód is not fronted and
   can read as 'if/when' (t089-0040).
+- A second identical enclitic in one clause (moy … moy: 'my X' and 'to me') is merged silently, losing one meaning
+  (t050-0019, t090-0040): warn, so the planner uses the stressed form for one of them.
 - **Silent cell substitution** (t3b-002, t3b-004, t038, t039): a requested cell the engine doesn't build (a dual
   oblique, a middle dual) silently becomes another (plural), with no rejection or warning. check_plan should reject,
   or realize should warn, so the planner chooses.
