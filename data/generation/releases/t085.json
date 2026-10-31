@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t085",
+ "sha256": {
+  "records": "a37e39077545401045852d0ff5ccb464495a5a9ea526d7f8787bd76d9e8a4c2a",
+  "plans": "7663d6633f47c2f238224b16cdc4dfb1991f1b032b190e8a11be5072b293cde0",
+  "gate_report": "bc7a93f4bef13cfb6f46da300cd60f6260024712f70355eef6244a9f7d3459de"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t085-review.md",
+   "docs/audits/packets/t085-verdicts.jsonl",
+   "data/generation/batches/t085.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t085-review.md): plants 5/5 named; real 0/20 wrong; minor 3 -> 0 (reflexive swós for 'her own', after swós left the lexeme cap); Horrors limits: no violations (captivity named only, no gore, no modern commentary); tone lands; gate PASS 40/40, meter 78/78."
+ }
+}
