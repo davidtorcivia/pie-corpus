@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t100",
+ "sha256": {
+  "records": "994e0455be9d802c6b60c7a6037ef51159af71afe10ddbcb2b95722e545c354e",
+  "plans": "0de65793bb473ba954b19c51681d950d6966ff775d5a228ed2a0d5575cf5a966",
+  "gate_report": "281da25766420ed94af1f30a87548d9d897df243138604df915324c086f1b43c"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t100-review.md",
+   "docs/audits/packets/t100-verdicts.jsonl",
+   "data/generation/batches/t100.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t100-review.md): plants 5/5, real wrong 0/20, minor 2 → 0 (1 withdrawn on the full gloss, 1 fixed); second pass 1 wrong (a 'him' with no referent) and 7 minor fixed at source; questions back 14 → 18 of 40, fitting the grief; Tier 1 0/3; gate PASS 40/40."
+ }
+}
