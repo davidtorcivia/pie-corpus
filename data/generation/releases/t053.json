@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t053",
+ "sha256": {
+  "records": "902d669671a70388459699b992ab5a5595026363622fc7e3b67c1bb5a6fb80a9",
+  "plans": "06a105127e5a89136f999d24bf957f3f5318726c1da2827cdc1a5365601accc2",
+  "gate_report": "430bc3ca60e4b500bbf4e361c1d4c23cecea47b7811afba68eb859b3d4fb555e"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t053-review.md",
+   "docs/audits/packets/t053-verdicts.jsonl",
+   "data/generation/batches/t053.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t053-review.md): plants 5/5 named; real 0/20 wrong, minor 4 -> 1; blind back-translation 6/6; all 40: 1 wrong fixed (feminine 'dear' for a daughter), dual 'between us'; kinship obliques correct; re-realized with the question-mark fix; gate PASS 40/40."
+ }
+}
