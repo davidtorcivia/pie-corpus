@@ -21,6 +21,7 @@
   because, neighbour, bread, tomorrow; a thanks/please formula beyond praise of the giver; from t050/t056/t059:
   but, only, ago and spans of time ("for three days"), yes/no, morning, count, open, cloak, summer, calf, kick,
   spill; verbs agree, refuse, persuade, obey, answer, avenge, pay; a feminine "cow" (gʷṓws is masculine only).
+- Numeral 'two' has no feminine oblique dual forms (t045: 4 rejects).
 - gʷṓws: oblique plurals must be o-grade gʷów- (Ved. góbhis, gávām; Gk βουσί); the drills now teach gʷéwbʰos.
 
 ## Morning first
