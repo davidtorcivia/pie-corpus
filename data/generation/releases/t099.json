@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t099",
+ "sha256": {
+  "records": "9ebf89093d0666bcaf5681d5a9f636614d93ad9d96a62b33e0173e98ae4b2366",
+  "plans": "ea59eda9c635782ce00841c29c5d383cade4cc4df338d5f3e9ec6cac0f849ee8",
+  "gate_report": "04e88fbbf12c08adb4d93ea2c4d3794ff304681d7678f85ec0b3779dc813752d"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t099-review.md",
+   "docs/audits/packets/t099-verdicts.jsonl",
+   "data/generation/batches/t099.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t099-review.md): plants 5/5, real wrong 0/20, minor 0/20 (one withdrawn on the full gloss), Tier 1 0/3; second pass 4 plan fixes (formula, dual for the eyes, English trimmed to the PIE twice); gate PASS 40/40."
+ }
+}
