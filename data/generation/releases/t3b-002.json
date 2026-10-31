@@ -1,1 +1,21 @@
-{"schema_version": 1, "batch": "t3b-002", "sha256": {"records": "167523cc02fccf8c7e31aae68a6ec447007fe7e6143b0fc413a1a2f40b2f7f7b", "plans": "b718d3e236eb3e1468ed5ab6c3d9db4cf707674b193591eca9c9a930dc7aa162", "gate_report": "63204b3a7600fa28126aebb3884142d5820e4934ccea374eaff1e8690c6362ca"}, "review": {"required": true, "status": "approved", "evidence": ["docs/audits/tier3b-t3b-002-review.md", "docs/audits/packets/t3b-002-verdicts.jsonl", "docs/audits/give-aorist-swap-2026-10-30.md", "docs/audits/fear-ablative-2026-10-30.md"], "rationale": "Calibrated review (docs/audits/tier3b-t3b-002-review.md): plants 4/5 blind; real 0/20 wrong; full read 0/40 wrong (9 minor -> 6); gate PASS incl. coined_sentence_share 0.046 and per-sentence English. Re-approved after the mechanical pie-lex-deh3ut -> pie-lex-deh3t swap (docs/audits/give-aorist-swap-2026-10-30.md). Re-approved after a mechanical plan fix (docs/audits/fear-ablative-2026-10-30.md)."}}
+{
+ "schema_version": 1,
+ "batch": "t3b-002",
+ "sha256": {
+  "records": "a86868bb4afe756efa490188635259d3b16f4f8a1338a6133461067046464085",
+  "plans": "b718d3e236eb3e1468ed5ab6c3d9db4cf707674b193591eca9c9a930dc7aa162",
+  "gate_report": "a100174a140e765d876fa675c97c5e128c62d11b8c7780fc55938d97aa33555b"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3b-t3b-002-review.md",
+   "docs/audits/packets/t3b-002-verdicts.jsonl",
+   "docs/audits/give-aorist-swap-2026-10-30.md",
+   "docs/audits/fear-ablative-2026-10-30.md",
+   "docs/audits/rerealize-2026-10-31.md"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3b-t3b-002-review.md): plants 4/5 blind; real 0/20 wrong; full read 0/40 wrong (9 minor -> 6); gate PASS incl. coined_sentence_share 0.046 and per-sentence English. Re-approved after the mechanical pie-lex-deh3ut -> pie-lex-deh3t swap (docs/audits/give-aorist-swap-2026-10-30.md). Re-approved after a mechanical plan fix (docs/audits/fear-ablative-2026-10-30.md). | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff."
+ }
+}

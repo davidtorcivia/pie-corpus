@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t050",
  "sha256": {
-  "records": "83a53c5b79559d767fce36fb7c94faeef025da41a323fa8c28a7ff454f39325a",
+  "records": "7a58c85bce825567c3378bb84d8d2b58a062c560501bb33d649932c08ebf4f7b",
   "plans": "d7bb5360ee4a41982551ed0012c871fc1c5a0ef24897ae3271823ff778ba480d",
-  "gate_report": "0393fecb16b107a5c4c2817f2f54076579250e089ca1999002e624127a641528"
+  "gate_report": "793d70e8c0c72d70a1ab2ff524c5e4f8f8cab2099d95c709c0ea9d7d57752803"
  },
  "review": {
   "required": true,
@@ -12,8 +12,9 @@
   "evidence": [
    "docs/audits/tier3-t050-review.md",
    "docs/audits/packets/t050-verdicts.jsonl",
-   "data/generation/batches/t050.json"
+   "data/generation/batches/t050.json",
+   "docs/audits/rerealize-2026-10-31.md"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t050-review.md): plants 5/5 named; real 0/20 wrong, minor 5 -> 1 (4 reviewer misreads settled by the glosses); all 40: nothing modern or coined, turns answer, motion-verb cases and athematic obliques correct; lead spot-read 2 records; gate PASS 40/40."
+  "rationale": "Calibrated review (docs/audits/tier3-t050-review.md): plants 5/5 named; real 0/20 wrong, minor 5 -> 1 (4 reviewer misreads settled by the glosses); all 40: nothing modern or coined, turns answer, motion-verb cases and athematic obliques correct; lead spot-read 2 records; gate PASS 40/40. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff."
  }
 }

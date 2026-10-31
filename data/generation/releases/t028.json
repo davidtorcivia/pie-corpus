@@ -1,1 +1,23 @@
-{"schema_version": 1, "batch": "t028", "sha256": {"records": "211649dd5f4d5e7fe8e31aa0848e74f4246ba1ce1d4e36c609645a6e56f1258e", "plans": "1ccfa4f6905d55cc689065d6a2f4ba1762760d37a6291cc41c4351d6d3d95343", "gate_report": "545d2ca9d236e02c3330052829478346c15debb3c38375323ca63e75d90fc909"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t028.json", "docs/audits/tier3-t028-review.md", "docs/audits/packets/t028-verdicts.jsonl", "docs/audits/consolidation-2026-10-28.md", "docs/audits/vocab-push.md", "docs/audits/give-aorist-swap-2026-10-30.md"], "rationale": "Calibrated review (docs/audits/tier3-t028-review.md): real 0/20 wrong (one meaning error under a plant, t028-0014, also fixed); gate PASS. Plant recall 5/5 not blind (packet diffed against corpus; 1 caught blind, 4 self-evident cell errors); approved on the real-item result; brief tightened (scripts/resolve_review_items.py). | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only). Re-approved after the mechanical pie-lex-deh3ut -> pie-lex-deh3t swap (docs/audits/give-aorist-swap-2026-10-30.md)."}}
+{
+ "schema_version": 1,
+ "batch": "t028",
+ "sha256": {
+  "records": "67ae1599fa329425bb9c8ce7529a98596a643dd5d471f7131028c74f4ac76a5d",
+  "plans": "1ccfa4f6905d55cc689065d6a2f4ba1762760d37a6291cc41c4351d6d3d95343",
+  "gate_report": "2deddde4ea9fb968c8536c020fc5eeb3a5b32bf3c78dbdf7e4c8505d79a402bf"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "data/generation/batches/t028.json",
+   "docs/audits/tier3-t028-review.md",
+   "docs/audits/packets/t028-verdicts.jsonl",
+   "docs/audits/consolidation-2026-10-28.md",
+   "docs/audits/vocab-push.md",
+   "docs/audits/give-aorist-swap-2026-10-30.md",
+   "docs/audits/rerealize-2026-10-31.md"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t028-review.md): real 0/20 wrong (one meaning error under a plant, t028-0014, also fixed); gate PASS. Plant recall 5/5 not blind (packet diffed against corpus; 1 caught blind, 4 self-evident cell errors); approved on the real-item result; brief tightened (scripts/resolve_review_items.py). | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only). Re-approved after the mechanical pie-lex-deh3ut -> pie-lex-deh3t swap (docs/audits/give-aorist-swap-2026-10-30.md). | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff."
+ }
+}

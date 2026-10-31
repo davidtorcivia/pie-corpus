@@ -1,1 +1,24 @@
-{"schema_version": 1, "batch": "t019", "sha256": {"records": "60a1b7369c43164a8de79cb2bff7d3e12cefd10d2e1e40e4c04fcb87e0231c71", "plans": "3a1921bcbbc96631bac039a4c773e2f1f59eb683b915af0bdb33e3978baf4287", "gate_report": "8267cf0ba6acddfecbbde18711963c23291624cdde7f812132ec3d372584c1e0"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t019.json", "docs/audits/tier3-t019-review.md", "docs/STATUS.md:119", "docs/STATUS.md:111-112", "docs/audits/consolidation-2026-10-28.md", "docs/audits/vocab-push.md", "docs/audits/give-aorist-swap-2026-10-30.md"], "rationale": "STATUS records t018-t021 reviews (0-2/20 real wrong), fixes and merged-engine regeneration. Migrated historical release on review plus remediation account. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only). Re-approved after the mechanical pie-lex-deh3ut -> pie-lex-deh3t swap (docs/audits/give-aorist-swap-2026-10-30.md)."}}
+{
+ "schema_version": 1,
+ "batch": "t019",
+ "sha256": {
+  "records": "fbd568d9e2aafd89e14f801ddc732d60fc59b3e48aabfecc65403bfc7b89a438",
+  "plans": "3a1921bcbbc96631bac039a4c773e2f1f59eb683b915af0bdb33e3978baf4287",
+  "gate_report": "03814803c35aa4ca2afb433f0b41588c1732eecd713ea0f56399accd052f5f61"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "data/generation/batches/t019.json",
+   "docs/audits/tier3-t019-review.md",
+   "docs/STATUS.md:119",
+   "docs/STATUS.md:111-112",
+   "docs/audits/consolidation-2026-10-28.md",
+   "docs/audits/vocab-push.md",
+   "docs/audits/give-aorist-swap-2026-10-30.md",
+   "docs/audits/rerealize-2026-10-31.md"
+  ],
+  "rationale": "STATUS records t018-t021 reviews (0-2/20 real wrong), fixes and merged-engine regeneration. Migrated historical release on review plus remediation account. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only). Re-approved after the mechanical pie-lex-deh3ut -> pie-lex-deh3t swap (docs/audits/give-aorist-swap-2026-10-30.md). | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff."
+ }
+}

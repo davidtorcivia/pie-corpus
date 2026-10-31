@@ -2,7 +2,7 @@
  "schema_version": 1,
  "batch": "t088",
  "sha256": {
-  "records": "62475e41b22d2b72579a7e00efef0b33e042fe0a79f5fe3a3bcaf5aebc2d9120",
+  "records": "94681c528ca103cb9e5b56b42241b0f7a494c544261b0ff70a0c8f53ec7a5f3c",
   "plans": "08f9309608dd7317429e48651d86d706d1a5a20e0604a0b989c9a463cd8727e4",
   "gate_report": "b0b11b93ee031cbf100b7397ad9173842252e6051262a7e9c2fa3a6cc8db929a"
  },
@@ -12,8 +12,9 @@
   "evidence": [
    "docs/audits/tier3-t088-review.md",
    "docs/audits/packets/t088-verdicts.jsonl",
-   "data/generation/batches/t088.json"
+   "data/generation/batches/t088.json",
+   "docs/audits/rerealize-2026-10-31.md"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t088-review.md): plants 5/5 named, Tier 1 0/3 wrong, blind back-translation 6/6; real 0/20 wrong, minor 3 -> 2 (enclitics after the first word of a two-word address: Wackernagel placement, attested in Vedic and Greek; kept); all 40: 0 wrong, 1 minor fixed (explicit subject); Horrors limits: no violations; tone lands; gate PASS 40/40, meter 53/53."
+  "rationale": "Calibrated review (docs/audits/tier3-t088-review.md): plants 5/5 named, Tier 1 0/3 wrong, blind back-translation 6/6; real 0/20 wrong, minor 3 -> 2 (enclitics after the first word of a two-word address: Wackernagel placement, attested in Vedic and Greek; kept); all 40: 0 wrong, 1 minor fixed (explicit subject); Horrors limits: no violations; tone lands; gate PASS 40/40, meter 53/53. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff."
  }
 }

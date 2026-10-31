@@ -7,7 +7,7 @@
  "reject_rate": 0.0,
  "distinct_roots": 100,
  "roots_per_sentence": 2.5,
- "distinct_lexemes": 160,
+ "distinct_lexemes": 159,
  "max_lexeme_uses": 18,
  "most_used": [
   [
@@ -33,15 +33,15 @@
  ],
  "dup_within": 0,
  "dup_across_batches": 0,
- "tokens": 1581,
- "words_per_sentence": 5.51,
- "words_per_record": 37.58,
+ "tokens": 1584,
+ "words_per_sentence": 5.52,
+ "words_per_record": 37.65,
  "meter_fit": null,
  "meter_near": null,
  "meter_exact": null,
  "meter_cadence": null,
  "formula_uses": 6,
- "warnings": 32,
+ "warnings": 34,
  "accent_unresolved": {
   "tokens": 0,
   "lexemes": 0,

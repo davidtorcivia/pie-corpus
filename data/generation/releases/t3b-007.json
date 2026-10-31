@@ -1,1 +1,20 @@
-{"schema_version": 1, "batch": "t3b-007", "sha256": {"records": "b84a74178f86a96a8d1b1d8b4bf7336917a7eb870cd72150c8a24d89f67c976b", "plans": "0e521093255d591dde8e37b5aed34afa353b4492f95ea054f2c8d8540e67c567", "gate_report": "1e51f93723ea3b0ae911f0695ff02d9b5ddc70836ffc1338ba4382e7687db4f0"}, "review": {"required": true, "status": "approved", "evidence": ["docs/audits/tier3b-t3b-007-review.md", "docs/audits/packets/t3b-007-verdicts.jsonl", "data/generation/batches/t3b-007.json"], "rationale": "Calibrated review (docs/audits/tier3b-t3b-007-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong; second pass of all 40: 0 wrong, minor 5 → 0; no character or §8 violations; 0 coinages; 10 english_only user sentences, all modern words; gate PASS."}}
+{
+ "schema_version": 1,
+ "batch": "t3b-007",
+ "sha256": {
+  "records": "641bec6dfc94d227c90562727b6ce8070eda4c41a12dd5216beee685d853e982",
+  "plans": "0e521093255d591dde8e37b5aed34afa353b4492f95ea054f2c8d8540e67c567",
+  "gate_report": "a51b92d89ed2ca0a4a20bb11c1573414b583792635cacc3692733ef98df515ac"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3b-t3b-007-review.md",
+   "docs/audits/packets/t3b-007-verdicts.jsonl",
+   "data/generation/batches/t3b-007.json",
+   "docs/audits/rerealize-2026-10-31.md"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3b-t3b-007-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong; second pass of all 40: 0 wrong, minor 5 → 0; no character or §8 violations; 0 coinages; 10 english_only user sentences, all modern words; gate PASS. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff."
+ }
+}

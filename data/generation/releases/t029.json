@@ -1,1 +1,23 @@
-{"schema_version": 1, "batch": "t029", "sha256": {"records": "1bc29feb4df8e4c5700c2f6a32cf47a484272453716a2fc9275b98c41754af10", "plans": "926052632af5186bcfb878a7fc294dc7a3e2c302b9e8a9304f80e4cc380b1c88", "gate_report": "9cecb3b8f200a18b596d3e3535b413554d30cc64e3acb1477b8314f562ae285d"}, "review": {"required": true, "status": "approved", "evidence": ["data/generation/batches/t029.json", "docs/audits/tier3-t029-review.md", "docs/audits/packets/t029-verdicts.jsonl", "docs/audits/consolidation-2026-10-28.md", "docs/audits/vocab-push.md", "docs/audits/meter-repair-t029.md"], "rationale": "Calibrated review (docs/audits/tier3-t029-review.md): plants 5/5 named; real 2/20 wrong -> 0 after fixes at the source; gate PASS. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only)."}}
+{
+ "schema_version": 1,
+ "batch": "t029",
+ "sha256": {
+  "records": "6685092f170b4b4453b26fd1776a215b83700a15f49b72b77dd4a163a20fa293",
+  "plans": "926052632af5186bcfb878a7fc294dc7a3e2c302b9e8a9304f80e4cc380b1c88",
+  "gate_report": "5b73c28c3f611555d9b89bcfcd54f1c906d403a543d343e801bbde20c1a2a3d7"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "data/generation/batches/t029.json",
+   "docs/audits/tier3-t029-review.md",
+   "docs/audits/packets/t029-verdicts.jsonl",
+   "docs/audits/consolidation-2026-10-28.md",
+   "docs/audits/vocab-push.md",
+   "docs/audits/meter-repair-t029.md",
+   "docs/audits/rerealize-2026-10-31.md"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t029-review.md): plants 5/5 named; real 2/20 wrong -> 0 after fixes at the source; gate PASS. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only). | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff."
+ }
+}
