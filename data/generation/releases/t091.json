@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t091",
+ "sha256": {
+  "records": "418bd162ddc1eb1ebdf7a506ce137bb9b17ff6e6dd03cb2da0b2ef7a58e34b16",
+  "plans": "79127a02ce4f357ffec42fae4108c09b476e401ebe8629780e607136e1bf9cac",
+  "gate_report": "9b3a55f30f0d37622d07c2fc836f1230a78a0b678cba1c80c3478aee25d4d9ed"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t091-review.md",
+   "docs/audits/packets/t091-verdicts.jsonl",
+   "data/generation/batches/t091.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t091-review.md): plants 5/5 named (4 in short Q&A turns: the new brief note works); real 0/20 wrong, minor 3 -> 1 (one tense fix blocked by the lexeme cap); all 40: no violations, 11 referent and 4 homograph WARNs resolved; 2 of 16 formula uses are coincidences (counter, engine note); gate PASS 40/40."
+ }
+}
