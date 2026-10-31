@@ -618,14 +618,14 @@ def test_check_plan_rules_for_verbless_clauses():
     assert any("negated" in e for e in errs({**np, "neg": True}))
     assert any("role NP" in e for e in errs({"slots": [{"lex_id": MEAD, "role": "NP"}, V(SEE)]}))
     assert any("unknown clause type" in e for e in errs({"type": "verbless", "slots": [subj, pred]}))
-    # APPOS: a nominal head, the head's number
+    # APPOS: a nominal head; its own number when set (case agreement only: 'the horses, the father's herd')
     assert any("APPOS needs a head" in e for e in errs({**np, "slots": [
         {"lex_id": MEAD, "role": "NP"}, {"lex_id": IMMORTAL, "role": "APPOS"}]}))
     assert any("nominal head" in e for e in errs({**np, "slots": [
         {"lex_id": MEAD, "role": "NP"}, {"lex_id": SWEET, "role": "MOD", "head": 0},
         {"lex_id": IMMORTAL, "role": "APPOS", "head": 1}]}))
-    assert any("head's number" in e for e in errs({**np, "slots": [
-        {"lex_id": HORSE, "role": "NP", "num": "PL"}, {"lex_id": FATHER, "role": "APPOS", "head": 0, "num": "SG"}]}))
+    assert errs({**np, "slots": [
+        {"lex_id": HORSE, "role": "NP", "num": "PL"}, {"lex_id": FATHER, "role": "APPOS", "head": 0, "num": "SG"}]}) == []
     assert any("circular" in e for e in errs({**np, "slots": [
         {"lex_id": MEAD, "role": "NP"}, {"lex_id": FATHER, "role": "APPOS", "head": 2},
         {"lex_id": SKY, "role": "APPOS", "head": 1}]}))

@@ -5596,7 +5596,7 @@
 {"id": "pie-lex-solh2oh3kws", "form": "solh₂oh₃kʷs", "rule": "unknown:noun-shape", "family": "noun", "spec": null, "backtest_cell_accuracy": null, "usable": false, "extra_specs": []}
 {"id": "pie-lex-solh2uHts", "form": "solh₂uHts", "rule": "unknown:noun-shape", "family": "noun", "spec": null, "backtest_cell_accuracy": null, "usable": false, "extra_specs": []}
 {"id": "pie-lex-solh2uyo", "form": "solh₂uyo-", "rule": "unknown", "family": null, "spec": null, "backtest_cell_accuracy": null, "usable": false, "extra_specs": []}
-{"id": "pie-lex-solh2wos", "form": "solh₂wós", "rule": "shape:thematic", "family": "noun", "spec": {"strong": "solh₂wó", "weak": null, "accent_class": null, "gender": "m", "nom_sg": null, "loc_sg": [], "devi": false, "adjective": false}, "backtest_cell_accuracy": 0.8656716417910447, "usable": true, "extra_specs": []}
+{"id": "pie-lex-solh2wos", "form": "solh₂wós", "rule": "shape:thematic-adj", "family": "adj", "spec": {"m_strong": "solh₂wó", "m_weak": null, "f_strong": null, "f_weak": null, "accent_class": null, "loc_sg": []}, "backtest_cell_accuracy": 1.0, "usable": true, "extra_specs": []}
 {"id": "pie-lex-solh2woteh2ts", "form": "solh₂wóteh₂ts", "rule": "unknown:noun-shape", "family": "noun", "spec": null, "backtest_cell_accuracy": null, "usable": false, "extra_specs": []}
 {"id": "pie-lex-solkeyeti", "form": "solkéyeti", "rule": "shape:thematic-present", "family": "verb", "spec": {"strong": "solkéye", "weak": null, "kind": "impf", "mid_t_less": false}, "backtest_cell_accuracy": 1.0, "usable": true, "extra_specs": []}
 {"id": "pie-lex-solko", "form": "solkó-", "rule": "unknown", "family": null, "spec": null, "backtest_cell_accuracy": null, "usable": false, "extra_specs": []}

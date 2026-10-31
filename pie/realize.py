@@ -21,7 +21,7 @@ Plan (one sentence):
                 "slots": [
       {"lex_id": "pie-lex-…" | "closed:personal/1" | …,
        "role": "SUBJ|OBJ|IO|INS|LOC|ABL|POSS|VOC|PRED|GOAL|MOD|APPOS|NP|ADV|V",
-       "num": "SG|DU|PL",                          # nominals; MOD, APPOS and V take it from their head/subject
+       "num": "SG|DU|PL",                          # nominals; MOD and V take it from their head/subject, APPOS when unset
        "head": null | <slot index>,                # MOD (adjective, demonstrative, POSS), APPOS → its noun
        "before": false,                            # APPOS: stand before the head instead of after it
        "enclitic": false,                          # pronoun slots: the enclitic form (moy, toy, …)
@@ -69,8 +69,10 @@ The realizer never inserts a copula: a clause without a V slot is realized witho
            everything that agrees with them take it.
 Apposition. A slot with role "APPOS" and "head": k is a noun phrase in apposition to slot k ('the horses,
   immortal ones', 'Dyēus, the father'; West 2007 p. 307: a god's name with honorific epithets in apposition).
-  It takes its head's case and number; a noun keeps its own gender, an adjective (used as a noun) takes the
-  head's gender unless the slot gives one. It may carry its own MOD/POSS/APPOS. It stands after its head's
+  It takes its head's case. Its number is its own when the slot (or a numeral MOD on it) sets one ('the
+  blood-price, a hundred cows': kʷoynéh₂m ḱm̥tóm gʷṓs, SG head, PL apposition; apposition agrees in case, not
+  necessarily in number: Lat. Athenae, urbs; Gk Θῆβαι, πόλις), else its head's. A noun keeps its own gender, an
+  adjective (used as a noun) takes the head's gender unless the slot gives one. It may carry its own MOD/POSS/APPOS. It stands after its head's
   phrase; "before": true puts it before. Any nominal slot (SUBJ, OBJ, VOC, PRED, POSS, NP, APPOS …) can head
   an APPOS; a MOD cannot. Unlike MOD it is a separate phrase (Ringe 2017 §3.3.2: nouns in apposition are
   separate NPs), so an adjective there reads 'the immortal ones', not 'immortal'.
@@ -1174,7 +1176,70 @@ def plan_warnings(plan: dict, lx: Lexicon | None = None) -> list[str]:
                            f"referent of that gender and number in this clause or the two before: check its antecedent")
         out += _default_warnings(ci, cl, clauses[ci - 1] if ci else None, lx)
         out += _pred_gender_warnings(ci, cl, lx)
+        out += _answer_case_warnings(ci, cl, clauses[ci - 1] if ci else None)
+        out += _dual_fallback_warnings(ci, cl, lx)
     return out
+
+
+QUESTION_WORDS = ("closed:interrogative_kwi", "closed:interrogative_kwo")
+
+
+def _questioned_case(cl: dict | None) -> tuple[str, str] | None:
+    """(role, case) of the constituent a question asks for: the slot of kʷís/kʷíd (or the head of an
+    interrogative kʷó- MOD, or of kʷóti 'how many'), when its role governs a case; None if there is none."""
+    if not cl or not cl.get("question"):
+        return None
+    slots = cl.get("slots", [])
+    for s in slots:
+        lid, i = s.get("lex_id", ""), None
+        if lid.startswith(QUESTION_WORDS):
+            i = slots.index(s)
+        elif lid == "closed:interrogative_adv/how_many" and s.get("role") == "MOD":
+            i = s.get("head")
+        if not isinstance(i, int) or not 0 <= i < len(slots):
+            continue
+        seen = set()
+        while slots[i].get("role") in ("MOD", "APPOS") and isinstance(slots[i].get("head"), int) and i not in seen:
+            seen.add(i)
+            i = slots[i]["head"]
+        role = slots[i].get("role")
+        if role in ROLE_CASE and slots[i].get("dep") is None:
+            return role, ROLE_CASE[role]
+    return None
+
+
+def _answer_case_warnings(ci: int, cl: dict, prev: dict | None) -> list[str]:
+    """A short answer (an np utterance) takes the case of the constituent its question asks for: 'What will he
+    ask?' 'Ten horses and a hundred sheep.' answers the object, so the NPs are accusative (t086 review: déḱm̥
+    h₁éḱwons ḱm̥tóm-kʷe h₂ówins). An np utterance defaults to the nominative; warn when it follows a question
+    about a non-nominative constituent and sets no "case"."""
+    if cl.get("type") != "np" or cl.get("case") is not None:
+        return []
+    q = _questioned_case(prev)
+    if q is None or q[1] in ("NOM", "VOC"):
+        return []
+    return [f"clause {ci}: an np answer after a question about the {q[0]} is nominative by default; if it answers "
+            f"that question, set \"case\": \"{q[1]}\" on the clause"]
+
+
+def _dual_fallback_warnings(ci: int, cl: dict, lx: Lexicon) -> list[str]:
+    """A dual subject or addressee with a middle verb gets the plural verb: the 2du/3du mediopassive endings
+    are not reconstructable (Ringe 2006 p. 32: only Greek and Indo-Iranian attest them, and they disagree), so
+    the engine builds no such cell and finite_cell lets the plural stand in, flagging the token num_fallback
+    "du->pl" (the perfect's 2du/3du is rejected instead: _check_perfect_dual). Warns, so the planner knows the
+    verb is plural (or rephrases: an active verb, or a plural subject)."""
+    vi = next((i for i, s in enumerate(cl.get("slots", [])) if s.get("role") == "V"), None)
+    if vi is None:
+        return []
+    try:
+        if verb_person_number(cl, cl["slots"][vi].get("verb") or {}, lx)[1] != "DU":
+            return []
+        words = realize_clause(cl, lx)
+    except Exception:
+        return []
+    return [f"clause {ci} slot {w.slot}: the 2du/3du middle is not reconstructable (Ringe 2006 p. 32), so the "
+            f"dual subject takes the plural {w.form} ({w.features}, num_fallback du->pl); use an active verb if the "
+            f"pair must be dual" for w in words if w.num_fallback == "du->pl"]
 
 
 def _pred_gender_warnings(ci: int, cl: dict, lx: Lexicon) -> list[str]:
@@ -1364,22 +1429,6 @@ def _check_appos(s: dict, si: int, slots: list, where: str) -> str | None:
         k = slots[k]["head"]
     if s.get("participle") is not None:
         return f"{where}: a participle is a MOD, not an APPOS"
-    n, hn = s.get("num"), _chain_num(slots, h)
-    if n and hn and n != hn:
-        return f"{where}: an APPOS takes its head's number ({hn}), not {n}"
-    return None
-
-
-def _chain_num(slots: list, i: int) -> str | None:
-    """The explicit number of slot i, following APPOS heads (None if unset)."""
-    seen = set()
-    while i not in seen and 0 <= i < len(slots):
-        seen.add(i)
-        s = slots[i]
-        if s.get("role") == "APPOS" and not s.get("num") and isinstance(s.get("head"), int):
-            i = s["head"]
-            continue
-        return s.get("num")
     return None
 
 
@@ -1432,7 +1481,9 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
                 m.get("role") == "MOD" and m.get("head") == i and numeral_number(m.get("lex_id", "")) for m in slots):
             slots = [dict(x) for x in slots] if slots is cl["slots"] else slots
             slots[i]["num"] = want
-    # an apposition takes its head's number; an adjective (or pronoun) in apposition also its gender
+    # an apposition takes its head's case (case_of); its number is its own when the plan (or a numeral on it)
+    # sets one ('the blood-price, a hundred cows': SG head, PL apposition; t076, t086 reviews), else its head's;
+    # an adjective (or pronoun) in apposition also takes its head's gender
     if any(sl["role"] == "APPOS" for sl in slots):
         slots = [dict(x) for x in slots] if slots is cl["slots"] else slots
         done: set[int] = set()
@@ -1445,7 +1496,8 @@ def realize_clause(cl: dict, lx: Lexicon) -> list[Word]:
             if h is None or h in chain or not 0 <= h < len(slots):
                 raise KeyError(f"APPOS slot {i}: broken head chain")
             settle(h, chain + (i,))
-            s["num"] = slots[h].get("num", "SG")
+            if not s.get("num"):
+                s["num"] = slots[h].get("num", "SG")
             if not s.get("gender") and (s["lex_id"].startswith("closed:") or _family(s, lx) == "adj"):
                 s["gender"] = _slot_gender(slots[h], lx)
             done.add(i)
