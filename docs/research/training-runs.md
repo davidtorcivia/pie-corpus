@@ -108,3 +108,24 @@ recognized) but every reply runs on (lesson 8), so its scores say nothing about 
 | qwen4b-base-plain-r16-lr2e-4 | Qwen3-4B-Base | plain | 2e-4 | 16 | base vs instruct, fairly |
 | qwen4b-instruct-r16-lr1e-4 | Qwen3-4B-Instruct-2507 | chatml | 1e-4 | 16 | gentler lr: epoch-2 quality, less memorizing? |
 | qwen4b-instruct-r32-lr2e-4 | Qwen3-4B-Instruct-2507 | chatml | 2e-4 | 32 | more capacity for translation? |
+
+**Results so far** (2026-10-30 22:55; chrF overall, scorer as above):
+
+| run | eval loss e0 → e1 → e2 (→ e3) | chrF e1 / e2 (/ e3) | recognized | exact |
+|---|---|---|---|---|
+| typewriter-sft (queue 1, 3 ep) | 3.23 → **1.10** → 1.13 → 1.19 | 24.7 / 27.4 / 28.6 | 74–76% | 0–6% |
+| typewriter-base-plain | 4.08 → 1.13 → 1.18 | 22.5 / 22.8 | 63–70% | 0% |
+| qwen4b-base-plain | 2.25 → 1.21 → 1.23 | 33.4 / 33.9 | 63–67% | 0% |
+| qwen4b-instruct-lr1e-4 | 3.13 → 1.23 → 1.24 | 31.9 / … | 66% | 12% |
+
+- **Eval loss is not comparable across tokenizers** (TypewriterLM's 32 k Llama vocabulary splits PIE into ~35% more
+  tokens, so its per-token loss is lower for the same text). Compare chrF and the read outputs.
+- **Plain format rescued the base model**: Qwen3-4B-Base chrF 25 → 34, eval loss 1.40 → 1.21, replies stop. Still
+  behind instruct (39): the instruct tuning helps follow the many task formats.
+- **TypewriterLM trails** both Qwens (27–29) and wraps short answers in extra PIE (dialogue chrF 15–16); its pre-modern
+  prior buys nothing visible at this data size. Eval loss bottoms at epoch 1 for it.
+- **Every model regularizes paradigms**: *kólHō* (an n-stem) declined as a thematic o-stem by both base Qwen and
+  TypewriterLM. The models learn the common patterns, not each lemma's stem class; more drills per lemma, or a
+  lemma-class cue in the prompt, would target this.
+- **Cognate reconstruction stays weak everywhere** (chrF 6–22): 8 prompts per kind is also too few to rank it.
+
