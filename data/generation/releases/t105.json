@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t105",
+ "sha256": {
+  "records": "42c629194a226eb7429b57c5281bf18e882bc42f4d3a96ef0177c5abcfb7dd54",
+  "plans": "1e194b02670f8487fae5696ff4a634163e74409c906e0cc43ccc54f8666b2f95",
+  "gate_report": "cd1f0a5a18b69340300ea7bc5aedd2e515e62d377977c04b39a864c105dad376"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t105-review.md",
+   "docs/audits/packets/t105-verdicts.jsonl",
+   "data/generation/batches/t105.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t105-review.md): plants 5/5, real wrong 0/20, minor withdrawn (aorist-only mért), Tier 1 0/3; second pass 0 wrong, 1 minor fixed at source; requests 18 → 10 (8 turned into exchanges); 16 real formula uses in their sense; gate PASS 40/40."
+ }
+}
