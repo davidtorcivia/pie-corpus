@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t092",
+ "sha256": {
+  "records": "3aecf7e72f12029455487d8ac334d02fde3ccdd76d83ceb778639fde0f9dcafc",
+  "plans": "4e3c4b5eee8749300da3fc907343436d405cbb5e1da95a631865974e6ca9f09c",
+  "gate_report": "77bf7a3472db34ab52704b8c5eb79bc7f45e9819a9420581061f9859b54fb207"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t092-review.md",
+   "docs/audits/packets/t092-verdicts.jsonl",
+   "data/generation/batches/t092.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t092-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, 1 minor (dual fallback, engine); all 40: 5 plan fixes ('fought with' = próti 'against', reflexive not controlled by its subject, copula in a past nominal sentence); all 31 pronoun WARNs checked; gate PASS 40/40."
+ }
+}

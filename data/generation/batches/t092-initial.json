@@ -1,0 +1,60 @@
+{
+ "plans": 40,
+ "realized": 37,
+ "exact_pass": 37,
+ "accent_representation_tokens": 5,
+ "accent_defect_tokens": 2,
+ "rejected": 3,
+ "reject_rate": 0.075,
+ "distinct_roots": 169,
+ "roots_per_sentence": 4.568,
+ "distinct_lexemes": 284,
+ "max_lexeme_uses": 25,
+ "most_used": [
+  [
+   "pie-lex-h1ekjwos",
+   25
+  ],
+  [
+   "pie-lex-h2wlpis",
+   16
+  ],
+  [
+   "pie-lex-gwoxws",
+   16
+  ],
+  [
+   "pie-lex-kjwox",
+   15
+  ],
+  [
+   "pie-lex-deywos",
+   15
+  ]
+ ],
+ "dup_within": 0,
+ "dup_across_batches": 0,
+ "tokens": 1597,
+ "words_per_sentence": 4.15,
+ "words_per_record": 40.89,
+ "meter_fit": null,
+ "meter_near": null,
+ "meter_exact": null,
+ "meter_cadence": null,
+ "formula_uses": 8,
+ "warnings": 31,
+ "accent_unresolved": {
+  "tokens": 0,
+  "lexemes": 0,
+  "records": 0
+ },
+ "gates": {
+  "reject_rate<=0.10": true,
+  "max_lexeme_uses<=8": false,
+  "theme_core_uses<=24": false,
+  "roots_per_sentence>=0.35": true,
+  "duplicates<=2%": true,
+  "all_exact": true
+ },
+ "gate": "FAIL"
+}
