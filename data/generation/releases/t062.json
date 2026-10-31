@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t062",
+ "sha256": {
+  "records": "aa8de4c9a45d3c3cbc1c99de00c4b5675dec078581f6e74dfbd3dae09d4240eb",
+  "plans": "b40f97c8414028ea76d006a8b3f110d827992f31eb8c5b18a2cfe0c0f50fa257",
+  "gate_report": "b262c26a3427c116cd1934fe6828101c96d000e239af70b587f48deacf1e5ae2"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t062-review.md",
+   "docs/audits/packets/t062-verdicts.jsonl",
+   "data/generation/batches/t062.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t062-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 1/20 wrong (neuter pronoun for feminine 'snow', caught in the full pass) -> 0; all 40: 5 plan fixes; weather verbs 3SG, predicate adjectives agree, no doubled enclitics; nothing modern; gate PASS 40/40."
+ }
+}
