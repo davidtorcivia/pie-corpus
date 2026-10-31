@@ -141,6 +141,7 @@ def main():
     ap.add_argument("--max-steps", type=int, default=0, help="stop early (smoke tests)")
     ap.add_argument("--gen-per-task", type=int, default=8)
     ap.add_argument("--gen-batch", type=int, default=24)
+    ap.add_argument("--gen-file", default="", help="a frozen prompt set (training/gen_prompts_v1.jsonl) instead of gen_set")
     ap.add_argument("--max-new", type=int, default=160)
     ap.add_argument("--log-every", type=int, default=5)
     ap.add_argument("--check", action="store_true", help="print one rendered example with its trained span; exit")
@@ -170,7 +171,7 @@ def main():
     enc = [encode(tok, a.template, e["messages"]) for e in train]
     X, Y = pack(enc, a.seq)
     Xe, Ye = pack([encode(tok, a.template, e["messages"]) for e in evals], a.seq)
-    gens = gen_set(evals, a.gen_per_task)
+    gens = load_jsonl(a.gen_file) if a.gen_file else gen_set(evals, a.gen_per_task)
     trained_tokens = int((Y != -100).sum())
     steps_per_epoch = math.ceil(len(X) / (a.batch * a.accum))
     total = steps_per_epoch * a.epochs if not a.max_steps else a.max_steps

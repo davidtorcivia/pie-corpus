@@ -200,11 +200,12 @@ are the three demo seeds that answered from them.
 `continuation`), `translation` (`translate_en_pie`, `translate_pie_en`, `translate_app` both ways, `app_session`),
 `grammar` (`gloss`, `inflect`, `paradigm`) and `comparative` (`cognates_to_pie`), with each split's examples,
 content tokens, shares and the per-example sampling weight that reaches the target. `chat/train_mix.jsonl`
-keeps every conversation example, which sets its size, and fills the rest in the target proportions (the
-lowest crc32 of their content; no example repeated). The target (`TARGET_MIX`): **20% conversation, 50%
+keeps every grammar drill (`MIX_ANCHOR`, owner 2026-10-30: all of them), which sets its size, and fills the rest
+up to the target proportions (the lowest crc32 of their content; no example repeated); a group short of its share
+keeps all it has until the corpus grows. The target (`TARGET_MIX`): **20% conversation, 50%
 translation, 30% grammar, 0% comparative** (a speaker doesn't know the daughter languages; the cognate tasks
-stay in `chat/train.jsonl`). Conversation is the purpose and the scarcest data: on 2026-10-30 the mix is 7,765
-examples, 1,553 of them conversation. More dialogue batches grow the whole mix in proportion.
+stay in `chat/train.jsonl`). Conversation is the purpose and the scarcest data: it is below its 20% until more
+dialogue batches land (the current shares are in `summary.json` `mix.train_mix`).
 
 **Multi-turn.** `summary.json` `turns`: user turns per example (1, 2, 3, 4+) per kind and mode, and the
 multi-turn examples (two or more user turns) by source: `dialogue` (the exchanges of one dialogue text, each

@@ -1216,7 +1216,7 @@ def self_overlap(train: list[dict]) -> dict:
 
 
 ENGLISH_INPUT = ("translate_en_pie", "translate_app/en_pie", "app_session", "en_dialogue", "demo_chat")
-# Conversation is the model's purpose and sets the mix's size (select_mix); translation is practice, not the
+# Conversation is the model's purpose; grammar sets the mix's size (select_mix, MIX_ANCHOR); translation is practice, not the
 # product (owner, 2026-10-30: the translator app is not this model). cognates_to_pie stays in chat/train.jsonl but
 # not in the mix: a speaker doesn't know the daughter languages.
 MIX_GROUPS = {
@@ -1269,15 +1269,20 @@ def mix_table(exs: list[dict], tokens: dict | None = None) -> dict:
     return out
 
 
+# the group select_mix keeps whole: it sets the mix's size (owner, 2026-10-30: "include ALL the grammar drills";
+# the corpus grows conversation and translation back up to their shares)
+MIX_ANCHOR = "grammar"
+
+
 def select_mix(train: list[dict]) -> list[dict]:
     """chat/train_mix.jsonl: a subset of train in the TARGET_MIX proportions, without repeating an example (so
-    the self-overlap cap holds). Every conversation example is kept and sets the size (conversation is TARGET_MIX's
-    share of it); every other group keeps that size times its target share (or all it has), the ones with the
-    lowest crc32 of their content, in train order."""
+    the self-overlap cap holds). Every MIX_ANCHOR (grammar) example is kept and sets the size (the anchor is
+    TARGET_MIX's share of it); every other group keeps that size times its target share (or all it has, short of
+    its share until the corpus grows), the ones with the lowest crc32 of their content, in train order."""
     by = collections.defaultdict(list)
     for e in train:
         by[mix_group(e)].append(e)
-    total = len(by["conversation"]) / TARGET_MIX["conversation"]
+    total = len(by[MIX_ANCHOR]) / TARGET_MIX[MIX_ANCHOR]
     keep: set[int] = set()
     for g, t in TARGET_MIX.items():
         n = min(len(by[g]), round(total * t))

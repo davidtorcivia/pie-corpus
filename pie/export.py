@@ -46,6 +46,7 @@ from __future__ import annotations
 
 import json
 import random
+import unicodedata
 from pathlib import Path
 
 from .batch_release import batch_eligibility
@@ -222,10 +223,33 @@ def token_variants(r: dict, lx) -> list[list[str]] | None:
 GENDER_TAG = {"m": "M", "f": "F", "n": "N"}
 
 
+def _skeleton(form: str) -> str:
+    """A form without accents and syllabicity marks (pie.phon.deaccent, then the ring/vertical line below)."""
+    from .phon import deaccent, parse, render
+    return "".join(c for c in unicodedata.normalize("NFD", render(deaccent(parse(form)))) if c not in "\u0325\u0329")
+
+
+def _key_cell(family: str, cells: list[str]) -> str | None:
+    """The cell that shows an ablauting lexeme's class: a noun's GEN.SG, an adjective's M.GEN.SG, a verb's
+    indicative 3PL (the weak stem with its ending)."""
+    if family == "noun":
+        return "GEN.SG" if "GEN.SG" in cells else None
+    if family == "adj":
+        return "M.GEN.SG" if "M.GEN.SG" in cells else None
+    pl = [c for c in cells if c.endswith(".3PL")]
+    ind = [c for c in pl if not {"SBJV", "OPT", "IMP"} & set(c.split("."))]
+    return next((c for c in ("PRS.3PL", "PST.3PL", "PRF.3PL") if c in pl), (ind or pl or [None])[0])
+
+
 def inflection_tasks(lx: Lexicon, rng: random.Random, per_lexeme: int = 3) -> list[dict]:
     """lemma + features → form, from the engine, for usable lexemes (primary forms only). Only admissible
     cells (Lexicon.admissible_cells: no active cells of a middle-only verb, nothing of a blocked lexeme); an
-    adjective's feature names its gender first (F.NOM.SG), since the cell differs by gender."""
+    adjective's feature names its gender first (F.NOM.SG), since the cell differs by gender.
+
+    An ablauting lexeme (its spec has a weak stem) also gets, beyond the per_lexeme random cells, its key cell
+    (_key_cell) and one cell built on the weak stem, when the random ones lack them: models trained on the
+    random cells alone declined n-stems as thematic nouns (docs/research/training-runs.md, 2026-10-30). The
+    extras come from a per-lexeme rng, so the random cells (and every older task) are unchanged."""
     out = []
     for lid, r in lx.specs.items():
         if not r.get("usable") or not lx.entries[lid]["meaning"] or lx.inadmissible(lid):
@@ -236,7 +260,19 @@ def inflection_tasks(lx: Lexicon, rng: random.Random, per_lexeme: int = 3) -> li
             cells = lx.admissible_cells(lid)
         feats = sorted(cells)
         tag_gender = {v: k for k, v in GENDER_TAG.items()}
-        for f in rng.sample(feats, min(per_lexeme, len(feats))):
+        picked = rng.sample(feats, min(per_lexeme, len(feats)))
+        sp = r["spec"]
+        weak = sp.get("weak") or sp.get("m_weak")
+        if weak:
+            xr = random.Random(f"ablaut|{lid}")
+            key = _key_cell(r["family"], feats)
+            if key and key not in picked:
+                picked.append(key)
+            wk = _skeleton(weak)
+            on_weak = [f for f in feats if _skeleton(cells[f][0]).startswith(wk)]
+            if on_weak and not set(on_weak) & set(picked):
+                picked.append(xr.choice(on_weak))
+        for f in picked:
             t = {"task": "inflect", "input": f"{lx.entries[lid]['form']} {f}", "output": cells[f][0],
                  "source_id": lid, "root_id": lx.entries[lid].get("root_id")}
             g, cell = (tag_gender[f.split(".", 1)[0]], f.split(".", 1)[1]) if r["family"] == "adj" else (None, f)

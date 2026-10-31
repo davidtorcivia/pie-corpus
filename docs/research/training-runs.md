@@ -127,5 +127,34 @@ recognized) but every reply runs on (lesson 8), so its scores say nothing about 
 - **Every model regularizes paradigms**: *kólHō* (an n-stem) declined as a thematic o-stem by both base Qwen and
   TypewriterLM. The models learn the common patterns, not each lemma's stem class; more drills per lemma, or a
   lemma-class cue in the prompt, would target this.
-- **Cognate reconstruction stays weak everywhere** (chrF 6–22): 8 prompts per kind is also too few to rank it.
+- ~~Cognate reconstruction stays weak everywhere~~ **Correction:** `cognates_to_pie` is never in the training mix
+  (TARGET_MIX 0%: a speaker doesn't know the daughter languages), so the eval measured an untrained task. The
+  scorer now reports it under "untrained", outside the summary.
 
+
+## Corpus build-out (2026-10-30, owner: "include ALL the grammar drills … get back to the percentages")
+
+Diagnosis of queue 1–2:
+- The mix was sized by conversation (all 2,663 examples = 20%), so it used only 44% of the grammar drills (3,994 of
+  9,170) and 46% of the translations, picked by hash: the drills a model saw were proportional to the lexicon's
+  1,120-thematic-noun skew.
+- The regularized paradigms (*kólHō*, *h₂óḱris*) are eval hold-out lexemes (5% of lexemes keep their drills in eval),
+  so the test is inferring a class from the lemma; exposure to each ablauting class decides it.
+
+Changes:
+1. **Every grammar drill in the mix.** `select_mix` keeps the grammar group whole (`MIX_ANCHOR`), which sets the size;
+   conversation and translation fill up to 20% / 50% as the corpus grows. Export of 2026-10-30 23:40: 26,874
+   examples, 4.5 M Qwen tokens: conversation 2,663 (9.9%), translation 14,369 (53.5%, all of it), grammar 9,842
+   (36.6%).
+2. **Stem-class drills.** Every ablauting lexeme (1,569 usable, spec with a weak stem) also gets its key cell (noun
+   GEN.SG, adjective M.GEN.SG, verb indicative 3PL) and a weak-stem cell when its 3 random cells lack them; the random
+   cells are drawn exactly as before. Inflection drills 4,863 → 5,560.
+3. **Measurement.** A frozen prompt set, `training/gen_prompts_v1.jsonl` (246 prompts from the current eval: inflect
+   48, paradigm 40, translations 72, dialogue 64, gloss 12, continuation 10; with each prompt's lexeme id), used by
+   `train_lora.py --gen-file` and `gen_eval.py`, so later exports are compared on the same prompts. The scorer adds
+   paradigm per-cell exact and inflect / paradigm scores by stem class (spec rule, ablauting or not). Baseline:
+   every queue 1–2 adapter re-generated on it (`baseline_v1.ps1`).
+4. **Conversation.** A dialogue record with speakers gives 2.7 conversation, 5.1 translation and 1.0 grammar (gloss)
+   examples, so 20% conversation needs about 1,850 more such records (~46 batches of 40). Wave 3a: in-world dialogue
+   batches t044, t045, t050, t053, t056, t059 (greeting, bargaining, travel, family, council, teaching), each asked
+   for longer exchanges (8–14 clauses, 4–8 turns) and a spread of athematic nouns in oblique cases.

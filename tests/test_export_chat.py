@@ -622,14 +622,15 @@ def test_mix_and_train_mix(exported):
     tm = exported["train_mix"]
     ids = {e["meta"]["id"] for e in exported["train"]}
     assert {e["meta"]["id"] for e in tm} <= ids and len({e["meta"]["id"] for e in tm}) == len(tm)
-    conv = [e for e in tm if ec.mix_group(e) == "conversation"]
-    assert len(conv) == tr["groups"]["conversation"]["examples"]          # every conversation example
-    total = len(conv) / ec.TARGET_MIX["conversation"]
+    gram = [e for e in tm if ec.mix_group(e) == "grammar"]
+    assert ec.MIX_ANCHOR == "grammar"
+    assert len(gram) == tr["groups"]["grammar"]["examples"]               # every grammar drill (owner 2026-10-30)
+    total = len(gram) / ec.TARGET_MIX["grammar"]
     for g, target in ec.TARGET_MIX.items():
         n = sum(ec.mix_group(e) == g for e in tm)
-        assert n == (len(conv) if g == "conversation" else min(tr["groups"][g]["examples"], round(total * target)))
+        assert n == (len(gram) if g == "grammar" else min(tr["groups"][g]["examples"], round(total * target)))
     assert not any(e["meta"]["task"] == "cognates_to_pie" for e in tm)  # a speaker doesn't know the daughters
-    assert s["train_mix"]["examples"] == len(tm) and s["train_mix"]["conversation_share"] >= 0.19
+    assert s["train_mix"]["examples"] == len(tm)
 
 
 def test_every_system_prompt_is_the_speaker(exported):
