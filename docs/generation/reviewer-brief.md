@@ -44,6 +44,10 @@ lexicon gloss gives the causative alone ("cause to bring, transport": woǵʰéye
 sense the daughters keep (sokʷéyeti 'say', Germanic *sagjaną; wodʰéyeti 'lead', OCS voditi; wolh₁éyeti 'choose'),
 and then they are correct: the gloss decides, not the shape.
 
+**Glosses.** A record's gloss line shows each word's first sense only (h₂ew "away from" where the English says
+"again"). Before calling a sense wrong, read the full gloss (`Lexicon.load().meaning(lex_id)` or `scripts/lexq.py`);
+three t065 minors were withdrawn this way.
+
 ## Release rule (applied by the lead)
 
 Approve when all three hold:
