@@ -2,7 +2,7 @@
  "schema_version": 1,
  "batch": "t088",
  "sha256": {
-  "records": "efa6310cd92f528ea297b614af0644e6e49bf87870dca86099090acea89f0b02",
+  "records": "796a76af1014c2213242d7657a54408cda5f9fccabe87ea51e3e98e77ec6235d",
   "plans": "0c37b6eabddc40a900768a4f876d7945bf88cfe945cf8d1473676c5026fd3f07",
   "gate_report": "b0b11b93ee031cbf100b7397ad9173842252e6051262a7e9c2fa3a6cc8db929a"
  },
@@ -15,6 +15,6 @@
    "data/generation/batches/t088.json",
    "docs/audits/rerealize-2026-10-31.md"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t088-review.md): plants 5/5 named, Tier 1 0/3 wrong, blind back-translation 6/6; real 0/20 wrong, minor 3 -> 2 (enclitics after the first word of a two-word address: Wackernagel placement, attested in Vedic and Greek; kept); all 40: 0 wrong, 1 minor fixed (explicit subject); Horrors limits: no violations; tone lands; gate PASS 40/40, meter 53/53. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t088-review.md): plants 5/5 named, Tier 1 0/3 wrong, blind back-translation 6/6; real 0/20 wrong, minor 3 -> 2 (enclitics after the first word of a two-word address: Wackernagel placement, attested in Vedic and Greek; kept); all 40: 0 wrong, 1 minor fixed (explicit subject); Horrors limits: no violations; tone lands; gate PASS 40/40, meter 53/53. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

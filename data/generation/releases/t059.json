@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t059",
  "sha256": {
-  "records": "e610a7eb9133ba26039e6857efd5a6d5229a50d6f4ea17a18f29f3b5814c2c08",
+  "records": "daa61d139e2c54cafb1709d57795c8424a545db2a93aefad04af6429b22c931e",
   "plans": "a437c6eff2cdc823dfef411f7c08bb6d2c3b47ac2daae3ac32e026adae649af1",
-  "gate_report": "bde0b01ee427c74a6ec1d21fe99e18bd32883a78cf46e3a7adc5c81685222d5e"
+  "gate_report": "87f84324a84e8670528976f65053d5962b300e4ae8a1cdef0f57e2a41d32a84a"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t059-verdicts.jsonl",
    "data/generation/batches/t059.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t059-review.md): plants 4/5 (the missed one, plural->dual 'knees', arguably acceptable); real 0/20 wrong, minor 3 -> 2; all 40: 3 tense/pronoun fixes, and three 'two' + instrumental pairs (dual numeral with plural noun) rephrased at the lead's request; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t059-review.md): plants 4/5 (the missed one, plural->dual 'knees', arguably acceptable); real 0/20 wrong, minor 3 -> 2; all 40: 3 tense/pronoun fixes, and three 'two' + instrumental pairs (dual numeral with plural noun) rephrased at the lead's request; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

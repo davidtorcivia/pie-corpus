@@ -2,7 +2,7 @@
  "schema_version": 1,
  "batch": "t076",
  "sha256": {
-  "records": "bc1a26ea2fe015f8d7f39009cce31a624cc0325da4183997e3a129523c27793e",
+  "records": "76aed27ab20742fa0cdac1a0b797c2cce99b79a50fed9b96c59188d6286c7316",
   "plans": "bd02b747709b7e2073094dbb34bd74d67cde28b565bbce4ee5c9bd5d6de44b5a",
   "gate_report": "e0e073320e4fe37a675533f4856da305e706f5a7eb0d5bd8f252d5cfe61e8123"
  },
@@ -14,6 +14,6 @@
    "docs/audits/packets/t076-verdicts.jsonl",
    "data/generation/batches/t076.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t076-review.md): plants 4/5; real 1/20 wrong (neuter 'them' for masculine oaths, found in the full pass) -> 0; all 40: a hundred cows came out singular through the apposition-number gap (sentence split), English alignment fixes; nothing modern or coined; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t076-review.md): plants 4/5; real 1/20 wrong (neuter 'them' for masculine oaths, found in the full pass) -> 0; all 40: a hundred cows came out singular through the apposition-number gap (sentence split), English alignment fixes; nothing modern or coined; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

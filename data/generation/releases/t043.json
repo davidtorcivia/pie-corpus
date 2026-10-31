@@ -2,7 +2,7 @@
  "schema_version": 1,
  "batch": "t043",
  "sha256": {
-  "records": "50a0b4273e612f226dbfe14fc7330db471d0c82367994bfca1d1d06b9d0895b1",
+  "records": "40ba55f2a62c81bdc307b6e85aca0d4d4db027133e2d7f66445e51c8fe49e48f",
   "plans": "72f700c399e0e82021b65dbaa0bd9f9a0d2c83f8bd2c0ba85e26e4f6974bc10d",
   "gate_report": "d5f3a7148ca041e73e85880c28612d20fc432083254a65b47cb73da41e72d6e4"
  },
@@ -15,6 +15,6 @@
    "data/generation/batches/t043.json",
    "docs/audits/rerealize-2026-10-31.md"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t043-review.md): plants 5/5, Tier 1 0/3 wrong; real 0/20 wrong, 2 minor (gnomic aorists allowed by v4 §8); one plan fix (present for a general statement); lexq-found words in their glossed senses; gate PASS. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t043-review.md): plants 5/5, Tier 1 0/3 wrong; real 0/20 wrong, 2 minor (gnomic aorists allowed by v4 §8); one plan fix (present for a general statement); lexq-found words in their glossed senses; gate PASS. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t044",
  "sha256": {
-  "records": "308aed29ceee559d239826cf31f768683dc9bae5f957361d62c151485da3711a",
+  "records": "ed4363c7b93b9b51b475f0562273dddbedcba209ee18bb246b0bd668971b40ff",
   "plans": "c164e4a292261c097c9319fb3e2e50a6d2b8a3fadb215176beceb4bb2a946952",
-  "gate_report": "756ff1d01ccbc035b768dda6117d4adeda6d416295d837c515d896bd4e5079c4"
+  "gate_report": "fe2b1ac26d6bb90c43f0272146e06e4fbf161ab66264dd4c2570b2d10f1735df"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t044-verdicts.jsonl",
    "data/generation/batches/t044.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t044-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, minor 4 -> 3; all 40: nothing modern or coined, turns answer each other, fearing+ABL and enclitics correct; lead spot-read 3 records; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t044-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, minor 4 -> 3; all 40: nothing modern or coined, turns answer each other, fearing+ABL and enclitics correct; lead spot-read 3 records; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

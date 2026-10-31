@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t089",
  "sha256": {
-  "records": "c38146bdbcc15654b0c782b125ba2885dff9d7442b94eaca87ad756c700e67da",
+  "records": "a1a33fb48552f45b16445fe889208857e9f787e93f1fcdad58fd61d3e4c96d2a",
   "plans": "721273913186a028d6c060a78a5790e3c56bf6a577563640fe89ead5d6f58cdf",
-  "gate_report": "3c83c8eceff66ba94fa9cfcea610d1a5020bc0649e9d02b09700e830912b68a0"
+  "gate_report": "fdf70df6e77647d008cb078ddf4bd6d672e5be6e771f2f7f7691f4da73be6c25"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t089-verdicts.jsonl",
    "data/generation/batches/t089.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t089-review.md): plants 5/5 named; real 0/20 wrong, minor 1 -> 0; all 40: 4 small fixes (reflexive for a non-subject possessor twice, two English words with no PIE); 11 formulas in sense; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t089-review.md): plants 5/5 named; real 0/20 wrong, minor 1 -> 0; all 40: 4 small fixes (reflexive for a non-subject possessor twice, two English words with no PIE); 11 formulas in sense; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

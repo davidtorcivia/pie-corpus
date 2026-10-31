@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t091",
  "sha256": {
-  "records": "33438b82f43dcc3200bc4e2ac6897a6836612acd371aae39f3f09604c0635a85",
+  "records": "de92795798cfcd51703b5f927bc4477280d106acc9098627ef1e1be7445f401c",
   "plans": "79127a02ce4f357ffec42fae4108c09b476e401ebe8629780e607136e1bf9cac",
-  "gate_report": "9b3a55f30f0d37622d07c2fc836f1230a78a0b678cba1c80c3478aee25d4d9ed"
+  "gate_report": "22b4bb0858d35d51536b91b67e0579d51a0d21b9f702073786153710f278d2d2"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t091-verdicts.jsonl",
    "data/generation/batches/t091.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t091-review.md): plants 5/5 named (4 in short Q&A turns: the new brief note works); real 0/20 wrong, minor 3 -> 1 (one tense fix blocked by the lexeme cap); all 40: no violations, 11 referent and 4 homograph WARNs resolved; 2 of 16 formula uses are coincidences (counter, engine note); gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t091-review.md): plants 5/5 named (4 in short Q&A turns: the new brief note works); real 0/20 wrong, minor 3 -> 1 (one tense fix blocked by the lexeme cap); all 40: no violations, 11 referent and 4 homograph WARNs resolved; 2 of 16 formula uses are coincidences (counter, engine note); gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

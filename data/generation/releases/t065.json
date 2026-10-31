@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t065",
  "sha256": {
-  "records": "cf053eebf6058a2ae1bebe9565b7c82f54998b9ff96f1ab023ca62033fb857d1",
+  "records": "b092f8f3e1fa3c84b8d385ec030da563f86435637a293d2d819228f0f67cabe8",
   "plans": "b8bbd702c4faf0667a8a6bd7e81dcaf55ae08cd8903b3a79f48a45e707c036bc",
-  "gate_report": "1e46d12125d8ecbc57cd9371f84db8d2035251eeaa4764e746afeb46dafb793a"
+  "gate_report": "8bcfd4c89b98a1bac4844c7d66eb56e9b7bdcb8d37e124b106e8a1a3241e1fe7"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t065-verdicts.jsonl",
    "data/generation/batches/t065.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t065-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, 1 minor fixed (3 withdrawn on full glosses); all 40: 1 wrong fixed (an untranslated clause the next turn answered), 4 minor fixed; nothing modern, no money; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t065-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, 1 minor fixed (3 withdrawn on full glosses); all 40: 1 wrong fixed (an untranslated clause the next turn answered), 4 minor fixed; nothing modern, no money; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t087",
  "sha256": {
-  "records": "2fdd864720fcbee06957fdb47f31f017b87c70bb303c44f800e96ae4ae4191ac",
+  "records": "d12594111e9a5bb0fa67b978c7cdd16d4b134c47547396079f36de9dbb4df5a9",
   "plans": "c5c1eec8eec980a82b62c569caf88554275764d2f5c9a28cd164d953c5b59cd7",
-  "gate_report": "cc8fe186a4aadabce7e4b5ddcfe5c81b1fb54431916b4accfd6d0a11969612c2"
+  "gate_report": "a0c5b73bfd20d5ece41ac8a0fc9aa52ea2fd23897f450a3f9afdf008972dba6d"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t087-verdicts.jsonl",
    "data/generation/batches/t087.json"
   ],
-  "rationale": "Two calibrated reviews (docs/audits/tier3-t087-review.md): the first 3/5 plants (not counted; it fixed a dative for 'sent to the herds'); the second (seed 2) 5/5 named, real 0/20 wrong and 0 minor, blind back-translation 6/6; Horrors limits: no violations (no germ theory, no gore); tag fixes only; gate PASS 40/40, meter 71/71. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Two calibrated reviews (docs/audits/tier3-t087-review.md): the first 3/5 plants (not counted; it fixed a dative for 'sent to the herds'); the second (seed 2) 5/5 named, real 0/20 wrong and 0 minor, blind back-translation 6/6; Horrors limits: no violations (no germ theory, no gore); tag fixes only; gate PASS 40/40, meter 71/71. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

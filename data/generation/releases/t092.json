@@ -2,7 +2,7 @@
  "schema_version": 1,
  "batch": "t092",
  "sha256": {
-  "records": "1a3b292ac66a96d1d6052b2ed52e66ba2587ef8c36ae1563a51e371e3959fc9d",
+  "records": "e26b08a8e35e35a9ebd2dbf732ff8c109299d7d6045fd748b4d08aae83d2efe1",
   "plans": "db51027492955e8b15e790a25ad25070454a3b5d4850c4990d395461773de5fa",
   "gate_report": "77bf7a3472db34ab52704b8c5eb79bc7f45e9819a9420581061f9859b54fb207"
  },
@@ -14,6 +14,6 @@
    "docs/audits/packets/t092-verdicts.jsonl",
    "data/generation/batches/t092.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t092-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, 1 minor (dual fallback, engine); all 40: 5 plan fixes ('fought with' = próti 'against', reflexive not controlled by its subject, copula in a past nominal sentence); all 31 pronoun WARNs checked; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t092-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, 1 minor (dual fallback, engine); all 40: 5 plan fixes ('fought with' = próti 'against', reflexive not controlled by its subject, copula in a past nominal sentence); all 31 pronoun WARNs checked; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

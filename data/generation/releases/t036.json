@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t036",
  "sha256": {
-  "records": "d344144475cede6cac5c47de353f6970da3fc40816379069d68574308870d7d8",
+  "records": "0342695aa547e354de7692ca852eb99d24c2d86a49c1d8a2f69a7f3adb7090e0",
   "plans": "2dcb531a6d22f85cdc9cdc20c02d57fb0cc38646b9c7e9e52312d0f2f848a16f",
-  "gate_report": "bdc243eeca635c0cfa9a3108cf21f81015387e8edd834df43d75854f00a7f27f"
+  "gate_report": "16b5a0057f01f35b0c794cfeccfe79dd04678d4a44acef01ff78028d24f4b215"
  },
  "review": {
   "required": true,
@@ -15,6 +15,6 @@
    "data/generation/batches/t036.json",
    "docs/audits/rerealize-2026-10-31.md"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t036-review.md): plants 5/5 named, Tier 1 0/3 wrong, real 0/20 wrong, 3 minor; second pass of all 40: 0 wrong, minor 8 → 7; no in-world violations; gate PASS. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t036-review.md): plants 5/5 named, Tier 1 0/3 wrong, real 0/20 wrong, 3 minor; second pass of all 40: 0 wrong, minor 8 → 7; no in-world violations; gate PASS. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

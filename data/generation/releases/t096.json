@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t096",
  "sha256": {
-  "records": "d38d674ef5f08bd9aadcad03b493bd947f065c421229ddc34d1942d20963bed9",
+  "records": "93a0dfba6c848187e83578aa87b37a295e6b7d3169f49b19f375b25991c077ed",
   "plans": "c47e0e7ad33aa09de137c1f4d463168db6a1c779700ac01455db1043b14eb9ad",
-  "gate_report": "3394f8705255124001875d3edc1f6c21f3235c376d9fc165e2e3af11e9ae7c24"
+  "gate_report": "2760ccd2c216a4769a0929cf77e3c4b8ee714e35f9e6e04fd7c8e8ef2708129e"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t096-verdicts.jsonl",
    "data/generation/batches/t096.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t096-review.md): plants 5/5, real wrong 0/20, Tier 1 0/3; second pass 3 minors fixed at source (locative 'near the village', English trimmed to the PIE, reflexive removed); gate PASS 40/40."
+  "rationale": "Calibrated review (docs/audits/tier3-t096-review.md): plants 5/5, real wrong 0/20, Tier 1 0/3; second pass 3 minors fixed at source (locative 'near the village', English trimmed to the PIE, reflexive removed); gate PASS 40/40. | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

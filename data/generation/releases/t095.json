@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t095",
  "sha256": {
-  "records": "4eb5aae6de79d4bba3e4e381eaecee41a8d46c595e0a2521704558cd31e5a83f",
+  "records": "e227270336a02be85583ecf2ba056c0856ba7b9f9d3b8a4333d8f2181edbec64",
   "plans": "cb3bc8fce6393e9eebb6754576356ff3ff2f23901c8e18ceb58036429df082d2",
-  "gate_report": "1674230ea532ca82ec45eab180ef99c0c4f811519621379aea74c288c6420aa6"
+  "gate_report": "1af29070f4526d170efa1711f379f1d027439064b7b7062fa7a13c4ffe731470"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t095-verdicts.jsonl",
    "data/generation/batches/t095.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t095-review.md): plants 5/5, real wrong 1/20 before (an answer that did not fit its question), 0/20 after; second pass 1 wrong and 6 minor fixed at source; Tier 1 0/3; gate PASS 40/40."
+  "rationale": "Calibrated review (docs/audits/tier3-t095-review.md): plants 5/5, real wrong 1/20 before (an answer that did not fit its question), 0/20 after; second pass 1 wrong and 6 minor fixed at source; Tier 1 0/3; gate PASS 40/40. | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

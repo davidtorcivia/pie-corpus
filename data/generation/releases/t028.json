@@ -2,7 +2,7 @@
  "schema_version": 1,
  "batch": "t028",
  "sha256": {
-  "records": "e87c166acba9aa535bed5c9bbd543b8420e3a47d0d4554a469035ce2354b0130",
+  "records": "7f62b5fd36940a3c0753743062819f094b75e707127fb88ec1658172712ef6dc",
   "plans": "1ccfa4f6905d55cc689065d6a2f4ba1762760d37a6291cc41c4351d6d3d95343",
   "gate_report": "2deddde4ea9fb968c8536c020fc5eeb3a5b32bf3c78dbdf7e4c8505d79a402bf"
  },
@@ -18,6 +18,6 @@
    "docs/audits/give-aorist-swap-2026-10-30.md",
    "docs/audits/rerealize-2026-10-31.md"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t028-review.md): real 0/20 wrong (one meaning error under a plant, t028-0014, also fixed); gate PASS. Plant recall 5/5 not blind (packet diffed against corpus; 1 caught blind, 4 self-evident cell errors); approved on the real-item result; brief tightened (scripts/resolve_review_items.py). | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only). Re-approved after the mechanical pie-lex-deh3ut -> pie-lex-deh3t swap (docs/audits/give-aorist-swap-2026-10-30.md). | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t028-review.md): real 0/20 wrong (one meaning error under a plant, t028-0014, also fixed); gate PASS. Plant recall 5/5 not blind (packet diffed against corpus; 1 caught blind, 4 self-evident cell errors); approved on the real-item result; brief tightened (scripts/resolve_review_items.py). | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only). Re-approved after the mechanical pie-lex-deh3ut -> pie-lex-deh3t swap (docs/audits/give-aorist-swap-2026-10-30.md). | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

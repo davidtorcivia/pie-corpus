@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t094",
  "sha256": {
-  "records": "d2327f212a4fa10cbfe43527c0163044d39d7b040ab1076f8d345051ff82c4c8",
+  "records": "df18db05f3332b2846bd9846ca930a64f89bab7850493de61fc010f87e9665e9",
   "plans": "17b3092b91ed3a70a77449e7f81243fd19eff8ee5bc41e075001812b42df623c",
-  "gate_report": "a4c07367865cf4008c616853494924fedb4baca998fb7a3328c2d1242feffd89"
+  "gate_report": "ec8d3c59b9b5039bab046413148b2256c001e65b1e95dbbf9a8c03ee2e502700"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t094-verdicts.jsonl",
    "data/generation/batches/t094.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t094-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong (1 withdrawn: h₁éy is the anaphor), minor 4 -> 0; fixes: ne for a plain negative question, dual demonstrative, English aligned, answer repeats the question's verb; nothing modern; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t094-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong (1 withdrawn: h₁éy is the anaphor), minor 4 -> 0; fixes: ne for a plain negative question, dual demonstrative, English aligned, answer repeats the question's verb; nothing modern; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t106",
  "sha256": {
-  "records": "be8e6d0b696ead6a00f0b49560759d53ea9695b07f35da68d5e620a148df5271",
+  "records": "af58f6c75341b22aafd82d53cd3c22c2abeefb6c6993b5e02a886b9348e58e0c",
   "plans": "52b56f26008bb4c7a77cb337e1e61aca0b3a171783233fbdaff2f24778ffcb9f",
-  "gate_report": "20835fabe84a2c5a8e9945464c397df01f60dd382e0127bd183edd9eb15a1cfc"
+  "gate_report": "aabc7f34622f4801478e25158ea1a67c2a7fc2999aa41d7c02690efb5d487585"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t106-verdicts.jsonl",
    "data/generation/batches/t106.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t106-review.md): plants 5/5, real wrong 0/20, minor 3 → 0 (reflexive 'own' without antecedent twice, 'stag' → 'elk' in the English; one withdrawn: térdt is aorist-only); second pass no violations; Tier 1 0/3; gate PASS 40/40."
+  "rationale": "Calibrated review (docs/audits/tier3-t106-review.md): plants 5/5, real wrong 0/20, minor 3 → 0 (reflexive 'own' without antecedent twice, 'stag' → 'elk' in the English; one withdrawn: térdt is aorist-only); second pass no violations; Tier 1 0/3; gate PASS 40/40. | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

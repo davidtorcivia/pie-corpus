@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t062",
  "sha256": {
-  "records": "6ae167fcd807c0d3dde387523e17df5277b44416dcb634527c805cfaf086a874",
+  "records": "f8ab9b939e3e026d9a8c630ceae9e05ca04af5d290ef96d093f15389ad714e74",
   "plans": "b40f97c8414028ea76d006a8b3f110d827992f31eb8c5b18a2cfe0c0f50fa257",
-  "gate_report": "782202bf478e59404b1c1d52ec4f2eb42492c0352af142a438f04688ae6a07d6"
+  "gate_report": "ee650444668eb45d5c19dad939706a4e88b73d83ef54f965f83c73ab1126834b"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t062-verdicts.jsonl",
    "data/generation/batches/t062.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t062-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 1/20 wrong (neuter pronoun for feminine 'snow', caught in the full pass) -> 0; all 40: 5 plan fixes; weather verbs 3SG, predicate adjectives agree, no doubled enclitics; nothing modern; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t062-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 1/20 wrong (neuter pronoun for feminine 'snow', caught in the full pass) -> 0; all 40: 5 plan fixes; weather verbs 3SG, predicate adjectives agree, no doubled enclitics; nothing modern; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

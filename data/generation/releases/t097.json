@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t097",
  "sha256": {
-  "records": "0b0ab58f8dd96869a93fce6315516915489d2e70a9fb09bfc87c69b6791430c6",
+  "records": "b0fe04570a3fe64562f4ff907eef4f51ca49b82f6b1960a5bb454cff563b6dd4",
   "plans": "fb399a6fc86f9d0c747fd38b82a0264afff1afea9aca6668890f8669f79260c6",
-  "gate_report": "0ccb3a670c9d17c56526c7d5a779e82b68108b5504ec74d913b0189343f33e3f"
+  "gate_report": "9728f290ef28f012f01e56759c2538101cba5498ca2791a41e24bfc9ee65b396"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t097-verdicts.jsonl",
    "data/generation/batches/t097.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t097-review.md): plants 5/5, real wrong 1/20 before (pronoun gender), 0/20 after; minors 9 → 0 (6 fixed, 3 withdrawn); second pass 3 wrong and 8 minor fixed at source (English matched to the PIE, pronoun genders, short-answer case, 'bread' → 'grain'); Tier 1 0/3; gate PASS 40/40."
+  "rationale": "Calibrated review (docs/audits/tier3-t097-review.md): plants 5/5, real wrong 1/20 before (pronoun gender), 0/20 after; minors 9 → 0 (6 fixed, 3 withdrawn); second pass 3 wrong and 8 minor fixed at source (English matched to the PIE, pronoun genders, short-answer case, 'bread' → 'grain'); Tier 1 0/3; gate PASS 40/40. | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t053",
  "sha256": {
-  "records": "f8cca90e5baa83806cb4838b98551cbe69ce0359dc0db776ab6b1f2a3be4eae8",
+  "records": "5e03703416060caa3df48af796d4290805bdf59fdad5e8cc3dbed4b68fc2726b",
   "plans": "06a105127e5a89136f999d24bf957f3f5318726c1da2827cdc1a5365601accc2",
-  "gate_report": "8b8563a1d60ee33b13d33db47840e43bbbb4a10ba33b6362c046574741922de6"
+  "gate_report": "d7add83885457856e289005320171b209bfb9886610ea524a897b9c6b9c8f952"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t053-verdicts.jsonl",
    "data/generation/batches/t053.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t053-review.md): plants 5/5 named; real 0/20 wrong, minor 4 -> 1; blind back-translation 6/6; all 40: 1 wrong fixed (feminine 'dear' for a daughter), dual 'between us'; kinship obliques correct; re-realized with the question-mark fix; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t053-review.md): plants 5/5 named; real 0/20 wrong, minor 4 -> 1; blind back-translation 6/6; all 40: 1 wrong fixed (feminine 'dear' for a daughter), dual 'between us'; kinship obliques correct; re-realized with the question-mark fix; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

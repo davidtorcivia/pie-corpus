@@ -2,7 +2,7 @@
  "schema_version": 1,
  "batch": "t090",
  "sha256": {
-  "records": "082865a1599192a41aa505e94362c572ec3c04b1063bf8955799c896e9820a1c",
+  "records": "2d09e20b9c67a246c7bf823aa671b7957ab593597f1bd362aed6cb543b504c57",
   "plans": "0f4f1d032fb40415ff8f3a7164e000e78633049cea57cffeb1ad10ce1244a7a4",
   "gate_report": "96b9fb7deca546bbba200fe2fcd6b8e94e1f074583b5bd7322e9b705df49116c"
  },
@@ -14,6 +14,6 @@
    "docs/audits/packets/t090-verdicts.jsonl",
    "data/generation/batches/t090.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t090-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, 0 minor; all 40: 0 wrong, 6 minor fixed (English saying more than the PIE); feminine PREDs carry gender; nothing explicit or modern; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t090-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, 0 minor; all 40: 0 wrong, 6 minor fixed (English saying more than the PIE); feminine PREDs carry gender; nothing explicit or modern; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t085",
  "sha256": {
-  "records": "e127625166cfed3260e2a5ccba74139e0d9ee433d2b828d41e540e2e73361701",
+  "records": "b47559cb5208e1c55146f2abb99ba2f669899b487d620428ea5d740e949dfdd2",
   "plans": "069a37b76b27fa48c62fea9a0893e8666bc777de17160c4a538e4cdd1bc18b74",
-  "gate_report": "3077647eddd30a951a06bc268bd34f544f3198ef4db2d7154946b41907baf961"
+  "gate_report": "db21c7ac654c14d9abc5f7f49660eae4e890a3f93d62d375867f28ba85626e16"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t085-verdicts.jsonl",
    "data/generation/batches/t085.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t085-review.md): plants 5/5 named; real 0/20 wrong; minor 3 -> 0 (reflexive swós for 'her own', after swós left the lexeme cap); Horrors limits: no violations (captivity named only, no gore, no modern commentary); tone lands; gate PASS 40/40, meter 78/78. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t085-review.md): plants 5/5 named; real 0/20 wrong; minor 3 -> 0 (reflexive swós for 'her own', after swós left the lexeme cap); Horrors limits: no violations (captivity named only, no gore, no modern commentary); tone lands; gate PASS 40/40, meter 78/78. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

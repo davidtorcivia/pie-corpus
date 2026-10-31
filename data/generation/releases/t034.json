@@ -2,7 +2,7 @@
  "schema_version": 1,
  "batch": "t034",
  "sha256": {
-  "records": "2e845375b189207677bffa175001a787bd17895954a2ccc65ee5bb61e572123c",
+  "records": "228d9f5ea14b46e10b3c0a6605fbef730efab7b6253b3c4f8c182a11de051ea1",
   "plans": "176214473786763ee86af3288f78df6a437c8c72f4cf813dada7a00e295a3024",
   "gate_report": "8627a4c2194d80367fa320403424aef08144f4f375de2e379de346973879e976"
  },
@@ -17,6 +17,6 @@
    "data/generation/batches/t034.json",
    "docs/audits/rerealize-2026-10-31.md"
   ],
-  "rationale": "First calibrated review (tier3-t034-review.md): plants 3/5, below the 4/5 release rule. Second independent review with a fresh packet (seed 2, tier3-t034-review-2.md): plants 5/5 named, real 0/20 wrong, minor 2 → 0; it found 2 real errors the first missed (LOC for the goal of 'flow over'), fixed at source; the first review's fixes hold; gate PASS, meter 80/80. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "First calibrated review (tier3-t034-review.md): plants 3/5, below the 4/5 release rule. Second independent review with a fresh packet (seed 2, tier3-t034-review-2.md): plants 5/5 named, real 0/20 wrong, minor 2 → 0; it found 2 real errors the first missed (LOC for the goal of 'flow over'), fixed at source; the first review's fixes hold; gate PASS, meter 80/80. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

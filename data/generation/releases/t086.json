@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t086",
  "sha256": {
-  "records": "bc588c45da56c612b31924bd7c94c5ac19a37d7ca0135127bc08e466feec2341",
+  "records": "6ba54a4bf0c922d21219b437b864e59eb9274008ff159d8aea3859449c2519d4",
   "plans": "a8008b76141dfecfacfe31fdc3951bd4255808aa98e4d19dea0dc78352e920ad",
-  "gate_report": "bc8fa962262926814dc5ba3d0e1847cf61d99907b8437786283548b8d2aa4252"
+  "gate_report": "a61ed325b8e3757742c0938bccba3d5136b82d5f2663ca0001f1d994ca480ae5"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t086-verdicts.jsonl",
    "data/generation/batches/t086.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t086-review.md): plants 4/5; real 1/20 wrong -> 0; fixes: accusative short answer, 'as blood-price' split into two sentences, causative-only verb replaced, feminine predicate; Horrors limits: no violations; tone lands; gate PASS 40/40, meter 56/56. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
+  "rationale": "Calibrated review (docs/audits/tier3-t086-review.md): plants 4/5; real 1/20 wrong -> 0; fixes: accusative short answer, 'as blood-price' split into two sentences, causative-only verb replaced, feminine predicate; Horrors limits: no violations; tone lands; gate PASS 40/40, meter 56/56. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only). | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }

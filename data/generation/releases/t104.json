@@ -2,7 +2,7 @@
  "schema_version": 1,
  "batch": "t104",
  "sha256": {
-  "records": "606b8886ce48a256d5d0082dc88c6fc95e9861d28817f642bcb5663edcf8b706",
+  "records": "78712498a9105d57b53db8b097386d14111f72a4af4e922f6d3e19a48b6196b9",
   "plans": "1b9d5cd55aaf62409ad5cbddfabb7482585203c9b37da92875cb1a71faf7e145",
   "gate_report": "2313021111164f9683bf29913036e73a6888091f28ae7f0dd74c2ae7b139fa07"
  },
@@ -14,6 +14,6 @@
    "docs/audits/packets/t104-verdicts.jsonl",
    "data/generation/batches/t104.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t104-review.md): plants 5/5, real wrong 0/20, minor 1 → 0 (withdrawn: oblique dual falls back to plural by design), Tier 1 0/3; second pass 0 wrong, 6 minor fixed at source (enclitic inside the vocative 'Father Sky', duals for natural pairs, one English sentence per PIE sentence); gate PASS 40/40."
+  "rationale": "Calibrated review (docs/audits/tier3-t104-review.md): plants 5/5, real wrong 0/20, minor 1 → 0 (withdrawn: oblique dual falls back to plural by design), Tier 1 0/3; second pass 0 wrong, 6 minor fixed at source (enclitic inside the vocative 'Father Sky', duals for natural pairs, one English sentence per PIE sentence); gate PASS 40/40. | Rebound 2026-11-01 after the round-6 re-realize on 5402014 (PIE change: moḱs → móḱs only)."
  }
 }
