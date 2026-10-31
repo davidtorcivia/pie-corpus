@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t095",
+ "sha256": {
+  "records": "4eb5aae6de79d4bba3e4e381eaecee41a8d46c595e0a2521704558cd31e5a83f",
+  "plans": "cb3bc8fce6393e9eebb6754576356ff3ff2f23901c8e18ceb58036429df082d2",
+  "gate_report": "1674230ea532ca82ec45eab180ef99c0c4f811519621379aea74c288c6420aa6"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t095-review.md",
+   "docs/audits/packets/t095-verdicts.jsonl",
+   "data/generation/batches/t095.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t095-review.md): plants 5/5, real wrong 1/20 before (an answer that did not fit its question), 0/20 after; second pass 1 wrong and 6 minor fixed at source; Tier 1 0/3; gate PASS 40/40."
+ }
+}
