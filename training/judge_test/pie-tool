@@ -1,0 +1,3 @@
+#!/bin/zsh
+export UV_CACHE_DIR=/tmp/pie-uv-cache
+exec uv run --quiet --project /Users/david/AI/PIE python -I $(dirname $0)/tools.py "$@"
