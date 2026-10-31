@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t097",
+ "sha256": {
+  "records": "0b0ab58f8dd96869a93fce6315516915489d2e70a9fb09bfc87c69b6791430c6",
+  "plans": "fb399a6fc86f9d0c747fd38b82a0264afff1afea9aca6668890f8669f79260c6",
+  "gate_report": "0ccb3a670c9d17c56526c7d5a779e82b68108b5504ec74d913b0189343f33e3f"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t097-review.md",
+   "docs/audits/packets/t097-verdicts.jsonl",
+   "data/generation/batches/t097.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t097-review.md): plants 5/5, real wrong 1/20 before (pronoun gender), 0/20 after; minors 9 → 0 (6 fixed, 3 withdrawn); second pass 3 wrong and 8 minor fixed at source (English matched to the PIE, pronoun genders, short-answer case, 'bread' → 'grain'); Tier 1 0/3; gate PASS 40/40."
+ }
+}

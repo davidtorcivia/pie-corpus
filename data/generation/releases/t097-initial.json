@@ -1,0 +1,15 @@
+{
+ "schema_version": 1,
+ "batch": "t097-initial",
+ "sha256": {
+  "records": "247d3444ce441915a62a14b23e41ca8a06f4a9c337009757133a3bfa001cb8a1",
+  "plans": "8accf80ad39ff67ef141f8a9751eb646050e9b6406192fdf8b65a98795f7b4ae",
+  "gate_report": "ae20116b95ffc7f054642c4109fdc8e9cfbadff90a68abdb1f09cb0007a6add3"
+ },
+ "review": {
+  "required": true,
+  "status": "pending",
+  "evidence": [],
+  "rationale": "Awaiting review."
+ }
+}
