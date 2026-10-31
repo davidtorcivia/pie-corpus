@@ -181,3 +181,21 @@ adapter on the frozen set `gen_prompts_v1.jsonl` (246 prompts, no cognates; `bas
 - **The stem-class gap is real and measurable now:** every model is worse on ablauting lexemes' paradigms than on
   thematic ones (26% vs 32% for the best). This is the baseline for the stem-class drills of the build-out.
 - **TypewriterLM is out** of the comparison (no licence to ship, and last on every task but dialogue).
+
+## Queue 3 (2026-10-31): the recipe on the built-out export
+
+Export of 2026-10-31 (commit 88d96ad): every grammar drill, the stem-class drills, and 18 new batches (t044–t088:
+14 in-world dialogue batches and the 4-batch Horrors wave, 720 texts, each through a calibrated review). Mix: 32,820
+examples, 5.9 M Qwen tokens: conversation 4,524 (13.8%), translation 17,685 (53.9%), grammar 10,611 (32.3%). Run
+`qwen4b-instruct-r16-lr2e-4-export1031`: Qwen3-4B-Instruct, LoRA r16/α32, lr 2e-4, 2 epochs, generations on the
+frozen `gen_prompts_v1.jsonl`, compared with baseline_v1 (above). Note: the eval loss is on the new eval split
+(it grew with the stem-class drills), so it is not comparable with queue 1–2's; the frozen prompts are.
+
+The corpus process, for the write-up: each batch is written by a planner agent as plans (never PIE), realized by
+the engine, gated (reject rate, exact forms, lexeme caps, meter), then reviewed blind by a calibrated reviewer agent
+on 20 sampled items with 5 planted errors (≥4/5 recall required, else a second reviewer with fresh plants: t073,
+t087), plus a full read of all 40 records; fixes go into the plans and are re-realized; the lead approves by binding
+the records' hashes. Wave 3: 18 batches, 2 second reviews; errors found per batch 0–5, almost all agreement
+(gender of pronouns and predicate adjectives), number (dual/plural) and verb sense (causatives); engine gaps found
+by reviewers were fixed at the source (question marks of multi-clause questions, 'two' in an oblique case,
+predicate-adjective gender warning, the reflexive exempt from the lexeme cap).
