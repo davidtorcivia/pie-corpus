@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t076",
+ "sha256": {
+  "records": "725ee915ed0f8e0573d0fd132f2206e4069afd857a8e96d9f419015d466bab1c",
+  "plans": "e428a3a3e347f6d95f2e1977aefdb7eb322f0d61931c995d79277d552e599acb",
+  "gate_report": "4d1115ecf1baea29c2c96b21e1da1822f0a466552f716b5d1cb1d918474f0e55"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t076-review.md",
+   "docs/audits/packets/t076-verdicts.jsonl",
+   "data/generation/batches/t076.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t076-review.md): plants 4/5; real 1/20 wrong (neuter 'them' for masculine oaths, found in the full pass) -> 0; all 40: a hundred cows came out singular through the apposition-number gap (sentence split), English alignment fixes; nothing modern or coined; gate PASS 40/40."
+ }
+}
