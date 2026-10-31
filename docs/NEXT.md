@@ -9,6 +9,9 @@
   alius/aliud, Gk állos, Goth. aljis), so 'another girl' cannot be said (t090). Make it an adjective (with the
   pronominal neuter -od if the engine supports it), like sólh₂wos; then re-realize the batches that use it and
   rebind. Do it after wave 4 (t089-t094) is approved, so no running planner's plans break.
+- Comparatives/superlatives of derived adjectives are rejected ('younger', 'youngest', 'smallest': t092). The
+  formula counter credits words that merely co-occur in a record (t089). An object relative h₁yód is not fronted and
+  can read as 'if/when' (t089-0040).
 - **Silent cell substitution** (t3b-002, t3b-004, t038, t039): a requested cell the engine doesn't build (a dual
   oblique, a middle dual) silently becomes another (plural), with no rejection or warning. check_plan should reject,
   or realize should warn, so the planner chooses.
