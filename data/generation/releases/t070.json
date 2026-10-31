@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t070",
+ "sha256": {
+  "records": "e89b3bbe8f4729adb7ac8d43a3ad865ea3a67bed745617e2cd2aa45f6b796d7b",
+  "plans": "a92fb0b839510a46888ed61af775a0a41e7a0831e14d8582d733687107f4d57c",
+  "gate_report": "0ae3488ad94ed5cab9db2512ee02cbfd82d96401ef5d23054af7978ef61d005b"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t070-review.md",
+   "docs/audits/packets/t070-verdicts.jsonl",
+   "data/generation/batches/t070.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t070-review.md): plants 5/5 named; real 0/20 wrong, minor 5 -> 3; all 40: 3 plan fixes (English, iterative for plain 'carry'); nothing modern; 5 project reconstructions (≥2 branches, allowed in Tier 3: the in-world 'no coinages' rule is about neologisms); gate PASS 40/40."
+ }
+}
