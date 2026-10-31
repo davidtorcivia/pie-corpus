@@ -5,6 +5,10 @@
   np-case / middle-3du gaps (bd6a13d). Left: ~40 batches whose gloss lines predate the current glosses (re-realize
   and rebind them together; realize_plans resets a release to pending, so rebind right after); t022/t025 pending
   (lexeme cap); t025 has two nominative short answers; t3b-001 cannot re-run under the current Tier 3b rules.
+- **h₂élyos 'other' is filed as a masculine noun** (pie-lex-h2elyos, 49 corpus uses): a pronominal adjective (Lat.
+  alius/aliud, Gk állos, Goth. aljis), so 'another girl' cannot be said (t090). Make it an adjective (with the
+  pronominal neuter -od if the engine supports it), like sólh₂wos; then re-realize the batches that use it and
+  rebind. Do it after wave 4 (t089-t094) is approved, so no running planner's plans break.
 - **Silent cell substitution** (t3b-002, t3b-004, t038, t039): a requested cell the engine doesn't build (a dual
   oblique, a middle dual) silently becomes another (plural), with no rejection or warning. check_plan should reject,
   or realize should warn, so the planner chooses.
