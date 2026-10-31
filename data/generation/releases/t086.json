@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t086",
+ "sha256": {
+  "records": "8c2ee53700c25497662f154297a7bf44aff05d8c234ec1a90f8923ffc8bac959",
+  "plans": "9e8ffc6ac0a8af90beab423484cc085ff67f44fbcb6bf2321631f038bbc57167",
+  "gate_report": "bc8fa962262926814dc5ba3d0e1847cf61d99907b8437786283548b8d2aa4252"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t086-review.md",
+   "docs/audits/packets/t086-verdicts.jsonl",
+   "data/generation/batches/t086.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t086-review.md): plants 4/5; real 1/20 wrong -> 0; fixes: accusative short answer, 'as blood-price' split into two sentences, causative-only verb replaced, feminine predicate; Horrors limits: no violations; tone lands; gate PASS 40/40, meter 56/56."
+ }
+}
