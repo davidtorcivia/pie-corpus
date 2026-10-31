@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t096",
+ "sha256": {
+  "records": "d38d674ef5f08bd9aadcad03b493bd947f065c421229ddc34d1942d20963bed9",
+  "plans": "c47e0e7ad33aa09de137c1f4d463168db6a1c779700ac01455db1043b14eb9ad",
+  "gate_report": "3394f8705255124001875d3edc1f6c21f3235c376d9fc165e2e3af11e9ae7c24"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t096-review.md",
+   "docs/audits/packets/t096-verdicts.jsonl",
+   "data/generation/batches/t096.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t096-review.md): plants 5/5, real wrong 0/20, Tier 1 0/3; second pass 3 minors fixed at source (locative 'near the village', English trimmed to the PIE, reflexive removed); gate PASS 40/40."
+ }
+}
