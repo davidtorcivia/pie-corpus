@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t101",
+ "sha256": {
+  "records": "2fbf2e0e82fe9f8cdbd5992b7fe00acdc2d5105451ba20d1edfa442c94f577bb",
+  "plans": "251c7adfbee463b1174ee4f83db52e24220c1aecb8e5dd24a5b1cbc325e0f3ca",
+  "gate_report": "22aa60f36a67423975e0c99c2b802225d67b480405d035c20b91cee8f996e8e5"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t101-review.md",
+   "docs/audits/packets/t101-verdicts.jsonl",
+   "data/generation/batches/t101.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t101-review.md): plants 5/5 (4 named; meets the 4/5 bar either way), packet real wrong 1 → 0, minor 1 → 0 (withdrawn), Tier 1 0/3; full pass 2 wrong and 1 minor fixed at source (causative for plain 'bring', an unanswered turn, single-branch 'bridge' → 'crossing'); requests in-world; gate PASS 40/40."
+ }
+}
