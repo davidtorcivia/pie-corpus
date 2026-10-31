@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t108",
+ "sha256": {
+  "records": "b31c7c95f790d03b8cdfae75c0ee128b8c6ee38e16882b6830dabc726e34e4e7",
+  "plans": "b1a15158cd0b15d439f3c2ffa5905519d1c8583cc0619fbcdbc493c2aa62fe5a",
+  "gate_report": "93c56d8f4a97f7323edb1413141d5ef7159ce9f48f56686a0fa956bd05910f12"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t108-review.md",
+   "docs/audits/packets/t108-verdicts.jsonl",
+   "data/generation/batches/t108.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t108-review.md): plants 5/5, real wrong 0/20 and 0/40 in the full read, Tier 1 0/3; full-read minors 3 → 0 fixed at source; questions back added (25 → 37 of 40); gate PASS 40/40."
+ }
+}
