@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t098",
+ "sha256": {
+  "records": "2786cf8212477c435302648ecefb55968e028481dac31013878377b2fbbe55ed",
+  "plans": "944020d4c11cf17423236145bbf574c000ee23a17307830375011be777dd3ee6",
+  "gate_report": "37801273e8825ab182632d7dc5db89ca35dd10c25042931735f00ccaf07973a9"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t098-review.md",
+   "docs/audits/packets/t098-verdicts.jsonl",
+   "data/generation/batches/t098.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t098-review.md): plants 5/5, real wrong 0/20, Tier 1 0/3; second pass 0 wrong, 3 minor fixed at source (cow gender f, -kʷe after a question word twice, English trimmed); gate PASS 40/40."
+ }
+}
