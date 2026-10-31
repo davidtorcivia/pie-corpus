@@ -7,8 +7,10 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 key = json.loads((HERE / "key.json").read_text())
+# J25 swapped 'leave' for the near-synonym 'leave over', which reads correctly: not a fair plant (judge-test doc)
+key.pop("J25")
 n = lambda s: unicodedata.normalize("NFC", (s or "").strip(".,?!\"“” ")).lower()
-for f in sys.argv[1:] or sorted(str(p) for p in HERE.glob("verdicts-*.json")):
+for f in sys.argv[1:] or sorted(str(p) for p in HERE.glob("verdicts*.json")):
     v = {x["id"]: x for x in json.loads(Path(f).read_text())}
     row, named, fa = {}, 0, []
     for kind in ("inflection", "lexeme", "negation"):
@@ -22,4 +24,4 @@ for f in sys.argv[1:] or sorted(str(p) for p in HERE.glob("verdicts-*.json")):
     planted = [i for i, k in key.items() if k["kind"] != "ok"]
     caught = sum(v.get(i, {}).get("verdict") == "wrong" for i in planted)
     print(f"{Path(f).stem:24} recall {caught}/{len(planted)}  " + "  ".join(f"{k} {x}" for k, x in row.items())
-          + f"  named {named}/24  false alarms {len(fa)}/{len(ok)} {fa}  missing {60 - len(v)}")
+          + f"  named {named}/23  false alarms {len(fa)}/{len(ok)} {fa}  missing {60 - len(v)}")

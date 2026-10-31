@@ -38,3 +38,26 @@ VOC.SG address (J37), NOM for an ABL (J39). Meaning errors (negation, word swap)
 levers bring that down to ~15–30 M per RL run:
 - precompute the analyzer output into each item, since most of a judge's tokens are tool calls;
 - send to the judge only the samples the local reward passes, because a local failure is already a verdict.
+
+## Round 2: Haiku, and precomputed analysis (same 60 items)
+
+Items_v2 (training/judge_test/add_analysis.py) carry each word's engine analysis inline (lemma, gloss, all readings);
+the tool stays available. Scored without J25 (35 plants).
+
+| Judge | Format | Caught (of 35) | Inflection | False alarms (of 24) | Tokens (60 items) | Wall time |
+|---|---|---|---|---|---|---|
+| Sonnet low (round 1) | tool | 32 | 11/12 | 0 | 153 k | 14 min |
+| Sonnet low | analysis inline | 29 | 9/12 | 1 (J23) | 187 k | 3 min |
+| Haiku 5.5 low | analysis inline | 30 | 7/12 | 1 (J59) | 218 k | 4 min |
+| Haiku 5.5 medium | analysis inline | 31 | 9/12 | 9 | 260 k | 7 min |
+| Haiku 5.5 high | analysis inline | 34 | 11/12 | 2 (J27, J59) | 279 k | 8 min |
+
+- **Inline analysis is not a cost lever.** The full reading lists make each prompt longer than the tool calls they
+  replace, and Sonnet low got worse with them: it missed two dropped negations it had caught with the tool.
+  Annotating only unknown or ambiguous words is untested.
+- **Haiku high's two false alarms are defensible.** In J27 and J59 a 2PL addresses one person who speaks for a group
+  ("we will lay them", "we will pay"), so the plural is acceptable.
+- **Haiku high is the only run that caught J21 (NOM for LOC) and J37 (NOM.PL for VOC.SG).**
+- **Haiku is erratic across efforts:** medium raised 9 false alarms on the same items.
+- **Proposed loop judge:** Haiku high screens every sample, and Sonnet low (with the tool) re-checks only the flagged
+  ones. Before relying on it, repeat Haiku high once on this set to check that 34/35 holds.
