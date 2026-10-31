@@ -256,3 +256,33 @@ The eval loss is not a stopping signal for this task; the frozen prompts are.
 - **Dialogue chrF stays flat (≈23)** although conversation examples went from 2,663 to 7,082. A single-reference
   chrF on a free reply is a weak measure of conversation. The dialogue prompts need a different score: grammaticality
   of the reply (engine parse / recognized rate, already 86–90%), answer relevance, and a human-free judge rubric.
+
+## Queue 5 (2026-10-31): the same recipe and export for 5 epochs
+
+Run `qwen4b-instruct-r16-lr2e-4-export1101-5ep` (training/queue5.ps1): queue 4 unchanged except `--epochs 5`, on
+train_mix_1101, to see how far more epochs carry. The cosine schedule spans 5 epochs, so e3 here sits at a higher
+LR than queue 4's e3 and the two are not the same checkpoint.
+
+**Result** (184 min; frozen prompts, same scorer):
+
+| | chrF | recognized | inflect exact | paradigm cells | dialogue chrF | EN→PIE (task / app) | inflect abl / non | paradigm abl / non |
+|---|---|---|---|---|---|---|---|---|
+| queue 4, e3 (3 epochs) | 51.0 | 79% | 62% | 52% | 23.4 | 38.8 / 52.1 | 33% / 80% | 32% / 62% |
+| 5 epochs, e1 | 46.6 | 76% | 46% | 32% | 21.9 | 33.6 / 47.0 | 22% / 60% | 26% / 35% |
+| 5 epochs, e2 | 49.9 | 79% | 65% | 46% | 20.7 | 37.2 / 50.4 | 44% / 77% | 37% / 50% |
+| 5 epochs, e3 | 50.8 | 80% | 62% | 49% | 23.7 | 36.5 / 51.6 | 44% / 73% | 37% / 54% |
+| 5 epochs, e4 | 52.8 | 82% | 67% | 59% | 25.5 | 37.4 / 51.6 | 44% / 80% | 46% / 65% |
+| **5 epochs, e5** | **53.5** | **82%** | **73%** | **59%** | 24.8 | **39.4** / 51.5 | **50% / 87%** | 44% / **66%** |
+
+Eval loss 3.09 → 1.12 → 1.15 → 1.22 → 1.34 → 1.41: lowest at epoch 1 and rising after it, while the frozen-prompt
+scores rise through epoch 5, as in queue 4.
+
+- **Best run so far: e5**, +2.5 chrF over queue 4 e3 and +8.3 over the baseline. Inflection exact 62% → 73%,
+  paradigm cells 52% → 59%.
+- **Gains are slowing.** e3 → e4 gives +2.0 chrF, e4 → e5 +0.6. EN→PIE on the translation-app prompts is flat from
+  e3 (≈51.5–51.6) and below queue 4 e3 (52.1), so the demo path gains nothing past 3 epochs; the rise is in drills.
+  5 epochs is about the ceiling for this export; more data will matter more than more epochs.
+- **The ablauting gap stays**: 50% vs 87% inflection, 44% vs 66% paradigm cells, on only 18 and 13 prompts. That is
+  the next corpus target (whole-paradigm and key-cell drills for ablauting lexemes) and the reason for a v2 frozen
+  set with a larger ablauting sample.
+- **Dialogue chrF rises a little (23 → 25)** but stays a weak measure (see queue 4).
