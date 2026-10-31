@@ -110,8 +110,9 @@ def test_beech_takes_the_printed_accent(lx):
 
 
 def test_unsourced_accents_stay_unresolved(lx, pool):
-    """debt, grey, yew: glossed now, but no source gives an accent, so they stay out of the pool."""
-    for lid in ("pie-lex-dhlghos", "pie-lex-polHwos", "pie-lex-h1eyHwos"):
+    """grey, yew: glossed now, but no source gives an accent, so they stay out of the pool. (debt left this list in
+    round 3, 2026-10-31: Derksen's Slavic AP (c) for *dьlgъ gives dʰl̥gʰós, as for gʷoldʰós.)"""
+    for lid in ("pie-lex-polHwos", "pie-lex-h1eyHwos"):
         assert lx.meaning(lid)[1] == "override" and lid not in pool
         assert lx.accent_status(lid) == "unresolved"
 
@@ -312,3 +313,24 @@ def test_tail_nil_flag_lifted_on_evidence(lx, pool):
     """h₁orséh₂ (NIL no. 247) was held by nil-single-branch; Gk οὐρά and OIr. err (Beekes) are two branches, so the
     override clears the flag (pie.lexicon applies an override's `uncertain`) and NIL_ADMIT admits it."""
     assert lx.entries["pie-lex-h1orseh2"]["uncertain"] == [] and "pie-lex-h1orseh2" in pool
+
+
+def test_round3_specs_and_cells():
+    """docs/audits/lexicon-gaps-round3-2026-10-31.md: the hand-checked and form-fixed specs give these cells, and
+    a realized plan uses them (check_plan, then realize)."""
+    from pie.realize import Lexicon, check_plan, realize
+    lx = Lexicon.load()
+    want = {("pie-lex-dhlghos", None, "NOM.SG"): "dʰl̥gʰós", ("pie-lex-skeytos", None, "GEN.SG"): "skéytosyo",
+            ("pie-lex-moro", None, "NOM.SG"): "móros", ("pie-lex-gjlh2oxws", None, "ACC.SG"): "ǵl̥h₂ṓm",
+            ("pie-lex-gjlh2oxws", None, "GEN.SG"): "ǵl̥h₂éws", ("pie-lex-h1yenh2texr", None, "ACC.SG"): "h₁yénh₂term̥",
+            ("pie-lex-swekjruh2", None, "GEN.SG"): "sweḱruh₂és", ("pie-lex-sneh1", None, "PRS.3SG"): "snéh₁ti",
+            ("pie-lex-gheldheti", None, "PRS.3SG"): "gʰéldʰeti", ("pie-lex-dhrsus", "m", "GEN.SG"): "dʰr̥séws",
+            ("pie-lex-dhrsus", "f", "NOM.SG"): "dʰr̥séwih₂"}
+    for (i, g, cell), form in want.items():
+        assert lx.cells(i, g)[cell][0] == form, (i, cell)
+    assert lx.specs["pie-lex-h2eti"]["rule"] == "indeclinable" and lx.entries["pie-lex-h2eti"]["pos"] == "adv"
+    plan = {"english": "The brave mother-in-law spins.", "clauses": [{"english": "The brave mother-in-law spins.", "slots": [
+        {"lex_id": "pie-lex-swekjruh2", "role": "SUBJ"}, {"lex_id": "pie-lex-dhrsus", "role": "MOD", "head": 0},
+        {"lex_id": "pie-lex-sneh1", "role": "V", "verb": {"tense": "PRS", "mood": "IND", "voice": "ACT"}}]}]}
+    assert not check_plan(plan, lx)
+    assert realize(plan, lx)["pie"] == "dʰr̥séwih₂ sweḱrúh₂ snéh₁ti."

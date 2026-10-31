@@ -75,6 +75,13 @@ def test_core_gap_words_reach_the_translator(transfer):
     assert transfer.translate("I hate the wolf.").pie == "wĺ̥kʷom h₃eh₃ódh₂e."
 
 
+def test_round3_words_reach_the_translator(transfer):
+    """docs/audits/lexicon-gaps-round3-2026-10-31.md: war, exchange and kinship words, with the new specs."""
+    assert transfer.translate("The brave man repays the debt.").pie == "dʰr̥sús wiHrós dʰl̥gʰóm gʰéldʰeti."
+    assert transfer.translate("The bride weeps.").pie == "snusós HréwdHti."
+    assert transfer.translate("The plague kills the people.").pie == "móros h₁léwdʰins moréyeti."
+
+
 def test_transfer_reports_what_it_cannot_say(transfer):
     r = transfer.translate("The tiger ate the bread.")
     assert set(r.unknown) >= {"tiger"}

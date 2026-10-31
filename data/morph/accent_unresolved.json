@@ -2,11 +2,11 @@
  "_note": "The accent manifest: the one place the code reads accent status from (pie.realize.accent_manifest, Lexicon.accent_status; the validator's accent lint, scripts/realize_plans.py, pie/export.py; the invariant tests/test_accent_invariant.py). Three categories are kept apart: (1) unresolved_lexical_accent, missing information (the source gives no accent), not evidence that a word was unaccented; (2) representation_exceptions, forms the project's notation and conventions leave without a visible accent; (3) genuinely unaccented clitics, which are not listed here (tests/test_accent_invariant.py INHERENTLY_ACCENTLESS, pie.validate ACCENTLESS_LEXEMES and closed_class.json). double_accent_source and closed_pending are defects to fix. Every group may only shrink: the invariant fails on a new unexplained case and on a listed case that is no longer one (remove it then). Built 2026-10-24 (fix/accent), accent policy 2026-10-24.",
  "unresolved_lexical_accent": {
   "reason": "accent: unresolved (missing information). The Wiktionary headword has no accent and nothing in the spec supplies one, so every cell of the paradigm is accentless. This records missing information, not a claim that the word was inherently unaccented. The lexemes stay usable (inflection capability is unchanged); exported tasks built on them carry accent: unresolved. Schema clarification (2026-10-25, DOC-01): raw corpus records and tokens do not store this derived flag. Raw consumers join token lex_id values to this manifest (via Lexicon.accent_status / accent_status); exported tasks carry the derived status. Representation exceptions remain separate and are matched against the frozen cell/form inventory; genuinely unaccented clitics are a third category. A sourced accent goes into data/lexicon/overrides.jsonl as a checked spec (and the id leaves this list).",
-  "cells": 20621,
+  "cells": 20507,
   "by_family": {
    "noun/shape:thematic": {
-    "lexemes": 314,
-    "cells": 5966,
+    "lexemes": 312,
+    "cells": 5928,
     "ids": [
      "pie-lex-Heh3syos",
      "pie-lex-Hh3esenos",
@@ -40,7 +40,6 @@
      "pie-lex-dhelh1os",
      "pie-lex-dheygwos",
      "pie-lex-dhh2obhros",
-     "pie-lex-dhlghos",
      "pie-lex-dhmbhos",
      "pie-lex-dhngwlos",
      "pie-lex-dhogwhos",
@@ -247,7 +246,6 @@
      "pie-lex-sh1itos",
      "pie-lex-sh1itros",
      "pie-lex-skeydros",
-     "pie-lex-skeytos",
      "pie-lex-skidos",
      "pie-lex-skjeh3iros",
      "pie-lex-skolh1os",
@@ -460,8 +458,8 @@
     ]
    },
    "verb/shape:thematic-present": {
-    "lexemes": 115,
-    "cells": 8740,
+    "lexemes": 114,
+    "cells": 8664,
     "ids": [
      "pie-lex-Hrigjeh1yeti",
      "pie-lex-HrowdHeh2yeti",
@@ -491,7 +489,6 @@
      "pie-lex-drHghneti",
      "pie-lex-drexmyeti",
      "pie-lex-ghebheti",
-     "pie-lex-gheldheti",
      "pie-lex-gheydhyeti",
      "pie-lex-ghlindeti",
      "pie-lex-ghoh1bheh2yeti",

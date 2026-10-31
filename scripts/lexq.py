@@ -13,6 +13,10 @@ like a slice word.
 Matching, per term: a lexeme whose gloss sense is headed by the term (lemmatized: 'to be giving' answers 'give'),
 then any gloss containing the term as a word. Ranked by sense order, corpus use and attestation. Adverbs and
 adpositions (indeclinable, role ADV) and the closed-class ids are searched too. One JSON object per line.
+
+Idioms (data/lexicon/idioms.json): a concept with no single word ('answer', 'tomorrow', 'yes', 'for three days',
+'raid') has an inherited idiom or a stated paraphrase. Every query prints the matching entries after the words, as
+{"idiom": …, "kind", "ids", "how", "source"}; the ids are ordinary planner words (coinages only with --tier3b).
 """
 import argparse
 import collections
@@ -90,6 +94,28 @@ def search(term: str, lx, ids: list[str], uses, n: int) -> list[dict]:
     return out
 
 
+IDIOMS = ROOT / "data" / "lexicon" / "idioms.json"
+
+
+def idioms(term: str, tier3b: bool = False) -> list[dict]:
+    """The idiom entries for a query: its English phrase, or every content word of the query, is in an entry's
+    `english` list (a plural -s is dropped). Coinage ids (`tier3b_ids`) only for Tier 3b."""
+    def norm(w):
+        return w[:-1] if len(w) > 3 and w.endswith("s") and not w.endswith("ss") else w
+    t = term.lower().strip()
+    tw = {norm(w) for w in words(t)} - FUNCTION_WORDS
+    out = []
+    for e in json.loads(IDIOMS.read_text("utf-8"))["idioms"]:
+        keys = [k.lower() for k in e["english"]]
+        if t in keys or (tw and any(tw <= {norm(w) for w in words(k)} for k in keys)):
+            hit = {"idiom": e["idiom"], "kind": e["kind"], "for": e["english"], "ids": e["ids"], "how": e["how"],
+                   "source": e["source"]}
+            if tier3b and e.get("tier3b_ids"):
+                hit["tier3b_ids"] = e["tier3b_ids"]
+            out.append(hit)
+    return out
+
+
 def full(i: str, lx) -> dict:
     item = ms.slice_item(lx, i)
     fam = lx.specs[i]["family"]
@@ -120,8 +146,9 @@ def main() -> int:
         ids, uses = pool(lx, a.tier3b), corpus_uses()
         for t in a.terms:
             hits = search(t, lx, ids, uses, a.n)
-            print(json.dumps({"query": t, "results": len(hits)}, ensure_ascii=False))
-            for h in hits:
+            ims = idioms(t, a.tier3b)
+            print(json.dumps({"query": t, "results": len(hits), "idioms": len(ims)}, ensure_ascii=False))
+            for h in hits + ims:
                 print(json.dumps(h, ensure_ascii=False))
     return 0
 

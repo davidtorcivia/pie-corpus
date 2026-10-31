@@ -63,6 +63,25 @@ OVERRIDES = {
     ("decide", "verb"): "pie-lex-h2reh1dheti", ("council", "noun"): "pie-lex-dhh1tleh2",
     ("assembly", "noun"): "pie-lex-dhh1tleh2", ("wise", "adj"): "pie-lex-gjnh3ros", ("enemy", "noun"): "pie-lex-poykjos-2",
     ("foe", "noun"): "pie-lex-poykjos-2",
+    # round 3 2026-10-31 (docs/audits/lexicon-gaps-round3-2026-10-31.md)
+    ("booty", "noun"): "pie-lex-Hrowpos", ("spoils", "noun"): "pie-lex-Hrowpos", ("loot", "noun"): "pie-lex-Hrowpos",
+    ("plunder", "noun"): "pie-lex-Hrowpos", ("boast", "noun"): "pie-lex-h1eh1ughos", ("vow", "noun"): "pie-lex-h1eh1ughos",
+    ("threaten", "verb"): "pie-lex-tergweti", ("shield", "noun"): "pie-lex-skeytos", ("battle", "noun"): "pie-lex-keh3tus",
+    ("victory", "noun"): "pie-lex-segjhos-2", ("brave", "adj"): "pie-lex-dhrsus", ("bold", "adj"): "pie-lex-dhrsus",
+    ("pay", "verb"): "pie-lex-kwinewti", ("atone", "verb"): "pie-lex-kwinewti", ("repay", "verb"): "pie-lex-gheldheti",
+    ("punish", "verb"): "pie-lex-kweyeti", ("avenge", "verb"): "pie-lex-kweyeti", ("ransom", "noun"): "pie-lex-kwoyneh2",
+    ("revenge", "noun"): "pie-lex-kwoyneh2", ("vengeance", "noun"): "pie-lex-kwoyneh2",
+    ("weep", "verb"): "pie-lex-HrewdHti", ("wail", "verb"): "pie-lex-HrewdHti", ("lament", "verb"): "pie-lex-HrewdHti",
+    ("mourn", "verb"): "pie-lex-HrewdHti", ("summer", "noun"): "pie-lex-semeh2", ("obey", "verb"): "pie-lex-kjlowseyeti",
+    ("heed", "verb"): "pie-lex-kjlowseyeti", ("persuade", "verb"): "pie-lex-bhoydheyeti", ("kick", "verb"): "pie-lex-sprneHti",
+    ("spill", "verb"): "pie-lex-gjhewt-2", ("cow", "noun"): "pie-lex-gwoxws", ("cost", "verb"): "pie-lex-h2elgwheti",
+    ("deserve", "verb"): "pie-lex-h2elgwheti", ("value", "noun"): "pie-lex-h2elgwhos", ("price", "noun"): "pie-lex-h2elgwhos",
+    ("worth", "noun"): "pie-lex-h2elgwhos", ("debt", "noun"): "pie-lex-dhlghos", ("plague", "noun"): "pie-lex-moro",
+    ("pestilence", "noun"): "pie-lex-moro", ("murder", "noun"): "pie-lex-gwhonos-2", ("slayer", "noun"): "pie-lex-gwhentoxr",
+    ("killer", "noun"): "pie-lex-gwhentoxr", ("snatch", "verb"): "pie-lex-h1rh1pyeti", ("abandon", "verb"): "pie-lex-leykwt",
+    ("bride", "noun"): "pie-lex-snusos", ("spin", "verb"): "pie-lex-sneh1", ("loom", "noun"): "pie-lex-tentlom",
+    ("curse", "verb"): "pie-neo-curse", ("wealth", "noun"): "pie-lex-h3epnos", ("goods", "noun"): "pie-lex-h3epnos",
+    ("promise", "verb"): "pie-lex-h1wogwheyeti", ("heir", "noun"): "pie-lex-h3orbhos", ("autumn", "noun"): "pie-lex-sh1esox",
 }
 
 

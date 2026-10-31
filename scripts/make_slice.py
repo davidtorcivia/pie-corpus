@@ -91,7 +91,18 @@ TIER3B_INHERITED = ["pie-lex-mowdos", "pie-lex-sweh2dos", "pie-lex-newos", "pie-
                     "pie-lex-steygheti", "pie-lex-teryeti", "pie-lex-goleti", "pie-lex-kweh2se", "pie-lex-h3edeti",
                     "pie-lex-bhereti", "pie-lex-deykjeti", "pie-lex-th2keh1yeti", "pie-lex-h3eh3ode-2",
                     "pie-lex-kjekjomh2e", "pie-lex-kjeHst", "pie-lex-h1egos", "pie-lex-gwrHtos", "pie-lex-h2reh1dheti",
-                    "pie-lex-dhh1tleh2", "pie-lex-gjnh3ros", "pie-lex-poykjos-2"]
+                    "pie-lex-dhh1tleh2", "pie-lex-gjnh3ros", "pie-lex-poykjos-2",
+                    # 2026-10-31 round 3 (docs/audits/lexicon-gaps-round3-2026-10-31.md; evidence in overrides.jsonl):
+                    # war and exchange, conversation (t044-t070 planners), the horrors wave, kinship
+                    "pie-lex-Hrowpos", "pie-lex-h1eh1ughos", "pie-lex-tergweti", "pie-lex-skeytos", "pie-lex-keh3tus",
+                    "pie-lex-segjhos-2", "pie-lex-dhrsus", "pie-lex-kwinewti", "pie-lex-kweyeti", "pie-lex-kwoyneh2",
+                    "pie-lex-gheldheti", "pie-lex-HrewdHti", "pie-lex-wetsos", "pie-lex-semeh2", "pie-lex-solh2wos",
+                    "pie-lex-woykjos-2", "pie-lex-kjlowseyeti", "pie-lex-bhoydheyeti", "pie-lex-sprneHti",
+                    "pie-lex-gjhewt-2", "pie-lex-h2elgwheti", "pie-lex-h2elgwhos", "pie-lex-dhlghos", "pie-lex-kaptos",
+                    "pie-lex-moro", "pie-lex-nekjus", "pie-lex-gwhonos-2", "pie-lex-gwhentoxr", "pie-lex-h1rh1pyeti",
+                    "pie-lex-leykwt", "pie-lex-h1yenh2texr", "pie-lex-gjlh2oxws", "pie-lex-swekjruh2", "pie-lex-snusos",
+                    "pie-lex-sneh1", "pie-lex-tentlom",
+                    "pie-lex-h3epnos", "pie-lex-h1wogwheyeti", "pie-lex-h3orbhos", "pie-lex-sh1esox"]
 ADVERB_POS = ("adv", "prep", "postp")
 NIL_ADMIT = {"pie-lex-bhagos", "pie-lex-bhngjhulos", "pie-lex-bhrtos", "pie-lex-gwowsth2os", "pie-lex-kjh3tos",
              "pie-lex-medtos", "pie-lex-priHtos", "pie-lex-h2rgjipyos", "pie-lex-kjolHtos", "pie-lex-rotos",
