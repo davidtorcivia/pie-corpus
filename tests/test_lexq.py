@@ -14,6 +14,7 @@ def test_finds_words_planners_wrote_around():
     ids, uses = lexq.pool(lx, False), lexq.corpus_uses()
     first = lambda t: lexq.search(t, lx, ids, uses, 3)[0]["lex_id"]
     assert first("wolf") == "pie-lex-wlkwos"
+    assert first("one") == "pie-lex-h1oynos"             # t059: 'one who begets/cooks/knows' outranked the numeral
     assert first("story") == "pie-proj-spelom"            # a project reconstruction, flagged coined: project
     assert first("fear") in {"pie-lex-bhebhoyh2e", "pie-lex-treseti", "pie-lex-tromeyeti", "pie-lex-prkskjeti"}
     with_ = [h["lex_id"] for h in lexq.search("with", lx, ids, uses, 3)]

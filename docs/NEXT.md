@@ -18,7 +18,9 @@
 - **Vocabulary round 3 (war and exchange, t040):** booty, raid, boast, threaten, weapon, sword, shield, battle,
   victory, brave, ransom, pay, weep, calf, herald; summer (sm̥h₂erós has no accent); bird/fly/iron (t3b-007).
 - **Vocabulary round 4 (conversation gaps, t044 planner):** every/all (*sólh₂wos), until, before (*pr̥h₂í, *pr̥Hwós),
-  because, neighbour, bread, tomorrow; a thanks/please formula beyond praise of the giver.
+  because, neighbour, bread, tomorrow; a thanks/please formula beyond praise of the giver; from t050/t056/t059:
+  but, only, ago and spans of time ("for three days"), yes/no, morning, count, open, cloak, summer, calf, kick,
+  spill; verbs agree, refuse, persuade, obey, answer, avenge, pay; a feminine "cow" (gʷṓws is masculine only).
 - gʷṓws: oblique plurals must be o-grade gʷów- (Ved. góbhis, gávām; Gk βουσί); the drills now teach gʷéwbʰos.
 
 ## Morning first

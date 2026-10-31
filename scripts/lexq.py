@@ -72,7 +72,8 @@ def search(term: str, lx, ids: list[str], uses, n: int) -> list[dict]:
                      if x == t or (t not in FUNCTION_WORDS and x.split(" ")[0] == t)), None)
         if rank is None and (t in FUNCTION_WORDS or not (tw and tw <= words(gl))):
             continue
-        score = (0 if rank is not None else 10) + (rank or 0) - min(uses[i], 400) / 100 - ms.attested_in(lx, i) / 20
+        exact = rank is not None and senses[rank] == t       # 'one' itself before 'one who begets'
+        score = (0 if rank is not None else 10) + (rank or 0) - 5 * exact - min(uses[i], 400) / 100 - ms.attested_in(lx, i) / 20
         scored.append((score, i))
     scored.sort()
     out = [ms.slice_item(lx, i) | {"corpus_uses": uses[i]} for _, i in scored[:n]]
