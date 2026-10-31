@@ -1,18 +1,18 @@
 {
  "provenance": {
-  "commit": "0bb41223c5bcee6b69285b6833f8aa345aac1968",
+  "commit": "457208d6fa3c8d227480cc545b352b2d2047308f",
   "inputs_dirty": true,
   "include_pilot": false,
   "experimental_batches": false
  },
  "examples": {
-  "train": 17182,
+  "train": 21256,
   "eval": 170
  },
  "modes": {
   "train": {
-   "en_pie": 8591,
-   "pie_en": 8591
+   "en_pie": 10628,
+   "pie_en": 10628
   },
   "eval": {
    "en_pie": 85,
@@ -21,10 +21,10 @@
  },
  "units": {
   "train": {
-   "en_pie:paragraph": 4176,
-   "en_pie:sentence": 4415,
-   "pie_en:paragraph": 4176,
-   "pie_en:sentence": 4415
+   "en_pie:paragraph": 5382,
+   "en_pie:sentence": 5246,
+   "pie_en:paragraph": 5382,
+   "pie_en:sentence": 5246
   },
   "eval": {
    "en_pie:paragraph": 7,
@@ -34,7 +34,7 @@
   }
  },
  "gloss_reference": {
-  "train": 17182,
+  "train": 21256,
   "eval": 84
  },
  "neologism_examples": {
@@ -43,12 +43,12 @@
  },
  "items": {
   "train": {
-   "en_pie:paragraph": 4176,
-   "en_pie:sentence": 4415,
-   "pie_en:paragraph": 4176,
-   "pie_en:sentence": 4415,
+   "en_pie:paragraph": 5382,
+   "en_pie:sentence": 5246,
+   "pie_en:paragraph": 5382,
+   "pie_en:sentence": 5246,
    "unaligned_long:count_mismatch": 254,
-   "unaligned_long:plan_english_mismatch": 18,
+   "unaligned_long:plan_english_mismatch": 19,
    "unaligned_long:question_mismatch": 5
   },
   "eval": {
@@ -61,28 +61,28 @@
  },
  "self_overlap": {
   "all_kinds_sentences": {
-   "items": 13390,
-   "max": 14,
-   "mean": 1.0458,
+   "items": 16815,
+   "max": 15,
+   "mean": 1.0486,
    "histogram": {
-    "1": 13034,
-    "2": 237,
-    "3": 64,
-    "4+": 55
+    "1": 16343,
+    "2": 322,
+    "3": 78,
+    "4+": 72
    },
-   "over_3": 55
+   "over_3": 72
   },
   "all_kinds_ngram4": {
-   "items": 33182,
-   "max": 11,
-   "mean": 1.0073,
+   "items": 41471,
+   "max": 16,
+   "mean": 1.0072,
    "histogram": {
-    "1": 32984,
-    "2": 175,
-    "3": 16,
-    "4+": 7
+    "1": 41229,
+    "2": 213,
+    "3": 21,
+    "4+": 8
    },
-   "over_3": 7
+   "over_3": 8
   }
  },
  "leakage": {
