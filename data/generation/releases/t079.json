@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t079",
+ "sha256": {
+  "records": "9adda5cf773b1ba7854dbd187adc7f355b70938e7ee2bbf4ce9dc3678ecec01d",
+  "plans": "f1a9e453cb291854a3f348ff90459dce3c0118919cd20603d52a7ac6ce1fec8e",
+  "gate_report": "f2a6002c721c60dcf1dcaa1b69d549062c004b23f13ade4d619419c1d2ac1eda"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t079-review.md",
+   "docs/audits/packets/t079-verdicts.jsonl",
+   "data/generation/batches/t079.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t079-review.md): plants 4/5, Tier 1 0/3 wrong; packet real 1/20 wrong (masculine 'dear' for a bride) -> 0, minor 2 -> 0; all 40: chariot team (post-PIE) -> cart, feminine 'all', 17 merged sentences split, gender and question-verb echo; gate PASS 40/40."
+ }
+}
