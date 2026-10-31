@@ -183,3 +183,19 @@ def test_record_tasks_carry_realized_number_fallback(num, flag):
     assert token_variants(record, lx) == [lx.admissible_cells("pie-lex-bhereti")["MID.PRS.3PL"]]
     tokens[0].pop("num_fallback", None)
     assert all("num_fallback" not in t for t in record_tasks(record))
+
+
+def test_inflection_cells_do_not_shift_when_the_lexicon_changes():
+    """Each lexeme's random cells come from its own rng: dropping one lexeme leaves every other lexeme's
+    tasks as they were (a shared sequence reshuffled them all)."""
+    import random
+    from pie.export import inflection_tasks
+    lx = _lx()
+    before = inflection_tasks(lx, random.Random(0))
+    first = before[0]["source_id"]
+    spec = lx.specs.pop(first)
+    try:
+        after = inflection_tasks(lx, random.Random(0))
+    finally:
+        lx.specs[first] = spec
+    assert after == [t for t in before if t["source_id"] != first]

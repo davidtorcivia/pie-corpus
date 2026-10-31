@@ -249,7 +249,12 @@ def inflection_tasks(lx: Lexicon, rng: random.Random, per_lexeme: int = 3) -> li
     An ablauting lexeme (its spec has a weak stem) also gets, beyond the per_lexeme random cells, its key cell
     (_key_cell) and one cell built on the weak stem, when the random ones lack them: models trained on the
     random cells alone declined n-stems as thematic nouns (docs/research/training-runs.md, 2026-10-30). The
-    extras come from a per-lexeme rng, so the random cells (and every older task) are unchanged."""
+    extras come from a per-lexeme rng, so the random cells (and every older task) are unchanged.
+
+    The random cells come from a per-lexeme rng too, seeded by one draw from `rng`: with one shared sequence,
+    any lexicon change (a lexeme admitted, a cell added) reshuffled the cells of every later lexeme, and 41 of
+    the 48 inflect prompts frozen in training/gen_prompts_v1.jsonl had left the eval export by 2026-10-31."""
+    base = rng.getrandbits(64)
     out = []
     for lid, r in lx.specs.items():
         if not r.get("usable") or not lx.entries[lid]["meaning"] or lx.inadmissible(lid):
@@ -260,7 +265,7 @@ def inflection_tasks(lx: Lexicon, rng: random.Random, per_lexeme: int = 3) -> li
             cells = lx.admissible_cells(lid)
         feats = sorted(cells)
         tag_gender = {v: k for k, v in GENDER_TAG.items()}
-        picked = rng.sample(feats, min(per_lexeme, len(feats)))
+        picked = random.Random(f"inflect|{base}|{lid}").sample(feats, min(per_lexeme, len(feats)))
         sp = r["spec"]
         weak = sp.get("weak") or sp.get("m_weak")
         if weak:
