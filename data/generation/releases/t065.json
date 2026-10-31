@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t065",
+ "sha256": {
+  "records": "32860c5c4be8103acbf9fc84eae69aa0cba557c2efa5285b651c03282aed5a85",
+  "plans": "b8bbd702c4faf0667a8a6bd7e81dcaf55ae08cd8903b3a79f48a45e707c036bc",
+  "gate_report": "1bace49bd71c6147fbaedc35600ef5a69710f2269f6a3edf095fac41edcb291d"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t065-review.md",
+   "docs/audits/packets/t065-verdicts.jsonl",
+   "data/generation/batches/t065.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t065-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, 1 minor fixed (3 withdrawn on full glosses); all 40: 1 wrong fixed (an untranslated clause the next turn answered), 4 minor fixed; nothing modern, no money; gate PASS 40/40."
+ }
+}
