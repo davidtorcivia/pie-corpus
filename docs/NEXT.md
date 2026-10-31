@@ -60,6 +60,56 @@
 - A predicate adjective with no subject or vocative in its clause ('you are dear to him') defaults to masculine; check_plan could warn (t053). h₂énkuleh₂ 'belt' gloss to check (t053).
 - Numeral 'two' has no feminine oblique dual forms (t045: 4 rejects).
 - gʷṓws: oblique plurals must be o-grade gʷów- (Ved. góbhis, gávām; Gk βουσί); the drills now teach gʷéwbʰos.
+- **Vocabulary round 6 (waves 5–6 planners, t095–t109, 2026-11-01).** By theme:
+  - **Law (t098):** witness, judge, surety, guilt, accuse, forgive, false; a noun for law; ordinals ('second').
+    t102's lexq found 'judge' and 'oath', which t098 missed, so lexq ranking needs a check.
+  - **Healing (t095):** wound, charm, health, healer, sickness, fever, medicine, sprain.
+  - **Fields and food (t097, t108):** sickle, sheaf, thresh, winnow, chaff, bake, bread (Tier 3), cheese, granary,
+    bee, stir, spoon/bowl/ladle, salt (verb); hope, enough, last/remaining.
+  - **House and crafts (t099, t106):** beam, axe, clay, thatch, ladder, camp; potter, tan, hammer, mend, crack,
+    leather, shoe, needle.
+  - **Herding (t096):** count/reckon (also t109), graze, calve, quarrel (noun), shout, bark, mud.
+  - **Numbers (t096, t109):** numerals 11–99.
+  - **Death (t100):** ash, grave/mound; paternal grandfather/uncle (h₂éwh₂os is maternal only).
+  - **River (t101):** shore/bank, flood, weir, oar, reed, island, drown.
+  - **War-band and contests (t102, t104):** shame, coward, sword, arm-ring, hall; wrestle, game, cheat, mock,
+    winner/loser, wager.
+  - **Horses (t103):** mare (h₁éḱwah₂: Skt áśvā, Lat. equa, Lith. ašvà), race, reins, journey, golden.
+  - **Song (t105):** poet/singer, verse, blame, stingy, exactly, loud. The song theme hit both caps at 7 and 22, so it
+    needs more synonyms or a theme exemption.
+  - **Servants (t107):** cruel/kind, beat, nurse, sick.
+  - **Sky and time (t109):** full moon, every/each (the t109 planner thought sólh₂wos was noun-only: check what the
+    brief and lexq say).
+  - **Grammar words:** until, behind, left; manner adverbs (slowly, well); must/can and complement clauses; adverbial
+    comparatives ('ran faster').
+  - **Soon:** moḱs has no accent (t099, t100).
+  - **Lexicon fixes:**
+    - lexq offers ids the engine rejects: sleh2gwt (no usable spec), gjhlh2dhros (unknown id).
+    - tl̥h₂tóm 'bridge' rests on one branch (Skt tīrthá usually comes from *terh₂-): mark or regloss it.
+    - woǵʰéyeti keeps being used for plain 'bring': add a slice note "causative only".
+    - The in-world brief bars gʷr̥Htós for 'welcome', but idioms.json offers it: reconcile.
+- **Engine, from the wave 5–6 reviews** (report-only items; none broke an approved batch):
+  - **Formula counter:** credits co-occurring words ('Mother' + 'earth', 'Father Sky' in passing) and misses built
+    formulas (t097, t098, t100, t104, t106, t109).
+  - **Enclitics:**
+    - -kʷe attaches to question words (t098).
+    - Duplicate same-person enclitics are merged silently (t102, t104; the item above).
+  - **Pronoun check:** it matches only gender and number, so a 'him' with no man in context gets no WARN (t100).
+  - **WARN noise:** exempt impersonal weather verbs next to a VOC, and cataphoric ḱód/tód (9 of t101's 12 WARNs).
+  - **Forms to check:**
+    - water INS wédn̥h₁ (t095);
+    - AOR.1SG ḱlḗm (t064, t095);
+    - middle 2sg -th₂e (t108; the item above);
+    - bʰólǵʰis listed first as the ABL (t108);
+    - bʰṓr obliques (t098);
+    - 'three' GEN.PL tr̥yóHom against the handbooks' *tri-óHom (t109);
+    - the feminine of 'two' differs between two tables (t102);
+    - 'throw' forms are homophones of 'be'/'show' (t104);
+    - closed-class h₁éy is given as the masculine 'it' (t106).
+  - **Tier 3 checks:** realize_plans checks neither speakers nor per-sentence English (the planners used scratch
+    checks).
+- **Conversation share after waves 5–6:** train_mix is 18.8% conversation (7,082 of 37,730; export b2c28bc).
+  About 460 examples short of 20%, roughly 3–4 more batches.
 
 ## Morning first
 1. **Rate the TTS finals** on the finals rating page, https://claude.ai/artifact/23p85eZLQR3nawtMgUxZAf. Candidates: Kokoro + profile (bf_isabella, af_nicole, em_santa) and eSpeak → Seed-VC F0 (em_santa, em_alex, bf_isabella, af_nicole), with eSpeak as reference. Then set the winner as the `pie.speak` default and redeploy erebus `pie-tts` if Kokoro wins.
