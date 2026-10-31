@@ -44,6 +44,10 @@ lexicon gloss gives the causative alone ("cause to bring, transport": woǵʰéye
 sense the daughters keep (sokʷéyeti 'say', Germanic *sagjaną; wodʰéyeti 'lead', OCS voditi; wolh₁éyeti 'choose'),
 and then they are correct: the gloss decides, not the shape.
 
+**Short turns hide plants.** Plants missed in t073 and t087 sat in short question-and-answer turns: a 1sg verb where
+"are the wolves hungry?" needs the 3pl, a 2sg for "I weep", a dual where "good things" needs the plural, a dative
+for an accusative. Check every word's person, number and case against its own sentence, however short.
+
 **Glosses.** A record's gloss line shows each word's first sense only (h₂ew "away from" where the English says
 "again"). Before calling a sense wrong, read the full gloss (`Lexicon.load().meaning(lex_id)` or `scripts/lexq.py`);
 three t065 minors were withdrawn this way.
