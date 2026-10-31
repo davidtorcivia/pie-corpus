@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t103",
+ "sha256": {
+  "records": "52b0b33339af9d4b3f5a0d8f0aec6b18038130aa7febdc10b0825b4fab36fafd",
+  "plans": "3ddbd0bbb89327ade0eb06ed32f905b39ab345cc93b50a35cfc26b07b5b7c6fc",
+  "gate_report": "13045a41e3d84d9a8e29ab5288b65355bfc560fe044d7414b78c02aaf5e71865"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t103-review.md",
+   "docs/audits/packets/t103-verdicts.jsonl",
+   "data/generation/batches/t103.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t103-review.md): plants 4/5 (meets the 4/5 bar), real wrong 0/20, minor 2 → 1 (spélom noted only); second pass 1 meaning error (reflexive 'own village') and one verb number fixed at source; mares consistently feminine; project reconstructions allowed per planner-brief-v4; gate PASS 40/40."
+ }
+}
