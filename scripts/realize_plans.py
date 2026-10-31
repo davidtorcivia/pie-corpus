@@ -28,7 +28,8 @@ from pie.neologism import coined_sentences, index_neologisms, split_english_only
 from pie.validate import all_exact, index_plan_compounds, index_plan_degrees, index_project, load_index, validate_text
 
 ROOT = Path(__file__).resolve().parent.parent
-CAP_EXEMPT = {"pie-lex-h1esti"}          # "to be"
+CAP_EXEMPT = {"pie-lex-h1esti",            # "to be"
+              "pie-lex-swos"}             # the reflexive possessive "own" is grammar (t085: the cap blocked correct reflexives)
 # capped like a theme-core lexeme (max(15, 1.5% of tokens)), not at the per-lexeme cap: 'give' carries the hymns'
 # closing request ("give us …") and the guest-gift talk; since 2026-10-30 it is the only give-aorist (déh₃ut is
 # blocked and its uses moved to déh₃t), so batches written with both would otherwise fail on the sum

@@ -467,6 +467,19 @@ def test_question_flag_on_a_sentences_first_clause():
     assert pie.count("?") == 1 and pie.endswith(".") and pie.index("?") < len(pie) - 1
 
 
+def test_pred_adjective_with_dropped_subject_warns():
+    """t053/t079 reviews: 'you are dear to me' to a daughter came out masculine: no subject, no gender on the
+    PRED. plan_warnings says so; a gender on the PRED silences it and is used."""
+    from pie.realize import Lexicon, plan_warnings
+    lx = Lexicon.load()
+    p = lambda g: {"english": "You are dear.", "clauses": [{"slots": [
+        {"lex_id": "pie-lex-kjeywos", "role": "PRED", **({"gender": g} if g else {})},
+        {"lex_id": "pie-lex-h1esti", "role": "V", "verb": {"person": 2}}]}]}
+    assert any("dropped subject" in w for w in plan_warnings(p(None), lx))
+    assert not any("dropped subject" in w for w in plan_warnings(p("f"), lx))
+    assert "ḱéyweh₂" in produce(p("f"), lx)["pie"]
+
+
 def test_s_stem_neuter_plural():
     """t019 review: s-stem neuter nom. pl. in *-es-h₂ (Gk γένεα, Ved. -āṃsi), collective -ōs as alternative."""
     from pie.realize import Lexicon

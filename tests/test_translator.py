@@ -79,7 +79,9 @@ def test_round3_words_reach_the_translator(transfer):
     """docs/audits/lexicon-gaps-round3-2026-10-31.md: war, exchange and kinship words, with the new specs."""
     assert transfer.translate("The brave man repays the debt.").pie == "dʰr̥sús wiHrós dʰl̥gʰóm gʰéldʰeti."
     assert transfer.translate("The bride weeps.").pie == "snusós HréwdHti."
-    assert transfer.translate("The plague kills the people.").pie == "móros h₁léwdʰins moréyeti."
+    # 'kill' is moréyeti or gʷʰénti 'slay': corpus use decides (the horror wave, t085-t088, slays often)
+    assert transfer.translate("The plague kills the people.").pie in ("móros h₁léwdʰins moréyeti.",
+                                                                       "móros h₁léwdʰins gʷʰénti.")
 
 
 def test_transfer_reports_what_it_cannot_say(transfer):

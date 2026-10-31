@@ -1173,6 +1173,27 @@ def plan_warnings(plan: dict, lx: Lexicon | None = None) -> list[str]:
                 out.append(f"clause {ci} slot {si}: {s['lex_id'].split(':')[1]} {s.get('role')} {g} {n} matches no "
                            f"referent of that gender and number in this clause or the two before: check its antecedent")
         out += _default_warnings(ci, cl, clauses[ci - 1] if ci else None, lx)
+        out += _pred_gender_warnings(ci, cl, lx)
+    return out
+
+
+def _pred_gender_warnings(ci: int, cl: dict, lx: Lexicon) -> list[str]:
+    """A predicate adjective whose subject is dropped and that has no `gender` of its own comes out masculine,
+    which is wrong when a woman or a neuter thing is meant ('you are dear to me' to a daughter: t053, t079
+    reviews). Warns, so the planner sets gender on the PRED (used with pro-drop: _check_pred_gender)."""
+    out = []
+    for si, s in enumerate(cl.get("slots", [])):
+        if s.get("role") != "PRED" or s.get("gender") or s.get("lex_id", "").startswith("closed:"):
+            continue
+        try:
+            if _family(s, lx) != "adj":
+                continue
+            a, kind = clause_controller(cl, lx)
+        except Exception:
+            continue
+        if kind == "verb" or not a.gender:
+            out.append(f"clause {ci} slot {si}: predicate adjective with a dropped subject and no gender: it comes out "
+                       f"masculine; set \"gender\": \"f\" (or \"n\") on the PRED if the referent is a woman or a thing")
     return out
 
 

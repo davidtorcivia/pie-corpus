@@ -34,7 +34,11 @@
   spill; verbs agree, refuse, persuade, obey, answer, avenge, pay; a feminine "cow" (gʷṓws is masculine only).
 - The adposition pie-lex-me ('among, with') has the surface form of the enclitic 1sg ACC, so realize moves it to
   second position (ENCLITIC_PRONOUNS matches forms); no released record has it (t056 used médʰi). Match by id.
-- An apposition's own `num` is silently replaced by its head's (t056).
+- **Recurring (fix first):** an apposition's own `num` is silently replaced by its head's (t056, t076 "a hundred
+  cow", t085, t086); a short answer ("Ten horses and a hundred sheep.") defaults to the nominative where the
+  question's object needs the accusative (t086); no middle 3du (t062, t073, t085: falls back to plural).
+- An enclitic can land inside a two-word address (ǵń̥h₃re moy h₂nér, t087); h₁égʷʰis vs h₁égʷʰeys as the first
+  GEN.SG (t073); 'a hundred cows' takes the ACC where a GEN.PL of the counted is expected (t085).
 - sríHgos 'cold' NOM with plain g but palatal sríHǵ- elsewhere (t062).
 - 1sg root aorist of -ew-/-ey- roots contracts by Stang's law (ḱlḗm for *ḱléwm̥?); the feminine of 'old' has mixed ablaut; póntoh₁s vs *pónteh₂s (t070).
 - A predicate adjective with no subject or vocative in its clause ('you are dear to him') defaults to masculine; check_plan could warn (t053). h₂énkuleh₂ 'belt' gloss to check (t053).
