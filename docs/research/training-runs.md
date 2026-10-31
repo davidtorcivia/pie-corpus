@@ -61,6 +61,8 @@ closes. Stop training: `powershell -File Q:\AI\PIE\train\stop.ps1`.
 4. **Liger fused linear cross-entropy**: never materializes the 152 k-vocab logits (9.3 GB at batch 8).
 5. **Detached runs on Windows** need Task Scheduler, not Start-Process over SSH.
 6. **Batched, left-padded generation** for the per-epoch samples: one prompt at a time took ~30 min per epoch.
+7. A 30-step smoke test (eval loss 3.13 → 1.53, chrF 19, 22% recognized words) before any long run caught the slow
+   generation; short PIE replies were already sensible, longer outputs looped.
 8. **Base models need a format whose stop token they already know.** Under LoRA the embeddings stay frozen, and a
    base model's `<|im_start|>`/`<|im_end|>` embeddings were never trained: Qwen3-4B-Base under ChatML never emitted
    `<|im_end|>`, ran past every answer into junk and invented new user turns (inflection exact match 0%). Fix: the
@@ -68,8 +70,6 @@ closes. Stop training: `powershell -File Q:\AI\PIE\train\stop.ps1`.
    LM-head rows for those tokens.)
 9. **Two epochs.** Eval loss bottoms at epoch 2 on both Qwen runs and rises at 3 while train loss keeps falling
    (instruct 0.28): ~1.1 M trained tokens per epoch is memorized fast, and the drills restate the same forms.
-7. A 30-step smoke test (eval loss 3.13 → 1.53, chrF 19, 22% recognized words) before any long run caught the slow
-   generation; short PIE replies were already sensible, longer outputs looped.
 
 ## Queue 1 (2026-10-30): base vs instruct vs pre-modern
 
