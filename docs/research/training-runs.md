@@ -286,3 +286,24 @@ scores rise through epoch 5, as in queue 4.
   the next corpus target (whole-paradigm and key-cell drills for ablauting lexemes) and the reason for a v2 frozen
   set with a larger ablauting sample.
 - **Dialogue chrF rises a little (23 → 25)** but stays a weak measure (see queue 4).
+
+## The paradigm score was capped by the generation length (found 2026-10-31)
+
+train_lora.py and gen_eval.py generate at most 160 new tokens (`--max-new`). Every noun and adjective paradigm
+answer in gen_prompts_v1.jsonl is longer than that (28 of 40; median 191 Qwen tokens, max 308), so the model is cut
+off mid-table and the cells it never reached count as wrong. In queue 5 e5, 155 of the 627 reference cells
+(25%) were never generated; on the cells it did generate it was right 74.6% (352/472), against the reported 59%.
+The paradigm scores of queues 1–5 are therefore lower bounds, and the ablauting/non-ablauting paradigm gap is
+not caused by the cap (non-ablauting prompts are cut more often: 20/27 vs 8/13). Inflect, translation and dialogue
+answers fit in 160. From queue 6 the cap is 384, and the queue 5 e5 and queue 4 e3 adapters are re-scored at 384.
+
+## Queue 6 (2026-10-31): the ablaut drills
+
+Export e2b6d78 (built from bfd84ed, clean): every ablauting lexeme gets one more weak-stem and one strong-stem
+inflect cell; an ablauting verb up to two more indicative paradigms (PRS, AOR, PRF, PST, MID.PRS), an ablauting
+adjective its other two genders; every existing drill unchanged. With the round-6 lexicon (moḱs → móḱs). Mix:
+42,751 examples, 7.8 M tokens: conversation 7,082 (16.6%, availability-capped), translation 22,293 (52.2%),
+grammar 13,376 (31.3%). Run `qwen4b-instruct-r16-lr2e-4-export1102-5ep` (training/queue6.ps1): the queue 5 recipe,
+5 epochs, cap 384. Scored on gen_prompts_v1 and on the new training/gen_prompts_drills_v2.jsonl (all 371 eval-split
+drills: 158 inflect and 41 paradigm prompts of ablauting lexemes, against 18 and 13 in v1), with the queue 5 e5 and
+queue 4 e3 adapters re-scored on both at 384.
