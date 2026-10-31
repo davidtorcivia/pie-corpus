@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t109",
+ "sha256": {
+  "records": "5bedc5f0da8729cd9230fabb2aa3652606d1065902c5b0375de19ecbce6d4ebd",
+  "plans": "dcb0c5c889283476407f611e49727f7b18dce7c46f9684e5978dfca65689b4b5",
+  "gate_report": "b64a5ab96faf120775e31fd90e55cc6cd852a58e78951163cfbb666d60582287"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t109-review.md",
+   "docs/audits/packets/t109-verdicts.jsonl",
+   "data/generation/batches/t109.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t109-review.md): plants 5/5, real wrong 2 → 0 (2PL to one friend, English line with no PIE), minors withdrawn (aorist-only verbs), Tier 1 0/3; second pass 2 minor fixed at source ('evening' stretched to 'west' dropped, answer repeats the verb); numerals, counting, solh₂wós and sky words clean; gate PASS 40/40."
+ }
+}
