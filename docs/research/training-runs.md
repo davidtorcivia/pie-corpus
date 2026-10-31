@@ -190,6 +190,10 @@ examples, 5.9 M Qwen tokens: conversation 4,524 (13.8%), translation 17,685 (53.
 `qwen4b-instruct-r16-lr2e-4-export1031`: Qwen3-4B-Instruct, LoRA r16/α32, lr 2e-4, 2 epochs, generations on the
 frozen `gen_prompts_v1.jsonl`, compared with baseline_v1 (above). Note: the eval loss is on the new eval split
 (it grew with the stem-class drills), so it is not comparable with queue 1–2's; the frozen prompts are.
+Provenance: the run trained on `train_mix_1031.jsonl` (88d96ad; 422 steps/epoch), but its config.json says
+`export_provenance.commit` b7f351e, because train_lora.py read the one shared `provenance.json` in Q:\AI\PIE\data
+(queue 1–2's export, e30f146 built from b7f351e plus t041). Fixed afterwards: train_lora.py prefers
+`<train stem>.provenance.json` and records `train_sha256`.
 
 The corpus process, for the write-up: each batch is written by a planner agent as plans (never PIE), realized by
 the engine, gated (reject rate, exact forms, lexeme caps, meter), then reviewed blind by a calibrated reviewer agent

@@ -15,6 +15,7 @@ What it does (docs/research/training-runs.md has the reasoning and the results):
   and the adapter saved (adapter-eN/).
 """
 import argparse
+import hashlib
 import json
 import math
 import os
@@ -178,9 +179,13 @@ def main():
     cfg = {**vars(a), "rows": len(X), "row_tokens": len(X) * a.seq, "trained_tokens_per_epoch": trained_tokens,
            "eval_rows": len(Xe), "steps_per_epoch": steps_per_epoch, "total_steps": total, "gen_prompts": len(gens),
            "started": time.strftime("%Y-%m-%d %H:%M:%S")}
-    prov = Path(a.train).with_name("provenance.json")
-    if prov.exists():
-        cfg["export_provenance"] = json.loads(prov.read_text("utf-8"))
+    # the export this file came from: <stem>.provenance.json beside it (one shared provenance.json named the wrong
+    # export for train_mix_1031.jsonl), and the file's own hash, which identifies the data whatever the label says
+    cfg["train_sha256"] = hashlib.sha256(Path(a.train).read_bytes()).hexdigest()
+    for prov in (Path(a.train).with_name(Path(a.train).stem + ".provenance.json"), Path(a.train).with_name("provenance.json")):
+        if prov.exists():
+            cfg["export_provenance"] = {**json.loads(prov.read_text("utf-8")), "file": prov.name}
+            break
     (run / "config.json").write_text(json.dumps(cfg, indent=1), "utf-8")
 
     q = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4", bnb_4bit_compute_dtype=torch.bfloat16,
