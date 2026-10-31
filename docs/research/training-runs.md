@@ -222,3 +222,37 @@ keep epoch 2).
   training lexeme did not teach that. Next: paradigm drills (whole declensions) for more ablauting lexemes, and a
   larger ablauting sample in the frozen prompts (18 inflection prompts is too few to move).
 - **Translation into PIE (app form) +5.6 chrF**; dialogue flat (22.6 vs 23.0): conversation is still 13.8% of the mix.
+
+## Queue 4 (2026-11-01): the recipe on the export with waves 4–6
+
+Export b2c28bc (built from 22501a8, clean): waves 4–6 added 21 in-world dialogue batches (t089–t109, 840 texts,
+each through a calibrated review), and inflect cells are per-lexeme seeded (0e4efd1). Mix: 37,730 examples, 7.1 M
+Qwen tokens: conversation 7,082 (18.8%), translation 19,155 (50.8%), grammar 11,493 (30.5%). Run
+`qwen4b-instruct-r16-lr2e-4-export1101`: the recipe (Qwen3-4B-Instruct, LoRA r16/α32, lr 2e-4), **one 3-epoch run**
+with adapters and frozen-prompt generations after every epoch, so e2 is directly comparable with the baseline
+(queue 1's 3-epoch run at e2). config.json records `train_sha256` (b5c62a95…, matches the export) and the export's
+own provenance file.
+
+**Result** (112 min; frozen prompts, same scorer):
+
+| | chrF | recognized | inflect exact | paradigm cells | dialogue chrF | EN→PIE (task / app) | inflect abl / non | paradigm abl / non |
+|---|---|---|---|---|---|---|---|---|
+| baseline (export 10-30, e2) | 45.2 | 74% | 35% | 30% | 23.0 | 37.4 / 44.6 | 33% / 37% | 26% / 32% |
+| queue 3 (export 10-31, e2) | 47.0 | 76% | 44% | 39% | 22.6 | 35.8 / 50.2 | 28% / 53% | 25% / 46% |
+| export 11-01, e1 | 47.2 | 74% | 42% | 30% | 22.8 | 32.6 / 45.1 | 11% / 60% | 22% / 34% |
+| export 11-01, e2 | 49.6 | 78% | 56% | 49% | 23.6 | 36.5 / 47.8 | 39% / 67% | 26% / 61% |
+| **export 11-01, e3** | **51.0** | **79%** | **62%** | **52%** | 23.4 | **38.8 / 52.1** | 33% / **80%** | **32% / 62%** |
+
+Eval loss 3.09 → 1.15 → 1.19 → 1.27: lowest at epoch 1 again, while every generation score keeps rising to epoch 3.
+The eval loss is not a stopping signal for this task; the frozen prompts are.
+
+- **Best run so far: e3**, +5.8 chrF over the baseline and +4.0 over queue 3. Inflection exact 35% → 62%, paradigm
+  cells 30% → 52%.
+- **The larger set wants the third epoch.** e2 → e3 still gains on chrF, inflection, paradigms and EN→PIE.
+  Next: try 4 epochs, or 3 at a slightly lower peak LR.
+- **Regular classes are near solved for inflection** (80% non-ablauting). The ablauting gap stays: 33–39% inflection
+  and 26–32% paradigm cells, on 18 and 13 prompts. The earlier next step still holds: whole-paradigm drills for more
+  ablauting lexemes and a larger ablauting sample in a v2 frozen set.
+- **Dialogue chrF stays flat (≈23)** although conversation examples went from 2,663 to 7,082. A single-reference
+  chrF on a free reply is a weak measure of conversation. The dialogue prompts need a different score: grammaticality
+  of the reply (engine parse / recognized rate, already 86–90%), answer relevance, and a human-free judge rubric.
