@@ -199,3 +199,22 @@ the records' hashes. Wave 3: 18 batches, 2 second reviews; errors found per batc
 (gender of pronouns and predicate adjectives), number (dual/plural) and verb sense (causatives); engine gaps found
 by reviewers were fixed at the source (question marks of multi-clause questions, 'two' in an oblique case,
 predicate-adjective gender warning, the reflexive exempt from the lexeme cap).
+
+**Result** (62 min; frozen prompts, same scorer; baseline = queue 1's recipe run, epoch 2):
+
+| | chrF | recognized | inflect exact | paradigm cells | dialogue chrF | EN→PIE (task / app) | inflect abl / non | paradigm abl / non |
+|---|---|---|---|---|---|---|---|---|
+| baseline (export 10-30) | 45.2 | 74% | 35% | 30% | 23.0 | 37.4 / 44.6 | 33% / 37% | 26% / 32% |
+| export 10-31, e1 | 44.6 | 70% | 33% | 28% | 22.0 | 33.7 / 45.1 | 17% / 43% | 23% / 31% |
+| **export 10-31, e2** | **47.0** | **76%** | **44%** | **39%** | 22.6 | 35.8 / **50.2** | 28% / **53%** | 25% / **46%** |
+
+Eval loss 3.16 → 1.14 → 1.20 (new eval split; lowest at epoch 1, but every generation score is better at epoch 2:
+keep epoch 2).
+
+- **All the grammar drills in the mix pays off on the regular classes:** inflection exact 37% → 53%, paradigm cells
+  32% → 46% for non-ablauting lexemes (the mix's grammar drills went from 3,994 to 10,611).
+- **The stem-class drills did not close the ablauting gap; it widened** (inflection 33% → 28%, 6 → 5 of 18 prompts;
+  paradigm cells 26% → 25%). A held-out ablauting lexeme must be inferred from its lemma; two extra cells per
+  training lexeme did not teach that. Next: paradigm drills (whole declensions) for more ablauting lexemes, and a
+  larger ablauting sample in the frozen prompts (18 inflection prompts is too few to move).
+- **Translation into PIE (app form) +5.6 chrF**; dialogue flat (22.6 vs 23.0): conversation is still 13.8% of the mix.
