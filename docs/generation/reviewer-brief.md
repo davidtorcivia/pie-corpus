@@ -39,6 +39,11 @@ is set by the lead after reading the review; a reviewer never approves a batch.
    - Engine or brief errors: report them; the lead fixes them centrally.
    - Never edit `corpus/tier3/*.jsonl` by hand.
 
+**Causatives (lead, 2026-10-31; t045 vs t064).** An o-grade *-éye-* verb is wrong for a plain verb only when its
+lexicon gloss gives the causative alone ("cause to bring, transport": woǵʰéyeti). Many such verbs carry a plain
+sense the daughters keep (sokʷéyeti 'say', Germanic *sagjaną; wodʰéyeti 'lead', OCS voditi; wolh₁éyeti 'choose'),
+and then they are correct: the gloss decides, not the shape.
+
 ## Release rule (applied by the lead)
 
 Approve when all three hold:
