@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t107",
+ "sha256": {
+  "records": "62bbc13cf9298e806f22445f594274f9a187d9e0af7bedb848caec871b3426b8",
+  "plans": "6de2c51771f8065b28d467446a6945c3be3c82a62838136d918a23863be55cee",
+  "gate_report": "291902f324fe3714b73803d51d570ad8b4fd8f36d5b09c9423cfeef4a201a4f0"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t107-review.md",
+   "docs/audits/packets/t107-verdicts.jsonl",
+   "data/generation/batches/t107.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t107-review.md): plants 4/5 (missed a NOM/ACC.PL for LOC.SG in a short turn; meets the 4/5 bar), real wrong 0/20 after re-check, Tier 1 0/3; second pass 3 minor fixed at source; within the Horrors limits (no gore, no sexual violence), harshness kept in-world; gate PASS 40/40."
+ }
+}
