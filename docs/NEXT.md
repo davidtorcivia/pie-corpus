@@ -29,6 +29,7 @@
 - The adposition pie-lex-me ('among, with') has the surface form of the enclitic 1sg ACC, so realize moves it to
   second position (ENCLITIC_PRONOUNS matches forms); no released record has it (t056 used médʰi). Match by id.
 - An apposition's own `num` is silently replaced by its head's (t056).
+- sríHgos 'cold' NOM with plain g but palatal sríHǵ- elsewhere (t062).
 - 1sg root aorist of -ew-/-ey- roots contracts by Stang's law (ḱlḗm for *ḱléwm̥?); the feminine of 'old' has mixed ablaut; póntoh₁s vs *pónteh₂s (t070).
 - A predicate adjective with no subject or vocative in its clause ('you are dear to him') defaults to masculine; check_plan could warn (t053). h₂énkuleh₂ 'belt' gloss to check (t053).
 - Numeral 'two' has no feminine oblique dual forms (t045: 4 rejects).
