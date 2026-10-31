@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t056",
  "sha256": {
-  "records": "e69a29fa7eaaab27a3fc3919bcfce5c6289c6996045bb7648b45894c0658049a",
-  "plans": "07709a2ee0c1d74457f75d0863b9deee14a45f8fe059a3ea7560f78323f75999",
-  "gate_report": "424ce073a145643606873f920ffdad6cc990b5e91f5be980df7f9c8e8f5dab5d"
+  "records": "658a339106842b5cefc5d7683e79f5f91c017cb60456c9bdc216a2a1c461508c",
+  "plans": "c32d47a2b389908b593d62c20a034d7056ea9c1b24e06ee6c3f5ca0ed0ef3fa5",
+  "gate_report": "ab57757b5040578aebf0c2eeb7d49fe194b71715959372937808651b4c914eb6"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t056-verdicts.jsonl",
    "data/generation/batches/t056.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t056-review.md): plants 5/5 named; packet real 1/20 wrong -> 0, all 40: 5 wrong / 4 minor -> 0/0 (adposition me read as 1sg, masculine 'them' for grandmothers, dual/3pl); nothing modern or coined; gate PASS 40/40."
+  "rationale": "Calibrated review (docs/audits/tier3-t056-review.md): plants 5/5 named; packet real 1/20 wrong -> 0, all 40: 5 wrong / 4 minor -> 0/0 (adposition me read as 1sg, masculine 'them' for grandmothers, dual/3pl); nothing modern or coined; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
  }
 }

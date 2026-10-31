@@ -2,8 +2,8 @@
  "schema_version": 1,
  "batch": "t089",
  "sha256": {
-  "records": "876364cc1626b229233582febf215164717412c2e4b92b1c04f5844b5d8c3f6e",
-  "plans": "0301fdcf692b484f18ab82b139f27fa8ec40e237b9a74685858d57df6430f41d",
+  "records": "c38146bdbcc15654b0c782b125ba2885dff9d7442b94eaca87ad756c700e67da",
+  "plans": "721273913186a028d6c060a78a5790e3c56bf6a577563640fe89ead5d6f58cdf",
   "gate_report": "3c83c8eceff66ba94fa9cfcea610d1a5020bc0649e9d02b09700e830912b68a0"
  },
  "review": {
@@ -14,6 +14,6 @@
    "docs/audits/packets/t089-verdicts.jsonl",
    "data/generation/batches/t089.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t089-review.md): plants 5/5 named; real 0/20 wrong, minor 1 -> 0; all 40: 4 small fixes (reflexive for a non-subject possessor twice, two English words with no PIE); 11 formulas in sense; gate PASS 40/40."
+  "rationale": "Calibrated review (docs/audits/tier3-t089-review.md): plants 5/5 named; real 0/20 wrong, minor 1 -> 0; all 40: 4 small fixes (reflexive for a non-subject possessor twice, two English words with no PIE); 11 formulas in sense; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
  }
 }

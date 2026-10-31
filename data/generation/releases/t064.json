@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t064",
  "sha256": {
-  "records": "b78a95c6299f505bcaf85bc326ae51588aedc7b4ebdb391a6a83555ef42ff5c3",
+  "records": "49becd49f56284a707c56bd7a07addd31f9fb567f309ca51810cd819d40f073f",
   "plans": "f38409d8eae3d9e1b51156ec212d7bce0e40991675753d598bbbc4f1a012e64a",
-  "gate_report": "081f1e80323f1aa80c3feb2758baae6af1cb73efaeb11144772aa11f3fa199da"
+  "gate_report": "607e8d87ff335bcc96710ccbb742f484ca0bbc2a0c73c712ab8697ef2b56b55d"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t064-verdicts.jsonl",
    "data/generation/batches/t064.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t064-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, 1 minor; all 40: 4 brief violations fixed (masculine agent noun for a daughter; three causatives for plain verbs); nothing modern, no tool outside the PIE world; gate PASS 40/40."
+  "rationale": "Calibrated review (docs/audits/tier3-t064-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, 1 minor; all 40: 4 brief violations fixed (masculine agent noun for a daughter; three causatives for plain verbs); nothing modern, no tool outside the PIE world; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
  }
 }

@@ -2,7 +2,7 @@
  "schema_version": 1,
  "batch": "t029",
  "sha256": {
-  "records": "6685092f170b4b4453b26fd1776a215b83700a15f49b72b77dd4a163a20fa293",
+  "records": "36a65685a750bbc18ceb4f3fee9daa070a92a005591b6089fb89543e2533e592",
   "plans": "926052632af5186bcfb878a7fc294dc7a3e2c302b9e8a9304f80e4cc380b1c88",
   "gate_report": "5b73c28c3f611555d9b89bcfcd54f1c906d403a543d343e801bbde20c1a2a3d7"
  },
@@ -18,6 +18,6 @@
    "docs/audits/meter-repair-t029.md",
    "docs/audits/rerealize-2026-10-31.md"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t029-review.md): plants 5/5 named; real 2/20 wrong -> 0 after fixes at the source; gate PASS. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only). | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff."
+  "rationale": "Calibrated review (docs/audits/tier3-t029-review.md): plants 5/5 named; real 2/20 wrong -> 0 after fixes at the source; gate PASS. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only). | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
  }
 }

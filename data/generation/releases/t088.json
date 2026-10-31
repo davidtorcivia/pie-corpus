@@ -2,8 +2,8 @@
  "schema_version": 1,
  "batch": "t088",
  "sha256": {
-  "records": "94681c528ca103cb9e5b56b42241b0f7a494c544261b0ff70a0c8f53ec7a5f3c",
-  "plans": "08f9309608dd7317429e48651d86d706d1a5a20e0604a0b989c9a463cd8727e4",
+  "records": "efa6310cd92f528ea297b614af0644e6e49bf87870dca86099090acea89f0b02",
+  "plans": "0c37b6eabddc40a900768a4f876d7945bf88cfe945cf8d1473676c5026fd3f07",
   "gate_report": "b0b11b93ee031cbf100b7397ad9173842252e6051262a7e9c2fa3a6cc8db929a"
  },
  "review": {
@@ -15,6 +15,6 @@
    "data/generation/batches/t088.json",
    "docs/audits/rerealize-2026-10-31.md"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t088-review.md): plants 5/5 named, Tier 1 0/3 wrong, blind back-translation 6/6; real 0/20 wrong, minor 3 -> 2 (enclitics after the first word of a two-word address: Wackernagel placement, attested in Vedic and Greek; kept); all 40: 0 wrong, 1 minor fixed (explicit subject); Horrors limits: no violations; tone lands; gate PASS 40/40, meter 53/53. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff."
+  "rationale": "Calibrated review (docs/audits/tier3-t088-review.md): plants 5/5 named, Tier 1 0/3 wrong, blind back-translation 6/6; real 0/20 wrong, minor 3 -> 2 (enclitics after the first word of a two-word address: Wackernagel placement, attested in Vedic and Greek; kept); all 40: 0 wrong, 1 minor fixed (explicit subject); Horrors limits: no violations; tone lands; gate PASS 40/40, meter 53/53. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
  }
 }

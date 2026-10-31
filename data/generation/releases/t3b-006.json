@@ -2,7 +2,7 @@
  "schema_version": 1,
  "batch": "t3b-006",
  "sha256": {
-  "records": "ab2c800cfcfc359485c68f0a7898f7231feb702bc090e0122ecc5a61b3e37b7f",
+  "records": "176c574e7e906e70616eb7d9fc2e06d87884bd6ccf060c2180a0364d35511923",
   "plans": "235362376aa6d68db8e203eba012466739ed49ebc79013288034ce215bf8be83",
   "gate_report": "eaf50549cde09b9039dc5a283ea29c63386c35aca862988e77f0c39e537c70fb"
  },
@@ -16,6 +16,6 @@
    "docs/audits/fear-ablative-2026-10-30.md",
    "docs/audits/rerealize-2026-10-31.md"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3b-t3b-006-review.md): plants 5/5 (forms named in ASCII, scorer counts 0 named), real 0/20 wrong before and after; second pass of all 40: 0 wrong, 2 minor; one coined 'teacher' rephrased; no character (§5) violations; gate PASS. Re-approved after a mechanical plan fix (docs/audits/fear-ablative-2026-10-30.md). | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff."
+  "rationale": "Calibrated review (docs/audits/tier3b-t3b-006-review.md): plants 5/5 (forms named in ASCII, scorer counts 0 named), real 0/20 wrong before and after; second pass of all 40: 0 wrong, 2 minor; one coined 'teacher' rephrased; no character (§5) violations; gate PASS. Re-approved after a mechanical plan fix (docs/audits/fear-ablative-2026-10-30.md). | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
  }
 }

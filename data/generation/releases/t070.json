@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t070",
  "sha256": {
-  "records": "e89b3bbe8f4729adb7ac8d43a3ad865ea3a67bed745617e2cd2aa45f6b796d7b",
+  "records": "007587b2b3a0d3606733b06eb966e53966900a7db154d88f0627cd4cb438fa3c",
   "plans": "a92fb0b839510a46888ed61af775a0a41e7a0831e14d8582d733687107f4d57c",
-  "gate_report": "0ae3488ad94ed5cab9db2512ee02cbfd82d96401ef5d23054af7978ef61d005b"
+  "gate_report": "a7c498e0c0613de2ff6182a6db21f401d119625b98ceb292843e9c96796397e1"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t070-verdicts.jsonl",
    "data/generation/batches/t070.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t070-review.md): plants 5/5 named; real 0/20 wrong, minor 5 -> 3; all 40: 3 plan fixes (English, iterative for plain 'carry'); nothing modern; 5 project reconstructions (≥2 branches, allowed in Tier 3: the in-world 'no coinages' rule is about neologisms); gate PASS 40/40."
+  "rationale": "Calibrated review (docs/audits/tier3-t070-review.md): plants 5/5 named; real 0/20 wrong, minor 5 -> 3; all 40: 3 plan fixes (English, iterative for plain 'carry'); nothing modern; 5 project reconstructions (≥2 branches, allowed in Tier 3: the in-world 'no coinages' rule is about neologisms); gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
  }
 }

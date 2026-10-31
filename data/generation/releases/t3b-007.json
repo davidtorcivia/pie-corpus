@@ -2,7 +2,7 @@
  "schema_version": 1,
  "batch": "t3b-007",
  "sha256": {
-  "records": "641bec6dfc94d227c90562727b6ce8070eda4c41a12dd5216beee685d853e982",
+  "records": "d767bb24b669b675fa38b94ce79b2adee9dcc8cde66e2502a626f280f5e80828",
   "plans": "0e521093255d591dde8e37b5aed34afa353b4492f95ea054f2c8d8540e67c567",
   "gate_report": "a51b92d89ed2ca0a4a20bb11c1573414b583792635cacc3692733ef98df515ac"
  },
@@ -15,6 +15,6 @@
    "data/generation/batches/t3b-007.json",
    "docs/audits/rerealize-2026-10-31.md"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3b-t3b-007-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong; second pass of all 40: 0 wrong, minor 5 → 0; no character or §8 violations; 0 coinages; 10 english_only user sentences, all modern words; gate PASS. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff."
+  "rationale": "Calibrated review (docs/audits/tier3b-t3b-007-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong; second pass of all 40: 0 wrong, minor 5 → 0; no character or §8 violations; 0 coinages; 10 english_only user sentences, all modern words; gate PASS. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
  }
 }

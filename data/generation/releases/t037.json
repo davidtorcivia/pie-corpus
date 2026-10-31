@@ -2,7 +2,7 @@
  "schema_version": 1,
  "batch": "t037",
  "sha256": {
-  "records": "e33c1d3faf5075f84e2b38e4846839e44ed08d49ad1fad505f791803a1ca9052",
+  "records": "2e4de633515452f6c8a11a67e39a4f33ff0d746abaa69ca00e8869f75d7cad52",
   "plans": "be738610e5acab34d1ece170eb832b4b59a9d2c3ea26c36f2b642df2c01e1c6f",
   "gate_report": "a5ff66b6d5530cea1909d1fe6208a9ba875d0956664e085091b3d0648a317533"
  },
@@ -15,6 +15,6 @@
    "data/generation/batches/t037.json",
    "docs/audits/rerealize-2026-10-31.md"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t037-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, minor 3 → 2; three minor plan fixes (dummy subject, praising subject, present description); no in-world violations; gate PASS. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff."
+  "rationale": "Calibrated review (docs/audits/tier3-t037-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, minor 3 → 2; three minor plan fixes (dummy subject, praising subject, present description); no in-world violations; gate PASS. | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
  }
 }

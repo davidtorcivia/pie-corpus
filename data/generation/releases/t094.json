@@ -2,7 +2,7 @@
  "schema_version": 1,
  "batch": "t094",
  "sha256": {
-  "records": "56ab1d58749a6e78b9156ff87a6ab9b5856004f39e3ecff5e71aaed4b8679dab",
+  "records": "d2327f212a4fa10cbfe43527c0163044d39d7b040ab1076f8d345051ff82c4c8",
   "plans": "17b3092b91ed3a70a77449e7f81243fd19eff8ee5bc41e075001812b42df623c",
   "gate_report": "a4c07367865cf4008c616853494924fedb4baca998fb7a3328c2d1242feffd89"
  },
@@ -14,6 +14,6 @@
    "docs/audits/packets/t094-verdicts.jsonl",
    "data/generation/batches/t094.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t094-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong (1 withdrawn: h₁éy is the anaphor), minor 4 -> 0; fixes: ne for a plain negative question, dual demonstrative, English aligned, answer repeats the question's verb; nothing modern; gate PASS 40/40."
+  "rationale": "Calibrated review (docs/audits/tier3-t094-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong (1 withdrawn: h₁éy is the anaphor), minor 4 -> 0; fixes: ne for a plain negative question, dual demonstrative, English aligned, answer repeats the question's verb; nothing modern; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
  }
 }

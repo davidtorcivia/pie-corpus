@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t019",
  "sha256": {
-  "records": "fbd568d9e2aafd89e14f801ddc732d60fc59b3e48aabfecc65403bfc7b89a438",
+  "records": "41d9870251f3cb742d4472815e45a39a239787fbc2c833e874782ee27b3f9eb0",
   "plans": "3a1921bcbbc96631bac039a4c773e2f1f59eb683b915af0bdb33e3978baf4287",
-  "gate_report": "03814803c35aa4ca2afb433f0b41588c1732eecd713ea0f56399accd052f5f61"
+  "gate_report": "f86a5a4aeb254bb8335132896d0c638d30df25be1f71ffe3fb375357f8d8962c"
  },
  "review": {
   "required": true,
@@ -19,6 +19,6 @@
    "docs/audits/give-aorist-swap-2026-10-30.md",
    "docs/audits/rerealize-2026-10-31.md"
   ],
-  "rationale": "STATUS records t018-t021 reviews (0-2/20 real wrong), fixes and merged-engine regeneration. Migrated historical release on review plus remediation account. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only). Re-approved after the mechanical pie-lex-deh3ut -> pie-lex-deh3t swap (docs/audits/give-aorist-swap-2026-10-30.md). | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff."
+  "rationale": "STATUS records t018-t021 reviews (0-2/20 real wrong), fixes and merged-engine regeneration. Migrated historical release on review plus remediation account. | Re-approved 2026-10-29 after the post-merge consolidation (docs/audits/consolidation-2026-10-28.md: 0 unexplained changes, check_plan fixes, meaning restored, spot-check 0/40 wrong), meter repair where listed, and the vocabulary merge (PIE unchanged; gloss lines only). Re-approved after the mechanical pie-lex-deh3ut -> pie-lex-deh3t swap (docs/audits/give-aorist-swap-2026-10-30.md). | Rebound 2026-10-31 after a re-realize on engine bd6a13d (docs/audits/rerealize-2026-10-31.md): only punctuation ('?' of multi-clause questions), the 'two'-in-oblique and sólh₂wos fixes, and gloss/version metadata changed; lead checked every PIE diff. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
  }
 }

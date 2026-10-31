@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t045",
  "sha256": {
-  "records": "4a64d100d0513dbf919da0f4eac0a8eae906a5d1b5185b5027b809bbb96b64eb",
+  "records": "55c38419b5221fe5e08e4596d37cc10ca181cccef244e178760065d0475d5cc6",
   "plans": "4b5f73bdbb9487238cf1f4f5015c87ddbb4dae813582522efbe652163401790a",
-  "gate_report": "ff70d9cd87fae71419a6b5f6c362ff672f432bb29b9ebea7ce93c69c5268dbc2"
+  "gate_report": "c665741de1c1d1339f3fb171e0a4f12893ab406a51a4146f6cf5383d8c7db0e1"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t045-verdicts.jsonl",
    "data/generation/batches/t045.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t045-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, 5 minor (3 fixed, 2 engine); all 40: 1 wrong fixed (gʷérdus has no feminine: gʷréh₂us), causative for 'bring', referent, 4 missing '?', two 'two'+oblique rephrased; nothing modern, no money; gate PASS 40/40."
+  "rationale": "Calibrated review (docs/audits/tier3-t045-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, 5 minor (3 fixed, 2 engine); all 40: 1 wrong fixed (gʷérdus has no feminine: gʷréh₂us), causative for 'bring', referent, 4 missing '?', two 'two'+oblique rephrased; nothing modern, no money; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
  }
 }

@@ -2,9 +2,9 @@
  "schema_version": 1,
  "batch": "t073",
  "sha256": {
-  "records": "00f7d6e959fc1f96574d9f33991daa5712e961b11df5c214b0b1a4148f2449dd",
+  "records": "fdab264e39edbdf8f919525b11fcb33fed85c48c93bd04f881bbad346f91914f",
   "plans": "96e8b692296156316f71f2530873b04c84c2e58698a0b1e9c1657c0b440496db",
-  "gate_report": "91780e0d5fc1e75f2324cc47b94cadc122a531d4f3695555ca6accaccc985d5c"
+  "gate_report": "0fabc9e87e7c381f8f77de76064f227838cf8a82153713e4c5fcdd38be5f21ce"
  },
  "review": {
   "required": true,
@@ -14,6 +14,6 @@
    "docs/audits/packets/t073-verdicts.jsonl",
    "data/generation/batches/t073.json"
   ],
-  "rationale": "Two calibrated reviews (docs/audits/tier3-t073-review.md): the first 3/5 plants (below the rule, not counted; it fixed a neuter-plural verb); the second (seed 2) 5/5 named, real 0/20 wrong, minor 1 -> 0 (withdrawn); all 40: nothing modern or coined, memories in the past; gate PASS 40/40."
+  "rationale": "Two calibrated reviews (docs/audits/tier3-t073-review.md): the first 3/5 plants (below the rule, not counted; it fixed a neuter-plural verb); the second (seed 2) 5/5 named, real 0/20 wrong, minor 1 -> 0 (withdrawn); all 40: nothing modern or coined, memories in the past; gate PASS 40/40. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
  }
 }

@@ -2,8 +2,8 @@
  "schema_version": 1,
  "batch": "t086",
  "sha256": {
-  "records": "8c2ee53700c25497662f154297a7bf44aff05d8c234ec1a90f8923ffc8bac959",
-  "plans": "9e8ffc6ac0a8af90beab423484cc085ff67f44fbcb6bf2321631f038bbc57167",
+  "records": "bc588c45da56c612b31924bd7c94c5ac19a37d7ca0135127bc08e466feec2341",
+  "plans": "a8008b76141dfecfacfe31fdc3951bd4255808aa98e4d19dea0dc78352e920ad",
   "gate_report": "bc8fa962262926814dc5ba3d0e1847cf61d99907b8437786283548b8d2aa4252"
  },
  "review": {
@@ -14,6 +14,6 @@
    "docs/audits/packets/t086-verdicts.jsonl",
    "data/generation/batches/t086.json"
   ],
-  "rationale": "Calibrated review (docs/audits/tier3-t086-review.md): plants 4/5; real 1/20 wrong -> 0; fixes: accusative short answer, 'as blood-price' split into two sentences, causative-only verb replaced, feminine predicate; Horrors limits: no violations; tone lands; gate PASS 40/40, meter 56/56."
+  "rationale": "Calibrated review (docs/audits/tier3-t086-review.md): plants 4/5; real 1/20 wrong -> 0; fixes: accusative short answer, 'as blood-price' split into two sentences, causative-only verb replaced, feminine predicate; Horrors limits: no violations; tone lands; gate PASS 40/40, meter 56/56. | Rebound 2026-10-31 after the round-5 re-realize on 706945d (PIE unchanged; gloss and generator metadata only)."
  }
 }

@@ -7,7 +7,7 @@
  "reject_rate": 0.0,
  "distinct_roots": 150,
  "roots_per_sentence": 5.0,
- "distinct_lexemes": 250,
+ "distinct_lexemes": 248,
  "max_lexeme_uses": 11,
  "most_used": [
   [
@@ -34,14 +34,14 @@
  "dup_within": 0,
  "dup_across_batches": 0,
  "tokens": 2268,
- "words_per_sentence": 68.53,
+ "words_per_sentence": 4.8,
  "words_per_record": 68.53,
  "meter_fit": null,
  "meter_near": null,
  "meter_exact": null,
  "meter_cadence": null,
  "formula_uses": 29,
- "warnings": 65,
+ "warnings": 68,
  "accent_unresolved": {
   "tokens": 0,
   "lexemes": 0,
