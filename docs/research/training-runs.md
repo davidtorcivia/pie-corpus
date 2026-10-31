@@ -158,3 +158,26 @@ Changes:
    examples, so 20% conversation needs about 1,850 more such records (~46 batches of 40). Wave 3a: in-world dialogue
    batches t044, t045, t050, t053, t056, t059 (greeting, bargaining, travel, family, council, teaching), each asked
    for longer exchanges (8–14 clauses, 4–8 turns) and a spread of athematic nouns in oblique cases.
+
+## Queue 2 final and the frozen-prompt baseline (2026-10-30 23:45)
+
+Per-epoch samples (old 8-per-kind set): instruct lr1e-4 chrF 31.9 → 34.2; instruct r32 37.6 → 39.8. Then every
+adapter on the frozen set `gen_prompts_v1.jsonl` (246 prompts, no cognates; `baseline_v1.ps1`, scores
+`scores-v1eN.json`):
+
+| adapter | chrF | recognized | inflect exact | paradigm cells | dialogue chrF | EN→PIE chrF (task / app) | inflect abl / non | paradigm abl / non |
+|---|---|---|---|---|---|---|---|---|
+| **qwen4b-instruct r16 lr2e-4 e2** | **45.2** | **74%** | 35% | **30%** | **23.0** | **37.4** / 44.6 | **33%** / 37% | **26%** / 32% |
+| qwen4b-instruct r32 lr2e-4 e2 | 45.4 | 73% | **40%** | 25% | 22.7 | 36.5 / **45.6** | 22% / **50%** | 17% / 29% |
+| qwen4b-instruct r16 lr1e-4 e2 | 40.4 | 63% | 19% | 22% | 20.0 | 32.6 / 42.2 | 6% / 27% | 12% / 27% |
+| qwen4b-base-plain r16 lr2e-4 e1 | 36.9 | 58% | 6% | 18% | 19.9 | 27.7 / 37.6 | 11% / 3% | 12% / 20% |
+| typewriter-sft r16 lr1e-4 e1 | 26.2 | 66% | 0% | 7% | 21.1 | 16.0 / 18.1 | 0% / 0% | 4% / 8% |
+
+(inflect n = 48: 18 ablauting, 30 not; paradigm n = 40.)
+
+- **Recipe: Qwen3-4B-Instruct, LoRA r16/α32, lr 2e-4, 2 epochs.** Rank 32 ties on chrF; its edge on regular
+  inflection is offset by worse ablauting forms and paradigms (more capacity memorized the frequent pattern
+  harder). lr 1e-4 underfits in 2 epochs.
+- **The stem-class gap is real and measurable now:** every model is worse on ablauting lexemes' paradigms than on
+  thematic ones (26% vs 32% for the best). This is the baseline for the stem-class drills of the build-out.
+- **TypewriterLM is out** of the comparison (no licence to ship, and last on every task but dialogue).

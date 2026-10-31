@@ -49,3 +49,29 @@ own. The `model` speaker, where there is one, is a person of the PIE world who j
 
 **Finding a word:** your slice is the suggested vocabulary; for anything else run `uv run python -I scripts/lexq.py
 <english word>` (v4 rule 6). Look a word up before you write around it.
+
+## Horrors (wave t085–t088, owner 2026-10-30)
+
+"It was a rough world and we should not hide the horrors of it." A wave about what the people of this world feared
+and suffered, told the way they would tell it: plainly, by people who lived it, without modern judgment and
+without relish. The daughter traditions are frank about it, and so are these texts:
+- **Raid and captivity:** the cattle-raid seen from the raided side; the men killed at the fence; women and children
+  carried off to serve strangers; a captive's lament far from home; ransom refused (Iliad 1 and 24, the Táin, the
+  Rigveda's prayers against the raider).
+- **Feud and blood-price:** a kinsman slain, the duty of vengeance, the price of a man paid or refused, a feud that
+  eats two families; the oath-breaker's end.
+- **Hunger and plague:** the hungry winter, the herds dying of sickness, a famine when the old are left to the
+  cold, a charm against a pestilence (the daughters' charms against worms and fevers are models), a child who does not
+  wake.
+- **Death unprotected:** a man drowned at the ford, a child taken by wolves, a woman dead in childbirth, the dead
+  left unburied for the dogs and birds (the epic's worst fate), the burning of a hall with the people inside.
+- **The gods' cruelty and the dark rites:** the god who takes, the dead who come back hungry, a sacrifice that costs
+  a life (myth and ritual as told, not endorsed or condemned).
+- **Curses:** the curse laid on a slayer or an oath-breaker (genre `curse` if the export knows it, else `charm`).
+
+Mix per batch: about half two-speaker dialogues (§4 of brief-3b format: survivors talking, a widow and her son, a
+captive and a stranger, a judge and a slayer's kin), half laments, tales, charms and curses. Tone: grief, fear,
+anger, endurance; the horror is in the facts said plainly, never in gore for its own sake. No sexual violence is
+depicted (captivity may be named; nothing more). Nothing modern; no coinages. Every text must still be grammatical
+and say exactly what its English says (v4 rule 14). Run lexq for the hard words (captive, famine, plague, corpse,
+mourn, curse, avenge, blood-price): the lexicon round of 2026-10-31 added words and idioms for them.
