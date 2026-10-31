@@ -7,7 +7,8 @@ and inherited lists), with the same entry format (make_slice.slice_item), so a w
 like a slice word.
 
     uv run python -I scripts/lexq.py fear summer "be silent"      # English → candidates, best first
-    uv run python -I scripts/lexq.py --id pie-lex-bhebhoyh2e      # one word in full: its cells
+    uv run python -I scripts/lexq.py --id pie-lex-bhebhoyh2e      # one word in full: its cells (an id
+                                                                  # planners may not use: an error + the one to use)
     uv run python -I scripts/lexq.py --tier3b money               # Tier 3b batches also see the neologisms
 
 Matching, per term: a lexeme whose gloss sense is headed by the term (lemmatized: 'to be giving' answers 'give'),
@@ -69,6 +70,15 @@ def singular(w: str) -> str:
     return w[:-1] if len(w) > 3 and w.endswith("s") and not w.endswith("ss") else w
 
 
+def gloss_words(s: str) -> set[str]:
+    """A gloss's words with their singulars, so 'ash' finds kónHis 'ashes, dust' (-es dropped too; t100 could not
+    find 'ash'). Only the gloss side: the query is matched as written."""
+    out = set()
+    for w in words(s):
+        out |= {w, singular(w)} | ({w[:-2]} if len(w) > 4 and w.endswith("es") else set())
+    return out
+
+
 def search(term: str, lx, ids: list[str], uses, n: int) -> list[dict]:
     """The candidates for a term; a plural with no hit of its own is looked up in the singular ('tears' →
     dáḱru 'tear': NEXT.md round 5)."""
@@ -87,10 +97,12 @@ def _search(term: str, lx, ids: list[str], uses, n: int) -> list[dict]:
         gl = (ms.VALENCY.get(i, {}).get("gloss") or gl or "").lower()
         senses = [re.sub(r"^(to |be )+", "", x.strip()) for x in re.split(r"[;,]", gl) if x.strip()]
         rank = next((k for k, x in enumerate(senses)
-                     if x == t or (t not in FUNCTION_WORDS and x.split(" ")[0] == t)), None)
-        if rank is None and (t in FUNCTION_WORDS or not (tw and tw <= words(gl))):
+                     if x == t or (t not in FUNCTION_WORDS and (x.split(" ")[0] == t or (
+                         x.split(" ")[0].isalpha() and t in gloss_words(x.split(" ")[0]))))), None)
+        if rank is None and (t in FUNCTION_WORDS or not (tw and tw <= gloss_words(gl))):
             continue
-        exact = rank is not None and senses[rank] == t       # 'one' itself before 'one who begets'
+        # 'one' itself before 'one who begets'; 'ash' is 'ashes'
+        exact = rank is not None and (senses[rank] == t or " " not in senses[rank])
         score = (0 if rank is not None else 10) + (rank or 0) - 5 * exact - min(uses[i], 400) / 100 - ms.attested_in(lx, i) / 20
         scored.append((score, i))
     scored.sort()
@@ -139,6 +151,34 @@ def full(i: str, lx) -> dict:
     return item
 
 
+def _skeleton(s: str) -> str:
+    """An id or form reduced to what a planner keeps when typing it: no accents, no 'j'/'x' diacritic letters
+    (ǵ → gj, ō → ox), no -2 homograph suffix (pie-lex-gjhlh2dhros and pie-lex-ghlh2dhros meet)."""
+    import unicodedata
+    s = re.sub(r"-\d+$", "", s.removeprefix("pie-lex-").removeprefix("pie-proj-"))
+    s = unicodedata.normalize("NFD", s)
+    return re.sub(r"[̀-ͯjx]", "", s)
+
+
+def lookup_id(i: str, lx, ids: list[str]) -> dict:
+    """`--id`: an offered word in full; anything else an error line that names the id to use instead. A planner
+    who typed the id from a form (pie-lex-sleh2gwt for the aorist pie-lex-sleh2gwt-2, pie-lex-gjhlh2dhros for
+    pie-lex-ghlh2dhros) was shown a bare entry with no cells, and check_plan then rejected it (t096)."""
+    if i in ids:
+        return full(i, lx)
+    sk = _skeleton(i)
+    same = [j for j in ids if _skeleton(j) == sk]
+    if i in lx.specs:
+        r = lx.specs[i]
+        why = ("blocklisted" if i in lx.blocked else
+               f"no usable spec (rule {r.get('rule')})" if not r.get("usable") else
+               "not offered to planners (no gloss, no accent, NIL-held or an evaluation holdout)")
+        return {"lex_id": i, "form": lx.entries[i]["form"], "error": f"not a planner word: {why}", "use": same}
+    if i.startswith("closed:"):
+        return {"lex_id": i, "error": "not an inflectable lexeme (closed ids: data/morph/closed_class.json)"}
+    return {"lex_id": i, "error": "unknown id", "use": same}
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("terms", nargs="*")
@@ -150,13 +190,11 @@ def main() -> int:
     if a.tier3b:
         from pie.neologism import with_neologisms
         lx = with_neologisms(lx)
+    ids = pool(lx, a.tier3b) if a.id or a.terms else []
     for i in a.id:
-        if i not in lx.specs:
-            print(json.dumps({"lex_id": i, "error": "not an inflectable lexeme (closed ids: data/morph/closed_class.json)"}))
-            continue
-        print(json.dumps(full(i, lx), ensure_ascii=False))
+        print(json.dumps(lookup_id(i, lx, ids), ensure_ascii=False))
     if a.terms:
-        ids, uses = pool(lx, a.tier3b), corpus_uses()
+        uses = corpus_uses()
         for t in a.terms:
             hits = search(t, lx, ids, uses, a.n)
             ims = idioms(t, a.tier3b)

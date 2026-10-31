@@ -113,7 +113,9 @@ ADVERB_POS = ("adv", "prep", "postp")
 NIL_ADMIT = {"pie-lex-bhagos", "pie-lex-bhngjhulos", "pie-lex-bhrtos", "pie-lex-gwowsth2os", "pie-lex-kjh3tos",
              "pie-lex-medtos", "pie-lex-priHtos", "pie-lex-h2rgjipyos", "pie-lex-kjolHtos", "pie-lex-rotos",
              # tail: Gk οὐρά and OIr. err, two branches (Beekes s.v. οὐρά; NIL no. 247): core gaps 2026-10-30
-             "pie-lex-h1orseh2"}
+             "pie-lex-h1orseh2",
+             # mare: Ved. áśvā-, Av. aspā-, Lat. equa, Lith. ašvà (NIL p. 230; M&A §9.2): round 6 2026-11-01
+             "pie-lex-h1ekjweh2"}
 NIL_GLOSS_HELD = {"pie-lex-h2gjtos", "pie-lex-priHnos", "pie-lex-h2ewgos", "pie-lex-wersos", "pie-lex-kjltos",
                   "pie-lex-h2egjtoxr", "pie-lex-segjhtoxr"}
 # dictionary glosses and the hand-checked ones (overrides, supplement: docs/audits/lexicon-gaps-*.md; project

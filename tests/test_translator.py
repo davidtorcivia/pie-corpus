@@ -93,6 +93,15 @@ def test_round5_words_reach_the_translator(transfer):
     assert transfer.translate("The holy man roasts meat.").pie == "sh₂krós wiHrós mḗms bʰr̥ǵyéti."
 
 
+def test_round6_words_reach_the_translator(transfer):
+    """docs/audits/lexicon-gaps-round6-2026-11-01.md: the mare, the law, barking, baking and pasturing."""
+    assert transfer.translate("The mare runs.").pie == "h₁éḱweh₂ tékʷeti."
+    assert transfer.translate("The dog barks.").pie == "ḱwṓ léh₂yeti."
+    assert transfer.translate("The man knows the law.").pie == "wiHrós h₂yéwos wóyde."
+    assert transfer.translate("The shepherd pastures the sheep.").pie == "poh₂imḗn h₂ówim peh₂sḱéti."
+    assert transfer.translate("The loud man sings.").pie == "kl̥h₁rós wiHrós gʷéHyeti."
+
+
 def test_transfer_reports_what_it_cannot_say(transfer):
     r = transfer.translate("The tiger ate the bread.")
     assert set(r.unknown) >= {"tiger"}

@@ -96,6 +96,10 @@ OVERRIDES = {
     ("roar", "verb"): "pie-lex-HrewdHti", ("month", "noun"): "pie-lex-mexh1ns", ("thunder", "noun"): "pie-lex-ghromos",
     ("deer", "noun"): "pie-lex-h1olkjis", ("stag", "noun"): "pie-lex-h1olkjis", ("slow", "adj"): "pie-lex-gwerdus",
     ("east", "adj"): "pie-lex-h2ewsteros",
+    # round 6 2026-11-01 (docs/audits/lexicon-gaps-round6-2026-11-01.md)
+    ("mare", "noun"): "pie-lex-h1ekjweh2", ("law", "noun"): "pie-lex-h2yewos", ("oar", "noun"): "pie-lex-h1erh1trom",
+    ("bake", "verb"): "pie-lex-pekweti", ("bark", "verb"): "pie-lex-leh2yeti",
+    ("pasture", "verb"): "pie-lex-peh2skjeti", ("knead", "verb"): "pie-lex-dheygjhti", ("loud", "adj"): "pie-lex-klh1ros",
 }
 
 
