@@ -24,7 +24,9 @@
 - **Vocabulary round 5 (after round 3, 2026-10-31):** from t073: herb/medicine, hair, age (noun), staff, ancestor,
   tears (dáḱru exists: check lexq 'tears'), face, wound (noun), fever, still.
   From t079: hammer, anvil, bellows, needle, spindle, axle, bridle, dye (verb), well/quickly/slowly (moḱs unaccented),
-  west/north, infinitives ('teach me to X': a dative verbal noun? brief guidance needed). Round 3's open list: until, ago, lend,
+  west/north, infinitives ('teach me to X': a dative verbal noun? brief guidance needed).
+  From the horror wave: hall, pyre, flame, priest, pray, mercy, howl, judge, witness, generation, serve, foreign land.
+  From t089/t094: poor, roast, offer, host, cheese, holy, shame, wait, help; seer, raven/crow/owl, 'to mean'. Round 3's open list: until, ago, lend,
   rich, iron, sword, grave, herald, hunter; month, lightning, bee, deer (no engine shape); summer (no accent);
   sólh₂wos 'all' has a noun spec (an adjective fix changes t003/t026: do it in the re-realize pass).
 - **Vocabulary round 4 (conversation gaps, t044 planner):** every/all (*sólh₂wos), until, before (*pr̥h₂í, *pr̥Hwós),
