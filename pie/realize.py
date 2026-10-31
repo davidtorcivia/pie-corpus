@@ -752,8 +752,8 @@ def _check_two_oblique(ci: int, cl: dict, lx: Lexicon) -> list[str]:
     in the NOM/ACC (dual), names the two, or drops the numeral."""
     try:
         words = realize_clause(cl, lx)
-    except (KeyError, ValueError, IndexError):
-        return []                     # the clause's own errors are reported by the other checks
+    except (KeyError, ValueError, IndexError, TypeError):
+        return []                     # a malformed clause: its own errors are reported by the other checks
     return [f"clause {ci}: 'two' ({w.form}, {w.features}) in an oblique case: its noun's dual oblique does not "
             f"exist and the plural stands in, so the pair disagrees; put the pair in the NOM/ACC, name the two, or "
             f"drop the numeral" for w in words
