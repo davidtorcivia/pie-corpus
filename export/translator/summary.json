@@ -1,18 +1,18 @@
 {
  "provenance": {
-  "commit": "7d88cb4cadf71a88c8d4d58e8361c33c98dca3b0",
-  "inputs_dirty": false,
+  "commit": "21524741f621f3e315fa0b181a81939a5bcdf633",
+  "inputs_dirty": true,
   "include_pilot": false,
   "experimental_batches": false
  },
  "examples": {
-  "train": 24010,
+  "train": 26586,
   "eval": 170
  },
  "modes": {
   "train": {
-   "en_pie": 12005,
-   "pie_en": 12005
+   "en_pie": 13293,
+   "pie_en": 13293
   },
   "eval": {
    "en_pie": 85,
@@ -21,10 +21,10 @@
  },
  "units": {
   "train": {
-   "en_pie:paragraph": 6217,
-   "en_pie:sentence": 5788,
-   "pie_en:paragraph": 6217,
-   "pie_en:sentence": 5788
+   "en_pie:paragraph": 6983,
+   "en_pie:sentence": 6310,
+   "pie_en:paragraph": 6983,
+   "pie_en:sentence": 6310
   },
   "eval": {
    "en_pie:paragraph": 7,
@@ -34,22 +34,22 @@
   }
  },
  "gloss_reference": {
-  "train": 24010,
+  "train": 26586,
   "eval": 84
  },
  "neologism_examples": {
-  "train": 1670,
+  "train": 1700,
   "eval": 0
  },
  "items": {
   "train": {
-   "en_pie:paragraph": 6217,
-   "en_pie:sentence": 5788,
-   "pie_en:paragraph": 6217,
-   "pie_en:sentence": 5788,
-   "unaligned_long:count_mismatch": 254,
-   "unaligned_long:plan_english_mismatch": 19,
-   "unaligned_long:question_mismatch": 5
+   "en_pie:paragraph": 6983,
+   "en_pie:sentence": 6310,
+   "pie_en:paragraph": 6983,
+   "pie_en:sentence": 6310,
+   "unaligned_long:count_mismatch": 252,
+   "unaligned_long:plan_english_mismatch": 10,
+   "unaligned_long:question_mismatch": 3
   },
   "eval": {
    "en_pie:paragraph": 7,
@@ -61,28 +61,28 @@
  },
  "self_overlap": {
   "all_kinds_sentences": {
-   "items": 19130,
-   "max": 17,
-   "mean": 1.0507,
+   "items": 21255,
+   "max": 18,
+   "mean": 1.0536,
    "histogram": {
-    "1": 18574,
-    "2": 380,
-    "3": 93,
-    "4+": 83
+    "1": 20616,
+    "2": 427,
+    "3": 111,
+    "4+": 101
    },
-   "over_3": 83
+   "over_3": 101
   },
   "all_kinds_ngram4": {
-   "items": 47435,
-   "max": 18,
-   "mean": 1.0073,
+   "items": 52784,
+   "max": 19,
+   "mean": 1.0071,
    "histogram": {
-    "1": 47152,
-    "2": 250,
-    "3": 23,
-    "4+": 10
+    "1": 52484,
+    "2": 262,
+    "3": 26,
+    "4+": 12
    },
-   "over_3": 10
+   "over_3": 12
   }
  },
  "leakage": {

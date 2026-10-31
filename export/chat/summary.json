@@ -1,28 +1,28 @@
 {
  "provenance": {
-  "commit": "7d88cb4cadf71a88c8d4d58e8361c33c98dca3b0",
-  "inputs_dirty": false,
+  "commit": "21524741f621f3e315fa0b181a81939a5bcdf633",
+  "inputs_dirty": true,
   "include_pilot": false,
   "experimental_batches": false
  },
  "examples": {
-  "train": 35797,
+  "train": 38437,
   "eval": 811
  },
  "examples_by_kind": {
   "train": {
-   "app_session": 332,
+   "app_session": 412,
    "cognates_to_pie": 1760,
    "continuation": 847,
    "demo_chat": 42,
-   "en_dialogue": 2942,
-   "gloss": 3646,
+   "en_dialogue": 3535,
+   "gloss": 3886,
    "inflect": 5393,
    "paradigm": 1572,
-   "pie_dialogue": 693,
-   "translate_app": 11278,
-   "translate_en_pie": 3646,
-   "translate_pie_en": 3646
+   "pie_dialogue": 830,
+   "translate_app": 12388,
+   "translate_en_pie": 3886,
+   "translate_pie_en": 3886
   },
   "eval": {
    "cognates_to_pie": 110,
@@ -39,9 +39,9 @@
  },
  "pie_dialogue_split_method": {
   "train": {
-   "speaker": 510,
-   "sentence_qa": 160,
-   "english_quotes": 23
+   "speaker": 643,
+   "english_quotes": 23,
+   "sentence_qa": 164
   },
   "eval": {
    "english_quotes": 16
@@ -50,24 +50,23 @@
  "dialogue_records_skipped": {
   "train": {
    "no_answer": 2,
-   "no_question": 169,
-   "question_flag_mismatch": 6
+   "no_question": 169
   },
   "eval": {}
  },
  "dialogue_english_alignment": {
   "train": {
-   "aligned:plain": 195,
-   "aligned:plan_english": 928,
+   "aligned:plain": 197,
+   "aligned:plan_english": 1151,
    "aligned:plan_english_only": 6,
-   "aligned:quotes": 45,
+   "aligned:quotes": 46,
    "aligned:quotes_semicolon": 2,
    "aligned:semicolon": 9,
-   "narrated:plan_english": 40,
+   "narrated:plan_english": 64,
    "narrated:quotes": 3,
-   "narrated:quotes_colon": 26,
+   "narrated:quotes_colon": 29,
    "unaligned:count_mismatch": 24,
-   "unaligned:plan_english_mismatch": 11,
+   "unaligned:plan_english_mismatch": 4,
    "unaligned:question_mismatch": 1
   },
   "eval": {
@@ -76,15 +75,15 @@
  },
  "modes": {
   "train": {
-   "app_session/en_pie": 332,
+   "app_session/en_pie": 412,
    "demo_chat/en_pie": 27,
    "demo_chat/en_pie_gloss": 15,
-   "en_dialogue/en_pie": 1185,
-   "en_dialogue/en_pie_gloss": 1185,
-   "en_dialogue/mixed": 572,
-   "pie_dialogue/pie_pie": 693,
-   "translate_app/en_pie": 8879,
-   "translate_app/pie_en": 2399
+   "en_dialogue/en_pie": 1411,
+   "en_dialogue/en_pie_gloss": 1411,
+   "en_dialogue/mixed": 713,
+   "pie_dialogue/pie_pie": 830,
+   "translate_app/en_pie": 9726,
+   "translate_app/pie_en": 2662
   },
   "eval": {
    "en_dialogue/en_pie": 16,
@@ -96,20 +95,20 @@
   }
  },
  "english_input_conversations": {
-  "train": 2984,
+  "train": 3577,
   "eval": 48
  },
  "translate_app": {
   "train": {
-   "en_pie:paragraph": 4967,
-   "en_pie:sentence": 4639,
-   "pie_en:paragraph": 1250,
-   "pie_en:sentence": 1149,
-   "session:2": 269,
-   "session:3": 63,
-   "unaligned_long:count_mismatch": 254,
-   "unaligned_long:plan_english_mismatch": 19,
-   "unaligned_long:question_mismatch": 5
+   "en_pie:paragraph": 5563,
+   "en_pie:sentence": 5068,
+   "pie_en:paragraph": 1420,
+   "pie_en:sentence": 1242,
+   "session:2": 331,
+   "session:3": 81,
+   "unaligned_long:count_mismatch": 252,
+   "unaligned_long:plan_english_mismatch": 10,
+   "unaligned_long:question_mismatch": 3
   },
   "eval": {
    "en_pie:paragraph": 5,
@@ -122,39 +121,39 @@
  "self_overlap": {
   "cap": 3,
   "dialogue_turns": {
-   "items": 3232,
+   "items": 4035,
    "max": 3,
-   "mean": 2.7339,
+   "mean": 2.7125,
    "histogram": {
-    "1": 201,
-    "2": 458,
-    "3": 2573
+    "1": 278,
+    "2": 604,
+    "3": 3153
    },
    "over_3": 0
   },
   "all_kinds_sentences": {
-   "items": 21265,
-   "max": 48,
-   "mean": 2.6983,
+   "items": 23318,
+   "max": 60,
+   "mean": 2.7677,
    "histogram": {
-    "1": 3302,
-    "2": 9952,
-    "3": 3178,
-    "4+": 4833
+    "1": 3454,
+    "2": 10712,
+    "3": 3308,
+    "4+": 5844
    },
-   "over_3": 4833
+   "over_3": 5844
   },
   "all_kinds_ngram4": {
-   "items": 86667,
-   "max": 46,
-   "mean": 2.1218,
+   "items": 96281,
+   "max": 48,
+   "mean": 2.1545,
    "histogram": {
-    "1": 28293,
-    "2": 35614,
-    "3": 12871,
-    "4+": 9889
+    "1": 31279,
+    "2": 38601,
+    "3": 14260,
+    "4+": 12141
    },
-   "over_3": 9889
+   "over_3": 12141
   }
  },
  "demo_seeds": {
@@ -176,8 +175,8 @@
  },
  "neologism": {
   "neologism_words": 4984,
-  "total_words": 92828,
-  "share": 0.0537,
+  "total_words": 101661,
+  "share": 0.049,
   "cap": 0.15,
   "exceeded": false
  },
@@ -187,9 +186,9 @@
    "en_dialogue": {
     "n": 48,
     "with_ngrams": 48,
-    "mean_overlap": 0.0284,
-    "max_overlap": 0.1795,
-    "any_overlap": 13,
+    "mean_overlap": 0.0311,
+    "max_overlap": 0.2051,
+    "any_overlap": 14,
     "single_word_in_train_text": 0
    },
    "cognates_to_pie": {
@@ -198,7 +197,7 @@
     "mean_overlap": 0.0,
     "max_overlap": 0.0,
     "any_overlap": 0,
-    "single_word_in_train_text": 25
+    "single_word_in_train_text": 27
    },
    "gloss": {
     "n": 42,
@@ -230,7 +229,7 @@
     "mean_overlap": 0.0,
     "max_overlap": 0.0,
     "any_overlap": 0,
-    "single_word_in_train_text": 48
+    "single_word_in_train_text": 50
    },
    "translate_app/en_pie": {
     "n": 65,
@@ -296,10 +295,10 @@
   "tokenizer": "/Users/david/AI/Qwen3-4B-Instruct-2507-cdbee75f/tokenizer.json",
   "train": {
    "app_session": {
-    "examples": 332,
-    "words": 30555,
-    "tokens": 88849,
-    "assistant_tokens": 64937
+    "examples": 412,
+    "words": 38039,
+    "tokens": 110829,
+    "assistant_tokens": 81046
    },
    "cognates_to_pie": {
     "examples": 1760,
@@ -320,72 +319,72 @@
     "assistant_tokens": 721
    },
    "en_dialogue": {
-    "examples": 2942,
-    "words": 214404,
-    "tokens": 467704,
-    "assistant_tokens": 271369
+    "examples": 3535,
+    "words": 261677,
+    "tokens": 572831,
+    "assistant_tokens": 333868
    },
    "gloss": {
-    "examples": 3646,
-    "words": 345811,
-    "tokens": 1268545,
-    "assistant_tokens": 572833
+    "examples": 3886,
+    "words": 374078,
+    "tokens": 1382678,
+    "assistant_tokens": 627204
    },
    "inflect": {
     "examples": 5393,
-    "words": 197835,
-    "tokens": 332243,
+    "words": 197852,
+    "tokens": 332271,
     "assistant_tokens": 37260
    },
    "paradigm": {
     "examples": 1572,
-    "words": 107590,
-    "tokens": 369727,
-    "assistant_tokens": 282688
+    "words": 107588,
+    "tokens": 369731,
+    "assistant_tokens": 282693
    },
    "pie_dialogue": {
-    "examples": 693,
-    "words": 33207,
-    "tokens": 119181,
-    "assistant_tokens": 60461
+    "examples": 830,
+    "words": 40728,
+    "tokens": 147734,
+    "assistant_tokens": 75594
    },
    "translate_app": {
-    "examples": 11278,
-    "words": 605737,
-    "tokens": 1508994,
-    "assistant_tokens": 894074
+    "examples": 12388,
+    "words": 666704,
+    "tokens": 1660020,
+    "assistant_tokens": 982782
    },
    "translate_en_pie": {
-    "examples": 3646,
-    "words": 392272,
-    "tokens": 873204,
-    "assistant_tokens": 480600
+    "examples": 3886,
+    "words": 425956,
+    "tokens": 950800,
+    "assistant_tokens": 526117
    },
    "translate_pie_en": {
-    "examples": 3646,
-    "words": 394416,
-    "tokens": 872861,
-    "assistant_tokens": 192892
+    "examples": 3886,
+    "words": 428257,
+    "tokens": 950522,
+    "assistant_tokens": 211867
    }
   },
   "train_by_mode": {
    "translate_app/en_pie": {
-    "examples": 8879,
-    "words": 472574,
-    "tokens": 1184841,
-    "assistant_tokens": 745519
+    "examples": 9726,
+    "words": 518393,
+    "tokens": 1298617,
+    "assistant_tokens": 816799
    },
    "translate_app/pie_en": {
-    "examples": 2399,
-    "words": 133163,
-    "tokens": 324153,
-    "assistant_tokens": 148555
+    "examples": 2662,
+    "words": 148311,
+    "tokens": 361403,
+    "assistant_tokens": 165983
    }
   },
   "train_tier3b": {
-   "examples": 2259,
-   "words": 151918,
-   "tokens": 365237
+   "examples": 2280,
+   "words": 153214,
+   "tokens": 368059
   },
   "eval": {
    "cognates_to_pie": {
@@ -469,10 +468,10 @@
    "tokens": 0
   },
   "text/train.txt": {
-   "paragraphs": 3646,
-   "words": 92828,
-   "tokens": 480600,
-   "tokens_per_word": 5.1773
+   "paragraphs": 3886,
+   "words": 101661,
+   "tokens": 526117,
+   "tokens_per_word": 5.1752
   },
   "text/eval.txt": {
    "paragraphs": 60,
@@ -481,9 +480,9 @@
    "tokens_per_word": 4.961
   },
   "text-ascii/train.txt": {
-   "paragraphs": 3646,
-   "words": 92828,
-   "tokens": 431508,
+   "paragraphs": 3886,
+   "words": 101661,
+   "tokens": 472571,
    "tokens_per_word": 4.6485
   },
   "text-ascii/eval.txt": {
@@ -493,7 +492,7 @@
    "tokens_per_word": 4.3183
   },
   "train_tokens_per_word_unicode_vs_ascii": [
-   5.1773,
+   5.1752,
    4.6485
   ],
   "eval_tokens_per_word_unicode_vs_ascii": [
@@ -505,42 +504,42 @@
   "train": {
    "groups": {
     "conversation": {
-     "examples": 4524,
-     "share": 0.1264,
-     "tokens": 792321,
-     "token_share": 0.127,
+     "examples": 5254,
+     "share": 0.1367,
+     "tokens": 926001,
+     "token_share": 0.1359,
      "target_share": 0.2,
-     "sampling_weight": 1.582
+     "sampling_weight": 1.463
     },
     "translation": {
-     "examples": 18902,
-     "share": 0.528,
-     "tokens": 3343908,
-     "token_share": 0.536,
+     "examples": 20572,
+     "share": 0.5352,
+     "tokens": 3672171,
+     "token_share": 0.5389,
      "target_share": 0.5,
-     "sampling_weight": 0.947
+     "sampling_weight": 0.934
     },
     "grammar": {
-     "examples": 10611,
-     "share": 0.2964,
-     "tokens": 1970515,
-     "token_share": 0.3159,
+     "examples": 10851,
+     "share": 0.2823,
+     "tokens": 2084680,
+     "token_share": 0.3059,
      "target_share": 0.3,
-     "sampling_weight": 1.012
+     "sampling_weight": 1.063
     },
     "comparative": {
      "examples": 1760,
-     "share": 0.0492,
+     "share": 0.0458,
      "tokens": 131778,
-     "token_share": 0.0211,
+     "token_share": 0.0193,
      "target_share": 0.0,
      "sampling_weight": 0.0
     }
    },
-   "conversation_share": 0.1264,
-   "english_input_share": 0.4425,
-   "tier3b_examples": 2259,
-   "tier3b_example_share": 0.0631
+   "conversation_share": 0.1367,
+   "english_input_share": 0.4579,
+   "tier3b_examples": 2280,
+   "tier3b_example_share": 0.0593
   },
   "eval": {
    "groups": {
@@ -585,28 +584,28 @@
   "train_mix": {
    "groups": {
     "conversation": {
-     "examples": 4524,
-     "share": 0.1378,
-     "tokens": 792321,
-     "token_share": 0.1344,
+     "examples": 5254,
+     "share": 0.1537,
+     "tokens": 926001,
+     "token_share": 0.1482,
      "target_share": 0.2,
-     "sampling_weight": 1.451
+     "sampling_weight": 1.301
     },
     "translation": {
-     "examples": 17685,
-     "share": 0.5388,
-     "tokens": 3130743,
-     "token_share": 0.5312,
+     "examples": 18085,
+     "share": 0.529,
+     "tokens": 3236017,
+     "token_share": 0.518,
      "target_share": 0.5,
-     "sampling_weight": 0.928
+     "sampling_weight": 0.945
     },
     "grammar": {
-     "examples": 10611,
-     "share": 0.3233,
-     "tokens": 1970515,
-     "token_share": 0.3343,
+     "examples": 10851,
+     "share": 0.3174,
+     "tokens": 2084680,
+     "token_share": 0.3337,
      "target_share": 0.3,
-     "sampling_weight": 0.928
+     "sampling_weight": 0.945
     },
     "comparative": {
      "examples": 0,
@@ -617,24 +616,24 @@
      "sampling_weight": null
     }
    },
-   "conversation_share": 0.1378,
-   "english_input_share": 0.4576,
-   "tier3b_examples": 2171,
-   "tier3b_example_share": 0.0661,
-   "examples": 32820,
+   "conversation_share": 0.1537,
+   "english_input_share": 0.465,
+   "tier3b_examples": 2108,
+   "tier3b_example_share": 0.0617,
+   "examples": 34190,
    "examples_by_kind": {
-    "app_session": 314,
+    "app_session": 372,
     "continuation": 847,
     "demo_chat": 42,
-    "en_dialogue": 2942,
-    "gloss": 3646,
+    "en_dialogue": 3535,
+    "gloss": 3886,
     "inflect": 5393,
     "paradigm": 1572,
-    "pie_dialogue": 693,
-    "translate_app/en_pie": 8292,
-    "translate_app/pie_en": 2243,
-    "translate_en_pie": 3428,
-    "translate_pie_en": 3408
+    "pie_dialogue": 830,
+    "translate_app/en_pie": 8518,
+    "translate_app/pie_en": 2343,
+    "translate_en_pie": 3433,
+    "translate_pie_en": 3419
    }
   }
  },
@@ -642,8 +641,8 @@
   "train": {
    "user_turns": {
     "app_session/en_pie": {
-     "2": 269,
-     "3": 63
+     "2": 331,
+     "3": 81
     },
     "cognates_to_pie": {
      "1": 1760
@@ -660,24 +659,24 @@
      "2": 5
     },
     "en_dialogue/en_pie": {
-     "1": 202,
-     "2": 333,
-     "3": 486,
-     "4+": 164
+     "1": 206,
+     "2": 347,
+     "3": 624,
+     "4+": 234
     },
     "en_dialogue/en_pie_gloss": {
-     "1": 202,
-     "2": 468,
-     "3": 507,
+     "1": 206,
+     "2": 552,
+     "3": 645,
      "4+": 8
     },
     "en_dialogue/mixed": {
-     "2": 302,
-     "3": 264,
+     "2": 381,
+     "3": 326,
      "4+": 6
     },
     "gloss": {
-     "1": 3646
+     "1": 3886
     },
     "inflect": {
      "1": 5393
@@ -686,30 +685,30 @@
      "1": 1572
     },
     "pie_dialogue/pie_pie": {
-     "1": 141,
-     "2": 215,
-     "3": 255,
-     "4+": 82
+     "1": 143,
+     "2": 213,
+     "3": 348,
+     "4+": 126
     },
     "translate_app/en_pie": {
-     "1": 8879
+     "1": 9726
     },
     "translate_app/pie_en": {
-     "1": 2399
+     "1": 2662
     },
     "translate_en_pie": {
-     "1": 3646
+     "1": 3886
     },
     "translate_pie_en": {
-     "1": 3646
+     "1": 3886
     }
    },
    "multi_turn": {
-    "examples": 3433,
-    "share": 0.0959,
+    "examples": 4233,
+    "share": 0.1101,
     "by_source": {
-     "chained": 343,
-     "dialogue": 3090
+     "chained": 423,
+     "dialogue": 3810
     },
     "chained_share_of_multi_turn": 0.0999
    }
@@ -776,8 +775,8 @@
   "train_mix": {
    "user_turns": {
     "app_session/en_pie": {
-     "2": 252,
-     "3": 62
+     "2": 296,
+     "3": 76
     },
     "continuation": {
      "1": 847
@@ -791,24 +790,24 @@
      "2": 5
     },
     "en_dialogue/en_pie": {
-     "1": 202,
-     "2": 333,
-     "3": 486,
-     "4+": 164
+     "1": 206,
+     "2": 347,
+     "3": 624,
+     "4+": 234
     },
     "en_dialogue/en_pie_gloss": {
-     "1": 202,
-     "2": 468,
-     "3": 507,
+     "1": 206,
+     "2": 552,
+     "3": 645,
      "4+": 8
     },
     "en_dialogue/mixed": {
-     "2": 302,
-     "3": 264,
+     "2": 381,
+     "3": 326,
      "4+": 6
     },
     "gloss": {
-     "1": 3646
+     "1": 3886
     },
     "inflect": {
      "1": 5393
@@ -817,32 +816,32 @@
      "1": 1572
     },
     "pie_dialogue/pie_pie": {
-     "1": 141,
-     "2": 215,
-     "3": 255,
-     "4+": 82
+     "1": 143,
+     "2": 213,
+     "3": 348,
+     "4+": 126
     },
     "translate_app/en_pie": {
-     "1": 8292
+     "1": 8518
     },
     "translate_app/pie_en": {
-     "1": 2243
+     "1": 2343
     },
     "translate_en_pie": {
-     "1": 3428
+     "1": 3433
     },
     "translate_pie_en": {
-     "1": 3408
+     "1": 3419
     }
    },
    "multi_turn": {
-    "examples": 3415,
-    "share": 0.1041,
+    "examples": 4193,
+    "share": 0.1226,
     "by_source": {
-     "chained": 325,
-     "dialogue": 3090
+     "chained": 383,
+     "dialogue": 3810
     },
-    "chained_share_of_multi_turn": 0.0952
+    "chained_share_of_multi_turn": 0.0913
    }
   }
  }
