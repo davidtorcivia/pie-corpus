@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t044",
+ "sha256": {
+  "records": "2e30aee6eb3f524830637d1e6ca6f960136c94c5c3ae39665642a7ec5dc4dc3c",
+  "plans": "c164e4a292261c097c9319fb3e2e50a6d2b8a3fadb215176beceb4bb2a946952",
+  "gate_report": "4ef8939e16e0a7a12738edbdbd28e077cab9ba3451786f59e178fc96840b20c8"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t044-review.md",
+   "docs/audits/packets/t044-verdicts.jsonl",
+   "data/generation/batches/t044.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t044-review.md): plants 5/5 named, Tier 1 0/3 wrong; real 0/20 wrong, minor 4 -> 3; all 40: nothing modern or coined, turns answer each other, fearing+ABL and enclitics correct; lead spot-read 3 records; gate PASS 40/40."
+ }
+}
