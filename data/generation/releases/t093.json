@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "batch": "t093",
+ "sha256": {
+  "records": "7e3a30fec2a6896bea4c21a5a1a775fd4bdbedef0d55e468714d4ac2dc6d79a9",
+  "plans": "12a0167d52d533983b73c29b2a24e37cc0d0f43a003a20e37c73a88e51f4eb81",
+  "gate_report": "94c1a8e9b1a07e95b9425fae06bcf526b0ec7060436a7cc152d1f3b451e763d1"
+ },
+ "review": {
+  "required": true,
+  "status": "approved",
+  "evidence": [
+   "docs/audits/tier3-t093-review.md",
+   "docs/audits/packets/t093-verdicts.jsonl",
+   "data/generation/batches/t093.json"
+  ],
+  "rationale": "Calibrated review (docs/audits/tier3-t093-review.md): plants 4/5; real 0/20 wrong, minor 5 -> 0 (3 fixed: mē in a conditional -> ne, gender of 'them', tense; 2 withdrawn); all 40: no violations, 3 English-only fixes; workarounds for forgive/sorry/insult say what the English says; gate PASS 40/40."
+ }
+}
