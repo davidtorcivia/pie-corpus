@@ -199,3 +199,30 @@ def test_inflection_cells_do_not_shift_when_the_lexicon_changes():
     finally:
         lx.specs[first] = spec
     assert after == [t for t in before if t["source_id"] != first]
+
+
+def test_ablauting_lexemes_drill_both_stems():
+    """An ablauting lexeme's inflect tasks have at least two cells on its weak stem and one off it, whenever its
+    cells allow (pie.export.inflection_tasks, 2026-10-31); a non-ablauting lexeme keeps the per_lexeme random cells."""
+    import random
+    from pie.export import _skeleton, inflection_tasks
+    lx = _lx()
+    by = {}
+    for t in inflection_tasks(lx, random.Random(0)):
+        by.setdefault(t["source_id"], []).append(t)
+    short = []
+    for lid, ts in by.items():
+        sp = lx.specs[lid]["spec"]
+        weak = sp.get("weak") or sp.get("m_weak")
+        if not weak:
+            assert len(ts) <= 3, lid
+            continue
+        wk = _skeleton(weak)
+        on = sum(_skeleton(t["output"]).startswith(wk) for t in ts)
+        if lx.specs[lid]["family"] == "adj":
+            continue      # an adjective's cells span three genders; its weak stem is the masculine's
+        cells = lx.admissible_cells(lid)
+        n_on = sum(_skeleton(v[0]).startswith(wk) for v in cells.values())
+        if on < min(2, n_on) or len(ts) - on < min(1, len(cells) - n_on):
+            short.append(lid)
+    assert not short, f"{len(short)} ablauting lexemes lack weak/strong cells, e.g. {short[:3]}"

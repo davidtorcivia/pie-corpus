@@ -671,3 +671,62 @@ def test_english_only_user_sentences():
     assert exs[0]["messages"][1]["content"] == "Hello! I flew here in an airplane."
     bad = {**plan, "clauses": [plan["clauses"][0], plan["clauses"][2], {**plan["clauses"][1], "speaker": "model"}]}
     assert any("only the user's" in e for e in english_only_errors(bad))
+
+
+def test_frozen_drill_prompts_stay_valid(exported):
+    """The inflect and paradigm prompts frozen in training/gen_prompts_v1.jsonl and gen_prompts_drills_v2.jsonl (the
+    before/after comparison across exports) stay a fair test: each answer is still the engine's form (an inflect answer one of its lexeme's
+    admissible cells, a paradigm answer one of its lexeme's paradigm_task tables) and no training drill (inflect or
+    paradigm) is of a frozen lexeme. They need not be eval examples: 41 of the 48 inflect prompts left the eval
+    export when its cells were reshuffled, before 0e4efd1 gave each lexeme its own rng."""
+    from pie.export import GENDER_TAG
+    from pie.realize import Lexicon
+    lx = Lexicon.load()
+    frozen = [json.loads(x) for x in (ROOT / "training/gen_prompts_v1.jsonl").read_text("utf-8").splitlines()]
+    frozen = [g for g in frozen if g["kind"] in ("inflect", "paradigm")]
+    assert len(frozen) == 88
+    v2 = ROOT / "training/gen_prompts_drills_v2.jsonl"      # training/make_drill_prompts_v2.py
+    if v2.exists():
+        frozen += [json.loads(x) for x in v2.read_text("utf-8").splitlines()]
+    stale = []
+    for g in frozen:
+        lid = g["source_id"]
+        if g["kind"] == "inflect":
+            if lx.specs[lid]["family"] == "adj":
+                forms = {v[0] for gd in GENDER_TAG for v in lx.admissible_cells(lid, gd).values()}
+            else:
+                forms = {v[0] for v in lx.admissible_cells(lid).values()}
+            ok = g["reference"] in forms
+        else:
+            tables = [ec.paradigm_task(lx, lid, b) for b in [None] + ec.paradigm_extra_blocks(lx, lid)]
+            ok = g["reference"] in {t["output"] for t in tables if t}
+        if not ok:
+            stale.append(g["id"])
+    assert not stale, f"{len(stale)} frozen drill answers are no longer the engine's, e.g. {stale[:3]}"
+    held = {g["source_id"] for g in frozen}
+    drilled = {e["meta"]["source_id"] for e in exported["train"] if e["meta"]["task"] in ("inflect", "paradigm")}
+    assert not held & drilled, f"frozen lexemes drilled in training: {sorted(held & drilled)[:5]}"
+
+
+def test_ablauting_lexemes_get_extra_paradigms():
+    """An ablauting verb's extra paradigms are other blocks of ABLAUT_BLOCKS, an ablauting adjective's its other two
+    genders, each a new table; a non-ablauting lexeme and a noun get none (pie.export_chat.paradigm_extra_blocks)."""
+    from pie.realize import Lexicon
+    lx = Lexicon.load()
+    seen = collections.Counter()
+    for lid, r in lx.specs.items():
+        if not r.get("usable") or lx.inadmissible(lid):
+            continue
+        extra = ec.paradigm_extra_blocks(lx, lid)
+        ablauting = bool(r["spec"].get("weak") or r["spec"].get("m_weak"))
+        if not ablauting or r["family"] == "noun":
+            assert extra == [], lid
+            continue
+        first = ec.paradigm_task(lx, lid)
+        outs = {first["output"]} if first else set()
+        for b in extra:
+            q = ec.paradigm_task(lx, lid, b)
+            assert q and q["block"] != first["block"] and q["output"] not in outs, (lid, b)
+            outs.add(q["output"])
+            seen[r["family"]] += 1
+    assert seen["verb"] and seen["adj"]

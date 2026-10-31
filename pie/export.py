@@ -248,8 +248,9 @@ def inflection_tasks(lx: Lexicon, rng: random.Random, per_lexeme: int = 3) -> li
 
     An ablauting lexeme (its spec has a weak stem) also gets, beyond the per_lexeme random cells, its key cell
     (_key_cell) and one cell built on the weak stem, when the random ones lack them: models trained on the
-    random cells alone declined n-stems as thematic nouns (docs/research/training-runs.md, 2026-10-30). The
-    extras come from a per-lexeme rng, so the random cells (and every older task) are unchanged.
+    random cells alone declined n-stems as thematic nouns (docs/research/training-runs.md, 2026-10-30). Then
+    one more weak-stem cell and one strong-stem cell (2026-10-31). The extras come from per-lexeme rngs, so the
+    random cells (and every older task) are unchanged.
 
     The random cells come from a per-lexeme rng too, seeded by one draw from `rng`: with one shared sequence,
     any lexicon change (a lexeme admitted, a cell added) reshuffled the cells of every later lexeme, and 41 of
@@ -277,6 +278,14 @@ def inflection_tasks(lx: Lexicon, rng: random.Random, per_lexeme: int = 3) -> li
             on_weak = [f for f in feats if _skeleton(cells[f][0]).startswith(wk)]
             if on_weak and not set(on_weak) & set(picked):
                 picked.append(xr.choice(on_weak))
+            # and two more: one more weak-stem cell and one strong-stem cell, so the alternation itself is
+            # drilled (queues 4-5: ablauting 33-50% inflect exact vs 80-87% for the rest). Their own rng, drawn
+            # after everything above, so the earlier picks stay as they were.
+            ar = random.Random(f"ablaut-extra|{lid}")
+            off_weak = [f for f in feats if f not in on_weak]
+            for pool in ([f for f in on_weak if f not in picked], [f for f in off_weak if f not in picked]):
+                if pool:
+                    picked.append(ar.choice(pool))
         for f in picked:
             t = {"task": "inflect", "input": f"{lx.entries[lid]['form']} {f}", "output": cells[f][0],
                  "source_id": lid, "root_id": lx.entries[lid].get("root_id")}

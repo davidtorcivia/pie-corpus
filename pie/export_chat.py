@@ -290,16 +290,17 @@ BLOCK_WORDS = {
 }
 
 
-def paradigm_task(lx, lid: str) -> dict | None:
+def paradigm_task(lx, lid: str, block: str | None = None) -> dict | None:
     """lemma -> paradigm (PLAN.md Phase 7), from the engine's admissible cells, primary forms only: a noun's
     whole declension; an adjective in one gender; a verb's one finite block (its first, main block half the
-    time, else another), chosen deterministically."""
+    time, else another), chosen deterministically. `block` asks for a given gender (m/f/n) or verb block instead
+    (paradigm_extra_blocks)."""
     from .export import GENDER_TAG
     spec, lemma = lx.specs[lid], lx.entries[lid]["form"]
     h = zlib.crc32(lid.encode("utf-8"))
     fam = spec["family"]
     if fam == "adj":
-        g = "mfn"[h % 3]
+        g = block or "mfn"[h % 3]
         cells = lx.admissible_cells(lid, g)
         gw = FEATURE_WORDS[GENDER_TAG[g]]
         what, plain, verb = f" in the {gw}", f"{gw} case forms", "Decline"
@@ -310,7 +311,7 @@ def paradigm_task(lx, lid: str) -> dict | None:
         blocks = list(dict.fromkeys(b for b in map(_verb_block, cells) if b in BLOCK_WORDS))
         if not blocks:
             return None
-        block = blocks[0] if h % 2 == 0 else blocks[(h // 2) % len(blocks)]
+        block = block if block in blocks else blocks[0] if h % 2 == 0 else blocks[(h // 2) % len(blocks)]
         bw = BLOCK_WORDS[block]
         what, plain, verb = f" in the {bw}", f"{bw} forms", "Conjugate"
         rows = [(c, v[0]) for c, v in cells.items() if _verb_block(c) == block]
@@ -326,20 +327,46 @@ def paradigm_task(lx, lid: str) -> dict | None:
             "root_id": lx.entries[lid].get("root_id")}
 
 
-def paradigm_chat(p: dict, inflect_flags: dict) -> dict:
+# the verb blocks an ablauting verb's extra paradigms come from, in order: the active indicatives, where a weak
+# stem shows against the strong one, then the middle present (paradigm_extra_blocks)
+ABLAUT_BLOCKS = ("PRS", "AOR", "PRF", "PST", "MID.PRS")
+ABLAUT_EXTRA_PARADIGMS = 2
+
+
+def paradigm_extra_blocks(lx, lid: str) -> list[str]:
+    """The extra paradigms of an ablauting lexeme (its spec has a weak stem), beyond paradigm_task's one: an
+    adjective's other two genders; a verb's first ABLAUT_EXTRA_PARADIGMS blocks of ABLAUT_BLOCKS that it has and
+    paradigm_task did not pick. A noun's one paradigm is already its whole declension. Queues 4-5: ablauting
+    lexemes 32-44% of paradigm cells vs 62-66% for the rest (docs/research/training-runs.md)."""
+    spec = lx.specs[lid]
+    if not (spec["spec"].get("weak") or spec["spec"].get("m_weak")):
+        return []
+    first = paradigm_task(lx, lid)
+    if not first:
+        return []
+    if spec["family"] == "adj":
+        from .export import GENDER_TAG
+        return [g for g in "mfn" if GENDER_TAG[g] != first["block"]]
+    if spec["family"] != "verb":
+        return []
+    have = {_verb_block(c) for c in lx.admissible_cells(lid)}
+    return [b for b in ABLAUT_BLOCKS if b in have and b != first["block"]][:ABLAUT_EXTRA_PARADIGMS]
+
+
+def paradigm_chat(p: dict, inflect_flags: dict, extra: bool = False) -> dict:
     tpls = TASK_TEMPLATES["paradigm"]
-    key = f"paradigm|{p['source_id']}"
+    key = f"paradigm|{p['source_id']}" + (f"|{p['block']}" if extra else "")
     i = _pick(key, len(tpls))
     user = tpls[i].format(lemma=p["lemma"], what=p["what"], what_plain=p["what_plain"], verb=p["verb"])
     sysp = system(key, TEACHER[_pick(key + "|sys", len(TEACHER))])
     meta = _meta("paradigm", p["source_id"], None, template=i, block=p["block"], root_id=p["root_id"],
-                 **inflect_flags)
+                 **inflect_flags, **({"ablaut_extra": True} if extra else {}))
     return {"messages": _msgs(sysp, ("user", user), ("assistant", p["output"])), "meta": meta}
 
 
 def paradigm_chats(lx, tasks: list[dict]) -> list[dict]:
     """One paradigm per lexeme that has inflection tasks in this split (so the split, and the coined flag,
-    are exactly build()'s)."""
+    are exactly build()'s), and an ablauting lexeme's extra ones (paradigm_extra_blocks)."""
     from .realize import accent_status
     lexemes = dict.fromkeys(t["source_id"] for t in tasks if t["task"] == "inflect")
     out = []
@@ -350,6 +377,10 @@ def paradigm_chats(lx, tasks: list[dict]) -> list[dict]:
             flags = {"coined": lx.coined(lid) or None,
                      "accent": "unresolved" if accent_status(lid) == "unresolved" else None}
             out.append(paradigm_chat(p, flags))
+            for b in paradigm_extra_blocks(lx, lid):
+                q = paradigm_task(lx, lid, b)
+                if q and q["block"] != p["block"]:
+                    out.append(paradigm_chat(q, flags, extra=True))
     return out
 
 
