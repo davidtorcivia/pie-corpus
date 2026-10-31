@@ -1,6 +1,6 @@
 #!/bin/zsh
 # Mirror tr-desktop's run outputs to the Mac, score new generations with the PIE tools, push the scores back so the
-# dashboard shows them. Loops every 5 minutes until the queue log says "queue finished".
+# dashboard shows them. Loops every 5 minutes until the queue log says "queue 2 finished".
 M=/Users/david/AI/pie-runs
 cd /Users/david/AI/PIE
 while true; do
@@ -16,7 +16,7 @@ while true; do
   for d in $(ssh tr-desktop 'Get-ChildItem Q:\AI\PIE\runs -Directory | ForEach-Object Name' 2>/dev/null | tr -d '\r'); do
     mkdir -p $M/$d; scp -q "tr-desktop:Q:/AI/PIE/runs/$d/metrics.jsonl" "tr-desktop:Q:/AI/PIE/runs/$d/config.json" $M/$d/ 2>/dev/null
   done
-  ssh tr-desktop 'Get-Content Q:\AI\PIE\runs\queue.log -Tail 1' 2>/dev/null | grep -q "queue finished" && break
+  ssh tr-desktop 'Get-Content Q:\AI\PIE\runs\queue.log -Tail 1' 2>/dev/null | grep -q "queue 2 finished" && break
   sleep 300
 done
 echo sync done

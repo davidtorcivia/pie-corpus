@@ -28,8 +28,9 @@ TRAINED SPAN: tód gʷétu h₁ésti.<|im_end|>
 ```
 
 - **Formats.** Qwen3-4B (base and instruct): ChatML as Qwen3-4B-Instruct-2507's template renders it without tools
-  (that version has no `<think>` blocks); the base model gets the same format, so the two are comparable.
-  TypewriterLM (base and SFT): its SFT template, `<|begin_of_text|>` then `<|im_start|>role content<|im_end|> `.
+  (that version has no `<think>` blocks). TypewriterLM SFT: its own template, `<|begin_of_text|>` then
+  `<|im_start|>role content<|im_end|> `. Base models: `plain` (`System: … / User: … / Assistant: …`, each reply ended
+  by the model's own end-of-text token); see lesson 8 for why base models can't use ChatML.
   The demo must render prompts exactly this way.
 - **Packing.** Examples are concatenated into 2048-token rows; an example never straddles two rows (its context stays
   with its replies), so each row ends in a short masked tail. Examples in one row can attend to each other (no
@@ -60,6 +61,13 @@ closes. Stop training: `powershell -File Q:\AI\PIE\train\stop.ps1`.
 4. **Liger fused linear cross-entropy**: never materializes the 152 k-vocab logits (9.3 GB at batch 8).
 5. **Detached runs on Windows** need Task Scheduler, not Start-Process over SSH.
 6. **Batched, left-padded generation** for the per-epoch samples: one prompt at a time took ~30 min per epoch.
+8. **Base models need a format whose stop token they already know.** Under LoRA the embeddings stay frozen, and a
+   base model's `<|im_start|>`/`<|im_end|>` embeddings were never trained: Qwen3-4B-Base under ChatML never emitted
+   `<|im_end|>`, ran past every answer into junk and invented new user turns (inflection exact match 0%). Fix: the
+   `plain` template, replies ended by `<|endoftext|>` / `<|end_of_text|>`. (Alternative: train the embedding and
+   LM-head rows for those tokens.)
+9. **Two epochs.** Eval loss bottoms at epoch 2 on both Qwen runs and rises at 3 while train loss keeps falling
+   (instruct 0.28): ~1.1 M trained tokens per epoch is memorized fast, and the drills restate the same forms.
 7. A 30-step smoke test (eval loss 3.13 → 1.53, chrF 19, 22% recognized words) before any long run caught the slow
    generation; short PIE replies were already sensible, longer outputs looped.
 
@@ -67,11 +75,36 @@ closes. Stop training: `powershell -File Q:\AI\PIE\train\stop.ps1`.
 
 | run | model | lr | epochs | status |
 |---|---|---|---|---|
-| qwen4b-instruct-r16-lr2e-4 | Qwen3-4B-Instruct-2507 | 2e-4 | 3 | running |
-| qwen4b-base-r16-lr2e-4 | Qwen3-4B-Base | 2e-4 | 3 | queued |
-| typewriter-sft-r16-lr1e-4 | TypewriterLM 1913 SFT | 1e-4 | 3 | queued |
-| typewriter-base-r16-lr1e-4 | TypewriterLM 1913 base | 1e-4 | 3 | queued |
+| qwen4b-instruct-r16-lr2e-4 | Qwen3-4B-Instruct-2507 | 2e-4 | 3 | done, 38 min |
+| qwen4b-base-r16-lr2e-4 | Qwen3-4B-Base | 2e-4 | 3 | done, 41 min (ChatML: invalid, lesson 8) |
+| typewriter-sft-r16-lr1e-4 | TypewriterLM 1913 SFT | 1e-4 | 3 | running |
+| typewriter-base-r16-lr1e-4 | TypewriterLM 1913 base | 1e-4 | 3 | skipped: rerun on `plain` in queue 2 |
 
 Questions it answers: how many epochs (the per-epoch eval decides; the grammar drills repeat material across task
 formats, so overfitting may come early); instruct vs base; a modern model vs one that never saw the modern world.
 Results follow below as each epoch is scored.
+
+**Results** (scores: Mac scorer on 8 eval prompts per kind, ~110 prompts; chrF overall; recognized = share of output
+PIE words that are engine forms):
+
+| run | eval loss e0 → e1 → e2 → e3 | chrF e1 / e2 / e3 | recognized e3 | inflect exact e1 / e2 / e3 | modern |
+|---|---|---|---|---|---|
+| qwen4b-instruct | 3.13 → 1.20 → **1.198** → 1.25 | 32 / 38.5 / 39.1 | 70% | 38 / 50 / 50%* | 0 |
+| qwen4b-base (ChatML) | 2.34 → 1.40 → 1.41 → 1.49 | 22 / 24 / 25 | 73% | 0 / 0 / 0% | 0 |
+
+\* inflect over 8 prompts; overall exact (inflect + cognates) 19% at e2.
+
+Reading the instruct outputs (epoch 2): short, mostly well-formed PIE replies in character ("Sister, is the fire
+burning?" → *h₁íd dʰégʷʰeti*; "Eat in my house, and drink there!" → *gʷm̥dʰí h₁ddʰí-kʷe*; "Put your trust in him!"
+→ *h₁ésmey bʰebʰóydʰe*, right frame, another verb); *steh₂weróysu* exact. Meaning is often a near-miss, longer
+translations drift, cognate reconstruction is weak (chrF 7–22). The base model's PIE words are as real (73%
+recognized) but every reply runs on (lesson 8), so its scores say nothing about the base model itself.
+
+## Queue 2 (2026-10-30): fair base runs, two instruct variants, 2 epochs each
+
+| run | model | template | lr | rank | question |
+|---|---|---|---|---|---|
+| typewriter-base-plain-r16-lr1e-4 | TypewriterLM 1913 base | plain | 1e-4 | 16 | pre-modern base |
+| qwen4b-base-plain-r16-lr2e-4 | Qwen3-4B-Base | plain | 2e-4 | 16 | base vs instruct, fairly |
+| qwen4b-instruct-r16-lr1e-4 | Qwen3-4B-Instruct-2507 | chatml | 1e-4 | 16 | gentler lr: epoch-2 quality, less memorizing? |
+| qwen4b-instruct-r32-lr2e-4 | Qwen3-4B-Instruct-2507 | chatml | 2e-4 | 32 | more capacity for translation? |

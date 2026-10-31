@@ -34,6 +34,10 @@ TEMPLATES = {
     # ChatML, as Qwen3-4B-Instruct-2507's template renders it without tools (no <think> blocks); the base model gets
     # the same format, so base and instruct runs are comparable
     "chatml": {"start": "", "turn": lambda r: (f"<|im_start|>{r}\n", "<|im_end|>\n"), "gen": "<|im_start|>assistant\n"},
+    # base models (no chat tuning): their embeddings for <|im_start|>/<|im_end|> were never trained and LoRA can't train
+    # embeddings, so a base model under ChatML never learns to stop (Qwen3-4B-Base, queue 1). Plain role labels, each
+    # turn ended by the end-of-text token the base model already knows; "end" is filled per tokenizer in main()
+    "plain": {"start": "", "turn": lambda r: (f"{r.capitalize()}: ", "\n\n"), "gen": "Assistant: ", "assistant_end": "eos"},
     # TypewriterLM's template (typewriter-1913-7B-sft-v2): bos, then "<|im_start|>role content<|im_end|> "
     "typewriter": {"start": "<|begin_of_text|>", "turn": lambda r: (f"<|im_start|>{r} ", "<|im_end|> "),
                    "gen": "<|im_start|>assistant "},
@@ -56,14 +60,23 @@ def encode(tok, tpl, messages, train_all_assistant=True):
         pre, suf = t["turn"](m["role"])
         add(pre, False)
         train = m["role"] == "assistant" and train_all_assistant
-        add(m["content"] + suf, train)
+        if m["role"] == "assistant" and t.get("assistant_end") == "eos":
+            add(m["content"], train)
+            ids.append(tok.eos_token_id)
+            labels.append(tok.eos_token_id if train else -100)
+            add("\n\n", False)
+        else:
+            add(m["content"] + suf, train)
     return ids, labels
 
 
 def prompt_ids(tok, tpl, messages):
     """The prompt for generation: every turn before the last assistant turn, then the assistant header."""
     t = TEMPLATES[tpl]
-    text = t["start"] + "".join(t["turn"](m["role"])[0] + m["content"] + t["turn"](m["role"])[1] for m in messages)
+
+    def end(role):
+        return tok.eos_token + "\n\n" if role == "assistant" and t.get("assistant_end") == "eos" else t["turn"](role)[1]
+    text = t["start"] + "".join(t["turn"](m["role"])[0] + m["content"] + end(m["role"]) for m in messages)
     return tok(text + t["gen"], add_special_tokens=False, return_tensors="pt")["input_ids"]
 
 
@@ -205,7 +218,7 @@ def main():
         """Greedy (repetition penalty 1.1) on the fixed prompt set, batched with left padding."""
         model.eval()
         out = []
-        end = tok.convert_tokens_to_ids("<|im_end|>")
+        end = tok.eos_token_id if TEMPLATES[a.template].get("assistant_end") == "eos" else tok.convert_tokens_to_ids("<|im_end|>")
         pad = tok.pad_token_id if tok.pad_token_id is not None else end
         with torch.no_grad(), sdpa_kernel(ATTN):
             for i in range(0, len(gens), a.gen_batch):
