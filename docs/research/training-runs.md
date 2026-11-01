@@ -358,3 +358,24 @@ On the v2 drill set, 35B e2 gets inflect exact 72% (ablauting 63% of 158, non-ab
 - Five 4B epochs reach roughly the 35B's first epoch on chrF and inflection, but not on paradigms (73% vs 82–90%)
   or EN→PIE translation (38.5 vs 44).
 - Ablauting paradigms gained most from epoch 2 (56% → 75% of cells on v1, 61% → 73% on v2).
+
+## Qwen3.6-35B-A3B epoch 3, final (2026-11-01)
+
+The resumed run finished at 00:22 (exit 0, final checkpoint at step 2505). Same deploy path (PIE-qwen36-e3-oQ5e-mtp).
+
+| v1 frozen prompts, cap 384 | chrF | recognized | inflect exact | paradigm cells | EN→PIE (task / app) | PIE→EN app | dialogue chrF | inflect abl | paradigm abl / non |
+|---|---|---|---|---|---|---|---|---|---|
+| 35B, e1 | 58.3 | 86% | 77% | 82% | 44.2 / 51.3 | 59.4 | 24.3 | 50% | 56% / 95% |
+| 35B, e2 | 60.0 | 86% | 81% | **90%** | **44.5 / 52.9** | **64.8** | 24.6 | 67% | **75%** / 97% |
+| 35B, e3 | **60.9** | **87%** | **85%** | 88% | 42.2 / 51.1 | 61.5 | **27.2** | 67% | 68% / 97% |
+
+| v2 drill set | inflect exact | abl / non | paradigm cells | abl / non |
+|---|---|---|---|---|
+| 35B, e1 | 70% | 59% / 84% | 77% | 61% / 92% |
+| 35B, e2 | 72% | 63% / 83% | **83%** | **73%** / 93% |
+| 35B, e3 | **76%** | **67% / 88%** | 81% | 65% / **96%** |
+
+- Epoch 3 is a trade, not a clear gain: single-form inflection and dialogue improve, ablauting paradigm tables and
+  both translation directions slip. The translation and dialogue columns are 12–24 single-reference items each, so
+  differences of 2–3 chrF are within noise; the v2 ablauting paradigm drop (73% → 65% of cells over 41 tables) is
+  the most solid regression.
