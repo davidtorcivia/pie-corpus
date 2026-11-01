@@ -15,19 +15,28 @@
     "lenient": 30.8
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 1.2,
+    "lenient": 44.6
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 51.8,
+    "lenient": 51.8
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 2.3,
+    "lenient": 30.5
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 19.0,
+   "lenient": 38.3
+  }
  },
  {
   "contestant": "claude-haiku-low",
@@ -45,19 +54,28 @@
     "lenient": 22.1
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 2.4,
+    "lenient": 37.5
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 47.0,
+    "lenient": 47.0
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 5.9,
+    "lenient": 23.0
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 17.1,
+   "lenient": 32.4
+  }
  },
  {
   "contestant": "claude-haiku-medium",
@@ -75,19 +93,28 @@
     "lenient": 23.0
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 0.6,
+    "lenient": 24.4
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 48.2,
+    "lenient": 48.2
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 8.6,
+    "lenient": 33.2
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 17.6,
+   "lenient": 30.4
+  }
  },
  {
   "contestant": "claude-haiku-xhigh",
@@ -101,23 +128,32 @@
    "paradigm": {
     "n": 124,
     "of": 124,
-    "strict": 26.2,
-    "lenient": 32.7
+    "strict": 27.3,
+    "lenient": 34.4
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 11.3,
+    "lenient": 62.5
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 79.2,
+    "lenient": 79.2
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 6.6,
+    "lenient": 58.6
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 30.4,
+   "lenient": 55.9
+  }
  },
  {
   "contestant": "claude-opus-high",
@@ -135,19 +171,28 @@
     "lenient": 66.8
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 24.4,
+    "lenient": 94.0
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 97.0,
+    "lenient": 97.0
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 49.6,
+    "lenient": 91.4
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 56.5,
+   "lenient": 84.3
+  }
  },
  {
   "contestant": "claude-opus-low",
@@ -165,19 +210,28 @@
     "lenient": 61.4
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 22.0,
+    "lenient": 63.1
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 70.2,
+    "lenient": 70.2
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 5.5,
+    "lenient": 49.6
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 42.2,
+   "lenient": 61.9
+  }
  },
  {
   "contestant": "claude-opus-medium",
@@ -195,19 +249,28 @@
     "lenient": 66.1
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 16.7,
+    "lenient": 95.2
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 90.5,
+    "lenient": 90.5
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 14.1,
+    "lenient": 77.7
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 47.2,
+   "lenient": 81.0
+  }
  },
  {
   "contestant": "claude-opus-xhigh",
@@ -225,19 +288,28 @@
     "lenient": 67.3
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 14.3,
+    "lenient": 94.6
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 98.2,
+    "lenient": 98.2
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 21.9,
+    "lenient": 96.5
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 50.0,
+   "lenient": 86.0
+  }
  },
  {
   "contestant": "claude-sonnet-high",
@@ -255,19 +327,28 @@
     "lenient": 40.8
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 4.2,
+    "lenient": 67.3
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 83.9,
+    "lenient": 83.9
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 22.3,
+    "lenient": 53.9
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 34.5,
+   "lenient": 60.0
+  }
  },
  {
   "contestant": "claude-sonnet-low",
@@ -285,19 +366,28 @@
     "lenient": 39.1
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 14.3,
+    "lenient": 29.2
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 52.4,
+    "lenient": 52.4
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 16.0,
+    "lenient": 39.8
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 29.0,
+   "lenient": 38.4
+  }
  },
  {
   "contestant": "claude-sonnet-medium",
@@ -315,19 +405,28 @@
     "lenient": 38.9
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 7.1,
+    "lenient": 50.6
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 57.1,
+    "lenient": 57.1
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 8.2,
+    "lenient": 44.5
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 26.7,
+   "lenient": 46.8
+  }
  },
  {
   "contestant": "claude-sonnet-xhigh",
@@ -345,19 +444,106 @@
     "lenient": 55.4
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 17.3,
+    "lenient": 88.1
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 91.1,
+    "lenient": 91.1
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 22.3,
+    "lenient": 80.1
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 44.1,
+   "lenient": 75.3
+  }
+ },
+ {
+  "contestant": "codex-gpt-6.1-sol-high",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 63.6,
+    "lenient": 68.1
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 56.8,
+    "lenient": 61.7
+   },
+   "en_pie": {
+    "n": 42,
+    "of": 42,
+    "strict": 13.7,
+    "lenient": 92.9
+   },
+   "pie_en": {
+    "n": 42,
+    "of": 42,
+    "strict": 96.4,
+    "lenient": 96.4
+   },
+   "dialogue": {
+    "n": 64,
+    "of": 64,
+    "strict": 15.6,
+    "lenient": 95.7
+   }
+  },
+  "pie_score": {
+   "strict": 47.0,
+   "lenient": 84.4
+  }
+ },
+ {
+  "contestant": "codex-gpt-6.1-sol-low",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 60.6,
+    "lenient": 66.0
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 58.4,
+    "lenient": 64.7
+   },
+   "en_pie": {
+    "n": 42,
+    "of": 42,
+    "strict": 7.1,
+    "lenient": 85.7
+   },
+   "pie_en": {
+    "n": 42,
+    "of": 42,
+    "strict": 87.5,
+    "lenient": 87.5
+   },
+   "dialogue": {
+    "n": 64,
+    "of": 64,
+    "strict": 11.7,
+    "lenient": 84.8
+   }
+  },
+  "pie_score": {
+   "strict": 42.3,
+   "lenient": 78.8
+  }
  },
  {
   "contestant": "codex-gpt-6.1-sol-medium",
@@ -371,23 +557,32 @@
    "paradigm": {
     "n": 124,
     "of": 124,
-    "strict": 44.8,
-    "lenient": 47.6
+    "strict": 61.0,
+    "lenient": 66.5
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 17.3,
+    "lenient": 95.2
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 91.7,
+    "lenient": 91.7
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 12.1,
+    "lenient": 88.3
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 47.3,
+   "lenient": 83.6
+  }
  },
  {
   "contestant": "codex-gpt-6.1-terra-high",
@@ -402,22 +597,31 @@
     "n": 124,
     "of": 124,
     "strict": 33.2,
-    "lenient": 39.8
+    "lenient": 39.6
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 8.3,
+    "lenient": 58.9
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 85.1,
+    "lenient": 85.1
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 0.0,
+    "lenient": 53.1
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 32.2,
+   "lenient": 57.7
+  }
  },
  {
   "contestant": "codex-gpt-6.1-terra-low",
@@ -435,19 +639,28 @@
     "lenient": 40.2
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 1.2,
+    "lenient": 54.2
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 81.0,
+    "lenient": 81.0
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 5.9,
+    "lenient": 55.5
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 28.5,
+   "lenient": 54.5
+  }
  },
  {
   "contestant": "codex-gpt-6.1-terra-medium",
@@ -461,23 +674,32 @@
    "paradigm": {
     "n": 124,
     "of": 124,
-    "strict": 35.8,
-    "lenient": 41.5
+    "strict": 39.7,
+    "lenient": 45.8
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 2.4,
+    "lenient": 59.5
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 85.1,
+    "lenient": 85.1
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 7.8,
+    "lenient": 50.4
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 32.0,
+   "lenient": 57.6
+  }
  },
  {
   "contestant": "ours-e3",
@@ -495,19 +717,28 @@
     "lenient": 85.7
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 77.4,
+    "lenient": 79.8
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 83.3,
+    "lenient": 83.3
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 73.4,
+    "lenient": 76.6
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 79.6,
+   "lenient": 81.1
+  }
  },
  {
   "contestant": "ours-rl1-step500",
@@ -525,18 +756,27 @@
     "lenient": 87.6
    },
    "en_pie": {
-    "n": 0,
-    "of": 48
+    "n": 42,
+    "of": 42,
+    "strict": 79.8,
+    "lenient": 86.9
    },
    "pie_en": {
-    "n": 0,
-    "of": 24
+    "n": 42,
+    "of": 42,
+    "strict": 83.3,
+    "lenient": 83.3
    },
    "dialogue": {
-    "n": 0,
-    "of": 74
+    "n": 64,
+    "of": 64,
+    "strict": 77.0,
+    "lenient": 80.1
    }
   },
-  "pie_score": null
+  "pie_score": {
+   "strict": 81.1,
+   "lenient": 83.9
+  }
  }
 ]
