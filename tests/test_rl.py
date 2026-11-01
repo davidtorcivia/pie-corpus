@@ -64,3 +64,20 @@ def test_engine_reward_pays_only_for_the_exact_answer():
     f = json.dumps(["pedés"], ensure_ascii=False)
     assert r.score("pedés", f, "inflect") == r.score("*pedés.", f, "inflect") == 1.0
     assert r.score("pedés or pódos", f, "inflect") == r.score("pedés (genitive)", f, "inflect") == 0.0
+
+
+def test_translation_local_checks():
+    """reward_rl.local decides what it can without the judge, and every cheap exploit scores 0."""
+    sys.path.insert(0, str(ROOT / "training/rl"))
+    import reward_rl
+    from pie.translator.analyze import Analyzer
+    an = Analyzer.load()
+    ans = {"english": "They divided the plunder.", "refs": ["tóy Hrowpóm bʰéh₂gont."]}
+    assert reward_rl.local("tóy Hrowpóm bʰéh₂gont.", ans, an)[0] == 1.0
+    assert reward_rl.local("Tóy Hrowpóm bʰéh₂gont", ans, an)[0] == 1.0          # case and punctuation aside
+    assert reward_rl.local("Hrowpóm tóy bʰéh₂gont.", ans, an)[0] is None        # a reordering: the judge decides
+    assert reward_rl.local("They divided the plunder.", ans, an)[0] == 0.0      # English
+    assert reward_rl.local("tóy Hrowpóm bʰéh₂gont.\nThis means they divided it.", ans, an)[0] == 0.0  # commentary
+    assert reward_rl.local("tóy Hrowpóm xqzzlont.", ans, an)[0] == 0.0          # an invented word
+    assert reward_rl.local(" ".join(["tóy"] * 20), ans, an)[0] == 0.0           # padding
+    assert reward_rl.local("", ans, an)[0] == 0.0

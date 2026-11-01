@@ -68,13 +68,33 @@ def rl_run(d: Path) -> dict:
     """An RL run's synced log dir as the /rl page's run: train/val events as logged by training/rl/grpo.py, the
     per-kind reward means in RL_WINDOW-step windows, and each "<run> generations-<set>-<ckpt> {summary}" line that
     training/score_generations.py printed into eval/summary.txt."""
-    rows = read_jsonl(d / "rewards.jsonl")
+    allrows = read_jsonl(d / "rewards.jsonl")
+    # stage 1b logs the valid split's strata with a "v." prefix (training/rl/reward_rl.py): those rows are the
+    # validation rounds, one run of consecutive rows each, at the steps of the metrics log's val events
+    rows = [r for r in allrows if not any(k.startswith("reward/v.") for k in r)]
     kinds = sorted({k for r in rows for k in r if k.startswith("reward/")})
     rewards = []
     for i in range(0, len(rows), RL_WINDOW):
         w = rows[i:i + RL_WINDOW]
         rewards.append({"step": i + len(w), **{k: round(sum(r[k] for r in w if k in r) / max(1, sum(k in r for r in w)), 4)
-                                               for k in kinds if any(k in r for r in w)}})
+                                               for k in kinds if any(k in r for r in w)},
+                        **({"judge_usd": w[-1]["judge_usd"]} if "judge_usd" in w[-1] else {}),
+                        **({"judge_s": round(sum(r.get("judge_s", 0) for r in w) / len(w), 1)} if "judge_s" in w[-1] else {})})
+    vsteps = [m.get("iteration") for m in read_jsonl(d / "metrics.jsonl") if m.get("event") == "val"]
+    rounds, prev = [], False
+    for r in allrows:
+        isv = any(k.startswith("reward/v.") for k in r)
+        if isv and not prev:
+            rounds.append([])
+        if isv:
+            rounds[-1].append(r)
+        prev = isv
+    val_strata = []
+    for j, w in enumerate(rounds):
+        ks = sorted({k for r in w for k in r if k.startswith("reward/v.")})
+        val_strata.append({"step": vsteps[j] if j < len(vsteps) else None,
+                           **{k.removeprefix("reward/v."): round(sum(r[k] * r["n"] for r in w if k in r) /
+                                                                  max(1, sum(r["n"] for r in w if k in r)), 4) for k in ks}})
     evals = []
     sm = d / "eval" / "summary.txt"
     for line in (sm.read_text("utf-8").splitlines() if sm.exists() else []):
@@ -87,6 +107,7 @@ def rl_run(d: Path) -> dict:
                 pass
     cfg = d / "config.yaml"
     return {"name": d.name, "metrics": read_jsonl(d / "metrics.jsonl"), "rewards": rewards, "evals": evals,
+            "val_strata": val_strata,
             "config": cfg.read_text("utf-8") if cfg.exists() else ""}
 
 

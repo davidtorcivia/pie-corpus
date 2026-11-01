@@ -31,10 +31,10 @@ pre{font-size:12px;color:var(--dim);white-space:pre-wrap;margin:0}
 <h1>PIE reinforcement learning</h1>
 <div class="sub">M3 Ultra · mlx-lm-lora GRPO · synced every 5 min from the Mac · refreshes every 30 s · <a href="/">fine-tuning runs</a> · <span id="when"></span></div>
 <div class="card"><h2>Run <select id="run"></select></h2>
-<table id="sum"><thead><tr><th>status</th><th>step</th><th>reward (train)</th><th>group σ</th><th>KL</th><th>tokens / rollout</th><th>hit limit</th><th>gen s / step</th><th>step s</th><th>memory GB</th><th>val reward</th></tr></thead><tbody></tbody></table></div>
+<table id="sum"><thead><tr><th>status</th><th>step</th><th>reward (train)</th><th>group σ</th><th>KL</th><th>tokens / rollout</th><th>hit limit</th><th>gen s / step</th><th>step s</th><th>memory GB</th><th>val reward</th><th>judge $</th><th>judge s / step</th></tr></thead><tbody></tbody></table></div>
 <div class="grid" style="margin-top:14px">
 <div class="card"><h2>Reward by kind (train)</h2><div class="note">engine reward, mean over 5-step windows</div><canvas id="cRew" height="220"></canvas></div>
-<div class="card"><h2>Validation reward</h2><div class="note">held-out lexemes, never trained on</div><canvas id="cVal" height="220"></canvas></div>
+<div class="card"><h2>Validation reward</h2><div class="note">held-out lexemes and records, never trained on; by stratum (kind, ablauting or not, an inflection&#39;s number): a falling line is a regression</div><canvas id="cVal" height="220"></canvas></div>
 <div class="card"><h2>KL to the SFT model</h2><div class="note">rising fast = drifting from e3 (watch translation and chat)</div><canvas id="cKL" height="180"></canvas></div>
 <div class="card"><h2>Learning signal</h2><div class="note">within-group reward σ: 0 means every rollout of a prompt scored the same and teaches nothing</div><canvas id="cSig" height="180"></canvas></div>
 <div class="card"><h2>Rollout length</h2><div class="note">tokens per rollout and share hitting the cap: a jump is a reward-hacking or looping sign</div><canvas id="cLen" height="180"></canvas></div>
@@ -66,17 +66,19 @@ async function refresh(){
 function draw(){
  const r=runs.find(x=>x.name===document.getElementById("run").value); if(!r)return;
  const tr=r.metrics.filter(m=>m.event==="train"), va=r.metrics.filter(m=>m.event==="val"), done=r.metrics.some(m=>m.event==="done");
- const t=tr[tr.length-1]||{}, v=va[va.length-1]||{}, prev=tr[tr.length-2];
+ const t=tr[tr.length-1]||{}, v=va[va.length-1]||{}, prev=tr[tr.length-2], jw=r.rewards[r.rewards.length-1]||{};
  const stepS=prev&&t.t?(t.t-prev.t)/(t.iteration-prev.iteration):null;
  const total=(r.config.match(/^iters:\s*(\d+)/m)||[])[1];
  document.querySelector("#sum tbody").innerHTML=`<tr><td class="status ${done?"done":"live"}">${done?"done":(tr.length?"training":"starting")}</td>
   <td>${t.iteration??""} / ${total??"?"}</td><td>${f(t.train_total_rewards_mean)}</td><td>${f(t.train_grouped_rewards_std)}</td><td>${f(t.train_kl,4)}</td>
   <td>${f(t.train_average_generated_tokens,0)}</td><td>${pct(t.train_hit_max_tokens_ratio)}</td><td>${prev?f(t.gen_s/(t.iteration-prev.iteration),1):""}</td>
-  <td>${f(stepS,1)}</td><td>${f(t.peak_memory,0)}</td><td>${f(v.val_total_rewards_mean)}</td></tr>`;
- const kinds=[...new Set(r.rewards.flatMap(w=>Object.keys(w).filter(k=>k.startsWith("reward/"))))];
+  <td>${f(stepS,1)}</td><td>${f(t.peak_memory,0)}</td><td>${f(v.val_total_rewards_mean)}</td><td>${f(jw.judge_usd,2)}</td><td>${f(jw.judge_s,1)}</td></tr>`;
+ const kinds=[...new Set(r.rewards.flatMap(w=>Object.keys(w).filter(k=>k.startsWith("reward/")&&(k.match(/:/g)||[]).length<2)))];
  charts.cRew.data.datasets=kinds.map((k,i)=>ds(k.slice(7),i,r.rewards.filter(w=>w[k]!=null).map(w=>({x:w.step,y:w[k]}))))
    .concat([ds("all",5,tr.map(m=>({x:m.iteration,y:m.train_total_rewards_mean})))]);
- charts.cVal.data.datasets=[ds("val reward",1,va.filter(m=>m.val_total_rewards_mean!=null).map(m=>({x:m.iteration,y:m.val_total_rewards_mean})),3)];
+ const vs=r.val_strata||[], vk=[...new Set(vs.flatMap(w=>Object.keys(w).filter(k=>k!=="step")))].sort();
+ charts.cVal.data.datasets=vk.length?vk.map((k,i)=>ds(k,i,vs.filter(w=>w[k]!=null&&w.step!=null).map(w=>({x:w.step,y:w[k]})),3))
+   :[ds("val reward",1,va.filter(m=>m.val_total_rewards_mean!=null).map(m=>({x:m.iteration,y:m.val_total_rewards_mean})),3)];
  charts.cKL.data.datasets=[ds("KL",0,tr.map(m=>({x:m.iteration,y:m.train_kl})))];
  charts.cSig.data.datasets=[ds("group σ",2,tr.map(m=>({x:m.iteration,y:m.train_grouped_rewards_std})))];
  charts.cLen.data.datasets=[ds("tokens / rollout",3,tr.map(m=>({x:m.iteration,y:m.train_average_generated_tokens}))),

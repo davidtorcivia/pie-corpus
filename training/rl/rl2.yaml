@@ -1,0 +1,23 @@
+# RL stage 1b (docs/research/rl-mac.md): the balanced drill mix filtered by e3's pass rate, plus EN→PIE translation
+# judged in tiers (training/rl/reward_rl.py). From e3, not stage 1's step 500. Run by training/rl/pipeline.sh.
+model: /Users/david/AI/PIE-qwen36-e3-oQ5e-mtp
+train: true
+train_mode: grpo
+data: /Users/david/AI/pie-runs/rl/data/rl2
+reward_functions_file: /Users/david/AI/PIE/training/rl/reward_rl.py
+reward_functions: pie_rl
+fuse: false
+batch_size: 8                 # prompts per step: ~3 of them translations
+group_size: 8                 # rollouts per prompt: 64 per step
+max_completion_length: 384
+max_seq_length: 1024
+temperature: 1.0
+learning_rate: 5.0e-6
+beta: 0.1                     # KL to e3
+iters: 500                    # 4,000 prompts: one pass over train.jsonl
+steps_per_report: 5
+steps_per_eval: 100
+val_batches: 22               # all 180 valid prompts, by stratum
+save_every: 25
+seed: 20261101
+grad_checkpoint: true

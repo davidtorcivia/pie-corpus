@@ -64,7 +64,10 @@ Held out (the test checks it): every lexeme with an eval task and every lexeme o
   in tokens per rollout or in the share of rollouts hitting the cap.
 
 **Config** (training/rl/engine_drills.yaml):
-- 8 prompts x 8 rollouts per step, temperature 1.0, cap 384;
+- 8 prompts x 8 rollouts per step, temperature 1.0, cap 384, as configured; **as run, 4 rollouts and a 512-token
+  cap** (found 2026-11-01). mlx-lm-lora applies a YAML value only when the matching CLI option is None, so options
+  with parser defaults (group_size 4, max_completion_length 512) ignored the config. Stage 1 was 32 rollouts per
+  step. training/rl/grpo.py now passes those keys explicitly (yaml_wins);
 - lr 5e-6, beta 0.1, a new rank-8 LoRA over the quantized e3, gradient checkpointing;
 - 500 steps, checkpoints every 25, validation every 50.
 
@@ -142,8 +145,33 @@ The model spread *-h₁e* to thematic and *eh₂* stems. Steps 100 and 250 were 
 - the train reward moved with the held-out scores;
 - the exploit cases score below 1 by construction.
 
+**Group σ in stage 1 was measured over 4 rollouts per prompt**, not 8 (see Config), which makes a 4/4 group more
+likely than an 8/8 one: part of the weak signal.
+
 **Next round (stage 1b):**
 - **Balance the mix:** regular lexemes at about their natural share, so known endings are rehearsed.
 - **Raise the learning signal:** filter to prompts e3 does not reliably get right. Most groups scored 8/8 and taught
   nothing; group σ fell to 0.03 by step 400.
 - **Run longer from step 500,** or from e3 with the new mix.
+
+## Stage 1b: balanced drills + judged EN→PIE (rl2-mix-e3)
+
+Owner, 2026-11-01: agreed on the plan below; the judge is Haiku/Haiku, and only what the local checks cannot decide
+reaches it; everything runs unattended (training/rl/pipeline.sh).
+
+- **Candidates** (make_rl_prompts.py --mix v2): every training lexeme at its natural share; per lexeme 2 undrilled
+  cells, 1 cell the SFT export drilled (an anchor), and a dual for half the nominals; paradigms of every family;
+  EN→PIE translation of training-split records of up to 35 English words. 3,000 inflection, 1,200 paradigm and
+  1,543 translation candidates.
+- **Pass-rate filter** (passrate.py): e3 samples each candidate 4 times at temperature 1.0, scored locally. Drills
+  e3 always gets right are dropped (at most a quarter of the kept ones are never right); translations it reproduces
+  exactly every time are dropped. Train: up to 4,000 prompts, 40% inflection, 20% paradigm, 40% translation.
+- **Reward** (reward_rl.py): drills as stage 1. Translation: local zero for an empty, multi-line or padded answer
+  or any unknown or near-spelled word (which is how an English word fails); local one for a reference; else the
+  judge (judge.py: Haiku high, a second Haiku high call on its flags, wrong only if both say so): ok = 1 (0.95 per
+  word matched only without its accent), wrong = 0, no verdict = 0.5. Every judge call is logged (RUN/judge.jsonl).
+- **Validation by stratum:** 180 prompts of held-out lexemes (2–3 per stem class) and 24 held-out records, logged
+  per kind, ablauting or not, and an inflection's number, on the /rl page every 100 steps.
+- **From e3**, 500 steps of 8 prompts x 8 rollouts, other settings as stage 1.
+- **Smoke test** (2 steps, 64 rollouts per step): generation 34–46 s per step; the judge added 26 s on a step with
+  translations; $0.012 for 2 steps.

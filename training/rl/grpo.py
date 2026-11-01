@@ -8,7 +8,8 @@
 2. Thinking off: the SFT renderer was qwen3_5_disable_thinking (an empty think block), but GRPODataset applies the
    chat template with its default, which opens a think block. Prompts are built with enable_thinking=False.
 3. A metrics log: every report and eval goes to DIR/metrics.jsonl with the step's generation time, plus
-   per-kind reward means from training/rl/reward_engine.py (DIR/rewards.jsonl).
+   per-kind reward means from training/rl/reward_engine.py or reward_rl.py (DIR/rewards.jsonl), and every judge
+   call (DIR/judge.jsonl).
 """
 import json
 import os
@@ -24,6 +25,7 @@ from mlx_lm.tuner.callbacks import TrainingCallback
 RUN = Path(os.environ["PIE_RL_RUN_DIR"])
 RUN.mkdir(parents=True, exist_ok=True)
 os.environ.setdefault("PIE_RL_REWARD_LOG", str(RUN / "rewards.jsonl"))
+os.environ.setdefault("PIE_RL_JUDGE_LOG", str(RUN / "judge.jsonl"))       # every judge call (reward_rl.py)
 LOG = open(RUN / "metrics.jsonl", "a", encoding="utf-8")
 GEN = {"s": 0.0, "tokens": 0, "rollouts": 0}
 
@@ -96,7 +98,27 @@ class Metrics(TrainingCallback):
 _run = tr.run
 tr.run = lambda args, training_callback=None: _run(args, Metrics())
 
+def yaml_wins(argv: list[str]) -> list[str]:
+    """mlx-lm-lora applies a config value only when the matching CLI option is None, so an option with a parser
+    default (group_size 4, max_completion_length 512) silently ignores the YAML: stage 1 ran with 4 rollouts per
+    prompt, not the configured 8 (found 2026-11-01). Pass those keys explicitly; explicit CLI args still win."""
+    import yaml
+    if "--config" not in argv:
+        return argv
+    cfg = yaml.load(open(argv[argv.index("--config") + 1]), Loader=tr.yaml_loader)
+    parser = tr.build_parser()
+    defaults = vars(parser.parse_args([]))
+    given = {a.lstrip("-").replace("-", "_") for a in argv if a.startswith("--")}
+    extra = []
+    for k, v in cfg.items():
+        if defaults.get(k) is not None and defaults[k] != v and k not in given:
+            flag = next(o for a in parser._actions if a.dest == k for o in a.option_strings if o.startswith("--"))
+            extra += [flag] if v is True else [] if v is False else [flag, str(v)]
+    return argv + extra
+
+
 if __name__ == "__main__":
+    sys.argv = [sys.argv[0]] + yaml_wins(sys.argv[1:])
     log({"event": "start", "argv": sys.argv[1:]})
     tr.main()
     log({"event": "done"})

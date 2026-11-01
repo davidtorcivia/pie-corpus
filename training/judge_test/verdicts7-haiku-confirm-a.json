@@ -1,0 +1,326 @@
+[
+{
+"id": "J02",
+"verdict": "wrong",
+"word": "h₂idnéweti",
+"reason": "The verb h₂idnéwti means 'swell', not 'come', so 'Will he come here?' is mistranslated; the verb for 'come' is gʷémt, as used in the next sentence.",
+"in": 2996,
+"out": 3845,
+"s": 17.9
+},
+{
+"id": "J03",
+"verdict": "wrong",
+"word": "n̥sméy",
+"reason": "'with us' needs the comitative case (instrumental or accusative after ḱóm), but n̥sméy is dative, which ḱóm does not govern.",
+"in": 2936,
+"out": 3038,
+"s": 14.5
+},
+{
+"id": "J04",
+"verdict": "wrong",
+"word": "wédnōm",
+"reason": "'wédnōm' is a genitive plural, but 'the water' is the direct object of 'carry' and needs the accusative singular (wódr̥), as the later 'wódr̥' correctly uses.",
+"in": 2994,
+"out": 1104,
+"s": 6.9
+},
+{
+"id": "J06",
+"verdict": "wrong",
+"word": "gʷr̥h₃éte",
+"reason": "The English question 'Did he devour the goat?' needs a third-person verb, but gʷr̥h₃éte is a second-person plural form (-te), not a 3SG form like the later gʷr̥h₃ét.",
+"in": 2615,
+"out": 1546,
+"s": 7.6
+},
+{
+"id": "J07",
+"verdict": "wrong",
+"word": "h₁wogʷʰéyes",
+"reason": "The question 'Did you fight over the spring?' needs a form of the verb 'fight', but h₁wogʷʰéyes is analysed as 'vow', a different verb.",
+"in": 3437,
+"out": 1810,
+"s": 8.7
+},
+{
+"id": "J08",
+"verdict": "wrong",
+"word": "h₂élyoyh₁",
+"reason": "The adjective 'other' is a dual form, but it modifies the singular ablative noun ḱóymōd 'village' and must agree in number and case.",
+"in": 3049,
+"out": 4056,
+"s": 19.4
+},
+{
+"id": "J09",
+"verdict": "wrong",
+"word": null,
+"reason": "The English says 'no wolf came', but the PIE has no negation (no ne or ne-type particle) before h₁ludʰét, so the negation is lost.",
+"in": 2284,
+"out": 1309,
+"s": 8.2
+},
+{
+"id": "J10",
+"verdict": "wrong",
+"word": "ǵl̥h₂éwi",
+"reason": "The address 'sister-in-law' needs a vocative, but ǵl̥h₂éwi is parsed as locative singular, which is the wrong case for the role.",
+"in": 2551,
+"out": 2354,
+"s": 11.3
+},
+{
+"id": "J12",
+"verdict": "wrong",
+"word": "bʰléh₁wom",
+"reason": "The object 'the pot' is rendered by bʰléh₁wom, which the analysis gives as the adjective 'colorful' (ACC.SG), not a noun for pot, so the sentence has no correct object for 'hide the pot'.",
+"in": 2762,
+"out": 2256,
+"s": 10.1
+},
+{
+"id": "J13",
+"verdict": "wrong",
+"word": "ǵr̥h₂n̥tyéh₂i",
+"reason": "'to the old man' needs a masculine accusative after próti 'towards', but this is a feminine locative singular form.",
+"in": 2675,
+"out": 1955,
+"s": 10.7
+},
+{
+"id": "J17",
+"verdict": "wrong",
+"word": "stéla",
+"reason": "The opening vocative 'stéla' means 'earth mound', not 'grandmother' (which is h₂énHe, used later in the text).",
+"in": 2801,
+"out": 1558,
+"s": 8.9
+},
+{
+"id": "J18",
+"verdict": "ok",
+"word": null,
+"reason": "Each clause matches the English: vocative, middle past 'was born', imperative 'set', genitive/dative pronouns, aorist 'died', subjunctives for the future and modal forms, and the neuter accusative adjective agreeing with h₁nómn̥.",
+"in": 3037,
+"out": 2314,
+"s": 12.5
+},
+{
+"id": "J19",
+"verdict": "wrong",
+"word": "gʷr̥h₃ónti",
+"reason": "The English question 'Do they not eat the wheat?' is negative, but the PIE question 'puHróm gʷr̥h₃ónti?' has no negation particle, so the negation is lost.",
+"in": 3022,
+"out": 1251,
+"s": 6.3
+},
+{
+"id": "J21",
+"verdict": "wrong",
+"word": "h₁épm̥",
+"reason": "The English says the speaker presently grasps ('I grasp it'), but h₁épm̥ is an aorist or past 1SG form, so the tense is wrong; the present would be needed.",
+"in": 2846,
+"out": 1735,
+"s": 10.0
+},
+{
+"id": "J22",
+"verdict": "wrong",
+"word": "h₃n̥gʷéni",
+"reason": "The English says 'by the fire', but h₃n̥gʷéni is the locative of h₃éngʷn̥ 'fat', so the noun has the wrong meaning.",
+"in": 2214,
+"out": 1395,
+"s": 7.9
+},
+{
+"id": "J24",
+"verdict": "wrong",
+"word": null,
+"reason": "The English 'It does not love her' has its negation dropped: the PIE 'h₁íh₂m̥ lubʰyéti h₁íd dʰréwgʰt' lacks a 'ne', so the negation is missing.",
+"in": 2799,
+"out": 1104,
+"s": 6.0
+},
+{
+"id": "J29",
+"verdict": "wrong",
+"word": "donḱéh₂i",
+"reason": "The English 'on the earth' needs the word for earth (dʰéǵʰōm, locative dʰéǵʰmi), but donḱéh₂ is glossed as 'tongs'.",
+"in": 2382,
+"out": 1106,
+"s": 7.0
+},
+{
+"id": "J30",
+"verdict": "wrong",
+"word": "h₃épnesih₁",
+"reason": "'Wealth' is singular in the English ('Wealth feeds a house', with a singular verb), but this form is parsed as dual, not the singular h₃épnos; the h₁éterōy 'to the other' in the horses clause also reverses the English 'the one has many horses'.",
+"in": 2921,
+"out": 3161,
+"s": 14.1
+},
+{
+"id": "J31",
+"verdict": "wrong",
+"word": "Hyowdʰéyeti",
+"reason": "The English says the wind 'does not shake' the post, but the PIE has no negative particle (such as ne or mḗ) before the verb, so the negation is lost.",
+"in": 2896,
+"out": 1575,
+"s": 8.5
+},
+{
+"id": "J32",
+"verdict": "wrong",
+"word": "kʷid",
+"reason": "The English says 'Men hide nothing', but the PIE 'h₂néres kʷid ḱélonti' has no negation, so 'kʷid' (an interrogative 'what/anything') leaves the negation out and reads as 'Men hide something'.",
+"in": 3344,
+"out": 2816,
+"s": 13.2
+},
+{
+"id": "J34",
+"verdict": "wrong",
+"word": "dédeh₃t",
+"reason": "The English says the wife 'was not giving' food, but the PIE has no negation (no ne or mḗ) before dédeh₃t, so the negation is lost.",
+"in": 2985,
+"out": 760,
+"s": 5.3
+},
+{
+"id": "J38",
+"verdict": "wrong",
+"word": "kʷid",
+"reason": "The English 'You owe me nothing' needs a negation (e.g. ne/nēd + kʷid), but the PIE 'moy kʷid dʰl̥gʰési' has none, so it reads as 'you owe me something'.",
+"in": 2664,
+"out": 1119,
+"s": 6.6
+},
+{
+"id": "J39",
+"verdict": "wrong",
+"word": "h₂éǵros",
+"reason": "The reflexive ablative swṓd ('from my field') agrees with h₂éǵros, which the analysis reads only as NOM.SG, so the noun's case does not match the ablative the sentence needs.",
+"in": 3103,
+"out": 2908,
+"s": 13.3
+},
+{
+"id": "J41",
+"verdict": "wrong",
+"word": "séseti",
+"reason": "The English says 'will not sleep here', but the PIE sentence 'pótnih₂ moy h₁idʰé séseti' has no negation (ne is missing before séseti).",
+"in": 2813,
+"out": 1424,
+"s": 7.1
+},
+{
+"id": "J44",
+"verdict": "wrong",
+"word": "steh₂tleh₂",
+"reason": "The analysis glosses it as 'heel', which does not match the English 'In the dream' or any role in the sentence, so it is an extra, wrong-meaning word before the locative swópniyoy.",
+"in": 3381,
+"out": 2409,
+"s": 10.7
+},
+{
+"id": "J46",
+"verdict": "wrong",
+"word": "h₁swós",
+"reason": "The English asks 'Where is the ford?' with no possessive, but h₁swós means 'your' (plural), adding an unsupported word, and the sentence has no 'is' verb to match its analysed PRS.1DU reading.",
+"in": 2719,
+"out": 2816,
+"s": 13.5
+},
+{
+"id": "J48",
+"verdict": "wrong",
+"word": "pnéwmn̥",
+"reason": "pnéwmn̥ means 'breath/spirit', not 'cattle', so the object of 'drive the cattle out' is mistranslated (the cattle would need a word like pḱú or gʷṓws).",
+"in": 2709,
+"out": 1995,
+"s": 11.1
+},
+{
+"id": "J49",
+"verdict": "wrong",
+"word": "h₂téwǵoh₂",
+"reason": "The English says 'I shall pour it', but the engine glosses h₂téwǵoh₂ as the verb 'spread terror', so the verb means the wrong thing.",
+"in": 2610,
+"out": 1495,
+"s": 7.3
+},
+{
+"id": "J51",
+"verdict": "wrong",
+"word": "luǵréh₂",
+"reason": "The English says \"I am not sad\", but the PIE \"h₁eǵóh₂ luǵréh₂\" has no negation (no ne), so it asserts the opposite.",
+"in": 2847,
+"out": 1145,
+"s": 6.1
+},
+{
+"id": "J52",
+"verdict": "wrong",
+"word": "kh₃túbʰos",
+"reason": "The first 'in battle' should be a locative singular (like the later kh₃téwi), but kh₃túbʰos is a dative/ablative plural.",
+"in": 2727,
+"out": 1519,
+"s": 7.2
+},
+{
+"id": "J53",
+"verdict": "wrong",
+"word": "h₂éḱmonh₁e",
+"reason": "The English says 'in a stone' (singular, locative), but the PIE form h₂éḱmonh₁e is a dual (nominative/accusative/vocative) rather than a singular locative.",
+"in": 2697,
+"out": 1006,
+"s": 5.0
+},
+{
+"id": "J54",
+"verdict": "wrong",
+"word": "méh₂teres",
+"reason": "méh₂tēr means 'mother', not 'woman' (which would be something like gʷnéh₂ikes), so the question asks whether mothers climb onto roofs.",
+"in": 2347,
+"out": 1670,
+"s": 7.9
+},
+{
+"id": "J55",
+"verdict": "ok",
+"word": null,
+"reason": "Each sentence matches the English in case, number, person, tense and negation, and the word order is loose but acceptable.",
+"in": 2747,
+"out": 3730,
+"s": 17.7
+},
+{
+"id": "J56",
+"verdict": "wrong",
+"word": "bʰuHyéti",
+"reason": "The English says the ram does not grow again, but the second clause 'moysós bʰuHyéti' has no negation (no ne/ne-type particle), so it asserts the opposite of the English.",
+"in": 2750,
+"out": 1245,
+"s": 5.9
+},
+{
+"id": "J57",
+"verdict": "wrong",
+"word": null,
+"reason": "The English 'Why does Sky not kill the wolves?' has its negation, but the PIE 'kʷíd dyḗws wĺ̥kʷons moréyeti?' has no 'ne' and so asks 'Why does Sky kill the wolves?'",
+"in": 3114,
+"out": 882,
+"s": 3.9
+},
+{
+"id": "J58",
+"verdict": "wrong",
+"word": "légʰs",
+"reason": "The English is a prohibition ('do not lie down'), but the PIE has no negation (no mḗ or ne) before the injunctive légʰs, so the negation is lost and the sentence becomes an affirmative command.",
+"in": 2578,
+"out": 2281,
+"s": 11.2
+}
+]
