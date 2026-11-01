@@ -41,8 +41,106 @@ def lenient(s: str) -> str:
     return " ".join(s.split())
 
 
+ALIAS = {"INST": "INS", "INSTR": "INS", "INSTRUMENTAL": "INS", "NOMINATIVE": "NOM", "ACCUSATIVE": "ACC",
+         "GENITIVE": "GEN", "DATIVE": "DAT", "ABLATIVE": "ABL", "LOCATIVE": "LOC", "VOCATIVE": "VOC",
+         "SINGULAR": "SG", "PLURAL": "PL", "DUAL": "DU", "MASC": "M", "FEM": "F", "NEUT": "N", "MASCULINE": "M",
+         "FEMININE": "F", "NEUTER": "N", "PRESENT": "PRS", "AORIST": "AOR", "PERFECT": "PRF", "IMPERFECT": "IMPF",
+         "IMPERATIVE": "IMP", "SUBJUNCTIVE": "SBJV", "OPTATIVE": "OPT", "MIDDLE": "MID", "MEDIOPASSIVE": "MID",
+         "ACTIVE": "ACT", "INDICATIVE": "IND", "PAST": "PST", "FUTURE": "FUT"}
+LABEL_WORD = re.compile(r"(NOM|VOC|ACC|GEN|ABL|DAT|LOC|INS|SG|DU|PL|M|F|N|[123](SG|DU|PL)?|[123](ST|ND|RD)|PRS|AOR|PRF|"
+                        r"IMPF|PST|MID|ACT|IMP|SBJV|OPT|FUT|PTCP|PERF|PRES|IND|INJ)")
+BLOCK = {"PRES": "PRS", "PERF": "PRF"}
+
+
+def label(raw: str) -> str:
+    parts = [BLOCK.get(ALIAS.get(p, p), ALIAS.get(p, p)) for p in re.split(r"[.\s]+", raw.upper()) if p]
+    out = []
+    for p in parts:                                   # "1 SG" or "1ST SG" -> 1SG
+        if out and re.fullmatch(r"SG|DU|PL", p) and re.fullmatch(r"[123](ST|ND|RD)?", out[-1]):
+            out[-1] = out[-1][0] + p
+        else:
+            out.append(p)
+    return ".".join(out)
+
+
+CASES = {"NOM", "VOC", "ACC", "GEN", "ABL", "DAT", "LOC", "INS"}
+NUMS = {"SG", "DU", "PL"}
+GENDERS = {"M", "F", "N"}
+BLOCKS = {"PRS", "AOR", "PRF", "IMPF", "PST", "MID", "ACT", "IMP", "SBJV", "OPT", "FUT", "IND", "INJ"}
+
+
+def _word(t: str) -> str:
+    w = t.strip(".()[]").upper()
+    return BLOCK.get(ALIAS.get(w, w), ALIAS.get(w, w))
+
+
 def cells(text: str) -> dict:
-    return {m[1]: m[2] for m in re.finditer(r"([A-Z][A-Z0-9.]+)\s*:\s*\*?([^\s,;]+)", text)}
+    """A paradigm answer's cells, whatever its layout: rows ("NOM.SG: x", "nom.sg. *x", "- **Masc. nom. sg.**: x",
+    "1sg x"), inline lists under a header ("Singular: nom. x; acc. y"), and shared rows ("nom/acc sg x"). A
+    scanner: grammatical words (case, number, gender, person, tense block; "/" joins alternatives) build a label,
+    the next other word is its form; a number, gender or block given alone is a header that carries on."""
+    out = {}
+    ctx = {"num": None, "gender": None, "block": []}
+    cases, persons, num, gender, block, lead, lead_g, lead_b = [], [], None, None, [], False, False, False
+    text = text.replace("*", " ").replace("•", " ")
+    for t in re.findall(r"[^\s;,:|=–]+", text):
+        subs = [_word(x) for x in re.split(r"[/.]", t) if x.strip(".()")]
+        if subs and all(x in CASES or x in NUMS or x in GENDERS or x in BLOCKS or re.fullmatch(r"[123](SG|DU|PL)?|[123](ST|ND|RD)", x)
+                        for x in subs):
+            for x in subs:
+                if x in CASES:
+                    cases.append(x)
+                elif x in NUMS:
+                    if not cases and not persons:
+                        lead = True               # a number before any case: a header, if a form follows later
+                    if persons and re.fullmatch(r"[123](ST|ND|RD)?", persons[-1]):
+                        persons[-1] = persons[-1][0] + x
+                    else:
+                        num = x
+                elif x in GENDERS:
+                    lead_g = lead_g or not cases and not persons
+                    gender = x
+                elif x in BLOCKS:
+                    lead_b = lead_b or not cases and not persons
+                    if x not in ("ACT", "IND"):     # the key writes the active indicative unmarked
+                        block.append(x)
+                else:
+                    persons.append(x)
+            continue
+        if not any(c.isalpha() for c in t):
+            continue
+        form = t.strip(",;.")
+        if cases or persons:
+            n, g, bl = num or ctx["num"], gender or ctx["gender"], block or ctx["block"]
+            for c in cases:
+                out.setdefault(".".join([*([g] if g else []), *bl, c, *([n] if n else [])]), form)
+            for pr in persons:                     # "du 1 x" / "Dual: 1 x": a bare person takes the number
+                pr = pr + n if re.fullmatch(r"[123]", pr) and n else pr
+                out.setdefault(".".join([*bl, pr]), form)
+        else:                                          # a header ("Singular", "Masculine", "Present") then prose
+            pass
+        if num:                                    # a number carries on to the rows after it
+            ctx["num"] = num
+        if gender and (lead_g or not cases and not persons):
+            ctx["gender"] = gender
+        if block and (lead_b or not cases and not persons):
+            ctx["block"] = block
+        cases, persons, num, gender, block, lead, lead_g, lead_b = [], [], None, None, [], False, False, False
+    return out
+
+
+def lookup(got: dict, cell: str, ref: dict) -> str:
+    """The answer's form for a reference cell: the same label, or a label the cell ends with when no other
+    reference cell does (a verb block's '1SG' for 'PRS.1SG', an adjective's 'NOM.SG' when one gender was asked)."""
+    if cell in got:
+        return got[cell]
+    for lab, form in got.items():                     # the answer's label is shorter: '1SG' for 'PRS.1SG'
+        if cell.endswith("." + lab) and sum(c.endswith("." + lab) or c == lab for c in ref) == 1:
+            return form
+    for lab, form in got.items():                     # or longer: 'N.NOM.SG' for 'NOM.SG' in a one-gender table
+        if lab.endswith("." + cell) and sum(lab.endswith("." + c) for c in ref) == 1:
+            return form
+    return ""
 
 
 def score_item(k: dict, answer: str) -> dict:
@@ -50,9 +148,10 @@ def score_item(k: dict, answer: str) -> dict:
         a = answer.strip().split("\n")[0]
         return {"strict": float(strict(a) == strict(k["reference"])), "lenient": float(lenient(a) == lenient(k["reference"]))}
     if k["segment"] == "paradigm":
-        ref, got = cells(k["reference"]), cells(answer)
-        return {"strict": sum(strict(got.get(c, "")) == strict(v) for c, v in ref.items()) / len(ref),
-                "lenient": sum(lenient(got.get(c, "")) == lenient(v) for c, v in ref.items()) / len(ref)}
+        ref = {label(c): f for c, f in (r.split(": ", 1) for r in k["reference"].splitlines() if ": " in r)}
+        got = cells(answer)
+        return {"strict": sum(strict(lookup(got, c, ref)) == strict(v) for c, v in ref.items()) / len(ref),
+                "lenient": sum(lenient(lookup(got, c, ref)) == lenient(v) for c, v in ref.items()) / len(ref)}
     return {}
 
 

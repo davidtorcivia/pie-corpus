@@ -1,5 +1,5 @@
 """Claude contestants (the pie-bench subagent, benchmarks/README.md): build each batch's prompt, and file the
-answers the subagent's submit_answers tool wrote (benchmarks/inbox/<run>--<batch>.jsonl) into
+answers from each run transcript's own submit_answers calls (the inbox copy is a backup) into
 benchmarks/results/claude-<model>-<effort>/answers.jsonl, with the blindness audit of each run's transcript.
 
     python3 -I benchmarks/claude_batches.py prompt BATCH            # the prompt text for one batch
@@ -31,8 +31,10 @@ def prompt(batch: str, run: str) -> str:
     return f"Batch {run}--{batch}. Items:\n{json.dumps(body, ensure_ascii=False, indent=1)}"
 
 
-def audit(transcript: Path) -> tuple[list[str], dict]:
-    calls, usage = [], {"input": 0, "cache_creation": 0, "cache_read": 0, "output": 0}
+def audit(transcript: Path) -> tuple[list[str], dict, dict]:
+    """(tool calls, usage, answers): the answers are read from the transcript's own submit_answers calls, so a
+    contestant that garbles the batch id when submitting (Haiku high did, twice) is still filed correctly."""
+    calls, usage, answers = [], {"input": 0, "cache_creation": 0, "cache_read": 0, "output": 0}, {}
     seen = set()
     for line in transcript.read_text("utf-8").splitlines():
         try:
@@ -46,13 +48,16 @@ def audit(transcript: Path) -> tuple[list[str], dict]:
             if isinstance(blk, dict) and blk.get("type") == "tool_use" and blk.get("id") not in seen:
                 seen.add(blk.get("id"))
                 calls.append(blk["name"])
+                if blk["name"].endswith("submit_answers"):
+                    for x in (blk.get("input") or {}).get("answers") or []:
+                        answers.setdefault(str(x.get("id")), str(x.get("answer", "")))
         u, mid = m.get("usage"), m.get("id")
         if u and mid not in seen:              # one usage per API message (a message is logged once per block)
             seen.add(mid)
             for k, src in (("input", "input_tokens"), ("cache_creation", "cache_creation_input_tokens"),
                            ("cache_read", "cache_read_input_tokens"), ("output", "output_tokens")):
                 usage[k] += u.get(src) or 0
-    return calls, usage
+    return calls, usage, answers
 
 
 def collect(run: str, transcripts: list[str]):
@@ -67,11 +72,7 @@ def collect(run: str, transcripts: list[str]):
         batch = next((b for b in bs if f"{run}--{b}" in text), None)
         if not batch or batch in have:
             continue
-        calls, usage = audit(t)
-        inbox = HERE / "inbox" / f"{run}--{batch}.jsonl"
-        ans = {}
-        for r in map(json.loads, inbox.read_text("utf-8").splitlines() if inbox.exists() else []):
-            ans.setdefault(r["id"], r["answer"])          # first submission wins
+        calls, usage, ans = audit(t)
         want = bs[batch]["items"]
         bad = [c for c in calls if c not in ALLOWED]
         status = "tool_call" if bad else "ok" if all(i in ans for i in want) else "partial"
