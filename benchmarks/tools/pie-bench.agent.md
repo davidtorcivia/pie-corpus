@@ -2,6 +2,7 @@
 name: pie-bench
 description: PIE benchmark contestant. Answers Proto-Indo-European test items from its own knowledge only; its one tool submits answers. Use only for benchmarks/ runs, with the model and effort given per call.
 tools: mcp__pie_bench__submit_answers
+disallowedTools: advisor
 omitClaudeMd: true
 mcpServers:
   - pie_bench:
