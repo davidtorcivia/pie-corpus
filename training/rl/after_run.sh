@@ -5,7 +5,7 @@
 # Writes RUN/eval/generations-<set>-<ckpt>.jsonl and scores-*.json; RUN/eval/summary.txt
 set -uo pipefail
 NAME=$1; shift
-CKPTS=(${@:-0000100 0000250 final})
+CKPTS=("$@"); (( ${#CKPTS} )) || CKPTS=(0000100 0000250 final)
 HERE=${0:A:h}; ROOT=${HERE:h:h}
 RUN=/Users/david/AI/pie-runs/rl/runs/$NAME
 PY=/Users/david/AI/pie-runs/rl/.venv/bin/python

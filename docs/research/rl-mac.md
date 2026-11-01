@@ -96,3 +96,53 @@ Tiered, so most rewards never reach an LLM:
 
 Expected: 5–15% of rollouts reach tier 3, about $10–20 per run. The first step with the key is a repeat of the
 Haiku-high judge test (training/judge_test) to confirm its 34/35.
+
+### Result (finished 2026-11-01 05:31 EST; 500 steps in about 4.5 h)
+
+- **Speed:** steps averaged about 33 s, between 20 and 40 s depending on how many paradigms the batch held.
+- **Training metrics:**
+  - train reward 0.81–0.95, noisy per batch;
+  - KL to e3 stayed at 0.04–0.13;
+  - tokens per rollout 40–90, with no rollout hitting the cap.
+- **Checkpoint scores:** the frozen prompts were re-scored greedily through mlx_lm (eval_ckpt.py). "base" is e3 itself
+  on the same path; its v1 numbers sit within a point of the omlx ones.
+
+| v2 drills (371, held-out lexemes) | inflect exact | abl / non | paradigm cells | abl / non |
+|---|---|---|---|---|
+| e3 (base) | 79.4% | 69.6% / 91.5% | 83.5% | 72.6% / 93.9% |
+| step 100 | 76.0% | 67.7% / 86.0% | 82.4% | 67.4% / 96.7% |
+| step 250 | 76.3% | 70.9% / 82.9% | 81.5% | 70.3% / 92.3% |
+| **step 500** | 78.4% | **70.9%** / 87.6% | **87.5%** | **76.0% / 98.5%** |
+
+| v1 (246) | chrF | inflect exact | paradigm cells | EN→PIE task / app | PIE→EN task / app | dialogue (4 kinds) |
+|---|---|---|---|---|---|---|
+| e3 (base) | 61.1 | 85.4% | 86.9% | 43.6 / 52.7 | 55.5 / 61.9 | 27.8 / 29.7 / 30.1 / 26.9 |
+| step 500 | 61.2 | 85.4% | 87.0% | 42.9 / 52.4 | 58.8 / 62.7 | 27.0 / 25.6 / 29.3 / 30.5 |
+
+**What it did:**
+- **Gains:** paradigm tables of held-out lexemes improved by 4 points, both ablauting (+3.4) and regular (+4.6).
+  Single ablauting forms are slightly better (+1.3).
+- **Losses:** single forms of regular lexemes are worse (91.5% → 87.6%).
+- **Unchanged:** translation and dialogue are flat within single-reference noise, so the KL term held them.
+
+**The regression has a recognizable pattern.** Of the inflections step 250 lost, most were duals that gained a stray *-e*:
+- *h₁óloh₁* → *h₁óloh₁e*;
+- *donḱéh₂h₁* → *donḱéh₂h₁e*;
+- *dʰubʰréh₂h₁* → *dʰubʰréh₂h₁e*.
+
+The cause looks like the mix:
+- Every one of its 50 *-h₁e* dual targets (the consonant-stem ending) came from ablauting lexemes.
+- 71% of the prompts were ablauting.
+
+The model spread *-h₁e* to thematic and *eh₂* stems. Steps 100 and 250 were worse than e3 overall, and step 500 recovered most of that: early RL churns before it settles.
+
+**No sign of reward hacking:**
+- rollout lengths stayed short, and none hit the cap;
+- the train reward moved with the held-out scores;
+- the exploit cases score below 1 by construction.
+
+**Next round (stage 1b):**
+- **Balance the mix:** regular lexemes at about their natural share, so known endings are rehearsed.
+- **Raise the learning signal:** filter to prompts e3 does not reliably get right. Most groups scored 8/8 and taught
+  nothing; group σ fell to 0.03 by step 400.
+- **Run longer from step 500,** or from e3 with the new mix.
