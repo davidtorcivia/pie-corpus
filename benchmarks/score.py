@@ -1,7 +1,7 @@
 """Score benchmark contestants (benchmarks/README.md): inflection and paradigm by the key, strict and lenient; the
 judged segments (EN→PIE, PIE→EN, dialogue) from the judges' verdict files once they exist.
 
-    python3 -I benchmarks/score.py [CONTESTANT ...]      # default: every benchmarks/results/*/answers.jsonl
+    uv run python -I benchmarks/score.py [CONTESTANT ...]   # default: every benchmarks/results/*/answers.jsonl
 
 Writes results/<contestant>/scores.json and results/summary.json.
 """
@@ -14,6 +14,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 WEIGHTS = {"inflection": 20, "paradigm": 15, "en_pie": 30, "pie_en": 20, "dialogue": 15}
 JUDGED = ("en_pie", "pie_en", "dialogue")
+JUDGES = 2                    # an item counts once both judges (Opus, GPT) have graded it
 
 ASCII = [("gwh", "gʷʰ"), ("kwh", "kʷʰ"), ("bh", "bʰ"), ("dh", "dʰ"), ("gh", "gʰ"), ("kw", "kʷ"), ("gw", "gʷ"),
          ("k'", "ḱ"), ("g'", "ǵ"), ("h1", "h₁"), ("h2", "h₂"), ("h3", "h₃"), ("ʷ", "ʷ")]
@@ -155,14 +156,37 @@ def score_item(k: dict, answer: str) -> dict:
     return {}
 
 
-def judged(contestant: str) -> dict:
-    """Mean of the judges' verdicts per item: results/<c>/judge-<judge>.jsonl rows {id, score, notation_ok}."""
+_AN = None
+
+
+def notation_ok(text: str) -> bool:
+    """Strict notation for a PIE answer: every word is a form the project's engine knows, exactly or but for an
+    accent (pie.translator.analyze), so a mainstream spelling the project writes differently fails strict only."""
+    global _AN
+    if _AN is None:
+        sys.path.insert(0, str(HERE.parent))
+        from pie.translator.analyze import Analyzer
+        _AN = Analyzer.load()
+    ws = [p for w in text.split() for p in w.strip(".,;:?!\"“”'()«»").split("-") if p]
+    return bool(ws) and all(_AN.word(w)[1] in ("exact", "unaccented") for w in ws)
+
+
+def judged(contestant: str, key: dict, answers: dict) -> dict:
+    """Per item: the mean of the judges' scores (results/<c>/judge-<judge>.jsonl), lenient; strict also needs the
+    PIE in the project's notation (notation_ok) where the answer is PIE (EN→PIE, dialogue)."""
+    sys.path.insert(0, str(HERE))
+    from judge_packets import part
     out = {}
     for f in sorted((HERE / "results" / contestant).glob("judge-*.jsonl")):
         for r in map(json.loads, f.read_text("utf-8").splitlines()):
             out.setdefault(r["id"], []).append(r)
-    return {i: {"strict": sum(r["score"] * bool(r.get("notation_ok")) for r in rs) / len(rs),
-                "lenient": sum(r["score"] for r in rs) / len(rs), "judges": len(rs)} for i, rs in out.items()}
+    res = {}
+    for i, rs in out.items():
+        m = sum(r["score"] for r in rs) / len(rs)
+        pie = key[i]["segment"] != "pie_en"
+        ok = notation_ok(part(key[i]["kind"], answers.get(i, ""))) if pie else True
+        res[i] = {"strict": m * ok, "lenient": m, "judges": len(rs), "notation_ok": ok}
+    return res
 
 
 def score(contestant: str) -> dict:
@@ -170,11 +194,11 @@ def score(contestant: str) -> dict:
     ans = {}
     for r in map(json.loads, (HERE / "results" / contestant / "answers.jsonl").read_text("utf-8").splitlines()):
         ans.setdefault(r["id"], r["answer"])
-    jd = judged(contestant)
+    jd = judged(contestant, key, ans)
     items = {}
     for i, k in key.items():
         if k["segment"] in JUDGED:
-            if i in jd:
+            if i in jd and jd[i]["judges"] >= JUDGES:
                 items[i] = {"segment": k["segment"], **jd[i]}
         elif i in ans:
             items[i] = {"segment": k["segment"], **score_item(k, ans[i])}

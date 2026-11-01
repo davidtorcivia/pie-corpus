@@ -1,78 +1,18 @@
 [
  {
-  "contestant": "claude-haiku-low",
+  "contestant": "claude-sonnet-high",
   "segments": {
    "inflection": {
     "n": 335,
     "of": 335,
-    "strict": 17.9,
-    "lenient": 24.8
+    "strict": 38.8,
+    "lenient": 44.2
    },
    "paradigm": {
     "n": 124,
     "of": 124,
-    "strict": 16.5,
-    "lenient": 22.1
-   },
-   "en_pie": {
-    "n": 0,
-    "of": 48
-   },
-   "pie_en": {
-    "n": 0,
-    "of": 24
-   },
-   "dialogue": {
-    "n": 0,
-    "of": 74
-   }
-  },
-  "pie_score": null
- },
- {
-  "contestant": "claude-haiku-medium",
-  "segments": {
-   "inflection": {
-    "n": 335,
-    "of": 335,
-    "strict": 19.4,
-    "lenient": 24.8
-   },
-   "paradigm": {
-    "n": 124,
-    "of": 124,
-    "strict": 17.7,
-    "lenient": 23.0
-   },
-   "en_pie": {
-    "n": 0,
-    "of": 48
-   },
-   "pie_en": {
-    "n": 0,
-    "of": 24
-   },
-   "dialogue": {
-    "n": 0,
-    "of": 74
-   }
-  },
-  "pie_score": null
- },
- {
-  "contestant": "claude-haiku-high",
-  "segments": {
-   "inflection": {
-    "n": 335,
-    "of": 335,
-    "strict": 21.8,
-    "lenient": 26.9
-   },
-   "paradigm": {
-    "n": 124,
-    "of": 124,
-    "strict": 23.7,
-    "lenient": 30.8
+    "strict": 35.4,
+    "lenient": 40.8
    },
    "en_pie": {
     "n": 0,
