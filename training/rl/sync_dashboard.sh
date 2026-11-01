@@ -16,6 +16,6 @@ while true; do
   fi
   scp -q $RUN/config.yaml $RUN/metrics.jsonl $RUN/rewards.jsonl "tr-desktop:$DEST/" 2>/dev/null
   [ -f $RUN/eval/summary.txt ] && scp -q $RUN/eval/summary.txt "tr-desktop:$DEST/eval/" 2>/dev/null
-  grep -q "after_run done" $RUN/eval/summary.txt 2>/dev/null && break
+  [ -n "$deployed" ] && grep -q "after_run done" $RUN/eval/summary.txt 2>/dev/null && break
   sleep 300
 done
