@@ -10,6 +10,7 @@ A round judges only the (item, contestant) pairs not yet judged by that judge, s
 round without re-judging the others.
 """
 import hashlib
+import os
 import json
 import random
 import re
@@ -19,7 +20,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 OUT = Path("/Users/david/AI/pie-runs/bench/judge")
 JUDGED = ("en_pie", "pie_en", "dialogue")
-PER_PACKET = 3
+PER_PACKET = int(os.environ.get("BENCH_PER_PACKET", 3))    # items per packet; more when a round has few contestants
 
 
 def part(kind: str, answer: str) -> str:
