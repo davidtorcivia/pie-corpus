@@ -254,6 +254,8 @@ def main():
         summary.append({k: s[k] for k in ("contestant", "segments", "pie_score")})
         print(c, json.dumps({k: (v.get("strict"), v.get("lenient"), f"{v['n']}/{v['of']}") for k, v in s["segments"].items()}),
               s["pie_score"])
+    summary = [{k: v for k, v in json.loads(p.read_text("utf-8")).items() if k != "items"}     # every contestant
+               for p in sorted((HERE / "results").glob("*/scores.json"))]
     (HERE / "results" / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1), "utf-8")
 
 

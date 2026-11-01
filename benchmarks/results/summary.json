@@ -1,5 +1,425 @@
 [
  {
+  "contestant": "claude-haiku-high",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 21.8,
+    "lenient": 26.9
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 23.7,
+    "lenient": 30.8
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "claude-haiku-low",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 17.9,
+    "lenient": 24.8
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 16.5,
+    "lenient": 22.1
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "claude-haiku-medium",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 19.4,
+    "lenient": 24.8
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 17.7,
+    "lenient": 23.0
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "claude-haiku-xhigh",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 30.4,
+    "lenient": 37.0
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 26.2,
+    "lenient": 32.7
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "claude-opus-high",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 63.9,
+    "lenient": 65.1
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 64.0,
+    "lenient": 66.8
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "claude-opus-low",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 58.5,
+    "lenient": 61.2
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 60.1,
+    "lenient": 61.4
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "claude-opus-medium",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 61.8,
+    "lenient": 63.9
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 64.1,
+    "lenient": 66.1
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "claude-opus-xhigh",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 65.4,
+    "lenient": 66.9
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 64.8,
+    "lenient": 67.3
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "claude-sonnet-high",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 38.8,
+    "lenient": 44.2
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 35.4,
+    "lenient": 40.8
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "claude-sonnet-low",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 33.1,
+    "lenient": 36.4
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 34.5,
+    "lenient": 39.1
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "claude-sonnet-medium",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 34.6,
+    "lenient": 38.2
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 33.6,
+    "lenient": 38.9
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "claude-sonnet-xhigh",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 48.4,
+    "lenient": 51.6
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 51.4,
+    "lenient": 55.4
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "codex-gpt-6.1-sol-medium",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 64.2,
+    "lenient": 67.5
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 44.8,
+    "lenient": 47.6
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "codex-gpt-6.1-terra-high",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 38.8,
+    "lenient": 45.4
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 33.2,
+    "lenient": 39.8
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
   "contestant": "codex-gpt-6.1-terra-low",
   "segments": {
    "inflection": {
@@ -60,66 +480,6 @@
   "pie_score": null
  },
  {
-  "contestant": "codex-gpt-6.1-terra-high",
-  "segments": {
-   "inflection": {
-    "n": 335,
-    "of": 335,
-    "strict": 38.8,
-    "lenient": 45.4
-   },
-   "paradigm": {
-    "n": 124,
-    "of": 124,
-    "strict": 33.2,
-    "lenient": 39.8
-   },
-   "en_pie": {
-    "n": 0,
-    "of": 48
-   },
-   "pie_en": {
-    "n": 0,
-    "of": 24
-   },
-   "dialogue": {
-    "n": 0,
-    "of": 74
-   }
-  },
-  "pie_score": null
- },
- {
-  "contestant": "codex-gpt-6.1-sol-medium",
-  "segments": {
-   "inflection": {
-    "n": 335,
-    "of": 335,
-    "strict": 64.2,
-    "lenient": 67.5
-   },
-   "paradigm": {
-    "n": 124,
-    "of": 124,
-    "strict": 44.8,
-    "lenient": 47.6
-   },
-   "en_pie": {
-    "n": 0,
-    "of": 48
-   },
-   "pie_en": {
-    "n": 0,
-    "of": 24
-   },
-   "dialogue": {
-    "n": 0,
-    "of": 74
-   }
-  },
-  "pie_score": null
- },
- {
   "contestant": "ours-e3",
   "segments": {
    "inflection": {
@@ -133,6 +493,36 @@
     "of": 124,
     "strict": 84.6,
     "lenient": 85.7
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "ours-rl1-step500",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 79.4,
+    "lenient": 80.0
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 87.4,
+    "lenient": 87.6
    },
    "en_pie": {
     "n": 0,
