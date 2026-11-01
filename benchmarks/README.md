@@ -90,3 +90,11 @@ benchmarks/excluded.json, and scoring skips them.
 Left: inflection 335, paradigm 124, EN→PIE 20, PIE→EN 10, dialogue 64. The translation segments are now small,
 so their scores are noisy (one PIE→EN item is 10 points); version 2 should add translation items that are neither
 published nor trained on.
+
+## Amendment 2: version 2 (2026-11-01)
+
+Adds 54 translation items so the translation segments are not decided by a handful of items: the export's
+held-out Tier 2 pairs (export/eval_tasks.jsonl) that are neither published texts nor already in the benchmark in
+the same direction (benchmarks/build_v2.py). EN→PIE grows from 20 to 42 items and PIE→EN from 10 to 42. They are
+eval-only (never trained on), project-built from cognates, and not published. Ids "e2-…", batches
+"<segment>-v2-NN". Every contestant answers them; scores are reported as version 2.
