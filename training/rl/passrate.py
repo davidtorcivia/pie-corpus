@@ -25,7 +25,8 @@ sys.path.insert(0, str(HERE.parents[1]))
 import reward_engine  # noqa: E402
 import reward_rl  # noqa: E402
 
-SHARE = {"inflect": 0.4, "paradigm": 0.2, "translate_en_pie": 0.4}
+SHARE = {"inflect": 0.15, "paradigm": 0.1, "translate_en_pie": 0.25, "translate_pie_en": 0.15,
+         "vocab_en_pie": 0.075, "vocab_pie_en": 0.075, "dialogue": 0.2}   # with vocabulary, PIE→EN and dialogue (owner, 2026-11-01)
 SEED = 20261101
 
 
@@ -34,8 +35,17 @@ def kind(x: dict) -> str:
 
 
 def score(x: dict, completion: str, an) -> float | None:
-    if kind(x) == "translate_en_pie":
-        return reward_rl.local(completion, json.loads(x["answer"]), an)[0]
+    k, a = kind(x), json.loads(x["answer"]) if kind(x) not in ("inflect", "paradigm") else None
+    if k == "translate_en_pie":
+        return reward_rl.local(completion, a, an)[0]
+    if k == "translate_pie_en":
+        return reward_rl.local_pie_en(completion, a)
+    if k == "vocab_pie_en":
+        return reward_rl.local_vocab_pie_en(completion, a)
+    if k == "vocab_en_pie":
+        return reward_rl.vocab_en_pie(completion, a)
+    if k == "dialogue":
+        return reward_rl.local_dialogue(completion, a, an)
     return reward_engine.score(completion, x["answer"], kind(x))
 
 
@@ -79,7 +89,7 @@ def select(cands: list[dict], rates: dict[int, list], n: int) -> tuple[list[dict
         k = kind(x)
         st = stats.setdefault(k, {"sampled": 0, "always": 0, "never": 0, "kept": 0})
         st["sampled"] += 1
-        if k == "translate_en_pie":
+        if k in ("translate_en_pie", "translate_pie_en", "vocab_pie_en", "dialogue"):     # judged kinds: drop what is always exact
             exact = sum(v == 1.0 for v in s)
             if exact == len(s):
                 st["always"] += 1

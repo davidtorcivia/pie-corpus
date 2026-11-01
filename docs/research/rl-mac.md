@@ -175,3 +175,27 @@ reaches it; everything runs unattended (training/rl/pipeline.sh).
 - **From e3**, 500 steps of 8 prompts x 8 rollouts, other settings as stage 1.
 - **Smoke test** (2 steps, 64 rollouts per step): generation 34–46 s per step; the judge added 26 s on a step with
   translations; $0.012 for 2 steps.
+
+**Stopped at step 60 and relaunched as rl3-mix-vocab-e3 (2026-11-01).** The owner asked for vocabulary drills, PIE→EN
+and dialogue in this run (the benchmark's provisional scores put our PIE→EN and dialogue below Opus, Sol and Sonnet
+xhigh). rl2's step-50 checkpoint is kept (runs/rl2-mix-e3-stopped60); e3's pass rates for the v2 kinds carry over.
+
+Added kinds (make_rl_prompts.py --mix v3 and --mix dialogue; reward_rl.py), local checks first as before:
+- **vocab_en_pie** (1,200): an English meaning, answered with the word. Engine-free and judge-free: 1 for any lemma
+  the lexicon gives that meaning, 0.5 without its accent, 0 for anything but one word.
+- **vocab_pie_en** (1,200): a word, answered with its meaning. 1 for one of the lexicon's senses; 0 for more than
+  8 words or PIE in it; else the judge.
+- **translate_pie_en** (1,500, training-split records up to 35 words): 1 for a reference; 0 for more than one line,
+  padding, or PIE left in the English; else the judge with its own brief (judge.PIE_EN).
+- **dialogue** (1,500 first exchanges of training dialogues: en_dialogue en_pie and mixed, pie_dialogue): 1 for the
+  reference; 0 for an echo of the turn, English, commentary, modern talk, padding or an unknown word; else the
+  judge's dialogue brief (judge.DIALOGUE).
+- Mix: inflection 15%, paradigm 10%, EN→PIE 25%, PIE→EN 15%, vocabulary 15%, dialogue 20%.
+
+The two new briefs were checked against Opus 5.5 high's grades of benchmark answers (150 each) before use:
+- **Dialogue:** Haiku first passed replies that only echo the question (28 false passes). With an explicit rule in
+  the brief and a local echo check (90% of the reply's words from the turn), agreement is 85% (128/150), with 7
+  false passes and 15 false fails.
+- **PIE→EN:** the EN→PIE brief failed "A king was there." and passed "The king is." for a past tense; a brief of its
+  own, with the reference: 79% agreement (119/150), 3 false passes, 28 false fails. Strict, so hard to game, but it
+  may push phrasing toward the reference.

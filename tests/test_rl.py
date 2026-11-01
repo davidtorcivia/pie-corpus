@@ -81,3 +81,41 @@ def test_translation_local_checks():
     assert reward_rl.local("tóy Hrowpóm xqzzlont.", ans, an)[0] == 0.0          # an invented word
     assert reward_rl.local(" ".join(["tóy"] * 20), ans, an)[0] == 0.0           # padding
     assert reward_rl.local("", ans, an)[0] == 0.0
+
+
+def test_vocab_and_pie_en_local_checks():
+    """Vocabulary and PIE→EN rewards (reward_rl.py): the right answer scores 1, the cheap exploits 0, and only a
+    genuinely different English wording goes to the judge (None)."""
+    sys.path.insert(0, str(ROOT / "training/rl"))
+    import reward_rl as r
+    v = {"sense": "to deceive", "lemmas": ["dʰrugʰyéti", "dʰréwgʰt"]}
+    assert r.vocab_en_pie("dʰréwgʰt", v) == 1.0 and r.vocab_en_pie("*dʰrugʰyéti.", v) == 1.0
+    assert r.vocab_en_pie("dʰrewgʰt", v) == 0.5                       # the accent missing
+    assert r.vocab_en_pie("dʰréwgʰt or dʰrugʰyéti", v) == 0.0         # a hedge
+    assert r.vocab_en_pie("to deceive", v) == 0.0
+    w = {"word": "n̥putlós", "senses": ["childless"]}
+    assert r.local_vocab_pie_en("Childless.", w) == 1.0
+    assert r.local_vocab_pie_en("without children", w) is None          # the judge decides
+    assert r.local_vocab_pie_en("It means childless, from n̥- 'not' and putlós 'child'.", w) == 0.0
+    p = {"pie": "h₃rḗḱs h₁est.", "refs": ["There was a king."]}
+    assert r.local_pie_en("There was a king.", p) == 1.0
+    assert r.local_pie_en("A king existed.", p) is None
+    assert r.local_pie_en("h₃rḗḱs h₁est.", p) == 0.0                   # left in PIE
+    assert r.local_pie_en("There was a king.\nGloss: king-NOM.SG be-PST.3SG", p) == 0.0
+    assert r.local_pie_en(" ".join(["king"] * 30), p) == 0.0           # padding
+
+
+def test_dialogue_local_checks():
+    """Dialogue reward (reward_rl.local_dialogue): an echo of the turn, English, commentary or modern talk score 0;
+    the reference scores 1; a different PIE reply goes to the judge."""
+    sys.path.insert(0, str(ROOT / "training/rl"))
+    import reward_rl as r
+    from pie.translator.analyze import Analyzer
+    an = Analyzer.load()
+    a = {"turn": "kʷíd bʰréh₂ter ḱléwos h₁ésti?", "refs": ["h₁nómn̥ h₁ésti."]}
+    assert r.local_dialogue("h₁nómn̥ h₁ésti.", a, an) == 1.0
+    assert r.local_dialogue("kʷíd bʰréh₂ter ḱléwos h₁ésti?", a, an) == 0.0          # the turn echoed
+    assert r.local_dialogue("It is a name.", a, an) == 0.0                          # English
+    assert r.local_dialogue("h₁nómn̥ h₁ésti.\nEnglish: It is a name.", a, an) == 0.0
+    assert r.local_dialogue("In Proto-Indo-European, fame is ḱléwos.", a, an) == 0.0
+    assert r.local_dialogue("ḱléwos h₁nómn̥ h₁ésti.", a, an) is None

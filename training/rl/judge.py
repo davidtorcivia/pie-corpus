@@ -38,6 +38,26 @@ This project's grammar (inherited rules, not errors):
 
 Answer with only a JSON object: {"verdict": "ok" or "wrong", "word": the PIE word at fault or null, "reason": one short sentence}."""
 
+PIE_EN = """You are judging an English translation of Proto-Indo-European (PIE) from a reconstructed-PIE language project. You get the `pie`, the engine's `analysis` of every PIE word (lemma, English gloss, grammatical cell, all readings) with `senses`, a `reference` translation that is one good rendering, not the only one, and the candidate `english`.
+
+Mark it **ok** if the English says what the PIE says: the same events and participants, who does what to whom, tense or mood (a PST/AOR form is past, an IMP a command, SBJV/OPT a wish or possibility), number and person, and negation, checked against the analysis. Free wording, word order, an English idiom ("there was a king" for "a king was") and a looser but faithful rendering are ok. Mark it **wrong** if it changes or drops any of those, adds content the PIE doesn't have, leaves PIE untranslated, or adds commentary.
+
+Answer with only a JSON object: {"verdict": "ok" or "wrong", "word": the PIE word mistranslated or null, "reason": one short sentence}."""
+
+DIALOGUE = """You are judging a reply in a conversation in Proto-Indo-European (PIE), from a reconstructed-PIE language project. The speaker is a person living in the PIE world. You get the `turn` the speaker answers (in English or PIE), the speaker's `reply` in PIE, the engine's `analysis` of every word of the reply (lemma, English gloss, grammatical cell, all readings) with `senses`, and a `reference` reply that is one good answer, not the only one.
+
+Mark the reply **ok** if it is in PIE, a sensible, in-world answer to the turn (it answers what was asked or said, and doesn't contradict the turn), and grammatical: every form fits its role (case, number, person, tense and mood, agreement), checked against the analysis. Mark it **wrong** if it is not PIE (English, or commentary about the language), off-topic or nonsense, has a grammatical error or a word that isn't a real form, uses the wrong meaning of a word, or brings in modern things or talk about "Proto-Indo-European" as a reconstruction. A short reply is fine if it answers. Repeating the turn, or restating its question as a statement, is not an answer: mark it wrong. A question in reply is wrong unless the turn invites one. Spelling conventions (laryngeals h₁ h₂ h₃, accents, ḱ/kʷ) are the project's own; don't count notation as an error.
+
+The analysis may miss a reading (an indeclinable, a rare form): don't mark a word wrong only because the analysis lacks the reading the sentence needs, if the form is plausibly that word.
+
+This project's grammar (inherited rules, not errors):
+- A neuter plural subject takes a singular verb (the old collective).
+- Verbs of fearing take the ablative of what is feared.
+- The project writes no augment, so a form the engine calls PST also serves as the injunctive: mḗ + injunctive is a prohibition ("do not go").
+- The middle can change a verb's meaning (h₁áyt 'give', middle 'take, receive'); senses give it.
+
+Answer with only a JSON object: {"verdict": "ok" or "wrong", "word": the PIE word at fault or null, "reason": one short sentence}."""
+
 PUNCT = ".,;:?!\"“”'()"
 
 
@@ -84,12 +104,13 @@ def parse(text: str) -> dict:
     return v
 
 
-def call(c, item: dict, model: str = MODEL, effort: str = EFFORT) -> dict:
-    """One judgment of {english, pie, analysis, senses}: verdict ok / wrong / unparsed, with usage."""
-    body = json.dumps({k: item[k] for k in ("english", "pie", "analysis", "senses") if k in item},
-                      ensure_ascii=False, indent=1)
+def call(c, item: dict, model: str = MODEL, effort: str = EFFORT, system: str = SYSTEM) -> dict:
+    """One judgment of {english, pie, analysis, senses} (or a dialogue's {turn, reply, analysis, senses,
+    reference} with system=DIALOGUE): verdict ok / wrong / unparsed, with usage."""
+    body = json.dumps({k: item[k] for k in ("english", "pie", "turn", "reply", "analysis", "senses", "reference")
+                       if k in item}, ensure_ascii=False, indent=1)
     t = time.time()
-    r = c.messages.create(model=model, max_tokens=16000, system=SYSTEM, output_config={"effort": effort},
+    r = c.messages.create(model=model, max_tokens=16000, system=system, output_config={"effort": effort},
                           messages=[{"role": "user", "content": body}])
     v = parse("".join(b.text for b in r.content if b.type == "text"))
     pi, po = PRICE[model]
@@ -111,19 +132,28 @@ class Judge:
         self.lock = threading.Lock()
         self.spent = 0.0
 
-    def _one(self, english: str, pie: str) -> dict:
-        key = (english, pie)
+    def _one(self, english: str, pie: str, dialogue: tuple | None = None) -> dict:
+        """A translation pair (english, pie); with dialogue=(turn, reference) a dialogue reply `pie`; with
+        dialogue=("pie_en", reference) a candidate English translation `english` of `pie`."""
+        key = (english, pie, dialogue)
         if key in self.cache:
             return self.cache[key]
         rows, senses, _ = analysis(self.an, self.lx, pie)
-        item = {"english": english, "pie": pie, "analysis": rows, "senses": senses}
-        out = {"english": english, "pie": pie, "t": time.time()}
+        if dialogue and dialogue[0] == "pie_en":
+            item = {"pie": pie, "analysis": rows, "senses": senses, "reference": dialogue[1], "english": english}
+            sysm = PIE_EN
+        elif dialogue:
+            item = {"turn": dialogue[0], "reply": pie, "analysis": rows, "senses": senses, "reference": dialogue[1]}
+            sysm = DIALOGUE
+        else:
+            item, sysm = {"english": english, "pie": pie, "analysis": rows, "senses": senses}, SYSTEM
+        out = {"english": english, "pie": pie, **({"turn": dialogue[0]} if dialogue else {}), "t": time.time()}
         try:
-            v = call(self.c, item)
+            v = call(self.c, item, system=sysm)
             out["screen"] = v
             verdict = v["verdict"]
             if verdict != "ok":                       # flagged or unparsed: a second look decides
-                v2 = call(self.c, item)
+                v2 = call(self.c, item, system=sysm)
                 out["confirm"] = v2
                 verdict = "wrong" if v2["verdict"] != "ok" and verdict == "wrong" else \
                           "ok" if v2["verdict"] == "ok" else v2["verdict"]
@@ -140,7 +170,8 @@ class Judge:
                 self.log.flush()
         return out
 
-    def many(self, pairs: list[tuple[str, str]]) -> list[dict]:
+    def many(self, pairs: list[tuple]) -> list[dict]:
+        """Judge (english, pie) pairs, or (english, pie, (turn, reference)) dialogue replies, in parallel."""
         uniq = list(dict.fromkeys(pairs))
         with ThreadPoolExecutor(WORKERS) as ex:
             got = dict(zip(uniq, ex.map(lambda p: self._one(*p), uniq)))

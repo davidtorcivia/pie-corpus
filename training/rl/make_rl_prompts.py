@@ -13,6 +13,7 @@ DIR/manifest.json.
 import argparse
 import json
 import random
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -214,13 +215,152 @@ def build_v2(n_infl: int, n_par: int, n_tr: int) -> tuple[list[dict], list[dict]
     return cand, valid, man
 
 
+VOCAB_EN_PIE = ["What is your word for '{x}'? Answer with the word alone.",
+                "How do you say '{x}' in your language? Give just the word.",
+                "Give the word for '{x}', in its dictionary form."]
+VOCAB_PIE_EN = ["What does *{w} mean? Answer in English, in a few words.",
+                "Say in English what *{w} means.",
+                "*{w}: what is that in English? A few words."]
+
+
+def senses(meanings: list[str]) -> list[str]:
+    """A lexicon entry's meanings as short English phrases: 'to give (active); MID: to take, receive' ->
+    ['to give', 'to take', 'receive']."""
+    out = []
+    for m in meanings:
+        for x in re.split(r"[,;]", re.sub(r"\([^)]*\)|\b[A-Z]{2,}:\s*", " ", m)):
+            x = " ".join(x.lower().split()).strip(" .")
+            if x and len(x.split()) <= 4 and x not in out:
+                out.append(x)
+    return out
+
+
+def build_v3(vlex: set, vrec: set, n_vocab: int, n_pie_en: int) -> tuple[list[dict], list[dict]]:
+    """Stage 1b's added kinds (owner, 2026-11-01: vocabulary drills and PIE→EN, for the PIE→EN gap):
+    vocab_en_pie (an English meaning -> the word; any lemma the lexicon lists for that meaning counts),
+    vocab_pie_en (a word -> its meaning; judged unless it is one of the senses), and translate_pie_en of
+    training-split records (judged unless it is a reference). Training lexemes and records only; the valid
+    split's lexemes and records give the valid items."""
+    lx = Lexicon.load()
+    held = held_lexemes()
+    rng = random.Random(SEED + 3)
+    by_sense = {}
+    lex = []
+    for lid, e in lx.entries.items():
+        if e.get("kind") == "root" or not e.get("meaning") or e["form"].endswith("-") or lid in held:
+            continue
+        if lid in lx.specs and lx.inadmissible(lid) and lx.specs[lid]["family"] is not None:
+            continue
+        ss = senses(e["meaning"])
+        if not ss:
+            continue
+        lex.append((lid, e["form"], ss))
+        for x in ss:
+            by_sense.setdefault(x, set()).add(e["form"])
+    vocab, valid = [], []
+    for lid, form, ss in sorted(lex):
+        r = random.Random(f"vocab|{SEED}|{lid}")
+        sense = ss[0]
+        tpl = r.randrange(3)
+        sysm = ec.system(f"vocab|{lid}", ec.TEACHER[r.randrange(len(ec.TEACHER))])
+        a = item({"messages": [{"role": "system", "content": sysm},
+                               {"role": "user", "content": VOCAB_EN_PIE[tpl].format(x=sense)}]},
+                 "vocab_en_pie", {"sense": sense, "lemmas": sorted(by_sense[sense])}, lid, False)
+        b = item({"messages": [{"role": "system", "content": sysm},
+                               {"role": "user", "content": VOCAB_PIE_EN[tpl].format(w=form)}]},
+                 "vocab_pie_en", {"word": form, "senses": ss}, lid, False)
+        (valid if lid in vlex else vocab).extend([a, b])
+    rng.shuffle(vocab)
+    en, pe = [x for x in vocab if x["type"] == "vocab_en_pie"], [x for x in vocab if x["type"] == "vocab_pie_en"]
+    cand = en[:n_vocab // 2] + pe[:n_vocab // 2]
+    held_rec = held | {json.loads(x)["source_id"] for x in (ROOT / "export/eval_dialogues.jsonl").read_text("utf-8").splitlines()
+                       if x.strip() and json.loads(x).get("source_id")}
+    pie_en = []
+    for x in (ROOT / "export/train_tasks.jsonl").read_text("utf-8").splitlines():
+        t = json.loads(x)
+        if t["task"] != "translate_pie_en" or t["source_id"] in held_rec or len(t["output"].split()) > TR_MAX_WORDS:
+            continue
+        refs = list(dict.fromkeys([t["output"], *t.get("acceptable", [])]))
+        it = item(ec.task_chat(t, None), "translate_pie_en", {"pie": t["input"], "refs": refs}, t["source_id"], False)
+        (valid if t["source_id"] in vrec else pie_en).append(it)
+    rng.shuffle(pie_en)
+    cand += pie_en[:n_pie_en]
+    vr = random.Random(SEED + 4)
+    valid = vr.sample([x for x in valid if x["type"].startswith("vocab")], min(16, sum(x["type"].startswith("vocab") for x in valid))) \
+        + [x for x in valid if x["type"] == "translate_pie_en"][:16]
+    for x in valid:
+        x["type"] = "v." + x["type"]
+    return cand, valid
+
+
+def build_dialogue(n: int, n_valid: int = 16) -> tuple[list[dict], list[dict]]:
+    """Dialogue (owner, 2026-11-01): a conversation's first exchange from the chat export's training dialogues
+    (en_dialogue in modes en_pie and mixed, pie_dialogue), the rollout being the speaker's reply, judged
+    (reward_rl.py). Held-out records excluded; n_valid whole records kept for the valid split."""
+    held = held_lexemes() | {json.loads(x)["source_id"] for x in (ROOT / "export/eval_dialogues.jsonl").read_text("utf-8").splitlines()
+                             if x.strip() and json.loads(x).get("source_id")}
+    rows = []
+    for x in (ROOT / "export/chat/train.jsonl").read_text("utf-8").splitlines():
+        r = json.loads(x)
+        m = r["meta"]
+        if m["task"] not in ("en_dialogue", "pie_dialogue") or m.get("mode") == "en_pie_gloss" or m["source_id"] in held:
+            continue
+        msgs = r["messages"]
+        if len(msgs) < 3 or msgs[1]["role"] != "user" or msgs[2]["role"] != "assistant":
+            continue
+        rows.append(item({"messages": msgs[:2]}, f"dialogue|{m['task']}|{m.get('mode', 'pie')}",
+                         {"turn": msgs[1]["content"], "refs": [msgs[2]["content"]]}, m["source_id"], False))
+    rng = random.Random(SEED + 5)
+    rng.shuffle(rows)
+    vrec = set(rng.sample(sorted({x["source_id"] for x in rows}), n_valid))
+    valid = [x for x in rows if x["source_id"] in vrec][:n_valid]
+    for x in valid:
+        x["type"] = "v." + x["type"]
+    seen, cand = set(), []
+    for x in rows:                                   # one exchange per record
+        if x["source_id"] not in vrec and x["source_id"] not in seen:
+            seen.add(x["source_id"])
+            cand.append(x)
+    return cand[:n], valid
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mix", default="v1", choices=["v1", "v2"])
+    ap.add_argument("--mix", default="v1", choices=["v1", "v2", "v3", "dialogue"])
     ap.add_argument("--out", default="/Users/david/AI/pie-runs/rl/data/engine_drills")
     ap.add_argument("--n", type=int, default=4000)
     ap.add_argument("--valid", type=int, default=64)
     a = ap.parse_args()
+    if a.mix == "dialogue":           # appended to a v2+v3 data dir (passrate.py resumes)
+        out = Path(a.out)
+        man = json.loads((out / "manifest.json").read_text())
+        if "dialogue" in man.get("mix", ""):
+            sys.exit("dialogue already added")
+        cand, valid = build_dialogue(1500)
+        with open(out / "candidates.jsonl", "a", encoding="utf-8") as f:
+            f.writelines(json.dumps(x, ensure_ascii=False) + "\n" for x in cand)
+        with open(out / "valid.jsonl", "a", encoding="utf-8") as f:
+            f.writelines(json.dumps(x, ensure_ascii=False) + "\n" for x in valid)
+        man["mix"] += "+dialogue"
+        man["dialogue"] = {"candidates": dict(Counter(x["type"] for x in cand)), "valid": len(valid)}
+        (out / "manifest.json").write_text(json.dumps(man, indent=1, ensure_ascii=False), "utf-8")
+        print(json.dumps(man["dialogue"]))
+        return
+    if a.mix == "v3":                 # v2's candidates plus the added kinds, appended (passrate.py resumes)
+        out = Path(a.out)
+        man = json.loads((out / "manifest.json").read_text())
+        if "v3" in man.get("mix", ""):
+            sys.exit("v3 kinds already added")
+        cand, valid = build_v3(set(man["valid_lexemes"]), set(man["valid_records"]), 2400, 1500)
+        with open(out / "candidates.jsonl", "a", encoding="utf-8") as f:
+            f.writelines(json.dumps(x, ensure_ascii=False) + "\n" for x in cand)
+        with open(out / "valid.jsonl", "a", encoding="utf-8") as f:
+            f.writelines(json.dumps(x, ensure_ascii=False) + "\n" for x in valid)
+        man["mix"] = "v2+v3"
+        man["v3"] = {"candidates": dict(Counter(x["type"] for x in cand)), "valid": dict(Counter(x["type"] for x in valid))}
+        (out / "manifest.json").write_text(json.dumps(man, indent=1, ensure_ascii=False), "utf-8")
+        print(json.dumps(man["v3"]))
+        return
     if a.mix == "v2":                 # candidates for passrate.py, which writes the final train.jsonl
         cand, valid, man = build_v2(3000, 1200, 2400)
         out = Path(a.out)
