@@ -331,3 +331,30 @@ cells 77% (ablauting 61%, non-ablauting 92%).
   51 for every model since queue 4: they are single-reference chrF on free renderings, a ceiling of the metric more
   than of the models.
 - Regular paradigms are nearly solved (95% of cells). Ablaut remains the gap, though the gap is smaller.
+
+## Qwen3.6-35B-A3B epoch 2, and queue 6 to epoch 5 (2026-10-31)
+
+Tinker paused the 35B run for billing at about step 2100 (of 2505); after an hour paused the client aborted. Once the
+account was funded, the epoch 2 checkpoint (step 1670) downloaded normally, and rerunning train_qwen36.py resumed
+from it with its optimizer state (the cookbook resumes from the last checkpoint in log_path; first new step 1671,
+lr on the cosine schedule). The 430 steps past epoch 2 were lost and are being redone.
+
+Epoch 2 went through the same path as epoch 1 (PIE-qwen36-e2-oQ5e-mtp, 24 GB, 19/19 MTP tensors). Queue 6 (4B)
+finished its 5 epochs.
+
+| v1 frozen prompts, cap 384 | chrF | recognized | inflect exact | paradigm cells | EN→PIE (task / app) | PIE→EN app | dialogue chrF | inflect abl | paradigm abl / non |
+|---|---|---|---|---|---|---|---|---|---|
+| 4B queue 6, e3 | 54.8 | 82% | 60% | 68% | 38.1 / 53.9 | 55.4 | 23.0 | 44% | 43% / 79% |
+| 4B queue 6, e4 | 56.7 | 81% | 71% | 72% | 38.1 / 51.3 | 59.4 | 27.0 | 61% | 42% / 86% |
+| 4B queue 6, e5 | 57.2 | 82% | 75% | 73% | 38.5 / 53.1 | 56.3 | 27.0 | 67% | 43% / 87% |
+| 35B, e1 | 58.3 | 86% | 77% | 82% | 44.2 / 51.3 | 59.4 | 24.3 | 50% | 56% / 95% |
+| **35B, e2** | **60.0** | **86%** | **81%** | **90%** | **44.5** / 52.9 | **64.8** | 24.6 | **67%** | **75% / 97%** |
+
+On the v2 drill set, 35B e2 gets inflect exact 72% (ablauting 63% of 158, non-ablauting 83%) and paradigm cells
+83% (ablauting 73%, non-ablauting 93%), up from 70% and 77% at e1.
+
+- The 35B's second epoch is the best model on every column but dialogue chrF, where the 4B's e4–e5 lead (27.0 vs
+  24.6; 16 items per dialogue kind, single reference).
+- Five 4B epochs reach roughly the 35B's first epoch on chrF and inflection, but not on paradigms (73% vs 82–90%)
+  or EN→PIE translation (38.5 vs 44).
+- Ablauting paradigms gained most from epoch 2 (56% → 75% of cells on v1, 61% → 73% on v2).
