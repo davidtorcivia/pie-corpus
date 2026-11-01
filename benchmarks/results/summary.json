@@ -1,18 +1,18 @@
 [
  {
-  "contestant": "claude-opus-low",
+  "contestant": "claude-haiku-xhigh",
   "segments": {
    "inflection": {
     "n": 335,
     "of": 335,
-    "strict": 58.5,
-    "lenient": 61.2
+    "strict": 30.4,
+    "lenient": 37.0
    },
    "paradigm": {
     "n": 124,
     "of": 124,
-    "strict": 60.1,
-    "lenient": 61.4
+    "strict": 26.2,
+    "lenient": 32.7
    },
    "en_pie": {
     "n": 0,
@@ -30,19 +30,19 @@
   "pie_score": null
  },
  {
-  "contestant": "claude-opus-medium",
+  "contestant": "claude-sonnet-xhigh",
   "segments": {
    "inflection": {
     "n": 335,
     "of": 335,
-    "strict": 61.8,
-    "lenient": 63.9
+    "strict": 48.4,
+    "lenient": 51.6
    },
    "paradigm": {
     "n": 124,
     "of": 124,
-    "strict": 64.1,
-    "lenient": 66.1
+    "strict": 51.4,
+    "lenient": 55.4
    },
    "en_pie": {
     "n": 0,
@@ -60,19 +60,19 @@
   "pie_score": null
  },
  {
-  "contestant": "claude-opus-high",
+  "contestant": "claude-opus-xhigh",
   "segments": {
    "inflection": {
     "n": 335,
     "of": 335,
-    "strict": 63.9,
-    "lenient": 65.1
+    "strict": 65.4,
+    "lenient": 66.9
    },
    "paradigm": {
     "n": 124,
     "of": 124,
-    "strict": 64.0,
-    "lenient": 66.8
+    "strict": 64.8,
+    "lenient": 67.3
    },
    "en_pie": {
     "n": 0,
