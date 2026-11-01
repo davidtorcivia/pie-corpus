@@ -1,11 +1,14 @@
 """Training dashboard: serves the runs directory and a live page (standard library only).
 
-    python dashboard.py [--runs Q:\\AI\\PIE\\runs] [--tinker Q:\\AI\\PIE\\tinker\\runs] [--port 8790]
-    then open http://127.0.0.1:8790
+    python dashboard.py [--runs Q:\\AI\\PIE\\runs] [--tinker Q:\\AI\\PIE\\tinker\\runs] [--rl Q:\\AI\\PIE\\rl\\runs] [--port 8790]
+    then open http://127.0.0.1:8790 (fine-tuning) or http://127.0.0.1:8790/rl (RL on the Mac)
 
 GET /api/runs        every run: its config.json and metrics.jsonl; Tinker runs (training/tinker) as "tinker/<run>",
                      their cookbook logs converted to the same events (tinker_run)
 GET /api/gens?run=R&epoch=N   that run's generations-eN.jsonl (and its scores-eN.json when the Mac has scored it)
+GET /api/rl          every RL run (training/rl, synced from the Mac by training/rl/sync_dashboard.sh): its
+                     config.yaml, metrics.jsonl, per-kind rewards (rewards.jsonl, in windows) and the frozen-prompt
+                     scores of its checkpoints (eval/summary.txt)
 """
 import argparse
 import json
@@ -58,7 +61,36 @@ def tinker_run(d: Path) -> dict:
             "epochs": sorted(int(p.stem.split("-e")[-1]) for p in d.glob("generations-e*.jsonl"))}
 
 
-def make_handler(runs: Path, tinker: Path):
+RL_WINDOW = 5           # rewards.jsonl has a row per step; mean per kind over windows of this many
+
+
+def rl_run(d: Path) -> dict:
+    """An RL run's synced log dir as the /rl page's run: train/val events as logged by training/rl/grpo.py, the
+    per-kind reward means in RL_WINDOW-step windows, and each "<run> generations-<set>-<ckpt> {summary}" line that
+    training/score_generations.py printed into eval/summary.txt."""
+    rows = read_jsonl(d / "rewards.jsonl")
+    kinds = sorted({k for r in rows for k in r if k.startswith("reward/")})
+    rewards = []
+    for i in range(0, len(rows), RL_WINDOW):
+        w = rows[i:i + RL_WINDOW]
+        rewards.append({"step": i + len(w), **{k: round(sum(r[k] for r in w if k in r) / max(1, sum(k in r for r in w)), 4)
+                                               for k in kinds if any(k in r for r in w)}})
+    evals = []
+    sm = d / "eval" / "summary.txt"
+    for line in (sm.read_text("utf-8").splitlines() if sm.exists() else []):
+        parts = line.split(" ", 2)
+        if len(parts) == 3 and parts[1].startswith("generations-") and parts[2].startswith("{"):
+            st, _, ck = parts[1].removeprefix("generations-").rpartition("-")
+            try:
+                evals.append({"set": st, "ckpt": ck, **json.loads(parts[2])})
+            except json.JSONDecodeError:
+                pass
+    cfg = d / "config.yaml"
+    return {"name": d.name, "metrics": read_jsonl(d / "metrics.jsonl"), "rewards": rewards, "evals": evals,
+            "config": cfg.read_text("utf-8") if cfg.exists() else ""}
+
+
+def make_handler(runs: Path, tinker: Path, rl: Path):
     class H(BaseHTTPRequestHandler):
         def send(self, code, body: bytes, ctype: str):
             self.send_response(code)
@@ -76,6 +108,10 @@ def make_handler(runs: Path, tinker: Path):
             q = parse_qs(u.query)
             if u.path in ("/", "/index.html"):
                 return self.send(200, (HERE / "dashboard.html").read_bytes(), "text/html; charset=utf-8")
+            if u.path in ("/rl", "/rl.html"):
+                return self.send(200, (HERE / "rl.html").read_bytes(), "text/html; charset=utf-8")
+            if u.path == "/api/rl":
+                return self.json([rl_run(d) for d in sorted(p for p in rl.iterdir() if p.is_dir())] if rl.is_dir() else [])
             if u.path == "/api/runs":
                 out = []
                 for d in sorted(p for p in runs.iterdir() if p.is_dir()):
@@ -107,13 +143,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--runs", default=r"Q:\AI\PIE\runs")
     ap.add_argument("--tinker", default=r"Q:\AI\PIE\tinker\runs")
+    ap.add_argument("--rl", default=r"Q:\AI\PIE\rl\runs")
     ap.add_argument("--host", default="127.0.0.1")
     ap.add_argument("--port", type=int, default=8790)
     a = ap.parse_args()
     runs = Path(a.runs)
     runs.mkdir(parents=True, exist_ok=True)
     print(f"dashboard on http://{a.host}:{a.port}")
-    ThreadingHTTPServer((a.host, a.port), make_handler(runs, Path(a.tinker))).serve_forever()
+    ThreadingHTTPServer((a.host, a.port), make_handler(runs, Path(a.tinker), Path(a.rl))).serve_forever()
 
 
 if __name__ == "__main__":

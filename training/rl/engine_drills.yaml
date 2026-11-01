@@ -1,0 +1,22 @@
+# RL stage 1: engine-checkable drills only, no judge (training/rl/README.md). Run by training/rl/run.sh.
+model: /Users/david/AI/PIE-qwen36-e3-oQ5e-mtp
+train: true
+train_mode: grpo
+data: /Users/david/AI/pie-runs/rl/data/engine_drills
+reward_functions_file: /Users/david/AI/PIE/training/rl/reward_engine.py
+reward_functions: pie_engine
+fuse: false
+batch_size: 8                 # prompts per step
+group_size: 8                 # rollouts per prompt: 64 per step, ~70 s on the M3 Ultra
+max_completion_length: 384    # the eval cap; the longest tables are ~300 tokens
+max_seq_length: 1024
+temperature: 1.0
+learning_rate: 5.0e-6
+beta: 0.1                     # KL to the e3 model: drills only, so translation and chat must not drift
+iters: 500
+steps_per_report: 5
+steps_per_eval: 50
+val_batches: 4
+save_every: 25
+seed: 20261101
+grad_checkpoint: true         # ~65 GB instead of ~136 GB: room for omlx or an eval beside it (a run without it was killed at step 7, 2026-11-01)

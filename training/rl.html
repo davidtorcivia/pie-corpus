@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PIE RL</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--bg:#f6f4ef;--fg:#1c1b19;--dim:#6d675e;--card:#fffdf9;--line:#e3ddd2;--accent:#9a4b16}
+@media (prefers-color-scheme:dark){:root{--bg:#141310;--fg:#ece6dc;--dim:#a09888;--card:#1d1b17;--line:#332e26;--accent:#e08a4c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 ui-sans-serif,system-ui,sans-serif}
+main{max-width:1280px;margin:0 auto;padding:20px 16px 60px}
+h1{font:600 22px Georgia,serif;margin:0 0 4px}
+a{color:var(--accent)}
+.sub{color:var(--dim);margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;overflow-x:auto}
+.card h2{font-size:13px;margin:0 0 8px;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.note{color:var(--dim);font-size:12px;margin:-4px 0 8px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:5px 6px;border-bottom:1px solid var(--line);vertical-align:top;white-space:nowrap}
+th{color:var(--dim);font-weight:600}
+.status{font-weight:600}.live{color:#2f8f4f}.done{color:var(--dim)}
+select{font:inherit;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:3px 6px}
+pre{font-size:12px;color:var(--dim);white-space:pre-wrap;margin:0}
+</style>
+</head>
+<body>
+<main>
+<h1>PIE reinforcement learning</h1>
+<div class="sub">M3 Ultra · mlx-lm-lora GRPO · synced every 5 min from the Mac · refreshes every 30 s · <a href="/">fine-tuning runs</a> · <span id="when"></span></div>
+<div class="card"><h2>Run <select id="run"></select></h2>
+<table id="sum"><thead><tr><th>status</th><th>step</th><th>reward (train)</th><th>group σ</th><th>KL</th><th>tokens / rollout</th><th>hit limit</th><th>gen s / step</th><th>step s</th><th>memory GB</th><th>val reward</th></tr></thead><tbody></tbody></table></div>
+<div class="grid" style="margin-top:14px">
+<div class="card"><h2>Reward by kind (train)</h2><div class="note">engine reward, mean over 5-step windows</div><canvas id="cRew" height="220"></canvas></div>
+<div class="card"><h2>Validation reward</h2><div class="note">held-out lexemes, never trained on</div><canvas id="cVal" height="220"></canvas></div>
+<div class="card"><h2>KL to the SFT model</h2><div class="note">rising fast = drifting from e3 (watch translation and chat)</div><canvas id="cKL" height="180"></canvas></div>
+<div class="card"><h2>Learning signal</h2><div class="note">within-group reward σ: 0 means every rollout of a prompt scored the same and teaches nothing</div><canvas id="cSig" height="180"></canvas></div>
+<div class="card"><h2>Rollout length</h2><div class="note">tokens per rollout and share hitting the cap: a jump is a reward-hacking or looping sign</div><canvas id="cLen" height="180"></canvas></div>
+<div class="card"><h2>Step time (s)</h2><canvas id="cTime" height="180"></canvas></div>
+</div>
+<div class="card" style="margin-top:14px"><h2>Frozen prompts, by checkpoint</h2><div class="note">v1 (246) and v2 drills (371) of lexemes RL never sees, greedy through mlx_lm. Train reward up with v2 flat = memorizing</div>
+<table id="ev"><thead><tr><th>set</th><th>checkpoint</th><th>chrF</th><th>recognized</th><th>inflect exact</th><th>paradigm cells</th></tr></thead><tbody></tbody></table></div>
+<div class="card" style="margin-top:14px"><h2>Config</h2><pre id="cfg"></pre></div>
+</main>
+<script>
+const COLORS=["#c0562b","#2f6b9a","#3a8f5a","#8a4fb0","#b08a2a","#2a9a95"];
+const charts={};
+function chart(id,yLabel){charts[id]=new Chart(document.getElementById(id),{type:"line",data:{datasets:[]},
+ options:{animation:false,parsing:false,normalized:true,interaction:{mode:"nearest",intersect:false},
+ scales:{x:{type:"linear",title:{display:true,text:"step"}},y:{title:{display:!!yLabel,text:yLabel}}},
+ plugins:{legend:{labels:{boxWidth:10}}},elements:{point:{radius:0}}}})}
+["cRew","cVal","cKL","cSig","cLen","cTime"].forEach(id=>chart(id,""));
+const esc=s=>(s??"").toString().replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const f=(v,d=3)=>v==null||isNaN(v)?"":(+v).toFixed(d), pct=v=>v==null?"":Math.round(100*v)+"%";
+let runs=[];
+function ds(label,i,pts,pr=0){return {label,borderColor:COLORS[i%6],backgroundColor:COLORS[i%6],borderWidth:1.6,pointRadius:pr,data:pts}}
+async function refresh(){
+ runs=await (await fetch("/api/rl")).json();
+ const s=document.getElementById("run"), cur=s.value;
+ s.innerHTML=runs.map(r=>`<option${r.name===cur?" selected":""}>${esc(r.name)}</option>`).join("");
+ if(!cur&&runs.length)s.value=runs[runs.length-1].name;
+ draw(); document.getElementById("when").textContent="updated "+new Date().toLocaleTimeString();
+}
+function draw(){
+ const r=runs.find(x=>x.name===document.getElementById("run").value); if(!r)return;
+ const tr=r.metrics.filter(m=>m.event==="train"), va=r.metrics.filter(m=>m.event==="val"), done=r.metrics.some(m=>m.event==="done");
+ const t=tr[tr.length-1]||{}, v=va[va.length-1]||{}, prev=tr[tr.length-2];
+ const stepS=prev&&t.t?(t.t-prev.t)/(t.iteration-prev.iteration):null;
+ const total=(r.config.match(/^iters:\s*(\d+)/m)||[])[1];
+ document.querySelector("#sum tbody").innerHTML=`<tr><td class="status ${done?"done":"live"}">${done?"done":(tr.length?"training":"starting")}</td>
+  <td>${t.iteration??""} / ${total??"?"}</td><td>${f(t.train_total_rewards_mean)}</td><td>${f(t.train_grouped_rewards_std)}</td><td>${f(t.train_kl,4)}</td>
+  <td>${f(t.train_average_generated_tokens,0)}</td><td>${pct(t.train_hit_max_tokens_ratio)}</td><td>${prev?f(t.gen_s/(t.iteration-prev.iteration),1):""}</td>
+  <td>${f(stepS,1)}</td><td>${f(t.peak_memory,0)}</td><td>${f(v.val_total_rewards_mean)}</td></tr>`;
+ const kinds=[...new Set(r.rewards.flatMap(w=>Object.keys(w).filter(k=>k.startsWith("reward/"))))];
+ charts.cRew.data.datasets=kinds.map((k,i)=>ds(k.slice(7),i,r.rewards.filter(w=>w[k]!=null).map(w=>({x:w.step,y:w[k]}))))
+   .concat([ds("all",5,tr.map(m=>({x:m.iteration,y:m.train_total_rewards_mean})))]);
+ charts.cVal.data.datasets=[ds("val reward",1,va.filter(m=>m.val_total_rewards_mean!=null).map(m=>({x:m.iteration,y:m.val_total_rewards_mean})),3)];
+ charts.cKL.data.datasets=[ds("KL",0,tr.map(m=>({x:m.iteration,y:m.train_kl})))];
+ charts.cSig.data.datasets=[ds("group σ",2,tr.map(m=>({x:m.iteration,y:m.train_grouped_rewards_std})))];
+ charts.cLen.data.datasets=[ds("tokens / rollout",3,tr.map(m=>({x:m.iteration,y:m.train_average_generated_tokens}))),
+   ds("hit limit ×100",0,tr.map(m=>({x:m.iteration,y:100*(m.train_hit_max_tokens_ratio||0)})))];
+ charts.cTime.data.datasets=[ds("step",4,tr.slice(1).map((m,i)=>({x:m.iteration,y:(m.t-tr[i].t)/(m.iteration-tr[i].iteration)}))),
+   ds("generation",1,tr.slice(1).map((m,i)=>({x:m.iteration,y:m.gen_s/(m.iteration-tr[i].iteration)})))];
+ Object.values(charts).forEach(c=>c.update());
+ document.querySelector("#ev tbody").innerHTML=r.evals.map(e=>`<tr><td>${esc(e.set)}</td><td>${esc(e.ckpt)}</td><td>${f(e.chrF,1)}</td><td>${pct(e.recognized)}</td><td>${pct(e.exact)}</td><td>${pct(e.paradigm_cells)}</td></tr>`).join("")
+   ||'<tr><td colspan="6">not evaluated yet (runs after training ends: training/rl/after_run.sh)</td></tr>';
+ document.getElementById("cfg").textContent=r.config;
+}
+document.getElementById("run").onchange=draw;
+refresh(); setInterval(refresh,30000);
+</script>
+</body>
+</html>
