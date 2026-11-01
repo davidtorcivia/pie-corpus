@@ -78,13 +78,15 @@ PIE score, since the question is grammar, not the project's typography; strict i
 
 ## Amendment 1 (2026-11-01, after the first judge's grades; not pre-registered)
 
-36 of the 146 judged items come from published reconstructions: Schleicher's fable in eight scholars' versions,
-Byrd's *The King and the God*, and Watkins' formulas (an item's setting names "scholarly reconstruction ...", or
-its PIE is the fable's or the tale's). They are 12 of the 24 PIE→EN items, 16 of the 48 EN→PIE and 8 of the 74
-dialogue items (continuations of the fable). These texts and their translations are all over the web, so for a
-frontier model they test memory, not the language, while our models never saw them (held out). Found by reading
-the judge's reasons where e3 scored 0 and Opus 1 (Opus rendered the fable's English as the published version).
+**Published texts are out of the benchmark.** 52 items came from published reconstructions: Schleicher's fable in
+eight scholars' versions, Byrd's *The King and the God*, and Watkins' and West's formulas (Tier 1 sources, a
+"scholarly reconstruction" setting, or the fable's or the tale's text in the prompt): 28 EN→PIE, 14 PIE→EN and 10
+dialogue items (fable continuations). These texts and their translations are all over the web, so they reward a
+memorized reply, not knowledge of the language (owner: "we should not have prompts that reward memorized
+replies"), and our models never saw them (Tier 1 was eval-only, PLAN.md). Found by reading the judge's reasons
+where e3 scored 0 and Opus 1: Opus gave the published English of the fable. They are listed with the reason in
+benchmarks/excluded.json, and scoring skips them.
 
-So every result is reported twice: all items (as pre-registered) and **unpublished items only**, which becomes the
-hero figure. This was decided after seeing one judge's grades, which the record should say; it is the only
-change, and the pre-registered numbers are still reported beside it.
+Left: inflection 335, paradigm 124, EN→PIE 20, PIE→EN 10, dialogue 64. The translation segments are now small,
+so their scores are noisy (one PIE→EN item is 10 points); version 2 should add translation items that are neither
+published nor trained on.

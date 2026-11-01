@@ -213,6 +213,8 @@ def judged(contestant: str, key: dict, answers: dict) -> dict:
             out.setdefault(r["id"], []).append(r)
     res = {}
     for i, rs in out.items():
+        if i not in key:                           # excluded since it was judged
+            continue
         m = sum(r["score"] for r in rs) / len(rs)
         pie = key[i]["segment"] != "pie_en"
         ok = notation_ok(part(key[i]["kind"], answers.get(i, ""))) if pie else True
@@ -220,8 +222,12 @@ def judged(contestant: str, key: dict, answers: dict) -> dict:
     return res
 
 
+EXCLUDED = json.loads((HERE / "excluded.json").read_text("utf-8"))    # published texts (README, amendment 1)
+
+
 def score(contestant: str) -> dict:
-    key = {x["id"]: x for x in map(json.loads, (HERE / "key.jsonl").read_text("utf-8").splitlines())}
+    key = {x["id"]: x for x in map(json.loads, (HERE / "key.jsonl").read_text("utf-8").splitlines())
+           if x["id"] not in EXCLUDED}
     ans = {}
     for r in map(json.loads, (HERE / "results" / contestant / "answers.jsonl").read_text("utf-8").splitlines()):
         ans.setdefault(r["id"], r["answer"])
