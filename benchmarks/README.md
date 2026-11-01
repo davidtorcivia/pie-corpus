@@ -51,10 +51,12 @@ PIE score, since the question is grammar, not the project's typography; strict i
 
 ## Contestants and conditions
 
-- **Claude** Haiku 5.5, Sonnet 5.5, Opus 5.5, each at effort low, medium, high and xhigh: a custom subagent
-  (.claude/agents/pie-bench.md) whose only tool is submit_answers (benchmarks/tools/submit_server.py), with no
-  CLAUDE.md, no memory, no skills, no web. Subscription-billed.
-- **GPT** 6.1 Terra and 6.1 Sol at reasoning effort low, medium, high and xhigh: `codex exec` with the shell,
+- **Claude** Haiku 5.5, Sonnet 5.5, Opus 5.5, each at effort low, medium and high: a custom subagent
+  (.claude/agents/pie-bench.md, source benchmarks/tools/pie-bench.agent.md) whose only tool is submit_answers
+  (benchmarks/tools/submit_server.py), with no CLAUDE.md, no memory, no skills, no web. Subscription-billed.
+  Staged (owner, 2026-11-01): Haiku first; Sonnet after the owner has seen Haiku's usage and approved; Opus after
+  Sonnet's, likewise. xhigh is deferred.
+- **GPT** 6.1 Terra and 6.1 Sol at reasoning effort low, medium and high (xhigh deferred): `codex exec` with the shell,
   web search, MCP, skills and project docs disabled and a one-line instruction file, from an empty directory with
   a clean CODEX_HOME. Subscription-billed.
 - **Ours:** the best fine-tuned and RL checkpoints, through one fixed generation path (training/rl/eval_ckpt.py,
