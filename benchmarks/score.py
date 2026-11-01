@@ -47,7 +47,8 @@ ALIAS = {"INST": "INS", "INSTR": "INS", "INSTRUMENTAL": "INS", "NOMINATIVE": "NO
          "SINGULAR": "SG", "PLURAL": "PL", "DUAL": "DU", "MASC": "M", "FEM": "F", "NEUT": "N", "MASCULINE": "M",
          "FEMININE": "F", "NEUTER": "N", "PRESENT": "PRS", "AORIST": "AOR", "PERFECT": "PRF", "IMPERFECT": "IMPF",
          "IMPERATIVE": "IMP", "SUBJUNCTIVE": "SBJV", "OPTATIVE": "OPT", "MIDDLE": "MID", "MEDIOPASSIVE": "MID",
-         "ACTIVE": "ACT", "INDICATIVE": "IND", "PAST": "PST", "FUTURE": "FUT"}
+         "ACTIVE": "ACT", "INDICATIVE": "IND", "PAST": "PST", "FUTURE": "FUT", "FIRST": "1", "SECOND": "2",
+         "THIRD": "3", "1ST": "1", "2ND": "2", "3RD": "3"}
 LABEL_WORD = re.compile(r"(NOM|VOC|ACC|GEN|ABL|DAT|LOC|INS|SG|DU|PL|M|F|N|[123](SG|DU|PL)?|[123](ST|ND|RD)|PRS|AOR|PRF|"
                         r"IMPF|PST|MID|ACT|IMP|SBJV|OPT|FUT|PTCP|PERF|PRES|IND|INJ)")
 BLOCK = {"PRES": "PRS", "PERF": "PRF"}
@@ -75,12 +76,42 @@ def _word(t: str) -> str:
     return BLOCK.get(ALIAS.get(w, w), ALIAS.get(w, w))
 
 
+def grid_rows(text: str) -> str:
+    """A markdown grid ("| Case | Singular | Dual | Plural |" then "| Nominative | x | y | z |") as one line per
+    cell, "Nominative Singular x", which the scanner reads like any other row."""
+    lines, header, out, slash = text.splitlines(), None, [], None
+    for line in lines:
+        parts = [x.strip() for x in line.split("/")]
+        if len(parts) > 1 and all(ALIAS.get(x.upper(), x.upper()) in ("SG", "DU", "PL") for x in parts):
+            slash = parts                              # "Singular / dual / plural", then "Nominative: x / y / z"
+            continue
+        if slash and ":" in line and len(line.split(":", 1)[1].split("/")) == len(slash):
+            lab, forms = line.split(":", 1)
+            out += [f"{lab} {n} {f.strip()}" for n, f in zip(slash, forms.split("/"))]
+            continue
+        if line.count("|") < 2 and not line.strip().startswith("|"):     # a grid row, with or without edge pipes
+            header = None
+            out.append(line)
+            continue
+        cols = [c.strip() for c in line.strip().strip("|").split("|")]
+        if all(re.fullmatch(r":?-+:?", c) for c in cols if c):
+            continue
+        if header is None:
+            header = cols
+            continue
+        for h, c in zip(header[1:], cols[1:]):
+            for form in re.split(r"\s*[/,~]\s*|\s+or\s+", c)[:1]:
+                out.append(f"{cols[0]} {h} {form}")
+    return "\n".join(out)
+
+
 def cells(text: str) -> dict:
     """A paradigm answer's cells, whatever its layout: rows ("NOM.SG: x", "nom.sg. *x", "- **Masc. nom. sg.**: x",
     "1sg x"), inline lists under a header ("Singular: nom. x; acc. y"), and shared rows ("nom/acc sg x"). A
     scanner: grammatical words (case, number, gender, person, tense block; "/" joins alternatives) build a label,
     the next other word is its form; a number, gender or block given alone is a header that carries on."""
     out = {}
+    text = grid_rows(text)
     ctx = {"num": None, "gender": None, "block": []}
     cases, persons, num, gender, block, lead, lead_g, lead_b = [], [], None, None, [], False, False, False
     text = text.replace("*", " ").replace("•", " ")

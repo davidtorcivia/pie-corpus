@@ -1,18 +1,18 @@
 [
  {
-  "contestant": "claude-haiku-xhigh",
+  "contestant": "codex-gpt-6.1-terra-low",
   "segments": {
    "inflection": {
     "n": 335,
     "of": 335,
-    "strict": 30.4,
-    "lenient": 37.0
+    "strict": 30.1,
+    "lenient": 38.5
    },
    "paradigm": {
     "n": 124,
     "of": 124,
-    "strict": 26.2,
-    "lenient": 32.7
+    "strict": 33.5,
+    "lenient": 40.2
    },
    "en_pie": {
     "n": 0,
@@ -30,19 +30,19 @@
   "pie_score": null
  },
  {
-  "contestant": "claude-sonnet-xhigh",
+  "contestant": "codex-gpt-6.1-terra-medium",
   "segments": {
    "inflection": {
     "n": 335,
     "of": 335,
-    "strict": 48.4,
-    "lenient": 51.6
+    "strict": 35.5,
+    "lenient": 41.5
    },
    "paradigm": {
     "n": 124,
     "of": 124,
-    "strict": 51.4,
-    "lenient": 55.4
+    "strict": 35.8,
+    "lenient": 41.5
    },
    "en_pie": {
     "n": 0,
@@ -60,19 +60,79 @@
   "pie_score": null
  },
  {
-  "contestant": "claude-opus-xhigh",
+  "contestant": "codex-gpt-6.1-terra-high",
   "segments": {
    "inflection": {
     "n": 335,
     "of": 335,
-    "strict": 65.4,
-    "lenient": 66.9
+    "strict": 38.8,
+    "lenient": 45.4
    },
    "paradigm": {
     "n": 124,
     "of": 124,
-    "strict": 64.8,
-    "lenient": 67.3
+    "strict": 33.2,
+    "lenient": 39.8
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "codex-gpt-6.1-sol-medium",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 64.2,
+    "lenient": 67.5
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 44.8,
+    "lenient": 47.6
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "ours-e3",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 80.3,
+    "lenient": 80.9
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 84.6,
+    "lenient": 85.7
    },
    "en_pie": {
     "n": 0,
