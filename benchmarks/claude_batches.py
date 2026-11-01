@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-ALLOWED = {"mcp__pie_bench__submit_answers", "SubagentHandback"}
+ALLOWED = {"mcp__pie_bench__get_batch", "mcp__pie_bench__submit_answers", "SubagentHandback", "StructuredOutput"}
 
 
 def items():
@@ -64,7 +64,7 @@ def collect(run: str, transcripts: list[str]):
     bs = batches()
     for t in map(Path, transcripts):
         text = t.read_text("utf-8")
-        batch = next((b for b in bs if f"Batch {run}--{b}." in text), None)
+        batch = next((b for b in bs if f"{run}--{b}" in text), None)
         if not batch or batch in have:
             continue
         calls, usage = audit(t)

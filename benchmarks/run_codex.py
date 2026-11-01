@@ -28,6 +28,8 @@ DISABLE = ["shell_tool", "unified_exec", "code_mode_host", "apps", "plugins", "m
 CALLS = re.compile(r'"type"\s*:\s*"(function_call|custom_tool_call|local_shell_call|web_search_call|mcp_tool_call)"')
 
 BRIEF = (HERE / "tools/pie-bench.agent.md").read_text("utf-8").split("---", 2)[2].strip()
+BRIEF = BRIEF.replace("The message gives a batch id; call get_batch with it to get the items,",
+                      "The message gives a batch id and a list of items,")
 BRIEF = BRIEF.replace("When you have answered every item, call submit_answers once with the batch id and all the "
                       "answers, then reply with just the number of answers you submitted.",
                       'Reply with only a JSON array, one object per item in order: {"id": the item id, "answer": '

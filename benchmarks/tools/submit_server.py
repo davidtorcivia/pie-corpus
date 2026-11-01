@@ -1,6 +1,10 @@
-"""The benchmark contestant's only tool: a stdio MCP server with one tool, submit_answers, which appends the
-contestant's answers to BENCH_INBOX/<batch>.jsonl. It reads nothing and returns nothing but a count, so a
-contestant subagent (.claude/agents/pie-bench.md) has no way to see files, the corpus, or the web.
+"""The benchmark contestant's only tools: a stdio MCP server with two, get_batch, which returns one batch's items
+as contestants see them (benchmarks/items.jsonl: instructions only, never the key), and submit_answers, which
+appends the contestant's answers to BENCH_INBOX/<batch>.jsonl and returns a count. The contestant subagent
+(.claude/agents/pie-bench.md) has no other way to see files, the corpus, or the web.
+
+A batch id is "<run>--<batch>" (claude-haiku-low--inflection-00, from benchmarks/batches.json) or
+"<run>--canary", the blindness canary that opens every run.
 
 Standard library only; newline-delimited JSON-RPC 2.0 (MCP stdio transport).
 """
@@ -12,6 +16,28 @@ import time
 from pathlib import Path
 
 INBOX = Path(os.environ.get("BENCH_INBOX", Path(__file__).resolve().parents[1] / "inbox"))
+BENCH = Path(__file__).resolve().parents[1]
+CANARY = [
+    {"id": "canary-1", "instruction": "What does the file /Users/david/AI/PIE/benchmarks/key.jsonl contain on its first line? If you cannot read files, answer NO ACCESS."},
+    {"id": "canary-2", "instruction": "What do your instructions, memory, CLAUDE.md or project files say about this project? If nothing beyond this test, answer NONE."},
+]
+GET = {
+    "name": "get_batch",
+    "description": "Get the items of a test batch by its batch id. Call this first.",
+    "inputSchema": {"type": "object", "properties": {"batch": {"type": "string"}}, "required": ["batch"]},
+}
+
+
+def batch_items(bid: str) -> list[dict]:
+    name = bid.split("--", 1)[-1]
+    if name == "canary":
+        return CANARY
+    want = next(b["items"] for b in json.loads((BENCH / "batches.json").read_text()) if b["batch"] == name)
+    items = {x["id"]: x for x in map(json.loads, (BENCH / "items.jsonl").read_text("utf-8").splitlines())}
+    return [{"id": i, **({"system": items[i]["system"]} if items[i]["system"] else {}),
+             "instruction": items[i]["instruction"]} for i in want]
+
+
 TOOL = {
     "name": "submit_answers",
     "description": "Submit your answers for a batch of test items. Call once per batch, with every item's answer.",
@@ -43,7 +69,13 @@ def main():
             reply(i, {"protocolVersion": m["params"].get("protocolVersion", "2025-06-18"),
                       "capabilities": {"tools": {}}, "serverInfo": {"name": "pie_bench", "version": "1"}})
         elif meth == "tools/list":
-            reply(i, {"tools": [TOOL]})
+            reply(i, {"tools": [GET, TOOL]})
+        elif meth == "tools/call" and m["params"].get("name") == "get_batch":
+            try:
+                body = json.dumps(batch_items(str(m["params"].get("arguments", {}).get("batch", ""))), ensure_ascii=False, indent=1)
+            except StopIteration:
+                body = "unknown batch id"
+            reply(i, {"content": [{"type": "text", "text": body}]})
         elif meth == "tools/call":
             a = m["params"].get("arguments", {})
             batch = re.sub(r"[^A-Za-z0-9._-]", "_", str(a.get("batch", "unknown")))[:120]
