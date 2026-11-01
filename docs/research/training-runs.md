@@ -307,3 +307,27 @@ grammar 13,376 (31.3%). Run `qwen4b-instruct-r16-lr2e-4-export1102-5ep` (trainin
 5 epochs, cap 384. Scored on gen_prompts_v1 and on the new training/gen_prompts_drills_v2.jsonl (all 371 eval-split
 drills: 158 inflect and 41 paradigm prompts of ablauting lexemes, against 18 and 13 in v1), with the queue 5 e5 and
 queue 4 e3 adapters re-scored on both at 384.
+
+## Qwen3.6-35B-A3B on Tinker, epoch 1 (2026-10-31)
+
+Run `qwen36-35b-a3b-r16-lr2e-4-export1102` (training/tinker/train_qwen36.py). Same export as queue 6 (e2b6d78),
+renderer qwen3_5_disable_thinking, one example per assistant turn (10.5 M tokens per epoch), LoRA r16, lr 2e-4
+cosine over 3 epochs, 64 examples per step. About 7 s per step on Tinker (with occasional 30 s stalls).
+
+Epoch 1 (step 835) was fetched, merged into the bf16 base (all 19 MTP tensors kept), quantized with omlx oQ5e-mtp
+(PIE-qwen36-e1-oQ5e-mtp, 24 GB), and generated through omlx: greedy, rep. penalty 1.1, cap 384, thinking off. Same
+scorer and the same frozen prompts as the 4B runs.
+
+| v1 frozen prompts, cap 384 | chrF | recognized | inflect exact | paradigm cells | EN→PIE (task / app) | PIE→EN app | dialogue chrF | inflect abl | paradigm abl / non |
+|---|---|---|---|---|---|---|---|---|---|
+| 4B queue 6, e1 | 48.5 | 75% | 46% | 42% | 34.2 / 51.1 | 51.3 | 20.8 | 33% | 28% / 49% |
+| 4B queue 6, e2 | 53.9 | 78% | 52% | 59% | 40.3 / 52.0 | 56.6 | 23.4 | 39% | 48% / 64% |
+| **35B, e1** | **58.3** | **86%** | **77%** | **82%** | **44.2** / 51.3 | **59.4** | 24.3 | **50%** | **56% / 95%** |
+
+On the v2 drill set (371 prompts), 35B e1 gets inflect exact 70% (ablauting 59%, non-ablauting 85%) and paradigm
+cells 77% (ablauting 61%, non-ablauting 92%).
+
+- After one epoch the 35B beats the 4B's second epoch on everything except the EN→PIE app prompts. Those sit at about
+  51 for every model since queue 4: they are single-reference chrF on free renderings, a ceiling of the metric more
+  than of the models.
+- Regular paradigms are nearly solved (95% of cells). Ablaut remains the gap, though the gap is smaller.
