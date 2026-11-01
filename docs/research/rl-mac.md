@@ -89,13 +89,14 @@ Tiered, so most rewards never reach an LLM:
    - clearly right (the reference, or high chrF with every word analyzed and the reference's lemmas) earns full
      reward;
    - clearly broken (failed case or agreement, low lemma overlap) earns low reward.
-3. **The judge, for the rest:**
-   - Haiku 5.5 (high) screens the remaining fluent, valid answers that differ from the reference;
-   - Sonnet 5.5 (low), with the engine tools, re-checks only the samples Haiku flags;
-   - calls run in parallel during the next step's generation, and identical answers are cached.
+3. **The judge, for the rest:** Haiku 5.5 (high), one rollout per call, with the engine analysis of every word
+   inline (all readings, grouped by lexeme, and every sense), at most 6 calls in parallel, identical answers cached.
 
-Expected: 5–15% of rollouts reach tier 3, about $10–20 per run. The first step with the key is a repeat of the
-Haiku-high judge test (training/judge_test) to confirm its 34/35.
+Proposed, pending the owner (who chose Haiku with Sonnet checking its flags): round 3 of the judge test
+(docs/research/judge-test-2026-10-31.md, 2026-11-01) argues for dropping the Sonnet confirmation tier. Sonnet low,
+without the engine tool it had in round 1, Sonnet low cleared real errors Haiku had caught (two dropped negations), and Haiku high alone
+catches 34/35 with 2 false alarms at $1.36 per 1,000 judgments. Expected: 10–20% of rollouts reach the judge, about
+$5–15 per run.
 
 ### Result (finished 2026-11-01 05:31 EST; 500 steps in about 4.5 h)
 

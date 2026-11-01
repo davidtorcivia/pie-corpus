@@ -197,11 +197,14 @@ class Analyzer:
                 add(form, Analysis(f"closed:particle:{form.strip('-')}", form, "", meaning.split("(")[0].strip().replace(" ", "."),
                                    "particle"))
         add("h₁yód", Analysis("closed:relative_yo/n", "h₁yód", "", "if/when", "particle"))   # the conjunction
-        # indeclinables: lexicon headwords without an inflection spec (adverbs, particles, adpositions)
+        # indeclinables: lexicon headwords without an inflection spec (adverbs, particles, adpositions), and those
+        # whose spec is rule "indeclinable" but inadmissible to the realizer (h₂éyeri 'in the morning', h₂éti 'again')
         for lid, e in lx.entries.items():
-            if lid in lx.specs or e.get("kind") == "root" or not e.get("meaning"):
+            if lid in lx.specs and not (lx.specs[lid]["family"] is None and lx.inadmissible(lid)):
                 continue
-            if e.get("pos") in ("adv", "particle", "conj", "prep", "postp", "adp", "interj", "num"):
+            if e.get("kind") == "root" or not e.get("meaning") or e["form"].endswith("-"):
+                continue
+            if e.get("pos") in ("adv", "particle", "conj", "prep", "postp", "adp", "interj", "intj", "num"):
                 add(e["form"], Analysis(lid, e["form"], "", lx.gloss(lid), "adv"))
         loose: dict[str, list[Analysis]] = {}
         for f, xs in idx.items():

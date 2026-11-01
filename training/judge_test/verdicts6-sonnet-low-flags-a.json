@@ -1,0 +1,326 @@
+[
+{
+"id": "J02",
+"verdict": "wrong",
+"word": "h₂idnéweti",
+"reason": "It means 'swell', not 'come'; the question 'Will he come here?' needs a verb like gʷémeti.",
+"in": 2996,
+"out": 458,
+"s": 4.7
+},
+{
+"id": "J03",
+"verdict": "ok",
+"word": null,
+"reason": "All words match the English in meaning, case, person and number.",
+"in": 2936,
+"out": 751,
+"s": 6.9
+},
+{
+"id": "J04",
+"verdict": "wrong",
+"word": "wédnōm",
+"reason": "Genitive plural of 'water' is used where the English needs the accusative singular object 'the water' (wódr̥).",
+"in": 2994,
+"out": 543,
+"s": 5.1
+},
+{
+"id": "J06",
+"verdict": "wrong",
+"word": "ǵnéh₃yōs",
+"reason": "The word is not a real comparative 'wiser'; the engine reads it as a mismatched 'kin' instrumental plural, so 'wiser' is not expressed.",
+"in": 2615,
+"out": 271,
+"s": 3.5
+},
+{
+"id": "J07",
+"verdict": "wrong",
+"word": "h₁wogʷʰéyes",
+"reason": "h₁wogʷʰéyeti means 'vow', not 'fight'; the question \"Did you fight over the spring?\" needs a 2SG form of wikéti.",
+"in": 3437,
+"out": 498,
+"s": 5.3
+},
+{
+"id": "J08",
+"verdict": "wrong",
+"word": "h₂élyoyh₁",
+"reason": "'another' is a dual form that does not agree with ablative singular ḱóymōd 'village'; it needs an ablative singular form.",
+"in": 3049,
+"out": 178,
+"s": 2.4
+},
+{
+"id": "J09",
+"verdict": "wrong",
+"word": "h₁ludʰét",
+"reason": "The negation is missing: 'no wolf came' is rendered as 'a wolf arrived', with no ne.",
+"in": 2284,
+"out": 391,
+"s": 4.1
+},
+{
+"id": "J10",
+"verdict": "wrong",
+"word": "ǵl̥h₂éwi",
+"reason": "Locative singular used for the addressee 'sister-in-law'; a vocative is needed.",
+"in": 2551,
+"out": 521,
+"s": 5.4
+},
+{
+"id": "J12",
+"verdict": "wrong",
+"word": "bʰléh₁wom",
+"reason": "'the pot' is rendered with bʰléh₁wom, an adjective meaning 'colorful (blue ~ yellow)', so 'pot' is missing and the word has the wrong meaning.",
+"in": 2762,
+"out": 583,
+"s": 6.0
+},
+{
+"id": "J13",
+"verdict": "wrong",
+"word": "péh₂urom",
+"reason": "Neuter/accusative form 'small' does not agree with the nominative subject déh₂nu 'river'; it should be a nominative form such as péh₂uros.",
+"in": 2675,
+"out": 626,
+"s": 6.0
+},
+{
+"id": "J17",
+"verdict": "wrong",
+"word": "stéla",
+"reason": "stéla means 'earth mound', not 'grandmother'; the vocative address is the wrong word (h₂énHe is used later for grandmother).",
+"in": 2801,
+"out": 156,
+"s": 2.2
+},
+{
+"id": "J18",
+"verdict": "wrong",
+"word": "déwh₂onti",
+"reason": "The verb means 'join together', not 'protect', so it is the wrong meaning.",
+"in": 3037,
+"out": 825,
+"s": 6.5
+},
+{
+"id": "J19",
+"verdict": "wrong",
+"word": "gʷr̥h₃ónti",
+"reason": "The English question 'Do they not eat the wheat?' has a negation, but the PIE question has no negative particle (e.g. né).",
+"in": 3022,
+"out": 373,
+"s": 3.9
+},
+{
+"id": "J21",
+"verdict": "wrong",
+"word": "h₁épm̥",
+"reason": "Past/aorist 1SG used where the English has present 'I grasp it'; a present form (h₁épmi) is needed.",
+"in": 2846,
+"out": 836,
+"s": 7.7
+},
+{
+"id": "J22",
+"verdict": "wrong",
+"word": "h₃n̥gʷéni",
+"reason": "This is the locative of 'fat/grease' (h₃éngʷn̥), not 'fire' (h₁n̥gʷnís), so 'by the fire' is mistranslated.",
+"in": 2214,
+"out": 388,
+"s": 4.1
+},
+{
+"id": "J24",
+"verdict": "wrong",
+"word": "lubʰyéti",
+"reason": "The second sentence 'It does not love her' lacks the negation ne, so it reads as affirmative 'loves her'.",
+"in": 2799,
+"out": 491,
+"s": 4.9
+},
+{
+"id": "J29",
+"verdict": "wrong",
+"word": "donḱéh₂i",
+"reason": "It means 'tongs', not 'earth', so 'on the earth' is rendered with the wrong noun.",
+"in": 2382,
+"out": 295,
+"s": 3.5
+},
+{
+"id": "J30",
+"verdict": "wrong",
+"word": "h₃épnesih₁",
+"reason": "Dual form used for 'wealth', but the English has singular 'Wealth feeds a house' (and the verb is singular).",
+"in": 2921,
+"out": 450,
+"s": 3.8
+},
+{
+"id": "J31",
+"verdict": "wrong",
+"word": "Hyowdʰéyeti",
+"reason": "The English says the wind does not shake the post, but the PIE has no negation (no ne), so it says the wind shakes it.",
+"in": 2896,
+"out": 317,
+"s": 3.7
+},
+{
+"id": "J32",
+"verdict": "wrong",
+"word": "kʷid",
+"reason": "The English 'Men hide nothing' has a negation, but the PIE has no nē, so it reads 'men hide something'.",
+"in": 3344,
+"out": 250,
+"s": 3.3
+},
+{
+"id": "J34",
+"verdict": "ok",
+"word": null,
+"reason": "All words match the English in meaning, case, and person/number.",
+"in": 2985,
+"out": 687,
+"s": 5.5
+},
+{
+"id": "J38",
+"verdict": "wrong",
+"word": "kʷid",
+"reason": "English 'You owe me nothing' needs a negation, but the PIE has none and reads as 'you owe me something/what'.",
+"in": 2664,
+"out": 316,
+"s": 3.8
+},
+{
+"id": "J39",
+"verdict": "wrong",
+"word": "h₂éǵros",
+"reason": "'from my field' needs the ablative (h₂éǵrōd) agreeing with swṓd, but h₂éǵros is nominative.",
+"in": 3103,
+"out": 557,
+"s": 5.6
+},
+{
+"id": "J41",
+"verdict": "wrong",
+"word": "séseti",
+"reason": "The negation 'will not sleep here' is missing; there is no ne, so the PIE says she will sleep here.",
+"in": 2813,
+"out": 432,
+"s": 5.2
+},
+{
+"id": "J44",
+"verdict": "wrong",
+"word": "steh₂tleh₂",
+"reason": "'heel' is an unwanted word where the subject 'goose' (ǵʰh₂éns) should be, so the clause 'a goose came forth' lacks its subject.",
+"in": 3381,
+"out": 330,
+"s": 3.9
+},
+{
+"id": "J46",
+"verdict": "wrong",
+"word": "h₁swós",
+"reason": "\"Where is the ford?\" needs the verb h₁ésti, but h₁swós is not a valid form of 'be' for a singular subject.",
+"in": 2719,
+"out": 492,
+"s": 5.0
+},
+{
+"id": "J48",
+"verdict": "wrong",
+"word": "pnéwmn̥",
+"reason": "pnéwmn̥ means 'breath', not 'cattle', so the object of 'drive out' is the wrong word.",
+"in": 2709,
+"out": 232,
+"s": 2.9
+},
+{
+"id": "J49",
+"verdict": "wrong",
+"word": "h₂téwǵoh₂",
+"reason": "It means 'I shall spread terror', not 'I shall pour'; the verb should be a form of 'pour' (like ǵʰew-).",
+"in": 2610,
+"out": 287,
+"s": 3.3
+},
+{
+"id": "J51",
+"verdict": "wrong",
+"word": "luǵréh₂",
+"reason": "The negation is missing: 'I am not sad' is rendered h₁eǵóh₂ luǵréh₂ with no ne, so it says 'I am sad'.",
+"in": 2847,
+"out": 531,
+"s": 5.2
+},
+{
+"id": "J52",
+"verdict": "ok",
+"word": null,
+"reason": "All words match the English in meaning, case, person and number.",
+"in": 2727,
+"out": 761,
+"s": 6.3
+},
+{
+"id": "J53",
+"verdict": "wrong",
+"word": "h₂éḱmonh₁e",
+"reason": "Dual nominative/accusative form used where the English needs 'in a stone' (locative singular).",
+"in": 2697,
+"out": 388,
+"s": 4.0
+},
+{
+"id": "J54",
+"verdict": "wrong",
+"word": "méh₂teres",
+"reason": "'méh₂tēr' means 'mothers', not 'women' as the English requires.",
+"in": 2347,
+"out": 409,
+"s": 4.3
+},
+{
+"id": "J55",
+"verdict": "wrong",
+"word": "somHéh₂",
+"reason": "The second somHéh₂ (\"you are not alone\") addresses the son, so it needs masculine somHós, not the feminine form.",
+"in": 2747,
+"out": 505,
+"s": 5.5
+},
+{
+"id": "J56",
+"verdict": "wrong",
+"word": "moysós",
+"reason": "The negation is missing: 'a ram does not [grow again]' is rendered as 'a ram grows' with no né.",
+"in": 2750,
+"out": 360,
+"s": 3.3
+},
+{
+"id": "J57",
+"verdict": "ok",
+"word": null,
+"reason": "All forms agree with the English in case, number, person and meaning.",
+"in": 3114,
+"out": 986,
+"s": 7.6
+},
+{
+"id": "J58",
+"verdict": "wrong",
+"word": "légʰs",
+"reason": "The prohibition 'do not lie down' has no mḗ, so the negation is missing (and dʰr̥ǵʰtéh₂ is feminine though it addresses the husband).",
+"in": 2578,
+"out": 892,
+"s": 7.2
+}
+]

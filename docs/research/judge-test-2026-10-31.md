@@ -61,3 +61,49 @@ the tool stays available. Scored without J25 (35 plants).
 - **Haiku is erratic across efforts:** medium raised 9 false alarms on the same items.
 - **Proposed loop judge:** Haiku high screens every sample, and Sonnet low (with the tool) re-checks only the flagged
   ones. Before relying on it, repeat Haiku high once on this set to check that 34/35 holds.
+
+## Round 3: the API judge, one item per call (2026-11-01)
+
+The RL judge sees one rollout per call, so round 3 sends each item alone through the Claude API
+(training/judge_test/api_judge.py: round 2's brief, the analysis inline, no tools). Each call's usage gives the
+cost. Scored without J25 (35 plants, 24 untouched).
+
+| Run | Analysis | Caught (of 35) | False alarms (of 24) | $ per 1,000 judgments |
+|---|---|---|---|---|
+| Haiku high, 2 runs | items_v2 | 34, 35 | 16, 14 | 1.51–1.62 |
+| Haiku high, then Sonnet low on its flags | indeclinables fixed, first sense only | 34 | 9 | 1.4 + 10.6 on flags |
+| Haiku high, 2 runs | items_v3, every reading | 34, 33 (+2 unparsed catches) | 2, 2 | 1.36 |
+| Haiku high, then Sonnet low on its flags, 2 runs | items_v3 | 31, 29 | 1, 1 | 1.36 + 10.5 on flags |
+
+**One item at a time, Haiku over-flags at first, and the analysis was the cause, not the model.** Of round 3's first
+false alarms, most were the engine's analysis misleading the judge:
+- **Indeclinables missing from the analyzer.** Adverbs whose realizer spec is rule "indeclinable" but inadmissible
+  (h₂éyeri 'in the morning', h₂éti 'again', Hn̥dʰí 'under', h₂ewsér 'at dawn', h₂éd 'to') were skipped by both
+  indexing loops, so they fell to fuzzy verb matches ('go' MID.SBJV.1SG). Fixed in pie/translator/analyze.py; this
+  also fixes the translator's analysis of every such word.
+- **A reading cap.** The analysis kept the first 4 readings. An adjective's gender readings filled them, and the
+  homograph noun (ḱóymos 'village' beside ḱóymos 'homely') was cut off. items_v3 groups the readings by lexeme and
+  keeps all of them; the judge tool (tools.py) no longer caps either.
+- **One-word glosses.** The analysis showed the first sense only (somHós 'same', not 'alone'). items_v3 adds every
+  sense of each lemma.
+- **Project grammar.** Five rules the judge brief now states: a neuter plural subject takes a singular verb; verbs of
+  fearing take the ablative; with no augment, a PST form is also the injunctive (mḗ + injunctive is a prohibition);
+  the middle can change a verb's meaning; a 2PL can address one speaker for a group. These were checked in the audits
+  (fear-ablative-2026-10-30.md, t034, t062, b002), but they were added after seeing this set's false alarms, so the
+  set is no longer blind to them; a fresh judge set should confirm them.
+
+**The Sonnet confirmation tier hurts.** Sonnet low cleared real errors that Haiku had caught: two of the dropped
+negations (J34, J57) and an inflection (J52), with "all words match". It removes one false alarm and costs 3–5
+catches. Haiku high alone, on the fixed analysis, matches the round 2 subagent result (34/35, 2 false alarms) at
+**$1.36 per 1,000 judgments**, about 1.7 s of wall time per judgment at 6 in parallel.
+
+The false alarms left are misreadings, read by hand: J55 flags the feminine somHéh₂ 'alone', but the son is
+speaking to his mother, so the feminine is right; J16 flags te 'you' after 'lie', but ne te dʰréwgʰm̥ is 'I did not
+lie to you'; J03 is the neuter-plural rule the brief states.
+
+**For the RL judge:**
+- Proposed: Haiku high alone, no Sonnet tier (the owner's call; Sonnet re-checking with the engine tool, as in
+  round 1, is untested per item).
+- Unparsed answers (an unescaped quote in the reason) are now read by pattern; both unparsed ones were catches.
+- The org's concurrent-request limit is low (a 429 at 16 parallel calls); 6 in parallel works.
+- Cost: at 10–20% of 30–50 k rollouts reaching the judge, about $5–15 per run.

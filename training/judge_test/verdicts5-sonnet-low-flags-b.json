@@ -1,0 +1,362 @@
+[
+{
+"id": "J02",
+"verdict": "wrong",
+"word": "h₂idnéweti",
+"reason": "This verb means 'swell', not 'come'; it should be a form of gʷémt as in the next sentence.",
+"in": 2996,
+"out": 441,
+"s": 4.4
+},
+{
+"id": "J04",
+"verdict": "wrong",
+"word": "wédnōm",
+"reason": "'the water' as object of 'carries' needs accusative singular wódr̥, but wédnōm is genitive plural.",
+"in": 2994,
+"out": 516,
+"s": 5.0
+},
+{
+"id": "J06",
+"verdict": "wrong",
+"word": "gʷr̥h₃éte",
+"reason": "The question 'Did he devour the goat?' needs a 3SG verb, but gʷr̥h₃éte is 2PL.",
+"in": 2615,
+"out": 697,
+"s": 7.0
+},
+{
+"id": "J07",
+"verdict": "wrong",
+"word": "h₁wogʷʰéyes",
+"reason": "Verb means 'vow', not 'fight'; the English asks 'did you fight' (wikéti would be expected, as in the reply).",
+"in": 3437,
+"out": 406,
+"s": 4.9
+},
+{
+"id": "J08",
+"verdict": "wrong",
+"word": "h₂élyoyh₁",
+"reason": "'Another' should agree with ḱóymōd as an ablative singular (h₂élyōd), but the form is a dual nominative/accusative.",
+"in": 3049,
+"out": 264,
+"s": 3.1
+},
+{
+"id": "J09",
+"verdict": "wrong",
+"word": "h₁ludʰét",
+"reason": "The negation is missing: 'no wolf came' is rendered as 'a wolf arrived' with no né.",
+"in": 2284,
+"out": 466,
+"s": 5.5
+},
+{
+"id": "J10",
+"verdict": "wrong",
+"word": "ǵl̥h₂éwi",
+"reason": "Address 'sister-in-law' needs a vocative, but the form is locative singular.",
+"in": 2551,
+"out": 319,
+"s": 4.1
+},
+{
+"id": "J11",
+"verdict": "wrong",
+"word": "h₁ím",
+"reason": "h₁ím is masculine accusative, but the antecedent h₁erkʷós (an s-stem, neuter like ḱléwos) would need the neuter pronoun h₁id.",
+"in": 2825,
+"out": 672,
+"s": 7.0
+},
+{
+"id": "J12",
+"verdict": "wrong",
+"word": "bʰléh₁wom",
+"reason": "It means 'colorful (blue/yellow)', not 'pot'; the pot should be kʷéros, so the meaning is wrong.",
+"in": 2762,
+"out": 517,
+"s": 5.4
+},
+{
+"id": "J13",
+"verdict": "wrong",
+"word": "ǵr̥h₂n̥tyéh₂i",
+"reason": "'To the old man' needs masculine accusative after próti, but this is feminine locative singular.",
+"in": 2675,
+"out": 740,
+"s": 7.3
+},
+{
+"id": "J14",
+"verdict": "ok",
+"word": null,
+"reason": "Forms agree with the English in case, number and person; h₂éyeri for 'tomorrow' is acceptable.",
+"in": 2534,
+"out": 442,
+"s": 4.6
+},
+{
+"id": "J17",
+"verdict": "wrong",
+"word": "stéla",
+"reason": "stéla means 'earth mound' (vocative), not 'grandmother'; the intended vocative h₂énHe appears only later.",
+"in": 2801,
+"out": 267,
+"s": 3.3
+},
+{
+"id": "J18",
+"verdict": "wrong",
+"word": "déwh₂onti",
+"reason": "déwh₂- means 'join together', not 'protect', so the verb for 'will protect him' has the wrong meaning.",
+"in": 3037,
+"out": 782,
+"s": 6.4
+},
+{
+"id": "J19",
+"verdict": "wrong",
+"word": "puHróm gʷr̥h₃ónti",
+"reason": "The English question 'Do they not eat the wheat?' has a negation that the PIE omits, so it asks 'Do they eat the wheat?'",
+"in": 3022,
+"out": 308,
+"s": 3.4
+},
+{
+"id": "J20",
+"verdict": "ok",
+"word": null,
+"reason": "Each word matches its role in the English and the forms agree; no clear error found.",
+"in": 2935,
+"out": 811,
+"s": 7.2
+},
+{
+"id": "J22",
+"verdict": "wrong",
+"word": "h₃n̥gʷéni",
+"reason": "Analyzed as locative of 'fat/ointment' (h₃éngʷn̥), not 'fire', so the word has the wrong meaning.",
+"in": 2214,
+"out": 352,
+"s": 3.9
+},
+{
+"id": "J23",
+"verdict": "wrong",
+"word": "albʰā́s",
+"reason": "Feminine albʰā́s 'white' does not agree with masculine márkons, which also gives 'horses' rather than 'mares'.",
+"in": 2919,
+"out": 317,
+"s": 3.4
+},
+{
+"id": "J24",
+"verdict": "wrong",
+"word": "lubʰyéti",
+"reason": "The English 'It does not love her' is negated, but the PIE 'h₁íh₂m̥ lubʰyéti' has no ne, so the negation is lost.",
+"in": 2799,
+"out": 554,
+"s": 4.9
+},
+{
+"id": "J25",
+"verdict": "ok",
+"word": null,
+"reason": "Words, cases and verb forms match the English; the small differences in rendering are acceptable.",
+"in": 3254,
+"out": 985,
+"s": 7.8
+},
+{
+"id": "J29",
+"verdict": "wrong",
+"word": "donḱéh₂i",
+"reason": "donḱéh₂ means 'tongs', not 'earth', so the locative gives the wrong noun for 'on the earth'.",
+"in": 2382,
+"out": 152,
+"s": 2.4
+},
+{
+"id": "J30",
+"verdict": "wrong",
+"word": "h₃épnesih₁",
+"reason": "Dual form used for 'wealth', which is singular in the English (and in the next sentence, h₃épnos).",
+"in": 2921,
+"out": 313,
+"s": 3.5
+},
+{
+"id": "J31",
+"verdict": "wrong",
+"word": "Hyowdʰéyeti",
+"reason": "The English says the wind does not shake it, but the PIE has no negation.",
+"in": 2896,
+"out": 428,
+"s": 4.7
+},
+{
+"id": "J32",
+"verdict": "wrong",
+"word": "kʷid",
+"reason": "'Men hide nothing' needs a negation (e.g. né kʷid), but the PIE says 'men hide something', so the negation is lost.",
+"in": 3344,
+"out": 348,
+"s": 4.1
+},
+{
+"id": "J34",
+"verdict": "wrong",
+"word": "dédeh₃t",
+"reason": "The English 'was not giving me food' is negated, but the PIE has no ne, so the negation is lost.",
+"in": 2985,
+"out": 253,
+"s": 3.3
+},
+{
+"id": "J38",
+"verdict": "wrong",
+"word": "kʷid",
+"reason": "'You owe me nothing' lacks a negation (e.g. né); 'moy kʷid dʰl̥gʰési' means 'you owe me something'.",
+"in": 2664,
+"out": 507,
+"s": 5.4
+},
+{
+"id": "J39",
+"verdict": "wrong",
+"word": "h₂éǵros",
+"reason": "'from my field' needs the ablative, agreeing with swṓd, but h₂éǵros is nominative singular.",
+"in": 3103,
+"out": 453,
+"s": 4.9
+},
+{
+"id": "J41",
+"verdict": "ok",
+"word": null,
+"reason": "All forms fit their roles; 'rot' for 'stink' and 'rest' for 'sleep' are acceptably close.",
+"in": 2813,
+"out": 891,
+"s": 9.1
+},
+{
+"id": "J44",
+"verdict": "wrong",
+"word": "steh₂tleh₂",
+"reason": "'steh₂tleh₂' means 'heel' and has no counterpart in the English; it is an extra, wrongly meant word in the clause about the goose coming out of the river.",
+"in": 3381,
+"out": 359,
+"s": 4.2
+},
+{
+"id": "J46",
+"verdict": "wrong",
+"word": "h₁swós",
+"reason": "'is' in 'Where is the ford?' needs 3SG h₁ésti, but h₁swós is analyzed as a 1DU form and isn't a valid 3SG.",
+"in": 2719,
+"out": 348,
+"s": 4.9
+},
+{
+"id": "J48",
+"verdict": "wrong",
+"word": "pnéwmn̥",
+"reason": "pnéwmn̥ means 'breath', not 'cattle', so the word is the wrong meaning.",
+"in": 2709,
+"out": 204,
+"s": 2.1
+},
+{
+"id": "J49",
+"verdict": "wrong",
+"word": "h₂téwǵoh₂",
+"reason": "Means 'spread terror' rather than 'I shall pour'; the wrong verb for the final sentence.",
+"in": 2610,
+"out": 169,
+"s": 2.5
+},
+{
+"id": "J51",
+"verdict": "wrong",
+"word": "luǵréh₂",
+"reason": "\"I am not sad\" is rendered h₁eǵóh₂ luǵréh₂ with no negation, so it says \"I am sad\".",
+"in": 2847,
+"out": 496,
+"s": 4.5
+},
+{
+"id": "J52",
+"verdict": "wrong",
+"word": "kh₃túbʰos",
+"reason": "'In battle' needs the locative singular (as in kh₃téwi later), but this is a dative/ablative plural.",
+"in": 2727,
+"out": 716,
+"s": 6.1
+},
+{
+"id": "J53",
+"verdict": "wrong",
+"word": "h₂éḱmonh₁e",
+"reason": "'in a stone' needs a locative singular, but this form is a dual (nom/voc/acc), the wrong case and number.",
+"in": 2697,
+"out": 411,
+"s": 4.3
+},
+{
+"id": "J54",
+"verdict": "wrong",
+"word": "méh₂teres",
+"reason": "méh₂teres means 'mothers', not 'women' as the English requires.",
+"in": 2347,
+"out": 466,
+"s": 4.9
+},
+{
+"id": "J55",
+"verdict": "wrong",
+"word": "somHéh₂",
+"reason": "In 'You are not alone' the addressee is the son, so the feminine form somHéh₂ disagrees with him; a masculine form is needed.",
+"in": 2747,
+"out": 674,
+"s": 6.1
+},
+{
+"id": "J56",
+"verdict": "wrong",
+"word": "bʰuHyéti",
+"reason": "The final clause 'moysós bʰuHyéti' lacks a negation, so it says a ram does grow again, contradicting 'a ram does not'.",
+"in": 2750,
+"out": 338,
+"s": 3.6
+},
+{
+"id": "J57",
+"verdict": "ok",
+"word": null,
+"reason": "All forms agree with the English in case, number, person and meaning.",
+"in": 3114,
+"out": 1072,
+"s": 8.2
+},
+{
+"id": "J58",
+"verdict": "wrong",
+"word": "légʰs",
+"reason": "The prohibition 'do not lie down' has no mḗ/mā, so the negation is lost and the clause reads as a positive command; dʰr̥ǵʰtéh₂ is also feminine for a male addressee.",
+"in": 2578,
+"out": 776,
+"s": 7.5
+},
+{
+"id": "J59",
+"verdict": "ok",
+"word": null,
+"reason": "All words match the English in meaning, case, number and agreement.",
+"in": 2866,
+"out": 620,
+"s": 6.0
+}
+]

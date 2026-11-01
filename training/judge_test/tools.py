@@ -35,7 +35,11 @@ def analyze(text):
             if not res:
                 print(f"{p}: UNKNOWN ({status})")
             else:
-                print(f"{p}: " + " | ".join(f"{a.lemma} '{a.english}' {a.features or ''} [{a.pos}]" for a in res[:4])
+                groups = {}     # every reading, grouped by lexeme (no cap: a homograph must not be cut off)
+                for a in res:
+                    groups.setdefault((a.lemma, a.english, a.pos), []).append(a.features or "")
+                print(f"{p}: " + " | ".join(f"{lem} '{en}' {'/'.join(x for x in fs if x)} [{pos}]"
+                                            for (lem, en, pos), fs in groups.items())
                       + ("" if status == "exact" else f"  ({status})"))
 
 

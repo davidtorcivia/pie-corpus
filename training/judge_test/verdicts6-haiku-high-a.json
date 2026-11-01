@@ -1,0 +1,542 @@
+[
+{
+"id": "J01",
+"verdict": "ok",
+"word": null,
+"reason": "Each clause matches the English: the vocative, nominative, accusative and dative forms agree with their roles, the verb tenses and persons fit, and the negation in 'No one knows' is preserved.",
+"in": 2388,
+"out": 1806,
+"s": 8.6
+},
+{
+"id": "J02",
+"verdict": "wrong",
+"word": "h₂idnéweti",
+"reason": "The verb h₂idnéwti means 'swell', not 'come'; the question 'Will he come here?' needs gʷémeti (the verb used in the negated answer).",
+"in": 2996,
+"out": 2978,
+"s": 13.2
+},
+{
+"id": "J03",
+"verdict": "wrong",
+"word": "n̥sméy",
+"reason": "The English 'with us' needs an instrumental or accusative after ḱóm 'with', but n̥sméy is the dative plural.",
+"in": 2936,
+"out": 3855,
+"s": 18.2
+},
+{
+"id": "J04",
+"verdict": "wrong",
+"word": "wédnōm",
+"reason": "'the water' is the object of 'carry' and needs accusative singular (wódr̥), but wédnōm is genitive plural ('of waters').",
+"in": 2994,
+"out": 871,
+"s": 4.8
+},
+{
+"id": "J05",
+"verdict": "ok",
+"word": null,
+"reason": "Each clause matches the English: the hortative subjunctives, locatives, the 2SG/1SG present forms, the imperatives déh₃t and péh₃t, the nominative plurals, and the future-sense subjunctives are all correct.",
+"in": 2028,
+"out": 1302,
+"s": 6.5
+},
+{
+"id": "J06",
+"verdict": "wrong",
+"word": "gʷr̥h₃éte",
+"reason": "The question 'Did he devour the goat?' needs a 3SG verb (like gʷr̥h₃ét), but gʷr̥h₃éte is a 2PL form, so the person does not match the subject 'he'.",
+"in": 2615,
+"out": 1126,
+"s": 5.3
+},
+{
+"id": "J07",
+"verdict": "wrong",
+"word": "h₁wogʷʰéyes",
+"reason": "The English says 'fight over the spring' (wikéti), but h₁wogʷʰéyes is the verb 'vow', so the lemma has the wrong meaning.",
+"in": 3437,
+"out": 863,
+"s": 4.1
+},
+{
+"id": "J08",
+"verdict": "wrong",
+"word": "h₂élyoyh₁",
+"reason": "'Another' is a dual form (NOM/VOC/ACC.DU) and does not agree with the singular ablative ḱóymōd 'village'; it should be a singular ablative.",
+"in": 3049,
+"out": 512,
+"s": 3.0
+},
+{
+"id": "J09",
+"verdict": "wrong",
+"word": null,
+"reason": "The English says 'no wolf came', but the PIE sentence 'wĺ̥kʷos h₁ludʰét' has no negation, so the negation is lost.",
+"in": 2284,
+"out": 1104,
+"s": 5.1
+},
+{
+"id": "J10",
+"verdict": "wrong",
+"word": "ǵl̥h₂éwi",
+"reason": "Addressing 'sister-in-law' calls for the vocative, but ǵl̥h₂éwi is parsed as the locative singular, so the case does not fit the role.",
+"in": 2551,
+"out": 2601,
+"s": 12.3
+},
+{
+"id": "J11",
+"verdict": "ok",
+"word": null,
+"reason": "Every word's case, number, person and tense fits its role in the English, and the sentence's meaning is preserved, with only the quantifier 'all' in 'all your life' loosely rendered.",
+"in": 2825,
+"out": 2345,
+"s": 10.3
+},
+{
+"id": "J12",
+"verdict": "wrong",
+"word": "bʰléh₁wom",
+"reason": "The English says 'hide the pot', but bʰléh₁wom means 'colorful (blue-yellow)', not 'pot'; the pot is kʷéros, already named earlier in the text.",
+"in": 2762,
+"out": 1557,
+"s": 7.2
+},
+{
+"id": "J13",
+"verdict": "wrong",
+"word": "ǵr̥h₂n̥tyéh₂i",
+"reason": "'To the old man' needs an accusative masculine after próti 'towards', but this is a feminine locative singular form.",
+"in": 2675,
+"out": 1908,
+"s": 8.8
+},
+{
+"id": "J14",
+"verdict": "ok",
+"word": null,
+"reason": "Case, number and person agree throughout (vocative pótni, ACC h₂egʷnóm and dwóh₁ h₂egʷnóh₁, NOM.PL wiHrṓs and gʷénh₂es, subjunctives for 'will'/'shall'), and the only loose point, h₂éyeri for 'tomorrow', is a plausible rendering given the lexicon's 'morning' sense.",
+"in": 2534,
+"out": 2401,
+"s": 11.6
+},
+{
+"id": "J15",
+"verdict": "ok",
+"word": null,
+"reason": "Each word's case, number, person and mood fits its role in the English: vocatives for 'Uncle' and 'nephew', datives for 'him', accusatives for the objects and 'me/you', and subjunctives and optatives for the future and wished-for clauses.",
+"in": 2987,
+"out": 2084,
+"s": 9.5
+},
+{
+"id": "J16",
+"verdict": "ok",
+"word": null,
+"reason": "Each clause matches the English: the accusatives, locative, nominative plurals, 3SG and 1SG verbs, the 2SG subjunctive 'you will eat', and the mē-plus-injunctive prohibition all fit their roles, and 'neighbour' as wóyḱe is a looser but acceptable rendering.",
+"in": 2527,
+"out": 2361,
+"s": 11.4
+},
+{
+"id": "J17",
+"verdict": "wrong",
+"word": "stéla",
+"reason": "The vocative 'Grandmother' is rendered with stéla ('earth mound/stele') rather than h₂énHe 'grandmother', which is the form the PIE uses for 'grandmother' later in the text.",
+"in": 2801,
+"out": 2967,
+"s": 13.6
+},
+{
+"id": "J18",
+"verdict": "wrong",
+"word": "deywóḱlewēs",
+"reason": "The predicate nominative for 'Fame-from-the-Gods' should be the o-stem nominative singular in -os (as with h₁suh₁éḱwos), not -ēs, and the analysis reads it only as a subjunctive verb.",
+"in": 3037,
+"out": 1978,
+"s": 9.3
+},
+{
+"id": "J19",
+"verdict": "wrong",
+"word": null,
+"reason": "The English question 'Do they not eat the wheat?' is negative, but the PIE 'puHróm gʷr̥h₃ónti?' has no negative particle, so the negation is lost.",
+"in": 3022,
+"out": 1572,
+"s": 7.4
+},
+{
+"id": "J20",
+"verdict": "ok",
+"word": null,
+"reason": "Each clause matches the English: the imperative, aorists for the past events, the dual agreement for the twins, the ablative for 'from him', and the subjunctives for the future questions and statements are all correctly inflected.",
+"in": 2935,
+"out": 2822,
+"s": 12.6
+},
+{
+"id": "J21",
+"verdict": "wrong",
+"word": "h₁épm̥",
+"reason": "The English says the present 'I grasp it', but h₁épm̥ is an aorist/past 1SG form ('I grasped'), so the tense does not match.",
+"in": 2846,
+"out": 3670,
+"s": 16.9
+},
+{
+"id": "J22",
+"verdict": "wrong",
+"word": "wéydsoh₂",
+"reason": "The form fits the desiderative wéydseti 'want to see' (PRS.1SG) or a subjunctive of 'see', but the English 'I do not see' calls for a plain present indicative of 'see', so the meaning or mood is wrong.",
+"in": 2214,
+"out": 6151,
+"s": 27.6
+},
+{
+"id": "J23",
+"verdict": "ok",
+"word": null,
+"reason": "Every word's case, number, person, tense and mood fits its role in the English; the only doubt is that 'her husband' is rendered as bare póteys, a loose rendering rather than a clear error.",
+"in": 2919,
+"out": 4072,
+"s": 19.4
+},
+{
+"id": "J24",
+"verdict": "wrong",
+"word": null,
+"reason": "The English says the sun 'does not love her', but the PIE 'h₁íh₂m̥ lubʰyéti h₁íd dʰréwgʰt' has no negation (no ne), so the negation is lost.",
+"in": 2799,
+"out": 858,
+"s": 4.3
+},
+{
+"id": "J25",
+"verdict": "ok",
+"word": null,
+"reason": "Each word's case, number, person and tense fits its role in the English, including the 2SG aorist and the dative pronouns, the subjunctives for the future-like 'I will give/go', and the middle imperative 'take'.",
+"in": 3254,
+"out": 3243,
+"s": 15.1
+},
+{
+"id": "J26",
+"verdict": "ok",
+"word": null,
+"reason": "Each clause matches the English: vocatives, the imperatives and subjunctive, the 1PL past and aorist drive-verbs, the genitive 'of swift horses' and 'his', the neuter predicate adjectives, the middle imperative 'take', and the optative 'may ... give' with plural subject 'gods' all fit their roles.",
+"in": 2748,
+"out": 1938,
+"s": 8.8
+},
+{
+"id": "J27",
+"verdict": "ok",
+"word": null,
+"reason": "Each clause matches the English: the cases, numbers and verb forms (vocative, dual, accusative plural, locative, imperatives, subjunctives, prohibition with mē) fit their roles, and the 2PL forms addressing the villager fall under the project's group-speaker rule.",
+"in": 3020,
+"out": 3245,
+"s": 15.0
+},
+{
+"id": "J28",
+"verdict": "ok",
+"word": null,
+"reason": "Each clause matches the English: the perfect, aorist, subjunctive, middle, imperative and genitive forms fit their roles, and the negation ne is kept in 'I will not flee'.",
+"in": 2926,
+"out": 1589,
+"s": 7.2
+},
+{
+"id": "J29",
+"verdict": "wrong",
+"word": "donḱéh₂i",
+"reason": "The locative donḱéh₂i means 'tongs' (per the analysis), not 'on the earth'; the intended word would be the locative of dʰéǵʰōm.",
+"in": 2382,
+"out": 1541,
+"s": 6.9
+},
+{
+"id": "J30",
+"verdict": "wrong",
+"word": "h₃épnesih₁",
+"reason": "The subject 'wealth' is singular in English and the verb is singular, but h₃épnesih₁ is a dual-type form (the analysis gives NOM/VOC/ACC.DU), not the singular h₃épnos used elsewhere in the text.",
+"in": 2921,
+"out": 3317,
+"s": 14.8
+},
+{
+"id": "J31",
+"verdict": "wrong",
+"word": "Hyowdʰéyeti",
+"reason": "The English says the wind does not shake the post, but the PIE has no negation particle, so the sentence is affirmative and says the wind shakes it.",
+"in": 2896,
+"out": 1534,
+"s": 6.8
+},
+{
+"id": "J32",
+"verdict": "wrong",
+"word": "kʷid",
+"reason": "The English \"Men hide nothing\" is negated, but the PIE \"h₂néres kʷid ḱélonti\" has no negation (no ne-), so the bare interrogative 'what' leaves the sentence as a question instead of a negative.",
+"in": 3344,
+"out": 2066,
+"s": 9.3
+},
+{
+"id": "J33",
+"verdict": "ok",
+"word": null,
+"reason": "Each clause matches the English: the case, number, person and tense of the nouns, pronouns and verbs fit their roles, and the meanings (serve, abandon, plague, pay, oath) are correct.",
+"in": 2862,
+"out": 1600,
+"s": 7.4
+},
+{
+"id": "J34",
+"verdict": "wrong",
+"word": "dédeh₃t",
+"reason": "The English says 'was not giving me food', but the PIE has no negation (no ne or mḗ) before dédeh₃t, so the negation is lost.",
+"in": 2985,
+"out": 1576,
+"s": 7.5
+},
+{
+"id": "J35",
+"verdict": "ok",
+"word": null,
+"reason": "Every clause matches the English: the cases (genitives for 'my wagon' and 'my brother', accusatives for objects, locative for 'at the ford'), the verb moods and persons, and the number and gender agreement all fit.",
+"in": 3027,
+"out": 2924,
+"s": 13.3
+},
+{
+"id": "J36",
+"verdict": "ok",
+"word": null,
+"reason": "Each word's case, number, person, tense and mood fits its role in the English, and the lemmas match the glosses.",
+"in": 2887,
+"out": 1766,
+"s": 7.5
+},
+{
+"id": "J37",
+"verdict": "ok",
+"word": null,
+"reason": "Each clause matches the English: the 1SG subjunctive léǵōh₂ fits 'may I gather', the imperatives and vocatives fit the commands and address, the middle imperative h₁áyso fits 'take', and the 3PL optative dh₃ih₁ént fits 'may the gods give'.",
+"in": 2591,
+"out": 1745,
+"s": 8.8
+},
+{
+"id": "J38",
+"verdict": "wrong",
+"word": "kʷid",
+"reason": "The English says 'You owe me nothing', but the PIE 'moy kʷid dʰl̥gʰési' has no negation (no ne-), so it reads as 'you owe me something/what'.",
+"in": 2664,
+"out": 790,
+"s": 4.0
+},
+{
+"id": "J39",
+"verdict": "wrong",
+"word": "h₂éǵros",
+"reason": "The source phrase 'from my field' needs an ablative noun, but h₂éǵros is nominative, so the ablative swṓd does not agree with its head noun.",
+"in": 3103,
+"out": 2178,
+"s": 10.0
+},
+{
+"id": "J40",
+"verdict": "ok",
+"word": null,
+"reason": "Each clause matches the English: the imperatives, the prohibition with mē and the injunctive, the 1SG/2SG person marking, the locative and instrumental case uses, and the subjunctives for future actions all fit.",
+"in": 2323,
+"out": 1770,
+"s": 8.0
+},
+{
+"id": "J41",
+"verdict": "wrong",
+"word": "séseti",
+"reason": "The English says the wife 'will not sleep here', but the PIE sentence 'pótnih₂ moy h₁idʰé séseti' has no negation (no ne), so the negation is lost.",
+"in": 2813,
+"out": 1347,
+"s": 6.1
+},
+{
+"id": "J42",
+"verdict": "ok",
+"word": null,
+"reason": "Each clause matches the English: the ford, river, horses, stone and copper are correctly inflected, the prohibition uses mē with the injunctive h₁éys, the future readings use subjunctives, and the optative ph₂syéh₁t fits 'may the river guard you'.",
+"in": 3235,
+"out": 2970,
+"s": 12.9
+},
+{
+"id": "J43",
+"verdict": "ok",
+"word": null,
+"reason": "Every word has the right meaning and inflection, and the shared 3SG h₁ésti fits the 'many cups' subject across the gapped 'you are dear to me' clause, consistent with the project's collective-neuter rule.",
+"in": 2865,
+"out": 3105,
+"s": 14.9
+},
+{
+"id": "J44",
+"verdict": "wrong",
+"word": "steh₂tleh₂",
+"reason": "The analysis glosses steh₂tleh₂ as 'heel', an unrelated noun that the English 'In the dream' does not call for; the locative phrase needs no such word, so it adds an unmotivated meaning.",
+"in": 3381,
+"out": 5553,
+"s": 25.6
+},
+{
+"id": "J45",
+"verdict": "ok",
+"word": null,
+"reason": "Every clause is present and each word's case, person, number and mood fit its role, including the ablative with the verb of fearing and the imperative and vocative forms.",
+"in": 2507,
+"out": 2722,
+"s": 12.1
+},
+{
+"id": "J46",
+"verdict": "wrong",
+"word": "h₁swós",
+"reason": "The question 'Where is the ford?' needs the copula 'is' (h₁ésti, 3SG), but h₁swós is a 2PL 'of you' pronoun, not a form of 'be'; the analysis's PRS.1DU reading is not a real match.",
+"in": 2719,
+"out": 2161,
+"s": 10.0
+},
+{
+"id": "J47",
+"verdict": "ok",
+"word": null,
+"reason": "Each clause matches the English: the cases of ḱóymoy, pr̥wéni, stóygʰom and stéh₂dʰh₁om fit their roles, the verb persons and moods fit their subjects, and the negation in 'In summer it is not deep' is kept.",
+"in": 2630,
+"out": 3996,
+"s": 19.3
+},
+{
+"id": "J48",
+"verdict": "wrong",
+"word": "pnéwmn̥",
+"reason": "'pnéwmn̥' means 'breath', not 'cattle', so the object of 'drive out' is wrong and the question's meaning is lost.",
+"in": 2709,
+"out": 761,
+"s": 3.7
+},
+{
+"id": "J49",
+"verdict": "wrong",
+"word": "h₂téwǵoh₂",
+"reason": "The English says 'I shall pour it', but h₂téwǵoh₂ is analysed as 'spread terror' rather than the 'pour' verb used earlier (ǵʰuddʰí).",
+"in": 2610,
+"out": 1596,
+"s": 7.3
+},
+{
+"id": "J50",
+"verdict": "ok",
+"word": null,
+"reason": "Each word's case, number, person, mood and lemma fits its role in the English, including the dual optative for the two subjects Sky and Earth and the neuter pronoun téh₂ for the children.",
+"in": 3079,
+"out": 2451,
+"s": 10.8
+},
+{
+"id": "J51",
+"verdict": "wrong",
+"word": null,
+"reason": "The English says \"I am not sad\" (h₁eǵóh₂ luǵréh₂), but the PIE has no negative particle (ne), so the negation is lost.",
+"in": 2847,
+"out": 839,
+"s": 4.2
+},
+{
+"id": "J52",
+"verdict": "wrong",
+"word": "kh₃túbʰos",
+"reason": "'in battle' needs a locative singular (as in kh₃téwi later), but kh₃túbʰos is a dative/ablative plural, so the case and number are wrong.",
+"in": 2727,
+"out": 1372,
+"s": 6.2
+},
+{
+"id": "J53",
+"verdict": "wrong",
+"word": "h₂éḱmonh₁e",
+"reason": "The English says 'in a stone' (singular), but h₂éḱmonh₁e is a dual form; it should be the singular locative.",
+"in": 2697,
+"out": 922,
+"s": 4.5
+},
+{
+"id": "J54",
+"verdict": "wrong",
+"word": "méh₂teres",
+"reason": "méh₂tēr means 'mother', not 'woman', so the question 'Do women climb onto roofs?' is rendered as 'Do mothers climb onto roofs?'.",
+"in": 2347,
+"out": 1602,
+"s": 7.7
+},
+{
+"id": "J55",
+"verdict": "wrong",
+"word": "toy",
+"reason": "The 2SG genitive 'toy' attaches to 'years' and to 'his name', adding a 'your' the English doesn't have there, while 'your father' and 'your mouth' lack the possessive.",
+"in": 2747,
+"out": 3959,
+"s": 18.4
+},
+{
+"id": "J56",
+"verdict": "wrong",
+"word": "bʰuHyéti",
+"reason": "The English says 'a ram does not [grow again]', but the second clause has no negation (no ne/mḗ), so the negative is lost and the sentence says the ram also grows again.",
+"in": 2750,
+"out": 1392,
+"s": 6.3
+},
+{
+"id": "J57",
+"verdict": "wrong",
+"word": null,
+"reason": "The English asks 'Why does Sky not kill the wolves?', but the PIE question 'kʷíd dyḗws wĺ̥kʷons moréyeti?' has no negation (ne), so the 'not' is lost.",
+"in": 3114,
+"out": 1340,
+"s": 6.1
+},
+{
+"id": "J58",
+"verdict": "wrong",
+"word": "dʰr̥ǵʰtéh₂",
+"reason": "The predicate adjective 'hard' is feminine nominative singular, but it agrees with túH, which refers to the husband, so it should be masculine (dʰr̥ǵʰtós).",
+"in": 2578,
+"out": 1808,
+"s": 8.5
+},
+{
+"id": "J59",
+"verdict": "ok",
+"word": null,
+"reason": "Each word's case, number, person and mood fits its role: the vocative, genitive possessives, accusative objects, the subjunctive hortatives and the optative 'may ... hear' all match the English.",
+"in": 2866,
+"out": 2186,
+"s": 10.0
+},
+{
+"id": "J60",
+"verdict": "ok",
+"word": null,
+"reason": "Each sentence's PIE forms match the English: vocative and 2SG forms for the mother's address, accusative objects, plural subjects with 3PL verbs, dative/ablative for 'to guests' and 'to them', imperatives for the commands, and 1PL/1SG subjunctives for 'shall' clauses.",
+"in": 3012,
+"out": 2091,
+"s": 9.9
+}
+]

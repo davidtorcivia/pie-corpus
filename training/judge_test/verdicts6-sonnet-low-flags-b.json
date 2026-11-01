@@ -1,0 +1,317 @@
+[
+{
+"id": "J02",
+"verdict": "wrong",
+"word": "h₂idnéweti",
+"reason": "h₂idnéwti means 'swell', not 'come'; the English asks 'Will he come here?', which needs a verb like gʷémeti.",
+"in": 2996,
+"out": 556,
+"s": 4.9
+},
+{
+"id": "J03",
+"verdict": "wrong",
+"word": "n̥sméy",
+"reason": "\"With us\" needs a form governed by ḱóm (instrumental/accusative), not a bare dative plural.",
+"in": 2936,
+"out": 963,
+"s": 8.4
+},
+{
+"id": "J04",
+"verdict": "wrong",
+"word": "wédnōm",
+"reason": "Genitive plural 'of waters' is used where the English needs the object 'the water' (accusative singular wódr̥).",
+"in": 2994,
+"out": 787,
+"s": 6.9
+},
+{
+"id": "J06",
+"verdict": "wrong",
+"word": "gʷr̥h₃éte",
+"reason": "2PL form used where the English asks 'Did he devour the goat?', which needs 3SG.",
+"in": 2615,
+"out": 465,
+"s": 4.8
+},
+{
+"id": "J07",
+"verdict": "wrong",
+"word": "h₁wogʷʰéyes",
+"reason": "It means 'vow' (2SG past), not 'fight'; the English asks 'did you fight over the spring', which needs wikéti.",
+"in": 3437,
+"out": 356,
+"s": 5.0
+},
+{
+"id": "J08",
+"verdict": "wrong",
+"word": "h₂élyoyh₁",
+"reason": "'another' is a neuter dual form, so it does not agree with ablative singular 'village' (ḱóymōd); it needs an ablative singular.",
+"in": 3049,
+"out": 293,
+"s": 3.4
+},
+{
+"id": "J09",
+"verdict": "wrong",
+"word": "h₁ludʰét",
+"reason": "The negation is missing: 'no wolf came' is rendered as 'a wolf came' (wĺ̥kʷos h₁ludʰét, with no né).",
+"in": 2284,
+"out": 491,
+"s": 5.2
+},
+{
+"id": "J10",
+"verdict": "wrong",
+"word": "ǵl̥h₂éwi",
+"reason": "Direct address 'sister-in-law' needs the vocative, but the form is locative singular.",
+"in": 2551,
+"out": 329,
+"s": 3.8
+},
+{
+"id": "J12",
+"verdict": "wrong",
+"word": "bʰléh₁wom",
+"reason": "bʰléh₁wom means 'colorful/blue-yellow', not 'pot'; the English calls for 'the pot' here.",
+"in": 2762,
+"out": 377,
+"s": 4.0
+},
+{
+"id": "J13",
+"verdict": "wrong",
+"word": "ǵr̥h₂n̥tyéh₂i",
+"reason": "Feminine locative singular ('in the old woman') is used for 'to the old man'; próti needs a masculine accusative.",
+"in": 2675,
+"out": 606,
+"s": 6.0
+},
+{
+"id": "J16",
+"verdict": "ok",
+"word": null,
+"reason": "Forms, cases and persons match the English; only minor looseness (te added, nu for 'then').",
+"in": 2527,
+"out": 661,
+"s": 5.7
+},
+{
+"id": "J17",
+"verdict": "wrong",
+"word": "stéla",
+"reason": "stéla means 'earth mound', not 'grandmother' (h₂énHe is the word for that), so the opening vocative has the wrong meaning.",
+"in": 2801,
+"out": 226,
+"s": 2.7
+},
+{
+"id": "J18",
+"verdict": "wrong",
+"word": "déwh₂onti",
+"reason": "déwh₂t means 'join together', not 'protect', so the verb has the wrong meaning.",
+"in": 3037,
+"out": 707,
+"s": 6.1
+},
+{
+"id": "J19",
+"verdict": "ok",
+"word": null,
+"reason": "All words fit their roles and agree with the English; no clear error found.",
+"in": 3022,
+"out": 693,
+"s": 6.5
+},
+{
+"id": "J21",
+"verdict": "ok",
+"word": null,
+"reason": "All words fit their roles in the sentence and agree with each other; the only doubtful points (nu for 'then', a past form for 'I grasp') are minor.",
+"in": 2846,
+"out": 915,
+"s": 8.0
+},
+{
+"id": "J22",
+"verdict": "wrong",
+"word": "h₃n̥gʷéni",
+"reason": "h₃éngʷn̥ means 'fat, grease', not 'fire', so 'by the fire' is rendered with the wrong noun.",
+"in": 2214,
+"out": 323,
+"s": 3.8
+},
+{
+"id": "J24",
+"verdict": "wrong",
+"word": "lubʰyéti",
+"reason": "The clause 'It does not love her' has no negation (ne is missing), so it reads as affirmative and the subject is unclear.",
+"in": 2799,
+"out": 597,
+"s": 5.3
+},
+{
+"id": "J29",
+"verdict": "wrong",
+"word": "donḱéh₂i",
+"reason": "donḱéh₂ means 'tongs', not 'earth', so the sentence 'not born on the earth' has the wrong noun.",
+"in": 2382,
+"out": 185,
+"s": 2.6
+},
+{
+"id": "J30",
+"verdict": "wrong",
+"word": "h₃épnesih₁",
+"reason": "Dual form used where the English has singular 'wealth' as subject; it should be singular h₃épnos.",
+"in": 2921,
+"out": 366,
+"s": 3.6
+},
+{
+"id": "J31",
+"verdict": "wrong",
+"word": "h₂éyeri",
+"reason": "It means 'early/in the morning', not 'tomorrow', so the English 'tomorrow' is mistranslated.",
+"in": 2896,
+"out": 383,
+"s": 4.5
+},
+{
+"id": "J32",
+"verdict": "wrong",
+"word": "kʷid",
+"reason": "English 'Men hide nothing' needs a negation, but the PIE has no ne, so it says 'men hide something'.",
+"in": 3344,
+"out": 559,
+"s": 4.8
+},
+{
+"id": "J34",
+"verdict": "wrong",
+"word": "dédeh₃t",
+"reason": "The English says the wife was not giving food, but the PIE has no negation (ne is missing), so it says the opposite.",
+"in": 2985,
+"out": 354,
+"s": 3.4
+},
+{
+"id": "J38",
+"verdict": "wrong",
+"word": "kʷid",
+"reason": "\"You owe me nothing\" has no negation (no ne/néh₂), so kʷid dʰl̥gʰési means \"you owe me something/what\".",
+"in": 2664,
+"out": 523,
+"s": 5.3
+},
+{
+"id": "J41",
+"verdict": "wrong",
+"word": "séseti",
+"reason": "The English 'My wife will not sleep here' is negated, but the PIE clause has no ne, so the negation is lost.",
+"in": 2813,
+"out": 438,
+"s": 4.7
+},
+{
+"id": "J44",
+"verdict": "wrong",
+"word": "steh₂tleh₂",
+"reason": "'steh₂tleh₂' means 'heel' and corresponds to nothing in the English; it is an extra, wrongly meaning word.",
+"in": 3381,
+"out": 480,
+"s": 4.7
+},
+{
+"id": "J46",
+"verdict": "wrong",
+"word": "h₁swós",
+"reason": "In 'Where is the ford?' the verb 'is' should be h₁ésti; h₁swós is not a valid form of 'be' here (analysis gives a 1DU reading, which does not fit).",
+"in": 2719,
+"out": 401,
+"s": 4.4
+},
+{
+"id": "J48",
+"verdict": "wrong",
+"word": "pnéwmn̥",
+"reason": "pnéwmn̥ means 'breath', not 'cattle'.",
+"in": 2709,
+"out": 345,
+"s": 3.4
+},
+{
+"id": "J49",
+"verdict": "wrong",
+"word": "h₂téwǵoh₂",
+"reason": "It means 'spread terror', not 'I shall pour'; the correct verb would be a form of 'pour' (ǵʰewd-).",
+"in": 2610,
+"out": 185,
+"s": 2.6
+},
+{
+"id": "J51",
+"verdict": "wrong",
+"word": "luǵréh₂",
+"reason": "The reply 'I am not sad' lacks a negation (no né), so it says 'I am sad'.",
+"in": 2847,
+"out": 472,
+"s": 4.4
+},
+{
+"id": "J52",
+"verdict": "ok",
+"word": null,
+"reason": "All forms match the English in meaning, case, person and mood.",
+"in": 2727,
+"out": 782,
+"s": 6.0
+},
+{
+"id": "J53",
+"verdict": "wrong",
+"word": "h₂éḱmonh₁e",
+"reason": "'in a stone' needs a locative singular, but this form is a dual (nominative/accusative), which doesn't fit the role or the number.",
+"in": 2697,
+"out": 282,
+"s": 3.5
+},
+{
+"id": "J54",
+"verdict": "wrong",
+"word": "méh₂teres",
+"reason": "méh₂teres means 'mothers', not 'women'.",
+"in": 2347,
+"out": 406,
+"s": 4.4
+},
+{
+"id": "J56",
+"verdict": "wrong",
+"word": "bʰuHyéti",
+"reason": "The second clause 'a ram does not (grow again)' has no negation (ne), so it says the ram does grow.",
+"in": 2750,
+"out": 283,
+"s": 3.0
+},
+{
+"id": "J57",
+"verdict": "ok",
+"word": null,
+"reason": "All words match the English in meaning, case, number and agreement.",
+"in": 3114,
+"out": 909,
+"s": 7.1
+},
+{
+"id": "J58",
+"verdict": "wrong",
+"word": "légʰs",
+"reason": "The prohibition 'do not lie down' lacks mḗ, so the negation is lost; also dʰr̥ǵʰtéh₂ is feminine for a male addressee.",
+"in": 2578,
+"out": 750,
+"s": 7.2
+}
+]
