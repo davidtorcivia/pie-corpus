@@ -1,18 +1,78 @@
 [
  {
-  "contestant": "claude-sonnet-high",
+  "contestant": "claude-opus-low",
   "segments": {
    "inflection": {
     "n": 335,
     "of": 335,
-    "strict": 38.8,
-    "lenient": 44.2
+    "strict": 58.5,
+    "lenient": 61.2
    },
    "paradigm": {
     "n": 124,
     "of": 124,
-    "strict": 35.4,
-    "lenient": 40.8
+    "strict": 60.1,
+    "lenient": 61.4
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "claude-opus-medium",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 61.8,
+    "lenient": 63.9
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 64.1,
+    "lenient": 66.1
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 48
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 24
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 74
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "claude-opus-high",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 63.9,
+    "lenient": 65.1
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 64.0,
+    "lenient": 66.8
    },
    "en_pie": {
     "n": 0,

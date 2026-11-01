@@ -1,0 +1,2327 @@
+{
+ "contestant": "claude-opus-medium",
+ "segments": {
+  "inflection": {
+   "n": 335,
+   "of": 335,
+   "strict": 61.8,
+   "lenient": 63.9
+  },
+  "paradigm": {
+   "n": 124,
+   "of": 124,
+   "strict": 64.1,
+   "lenient": 66.1
+  },
+  "en_pie": {
+   "n": 0,
+   "of": 48
+  },
+  "pie_en": {
+   "n": 0,
+   "of": 24
+  },
+  "dialogue": {
+   "n": 0,
+   "of": 74
+  }
+ },
+ "pie_score": null,
+ "items": {
+  "v1-eval-000356": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000136": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000017": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000566": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000100": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000361": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000663": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000329": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000011": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000317": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000455": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000273": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000445": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000461": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000439": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000711": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000529": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000675": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000545": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000038": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000734": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000404": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000521": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000664": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000188": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000270": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000200": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000619": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000272": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000271": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000528": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000514": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000214": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000585": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000355": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000655": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000726": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000310": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000261": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000170": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000194": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000403": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000009": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000256": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v1-eval-000363": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000351": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000487": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000090": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v1-eval-000360": {
+   "segment": "paradigm",
+   "strict": 0.8888888888888888,
+   "lenient": 0.8888888888888888
+  },
+  "v1-eval-000627": {
+   "segment": "paradigm",
+   "strict": 0.7142857142857143,
+   "lenient": 0.7142857142857143
+  },
+  "v1-eval-000641": {
+   "segment": "paradigm",
+   "strict": 0.8421052631578947,
+   "lenient": 0.8421052631578947
+  },
+  "v1-eval-000459": {
+   "segment": "paradigm",
+   "strict": 0.7777777777777778,
+   "lenient": 0.7777777777777778
+  },
+  "v1-eval-000499": {
+   "segment": "paradigm",
+   "strict": 0.9473684210526315,
+   "lenient": 1.0
+  },
+  "v1-eval-000049": {
+   "segment": "paradigm",
+   "strict": 0.8888888888888888,
+   "lenient": 0.8888888888888888
+  },
+  "v1-eval-000395": {
+   "segment": "paradigm",
+   "strict": 0.8947368421052632,
+   "lenient": 0.8947368421052632
+  },
+  "v1-eval-000197": {
+   "segment": "paradigm",
+   "strict": 0.631578947368421,
+   "lenient": 0.7368421052631579
+  },
+  "v1-eval-000692": {
+   "segment": "paradigm",
+   "strict": 0.631578947368421,
+   "lenient": 0.7368421052631579
+  },
+  "v1-eval-000422": {
+   "segment": "paradigm",
+   "strict": 0.7368421052631579,
+   "lenient": 0.8421052631578947
+  },
+  "v1-eval-000276": {
+   "segment": "paradigm",
+   "strict": 0.7368421052631579,
+   "lenient": 0.8421052631578947
+  },
+  "v1-eval-000153": {
+   "segment": "paradigm",
+   "strict": 0.8421052631578947,
+   "lenient": 0.8421052631578947
+  },
+  "v1-eval-000374": {
+   "segment": "paradigm",
+   "strict": 0.8421052631578947,
+   "lenient": 0.8421052631578947
+  },
+  "v1-eval-000307": {
+   "segment": "paradigm",
+   "strict": 0.631578947368421,
+   "lenient": 0.7368421052631579
+  },
+  "v1-eval-000316": {
+   "segment": "paradigm",
+   "strict": 0.9473684210526315,
+   "lenient": 0.9473684210526315
+  },
+  "v1-eval-000775": {
+   "segment": "paradigm",
+   "strict": 0.7142857142857143,
+   "lenient": 0.7142857142857143
+  },
+  "v1-eval-000766": {
+   "segment": "paradigm",
+   "strict": 0.8947368421052632,
+   "lenient": 0.8947368421052632
+  },
+  "v1-eval-000127": {
+   "segment": "paradigm",
+   "strict": 0.8947368421052632,
+   "lenient": 0.8947368421052632
+  },
+  "v1-eval-000237": {
+   "segment": "paradigm",
+   "strict": 0.7368421052631579,
+   "lenient": 0.8421052631578947
+  },
+  "v1-eval-000124": {
+   "segment": "paradigm",
+   "strict": 0.7368421052631579,
+   "lenient": 0.8421052631578947
+  },
+  "v1-eval-000615": {
+   "segment": "paradigm",
+   "strict": 0.6842105263157895,
+   "lenient": 0.6842105263157895
+  },
+  "v1-eval-000518": {
+   "segment": "paradigm",
+   "strict": 0.8571428571428571,
+   "lenient": 0.8571428571428571
+  },
+  "v1-eval-000055": {
+   "segment": "paradigm",
+   "strict": 0.42105263157894735,
+   "lenient": 0.42105263157894735
+  },
+  "v1-eval-000018": {
+   "segment": "paradigm",
+   "strict": 0.5263157894736842,
+   "lenient": 0.5789473684210527
+  },
+  "v1-eval-000490": {
+   "segment": "paradigm",
+   "strict": 0.7894736842105263,
+   "lenient": 0.7894736842105263
+  },
+  "v1-eval-000226": {
+   "segment": "paradigm",
+   "strict": 0.7368421052631579,
+   "lenient": 0.7368421052631579
+  },
+  "v1-eval-000709": {
+   "segment": "paradigm",
+   "strict": 0.5263157894736842,
+   "lenient": 0.5789473684210527
+  },
+  "v1-eval-000076": {
+   "segment": "paradigm",
+   "strict": 0.7368421052631579,
+   "lenient": 0.7894736842105263
+  },
+  "v1-eval-000681": {
+   "segment": "paradigm",
+   "strict": 0.14285714285714285,
+   "lenient": 0.14285714285714285
+  },
+  "v1-eval-000485": {
+   "segment": "paradigm",
+   "strict": 0.14285714285714285,
+   "lenient": 0.14285714285714285
+  },
+  "v1-eval-000368": {
+   "segment": "paradigm",
+   "strict": 0.8888888888888888,
+   "lenient": 0.8888888888888888
+  },
+  "v1-eval-000385": {
+   "segment": "paradigm",
+   "strict": 0.631578947368421,
+   "lenient": 0.631578947368421
+  },
+  "v1-eval-000330": {
+   "segment": "paradigm",
+   "strict": 0.5263157894736842,
+   "lenient": 0.5789473684210527
+  },
+  "v1-eval-000349": {
+   "segment": "paradigm",
+   "strict": 0.5263157894736842,
+   "lenient": 0.5789473684210527
+  },
+  "v1-eval-000362": {
+   "segment": "paradigm",
+   "strict": 0.5263157894736842,
+   "lenient": 0.5789473684210527
+  },
+  "v1-eval-000523": {
+   "segment": "paradigm",
+   "strict": 0.5,
+   "lenient": 0.5
+  },
+  "v1-eval-000713": {
+   "segment": "paradigm",
+   "strict": 0.5555555555555556,
+   "lenient": 0.5555555555555556
+  },
+  "v1-eval-000253": {
+   "segment": "paradigm",
+   "strict": 0.8888888888888888,
+   "lenient": 0.8888888888888888
+  },
+  "v1-eval-000752": {
+   "segment": "paradigm",
+   "strict": 0.3157894736842105,
+   "lenient": 0.3157894736842105
+  },
+  "v1-eval-000622": {
+   "segment": "paradigm",
+   "strict": 0.42105263157894735,
+   "lenient": 0.42105263157894735
+  },
+  "v2-eval-000385": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000405": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000432": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000656": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000789": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000232": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000327": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000363": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000128": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000140": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000248": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000185": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000444": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000809": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000175": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000463": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000709": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000123": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000491": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000520": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000514": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000623": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000668": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000555": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000639": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000843": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000245": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000324": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000521": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000630": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000691": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000869": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000200": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000253": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000401": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000308": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000579": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000701": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000147": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000378": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000465": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000600": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000625": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000787": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000014": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000035": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000771": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000153": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000189": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000583": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000692": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000765": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000804": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000064": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000373": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000829": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000361": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000561": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000682": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000045": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000255": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000310": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000351": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000390": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000581": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000105": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000643": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000733": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000132": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000258": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000617": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000241": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000276": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000593": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000611": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000758": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000842": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000163": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000285": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000336": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000376": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000430": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000457": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000116": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000501": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000577": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000003": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000046": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000256": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000300": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000402": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000607": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000198": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000322": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000434": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000452": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000510": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000860": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000370": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000418": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000569": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000067": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000584": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000785": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000483": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000706": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000818": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000512": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000620": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000817": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000206": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000208": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000420": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000602": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000743": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000838": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000264": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000337": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000356": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000433": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000472": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000655": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000124": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000171": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000173": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000338": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000597": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000680": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000072": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000081": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000342": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000019": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000242": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000374": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000604": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000633": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000234": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000360": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000828": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000025": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000664": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000666": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000708": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000805": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000159": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000487": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000652": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000710": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000790": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000862": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000009": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000270": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000523": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000260": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000344": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000448": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000224": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000312": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000560": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000051": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000442": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000474": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000049": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000169": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000371": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000524": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000557": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000859": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000069": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000454": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000576": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000627": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000675": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000702": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000062": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000238": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000263": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000307": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000453": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000517": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000347": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000543": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000864": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000133": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000190": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000202": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000426": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000595": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000822": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000006": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000697": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000851": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000634": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000647": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000830": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000095": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000717": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000812": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000178": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000485": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000742": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000143": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000637": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000767": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000499": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000504": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000540": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000684": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000756": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000158": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000415": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000815": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000027": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000231": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000283": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000032": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000297": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000425": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000372": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000515": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000596": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000203": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000287": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000492": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000547": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000598": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000799": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000066": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000247": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000301": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000314": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000488": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000723": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000183": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000188": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000335": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000419": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000421": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000773": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000134": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000148": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000606": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000720": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000735": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000824": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000112": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000120": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000172": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000213": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000703": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000849": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000313": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000490": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000698": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000383": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000738": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000775": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000061": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000304": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000486": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000688": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000696": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000835": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000052": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000531": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000814": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000089": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000205": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000387": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000414": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000565": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000731": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000326": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000646": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000825": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000088": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000179": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000871": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000657": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000715": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000716": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000029": {
+   "segment": "inflection",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000629": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000772": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000156": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000217": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000513": {
+   "segment": "inflection",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000868": {
+   "segment": "paradigm",
+   "strict": 0.5789473684210527,
+   "lenient": 0.5789473684210527
+  },
+  "v2-eval-000776": {
+   "segment": "paradigm",
+   "strict": 0.6842105263157895,
+   "lenient": 0.7368421052631579
+  },
+  "v2-eval-000676": {
+   "segment": "paradigm",
+   "strict": 0.7894736842105263,
+   "lenient": 0.7894736842105263
+  },
+  "v2-eval-000334": {
+   "segment": "paradigm",
+   "strict": 0.5263157894736842,
+   "lenient": 0.5789473684210527
+  },
+  "v2-eval-000323": {
+   "segment": "paradigm",
+   "strict": 0.5714285714285714,
+   "lenient": 0.5714285714285714
+  },
+  "v2-eval-000836": {
+   "segment": "paradigm",
+   "strict": 0.7368421052631579,
+   "lenient": 0.7368421052631579
+  },
+  "v2-eval-000375": {
+   "segment": "paradigm",
+   "strict": 0.6842105263157895,
+   "lenient": 0.7368421052631579
+  },
+  "v2-eval-000546": {
+   "segment": "paradigm",
+   "strict": 0.8888888888888888,
+   "lenient": 0.8888888888888888
+  },
+  "v2-eval-000225": {
+   "segment": "paradigm",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000455": {
+   "segment": "paradigm",
+   "strict": 0.2222222222222222,
+   "lenient": 0.2222222222222222
+  },
+  "v2-eval-000526": {
+   "segment": "paradigm",
+   "strict": 0.3333333333333333,
+   "lenient": 0.3333333333333333
+  },
+  "v2-eval-000770": {
+   "segment": "paradigm",
+   "strict": 0.5263157894736842,
+   "lenient": 0.5789473684210527
+  },
+  "v2-eval-000303": {
+   "segment": "paradigm",
+   "strict": 0.5263157894736842,
+   "lenient": 0.5789473684210527
+  },
+  "v2-eval-000107": {
+   "segment": "paradigm",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000168": {
+   "segment": "paradigm",
+   "strict": 0.7777777777777778,
+   "lenient": 0.7777777777777778
+  },
+  "v2-eval-000493": {
+   "segment": "paradigm",
+   "strict": 0.7894736842105263,
+   "lenient": 0.7894736842105263
+  },
+  "v2-eval-000466": {
+   "segment": "paradigm",
+   "strict": 0.1111111111111111,
+   "lenient": 0.1111111111111111
+  },
+  "v2-eval-000477": {
+   "segment": "paradigm",
+   "strict": 0.6842105263157895,
+   "lenient": 0.7368421052631579
+  },
+  "v2-eval-000199": {
+   "segment": "paradigm",
+   "strict": 0.7894736842105263,
+   "lenient": 0.7894736842105263
+  },
+  "v2-eval-000856": {
+   "segment": "paradigm",
+   "strict": 0.7368421052631579,
+   "lenient": 0.7894736842105263
+  },
+  "v2-eval-000228": {
+   "segment": "paradigm",
+   "strict": 0.8421052631578947,
+   "lenient": 0.8421052631578947
+  },
+  "v2-eval-000065": {
+   "segment": "paradigm",
+   "strict": 0.7368421052631579,
+   "lenient": 0.8421052631578947
+  },
+  "v2-eval-000727": {
+   "segment": "paradigm",
+   "strict": 0.8888888888888888,
+   "lenient": 0.8888888888888888
+  },
+  "v2-eval-000861": {
+   "segment": "paradigm",
+   "strict": 0.14285714285714285,
+   "lenient": 0.14285714285714285
+  },
+  "v2-eval-000100": {
+   "segment": "paradigm",
+   "strict": 0.14285714285714285,
+   "lenient": 0.14285714285714285
+  },
+  "v2-eval-000227": {
+   "segment": "paradigm",
+   "strict": 0.8888888888888888,
+   "lenient": 0.8888888888888888
+  },
+  "v2-eval-000439": {
+   "segment": "paradigm",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000219": {
+   "segment": "paradigm",
+   "strict": 0.5263157894736842,
+   "lenient": 0.631578947368421
+  },
+  "v2-eval-000354": {
+   "segment": "paradigm",
+   "strict": 0.47368421052631576,
+   "lenient": 0.47368421052631576
+  },
+  "v2-eval-000840": {
+   "segment": "paradigm",
+   "strict": 0.47368421052631576,
+   "lenient": 0.47368421052631576
+  },
+  "v2-eval-000386": {
+   "segment": "paradigm",
+   "strict": 0.8421052631578947,
+   "lenient": 0.8421052631578947
+  },
+  "v2-eval-000055": {
+   "segment": "paradigm",
+   "strict": 0.8421052631578947,
+   "lenient": 0.8421052631578947
+  },
+  "v2-eval-000539": {
+   "segment": "paradigm",
+   "strict": 0.8421052631578947,
+   "lenient": 0.8421052631578947
+  },
+  "v2-eval-000721": {
+   "segment": "paradigm",
+   "strict": 0.5263157894736842,
+   "lenient": 0.631578947368421
+  },
+  "v2-eval-000167": {
+   "segment": "paradigm",
+   "strict": 0.7894736842105263,
+   "lenient": 0.8421052631578947
+  },
+  "v2-eval-000193": {
+   "segment": "paradigm",
+   "strict": 0.42105263157894735,
+   "lenient": 0.47368421052631576
+  },
+  "v2-eval-000446": {
+   "segment": "paradigm",
+   "strict": 0.631578947368421,
+   "lenient": 0.6842105263157895
+  },
+  "v2-eval-000744": {
+   "segment": "paradigm",
+   "strict": 0.631578947368421,
+   "lenient": 0.6842105263157895
+  },
+  "v2-eval-000750": {
+   "segment": "paradigm",
+   "strict": 0.631578947368421,
+   "lenient": 0.6842105263157895
+  },
+  "v2-eval-000192": {
+   "segment": "paradigm",
+   "strict": 0.8421052631578947,
+   "lenient": 0.8421052631578947
+  },
+  "v2-eval-000318": {
+   "segment": "paradigm",
+   "strict": 0.3684210526315789,
+   "lenient": 0.3684210526315789
+  },
+  "v2-eval-000083": {
+   "segment": "paradigm",
+   "strict": 0.7894736842105263,
+   "lenient": 0.7894736842105263
+  },
+  "v2-eval-000380": {
+   "segment": "paradigm",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000201": {
+   "segment": "paradigm",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000424": {
+   "segment": "paradigm",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000449": {
+   "segment": "paradigm",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000636": {
+   "segment": "paradigm",
+   "strict": 0.7777777777777778,
+   "lenient": 0.7777777777777778
+  },
+  "v2-eval-000152": {
+   "segment": "paradigm",
+   "strict": 0.8888888888888888,
+   "lenient": 0.8888888888888888
+  },
+  "v2-eval-000269": {
+   "segment": "paradigm",
+   "strict": 0.631578947368421,
+   "lenient": 0.6842105263157895
+  },
+  "v2-eval-000781": {
+   "segment": "paradigm",
+   "strict": 0.7368421052631579,
+   "lenient": 0.7368421052631579
+  },
+  "v2-eval-000618": {
+   "segment": "paradigm",
+   "strict": 0.2631578947368421,
+   "lenient": 0.2631578947368421
+  },
+  "v2-eval-000718": {
+   "segment": "paradigm",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000788": {
+   "segment": "paradigm",
+   "strict": 0.0,
+   "lenient": 0.0
+  },
+  "v2-eval-000125": {
+   "segment": "paradigm",
+   "strict": 0.631578947368421,
+   "lenient": 0.6842105263157895
+  },
+  "v2-eval-000226": {
+   "segment": "paradigm",
+   "strict": 0.8421052631578947,
+   "lenient": 0.8421052631578947
+  },
+  "v2-eval-000319": {
+   "segment": "paradigm",
+   "strict": 0.631578947368421,
+   "lenient": 0.6842105263157895
+  },
+  "v2-eval-000427": {
+   "segment": "paradigm",
+   "strict": 0.5,
+   "lenient": 0.5
+  },
+  "v2-eval-000017": {
+   "segment": "paradigm",
+   "strict": 0.7894736842105263,
+   "lenient": 0.7894736842105263
+  },
+  "v2-eval-000689": {
+   "segment": "paradigm",
+   "strict": 0.5714285714285714,
+   "lenient": 0.5714285714285714
+  },
+  "v2-eval-000352": {
+   "segment": "paradigm",
+   "strict": 0.7894736842105263,
+   "lenient": 0.7894736842105263
+  },
+  "v2-eval-000306": {
+   "segment": "paradigm",
+   "strict": 0.2631578947368421,
+   "lenient": 0.2631578947368421
+  },
+  "v2-eval-000667": {
+   "segment": "paradigm",
+   "strict": 0.2631578947368421,
+   "lenient": 0.2631578947368421
+  },
+  "v2-eval-000412": {
+   "segment": "paradigm",
+   "strict": 0.5263157894736842,
+   "lenient": 0.5263157894736842
+  },
+  "v2-eval-000368": {
+   "segment": "paradigm",
+   "strict": 0.47368421052631576,
+   "lenient": 0.5263157894736842
+  },
+  "v2-eval-000739": {
+   "segment": "paradigm",
+   "strict": 0.5714285714285714,
+   "lenient": 0.5714285714285714
+  },
+  "v2-eval-000729": {
+   "segment": "paradigm",
+   "strict": 0.47368421052631576,
+   "lenient": 0.5263157894736842
+  },
+  "v2-eval-000244": {
+   "segment": "paradigm",
+   "strict": 0.7142857142857143,
+   "lenient": 0.7142857142857143
+  },
+  "v2-eval-000469": {
+   "segment": "paradigm",
+   "strict": 0.7777777777777778,
+   "lenient": 0.7777777777777778
+  },
+  "v2-eval-000075": {
+   "segment": "paradigm",
+   "strict": 1.0,
+   "lenient": 1.0
+  },
+  "v2-eval-000694": {
+   "segment": "paradigm",
+   "strict": 0.7777777777777778,
+   "lenient": 0.7777777777777778
+  },
+  "v2-eval-000484": {
+   "segment": "paradigm",
+   "strict": 0.6842105263157895,
+   "lenient": 0.7368421052631579
+  },
+  "v2-eval-000471": {
+   "segment": "paradigm",
+   "strict": 0.6666666666666666,
+   "lenient": 0.6666666666666666
+  },
+  "v2-eval-000473": {
+   "segment": "paradigm",
+   "strict": 0.5,
+   "lenient": 0.5
+  },
+  "v2-eval-000502": {
+   "segment": "paradigm",
+   "strict": 0.6666666666666666,
+   "lenient": 0.6666666666666666
+  },
+  "v2-eval-000435": {
+   "segment": "paradigm",
+   "strict": 0.5263157894736842,
+   "lenient": 0.5263157894736842
+  },
+  "v2-eval-000585": {
+   "segment": "paradigm",
+   "strict": 0.5789473684210527,
+   "lenient": 0.5789473684210527
+  },
+  "v2-eval-000779": {
+   "segment": "paradigm",
+   "strict": 0.6842105263157895,
+   "lenient": 0.6842105263157895
+  },
+  "v2-eval-000498": {
+   "segment": "paradigm",
+   "strict": 0.7777777777777778,
+   "lenient": 0.7777777777777778
+  },
+  "v2-eval-000854": {
+   "segment": "paradigm",
+   "strict": 0.5789473684210527,
+   "lenient": 0.5789473684210527
+  },
+  "v2-eval-000218": {
+   "segment": "paradigm",
+   "strict": 0.5263157894736842,
+   "lenient": 0.5263157894736842
+  },
+  "v2-eval-000382": {
+   "segment": "paradigm",
+   "strict": 0.631578947368421,
+   "lenient": 0.6842105263157895
+  },
+  "v2-eval-000013": {
+   "segment": "paradigm",
+   "strict": 0.631578947368421,
+   "lenient": 0.6842105263157895
+  },
+  "v2-eval-000289": {
+   "segment": "paradigm",
+   "strict": 0.6842105263157895,
+   "lenient": 0.6842105263157895
+  },
+  "v2-eval-000732": {
+   "segment": "paradigm",
+   "strict": 0.8888888888888888,
+   "lenient": 0.8888888888888888
+  }
+ }
+}
