@@ -31,3 +31,11 @@ Keep design decisions, the engine, and validator changes in the main session. Su
 7. **Coverage dashboard.** Track the root coverage %, the genre×theme grid fill, validator pass rate, tokens per tier, and neologism share in `docs/STATUS.md`. Optionally publish a small HTML dashboard as an Artifact so David can check it from his phone.
 
 8. **Source requests.** If a source can't be found, record it in `docs/STATUS.md` under "Need from David" and keep going with something else. Don't block on it.
+
+## PIE→EN: vocabulary drills (2026-11-01)
+
+The benchmark's provisional PIE→EN score is our models' weakest (65–70 vs 90–100 for Opus/Sol, on 10 items; v2
+has 42). The export has as many PIE→EN pairs as EN→PIE (4,486 each), so volume isn't the gap; e3's misses are
+mostly vocabulary (n̥putlós 'childless' read as 'grandson'). No task drills word meaning: add lexicon drills
+(PIE lemma → English meaning; English → PIE word) for every usable lexeme, and add PIE→EN to the RL mix, judged.
+Owner: "in the back of my head", not scheduled.
