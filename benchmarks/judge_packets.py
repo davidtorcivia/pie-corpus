@@ -46,7 +46,8 @@ def build(rnd: str, contestants: list[str]):
     d.mkdir(parents=True, exist_ok=True)
     mapping, packets = {}, []
     only = os.environ.get("BENCH_ONLY")                # an id prefix: judge only those items (v2's "e2-")
-    ids = [i for i, k in key.items() if k["segment"] in JUDGED and (not only or i.startswith(only))]
+    excluded = set(json.loads((HERE / "excluded.json").read_text("utf-8")))   # never scored (Amendment 1): not judged
+    ids = [i for i, k in key.items() if k["segment"] in JUDGED and i not in excluded and (not only or i.startswith(only))]
     for i in ids:
         k, it = key[i], items[i]
         cands = [(c, part(k["kind"], answers[c][i])) for c in contestants if i in answers.get(c, {})]
