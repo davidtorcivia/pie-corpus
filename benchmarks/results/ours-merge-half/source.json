@@ -1,0 +1,6 @@
+{
+ "generations": "/Users/david/AI/pie-runs/rl/merges/half/eval",
+ "checkpoint": "merge: 0.5 x rl1 final + 0.5 x rl3 step 275 (exact rank-16 stack, training/rl/merge_adapters.py)",
+ "path": "training/rl/eval_ckpt.py, mlx_lm greedy, thinking off, cap 384",
+ "one item per call": true
+}

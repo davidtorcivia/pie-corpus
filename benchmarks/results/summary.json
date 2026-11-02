@@ -741,6 +741,45 @@
   }
  },
  {
+  "contestant": "ours-merge-half",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 80.9,
+    "lenient": 81.2
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 85.6,
+    "lenient": 86.4
+   },
+   "en_pie": {
+    "n": 42,
+    "of": 42,
+    "strict": 82.1,
+    "lenient": 86.9
+   },
+   "pie_en": {
+    "n": 42,
+    "of": 42,
+    "strict": 83.9,
+    "lenient": 83.9
+   },
+   "dialogue": {
+    "n": 64,
+    "of": 64,
+    "strict": 80.1,
+    "lenient": 82.8
+   }
+  },
+  "pie_score": {
+   "strict": 82.4,
+   "lenient": 84.5
+  }
+ },
+ {
   "contestant": "ours-rl1-step500",
   "segments": {
    "inflection": {
