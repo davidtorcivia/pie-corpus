@@ -9,7 +9,10 @@ generation path (omlx's numbers use repetition penalty 1.1 and are not comparabl
 """
 import argparse
 import json
+import os
 import shutil
+import subprocess
+import sys
 import tempfile
 from pathlib import Path
 
@@ -27,6 +30,21 @@ def adapter_dir(ckpt: Path) -> str:
     return str(d)
 
 
+RUNS = Path("/Users/david/AI/pie-runs/rl/runs")
+
+
+def live_trainers() -> list[str]:
+    """Runs whose trainer pid is alive. A second model on the Mac GPU beside a GRPO trainer wedged the GPU and killed
+    rl3 at step 288 (2026-11-01; docs/research/rl-lessons.md), so evals wait for training to end."""
+    out = []
+    for f in RUNS.glob("*/pid"):
+        pid = f.read_text().strip()
+        cmd = subprocess.run(["ps", "-p", pid, "-o", "command="], capture_output=True, text=True).stdout
+        if "grpo.py" in cmd:          # the pid is live and still the trainer (pids are reused after a reboot)
+            out.append(f.parent.name)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True)
@@ -35,7 +53,10 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--max-new", type=int, default=384)
     ap.add_argument("--batch", type=int, default=64)
+    ap.add_argument("--force", action="store_true", help="run even while an RL trainer is alive")
     a = ap.parse_args()
+    if (busy := live_trainers()) and not a.force:
+        sys.exit(f"refusing: RL trainer running ({', '.join(busy)}); evaluate after it exits, or pass --force")
     model, tok = load(a.model, adapter_path=adapter_dir(Path(a.adapter)) if a.adapter else None)
     gens = [json.loads(x) for x in Path(a.prompts).read_text("utf-8").splitlines() if x.strip()]
     prompts = [tok.apply_chat_template(g["prompt"], add_generation_prompt=True, tokenize=True, enable_thinking=False)

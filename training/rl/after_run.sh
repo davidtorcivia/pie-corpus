@@ -18,6 +18,8 @@ for c in base $CKPTS; do
     final) AD=(--adapter $RUN/adapters/adapters.safetensors) ;;
     *) AD=(--adapter $RUN/adapters/${c}_adapters.safetensors) ;;
   esac
+  # a run that ended early has no later checkpoints: skip them rather than fail
+  (( ${#AD} )) && [ ! -f ${AD[2]} ] && { echo "$(date '+%F %T') skip $c: no ${AD[2]:t}" >> $RUN/eval/summary.txt; continue; }
   for set in v1 drills_v2; do
     f=$ROOT/training/gen_prompts_$set.jsonl
     out=$RUN/eval/generations-$set-$c.jsonl
