@@ -11,7 +11,7 @@ D3=/Users/david/AI/pie-runs/rl/data/rl3; D4=/Users/david/AI/pie-runs/rl/data/rl4
 BASE=$(awk '/^model:/{print $2}' $HERE/rl4.yaml)
 say() { echo "$(date '+%F %T') $*"; }
 mkdir -p $D4
-for f in candidates.jsonl valid.jsonl test.jsonl manifest.json; do [ -s $D4/$f ] || cp $D3/$f $D4/$f; done
+for f in candidates.jsonl valid.jsonl test.jsonl manifest.json; do [ -s $D4/$f ] || [ ! -f $D3/$f ] || cp $D3/$f $D4/$f; done
 [ -s $D4/train.jsonl ] || { say passrate; caffeinate -i $PY -I $HERE/passrate.py --model $BASE --adapter $MERGE --data $D4 --mix rl4 --n 2000; }
 pgrep -f "watch.sh $NAME" >/dev/null || { nohup $HERE/watch.sh $NAME > $RUNS/$NAME.watch.log 2>&1 & }
 if [ ! -f $RUNS/$NAME/pid ]; then
