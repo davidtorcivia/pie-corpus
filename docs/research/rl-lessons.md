@@ -60,6 +60,10 @@ Started 2026-11-01 (owner: "Take notes as we go so we can note how to improve fu
   own eval, and both evals hung for 11 hours, one in uninterruptible state (`UN`). Steps 276–288 were lost, and
   the run has to be resumed from the step-275 adapter. Next time, evaluate checkpoints only after the trainer
   exits, or on another machine. If an eval must run mid-training, first pause training at a checkpoint.
+  The wedged GPU recovered without a reboot: the stuck process finished exiting on its own about 12 h in, and
+  94 GB of wired memory came free. Resumed as rl3b-resume275-e3 (`training/rl/resume_rl3.sh`). Guards now:
+  `eval_ckpt.py` refuses while a `grpo.py` trainer is alive; `watch.sh` alerts on a dead or stalled trainer;
+  and the agent schedules check-ins on every run it starts (owner: "You need to be checking on in the run").
 - **Step 250 of rl3, v1 prompts, compared with base:** inflection exact 0.854 → 0.812, paradigm cells 0.869 →
   0.826, chrF 61.1 → 59.7, and the first modern-word slip ("machine" for bʰórom 'load', in a PIE→EN app item).
   rl1 also dipped at step 250 (cells 0.817) and recovered by its final step (0.870). The modern-word check should
