@@ -27,6 +27,13 @@ Started 2026-11-01 (owner: "Take notes as we go so we can note how to improve fu
   zero-variance groups per kind. Drop or reword kinds that are mostly all-zero, for example by giving the
   English gloss's sense or part of speech.
 
+- **rl3 drifted after ~step 450 (overall).** Resumed as rl3b from step 275: KL to e3 spiked to ~0.3 on single
+  batches from step 85, then rose for good: 0.18 → 0.36 → 0.43 → 0.66 over overall steps 465–480, with validation loss
+  0.013 → 0.023. Validation per skill, rl3b step 1 / 100 / 200 (overall 276 / 375 / 475): dialogue .73/.70/.65,
+  inflect .83/.79/.75, PIE→EN vocab .73/.70/.58, paradigm flat .86/.85/.88. The best weights by validation are
+  step 275's. Stopped at 205 of 225. Next time: watch KL as well as rewards (a sustained climb past ~0.3 is the
+  stop signal here), keep beta higher than 0.1 or decay the learning rate, and plan fewer steps per stage.
+
 ## Validation
 
 - **Read per-skill validation on fixed batches, not batch training rewards.** Training-batch means per kind swing
