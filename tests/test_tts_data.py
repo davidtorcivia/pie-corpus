@@ -41,7 +41,43 @@ def test_prose_timeline_monotonic_and_label_matches():
         assert w["start"] >= t - 1e-9 and w["end"] > w["start"]
         t = w["end"] + w["pause_after"]
     assert c[0].label == T.text_label(c[0].pie)
-    assert ws[3]["pause_after"] == T.PROSE_STOP
+    assert T.STOP_RANGE[0] <= ws[3]["pause_after"] <= T.STOP_RANGE[1]
+    assert [w["line"] for w in ws] == [1, 1, 1, 1, 2, 2, 2]          # one pitch line per sentence
+    assert ws[3].get("rise") and not any(w.get("rise") for w in ws[4:])
+    assert c[0].timeline()[3]["rise"] is True
+
+
+def test_comma_is_a_caesura_inside_the_line():
+    ws = T.prose_words("h₁ésti wl̥kʷos, h₁ésti h₁éḱwos.", "k")
+    assert {w["line"] for w in ws} == {1}
+    assert ws[1]["pause_after"] == T.PROSE_COMMA < 0.5 <= T.STOP_RANGE[0]
+    pv = T._pie_vtl()
+    plain = sum(pv.default_durations(pv.parse_word(ws[0]["ipa"]), False))
+    rate = plain / (ws[0]["end"] - ws[0]["start"])                     # an unpunctuated word: rate only
+    comma = sum(pv.default_durations(pv.parse_word(ws[1]["ipa"]), False)) / rate * T.CAESURA_LEN
+    assert abs((ws[1]["end"] - ws[1]["start"]) - comma) < 1e-3 and T.RATE_RANGE[0] <= rate <= T.RATE_RANGE[1]
+
+
+V10 = ROOT / "tts/cadence/eleven/v10/zip/pie-vtl"
+
+
+@pytest.mark.skipif(not V10.is_dir(), reason="v10 bundle not extracted")
+def test_v10_1_contour_unchanged_without_rise():
+    """pie_vtl v10.1 only adds the question rise: a timeline without "rise" gets v10's exact F0 targets."""
+    import importlib.util
+    def load(path, name):
+        spec = importlib.util.spec_from_file_location(name, path)
+        m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); return m
+    old, new = load(V10 / "pie_vtl.py", "pie_vtl_v10"), load(ROOT / "tts/vtl/pie_vtl.py", "pie_vtl_v101")
+    tl = json.loads((V10 / "dawn-hymn-cadence.json").read_text("utf-8"))
+    def contour(m, words):
+        timed, total, ws = m.build_timeline([dict(w) for w in words], 1.0, cadence=True)
+        g = m.f0_contour(timed, ws, 0.0)
+        return [round(g(i * 0.01), 9) for i in range(int(total * 100))]
+    assert contour(old, tl) == contour(new, tl)
+    risen = [dict(w) for w in tl]; risen[-1]["rise"] = True
+    a, b = contour(new, tl), contour(new, risen)
+    assert a != b and a[:int(risen[-1]["start"] * 100) - 5] == b[:int(risen[-1]["start"] * 100) - 5]
 
 
 def test_filenames_ascii():

@@ -79,6 +79,7 @@ SHORT_GAP = 0.15          # gaps shorter than this: glottal closure, lungs stay 
 ACCENT_RANGE = 4.6        # nominal st above the line baseline; VTL's pitch lag delivers ~0.74x (≈3.4 st measured)
 DECL_START, DECL_END = 1.5, -2.5   # baseline across each line, relative to --pitch
 FINAL_FALL = 2.0          # extra fall through the line-final word
+QUESTION_RISE = 3.0       # v10.1: st of rise through the last word of a line marked "rise": true (a question)
 ACCENT_RISE = 0.12        # s of rise into an accented nucleus
 ACCENT_FALL = 0.15        # s of fall after it
 F0_STEP = 0.020           # contour sampling step for the F0 gesture tier
@@ -408,8 +409,9 @@ def f0_contour(timed, words, base_st):
         frac = min(max((t - lo) / max(hi - lo, 1e-3), 0), 1)
         v = base_st + DECL_START + (DECL_END - DECL_START) * frac
         fw = final_words[ln]
-        if t > fw["start"]:
-            v -= FINAL_FALL * rc((t - fw["start"]) / max(fw["end"] - fw["start"], 1e-3))
+        if t > fw["start"]:                             # v10.1: a question's last word rises instead of falling
+            x = rc((t - fw["start"]) / max(fw["end"] - fw["start"], 1e-3))
+            v += QUESTION_RISE * x if fw.get("rise") else -FINAL_FALL * x
         bump = 0.0
         for (a0, a1) in accents:
             if t < a0 - ACCENT_RISE or t > a1 + ACCENT_FALL: continue

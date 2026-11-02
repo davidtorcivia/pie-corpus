@@ -45,7 +45,9 @@ assert not set(KOKORO_EXTRA) & set(KOKORO_VOCAB) and not set(KOKORO_EXTRA.values
 SPEAKERS = {"JD3-PIE": "pie_m", "W02-PIE": "pie_f"}
 VERSE_PAUSE = {"caesura": 0.24, "line": 0.70, "end": 0.9}      # cadence.py CAESURA, LINE, END
 MORA, CAESURA_LEN, FINAL_LEN, FINAL_H = 0.165, 1.12, 1.35, 0.06  # cadence.py
-PROSE_COMMA, PROSE_STOP, EDGE = 0.25, 0.55, 0.30               # s: pauses at "," / sentence end; lead-in/out
+PROSE_COMMA, EDGE = 0.25, 0.30               # s: pause at "," (a caesura: < 0.5 s); lead-in/out
+STOP_RANGE = (0.55, 0.75)                    # s: pause between sentences (pie_vtl "line" phrase end: >= 0.5 s)
+RATE_RANGE = (0.93, 1.07)                    # per-clip speaking rate
 MAX_CLIP_S, MIN_CLIP_S = 15.0, 1.5
 SENT_END = re.compile(r"(?<=[.?!])\s+")
 PUNCT = ".,?!;:"
@@ -63,8 +65,9 @@ def _pie_vtl():
 
 
 def word_ipa(word: str) -> str:
-    """The IPA of one written PIE word (punctuation stripped), as pie_vtl.py consumes it."""
-    return unicodedata.normalize("NFC", to_ipa(word.strip(PUNCT + "\"“”")))
+    """The IPA of one written PIE word (punctuation stripped), as pie_vtl.py consumes it. A scholar's optional
+    segment in brackets (Tier 1: Hamp's éwel(e)t, Adams' (h₁é)) is read as spoken: the brackets are dropped."""
+    return unicodedata.normalize("NFC", to_ipa(word.strip(PUNCT + "\"“”").replace("(", "").replace(")", "")))
 
 
 def kokoro_word(ipa: str) -> str:
@@ -87,10 +90,11 @@ def text_label(pie: str) -> str:
     """The label for plain PIE text, the way inference will build it: words + their own punctuation."""
     ws = []
     for tok in pie.split():
-        core = tok.strip(PUNCT + "\"“”")
+        core = tok.strip(PUNCT + "\"“”()")
         if not core:
             continue
-        p = tok[len(tok.rstrip(PUNCT)):]
+        p = tok.rstrip("\"“”()")
+        p = p[len(p.rstrip(PUNCT)):]
         ws.append({"ipa": word_ipa(core), "punct": p[-1:] if p else ""})
     return kokoro_label(ws)
 
@@ -115,43 +119,65 @@ class Clip:
 
     def timeline(self) -> list[dict]:
         """pie_vtl.py --timeline / --batch input (cadence JSON format)."""
-        return [{k: w[k] for k in ("line", "word", "ipa", "start", "end", "pause_after")} for w in self.words]
+        keys = ("line", "word", "ipa", "start", "end", "pause_after", "rise")
+        return [{k: w[k] for k in keys if k in w} for w in self.words]
 
 
 def _tokens(pie: str) -> list[tuple[str, str]]:
     out = []
     for tok in pie.split():
-        core = tok.strip(PUNCT + "\"“”")
+        core = tok.strip(PUNCT + "\"“”()")
         if core:
-            p = tok[len(tok.rstrip(PUNCT)):]
+            p = tok.rstrip("\"“”()")
+            p = p[len(p.rstrip(PUNCT)):]
             out.append((core, p[-1:] if p else ""))
     return out
 
 
-def prose_words(pie: str) -> list[dict]:
-    """Rule-based timing (pie_vtl text mode), one 'line' per comma/sentence phrase, pauses at punctuation."""
+def _unit(key: str) -> float:
+    return int(hashlib.sha1(key.encode()).hexdigest()[:8], 16) / 0xFFFFFFFF
+
+
+def prose_words(pie: str, key: str = "") -> list[dict]:
+    """Prose timing on pie_vtl's own phone durations (its text-mode rules: accented vowels ×1.2, the last nucleus
+    of a sentence ×1.45). Intonation units, owner 2026-11-02 ("clip timing right so sentences sound correct and
+    have a proper cadence"):
+      - a sentence is one pitch line (declination across it, the final fall on its last word);
+      - a comma / ; / : is a level pause inside the line, as the verse caesura (pie_vtl's caesura phrase end),
+        with the caesura's 1.12× pre-pause lengthening;
+      - a question rises through its last word (pie_vtl v10.1 "rise"; cf. Vedic pluti), lengthened ×1.15;
+      - tempo: one rate per clip in RATE_RANGE and sentence pauses in STOP_RANGE, drawn from the clip key."""
     pv = _pie_vtl()
     toks = _tokens(pie)
-    words, line = [], 1
-    for core, p in toks:
-        words.append({"line": line, "word": core, "ipa": word_ipa(core), "punct": p})
-        if p:
-            line += 1
-    timed, total, ws = pv.build_timeline([dict(w) for w in words], 1.0)
-    t0 = ws[0]["start"]
-    shift = EDGE - t0
-    for w, v in zip(words, ws):
-        w["start"], w["end"] = round(v["start"] + shift, 4), round(v["end"] + shift, 4)
-    t = EDGE
-    for i, w in enumerate(words):                  # re-space: own durations kept, pauses set by punctuation
-        d = w["end"] - w["start"]
-        w["start"], w["end"] = round(t, 4), round(t + d, 4)
-        p = w["punct"]
-        last = i == len(words) - 1
-        w["pause_after"] = EDGE if last else PROSE_STOP if p in ".?!" else PROSE_COMMA if p else 0.0
-        if last and not p:
-            w["punct"] = "."
+    rate = RATE_RANGE[0] + (RATE_RANGE[1] - RATE_RANGE[0]) * _unit(f"rate|{key}|{pie}")
+    words, line, t = [], 1, EDGE
+    for i, (core, p) in enumerate(toks):
+        last = i == len(toks) - 1
+        p = p or ("." if last else "")
+        ipa = word_ipa(core)
+        segs = pv.parse_word(ipa)
+        if len(segs) > 1 and segs[-1].base == "h" and pv.is_nucleus(segs[-2]):
+            segs[-1].final_h = True
+        stop = bool(p) and p in ".?!"
+        d = sum(pv.default_durations(segs, stop)) / rate
+        if p and p in ",;:":
+            d *= CAESURA_LEN
+        if p == "?":
+            d *= 1.15
+        if last:
+            gap = EDGE
+        elif stop:
+            gap = STOP_RANGE[0] + (STOP_RANGE[1] - STOP_RANGE[0]) * _unit(f"stop|{key}|{i}|{pie}")
+        else:
+            gap = PROSE_COMMA if p else 0.0
+        w = {"line": line, "word": core, "ipa": ipa, "punct": p, "start": round(t, 4), "end": round(t + d, 4),
+             "pause_after": round(gap, 3)}
+        if p == "?":
+            w["rise"] = True
+        words.append(w)
         t = w["end"] + w["pause_after"]
+        if stop:
+            line += 1
     return words
 
 
@@ -218,11 +244,13 @@ def clips_for_work(recs: list[dict]) -> list[Clip]:
         sents, k, part = sentences(r["pie"]), 0, 0
         while k < len(sents):
             take = 1
-            while k + take < len(sents) and prose_words(" ".join(sents[k:k + take + 1]))[-1]["end"] + EDGE <= MAX_CLIP_S:
+            cid = f"{r['id']}-p{part:02d}"
+            while k + take < len(sents) and \
+                    prose_words(" ".join(sents[k:k + take + 1]), cid)[-1]["end"] + EDGE <= MAX_CLIP_S:
                 take += 1
             text = " ".join(sents[k:k + take])
-            ws = prose_words(text)
-            out.append(Clip(f"{r['id']}-p{part:02d}", [r["id"]], r.get("genre") or "", False, text,
+            ws = prose_words(text, cid)
+            out.append(Clip(cid, [r["id"]], r.get("genre") or "", False, text,
                             r.get("english") or "" if (k == 0 and take == len(sents)) else "", ws))
             k += take
             part += 1

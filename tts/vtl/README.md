@@ -1,4 +1,8 @@
-# PIE → VocalTractLab (v10)
+# PIE → VocalTractLab (v10.1)
+
+**v10.1 (2026-11-02, in this repo):** a timeline word may carry `"rise": true`; the last word of its line then rises by
+`QUESTION_RISE` (3 st) instead of falling by `FINAL_FALL`. pie/tts_data.py sets it on questions. Without `"rise"` the
+F0 targets are v10's exactly (tests/test_tts_data.py). Everything else is v10, byte-identical to pie-vtl-v10.zip.
 
 This tool compiles PIE IPA straight into a VocalTractLab gestural score. It bypasses VTL's German-only
 phoneme converter, then synthesizes the score, patches what VTL can't make, and writes exact phone
