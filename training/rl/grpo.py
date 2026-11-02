@@ -85,14 +85,49 @@ def init(self, data, tokenizer, *a, **k):
 ds.GRPODataset.__init__ = init
 
 
+REF_ADAPTER = os.environ.get("PIE_REF_ADAPTER")           # stage 4: KL to the policy RL starts from (base + merge)
+KL_STOP = float(os.environ.get("PIE_KL_STOP", "0"))          # stop after 2 reports in a row above it (0 = off)
+VAL_STOP = float(os.environ.get("PIE_VAL_STOP", "0"))        # stop when val loss > VAL_STOP x the first one (0 = off)
+
+if REF_ADAPTER:
+    def _load_ref(args):
+        from mlx_lm import load
+        print(f"Loading reference model {args.model} + adapter {REF_ADAPTER}")
+        model, _ = load(args.model, adapter_path=REF_ADAPTER)
+        return model.freeze()
+    tr.load_reference_model = _load_ref
+
+
+class Stop(Exception):
+    pass
+
+
 class Metrics(TrainingCallback):
+    """Logs every report; stops the run on drift (rl3 drifted after ~450 steps: KL 0.18 -> 0.66, val loss x1.7;
+    docs/research/rl-lessons.md). The last saved checkpoint (save_every) is the one to use."""
+    high = 0
+    val0 = None
+
     def on_train_loss_report(self, info: dict):
         log({"event": "train", **nums(info),
              "gen_s": GEN["s"], "gen_tokens": GEN["tokens"], "gen_rollouts": GEN["rollouts"]})
         GEN.update(s=0.0, tokens=0, rollouts=0)
+        kl = nums(info).get("train_kl")
+        if KL_STOP and kl is not None:
+            self.high = self.high + 1 if kl > KL_STOP else 0
+            if self.high >= 2:
+                log({"event": "stop", "why": f"KL above {KL_STOP} on 2 reports", "iteration": info.get("iteration")})
+                raise Stop(f"KL above {KL_STOP} on 2 reports in a row")
 
     def on_val_loss_report(self, info: dict):
         log({"event": "val", **nums(info)})
+        v = nums(info).get("val_loss")
+        if VAL_STOP and v is not None:
+            if self.val0 is None:
+                self.val0 = v
+            elif v > VAL_STOP * self.val0:
+                log({"event": "stop", "why": f"val loss {v:.4f} > {VAL_STOP} x {self.val0:.4f}", "iteration": info.get("iteration")})
+                raise Stop("validation loss rose")
 
 
 _run = tr.run
@@ -120,5 +155,9 @@ def yaml_wins(argv: list[str]) -> list[str]:
 if __name__ == "__main__":
     sys.argv = [sys.argv[0]] + yaml_wins(sys.argv[1:])
     log({"event": "start", "argv": sys.argv[1:]})
-    tr.main()
-    log({"event": "done"})
+    try:
+        tr.main()
+        log({"event": "done"})
+    except Stop as e:
+        print(f"STOPPED: {e}", flush=True)
+        log({"event": "done", "stopped": str(e)})

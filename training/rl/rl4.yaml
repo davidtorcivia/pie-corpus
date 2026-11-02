@@ -1,0 +1,27 @@
+# RL stage 4 (2026-11-02, docs/research/rl-lessons.md): from the 0.5 rl1 + 0.5 rl3-275 merge (benchmark 84.5 lenient,
+# our best), rebalanced toward what stage 3 cost (EN→PIE, inflection, paradigms) with dialogue and PIE→EN as anchors,
+# and guarded against the drift that ended stage 3: KL to the merge itself (PIE_REF_ADAPTER), beta 0.2, a decaying
+# learning rate, 250 steps, a KL / validation stop rule (grpo.py), every skill in validation. Run by run_rl4.sh.
+model: /Users/david/AI/PIE-qwen36-e3-oQ5e-mtp
+train: true
+train_mode: grpo
+data: /Users/david/AI/pie-runs/rl/data/rl4
+reward_functions_file: /Users/david/AI/PIE/training/rl/reward_rl.py
+reward_functions: pie_rl
+fuse: false
+lora_parameters: {rank: 16, dropout: 0.0, scale: 10.0}   # the merge is an exact rank-16 stack (merge_adapters.py)
+batch_size: 8
+group_size: 8
+max_completion_length: 384
+max_seq_length: 1024
+temperature: 1.0
+learning_rate: 5.0e-6
+lr_schedule: {name: cosine_decay, arguments: [5.0e-6, 250, 5.0e-7], warmup: 0}
+beta: 0.2                     # stage 3: 0.1, drifted after ~450 steps
+iters: 250
+steps_per_report: 5
+steps_per_eval: 50
+val_batches: 23               # 180 valid prompts / 8: every one, so every kind is scored (stage 3 skipped PIE→EN)
+save_every: 25
+seed: 20261102
+grad_checkpoint: true

@@ -27,6 +27,11 @@ import reward_rl  # noqa: E402
 
 SHARE = {"inflect": 0.15, "paradigm": 0.1, "translate_en_pie": 0.25, "translate_pie_en": 0.15,
          "vocab_en_pie": 0.075, "vocab_pie_en": 0.075, "dialogue": 0.2}   # with vocabulary, PIE→EN and dialogue (owner, 2026-11-01)
+SHARES = {"rl3": SHARE,
+          # stage 4 (2026-11-02): what slipped in stage 3 up (EN→PIE, the benchmark's heaviest segment; inflection;
+          # paradigms), dialogue and PIE→EN kept as anchors, the mostly zero-variance vocabulary drills down
+          "rl4": {"inflect": 0.22, "paradigm": 0.13, "translate_en_pie": 0.30, "translate_pie_en": 0.12,
+                  "vocab_en_pie": 0.04, "vocab_pie_en": 0.04, "dialogue": 0.15}}
 SEED = 20261101
 
 
@@ -49,7 +54,7 @@ def score(x: dict, completion: str, an) -> float | None:
     return reward_engine.score(completion, x["answer"], kind(x))
 
 
-def sample(model_dir: str, cands: list[dict], k: int, out: Path, batch: int, an):
+def sample(model_dir: str, cands: list[dict], k: int, out: Path, batch: int, an, adapter: str | None = None):
     from mlx_lm import batch_generate, load
     from mlx_lm.sample_utils import make_sampler
     done = {json.loads(x)["i"] for x in out.read_text("utf-8").splitlines()} if out.exists() else set()
@@ -57,7 +62,7 @@ def sample(model_dir: str, cands: list[dict], k: int, out: Path, batch: int, an)
     print(f"{len(done)} done, {len(todo)} to sample", flush=True)
     if not todo:
         return
-    model, tok = load(model_dir)
+    model, tok = load(model_dir, adapter_path=adapter)   # the policy RL starts from (stage 4: base + merged adapter)
     sampler = make_sampler(temp=1.0)
     t0, f = time.time(), out.open("a", encoding="utf-8")
     per = max(1, batch // k)
@@ -78,9 +83,10 @@ def sample(model_dir: str, cands: list[dict], k: int, out: Path, batch: int, an)
               f"eta {(time.time() - t0) / d * (len(todo) - d) / 60:.0f} min", flush=True)
 
 
-def select(cands: list[dict], rates: dict[int, list], n: int) -> tuple[list[dict], dict]:
-    keep = {k: [] for k in SHARE}
-    never = {k: [] for k in SHARE}
+def select(cands: list[dict], rates: dict[int, list], n: int, share: dict | None = None) -> tuple[list[dict], dict]:
+    share = share or SHARE
+    keep = {k: [] for k in share}
+    never = {k: [] for k in share}
     stats = {}
     for i, x in enumerate(cands):
         s = rates.get(i)
@@ -106,8 +112,8 @@ def select(cands: list[dict], rates: dict[int, list], n: int) -> tuple[list[dict
                 keep[k].append(x)
     rng = random.Random(SEED)
     train = []
-    for k, share in SHARE.items():
-        want = int(n * share)
+    for k, sh in share.items():
+        want = int(n * sh)
         pool = keep[k] + rng.sample(never[k], min(len(never[k]), len(keep[k]) // 3))
         rng.shuffle(pool)
         train += pool[:want]
@@ -123,17 +129,19 @@ def main():
     ap.add_argument("--k", type=int, default=4)
     ap.add_argument("--n", type=int, default=4000)
     ap.add_argument("--batch", type=int, default=256, help="rollouts decoded together")
+    ap.add_argument("--adapter", help="LoRA adapter dir on top of --model (the policy RL starts from)")
+    ap.add_argument("--mix", default="rl3", choices=sorted(SHARES), help="kind shares of train.jsonl")
     a = ap.parse_args()
     d = Path(a.data)
     cands = [json.loads(x) for x in (d / "candidates.jsonl").read_text("utf-8").splitlines() if x.strip()]
     from pie.translator.analyze import Analyzer
     an = Analyzer.load()
-    sample(a.model, cands, a.k, d / "passrate.jsonl", a.batch, an)
+    sample(a.model, cands, a.k, d / "passrate.jsonl", a.batch, an, a.adapter)
     rates = {r["i"]: r["scores"] for r in map(json.loads, (d / "passrate.jsonl").read_text("utf-8").splitlines())}
-    train, stats = select(cands, rates, a.n)
+    train, stats = select(cands, rates, a.n, SHARES[a.mix])
     (d / "train.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in train), "utf-8")
     man = json.loads((d / "manifest.json").read_text())
-    man["passrate"] = {"k": a.k, "model": a.model, "by_kind": stats, "train": len(train)}
+    man["passrate"] = {"k": a.k, "model": a.model, "adapter": a.adapter, "mix": a.mix, "by_kind": stats, "train": len(train)}
     (d / "manifest.json").write_text(json.dumps(man, indent=1, ensure_ascii=False), "utf-8")
     print(json.dumps(man["passrate"]))
 
