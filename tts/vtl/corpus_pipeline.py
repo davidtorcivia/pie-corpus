@@ -1,14 +1,15 @@
 """The PIE speech corpus, end to end on one machine (tr-desktop WSL): VTL render -> ElevenLabs -> restore -> QC ->
 Kokoro files. Every stage skips work already on disk, so a rerun resumes.
 
-    python corpus_pipeline.py WORK [render] [eleven] [restore] [qc] [final]     (no stage names: all, in order)
+    python corpus_pipeline.py WORK [render] [eleven] [restore] [retrill] [qc] [final]     (no stage names: all, in order)
 
 WORK is a scripts/tts_build.py output (timelines/, batch.txt, clips.jsonl, manifest.jsonl, OOD_texts.txt).
 Writes, all named CLIP__SPEAKER.wav:
   renders/   VTL v10.1, 44.1 kHz (+ .json phone timings, manifest.jsonl with VTL QC)
   eleven/    ElevenLabs voice changer, pcm_44100 -> 16-bit WAV (masters); eleven_log.jsonl (cost, request id)
   restored/  tts/cadence/restore.py, 44.1 kHz (masters)
-  qc.jsonl   qc.py on restored/ (aligned to the render); gate below
+  retrilled/ retrill.py: trill contacts the converter smoothed away re-cut on the r timings (owner 2026-11-02)
+  qc.jsonl   qc.py on retrilled/ (aligned to the render); gate below
   final/     24 kHz mono 16-bit PCM WAV (kikiri-tts / StyleTTS2), only clips that pass the gate
   train_list.txt, val_list.txt (FILE|LABEL|SPEAKER), OOD_texts.txt, rejected.jsonl, summary.json
 
@@ -34,7 +35,7 @@ RESTORE = HERE / "restore.py" if (HERE / "restore.py").exists() else HERE.parent
 VOICES = {"JD3-PIE": "d0grukerEzs069eKIauC", "W02-PIE": "f1abxvIEijusskcPWE5x"}   # owner's ElevenLabs voices
 MODEL = "eleven_multilingual_sts_v2"
 SETTINGS = {"stability": 0.9, "similarity_boost": 0.0, "style": 0.0, "use_speaker_boost": True}
-RENDER_ARGS = ["--accent-range", "4.0", "--final-h", "murmur", "--vary-pitch", "2", "--vary-accent", "0.4",
+RENDER_ARGS = ["--accent-range", "4.0", "--final-h", "murmur", "--trill", "auto", "--vary-pitch", "2", "--vary-accent", "0.4",
                "--seed", "0", "--qc-min-lift", "2.0"]
 SPEAKER_FILES = ["JD3-PIE.speaker", "W02-PIE.speaker"]
 
@@ -173,9 +174,28 @@ def restore(work, workers=40):
     log(f"restore: done, {sum(1 for x in rcs if x)} failures")
 
 
+# ---------------------------------------------------------------- 3b. retrill
+def retrilled(m):
+    return "retrilled/" + Path(m["restored_wav"]).name
+
+
+def _retrill(work, m):
+    import retrill as rt
+    return rt.retrill(str(work / m["restored_wav"]), str(work / m["vtl_timing"]), str(work / retrilled(m)))
+
+
+def retrill(work, workers=40):
+    (work / "retrilled").mkdir(exist_ok=True)
+    todo = [m for m in manifest(work) if (work / m["restored_wav"]).exists() and not (work / retrilled(m)).exists()]
+    log(f"retrill: {len(todo)}")
+    with cf.ProcessPoolExecutor(workers) as ex:
+        n = list(ex.map(_retrill, [work] * len(todo), todo))
+    log(f"retrill: done, {sum(n)} trilled r re-cut in {sum(1 for x in n if x)} files")
+
+
 # ---------------------------------------------------------------- 4. QC
 def _qc(work, m):
-    r = subprocess.run([PY, str(HERE / "qc.py"), str(work / m["restored_wav"]), "--timing", str(work / m["vtl_timing"]),
+    r = subprocess.run([PY, str(HERE / "qc.py"), str(work / retrilled(m)), "--timing", str(work / m["vtl_timing"]),
                         "--ref", str(work / m["vtl_wav"]), "--final-h", "murmur", "--min-lift", "1.5"],
                        capture_output=True, text=True, cwd=HERE)
     try:
@@ -196,7 +216,7 @@ def _qc(work, m):
 
 
 def qc(work, workers=40):
-    ms = [m for m in manifest(work) if (work / m["restored_wav"]).exists()]
+    ms = [m for m in manifest(work) if (work / retrilled(m)).exists()]
     with cf.ProcessPoolExecutor(workers) as ex:
         res = list(ex.map(_qc, [work] * len(ms), ms))
     with open(work / "qc.jsonl", "w", encoding="utf-8") as f:
@@ -227,7 +247,7 @@ def final(work, workers=40):
     ok = [m for m in ms if q.get((m["clip"], m["speaker"]), {}).get("pass")]
     todo = [m for m in ok if not (work / m["final_wav"]).exists()]
     with cf.ProcessPoolExecutor(workers) as ex:
-        list(ex.map(_final, [work / m["restored_wav"] for m in todo], [work / m["final_wav"] for m in todo]))
+        list(ex.map(_final, [work / retrilled(m) for m in todo], [work / m["final_wav"] for m in todo]))
     lists = {"train": [], "val": []}
     secs = {"train": {}, "val": {}}
     bad_len = []
@@ -255,7 +275,7 @@ def final(work, workers=40):
     log("final:", json.dumps(summary))
 
 
-STAGES = {"render": render, "eleven": eleven, "restore": restore, "qc": qc, "final": final}
+STAGES = {"render": render, "eleven": eleven, "restore": restore, "retrill": retrill, "qc": qc, "final": final}
 
 if __name__ == "__main__":
     work = Path(sys.argv[1]).resolve()

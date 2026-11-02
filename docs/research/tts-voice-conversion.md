@@ -500,3 +500,21 @@ pie_vtl v10 keeps v9's decay but cancels the pressure-driven F0 sag and caps fin
 
 Melody r 0.95 (JD3) / 0.93 (W02), accent +5.3 / +4.2 st, declination −3.7 / −3.4 st/line. Owner (2026-10-30): "the best
 one and we got there". The chain is locked: VTL v10 → ElevenLabs Hindi → restore.py → vtl_check / vtl_ends.
+
+## Corpus run checks: trill, and what ElevenLabs does to the ungated features (2026-11-02)
+
+**Trill.** PIE r is an alveolar trill (docs/pronunciation.md). pie_vtl v10.1 `--trill auto`, the tap-train of v5
+(VTL's own first tap, then breaks cut at 40 ms / 25 Hz): word-initial r 3 contacts, after a consonant 2, else a tap;
+syllabic r̩ and phrase-final r unchanged. In the 5 h/voice set: ~1,860 two-contact, 11 three-contact, ~2,700 taps.
+ElevenLabs keeps the breaks in W02 but smooths most of them in JD3 (of 8 trilled r, dips survive in 1).
+`tts/vtl/retrill.py` re-cuts them after restore.py on the phone timings (JD3: 6 of 8 back). Owner chose trill +
+re-cut. Listening page: claude.ai artifact "PIE Trill Check".
+
+**Ungated features, VTL vs ElevenLabs** (pilot + proof + trill demo, ~70 files, same timings):
+- ɣʷ (h₃): friction 1.5–7 kHz re the vowels −0.2 → −1.5 dB. Kept.
+- Murmur (ʱ): vowel-onset tilt after ʱ vs after plain voiced stops differs by ~1.2 dB in VTL and ~0.9 dB after. Kept, weak in both.
+- Question rise (v10.1): kept and enlarged. ḱeḱm̥h₂ḗr as a question ends ~+5 st (VTL) / +7.5 st (ElevenLabs) above
+  its start; the same word as a statement falls back to ~0. A first-vs-last-nucleus summary measure hid this.
+- Labiovelars: LPC F2 is unreliable on VTL vowels (F1/F2 confusions); read track by track, ElevenLabs shows a low,
+  rising F2 onset after kʷ gʷ and a flat high one after c ɟ, so the contrast survives.
+- Palatals c ɟ: no post-release friction in either (s, the positive control, reads 50 ms in VTL). No affrication to [tʃ dʒ].
