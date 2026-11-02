@@ -778,5 +778,44 @@
    "strict": 81.1,
    "lenient": 83.9
   }
+ },
+ {
+  "contestant": "ours-rl3-step275",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 75.8,
+    "lenient": 77.6
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 84.3,
+    "lenient": 84.8
+   },
+   "en_pie": {
+    "n": 42,
+    "of": 42,
+    "strict": 78.0,
+    "lenient": 84.5
+   },
+   "pie_en": {
+    "n": 42,
+    "of": 42,
+    "strict": 86.3,
+    "lenient": 86.3
+   },
+   "dialogue": {
+    "n": 64,
+    "of": 64,
+    "strict": 83.6,
+    "lenient": 87.1
+   }
+  },
+  "pie_score": {
+   "strict": 81.0,
+   "lenient": 83.9
+  }
  }
 ]

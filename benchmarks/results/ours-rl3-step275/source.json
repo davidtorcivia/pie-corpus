@@ -1,0 +1,6 @@
+{
+ "generations": "/Users/david/AI/pie-runs/rl/runs/rl3-mix-vocab-e3/eval (+ /Users/david/AI/pie-runs/bench/ours-v2/gen-rl3-275.jsonl for e2-)",
+ "checkpoint": "0000275 (RL stage 3; best stage-3 checkpoint by validation)",
+ "path": "training/rl/eval_ckpt.py, mlx_lm greedy, thinking off, cap 384",
+ "one item per call": true
+}
