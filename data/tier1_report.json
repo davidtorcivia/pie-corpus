@@ -5,10 +5,10 @@
    "lines": 5,
    "tokens": 10,
    "miss:near-miss": 2,
-   "match:exact": 4,
+   "match:exact": 5,
    "match:noaccent": 2,
-   "miss:lexicon-gap": 2,
-   "coverage": 0.6
+   "miss:lexicon-gap": 1,
+   "coverage": 0.7
   },
   "formulas-west": {
    "lines": 2,
@@ -24,57 +24,55 @@
    "tokens": 55,
    "match:nolength": 9,
    "match:exact": 21,
-   "match:noaccent": 13,
-   "miss:near-miss": 7,
+   "match:noaccent": 14,
+   "miss:near-miss": 8,
    "match:generic-H": 1,
-   "miss:lexicon-gap": 3,
+   "miss:lexicon-gap": 1,
    "match:decolored": 1,
-   "coverage": 0.818
+   "coverage": 0.836
   },
   "king-and-god-hamp-sen-1997": {
    "lines": 11,
    "tokens": 20,
-   "miss:near-miss": 8,
+   "miss:near-miss": 9,
    "match:noaccent": 5,
    "documentary_lines": 5,
    "match:exact": 3,
    "match:nolength": 3,
-   "miss:lexicon-gap": 1,
    "coverage": 0.55
   },
   "king-and-god-lehmann-1952": {
    "lines": 11,
    "documentary_lines": 10,
    "tokens": 5,
-   "match:exact": 2,
+   "match:exact": 3,
    "miss:pre-laryngeal": 2,
-   "miss:near-miss": 1,
-   "coverage": 0.4
+   "coverage": 0.6
   },
   "schleicher-fable-adams-1997": {
    "lines": 5,
    "tokens": 66,
-   "match:exact": 27,
-   "match:nolength": 10,
+   "match:exact": 29,
+   "match:nolength": 11,
    "miss:near-miss": 10,
-   "miss:engine-gap": 6,
-   "match:generic-H": 4,
+   "miss:engine-gap": 2,
+   "match:generic-H": 5,
    "miss:lexicon-gap": 7,
    "match:noaccent": 2,
-   "coverage": 0.652
+   "coverage": 0.712
   },
   "schleicher-fable-byrd-2013": {
    "lines": 6,
    "tokens": 61,
-   "match:exact": 31,
+   "match:exact": 32,
    "match:decolored": 7,
-   "match:noaccent": 6,
+   "match:noaccent": 7,
    "match:generic-H": 1,
-   "miss:lexicon-gap": 6,
+   "miss:lexicon-gap": 5,
    "miss:near-miss": 7,
-   "miss:engine-gap": 2,
+   "miss:engine-gap": 1,
    "match:nolength": 1,
-   "coverage": 0.754
+   "coverage": 0.787
   },
   "schleicher-fable-danka-1986": {
    "lines": 5,
@@ -83,10 +81,10 @@
    "miss:lexicon-gap": 10,
    "match:exact": 4,
    "miss:pre-laryngeal": 7,
-   "match:noaccent": 9,
-   "miss:engine-gap": 4,
+   "match:noaccent": 10,
+   "miss:engine-gap": 3,
    "match:nolength": 3,
-   "coverage": 0.302
+   "coverage": 0.321
   },
   "schleicher-fable-hirt-1939": {
    "lines": 5,
@@ -133,33 +131,33 @@
    "lines": 5,
    "tokens": 63,
    "miss:near-miss": 22,
-   "match:noaccent": 10,
-   "match:exact": 4,
+   "match:exact": 5,
    "miss:lexicon-gap": 14,
-   "miss:engine-gap": 3,
+   "match:noaccent": 11,
    "miss:pre-laryngeal": 5,
    "match:nolength": 5,
-   "coverage": 0.302
+   "miss:engine-gap": 1,
+   "coverage": 0.333
   },
   "schleicher-fable-luhr-2008": {
    "lines": 5,
    "tokens": 54,
    "match:exact": 25,
-   "miss:near-miss": 8,
+   "miss:near-miss": 9,
    "match:noaccent": 3,
    "miss:engine-gap": 5,
-   "miss:lexicon-gap": 9,
+   "miss:lexicon-gap": 8,
    "match:nolength": 4,
    "coverage": 0.593
   },
   "schleicher-fable-schleicher-1868": {
    "lines": 5,
    "tokens": 61,
-   "miss:pre-laryngeal": 56,
-   "match:nolength": 3,
+   "miss:pre-laryngeal": 55,
+   "match:nolength": 4,
    "miss:engine-gap": 1,
    "miss:lexicon-gap": 1,
-   "coverage": 0.049
+   "coverage": 0.066
   },
   "schleicher-fable-voyles-barrack-2009": {
    "lines": 5,
@@ -167,11 +165,11 @@
    "miss:near-miss": 21,
    "match:exact": 4,
    "miss:pre-laryngeal": 8,
-   "miss:lexicon-gap": 7,
-   "match:noaccent": 11,
-   "miss:engine-gap": 3,
-   "match:nolength": 2,
-   "coverage": 0.304
+   "miss:lexicon-gap": 5,
+   "match:noaccent": 14,
+   "match:nolength": 3,
+   "miss:engine-gap": 1,
+   "coverage": 0.375
   }
  },
  "cross_check_diffs": [

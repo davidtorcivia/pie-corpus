@@ -1,5 +1,7 @@
 # RL on the Mac (2026-11-01)
 
+Lessons for future stages are collected in `rl-lessons.md`.
+
 After the Qwen3.6-35B-A3B fine-tune (docs/research/training-runs.md), the plan is to stop fine-tuning and correct the
 model's errors with RL, on the Mac's M3 Ultra (256 GB), with a local reward and a Claude judge only where the engine
 cannot decide (owner, 2026-10-31 and 2026-11-01). Stage 1, tonight: engine-checkable drills only, no judge.

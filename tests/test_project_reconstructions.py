@@ -145,9 +145,10 @@ def test_export_build_routes_project_tasks_to_train_and_rejects_eval_records(lx,
     # train only; a held-out root family's project task is dropped, not trained on and not evaluated
     assert [t["source_id"] for t in out["train_tasks"]] == [HARE]
     assert not out["eval_tasks"]
-    rec = {"id": "t1-x", "tier": 1, "pie": "ḱasós.", "pie_ascii": "k'aso/s.", "english": "A hare.",
+    rec = {"id": "t2-x", "tier": 2, "eval_grade": True, "pie": "ḱasós.", "pie_ascii": "k'aso/s.", "english": "A hare.",
            "tokens": [{"form": "ḱasós", "lex_id": HARE, "coined": "project"}]}
-    (tmp_path / "corpus/tier1/x.jsonl").write_text(json.dumps(rec, ensure_ascii=False) + "\n", "utf-8")
+    (tmp_path / "corpus/tier2").mkdir(parents=True)
+    (tmp_path / "corpus/tier2/x.jsonl").write_text(json.dumps(rec, ensure_ascii=False) + "\n", "utf-8")
     with pytest.raises(ValueError, match="project reconstruction"):
         ex.build(root=tmp_path)
 

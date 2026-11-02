@@ -39,3 +39,12 @@ has 42). The export has as many PIE→EN pairs as EN→PIE (4,486 each), so volu
 mostly vocabulary (n̥putlós 'childless' read as 'grandson'). No task drills word meaning: add lexicon drills
 (PIE lemma → English meaning; English → PIE word) for every usable lexeme, and add PIE→EN to the RL mix, judged.
 Owner: "in the back of my head", not scheduled.
+
+## Analyzer: scholars' devoiced and variant spellings (2026-11-01)
+
+Glossing Tier 1 showed the analyzer's fuzzy lookup picking the wrong lexeme for scholars' spellings: Byrd's
+h₃rḗḱs (devoiced h₃rḗǵs 'king') reads as rékt 'arrange' AOR.2SG; n̥putlós 'childless' as népōts 'grandson';
+h₁ōḱéwes 'swift' as h₃okʷéh₂ 'opening'; km̥tá 'down' as a verb. Fix in pie/translator/analyze.py: try
+voicing-assimilation variants (ḱs ↔ ǵs, ts ↔ ds) before a "close" match, and index the missing words
+(n̥putlós, h₁ōḱús, km̥tá). The RL judge and the benchmark judges read this analyzer, so a misreading there
+can mark a right answer wrong. The corrections are in data/tier1/glosses.jsonl notes.

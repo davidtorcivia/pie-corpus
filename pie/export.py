@@ -1,15 +1,14 @@
 """Phase 7 export: train/eval splits, plain-text views, task-format views.
 
-Policy (docs/STATUS.md, open question 1 until David decides):
-  eval  = every Tier 1 record with canonical `pie` (scholarly texts and formulas),
-          the evaluation-grade Tier 2 lines (eval_grade), plus the drill split: the
+Policy (owner 2026-11-01: the published texts are trained on):
+  eval  = the evaluation-grade Tier 2 lines (eval_grade), plus the drill split: the
           inflection and cognate tasks of about 5% of lexemes (eval_drill, a sha256 rank
           of the lexeme id). Those lexemes still occur in training texts; only their
           drills are kept back, so the score tests whether the model inflects a word it
           was never drilled on. No root family is held out of training (owner, 2026-10-30;
           the family hold-out of 2026-10-28/29 is kept in data/export/held_roots.json
           as "held_before_2026-10-30")
-  train = Tier 2 and release-eligible Tier 3 records; pilots additionally require
+  train = Tier 1 (scholarly texts and formulas with canonical `pie`), Tier 2 and release-eligible Tier 3 records; pilots additionally require
           include_pilot=True. Experimental inclusion explicitly bypasses eligibility.
   conversational eval = the whole dialogue records frozen in data/export/held_dialogues.json (one
           approved batch's dialogues), taken out of train (eval_dialogue_records): they make no task
@@ -328,11 +327,13 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0,
     rng = random.Random(seed)
     tier1 = [r for r in _load("corpus/tier1/*.jsonl", root) if r.get("pie")]
     tier2 = _load("corpus/tier2/*.jsonl", root)
-    # eval = Tier 1 + the evaluation-grade Tier 2 lines (judged sound by the adversarial review and
-    # with a lexeme exactly attested in two branches); the other Tier 2 lines are training data
+    # eval = the evaluation-grade Tier 2 lines (judged sound by the adversarial review and with a lexeme
+    # exactly attested in two branches); the other Tier 2 lines are training data. Tier 1 (the published
+    # scholarly texts and formulas) is training data too (owner 2026-11-01: "Include the published texts in
+    # the next fine tune"); the benchmark already excludes them (benchmarks/README.md, amendment 1)
     t2_eval = [r for r in tier2 if r.get("eval_grade")]
-    train_recs = [r for r in tier2 if not r.get("eval_grade")]
-    tier1 = tier1 + t2_eval
+    train_recs = tier1 + [r for r in tier2 if not r.get("eval_grade")]
+    tier1 = t2_eval
     batch_decisions = []
     # Tier 3b dialogues where the model calls itself a machine (data/export/persona_excluded.json)
     persona_excluded = set(json.loads((Path(root) / "data/export/persona_excluded.json").read_text("utf-8"))["records"]) \

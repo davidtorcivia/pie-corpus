@@ -109,7 +109,7 @@ def test_kinds_and_summary(exported):
     assert sum(by[e["meta"]["source_id"]] >= {"en_pie", "pie_pie"} for e in pp) == doubled > 0.3 * aligned
     assert s["modes"]["train"]["pie_dialogue/pie_pie"] < c["en_dialogue"]
     assert 30 <= s["demo_seeds"]["used"] <= 60
-    assert s["examples_by_kind"]["eval"]["continuation"]      # Tier 1 works continued
+    assert s["examples_by_kind"]["train"]["continuation"]     # Tier 1 works continued (trained on since 2026-11-01)
     assert set(s["pie_dialogue_split_method"]["train"]) <= {"speaker", "english_quotes", "sentence_qa"}
     assert s["neologism"]["share"] <= ec.NEOLOGISM_CAP
     assert s["provenance"]["include_pilot"] is False
@@ -158,11 +158,10 @@ def test_text_views(exported):
     for r in exported["eval_records"]:
         if not r["seen_in_train"] and len(r["pie"].split()) >= 3:
             assert r["pie"] not in train_txt
-    # a Tier 1 work is one paragraph, in line order
-    eval_txt = (out / "text/eval.txt").read_text("utf-8")
-    work = sorted((r for r in exported["eval_records"] if r["work_id"] == "schleicher-fable-byrd-2013"),
+    # a Tier 1 work is one paragraph, in line order (Tier 1 is training data since 2026-11-01)
+    work = sorted((r for r in exported["train_records"] if r.get("work_id") == "schleicher-fable-byrd-2013"),
                   key=lambda r: r["line_no"])
-    assert " ".join(r["pie"] for r in work) in eval_txt.split("\n\n")
+    assert work and " ".join(r["pie"] for r in work) in train_txt.split("\n\n")
 
 
 def test_flags_carried_into_meta(exported):
@@ -495,8 +494,19 @@ def test_app_items_partition_sentences_with_sliced_gloss():
 
 def test_translator_conversations(exported):
     """translate_app: English in, the fixed format out; every train record with English is covered sentence by
-    sentence; eval items come from the eval records only (Tier 1 has no gloss reference)."""
+    sentence; eval items come from the eval records only. An item spanning lines of a Tier 1 work has the work
+    as its source: its record is the work's lines joined, in line order."""
     recs = {r["id"]: r for r in exported["train_records"]}
+    works = {}
+    for r in sorted((r for r in exported["train_records"] if r.get("work_id") and r.get("line_no") is not None),
+                    key=lambda r: r["line_no"]):
+        w = works.setdefault(r["work_id"], {"id": r["work_id"], "pie": [], "gloss": [], "english": [], "tokens": []})
+        for k in ("pie", "gloss", "english"):
+            if r.get(k):
+                w[k].append(r[k])
+        w["tokens"] += r["tokens"]
+    work_of = {r["id"]: r["work_id"] for r in exported["train_records"] if r.get("work_id") and r.get("line_no") is not None}
+    recs.update({k: {**w, **{x: " ".join(w[x]) for x in ("pie", "gloss", "english")}} for k, w in works.items()})
     app = [e for e in exported["train"] if e["meta"]["task"] == "translate_app"]
     inv = [e for e in app if e["meta"]["mode"] == "pie_en"]
     assert app and 0.1 < len(inv) / len(app) < 0.3
@@ -520,7 +530,7 @@ def test_translator_conversations(exported):
             pie, gloss = e["messages"][1]["content"], f["Gloss"]
             assert list(f) == ["English", "Gloss"]
         assert pie in r["pie"] and gloss in r["gloss"] and len(gloss.split()) == len(pie.split())
-        covered[r["id"]].append(pie)
+        covered[work_of.get(r["id"], r["id"])].append(pie)
     # a session's requests (adjacent items of one text, chained) cover their sentences too
     ss = [e for e in exported["train"] if e["meta"]["task"] == "app_session"]
     assert ss and all(e["meta"]["mode"] == "en_pie" and 2 <= e["meta"]["items"] <= 3 for e in ss)
@@ -528,10 +538,18 @@ def test_translator_conversations(exported):
         for u, x in zip(e["messages"][1::2], e["messages"][2::2]):
             f = ec.parse_app(x["content"])
             assert set(f) <= {"PIE", "Gloss", "Notes"}
-            covered[e["meta"]["source_id"]].append(f["PIE"])
+            covered[work_of.get(e["meta"]["source_id"], e["meta"]["source_id"])].append(f["PIE"])
         assert e["meta"]["source_id"] in recs and ec.assistant_pie(e) in recs[e["meta"]["source_id"]]["pie"]
-    aligned = [r for r in exported["train_records"] if r.get("english") and ec.align_english(r)[0]]
+    aligned = [r for r in exported["train_records"] if r.get("english") and r.get("gloss") and ec.align_english(r)[0]]
+    # a Tier 1 work's aligned lines, compared by words (a title line has no final stop, so items join lines)
+    work_words = collections.defaultdict(list)
     for r in aligned:
+        if r["id"] in work_of:
+            work_words[work_of[r["id"]]] += r["pie"].split()
+    for w, ws in work_words.items():
+        got = " ".join(covered[w]).split()
+        assert collections.Counter(ws) <= collections.Counter(got), w
+    for r in (r for r in aligned if r["id"] not in work_of):
         assert sorted(ec.sentences(" ".join(covered[r["id"]]))) == sorted(ec.sentences(r["pie"])), r["id"]
     # Tier 3b gets the same English-input treatment
     neo = [e for e in exported["train"] if e["meta"].get("neologism")]
@@ -541,9 +559,10 @@ def test_translator_conversations(exported):
     ev = [e for e in exported["eval"] if e["meta"]["task"] == "translate_app"]
     eval_ids = {r["id"] for r in exported["eval_records"]} | {r["work_id"] for r in exported["eval_records"]}
     assert ev and {e["meta"]["source_id"] for e in ev} <= eval_ids
-    assert {e["meta"]["tier"] for e in ev} == {1, 2}
-    assert all(e["meta"]["gloss_reference"] is (e["meta"]["tier"] == 2) for e in ev)
-    assert all("Gloss:" not in e["messages"][-1]["content"] for e in ev if e["meta"]["tier"] == 1)
+    assert {e["meta"]["tier"] for e in ev} == {2}                 # Tier 1 is training data since 2026-11-01
+    assert all(e["meta"]["gloss_reference"] for e in ev)
+    # train: the app format always has its Gloss line (a record without a gloss, Tier 1, makes no app item)
+    assert all(recs[e["meta"]["source_id"]].get("gloss") for e in app)
     kinds = exported["summary"]["leakage"]["per_kind"]
     assert kinds["translate_app/en_pie"]["n"] and kinds["translate_app/en_pie"]["max_overlap"] < 0.5
 

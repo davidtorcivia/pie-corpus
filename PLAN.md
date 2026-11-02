@@ -130,7 +130,7 @@ Rules: downloads go into their own empty dir under `raw/`. Scripts live in `scri
 - **Done when:** ~1–10M tokens, validator reject rate is tracked and <10% after repair, near-duplicate dedup (MinHash) done, and a manual audit of 100 random records is logged in `docs/audits/`.
 
 ### Phase 7: Export
-- `export/train.jsonl`, `export/eval.jsonl`. Eval = all of Tier 1 + a held-out slice of Tier 2; never train on eval. Plain-text views: PIE-only, PIE+English parallel, interlinear, and ASCII variants.
+- `export/train.jsonl`, `export/eval.jsonl`. Eval = a held-out slice of Tier 2 (the eval-grade lines) plus the drill split; never train on eval. Tier 1 is training data (David, 2026-11-01: "Include the published texts in the next fine tune"); it was eval-only before, and the benchmark excludes it because frontier models have memorized it. Plain-text views: PIE-only, PIE+English parallel, interlinear, and ASCII variants.
 - **Task-format views** (instruction style), built from every tier where the source supports them:
   - English → PIE and PIE → English translation
   - line → interlinear gloss

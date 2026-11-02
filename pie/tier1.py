@@ -173,7 +173,29 @@ def build_records(index=None, root: Path = ROOT) -> tuple[list[dict], list[dict]
                 cross.append({"work_id": wid, "secondary": sec["_file"], "similarity": round(sm.ratio(), 4),
                               "diffs": diffs[:20]})
     records += formula_records(ix, root)
+    apply_glosses(records, root)
     return records, cross
+
+
+GLOSSES = "data/tier1/glosses.jsonl"
+
+
+def apply_glosses(records: list[dict], root: Path = ROOT) -> int:
+    """Set each record's interlinear gloss from data/tier1/glosses.jsonl ({id, pie, gloss}): the published texts
+    print none, so the project annotates them (owner 2026-11-01, when Tier 1 became training data: "Just create a
+    gloss"). A gloss applies only while the record's `pie` is the one it was written for and it has one token per
+    PIE word; otherwise the record keeps no gloss. Returns the number applied."""
+    f = Path(root) / GLOSSES
+    if not f.exists():
+        return 0
+    gl = {g["id"]: g for g in map(json.loads, f.read_text("utf-8").splitlines()) if g.get("gloss")}
+    n = 0
+    for r in records:
+        g = gl.get(r["id"])
+        if g and r.get("pie") and g["pie"] == r["pie"] and len(g["gloss"].split()) == len(r["pie"].split()):
+            r["gloss"], r["gloss_source"] = g["gloss"], "project-annotation"
+            n += 1
+    return n
 
 
 def formula_records(ix, root: Path = ROOT) -> list[dict]:

@@ -89,10 +89,10 @@ def test_record_tasks():
 
 def test_leakage_guard(tmp_path, monkeypatch):
     import pie.export as ex
-    (tmp_path / "corpus" / "tier1").mkdir(parents=True)
+    (tmp_path / "corpus" / "tier2").mkdir(parents=True)
     (tmp_path / "corpus" / "tier3").mkdir(parents=True)
     rec = {"id": "a", "pie": "h₂ówis.", "pie_ascii": "h2o/wis.", "english": "sheep"}
-    (tmp_path / "corpus/tier1/x.jsonl").write_text(json.dumps(rec) + "\n", "utf-8")
+    (tmp_path / "corpus/tier2/x.jsonl").write_text(json.dumps({**rec, "eval_grade": True}) + "\n", "utf-8")
     (tmp_path / "corpus/tier3/b.jsonl").write_text(json.dumps({**rec, "id": "b"}) + "\n", "utf-8")
     from pie.batch_release import release_metadata
     (tmp_path / "data/generation/plans").mkdir(parents=True)
@@ -106,6 +106,32 @@ def test_leakage_guard(tmp_path, monkeypatch):
     monkeypatch.setattr(ex, "cognate_tasks", lambda lx: [])
     with pytest.raises(ValueError, match="leakage"):
         ex.build(root=tmp_path)
+
+
+def test_tier1_is_training_data(tmp_path, monkeypatch):
+    """The published texts are trained on (owner 2026-11-01); only eval-grade Tier 2 lines are evaluation."""
+    import pie.export as ex
+    for t in ("tier1", "tier2"):
+        (tmp_path / "corpus" / t).mkdir(parents=True)
+    t1 = {"id": "t1-a", "tier": 1, "pie": "h₂ówis.", "pie_ascii": "h2o/wis.", "english": "A sheep."}
+    t2 = {"id": "t2-b", "tier": 2, "pie": "éḱwos.", "pie_ascii": "e/k'wos.", "english": "A horse.", "eval_grade": True}
+    (tmp_path / "corpus/tier1/x.jsonl").write_text(json.dumps(t1, ensure_ascii=False) + "\n", "utf-8")
+    (tmp_path / "corpus/tier2/y.jsonl").write_text(json.dumps(t2, ensure_ascii=False) + "\n", "utf-8")
+    monkeypatch.setattr(ex, "inflection_tasks", lambda lx, rng: [])
+    monkeypatch.setattr(ex, "cognate_tasks", lambda lx: [])
+    out = ex.build(root=tmp_path)
+    assert [r["id"] for r in out["train_records"]] == ["t1-a"] and [r["id"] for r in out["eval_records"]] == ["t2-b"]
+    assert any(t["source_id"] == "t1-a" for t in out["train_tasks"])
+
+
+def test_tier1_lines_are_glossed():
+    """Every Tier 1 line with canonical PIE carries the project's gloss (data/tier1/glosses.jsonl), one token per
+    word: Tier 1 is training data, and the translator format needs a Gloss line."""
+    import glob
+    rs = [json.loads(x) for f in glob.glob(str(Path(__file__).resolve().parent.parent / "corpus/tier1/*.jsonl"))
+          for x in open(f, encoding="utf-8") if x.strip()]
+    rs = [r for r in rs if r.get("pie")]
+    assert rs and all(r.get("gloss") and len(r["gloss"].split()) == len(r["pie"].split()) for r in rs)
 
 
 def _lx():

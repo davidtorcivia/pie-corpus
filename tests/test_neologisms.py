@@ -343,7 +343,7 @@ def test_export_tier3b_is_train_only_and_capped(tmp_path, monkeypatch):
     with pytest.raises(ValueError, match="neologism: true"):
         ex.build(root=tmp_path)
     (tmp_path / "corpus/tier3b/t3b-003.jsonl").unlink()
-    (tmp_path / "corpus/tier1/x.jsonl").write_text(json.dumps({**_rec(9, 1, tier=1), "neologism": False}) + "\n")
+    (tmp_path / "corpus/tier2/x.jsonl").write_text(json.dumps({**_rec(9, 1, tier=2), "neologism": False, "eval_grade": True}) + "\n")
     with pytest.raises(ValueError, match="neologism in an evaluation record"):
         ex.build(root=tmp_path)
 

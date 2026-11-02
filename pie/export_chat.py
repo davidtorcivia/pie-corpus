@@ -931,7 +931,8 @@ def _app_units(rec: dict) -> tuple[list[tuple[str, str, str | None, list[dict]]]
 
 
 def app_chats(records: list[dict], stats: collections.Counter, tasks: dict[str, dict] | None = None,
-              inverse: bool = True, both_directions: bool = False, sessions: int = 0) -> list[dict]:
+              inverse: bool = True, both_directions: bool = False, sessions: int = 0,
+              require_gloss: bool = False) -> list[dict]:
     """translate_app: English in, `PIE:` / `Gloss:` / `Notes:` out (app_format), from every record with English.
 
     Each text's sentences (a Tier 1 work: its lines) are partitioned into items of 1-3 sentences (APP_CHUNK, by
@@ -943,8 +944,10 @@ def app_chats(records: list[dict], stats: collections.Counter, tasks: dict[str, 
     `sessions` (the chat train split): at most this many app_session conversations, made by app_sessions from
     the adjacent en_pie items of texts picked by lowest crc32 (a budget, so chained requests stay a small
     minority of the multi-turn examples, APP_SESSION_SHARE). The gloss
-    is the gloss task's own (the record's gloss, sliced per sentence); a record without one (Tier 1) gets no
-    Gloss line (meta.gloss_reference false). `tasks`: source id -> its translate_en_pie task, whose acceptable
+    is the gloss task's own (the record's gloss, sliced per sentence; Tier 1's is the project's annotation,
+    data/tier1/glosses.jsonl); a record without one gets no Gloss line (meta.gloss_reference false); with
+    `require_gloss` (the train split) such a record makes no item, so the app's format is always trained with
+    its Gloss line. `tasks`: source id -> its translate_en_pie task, whose acceptable
     alternatives and token variants an item of the whole record (or the matching words) carries for scoring."""
     tasks = tasks or {}
     out: list[dict] = []
@@ -955,6 +958,9 @@ def app_chats(records: list[dict], stats: collections.Counter, tasks: dict[str, 
         for r in recs:
             if not r.get("english"):
                 stats["no_english"] += 1
+                continue
+            if require_gloss and not r.get("gloss"):
+                stats["no_gloss"] += 1
                 continue
             u, how = _app_units(r)
             if u is None:
@@ -1447,7 +1453,7 @@ def build_chat(d: dict, lx=None, seeds: list[dict] | None = None) -> dict:
         multi = collections.Counter(multi_turn_source(e) for e in exs + demos if user_turns(e) >= 2)
         budget = max(0, int(multi["dialogue"] * APP_SESSION_SHARE / (1 - APP_SESSION_SHARE)) - multi["chained"]) \
             if split == "train" else 0
-        exs += app_chats(records, app[split], en_tasks, sessions=budget)
+        exs += app_chats(records, app[split], en_tasks, sessions=budget, require_gloss=split == "train")
         if split == "train":
             exs += demos
         else:      # the conversational eval: the reserved dialogue records, in every mode
@@ -1488,7 +1494,8 @@ def build_translator(d: dict, chat: dict[str, list[dict]]) -> dict:
     exs = {}
     for split in ("train", "eval"):
         en_tasks = {t["source_id"]: t for t in d[f"{split}_tasks"] if t["task"] == "translate_en_pie"}
-        xs = app_chats(d[f"{split}_records"], stats[split], en_tasks, both_directions=True)
+        xs = app_chats(d[f"{split}_records"], stats[split], en_tasks, both_directions=True,
+                       require_gloss=split == "train")
         random.Random(f"translator-{split}").shuffle(xs)
         for n, e in enumerate(xs):
             e["meta"]["id"] = f"translator-{split}-{n:06d}"
