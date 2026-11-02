@@ -6,12 +6,16 @@
 GET /api/runs        every run: its config.json and metrics.jsonl; Tinker runs (training/tinker) as "tinker/<run>",
                      their cookbook logs converted to the same events (tinker_run)
 GET /api/gens?run=R&epoch=N   that run's generations-eN.jsonl (and its scores-eN.json when the Mac has scored it)
+GET /api/tts         the Kokoro fine-tune on tr-desktop (training/tts_monitor.sh mirrors its WSL logs to --tts): per-stage
+                     loss series, step time and memory, validation losses, GPU samples, checkpoints
 GET /api/rl          every RL run (training/rl, synced from the Mac by training/rl/sync_dashboard.sh): its
                      config.yaml, metrics.jsonl, per-kind rewards (rewards.jsonl, in windows) and the frozen-prompt
                      scores of its checkpoints (eval/summary.txt)
 """
 import argparse
 import json
+import re
+import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
@@ -111,7 +115,62 @@ def rl_run(d: Path) -> dict:
             "config": cfg.read_text("utf-8") if cfg.exists() else ""}
 
 
-def make_handler(runs: Path, tinker: Path, rl: Path):
+LOSS = re.compile(r"([A-Za-z0-9]+(?: [A-Za-z0-9]+)?) Loss: ([-0-9.e]+|nan)")
+STEP = re.compile(r"Epoch \[(\d+)/(\d+)\], Step \[(\d+)/(\d+)\]")
+PIE_STEP = re.compile(r"PIE_STEP (\d+) ([0-9.]+) s/step\s+peak ([0-9.]+) GiB")
+VAL = re.compile(r"(?:Validation|val)[ _]?(?:mel )?loss[: ]+([0-9.]+)", re.I)
+
+
+def tts_stage(p: Path) -> dict:
+    """One stage's train log (StyleTTS2 train_first/train_second, with the PIE_STEP timer) as series."""
+    out = {"points": [], "timing": [], "val": [], "epochs": None, "steps_per_epoch": None, "tail": [], "exit": None,
+           "errors": []}
+    if not p.exists():
+        return out
+    lines = p.read_text("utf-8", errors="replace").splitlines()
+    for line in lines:
+        m = STEP.search(line)
+        if m:
+            e, ne, st, ns = map(int, m.groups())
+            out["epochs"], out["steps_per_epoch"] = ne, ns
+            losses = {k.strip(): (None if v == "nan" else float(v)) for k, v in LOSS.findall(line)}
+            out["points"].append({"epoch": e, "step": st, "x": round(e - 1 + st / ns, 4), **losses})
+            continue
+        m = PIE_STEP.search(line)
+        if m:
+            out["timing"].append({"i": int(m[1]), "s_per_step": float(m[2]), "peak_gib": float(m[3]),
+                                  "epoch": out["points"][-1]["epoch"] if out["points"] else 1})
+            continue
+        m = VAL.search(line)
+        if m and out["points"]:
+            out["val"].append({"epoch": out["points"][-1]["epoch"], "loss": float(m[1])})
+        if " EXIT " in line:
+            out["exit"] = line.strip()
+        if re.search(r"Traceback|OutOfMemory|CUDA error|Error:", line):
+            out["errors"].append(line.strip()[:300])
+    out["tail"] = lines[-12:]
+    return out
+
+
+def tts_status(d: Path) -> dict:
+    gpu = []
+    g = d / "gpu.csv"
+    for line in (g.read_text().splitlines()[-1500:] if g.exists() else []):
+        try:
+            t, used, total, util, temp, power = line.split(",")[:6]
+            gpu.append({"t": int(t), "used": int(used), "total": int(total), "util": int(util), "temp": int(temp),
+                        "power": float(power)})
+        except ValueError:
+            pass
+    ck = d / "ckpts.txt"
+    ckpts = [dict(zip(("t", "bytes", "path"), l.split())) for l in (ck.read_text().splitlines() if ck.exists() else []) if l.strip()]
+    up = d / "updated.txt"
+    upd = int(up.read_text().strip()) if up.exists() and up.read_text().strip().isdigit() else None
+    return {"now": int(time.time()), "updated": upd, "gpu": gpu, "checkpoints": ckpts,
+            "stages": {s: tts_stage(d / f"{s}.log") for s in ("stage1", "stage2")}}
+
+
+def make_handler(runs: Path, tinker: Path, rl: Path, tts=None):
     class H(BaseHTTPRequestHandler):
         def send(self, code, body: bytes, ctype: str):
             self.send_response(code)
@@ -131,6 +190,10 @@ def make_handler(runs: Path, tinker: Path, rl: Path):
                 return self.send(200, (HERE / "dashboard.html").read_bytes(), "text/html; charset=utf-8")
             if u.path in ("/rl", "/rl.html"):
                 return self.send(200, (HERE / "rl.html").read_bytes(), "text/html; charset=utf-8")
+            if u.path in ("/tts", "/tts.html"):
+                return self.send(200, (HERE / "tts.html").read_bytes(), "text/html; charset=utf-8")
+            if u.path == "/api/tts":
+                return self.json(tts_status(tts) if tts else {})
             if u.path == "/api/rl":
                 return self.json([rl_run(d) for d in sorted(p for p in rl.iterdir() if p.is_dir())] if rl.is_dir() else [])
             if u.path == "/api/runs":
@@ -165,13 +228,14 @@ def main():
     ap.add_argument("--runs", default=r"Q:\AI\PIE\runs")
     ap.add_argument("--tinker", default=r"Q:\AI\PIE\tinker\runs")
     ap.add_argument("--rl", default=r"Q:\AI\PIE\rl\runs")
+    ap.add_argument("--tts", default=r"C:\Users\David\Downloads\PIE\tts-corpus-v1\kokoro-monitor")
     ap.add_argument("--host", default="127.0.0.1")
     ap.add_argument("--port", type=int, default=8790)
     a = ap.parse_args()
     runs = Path(a.runs)
     runs.mkdir(parents=True, exist_ok=True)
     print(f"dashboard on http://{a.host}:{a.port}")
-    ThreadingHTTPServer((a.host, a.port), make_handler(runs, Path(a.tinker), Path(a.rl))).serve_forever()
+    ThreadingHTTPServer((a.host, a.port), make_handler(runs, Path(a.tinker), Path(a.rl), Path(a.tts))).serve_forever()
 
 
 if __name__ == "__main__":

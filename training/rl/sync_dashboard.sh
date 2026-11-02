@@ -10,7 +10,7 @@ HERE=${0:A:h}
 deployed=
 while true; do
   if [ -z "$deployed" ] && ssh -o ConnectTimeout=10 tr-desktop "powershell -NoProfile -Command \"New-Item -ItemType Directory -Force '$DEST/eval' | Out-Null\"" 2>/dev/null; then
-    scp -q $HERE/../dashboard.py $HERE/../dashboard.html $HERE/../rl.html "tr-desktop:Q:/AI/PIE/train/" && \
+    scp -q $HERE/../dashboard.py $HERE/../dashboard.html $HERE/../rl.html $HERE/../tts.html "tr-desktop:Q:/AI/PIE/train/" && \
       ssh tr-desktop "schtasks /End /TN PIE-dashboard; Get-CimInstance Win32_Process -Filter \"Name='python.exe'\" | Where-Object { \$_.CommandLine -match 'dashboard.py' } | ForEach-Object { Stop-Process -Id \$_.ProcessId -Force }; Start-Sleep 2; schtasks /Run /TN PIE-dashboard" >/dev/null 2>&1 && deployed=1
     echo "$(date '+%F %T') deployed dashboard"
   fi

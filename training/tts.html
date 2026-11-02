@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PIE Kokoro</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--bg:#f6f4ef;--fg:#1c1b19;--dim:#6d675e;--card:#fffdf9;--line:#e3ddd2;--accent:#9a4b16;--ok:#2f8f4f;--bad:#b3261e}
+@media (prefers-color-scheme:dark){:root{--bg:#141310;--fg:#ece6dc;--dim:#a09888;--card:#1d1b17;--line:#332e26;--accent:#e08a4c;--ok:#5fbf7f;--bad:#f2867c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 ui-sans-serif,system-ui,sans-serif}
+main{max-width:1280px;margin:0 auto;padding:20px 16px 60px}
+h1{font:600 22px Georgia,serif;margin:0 0 4px}
+a{color:var(--accent)}
+.sub{color:var(--dim);margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;overflow-x:auto;min-width:0}
+.card h2{font-size:13px;margin:0 0 8px;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.note{color:var(--dim);font-size:12px;margin:-4px 0 8px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.kpi .v{font:600 22px ui-sans-serif,system-ui;font-variant-numeric:tabular-nums}
+.kpi .l{color:var(--dim);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:5px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--dim);font-weight:600}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.dimt{color:var(--dim)}
+pre{font-size:12px;color:var(--dim);white-space:pre-wrap;word-break:break-word;margin:0}
+.wide{grid-column:1/-1}
+</style>
+</head>
+<body>
+<main>
+<h1>PIE Kokoro fine-tune</h1>
+<div class="sub">StyleTTS2 / kikiri-tts on the RTX 5090 (WSL), mirrored every 20 s by training/tts_monitor.sh. <a href="/rl">RL</a> · <a href="/">fine-tuning</a> · refreshes every 20 s</div>
+<div class="grid">
+  <div class="card wide"><h2>Status</h2><div class="kpis" id="kpis"></div><div id="alerts"></div></div>
+  <div class="card"><h2>Mel loss</h2><div class="note">x = epochs; healthy Stage 1 falls toward ~0.25–0.3; a plateau above 0.4 or NaN is a problem</div><canvas id="mel"></canvas></div>
+  <div class="card"><h2>Other losses</h2><div class="note">each loss divided by its first value</div><canvas id="other"></canvas></div>
+  <div class="card"><h2>Speed and memory</h2><div class="note">s/step (left), PyTorch peak GiB (right; cap 0.82 × 32 GB ≈ 26.7)</div><canvas id="speed"></canvas></div>
+  <div class="card"><h2>GPU</h2><div class="note">nvidia-smi: memory used GB (left, card total incl. display), utilisation % (right)</div><canvas id="gpu"></canvas></div>
+  <div class="card"><h2>Checkpoints</h2><table id="ckpts"></table></div>
+  <div class="card"><h2>Log tail</h2><pre id="tail"></pre></div>
+</div>
+</main>
+<script>
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const charts = {};
+const PALETTE = ["#9a4b16", "#2f6f9f", "#2f8f4f", "#8a4f9f", "#b08a1e", "#5f6b6e", "#b3261e"];
+function chart(id, cfg) {
+  if (charts[id]) { charts[id].data = cfg.data; charts[id].update("none"); return; }
+  cfg.options = Object.assign({animation: false, responsive: true, maintainAspectRatio: true, aspectRatio: 1.7,
+    plugins: {legend: {labels: {color: css("--dim"), boxWidth: 12}}},
+    scales: Object.fromEntries(Object.entries(cfg.scales || {x: {}, y: {}}).map(([k, v]) => [k, Object.assign(
+      {ticks: {color: css("--dim")}, grid: {color: css("--line")}}, v)]))}, cfg.options || {});
+  charts[id] = new Chart(document.getElementById(id), cfg);
+}
+function fmtAge(s) { return s < 90 ? `${s} s` : s < 5400 ? `${Math.round(s / 60)} min` : `${(s / 3600).toFixed(1)} h`; }
+async function tick() {
+  let d;
+  try { d = await (await fetch("/api/tts", {cache: "no-store"})).json(); } catch (e) { return; }
+  if (!d || !d.stages) return;
+  const st = d.stages.stage2.points.length ? "stage2" : "stage1", S = d.stages[st];
+  const last = S.points[S.points.length - 1], tm = S.timing.slice(-5);
+  const sps = tm.length ? tm.reduce((a, b) => a + b.s_per_step, 0) / tm.length : null;
+  const done = last ? (last.epoch - 1) * S.steps_per_epoch + last.step : 0, total = S.epochs && S.steps_per_epoch ? S.epochs * S.steps_per_epoch : null;
+  const eta = sps && total ? fmtAge(Math.round((total - done) * sps)) : "—";
+  const age = d.updated ? d.now - d.updated : null;
+  const g = d.gpu[d.gpu.length - 1];
+  const k = [
+    ["Stage", st === "stage1" ? "1 · acoustics" : "2 · prosody"],
+    ["Epoch", last ? `${last.epoch} / ${S.epochs}` : "—"],
+    ["Step", last ? `${last.step} / ${S.steps_per_epoch}` : "—"],
+    ["Mel loss", last && last.Mel != null ? last.Mel.toFixed(3) : (last ? "NaN" : "—")],
+    ["s / step", sps ? sps.toFixed(2) : "—"],
+    ["ETA (this stage)", S.exit ? "finished" : eta],
+    ["GPU memory", g ? `${(g.used / 1024).toFixed(1)} / ${(g.total / 1024).toFixed(0)} GB` : "—"],
+    ["Mirror updated", age == null ? "—" : `${fmtAge(age)} ago`],
+  ];
+  document.getElementById("kpis").innerHTML = k.map(([l, v]) => `<div class="kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
+  const al = [];
+  if (age != null && age > 120) al.push(`<div class="bad">The mirror has not updated for ${fmtAge(age)}: is tts_monitor.sh running?</div>`);
+  if (last && last.Mel == null) al.push(`<div class="bad">Mel loss is NaN.</div>`);
+  if (S.errors.length) al.push(`<div class="bad">${S.errors.slice(-3).map(e => e.replace(/</g, "&lt;")).join("<br>")}</div>`);
+  if (S.exit) al.push(`<div class="${/EXIT 0/.test(S.exit) ? "ok" : "bad"}">${S.exit}</div>`);
+  document.getElementById("alerts").innerHTML = al.join("");
+  const sets = ["stage1", "stage2"].filter(s => d.stages[s].points.length);
+  chart("mel", {type: "line", data: {datasets: sets.map((s, i) => ({label: s, data: d.stages[s].points.map(p => ({x: p.x, y: p.Mel})),
+    borderColor: PALETTE[i], pointRadius: 0, borderWidth: 1.5}))},
+    scales: {x: {type: "linear", title: {display: true, text: "epoch", color: css("--dim")}}, y: {}}});
+  const keys = S.points.length ? Object.keys(S.points[0]).filter(x => !["epoch", "step", "x", "Mel"].includes(x)) : [];
+  chart("other", {type: "line", data: {datasets: keys.map((kk, i) => {
+    const base = (S.points.find(p => p[kk] != null && p[kk] !== 0) || {})[kk] || 1;
+    return {label: kk, data: S.points.map(p => ({x: p.x, y: p[kk] == null ? null : p[kk] / base})), borderColor: PALETTE[i % PALETTE.length], pointRadius: 0, borderWidth: 1.2};
+  })}, scales: {x: {type: "linear"}, y: {}}});
+  chart("speed", {type: "line", data: {datasets: [
+    {label: "s/step", data: S.timing.map((t, i) => ({x: i, y: t.s_per_step})), borderColor: PALETTE[0], pointRadius: 0, yAxisID: "y"},
+    {label: "peak GiB", data: S.timing.map((t, i) => ({x: i, y: t.peak_gib})), borderColor: PALETTE[1], pointRadius: 0, yAxisID: "y1"}]},
+    scales: {x: {type: "linear", title: {display: true, text: "report (every 10 steps)", color: css("--dim")}}, y: {position: "left"}, y1: {position: "right", grid: {drawOnChartArea: false}}}});
+  const t0 = d.gpu.length ? d.gpu[0].t : 0;
+  chart("gpu", {type: "line", data: {datasets: [
+    {label: "memory GB", data: d.gpu.map(x => ({x: (x.t - t0) / 60, y: x.used / 1024})), borderColor: PALETTE[1], pointRadius: 0, yAxisID: "y"},
+    {label: "util %", data: d.gpu.map(x => ({x: (x.t - t0) / 60, y: x.util})), borderColor: PALETTE[2], pointRadius: 0, borderWidth: 1, yAxisID: "y1"}]},
+    scales: {x: {type: "linear", title: {display: true, text: "minutes", color: css("--dim")}}, y: {position: "left", min: 0, max: 33}, y1: {position: "right", min: 0, max: 100, grid: {drawOnChartArea: false}}}});
+  document.getElementById("ckpts").innerHTML = "<tr><th>checkpoint</th><th>size</th><th>saved</th></tr>" +
+    (d.checkpoints.length ? d.checkpoints.map(c => `<tr><td>${c.path.split("/").slice(-2).join("/")}</td><td>${(c.bytes / 1e6).toFixed(0)} MB</td><td>${fmtAge(d.now - c.t)} ago</td></tr>`).join("")
+                          : `<tr><td class="dimt" colspan="3">none yet (one per epoch)</td></tr>`);
+  document.getElementById("tail").textContent = S.tail.join("\n");
+}
+tick(); setInterval(tick, 20000);
+</script>
+</body>
+</html>
