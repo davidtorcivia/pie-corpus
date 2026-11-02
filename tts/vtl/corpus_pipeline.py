@@ -1,7 +1,7 @@
 """The PIE speech corpus, end to end on one machine (tr-desktop WSL): VTL render -> ElevenLabs -> restore -> QC ->
 Kokoro files. Every stage skips work already on disk, so a rerun resumes.
 
-    python corpus_pipeline.py WORK [render] [eleven] [restore] [retrill] [qc] [final]     (no stage names: all, in order)
+    python corpus_pipeline.py WORK [render] [eleven] [restore] [retrill] [murmur] [qc] [final]     (no stage names: all, in order)
 
 WORK is a scripts/tts_build.py output (timelines/, batch.txt, clips.jsonl, manifest.jsonl, OOD_texts.txt).
 Writes, all named CLIP__SPEAKER.wav:
@@ -9,7 +9,9 @@ Writes, all named CLIP__SPEAKER.wav:
   eleven/    ElevenLabs voice changer, pcm_44100 -> 16-bit WAV (masters); eleven_log.jsonl (cost, request id)
   restored/  tts/cadence/restore.py, 44.1 kHz (masters)
   retrilled/ retrill.py: trill contacts the converter smoothed away re-cut on the r timings (owner 2026-11-02)
-  qc.jsonl   qc.py on retrilled/ (aligned to the render); gate below
+  murmured/  murmur.py: the breathy release of bʰ dʰ gʰ gʷʰ the converter smoothed, put back (medium: breath -14 dB,
+             top softened 0.5; owner 2026-11-02)
+  qc.jsonl   qc.py on murmured/ (aligned to the render); gate below
   final/     24 kHz mono 16-bit PCM WAV (kikiri-tts / StyleTTS2), only clips that pass the gate
   train_list.txt, val_list.txt (FILE|LABEL|SPEAKER), OOD_texts.txt, rejected.jsonl, summary.json
 
@@ -193,9 +195,32 @@ def retrill(work, workers=40):
     log(f"retrill: done, {sum(n)} trilled r re-cut in {sum(1 for x in n if x)} files")
 
 
+# ---------------------------------------------------------------- 3c. murmur
+MURMUR = (-14.0, 0.5)                      # owner's pick of the three demo strengths (2026-11-02): medium
+
+
+def murmured(m):
+    return "murmured/" + Path(m["restored_wav"]).name
+
+
+def _murmur(work, m):
+    import murmur as mu
+    return mu.murmur(str(work / retrilled(m)), str(work / m["vtl_wav"]), str(work / m["vtl_timing"]),
+                     str(work / murmured(m)), *MURMUR)
+
+
+def murmur(work, workers=40):
+    (work / "murmured").mkdir(exist_ok=True)
+    todo = [m for m in manifest(work) if (work / retrilled(m)).exists() and not (work / murmured(m)).exists()]
+    log(f"murmur: {len(todo)}")
+    with cf.ProcessPoolExecutor(workers) as ex:
+        n = list(ex.map(_murmur, [work] * len(todo), todo))
+    log(f"murmur: done, {sum(n)} murmured releases in {sum(1 for x in n if x)} files")
+
+
 # ---------------------------------------------------------------- 4. QC
 def _qc(work, m):
-    r = subprocess.run([PY, str(HERE / "qc.py"), str(work / retrilled(m)), "--timing", str(work / m["vtl_timing"]),
+    r = subprocess.run([PY, str(HERE / "qc.py"), str(work / murmured(m)), "--timing", str(work / m["vtl_timing"]),
                         "--ref", str(work / m["vtl_wav"]), "--final-h", "murmur", "--min-lift", "1.5"],
                        capture_output=True, text=True, cwd=HERE)
     try:
@@ -216,7 +241,7 @@ def _qc(work, m):
 
 
 def qc(work, workers=40):
-    ms = [m for m in manifest(work) if (work / retrilled(m)).exists()]
+    ms = [m for m in manifest(work) if (work / murmured(m)).exists()]
     with cf.ProcessPoolExecutor(workers) as ex:
         res = list(ex.map(_qc, [work] * len(ms), ms))
     with open(work / "qc.jsonl", "w", encoding="utf-8") as f:
@@ -247,7 +272,7 @@ def final(work, workers=40):
     ok = [m for m in ms if q.get((m["clip"], m["speaker"]), {}).get("pass")]
     todo = [m for m in ok if not (work / m["final_wav"]).exists()]
     with cf.ProcessPoolExecutor(workers) as ex:
-        list(ex.map(_final, [work / retrilled(m) for m in todo], [work / m["final_wav"] for m in todo]))
+        list(ex.map(_final, [work / murmured(m) for m in todo], [work / m["final_wav"] for m in todo]))
     lists = {"train": [], "val": []}
     secs = {"train": {}, "val": {}}
     bad_len = []
@@ -275,7 +300,7 @@ def final(work, workers=40):
     log("final:", json.dumps(summary))
 
 
-STAGES = {"render": render, "eleven": eleven, "restore": restore, "retrill": retrill, "qc": qc, "final": final}
+STAGES = {"render": render, "eleven": eleven, "restore": restore, "retrill": retrill, "murmur": murmur, "qc": qc, "final": final}
 
 if __name__ == "__main__":
     work = Path(sys.argv[1]).resolve()
