@@ -52,6 +52,19 @@ Started 2026-11-01 (owner: "Take notes as we go so we can note how to improve fu
   English/Gloss markers and unknown words decide many dialogue rollouts without an API call.
 - **API limits.** 6 concurrent requests (16 got 429s); a regex fallback for unparsable JSON.
 
+## Running evals during training
+
+- **Never run checkpoint inference on the Mac while a GRPO run is training.** On 2026-11-01 at 22:05 I started
+  a step-250 eval (a second copy of the 35B with its adapter) beside rl3. The trainer (85 GB) died silently at
+  step 288, about 3 minutes later: no traceback, only a leaked-semaphore warning. after_run.sh then started its
+  own eval, and both evals hung for 11 hours, one in uninterruptible state (`UN`). Steps 276–288 were lost, and
+  the run has to be resumed from the step-275 adapter. Next time, evaluate checkpoints only after the trainer
+  exits, or on another machine. If an eval must run mid-training, first pause training at a checkpoint.
+- **Step 250 of rl3, v1 prompts, compared with base:** inflection exact 0.854 → 0.812, paradigm cells 0.869 →
+  0.826, chrF 61.1 → 59.7, and the first modern-word slip ("machine" for bʰórom 'load', in a PIE→EN app item).
+  rl1 also dipped at step 250 (cells 0.817) and recovered by its final step (0.870). The modern-word check should
+  cover every kind with English output, not only dialogue.
+
 ## Speed
 
 - About 80 s per step at batch 8 × group 8, with a 384-token cap. Generation is 55–75 s of that; the judge runs
