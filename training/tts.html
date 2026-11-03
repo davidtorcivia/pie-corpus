@@ -87,7 +87,7 @@ async function tick() {
   const sets = ["stage1", "stage2"].filter(s => d.stages[s].points.length);
   chart("mel", {type: "line", data: {datasets: sets.map((s, i) => ({label: s, data: d.stages[s].points.map(p => ({x: p.x, y: p.Mel})),
     borderColor: PALETTE[i], pointRadius: 0, borderWidth: 1.5}))},
-    scales: {x: {type: "linear", title: {display: true, text: "epoch", color: css("--dim")}}, y: {}}});
+    scales: {x: {type: "linear", title: {display: true, text: "epoch (Stage 2 continues after Stage 1)", color: css("--dim")}}, y: {}}});
   const keys = S.points.length ? Object.keys(S.points[0]).filter(x => !["epoch", "step", "x", "Mel"].includes(x)) : [];
   chart("other", {type: "line", data: {datasets: keys.map((kk, i) => {
     const base = (S.points.find(p => p[kk] != null && p[kk] !== 0) || {})[kk] || 1;

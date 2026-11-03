@@ -128,7 +128,9 @@ def tts_stage(p: Path) -> dict:
     if not p.exists():
         return out
     lines = p.read_text("utf-8", errors="replace").splitlines()
-    for line in lines:
+    # the Stage 2 hand-off writes its smoke test's last lines before the real run's: parse only the real run
+    start = max((i for i, l in enumerate(lines) if "starting Stage 2" in l), default=-1) + 1
+    for line in lines[start:]:
         m = STEP.search(line)
         if m:
             e, ne, st, ns = map(int, m.groups())
@@ -169,8 +171,12 @@ def tts_status(d: Path) -> dict:
     ckpts = [dict(zip(("t", "bytes", "path"), l.split())) for l in (ck.read_text().splitlines() if ck.exists() else []) if l.strip()]
     up = d / "updated.txt"
     upd = int(up.read_text().strip()) if up.exists() and up.read_text().strip().isdigit() else None
-    return {"now": int(time.time()), "updated": upd, "gpu": gpu, "checkpoints": ckpts,
-            "stages": {s: tts_stage(d / f"{s}.log") for s in ("stage1", "stage2")}}
+    stages = {s: tts_stage(d / f"{s}.log") for s in ("stage1", "stage2")}
+    off = stages["stage1"]["epochs"] or 0               # one timeline: Stage 2 continues after Stage 1's epochs
+    for p in stages["stage2"]["points"]:
+        p["x"] = round(p["x"] + off, 4)
+    stages["stage2"]["x_offset"] = off
+    return {"now": int(time.time()), "updated": upd, "gpu": gpu, "checkpoints": ckpts, "stages": stages}
 
 
 def make_handler(runs: Path, tinker: Path, rl: Path, tts=None):
