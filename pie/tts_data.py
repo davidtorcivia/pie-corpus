@@ -49,6 +49,7 @@ PROSE_COMMA, EDGE = 0.25, 0.30               # s: pause at "," (a caesura: < 0.5
 STOP_RANGE = (0.55, 0.75)                    # s: pause between sentences (pie_vtl "line" phrase end: >= 0.5 s)
 RATE_RANGE = (0.93, 1.07)                    # per-clip speaking rate
 MAX_CLIP_S, MIN_CLIP_S = 15.0, 1.5
+TRILL = "auto"                               # pie_vtl v10.1 --trill auto (owner 2026-11-02: "use the trilled R technique")
 SENT_END = re.compile(r"(?<=[.?!])\s+")
 PUNCT = ".,?!;:"
 
@@ -61,6 +62,7 @@ def _pie_vtl():
     if str(VTL_DIR) not in sys.path:
         sys.path.insert(0, str(VTL_DIR))
     import pie_vtl
+    pie_vtl.TRILL = TRILL                    # timings must include the trill's length, as the render will
     return pie_vtl
 
 
@@ -156,6 +158,7 @@ def prose_words(pie: str, key: str = "") -> list[dict]:
         p = p or ("." if last else "")
         ipa = word_ipa(core)
         segs = pv.parse_word(ipa)
+        pv.mark_trills(segs)
         if len(segs) > 1 and segs[-1].base == "h" and pv.is_nucleus(segs[-2]):
             segs[-1].final_h = True
         stop = bool(p) and p in ".?!"

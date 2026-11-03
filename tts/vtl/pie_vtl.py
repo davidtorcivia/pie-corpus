@@ -88,7 +88,8 @@ GLOTTIS_ADVANCE = None    # s voicing onsets lead the score (None: per engine, p
 ABDUCT_ADVANCE = 0.0      # s glottal openings lead the score
 ORAL_ADVANCE = 0.0        # s the oral and velic tiers lead the score
 H_MODE = "patch"          # h: "patch" = vowel-coloured noise after synthesis; "vtl" = open glottis only (near-silent)
-TRILL = 1                 # --trill N: r as N tongue-tip contacts (1 = VTL's tap)
+TRILL = 1                 # --trill N: r as N tongue-tip contacts (1 = VTL's tap); "auto": by position (v10.1)
+TRILL_AUTO = {"initial": 3, "postconsonantal": 2}   # v10.1 --trill auto: word-initial r 3 contacts, after a consonant 2, else a tap
 TRILL_CYCLE = 0.040       # s per trill cycle (25 Hz, typical alveolar trill)
 TRILL_CLOSE = 0.40        # share of a cycle the tongue tip is in contact
 TRILL_DEPTH = -20.0       # dB: level during a patched contact (voicing continues underneath)
@@ -184,6 +185,28 @@ def kind(s):
 NUCLEI = ("V", "Ns", "Ls", "Rs")
 
 
+def trill_n(s):
+    """Contacts for this r: its own (set by mark_trills under --trill auto) or the global --trill N."""
+    return getattr(s, "trill", TRILL if isinstance(TRILL, int) else 1)
+
+
+def mark_trills(segs):
+    """v10.1 --trill auto: PIE r is an alveolar trill (docs/pronunciation.md), realised by position as in
+    languages with one trilled r: a full trill word-initially, a shorter one after a consonant, a tap between
+    vowels and before a consonant. Syllabic r̩ and phrase-final r are untouched (held [ɹ̩] / open [ɹ])."""
+    if TRILL != "auto":
+        return
+    for i, x in enumerate(segs):
+        if x.base != "r" or x.syllabic:
+            continue
+        if i == 0:
+            x.trill = TRILL_AUTO["initial"]
+        elif not is_nucleus(segs[i - 1]) and kind(segs[i - 1]) != "G":
+            x.trill = TRILL_AUTO["postconsonantal"]
+        else:
+            x.trill = 1
+
+
 def vowel_shape(seg):
     """VTL vowel shape for a vocalic segment: syllabic sonorants ride on a schwa; --lax-short puts
     short e i o u on the lax shapes E I O U (as in Bett, bitte, Gott, Hund)."""
@@ -245,8 +268,8 @@ def default_durations(segs, line_final):
             d = DUR["Sv" if CONS[s.base][3] == "voiced-plosive" else "S"]
         elif s.base == "χ":
             d = DUR["Fχ"]
-        elif k == "R" and TRILL > 1:
-            d = TRILL * TRILL_CYCLE
+        elif k == "R" and trill_n(s) > 1:
+            d = trill_n(s) * TRILL_CYCLE
         elif is_final_h(s):
             d = FINAL_H_DUR
         else:
@@ -275,6 +298,7 @@ def build_timeline(words, rate, cadence=None):
     words get "start", "end", "segs" filled in."""
     for w in words:
         w["segs"] = parse_word(w["ipa"])
+        mark_trills(w["segs"])
         sg = w["segs"]
         if len(sg) > 1 and sg[-1].base == "h" and is_nucleus(sg[-2]):
             sg[-1].final_h = True
@@ -497,7 +521,7 @@ def compile_score(timed, total, words, base_st):
                 shape = "tt-alveolar-approximant"               # syllabic r̩ = held [ɹ̩] over a schwa
             if k == "R" and phrase_end(seg) and not PE_TAP:
                 shape, k = "tt-alveolar-approximant", "Ls"       # phrase-final r: an open [ɹ] the voice trails on
-            if tier and k == "R" and TRILL > 1:                # trill: VTL makes the first contact,
+            if tier and k == "R" and trill_n(seg) > 1:                # trill: VTL makes the first contact,
                 start = max(s0 - CONS_LEAD, last_nuc_mid)         # then holds an open [ɹ]-like tip;
                 c1 = s0                                           # tip contact lands ~+14..+32 ms (measured)
                 tiers[tier].add(start, max(c1, start + 0.03), "tt-alveolar-closure", tc=CONS_TC)
@@ -773,16 +797,17 @@ def patch_trill(audio, timed, sr=44100):
     import numpy as np
     out = audio.copy()
     for idx, (s0, s1, seg) in enumerate(timed):
-        if seg is None or kind(seg) != "R" or TRILL < 2:
+        if seg is None or kind(seg) != "R" or trill_n(seg) < 2:
             continue
+        n_c = trill_n(seg)
         nuc = next(((v0, v1) for v0, v1, g in timed[idx + 1:] if g is not None and is_nucleus(g)), None)
         if nuc is None:
             nuc = next(((v0, v1) for v0, v1, g in reversed(timed[:idx]) if g is not None and is_nucleus(g)), None)
         m = (nuc[0] + nuc[1]) / 2
         ref = np.sqrt((audio[int((m - .02) * sr):int((m + .02) * sr)] ** 2).mean()) + 1e-9
-        cyc = (s1 - s0) / TRILL
+        cyc = (s1 - s0) / n_c
         edge = int(0.005 * sr)
-        for c in range(TRILL):
+        for c in range(n_c):
             t = s0 + 0.014 + c * cyc                 # VTL's own first contact lands ~14 ms in
             a, b = int(t * sr), int((t + TRILL_CLOSE * cyc) * sr)
             rms = np.sqrt((out[a:b] ** 2).mean()) + 1e-12
@@ -975,7 +1000,7 @@ def render(words, prefix, opt, engine, cadence, seed=0, pitch=None, accent=None)
         audio = patch_frication(audio, timed, opt.chi_level, opt.gamma_level, seed=seed)
         if opt.h_mode == "patch":
             audio = patch_aspiration(audio, timed, opt.h_level, engine, seed=seed + 1)
-    if TRILL > 1:
+    if TRILL == "auto" or TRILL > 1:
         audio = patch_trill(audio, timed)
     if not opt.no_patch and PHRASE_END and PE_BREATH is not None:
         audio = patch_phrase_breath(audio, timed, engine, seed=seed + 2)
@@ -1055,7 +1080,8 @@ def main():
     ap.add_argument("--accent-rise", type=float, default=ACCENT_RISE, help="s of rise into an accented nucleus")
     ap.add_argument("--accent-fall", type=float, default=ACCENT_FALL, help="s of fall after an accented nucleus")
     ap.add_argument("--lax-short", action="store_true", help="short e i o u on lax shapes E I O U")
-    ap.add_argument("--trill", type=int, default=1, help="r as an N-contact trill (1 = tap; 3 ≈ Spanish rr); contacts 2..N are patched")
+    ap.add_argument("--trill", type=lambda v: v if v == "auto" else int(v), default=1,
+                    help="r as an N-contact trill (1 = tap; 3 ≈ Spanish rr), or auto (v10.1: by position); contacts 2..N are patched")
     ap.add_argument("--voice-lead", type=float, default=VOICE_LEAD, help="s of fold adduction before voicing resumes")
     ap.add_argument("--voice-lead-share", type=float, default=VOICE_LEAD_SHARE, help="... at most this share of the voiceless sound")
     ap.add_argument("--oral-advance", type=float, default=None,

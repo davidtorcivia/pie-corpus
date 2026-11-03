@@ -84,3 +84,19 @@ def test_filenames_ascii():
     assert T.filename("t3-b001-00001-p00", "W02-PIE") == "t3-b001-00001-p00__W02-PIE.wav"
     with pytest.raises(ValueError):
         T.filename("ḱ", "JD3-PIE")
+
+
+def test_trill_auto_by_position():
+    pv = T._pie_vtl()
+    assert pv.TRILL == "auto"
+    def n(ipa):
+        segs = pv.parse_word(ipa); pv.mark_trills(segs)
+        return [pv.trill_n(x) for x in segs if x.base == "r" and not x.syllabic]
+    assert n("réːɟs") == [3]                    # word-initial
+    assert n("bʱráχ.teːr") == [2, 1]            # after a consonant; final r after a vowel: tap
+    assert n("wé.ro.s") == [1]                   # between vowels
+    segs = pv.parse_word("χŕ̩t.cos"); pv.mark_trills(segs)
+    assert not any(hasattr(x, "trill") for x in segs if x.syllabic)
+    w = T.prose_words("rḗḱs.", "k")[0]
+    plain = sum(pv.default_durations(pv.parse_word(T.word_ipa("rḗḱs")), True))
+    assert w["end"] - w["start"] > plain / T.RATE_RANGE[1]   # the trill's 3 x 40 ms are in the timing
