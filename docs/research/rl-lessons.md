@@ -95,3 +95,25 @@ Started 2026-11-01 (owner: "Take notes as we go so we can note how to improve fu
 - **Benchmark first, then choose the RL target.** The v2 benchmark (benchmarks/) showed where we trail the
   frontier models: PIE→EN 83 vs 91–98, dialogue 80 vs 96. That is why stage 3 added those kinds. Re-run the
   benchmark on each stage's final and best checkpoints.
+
+## Stage 5 (rl5-nemotron-e3, 2026-11-03)
+
+- **Earlier RL prompts were memorized.** Every translation and dialogue prompt of the rl3/rl5 sets, train and
+  validation, is verbatim in the SFT export e3 was trained on, and e3 reproduces 82–89% of them exactly. Their
+  validation measures recall (translation stays at 1.00 from step 1). Stage 6 (make_rl6.py) builds prompts from
+  Tier 3 batches held out of every export (`pie.export.RL_HELDOUT_PREFIX = "rl6-"`, with a test).
+- **Shared reference.** A second full copy of the 120B as the KL reference peaked at 223 GB. Zeroing the LoRA
+  scales for the reference forward (`PIE_REF_SHARED=1`, grpo.py AdapterOff) gives the same reference at 138–154 GB.
+- **100 steps (one pass over 743 kept prompts), about 2 min a step, KL peaked at 0.10.** Validation 1 → 100:
+  English→PIE vocabulary 0.48 → 0.61 (only 9 prompts: noisy), dialogue 0.88 → 0.93, the rest flat. Frozen sets:
+  v1 flat (chrF 73.0 → 72.9; each drop one prompt), drills_v2 paradigm cells 0.887 → 0.898, inflection 0.885 both.
+- **Benchmark v2 (round 10): 87.7 lenient / 86.2 strict, against e3's 88.5 / 86.2.** EN→PIE strict 81.0 → 83.9,
+  paradigm 88.4 → 89.5, PIE→EN 88.7 → 85.1 (about 1.5 of 42 items), dialogue 87.1 → 85.5 (one of 64). A tie
+  within noise. Caveats: e3 was benchmarked in bf16 on Tinker, rl5 in the local 5-bit quant (e1 showed the quant
+  costs nothing measurable, 87.6 vs 87.1), and 89% of rl5's answers are word for word e3's. Lesson: RL on prompts
+  the model has memorized moves little; RL needs prompts it has not seen (stage 6).
+- **Never let two after_run.sh evals overlap.** Restarting run_rl5.sh left the earlier pipeline's after_run.sh
+  waiting; when the trainer exited both ran, two Nemotron copies OOMed Metal and one eval (drills_v2 base) was lost.
+  Kill the old pipeline's waiters when restarting a pipeline.
+- **zsh does not word-split `${x:+--flag $x}`:** it passes one argument "--flag value" (argparse: unrecognized
+  argument). Use arrays.
