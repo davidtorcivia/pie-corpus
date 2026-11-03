@@ -379,3 +379,24 @@ The resumed run finished at 00:22 (exit 0, final checkpoint at step 2505). Same 
   both translation directions slip. The translation and dialogue columns are 12–24 single-reference items each, so
   differences of 2–3 chrF are within noise; the v2 ablauting paradigm drop (73% → 65% of cells over 41 tables) is
   the most solid regression.
+
+## Nemotron 3.5 Super (VL, 120B-A12B) on Tinker: LR and optimizer sweep (2026-11-03)
+
+Six 150-step probes (training/tinker/sweep_nemotron.ps1, train_nemotron.py) on export 5b754f0 (train_mix_1103), each on
+the full run's 3-epoch cosine schedule, batch 64, scored by held-out NLL (eval_1103, forward pass only). The probes end
+at step 149, so the last held-out score is at step 100. Base: test NLL 1.20, bpb 1.02. About $15 for the sweep.
+
+| probe | test NLL @50 | test NLL @100 | bpb @100 | train NLL @149 |
+|---|---|---|---|---|
+| **Dimuon 8e-3, r16** | **0.338** | **0.280** | **0.235** | 0.298 |
+| AdamW 2e-4, r16 (the 35B's recipe) | 0.347 | 0.285 | 0.239 | 0.324 |
+| Dimuon 4e-3, r16 | 0.404 | 0.320 | 0.269 | 0.424 |
+| Dimuon 2e-3, r16 | 0.554 | 0.429 | 0.362 | 0.692 |
+| Dimuon 2e-3, r32 | 0.563 | 0.434 | 0.366 | 0.705 |
+| Dimuon 1e-3, r16 | 0.742 | 0.607 | 0.513 | 1.094 |
+
+- Dimuon's loss falls steadily as LR rises up to 8e-3 (40x the AdamW rate, against the docs' ~15x for SFT); its best
+  rate on this corpus may be higher still (untested, budget). It only edges AdamW 2e-4 at 8e-3.
+- Rank 32 = rank 16 at the same LR (0.434 vs 0.429): rank isn't the bottleneck here.
+- Short probes favour high LR. The full run (`nemotron35-super-dimuon-r16-lr8e-3-export1103`) saves each epoch, so an
+  earlier epoch can be kept if 8e-3 memorizes late.
