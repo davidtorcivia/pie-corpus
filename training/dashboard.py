@@ -110,9 +110,36 @@ def rl_run(d: Path) -> dict:
             except json.JSONDecodeError:
                 pass
     cfg = d / "config.yaml"
+    man = d / "manifest.json"
+    files = [f for f in d.rglob("*") if f.is_file()]
     return {"name": d.name, "metrics": read_jsonl(d / "metrics.jsonl"), "rewards": rewards, "evals": evals,
-            "val_strata": val_strata,
+            "val_strata": val_strata, "pipeline": rl_pipeline(d / "pipeline.log"),
+            "updated": max((f.stat().st_mtime for f in files), default=0),
+            "data": json.loads(man.read_text("utf-8")).get("passrate") if man.exists() else None,
             "config": cfg.read_text("utf-8") if cfg.exists() else ""}
+
+
+PASSRATE = re.compile(r"(\d+)/(\d+) candidates, (\d+) s, eta (\d+) min")
+
+
+def rl_pipeline(p: Path):
+    """The stage pipeline's log (run_rl5.sh and later, synced as pipeline.log): which phase it is in, and the prompt
+    filter's progress while it runs."""
+    if not p.exists():
+        return None
+    phase, prog = "starting", None
+    for line in p.read_text("utf-8", errors="replace").splitlines():
+        if line.endswith(" passrate"):
+            phase = "filtering"
+        elif m := PASSRATE.search(line):
+            prog = {"done": int(m[1]), "total": int(m[2]), "elapsed_s": int(m[3]), "eta_min": int(m[4])}
+        elif line.endswith(" train"):
+            phase = "training"
+        elif "waiting for the trainer" in line:
+            phase = "training"
+        elif line.endswith("pipeline done"):
+            phase = "done"
+    return {"phase": phase, "filter": prog, "tail": p.read_text("utf-8", errors="replace").splitlines()[-1:]}
 
 
 LOSS = re.compile(r"([A-Za-z0-9]+(?: [A-Za-z0-9]+)?) Loss: ([-0-9.e]+|nan)")
@@ -212,7 +239,8 @@ def make_handler(runs: Path, tinker: Path, rl: Path, tts=None):
             if u.path == "/api/tts":
                 return self.json(tts_status(tts) if tts else {})
             if u.path == "/api/rl":
-                return self.json([rl_run(d) for d in sorted(p for p in rl.iterdir() if p.is_dir())] if rl.is_dir() else [])
+                out = [rl_run(d) for d in rl.iterdir() if d.is_dir()] if rl.is_dir() else []
+                return self.json(sorted(out, key=lambda r: -r["updated"]))      # newest first
             if u.path == "/api/runs":
                 out = []
                 for d in sorted(p for p in runs.iterdir() if p.is_dir()):

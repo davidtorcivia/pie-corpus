@@ -204,7 +204,8 @@ def yaml_wins(argv: list[str]) -> list[str]:
 
 if __name__ == "__main__":
     sys.argv = [sys.argv[0]] + yaml_wins(sys.argv[1:])
-    log({"event": "start", "argv": sys.argv[1:]})
+    log({"event": "start", "argv": sys.argv[1:], "kl_stop": KL_STOP, "val_stop": VAL_STOP,
+         "reference": REF_ADAPTER or ("policy, LoRA off" if SHARED_REF else "base model")})
     try:
         tr.main()
         log({"event": "done"})
