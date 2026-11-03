@@ -54,11 +54,24 @@ def score(x: dict, completion: str, an) -> float | None:
     return reward_engine.score(completion, x["answer"], kind(x))
 
 
-def sample(model_dir: str, cands: list[dict], k: int, out: Path, batch: int, an, adapter: str | None = None):
+def sample(model_dir: str, cands: list[dict], k: int, out: Path, batch: int, an, adapter: str | None = None,
+           max_per_kind: int = 0):
     from mlx_lm import load
     from mlx_lm_lora.trainer.grpo_trainer import generate_grpo
     done = {json.loads(x)["i"] for x in out.read_text("utf-8").splitlines()} if out.exists() else set()
     todo = [(i, x) for i, x in enumerate(cands) if i not in done]
+    if max_per_kind:
+        # a strong model gets most drills right (Nemotron e3: 97% of inflections, 92% of paradigms always right), so
+        # sampling every candidate costs hours for few kept prompts: sample at most max_per_kind per kind (done first)
+        have = {}
+        for i in done:
+            have[kind(cands[i])] = have.get(kind(cands[i]), 0) + 1
+        rng, keep = random.Random(SEED), []
+        for i, x in rng.sample(todo, len(todo)):
+            if have.get(kind(x), 0) < max_per_kind:
+                have[kind(x)] = have.get(kind(x), 0) + 1
+                keep.append((i, x))
+        todo = sorted(keep)
     print(f"{len(done)} done, {len(todo)} to sample", flush=True)
     if not todo:
         return
@@ -130,13 +143,14 @@ def main():
     ap.add_argument("--n", type=int, default=4000)
     ap.add_argument("--batch", type=int, default=256, help="rollouts decoded together")
     ap.add_argument("--adapter", help="LoRA adapter dir on top of --model (the policy RL starts from)")
+    ap.add_argument("--max-per-kind", type=int, default=0, help="sample at most this many candidates per kind (0: all)")
     ap.add_argument("--mix", default="rl3", choices=sorted(SHARES), help="kind shares of train.jsonl")
     a = ap.parse_args()
     d = Path(a.data)
     cands = [json.loads(x) for x in (d / "candidates.jsonl").read_text("utf-8").splitlines() if x.strip()]
     from pie.translator.analyze import Analyzer
     an = Analyzer.load()
-    sample(a.model, cands, a.k, d / "passrate.jsonl", a.batch, an, a.adapter)
+    sample(a.model, cands, a.k, d / "passrate.jsonl", a.batch, an, a.adapter, a.max_per_kind)
     rates = {r["i"]: r["scores"] for r in map(json.loads, (d / "passrate.jsonl").read_text("utf-8").splitlines())}
     train, stats = select(cands, rates, a.n, SHARES[a.mix])
     (d / "train.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in train), "utf-8")

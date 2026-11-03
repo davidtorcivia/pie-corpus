@@ -11,7 +11,7 @@ BASE=$(awk '/^model:/{print $2}' $HERE/rl5.yaml)
 say() { echo "$(date '+%F %T') $*"; }
 mkdir -p $D5
 for f in candidates.jsonl valid.jsonl test.jsonl manifest.json; do [ -s $D5/$f ] || [ ! -f $D3/$f ] || cp $D3/$f $D5/$f; done
-[ -s $D5/train.jsonl ] || { say passrate; caffeinate -i $PY -I $HERE/passrate.py --model $BASE --data $D5 --mix rl3 --n 2000 --batch 256; }
+[ -s $D5/train.jsonl ] || { say passrate; caffeinate -i $PY -I $HERE/passrate.py --model $BASE --data $D5 --mix rl3 --n 2000 --batch 256 --max-per-kind 700; }
 pgrep -f "watch.sh $NAME" >/dev/null || { nohup $HERE/watch.sh $NAME > $RUNS/$NAME.watch.log 2>&1 & }
 if [ ! -f $RUNS/$NAME/pid ]; then
   say train
