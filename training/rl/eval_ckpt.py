@@ -31,6 +31,7 @@ def adapter_dir(ckpt: Path) -> str:
 
 
 RUNS = Path("/Users/david/AI/pie-runs/rl/runs")
+SSM_MODELS = {"nemotron_h", "mamba", "mamba2", "jamba", "falcon_h1", "granitemoehybrid"}  # Qwen3.5/3.6 hybrids (gated-delta layers) stay padded-batched as before, so earlier scores stay comparable; unchecked one at a time
 
 
 def live_trainers() -> list[str]:
@@ -54,6 +55,7 @@ def main():
     ap.add_argument("--max-new", type=int, default=384)
     ap.add_argument("--batch", type=int, default=64)
     ap.add_argument("--force", action="store_true", help="run even while an RL trainer is alive")
+    ap.add_argument("--same-length", action="store_true", help="batch only same-length prompts (no padding)")
     a = ap.parse_args()
     if (busy := live_trainers()) and not a.force:
         sys.exit(f"refusing: RL trainer running ({', '.join(busy)}); evaluate after it exits, or pass --force")
@@ -61,10 +63,24 @@ def main():
     gens = [json.loads(x) for x in Path(a.prompts).read_text("utf-8").splitlines() if x.strip()]
     prompts = [tok.apply_chat_template(g["prompt"], add_generation_prompt=True, tokenize=True, enable_thinking=False)
                for g in gens]
-    outs = []
-    for i in range(0, len(prompts), a.batch):
-        outs += batch_generate(model, tok, prompts[i:i + a.batch], max_tokens=a.max_new,
+    outs = [None] * len(prompts)
+    # Models with recurrent (Mamba/SSM) layers can't batch left-padded prompts: the pad tokens enter the recurrent
+    # state (2026-11-03, Nemotron 3.5 Super: 3/3 inflections right one at a time, 1/3 batched). For those, batch only
+    # prompts of the same token length, which need no padding. Attention-only models batch as before.
+    cfg = json.loads((Path(a.model) / "config.json").read_text())
+    if cfg.get("model_type") in SSM_MODELS or a.same_length:
+        groups = {}
+        for i, p in enumerate(prompts):
+            groups.setdefault(len(p), []).append(i)
+        chunks = [ix[j:j + a.batch] for ix in groups.values() for j in range(0, len(ix), a.batch)]
+        print(f"{cfg.get('model_type')}: {len(chunks)} same-length batches for {len(prompts)} prompts", flush=True)
+    else:
+        chunks = [list(range(i, min(i + a.batch, len(prompts)))) for i in range(0, len(prompts), a.batch)]
+    for ix in chunks:
+        texts = batch_generate(model, tok, [prompts[i] for i in ix], max_tokens=a.max_new,
                                completion_batch_size=a.batch, prefill_batch_size=a.batch).texts
+        for i, t in zip(ix, texts):
+            outs[i] = t
     rows = [{**{k: v for k, v in g.items() if k != "prompt"},
              "user": next((m["content"] for m in reversed(g["prompt"]) if m["role"] == "user"), ""),
              "output": o.split("</think>")[-1].strip()} for g, o in zip(gens, outs)]
