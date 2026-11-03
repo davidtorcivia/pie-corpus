@@ -149,6 +149,8 @@ def tts_stage(p: Path) -> dict:
         m = VAL.search(line)
         if m and out["points"]:
             out["val"].append({"epoch": out["points"][-1]["epoch"], "loss": float(m[1])})
+        if "resuming Stage 2" in line:                  # a resume: earlier errors and exit belong to the run before
+            out["errors"], out["exit"] = [], None
         if " EXIT " in line:
             out["exit"] = line.strip()
         if re.search(r"Traceback|OutOfMemory|CUDA error|Error:", line):
