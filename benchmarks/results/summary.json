@@ -819,6 +819,45 @@
   }
  },
  {
+  "contestant": "ours-nemotron35-e1-bf16",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 86.9,
+    "lenient": 87.8
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 84.6,
+    "lenient": 84.9
+   },
+   "en_pie": {
+    "n": 42,
+    "of": 42,
+    "strict": 81.0,
+    "lenient": 88.7
+   },
+   "pie_en": {
+    "n": 42,
+    "of": 42,
+    "strict": 88.1,
+    "lenient": 88.1
+   },
+   "dialogue": {
+    "n": 64,
+    "of": 64,
+    "strict": 81.2,
+    "lenient": 83.6
+   }
+  },
+  "pie_score": {
+   "strict": 84.2,
+   "lenient": 87.1
+  }
+ },
+ {
   "contestant": "ours-nemotron35-e2",
   "segments": {
    "inflection": {
@@ -855,6 +894,45 @@
   "pie_score": {
    "strict": 83.9,
    "lenient": 86.1
+  }
+ },
+ {
+  "contestant": "ours-nemotron35-e3-bf16",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 89.3,
+    "lenient": 89.9
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 88.4,
+    "lenient": 88.4
+   },
+   "en_pie": {
+    "n": 42,
+    "of": 42,
+    "strict": 81.0,
+    "lenient": 88.1
+   },
+   "pie_en": {
+    "n": 42,
+    "of": 42,
+    "strict": 88.7,
+    "lenient": 88.7
+   },
+   "dialogue": {
+    "n": 64,
+    "of": 64,
+    "strict": 87.1,
+    "lenient": 87.1
+   }
+  },
+  "pie_score": {
+   "strict": 86.2,
+   "lenient": 88.5
   }
  },
  {

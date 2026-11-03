@@ -400,3 +400,31 @@ at step 149, so the last held-out score is at step 100. Base: test NLL 1.20, bpb
 - Rank 32 = rank 16 at the same LR (0.434 vs 0.429): rank isn't the bottleneck here.
 - Short probes favour high LR. The full run (`nemotron35-super-dimuon-r16-lr8e-3-export1103`) saves each epoch, so an
   earlier epoch can be kept if 8e-3 memorizes late.
+
+## Nemotron 3.5 Super full run (2026-11-03)
+
+Run `nemotron35-super-dimuon-r16-lr8e-3-export1103`: Dimuon 8e-3, rank 16, batch 64, cosine over 3 epochs (2,514
+steps, ~5.6 s/step, ~5 h), about $41 of training (sweep included, ~$56). The first launch failed with Tinker 402 (free
+checkpoint storage full: the six sweep probes held 138 GB, Dimuon saves optimizer state); deleting them fixed it.
+
+Held-out NLL bottomed in epoch 1 (0.23–0.24 from step ~300) and rose after: epoch 2 ~0.25, epoch 3 ~0.31, with train
+NLL 0.20 → 0.04 → 0.006. The high LR memorizes from epoch 2 on.
+
+Deploy path (Mac): `build_text_base.py` (the VL checkpoint's language model alone: `language_model.` stripped, 396
+vision tensors dropped, 232 GB), then `deploy_nemotron.sh` (cookbook merge into it, a weight-change check, omlx oQ5e
+without MTP: 79 GB). Local evals through `eval_ckpt.py` needed a fix first: **batched generation with left padding
+corrupts Nemotron's Mamba state** (1 of 3 inflections right batched, 3 of 3 one at a time; the first e1 eval read chrF
+19.6). eval_ckpt now batches only same-length prompts for SSM-hybrid models (b8f3ca2). Qwen3.5/3.6 stay padded-batched
+as before so earlier scores remain comparable; they were never checked one at a time.
+
+| checkpoint | v1 chrF | v1 exact | v1 cells | drills chrF | drills exact | drills cells | benchmark (lenient / strict) |
+|---|---|---|---|---|---|---|---|
+| merge-half (35B, previous best) | 61.2 | 0.854 | 0.870 | 89.9 | 0.801 | 0.853 | 84.5 / 82.4 |
+| Nemotron e1, oQ5e (Mac) | 67.5 | 0.917 | 0.856 | 92.2 | 0.850 | 0.848 | **87.6 / 84.6** |
+| Nemotron e1, bf16 (Tinker) | 67.3 | 0.917 | 0.842 | 92.6 | 0.861 | 0.848 | round 8 |
+| Nemotron e2, oQ5e | 71.1 | 0.896 | 0.895 | 92.8 | 0.871 | 0.878 | 86.1 / 83.9 |
+| Nemotron e3, bf16 (Tinker) | 73.4 | 0.917 | 0.887 | 93.7 | 0.889 | 0.883 | round 9 |
+
+- The 5-bit quant costs nothing measurable (e1 oQ5e vs bf16 within noise).
+- Later epochs win the drills and lose EN→PIE: e2's EN→PIE fell 90.5 → 83.3 (the judged segment that weighs most).
+  Local drill scores don't pick the benchmark winner; judge each candidate.

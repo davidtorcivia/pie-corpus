@@ -1,0 +1,6 @@
+{
+ "generations": "/Users/david/AI/pie-runs/tinker/nemotron35-super-dimuon-r16-lr8e-3-export1103/eval-e3-bf16",
+ "checkpoint": "Nemotron 3.5 Super 120B-A12B, Tinker LoRA r16 Dimuon lr 8e-3, epoch 3 (final, step 2514), export 5b754f0; unquantized bf16 on Tinker",
+ "path": "training/tinker/tinker_gen.py (Tinker sampler), greedy, thinking off, cap 384",
+ "one item per call": true
+}
