@@ -12,7 +12,7 @@ BASE=/Users/david/AI/NVIDIA-Nemotron-3.5-Super-120B-A12B-BF16-text
 WORK=/Users/david/AI/pie-runs/tinker/$RUN
 ADAPTER=$WORK/$NAME
 MERGED=$WORK/PIE-nemotron35-$TAG
-export UV_CACHE_DIR=/tmp/pie-uv-cache
+export UV_CACHE_DIR=/Users/david/AI/pie-runs/uv-cache
 mkdir -p $WORK
 if [ ! -d $ADAPTER ]; then
   scp -rq "tr-desktop:Q:/AI/PIE/tinker/ckpt/$RUN/$NAME" $WORK/
