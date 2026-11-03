@@ -134,6 +134,9 @@ def tts_stage(p: Path) -> dict:
             e, ne, st, ns = map(int, m.groups())
             out["epochs"], out["steps_per_epoch"] = ne, ns
             losses = {k.strip(): (None if v == "nan" else float(v)) for k, v in LOSS.findall(line)}
+            m2 = re.search(r"\], Loss: ([-0-9.e]+|nan)", line)      # Stage 2 prints the mel loss as plain "Loss:"
+            if m2 and "Mel" not in losses:
+                losses["Mel"] = None if m2[1] == "nan" else float(m2[1])
             out["points"].append({"epoch": e, "step": st, "x": round(e - 1 + st / ns, 4), **losses})
             continue
         m = PIE_STEP.search(line)
