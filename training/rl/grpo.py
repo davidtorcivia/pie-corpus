@@ -98,6 +98,54 @@ if REF_ADAPTER:
     tr.load_reference_model = _load_ref
 
 
+SHARED_REF = not REF_ADAPTER and os.environ.get("PIE_REF_SHARED") == "1"
+
+
+class AdapterOff:
+    """The reference policy as the policy itself with every LoRA delta switched off: the base model, without a second
+    copy of it in memory. Nemotron 3.5 Super (79 GB at 5 bits) peaked at 223 GB with a separate reference, over the
+    Mac's 220 GB GPU limit (smoke test, 2026-11-03). The LoRA scale is a Python float read when the graph is built, so
+    zeroing it for the call removes the delta from exactly this forward pass; the trainer stops gradients through it."""
+
+    def __init__(self, model):
+        from mlx_lm.tuner.lora import LoRAEmbedding, LoRALinear, LoRASwitchLinear
+        self.model = model
+        self.loras = [m for _, m in model.named_modules() if isinstance(m, (LoRALinear, LoRASwitchLinear, LoRAEmbedding))]
+        assert self.loras, "no LoRA layers on the policy"
+
+    def __call__(self, *a, **k):
+        scales = [m.scale for m in self.loras]
+        for m in self.loras:
+            m.scale = 0.0
+        try:
+            return self.model(*a, **k)
+        finally:
+            for m, sc in zip(self.loras, scales):
+                m.scale = sc
+
+    def eval(self):
+        return self
+
+    def freeze(self, *a, **k):
+        return self
+
+
+if SHARED_REF:
+    _SENTINEL = object()
+    tr.load_reference_model = lambda args: (print("Reference: the policy with its LoRA off (PIE_REF_SHARED)"), _SENTINEL)[1]
+
+    def _shared(fn):
+        def wrapped(model, *a, **k):
+            if k.get("ref_model") is _SENTINEL:
+                k["ref_model"] = AdapterOff(model)
+            elif a and a[0] is _SENTINEL:
+                a = (AdapterOff(model),) + a[1:]
+            return fn(model, *a, **k)
+        return wrapped
+    tr.train_grpo = _shared(tr.train_grpo)
+    tr.evaluate_grpo = _shared(tr.evaluate_grpo)
+
+
 class Stop(Exception):
     pass
 

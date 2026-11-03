@@ -55,30 +55,30 @@ def score(x: dict, completion: str, an) -> float | None:
 
 
 def sample(model_dir: str, cands: list[dict], k: int, out: Path, batch: int, an, adapter: str | None = None):
-    from mlx_lm import batch_generate, load
-    from mlx_lm.sample_utils import make_sampler
+    from mlx_lm import load
+    from mlx_lm_lora.trainer.grpo_trainer import generate_grpo
     done = {json.loads(x)["i"] for x in out.read_text("utf-8").splitlines()} if out.exists() else set()
     todo = [(i, x) for i, x in enumerate(cands) if i not in done]
     print(f"{len(done)} done, {len(todo)} to sample", flush=True)
     if not todo:
         return
     model, tok = load(model_dir, adapter_path=adapter)   # the policy RL starts from (stage 4: base + merged adapter)
-    sampler = make_sampler(temp=1.0)
     t0, f = time.time(), out.open("a", encoding="utf-8")
-    per = max(1, batch // k)
+    d, per = 0, max(1, batch // k)
     for j in range(0, len(todo), per):
         chunk = todo[j:j + per]
         prompts = [tok.apply_chat_template([{"role": "system", "content": x["system"]}, {"role": "user", "content": x["prompt"]}],
                                            add_generation_prompt=True, tokenize=True, enable_thinking=False)
-                   for _, x in chunk for _ in range(k)]
-        texts = batch_generate(model, tok, prompts, max_tokens=384, sampler=sampler,
-                               completion_batch_size=len(prompts), prefill_batch_size=len(prompts)).texts
+                   for _, x in chunk]
+        # the trainer's own generation path: each prompt prefilled alone, its cache forked k times, decoding batched.
+        # No left padding, which corrupts recurrent-layer models (Nemotron's Mamba layers; eval_ckpt.batches)
+        texts = generate_grpo(model, tok, prompts, 384, k, len(prompts) * k, "", 1.0, 1.0, 0, 0.0)[1]   # one decode batch
         for n, (i, x) in enumerate(chunk):
             outs = texts[n * k:(n + 1) * k]
             f.write(json.dumps({"i": i, "type": x["type"], "scores": [score(x, o, an) for o in outs],
                                 "outputs": outs}, ensure_ascii=False) + "\n")
         f.flush()
-        d = j + len(chunk)
+        d += len(chunk)
         print(f"{d}/{len(todo)} candidates, {time.time() - t0:.0f} s, "
               f"eta {(time.time() - t0) / d * (len(todo) - d) / 60:.0f} min", flush=True)
 
