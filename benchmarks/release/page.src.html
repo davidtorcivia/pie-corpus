@@ -1,0 +1,271 @@
+<title>PIE Nemotron 120B</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Gentium+Book+Plus:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a single reading column (~1080px) that opens on the thesis and a specimen of the language, then one
+   figure per finding, each with its claim set above the chart, method and every number at the end. */
+:root {
+  --surface: #f6f7f9; --raised: #ffffff; --ink: #0d1117; --ink-2: #4a5160; --ink-3: #737b8a;
+  --rule: #e2e5ea; --rule-strong: #c2c8d1; --bar: #c8cdd5;
+  --c-nemotron: #2a78d6; --c-ours-soft: #86b6ef; --c-opus: #eb6834; --c-sol: #1baf7a; --c-qwen: #eda100;
+  --c-sonnet: #e87ba4; --c-terra: #008300; --c-haiku: #6250d6;
+  --lapis-wash: #e6effb;
+  --f-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --f-pie: "Gentium Book Plus", "Gentium Plus", "Charis SIL", "Noto Serif", Georgia, serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --surface: #0f1218; --raised: #161a22; --ink: #eef1f6; --ink-2: #aab2c0; --ink-3: #808899;
+  --rule: #232833; --rule-strong: #3b4251; --bar: #3a4150;
+  --c-nemotron: #3987e5; --c-ours-soft: #1c5cab; --c-opus: #d95926; --c-sol: #199e70; --c-qwen: #c98500;
+  --c-sonnet: #d55181; --c-terra: #008300; --c-haiku: #9085e9; --lapis-wash: #132036; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --surface: #0f1218; --raised: #161a22; --ink: #eef1f6; --ink-2: #aab2c0; --ink-3: #808899;
+  --rule: #232833; --rule-strong: #3b4251; --bar: #3a4150;
+  --c-nemotron: #3987e5; --c-ours-soft: #1c5cab; --c-opus: #d95926; --c-sol: #199e70; --c-qwen: #c98500;
+  --c-sonnet: #d55181; --c-terra: #008300; --c-haiku: #9085e9; --lapis-wash: #132036; color-scheme: dark }
+
+body { background: var(--surface); color: var(--ink); font: 16px/1.6 var(--f-body); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 22px; border-bottom: 1px solid var(--rule); font: 500 13px/1 var(--f-mono); letter-spacing: .04em; color: var(--ink-2); flex-wrap: wrap; }
+header.top b { color: var(--ink); font-weight: 500; }
+.hero { padding-block: 64px 40px; display: grid; gap: 28px; }
+.eyebrow { font: 500 13px/1.2 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--c-nemotron); }
+h1 { font: 700 clamp(40px, 7.4vw, 84px)/.98 var(--f-display); font-variation-settings: "opsz" 96; letter-spacing: -.02em; margin: 0; text-wrap: balance; max-width: 15ch; }
+.lede { font-size: clamp(17px, 2vw, 20px); line-height: 1.55; color: var(--ink-2); max-width: 62ch; margin: 0; }
+.lede b { color: var(--ink); font-weight: 600; }
+
+.specimen { margin-block: 8px 0; padding: 28px 28px 24px; background: var(--lapis-wash); border-radius: 6px; display: grid; gap: 14px; }
+.specimen .pie { font: 400 clamp(28px, 4.6vw, 50px)/1.15 var(--f-pie); letter-spacing: .005em; overflow-wrap: anywhere; }
+.specimen .en { font: italic 400 clamp(17px, 2vw, 21px)/1.4 var(--f-pie); color: var(--ink-2); }
+.specimen .meta { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; font-size: 14px; color: var(--ink-2); border-top: 1px solid var(--rule-strong); padding-top: 14px; }
+.specimen .meta dt { font: 500 12px/1.9 var(--f-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); }
+.specimen .meta dd { margin: 0; min-width: 0; }
+.specimen .meta .pie-s { font-family: var(--f-pie); font-size: 17px; color: var(--ink); }
+
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-block: 1px solid var(--rule); margin-block: 8px 0; }
+.stat { padding: 22px 20px 20px 0; display: grid; gap: 6px; align-content: start; }
+.stat + .stat { padding-left: 20px; border-left: 1px solid var(--rule); }
+.stat .n { font: 650 clamp(34px, 4.8vw, 52px)/1 var(--f-display); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.stat .n small { font-size: .45em; font-weight: 500; letter-spacing: 0; color: var(--ink-3); margin-left: 2px; }
+.stat .k { font-size: 14px; color: var(--ink-2); line-height: 1.4; }
+.stat.hero-stat .n { color: var(--c-nemotron); }
+@media (max-width: 760px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stat:nth-child(3) { padding-left: 0; border-left: 0; } .stat:nth-child(n+3) { border-top: 1px solid var(--rule); } }
+
+section.fig { padding-block: 56px 8px; display: grid; gap: 18px; }
+.fig-head { display: flex; justify-content: space-between; align-items: end; gap: 16px 24px; flex-wrap: wrap; }
+.fig-head > div { min-width: 0; max-width: 64ch; display: grid; gap: 8px; }
+.num { font: 500 12px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+h2 { font: 650 clamp(24px, 3.2vw, 34px)/1.12 var(--f-display); letter-spacing: -.02em; margin: 0; text-wrap: balance; }
+.fig-head p, .prose p { margin: 0; color: var(--ink-2); }
+.chart { position: relative; min-width: 0; }
+.chart svg { display: block; overflow: visible; max-width: 100%; height: auto; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: var(--ink-2); }
+.key { display: inline-flex; align-items: center; gap: 8px; }
+.key i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.seg-ctl { display: inline-flex; border: 1px solid var(--rule-strong); border-radius: 6px; padding: 2px; gap: 2px; }
+.seg-ctl button { font: 500 13px/1 var(--f-body); color: var(--ink-2); background: none; border: 0; border-radius: 4px; padding: 8px 12px; cursor: pointer; }
+.seg-ctl button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+.seg-ctl button:focus-visible { outline: 2px solid var(--c-nemotron); outline-offset: 2px; }
+.note { font-size: 13px; color: var(--ink-3); margin: 0; max-width: 80ch; }
+
+svg text { fill: var(--ink-2); font-family: var(--f-body); }
+svg .label { font-size: 14px; fill: var(--ink-2); }
+svg .label.ours { fill: var(--ink); }
+svg .label.strong, svg .val.strong { fill: var(--ink); font-weight: 600; }
+svg .val { font: 500 14px var(--f-mono); fill: var(--ink-2); font-variant-numeric: tabular-nums; }
+svg .small { font-size: 13px; }
+svg .axis { font: 400 12px var(--f-mono); fill: var(--ink-3); }
+svg .panel-title { font: 600 16px var(--f-display); fill: var(--ink); }
+svg .grid { stroke: var(--rule); stroke-width: 1; }
+svg .baseline { stroke: var(--rule-strong); stroke-width: 1; }
+svg .hit { fill: transparent; cursor: default; }
+svg .row.hero .label { fill: var(--ink); }
+.tip { position: fixed; left: 0; top: 0; z-index: 20; pointer-events: none; background: var(--raised); color: var(--ink); border: 1px solid var(--rule-strong); border-radius: 6px; padding: 10px 12px; box-shadow: 0 6px 24px rgb(0 0 0 / .12); display: grid; grid-template-columns: auto auto; gap: 3px 16px; font-size: 13px; max-width: 280px; }
+.tip b { grid-column: 1 / -1; font-weight: 600; margin-bottom: 2px; }
+.tip span { color: var(--ink-2); }
+.tip em { font: 500 13px var(--f-mono); font-style: normal; text-align: right; font-variant-numeric: tabular-nums; }
+
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; }
+@media (max-width: 820px) { .two { grid-template-columns: minmax(0, 1fr); gap: 24px; } }
+.spec { display: grid; grid-template-columns: minmax(0, 11em) minmax(0, 1fr); border-top: 1px solid var(--rule); margin: 0; }
+.spec dt, .spec dd { padding: 11px 0; border-bottom: 1px solid var(--rule); margin: 0; }
+.spec dt { font: 500 12px/1.9 var(--f-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); padding-right: 12px; }
+.spec dd { color: var(--ink); min-width: 0; }
+.spec dd small { color: var(--ink-3); font-size: 13px; }
+
+.table-wrap { overflow-x: auto; border-top: 1px solid var(--rule-strong); }
+table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 760px; }
+th, td { padding: 9px 10px; text-align: right; border-bottom: 1px solid var(--rule); white-space: nowrap; font-variant-numeric: tabular-nums; }
+th:first-child, td:first-child { text-align: left; padding-left: 0; }
+thead th { font: 500 11px/1.3 var(--f-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); vertical-align: bottom; }
+td { font-family: var(--f-mono); font-size: 13px; color: var(--ink-2); }
+td:first-child { font-family: var(--f-body); font-size: 14px; color: var(--ink); }
+td .s { color: var(--ink-3); }
+tr.ours td:first-child { font-weight: 600; }
+tr.hero td { background: var(--lapis-wash); color: var(--ink); }
+td.score { color: var(--ink); font-weight: 500; }
+
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.gallery figure { margin: 0; display: grid; gap: 8px; }
+.gallery img { width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--rule); display: block; }
+.gallery figcaption { font: 400 12px/1.4 var(--f-mono); color: var(--ink-3); overflow-wrap: anywhere; }
+footer { margin-top: 72px; padding-block: 28px 48px; border-top: 1px solid var(--rule); color: var(--ink-3); font-size: 13px; display: grid; gap: 10px; }
+footer p { margin: 0; max-width: 90ch; }
+@media (prefers-reduced-motion: no-preference) { .chart svg path, .chart svg circle { transition: opacity .2s; } }
+</style>
+
+<div class="wrap">
+  <header class="top"><span><b>PIE</b> · Proto-Indo-European language model</span><span>Benchmark v2 · 3 Nov 2026</span></header>
+
+  <section class="hero">
+    <div class="eyebrow">Release · PIE Nemotron 120B</div>
+    <h1>A model that speaks Proto&#8209;Indo&#8209;European.</h1>
+    <p class="lede"><b>PIE Nemotron 120B</b> is NVIDIA's Nemotron 3.5 Super fine-tuned on a reconstructed corpus of the language. On our pre-registered benchmark it scores <b>88.5</b>, ahead of every frontier model we tested at every reasoning setting. In the project's exact notation it scores <b>86.2</b>, where the best frontier run reaches 56.5.</p>
+    <figure class="specimen" aria-label="Example translation">
+      <div class="pie">h₁wr̥Héwih₂ nos dʰéǵʰōm bʰéreti.</div>
+      <div class="en">“The broad earth bears us.”</div>
+      <dl class="meta">
+        <dt>Ours</dt><dd>Word for word the reference, on a held-out English → PIE item. Both judges: right, notation correct.</dd>
+        <dt>Opus 5.5 xhigh</dt><dd><span class="pie-s">pl̥th₂wíh₂ dʰéǵʰōm n̥smé bʰéreti.</span> Right meaning; outside the project's notation, so it scores 0 strict.</dd>
+      </dl>
+    </figure>
+    <div class="stats">
+      <div class="stat hero-stat"><div class="n">88.5</div><div class="k">PIE score, lenient: the benchmark's headline</div></div>
+      <div class="stat"><div class="n">86.2</div><div class="k">PIE score, strict: exact project notation</div></div>
+      <div class="stat"><div class="n">+2.5</div><div class="k">over the best frontier run, Claude Opus 5.5 at xhigh</div></div>
+      <div class="stat"><div class="n">79<small>GB</small></div><div class="k">at 5 bits, served on one Mac; the quant scored the same as bf16</div></div>
+    </div>
+  </section>
+
+  <section class="fig" id="leaderboard">
+    <div class="fig-head">
+      <div><span class="num">Figure 1 · PIE score</span><h2>First on the benchmark, ahead of Opus and GPT at their highest settings</h2>
+        <p>Weighted mean of five skills, 0–100, lenient (notation forgiven, grammar not). Each frontier model at its best reasoning effort.</p></div>
+      <div class="seg-ctl" role="group" aria-label="Rows"><button id="lb-best" aria-pressed="true">Best per model</button><button id="lb-all" aria-pressed="false">All 26 runs</button></div>
+    </div>
+    <div class="chart" id="c-leaderboard"></div>
+  </section>
+
+  <section class="fig" id="skills">
+    <div class="fig-head">
+      <div><span class="num">Figure 2 · By skill</span><h2>The lead comes from the grammar</h2>
+        <p>Frontier models translate well into English and hold a conversation. They miss the forms themselves: one inflected word, or a full paradigm. Our model is level across all five.</p></div>
+      <div class="seg-ctl" role="group" aria-label="Scoring"><button id="sg-l" aria-pressed="true">Lenient</button><button id="sg-s" aria-pressed="false">Strict</button></div>
+    </div>
+    <div class="legend" id="l-segments"></div>
+    <div class="chart" id="c-segments"></div>
+  </section>
+
+  <section class="fig" id="notation">
+    <div class="fig-head">
+      <div><span class="num">Figure 3 · Notation</span><h2>Frontier models lose 25 to 37 points to notation</h2>
+        <p>Strict scoring wants the project's own forms: accents, laryngeals and endings as written. Our models lose about 2 points to it. The frontier models know much of the grammar but not this standard.</p></div>
+    </div>
+    <div class="chart" id="c-notation"></div>
+  </section>
+
+  <section class="fig" id="effort">
+    <div class="fig-head">
+      <div><span class="num">Figure 4 · Reasoning effort</span><h2>More thinking helps the frontier models, up to a point</h2>
+        <p>Every Claude and GPT model at each reasoning effort we ran. Opus 5.5 gains 24 points from low to xhigh and stops 2.5 short of ours, which answers without a thinking phase.</p></div>
+    </div>
+    <div class="chart" id="c-effort"></div>
+  </section>
+
+  <section class="fig" id="progress">
+    <div class="fig-head">
+      <div><span class="num">Figure 5 · Our models</span><h2>Two base models, seven checkpoints</h2>
+        <p>Qwen 3.6 35B reached 84.5 after supervised training, RL and a merge of two RL runs. Moving to Nemotron 3.5 Super cleared the best frontier run in its first epoch.</p></div>
+    </div>
+    <div class="chart" id="c-progress"></div>
+  </section>
+
+  <section class="fig" id="built">
+    <div class="fig-head"><div><span class="num">Model</span><h2>How it was built</h2></div></div>
+    <div class="two">
+      <dl class="spec">
+        <dt>Base</dt><dd>NVIDIA Nemotron 3.5 Super 120B-A12B <small>hybrid Mamba–attention mixture of experts, 12B active</small></dd>
+        <dt>Method</dt><dd>LoRA rank 16, Tinker's Dimuon optimizer, lr 8e-3 <small>chosen by a six-probe sweep</small></dd>
+        <dt>Data</dt><dd>42,932 conversations, 10.8M tokens per epoch, 3 epochs <small>2,514 steps of 64</small></dd>
+        <dt>Compute</dt><dd>About $41 of training on Tinker</dd>
+        <dt>Serving</dt><dd>5-bit, 79 GB, on one Mac <small>thinking off; greedy decoding for the benchmark</small></dd>
+      </dl>
+      <div class="prose" style="display:grid;gap:14px">
+        <p>The corpus is reconstructed Proto-Indo-European written to one consistent standard: inflection drills from the project's morphology engine, paradigms, translations both ways, and dialogue set in the speakers' own world. Its forms are checked against the engine.</p>
+        <p>The checkpoint with the best held-out loss was epoch 1, yet epoch 3 won the benchmark. We now judge every epoch on the benchmark rather than trusting the loss.</p>
+        <p>Reinforcement learning on top of epoch 3 is under way, rewarded by the engine and a Claude judge.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fig" id="method">
+    <div class="fig-head"><div><span class="num">Method</span><h2>The benchmark</h2>
+      <p>Pre-registered on 1 November 2026, before any contestant ran. 607 items, none of them in any training data.</p></div></div>
+    <div class="two">
+      <dl class="spec">
+        <dt>Inflection · 20</dt><dd>335 items. One form, exact match to the engine.</dd>
+        <dt>Paradigms · 15</dt><dd>124 items. Share of the table's cells given right.</dd>
+        <dt>EN → PIE · 30</dt><dd>42 items. Judged: does the PIE say what the English says?</dd>
+        <dt>PIE → EN · 20</dt><dd>42 items. Judged: does the English say what the PIE says?</dd>
+        <dt>Dialogue · 15</dt><dd>64 items. Judged: an in-world, grammatical PIE reply.</dd>
+      </dl>
+      <div class="prose" style="display:grid;gap:14px">
+        <p><b>Two judges from two vendors</b>, so no vendor grades its own models alone: Claude Opus 5.5 and GPT-6.1 Sol, both at high effort, both with the project's engine and corpus tools and the reference answer. A segment's score is the mean of the two.</p>
+        <p><b>Lenient</b> forgives notation only: accents, vowel length, ASCII spellings and case. A wrong ending is still wrong. <b>Strict</b> also requires every word to be a real form in the project's notation.</p>
+        <p>Frontier models answered from their weights alone: no tools, no web, no project files. Weights by segment favor English → PIE, the main use of the translation app.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fig" id="results">
+    <div class="fig-head"><div><span class="num">Data</span><h2>Every run</h2><p>Lenient score, with strict in grey beside it.</p></div></div>
+    <div class="table-wrap"><table id="t-all"></table></div>
+  </section>
+
+  <section class="fig" id="images">
+    <div class="fig-head"><div><span class="num">Press kit</span><h2>Release images</h2><p>Each figure at 3200 × 1800, in light and dark. Open one to view it at full size.</p></div></div>
+    <div class="gallery" id="gallery"></div>
+  </section>
+
+  <footer>
+    <p>The benchmark is this project's own, and our models were trained on its notation and corpus (the test items were held out). The strict score therefore favors them by design; the lenient score, which forgives notation, is the headline.</p>
+    <p>PIE Nemotron 120B e3 and e1 were scored unquantized (bf16). Epoch 1 at 5 bits scored 87.6 against 87.1 unquantized. The Qwen models and Nemotron epoch 2 were scored at 5 bits.</p>
+  </footer>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script>
+/*__DATA__*/
+/*__CHARTS__*/
+const IMAGES = ["leaderboard", "segments", "notation", "effort", "progress"];
+const state = { lb: "best", seg: "lenient" };
+const $ = id => document.getElementById(id);
+function draw() {
+  const w = el => Math.max(300, Math.floor(el.clientWidth));
+  const narrow = $("c-leaderboard").clientWidth < 560;
+  $("c-leaderboard").innerHTML = leaderboard(w($("c-leaderboard")), state.lb, { labelW: narrow ? 170 : 260 });
+  $("c-segments").innerHTML = segments(w($("c-segments")), state.seg);
+  $("c-notation").innerHTML = notation(w($("c-notation")), { labelW: narrow ? 150 : 260 });
+  $("c-effort").innerHTML = effort(w($("c-effort")), { gutter: narrow ? 128 : 172, H: narrow ? 320 : 400 });
+  $("c-progress").innerHTML = progress(w($("c-progress")), { H: narrow ? 300 : 360 });
+}
+function press(on, off, key, val) { $(on).setAttribute("aria-pressed", "true"); $(off).setAttribute("aria-pressed", "false"); state[key] = val; draw(); }
+$("lb-best").onclick = () => press("lb-best", "lb-all", "lb", "best");
+$("lb-all").onclick = () => press("lb-all", "lb-best", "lb", "all");
+$("sg-l").onclick = () => press("sg-l", "sg-s", "seg", "lenient");
+$("sg-s").onclick = () => press("sg-s", "sg-l", "seg", "strict");
+$("l-segments").innerHTML = legend(SEG_RUNS);
+$("t-all").innerHTML = `<thead><tr><th>Model</th><th>PIE score</th>${SEGS.map(g => `<th>${g.label}<br>· ${g.w}</th>`).join("")}</tr></thead><tbody>` +
+  DATA.runs.map(r => `<tr class="${r.ours ? "ours" : ""}${r.id === HERO ? " hero" : ""}"><td>${esc(r.name)}</td><td class="score">${f1(r.L)} <span class="s">${f1(r.S)}</span></td>` +
+    SEGS.map(g => `<td>${f1(r.seg[g.k][0])} <span class="s">${f1(r.seg[g.k][1])}</span></td>`).join("") + `</tr>`).join("") + `</tbody>`;
+$("gallery").innerHTML = IMAGES.flatMap(n => ["light", "dark"].map(t =>
+  `<figure><a href="img/${n}-${t}.png" target="_blank" rel="noopener"><img src="img/${n}-${t}.png" alt="Figure: ${n}, ${t} theme" loading="lazy" width="3200" height="1800"></a><figcaption>${n}-${t}.png</figcaption></figure>`)).join("");
+draw();
+let raf; new ResizeObserver(() => { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); }).observe($("c-leaderboard"));
+attachTips(document.body, $("tip"));
+if (document.fonts) document.fonts.ready.then(draw);
+</script>

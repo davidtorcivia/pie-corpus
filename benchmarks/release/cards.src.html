@@ -1,0 +1,65 @@
+<!doctype html><html><head><meta charset="utf-8"><title>PIE release cards</title>
+<style>
+@font-face { font-family: "Bricolage Grotesque"; src: url("fonts/Bricolage.ttf"); font-weight: 200 800; }
+@font-face { font-family: "IBM Plex Sans"; src: url("fonts/PlexSans.ttf"); font-weight: 100 700; }
+@font-face { font-family: "IBM Plex Mono"; src: url("fonts/IBMPlexMono-Regular.ttf"); font-weight: 400; }
+@font-face { font-family: "IBM Plex Mono"; src: url("fonts/IBMPlexMono-Medium.ttf"); font-weight: 500; }
+@font-face { font-family: "Gentium Book Plus"; src: url("fonts/GentiumBookPlus-Regular.ttf"); }
+:root {
+  --surface: #f6f7f9; --raised: #fff; --ink: #0d1117; --ink-2: #4a5160; --ink-3: #737b8a;
+  --rule: #e2e5ea; --rule-strong: #c2c8d1; --bar: #c8cdd5;
+  --c-nemotron: #2a78d6; --c-ours-soft: #86b6ef; --c-opus: #eb6834; --c-sol: #1baf7a; --c-qwen: #eda100;
+  --c-sonnet: #e87ba4; --c-terra: #008300; --c-haiku: #6250d6; --lapis-wash: #e6effb;
+}
+:root[data-theme="dark"] {
+  --surface: #0f1218; --raised: #161a22; --ink: #eef1f6; --ink-2: #aab2c0; --ink-3: #808899;
+  --rule: #232833; --rule-strong: #3b4251; --bar: #3a4150;
+  --c-nemotron: #3987e5; --c-ours-soft: #1c5cab; --c-opus: #d95926; --c-sol: #199e70; --c-qwen: #c98500;
+  --c-sonnet: #d55181; --c-terra: #008300; --c-haiku: #9085e9; --lapis-wash: #132036; color-scheme: dark; }
+html, body { margin: 0; width: 1600px; height: 900px; overflow: hidden; background: var(--surface); color: var(--ink); -webkit-font-smoothing: antialiased; }
+.card { box-sizing: border-box; width: 1600px; height: 900px; padding: 64px 96px 52px; display: flex; flex-direction: column; gap: 0; position: relative; }
+.card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 10px; background: var(--c-nemotron); }
+.eyebrow { font: 500 17px/1 "IBM Plex Mono", monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--c-nemotron); }
+h1 { font: 700 54px/1.04 "Bricolage Grotesque", sans-serif; font-variation-settings: "opsz" 96; letter-spacing: -.012em; margin: 18px 0 12px; max-width: 1180px; text-wrap: balance; }
+.sub { font: 400 22px/1.4 "IBM Plex Sans", sans-serif; color: var(--ink-2); margin: 0; max-width: 78ch; }
+.legend { display: flex; gap: 28px; margin-top: 26px; font: 400 20px "IBM Plex Sans", sans-serif; color: var(--ink-2); }
+.key { display: inline-flex; align-items: center; gap: 10px; } .key i { width: 16px; height: 16px; border-radius: 4px; display: inline-block; }
+.chart { flex: 1; display: flex; align-items: center; margin-top: 24px; min-height: 0; }
+.foot { display: flex; justify-content: space-between; font: 400 16px "IBM Plex Mono", monospace; color: var(--ink-3); border-top: 1px solid var(--rule); padding-top: 18px; }
+.foot b { color: var(--ink); font-weight: 500; }
+svg { overflow: visible; display: block; }
+svg text { fill: var(--ink-2); font-family: "IBM Plex Sans", sans-serif; }
+svg .label { font-size: 22px; } svg .label.ours { fill: var(--ink); }
+svg .label.strong, svg .val.strong { fill: var(--ink); font-weight: 600; }
+svg .val { font: 500 22px "IBM Plex Mono", monospace; }
+svg .small { font-size: 19px; }
+svg .axis { font: 400 16px "IBM Plex Mono", monospace; fill: var(--ink-3); }
+svg .panel-title { font: 650 26px "Bricolage Grotesque", sans-serif; fill: var(--ink); }
+svg .grid { stroke: var(--rule); stroke-width: 1.5; } svg .baseline { stroke: var(--rule-strong); stroke-width: 1.5; }
+svg .hit { fill: transparent; }
+</style></head><body>
+<div class="card"><div class="eyebrow" id="eb"></div><h1 id="h"></h1><p class="sub" id="sub"></p><div class="legend" id="lg"></div><div class="chart" id="c"></div>
+<div class="foot"><span><b>PIE Nemotron 120B</b> · Proto-Indo-European benchmark v2 · 3 Nov 2026</span><span id="src">607 held-out items · two judges (Claude Opus 5.5, GPT-6.1 Sol)</span></div></div>
+<script>
+/*__DATA__*/
+/*__CHARTS__*/
+const [name, theme] = location.hash.slice(1).split("-");
+if (theme === "dark") document.documentElement.setAttribute("data-theme", "dark");
+const W = 1408;
+const CARDS = {
+  leaderboard: ["PIE score · lenient", "PIE Nemotron 120B is first on the Proto-Indo-European benchmark",
+    "Weighted mean of five skills, 0–100. Each frontier model at its best reasoning effort.", () => leaderboard(W, "best", { rowH: 62, labelW: 360 })],
+  segments: ["By skill · lenient", "The lead comes from the grammar",
+    "Frontier models translate into English and converse well, but miss the forms themselves. Ours is level across all five.", () => segments(W, "lenient", { cols: 5, barH: 50, head: 92, vw: 76 }), true],
+  notation: ["Strict vs lenient", "Frontier models lose 25 to 37 points to notation",
+    "Strict scoring wants the project's exact forms: accents, laryngeals and endings as written.", () => notation(W, { rowH: 60, labelW: 360, lgap: 110 })],
+  effort: ["Reasoning effort", "More thinking helps the frontier models, up to a point",
+    "Lenient PIE score of every Claude and GPT model at each reasoning effort, against ours with thinking off.", () => effort(W, { H: 520, gutter: 300 })],
+  progress: ["Our models", "Two base models, seven checkpoints",
+    "Lenient PIE score of each checkpoint in training order. Nemotron cleared the best frontier run in its first epoch.", () => progress(W, { H: 520 })],
+};
+const c = CARDS[name];
+document.getElementById("eb").textContent = c[0]; document.getElementById("h").textContent = c[1]; document.getElementById("sub").textContent = c[2];
+if (c[4]) document.getElementById("lg").innerHTML = legend(SEG_RUNS); else document.getElementById("lg").remove();
+document.fonts.ready.then(() => { document.getElementById("c").innerHTML = c[3](); document.body.dataset.ready = "1"; });
+</script></body></html>
