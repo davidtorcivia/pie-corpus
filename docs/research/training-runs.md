@@ -421,10 +421,14 @@ as before so earlier scores remain comparable; they were never checked one at a 
 |---|---|---|---|---|---|---|---|
 | merge-half (35B, previous best) | 61.2 | 0.854 | 0.870 | 89.9 | 0.801 | 0.853 | 84.5 / 82.4 |
 | Nemotron e1, oQ5e (Mac) | 67.5 | 0.917 | 0.856 | 92.2 | 0.850 | 0.848 | **87.6 / 84.6** |
-| Nemotron e1, bf16 (Tinker) | 67.3 | 0.917 | 0.842 | 92.6 | 0.861 | 0.848 | round 8 |
+| Nemotron e1, bf16 (Tinker) | 67.3 | 0.917 | 0.842 | 92.6 | 0.861 | 0.848 | 87.1 / 84.2 |
 | Nemotron e2, oQ5e | 71.1 | 0.896 | 0.895 | 92.8 | 0.871 | 0.878 | 86.1 / 83.9 |
-| Nemotron e3, bf16 (Tinker) | 73.4 | 0.917 | 0.887 | 93.7 | 0.889 | 0.883 | round 9 |
+| **Nemotron e3, bf16 (Tinker)** | 73.4 | 0.917 | 0.887 | 93.7 | 0.889 | 0.883 | **88.5 / 86.2** |
+| Nemotron e3, oQ5e (Mac) | 73.0 | 0.917 | 0.887 | 93.6 | 0.885 | 0.888 | (= bf16 locally) |
 
 - The 5-bit quant costs nothing measurable (e1 oQ5e vs bf16 within noise).
 - Later epochs win the drills and lose EN→PIE: e2's EN→PIE fell 90.5 → 83.3 (the judged segment that weighs most).
   Local drill scores don't pick the benchmark winner; judge each candidate.
+- **Epoch 3 is the model of record** (PIE-nemotron35-e3-oQ5e on the Mac): best on every segment but EN→PIE, where it
+  ties epoch 1 (88.1 vs 88.7 bf16). Held-out NLL (0.31, the worst of the three) would have picked epoch 1: for this
+  corpus it is not a stopping signal. Tinker spend for the night: ~$56 of $65 (sweep ~$15, run ~$41, sampling <$1).
