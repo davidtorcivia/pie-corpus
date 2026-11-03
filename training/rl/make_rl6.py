@@ -38,7 +38,9 @@ from pie.export import RL_HELDOUT_PREFIX, record_style  # noqa: E402
 from make_rl_prompts import item  # noqa: E402
 
 VALID_SHARE = 0.2
-VALID_PER_KIND = {"translate_en_pie": 56, "translate_pie_en": 48, "dialogue": 40, "inflect": 24, "paradigm": 16}   # 184
+VALID_PER_KIND = {"translate_en_pie": 56, "translate_pie_en": 48, "dialogue": 40, "inflect": 24, "paradigm": 16,
+                  "vocab_en_pie": 32, "vocab_pie_en": 16}   # 232
+VOCAB = ("vocab_en_pie", "vocab_pie_en")
 MAX_WORDS = 35
 RL5 = Path("/Users/david/AI/pie-runs/rl/data/rl5")
 
@@ -144,13 +146,29 @@ def main():
     # owner, 2026-11-03: "we can still keep anything the model gets wrong": stage 5's kept translation and dialogue
     # prompts are in the SFT data, but e3 missed each at least once in 4 samples, so they still teach
     for x in map(json.loads, (RL5 / "train.jsonl").read_text("utf-8").splitlines()):
-        if x["type"].split("|")[0] in ("inflect", "paradigm", "translate_en_pie", "translate_pie_en", "dialogue"):
+        if x["type"].split("|")[0] in ("inflect", "paradigm", "translate_en_pie", "translate_pie_en", "dialogue", *VOCAB):
             cand.append(x)
             stats[f"cand:{x['type'].split('|')[0]}"] += 1
     for x in map(json.loads, (RL5 / "valid.jsonl").read_text("utf-8").splitlines()):
-        if x["type"].split("|")[0] in ("v.inflect", "v.paradigm"):
+        if x["type"].split("|")[0] in ("v.inflect", "v.paradigm", *(f"v.{k}" for k in VOCAB)):
             valid.append(x)
             stats[f"valid:{x['type'].split('|')[0][2:]}"] += 1
+    # vocabulary (2026-11-03): English->PIE word recall was stage 5's one moving skill (0.48 -> 0.61 at step 50, on
+    # 9 held-out prompts), so stage 6 keeps drilling it. Stage 5's vocabulary candidates it never trained on split by
+    # lemma: valid-hashed lemmas are held out (and never train), the rest are candidates beside stage 5's kept ones.
+    trained = {x["source_id"] for x in map(json.loads, (RL5 / "train.jsonl").read_text("utf-8").splitlines())}
+    have = {x["prompt"] for x in cand}
+    for x in map(json.loads, (RL5 / "candidates.jsonl").read_text("utf-8").splitlines()):
+        k = x["type"].split("|")[0]
+        if k not in VOCAB or x["prompt"] in have:
+            continue
+        if is_valid(x["source_id"]) and x["source_id"] not in trained:
+            x["type"] = "v." + x["type"]
+            valid.append(x)
+            stats[f"valid:{k}"] += 1
+        elif not is_valid(x["source_id"]):
+            cand.append(x)
+            stats[f"cand:{k}"] += 1
     rng = random.Random(20261103)
     rng.shuffle(cand)
     rng.shuffle(valid)

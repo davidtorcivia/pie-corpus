@@ -33,9 +33,9 @@ SHARES = {"rl3": SHARE,
           "rl4": {"inflect": 0.22, "paradigm": 0.13, "translate_en_pie": 0.30, "translate_pie_en": 0.12,
                   "vocab_en_pie": 0.04, "vocab_pie_en": 0.04, "dialogue": 0.15},
           # stage 6 (2026-11-03): translation and dialogue from the held-out rl6 batches (make_rl6.py), where the
-          # frontier models still lead, with stage 5's drills as anchors
-          "rl6": {"translate_en_pie": 0.33, "translate_pie_en": 0.22, "dialogue": 0.25, "inflect": 0.12,
-                  "paradigm": 0.08}}
+          # frontier models still lead, with stage 5's drills as anchors; vocabulary, stage 5's one moving skill, back
+          "rl6": {"translate_en_pie": 0.30, "translate_pie_en": 0.18, "dialogue": 0.22, "inflect": 0.10,
+                  "paradigm": 0.06, "vocab_en_pie": 0.10, "vocab_pie_en": 0.04}}
 SEED = 20261101
 
 
