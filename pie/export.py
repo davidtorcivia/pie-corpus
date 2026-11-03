@@ -61,6 +61,18 @@ COGNATE_LANGS = ["Sanskrit", "Ancient Greek", "Latin", "Proto-Germanic", "Hittit
 EVAL_DRILL_SHARE = 0.05
 
 
+# Tier 3 batches written as RL prompts and RL validation (training/rl/make_rl6.py, 2026-11-03): never exported for
+# training, whatever their review status, so the RL reward and validation see text no fine-tune has seen
+RL_HELDOUT_PREFIX = "rl6-"
+
+
+def rl_holdout(batch: str, decision: dict) -> dict:
+    """A batch's release decision with the RL hold-out applied: an rl6-* batch is never admitted."""
+    if batch.startswith(RL_HELDOUT_PREFIX):
+        return {**decision, "admitted": False, "reasons": [*decision.get("reasons", []), "RL hold-out: never training data"]}
+    return decision
+
+
 def eval_drill(lex_id: str | None) -> bool:
     """Do this lexeme's inflection and cognate tasks go to eval? A stable sha256 rank under EVAL_DRILL_SHARE.
     The lexeme itself stays trainable everywhere else (texts, slices, translation)."""
@@ -339,7 +351,7 @@ def build(root: Path = ROOT, include_pilot: bool = False, seed: int = 0,
     persona_excluded = set(json.loads((Path(root) / "data/export/persona_excluded.json").read_text("utf-8"))["records"]) \
         if (Path(root) / "data/export/persona_excluded.json").exists() else set()
     for f in sorted((root / "corpus" / "tier3").glob("*.jsonl")):
-        decision = batch_eligibility(root, f.stem, experimental=experimental_batches)
+        decision = rl_holdout(f.stem, batch_eligibility(root, f.stem, experimental=experimental_batches))
         if f.name.startswith("pilot") and not include_pilot:
             decision = {**decision, "admitted": False,
                         "reasons": [*decision["reasons"], "pilot not requested"]}

@@ -119,3 +119,12 @@ def test_dialogue_local_checks():
     assert r.local_dialogue("h₁nómn̥ h₁ésti.\nEnglish: It is a name.", a, an) == 0.0
     assert r.local_dialogue("In Proto-Indo-European, fame is ḱléwos.", a, an) == 0.0
     assert r.local_dialogue("ḱléwos h₁nómn̥ h₁ésti.", a, an) is None
+
+
+def test_rl6_batches_never_admitted_to_training():
+    """The rl6-* batches are RL prompts and RL validation (training/rl/make_rl6.py): even an approved, passing one
+    stays out of every training export, so the RL validation measures unseen text."""
+    from pie.export import rl_holdout
+    approved = {"batch": "x", "admitted": True, "reasons": []}
+    assert rl_holdout("rl6-001", approved)["admitted"] is False
+    assert rl_holdout("t110", approved)["admitted"] is True

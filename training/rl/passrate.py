@@ -31,7 +31,11 @@ SHARES = {"rl3": SHARE,
           # stage 4 (2026-11-02): what slipped in stage 3 up (EN→PIE, the benchmark's heaviest segment; inflection;
           # paradigms), dialogue and PIE→EN kept as anchors, the mostly zero-variance vocabulary drills down
           "rl4": {"inflect": 0.22, "paradigm": 0.13, "translate_en_pie": 0.30, "translate_pie_en": 0.12,
-                  "vocab_en_pie": 0.04, "vocab_pie_en": 0.04, "dialogue": 0.15}}
+                  "vocab_en_pie": 0.04, "vocab_pie_en": 0.04, "dialogue": 0.15},
+          # stage 6 (2026-11-03): translation and dialogue from the held-out rl6 batches (make_rl6.py), where the
+          # frontier models still lead, with stage 5's drills as anchors
+          "rl6": {"translate_en_pie": 0.33, "translate_pie_en": 0.22, "dialogue": 0.25, "inflect": 0.12,
+                  "paradigm": 0.08}}
 SEED = 20261101
 
 
