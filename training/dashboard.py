@@ -130,10 +130,15 @@ def tts_stage(p: Path) -> dict:
     lines = p.read_text("utf-8", errors="replace").splitlines()
     # the Stage 2 hand-off writes its smoke test's last lines before the real run's: parse only the real run
     start = max((i for i, l in enumerate(lines) if "starting Stage 2" in l), default=-1) + 1
+    resumed = False
     for line in lines[start:]:
         m = STEP.search(line)
         if m:
             e, ne, st, ns = map(int, m.groups())
+            if resumed:                                 # a resume redoes epoch e: drop what crashed attempts logged from it
+                for k in ("points", "timing", "val"):
+                    out[k] = [q for q in out[k] if q["epoch"] < e]
+                resumed = False
             out["epochs"], out["steps_per_epoch"] = ne, ns
             losses = {k.strip(): (None if v == "nan" else float(v)) for k, v in LOSS.findall(line)}
             m2 = re.search(r"\], Loss: ([-0-9.e]+|nan)", line)      # Stage 2 prints the mel loss as plain "Loss:"
@@ -151,6 +156,7 @@ def tts_stage(p: Path) -> dict:
             out["val"].append({"epoch": out["points"][-1]["epoch"], "loss": float(m[1])})
         if "resuming Stage 2" in line:                  # a resume: earlier errors and exit belong to the run before
             out["errors"], out["exit"] = [], None
+            resumed = True
         if " EXIT " in line:
             out["exit"] = line.strip()
         if re.search(r"Traceback|OutOfMemory|CUDA error|Error:", line):

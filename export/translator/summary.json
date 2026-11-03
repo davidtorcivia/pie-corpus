@@ -1,40 +1,38 @@
 {
  "provenance": {
-  "commit": "bfd84edb697b0132aab99fb39eb036a2350eb76e",
+  "commit": "5b754f04711937669e25a6411047a8afc04f722a",
   "inputs_dirty": false,
   "include_pilot": false,
   "experimental_batches": false
  },
  "examples": {
-  "train": 32822,
-  "eval": 170
+  "train": 32908,
+  "eval": 84
  },
  "modes": {
   "train": {
-   "en_pie": 16411,
-   "pie_en": 16411
+   "en_pie": 16454,
+   "pie_en": 16454
   },
   "eval": {
-   "en_pie": 85,
-   "pie_en": 85
+   "en_pie": 42,
+   "pie_en": 42
   }
  },
  "units": {
   "train": {
-   "en_pie:paragraph": 8842,
-   "en_pie:sentence": 7569,
-   "pie_en:paragraph": 8842,
-   "pie_en:sentence": 7569
+   "en_pie:paragraph": 8849,
+   "en_pie:sentence": 7605,
+   "pie_en:paragraph": 8849,
+   "pie_en:sentence": 7605
   },
   "eval": {
-   "en_pie:paragraph": 7,
-   "en_pie:sentence": 78,
-   "pie_en:paragraph": 7,
-   "pie_en:sentence": 78
+   "en_pie:sentence": 42,
+   "pie_en:sentence": 42
   }
  },
  "gloss_reference": {
-  "train": 32822,
+  "train": 32908,
   "eval": 84
  },
  "neologism_examples": {
@@ -43,42 +41,40 @@
  },
  "items": {
   "train": {
-   "en_pie:paragraph": 8842,
-   "en_pie:sentence": 7569,
-   "pie_en:paragraph": 8842,
-   "pie_en:sentence": 7569,
+   "en_pie:paragraph": 8849,
+   "en_pie:sentence": 7605,
+   "no_english": 9,
+   "pie_en:paragraph": 8849,
+   "pie_en:sentence": 7605,
    "unaligned_long:count_mismatch": 252,
    "unaligned_long:plan_english_mismatch": 11,
    "unaligned_long:question_mismatch": 3
   },
   "eval": {
-   "en_pie:paragraph": 7,
-   "en_pie:sentence": 78,
-   "no_english": 9,
-   "pie_en:paragraph": 7,
-   "pie_en:sentence": 78
+   "en_pie:sentence": 42,
+   "pie_en:sentence": 42
   }
  },
  "self_overlap": {
   "all_kinds_sentences": {
-   "items": 26324,
+   "items": 26374,
    "max": 24,
-   "mean": 1.0621,
+   "mean": 1.062,
    "histogram": {
-    "1": 25435,
-    "2": 581,
+    "1": 25484,
+    "2": 582,
     "3": 163,
     "4+": 145
    },
    "over_3": 145
   },
   "all_kinds_ngram4": {
-   "items": 64709,
+   "items": 65057,
    "max": 26,
    "mean": 1.0078,
    "histogram": {
-    "1": 64307,
-    "2": 350,
+    "1": 64652,
+    "2": 353,
     "3": 35,
     "4+": 17
    },
@@ -88,25 +84,33 @@
  "leakage": {
   "ngram": 4,
   "per_kind": {
-   "translate_app/en_pie": {
-    "n": 85,
+   "translate_app/pie_en": {
+    "n": 42,
     "with_ngrams": 42,
+    "mean_overlap": 0.0591,
+    "max_overlap": 0.25,
+    "any_overlap": 13,
+    "single_word_in_train_text": 0
+   },
+   "translate_app/en_pie": {
+    "n": 42,
+    "with_ngrams": 15,
     "mean_overlap": 0.0,
     "max_overlap": 0.0,
     "any_overlap": 0,
     "single_word_in_train_text": 0
-   },
-   "translate_app/pie_en": {
-    "n": 85,
-    "with_ngrams": 82,
-    "mean_overlap": 0.0939,
-    "max_overlap": 0.5,
-    "any_overlap": 34,
-    "single_word_in_train_text": 0
    }
   },
   "failures": [],
-  "flagged_seen_in_train": [],
+  "flagged_seen_in_train": [
+   {
+    "source_id": "t2-dragon-slaying-001",
+    "task": "translate_app",
+    "why": [
+     "assistant turn verbatim in train"
+    ]
+   }
+  ],
   "ok": true
  }
 }
