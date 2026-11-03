@@ -1,7 +1,9 @@
 """Quantize a merged HF model with omlx's oQ (owner, 2026-10-31: "use the omlx quant method ... preserve draft
 heads"), through the running omlx server's admin API, and wait for it. Prints the output path.
 
-    python3 -I training/tinker/omlx_oq.py MERGED_DIR [LEVEL]      # LEVEL default 5, enhanced, MTP kept: -oQ5e-mtp
+    python3 -I training/tinker/omlx_oq.py MERGED_DIR [LEVEL] [--no-mtp]
+        LEVEL default 5, enhanced, MTP kept (-oQ5e-mtp); --no-mtp for models whose MLX port has no draft head
+        (nemotron_h drops mtp.* on load)
 
 Also: `omlx_oq.py --reload` (re-discover models), `--pin ID` / `--unpin ID`. The API key is read from
 ~/.omlx/settings.json and never printed.
@@ -31,9 +33,11 @@ def main():
     if a[0] in ("--pin", "--unpin"):
         print(call("PUT", f"/admin/api/models/{a[1]}/settings", {"is_pinned": a[0] == "--pin"}))
         return
+    mtp = "--no-mtp" not in a
+    a = [x for x in a if x != "--no-mtp"]
     merged, level = a[0], float(a[1]) if len(a) > 1 else 5
     task = call("POST", "/admin/api/oq/start", {"model_path": merged, "oq_level": level, "enhanced": True,
-                                                 "preserve_mtp": True})["task"]
+                                                 "preserve_mtp": mtp})["task"]
     tid = task["task_id"]
     print("oQ task", tid, "->", task["output_path"], flush=True)
     while True:
