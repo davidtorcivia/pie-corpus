@@ -125,7 +125,9 @@ class Metrics(TrainingCallback):
         if VAL_STOP and v is not None:
             if self.val0 is None:
                 self.val0 = v
-            elif v > VAL_STOP * self.val0:
+            # with the reference = the starting policy the first val loss is ~0 (stage 4: -2e-9), so a ratio to it
+            # stops on any positive loss: use a floor (the GRPO val loss is ~KL-scale, not a quality measure)
+            elif v > VAL_STOP * max(self.val0, 0.02):
                 log({"event": "stop", "why": f"val loss {v:.4f} > {VAL_STOP} x {self.val0:.4f}", "iteration": info.get("iteration")})
                 raise Stop("validation loss rose")
 

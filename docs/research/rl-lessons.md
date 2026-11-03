@@ -34,6 +34,15 @@ Started 2026-11-01 (owner: "Take notes as we go so we can note how to improve fu
   step 275's. Stopped at 205 of 225. Next time: watch KL as well as rewards (a sustained climb past ~0.3 is the
   stop signal here), keep beta higher than 0.1 or decay the learning rate, and plan fewer steps per stage.
 
+- **RL on top of a merged adapter degrades fast (stage 4, 2026-11-02).** From the 0.5 rl1 + 0.5 rl3-275 merge (benchmark
+  84.5, our best), with KL to the merge itself (beta 0.2), lr 5e-6 cosine, rank 16: by step 25 the drills fell .801 → .704
+  exact and chrF 89.9 → 85.6 (v1 exact .854 → .833); step-50 validation fell in 5 of 7 skills (dialogue .67 → .51, inflect
+  .90 → .80, EN→PIE .67 → .55) at KL only ~0.13. Likely: Adam moves each weight by ~lr whatever its size, and the merge
+  halved both adapters' B, so the same lr is about twice the relative change, on a balanced point between two skill sets.
+  Next time: train each new skill as its own delta from e3 and merge (the deltas are orthogonal: cos ~0.000), or scale
+  lr by the merge weight. Stopped at 50 by the val-loss rule, which itself was wrong here (a ratio to a ~0 first loss;
+  fixed: a 0.02 floor).
+
 ## Validation
 
 - **Read per-skill validation on fixed batches, not batch training rewards.** Training-batch means per kind swing
