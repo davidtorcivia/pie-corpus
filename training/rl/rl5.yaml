@@ -18,12 +18,12 @@ max_completion_length: 384
 max_seq_length: 1024
 temperature: 1.0
 learning_rate: 5.0e-6
-lr_schedule: {name: cosine_decay, arguments: [5.0e-6, 250, 5.0e-7], warmup: 0}
+lr_schedule: {name: cosine_decay, arguments: [5.0e-6, 100, 5.0e-7], warmup: 0}
 beta: 0.2
-iters: 250
+iters: 100                    # ~one pass over the 743 kept prompts (Nemotron e3 reproduces most of the rest exactly)
 steps_per_report: 5
 steps_per_eval: 50
 val_batches: 23               # all 180 valid prompts, so every kind is scored
-save_every: 50                 # 9.2 GB per checkpoint (LoRA on every expert)
+save_every: 25                 # 9.2 GB per checkpoint (LoRA on every expert)
 seed: 20261103
 grad_checkpoint: true

@@ -19,5 +19,5 @@ if [ ! -f $RUNS/$NAME/pid ]; then
   cd $ROOT && PIE_REF_SHARED=1 PIE_KL_STOP=0.3 PIE_VAL_STOP=1.5 $HERE/run.sh $NAME $HERE/rl5.yaml
 fi
 say "waiting for the trainer, then evaluating"
-$HERE/after_run.sh $NAME 0000100 0000200 final
+$HERE/after_run.sh $NAME 0000050 final
 say "pipeline done"
