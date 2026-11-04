@@ -67,6 +67,18 @@ def test_processor_picks_best_valid(g):
     assert c._ok(gen, prev, 0) is False                      # but not after "wéyd"
 
 
+def test_one_bad_word_does_not_free_the_rest(g):
+    """A word written when the grammar gave way stays; the next words are constrained again, and the answer may end
+    after a whole word."""
+    tok = CharTok("".join(FORMS) + " .-\nxa")
+    c = Constraint(tok, g, prompt_len=0, topk=len(tok.chars))
+    gen = tok.ids("h₂ówis xa wéyd")                         # "xa" is no form
+    assert c.choose(gen, tok.ids("xae")) == tok.ids("e")[0]
+    gen = tok.ids("h₂ówis xa h₂ówi")
+    assert c.choose(gen, [0] + tok.ids("s")) == tok.ids("s")[0]   # still no EOS inside a word
+    assert c.choose(tok.ids("h₂ówis xa h₂ówis"), [0]) == 0
+
+
 def test_real_grammar_agrees_with_notation_ok():
     sys.path.insert(0, str(ROOT / "benchmarks"))
     import score

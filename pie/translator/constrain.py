@@ -105,17 +105,33 @@ class Constraint:
         self.eos = set(getattr(tokenizer, "eos_token_ids", None) or [tokenizer.eos_token_id])
         self.fallbacks = 0
         self.steps = 0
+        self._memo = (None, True)
 
     def _ok(self, gen: list[int], prev: str, cand: int) -> bool:
         if cand in self.eos:
-            return self.g.text(prev[prev.rfind("\n") + 1:], complete=True)
+            line = prev[prev.rfind("\n") + 1:]
+            if not self._line_ok(line):        # see below: only the last word is still the grammar's
+                return self.g.pie_text(line[max(line.rfind(" "), line.rfind("\t")) + 1:], complete=True)
+            return self.g.text(line, complete=True)
         new = self.tok.decode(gen + [cand])
         # a multi-byte letter (h₁, ḱ, ʷ) can take two tokens: check what is decoded so far
         new = new.rstrip("�")
         start = prev.rfind("\n") + 1
         if not new.startswith(prev[:start]):
             start = 0
+        if not self._line_ok(prev[start:]):
+            # an earlier word on this line already broke the grammar (a step that gave way): it is written, so judge
+            # only the word being written now, or one bad word would leave the rest of the line unconstrained
+            cut = max(prev.rfind(" "), prev.rfind("\t")) + 1
+            if cut <= start or not new.startswith(prev[:cut]):
+                return True
+            return self.g.pie_text(new[cut:], complete=False)
         return self.g.text(new[start:], complete=False)
+
+    def _line_ok(self, line: str) -> bool:
+        if line != self._memo[0]:
+            self._memo = (line, self.g.text(line, complete=False))
+        return self._memo[1]
 
     def choose(self, gen: list[int], order) -> int | None:
         prev = self.tok.decode(gen).rstrip("�") if gen else ""
