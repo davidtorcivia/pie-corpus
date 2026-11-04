@@ -1,0 +1,25 @@
+# Gap SFT 1 (2026-11-04): a short supervised LoRA run on the Mac (no Tinker), continuing the latest RL adapter, on
+# the words, dialogue and translations the RL filter found missed, with as much SFT-export replay (make_sft1.py).
+# Same LoRA shape as the RL adapters (rank 16, scale 10, every layer and expert) so it resumes them. Loss on the
+# answer only (mask_prompt). iters set by run_sft1.sh: one pass over train.jsonl.
+model: /Users/david/AI/PIE-nemotron35-e3-oQ5e
+train: true
+train_type: lora
+train_mode: sft
+data: /Users/david/AI/pie-runs/rl/data/sft1
+chat_feature: messages
+mask_prompt: true
+fuse: false
+lora_parameters: {rank: 16, dropout: 0.0, scale: 10.0}
+optimizer: adam
+batch_size: 8
+max_seq_length: 1024
+learning_rate: 1.0e-5
+lr_schedule: {name: cosine_decay, arguments: [1.0e-5, 500, 1.0e-6], warmup: 20}
+iters: 520                    # replaced by run_sft1.sh
+steps_per_report: 10
+steps_per_eval: 100
+val_batches: 29               # all 232 held-out prompts
+save_every: 100
+seed: 20261108
+grad_checkpoint: true
