@@ -35,7 +35,12 @@ SHARES = {"rl3": SHARE,
           # stage 6 (2026-11-03): translation and dialogue from the held-out rl6 batches (make_rl6.py), where the
           # frontier models still lead, with stage 5's drills as anchors; vocabulary, stage 5's one moving skill, back
           "rl6": {"translate_en_pie": 0.30, "translate_pie_en": 0.18, "dialogue": 0.22, "inflect": 0.10,
-                  "paradigm": 0.06, "vocab_en_pie": 0.10, "vocab_pie_en": 0.04}}
+                  "paradigm": 0.06, "vocab_en_pie": 0.10, "vocab_pie_en": 0.04},
+          # stage 7 (2026-11-04): stage 6 moved nothing held out; weight the two kinds with room (dialogue 0.44,
+          # EN→PIE vocabulary 0.30), translation and drills as anchors (--full: the band filter decides what is kept)
+          "rl7": {"dialogue": 0.36, "vocab_en_pie": 0.34, "translate_en_pie": 0.12, "translate_pie_en": 0.08,
+                  "vocab_pie_en": 0.04, "inflect": 0.03, "paradigm": 0.03}}
+BAND_MAX = 0.8     # --full: a mean reward above this over k samples is "always right" (8 rollouts would barely disagree)
 SEED = 20261101
 
 
@@ -59,7 +64,7 @@ def score(x: dict, completion: str, an) -> float | None:
 
 
 def sample(model_dir: str, cands: list[dict], k: int, out: Path, batch: int, an, adapter: str | None = None,
-           max_per_kind: int = 0):
+           max_per_kind: int = 0, full: bool = False):
     from mlx_lm import load
     from mlx_lm_lora.trainer.grpo_trainer import generate_grpo
     done = {json.loads(x)["i"] for x in out.read_text("utf-8").splitlines()} if out.exists() else set()
@@ -90,9 +95,13 @@ def sample(model_dir: str, cands: list[dict], k: int, out: Path, batch: int, an,
         # the trainer's own generation path: each prompt prefilled alone, its cache forked k times, decoding batched.
         # No left padding, which corrupts recurrent-layer models (Nemotron's Mamba layers; eval_ckpt.batches)
         texts = generate_grpo(model, tok, prompts, 384, k, len(prompts) * k, "", 1.0, 1.0, 0, 0.0)[1]   # one decode batch
+        if full:     # the training reward itself, judge included (stage 6: the local check let 90% of judged prompts through)
+            rs = reward_rl.score_all(texts, [x["answer"] for _, x in chunk for _ in range(k)],
+                                     [x["type"] for _, x in chunk for _ in range(k)])
         for n, (i, x) in enumerate(chunk):
             outs = texts[n * k:(n + 1) * k]
-            f.write(json.dumps({"i": i, "type": x["type"], "scores": [score(x, o, an) for o in outs],
+            sc = rs[n * k:(n + 1) * k] if full else [score(x, o, an) for o in outs]
+            f.write(json.dumps({"i": i, "type": x["type"], "scores": sc, "full": full,
                                 "outputs": outs}, ensure_ascii=False) + "\n")
         f.flush()
         d += len(chunk)
@@ -100,7 +109,10 @@ def sample(model_dir: str, cands: list[dict], k: int, out: Path, batch: int, an,
               f"eta {(time.time() - t0) / d * (len(todo) - d) / 60:.0f} min", flush=True)
 
 
-def select(cands: list[dict], rates: dict[int, list], n: int, share: dict | None = None) -> tuple[list[dict], dict]:
+def select(cands: list[dict], rates: dict[int, list], n: int, share: dict | None = None,
+           full: bool = False) -> tuple[list[dict], dict]:
+    """Local scores: drop judged kinds always exact, drills always right. Full rewards (--full): every kind by its mean
+    over k samples: above BAND_MAX always right, 0 never right (a third of those kept, as for drills), else kept."""
     share = share or SHARE
     keep = {k: [] for k in share}
     never = {k: [] for k in share}
@@ -112,7 +124,16 @@ def select(cands: list[dict], rates: dict[int, list], n: int, share: dict | None
         k = kind(x)
         st = stats.setdefault(k, {"sampled": 0, "always": 0, "never": 0, "kept": 0})
         st["sampled"] += 1
-        if k in ("translate_en_pie", "translate_pie_en", "vocab_pie_en", "dialogue"):     # judged kinds: drop what is always exact
+        if full:
+            m = sum(s) / len(s)
+            if m > BAND_MAX:
+                st["always"] += 1
+            elif m == 0.0:
+                st["never"] += 1
+                never[k].append(x)
+            else:
+                keep[k].append(x)
+        elif k in ("translate_en_pie", "translate_pie_en", "vocab_pie_en", "dialogue"):     # judged kinds: drop what is always exact
             exact = sum(v == 1.0 for v in s)
             if exact == len(s):
                 st["always"] += 1
@@ -149,17 +170,18 @@ def main():
     ap.add_argument("--adapter", help="LoRA adapter dir on top of --model (the policy RL starts from)")
     ap.add_argument("--max-per-kind", type=int, default=0, help="sample at most this many candidates per kind (0: all)")
     ap.add_argument("--mix", default="rl3", choices=sorted(SHARES), help="kind shares of train.jsonl")
+    ap.add_argument("--full", action="store_true", help="score with the training reward (judge included) and keep a band")
     a = ap.parse_args()
     d = Path(a.data)
     cands = [json.loads(x) for x in (d / "candidates.jsonl").read_text("utf-8").splitlines() if x.strip()]
     from pie.translator.analyze import Analyzer
     an = Analyzer.load()
-    sample(a.model, cands, a.k, d / "passrate.jsonl", a.batch, an, a.adapter, a.max_per_kind)
+    sample(a.model, cands, a.k, d / "passrate.jsonl", a.batch, an, a.adapter, a.max_per_kind, a.full)
     rates = {r["i"]: r["scores"] for r in map(json.loads, (d / "passrate.jsonl").read_text("utf-8").splitlines())}
-    train, stats = select(cands, rates, a.n, SHARES[a.mix])
+    train, stats = select(cands, rates, a.n, SHARES[a.mix], a.full)
     (d / "train.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in train), "utf-8")
     man = json.loads((d / "manifest.json").read_text())
-    man["passrate"] = {"k": a.k, "model": a.model, "adapter": a.adapter, "mix": a.mix, "by_kind": stats, "train": len(train)}
+    man["passrate"] = {"k": a.k, "model": a.model, "adapter": a.adapter, "mix": a.mix, "full": a.full, "by_kind": stats, "train": len(train)}
     (d / "manifest.json").write_text(json.dumps(man, indent=1, ensure_ascii=False), "utf-8")
     print(json.dumps(man["passrate"]))
 

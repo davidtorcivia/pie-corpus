@@ -1,0 +1,27 @@
+# RL stage 7 (2026-11-04): from stage 6 final (rl6b-resume50), on prompts the current policy passes only
+# sometimes (passrate.py --full: the training reward, judge included, mean over 4 samples in (0, 0.8], a third of the
+# never-right kept), weighted to dialogue and EN->PIE vocabulary (mix rl7), at twice stage 6's LR. Same 232
+# validation prompts as stage 6. KL to e3 (the policy with its LoRA off). iters set by run_rl7.sh.
+model: /Users/david/AI/PIE-nemotron35-e3-oQ5e
+train: true
+train_mode: grpo
+data: /Users/david/AI/pie-runs/rl/data/rl7
+reward_functions_file: /Users/david/AI/PIE/training/rl/reward_rl.py
+reward_functions: pie_rl
+fuse: false
+lora_parameters: {rank: 16, dropout: 0.0, scale: 10.0}
+batch_size: 8
+group_size: 8
+max_completion_length: 384
+max_seq_length: 1024
+temperature: 1.0
+learning_rate: 1.0e-5
+lr_schedule: {name: cosine_decay, arguments: [1.0e-5, 100, 1.0e-6], warmup: 5}
+beta: 0.2
+iters: 100                    # replaced by run_rl7.sh: about one pass over the filtered train.jsonl
+steps_per_report: 5
+steps_per_eval: 50
+val_batches: 29               # all 232 valid prompts (make_rl6.py VALID_PER_KIND), every kind scored
+save_every: 25                 # 9.2 GB per checkpoint (LoRA on every expert)
+seed: 20261107
+grad_checkpoint: true

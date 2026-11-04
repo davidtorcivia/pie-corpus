@@ -24,7 +24,7 @@ for c in base $CKPTS; do
     f=$ROOT/training/gen_prompts_$set.jsonl
     out=$RUN/eval/generations-$set-$c.jsonl
     [ -s $out ] || caffeinate -i $PY -I $HERE/eval_ckpt.py --model $MODEL $AD --prompts $f --out $out
-    (cd $ROOT && UV_CACHE_DIR=/tmp/pie-uv-cache uv run --quiet python -I training/score_generations.py $out) >> $RUN/eval/summary.txt 2>&1
+    (cd $ROOT && UV_CACHE_DIR=/Users/david/AI/pie-runs/rl/uv-cache uv run --quiet python -I training/score_generations.py $out) >> $RUN/eval/summary.txt 2>&1
   done
 done
 echo "$(date '+%F %T') after_run done" >> $RUN/eval/summary.txt
