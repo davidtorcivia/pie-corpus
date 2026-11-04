@@ -17,6 +17,7 @@ mkdir -p $D7
 for f in candidates valid valid_full test; do [ -s $D7/$f.jsonl ] || cp $D6/$f.jsonl $D7/; done
 [ -s $D7/manifest.json ] || cp $D6/manifest.json $D7/
 pgrep -f "sync_dashboard.sh $NAME" >/dev/null || { nohup $HERE/sync_dashboard.sh $NAME /Users/david/AI/pie-runs/rl/rl7.pipeline.log $D7 > $RUNS/$NAME.sync.log 2>&1 & }
+while pgrep -f "passrate.py.*$D7" >/dev/null; do sleep 60; done     # a restarted pipeline waits for its passrate
 if [ ! -s $D7/train.jsonl ]; then
   say "passrate (full reward) on $FROM"
   PIE_RL_JUDGE_LOG=$D7/passrate-judge.jsonl caffeinate -i $PY -I $HERE/passrate.py --model $BASE --adapter $FROM \
@@ -24,7 +25,8 @@ if [ ! -s $D7/train.jsonl ]; then
 fi
 pgrep -f "watch.sh $NAME" >/dev/null || { nohup $HERE/watch.sh $NAME > $RUNS/$NAME.watch.log 2>&1 & }
 if [ ! -f $RUNS/$NAME/pid ]; then
-  n=$(wc -l < $D7/train.jsonl); iters=$(( (n + 7) / 8 )); (( iters > 250 )) && iters=250
+  # two passes: the band is thin (about 12% of candidates pass only sometimes), one pass would be about 50 steps
+  n=$(wc -l < $D7/train.jsonl); iters=$(( (2 * n + 7) / 8 )); (( iters > 250 )) && iters=250
   cfg=$RUNS/$NAME.config.yaml
   sed -e "s/^iters: .*/iters: $iters/" \
       -e "s/^lr_schedule: .*/lr_schedule: {name: cosine_decay, arguments: [1.0e-5, $(( iters - 5 )), 1.0e-6], warmup: 5}/" \
