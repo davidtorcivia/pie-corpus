@@ -148,3 +148,37 @@ Started 2026-11-01 (owner: "Take notes as we go so we can note how to improve fu
   that differ, rl6 16.5 vs rl5 16.0. 90% of rl6's answers (594 of 659) are rl5's. Lessons: stage 6 is a tie with
   rl5 and e3; a lone-contestant round with one judge carries about ±1 point of judge noise on the overall score, so
   compare verdicts on identical answers across rounds before reading a difference.
+
+## Stage 7 (rl7-nemotron-band, 2026-11-04): discarded
+
+- **Band filter on the training reward.** passrate.py --full scored 4 samples per candidate with reward_rl.score_all
+  (judge included) on rl6b final and kept prompts passed only sometimes (mean in (0, 0.8]), plus a third of the
+  never-right ones; mix weighted to dialogue and EN→PIE vocabulary, LR 1e-5. Only about 12% of candidates were in the
+  band: translations were mostly always right, dialogue and vocabulary split between always and never. 360 prompts,
+  two passes.
+- **More signal, but too fast.** The band raised the within-group σ to 0.11–0.23 (stage 6: 0.04–0.17), but at twice
+  stage 6's LR the KL ran 0.15, 0.14, 0.19, 0.29, 0.16, 0.37, 0.21, 0.45, 0.37 and the guard (0.3 on two consecutive
+  reports) stopped the run at step 45. The step-25 adapter regressed v1: chrF 72.47 vs rl6b's 73.09, exact 0.896 vs
+  0.917. Discarded by the owner. Lesson: a band filter is the right fix for flat advantages, but keep the LR near
+  5e-6 when the groups carry that much more signal; and a word the model never produces cannot be learned by RL,
+  hence the gap SFT (sft1) from stage 6.
+
+## Engine in the loop (rl6b final, round 12, 2026-11-04)
+
+- **What it is.** Two tool aids at inference, no training: engine-constrained decoding (pie/translator/constrain.py;
+  each step keeps the model's best top-64 token that leaves every PIE word a form of the analyzer's index, so every
+  answer passes the strict notation rule) and lexicon hints (pie/translator/hints.py: "Lexicon: king = h₃rḗǵs (noun,
+  m.); ..." appended to EN→PIE and English-turn prompts). Tool-assisted, not a blind contestant
+  (ours-nemotron35-rl6-engine).
+- **A bug left most of it unconstrained.** Once one word had no fitting candidate (eḱwobʰ(y)os), the whole line
+  failed the grammar, so every later step on it fell back and the answer could not end there: only 38 of 122
+  constrained v1 answers stayed constrained (1592 of 6343 steps gave way; e2 54 of 523). Fixed in f5d29b6 (a
+  broken line is judged from its last word on); the round below measures the hints plus a partial constraint.
+- **v1 (automatic):** recognized forms 0.831 → 0.889, chrF 73.09 → 68.79, exact 0.917 = 0.917. The model writes
+  more known forms but further from the references' wording (the hints' lemma is often not the reference's).
+- **Round 12 (Opus only): 87.3 lenient / 85.7 strict vs plain rl6's 86.1 / 84.5** (e3 88.3 / 86.1). Strict
+  segments: EN→PIE 79.8 (plain 82.1), PIE→EN 89.3 (86.9; answers identical, judge drift), dialogue 84.4 (75.0).
+  Almost all of it is the judge: on the 46 dialogue answers identical to rl6's the round-12 judge gave 40.5 against
+  round 11's 35.5, on 42 identical PIE→EN 37.5 vs 36.5, on 18 identical EN→PIE 17.0 vs 17.0. On the answers the
+  engine changed: dialogue 13.5 vs 12.5 (18), EN→PIE 18.5 vs 19.5 (24). Net: the engine variant is a tie; the
+  apparent +1.2 is drift. Re-run with the fixed constraint after sft1.

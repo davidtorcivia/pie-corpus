@@ -1,0 +1,9 @@
+{
+ "generations": "/Users/david/AI/pie-runs/rl/runs/rl6b-resume50/eval-engine (generations-v1-final.jsonl, gen-e2.jsonl; drills_v2 copied from the plain rl6 run)",
+ "checkpoint": "RL stage 6 final (rl6b-resume50), as ours-nemotron35-rl6",
+ "path": "training/rl/eval_ckpt.py --constrain, mlx_lm greedy, thinking off, cap 384",
+ "tool_assisted": true,
+ "blind_contestant": false,
+ "note": "Tool-assisted, NOT a blind contestant under benchmarks/README.md: PIE answers (EN->PIE, dialogue, continuation) were decoded with engine-constrained decoding (pie/translator/constrain.py: every PIE word must be a form of the project's analyzer index), and EN->PIE and English-turn prompts carried lexicon hints (pie/translator/hints.py, training/engine_prompts.py). Other items are the plain rl6 answers.",
+ "one item per call": true
+}
