@@ -975,6 +975,36 @@
   }
  },
  {
+  "contestant": "ours-nemotron35-rl6",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 89.0,
+    "lenient": 89.6
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 89.6,
+    "lenient": 89.7
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 42
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 42
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 64
+   }
+  },
+  "pie_score": null
+ },
+ {
   "contestant": "ours-rl1-step500",
   "segments": {
    "inflection": {

@@ -1,0 +1,6 @@
+{
+ "generations": "/Users/david/AI/pie-runs/rl/runs/rl6b-resume50/eval (generations-{v1,drills_v2}-final.jsonl, gen-e2.jsonl)",
+ "checkpoint": "RL stage 6 final (rl6-nemotron-unseen steps 1-50, then rl6b-resume50 steps 1-151 = 201 steps) on Nemotron 3.5 Super e3 5-bit oQ5e; rank-16 LoRA, KL to e3",
+ "path": "training/rl/eval_ckpt.py, mlx_lm greedy, thinking off, cap 384",
+ "one item per call": true
+}

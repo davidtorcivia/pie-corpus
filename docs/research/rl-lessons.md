@@ -117,3 +117,34 @@ Started 2026-11-01 (owner: "Take notes as we go so we can note how to improve fu
   Kill the old pipeline's waiters when restarting a pipeline.
 - **zsh does not word-split `${x:+--flag $x}`:** it passes one argument "--flag value" (argparse: unrecognized
   argument). Use arrays.
+
+## Stage 6 (rl6-nemotron-unseen + rl6b-resume50, 2026-11-03/04)
+
+- **Prompts from unseen text.** 1603 kept prompts (pass rate on e3 below 1): EN→PIE 600, PIE→EN 360, dialogue
+  328, vocabulary 280 (EN→PIE 200, PIE→EN 80), drills 35. Validation is 232 held-out prompts (unseen text only;
+  vocabulary split by lemma), all scored at each check (val_batches 29, about 38 min).
+- **A model loaded beside the trainer killed it.** At step 61 an omlx client loaded an 87 GB model beside the
+  150 GB trainer; the trainer died without an error line, and the default after_run.sh then started an eval beside
+  omlx. omlx's unload endpoint did not exist for that model, so the service was stopped
+  (`launchctl bootout gui/501/ai.omlx.serve`) for the rest of the stage. Lesson: stop omlx (or anything else that
+  can load a model) before a long Mac run, and restart it after the evals. The run resumed from the step-50 adapter
+  (resume_rl6.sh: weights resume, the schedule restarts, so the cosine is set to continue from 4.35e-6).
+- **201 steps moved nothing measurable on held-out text.** Validation, rl6 step 1 → the end of rl6b: dialogue
+  0.39 → 0.43–0.46 (40 prompts; noisy), EN→PIE 0.921 → 0.924, PIE→EN 0.934 → 0.931, EN→PIE vocabulary
+  0.293 → 0.297 (32 prompts), PIE→EN vocabulary 0.764 → 0.741, drills at the ceiling. Frozen sets, base → final:
+  v1 chrF 73.05 → 73.09, drills_v2 paradigm cells 0.887 → 0.904 (the one gain, as in stage 5).
+- **Why: too little signal per prompt.** Training rewards (5-step means) sat at 0.60–0.87 with a within-group σ of 0.04–0.17:
+  most groups' 8 samples scored alike, so the advantages were near zero, and at a peak LR of about 5e-6 the KL never
+  passed 0.16. Next: refilter on the current policy to prompts it passes sometimes (pass rate about 0.1–0.6),
+  weight dialogue and EN→PIE vocabulary (the kinds with room), and raise the LR to about 1e-5 with the KL stop as
+  the guard.
+- **after_run.sh's scorer failed** on a corrupted uv cache (`/tmp/pie-uv-cache`, a wheel without METADATA); the
+  generations were fine and were rescored with a fresh UV_CACHE_DIR. Check summary.txt for `error:` lines.
+- **Benchmark v2 (round 11, Opus judge only; GPT/Sol judging unavailable): rl6 final 86.1 lenient / 84.5
+  strict, against rl5's 87.0 / 85.5 and e3's 88.3 / 86.1 on Opus verdicts alone.** Segments (strict): inflection
+  89.0, paradigm 89.6, EN→PIE 82.1, PIE→EN 86.9, dialogue 75.0 (rl5 80.5). The gap is the judge, not the model: on
+  the 41 dialogue items where rl6's answer is word for word rl5's, the round-11 judge gave 31.5 against round 10's
+  35.5 (12 disagreements). On the 23 dialogue answers
+  that differ, rl6 16.5 vs rl5 16.0. 90% of rl6's answers (594 of 659) are rl5's. Lessons: stage 6 is a tie with
+  rl5 and e3; a lone-contestant round with one judge carries about ±1 point of judge noise on the overall score, so
+  compare verdicts on identical answers across rounds before reading a difference.
