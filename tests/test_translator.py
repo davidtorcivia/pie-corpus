@@ -102,6 +102,80 @@ def test_round6_words_reach_the_translator(transfer):
     assert transfer.translate("The loud man sings.").pie == "kl̥h₁rós wiHrós gʷéHyeti."
 
 
+@pytest.mark.parametrize("english,pie", [
+    ("There is no hope.", "h₂oyséh₂ ne h₁ésti."),
+    ("No man came.", "wiHrós ne h₁nédʰt."),
+    ("Nobody came.", "ne kʷis h₁nédʰt."),
+    ("No one came.", "ne kʷis h₁nédʰt."),
+    ("I saw nothing.", "ne kʷid widóm."),
+    ("There was no water.", "wódr̥ ne h₁ést."),
+])
+def test_a_negative_determiner_negates_the_clause(transfer, english, pie):
+    """Owner 2026-11-05: 'There is no hope' came back as 'there is hope'. "no X", "nothing", "nobody" on a subject,
+    object or existential noun put ne on the clause (the pronouns are the indefinite kʷis/kʷid)."""
+    r = transfer.translate(english)
+    assert r.pie == pie and not r.errors
+
+
+def test_no_elsewhere_is_reported_not_dropped(transfer):
+    r = transfer.translate("The man with no horse wept.")
+    assert " ne " not in f" {r.pie} " and any("'no horse'" in n for n in r.notes)
+
+
+def test_there_is_takes_the_verb_that_agrees(transfer):
+    """'there is/are X': X is the subject of h₁ésti (existence takes the verb), so a plural takes the plural."""
+    assert transfer.translate("There are three wolves.").pie == "tréyes wĺ̥kʷōs h₁sénti."
+    assert transfer.translate("There was a king.").pie == "h₃rḗǵs h₁ést."
+
+
+@pytest.mark.parametrize("english,pie", [
+    ("I have a horse.", "h₁éḱwos moy h₁ésti."),
+    ("I have no hope.", "h₂oyséh₂ moy ne h₁ésti."),
+    ("The king had a horse.", "h₁éḱwos h₃rēǵéy h₁ést."),
+    ("They have horses and cows.", "h₁éḱwōs gʷówes-kʷe h₁éymos h₁sénti."),
+    ("I have nothing.", "ne kʷid moy h₁ésti."),
+])
+def test_possessive_have_is_the_dative_of_possession(transfer, english, pie):
+    """Owner 2026-11-05: 'I have no hope' came back as a perfect of 'be aware'. Possessive 'have' is the possessor in
+    the dative + h₁ésti (Lat. mihi est); the perfect's 'have' is untouched."""
+    r = transfer.translate(english)
+    assert r.pie == pie and not r.errors
+    assert any("dative of possession" in n for n in r.notes)
+
+
+def test_perfect_have_stays_the_perfect(transfer):
+    r = transfer.translate("I have seen the horse.")
+    assert r.pie == "h₁éḱwom dedórḱh₂e." and not any("dative of possession" in n for n in r.notes)
+
+
+def test_only_is_h1oynos_agreeing_with_its_noun(transfer):
+    """Owner 2026-11-05: 'Only death remains' left 'only' out. h₁óynos 'one, alone' stands in, agreeing (f. mértis,
+    m.pl. deywṓs), and the note says so."""
+    r = transfer.translate("Only death remains.")
+    assert r.pie == "h₁óyneh₂ mértis méneti." and any("'only' ≈ h₁óynos" in n for n in r.notes)
+    assert transfer.translate("Only the gods know.").pie == "h₁óynōs deywṓs widḗr."
+    assert not any("left out" in n for n in r.notes)
+
+
+def test_a_verbless_phrase_after_a_comma_is_its_own_utterance(transfer):
+    """Owner 2026-11-05: 'There is no hope, only death' lost the negation and 'only death'."""
+    r = transfer.translate("There is no hope, only death")
+    assert r.pie == "h₂oyséh₂ ne h₁ésti h₁óyneh₂ mértis." and not r.errors
+    assert r.plan["clauses"][1]["type"] == "np"
+    assert not any(n.startswith("left out") for n in r.notes)
+
+
+@pytest.mark.parametrize("english,pie", [
+    ("Come, my friend!", "príHe moy gʷm̥yé."),
+    ("Come, young men!", "h₂yúHn̥ḱōs wíHrōs gʷm̥yéte."),
+    ("Do not fight, young men!", "h₂yúHn̥ḱōs wíHrōs mē wikéte."),
+])
+def test_an_address_after_a_comma_is_vocative(transfer, english, pie):
+    """In a command the comma-set noun phrase is an address, and a plural addressee makes the verb plural."""
+    r = transfer.translate(english)
+    assert r.pie == pie and not r.errors
+
+
 def test_transfer_reports_what_it_cannot_say(transfer):
     r = transfer.translate("The tiger ate the bread.")
     assert set(r.unknown) >= {"tiger"}

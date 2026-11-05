@@ -10,7 +10,15 @@ Each English sentence becomes one or more clauses:
   number), dobj → OBJ, dative/iobj → IO, prepositions → GOAL (to, into), LOC (in, at, on), ABL (from, out of), INS
   (with, by), IO (for), POSS (of); amod → MOD, poss → POSS, nummod → a numeral, this/that → deictic_ki /
   demonstrative_so, not → neg, where/why/how/when → the interrogative adverbs, an address ("Friend, …") → VOC;
-- a coordinated noun takes "and" (-kʷe) on the last conjunct; a coordinated verb is a new clause with kʷe.
+- a coordinated noun takes "and" (-kʷe) on the last conjunct; a coordinated verb is a new clause with kʷe;
+- "no X" / "nothing" / "nobody" / "no one" / "none" as subject, object or existential noun → the clause's neg (ne),
+  the pronouns as the indefinite kʷis/kʷid (ne kʷis gʷémt 'no one came'); "no" elsewhere is noted as left out;
+- "there is/are X" → X the subject of h₁ésti, which agrees with it (existence takes the verb);
+- possessive "have" (the root verb with an object: "I have a horse", not the perfect's aux) → the possessor in the
+  dative, the possessed the subject of h₁ésti (h₁éḱwos moy h₁ésti, Lat. mihi est equus);
+- "only" on a noun → h₁óynos 'one, alone' agreeing with it (noted as a stand-in);
+- a verbless noun phrase after a comma ("…, only death") → an np utterance of its own, or an address (VOC) in a
+  command or 2nd-person clause ("Come, my friend!"); a plural addressee makes the 2nd-person verb plural.
 Everything the rules don't cover is reported in `notes`, and a word with no lexeme stays out of the PIE and is listed
 in `unknown`. check_plan's errors are reported, never hidden: the slot that causes one is dropped and the plan
 retried, and the drop is noted.
@@ -76,6 +84,18 @@ SYNONYMS = {
 SUFFIXES = [("iness", "y"), ("ness", ""), ("ity", ""), ("ity", "e"), ("ment", ""), ("ation", "e"), ("ion", ""),
             ("dom", ""), ("hood", ""), ("ship", ""), ("ful", ""), ("ly", ""), ("th", "e"), ("er", ""), ("or", "")]
 GIVE_LIKE = {"give", "say", "tell", "show", "bring", "send", "offer", "sing", "speak"}   # "to X" = IO
+# negative pronouns: the indefinite kʷis/kʷid under the clause's ne ('ne kʷis gʷémt' no one came; pie.realize)
+NEG_PRONOUNS = {"nothing": "n", "nobody": "m", "none": "m", "noone": "m"}
+ONLY_NOTE = "'only' ≈ h₁óynos 'one, single, alone', agreeing with its noun (no PIE particle for 'only'; Lat. ūnus)"
+POSSESSIVE_HAVE_NOTE = "'have' → the dative of possession: the possessor in the dative + h₁ésti 'is' (Lat. mihi est)"
+NEG_DEPS = ("nsubj", "nsubjpass", "dobj", "attr", "dative", "iobj")    # the phrases whose "no" negates the clause
+
+
+def _negative(tok) -> bool:
+    """A subject, object or existential noun phrase that negates its clause: 'no hope', 'no man', 'nothing',
+    'nobody', 'none'. ('with no horse' is not: "no" elsewhere is reported as left out.)"""
+    return tok.dep_ in NEG_DEPS and (tok.text.lower() in NEG_PRONOUNS
+                                     or any(c.dep_ == "det" and c.text.lower() == "no" for c in tok.children))
 
 
 def _comma_next_to(tok) -> bool:
@@ -113,6 +133,7 @@ class Transfer:
         self.lx = with_neologisms(Lexicon.load())   # coinages are offered (and labelled coined); inherited words rank first
         self.map = LexMap.load(nlp())
         self.used: set[int] = set()        # token indices that became a slot (translate() reports the rest)
+        self.neg_dets: set[int] = set()    # "no" determiners that became the clause's ne
 
     # ---------------------------------------------------------------- words
     def lookup(self, tok, families: tuple[str, ...], notes) -> tuple[str | None, str | None]:
@@ -223,6 +244,10 @@ class Transfer:
         """A noun phrase headed by tok (noun, pronoun, proper noun) → slots; returns the head slot's index."""
         low = tok.text.lower()
         self.used.add(tok.i)
+        no_one = low == "one" and any(c.dep_ == "det" and c.text.lower() == "no" for c in tok.children)
+        if low in NEG_PRONOUNS or no_one:        # the clause takes ne (clause(): _negative)
+            slots.append({"lex_id": "closed:indefinite_kwi", "role": role, "gender": NEG_PRONOUNS.get(low, "m")})
+            return len(slots) - 1
         if tok.pos_ == "PRON":
             if low in PRONOUNS:
                 p, n = PRONOUNS[low]
@@ -285,6 +310,12 @@ class Transfer:
                 self.used.add(ch.i)
                 slots.append({"lex_id": "closed:deictic_ki" if cl in ("this", "these") else "closed:demonstrative_so",
                               "role": "MOD", "head": head})
+            elif ch.dep_ == "advmod" and cl == "only":
+                # 'only death', 'only the king': h₁óynos 'one, alone' agreeing with the noun (Lat. ūnus)
+                self.used.add(ch.i)
+                slots.append({"lex_id": "pie-lex-h1oynos", "role": "MOD", "head": head})
+                if ONLY_NOTE not in notes:
+                    notes.append(ONLY_NOTE)
             elif ch.dep_ == "det" and cl == "another":
                 # 'another girl': h₂élyos, a pronominal adjective agreeing with its noun (round 5)
                 self.used.add(ch.i)
@@ -310,6 +341,9 @@ class Transfer:
         aux = [k for k in kids if k.dep_ in ("aux", "auxpass")]
         aux_l = [a.lemma_.lower() for a in aux]
         neg = any(k.dep_ == "neg" for k in kids)
+        if any(_negative(k) for k in kids):              # 'no man came', 'there is no hope', 'I have nothing'
+            neg = True
+            self.neg_dets |= {c.i for k in kids if _negative(k) for c in k.children if c.text.lower() == "no"}
         lemma = root.lemma_.lower()
         tense_m = root.morph.get("Tense")
         tense = "AOR" if "Past" in tense_m or any(a.morph.get("Tense") == ["Past"] for a in aux if a.lemma_ == "do") else "PRS"
@@ -331,8 +365,27 @@ class Transfer:
                 kids = [c for c in root.children if c.text.lower() != "us"]
                 subj, person, num = [], 1, "PL"
         voice = "MID" if any(k.dep_ == "nsubjpass" for k in kids) else "ACT"
+        # possessive 'have' ('I have a horse', 'the king had no son'): the possessor in the dative, the possessed the
+        # subject of h₁ésti (h₁éḱwos moy h₁ésti, Lat. mihi est equus). The perfect's 'have' is an aux of the
+        # participle (root 'seen'), never this root; 'have to go' (xcomp) keeps the verb.
+        possess = (lemma == "have" and mood != "IMP" and bool(subj) and any(k.dep_ == "dobj" for k in kids)
+                   and not any(k.dep_ in ("xcomp", "ccomp") for k in kids))
+        if possess and POSSESSIVE_HAVE_NOTE not in notes:
+            notes.append(POSSESSIVE_HAVE_NOTE)
         for s in subj:
             low = s.text.lower()
+            if possess:
+                self.used.add(s.i)
+                if low in PRONOUNS:
+                    p, n = PRONOUNS[low]
+                    if p in (1, 2):
+                        slots.append({"lex_id": f"closed:personal/{p}", "role": "IO", "num": n, "enclitic": True})
+                    else:
+                        slots.append({"lex_id": "closed:anaphoric_i", "role": "IO", "num": n,
+                                      "gender": GENDER.get(low, "m")})
+                else:
+                    self.np_slots(s, "IO", slots, notes, unknown)
+                continue
             if low in PRONOUNS:
                 person, num = PRONOUNS[low]
                 if person == 3:
@@ -346,6 +399,11 @@ class Transfer:
         # copula: "X is Y" / "X is good"
         copula = lemma == "be"
         attr = [k for k in kids if k.dep_ in ("attr", "acomp")]
+        # 'there is a king', 'there are no wolves': the noun is the subject of h₁ésti (existence takes the verb;
+        # pie.realize, nominal sentences), which agrees with it
+        existential = copula and attr and any(k.dep_ == "expl" for k in kids) and \
+            all(a.pos_ in ("NOUN", "PROPN", "PRON") for a in attr)
+        fragments = []        # '…, only death': a verbless noun phrase after a comma, an utterance of its own
         misread = []          # "…and drank water": the small model reads a past verb as the object's adjective
         for k in kids:
             d, low = k.dep_, k.text.lower()
@@ -359,7 +417,7 @@ class Transfer:
                         self.np_slots(c, "OBJ", slots, notes, unknown)
                 slots.append({"lex_id": "pie-lex-doxm", "role": "GOAL"})
             elif d in ("dobj",):
-                self.np_slots(k, "OBJ", slots, notes, unknown)
+                self.np_slots(k, "SUBJ" if possess else "OBJ", slots, notes, unknown)
             elif d in ("dative", "iobj") and k.pos_ != "ADP":
                 self.np_slots(k, "IO", slots, notes, unknown)
             elif d == "prep" or (d in ("dative", "iobj") and k.pos_ == "ADP"):
@@ -382,9 +440,20 @@ class Transfer:
                 pass                                     # reported by translate() as left out
             elif d in ("npadvmod", "intj", "appos") and k.pos_ in ("NOUN", "PROPN") and _comma_next_to(k):
                 self.np_slots(k, "VOC", slots, notes, unknown)
+            elif d in ("npadvmod", "appos") and k.pos_ in ("NOUN", "PROPN") and k.i > root.i \
+                    and k.left_edge.i > 0 and k.doc[k.left_edge.i - 1].text == ",":
+                if mood == "IMP" or person == 2:         # 'Come, my friend!', 'You are drunk, dear friend': an address
+                    self.np_slots(k, "VOC", slots, notes, unknown)
+                else:
+                    fragments.append(k)
             elif d == "conj" and k.pos_ in ("VERB", "AUX"):
                 pass
-        if copula and attr:
+        if existential:
+            for a in attr:
+                self.np_slots(a, "SUBJ", slots, notes, unknown)
+            slots.append({"lex_id": "pie-lex-h1esti", "role": "V",
+                          "verb": {"tense": "PST" if tense == "AOR" else "PRS", "mood": mood, "voice": "ACT"}})
+        elif copula and attr:
             a = attr[0]
             if a.pos_ == "ADJ":
                 lid = self.adj(a, unknown, notes)
@@ -405,6 +474,9 @@ class Transfer:
             slots.append({"lex_id": "pie-lex-h1esti", "role": "V",
                           "verb": {"tense": "PST" if tense == "AOR" else "PRS", "mood": mood, "voice": "ACT",
                                    "person": person, "num": num}})
+        elif possess:                                    # h₁ésti agrees with the possessed (its subject)
+            slots.append({"lex_id": "pie-lex-h1esti", "role": "V",
+                          "verb": {"tense": "PST" if tense == "AOR" else "PRS", "mood": mood, "voice": "ACT"}})
         else:
             if root.text.lower() in IRREGULAR:                  # spaCy's small model leaves some ("drank")
                 lemma, tense = IRREGULAR[root.text.lower()], "AOR" if mood == "IND" else tense
@@ -468,12 +540,18 @@ class Transfer:
                         if s["role"] == "V" and not any(x.dep_ in ("nsubj", "nsubjpass") for x in k.children):
                             s["verb"]["person"], s["verb"]["num"] = person, num
                     out += more
+        for k in fragments:              # 'There is no hope, only death': the noun phrase as an np utterance
+            extra: list[dict] = []
+            if self.np_slots(k, "NP", extra, notes, unknown) is not None:
+                out.append({"type": "np", "slots": extra})
+                notes.append(f"'{k.doc[k.left_edge.i:k.right_edge.i + 1].text}' (no verb) → a noun phrase of its own")
         return out
 
     # ---------------------------------------------------------------- text
     def translate(self, english: str) -> Result:
         doc = nlp()(english)
         self.used = set()
+        self.neg_dets = set()
         notes: list[str] = []
         unknown: list[str] = []
         clauses = []
@@ -489,6 +567,12 @@ class Transfer:
                 self.np_slots(voc, "VOC", cls[0]["slots"], notes, unknown)
             if not cls:
                 continue
+            for c in cls:                 # 'Come, young men!': a plural addressee makes the 2nd-person verb plural
+                vocs = [s_ for s_ in c["slots"] if s_["role"] == "VOC" and s_.get("num") in ("DU", "PL")]
+                if vocs and not any(s_["role"] == "SUBJ" for s_ in c["slots"]):
+                    for s_ in c["slots"]:
+                        if s_["role"] == "V" and s_["verb"].get("person") == 2:
+                            s_["verb"]["num"] = vocs[0]["num"]
             cls[0]["break"] = bool(clauses)
             if sent.text.strip().endswith("?"):
                 for c in cls:
@@ -501,6 +585,10 @@ class Transfer:
                 and t.lemma_.lower() not in skip and t.text not in unknown]
         if left:
             notes.append("left out (no rule for how it fits the sentence): " + ", ".join(left))
+        stray_no = [t.head.text for t in doc if t.dep_ == "det" and t.text.lower() == "no" and t.i not in self.neg_dets]
+        if stray_no:
+            notes.append("'no' left out (it negates the clause only on a subject or object): "
+                         + ", ".join(f"'no {w}'" for w in stray_no))
         if not clauses:
             return Result(english, None, None, None, unknown, notes, ["nothing to translate"])
         plan = {"english": english, "clauses": clauses}
