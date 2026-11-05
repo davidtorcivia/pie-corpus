@@ -20,7 +20,7 @@ pgrep -f "grpo.py|eval_ckpt.py|after_run.sh|passrate.py" >/dev/null && { say "a 
 measure() {   # $1 tag, $2 adapter dir
   local out=$DS/eval-$1; mkdir -p $out
   [ -s $out/test.jsonl ] || caffeinate -i $PY -I $HERE/eval_ckpt.py --model $M --adapter $2/adapters.safetensors \
-    --prompts $DS/test.jsonl --out $out/test.jsonl --batch 16
+    --prompts $DS/heldout.jsonl --out $out/test.jsonl --batch 16
   for s in words control; do
     local d=$out/$s; mkdir -p $d; cp -n $DS/$s/candidates.jsonl $DS/$s/manifest.json $d/
     # passrate's selection step fails on a set without every kind of the mix (KeyError); its passrate.jsonl is complete

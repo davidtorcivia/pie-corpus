@@ -1,4 +1,4 @@
-"""Vocabulary pilot score: on held-out sentences (make_vocab1.py's test.jsonl, never trained), does the answer use the
+"""Vocabulary pilot score: on held-out sentences (make_vocab1.py's heldout.jsonl, never trained), does the answer use the
 target word? A written word counts when the analyzer reads it as a form of the target lexeme (exactly or but for an
 accent). Trained words and control words apart; with passrate.jsonl dirs, the bare vocabulary prompts' never /
 sometimes / always counts too.
@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
-TEST = Path("/Users/david/AI/pie-runs/rl/data/vocab1/test.jsonl")
+TEST = Path("/Users/david/AI/pie-runs/rl/data/vocab1/heldout.jsonl")
 
 
 def uses(an, text, lid):

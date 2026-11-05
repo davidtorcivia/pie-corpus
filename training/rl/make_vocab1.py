@@ -13,7 +13,7 @@ lemmas) is a noun, verb or adjective and builds enough sentences. A seeded CONTR
 to tell exposure from drift.
 
     uv run python -I training/rl/make_vocab1.py [--out /Users/david/AI/pie-runs/rl/data/vocab1] [--words 110]
-Writes train.jsonl, valid.jsonl (held-out sentences, EN->PIE), test.jsonl (the same with lex_id), control.jsonl
+Writes train.jsonl, valid.jsonl (held-out sentences, EN->PIE), heldout.jsonl (the same with lex_id; not test.jsonl, which the trainer would load as chat rows), control.jsonl
 and words.jsonl (bare prompts of the trained and control words, for passrate), manifest.json.
 """
 import argparse
@@ -270,7 +270,7 @@ def main():
     wr = lambda name, rows: (out / name).write_text("".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows), "utf-8")
     wr("train.jsonl", train)
     wr("valid.jsonl", valid)
-    wr("test.jsonl", test)
+    wr("heldout.jsonl", test)
     # bare prompts, passrate.py's candidate format (one dir each so passrate's outputs stay apart)
     for name, ws in (("words", words), ("control", control)):
         d = out / name
