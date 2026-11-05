@@ -251,3 +251,19 @@ Started 2026-11-01 (owner: "Take notes as we go so we can note how to improve fu
   (25% here) or lower the LR, before any benchmark round. Pipeline: training/rl/run_vocab1.sh; mlx-lm-lora loads
   test.jsonl from the data dir as chat rows, so held-out sets go elsewhere (heldout.jsonl); macOS cp -n exits 1 on
   existing files, which set -e turns into a silent stop.
+- **Checkpoints (2026-11-05).** Same tests on the step-100 and step-200 adapters:
+
+  | | rl6b | step 100 | step 200 | final (346) |
+  |---|---|---|---|---|
+  | v1 chrF / exact | 73.09 / 0.917 | 72.26 / 0.917 | 71.55 / 0.896 | 71.31 / 0.917 |
+  | drills_v2 paradigm cells | 0.904 | 0.889 | 0.891 | 0.885 |
+  | trained bare prompts never / sometimes / always | 78 / 3 / 2 | 25 / 38 / 20 | 6 / 39 / 38 | 2 / 33 / 48 |
+  | held-out sentences, trained / control | 0.103 / 0.079 | 0.574 / 0.095 | 0.765 / 0.103 | 0.794 / 0.103 |
+  | control never | 47 | 44 | 40 | 41 |
+  | v1 translate_en_pie / translate_app EN→PIE chrF | 78.8 / 67.6 | 74.8 / 65.6 | 73.7 / 67.0 | 74.3 / 63.8 |
+
+  None meets the bar: step 100 comes closest (v1 −0.8, paradigm 0.889 < 0.90) with a third of the gain on the
+  bare prompts. The translate_en_pie loss (~4 chrF) is there by step 100 and does not grow, so it comes with the
+  first pass over these rows, not from overtraining; the paradigm-cell gain of stage 6 (0.904) is lost by every
+  SFT run so far (sft1 0.887 too). Next, if any: the same rows mixed into much more real EN→PIE replay, or the
+  vocabulary taught inside an RL stage, where the frozen sets have held.
