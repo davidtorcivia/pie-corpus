@@ -130,16 +130,45 @@ class AdapterOff:
         return self
 
 
+START_REF = SHARED_REF and os.environ.get("PIE_REF_START") == "1"
+
+
+class AdapterAtStart(AdapterOff):
+    """The reference policy as the policy itself with its LoRA weights put back to what they were when training
+    started (the resumed adapter): KL to the policy RL starts from, not to the base model, without a second model
+    copy (only the starting LoRA arrays, ~9 GB, stay alive). Used after an SFT that taught what the base lacks
+    (vocab1): a KL to the base would pull that back out. MLX arrays are immutable and the trainer's update replaces
+    them, so the snapshot is the arrays themselves; the policy's (possibly traced) parameters are put back after
+    the forward pass, so gradients are unaffected (the trainer stops gradients through the reference anyway)."""
+    start = None
+
+    def __init__(self, model):
+        super().__init__(model)
+        if AdapterAtStart.start is None:
+            AdapterAtStart.start = model.trainable_parameters()
+
+    def __call__(self, *a, **k):
+        now = self.model.trainable_parameters()
+        self.model.update(AdapterAtStart.start)
+        try:
+            return self.model(*a, **k)
+        finally:
+            self.model.update(now)
+
+
 if SHARED_REF:
     _SENTINEL = object()
-    tr.load_reference_model = lambda args: (print("Reference: the policy with its LoRA off (PIE_REF_SHARED)"), _SENTINEL)[1]
+    _REF = AdapterAtStart if START_REF else AdapterOff
+    tr.load_reference_model = lambda args: (print(
+        "Reference: the policy at its starting adapter (PIE_REF_START)" if START_REF
+        else "Reference: the policy with its LoRA off (PIE_REF_SHARED)"), _SENTINEL)[1]
 
     def _shared(fn):
         def wrapped(model, *a, **k):
             if k.get("ref_model") is _SENTINEL:
-                k["ref_model"] = AdapterOff(model)
+                k["ref_model"] = _REF(model)
             elif a and a[0] is _SENTINEL:
-                a = (AdapterOff(model),) + a[1:]
+                a = (_REF(model),) + a[1:]
             return fn(model, *a, **k)
         return wrapped
     tr.train_grpo = _shared(tr.train_grpo)
@@ -205,7 +234,7 @@ def yaml_wins(argv: list[str]) -> list[str]:
 if __name__ == "__main__":
     sys.argv = [sys.argv[0]] + yaml_wins(sys.argv[1:])
     log({"event": "start", "argv": sys.argv[1:], "kl_stop": KL_STOP, "val_stop": VAL_STOP,
-         "reference": REF_ADAPTER or ("policy, LoRA off" if SHARED_REF else "base model")})
+         "reference": REF_ADAPTER or ("policy at its starting adapter" if START_REF else "policy, LoRA off" if SHARED_REF else "base model")})
     try:
         tr.main()
         log({"event": "done"})
