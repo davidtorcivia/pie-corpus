@@ -206,3 +206,11 @@ Started 2026-11-01 (owner: "Take notes as we go so we can note how to improve fu
   varied contexts (more than the two context sentences per lexeme here), or retrieval at inference (the lexicon
   hints). passrate.py's selection fails on a candidate set without a kind of the mix (KeyError 'paradigm'); the
   sampled passrate.jsonl is complete.
+- **Re-run with the fixed constraint (round 14, ours-nemotron35-rl6-engine2).** Steps that gave way: v1 316 of 7473
+  (was 1592 of 6343), e2 24 of 537 (54 of 523); 39 of 122 answers had none (most still have one word with no fitting
+  candidate in the top 64, now that word alone). v1: recognized 0.896, chrF 67.31, exact 0.917. Opus only: 86.6 /
+  85.5 (rl6 86.1 / 84.5; old engine 87.3 / 85.7). On the answers it changed vs rl6: EN→PIE 18.0 vs 19.5 (24),
+  dialogue 15.0 vs 12.5 (18); identical answers again +6 on dialogue (41.5 vs 35.5 on 46: round 11 was a harsh
+  dialogue round), 0 on PIE→EN, -0.5 on EN→PIE. **Lesson: hints and the constraint do not raise EN→PIE** (the
+  segment the vocabulary gaps should show in; it drops 1.5 on 24 changed answers) and lower chrF by about 6; a small
+  dialogue gain at most. The engine raises the share of known forms, not meaning. Not worth shipping as is.
