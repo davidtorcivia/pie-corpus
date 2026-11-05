@@ -214,3 +214,40 @@ Started 2026-11-01 (owner: "Take notes as we go so we can note how to improve fu
   dialogue round), 0 on PIE→EN, -0.5 on EN→PIE. **Lesson: hints and the constraint do not raise EN→PIE** (the
   segment the vocabulary gaps should show in; it drops 1.5 on 24 changed answers) and lower chrF by about 6; a small
   dialogue gain at most. The engine raises the share of known forms, not meaning. Not worth shipping as is.
+
+## Vocabulary pilot (vocab1-nemotron, 2026-11-04/05): many varied exposures per word
+
+- **What.** 83 EN→PIE words still never right after Gap SFT 1 (45 nouns, 21 verbs, 17 adjectives; make_vocab1.py),
+  each in about 7 engine-realized sentences (the realizer's plans with the lexeme pinned, varied case, number,
+  tense and person beside words the model knows), a third of them also PIE→EN, plus the bare vocabulary prompt
+  twice; 25% replay. 1384 rows, two passes, 346 steps from stage 6 final at sft1's LR (1e-5 cosine), ~13–22 s/step,
+  peak 156 GB, about 2 h. 50 other never-right words held back as a control. Held-out test: 330 sentences from
+  frames never used in training (204 trained-word, 126 control); score_vocab1.py counts an answer that uses the
+  target lexeme (analyzer, exact or but for an accent).
+- **Validation loss** (the held-out sentences): 4.42 → 0.52 (50) → 0.35 → 0.32 → 0.30 → 0.29 → 0.286 (final), still
+  edging down. Most of the fall is the template format, not the words.
+- **The words were learned.** Bare prompts (passrate, 4 samples, RL reward), never / sometimes / always, rl6b →
+  final: trained 78 / 3 / 2 → **2 / 33 / 48**; control 47 / 2 / 1 → 41 / 7 / 2 (a little spillover, no harm).
+  Held-out sentences using the target word: trained **0.103 → 0.794**, control 0.079 → 0.103. Compare Gap SFT 1,
+  where three in four never-right words stayed never on their own prompt: frequency and varied context, not one
+  more pass, is what teaches a rare word.
+- **But the frozen sets fell, on EN→PIE.** v1 chrF 73.09 → 71.31 (exact 0.917 =, recognized 0.831 → 0.830);
+  drills_v2 paradigm cells 0.904 → 0.885 (e3's 0.887, as after sft1). By kind: translate_en_pie 78.8 → 74.3,
+  translate_app EN→PIE 67.6 → 63.8, EN dialogue −1 to −6; inflection, paradigm, gloss and PIE→EN about even. On
+  the 48 EN→PIE items: 7 worse, 2 better. Two collapsed outright: one answer switched to the unaccented
+  Schleicher-fable notation ("owis eḱwōs kʷe" for h₂ówis h₁éḱwōs-kʷe), one replaced a long sentence with a fable
+  line. Neither notation appears in the training rows, so this is drift (greedy, deterministic), not something
+  taught.
+- **Bar (set before launch): not met.** The vocabulary criteria passed by far (never-right 78 → 2, held-out use
+  ×7.7, control steady), but v1 chrF is 1.8 below rl6b (bar ~0.5) and paradigm cells fell below 0.90. No benchmark
+  round proposed.
+- **Caveats.** The sentences are grammatical but semantically odd ("The joy sees the sheep."), so the test checks
+  that the word is chosen, not that it is used well. Some never-right answers were mainstream-correct but not the
+  project's lemma (diwyós for 'celestial'), a ceiling on what "fixed" means; the hit rate rewards the project's
+  lemma only.
+- **Lessons.** Several engine-realized contexts per word teach rare EN→PIE vocabulary where single exposures do not.
+  The cost lands on free EN→PIE translation, the segment it was meant to help, through a few collapses. Next:
+  evaluate the step-100/200 checkpoints (saved) for a better trade, and raise replay of real EN→PIE translations
+  (25% here) or lower the LR, before any benchmark round. Pipeline: training/rl/run_vocab1.sh; mlx-lm-lora loads
+  test.jsonl from the data dir as chat rows, so held-out sets go elsewhere (heldout.jsonl); macOS cp -n exits 1 on
+  existing files, which set -e turns into a silent stop.
