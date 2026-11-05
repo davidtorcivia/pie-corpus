@@ -22,7 +22,7 @@ measure() {   # $1 tag, $2 adapter dir
   [ -s $out/test.jsonl ] || caffeinate -i $PY -I $HERE/eval_ckpt.py --model $M --adapter $2/adapters.safetensors \
     --prompts $DS/heldout.jsonl --out $out/test.jsonl --batch 16
   for s in words control; do
-    local d=$out/$s; mkdir -p $d; cp -n $DS/$s/candidates.jsonl $DS/$s/manifest.json $d/
+    local d=$out/$s; mkdir -p $d; cp -n $DS/$s/candidates.jsonl $DS/$s/manifest.json $d/ || true   # macOS cp -n exits 1 when they exist
     # passrate's selection step fails on a set without every kind of the mix (KeyError); its passrate.jsonl is complete
     [ -s $d/passrate.jsonl ] || PIE_RL_JUDGE_LOG=$d/passrate-judge.jsonl caffeinate -i $PY -I $HERE/passrate.py \
       --model $M --adapter $2 --data $d --mix rl7 --full --n 1000 --batch 256 || true
