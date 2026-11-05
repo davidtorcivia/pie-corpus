@@ -1,0 +1,24 @@
+# Vocabulary pilot (2026-11-04): two passes over make_vocab1.py's data (each never-right word in about ten
+# engine-realized sentences, both directions, plus its bare prompt; 25% replay) from RL stage 6 final. Same LoRA
+# and LR as gap SFT 1, so the change is the exposure per word. iters set by run_vocab1.sh.
+model: /Users/david/AI/PIE-nemotron35-e3-oQ5e
+train: true
+train_type: lora
+train_mode: sft
+data: /Users/david/AI/pie-runs/rl/data/vocab1
+chat_feature: messages
+mask_prompt: true
+fuse: false
+lora_parameters: {rank: 16, dropout: 0.0, scale: 10.0}
+optimizer: adam
+batch_size: 8
+max_seq_length: 1024
+learning_rate: 1.0e-5
+lr_schedule: {name: cosine_decay, arguments: [1.0e-5, 500, 1.0e-6], warmup: 20}
+iters: 520                    # replaced by run_sft1.sh
+steps_per_report: 10
+steps_per_eval: 50
+val_batches: 26               # all 204 held-out sentences
+save_every: 100
+seed: 20261105
+grad_checkpoint: true
