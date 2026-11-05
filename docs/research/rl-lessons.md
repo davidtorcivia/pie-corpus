@@ -182,3 +182,27 @@ Started 2026-11-01 (owner: "Take notes as we go so we can note how to improve fu
   round 11's 35.5, on 42 identical PIE→EN 37.5 vs 36.5, on 18 identical EN→PIE 17.0 vs 17.0. On the answers the
   engine changed: dialogue 13.5 vs 12.5 (18), EN→PIE 18.5 vs 19.5 (24). Net: the engine variant is a tie; the
   apparent +1.2 is drift. Re-run with the fixed constraint after sft1.
+
+## Gap SFT 1 (sft1-nemotron-gaps, 2026-11-04): local SFT on what RL could not teach
+
+- **What.** 527 steps of supervised LoRA on the Mac (mlx-lm-lora SFT, batch 8, LR 1e-5 cosine, from stage 6 final;
+  make_sft1.py): 4209 rows, half the stage-7 filter's misses and unsampled vocabulary (2106) with references,
+  plus context sentences for the missed lexemes and as many replay rows from the SFT export. About 3.5 h at
+  ~24 s/step, peak 157 GB.
+- **Validation loss flat after step 100:** 2.666 (step 1), 0.341, 0.339, 0.336, 0.337, 0.339 (final); train loss
+  0.23 → 0.16. Everything held-out was learned in the first fifth.
+- **Frozen sets, rl6b → sft1 final:** v1 chrF 73.09 → 72.21, exact 0.917 → 0.958, recognized 0.831 → 0.844;
+  drills_v2 paradigm cells 0.904 → 0.887 (back to e3's 0.887).
+- **Round 13 (Opus only): 85.7 lenient / 84.2 strict vs rl6's 86.1 / 84.5, a tie.** Strict: inflection 89.9
+  (89.0), paradigm 88.5 (89.6), EN→PIE 78.6 (82.1), PIE→EN 85.7 (86.9), dialogue 81.2 (75.0). On the 44 judged
+  answers it changed: dialogue 19.0 vs 18.0, EN→PIE 7.5 vs 8.0, PIE→EN 5.0 vs 5.5; identical answers moved 0 to +3.
+- **The trained prompts themselves (passrate --full, 4 samples, same reward), stage-7 filter on rl6b → sft1:**
+  EN→PIE vocabulary: of 206 never right, 154 still never (46 sometimes, 6 always); of the 456 not sampled before,
+  140 never, 207 sometimes, 109 always. PIE→EN vocabulary: 266 always of 648. Translations and inflection moved most
+  (EN→PIE 95 prompts mean 0.31 → 0.64, PIE→EN 0.43 → 0.82, inflection 0.35 → 0.78); dialogue barely (0.26 → 0.28;
+  114 of 126 never-right stay never).
+- **Lessons.** One pass at 1e-5 does not teach a rare EN→PIE word (three in four never-right words stay never even
+  on their own training prompt); it teaches drill and translation items fast. Words need several exposures in
+  varied contexts (more than the two context sentences per lexeme here), or retrieval at inference (the lexicon
+  hints). passrate.py's selection fails on a candidate set without a kind of the mix (KeyError 'paradigm'); the
+  sampled passrate.jsonl is complete.

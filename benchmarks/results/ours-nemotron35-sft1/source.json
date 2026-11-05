@@ -1,0 +1,6 @@
+{
+ "generations": "/Users/david/AI/pie-runs/rl/runs/sft1-nemotron-gaps/eval (generations-{v1,drills_v2}-final.jsonl, gen-e2.jsonl)",
+ "checkpoint": "Gap SFT 1 final (sft1-nemotron-gaps, 527 steps, local mlx-lm-lora SFT) from RL stage 6 final (rl6b-resume50) on Nemotron 3.5 Super e3 5-bit oQ5e; rank-16 LoRA",
+ "path": "training/rl/eval_ckpt.py, mlx_lm greedy, thinking off, cap 384",
+ "one item per call": true
+}
