@@ -89,7 +89,9 @@ def repair(conv_p, vtl_p, json_p, out_p, report=True):
             p, v = ph[0], next((q for q in ph[1:] if q["kind"] in NUC), ph[1])
             # the breath runs on into the vowel (H_OVER s), which comes back in under it: a breathy onset, not an attack
             ov = int(float(os.environ.get("H_OVER", "0.035")) * sr)
-            a, b = S(p["start"] - 0.005), S(p["end"]) + ov; n = b - a
+            # never before the previous word's last sound ends (a word-final r right before h keeps its whole trill)
+            prev_end = words[wi - 1]["phones"][-1]["end"] if wi and words[wi - 1]["phones"] else -1.0
+            a, b = S(max(p["start"] - 0.005, prev_end)), S(p["end"]) + ov; n = b - a
             if n > 64 + ov:
                 vx = mid(v)
                 z = np.fft.irfft(np.fft.rfft(rng.standard_normal(n)) * plain_env(vx, n, sr), n)
