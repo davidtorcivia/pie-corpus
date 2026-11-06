@@ -302,6 +302,7 @@ Started 2026-11-01 (owner: "Take notes as we go so we can note how to improve fu
   PIE→EN −1.6, PIE dialogue +0.9, translate_app PIE→EN +2.5.
 - **Lessons.** KL to the starting adapter is the right reference for RL after an SFT: the drift stays small and the
   SFT's gains survive. RL from there repairs the free-translation kinds the SFT broke, but not EN dialogue, whose
-  loss arrived with the pilot and stayed; its reward is loose (dialogue is scored on chrF to one reference), so the
-  next attempt at it is a better dialogue reward or the vocabulary rows mixed into far more real dialogue replay at
-  SFT time, not more RL steps. Pipeline: training/rl/run_rl8.sh.
+  loss arrived with the pilot and stayed. Why is open: dialogue is rewarded by local checks and the judge
+  (reward_rl.local_dialogue), while v1 scores it by chrF to its references, so the two can disagree. Next for it:
+  the vocabulary rows mixed into far more real dialogue replay at SFT time, rather than more RL steps. Pipeline:
+  training/rl/run_rl8.sh.
