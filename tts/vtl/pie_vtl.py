@@ -127,6 +127,8 @@ ROUNDED_BACK = {"u": 1.0, "w": 1.0, "o": 2 / 3}
 H_FADE = 0.040            # s of fade-out at the end of a word-final H
 H_DUCK = 0.8              # how much of VTL's own h interval the patch replaces
 T_BURST = None            # v11 --t-burst DB: an alveolar release burst on t before a vowel/glide (None: off = v10.1)
+ST_VOICE_LEAD = None      # v11 --st-voice-lead S: t after s, before a voiced sound, adducts only S before its release
+ST_CLOSURE = 0.0          # v11 --st-closure S: the s/t boundary moves S earlier (a longer t closure, same word length)
 T_BURST_DUR = 0.012       # s of that burst (a short-lag, unaspirated t)
 H_TILT = None             # dB/oct added to the vowel's transfer function for the h noise (None: per engine)
 
@@ -583,6 +585,8 @@ def compile_score(timed, total, words, base_st):
         cur_seg = spans[i][3]
         if spans[i - 1][2] in VOICELESS | {"stop"} and spans[i][2] not in VOICELESS and cur_seg is not None:
             lead = min(VOICE_LEAD, (spans[i - 1][1] - spans[i - 1][0]) * VOICE_LEAD_SHARE)
+            if ST_VOICE_LEAD is not None and i >= 2 and is_st(spans, i - 1):   # v11: the folds stay open into the release
+                lead = min(ST_VOICE_LEAD, (spans[i - 1][1] - spans[i - 1][0]) * 0.6)
             spans[i - 1][1] -= lead; spans[i][0] -= lead
     # VTL's folds are slow to start vibrating (measured onset lag: pip ~30 ms, VTL 2.4 ~40 ms) but
     # quick to stop. So only the voicing onsets move earlier (GLOTTIS_ADVANCE, eating into the
@@ -593,6 +597,8 @@ def compile_score(timed, total, words, base_st):
         if a_[2] in VOICELESS | {"stop"} and b_[2] not in VOICELESS:
             nominal = timed[i - 1][1] - timed[i - 1][0]
             sh = max(0.0, min(GLOTTIS_ADVANCE, (a_[1] - a_[0]) - 0.4 * nominal))
+            if ST_VOICE_LEAD is not None and i >= 2 and is_st(spans, i - 1):
+                sh = 0.0                                  # v11: ST_VOICE_LEAD is the whole lead
             a_[1] -= sh; b_[0] -= sh
         elif b_[2] in VOICELESS and a_[2] not in VOICELESS and ABDUCT_ADVANCE:
             room = (a_[1] - a_[0] - spill[i - 1] - MIN_VOICED) if a_[3] is not None and is_nucleus(a_[3]) \
@@ -751,6 +757,23 @@ def patch_frication(audio, timed, chi_level, gamma_level, sr=44100, seed=0):
         else:
             noise *= vowel_rms(s0) * 10 ** (gamma_level / 20)
             out[a:b] = out[a:b] + noise * env                         # keep voicing, add friction
+    return out
+
+
+def is_st(spans_or_timed, i):
+    """segment i is a t right after an s (v11 s+t options)"""
+    a, b = spans_or_timed[i - 1][-1], spans_or_timed[i][-1]
+    return i >= 1 and a is not None and b is not None and a.base == "s" and b.base == "t"
+
+
+def lengthen_st_closure(timed, extra):
+    """v11 --st-closure: move each s/t boundary `extra` s earlier, the s keeping at least 60% of itself"""
+    out = list(timed)
+    for i in range(1, len(out)):
+        if is_st(out, i):
+            (a0, a1, sa), (b0, b1, sb) = out[i - 1], out[i]
+            d = min(extra, 0.4 * (a1 - a0))
+            out[i - 1], out[i] = (a0, a1 - d, sa), (b0 - d, b1, sb)
     return out
 
 
@@ -1017,6 +1040,8 @@ def render(words, prefix, opt, engine, cadence, seed=0, pitch=None, accent=None)
         import vtlengine
         globals()["H_TILT"] = SPEAKER_H_TILT.get(tag, 2.0 if vtlengine.engine_kind(opt.speaker) == "2.4" else 0.0)
     timed, total, words = build_timeline(words, opt.rate, cadence=cadence)
+    if ST_CLOSURE:
+        timed = lengthen_st_closure(timed, ST_CLOSURE)
     base = speaker_pitch(opt.speaker) if pitch is None else pitch
     with open(prefix + ".ges", "w", encoding="utf-8") as f:
         f.write(compile_score(timed, total, words, base))
@@ -1161,6 +1186,9 @@ def main():
                     help="dB/oct brightening of the h noise (default per engine: pip 0, VTL 2.4 2)")
     ap.add_argument("--t-burst", type=float, default=None,
                     help="v11: dB (re the following vowel) of an alveolar release burst on t before a vowel/glide; off by default (v10.1)")
+    ap.add_argument("--st-voice-lead", type=float, default=None,
+                    help="v11: s before release a t after s starts adducting (default: v10.1's VOICE_LEAD + GLOTTIS_ADVANCE)")
+    ap.add_argument("--st-closure", type=float, default=0.0, help="v11: s by which a t after s is lengthened, taken from the s")
     ap.add_argument("--no-patch", action="store_true", help="raw VTL output, no frication/aspiration patch")
     ap.add_argument("--no-audio", action="store_true", help="only write the score and timing files")
     ap.add_argument("--batch", help="folder of timeline JSONs, or a .txt list of their paths")
@@ -1176,7 +1204,7 @@ def main():
     globals().update(BREATHY_SHAPE=a.breathy_shape,
                      BREATHY_F0_DIP=a.breathy_dip, ACCENT_RANGE=a.accent_range,
                      DECL_START=d0, DECL_END=d1, FINAL_FALL=a.final_fall,
-                     ACCENT_RISE=a.accent_rise, ACCENT_FALL=a.accent_fall, LAX_SHORT=a.lax_short, TRILL=a.trill, T_BURST=a.t_burst,
+                     ACCENT_RISE=a.accent_rise, ACCENT_FALL=a.accent_fall, LAX_SHORT=a.lax_short, TRILL=a.trill, T_BURST=a.t_burst, ST_VOICE_LEAD=a.st_voice_lead, ST_CLOSURE=a.st_closure,
                      VOICE_LEAD=a.voice_lead, VOICE_LEAD_SHARE=a.voice_lead_share, 
                      H_MODE=a.h_mode, H_DUCK=a.h_duck, H_FADE=a.h_fade,
                      LABIAL_CARRY=a.labial_carry, TB_RELEASE=a.tb_release,

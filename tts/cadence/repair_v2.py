@@ -13,11 +13,14 @@ heard them in the trained Kokoro voices:
   carries about the 2-8 kHz share of h before a back vowel.
 - Phrase-final r ended in a drag or hiss in the trained voices. In the corpus the r before a pause trails off into
   breath (v9/v10 phrase ends), which the recognizer hears as a vowel, ð, l or ɕ/ʃ rather than r. Fix: the audio after
-  a phrase-final r fades out over R_FADE s from the r's end, so the r ends voiced and no breath follows it.
+  a phrase-final r fades out over R_FADE s starting exactly at the r's end (render timing + alignment), so the r and
+  its trill contacts are untouched and no breath follows it.
 - t before i drifted toward k ("-sti" heard as "-ski") in the trained voices. This one the converter makes, in the
   male voice: s+t heard as k in 0 of 48 renders and 13 of 48 conversions (male 14 of 20, female 0 of 20 on the test
   clips). Replacing the converter's release here (step 3, T_FIX=1) does not undo it (still 13 of 48), nor does a VTL
-  burst before conversion (pie_vtl --t-burst -10: male 13 of 20), so step 3 is off by default and kept for experiment.
+  burst alone before conversion (pie_vtl --t-burst -10: male 13 of 20), so step 3 is off by default. What does work is
+  at the render: pie_vtl v11 --st-voice-lead 0.010 --t-burst -4 --st-closure 0.025 (male 17 -> 2 of 17 on the worst
+  clips), used to re-convert the 288 affected training clips (tts-corpus-v1/reconv-st).
 After repair v2 on the 28-per-context test set: h before e/i heard with a hushing onset in 2 of 25 (from 17 of 25),
 with a stop onset in 1 of 25 (from 9), 2-8 kHz share 0.93 -> 0.47 (inside qc.py's 0.25-0.60 h gate); phrase-final r
 heard as ʃ/ɕ in 0 of 28 (from 2).
@@ -99,7 +102,7 @@ def repair(conv_p, vtl_p, json_p, out_p, report=True):
                 log.append(f"{w['word']:14s} h -> breath   2-8k share {before:.2f} -> {share(out[a:b - ov], sr):.2f}")
         # 2. phrase-final r: no breath after it
         if ph and ph[-1]["phone"] == "r" and (nxt_w is None or nxt_w["line"] != w["line"] or nxt_w["start"] - w["end"] > 0.15):
-            p = ph[-1]; a = S(p["end"] - 0.01); n = int(R_FADE * sr)
+            p = ph[-1]; a = S(p["end"]); n = int(R_FADE * sr)    # from the r's own end: the trill is never touched
             stop = S(nxt_w["start"]) if nxt_w else len(out)
             out[a:a + n] *= np.linspace(1, 0, len(out[a:a + n])) ** 1.5
             out[a + n:stop] = 0.0
