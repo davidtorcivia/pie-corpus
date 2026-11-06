@@ -126,6 +126,8 @@ H_ROUND_BOOST = 5.0       # dB added to h coloured by u (o: 2/3 of it, w: as u):
 ROUNDED_BACK = {"u": 1.0, "w": 1.0, "o": 2 / 3}
 H_FADE = 0.040            # s of fade-out at the end of a word-final H
 H_DUCK = 0.8              # how much of VTL's own h interval the patch replaces
+T_BURST = None            # v11 --t-burst DB: an alveolar release burst on t before a vowel/glide (None: off = v10.1)
+T_BURST_DUR = 0.012       # s of that burst (a short-lag, unaspirated t)
 H_TILT = None             # dB/oct added to the vowel's transfer function for the h noise (None: per engine)
 
 
@@ -752,6 +754,34 @@ def patch_frication(audio, timed, chi_level, gamma_level, sr=44100, seed=0):
     return out
 
 
+def patch_t_release(audio, timed, level, sr=44100, seed=3):
+    """v11 --t-burst: VTL releases t with almost no high-frequency burst (4-8 kHz share ~0.000 in the v10 corpus), and
+    the speech-to-speech converter, trained on real speech, reads s + that dull stop as s + k: "sti" came back "ski" in
+    13 of 48 s-t-i clips (0 of 48 in the renders). A real alveolar t has a sharp burst concentrated above 3.5 kHz.
+    This lays one at every t release before a vowel or glide: band 3.5-8 kHz, T_BURST_DUR s, decaying, at `level`
+    dB re the following vowel. Short-lag (no aspiration), as the reconstruction requires.
+    Tested 2026-11-06 at -10 dB on 8 clips x 2 voices: the converted male voice still gave k in 13 of 20 s+t (14 of 20
+    without it); the female had none either way. Not a fix on its own; experimental, off by default."""
+    import numpy as np
+    rng = np.random.default_rng(seed)
+    out = audio.copy()
+    for k, (s0, s1, seg) in enumerate(timed[:-1]):
+        if seg is None or seg.base != "t" or seg.labial or seg.breathy:
+            continue
+        nx = timed[k + 1][2]
+        if nx is None or not (is_nucleus(nx) or kind(nx) == "G"):
+            continue
+        v0, v1 = timed[k + 1][0], timed[k + 1][1]
+        m = (v0 + v1) / 2; vx = audio[int((m - .02) * sr):int((m + .02) * sr)]
+        vr = np.sqrt((vx ** 2).mean()) + 1e-9
+        n = int(T_BURST_DUR * sr); a = max(int(s1 * sr) - n // 4, 0)
+        f = np.fft.rfftfreq(n, 1 / sr); band = ((f >= 3500) & (f <= 8000)).astype(float)
+        z = np.fft.irfft(np.fft.rfft(rng.standard_normal(n)) * band, n)
+        z = z / (np.sqrt((z ** 2).mean()) + 1e-12) * vr * 10 ** (level / 20) * np.exp(-np.linspace(0, 4, n))
+        out[a:a + n] += z[:len(out[a:a + n])]
+    return out
+
+
 # ---------------------------------------------------------------- phrase-end breath (final m n l)
 # A final nasal/lateral hum keeps its level until the folds part, so it can't carry a long decay
 # without becoming the long low hum ElevenLabs dislikes. The hum stops after PE_HUM; breath coloured
@@ -1000,6 +1030,8 @@ def render(words, prefix, opt, engine, cadence, seed=0, pitch=None, accent=None)
         audio = patch_frication(audio, timed, opt.chi_level, opt.gamma_level, seed=seed)
         if opt.h_mode == "patch":
             audio = patch_aspiration(audio, timed, opt.h_level, engine, seed=seed + 1)
+        if T_BURST is not None:                                   # v11
+            audio = patch_t_release(audio, timed, T_BURST, seed=seed + 3)
     if TRILL == "auto" or TRILL > 1:
         audio = patch_trill(audio, timed)
     if not opt.no_patch and PHRASE_END and PE_BREATH is not None:
@@ -1127,6 +1159,8 @@ def main():
     ap.add_argument("--h-duck", type=float, default=H_DUCK, help="share of VTL's own h interval replaced (0-1)")
     ap.add_argument("--h-tilt", type=float, default=None,
                     help="dB/oct brightening of the h noise (default per engine: pip 0, VTL 2.4 2)")
+    ap.add_argument("--t-burst", type=float, default=None,
+                    help="v11: dB (re the following vowel) of an alveolar release burst on t before a vowel/glide; off by default (v10.1)")
     ap.add_argument("--no-patch", action="store_true", help="raw VTL output, no frication/aspiration patch")
     ap.add_argument("--no-audio", action="store_true", help="only write the score and timing files")
     ap.add_argument("--batch", help="folder of timeline JSONs, or a .txt list of their paths")
@@ -1142,7 +1176,7 @@ def main():
     globals().update(BREATHY_SHAPE=a.breathy_shape,
                      BREATHY_F0_DIP=a.breathy_dip, ACCENT_RANGE=a.accent_range,
                      DECL_START=d0, DECL_END=d1, FINAL_FALL=a.final_fall,
-                     ACCENT_RISE=a.accent_rise, ACCENT_FALL=a.accent_fall, LAX_SHORT=a.lax_short, TRILL=a.trill,
+                     ACCENT_RISE=a.accent_rise, ACCENT_FALL=a.accent_fall, LAX_SHORT=a.lax_short, TRILL=a.trill, T_BURST=a.t_burst,
                      VOICE_LEAD=a.voice_lead, VOICE_LEAD_SHARE=a.voice_lead_share, 
                      H_MODE=a.h_mode, H_DUCK=a.h_duck, H_FADE=a.h_fade,
                      LABIAL_CARRY=a.labial_carry, TB_RELEASE=a.tb_release,
