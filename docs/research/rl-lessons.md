@@ -306,3 +306,30 @@ Started 2026-11-01 (owner: "Take notes as we go so we can note how to improve fu
   (reward_rl.local_dialogue), while v1 scores it by chrF to its references, so the two can disagree. Next for it:
   the vocabulary rows mixed into far more real dialogue replay at SFT time, rather than more RL steps. Pipeline:
   training/rl/run_rl8.sh.
+
+## Recovering stage 8's losses (2026-11-05/06): dialogue judged by Opus, and adapter blends
+
+- **The EN dialogue "loss" is mostly the measure.** v1 scores dialogue by chrF to one reference on 16 items (about ten
+  distinct turns, greedy decoding), so any weight change flips whole replies. Judged instead by Opus on 104 dialogue
+  items (v1's 64 plus stage 8's 40 validation rows; pairwise in a hashed order, and each reply alone under the
+  judge.DIALOGUE brief), rl8 beats rl6b 17 to 10 with 77 ties, ok 93 vs 88 (training/rl/dialogue_compare.py). Two or
+  three real collapses ("which one shall I cook?" answered "my grandmother does not eat") sit inside that. Without
+  the dialogue items v1 is 87.35 (rl8) vs 87.99 (rl6b): the real remaining gap is morphology (inflect −1.6, drills
+  paradigm cells 0.889 vs 0.904).
+- **Blends.** rl6b and rl8 adapters blended exactly by stacking along the rank (a·ΔW_rl6b + (1−a)·ΔW_rl8, rank 32;
+  training/rl/blend_adapters.py, run_blend.sh), each measured on stage 8's whole bar:
+
+  | | rl6b | rl8 final | a = .5 | a = .4 | a = .3 | bar |
+  |---|---|---|---|---|---|---|
+  | v1 chrF / exact | 73.09 / 0.917 | 71.99 / 0.896 | 72.79 / 0.917 | 72.48 / 0.917 | 72.34 / 0.917 | ≥ ~72.6 |
+  | drills_v2 paradigm cells | 0.904 | 0.889 | 0.906 | 0.903 | 0.899 | ≥ 0.90 |
+  | trained bare prompts never / sometimes / always | 78 / 3 / 2 | 3 / 15 / 65 | 37 / 34 / 12 | 21 / 33 / 29 | 10 / 34 / 39 | never ≤ ~20 |
+  | held-out sentences, trained / control | 0.103 / 0.079 | 0.765 / 0.103 | 0.304 / 0.071 | 0.446 / 0.087 | 0.588 / 0.087 | trained ≫ 0.10 |
+  | control never | 47 | 43 | 45 | 45 | 44 | steady |
+  | Opus dialogue vs rl8 (wins, ok of 104) | | | 10–10, 92 vs 93 | 8–11, 91 vs 91 | 8–6, 93 vs 91 | |
+
+- **Lessons.** Blending trades smoothly along one axis: v1 and paradigm cells come back toward rl6b as the words go
+  away, with no blend better than its two ends on both. a = .4 sits on the bar's edge (v1 −0.61, paradigm 0.903,
+  never-right 21); none clears every criterion with margin. The words and the morphology compete for the same weights
+  at this rank; the next step that could have both is training, not mixing (the vocabulary rows inside a stage whose
+  replay keeps the paradigm drills).
