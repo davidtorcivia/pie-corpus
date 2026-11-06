@@ -267,3 +267,41 @@ Started 2026-11-01 (owner: "Take notes as we go so we can note how to improve fu
   first pass over these rows, not from overtraining; the paradigm-cell gain of stage 6 (0.904) is lost by every
   SFT run so far (sft1 0.887 too). Next, if any: the same rows mixed into much more real EN→PIE replay, or the
   vocabulary taught inside an RL stage, where the frozen sets have held.
+
+## Stage 8 (rl8-nemotron-vocab, 2026-11-05): RL on the vocabulary pilot's adapter
+
+- **What.** GRPO resumed from the vocabulary pilot's final adapter on stage 6's prompts plus the pilot's 35 words not
+  yet always right (each twice): 1673 prompts, 150 steps, ~122 s/step, peak 164 GB, about 7 h 50 min. The question:
+  the SFT knows words the base does not; can RL restore what it cost on free EN→PIE without losing the words?
+- **New reference: KL to the starting adapter** (grpo.py PIE_REF_START, commit 34e440a). Earlier stages took the KL
+  against the policy with its LoRA switched off (AdapterOff), which was right when the adapter started from zero. Here
+  the policy starts from a trained adapter: KL to the bare model would start large and pull the run back toward a
+  model that never knew these words. With PIE_REF_START the reference is the policy with its LoRA weights swapped back
+  to the snapshot it resumed from (AdapterAtStart: snapshot at start, `update(start)` → forward → `update(now)`), so
+  KL starts at 0, measures drift from the pilot, and needs no second copy of the 122B model in memory.
+- **Training was calm.** KL to the start 0.02–0.03 throughout (KL_STOP 0.3 never near), reward mean 0.79 → 0.82 →
+  0.78 at the end, validation loss 0.0051 (50) / 0.0035 (100) / 0.0041 (150), no stop events. Steps 145–150 took
+  27 min (a watcher stall alert at 19:16); the trainer recovered on its own.
+- **Results.**
+
+  | | rl6b | vocab1 final | rl8 step 50 | rl8 step 100 | rl8 final |
+  |---|---|---|---|---|---|
+  | v1 chrF / exact | 73.09 / 0.917 | 71.31 / 0.917 | 72.17 / 0.896 | 71.82 / 0.875 | 71.99 / 0.896 |
+  | drills_v2 paradigm cells | 0.904 | 0.885 | 0.887 | 0.885 | 0.889 |
+  | v1 translate_en_pie / translate_app EN→PIE chrF | 78.8 / 67.6 | 74.3 / 63.8 | 78.2 / 67.3 | 76.8 / 66.8 | 78.6 / 66.6 |
+  | trained bare prompts never / sometimes / always | 78 / 3 / 2 | 2 / 33 / 48 | – | 3 / 20 / 60 | 3 / 15 / 65 |
+  | held-out sentences, trained / control | 0.103 / 0.079 | 0.794 / 0.103 | – | 0.775 / 0.119 | 0.765 / 0.103 |
+  | control never | 47 | 41 | – | 44 | 43 |
+
+- **The words held and EN→PIE translation came back.** never-right 3, always 48 → 65, held-out use 0.77, control
+  steady. translate_en_pie 74.3 → 78.6 (rl6b 78.8) and translate_app EN→PIE 63.8 → 66.6: the two kinds the pilot
+  hurt most returned to within a point of rl6b, by step 50.
+- **Bar (set before launch): not met.** v1 chrF 71.99 is 1.1 below rl6b (bar ~0.5) and paradigm cells 0.889 < 0.90.
+  No benchmark round proposed. By kind against rl6b (final): EN dialogue EN→PIE −5.6 and its glossed form −4.4 (no
+  better than the pilot, although 229 dialogue prompts were in the mix), inflection −1.6, continuation −2.1,
+  PIE→EN −1.6, PIE dialogue +0.9, translate_app PIE→EN +2.5.
+- **Lessons.** KL to the starting adapter is the right reference for RL after an SFT: the drift stays small and the
+  SFT's gains survive. RL from there repairs the free-translation kinds the SFT broke, but not EN dialogue, whose
+  loss arrived with the pilot and stayed; its reward is loose (dialogue is scored on chrF to one reference), so the
+  next attempt at it is a better dialogue reward or the vocabulary rows mixed into far more real dialogue replay at
+  SFT time, not more RL steps. Pipeline: training/rl/run_rl8.sh.
