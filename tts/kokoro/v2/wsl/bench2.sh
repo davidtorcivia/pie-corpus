@@ -10,9 +10,9 @@ while read -r name envs; do
   bash $W/run_stage.sh 2 v2l_stage2 $B/$name "PIE_FRESH=1;PIE_BENCH=1;PIE_EPOCHS=1;PIE_LOG_DIR=$B/$name;$FS;$envs"
 done <<LIST
 b3-eager PIE_BATCH=3;PIE_MAX_STEPS=60
-b6-eager PIE_BATCH=6;PIE_MAX_STEPS=50
 b6-ckpt PIE_BATCH=6;PIE_MAX_STEPS=50;PIE_CKPT=$D
 b8-ckpt PIE_BATCH=8;PIE_MAX_STEPS=40;PIE_CKPT=$D
 b12-ckpt PIE_BATCH=12;PIE_MAX_STEPS=30;PIE_CKPT=$D
+b16-ckpt PIE_BATCH=16;PIE_MAX_STEPS=24;PIE_CKPT=$D
 LIST
 touch $B/DONE

@@ -181,18 +181,36 @@ def mem_report(step):
 
 def checkpoint_modules(model, names):
     """PIE_CKPT=msd,mpd,decoder: activation checkpointing on those modules' forward (recomputed in backward instead of
-    stored). Exact (RNG state preserved for any dropout); costs a second forward on an otherwise idle GPU, and frees the
-    memory that capped the batch size (Stage 1, batch 4: msd 6.4, decoder 5.4, mpd 3.1 GiB of activations)."""
+    stored), freeing the memory that capped the batch size (Stage 1, batch 4: msd 6.4, decoder 5.4, mpd 3.1 GiB).
+    Exact: torch's RNG is replayed by checkpoint itself, and Python's and numpy's (the decoder draws its F0/N smoothing
+    with random.randint) are replayed here, so the recompute takes the same branch as the forward. Names may be
+    dotted (decoder.generator)."""
     import functools
     from torch.utils.checkpoint import checkpoint
     for name in names:
-        m = unwrap(model[name])
+        m = model[name.split(".")[0]]
+        for part in name.split(".")[1:]:
+            m = getattr(unwrap(m), part)
+        m = unwrap(m)
         f = m.forward
 
         @functools.wraps(f)
         def g(*a, _f=f, **k):
             if not torch.is_grad_enabled():
                 return _f(*a, **k)
-            return checkpoint(_f, *a, use_reentrant=False, **k)
+            saved = (random.getstate(), np.random.get_state())
+            calls = [0]
+
+            def run(*aa, **kk):
+                calls[0] += 1
+                if calls[0] == 1:                     # the forward: draws as usual
+                    return _f(*aa, **kk)
+                now = (random.getstate(), np.random.get_state())
+                random.setstate(saved[0]); np.random.set_state(saved[1])
+                try:                                  # the recompute: the forward's draws again
+                    return _f(*aa, **kk)
+                finally:
+                    random.setstate(now[0]); np.random.set_state(now[1])
+            return checkpoint(run, *a, use_reentrant=False, **k)
         m.forward = g
         print("PIE checkpointed", name, flush=True)
