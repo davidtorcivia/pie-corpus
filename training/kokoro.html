@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PIE Kokoro v2</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--bg:#f6f4ef;--fg:#1c1b19;--dim:#6d675e;--card:#fffdf9;--line:#e3ddd2;--accent:#9a4b16;--ok:#2f8f4f;--bad:#b3261e;--warn:#9a6b00}
+@media (prefers-color-scheme:dark){:root{--bg:#141310;--fg:#ece6dc;--dim:#a09888;--card:#1d1b17;--line:#332e26;--accent:#e08a4c;--ok:#5fbf7f;--bad:#f2867c;--warn:#e0b44c}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.45 ui-sans-serif,system-ui,sans-serif}
+main{max-width:1280px;margin:0 auto;padding:20px 16px 60px}
+h1{font:600 22px Georgia,serif;margin:0 0 4px}
+a{color:var(--accent)}
+.sub{color:var(--dim);margin-bottom:12px}
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+select{font:inherit;background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:4px 8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;overflow-x:auto;min-width:0}
+.card h2{font-size:13px;margin:0 0 8px;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.note{color:var(--dim);font-size:12px;margin:-4px 0 8px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.kpi .v{font:600 21px ui-sans-serif,system-ui;font-variant-numeric:tabular-nums}
+.kpi .l{color:var(--dim);font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:5px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--dim);font-weight:600}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}.dimt{color:var(--dim)}
+pre{font-size:12px;color:var(--dim);white-space:pre-wrap;word-break:break-word;margin:0;max-height:420px;overflow:auto}
+.wide{grid-column:1/-1}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<h1>PIE Kokoro v2</h1>
+<div class="sub">StyleTTS2 / kikiri-tts, native Windows on the RTX 5090; corpus v2 (four voices, 15.5 h). Reads <code>Q:\AI\PIE\runs\kokoro-v2\*\metrics.jsonl</code>. <a href="/tts">v1 run</a> · <a href="/">fine-tuning</a> · refreshes every 20 s</div>
+<div class="bar"><label for="run">Run</label><select id="run"></select><a id="raw" href="#">raw JSON</a></div>
+<div class="grid">
+  <div class="card wide"><h2>Status</h2><div class="kpis" id="kpis"></div><div id="alerts"></div></div>
+  <div class="card"><h2>Mel loss</h2><div class="note">train (mean of each 10-step window) and validation, x = epoch</div><canvas id="mel"></canvas></div>
+  <div class="card"><h2>Other losses</h2><div class="note">each divided by its first non-zero value</div><canvas id="other"></canvas></div>
+  <div class="card"><h2>Speed and memory</h2><div class="note">s/step (left), PyTorch peak GiB (right; cap 0.80 × 32 GB ≈ 25.6)</div><canvas id="speed"></canvas></div>
+  <div class="card"><h2>GPU</h2><div class="note">nvidia-smi every 30 s: memory GB incl. display (left), utilisation % and temperature °C (right)</div><canvas id="gpu"></canvas></div>
+  <div class="card"><h2>Events</h2><div class="note">start / resume / checkpoints / validation / stop, newest first</div><table id="events"></table></div>
+  <div class="card"><h2>Benchmarks</h2><div class="note">median s/step after warm-up (compile), every bench run</div><table id="bench"></table></div>
+  <div class="card"><h2>Run manifest</h2><pre id="manifest"></pre></div>
+  <div class="card"><h2>Console tail</h2><pre id="tail"></pre></div>
+</div>
+</main>
+<script>
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const PALETTE = ["#9a4b16", "#2f6f9f", "#2f8f4f", "#8a4f9f", "#b08a1e", "#5f6b6e", "#b3261e", "#1e8a8a", "#7a5c3a", "#4a4ab0"];
+const charts = {};
+function chart(id, cfg) {
+  if (charts[id]) { charts[id].data = cfg.data; charts[id].update("none"); return; }
+  cfg.options = Object.assign({animation: false, responsive: true, maintainAspectRatio: true, aspectRatio: 1.7, parsing: false,
+    interaction: {mode: "nearest", intersect: false},
+    plugins: {legend: {labels: {color: css("--dim"), boxWidth: 12}}},
+    scales: Object.fromEntries(Object.entries(cfg.scales || {x: {}, y: {}}).map(([k, v]) => [k, Object.assign(
+      {ticks: {color: css("--dim")}, grid: {color: css("--line")}}, v)]))}, cfg.options || {});
+  charts[id] = new Chart(document.getElementById(id), cfg);
+}
+const esc = s => String(s).replace(/[&<>]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;"}[c]));
+function age(s) { return s < 90 ? `${Math.round(s)} s` : s < 5400 ? `${Math.round(s / 60)} min` : `${(s / 3600).toFixed(1)} h`; }
+const med = a => { const b = [...a].sort((x, y) => x - y); return b.length ? b[Math.floor(b.length / 2)] : null; };
+let runs = [], current = null;
+
+async function loadRuns() {
+  try { runs = await (await fetch("/api/kokoro", {cache: "no-store"})).json(); } catch (e) { return; }
+  const sel = document.getElementById("run");
+  const names = runs.map(r => r.name);
+  if (!current || !names.includes(current)) {
+    current = ["stage2", "stage1"].find(n => names.includes(n)) || names[names.length - 1] || null;
+  }
+  sel.innerHTML = [...runs].reverse().map(r => `<option ${r.name === current ? "selected" : ""}>${esc(r.name)}</option>`).join("");
+  renderBench();
+}
+function renderBench() {
+  document.getElementById("bench").innerHTML = "<tr><th>run</th><th>batch</th><th>s/step</th><th>ms/sample</th><th>peak GiB</th><th>env</th></tr>" +
+    runs.filter(r => r.name.startsWith("bench")).map(r => benchRow(r)).join("");
+}
+const benchCache = {}, pending = new Set();
+function benchRow(r) {
+  const b = benchCache[r.name] && benchCache[r.name].updated === r.updated ? benchCache[r.name] : null;
+  if (!b && !pending.has(r.name)) { pending.add(r.name); fetch(`/api/kokoro?run=${encodeURIComponent(r.name)}`).then(x => x.json()).then(d => {
+    pending.delete(r.name);
+    const tr = d.train.slice(2), sp = med(tr.map(e => e.s_per_step)), bs = (d.start || {}).batch_size;
+    const env = d.manifest ? Object.entries(d.manifest.env).filter(([k]) => !/LOG_DIR|FRESH|BENCH|EPOCHS|MAX_STEPS|GPU_MEM|TF32/.test(k)).map(([k, v]) => `${k.replace("PIE_", "")}=${v}`).join(" ") : "";
+    benchCache[r.name] = {bs, sp, peak: Math.max(0, ...d.train.map(e => e.peak_gib)), env, n: d.train.length, updated: r.updated};
+    renderBench(); }).catch(() => pending.delete(r.name)); }
+  if (!b) return `<tr><td>${esc(r.name)}</td><td colspan="5" class="dimt">…</td></tr>`;
+  if (b.n < 3) return `<tr><td>${esc(r.name)}</td><td colspan="5" class="dimt">${b.n} reports (running or failed)</td></tr>`;
+  return `<tr><td>${esc(r.name.replace(/^bench\d*\//, ""))}</td><td>${b.bs}</td><td>${b.sp.toFixed(3)}</td><td>${(b.sp / b.bs * 1000).toFixed(0)}</td><td>${b.peak.toFixed(1)}</td><td class="dimt">${esc(b.env)}</td></tr>`;
+}
+
+async function tick() {
+  await loadRuns();
+  if (!current) return;
+  document.getElementById("raw").href = `/api/kokoro?run=${encodeURIComponent(current)}`;
+  let d;
+  try { d = await (await fetch(`/api/kokoro?run=${encodeURIComponent(current)}`, {cache: "no-store"})).json(); } catch (e) { return; }
+  const T = d.train, last = T[T.length - 1], st = d.start || {};
+  const first = d.events.find(e => e.event === "start" && !e.resumed) || st;
+  const ep0 = first.start_epoch || 0, eps = (st.bounds || {}).epochs || st.epochs, spe = st.steps_per_epoch;
+  const doneSteps = last ? (last.epoch - ep0) * spe + last.step : 0, total = eps && spe ? (eps - ep0) * spe : null;
+  const sps = med(T.slice(-6).map(e => e.s_per_step));
+  const since = d.now - d.updated;
+  const ev = d.last_event;
+  const state = ev === "done" ? ["done", "ok"] : ev === "stopped" ? ["stopped (resumable)", "warn"] :
+                since > 600 ? [`silent ${age(since)}`, "bad"] : ["running", "ok"];
+  const ck = [...d.events].reverse().find(e => e.event === "checkpoint");
+  const vals = d.events.filter(e => e.event === "val");
+  const k = [
+    ["State", `<span class="${state[1]}">${state[0]}</span>`],
+    ["Stage", d.name],
+    ["Epoch", last ? `${last.epoch - ep0 + 1} / ${eps - ep0}` : "—"],
+    ["Step", last ? `${last.step} / ${spe}` : "—"],
+    ["Progress", total ? `${(100 * doneSteps / total).toFixed(1)} %` : "—"],
+    ["s / step", sps ? sps.toFixed(2) : "—"],
+    ["ETA (stage)", sps && total && ev !== "done" ? age((total - doneSteps) * sps) : "—"],
+    ["Train mel", last ? last.mel.toFixed(3) : "—"],
+    ["Val mel", vals.length ? vals[vals.length - 1].mel.toFixed(3) : "—"],
+    ["Peak GiB", last ? last.peak_gib.toFixed(1) : "—"],
+    ["Last save", ck ? `${age(d.now - ck.t)} ago` : "—"],
+  ];
+  document.getElementById("kpis").innerHTML = k.map(([l, v]) => `<div class="kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
+  const al = [];
+  if (last && !isFinite(last.mel)) al.push(`<div class="bad">Mel loss is not finite.</div>`);
+  if (d.errors.length) al.push(`<div class="bad">${d.errors.map(esc).join("<br>")}</div>`);
+  if (d.stopped) al.push(`<div class="warn">STOP requested: the trainer saves and exits at its next step.</div>`);
+  document.getElementById("alerts").innerHTML = al.join("");
+
+  const X = e => e.epoch - ep0 + e.step / spe;
+  chart("mel", {type: "line", data: {datasets: [
+    {label: "train", data: T.map(e => ({x: X(e), y: e.mel})), borderColor: PALETTE[0], pointRadius: 0, borderWidth: 1.4},
+    {label: "val", data: vals.map(e => ({x: e.epoch - ep0 + 1, y: e.mel})), borderColor: PALETTE[1], backgroundColor: PALETTE[1], pointRadius: 4, borderWidth: 2}]},
+    scales: {x: {type: "linear", title: {display: true, text: "epoch", color: css("--dim")}}, y: {}}});
+  const keys = last ? Object.keys(last).filter(x => !["event", "stage", "t", "epoch", "step", "iters", "mel", "lr", "s_per_step", "peak_gib"].includes(x)) : [];
+  chart("other", {type: "line", data: {datasets: keys.map((kk, i) => {
+    const base = (T.find(p => p[kk]) || {})[kk] || 1;
+    return {label: kk, data: T.map(p => ({x: X(p), y: p[kk] / base})), borderColor: PALETTE[(i + 2) % PALETTE.length], pointRadius: 0, borderWidth: 1.1};
+  })}, scales: {x: {type: "linear"}, y: {}}});
+  chart("speed", {type: "line", data: {datasets: [
+    {label: "s/step", data: T.map(e => ({x: X(e), y: e.s_per_step})), borderColor: PALETTE[0], pointRadius: 0, borderWidth: 1.2, yAxisID: "y"},
+    {label: "peak GiB", data: T.map(e => ({x: X(e), y: e.peak_gib})), borderColor: PALETTE[1], pointRadius: 0, yAxisID: "y1"}]},
+    scales: {x: {type: "linear", title: {display: true, text: "epoch", color: css("--dim")}}, y: {position: "left", min: 0}, y1: {position: "right", min: 0, max: 32, grid: {drawOnChartArea: false}}}});
+  const t0 = d.gpu.length ? d.gpu[0].t : 0;
+  chart("gpu", {type: "line", data: {datasets: [
+    {label: "memory GB", data: d.gpu.map(x => ({x: (x.t - t0) / 3600, y: x.used / 1024})), borderColor: PALETTE[1], pointRadius: 0, yAxisID: "y"},
+    {label: "util %", data: d.gpu.map(x => ({x: (x.t - t0) / 3600, y: x.util})), borderColor: PALETTE[2], pointRadius: 0, borderWidth: 1, yAxisID: "y1"},
+    {label: "temp °C", data: d.gpu.map(x => ({x: (x.t - t0) / 3600, y: x.temp})), borderColor: PALETTE[6], pointRadius: 0, borderWidth: 1, yAxisID: "y1"}]},
+    scales: {x: {type: "linear", title: {display: true, text: "hours", color: css("--dim")}}, y: {position: "left", min: 0, max: 33}, y1: {position: "right", min: 0, max: 100, grid: {drawOnChartArea: false}}}});
+  document.getElementById("events").innerHTML = "<tr><th>when</th><th>event</th><th>detail</th></tr>" + [...d.events].reverse().slice(0, 60).map(e => {
+    const det = e.event === "val" ? `epoch ${e.epoch - ep0 + 1}: mel ${e.mel.toFixed(4)}${e.dur != null ? `, dur ${e.dur.toFixed(3)}, F0 ${e.f0.toFixed(3)}` : ""} (${e.epoch_minutes} min)`
+      : e.event === "checkpoint" ? `${e.file} @ epoch ${e.epoch - ep0 + 1} step ${e.step} (${e.why}, ${e.seconds} s, ${(e.bytes / 1e9).toFixed(2)} GB)`
+      : e.event === "epoch_checkpoint" ? `${e.file} (val mel ${e.val_mel.toFixed(4)})`
+      : e.event === "start" ? `${e.resumed ? "resumed" : "fresh"} at epoch ${e.start_epoch - ep0 + 1} step ${e.start_step}; batch ${e.batch_size}, max_len ${e.max_len}`
+      : e.event === "resume" ? `epoch ${e.epoch - ep0 + 1} step ${e.step}, iters ${e.iters}`
+      : e.event === "done" ? `${e.hours} h` : JSON.stringify(Object.fromEntries(Object.entries(e).filter(([k]) => !["event", "stage", "t"].includes(k))));
+    return `<tr><td>${new Date(e.t * 1000).toLocaleString([], {month: "short", day: "numeric", hour: "2-digit", minute: "2-digit"})}</td><td>${esc(e.event)}</td><td>${esc(det)}</td></tr>`;
+  }).join("");
+  const m = d.manifest || {};
+  document.getElementById("manifest").textContent = JSON.stringify({started: m.started, torch: m.torch, cuda: m.cuda, triton: m.triton, gpu: m.gpu, env: m.env,
+    train: m.train_data, val: m.val_data, batch_size: (m.config || {}).batch_size, max_len: (m.config || {}).max_len, history: m.history}, null, 1);
+  document.getElementById("tail").textContent = d.tail.join("\n");
+}
+document.getElementById("run").addEventListener("change", e => { current = e.target.value; Object.values(charts).forEach(c => c.destroy()); for (const k in charts) delete charts[k]; tick(); });
+tick(); setInterval(tick, 20000);
+</script>
+</body>
+</html>
