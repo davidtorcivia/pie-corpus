@@ -16,6 +16,8 @@ IFS=';' read -ra KV <<< "$ENVS"; for kv in "${KV[@]}"; do [[ "$kv" == *=* ]] && 
 CFG=$K/configs/$CONFIG.yml
 [ -z "$LOGDIR" ] && LOGDIR=$(grep '^log_dir:' $CFG | sed 's/^log_dir: *//')
 [ -n "${PIE_LOG_DIR:-}" ] && LOGDIR=$PIE_LOG_DIR
+# the trainer writes where the console log goes (a LOG_DIR argument alone used to leave it on the config's log_dir)
+[ -n "$LOGDIR" ] && export PIE_LOG_DIR=$LOGDIR
 mkdir -p "$LOGDIR"; CON=$LOGDIR/console.log
 # the audio: refresh the local copy from Q: when the corpus changed
 rsync -a --delete /mnt/q/AI/PIE/data/tts-corpus-v2/wavs/ /root/kokoro-ft/data-v2/wavs/
