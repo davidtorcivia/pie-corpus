@@ -155,7 +155,8 @@ the old model's two voices stand in for the four.
 
 | Model | Zazy | Antonio | Valeria | W02 | Male | Female | All |
 |---|---|---|---|---|---|---|---|
-| Previous model (Nov 6, `final/kokoro_pie_stage2_e10.pth`) | 70.9 | 71.6 | 74.9 | 74.3 | 71.1 | 74.7 | 73.0 |
+| The site's model until now (Nov 6 run, Stage 2 e00005, `kokoro-final-v2`) | 70.0 | 70.7 | 76.6 | 76.1 | 70.3 | 76.4 | 73.4 |
+| The Nov 3 model (`final/kokoro_pie_stage2_e10.pth`) | 70.9 | 71.6 | 74.9 | 74.3 | 71.1 | 74.7 | 73.0 |
 | Epoch 14 | 55.7 | 55.8 | 58.2 | 60.5 | 55.7 | 59.0 | 57.4 |
 | Epoch 15 | 55.0 | 55.5 | 57.2 | 60.2 | 55.2 | 58.3 | 56.8 |
 | The val recordings, on their corpus timing | 65.0 | 65.9 | 68.4 | 70.0 | 65.3 | 69.0 | 67.2 |
@@ -164,6 +165,6 @@ the old model's two voices stand in for the four.
   construction. That row is a rough reference, not a ceiling.
 - On a whole-word measure like this, PhoneticXeus misses about 45 % of the sounds of real recorded speech (the human
   floor), so absolute numbers run high.
-- The old-to-new drop of 16 points (22 % relative) is the finding.
+- The drop from the site's model to epoch 15, 16.6 points (23 % relative), is the finding.
 
 Listening page: https://claude.ai/artifact/Cs3QeRwqeZjdR14Cbd98XZ
