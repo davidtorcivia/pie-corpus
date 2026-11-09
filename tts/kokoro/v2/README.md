@@ -125,3 +125,45 @@ batch 4, 1.10 at batch 8), so a bigger batch is almost free throughput.
   module, which computes the same value.
 - **Stage 1 resume.** Stage 1 resumed one epoch early, re-running the epoch it had just saved. The new `last.pth`
   stores the epoch, the step within it and the absolute epoch bounds.
+
+## The run (2026-11-08 18:10 → 2026-11-09 05:00)
+
+Kokoro base, Stage 1 10 epochs (2.75 h, batch 12), Stage 2 15 epochs (7.9 h, batch 8), 10.7 h in all.
+
+| Validation | Previous run (Nov 6), final | This run |
+|---|---|---|
+| Stage 1 mel | 0.211 (best) | 0.197 (epoch 9) |
+| Stage 2 mel | 0.235 | 0.223 (epoch 15) |
+| Duration | 0.528 | 0.437 (epoch 15) |
+| F0 | 1.333 | 1.236 (epoch 15) |
+
+The validation sets differ, so compare these loosely.
+
+**Synthesis from text** (`kokoro_select_v3.py`, all 224 val clips against their recordings):
+
+| Epoch | MCD | F0 RMSE (cents) | Clipped clips |
+|---|---|---|---|
+| 12 | 22.15 | 353 | 1 |
+| 13 | 22.63 | 356 | 1 |
+| 14 | 21.74 | 347 | 0 |
+| 15 | 22.42 | 352 | 2 |
+
+**Recognizer error, word by word** (`synth_eval.py` here, `chimera-vocal-synth/pie/kokoro_score.py`). PhoneticXeus
+transcribes each word inside the span Kokoro's own durations give it, and the transcription is compared with the
+corpus target phones by edit distance. The scorer uses pie/wordscore.py's broad equivalences. Same 224 val clips;
+the old model's two voices stand in for the four.
+
+| Model | Zazy | Antonio | Valeria | W02 | Male | Female | All |
+|---|---|---|---|---|---|---|---|
+| Previous model (Nov 6, `final/kokoro_pie_stage2_e10.pth`) | 70.9 | 71.6 | 74.9 | 74.3 | 71.1 | 74.7 | 73.0 |
+| Epoch 14 | 55.7 | 55.8 | 58.2 | 60.5 | 55.7 | 59.0 | 57.4 |
+| Epoch 15 | 55.0 | 55.5 | 57.2 | 60.2 | 55.2 | 58.3 | 56.8 |
+| The val recordings, on their corpus timing | 65.0 | 65.9 | 68.4 | 70.0 | 65.3 | 69.0 | 67.2 |
+
+- The recordings are scored on source timings, which can drift from the converted audio; Kokoro's spans are exact by
+  construction. That row is a rough reference, not a ceiling.
+- On a whole-word measure like this, PhoneticXeus misses about 45 % of the sounds of real recorded speech (the human
+  floor), so absolute numbers run high.
+- The old-to-new drop of 16 points (22 % relative) is the finding.
+
+Listening page: https://claude.ai/artifact/Cs3QeRwqeZjdR14Cbd98XZ
