@@ -214,6 +214,10 @@ Started 2026-11-01 (owner: "Take notes as we go so we can note how to improve fu
   dialogue round), 0 on PIE→EN, -0.5 on EN→PIE. **Lesson: hints and the constraint do not raise EN→PIE** (the
   segment the vocabulary gaps should show in; it drops 1.5 on 24 changed answers) and lower chrF by about 6; a small
   dialogue gain at most. The engine raises the share of known forms, not meaning. Not worth shipping as is.
+- **Both judges (2026-11-10, Sol back; owner picked this as the final model).** Opus + Sol: **86.8 lenient / 85.4
+  strict** vs e3 88.5 / 86.2 and rl5 87.7 / 86.2. By segment vs e3 (lenient): EN→PIE 81.0 vs 88.1, PIE→EN 87.5 vs 88.7,
+  dialogue 90.6 vs 87.1, paradigm 89.8 vs 88.4, inflection 89.6 vs 89.9. Sol confirms the Opus-only reading: the
+  dialogue gain is real, the EN→PIE loss is larger, and e3 stays first overall.
 
 ## Vocabulary pilot (vocab1-nemotron, 2026-11-04/05): many varied exposures per word
 

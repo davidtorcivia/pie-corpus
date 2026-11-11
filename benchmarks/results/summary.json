@@ -1005,6 +1005,75 @@
   "pie_score": null
  },
  {
+  "contestant": "ours-nemotron35-rl6-engine",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 89.0,
+    "lenient": 89.6
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 89.7,
+    "lenient": 89.8
+   },
+   "en_pie": {
+    "n": 0,
+    "of": 42
+   },
+   "pie_en": {
+    "n": 0,
+    "of": 42
+   },
+   "dialogue": {
+    "n": 0,
+    "of": 64
+   }
+  },
+  "pie_score": null
+ },
+ {
+  "contestant": "ours-nemotron35-rl6-engine2",
+  "segments": {
+   "inflection": {
+    "n": 335,
+    "of": 335,
+    "strict": 89.0,
+    "lenient": 89.6
+   },
+   "paradigm": {
+    "n": 124,
+    "of": 124,
+    "strict": 89.7,
+    "lenient": 89.8
+   },
+   "en_pie": {
+    "n": 42,
+    "of": 42,
+    "strict": 76.8,
+    "lenient": 81.0
+   },
+   "pie_en": {
+    "n": 42,
+    "of": 42,
+    "strict": 87.5,
+    "lenient": 87.5
+   },
+   "dialogue": {
+    "n": 64,
+    "of": 64,
+    "strict": 90.6,
+    "lenient": 90.6
+   }
+  },
+  "pie_score": {
+   "strict": 85.4,
+   "lenient": 86.8
+  }
+ },
+ {
   "contestant": "ours-rl1-step500",
   "segments": {
    "inflection": {
