@@ -2,6 +2,7 @@
 BigVGAN-v2 recipe: multi-period + multi-scale sub-band CQT discriminators, multi-scale mel loss x15, feature matching,
 AdamW(0.8, 0.99) lr 1e-4; plus PhaseAug on the discriminator inputs, random peak level (-6..-1 dBFS, mel shifted to
 match), generator EMA (exported), grad clip 100 for the first --clip_low_steps then 500.
+Apple GPUs: torch >= 2.13 (<= 2.12 corrupts memory on MPS) and mps_fixes (same maths; 10.4 -> 3.4 s per batch-4 step on an M3 Ultra).
 Operational: STOP file -> last.pt + exit; --resume; VRAM cap; whole-card memory logged; held-out error every
 --val_every = L1 between audio.mel of the EMA output (resampled to 32 kHz) and the clip's own mel.
   gwerh_train.py --name NAME [--steps 1000000] [--batch 8] [--frames 128]"""
@@ -14,6 +15,7 @@ import audio as A, gwerh as G
 from discriminators import MultiPeriodDiscriminator, MultiScaleSubbandCQTDiscriminator
 from loss import feature_loss, generator_loss, discriminator_loss, MultiScaleMelSpectrogramLoss
 from phaseaug.phaseaug import PhaseAug
+import mps_fixes
 
 ap = argparse.ArgumentParser()
 ap.add_argument('--name', required=True); ap.add_argument('--data', default=os.path.expanduser('~/AI/chimera-pie-data/wokws/data'))
@@ -29,6 +31,11 @@ ap.add_argument('--dev', default='cuda' if torch.cuda.is_available() else ('mps'
 ap.add_argument('--seed', type=int, default=20261115)
 a = ap.parse_args()
 dev = torch.device(a.dev); torch.manual_seed(a.seed); rng = random.Random(a.seed)
+if dev.type == 'mps':
+    # torch <= 2.12 on MPS overwrites unrelated memory in the generator backward (verified 2026-11-15: 2.8, 2.11, 2.12;
+    # NaN by step 2); 2.13 and 2.15 are clean. Refuse the broken versions rather than train on corrupted optimizer state.
+    assert tuple(int(v) for v in torch.__version__.split('+')[0].split('.')[:2]) >= (2, 13), 'MPS needs torch >= 2.13 (memory corruption in <= 2.12)'
+    mps_fixes.apply()                                         # contiguous gradients into nnAudio's CQT convs (~100x faster backward)
 if dev.type == 'cuda':
     torch.cuda.set_per_process_memory_fraction(a.mem_frac)
     torch.backends.cuda.matmul.allow_tf32 = True; torch.backends.cudnn.allow_tf32 = True; torch.backends.cudnn.benchmark = True
@@ -143,6 +150,8 @@ while step < a.steps:
     og.zero_grad(set_to_none=True)
     lm = mel_loss(y, y_hat) * h.lambda_melloss
     yg, yhg = (aug.forward_sync(y, y_hat) if aug is not None else (y, y_hat))
+    yg = yg.detach()            # forward_sync concatenates real and generated audio, so the real branch would otherwise carry
+                                # a gradient and the discriminators would compute an unused input gradient for it
     _, gf, fr, fg = mpd(yg, yhg); _, gc, cr, cg = cqtd(yg, yhg)
     ladv = generator_loss(gf)[0] + generator_loss(gc)[0]; lfm = feature_loss(fr, fg) + feature_loss(cr, cg)
     lg = lm + ladv + lfm
