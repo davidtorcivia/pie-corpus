@@ -33,3 +33,16 @@ def load_for_inference(path):
     ck = torch.load(path, map_location='cpu', weights_only=False)
     g = build(ck.get('h')); g.load_state_dict(ck['generator']); g.remove_weight_norm(); g.eval()
     return (lambda mel: g(mel.transpose(1, 2))[0, 0]), H['sampling_rate'], g
+
+
+def checkpoint_resblocks(g, stages=None):
+    """Activation checkpointing on every AMP residual block: their anti-aliased activations are recomputed in the
+    backward pass instead of stored (BigVGAN unedited; same maths). At batch 4 x 128 frames the generator's forward
+    graph is ~17 GB without it, which does not fit a 0.7 cap on a 32 GB card next to the discriminators."""
+    from torch.utils.checkpoint import checkpoint
+    k = g.num_kernels; n = 0
+    for i, rb in enumerate(g.resblocks):
+        if stages is not None and i // k not in stages: continue
+        f = rb.forward; n += 1
+        rb.forward = (lambda f: lambda x: checkpoint(f, x, use_reentrant=False) if torch.is_grad_enabled() else f(x))(f)
+    return n

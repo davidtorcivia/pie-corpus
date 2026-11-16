@@ -26,6 +26,7 @@ ap.add_argument('--ema', type=float, default=0.999); ap.add_argument('--clip_low
 ap.add_argument('--phaseaug', type=int, default=1); ap.add_argument('--level_aug', type=int, default=1)
 ap.add_argument('--val_every', type=int, default=2000); ap.add_argument('--save_every', type=int, default=10000)
 ap.add_argument('--log_every', type=int, default=50); ap.add_argument('--max_steps', type=int, default=0)
+ap.add_argument('--gen_checkpoint', type=int, default=-1, help='1: activation checkpointing on the generator resblocks (default: on for CUDA)')
 ap.add_argument('--resume', action='store_true'); ap.add_argument('--mem_frac', type=float, default=0.7)
 ap.add_argument('--dev', default='cuda' if torch.cuda.is_available() else ('mps' if torch.backends.mps.is_available() else 'cpu'))
 ap.add_argument('--seed', type=int, default=20261115)
@@ -79,6 +80,7 @@ def batch():
 h = G.attrdict()
 gen = G.build().to(dev); ema = G.build().to(dev); ema.load_state_dict(gen.state_dict()); ema.eval().requires_grad_(False)   # (weight_norm modules can't be deep-copied)
 mpd, cqtd = MultiPeriodDiscriminator(h).to(dev), MultiScaleSubbandCQTDiscriminator(h).to(dev)
+if a.gen_checkpoint == 1 or (a.gen_checkpoint == -1 and dev.type == 'cuda'): say('generator resblock checkpointing on', G.checkpoint_resblocks(gen))
 class MelLoss(MultiScaleMelSpectrogramLoss):
     """BigVGAN's multi-scale mel loss with the window / filter tensors made float32 on the host first (MPS has no
     float64) and cached per device; the computation is otherwise the same."""
@@ -102,7 +104,8 @@ mel_loss = MelLoss(sampling_rate=A.OUT_SR).to(dev)
 aug = PhaseAug().to(dev) if a.phaseaug else None
 say('params gen', sum(p.numel() for p in gen.parameters()), 'mpd', sum(p.numel() for p in mpd.parameters()), 'cqtd', sum(p.numel() for p in cqtd.parameters()))
 og = torch.optim.AdamW(gen.parameters(), a.lr, betas=(0.8, 0.99))
-od = torch.optim.AdamW(list(mpd.parameters()) + list(cqtd.parameters()), a.lr, betas=(0.8, 0.99))
+dparams = list(mpd.parameters()) + list(cqtd.parameters())
+od = torch.optim.AdamW(dparams, a.lr, betas=(0.8, 0.99))
 to32 = torchaudio.transforms.Resample(A.OUT_SR, A.SR).to(dev)
 
 @torch.no_grad()
@@ -148,6 +151,8 @@ while step < a.steps:
     ld = discriminator_loss(rf, gf)[0] + discriminator_loss(rc, gc)[0]
     ld.backward(); gnd = nn.utils.clip_grad_norm_(list(mpd.parameters()) + list(cqtd.parameters()), clip); od.step()
     og.zero_grad(set_to_none=True)
+    for p_ in dparams: p_.requires_grad_(False)   # generator pass: no discriminator weight gradients (they were computed and
+                                                  # thrown away) and no activations kept for them; generator gradients identical
     lm = mel_loss(y, y_hat) * h.lambda_melloss
     yg, yhg = (aug.forward_sync(y, y_hat) if aug is not None else (y, y_hat))
     yg = yg.detach()            # forward_sync concatenates real and generated audio, so the real branch would otherwise carry
@@ -155,7 +160,9 @@ while step < a.steps:
     _, gf, fr, fg = mpd(yg, yhg); _, gc, cr, cg = cqtd(yg, yhg)
     ladv = generator_loss(gf)[0] + generator_loss(gc)[0]; lfm = feature_loss(fr, fg) + feature_loss(cr, cg)
     lg = lm + ladv + lfm
-    lg.backward(); gng = nn.utils.clip_grad_norm_(gen.parameters(), clip); og.step(); step += 1
+    lg.backward()
+    for p_ in dparams: p_.requires_grad_(True)
+    gng = nn.utils.clip_grad_norm_(gen.parameters(), clip); og.step(); step += 1
     with torch.no_grad():
         dcy = min(a.ema, (1 + step) / (10 + step))
         for pe, pm in zip(ema.parameters(), gen.parameters()): pe.lerp_(pm, 1 - dcy)
