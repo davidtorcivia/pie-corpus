@@ -3,7 +3,9 @@ translator. No PIE greeting or thanks formula is reconstructible, so these are s
 brief says to build them from inherited words (docs/generation/planner-brief-v4.md, "Greetings and thanks"):
 - a greeting is the wish "be well!", kéh₂ilos h₁sdʰí (Goth. hails, OE wes hāl);
 - welcome is the address "dear guest!", príHe gʰóstey;
-- thanks are praise of the giver, gʷr̥néH- 'praise' ("I praise you").
+- thanks are praise of the giver, gʷr̥néH- 'praise' ("I praise you");
+- a farewell is the same wish "be well!": the daughters part with the formula they greet with (Gk. χαῖρε for both;
+  Lat. salvē / valē, both "be well"), an extension of the brief's greeting rule, noted as such.
 Each rewrite is translated like any other English (the memory, then the rules) and carries a note saying what was
 done. Words with no PIE counterpart at all ('please'; a bare 'yes' or 'no', which PIE says by repeating the question's
 verb, idioms.json) are reported, never turned into some other word.
@@ -21,11 +23,15 @@ WELCOME_NOTE = ("'{w}' → 'dear guest!' (príHe gʰóstey): no PIE word for 'we
                 "(planner-brief-v4, Greetings and thanks)")
 THANKS_NOTE = ("'{w}' → 'I praise you': no PIE word for thanks; thanks are praise of the giver, gʷr̥néH- "
                "(planner-brief-v4, Greetings and thanks)")
+FAREWELL_NOTE = ("'{w}' → 'be well!' (kéh₂ilos h₁sdʰí): no PIE farewell is reconstructible; the daughters part "
+                 "with a wish of health as they greet with one (Gk. χαῖρε, Lat. valē), so the brief's greeting is used "
+                 "(planner-brief-v4, Greetings and thanks, extended to partings)")
 PLEASE_NOTE = "'please' left out (no PIE word for it)"
 YES_NO_NOTE = ("'{w}' has no PIE word: an answer repeats the question's verb ('yes') or puts ne before it ('no') "
                "(data/lexicon/idioms.json, yes/no)")
 
 _GREET = r"(?:hello|hallo|hullo|hi|hey|hiya|howdy|greetings|hail|good (?:morning|day|afternoon|evening))(?: there)?"
+_FAREWELL = r"(?:good-?\s?bye|bye(?:-?\s?bye)?|farewell)"
 _THANKS = r"(?:thank you(?: (?:very|so) much)?|thanks(?: a lot)?|many thanks|thank you kindly)"
 _END = r"[\s.!?,;:]*"
 
@@ -55,6 +61,12 @@ def rewrite(sentence: str) -> list[tuple[str, str | None]] | None:
         if _clause_like(rest):
             return [("Be well!", note), (rest, None)]
         return [(f"Be well, {rest.rstrip(' .!?')}!", note)]
+    m = re.fullmatch(rf"({_FAREWELL}){_END}", low)
+    if m:
+        return [("Be well!", FAREWELL_NOTE.format(w=s.rstrip(" .!?,")))]
+    m = re.match(rf"({_FAREWELL})\s*[,!]\s*(.+)$", s, flags=re.I)     # 'Goodbye, my friend!'
+    if m and not _clause_like(m[2]):
+        return [(f"Be well, {m[2].strip().rstrip(' .!?')}!", FAREWELL_NOTE.format(w=m[1]))]
     if re.fullmatch(rf"welcome{_END}", low):            # not "you're welcome", the answer to thanks
         return [("Dear guest!", WELCOME_NOTE.format(w=s.rstrip(" .!?,")))]
     m = re.fullmatch(rf"({_THANKS})(?:,? (.+?))?{_END}", low)

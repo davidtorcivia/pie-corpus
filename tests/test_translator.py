@@ -350,6 +350,18 @@ def test_thanks_is_praise_and_please_yes_no_are_reported():
     assert "planner-brief" not in " ".join(english_to_pie("Hail fell from the sky.")[0]["notes"])
 
 
+@pytest.mark.parametrize("english", ["Goodbye!", "Bye.", "Good-bye", "Farewell!", "Bye bye"])
+def test_farewells_are_the_greeting_wish(english):
+    """'Goodbye' had no PIE word. The daughters part with the wish they greet with (Gk. χαῖρε both ways, Lat. salvē /
+    valē), so a farewell is the brief's greeting 'be well!', with a note saying it extends the brief to partings."""
+    pytest.importorskip("spacy")
+    from pie.translator import english_to_pie
+    [s] = english_to_pie(english)
+    assert s["pie"] == "kéh₂ilos h₁sdʰí." and any("extended to partings" in n for n in s["notes"]), english
+    [s] = english_to_pie("Goodbye, my friend!")
+    assert "kéh₂ilos h₁sdʰí" in s["pie"] and "príHe" in s["pie"] and not s["unknown"]   # the address comes first, as with greetings
+
+
 def test_abbreviations_end_no_sentence():
     from pie.translator import split_sentences
     assert split_sentences("Dr. Smith saw the wolf. The dog barked.") == ["Dr. Smith saw the wolf.", "The dog barked."]
