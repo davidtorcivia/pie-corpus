@@ -6,7 +6,7 @@ Apple GPUs: torch >= 2.13 (<= 2.12 corrupts memory on MPS) and mps_fixes (same m
 Operational: STOP file -> last.pt + exit; --resume; VRAM cap; whole-card memory logged; held-out error every
 --val_every = L1 between audio.mel of the EMA output (resampled to 32 kHz) and the clip's own mel.
   gwerh_train.py --name NAME [--steps 1000000] [--batch 8] [--frames 128]"""
-import argparse, copy, json, math, os, random, sys, time
+import argparse, copy, itertools, json, math, os, random, sys, time
 import torch, torchaudio
 from torch import nn
 
@@ -30,6 +30,7 @@ ap.add_argument('--pred_mel', default='', help='name under DATA/predmel/: conver
 ap.add_argument('--pred_prob', type=float, default=0.5)
 ap.add_argument('--pred_blur_f', type=float, default=0.0, help='converter-mel inputs: 3-tap blur along frequency, strength ~ U(0, this) per sample')
 ap.add_argument('--pred_blur_t', type=float, default=0.0, help='same along time (held-out converter output ~ 0.012 / 0.010 softer than on training clips)')
+ap.add_argument('--voice_weight', default='', help='sampling weight per voice, e.g. W02=2,VALERIA=1.5 (others 1): oversample voices gʷerh renders worst')
 ap.add_argument('--bf16', type=int, default=0, help='1: bfloat16 autocast for the generator and discriminator forwards (CUDA); losses in float32')
 ap.add_argument('--gen_checkpoint', type=int, default=-1, help='1: activation checkpointing on the generator resblocks (default: on for CUDA)')
 ap.add_argument('--resume', action='store_true'); ap.add_argument('--mem_frac', type=float, default=0.7)
@@ -67,9 +68,14 @@ def load(r):
     return m, w
 ok = lambda r: all(os.path.exists(f"{a.data}/{k}/{r['voice']}/{r['stem']}.pt") for k in ('feats', 'wave44') + ((f'predmel/{a.pred_mel}',) if a.pred_mel else ()))
 t0 = time.time()
-TRAIN = [load(r) for r in pairs if r['split'] == 'train' and ok(r)]
+TROWS = [r for r in pairs if r['split'] == 'train' and ok(r)]
+TRAIN = [load(r) for r in TROWS]
 VAL = [load(r) for r in pairs if r['split'] == 'val' and ok(r)][:24]
-TRAIN = [x for x in TRAIN if x[0].shape[0] >= a.frames]
+keep = [i for i, x in enumerate(TRAIN) if x[0].shape[0] >= a.frames]
+TRAIN = [TRAIN[i] for i in keep]; TVOICE = [TROWS[i]['voice'] for i in keep]
+VW = {k: float(v) for k, v in (kv.split('=') for kv in a.voice_weight.split(',') if kv)}
+CUMW = list(itertools.accumulate(VW.get(v, 1.0) for v in TVOICE)) if VW else None   # clip sampling weights (None: uniform)
+if VW: say('voice sampling weights', VW, 'share per voice', {v: round(sum(VW.get(u, 1.0) for u in TVOICE if u == v) / CUMW[-1], 3) for v in sorted(set(TVOICE))})
 if a.pred_mel: say(f'generator input: converter mels ({a.pred_mel}) with p={a.pred_prob} (blur f<={a.pred_blur_f} t<={a.pred_blur_t}), paid mels otherwise; target = paid audio')
 say(f'data: {len(TRAIN)} train clips ({sum(x[0].shape[0] for x in TRAIN) / 360000:.1f} h), {len(VAL)} val, loaded in {time.time() - t0:.0f}s')
 LOG_FLOOR = math.log(1e-5)
@@ -77,7 +83,7 @@ LOG_FLOOR = math.log(1e-5)
 def batch():
     mels, waves = [], []
     for _ in range(a.batch):
-        it = TRAIN[rng.randrange(len(TRAIN))]; m, w = it[0], it[1]
+        it = TRAIN[rng.choices(range(len(TRAIN)), cum_weights=CUMW)[0] if CUMW else rng.randrange(len(TRAIN))]; m, w = it[0], it[1]
         pred = bool(a.pred_mel) and rng.random() < a.pred_prob
         if pred: m = it[2]      # generator input = converter output, target = paid audio
         s = rng.randrange(m.shape[0] - a.frames + 1)

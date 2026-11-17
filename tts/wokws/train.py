@@ -25,6 +25,9 @@ ap.add_argument('--batch_frames', type=int, default=27000); ap.add_argument('--m
 ap.add_argument('--lr', type=float, default=3e-4); ap.add_argument('--warmup', type=int, default=1000)
 ap.add_argument('--lr_final_frac', type=float, default=0.1); ap.add_argument('--grad_clip', type=float, default=1.0)
 ap.add_argument('--ema', type=float, default=0.999)
+ap.add_argument('--r_weight', type=float, default=1.0, help='weight of /r/ and syllabic /r̩/ frames in the mel losses')
+ap.add_argument('--r_delta', type=float, default=0.0, help='weight of a frame-to-frame (tap contrast) mel loss on /r/ frames')
+ap.add_argument('--dropout', type=float, default=-1, help='override every dropout probability in the model (encoder, decoder, postnet); -1 keeps the config')
 ap.add_argument('--src_mask', type=float, default=0.15, help='fraction of frames whose Chimera features are zeroed (spans of 12)')
 ap.add_argument('--teacher_hold', type=int, default=3000); ap.add_argument('--teacher_ramp', type=int, default=7000)
 ap.add_argument('--teacher_final', type=float, default=0.0)
@@ -80,6 +83,12 @@ VB = [W.collate(VAL[i:i + 8]) for i in range(0, min(len(VAL), 64), 8)]
 
 # ---------------- model
 model = W.Wokws(c, vocab['n_tokens'], len(vocab['kinds'])).to(dev)
+R_IDS = torch.tensor([vocab['tokens'][t] for t in ('PIE_r', 'PIE_r̩')], device=dev)
+if a.dropout >= 0:                       # regularize against memorizing the training clips (all dropout here is nn.Dropout)
+    nd = 0
+    for mod in model.modules():
+        if isinstance(mod, nn.Dropout): mod.p = a.dropout; nd += 1
+    say('dropout set to', a.dropout, 'in', nd, 'modules')
 ema = copy.deepcopy(model).eval().requires_grad_(False)
 
 
@@ -132,14 +141,19 @@ def objective(m, batch, teacher_p, masking=True, zero_src=False):
         pre, post = m.decode(h, cond.to(h.dtype), fmask)
     pre, post, fmf = pre.float(), post.float(), fmask.float()
     sung = fmf * tgt[..., 1] * trusted; enough = (sung.sum(1) >= 10).float()
+    isr = torch.isin(batch['tokens'].gather(1, owner), R_IDS) & fmask           # /r/ and /r̩/ frames
+    wmel = fmf * (1 + (a.r_weight - 1) * isr.float())
     terms = dict(
         pitch=masked_mean((pred[..., 0] - tgt[..., 0]).abs(), fmf * (trusted + 0.1 * (1 - trusted))),
         pitch_spread=masked_mean((masked_std(pred[..., 0], sung) - masked_std(tgt[..., 0], sung)).abs(), enough),
         voicing=masked_mean(F.binary_cross_entropy_with_logits(pred[..., 1], tgt[..., 1], reduction='none'), fmf),
         energy=masked_mean((pred[..., 2] - tgt[..., 2]).abs(), fmf),
-        mel_pre=masked_mean((pre - batch['mel']).abs().mean(-1), fmf),
-        mel=masked_mean((post - batch['mel']).abs().mean(-1), fmf))
-    wts = dict(pitch=2.0, pitch_spread=2.0, voicing=1.0, energy=1.0, mel_pre=10.0, mel=10.0)
+        mel_pre=masked_mean((pre - batch['mel']).abs().mean(-1), wmel),
+        mel=masked_mean((post - batch['mel']).abs().mean(-1), wmel))
+    if a.r_delta > 0:                                                              # tap contrast: match frame-to-frame change on trills
+        rr = (isr[:, 1:] & isr[:, :-1]).float(); dt = batch['mel'][:, 1:] - batch['mel'][:, :-1]
+        terms['r_delta'] = masked_mean(((post[:, 1:] - post[:, :-1]) - dt).abs().mean(-1), rr)
+    wts = dict(pitch=2.0, pitch_spread=2.0, voicing=1.0, energy=1.0, mel_pre=10.0, mel=10.0, r_delta=10.0 * a.r_delta)
     loss = sum(wts[k] * v for k, v in terms.items())
     with torch.no_grad(): terms['pitch_st'] = 12 / math.log(2) * masked_mean((pred[..., 0] - tgt[..., 0]).abs(), sung)
     return loss, terms, {'post': post, 'rec': 10.0 * terms['mel']}
@@ -177,6 +191,8 @@ if a.resume and os.path.exists(f'{RUN}/last.pt'):
     model.load_state_dict(ck['model']); ema.load_state_dict(ck['ema']); critics.load_state_dict(ck['critics'])
     opt.load_state_dict(ck['opt']); copt.load_state_dict(ck['copt']); sampler.load_state(ck['sampler']); step = ck['step']
     torch.set_rng_state(ck['rng']); say('resumed at', step)
+    if not a.init and ck.get('args', {}).get('init'):   # a run started with --init stays free-running (teacher prob 0)
+        a.init = ck['args']['init']; say('run was started with --init', a.init)   # after a resume, as before the pause
 else:
     if a.init:
         ck = torch.load(a.init, map_location='cpu', weights_only=False)
