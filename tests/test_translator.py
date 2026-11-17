@@ -362,6 +362,19 @@ def test_farewells_are_the_greeting_wish(english):
     assert "kéh₂ilos h₁sdʰí" in s["pie"] and "príHe" in s["pie"] and not s["unknown"]   # the address comes first, as with greetings
 
 
+def test_weak_stand_ins_are_reported_not_substituted():
+    """At the old 0.6 floor the vectors put angry ≈ sad (0.60), cool ≈ pretty (0.66), Cheers ≈ shout (0.60): wrong
+    words passed off as stand-ins. Below 0.7 a word is reported as having no PIE word; a close one still stands in
+    (understand ≈ know, 0.84)."""
+    pytest.importorskip("spacy")
+    from pie.translator import english_to_pie
+    for text, word in [("The man is angry.", "angry"), ("The horse is cool.", "cool")]:
+        notes = " ".join(n for s in english_to_pie(text) for n in s["notes"])
+        unknown = [u for s in english_to_pie(text) for u in s["unknown"]]
+        assert f"'{word}' ≈" not in notes and word in unknown, text
+    assert any("'understand' ≈ 'know'" in n for s in english_to_pie("I do not understand.") for n in s["notes"])
+
+
 def test_abbreviations_end_no_sentence():
     from pie.translator import split_sentences
     assert split_sentences("Dr. Smith saw the wolf. The dog barked.") == ["Dr. Smith saw the wolf.", "The dog barked."]

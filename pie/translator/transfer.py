@@ -154,7 +154,7 @@ def _comma_next_to(tok) -> bool:
 NP_HEADS = ("NOUN", "PROPN", "PRON", "ADJ")    # a sentence rooted in one of these has no verb: an np utterance
 MODEL = "en_core_web_lg"       # parser + full word vectors (md shares one vector across many rare words: tiger =
                                 # wolf = chariot); the vectors give the nearest-word fallback; prod needs it
-SIMILAR_MIN = 0.6               # cosine floor for a nearest-word stand-in by vector
+SIMILAR_MIN = 0.7               # cosine floor for a nearest-word stand-in by vector (0.6 let angry ≈ sad, cool ≈ pretty through)
 
 
 @functools.lru_cache(maxsize=1)
