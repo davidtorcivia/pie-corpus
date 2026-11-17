@@ -46,3 +46,14 @@ def checkpoint_resblocks(g, stages=None):
         f = rb.forward; n += 1
         rb.forward = (lambda f: lambda x: checkpoint(f, x, use_reentrant=False) if torch.is_grad_enabled() else f(x))(f)
     return n
+
+
+def blur3(m, af=0.0, at=0.0, floor=1e-5):
+    """Soften a log-mel [T, n_mels] (natural log magnitude) with a 3-tap [a, 1-2a, a] kernel on linear magnitude, along
+    frequency (af) and time (at), edges replicated. Used to make the converter mels gʷerh trains on as soft as the
+    converter's output on unseen lines (its training-clip output is sharper than what it produces at inference)."""
+    if af <= 0 and at <= 0: return m
+    x = m.float().exp()
+    if af > 0: x = (1 - 2 * af) * x + af * (torch.cat([x[:, :1], x[:, :-1]], 1) + torch.cat([x[:, 1:], x[:, -1:]], 1))
+    if at > 0: x = (1 - 2 * at) * x + at * (torch.cat([x[:1], x[:-1]], 0) + torch.cat([x[1:], x[-1:]], 0))
+    return x.clamp_min(floor).log().to(m.dtype)
