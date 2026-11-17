@@ -154,12 +154,21 @@ Judge "a living language you can converse with", not a talking dictionary: use t
   - spaCy misparses: 'Does the dog bark?' (do = put, bark a noun), 'The wolf and the dog fight.' (fight a noun),
     'The horse which I saw is white.' (root horse); typos like 'teh' break the parse.
   - An object relative is not fronted (h₃rḗǵs h₁yóns déh₃t 'which the king gave'): the engine item above.
-  - Vector stand-ins at SIMILAR_MIN 0.6 shift meanings: angry ≈ sad (0.60), cat ≈ dog (0.80), cheese ≈ butter
-    (0.77), coffee ≈ intoxication (0.67), cool ≈ pretty (0.66), Hail ≈ storm (0.63), LOL ≈ laugh. Raise the
-    floor, block co-hyponyms, or keep (noted on the page either way).
-  - Owner's call: farewells ('Goodbye', 'Bye') have no rule (Lat. valē, Gk χαῖρε would support 'be well!', but
-    planner-brief-v4 covers greetings only); 'Welcome' is the brief's príHe gʰóstey, not idioms.json's gʷr̥Htós
-    (reconcile, item above); a name that is also a noun (Smith, Wolf, Dawn) is translated as the noun.
+  - Vector stand-ins at SIMILAR_MIN 0.6 shift meanings. In the sweep's probes the 0.60-0.70 band held 3 fair
+    stand-ins (fine ≈ well 0.64, lol ≈ laugh 0.65, coffee ≈ drink 0.67) and 5 wrong ones (angry ≈ sad 0.60,
+    Cheers ≈ shout 0.60, Whose ≈ which 0.62, Hail ≈ storm 0.63, cool ≈ pretty 0.66); cat ≈ dog (0.80) and
+    cheese ≈ butter (0.77) are above any useful floor (a co-hyponym block would need a taxonomy). Proposed to the
+    owner: floor 0.7 (noted on the page either way).
+  - Farewells are done (27af58f: the greeting's 'be well!', Gk χαῖρε / Lat. valē). 'Welcome' is the brief's
+    príHe gʰóstey, not idioms.json's gʷr̥Htós (reconcile, item above). A name that is also a noun (Smith, Wolf,
+    Dawn) stays the noun: a capitalization rule would break 'Dawn, daughter of the sky, shines.'
+  - Derived glosses show '~' to visitors (rain~, be.tired~): proposed to strip it in the site's display only.
+  - Training hints: the sweep's name guard and misspelling reading reach the SFT export's lexicon hints through
+    hints.py (Transfer.lookup). Before the next export, diff the hints over the existing export inputs, old code
+    vs new.
+  - Deploy: the erebus translator's Dockerfile needs ENV PYTHONUNBUFFERED=1 (its 'translator on' line is
+    buffered, so a health check waiting for it hangs); add at the next rebuild. Load: one 20-request burst on
+    2026-11-17 was all 200, median 0.54 s, slowest 1.35 s.
   - No rule: 'X or Y' between nouns (the engine has only clause-level -wē), reflexive pronouns (myself), possessive
     pronouns as predicates (mine, yours), dates and times, non-English input.
 - **Compound engine:** a determinative prefix compound such as h₂énti- "counter-" for the "answer" coinage (h₂entiwékʷos).
