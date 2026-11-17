@@ -216,7 +216,30 @@ class Transfer:
         if w:
             notes.append(f"'{tok.text}' ≈ '{w}' (no PIE word for '{tok.text}'; nearest by meaning, {sim:.2f})")
             return self.map.candidates(w, f)[0].lex_id, f
+        w = self.typo(lem, families)
+        if w:
+            notes.append(f"'{tok.text}' read as '{w}' (a misspelling?)")
+            f = next(f for f in families if self.map.candidates(w, f))
+            return self.map.candidates(w, f)[0].lex_id, f
         return None, None
+
+    def typo(self, word: str, families: tuple[str, ...]) -> str | None:
+        """An English word the lexicon has, one slip away from a misspelled one ('sheeep' → sheep, 'wofl' → wolf):
+        same first letter, length within one, and either one letter swapped with its neighbour or a similarity of
+        at least 0.85. Only words of four letters or more that the English vectors don't know (a real word is
+        never 'corrected')."""
+        import difflib
+        if len(word) < 4 or not word.isalpha() or nlp().vocab.has_vector(word):
+            return None                 # a word with a vector is a real English word (nearest() has had its say)
+        keys = [k for k, cs in self.map.by_lemma.items() if k[:1] == word[:1] and abs(len(k) - len(word)) <= 1
+                and any(c.family in families for c in cs)]
+        for k in keys:                           # one transposition: wofl → wolf
+            if len(k) == len(word) and sorted(k) == sorted(word):
+                d = [i for i in range(len(k)) if k[i] != word[i]]
+                if len(d) == 2 and d[1] == d[0] + 1:
+                    return k
+        best = difflib.get_close_matches(word, keys, n=1, cutoff=0.85)
+        return best[0] if best else None
 
     def nearest(self, lemma: str, families: tuple[str, ...]) -> tuple[str | None, str | None, float]:
         """The English word with a lexeme whose vector is closest to the lemma's (cosine ≥ SIMILAR_MIN)."""
@@ -336,6 +359,11 @@ class Transfer:
             if w:
                 cs = self.map.candidates(w, "verb")
                 notes.append(f"'{lemma}' ≈ '{w}' (no PIE word for '{lemma}'; nearest by meaning, {sim:.2f})")
+        if not cs:
+            w = self.typo(lemma, ("verb",))
+            if w:
+                cs = self.map.candidates(w, "verb")
+                notes.append(f"'{lemma}' read as '{w}' (a misspelling?)")
         if not cs:
             return None, tense
         want = {"IND": [tense], "IMP": ["IMP"], "SBJV": ["SBJV"], "OPT": ["OPT"]}[mood]
@@ -537,6 +565,14 @@ class Transfer:
                 self.used.add(root.i)
                 kids = [c for c in root.children if c.text.lower() != "us"]
                 subj, person, num = [], 1, "PL"
+            elif xs and any(c.text.lower() in ("him", "her", "it", "them") for c in list(xs[0].children) + kids):
+                # "let him come", "let them eat": the 3rd-person subjunctive, as the corpus has it ('Let him
+                # come!' gʷm̥yḗti só, t3-b002-00121), not the verb 'let go'
+                who = next(c for c in list(xs[0].children) + kids if c.text.lower() in ("him", "her", "it", "them"))
+                root, lemma, mood = xs[0], xs[0].lemma_.lower(), "SBJV"
+                self.used |= {root.i, who.i}
+                kids = [c for c in root.children if c.i != who.i]
+                subj, person, num = [], 3, "PL" if who.text.lower() == "them" else "SG"
         if root.dep_ == "advcl":
             # 'If you come …', 'When the sun rises …', 'Because the king was angry …': the subordinate clause takes
             # the particle h₁yód 'if, when' (pie.realize "particle": "yod"; idioms.json 'because': a clause with

@@ -418,3 +418,19 @@ def test_meaningful_function_words_are_reported(transfer):
     """'Which horse is yours?' lost 'yours' with no note: pronouns and determiners that carry meaning are listed."""
     assert any("yours" in n for n in transfer.translate("Which horse is yours?").notes)
     assert any("All" in n for n in transfer.translate("All men die.").notes)
+
+
+def test_a_misspelling_is_read_as_the_word(transfer):
+    """'The wofl saw the sheeep.' lost both nouns. A word the English vectors don't know, one slip from a word the
+    lexicon has (a swapped pair, or similarity ≥ 0.85), is read as that word and noted; a real word is never
+    'corrected' (football stays unknown)."""
+    r = transfer.translate("The wofl saw the sheeep.")
+    assert r.pie == "wĺ̥kʷos h₂ówim widét." and any("'wofl' read as 'wolf'" in n for n in r.notes)
+    assert "football" in transfer.translate("I play football.").unknown
+
+
+@pytest.mark.parametrize("english,pie", [("Let them eat!", "h₁édonti."), ("Let her sing.", "gʷéHyēti.")])
+def test_let_him_them_is_the_third_person_subjunctive(transfer, english, pie):
+    """'Let them eat!' was 'let go! they eat'. The corpus says 'Let him come!' with the 3rd-person subjunctive
+    (gʷm̥yḗti só, t3-b002-00121)."""
+    assert transfer.translate(english).pie == pie
