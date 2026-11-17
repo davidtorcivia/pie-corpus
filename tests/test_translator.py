@@ -381,3 +381,40 @@ def test_pie_to_english_marks_a_guess_and_reads_degrees():
     assert pie_to_english("hello")["rough_english"].endswith("(?)")       # an English word is no PIE word
     r = pie_to_english("wĺ̥kʷos ḱunés méǵyōs.")                         # the translator's own comparative
     assert [w["match"] for w in r["words"]] == ["exact"] * 3 and r["rough_english"].endswith("more big")
+
+
+@pytest.mark.parametrize("english,pie", [
+    ("The man who saw the wolf ran away.", "wiHrós h₂epó drémt h₁yós wĺ̥kʷom widét."),
+    ("I saw the woman who sings.", "gʷénh₂m̥ widóm h₁yéh₂ gʷéHyeti."),
+    ("The man who came.", "wiHrós h₁yós h₁nédʰt."),
+])
+def test_a_relative_clause_takes_h1yos(transfer, english, pie):
+    """'The man who saw the wolf' dropped the relative clause. It is a clause with closed:relative_yo in the
+    relative pronoun's role, agreeing with its antecedent (planner-brief-v4: relative clauses with relative_yo)."""
+    r = transfer.translate(english)
+    assert r.pie == pie and not r.errors
+
+
+def test_a_relative_clause_without_a_pronoun_is_reported(transfer):
+    r = transfer.translate("The horse I saw is white.")
+    assert any("relative clause 'I saw' left out" in n for n in r.notes)
+
+
+@pytest.mark.parametrize("english,pie", [
+    ("I saw 3 wolves.", "tríns wĺ̥kʷons widóm."),                    # digits were dropped
+    ("One horse.", "h₁óynos h₁éḱwos."),                              # h₁óynos 'one, single'
+    ("How many wolves did you see?", "kʷóti wĺ̥kʷons widés?"),       # interrogative_adv/how_many, not 'much'
+    ("Which horse did you see?", "kʷóm h₁éḱwom widés?"),             # interrogative_kwo
+    ("These are my sons.", "ḱéh₂ moy suHnéwes."),                     # 'these' was left out
+    ("I'm gonna go.", "h₁éyoh₂."),                                    # was 'I go, I go'
+    ("I am tired.", "ḱeḱómh₂h₂e."),                                   # the stative perfect, not 'sad'
+])
+def test_everyday_function_words(transfer, english, pie):
+    r = transfer.translate(english)
+    assert r.pie == pie and not r.errors
+
+
+def test_meaningful_function_words_are_reported(transfer):
+    """'Which horse is yours?' lost 'yours' with no note: pronouns and determiners that carry meaning are listed."""
+    assert any("yours" in n for n in transfer.translate("Which horse is yours?").notes)
+    assert any("All" in n for n in transfer.translate("All men die.").notes)

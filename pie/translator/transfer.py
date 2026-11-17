@@ -44,6 +44,12 @@ POSSESSIVE = {"my": (1, "SG"), "our": (1, "PL"), "your": (2, "SG"), "his": (3, "
               "its": (3, "SG"), "their": (3, "PL")}
 WH_ADV = {"where": "closed:interrogative_adv/where", "why": "closed:interrogative_adv/why",
           "how": "closed:interrogative_adv/how", "when": "closed:interrogative_adv/when"}
+# pronouns and determiners whose loss changes the meaning: reported when no rule used them (articles, 'it' of the
+# weather, relative 'that' … are not)
+MEANINGFUL_FUNCTION_WORDS = {"which", "whose", "whom", "mine", "yours", "ours", "theirs", "hers", "every",
+                             "each", "all", "some", "any", "both", "either", "neither", "much", "many", "few"}
+DIGITS = {"2": "two", "3": "three", "4": "four", "5": "five", "6": "six", "7": "seven", "8": "eight", "9": "nine",
+          "10": "ten", "100": "hundred", "1000": "thousand"}
 NUMERALS = {"two": "closed:numerals/2", "three": "closed:numerals/3", "four": "closed:numerals/4",
             "five": "closed:numerals/indeclinable/5", "six": "closed:numerals/indeclinable/6",
             "seven": "closed:numerals/indeclinable/7", "eight": "closed:numerals/indeclinable/8",
@@ -176,6 +182,8 @@ class Transfer:
         self.map = LexMap.load(nlp())
         self.used: set[int] = set()        # token indices that became a slot (translate() reports the rest)
         self.neg_dets: set[int] = set()    # "no" determiners that became the clause's ne
+        self.pending_rel: list = []        # relative clauses met in a noun phrase, built after its clause
+        self.rel_ctx: dict[int, tuple] = {}   # relative pronoun token → (gender, number) of its antecedent
 
     # ---------------------------------------------------------------- words
     def lookup(self, tok, families: tuple[str, ...], notes) -> tuple[str | None, str | None]:
@@ -359,6 +367,10 @@ class Transfer:
         if low in NEG_PRONOUNS or no_one:        # the clause takes ne (clause(): _negative)
             slots.append({"lex_id": "closed:indefinite_kwi", "role": role, "gender": NEG_PRONOUNS.get(low, "m")})
             return len(slots) - 1
+        if tok.i in self.rel_ctx:                # 'who', 'which', 'that' opening a relative clause
+            g, n = self.rel_ctx[tok.i]
+            slots.append({"lex_id": "closed:relative_yo", "role": role, "gender": g, "num": n})
+            return len(slots) - 1
         if tok.pos_ == "PRON":
             if low in PRONOUNS:
                 p, n = PRONOUNS[low]
@@ -370,9 +382,9 @@ class Transfer:
             if low in ("what", "who", "whom"):
                 slots.append({"lex_id": "closed:interrogative_kwi", "role": role, "gender": "n" if low == "what" else "m"})
                 return len(slots) - 1
-            if low in ("this", "that"):
-                slots.append({"lex_id": "closed:deictic_ki" if low == "this" else "closed:demonstrative_so",
-                              "role": role, "gender": "n"})
+            if low in ("this", "that", "these", "those"):
+                slots.append({"lex_id": "closed:deictic_ki" if low in ("this", "these") else "closed:demonstrative_so",
+                              "role": role, "gender": "n", "num": "PL" if low in ("these", "those") else "SG"})
                 return len(slots) - 1
             notes.append(f"pronoun '{tok.text}' left out")
             return None
@@ -397,7 +409,8 @@ class Transfer:
             slots[head]["gender"] = ("f" if tok.lemma_.lower() in ("woman", "girl", "wife") else "m") if person_noun else "n"
         for ch in tok.children:
             cl = ch.text.lower()
-            if ch.dep_ == "amod" and ch.pos_ == "ADJ" and ch.text.lower() not in IRREGULAR:
+            how_many = cl == "many" and any(c.text.lower() == "how" for c in ch.children)
+            if ch.dep_ == "amod" and ch.pos_ == "ADJ" and ch.text.lower() not in IRREGULAR and not how_many:
                 a = self.adj(ch, unknown, notes)
                 if a:
                     slots.append({"lex_id": a, "role": "MOD", "head": head})
@@ -414,10 +427,29 @@ class Transfer:
                 else:
                     self.np_slots(ch, "POSS", slots, notes, unknown)
                     slots[-1]["head"] = head
-            elif ch.dep_ == "nummod" and cl in NUMERALS:
+            elif ch.dep_ == "nummod" and DIGITS.get(cl, cl) in NUMERALS:
+                cl = DIGITS.get(cl, cl)                  # '5 horses' = 'five horses'
                 self.used.add(ch.i)
                 slots.append({"lex_id": NUMERALS[cl], "role": "MOD", "head": head})
                 slots[head]["num"] = "DU" if cl == "two" else "PL"
+            elif ch.dep_ == "nummod" and cl in ("one", "1"):
+                # 'one horse': h₁óynos 'one, single' agreeing with its noun (the lexicon's 'one'; Lat. ūnus)
+                self.used.add(ch.i)
+                slots.append({"lex_id": "pie-lex-h1oynos", "role": "MOD", "head": head})
+                slots[head]["num"] = "SG"
+            elif ch.dep_ == "amod" and how_many:
+                # 'how many horses': the interrogative quantifier kʷóti (closed:interrogative_adv/how_many, a MOD)
+                self.used |= {ch.i} | {c.i for c in ch.children}
+                slots.append({"lex_id": "closed:interrogative_adv/how_many", "role": "MOD", "head": head})
+                slots[head]["num"] = "PL"
+            elif ch.dep_ == "det" and cl in ("which", "what") and ch.tag_ == "WDT":
+                # 'which horse?': the interrogative adjective kʷós (closed:interrogative_kwo), agreeing
+                self.used.add(ch.i)
+                slots.append({"lex_id": "closed:interrogative_kwo", "role": "MOD", "head": head})
+            elif ch.dep_ == "relcl" and ch.pos_ in ("VERB", "AUX"):
+                h = slots[head]
+                g = h.get("gender") or (self.lx.gender(h["lex_id"]) if not h["lex_id"].startswith("closed:") else "m")
+                self.pending_rel.append((ch, g, h.get("num", "SG")))
             elif ch.dep_ == "det" and cl in ("this", "these", "that", "those"):
                 self.used.add(ch.i)
                 slots.append({"lex_id": "closed:deictic_ki" if cl in ("this", "these") else "closed:demonstrative_so",
@@ -459,6 +491,7 @@ class Transfer:
         slots: list[dict] = []
         cl: dict = {"slots": slots}
         self.used.add(root.i)
+        rel_mark = len(self.pending_rel)
         kids = list(root.children)
         aux = [k for k in kids if k.dep_ in ("aux", "auxpass")]
         aux_l = [a.lemma_.lower() for a in aux]
@@ -473,6 +506,12 @@ class Transfer:
                                                         for a in aux):
             tense = "PST"        # 'was eating': PST, the imperfect (planner-brief-v4: AOR for single events, PST for background)
         mood = "IND"
+        gonna = root.text.lower() == "gon" and [k for k in kids if k.dep_ == "xcomp"]
+        if gonna:                                # "I'm gonna go" (gon-na): 'going to', the future → SBJV
+            root, lemma, kids = gonna[0], gonna[0].lemma_.lower(), [k for k in kids if k.dep_ != "xcomp"] + \
+                list(gonna[0].children)
+            self.used.add(root.i)
+            mood = "SBJV"
         if "will" in aux_l or "shall" in aux_l:
             mood = "SBJV"
         elif "may" in aux_l or "might" in aux_l:
@@ -551,6 +590,11 @@ class Transfer:
             attr = [k for k in kids if k.dep_ == "advmod" and k.text.lower() == "well"]
         # 'there is a king', 'there are no wolves': the noun is the subject of h₁ésti (existence takes the verb;
         # pie.realize, nominal sentences), which agrees with it
+        if copula and len(attr) == 1 and attr[0].pos_ == "ADJ" and not self.map.candidates(attr[0].lemma_.lower(), "adj") \
+                and any("PRF" in c.tenses for c in self.map.candidates(attr[0].lemma_.lower(), "verb")):
+            # 'I am tired': the lexicon says it with a stative perfect ('to be tired', ḱeḱómh₂e), not an adjective
+            self.used.add(attr[0].i)
+            copula, lemma, attr = False, attr[0].lemma_.lower(), []
         existential = copula and attr and any(k.dep_ == "expl" for k in kids) and \
             all(a.pos_ in ("NOUN", "PROPN", "PRON") for a in attr)
         fragments = []        # '…, only death': a verbless noun phrase after a comma, an utterance of its own
@@ -714,6 +758,24 @@ class Transfer:
             if self.np_slots(k, "NP", extra, notes, unknown) is not None:
                 out.append({"type": "np", "slots": extra})
                 notes.append(f"'{k.doc[k.left_edge.i:k.right_edge.i + 1].text}' (no verb) → a noun phrase of its own")
+        return out + self.relatives(rel_mark, sent, notes, unknown)
+
+    def relatives(self, mark: int, sent, notes, unknown) -> list[dict]:
+        """The relative clauses met since pending_rel had `mark` entries, each a clause of its own after the clause
+        of its antecedent, with h₁yós (closed:relative_yo) in the relative pronoun's role, agreeing with the
+        antecedent in gender and number (planner-brief-v4: relative clauses with closed:relative_yo). A relative
+        clause with no relative pronoun ('the horse I saw') is reported, not guessed."""
+        out = []
+        while len(self.pending_rel) > mark:
+            rtok, g, n = self.pending_rel.pop(mark)
+            rel = [k for k in rtok.children if k.text.lower() in ("who", "whom", "which", "that")
+                   and k.dep_ in ("nsubj", "nsubjpass", "dobj", "dative")]
+            if not rel:
+                notes.append(f"relative clause '{rtok.doc[rtok.left_edge.i:rtok.right_edge.i + 1].text}' left out "
+                             "(no relative pronoun to build it on)")
+                continue
+            self.rel_ctx[rel[0].i] = (g, n)
+            out += self.clause(rtok, sent, notes, unknown)
         return out
 
     def np_utterance(self, root, notes, unknown) -> list[dict]:
@@ -728,13 +790,14 @@ class Transfer:
             slots.append({"lex_id": lid, "role": "NP", "gender": "m"})
         elif self.np_slots(root, "NP", slots, notes, unknown) is None:
             return []
-        return [{"type": "np", "slots": slots}]
+        return [{"type": "np", "slots": slots}] + self.relatives(0, root.sent, notes, unknown)
 
     # ---------------------------------------------------------------- text
     def translate(self, english: str) -> Result:
         doc = nlp()(english)
         self.used = set()
         self.neg_dets = set()
+        self.pending_rel, self.rel_ctx = [], {}
         notes: list[str] = []
         unknown: list[str] = []
         clauses = []
@@ -767,8 +830,9 @@ class Transfer:
             clauses += cls
         # every content word that became no slot is reported, never dropped silently
         skip = {"be", "do", "have", "will", "shall", "may", "let", "not", "to"}
-        left = [t.text for t in doc if t.i not in self.used and t.pos_ in ("NOUN", "PROPN", "VERB", "ADJ", "ADV", "NUM")
-                and t.lemma_.lower() not in skip and t.text not in unknown]
+        left = [t.text for t in doc if t.i not in self.used and t.lemma_.lower() not in skip and t.text not in unknown
+                and (t.pos_ in ("NOUN", "PROPN", "VERB", "ADJ", "ADV", "NUM")
+                     or t.lower_ in MEANINGFUL_FUNCTION_WORDS)]
         if left:
             notes.append("left out (no rule for how it fits the sentence): " + ", ".join(left))
         stray_no = [t.head.text for t in doc if t.dep_ == "det" and t.text.lower() == "no" and t.i not in self.neg_dets]
