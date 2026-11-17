@@ -157,17 +157,17 @@ Judge "a living language you can converse with", not a talking dictionary: use t
   - Vector stand-ins at SIMILAR_MIN 0.6 shift meanings. In the sweep's probes the 0.60-0.70 band held 3 fair
     stand-ins (fine ≈ well 0.64, lol ≈ laugh 0.65, coffee ≈ drink 0.67) and 5 wrong ones (angry ≈ sad 0.60,
     Cheers ≈ shout 0.60, Whose ≈ which 0.62, Hail ≈ storm 0.63, cool ≈ pretty 0.66); cat ≈ dog (0.80) and
-    cheese ≈ butter (0.77) are above any useful floor (a co-hyponym block would need a taxonomy). Proposed to the
-    owner: floor 0.7 (noted on the page either way).
+    cheese ≈ butter (0.77) are above any useful floor (a co-hyponym block would need a taxonomy). Raised to 0.7
+    (0cd59d6, owner-approved).
   - Farewells are done (27af58f: the greeting's 'be well!', Gk χαῖρε / Lat. valē). 'Welcome' is the brief's
     príHe gʰóstey, not idioms.json's gʷr̥Htós (reconcile, item above). A name that is also a noun (Smith, Wolf,
     Dawn) stays the noun: a capitalization rule would break 'Dawn, daughter of the sky, shines.'
-  - Derived glosses show '~' to visitors (rain~, be.tired~): proposed to strip it in the site's display only.
+  - Derived glosses' '~' is no longer shown to visitors (pie-site 48385a8; the data keeps it).
   - Training hints: the sweep's name guard and misspelling reading reach the SFT export's lexicon hints through
     hints.py (Transfer.lookup). Before the next export, diff the hints over the existing export inputs, old code
     vs new.
-  - Deploy: the erebus translator's Dockerfile needs ENV PYTHONUNBUFFERED=1 (its 'translator on' line is
-    buffered, so a health check waiting for it hangs); add at the next rebuild. Load: one 20-request burst on
+  - Deploy: the 'translator on' ready line was buffered (python -I ignores PYTHONUNBUFFERED, which the erebus
+    Dockerfile now sets anyway); the server flushes it from the next deploy on. Load: one 20-request burst on
     2026-11-17 was all 200, median 0.54 s, slowest 1.35 s.
   - No rule: 'X or Y' between nouns (the engine has only clause-level -wē), reflexive pronouns (myself), possessive
     pronouns as predicates (mine, yours), dates and times, non-English input.

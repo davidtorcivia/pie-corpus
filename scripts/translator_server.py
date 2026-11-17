@@ -67,7 +67,7 @@ def main():
     # changes an input of the caches): the memory and a rules translation (parser, lexmap, word vectors) …
     english_to_pie("Be well! The tiger ate the bread.")
     pie_to_english("wlkwos h2owim widet")           # … and the analyzer with its typed-spelling index (5 s)
-    print(f"translator on http://{a.host}:{a.port}")
+    print(f"translator on http://{a.host}:{a.port}", flush=True)   # python -I ignores PYTHONUNBUFFERED
     ThreadingHTTPServer((a.host, a.port), Handler).serve_forever()
 
 
