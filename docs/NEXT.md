@@ -146,7 +146,22 @@ Judge "a living language you can converse with", not a talking dictionary: use t
 - **More conversational corpus.** The owner wants a living language you can converse with, so plan more multi-turn dialogue batches in Tier 3 (wave 2, t034–t083, is still parked) and Tier 3b.
 - **Slice gaps for Tier 3b:** bread, milk, hungry, angry, story, tomorrow, and the verbs pr̥sḱéti "ask/please" and wéḱti "wish". The brief's please/sorry idioms need them.
 - **`realize_plans.py` should reject held-out root families** (`eval_root`) in plans. Today a held-out root can enter training unnoticed (t3b-001 0019 used h₁éwHt).
-- **Glosses for the translator app** use internal labels (`personal/2-ACC.SG.ENCL`, `demonstrative_so-ACC.SG`). Map them to readable English glosses.
+- **Glosses for the translator app:** done. `pie.translator.gloss.readable` names closed-class words in English
+  (you-ACC.SG.ENCL, that-ACC.SG) and, since 2026-11-17, tidies glosses cut inside a parenthesis or a coinage's
+  'word: explanation'. Still visible to visitors: the derived-gloss mark `~` (rain~, be.tired~); owner's call.
+- **Translator, open after the 2026-11-17 pre-launch sweep** (fixed items are in the commits and
+  tests/test_translator.py):
+  - spaCy misparses: 'Does the dog bark?' (do = put, bark a noun), 'The wolf and the dog fight.' (fight a noun),
+    'The horse which I saw is white.' (root horse); typos like 'teh' break the parse.
+  - An object relative is not fronted (h₃rḗǵs h₁yóns déh₃t 'which the king gave'): the engine item above.
+  - Vector stand-ins at SIMILAR_MIN 0.6 shift meanings: angry ≈ sad (0.60), cat ≈ dog (0.80), cheese ≈ butter
+    (0.77), coffee ≈ intoxication (0.67), cool ≈ pretty (0.66), Hail ≈ storm (0.63), LOL ≈ laugh. Raise the
+    floor, block co-hyponyms, or keep (noted on the page either way).
+  - Owner's call: farewells ('Goodbye', 'Bye') have no rule (Lat. valē, Gk χαῖρε would support 'be well!', but
+    planner-brief-v4 covers greetings only); 'Welcome' is the brief's príHe gʰóstey, not idioms.json's gʷr̥Htós
+    (reconcile, item above); a name that is also a noun (Smith, Wolf, Dawn) is translated as the noun.
+  - No rule: 'X or Y' between nouns (the engine has only clause-level -wē), reflexive pronouns (myself), possessive
+    pronouns as predicates (mine, yours), dates and times, non-English input.
 - **Compound engine:** a determinative prefix compound such as h₂énti- "counter-" for the "answer" coinage (h₂entiwékʷos).
 - **t3b-001** predates the v2 rules (per-sentence English, the coined-sentence gate). Re-plan it under v2 if it is ever re-realized.
 - **From the t3b-002 review:**

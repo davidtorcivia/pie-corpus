@@ -417,7 +417,13 @@ def test_everyday_function_words(transfer, english, pie):
 def test_meaningful_function_words_are_reported(transfer):
     """'Which horse is yours?' lost 'yours' with no note: pronouns and determiners that carry meaning are listed."""
     assert any("yours" in n for n in transfer.translate("Which horse is yours?").notes)
-    assert any("All" in n for n in transfer.translate("All men die.").notes)
+    assert any("mine" in n for n in transfer.translate("This horse is mine.").notes)
+
+
+def test_all_and_every_are_solh2wos(transfer):
+    """idioms.json (every, all, whole, each): solh₂wós 'whole, all, every', an adjective agreeing with its noun."""
+    assert transfer.translate("All men die.").pie == "solh₂wṓs wiHrṓs mr̥yóntor."
+    assert transfer.translate("Every man dies.").pie == "solh₂wós wiHrós mr̥yétor."
 
 
 def test_a_misspelling_is_read_as_the_word(transfer):

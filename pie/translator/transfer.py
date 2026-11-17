@@ -488,6 +488,11 @@ class Transfer:
                 slots.append({"lex_id": "pie-lex-h1oynos", "role": "MOD", "head": head})
                 if ONLY_NOTE not in notes:
                     notes.append(ONLY_NOTE)
+            elif ch.dep_ in ("det", "predet") and cl in ("all", "every", "each"):
+                # 'all men', 'every day': solh₂wós 'whole, all, every', an adjective agreeing with its noun
+                # (data/lexicon/idioms.json: every, all, whole, each)
+                self.used.add(ch.i)
+                slots.append({"lex_id": "pie-lex-solh2wos", "role": "MOD", "head": head})
             elif ch.dep_ == "det" and cl == "another":
                 # 'another girl': h₂élyos, a pronominal adjective agreeing with its noun (round 5)
                 self.used.add(ch.i)
