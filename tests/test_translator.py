@@ -211,3 +211,107 @@ def test_words_carry_their_provenance():
     assert provenance("pie-proj-spelom") == "inferred"          # our project reconstruction
     assert provenance("pie-neo-bread") == "coined"
     assert provenance("closed:personal/1") == "attested"
+
+
+# ---- pre-launch polish (2026-11-17): what site visitors type ------------------------------------------------------
+@pytest.mark.parametrize("english,pie", [
+    ("wolf", "wĺ̥kʷos."),
+    ("Two horses.", "dwóh₁ h₁éḱwoh₁."),
+    ("The wolf and the dog.", "wĺ̥kʷos ḱwṓ-kʷe."),
+])
+def test_a_sentence_without_a_verb_is_a_noun_phrase(transfer, english, pie):
+    """A bare noun ('wolf') was reported as having no PIE word: a verbless sentence is the engine's np utterance
+    (planner-brief-v4 'Noun-phrase utterance')."""
+    r = transfer.translate(english)
+    assert r.pie == pie and not r.unknown and r.plan["clauses"][0]["type"] == "np"
+
+
+def test_or_between_nouns_is_not_turned_into_and(transfer):
+    r = transfer.translate("The wolf or the dog.")
+    assert "-kʷe" not in r.pie and any("'or dog' left out" in n for n in r.notes)
+
+
+def test_a_name_never_takes_a_stand_in(transfer):
+    """'John loves Mary' came back as 'craftsman loves craftsman' (the vectors put names near 'smith'). A name with
+    no lexeme is reported unknown; 'My name is David' keeps 'my name' instead of failing."""
+    r = transfer.translate("John loves Mary.")
+    assert r.pie == "lubʰyéti." and set(r.unknown) == {"John", "Mary"} and not any("≈" in n for n in r.notes)
+    r = transfer.translate("My name is David.")
+    assert r.pie == "h₁nómn̥ moy." and r.unknown == ["David"] and not r.errors
+
+
+@pytest.mark.parametrize("english,pie", [
+    ("What did the wolf eat?", "kʷíd wĺ̥kʷos h₂éḱh₃t?"),          # was 'what eat!' (IMP 2SG), the wolf dropped
+    ("Do not kill the horse!", "h₁éḱwom mē gʷʰéns."),
+    ("Do come!", "gʷm̥yé."),
+])
+def test_do_support_is_not_a_command(transfer, english, pie):
+    assert transfer.translate(english).pie == pie
+
+
+def test_a_mislemmatized_verb_is_recovered(transfer):
+    """spaCy lemmatizes 'shines' as 'shin', so the site's own example 'Dawn, daughter of the sky, shines.' had no
+    verb and translated to nothing; the apposition is kept (realize: APPOS)."""
+    r = transfer.translate("Dawn, daughter of the sky, shines.")
+    assert r.pie == "h₂éwsōs diwés dʰugh₂tḗr gʰlindeti." and not r.unknown
+
+
+def test_a_verb_with_no_lexeme_takes_the_nearest_one(transfer):
+    r = transfer.translate("I don't understand.")
+    assert r.pie == "ne wóydh₂e." and any("'understand' ≈ 'know'" in n for n in r.notes)
+
+
+@pytest.mark.parametrize("english,pie", [
+    ("If you come, I will go.", "h₁yód gʷm̥yési h₁éyoh₂."),
+    ("When the sun rises, the birds sing.", "h₁yód sóh₂wl̥ h₁réyh₁seti h₂éweyes gʷéHyonti."),
+    ("I will go if you come.", "h₁éyoh₂ h₁yód gʷm̥yési."),
+])
+def test_a_subordinate_clause_takes_h1yod(transfer, english, pie):
+    """'if' was dropped silently and subordinating 'when' came out as the interrogative kʷóm 'when?'. The clause
+    particle h₁yód 'if, when' (pie.realize; idioms.json: because → a clause with h₁yód) marks it, in the English
+    order."""
+    assert transfer.translate(english).pie == pie
+
+
+def test_a_subordinator_with_no_rule_is_reported(transfer):
+    assert any("'Although' left out" in n for n in transfer.translate("Although he is old, he is strong.").notes)
+
+
+@pytest.mark.parametrize("english,pie", [
+    ("The wolf is bigger than the dog.", "wĺ̥kʷos ḱunés méǵyōs."),
+    ("The king is the greatest of the men.", "h₃rḗǵs wiHrṓm méǵistos."),
+    ("The bigger wolf ate the sheep.", "méǵyōs wĺ̥kʷos h₂ówim h₂éḱh₃t."),
+])
+def test_comparatives_and_superlatives(transfer, english, pie):
+    """'bigger than the dog' came out as 'big', the dog dropped: the engine's degrees (pie.degree) with the ablative
+    of comparison and the partitive genitive (Ringe 2006 §2.3.1)."""
+    r = transfer.translate(english)
+    assert r.pie == pie and not r.errors
+
+
+def test_a_degree_the_engine_cannot_build_is_noted(transfer):
+    r = transfer.translate("He is older than me.")
+    assert any("no comparative of ǵérh₂onts" in n for n in r.notes)
+
+
+@pytest.mark.parametrize("english,pie", [
+    ("Yesterday I saw a wolf here.", "wĺ̥kʷom dʰǵʰyés h₁idʰé widóm."),
+    ("Today I will go home.", "dṓm ḱósmi dinóy h₁éyoh₂."),            # idioms.json: 'on this day'
+    ("Come back soon!", "h₂éti móḱs gʷm̥yé."),
+    ("She never sleeps.", "ne sésti."),
+])
+def test_adverbs_are_said(transfer, english, pie):
+    """Time and place adverbs were left out: the indeclinables of the lexicon and idioms.json (Transfer.adverbs)."""
+    r = transfer.translate(english)
+    assert r.pie == pie and not any(n.startswith("left out") for n in r.notes)
+
+
+def test_a_time_word_is_never_a_nouns_stand_in(transfer):
+    assert not any("≈ 'yesterday'" in n for n in transfer.translate("Today is a good day.").notes)
+
+
+def test_tense_and_modals_are_not_lost_silently(transfer):
+    assert transfer.translate("The man was eating meat.").pie == "wiHrós mḗms h₁ḗdt."     # PST, the imperfect
+    assert transfer.translate("The man might eat meat.").pie == "wiHrós mḗms h₁édih₁t."   # OPT, like 'may'
+    for s, m in [("The man would eat meat.", "would"), ("We cannot go.", "can"), ("The man must eat meat.", "must")]:
+        assert any(f"'{m}' not expressed" in n for n in transfer.translate(s).notes), s

@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import functools
 import re
+from pathlib import Path
 from dataclasses import dataclass, field
 
 from ..realize import Lexicon, _valency, check_plan, realize
@@ -83,6 +84,20 @@ SYNONYMS = {
 # derivational endings stripped to reach a base the lexicon has: happiness → happy, equality → equal
 SUFFIXES = [("iness", "y"), ("ness", ""), ("ity", ""), ("ity", "e"), ("ment", ""), ("ation", "e"), ("ion", ""),
             ("dom", ""), ("hood", ""), ("ship", ""), ("ful", ""), ("ly", ""), ("th", "e"), ("er", ""), ("or", "")]
+# English adverbs of time, place and manner the translator says with an indeclinable (Transfer.adverbs): a fixed
+# list, so a gloss word that is also a preposition, a conjunction or an answer ('to', 'but', 'yes') never matches
+ADVERB_WORDS = {"here", "there", "yonder", "now", "today", "yesterday", "tomorrow", "again", "also", "too", "still",
+                "soon", "quickly", "early", "together", "down", "up", "away", "back", "out", "off", "twice", "thrice",
+                "apart", "around", "inside", "behind", "below", "above", "afterwards", "somewhere", "upwards",
+                "outward", "within"}
+# modal auxiliaries with no PIE counterpart in the engine: reported, never dropped silently ('may'/'might' → OPT,
+# 'will'/'shall' → SBJV)
+MODALS_UNSAID = {"can", "could", "would", "should", "must", "ought"}
+# subordinating conjunctions: True → the clause particle h₁yód 'if, when' (pie.realize; idioms.json: because,
+# since), False → no rule (reported as left out, never silently dropped)
+SUBORDINATORS = {"if": True, "when": True, "whenever": True, "because": True, "since": True,
+                 "although": False, "though": False, "unless": False, "until": False, "till": False, "while": False,
+                 "before": False, "after": False, "whereas": False, "once": False}
 GIVE_LIKE = {"give", "say", "tell", "show", "bring", "send", "offer", "sing", "speak"}   # "to X" = IO
 # negative pronouns: the indefinite kʷis/kʷid under the clause's ne ('ne kʷis gʷémt' no one came; pie.realize)
 NEG_PRONOUNS = {"nothing": "n", "nobody": "m", "none": "m", "noone": "m"}
@@ -98,12 +113,39 @@ def _negative(tok) -> bool:
                                      or any(c.dep_ == "det" and c.text.lower() == "no" for c in tok.children))
 
 
+def _senses_of(meaning: list[str]) -> list[str]:
+    """A lexicon meaning list split into its comma/semicolon senses, lower case, parentheses dropped."""
+    out = []
+    for m in meaning:
+        for x in re.split(r"[;,]", re.sub(r"\(.*?\)", "", m)):
+            x = x.strip().lower()
+            if x:
+                out.append(x)
+    return out
+
+
+def verb_lemmas(tok) -> list[str]:
+    """Lemma guesses for a verb spaCy lemmatized wrongly ('shines' → 'shin'): the word re-parsed after 'they', then
+    the regular English endings taken off (-s, -es, -ies, -ed, -ing, a doubled consonant, a dropped -e)."""
+    w = tok.text.lower()
+    out = [nlp()(f"they {w}")[1].lemma_.lower()]
+    for end, add in (("ies", "y"), ("es", ""), ("s", ""), ("ied", "y"), ("ed", ""), ("ed", "e"), ("ing", ""),
+                     ("ing", "e")):
+        if w.endswith(end) and len(w) - len(end) >= 2:
+            b = w[: -len(end)] + add
+            out.append(b)
+            if not add and len(b) > 2 and b[-1] == b[-2] and b[-1] not in "aeiouls":      # stopped → stop
+                out.append(b[:-1])
+    return list(dict.fromkeys(out))
+
+
 def _comma_next_to(tok) -> bool:
     """An address is set off by a comma (or starts/ends the sentence next to one): "Come, friend!", "Friend, …"."""
     d = tok.doc
     return (tok.i > 0 and d[tok.i - 1].text == ",") or (tok.i + 1 < len(d) and d[tok.i + 1].text == ",")
 
 
+NP_HEADS = ("NOUN", "PROPN", "PRON", "ADJ")    # a sentence rooted in one of these has no verb: an np utterance
 MODEL = "en_core_web_lg"       # parser + full word vectors (md shares one vector across many rare words: tiger =
                                 # wolf = chariot); the vectors give the nearest-word fallback; prod needs it
 SIMILAR_MIN = 0.6               # cosine floor for a nearest-word stand-in by vector
@@ -145,6 +187,10 @@ class Transfer:
                 cs = self.map.candidates(w, f)
                 if cs:
                     return cs[0].lex_id, f
+        if tok.pos_ == "PROPN":
+            # a name with no lexeme of its own stays out (reported unknown): a stand-in by meaning would rename the
+            # person (David ≈ smith, Achilles ≈ tendon: the vectors place a name near a surname or a body part)
+            return None, None
         tries = list(SYNONYMS.get(lem, []))
         for end, add in SUFFIXES:
             if lem.endswith(end) and len(lem) - len(end) >= 3:
@@ -157,7 +203,8 @@ class Transfer:
                 if cs:
                     notes.append(f"'{tok.text}' ≈ '{w}' (no PIE word for '{tok.text}')")
                     return cs[0].lex_id, f
-        w, f, sim = self.nearest(lem, families)
+        # a time or place adverb is never a noun's stand-in ('today' ≈ 'yesterday' by the vectors): Transfer.adverbs
+        w, f, sim = self.nearest(lem, families) if lem not in ADVERB_WORDS else (None, None, 0.0)
         if w:
             notes.append(f"'{tok.text}' ≈ '{w}' (no PIE word for '{tok.text}'; nearest by meaning, {sim:.2f})")
             return self.map.candidates(w, f)[0].lex_id, f
@@ -207,6 +254,65 @@ class Transfer:
         self.used.add(tok.i)
         return lid
 
+    @functools.cached_property
+    def adverbs(self) -> dict[str, list[dict]]:
+        """English adverb → the slots that say it. The project's own choices first (idioms.json: 'again' h₂éti,
+        'soon' móḱs, 'also' éti, 'tomorrow' h₂éyeri, 'today' = 'on this day', deictic_ki + dínos in the locative),
+        then the indeclinable lexemes (adv, particle) whose gloss is that one word ('yesterday' dʰǵʰyés,
+        'now' nu, 'down' ní), and the closed-class deictic h₁idʰé 'here'."""
+        import json as _json
+        out: dict[str, list[dict]] = {"here": [{"lex_id": "closed:deictic_adv/here", "role": "ADV"}],
+                                      "today": [{"lex_id": "pie-lex-dinos", "role": "LOC"},
+                                                {"lex_id": "closed:deictic_ki", "role": "MOD", "head": 0}]}
+        ok = lambda lid: self.lx.entries.get(lid, {}).get("pos") in ("adv", "particle")
+        idioms = _json.loads((Path(__file__).resolve().parents[2] / "data/lexicon/idioms.json").read_text("utf-8"))
+        for it in idioms["idioms"]:
+            ids = [i for i in it.get("ids") or [] if ok(i)]
+            if it.get("kind") == "idiom" and ids:
+                for w in it["english"]:
+                    if w in ADVERB_WORDS:
+                        out.setdefault(w, [{"lex_id": ids[0], "role": "ADV"}])
+        best: dict[str, tuple[int, str]] = {}      # the lexeme whose gloss names the word earliest
+        for lid, e in self.lx.entries.items():
+            if not ok(lid) or not e.get("meaning") or e.get("kind") == "root":
+                continue
+            for rank, sense in enumerate(_senses_of(e["meaning"])[:4]):
+                if sense in ADVERB_WORDS and sense not in out and rank < best.get(sense, (99, ""))[0]:
+                    best[sense] = (rank, lid)
+        for w, (_, lid) in best.items():
+            out[w] = [{"lex_id": lid, "role": "ADV"}]
+        return out
+
+    def degree(self, tok, slot_i: int, slots: list, notes, unknown) -> None:
+        """'bigger (than the dog)', 'the biggest', 'more beautiful': the engine's primary comparative/superlative
+        (pie.degree, realize "degree"), the standard of comparison an ABL slot governed by it (the ablative of
+        comparison, Ringe 2006 §2.3.1) and a superlative's 'of X' a POSS slot (partitive genitive). An adjective
+        the engine builds no degree for (pie.degree.base: not a primary adjective) stays plain, with a note."""
+        from .. import degree as _degree
+        d = {"Cmp": "CMP", "Sup": "SUP"}.get(next(iter(tok.morph.get("Degree")), None))
+        for c in tok.children:
+            if c.dep_ == "advmod" and c.text.lower() in ("more", "most"):
+                d = "CMP" if c.text.lower() == "more" else "SUP"
+                self.used.add(c.i)
+        if d is None:
+            return
+        lid = slots[slot_i]["lex_id"]
+        try:
+            _degree.base(lid, self.lx)
+        except Exception as e:
+            notes.append(f"'{tok.text}': no {'comparative' if d == 'CMP' else 'superlative'} of "
+                         f"{self.lx.entries.get(lid, {}).get('form', lid)} in the engine ({e}); the plain adjective stands")
+            return
+        slots[slot_i]["degree"] = d
+        for c in tok.children:
+            if c.dep_ == "prep" and c.text.lower() == ("than" if d == "CMP" else "of"):
+                self.used.add(c.i)
+                for g in c.children:
+                    if g.dep_ == "pobj":
+                        i = self.np_slots(g, "ABL" if d == "CMP" else "POSS", slots, notes, unknown)
+                        if i is not None:
+                            slots[i]["dep"] = slot_i
+
     def verb(self, lemma: str, tense: str, mood: str, notes, prohibitive: bool = False) -> tuple[str | None, str]:
         """A verb lexeme with the needed cell, and the tense actually used. A prohibitive (neg + IMP) needs a present
         or aorist stem (the injunctive). A verb with no lexeme of its own tries its SYNONYMS."""
@@ -217,6 +323,11 @@ class Transfer:
                 if cs:
                     notes.append(f"'{lemma}' ≈ '{w}' (no PIE word for '{lemma}')")
                     break
+        if not cs:              # the nearest verb by meaning, as lookup() does for nouns ('understand' ≈ 'know')
+            w, _, sim = self.nearest(lemma, ("verb",))
+            if w:
+                cs = self.map.candidates(w, "verb")
+                notes.append(f"'{lemma}' ≈ '{w}' (no PIE word for '{lemma}'; nearest by meaning, {sim:.2f})")
         if not cs:
             return None, tense
         want = {"IND": [tense], "IMP": ["IMP"], "SBJV": ["SBJV"], "OPT": ["OPT"]}[mood]
@@ -290,6 +401,7 @@ class Transfer:
                 a = self.adj(ch, unknown, notes)
                 if a:
                     slots.append({"lex_id": a, "role": "MOD", "head": head})
+                    self.degree(ch, len(slots) - 1, slots, notes, unknown)
             elif ch.dep_ == "poss":
                 if cl in POSSESSIVE:
                     p, pn = POSSESSIVE[cl]
@@ -327,9 +439,19 @@ class Transfer:
                         if i is not None:
                             slots[i]["head"] = head
             elif ch.dep_ == "conj" and ch.pos_ in ("NOUN", "PROPN", "PRON"):
+                if any(c.dep_ == "cc" and c.text.lower() in ("or", "nor") for c in tok.children):
+                    # the engine joins nouns only with -kʷe 'and' (-wē 'or' joins clauses): 'or' would turn into 'and'
+                    notes.append(f"'or {ch.text}' left out (nouns are joined only with -kʷe 'and')")
+                    self.used.add(ch.i)
+                    continue
                 i = self.np_slots(ch, role, slots, notes, unknown)
                 if i is not None:
                     slots[i]["and"] = True
+            elif ch.dep_ == "appos" and ch.pos_ in ("NOUN", "PROPN") and role not in ("MOD", "APPOS"):
+                # 'Dawn, daughter of the sky': a noun phrase in apposition, in its head's case (realize: APPOS)
+                i = self.np_slots(ch, "APPOS", slots, notes, unknown)
+                if i is not None:
+                    slots[i]["head"] = head
         return head
 
     def clause(self, root, sent, notes, unknown, inherit: dict | None = None) -> list[dict]:
@@ -347,23 +469,47 @@ class Transfer:
         lemma = root.lemma_.lower()
         tense_m = root.morph.get("Tense")
         tense = "AOR" if "Past" in tense_m or any(a.morph.get("Tense") == ["Past"] for a in aux if a.lemma_ == "do") else "PRS"
+        if tense == "PRS" and root.tag_ == "VBG" and any(a.lemma_.lower() == "be" and "Past" in a.morph.get("Tense")
+                                                        for a in aux):
+            tense = "PST"        # 'was eating': PST, the imperfect (planner-brief-v4: AOR for single events, PST for background)
         mood = "IND"
         if "will" in aux_l or "shall" in aux_l:
             mood = "SBJV"
-        elif "may" in aux_l:
+        elif "may" in aux_l or "might" in aux_l:
             mood = "OPT"
         elif "have" in aux_l and root.tag_ == "VBN":
             tense = "PRF"
+        for a in aux:
+            if a.lemma_.lower() in MODALS_UNSAID:
+                notes.append(f"'{a.text}' not expressed (PIE has no modal verb for it; the plain verb stands)")
         subj = [k for k in kids if k.dep_ in ("nsubj", "nsubjpass")]
-        if root.tag_ == "VB" and not subj and all(a == "do" for a in aux_l):
+        if not subj and root.pos_ == "VERB":
+            # 'What did the wolf eat?': the small parser hangs the subject on the verb as a compound
+            subj = [k for k in kids if k.dep_ == "compound" and k.pos_ in ("NOUN", "PROPN") and k.i < root.i]
+        # a command: the bare verb with no subject, and any 'do' the imperative's own (Do not go! Don't go!), not a
+        # tensed do-support (What did … eat? Does … ?)
+        if root.tag_ == "VB" and not subj and all(a.lemma_.lower() == "do" and a.tag_ not in ("VBD", "VBZ") for a in aux):
             mood = "IMP"
         person, num = 3, "SG"
         if root.lemma_ == "let":                         # "let us go" → SBJV 1PL
             xs = [k for k in kids if k.dep_ in ("ccomp", "xcomp")]
             if xs and any(c.text.lower() == "us" for c in list(xs[0].children) + kids):
                 root, lemma, mood = xs[0], xs[0].lemma_.lower(), "SBJV"
+                self.used.add(root.i)
                 kids = [c for c in root.children if c.text.lower() != "us"]
                 subj, person, num = [], 1, "PL"
+        if root.dep_ == "advcl":
+            # 'If you come …', 'When the sun rises …', 'Because the king was angry …': the subordinate clause takes
+            # the particle h₁yód 'if, when' (pie.realize "particle": "yod"; idioms.json 'because': a clause with
+            # h₁yód), not the interrogative kʷóm 'when?'. Other subordinators have no rule and are reported.
+            for k in kids:
+                if k.dep_ in ("mark", "advmod") and k.text.lower() in SUBORDINATORS:
+                    self.used.add(k.i)
+                    if SUBORDINATORS[k.text.lower()]:
+                        cl["particle"] = "yod"
+                    else:
+                        notes.append(f"'{k.text}' left out (no PIE conjunction for it in the engine)")
+            kids = [k for k in kids if not (k.dep_ in ("mark", "advmod") and k.text.lower() in SUBORDINATORS)]
         voice = "MID" if any(k.dep_ == "nsubjpass" for k in kids) else "ACT"
         # possessive 'have' ('I have a horse', 'the king had no son'): the possessor in the dative, the possessed the
         # subject of h₁ésti (h₁éḱwos moy h₁ésti, Lat. mihi est equus). The perfect's 'have' is an aux of the
@@ -436,6 +582,17 @@ class Transfer:
             elif d == "advmod" and low in WH_ADV:
                 self.used.add(k.i)
                 slots.append({"lex_id": WH_ADV[low], "role": "ADV"})
+            elif d in ("advmod", "npadvmod", "prt") and low in self.adverbs and not (d == "prt" and low in ("up", "down", "out", "off")):
+                # 'yesterday', 'here', 'again', 'ran away' (a phrasal verb's up/down/out/off is part of the verb's
+                # meaning, 'give up', 'sit down': left out and reported)
+                self.used.add(k.i)
+                base = len(slots)
+                for x in self.adverbs[low]:
+                    slots.append({**x, **({"head": base + x["head"]} if "head" in x else {})})
+            elif d in ("advmod", "neg") and low == "never":
+                self.used.add(k.i)
+                neg = True
+                notes.append("'never' → ne 'not' (no PIE word for 'never')")
             elif d == "advmod" and low not in ("not", "n't"):
                 pass                                     # reported by translate() as left out
             elif d in ("npadvmod", "intj", "appos") and k.pos_ in ("NOUN", "PROPN") and _comma_next_to(k):
@@ -459,12 +616,19 @@ class Transfer:
                 lid = self.adj(a, unknown, notes)
                 if lid:
                     slots.append({"lex_id": lid, "role": "PRED"})
+                    self.degree(a, len(slots) - 1, slots, notes, unknown)
             elif a.pos_ in ("NOUN", "PROPN"):
                 self.np_slots(a, "PRED", slots, notes, unknown, num="PL" if num == "PL" else "SG")
             elif a.pos_ == "PRON" and a.text.lower() in ("who", "what"):
                 slots.append({"lex_id": "closed:interrogative_kwi", "role": "PRED", "gender": "n" if a.text.lower() == "what" else "m"})
             nominal = tense == "PRS" and mood == "IND" and person == 3 and any(s["role"] == "SUBJ" for s in slots)
-            if nominal:
+            if nominal and not any(s["role"] == "PRED" for s in slots):
+                # the predicate has no PIE word ('My name is David': a name): the subject alone, as a noun phrase
+                for s_ in slots:
+                    if s_["role"] == "SUBJ":
+                        s_["role"] = "NP"
+                cl["type"] = "np"
+            elif nominal:
                 cl["type"] = "nominal"
             else:
                 slots.append({"lex_id": "pie-lex-h1esti", "role": "V",
@@ -481,7 +645,7 @@ class Transfer:
             if root.text.lower() in IRREGULAR:                  # spaCy's small model leaves some ("drank")
                 lemma, tense = IRREGULAR[root.text.lower()], "AOR" if mood == "IND" else tense
             elif not self.map.candidates(lemma, "verb"):
-                lemma = nlp()(f"they {root.text.lower()}")[1].lemma_.lower()
+                lemma = next((w for w in verb_lemmas(root) if self.map.candidates(w, "verb")), lemma)
             if inherit:
                 tense, mood = inherit["tense"], inherit["mood"]
             lid, t = self.verb(lemma, tense, mood, notes, prohibitive=neg and mood == "IMP")
@@ -530,7 +694,8 @@ class Transfer:
                     for s_ in c["slots"]:
                         if s_["role"] == "V" and not sub_subj:
                             s_["verb"]["person"], s_["verb"]["num"] = person, num
-                out += more
+                # a subordinate clause that comes first in the English comes first in the PIE (h₁yód … , main)
+                out = more + out if k.dep_ == "advcl" and k.i < root.i else out + more
         for k in kids:                                    # "…and drank": a coordinated verb, same subject
             if k.dep_ == "conj" and k.pos_ in ("VERB",):
                 more = self.clause(k, sent, notes, unknown, inherit={"tense": tense, "mood": mood})
@@ -547,6 +712,20 @@ class Transfer:
                 notes.append(f"'{k.doc[k.left_edge.i:k.right_edge.i + 1].text}' (no verb) → a noun phrase of its own")
         return out
 
+    def np_utterance(self, root, notes, unknown) -> list[dict]:
+        """A sentence with no verb ('wolf', 'Two horses.', 'The wolf and the dog.'): a noun-phrase utterance (the
+        engine's "np" clause type, planner-brief-v4 'Noun-phrase utterance'), in the nominative. A lone adjective
+        ('beautiful') is the masculine adjective as a noun."""
+        slots: list[dict] = []
+        if root.pos_ == "ADJ":
+            lid = self.adj(root, unknown, notes)
+            if not lid:
+                return []
+            slots.append({"lex_id": lid, "role": "NP", "gender": "m"})
+        elif self.np_slots(root, "NP", slots, notes, unknown) is None:
+            return []
+        return [{"type": "np", "slots": slots}]
+
     # ---------------------------------------------------------------- text
     def translate(self, english: str) -> Result:
         doc = nlp()(english)
@@ -562,7 +741,10 @@ class Transfer:
                 verbs = [c for c in root.children if c.pos_ in ("VERB", "AUX") and c.dep_ in ("relcl", "ccomp", "acl", "appos")]
                 if verbs:
                     voc, root = root, verbs[0]
-            cls = self.clause(root, sent, notes, unknown)
+            if voc is None and root.pos_ in NP_HEADS:
+                cls = self.np_utterance(root, notes, unknown)
+            else:
+                cls = self.clause(root, sent, notes, unknown)
             if cls and voc is not None:
                 self.np_slots(voc, "VOC", cls[0]["slots"], notes, unknown)
             if not cls:
