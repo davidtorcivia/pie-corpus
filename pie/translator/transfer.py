@@ -545,6 +545,10 @@ class Transfer:
         # copula: "X is Y" / "X is good"
         copula = lemma == "be"
         attr = [k for k in kids if k.dep_ in ("attr", "acomp")]
+        if copula and not attr:
+            # 'Be well, my friend!': the parser makes 'well' an adverb; with 'be' it is the predicate 'healthy'
+            # (lexmap OVERRIDES well → kéh₂ilos, as in the corpus's kéh₂ilos h₁sdʰí)
+            attr = [k for k in kids if k.dep_ == "advmod" and k.text.lower() == "well"]
         # 'there is a king', 'there are no wolves': the noun is the subject of h₁ésti (existence takes the verb;
         # pie.realize, nominal sentences), which agrees with it
         existential = copula and attr and any(k.dep_ == "expl" for k in kids) and \
@@ -612,7 +616,7 @@ class Transfer:
                           "verb": {"tense": "PST" if tense == "AOR" else "PRS", "mood": mood, "voice": "ACT"}})
         elif copula and attr:
             a = attr[0]
-            if a.pos_ == "ADJ":
+            if a.pos_ == "ADJ" or a.text.lower() == "well":
                 lid = self.adj(a, unknown, notes)
                 if lid:
                     slots.append({"lex_id": lid, "role": "PRED"})

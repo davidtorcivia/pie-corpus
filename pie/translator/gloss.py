@@ -50,6 +50,17 @@ def _word(lemma: str, tags: str) -> str:
     if m:
         w = m[1].replace("_", ".")
         return w + "?" if lemma.startswith("interrogative") else w
+    return _tidy(lemma)
+
+
+def _tidy(lemma: str) -> str:
+    """A lexicon gloss cut short by Lexicon.gloss (first sense, up to the first comma) can leave an open parenthesis
+    ('fire (the element, …)' → fire.(the.element) or a coinage's 'word: explanation' (computer:.counting.machine):
+    the word itself is kept, fire, computer."""
+    if "(" in lemma and ")" not in lemma[lemma.index("("):]:
+        lemma = lemma[: lemma.index("(")].rstrip(".") or lemma
+    if ":" in lemma:
+        lemma = lemma.split(":", 1)[0] or lemma
     return lemma
 
 

@@ -50,34 +50,68 @@ def _words(pie: str | None, gloss: str | None, lex_ids: list | None) -> list[dic
     forms = pie.split()
     gl = (gloss or "").split()
     ids = lex_ids if lex_ids and len(lex_ids) == len(forms) else [None] * len(forms)
-    return [{"form": f.strip(".,;:?!"), "gloss": gl[i] if i < len(gl) and len(gl) == len(forms) else None,
-             "status": provenance(ids[i])} for i, f in enumerate(forms)]
+    if len(gl) != len(forms):
+        # a memory record whose gloss doesn't align word for word: each word's own reading (the site lays out a
+        # gloss under every word, and a None there broke the page)
+        from .analyze import Analyzer
+        an = Analyzer.load()
+        gl = []
+        for f in forms:
+            a = an.analyze(f)
+            gl.append(a[0]["analyses"][0].gloss() if a and a[0]["analyses"] else "")
+    return [{"form": f.strip(".,;:?!"), "gloss": gl[i], "status": provenance(ids[i])} for i, f in enumerate(forms)]
+
+
+# a period after these ends no sentence ('Dr. Smith saw the wolf.' was cut into 'Dr.' and 'Smith saw the wolf.')
+ABBREVIATIONS = {"mr", "mrs", "ms", "dr", "st", "sr", "jr", "prof", "mt", "vs", "etc", "e.g", "i.e", "vol", "ch",
+                 "cf", "approx"}
 
 
 def split_sentences(text: str) -> list[str]:
-    return [s.strip() for s in re.split(r"(?<=[.?!])\s+", text.strip()) if s.strip()]
+    """Sentences: a break after . ? ! and white space, except after an abbreviation or a lone initial ('J. Smith'),
+    and not inside an ellipsis that runs on in lower case ('The wolf... saw the sheep')."""
+    out, cur = [], ""
+    for piece in re.split(r"(?<=[.?!])\s+", text.strip()):
+        cur = f"{cur} {piece}" if cur else piece
+        last = cur.rsplit(None, 1)[-1].lower() if cur.split() else ""
+        if last.endswith(".") and (last[:-1].strip("(\"'") in ABBREVIATIONS or re.fullmatch(r"[a-z]\.", last)
+                                   or last.endswith("...")):
+            continue
+        out.append(cur.strip())
+        cur = ""
+    if cur.strip():
+        out.append(cur.strip())
+    return [x for x in out if x]
 
 
 def english_to_pie(text: str) -> list[dict]:
+    from .formulas import rewrite
     from .gloss import readable
     from .memory import Memory
     mem = Memory.load()
     out = []
     transfer = None
-    for s in split_sentences(text):
-        hits = mem.search(s, k=1)
-        if hits and hits[0][0] >= MEMORY_ACCEPT:
-            score, p = hits[0]
-            out.append(Sentence(s, p.pie, readable(p.gloss), _ipa(p.pie), "memory", p.source_id, score,
-                                words=_words(p.pie, readable(p.gloss), p.lex_ids)))
-            continue
-        if transfer is None:
-            from .transfer import Transfer
-            transfer = Transfer()
-        r = transfer.translate(s)
-        notes = r.notes + [f"could not build: {e}" for e in r.errors]
-        out.append(Sentence(s, r.pie, readable(r.gloss), _ipa(r.pie), "rules", None, None, r.unknown, notes,
-                            _words(r.pie, readable(r.gloss), r.lex_ids)))
+    for sentence in split_sentences(text):
+        parts = rewrite(sentence) or [(sentence, None)]
+        for k, (s, pre) in enumerate(parts):
+            shown = sentence if len(parts) == 1 else s if k else sentence[: len(sentence) - len(parts[-1][0])].strip()
+            pre = [pre] if pre else []
+            if not s:                       # a word with no PIE counterpart ('Yes.', 'Please.'): the note says why
+                out.append(Sentence(shown, None, None, None, "rules", None, None, [shown.strip(" .!?,;:")], pre))
+                continue
+            hits = mem.search(s, k=1)
+            if hits and hits[0][0] >= MEMORY_ACCEPT:
+                score, p = hits[0]
+                out.append(Sentence(shown, p.pie, readable(p.gloss), _ipa(p.pie), "memory", p.source_id, score,
+                                    notes=pre, words=_words(p.pie, readable(p.gloss), p.lex_ids)))
+                continue
+            if transfer is None:
+                from .transfer import Transfer
+                transfer = Transfer()
+            r = transfer.translate(s)
+            notes = pre + r.notes + [f"could not build: {e}" for e in r.errors]
+            out.append(Sentence(shown, r.pie, readable(r.gloss), _ipa(r.pie), "rules", None, None, r.unknown, notes,
+                                _words(r.pie, readable(r.gloss), r.lex_ids)))
     return [asdict(x) for x in out]
 
 
@@ -91,7 +125,10 @@ def pie_to_english(text: str) -> dict:
     for w in words:
         if w["analyses"]:
             a = w["analyses"][0]
-            rough.append(a.gloss().split("-")[0].replace(".", " "))
+            # a near spelling is a guess ('hello' read as h₂éloh₂ 'nourish'): marked, so it doesn't read as a word
+            g = re.sub(r"^(.*)\.(CMP|SUP)$", lambda m: ("more " if m[2] == "CMP" else "most ") + m[1],
+                       a.gloss().split("-")[0])           # big.CMP → more big
+            rough.append(g.replace(".", " ") + (" (?)" if w["match"] == "close" else ""))
         else:
             rough.append(f"[{w['form']}]")
         if w["clitic"]:

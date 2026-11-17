@@ -315,3 +315,69 @@ def test_tense_and_modals_are_not_lost_silently(transfer):
     assert transfer.translate("The man might eat meat.").pie == "wiHrós mḗms h₁édih₁t."   # OPT, like 'may'
     for s, m in [("The man would eat meat.", "would"), ("We cannot go.", "can"), ("The man must eat meat.", "must")]:
         assert any(f"'{m}' not expressed" in n for n in transfer.translate(s).notes), s
+
+
+@pytest.mark.parametrize("english,pie", [
+    ("Hello!", "kéh₂ilos h₁sdʰí."),
+    ("Good morning.", "kéh₂ilos h₁sdʰí."),
+    ("Hello, friends!", "príHōs kéh₂ilōs h₁sté."),
+    ("Welcome!", "príHe gʰóstey."),
+])
+def test_greetings_are_the_briefs_formulas(english, pie):
+    """'Hello', 'Thank you', 'Welcome' came back as having no PIE word. No PIE greeting is reconstructible; the
+    planner brief builds them from inherited words (planner-brief-v4, Greetings and thanks: 'be well!', the dear
+    guest, praise of the giver), and the note says so."""
+    pytest.importorskip("spacy")
+    from pie.translator import english_to_pie
+    [s] = english_to_pie(english)
+    assert s["pie"] == pie and any("planner-brief-v4" in n for n in s["notes"])
+
+
+def test_thanks_is_praise_and_please_yes_no_are_reported():
+    pytest.importorskip("spacy")
+    from pie.translator import english_to_pie
+    [s] = english_to_pie("Thank you.")
+    assert "gʷr̥néH" in s["pie"]
+    [s] = english_to_pie("Thanks, my friend!")
+    assert s["pie"].startswith("príHe moy") and "gʷr̥néH" in s["pie"] and not s["unknown"]
+    for w in ("Yes.", "No.", "Please."):
+        [s] = english_to_pie(w)
+        assert s["pie"] is None and s["unknown"] == [w.strip(".")] and s["notes"], w
+    [s] = english_to_pie("Please give me water.")       # 'please' is not the verb 'gratify'
+    assert s["pie"] and "'please' left out" in " ".join(s["notes"])
+    hello, how = english_to_pie("Hello, how are you?")
+    assert hello["pie"] == "kéh₂ilos h₁sdʰí." and how["pie"] == "kʷíh₁ h₁ési?"
+    assert "planner-brief" not in " ".join(english_to_pie("Hail fell from the sky.")[0]["notes"])
+
+
+def test_abbreviations_end_no_sentence():
+    from pie.translator import split_sentences
+    assert split_sentences("Dr. Smith saw the wolf. The dog barked.") == ["Dr. Smith saw the wolf.", "The dog barked."]
+    assert split_sentences("The wolf... saw the sheep?!") == ["The wolf... saw the sheep?!"]
+    assert split_sentences("No. I will not go.") == ["No.", "I will not go."]
+
+
+def test_every_word_has_a_gloss_for_the_site():
+    """The site lays out w.gloss under each word (w.gloss.split): a gloss that doesn't align word for word falls
+    back to each word's own reading, never None."""
+    from pie.translator import _words
+    ws = _words("wĺ̥kʷos h₂ówim widét.", None, None)
+    assert [w["gloss"] for w in ws] == ["wolf-NOM.SG", "sheep-ACC.SG", "see-AOR.3SG"]
+
+
+def test_readable_gloss_tidies_cut_glosses():
+    assert readable("fire.(the.element-NOM.SG computer:.counting.machine-ACC.PL go.(away)-IMP.2SG") == \
+        "fire-NOM.SG computer-ACC.PL go.(away)-IMP.2SG"
+
+
+def test_analyzer_splits_an_unhyphenated_enclitic(analyzer):
+    """'h1ekwoskwe' was read as a near spelling of h₁érkʷowe 'we two praised'."""
+    w = analyzer.analyze("h1ekwoskwe")[0]
+    assert w["clitic"] == ("kʷe", "and") and w["analyses"][0].lex_id == "pie-lex-h1ekjwos"
+
+
+def test_pie_to_english_marks_a_guess_and_reads_degrees():
+    from pie.translator import pie_to_english
+    assert pie_to_english("hello")["rough_english"].endswith("(?)")       # an English word is no PIE word
+    r = pie_to_english("wĺ̥kʷos ḱunés méǵyōs.")                         # the translator's own comparative
+    assert [w["match"] for w in r["words"]] == ["exact"] * 3 and r["rough_english"].endswith("more big")

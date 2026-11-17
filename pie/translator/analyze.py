@@ -91,6 +91,15 @@ def bare(s: str) -> str:
     return re.sub(r"(?<![bdgkptw])h", "", k)
 
 
+def _cut(w: str, n: int) -> int:
+    """How many characters of w to keep so that its skeleton() loses its last n letters (kʷe is 3 characters
+    typed as kwe or kʷe, but kʷ is one skeleton letter pair either way)."""
+    for i in range(len(w), 0, -1):
+        if len(skeleton(w[:i])) <= len(skeleton(w)) - n:
+            return i
+    return 0
+
+
 def unaccented(s: str) -> str:
     return nfc("".join(c for c in unicodedata.normalize("NFD", s) if c not in _ACCENT))
 
@@ -153,6 +162,17 @@ class Analyzer:
                         for f, forms in lx.admissible_cells(lid, g).items():
                             for x in forms:
                                 add(x, Analysis(lid, lemma, f"{g.upper()}.{f}", en, "adj"))
+                    # the comparative and superlative the realizer builds (Lexicon.degree_cells, pie.degree), glossed
+                    # as the realizer glosses them (big.CMP), so the translator reads back what it writes
+                    for deg in ("CMP", "SUP"):
+                        try:
+                            dc = {g: lx.degree_cells(lid, deg, g) for g in ("m", "f", "n")}
+                        except Exception:          # a degree the engine cannot build (pie.degree.DegreeError)
+                            continue
+                        for g, cells in dc.items():
+                            for f, forms in cells.items():
+                                for x in forms:
+                                    add(x, Analysis(lid, lemma, f"{g.upper()}.{f}", f"{en}.{deg}", "adj"))
                     continue
                 for f, forms in lx.admissible_cells(lid).items():
                     for x in forms:
@@ -287,6 +307,18 @@ class Analyzer:
                 if tail_key:
                     w, clitic = head, tail_key
             an, how = self.word(w)
+            if clitic is None and how in ("close", "unknown"):
+                # an enclitic typed without its hyphen (h1ekwoskwe = h₁éḱwos-kʷe): split it off when the rest is a
+                # word as typed, before settling for a near spelling
+                k = skeleton(w)
+                for c in sorted(ENCLITICS, key=lambda c: -len(skeleton(c))):
+                    tail = skeleton(c)
+                    if k.endswith(tail) and len(k) - len(tail) >= 3:
+                        head = w[: _cut(w, len(tail))]
+                        an2, how2 = self.word(head)
+                        if how2 in ("exact", "unaccented", "typed"):
+                            w, clitic, an, how = head, c, an2, how2
+                            break
             spelled = None
             if how in ("typed", "close", "unaccented"):
                 spelled = next((f for f in self.forms_for(w)), None)

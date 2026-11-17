@@ -38,8 +38,17 @@ class Handler(BaseHTTPRequestHandler):
         if self.path not in ("/api/en2pie", "/api/pie2en"):
             return self._send(404, b"not found", "text/plain")
         try:
-            n = int(self.headers.get("Content-Length", "0"))
-            text = json.loads(self.rfile.read(min(n, 64_000)) or b"{}").get("text", "")[:MAX_CHARS]
+            # a negative length would read to the end of the connection (a stalled thread); no body is {}
+            n = max(0, min(int(self.headers.get("Content-Length", "0") or 0), 64_000))
+            body = json.loads(self.rfile.read(n) or b"{}")
+            text = body.get("text", "") if isinstance(body, dict) else None
+        except (ValueError, UnicodeDecodeError):
+            text = None
+        if not isinstance(text, str):
+            return self._send(400, json.dumps({"error": "expected a JSON object {\"text\": string}"}).encode(),
+                              "application/json")
+        try:
+            text = text[:MAX_CHARS]
             out = english_to_pie(text) if self.path == "/api/en2pie" else pie_to_english(text)
             self._send(200, json.dumps(out, ensure_ascii=False).encode("utf-8"), "application/json; charset=utf-8")
         except Exception as e:                       # report, don't crash the server
@@ -54,7 +63,10 @@ def main():
     ap.add_argument("--host", default="127.0.0.1")
     ap.add_argument("--port", type=int, default=8765)
     a = ap.parse_args()
-    english_to_pie("Be well!")                      # warm the caches (index, memory, parser) before serving
+    # warm every cache before serving (the first request otherwise pays for them, ~30 s after a deploy that
+    # changes an input of the caches): the memory and a rules translation (parser, lexmap, word vectors) …
+    english_to_pie("Be well! The tiger ate the bread.")
+    pie_to_english("wlkwos h2owim widet")           # … and the analyzer with its typed-spelling index (5 s)
     print(f"translator on http://{a.host}:{a.port}")
     ThreadingHTTPServer((a.host, a.port), Handler).serve_forever()
 
