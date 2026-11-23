@@ -11,8 +11,10 @@ cp $WK/gwerh_train.py $WK/gwerh.py $WK/audio.py $WK/mps_fixes.py $T/code/; cp $H
 cp -R "$BV" $T/BigVGAN; rm -rf $T/BigVGAN/.git; cp -R "$PL" $T/pylib
 tar -czf $T/code.tgz -C $T code kit BigVGAN pylib
 colab new -s $S --gpu $GPU
+trap 'echo "start failed: releasing $S"; colab stop -s $S' ERR      # a VM that never trains must not keep billing
 colab upload -s $S $T/code.tgz /content/code.tgz
 colab ssh -s $S -- 'mkdir -p /root/.cache/huggingface' </dev/null
 colab upload -s $S "$TOKEN" /root/.cache/huggingface/token
 colab ssh -s $S -- 'chmod 600 /root/.cache/huggingface/token && tar xzf /content/code.tgz -C /tmp kit/vm_run.sh && bash /tmp/kit/vm_run.sh '"$RUN" </dev/null
-rm -rf $T
+trap - ERR; rm -rf $T
+echo "$RUN running on $S; check with colab_check.sh $RUN"

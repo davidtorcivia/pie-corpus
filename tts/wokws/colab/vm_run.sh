@@ -8,7 +8,7 @@ cd /content; mkdir -p $W/runs/$RUN; tar xzf code.tgz -C $W
 source $W/kit/runs.sh
 pip install -q -U "huggingface_hub[hf_xet]" librosa >/dev/null 2>&1
 export HF_XET_HIGH_PERFORMANCE=1
-hf download $REPO --repo-type dataset --include "data/*" "ckpt/$RUN/*" --local-dir $W/repo > $W/download.log 2>&1
+hf download $REPO --repo-type dataset --include "data/*" --include "ckpt/$RUN/*" --local-dir $W/repo > $W/download.log 2>&1
 cp $W/repo/ckpt/$RUN/last.pt $W/runs/$RUN/last.pt
 [ -f $W/repo/ckpt/$RUN/train.log ] && cp $W/repo/ckpt/$RUN/train.log $W/runs/$RUN/train.log
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader > $W/gpu.txt
