@@ -6,7 +6,7 @@ Apple GPUs: torch >= 2.13 (<= 2.12 corrupts memory on MPS) and mps_fixes (same m
 Operational: STOP file -> last.pt + exit; --resume; VRAM cap; whole-card memory logged; held-out error every
 --val_every = L1 between audio.mel of the EMA output (resampled to 32 kHz) and the clip's own mel.
   gwerh_train.py --name NAME [--steps 1000000] [--batch 8] [--frames 128]"""
-import argparse, copy, itertools, json, math, os, random, sys, time
+import argparse, collections, copy, itertools, json, math, os, random, sys, time
 import torch, torchaudio
 from torch import nn
 
@@ -31,6 +31,7 @@ ap.add_argument('--pred_prob', type=float, default=0.5)
 ap.add_argument('--pred_blur_f', type=float, default=0.0, help='converter-mel inputs: 3-tap blur along frequency, strength ~ U(0, this) per sample')
 ap.add_argument('--pred_blur_t', type=float, default=0.0, help='same along time (held-out converter output ~ 0.012 / 0.010 softer than on training clips)')
 ap.add_argument('--voice_weight', default='', help='sampling weight per voice, e.g. W02=2,VALERIA=1.5 (others 1): oversample voices gʷerh renders worst')
+ap.add_argument('--val_per_voice', type=int, default=0, help='held-out set: the first N val clips of each voice, scored per voice and per male/female group (0: the first 24 val clips, which are all one voice)')
 ap.add_argument('--bf16', type=int, default=0, help='1: bfloat16 autocast for the generator and discriminator forwards (CUDA); losses in float32')
 ap.add_argument('--gen_checkpoint', type=int, default=-1, help='1: activation checkpointing on the generator resblocks (default: on for CUDA)')
 ap.add_argument('--resume', action='store_true'); ap.add_argument('--mem_frac', type=float, default=0.7)
@@ -70,14 +71,19 @@ ok = lambda r: all(os.path.exists(f"{a.data}/{k}/{r['voice']}/{r['stem']}.pt") f
 t0 = time.time()
 TROWS = [r for r in pairs if r['split'] == 'train' and ok(r)]
 TRAIN = [load(r) for r in TROWS]
-VAL = [load(r) for r in pairs if r['split'] == 'val' and ok(r)][:24]
+if a.val_per_voice:          # balanced: the first 24 val pairs are all one voice (ZAZY), which hid per-voice effects
+    VROWS = [r for v in sorted({r['voice'] for r in pairs}) for r in [r for r in pairs if r['split'] == 'val' and r['voice'] == v and ok(r)][:a.val_per_voice]]
+else:
+    VROWS = [r for r in pairs if r['split'] == 'val' and ok(r)][:24]
+VAL = [load(r) for r in VROWS]; VVOICE = [r['voice'] for r in VROWS]
+FEMALE = {'VALERIA', 'W02'}
 keep = [i for i, x in enumerate(TRAIN) if x[0].shape[0] >= a.frames]
 TRAIN = [TRAIN[i] for i in keep]; TVOICE = [TROWS[i]['voice'] for i in keep]
 VW = {k: float(v) for k, v in (kv.split('=') for kv in a.voice_weight.split(',') if kv)}
 CUMW = list(itertools.accumulate(VW.get(v, 1.0) for v in TVOICE)) if VW else None   # clip sampling weights (None: uniform)
 if VW: say('voice sampling weights', VW, 'share per voice', {v: round(sum(VW.get(u, 1.0) for u in TVOICE if u == v) / CUMW[-1], 3) for v in sorted(set(TVOICE))})
 if a.pred_mel: say(f'generator input: converter mels ({a.pred_mel}) with p={a.pred_prob} (blur f<={a.pred_blur_f} t<={a.pred_blur_t}), paid mels otherwise; target = paid audio')
-say(f'data: {len(TRAIN)} train clips ({sum(x[0].shape[0] for x in TRAIN) / 360000:.1f} h), {len(VAL)} val, loaded in {time.time() - t0:.0f}s')
+say(f'data: {len(TRAIN)} train clips ({sum(x[0].shape[0] for x in TRAIN) / 360000:.1f} h), {len(VAL)} val {dict(collections.Counter(VVOICE))}, loaded in {time.time() - t0:.0f}s')
 LOG_FLOOR = math.log(1e-5)
 
 def batch():
@@ -131,14 +137,19 @@ od = torch.optim.AdamW(dparams, a.lr, betas=(0.8, 0.99))
 to32 = torchaudio.transforms.Resample(A.OUT_SR, A.SR).to(dev)
 
 @torch.no_grad()
-def validate(pred=False):
-    err = 0.0
+def validate(pred=False, groups=None):
+    """Mean held-out mel L1 over VAL; with groups (a dict) also filled per voice and per male/female group."""
+    errs = []
     for it in VAL:
         m = it[0]; inp = it[2] if pred else m
         y = ema(inp.float().T[None].to(dev))[0, 0]
         mm = A.mel(to32(y)[None])[0]; n = min(mm.shape[0], m.shape[0])
-        err += float((mm[:n] - m[:n].float().to(dev)).abs().mean()) / len(VAL)
-    return round(err, 4)
+        errs.append(float((mm[:n] - m[:n].float().to(dev)).abs().mean()))
+    if groups is not None:
+        for key, sel in [(v, [v]) for v in sorted(set(VVOICE))] + [('male', sorted(set(VVOICE) - FEMALE)), ('female', sorted(set(VVOICE) & FEMALE))]:
+            e = [x for x, v in zip(errs, VVOICE) if v in sel]
+            if e: groups[key] = round(sum(e) / len(e), 4)
+    return round(sum(errs) / len(errs), 4)
 
 def save_last(step):
     torch.save({'gen': gen.state_dict(), 'ema': ema.state_dict(), 'mpd': mpd.state_dict(), 'cqtd': cqtd.state_dict(),
@@ -202,7 +213,10 @@ while step < a.steps:
         el = time.time() - t_start
         say(f'step {step} mel {float(lm) / h.lambda_melloss:.4f} adv {float(ladv):.3f} fm {float(lfm):.3f} d {float(ld):.3f} '
             f'gn {float(gng):.1f} gd {float(gnd):.1f} lr {lr:.2e} {el / max(1, step - s_start):.3f}s/step mem {mem()}')
-    if step % a.val_every == 0: say('val', step, 'ema mel_l1', validate(), *(('pred_in', validate(True)) if a.pred_mel else ()))
+    if step % a.val_every == 0:
+        gp, gc = {}, {}
+        say('val', step, 'ema mel_l1', validate(groups=gp), *(('pred_in', validate(True, groups=gc)) if a.pred_mel else ()))
+        if a.val_per_voice: say('valgroups', step, 'paid_in', json.dumps(gp), *(('pred_in', json.dumps(gc)) if a.pred_mel else ()))
     if step % a.save_every == 0: export(step); save_last(step); say('saved', step)
 say('TRAIN_END', step)
 if stopped: sys.exit(3)            # paused, resumable: not DONE
