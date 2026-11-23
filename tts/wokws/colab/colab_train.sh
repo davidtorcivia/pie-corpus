@@ -17,6 +17,6 @@ trap 'echo "start failed: releasing $S"; colab stop -s $S' ERR      # a VM that 
 colab upload -s $S $T/code.tgz /content/code.tgz
 colab ssh -s $S -- 'mkdir -p /root/.cache/huggingface' </dev/null
 colab upload -s $S "$TOKEN" /root/.cache/huggingface/token
-colab ssh -s $S -- 'chmod 600 /root/.cache/huggingface/token && tar xzf /content/code.tgz -C /tmp kit/vm_run.sh && BATCH='"${BATCH:-16}"' MEM_FRAC='"${MEM_FRAC:-0.9}"' bash /tmp/kit/vm_run.sh '"$RUN" </dev/null
+colab ssh -s $S -- 'chmod 600 /root/.cache/huggingface/token && tar xzf /content/code.tgz -C /tmp kit/vm_run.sh && BATCH='"${BATCH:-4}"' MEM_FRAC='"${MEM_FRAC:-0.9}"' bash /tmp/kit/vm_run.sh '"$RUN" </dev/null
 trap - ERR; rm -rf $T
 echo "$RUN running on $S; check with colab_check.sh $RUN"
