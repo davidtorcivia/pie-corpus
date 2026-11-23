@@ -14,9 +14,13 @@ tar -czf $T/code.tgz -C $T code kit BigVGAN pylib
 for i in $(seq 1 ${TRIES:-20}); do colab new -s $S --gpu $GPU 2>&1 | grep -q "Session READY" && break; [ $i = ${TRIES:-20} ] && { echo "no $GPU after $i tries"; exit 3; }; sleep 90; done
 echo "$S on $GPU (try $i)"
 trap 'echo "start failed: releasing $S"; colab stop -s $S' ERR      # a VM that never trains must not keep billing
+# keep the kernel busy from the start until DONE: Colab reclaims a VM whose kernel is idle (~25 min), and both the
+# data download and the trainer run outside the kernel
+nohup colab exec -s $S --timeout 0 -f $HERE/keepalive.py > $HOME/AI/chimera-pie-data/wokws/colab_$RUN.keepalive.log 2>&1 &
 colab upload -s $S $T/code.tgz /content/code.tgz
 colab ssh -s $S -- 'mkdir -p /root/.cache/huggingface' </dev/null
 colab upload -s $S "$TOKEN" /root/.cache/huggingface/token
 colab ssh -s $S -- 'chmod 600 /root/.cache/huggingface/token && tar xzf /content/code.tgz -C /tmp kit/vm_run.sh && BATCH='"${BATCH:-4}"' MEM_FRAC='"${MEM_FRAC:-0.9}"' bash /tmp/kit/vm_run.sh '"$RUN" </dev/null
 trap - ERR; rm -rf $T
+sleep 20; colab status -s $S 2>/dev/null | grep -E "BUSY|IDLE" || true
 echo "$RUN running on $S; check with colab_check.sh $RUN"
