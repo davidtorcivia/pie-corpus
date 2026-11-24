@@ -6,7 +6,8 @@ import json, os, subprocess, sys, numpy as np, torch, librosa
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')); import audio as A
 W = os.path.expanduser('~/AI/chimera-pie-data/wokws'); E = os.path.expanduser('~/AI/chimera-pie-data/sts-eval')
 S = '/private/tmp/claude-501/-Users-david-AI-PIE/7bdc6640-3091-456e-a081-2c28d7d03867/scratchpad'
-CACHE = f'{W}/logs/hftable.json'; cache = json.load(open(CACHE)) if os.path.exists(CACHE) else {}
+RUN = os.environ.get('RUN', 'g1')
+CACHE = f'{W}/logs/hftable.json' if RUN == 'g1' else f'{W}/logs/hftable_{RUN}.json'; cache = json.load(open(CACHE)) if os.path.exists(CACHE) else {}
 lines = json.load(open(f'{S}/spec_wc24.json'))['lines']; MALE = {'ZAZY', 'ANTONIO'}
 def dF(p):
     y, _ = librosa.load(p, sr=32000); y = y / (np.sqrt(np.mean(y ** 2)) + 1e-9) * 0.05
@@ -22,13 +23,13 @@ def score(d):
 if 'v4' not in cache: cache['v4'] = score('v4copy-wokws')
 for st in sys.argv[1:]:
     if st in cache: continue
-    ck = f'{W}/runs/g1/step{st}.pt'
+    ck = f'{W}/runs/{RUN}/step{st}.pt'
     if not os.path.exists(ck):
-        subprocess.run(f'ssh tr-desktop "wsl -d Ubuntu-26.04 -- tar -C /root/wokws/runs/g1 -cf - step{st}.pt" 2>/dev/null | tar -C {W}/runs/g1 -xf -', shell=True, check=True)
-    env = dict(os.environ, BIGVGAN=f'{W}/BigVGAN', OMP_NUM_THREADS='8')
+        os.makedirs(f'{W}/runs/{RUN}', exist_ok=True); subprocess.run(f'ssh tr-desktop "wsl -d Ubuntu-26.04 -- tar -C /root/wokws/runs/{RUN} -cf - step{st}.pt" 2>/dev/null | tar -C {W}/runs/{RUN} -xf -', shell=True, check=True)
+    env = dict(os.environ, BIGVGAN=f'{W}/BigVGAN', OMP_NUM_THREADS=os.environ.get('OMP_NUM_THREADS', '8'))
     subprocess.run([os.path.expanduser('~/AI/chimera-pie-data/gsv-mac/venv/bin/python'), os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'render.py'),
-                    f'gwerh{st}-copy', '--copy', '--lines', f'{S}/spec_wc24.json', '--vocoder', ck], env=env, check=True, capture_output=True)
-    cache[st] = score(f'gwerh{st}-copy'); json.dump(cache, open(CACHE, 'w'))
+                    (f'gwerh{st}-copy' if RUN == 'g1' else f'gwerh{RUN}-{st}-copy'), '--copy', '--lines', f'{S}/spec_wc24.json', '--vocoder', ck], env=env, check=True, capture_output=True)
+    cache[st] = score(f'gwerh{st}-copy' if RUN == 'g1' else f'gwerh{RUN}-{st}-copy'); json.dump(cache, open(CACHE, 'w'))
 json.dump(cache, open(CACHE, 'w'))
 for k in ['v4'] + sys.argv[1:]:
     c = cache[k]; print(f"{k}: male {c['male'][0]:.2f}/{c['male'][1]:.2f}  female {c['female'][0]:.2f}/{c['female'][1]:.2f}")
